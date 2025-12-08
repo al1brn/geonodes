@@ -644,10 +644,10 @@ with GeoNodes("Returned Values"):
     # ---------------------------------------------------------------------------
     
     # The returned socket is the first one: point_count
-    # Let's name if info for the sake of clarity
+    # Let's name it info for the sake of clarity
     info = cube.domain_size()
 
-    # The other socket can be read
+    # The other sockets can be read
     face_count = info.face_count
     edge_count = info.edge_count
 
@@ -903,7 +903,7 @@ as shown below.
     spiral.out()
 ```
 
-This alternative can be easier to read for complex nodes. It can be used with menu likes nodes:
+This alternative can be easier to read for complex nodes. It can be used with menu-like nodes:
 
 ``` python
 from geonodes import *
@@ -937,11 +937,14 @@ with GeoNodes("Menu Demo") as tree:
     with from_curve:
         Curve.Circle().to_mesh(profile_curve=profile).out("Circle")
         
+    # The best is to set the menu socket one the inputs are completed
     from_curve.node.menu = Input("From Curve", default="Simple Mesh")
     
     # ----------------------------------------------------------------------------------------------------
     # Same for Index switch
     # ----------------------------------------------------------------------------------------------------
+
+    # Each out method feeding an Index Switch node will add an entry
     
     curve = Curve.IndexSwitch(index=Input("Curve Index"))
     with curve:
@@ -974,9 +977,84 @@ with GeoNodes("Group outputs"):
     Integer(10).out(name="The 10 int")
 ```
 
-## Simulation, Repeat and ForEachElement Zones
+## Paired zones
 
-### Creation
+### Closure
+
+The two **Closure** zone nodes are created when instantiating a closure.
+To create the nodes, use the ***with*** context:
+
+``` python
+    # Create a closure adding 1 to the input
+    with Closure() as cl:
+        a = Float(1.0, "Float")
+        a += 1
+        a.out("Plus One")
+```
+
+The closure separation is made using the **separate** method. This method
+takes a **signature** argument which is a dict describing the closure inputs and outputs.
+
+``` python
+    # Create a closure adding to two entris 
+    with Closure() as cl:
+        a = Float(1.0, "A")
+        b = Float(1.0, "B")
+        (a + b).out("Sum")
+
+    # If separated immediately, the signature is read from the previous nodes.
+    cl.separate().node.out(panel = "Separate 0")
+
+    # We can read the closure signature for future use
+    sig = cl.get_signature()
+
+    # We can separate a closure using this signature
+    cl1 = Closure(name="Closure 1")
+    cl1.separate(signature=sig).node.out(panel="Signature 1")
+
+    # We can separate another closure using a manual signature
+    cl2 = Closure(name="Closure 2")
+    sig = {'INPUT': {'A': 'Float, 'B': 'Float'}, 'OUTPUT': {'Sum': 'Float'}}
+    cl2.separate(signature=sig).node.out(panel="Signature 2")
+```
+
+
+
+
+
+
+        
+
+
+
+
+### Loops
+
+To make the code as clear and pythonistic as possible, the Geometry nodes loop zones
+**Simulation**, **Repeat** and **For Each Element** are implemented as python iterator.
+
+- **Simulation** and **Repeat** : Socket iterator
+- **For Each Element** : Domain iterator
+
+``` python
+    mesh = Mesh()
+
+    for simul in mesh.simulation():
+        # Nodes are created in the Simulation zone
+        pass
+
+    for rep in mesh.repeat(10):
+        # Nodes are created in the Repeat zone
+        pass
+
+    for feel in mesh.points.for_each():
+        # nodes are created in the For Each Element zone
+        pass
+```
+
+The value returned by the iterator 
+
+
 
 Zones are made of two linked nodes: one input node and one output node.
 In Blender 4.3, three zones exist:
