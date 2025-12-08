@@ -162,6 +162,7 @@ class Menu(generated.Menu):
             # ----------------------------------------------------------------------------------------------------
             
             curve.switch(Input("Mesh/Curve"), from_curve).out()
+
                 
 
 

@@ -112,6 +112,26 @@ class Closure(generated.Closure):
     @property
     def _has_zone(self):
         return self.node._bnode.bl_idname == 'NodeClosureOutput'
+    
+    # ====================================================================================================
+    # Context management
+    # ====================================================================================================
+
+    def _push(self):
+
+        if self._has_zone:
+            self._tree._output_stack.append(self.node)
+            self._tree._input_stack.append(self.node._paired_input_node)
+        else:
+            super()._push()
+
+    def _pop(self, error: bool = False):
+
+        if self._has_zone:
+            self._tree._output_stack.pop()
+            self._tree._input_stack.pop()
+        else:
+            super()._pop(error=error)
 
     # ====================================================================================================
     # Signature
@@ -215,6 +235,9 @@ class Closure(generated.Closure):
         elif signature is None:
             already_linked = True
             signature = Signature.from_named_sockets(named_sockets, **sockets)
+
+        else:
+            signature = Signature(signature)
 
         # ----------------------------------------------------------------------------------------------------
         # Create the node

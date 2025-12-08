@@ -271,13 +271,14 @@ class Domain(Geom, NodeCache):
             else:
                 attrs = {'attribute': attribute, **attributes}
 
-        node = Node('Capture Attribute', sockets={'Geometry': self})
+        node = Node('Capture Attribute', {'Geometry': self._geo, **attrs})
 
-        node._set_items('capture_items', **attrs)
+        #node._set_items('capture_items', **attrs)
         self._jump(node._out)
+        return node.socket_by_index('OUTPUT', 1)
 
         if len(attrs) == 1:
-            return node[1]
+            return node.socket_by_index(1)
         else:
             return node
 

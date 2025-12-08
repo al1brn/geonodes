@@ -53,6 +53,7 @@ from .scripterror import NodeError
 from .import constants
 from .import utils
 from .utils import Break
+from .treeinterface import ItemPath
 from .sockettype import SocketType
 from .treeinterface import TreeInterface
 from .treeclass import Tree
@@ -385,7 +386,9 @@ class Socket(NodeCache):
         -------
         - Socket
         """
-        return cls(Tree.current_tree().get_in_socket(name=name, panel=panel))
+        full_name = ItemPath(panel) + ItemPath(name)
+        return cls(Tree.current_tree().get_input_node().socket_by_name('OUTPUT', full_name.path, None))
+        #return cls(Tree.current_tree().get_in_socket(name=name, panel=panel))
 
 
     # ====================================================================================================
@@ -549,7 +552,7 @@ class Socket(NodeCache):
         -------
         - None
         """
-        #print("OUTING", self._bsocket.name, self._bsocket.type)
+        #print("OUTING SOCKET", self._bsocket.name, self._bsocket.type, panel)
         out_node = self._tree.get_output_node()
         out_node.set_input_socket(name=name, value=self, create=True, panel=panel, **props)
 
@@ -876,7 +879,7 @@ class Socket(NodeCache):
         -------
         - ZoneIterator
         """
-        node = ZoneNode("Repeat", self, named_sockets=named_sockets, **sockets)
+        node = ZoneNode("Repeat", self, named_sockets=named_sockets, Iterations=iterations, **sockets)
         return ZoneIterator(self, node)
     
     # ----------------------------------------------------------------------------------------------------
@@ -897,12 +900,6 @@ class Socket(NodeCache):
         """
         node = ZoneNode("Simulation", self, named_sockets=named_sockets, **sockets)
         return ZoneIterator(self, node)
-
-
-        
-
-
-
 
     # ====================================================================================================
     # Class Test

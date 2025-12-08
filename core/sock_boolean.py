@@ -172,7 +172,6 @@ class Boolean(generated.Boolean):
 
             with Layout("Grid Attribute"):
                 vol = g.to_volume()
-                print("DEBUG BOOL TEST", vol, type(vol))
                 vol.store_named_grid("Bool A", a)
             
             vol.enable_output(d).out()

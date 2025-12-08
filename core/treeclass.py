@@ -1012,7 +1012,7 @@ class Tree:
     # Get an existing input socket
     # ====================================================================================================
 
-    def get_in_socket(self, name: str, panel: str = ""):
+    def get_in_socket_OLD(self, name: str, panel: str = ""):
         """ Get an existing socket within a panel
 
         Arguments

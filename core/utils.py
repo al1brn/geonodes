@@ -604,9 +604,8 @@ def get_socket_info(value):
 
 def get_socket_class(socket_type, name=None):
 
-    info = get_socket_info(socket_type)
-    stype = info['socket_type']
-    #stype = constants.CLASS_NAMES[]
+    socket_type = SocketType(socket_type)
+    stype = socket_type.type
 
     if stype == 'GEOMETRY':
     
@@ -1051,7 +1050,6 @@ def check_enum_arg(node_name: str, arg_name: str, arg_value: str, meth_name: str
 def value_to_array(value, shape):
 
     a = np.array(value, object)
-
     if np.shape(a) in [(), (1,)]:
         return np.resize(a, shape)
 

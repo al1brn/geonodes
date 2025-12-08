@@ -57,6 +57,10 @@ class Signature:
             self._inputs  = list(inputs.inputs)
             self._outputs = list(inputs.outputs)
 
+        elif isinstance(inputs, tuple) and len(inputs)==2 and outputs is None:
+            self.inputs  = inputs[0]
+            self.outputs = inputs[1]
+
         else:
             self.inputs  = inputs
             self.outputs = outputs

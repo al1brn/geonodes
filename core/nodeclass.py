@@ -1032,8 +1032,14 @@ class Node:
 
         if value is None:
             return
-
         value_socket_type = SocketType(value)
+        
+        # ===========================================================================
+        # Name is the index
+        # ===========================================================================
+
+        if isinstance(name, int):
+            name = utils.get_socket_name(self._bnode.inputs[name])
 
         # ===========================================================================
         # Virtual socket : the input socket must exist (or auto data type)
@@ -1044,8 +1050,13 @@ class Node:
             auto = self._bnode.bl_idname in constants.AUTO_INPUT_TYPE_NODES
             halt = name is not None and not auto
 
+            if name is None:
+                full_name = None
+            else:
+                full_name = (ItemPath(panel) + name).path
+
             # The socket must exist
-            in_socket = self.get_socket('INPUT', name, value_socket_type, free_only=True, halt=halt)
+            in_socket = self.get_socket('INPUT', full_name, value_socket_type, free_only=True, halt=halt)
 
             # However, if auto data type we can create it
             if in_socket is None and auto:
@@ -1078,8 +1089,7 @@ class Node:
             
             # ----- First free input socket
 
-            for _, socket in self.get_sockets('INPUT', free_only=True):
-
+            for _, socket in self.get_sockets('INPUT', free_only=True, panel=panel):
                 if socket.type == value_socket_type.type: #bsocket.type:
                     self._tree.link(value, socket)
                     return socket
@@ -1099,8 +1109,10 @@ class Node:
         # Get the input socket by its name
         # ---------------------------------------------------------------------------
 
-        create_socket = create and self._has_dyn_in
-        socket = self.get_socket('INPUT', name, value_socket_type, free_only=True, halt=not create_socket)
+        full_name = (ItemPath(panel) + name).path
+
+        create_socket = create and self._has_dyn_in        
+        socket = self.get_socket('INPUT', full_name, value_socket_type, free_only=True, halt=not create_socket)
 
         # ---------------------------------------------------------------------------
         # Create the dynamic socket
@@ -1175,8 +1187,10 @@ class Node:
                 spec = constants.ARRAY_TYPES[socket_type.type]
                 a = utils.value_to_array(value, spec['shape'])
 
+            # There is a bsocket in the array
             if utils.has_bsocket(a):
-                self._tree.link(Node.InputNodeSocket(value)._bsocket, socket)
+                v = utils.get_socket_class(socket_type)(a)
+                self._tree.link(v, socket)
 
             else:
                 try:
@@ -1418,6 +1432,7 @@ class Node:
         ---------
         - panel (str = "") : panel to use
         """
+        print("WHAT ?", self)
         self.link_outputs(None, to_panel=panel)
         #for name, socket in self.get_sockets('OUTPUT'):
         #    socket.out(name, panel=panel)
@@ -1427,7 +1442,7 @@ class Node:
     # ====================================================================================================
 
     def link_inputs(self,
-        from_node   : Node,
+        from_node   : Node = None,
         from_panel  : str = "",
         *,
         include     : list =  None,
@@ -1444,7 +1459,7 @@ class Node:
 
         Arguments
         ---------
-        - from_node (Node) : node to get output sockets from
+        - from_node (Node = None) : node to get output sockets from
         - from_panel (str = "") : the panel to use in from_node
         - include (list = None) : sockets to include
         - exclude (list = []) : sockets to exclude
@@ -1494,7 +1509,7 @@ class Node:
     # ====================================================================================================
 
     def link_outputs(self,
-        to_node     : Node,
+        to_node     : Node = None,
         to_panel    : str = "",
         *,
         include     : list =  None,
@@ -1510,7 +1525,7 @@ class Node:
 
         Arguments
         ---------
-        - to_node (Node) : node to plug into
+        - to_node (Node = None) : node to plug into
         - to_panel (str = "") : the panel to use in to_node
         - include (list = None) : sockets to include
         - exclude (list = []) : sockets to exclude
@@ -1540,7 +1555,7 @@ class Node:
         
         for name, out_socket in out_sockets:
 
-            path = ItemPath(to_panel) + name
+            path = (ItemPath(to_panel) + name).path
 
             in_socket = to_node.socket_by_name('INPUT', path, SocketType(out_socket).type, halt=False)
 
@@ -2334,7 +2349,6 @@ class ColorRamp(Node):
         -------
         - bpy.types.ColorRamp
         """
-        print("DEBUG", self._bnode, self._bnode.color_ramp)
         return self._bnode.color_ramp
 
     @property
