@@ -81,7 +81,7 @@ class Object(generated.Object):
                 #name = 'Object' # Before Blender 4.4
                 bsock = Node('Object', object=obj)._out
             else:
-                bsock = self._create_input_socket(value=value, name=name, tip=tip,
+                bsock = self._create_input_socket(name=name, tip=tip,
             panel=panel, optional_label=optional_label, hide_value=hide_value,
             hide_in_modifier=hide_in_modifier)
 
@@ -94,20 +94,35 @@ class Object(generated.Object):
     @classmethod
     def _class_test(cls):
 
-        from geonodes import GeoNodes, Image, nd, Bundle, Object
+        from geonodes import GeoNodes, Image, nd, Bundle, Object, Mesh, Input, Geometry
 
         with GeoNodes("Object Test"):
-
-            with Bundle() as b1:
-                Object("Cube").info().node.out()
-                
-            with Bundle() as b2:
-                Object("Cube", name="Your Object").info().node.out()
-                
-            nd.self_object.info().node.out("Self")
             
-            b1.separate().node.out(panel="First")
-            b2.separate().node.out(panel="Second")
+            # Default cube
+            with Bundle() as b0:
+                def_cube = Object("Cube")
+                def_cube.info().out()
+                
+            # User object
+            with Bundle() as b1:
+                Object("Cube", name="Object").info().out()
+                
+            # Selft object
+            with Bundle() as b2:
+                sobj = nd.self_object
+                nd.self_object.info().link_outputs(None, exclude=["Geometry"])
+                Geometry().out()
+                
+            sig = b0.get_signature()
+                
+            bundle = Bundle.MenuSwitch(
+                menu=Input("Object Selection", default_value="Self"),
+                Cube = b0,
+                Input = b1,
+                Self  = b2)
+                
+            bundle.separate(signature=sig).out()
+
             
 
 

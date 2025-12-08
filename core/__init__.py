@@ -50,7 +50,7 @@ if PRODUCTION:
     from .signature import Signature
     from .treeclass import Layout, Panel, Tree
     from .nodeclass import Node, Group, GroupF, ColorRamp, G
-    from .zones import Zone, Repeat, Simulation, ForEachElement
+    #from .zones import Zone, Repeat, Simulation, ForEachElement
 
     from .geonodes import GeoNodes
 

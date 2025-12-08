@@ -1,4 +1,4 @@
-# Generated 2025-12-07 10:17:11
+# Generated 2025-12-08 08:30:17
 
 from __future__ import annotations
 from .. socket_class import Socket
@@ -621,7 +621,6 @@ class Shader(Socket):
 
     @classmethod
     def _create_input_socket(cls,
-        value: object = None,
         name: str = 'Shader',
         tip: str = '',
         panel: str = "",
@@ -635,7 +634,6 @@ class Shader(Socket):
 
         Aguments
         --------
-        - value  (object = None) : Default value
         - name  (str = 'Shader') : Input socket name
         - tip  (str = '') : Property description
         - panel (str = "") : Panel name
@@ -649,7 +647,6 @@ class Shader(Socket):
         """
         from ..treeclass import Tree
 
-        return Tree.current_tree().create_input_socket('NodeSocketShader', value=value, name=name, tip=tip,
-            panel=panel, optional_label=optional_label, hide_value=hide_value,
-            hide_in_modifier=hide_in_modifier)
+        return Tree.current_tree().create_input_socket('NodeSocketShader', name=name, tip=tip, panel=panel,
+            optional_label=optional_label, hide_value=hide_value, hide_in_modifier=hide_in_modifier)
 

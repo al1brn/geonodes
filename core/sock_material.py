@@ -84,7 +84,7 @@ class Material(generated.Material):
             if name is None:
                 bsock = Node('Material', material=material)._out
             else:
-                bsock = self._create_input_socket(value=value, name=name,
+                bsock = self._create_input_socket(name=name,
                     tip=tip, panel=panel, optional_label=optional_label, hide_value=hide_value,
                     hide_in_modifier=hide_in_modifier)
 
@@ -97,7 +97,7 @@ class Material(generated.Material):
     @classmethod
     def _class_test(cls):
 
-        from geonodes import GeoNodes, Material, nd, Mesh, ShaderNodes, Shader, Float, Menu
+        from geonodes import GeoNodes, Material, nd, Mesh, ShaderNodes, Shader, Input, Menu
         
         # ---------------------------------------------------------------------------
         # Building 3 materials
@@ -121,7 +121,7 @@ class Material(generated.Material):
 
         with GeoNodes("Material Test"):
             
-            gs = Node('Menu Switch')
+            gs = Node('Menu Switch', menu=Input("Pick Geometry"))
             
             with gs:            
                 g = Mesh.IcoSphere()
@@ -146,12 +146,6 @@ class Material(generated.Material):
                 g[nd.material_index.equal(1)].material = "Red"
                 g.out("Replace mat index 1 by Red")
                 
-            # Default menu                
-            gs.menu = "Full Red"
-            
-            # From user input
-            gs.menu = Menu(name="Pick geometry")
-            
                 
             gs._out.out()
       

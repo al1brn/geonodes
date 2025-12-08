@@ -47,6 +47,7 @@ from . import utils
 from .socket_class import Socket
 from .geom import Geom
 from . import generated
+from .nodeclass import ZoneIterator
 
 # ====================================================================================================
 # Geometry class
@@ -112,7 +113,7 @@ class Geometry(generated.Geometry, Geom):
                 name = type(self).__name__
 
             # Create the group input socket
-            bsock = self._create_input_socket(value=value, name=name,
+            bsock = self._create_input_socket(name=name,
                 tip=tip, panel=panel, optional_label=optional_label, hide_value=hide_value,
                 hide_in_modifier=hide_in_modifier)
 
@@ -162,11 +163,3 @@ class Geometry(generated.Geometry, Geom):
         else:
             return Geometry.Join(self, other)
         
-    # ====================================================================================================
-    # Loops
-    # ====================================================================================================
-
-    def repeat(self, iterations=1, named_sockets: dict={}, **sockets):
-        from .zones import RepeatLoop
-        return RepeatLoop(self, named_sockets, iterations=iterations, **sockets)
-

@@ -128,12 +128,12 @@ class String(generated.String):
     @classmethod
     def _class_test(cls):
 
-        from geonodes import GeoNodes, Mesh, Layout, String, Boolean, Integer, nd
+        from geonodes import GeoNodes, Mesh, Layout, String, Boolean, Integer, nd, Input
 
         with GeoNodes("String Test") as tree:
             
             g = Mesh()
-            name = String("Name", name="Attr name")
+            name = String("Attribute", name="Attr name")
             g.points.store(name, 0.)
             
             a = String("String A ")
@@ -147,7 +147,7 @@ class String(generated.String):
                 ref_string = String("Matching test string")
                 search_string = String("test", name="Search String")
                 
-                ok = ref_string.match_string(tree.new_input("Match"), search_string)
+                ok = ref_string.match_string(Input("Match"), search_string)
                 ok.info(String("'{}' found in '{}'.").format(token=search_string, ref=ref_string))
                 ok.bnot().warning(String("'{}' not found in '{}'.").format(token=search_string, ref=ref_string))
                 
@@ -168,6 +168,5 @@ class String(generated.String):
                 s = String(s).replace(_t, "TAB").replace(_n, "LINE_BREAK")
                 Boolean(True).info(s)
                 
-            g.enable_output(ok).out()
-                
-         
+            g.out()
+        

@@ -104,15 +104,8 @@ class Boolean(generated.Boolean):
         super().__init__(bsock)
 
     # ====================================================================================================
-    # Constructors
-
-    @classmethod
-    def Input(cls, name='Boolean', value=False, tip=None):
-        tree = Tree.CURRENT
-        return tree.create_input_socket('NodeSocketBool', name=name, value=value, description=tip)
-
-    # ----------------------------------------------------------------------------------------------------
     # Operations
+    # ====================================================================================================
 
     def __neg__(self):
         return self.bnot()

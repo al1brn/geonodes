@@ -97,7 +97,7 @@ class Menu(generated.Menu):
                 bsocket = Node('Menu Switch')._out._bsocket
 
             else:
-                bsocket = self._create_input_socket(value=value, name=name, tip=tip,
+                bsocket = self._create_input_socket(name=name, tip=tip,
                     panel=panel, optional_label=optional_label, hide_value=hide_value,
                     hide_in_modifier=hide_in_modifier, expanded=expanded, shape=shape)
 

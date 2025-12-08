@@ -57,6 +57,7 @@ from .sockettype import SocketType
 from .treeinterface import TreeInterface
 from .treeclass import Tree
 from .nodeclass import Node
+from .nodezone import ZoneNode,ZoneIterator
 
 # =============================================================================================================================
 # =============================================================================================================================
@@ -900,6 +901,55 @@ class Socket(NodeCache):
         - Socket
         """
         return self.Switch(condition=condition, false=false, true=self)
+    
+    # ====================================================================================================
+    # Loops
+    # ====================================================================================================
+
+    # ----------------------------------------------------------------------------------------------------
+    # Repeat
+    # ----------------------------------------------------------------------------------------------------
+
+    def repeat(self, iterations=1, named_sockets: dict={}, **sockets):
+        """ Repeat zone
+
+        Arguments
+        ---------
+        - Iteration (Integer = 1) : iteration socket
+        - named_socket (dict) : named sockets
+        - sockets (dict) : other sockets
+
+        Returns
+        -------
+        - ZoneIterator
+        """
+        node = ZoneNode("Repeat", self, named_sockets=named_sockets, **sockets)
+        return ZoneIterator(self, node)
+    
+    # ----------------------------------------------------------------------------------------------------
+    # Simulation
+    # ----------------------------------------------------------------------------------------------------
+
+    def simulation(self, named_sockets: dict={}, **sockets):
+        """ Simulation zone
+
+        Arguments
+        ---------
+        - named_socket (dict) : named sockets
+        - sockets (dict) : other sockets
+
+        Returns
+        -------
+        - ZoneIterator
+        """
+        node = ZoneNode("Simulation", self, named_sockets=named_sockets, **sockets)
+        return ZoneIterator(self, node)
+
+
+        
+
+
+
 
     # ====================================================================================================
     # Class Test

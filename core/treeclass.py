@@ -67,7 +67,6 @@ from .utils import Break
 from .sockettype import SocketType
 from .signature import Signature
 from .treeinterface import ItemPath, TreeInterface
-from .inoutcontext import InOutContext
 
 # ====================================================================================================
 # Input / output panel
@@ -221,7 +220,7 @@ class Layout:
 # Tree
 # ====================================================================================================
 
-class Tree(InOutContext):
+class Tree:
 
     _total_nodes = 0
     _total_links = 0
@@ -683,7 +682,7 @@ class Tree(InOutContext):
     # Create an input socket
     # ----------------------------------------------------------------------------------------------------
 
-    def create_input_socket(self, bl_idname, name, value=None, panel="", **props):
+    def create_input_socket(self, bl_idname, name, panel="", **props):
         """ Create a new input socket.
 
         This is an **input socket** of the zone, hence an **output socket** of the input node.
@@ -692,7 +691,6 @@ class Tree(InOutContext):
         ---------
             - bl_idname (str) : socket bl_idname
             - name (str): Socket name
-            - value (Any = None) : Default value
             - panel (str = "") : Panel to place the socket in
             - props : properties specific to interface socket
 
@@ -702,15 +700,6 @@ class Tree(InOutContext):
         """
         input_node = self.get_input_node()
         socket = input_node.create_socket('OUTPUT', bl_idname, name, panel=panel, **props)
-
-        return socket
-
-        if socket is None or value is None:
-            return socket
-
-        bsocket = utils.get_bsocket(value)
-        if bsocket is None and hasattr(socket._bsocket, 'default_value'):
-            socket._bsocket = default_value = value
 
         return socket
             

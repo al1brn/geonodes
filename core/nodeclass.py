@@ -67,7 +67,7 @@ IN_OUT = Literal['INPUT', 'OUTPUT']
 
 class Sockets:
 
-    __slots__ = ['node_sockets', 'homonyms', 'multi_names', 'multi_type']
+    __slots__ = ('node_sockets', 'homonyms', 'multi_names', 'multi_type')
 
     def __init__(self, node_sockets: bpy.types.bpy_prop_collection):
         """ This class wrap Node inputs and outputs collection.
@@ -212,13 +212,13 @@ class Sockets:
 # ====================================================================================================
 
 class Node:
-    __slots__ = [
+    __slots__ = (
         '_tree', '_bnode', '_inputs', '_outputs',
         '_has_dyn_in', '_has_dyn_out',
         '_has_items', '_items',
         '_use_interface', '_interface', '_interface_in_out',
         '_is_paired_input', '_is_paired_output', '_paired_input_node', '_paired_output_node',
-        ]
+    )
     
     def __init__(self, node_name: str, named_sockets: dict = {}, **parameters):
         """ Node wrapper.
@@ -313,111 +313,6 @@ class Node:
             self._has_dyn_out = self._items['OUTPUT'] is not None
 
         # ----------------------------------------------------------------------------------------------------
-        # Paired nodes
-        # Paired nodes can consume parameters and sockets
-        # ----------------------------------------------------------------------------------------------------
-
-        # ----------------------------------------------------------------------------------------------------
-        # Paired nodes
-        #
-        # When creating a paired output node, the corresponding input node is also created
-        # and both are paired.
-        #
-        # The two nodes can have dynamic sockets as described below
-        #
-        #   Zone          Input Node          Output Node
-        #   ----------    ------------        ------------
-        #   Repeat          dyn_out                x
-        #   Simulation      dyn_out                x
-        #   For Each        dyn_out              dyn_in (two panels)
-        #   Closure         dyn_out              dyn_in
-        # ----------------------------------------------------------------------------------------------------
-
-        if bl_idname in [
-            'GeometryNodeRepeatInput',
-            'GeometryNodeSimulationInput',
-            'GeometryNodeForeachGeometryElementInput',
-            'NodeClosureInput',
-            ]:
-
-            # ---------------------------------------------------------------------------
-            # Consume output_node parameter
-            # ---------------------------------------------------------------------------
-
-            output_node = parameters.get('output_node')
-            if output_node is None:
-                raise NodeError(f"The node '{node_name}' must be initialized with a valid 'output_node' argument.")
-            
-            parameters = {k: v for k, v in parameters.items() if k != 'output_node'}
-            
-            # Pairing
-
-            self._is_paired_input = True
-            self._paired_output_node = output_node
-            self._bnode.pair_with_output(output_node._bnode)
-
-            # ---------------------------------------------------------------------------
-            # Repeat, Simulation
-            # ---------------------------------------------------------------------------
-
-            self._has_dyn_out = True
-            self._has_items = True
-
-            if bl_idname == 'GeometryNodeRepeatInput':
-                self._items['OUTPUT'] = self._paired_output_node._bnode.repeat_items
-
-            elif bl_idname == 'GeometryNodeSimulationInput':
-                self._items['OUTPUT'] = self._paired_output_node._bnode.state_items
-
-            # ---------------------------------------------------------------------------
-            # For each element
-            # ---------------------------------------------------------------------------
-
-            elif bl_idname == 'GeometryNodeForeachGeometryElementInput':
-                # ['generation_items', 'input_items', 'main_items'],
-                self._items['OUTPUT'] = self._paired_output_node._bnode.input_items
-
-            # ---------------------------------------------------------------------------
-            # Closure
-            # ---------------------------------------------------------------------------
-            
-            elif bl_idname == 'NodeClosureInput':
-                self._items['OUTPUT'] = self._paired_output_node._bnode.input_items
-
-        # Paired output used to create the pair
-                
-        elif bl_idname in [
-            'GeometryNodeRepeatOutput',
-            'GeometryNodeSimulationOutput',
-            'GeometryNodeForeachGeometryElementOutput',
-            'NodeClosureOutput',
-            ]:
-
-            # Create the paired input node
-            self._is_paired_output = True
-            self._paired_input_node = Node(bl_idname[:-6] + 'Input', named_sockets, output_node = self, **parameters)
-
-            # Consumed by input node
-            named_sockets = {}
-            parameters = {}
-
-            # For Each zone : input sockets can be created in two panels
-            if bl_idname == 'GeometryNodeForeachGeometryElementOutput':
-                self._has_dyn_in = True
-                self._has_items  = True
-                # Two panels
-                self._items['INPUT'] = {
-                    "Main":      self._bnode.main_items,
-                    "Generated": self._bnode.generation_items,
-                }
-
-            # Closure zone
-            elif bl_idname == 'NodeClosureOutput':
-                self._has_dyn_in = True
-                self._has_items  = True
-                self._items['INPUT'] = self._bnode.output_items
-
-        # ----------------------------------------------------------------------------------------------------
         # Parameters / sockets
         # ----------------------------------------------------------------------------------------------------
 
@@ -494,7 +389,6 @@ class Node:
             self._items['INPUT']  = self._bnode.input_items
             self._items['OUTPUT'] = self._bnode.output_items
 
-
         assert not (self._use_interface and self._has_items), f"Stange Node [{self._bnode.name}] with interface and items."
         
         # ----------------------------------------------------------------------------------------------------
@@ -543,7 +437,7 @@ class Node:
         s += "\n"
 
         return s
-   
+
     # ====================================================================================================
     # Set the node parameters
     # ====================================================================================================
@@ -785,9 +679,15 @@ class Node:
             if intf_in_out is not None:
 
                 # All the interface socket matching the provided name
+                # First With type
                 isocks = self._interface.get_socket_by_python_name(
                     intf_in_out, name, socket_type, parent=self._tree.get_panel(), return_all=True)
-
+                
+                # Second without type
+                if not len(isocks):
+                    isocks = self._interface.get_socket_by_python_name(
+                        intf_in_out, name, None, parent=self._tree.get_panel(), return_all=True)
+                
                 # Look for the first one matching the conditions
                 for isock in isocks:
                     socket = self.socket_by_identifier(in_out, isock.identifier)
@@ -803,8 +703,12 @@ class Node:
                     return socket
                 
             if halt:
-                #valids = {} if intf_in_out is None else list(self.get_sockets(intf_in_out).keys())
-                raise AttributeError(f"Node '{self._bnode.name}' doesn't own a {intf_in_out} socket named '{name}'.")
+                if intf_in_out is None:
+                    valids = []
+                else:
+                    valids = [s.name for s in self._interface.get_sockets(intf_in_out)]
+
+                raise AttributeError(f"Node '{self._bnode.name}' doesn't own an {intf_in_out} socket named '{name}'.\nValids are {valids}")
 
             return None
 
@@ -819,7 +723,7 @@ class Node:
 
         if socket is None:
             if halt:
-                raise AttributeError(f"Node '{self._bnode.name}' doesn't own a {in_out} socket named '{name}'. Valid names are {socks.names}")
+                raise AttributeError(f"Node '{self._bnode.name}' doesn't own an {in_out} socket named '{name}'. Valid names are {socks.names}")
             
         return socket
 
@@ -943,6 +847,14 @@ class Node:
             elif self._bnode.bl_idname in ['GeometryNodeMenuSwitch']:
                 self._items[in_out].new(full_name)
 
+            # For each
+            elif self._bnode.bl_idname == 'GeometryNodeForeachGeometryElementOutput':
+                if utils.snake_case(panel) == "main":
+                    items = self._bnode.main_items
+                else:
+                    items = self._bnode.generation_items
+                items.new(items_type, full_name)
+
             # Name and data type
             else:
                 try:
@@ -974,7 +886,8 @@ class Node:
             in_out      : IN_OUT, 
             socket_type : str | SocketType, 
             name        : str, 
-            panel       : str="", **props) -> Socket:
+            panel       : str="",
+            **props) -> Socket:
         """ Create a new socket.
 
         Arguments
@@ -1033,14 +946,38 @@ class Node:
         # ---------------------------------------------------------------------------
 
         else:
+
+            # For each
+            if self._bnode.bl_idname == 'GeometryNodeForeachGeometryElementOutput':
+                if utils.snake_case(panel) == "main":
+                    items = self._bnode.main_items
+                else:
+                    items = self._bnode.generation_items
+            else:
+                items = self._items[in_out]
+
             full_name = (ItemPath(panel) + name).long_name
             if self._bnode.bl_idname in ['GeometryNodeMenuSwitch']:
-                self._items[in_out].new(full_name)
+                items.new(full_name)
             else:
-                self._items[in_out].new(socket_type.items_type, full_name)
+                try:
+                    items.new(socket_type.items_type, full_name)
+                except Exception as e:
+                    raise RuntimeError(f"Node.create_socket: [{self._bnode.bl_idname}], type: {socket_type.class_name}, name: {full_name}.\n{str(e)}")
 
             io_socks = self._bnode.inputs if in_out == 'INPUT' else self._bnode.outputs
             socket = io_socks[-2]
+
+            # Default on input socket for paired input nodes
+            if in_out == 'OUTPUT' and self._is_paired_input:
+                def_val = props.get('default', props.get('default_value', None))
+                if def_val is not None:
+                    try:
+                        self._inputs.by_name(full_name).default_value = def_val
+                    except Exception as e:
+                        pass
+                        #raise RuntimeError(f"Erreor setting default val <{def_val}>, Node {self}, {name=}, {full_name=}: {str(e)}")
+
 
         self._update()
 
@@ -1092,6 +1029,9 @@ class Node:
         # ----------------------------------------------------------------------------------------------------
         # The input is not a list of values
         # ----------------------------------------------------------------------------------------------------
+
+        if value is None:
+            return
 
         value_socket_type = SocketType(value)
 
@@ -1291,7 +1231,7 @@ class Node:
         return self.get_socket('OUTPUT', name, None)
 
     def __setattr__(self, name, value):
-        if name in Node.__slots__ or name in dir(Node):
+        if name in self.__slots__ or name in dir(Node):
             super().__setattr__(name, value)
             return
 
@@ -1668,9 +1608,6 @@ class Node:
 
     def _push(self):
 
-        # Nothing for paired input node
-        if self._is_paired_input:
-            return
         # Becomes the output node
         self._tree._output_stack.append(self)
 
@@ -1678,35 +1615,17 @@ class Node:
         if self._has_dyn_out:
             self._tree._input_stack.append(self)
 
-        # Also stacks its pair input node
-        if self._is_paired_output:
-            
-            assert not self._has_dyn_out, f"Shouldn't happen {self}"
-
-            if self._paired_input_node._has_dyn_out:
-                self._tree._input_stack.append(self._paired_input_node)
-
     # ----------------------------------------------------------------------------------------------------
     # Pop capturing sockets in/out
     # ----------------------------------------------------------------------------------------------------
 
     def _pop(self, error: bool = False):
 
-        # Nothing for paired input node
-        if self._is_paired_input:
-            return
-
         assert self._tree._output_stack.pop() == self
 
-        # Becomes input node is possible
+        # Was input node
         if self._has_dyn_out:
             assert self._tree._input_stack.pop() == self
-
-        # Also stacks its pair input node
-        if self._is_paired_output:
-            
-            if self._paired_input_node._has_dyn_out:
-                assert self._tree._input_stack.pop() == self._paired_input_node
 
     # ----------------------------------------------------------------------------------------------------
     # Context management
@@ -1819,6 +1738,159 @@ class Node:
                 g = Group("Curve to Tube")
                 g.link_inputs(None, "Tube")
                 g.link_outputs(None, "Tube")
+
+# ====================================================================================================
+# Zone Iterator
+# ====================================================================================================
+
+class ZoneIterator:
+
+    SIMULATION = "Simulation"
+    REPEAT     = "Repeat"
+    FOR_EACH   = "For Each Element"
+
+    __slots__ = ('_socket', '_input_node', '_output_node', '_name', '_done', '_in_zone')
+
+    def __init__(self, socket: Socket, node: Node):
+        """ Wrap the nodes creation within a zone.
+
+        The ZoneIterator wraps a pair of nodes forming a zone : Simulation, Repeat, For Each, Closure.
+
+        The iteration contains exactly one iteration in order to generate the nodes only once.
+
+        The first call to __next__ method pushes the input and output nodes in order to capture inputs and outputs.
+        The second call pops the i/o capture and raises StopIteration.
+
+        The iterator returns itself as it exposes the nodes sockets:
+        - During the iteration, the input sockets are the ones of the output node and the output sockets are
+          the ones of the input node.
+        - Outside the iteration, the input sockets are the ones of the input node and the output sockets are
+          the ones of the output node.
+
+        ``` python
+        geo = Geometry()
+        for sim in geo.simulation(A=1.0):
+            
+            # Output sockets come from input node
+            a = sim.a
+
+            # Sockets creation is captured
+            # A new simulation socket named B is created
+            b = Float(2.0, name="B")
+
+            # Input sockets come from output node
+            sim.a = a + b
+
+            # Output is captured
+            sim.b = a - b
+            
+            # No socket C was created
+            try:
+                sim.c = 0
+            except AttributeError:
+                print("An error is raised when accessing a non existing socket")
+
+            # Within the loop, geo socket comes from input node
+            # 
+            geo.position += a
+
+            # Default output geometry is in output node
+            geo.out()
+
+        # Outside the loop, geometry is now the output node output geometry
+        # The zone output sockets can be accessed from simulation
+        geo.position += sim.a
+
+        geo.out()
+        ```
+
+        Arguments
+        ---------
+        - socket (Socket) : the socket to loop on
+        - node (Node) : a valid zone output node
+        """
+
+        node_id       = node._bnode.bl_idname
+
+        if node_id == 'GeometryNodeRepeatOutput':
+            self._name = ZoneIterator.REPEAT
+
+        elif node_id == 'GeometryNodeSimulationOutput':
+            self._name = ZoneIterator.SIMULATION
+
+        elif node_id == 'GeometryNodeForeachGeometryElementOutput':
+            self._name = ZoneIterator.FOR_EACH
+
+        else:
+            raise RuntimeError(f"ZoneIterator must be initialized with a 'Repeat', 'Simulation' or 'For Each Element' output node, not {node}.")
+
+        self._socket        = socket
+        self._output_node   = node
+        self._input_node    = node._paired_input_node
+        self._done          = False
+        self._in_zone       = False
+
+    def __str__(self):
+        return f"<ZoneIterator {self._name}, in_zone: {self._in_zone}, done: {self._done}>"
+
+    # ====================================================================================================
+    # Iteration
+    # ====================================================================================================
+
+    def __iter__(self):
+
+        self._done = False
+        self._output_node._push_paired()
+
+        if self._socket is not None:
+
+            if self._name == ZoneIterator.REPEAT:
+                self._socket._jump(self._input_node._bnode.outputs[1])
+
+            elif self._name == ZoneIterator.SIMULATION:
+                self._socket._jump(self._input_node._bnode.outputs[1])
+
+            elif self._name == ZoneIterator.FOR_EACH:
+                self._socket._jump(self._input_node._bnode.outputs[1])
+
+            else:
+                assert False
+
+        return self
+
+    def __next__(self):
+        if self._done:
+            self._output_node._pop_paired()
+            self._socket._jump(self._output_node._out)
+            self._in_zone = False
+
+            raise StopIteration
+        
+        else:
+            self._done = True
+            self._in_zone = True
+            return self
+        
+    # ====================================================================================================
+    # Attributes
+    # ====================================================================================================
+
+    def __setattr__(self, name, value):
+        if name in ZoneIterator.__slots__:
+            super().__setattr__(name, value)
+            return
+        
+        if self._in_zone:
+            setattr(self._output_node, name, value)
+        else:
+            setattr(self._input_node, name, value)
+
+    def __getattr__(self, name):
+        if self._in_zone:
+            return getattr(self._input_node, name)
+        else:
+            return getattr(self._output_node, name)
+
           
 
 # ====================================================================================================
@@ -1888,6 +1960,8 @@ class Group(Node):
         # ----------------------------------------------------------------------------------------------------
 
         super().__init__('Group', named_sockets=named_sockets, node_tree=node_tree, **sockets)
+
+
 
     # ----------------------------------------------------------------------------------------------------
     # Prefixed instantiation
@@ -1982,7 +2056,7 @@ class G:
             node = Group("Deform Function", geometry=Mesh.Cube(), position = nd.position, parameter = 3.14)
         ```
 
-        The clas G provides a functional interface for the node. You simply use the snake case version
+        The class G provides a functional interface for the node. You simply use the snake case version
         of the node name:
 
         ``` python
@@ -2080,7 +2154,8 @@ class G:
         # ---------------------------------------------------------------------------
 
         signature = TreeInterface(btree).get_signature()
-        sock_names = [utils.snake_case(name) for name in signature.inputs.keys()]
+        #sock_names = [utils.snake_case(name) for name in signature.inputs.keys()]
+        sock_names = [utils.snake_case(d['name']) for d in signature.inputs]
 
         if False:
             # ----- Input node

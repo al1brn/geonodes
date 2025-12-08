@@ -625,3 +625,36 @@ class Vector(generated.Vector):
         """
         node = Node('Vector Transform', {'Vector': self}, convert_from=convert_from, convert_to=convert_to, vector_type=vector_type)
         return node._out
+
+
+    # ====================================================================================================
+    # Class test    
+    # ====================================================================================================
+
+    @classmethod
+    def _class_test(cls):
+
+        from geonodes import GeoNodes, Mesh, Layout, Rotation, Vector, G, Float, Input, pi
+
+        with GeoNodes("Vector Test") as tree:
+            
+            
+            with Layout("Base"):
+                a = Vector()
+                a += Vector((1, 2, 3))
+                a *= Vector((2, 3, 4), name="Vector")
+                a = a.mix(Vector.Translation(1, name="Translate"), factor=Input("Factor", subtype="Percentage", default=.5, min=0, max=100))
+                
+            with Layout("Named Attribute"):
+                g = Mesh()
+                g.points.The_Vector = a
+                
+                a = Vector("The Vector")
+                a += G().combine_cylindrical(r=10, phi=Input("Phi", subtype="Angle"), z=3)
+                g.points.The_Vector = a
+                
+            a.separate_xyz().out(panel="xyz")
+            
+            
+            g.out()
+                

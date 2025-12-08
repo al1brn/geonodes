@@ -828,7 +828,8 @@ class TreeInterface:
 
             # Could fail for default_value (Menu for instance)
             if True:
-                setattr(socket, prop, value)
+                if value is not None:
+                    setattr(socket, prop, value)
             else:
                 try:
                     setattr(socket, prop, value)
@@ -1129,13 +1130,8 @@ class TreeInterface:
         parent = self.get_panel(parent)
         parent_path = ItemPath(parent)
         for socket in self.iterate(in_out, socket_type=socket_type, panels=False, parent=parent):
-            if True:
-                if name in (ItemPath(socket) - parent_path).get_names(True):
-                    sockets.append(socket)
-            else:
-                names = self.get_python_names(socket, parent=parent)
-                if name in names:
-                    sockets.append(socket)
+            if name in (ItemPath(socket) - parent_path).get_names(True, True):
+                sockets.append(socket)
 
         if return_all:
             return sockets

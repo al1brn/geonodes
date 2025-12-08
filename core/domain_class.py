@@ -49,6 +49,7 @@ from . import utils
 from .sockettype import SocketType
 from .treeclass import Tree, Layout
 from .nodeclass import Node
+from .nodezone import ZoneNode, ZoneIterator
 from .socket_class import NodeCache, Socket
 from .geom import Geom
 from .geometry_class import Geometry
@@ -301,3 +302,39 @@ class Domain(Geom, NodeCache):
         - Node or Socket
         """
         return self.capture_attribute(attribute=attribute, **attributes)
+    
+    # ====================================================================================================
+    # Loop
+    # ====================================================================================================
+
+    def for_each_element(self, named_sockets: dict={}, **sockets):
+        """ Simulation zone
+
+        Arguments
+        ---------
+        - named_socket (dict) : named sockets
+        - sockets (dict) : other sockets
+
+        Returns
+        -------
+        - ZoneIterator
+        """
+
+        # Selecton socket
+        if "selection" not in [k.lower() for k in {**named_sockets, **sockets}.keys()]:
+            named_sockets = {"Selection": self.get_selection(), **named_sockets}
+
+        # Node Zone
+        node = ZoneNode('For Each Element', self._geo, named_sockets=named_sockets, domain=self.DOMAIN_NAME, **sockets)
+
+        return ZoneIterator(self, node)
+
+    def for_each(self, named_sockets: dict={}, **sockets):
+        return self.for_each_element(named_sockets=named_sockets, **sockets)
+    
+    def foreach(self, named_sockets: dict={}, **sockets):
+        return self.for_each_element(named_sockets=named_sockets, **sockets)
+    
+    
+
+            

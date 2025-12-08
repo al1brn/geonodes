@@ -115,7 +115,7 @@ if PRODUCTION:
     from .core import Mesh, Curve, Cloud, Instances, GreasePencil, Volume
 
     from .core import Layout, Panel, Tree, Node, Group, GroupF, G, ColorRamp
-    from .core import Zone, Repeat, Simulation, ForEachElement
+    #from .core import Zone, Repeat, Simulation, ForEachElement
     from .core import Closure, Bundle
 
     from .core import GeoNodes

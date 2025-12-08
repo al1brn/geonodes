@@ -42,6 +42,7 @@ from .scripterror import NodeError
 
 from . import utils
 from .nodeclass import Node
+from .nodezone import ZoneNode
 from .socket_class import Socket
 from .signature import Signature
 from . import generated
@@ -86,7 +87,8 @@ class Closure(generated.Closure):
             if name is None:
 
                 # Creating the output closure node will create the paired input node
-                node = Node('NodeClosureOutput')
+                #node = Node('NodeClosureOutput')
+                node = ZoneNode("Closure", None)
                 bsock = node.closure
 
             # ---------------------------------------------------------------------------
@@ -94,7 +96,7 @@ class Closure(generated.Closure):
             # ---------------------------------------------------------------------------
 
             else:
-                bsock = self._create_input_socket(value=value, name=name, tip=tip,
+                bsock = self._create_input_socket(name=name, tip=tip,
                     panel=panel, optional_label=optional_label, hide_value=hide_value,
                     hide_in_modifier=hide_in_modifier)
                 

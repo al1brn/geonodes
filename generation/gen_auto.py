@@ -274,16 +274,17 @@ def generate(folder, sub_folder):
 
             # ----- Value, Name
 
-            if has_default and create_socket:
-                args['value'] = (
-                    f": {ptype} = {def_val}",
-                    f" ({ptype} = {def_val}) : Default value",
-                    'default_value = defval')
-            else:
-                args['value'] = (
-                    f": {ptype} = {def_val}",
-                    f" ({ptype} = {def_val}) : Default value",
-                    'value')
+            if has_default:
+                if create_socket:
+                    args['value'] = (
+                        f": {ptype} = {def_val}",
+                        f" ({ptype} = {def_val}) : Default value",
+                        'default_value = defval')
+                else:
+                    args['value'] = (
+                        f": {ptype} = {def_val}",
+                        f" ({ptype} = {def_val}) : Default value",
+                        'value')
 
             args['name']  = (
                 f": str = '{name}'", 

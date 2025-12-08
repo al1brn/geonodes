@@ -1,4 +1,4 @@
-# Generated 2025-12-07 10:17:11
+# Generated 2025-12-08 08:30:17
 
 from __future__ import annotations
 from .. socket_class import Socket
@@ -50,7 +50,6 @@ class Closure(Socket):
 
     @classmethod
     def _create_input_socket(cls,
-        value: object = None,
         name: str = 'Closure',
         tip: str = '',
         panel: str = "",
@@ -64,7 +63,6 @@ class Closure(Socket):
 
         Aguments
         --------
-        - value  (object = None) : Default value
         - name  (str = 'Closure') : Input socket name
         - tip  (str = '') : Property description
         - panel (str = "") : Panel name
@@ -78,7 +76,6 @@ class Closure(Socket):
         """
         from ..treeclass import Tree
 
-        return Tree.current_tree().create_input_socket('NodeSocketClosure', value=value, name=name, tip=tip,
-            panel=panel, optional_label=optional_label, hide_value=hide_value,
-            hide_in_modifier=hide_in_modifier)
+        return Tree.current_tree().create_input_socket('NodeSocketClosure', name=name, tip=tip, panel=panel,
+            optional_label=optional_label, hide_value=hide_value, hide_in_modifier=hide_in_modifier)
 

@@ -1,4 +1,4 @@
-# Generated 2025-12-07 10:17:11
+# Generated 2025-12-08 08:30:17
 
 from __future__ import annotations
 from .. socket_class import Socket
@@ -667,7 +667,6 @@ class Matrix(Socket):
 
     @classmethod
     def _create_input_socket(cls,
-        value: object = ((1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1)),
         name: str = 'Matrix',
         tip: str = '',
         panel: str = "",
@@ -684,7 +683,6 @@ class Matrix(Socket):
 
         Aguments
         --------
-        - value  (object = ((1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1))) : Default value
         - name  (str = 'Matrix') : Input socket name
         - tip  (str = '') : Property description
         - panel (str = "") : Panel name
@@ -701,8 +699,7 @@ class Matrix(Socket):
         """
         from ..treeclass import Tree
 
-        return Tree.current_tree().create_input_socket('NodeSocketMatrix', value=value, name=name, tip=tip,
-            panel=panel, optional_label=optional_label, hide_value=hide_value,
-            hide_in_modifier=hide_in_modifier, default_attribute=default_attribute, default_input=default_input,
-            shape=shape)
+        return Tree.current_tree().create_input_socket('NodeSocketMatrix', name=name, tip=tip, panel=panel,
+            optional_label=optional_label, hide_value=hide_value, hide_in_modifier=hide_in_modifier,
+            default_attribute=default_attribute, default_input=default_input, shape=shape)
 

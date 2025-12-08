@@ -121,7 +121,7 @@ class Bundle(generated.Bundle):
             if name is None:
                 bsock = Node("Combine Bundle")._out
             else:
-                bsock = self._create_input_socket(value=value, name=name, tip=tip,
+                bsock = self._create_input_socket(name=name, tip=tip,
                     panel=panel, optional_label=optional_label, hide_value=hide_value,
                     hide_in_modifier=hide_in_modifier)
 

@@ -85,7 +85,7 @@ class Collection(generated.Collection):
                 bsock = Node('Collection', collection=coll)._out
 
             else:
-                bsock = self._create_input_socket(value=value, name=name,
+                bsock = self._create_input_socket(name=name,
                     tip=tip, panel=panel, optional_label=optional_label, hide_value=hide_value,
                     hide_in_modifier=hide_in_modifier)
 

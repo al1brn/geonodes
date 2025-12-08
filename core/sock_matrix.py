@@ -109,7 +109,7 @@ class Matrix(generated.Matrix):
                     sockets = {}
                 bsock = Node('Combine Matrix', sockets)._out
             else:
-                bsock = self._create_input_socket(value=value, name=name, tip=tip,
+                bsock = self._create_input_socket(name=name, tip=tip,
                     panel=panel, optional_label=optional_label, hide_value=hide_value,
                     hide_in_modifier=hide_in_modifier, default_attribute=default_attribute, default_input=default_input,
                     shape=shape)
@@ -178,7 +178,6 @@ class Matrix(generated.Matrix):
                 M1 = Matrix(vals)
                 
                 M @= M1
-                
                 
             with Layout("Named Attribute"):
                 g = Mesh()

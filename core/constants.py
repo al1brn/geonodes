@@ -93,6 +93,17 @@ AUTO_INPUT_TYPE_NODES = [
     'GeometryNodeSwitch',    
 ]
 
+# ====================================================================================================
+# Paired nodes
+# ====================================================================================================
+
+PAIRED_NODES = {
+	'GeometryNodeRepeatOutput' 					: 'GeometryNodeRepeatInput',
+	'GeometryNodeSimulationOutput' 				: 'GeometryNodeSimulationInput',
+	'GeometryNodeForeachGeometryElementOutput' 	: 'GeometryNodeForeachGeometryElementInput',
+	'NodeClosureOutput'							: 'NodeClosureInput',
+}
+
 
 # =============================================================================================================================
 # Node bl_idname from node name

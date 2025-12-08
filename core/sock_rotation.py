@@ -45,6 +45,7 @@ from typing import Literal
 
 
 from . import utils
+from .sockettype import SocketType
 from .nodeclass import Node
 from .socket_class import Socket
 from . import generated
@@ -121,7 +122,7 @@ class Rotation(generated.Rotation):
     # Operations
 
     def __matmul__(self, other):
-        data_type = utils.get_value_socket_type(other, ['ROTATION', 'VECTOR'], ['VECTOR'])
+        data_type = SocketType(other).type
         if data_type == 'ROTATION':
             return self.rotate_global(other)
         else:
@@ -137,15 +138,16 @@ class Rotation(generated.Rotation):
     @classmethod
     def _class_test(cls):
 
-        from geonodes import GeoNodes, Mesh, Layout, Rotation, G, Float
+        from geonodes import GeoNodes, Mesh, Layout, Rotation, G, Float, Input, pi
 
         with GeoNodes("Rotation Test") as tree:
             
+            
             with Layout("Base"):
                 a = Rotation() @ Rotation((1, 2, 3))
-                a = a.mix(Rotation(1, name="Your entry"), tree.new_input("Factor"))
-                b = G().random_rotation().align_to_vector(tree.new_input("Vector"))
-                c = Rotation.FromAxisAngle(axis=tree.new_input("Axis"), angle=Float.Angle(name="Angle"))
+                a = a.mix(Rotation(1, name="Your entry"), Input("Factor", subtype="Factor", min=0, max=1))
+                b = G().random_rotation(max_zenith=pi/2).align_to_vector(Input("Vector"))
+                c = Rotation.FromAxisAngle(axis=Input("Axis"), angle=Float.Angle(name="Angle"))
                 b = b @ c
                 
             with Layout("Named Attribute"):
@@ -158,4 +160,3 @@ class Rotation(generated.Rotation):
             b.to_quaternion().node.out(panel="Quaternion")
                 
             g.out()
-
