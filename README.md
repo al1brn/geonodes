@@ -814,31 +814,93 @@ with GeoNodes("Creating Geometries"):
     (cube + mesh + curve + spiral + cube_vol).out()
 ```
 
-### Menu
+### Outing to sockets
 
+As described, the standard syntax to provide values to input sockets of a node, is to use
+argument of a function:
 
+``` python
+    # Create a circle
+    profile = Curve.Circle(radius=.1)
+
+    # Use this profile as value for 'Profile Curve' socket of node 'Curve to Mesh'
+    spiral = Curve.Spiral().to_mesh(profile_curve=profile)
+
+    # Resulting mesh as group output
+    spiral.out()
+```
+
+Another way to set values to input socket is to temporarily set the node as current
+output node, replacing the the Group Output None. This is done using the ***with*** context
+as shown below.
+
+``` python
+    # Create a circle
+    profile = Curve.Circle(radius=.1)
+
+    # Use this profile as value for 'Profile Curve' socket of node 'Curve to Mesh'
+    with Curve.Spiral().to_mesh() as spiral:
+        profile.out("Profile Curve)
+
+    # Resulting mesh as group output
+    spiral.out()
+```
+
+This alternative can be easier to read for complex nodes. It can be used with menu likes nodes:
 
 ``` python
 from geonodes import *
 
-with GeoNodes("Menu Demo"):
+with GeoNodes("Menu Demo") as tree:
     
-    # Integer menu for subdivision
+    # ----------------------------------------------------------------------------------------------------
+    # Geometries are provided as method arguments
+    # ----------------------------------------------------------------------------------------------------
     
-    sub = Integer.MenuSwitch(items={'Low':1, 'Medium':3, 'High':6}, menu='Medium', name="Subdivision")
+    simple = Geometry().menu_switch("Input", {
+        "Cube": Mesh.Cube(),
+        "Ico": Mesh.IcoSphere(),
+        "Cone": Mesh.Cone(), 
+        },
+        menu=Input("Simple Mesh", default="Ico"), 
+        )
+
+    # ----------------------------------------------------------------------------------------------------
+    # Here, the geometries are successfully adeed, making the source code clearer
+    # ----------------------------------------------------------------------------------------------------
+        
+    profile = Curve.Circle(radius=.1)
+        
+    with Geometry.MenuSwitch() as from_curve:
+        simple.out("Simple Mesh")
+        
+    with from_curve:
+        Curve.Spiral().to_mesh(profile_curve=profile).out("Spiral")
+        
+    with from_curve:
+        Curve.Circle().to_mesh(profile_curve=profile).out("Circle")
+        
+    from_curve.node.menu = Input("From Curve", default="Simple Mesh")
     
-    # The possible geometries
+    # ----------------------------------------------------------------------------------------------------
+    # Same for Index switch
+    # ----------------------------------------------------------------------------------------------------
     
-    cube  = Mesh.Cube().subdivide(sub)
-    ico   = Mesh.IcoSphere(subdivisions=sub)
-    cyl   = Mesh.Cylinder().subdivide(sub)
+    curve = Curve.IndexSwitch(index=Input("Curve Index"))
+    with curve:
+        Curve.Spiral().out()
+        
+    with curve:
+        Curve.Circle().out()
+        
+    with curve:
+        Curve.Quadrilateral().out()
+        
+    # ----------------------------------------------------------------------------------------------------
+    # Switch
+    # ----------------------------------------------------------------------------------------------------
     
-    # Select the one to display
-    
-    geo = Geometry.MenuSwitch(items={'Cube': cube, 'Ico Sphere': ico, 'Cylinder': cyl}, name='Geometry', menu='Cube')
-    
-    # Output
-    geo.out()
+    curve.switch(Input("Mesh/Curve"), from_curve).out()
 ```
 
 ## Group Outputs
