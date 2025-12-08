@@ -793,25 +793,30 @@ If the name is not passed as key word argument, the default name is used.
 import bpy
 from geonodes import *
 
-with GeoNodes("Returned Values"):
-    
+with GeoNodes("Creating Geometries"):
+
+    # Geometry group input node is used if it exists,
+    # Otherwise a group input node named 'Mesh' is created
+    mesh = Mesh()
+
     # Node 'Cube'
     cube = Mesh.Cube()
 
-    # Geometry group input node is used if it exists,
-    # otherwise a group input node named 'Mesh' is created
-    mesh = Mesh()
-
-    # Other geometries can be created
+    # In Groups, other geometries can be created
     curve = Curve(name="Curve")
+
+    # Gemetries can be converted
+    spiral = Curve.Spiral().to_mesh(profile_curve=Curve.Circle(radius=.1))
+
+    # Volume
+    cube_vol = Volume.Cube()
     
-    (cube + mesh + curve).out()
+    (cube + mesh + curve + spiral + cube_vol).out()
 ```
 
 ### Menu
 
-By exception, **Menu** special socket can't be instantiated directly.
-To create a menu, use the constructor **MenuSwitch** on the desired class as shown below:
+
 
 ``` python
 from geonodes import *
