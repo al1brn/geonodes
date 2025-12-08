@@ -996,26 +996,35 @@ The closure separation is made using the **separate** method. This method
 takes a **signature** argument which is a dict describing the closure inputs and outputs.
 
 ``` python
+with GeoNodes("Closure"):
+
     # Create a closure adding to two entris 
     with Closure() as cl:
         a = Float(1.0, "A")
         b = Float(1.0, "B")
         (a + b).out("Sum")
 
-    # If separated immediately, the signature is read from the previous nodes.
-    cl.separate().node.out(panel = "Separate 0")
+    print("DEBUG CL", cl)
+    print("OTHER", cl.evaluate())
 
-    # We can read the closure signature for future use
+    # If evaluated immediately, the signature is read from the previous nodes.
+    cl.evaluate().out(panel = "Separate 0")
+
+    # We can get the closure signature for future use
     sig = cl.get_signature()
 
-    # We can separate a closure using this signature
+    # We can evaluated a closure using this signature
     cl1 = Closure(name="Closure 1")
-    cl1.separate(signature=sig).node.out(panel="Signature 1")
+    cl1.evaluate(signature=sig).out(panel="Signature 1")
 
-    # We can separate another closure using a manual signature
+    # We can evaluated another closure using a manual signature:
+    # a couple of dicts for input and output
+    sig = (
+        {'A': 'Float', 'B': 'Float'},
+        {'Sum': 'Float'})
+
     cl2 = Closure(name="Closure 2")
-    sig = {'INPUT': {'A': 'Float, 'B': 'Float'}, 'OUTPUT': {'Sum': 'Float'}}
-    cl2.separate(signature=sig).node.out(panel="Signature 2")
+    cl2.evaluate(signature=sig).out(panel="Signature 2")
 ```
 
 
