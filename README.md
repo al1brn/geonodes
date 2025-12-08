@@ -555,7 +555,7 @@ with GeoNodes("Argument names"):
     # ----------------------------------------------------------------------------------------------------
     # RULE B : sockets ordered as in the node, parameters are placed after
 
-    sphere.merge_by_distance(.1, 'ALL')
+    sphere.merge_by_distance(distance=.1, mode='All')
 
     # ----------------------------------------------------------------------------------------------------
     # RULE C : Selection socket is set by item index
@@ -570,7 +570,7 @@ with GeoNodes("Argument names"):
     #
     # Node 'Merge by Distance' owns a parameter named 'mode'
 
-    sphere.merge_by_distance(mode='ALL')
+    sphere.merge_by_distance(mode='All')
 
     # ----------------------------------------------------------------------------------------------------
     # RULE E : domain parameter is taken from the calling domain
@@ -604,7 +604,7 @@ with GeoNodes("Argument names"):
     col = col1.mix_multiply(col2)
     col = col1.mix_burn(col2)
 
-    sphere.out()
+    sphere.out()   
 ```
 
 ### Returned values
@@ -614,9 +614,8 @@ The general rule is that the methods return the first output socket of the node.
 When the node has other output sockets, they can be accessed in two ways:
 - using the **node** property of the returned socket: ``` a = socket.node.xxx ```
 - or using the **peer sockets naming convention** which exposes peer output sockets
-  as properties of the socket itself. In that case, the peer socket name is the
-  _snake_case_ name of the socket followed by char `_` to avoid name collision:
-  ` a = socket.xx_ `.
+  as properties of the socket itself. In that case, if the name of the peer output
+  socket interfers with another socket property, you can suffix the name with '_'.
 
 The example below illustrates how to access output sockets:
 
@@ -625,9 +624,10 @@ from geonodes import *
 
 with GeoNodes("Returned Values"):
 
-    # ----------------------------------------------------------------------------------------------------
+    # ---------------------------------------------------------------------------
     # Simple example
-    #
+    # ---------------------------------------------------------------------------
+
     #  Node 'Cube' returns two output sockets:
     # - Mesh
     # - UV Map
@@ -635,22 +635,49 @@ with GeoNodes("Returned Values"):
 
     cube = Mesh.Cube()
     
-    # The following line is equivalent to
-    # uv_map = cube.node.uv_map
-    uv_map = cube.uv_map_
-    
-    # Store the uv map using the store method which is a shortcut
-    # store_named_attribute
-    
-    cube.corners.store("UV Map", uv_map)
-    
-    # You can also used the method dedicated to store uv maps as 2-vectors
-    # rather than standard vectors
-    cube.corners.store_uv("UV2", uv_map)
+    # The following lines are equivalent
+    uv_map = cube.node.uv_map
+    uv_map = cube.uv_map
 
-    # ----------------------------------------------------------------------------------------------------
-    # Advanced example
-    #
+    # ---------------------------------------------------------------------------
+    # Reading info
+    # ---------------------------------------------------------------------------
+    
+    # The returned socket is the first one: point_count
+    # Let's name if info for the sake of clarity
+    info = cube.domain_size()
+
+    # The other socket can be read
+    face_count = info.face_count
+    edge_count = info.edge_count
+
+    # Peer sockets can be read from any socket
+    point_count = face_count.point_count
+    # The two sockets wrap the same blender socket
+    assert info._bsocket == point_count._bsocket
+
+    # ---------------------------------------------------------------------------
+    # Names collision
+    # ---------------------------------------------------------------------------
+
+    # The returned socket is the first one : 'Transform'
+    # Let's name if info for the ssake of clarity
+    transfo = nd.self_object.info()
+
+    # Location peer socket
+    loc = transfo.location
+
+    # But rotation and scale are properties of Transformation class
+    rot0 = transfo.rotation # rotation property of transfo
+
+    # To read the peer socket, we need to suffix the name with _
+    rot1 = transfo.rotation_
+    assert rot0._bsocket != rot1._bsocket
+
+    # ---------------------------------------------------------------------------
+    # Example
+    # ---------------------------------------------------------------------------
+
     #  Node 'Extrude Mesh' returns three output sockets:
     # - Mesh
     # - Top
@@ -666,7 +693,7 @@ with GeoNodes("Returned Values"):
 
     # --- ico.top_ is needed twice, let's use an intermediary variable
 
-    top = ico.top_
+    top = ico.top
     ico.faces[top].scale(scale=.5)
 
     # Another extrusion
@@ -674,13 +701,13 @@ with GeoNodes("Returned Values"):
 
     # --- Let's now dig the sides
 
-    ico.faces[ico.side_].extrude(offset_scale=0)
-    top = ico.top_
+    ico.faces[ico.side].extrude(offset_scale=0)
+    top = ico.top
     ico.faces[top].scale(.8)
     ico.faces[top].extrude(offset_scale=-.01)
 
     # Output
-    (ico + cube.set_position(offset=(5, 0, 0))).out()        
+    (ico + cube.set_position(offset=(5, 0, 0))).out()                    
 ```
 
 ## Class instantiation and Group Inputs
@@ -688,31 +715,9 @@ with GeoNodes("Returned Values"):
 ### Basic classes
 
 Basically the **GeoNodes** classes are instantiated using the default constructor.
-The code below creates four inputs nodes:
-
-<img src="doc/images/input_nodes.png" class="center">
-
-``` python
-# The following instructions create the corresponding input nodes
-float = Float(10)
-vector = Vector((1, 2, 3))
-color = Color((.1, .2, .3))
-string = String("A String")
-```
-
 The optional **name** argument is used to create a Group Input socket.
-The initialization value is used as default value.
-The code below creates four group input sockets:
 
-<img src="doc/images/group_inputs_1.png" class="center">
-
-``` python
-# The following instructions create the corresponding input nodes
-float = Float(10, name="Float Parameter"")
-vector = Vector((1, 2, 3), name="Vector Parameter")
-color = Color((.1, .2, .3), name="Color Parameter")
-string = String("A String", name="String Parameter")
-```
+See the examples in [How it works](#how_it_works)
 
 Additional parameters can be passed depending on the type of input:
 - ***tip*** for description
@@ -746,7 +751,7 @@ Inputs can be placed into a panel in two ways:
 ``` python
 from geonodes import *
 
-with GeoNodes("Returned Values"):
+with GeoNodes("Panels"):
     
     # Create two options in a panel named Options
 
@@ -755,8 +760,14 @@ with GeoNodes("Returned Values"):
         subdiv = Integer(1, "Subdivision", 0, 5)
         
     # Create a third value in this panel using the argument syntax
-    
     change_mat = Boolean(True, "Change Material", panel="Options")
+
+    # Methods can be combined
+    with Panel("Options"):
+        count = Integer(5, "Count", 1, 10, panel="Sub options")
+
+    # The panels can be chained with > char
+    Factor = Float.Factor(.5, "Factor", 0, 1, panel="Options > Sub options")
 ```
 
 ### Blender resources
