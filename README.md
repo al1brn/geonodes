@@ -118,7 +118,7 @@ The method returns a class refering to one of its output socket, or, rarely, to 
 ``` python
 from geonodes import *
 
-with GeoNodes("Doc Socket Init"):
+with GeoNodes("Socket Init"):
 
     # Get the Group Input geometry
     geometry = Geometry()
@@ -217,7 +217,7 @@ Math functions are named after their standard name in python **math** module.
 > All bitwise **Integer** operations are prefixed with *bw_*
 
 ``` python
-    with GeoNodes("Doc gnmath"):
+    with GeoNodes("gnmath"):
         a = Float(1)
         b = gnmath.sin(a)
         
@@ -749,7 +749,7 @@ factor = Float.Factor(.5, "Factor", 0, 1, "Modification factor")
 The special class ***Input** can be used as function argument to get the argument value from Group input as shown below:
 
 ``` python
-with GeoNodes("Doc Input"):
+with GeoNodes("Input"):
 
     # ---------------------------------------------------------------------------
     # Initial creation
@@ -1214,7 +1214,7 @@ from geonodes import *
 with GeoNodes("A Function", is_group=True):
     (Float(0, "Value 1") + Float(0, "Value 2")).out("Sum")
 
-with GeoNodes("Doc A Function is called"):
+with GeoNodes("A Function is called"):
 
     a, b = 1, 2
 
@@ -1265,7 +1265,7 @@ One can even further shorten the syntax by instantating a new class with an attr
 ``` python
 from geonodes import *
 
-with GeoNodes("Doc Named Attributes"):
+with GeoNodes("Named Attributes"):
     
     cube = Mesh.Cube()
     
