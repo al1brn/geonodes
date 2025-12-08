@@ -1004,9 +1004,6 @@ with GeoNodes("Closure"):
         b = Float(1.0, "B")
         (a + b).out("Sum")
 
-    print("DEBUG CL", cl)
-    print("OTHER", cl.evaluate())
-
     # If evaluated immediately, the signature is read from the previous nodes.
     cl.evaluate().out(panel = "Separate 0")
 
@@ -1026,16 +1023,6 @@ with GeoNodes("Closure"):
     cl2 = Closure(name="Closure 2")
     cl2.evaluate(signature=sig).out(panel="Signature 2")
 ```
-
-
-
-
-
-
-        
-
-
-
 
 ### Loops
 
