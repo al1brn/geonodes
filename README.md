@@ -742,6 +742,63 @@ resolution = Integer(2, "Resolution", min=2, max=10, tip="Mesh resolution", sing
 factor = Float.Factor(.5, "Factor", 0, 1, "Modification factor")
 ```
 
+### Forward input
+
+The special class ***Input** can be used as function argument to get the argument value from Group input as shown below:
+
+``` python
+with GeoNodes("Doc Input"):
+
+    # ---------------------------------------------------------------------------
+    # Initial creation
+    # ---------------------------------------------------------------------------
+
+    # Node input sockets can be created first to make clear the interface
+    # of the node
+
+    # ::::: Node inputs
+
+    height = Float(3., "Height", 0, 10)
+
+    with Panel("Helix Params"):
+        resol   = Integer(12, "Resolution", 5, 100)
+        rots    = Float(2, "Rotations", 0.1, 10)
+        radius  = Float(1., "Radius", 0.01, 2)
+
+    # ::::: End of input
+
+    helix = Curve.Spiral(resolution=resol, rotations=rots, start_radius=radius, end_radius=radius,height=height)
+
+    # ---------------------------------------------------------------------------
+    # Using Inputs
+    # ---------------------------------------------------------------------------
+
+    # Input special socket creates a socket of the proper and name and type
+    # In the following exemples, Group Input sockets will be automatically
+    # created for each socket fed by Input()
+
+    with Panel("Cube Params"):
+        cube = Mesh.Cube(size=Input(), vertices_x=Input(), vertices_y=Input(), vertices_z=2)
+
+    # ---------------------------------------------------------------------------
+    # Linking several sockets
+    # ---------------------------------------------------------------------------
+
+    # Use the node method link_inputs to create input sockets without
+    # having to list them
+    # Use include and exclude argument to refine the links
+
+    spiral = Curve.Spiral()
+    # Link all the inputs but the height
+    spiral.node.link_inputs(None, "Spiral", exclude=["Height"])
+    # The height is fixed
+    spiral.height = Float.Input("Height")
+
+    Geometry.join(helix, spiral, cube).out()
+```
+
+
+
 #### Panels
 
 Inputs can be placed into a panel in two ways:
