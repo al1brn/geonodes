@@ -1076,6 +1076,8 @@ The object returned by the iterator exposes the input and output sockets.
 > Outside the ***for*** iteration, the geometry has jumped to the zone output node and cand be used
 > to continue.
 
+#### Simulation
+
 ``` python
 with GeoNodes("Simulation"):
     
@@ -1119,6 +1121,32 @@ with GeoNodes("Simulation"):
     # Outside de the loop, out refers to Group Output Node
     mesh.out()
  ```
+
+#### Repeat
+
+``` python
+with GeoNodes("Repeat"):
+
+    # Parameters
+    levels = Integer(5, "Levels", 1, 10)
+    size = Float(5, "Size", .1, 10)
+    
+    delta = size/levels
+    
+    cube = Mesh.Cube(size=(size, size, 1))
+    
+    for rep in cube.repeat(levels):
+        
+        sz = size - rep.iteration*delta
+        floor = Mesh.Cube(size=(sz, sz, 1))
+        floor.transform(translation=(0, 0, rep.iteration ))
+        
+        (cube + floor).out()
+        
+    cube.out()
+```
+
+#### For Each
 
 
 
