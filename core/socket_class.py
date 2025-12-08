@@ -487,6 +487,7 @@ class Socket(NodeCache):
 
     # ====================================================================================================
     # Dynamic attributes
+    # Can be a peer socket name
     # Can be either a named attribute or a sibling socket
     # - peer socket: _ and a name starting with a Capital
     # - sibling socket : the socket name or socket named ended with _
@@ -496,70 +497,22 @@ class Socket(NodeCache):
     # Get attr
     # ----------------------------------------------------------------------------------------------------
 
-    def __getattr__TEST(self, name):
+    def __getattr__(self, name):
 
-        print("SOCKET GET ATTR", name)
-
-        # ---------------------------------------------------------------------------
-        # Named attribute : _ followed by a capital, e.g. : socket._Attribute
-        # ---------------------------------------------------------------------------
-
-        attr_name = utils.get_attr_name(name)
-        if attr_name is not None:
-            if self.SOCKET_TYPE == 'GEOMETRY':
-                return self._tree.get_named_attribute(prop_name=name)
-            else:
-                raise AttributeError(f"Class '{type(self)}' doesn't support Named Attributes: impossible to get named attribute '{attr_name}' ({name}).")
-
-        # ---------------------------------------------------------------------------
-        # Could by a sibling output socket
-        # ---------------------------------------------------------------------------
-
-        #out_socket = self.node.by_name('OUTPUT', name, as_argument=True, halt=False)
-        #if out_socket is not None:
-        #    return out_socket
-
-        # ---------------------------------------------------------------------------
-        # Sibling socket : ends with _, e.g. : socket.value_
-        # ---------------------------------------------------------------------------
-
-        if len(name) > 1 and name[-2] != '_' and name[-1] == '_':
-            return getattr(self.node, name[:-1])
-
-        # ---------------------------------------------------------------------------
-        # Specific error message for '_out'
-        # ---------------------------------------------------------------------------
-
-        if name == '_out':
-            msg = "Node / Socket confusion: you tried to access to the default output socket of a node, "
-            msg += f"but class {type(self).__name__} is a socket"
-            raise NodeError(msg)
-
-        # ---------------------------------------------------------------------------
-        # Attribute not found
-        # ---------------------------------------------------------------------------
-
-        raise NodeError(f"Class {type(self).__name__} as no property named '{name}'", keyword=name)
-    
-    # ----------------------------------------------------------------------------------------------------
-    # Set attr
-    # ----------------------------------------------------------------------------------------------------
-
-    def __setattr__OLD(self, name, value):
-
-        # Do we keep that complex sttuff ?
-
-        attr_name = utils.get_attr_name(name)
+        peer_name = name
+        if name[-1] == '_':
+            peer_name = name[:-1]
+            if peer_name == "" or peer_name[-1] == '_':
+                raise AttributeError(f"Socket {self} doesn't have peer socket named '{name}'")
+            
+        try:
+            socket = self.node.get_socket('OUTPUT', peer_name, None)
+        except AttributeError as e:
+            raise AttributeError(f"Socket {self} doesn't have peer socket named '{name}'.\n {str(e)}")
         
-        if attr_name is not None:
-            msg = f"Impossible to store named attribute '{attr_name}' ({name}) in class '{type(self).__name__}'"
-            if self.SOCKET_TYPE == 'GEOMETRY':
-                raise NodeError(f"{msg}: named attributes can't be stored directly in geometry, use a domain.",
-                    keyword=(name, attr_name))
-            else:
-                raise NodeError(f"{msg}: only domains support Named Attributes.", keyword=(name, attr_name))
+        return socket
 
-        return super().__setattr__(name, value)
+    
 
     # ====================================================================================================
     # Test a value in a list

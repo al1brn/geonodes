@@ -1,4 +1,4 @@
-# Generated 2025-12-08 08:30:17
+# Generated 2025-12-08 09:52:50
 
 from __future__ import annotations
 from .. socket_class import Socket
@@ -343,10 +343,10 @@ class Color(Socket):
 
         Returns
         -------
-        - node [red (Float), green (Float), blue (Float), alpha (Float)]
+        - Float [green_ (Float), blue_ (Float), alpha_ (Float)]
         """
         node = self._cache('Separate Color', {'Color': self}, mode='RGB')
-        return node
+        return node._out
 
     @property
     def hue(self):

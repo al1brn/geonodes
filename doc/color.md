@@ -1,43 +1,44 @@
 # Color
 
 ``` python
-Color(value=(0.0, 0.0, 0.0, 1.0), name=None, tip=None, panel='', default_attribute='', hide_value=False, hide_in_modifier=False, single_value=False)
+Color(value: geonodes.core.socket_class.Socket | tuple = (0, 0, 0, 1), name: str = None, tip: str = '', panel: str = '', optional_label: bool = False, hide_value: bool = False, hide_in_modifier: bool = False, default_attribute: str = '', shape: Literal['AUTO', 'SINGLE'] = 'AUTO')
 ```
 
 Socket of type COLOR (RGBA)
 
-> Nodes [RGB](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/input/rgb.html) [Combine Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/combine_color.html) [Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/constant/color.html)
+> Nodes ERROR: Node 'RGB' not found [Combine Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/combine_color.html) [Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/constant/color.html)
 
 #### Arguments:
-- **value** (_tuple or Socket_ = (0.0, 0.0, 0.0, 1.0)) : initial value
+- **value** (_geonodes.core.socket_class.Socket | tuple_ = (0, 0, 0, 1)) : initial value
 - **name** (_str_ = None) : Create an Group Input socket with the provided str if not None
-- **tip** (_str_ = None) : User tip (for Group Input sockets)
-- **panel** (_str_ = ) : panel name (overrides tree panel if exists)
-- **default_attribute** (_str_ = ) : default attribute name
-- **hide_value** (_bool_ = False) : Hide Value option
-- **hide_in_modifier** (_bool_ = False) : Hide in Modifier option
-- **single_value** (_bool_ = False) : Single Value option
+- **tip** (_str_ = ) : Property description
+- **panel** (_str_ = ) : Panel name
+- **optional_label** (_bool_ = False) : Property optional_label
+- **hide_value** (_bool_ = False) : Property hide_value
+- **hide_in_modifier** (_bool_ = False) : Property hide_in_modifier
+- **default_attribute** (_str_ = ) : Property default_attribute_name
+- **shape** (_Literal_ = AUTO) : Property structure_type in ('AUTO', 'SINGLE')
 
 ### Inherited
 
-[\_cache](nodecache.md#_cache) :black_small_square: [\_cache_reset](nodecache.md#_cache_reset) :black_small_square: [check_in_list](socket.md#check_in_list) :black_small_square: [data_type](socket.md#data_type) :black_small_square: [\_domain_to_geometry](socket.md#_domain_to_geometry) :black_small_square: [\_geometry_class](socket.md#_geometry_class) :black_small_square: [\_\_getattr__](socket.md#__getattr__) :black_small_square: [get_node_data_type](socket.md#get_node_data_type) :black_small_square: [get_socket_class](socket.md#get_socket_class) :black_small_square: [IndexSwitch](socket.md#indexswitch) :black_small_square: [index_switch](socket.md#index_switch) :black_small_square: [Input](socket.md#input) :black_small_square: [input_type](socket.md#input_type) :black_small_square: [\_interface_socket](socket.md#_interface_socket) :black_small_square: [\_is_group_input](socket.md#_is_group_input) :black_small_square: [\_is_group_output](socket.md#_is_group_output) :black_small_square: [\_is_group_socket](socket.md#_is_group_socket) :black_small_square: [\_jump](socket.md#_jump) :black_small_square: [\_lc](socket.md#_lc) :black_small_square: [\_lcop](socket.md#_lcop) :black_small_square: [link_from](socket.md#link_from) :black_small_square: [\_lock](proplocker.md#_lock) :black_small_square: [\_mark_for_delete](socket.md#_mark_for_delete) :black_small_square: [MenuSwitch](socket.md#menuswitch) :black_small_square: [menu_switch](socket.md#menu_switch) :black_small_square: [\_name](socket.md#_name) :black_small_square: [node](socket.md#node) :black_small_square: [node_color](socket.md#node_color) :black_small_square: [node_label](socket.md#node_label) :black_small_square: [option](socket.md#option) :black_small_square: [option_index](socket.md#option_index) :black_small_square: [\_panel_name](socket.md#_panel_name) :black_small_square: [pin_gizmo](socket.md#pin_gizmo) :black_small_square: [\_reset](socket.md#_reset) :black_small_square: [\_run_tests](socket.md#_run_tests) :black_small_square: [\_\_setattr__](socket.md#__setattr__) :black_small_square: [\_set_interface_property](socket.md#_set_interface_property) :black_small_square: [socket_type](socket.md#socket_type) :black_small_square: [\_\_str__](socket.md#__str__) :black_small_square: [Switch](socket.md#switch) :black_small_square: [switch](socket.md#switch) :black_small_square: [switch_false](socket.md#switch_false) :black_small_square: [\_unlock](proplocker.md#_unlock) :black_small_square:
+['_bsocket' not found]() :black_small_square: [\_cache](nodecache.md#_cache) :black_small_square: ['_cached_nodes' not found]() :black_small_square: [\_cache_reset](nodecache.md#_cache_reset) :black_small_square: [check_in_list](core-socke-socket.md#check_in_list) :black_small_square: [\_classes_test](core-socke-socket.md#_classes_test) :black_small_square: [default_value](core-socke-socket.md#default_value) :black_small_square: [\_domain_to_geometry](core-socke-socket.md#_domain_to_geometry) :black_small_square: [\_\_enter__](core-socke-socket.md#__enter__) :black_small_square: [\_\_exit__](core-socke-socket.md#__exit__) :black_small_square: [\_\_getattr__](core-socke-socket.md#__getattr__) :black_small_square: [IndexSwitch](core-socke-socket.md#indexswitch) :black_small_square: [index_switch](core-socke-socket.md#index_switch) :black_small_square: [Input](core-socke-socket.md#input) :black_small_square: [\_interface_socket](core-socke-socket.md#_interface_socket) :black_small_square: [is_grid](core-socke-socket.md#is_grid) :black_small_square: [\_jump](core-socke-socket.md#_jump) :black_small_square: ['_layout' not found]() :black_small_square: [\_lc](core-socke-socket.md#_lc) :black_small_square: [\_lcop](core-socke-socket.md#_lcop) :black_small_square: [link_from](core-socke-socket.md#link_from) :black_small_square: [MenuSwitch](core-socke-socket.md#menuswitch) :black_small_square: [menu_switch](core-socke-socket.md#menu_switch) :black_small_square: [\_name](core-socke-socket.md#_name) :black_small_square: [node](core-socke-socket.md#node) :black_small_square: [node_color](core-socke-socket.md#node_color) :black_small_square: [node_label](core-socke-socket.md#node_label) :black_small_square: [\_panel_name](core-socke-socket.md#_panel_name) :black_small_square: [pin_gizmo](core-socke-socket.md#pin_gizmo) :black_small_square: [\_pop](core-socke-socket.md#_pop) :black_small_square: [\_push](core-socke-socket.md#_push) :black_small_square: [repeat](core-socke-socket.md#repeat) :black_small_square: [\_reset](core-socke-socket.md#_reset) :black_small_square: [simulation](core-socke-socket.md#simulation) :black_small_square: ['_socket_type' not found]() :black_small_square: [\_\_str__](core-socke-socket.md#__str__) :black_small_square: [Switch](core-socke-socket.md#switch) :black_small_square: [switch](core-socke-socket.md#switch) :black_small_square: [switch_false](core-socke-socket.md#switch_false) :black_small_square: ['_tree' not found]() :black_small_square: ['_use_layout' not found]() :black_small_square:
 
 ## Content
 
 - **A** : [alpha](color.md#alpha) :black_small_square: [ambient_occlusion](color.md#ambient_occlusion) :black_small_square: [aov_output](color.md#aov_output) :black_small_square: [Attribute](color.md#attribute)
 - **B** : [background](color.md#background) :black_small_square: [Blackbody](color.md#blackbody) :black_small_square: [blue](color.md#blue) :black_small_square: [blur](color.md#blur) :black_small_square: [Brick](color.md#brick) :black_small_square: [brighter](color.md#brighter) :black_small_square: [brightness_contrast](color.md#brightness_contrast)
-- **C** : [Checker](color.md#checker) :black_small_square: [ColorAttribute](color.md#colorattribute) :black_small_square: [ColorRamp](color.md#colorramp) :black_small_square: [Combine](color.md#combine) :black_small_square: [CombineHSL](color.md#combinehsl) :black_small_square: [CombineHSV](color.md#combinehsv) :black_small_square: [CombineRGB](color.md#combinergb) :black_small_square: [curves](color.md#curves)
+- **C** : [Checker](color.md#checker) :black_small_square: [ColorAttribute](color.md#colorattribute) :black_small_square: [ColorRamp](color.md#colorramp) :black_small_square: [Combine](color.md#combine) :black_small_square: [CombineHSL](color.md#combinehsl) :black_small_square: [CombineHSV](color.md#combinehsv) :black_small_square: [CombineRGB](color.md#combinergb) :black_small_square: [\_create_input_socket](color.md#_create_input_socket) :black_small_square: [curves](color.md#curves)
 - **D** : [darker](color.md#darker)
-- **E** : [equal](color.md#equal)
+- **E** : [enable_output](color.md#enable_output) :black_small_square: [equal](color.md#equal)
 - **F** : [FromShader](color.md#fromshader)
 - **G** : [gamma](color.md#gamma) :black_small_square: [Gradient](color.md#gradient) :black_small_square: [green](color.md#green)
 - **H** : [hash_value](color.md#hash_value) :black_small_square: [hsv](color.md#hsv) :black_small_square: [hue](color.md#hue) :black_small_square: [hue_saturation_value](color.md#hue_saturation_value)
-- **I** : [ImageTexture](color.md#imagetexture) :black_small_square: [\_\_init__](color.md#__init__) :black_small_square: [invert](color.md#invert) :black_small_square: [invert_color](color.md#invert_color)
+- **I** : [\_\_init__](color.md#__init__) :black_small_square: [invert](color.md#invert) :black_small_square: [invert_color](color.md#invert_color)
 - **L** : [lightness](color.md#lightness) :black_small_square: [line_style_output](color.md#line_style_output)
 - **M** : [Magic](color.md#magic) :black_small_square: [mix](color.md#mix) :black_small_square: [mix_add](color.md#mix_add) :black_small_square: [mix_burn](color.md#mix_burn) :black_small_square: [mix_color](color.md#mix_color) :black_small_square: [mix_darken](color.md#mix_darken) :black_small_square: [mix_difference](color.md#mix_difference) :black_small_square: [mix_divide](color.md#mix_divide) :black_small_square: [mix_dodge](color.md#mix_dodge) :black_small_square: [mix_exclusion](color.md#mix_exclusion) :black_small_square: [mix_hue](color.md#mix_hue) :black_small_square: [mix_lighten](color.md#mix_lighten) :black_small_square: [mix_linear_light](color.md#mix_linear_light) :black_small_square: [mix_mix](color.md#mix_mix) :black_small_square: [mix_multiply](color.md#mix_multiply) :black_small_square: [mix_overlay](color.md#mix_overlay) :black_small_square: [mix_saturation](color.md#mix_saturation) :black_small_square: [mix_screen](color.md#mix_screen) :black_small_square: [mix_soft_light](color.md#mix_soft_light) :black_small_square: [mix_subtract](color.md#mix_subtract) :black_small_square: [mix_value](color.md#mix_value)
 - **N** : [Named](color.md#named) :black_small_square: [NamedAttribute](color.md#namedattribute) :black_small_square: [normal_map](color.md#normal_map) :black_small_square: [not_equal](color.md#not_equal)
 - **O** : [out](color.md#out)
-- **R** : [red](color.md#red) :black_small_square: [rgb](color.md#rgb) :black_small_square: [RGB](color.md#rgb) :black_small_square: [rgb_to_bw](color.md#rgb_to_bw)
+- **R** : [red](color.md#red) :black_small_square: [rgb](color.md#rgb) :black_small_square: [rgb_to_bw](color.md#rgb_to_bw)
 - **S** : [saturation](color.md#saturation) :black_small_square: [separate](color.md#separate) :black_small_square: [separate_col](color.md#separate_col) :black_small_square: [separate_col_HSL](color.md#separate_col_hsl) :black_small_square: [separate_col_HSV](color.md#separate_col_hsv) :black_small_square: [separate_color](color.md#separate_color) :black_small_square: [separate_col_RGB](color.md#separate_col_rgb) :black_small_square: [separate_HSL](color.md#separate_hsl) :black_small_square: [separate_HSV](color.md#separate_hsv) :black_small_square: [separate_RGB](color.md#separate_rgb) :black_small_square: [SkyTexture](color.md#skytexture)
 - **T** : [to_bw](color.md#to_bw)
 - **V** : [value](color.md#value) :black_small_square: [vector_displacement](color.md#vector_displacement)
@@ -189,7 +190,7 @@ Shader node Ambient Occlusion.
 > method
 
 ``` python
-aov_output(value=None, aov_name='')
+aov_output(value: 'Float' = None, aov_name='')
 ```
 
 > Node [AOV Output](https://docs.blender.org/manual/en/latest/render/shader_nodes/output/aov.html)
@@ -241,7 +242,7 @@ Shader node Color Attribute.
 > method
 
 ``` python
-background(strength=None)
+background(strength: 'Float' = None)
 ```
 
 > Node ERROR: Node 'Background' not found
@@ -274,7 +275,7 @@ Constructor : Black body.
 
 :sunrise: **ShaderNodes** only
 
-> Node [Blackbody](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../modeling/geometry_nodes/utilities/color/blackbody.html)
+> Node [Blackbody](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../modeling/geometry_nodes/color/blackbody.html)
 
 #### Arguments:
 - **temperature** (_Float_ = None) : socket
@@ -292,7 +293,7 @@ Constructor : Black body.
 > method
 
 ``` python
-blur(iterations=None, weight=None)
+blur(iterations: 'Integer' = None, weight: 'Float' = None)
 ```
 
 > Node [Blur Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/blur_attribute.html)
@@ -320,7 +321,7 @@ blur(iterations=None, weight=None)
 > classmethod
 
 ``` python
-Brick(vector=None, color1=None, color2=None, mortar=None, scale=None, mortar_size=None, mortar_smooth=None, bias=None, brick_width=None, row_height=None, offset=0.5, offset_frequency=2, squash=1.0, squash_frequency=2)
+Brick(vector: 'Vector' = None, color1: 'Color' = None, color2: 'Color' = None, mortar: 'Color' = None, scale: 'Float' = None, mortar_size: 'Float' = None, mortar_smooth: 'Float' = None, bias: 'Float' = None, brick_width: 'Float' = None, row_height: 'Float' = None, offset=0.5, offset_frequency=2, squash=1.0, squash_frequency=2)
 ```
 
 > Node [Brick Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/brick.html)
@@ -354,7 +355,7 @@ Brick(vector=None, color1=None, color2=None, mortar=None, scale=None, mortar_siz
 > method
 
 ``` python
-brighter(b=None)
+brighter(b: 'Color' = None)
 ```
 
 > Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
@@ -409,7 +410,7 @@ Brightness and contrast.
 > classmethod
 
 ``` python
-Checker(vector=None, color1=None, color2=None, scale=None)
+Checker(vector: 'Vector' = None, color1: 'Color' = None, color2: 'Color' = None, scale: 'Float' = None)
 ```
 
 > Node [Checker Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/checker.html)
@@ -478,7 +479,7 @@ Constructor : Color Ramp
 > classmethod
 
 ``` python
-Combine(red=None, green=None, blue=None, alpha=None, mode='RGB')
+Combine(red: 'Float' = None, green: 'Float' = None, blue: 'Float' = None, alpha: 'Float' = None, mode: "Literal['RGB', 'HSV', 'HSL']" = 'RGB')
 ```
 
 > Node [Combine Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/combine_color.html)
@@ -488,7 +489,7 @@ Combine(red=None, green=None, blue=None, alpha=None, mode='RGB')
 - **green** (_Float_ = None) : socket 'Green' (id: Green)
 - **blue** (_Float_ = None) : socket 'Blue' (id: Blue)
 - **alpha** (_Float_ = None) : socket 'Alpha' (id: Alpha)
-- **mode** (_str_ = RGB) : parameter 'mode' in ['RGB', 'HSV', 'HSL']
+- **mode** (_Literal['RGB', 'HSV', 'HSL']_ = RGB) : parameter 'mode' in ['RGB', 'HSV', 'HSL']
 
 
 
@@ -503,7 +504,7 @@ Combine(red=None, green=None, blue=None, alpha=None, mode='RGB')
 > classmethod
 
 ``` python
-CombineHSL(hue=None, saturation=None, lightness=None, alpha=None)
+CombineHSL(hue: 'Float' = None, saturation: 'Float' = None, lightness: 'Float' = None, alpha: 'Float' = None)
 ```
 
 > Node [Combine Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/combine_color.html)
@@ -532,7 +533,7 @@ CombineHSL(hue=None, saturation=None, lightness=None, alpha=None)
 > classmethod
 
 ``` python
-CombineHSV(hue=None, saturation=None, value=None, alpha=None)
+CombineHSV(hue: 'Float' = None, saturation: 'Float' = None, value: 'Float' = None, alpha: 'Float' = None)
 ```
 
 > Node [Combine Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/combine_color.html)
@@ -561,7 +562,7 @@ CombineHSV(hue=None, saturation=None, value=None, alpha=None)
 > classmethod
 
 ``` python
-CombineRGB(red=None, green=None, blue=None, alpha=None)
+CombineRGB(red: 'Float' = None, green: 'Float' = None, blue: 'Float' = None, alpha: 'Float' = None)
 ```
 
 > Node [Combine Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/combine_color.html)
@@ -576,6 +577,49 @@ CombineRGB(red=None, green=None, blue=None, alpha=None)
 - **green** (_Float_ = None) : socket 'Green' (id: Green)
 - **blue** (_Float_ = None) : socket 'Blue' (id: Blue)
 - **alpha** (_Float_ = None) : socket 'Alpha' (id: Alpha)
+
+
+
+#### Returns:
+- **Color** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](color.md#color) :black_small_square: [Content](color.md#content) :black_small_square: [Methods](color.md#methods)</sub>
+
+----------
+### \_create_input_socket()
+
+> classmethod
+
+``` python
+_create_input_socket(value: 'object' = (1, 1, 1), name: 'str' = 'Color', tip: 'str' = '', panel: 'str' = '', optional_label: 'bool' = False, hide_value: 'bool' = False, hide_in_modifier: 'bool' = False, default_attribute: 'str' = '', shape: "Literal['AUTO', 'SINGLE']" = 'AUTO')
+```
+
+> Color Input
+
+New [Color](color.md#color) input with subtype 'NONE'.
+
+Aguments
+--------
+- value  (object = (1, 1, 1)) : Default value
+- name  (str = 'Color') : Input socket name
+- tip  (str = '') : Property description
+- panel (str = "") : Panel name
+- optional_label  (bool = False) : Property optional_label
+- hide_value  (bool = False) : Property hide_value
+- hide_in_modifier  (bool = False) : Property hide_in_modifier
+- default_attribute  (str = '') : Property default_attribute_name
+- shape  (str = 'AUTO') : Property structure_type in ('AUTO', 'SINGLE')
+
+#### Arguments:
+- **value** (_object_ = (1, 1, 1))
+- **name** (_str_ = Color)
+- **tip** (_str_ = )
+- **panel** (_str_ = )
+- **optional_label** (_bool_ = False)
+- **hide_value** (_bool_ = False)
+- **hide_in_modifier** (_bool_ = False)
+- **default_attribute** (_str_ = )
+- **shape** (_Literal['AUTO', 'SINGLE']_ = AUTO)
 
 
 
@@ -625,7 +669,7 @@ A curve is defined by a list of 3-tuples (not list):
 > method
 
 ``` python
-darker(b=None)
+darker(b: 'Color' = None)
 ```
 
 > Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
@@ -649,12 +693,39 @@ darker(b=None)
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](color.md#color) :black_small_square: [Content](color.md#content) :black_small_square: [Methods](color.md#methods)</sub>
 
 ----------
+### enable_output()
+
+> method
+
+``` python
+enable_output(enable: 'Boolean' = None)
+```
+
+> Node [Enable Output](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../interface/controls/nodes/types/output/enable_output.html)
+
+#### Information:
+- **Socket** : self
+- **Parameter** : 'RGBA'
+
+
+
+#### Arguments:
+- **enable** (_Boolean_ = None) : socket 'Enable' (id: Enable)
+
+
+
+#### Returns:
+- **Color** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](color.md#color) :black_small_square: [Content](color.md#content) :black_small_square: [Methods](color.md#methods)</sub>
+
+----------
 ### equal()
 
 > method
 
 ``` python
-equal(b=None, epsilon=None)
+equal(b: 'Color' = None, epsilon: 'Float' = None)
 ```
 
 > Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
@@ -691,7 +762,7 @@ Constructor : Shader to RGB.
 
 :sunrise: **ShaderNodes** only
 
-> Node [Shader to RGB](https://docs.blender.org/manual/en/latest/render/shader_nodes/converter/shader_to_rgb.html)
+> Node [Shader to RGB](https://docs.blender.org/manual/en/latest/render/shader_nodes/color/shader_to_rgb.html)
 
 #### Arguments:
 - **shader** (_Shader_) : socket
@@ -716,7 +787,7 @@ Gamma.
 
 :sunrise: **ShaderNodes** only
 
-> Node [Gamma](https://docs.blender.org/manual/en/latest/render/shader_nodes/color/gamma.html)
+> Node [Gamma](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../modeling/geometry_nodes/color/gamma.html)
 
 #### Arguments:
 - **gamma** (_Float_ = None) : socket
@@ -734,14 +805,14 @@ Gamma.
 > classmethod
 
 ``` python
-Gradient(vector=None, gradient_type='LINEAR')
+Gradient(vector: 'Vector' = None, gradient_type: "Literal['LINEAR', 'QUADRATIC', 'EASING', 'DIAGONAL', 'SPHERICAL', 'QUADRATIC_SPHERE', 'RADIAL']" = 'LINEAR')
 ```
 
 > Node [Gradient Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/gradient.html)
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
-- **gradient_type** (_str_ = LINEAR) : parameter 'gradient_type' in ['LINEAR', 'QUADRATIC', 'EASING', 'DIAGONAL', 'SPHERICAL', 'QUADRATIC_SPHERE', 'RADIAL']
+- **gradient_type** (_Literal['LINEAR', 'QUADRATIC', 'EASING', 'DIAGONAL', 'SPHERICAL', 'QUADRATIC_SPHERE', 'RADIAL']_ = LINEAR) : parameter 'gradient_type' in ['LINEAR', 'QUADRATIC', 'EASING', 'DIAGONAL', 'SPHERICAL', 'QUADRATIC_SPHERE', 'RADIAL']
 
 
 
@@ -756,7 +827,7 @@ Gradient(vector=None, gradient_type='LINEAR')
 > method
 
 ``` python
-hash_value(seed=None)
+hash_value(seed: 'Integer' = None)
 ```
 
 > Node [Hash Value](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/hash_value.html)
@@ -806,52 +877,28 @@ Hue / saturation / value.
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](color.md#color) :black_small_square: [Content](color.md#content) :black_small_square: [Methods](color.md#methods)</sub>
 
 ----------
-### ImageTexture()
-
-> classmethod
-
-``` python
-ImageTexture(image=None, vector=None, frame=None, extension='REPEAT', interpolation='Linear')
-```
-
-> Node [Image Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/image.html)
-
-#### Arguments:
-- **image** (_Image_ = None) : socket 'Image' (id: Image)
-- **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
-- **frame** (_Integer_ = None) : socket 'Frame' (id: Frame)
-- **extension** (_str_ = REPEAT) : parameter 'extension' in ['REPEAT', 'EXTEND', 'CLIP', 'MIRROR']
-- **interpolation** (_str_ = Linear) : parameter 'interpolation' in ['Linear', 'Closest', 'Cubic']
-
-
-
-#### Returns:
-- **Color** :
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](color.md#color) :black_small_square: [Content](color.md#content) :black_small_square: [Methods](color.md#methods)</sub>
-
-----------
 ### \_\_init__()
 
 > method
 
 ``` python
-__init__(value=(0.0, 0.0, 0.0, 1.0), name=None, tip=None, panel='', default_attribute='', hide_value=False, hide_in_modifier=False, single_value=False)
+__init__(value: geonodes.core.socket_class.Socket | tuple = (0, 0, 0, 1), name: str = None, tip: str = '', panel: str = '', optional_label: bool = False, hide_value: bool = False, hide_in_modifier: bool = False, default_attribute: str = '', shape: Literal['AUTO', 'SINGLE'] = 'AUTO')
 ```
 
 Socket of type COLOR (RGBA)
 
-> Nodes [RGB](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../render/shader_nodes/input/rgb.html) [Combine Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/combine_color.html) [Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/constant/color.html)
+> Nodes ERROR: Node 'RGB' not found [Combine Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/combine_color.html) [Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/constant/color.html)
 
 #### Arguments:
-- **value** (_tuple or Socket_ = (0.0, 0.0, 0.0, 1.0)) : initial value
+- **value** (_geonodes.core.socket_class.Socket | tuple_ = (0, 0, 0, 1)) : initial value
 - **name** (_str_ = None) : Create an Group Input socket with the provided str if not None
-- **tip** (_str_ = None) : User tip (for Group Input sockets)
-- **panel** (_str_ = ) : panel name (overrides tree panel if exists)
-- **default_attribute** (_str_ = ) : default attribute name
-- **hide_value** (_bool_ = False) : Hide Value option
-- **hide_in_modifier** (_bool_ = False) : Hide in Modifier option
-- **single_value** (_bool_ = False) : Single Value option
+- **tip** (_str_ = ) : Property description
+- **panel** (_str_ = ) : Panel name
+- **optional_label** (_bool_ = False) : Property optional_label
+- **hide_value** (_bool_ = False) : Property hide_value
+- **hide_in_modifier** (_bool_ = False) : Property hide_in_modifier
+- **default_attribute** (_str_ = ) : Property default_attribute_name
+- **shape** (_Literal_ = AUTO) : Property structure_type in ('AUTO', 'SINGLE')
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](color.md#color) :black_small_square: [Content](color.md#content) :black_small_square: [Methods](color.md#methods)</sub>
 
@@ -886,7 +933,7 @@ Invert.
 > method
 
 ``` python
-invert_color(fac=None)
+invert_color(factor: 'Float' = None)
 ```
 
 > Node [Invert Color](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../editors/texture_node/types/color/invert_color.html)
@@ -897,7 +944,7 @@ invert_color(fac=None)
 
 
 #### Arguments:
-- **fac** (_Float_ = None) : socket 'Fac' (id: Fac)
+- **factor** (_Float_ = None) : socket 'Factor' (id: Fac)
 
 
 
@@ -912,7 +959,7 @@ invert_color(fac=None)
 > method
 
 ``` python
-line_style_output(color_fac=None, alpha=None, alpha_fac=None, blend_type='MIX', is_active_output=True, target='ALL', use_alpha=False, use_clamp=False)
+line_style_output(color_fac: 'Float' = None, alpha: 'Float' = None, alpha_fac: 'Float' = None, blend_type: "Literal['MIX', 'DARKEN', 'MULTIPLY', 'BURN', 'LIGHTEN', 'SCREEN', 'DODGE', 'ADD', 'OVERLAY', 'SOFT_LIGHT', 'LINEAR_LIGHT', 'DIFFERENCE', 'EXCLUSION', 'SUBTRACT', 'DIVIDE', 'HUE', 'SATURATION', 'COLOR', 'VALUE']" = 'MIX', is_active_output=True, target: "Literal['ALL', 'EEVEE', 'CYCLES']" = 'ALL', use_alpha=False, use_clamp=False)
 ```
 
 > Node ERROR: Node 'Line Style Output' not found
@@ -926,9 +973,9 @@ line_style_output(color_fac=None, alpha=None, alpha_fac=None, blend_type='MIX', 
 - **color_fac** (_Float_ = None) : socket 'Color Fac' (id: Color Fac)
 - **alpha** (_Float_ = None) : socket 'Alpha' (id: Alpha)
 - **alpha_fac** (_Float_ = None) : socket 'Alpha Fac' (id: Alpha Fac)
-- **blend_type** (_str_ = MIX) : parameter 'blend_type' in ['MIX', 'DARKEN', 'MULTIPLY', 'BURN', 'LIGHTEN', 'SCREEN', 'DODGE', 'ADD', 'OVERLAY', 'SOFT_LIGHT', 'LINEAR_LIGHT', 'DIFFERENCE', 'EXCLUSION', 'SUBTRACT', 'DIVIDE', 'HUE', 'SATURATION', 'COLOR', 'VALUE']
+- **blend_type** (_Literal['MIX', 'DARKEN', 'MULTIPLY', 'BURN', 'LIGHTEN', 'SCREEN', 'DODGE', 'ADD', 'OVERLAY', 'SOFT_LIGHT', 'LINEAR_LIGHT', 'DIFFERENCE', 'EXCLUSION', 'SUBTRACT', 'DIVIDE', 'HUE', 'SATURATION', 'COLOR', 'VALUE']_ = MIX) : parameter 'blend_type' in ['MIX', 'DARKEN', 'MULTIPLY', 'BURN', 'LIGHTEN', 'SCREEN', 'DODGE', 'ADD', 'OVERLAY', 'SOFT_LIGHT', 'LINEAR_LIGHT', 'DIFFERENCE', 'EXCLUSION', 'SUBTRACT', 'DIVIDE', 'HUE', 'SATURATION', 'COLOR', 'VALUE']
 - **is_active_output** (_bool_ = True) : parameter 'is_active_output'
-- **target** (_str_ = ALL) : parameter 'target' in ['ALL', 'EEVEE', 'CYCLES']
+- **target** (_Literal['ALL', 'EEVEE', 'CYCLES']_ = ALL) : parameter 'target' in ['ALL', 'EEVEE', 'CYCLES']
 - **use_alpha** (_bool_ = False) : parameter 'use_alpha'
 - **use_clamp** (_bool_ = False) : parameter 'use_clamp'
 
@@ -945,7 +992,7 @@ line_style_output(color_fac=None, alpha=None, alpha_fac=None, blend_type='MIX', 
 > classmethod
 
 ``` python
-Magic(vector=None, scale=None, distortion=None, turbulence_depth=2)
+Magic(vector: 'Vector' = None, scale: 'Float' = None, distortion: 'Float' = None, turbulence_depth=2)
 ```
 
 > Node [Magic Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/magic.html)
@@ -969,7 +1016,7 @@ Magic(vector=None, scale=None, distortion=None, turbulence_depth=2)
 > method
 
 ``` python
-mix(b=None, factor=None, clamp_factor=True, clamp_result=False, factor_mode='UNIFORM')
+mix(b: 'Color' = None, factor: 'Float' = None, clamp_factor=True, clamp_result=False, factor_mode: "Literal['UNIFORM', 'NON_UNIFORM']" = 'UNIFORM')
 ```
 
 > Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
@@ -986,7 +1033,7 @@ mix(b=None, factor=None, clamp_factor=True, clamp_result=False, factor_mode='UNI
 - **factor** (_Float_ = None) : socket 'Factor' (id: Factor_Float)
 - **clamp_factor** (_bool_ = True) : parameter 'clamp_factor'
 - **clamp_result** (_bool_ = False) : parameter 'clamp_result'
-- **factor_mode** (_str_ = UNIFORM) : parameter 'factor_mode' in ['UNIFORM', 'NON_UNIFORM']
+- **factor_mode** (_Literal['UNIFORM', 'NON_UNIFORM']_ = UNIFORM) : parameter 'factor_mode' in ['UNIFORM', 'NON_UNIFORM']
 
 
 
@@ -1001,7 +1048,7 @@ mix(b=None, factor=None, clamp_factor=True, clamp_result=False, factor_mode='UNI
 > method
 
 ``` python
-mix_add(b=None, factor=None, clamp_factor=True, clamp_result=False)
+mix_add(b: 'Color' = None, factor: 'Float' = None, clamp_factor=True, clamp_result=False)
 ```
 
 > Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
@@ -1033,7 +1080,7 @@ mix_add(b=None, factor=None, clamp_factor=True, clamp_result=False)
 > method
 
 ``` python
-mix_burn(b=None, factor=None, clamp_factor=True, clamp_result=False)
+mix_burn(b: 'Color' = None, factor: 'Float' = None, clamp_factor=True, clamp_result=False)
 ```
 
 > Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
@@ -1065,7 +1112,7 @@ mix_burn(b=None, factor=None, clamp_factor=True, clamp_result=False)
 > method
 
 ``` python
-mix_color(b=None, factor=None, clamp_factor=True, clamp_result=False)
+mix_color(b: 'Color' = None, factor: 'Float' = None, clamp_factor=True, clamp_result=False)
 ```
 
 > Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
@@ -1097,7 +1144,7 @@ mix_color(b=None, factor=None, clamp_factor=True, clamp_result=False)
 > method
 
 ``` python
-mix_darken(b=None, factor=None, clamp_factor=True, clamp_result=False)
+mix_darken(b: 'Color' = None, factor: 'Float' = None, clamp_factor=True, clamp_result=False)
 ```
 
 > Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
@@ -1129,7 +1176,7 @@ mix_darken(b=None, factor=None, clamp_factor=True, clamp_result=False)
 > method
 
 ``` python
-mix_difference(b=None, factor=None, clamp_factor=True, clamp_result=False)
+mix_difference(b: 'Color' = None, factor: 'Float' = None, clamp_factor=True, clamp_result=False)
 ```
 
 > Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
@@ -1161,7 +1208,7 @@ mix_difference(b=None, factor=None, clamp_factor=True, clamp_result=False)
 > method
 
 ``` python
-mix_divide(b=None, factor=None, clamp_factor=True, clamp_result=False)
+mix_divide(b: 'Color' = None, factor: 'Float' = None, clamp_factor=True, clamp_result=False)
 ```
 
 > Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
@@ -1193,7 +1240,7 @@ mix_divide(b=None, factor=None, clamp_factor=True, clamp_result=False)
 > method
 
 ``` python
-mix_dodge(b=None, factor=None, clamp_factor=True, clamp_result=False)
+mix_dodge(b: 'Color' = None, factor: 'Float' = None, clamp_factor=True, clamp_result=False)
 ```
 
 > Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
@@ -1225,7 +1272,7 @@ mix_dodge(b=None, factor=None, clamp_factor=True, clamp_result=False)
 > method
 
 ``` python
-mix_exclusion(b=None, factor=None, clamp_factor=True, clamp_result=False)
+mix_exclusion(b: 'Color' = None, factor: 'Float' = None, clamp_factor=True, clamp_result=False)
 ```
 
 > Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
@@ -1257,7 +1304,7 @@ mix_exclusion(b=None, factor=None, clamp_factor=True, clamp_result=False)
 > method
 
 ``` python
-mix_hue(b=None, factor=None, clamp_factor=True, clamp_result=False)
+mix_hue(b: 'Color' = None, factor: 'Float' = None, clamp_factor=True, clamp_result=False)
 ```
 
 > Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
@@ -1289,7 +1336,7 @@ mix_hue(b=None, factor=None, clamp_factor=True, clamp_result=False)
 > method
 
 ``` python
-mix_lighten(b=None, factor=None, clamp_factor=True, clamp_result=False)
+mix_lighten(b: 'Color' = None, factor: 'Float' = None, clamp_factor=True, clamp_result=False)
 ```
 
 > Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
@@ -1321,7 +1368,7 @@ mix_lighten(b=None, factor=None, clamp_factor=True, clamp_result=False)
 > method
 
 ``` python
-mix_linear_light(b=None, factor=None, clamp_factor=True, clamp_result=False)
+mix_linear_light(b: 'Color' = None, factor: 'Float' = None, clamp_factor=True, clamp_result=False)
 ```
 
 > Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
@@ -1353,7 +1400,7 @@ mix_linear_light(b=None, factor=None, clamp_factor=True, clamp_result=False)
 > method
 
 ``` python
-mix_mix(b=None, factor=None, clamp_factor=True, clamp_result=False)
+mix_mix(b: 'Color' = None, factor: 'Float' = None, clamp_factor=True, clamp_result=False)
 ```
 
 > Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
@@ -1385,7 +1432,7 @@ mix_mix(b=None, factor=None, clamp_factor=True, clamp_result=False)
 > method
 
 ``` python
-mix_multiply(b=None, factor=None, clamp_factor=True, clamp_result=False)
+mix_multiply(b: 'Color' = None, factor: 'Float' = None, clamp_factor=True, clamp_result=False)
 ```
 
 > Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
@@ -1417,7 +1464,7 @@ mix_multiply(b=None, factor=None, clamp_factor=True, clamp_result=False)
 > method
 
 ``` python
-mix_overlay(b=None, factor=None, clamp_factor=True, clamp_result=False)
+mix_overlay(b: 'Color' = None, factor: 'Float' = None, clamp_factor=True, clamp_result=False)
 ```
 
 > Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
@@ -1449,7 +1496,7 @@ mix_overlay(b=None, factor=None, clamp_factor=True, clamp_result=False)
 > method
 
 ``` python
-mix_saturation(b=None, factor=None, clamp_factor=True, clamp_result=False)
+mix_saturation(b: 'Color' = None, factor: 'Float' = None, clamp_factor=True, clamp_result=False)
 ```
 
 > Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
@@ -1481,7 +1528,7 @@ mix_saturation(b=None, factor=None, clamp_factor=True, clamp_result=False)
 > method
 
 ``` python
-mix_screen(b=None, factor=None, clamp_factor=True, clamp_result=False)
+mix_screen(b: 'Color' = None, factor: 'Float' = None, clamp_factor=True, clamp_result=False)
 ```
 
 > Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
@@ -1513,7 +1560,7 @@ mix_screen(b=None, factor=None, clamp_factor=True, clamp_result=False)
 > method
 
 ``` python
-mix_soft_light(b=None, factor=None, clamp_factor=True, clamp_result=False)
+mix_soft_light(b: 'Color' = None, factor: 'Float' = None, clamp_factor=True, clamp_result=False)
 ```
 
 > Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
@@ -1545,7 +1592,7 @@ mix_soft_light(b=None, factor=None, clamp_factor=True, clamp_result=False)
 > method
 
 ``` python
-mix_subtract(b=None, factor=None, clamp_factor=True, clamp_result=False)
+mix_subtract(b: 'Color' = None, factor: 'Float' = None, clamp_factor=True, clamp_result=False)
 ```
 
 > Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
@@ -1577,7 +1624,7 @@ mix_subtract(b=None, factor=None, clamp_factor=True, clamp_result=False)
 > method
 
 ``` python
-mix_value(b=None, factor=None, clamp_factor=True, clamp_result=False)
+mix_value(b: 'Color' = None, factor: 'Float' = None, clamp_factor=True, clamp_result=False)
 ```
 
 > Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
@@ -1609,7 +1656,7 @@ mix_value(b=None, factor=None, clamp_factor=True, clamp_result=False)
 > classmethod
 
 ``` python
-Named(name=None)
+Named(name: 'String' = None)
 ```
 
 > Node [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/named_attribute.html)
@@ -1635,7 +1682,7 @@ Named(name=None)
 > classmethod
 
 ``` python
-NamedAttribute(name=None)
+NamedAttribute(name: 'String' = None)
 ```
 
 > Node [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/named_attribute.html)
@@ -1668,7 +1715,7 @@ Normal map.
 
 :sunrise: **ShaderNodes** only
 
-> Node [Normal Map](https://docs.blender.org/manual/en/latest/render/shader_nodes/vector/normal_map.html)
+> Node [Normal Map](https://docs.blender.org/manual/en/latest/render/shader_nodes/displacement/normal_map.html)
 
 #### Arguments:
 - **strength** (_Float_ = None) : socket
@@ -1688,7 +1735,7 @@ Normal map.
 > method
 
 ``` python
-not_equal(b=None, epsilon=None)
+not_equal(b: 'Color' = None, epsilon: 'Float' = None)
 ```
 
 > Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
@@ -1736,22 +1783,6 @@ out(name=None)
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](color.md#color) :black_small_square: [Content](color.md#content) :black_small_square: [Methods](color.md#methods)</sub>
 
 ----------
-### RGB()
-
-> classmethod
-
-``` python
-RGB()
-```
-
-> Node [RGB](https://docs.blender.org/manual/en/latest/render/shader_nodes/input/rgb.html)
-
-#### Returns:
-- **Color** :
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](color.md#color) :black_small_square: [Content](color.md#content) :black_small_square: [Methods](color.md#methods)</sub>
-
-----------
 ### rgb_to_bw()
 
 > method
@@ -1778,7 +1809,7 @@ rgb_to_bw()
 > method
 
 ``` python
-separate(mode='RGB')
+separate(mode: "Literal['RGB', 'HSV', 'HSL']" = 'RGB')
 ```
 
 > Node [Separate Color](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/separate_color.html)
@@ -1789,7 +1820,7 @@ separate(mode='RGB')
 
 
 #### Arguments:
-- **mode** (_str_ = RGB) : parameter 'mode' in ['RGB', 'HSV', 'HSL']
+- **mode** (_Literal['RGB', 'HSV', 'HSL']_ = RGB) : parameter 'mode' in ['RGB', 'HSV', 'HSL']
 
 
 
@@ -1804,7 +1835,7 @@ separate(mode='RGB')
 > method
 
 ``` python
-separate_col(mode='RGB')
+separate_col(mode: "Literal['RGB', 'HSV', 'HSL']" = 'RGB')
 ```
 
 > Node [Separate Color](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../editors/texture_node/types/color/separate_color.html)
@@ -1815,7 +1846,7 @@ separate_col(mode='RGB')
 
 
 #### Arguments:
-- **mode** (_str_ = RGB) : parameter 'mode' in ['RGB', 'HSV', 'HSL']
+- **mode** (_Literal['RGB', 'HSV', 'HSL']_ = RGB) : parameter 'mode' in ['RGB', 'HSV', 'HSL']
 
 
 
@@ -1886,7 +1917,7 @@ separate_color()
 
 
 #### Returns:
-- **node** (_Float_)
+- **Float** (_Float_)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Color](color.md#color) :black_small_square: [Content](color.md#content) :black_small_square: [Methods](color.md#methods)</sub>
 
@@ -1984,18 +2015,18 @@ separate_RGB()
 > classmethod
 
 ``` python
-SkyTexture(air_density=1.0, altitude=0.0, dust_density=1.0, ground_albedo=0.30000001192092896, ozone_density=1.0, sky_type='NISHITA', sun_disc=True, sun_elevation=0.2617993950843811, sun_intensity=1.0, sun_rotation=0.0, sun_size=0.009512044489383698, turbidity=2.200000047683716)
+SkyTexture(aerosol_density=1.0, air_density=1.0, altitude=100.0, ground_albedo=0.30000001192092896, ozone_density=1.0, sky_type: "Literal['SINGLE_SCATTERING', 'MULTIPLE_SCATTERING', 'PREETHAM', 'HOSEK_WILKIE']" = 'MULTIPLE_SCATTERING', sun_disc=True, sun_elevation=0.2617993950843811, sun_intensity=1.0, sun_rotation=0.0, sun_size=0.009512044489383698, turbidity=2.200000047683716)
 ```
 
 > Node [Sky Texture](https://docs.blender.org/manual/en/latest/render/shader_nodes/textures/sky.html)
 
 #### Arguments:
+- **aerosol_density** (_float_ = 1.0) : parameter 'aerosol_density'
 - **air_density** (_float_ = 1.0) : parameter 'air_density'
-- **altitude** (_float_ = 0.0) : parameter 'altitude'
-- **dust_density** (_float_ = 1.0) : parameter 'dust_density'
+- **altitude** (_float_ = 100.0) : parameter 'altitude'
 - **ground_albedo** (_float_ = 0.30000001192092896) : parameter 'ground_albedo'
 - **ozone_density** (_float_ = 1.0) : parameter 'ozone_density'
-- **sky_type** (_str_ = NISHITA) : parameter 'sky_type' in ['PREETHAM', 'HOSEK_WILKIE', 'NISHITA']
+- **sky_type** (_Literal['SINGLE_SCATTERING', 'MULTIPLE_SCATTERING', 'PREETHAM', 'HOSEK_WILKIE']_ = MULTIPLE_SCATTERING) : parameter 'sky_type' in ['SINGLE_SCATTERING', 'MULTIPLE_SCATTERING', 'PREETHAM', 'HOSEK_WILKIE']
 - **sun_disc** (_bool_ = True) : parameter 'sun_disc'
 - **sun_elevation** (_float_ = 0.2617993950843811) : parameter 'sun_elevation'
 - **sun_intensity** (_float_ = 1.0) : parameter 'sun_intensity'
@@ -2023,7 +2054,7 @@ Vector displacement
 
 :sunrise: **ShaderNodes** only
 
-> Node [Vector Displacement](https://docs.blender.org/manual/en/latest/render/shader_nodes/vector/vector_displacement.html)
+> Node [Vector Displacement](https://docs.blender.org/manual/en/latest/render/shader_nodes/displacement/vector_displacement.html)
 
 #### Arguments:
 - **midlevel** (_Float_ = None) : socket
@@ -2043,7 +2074,7 @@ Vector displacement
 > classmethod
 
 ``` python
-Wave(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, bands_direction='X', rings_direction='X', wave_profile='SIN', wave_type='BANDS')
+Wave(vector: 'Vector' = None, scale: 'Float' = None, distortion: 'Float' = None, detail: 'Float' = None, detail_scale: 'Float' = None, detail_roughness: 'Float' = None, phase_offset: 'Float' = None, bands_direction: "Literal['X', 'Y', 'Z', 'DIAGONAL']" = 'X', rings_direction: "Literal['X', 'Y', 'Z', 'SPHERICAL']" = 'X', wave_profile: "Literal['SIN', 'SAW', 'TRI']" = 'SIN', wave_type: "Literal['BANDS', 'RINGS']" = 'BANDS')
 ```
 
 > Node [Wave Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/wave.html)
@@ -2056,10 +2087,10 @@ Wave(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, d
 - **detail_scale** (_Float_ = None) : socket 'Detail Scale' (id: Detail Scale)
 - **detail_roughness** (_Float_ = None) : socket 'Detail Roughness' (id: Detail Roughness)
 - **phase_offset** (_Float_ = None) : socket 'Phase Offset' (id: Phase Offset)
-- **bands_direction** (_str_ = X) : parameter 'bands_direction' in ['X', 'Y', 'Z', 'DIAGONAL']
-- **rings_direction** (_str_ = X) : parameter 'rings_direction' in ['X', 'Y', 'Z', 'SPHERICAL']
-- **wave_profile** (_str_ = SIN) : parameter 'wave_profile' in ['SIN', 'SAW', 'TRI']
-- **wave_type** (_str_ = BANDS) : parameter 'wave_type' in ['BANDS', 'RINGS']
+- **bands_direction** (_Literal['X', 'Y', 'Z', 'DIAGONAL']_ = X) : parameter 'bands_direction' in ['X', 'Y', 'Z', 'DIAGONAL']
+- **rings_direction** (_Literal['X', 'Y', 'Z', 'SPHERICAL']_ = X) : parameter 'rings_direction' in ['X', 'Y', 'Z', 'SPHERICAL']
+- **wave_profile** (_Literal['SIN', 'SAW', 'TRI']_ = SIN) : parameter 'wave_profile' in ['SIN', 'SAW', 'TRI']
+- **wave_type** (_Literal['BANDS', 'RINGS']_ = BANDS) : parameter 'wave_type' in ['BANDS', 'RINGS']
 
 
 
@@ -2081,7 +2112,7 @@ Constructor : Wave Length.
 
 :sunrise: **ShaderNodes** only
 
-> Node [Wavelength](https://docs.blender.org/manual/en/latest/render/shader_nodes/converter/wavelength.html)
+> Node [Wavelength](https://docs.blender.org/manual/en/latest/render/shader_nodes/color/wavelength.html)
 
 #### Arguments:
 - **wavelength** (_Float_ = None) : socket

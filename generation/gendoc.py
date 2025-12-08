@@ -194,27 +194,21 @@ def geonodes_documentation(write_files=True):
     # Hooks to replace references to nodes and build cross references
 
     print("Replacements...")
-    if True:
-        child_iter = doc.top_section.all_values()
-        for section in child_iter:
+    child_iter = doc.top_section.all_values()
+    for section in child_iter:
 
-            if section.is_hidden:
-                child_iter.no_child()
-                continue
+        if section.is_hidden:
+            child_iter.no_child()
+            continue
 
-            if section.is_transparent:
-                continue
+        if section.is_transparent:
+            continue
 
-            if section.comment is None:
-                continue
+        if section.comment is None:
+            continue
 
-            section.comment = ctag.sub(  lambda m: tag_replace(  m, section), section.comment)
-            section.comment = cbnode.sub(lambda m: bnode_replace(m, section), section.comment)
-    else:
-        doc.set_hook(tag_expr, tag_replace)
-        doc.set_hook(bnode_expr, bnode_replace)
-
-        doc.cook()
+        section.comment = ctag.sub(  lambda m: tag_replace(  m, section), section.comment)
+        section.comment = cbnode.sub(lambda m: bnode_replace(m, section), section.comment)
 
 
     # -----------------------------------------------------------------------------------------------------------------------------

@@ -6,9 +6,9 @@
 
 - **A** : [abs](gnmath.md#abs) :black_small_square: [acos](gnmath.md#acos) :black_small_square: [add](gnmath.md#add) :black_small_square: [arctangent](gnmath.md#arctangent) :black_small_square: [asin](gnmath.md#asin) :black_small_square: [atan2](gnmath.md#atan2)
 - **B** : [band](gnmath.md#band) :black_small_square: [bnot](gnmath.md#bnot) :black_small_square: [bor](gnmath.md#bor) :black_small_square: [bw_and](gnmath.md#bw_and) :black_small_square: [bw_not](gnmath.md#bw_not) :black_small_square: [bw_or](gnmath.md#bw_or) :black_small_square: [bw_rotate](gnmath.md#bw_rotate) :black_small_square: [bw_shift](gnmath.md#bw_shift) :black_small_square: [bw_xor](gnmath.md#bw_xor)
-- **C** : [ceil](gnmath.md#ceil) :black_small_square: [compare](gnmath.md#compare) :black_small_square: [contains](gnmath.md#contains) :black_small_square: [cos](gnmath.md#cos) :black_small_square: [cosh](gnmath.md#cosh) :black_small_square: [cross](gnmath.md#cross)
+- **C** : [ceil](gnmath.md#ceil) :black_small_square: [compare](gnmath.md#compare) :black_small_square: [cos](gnmath.md#cos) :black_small_square: [cosh](gnmath.md#cosh) :black_small_square: [cross](gnmath.md#cross)
 - **D** : [degrees](gnmath.md#degrees) :black_small_square: [distance](gnmath.md#distance) :black_small_square: [divide](gnmath.md#divide) :black_small_square: [divide_ceil](gnmath.md#divide_ceil) :black_small_square: [divide_floor](gnmath.md#divide_floor) :black_small_square: [divide_round](gnmath.md#divide_round) :black_small_square: [dot](gnmath.md#dot)
-- **E** : [ends_with](gnmath.md#ends_with) :black_small_square: [exp](gnmath.md#exp)
+- **E** : [exp](gnmath.md#exp)
 - **F** : [faceforward](gnmath.md#faceforward) :black_small_square: [floor](gnmath.md#floor) :black_small_square: [floored_modulo](gnmath.md#floored_modulo) :black_small_square: [fract](gnmath.md#fract)
 - **G** : [gcd](gnmath.md#gcd)
 - **I** : [iabs](gnmath.md#iabs) :black_small_square: [iadd](gnmath.md#iadd) :black_small_square: [idivide](gnmath.md#idivide) :black_small_square: [ifloored_modulo](gnmath.md#ifloored_modulo) :black_small_square: [imax](gnmath.md#imax) :black_small_square: [imin](gnmath.md#imin) :black_small_square: [imodulo](gnmath.md#imodulo) :black_small_square: [imply](gnmath.md#imply) :black_small_square: [imultiply](gnmath.md#imultiply) :black_small_square: [imultiply_add](gnmath.md#imultiply_add) :black_small_square: [inverse_sqrt](gnmath.md#inverse_sqrt) :black_small_square: [ipower](gnmath.md#ipower) :black_small_square: [isign](gnmath.md#isign) :black_small_square: [isubtract](gnmath.md#isubtract)
@@ -17,7 +17,7 @@
 - **N** : [negate](gnmath.md#negate) :black_small_square: [nimply](gnmath.md#nimply) :black_small_square: [nor](gnmath.md#nor) :black_small_square: [normalize](gnmath.md#normalize) :black_small_square: [not_and](gnmath.md#not_and)
 - **P** : [pingpong](gnmath.md#pingpong) :black_small_square: [power](gnmath.md#power) :black_small_square: [project](gnmath.md#project)
 - **R** : [radians](gnmath.md#radians) :black_small_square: [reflect](gnmath.md#reflect) :black_small_square: [refract](gnmath.md#refract) :black_small_square: [round](gnmath.md#round)
-- **S** : [scale](gnmath.md#scale) :black_small_square: [sign](gnmath.md#sign) :black_small_square: [sin](gnmath.md#sin) :black_small_square: [sinh](gnmath.md#sinh) :black_small_square: [smooth_max](gnmath.md#smooth_max) :black_small_square: [smooth_min](gnmath.md#smooth_min) :black_small_square: [snap](gnmath.md#snap) :black_small_square: [sqrt](gnmath.md#sqrt) :black_small_square: [starts_with](gnmath.md#starts_with) :black_small_square: [subtract](gnmath.md#subtract)
+- **S** : [scale](gnmath.md#scale) :black_small_square: [sign](gnmath.md#sign) :black_small_square: [sin](gnmath.md#sin) :black_small_square: [sinh](gnmath.md#sinh) :black_small_square: [smooth_max](gnmath.md#smooth_max) :black_small_square: [smooth_min](gnmath.md#smooth_min) :black_small_square: [snap](gnmath.md#snap) :black_small_square: [sqrt](gnmath.md#sqrt) :black_small_square: [subtract](gnmath.md#subtract)
 - **T** : [tan](gnmath.md#tan) :black_small_square: [tanh](gnmath.md#tanh) :black_small_square: [trunc](gnmath.md#trunc)
 - **V** : [vabs](gnmath.md#vabs) :black_small_square: [vadd](gnmath.md#vadd) :black_small_square: [vceil](gnmath.md#vceil) :black_small_square: [vcos](gnmath.md#vcos) :black_small_square: [vdivide](gnmath.md#vdivide) :black_small_square: [vfloor](gnmath.md#vfloor) :black_small_square: [vfraction](gnmath.md#vfraction) :black_small_square: [vmax](gnmath.md#vmax) :black_small_square: [vmin](gnmath.md#vmin) :black_small_square: [vmodulo](gnmath.md#vmodulo) :black_small_square: [vmultiply](gnmath.md#vmultiply) :black_small_square: [vmultiply_add](gnmath.md#vmultiply_add) :black_small_square: [vpower](gnmath.md#vpower) :black_small_square: [vsign](gnmath.md#vsign) :black_small_square: [vsin](gnmath.md#vsin) :black_small_square: [vsnap](gnmath.md#vsnap) :black_small_square: [vsubtract](gnmath.md#vsubtract) :black_small_square: [vtan](gnmath.md#vtan) :black_small_square: [vwrap](gnmath.md#vwrap)
 - **W** : [wrap](gnmath.md#wrap)
@@ -33,7 +33,7 @@
 > function
 
 ``` python
-abs(value=None, use_clamp=False)
+abs(value: 'Float' = None, use_clamp=False)
 ```
 
 > Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
@@ -60,7 +60,7 @@ abs(value=None, use_clamp=False)
 > function
 
 ``` python
-acos(value=None, use_clamp=False)
+acos(value: 'Float' = None, use_clamp=False)
 ```
 
 > Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
@@ -87,7 +87,7 @@ acos(value=None, use_clamp=False)
 > function
 
 ``` python
-add(value=None, value_1=None, use_clamp=False)
+add(value: 'Float' = None, value_1: 'Float' = None, use_clamp=False)
 ```
 
 > Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
@@ -115,7 +115,7 @@ add(value=None, value_1=None, use_clamp=False)
 > function
 
 ``` python
-arctangent(value=None, use_clamp=False)
+arctangent(value: 'Float' = None, use_clamp=False)
 ```
 
 > Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
@@ -142,7 +142,7 @@ arctangent(value=None, use_clamp=False)
 > function
 
 ``` python
-asin(value=None, use_clamp=False)
+asin(value: 'Float' = None, use_clamp=False)
 ```
 
 > Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
@@ -169,7 +169,7 @@ asin(value=None, use_clamp=False)
 > function
 
 ``` python
-atan2(value=None, value_1=None, use_clamp=False)
+atan2(value: 'Float' = None, value_1: 'Float' = None, use_clamp=False)
 ```
 
 > Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
@@ -197,7 +197,7 @@ atan2(value=None, value_1=None, use_clamp=False)
 > function
 
 ``` python
-band(boolean=None, boolean_1=None)
+band(boolean: 'Boolean' = None, boolean_1: 'Boolean' = None)
 ```
 
 > Node [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/boolean_math.html)
@@ -224,7 +224,7 @@ band(boolean=None, boolean_1=None)
 > function
 
 ``` python
-bnot(boolean=None)
+bnot(boolean: 'Boolean' = None)
 ```
 
 > Node [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/boolean_math.html)
@@ -250,7 +250,7 @@ bnot(boolean=None)
 > function
 
 ``` python
-bor(boolean=None, boolean_1=None)
+bor(boolean: 'Boolean' = None, boolean_1: 'Boolean' = None)
 ```
 
 > Node [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/boolean_math.html)
@@ -277,7 +277,7 @@ bor(boolean=None, boolean_1=None)
 > function
 
 ``` python
-bw_and(a=None, b=None)
+bw_and(a: 'Integer' = None, b: 'Integer' = None)
 ```
 
 > Node [Bit Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/bit_math.html)
@@ -304,7 +304,7 @@ bw_and(a=None, b=None)
 > function
 
 ``` python
-bw_not(a=None)
+bw_not(a: 'Integer' = None)
 ```
 
 > Node [Bit Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/bit_math.html)
@@ -330,7 +330,7 @@ bw_not(a=None)
 > function
 
 ``` python
-bw_or(a=None, b=None)
+bw_or(a: 'Integer' = None, b: 'Integer' = None)
 ```
 
 > Node [Bit Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/bit_math.html)
@@ -357,7 +357,7 @@ bw_or(a=None, b=None)
 > function
 
 ``` python
-bw_rotate(a=None, shift=None)
+bw_rotate(a: 'Integer' = None, shift: 'Integer' = None)
 ```
 
 > Node [Bit Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/bit_math.html)
@@ -384,7 +384,7 @@ bw_rotate(a=None, shift=None)
 > function
 
 ``` python
-bw_shift(a=None, shift=None)
+bw_shift(a: 'Integer' = None, shift: 'Integer' = None)
 ```
 
 > Node [Bit Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/bit_math.html)
@@ -411,7 +411,7 @@ bw_shift(a=None, shift=None)
 > function
 
 ``` python
-bw_xor(a=None, b=None)
+bw_xor(a: 'Integer' = None, b: 'Integer' = None)
 ```
 
 > Node [Bit Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/bit_math.html)
@@ -438,7 +438,7 @@ bw_xor(a=None, b=None)
 > function
 
 ``` python
-ceil(value=None, use_clamp=False)
+ceil(value: 'Float' = None, use_clamp=False)
 ```
 
 > Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
@@ -465,7 +465,7 @@ ceil(value=None, use_clamp=False)
 > function
 
 ``` python
-compare(value=None, value_1=None, epsilon=None, use_clamp=False)
+compare(value: 'Float' = None, value_1: 'Float' = None, epsilon: 'Float' = None, use_clamp=False)
 ```
 
 > Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
@@ -489,39 +489,12 @@ compare(value=None, value_1=None, epsilon=None, use_clamp=False)
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
 
 ----------
-### contains()
-
-> function
-
-``` python
-contains(string=None, key=None)
-```
-
-> Node [Match String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/text/match_string.html)
-
-#### Information:
-- **Parameter** : 'CONTAINS'
-
-
-
-#### Arguments:
-- **string** (_String_ = None) : socket 'String' (id: String)
-- **key** (_String_ = None) : socket 'Key' (id: Key)
-
-
-
-#### Returns:
-- **Boolean** :
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
-
-----------
 ### cos()
 
 > function
 
 ``` python
-cos(value=None, use_clamp=False)
+cos(value: 'Float' = None, use_clamp=False)
 ```
 
 > Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
@@ -548,7 +521,7 @@ cos(value=None, use_clamp=False)
 > function
 
 ``` python
-cosh(value=None, use_clamp=False)
+cosh(value: 'Float' = None, use_clamp=False)
 ```
 
 > Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
@@ -575,7 +548,7 @@ cosh(value=None, use_clamp=False)
 > function
 
 ``` python
-cross(vector=None, vector_1=None)
+cross(vector: 'Vector' = None, vector_1: 'Vector' = None)
 ```
 
 > Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
@@ -602,7 +575,7 @@ cross(vector=None, vector_1=None)
 > function
 
 ``` python
-degrees(radians=None, use_clamp=False)
+degrees(radians: 'Float' = None, use_clamp=False)
 ```
 
 > Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
@@ -629,7 +602,7 @@ degrees(radians=None, use_clamp=False)
 > function
 
 ``` python
-distance(vector=None, vector_1=None)
+distance(vector: 'Vector' = None, vector_1: 'Vector' = None)
 ```
 
 > Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
@@ -656,7 +629,7 @@ distance(vector=None, vector_1=None)
 > function
 
 ``` python
-divide(value=None, value_1=None, use_clamp=False)
+divide(value: 'Float' = None, value_1: 'Float' = None, use_clamp=False)
 ```
 
 > Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
@@ -684,7 +657,7 @@ divide(value=None, value_1=None, use_clamp=False)
 > function
 
 ``` python
-divide_ceil(value=None, value_1=None)
+divide_ceil(value: 'Integer' = None, value_1: 'Integer' = None)
 ```
 
 > Node [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
@@ -711,7 +684,7 @@ divide_ceil(value=None, value_1=None)
 > function
 
 ``` python
-divide_floor(value=None, value_1=None)
+divide_floor(value: 'Integer' = None, value_1: 'Integer' = None)
 ```
 
 > Node [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
@@ -738,7 +711,7 @@ divide_floor(value=None, value_1=None)
 > function
 
 ``` python
-divide_round(value=None, value_1=None)
+divide_round(value: 'Integer' = None, value_1: 'Integer' = None)
 ```
 
 > Node [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
@@ -765,7 +738,7 @@ divide_round(value=None, value_1=None)
 > function
 
 ``` python
-dot(vector=None, vector_1=None)
+dot(vector: 'Vector' = None, vector_1: 'Vector' = None)
 ```
 
 > Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
@@ -787,39 +760,12 @@ dot(vector=None, vector_1=None)
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
 
 ----------
-### ends_with()
-
-> function
-
-``` python
-ends_with(string=None, key=None)
-```
-
-> Node [Match String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/text/match_string.html)
-
-#### Information:
-- **Parameter** : 'ENDS_WITH'
-
-
-
-#### Arguments:
-- **string** (_String_ = None) : socket 'String' (id: String)
-- **key** (_String_ = None) : socket 'Key' (id: Key)
-
-
-
-#### Returns:
-- **Boolean** :
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
-
-----------
 ### exp()
 
 > function
 
 ``` python
-exp(value=None, use_clamp=False)
+exp(value: 'Float' = None, use_clamp=False)
 ```
 
 > Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
@@ -846,7 +792,7 @@ exp(value=None, use_clamp=False)
 > function
 
 ``` python
-faceforward(vector=None, incident=None, reference=None)
+faceforward(vector: 'Vector' = None, incident: 'Vector' = None, reference: 'Vector' = None)
 ```
 
 > Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
@@ -874,7 +820,7 @@ faceforward(vector=None, incident=None, reference=None)
 > function
 
 ``` python
-floor(value=None, use_clamp=False)
+floor(value: 'Float' = None, use_clamp=False)
 ```
 
 > Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
@@ -901,7 +847,7 @@ floor(value=None, use_clamp=False)
 > function
 
 ``` python
-floored_modulo(value=None, value_1=None, use_clamp=False)
+floored_modulo(value: 'Float' = None, value_1: 'Float' = None, use_clamp=False)
 ```
 
 > Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
@@ -929,7 +875,7 @@ floored_modulo(value=None, value_1=None, use_clamp=False)
 > function
 
 ``` python
-fract(value=None, use_clamp=False)
+fract(value: 'Float' = None, use_clamp=False)
 ```
 
 > Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
@@ -956,7 +902,7 @@ fract(value=None, use_clamp=False)
 > function
 
 ``` python
-gcd(value=None, value_1=None)
+gcd(value: 'Integer' = None, value_1: 'Integer' = None)
 ```
 
 > Node [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
@@ -983,7 +929,7 @@ gcd(value=None, value_1=None)
 > function
 
 ``` python
-iabs(value=None)
+iabs(value: 'Integer' = None)
 ```
 
 > Node [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
@@ -1009,7 +955,7 @@ iabs(value=None)
 > function
 
 ``` python
-iadd(value=None, value_1=None)
+iadd(value: 'Integer' = None, value_1: 'Integer' = None)
 ```
 
 > Node [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
@@ -1036,7 +982,7 @@ iadd(value=None, value_1=None)
 > function
 
 ``` python
-idivide(value=None, value_1=None)
+idivide(value: 'Integer' = None, value_1: 'Integer' = None)
 ```
 
 > Node [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
@@ -1063,7 +1009,7 @@ idivide(value=None, value_1=None)
 > function
 
 ``` python
-ifloored_modulo(value=None, value_1=None)
+ifloored_modulo(value: 'Integer' = None, value_1: 'Integer' = None)
 ```
 
 > Node [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
@@ -1090,7 +1036,7 @@ ifloored_modulo(value=None, value_1=None)
 > function
 
 ``` python
-imax(value=None, value_1=None)
+imax(value: 'Integer' = None, value_1: 'Integer' = None)
 ```
 
 > Node [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
@@ -1117,7 +1063,7 @@ imax(value=None, value_1=None)
 > function
 
 ``` python
-imin(value=None, value_1=None)
+imin(value: 'Integer' = None, value_1: 'Integer' = None)
 ```
 
 > Node [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
@@ -1144,7 +1090,7 @@ imin(value=None, value_1=None)
 > function
 
 ``` python
-imodulo(value=None, value_1=None)
+imodulo(value: 'Integer' = None, value_1: 'Integer' = None)
 ```
 
 > Node [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
@@ -1171,7 +1117,7 @@ imodulo(value=None, value_1=None)
 > function
 
 ``` python
-imply(boolean=None, boolean_1=None)
+imply(boolean: 'Boolean' = None, boolean_1: 'Boolean' = None)
 ```
 
 > Node [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/boolean_math.html)
@@ -1198,7 +1144,7 @@ imply(boolean=None, boolean_1=None)
 > function
 
 ``` python
-imultiply(value=None, value_1=None)
+imultiply(value: 'Integer' = None, value_1: 'Integer' = None)
 ```
 
 > Node [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
@@ -1225,7 +1171,7 @@ imultiply(value=None, value_1=None)
 > function
 
 ``` python
-imultiply_add(value=None, multiplier=None, addend=None)
+imultiply_add(value: 'Integer' = None, multiplier: 'Integer' = None, addend: 'Integer' = None)
 ```
 
 > Node [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
@@ -1253,7 +1199,7 @@ imultiply_add(value=None, multiplier=None, addend=None)
 > function
 
 ``` python
-inverse_sqrt(value=None, use_clamp=False)
+inverse_sqrt(value: 'Float' = None, use_clamp=False)
 ```
 
 > Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
@@ -1280,7 +1226,7 @@ inverse_sqrt(value=None, use_clamp=False)
 > function
 
 ``` python
-ipower(base=None, exponent=None)
+ipower(base: 'Integer' = None, exponent: 'Integer' = None)
 ```
 
 > Node [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
@@ -1307,7 +1253,7 @@ ipower(base=None, exponent=None)
 > function
 
 ``` python
-isign(value=None)
+isign(value: 'Integer' = None)
 ```
 
 > Node [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
@@ -1333,7 +1279,7 @@ isign(value=None)
 > function
 
 ``` python
-isubtract(value=None, value_1=None)
+isubtract(value: 'Integer' = None, value_1: 'Integer' = None)
 ```
 
 > Node [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
@@ -1360,7 +1306,7 @@ isubtract(value=None, value_1=None)
 > function
 
 ``` python
-lcm(value=None, value_1=None)
+lcm(value: 'Integer' = None, value_1: 'Integer' = None)
 ```
 
 > Node [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
@@ -1387,7 +1333,7 @@ lcm(value=None, value_1=None)
 > function
 
 ``` python
-length(vector=None)
+length(vector: 'Vector' = None)
 ```
 
 > Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
@@ -1413,7 +1359,7 @@ length(vector=None)
 > function
 
 ``` python
-log(value=None, base=None, use_clamp=False)
+log(value: 'Float' = None, base: 'Float' = None, use_clamp=False)
 ```
 
 > Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
@@ -1441,7 +1387,7 @@ log(value=None, base=None, use_clamp=False)
 > function
 
 ``` python
-max(value=None, value_1=None, use_clamp=False)
+max(value: 'Float' = None, value_1: 'Float' = None, use_clamp=False)
 ```
 
 > Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
@@ -1469,7 +1415,7 @@ max(value=None, value_1=None, use_clamp=False)
 > function
 
 ``` python
-mgreater_than(value=None, threshold=None, use_clamp=False)
+mgreater_than(value: 'Float' = None, threshold: 'Float' = None, use_clamp=False)
 ```
 
 > Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
@@ -1497,7 +1443,7 @@ mgreater_than(value=None, threshold=None, use_clamp=False)
 > function
 
 ``` python
-min(value=None, value_1=None, use_clamp=False)
+min(value: 'Float' = None, value_1: 'Float' = None, use_clamp=False)
 ```
 
 > Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
@@ -1525,7 +1471,7 @@ min(value=None, value_1=None, use_clamp=False)
 > function
 
 ``` python
-mless_than(value=None, threshold=None, use_clamp=False)
+mless_than(value: 'Float' = None, threshold: 'Float' = None, use_clamp=False)
 ```
 
 > Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
@@ -1553,7 +1499,7 @@ mless_than(value=None, threshold=None, use_clamp=False)
 > function
 
 ``` python
-modulo(value=None, value_1=None, use_clamp=False)
+modulo(value: 'Float' = None, value_1: 'Float' = None, use_clamp=False)
 ```
 
 > Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
@@ -1581,7 +1527,7 @@ modulo(value=None, value_1=None, use_clamp=False)
 > function
 
 ``` python
-multiply(value=None, value_1=None, use_clamp=False)
+multiply(value: 'Float' = None, value_1: 'Float' = None, use_clamp=False)
 ```
 
 > Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
@@ -1609,7 +1555,7 @@ multiply(value=None, value_1=None, use_clamp=False)
 > function
 
 ``` python
-multiply_add(value=None, multiplier=None, addend=None, use_clamp=False)
+multiply_add(value: 'Float' = None, multiplier: 'Float' = None, addend: 'Float' = None, use_clamp=False)
 ```
 
 > Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
@@ -1638,7 +1584,7 @@ multiply_add(value=None, multiplier=None, addend=None, use_clamp=False)
 > function
 
 ``` python
-negate(value=None)
+negate(value: 'Integer' = None)
 ```
 
 > Node [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
@@ -1664,7 +1610,7 @@ negate(value=None)
 > function
 
 ``` python
-nimply(boolean=None, boolean_1=None)
+nimply(boolean: 'Boolean' = None, boolean_1: 'Boolean' = None)
 ```
 
 > Node [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/boolean_math.html)
@@ -1691,7 +1637,7 @@ nimply(boolean=None, boolean_1=None)
 > function
 
 ``` python
-nor(boolean=None, boolean_1=None)
+nor(boolean: 'Boolean' = None, boolean_1: 'Boolean' = None)
 ```
 
 > Node [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/boolean_math.html)
@@ -1718,7 +1664,7 @@ nor(boolean=None, boolean_1=None)
 > function
 
 ``` python
-normalize(vector=None)
+normalize(vector: 'Vector' = None)
 ```
 
 > Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
@@ -1744,7 +1690,7 @@ normalize(vector=None)
 > function
 
 ``` python
-not_and(boolean=None, boolean_1=None)
+not_and(boolean: 'Boolean' = None, boolean_1: 'Boolean' = None)
 ```
 
 > Node [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/boolean_math.html)
@@ -1771,7 +1717,7 @@ not_and(boolean=None, boolean_1=None)
 > function
 
 ``` python
-pingpong(value=None, scale=None, use_clamp=False)
+pingpong(value: 'Float' = None, scale: 'Float' = None, use_clamp=False)
 ```
 
 > Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
@@ -1799,7 +1745,7 @@ pingpong(value=None, scale=None, use_clamp=False)
 > function
 
 ``` python
-power(base=None, exponent=None, use_clamp=False)
+power(base: 'Float' = None, exponent: 'Float' = None, use_clamp=False)
 ```
 
 > Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
@@ -1827,7 +1773,7 @@ power(base=None, exponent=None, use_clamp=False)
 > function
 
 ``` python
-project(vector=None, vector_1=None)
+project(vector: 'Vector' = None, vector_1: 'Vector' = None)
 ```
 
 > Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
@@ -1854,7 +1800,7 @@ project(vector=None, vector_1=None)
 > function
 
 ``` python
-radians(degrees=None, use_clamp=False)
+radians(degrees: 'Float' = None, use_clamp=False)
 ```
 
 > Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
@@ -1881,7 +1827,7 @@ radians(degrees=None, use_clamp=False)
 > function
 
 ``` python
-reflect(vector=None, vector_1=None)
+reflect(vector: 'Vector' = None, vector_1: 'Vector' = None)
 ```
 
 > Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
@@ -1908,7 +1854,7 @@ reflect(vector=None, vector_1=None)
 > function
 
 ``` python
-refract(vector=None, vector_1=None, ior=None)
+refract(vector: 'Vector' = None, vector_1: 'Vector' = None, ior: 'Float' = None)
 ```
 
 > Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
@@ -1936,7 +1882,7 @@ refract(vector=None, vector_1=None, ior=None)
 > function
 
 ``` python
-round(value=None, use_clamp=False)
+round(value: 'Float' = None, use_clamp=False)
 ```
 
 > Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
@@ -1963,7 +1909,7 @@ round(value=None, use_clamp=False)
 > function
 
 ``` python
-scale(vector=None, scale=None)
+scale(vector: 'Vector' = None, scale: 'Float' = None)
 ```
 
 > Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
@@ -1990,7 +1936,7 @@ scale(vector=None, scale=None)
 > function
 
 ``` python
-sign(value=None, use_clamp=False)
+sign(value: 'Float' = None, use_clamp=False)
 ```
 
 > Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
@@ -2017,7 +1963,7 @@ sign(value=None, use_clamp=False)
 > function
 
 ``` python
-sin(value=None, use_clamp=False)
+sin(value: 'Float' = None, use_clamp=False)
 ```
 
 > Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
@@ -2044,7 +1990,7 @@ sin(value=None, use_clamp=False)
 > function
 
 ``` python
-sinh(value=None, use_clamp=False)
+sinh(value: 'Float' = None, use_clamp=False)
 ```
 
 > Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
@@ -2071,7 +2017,7 @@ sinh(value=None, use_clamp=False)
 > function
 
 ``` python
-smooth_max(value=None, value_1=None, distance=None, use_clamp=False)
+smooth_max(value: 'Float' = None, value_1: 'Float' = None, distance: 'Float' = None, use_clamp=False)
 ```
 
 > Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
@@ -2100,7 +2046,7 @@ smooth_max(value=None, value_1=None, distance=None, use_clamp=False)
 > function
 
 ``` python
-smooth_min(value=None, value_1=None, distance=None, use_clamp=False)
+smooth_min(value: 'Float' = None, value_1: 'Float' = None, distance: 'Float' = None, use_clamp=False)
 ```
 
 > Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
@@ -2129,7 +2075,7 @@ smooth_min(value=None, value_1=None, distance=None, use_clamp=False)
 > function
 
 ``` python
-snap(value=None, increment=None, use_clamp=False)
+snap(value: 'Float' = None, increment: 'Float' = None, use_clamp=False)
 ```
 
 > Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
@@ -2157,7 +2103,7 @@ snap(value=None, increment=None, use_clamp=False)
 > function
 
 ``` python
-sqrt(value=None, use_clamp=False)
+sqrt(value: 'Float' = None, use_clamp=False)
 ```
 
 > Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
@@ -2179,39 +2125,12 @@ sqrt(value=None, use_clamp=False)
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
 
 ----------
-### starts_with()
-
-> function
-
-``` python
-starts_with(string=None, key=None)
-```
-
-> Node [Match String](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/text/match_string.html)
-
-#### Information:
-- **Parameter** : 'STARTS_WITH'
-
-
-
-#### Arguments:
-- **string** (_String_ = None) : socket 'String' (id: String)
-- **key** (_String_ = None) : socket 'Key' (id: Key)
-
-
-
-#### Returns:
-- **Boolean** :
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
-
-----------
 ### subtract()
 
 > function
 
 ``` python
-subtract(value=None, value_1=None, use_clamp=False)
+subtract(value: 'Float' = None, value_1: 'Float' = None, use_clamp=False)
 ```
 
 > Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
@@ -2239,7 +2158,7 @@ subtract(value=None, value_1=None, use_clamp=False)
 > function
 
 ``` python
-tan(value=None, use_clamp=False)
+tan(value: 'Float' = None, use_clamp=False)
 ```
 
 > Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
@@ -2266,7 +2185,7 @@ tan(value=None, use_clamp=False)
 > function
 
 ``` python
-tanh(value=None, use_clamp=False)
+tanh(value: 'Float' = None, use_clamp=False)
 ```
 
 > Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
@@ -2293,7 +2212,7 @@ tanh(value=None, use_clamp=False)
 > function
 
 ``` python
-trunc(value=None, use_clamp=False)
+trunc(value: 'Float' = None, use_clamp=False)
 ```
 
 > Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
@@ -2320,7 +2239,7 @@ trunc(value=None, use_clamp=False)
 > function
 
 ``` python
-vabs(vector=None)
+vabs(vector: 'Vector' = None)
 ```
 
 > Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
@@ -2346,7 +2265,7 @@ vabs(vector=None)
 > function
 
 ``` python
-vadd(vector=None, vector_1=None)
+vadd(vector: 'Vector' = None, vector_1: 'Vector' = None)
 ```
 
 > Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
@@ -2373,7 +2292,7 @@ vadd(vector=None, vector_1=None)
 > function
 
 ``` python
-vceil(vector=None)
+vceil(vector: 'Vector' = None)
 ```
 
 > Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
@@ -2399,7 +2318,7 @@ vceil(vector=None)
 > function
 
 ``` python
-vcos(vector=None)
+vcos(vector: 'Vector' = None)
 ```
 
 > Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
@@ -2425,7 +2344,7 @@ vcos(vector=None)
 > function
 
 ``` python
-vdivide(vector=None, vector_1=None)
+vdivide(vector: 'Vector' = None, vector_1: 'Vector' = None)
 ```
 
 > Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
@@ -2452,7 +2371,7 @@ vdivide(vector=None, vector_1=None)
 > function
 
 ``` python
-vfloor(vector=None)
+vfloor(vector: 'Vector' = None)
 ```
 
 > Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
@@ -2478,7 +2397,7 @@ vfloor(vector=None)
 > function
 
 ``` python
-vfraction(vector=None)
+vfraction(vector: 'Vector' = None)
 ```
 
 > Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
@@ -2504,7 +2423,7 @@ vfraction(vector=None)
 > function
 
 ``` python
-vmax(vector=None, vector_1=None)
+vmax(vector: 'Vector' = None, vector_1: 'Vector' = None)
 ```
 
 > Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
@@ -2531,7 +2450,7 @@ vmax(vector=None, vector_1=None)
 > function
 
 ``` python
-vmin(vector=None, vector_1=None)
+vmin(vector: 'Vector' = None, vector_1: 'Vector' = None)
 ```
 
 > Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
@@ -2558,7 +2477,7 @@ vmin(vector=None, vector_1=None)
 > function
 
 ``` python
-vmodulo(vector=None, vector_1=None)
+vmodulo(vector: 'Vector' = None, vector_1: 'Vector' = None)
 ```
 
 > Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
@@ -2585,7 +2504,7 @@ vmodulo(vector=None, vector_1=None)
 > function
 
 ``` python
-vmultiply(vector=None, vector_1=None)
+vmultiply(vector: 'Vector' = None, vector_1: 'Vector' = None)
 ```
 
 > Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
@@ -2612,7 +2531,7 @@ vmultiply(vector=None, vector_1=None)
 > function
 
 ``` python
-vmultiply_add(vector=None, multiplier=None, addend=None)
+vmultiply_add(vector: 'Vector' = None, multiplier: 'Vector' = None, addend: 'Vector' = None)
 ```
 
 > Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
@@ -2640,7 +2559,7 @@ vmultiply_add(vector=None, multiplier=None, addend=None)
 > function
 
 ``` python
-vpower(base=None, exponent=None)
+vpower(base: 'Vector' = None, exponent: 'Vector' = None)
 ```
 
 > Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
@@ -2667,7 +2586,7 @@ vpower(base=None, exponent=None)
 > function
 
 ``` python
-vsign(vector=None)
+vsign(vector: 'Vector' = None)
 ```
 
 > Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
@@ -2693,7 +2612,7 @@ vsign(vector=None)
 > function
 
 ``` python
-vsin(vector=None)
+vsin(vector: 'Vector' = None)
 ```
 
 > Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
@@ -2719,7 +2638,7 @@ vsin(vector=None)
 > function
 
 ``` python
-vsnap(vector=None, increment=None)
+vsnap(vector: 'Vector' = None, increment: 'Vector' = None)
 ```
 
 > Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
@@ -2746,7 +2665,7 @@ vsnap(vector=None, increment=None)
 > function
 
 ``` python
-vsubtract(vector=None, vector_1=None)
+vsubtract(vector: 'Vector' = None, vector_1: 'Vector' = None)
 ```
 
 > Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
@@ -2773,7 +2692,7 @@ vsubtract(vector=None, vector_1=None)
 > function
 
 ``` python
-vtan(vector=None)
+vtan(vector: 'Vector' = None)
 ```
 
 > Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
@@ -2799,7 +2718,7 @@ vtan(vector=None)
 > function
 
 ``` python
-vwrap(vector=None, max=None, min=None)
+vwrap(vector: 'Vector' = None, max: 'Vector' = None, min: 'Vector' = None)
 ```
 
 > Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
@@ -2827,7 +2746,7 @@ vwrap(vector=None, max=None, min=None)
 > function
 
 ``` python
-wrap(value=None, max=None, min=None, use_clamp=False)
+wrap(value: 'Float' = None, max: 'Float' = None, min: 'Float' = None, use_clamp=False)
 ```
 
 > Node [Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/converter/math.html)
@@ -2856,7 +2775,7 @@ wrap(value=None, max=None, min=None, use_clamp=False)
 > function
 
 ``` python
-xnor(boolean=None, boolean_1=None)
+xnor(boolean: 'Boolean' = None, boolean_1: 'Boolean' = None)
 ```
 
 > Node [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/boolean_math.html)
@@ -2883,7 +2802,7 @@ xnor(boolean=None, boolean_1=None)
 > function
 
 ``` python
-xor(boolean=None, boolean_1=None)
+xor(boolean: 'Boolean' = None, boolean_1: 'Boolean' = None)
 ```
 
 > Node [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/boolean_math.html)

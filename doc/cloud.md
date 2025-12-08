@@ -1,7 +1,7 @@
 # Cloud
 
 ``` python
-Cloud(value=None, name=None, tip=None, panel='', hide_value=False, hide_in_modifier=False)
+Cloud(value: geonodes.core.socket_class.Socket = None, name: str = None, tip: str = '', panel: str = '', optional_label: bool = False, hide_value: bool = False, hide_in_modifier: bool = False)
 ```
 
 > Cloud of Points Geometry
@@ -23,18 +23,19 @@ Nodes requiring a domain parameter, are implemented in the domain [points](cloud
 #### Arguments:
 - **value** (_Socket_ = None) : initial value
 - **name** (_str_ = None) : Create an Group Input socket with the provided str
-- **tip** (_str_ = None) : User tip (for Group Input sockets)
-- **panel** (_str_ = ) : panel name (overrides tree panel if exists)
-- **hide_value** (_bool_ = False) : Hide Value option
-- **hide_in_modifier** (_bool_ = False) : Hide in Modifier option
+- **tip** (_str_ = ) : Property description
+- **panel** (_str_ = ) : Panel name
+- **optional_label** (_bool_ = False) : Property optional_label
+- **hide_value** (_bool_ = False) : Property hide_value
+- **hide_in_modifier** (_bool_ = False) : Property hide_in_modifier
 
 ### Inherited
 
-[\_\_add__](boolean.md#__add__) :black_small_square: [bake](geometry.md#bake) :black_small_square: [bounding_box](core-gener-geome-geometry.md#bounding_box) :black_small_square: [\_cache](nodecache.md#_cache) :black_small_square: [\_cache_reset](nodecache.md#_cache_reset) :black_small_square: [check_in_list](socket.md#check_in_list) :black_small_square: [convex_hull](core-gener-geome-geometry.md#convex_hull) :black_small_square: [curve](core-gener-geome-geometry.md#curve) :black_small_square: [data_type](socket.md#data_type) :black_small_square: [\_domain_to_geometry](socket.md#_domain_to_geometry) :black_small_square: [\_geo](cloudpoint.md#_geo) :black_small_square: [\_geometry_class](socket.md#_geometry_class) :black_small_square: [\_geo_type](geobase.md#_geo_type) :black_small_square: [\_\_getattr__](socket.md#__getattr__) :black_small_square: [\_\_getitem__](geobase.md#__getitem__) :black_small_square: [get_node_data_type](socket.md#get_node_data_type) :black_small_square: [get_socket_class](socket.md#get_socket_class) :black_small_square: [grease_pencil](core-gener-geome-geometry.md#grease_pencil) :black_small_square: [id](core-gener-geome-geometry.md#id) :black_small_square: [index_of_nearest](core-gener-geome-geometry.md#index_of_nearest) :black_small_square: [IndexSwitch](socket.md#indexswitch) :black_small_square: [index_switch](socket.md#index_switch) :black_small_square: [\_\_init__](boolean.md#__init__) :black_small_square: [Input](socket.md#input) :black_small_square: [input_type](socket.md#input_type) :black_small_square: [instance_on_points](core-gener-geome-geometry.md#instance_on_points) :black_small_square: [instances](core-gener-geome-geometry.md#instances) :black_small_square: [\_interface_socket](socket.md#_interface_socket) :black_small_square: [\_is_group_input](socket.md#_is_group_input) :black_small_square: [\_is_group_output](socket.md#_is_group_output) :black_small_square: [\_is_group_socket](socket.md#_is_group_socket) :black_small_square: [Join](core-gener-geome-geometry.md#join) :black_small_square: [join](core-gener-geome-geometry.md#join) :black_small_square: [\_jump](socket.md#_jump) :black_small_square: [\_lc](socket.md#_lc) :black_small_square: [\_lcop](socket.md#_lcop) :black_small_square: [link_from](socket.md#link_from) :black_small_square: [\_lock](proplocker.md#_lock) :black_small_square: [\_mark_for_delete](socket.md#_mark_for_delete) :black_small_square: [material](core-gener-geome-geometry.md#material) :black_small_square: [material_index](core-gener-geome-geometry.md#material_index) :black_small_square: [MenuSwitch](socket.md#menuswitch) :black_small_square: [menu_switch](socket.md#menu_switch) :black_small_square: [merge](core-gener-geome-geometry.md#merge) :black_small_square: [merge_all](core-gener-geome-geometry.md#merge_all) :black_small_square: [merge_by_distance](core-gener-geome-geometry.md#merge_by_distance) :black_small_square: [merge_connected](core-gener-geome-geometry.md#merge_connected) :black_small_square: [mesh](core-gener-geome-geometry.md#mesh) :black_small_square: [\_name](socket.md#_name) :black_small_square: [name](core-gener-geome-geometry.md#name) :black_small_square: [node](socket.md#node) :black_small_square: [node_color](socket.md#node_color) :black_small_square: [node_label](socket.md#node_label) :black_small_square: [offset](core-gener-geome-geometry.md#offset) :black_small_square: [option](socket.md#option) :black_small_square: [option_index](socket.md#option_index) :black_small_square: [out](socket.md#out) :black_small_square: [\_panel_name](socket.md#_panel_name) :black_small_square: [pin_gizmo](socket.md#pin_gizmo) :black_small_square: [point_cloud](core-gener-geome-geometry.md#point_cloud) :black_small_square: [position](core-gener-geome-geometry.md#position) :black_small_square: [proximity](core-gener-geome-geometry.md#proximity) :black_small_square: [proximity_edges](core-gener-geome-geometry.md#proximity_edges) :black_small_square: [proximity_faces](core-gener-geome-geometry.md#proximity_faces) :black_small_square: [proximity_points](core-gener-geome-geometry.md#proximity_points) :black_small_square: [\_raw_sel](geobase.md#_raw_sel) :black_small_square: [raycast](core-gener-geome-geometry.md#raycast) :black_small_square: [raycast_interpolated](core-gener-geome-geometry.md#raycast_interpolated) :black_small_square: [raycast_nearest](core-gener-geome-geometry.md#raycast_nearest) :black_small_square: [realize](core-gener-geome-geometry.md#realize) :black_small_square: [remove_named_attribute](core-gener-geome-geometry.md#remove_named_attribute) :black_small_square: [remove_names](core-gener-geome-geometry.md#remove_names) :black_small_square: [replace_material](core-gener-geome-geometry.md#replace_material) :black_small_square: [\_run_tests](socket.md#_run_tests) :black_small_square: [\_sel](geobase.md#_sel) :black_small_square: [separate_components](core-gener-geome-geometry.md#separate_components) :black_small_square: [\_\_setattr__](socket.md#__setattr__) :black_small_square: [set_id](core-gener-geome-geometry.md#set_id) :black_small_square: [\_set_interface_property](socket.md#_set_interface_property) :black_small_square: [set_material](core-gener-geome-geometry.md#set_material) :black_small_square: [set_material_index](core-gener-geome-geometry.md#set_material_index) :black_small_square: [set_name](core-gener-geome-geometry.md#set_name) :black_small_square: [set_position](core-gener-geome-geometry.md#set_position) :black_small_square: [set_spline_cyclic](core-gener-geome-geometry.md#set_spline_cyclic) :black_small_square: [set_spline_resolution](core-gener-geome-geometry.md#set_spline_resolution) :black_small_square: [socket_type](socket.md#socket_type) :black_small_square: [\_\_str__](socket.md#__str__) :black_small_square: [Switch](socket.md#switch) :black_small_square: [switch](socket.md#switch) :black_small_square: [switch_false](socket.md#switch_false) :black_small_square: [to_instance](core-gener-geome-geometry.md#to_instance) :black_small_square: [transform](core-gener-geome-geometry.md#transform) :black_small_square: [transform_components](core-gener-geome-geometry.md#transform_components) :black_small_square: [transform_matrix](core-gener-geome-geometry.md#transform_matrix) :black_small_square: [\_unlock](proplocker.md#_unlock) :black_small_square: [viewer](core-gener-geome-geometry.md#viewer) :black_small_square: [volume](core-gener-geome-geometry.md#volume) :black_small_square:
+[\_\_add__](boolean.md#__add__) :black_small_square: [bake](geometry.md#bake) :black_small_square: [bounding_box](core-gener-geome-geometry.md#bounding_box) :black_small_square: ['_bsocket' not found]() :black_small_square: [\_cache](nodecache.md#_cache) :black_small_square: ['_cached_nodes' not found]() :black_small_square: [\_cache_reset](nodecache.md#_cache_reset) :black_small_square: [check_in_list](core-socke-socket.md#check_in_list) :black_small_square: [\_classes_test](core-socke-socket.md#_classes_test) :black_small_square: [convex_hull](core-gener-geome-geometry.md#convex_hull) :black_small_square: [\_create_input_socket](core-gener-geome-geometry.md#_create_input_socket) :black_small_square: [curve](core-gener-geome-geometry.md#curve) :black_small_square: [default_value](core-socke-socket.md#default_value) :black_small_square: [\_domain_to_geometry](core-socke-socket.md#_domain_to_geometry) :black_small_square: [enable_output](core-gener-geome-geometry.md#enable_output) :black_small_square: [\_\_enter__](core-socke-socket.md#__enter__) :black_small_square: [\_\_exit__](core-socke-socket.md#__exit__) :black_small_square: [\_geo](cloudpoint.md#_geo) :black_small_square: [\_geo_type](geom.md#_geo_type) :black_small_square: [\_\_getattr__](core-socke-socket.md#__getattr__) :black_small_square: [\_\_getitem__](geom.md#__getitem__) :black_small_square: [get_selection](geom.md#get_selection) :black_small_square: [grease_pencil](core-gener-geome-geometry.md#grease_pencil) :black_small_square: [id](core-gener-geome-geometry.md#id) :black_small_square: [index_of_nearest](core-gener-geome-geometry.md#index_of_nearest) :black_small_square: [IndexSwitch](core-socke-socket.md#indexswitch) :black_small_square: [index_switch](core-socke-socket.md#index_switch) :black_small_square: [\_\_init__](boolean.md#__init__) :black_small_square: [Input](core-socke-socket.md#input) :black_small_square: [instance_on_points](core-gener-geome-geometry.md#instance_on_points) :black_small_square: [instances](core-gener-geome-geometry.md#instances) :black_small_square: [\_interface_socket](core-socke-socket.md#_interface_socket) :black_small_square: [is_grid](core-socke-socket.md#is_grid) :black_small_square: [Join](core-gener-geome-geometry.md#join) :black_small_square: [join](core-gener-geome-geometry.md#join) :black_small_square: [\_jump](core-socke-socket.md#_jump) :black_small_square: ['_layout' not found]() :black_small_square: [\_lc](core-socke-socket.md#_lc) :black_small_square: [\_lcop](core-socke-socket.md#_lcop) :black_small_square: [link_from](core-socke-socket.md#link_from) :black_small_square: [material](core-gener-geome-geometry.md#material) :black_small_square: [material_index](core-gener-geome-geometry.md#material_index) :black_small_square: [MenuSwitch](core-socke-socket.md#menuswitch) :black_small_square: [menu_switch](core-socke-socket.md#menu_switch) :black_small_square: [merge](core-gener-geome-geometry.md#merge) :black_small_square: [merge_by_distance](core-gener-geome-geometry.md#merge_by_distance) :black_small_square: [mesh](core-gener-geome-geometry.md#mesh) :black_small_square: [\_name](core-socke-socket.md#_name) :black_small_square: [name](core-gener-geome-geometry.md#name) :black_small_square: [node](core-socke-socket.md#node) :black_small_square: [node_color](core-socke-socket.md#node_color) :black_small_square: [node_label](core-socke-socket.md#node_label) :black_small_square: [offset](core-gener-geome-geometry.md#offset) :black_small_square: [out](core-socke-socket.md#out) :black_small_square: [\_panel_name](core-socke-socket.md#_panel_name) :black_small_square: [pin_gizmo](core-socke-socket.md#pin_gizmo) :black_small_square: [point_cloud](core-gener-geome-geometry.md#point_cloud) :black_small_square: [\_pop](core-socke-socket.md#_pop) :black_small_square: [position](core-gener-geome-geometry.md#position) :black_small_square: [proximity](core-gener-geome-geometry.md#proximity) :black_small_square: [proximity_edges](core-gener-geome-geometry.md#proximity_edges) :black_small_square: [proximity_faces](core-gener-geome-geometry.md#proximity_faces) :black_small_square: [proximity_points](core-gener-geome-geometry.md#proximity_points) :black_small_square: [\_push](core-socke-socket.md#_push) :black_small_square: [raycast](core-gener-geome-geometry.md#raycast) :black_small_square: [realize](core-gener-geome-geometry.md#realize) :black_small_square: [remove_named_attribute](core-gener-geome-geometry.md#remove_named_attribute) :black_small_square: [repeat](core-socke-socket.md#repeat) :black_small_square: [replace_material](core-gener-geome-geometry.md#replace_material) :black_small_square: ['_selection' not found]() :black_small_square: [separate_components](core-gener-geome-geometry.md#separate_components) :black_small_square: [set_id](core-gener-geome-geometry.md#set_id) :black_small_square: [set_material](core-gener-geome-geometry.md#set_material) :black_small_square: [set_material_index](core-gener-geome-geometry.md#set_material_index) :black_small_square: [set_name](core-gener-geome-geometry.md#set_name) :black_small_square: [set_position](core-gener-geome-geometry.md#set_position) :black_small_square: [simulation](core-socke-socket.md#simulation) :black_small_square: ['_socket_type' not found]() :black_small_square: [\_\_str__](core-socke-socket.md#__str__) :black_small_square: [Switch](core-socke-socket.md#switch) :black_small_square: [switch](core-socke-socket.md#switch) :black_small_square: [switch_false](core-socke-socket.md#switch_false) :black_small_square: [to_instance](core-gener-geome-geometry.md#to_instance) :black_small_square: [transform](core-gener-geome-geometry.md#transform) :black_small_square: ['_tree' not found]() :black_small_square: ['_use_layout' not found]() :black_small_square: [viewer](core-gener-geome-geometry.md#viewer) :black_small_square: [volume](core-gener-geome-geometry.md#volume) :black_small_square:
 
 ## Content
 
-- **D** : [DistributeInGrid](cloud.md#distributeingrid) :black_small_square: [DistributeingridDensityGrid](cloud.md#distributeingriddensitygrid) :black_small_square: [DistributeingridDensityRandom](cloud.md#distributeingriddensityrandom) :black_small_square: [domain_size](cloud.md#domain_size)
+- **D** : [domain_size](cloud.md#domain_size)
 - **I** : [ImportCSV](cloud.md#importcsv) :black_small_square: [instance_on](cloud.md#instance_on) :black_small_square: [interpolate_curves](cloud.md#interpolate_curves)
 - **P** : [points](cloud.md#points) :black_small_square: [Points](cloud.md#points)
 - **R** : [radius](cloud.md#radius)
@@ -67,86 +68,6 @@ Property get node <Node Set Point Radius>
 
 
 ----------
-### DistributeInGrid()
-
-> classmethod
-
-``` python
-DistributeInGrid(grid=None, density=None, seed=None, mode='DENSITY_RANDOM')
-```
-
-> Node ERROR: Node 'Distribute Points in Grid' not found
-
-#### Arguments:
-- **grid** (_Float_ = None) : socket 'Grid' (id: Grid)
-- **density** (_Float_ = None) : socket 'Density' (id: Density)
-- **seed** (_Integer_ = None) : socket 'Seed' (id: Seed)
-- **mode** (_str_ = DENSITY_RANDOM) : parameter 'mode' in ['DENSITY_RANDOM', 'DENSITY_GRID']
-
-
-
-#### Returns:
-- **Cloud** :
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Cloud](cloud.md#cloud) :black_small_square: [Content](cloud.md#content) :black_small_square: [Methods](cloud.md#methods)</sub>
-
-----------
-### DistributeingridDensityGrid()
-
-> classmethod
-
-``` python
-DistributeingridDensityGrid(grid=None, spacing=None, threshold=None)
-```
-
-> Node ERROR: Node 'Distribute Points in Grid' not found
-
-#### Information:
-- **Parameter** : 'DENSITY_GRID'
-
-
-
-#### Arguments:
-- **grid** (_Float_ = None) : socket 'Grid' (id: Grid)
-- **spacing** (_Vector_ = None) : socket 'Spacing' (id: Spacing)
-- **threshold** (_Float_ = None) : socket 'Threshold' (id: Threshold)
-
-
-
-#### Returns:
-- **Cloud** :
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Cloud](cloud.md#cloud) :black_small_square: [Content](cloud.md#content) :black_small_square: [Methods](cloud.md#methods)</sub>
-
-----------
-### DistributeingridDensityRandom()
-
-> classmethod
-
-``` python
-DistributeingridDensityRandom(grid=None, density=None, seed=None)
-```
-
-> Node ERROR: Node 'Distribute Points in Grid' not found
-
-#### Information:
-- **Parameter** : 'DENSITY_RANDOM'
-
-
-
-#### Arguments:
-- **grid** (_Float_ = None) : socket 'Grid' (id: Grid)
-- **density** (_Float_ = None) : socket 'Density' (id: Density)
-- **seed** (_Integer_ = None) : socket 'Seed' (id: Seed)
-
-
-
-#### Returns:
-- **Cloud** :
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Cloud](cloud.md#cloud) :black_small_square: [Content](cloud.md#content) :black_small_square: [Methods](cloud.md#methods)</sub>
-
-----------
 ### domain_size()
 
 > method
@@ -164,7 +85,7 @@ domain_size()
 
 
 #### Returns:
-- **node** (_Integer_)
+- **Integer** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Cloud](cloud.md#cloud) :black_small_square: [Content](cloud.md#content) :black_small_square: [Methods](cloud.md#methods)</sub>
 
@@ -174,7 +95,7 @@ domain_size()
 > classmethod
 
 ``` python
-ImportCSV(path=None, delimiter=None)
+ImportCSV(path: 'String' = None, delimiter: 'String' = None)
 ```
 
 > Node ERROR: Node 'Import CSV' not found
@@ -196,7 +117,7 @@ ImportCSV(path=None, delimiter=None)
 > method
 
 ``` python
-instance_on(instance=None, pick_instance=None, instance_index=None, rotation=None, scale=None)
+instance_on(instance: 'Instances' = None, pick_instance: 'Boolean' = None, instance_index: 'Integer' = None, rotation: 'Rotation' = None, scale: 'Vector' = None)
 ```
 
 > Node [Instance on Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/instances/instance_on_points.html)
@@ -208,7 +129,7 @@ instance_on(instance=None, pick_instance=None, instance_index=None, rotation=Non
 
 
 #### Arguments:
-- **instance** (_Geometry_ = None) : socket 'Instance' (id: Instance)
+- **instance** (_Instances_ = None) : socket 'Instance' (id: Instance)
 - **pick_instance** (_Boolean_ = None) : socket 'Pick Instance' (id: Pick Instance)
 - **instance_index** (_Integer_ = None) : socket 'Instance Index' (id: Instance Index)
 - **rotation** (_Rotation_ = None) : socket 'Rotation' (id: Rotation)
@@ -227,7 +148,7 @@ instance_on(instance=None, pick_instance=None, instance_index=None, rotation=Non
 > method
 
 ``` python
-interpolate_curves(guide_curves=None, guide_up=None, guide_group_id=None, point_up=None, point_group_id=None, max_neighbors=None)
+interpolate_curves(guide_curves: 'Curve' = None, guide_up: 'Vector' = None, guide_group_id: 'Integer' = None, point_up: 'Vector' = None, point_group_id: 'Integer' = None, max_neighbors: 'Integer' = None)
 ```
 
 > Node [Interpolate Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/interpolate_curves.html)
@@ -238,7 +159,7 @@ interpolate_curves(guide_curves=None, guide_up=None, guide_group_id=None, point_
 
 
 #### Arguments:
-- **guide_curves** (_Geometry_ = None) : socket 'Guide Curves' (id: Guide Curves)
+- **guide_curves** (_Curve_ = None) : socket 'Guide Curves' (id: Guide Curves)
 - **guide_up** (_Vector_ = None) : socket 'Guide Up' (id: Guide Up)
 - **guide_group_id** (_Integer_ = None) : socket 'Guide Group ID' (id: Guide Group ID)
 - **point_up** (_Vector_ = None) : socket 'Point Up' (id: Point Up)
@@ -258,7 +179,7 @@ interpolate_curves(guide_curves=None, guide_up=None, guide_group_id=None, point_
 > classmethod
 
 ``` python
-Points(count=None, position=None, radius=None)
+Points(count: 'Integer' = None, position: 'Vector' = None, radius: 'Float' = None)
 ```
 
 > Node [Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/points.html)
@@ -281,7 +202,7 @@ Points(count=None, position=None, radius=None)
 > method
 
 ``` python
-to_curves(curve_group_id=None, weight=None)
+to_curves(curve_group_id: 'Integer' = None, weight: 'Float' = None)
 ```
 
 > Node [Points to Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/points_to_curves.html)
@@ -308,7 +229,7 @@ to_curves(curve_group_id=None, weight=None)
 > method
 
 ``` python
-to_sdf_grid(radius=None, voxel_size=None)
+to_sdf_grid(radius: 'Float' = None, voxel_size: 'Float' = None)
 ```
 
 > Node ERROR: Node 'Points to SDF Grid' not found
@@ -357,7 +278,7 @@ to_vertices()
 > method
 
 ``` python
-to_volume(density=None, voxel_amount=None, radius=None, resolution_mode='VOXEL_AMOUNT')
+to_volume(density: 'Float' = None, resolution_mode: "Literal['Amount', 'Size']" = None, voxel_size: 'Float' = None, voxel_amount: 'Float' = None, radius: 'Float' = None)
 ```
 
 > Node [Points to Volume](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/point/points_to_volume.html)
@@ -369,9 +290,10 @@ to_volume(density=None, voxel_amount=None, radius=None, resolution_mode='VOXEL_A
 
 #### Arguments:
 - **density** (_Float_ = None) : socket 'Density' (id: Density)
+- **resolution_mode** (_Literal['Amount', 'Size']_ = None) : ('Amount', 'Size')
+- **voxel_size** (_Float_ = None) : socket 'Voxel Size' (id: Voxel Size)
 - **voxel_amount** (_Float_ = None) : socket 'Voxel Amount' (id: Voxel Amount)
 - **radius** (_Float_ = None) : socket 'Radius' (id: Radius)
-- **resolution_mode** (_str_ = VOXEL_AMOUNT) : parameter 'resolution_mode' in ['VOXEL_AMOUNT', 'VOXEL_SIZE']
 
 
 

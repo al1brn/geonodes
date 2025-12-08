@@ -1,4 +1,4 @@
-# Generated 2025-12-08 08:30:17
+# Generated 2025-12-08 09:52:50
 
 from __future__ import annotations
 from .. socket_class import Socket
@@ -46,15 +46,16 @@ class VolumeShader(Socket):
         return cls(node._out)
 
     @classmethod
+    @property
     def info(cls):
         """ > Node <&ShaderNode Volume Info>
 
         Returns
         -------
-        - node [color (Color), density (Float), flame (Float), temperature (Float)]
+        - Color [density_ (Float), flame_ (Float), temperature_ (Float)]
         """
         node = Node('Volume Info', )
-        return node
+        return node._out
 
     @classmethod
     def Principled(cls,

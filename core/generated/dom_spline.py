@@ -1,4 +1,4 @@
-# Generated 2025-12-08 08:30:17
+# Generated 2025-12-08 09:52:50
 
 from __future__ import annotations
 from .. socket_class import Socket
@@ -67,11 +67,11 @@ class Spline:
 
         Returns
         -------
-        - node [mean (Float), median (Float), sum (Float), min (Float), max (Float), range (Float), standard_deviation (Float), variance (Float)]
+        - Float [median_ (Float), sum_ (Float), min_ (Float), max_ (Float), range_ (Float), standard_deviation_ (Float), variance_ (Float)]
         """
         data_type = utils.get_data_type_from_argument('GeometryNodeTree', 'GeometryNodeAttributeStatistic', attribute)
         node = Node('Attribute Statistic', {'Geometry': self, 'Selection': self.get_selection(), 'Attribute': attribute}, data_type=data_type, domain='CURVE')
-        return node
+        return node._out
 
     @classmethod
     def field_average(cls,
@@ -92,12 +92,12 @@ class Spline:
 
         Returns
         -------
-        - node [mean (Float), median (Float)]
+        - Float [median_ (Float)]
         """
         utils.check_enum_arg('Field Average', 'domain', domain, 'field_average', ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'))
         data_type = utils.get_data_type_from_argument('GeometryNodeTree', 'GeometryNodeFieldAverage', value)
         node = Node('Field Average', {'Value': value, 'Group Index': group_id}, data_type=data_type, domain=domain)
-        return node
+        return node._out
 
     @classmethod
     def field_min_max(cls,
@@ -118,12 +118,12 @@ class Spline:
 
         Returns
         -------
-        - node [min (Float), max (Float)]
+        - Float [max_ (Float)]
         """
         utils.check_enum_arg('Field Min & Max', 'domain', domain, 'field_min_max', ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'))
         data_type = utils.get_data_type_from_argument('GeometryNodeTree', 'GeometryNodeFieldMinAndMax', value)
         node = Node('Field Min & Max', {'Value': value, 'Group Index': group_id}, data_type=data_type, domain=domain)
-        return node
+        return node._out
 
     @classmethod
     def field_variance(cls,
@@ -144,12 +144,12 @@ class Spline:
 
         Returns
         -------
-        - node [standard_deviation (Float), variance (Float)]
+        - Float [variance_ (Float)]
         """
         utils.check_enum_arg('Field Variance', 'domain', domain, 'field_variance', ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'))
         data_type = utils.get_data_type_from_argument('GeometryNodeTree', 'GeometryNodeFieldVariance', value)
         node = Node('Field Variance', {'Value': value, 'Group Index': group_id}, data_type=data_type, domain=domain)
-        return node
+        return node._out
 
     def delete_geometry_all(self):
         """ > Node <&Node Delete Geometry>
@@ -403,10 +403,10 @@ class Spline:
 
         Returns
         -------
-        - node [point_index (Integer), total (Integer)]
+        - Integer [total_ (Integer)]
         """
         node = Node('Points of Curve', {'Curve Index': curve_index, 'Weights': weights, 'Sort Index': sort_index})
-        return node
+        return node._out
 
     @classmethod
     def point_index(cls,
@@ -518,15 +518,16 @@ class Spline:
         return self._domain_to_geometry
 
     @classmethod
+    @property
     def spline_length(cls):
         """ > Node <&Node Spline Length>
 
         Returns
         -------
-        - node [length (Float), point_count (Integer)]
+        - Float [point_count_ (Integer)]
         """
         node = Node('Spline Length', )
-        return node
+        return node._out
 
     @classmethod
     @property
@@ -553,15 +554,16 @@ class Spline:
         return node.point_count
 
     @classmethod
+    @property
     def parameter(cls):
         """ > Node <&Node Spline Parameter>
 
         Returns
         -------
-        - node [factor (Float), length (Float), index (Integer)]
+        - Float [length_ (Float), index_ (Integer)]
         """
         node = Node('Spline Parameter', )
-        return node
+        return node._out
 
     @classmethod
     @property

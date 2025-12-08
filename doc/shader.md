@@ -1,7 +1,7 @@
 # Shader
 
 ``` python
-Shader(value=None, name=None, tip=None, hide_value=False)
+Shader(value: geonodes.core.socket_class.Socket = None, name: str = None, tip: str = '', panel: str = '', optional_label: bool = False, hide_value: bool = False, hide_in_modifier: bool = False)
 ```
 
 Socket of type Shader
@@ -11,16 +11,20 @@ A group input socket of type Shader.
 #### Arguments:
 - **value** (_Socket_ = None) : initial value
 - **name** (_str_ = None) : group input socket name if not None
-- **tip** (_str_ = None) : user type for group input socket
-- **hide_value** (_bool_ = False) : Hide Value option        - hide_in_modifier (bool = False) : Hide in Modifier option
+- **tip** (_str_ = ) : Property description
+- **panel** (_str_ = ) : Panel name
+- **optional_label** (_bool_ = False) : Property optional_label
+- **hide_value** (_bool_ = False) : Property hide_value
+- **hide_in_modifier** (_bool_ = False) : Property hide_in_modifier
 
 ### Inherited
 
-[\_\_add__](shaderroot.md#__add__) :black_small_square: [\_cache](nodecache.md#_cache) :black_small_square: [\_cache_reset](nodecache.md#_cache_reset) :black_small_square: [check_in_list](socket.md#check_in_list) :black_small_square: [data_type](socket.md#data_type) :black_small_square: [\_domain_to_geometry](socket.md#_domain_to_geometry) :black_small_square: [\_geometry_class](socket.md#_geometry_class) :black_small_square: [\_\_getattr__](socket.md#__getattr__) :black_small_square: [get_node_data_type](socket.md#get_node_data_type) :black_small_square: [get_socket_class](socket.md#get_socket_class) :black_small_square: [IndexSwitch](socket.md#indexswitch) :black_small_square: [index_switch](socket.md#index_switch) :black_small_square: [Input](socket.md#input) :black_small_square: [input_type](socket.md#input_type) :black_small_square: [\_interface_socket](socket.md#_interface_socket) :black_small_square: [\_is_group_input](socket.md#_is_group_input) :black_small_square: [\_is_group_output](socket.md#_is_group_output) :black_small_square: [\_is_group_socket](socket.md#_is_group_socket) :black_small_square: [\_jump](socket.md#_jump) :black_small_square: [\_lc](socket.md#_lc) :black_small_square: [\_lcop](socket.md#_lcop) :black_small_square: [link_from](socket.md#link_from) :black_small_square: [\_lock](proplocker.md#_lock) :black_small_square: [\_mark_for_delete](socket.md#_mark_for_delete) :black_small_square: [MenuSwitch](socket.md#menuswitch) :black_small_square: [menu_switch](socket.md#menu_switch) :black_small_square: [\_\_mul__](shaderroot.md#__mul__) :black_small_square: [\_name](socket.md#_name) :black_small_square: [node](socket.md#node) :black_small_square: [node_color](socket.md#node_color) :black_small_square: [node_label](socket.md#node_label) :black_small_square: [option](socket.md#option) :black_small_square: [option_index](socket.md#option_index) :black_small_square: [\_panel_name](socket.md#_panel_name) :black_small_square: [pin_gizmo](socket.md#pin_gizmo) :black_small_square: [\_reset](socket.md#_reset) :black_small_square: [\_run_tests](socket.md#_run_tests) :black_small_square: [\_\_setattr__](socket.md#__setattr__) :black_small_square: [\_set_interface_property](socket.md#_set_interface_property) :black_small_square: [socket_type](socket.md#socket_type) :black_small_square: [\_\_str__](socket.md#__str__) :black_small_square: [surface_out](shaderroot.md#surface_out) :black_small_square: [Switch](socket.md#switch) :black_small_square: [switch](socket.md#switch) :black_small_square: [switch_false](socket.md#switch_false) :black_small_square: [\_unlock](proplocker.md#_unlock) :black_small_square: [volume_out](shaderroot.md#volume_out) :black_small_square:
+[\_\_add__](shaderroot.md#__add__) :black_small_square: ['_bsocket' not found]() :black_small_square: [\_cache](nodecache.md#_cache) :black_small_square: ['_cached_nodes' not found]() :black_small_square: [\_cache_reset](nodecache.md#_cache_reset) :black_small_square: [check_in_list](core-socke-socket.md#check_in_list) :black_small_square: [\_classes_test](core-socke-socket.md#_classes_test) :black_small_square: [default_value](core-socke-socket.md#default_value) :black_small_square: [\_domain_to_geometry](core-socke-socket.md#_domain_to_geometry) :black_small_square: [\_\_enter__](core-socke-socket.md#__enter__) :black_small_square: [\_\_exit__](core-socke-socket.md#__exit__) :black_small_square: [\_\_getattr__](core-socke-socket.md#__getattr__) :black_small_square: [IndexSwitch](core-socke-socket.md#indexswitch) :black_small_square: [index_switch](core-socke-socket.md#index_switch) :black_small_square: [Input](core-socke-socket.md#input) :black_small_square: [\_interface_socket](core-socke-socket.md#_interface_socket) :black_small_square: [is_grid](core-socke-socket.md#is_grid) :black_small_square: [\_jump](core-socke-socket.md#_jump) :black_small_square: ['_layout' not found]() :black_small_square: [\_lc](core-socke-socket.md#_lc) :black_small_square: [\_lcop](core-socke-socket.md#_lcop) :black_small_square: [link_from](core-socke-socket.md#link_from) :black_small_square: [MenuSwitch](core-socke-socket.md#menuswitch) :black_small_square: [menu_switch](core-socke-socket.md#menu_switch) :black_small_square: [\_\_mul__](shaderroot.md#__mul__) :black_small_square: [\_name](core-socke-socket.md#_name) :black_small_square: [node](core-socke-socket.md#node) :black_small_square: [node_color](core-socke-socket.md#node_color) :black_small_square: [node_label](core-socke-socket.md#node_label) :black_small_square: [\_panel_name](core-socke-socket.md#_panel_name) :black_small_square: [pin_gizmo](core-socke-socket.md#pin_gizmo) :black_small_square: [\_pop](core-socke-socket.md#_pop) :black_small_square: [\_push](core-socke-socket.md#_push) :black_small_square: [repeat](core-socke-socket.md#repeat) :black_small_square: [\_reset](core-socke-socket.md#_reset) :black_small_square: [simulation](core-socke-socket.md#simulation) :black_small_square: ['_socket_type' not found]() :black_small_square: [\_\_str__](core-socke-socket.md#__str__) :black_small_square: [surface_out](shaderroot.md#surface_out) :black_small_square: [Switch](core-socke-socket.md#switch) :black_small_square: [switch](core-socke-socket.md#switch) :black_small_square: [switch_false](core-socke-socket.md#switch_false) :black_small_square: ['_tree' not found]() :black_small_square: ['_use_layout' not found]() :black_small_square: [volume_out](shaderroot.md#volume_out) :black_small_square:
 
 ## Content
 
 - **A** : [add](shader.md#add)
+- **C** : [\_create_input_socket](shader.md#_create_input_socket)
 - **D** : [Diffuse](shader.md#diffuse)
 - **E** : [Emission](shader.md#emission)
 - **G** : [Glass](shader.md#glass) :black_small_square: [Glossy](shader.md#glossy)
@@ -28,6 +32,7 @@ A group input socket of type Shader.
 - **I** : [\_\_init__](shader.md#__init__)
 - **L** : [light_output](shader.md#light_output)
 - **M** : [material_output](shader.md#material_output) :black_small_square: [Metallic](shader.md#metallic) :black_small_square: [mix](shader.md#mix)
+- **O** : [out](shader.md#out)
 - **P** : [Principled](shader.md#principled) :black_small_square: [PrincipledHair](shader.md#principledhair)
 - **R** : [RayPortal](shader.md#rayportal) :black_small_square: [Refraction](shader.md#refraction)
 - **S** : [Sheen](shader.md#sheen) :black_small_square: [Specular](shader.md#specular) :black_small_square: [SubsurfaceScattering](shader.md#subsurfacescattering)
@@ -44,7 +49,7 @@ A group input socket of type Shader.
 > method
 
 ``` python
-add(shader=None)
+add(shader: 'Shader' = None)
 ```
 
 > Node ERROR: Node 'Add Shader' not found
@@ -65,12 +70,49 @@ add(shader=None)
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Shader](shader.md#shader) :black_small_square: [Content](shader.md#content) :black_small_square: [Methods](shader.md#methods)</sub>
 
 ----------
+### \_create_input_socket()
+
+> classmethod
+
+``` python
+_create_input_socket(name: 'str' = 'Shader', tip: 'str' = '', panel: 'str' = '', optional_label: 'bool' = False, hide_value: 'bool' = False, hide_in_modifier: 'bool' = False)
+```
+
+> Shader Input
+
+New [Shader](shader.md#shader) input with subtype 'NONE'.
+
+Aguments
+--------
+- name  (str = 'Shader') : Input socket name
+- tip  (str = '') : Property description
+- panel (str = "") : Panel name
+- optional_label  (bool = False) : Property optional_label
+- hide_value  (bool = False) : Property hide_value
+- hide_in_modifier  (bool = False) : Property hide_in_modifier
+
+#### Arguments:
+- **name** (_str_ = Shader)
+- **tip** (_str_ = )
+- **panel** (_str_ = )
+- **optional_label** (_bool_ = False)
+- **hide_value** (_bool_ = False)
+- **hide_in_modifier** (_bool_ = False)
+
+
+
+#### Returns:
+- **Shader** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Shader](shader.md#shader) :black_small_square: [Content](shader.md#content) :black_small_square: [Methods](shader.md#methods)</sub>
+
+----------
 ### Diffuse()
 
 > classmethod
 
 ``` python
-Diffuse(color=None, roughness=None, normal=None)
+Diffuse(color: 'Color' = None, roughness: 'Float' = None, normal: 'Vector' = None)
 ```
 
 > Node ERROR: Node 'Diffuse BSDF' not found
@@ -93,7 +135,7 @@ Diffuse(color=None, roughness=None, normal=None)
 > classmethod
 
 ``` python
-Emission(color=None, strength=None)
+Emission(color: 'Color' = None, strength: 'Float' = None)
 ```
 
 > Node ERROR: Node 'Emission' not found
@@ -115,7 +157,7 @@ Emission(color=None, strength=None)
 > classmethod
 
 ``` python
-Glass(color=None, roughness=None, ior=None, normal=None, distribution='MULTI_GGX')
+Glass(color: 'Color' = None, roughness: 'Float' = None, ior: 'Float' = None, normal: 'Vector' = None, thin_film_thickness: 'Float' = None, thin_film_ior: 'Float' = None, distribution: "Literal['BECKMANN', 'GGX', 'MULTI_GGX']" = 'MULTI_GGX')
 ```
 
 > Node ERROR: Node 'Glass BSDF' not found
@@ -125,7 +167,9 @@ Glass(color=None, roughness=None, ior=None, normal=None, distribution='MULTI_GGX
 - **roughness** (_Float_ = None) : socket 'Roughness' (id: Roughness)
 - **ior** (_Float_ = None) : socket 'IOR' (id: IOR)
 - **normal** (_Vector_ = None) : socket 'Normal' (id: Normal)
-- **distribution** (_str_ = MULTI_GGX) : parameter 'distribution' in ['BECKMANN', 'GGX', 'MULTI_GGX']
+- **thin_film_thickness** (_Float_ = None) : socket 'Thin Film Thickness' (id: Thin Film Thickness)
+- **thin_film_ior** (_Float_ = None) : socket 'Thin Film IOR' (id: Thin Film IOR)
+- **distribution** (_Literal['BECKMANN', 'GGX', 'MULTI_GGX']_ = MULTI_GGX) : parameter 'distribution' in ['BECKMANN', 'GGX', 'MULTI_GGX']
 
 
 
@@ -140,7 +184,7 @@ Glass(color=None, roughness=None, ior=None, normal=None, distribution='MULTI_GGX
 > classmethod
 
 ``` python
-Glossy(color=None, roughness=None, anisotropy=None, rotation=None, normal=None, tangent=None, distribution='MULTI_GGX')
+Glossy(color: 'Color' = None, roughness: 'Float' = None, anisotropy: 'Float' = None, rotation: 'Float' = None, normal: 'Vector' = None, tangent: 'Vector' = None, distribution: "Literal['BECKMANN', 'GGX', 'ASHIKHMIN_SHIRLEY', 'MULTI_GGX']" = 'MULTI_GGX')
 ```
 
 > Node ERROR: Node 'Glossy BSDF' not found
@@ -152,7 +196,7 @@ Glossy(color=None, roughness=None, anisotropy=None, rotation=None, normal=None, 
 - **rotation** (_Float_ = None) : socket 'Rotation' (id: Rotation)
 - **normal** (_Vector_ = None) : socket 'Normal' (id: Normal)
 - **tangent** (_Vector_ = None) : socket 'Tangent' (id: Tangent)
-- **distribution** (_str_ = MULTI_GGX) : parameter 'distribution' in ['BECKMANN', 'GGX', 'ASHIKHMIN_SHIRLEY', 'MULTI_GGX']
+- **distribution** (_Literal['BECKMANN', 'GGX', 'ASHIKHMIN_SHIRLEY', 'MULTI_GGX']_ = MULTI_GGX) : parameter 'distribution' in ['BECKMANN', 'GGX', 'ASHIKHMIN_SHIRLEY', 'MULTI_GGX']
 
 
 
@@ -167,7 +211,7 @@ Glossy(color=None, roughness=None, anisotropy=None, rotation=None, normal=None, 
 > classmethod
 
 ``` python
-Hair(color=None, offset=None, roughnessu=None, roughnessv=None, tangent=None, component='Reflection')
+Hair(color: 'Color' = None, offset: 'Float' = None, roughnessu: 'Float' = None, roughnessv: 'Float' = None, tangent: 'Vector' = None, component: "Literal['Reflection', 'Transmission']" = 'Reflection')
 ```
 
 > Node ERROR: Node 'Hair BSDF' not found
@@ -178,7 +222,7 @@ Hair(color=None, offset=None, roughnessu=None, roughnessv=None, tangent=None, co
 - **roughnessu** (_Float_ = None) : socket 'RoughnessU' (id: RoughnessU)
 - **roughnessv** (_Float_ = None) : socket 'RoughnessV' (id: RoughnessV)
 - **tangent** (_Vector_ = None) : socket 'Tangent' (id: Tangent)
-- **component** (_str_ = Reflection) : parameter 'component' in ['Reflection', 'Transmission']
+- **component** (_Literal['Reflection', 'Transmission']_ = Reflection) : parameter 'component' in ['Reflection', 'Transmission']
 
 
 
@@ -209,7 +253,7 @@ Holdout()
 > method
 
 ``` python
-__init__(value=None, name=None, tip=None, hide_value=False)
+__init__(value: geonodes.core.socket_class.Socket = None, name: str = None, tip: str = '', panel: str = '', optional_label: bool = False, hide_value: bool = False, hide_in_modifier: bool = False)
 ```
 
 Socket of type Shader
@@ -219,8 +263,11 @@ A group input socket of type Shader.
 #### Arguments:
 - **value** (_Socket_ = None) : initial value
 - **name** (_str_ = None) : group input socket name if not None
-- **tip** (_str_ = None) : user type for group input socket
-- **hide_value** (_bool_ = False) : Hide Value option        - hide_in_modifier (bool = False) : Hide in Modifier option
+- **tip** (_str_ = ) : Property description
+- **panel** (_str_ = ) : Panel name
+- **optional_label** (_bool_ = False) : Property optional_label
+- **hide_value** (_bool_ = False) : Property hide_value
+- **hide_in_modifier** (_bool_ = False) : Property hide_in_modifier
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Shader](shader.md#shader) :black_small_square: [Content](shader.md#content) :black_small_square: [Methods](shader.md#methods)</sub>
 
@@ -230,7 +277,7 @@ A group input socket of type Shader.
 > method
 
 ``` python
-light_output(is_active_output=True, target='ALL')
+light_output(is_active_output=True, target: "Literal['ALL', 'EEVEE', 'CYCLES']" = 'ALL')
 ```
 
 > Node [Light Output](https://docs.blender.org/manual/en/latest/render/shader_nodes/output/light.html)
@@ -242,7 +289,7 @@ light_output(is_active_output=True, target='ALL')
 
 #### Arguments:
 - **is_active_output** (_bool_ = True) : parameter 'is_active_output'
-- **target** (_str_ = ALL) : parameter 'target' in ['ALL', 'EEVEE', 'CYCLES']
+- **target** (_Literal['ALL', 'EEVEE', 'CYCLES']_ = ALL) : parameter 'target' in ['ALL', 'EEVEE', 'CYCLES']
 
 
 
@@ -257,7 +304,7 @@ light_output(is_active_output=True, target='ALL')
 > method
 
 ``` python
-material_output(volume=None, displacement=None, thickness=None, is_active_output=True, target='ALL')
+material_output(volume: 'VolumeShader' = None, displacement: 'Vector' = None, thickness: 'Float' = None, is_active_output=True, target: "Literal['ALL', 'EEVEE', 'CYCLES']" = 'ALL')
 ```
 
 > Node [Material Output](https://docs.blender.org/manual/en/latest/render/shader_nodes/output/material.html)
@@ -268,11 +315,11 @@ material_output(volume=None, displacement=None, thickness=None, is_active_output
 
 
 #### Arguments:
-- **volume** (_Shader_ = None) : socket 'Volume' (id: Volume)
+- **volume** (_VolumeShader_ = None) : socket 'Volume' (id: Volume)
 - **displacement** (_Vector_ = None) : socket 'Displacement' (id: Displacement)
 - **thickness** (_Float_ = None) : socket 'Thickness' (id: Thickness)
 - **is_active_output** (_bool_ = True) : parameter 'is_active_output'
-- **target** (_str_ = ALL) : parameter 'target' in ['ALL', 'EEVEE', 'CYCLES']
+- **target** (_Literal['ALL', 'EEVEE', 'CYCLES']_ = ALL) : parameter 'target' in ['ALL', 'EEVEE', 'CYCLES']
 
 
 
@@ -287,7 +334,7 @@ material_output(volume=None, displacement=None, thickness=None, is_active_output
 > classmethod
 
 ``` python
-Metallic(base_color=None, edge_tint=None, roughness=None, anisotropy=None, rotation=None, normal=None, tangent=None, distribution='MULTI_GGX', fresnel_type='F82')
+Metallic(base_color: 'Color' = None, edge_tint: 'Color' = None, roughness: 'Float' = None, anisotropy: 'Float' = None, rotation: 'Float' = None, normal: 'Vector' = None, tangent: 'Vector' = None, thin_film_thickness: 'Float' = None, thin_film_ior: 'Float' = None, distribution: "Literal['BECKMANN', 'GGX', 'MULTI_GGX']" = 'MULTI_GGX', fresnel_type: "Literal['PHYSICAL_CONDUCTOR', 'F82']" = 'F82')
 ```
 
 > Node ERROR: Node 'Metallic BSDF' not found
@@ -300,8 +347,10 @@ Metallic(base_color=None, edge_tint=None, roughness=None, anisotropy=None, rotat
 - **rotation** (_Float_ = None) : socket 'Rotation' (id: Rotation)
 - **normal** (_Vector_ = None) : socket 'Normal' (id: Normal)
 - **tangent** (_Vector_ = None) : socket 'Tangent' (id: Tangent)
-- **distribution** (_str_ = MULTI_GGX) : parameter 'distribution' in ['BECKMANN', 'GGX', 'MULTI_GGX']
-- **fresnel_type** (_str_ = F82) : parameter 'fresnel_type' in ['PHYSICAL_CONDUCTOR', 'F82']
+- **thin_film_thickness** (_Float_ = None) : socket 'Thin Film Thickness' (id: Thin Film Thickness)
+- **thin_film_ior** (_Float_ = None) : socket 'Thin Film IOR' (id: Thin Film IOR)
+- **distribution** (_Literal['BECKMANN', 'GGX', 'MULTI_GGX']_ = MULTI_GGX) : parameter 'distribution' in ['BECKMANN', 'GGX', 'MULTI_GGX']
+- **fresnel_type** (_Literal['PHYSICAL_CONDUCTOR', 'F82']_ = F82) : parameter 'fresnel_type' in ['PHYSICAL_CONDUCTOR', 'F82']
 
 
 
@@ -316,7 +365,7 @@ Metallic(base_color=None, edge_tint=None, roughness=None, anisotropy=None, rotat
 > method
 
 ``` python
-mix(shader=None, fac=None)
+mix(shader: 'Shader' = None, factor: 'Float' = None)
 ```
 
 > Node ERROR: Node 'Mix Shader' not found
@@ -328,7 +377,7 @@ mix(shader=None, fac=None)
 
 #### Arguments:
 - **shader** (_Shader_ = None) : socket 'Shader' (id: Shader_001)
-- **fac** (_Float_ = None) : socket 'Fac' (id: Fac)
+- **factor** (_Float_ = None) : socket 'Factor' (id: Fac)
 
 
 
@@ -338,12 +387,29 @@ mix(shader=None, fac=None)
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Shader](shader.md#shader) :black_small_square: [Content](shader.md#content) :black_small_square: [Methods](shader.md#methods)</sub>
 
 ----------
+### out()
+
+> method
+
+``` python
+out(name=None, panel='')
+```
+
+Shader output
+
+#### Arguments:
+- **name** ( = None)
+- **panel** ( = )
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Shader](shader.md#shader) :black_small_square: [Content](shader.md#content) :black_small_square: [Methods](shader.md#methods)</sub>
+
+----------
 ### Principled()
 
 > classmethod
 
 ``` python
-Principled(base_color=None, metallic=None, roughness=None, ior=None, alpha=None, normal=None, diffuse_roughness=None, subsurface_weight=None, subsurface_radius=None, subsurface_scale=None, subsurface_anisotropy=None, specular_ior_level=None, specular_tint=None, anisotropic=None, anisotropic_rotation=None, tangent=None, transmission_weight=None, coat_weight=None, coat_roughness=None, coat_ior=None, coat_tint=None, coat_normal=None, sheen_weight=None, sheen_roughness=None, sheen_tint=None, emission_color=None, emission_strength=None, thin_film_thickness=None, thin_film_ior=None, distribution='MULTI_GGX', subsurface_method='RANDOM_WALK')
+Principled(base_color: 'Color' = None, metallic: 'Float' = None, roughness: 'Float' = None, ior: 'Float' = None, alpha: 'Float' = None, normal: 'Vector' = None, diffuse_roughness: 'Float' = None, subsurface_weight: 'Float' = None, subsurface_radius: 'Vector' = None, subsurface_scale: 'Float' = None, subsurface_anisotropy: 'Float' = None, specular_ior_level: 'Float' = None, specular_tint: 'Color' = None, anisotropic: 'Float' = None, anisotropic_rotation: 'Float' = None, tangent: 'Vector' = None, transmission_weight: 'Float' = None, coat_weight: 'Float' = None, coat_roughness: 'Float' = None, coat_ior: 'Float' = None, coat_tint: 'Color' = None, coat_normal: 'Vector' = None, sheen_weight: 'Float' = None, sheen_roughness: 'Float' = None, sheen_tint: 'Color' = None, emission_color: 'Color' = None, emission_strength: 'Float' = None, thin_film_thickness: 'Float' = None, thin_film_ior: 'Float' = None, distribution: "Literal['GGX', 'MULTI_GGX']" = 'MULTI_GGX', subsurface_method: "Literal['BURLEY', 'RANDOM_WALK', 'RANDOM_WALK_SKIN']" = 'RANDOM_WALK')
 ```
 
 > Node ERROR: Node 'Principled BSDF' not found
@@ -378,8 +444,8 @@ Principled(base_color=None, metallic=None, roughness=None, ior=None, alpha=None,
 - **emission_strength** (_Float_ = None) : socket 'Emission Strength' (id: Emission Strength)
 - **thin_film_thickness** (_Float_ = None) : socket 'Thin Film Thickness' (id: Thin Film Thickness)
 - **thin_film_ior** (_Float_ = None) : socket 'Thin Film IOR' (id: Thin Film IOR)
-- **distribution** (_str_ = MULTI_GGX) : parameter 'distribution' in ['GGX', 'MULTI_GGX']
-- **subsurface_method** (_str_ = RANDOM_WALK) : parameter 'subsurface_method' in ['BURLEY', 'RANDOM_WALK', 'RANDOM_WALK_SKIN']
+- **distribution** (_Literal['GGX', 'MULTI_GGX']_ = MULTI_GGX) : parameter 'distribution' in ['GGX', 'MULTI_GGX']
+- **subsurface_method** (_Literal['BURLEY', 'RANDOM_WALK', 'RANDOM_WALK_SKIN']_ = RANDOM_WALK) : parameter 'subsurface_method' in ['BURLEY', 'RANDOM_WALK', 'RANDOM_WALK_SKIN']
 
 
 
@@ -394,7 +460,7 @@ Principled(base_color=None, metallic=None, roughness=None, ior=None, alpha=None,
 > classmethod
 
 ``` python
-PrincipledHair(color=None, roughness=None, radial_roughness=None, coat=None, ior=None, offset=None, random_roughness=None, random=None, model='CHIANG', parametrization='COLOR')
+PrincipledHair(color: 'Color' = None, roughness: 'Float' = None, radial_roughness: 'Float' = None, coat: 'Float' = None, ior: 'Float' = None, offset: 'Float' = None, random_roughness: 'Float' = None, random: 'Float' = None, model: "Literal['CHIANG', 'HUANG']" = 'CHIANG', parametrization: "Literal['ABSORPTION', 'MELANIN', 'COLOR']" = 'COLOR')
 ```
 
 > Node ERROR: Node 'Principled Hair BSDF' not found
@@ -408,8 +474,8 @@ PrincipledHair(color=None, roughness=None, radial_roughness=None, coat=None, ior
 - **offset** (_Float_ = None) : socket 'Offset' (id: Offset)
 - **random_roughness** (_Float_ = None) : socket 'Random Roughness' (id: Random Roughness)
 - **random** (_Float_ = None) : socket 'Random' (id: Random)
-- **model** (_str_ = CHIANG) : parameter 'model' in ['CHIANG', 'HUANG']
-- **parametrization** (_str_ = COLOR) : parameter 'parametrization' in ['ABSORPTION', 'MELANIN', 'COLOR']
+- **model** (_Literal['CHIANG', 'HUANG']_ = CHIANG) : parameter 'model' in ['CHIANG', 'HUANG']
+- **parametrization** (_Literal['ABSORPTION', 'MELANIN', 'COLOR']_ = COLOR) : parameter 'parametrization' in ['ABSORPTION', 'MELANIN', 'COLOR']
 
 
 
@@ -424,7 +490,7 @@ PrincipledHair(color=None, roughness=None, radial_roughness=None, coat=None, ior
 > classmethod
 
 ``` python
-RayPortal(color=None, position=None, direction=None)
+RayPortal(color: 'Color' = None, position: 'Vector' = None, direction: 'Vector' = None)
 ```
 
 > Node ERROR: Node 'Ray Portal BSDF' not found
@@ -447,7 +513,7 @@ RayPortal(color=None, position=None, direction=None)
 > classmethod
 
 ``` python
-Refraction(color=None, roughness=None, ior=None, normal=None, distribution='BECKMANN')
+Refraction(color: 'Color' = None, roughness: 'Float' = None, ior: 'Float' = None, normal: 'Vector' = None, distribution: "Literal['BECKMANN', 'GGX']" = 'BECKMANN')
 ```
 
 > Node ERROR: Node 'Refraction BSDF' not found
@@ -457,7 +523,7 @@ Refraction(color=None, roughness=None, ior=None, normal=None, distribution='BECK
 - **roughness** (_Float_ = None) : socket 'Roughness' (id: Roughness)
 - **ior** (_Float_ = None) : socket 'IOR' (id: IOR)
 - **normal** (_Vector_ = None) : socket 'Normal' (id: Normal)
-- **distribution** (_str_ = BECKMANN) : parameter 'distribution' in ['BECKMANN', 'GGX']
+- **distribution** (_Literal['BECKMANN', 'GGX']_ = BECKMANN) : parameter 'distribution' in ['BECKMANN', 'GGX']
 
 
 
@@ -472,7 +538,7 @@ Refraction(color=None, roughness=None, ior=None, normal=None, distribution='BECK
 > classmethod
 
 ``` python
-Sheen(color=None, roughness=None, normal=None, distribution='MICROFIBER')
+Sheen(color: 'Color' = None, roughness: 'Float' = None, normal: 'Vector' = None, distribution: "Literal['ASHIKHMIN', 'MICROFIBER']" = 'MICROFIBER')
 ```
 
 > Node ERROR: Node 'Sheen BSDF' not found
@@ -481,7 +547,7 @@ Sheen(color=None, roughness=None, normal=None, distribution='MICROFIBER')
 - **color** (_Color_ = None) : socket 'Color' (id: Color)
 - **roughness** (_Float_ = None) : socket 'Roughness' (id: Roughness)
 - **normal** (_Vector_ = None) : socket 'Normal' (id: Normal)
-- **distribution** (_str_ = MICROFIBER) : parameter 'distribution' in ['ASHIKHMIN', 'MICROFIBER']
+- **distribution** (_Literal['ASHIKHMIN', 'MICROFIBER']_ = MICROFIBER) : parameter 'distribution' in ['ASHIKHMIN', 'MICROFIBER']
 
 
 
@@ -496,7 +562,7 @@ Sheen(color=None, roughness=None, normal=None, distribution='MICROFIBER')
 > classmethod
 
 ``` python
-Specular(base_color=None, specular=None, roughness=None, emissive_color=None, transparency=None, normal=None, clear_coat=None, clear_coat_roughness=None, clear_coat_normal=None)
+Specular(base_color: 'Color' = None, specular: 'Color' = None, roughness: 'Float' = None, emissive_color: 'Color' = None, transparency: 'Float' = None, normal: 'Vector' = None, clear_coat: 'Float' = None, clear_coat_roughness: 'Float' = None, clear_coat_normal: 'Vector' = None)
 ```
 
 > Node ERROR: Node 'Specular BSDF' not found
@@ -525,7 +591,7 @@ Specular(base_color=None, specular=None, roughness=None, emissive_color=None, tr
 > classmethod
 
 ``` python
-SubsurfaceScattering(color=None, scale=None, radius=None, ior=None, roughness=None, anisotropy=None, normal=None, falloff='RANDOM_WALK')
+SubsurfaceScattering(color: 'Color' = None, scale: 'Float' = None, radius: 'Vector' = None, ior: 'Float' = None, roughness: 'Float' = None, anisotropy: 'Float' = None, normal: 'Vector' = None, falloff: "Literal['BURLEY', 'RANDOM_WALK', 'RANDOM_WALK_SKIN']" = 'RANDOM_WALK')
 ```
 
 > Node ERROR: Node 'Subsurface Scattering' not found
@@ -538,7 +604,7 @@ SubsurfaceScattering(color=None, scale=None, radius=None, ior=None, roughness=No
 - **roughness** (_Float_ = None) : socket 'Roughness' (id: Roughness)
 - **anisotropy** (_Float_ = None) : socket 'Anisotropy' (id: Anisotropy)
 - **normal** (_Vector_ = None) : socket 'Normal' (id: Normal)
-- **falloff** (_str_ = RANDOM_WALK) : parameter 'falloff' in ['BURLEY', 'RANDOM_WALK', 'RANDOM_WALK_SKIN']
+- **falloff** (_Literal['BURLEY', 'RANDOM_WALK', 'RANDOM_WALK_SKIN']_ = RANDOM_WALK) : parameter 'falloff' in ['BURLEY', 'RANDOM_WALK', 'RANDOM_WALK_SKIN']
 
 
 
@@ -553,7 +619,7 @@ SubsurfaceScattering(color=None, scale=None, radius=None, ior=None, roughness=No
 > classmethod
 
 ``` python
-Toon(color=None, size=None, smooth=None, normal=None, component='DIFFUSE')
+Toon(color: 'Color' = None, size: 'Float' = None, smooth: 'Float' = None, normal: 'Vector' = None, component: "Literal['DIFFUSE', 'GLOSSY']" = 'DIFFUSE')
 ```
 
 > Node ERROR: Node 'Toon BSDF' not found
@@ -563,7 +629,7 @@ Toon(color=None, size=None, smooth=None, normal=None, component='DIFFUSE')
 - **size** (_Float_ = None) : socket 'Size' (id: Size)
 - **smooth** (_Float_ = None) : socket 'Smooth' (id: Smooth)
 - **normal** (_Vector_ = None) : socket 'Normal' (id: Normal)
-- **component** (_str_ = DIFFUSE) : parameter 'component' in ['DIFFUSE', 'GLOSSY']
+- **component** (_Literal['DIFFUSE', 'GLOSSY']_ = DIFFUSE) : parameter 'component' in ['DIFFUSE', 'GLOSSY']
 
 
 
@@ -581,7 +647,7 @@ Toon(color=None, size=None, smooth=None, normal=None, component='DIFFUSE')
 to_rgb()
 ```
 
-> Node [Shader to RGB](https://docs.blender.org/manual/en/latest/render/shader_nodes/converter/shader_to_rgb.html)
+> Node [Shader to RGB](https://docs.blender.org/manual/en/latest/render/shader_nodes/color/shader_to_rgb.html)
 
 #### Information:
 - **Socket** : self
@@ -599,7 +665,7 @@ to_rgb()
 > classmethod
 
 ``` python
-Translucent(color=None, normal=None)
+Translucent(color: 'Color' = None, normal: 'Vector' = None)
 ```
 
 > Node ERROR: Node 'Translucent BSDF' not found
@@ -621,7 +687,7 @@ Translucent(color=None, normal=None)
 > classmethod
 
 ``` python
-Transparent(color=None)
+Transparent(color: 'Color' = None)
 ```
 
 > Node ERROR: Node 'Transparent BSDF' not found
@@ -642,7 +708,7 @@ Transparent(color=None)
 > method
 
 ``` python
-world_output(volume=None, is_active_output=True, target='ALL')
+world_output(volume: 'VolumeShader' = None, is_active_output=True, target: "Literal['ALL', 'EEVEE', 'CYCLES']" = 'ALL')
 ```
 
 > Node [World Output](https://docs.blender.org/manual/en/latest/render/shader_nodes/output/world.html)
@@ -653,9 +719,9 @@ world_output(volume=None, is_active_output=True, target='ALL')
 
 
 #### Arguments:
-- **volume** (_Shader_ = None) : socket 'Volume' (id: Volume)
+- **volume** (_VolumeShader_ = None) : socket 'Volume' (id: Volume)
 - **is_active_output** (_bool_ = True) : parameter 'is_active_output'
-- **target** (_str_ = ALL) : parameter 'target' in ['ALL', 'EEVEE', 'CYCLES']
+- **target** (_Literal['ALL', 'EEVEE', 'CYCLES']_ = ALL) : parameter 'target' in ['ALL', 'EEVEE', 'CYCLES']
 
 
 

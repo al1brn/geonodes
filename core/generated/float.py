@@ -1,4 +1,4 @@
-# Generated 2025-12-08 08:30:17
+# Generated 2025-12-08 09:52:50
 
 from __future__ import annotations
 from .. socket_class import Socket
@@ -370,15 +370,16 @@ class Float(Socket):
         return cls(node._out)
 
     @classmethod
+    @property
     def scene_time(cls):
         """ > Node <&Node Scene Time>
 
         Returns
         -------
-        - node [seconds (Float), frame (Float)]
+        - Float [frame_ (Float)]
         """
         node = Node('Scene Time', )
-        return node
+        return node._out
 
     @classmethod
     @property

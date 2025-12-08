@@ -4,23 +4,23 @@
 
 ## Content
 
-- **B** : [Boolean](boolean.md#boolean) :black_small_square: [Break](break.md#break)
-- **C** : [check_enum_arg](core.md#check_enum_arg) :black_small_square: [check_zones](core.md#check_zones) :black_small_square: [Cloud](cloud.md#cloud) :black_small_square: [CloudPoint](cloudpoint.md#cloudpoint) :black_small_square: [Collection](collection.md#collection) :black_small_square: [Color](color.md#color) :black_small_square: [ColorRamp](colorramp.md#colorramp) :black_small_square: [color_ramp_set_stops](core.md#color_ramp_set_stops) :black_small_square: [Corner](corner.md#corner) :black_small_square: [Curve](curve.md#curve)
+- **B** : [Boolean](boolean.md#boolean) :black_small_square: [Break](break.md#break) :black_small_square: [Bundle](bundle.md#bundle)
+- **C** : [check_enum_arg](core.md#check_enum_arg) :black_small_square: [check_zones](core.md#check_zones) :black_small_square: [Closure](closure.md#closure) :black_small_square: [Cloud](cloud.md#cloud) :black_small_square: [CloudPoint](cloudpoint.md#cloudpoint) :black_small_square: [Collection](collection.md#collection) :black_small_square: [Color](color.md#color) :black_small_square: [ColorRamp](colorramp.md#colorramp) :black_small_square: [color_ramp_set_stops](core.md#color_ramp_set_stops) :black_small_square: [Corner](corner.md#corner) :black_small_square: [Curve](curve.md#curve)
 - **D** : [del_tree](core.md#del_tree) :black_small_square: [Domain](domain.md#domain)
-- **E** : [Edge](edge.md#edge) :black_small_square: [Elif](elif.md#elif) :black_small_square: [Else](else.md#else) :black_small_square: [ensure_uniques](core.md#ensure_uniques)
-- **F** : [Face](face.md#face) :black_small_square: [fed_nodes](core.md#fed_nodes) :black_small_square: [feeding_nodes](core.md#feeding_nodes) :black_small_square: [Float](float.md#float) :black_small_square: [ForEachElement](foreachelement.md#foreachelement)
-- **G** : [G](g.md#g) :black_small_square: [generated](generated.md#generated) :black_small_square: [Geometry](geometry.md#geometry) :black_small_square: [GeoNodes](geonodes.md#geonodes) :black_small_square: [get_enum_param_user](core.md#get_enum_param_user) :black_small_square: [get_enum_param_users](core.md#get_enum_param_users) :black_small_square: [get_enum_param_value](core.md#get_enum_param_value) :black_small_square: [get_tree](core.md#get_tree) :black_small_square: [GreasePencil](greasepencil.md#greasepencil) :black_small_square: [Group](group.md#group) :black_small_square: [GroupF](groupf.md#groupf)
-- **I** : [If](if.md#if) :black_small_square: [Image](image.md#image) :black_small_square: [Instance](instance.md#instance) :black_small_square: [Instances](instances.md#instances) :black_small_square: [Integer](integer.md#integer)
+- **E** : [Edge](edge.md#edge) :black_small_square: [ensure_uniques](core.md#ensure_uniques)
+- **F** : [Face](face.md#face) :black_small_square: [fed_nodes](core.md#fed_nodes) :black_small_square: [feeding_nodes](core.md#feeding_nodes) :black_small_square: [find_snake_case_name](core.md#find_snake_case_name) :black_small_square: [Float](float.md#float)
+- **G** : [G](g.md#g) :black_small_square: [generated](generated.md#generated) :black_small_square: [Geometry](geometry.md#geometry) :black_small_square: [GeoNodes](geonodes.md#geonodes) :black_small_square: [get_data_type_from_argument](core.md#get_data_type_from_argument) :black_small_square: [get_enum_param_user](core.md#get_enum_param_user) :black_small_square: [get_enum_param_users](core.md#get_enum_param_users) :black_small_square: [get_enum_param_value](core.md#get_enum_param_value) :black_small_square: [get_items_socket_type](core.md#get_items_socket_type) :black_small_square: [get_tree](core.md#get_tree) :black_small_square: [GreasePencil](greasepencil.md#greasepencil) :black_small_square: [Group](group.md#group) :black_small_square: [GroupF](groupf.md#groupf)
+- **I** : [Image](image.md#image) :black_small_square: [Input](input.md#input) :black_small_square: [Instance](instance.md#instance) :black_small_square: [Instances](instances.md#instances) :black_small_square: [Integer](integer.md#integer)
 - **L** : [Layer](layer.md#layer) :black_small_square: [Layout](layout.md#layout)
 - **M** : [Material](material.md#material) :black_small_square: [Matrix](matrix.md#matrix) :black_small_square: [Menu](menu.md#menu) :black_small_square: [Mesh](mesh.md#mesh)
 - **N** : [Node](node.md#node)
 - **O** : [Object](object.md#object)
 - **P** : [Panel](panel.md#panel) :black_small_square: [Point](point.md#point)
-- **R** : [Repeat](repeat.md#repeat) :black_small_square: [Rotation](rotation.md#rotation)
-- **S** : [Shader](shader.md#shader) :black_small_square: [ShaderNodes](shadernodes.md#shadernodes) :black_small_square: [Simulation](simulation.md#simulation) :black_small_square: [Socket](socket.md#socket) :black_small_square: [Spline](spline.md#spline) :black_small_square: [SplinePoint](splinepoint.md#splinepoint) :black_small_square: [String](string.md#string)
+- **R** : [Rotation](rotation.md#rotation)
+- **S** : [Shader](shader.md#shader) :black_small_square: [ShaderNodes](shadernodes.md#shadernodes) :black_small_square: [Socket](socket.md#socket) :black_small_square: [Socket](socket.md#socket) :black_small_square: [Spline](spline.md#spline) :black_small_square: [SplinePoint](splinepoint.md#splinepoint) :black_small_square: [String](string.md#string)
 - **T** : [Texture](texture.md#texture) :black_small_square: [Tree](tree.md#tree)
 - **V** : [Vector](vector.md#vector) :black_small_square: [Vertex](vertex.md#vertex) :black_small_square: [Volume](volume.md#volume) :black_small_square: [VolumeShader](volumeshader.md#volumeshader)
-- **Z** : [Zone](zone.md#zone) :black_small_square: [zone_inner_nodes](core.md#zone_inner_nodes)
+- **Z** : [zone_inner_nodes](core.md#zone_inner_nodes) :black_small_square: [ZoneIterator](zoneiterator.md#zoneiterator)
 
 ## Modules
 
@@ -36,6 +36,8 @@
 
 - [Boolean](boolean.md#boolean)
 - [Break](break.md#break)
+- [Bundle](bundle.md#bundle)
+- [Closure](closure.md#closure)
 - [Cloud](cloud.md#cloud)
 - [CloudPoint](cloudpoint.md#cloudpoint)
 - [Collection](collection.md#collection)
@@ -45,19 +47,16 @@
 - [Curve](curve.md#curve)
 - [Domain](domain.md#domain)
 - [Edge](edge.md#edge)
-- [Elif](elif.md#elif)
-- [Else](else.md#else)
 - [Face](face.md#face)
 - [Float](float.md#float)
-- [ForEachElement](foreachelement.md#foreachelement)
 - [G](g.md#g)
 - [Geometry](geometry.md#geometry)
 - [GeoNodes](geonodes.md#geonodes)
 - [GreasePencil](greasepencil.md#greasepencil)
 - [Group](group.md#group)
 - [GroupF](groupf.md#groupf)
-- [If](if.md#if)
 - [Image](image.md#image)
+- [Input](input.md#input)
 - [Instance](instance.md#instance)
 - [Instances](instances.md#instances)
 - [Integer](integer.md#integer)
@@ -71,11 +70,10 @@
 - [Object](object.md#object)
 - [Panel](panel.md#panel)
 - [Point](point.md#point)
-- [Repeat](repeat.md#repeat)
 - [Rotation](rotation.md#rotation)
 - [Shader](shader.md#shader)
 - [ShaderNodes](shadernodes.md#shadernodes)
-- [Simulation](simulation.md#simulation)
+- [Socket](socket.md#socket)
 - [Socket](socket.md#socket)
 - [Spline](spline.md#spline)
 - [SplinePoint](splinepoint.md#splinepoint)
@@ -86,7 +84,7 @@
 - [Vertex](vertex.md#vertex)
 - [Volume](volume.md#volume)
 - [VolumeShader](volumeshader.md#volumeshader)
-- [Zone](zone.md#zone)
+- [ZoneIterator](zoneiterator.md#zoneiterator)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [core](core.md#core) :black_small_square: [Content](core.md#content) :black_small_square: [core](core.md#core)</sub>
 
@@ -259,6 +257,55 @@ A "feeding" node is a node connected directly or indirectly to at least one inpu
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [core](core.md#core) :black_small_square: [Content](core.md#content) :black_small_square: [Functions](core.md#functions-2)</sub>
 
 ----------
+### find_snake_case_name()
+
+> function
+
+``` python
+find_snake_case_name(sc_name: str, raw_names: list)
+```
+
+Find the snake case version of a nam in a list of raw names.
+
+#### Arguments:
+- **sc_name** (_str_)
+- **raw_names** (_list_)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [core](core.md#core) :black_small_square: [Content](core.md#content) :black_small_square: [Functions](core.md#functions-2)</sub>
+
+----------
+### get_data_type_from_argument()
+
+> function
+
+``` python
+get_data_type_from_argument(tree_type: str, bl_idname: str, argument)
+```
+
+Compute data_type Node argument
+
+data_type argument is derived from the type of the passed argument.
+
+Attribute
+---------
+- tree_type (str) : tree type
+- bl_idname (str) : node bl_idname
+- argument (Any) : the argument the derive data_type from
+- arg_name (str = None) : in case of an error
+
+#### Arguments:
+- **tree_type** (_str_)
+- **bl_idname** (_str_)
+- **argument**
+
+
+
+#### Returns:
+- **str** : valid value for data_type
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [core](core.md#core) :black_small_square: [Content](core.md#content) :black_small_square: [Functions](core.md#functions-2)</sub>
+
+----------
 ### get_enum_param_user()
 
 > function
@@ -326,6 +373,22 @@ Get the param value from a user value
 
 #### Returns:
 - **str** : The parameter value, e.g. 'COSINE'
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [core](core.md#core) :black_small_square: [Content](core.md#content) :black_small_square: [Functions](core.md#functions-2)</sub>
+
+----------
+### get_items_socket_type()
+
+> function
+
+``` python
+get_items_socket_type(socket_type)
+```
+
+Specific to node items socket type in new method.
+
+#### Arguments:
+- **socket_type**
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [core](core.md#core) :black_small_square: [Content](core.md#content) :black_small_square: [Functions](core.md#functions-2)</sub>
 

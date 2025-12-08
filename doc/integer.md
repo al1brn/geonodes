@@ -1,7 +1,7 @@
 # Integer
 
 ``` python
-Integer(value=0, name=None, min=None, max=None, tip=None, panel='', subtype='NONE', default_attribute='', default_input='VALUE', hide_value=False, hide_in_modifier=False, single_value=False)
+Integer(value: geonodes.core.socket_class.Socket | int = 0, name: str = None, min: int = -2147483648, max: int = 2147483647, tip: str = '', panel: str = '', optional_label: bool = False, hide_value: bool = False, hide_in_modifier: bool = False, default_attribute: str = '', default_input: Literal['VALUE', 'INDEX', 'ID_OR_INDEX'] = 'VALUE', shape: Literal['AUTO', 'SINGLE'] = 'AUTO', subtype: str = 'NONE')
 ```
 
 > Socket of type INTEGER
@@ -23,39 +23,42 @@ i = Integer(123, name="User input", subtype='PERCENTAGE') # Create a new integer
 ```
 
 #### Arguments:
-- **value** (_integer or Socket_ = 0) : initial value
+- **value** (_geonodes.core.socket_class.Socket | int_ = 0) : initial value
 - **name** (_str_ = None) : Create an Group Input socket with the provided str if not None
-- **min** (_float_ = None) : minimum value
-- **max** (_float_ = None) : maximum value
-- **tip** (_str_ = None) : User tip (for Group Input sockets)
-- **panel** (_str_ = ) : panel name (overrides tree panel if exists)
-- **subtype** (_str in ('NONE', 'PERCENTAGE', 'FACTOR')_ = NONE) : sub type for group input
-- **default_attribute** (_str_ = ) : default attribute name
-- **default_input** (_str in ('VALUE', 'INDEX', 'ID_OR_INDEX')_ = VALUE) : default input
-- **hide_value** (_bool_ = False) : Hide Value option
-- **hide_in_modifier** (_bool_ = False) : Hide in Modifier option
-- **single_value** (_bool_ = False) : Single Value option
+- **min** (_int_ = -2147483648) : Property min_value
+- **max** (_int_ = 2147483647) : Property max_value
+- **tip** (_str_ = ) : Property description
+- **panel** (_str_ = ) : Panel name
+- **optional_label** (_bool_ = False) : Property optional_label
+- **hide_value** (_bool_ = False) : Property hide_value
+- **hide_in_modifier** (_bool_ = False) : Property hide_in_modifier
+- **default_attribute** (_str_ = ) : Property default_attribute_name
+- **default_input** (_Literal_ = VALUE) : Property default_input in ('VALUE', 'INDEX', 'ID_OR_INDEX')
+- **shape** (_Literal_ = AUTO) : Property structure_type in ('AUTO', 'SINGLE')
+- **subtype** (_str_ = NONE) : Socket sub type in ('NONE', 'PERCENTAGE', 'FACTOR')
 
 ### Inherited
 
-[\_cache](nodecache.md#_cache) :black_small_square: [\_cache_reset](nodecache.md#_cache_reset) :black_small_square: [check_in_list](socket.md#check_in_list) :black_small_square: [data_type](socket.md#data_type) :black_small_square: [\_domain_to_geometry](socket.md#_domain_to_geometry) :black_small_square: [\_geometry_class](socket.md#_geometry_class) :black_small_square: [\_\_getattr__](socket.md#__getattr__) :black_small_square: [get_node_data_type](socket.md#get_node_data_type) :black_small_square: [get_socket_class](socket.md#get_socket_class) :black_small_square: [IndexSwitch](socket.md#indexswitch) :black_small_square: [index_switch](socket.md#index_switch) :black_small_square: [Input](socket.md#input) :black_small_square: [input_type](socket.md#input_type) :black_small_square: [\_interface_socket](socket.md#_interface_socket) :black_small_square: [\_is_group_input](socket.md#_is_group_input) :black_small_square: [\_is_group_output](socket.md#_is_group_output) :black_small_square: [\_is_group_socket](socket.md#_is_group_socket) :black_small_square: [\_jump](socket.md#_jump) :black_small_square: [\_lc](socket.md#_lc) :black_small_square: [\_lcop](socket.md#_lcop) :black_small_square: [link_from](socket.md#link_from) :black_small_square: [\_lock](proplocker.md#_lock) :black_small_square: [\_mark_for_delete](socket.md#_mark_for_delete) :black_small_square: [MenuSwitch](socket.md#menuswitch) :black_small_square: [menu_switch](socket.md#menu_switch) :black_small_square: [\_name](socket.md#_name) :black_small_square: [node](socket.md#node) :black_small_square: [node_color](socket.md#node_color) :black_small_square: [node_label](socket.md#node_label) :black_small_square: [option](socket.md#option) :black_small_square: [option_index](socket.md#option_index) :black_small_square: [out](socket.md#out) :black_small_square: [\_panel_name](socket.md#_panel_name) :black_small_square: [pin_gizmo](socket.md#pin_gizmo) :black_small_square: [\_reset](socket.md#_reset) :black_small_square: [\_run_tests](socket.md#_run_tests) :black_small_square: [\_\_setattr__](socket.md#__setattr__) :black_small_square: [\_set_interface_property](socket.md#_set_interface_property) :black_small_square: [socket_type](socket.md#socket_type) :black_small_square: [\_\_str__](socket.md#__str__) :black_small_square: [Switch](socket.md#switch) :black_small_square: [switch](socket.md#switch) :black_small_square: [switch_false](socket.md#switch_false) :black_small_square: [\_unlock](proplocker.md#_unlock) :black_small_square:
+['_bsocket' not found]() :black_small_square: [\_cache](nodecache.md#_cache) :black_small_square: ['_cached_nodes' not found]() :black_small_square: [\_cache_reset](nodecache.md#_cache_reset) :black_small_square: [check_in_list](core-socke-socket.md#check_in_list) :black_small_square: [\_classes_test](core-socke-socket.md#_classes_test) :black_small_square: [default_value](core-socke-socket.md#default_value) :black_small_square: [\_domain_to_geometry](core-socke-socket.md#_domain_to_geometry) :black_small_square: [\_\_enter__](core-socke-socket.md#__enter__) :black_small_square: [\_\_exit__](core-socke-socket.md#__exit__) :black_small_square: [\_\_getattr__](core-socke-socket.md#__getattr__) :black_small_square: [IndexSwitch](core-socke-socket.md#indexswitch) :black_small_square: [index_switch](core-socke-socket.md#index_switch) :black_small_square: [Input](core-socke-socket.md#input) :black_small_square: [\_interface_socket](core-socke-socket.md#_interface_socket) :black_small_square: [is_grid](core-socke-socket.md#is_grid) :black_small_square: [\_jump](core-socke-socket.md#_jump) :black_small_square: ['_layout' not found]() :black_small_square: [\_lc](core-socke-socket.md#_lc) :black_small_square: [\_lcop](core-socke-socket.md#_lcop) :black_small_square: [link_from](core-socke-socket.md#link_from) :black_small_square: [MenuSwitch](core-socke-socket.md#menuswitch) :black_small_square: [menu_switch](core-socke-socket.md#menu_switch) :black_small_square: [\_name](core-socke-socket.md#_name) :black_small_square: [node](core-socke-socket.md#node) :black_small_square: [node_color](core-socke-socket.md#node_color) :black_small_square: [node_label](core-socke-socket.md#node_label) :black_small_square: [out](core-socke-socket.md#out) :black_small_square: [\_panel_name](core-socke-socket.md#_panel_name) :black_small_square: [pin_gizmo](core-socke-socket.md#pin_gizmo) :black_small_square: [\_pop](core-socke-socket.md#_pop) :black_small_square: [\_push](core-socke-socket.md#_push) :black_small_square: [repeat](core-socke-socket.md#repeat) :black_small_square: [\_reset](core-socke-socket.md#_reset) :black_small_square: [simulation](core-socke-socket.md#simulation) :black_small_square: ['_socket_type' not found]() :black_small_square: [\_\_str__](core-socke-socket.md#__str__) :black_small_square: [Switch](core-socke-socket.md#switch) :black_small_square: [switch](core-socke-socket.md#switch) :black_small_square: [switch_false](core-socke-socket.md#switch_false) :black_small_square: ['_tree' not found]() :black_small_square: ['_use_layout' not found]() :black_small_square:
 
 ## Content
 
-- **A** : [abs](integer.md#abs) :black_small_square: [add](integer.md#add)
+- **A** : [abs](integer.md#abs) :black_small_square: [add](integer.md#add) :black_small_square: [advect_grid](integer.md#advect_grid)
 - **B** : [blur](integer.md#blur) :black_small_square: [bw_and](integer.md#bw_and) :black_small_square: [bw_not](integer.md#bw_not) :black_small_square: [bw_or](integer.md#bw_or) :black_small_square: [bw_rotate](integer.md#bw_rotate) :black_small_square: [bw_shift](integer.md#bw_shift) :black_small_square: [bw_xor](integer.md#bw_xor)
+- **C** : [\_create_input_socket](integer.md#_create_input_socket)
 - **D** : [divide](integer.md#divide) :black_small_square: [divide_ceil](integer.md#divide_ceil) :black_small_square: [divide_floor](integer.md#divide_floor) :black_small_square: [divide_round](integer.md#divide_round)
-- **E** : [equal](integer.md#equal)
-- **F** : [Factor](integer.md#factor) :black_small_square: [floored_modulo](integer.md#floored_modulo)
-- **G** : [gcd](integer.md#gcd) :black_small_square: [greater_equal](integer.md#greater_equal) :black_small_square: [greater_than](integer.md#greater_than)
+- **E** : [enable_output](integer.md#enable_output) :black_small_square: [equal](integer.md#equal)
+- **F** : [Factor](integer.md#factor) :black_small_square: [field_to_grid](integer.md#field_to_grid) :black_small_square: [floored_modulo](integer.md#floored_modulo)
+- **G** : [gcd](integer.md#gcd) :black_small_square: [greater_equal](integer.md#greater_equal) :black_small_square: [greater_than](integer.md#greater_than) :black_small_square: [grid_info](integer.md#grid_info)
 - **H** : [hash_value](integer.md#hash_value)
 - **I** : [IdOrIndex](integer.md#idorindex) :black_small_square: [Index](integer.md#index) :black_small_square: [\_\_init__](integer.md#__init__)
 - **L** : [lcm](integer.md#lcm) :black_small_square: [less_equal](integer.md#less_equal) :black_small_square: [less_than](integer.md#less_than)
 - **M** : [max](integer.md#max) :black_small_square: [min](integer.md#min) :black_small_square: [mix](integer.md#mix) :black_small_square: [modulo](integer.md#modulo) :black_small_square: [multiply](integer.md#multiply) :black_small_square: [multiply_add](integer.md#multiply_add)
 - **N** : [Named](integer.md#named) :black_small_square: [NamedAttribute](integer.md#namedattribute) :black_small_square: [negate](integer.md#negate) :black_small_square: [not_equal](integer.md#not_equal)
-- **P** : [Percentage](integer.md#percentage) :black_small_square: [power](integer.md#power)
-- **S** : [sample_grid](integer.md#sample_grid) :black_small_square: [sample_grid_index](integer.md#sample_grid_index) :black_small_square: [sign](integer.md#sign) :black_small_square: [subtract](integer.md#subtract)
+- **P** : [Percentage](integer.md#percentage) :black_small_square: [power](integer.md#power) :black_small_square: [prune_grid](integer.md#prune_grid)
+- **S** : [sample_grid](integer.md#sample_grid) :black_small_square: [sample_grid_index](integer.md#sample_grid_index) :black_small_square: [set_grid_background](integer.md#set_grid_background) :black_small_square: [set_grid_transform](integer.md#set_grid_transform) :black_small_square: [sign](integer.md#sign) :black_small_square: [subtract](integer.md#subtract)
 - **T** : [to_string](integer.md#to_string)
+- **V** : [voxel_index](integer.md#voxel_index) :black_small_square: [voxelize_grid](integer.md#voxelize_grid)
 
 ## Methods
 
@@ -89,7 +92,7 @@ abs()
 > method
 
 ``` python
-add(value=None)
+add(value: 'Integer' = None)
 ```
 
 > Node [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
@@ -111,12 +114,42 @@ add(value=None)
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Integer](integer.md#integer) :black_small_square: [Content](integer.md#content) :black_small_square: [Methods](integer.md#methods)</sub>
 
 ----------
+### advect_grid()
+
+> method
+
+``` python
+advect_grid(velocity: 'Vector' = None, time_step: 'Float' = None, integration_scheme: "Literal['Semi-Lagrangian', 'Midpoint', 'Runge-Kutta 3', 'Runge-Kutta 4', 'MacCormack', 'BFECC']" = None, limiter: "Literal['None', 'Clamp', 'Revert']" = None)
+```
+
+> Node [Advect Grid](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/volume/sample/advect_grid.html)
+
+#### Information:
+- **Socket** : self
+- **Parameter** : 'INT'
+
+
+
+#### Arguments:
+- **velocity** (_Vector_ = None) : socket 'Velocity' (id: Velocity)
+- **time_step** (_Float_ = None) : socket 'Time Step' (id: Time Step)
+- **integration_scheme** (_Literal['Semi-Lagrangian', 'Midpoint', 'Runge-Kutta 3', 'Runge-Kutta 4', 'MacCormack', 'BFECC']_ = None) : ('Semi-Lagrangian', 'Midpoint', 'Runge-Kutta 3', 'Runge-Kutta 4', 'MacCormack', 'BFECC')
+- **limiter** (_Literal['None', 'Clamp', 'Revert']_ = None) : ('None', 'Clamp', 'Revert')
+
+
+
+#### Returns:
+- **Integer** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Integer](integer.md#integer) :black_small_square: [Content](integer.md#content) :black_small_square: [Methods](integer.md#methods)</sub>
+
+----------
 ### blur()
 
 > method
 
 ``` python
-blur(iterations=None, weight=None)
+blur(iterations: 'Integer' = None, weight: 'Float' = None)
 ```
 
 > Node [Blur Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/blur_attribute.html)
@@ -144,7 +177,7 @@ blur(iterations=None, weight=None)
 > method
 
 ``` python
-bw_and(b=None)
+bw_and(b: 'Integer' = None)
 ```
 
 > Node [Bit Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/bit_math.html)
@@ -193,7 +226,7 @@ bw_not()
 > method
 
 ``` python
-bw_or(b=None)
+bw_or(b: 'Integer' = None)
 ```
 
 > Node [Bit Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/bit_math.html)
@@ -220,7 +253,7 @@ bw_or(b=None)
 > method
 
 ``` python
-bw_rotate(shift=None)
+bw_rotate(shift: 'Integer' = None)
 ```
 
 > Node [Bit Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/bit_math.html)
@@ -247,7 +280,7 @@ bw_rotate(shift=None)
 > method
 
 ``` python
-bw_shift(shift=None)
+bw_shift(shift: 'Integer' = None)
 ```
 
 > Node [Bit Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/bit_math.html)
@@ -274,7 +307,7 @@ bw_shift(shift=None)
 > method
 
 ``` python
-bw_xor(b=None)
+bw_xor(b: 'Integer' = None)
 ```
 
 > Node [Bit Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/bit_math.html)
@@ -296,12 +329,63 @@ bw_xor(b=None)
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Integer](integer.md#integer) :black_small_square: [Content](integer.md#content) :black_small_square: [Methods](integer.md#methods)</sub>
 
 ----------
+### \_create_input_socket()
+
+> classmethod
+
+``` python
+_create_input_socket(value: 'object' = 0, name: 'str' = 'Integer', min: 'int' = -2147483648, max: 'int' = 2147483647, tip: 'str' = '', panel: 'str' = '', optional_label: 'bool' = False, hide_value: 'bool' = False, hide_in_modifier: 'bool' = False, default_attribute: 'str' = '', default_input: "Literal['VALUE', 'INDEX', 'ID_OR_INDEX']" = 'VALUE', shape: "Literal['AUTO', 'SINGLE']" = 'AUTO', subtype: 'str' = 'NONE')
+```
+
+> Integer Input
+
+New [Integer](integer.md#integer) input with subtype 'NONE'.
+
+Aguments
+--------
+- value  (object = 0) : Default value
+- name  (str = 'Integer') : Input socket name
+- min  (int = -2147483648) : Property min_value
+- max  (int = 2147483647) : Property max_value
+- tip  (str = '') : Property description
+- panel (str = "") : Panel name
+- optional_label  (bool = False) : Property optional_label
+- hide_value  (bool = False) : Property hide_value
+- hide_in_modifier  (bool = False) : Property hide_in_modifier
+- default_attribute  (str = '') : Property default_attribute_name
+- default_input  (str = 'VALUE') : Property default_input in ('VALUE', 'INDEX', 'ID_OR_INDEX')
+- shape  (str = 'AUTO') : Property structure_type in ('AUTO', 'SINGLE')
+- subtype (str = 'NONE') : Socket sub type in ('NONE', 'PERCENTAGE', 'FACTOR')
+
+#### Arguments:
+- **value** (_object_ = 0)
+- **name** (_str_ = Integer)
+- **min** (_int_ = -2147483648)
+- **max** (_int_ = 2147483647)
+- **tip** (_str_ = )
+- **panel** (_str_ = )
+- **optional_label** (_bool_ = False)
+- **hide_value** (_bool_ = False)
+- **hide_in_modifier** (_bool_ = False)
+- **default_attribute** (_str_ = )
+- **default_input** (_Literal['VALUE', 'INDEX', 'ID_OR_INDEX']_ = VALUE)
+- **shape** (_Literal['AUTO', 'SINGLE']_ = AUTO)
+- **subtype** (_str_ = NONE)
+
+
+
+#### Returns:
+- **Integer** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Integer](integer.md#integer) :black_small_square: [Content](integer.md#content) :black_small_square: [Methods](integer.md#methods)</sub>
+
+----------
 ### divide()
 
 > method
 
 ``` python
-divide(value=None)
+divide(value: 'Integer' = None)
 ```
 
 > Node [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
@@ -328,7 +412,7 @@ divide(value=None)
 > method
 
 ``` python
-divide_ceil(value=None)
+divide_ceil(value: 'Integer' = None)
 ```
 
 > Node [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
@@ -355,7 +439,7 @@ divide_ceil(value=None)
 > method
 
 ``` python
-divide_floor(value=None)
+divide_floor(value: 'Integer' = None)
 ```
 
 > Node [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
@@ -382,7 +466,7 @@ divide_floor(value=None)
 > method
 
 ``` python
-divide_round(value=None)
+divide_round(value: 'Integer' = None)
 ```
 
 > Node [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
@@ -404,12 +488,39 @@ divide_round(value=None)
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Integer](integer.md#integer) :black_small_square: [Content](integer.md#content) :black_small_square: [Methods](integer.md#methods)</sub>
 
 ----------
+### enable_output()
+
+> method
+
+``` python
+enable_output(enable: 'Boolean' = None)
+```
+
+> Node [Enable Output](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../interface/controls/nodes/types/output/enable_output.html)
+
+#### Information:
+- **Socket** : self
+- **Parameter** : 'INT'
+
+
+
+#### Arguments:
+- **enable** (_Boolean_ = None) : socket 'Enable' (id: Enable)
+
+
+
+#### Returns:
+- **Integer** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Integer](integer.md#integer) :black_small_square: [Content](integer.md#content) :black_small_square: [Methods](integer.md#methods)</sub>
+
+----------
 ### equal()
 
 > method
 
 ``` python
-equal(b=None)
+equal(b: 'Integer' = None)
 ```
 
 > Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
@@ -438,25 +549,41 @@ equal(b=None)
 > classmethod
 
 ``` python
-Factor(value=0, name='Factor', min=0, max=100, tip=None, panel='', default_attribute='', default_input='VALUE', hide_value=False, hide_in_modifier=False, single_value=False)
+Factor(value: 'object' = 0, name: 'str' = 'Factor', min: 'int' = -2147483648, max: 'int' = 2147483647, tip: 'str' = '', panel: 'str' = '', optional_label: 'bool' = False, hide_value: 'bool' = False, hide_in_modifier: 'bool' = False, default_attribute: 'str' = '', default_input: "Literal['VALUE', 'INDEX', 'ID_OR_INDEX']" = 'VALUE', shape: "Literal['AUTO', 'SINGLE']" = 'AUTO')
 ```
 
-> Integer factor group input
+> Factor Input
 
 New [Integer](integer.md#integer) input with subtype 'FACTOR'.
 
+Aguments
+--------
+- value  (object = 0) : Default value
+- name  (str = 'Factor') : Input socket name
+- min  (int = -2147483648) : Property min_value
+- max  (int = 2147483647) : Property max_value
+- tip  (str = '') : Property description
+- panel (str = "") : Panel name
+- optional_label  (bool = False) : Property optional_label
+- hide_value  (bool = False) : Property hide_value
+- hide_in_modifier  (bool = False) : Property hide_in_modifier
+- default_attribute  (str = '') : Property default_attribute_name
+- default_input  (str = 'VALUE') : Property default_input in ('VALUE', 'INDEX', 'ID_OR_INDEX')
+- shape  (str = 'AUTO') : Property structure_type in ('AUTO', 'SINGLE')
+
 #### Arguments:
-- **value** ( = 0)
-- **name** ( = Factor)
-- **min** ( = 0)
-- **max** ( = 100)
-- **tip** ( = None)
-- **panel** ( = )
-- **default_attribute** ( = )
-- **default_input** ( = VALUE)
-- **hide_value** ( = False)
-- **hide_in_modifier** ( = False)
-- **single_value** ( = False)
+- **value** (_object_ = 0)
+- **name** (_str_ = Factor)
+- **min** (_int_ = -2147483648)
+- **max** (_int_ = 2147483647)
+- **tip** (_str_ = )
+- **panel** (_str_ = )
+- **optional_label** (_bool_ = False)
+- **hide_value** (_bool_ = False)
+- **hide_in_modifier** (_bool_ = False)
+- **default_attribute** (_str_ = )
+- **default_input** (_Literal['VALUE', 'INDEX', 'ID_OR_INDEX']_ = VALUE)
+- **shape** (_Literal['AUTO', 'SINGLE']_ = AUTO)
 
 
 
@@ -466,12 +593,40 @@ New [Integer](integer.md#integer) input with subtype 'FACTOR'.
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Integer](integer.md#integer) :black_small_square: [Content](integer.md#content) :black_small_square: [Methods](integer.md#methods)</sub>
 
 ----------
+### field_to_grid()
+
+> method
+
+``` python
+field_to_grid(named_sockets: 'dict' = {}, **sockets)
+```
+
+> Node [Field to Grid](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/volume/operations/field_to_grid.html)
+
+#### Information:
+- **Socket** : self
+- **Parameter** : 'INT'
+
+
+
+#### Arguments:
+- **named_sockets** (_dict_ = {})
+- **sockets**
+
+
+
+#### Returns:
+- **None** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Integer](integer.md#integer) :black_small_square: [Content](integer.md#content) :black_small_square: [Methods](integer.md#methods)</sub>
+
+----------
 ### floored_modulo()
 
 > method
 
 ``` python
-floored_modulo(value=None)
+floored_modulo(value: 'Integer' = None)
 ```
 
 > Node [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
@@ -498,7 +653,7 @@ floored_modulo(value=None)
 > method
 
 ``` python
-gcd(value=None)
+gcd(value: 'Integer' = None)
 ```
 
 > Node [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
@@ -525,7 +680,7 @@ gcd(value=None)
 > method
 
 ``` python
-greater_equal(b=None)
+greater_equal(b: 'Integer' = None)
 ```
 
 > Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
@@ -554,7 +709,7 @@ greater_equal(b=None)
 > method
 
 ``` python
-greater_than(b=None)
+greater_than(b: 'Integer' = None)
 ```
 
 > Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
@@ -578,12 +733,34 @@ greater_than(b=None)
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Integer](integer.md#integer) :black_small_square: [Content](integer.md#content) :black_small_square: [Methods](integer.md#methods)</sub>
 
 ----------
+### grid_info()
+
+> method
+
+``` python
+grid_info()
+```
+
+> Node [Grid Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/volume/read/grid_info.html)
+
+#### Information:
+- **Socket** : self
+- **Parameter** : 'INT'
+
+
+
+#### Returns:
+- **Matrix** (_Integer_)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Integer](integer.md#integer) :black_small_square: [Content](integer.md#content) :black_small_square: [Methods](integer.md#methods)</sub>
+
+----------
 ### hash_value()
 
 > method
 
 ``` python
-hash_value(seed=None)
+hash_value(seed: 'Integer' = None)
 ```
 
 > Node [Hash Value](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/hash_value.html)
@@ -668,7 +845,7 @@ New [Integer](integer.md#integer) input with Index as default value (default_inp
 > method
 
 ``` python
-__init__(value=0, name=None, min=None, max=None, tip=None, panel='', subtype='NONE', default_attribute='', default_input='VALUE', hide_value=False, hide_in_modifier=False, single_value=False)
+__init__(value: geonodes.core.socket_class.Socket | int = 0, name: str = None, min: int = -2147483648, max: int = 2147483647, tip: str = '', panel: str = '', optional_label: bool = False, hide_value: bool = False, hide_in_modifier: bool = False, default_attribute: str = '', default_input: Literal['VALUE', 'INDEX', 'ID_OR_INDEX'] = 'VALUE', shape: Literal['AUTO', 'SINGLE'] = 'AUTO', subtype: str = 'NONE')
 ```
 
 > Socket of type INTEGER
@@ -690,18 +867,19 @@ i = Integer(123, name="User input", subtype='PERCENTAGE') # Create a new integer
 ```
 
 #### Arguments:
-- **value** (_integer or Socket_ = 0) : initial value
+- **value** (_geonodes.core.socket_class.Socket | int_ = 0) : initial value
 - **name** (_str_ = None) : Create an Group Input socket with the provided str if not None
-- **min** (_float_ = None) : minimum value
-- **max** (_float_ = None) : maximum value
-- **tip** (_str_ = None) : User tip (for Group Input sockets)
-- **panel** (_str_ = ) : panel name (overrides tree panel if exists)
-- **subtype** (_str in ('NONE', 'PERCENTAGE', 'FACTOR')_ = NONE) : sub type for group input
-- **default_attribute** (_str_ = ) : default attribute name
-- **default_input** (_str in ('VALUE', 'INDEX', 'ID_OR_INDEX')_ = VALUE) : default input
-- **hide_value** (_bool_ = False) : Hide Value option
-- **hide_in_modifier** (_bool_ = False) : Hide in Modifier option
-- **single_value** (_bool_ = False) : Single Value option
+- **min** (_int_ = -2147483648) : Property min_value
+- **max** (_int_ = 2147483647) : Property max_value
+- **tip** (_str_ = ) : Property description
+- **panel** (_str_ = ) : Panel name
+- **optional_label** (_bool_ = False) : Property optional_label
+- **hide_value** (_bool_ = False) : Property hide_value
+- **hide_in_modifier** (_bool_ = False) : Property hide_in_modifier
+- **default_attribute** (_str_ = ) : Property default_attribute_name
+- **default_input** (_Literal_ = VALUE) : Property default_input in ('VALUE', 'INDEX', 'ID_OR_INDEX')
+- **shape** (_Literal_ = AUTO) : Property structure_type in ('AUTO', 'SINGLE')
+- **subtype** (_str_ = NONE) : Socket sub type in ('NONE', 'PERCENTAGE', 'FACTOR')
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Integer](integer.md#integer) :black_small_square: [Content](integer.md#content) :black_small_square: [Methods](integer.md#methods)</sub>
 
@@ -711,7 +889,7 @@ i = Integer(123, name="User input", subtype='PERCENTAGE') # Create a new integer
 > method
 
 ``` python
-lcm(value=None)
+lcm(value: 'Integer' = None)
 ```
 
 > Node [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
@@ -738,7 +916,7 @@ lcm(value=None)
 > method
 
 ``` python
-less_equal(b=None)
+less_equal(b: 'Integer' = None)
 ```
 
 > Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
@@ -767,7 +945,7 @@ less_equal(b=None)
 > method
 
 ``` python
-less_than(b=None)
+less_than(b: 'Integer' = None)
 ```
 
 > Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
@@ -796,7 +974,7 @@ less_than(b=None)
 > method
 
 ``` python
-max(value=None)
+max(value: 'Integer' = None)
 ```
 
 > Node [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
@@ -823,7 +1001,7 @@ max(value=None)
 > method
 
 ``` python
-min(value=None)
+min(value: 'Integer' = None)
 ```
 
 > Node [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
@@ -875,7 +1053,7 @@ mix(factor=None, other=None, clamp_factor=None)
 > method
 
 ``` python
-modulo(value=None)
+modulo(value: 'Integer' = None)
 ```
 
 > Node [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
@@ -902,7 +1080,7 @@ modulo(value=None)
 > method
 
 ``` python
-multiply(value=None)
+multiply(value: 'Integer' = None)
 ```
 
 > Node [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
@@ -929,7 +1107,7 @@ multiply(value=None)
 > method
 
 ``` python
-multiply_add(multiplier=None, addend=None)
+multiply_add(multiplier: 'Integer' = None, addend: 'Integer' = None)
 ```
 
 > Node [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
@@ -957,7 +1135,7 @@ multiply_add(multiplier=None, addend=None)
 > classmethod
 
 ``` python
-Named(name=None)
+Named(name: 'String' = None)
 ```
 
 > Node [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/named_attribute.html)
@@ -983,7 +1161,7 @@ Named(name=None)
 > classmethod
 
 ``` python
-NamedAttribute(name=None)
+NamedAttribute(name: 'String' = None)
 ```
 
 > Node [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/named_attribute.html)
@@ -1031,7 +1209,7 @@ negate()
 > method
 
 ``` python
-not_equal(b=None)
+not_equal(b: 'Integer' = None)
 ```
 
 > Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
@@ -1060,25 +1238,41 @@ not_equal(b=None)
 > classmethod
 
 ``` python
-Percentage(value=0, name='Percentage', min=0, max=100, tip=None, panel='', default_attribute='', default_input='VALUE', hide_value=False, hide_in_modifier=False, single_value=False)
+Percentage(value: 'object' = 0, name: 'str' = 'Percentage', min: 'int' = -2147483648, max: 'int' = 2147483647, tip: 'str' = '', panel: 'str' = '', optional_label: 'bool' = False, hide_value: 'bool' = False, hide_in_modifier: 'bool' = False, default_attribute: 'str' = '', default_input: "Literal['VALUE', 'INDEX', 'ID_OR_INDEX']" = 'VALUE', shape: "Literal['AUTO', 'SINGLE']" = 'AUTO')
 ```
 
-> Integer percentage group input
+> Percentage Input
 
 New [Integer](integer.md#integer) input with subtype 'PERCENTAGE'.
 
+Aguments
+--------
+- value  (object = 0) : Default value
+- name  (str = 'Percentage') : Input socket name
+- min  (int = -2147483648) : Property min_value
+- max  (int = 2147483647) : Property max_value
+- tip  (str = '') : Property description
+- panel (str = "") : Panel name
+- optional_label  (bool = False) : Property optional_label
+- hide_value  (bool = False) : Property hide_value
+- hide_in_modifier  (bool = False) : Property hide_in_modifier
+- default_attribute  (str = '') : Property default_attribute_name
+- default_input  (str = 'VALUE') : Property default_input in ('VALUE', 'INDEX', 'ID_OR_INDEX')
+- shape  (str = 'AUTO') : Property structure_type in ('AUTO', 'SINGLE')
+
 #### Arguments:
-- **value** ( = 0)
-- **name** ( = Percentage)
-- **min** ( = 0)
-- **max** ( = 100)
-- **tip** ( = None)
-- **panel** ( = )
-- **default_attribute** ( = )
-- **default_input** ( = VALUE)
-- **hide_value** ( = False)
-- **hide_in_modifier** ( = False)
-- **single_value** ( = False)
+- **value** (_object_ = 0)
+- **name** (_str_ = Percentage)
+- **min** (_int_ = -2147483648)
+- **max** (_int_ = 2147483647)
+- **tip** (_str_ = )
+- **panel** (_str_ = )
+- **optional_label** (_bool_ = False)
+- **hide_value** (_bool_ = False)
+- **hide_in_modifier** (_bool_ = False)
+- **default_attribute** (_str_ = )
+- **default_input** (_Literal['VALUE', 'INDEX', 'ID_OR_INDEX']_ = VALUE)
+- **shape** (_Literal['AUTO', 'SINGLE']_ = AUTO)
 
 
 
@@ -1093,7 +1287,7 @@ New [Integer](integer.md#integer) input with subtype 'PERCENTAGE'.
 > method
 
 ``` python
-power(exponent=None)
+power(exponent: 'Integer' = None)
 ```
 
 > Node [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
@@ -1115,15 +1309,43 @@ power(exponent=None)
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Integer](integer.md#integer) :black_small_square: [Content](integer.md#content) :black_small_square: [Methods](integer.md#methods)</sub>
 
 ----------
+### prune_grid()
+
+> method
+
+``` python
+prune_grid(mode: "Literal['Inactive', 'Threshold', 'SDF']" = None, threshold: 'Integer' = None)
+```
+
+> Node [Prune Grid](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/volume/operations/prune_grid.html)
+
+#### Information:
+- **Socket** : self
+- **Parameter** : 'INT'
+
+
+
+#### Arguments:
+- **mode** (_Literal['Inactive', 'Threshold', 'SDF']_ = None) : ('Inactive', 'Threshold', 'SDF')
+- **threshold** (_Integer_ = None) : socket 'Threshold' (id: Threshold)
+
+
+
+#### Returns:
+- **Integer** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Integer](integer.md#integer) :black_small_square: [Content](integer.md#content) :black_small_square: [Methods](integer.md#methods)</sub>
+
+----------
 ### sample_grid()
 
 > method
 
 ``` python
-sample_grid(position=None, interpolation_mode='TRILINEAR')
+sample_grid(position: 'Vector' = None, interpolation: "Literal['Nearest Neighbor', 'Trilinear', 'Triquadratic']" = None)
 ```
 
-> Node ERROR: Node 'Sample Grid' not found
+> Node [Sample Grid](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/volume/sample/sample_grid.html)
 
 #### Information:
 - **Socket** : self
@@ -1133,7 +1355,7 @@ sample_grid(position=None, interpolation_mode='TRILINEAR')
 
 #### Arguments:
 - **position** (_Vector_ = None) : socket 'Position' (id: Position)
-- **interpolation_mode** (_str_ = TRILINEAR) : parameter 'interpolation_mode' in ['NEAREST', 'TRILINEAR', 'TRIQUADRATIC']
+- **interpolation** (_Literal['Nearest Neighbor', 'Trilinear', 'Triquadratic']_ = None) : ('Nearest Neighbor', 'Trilinear', 'Triquadratic')
 
 
 
@@ -1148,10 +1370,10 @@ sample_grid(position=None, interpolation_mode='TRILINEAR')
 > method
 
 ``` python
-sample_grid_index(x=None, y=None, z=None)
+sample_grid_index(x: 'Integer' = None, y: 'Integer' = None, z: 'Integer' = None)
 ```
 
-> Node ERROR: Node 'Sample Grid Index' not found
+> Node [Sample Grid Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/volume/sample/sample_grid_index.html)
 
 #### Information:
 - **Socket** : self
@@ -1168,6 +1390,60 @@ sample_grid_index(x=None, y=None, z=None)
 
 #### Returns:
 - **Integer** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Integer](integer.md#integer) :black_small_square: [Content](integer.md#content) :black_small_square: [Methods](integer.md#methods)</sub>
+
+----------
+### set_grid_background()
+
+> method
+
+``` python
+set_grid_background(background: 'Integer' = None)
+```
+
+> Node [Set Grid Background](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/volume/write/set_grid_background.html)
+
+#### Information:
+- **Socket** : self
+- **Parameter** : 'INT'
+
+
+
+#### Arguments:
+- **background** (_Integer_ = None) : socket 'Background' (id: Background)
+
+
+
+#### Returns:
+- **Integer** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Integer](integer.md#integer) :black_small_square: [Content](integer.md#content) :black_small_square: [Methods](integer.md#methods)</sub>
+
+----------
+### set_grid_transform()
+
+> method
+
+``` python
+set_grid_transform(transform: 'Matrix' = None)
+```
+
+> Node [Set Grid Transform](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/volume/write/set_grid_transform.html)
+
+#### Information:
+- **Socket** : self
+- **Parameter** : 'INT'
+
+
+
+#### Arguments:
+- **transform** (_Matrix_ = None) : socket 'Transform' (id: Transform)
+
+
+
+#### Returns:
+- **Boolean** (_Integer_)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Integer](integer.md#integer) :black_small_square: [Content](integer.md#content) :black_small_square: [Methods](integer.md#methods)</sub>
 
@@ -1199,7 +1475,7 @@ sign()
 > method
 
 ``` python
-subtract(value=None)
+subtract(value: 'Integer' = None)
 ```
 
 > Node [Integer Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/integer_math.html)
@@ -1239,5 +1515,43 @@ to_string()
 
 #### Returns:
 - **String** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Integer](integer.md#integer) :black_small_square: [Content](integer.md#content) :black_small_square: [Methods](integer.md#methods)</sub>
+
+----------
+### voxel_index()
+
+> classmethod
+
+``` python
+voxel_index()
+```
+
+> Node [Voxel Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/volume/read/voxel_index.html)
+
+#### Returns:
+- **Integer** (_Integer_)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Integer](integer.md#integer) :black_small_square: [Content](integer.md#content) :black_small_square: [Methods](integer.md#methods)</sub>
+
+----------
+### voxelize_grid()
+
+> method
+
+``` python
+voxelize_grid()
+```
+
+> Node [Voxelize Grid](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/volume/operations/voxelize_grid.html)
+
+#### Information:
+- **Socket** : self
+- **Parameter** : 'INT'
+
+
+
+#### Returns:
+- **Integer** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Integer](integer.md#integer) :black_small_square: [Content](integer.md#content) :black_small_square: [Methods](integer.md#methods)</sub>

@@ -1,4 +1,4 @@
-# Generated 2025-12-08 08:30:17
+# Generated 2025-12-08 09:52:50
 
 from __future__ import annotations
 from .. socket_class import Socket
@@ -2676,7 +2676,7 @@ class ND:
         - Vector [max_ (Vector)]
         """
         node = Node('Instance Bounds', {'Use Radius': use_radius})
-        return node
+        return node._out
 
     @property
     def instance_rotation(self):

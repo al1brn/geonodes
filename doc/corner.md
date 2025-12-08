@@ -11,7 +11,7 @@ Corner(geometry: geonodes.core.geometry_class.Geometry)
 
 ### Inherited
 
-[\_cache](nodecache.md#_cache) :black_small_square: [\_cache_reset](nodecache.md#_cache_reset) :black_small_square: [\_\_call__](domain.md#__call__) :black_small_square: [capture](domain.md#capture) :black_small_square: [capture_attribute](domain.md#capture_attribute) :black_small_square: [check_in_list](socket.md#check_in_list) :black_small_square: [data_type](socket.md#data_type) :black_small_square: [\_domain_to_geometry](domain.md#_domain_to_geometry) :black_small_square: [for_each](domain.md#for_each) :black_small_square: [\_geometry_class](socket.md#_geometry_class) :black_small_square: [\_geo_type](geobase.md#_geo_type) :black_small_square: [\_\_getattr__](domain.md#__getattr__) :black_small_square: [\_\_getitem__](geobase.md#__getitem__) :black_small_square: [get_node_data_type](socket.md#get_node_data_type) :black_small_square: [get_socket_class](socket.md#get_socket_class) :black_small_square: [IndexSwitch](socket.md#indexswitch) :black_small_square: [index_switch](socket.md#index_switch) :black_small_square: [\_\_init__](domain.md#__init__) :black_small_square: [Input](socket.md#input) :black_small_square: [input_type](socket.md#input_type) :black_small_square: [\_interface_socket](socket.md#_interface_socket) :black_small_square: [\_is_group_input](socket.md#_is_group_input) :black_small_square: [\_is_group_output](socket.md#_is_group_output) :black_small_square: [\_is_group_socket](socket.md#_is_group_socket) :black_small_square: [\_jump](domain.md#_jump) :black_small_square: [\_lc](socket.md#_lc) :black_small_square: [\_lcop](socket.md#_lcop) :black_small_square: [link_from](socket.md#link_from) :black_small_square: [\_lock](proplocker.md#_lock) :black_small_square: [\_mark_for_delete](socket.md#_mark_for_delete) :black_small_square: [MenuSwitch](socket.md#menuswitch) :black_small_square: [menu_switch](socket.md#menu_switch) :black_small_square: [\_name](socket.md#_name) :black_small_square: [node](socket.md#node) :black_small_square: [node_color](socket.md#node_color) :black_small_square: [node_label](socket.md#node_label) :black_small_square: [option](socket.md#option) :black_small_square: [option_index](socket.md#option_index) :black_small_square: [out](socket.md#out) :black_small_square: [\_panel_name](socket.md#_panel_name) :black_small_square: [pin_gizmo](socket.md#pin_gizmo) :black_small_square: [\_raw_sel](geobase.md#_raw_sel) :black_small_square: [\_reset](socket.md#_reset) :black_small_square: [\_run_tests](socket.md#_run_tests) :black_small_square: [\_sel](domain.md#_sel) :black_small_square: [\_\_setattr__](domain.md#__setattr__) :black_small_square: [\_set_interface_property](socket.md#_set_interface_property) :black_small_square: [socket_type](socket.md#socket_type) :black_small_square: [\_\_str__](domain.md#__str__) :black_small_square: [Switch](socket.md#switch) :black_small_square: [switch](socket.md#switch) :black_small_square: [switch_false](socket.md#switch_false) :black_small_square: [\_unlock](proplocker.md#_unlock) :black_small_square:
+[\_cache](nodecache.md#_cache) :black_small_square: ['_cached_nodes' not found]() :black_small_square: [\_cache_reset](nodecache.md#_cache_reset) :black_small_square: [\_\_call__](domain.md#__call__) :black_small_square: [capture](domain.md#capture) :black_small_square: [capture_attribute](domain.md#capture_attribute) :black_small_square: [\_domain_to_geometry](domain.md#_domain_to_geometry) :black_small_square: [for_each](domain.md#for_each) :black_small_square: [foreach](domain.md#foreach) :black_small_square: [for_each_element](domain.md#for_each_element) :black_small_square: [\_geo](domain.md#_geo) :black_small_square: [\_geo_type](geom.md#_geo_type) :black_small_square: [\_\_getitem__](geom.md#__getitem__) :black_small_square: [get_selection](domain.md#get_selection) :black_small_square: [\_\_init__](domain.md#__init__) :black_small_square: [\_jump](domain.md#_jump) :black_small_square: ['_selection' not found]() :black_small_square: [\_\_setattr__](domain.md#__setattr__) :black_small_square: [\_\_str__](domain.md#__str__) :black_small_square:
 
 ## Content
 
@@ -60,7 +60,7 @@ Write only property for node <Node Set Mesh Normal>
 > classmethod
 
 ``` python
-accumulate_field(value=None, group_id=None)
+accumulate_field(value: 'Float | Integer | Vector | Matrix' = None, group_id: 'Integer' = None)
 ```
 
 > Node [Accumulate Field](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/field/accumulate_field.html)
@@ -72,7 +72,7 @@ accumulate_field(value=None, group_id=None)
 
 
 #### Arguments:
-- **value** (_Float_ = None) : socket 'Value' (id: Value)
+- **value** (_Float | Integer | Vector | Matrix_ = None) : socket 'Value' (id: Value)
 - **group_id** (_Integer_ = None) : socket 'Group ID' (id: Group Index)
 
 
@@ -88,7 +88,7 @@ accumulate_field(value=None, group_id=None)
 > method
 
 ``` python
-attribute_statistic(attribute=None)
+attribute_statistic(attribute: 'Float | Vector' = None)
 ```
 
 > Node [Attribute Statistic](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/attribute_statistic.html)
@@ -102,12 +102,12 @@ attribute_statistic(attribute=None)
 
 
 #### Arguments:
-- **attribute** (_Float_ = None) : socket 'Attribute' (id: Attribute)
+- **attribute** (_Float | Vector_ = None) : socket 'Attribute' (id: Attribute)
 
 
 
 #### Returns:
-- **node** (_Float_)
+- **Float** (_Float_)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Corner](corner.md#corner) :black_small_square: [Content](corner.md#content) :black_small_square: [Methods](corner.md#methods)</sub>
 
@@ -117,7 +117,7 @@ attribute_statistic(attribute=None)
 > classmethod
 
 ``` python
-edges(corner_index=None)
+edges(corner_index: 'Integer' = None)
 ```
 
 > Node [Edges of Corner](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/topology/edges_of_corner.html)
@@ -128,7 +128,7 @@ edges(corner_index=None)
 
 
 #### Returns:
-- **node** (_Integer_)
+- **Integer** (_Integer_)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Corner](corner.md#corner) :black_small_square: [Content](corner.md#content) :black_small_square: [Methods](corner.md#methods)</sub>
 
@@ -138,7 +138,7 @@ edges(corner_index=None)
 > classmethod
 
 ``` python
-evaluate_at_index(value=None, index=None)
+evaluate_at_index(value: 'Float | Integer | Boolean | Vector | Color | Rotation | Matrix' = None, index: 'Integer' = None)
 ```
 
 > Node [Evaluate at Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/field/evaluate_at_index.html)
@@ -150,7 +150,7 @@ evaluate_at_index(value=None, index=None)
 
 
 #### Arguments:
-- **value** (_Float_ = None) : socket 'Value' (id: Value)
+- **value** (_Float | Integer | Boolean | Vector | Color | Rotation | Matrix_ = None) : socket 'Value' (id: Value)
 - **index** (_Integer_ = None) : socket 'Index' (id: Index)
 
 
@@ -166,7 +166,7 @@ evaluate_at_index(value=None, index=None)
 > classmethod
 
 ``` python
-evaluate_on_domain(value=None)
+evaluate_on_domain(value: 'Float | Integer | Boolean | Vector | Color | Rotation | Matrix' = None)
 ```
 
 > Node [Evaluate on Domain](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/field/evaluate_on_domain.html)
@@ -178,7 +178,7 @@ evaluate_on_domain(value=None)
 
 
 #### Arguments:
-- **value** (_Float_ = None) : socket 'Value' (id: Value)
+- **value** (_Float | Integer | Boolean | Vector | Color | Rotation | Matrix_ = None) : socket 'Value' (id: Value)
 
 
 
@@ -193,7 +193,7 @@ evaluate_on_domain(value=None)
 > classmethod
 
 ``` python
-face(corner_index=None)
+face(corner_index: 'Integer' = None)
 ```
 
 > Node [Face of Corner](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/topology/face_of_corner.html)
@@ -204,7 +204,7 @@ face(corner_index=None)
 
 
 #### Returns:
-- **node** (_Integer_)
+- **Integer** (_Integer_)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Corner](corner.md#corner) :black_small_square: [Content](corner.md#content) :black_small_square: [Methods](corner.md#methods)</sub>
 
@@ -214,7 +214,7 @@ face(corner_index=None)
 > classmethod
 
 ``` python
-face_index(corner_index=None)
+face_index(corner_index: 'Integer' = None)
 ```
 
 > Node [Face of Corner](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/topology/face_of_corner.html)
@@ -235,7 +235,7 @@ face_index(corner_index=None)
 > classmethod
 
 ``` python
-field_average(value=None, group_id=None, domain='POINT')
+field_average(value: 'Float | Vector' = None, group_id: 'Integer' = None, domain: "Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']" = 'POINT')
 ```
 
 > Node [Field Average](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/field/field_average.html)
@@ -246,14 +246,14 @@ field_average(value=None, group_id=None, domain='POINT')
 
 
 #### Arguments:
-- **value** (_Float_ = None) : socket 'Value' (id: Value)
+- **value** (_Float | Vector_ = None) : socket 'Value' (id: Value)
 - **group_id** (_Integer_ = None) : socket 'Group ID' (id: Group Index)
-- **domain** (_str_ = POINT) : parameter 'domain' in ['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']
+- **domain** (_Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']_ = POINT) : parameter 'domain' in ['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']
 
 
 
 #### Returns:
-- **node** (_Float_)
+- **Float** (_Float_)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Corner](corner.md#corner) :black_small_square: [Content](corner.md#content) :black_small_square: [Methods](corner.md#methods)</sub>
 
@@ -263,7 +263,7 @@ field_average(value=None, group_id=None, domain='POINT')
 > classmethod
 
 ``` python
-field_min_max(value=None, group_id=None, domain='POINT')
+field_min_max(value: 'Float | Integer | Vector' = None, group_id: 'Integer' = None, domain: "Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']" = 'POINT')
 ```
 
 > Node ERROR: Node 'Field Min & Max' not found
@@ -274,14 +274,14 @@ field_min_max(value=None, group_id=None, domain='POINT')
 
 
 #### Arguments:
-- **value** (_Float_ = None) : socket 'Value' (id: Value)
+- **value** (_Float | Integer | Vector_ = None) : socket 'Value' (id: Value)
 - **group_id** (_Integer_ = None) : socket 'Group ID' (id: Group Index)
-- **domain** (_str_ = POINT) : parameter 'domain' in ['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']
+- **domain** (_Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']_ = POINT) : parameter 'domain' in ['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']
 
 
 
 #### Returns:
-- **node** (_Float_)
+- **Float** (_Float_)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Corner](corner.md#corner) :black_small_square: [Content](corner.md#content) :black_small_square: [Methods](corner.md#methods)</sub>
 
@@ -291,7 +291,7 @@ field_min_max(value=None, group_id=None, domain='POINT')
 > classmethod
 
 ``` python
-field_variance(value=None, group_id=None, domain='POINT')
+field_variance(value: 'Float | Vector' = None, group_id: 'Integer' = None, domain: "Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']" = 'POINT')
 ```
 
 > Node [Field Variance](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/field/field_variance.html)
@@ -302,14 +302,14 @@ field_variance(value=None, group_id=None, domain='POINT')
 
 
 #### Arguments:
-- **value** (_Float_ = None) : socket 'Value' (id: Value)
+- **value** (_Float | Vector_ = None) : socket 'Value' (id: Value)
 - **group_id** (_Integer_ = None) : socket 'Group ID' (id: Group Index)
-- **domain** (_str_ = POINT) : parameter 'domain' in ['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']
+- **domain** (_Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']_ = POINT) : parameter 'domain' in ['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']
 
 
 
 #### Returns:
-- **node** (_Float_)
+- **Float** (_Float_)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Corner](corner.md#corner) :black_small_square: [Content](corner.md#content) :black_small_square: [Methods](corner.md#methods)</sub>
 
@@ -319,7 +319,7 @@ field_variance(value=None, group_id=None, domain='POINT')
 > classmethod
 
 ``` python
-index_in_face(corner_index=None)
+index_in_face(corner_index: 'Integer' = None)
 ```
 
 > Node [Face of Corner](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/topology/face_of_corner.html)
@@ -340,7 +340,7 @@ index_in_face(corner_index=None)
 > classmethod
 
 ``` python
-next_edge_index(corner_index=None)
+next_edge_index(corner_index: 'Integer' = None)
 ```
 
 > Node [Edges of Corner](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/topology/edges_of_corner.html)
@@ -361,7 +361,7 @@ next_edge_index(corner_index=None)
 > classmethod
 
 ``` python
-offset_in_face(corner_index=None, offset=None)
+offset_in_face(corner_index: 'Integer' = None, offset: 'Integer' = None)
 ```
 
 > Node [Offset Corner in Face](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/topology/offset_corner_in_face.html)
@@ -383,7 +383,7 @@ offset_in_face(corner_index=None, offset=None)
 > classmethod
 
 ``` python
-pack_uv_islands(uv=None, margin=None, rotate=None)
+pack_uv_islands(uv: 'Vector' = None, margin: 'Float' = None, rotate: 'Boolean' = None, method: "Literal['Bounding Box', 'Convex Hull', 'Exact Shape']" = None)
 ```
 
 > Node [Pack UV Islands](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/uv/pack_uv_islands.html)
@@ -397,6 +397,7 @@ pack_uv_islands(uv=None, margin=None, rotate=None)
 - **uv** (_Vector_ = None) : socket 'UV' (id: UV)
 - **margin** (_Float_ = None) : socket 'Margin' (id: Margin)
 - **rotate** (_Boolean_ = None) : socket 'Rotate' (id: Rotate)
+- **method** (_Literal['Bounding Box', 'Convex Hull', 'Exact Shape']_ = None) : ('Bounding Box', 'Convex Hull', 'Exact Shape')
 
 
 
@@ -411,7 +412,7 @@ pack_uv_islands(uv=None, margin=None, rotate=None)
 > classmethod
 
 ``` python
-previous_edge_index(corner_index=None)
+previous_edge_index(corner_index: 'Integer' = None)
 ```
 
 > Node [Edges of Corner](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/topology/edges_of_corner.html)
@@ -432,7 +433,7 @@ previous_edge_index(corner_index=None)
 > method
 
 ``` python
-sample_index(value=None, index=None, clamp=False)
+sample_index(value: 'Float | Integer | Boolean | Vector | Color | Rotation | Matrix' = None, index: 'Integer' = None, clamp=False)
 ```
 
 > Node [Sample Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/sample/sample_index.html)
@@ -445,7 +446,7 @@ sample_index(value=None, index=None, clamp=False)
 
 
 #### Arguments:
-- **value** (_Float_ = None) : socket 'Value' (id: Value)
+- **value** (_Float | Integer | Boolean | Vector | Color | Rotation | Matrix_ = None) : socket 'Value' (id: Value)
 - **index** (_Integer_ = None) : socket 'Index' (id: Index)
 - **clamp** (_bool_ = False) : parameter 'clamp'
 
@@ -462,7 +463,7 @@ sample_index(value=None, index=None, clamp=False)
 > method
 
 ``` python
-sample_nearest(sample_position=None)
+sample_nearest(sample_position: 'Vector' = None)
 ```
 
 > Node [Sample Nearest](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/sample/sample_nearest.html)
@@ -489,7 +490,7 @@ sample_nearest(sample_position=None)
 > method
 
 ``` python
-store(name=None, value=None)
+store(name: 'String' = None, value: 'Float | Integer | Boolean | Vector | Color | Rotation | Matrix | Integer | Vector | Color' = None)
 ```
 
 > Node [Store Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html)
@@ -506,7 +507,7 @@ store(name=None, value=None)
 
 #### Arguments:
 - **name** (_String_ = None) : socket 'Name' (id: Name)
-- **value** (_Float_ = None) : socket 'Value' (id: Value)
+- **value** (_Float | Integer | Boolean | Vector | Color | Rotation | Matrix | Integer | Vector | Color_ = None) : socket 'Value' (id: Value)
 
 
 
@@ -521,7 +522,7 @@ store(name=None, value=None)
 > method
 
 ``` python
-store_named_attribute(name=None, value=None)
+store_named_attribute(name: 'String' = None, value: 'Float | Integer | Boolean | Vector | Color | Rotation | Matrix | Integer | Vector | Color' = None)
 ```
 
 > Node [Store Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html)
@@ -538,7 +539,7 @@ store_named_attribute(name=None, value=None)
 
 #### Arguments:
 - **name** (_String_ = None) : socket 'Name' (id: Name)
-- **value** (_Float_ = None) : socket 'Value' (id: Value)
+- **value** (_Float | Integer | Boolean | Vector | Color | Rotation | Matrix | Integer | Vector | Color_ = None) : socket 'Value' (id: Value)
 
 
 
@@ -553,7 +554,7 @@ store_named_attribute(name=None, value=None)
 > method
 
 ``` python
-store_uv(name=None, value=None)
+store_uv(name: 'String' = None, value: 'Vector' = None)
 ```
 
 > Node [Store Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/store_named_attribute.html)
@@ -585,7 +586,7 @@ store_uv(name=None, value=None)
 > method
 
 ``` python
-to_points(position=None, radius=None)
+to_points(position: 'Vector' = None, radius: 'Float' = None)
 ```
 
 > Node [Mesh to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_to_points.html)
@@ -614,7 +615,7 @@ to_points(position=None, radius=None)
 > classmethod
 
 ``` python
-uv_unwrap(seam=None, margin=None, fill_holes=None, method='ANGLE_BASED')
+uv_unwrap(seam: 'Boolean' = None, margin: 'Float' = None, fill_holes: 'Boolean' = None, method: "Literal['Angle Based', 'Conformal']" = None)
 ```
 
 > Node [UV Unwrap](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/uv/uv_unwrap.html)
@@ -628,7 +629,7 @@ uv_unwrap(seam=None, margin=None, fill_holes=None, method='ANGLE_BASED')
 - **seam** (_Boolean_ = None) : socket 'Seam' (id: Seam)
 - **margin** (_Float_ = None) : socket 'Margin' (id: Margin)
 - **fill_holes** (_Boolean_ = None) : socket 'Fill Holes' (id: Fill Holes)
-- **method** (_str_ = ANGLE_BASED) : parameter 'method' in ['ANGLE_BASED', 'CONFORMAL']
+- **method** (_Literal['Angle Based', 'Conformal']_ = None) : ('Angle Based', 'Conformal')
 
 
 
@@ -643,7 +644,7 @@ uv_unwrap(seam=None, margin=None, fill_holes=None, method='ANGLE_BASED')
 > classmethod
 
 ``` python
-vertex_index(corner_index=None)
+vertex_index(corner_index: 'Integer' = None)
 ```
 
 > Node [Vertex of Corner](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/topology/vertex_of_corner.html)
@@ -661,23 +662,22 @@ vertex_index(corner_index=None)
 ----------
 ### viewer()
 
-> method
+> classmethod
 
 ``` python
-viewer(value=None, ui_shortcut=0)
+viewer(named_sockets: 'dict' = {}, ui_shortcut=0, **sockets)
 ```
 
 > Node [Viewer](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/output/viewer.html)
 
 #### Information:
-- **Socket** : self
-- **Parameter** : depending on 'value' type
 - **Parameter** : 'CORNER'
 
 
 
 #### Arguments:
-- **value** (_Float_ = None) : socket 'Value' (id: Value)
+- **named_sockets** (_dict_ = {})
 - **ui_shortcut** (_int_ = 0) : parameter 'ui_shortcut'
+- **sockets**
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Corner](corner.md#corner) :black_small_square: [Content](corner.md#content) :black_small_square: [Methods](corner.md#methods)</sub>

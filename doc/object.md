@@ -1,27 +1,30 @@
 # Object
 
 ``` python
-Object(value=None, name=None, tip=None, panel='', hide_value=False, hide_in_modifier=False)
+Object(value: geonodes.core.socket_class.Socket | str = None, name: str = None, tip: str = '', panel: str = '', optional_label: bool = False, hide_value: bool = False, hide_in_modifier: bool = False)
 ```
 
 Class Object data socket
 
 #### Arguments:
-- **value** (_bpy.types.Object or str_ = None) : object or object name in bpy.data.objects
+- **value** (_geonodes.core.socket_class.Socket | str_ = None) : object or object name in bpy.data.objects
 - **name** (_str_ = None) : create a group input socket of type Object if not None
-- **tip** (_str_ = None) : user tip for group input socket
-- **panel** (_str_ = ) : panel name (overrides tree panel if exists)
-- **hide_value** (_bool_ = False) : Hide Value option
-- **hide_in_modifier** (_bool_ = False) : Hide in Modifier option
+- **tip** (_str_ = ) : Property description
+- **panel** (_str_ = ) : Panel name
+- **optional_label** (_bool_ = False) : Property optional_label
+- **hide_value** (_bool_ = False) : Property hide_value
+- **hide_in_modifier** (_bool_ = False) : Property hide_in_modifier
 
 ### Inherited
 
-[\_cache](nodecache.md#_cache) :black_small_square: [\_cache_reset](nodecache.md#_cache_reset) :black_small_square: [check_in_list](socket.md#check_in_list) :black_small_square: [data_type](socket.md#data_type) :black_small_square: [\_domain_to_geometry](socket.md#_domain_to_geometry) :black_small_square: [\_geometry_class](socket.md#_geometry_class) :black_small_square: [\_\_getattr__](socket.md#__getattr__) :black_small_square: [get_node_data_type](socket.md#get_node_data_type) :black_small_square: [get_socket_class](socket.md#get_socket_class) :black_small_square: [IndexSwitch](socket.md#indexswitch) :black_small_square: [index_switch](socket.md#index_switch) :black_small_square: [Input](socket.md#input) :black_small_square: [input_type](socket.md#input_type) :black_small_square: [\_interface_socket](socket.md#_interface_socket) :black_small_square: [\_is_group_input](socket.md#_is_group_input) :black_small_square: [\_is_group_output](socket.md#_is_group_output) :black_small_square: [\_is_group_socket](socket.md#_is_group_socket) :black_small_square: [\_jump](socket.md#_jump) :black_small_square: [\_lc](socket.md#_lc) :black_small_square: [\_lcop](socket.md#_lcop) :black_small_square: [link_from](socket.md#link_from) :black_small_square: [\_lock](proplocker.md#_lock) :black_small_square: [\_mark_for_delete](socket.md#_mark_for_delete) :black_small_square: [MenuSwitch](socket.md#menuswitch) :black_small_square: [menu_switch](socket.md#menu_switch) :black_small_square: [\_name](socket.md#_name) :black_small_square: [node](socket.md#node) :black_small_square: [node_color](socket.md#node_color) :black_small_square: [node_label](socket.md#node_label) :black_small_square: [option](socket.md#option) :black_small_square: [option_index](socket.md#option_index) :black_small_square: [out](socket.md#out) :black_small_square: [\_panel_name](socket.md#_panel_name) :black_small_square: [pin_gizmo](socket.md#pin_gizmo) :black_small_square: [\_reset](socket.md#_reset) :black_small_square: [\_run_tests](socket.md#_run_tests) :black_small_square: [\_\_setattr__](socket.md#__setattr__) :black_small_square: [\_set_interface_property](socket.md#_set_interface_property) :black_small_square: [socket_type](socket.md#socket_type) :black_small_square: [\_\_str__](socket.md#__str__) :black_small_square: [Switch](socket.md#switch) :black_small_square: [switch](socket.md#switch) :black_small_square: [switch_false](socket.md#switch_false) :black_small_square: [\_unlock](proplocker.md#_unlock) :black_small_square:
+['_bsocket' not found]() :black_small_square: [\_cache](nodecache.md#_cache) :black_small_square: ['_cached_nodes' not found]() :black_small_square: [\_cache_reset](nodecache.md#_cache_reset) :black_small_square: [check_in_list](core-socke-socket.md#check_in_list) :black_small_square: [\_classes_test](core-socke-socket.md#_classes_test) :black_small_square: [default_value](core-socke-socket.md#default_value) :black_small_square: [\_domain_to_geometry](core-socke-socket.md#_domain_to_geometry) :black_small_square: [\_\_enter__](core-socke-socket.md#__enter__) :black_small_square: [\_\_exit__](core-socke-socket.md#__exit__) :black_small_square: [\_\_getattr__](core-socke-socket.md#__getattr__) :black_small_square: [IndexSwitch](core-socke-socket.md#indexswitch) :black_small_square: [index_switch](core-socke-socket.md#index_switch) :black_small_square: [Input](core-socke-socket.md#input) :black_small_square: [\_interface_socket](core-socke-socket.md#_interface_socket) :black_small_square: [is_grid](core-socke-socket.md#is_grid) :black_small_square: [\_jump](core-socke-socket.md#_jump) :black_small_square: ['_layout' not found]() :black_small_square: [\_lc](core-socke-socket.md#_lc) :black_small_square: [\_lcop](core-socke-socket.md#_lcop) :black_small_square: [link_from](core-socke-socket.md#link_from) :black_small_square: [MenuSwitch](core-socke-socket.md#menuswitch) :black_small_square: [menu_switch](core-socke-socket.md#menu_switch) :black_small_square: [\_name](core-socke-socket.md#_name) :black_small_square: [node](core-socke-socket.md#node) :black_small_square: [node_color](core-socke-socket.md#node_color) :black_small_square: [node_label](core-socke-socket.md#node_label) :black_small_square: [out](core-socke-socket.md#out) :black_small_square: [\_panel_name](core-socke-socket.md#_panel_name) :black_small_square: [pin_gizmo](core-socke-socket.md#pin_gizmo) :black_small_square: [\_pop](core-socke-socket.md#_pop) :black_small_square: [\_push](core-socke-socket.md#_push) :black_small_square: [repeat](core-socke-socket.md#repeat) :black_small_square: [\_reset](core-socke-socket.md#_reset) :black_small_square: [simulation](core-socke-socket.md#simulation) :black_small_square: ['_socket_type' not found]() :black_small_square: [\_\_str__](core-socke-socket.md#__str__) :black_small_square: [Switch](core-socke-socket.md#switch) :black_small_square: [switch](core-socke-socket.md#switch) :black_small_square: [switch_false](core-socke-socket.md#switch_false) :black_small_square: ['_tree' not found]() :black_small_square: ['_use_layout' not found]() :black_small_square:
 
 ## Content
 
 - [ActiveCamera](object.md#activecamera)
 - [camera_info](object.md#camera_info)
+- [\_create_input_socket](object.md#_create_input_socket)
+- [enable_output](object.md#enable_output)
 - [info](object.md#info)
 - [\_\_init__](object.md#__init__)
 - [Self](object.md#self)
@@ -63,7 +66,73 @@ camera_info()
 
 
 #### Returns:
-- **node** (_Matrix_)
+- **Matrix** (_Float_)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Object](object.md#object) :black_small_square: [Content](object.md#content) :black_small_square: [Methods](object.md#methods)</sub>
+
+----------
+### \_create_input_socket()
+
+> classmethod
+
+``` python
+_create_input_socket(value: 'object' = None, name: 'str' = 'Object', tip: 'str' = '', panel: 'str' = '', optional_label: 'bool' = False, hide_value: 'bool' = False, hide_in_modifier: 'bool' = False)
+```
+
+> Object Input
+
+New [Object](object.md#object) input with subtype 'NONE'.
+
+Aguments
+--------
+- value  (object = None) : Default value
+- name  (str = 'Object') : Input socket name
+- tip  (str = '') : Property description
+- panel (str = "") : Panel name
+- optional_label  (bool = False) : Property optional_label
+- hide_value  (bool = False) : Property hide_value
+- hide_in_modifier  (bool = False) : Property hide_in_modifier
+
+#### Arguments:
+- **value** (_object_ = None)
+- **name** (_str_ = Object)
+- **tip** (_str_ = )
+- **panel** (_str_ = )
+- **optional_label** (_bool_ = False)
+- **hide_value** (_bool_ = False)
+- **hide_in_modifier** (_bool_ = False)
+
+
+
+#### Returns:
+- **Object** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Object](object.md#object) :black_small_square: [Content](object.md#content) :black_small_square: [Methods](object.md#methods)</sub>
+
+----------
+### enable_output()
+
+> method
+
+``` python
+enable_output(enable: 'Boolean' = None)
+```
+
+> Node [Enable Output](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../interface/controls/nodes/types/output/enable_output.html)
+
+#### Information:
+- **Socket** : self
+- **Parameter** : 'OBJECT'
+
+
+
+#### Arguments:
+- **enable** (_Boolean_ = None) : socket 'Enable' (id: Enable)
+
+
+
+#### Returns:
+- **Object** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Object](object.md#object) :black_small_square: [Content](object.md#content) :black_small_square: [Methods](object.md#methods)</sub>
 
@@ -73,7 +142,7 @@ camera_info()
 > method
 
 ``` python
-info(as_instance=None, transform_space='ORIGINAL')
+info(as_instance: 'Boolean' = None, transform_space: "Literal['ORIGINAL', 'RELATIVE']" = 'ORIGINAL')
 ```
 
 > Node [Object Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/scene/object_info.html)
@@ -85,12 +154,12 @@ info(as_instance=None, transform_space='ORIGINAL')
 
 #### Arguments:
 - **as_instance** (_Boolean_ = None) : socket 'As Instance' (id: As Instance)
-- **transform_space** (_str_ = ORIGINAL) : parameter 'transform_space' in ['ORIGINAL', 'RELATIVE']
+- **transform_space** (_Literal['ORIGINAL', 'RELATIVE']_ = ORIGINAL) : parameter 'transform_space' in ['ORIGINAL', 'RELATIVE']
 
 
 
 #### Returns:
-- **node** (_Matrix_)
+- **Matrix** (_Vector_)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Object](object.md#object) :black_small_square: [Content](object.md#content) :black_small_square: [Methods](object.md#methods)</sub>
 
@@ -100,18 +169,19 @@ info(as_instance=None, transform_space='ORIGINAL')
 > method
 
 ``` python
-__init__(value=None, name=None, tip=None, panel='', hide_value=False, hide_in_modifier=False)
+__init__(value: geonodes.core.socket_class.Socket | str = None, name: str = None, tip: str = '', panel: str = '', optional_label: bool = False, hide_value: bool = False, hide_in_modifier: bool = False)
 ```
 
 Class Object data socket
 
 #### Arguments:
-- **value** (_bpy.types.Object or str_ = None) : object or object name in bpy.data.objects
+- **value** (_geonodes.core.socket_class.Socket | str_ = None) : object or object name in bpy.data.objects
 - **name** (_str_ = None) : create a group input socket of type Object if not None
-- **tip** (_str_ = None) : user tip for group input socket
-- **panel** (_str_ = ) : panel name (overrides tree panel if exists)
-- **hide_value** (_bool_ = False) : Hide Value option
-- **hide_in_modifier** (_bool_ = False) : Hide in Modifier option
+- **tip** (_str_ = ) : Property description
+- **panel** (_str_ = ) : Panel name
+- **optional_label** (_bool_ = False) : Property optional_label
+- **hide_value** (_bool_ = False) : Property hide_value
+- **hide_in_modifier** (_bool_ = False) : Property hide_in_modifier
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Object](object.md#object) :black_small_square: [Content](object.md#content) :black_small_square: [Methods](object.md#methods)</sub>
 

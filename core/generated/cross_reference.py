@@ -1247,12 +1247,12 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                        'signature': '(self)'}]},
  'FunctionNodeInputSpecialCharacters': {'String': [{'func_name': 'special_characters',
                                                     'is_classmethod': True,
-                                                    'is_get': False,
+                                                    'is_get': True,
                                                     'is_jump': False,
                                                     'is_set': False,
                                                     'node_name': 'Special '
                                                                  'Characters',
-                                                    'returns': 'NODE',
+                                                    'returns': 'OUT',
                                                     'signature': '(cls)'},
                                                    {'func_name': 'line_break',
                                                     'is_classmethod': True,
@@ -2016,7 +2016,7 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                           'is_jump': False,
                                           'is_set': False,
                                           'node_name': 'Separate Color',
-                                          'returns': 'NODE',
+                                          'returns': 'OUT',
                                           'signature': '(self)'},
                                          {'func_name': 'hue',
                                           'is_classmethod': False,
@@ -2056,7 +2056,7 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                           'is_jump': False,
                                           'is_set': False,
                                           'node_name': 'Separate Color',
-                                          'returns': 'NODE',
+                                          'returns': 'OUT',
                                           'signature': '(self)'},
                                          {'func_name': 'hue',
                                           'is_classmethod': False,
@@ -2096,7 +2096,7 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                           'is_jump': False,
                                           'is_set': False,
                                           'node_name': 'Separate Color',
-                                          'returns': 'NODE',
+                                          'returns': 'OUT',
                                           'signature': '(self)'},
                                          {'func_name': 'red',
                                           'is_classmethod': False,
@@ -2153,7 +2153,7 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                             'is_jump': False,
                                             'is_set': False,
                                             'node_name': 'Separate Matrix',
-                                            'returns': 'NODE',
+                                            'returns': 'OUT',
                                             'signature': '(self)'},
                                            {'func_name': 'column_1_row_1',
                                             'is_classmethod': False,
@@ -2306,7 +2306,7 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                'is_set': False,
                                                'node_name': 'Separate '
                                                             'Transform',
-                                               'returns': 'NODE',
+                                               'returns': 'OUT',
                                                'signature': '(self)'},
                                               {'func_name': 'translation',
                                                'is_classmethod': False,
@@ -2609,7 +2609,7 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                 'is_jump': False,
                                                 'is_set': False,
                                                 'node_name': 'Domain Size',
-                                                'returns': 'NODE',
+                                                'returns': 'OUT',
                                                 'signature': '(self)'}],
                                      'Curve': [{'func_name': 'domain_size',
                                                 'is_classmethod': False,
@@ -2617,7 +2617,7 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                 'is_jump': False,
                                                 'is_set': False,
                                                 'node_name': 'Domain Size',
-                                                'returns': 'NODE',
+                                                'returns': 'OUT',
                                                 'signature': '(self)'}],
                                      'GreasePencil': [{'func_name': 'domain_size',
                                                        'is_classmethod': False,
@@ -2626,7 +2626,7 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                        'is_set': False,
                                                        'node_name': 'Domain '
                                                                     'Size',
-                                                       'returns': 'NODE',
+                                                       'returns': 'OUT',
                                                        'signature': '(self)'}],
                                      'Instances': [{'func_name': 'domain_size',
                                                     'is_classmethod': False,
@@ -2634,7 +2634,7 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                     'is_jump': False,
                                                     'is_set': False,
                                                     'node_name': 'Domain Size',
-                                                    'returns': 'NODE',
+                                                    'returns': 'OUT',
                                                     'signature': '(self)'}],
                                      'Mesh': [{'func_name': 'domain_size',
                                                'is_classmethod': False,
@@ -2642,7 +2642,7 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                'is_jump': False,
                                                'is_set': False,
                                                'node_name': 'Domain Size',
-                                               'returns': 'NODE',
+                                               'returns': 'OUT',
                                                'signature': '(self)'}],
                                      'nd': [{'func_name': 'domain_size',
                                              'is_classmethod': True,
@@ -2668,7 +2668,7 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                 'is_set': False,
                                                 'node_name': 'Attribute '
                                                              'Statistic',
-                                                'returns': 'NODE',
+                                                'returns': 'OUT',
                                                 'signature': '(self, '
                                                              'attribute: Float '
                                                              '| Vector = '
@@ -2680,7 +2680,7 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                               'is_set': False,
                                               'node_name': 'Attribute '
                                                            'Statistic',
-                                              'returns': 'NODE',
+                                              'returns': 'OUT',
                                               'signature': '(self, attribute: '
                                                            'Float | Vector = '
                                                            'None)'}],
@@ -2691,7 +2691,7 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                               'is_set': False,
                                               'node_name': 'Attribute '
                                                            'Statistic',
-                                              'returns': 'NODE',
+                                              'returns': 'OUT',
                                               'signature': '(self, attribute: '
                                                            'Float | Vector = '
                                                            'None)'}],
@@ -2702,7 +2702,7 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                   'is_set': False,
                                                   'node_name': 'Attribute '
                                                                'Statistic',
-                                                  'returns': 'NODE',
+                                                  'returns': 'OUT',
                                                   'signature': '(self, '
                                                                'attribute: '
                                                                'Float | Vector '
@@ -2714,7 +2714,7 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                'is_set': False,
                                                'node_name': 'Attribute '
                                                             'Statistic',
-                                               'returns': 'NODE',
+                                               'returns': 'OUT',
                                                'signature': '(self, attribute: '
                                                             'Float | Vector = '
                                                             'None)'}],
@@ -2725,7 +2725,7 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                'is_set': False,
                                                'node_name': 'Attribute '
                                                             'Statistic',
-                                               'returns': 'NODE',
+                                               'returns': 'OUT',
                                                'signature': '(self, attribute: '
                                                             'Float | Vector = '
                                                             'None)'}],
@@ -2736,7 +2736,7 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                 'is_set': False,
                                                 'node_name': 'Attribute '
                                                              'Statistic',
-                                                'returns': 'NODE',
+                                                'returns': 'OUT',
                                                 'signature': '(self, '
                                                              'attribute: Float '
                                                              '| Vector = '
@@ -2861,7 +2861,7 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                         'is_jump': False,
                                         'is_set': False,
                                         'node_name': 'Camera Info',
-                                        'returns': 'NODE',
+                                        'returns': 'OUT',
                                         'signature': '(self)'}],
                             'nd': [{'func_name': 'camera_info',
                                     'is_classmethod': True,
@@ -2944,7 +2944,7 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                          'is_jump': False,
                                          'is_set': False,
                                          'node_name': 'Corners of Edge',
-                                         'returns': 'NODE',
+                                         'returns': 'OUT',
                                          'signature': '(cls,\n'
                                                       '                    '
                                                       'edge_index: Integer = '
@@ -3022,7 +3022,7 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                          'is_jump': False,
                                          'is_set': False,
                                          'node_name': 'Corners of Face',
-                                         'returns': 'NODE',
+                                         'returns': 'OUT',
                                          'signature': '(cls,\n'
                                                       '                    '
                                                       'face_index: Integer = '
@@ -3117,7 +3117,7 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                              'is_jump': False,
                                              'is_set': False,
                                              'node_name': 'Corners of Vertex',
-                                             'returns': 'NODE',
+                                             'returns': 'OUT',
                                              'signature': '(cls,\n'
                                                           '                    '
                                                           'vertex_index: '
@@ -3370,7 +3370,7 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                'is_jump': False,
                                                'is_set': False,
                                                'node_name': 'Curve of Point',
-                                               'returns': 'NODE',
+                                               'returns': 'OUT',
                                                'signature': '(cls, '
                                                             'point_index: '
                                                             'Integer = None)'},
@@ -5154,7 +5154,7 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                            'is_jump': False,
                                            'is_set': False,
                                            'node_name': 'Edges of Corner',
-                                           'returns': 'NODE',
+                                           'returns': 'OUT',
                                            'signature': '(cls, corner_index: '
                                                         'Integer = None)'},
                                           {'func_name': 'next_edge_index',
@@ -5213,7 +5213,7 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                            'is_jump': False,
                                            'is_set': False,
                                            'node_name': 'Edges of Vertex',
-                                           'returns': 'NODE',
+                                           'returns': 'OUT',
                                            'signature': '(cls,\n'
                                                         '                    '
                                                         'vertex_index: Integer '
@@ -5421,7 +5421,7 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                           'is_jump': False,
                                           'is_set': False,
                                           'node_name': 'Face of Corner',
-                                          'returns': 'NODE',
+                                          'returns': 'OUT',
                                           'signature': '(cls, corner_index: '
                                                        'Integer = None)'},
                                          {'func_name': 'face_index',
@@ -5597,7 +5597,7 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                           'is_jump': False,
                                           'is_set': False,
                                           'node_name': 'Field Average',
-                                          'returns': 'NODE',
+                                          'returns': 'OUT',
                                           'signature': '(cls,\n'
                                                        '                    '
                                                        'value: Float | Vector '
@@ -5618,7 +5618,7 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                         'is_jump': False,
                                         'is_set': False,
                                         'node_name': 'Field Average',
-                                        'returns': 'NODE',
+                                        'returns': 'OUT',
                                         'signature': '(cls,\n'
                                                      '                    '
                                                      'value: Float | Vector = '
@@ -5638,7 +5638,7 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                         'is_jump': False,
                                         'is_set': False,
                                         'node_name': 'Field Average',
-                                        'returns': 'NODE',
+                                        'returns': 'OUT',
                                         'signature': '(cls,\n'
                                                      '                    '
                                                      'value: Float | Vector = '
@@ -5658,7 +5658,7 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                             'is_jump': False,
                                             'is_set': False,
                                             'node_name': 'Field Average',
-                                            'returns': 'NODE',
+                                            'returns': 'OUT',
                                             'signature': '(cls,\n'
                                                          '                    '
                                                          'value: Float | '
@@ -5679,7 +5679,7 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                          'is_jump': False,
                                          'is_set': False,
                                          'node_name': 'Field Average',
-                                         'returns': 'NODE',
+                                         'returns': 'OUT',
                                          'signature': '(cls,\n'
                                                       '                    '
                                                       'value: Float | Vector = '
@@ -5700,7 +5700,7 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                          'is_jump': False,
                                          'is_set': False,
                                          'node_name': 'Field Average',
-                                         'returns': 'NODE',
+                                         'returns': 'OUT',
                                          'signature': '(cls,\n'
                                                       '                    '
                                                       'value: Float | Vector = '
@@ -5721,7 +5721,7 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                           'is_jump': False,
                                           'is_set': False,
                                           'node_name': 'Field Average',
-                                          'returns': 'NODE',
+                                          'returns': 'OUT',
                                           'signature': '(cls,\n'
                                                        '                    '
                                                        'value: Float | Vector '
@@ -5762,7 +5762,7 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                             'is_jump': False,
                                             'is_set': False,
                                             'node_name': 'Field Min & Max',
-                                            'returns': 'NODE',
+                                            'returns': 'OUT',
                                             'signature': '(cls,\n'
                                                          '                    '
                                                          'value: Float | '
@@ -5784,7 +5784,7 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                           'is_jump': False,
                                           'is_set': False,
                                           'node_name': 'Field Min & Max',
-                                          'returns': 'NODE',
+                                          'returns': 'OUT',
                                           'signature': '(cls,\n'
                                                        '                    '
                                                        'value: Float | Integer '
@@ -5805,7 +5805,7 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                           'is_jump': False,
                                           'is_set': False,
                                           'node_name': 'Field Min & Max',
-                                          'returns': 'NODE',
+                                          'returns': 'OUT',
                                           'signature': '(cls,\n'
                                                        '                    '
                                                        'value: Float | Integer '
@@ -5826,7 +5826,7 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                               'is_jump': False,
                                               'is_set': False,
                                               'node_name': 'Field Min & Max',
-                                              'returns': 'NODE',
+                                              'returns': 'OUT',
                                               'signature': '(cls,\n'
                                                            '                    '
                                                            'value: Float | '
@@ -5849,7 +5849,7 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                            'is_jump': False,
                                            'is_set': False,
                                            'node_name': 'Field Min & Max',
-                                           'returns': 'NODE',
+                                           'returns': 'OUT',
                                            'signature': '(cls,\n'
                                                         '                    '
                                                         'value: Float | '
@@ -5871,7 +5871,7 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                            'is_jump': False,
                                            'is_set': False,
                                            'node_name': 'Field Min & Max',
-                                           'returns': 'NODE',
+                                           'returns': 'OUT',
                                            'signature': '(cls,\n'
                                                         '                    '
                                                         'value: Float | '
@@ -5893,7 +5893,7 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                             'is_jump': False,
                                             'is_set': False,
                                             'node_name': 'Field Min & Max',
-                                            'returns': 'NODE',
+                                            'returns': 'OUT',
                                             'signature': '(cls,\n'
                                                          '                    '
                                                          'value: Float | '
@@ -6106,7 +6106,7 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                            'is_jump': False,
                                            'is_set': False,
                                            'node_name': 'Field Variance',
-                                           'returns': 'NODE',
+                                           'returns': 'OUT',
                                            'signature': '(cls,\n'
                                                         '                    '
                                                         'value: Float | Vector '
@@ -6127,7 +6127,7 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                          'is_jump': False,
                                          'is_set': False,
                                          'node_name': 'Field Variance',
-                                         'returns': 'NODE',
+                                         'returns': 'OUT',
                                          'signature': '(cls,\n'
                                                       '                    '
                                                       'value: Float | Vector = '
@@ -6148,7 +6148,7 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                          'is_jump': False,
                                          'is_set': False,
                                          'node_name': 'Field Variance',
-                                         'returns': 'NODE',
+                                         'returns': 'OUT',
                                          'signature': '(cls,\n'
                                                       '                    '
                                                       'value: Float | Vector = '
@@ -6169,7 +6169,7 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                              'is_jump': False,
                                              'is_set': False,
                                              'node_name': 'Field Variance',
-                                             'returns': 'NODE',
+                                             'returns': 'OUT',
                                              'signature': '(cls,\n'
                                                           '                    '
                                                           'value: Float | '
@@ -6191,7 +6191,7 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                           'is_jump': False,
                                           'is_set': False,
                                           'node_name': 'Field Variance',
-                                          'returns': 'NODE',
+                                          'returns': 'OUT',
                                           'signature': '(cls,\n'
                                                        '                    '
                                                        'value: Float | Vector '
@@ -6212,7 +6212,7 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                           'is_jump': False,
                                           'is_set': False,
                                           'node_name': 'Field Variance',
-                                          'returns': 'NODE',
+                                          'returns': 'OUT',
                                           'signature': '(cls,\n'
                                                        '                    '
                                                        'value: Float | Vector '
@@ -6233,7 +6233,7 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                            'is_jump': False,
                                            'is_set': False,
                                            'node_name': 'Field Variance',
-                                           'returns': 'NODE',
+                                           'returns': 'OUT',
                                            'signature': '(cls,\n'
                                                         '                    '
                                                         'value: Float | Vector '
@@ -7006,7 +7006,7 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                       'is_jump': False,
                                       'is_set': False,
                                       'node_name': 'Image Info',
-                                      'returns': 'NODE',
+                                      'returns': 'OUT',
                                       'signature': '(self, frame: Integer = '
                                                    'None)'},
                                      {'func_name': 'width',
@@ -7342,7 +7342,7 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                              'is_classmethod': True,
                                              'is_get': False,
                                              'node_name': 'Instance Bounds',
-                                             'returns': 'NODE',
+                                             'returns': 'OUT',
                                              'signature': '(cls, use_radius: '
                                                           'Boolean = None)'}]},
  'GeometryNodeInputInstanceRotation': {'Instances': [{'func_name': 'rotation',
@@ -7402,11 +7402,11 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                             'signature': '(self)'}]},
  'GeometryNodeInputMeshEdgeAngle': {'Edge': [{'func_name': 'edge_angle',
                                               'is_classmethod': True,
-                                              'is_get': False,
+                                              'is_get': True,
                                               'is_jump': False,
                                               'is_set': False,
                                               'node_name': 'Edge Angle',
-                                              'returns': 'NODE',
+                                              'returns': 'OUT',
                                               'signature': '(cls)'},
                                              {'func_name': 'unsigned_angle',
                                               'is_classmethod': True,
@@ -7426,11 +7426,11 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                               'signature': '(cls)'}],
                                     'Mesh': [{'func_name': 'edge_angle',
                                               'is_classmethod': True,
-                                              'is_get': False,
+                                              'is_get': True,
                                               'is_jump': False,
                                               'is_set': False,
                                               'node_name': 'Edge Angle',
-                                              'returns': 'NODE',
+                                              'returns': 'OUT',
                                               'signature': '(cls)'},
                                              {'func_name': 'unsigned_edge_angle',
                                               'is_classmethod': True,
@@ -7478,11 +7478,11 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                 'signature': '(self)'}]},
  'GeometryNodeInputMeshEdgeVertices': {'Edge': [{'func_name': 'edge_vertices',
                                                  'is_classmethod': True,
-                                                 'is_get': False,
+                                                 'is_get': True,
                                                  'is_jump': False,
                                                  'is_set': False,
                                                  'node_name': 'Edge Vertices',
-                                                 'returns': 'NODE',
+                                                 'returns': 'OUT',
                                                  'signature': '(cls)'},
                                                 {'func_name': 'vertex_index_1',
                                                  'is_classmethod': True,
@@ -7518,11 +7518,11 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                  'signature': '(cls)'}],
                                        'Mesh': [{'func_name': 'edge_vertices',
                                                  'is_classmethod': True,
-                                                 'is_get': False,
+                                                 'is_get': True,
                                                  'is_jump': False,
                                                  'is_set': False,
                                                  'node_name': 'Edge Vertices',
-                                                 'returns': 'NODE',
+                                                 'returns': 'OUT',
                                                  'signature': '(cls)'}],
                                        'nd': [{'func_name': 'edge_vertices',
                                                'is_classmethod': True,
@@ -7581,11 +7581,11 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                             'Float = None)'}]},
  'GeometryNodeInputMeshFaceNeighbors': {'Face': [{'func_name': 'neighbors',
                                                   'is_classmethod': True,
-                                                  'is_get': False,
+                                                  'is_get': True,
                                                   'is_jump': False,
                                                   'is_set': False,
                                                   'node_name': 'Face Neighbors',
-                                                  'returns': 'NODE',
+                                                  'returns': 'OUT',
                                                   'signature': '(cls)'},
                                                  {'func_name': 'neighbors_vertex_count',
                                                   'is_classmethod': True,
@@ -7605,11 +7605,11 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                   'signature': '(cls)'}],
                                         'Mesh': [{'func_name': 'face_neighbors',
                                                   'is_classmethod': True,
-                                                  'is_get': False,
+                                                  'is_get': True,
                                                   'is_jump': False,
                                                   'is_set': False,
                                                   'node_name': 'Face Neighbors',
-                                                  'returns': 'NODE',
+                                                  'returns': 'OUT',
                                                   'signature': '(cls)'}],
                                         'nd': [{'func_name': 'face_neighbors',
                                                 'is_classmethod': True,
@@ -7619,11 +7619,11 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                 'signature': '(cls)'}]},
  'GeometryNodeInputMeshIsland': {'Mesh': [{'func_name': 'mesh_island',
                                            'is_classmethod': True,
-                                           'is_get': False,
+                                           'is_get': True,
                                            'is_jump': False,
                                            'is_set': False,
                                            'node_name': 'Mesh Island',
-                                           'returns': 'NODE',
+                                           'returns': 'OUT',
                                            'signature': '(cls)'},
                                           {'func_name': 'island_index',
                                            'is_classmethod': True,
@@ -7649,21 +7649,21 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                          'signature': '(cls)'}]},
  'GeometryNodeInputMeshVertexNeighbors': {'Mesh': [{'func_name': 'vertex_neighbors',
                                                     'is_classmethod': True,
-                                                    'is_get': False,
+                                                    'is_get': True,
                                                     'is_jump': False,
                                                     'is_set': False,
                                                     'node_name': 'Vertex '
                                                                  'Neighbors',
-                                                    'returns': 'NODE',
+                                                    'returns': 'OUT',
                                                     'signature': '(cls)'}],
                                           'Vertex': [{'func_name': 'neighbors',
                                                       'is_classmethod': True,
-                                                      'is_get': False,
+                                                      'is_get': True,
                                                       'is_jump': False,
                                                       'is_set': False,
                                                       'node_name': 'Vertex '
                                                                    'Neighbors',
-                                                      'returns': 'NODE',
+                                                      'returns': 'OUT',
                                                       'signature': '(cls)'},
                                                      {'func_name': 'neighbors_vertex_count',
                                                       'is_classmethod': True,
@@ -7904,11 +7904,11 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                      'signature': '(self)'}]},
  'GeometryNodeInputSceneTime': {'Float': [{'func_name': 'scene_time',
                                            'is_classmethod': True,
-                                           'is_get': False,
+                                           'is_get': True,
                                            'is_jump': False,
                                            'is_set': False,
                                            'node_name': 'Scene Time',
-                                           'returns': 'NODE',
+                                           'returns': 'OUT',
                                            'signature': '(cls)'},
                                           {'func_name': 'seconds',
                                            'is_classmethod': True,
@@ -9230,7 +9230,7 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                         'is_jump': False,
                                         'is_set': False,
                                         'node_name': 'Object Info',
-                                        'returns': 'NODE',
+                                        'returns': 'OUT',
                                         'signature': '(self,\n'
                                                      '                    '
                                                      'as_instance: Boolean = '
@@ -9369,7 +9369,7 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                            'is_jump': False,
                                            'is_set': False,
                                            'node_name': 'Points of Curve',
-                                           'returns': 'NODE',
+                                           'returns': 'OUT',
                                            'signature': '(cls,\n'
                                                         '                    '
                                                         'curve_index: Integer '
@@ -9633,7 +9633,7 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                        'is_jump': False,
                                        'is_set': False,
                                        'node_name': 'Raycast',
-                                       'returns': 'NODE',
+                                       'returns': 'OUT',
                                        'signature': '(self,\n'
                                                     '                    '
                                                     'attribute: Float | '
@@ -10719,7 +10719,7 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                   'is_set': False,
                                                   'node_name': 'Separate '
                                                                'Components',
-                                                  'returns': 'NODE',
+                                                  'returns': 'OUT',
                                                   'signature': '(self)'},
                                                  {'func_name': 'mesh',
                                                   'is_classmethod': False,
@@ -11908,11 +11908,11 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                          'signature': '(cls)'}],
                               'Spline': [{'func_name': 'spline_length',
                                           'is_classmethod': True,
-                                          'is_get': False,
+                                          'is_get': True,
                                           'is_jump': False,
                                           'is_set': False,
                                           'node_name': 'Spline Length',
-                                          'returns': 'NODE',
+                                          'returns': 'OUT',
                                           'signature': '(cls)'},
                                          {'func_name': 'length',
                                           'is_classmethod': True,
@@ -11946,11 +11946,11 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                             'signature': '(cls)'}],
                                  'Spline': [{'func_name': 'parameter',
                                              'is_classmethod': True,
-                                             'is_get': False,
+                                             'is_get': True,
                                              'is_jump': False,
                                              'is_set': False,
                                              'node_name': 'Spline Parameter',
-                                             'returns': 'NODE',
+                                             'returns': 'OUT',
                                              'signature': '(cls)'},
                                             {'func_name': 'parameter_factor',
                                              'is_classmethod': True,
@@ -16872,7 +16872,7 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                        'is_jump': False,
                                        'is_set': False,
                                        'node_name': 'Separate XYZ',
-                                       'returns': 'NODE',
+                                       'returns': 'OUT',
                                        'signature': '(self)'},
                                       {'func_name': 'x',
                                        'is_classmethod': False,
@@ -18900,11 +18900,11 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                         "'HENYEY_GREENSTEIN')"}]},
  'ShaderNodeVolumeInfo': {'VolumeShader': [{'func_name': 'info',
                                             'is_classmethod': True,
-                                            'is_get': False,
+                                            'is_get': True,
                                             'is_jump': False,
                                             'is_set': False,
                                             'node_name': 'Volume Info',
-                                            'returns': 'NODE',
+                                            'returns': 'OUT',
                                             'signature': '(cls)'}],
                           'snd': [{'func_name': 'volume_info',
                                    'is_classmethod': True,

@@ -22,7 +22,7 @@ node.geometry = cube
 
 > [!IMPORTANT]
 > You can access to the other output sockets of the node in two different ways:
-> - using [node](socket.md#node) attribute
+> - using ['#node' not found]() attribute
 > - using ***peer socket** naming convention where the **snake_case** name of
 >.  the other sockets is suffixed by '_'
 
@@ -44,12 +44,11 @@ uv_map = cuve.uv_map_
 
 ### Inherited
 
-[\_\_add__](shaderroot.md#__add__) :black_small_square: [\_cache](nodecache.md#_cache) :black_small_square: [\_cache_reset](nodecache.md#_cache_reset) :black_small_square: [check_in_list](socket.md#check_in_list) :black_small_square: [data_type](socket.md#data_type) :black_small_square: [\_domain_to_geometry](socket.md#_domain_to_geometry) :black_small_square: [\_geometry_class](socket.md#_geometry_class) :black_small_square: [\_\_getattr__](socket.md#__getattr__) :black_small_square: [get_node_data_type](socket.md#get_node_data_type) :black_small_square: [get_socket_class](socket.md#get_socket_class) :black_small_square: [IndexSwitch](socket.md#indexswitch) :black_small_square: [index_switch](socket.md#index_switch) :black_small_square: [\_\_init__](socket.md#__init__) :black_small_square: [Input](socket.md#input) :black_small_square: [input_type](socket.md#input_type) :black_small_square: [\_interface_socket](socket.md#_interface_socket) :black_small_square: [\_is_group_input](socket.md#_is_group_input) :black_small_square: [\_is_group_output](socket.md#_is_group_output) :black_small_square: [\_is_group_socket](socket.md#_is_group_socket) :black_small_square: [\_jump](socket.md#_jump) :black_small_square: [\_lc](socket.md#_lc) :black_small_square: [\_lcop](socket.md#_lcop) :black_small_square: [link_from](socket.md#link_from) :black_small_square: [\_lock](proplocker.md#_lock) :black_small_square: [\_mark_for_delete](socket.md#_mark_for_delete) :black_small_square: [MenuSwitch](socket.md#menuswitch) :black_small_square: [menu_switch](socket.md#menu_switch) :black_small_square: [\_\_mul__](shaderroot.md#__mul__) :black_small_square: [\_name](socket.md#_name) :black_small_square: [node](socket.md#node) :black_small_square: [node_color](socket.md#node_color) :black_small_square: [node_label](socket.md#node_label) :black_small_square: [option](socket.md#option) :black_small_square: [option_index](socket.md#option_index) :black_small_square: [\_panel_name](socket.md#_panel_name) :black_small_square: [pin_gizmo](socket.md#pin_gizmo) :black_small_square: [\_reset](socket.md#_reset) :black_small_square: [\_run_tests](socket.md#_run_tests) :black_small_square: [\_\_setattr__](socket.md#__setattr__) :black_small_square: [\_set_interface_property](socket.md#_set_interface_property) :black_small_square: [socket_type](socket.md#socket_type) :black_small_square: [\_\_str__](socket.md#__str__) :black_small_square: [surface_out](shaderroot.md#surface_out) :black_small_square: [Switch](socket.md#switch) :black_small_square: [switch](socket.md#switch) :black_small_square: [switch_false](socket.md#switch_false) :black_small_square: [\_unlock](proplocker.md#_unlock) :black_small_square: [volume_out](shaderroot.md#volume_out) :black_small_square:
+[\_\_add__](shaderroot.md#__add__) :black_small_square: ['_bsocket' not found]() :black_small_square: [\_cache](nodecache.md#_cache) :black_small_square: ['_cached_nodes' not found]() :black_small_square: [\_cache_reset](nodecache.md#_cache_reset) :black_small_square: [check_in_list](core-socke-socket.md#check_in_list) :black_small_square: [\_classes_test](core-socke-socket.md#_classes_test) :black_small_square: [default_value](core-socke-socket.md#default_value) :black_small_square: [\_domain_to_geometry](core-socke-socket.md#_domain_to_geometry) :black_small_square: [\_\_enter__](core-socke-socket.md#__enter__) :black_small_square: [\_\_exit__](core-socke-socket.md#__exit__) :black_small_square: [\_\_getattr__](core-socke-socket.md#__getattr__) :black_small_square: [IndexSwitch](core-socke-socket.md#indexswitch) :black_small_square: [index_switch](core-socke-socket.md#index_switch) :black_small_square: [\_\_init__](core-socke-socket.md#__init__) :black_small_square: [Input](core-socke-socket.md#input) :black_small_square: [\_interface_socket](core-socke-socket.md#_interface_socket) :black_small_square: [is_grid](core-socke-socket.md#is_grid) :black_small_square: [\_jump](core-socke-socket.md#_jump) :black_small_square: ['_layout' not found]() :black_small_square: [\_lc](core-socke-socket.md#_lc) :black_small_square: [\_lcop](core-socke-socket.md#_lcop) :black_small_square: [link_from](core-socke-socket.md#link_from) :black_small_square: [MenuSwitch](core-socke-socket.md#menuswitch) :black_small_square: [menu_switch](core-socke-socket.md#menu_switch) :black_small_square: [\_\_mul__](shaderroot.md#__mul__) :black_small_square: [\_name](core-socke-socket.md#_name) :black_small_square: [node](core-socke-socket.md#node) :black_small_square: [node_color](core-socke-socket.md#node_color) :black_small_square: [node_label](core-socke-socket.md#node_label) :black_small_square: [\_panel_name](core-socke-socket.md#_panel_name) :black_small_square: [pin_gizmo](core-socke-socket.md#pin_gizmo) :black_small_square: [\_pop](core-socke-socket.md#_pop) :black_small_square: [\_push](core-socke-socket.md#_push) :black_small_square: [repeat](core-socke-socket.md#repeat) :black_small_square: [\_reset](core-socke-socket.md#_reset) :black_small_square: [simulation](core-socke-socket.md#simulation) :black_small_square: ['_socket_type' not found]() :black_small_square: [\_\_str__](core-socke-socket.md#__str__) :black_small_square: [surface_out](shaderroot.md#surface_out) :black_small_square: [Switch](core-socke-socket.md#switch) :black_small_square: [switch](core-socke-socket.md#switch) :black_small_square: [switch_false](core-socke-socket.md#switch_false) :black_small_square: ['_tree' not found]() :black_small_square: ['_use_layout' not found]() :black_small_square: [volume_out](shaderroot.md#volume_out) :black_small_square:
 
 ## Content
 
 - [Absorption](volumeshader.md#absorption)
-- [info](volumeshader.md#info)
 - [Principled](volumeshader.md#principled)
 - [Scatter](volumeshader.md#scatter)
 
@@ -63,7 +62,7 @@ uv_map = cuve.uv_map_
 > classmethod
 
 ``` python
-Absorption(color=None, density=None)
+Absorption(color: 'Color' = None, density: 'Float' = None)
 ```
 
 > Node ERROR: Node 'Volume Absorption' not found
@@ -80,28 +79,12 @@ Absorption(color=None, density=None)
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [VolumeShader](volumeshader.md#volumeshader) :black_small_square: [Content](volumeshader.md#content) :black_small_square: [Methods](volumeshader.md#methods)</sub>
 
 ----------
-### info()
-
-> classmethod
-
-``` python
-info()
-```
-
-> Node [Volume Info](https://docs.blender.org/manual/en/latest/render/shader_nodes/input/volume_info.html)
-
-#### Returns:
-- **node** (_Color_)
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [VolumeShader](volumeshader.md#volumeshader) :black_small_square: [Content](volumeshader.md#content) :black_small_square: [Methods](volumeshader.md#methods)</sub>
-
-----------
 ### Principled()
 
 > classmethod
 
 ``` python
-Principled(color=None, color_attribute=None, density=None, density_attribute=None, anisotropy=None, absorption_color=None, emission_strength=None, emission_color=None, blackbody_intensity=None, blackbody_tint=None, temperature=None, temperature_attribute=None)
+Principled(color: 'Color' = None, color_attribute: 'String' = None, density: 'Float' = None, density_attribute: 'String' = None, anisotropy: 'Float' = None, absorption_color: 'Color' = None, emission_strength: 'Float' = None, emission_color: 'Color' = None, blackbody_intensity: 'Float' = None, blackbody_tint: 'Color' = None, temperature: 'Float' = None, temperature_attribute: 'String' = None)
 ```
 
 > Node ERROR: Node 'Principled Volume' not found
@@ -133,7 +116,7 @@ Principled(color=None, color_attribute=None, density=None, density_attribute=Non
 > classmethod
 
 ``` python
-Scatter(color=None, density=None, anisotropy=None, phase='HENYEY_GREENSTEIN')
+Scatter(color: 'Color' = None, density: 'Float' = None, anisotropy: 'Float' = None, phase: "Literal['HENYEY_GREENSTEIN', 'FOURNIER_FORAND', 'DRAINE', 'RAYLEIGH', 'MIE']" = 'HENYEY_GREENSTEIN')
 ```
 
 > Node ERROR: Node 'Volume Scatter' not found
@@ -142,7 +125,7 @@ Scatter(color=None, density=None, anisotropy=None, phase='HENYEY_GREENSTEIN')
 - **color** (_Color_ = None) : socket 'Color' (id: Color)
 - **density** (_Float_ = None) : socket 'Density' (id: Density)
 - **anisotropy** (_Float_ = None) : socket 'Anisotropy' (id: Anisotropy)
-- **phase** (_str_ = HENYEY_GREENSTEIN) : parameter 'phase' in ['HENYEY_GREENSTEIN', 'FOURNIER_FORAND', 'DRAINE', 'RAYLEIGH', 'MIE']
+- **phase** (_Literal['HENYEY_GREENSTEIN', 'FOURNIER_FORAND', 'DRAINE', 'RAYLEIGH', 'MIE']_ = HENYEY_GREENSTEIN) : parameter 'phase' in ['HENYEY_GREENSTEIN', 'FOURNIER_FORAND', 'DRAINE', 'RAYLEIGH', 'MIE']
 
 
 

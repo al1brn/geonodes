@@ -1,4 +1,4 @@
-# Generated 2025-12-08 08:30:17
+# Generated 2025-12-08 09:52:50
 
 from __future__ import annotations
 from .. socket_class import Socket
@@ -44,10 +44,10 @@ class Vertex:
 
         Returns
         -------
-        - node [corner_index (Integer), total (Integer)]
+        - Integer [total_ (Integer)]
         """
         node = Node('Corners of Vertex', {'Vertex Index': vertex_index, 'Weights': weights, 'Sort Index': sort_index})
-        return node
+        return node._out
 
     @classmethod
     def corner_index(cls,
@@ -104,10 +104,10 @@ class Vertex:
 
         Returns
         -------
-        - node [edge_index (Integer), total (Integer)]
+        - Integer [total_ (Integer)]
         """
         node = Node('Edges of Vertex', {'Vertex Index': vertex_index, 'Weights': weights, 'Sort Index': sort_index})
-        return node
+        return node._out
 
     @classmethod
     def edge_index(cls,
@@ -174,15 +174,16 @@ class Vertex:
         return self._domain_to_geometry
 
     @classmethod
+    @property
     def neighbors(cls):
         """ > Node <&Node Vertex Neighbors>
 
         Returns
         -------
-        - node [vertex_count (Integer), face_count (Integer)]
+        - Integer [face_count_ (Integer)]
         """
         node = Node('Vertex Neighbors', )
-        return node
+        return node._out
 
     @classmethod
     @property

@@ -1,4 +1,4 @@
-# Generated 2025-12-08 08:30:17
+# Generated 2025-12-08 09:52:50
 
 from __future__ import annotations
 from .. socket_class import Socket
@@ -202,10 +202,10 @@ class Matrix(Socket):
 
         Returns
         -------
-        - node [column_1_row_1 (Float), column_1_row_2 (Float), column_1_row_3 (Float), column_1_row_4 (Float), column_2_row_1 (Float), column_2_row_2 (Float), column_2_row_3 (Float), column_2_row_4 (Float), column_3_row_1 (Float), column_3_row_2 (Float), column_3_row_3 (Float), column_3_row_4 (Float), column_4_row_1 (Float), column_4_row_2 (Float), column_4_row_3 (Float), column_4_row_4 (Float)]
+        - Float [column_1_row_2_ (Float), column_1_row_3_ (Float), column_1_row_4_ (Float), column_2_row_1_ (Float), column_2_row_2_ (Float), column_2_row_3_ (Float), column_2_row_4_ (Float), column_3_row_1_ (Float), column_3_row_2_ (Float), column_3_row_3_ (Float), column_3_row_4_ (Float), column_4_row_1_ (Float), column_4_row_2_ (Float), column_4_row_3_ (Float), column_4_row_4_ (Float)]
         """
         node = self._cache('Separate Matrix', {'Matrix': self})
-        return node
+        return node._out
 
     @property
     def column_1_row_1(self):
@@ -471,10 +471,10 @@ class Matrix(Socket):
 
         Returns
         -------
-        - node [translation (Vector), rotation (Rotation), scale (Vector)]
+        - Vector [rotation_ (Rotation), scale_ (Vector)]
         """
         node = self._cache('Separate Transform', {'Transform': self})
-        return node
+        return node._out
 
     @property
     def translation(self):

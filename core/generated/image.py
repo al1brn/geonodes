@@ -1,4 +1,4 @@
-# Generated 2025-12-08 08:30:17
+# Generated 2025-12-08 09:52:50
 
 from __future__ import annotations
 from .. socket_class import Socket
@@ -42,10 +42,10 @@ class Image(Socket):
 
         Returns
         -------
-        - node [width (Integer), height (Integer), has_alpha (Boolean), frame_count (Integer), fps (Float)]
+        - Integer [height_ (Integer), has_alpha_ (Boolean), frame_count_ (Integer), fps_ (Float)]
         """
         node = self._cache('Image Info', {'Image': self, 'Frame': frame})
-        return node
+        return node._out
 
     def width(self, frame: Integer = None):
         """ > Node <&Node Image Info>

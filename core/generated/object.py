@@ -1,4 +1,4 @@
-# Generated 2025-12-08 08:30:17
+# Generated 2025-12-08 09:52:50
 
 from __future__ import annotations
 from .. socket_class import Socket
@@ -38,10 +38,10 @@ class Object(Socket):
 
         Returns
         -------
-        - node [projection_matrix (Matrix), focal_length (Float), sensor (Vector), shift (Vector), clip_start (Float), clip_end (Float), focus_distance (Float), is_orthographic (Boolean), orthographic_scale (Float)]
+        - Matrix [focal_length_ (Float), sensor_ (Vector), shift_ (Vector), clip_start_ (Float), clip_end_ (Float), focus_distance_ (Float), is_orthographic_ (Boolean), orthographic_scale_ (Float)]
         """
         node = Node('Camera Info', {'Camera': self})
-        return node
+        return node._out
 
     @classmethod
     def ActiveCamera(cls):
@@ -70,11 +70,11 @@ class Object(Socket):
 
         Returns
         -------
-        - node [transform (Matrix), location (Vector), rotation (Rotation), scale (Vector), geometry (Geometry)]
+        - Matrix [location_ (Vector), rotation_ (Rotation), scale_ (Vector), geometry_ (Geometry)]
         """
         utils.check_enum_arg('Object Info', 'transform_space', transform_space, 'info', ('ORIGINAL', 'RELATIVE'))
         node = Node('Object Info', {'Object': self, 'As Instance': as_instance}, transform_space=transform_space)
-        return node
+        return node._out
 
     @classmethod
     def Self(cls):

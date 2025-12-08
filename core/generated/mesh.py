@@ -1,4 +1,4 @@
-# Generated 2025-12-08 08:30:17
+# Generated 2025-12-08 09:52:50
 
 from __future__ import annotations
 from .. socket_class import Socket
@@ -39,10 +39,10 @@ class Mesh(Socket):
 
         Returns
         -------
-        - node [point_count (Integer), edge_count (Integer), face_count (Integer), face_corner_count (Integer)]
+        - Integer [edge_count_ (Integer), face_count_ (Integer), face_corner_count_ (Integer)]
         """
         node = self._cache('Domain Size', {'Geometry': self}, component='MESH')
-        return node
+        return node._out
 
     @classmethod
     def corners_of_edge(cls,
@@ -453,15 +453,16 @@ class Mesh(Socket):
         return cls(node._out)
 
     @classmethod
+    @property
     def edge_angle(cls):
         """ > Node <&Node Edge Angle>
 
         Returns
         -------
-        - node [unsigned_angle (Float), signed_angle (Float)]
+        - Float [signed_angle_ (Float)]
         """
         node = Node('Edge Angle', )
-        return node
+        return node._out
 
     @classmethod
     @property
@@ -500,15 +501,16 @@ class Mesh(Socket):
         return node._out
 
     @classmethod
+    @property
     def edge_vertices(cls):
         """ > Node <&Node Edge Vertices>
 
         Returns
         -------
-        - node [vertex_index_1 (Integer), vertex_index_2 (Integer), position_1 (Vector), position_2 (Vector)]
+        - Integer [vertex_index_2_ (Integer), position_1_ (Vector), position_2_ (Vector)]
         """
         node = Node('Edge Vertices', )
-        return node
+        return node._out
 
     @classmethod
     @property
@@ -538,26 +540,28 @@ class Mesh(Socket):
         return node._out
 
     @classmethod
+    @property
     def face_neighbors(cls):
         """ > Node <&Node Face Neighbors>
 
         Returns
         -------
-        - node [vertex_count (Integer), face_count (Integer)]
+        - Integer [face_count_ (Integer)]
         """
         node = Node('Face Neighbors', )
-        return node
+        return node._out
 
     @classmethod
+    @property
     def mesh_island(cls):
         """ > Node <&Node Mesh Island>
 
         Returns
         -------
-        - node [island_index (Integer), island_count (Integer)]
+        - Integer [island_count_ (Integer)]
         """
         node = Node('Mesh Island', )
-        return node
+        return node._out
 
     @classmethod
     @property
@@ -584,15 +588,16 @@ class Mesh(Socket):
         return node.island_count
 
     @classmethod
+    @property
     def vertex_neighbors(cls):
         """ > Node <&Node Vertex Neighbors>
 
         Returns
         -------
-        - node [vertex_count (Integer), face_count (Integer)]
+        - Integer [face_count_ (Integer)]
         """
         node = Node('Vertex Neighbors', )
-        return node
+        return node._out
 
     @classmethod
     def shortest_edge_paths(cls, end_vertex: Boolean = None, edge_cost: Float = None):

@@ -110,13 +110,13 @@ class Object(generated.Object):
             # Selft object
             with Bundle() as b2:
                 sobj = nd.self_object
-                nd.self_object.info().link_outputs(None, exclude=["Geometry"])
+                nd.self_object.info().node.link_outputs(None, exclude=["Geometry"])
                 Geometry().out()
                 
             sig = b0.get_signature()
                 
             bundle = Bundle.MenuSwitch(
-                menu=Input("Object Selection", default_value="Self"),
+                menu = Input("Object Selection", default_value="Self"),
                 Cube = b0,
                 Input = b1,
                 Self  = b2)

@@ -1,39 +1,56 @@
 # Boolean
 
 ``` python
-Boolean(value=False, name=None, tip=None, panel='', default_attribute='', hide_value=False, layer_selection=False, hide_in_modifier=False, single_value=False)
+Boolean(value: geonodes.core.socket_class.Socket | bool = False, name: str = None, tip: str = '', panel: str = '', optional_label: bool = False, hide_value: bool = False, hide_in_modifier: bool = False, default_attribute: str = '', layer_selection: bool = False, shape: Literal['AUTO', 'SINGLE'] = 'AUTO')
 ```
 
 Socket of type BOOLEAN
 
-layer_selection_field
-
 > Node [Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/constant/boolean.html)
 
+Aguments
+--------
+- value  (Socket | bool = False) : Default value
+- name  (str = None) : Input socket name
+- tip  (str = '') : Property description
+- panel (str = "") : Panel name
+- optional_label  (bool = False) : Property optional_label
+- hide_value  (bool = False) : Property hide_value
+- hide_in_modifier  (bool = False) : Property hide_in_modifier
+- default_attribute  (str = '') : Property default_attribute_name
+- layer_selection  (bool = False) : Property layer_selection_field
+- shape  (str = 'AUTO') : Property structure_type in ('AUTO', 'SINGLE')
+
 #### Arguments:
-- **value** (_bool or Socket_ = False) : initial value
-- **name** (_str_ = None) : Create an Group Input socket with the provided str if not None
-- **tip** (_str_ = None) : User tip (for Group Input sockets)
-- **panel** (_str_ = ) : panel name (overrides tree pane if exists)
-- **default_attribute** (_str_ = ) : default attribute name
-- **hide_value** (_bool_ = False) : Hide Value option
-- **layer_selection** (_bool_ = False) : Layer selection field
-- **hide_in_modifier** (_bool_ = False) : Hide in Modifier option
-- **single_value** (_bool_ = False) : Single Value option
+- **value** (_geonodes.core.socket_class.Socket | bool_ = False)
+- **name** (_str_ = None)
+- **tip** (_str_ = )
+- **panel** (_str_ = )
+- **optional_label** (_bool_ = False)
+- **hide_value** (_bool_ = False)
+- **hide_in_modifier** (_bool_ = False)
+- **default_attribute** (_str_ = )
+- **layer_selection** (_bool_ = False)
+- **shape** (_Literal_ = AUTO)
 
 ### Inherited
 
-[\_cache](nodecache.md#_cache) :black_small_square: [\_cache_reset](nodecache.md#_cache_reset) :black_small_square: [check_in_list](socket.md#check_in_list) :black_small_square: [data_type](socket.md#data_type) :black_small_square: [\_domain_to_geometry](socket.md#_domain_to_geometry) :black_small_square: [\_geometry_class](socket.md#_geometry_class) :black_small_square: [\_\_getattr__](socket.md#__getattr__) :black_small_square: [get_node_data_type](socket.md#get_node_data_type) :black_small_square: [get_socket_class](socket.md#get_socket_class) :black_small_square: [IndexSwitch](socket.md#indexswitch) :black_small_square: [index_switch](socket.md#index_switch) :black_small_square: [input_type](socket.md#input_type) :black_small_square: [\_interface_socket](socket.md#_interface_socket) :black_small_square: [\_is_group_input](socket.md#_is_group_input) :black_small_square: [\_is_group_output](socket.md#_is_group_output) :black_small_square: [\_is_group_socket](socket.md#_is_group_socket) :black_small_square: [\_jump](socket.md#_jump) :black_small_square: [\_lc](socket.md#_lc) :black_small_square: [\_lcop](socket.md#_lcop) :black_small_square: [link_from](socket.md#link_from) :black_small_square: [\_lock](proplocker.md#_lock) :black_small_square: [\_mark_for_delete](socket.md#_mark_for_delete) :black_small_square: [MenuSwitch](socket.md#menuswitch) :black_small_square: [menu_switch](socket.md#menu_switch) :black_small_square: [\_name](socket.md#_name) :black_small_square: [node](socket.md#node) :black_small_square: [node_color](socket.md#node_color) :black_small_square: [node_label](socket.md#node_label) :black_small_square: [option](socket.md#option) :black_small_square: [option_index](socket.md#option_index) :black_small_square: [out](socket.md#out) :black_small_square: [\_panel_name](socket.md#_panel_name) :black_small_square: [pin_gizmo](socket.md#pin_gizmo) :black_small_square: [\_reset](socket.md#_reset) :black_small_square: [\_run_tests](socket.md#_run_tests) :black_small_square: [\_\_setattr__](socket.md#__setattr__) :black_small_square: [\_set_interface_property](socket.md#_set_interface_property) :black_small_square: [socket_type](socket.md#socket_type) :black_small_square: [\_\_str__](socket.md#__str__) :black_small_square: [Switch](socket.md#switch) :black_small_square: [switch](socket.md#switch) :black_small_square: [switch_false](socket.md#switch_false) :black_small_square: [\_unlock](proplocker.md#_unlock) :black_small_square:
+['_bsocket' not found]() :black_small_square: [\_cache](nodecache.md#_cache) :black_small_square: ['_cached_nodes' not found]() :black_small_square: [\_cache_reset](nodecache.md#_cache_reset) :black_small_square: [check_in_list](core-socke-socket.md#check_in_list) :black_small_square: [\_classes_test](core-socke-socket.md#_classes_test) :black_small_square: [default_value](core-socke-socket.md#default_value) :black_small_square: [\_domain_to_geometry](core-socke-socket.md#_domain_to_geometry) :black_small_square: [\_\_enter__](core-socke-socket.md#__enter__) :black_small_square: [\_\_exit__](core-socke-socket.md#__exit__) :black_small_square: [\_\_getattr__](core-socke-socket.md#__getattr__) :black_small_square: [IndexSwitch](core-socke-socket.md#indexswitch) :black_small_square: [index_switch](core-socke-socket.md#index_switch) :black_small_square: [Input](core-socke-socket.md#input) :black_small_square: [\_interface_socket](core-socke-socket.md#_interface_socket) :black_small_square: [is_grid](core-socke-socket.md#is_grid) :black_small_square: [\_jump](core-socke-socket.md#_jump) :black_small_square: ['_layout' not found]() :black_small_square: [\_lc](core-socke-socket.md#_lc) :black_small_square: [\_lcop](core-socke-socket.md#_lcop) :black_small_square: [link_from](core-socke-socket.md#link_from) :black_small_square: [MenuSwitch](core-socke-socket.md#menuswitch) :black_small_square: [menu_switch](core-socke-socket.md#menu_switch) :black_small_square: [\_name](core-socke-socket.md#_name) :black_small_square: [node](core-socke-socket.md#node) :black_small_square: [node_color](core-socke-socket.md#node_color) :black_small_square: [node_label](core-socke-socket.md#node_label) :black_small_square: [out](core-socke-socket.md#out) :black_small_square: [\_panel_name](core-socke-socket.md#_panel_name) :black_small_square: [pin_gizmo](core-socke-socket.md#pin_gizmo) :black_small_square: [\_pop](core-socke-socket.md#_pop) :black_small_square: [\_push](core-socke-socket.md#_push) :black_small_square: [repeat](core-socke-socket.md#repeat) :black_small_square: [\_reset](core-socke-socket.md#_reset) :black_small_square: [simulation](core-socke-socket.md#simulation) :black_small_square: ['_socket_type' not found]() :black_small_square: [\_\_str__](core-socke-socket.md#__str__) :black_small_square: [Switch](core-socke-socket.md#switch) :black_small_square: [switch](core-socke-socket.md#switch) :black_small_square: [switch_false](core-socke-socket.md#switch_false) :black_small_square: ['_tree' not found]() :black_small_square: ['_use_layout' not found]() :black_small_square:
 
 ## Content
 
 - **B** : [band](boolean.md#band) :black_small_square: [bnot](boolean.md#bnot) :black_small_square: [bor](boolean.md#bor)
-- **E** : [error](boolean.md#error)
+- **C** : [\_create_input_socket](boolean.md#_create_input_socket)
+- **E** : [enable_output](boolean.md#enable_output) :black_small_square: [error](boolean.md#error)
+- **F** : [field_to_grid](boolean.md#field_to_grid)
+- **G** : [grid_info](boolean.md#grid_info)
 - **I** : [imply](boolean.md#imply) :black_small_square: [info](boolean.md#info) :black_small_square: [\_\_init__](boolean.md#__init__)
 - **N** : [Named](boolean.md#named) :black_small_square: [NamedAttribute](boolean.md#namedattribute) :black_small_square: [nimply](boolean.md#nimply) :black_small_square: [nor](boolean.md#nor) :black_small_square: [not_and](boolean.md#not_and)
+- **P** : [prune_grid](boolean.md#prune_grid)
 - **R** : [Random](boolean.md#random)
-- **S** : [sample_grid](boolean.md#sample_grid) :black_small_square: [sample_grid_index](boolean.md#sample_grid_index)
+- **S** : [sample_grid](boolean.md#sample_grid) :black_small_square: [sample_grid_index](boolean.md#sample_grid_index) :black_small_square: [set_grid_background](boolean.md#set_grid_background) :black_small_square: [set_grid_transform](boolean.md#set_grid_transform)
 - **U** : [uv_unwrap](boolean.md#uv_unwrap)
+- **V** : [voxel_index](boolean.md#voxel_index) :black_small_square: [voxelize_grid](boolean.md#voxelize_grid)
 - **W** : [warning](boolean.md#warning)
 - **X** : [xnor](boolean.md#xnor) :black_small_square: [xor](boolean.md#xor)
 
@@ -47,7 +64,7 @@ layer_selection_field
 > method
 
 ``` python
-band(boolean=None)
+band(boolean: 'Boolean' = None)
 ```
 
 > Node [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/boolean_math.html)
@@ -96,7 +113,7 @@ bnot()
 > method
 
 ``` python
-bor(boolean=None)
+bor(boolean: 'Boolean' = None)
 ```
 
 > Node [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/boolean_math.html)
@@ -118,12 +135,84 @@ bor(boolean=None)
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Boolean](boolean.md#boolean) :black_small_square: [Content](boolean.md#content) :black_small_square: [Methods](boolean.md#methods)</sub>
 
 ----------
+### \_create_input_socket()
+
+> classmethod
+
+``` python
+_create_input_socket(value: 'object' = False, name: 'str' = 'Boolean', tip: 'str' = '', panel: 'str' = '', optional_label: 'bool' = False, hide_value: 'bool' = False, hide_in_modifier: 'bool' = False, default_attribute: 'str' = '', layer_selection: 'bool' = False, shape: "Literal['AUTO', 'SINGLE']" = 'AUTO')
+```
+
+> Boolean Input
+
+New [Boolean](boolean.md#boolean) input with subtype 'NONE'.
+
+Aguments
+--------
+- value  (object = False) : Default value
+- name  (str = 'Boolean') : Input socket name
+- tip  (str = '') : Property description
+- panel (str = "") : Panel name
+- optional_label  (bool = False) : Property optional_label
+- hide_value  (bool = False) : Property hide_value
+- hide_in_modifier  (bool = False) : Property hide_in_modifier
+- default_attribute  (str = '') : Property default_attribute_name
+- layer_selection  (bool = False) : Property layer_selection_field
+- shape  (str = 'AUTO') : Property structure_type in ('AUTO', 'SINGLE')
+
+#### Arguments:
+- **value** (_object_ = False)
+- **name** (_str_ = Boolean)
+- **tip** (_str_ = )
+- **panel** (_str_ = )
+- **optional_label** (_bool_ = False)
+- **hide_value** (_bool_ = False)
+- **hide_in_modifier** (_bool_ = False)
+- **default_attribute** (_str_ = )
+- **layer_selection** (_bool_ = False)
+- **shape** (_Literal['AUTO', 'SINGLE']_ = AUTO)
+
+
+
+#### Returns:
+- **Boolean** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Boolean](boolean.md#boolean) :black_small_square: [Content](boolean.md#content) :black_small_square: [Methods](boolean.md#methods)</sub>
+
+----------
+### enable_output()
+
+> method
+
+``` python
+enable_output(enable: 'Boolean' = None)
+```
+
+> Node [Enable Output](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../interface/controls/nodes/types/output/enable_output.html)
+
+#### Information:
+- **Socket** : self
+- **Parameter** : 'BOOLEAN'
+
+
+
+#### Arguments:
+- **enable** (_Boolean_ = None) : socket 'Enable' (id: Enable)
+
+
+
+#### Returns:
+- **Boolean** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Boolean](boolean.md#boolean) :black_small_square: [Content](boolean.md#content) :black_small_square: [Methods](boolean.md#methods)</sub>
+
+----------
 ### error()
 
 > method
 
 ``` python
-error(message=None)
+error(message: 'String' = None)
 ```
 
 > Node [Warning](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/output/warning.html)
@@ -145,12 +234,62 @@ error(message=None)
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Boolean](boolean.md#boolean) :black_small_square: [Content](boolean.md#content) :black_small_square: [Methods](boolean.md#methods)</sub>
 
 ----------
+### field_to_grid()
+
+> method
+
+``` python
+field_to_grid(named_sockets: 'dict' = {}, **sockets)
+```
+
+> Node [Field to Grid](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/volume/operations/field_to_grid.html)
+
+#### Information:
+- **Socket** : self
+- **Parameter** : 'BOOLEAN'
+
+
+
+#### Arguments:
+- **named_sockets** (_dict_ = {})
+- **sockets**
+
+
+
+#### Returns:
+- **None** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Boolean](boolean.md#boolean) :black_small_square: [Content](boolean.md#content) :black_small_square: [Methods](boolean.md#methods)</sub>
+
+----------
+### grid_info()
+
+> method
+
+``` python
+grid_info()
+```
+
+> Node [Grid Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/volume/read/grid_info.html)
+
+#### Information:
+- **Socket** : self
+- **Parameter** : 'BOOLEAN'
+
+
+
+#### Returns:
+- **Matrix** (_Boolean_)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Boolean](boolean.md#boolean) :black_small_square: [Content](boolean.md#content) :black_small_square: [Methods](boolean.md#methods)</sub>
+
+----------
 ### imply()
 
 > method
 
 ``` python
-imply(boolean=None)
+imply(boolean: 'Boolean' = None)
 ```
 
 > Node [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/boolean_math.html)
@@ -177,7 +316,7 @@ imply(boolean=None)
 > method
 
 ``` python
-info(message=None)
+info(message: 'String' = None)
 ```
 
 > Node [Warning](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/output/warning.html)
@@ -204,25 +343,37 @@ info(message=None)
 > method
 
 ``` python
-__init__(value=False, name=None, tip=None, panel='', default_attribute='', hide_value=False, layer_selection=False, hide_in_modifier=False, single_value=False)
+__init__(value: geonodes.core.socket_class.Socket | bool = False, name: str = None, tip: str = '', panel: str = '', optional_label: bool = False, hide_value: bool = False, hide_in_modifier: bool = False, default_attribute: str = '', layer_selection: bool = False, shape: Literal['AUTO', 'SINGLE'] = 'AUTO')
 ```
 
 Socket of type BOOLEAN
 
-layer_selection_field
-
 > Node [Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/constant/boolean.html)
 
+Aguments
+--------
+- value  (Socket | bool = False) : Default value
+- name  (str = None) : Input socket name
+- tip  (str = '') : Property description
+- panel (str = "") : Panel name
+- optional_label  (bool = False) : Property optional_label
+- hide_value  (bool = False) : Property hide_value
+- hide_in_modifier  (bool = False) : Property hide_in_modifier
+- default_attribute  (str = '') : Property default_attribute_name
+- layer_selection  (bool = False) : Property layer_selection_field
+- shape  (str = 'AUTO') : Property structure_type in ('AUTO', 'SINGLE')
+
 #### Arguments:
-- **value** (_bool or Socket_ = False) : initial value
-- **name** (_str_ = None) : Create an Group Input socket with the provided str if not None
-- **tip** (_str_ = None) : User tip (for Group Input sockets)
-- **panel** (_str_ = ) : panel name (overrides tree pane if exists)
-- **default_attribute** (_str_ = ) : default attribute name
-- **hide_value** (_bool_ = False) : Hide Value option
-- **layer_selection** (_bool_ = False) : Layer selection field
-- **hide_in_modifier** (_bool_ = False) : Hide in Modifier option
-- **single_value** (_bool_ = False) : Single Value option
+- **value** (_geonodes.core.socket_class.Socket | bool_ = False)
+- **name** (_str_ = None)
+- **tip** (_str_ = )
+- **panel** (_str_ = )
+- **optional_label** (_bool_ = False)
+- **hide_value** (_bool_ = False)
+- **hide_in_modifier** (_bool_ = False)
+- **default_attribute** (_str_ = )
+- **layer_selection** (_bool_ = False)
+- **shape** (_Literal_ = AUTO)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Boolean](boolean.md#boolean) :black_small_square: [Content](boolean.md#content) :black_small_square: [Methods](boolean.md#methods)</sub>
 
@@ -232,7 +383,7 @@ layer_selection_field
 > classmethod
 
 ``` python
-Named(name=None)
+Named(name: 'String' = None)
 ```
 
 > Node [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/named_attribute.html)
@@ -258,7 +409,7 @@ Named(name=None)
 > classmethod
 
 ``` python
-NamedAttribute(name=None)
+NamedAttribute(name: 'String' = None)
 ```
 
 > Node [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/named_attribute.html)
@@ -284,7 +435,7 @@ NamedAttribute(name=None)
 > method
 
 ``` python
-nimply(boolean=None)
+nimply(boolean: 'Boolean' = None)
 ```
 
 > Node [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/boolean_math.html)
@@ -311,7 +462,7 @@ nimply(boolean=None)
 > method
 
 ``` python
-nor(boolean=None)
+nor(boolean: 'Boolean' = None)
 ```
 
 > Node [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/boolean_math.html)
@@ -338,7 +489,7 @@ nor(boolean=None)
 > method
 
 ``` python
-not_and(boolean=None)
+not_and(boolean: 'Boolean' = None)
 ```
 
 > Node [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/boolean_math.html)
@@ -360,12 +511,39 @@ not_and(boolean=None)
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Boolean](boolean.md#boolean) :black_small_square: [Content](boolean.md#content) :black_small_square: [Methods](boolean.md#methods)</sub>
 
 ----------
+### prune_grid()
+
+> method
+
+``` python
+prune_grid(mode: "Literal['Inactive', 'Threshold', 'SDF']" = None)
+```
+
+> Node [Prune Grid](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/volume/operations/prune_grid.html)
+
+#### Information:
+- **Socket** : self
+- **Parameter** : 'BOOLEAN'
+
+
+
+#### Arguments:
+- **mode** (_Literal['Inactive', 'Threshold', 'SDF']_ = None) : ('Inactive', 'Threshold', 'SDF')
+
+
+
+#### Returns:
+- **Boolean** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Boolean](boolean.md#boolean) :black_small_square: [Content](boolean.md#content) :black_small_square: [Methods](boolean.md#methods)</sub>
+
+----------
 ### Random()
 
 > classmethod
 
 ``` python
-Random(probability=None, id=None, seed=None)
+Random(probability: 'Float' = None, id: 'Integer' = None, seed: 'Integer' = None)
 ```
 
 > Node [Random Value](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/random_value.html)
@@ -393,10 +571,10 @@ Random(probability=None, id=None, seed=None)
 > method
 
 ``` python
-sample_grid(position=None, interpolation_mode='TRILINEAR')
+sample_grid(position: 'Vector' = None, interpolation: "Literal['Nearest Neighbor', 'Trilinear', 'Triquadratic']" = None)
 ```
 
-> Node ERROR: Node 'Sample Grid' not found
+> Node [Sample Grid](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/volume/sample/sample_grid.html)
 
 #### Information:
 - **Socket** : self
@@ -406,7 +584,7 @@ sample_grid(position=None, interpolation_mode='TRILINEAR')
 
 #### Arguments:
 - **position** (_Vector_ = None) : socket 'Position' (id: Position)
-- **interpolation_mode** (_str_ = TRILINEAR) : parameter 'interpolation_mode' in ['NEAREST', 'TRILINEAR', 'TRIQUADRATIC']
+- **interpolation** (_Literal['Nearest Neighbor', 'Trilinear', 'Triquadratic']_ = None) : ('Nearest Neighbor', 'Trilinear', 'Triquadratic')
 
 
 
@@ -421,10 +599,10 @@ sample_grid(position=None, interpolation_mode='TRILINEAR')
 > method
 
 ``` python
-sample_grid_index(x=None, y=None, z=None)
+sample_grid_index(x: 'Integer' = None, y: 'Integer' = None, z: 'Integer' = None)
 ```
 
-> Node ERROR: Node 'Sample Grid Index' not found
+> Node [Sample Grid Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/volume/sample/sample_grid_index.html)
 
 #### Information:
 - **Socket** : self
@@ -445,12 +623,66 @@ sample_grid_index(x=None, y=None, z=None)
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Boolean](boolean.md#boolean) :black_small_square: [Content](boolean.md#content) :black_small_square: [Methods](boolean.md#methods)</sub>
 
 ----------
+### set_grid_background()
+
+> method
+
+``` python
+set_grid_background(background: 'Boolean' = None)
+```
+
+> Node [Set Grid Background](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/volume/write/set_grid_background.html)
+
+#### Information:
+- **Socket** : self
+- **Parameter** : 'BOOLEAN'
+
+
+
+#### Arguments:
+- **background** (_Boolean_ = None) : socket 'Background' (id: Background)
+
+
+
+#### Returns:
+- **Boolean** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Boolean](boolean.md#boolean) :black_small_square: [Content](boolean.md#content) :black_small_square: [Methods](boolean.md#methods)</sub>
+
+----------
+### set_grid_transform()
+
+> method
+
+``` python
+set_grid_transform(transform: 'Matrix' = None)
+```
+
+> Node [Set Grid Transform](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/volume/write/set_grid_transform.html)
+
+#### Information:
+- **Socket** : self
+- **Parameter** : 'BOOLEAN'
+
+
+
+#### Arguments:
+- **transform** (_Matrix_ = None) : socket 'Transform' (id: Transform)
+
+
+
+#### Returns:
+- **Boolean** (_Boolean_)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Boolean](boolean.md#boolean) :black_small_square: [Content](boolean.md#content) :black_small_square: [Methods](boolean.md#methods)</sub>
+
+----------
 ### uv_unwrap()
 
 > method
 
 ``` python
-uv_unwrap(seam=None, margin=None, fill_holes=None, method='ANGLE_BASED')
+uv_unwrap(seam: 'Boolean' = None, margin: 'Float' = None, fill_holes: 'Boolean' = None, method: "Literal['Angle Based', 'Conformal']" = None)
 ```
 
 > Node [UV Unwrap](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/uv/uv_unwrap.html)
@@ -464,7 +696,7 @@ uv_unwrap(seam=None, margin=None, fill_holes=None, method='ANGLE_BASED')
 - **seam** (_Boolean_ = None) : socket 'Seam' (id: Seam)
 - **margin** (_Float_ = None) : socket 'Margin' (id: Margin)
 - **fill_holes** (_Boolean_ = None) : socket 'Fill Holes' (id: Fill Holes)
-- **method** (_str_ = ANGLE_BASED) : parameter 'method' in ['ANGLE_BASED', 'CONFORMAL']
+- **method** (_Literal['Angle Based', 'Conformal']_ = None) : ('Angle Based', 'Conformal')
 
 
 
@@ -474,12 +706,50 @@ uv_unwrap(seam=None, margin=None, fill_holes=None, method='ANGLE_BASED')
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Boolean](boolean.md#boolean) :black_small_square: [Content](boolean.md#content) :black_small_square: [Methods](boolean.md#methods)</sub>
 
 ----------
+### voxel_index()
+
+> classmethod
+
+``` python
+voxel_index()
+```
+
+> Node [Voxel Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/volume/read/voxel_index.html)
+
+#### Returns:
+- **Integer** (_Integer_)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Boolean](boolean.md#boolean) :black_small_square: [Content](boolean.md#content) :black_small_square: [Methods](boolean.md#methods)</sub>
+
+----------
+### voxelize_grid()
+
+> method
+
+``` python
+voxelize_grid()
+```
+
+> Node [Voxelize Grid](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/volume/operations/voxelize_grid.html)
+
+#### Information:
+- **Socket** : self
+- **Parameter** : 'BOOLEAN'
+
+
+
+#### Returns:
+- **Boolean** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Boolean](boolean.md#boolean) :black_small_square: [Content](boolean.md#content) :black_small_square: [Methods](boolean.md#methods)</sub>
+
+----------
 ### warning()
 
 > method
 
 ``` python
-warning(message=None)
+warning(message: 'String' = None)
 ```
 
 > Node [Warning](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/output/warning.html)
@@ -506,7 +776,7 @@ warning(message=None)
 > method
 
 ``` python
-xnor(boolean=None)
+xnor(boolean: 'Boolean' = None)
 ```
 
 > Node [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/boolean_math.html)
@@ -533,7 +803,7 @@ xnor(boolean=None)
 > method
 
 ``` python
-xor(boolean=None)
+xor(boolean: 'Boolean' = None)
 ```
 
 > Node [Boolean Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/boolean_math.html)

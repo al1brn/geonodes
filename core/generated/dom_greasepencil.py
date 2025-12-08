@@ -1,4 +1,4 @@
-# Generated 2025-12-08 08:30:17
+# Generated 2025-12-08 09:52:50
 
 from __future__ import annotations
 from .. socket_class import Socket
@@ -39,10 +39,10 @@ class GreasePencil:
 
         Returns
         -------
-        - node [layer_count (Integer)]
+        - Integer
         """
         node = self._cache('Domain Size', {'Geometry': self}, component='GREASEPENCIL')
-        return node
+        return node._out
 
     def to_curves(self, layers_as_instances: Boolean = None):
         """ > Node <&Node Grease Pencil to Curves>

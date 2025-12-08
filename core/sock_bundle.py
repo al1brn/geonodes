@@ -155,31 +155,6 @@ class Bundle(generated.Bundle):
             return Signature(self.node.get_signature(with_sockets=with_sockets).inputs)
         else:
             raise RuntimeError(f"The Bundle socket {self} doesn't come from a 'Combine Bundle' node. Impossible to get its signature.")
-
-
-    # ====================================================================================================
-    # Constructors
-    # ====================================================================================================
-
-    @classmethod
-    def CombineOLD(cls, named_sockets={}, **kwargs):
-        """ > Constructor node <&Node Combine Bundle>
-
-        Arguments
-        ---------
-        - named_sockets (dict = {}) : socket defined by strings
-        - kwargs : sockets defined by python arguments
-
-        Returns
-        -------
-        - Bundle
-        """
-
-        node = Node("Combine Bundle")
-
-        node._set_items('bundle_items', named_sockets, **kwargs)
-
-        return node._out
     
     # ====================================================================================================
     # Separate
@@ -205,9 +180,7 @@ class Bundle(generated.Bundle):
             signature = self.get_signature()
 
         if signature is not None:
-            sig = Signature(signature.sockets)
             node.set_signature('OUTPUT', signature)
-            #sig.create_items(node._bnode.bundle_items)
 
         return node
 

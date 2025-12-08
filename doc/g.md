@@ -33,7 +33,7 @@ with GeoNodes("Modifier"):
     node = Group("Deform Function", geometry=Mesh.Cube(), position = nd.position, parameter = 3.14)
 ```
 
-The clas G provides a functional interface for the node. You simply use the snake case version
+The class G provides a functional interface for the node. You simply use the snake case version
 of the node name:
 
 ``` python
@@ -158,7 +158,7 @@ with GeoNodes("Modifier"):
     node = Group("Deform Function", geometry=Mesh.Cube(), position = nd.position, parameter = 3.14)
 ```
 
-The clas G provides a functional interface for the node. You simply use the snake case version
+The class G provides a functional interface for the node. You simply use the snake case version
 of the node name:
 
 ``` python

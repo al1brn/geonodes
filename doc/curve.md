@@ -1,7 +1,7 @@
 # Curve
 
 ``` python
-Curve(value=None, name=None, tip=None, panel='', hide_value=False, hide_in_modifier=False)
+Curve(value: geonodes.core.socket_class.Socket = None, name: str = None, tip: str = '', panel: str = '', optional_label: bool = False, hide_value: bool = False, hide_in_modifier: bool = False)
 ```
 
 > Curve Geometry
@@ -21,14 +21,15 @@ Nodes requiring a domain parameter, are implemented in one of the two domains of
 #### Arguments:
 - **value** (_Socket_ = None) : initial value
 - **name** (_str_ = None) : Create an Group Input socket with the provided str
-- **tip** (_str_ = None) : User tip (for Group Input sockets)
-- **panel** (_str_ = ) : panel name (overrides tree panel if exists)
-- **hide_value** (_bool_ = False) : Hide Value option
-- **hide_in_modifier** (_bool_ = False) : Hide in Modifier option
+- **tip** (_str_ = ) : Property description
+- **panel** (_str_ = ) : Panel name
+- **optional_label** (_bool_ = False) : Property optional_label
+- **hide_value** (_bool_ = False) : Property hide_value
+- **hide_in_modifier** (_bool_ = False) : Property hide_in_modifier
 
 ### Inherited
 
-[\_\_add__](boolean.md#__add__) :black_small_square: [bake](geometry.md#bake) :black_small_square: [bounding_box](core-gener-geome-geometry.md#bounding_box) :black_small_square: [\_cache](nodecache.md#_cache) :black_small_square: [\_cache_reset](nodecache.md#_cache_reset) :black_small_square: [check_in_list](socket.md#check_in_list) :black_small_square: [convex_hull](core-gener-geome-geometry.md#convex_hull) :black_small_square: [curve](core-gener-geome-geometry.md#curve) :black_small_square: [data_type](socket.md#data_type) :black_small_square: [\_domain_to_geometry](socket.md#_domain_to_geometry) :black_small_square: [\_geo](cloudpoint.md#_geo) :black_small_square: [\_geometry_class](socket.md#_geometry_class) :black_small_square: [\_geo_type](geobase.md#_geo_type) :black_small_square: [\_\_getattr__](socket.md#__getattr__) :black_small_square: [\_\_getitem__](geobase.md#__getitem__) :black_small_square: [get_node_data_type](socket.md#get_node_data_type) :black_small_square: [get_socket_class](socket.md#get_socket_class) :black_small_square: [grease_pencil](core-gener-geome-geometry.md#grease_pencil) :black_small_square: [id](core-gener-geome-geometry.md#id) :black_small_square: [index_of_nearest](core-gener-geome-geometry.md#index_of_nearest) :black_small_square: [IndexSwitch](socket.md#indexswitch) :black_small_square: [index_switch](socket.md#index_switch) :black_small_square: [\_\_init__](boolean.md#__init__) :black_small_square: [Input](socket.md#input) :black_small_square: [input_type](socket.md#input_type) :black_small_square: [instance_on_points](core-gener-geome-geometry.md#instance_on_points) :black_small_square: [instances](core-gener-geome-geometry.md#instances) :black_small_square: [\_interface_socket](socket.md#_interface_socket) :black_small_square: [\_is_group_input](socket.md#_is_group_input) :black_small_square: [\_is_group_output](socket.md#_is_group_output) :black_small_square: [\_is_group_socket](socket.md#_is_group_socket) :black_small_square: [Join](core-gener-geome-geometry.md#join) :black_small_square: [join](core-gener-geome-geometry.md#join) :black_small_square: [\_jump](socket.md#_jump) :black_small_square: [\_lc](socket.md#_lc) :black_small_square: [\_lcop](socket.md#_lcop) :black_small_square: [link_from](socket.md#link_from) :black_small_square: [\_lock](proplocker.md#_lock) :black_small_square: [\_mark_for_delete](socket.md#_mark_for_delete) :black_small_square: [material](core-gener-geome-geometry.md#material) :black_small_square: [material_index](core-gener-geome-geometry.md#material_index) :black_small_square: [MenuSwitch](socket.md#menuswitch) :black_small_square: [menu_switch](socket.md#menu_switch) :black_small_square: [merge](core-gener-geome-geometry.md#merge) :black_small_square: [merge_all](core-gener-geome-geometry.md#merge_all) :black_small_square: [merge_by_distance](core-gener-geome-geometry.md#merge_by_distance) :black_small_square: [merge_connected](core-gener-geome-geometry.md#merge_connected) :black_small_square: [mesh](core-gener-geome-geometry.md#mesh) :black_small_square: [\_name](socket.md#_name) :black_small_square: [name](core-gener-geome-geometry.md#name) :black_small_square: [node](socket.md#node) :black_small_square: [node_color](socket.md#node_color) :black_small_square: [node_label](socket.md#node_label) :black_small_square: [offset](core-gener-geome-geometry.md#offset) :black_small_square: [option](socket.md#option) :black_small_square: [option_index](socket.md#option_index) :black_small_square: [out](socket.md#out) :black_small_square: [\_panel_name](socket.md#_panel_name) :black_small_square: [pin_gizmo](socket.md#pin_gizmo) :black_small_square: [point_cloud](core-gener-geome-geometry.md#point_cloud) :black_small_square: [position](core-gener-geome-geometry.md#position) :black_small_square: [proximity](core-gener-geome-geometry.md#proximity) :black_small_square: [proximity_edges](core-gener-geome-geometry.md#proximity_edges) :black_small_square: [proximity_faces](core-gener-geome-geometry.md#proximity_faces) :black_small_square: [proximity_points](core-gener-geome-geometry.md#proximity_points) :black_small_square: [\_raw_sel](geobase.md#_raw_sel) :black_small_square: [raycast](core-gener-geome-geometry.md#raycast) :black_small_square: [raycast_interpolated](core-gener-geome-geometry.md#raycast_interpolated) :black_small_square: [raycast_nearest](core-gener-geome-geometry.md#raycast_nearest) :black_small_square: [realize](core-gener-geome-geometry.md#realize) :black_small_square: [remove_named_attribute](core-gener-geome-geometry.md#remove_named_attribute) :black_small_square: [remove_names](core-gener-geome-geometry.md#remove_names) :black_small_square: [replace_material](core-gener-geome-geometry.md#replace_material) :black_small_square: [\_run_tests](socket.md#_run_tests) :black_small_square: [\_sel](geobase.md#_sel) :black_small_square: [separate_components](core-gener-geome-geometry.md#separate_components) :black_small_square: [\_\_setattr__](socket.md#__setattr__) :black_small_square: [set_id](core-gener-geome-geometry.md#set_id) :black_small_square: [\_set_interface_property](socket.md#_set_interface_property) :black_small_square: [set_material](core-gener-geome-geometry.md#set_material) :black_small_square: [set_material_index](core-gener-geome-geometry.md#set_material_index) :black_small_square: [set_name](core-gener-geome-geometry.md#set_name) :black_small_square: [set_position](core-gener-geome-geometry.md#set_position) :black_small_square: [set_spline_cyclic](core-gener-geome-geometry.md#set_spline_cyclic) :black_small_square: [set_spline_resolution](core-gener-geome-geometry.md#set_spline_resolution) :black_small_square: [socket_type](socket.md#socket_type) :black_small_square: [\_\_str__](socket.md#__str__) :black_small_square: [Switch](socket.md#switch) :black_small_square: [switch](socket.md#switch) :black_small_square: [switch_false](socket.md#switch_false) :black_small_square: [to_instance](core-gener-geome-geometry.md#to_instance) :black_small_square: [transform](core-gener-geome-geometry.md#transform) :black_small_square: [transform_components](core-gener-geome-geometry.md#transform_components) :black_small_square: [transform_matrix](core-gener-geome-geometry.md#transform_matrix) :black_small_square: [\_unlock](proplocker.md#_unlock) :black_small_square: [viewer](core-gener-geome-geometry.md#viewer) :black_small_square: [volume](core-gener-geome-geometry.md#volume) :black_small_square:
+[\_\_add__](boolean.md#__add__) :black_small_square: [bake](geometry.md#bake) :black_small_square: [bounding_box](core-gener-geome-geometry.md#bounding_box) :black_small_square: ['_bsocket' not found]() :black_small_square: [\_cache](nodecache.md#_cache) :black_small_square: ['_cached_nodes' not found]() :black_small_square: [\_cache_reset](nodecache.md#_cache_reset) :black_small_square: [check_in_list](core-socke-socket.md#check_in_list) :black_small_square: [\_classes_test](core-socke-socket.md#_classes_test) :black_small_square: [convex_hull](core-gener-geome-geometry.md#convex_hull) :black_small_square: [\_create_input_socket](core-gener-geome-geometry.md#_create_input_socket) :black_small_square: [curve](core-gener-geome-geometry.md#curve) :black_small_square: [default_value](core-socke-socket.md#default_value) :black_small_square: [\_domain_to_geometry](core-socke-socket.md#_domain_to_geometry) :black_small_square: [enable_output](core-gener-geome-geometry.md#enable_output) :black_small_square: [\_\_enter__](core-socke-socket.md#__enter__) :black_small_square: [\_\_exit__](core-socke-socket.md#__exit__) :black_small_square: [\_geo](cloudpoint.md#_geo) :black_small_square: [\_geo_type](geom.md#_geo_type) :black_small_square: [\_\_getattr__](core-socke-socket.md#__getattr__) :black_small_square: [\_\_getitem__](geom.md#__getitem__) :black_small_square: [get_selection](geom.md#get_selection) :black_small_square: [grease_pencil](core-gener-geome-geometry.md#grease_pencil) :black_small_square: [id](core-gener-geome-geometry.md#id) :black_small_square: [index_of_nearest](core-gener-geome-geometry.md#index_of_nearest) :black_small_square: [IndexSwitch](core-socke-socket.md#indexswitch) :black_small_square: [index_switch](core-socke-socket.md#index_switch) :black_small_square: [\_\_init__](boolean.md#__init__) :black_small_square: [Input](core-socke-socket.md#input) :black_small_square: [instance_on_points](core-gener-geome-geometry.md#instance_on_points) :black_small_square: [instances](core-gener-geome-geometry.md#instances) :black_small_square: [\_interface_socket](core-socke-socket.md#_interface_socket) :black_small_square: [is_grid](core-socke-socket.md#is_grid) :black_small_square: [Join](core-gener-geome-geometry.md#join) :black_small_square: [join](core-gener-geome-geometry.md#join) :black_small_square: [\_jump](core-socke-socket.md#_jump) :black_small_square: ['_layout' not found]() :black_small_square: [\_lc](core-socke-socket.md#_lc) :black_small_square: [\_lcop](core-socke-socket.md#_lcop) :black_small_square: [link_from](core-socke-socket.md#link_from) :black_small_square: [material](core-gener-geome-geometry.md#material) :black_small_square: [material_index](core-gener-geome-geometry.md#material_index) :black_small_square: [MenuSwitch](core-socke-socket.md#menuswitch) :black_small_square: [menu_switch](core-socke-socket.md#menu_switch) :black_small_square: [merge](core-gener-geome-geometry.md#merge) :black_small_square: [merge_by_distance](core-gener-geome-geometry.md#merge_by_distance) :black_small_square: [mesh](core-gener-geome-geometry.md#mesh) :black_small_square: [\_name](core-socke-socket.md#_name) :black_small_square: [name](core-gener-geome-geometry.md#name) :black_small_square: [node](core-socke-socket.md#node) :black_small_square: [node_color](core-socke-socket.md#node_color) :black_small_square: [node_label](core-socke-socket.md#node_label) :black_small_square: [offset](core-gener-geome-geometry.md#offset) :black_small_square: [out](core-socke-socket.md#out) :black_small_square: [\_panel_name](core-socke-socket.md#_panel_name) :black_small_square: [pin_gizmo](core-socke-socket.md#pin_gizmo) :black_small_square: [point_cloud](core-gener-geome-geometry.md#point_cloud) :black_small_square: [\_pop](core-socke-socket.md#_pop) :black_small_square: [position](core-gener-geome-geometry.md#position) :black_small_square: [proximity](core-gener-geome-geometry.md#proximity) :black_small_square: [proximity_edges](core-gener-geome-geometry.md#proximity_edges) :black_small_square: [proximity_faces](core-gener-geome-geometry.md#proximity_faces) :black_small_square: [proximity_points](core-gener-geome-geometry.md#proximity_points) :black_small_square: [\_push](core-socke-socket.md#_push) :black_small_square: [raycast](core-gener-geome-geometry.md#raycast) :black_small_square: [realize](core-gener-geome-geometry.md#realize) :black_small_square: [remove_named_attribute](core-gener-geome-geometry.md#remove_named_attribute) :black_small_square: [repeat](core-socke-socket.md#repeat) :black_small_square: [replace_material](core-gener-geome-geometry.md#replace_material) :black_small_square: ['_selection' not found]() :black_small_square: [separate_components](core-gener-geome-geometry.md#separate_components) :black_small_square: [set_id](core-gener-geome-geometry.md#set_id) :black_small_square: [set_material](core-gener-geome-geometry.md#set_material) :black_small_square: [set_material_index](core-gener-geome-geometry.md#set_material_index) :black_small_square: [set_name](core-gener-geome-geometry.md#set_name) :black_small_square: [set_position](core-gener-geome-geometry.md#set_position) :black_small_square: [simulation](core-socke-socket.md#simulation) :black_small_square: ['_socket_type' not found]() :black_small_square: [\_\_str__](core-socke-socket.md#__str__) :black_small_square: [Switch](core-socke-socket.md#switch) :black_small_square: [switch](core-socke-socket.md#switch) :black_small_square: [switch_false](core-socke-socket.md#switch_false) :black_small_square: [to_instance](core-gener-geome-geometry.md#to_instance) :black_small_square: [transform](core-gener-geome-geometry.md#transform) :black_small_square: ['_tree' not found]() :black_small_square: ['_use_layout' not found]() :black_small_square: [viewer](core-gener-geome-geometry.md#viewer) :black_small_square: [volume](core-gener-geome-geometry.md#volume) :black_small_square:
 
 ## Content
 
@@ -37,7 +38,7 @@ Nodes requiring a domain parameter, are implemented in one of the two domains of
 - **C** : [Circle](curve.md#circle) :black_small_square: [CirclePoints](curve.md#circlepoints) :black_small_square: [CircleRadius](curve.md#circleradius) :black_small_square: [curve_of_point](curve.md#curve_of_point)
 - **D** : [deform_on_surface](curve.md#deform_on_surface) :black_small_square: [domain_size](curve.md#domain_size)
 - **E** : [endpoint_selection](curve.md#endpoint_selection)
-- **F** : [fill](curve.md#fill) :black_small_square: [fillet](curve.md#fillet) :black_small_square: [fillet_bezier](curve.md#fillet_bezier) :black_small_square: [fillet_poly](curve.md#fillet_poly) :black_small_square: [fill_ngons](curve.md#fill_ngons) :black_small_square: [fill_triangles](curve.md#fill_triangles)
+- **F** : [fill](curve.md#fill) :black_small_square: [fillet](curve.md#fillet)
 - **H** : [handle_positions](curve.md#handle_positions) :black_small_square: [handle_type](curve.md#handle_type) :black_small_square: [handle_type_selection](curve.md#handle_type_selection)
 - **I** : [Interpolate](curve.md#interpolate) :black_small_square: [interpolate](curve.md#interpolate) :black_small_square: [is_cyclic](curve.md#is_cyclic)
 - **L** : [left_handle_offset](curve.md#left_handle_offset) :black_small_square: [left_handle_position](curve.md#left_handle_position) :black_small_square: [left_handle_type](curve.md#left_handle_type) :black_small_square: [length](curve.md#length) :black_small_square: [Line](curve.md#line) :black_small_square: [LineDirection](curve.md#linedirection) :black_small_square: [LinePoints](curve.md#linepoints)
@@ -46,8 +47,8 @@ Nodes requiring a domain parameter, are implemented in one of the two domains of
 - **O** : [offset_point_in_curve](curve.md#offset_point_in_curve)
 - **P** : [points](curve.md#points) :black_small_square: [points_of_curve](curve.md#points_of_curve)
 - **Q** : [QuadraticBezier](curve.md#quadraticbezier) :black_small_square: [Quadrilateral](curve.md#quadrilateral) :black_small_square: [QuadrilateralKite](curve.md#quadrilateralkite) :black_small_square: [QuadrilateralParallelogram](curve.md#quadrilateralparallelogram) :black_small_square: [QuadrilateralPoints](curve.md#quadrilateralpoints) :black_small_square: [QuadrilateralRectangle](curve.md#quadrilateralrectangle) :black_small_square: [QuadrilateralTrapezoid](curve.md#quadrilateraltrapezoid)
-- **R** : [radius](curve.md#radius) :black_small_square: [resample](curve.md#resample) :black_small_square: [resample_count](curve.md#resample_count) :black_small_square: [resample_evaluated](curve.md#resample_evaluated) :black_small_square: [resample_length](curve.md#resample_length) :black_small_square: [resolution](curve.md#resolution) :black_small_square: [reverse](curve.md#reverse) :black_small_square: [right_handle_offset](curve.md#right_handle_offset) :black_small_square: [right_handle_position](curve.md#right_handle_position) :black_small_square: [right_handle_type](curve.md#right_handle_type)
-- **S** : [sample](curve.md#sample) :black_small_square: [sample_factor](curve.md#sample_factor) :black_small_square: [sample_length](curve.md#sample_length) :black_small_square: [set_both_handle_type](curve.md#set_both_handle_type) :black_small_square: [set_handle_positions](curve.md#set_handle_positions) :black_small_square: [set_handle_type](curve.md#set_handle_type) :black_small_square: [set_left_handle_positions](curve.md#set_left_handle_positions) :black_small_square: [set_left_handle_type](curve.md#set_left_handle_type) :black_small_square: [set_normal](curve.md#set_normal) :black_small_square: [set_normal_free](curve.md#set_normal_free) :black_small_square: [set_normal_minimum_twist](curve.md#set_normal_minimum_twist) :black_small_square: [set_normal_z_up](curve.md#set_normal_z_up) :black_small_square: [set_radius](curve.md#set_radius) :black_small_square: [set_right_handle_positions](curve.md#set_right_handle_positions) :black_small_square: [set_right_handle_type](curve.md#set_right_handle_type) :black_small_square: [set_spline_type](curve.md#set_spline_type) :black_small_square: [set_tilt](curve.md#set_tilt) :black_small_square: [Spiral](curve.md#spiral) :black_small_square: [spline_length](curve.md#spline_length) :black_small_square: [spline_parameter](curve.md#spline_parameter) :black_small_square: [splines](curve.md#splines) :black_small_square: [Star](curve.md#star) :black_small_square: [subdivide](curve.md#subdivide)
+- **R** : [radius](curve.md#radius) :black_small_square: [resample](curve.md#resample) :black_small_square: [resolution](curve.md#resolution) :black_small_square: [reverse](curve.md#reverse) :black_small_square: [right_handle_offset](curve.md#right_handle_offset) :black_small_square: [right_handle_position](curve.md#right_handle_position) :black_small_square: [right_handle_type](curve.md#right_handle_type)
+- **S** : [sample](curve.md#sample) :black_small_square: [sample_factor](curve.md#sample_factor) :black_small_square: [sample_length](curve.md#sample_length) :black_small_square: [set_both_handle_type](curve.md#set_both_handle_type) :black_small_square: [set_handle_positions](curve.md#set_handle_positions) :black_small_square: [set_handle_type](curve.md#set_handle_type) :black_small_square: [set_left_handle_positions](curve.md#set_left_handle_positions) :black_small_square: [set_left_handle_type](curve.md#set_left_handle_type) :black_small_square: [set_normal](curve.md#set_normal) :black_small_square: [set_radius](curve.md#set_radius) :black_small_square: [set_right_handle_positions](curve.md#set_right_handle_positions) :black_small_square: [set_right_handle_type](curve.md#set_right_handle_type) :black_small_square: [set_spline_cyclic](curve.md#set_spline_cyclic) :black_small_square: [set_spline_resolution](curve.md#set_spline_resolution) :black_small_square: [set_spline_type](curve.md#set_spline_type) :black_small_square: [set_tilt](curve.md#set_tilt) :black_small_square: [Spiral](curve.md#spiral) :black_small_square: [spline_length](curve.md#spline_length) :black_small_square: [spline_parameter](curve.md#spline_parameter) :black_small_square: [splines](curve.md#splines) :black_small_square: [Star](curve.md#star) :black_small_square: [subdivide](curve.md#subdivide)
 - **T** : [tilt](curve.md#tilt) :black_small_square: [to_grease_pencil](curve.md#to_grease_pencil) :black_small_square: [to_mesh](curve.md#to_mesh) :black_small_square: [to_points](curve.md#to_points) :black_small_square: [to_points_count](curve.md#to_points_count) :black_small_square: [to_points_evaluated](curve.md#to_points_evaluated) :black_small_square: [to_points_length](curve.md#to_points_length) :black_small_square: [trim](curve.md#trim) :black_small_square: [trim_factor](curve.md#trim_factor) :black_small_square: [trim_length](curve.md#trim_length) :black_small_square: [type](curve.md#type)
 
 ## Properties
@@ -199,7 +200,7 @@ Write only property for node <Node Set Spline Type>
 > classmethod
 
 ``` python
-Arc(resolution=None, radius=None, start_angle=None, sweep_angle=None, connect_center=None, invert_arc=None, mode='RADIUS')
+Arc(resolution: 'Integer' = None, radius: 'Float' = None, start_angle: 'Float' = None, sweep_angle: 'Float' = None, connect_center: 'Boolean' = None, invert_arc: 'Boolean' = None, mode: "Literal['POINTS', 'RADIUS']" = 'RADIUS')
 ```
 
 > Node [Arc](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/primitives/arc.html)
@@ -211,7 +212,7 @@ Arc(resolution=None, radius=None, start_angle=None, sweep_angle=None, connect_ce
 - **sweep_angle** (_Float_ = None) : socket 'Sweep Angle' (id: Sweep Angle)
 - **connect_center** (_Boolean_ = None) : socket 'Connect Center' (id: Connect Center)
 - **invert_arc** (_Boolean_ = None) : socket 'Invert Arc' (id: Invert Arc)
-- **mode** (_str_ = RADIUS) : parameter 'mode' in ['POINTS', 'RADIUS']
+- **mode** (_Literal['POINTS', 'RADIUS']_ = RADIUS) : parameter 'mode' in ['POINTS', 'RADIUS']
 
 
 
@@ -226,7 +227,7 @@ Arc(resolution=None, radius=None, start_angle=None, sweep_angle=None, connect_ce
 > classmethod
 
 ``` python
-ArcPoints(resolution=None, start=None, middle=None, end=None, offset_angle=None, connect_center=None, invert_arc=None)
+ArcPoints(resolution: 'Integer' = None, start: 'Vector' = None, middle: 'Vector' = None, end: 'Vector' = None, offset_angle: 'Float' = None, connect_center: 'Boolean' = None, invert_arc: 'Boolean' = None)
 ```
 
 > Node [Arc](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/primitives/arc.html)
@@ -258,7 +259,7 @@ ArcPoints(resolution=None, start=None, middle=None, end=None, offset_angle=None,
 > classmethod
 
 ``` python
-ArcRadius(resolution=None, radius=None, start_angle=None, sweep_angle=None, connect_center=None, invert_arc=None)
+ArcRadius(resolution: 'Integer' = None, radius: 'Float' = None, start_angle: 'Float' = None, sweep_angle: 'Float' = None, connect_center: 'Boolean' = None, invert_arc: 'Boolean' = None)
 ```
 
 > Node [Arc](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/primitives/arc.html)
@@ -289,7 +290,7 @@ ArcRadius(resolution=None, radius=None, start_angle=None, sweep_angle=None, conn
 > classmethod
 
 ``` python
-BezierSegment(resolution=None, start=None, start_handle=None, end_handle=None, end=None, mode='POSITION')
+BezierSegment(resolution: 'Integer' = None, start: 'Vector' = None, start_handle: 'Vector' = None, end_handle: 'Vector' = None, end: 'Vector' = None, mode: "Literal['POSITION', 'OFFSET']" = 'POSITION')
 ```
 
 > Node ERROR: Node 'Bézier Segment' not found
@@ -300,7 +301,7 @@ BezierSegment(resolution=None, start=None, start_handle=None, end_handle=None, e
 - **start_handle** (_Vector_ = None) : socket 'Start Handle' (id: Start Handle)
 - **end_handle** (_Vector_ = None) : socket 'End Handle' (id: End Handle)
 - **end** (_Vector_ = None) : socket 'End' (id: End)
-- **mode** (_str_ = POSITION) : parameter 'mode' in ['POSITION', 'OFFSET']
+- **mode** (_Literal['POSITION', 'OFFSET']_ = POSITION) : parameter 'mode' in ['POSITION', 'OFFSET']
 
 
 
@@ -315,7 +316,7 @@ BezierSegment(resolution=None, start=None, start_handle=None, end_handle=None, e
 > classmethod
 
 ``` python
-BeziersegmentOffset(resolution=None, start=None, start_handle=None, end_handle=None, end=None)
+BeziersegmentOffset(resolution: 'Integer' = None, start: 'Vector' = None, start_handle: 'Vector' = None, end_handle: 'Vector' = None, end: 'Vector' = None)
 ```
 
 > Node ERROR: Node 'Bézier Segment' not found
@@ -345,7 +346,7 @@ BeziersegmentOffset(resolution=None, start=None, start_handle=None, end_handle=N
 > classmethod
 
 ``` python
-BeziersegmentPosition(resolution=None, start=None, start_handle=None, end_handle=None, end=None)
+BeziersegmentPosition(resolution: 'Integer' = None, start: 'Vector' = None, start_handle: 'Vector' = None, end_handle: 'Vector' = None, end: 'Vector' = None)
 ```
 
 > Node ERROR: Node 'Bézier Segment' not found
@@ -375,7 +376,7 @@ BeziersegmentPosition(resolution=None, start=None, start_handle=None, end_handle
 > classmethod
 
 ``` python
-Circle(resolution=None, radius=None, mode='RADIUS')
+Circle(resolution: 'Integer' = None, radius: 'Float' = None, mode: "Literal['POINTS', 'RADIUS']" = 'RADIUS')
 ```
 
 > Node [Curve Circle](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/primitives/curve_circle.html)
@@ -383,7 +384,7 @@ Circle(resolution=None, radius=None, mode='RADIUS')
 #### Arguments:
 - **resolution** (_Integer_ = None) : socket 'Resolution' (id: Resolution)
 - **radius** (_Float_ = None) : socket 'Radius' (id: Radius)
-- **mode** (_str_ = RADIUS) : parameter 'mode' in ['POINTS', 'RADIUS']
+- **mode** (_Literal['POINTS', 'RADIUS']_ = RADIUS) : parameter 'mode' in ['POINTS', 'RADIUS']
 
 
 
@@ -398,7 +399,7 @@ Circle(resolution=None, radius=None, mode='RADIUS')
 > classmethod
 
 ``` python
-CirclePoints(resolution=None, point_1=None, point_2=None, point_3=None)
+CirclePoints(resolution: 'Integer' = None, point_1: 'Vector' = None, point_2: 'Vector' = None, point_3: 'Vector' = None)
 ```
 
 > Node [Curve Circle](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/primitives/curve_circle.html)
@@ -427,7 +428,7 @@ CirclePoints(resolution=None, point_1=None, point_2=None, point_3=None)
 > classmethod
 
 ``` python
-CircleRadius(resolution=None, radius=None)
+CircleRadius(resolution: 'Integer' = None, radius: 'Float' = None)
 ```
 
 > Node [Curve Circle](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/primitives/curve_circle.html)
@@ -454,7 +455,7 @@ CircleRadius(resolution=None, radius=None)
 > classmethod
 
 ``` python
-curve_of_point(point_index=None)
+curve_of_point(point_index: 'Integer' = None)
 ```
 
 > Node [Curve of Point](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/topology/curve_of_point.html)
@@ -510,7 +511,7 @@ domain_size()
 
 
 #### Returns:
-- **node** (_Integer_)
+- **Integer** (_Integer_)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Curve](curve.md#curve) :black_small_square: [Content](curve.md#content) :black_small_square: [Methods](curve.md#methods)</sub>
 
@@ -520,7 +521,7 @@ domain_size()
 > classmethod
 
 ``` python
-endpoint_selection(start_size=None, end_size=None)
+endpoint_selection(start_size: 'Integer' = None, end_size: 'Integer' = None)
 ```
 
 > Node [Endpoint Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/read/endpoint_selection.html)
@@ -542,7 +543,7 @@ endpoint_selection(start_size=None, end_size=None)
 > method
 
 ``` python
-fill(group_id=None, mode='TRIANGLES')
+fill(group_id: 'Integer' = None, mode: "Literal['Triangles', 'N-gons']" = None)
 ```
 
 > Node [Fill Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/fill_curve.html)
@@ -554,7 +555,7 @@ fill(group_id=None, mode='TRIANGLES')
 
 #### Arguments:
 - **group_id** (_Integer_ = None) : socket 'Group ID' (id: Group ID)
-- **mode** (_str_ = TRIANGLES) : parameter 'mode' in ['TRIANGLES', 'NGONS']
+- **mode** (_Literal['Triangles', 'N-gons']_ = None) : ('Triangles', 'N-gons')
 
 
 
@@ -569,7 +570,7 @@ fill(group_id=None, mode='TRIANGLES')
 > method
 
 ``` python
-fillet(radius=None, limit_radius=None, mode='BEZIER')
+fillet(radius: 'Float' = None, limit_radius: 'Boolean' = None, mode: "Literal['Bézier', 'Poly']" = None, count: 'Integer' = None)
 ```
 
 > Node [Fillet Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/fillet_curve.html)
@@ -584,127 +585,13 @@ fillet(radius=None, limit_radius=None, mode='BEZIER')
 #### Arguments:
 - **radius** (_Float_ = None) : socket 'Radius' (id: Radius)
 - **limit_radius** (_Boolean_ = None) : socket 'Limit Radius' (id: Limit Radius)
-- **mode** (_str_ = BEZIER) : parameter 'mode' in ['BEZIER', 'POLY']
-
-
-
-#### Returns:
-- **Curve** :
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Curve](curve.md#curve) :black_small_square: [Content](curve.md#content) :black_small_square: [Methods](curve.md#methods)</sub>
-
-----------
-### fillet_bezier()
-
-> method
-
-``` python
-fillet_bezier(radius=None, limit_radius=None)
-```
-
-> Node [Fillet Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/fillet_curve.html)
-
-> ***Jump*** : Socket refers to node output socket after the call
-
-#### Information:
-- **Socket** : self
-- **Parameter** : 'BEZIER'
-
-
-
-#### Arguments:
-- **radius** (_Float_ = None) : socket 'Radius' (id: Radius)
-- **limit_radius** (_Boolean_ = None) : socket 'Limit Radius' (id: Limit Radius)
-
-
-
-#### Returns:
-- **Curve** :
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Curve](curve.md#curve) :black_small_square: [Content](curve.md#content) :black_small_square: [Methods](curve.md#methods)</sub>
-
-----------
-### fillet_poly()
-
-> method
-
-``` python
-fillet_poly(count=None, radius=None, limit_radius=None)
-```
-
-> Node [Fillet Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/fillet_curve.html)
-
-> ***Jump*** : Socket refers to node output socket after the call
-
-#### Information:
-- **Socket** : self
-- **Parameter** : 'POLY'
-
-
-
-#### Arguments:
+- **mode** (_Literal['Bézier', 'Poly']_ = None) : ('Bézier', 'Poly')
 - **count** (_Integer_ = None) : socket 'Count' (id: Count)
-- **radius** (_Float_ = None) : socket 'Radius' (id: Radius)
-- **limit_radius** (_Boolean_ = None) : socket 'Limit Radius' (id: Limit Radius)
 
 
 
 #### Returns:
 - **Curve** :
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Curve](curve.md#curve) :black_small_square: [Content](curve.md#content) :black_small_square: [Methods](curve.md#methods)</sub>
-
-----------
-### fill_ngons()
-
-> method
-
-``` python
-fill_ngons(group_id=None)
-```
-
-> Node [Fill Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/fill_curve.html)
-
-#### Information:
-- **Socket** : self
-- **Parameter** : 'NGONS'
-
-
-
-#### Arguments:
-- **group_id** (_Integer_ = None) : socket 'Group ID' (id: Group ID)
-
-
-
-#### Returns:
-- **Mesh** :
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Curve](curve.md#curve) :black_small_square: [Content](curve.md#content) :black_small_square: [Methods](curve.md#methods)</sub>
-
-----------
-### fill_triangles()
-
-> method
-
-``` python
-fill_triangles(group_id=None)
-```
-
-> Node [Fill Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/fill_curve.html)
-
-#### Information:
-- **Socket** : self
-- **Parameter** : 'TRIANGLES'
-
-
-
-#### Arguments:
-- **group_id** (_Integer_ = None) : socket 'Group ID' (id: Group ID)
-
-
-
-#### Returns:
-- **Mesh** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Curve](curve.md#curve) :black_small_square: [Content](curve.md#content) :black_small_square: [Methods](curve.md#methods)</sub>
 
@@ -714,7 +601,7 @@ fill_triangles(group_id=None)
 > classmethod
 
 ``` python
-handle_positions(relative=None)
+handle_positions(relative: 'Boolean' = None)
 ```
 
 > Node [Curve Handle Positions](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/read/curve_handle_positions.html)
@@ -735,13 +622,13 @@ handle_positions(relative=None)
 > classmethod
 
 ``` python
-handle_type_selection(handle_type='AUTO', mode={'LEFT', 'RIGHT'})
+handle_type_selection(handle_type: "Literal['FREE', 'AUTO', 'VECTOR', 'ALIGN']" = 'AUTO', mode={'LEFT', 'RIGHT'})
 ```
 
 > Node [Handle Type Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/read/handle_type_selection.html)
 
 #### Arguments:
-- **handle_type** (_str_ = AUTO) : parameter 'handle_type' in ['FREE', 'AUTO', 'VECTOR', 'ALIGN']
+- **handle_type** (_Literal['FREE', 'AUTO', 'VECTOR', 'ALIGN']_ = AUTO) : parameter 'handle_type' in ['FREE', 'AUTO', 'VECTOR', 'ALIGN']
 - **mode** (_set_ = {'LEFT', 'RIGHT'}) : parameter 'mode'
 
 
@@ -757,16 +644,16 @@ handle_type_selection(handle_type='AUTO', mode={'LEFT', 'RIGHT'})
 > classmethod
 
 ``` python
-Interpolate(guide_curves=None, guide_up=None, guide_group_id=None, points=None, point_up=None, point_group_id=None, max_neighbors=None)
+Interpolate(guide_curves: 'Curve' = None, guide_up: 'Vector' = None, guide_group_id: 'Integer' = None, points: 'Cloud' = None, point_up: 'Vector' = None, point_group_id: 'Integer' = None, max_neighbors: 'Integer' = None)
 ```
 
 > Node [Interpolate Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/interpolate_curves.html)
 
 #### Arguments:
-- **guide_curves** (_Geometry_ = None) : socket 'Guide Curves' (id: Guide Curves)
+- **guide_curves** (_Curve_ = None) : socket 'Guide Curves' (id: Guide Curves)
 - **guide_up** (_Vector_ = None) : socket 'Guide Up' (id: Guide Up)
 - **guide_group_id** (_Integer_ = None) : socket 'Guide Group ID' (id: Guide Group ID)
-- **points** (_Geometry_ = None) : socket 'Points' (id: Points)
+- **points** (_Cloud_ = None) : socket 'Points' (id: Points)
 - **point_up** (_Vector_ = None) : socket 'Point Up' (id: Point Up)
 - **point_group_id** (_Integer_ = None) : socket 'Point Group ID' (id: Point Group ID)
 - **max_neighbors** (_Integer_ = None) : socket 'Max Neighbors' (id: Max Neighbors)
@@ -784,7 +671,7 @@ Interpolate(guide_curves=None, guide_up=None, guide_group_id=None, points=None, 
 > method
 
 ``` python
-interpolate(guide_up=None, guide_group_id=None, points=None, point_up=None, point_group_id=None, max_neighbors=None)
+interpolate(guide_up: 'Vector' = None, guide_group_id: 'Integer' = None, points: 'Cloud' = None, point_up: 'Vector' = None, point_group_id: 'Integer' = None, max_neighbors: 'Integer' = None)
 ```
 
 > Node [Interpolate Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/interpolate_curves.html)
@@ -799,7 +686,7 @@ interpolate(guide_up=None, guide_group_id=None, points=None, point_up=None, poin
 #### Arguments:
 - **guide_up** (_Vector_ = None) : socket 'Guide Up' (id: Guide Up)
 - **guide_group_id** (_Integer_ = None) : socket 'Guide Group ID' (id: Guide Group ID)
-- **points** (_Geometry_ = None) : socket 'Points' (id: Points)
+- **points** (_Cloud_ = None) : socket 'Points' (id: Points)
 - **point_up** (_Vector_ = None) : socket 'Point Up' (id: Point Up)
 - **point_group_id** (_Integer_ = None) : socket 'Point Group ID' (id: Point Group ID)
 - **max_neighbors** (_Integer_ = None) : socket 'Max Neighbors' (id: Max Neighbors)
@@ -838,7 +725,7 @@ length()
 > classmethod
 
 ``` python
-Line(start=None, end=None, mode='POINTS')
+Line(start: 'Vector' = None, end: 'Vector' = None, mode: "Literal['POINTS', 'DIRECTION']" = 'POINTS')
 ```
 
 > Node [Curve Line](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/primitives/curve_line.html)
@@ -846,7 +733,7 @@ Line(start=None, end=None, mode='POINTS')
 #### Arguments:
 - **start** (_Vector_ = None) : socket 'Start' (id: Start)
 - **end** (_Vector_ = None) : socket 'End' (id: End)
-- **mode** (_str_ = POINTS) : parameter 'mode' in ['POINTS', 'DIRECTION']
+- **mode** (_Literal['POINTS', 'DIRECTION']_ = POINTS) : parameter 'mode' in ['POINTS', 'DIRECTION']
 
 
 
@@ -861,7 +748,7 @@ Line(start=None, end=None, mode='POINTS')
 > classmethod
 
 ``` python
-LineDirection(start=None, direction=None, length=None)
+LineDirection(start: 'Vector' = None, direction: 'Vector' = None, length: 'Float' = None)
 ```
 
 > Node [Curve Line](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/primitives/curve_line.html)
@@ -889,7 +776,7 @@ LineDirection(start=None, direction=None, length=None)
 > classmethod
 
 ``` python
-LinePoints(start=None, end=None)
+LinePoints(start: 'Vector' = None, end: 'Vector' = None)
 ```
 
 > Node [Curve Line](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/primitives/curve_line.html)
@@ -916,10 +803,10 @@ LinePoints(start=None, end=None)
 > classmethod
 
 ``` python
-material_selection(material=None)
+material_selection(material: 'Material' = None)
 ```
 
-> Node [Material Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/material_selection.html)
+> Node [Material Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/material/material_selection.html)
 
 #### Arguments:
 - **material** (_Material_ = None) : socket 'Material' (id: Material)
@@ -937,7 +824,7 @@ material_selection(material=None)
 > classmethod
 
 ``` python
-offset_point_in_curve(point_index=None, offset=None)
+offset_point_in_curve(point_index: 'Integer' = None, offset: 'Integer' = None)
 ```
 
 > Node [Offset Point in Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/topology/offset_point_in_curve.html)
@@ -959,7 +846,7 @@ offset_point_in_curve(point_index=None, offset=None)
 > classmethod
 
 ``` python
-points_of_curve(curve_index=None, weights=None, sort_index=None)
+points_of_curve(curve_index: 'Integer' = None, weights: 'Float' = None, sort_index: 'Integer' = None)
 ```
 
 > Node [Points of Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/topology/points_of_curve.html)
@@ -982,7 +869,7 @@ points_of_curve(curve_index=None, weights=None, sort_index=None)
 > classmethod
 
 ``` python
-QuadraticBezier(resolution=None, start=None, middle=None, end=None)
+QuadraticBezier(resolution: 'Integer' = None, start: 'Vector' = None, middle: 'Vector' = None, end: 'Vector' = None)
 ```
 
 > Node ERROR: Node 'Quadratic Bézier' not found
@@ -1006,7 +893,7 @@ QuadraticBezier(resolution=None, start=None, middle=None, end=None)
 > classmethod
 
 ``` python
-Quadrilateral(width=None, height=None, mode='RECTANGLE')
+Quadrilateral(width: 'Float' = None, height: 'Float' = None, mode: "Literal['RECTANGLE', 'PARALLELOGRAM', 'TRAPEZOID', 'KITE', 'POINTS']" = 'RECTANGLE')
 ```
 
 > Node [Quadrilateral](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/primitives/quadrilateral.html)
@@ -1014,7 +901,7 @@ Quadrilateral(width=None, height=None, mode='RECTANGLE')
 #### Arguments:
 - **width** (_Float_ = None) : socket 'Width' (id: Width)
 - **height** (_Float_ = None) : socket 'Height' (id: Height)
-- **mode** (_str_ = RECTANGLE) : parameter 'mode' in ['RECTANGLE', 'PARALLELOGRAM', 'TRAPEZOID', 'KITE', 'POINTS']
+- **mode** (_Literal['RECTANGLE', 'PARALLELOGRAM', 'TRAPEZOID', 'KITE', 'POINTS']_ = RECTANGLE) : parameter 'mode' in ['RECTANGLE', 'PARALLELOGRAM', 'TRAPEZOID', 'KITE', 'POINTS']
 
 
 
@@ -1029,7 +916,7 @@ Quadrilateral(width=None, height=None, mode='RECTANGLE')
 > classmethod
 
 ``` python
-QuadrilateralKite(width=None, bottom_height=None, top_height=None)
+QuadrilateralKite(width: 'Float' = None, bottom_height: 'Float' = None, top_height: 'Float' = None)
 ```
 
 > Node [Quadrilateral](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/primitives/quadrilateral.html)
@@ -1057,7 +944,7 @@ QuadrilateralKite(width=None, bottom_height=None, top_height=None)
 > classmethod
 
 ``` python
-QuadrilateralParallelogram(width=None, height=None, offset=None)
+QuadrilateralParallelogram(width: 'Float' = None, height: 'Float' = None, offset: 'Float' = None)
 ```
 
 > Node [Quadrilateral](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/primitives/quadrilateral.html)
@@ -1085,7 +972,7 @@ QuadrilateralParallelogram(width=None, height=None, offset=None)
 > classmethod
 
 ``` python
-QuadrilateralPoints(width=None, point_1=None, point_2=None, point_3=None, point_4=None)
+QuadrilateralPoints(point_1: 'Vector' = None, point_2: 'Vector' = None, point_3: 'Vector' = None, point_4: 'Vector' = None)
 ```
 
 > Node [Quadrilateral](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/primitives/quadrilateral.html)
@@ -1096,7 +983,6 @@ QuadrilateralPoints(width=None, point_1=None, point_2=None, point_3=None, point_
 
 
 #### Arguments:
-- **width** (_Float_ = None) : socket 'Width' (id: Width)
 - **point_1** (_Vector_ = None) : socket 'Point 1' (id: Point 1)
 - **point_2** (_Vector_ = None) : socket 'Point 2' (id: Point 2)
 - **point_3** (_Vector_ = None) : socket 'Point 3' (id: Point 3)
@@ -1115,7 +1001,7 @@ QuadrilateralPoints(width=None, point_1=None, point_2=None, point_3=None, point_
 > classmethod
 
 ``` python
-QuadrilateralRectangle(width=None, height=None)
+QuadrilateralRectangle(width: 'Float' = None, height: 'Float' = None)
 ```
 
 > Node [Quadrilateral](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/primitives/quadrilateral.html)
@@ -1142,7 +1028,7 @@ QuadrilateralRectangle(width=None, height=None)
 > classmethod
 
 ``` python
-QuadrilateralTrapezoid(width=None, height=None, bottom_width=None, top_width=None, offset=None)
+QuadrilateralTrapezoid(height: 'Float' = None, bottom_width: 'Float' = None, top_width: 'Float' = None, offset: 'Float' = None)
 ```
 
 > Node [Quadrilateral](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/primitives/quadrilateral.html)
@@ -1153,7 +1039,6 @@ QuadrilateralTrapezoid(width=None, height=None, bottom_width=None, top_width=Non
 
 
 #### Arguments:
-- **width** (_Float_ = None) : socket 'Width' (id: Width)
 - **height** (_Float_ = None) : socket 'Height' (id: Height)
 - **bottom_width** (_Float_ = None) : socket 'Bottom Width' (id: Bottom Width)
 - **top_width** (_Float_ = None) : socket 'Top Width' (id: Top Width)
@@ -1172,7 +1057,7 @@ QuadrilateralTrapezoid(width=None, height=None, bottom_width=None, top_width=Non
 > method
 
 ``` python
-resample(count=None, keep_last_segment=True, mode='COUNT')
+resample(mode: "Literal['Evaluated', 'Count', 'Length']" = None, count: 'Integer' = None, length: 'Float' = None, keep_last_segment=True)
 ```
 
 > Node [Resample Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/resample_curve.html)
@@ -1186,99 +1071,8 @@ resample(count=None, keep_last_segment=True, mode='COUNT')
 
 
 #### Arguments:
+- **mode** (_Literal['Evaluated', 'Count', 'Length']_ = None) : ('Evaluated', 'Count', 'Length')
 - **count** (_Integer_ = None) : socket 'Count' (id: Count)
-- **keep_last_segment** (_bool_ = True) : parameter 'keep_last_segment'
-- **mode** (_str_ = COUNT) : parameter 'mode' in ['EVALUATED', 'COUNT', 'LENGTH']
-
-
-
-#### Returns:
-- **Curve** :
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Curve](curve.md#curve) :black_small_square: [Content](curve.md#content) :black_small_square: [Methods](curve.md#methods)</sub>
-
-----------
-### resample_count()
-
-> method
-
-``` python
-resample_count(count=None, keep_last_segment=True)
-```
-
-> Node [Resample Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/resample_curve.html)
-
-> ***Jump*** : Socket refers to node output socket after the call
-
-#### Information:
-- **Socket** : self
-- **Socket** : self[selection]
-- **Parameter** : 'COUNT'
-
-
-
-#### Arguments:
-- **count** (_Integer_ = None) : socket 'Count' (id: Count)
-- **keep_last_segment** (_bool_ = True) : parameter 'keep_last_segment'
-
-
-
-#### Returns:
-- **Curve** :
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Curve](curve.md#curve) :black_small_square: [Content](curve.md#content) :black_small_square: [Methods](curve.md#methods)</sub>
-
-----------
-### resample_evaluated()
-
-> method
-
-``` python
-resample_evaluated(keep_last_segment=True)
-```
-
-> Node [Resample Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/resample_curve.html)
-
-> ***Jump*** : Socket refers to node output socket after the call
-
-#### Information:
-- **Socket** : self
-- **Socket** : self[selection]
-- **Parameter** : 'EVALUATED'
-
-
-
-#### Arguments:
-- **keep_last_segment** (_bool_ = True) : parameter 'keep_last_segment'
-
-
-
-#### Returns:
-- **Curve** :
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Curve](curve.md#curve) :black_small_square: [Content](curve.md#content) :black_small_square: [Methods](curve.md#methods)</sub>
-
-----------
-### resample_length()
-
-> method
-
-``` python
-resample_length(length=None, keep_last_segment=True)
-```
-
-> Node [Resample Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/resample_curve.html)
-
-> ***Jump*** : Socket refers to node output socket after the call
-
-#### Information:
-- **Socket** : self
-- **Socket** : self[selection]
-- **Parameter** : 'LENGTH'
-
-
-
-#### Arguments:
 - **length** (_Float_ = None) : socket 'Length' (id: Length)
 - **keep_last_segment** (_bool_ = True) : parameter 'keep_last_segment'
 
@@ -1319,7 +1113,7 @@ reverse()
 > method
 
 ``` python
-sample(value=None, curve_index=None, factor=None, mode='FACTOR', use_all_curves=False)
+sample(value: 'Float | Integer | Boolean | Vector | Color | Rotation | Matrix' = None, curve_index: 'Integer' = None, factor: 'Float' = None, mode: "Literal['FACTOR', 'LENGTH']" = 'FACTOR', use_all_curves=False)
 ```
 
 > Node [Sample Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/sample/sample_curve.html)
@@ -1331,10 +1125,10 @@ sample(value=None, curve_index=None, factor=None, mode='FACTOR', use_all_curves=
 
 
 #### Arguments:
-- **value** (_Float_ = None) : socket 'Value' (id: Value)
+- **value** (_Float | Integer | Boolean | Vector | Color | Rotation | Matrix_ = None) : socket 'Value' (id: Value)
 - **curve_index** (_Integer_ = None) : socket 'Curve Index' (id: Curve Index)
 - **factor** (_Float_ = None) : socket 'Factor' (id: Factor)
-- **mode** (_str_ = FACTOR) : parameter 'mode' in ['FACTOR', 'LENGTH']
+- **mode** (_Literal['FACTOR', 'LENGTH']_ = FACTOR) : parameter 'mode' in ['FACTOR', 'LENGTH']
 - **use_all_curves** (_bool_ = False) : parameter 'use_all_curves'
 
 
@@ -1350,7 +1144,7 @@ sample(value=None, curve_index=None, factor=None, mode='FACTOR', use_all_curves=
 > method
 
 ``` python
-sample_factor(value=None, curve_index=None, factor=None, use_all_curves=False)
+sample_factor(value: 'Float | Integer | Boolean | Vector | Color | Rotation | Matrix' = None, curve_index: 'Integer' = None, factor: 'Float' = None, use_all_curves=False)
 ```
 
 > Node [Sample Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/sample/sample_curve.html)
@@ -1363,7 +1157,7 @@ sample_factor(value=None, curve_index=None, factor=None, use_all_curves=False)
 
 
 #### Arguments:
-- **value** (_Float_ = None) : socket 'Value' (id: Value)
+- **value** (_Float | Integer | Boolean | Vector | Color | Rotation | Matrix_ = None) : socket 'Value' (id: Value)
 - **curve_index** (_Integer_ = None) : socket 'Curve Index' (id: Curve Index)
 - **factor** (_Float_ = None) : socket 'Factor' (id: Factor)
 - **use_all_curves** (_bool_ = False) : parameter 'use_all_curves'
@@ -1381,7 +1175,7 @@ sample_factor(value=None, curve_index=None, factor=None, use_all_curves=False)
 > method
 
 ``` python
-sample_length(value=None, length=None, curve_index=None, use_all_curves=False)
+sample_length(value: 'Float | Integer | Boolean | Vector | Color | Rotation | Matrix' = None, length: 'Float' = None, curve_index: 'Integer' = None, use_all_curves=False)
 ```
 
 > Node [Sample Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/sample/sample_curve.html)
@@ -1394,7 +1188,7 @@ sample_length(value=None, length=None, curve_index=None, use_all_curves=False)
 
 
 #### Arguments:
-- **value** (_Float_ = None) : socket 'Value' (id: Value)
+- **value** (_Float | Integer | Boolean | Vector | Color | Rotation | Matrix_ = None) : socket 'Value' (id: Value)
 - **length** (_Float_ = None) : socket 'Length' (id: Length)
 - **curve_index** (_Integer_ = None) : socket 'Curve Index' (id: Curve Index)
 - **use_all_curves** (_bool_ = False) : parameter 'use_all_curves'
@@ -1412,7 +1206,7 @@ sample_length(value=None, length=None, curve_index=None, use_all_curves=False)
 > method
 
 ``` python
-set_both_handle_type(handle_type='AUTO')
+set_both_handle_type(handle_type: "Literal['FREE', 'AUTO', 'VECTOR', 'ALIGN']" = 'AUTO')
 ```
 
 > Node [Set Handle Type](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_handle_type.html)
@@ -1427,7 +1221,7 @@ set_both_handle_type(handle_type='AUTO')
 
 
 #### Arguments:
-- **handle_type** (_str_ = AUTO) : parameter 'handle_type' in ['FREE', 'AUTO', 'VECTOR', 'ALIGN']
+- **handle_type** (_Literal['FREE', 'AUTO', 'VECTOR', 'ALIGN']_ = AUTO) : parameter 'handle_type' in ['FREE', 'AUTO', 'VECTOR', 'ALIGN']
 
 
 
@@ -1442,7 +1236,7 @@ set_both_handle_type(handle_type='AUTO')
 > method
 
 ``` python
-set_handle_positions(position=None, offset=None, mode='LEFT')
+set_handle_positions(position: 'Vector' = None, offset: 'Vector' = None, mode: "Literal['LEFT', 'RIGHT']" = 'LEFT')
 ```
 
 > Node [Set Handle Positions](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_handle_positions.html)
@@ -1458,7 +1252,7 @@ set_handle_positions(position=None, offset=None, mode='LEFT')
 #### Arguments:
 - **position** (_Vector_ = None) : socket 'Position' (id: Position)
 - **offset** (_Vector_ = None) : socket 'Offset' (id: Offset)
-- **mode** (_str_ = LEFT) : parameter 'mode' in ['LEFT', 'RIGHT']
+- **mode** (_Literal['LEFT', 'RIGHT']_ = LEFT) : parameter 'mode' in ['LEFT', 'RIGHT']
 
 
 
@@ -1473,7 +1267,7 @@ set_handle_positions(position=None, offset=None, mode='LEFT')
 > method
 
 ``` python
-set_handle_type(handle_type='AUTO', mode={'LEFT', 'RIGHT'})
+set_handle_type(handle_type: "Literal['FREE', 'AUTO', 'VECTOR', 'ALIGN']" = 'AUTO', mode={'LEFT', 'RIGHT'})
 ```
 
 > Node [Set Handle Type](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_handle_type.html)
@@ -1487,7 +1281,7 @@ set_handle_type(handle_type='AUTO', mode={'LEFT', 'RIGHT'})
 
 
 #### Arguments:
-- **handle_type** (_str_ = AUTO) : parameter 'handle_type' in ['FREE', 'AUTO', 'VECTOR', 'ALIGN']
+- **handle_type** (_Literal['FREE', 'AUTO', 'VECTOR', 'ALIGN']_ = AUTO) : parameter 'handle_type' in ['FREE', 'AUTO', 'VECTOR', 'ALIGN']
 - **mode** (_set_ = {'LEFT', 'RIGHT'}) : parameter 'mode'
 
 
@@ -1503,7 +1297,7 @@ set_handle_type(handle_type='AUTO', mode={'LEFT', 'RIGHT'})
 > method
 
 ``` python
-set_left_handle_positions(position=None, offset=None)
+set_left_handle_positions(position: 'Vector' = None, offset: 'Vector' = None)
 ```
 
 > Node [Set Handle Positions](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_handle_positions.html)
@@ -1534,7 +1328,7 @@ set_left_handle_positions(position=None, offset=None)
 > method
 
 ``` python
-set_left_handle_type(handle_type='AUTO')
+set_left_handle_type(handle_type: "Literal['FREE', 'AUTO', 'VECTOR', 'ALIGN']" = 'AUTO')
 ```
 
 > Node [Set Handle Type](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_handle_type.html)
@@ -1549,7 +1343,7 @@ set_left_handle_type(handle_type='AUTO')
 
 
 #### Arguments:
-- **handle_type** (_str_ = AUTO) : parameter 'handle_type' in ['FREE', 'AUTO', 'VECTOR', 'ALIGN']
+- **handle_type** (_Literal['FREE', 'AUTO', 'VECTOR', 'ALIGN']_ = AUTO) : parameter 'handle_type' in ['FREE', 'AUTO', 'VECTOR', 'ALIGN']
 
 
 
@@ -1564,7 +1358,7 @@ set_left_handle_type(handle_type='AUTO')
 > method
 
 ``` python
-set_normal(mode='MINIMUM_TWIST')
+set_normal(mode: "Literal['Minimum Twist', 'Z Up', 'Free']" = None, normal: 'Vector' = None)
 ```
 
 > Node [Set Curve Normal](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_curve_normal.html)
@@ -1578,87 +1372,8 @@ set_normal(mode='MINIMUM_TWIST')
 
 
 #### Arguments:
-- **mode** (_str_ = MINIMUM_TWIST) : parameter 'mode' in ['MINIMUM_TWIST', 'Z_UP', 'FREE']
-
-
-
-#### Returns:
-- **Curve** :
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Curve](curve.md#curve) :black_small_square: [Content](curve.md#content) :black_small_square: [Methods](curve.md#methods)</sub>
-
-----------
-### set_normal_free()
-
-> method
-
-``` python
-set_normal_free(normal=None)
-```
-
-> Node [Set Curve Normal](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_curve_normal.html)
-
-> ***Jump*** : Socket refers to node output socket after the call
-
-#### Information:
-- **Socket** : self
-- **Socket** : self[selection]
-- **Parameter** : 'FREE'
-
-
-
-#### Arguments:
+- **mode** (_Literal['Minimum Twist', 'Z Up', 'Free']_ = None) : ('Minimum Twist', 'Z Up', 'Free')
 - **normal** (_Vector_ = None) : socket 'Normal' (id: Normal)
-
-
-
-#### Returns:
-- **Curve** :
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Curve](curve.md#curve) :black_small_square: [Content](curve.md#content) :black_small_square: [Methods](curve.md#methods)</sub>
-
-----------
-### set_normal_minimum_twist()
-
-> method
-
-``` python
-set_normal_minimum_twist()
-```
-
-> Node [Set Curve Normal](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_curve_normal.html)
-
-> ***Jump*** : Socket refers to node output socket after the call
-
-#### Information:
-- **Socket** : self
-- **Socket** : self[selection]
-- **Parameter** : 'MINIMUM_TWIST'
-
-
-
-#### Returns:
-- **Curve** :
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Curve](curve.md#curve) :black_small_square: [Content](curve.md#content) :black_small_square: [Methods](curve.md#methods)</sub>
-
-----------
-### set_normal_z_up()
-
-> method
-
-``` python
-set_normal_z_up()
-```
-
-> Node [Set Curve Normal](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_curve_normal.html)
-
-> ***Jump*** : Socket refers to node output socket after the call
-
-#### Information:
-- **Socket** : self
-- **Socket** : self[selection]
-- **Parameter** : 'Z_UP'
 
 
 
@@ -1673,7 +1388,7 @@ set_normal_z_up()
 > method
 
 ``` python
-set_radius(radius=None)
+set_radius(radius: 'Float' = None)
 ```
 
 > Node [Set Curve Radius](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_curve_radius.html)
@@ -1702,7 +1417,7 @@ set_radius(radius=None)
 > method
 
 ``` python
-set_right_handle_positions(position=None, offset=None)
+set_right_handle_positions(position: 'Vector' = None, offset: 'Vector' = None)
 ```
 
 > Node [Set Handle Positions](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_handle_positions.html)
@@ -1733,7 +1448,7 @@ set_right_handle_positions(position=None, offset=None)
 > method
 
 ``` python
-set_right_handle_type(handle_type='AUTO')
+set_right_handle_type(handle_type: "Literal['FREE', 'AUTO', 'VECTOR', 'ALIGN']" = 'AUTO')
 ```
 
 > Node [Set Handle Type](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_handle_type.html)
@@ -1748,7 +1463,65 @@ set_right_handle_type(handle_type='AUTO')
 
 
 #### Arguments:
-- **handle_type** (_str_ = AUTO) : parameter 'handle_type' in ['FREE', 'AUTO', 'VECTOR', 'ALIGN']
+- **handle_type** (_Literal['FREE', 'AUTO', 'VECTOR', 'ALIGN']_ = AUTO) : parameter 'handle_type' in ['FREE', 'AUTO', 'VECTOR', 'ALIGN']
+
+
+
+#### Returns:
+- **Curve** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Curve](curve.md#curve) :black_small_square: [Content](curve.md#content) :black_small_square: [Methods](curve.md#methods)</sub>
+
+----------
+### set_spline_cyclic()
+
+> method
+
+``` python
+set_spline_cyclic(cyclic: 'Boolean' = None)
+```
+
+> Node [Set Spline Cyclic](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_spline_cyclic.html)
+
+> ***Jump*** : Socket refers to node output socket after the call
+
+#### Information:
+- **Socket** : self
+- **Socket** : self[selection]
+
+
+
+#### Arguments:
+- **cyclic** (_Boolean_ = None) : socket 'Cyclic' (id: Cyclic)
+
+
+
+#### Returns:
+- **Curve** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Curve](curve.md#curve) :black_small_square: [Content](curve.md#content) :black_small_square: [Methods](curve.md#methods)</sub>
+
+----------
+### set_spline_resolution()
+
+> method
+
+``` python
+set_spline_resolution(resolution: 'Integer' = None)
+```
+
+> Node [Set Spline Resolution](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_spline_resolution.html)
+
+> ***Jump*** : Socket refers to node output socket after the call
+
+#### Information:
+- **Socket** : self
+- **Socket** : self[selection]
+
+
+
+#### Arguments:
+- **resolution** (_Integer_ = None) : socket 'Resolution' (id: Resolution)
 
 
 
@@ -1763,7 +1536,7 @@ set_right_handle_type(handle_type='AUTO')
 > method
 
 ``` python
-set_spline_type(spline_type='POLY')
+set_spline_type(spline_type: "Literal['CATMULL_ROM', 'POLY', 'BEZIER', 'NURBS']" = 'POLY')
 ```
 
 > Node [Set Spline Type](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_spline_type.html)
@@ -1777,7 +1550,7 @@ set_spline_type(spline_type='POLY')
 
 
 #### Arguments:
-- **spline_type** (_str_ = POLY) : parameter 'spline_type' in ['CATMULL_ROM', 'POLY', 'BEZIER', 'NURBS']
+- **spline_type** (_Literal['CATMULL_ROM', 'POLY', 'BEZIER', 'NURBS']_ = POLY) : parameter 'spline_type' in ['CATMULL_ROM', 'POLY', 'BEZIER', 'NURBS']
 
 
 
@@ -1792,7 +1565,7 @@ set_spline_type(spline_type='POLY')
 > method
 
 ``` python
-set_tilt(tilt=None)
+set_tilt(tilt: 'Float' = None)
 ```
 
 > Node [Set Curve Tilt](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_curve_tilt.html)
@@ -1821,7 +1594,7 @@ set_tilt(tilt=None)
 > classmethod
 
 ``` python
-Spiral(resolution=None, rotations=None, start_radius=None, end_radius=None, height=None, reverse=None)
+Spiral(resolution: 'Integer' = None, rotations: 'Float' = None, start_radius: 'Float' = None, end_radius: 'Float' = None, height: 'Float' = None, reverse: 'Boolean' = None)
 ```
 
 > Node [Spiral](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/primitives/curve_spiral.html)
@@ -1879,7 +1652,7 @@ spline_parameter()
 > classmethod
 
 ``` python
-Star(points=None, inner_radius=None, outer_radius=None, twist=None)
+Star(points: 'Integer' = None, inner_radius: 'Float' = None, outer_radius: 'Float' = None, twist: 'Float' = None)
 ```
 
 > Node [Star](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/primitives/star.html)
@@ -1903,7 +1676,7 @@ Star(points=None, inner_radius=None, outer_radius=None, twist=None)
 > method
 
 ``` python
-subdivide(cuts=None)
+subdivide(cuts: 'Integer' = None)
 ```
 
 > Node [Subdivide Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/subdivide_curve.html)
@@ -1931,7 +1704,7 @@ subdivide(cuts=None)
 > method
 
 ``` python
-to_grease_pencil(instances_as_layers=None)
+to_grease_pencil(instances_as_layers: 'Boolean' = None)
 ```
 
 > Node [Curves to Grease Pencil](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/curves_to_grease_pencil.html)
@@ -1958,7 +1731,7 @@ to_grease_pencil(instances_as_layers=None)
 > method
 
 ``` python
-to_mesh(profile_curve=None, scale=None, fill_caps=None)
+to_mesh(profile_curve: 'Curve' = None, scale: 'Float' = None, fill_caps: 'Boolean' = None)
 ```
 
 > Node [Curve to Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/curve_to_mesh.html)
@@ -1969,7 +1742,7 @@ to_mesh(profile_curve=None, scale=None, fill_caps=None)
 
 
 #### Arguments:
-- **profile_curve** (_Geometry_ = None) : socket 'Profile Curve' (id: Profile Curve)
+- **profile_curve** (_Curve_ = None) : socket 'Profile Curve' (id: Profile Curve)
 - **scale** (_Float_ = None) : socket 'Scale' (id: Scale)
 - **fill_caps** (_Boolean_ = None) : socket 'Fill Caps' (id: Fill Caps)
 
@@ -1986,7 +1759,7 @@ to_mesh(profile_curve=None, scale=None, fill_caps=None)
 > method
 
 ``` python
-to_points(count=None, mode='COUNT')
+to_points(count: 'Integer' = None, mode: "Literal['EVALUATED', 'COUNT', 'LENGTH']" = 'COUNT')
 ```
 
 > Node [Curve to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/curve_to_points.html)
@@ -1998,7 +1771,7 @@ to_points(count=None, mode='COUNT')
 
 #### Arguments:
 - **count** (_Integer_ = None) : socket 'Count' (id: Count)
-- **mode** (_str_ = COUNT) : parameter 'mode' in ['EVALUATED', 'COUNT', 'LENGTH']
+- **mode** (_Literal['EVALUATED', 'COUNT', 'LENGTH']_ = COUNT) : parameter 'mode' in ['EVALUATED', 'COUNT', 'LENGTH']
 
 
 
@@ -2013,7 +1786,7 @@ to_points(count=None, mode='COUNT')
 > method
 
 ``` python
-to_points_count(count=None)
+to_points_count(count: 'Integer' = None)
 ```
 
 > Node [Curve to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/curve_to_points.html)
@@ -2062,7 +1835,7 @@ to_points_evaluated()
 > method
 
 ``` python
-to_points_length(length=None)
+to_points_length(length: 'Float' = None)
 ```
 
 > Node [Curve to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/curve_to_points.html)
@@ -2089,7 +1862,7 @@ to_points_length(length=None)
 > method
 
 ``` python
-trim(start=None, end=None, mode='FACTOR')
+trim(start: 'Float' = None, end: 'Float' = None, mode: "Literal['FACTOR', 'LENGTH']" = 'FACTOR')
 ```
 
 > Node [Trim Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/trim_curve.html)
@@ -2105,7 +1878,7 @@ trim(start=None, end=None, mode='FACTOR')
 #### Arguments:
 - **start** (_Float_ = None) : socket 'Start' (id: Start)
 - **end** (_Float_ = None) : socket 'End' (id: End)
-- **mode** (_str_ = FACTOR) : parameter 'mode' in ['FACTOR', 'LENGTH']
+- **mode** (_Literal['FACTOR', 'LENGTH']_ = FACTOR) : parameter 'mode' in ['FACTOR', 'LENGTH']
 
 
 
@@ -2120,7 +1893,7 @@ trim(start=None, end=None, mode='FACTOR')
 > method
 
 ``` python
-trim_factor(start=None, end=None)
+trim_factor(start: 'Float' = None, end: 'Float' = None)
 ```
 
 > Node [Trim Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/trim_curve.html)
@@ -2151,7 +1924,7 @@ trim_factor(start=None, end=None)
 > method
 
 ``` python
-trim_length(start=None, end=None)
+trim_length(start: 'Float' = None, end: 'Float' = None)
 ```
 
 > Node [Trim Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/operations/trim_curve.html)

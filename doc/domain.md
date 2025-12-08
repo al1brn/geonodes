@@ -53,14 +53,15 @@ All the domain classes are a subclass of [Domain](domain.md#domain).
 
 ### Inherited
 
-[\_cache](nodecache.md#_cache) :black_small_square: [\_cache_reset](nodecache.md#_cache_reset) :black_small_square: [\_geo_type](geobase.md#_geo_type) :black_small_square: [\_\_getitem__](geobase.md#__getitem__) :black_small_square: [\_lock](proplocker.md#_lock) :black_small_square: [\_raw_sel](geobase.md#_raw_sel) :black_small_square: [\_unlock](proplocker.md#_unlock) :black_small_square:
+[\_cache](nodecache.md#_cache) :black_small_square: ['_cached_nodes' not found]() :black_small_square: [\_cache_reset](nodecache.md#_cache_reset) :black_small_square: [\_geo](domain.md#_geo) :black_small_square: [\_geo_type](geom.md#_geo_type) :black_small_square: [\_\_getitem__](geom.md#__getitem__) :black_small_square: ['_selection' not found]() :black_small_square:
 
 ## Content
 
 - [capture](domain.md#capture)
 - [capture_attribute](domain.md#capture_attribute)
-- [for_each](domain.md#for_each)
+- [for_each_element](domain.md#for_each_element)
 - [\_geo](domain.md#_geo)
+- [get_selection](domain.md#get_selection)
 - [\_\_init__](domain.md#__init__)
 
 ## Properties
@@ -135,7 +136,6 @@ with GeoNodes("Capture Attribute"):
 
     # Capture one attribute without key
     captured_attr3 = mesh.points.capture_attribute(attr3)
-
 ```
 
 #### Arguments:
@@ -150,37 +150,37 @@ with GeoNodes("Capture Attribute"):
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Domain](domain.md#domain) :black_small_square: [Content](domain.md#content) :black_small_square: [Methods](domain.md#methods)</sub>
 
 ----------
-### for_each()
+### for_each_element()
 
 > method
 
 ``` python
-for_each(sockets={}, **kwargs)
+for_each_element(named_sockets: dict = {}, **sockets)
 ```
 
-> Create a [ForEachElement](foreachelement.md#foreachelement) zone on this domain
-
-The [ForEachElement](foreachelement.md#foreachelement) zone is initialized with the domain, its geometry and
-the selection:
-
-``` python
-ico = Mesh.IcoSphere(subdivisions=2)
-with ico.faces[(nd.index % 2).equal(0)].for_each(position=nd.position) as feel:
-    face = Mesh(feel.element)
-    face.points.offset = feel.position*1.1
-    feel.generated.geometry = face
-
-feel.generated.geometry.out()
-```
+Simulation zone
 
 #### Arguments:
-- **sockets** (_dict_ = {}) : input sockets
-- **kwargs** : input sockets
+- **named_sockets** (_dict_ = {})
+- **sockets** (_dict_) : other sockets
 
 
 
 #### Returns:
-- **ForEachElement** :
+- **ZoneIterator** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Domain](domain.md#domain) :black_small_square: [Content](domain.md#content) :black_small_square: [Methods](domain.md#methods)</sub>
+
+----------
+### get_selection()
+
+> method
+
+``` python
+get_selection()
+```
+
+Get the selection from Gometry and/or from Domain
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Domain](domain.md#domain) :black_small_square: [Content](domain.md#content) :black_small_square: [Methods](domain.md#methods)</sub>
 

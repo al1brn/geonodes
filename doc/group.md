@@ -1,7 +1,7 @@
 # Group
 
 ``` python
-Group(group_name, sockets={}, link_from=None, **kwargs)
+Group(group_name: str, named_sockets: dict = {}, **sockets)
 ```
 
 Node Group
@@ -39,9 +39,8 @@ with GeoNodes("Call a group"):
 
 #### Arguments:
 - **group_name** (_str_) : name of the group to use
-- **sockets** (_dict_ = {}) : sockets initialization values
-- **link_from** ( = None)
-- **kwargs** (_dict_) : sockets  initialization with their snake_case name
+- **named_sockets** (_dict_ = {}) : sockets initialization values
+- **sockets** (_dict_) : sockets  initialization with their snake_case name
 
 
 
@@ -50,7 +49,7 @@ with GeoNodes("Call a group"):
 
 ### Inherited
 
-[by_identifier](node.md#by_identifier) :black_small_square: [by_name](node.md#by_name) :black_small_square: [\_color](node.md#_color) :black_small_square: [data_socket](node.md#data_socket) :black_small_square: [get](node.md#get) :black_small_square: [\_\_getattr__](domain.md#__getattr__) :black_small_square: [\_\_getitem__](node.md#__getitem__) :black_small_square: [get_socket_names](node.md#get_socket_names) :black_small_square: [\_has_items](node.md#_has_items) :black_small_square: [identified_bsockets](node.md#identified_bsockets) :black_small_square: [InputNodeSocket](node.md#inputnodesocket) :black_small_square: [\_is_group_node](node.md#_is_group_node) :black_small_square: [\_items](node.md#_items) :black_small_square: [\_label](node.md#_label) :black_small_square: [link_from](node.md#link_from) :black_small_square: [\_out](node.md#_out) :black_small_square: [out](color.md#out) :black_small_square: [pin_gizmo](node.md#pin_gizmo) :black_small_square: [plug_selection](node.md#plug_selection) :black_small_square: [plug_value_into_socket](node.md#plug_value_into_socket) :black_small_square: [\_\_repr__](core-treea-node.md#__repr__) :black_small_square: [\_\_setattr__](domain.md#__setattr__) :black_small_square: [set_input_sockets](node.md#set_input_sockets) :black_small_square: [\_\_setitem__](node.md#__setitem__) :black_small_square: [\_set_items](node.md#_set_items) :black_small_square: [set_parameters](node.md#set_parameters) :black_small_square: [\_\_str__](core-treea-node.md#__str__) :black_small_square: [\_tree_interface](node.md#_tree_interface) :black_small_square: [valid_names](node.md#valid_names) :black_small_square:
+['_bnode' not found]() :black_small_square: [\_class_test](boolean.md#_class_test) :black_small_square: [\_color](node.md#_color) :black_small_square: [create_from_socket](node.md#create_from_socket) :black_small_square: [create_socket](node.md#create_socket) :black_small_square: [\_\_enter__](layout.md#__enter__) :black_small_square: [\_\_exit__](layout.md#__exit__) :black_small_square: [\_\_getattr__](g.md#__getattr__) :black_small_square: [\_get_interface_socket](node.md#_get_interface_socket) :black_small_square: [\_\_getitem__](node.md#__getitem__) :black_small_square: [get_signature](bundle.md#get_signature) :black_small_square: [get_socket](node.md#get_socket) :black_small_square: [get_sockets](node.md#get_sockets) :black_small_square: ['_has_dyn_in' not found]() :black_small_square: ['_has_dyn_out' not found]() :black_small_square: ['_has_items' not found]() :black_small_square: ['_inputs' not found]() :black_small_square: ['_interface' not found]() :black_small_square: ['_interface_in_out' not found]() :black_small_square: ['_is_paired_input' not found]() :black_small_square: ['_is_paired_output' not found]() :black_small_square: ['_items' not found]() :black_small_square: [\_label](node.md#_label) :black_small_square: [link_inputs](node.md#link_inputs) :black_small_square: [link_outputs](node.md#link_outputs) :black_small_square: [\_out](node.md#_out) :black_small_square: [out](color.md#out) :black_small_square: ['_outputs' not found]() :black_small_square: ['_paired_input_node' not found]() :black_small_square: ['_paired_output_node' not found]() :black_small_square: [pin_gizmo](node.md#pin_gizmo) :black_small_square: [\_pop](node.md#_pop) :black_small_square: [\_push](node.md#_push) :black_small_square: [\_\_repr__](core-treea-node.md#__repr__) :black_small_square: [\_\_setattr__](domain.md#__setattr__) :black_small_square: [set_input_socket](node.md#set_input_socket) :black_small_square: [\_\_setitem__](node.md#__setitem__) :black_small_square: [set_parameters](node.md#set_parameters) :black_small_square: [set_signature](node.md#set_signature) :black_small_square: [socket_by_identifier](node.md#socket_by_identifier) :black_small_square: [socket_by_index](node.md#socket_by_index) :black_small_square: [socket_by_name](node.md#socket_by_name) :black_small_square: [\_\_str__](core-treea-node.md#__str__) :black_small_square: ['_tree' not found]() :black_small_square: [\_update](node.md#_update) :black_small_square: ['_use_interface' not found]() :black_small_square:
 
 ## Content
 
@@ -67,7 +66,7 @@ with GeoNodes("Call a group"):
 > method
 
 ``` python
-__init__(group_name, sockets={}, link_from=None, **kwargs)
+__init__(group_name: str, named_sockets: dict = {}, **sockets)
 ```
 
 Node Group
@@ -105,9 +104,8 @@ with GeoNodes("Call a group"):
 
 #### Arguments:
 - **group_name** (_str_) : name of the group to use
-- **sockets** (_dict_ = {}) : sockets initialization values
-- **link_from** ( = None)
-- **kwargs** (_dict_) : sockets  initialization with their snake_case name
+- **named_sockets** (_dict_ = {}) : sockets initialization values
+- **sockets** (_dict_) : sockets  initialization with their snake_case name
 
 
 
@@ -122,7 +120,7 @@ with GeoNodes("Call a group"):
 > classmethod
 
 ``` python
-Prefix(prefix, group_name, sockets={}, **kwargs)
+Prefix(prefix, group_name, named_sockets={}, **sockets)
 ```
 
 Call a Group with a prefixed named.
@@ -164,8 +162,8 @@ with GeoNodes("Call a group"):
 #### Arguments:
 - **prefix** (_str_) : prefix
 - **group_name** (_str_) : name of the group to use
-- **sockets** (_dict_ = {}) : sockets initialization values
-- **kwargs** (_dict_) : sockets  initialization with their snake_case name
+- **named_sockets** ( = {})
+- **sockets** (_dict_) : sockets initialization values
 
 
 

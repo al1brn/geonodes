@@ -1,16 +1,14 @@
-# Material
+# Closure
 
 ``` python
-Material(value: geonodes.core.socket_class.Socket = None, name: str = None, tip: str = '', panel: str = '', optional_label: bool = False, hide_value: bool = False, hide_in_modifier: bool = False)
+Closure(value: geonodes.core.socket_class.Socket = None, name: str = None, tip: str = '', panel: str = '', optional_label: bool = False, hide_value: bool = False, hide_in_modifier: bool = False)
 ```
 
-Class Material data socket
-
-Node [Material](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/constant/material.html)
+Socket of type Closure
 
 #### Arguments:
-- **value** (_Socket_ = None) : material or material name in bpy.data.materials
-- **name** (_str_ = None) : create a group input socket of type Material if not None
+- **value** (_Socket_ = None) : Default value
+- **name** (_str_ = None) : Input socket name
 - **tip** (_str_ = ) : Property description
 - **panel** (_str_ = ) : Panel name
 - **optional_label** (_bool_ = False) : Property optional_label
@@ -23,9 +21,11 @@ Node [Material](https://docs.blender.org/manual/en/latest/modeling/geometry_node
 
 ## Content
 
-- [\_create_input_socket](material.md#_create_input_socket)
-- [enable_output](material.md#enable_output)
-- [\_\_init__](material.md#__init__)
+- [\_create_input_socket](closure.md#_create_input_socket)
+- [enable_output](closure.md#enable_output)
+- [evaluate](closure.md#evaluate)
+- [get_signature](closure.md#get_signature)
+- [\_\_init__](closure.md#__init__)
 
 ## Methods
 
@@ -37,17 +37,16 @@ Node [Material](https://docs.blender.org/manual/en/latest/modeling/geometry_node
 > classmethod
 
 ``` python
-_create_input_socket(value: 'object' = None, name: 'str' = 'Material', tip: 'str' = '', panel: 'str' = '', optional_label: 'bool' = False, hide_value: 'bool' = False, hide_in_modifier: 'bool' = False)
+_create_input_socket(name: 'str' = 'Closure', tip: 'str' = '', panel: 'str' = '', optional_label: 'bool' = False, hide_value: 'bool' = False, hide_in_modifier: 'bool' = False)
 ```
 
-> Material Input
+> Closure Input
 
-New [Material](material.md#material) input with subtype 'NONE'.
+New [Closure](closure.md#closure) input with subtype 'NONE'.
 
 Aguments
 --------
-- value  (object = None) : Default value
-- name  (str = 'Material') : Input socket name
+- name  (str = 'Closure') : Input socket name
 - tip  (str = '') : Property description
 - panel (str = "") : Panel name
 - optional_label  (bool = False) : Property optional_label
@@ -55,8 +54,7 @@ Aguments
 - hide_in_modifier  (bool = False) : Property hide_in_modifier
 
 #### Arguments:
-- **value** (_object_ = None)
-- **name** (_str_ = Material)
+- **name** (_str_ = Closure)
 - **tip** (_str_ = )
 - **panel** (_str_ = )
 - **optional_label** (_bool_ = False)
@@ -66,9 +64,9 @@ Aguments
 
 
 #### Returns:
-- **Material** :
+- **Closure** :
 
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Material](material.md#material) :black_small_square: [Content](material.md#content) :black_small_square: [Methods](material.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Closure](closure.md#closure) :black_small_square: [Content](closure.md#content) :black_small_square: [Methods](closure.md#methods)</sub>
 
 ----------
 ### enable_output()
@@ -83,7 +81,7 @@ enable_output(enable: 'Boolean' = None)
 
 #### Information:
 - **Socket** : self
-- **Parameter** : 'MATERIAL'
+- **Parameter** : 'CLOSURE'
 
 
 
@@ -93,9 +91,97 @@ enable_output(enable: 'Boolean' = None)
 
 
 #### Returns:
-- **Material** :
+- **Closure** :
 
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Material](material.md#material) :black_small_square: [Content](material.md#content) :black_small_square: [Methods](material.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Closure](closure.md#closure) :black_small_square: [Content](closure.md#content) :black_small_square: [Methods](closure.md#methods)</sub>
+
+----------
+### evaluate()
+
+> method
+
+``` python
+evaluate(named_sockets: dict = {}, signature: geonodes.core.signature.Signature = None, **sockets)
+```
+
+> Node ERROR: Node 'Closure Evaluate' not found
+
+Evaluate the closure.
+
+The closure signature can be read directly when the closure sockets comes from a Closure
+zone. Otherwise, the signature argument must be defined.
+
+``` python
+with GeoNodes("Closure Evaluation"):
+    
+    # ----- Evaluation from a Closure zone
+    
+    with Closure() as cl:
+        cube = Mesh.Cube(size=cl.new_input(), vertices_x=cl.new_input("Resolution"))
+        cube.node.vertices_y = cl.input_node.resolution
+        cube.node.vertices_z = cl.input_node.resolution
+        cube.out("Cube")
+        
+    # Direct evalution: no signature required
+    cl.evaluate(size=(1, 2, 3), resolution=5).out("First Closure")
+    
+    # ----- Evaluation with a closure signature
+    
+    # A closure is passed as Tree input argument
+    closure = Closure(None, name="Other Closure")
+    
+    # The closure can be switched for instance
+    closure = cl.switch(Boolean(False, "Use other"), closure)
+    
+    # Evaluation is made using the reference signature
+    closure.evaluate(signature=cl.get_signature(), size=(10, 20, 30), resolution=10).out("Second Closure")
+    
+    # ----- Evaluation with any signature
+    
+    # A closure is passed as Tree input argument
+    closure = Closure(None, name="IcoSphere Closure")
+    
+    # The signature is supposed to be the one of an ico sphere creation
+    ico = Mesh.IcoSphere()
+    
+    # Evaluation with this node signature
+    closure.evaluate(closure_signature=ico.node.get_signature(), radius=3.14).out("Third Closure")
+```
+
+#### Arguments:
+- **named_sockets** (_dict_ = {}) : named sockets values
+- **signature** (_Signature_ = None) : the evaluation signature
+- **sockets** : socket values
+
+
+
+#### Returns:
+- **First** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Closure](closure.md#closure) :black_small_square: [Content](closure.md#content) :black_small_square: [Methods](closure.md#methods)</sub>
+
+----------
+### get_signature()
+
+> method
+
+``` python
+get_signature(with_sockets: bool = False)
+```
+
+Build the closure signature of the zone.
+
+Closure signature is the tuple (input_signature, output_signature)
+
+#### Arguments:
+- **with_sockets** (_bool_ = False) : include sockets
+
+
+
+#### Returns:
+- **Signature** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Closure](closure.md#closure) :black_small_square: [Content](closure.md#content) :black_small_square: [Methods](closure.md#methods)</sub>
 
 ----------
 ### \_\_init__()
@@ -106,17 +192,15 @@ enable_output(enable: 'Boolean' = None)
 __init__(value: geonodes.core.socket_class.Socket = None, name: str = None, tip: str = '', panel: str = '', optional_label: bool = False, hide_value: bool = False, hide_in_modifier: bool = False)
 ```
 
-Class Material data socket
-
-Node [Material](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/constant/material.html)
+Socket of type Closure
 
 #### Arguments:
-- **value** (_Socket_ = None) : material or material name in bpy.data.materials
-- **name** (_str_ = None) : create a group input socket of type Material if not None
+- **value** (_Socket_ = None) : Default value
+- **name** (_str_ = None) : Input socket name
 - **tip** (_str_ = ) : Property description
 - **panel** (_str_ = ) : Panel name
 - **optional_label** (_bool_ = False) : Property optional_label
 - **hide_value** (_bool_ = False) : Property hide_value
 - **hide_in_modifier** (_bool_ = False) : Property hide_in_modifier
 
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Material](material.md#material) :black_small_square: [Content](material.md#content) :black_small_square: [Methods](material.md#methods)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Closure](closure.md#closure) :black_small_square: [Content](closure.md#content) :black_small_square: [Methods](closure.md#methods)</sub>

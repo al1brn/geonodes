@@ -59,6 +59,16 @@ SPEC_NODES = {
 # Tabulation
 _1, _2, _3, _4 = " "*4, " "*8, " "*12, " "*16
 
+
+# ====================================================================================================
+# Node is never returned
+# ====================================================================================================
+
+def check_node_ret(ret):
+    return 'OUT' if ret == 'NODE' else ret
+
+
+
 # ====================================================================================================
 # Node Param
 
@@ -1689,6 +1699,9 @@ class NodeInfo:
         - module : module name
         - name : function name
         """
+        
+        ret = check_node_ret(ret)
+
         node_name = self.bnode.name
         bl_idname = self.bnode.bl_idname
 
@@ -2017,6 +2030,9 @@ class NodeInfo:
         - check_existing : raises en error if the method already exists
         - parameters : node parameters
         """
+
+        ret = check_node_ret(ret)
+
 
         DEBUG = False and self.bnode.name in ['Accumulate Field']
         if DEBUG:
@@ -2436,6 +2452,9 @@ class NodeInfo:
         - ret : type of return
         - parameters : node parameters
         """
+
+        ret = check_node_ret(ret)
+
         # ----------------------------------------------------------------------------------------------------
         # Set user parameters
 

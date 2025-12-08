@@ -1,7 +1,7 @@
 # Matrix
 
 ``` python
-Matrix(value=None, name=None, tip=None, panel='', default_input='VALUE', hide_value=False, hide_in_modifier=False, single_value=False)
+Matrix(value: geonodes.core.socket_class.Socket = None, name: str = None, tip: str = '', panel: str = '', optional_label: bool = False, hide_value: bool = False, hide_in_modifier: bool = False, default_attribute: str = '', default_input: Literal['VALUE', 'INSTANCE_TRANSFORM'] = 'VALUE', shape: Literal['AUTO', 'DYNAMIC', 'FIELD', 'SINGLE'] = 'AUTO')
 ```
 
 Matrix data socket ('MATRIX')
@@ -18,23 +18,26 @@ matrix = Matrix([[0, 1, 0, 0], [1, 0, 0, 0], [0, 0, 0, 1], [0, 0, 1, 0]]) # Node
 ```
 
 #### Arguments:
-- **value** (_array of 16 Floats_ = None) : initialization values
+- **value** (_Socket_ = None) : initialization values
 - **name** (_str_ = None) : Create group input socket with this name if not None
-- **tip** ( = None)
-- **panel** (_str_ = ) : panel name (overrides tree panel if exists)
-- **default_input** (_str in ('VALUE', 'INSTANCE_TRANSFORM')_ = VALUE) : 
-- **hide_value** (_bool_ = False) : Hide Value option
-- **hide_in_modifier** (_bool_ = False) : Hide in Modifier option
-- **single_value** (_bool_ = False) : Single Value option
+- **tip** (_str_ = ) : Property description
+- **panel** (_str_ = ) : Panel name
+- **optional_label** (_bool_ = False) : Property optional_label
+- **hide_value** (_bool_ = False) : Property hide_value
+- **hide_in_modifier** (_bool_ = False) : Property hide_in_modifier
+- **default_attribute** (_str_ = ) : Property default_attribute_name
+- **default_input** (_Literal_ = VALUE) : Property default_input in ('VALUE', 'INSTANCE_TRANSFORM')
+- **shape** (_Literal_ = AUTO) : Property structure_type in ('AUTO', 'DYNAMIC', 'FIELD', 'SINGLE')
 
 ### Inherited
 
-[\_cache](nodecache.md#_cache) :black_small_square: [\_cache_reset](nodecache.md#_cache_reset) :black_small_square: [check_in_list](socket.md#check_in_list) :black_small_square: [data_type](socket.md#data_type) :black_small_square: [\_domain_to_geometry](socket.md#_domain_to_geometry) :black_small_square: [\_geometry_class](socket.md#_geometry_class) :black_small_square: [\_\_getattr__](socket.md#__getattr__) :black_small_square: [get_node_data_type](socket.md#get_node_data_type) :black_small_square: [get_socket_class](socket.md#get_socket_class) :black_small_square: [IndexSwitch](socket.md#indexswitch) :black_small_square: [index_switch](socket.md#index_switch) :black_small_square: [Input](socket.md#input) :black_small_square: [input_type](socket.md#input_type) :black_small_square: [\_interface_socket](socket.md#_interface_socket) :black_small_square: [\_is_group_input](socket.md#_is_group_input) :black_small_square: [\_is_group_output](socket.md#_is_group_output) :black_small_square: [\_is_group_socket](socket.md#_is_group_socket) :black_small_square: [\_jump](socket.md#_jump) :black_small_square: [\_lc](socket.md#_lc) :black_small_square: [\_lcop](socket.md#_lcop) :black_small_square: [link_from](socket.md#link_from) :black_small_square: [\_lock](proplocker.md#_lock) :black_small_square: [\_mark_for_delete](socket.md#_mark_for_delete) :black_small_square: [MenuSwitch](socket.md#menuswitch) :black_small_square: [menu_switch](socket.md#menu_switch) :black_small_square: [\_name](socket.md#_name) :black_small_square: [node](socket.md#node) :black_small_square: [node_color](socket.md#node_color) :black_small_square: [node_label](socket.md#node_label) :black_small_square: [option](socket.md#option) :black_small_square: [option_index](socket.md#option_index) :black_small_square: [out](socket.md#out) :black_small_square: [\_panel_name](socket.md#_panel_name) :black_small_square: [pin_gizmo](socket.md#pin_gizmo) :black_small_square: [\_reset](socket.md#_reset) :black_small_square: [\_run_tests](socket.md#_run_tests) :black_small_square: [\_\_setattr__](socket.md#__setattr__) :black_small_square: [\_set_interface_property](socket.md#_set_interface_property) :black_small_square: [socket_type](socket.md#socket_type) :black_small_square: [\_\_str__](socket.md#__str__) :black_small_square: [Switch](socket.md#switch) :black_small_square: [switch](socket.md#switch) :black_small_square: [switch_false](socket.md#switch_false) :black_small_square: [\_unlock](proplocker.md#_unlock) :black_small_square:
+['_bsocket' not found]() :black_small_square: [\_cache](nodecache.md#_cache) :black_small_square: ['_cached_nodes' not found]() :black_small_square: [\_cache_reset](nodecache.md#_cache_reset) :black_small_square: [check_in_list](core-socke-socket.md#check_in_list) :black_small_square: [\_classes_test](core-socke-socket.md#_classes_test) :black_small_square: [default_value](core-socke-socket.md#default_value) :black_small_square: [\_domain_to_geometry](core-socke-socket.md#_domain_to_geometry) :black_small_square: [\_\_enter__](core-socke-socket.md#__enter__) :black_small_square: [\_\_exit__](core-socke-socket.md#__exit__) :black_small_square: [\_\_getattr__](core-socke-socket.md#__getattr__) :black_small_square: [IndexSwitch](core-socke-socket.md#indexswitch) :black_small_square: [index_switch](core-socke-socket.md#index_switch) :black_small_square: [Input](core-socke-socket.md#input) :black_small_square: [\_interface_socket](core-socke-socket.md#_interface_socket) :black_small_square: [is_grid](core-socke-socket.md#is_grid) :black_small_square: [\_jump](core-socke-socket.md#_jump) :black_small_square: ['_layout' not found]() :black_small_square: [\_lc](core-socke-socket.md#_lc) :black_small_square: [\_lcop](core-socke-socket.md#_lcop) :black_small_square: [link_from](core-socke-socket.md#link_from) :black_small_square: [MenuSwitch](core-socke-socket.md#menuswitch) :black_small_square: [menu_switch](core-socke-socket.md#menu_switch) :black_small_square: [\_name](core-socke-socket.md#_name) :black_small_square: [node](core-socke-socket.md#node) :black_small_square: [node_color](core-socke-socket.md#node_color) :black_small_square: [node_label](core-socke-socket.md#node_label) :black_small_square: [out](core-socke-socket.md#out) :black_small_square: [\_panel_name](core-socke-socket.md#_panel_name) :black_small_square: [pin_gizmo](core-socke-socket.md#pin_gizmo) :black_small_square: [\_pop](core-socke-socket.md#_pop) :black_small_square: [\_push](core-socke-socket.md#_push) :black_small_square: [repeat](core-socke-socket.md#repeat) :black_small_square: [\_reset](core-socke-socket.md#_reset) :black_small_square: [simulation](core-socke-socket.md#simulation) :black_small_square: ['_socket_type' not found]() :black_small_square: [\_\_str__](core-socke-socket.md#__str__) :black_small_square: [Switch](core-socke-socket.md#switch) :black_small_square: [switch](core-socke-socket.md#switch) :black_small_square: [switch_false](core-socke-socket.md#switch_false) :black_small_square: ['_tree' not found]() :black_small_square: ['_use_layout' not found]() :black_small_square:
 
 ## Content
 
-- **C** : [column_1_row_1](matrix.md#column_1_row_1) :black_small_square: [column_1_row_2](matrix.md#column_1_row_2) :black_small_square: [column_1_row_3](matrix.md#column_1_row_3) :black_small_square: [column_1_row_4](matrix.md#column_1_row_4) :black_small_square: [column_2_row_1](matrix.md#column_2_row_1) :black_small_square: [column_2_row_2](matrix.md#column_2_row_2) :black_small_square: [column_2_row_3](matrix.md#column_2_row_3) :black_small_square: [column_2_row_4](matrix.md#column_2_row_4) :black_small_square: [column_3_row_1](matrix.md#column_3_row_1) :black_small_square: [column_3_row_2](matrix.md#column_3_row_2) :black_small_square: [column_3_row_3](matrix.md#column_3_row_3) :black_small_square: [column_3_row_4](matrix.md#column_3_row_4) :black_small_square: [column_4_row_1](matrix.md#column_4_row_1) :black_small_square: [column_4_row_2](matrix.md#column_4_row_2) :black_small_square: [column_4_row_3](matrix.md#column_4_row_3) :black_small_square: [column_4_row_4](matrix.md#column_4_row_4) :black_small_square: [Combine](matrix.md#combine) :black_small_square: [CombineTransform](matrix.md#combinetransform)
+- **C** : [column_1_row_1](matrix.md#column_1_row_1) :black_small_square: [column_1_row_2](matrix.md#column_1_row_2) :black_small_square: [column_1_row_3](matrix.md#column_1_row_3) :black_small_square: [column_1_row_4](matrix.md#column_1_row_4) :black_small_square: [column_2_row_1](matrix.md#column_2_row_1) :black_small_square: [column_2_row_2](matrix.md#column_2_row_2) :black_small_square: [column_2_row_3](matrix.md#column_2_row_3) :black_small_square: [column_2_row_4](matrix.md#column_2_row_4) :black_small_square: [column_3_row_1](matrix.md#column_3_row_1) :black_small_square: [column_3_row_2](matrix.md#column_3_row_2) :black_small_square: [column_3_row_3](matrix.md#column_3_row_3) :black_small_square: [column_3_row_4](matrix.md#column_3_row_4) :black_small_square: [column_4_row_1](matrix.md#column_4_row_1) :black_small_square: [column_4_row_2](matrix.md#column_4_row_2) :black_small_square: [column_4_row_3](matrix.md#column_4_row_3) :black_small_square: [column_4_row_4](matrix.md#column_4_row_4) :black_small_square: [Combine](matrix.md#combine) :black_small_square: [CombineTransform](matrix.md#combinetransform) :black_small_square: [\_create_input_socket](matrix.md#_create_input_socket)
 - **D** : [determinant](matrix.md#determinant)
+- **E** : [enable_output](matrix.md#enable_output)
 - **F** : [FromArray](matrix.md#fromarray)
 - **H** : [hash_value](matrix.md#hash_value)
 - **I** : [\_\_init__](matrix.md#__init__) :black_small_square: [invert](matrix.md#invert)
@@ -248,7 +251,7 @@ matrix = Matrix([[0, 1, 0, 0], [1, 0, 0, 0], [0, 0, 0, 1], [0, 0, 1, 0]]) # Node
 > classmethod
 
 ``` python
-Combine(column_1_row_1=None, column_1_row_2=None, column_1_row_3=None, column_1_row_4=None, column_2_row_1=None, column_2_row_2=None, column_2_row_3=None, column_2_row_4=None, column_3_row_1=None, column_3_row_2=None, column_3_row_3=None, column_3_row_4=None, column_4_row_1=None, column_4_row_2=None, column_4_row_3=None, column_4_row_4=None)
+Combine(column_1_row_1: 'Float' = None, column_1_row_2: 'Float' = None, column_1_row_3: 'Float' = None, column_1_row_4: 'Float' = None, column_2_row_1: 'Float' = None, column_2_row_2: 'Float' = None, column_2_row_3: 'Float' = None, column_2_row_4: 'Float' = None, column_3_row_1: 'Float' = None, column_3_row_2: 'Float' = None, column_3_row_3: 'Float' = None, column_3_row_4: 'Float' = None, column_4_row_1: 'Float' = None, column_4_row_2: 'Float' = None, column_4_row_3: 'Float' = None, column_4_row_4: 'Float' = None)
 ```
 
 > Node [Combine Matrix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/matrix/combine_matrix.html)
@@ -284,7 +287,7 @@ Combine(column_1_row_1=None, column_1_row_2=None, column_1_row_3=None, column_1_
 > classmethod
 
 ``` python
-CombineTransform(translation=None, rotation=None, scale=None)
+CombineTransform(translation: 'Vector' = None, rotation: 'Rotation' = None, scale: 'Vector' = None)
 ```
 
 > Node [Combine Transform](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/matrix/combine_transform.html)
@@ -293,6 +296,49 @@ CombineTransform(translation=None, rotation=None, scale=None)
 - **translation** (_Vector_ = None) : socket 'Translation' (id: Translation)
 - **rotation** (_Rotation_ = None) : socket 'Rotation' (id: Rotation)
 - **scale** (_Vector_ = None) : socket 'Scale' (id: Scale)
+
+
+
+#### Returns:
+- **Matrix** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Matrix](matrix.md#matrix) :black_small_square: [Content](matrix.md#content) :black_small_square: [Methods](matrix.md#methods)</sub>
+
+----------
+### \_create_input_socket()
+
+> classmethod
+
+``` python
+_create_input_socket(name: 'str' = 'Matrix', tip: 'str' = '', panel: 'str' = '', optional_label: 'bool' = False, hide_value: 'bool' = False, hide_in_modifier: 'bool' = False, default_attribute: 'str' = '', default_input: "Literal['VALUE', 'INSTANCE_TRANSFORM']" = 'VALUE', shape: "Literal['AUTO', 'DYNAMIC', 'FIELD', 'SINGLE']" = 'AUTO')
+```
+
+> Matrix Input
+
+New [Matrix](matrix.md#matrix) input with subtype 'NONE'.
+
+Aguments
+--------
+- name  (str = 'Matrix') : Input socket name
+- tip  (str = '') : Property description
+- panel (str = "") : Panel name
+- optional_label  (bool = False) : Property optional_label
+- hide_value  (bool = False) : Property hide_value
+- hide_in_modifier  (bool = False) : Property hide_in_modifier
+- default_attribute  (str = '') : Property default_attribute_name
+- default_input  (str = 'VALUE') : Property default_input in ('VALUE', 'INSTANCE_TRANSFORM')
+- shape  (str = 'AUTO') : Property structure_type in ('AUTO', 'DYNAMIC', 'FIELD', 'SINGLE')
+
+#### Arguments:
+- **name** (_str_ = Matrix)
+- **tip** (_str_ = )
+- **panel** (_str_ = )
+- **optional_label** (_bool_ = False)
+- **hide_value** (_bool_ = False)
+- **hide_in_modifier** (_bool_ = False)
+- **default_attribute** (_str_ = )
+- **default_input** (_Literal['VALUE', 'INSTANCE_TRANSFORM']_ = VALUE)
+- **shape** (_Literal['AUTO', 'DYNAMIC', 'FIELD', 'SINGLE']_ = AUTO)
 
 
 
@@ -323,6 +369,33 @@ determinant()
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Matrix](matrix.md#matrix) :black_small_square: [Content](matrix.md#content) :black_small_square: [Methods](matrix.md#methods)</sub>
 
 ----------
+### enable_output()
+
+> method
+
+``` python
+enable_output(enable: 'Boolean' = None)
+```
+
+> Node [Enable Output](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../interface/controls/nodes/types/output/enable_output.html)
+
+#### Information:
+- **Socket** : self
+- **Parameter** : 'MATRIX'
+
+
+
+#### Arguments:
+- **enable** (_Boolean_ = None) : socket 'Enable' (id: Enable)
+
+
+
+#### Returns:
+- **Matrix** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Matrix](matrix.md#matrix) :black_small_square: [Content](matrix.md#content) :black_small_square: [Methods](matrix.md#methods)</sub>
+
+----------
 ### FromArray()
 
 > classmethod
@@ -349,7 +422,7 @@ FromArray(array)
 > method
 
 ``` python
-hash_value(seed=None)
+hash_value(seed: 'Integer' = None)
 ```
 
 > Node [Hash Value](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/hash_value.html)
@@ -376,7 +449,7 @@ hash_value(seed=None)
 > method
 
 ``` python
-__init__(value=None, name=None, tip=None, panel='', default_input='VALUE', hide_value=False, hide_in_modifier=False, single_value=False)
+__init__(value: geonodes.core.socket_class.Socket = None, name: str = None, tip: str = '', panel: str = '', optional_label: bool = False, hide_value: bool = False, hide_in_modifier: bool = False, default_attribute: str = '', default_input: Literal['VALUE', 'INSTANCE_TRANSFORM'] = 'VALUE', shape: Literal['AUTO', 'DYNAMIC', 'FIELD', 'SINGLE'] = 'AUTO')
 ```
 
 Matrix data socket ('MATRIX')
@@ -393,14 +466,16 @@ matrix = Matrix([[0, 1, 0, 0], [1, 0, 0, 0], [0, 0, 0, 1], [0, 0, 1, 0]]) # Node
 ```
 
 #### Arguments:
-- **value** (_array of 16 Floats_ = None) : initialization values
+- **value** (_Socket_ = None) : initialization values
 - **name** (_str_ = None) : Create group input socket with this name if not None
-- **tip** ( = None)
-- **panel** (_str_ = ) : panel name (overrides tree panel if exists)
-- **default_input** (_str in ('VALUE', 'INSTANCE_TRANSFORM')_ = VALUE) : 
-- **hide_value** (_bool_ = False) : Hide Value option
-- **hide_in_modifier** (_bool_ = False) : Hide in Modifier option
-- **single_value** (_bool_ = False) : Single Value option
+- **tip** (_str_ = ) : Property description
+- **panel** (_str_ = ) : Panel name
+- **optional_label** (_bool_ = False) : Property optional_label
+- **hide_value** (_bool_ = False) : Property hide_value
+- **hide_in_modifier** (_bool_ = False) : Property hide_in_modifier
+- **default_attribute** (_str_ = ) : Property default_attribute_name
+- **default_input** (_Literal_ = VALUE) : Property default_input in ('VALUE', 'INSTANCE_TRANSFORM')
+- **shape** (_Literal_ = AUTO) : Property structure_type in ('AUTO', 'DYNAMIC', 'FIELD', 'SINGLE')
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Matrix](matrix.md#matrix) :black_small_square: [Content](matrix.md#content) :black_small_square: [Methods](matrix.md#methods)</sub>
 
@@ -431,7 +506,7 @@ invert()
 > method
 
 ``` python
-multiply(matrix=None)
+multiply(matrix: 'Matrix' = None)
 ```
 
 > Node [Multiply Matrices](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/matrix/multiply_matrices.html)
@@ -457,7 +532,7 @@ multiply(matrix=None)
 > classmethod
 
 ``` python
-Named(name=None)
+Named(name: 'String' = None)
 ```
 
 > Node [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/named_attribute.html)
@@ -483,7 +558,7 @@ Named(name=None)
 > classmethod
 
 ``` python
-NamedAttribute(name=None)
+NamedAttribute(name: 'String' = None)
 ```
 
 > Node [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/named_attribute.html)
@@ -509,7 +584,7 @@ NamedAttribute(name=None)
 > method
 
 ``` python
-project_point(vector=None)
+project_point(vector: 'Vector' = None)
 ```
 
 > Node [Project Point](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/matrix/project_point.html)
@@ -546,7 +621,7 @@ separate_matrix()
 
 
 #### Returns:
-- **node** (_Float_)
+- **Float** (_Float_)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Matrix](matrix.md#matrix) :black_small_square: [Content](matrix.md#content) :black_small_square: [Methods](matrix.md#methods)</sub>
 
@@ -567,7 +642,7 @@ separate_transform()
 
 
 #### Returns:
-- **node** (_Vector_)
+- **Vector** (_Rotation_)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Matrix](matrix.md#matrix) :black_small_square: [Content](matrix.md#content) :black_small_square: [Methods](matrix.md#methods)</sub>
 
@@ -577,7 +652,7 @@ separate_transform()
 > method
 
 ``` python
-transform_direction(direction=None)
+transform_direction(direction: 'Vector' = None)
 ```
 
 > Node [Transform Direction](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/matrix/transform_direction.html)
@@ -603,7 +678,7 @@ transform_direction(direction=None)
 > method
 
 ``` python
-transform_gizmo(*value, position=None, rotation=None, use_rotation_x=True, use_rotation_y=True, use_rotation_z=True, use_scale_x=True, use_scale_y=True, use_scale_z=True, use_translation_x=True, use_translation_y=True, use_translation_z=True)
+transform_gizmo(*value: 'Matrix', position: 'Vector' = None, rotation: 'Rotation' = None, use_rotation_x=True, use_rotation_y=True, use_rotation_z=True, use_scale_x=True, use_scale_y=True, use_scale_z=True, use_translation_x=True, use_translation_y=True, use_translation_z=True)
 ```
 
 > Node ERROR: Node 'Transform Gizmo' not found
@@ -635,7 +710,7 @@ transform_gizmo(*value, position=None, rotation=None, use_rotation_x=True, use_r
 > method
 
 ``` python
-transform_point(vector=None)
+transform_point(vector: 'Vector' = None)
 ```
 
 > Node [Transform Point](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/matrix/transform_point.html)

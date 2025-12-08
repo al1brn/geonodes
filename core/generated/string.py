@@ -1,4 +1,4 @@
-# Generated 2025-12-08 08:30:17
+# Generated 2025-12-08 09:52:50
 
 from __future__ import annotations
 from .. socket_class import Socket
@@ -127,15 +127,16 @@ class String(Socket):
         return node._out
 
     @classmethod
+    @property
     def special_characters(cls):
         """ > Node <&Node Special Characters>
 
         Returns
         -------
-        - node [line_break (String), tab (String)]
+        - String [tab_ (String)]
         """
         node = Node('Special Characters', )
-        return node
+        return node._out
 
     @classmethod
     @property

@@ -1,27 +1,57 @@
 # Texture
 
 ``` python
-Texture(value: bpy_types.Texture | geonodes.core.socket_class.Socket | None = None, name: str | None = None, tip: str | None = None)
+Texture(socket)
 ```
 
-Socket of type Texture
+> The output socket of a [Node](node.md#node)
+
+**Socket** is the base class for data classes such as [Float](float.md#float), [Image](image.md#image) or [Geometry](geometry.md#geometry).
+
+It refers to an **output** socket of a [Node](node.md#node). A socket can be set to the **input** socket
+of another [Node](node.md#node) to create a link between the two nodes:
+
+``` python
+# cube is the output socket 'Mesh' of the node 'Cube'
+cube = Node("Cube").mesh
+
+# cube is set the to socket 'geometry' of node 'Set Position'
+node = Node("Set Position")
+node.geometry = cube
+```
+
+> [!IMPORTANT]
+> You can access to the other output sockets of the node in two different ways:
+> - using ['#node' not found]() attribute
+> - using ***peer socket** naming convention where the **snake_case** name of
+>.  the other sockets is suffixed by '_'
+
+The example below shows how to access the to 'UV Map' socket of node [Cube](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/primitives/cube.html):
+
+``` python
+# cube is the output socket 'Mesh' of the node 'Cube'
+cube = Mesh.Cube()
+
+# Getting 'UV Map' through the node
+uv_map = cube.node.uv_map
+
+# Or using the 'peer socket' naming convention
+uv_map = cuve.uv_map_
+```
 
 #### Arguments:
-- **value** (_bpy_types.Texture | geonodes.core.socket_class.Socket | None_ = None) : image or image name in bpy.data.images
-- **name** (_str | None_ = None) : create a group input socket of type Image if not None
-- **tip** (_str | None_ = None) : user tip for group input socket
+- **socket** (_NodeSocket_) : the output socket to wrap
 
 ### Inherited
 
-[\_cache](nodecache.md#_cache) :black_small_square: [\_cache_reset](nodecache.md#_cache_reset) :black_small_square: [check_in_list](socket.md#check_in_list) :black_small_square: [data_type](socket.md#data_type) :black_small_square: [\_domain_to_geometry](socket.md#_domain_to_geometry) :black_small_square: [\_geometry_class](socket.md#_geometry_class) :black_small_square: [\_\_getattr__](socket.md#__getattr__) :black_small_square: [get_node_data_type](socket.md#get_node_data_type) :black_small_square: [get_socket_class](socket.md#get_socket_class) :black_small_square: [IndexSwitch](socket.md#indexswitch) :black_small_square: [index_switch](socket.md#index_switch) :black_small_square: [Input](socket.md#input) :black_small_square: [input_type](socket.md#input_type) :black_small_square: [\_interface_socket](socket.md#_interface_socket) :black_small_square: [\_is_group_input](socket.md#_is_group_input) :black_small_square: [\_is_group_output](socket.md#_is_group_output) :black_small_square: [\_is_group_socket](socket.md#_is_group_socket) :black_small_square: [\_jump](socket.md#_jump) :black_small_square: [\_lc](socket.md#_lc) :black_small_square: [\_lcop](socket.md#_lcop) :black_small_square: [link_from](socket.md#link_from) :black_small_square: [\_lock](proplocker.md#_lock) :black_small_square: [\_mark_for_delete](socket.md#_mark_for_delete) :black_small_square: [MenuSwitch](socket.md#menuswitch) :black_small_square: [menu_switch](socket.md#menu_switch) :black_small_square: [\_name](socket.md#_name) :black_small_square: [node](socket.md#node) :black_small_square: [node_color](socket.md#node_color) :black_small_square: [node_label](socket.md#node_label) :black_small_square: [option](socket.md#option) :black_small_square: [option_index](socket.md#option_index) :black_small_square: [out](socket.md#out) :black_small_square: [\_panel_name](socket.md#_panel_name) :black_small_square: [pin_gizmo](socket.md#pin_gizmo) :black_small_square: [\_reset](socket.md#_reset) :black_small_square: [\_run_tests](socket.md#_run_tests) :black_small_square: [\_\_setattr__](socket.md#__setattr__) :black_small_square: [\_set_interface_property](socket.md#_set_interface_property) :black_small_square: [socket_type](socket.md#socket_type) :black_small_square: [\_\_str__](socket.md#__str__) :black_small_square: [Switch](socket.md#switch) :black_small_square: [switch](socket.md#switch) :black_small_square: [switch_false](socket.md#switch_false) :black_small_square: [\_unlock](proplocker.md#_unlock) :black_small_square:
+['_bsocket' not found]() :black_small_square: [\_cache](nodecache.md#_cache) :black_small_square: ['_cached_nodes' not found]() :black_small_square: [\_cache_reset](nodecache.md#_cache_reset) :black_small_square: [check_in_list](core-socke-socket.md#check_in_list) :black_small_square: [\_classes_test](core-socke-socket.md#_classes_test) :black_small_square: [default_value](core-socke-socket.md#default_value) :black_small_square: [\_domain_to_geometry](core-socke-socket.md#_domain_to_geometry) :black_small_square: [\_\_enter__](core-socke-socket.md#__enter__) :black_small_square: [\_\_exit__](core-socke-socket.md#__exit__) :black_small_square: [\_\_getattr__](core-socke-socket.md#__getattr__) :black_small_square: [IndexSwitch](core-socke-socket.md#indexswitch) :black_small_square: [index_switch](core-socke-socket.md#index_switch) :black_small_square: [\_\_init__](core-socke-socket.md#__init__) :black_small_square: [Input](core-socke-socket.md#input) :black_small_square: [\_interface_socket](core-socke-socket.md#_interface_socket) :black_small_square: [is_grid](core-socke-socket.md#is_grid) :black_small_square: [\_jump](core-socke-socket.md#_jump) :black_small_square: ['_layout' not found]() :black_small_square: [\_lc](core-socke-socket.md#_lc) :black_small_square: [\_lcop](core-socke-socket.md#_lcop) :black_small_square: [link_from](core-socke-socket.md#link_from) :black_small_square: [MenuSwitch](core-socke-socket.md#menuswitch) :black_small_square: [menu_switch](core-socke-socket.md#menu_switch) :black_small_square: [\_name](core-socke-socket.md#_name) :black_small_square: [node](core-socke-socket.md#node) :black_small_square: [node_color](core-socke-socket.md#node_color) :black_small_square: [node_label](core-socke-socket.md#node_label) :black_small_square: [out](core-socke-socket.md#out) :black_small_square: [\_panel_name](core-socke-socket.md#_panel_name) :black_small_square: [pin_gizmo](core-socke-socket.md#pin_gizmo) :black_small_square: [\_pop](core-socke-socket.md#_pop) :black_small_square: [\_push](core-socke-socket.md#_push) :black_small_square: [repeat](core-socke-socket.md#repeat) :black_small_square: [\_reset](core-socke-socket.md#_reset) :black_small_square: [simulation](core-socke-socket.md#simulation) :black_small_square: ['_socket_type' not found]() :black_small_square: [\_\_str__](core-socke-socket.md#__str__) :black_small_square: [Switch](core-socke-socket.md#switch) :black_small_square: [switch](core-socke-socket.md#switch) :black_small_square: [switch_false](core-socke-socket.md#switch_false) :black_small_square: ['_tree' not found]() :black_small_square: ['_use_layout' not found]() :black_small_square:
 
 ## Content
 
 - [Brick](texture.md#brick)
-- [Checked](texture.md#checked)
+- [Checker](texture.md#checker)
 - [Gabor](texture.md#gabor)
 - [Gradient](texture.md#gradient)
-- [\_\_init__](texture.md#__init__)
 - [Magic](texture.md#magic)
 - [Noise](texture.md#noise)
 - [Voronoi](texture.md#voronoi)
@@ -38,7 +68,7 @@ Socket of type Texture
 > classmethod
 
 ``` python
-Brick(vector=None, color1=None, color2=None, mortar=None, scale=None, mortar_size=None, mortar_smooth=None, bias=None, brick_width=None, row_height=None, offset=0.5, offset_frequency=2, squash=1.0, squash_frequency=2)
+Brick(vector: 'Vector' = None, color1: 'Color' = None, color2: 'Color' = None, mortar: 'Color' = None, scale: 'Float' = None, mortar_size: 'Float' = None, mortar_smooth: 'Float' = None, bias: 'Float' = None, brick_width: 'Float' = None, row_height: 'Float' = None, offset=0.5, offset_frequency=2, squash=1.0, squash_frequency=2)
 ```
 
 > Node [Brick Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/brick.html)
@@ -67,12 +97,12 @@ Brick(vector=None, color1=None, color2=None, mortar=None, scale=None, mortar_siz
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Texture](texture.md#texture) :black_small_square: [Content](texture.md#content) :black_small_square: [Methods](texture.md#methods)</sub>
 
 ----------
-### Checked()
+### Checker()
 
 > classmethod
 
 ``` python
-Checked(vector=None, color1=None, color2=None, scale=None)
+Checker(vector: 'Vector' = None, color1: 'Color' = None, color2: 'Color' = None, scale: 'Float' = None)
 ```
 
 > Node [Checker Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/checker.html)
@@ -96,7 +126,7 @@ Checked(vector=None, color1=None, color2=None, scale=None)
 > classmethod
 
 ``` python
-Gabor(vector=None, scale=None, frequency=None, anisotropy=None, orientation=None, gabor_type='2D')
+Gabor(vector: 'Vector' = None, scale: 'Float' = None, frequency: 'Float' = None, anisotropy: 'Float' = None, orientation: 'Float' = None, gabor_type: "Literal['2D', '3D']" = '2D')
 ```
 
 > Node [Gabor Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/gabor.html)
@@ -107,7 +137,7 @@ Gabor(vector=None, scale=None, frequency=None, anisotropy=None, orientation=None
 - **frequency** (_Float_ = None) : socket 'Frequency' (id: Frequency)
 - **anisotropy** (_Float_ = None) : socket 'Anisotropy' (id: Anisotropy)
 - **orientation** (_Float_ = None) : socket 'Orientation' (id: Orientation 2D)
-- **gabor_type** (_str_ = 2D) : parameter 'gabor_type' in ['2D', '3D']
+- **gabor_type** (_Literal['2D', '3D']_ = 2D) : parameter 'gabor_type' in ['2D', '3D']
 
 
 
@@ -122,14 +152,14 @@ Gabor(vector=None, scale=None, frequency=None, anisotropy=None, orientation=None
 > classmethod
 
 ``` python
-Gradient(vector=None, gradient_type='LINEAR')
+Gradient(vector: 'Vector' = None, gradient_type: "Literal['LINEAR', 'QUADRATIC', 'EASING', 'DIAGONAL', 'SPHERICAL', 'QUADRATIC_SPHERE', 'RADIAL']" = 'LINEAR')
 ```
 
 > Node [Gradient Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/gradient.html)
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
-- **gradient_type** (_str_ = LINEAR) : parameter 'gradient_type' in ['LINEAR', 'QUADRATIC', 'EASING', 'DIAGONAL', 'SPHERICAL', 'QUADRATIC_SPHERE', 'RADIAL']
+- **gradient_type** (_Literal['LINEAR', 'QUADRATIC', 'EASING', 'DIAGONAL', 'SPHERICAL', 'QUADRATIC_SPHERE', 'RADIAL']_ = LINEAR) : parameter 'gradient_type' in ['LINEAR', 'QUADRATIC', 'EASING', 'DIAGONAL', 'SPHERICAL', 'QUADRATIC_SPHERE', 'RADIAL']
 
 
 
@@ -139,30 +169,12 @@ Gradient(vector=None, gradient_type='LINEAR')
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Texture](texture.md#texture) :black_small_square: [Content](texture.md#content) :black_small_square: [Methods](texture.md#methods)</sub>
 
 ----------
-### \_\_init__()
-
-> method
-
-``` python
-__init__(value: bpy_types.Texture | geonodes.core.socket_class.Socket | None = None, name: str | None = None, tip: str | None = None)
-```
-
-Socket of type Texture
-
-#### Arguments:
-- **value** (_bpy_types.Texture | geonodes.core.socket_class.Socket | None_ = None) : image or image name in bpy.data.images
-- **name** (_str | None_ = None) : create a group input socket of type Image if not None
-- **tip** (_str | None_ = None) : user tip for group input socket
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Texture](texture.md#texture) :black_small_square: [Content](texture.md#content) :black_small_square: [Methods](texture.md#methods)</sub>
-
-----------
 ### Magic()
 
 > classmethod
 
 ``` python
-Magic(vector=None, scale=None, distortion=None, turbulence_depth=2)
+Magic(vector: 'Vector' = None, scale: 'Float' = None, distortion: 'Float' = None, turbulence_depth=2)
 ```
 
 > Node [Magic Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/magic.html)
@@ -186,7 +198,7 @@ Magic(vector=None, scale=None, distortion=None, turbulence_depth=2)
 > classmethod
 
 ``` python
-Noise(vector=None, scale=None, detail=None, roughness=None, lacunarity=None, distortion=None, noise_dimensions='3D', noise_type='FBM', normalize=True)
+Noise(vector: 'Vector' = None, scale: 'Float' = None, detail: 'Float' = None, roughness: 'Float' = None, lacunarity: 'Float' = None, distortion: 'Float' = None, noise_dimensions: "Literal['1D', '2D', '3D', '4D']" = '3D', noise_type: "Literal['MULTIFRACTAL', 'RIDGED_MULTIFRACTAL', 'HYBRID_MULTIFRACTAL', 'FBM', 'HETERO_TERRAIN']" = 'FBM', normalize=True)
 ```
 
 > Node [Noise Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/noise.html)
@@ -198,8 +210,8 @@ Noise(vector=None, scale=None, detail=None, roughness=None, lacunarity=None, dis
 - **roughness** (_Float_ = None) : socket 'Roughness' (id: Roughness)
 - **lacunarity** (_Float_ = None) : socket 'Lacunarity' (id: Lacunarity)
 - **distortion** (_Float_ = None) : socket 'Distortion' (id: Distortion)
-- **noise_dimensions** (_str_ = 3D) : parameter 'noise_dimensions' in ['1D', '2D', '3D', '4D']
-- **noise_type** (_str_ = FBM) : parameter 'noise_type' in ['MULTIFRACTAL', 'RIDGED_MULTIFRACTAL', 'HYBRID_MULTIFRACTAL', 'FBM', 'HETERO_TERRAIN']
+- **noise_dimensions** (_Literal['1D', '2D', '3D', '4D']_ = 3D) : parameter 'noise_dimensions' in ['1D', '2D', '3D', '4D']
+- **noise_type** (_Literal['MULTIFRACTAL', 'RIDGED_MULTIFRACTAL', 'HYBRID_MULTIFRACTAL', 'FBM', 'HETERO_TERRAIN']_ = FBM) : parameter 'noise_type' in ['MULTIFRACTAL', 'RIDGED_MULTIFRACTAL', 'HYBRID_MULTIFRACTAL', 'FBM', 'HETERO_TERRAIN']
 - **normalize** (_bool_ = True) : parameter 'normalize'
 
 
@@ -215,7 +227,7 @@ Noise(vector=None, scale=None, detail=None, roughness=None, lacunarity=None, dis
 > classmethod
 
 ``` python
-Voronoi(vector=None, scale=None, detail=None, roughness=None, lacunarity=None, randomness=None, distance='EUCLIDEAN', feature='F1', normalize=False, voronoi_dimensions='3D')
+Voronoi(vector: 'Vector' = None, scale: 'Float' = None, detail: 'Float' = None, roughness: 'Float' = None, lacunarity: 'Float' = None, randomness: 'Float' = None, distance: "Literal['EUCLIDEAN', 'MANHATTAN', 'CHEBYCHEV', 'MINKOWSKI']" = 'EUCLIDEAN', feature: "Literal['F1', 'F2', 'SMOOTH_F1', 'DISTANCE_TO_EDGE', 'N_SPHERE_RADIUS']" = 'F1', normalize=False, voronoi_dimensions: "Literal['1D', '2D', '3D', '4D']" = '3D')
 ```
 
 > Node [Voronoi Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/voronoi.html)
@@ -227,10 +239,10 @@ Voronoi(vector=None, scale=None, detail=None, roughness=None, lacunarity=None, r
 - **roughness** (_Float_ = None) : socket 'Roughness' (id: Roughness)
 - **lacunarity** (_Float_ = None) : socket 'Lacunarity' (id: Lacunarity)
 - **randomness** (_Float_ = None) : socket 'Randomness' (id: Randomness)
-- **distance** (_str_ = EUCLIDEAN) : parameter 'distance' in ['EUCLIDEAN', 'MANHATTAN', 'CHEBYCHEV', 'MINKOWSKI']
-- **feature** (_str_ = F1) : parameter 'feature' in ['F1', 'F2', 'SMOOTH_F1', 'DISTANCE_TO_EDGE', 'N_SPHERE_RADIUS']
+- **distance** (_Literal['EUCLIDEAN', 'MANHATTAN', 'CHEBYCHEV', 'MINKOWSKI']_ = EUCLIDEAN) : parameter 'distance' in ['EUCLIDEAN', 'MANHATTAN', 'CHEBYCHEV', 'MINKOWSKI']
+- **feature** (_Literal['F1', 'F2', 'SMOOTH_F1', 'DISTANCE_TO_EDGE', 'N_SPHERE_RADIUS']_ = F1) : parameter 'feature' in ['F1', 'F2', 'SMOOTH_F1', 'DISTANCE_TO_EDGE', 'N_SPHERE_RADIUS']
 - **normalize** (_bool_ = False) : parameter 'normalize'
-- **voronoi_dimensions** (_str_ = 3D) : parameter 'voronoi_dimensions' in ['1D', '2D', '3D', '4D']
+- **voronoi_dimensions** (_Literal['1D', '2D', '3D', '4D']_ = 3D) : parameter 'voronoi_dimensions' in ['1D', '2D', '3D', '4D']
 
 
 
@@ -245,7 +257,7 @@ Voronoi(vector=None, scale=None, detail=None, roughness=None, lacunarity=None, r
 > classmethod
 
 ``` python
-Wave(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, bands_direction='X', rings_direction='X', wave_profile='SIN', wave_type='BANDS')
+Wave(vector: 'Vector' = None, scale: 'Float' = None, distortion: 'Float' = None, detail: 'Float' = None, detail_scale: 'Float' = None, detail_roughness: 'Float' = None, phase_offset: 'Float' = None, bands_direction: "Literal['X', 'Y', 'Z', 'DIAGONAL']" = 'X', rings_direction: "Literal['X', 'Y', 'Z', 'SPHERICAL']" = 'X', wave_profile: "Literal['SIN', 'SAW', 'TRI']" = 'SIN', wave_type: "Literal['BANDS', 'RINGS']" = 'BANDS')
 ```
 
 > Node [Wave Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/wave.html)
@@ -258,10 +270,10 @@ Wave(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, d
 - **detail_scale** (_Float_ = None) : socket 'Detail Scale' (id: Detail Scale)
 - **detail_roughness** (_Float_ = None) : socket 'Detail Roughness' (id: Detail Roughness)
 - **phase_offset** (_Float_ = None) : socket 'Phase Offset' (id: Phase Offset)
-- **bands_direction** (_str_ = X) : parameter 'bands_direction' in ['X', 'Y', 'Z', 'DIAGONAL']
-- **rings_direction** (_str_ = X) : parameter 'rings_direction' in ['X', 'Y', 'Z', 'SPHERICAL']
-- **wave_profile** (_str_ = SIN) : parameter 'wave_profile' in ['SIN', 'SAW', 'TRI']
-- **wave_type** (_str_ = BANDS) : parameter 'wave_type' in ['BANDS', 'RINGS']
+- **bands_direction** (_Literal['X', 'Y', 'Z', 'DIAGONAL']_ = X) : parameter 'bands_direction' in ['X', 'Y', 'Z', 'DIAGONAL']
+- **rings_direction** (_Literal['X', 'Y', 'Z', 'SPHERICAL']_ = X) : parameter 'rings_direction' in ['X', 'Y', 'Z', 'SPHERICAL']
+- **wave_profile** (_Literal['SIN', 'SAW', 'TRI']_ = SIN) : parameter 'wave_profile' in ['SIN', 'SAW', 'TRI']
+- **wave_type** (_Literal['BANDS', 'RINGS']_ = BANDS) : parameter 'wave_type' in ['BANDS', 'RINGS']
 
 
 
@@ -276,14 +288,14 @@ Wave(vector=None, scale=None, distortion=None, detail=None, detail_scale=None, d
 > classmethod
 
 ``` python
-WhiteNoise(vector=None, noise_dimensions='3D')
+WhiteNoise(vector: 'Vector' = None, noise_dimensions: "Literal['1D', '2D', '3D', '4D']" = '3D')
 ```
 
 > Node [White Noise Texture](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/texture/white_noise.html)
 
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
-- **noise_dimensions** (_str_ = 3D) : parameter 'noise_dimensions' in ['1D', '2D', '3D', '4D']
+- **noise_dimensions** (_Literal['1D', '2D', '3D', '4D']_ = 3D) : parameter 'noise_dimensions' in ['1D', '2D', '3D', '4D']
 
 
 

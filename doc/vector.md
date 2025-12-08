@@ -1,7 +1,7 @@
 # Vector
 
 ``` python
-Vector(value=(0, 0, 0), name=None, tip=None, panel='', subtype='NONE', default_attribute='', default_input='VALUE', hide_value=False, hide_in_modifier=False, single_value=False)
+Vector(value: geonodes.core.socket_class.Socket | tuple = (0, 0, 0), name: str = None, min: float = -3.40282e+38, max: float = 3.40282e+38, tip: str = '', panel: str = '', optional_label: bool = False, hide_value: bool = False, hide_in_modifier: bool = False, dimensions: int = 3, default_attribute: str = '', default_input: Literal['VALUE', 'NORMAL', 'POSITION', 'HANDLE_LEFT', 'HANDLE_RIGHT'] = 'VALUE', shape: Literal['AUTO', 'SINGLE'] = 'AUTO', subtype: str = 'NONE')
 ```
 
 > Socket of type VECTOR
@@ -23,44 +23,48 @@ vect = Vector(name="User input").  # Create a new Vector group input
 ```
 
 #### Arguments:
-- **value** (_tuple of floats or Sockets_ = (0, 0, 0)) : initial value
+- **value** (_geonodes.core.socket_class.Socket | tuple_ = (0, 0, 0)) : initial value
 - **name** (_str_ = None) : Create an Group Input socket with the provided str if not None
-- **tip** (_str_ = None) : User tip (for Group Input sockets)
-- **panel** (_str_ = ) : panel name (overrides tree pane if exists)
-- **subtype** (_str in ('NONE', 'TRANSLATION', 'DIRECTION', 'VELOCITY', 'ACCELERATION', 'EULER', 'XYZ')_ = NONE) : sub type for group input
-- **default_attribute** (_str_ = ) : default attribute name
-- **default_input** (_str in ('VALUE', 'NORMAL', 'POSITION')_ = VALUE) : default input
-- **hide_value** (_bool_ = False) : Hide Value option
-- **hide_in_modifier** (_bool_ = False) : Hide in Modifier option
-- **single_value** (_bool_ = False) : Single Value option
+- **min** (_float_ = -3.40282e+38) : Property min_value
+- **max** (_float_ = 3.40282e+38) : Property max_value
+- **tip** (_str_ = ) : Property description
+- **panel** (_str_ = ) : Panel name
+- **optional_label** (_bool_ = False) : Property optional_label
+- **hide_value** (_bool_ = False) : Property hide_value
+- **hide_in_modifier** (_bool_ = False) : Property hide_in_modifier
+- **dimensions** (_int_ = 3) : Property dimensions
+- **default_attribute** (_str_ = ) : Property default_attribute_name
+- **default_input** (_Literal_ = VALUE) : Property default_input in ('VALUE', 'NORMAL', 'POSITION', 'HANDLE_LEFT', 'HANDLE_RIGHT')
+- **shape** (_Literal_ = AUTO) : Property structure_type in ('AUTO', 'SINGLE')
+- **subtype** (_str_ = NONE) : Socket sub type in ('NONE', 'PERCENTAGE', 'FACTOR', 'TRANSLATION', 'DIRECTION', 'VELOCITY', 'ACCELERATION', 'EULER', 'XYZ')
 
 ### Inherited
 
-[\_cache](nodecache.md#_cache) :black_small_square: [\_cache_reset](nodecache.md#_cache_reset) :black_small_square: [check_in_list](socket.md#check_in_list) :black_small_square: [data_type](socket.md#data_type) :black_small_square: [\_domain_to_geometry](socket.md#_domain_to_geometry) :black_small_square: [\_geometry_class](socket.md#_geometry_class) :black_small_square: [\_\_getattr__](socket.md#__getattr__) :black_small_square: [get_node_data_type](socket.md#get_node_data_type) :black_small_square: [get_socket_class](socket.md#get_socket_class) :black_small_square: [IndexSwitch](socket.md#indexswitch) :black_small_square: [index_switch](socket.md#index_switch) :black_small_square: [Input](socket.md#input) :black_small_square: [input_type](socket.md#input_type) :black_small_square: [\_interface_socket](socket.md#_interface_socket) :black_small_square: [\_is_group_input](socket.md#_is_group_input) :black_small_square: [\_is_group_output](socket.md#_is_group_output) :black_small_square: [\_is_group_socket](socket.md#_is_group_socket) :black_small_square: [\_jump](socket.md#_jump) :black_small_square: [\_lc](socket.md#_lc) :black_small_square: [\_lcop](socket.md#_lcop) :black_small_square: [link_from](socket.md#link_from) :black_small_square: [\_lock](proplocker.md#_lock) :black_small_square: [\_mark_for_delete](socket.md#_mark_for_delete) :black_small_square: [MenuSwitch](socket.md#menuswitch) :black_small_square: [menu_switch](socket.md#menu_switch) :black_small_square: [\_name](socket.md#_name) :black_small_square: [node](socket.md#node) :black_small_square: [node_color](socket.md#node_color) :black_small_square: [node_label](socket.md#node_label) :black_small_square: [option](socket.md#option) :black_small_square: [option_index](socket.md#option_index) :black_small_square: [\_panel_name](socket.md#_panel_name) :black_small_square: [pin_gizmo](socket.md#pin_gizmo) :black_small_square: [\_reset](socket.md#_reset) :black_small_square: [\_run_tests](socket.md#_run_tests) :black_small_square: [\_\_setattr__](socket.md#__setattr__) :black_small_square: [\_set_interface_property](socket.md#_set_interface_property) :black_small_square: [socket_type](socket.md#socket_type) :black_small_square: [\_\_str__](socket.md#__str__) :black_small_square: [Switch](socket.md#switch) :black_small_square: [switch](socket.md#switch) :black_small_square: [switch_false](socket.md#switch_false) :black_small_square: [\_unlock](proplocker.md#_unlock) :black_small_square:
+['_bsocket' not found]() :black_small_square: [\_cache](nodecache.md#_cache) :black_small_square: ['_cached_nodes' not found]() :black_small_square: [\_cache_reset](nodecache.md#_cache_reset) :black_small_square: [check_in_list](core-socke-socket.md#check_in_list) :black_small_square: [\_classes_test](core-socke-socket.md#_classes_test) :black_small_square: [default_value](core-socke-socket.md#default_value) :black_small_square: [\_domain_to_geometry](core-socke-socket.md#_domain_to_geometry) :black_small_square: [\_\_enter__](core-socke-socket.md#__enter__) :black_small_square: [\_\_exit__](core-socke-socket.md#__exit__) :black_small_square: [\_\_getattr__](core-socke-socket.md#__getattr__) :black_small_square: [IndexSwitch](core-socke-socket.md#indexswitch) :black_small_square: [index_switch](core-socke-socket.md#index_switch) :black_small_square: [Input](core-socke-socket.md#input) :black_small_square: [\_interface_socket](core-socke-socket.md#_interface_socket) :black_small_square: [is_grid](core-socke-socket.md#is_grid) :black_small_square: [\_jump](core-socke-socket.md#_jump) :black_small_square: ['_layout' not found]() :black_small_square: [\_lc](core-socke-socket.md#_lc) :black_small_square: [\_lcop](core-socke-socket.md#_lcop) :black_small_square: [link_from](core-socke-socket.md#link_from) :black_small_square: [MenuSwitch](core-socke-socket.md#menuswitch) :black_small_square: [menu_switch](core-socke-socket.md#menu_switch) :black_small_square: [\_name](core-socke-socket.md#_name) :black_small_square: [node](core-socke-socket.md#node) :black_small_square: [node_color](core-socke-socket.md#node_color) :black_small_square: [node_label](core-socke-socket.md#node_label) :black_small_square: [\_panel_name](core-socke-socket.md#_panel_name) :black_small_square: [pin_gizmo](core-socke-socket.md#pin_gizmo) :black_small_square: [\_pop](core-socke-socket.md#_pop) :black_small_square: [\_push](core-socke-socket.md#_push) :black_small_square: [repeat](core-socke-socket.md#repeat) :black_small_square: [\_reset](core-socke-socket.md#_reset) :black_small_square: [simulation](core-socke-socket.md#simulation) :black_small_square: ['_socket_type' not found]() :black_small_square: [\_\_str__](core-socke-socket.md#__str__) :black_small_square: [Switch](core-socke-socket.md#switch) :black_small_square: [switch](core-socke-socket.md#switch) :black_small_square: [switch_false](core-socke-socket.md#switch_false) :black_small_square: ['_tree' not found]() :black_small_square: ['_use_layout' not found]() :black_small_square:
 
 ## Content
 
-- **A** : [abs](vector.md#abs) :black_small_square: [Acceleration](vector.md#acceleration) :black_small_square: [add](vector.md#add)
+- **A** : [abs](vector.md#abs) :black_small_square: [Acceleration](vector.md#acceleration) :black_small_square: [add](vector.md#add) :black_small_square: [advect_grid](vector.md#advect_grid)
 - **B** : [blur](vector.md#blur) :black_small_square: [bump](vector.md#bump)
-- **C** : [ceil](vector.md#ceil) :black_small_square: [CombineXYZ](vector.md#combinexyz) :black_small_square: [cos](vector.md#cos) :black_small_square: [cross](vector.md#cross) :black_small_square: [curves](vector.md#curves)
+- **C** : [ceil](vector.md#ceil) :black_small_square: [CombineXYZ](vector.md#combinexyz) :black_small_square: [cos](vector.md#cos) :black_small_square: [\_create_input_socket](vector.md#_create_input_socket) :black_small_square: [cross](vector.md#cross) :black_small_square: [curves](vector.md#curves)
 - **D** : [Direction](vector.md#direction) :black_small_square: [displacement](vector.md#displacement) :black_small_square: [displacement_out](vector.md#displacement_out) :black_small_square: [distance](vector.md#distance) :black_small_square: [divide](vector.md#divide) :black_small_square: [dot](vector.md#dot)
-- **E** : [environment_texture](vector.md#environment_texture) :black_small_square: [equal](vector.md#equal) :black_small_square: [Euler](vector.md#euler)
-- **F** : [faceforward](vector.md#faceforward) :black_small_square: [floor](vector.md#floor) :black_small_square: [fraction](vector.md#fraction) :black_small_square: [FromRotation](vector.md#fromrotation)
-- **G** : [greater_equal](vector.md#greater_equal) :black_small_square: [greater_than](vector.md#greater_than)
+- **E** : [enable_output](vector.md#enable_output) :black_small_square: [environment_texture](vector.md#environment_texture) :black_small_square: [equal](vector.md#equal) :black_small_square: [Euler](vector.md#euler)
+- **F** : [faceforward](vector.md#faceforward) :black_small_square: [Factor](vector.md#factor) :black_small_square: [field_to_grid](vector.md#field_to_grid) :black_small_square: [floor](vector.md#floor) :black_small_square: [fraction](vector.md#fraction) :black_small_square: [FromRotation](vector.md#fromrotation)
+- **G** : [greater_equal](vector.md#greater_equal) :black_small_square: [greater_than](vector.md#greater_than) :black_small_square: [grid_curl](vector.md#grid_curl) :black_small_square: [grid_divergence](vector.md#grid_divergence) :black_small_square: [grid_info](vector.md#grid_info)
 - **H** : [hash_value](vector.md#hash_value)
 - **I** : [ies_texture](vector.md#ies_texture) :black_small_square: [ies_texture_external](vector.md#ies_texture_external) :black_small_square: [ies_texture_internal](vector.md#ies_texture_internal) :black_small_square: [image_texture](vector.md#image_texture) :black_small_square: [\_\_init__](vector.md#__init__)
 - **L** : [length](vector.md#length) :black_small_square: [less_equal](vector.md#less_equal) :black_small_square: [less_than](vector.md#less_than)
 - **M** : [mapping](vector.md#mapping) :black_small_square: [max](vector.md#max) :black_small_square: [min](vector.md#min) :black_small_square: [mix](vector.md#mix) :black_small_square: [mix_non_uniform](vector.md#mix_non_uniform) :black_small_square: [mix_uniform](vector.md#mix_uniform) :black_small_square: [modulo](vector.md#modulo) :black_small_square: [multiply](vector.md#multiply) :black_small_square: [multiply_add](vector.md#multiply_add)
 - **N** : [Named](vector.md#named) :black_small_square: [NamedAttribute](vector.md#namedattribute) :black_small_square: [Normal](vector.md#normal) :black_small_square: [normal](vector.md#normal) :black_small_square: [normalize](vector.md#normalize) :black_small_square: [NormalMap](vector.md#normalmap) :black_small_square: [not_equal](vector.md#not_equal)
 - **O** : [out](vector.md#out)
-- **P** : [pack_uv_islands](vector.md#pack_uv_islands) :black_small_square: [point_density](vector.md#point_density) :black_small_square: [Position](vector.md#position) :black_small_square: [power](vector.md#power) :black_small_square: [project](vector.md#project)
-- **R** : [Random](vector.md#random) :black_small_square: [reflect](vector.md#reflect) :black_small_square: [refract](vector.md#refract) :black_small_square: [rotate](vector.md#rotate) :black_small_square: [rotate_axis_angle](vector.md#rotate_axis_angle) :black_small_square: [rotate_euler_xyz](vector.md#rotate_euler_xyz) :black_small_square: [rotate_x_axis](vector.md#rotate_x_axis) :black_small_square: [rotate_y_axis](vector.md#rotate_y_axis) :black_small_square: [rotate_z_axis](vector.md#rotate_z_axis)
-- **S** : [sample_grid](vector.md#sample_grid) :black_small_square: [sample_grid_index](vector.md#sample_grid_index) :black_small_square: [scale](vector.md#scale) :black_small_square: [separate_xyz](vector.md#separate_xyz) :black_small_square: [sign](vector.md#sign) :black_small_square: [sin](vector.md#sin) :black_small_square: [snap](vector.md#snap) :black_small_square: [subtract](vector.md#subtract)
-- **T** : [tan](vector.md#tan) :black_small_square: [Tangent](vector.md#tangent) :black_small_square: [to_rotation](vector.md#to_rotation) :black_small_square: [transform](vector.md#transform) :black_small_square: [Translation](vector.md#translation)
-- **U** : [UVMap](vector.md#uvmap) :black_small_square: [UvMap](vector.md#uvmap)
-- **V** : [vector_displacement](vector.md#vector_displacement) :black_small_square: [vector_transform](vector.md#vector_transform) :black_small_square: [Velocity](vector.md#velocity)
+- **P** : [pack_uv_islands](vector.md#pack_uv_islands) :black_small_square: [Percentage](vector.md#percentage) :black_small_square: [Position](vector.md#position) :black_small_square: [power](vector.md#power) :black_small_square: [project](vector.md#project) :black_small_square: [prune_grid](vector.md#prune_grid)
+- **R** : [radial_tiling](vector.md#radial_tiling) :black_small_square: [Random](vector.md#random) :black_small_square: [reflect](vector.md#reflect) :black_small_square: [refract](vector.md#refract) :black_small_square: [rotate](vector.md#rotate) :black_small_square: [rotate_axis_angle](vector.md#rotate_axis_angle) :black_small_square: [rotate_euler_xyz](vector.md#rotate_euler_xyz) :black_small_square: [rotate_x_axis](vector.md#rotate_x_axis) :black_small_square: [rotate_y_axis](vector.md#rotate_y_axis) :black_small_square: [rotate_z_axis](vector.md#rotate_z_axis)
+- **S** : [sample_grid](vector.md#sample_grid) :black_small_square: [sample_grid_index](vector.md#sample_grid_index) :black_small_square: [scale](vector.md#scale) :black_small_square: [separate_xyz](vector.md#separate_xyz) :black_small_square: [set_grid_background](vector.md#set_grid_background) :black_small_square: [set_grid_transform](vector.md#set_grid_transform) :black_small_square: [sign](vector.md#sign) :black_small_square: [sin](vector.md#sin) :black_small_square: [snap](vector.md#snap) :black_small_square: [subtract](vector.md#subtract)
+- **T** : [tan](vector.md#tan) :black_small_square: [Tangent](vector.md#tangent) :black_small_square: [to_rotation](vector.md#to_rotation) :black_small_square: [transform](vector.md#transform) :black_small_square: [Translation](vector.md#translation) :black_small_square: [Translation_OLD](vector.md#translation_old)
+- **U** : [UVMap](vector.md#uvmap) :black_small_square: [UvMap](vector.md#uvmap) :black_small_square: [uv_tangent](vector.md#uv_tangent)
+- **V** : [vector_displacement](vector.md#vector_displacement) :black_small_square: [vector_transform](vector.md#vector_transform) :black_small_square: [Velocity](vector.md#velocity) :black_small_square: [voxel_index](vector.md#voxel_index) :black_small_square: [voxelize_grid](vector.md#voxelize_grid)
 - **W** : [wrap](vector.md#wrap)
-- **X** : [x](vector.md#x) :black_small_square: [xyz](vector.md#xyz) :black_small_square: [XYZ](vector.md#xyz)
+- **X** : [x](vector.md#x) :black_small_square: [xyz](vector.md#xyz) :black_small_square: [XYZ](vector.md#xyz) :black_small_square: [Xyz](vector.md#xyz)
 - **Y** : [y](vector.md#y)
 - **Z** : [z](vector.md#z)
 
@@ -167,7 +171,7 @@ New [Vector](vector.md#vector) input with subtype 'ACCELERATION'.
 > method
 
 ``` python
-add(vector=None)
+add(vector: 'Vector' = None)
 ```
 
 > Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
@@ -189,12 +193,42 @@ add(vector=None)
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Vector](vector.md#vector) :black_small_square: [Content](vector.md#content) :black_small_square: [Methods](vector.md#methods)</sub>
 
 ----------
+### advect_grid()
+
+> method
+
+``` python
+advect_grid(velocity: 'Vector' = None, time_step: 'Float' = None, integration_scheme: "Literal['Semi-Lagrangian', 'Midpoint', 'Runge-Kutta 3', 'Runge-Kutta 4', 'MacCormack', 'BFECC']" = None, limiter: "Literal['None', 'Clamp', 'Revert']" = None)
+```
+
+> Node [Advect Grid](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/volume/sample/advect_grid.html)
+
+#### Information:
+- **Socket** : self
+- **Parameter** : 'VECTOR'
+
+
+
+#### Arguments:
+- **velocity** (_Vector_ = None) : socket 'Velocity' (id: Velocity)
+- **time_step** (_Float_ = None) : socket 'Time Step' (id: Time Step)
+- **integration_scheme** (_Literal['Semi-Lagrangian', 'Midpoint', 'Runge-Kutta 3', 'Runge-Kutta 4', 'MacCormack', 'BFECC']_ = None) : ('Semi-Lagrangian', 'Midpoint', 'Runge-Kutta 3', 'Runge-Kutta 4', 'MacCormack', 'BFECC')
+- **limiter** (_Literal['None', 'Clamp', 'Revert']_ = None) : ('None', 'Clamp', 'Revert')
+
+
+
+#### Returns:
+- **Vector** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Vector](vector.md#vector) :black_small_square: [Content](vector.md#content) :black_small_square: [Methods](vector.md#methods)</sub>
+
+----------
 ### blur()
 
 > method
 
 ``` python
-blur(iterations=None, weight=None)
+blur(iterations: 'Integer' = None, weight: 'Float' = None)
 ```
 
 > Node [Blur Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/attribute/blur_attribute.html)
@@ -225,7 +259,7 @@ blur(iterations=None, weight=None)
 bump(strength=None, distance=None, height=None, invert=False)
 ```
 
-> Node [Bump](https://docs.blender.org/manual/en/latest/render/shader_nodes/vector/bump.html)
+> Node [Bump](https://docs.blender.org/manual/en/latest/render/shader_nodes/displacement/bump.html)
 
 [!SHADER]
 
@@ -273,7 +307,7 @@ ceil()
 > classmethod
 
 ``` python
-CombineXYZ(x=None, y=None, z=None)
+CombineXYZ(x: 'Float' = None, y: 'Float' = None, z: 'Float' = None)
 ```
 
 > Node [Combine XYZ](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/combine_xyz.html)
@@ -313,12 +347,65 @@ cos()
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Vector](vector.md#vector) :black_small_square: [Content](vector.md#content) :black_small_square: [Methods](vector.md#methods)</sub>
 
 ----------
+### \_create_input_socket()
+
+> classmethod
+
+``` python
+_create_input_socket(value: 'object' = (0, 0, 0), name: 'str' = 'Vector', min: 'float' = -3.40282e+38, max: 'float' = 3.40282e+38, tip: 'str' = '', panel: 'str' = '', optional_label: 'bool' = False, hide_value: 'bool' = False, hide_in_modifier: 'bool' = False, dimensions: 'int' = 3, default_attribute: 'str' = '', default_input: "Literal['VALUE', 'NORMAL', 'POSITION', 'HANDLE_LEFT', 'HANDLE_RIGHT']" = 'VALUE', shape: "Literal['AUTO', 'SINGLE']" = 'AUTO', subtype: 'str' = 'NONE')
+```
+
+> Vector Input
+
+New [Vector](vector.md#vector) input with subtype 'NONE'.
+
+Aguments
+--------
+- value  (object = (0, 0, 0)) : Default value
+- name  (str = 'Vector') : Input socket name
+- min  (float = -3.40282e+38) : Property min_value
+- max  (float = 3.40282e+38) : Property max_value
+- tip  (str = '') : Property description
+- panel (str = "") : Panel name
+- optional_label  (bool = False) : Property optional_label
+- hide_value  (bool = False) : Property hide_value
+- hide_in_modifier  (bool = False) : Property hide_in_modifier
+- dimensions  (int = 3) : Property dimensions
+- default_attribute  (str = '') : Property default_attribute_name
+- default_input  (str = 'VALUE') : Property default_input in ('VALUE', 'NORMAL', 'POSITION', 'HANDLE_LEFT', 'HANDLE_RIGHT')
+- shape  (str = 'AUTO') : Property structure_type in ('AUTO', 'SINGLE')
+- subtype (str = 'NONE') : Socket sub type in ('NONE', 'PERCENTAGE', 'FACTOR', 'TRANSLATION', 'DIRECTION', 'VELOCITY', 'ACCELERATION', 'EULER', 'XYZ')
+
+#### Arguments:
+- **value** (_object_ = (0, 0, 0))
+- **name** (_str_ = Vector)
+- **min** (_float_ = -3.40282e+38)
+- **max** (_float_ = 3.40282e+38)
+- **tip** (_str_ = )
+- **panel** (_str_ = )
+- **optional_label** (_bool_ = False)
+- **hide_value** (_bool_ = False)
+- **hide_in_modifier** (_bool_ = False)
+- **dimensions** (_int_ = 3)
+- **default_attribute** (_str_ = )
+- **default_input** (_Literal['VALUE', 'NORMAL', 'POSITION', 'HANDLE_LEFT', 'HANDLE_RIGHT']_ = VALUE)
+- **shape** (_Literal['AUTO', 'SINGLE']_ = AUTO)
+- **subtype** (_str_ = NONE)
+
+
+
+#### Returns:
+- **Vector** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Vector](vector.md#vector) :black_small_square: [Content](vector.md#content) :black_small_square: [Methods](vector.md#methods)</sub>
+
+----------
 ### cross()
 
 > method
 
 ``` python
-cross(vector=None)
+cross(vector: 'Vector' = None)
 ```
 
 > Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
@@ -414,7 +501,7 @@ New [Vector](vector.md#vector) input with subtype 'DIRECTION'.
 displacement(height=None, midlevel=None, scale=None, space='OBJECT')
 ```
 
-> Node [Displacement](https://docs.blender.org/manual/en/latest/render/shader_nodes/vector/displacement.html)
+> Node [Displacement](https://docs.blender.org/manual/en/latest/render/shader_nodes/displacement/displacement.html)
 
 [!SHADER]
 
@@ -458,7 +545,7 @@ displacement_out(target='ALL')
 > method
 
 ``` python
-distance(vector=None)
+distance(vector: 'Vector' = None)
 ```
 
 > Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
@@ -485,7 +572,7 @@ distance(vector=None)
 > method
 
 ``` python
-divide(vector=None)
+divide(vector: 'Vector' = None)
 ```
 
 > Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
@@ -512,7 +599,7 @@ divide(vector=None)
 > method
 
 ``` python
-dot(vector=None)
+dot(vector: 'Vector' = None)
 ```
 
 > Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
@@ -534,12 +621,39 @@ dot(vector=None)
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Vector](vector.md#vector) :black_small_square: [Content](vector.md#content) :black_small_square: [Methods](vector.md#methods)</sub>
 
 ----------
+### enable_output()
+
+> method
+
+``` python
+enable_output(enable: 'Boolean' = None)
+```
+
+> Node [Enable Output](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../interface/controls/nodes/types/output/enable_output.html)
+
+#### Information:
+- **Socket** : self
+- **Parameter** : 'VECTOR'
+
+
+
+#### Arguments:
+- **enable** (_Boolean_ = None) : socket 'Enable' (id: Enable)
+
+
+
+#### Returns:
+- **Vector** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Vector](vector.md#vector) :black_small_square: [Content](vector.md#content) :black_small_square: [Methods](vector.md#methods)</sub>
+
+----------
 ### environment_texture()
 
 > method
 
 ``` python
-environment_texture(image=None, interpolation='Linear', projection='EQUIRECTANGULAR')
+environment_texture(image=None, interpolation: "Literal['Linear', 'Closest', 'Cubic', 'Smart']" = 'Linear', projection: "Literal['EQUIRECTANGULAR', 'MIRROR_BALL']" = 'EQUIRECTANGULAR')
 ```
 
 > Node [Environment Texture](https://docs.blender.org/manual/en/latest/render/shader_nodes/textures/environment.html)
@@ -551,8 +665,8 @@ environment_texture(image=None, interpolation='Linear', projection='EQUIRECTANGU
 
 #### Arguments:
 - **image** (_NoneType_ = None) : parameter 'image'
-- **interpolation** (_str_ = Linear) : parameter 'interpolation' in ['Linear', 'Closest', 'Cubic', 'Smart']
-- **projection** (_str_ = EQUIRECTANGULAR) : parameter 'projection' in ['EQUIRECTANGULAR', 'MIRROR_BALL']
+- **interpolation** (_Literal['Linear', 'Closest', 'Cubic', 'Smart']_ = Linear) : parameter 'interpolation' in ['Linear', 'Closest', 'Cubic', 'Smart']
+- **projection** (_Literal['EQUIRECTANGULAR', 'MIRROR_BALL']_ = EQUIRECTANGULAR) : parameter 'projection' in ['EQUIRECTANGULAR', 'MIRROR_BALL']
 
 
 
@@ -567,7 +681,7 @@ environment_texture(image=None, interpolation='Linear', projection='EQUIRECTANGU
 > method
 
 ``` python
-equal(b=None, epsilon=None)
+equal(b: 'Vector' = None, epsilon: 'Float' = None)
 ```
 
 > Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
@@ -628,7 +742,7 @@ New [Vector](vector.md#vector) input with subtype 'EULER'.
 > method
 
 ``` python
-faceforward(incident=None, reference=None)
+faceforward(incident: 'Vector' = None, reference: 'Vector' = None)
 ```
 
 > Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
@@ -647,6 +761,85 @@ faceforward(incident=None, reference=None)
 
 #### Returns:
 - **Vector** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Vector](vector.md#vector) :black_small_square: [Content](vector.md#content) :black_small_square: [Methods](vector.md#methods)</sub>
+
+----------
+### Factor()
+
+> classmethod
+
+``` python
+Factor(value: 'object' = (0, 0, 0), name: 'str' = 'Factor', min: 'float' = -3.40282e+38, max: 'float' = 3.40282e+38, tip: 'str' = '', panel: 'str' = '', optional_label: 'bool' = False, hide_value: 'bool' = False, hide_in_modifier: 'bool' = False, dimensions: 'int' = 3, default_attribute: 'str' = '', default_input: "Literal['VALUE', 'NORMAL', 'POSITION', 'HANDLE_LEFT', 'HANDLE_RIGHT']" = 'VALUE', shape: "Literal['AUTO', 'SINGLE']" = 'AUTO')
+```
+
+> Factor Input
+
+New [Vector](vector.md#vector) input with subtype 'FACTOR'.
+
+Aguments
+--------
+- value  (object = (0, 0, 0)) : Default value
+- name  (str = 'Factor') : Input socket name
+- min  (float = -3.40282e+38) : Property min_value
+- max  (float = 3.40282e+38) : Property max_value
+- tip  (str = '') : Property description
+- panel (str = "") : Panel name
+- optional_label  (bool = False) : Property optional_label
+- hide_value  (bool = False) : Property hide_value
+- hide_in_modifier  (bool = False) : Property hide_in_modifier
+- dimensions  (int = 3) : Property dimensions
+- default_attribute  (str = '') : Property default_attribute_name
+- default_input  (str = 'VALUE') : Property default_input in ('VALUE', 'NORMAL', 'POSITION', 'HANDLE_LEFT', 'HANDLE_RIGHT')
+- shape  (str = 'AUTO') : Property structure_type in ('AUTO', 'SINGLE')
+
+#### Arguments:
+- **value** (_object_ = (0, 0, 0))
+- **name** (_str_ = Factor)
+- **min** (_float_ = -3.40282e+38)
+- **max** (_float_ = 3.40282e+38)
+- **tip** (_str_ = )
+- **panel** (_str_ = )
+- **optional_label** (_bool_ = False)
+- **hide_value** (_bool_ = False)
+- **hide_in_modifier** (_bool_ = False)
+- **dimensions** (_int_ = 3)
+- **default_attribute** (_str_ = )
+- **default_input** (_Literal['VALUE', 'NORMAL', 'POSITION', 'HANDLE_LEFT', 'HANDLE_RIGHT']_ = VALUE)
+- **shape** (_Literal['AUTO', 'SINGLE']_ = AUTO)
+
+
+
+#### Returns:
+- **Vector** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Vector](vector.md#vector) :black_small_square: [Content](vector.md#content) :black_small_square: [Methods](vector.md#methods)</sub>
+
+----------
+### field_to_grid()
+
+> method
+
+``` python
+field_to_grid(named_sockets: 'dict' = {}, **sockets)
+```
+
+> Node [Field to Grid](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/volume/operations/field_to_grid.html)
+
+#### Information:
+- **Socket** : self
+- **Parameter** : 'VECTOR'
+
+
+
+#### Arguments:
+- **named_sockets** (_dict_ = {})
+- **sockets**
+
+
+
+#### Returns:
+- **None** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Vector](vector.md#vector) :black_small_square: [Content](vector.md#content) :black_small_square: [Methods](vector.md#methods)</sub>
 
@@ -721,7 +914,7 @@ FromRotation(rotation=None)
 > method
 
 ``` python
-greater_equal(b=None)
+greater_equal(b: 'Vector' = None)
 ```
 
 > Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
@@ -750,7 +943,7 @@ greater_equal(b=None)
 > method
 
 ``` python
-greater_than(b=None)
+greater_than(b: 'Vector' = None)
 ```
 
 > Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
@@ -774,12 +967,76 @@ greater_than(b=None)
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Vector](vector.md#vector) :black_small_square: [Content](vector.md#content) :black_small_square: [Methods](vector.md#methods)</sub>
 
 ----------
+### grid_curl()
+
+> method
+
+``` python
+grid_curl()
+```
+
+> Node [Grid Curl](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/volume/sample/grid_curl.html)
+
+#### Information:
+- **Socket** : self
+
+
+
+#### Returns:
+- **Vector** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Vector](vector.md#vector) :black_small_square: [Content](vector.md#content) :black_small_square: [Methods](vector.md#methods)</sub>
+
+----------
+### grid_divergence()
+
+> method
+
+``` python
+grid_divergence()
+```
+
+> Node [Grid Divergence](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/volume/sample/grid_divergence.html)
+
+#### Information:
+- **Socket** : self
+
+
+
+#### Returns:
+- **Float** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Vector](vector.md#vector) :black_small_square: [Content](vector.md#content) :black_small_square: [Methods](vector.md#methods)</sub>
+
+----------
+### grid_info()
+
+> method
+
+``` python
+grid_info()
+```
+
+> Node [Grid Info](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/volume/read/grid_info.html)
+
+#### Information:
+- **Socket** : self
+- **Parameter** : 'VECTOR'
+
+
+
+#### Returns:
+- **Matrix** (_Vector_)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Vector](vector.md#vector) :black_small_square: [Content](vector.md#content) :black_small_square: [Methods](vector.md#methods)</sub>
+
+----------
 ### hash_value()
 
 > method
 
 ``` python
-hash_value(seed=None)
+hash_value(seed: 'Integer' = None)
 ```
 
 > Node [Hash Value](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/hash_value.html)
@@ -806,7 +1063,7 @@ hash_value(seed=None)
 > method
 
 ``` python
-ies_texture(strength=None, filepath='', ies=None, mode='INTERNAL')
+ies_texture(strength: 'Float' = None, filepath='', ies=None, mode: "Literal['INTERNAL', 'EXTERNAL']" = 'INTERNAL')
 ```
 
 > Node [IES Texture](https://docs.blender.org/manual/en/latest/render/shader_nodes/textures/ies.html)
@@ -820,7 +1077,7 @@ ies_texture(strength=None, filepath='', ies=None, mode='INTERNAL')
 - **strength** (_Float_ = None) : socket 'Strength' (id: Strength)
 - **filepath** (_str_ = ) : parameter 'filepath'
 - **ies** (_NoneType_ = None) : parameter 'ies'
-- **mode** (_str_ = INTERNAL) : parameter 'mode' in ['INTERNAL', 'EXTERNAL']
+- **mode** (_Literal['INTERNAL', 'EXTERNAL']_ = INTERNAL) : parameter 'mode' in ['INTERNAL', 'EXTERNAL']
 
 
 
@@ -835,7 +1092,7 @@ ies_texture(strength=None, filepath='', ies=None, mode='INTERNAL')
 > method
 
 ``` python
-ies_texture_external(strength=None, filepath='', ies=None)
+ies_texture_external(strength: 'Float' = None, filepath='', ies=None)
 ```
 
 > Node [IES Texture](https://docs.blender.org/manual/en/latest/render/shader_nodes/textures/ies.html)
@@ -864,7 +1121,7 @@ ies_texture_external(strength=None, filepath='', ies=None)
 > method
 
 ``` python
-ies_texture_internal(strength=None, filepath='', ies=None)
+ies_texture_internal(strength: 'Float' = None, filepath='', ies=None)
 ```
 
 > Node [IES Texture](https://docs.blender.org/manual/en/latest/render/shader_nodes/textures/ies.html)
@@ -893,7 +1150,7 @@ ies_texture_internal(strength=None, filepath='', ies=None)
 > method
 
 ``` python
-image_texture(extension='REPEAT', image=None, interpolation='Linear', projection='FLAT', projection_blend=0.0)
+image_texture(extension: "Literal['REPEAT', 'EXTEND', 'CLIP', 'MIRROR']" = 'REPEAT', image=None, interpolation: "Literal['Linear', 'Closest', 'Cubic', 'Smart']" = 'Linear', projection: "Literal['FLAT', 'BOX', 'SPHERE', 'TUBE']" = 'FLAT', projection_blend=0.0)
 ```
 
 > Node [Image Texture](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../modeling/geometry_nodes/texture/image.html)
@@ -904,10 +1161,10 @@ image_texture(extension='REPEAT', image=None, interpolation='Linear', projection
 
 
 #### Arguments:
-- **extension** (_str_ = REPEAT) : parameter 'extension' in ['REPEAT', 'EXTEND', 'CLIP', 'MIRROR']
+- **extension** (_Literal['REPEAT', 'EXTEND', 'CLIP', 'MIRROR']_ = REPEAT) : parameter 'extension' in ['REPEAT', 'EXTEND', 'CLIP', 'MIRROR']
 - **image** (_NoneType_ = None) : parameter 'image'
-- **interpolation** (_str_ = Linear) : parameter 'interpolation' in ['Linear', 'Closest', 'Cubic', 'Smart']
-- **projection** (_str_ = FLAT) : parameter 'projection' in ['FLAT', 'BOX', 'SPHERE', 'TUBE']
+- **interpolation** (_Literal['Linear', 'Closest', 'Cubic', 'Smart']_ = Linear) : parameter 'interpolation' in ['Linear', 'Closest', 'Cubic', 'Smart']
+- **projection** (_Literal['FLAT', 'BOX', 'SPHERE', 'TUBE']_ = FLAT) : parameter 'projection' in ['FLAT', 'BOX', 'SPHERE', 'TUBE']
 - **projection_blend** (_float_ = 0.0) : parameter 'projection_blend'
 
 
@@ -923,7 +1180,7 @@ image_texture(extension='REPEAT', image=None, interpolation='Linear', projection
 > method
 
 ``` python
-__init__(value=(0, 0, 0), name=None, tip=None, panel='', subtype='NONE', default_attribute='', default_input='VALUE', hide_value=False, hide_in_modifier=False, single_value=False)
+__init__(value: geonodes.core.socket_class.Socket | tuple = (0, 0, 0), name: str = None, min: float = -3.40282e+38, max: float = 3.40282e+38, tip: str = '', panel: str = '', optional_label: bool = False, hide_value: bool = False, hide_in_modifier: bool = False, dimensions: int = 3, default_attribute: str = '', default_input: Literal['VALUE', 'NORMAL', 'POSITION', 'HANDLE_LEFT', 'HANDLE_RIGHT'] = 'VALUE', shape: Literal['AUTO', 'SINGLE'] = 'AUTO', subtype: str = 'NONE')
 ```
 
 > Socket of type VECTOR
@@ -945,16 +1202,20 @@ vect = Vector(name="User input").  # Create a new Vector group input
 ```
 
 #### Arguments:
-- **value** (_tuple of floats or Sockets_ = (0, 0, 0)) : initial value
+- **value** (_geonodes.core.socket_class.Socket | tuple_ = (0, 0, 0)) : initial value
 - **name** (_str_ = None) : Create an Group Input socket with the provided str if not None
-- **tip** (_str_ = None) : User tip (for Group Input sockets)
-- **panel** (_str_ = ) : panel name (overrides tree pane if exists)
-- **subtype** (_str in ('NONE', 'TRANSLATION', 'DIRECTION', 'VELOCITY', 'ACCELERATION', 'EULER', 'XYZ')_ = NONE) : sub type for group input
-- **default_attribute** (_str_ = ) : default attribute name
-- **default_input** (_str in ('VALUE', 'NORMAL', 'POSITION')_ = VALUE) : default input
-- **hide_value** (_bool_ = False) : Hide Value option
-- **hide_in_modifier** (_bool_ = False) : Hide in Modifier option
-- **single_value** (_bool_ = False) : Single Value option
+- **min** (_float_ = -3.40282e+38) : Property min_value
+- **max** (_float_ = 3.40282e+38) : Property max_value
+- **tip** (_str_ = ) : Property description
+- **panel** (_str_ = ) : Panel name
+- **optional_label** (_bool_ = False) : Property optional_label
+- **hide_value** (_bool_ = False) : Property hide_value
+- **hide_in_modifier** (_bool_ = False) : Property hide_in_modifier
+- **dimensions** (_int_ = 3) : Property dimensions
+- **default_attribute** (_str_ = ) : Property default_attribute_name
+- **default_input** (_Literal_ = VALUE) : Property default_input in ('VALUE', 'NORMAL', 'POSITION', 'HANDLE_LEFT', 'HANDLE_RIGHT')
+- **shape** (_Literal_ = AUTO) : Property structure_type in ('AUTO', 'SINGLE')
+- **subtype** (_str_ = NONE) : Socket sub type in ('NONE', 'PERCENTAGE', 'FACTOR', 'TRANSLATION', 'DIRECTION', 'VELOCITY', 'ACCELERATION', 'EULER', 'XYZ')
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Vector](vector.md#vector) :black_small_square: [Content](vector.md#content) :black_small_square: [Methods](vector.md#methods)</sub>
 
@@ -986,7 +1247,7 @@ length()
 > method
 
 ``` python
-less_equal(b=None)
+less_equal(b: 'Vector' = None)
 ```
 
 > Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
@@ -1015,7 +1276,7 @@ less_equal(b=None)
 > method
 
 ``` python
-less_than(b=None)
+less_than(b: 'Vector' = None)
 ```
 
 > Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
@@ -1047,7 +1308,7 @@ less_than(b=None)
 mapping(location=None, rotation=None, scale=None, vector_type='POINT')
 ```
 
-> Node [Mapping](https://docs.blender.org/manual/en/latest/render/shader_nodes/vector/mapping.html)
+> Node [Mapping](https://docs.blender.org/manual/en/latest/render/shader_nodes/utilities/vector/mapping.html)
 
 [!SHADER]
 
@@ -1070,7 +1331,7 @@ mapping(location=None, rotation=None, scale=None, vector_type='POINT')
 > method
 
 ``` python
-max(vector=None)
+max(vector: 'Vector' = None)
 ```
 
 > Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
@@ -1097,7 +1358,7 @@ max(vector=None)
 > method
 
 ``` python
-min(vector=None)
+min(vector: 'Vector' = None)
 ```
 
 > Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
@@ -1159,7 +1420,7 @@ mix(b=None, factor=None, clamp_factor=True)
 > method
 
 ``` python
-mix_non_uniform(b=None, factor=None, clamp_factor=True)
+mix_non_uniform(b: 'Vector' = None, factor: 'Vector' = None, clamp_factor=True)
 ```
 
 > Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
@@ -1191,7 +1452,7 @@ mix_non_uniform(b=None, factor=None, clamp_factor=True)
 > method
 
 ``` python
-mix_uniform(b=None, factor=None, clamp_factor=True)
+mix_uniform(b: 'Vector' = None, factor: 'Float' = None, clamp_factor=True)
 ```
 
 > Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
@@ -1223,7 +1484,7 @@ mix_uniform(b=None, factor=None, clamp_factor=True)
 > method
 
 ``` python
-modulo(vector=None)
+modulo(vector: 'Vector' = None)
 ```
 
 > Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
@@ -1250,7 +1511,7 @@ modulo(vector=None)
 > method
 
 ``` python
-multiply(vector=None)
+multiply(vector: 'Vector' = None)
 ```
 
 > Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
@@ -1277,7 +1538,7 @@ multiply(vector=None)
 > method
 
 ``` python
-multiply_add(multiplier=None, addend=None)
+multiply_add(multiplier: 'Vector' = None, addend: 'Vector' = None)
 ```
 
 > Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
@@ -1305,7 +1566,7 @@ multiply_add(multiplier=None, addend=None)
 > classmethod
 
 ``` python
-Named(name=None)
+Named(name: 'String' = None)
 ```
 
 > Node [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/named_attribute.html)
@@ -1331,7 +1592,7 @@ Named(name=None)
 > classmethod
 
 ``` python
-NamedAttribute(name=None)
+NamedAttribute(name: 'String' = None)
 ```
 
 > Node [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/named_attribute.html)
@@ -1429,7 +1690,7 @@ normalize()
 NormalMap(strength=None, color=None, space='TANGENT', uv_map='')
 ```
 
-> Constructor node [Normal Map](https://docs.blender.org/manual/en/latest/render/shader_nodes/vector/normal_map.html)
+> Constructor node [Normal Map](https://docs.blender.org/manual/en/latest/render/shader_nodes/displacement/normal_map.html)
 
 [!SHADER]
 
@@ -1452,7 +1713,7 @@ NormalMap(strength=None, color=None, space='TANGENT', uv_map='')
 > method
 
 ``` python
-not_equal(b=None, epsilon=None)
+not_equal(b: 'Vector' = None, epsilon: 'Float' = None)
 ```
 
 > Node [Compare](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/compare.html)
@@ -1507,7 +1768,7 @@ out(name=None, **props)
 > method
 
 ``` python
-pack_uv_islands(margin=None, rotate=None)
+pack_uv_islands(margin: 'Float' = None, rotate: 'Boolean' = None, method: "Literal['Bounding Box', 'Convex Hull', 'Exact Shape']" = None)
 ```
 
 > Node [Pack UV Islands](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/uv/pack_uv_islands.html)
@@ -1521,6 +1782,7 @@ pack_uv_islands(margin=None, rotate=None)
 #### Arguments:
 - **margin** (_Float_ = None) : socket 'Margin' (id: Margin)
 - **rotate** (_Boolean_ = None) : socket 'Rotate' (id: Rotate)
+- **method** (_Literal['Bounding Box', 'Convex Hull', 'Exact Shape']_ = None) : ('Bounding Box', 'Convex Hull', 'Exact Shape')
 
 
 
@@ -1530,37 +1792,53 @@ pack_uv_islands(margin=None, rotate=None)
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Vector](vector.md#vector) :black_small_square: [Content](vector.md#content) :black_small_square: [Methods](vector.md#methods)</sub>
 
 ----------
-### point_density()
+### Percentage()
 
-> method
+> classmethod
 
 ``` python
-point_density(interpolation='Linear', object=None, particle_color_source='PARTICLE_AGE', particle_system=None, point_source='PARTICLE_SYSTEM', radius=0.30000001192092896, resolution=100, space='OBJECT', vertex_attribute_name='', vertex_color_source='VERTEX_COLOR')
+Percentage(value: 'object' = (0, 0, 0), name: 'str' = 'Percentage', min: 'float' = -3.40282e+38, max: 'float' = 3.40282e+38, tip: 'str' = '', panel: 'str' = '', optional_label: 'bool' = False, hide_value: 'bool' = False, hide_in_modifier: 'bool' = False, dimensions: 'int' = 3, default_attribute: 'str' = '', default_input: "Literal['VALUE', 'NORMAL', 'POSITION', 'HANDLE_LEFT', 'HANDLE_RIGHT']" = 'VALUE', shape: "Literal['AUTO', 'SINGLE']" = 'AUTO')
 ```
 
-> Node [Point Density](https://docs.blender.org/manual/en/latest/render/shader_nodes/textures/point_density.html)
+> Percentage Input
 
-#### Information:
-- **Socket** : self
+New [Vector](vector.md#vector) input with subtype 'PERCENTAGE'.
 
-
+Aguments
+--------
+- value  (object = (0, 0, 0)) : Default value
+- name  (str = 'Percentage') : Input socket name
+- min  (float = -3.40282e+38) : Property min_value
+- max  (float = 3.40282e+38) : Property max_value
+- tip  (str = '') : Property description
+- panel (str = "") : Panel name
+- optional_label  (bool = False) : Property optional_label
+- hide_value  (bool = False) : Property hide_value
+- hide_in_modifier  (bool = False) : Property hide_in_modifier
+- dimensions  (int = 3) : Property dimensions
+- default_attribute  (str = '') : Property default_attribute_name
+- default_input  (str = 'VALUE') : Property default_input in ('VALUE', 'NORMAL', 'POSITION', 'HANDLE_LEFT', 'HANDLE_RIGHT')
+- shape  (str = 'AUTO') : Property structure_type in ('AUTO', 'SINGLE')
 
 #### Arguments:
-- **interpolation** (_str_ = Linear) : parameter 'interpolation' in ['Closest', 'Linear', 'Cubic']
-- **object** (_NoneType_ = None) : parameter 'object'
-- **particle_color_source** (_str_ = PARTICLE_AGE) : parameter 'particle_color_source' in ['PARTICLE_AGE', 'PARTICLE_SPEED', 'PARTICLE_VELOCITY']
-- **particle_system** (_NoneType_ = None) : parameter 'particle_system'
-- **point_source** (_str_ = PARTICLE_SYSTEM) : parameter 'point_source' in ['PARTICLE_SYSTEM', 'OBJECT']
-- **radius** (_float_ = 0.30000001192092896) : parameter 'radius'
-- **resolution** (_int_ = 100) : parameter 'resolution'
-- **space** (_str_ = OBJECT) : parameter 'space' in ['OBJECT', 'WORLD']
-- **vertex_attribute_name** (_str_ = ) : parameter 'vertex_attribute_name'
-- **vertex_color_source** (_str_ = VERTEX_COLOR) : parameter 'vertex_color_source' in ['VERTEX_COLOR', 'VERTEX_WEIGHT', 'VERTEX_NORMAL']
+- **value** (_object_ = (0, 0, 0))
+- **name** (_str_ = Percentage)
+- **min** (_float_ = -3.40282e+38)
+- **max** (_float_ = 3.40282e+38)
+- **tip** (_str_ = )
+- **panel** (_str_ = )
+- **optional_label** (_bool_ = False)
+- **hide_value** (_bool_ = False)
+- **hide_in_modifier** (_bool_ = False)
+- **dimensions** (_int_ = 3)
+- **default_attribute** (_str_ = )
+- **default_input** (_Literal['VALUE', 'NORMAL', 'POSITION', 'HANDLE_LEFT', 'HANDLE_RIGHT']_ = VALUE)
+- **shape** (_Literal['AUTO', 'SINGLE']_ = AUTO)
 
 
 
 #### Returns:
-- **Color** (_Float_)
+- **Vector** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Vector](vector.md#vector) :black_small_square: [Content](vector.md#content) :black_small_square: [Methods](vector.md#methods)</sub>
 
@@ -1599,7 +1877,7 @@ New [Vector](vector.md#vector) input with Position as default value (default_inp
 > method
 
 ``` python
-power(exponent=None)
+power(exponent: 'Vector' = None)
 ```
 
 > Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
@@ -1626,7 +1904,7 @@ power(exponent=None)
 > method
 
 ``` python
-project(vector=None)
+project(vector: 'Vector' = None)
 ```
 
 > Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
@@ -1648,12 +1926,68 @@ project(vector=None)
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Vector](vector.md#vector) :black_small_square: [Content](vector.md#content) :black_small_square: [Methods](vector.md#methods)</sub>
 
 ----------
+### prune_grid()
+
+> method
+
+``` python
+prune_grid(mode: "Literal['Inactive', 'Threshold', 'SDF']" = None, threshold: 'Vector' = None)
+```
+
+> Node [Prune Grid](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/volume/operations/prune_grid.html)
+
+#### Information:
+- **Socket** : self
+- **Parameter** : 'VECTOR'
+
+
+
+#### Arguments:
+- **mode** (_Literal['Inactive', 'Threshold', 'SDF']_ = None) : ('Inactive', 'Threshold', 'SDF')
+- **threshold** (_Vector_ = None) : socket 'Threshold' (id: Threshold)
+
+
+
+#### Returns:
+- **Vector** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Vector](vector.md#vector) :black_small_square: [Content](vector.md#content) :black_small_square: [Methods](vector.md#methods)</sub>
+
+----------
+### radial_tiling()
+
+> method
+
+``` python
+radial_tiling(sides: 'Float' = None, roundness: 'Float' = None, normalize=False)
+```
+
+> Node [Radial Tiling](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/radial_tiling.html)
+
+#### Information:
+- **Socket** : self
+
+
+
+#### Arguments:
+- **sides** (_Float_ = None) : socket 'Sides' (id: Sides)
+- **roundness** (_Float_ = None) : socket 'Roundness' (id: Roundness)
+- **normalize** (_bool_ = False) : parameter 'normalize'
+
+
+
+#### Returns:
+- **Vector** (_Float_)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Vector](vector.md#vector) :black_small_square: [Content](vector.md#content) :black_small_square: [Methods](vector.md#methods)</sub>
+
+----------
 ### Random()
 
 > classmethod
 
 ``` python
-Random(min=None, max=None, id=None, seed=None)
+Random(min: 'Vector' = None, max: 'Vector' = None, id: 'Integer' = None, seed: 'Integer' = None)
 ```
 
 > Node [Random Value](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/random_value.html)
@@ -1682,7 +2016,7 @@ Random(min=None, max=None, id=None, seed=None)
 > method
 
 ``` python
-reflect(vector=None)
+reflect(vector: 'Vector' = None)
 ```
 
 > Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
@@ -1709,7 +2043,7 @@ reflect(vector=None)
 > method
 
 ``` python
-refract(vector=None, ior=None)
+refract(vector: 'Vector' = None, ior: 'Float' = None)
 ```
 
 > Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
@@ -1737,7 +2071,7 @@ refract(vector=None, ior=None)
 > method
 
 ``` python
-rotate(center=None, axis=None, angle=None, invert=False, rotation_type='AXIS_ANGLE')
+rotate(center: 'Vector' = None, axis: 'Vector' = None, angle: 'Float' = None, invert=False, rotation_type: "Literal['AXIS_ANGLE', 'X_AXIS', 'Y_AXIS', 'Z_AXIS', 'EULER_XYZ']" = 'AXIS_ANGLE')
 ```
 
 > Node [Vector Rotate](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_rotate.html)
@@ -1752,7 +2086,7 @@ rotate(center=None, axis=None, angle=None, invert=False, rotation_type='AXIS_ANG
 - **axis** (_Vector_ = None) : socket 'Axis' (id: Axis)
 - **angle** (_Float_ = None) : socket 'Angle' (id: Angle)
 - **invert** (_bool_ = False) : parameter 'invert'
-- **rotation_type** (_str_ = AXIS_ANGLE) : parameter 'rotation_type' in ['AXIS_ANGLE', 'X_AXIS', 'Y_AXIS', 'Z_AXIS', 'EULER_XYZ']
+- **rotation_type** (_Literal['AXIS_ANGLE', 'X_AXIS', 'Y_AXIS', 'Z_AXIS', 'EULER_XYZ']_ = AXIS_ANGLE) : parameter 'rotation_type' in ['AXIS_ANGLE', 'X_AXIS', 'Y_AXIS', 'Z_AXIS', 'EULER_XYZ']
 
 
 
@@ -1767,7 +2101,7 @@ rotate(center=None, axis=None, angle=None, invert=False, rotation_type='AXIS_ANG
 > method
 
 ``` python
-rotate_axis_angle(center=None, axis=None, angle=None, invert=False)
+rotate_axis_angle(center: 'Vector' = None, axis: 'Vector' = None, angle: 'Float' = None, invert=False)
 ```
 
 > Node [Vector Rotate](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_rotate.html)
@@ -1797,7 +2131,7 @@ rotate_axis_angle(center=None, axis=None, angle=None, invert=False)
 > method
 
 ``` python
-rotate_euler_xyz(center=None, rotation=None, invert=False)
+rotate_euler_xyz(center: 'Vector' = None, rotation: 'Vector' = None, invert=False)
 ```
 
 > Node [Vector Rotate](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_rotate.html)
@@ -1826,7 +2160,7 @@ rotate_euler_xyz(center=None, rotation=None, invert=False)
 > method
 
 ``` python
-rotate_x_axis(center=None, angle=None, invert=False)
+rotate_x_axis(center: 'Vector' = None, angle: 'Float' = None, invert=False)
 ```
 
 > Node [Vector Rotate](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_rotate.html)
@@ -1855,7 +2189,7 @@ rotate_x_axis(center=None, angle=None, invert=False)
 > method
 
 ``` python
-rotate_y_axis(center=None, angle=None, invert=False)
+rotate_y_axis(center: 'Vector' = None, angle: 'Float' = None, invert=False)
 ```
 
 > Node [Vector Rotate](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_rotate.html)
@@ -1884,7 +2218,7 @@ rotate_y_axis(center=None, angle=None, invert=False)
 > method
 
 ``` python
-rotate_z_axis(center=None, angle=None, invert=False)
+rotate_z_axis(center: 'Vector' = None, angle: 'Float' = None, invert=False)
 ```
 
 > Node [Vector Rotate](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_rotate.html)
@@ -1913,10 +2247,10 @@ rotate_z_axis(center=None, angle=None, invert=False)
 > method
 
 ``` python
-sample_grid(position=None, interpolation_mode='TRILINEAR')
+sample_grid(position: 'Vector' = None, interpolation: "Literal['Nearest Neighbor', 'Trilinear', 'Triquadratic']" = None)
 ```
 
-> Node ERROR: Node 'Sample Grid' not found
+> Node [Sample Grid](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/volume/sample/sample_grid.html)
 
 #### Information:
 - **Socket** : self
@@ -1926,7 +2260,7 @@ sample_grid(position=None, interpolation_mode='TRILINEAR')
 
 #### Arguments:
 - **position** (_Vector_ = None) : socket 'Position' (id: Position)
-- **interpolation_mode** (_str_ = TRILINEAR) : parameter 'interpolation_mode' in ['NEAREST', 'TRILINEAR', 'TRIQUADRATIC']
+- **interpolation** (_Literal['Nearest Neighbor', 'Trilinear', 'Triquadratic']_ = None) : ('Nearest Neighbor', 'Trilinear', 'Triquadratic')
 
 
 
@@ -1941,10 +2275,10 @@ sample_grid(position=None, interpolation_mode='TRILINEAR')
 > method
 
 ``` python
-sample_grid_index(x=None, y=None, z=None)
+sample_grid_index(x: 'Integer' = None, y: 'Integer' = None, z: 'Integer' = None)
 ```
 
-> Node ERROR: Node 'Sample Grid Index' not found
+> Node [Sample Grid Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/volume/sample/sample_grid_index.html)
 
 #### Information:
 - **Socket** : self
@@ -1970,7 +2304,7 @@ sample_grid_index(x=None, y=None, z=None)
 > method
 
 ``` python
-scale(scale=None)
+scale(scale: 'Float' = None)
 ```
 
 > Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
@@ -2008,7 +2342,61 @@ separate_xyz()
 
 
 #### Returns:
-- **node** (_Float_)
+- **Float** (_Float_)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Vector](vector.md#vector) :black_small_square: [Content](vector.md#content) :black_small_square: [Methods](vector.md#methods)</sub>
+
+----------
+### set_grid_background()
+
+> method
+
+``` python
+set_grid_background(background: 'Vector' = None)
+```
+
+> Node [Set Grid Background](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/volume/write/set_grid_background.html)
+
+#### Information:
+- **Socket** : self
+- **Parameter** : 'VECTOR'
+
+
+
+#### Arguments:
+- **background** (_Vector_ = None) : socket 'Background' (id: Background)
+
+
+
+#### Returns:
+- **Vector** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Vector](vector.md#vector) :black_small_square: [Content](vector.md#content) :black_small_square: [Methods](vector.md#methods)</sub>
+
+----------
+### set_grid_transform()
+
+> method
+
+``` python
+set_grid_transform(transform: 'Matrix' = None)
+```
+
+> Node [Set Grid Transform](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/volume/write/set_grid_transform.html)
+
+#### Information:
+- **Socket** : self
+- **Parameter** : 'VECTOR'
+
+
+
+#### Arguments:
+- **transform** (_Matrix_ = None) : socket 'Transform' (id: Transform)
+
+
+
+#### Returns:
+- **Boolean** (_Vector_)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Vector](vector.md#vector) :black_small_square: [Content](vector.md#content) :black_small_square: [Methods](vector.md#methods)</sub>
 
@@ -2062,7 +2450,7 @@ sin()
 > method
 
 ``` python
-snap(increment=None)
+snap(increment: 'Vector' = None)
 ```
 
 > Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
@@ -2089,7 +2477,7 @@ snap(increment=None)
 > method
 
 ``` python
-subtract(vector=None)
+subtract(vector: 'Vector' = None)
 ```
 
 > Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
@@ -2187,7 +2575,7 @@ to_rotation()
 transform(convert_from='WORLD', convert_to='OBJECT', vector_type='NORMAL')
 ```
 
-> Node [Vector Transform](https://docs.blender.org/manual/en/latest/render/shader_nodes/vector/transform.html)
+> Node [Vector Transform](https://docs.blender.org/manual/en/latest/render/shader_nodes/utilities/vector/transform.html)
 
 [!SHADER]
 
@@ -2209,7 +2597,58 @@ transform(convert_from='WORLD', convert_to='OBJECT', vector_type='NORMAL')
 > classmethod
 
 ``` python
-Translation(value=(0.0, 0.0, 0.0), name='Translation', tip=None, panel='', default_attribute='', default_input='VALUE', hide_value=False, hide_in_modifier=False, single_value=False)
+Translation(value: 'object' = (0, 0, 0), name: 'str' = 'Translation', min: 'float' = -3.40282e+38, max: 'float' = 3.40282e+38, tip: 'str' = '', panel: 'str' = '', optional_label: 'bool' = False, hide_value: 'bool' = False, hide_in_modifier: 'bool' = False, dimensions: 'int' = 3, default_attribute: 'str' = '', default_input: "Literal['VALUE', 'NORMAL', 'POSITION', 'HANDLE_LEFT', 'HANDLE_RIGHT']" = 'VALUE', shape: "Literal['AUTO', 'SINGLE']" = 'AUTO')
+```
+
+> Translation Input
+
+New [Vector](vector.md#vector) input with subtype 'TRANSLATION'.
+
+Aguments
+--------
+- value  (object = (0, 0, 0)) : Default value
+- name  (str = 'Translation') : Input socket name
+- min  (float = -3.40282e+38) : Property min_value
+- max  (float = 3.40282e+38) : Property max_value
+- tip  (str = '') : Property description
+- panel (str = "") : Panel name
+- optional_label  (bool = False) : Property optional_label
+- hide_value  (bool = False) : Property hide_value
+- hide_in_modifier  (bool = False) : Property hide_in_modifier
+- dimensions  (int = 3) : Property dimensions
+- default_attribute  (str = '') : Property default_attribute_name
+- default_input  (str = 'VALUE') : Property default_input in ('VALUE', 'NORMAL', 'POSITION', 'HANDLE_LEFT', 'HANDLE_RIGHT')
+- shape  (str = 'AUTO') : Property structure_type in ('AUTO', 'SINGLE')
+
+#### Arguments:
+- **value** (_object_ = (0, 0, 0))
+- **name** (_str_ = Translation)
+- **min** (_float_ = -3.40282e+38)
+- **max** (_float_ = 3.40282e+38)
+- **tip** (_str_ = )
+- **panel** (_str_ = )
+- **optional_label** (_bool_ = False)
+- **hide_value** (_bool_ = False)
+- **hide_in_modifier** (_bool_ = False)
+- **dimensions** (_int_ = 3)
+- **default_attribute** (_str_ = )
+- **default_input** (_Literal['VALUE', 'NORMAL', 'POSITION', 'HANDLE_LEFT', 'HANDLE_RIGHT']_ = VALUE)
+- **shape** (_Literal['AUTO', 'SINGLE']_ = AUTO)
+
+
+
+#### Returns:
+- **Vector** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Vector](vector.md#vector) :black_small_square: [Content](vector.md#content) :black_small_square: [Methods](vector.md#methods)</sub>
+
+----------
+### Translation_OLD()
+
+> classmethod
+
+``` python
+Translation_OLD(value=(0.0, 0.0, 0.0), name='Translation', tip=None, panel='', default_attribute='', default_input='VALUE', hide_value=False, hide_in_modifier=False, single_value=False)
 ```
 
 > Translation Vector group input
@@ -2281,6 +2720,32 @@ UvMap(from_instancer=False, uv_map='')
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Vector](vector.md#vector) :black_small_square: [Content](vector.md#content) :black_small_square: [Methods](vector.md#methods)</sub>
 
 ----------
+### uv_tangent()
+
+> method
+
+``` python
+uv_tangent(method: "Literal['Exact', 'Fast']" = None)
+```
+
+> Node [UV Tangent](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/uv/uv_tangent.html)
+
+#### Information:
+- **Socket** : self
+
+
+
+#### Arguments:
+- **method** (_Literal['Exact', 'Fast']_ = None) : ('Exact', 'Fast')
+
+
+
+#### Returns:
+- **Vector** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Vector](vector.md#vector) :black_small_square: [Content](vector.md#content) :black_small_square: [Methods](vector.md#methods)</sub>
+
+----------
 ### vector_displacement()
 
 > method
@@ -2289,7 +2754,7 @@ UvMap(from_instancer=False, uv_map='')
 vector_displacement(midlevel=None, scale=None, space='TANGENT')
 ```
 
-> Node [Vector Displacement](https://docs.blender.org/manual/en/latest/render/shader_nodes/vector/vector_displacement.html)
+> Node [Vector Displacement](https://docs.blender.org/manual/en/latest/render/shader_nodes/displacement/vector_displacement.html)
 
 [!SHADER]
 
@@ -2311,10 +2776,10 @@ vector_displacement(midlevel=None, scale=None, space='TANGENT')
 > method
 
 ``` python
-vector_transform(convert_from='WORLD', convert_to='OBJECT', vector_type='VECTOR')
+vector_transform(convert_from: "Literal['WORLD', 'OBJECT', 'CAMERA']" = 'WORLD', convert_to: "Literal['WORLD', 'OBJECT', 'CAMERA']" = 'OBJECT', vector_type: "Literal['POINT', 'VECTOR', 'NORMAL']" = 'VECTOR')
 ```
 
-> Node [Vector Transform](https://docs.blender.org/manual/en/latest/render/shader_nodes/vector/transform.html)
+> Node [Vector Transform](https://docs.blender.org/manual/en/latest/render/shader_nodes/utilities/vector/transform.html)
 
 #### Information:
 - **Socket** : self
@@ -2322,9 +2787,9 @@ vector_transform(convert_from='WORLD', convert_to='OBJECT', vector_type='VECTOR'
 
 
 #### Arguments:
-- **convert_from** (_str_ = WORLD) : parameter 'convert_from' in ['WORLD', 'OBJECT', 'CAMERA']
-- **convert_to** (_str_ = OBJECT) : parameter 'convert_to' in ['WORLD', 'OBJECT', 'CAMERA']
-- **vector_type** (_str_ = VECTOR) : parameter 'vector_type' in ['POINT', 'VECTOR', 'NORMAL']
+- **convert_from** (_Literal['WORLD', 'OBJECT', 'CAMERA']_ = WORLD) : parameter 'convert_from' in ['WORLD', 'OBJECT', 'CAMERA']
+- **convert_to** (_Literal['WORLD', 'OBJECT', 'CAMERA']_ = OBJECT) : parameter 'convert_to' in ['WORLD', 'OBJECT', 'CAMERA']
+- **vector_type** (_Literal['POINT', 'VECTOR', 'NORMAL']_ = VECTOR) : parameter 'vector_type' in ['POINT', 'VECTOR', 'NORMAL']
 
 
 
@@ -2365,12 +2830,50 @@ New [Vector](vector.md#vector) input with subtype 'VELOCITY'.
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Vector](vector.md#vector) :black_small_square: [Content](vector.md#content) :black_small_square: [Methods](vector.md#methods)</sub>
 
 ----------
+### voxel_index()
+
+> classmethod
+
+``` python
+voxel_index()
+```
+
+> Node [Voxel Index](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/volume/read/voxel_index.html)
+
+#### Returns:
+- **Integer** (_Integer_)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Vector](vector.md#vector) :black_small_square: [Content](vector.md#content) :black_small_square: [Methods](vector.md#methods)</sub>
+
+----------
+### voxelize_grid()
+
+> method
+
+``` python
+voxelize_grid()
+```
+
+> Node [Voxelize Grid](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/volume/operations/voxelize_grid.html)
+
+#### Information:
+- **Socket** : self
+- **Parameter** : 'VECTOR'
+
+
+
+#### Returns:
+- **Vector** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Vector](vector.md#vector) :black_small_square: [Content](vector.md#content) :black_small_square: [Methods](vector.md#methods)</sub>
+
+----------
 ### wrap()
 
 > method
 
 ``` python
-wrap(max=None, min=None)
+wrap(max: 'Vector' = None, min: 'Vector' = None)
 ```
 
 > Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
@@ -2415,6 +2918,57 @@ New [Vector](vector.md#vector) input with subtype 'XYZ'.
 - **hide_value** ( = False)
 - **hide_in_modifier** ( = False)
 - **single_value** ( = False)
+
+
+
+#### Returns:
+- **Vector** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Vector](vector.md#vector) :black_small_square: [Content](vector.md#content) :black_small_square: [Methods](vector.md#methods)</sub>
+
+----------
+### Xyz()
+
+> classmethod
+
+``` python
+Xyz(value: 'object' = (0, 0, 0), name: 'str' = 'Xyz', min: 'float' = -3.40282e+38, max: 'float' = 3.40282e+38, tip: 'str' = '', panel: 'str' = '', optional_label: 'bool' = False, hide_value: 'bool' = False, hide_in_modifier: 'bool' = False, dimensions: 'int' = 3, default_attribute: 'str' = '', default_input: "Literal['VALUE', 'NORMAL', 'POSITION', 'HANDLE_LEFT', 'HANDLE_RIGHT']" = 'VALUE', shape: "Literal['AUTO', 'SINGLE']" = 'AUTO')
+```
+
+> Xyz Input
+
+New [Vector](vector.md#vector) input with subtype 'XYZ'.
+
+Aguments
+--------
+- value  (object = (0, 0, 0)) : Default value
+- name  (str = 'Xyz') : Input socket name
+- min  (float = -3.40282e+38) : Property min_value
+- max  (float = 3.40282e+38) : Property max_value
+- tip  (str = '') : Property description
+- panel (str = "") : Panel name
+- optional_label  (bool = False) : Property optional_label
+- hide_value  (bool = False) : Property hide_value
+- hide_in_modifier  (bool = False) : Property hide_in_modifier
+- dimensions  (int = 3) : Property dimensions
+- default_attribute  (str = '') : Property default_attribute_name
+- default_input  (str = 'VALUE') : Property default_input in ('VALUE', 'NORMAL', 'POSITION', 'HANDLE_LEFT', 'HANDLE_RIGHT')
+- shape  (str = 'AUTO') : Property structure_type in ('AUTO', 'SINGLE')
+
+#### Arguments:
+- **value** (_object_ = (0, 0, 0))
+- **name** (_str_ = Xyz)
+- **min** (_float_ = -3.40282e+38)
+- **max** (_float_ = 3.40282e+38)
+- **tip** (_str_ = )
+- **panel** (_str_ = )
+- **optional_label** (_bool_ = False)
+- **hide_value** (_bool_ = False)
+- **hide_in_modifier** (_bool_ = False)
+- **dimensions** (_int_ = 3)
+- **default_attribute** (_str_ = )
+- **default_input** (_Literal['VALUE', 'NORMAL', 'POSITION', 'HANDLE_LEFT', 'HANDLE_RIGHT']_ = VALUE)
+- **shape** (_Literal['AUTO', 'SINGLE']_ = AUTO)
 
 
 

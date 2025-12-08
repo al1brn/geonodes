@@ -1,7 +1,7 @@
 # Mesh
 
 ``` python
-Mesh(value=None, name=None, tip=None, panel='', hide_value=False, hide_in_modifier=False)
+Mesh(value: geonodes.core.socket_class.Socket = None, name: str = None, tip: str = '', panel: str = '', optional_label: bool = False, hide_value: bool = False, hide_in_modifier: bool = False)
 ```
 
 > Mesh Geometry
@@ -21,33 +21,34 @@ Nodes requiring a domain parameter, are implemented in one of the four domains o
 #### Arguments:
 - **value** (_Socket_ = None) : initial value
 - **name** (_str_ = None) : Create an Group Input socket with the provided str
-- **tip** (_str_ = None) : User tip (for Group Input sockets)
-- **panel** (_str_ = ) : panel name (overrides tree panel if exists)
-- **hide_value** (_bool_ = False) : Hide Value option
-- **hide_in_modifier** (_bool_ = False) : Hide in Modifier option
+- **tip** (_str_ = ) : Property description
+- **panel** (_str_ = ) : Panel name
+- **optional_label** (_bool_ = False) : Property optional_label
+- **hide_value** (_bool_ = False) : Property hide_value
+- **hide_in_modifier** (_bool_ = False) : Property hide_in_modifier
 
 ### Inherited
 
-[\_\_add__](boolean.md#__add__) :black_small_square: [bake](geometry.md#bake) :black_small_square: [bounding_box](core-gener-geome-geometry.md#bounding_box) :black_small_square: [\_cache](nodecache.md#_cache) :black_small_square: [\_cache_reset](nodecache.md#_cache_reset) :black_small_square: [check_in_list](socket.md#check_in_list) :black_small_square: [convex_hull](core-gener-geome-geometry.md#convex_hull) :black_small_square: [curve](core-gener-geome-geometry.md#curve) :black_small_square: [data_type](socket.md#data_type) :black_small_square: [\_domain_to_geometry](socket.md#_domain_to_geometry) :black_small_square: [\_geo](cloudpoint.md#_geo) :black_small_square: [\_geometry_class](socket.md#_geometry_class) :black_small_square: [\_geo_type](geobase.md#_geo_type) :black_small_square: [\_\_getattr__](socket.md#__getattr__) :black_small_square: [\_\_getitem__](geobase.md#__getitem__) :black_small_square: [get_node_data_type](socket.md#get_node_data_type) :black_small_square: [get_socket_class](socket.md#get_socket_class) :black_small_square: [grease_pencil](core-gener-geome-geometry.md#grease_pencil) :black_small_square: [id](core-gener-geome-geometry.md#id) :black_small_square: [index_of_nearest](core-gener-geome-geometry.md#index_of_nearest) :black_small_square: [IndexSwitch](socket.md#indexswitch) :black_small_square: [index_switch](socket.md#index_switch) :black_small_square: [\_\_init__](boolean.md#__init__) :black_small_square: [Input](socket.md#input) :black_small_square: [input_type](socket.md#input_type) :black_small_square: [instance_on_points](core-gener-geome-geometry.md#instance_on_points) :black_small_square: [instances](core-gener-geome-geometry.md#instances) :black_small_square: [\_interface_socket](socket.md#_interface_socket) :black_small_square: [\_is_group_input](socket.md#_is_group_input) :black_small_square: [\_is_group_output](socket.md#_is_group_output) :black_small_square: [\_is_group_socket](socket.md#_is_group_socket) :black_small_square: [Join](core-gener-geome-geometry.md#join) :black_small_square: [join](core-gener-geome-geometry.md#join) :black_small_square: [\_jump](socket.md#_jump) :black_small_square: [\_lc](socket.md#_lc) :black_small_square: [\_lcop](socket.md#_lcop) :black_small_square: [link_from](socket.md#link_from) :black_small_square: [\_lock](proplocker.md#_lock) :black_small_square: [\_mark_for_delete](socket.md#_mark_for_delete) :black_small_square: [material](core-gener-geome-geometry.md#material) :black_small_square: [material_index](core-gener-geome-geometry.md#material_index) :black_small_square: [MenuSwitch](socket.md#menuswitch) :black_small_square: [menu_switch](socket.md#menu_switch) :black_small_square: [merge](core-gener-geome-geometry.md#merge) :black_small_square: [merge_all](core-gener-geome-geometry.md#merge_all) :black_small_square: [merge_by_distance](core-gener-geome-geometry.md#merge_by_distance) :black_small_square: [merge_connected](core-gener-geome-geometry.md#merge_connected) :black_small_square: [mesh](core-gener-geome-geometry.md#mesh) :black_small_square: [\_name](socket.md#_name) :black_small_square: [name](core-gener-geome-geometry.md#name) :black_small_square: [node](socket.md#node) :black_small_square: [node_color](socket.md#node_color) :black_small_square: [node_label](socket.md#node_label) :black_small_square: [offset](core-gener-geome-geometry.md#offset) :black_small_square: [option](socket.md#option) :black_small_square: [option_index](socket.md#option_index) :black_small_square: [out](socket.md#out) :black_small_square: [\_panel_name](socket.md#_panel_name) :black_small_square: [pin_gizmo](socket.md#pin_gizmo) :black_small_square: [point_cloud](core-gener-geome-geometry.md#point_cloud) :black_small_square: [position](core-gener-geome-geometry.md#position) :black_small_square: [proximity](core-gener-geome-geometry.md#proximity) :black_small_square: [proximity_edges](core-gener-geome-geometry.md#proximity_edges) :black_small_square: [proximity_faces](core-gener-geome-geometry.md#proximity_faces) :black_small_square: [proximity_points](core-gener-geome-geometry.md#proximity_points) :black_small_square: [\_raw_sel](geobase.md#_raw_sel) :black_small_square: [raycast](core-gener-geome-geometry.md#raycast) :black_small_square: [raycast_interpolated](core-gener-geome-geometry.md#raycast_interpolated) :black_small_square: [raycast_nearest](core-gener-geome-geometry.md#raycast_nearest) :black_small_square: [realize](core-gener-geome-geometry.md#realize) :black_small_square: [remove_named_attribute](core-gener-geome-geometry.md#remove_named_attribute) :black_small_square: [remove_names](core-gener-geome-geometry.md#remove_names) :black_small_square: [replace_material](core-gener-geome-geometry.md#replace_material) :black_small_square: [\_run_tests](socket.md#_run_tests) :black_small_square: [\_sel](geobase.md#_sel) :black_small_square: [separate_components](core-gener-geome-geometry.md#separate_components) :black_small_square: [\_\_setattr__](socket.md#__setattr__) :black_small_square: [set_id](core-gener-geome-geometry.md#set_id) :black_small_square: [\_set_interface_property](socket.md#_set_interface_property) :black_small_square: [set_material](core-gener-geome-geometry.md#set_material) :black_small_square: [set_material_index](core-gener-geome-geometry.md#set_material_index) :black_small_square: [set_name](core-gener-geome-geometry.md#set_name) :black_small_square: [set_position](core-gener-geome-geometry.md#set_position) :black_small_square: [set_spline_cyclic](core-gener-geome-geometry.md#set_spline_cyclic) :black_small_square: [set_spline_resolution](core-gener-geome-geometry.md#set_spline_resolution) :black_small_square: [socket_type](socket.md#socket_type) :black_small_square: [\_\_str__](socket.md#__str__) :black_small_square: [Switch](socket.md#switch) :black_small_square: [switch](socket.md#switch) :black_small_square: [switch_false](socket.md#switch_false) :black_small_square: [to_instance](core-gener-geome-geometry.md#to_instance) :black_small_square: [transform](core-gener-geome-geometry.md#transform) :black_small_square: [transform_components](core-gener-geome-geometry.md#transform_components) :black_small_square: [transform_matrix](core-gener-geome-geometry.md#transform_matrix) :black_small_square: [\_unlock](proplocker.md#_unlock) :black_small_square: [viewer](core-gener-geome-geometry.md#viewer) :black_small_square: [volume](core-gener-geome-geometry.md#volume) :black_small_square:
+[\_\_add__](boolean.md#__add__) :black_small_square: [bake](geometry.md#bake) :black_small_square: [bounding_box](core-gener-geome-geometry.md#bounding_box) :black_small_square: ['_bsocket' not found]() :black_small_square: [\_cache](nodecache.md#_cache) :black_small_square: ['_cached_nodes' not found]() :black_small_square: [\_cache_reset](nodecache.md#_cache_reset) :black_small_square: [check_in_list](core-socke-socket.md#check_in_list) :black_small_square: [\_classes_test](core-socke-socket.md#_classes_test) :black_small_square: [convex_hull](core-gener-geome-geometry.md#convex_hull) :black_small_square: [\_create_input_socket](core-gener-geome-geometry.md#_create_input_socket) :black_small_square: [curve](core-gener-geome-geometry.md#curve) :black_small_square: [default_value](core-socke-socket.md#default_value) :black_small_square: [\_domain_to_geometry](core-socke-socket.md#_domain_to_geometry) :black_small_square: [enable_output](core-gener-geome-geometry.md#enable_output) :black_small_square: [\_\_enter__](core-socke-socket.md#__enter__) :black_small_square: [\_\_exit__](core-socke-socket.md#__exit__) :black_small_square: [\_geo](cloudpoint.md#_geo) :black_small_square: [\_geo_type](geom.md#_geo_type) :black_small_square: [\_\_getattr__](core-socke-socket.md#__getattr__) :black_small_square: [\_\_getitem__](geom.md#__getitem__) :black_small_square: [get_selection](geom.md#get_selection) :black_small_square: [grease_pencil](core-gener-geome-geometry.md#grease_pencil) :black_small_square: [id](core-gener-geome-geometry.md#id) :black_small_square: [index_of_nearest](core-gener-geome-geometry.md#index_of_nearest) :black_small_square: [IndexSwitch](core-socke-socket.md#indexswitch) :black_small_square: [index_switch](core-socke-socket.md#index_switch) :black_small_square: [\_\_init__](boolean.md#__init__) :black_small_square: [Input](core-socke-socket.md#input) :black_small_square: [instance_on_points](core-gener-geome-geometry.md#instance_on_points) :black_small_square: [instances](core-gener-geome-geometry.md#instances) :black_small_square: [\_interface_socket](core-socke-socket.md#_interface_socket) :black_small_square: [is_grid](core-socke-socket.md#is_grid) :black_small_square: [Join](core-gener-geome-geometry.md#join) :black_small_square: [join](core-gener-geome-geometry.md#join) :black_small_square: [\_jump](core-socke-socket.md#_jump) :black_small_square: ['_layout' not found]() :black_small_square: [\_lc](core-socke-socket.md#_lc) :black_small_square: [\_lcop](core-socke-socket.md#_lcop) :black_small_square: [link_from](core-socke-socket.md#link_from) :black_small_square: [material](core-gener-geome-geometry.md#material) :black_small_square: [material_index](core-gener-geome-geometry.md#material_index) :black_small_square: [MenuSwitch](core-socke-socket.md#menuswitch) :black_small_square: [menu_switch](core-socke-socket.md#menu_switch) :black_small_square: [merge](core-gener-geome-geometry.md#merge) :black_small_square: [merge_by_distance](core-gener-geome-geometry.md#merge_by_distance) :black_small_square: [mesh](core-gener-geome-geometry.md#mesh) :black_small_square: [\_name](core-socke-socket.md#_name) :black_small_square: [name](core-gener-geome-geometry.md#name) :black_small_square: [node](core-socke-socket.md#node) :black_small_square: [node_color](core-socke-socket.md#node_color) :black_small_square: [node_label](core-socke-socket.md#node_label) :black_small_square: [offset](core-gener-geome-geometry.md#offset) :black_small_square: [out](core-socke-socket.md#out) :black_small_square: [\_panel_name](core-socke-socket.md#_panel_name) :black_small_square: [pin_gizmo](core-socke-socket.md#pin_gizmo) :black_small_square: [point_cloud](core-gener-geome-geometry.md#point_cloud) :black_small_square: [\_pop](core-socke-socket.md#_pop) :black_small_square: [position](core-gener-geome-geometry.md#position) :black_small_square: [proximity](core-gener-geome-geometry.md#proximity) :black_small_square: [proximity_edges](core-gener-geome-geometry.md#proximity_edges) :black_small_square: [proximity_faces](core-gener-geome-geometry.md#proximity_faces) :black_small_square: [proximity_points](core-gener-geome-geometry.md#proximity_points) :black_small_square: [\_push](core-socke-socket.md#_push) :black_small_square: [raycast](core-gener-geome-geometry.md#raycast) :black_small_square: [realize](core-gener-geome-geometry.md#realize) :black_small_square: [remove_named_attribute](core-gener-geome-geometry.md#remove_named_attribute) :black_small_square: [repeat](core-socke-socket.md#repeat) :black_small_square: [replace_material](core-gener-geome-geometry.md#replace_material) :black_small_square: ['_selection' not found]() :black_small_square: [separate_components](core-gener-geome-geometry.md#separate_components) :black_small_square: [set_id](core-gener-geome-geometry.md#set_id) :black_small_square: [set_material](core-gener-geome-geometry.md#set_material) :black_small_square: [set_material_index](core-gener-geome-geometry.md#set_material_index) :black_small_square: [set_name](core-gener-geome-geometry.md#set_name) :black_small_square: [set_position](core-gener-geome-geometry.md#set_position) :black_small_square: [simulation](core-socke-socket.md#simulation) :black_small_square: ['_socket_type' not found]() :black_small_square: [\_\_str__](core-socke-socket.md#__str__) :black_small_square: [Switch](core-socke-socket.md#switch) :black_small_square: [switch](core-socke-socket.md#switch) :black_small_square: [switch_false](core-socke-socket.md#switch_false) :black_small_square: [to_instance](core-gener-geome-geometry.md#to_instance) :black_small_square: [transform](core-gener-geome-geometry.md#transform) :black_small_square: ['_tree' not found]() :black_small_square: ['_use_layout' not found]() :black_small_square: [viewer](core-gener-geome-geometry.md#viewer) :black_small_square: [volume](core-gener-geome-geometry.md#volume) :black_small_square:
 
 ## Content
 
 - **B** : [Boolean](mesh.md#boolean) :black_small_square: [boolean](mesh.md#boolean)
 - **C** : [Circle](mesh.md#circle) :black_small_square: [Cone](mesh.md#cone) :black_small_square: [corners](mesh.md#corners) :black_small_square: [corners_of_edge](mesh.md#corners_of_edge) :black_small_square: [corners_of_face](mesh.md#corners_of_face) :black_small_square: [corners_of_vertex](mesh.md#corners_of_vertex) :black_small_square: [corners_to_points](mesh.md#corners_to_points) :black_small_square: [Cube](mesh.md#cube) :black_small_square: [Cylinder](mesh.md#cylinder)
 - **D** : [Difference](mesh.md#difference) :black_small_square: [difference](mesh.md#difference) :black_small_square: [distribute_points_on_faces](mesh.md#distribute_points_on_faces) :black_small_square: [distribute_points_on_faces_poisson](mesh.md#distribute_points_on_faces_poisson) :black_small_square: [distribute_points_on_faces_random](mesh.md#distribute_points_on_faces_random) :black_small_square: [domain_size](mesh.md#domain_size) :black_small_square: [dual](mesh.md#dual)
-- **E** : [edge_angle](mesh.md#edge_angle) :black_small_square: [edge_paths_to_curves](mesh.md#edge_paths_to_curves) :black_small_square: [edge_paths_to_selection](mesh.md#edge_paths_to_selection) :black_small_square: [edges](mesh.md#edges) :black_small_square: [edges_of_corner](mesh.md#edges_of_corner) :black_small_square: [edges_of_vertex](mesh.md#edges_of_vertex) :black_small_square: [edges_to_face_groups](mesh.md#edges_to_face_groups) :black_small_square: [edges_to_points](mesh.md#edges_to_points) :black_small_square: [edge_vertices](mesh.md#edge_vertices) :black_small_square: [extrude](mesh.md#extrude) :black_small_square: [extrude_edges](mesh.md#extrude_edges) :black_small_square: [extrude_faces](mesh.md#extrude_faces) :black_small_square: [extrude_vertices](mesh.md#extrude_vertices)
-- **F** : [face_group_boundaries](mesh.md#face_group_boundaries) :black_small_square: [face_neighbors](mesh.md#face_neighbors) :black_small_square: [face_of_corner](mesh.md#face_of_corner) :black_small_square: [faces](mesh.md#faces) :black_small_square: [faces_to_points](mesh.md#faces_to_points) :black_small_square: [flip_faces](mesh.md#flip_faces)
+- **E** : [edge_paths_to_curves](mesh.md#edge_paths_to_curves) :black_small_square: [edge_paths_to_selection](mesh.md#edge_paths_to_selection) :black_small_square: [edges](mesh.md#edges) :black_small_square: [edges_of_corner](mesh.md#edges_of_corner) :black_small_square: [edges_of_vertex](mesh.md#edges_of_vertex) :black_small_square: [edges_to_face_groups](mesh.md#edges_to_face_groups) :black_small_square: [edges_to_points](mesh.md#edges_to_points) :black_small_square: [extrude](mesh.md#extrude) :black_small_square: [extrude_edges](mesh.md#extrude_edges) :black_small_square: [extrude_faces](mesh.md#extrude_faces) :black_small_square: [extrude_vertices](mesh.md#extrude_vertices)
+- **F** : [face_group_boundaries](mesh.md#face_group_boundaries) :black_small_square: [face_of_corner](mesh.md#face_of_corner) :black_small_square: [faces](mesh.md#faces) :black_small_square: [faces_to_points](mesh.md#faces_to_points) :black_small_square: [flip_faces](mesh.md#flip_faces)
 - **G** : [Grid](mesh.md#grid)
 - **I** : [IcoSphere](mesh.md#icosphere) :black_small_square: [ImportPLY](mesh.md#importply) :black_small_square: [ImportSTL](mesh.md#importstl) :black_small_square: [Intersect](mesh.md#intersect) :black_small_square: [intersect](mesh.md#intersect) :black_small_square: [is_face_planar](mesh.md#is_face_planar)
 - **L** : [Line](mesh.md#line) :black_small_square: [LineEndPoints](mesh.md#lineendpoints) :black_small_square: [LineOffset](mesh.md#lineoffset)
-- **M** : [material_selection](mesh.md#material_selection) :black_small_square: [mesh_island](mesh.md#mesh_island)
+- **M** : [material_selection](mesh.md#material_selection)
 - **N** : [normal](mesh.md#normal)
 - **O** : [offset_corner_in_face](mesh.md#offset_corner_in_face)
 - **P** : [points](mesh.md#points)
 - **S** : [sample_nearest_surface](mesh.md#sample_nearest_surface) :black_small_square: [sample_uv_surface](mesh.md#sample_uv_surface) :black_small_square: [set_face_set](mesh.md#set_face_set) :black_small_square: [set_normal](mesh.md#set_normal) :black_small_square: [set_normal_free](mesh.md#set_normal_free) :black_small_square: [set_normal_sharpness](mesh.md#set_normal_sharpness) :black_small_square: [set_normal_tangent_space](mesh.md#set_normal_tangent_space) :black_small_square: [shortest_edge_paths](mesh.md#shortest_edge_paths) :black_small_square: [split_edges](mesh.md#split_edges) :black_small_square: [subdivide](mesh.md#subdivide) :black_small_square: [subdivision_surface](mesh.md#subdivision_surface)
 - **T** : [to_curve](mesh.md#to_curve) :black_small_square: [to_curve_edges](mesh.md#to_curve_edges) :black_small_square: [to_curve_faces](mesh.md#to_curve_faces) :black_small_square: [to_density_grid](mesh.md#to_density_grid) :black_small_square: [to_points](mesh.md#to_points) :black_small_square: [to_sdf_grid](mesh.md#to_sdf_grid) :black_small_square: [to_volume](mesh.md#to_volume) :black_small_square: [triangulate](mesh.md#triangulate)
 - **U** : [Union](mesh.md#union) :black_small_square: [union](mesh.md#union) :black_small_square: [UVSphere](mesh.md#uvsphere)
-- **V** : [vertex_neighbors](mesh.md#vertex_neighbors) :black_small_square: [vertex_of_corner](mesh.md#vertex_of_corner) :black_small_square: [vertices_to_points](mesh.md#vertices_to_points)
+- **V** : [vertex_of_corner](mesh.md#vertex_of_corner) :black_small_square: [vertices_to_points](mesh.md#vertices_to_points)
 
 ## Properties
 
@@ -108,16 +109,16 @@ POINT domain
 > classmethod
 
 ``` python
-Boolean(*mesh_2, mesh_1=None, operation='DIFFERENCE', solver='FLOAT')
+Boolean(*mesh_2: 'Mesh', mesh_1: 'Mesh' = None, operation: "Literal['INTERSECT', 'UNION', 'DIFFERENCE']" = 'DIFFERENCE', solver: "Literal['EXACT', 'FLOAT', 'MANIFOLD']" = 'FLOAT')
 ```
 
 > Node [Mesh Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_boolean.html)
 
 #### Arguments:
-- **mesh_2** (_Geometry_) : socket 'Mesh 2' (id: Mesh 2)
-- **mesh_1** (_Geometry_ = None) : socket 'Mesh 1' (id: Mesh 1)
-- **operation** (_str_ = DIFFERENCE) : parameter 'operation' in ['INTERSECT', 'UNION', 'DIFFERENCE']
-- **solver** (_str_ = FLOAT) : parameter 'solver' in ['EXACT', 'FLOAT', 'MANIFOLD']
+- **mesh_2** (_Mesh_) : socket 'Mesh 2' (id: Mesh 2)
+- **mesh_1** (_Mesh_ = None) : socket 'Mesh 1' (id: Mesh 1)
+- **operation** (_Literal['INTERSECT', 'UNION', 'DIFFERENCE']_ = DIFFERENCE) : parameter 'operation' in ['INTERSECT', 'UNION', 'DIFFERENCE']
+- **solver** (_Literal['EXACT', 'FLOAT', 'MANIFOLD']_ = FLOAT) : parameter 'solver' in ['EXACT', 'FLOAT', 'MANIFOLD']
 
 
 
@@ -132,7 +133,7 @@ Boolean(*mesh_2, mesh_1=None, operation='DIFFERENCE', solver='FLOAT')
 > method
 
 ``` python
-boolean(*mesh_2, operation='DIFFERENCE', solver='FLOAT')
+boolean(*mesh_2: 'Mesh', operation: "Literal['INTERSECT', 'UNION', 'DIFFERENCE']" = 'DIFFERENCE', solver: "Literal['EXACT', 'FLOAT', 'MANIFOLD']" = 'FLOAT')
 ```
 
 > Node [Mesh Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_boolean.html)
@@ -145,9 +146,9 @@ boolean(*mesh_2, operation='DIFFERENCE', solver='FLOAT')
 
 
 #### Arguments:
-- **mesh_2** (_Geometry_) : socket 'Mesh 2' (id: Mesh 2)
-- **operation** (_str_ = DIFFERENCE) : parameter 'operation' in ['INTERSECT', 'UNION', 'DIFFERENCE']
-- **solver** (_str_ = FLOAT) : parameter 'solver' in ['EXACT', 'FLOAT', 'MANIFOLD']
+- **mesh_2** (_Mesh_) : socket 'Mesh 2' (id: Mesh 2)
+- **operation** (_Literal['INTERSECT', 'UNION', 'DIFFERENCE']_ = DIFFERENCE) : parameter 'operation' in ['INTERSECT', 'UNION', 'DIFFERENCE']
+- **solver** (_Literal['EXACT', 'FLOAT', 'MANIFOLD']_ = FLOAT) : parameter 'solver' in ['EXACT', 'FLOAT', 'MANIFOLD']
 
 
 
@@ -162,7 +163,7 @@ boolean(*mesh_2, operation='DIFFERENCE', solver='FLOAT')
 > classmethod
 
 ``` python
-Circle(vertices=None, radius=None, fill_type='NONE')
+Circle(vertices: 'Integer' = None, radius: 'Float' = None, fill_type: "Literal['NONE', 'NGON', 'TRIANGLE_FAN']" = 'NONE')
 ```
 
 > Node [Mesh Circle](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/primitives/mesh_circle.html)
@@ -170,7 +171,7 @@ Circle(vertices=None, radius=None, fill_type='NONE')
 #### Arguments:
 - **vertices** (_Integer_ = None) : socket 'Vertices' (id: Vertices)
 - **radius** (_Float_ = None) : socket 'Radius' (id: Radius)
-- **fill_type** (_str_ = NONE) : parameter 'fill_type' in ['NONE', 'NGON', 'TRIANGLE_FAN']
+- **fill_type** (_Literal['NONE', 'NGON', 'TRIANGLE_FAN']_ = NONE) : parameter 'fill_type' in ['NONE', 'NGON', 'TRIANGLE_FAN']
 
 
 
@@ -185,7 +186,7 @@ Circle(vertices=None, radius=None, fill_type='NONE')
 > classmethod
 
 ``` python
-Cone(vertices=None, side_segments=None, fill_segments=None, radius_top=None, radius_bottom=None, depth=None, fill_type='NGON')
+Cone(vertices: 'Integer' = None, side_segments: 'Integer' = None, fill_segments: 'Integer' = None, radius_top: 'Float' = None, radius_bottom: 'Float' = None, depth: 'Float' = None, fill_type: "Literal['NONE', 'NGON', 'TRIANGLE_FAN']" = 'NGON')
 ```
 
 > Node [Cone](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/primitives/cone.html)
@@ -197,7 +198,7 @@ Cone(vertices=None, side_segments=None, fill_segments=None, radius_top=None, rad
 - **radius_top** (_Float_ = None) : socket 'Radius Top' (id: Radius Top)
 - **radius_bottom** (_Float_ = None) : socket 'Radius Bottom' (id: Radius Bottom)
 - **depth** (_Float_ = None) : socket 'Depth' (id: Depth)
-- **fill_type** (_str_ = NGON) : parameter 'fill_type' in ['NONE', 'NGON', 'TRIANGLE_FAN']
+- **fill_type** (_Literal['NONE', 'NGON', 'TRIANGLE_FAN']_ = NGON) : parameter 'fill_type' in ['NONE', 'NGON', 'TRIANGLE_FAN']
 
 
 
@@ -212,7 +213,7 @@ Cone(vertices=None, side_segments=None, fill_segments=None, radius_top=None, rad
 > classmethod
 
 ``` python
-corners_of_edge(edge_index=None, weights=None, sort_index=None)
+corners_of_edge(edge_index: 'Integer' = None, weights: 'Float' = None, sort_index: 'Integer' = None)
 ```
 
 > Node [Corners of Edge](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/topology/corners_of_edge.html)
@@ -235,7 +236,7 @@ corners_of_edge(edge_index=None, weights=None, sort_index=None)
 > classmethod
 
 ``` python
-corners_of_face(face_index=None, weights=None, sort_index=None)
+corners_of_face(face_index: 'Integer' = None, weights: 'Float' = None, sort_index: 'Integer' = None)
 ```
 
 > Node [Corners of Face](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/topology/corners_of_face.html)
@@ -258,7 +259,7 @@ corners_of_face(face_index=None, weights=None, sort_index=None)
 > classmethod
 
 ``` python
-corners_of_vertex(vertex_index=None, weights=None, sort_index=None)
+corners_of_vertex(vertex_index: 'Integer' = None, weights: 'Float' = None, sort_index: 'Integer' = None)
 ```
 
 > Node [Corners of Vertex](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/topology/corners_of_vertex.html)
@@ -281,7 +282,7 @@ corners_of_vertex(vertex_index=None, weights=None, sort_index=None)
 > method
 
 ``` python
-corners_to_points(position=None, radius=None)
+corners_to_points(position: 'Vector' = None, radius: 'Float' = None)
 ```
 
 > Node [Mesh to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_to_points.html)
@@ -310,7 +311,7 @@ corners_to_points(position=None, radius=None)
 > classmethod
 
 ``` python
-Cube(size=None, vertices_x=None, vertices_y=None, vertices_z=None)
+Cube(size: 'Vector' = None, vertices_x: 'Integer' = None, vertices_y: 'Integer' = None, vertices_z: 'Integer' = None)
 ```
 
 > Node [Cube](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/primitives/cube.html)
@@ -334,7 +335,7 @@ Cube(size=None, vertices_x=None, vertices_y=None, vertices_z=None)
 > classmethod
 
 ``` python
-Cylinder(vertices=None, side_segments=None, fill_segments=None, radius=None, depth=None, fill_type='NGON')
+Cylinder(vertices: 'Integer' = None, side_segments: 'Integer' = None, fill_segments: 'Integer' = None, radius: 'Float' = None, depth: 'Float' = None, fill_type: "Literal['NONE', 'NGON', 'TRIANGLE_FAN']" = 'NGON')
 ```
 
 > Node [Cylinder](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/primitives/cylinder.html)
@@ -345,7 +346,7 @@ Cylinder(vertices=None, side_segments=None, fill_segments=None, radius=None, dep
 - **fill_segments** (_Integer_ = None) : socket 'Fill Segments' (id: Fill Segments)
 - **radius** (_Float_ = None) : socket 'Radius' (id: Radius)
 - **depth** (_Float_ = None) : socket 'Depth' (id: Depth)
-- **fill_type** (_str_ = NGON) : parameter 'fill_type' in ['NONE', 'NGON', 'TRIANGLE_FAN']
+- **fill_type** (_Literal['NONE', 'NGON', 'TRIANGLE_FAN']_ = NGON) : parameter 'fill_type' in ['NONE', 'NGON', 'TRIANGLE_FAN']
 
 
 
@@ -360,7 +361,7 @@ Cylinder(vertices=None, side_segments=None, fill_segments=None, radius=None, dep
 > classmethod
 
 ``` python
-Difference(*mesh_2, mesh_1=None, solver='FLOAT')
+Difference(*mesh_2: 'Mesh', mesh_1: 'Mesh' = None, solver: "Literal['EXACT', 'FLOAT', 'MANIFOLD']" = 'FLOAT')
 ```
 
 > Node [Mesh Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_boolean.html)
@@ -371,9 +372,9 @@ Difference(*mesh_2, mesh_1=None, solver='FLOAT')
 
 
 #### Arguments:
-- **mesh_2** (_Geometry_) : socket 'Mesh 2' (id: Mesh 2)
-- **mesh_1** (_Geometry_ = None) : socket 'Mesh 1' (id: Mesh 1)
-- **solver** (_str_ = FLOAT) : parameter 'solver' in ['EXACT', 'FLOAT', 'MANIFOLD']
+- **mesh_2** (_Mesh_) : socket 'Mesh 2' (id: Mesh 2)
+- **mesh_1** (_Mesh_ = None) : socket 'Mesh 1' (id: Mesh 1)
+- **solver** (_Literal['EXACT', 'FLOAT', 'MANIFOLD']_ = FLOAT) : parameter 'solver' in ['EXACT', 'FLOAT', 'MANIFOLD']
 
 
 
@@ -388,7 +389,7 @@ Difference(*mesh_2, mesh_1=None, solver='FLOAT')
 > method
 
 ``` python
-difference(*mesh_2, solver='FLOAT')
+difference(*mesh_2: 'Mesh', solver: "Literal['EXACT', 'FLOAT', 'MANIFOLD']" = 'FLOAT')
 ```
 
 > Node [Mesh Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_boolean.html)
@@ -402,8 +403,8 @@ difference(*mesh_2, solver='FLOAT')
 
 
 #### Arguments:
-- **mesh_2** (_Geometry_) : socket 'Mesh 2' (id: Mesh 2)
-- **solver** (_str_ = FLOAT) : parameter 'solver' in ['EXACT', 'FLOAT', 'MANIFOLD']
+- **mesh_2** (_Mesh_) : socket 'Mesh 2' (id: Mesh 2)
+- **solver** (_Literal['EXACT', 'FLOAT', 'MANIFOLD']_ = FLOAT) : parameter 'solver' in ['EXACT', 'FLOAT', 'MANIFOLD']
 
 
 
@@ -418,7 +419,7 @@ difference(*mesh_2, solver='FLOAT')
 > method
 
 ``` python
-distribute_points_on_faces(density=None, seed=None, distribute_method='RANDOM')
+distribute_points_on_faces(density: 'Float' = None, seed: 'Integer' = None, distribute_method: "Literal['RANDOM', 'POISSON']" = 'RANDOM')
 ```
 
 > Node ERROR: Node 'Distribute Points on Faces' not found
@@ -432,7 +433,7 @@ distribute_points_on_faces(density=None, seed=None, distribute_method='RANDOM')
 #### Arguments:
 - **density** (_Float_ = None) : socket 'Density' (id: Density)
 - **seed** (_Integer_ = None) : socket 'Seed' (id: Seed)
-- **distribute_method** (_str_ = RANDOM) : parameter 'distribute_method' in ['RANDOM', 'POISSON']
+- **distribute_method** (_Literal['RANDOM', 'POISSON']_ = RANDOM) : parameter 'distribute_method' in ['RANDOM', 'POISSON']
 
 
 
@@ -447,7 +448,7 @@ distribute_points_on_faces(density=None, seed=None, distribute_method='RANDOM')
 > method
 
 ``` python
-distribute_points_on_faces_poisson(distance_min=None, density_max=None, density_factor=None, seed=None)
+distribute_points_on_faces_poisson(distance_min: 'Float' = None, density_max: 'Float' = None, density_factor: 'Float' = None, seed: 'Integer' = None)
 ```
 
 > Node ERROR: Node 'Distribute Points on Faces' not found
@@ -478,7 +479,7 @@ distribute_points_on_faces_poisson(distance_min=None, density_max=None, density_
 > method
 
 ``` python
-distribute_points_on_faces_random(density=None, seed=None)
+distribute_points_on_faces_random(density: 'Float' = None, seed: 'Integer' = None)
 ```
 
 > Node ERROR: Node 'Distribute Points on Faces' not found
@@ -519,7 +520,7 @@ domain_size()
 
 
 #### Returns:
-- **node** (_Integer_)
+- **Integer** (_Integer_)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](mesh.md#mesh) :black_small_square: [Content](mesh.md#content) :black_small_square: [Methods](mesh.md#methods)</sub>
 
@@ -529,7 +530,7 @@ domain_size()
 > method
 
 ``` python
-dual(keep_boundaries=None)
+dual(keep_boundaries: 'Boolean' = None)
 ```
 
 > Node [Dual Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/dual_mesh.html)
@@ -552,28 +553,12 @@ dual(keep_boundaries=None)
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](mesh.md#mesh) :black_small_square: [Content](mesh.md#content) :black_small_square: [Methods](mesh.md#methods)</sub>
 
 ----------
-### edge_angle()
-
-> classmethod
-
-``` python
-edge_angle()
-```
-
-> Node [Edge Angle](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/edge_angle.html)
-
-#### Returns:
-- **node** (_Float_)
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](mesh.md#mesh) :black_small_square: [Content](mesh.md#content) :black_small_square: [Methods](mesh.md#methods)</sub>
-
-----------
 ### edge_paths_to_curves()
 
 > method
 
 ``` python
-edge_paths_to_curves(start_vertices=None, next_vertex_index=None)
+edge_paths_to_curves(start_vertices: 'Boolean' = None, next_vertex_index: 'Integer' = None)
 ```
 
 > Node [Edge Paths to Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/edge_paths_to_curves.html)
@@ -600,7 +585,7 @@ edge_paths_to_curves(start_vertices=None, next_vertex_index=None)
 > classmethod
 
 ``` python
-edge_paths_to_selection(start_vertices=None, next_vertex_index=None)
+edge_paths_to_selection(start_vertices: 'Boolean' = None, next_vertex_index: 'Integer' = None)
 ```
 
 > Node [Edge Paths to Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/edge_paths_to_selection.html)
@@ -622,7 +607,7 @@ edge_paths_to_selection(start_vertices=None, next_vertex_index=None)
 > classmethod
 
 ``` python
-edges_of_corner(corner_index=None)
+edges_of_corner(corner_index: 'Integer' = None)
 ```
 
 > Node [Edges of Corner](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/topology/edges_of_corner.html)
@@ -643,7 +628,7 @@ edges_of_corner(corner_index=None)
 > classmethod
 
 ``` python
-edges_of_vertex(vertex_index=None, weights=None, sort_index=None)
+edges_of_vertex(vertex_index: 'Integer' = None, weights: 'Float' = None, sort_index: 'Integer' = None)
 ```
 
 > Node [Edges of Vertex](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/topology/edges_of_vertex.html)
@@ -666,7 +651,7 @@ edges_of_vertex(vertex_index=None, weights=None, sort_index=None)
 > classmethod
 
 ``` python
-edges_to_face_groups(boundary_edges=None)
+edges_to_face_groups(boundary_edges: 'Boolean' = None)
 ```
 
 > Node [Edges to Face Groups](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/edges_to_face_groups.html)
@@ -687,7 +672,7 @@ edges_to_face_groups(boundary_edges=None)
 > method
 
 ``` python
-edges_to_points(position=None, radius=None)
+edges_to_points(position: 'Vector' = None, radius: 'Float' = None)
 ```
 
 > Node [Mesh to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_to_points.html)
@@ -711,28 +696,12 @@ edges_to_points(position=None, radius=None)
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](mesh.md#mesh) :black_small_square: [Content](mesh.md#content) :black_small_square: [Methods](mesh.md#methods)</sub>
 
 ----------
-### edge_vertices()
-
-> classmethod
-
-``` python
-edge_vertices()
-```
-
-> Node [Edge Vertices](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/edge_vertices.html)
-
-#### Returns:
-- **node** (_Integer_)
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](mesh.md#mesh) :black_small_square: [Content](mesh.md#content) :black_small_square: [Methods](mesh.md#methods)</sub>
-
-----------
 ### extrude()
 
 > method
 
 ``` python
-extrude(offset=None, offset_scale=None, individual=None, mode='FACES')
+extrude(offset: 'Vector' = None, offset_scale: 'Float' = None, individual: 'Boolean' = None, mode: "Literal['VERTICES', 'EDGES', 'FACES']" = 'FACES')
 ```
 
 > Node [Extrude Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/extrude_mesh.html)
@@ -749,7 +718,7 @@ extrude(offset=None, offset_scale=None, individual=None, mode='FACES')
 - **offset** (_Vector_ = None) : socket 'Offset' (id: Offset)
 - **offset_scale** (_Float_ = None) : socket 'Offset Scale' (id: Offset Scale)
 - **individual** (_Boolean_ = None) : socket 'Individual' (id: Individual)
-- **mode** (_str_ = FACES) : parameter 'mode' in ['VERTICES', 'EDGES', 'FACES']
+- **mode** (_Literal['VERTICES', 'EDGES', 'FACES']_ = FACES) : parameter 'mode' in ['VERTICES', 'EDGES', 'FACES']
 
 
 
@@ -764,7 +733,7 @@ extrude(offset=None, offset_scale=None, individual=None, mode='FACES')
 > method
 
 ``` python
-extrude_edges(offset=None, offset_scale=None)
+extrude_edges(offset: 'Vector' = None, offset_scale: 'Float' = None)
 ```
 
 > Node [Extrude Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/extrude_mesh.html)
@@ -795,7 +764,7 @@ extrude_edges(offset=None, offset_scale=None)
 > method
 
 ``` python
-extrude_faces(offset=None, offset_scale=None, individual=None)
+extrude_faces(offset: 'Vector' = None, offset_scale: 'Float' = None, individual: 'Boolean' = None)
 ```
 
 > Node [Extrude Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/extrude_mesh.html)
@@ -827,7 +796,7 @@ extrude_faces(offset=None, offset_scale=None, individual=None)
 > method
 
 ``` python
-extrude_vertices(offset=None, offset_scale=None)
+extrude_vertices(offset: 'Vector' = None, offset_scale: 'Float' = None)
 ```
 
 > Node [Extrude Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/extrude_mesh.html)
@@ -858,7 +827,7 @@ extrude_vertices(offset=None, offset_scale=None)
 > classmethod
 
 ``` python
-face_group_boundaries(face_group_id=None)
+face_group_boundaries(face_group_id: 'Integer' = None)
 ```
 
 > Node [Face Group Boundaries](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/face_group_boundaries.html)
@@ -874,28 +843,12 @@ face_group_boundaries(face_group_id=None)
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](mesh.md#mesh) :black_small_square: [Content](mesh.md#content) :black_small_square: [Methods](mesh.md#methods)</sub>
 
 ----------
-### face_neighbors()
-
-> classmethod
-
-``` python
-face_neighbors()
-```
-
-> Node [Face Neighbors](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/face_neighbors.html)
-
-#### Returns:
-- **node** (_Integer_)
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](mesh.md#mesh) :black_small_square: [Content](mesh.md#content) :black_small_square: [Methods](mesh.md#methods)</sub>
-
-----------
 ### face_of_corner()
 
 > classmethod
 
 ``` python
-face_of_corner(corner_index=None)
+face_of_corner(corner_index: 'Integer' = None)
 ```
 
 > Node [Face of Corner](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/topology/face_of_corner.html)
@@ -916,7 +869,7 @@ face_of_corner(corner_index=None)
 > method
 
 ``` python
-faces_to_points(position=None, radius=None)
+faces_to_points(position: 'Vector' = None, radius: 'Float' = None)
 ```
 
 > Node [Mesh to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_to_points.html)
@@ -969,7 +922,7 @@ flip_faces()
 > classmethod
 
 ``` python
-Grid(size_x=None, size_y=None, vertices_x=None, vertices_y=None)
+Grid(size_x: 'Float' = None, size_y: 'Float' = None, vertices_x: 'Integer' = None, vertices_y: 'Integer' = None)
 ```
 
 > Node [Grid](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/primitives/grid.html)
@@ -993,7 +946,7 @@ Grid(size_x=None, size_y=None, vertices_x=None, vertices_y=None)
 > classmethod
 
 ``` python
-IcoSphere(radius=None, subdivisions=None)
+IcoSphere(radius: 'Float' = None, subdivisions: 'Integer' = None)
 ```
 
 > Node ERROR: Node 'Ico Sphere' not found
@@ -1015,7 +968,7 @@ IcoSphere(radius=None, subdivisions=None)
 > classmethod
 
 ``` python
-ImportPLY(path=None)
+ImportPLY(path: 'String' = None)
 ```
 
 > Node ERROR: Node 'Import PLY' not found
@@ -1036,7 +989,7 @@ ImportPLY(path=None)
 > classmethod
 
 ``` python
-ImportSTL(path=None)
+ImportSTL(path: 'String' = None)
 ```
 
 > Node ERROR: Node 'Import STL' not found
@@ -1057,7 +1010,7 @@ ImportSTL(path=None)
 > classmethod
 
 ``` python
-Intersect(*mesh, solver='FLOAT')
+Intersect(*mesh: 'Mesh', solver: "Literal['EXACT', 'FLOAT', 'MANIFOLD']" = 'FLOAT')
 ```
 
 > Node [Mesh Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_boolean.html)
@@ -1068,8 +1021,8 @@ Intersect(*mesh, solver='FLOAT')
 
 
 #### Arguments:
-- **mesh** (_Geometry_) : socket 'Mesh' (id: Mesh 2)
-- **solver** (_str_ = FLOAT) : parameter 'solver' in ['EXACT', 'FLOAT', 'MANIFOLD']
+- **mesh** (_Mesh_) : socket 'Mesh' (id: Mesh 2)
+- **solver** (_Literal['EXACT', 'FLOAT', 'MANIFOLD']_ = FLOAT) : parameter 'solver' in ['EXACT', 'FLOAT', 'MANIFOLD']
 
 
 
@@ -1084,7 +1037,7 @@ Intersect(*mesh, solver='FLOAT')
 > method
 
 ``` python
-intersect(*mesh, solver='FLOAT')
+intersect(*mesh: 'Mesh', solver: "Literal['EXACT', 'FLOAT', 'MANIFOLD']" = 'FLOAT')
 ```
 
 > Node [Mesh Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_boolean.html)
@@ -1097,8 +1050,8 @@ intersect(*mesh, solver='FLOAT')
 
 
 #### Arguments:
-- **mesh** (_Geometry_) : socket 'Mesh' (id: Mesh 2)
-- **solver** (_str_ = FLOAT) : parameter 'solver' in ['EXACT', 'FLOAT', 'MANIFOLD']
+- **mesh** (_Mesh_) : socket 'Mesh' (id: Mesh 2)
+- **solver** (_Literal['EXACT', 'FLOAT', 'MANIFOLD']_ = FLOAT) : parameter 'solver' in ['EXACT', 'FLOAT', 'MANIFOLD']
 
 
 
@@ -1113,7 +1066,7 @@ intersect(*mesh, solver='FLOAT')
 > classmethod
 
 ``` python
-is_face_planar(threshold=None)
+is_face_planar(threshold: 'Float' = None)
 ```
 
 > Node [Is Face Planar](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/face_is_planar.html)
@@ -1134,7 +1087,7 @@ is_face_planar(threshold=None)
 > classmethod
 
 ``` python
-Line(count=None, start_location=None, offset=None, count_mode='TOTAL', mode='OFFSET')
+Line(count: 'Integer' = None, start_location: 'Vector' = None, offset: 'Vector' = None, count_mode: "Literal['TOTAL', 'RESOLUTION']" = 'TOTAL', mode: "Literal['OFFSET', 'END_POINTS']" = 'OFFSET')
 ```
 
 > Node [Mesh Line](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/primitives/mesh_line.html)
@@ -1143,8 +1096,8 @@ Line(count=None, start_location=None, offset=None, count_mode='TOTAL', mode='OFF
 - **count** (_Integer_ = None) : socket 'Count' (id: Count)
 - **start_location** (_Vector_ = None) : socket 'Start Location' (id: Start Location)
 - **offset** (_Vector_ = None) : socket 'Offset' (id: Offset)
-- **count_mode** (_str_ = TOTAL) : parameter 'count_mode' in ['TOTAL', 'RESOLUTION']
-- **mode** (_str_ = OFFSET) : parameter 'mode' in ['OFFSET', 'END_POINTS']
+- **count_mode** (_Literal['TOTAL', 'RESOLUTION']_ = TOTAL) : parameter 'count_mode' in ['TOTAL', 'RESOLUTION']
+- **mode** (_Literal['OFFSET', 'END_POINTS']_ = OFFSET) : parameter 'mode' in ['OFFSET', 'END_POINTS']
 
 
 
@@ -1159,7 +1112,7 @@ Line(count=None, start_location=None, offset=None, count_mode='TOTAL', mode='OFF
 > classmethod
 
 ``` python
-LineEndPoints(count=None, start_location=None, end_location=None, count_mode='TOTAL')
+LineEndPoints(count: 'Integer' = None, start_location: 'Vector' = None, end_location: 'Vector' = None, count_mode: "Literal['TOTAL', 'RESOLUTION']" = 'TOTAL')
 ```
 
 > Node [Mesh Line](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/primitives/mesh_line.html)
@@ -1173,7 +1126,7 @@ LineEndPoints(count=None, start_location=None, end_location=None, count_mode='TO
 - **count** (_Integer_ = None) : socket 'Count' (id: Count)
 - **start_location** (_Vector_ = None) : socket 'Start Location' (id: Start Location)
 - **end_location** (_Vector_ = None) : socket 'End Location' (id: Offset)
-- **count_mode** (_str_ = TOTAL) : parameter 'count_mode' in ['TOTAL', 'RESOLUTION']
+- **count_mode** (_Literal['TOTAL', 'RESOLUTION']_ = TOTAL) : parameter 'count_mode' in ['TOTAL', 'RESOLUTION']
 
 
 
@@ -1188,7 +1141,7 @@ LineEndPoints(count=None, start_location=None, end_location=None, count_mode='TO
 > classmethod
 
 ``` python
-LineOffset(count=None, start_location=None, offset=None, count_mode='TOTAL')
+LineOffset(count: 'Integer' = None, start_location: 'Vector' = None, offset: 'Vector' = None, count_mode: "Literal['TOTAL', 'RESOLUTION']" = 'TOTAL')
 ```
 
 > Node [Mesh Line](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/primitives/mesh_line.html)
@@ -1202,7 +1155,7 @@ LineOffset(count=None, start_location=None, offset=None, count_mode='TOTAL')
 - **count** (_Integer_ = None) : socket 'Count' (id: Count)
 - **start_location** (_Vector_ = None) : socket 'Start Location' (id: Start Location)
 - **offset** (_Vector_ = None) : socket 'Offset' (id: Offset)
-- **count_mode** (_str_ = TOTAL) : parameter 'count_mode' in ['TOTAL', 'RESOLUTION']
+- **count_mode** (_Literal['TOTAL', 'RESOLUTION']_ = TOTAL) : parameter 'count_mode' in ['TOTAL', 'RESOLUTION']
 
 
 
@@ -1217,10 +1170,10 @@ LineOffset(count=None, start_location=None, offset=None, count_mode='TOTAL')
 > classmethod
 
 ``` python
-material_selection(material=None)
+material_selection(material: 'Material' = None)
 ```
 
-> Node [Material Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/material/material_selection.html)
+> Node [Material Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/material/material_selection.html)
 
 #### Arguments:
 - **material** (_Material_ = None) : socket 'Material' (id: Material)
@@ -1233,28 +1186,12 @@ material_selection(material=None)
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](mesh.md#mesh) :black_small_square: [Content](mesh.md#content) :black_small_square: [Methods](mesh.md#methods)</sub>
 
 ----------
-### mesh_island()
-
-> classmethod
-
-``` python
-mesh_island()
-```
-
-> Node [Mesh Island](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/mesh_island.html)
-
-#### Returns:
-- **node** (_Integer_)
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](mesh.md#mesh) :black_small_square: [Content](mesh.md#content) :black_small_square: [Methods](mesh.md#methods)</sub>
-
-----------
 ### offset_corner_in_face()
 
 > classmethod
 
 ``` python
-offset_corner_in_face(corner_index=None, offset=None)
+offset_corner_in_face(corner_index: 'Integer' = None, offset: 'Integer' = None)
 ```
 
 > Node [Offset Corner in Face](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/topology/offset_corner_in_face.html)
@@ -1276,7 +1213,7 @@ offset_corner_in_face(corner_index=None, offset=None)
 > method
 
 ``` python
-sample_nearest_surface(value=None, group_id=None, sample_position=None, sample_group_id=None)
+sample_nearest_surface(value: 'Float | Integer | Boolean | Vector | Color | Rotation | Matrix' = None, group_id: 'Integer' = None, sample_position: 'Vector' = None, sample_group_id: 'Integer' = None)
 ```
 
 > Node [Sample Nearest Surface](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/sample/sample_nearest_surface.html)
@@ -1288,7 +1225,7 @@ sample_nearest_surface(value=None, group_id=None, sample_position=None, sample_g
 
 
 #### Arguments:
-- **value** (_Float_ = None) : socket 'Value' (id: Value)
+- **value** (_Float | Integer | Boolean | Vector | Color | Rotation | Matrix_ = None) : socket 'Value' (id: Value)
 - **group_id** (_Integer_ = None) : socket 'Group ID' (id: Group ID)
 - **sample_position** (_Vector_ = None) : socket 'Sample Position' (id: Sample Position)
 - **sample_group_id** (_Integer_ = None) : socket 'Sample Group ID' (id: Sample Group ID)
@@ -1306,7 +1243,7 @@ sample_nearest_surface(value=None, group_id=None, sample_position=None, sample_g
 > method
 
 ``` python
-sample_uv_surface(value=None, uv_map=None, sample_uv=None)
+sample_uv_surface(value: 'Float | Integer | Boolean | Vector | Color | Rotation | Matrix' = None, uv_map: 'Vector' = None, sample_uv: 'Vector' = None)
 ```
 
 > Node [Sample UV Surface](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/sample/sample_uv_surface.html)
@@ -1318,7 +1255,7 @@ sample_uv_surface(value=None, uv_map=None, sample_uv=None)
 
 
 #### Arguments:
-- **value** (_Float_ = None) : socket 'Value' (id: Value)
+- **value** (_Float | Integer | Boolean | Vector | Color | Rotation | Matrix_ = None) : socket 'Value' (id: Value)
 - **uv_map** (_Vector_ = None) : socket 'UV Map' (id: Source UV Map)
 - **sample_uv** (_Vector_ = None) : socket 'Sample UV' (id: Sample UV)
 
@@ -1335,7 +1272,7 @@ sample_uv_surface(value=None, uv_map=None, sample_uv=None)
 > method
 
 ``` python
-set_face_set(face_set=None)
+set_face_set(face_set: 'Integer' = None)
 ```
 
 > Node [Set Face Set](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/write/set_face_set.html)
@@ -1364,7 +1301,7 @@ set_face_set(face_set=None)
 > method
 
 ``` python
-set_normal(remove_custom=None, edge_sharpness=None, face_sharpness=None, domain='POINT', mode='SHARPNESS')
+set_normal(remove_custom: 'Boolean' = None, edge_sharpness: 'Boolean' = None, face_sharpness: 'Boolean' = None, domain: "Literal['POINT', 'FACE', 'CORNER']" = 'POINT', mode: "Literal['SHARPNESS', 'FREE', 'TANGENT_SPACE']" = 'SHARPNESS')
 ```
 
 > Node [Set Mesh Normal](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/write/set_mesh_normal.html)
@@ -1380,8 +1317,8 @@ set_normal(remove_custom=None, edge_sharpness=None, face_sharpness=None, domain=
 - **remove_custom** (_Boolean_ = None) : socket 'Remove Custom' (id: Remove Custom)
 - **edge_sharpness** (_Boolean_ = None) : socket 'Edge Sharpness' (id: Edge Sharpness)
 - **face_sharpness** (_Boolean_ = None) : socket 'Face Sharpness' (id: Face Sharpness)
-- **domain** (_str_ = POINT) : parameter 'domain' in ['POINT', 'FACE', 'CORNER']
-- **mode** (_str_ = SHARPNESS) : parameter 'mode' in ['SHARPNESS', 'FREE', 'TANGENT_SPACE']
+- **domain** (_Literal['POINT', 'FACE', 'CORNER']_ = POINT) : parameter 'domain' in ['POINT', 'FACE', 'CORNER']
+- **mode** (_Literal['SHARPNESS', 'FREE', 'TANGENT_SPACE']_ = SHARPNESS) : parameter 'mode' in ['SHARPNESS', 'FREE', 'TANGENT_SPACE']
 
 
 
@@ -1396,7 +1333,7 @@ set_normal(remove_custom=None, edge_sharpness=None, face_sharpness=None, domain=
 > method
 
 ``` python
-set_normal_free(custom_normal=None, domain='POINT')
+set_normal_free(custom_normal: 'Vector' = None, domain: "Literal['POINT', 'FACE', 'CORNER']" = 'POINT')
 ```
 
 > Node [Set Mesh Normal](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/write/set_mesh_normal.html)
@@ -1411,7 +1348,7 @@ set_normal_free(custom_normal=None, domain='POINT')
 
 #### Arguments:
 - **custom_normal** (_Vector_ = None) : socket 'Custom Normal' (id: Custom Normal)
-- **domain** (_str_ = POINT) : parameter 'domain' in ['POINT', 'FACE', 'CORNER']
+- **domain** (_Literal['POINT', 'FACE', 'CORNER']_ = POINT) : parameter 'domain' in ['POINT', 'FACE', 'CORNER']
 
 
 
@@ -1426,7 +1363,7 @@ set_normal_free(custom_normal=None, domain='POINT')
 > method
 
 ``` python
-set_normal_sharpness(remove_custom=None, edge_sharpness=None, face_sharpness=None, domain='POINT')
+set_normal_sharpness(remove_custom: 'Boolean' = None, edge_sharpness: 'Boolean' = None, face_sharpness: 'Boolean' = None, domain: "Literal['POINT', 'FACE', 'CORNER']" = 'POINT')
 ```
 
 > Node [Set Mesh Normal](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/write/set_mesh_normal.html)
@@ -1443,7 +1380,7 @@ set_normal_sharpness(remove_custom=None, edge_sharpness=None, face_sharpness=Non
 - **remove_custom** (_Boolean_ = None) : socket 'Remove Custom' (id: Remove Custom)
 - **edge_sharpness** (_Boolean_ = None) : socket 'Edge Sharpness' (id: Edge Sharpness)
 - **face_sharpness** (_Boolean_ = None) : socket 'Face Sharpness' (id: Face Sharpness)
-- **domain** (_str_ = POINT) : parameter 'domain' in ['POINT', 'FACE', 'CORNER']
+- **domain** (_Literal['POINT', 'FACE', 'CORNER']_ = POINT) : parameter 'domain' in ['POINT', 'FACE', 'CORNER']
 
 
 
@@ -1458,7 +1395,7 @@ set_normal_sharpness(remove_custom=None, edge_sharpness=None, face_sharpness=Non
 > method
 
 ``` python
-set_normal_tangent_space(custom_normal=None, domain='POINT')
+set_normal_tangent_space(custom_normal: 'Vector' = None, domain: "Literal['POINT', 'FACE', 'CORNER']" = 'POINT')
 ```
 
 > Node [Set Mesh Normal](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/write/set_mesh_normal.html)
@@ -1473,7 +1410,7 @@ set_normal_tangent_space(custom_normal=None, domain='POINT')
 
 #### Arguments:
 - **custom_normal** (_Vector_ = None) : socket 'Custom Normal' (id: Custom Normal)
-- **domain** (_str_ = POINT) : parameter 'domain' in ['POINT', 'FACE', 'CORNER']
+- **domain** (_Literal['POINT', 'FACE', 'CORNER']_ = POINT) : parameter 'domain' in ['POINT', 'FACE', 'CORNER']
 
 
 
@@ -1488,7 +1425,7 @@ set_normal_tangent_space(custom_normal=None, domain='POINT')
 > classmethod
 
 ``` python
-shortest_edge_paths(end_vertex=None, edge_cost=None)
+shortest_edge_paths(end_vertex: 'Boolean' = None, edge_cost: 'Float' = None)
 ```
 
 > Node [Shortest Edge Paths](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/shortest_edge_paths.html)
@@ -1534,7 +1471,7 @@ split_edges()
 > method
 
 ``` python
-subdivide(level=None)
+subdivide(level: 'Integer' = None)
 ```
 
 > Node [Subdivide Mesh](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/subdivide_mesh.html)
@@ -1562,7 +1499,7 @@ subdivide(level=None)
 > method
 
 ``` python
-subdivision_surface(level=None, edge_crease=None, vertex_crease=None, limit_surface=None, boundary_smooth='ALL', uv_smooth='PRESERVE_BOUNDARIES')
+subdivision_surface(level: 'Integer' = None, edge_crease: 'Float' = None, vertex_crease: 'Float' = None, limit_surface: 'Boolean' = None, uv_smooth: "Literal['None', 'Keep Corners', 'Keep Corners, Junctions', 'Keep Corners, Junctions, Concave', 'Keep Boundaries', 'All']" = None, boundary_smooth: "Literal['Keep Corners', 'All']" = None)
 ```
 
 > Node [Subdivision Surface](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/subdivision_surface.html)
@@ -1579,8 +1516,8 @@ subdivision_surface(level=None, edge_crease=None, vertex_crease=None, limit_surf
 - **edge_crease** (_Float_ = None) : socket 'Edge Crease' (id: Edge Crease)
 - **vertex_crease** (_Float_ = None) : socket 'Vertex Crease' (id: Vertex Crease)
 - **limit_surface** (_Boolean_ = None) : socket 'Limit Surface' (id: Limit Surface)
-- **boundary_smooth** (_str_ = ALL) : parameter 'boundary_smooth' in ['PRESERVE_CORNERS', 'ALL']
-- **uv_smooth** (_str_ = PRESERVE_BOUNDARIES) : parameter 'uv_smooth' in ['NONE', 'PRESERVE_CORNERS', 'PRESERVE_CORNERS_AND_JUNCTIONS', 'PRESERVE_CORNERS_JUNCTIONS_AND_CONCAVE', 'PRESERVE_BOUNDARIES', 'SMOOTH_ALL']
+- **uv_smooth** (_Literal['None', 'Keep Corners', 'Keep Corners, Junctions', 'Keep Corners, Junctions, Concave', 'Keep Boundaries', 'All']_ = None) : ('None', 'Keep Corners', 'Keep Corners, Junctions', 'Keep Corners, Junctions, Concave', 'Keep Boundaries', 'All')
+- **boundary_smooth** (_Literal['Keep Corners', 'All']_ = None) : ('Keep Corners', 'All')
 
 
 
@@ -1595,7 +1532,7 @@ subdivision_surface(level=None, edge_crease=None, vertex_crease=None, limit_surf
 > method
 
 ``` python
-to_curve(mode='EDGES')
+to_curve(mode: "Literal['EDGES', 'FACES']" = 'EDGES')
 ```
 
 > Node [Mesh to Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_to_curve.html)
@@ -1607,7 +1544,7 @@ to_curve(mode='EDGES')
 
 
 #### Arguments:
-- **mode** (_str_ = EDGES) : parameter 'mode' in ['EDGES', 'FACES']
+- **mode** (_Literal['EDGES', 'FACES']_ = EDGES) : parameter 'mode' in ['EDGES', 'FACES']
 
 
 
@@ -1668,10 +1605,10 @@ to_curve_faces()
 > method
 
 ``` python
-to_density_grid(density=None, voxel_size=None, gradient_width=None)
+to_density_grid(density: 'Float' = None, voxel_size: 'Float' = None, gradient_width: 'Float' = None)
 ```
 
-> Node ERROR: Node 'Mesh to Density Grid' not found
+> Node [Mesh to Density Grid](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_to_density_grid.html)
 
 #### Information:
 - **Socket** : self
@@ -1696,7 +1633,7 @@ to_density_grid(density=None, voxel_size=None, gradient_width=None)
 > method
 
 ``` python
-to_points(position=None, radius=None, mode='VERTICES')
+to_points(position: 'Vector' = None, radius: 'Float' = None, mode: "Literal['VERTICES', 'EDGES', 'FACES', 'CORNERS']" = 'VERTICES')
 ```
 
 > Node [Mesh to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_to_points.html)
@@ -1710,7 +1647,7 @@ to_points(position=None, radius=None, mode='VERTICES')
 #### Arguments:
 - **position** (_Vector_ = None) : socket 'Position' (id: Position)
 - **radius** (_Float_ = None) : socket 'Radius' (id: Radius)
-- **mode** (_str_ = VERTICES) : parameter 'mode' in ['VERTICES', 'EDGES', 'FACES', 'CORNERS']
+- **mode** (_Literal['VERTICES', 'EDGES', 'FACES', 'CORNERS']_ = VERTICES) : parameter 'mode' in ['VERTICES', 'EDGES', 'FACES', 'CORNERS']
 
 
 
@@ -1725,10 +1662,10 @@ to_points(position=None, radius=None, mode='VERTICES')
 > method
 
 ``` python
-to_sdf_grid(voxel_size=None, band_width=None)
+to_sdf_grid(voxel_size: 'Float' = None, band_width: 'Integer' = None)
 ```
 
-> Node ERROR: Node 'Mesh to SDF Grid' not found
+> Node [Mesh to SDF Grid](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_to_sdf_grid.html)
 
 #### Information:
 - **Socket** : self
@@ -1752,7 +1689,7 @@ to_sdf_grid(voxel_size=None, band_width=None)
 > method
 
 ``` python
-to_volume(density=None, voxel_amount=None, interior_band_width=None, resolution_mode='VOXEL_AMOUNT')
+to_volume(density: 'Float' = None, resolution_mode: "Literal['Amount', 'Size']" = None, voxel_size: 'Float' = None, voxel_amount: 'Float' = None, interior_band_width: 'Float' = None)
 ```
 
 > Node [Mesh to Volume](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_to_volume.html)
@@ -1764,9 +1701,10 @@ to_volume(density=None, voxel_amount=None, interior_band_width=None, resolution_
 
 #### Arguments:
 - **density** (_Float_ = None) : socket 'Density' (id: Density)
+- **resolution_mode** (_Literal['Amount', 'Size']_ = None) : ('Amount', 'Size')
+- **voxel_size** (_Float_ = None) : socket 'Voxel Size' (id: Voxel Size)
 - **voxel_amount** (_Float_ = None) : socket 'Voxel Amount' (id: Voxel Amount)
 - **interior_band_width** (_Float_ = None) : socket 'Interior Band Width' (id: Interior Band Width)
-- **resolution_mode** (_str_ = VOXEL_AMOUNT) : parameter 'resolution_mode' in ['VOXEL_AMOUNT', 'VOXEL_SIZE']
 
 
 
@@ -1781,7 +1719,7 @@ to_volume(density=None, voxel_amount=None, interior_band_width=None, resolution_
 > method
 
 ``` python
-triangulate(ngon_method='BEAUTY', quad_method='SHORTEST_DIAGONAL')
+triangulate(quad_method: "Literal['Beauty', 'Fixed', 'Fixed Alternate', 'Shortest Diagonal', 'Longest Diagonal']" = None, n_gon_method: "Literal['Beauty', 'Clip']" = None)
 ```
 
 > Node [Triangulate](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/triangulate.html)
@@ -1795,8 +1733,8 @@ triangulate(ngon_method='BEAUTY', quad_method='SHORTEST_DIAGONAL')
 
 
 #### Arguments:
-- **ngon_method** (_str_ = BEAUTY) : parameter 'ngon_method' in ['BEAUTY', 'CLIP']
-- **quad_method** (_str_ = SHORTEST_DIAGONAL) : parameter 'quad_method' in ['BEAUTY', 'FIXED', 'FIXED_ALTERNATE', 'SHORTEST_DIAGONAL', 'LONGEST_DIAGONAL']
+- **quad_method** (_Literal['Beauty', 'Fixed', 'Fixed Alternate', 'Shortest Diagonal', 'Longest Diagonal']_ = None) : ('Beauty', 'Fixed', 'Fixed Alternate', 'Shortest Diagonal', 'Longest Diagonal')
+- **n_gon_method** (_Literal['Beauty', 'Clip']_ = None) : ('Beauty', 'Clip')
 
 
 
@@ -1811,7 +1749,7 @@ triangulate(ngon_method='BEAUTY', quad_method='SHORTEST_DIAGONAL')
 > classmethod
 
 ``` python
-Union(*mesh, solver='FLOAT')
+Union(*mesh: 'Mesh', solver: "Literal['EXACT', 'FLOAT', 'MANIFOLD']" = 'FLOAT')
 ```
 
 > Node [Mesh Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_boolean.html)
@@ -1822,8 +1760,8 @@ Union(*mesh, solver='FLOAT')
 
 
 #### Arguments:
-- **mesh** (_Geometry_) : socket 'Mesh' (id: Mesh 2)
-- **solver** (_str_ = FLOAT) : parameter 'solver' in ['EXACT', 'FLOAT', 'MANIFOLD']
+- **mesh** (_Mesh_) : socket 'Mesh' (id: Mesh 2)
+- **solver** (_Literal['EXACT', 'FLOAT', 'MANIFOLD']_ = FLOAT) : parameter 'solver' in ['EXACT', 'FLOAT', 'MANIFOLD']
 
 
 
@@ -1838,7 +1776,7 @@ Union(*mesh, solver='FLOAT')
 > method
 
 ``` python
-union(*mesh, solver='FLOAT')
+union(*mesh: 'Mesh', solver: "Literal['EXACT', 'FLOAT', 'MANIFOLD']" = 'FLOAT')
 ```
 
 > Node [Mesh Boolean](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_boolean.html)
@@ -1851,8 +1789,8 @@ union(*mesh, solver='FLOAT')
 
 
 #### Arguments:
-- **mesh** (_Geometry_) : socket 'Mesh' (id: Mesh 2)
-- **solver** (_str_ = FLOAT) : parameter 'solver' in ['EXACT', 'FLOAT', 'MANIFOLD']
+- **mesh** (_Mesh_) : socket 'Mesh' (id: Mesh 2)
+- **solver** (_Literal['EXACT', 'FLOAT', 'MANIFOLD']_ = FLOAT) : parameter 'solver' in ['EXACT', 'FLOAT', 'MANIFOLD']
 
 
 
@@ -1867,7 +1805,7 @@ union(*mesh, solver='FLOAT')
 > classmethod
 
 ``` python
-UVSphere(segments=None, rings=None, radius=None)
+UVSphere(segments: 'Integer' = None, rings: 'Integer' = None, radius: 'Float' = None)
 ```
 
 > Node [UV Sphere](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/primitives/uv_sphere.html)
@@ -1885,28 +1823,12 @@ UVSphere(segments=None, rings=None, radius=None)
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](mesh.md#mesh) :black_small_square: [Content](mesh.md#content) :black_small_square: [Methods](mesh.md#methods)</sub>
 
 ----------
-### vertex_neighbors()
-
-> classmethod
-
-``` python
-vertex_neighbors()
-```
-
-> Node [Vertex Neighbors](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/read/vertex_neighbors.html)
-
-#### Returns:
-- **node** (_Integer_)
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Mesh](mesh.md#mesh) :black_small_square: [Content](mesh.md#content) :black_small_square: [Methods](mesh.md#methods)</sub>
-
-----------
 ### vertex_of_corner()
 
 > classmethod
 
 ``` python
-vertex_of_corner(corner_index=None)
+vertex_of_corner(corner_index: 'Integer' = None)
 ```
 
 > Node [Vertex of Corner](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/topology/vertex_of_corner.html)
@@ -1927,7 +1849,7 @@ vertex_of_corner(corner_index=None)
 > method
 
 ``` python
-vertices_to_points(position=None, radius=None)
+vertices_to_points(position: 'Vector' = None, radius: 'Float' = None)
 ```
 
 > Node [Mesh to Points](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/operations/mesh_to_points.html)

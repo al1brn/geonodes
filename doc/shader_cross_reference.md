@@ -13,17 +13,17 @@ You will find here how nodes are implemented
 - **F** : [Fresnel](shader_cross_reference.md#fresnel)
 - **G** : [Gamma](shader_cross_reference.md#gamma) :black_small_square: [Glass BSDF](shader_cross_reference.md#glass-bsdf) :black_small_square: [Glossy BSDF](shader_cross_reference.md#glossy-bsdf)
 - **H** : [Hair BSDF](shader_cross_reference.md#hair-bsdf) :black_small_square: [Holdout](shader_cross_reference.md#holdout) :black_small_square: [Hue Saturation Value](shader_cross_reference.md#hue-saturation-value)
-- **I** : [IES Texture](shader_cross_reference.md#ies-texture) :black_small_square: [Image Texture](shader_cross_reference.md#image-texture) :black_small_square: [Input](shader_cross_reference.md#input) :black_small_square: [Invert Color](shader_cross_reference.md#invert-color)
+- **I** : [IES Texture](shader_cross_reference.md#ies-texture) :black_small_square: [Image Texture](shader_cross_reference.md#image-texture) :black_small_square: [Invert Color](shader_cross_reference.md#invert-color)
 - **L** : [Layer Weight](shader_cross_reference.md#layer-weight) :black_small_square: [Light Falloff](shader_cross_reference.md#light-falloff) :black_small_square: [Light Output](shader_cross_reference.md#light-output) :black_small_square: [Line Style Output](shader_cross_reference.md#line-style-output)
 - **M** : [Mapping](shader_cross_reference.md#mapping) :black_small_square: [Material Output](shader_cross_reference.md#material-output) :black_small_square: [Metallic BSDF](shader_cross_reference.md#metallic-bsdf) :black_small_square: [Mix Shader](shader_cross_reference.md#mix-shader)
 - **N** : [Normal](shader_cross_reference.md#normal) :black_small_square: [Normal Map](shader_cross_reference.md#normal-map)
 - **O** : [Output](shader_cross_reference.md#output)
-- **P** : [Point Density](shader_cross_reference.md#point-density) :black_small_square: [Principled BSDF](shader_cross_reference.md#principled-bsdf) :black_small_square: [Principled Hair BSDF](shader_cross_reference.md#principled-hair-bsdf) :black_small_square: [Principled Volume](shader_cross_reference.md#principled-volume)
-- **R** : [Ray Portal BSDF](shader_cross_reference.md#ray-portal-bsdf) :black_small_square: [Refraction BSDF](shader_cross_reference.md#refraction-bsdf) :black_small_square: [RGB](shader_cross_reference.md#rgb) :black_small_square: [RGB to BW](shader_cross_reference.md#rgb-to-bw)
+- **P** : [Principled BSDF](shader_cross_reference.md#principled-bsdf) :black_small_square: [Principled Hair BSDF](shader_cross_reference.md#principled-hair-bsdf) :black_small_square: [Principled Volume](shader_cross_reference.md#principled-volume)
+- **R** : [Ray Portal BSDF](shader_cross_reference.md#ray-portal-bsdf) :black_small_square: [Refraction BSDF](shader_cross_reference.md#refraction-bsdf) :black_small_square: [RGB to BW](shader_cross_reference.md#rgb-to-bw)
 - **S** : [Separate Color](shader_cross_reference.md#separate-color) :black_small_square: [Shader to RGB](shader_cross_reference.md#shader-to-rgb) :black_small_square: [Sheen BSDF](shader_cross_reference.md#sheen-bsdf) :black_small_square: [Sky Texture](shader_cross_reference.md#sky-texture) :black_small_square: [Specular BSDF](shader_cross_reference.md#specular-bsdf) :black_small_square: [Subsurface Scattering](shader_cross_reference.md#subsurface-scattering)
 - **T** : [Tangent](shader_cross_reference.md#tangent) :black_small_square: [to Euler](shader_cross_reference.md#to-euler) :black_small_square: [Toon BSDF](shader_cross_reference.md#toon-bsdf) :black_small_square: [Translucent BSDF](shader_cross_reference.md#translucent-bsdf) :black_small_square: [Transparent BSDF](shader_cross_reference.md#transparent-bsdf)
 - **U** : [UV Map](shader_cross_reference.md#uv-map)
-- **V** : [Vector Displacement](shader_cross_reference.md#vector-displacement) :black_small_square: [Vector Transform](shader_cross_reference.md#vector-transform) :black_small_square: [Volume Absorption](shader_cross_reference.md#volume-absorption) :black_small_square: [Volume Info](shader_cross_reference.md#volume-info) :black_small_square: [Volume Scatter](shader_cross_reference.md#volume-scatter)
+- **V** : [Vector Displacement](shader_cross_reference.md#vector-displacement) :black_small_square: [Vector Transform](shader_cross_reference.md#vector-transform) :black_small_square: [Volume Absorption](shader_cross_reference.md#volume-absorption) :black_small_square: [Volume Scatter](shader_cross_reference.md#volume-scatter)
 - **W** : [Wavelength](shader_cross_reference.md#wavelength) :black_small_square: [Wireframe](shader_cross_reference.md#wireframe) :black_small_square: [World Output](shader_cross_reference.md#world-output)
 
 #### &Material Output
@@ -131,10 +131,6 @@ You will find here how nodes are implemented
 
 - [Vector](vector.md#vector) :white_small_square: [image_texture](vector.md#image_texture)
 
-#### Input
-
-- [Tree](tree.md#tree) :white_small_square: [new_input](tree.md#new_input)
-
 #### Invert Color
 
 - [Color](color.md#color) :white_small_square: [invert](color.md#invert)
@@ -185,11 +181,7 @@ You will find here how nodes are implemented
 
 #### Output
 
-- [Tree](tree.md#tree) :white_small_square: [new_output](tree.md#new_output)
-
-#### Point Density
-
-- [Vector](vector.md#vector) :white_small_square: [point_density](vector.md#point_density)
+- [Tree](tree.md#tree) :white_small_square: [create_output_socket_OLD](tree.md#create_output_socket_old)
 
 #### Principled BSDF
 
@@ -210,10 +202,6 @@ You will find here how nodes are implemented
 #### Refraction BSDF
 
 - [Shader](shader.md#shader) :white_small_square: [Refraction](shader.md#refraction)
-
-#### RGB
-
-- [Color](color.md#color) :white_small_square: [RGB](color.md#rgb)
 
 #### RGB to BW
 
@@ -286,10 +274,6 @@ You will find here how nodes are implemented
 #### Volume Absorption
 
 - [VolumeShader](volumeshader.md#volumeshader) :white_small_square: [Absorption](volumeshader.md#absorption)
-
-#### Volume Info
-
-- [VolumeShader](volumeshader.md#volumeshader) :white_small_square: [info](volumeshader.md#info)
 
 #### Volume Scatter
 

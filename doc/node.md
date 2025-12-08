@@ -1,117 +1,58 @@
 # Node
 
 ``` python
-Node(node_name, sockets={}, _items={}, link_from=None, **parameters)
+Node(node_name: str, named_sockets: dict = {}, **parameters)
 ```
 
 Node wrapper.
 
- The node wrapper exposes input and output sockets and the node parameters.
- At creation time, input sockets are initialized with a dict using their name as key ;
- parameters are initialized as keyword arguments:
+A node can have dynamic sockets in two ways:
+- _has_items : with an items collection
+- _use_interface : with a NodeTree
 
- > [!NOTE]
- > The most often, the name of the socket can be used as key in the initialization dict.
- > But in some cases, this doesn't apply:
- > - Several sockets can share the same names (example: 'Math' node has two 'Value' input socket)
- > - Display name is different from the python name (example: 'Math' node, operation 'COMPARE', actual name
- >   of 'Epsilon' socket is 'Value')
+Attributes
+----------
+- _tree (bpy.types.NodeTree): the tree the node belongs to
+- _bnode (bpy.types.Node): the Blender wrapped Node
+- _has_dyn_in (bool) : able to create dynamic input sockets
+- _has_dyn_out (bool) : able to create dynamic output sockets
+- _has_items (bool) : has at least one collection of dynamic items
+- _items (dict['INPUT', 'OUTPUT']) : items collections or None
+- _use_interface (bool) : the node dynamic sockets are managed with a NodeTree interface
+- _interface (TreeInterface) : interface of the node if it exists
+_ _interface_in_out (dict['INPUT', 'OUTPUT']) : in_out argument to access the Tree
+- _is_paired_input (bool) : the node is the input node of a zone of paired nodes
+- _is_paired_output (bool) : the node is the output node of a zone of paired nodes
+- _paired_input_node (Node) : paired input node
+- _paired_output_node (Node) : paired output node
 
- In order to to handle these specific cases, the dict keys can be:
- - The index of the socket in the list
- - The 'identifier' of the socket
+> [!NOTE]
+> NodeTree interface is used for Group Input and Output nodes and for Group node.
+> - Group Node : the input sockets are interface sockets for the TreeNode
+> - Group Input Node : the output sockets are input sockets of the interface
+> - Group Output Node : the input sockets are output sockets of the interface
 
- When the sockets are initialized in there order, the values can be passed
- as a list rather than as a dict.
-
- ``` python
- with GeoNodes("Node initialization"):
-
-     # Dict syntax to create a circle
-     node = Node("Mesh Circle", {'Vertices': 32, 'Radius': 1.}, fill_type='NGON')
-
-     # Dict syntax using the socket identifier as key on a node with homonym sockets
-     node = Node("Math", {'Value': 2, 'Value_001': 2}, operation='ADD')
-
-     # Dict key words can be socket index
-     node = Node("Math", {0: 2, 1: 2}, operation='ADD')
-
-     # A list of values can be used to initialize the sockets in the order they appear
-     # Epsilon is initialized to .1
-     node = Node("Math", [2., 2., .1], operation='COMPARE')
- ```
-
- Once initialized, the sockets can be accessed either as list items keyed by the sockets name,
- index or identifier or as node attribute using their snake case name.
-
- > [!IMPORTANT]
- > Setting and getting a socket:
- > - **Setting** a node socket is interpretated as plugging a value into an **input socket**
- > - **Getting** a node socket is interpretated as getting an **output socket**
-
- ``` python
- with GeoNodes("Getting and setting node sockets"):
-
-     # Input geometry socket
-     geo = Geometry()
-
-     # Create the node
-     node = Node("Extrude Mesh")
-
-     # Change the parameter
-     node.mode = 'EDGES'
-
-     # Plug 'Geometry' socket with list item syntax
-     node["Mesh"] = geo
-
-     # Plug 'Selection' socket with ordered list syntax
-     node["Selection"] = Boolean(True)
-
-     # Plug 'Offset Scale' with snake case syntax
-     node.offset_scale = 0.5
-
-     # Read the output geometry : snake case syntax
-     extruded_geo = node.mesh
-
-     # Read the top selection : list syntax
-     top_selection = node["Top"]
-
-     # Read the side selection : index list syntax
-     side_selection = node[2]
-
-     # Use the sockets in another node
-     top_selection |= side_selection
-
-     # Connect to the group output geometry
-     extruded_geo.out()
- ```
-
- > [!NOTE]
+> [!NOTE]
 >  The '_out' property returns the first enabled output socket
 
- Arguments
- ---------
- - node_name (str) : Node name
- - sockets (dict or list) : initialization values for the node input sockets
- - _items (dict = {}) : dynamic sockets to create
- - link_with (node | dict = None) : node to link into this tree (see [link_from](node.md#link_from))
- - **kwargs : node parameters initialization
-
 #### Arguments:
-- **node_name**
-- **sockets** ( = {})
-- **_items** ( = {})
-- **link_from** ( = None)
-- **parameters**
+- **node_name** (_str_) : Node name
+- **named_sockets** (_dict_ = {}) : initialization values for the node input sockets
+- **parameters** : node parameters and sockets
+
+### Inherited
+
+['_bnode' not found]() :black_small_square: ['_has_dyn_in' not found]() :black_small_square: ['_has_dyn_out' not found]() :black_small_square: ['_has_items' not found]() :black_small_square: ['_inputs' not found]() :black_small_square: ['_interface' not found]() :black_small_square: ['_interface_in_out' not found]() :black_small_square: ['_is_paired_input' not found]() :black_small_square: ['_is_paired_output' not found]() :black_small_square: ['_items' not found]() :black_small_square: ['_outputs' not found]() :black_small_square: ['_paired_input_node' not found]() :black_small_square: ['_paired_output_node' not found]() :black_small_square: ['_tree' not found]() :black_small_square: ['_use_interface' not found]() :black_small_square:
 
 ## Content
 
-- [by_name](node.md#by_name)
-- [get_socket_names](node.md#get_socket_names)
-- [identified_bsockets](node.md#identified_bsockets)
-- [\_\_init__](node.md#__init__)
-- [link_from](node.md#link_from)
-- [\_out](node.md#_out)
+- **C** : [create_from_socket](node.md#create_from_socket) :black_small_square: [create_socket](node.md#create_socket)
+- **G** : [get_signature](node.md#get_signature) :black_small_square: [get_socket](node.md#get_socket) :black_small_square: [get_sockets](node.md#get_sockets)
+- **I** : [\_\_init__](node.md#__init__)
+- **L** : [link_inputs](node.md#link_inputs) :black_small_square: [link_outputs](node.md#link_outputs)
+- **O** : [\_out](node.md#_out) :black_small_square: [out](node.md#out)
+- **S** : [set_input_socket](node.md#set_input_socket) :black_small_square: [set_signature](node.md#set_signature) :black_small_square: [socket_by_index](node.md#socket_by_index) :black_small_square: [socket_by_name](node.md#socket_by_name)
+- **U** : [\_update](node.md#_update)
 
 ## Properties
 
@@ -131,84 +72,139 @@ Returns the first enabled output socket.
 
 
 ----------
-### by_name()
+### create_from_socket()
 
 > method
 
 ``` python
-by_name(in_out, name, enabled_only=True, as_argument=True, candidates=False, halt=True)
+create_from_socket(in_out: Literal['INPUT', 'OUTPUT'], socket: geonodes.core.nodeclass.Socket, name: str = None, panel: str = '', **props) -> geonodes.core.nodeclass.Socket
 ```
 
-Get a socket by its name
+Create a new socket from a socket and link them
+
+#### Raises:
+- **NodeError** : 
+
+
 
 #### Arguments:
-- **in_out** (_str_) : str in ('INPUT', 'OUTPUT')
-- **name** (_str_) : searched named
-- **enabled_only** (_bool_ = True) : consider only enabled sockets
-- **as_argument** (_bool_ = True) : the name is argument or socket name
-- **candidates** (_bool_ = False) : return all matching names (True) or the first one (False)
+- **in_out** (_Literal_) : input or output socket
+- **socket** (_Socket_) : socket to create from
+- **name** (_str_ = None)
+- **panel** (_str_ = ) : creation panel
+- **props** (_dict_) : additional properties
+
+
+
+#### Returns:
+- **Socket** : the created socket
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Node](node.md#node) :black_small_square: [Content](node.md#content) :black_small_square: [Methods](node.md#methods)</sub>
+
+----------
+### create_socket()
+
+> method
+
+``` python
+create_socket(in_out: Literal['INPUT', 'OUTPUT'], socket_type: str | geonodes.core.sockettype.SocketType, name: str, panel: str = '', **props) -> geonodes.core.nodeclass.Socket
+```
+
+Create a new socket.
+
+#### Raises:
+- **NodeError** : 
+
+
+
+#### Arguments:
+- **in_out** (_Literal_) : input or output socket
+- **socket_type** (_str | geonodes.core.sockettype.SocketType_) : type of socket to create
+- **name** (_str_)
+- **panel** (_str_ = ) : creation panel
+- **props** (_dict_) : additional properties
+
+
+
+#### Returns:
+- **Socket** (_output_) : the created socket
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Node](node.md#node) :black_small_square: [Content](node.md#content) :black_small_square: [Methods](node.md#methods)</sub>
+
+----------
+### get_signature()
+
+> method
+
+``` python
+get_signature(include: list = None, exclude: list = [], enabled_only: bool = False, free_only: bool = False, with_sockets: bool = False) -> geonodes.core.signature.Signature
+```
+
+Build the signature of the node.
+
+#### Arguments:
+- **include** (_list_ = None) : sockets to include
+- **exclude** (_list_ = []) : sockets to exclude
+- **enabled_only** (_bool_ = False) : (bool = True) : ignore disabled sockets
+- **free_only** (_bool_ = False) : (bool = False) : ignore linked sockets
+- **with_sockets** (_bool_ = False)
+
+
+
+#### Returns:
+- **Signature** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Node](node.md#node) :black_small_square: [Content](node.md#content) :black_small_square: [Methods](node.md#methods)</sub>
+
+----------
+### get_socket()
+
+> method
+
+``` python
+get_socket(in_out: Literal['INPUT', 'OUTPUT'], something: str | int | geonodes.core.nodeclass.Socket, socket_type: str, enabled_only: bool = True, free_only: bool = False, halt: bool = True) -> geonodes.core.nodeclass.Socket
+```
+
+Get a socket by a reference
+
+#### Arguments:
+- **in_out** (_Literal_) : input or output sockets
+- **something** (_str | int | geonodes.core.nodeclass.Socket_) : socket index, name, identifier or the socket itself
+- **socket_type** (_str_) : socket type
+- **enabled_only** (_bool_ = True) : (bool = True) : ignore disabled sockets
+- **free_only** (_bool_ = False) : ignore linked sockets
 - **halt** (_bool_ = True) : raises an error if not found
 
 
 
 #### Returns:
-- **Node** :
+- **Socket** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Node](node.md#node) :black_small_square: [Content](node.md#content) :black_small_square: [Methods](node.md#methods)</sub>
 
 ----------
-### get_socket_names()
+### get_sockets()
 
 > method
 
 ``` python
-get_socket_names(in_out, enabled_only=True, as_argument=True)
+get_sockets(in_out: Literal['INPUT', 'OUTPUT'], include: list = None, exclude: list = [], enabled_only: bool = True, free_only: bool = False, panel: str = '') -> list[str, geonodes.core.nodeclass.Socket]
 ```
 
-Build a dictionary keyed by the socket unique names
-
-The possible names are:
-- socket name
-- snake case version of the name
-
-These names are combined with the panel name:
-- panel name.socket name
-- snake case version of this path
-
-Once built, the homonyms are made unique by suffixing its order
+Build a list of sockets.
 
 #### Arguments:
-- **in_out** : str in ('INPUT', 'OUTPUT')
-- **enabled_only** ( = True) : use only enabled sockets
-- **as_argument** ( = True)
+- **in_out** (_Literal_) : input or output sockets
+- **include** (_list_ = None) : sockets to include
+- **exclude** (_list_ = []) : sockets to exclude
+- **enabled_only** (_bool_ = True) : (bool = True) : ignore disabled sockets
+- **free_only** (_bool_ = False) : (bool = False) : ignore linked sockets
+- **panel** (_str_ = )
 
 
 
 #### Returns:
-- **dict** : socket identifier -> list of possible names
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Node](node.md#node) :black_small_square: [Content](node.md#content) :black_small_square: [Methods](node.md#methods)</sub>
-
-----------
-### identified_bsockets()
-
-> method
-
-``` python
-identified_bsockets(in_out, names=None)
-```
-
-Returns a list of socket identifiers from names
-
-Names can be a list of socket names, arguments or identifiers
-if names is None, returns all the sockets
-
-It can also contain panel name. In that case, it includes all the socket
-within the panel.
-
-#### Arguments:
-- **in_out** (_str_) : str in ('INPUT', 'OUTPUT')
-- **names** (_list of strs_ = None) : the names to convert
+- **list** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Node](node.md#node) :black_small_square: [Content](node.md#content) :black_small_square: [Methods](node.md#methods)</sub>
 
@@ -218,182 +214,243 @@ within the panel.
 > method
 
 ``` python
-__init__(node_name, sockets={}, _items={}, link_from=None, **parameters)
+__init__(node_name: str, named_sockets: dict = {}, **parameters)
 ```
 
 Node wrapper.
 
- The node wrapper exposes input and output sockets and the node parameters.
- At creation time, input sockets are initialized with a dict using their name as key ;
- parameters are initialized as keyword arguments:
+A node can have dynamic sockets in two ways:
+- _has_items : with an items collection
+- _use_interface : with a NodeTree
 
- > [!NOTE]
- > The most often, the name of the socket can be used as key in the initialization dict.
- > But in some cases, this doesn't apply:
- > - Several sockets can share the same names (example: 'Math' node has two 'Value' input socket)
- > - Display name is different from the python name (example: 'Math' node, operation 'COMPARE', actual name
- >   of 'Epsilon' socket is 'Value')
+Attributes
+----------
+- _tree (bpy.types.NodeTree): the tree the node belongs to
+- _bnode (bpy.types.Node): the Blender wrapped Node
+- _has_dyn_in (bool) : able to create dynamic input sockets
+- _has_dyn_out (bool) : able to create dynamic output sockets
+- _has_items (bool) : has at least one collection of dynamic items
+- _items (dict['INPUT', 'OUTPUT']) : items collections or None
+- _use_interface (bool) : the node dynamic sockets are managed with a NodeTree interface
+- _interface (TreeInterface) : interface of the node if it exists
+_ _interface_in_out (dict['INPUT', 'OUTPUT']) : in_out argument to access the Tree
+- _is_paired_input (bool) : the node is the input node of a zone of paired nodes
+- _is_paired_output (bool) : the node is the output node of a zone of paired nodes
+- _paired_input_node (Node) : paired input node
+- _paired_output_node (Node) : paired output node
 
- In order to to handle these specific cases, the dict keys can be:
- - The index of the socket in the list
- - The 'identifier' of the socket
+> [!NOTE]
+> NodeTree interface is used for Group Input and Output nodes and for Group node.
+> - Group Node : the input sockets are interface sockets for the TreeNode
+> - Group Input Node : the output sockets are input sockets of the interface
+> - Group Output Node : the input sockets are output sockets of the interface
 
- When the sockets are initialized in there order, the values can be passed
- as a list rather than as a dict.
-
- ``` python
- with GeoNodes("Node initialization"):
-
-     # Dict syntax to create a circle
-     node = Node("Mesh Circle", {'Vertices': 32, 'Radius': 1.}, fill_type='NGON')
-
-     # Dict syntax using the socket identifier as key on a node with homonym sockets
-     node = Node("Math", {'Value': 2, 'Value_001': 2}, operation='ADD')
-
-     # Dict key words can be socket index
-     node = Node("Math", {0: 2, 1: 2}, operation='ADD')
-
-     # A list of values can be used to initialize the sockets in the order they appear
-     # Epsilon is initialized to .1
-     node = Node("Math", [2., 2., .1], operation='COMPARE')
- ```
-
- Once initialized, the sockets can be accessed either as list items keyed by the sockets name,
- index or identifier or as node attribute using their snake case name.
-
- > [!IMPORTANT]
- > Setting and getting a socket:
- > - **Setting** a node socket is interpretated as plugging a value into an **input socket**
- > - **Getting** a node socket is interpretated as getting an **output socket**
-
- ``` python
- with GeoNodes("Getting and setting node sockets"):
-
-     # Input geometry socket
-     geo = Geometry()
-
-     # Create the node
-     node = Node("Extrude Mesh")
-
-     # Change the parameter
-     node.mode = 'EDGES'
-
-     # Plug 'Geometry' socket with list item syntax
-     node["Mesh"] = geo
-
-     # Plug 'Selection' socket with ordered list syntax
-     node["Selection"] = Boolean(True)
-
-     # Plug 'Offset Scale' with snake case syntax
-     node.offset_scale = 0.5
-
-     # Read the output geometry : snake case syntax
-     extruded_geo = node.mesh
-
-     # Read the top selection : list syntax
-     top_selection = node["Top"]
-
-     # Read the side selection : index list syntax
-     side_selection = node[2]
-
-     # Use the sockets in another node
-     top_selection |= side_selection
-
-     # Connect to the group output geometry
-     extruded_geo.out()
- ```
-
- > [!NOTE]
+> [!NOTE]
 >  The '_out' property returns the first enabled output socket
 
- Arguments
- ---------
- - node_name (str) : Node name
- - sockets (dict or list) : initialization values for the node input sockets
- - _items (dict = {}) : dynamic sockets to create
- - link_with (node | dict = None) : node to link into this tree (see [link_from](node.md#link_from))
- - **kwargs : node parameters initialization
-
 #### Arguments:
-- **node_name**
-- **sockets** ( = {})
-- **_items** ( = {})
-- **link_from** ( = None)
-- **parameters**
+- **node_name** (_str_) : Node name
+- **named_sockets** (_dict_ = {}) : initialization values for the node input sockets
+- **parameters** : node parameters and sockets
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Node](node.md#node) :black_small_square: [Content](node.md#content) :black_small_square: [Methods](node.md#methods)</sub>
 
 ----------
-### link_from()
+### link_inputs()
 
 > method
 
 ``` python
-link_from(node: 'Node | Tree | None | str' = 'TREE', include: list[str] | str | None = None, exclude: list[str] | str = [], arguments: dict[slice('name', 'value', None)] = {}, create: bool = True, panel: str = '')
+link_inputs(from_node: geonodes.core.nodeclass.Node, from_panel: str = '', *, include: list = None, exclude: list = [], panel: str = '')
 ```
 
-Plug the output sockets of a node into the input sockets of the node.
+Link input socket from another node
 
-This method is used to connect several sockets in a compact syntax.
+if from_node is None, the current input node is taken.
+Input sockets already linked are ignored
 
-If the node argument is None, the sockets are created in the Group Input node.
-Use 'include', 'exclude' and 'rename' arguments to control the connexions.
-
-> [!NOTE]
-> This function is called when initializing a node if the `link_from` argument is not None.
-> In that case, `link_argument` value is either the `node` argument or a dictionnary
-> of the `link_from` method arguments:
-
-``` python
-with GeoNodes("Connect several sockets"):
-
-    # Node with 'Value' output socket
-    a = Node("Grid")
-
-    # Create Group inputs to feed the node
-    # 'Size X' and 'Size Y' are created in the group input not
-    # 'Vertices X' and 'Vertices Y' are connected to the same 'Vertices' which is created
-    a.link_from(rename={'Vertices X': 'Vertices', 'Vertices Y': 'Vertices'})
-
-    a = Node("Math")
-
-    # Connect the 'Value' output socket to the 'Value' input socket
-    # The third socket is exclude by its index
-    # Input values are renamed 'First' and 'Second'
-    a.link_from(exclude=2, rename={'Value': 'First', 'Value_001': 'Second'})
-
-    b = Node("Math", operation='SQRT')
-
-    # Plug the previous math node on a single socket
-    b.link_from(a, include='Value')
-
-# Call this method when creating a group
-# Note: the previous Group is called using functional syntax with G class
-
-with GeoNodes("Create default"):
-
-    # Create the sockets in the input and connect them to Group input
-
-    a = G.connect_several_sockets(link_from='TREE')
-
-with GeoNodes("Create selection"):
-
-    # Create the sockets in the input and connect them to Group input
-
-    a = G.connect_several_sockets(link_from={'exclude': ["Size X", "Size Y"], 'rename': {"Vertices": "Count"}})
-```
+If from node is able to create output sockets, they are created, otherwise only the sockets
+with matchin names and types are linked.
 
 #### Arguments:
-- **node** (_Node | Tree | None | str_ = TREE) : the node to get the outputs from. Use Group Input node if None
-- **include** (_list[str] | str | None_ = None) : connects only the sockets in the list
-- **exclude** (_list[str] | str_ = []) : exclude sockets in this list
-- **arguments** (_dict_ = {}) : arguments used at initialization time. Arguments which are defined in the list are ignored
-- **create** (_bool_ = True) : create the output sockets in node if it is a 'Group Input Node'
-- **panel** (_str_ = ) : panel name to create, use tree default name if None
+- **from_node** (_Node_) : node to get output sockets from
+- **from_panel** (_str_ = ) : the panel to use in from_node
+- **include** (_list_ = None) : sockets to include
+- **exclude** (_list_ = []) : sockets to exclude
+- **panel** (_str_ = ) : panel to select input socket in
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Node](node.md#node) :black_small_square: [Content](node.md#content) :black_small_square: [Methods](node.md#methods)</sub>
+
+----------
+### link_outputs()
+
+> method
+
+``` python
+link_outputs(to_node: geonodes.core.nodeclass.Node, to_panel: str = '', *, include: list = None, exclude: list = [], panel: str = '')
+```
+
+Link output socket to another node
+
+if to_node is None, the current output node is taken.
+
+If from node is able to create output sockets, they are created, otherwise only the sockets
+with matchin names and types are linked.
+
+#### Arguments:
+- **to_node** (_Node_) : node to plug into
+- **to_panel** (_str_ = ) : the panel to use in to_node
+- **include** (_list_ = None) : sockets to include
+- **exclude** (_list_ = []) : sockets to exclude
+- **panel** (_str_ = ) : panel to select input socket in
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Node](node.md#node) :black_small_square: [Content](node.md#content) :black_small_square: [Methods](node.md#methods)</sub>
+
+----------
+### out()
+
+> method
+
+``` python
+out(panel: str = '')
+```
+
+Plug the output sockets to the current tree output.
+
+#### Arguments:
+- **panel** (_str_ = ) : panel to use
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Node](node.md#node) :black_small_square: [Content](node.md#content) :black_small_square: [Methods](node.md#methods)</sub>
+
+----------
+### set_input_socket()
+
+> method
+
+``` python
+set_input_socket(name: str | int, value: Any, create: bool = True, panel: str = '', **props)
+```
+
+Set a value to an input socket.
+
+If name is None (for instance when called by Socket.out()):
+- The first free input socket of the proper type is chosen
+- If not found, a socket is created when possible
+
+#### Raises:
+- **AttributeError** : 
+
+
+
+#### Arguments:
+- **name** (_str | int_) : socket name of socket index
+- **value** (_Any_) : value to set to the socket
+- **create** (_bool_ = True) : create the value (only for node with dynamic input sockets)
+- **panel** (_str_ = ) : creation panel
+- **props** (_dict_) : additional properties (ignored)
 
 
 
 #### Returns:
-- **Node** : self
+- **The** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Node](node.md#node) :black_small_square: [Content](node.md#content) :black_small_square: [Methods](node.md#methods)</sub>
+
+----------
+### set_signature()
+
+> method
+
+``` python
+set_signature(in_out: Literal['INPUT', 'OUTPUT', 'BOTH'], signature: geonodes.core.signature.Signature, panel: str = '')
+```
+
+Set the signature .
+
+#### Arguments:
+- **in_out** (_Literal_) : input or output sockets or both
+- **signature** (_Signature_) : the signature to apply
+- **panel** (_str_ = ) : the panel where to create the sockets
+
+
+
+#### Returns:
+- **dict** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Node](node.md#node) :black_small_square: [Content](node.md#content) :black_small_square: [Methods](node.md#methods)</sub>
+
+----------
+### socket_by_index()
+
+> method
+
+``` python
+socket_by_index(in_out: Literal['INPUT', 'OUTPUT'], index: int, enabled_only: bool = True) -> geonodes.core.nodeclass.Socket
+```
+
+Get a socket by its index
+
+#### Raises:
+- **IndexError** : 
+
+
+
+#### Arguments:
+- **in_out** (_Literal_) : input or output sockets
+- **index** (_int_) : socket index
+- **enabled_only** (_bool_ = True) : (bool = True) : ignore disabled sockets
+
+
+
+#### Returns:
+- **Socket** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Node](node.md#node) :black_small_square: [Content](node.md#content) :black_small_square: [Methods](node.md#methods)</sub>
+
+----------
+### socket_by_name()
+
+> method
+
+``` python
+socket_by_name(in_out: Literal['INPUT', 'OUTPUT'], name: str, socket_type: str, enabled_only: bool = True, free_only: bool = False, halt: bool = True) -> geonodes.core.nodeclass.Socket
+```
+
+Get a socket by its index
+
+Get a socket by its name. Valid names are:
+- The socket name possibly suffixed by its rank (e.g. `value_1` for second socket named Value)
+- The python version
+
+#### Raises:
+- **AttributeError** : 
+
+
+
+#### Arguments:
+- **in_out** (_Literal_) : input or output sockets
+- **name** (_str_) : socket name
+- **socket_type** (_str_) : socket_type
+- **enabled_only** (_bool_ = True) : (bool = True) : ignore disabled sockets
+- **free_only** (_bool_ = False) : ignore linked sockets
+- **halt** (_bool_ = True) : raises an error if not found
+
+
+
+#### Returns:
+- **Socket** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Node](node.md#node) :black_small_square: [Content](node.md#content) :black_small_square: [Methods](node.md#methods)</sub>
+
+----------
+### \_update()
+
+> method
+
+``` python
+_update()
+```
+
+Update node config after changes
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Node](node.md#node) :black_small_square: [Content](node.md#content) :black_small_square: [Methods](node.md#methods)</sub>

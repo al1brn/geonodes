@@ -1,7 +1,7 @@
 # Rotation
 
 ``` python
-Rotation(value=(0.0, 0.0, 0.0), name=None, tip=None, panel='', hide_value=False, hide_in_modifier=False, single_value=False)
+Rotation(value: geonodes.core.socket_class.Socket | tuple = (0, 0, 0), name: str = None, tip: str = '', panel: str = '', optional_label: bool = False, hide_value: bool = False, hide_in_modifier: bool = False, default_attribute: str = '', shape: Literal['AUTO', 'DYNAMIC', 'FIELD', 'SINGLE'] = 'AUTO')
 ```
 
 > Socket of type ROTATION
@@ -23,21 +23,25 @@ rot = Rotation(name="User input").  # Create a new Rotation group input
 ```
 
 #### Arguments:
-- **value** (_tuple of floats or Sockets_ = (0.0, 0.0, 0.0)) : initial value
+- **value** (_geonodes.core.socket_class.Socket | tuple_ = (0, 0, 0)) : initial value
 - **name** (_str_ = None) : Create an Group Input socket with the provided str if not None
-- **tip** (_str_ = None) : User tip (for Group Input sockets)
-- **panel** (_str_ = ) : panel name (overrides tree panel if exists)
-- **hide_value** (_bool_ = False) : Hide Value option
-- **hide_in_modifier** (_bool_ = False) : Hide in Modifier option
-- **single_value** (_bool_ = False) : Single Value option
+- **tip** (_str_ = ) : Property description
+- **panel** (_str_ = ) : Panel name
+- **optional_label** (_bool_ = False) : Property optional_label
+- **hide_value** (_bool_ = False) : Property hide_value
+- **hide_in_modifier** (_bool_ = False) : Property hide_in_modifier
+- **default_attribute** (_str_ = ) : Property default_attribute_name
+- **shape** (_Literal_ = AUTO) : Property structure_type in ('AUTO', 'DYNAMIC', 'FIELD', 'SINGLE')
 
 ### Inherited
 
-[\_cache](nodecache.md#_cache) :black_small_square: [\_cache_reset](nodecache.md#_cache_reset) :black_small_square: [check_in_list](socket.md#check_in_list) :black_small_square: [data_type](socket.md#data_type) :black_small_square: [\_domain_to_geometry](socket.md#_domain_to_geometry) :black_small_square: [\_geometry_class](socket.md#_geometry_class) :black_small_square: [\_\_getattr__](socket.md#__getattr__) :black_small_square: [get_node_data_type](socket.md#get_node_data_type) :black_small_square: [get_socket_class](socket.md#get_socket_class) :black_small_square: [IndexSwitch](socket.md#indexswitch) :black_small_square: [index_switch](socket.md#index_switch) :black_small_square: [Input](socket.md#input) :black_small_square: [input_type](socket.md#input_type) :black_small_square: [\_interface_socket](socket.md#_interface_socket) :black_small_square: [\_is_group_input](socket.md#_is_group_input) :black_small_square: [\_is_group_output](socket.md#_is_group_output) :black_small_square: [\_is_group_socket](socket.md#_is_group_socket) :black_small_square: [\_jump](socket.md#_jump) :black_small_square: [\_lc](socket.md#_lc) :black_small_square: [\_lcop](socket.md#_lcop) :black_small_square: [link_from](socket.md#link_from) :black_small_square: [\_lock](proplocker.md#_lock) :black_small_square: [\_mark_for_delete](socket.md#_mark_for_delete) :black_small_square: [MenuSwitch](socket.md#menuswitch) :black_small_square: [menu_switch](socket.md#menu_switch) :black_small_square: [\_name](socket.md#_name) :black_small_square: [node](socket.md#node) :black_small_square: [node_color](socket.md#node_color) :black_small_square: [node_label](socket.md#node_label) :black_small_square: [option](socket.md#option) :black_small_square: [option_index](socket.md#option_index) :black_small_square: [out](socket.md#out) :black_small_square: [\_panel_name](socket.md#_panel_name) :black_small_square: [pin_gizmo](socket.md#pin_gizmo) :black_small_square: [\_reset](socket.md#_reset) :black_small_square: [\_run_tests](socket.md#_run_tests) :black_small_square: [\_\_setattr__](socket.md#__setattr__) :black_small_square: [\_set_interface_property](socket.md#_set_interface_property) :black_small_square: [socket_type](socket.md#socket_type) :black_small_square: [\_\_str__](socket.md#__str__) :black_small_square: [Switch](socket.md#switch) :black_small_square: [switch](socket.md#switch) :black_small_square: [switch_false](socket.md#switch_false) :black_small_square: [\_unlock](proplocker.md#_unlock) :black_small_square:
+['_bsocket' not found]() :black_small_square: [\_cache](nodecache.md#_cache) :black_small_square: ['_cached_nodes' not found]() :black_small_square: [\_cache_reset](nodecache.md#_cache_reset) :black_small_square: [check_in_list](core-socke-socket.md#check_in_list) :black_small_square: [\_classes_test](core-socke-socket.md#_classes_test) :black_small_square: [default_value](core-socke-socket.md#default_value) :black_small_square: [\_domain_to_geometry](core-socke-socket.md#_domain_to_geometry) :black_small_square: [\_\_enter__](core-socke-socket.md#__enter__) :black_small_square: [\_\_exit__](core-socke-socket.md#__exit__) :black_small_square: [\_\_getattr__](core-socke-socket.md#__getattr__) :black_small_square: [IndexSwitch](core-socke-socket.md#indexswitch) :black_small_square: [index_switch](core-socke-socket.md#index_switch) :black_small_square: [Input](core-socke-socket.md#input) :black_small_square: [\_interface_socket](core-socke-socket.md#_interface_socket) :black_small_square: [is_grid](core-socke-socket.md#is_grid) :black_small_square: [\_jump](core-socke-socket.md#_jump) :black_small_square: ['_layout' not found]() :black_small_square: [\_lc](core-socke-socket.md#_lc) :black_small_square: [\_lcop](core-socke-socket.md#_lcop) :black_small_square: [link_from](core-socke-socket.md#link_from) :black_small_square: [MenuSwitch](core-socke-socket.md#menuswitch) :black_small_square: [menu_switch](core-socke-socket.md#menu_switch) :black_small_square: [\_name](core-socke-socket.md#_name) :black_small_square: [node](core-socke-socket.md#node) :black_small_square: [node_color](core-socke-socket.md#node_color) :black_small_square: [node_label](core-socke-socket.md#node_label) :black_small_square: [out](core-socke-socket.md#out) :black_small_square: [\_panel_name](core-socke-socket.md#_panel_name) :black_small_square: [pin_gizmo](core-socke-socket.md#pin_gizmo) :black_small_square: [\_pop](core-socke-socket.md#_pop) :black_small_square: [\_push](core-socke-socket.md#_push) :black_small_square: [repeat](core-socke-socket.md#repeat) :black_small_square: [\_reset](core-socke-socket.md#_reset) :black_small_square: [simulation](core-socke-socket.md#simulation) :black_small_square: ['_socket_type' not found]() :black_small_square: [\_\_str__](core-socke-socket.md#__str__) :black_small_square: [Switch](core-socke-socket.md#switch) :black_small_square: [switch](core-socke-socket.md#switch) :black_small_square: [switch_false](core-socke-socket.md#switch_false) :black_small_square: ['_tree' not found]() :black_small_square: ['_use_layout' not found]() :black_small_square:
 
 ## Content
 
-- **A** : [AlignToVector](rotation.md#aligntovector) :black_small_square: [align_toVector](rotation.md#align_tovector) :black_small_square: [AlignXToVector](rotation.md#alignxtovector) :black_small_square: [align_x_to_vector](rotation.md#align_x_to_vector) :black_small_square: [AlignYToVector](rotation.md#alignytovector) :black_small_square: [align_y_to_vector](rotation.md#align_y_to_vector) :black_small_square: [AlignZToVector](rotation.md#alignztovector) :black_small_square: [align_z_to_vector](rotation.md#align_z_to_vector) :black_small_square: [axis_angle](rotation.md#axis_angle)
+- **A** : [AlignToVector](rotation.md#aligntovector) :black_small_square: [align_to_vector](rotation.md#align_to_vector) :black_small_square: [AlignXToVector](rotation.md#alignxtovector) :black_small_square: [align_x_to_vector](rotation.md#align_x_to_vector) :black_small_square: [AlignYToVector](rotation.md#alignytovector) :black_small_square: [align_y_to_vector](rotation.md#align_y_to_vector) :black_small_square: [AlignZToVector](rotation.md#alignztovector) :black_small_square: [align_z_to_vector](rotation.md#align_z_to_vector) :black_small_square: [axis_angle](rotation.md#axis_angle)
+- **C** : [\_create_input_socket](rotation.md#_create_input_socket)
+- **E** : [enable_output](rotation.md#enable_output)
 - **F** : [FromAxes](rotation.md#fromaxes) :black_small_square: [FromAxisAngle](rotation.md#fromaxisangle) :black_small_square: [FromEuler](rotation.md#fromeuler) :black_small_square: [FromQuaternion](rotation.md#fromquaternion) :black_small_square: [FromXYAxes](rotation.md#fromxyaxes) :black_small_square: [FromXZAxes](rotation.md#fromxzaxes) :black_small_square: [FromYXAxes](rotation.md#fromyxaxes) :black_small_square: [FromYZAxes](rotation.md#fromyzaxes) :black_small_square: [FromZXAxes](rotation.md#fromzxaxes) :black_small_square: [FromZYAxes](rotation.md#fromzyaxes)
 - **H** : [hash_value](rotation.md#hash_value)
 - **I** : [\_\_init__](rotation.md#__init__) :black_small_square: [invert](rotation.md#invert)
@@ -79,7 +83,7 @@ rot = Rotation(name="User input").  # Create a new Rotation group input
 > classmethod
 
 ``` python
-AlignToVector(vector=None, factor=None, axis='Z', pivot_axis='AUTO')
+AlignToVector(vector: 'Vector' = None, factor: 'Float' = None, axis: "Literal['X', 'Y', 'Z']" = 'Z', pivot_axis: "Literal['AUTO', 'X', 'Y', 'Z']" = 'AUTO')
 ```
 
 > Node [Align Rotation to Vector](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/align_rotation_to_vector.html)
@@ -92,8 +96,8 @@ AlignToVector(vector=None, factor=None, axis='Z', pivot_axis='AUTO')
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
 - **factor** (_Float_ = None) : socket 'Factor' (id: Factor)
-- **axis** (_str_ = Z) : parameter 'axis' in ['X', 'Y', 'Z']
-- **pivot_axis** (_str_ = AUTO) : parameter 'pivot_axis' in ['AUTO', 'X', 'Y', 'Z']
+- **axis** (_Literal['X', 'Y', 'Z']_ = Z) : parameter 'axis' in ['X', 'Y', 'Z']
+- **pivot_axis** (_Literal['AUTO', 'X', 'Y', 'Z']_ = AUTO) : parameter 'pivot_axis' in ['AUTO', 'X', 'Y', 'Z']
 
 
 
@@ -103,12 +107,12 @@ AlignToVector(vector=None, factor=None, axis='Z', pivot_axis='AUTO')
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Rotation](rotation.md#rotation) :black_small_square: [Content](rotation.md#content) :black_small_square: [Methods](rotation.md#methods)</sub>
 
 ----------
-### align_toVector()
+### align_to_vector()
 
 > method
 
 ``` python
-align_toVector(vector=None, factor=None, axis='Z', pivot_axis='AUTO')
+align_to_vector(vector: 'Vector' = None, factor: 'Float' = None, axis: "Literal['X', 'Y', 'Z']" = 'Z', pivot_axis: "Literal['AUTO', 'X', 'Y', 'Z']" = 'AUTO')
 ```
 
 > Node [Align Rotation to Vector](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/align_rotation_to_vector.html)
@@ -121,8 +125,8 @@ align_toVector(vector=None, factor=None, axis='Z', pivot_axis='AUTO')
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
 - **factor** (_Float_ = None) : socket 'Factor' (id: Factor)
-- **axis** (_str_ = Z) : parameter 'axis' in ['X', 'Y', 'Z']
-- **pivot_axis** (_str_ = AUTO) : parameter 'pivot_axis' in ['AUTO', 'X', 'Y', 'Z']
+- **axis** (_Literal['X', 'Y', 'Z']_ = Z) : parameter 'axis' in ['X', 'Y', 'Z']
+- **pivot_axis** (_Literal['AUTO', 'X', 'Y', 'Z']_ = AUTO) : parameter 'pivot_axis' in ['AUTO', 'X', 'Y', 'Z']
 
 
 
@@ -137,7 +141,7 @@ align_toVector(vector=None, factor=None, axis='Z', pivot_axis='AUTO')
 > classmethod
 
 ``` python
-AlignXToVector(vector=None, factor=None, pivot_axis='AUTO')
+AlignXToVector(vector: 'Vector' = None, factor: 'Float' = None, pivot_axis: "Literal['AUTO', 'X', 'Y', 'Z']" = 'AUTO')
 ```
 
 > Node [Align Rotation to Vector](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/align_rotation_to_vector.html)
@@ -151,7 +155,7 @@ AlignXToVector(vector=None, factor=None, pivot_axis='AUTO')
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
 - **factor** (_Float_ = None) : socket 'Factor' (id: Factor)
-- **pivot_axis** (_str_ = AUTO) : parameter 'pivot_axis' in ['AUTO', 'X', 'Y', 'Z']
+- **pivot_axis** (_Literal['AUTO', 'X', 'Y', 'Z']_ = AUTO) : parameter 'pivot_axis' in ['AUTO', 'X', 'Y', 'Z']
 
 
 
@@ -166,7 +170,7 @@ AlignXToVector(vector=None, factor=None, pivot_axis='AUTO')
 > method
 
 ``` python
-align_x_to_vector(vector=None, factor=None, pivot_axis='AUTO')
+align_x_to_vector(vector: 'Vector' = None, factor: 'Float' = None, pivot_axis: "Literal['AUTO', 'X', 'Y', 'Z']" = 'AUTO')
 ```
 
 > Node [Align Rotation to Vector](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/align_rotation_to_vector.html)
@@ -180,7 +184,7 @@ align_x_to_vector(vector=None, factor=None, pivot_axis='AUTO')
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
 - **factor** (_Float_ = None) : socket 'Factor' (id: Factor)
-- **pivot_axis** (_str_ = AUTO) : parameter 'pivot_axis' in ['AUTO', 'X', 'Y', 'Z']
+- **pivot_axis** (_Literal['AUTO', 'X', 'Y', 'Z']_ = AUTO) : parameter 'pivot_axis' in ['AUTO', 'X', 'Y', 'Z']
 
 
 
@@ -195,7 +199,7 @@ align_x_to_vector(vector=None, factor=None, pivot_axis='AUTO')
 > classmethod
 
 ``` python
-AlignYToVector(vector=None, factor=None, pivot_axis='AUTO')
+AlignYToVector(vector: 'Vector' = None, factor: 'Float' = None, pivot_axis: "Literal['AUTO', 'X', 'Y', 'Z']" = 'AUTO')
 ```
 
 > Node [Align Rotation to Vector](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/align_rotation_to_vector.html)
@@ -209,7 +213,7 @@ AlignYToVector(vector=None, factor=None, pivot_axis='AUTO')
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
 - **factor** (_Float_ = None) : socket 'Factor' (id: Factor)
-- **pivot_axis** (_str_ = AUTO) : parameter 'pivot_axis' in ['AUTO', 'X', 'Y', 'Z']
+- **pivot_axis** (_Literal['AUTO', 'X', 'Y', 'Z']_ = AUTO) : parameter 'pivot_axis' in ['AUTO', 'X', 'Y', 'Z']
 
 
 
@@ -224,7 +228,7 @@ AlignYToVector(vector=None, factor=None, pivot_axis='AUTO')
 > method
 
 ``` python
-align_y_to_vector(vector=None, factor=None, pivot_axis='AUTO')
+align_y_to_vector(vector: 'Vector' = None, factor: 'Float' = None, pivot_axis: "Literal['AUTO', 'X', 'Y', 'Z']" = 'AUTO')
 ```
 
 > Node [Align Rotation to Vector](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/align_rotation_to_vector.html)
@@ -238,7 +242,7 @@ align_y_to_vector(vector=None, factor=None, pivot_axis='AUTO')
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
 - **factor** (_Float_ = None) : socket 'Factor' (id: Factor)
-- **pivot_axis** (_str_ = AUTO) : parameter 'pivot_axis' in ['AUTO', 'X', 'Y', 'Z']
+- **pivot_axis** (_Literal['AUTO', 'X', 'Y', 'Z']_ = AUTO) : parameter 'pivot_axis' in ['AUTO', 'X', 'Y', 'Z']
 
 
 
@@ -253,7 +257,7 @@ align_y_to_vector(vector=None, factor=None, pivot_axis='AUTO')
 > classmethod
 
 ``` python
-AlignZToVector(vector=None, factor=None, pivot_axis='AUTO')
+AlignZToVector(vector: 'Vector' = None, factor: 'Float' = None, pivot_axis: "Literal['AUTO', 'X', 'Y', 'Z']" = 'AUTO')
 ```
 
 > Node [Align Rotation to Vector](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/align_rotation_to_vector.html)
@@ -267,7 +271,7 @@ AlignZToVector(vector=None, factor=None, pivot_axis='AUTO')
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
 - **factor** (_Float_ = None) : socket 'Factor' (id: Factor)
-- **pivot_axis** (_str_ = AUTO) : parameter 'pivot_axis' in ['AUTO', 'X', 'Y', 'Z']
+- **pivot_axis** (_Literal['AUTO', 'X', 'Y', 'Z']_ = AUTO) : parameter 'pivot_axis' in ['AUTO', 'X', 'Y', 'Z']
 
 
 
@@ -282,7 +286,7 @@ AlignZToVector(vector=None, factor=None, pivot_axis='AUTO')
 > method
 
 ``` python
-align_z_to_vector(vector=None, factor=None, pivot_axis='AUTO')
+align_z_to_vector(vector: 'Vector' = None, factor: 'Float' = None, pivot_axis: "Literal['AUTO', 'X', 'Y', 'Z']" = 'AUTO')
 ```
 
 > Node [Align Rotation to Vector](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/align_rotation_to_vector.html)
@@ -296,7 +300,77 @@ align_z_to_vector(vector=None, factor=None, pivot_axis='AUTO')
 #### Arguments:
 - **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
 - **factor** (_Float_ = None) : socket 'Factor' (id: Factor)
-- **pivot_axis** (_str_ = AUTO) : parameter 'pivot_axis' in ['AUTO', 'X', 'Y', 'Z']
+- **pivot_axis** (_Literal['AUTO', 'X', 'Y', 'Z']_ = AUTO) : parameter 'pivot_axis' in ['AUTO', 'X', 'Y', 'Z']
+
+
+
+#### Returns:
+- **Rotation** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Rotation](rotation.md#rotation) :black_small_square: [Content](rotation.md#content) :black_small_square: [Methods](rotation.md#methods)</sub>
+
+----------
+### \_create_input_socket()
+
+> classmethod
+
+``` python
+_create_input_socket(value: 'object' = (0, 0, 0), name: 'str' = 'Rotation', tip: 'str' = '', panel: 'str' = '', optional_label: 'bool' = False, hide_value: 'bool' = False, hide_in_modifier: 'bool' = False, default_attribute: 'str' = '', shape: "Literal['AUTO', 'DYNAMIC', 'FIELD', 'SINGLE']" = 'AUTO')
+```
+
+> Rotation Input
+
+New [Rotation](rotation.md#rotation) input with subtype 'NONE'.
+
+Aguments
+--------
+- value  (object = (0, 0, 0)) : Default value
+- name  (str = 'Rotation') : Input socket name
+- tip  (str = '') : Property description
+- panel (str = "") : Panel name
+- optional_label  (bool = False) : Property optional_label
+- hide_value  (bool = False) : Property hide_value
+- hide_in_modifier  (bool = False) : Property hide_in_modifier
+- default_attribute  (str = '') : Property default_attribute_name
+- shape  (str = 'AUTO') : Property structure_type in ('AUTO', 'DYNAMIC', 'FIELD', 'SINGLE')
+
+#### Arguments:
+- **value** (_object_ = (0, 0, 0))
+- **name** (_str_ = Rotation)
+- **tip** (_str_ = )
+- **panel** (_str_ = )
+- **optional_label** (_bool_ = False)
+- **hide_value** (_bool_ = False)
+- **hide_in_modifier** (_bool_ = False)
+- **default_attribute** (_str_ = )
+- **shape** (_Literal['AUTO', 'DYNAMIC', 'FIELD', 'SINGLE']_ = AUTO)
+
+
+
+#### Returns:
+- **Rotation** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Rotation](rotation.md#rotation) :black_small_square: [Content](rotation.md#content) :black_small_square: [Methods](rotation.md#methods)</sub>
+
+----------
+### enable_output()
+
+> method
+
+``` python
+enable_output(enable: 'Boolean' = None)
+```
+
+> Node [Enable Output](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../interface/controls/nodes/types/output/enable_output.html)
+
+#### Information:
+- **Socket** : self
+- **Parameter** : 'ROTATION'
+
+
+
+#### Arguments:
+- **enable** (_Boolean_ = None) : socket 'Enable' (id: Enable)
 
 
 
@@ -311,7 +385,7 @@ align_z_to_vector(vector=None, factor=None, pivot_axis='AUTO')
 > classmethod
 
 ``` python
-FromAxes(primary_axis_1=None, secondary_axis_1=None, primary_axis='Z', secondary_axis='X')
+FromAxes(primary_axis_1: 'Vector' = None, secondary_axis_1: 'Vector' = None, primary_axis: "Literal['X', 'Y', 'Z']" = 'Z', secondary_axis: "Literal['X', 'Y', 'Z']" = 'X')
 ```
 
 > Node [Axes to Rotation](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/axes_to_rotation.html)
@@ -319,8 +393,8 @@ FromAxes(primary_axis_1=None, secondary_axis_1=None, primary_axis='Z', secondary
 #### Arguments:
 - **primary_axis_1** (_Vector_ = None) : socket 'Primary Axis' (id: Primary Axis)
 - **secondary_axis_1** (_Vector_ = None) : socket 'Secondary Axis' (id: Secondary Axis)
-- **primary_axis** (_str_ = Z) : parameter 'primary_axis' in ['X', 'Y', 'Z']
-- **secondary_axis** (_str_ = X) : parameter 'secondary_axis' in ['X', 'Y', 'Z']
+- **primary_axis** (_Literal['X', 'Y', 'Z']_ = Z) : parameter 'primary_axis' in ['X', 'Y', 'Z']
+- **secondary_axis** (_Literal['X', 'Y', 'Z']_ = X) : parameter 'secondary_axis' in ['X', 'Y', 'Z']
 
 
 
@@ -335,7 +409,7 @@ FromAxes(primary_axis_1=None, secondary_axis_1=None, primary_axis='Z', secondary
 > classmethod
 
 ``` python
-FromAxisAngle(axis=None, angle=None)
+FromAxisAngle(axis: 'Vector' = None, angle: 'Float' = None)
 ```
 
 > Node [Axis Angle to Rotation](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/axis_angle_to_rotation.html)
@@ -357,7 +431,7 @@ FromAxisAngle(axis=None, angle=None)
 > classmethod
 
 ``` python
-FromEuler(euler=None)
+FromEuler(euler: 'Vector' = None)
 ```
 
 > Node [Euler to Rotation](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/euler_to_rotation.html)
@@ -378,7 +452,7 @@ FromEuler(euler=None)
 > classmethod
 
 ``` python
-FromQuaternion(w=None, x=None, y=None, z=None)
+FromQuaternion(w: 'Float' = None, x: 'Float' = None, y: 'Float' = None, z: 'Float' = None)
 ```
 
 > Node [Quaternion to Rotation](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/quaternion_to_rotation.html)
@@ -402,7 +476,7 @@ FromQuaternion(w=None, x=None, y=None, z=None)
 > classmethod
 
 ``` python
-FromXYAxes(primary_axis=None, secondary_axis=None)
+FromXYAxes(primary_axis: 'Vector' = None, secondary_axis: 'Vector' = None)
 ```
 
 > Node [Axes to Rotation](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/axes_to_rotation.html)
@@ -430,7 +504,7 @@ FromXYAxes(primary_axis=None, secondary_axis=None)
 > classmethod
 
 ``` python
-FromXZAxes(primary_axis=None, secondary_axis=None)
+FromXZAxes(primary_axis: 'Vector' = None, secondary_axis: 'Vector' = None)
 ```
 
 > Node [Axes to Rotation](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/axes_to_rotation.html)
@@ -458,7 +532,7 @@ FromXZAxes(primary_axis=None, secondary_axis=None)
 > classmethod
 
 ``` python
-FromYXAxes(primary_axis=None, secondary_axis=None)
+FromYXAxes(primary_axis: 'Vector' = None, secondary_axis: 'Vector' = None)
 ```
 
 > Node [Axes to Rotation](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/axes_to_rotation.html)
@@ -486,7 +560,7 @@ FromYXAxes(primary_axis=None, secondary_axis=None)
 > classmethod
 
 ``` python
-FromYZAxes(primary_axis=None, secondary_axis=None)
+FromYZAxes(primary_axis: 'Vector' = None, secondary_axis: 'Vector' = None)
 ```
 
 > Node [Axes to Rotation](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/axes_to_rotation.html)
@@ -514,7 +588,7 @@ FromYZAxes(primary_axis=None, secondary_axis=None)
 > classmethod
 
 ``` python
-FromZXAxes(primary_axis=None, secondary_axis=None)
+FromZXAxes(primary_axis: 'Vector' = None, secondary_axis: 'Vector' = None)
 ```
 
 > Node [Axes to Rotation](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/axes_to_rotation.html)
@@ -542,7 +616,7 @@ FromZXAxes(primary_axis=None, secondary_axis=None)
 > classmethod
 
 ``` python
-FromZYAxes(primary_axis=None, secondary_axis=None)
+FromZYAxes(primary_axis: 'Vector' = None, secondary_axis: 'Vector' = None)
 ```
 
 > Node [Axes to Rotation](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/axes_to_rotation.html)
@@ -570,7 +644,7 @@ FromZYAxes(primary_axis=None, secondary_axis=None)
 > method
 
 ``` python
-hash_value(seed=None)
+hash_value(seed: 'Integer' = None)
 ```
 
 > Node [Hash Value](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/hash_value.html)
@@ -597,7 +671,7 @@ hash_value(seed=None)
 > method
 
 ``` python
-__init__(value=(0.0, 0.0, 0.0), name=None, tip=None, panel='', hide_value=False, hide_in_modifier=False, single_value=False)
+__init__(value: geonodes.core.socket_class.Socket | tuple = (0, 0, 0), name: str = None, tip: str = '', panel: str = '', optional_label: bool = False, hide_value: bool = False, hide_in_modifier: bool = False, default_attribute: str = '', shape: Literal['AUTO', 'DYNAMIC', 'FIELD', 'SINGLE'] = 'AUTO')
 ```
 
 > Socket of type ROTATION
@@ -619,13 +693,15 @@ rot = Rotation(name="User input").  # Create a new Rotation group input
 ```
 
 #### Arguments:
-- **value** (_tuple of floats or Sockets_ = (0.0, 0.0, 0.0)) : initial value
+- **value** (_geonodes.core.socket_class.Socket | tuple_ = (0, 0, 0)) : initial value
 - **name** (_str_ = None) : Create an Group Input socket with the provided str if not None
-- **tip** (_str_ = None) : User tip (for Group Input sockets)
-- **panel** (_str_ = ) : panel name (overrides tree panel if exists)
-- **hide_value** (_bool_ = False) : Hide Value option
-- **hide_in_modifier** (_bool_ = False) : Hide in Modifier option
-- **single_value** (_bool_ = False) : Single Value option
+- **tip** (_str_ = ) : Property description
+- **panel** (_str_ = ) : Panel name
+- **optional_label** (_bool_ = False) : Property optional_label
+- **hide_value** (_bool_ = False) : Property hide_value
+- **hide_in_modifier** (_bool_ = False) : Property hide_in_modifier
+- **default_attribute** (_str_ = ) : Property default_attribute_name
+- **shape** (_Literal_ = AUTO) : Property structure_type in ('AUTO', 'DYNAMIC', 'FIELD', 'SINGLE')
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Rotation](rotation.md#rotation) :black_small_square: [Content](rotation.md#content) :black_small_square: [Methods](rotation.md#methods)</sub>
 
@@ -656,7 +732,7 @@ invert()
 > method
 
 ``` python
-mix(b=None, factor=None, clamp_factor=True)
+mix(b: 'Rotation' = None, factor: 'Float' = None, clamp_factor=True)
 ```
 
 > Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
@@ -688,7 +764,7 @@ mix(b=None, factor=None, clamp_factor=True)
 > classmethod
 
 ``` python
-Named(name=None)
+Named(name: 'String' = None)
 ```
 
 > Node [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/named_attribute.html)
@@ -714,7 +790,7 @@ Named(name=None)
 > classmethod
 
 ``` python
-NamedAttribute(name=None)
+NamedAttribute(name: 'String' = None)
 ```
 
 > Node [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/named_attribute.html)
@@ -740,7 +816,7 @@ NamedAttribute(name=None)
 > method
 
 ``` python
-rotate(rotate_by=None, rotation_space='GLOBAL')
+rotate(rotate_by: 'Rotation' = None, rotation_space: "Literal['GLOBAL', 'LOCAL']" = 'GLOBAL')
 ```
 
 > Node [Rotate Rotation](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/rotate_rotation.html)
@@ -752,7 +828,7 @@ rotate(rotate_by=None, rotation_space='GLOBAL')
 
 #### Arguments:
 - **rotate_by** (_Rotation_ = None) : socket 'Rotate By' (id: Rotate By)
-- **rotation_space** (_str_ = GLOBAL) : parameter 'rotation_space' in ['GLOBAL', 'LOCAL']
+- **rotation_space** (_Literal['GLOBAL', 'LOCAL']_ = GLOBAL) : parameter 'rotation_space' in ['GLOBAL', 'LOCAL']
 
 
 
@@ -767,7 +843,7 @@ rotate(rotate_by=None, rotation_space='GLOBAL')
 > method
 
 ``` python
-rotate_global(rotate_by=None)
+rotate_global(rotate_by: 'Rotation' = None)
 ```
 
 > Node [Rotate Rotation](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/rotate_rotation.html)
@@ -794,7 +870,7 @@ rotate_global(rotate_by=None)
 > method
 
 ``` python
-rotate_local(rotate_by=None)
+rotate_local(rotate_by: 'Rotation' = None)
 ```
 
 > Node [Rotate Rotation](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/rotate_rotation.html)
@@ -821,7 +897,7 @@ rotate_local(rotate_by=None)
 > method
 
 ``` python
-rotate_vector(vector=None)
+rotate_vector(vector: 'Vector' = None)
 ```
 
 > Node [Rotate Vector](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/rotate_vector.html)

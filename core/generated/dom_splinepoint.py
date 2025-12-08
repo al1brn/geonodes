@@ -1,4 +1,4 @@
-# Generated 2025-12-08 08:30:17
+# Generated 2025-12-08 09:52:50
 
 from __future__ import annotations
 from .. socket_class import Socket
@@ -39,10 +39,10 @@ class SplinePoint:
 
         Returns
         -------
-        - node [curve_index (Integer), index_in_curve (Integer)]
+        - Integer [index_in_curve_ (Integer)]
         """
         node = Node('Curve of Point', {'Point Index': point_index})
-        return node
+        return node._out
 
     @classmethod
     def curve_index(cls, point_index: Integer = None):

@@ -1,4 +1,4 @@
-# Generated 2025-12-08 08:30:17
+# Generated 2025-12-08 09:52:50
 
 from __future__ import annotations
 from .. socket_class import Socket
@@ -330,11 +330,11 @@ class Geometry(Socket):
 
         Returns
         -------
-        - node [is_hit (Boolean), hit_position (Vector), hit_normal (Vector), hit_distance (Float), attribute (Float)]
+        - Boolean [hit_position_ (Vector), hit_normal_ (Vector), hit_distance_ (Float), attribute_ (Float)]
         """
         data_type = utils.get_data_type_from_argument('GeometryNodeTree', 'GeometryNodeRaycast', attribute)
         node = Node('Raycast', {'Target Geometry': self, 'Attribute': attribute, 'Interpolation': interpolation, 'Source Position': source_position, 'Ray Direction': ray_direction, 'Ray Length': ray_length}, data_type=data_type)
-        return node
+        return node._out
 
     def realize(self, realize_all: Boolean = None, depth: Integer = None):
         """ > Node <&Node Realize Instances>
@@ -409,10 +409,10 @@ class Geometry(Socket):
 
         Returns
         -------
-        - node [mesh (Mesh), curve (Curve), grease_pencil (GreasePencil), point_cloud (Cloud), volume (Volume), instances (Instances)]
+        - Mesh [curve_ (Curve), grease_pencil_ (GreasePencil), point_cloud_ (Cloud), volume_ (Volume), instances_ (Instances)]
         """
         node = self._cache('Separate Components', {'Geometry': self})
-        return node
+        return node._out
 
     @property
     def mesh(self):
