@@ -1148,102 +1148,31 @@ with GeoNodes("Repeat"):
 
 #### For Each
 
-
-
-
-
-Zones are made of two linked nodes: one input node and one output node.
-In Blender 4.3, three zones exist:
-- Simulation zone: class **Simulation**
-- Repeat zone : class **Repeat**
-- For Each Element zone : class **ForEachElement** or domain method **for_each**
-
-They are all subclasses of **Zone** class.
-
-Zones are initialized by dynamically creating sockets. Sockets can be created:
-- either with a dict
-- or with keyword arguments
-
-The sockets types are deduced from the python variable types. If the passed value is `None`, its is
-considered as a null **Geometry**.
-
-The example below creates a _Repeat_ zone with 4 variables of types **Geometry**, **Geometry**,
-**Vector** and **Integer**:
-
 ``` python
-with Repeat(geometry=Geometry(), curve=None, position=Vector(), index=1, iterations=10) as rep:
-    pass
+with GeoNodes("For Eeach"):
+    
+    # Let's assume the input geometry is a mesh
+    mesh = Mesh()
+    
+    # The geometry to add at the center of each face
+    sph = Mesh.UVSphere(radius=Input("Sphere Radius", default_value=.2))
+    
+    # Loop on the faces
+    for feel in mesh.faces.for_each():
+        # Position of the face
+        pos = mesh.faces.sample_index(nd.position, 0)
+        
+        # Move the to the center
+        sph.transform(translation=pos)
+        
+        # By default, out in the generated panel
+        sph.out()
+        
+    # Join the generated geometry
+    mesh += feel.generated
+    
+    mesh.out()
 ```
-
-Or alternatively with `sockets` dict argument:
-``` python
-with Repeat(sockets={'Geometry': Geometry(), 'Curve': None, 'Position': Vector(), 'index': 1}, iterations=10) as rep:
-    pass
-```
-
-### Access to the zones sockets
-
-The zone sockets are initialized as properties of the **Zone** class.
-They can be get and set using the standard python syntax, for instance `rep.position` refers to
-the socket named **position** in the example above.
-
-Since a zone is composed of two nodes, each one replicating the same sockets as inputs and outputs,
-socket names are replicated 4 times. Accessing the zone properties depends upon the access is made
-**inside** or **outside** the **with** block and if the access is **set** or **get**:
-
-- **INSIDE** the **with** block:
-  - **getting** the property : read the output socket of the first node
-  - **setting** the property : write the input socket of the second node
-- **OUTSIDE** the **with** block:
-  - **getting** the property : read the ouput socket of the second node
-  - **setting** the property : raises an error (sockets are set at zone instantiation time)
-
-Despite it is not that easy to describe, this produces an very natural way to create and work with zones.
-
-> [&IMPORTANT]
-> **ForEachElement** zone behaves diferrently : input sockets of the input node are not replicated in the
-> output socket. On the other hand, the output nodes has two panels of sockets named **main** and **generated**.
-
-The example below explodes a sphere:
-
-``` python
-from geonodes import *
-
-with GeoNodes("Explosion"):
-
-    mesh = Mesh.IcoSphere(subdivisions=3)
-    cloud = mesh.faces.distribute_points(density=10)
-    speed = 5*cloud.normal_ + Vector.Random(-.2, .2, seed=0)
-
-    # Create a Simulation zone with two variables
-    # - cloud : Cloud
-    # - speed : Vector
-
-    with Simulation(cloud=cloud, speed=speed) as sim:
-
-        # INSIDE the simulation : getting is reading the first node
-
-        speed = sim.speed
-
-        speed = sim.cloud.points.capture(speed)
-        sim.cloud.points.offset = speed*sim.delta_time
-
-        # INSIDE the simulation : setting is writting the second node
-
-        sim.speed = speed + (0, 0, -10*sim.delta_time)
-
-    # OUTSIDE the simulation : getting is reading the second node
-
-    cloud = sim.cloud
-
-    # Done
-
-    balls = cloud.points.instance_on(instance=Mesh.IcoSphere(radius=.1))
-
-    balls.out()
-```
-
-<img src="doc/images/sim_zone_doc.png" class="center">
 
 ## Groups and Modifiers
 
@@ -1283,12 +1212,13 @@ from geonodes import *
 with GeoNodes("A Function", is_group=True):
     (Float(0, "Value 1") + Float(0, "Value 2")).out("Sum")
 
-with GeoNodes("Call a Group"):
+with GeoNodes("Doc A Function is called"):
 
     a, b = 1, 2
 
     # ---------------------------------------------------------------------------
     # Standard method
+    # ---------------------------------------------------------------------------
 
     # dict syntax
 
@@ -1300,15 +1230,16 @@ with GeoNodes("Call a Group"):
 
     # ---------------------------------------------------------------------------
     # Alternative method
-    #
+    # ---------------------------------------------------------------------------
+    
     # For big projects, one can prefer the python syntax
     # Class G makes it possible
 
-    val3 = G.a_function(val1, val2)
+    val3 = G().a_function(val1, val2)
     
     geo = Geometry()
     geo.offset = (val1, val2, val3)
-    geo.out()    
+    geo.out()        
 ```
 
 ## Named Attributes
@@ -1316,12 +1247,12 @@ with GeoNodes("Call a Group"):
 Named attributes can be stored using `store_named_attribute` or its short version `store`. These methods
 must be called on a domain, such as in `Mesh.points.store("A Named Int", 1)`.
 
-One can also uses the named attribute property syntax which creates a named attribute for a property starting by underscore '_'
-followed by a capital letter: `Mesh.points._A_Named_Int = 1` is equivalent to `Mesh.points.store("A Named Int", 1)`.
+One can also uses the named attribute property syntax which creates a named attribute for a property starting by a capital
+letter: `Mesh.points.A_Named_Int = 1` is equivalent to `Mesh.points.store("A Named Int", 1)`.
 
 > [!IMPORTANT]
 > To avoid names collision, the named attribute ***MUST*** start with a capital letter.
-> Except the first one, underscore chars are replaced by spaces in the stored name.
+> Underscore chars are replaced by spaces in the stored name.
 
 Reading a named attribute is done using the class constructor `NamedAttribute`, or its short version `Named`.
 For instance, reading a Vector named "Direction" is done with `Vector.Named("Direction")`.
@@ -1332,7 +1263,7 @@ One can even further shorten the syntax by instantating a new class with an attr
 ``` python
 from geonodes import *
 
-with GeoNodes("Named Attributes"):
+with GeoNodes("Doc Named Attributes"):
     
     cube = Mesh.Cube()
     
@@ -1343,7 +1274,7 @@ with GeoNodes("Named Attributes"):
     cube.points.store("Weight", 1.)
     # or using the named attribute property syntax
     # Note that the first letter is a capital
-    cube.points._Weight = 1.
+    cube.points.Weight = 1.
     
     # ----- Reading a named attribute    
     
@@ -1356,20 +1287,12 @@ with GeoNodes("Named Attributes"):
     # or even shorter, using a string as constructor value
     weight = Float("Weight")
     
-    # ----- When a named attribute has been created, the named attribute property syntax
-    # can be used to read the attribute
-
-    w = Float("Weight")
-    # Can be replaced by the following line for the sake of code clarity, 
-    w = cube.points._Weight
-    w.out("Should be Weight")
-
-    cube.points._Weight = Float("Weight") + 2
-    # Can be written in a more pythonistic way
-    cube.points._Weight += 2
+    cube.out()
 ``` 
 
 # Shaders
+
+**DOC REVIEW IN PROGRESS**
 
 **GeoNodes** can also be used to script shaders.
 
