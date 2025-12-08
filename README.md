@@ -35,10 +35,11 @@ from geonodes import *
 with GeoNodes("Hello World"):
     
     height = 3
-    omega = 2
+    omega  = 2
 
     # The surface is basically a grid 20 x 20 with a resolution 200 x 200
     grid = Mesh.Grid(vertices_x=200, vertices_y=200, size_x=20, size_y=20)
+    
 
     # z is computed using gnmath library and operators as in pure python
     with Layout("Computing the wave"):
@@ -73,8 +74,7 @@ After the install, the Blender scripts hierarchy should look like:
        modules/
            geonodes/
                __init__.py
-               geonodes
-               shadernodes
+               core
                demos
                ...
 ```
@@ -116,28 +116,49 @@ The method returns a class refering to one of its output socket, or, rarely, to 
 ``` python
 from geonodes import *
 
-with GeoNodes("Demo"):
+with GeoNodes("Doc Socket Init"):
 
-    # Get the input geometry
-    # The INPUT geometry is the OUTPUT socket of the Group Input node
-
+    # Get the Group Input geometry
     geometry = Geometry()
 
-    # Create a node "Vector"
-    # The output socket of this node is kept in an instance of Vector
-
-    vector = Vector((1, 2, 3))
-
-    # Method set_position creates a node 'Set Position'
-    # - 'geometry' is plugged to the input socket 'Geometry'
-    # - 'offset' argument is plugged to the input socket 'Offset'
-
-    geometry.set_position(offset=vector)
-
-    # 'geometry' is now the output socket 'Geometry' of the node 'Set Position'
-
-    # Plug the output socket to the group output
+    # Plug the geometry to the Group output node
     geometry.out()
+
+    # Create sockets from their node primitives
+    with Layout("Primitives"):
+        i = Integer(123)
+        f = Float(3.14)
+        s = String("A string")
+        b = Boolean(True)
+        v = Vector((1, 2, 3))
+        red = Color("Red")
+        green = Color("#00FF00")
+        blue = Color((0, 0, 1))
+        r = Rotation((pi, pi, pi/2))
+
+    # The key word argument name indicates the following are Group input sockets
+    # The value is the default value
+    i = Integer(123, name = "Integer")
+    f = Float(3.14, name = "Float")
+    s = String("A string", name = "String")
+    b = Boolean(True, name = "Boolean")
+    v = Vector((1, 2, 3), name = "Vector")
+    red = Color("Red", name = "Color 0")
+    green = Color("#00FF00", name = "Color 1")
+    blue = Color((0, 0, 1), name = "Color 2")
+    r = Rotation((pi, pi, pi/2), name = "Rotation")
+
+    # If the initial value is a string, the value is a named attribute
+    # Named Attribute 'Integer'
+    with Layout("Named Attributes"):
+        i = Integer("Integer")
+        # Named Attribute 'Float'
+        f = Float("Float")
+
+    # Creating Geometries
+    with Layout("Creating geometries"):
+        cube = Mesh.Cube()
+        curve = Curve.Spiral()
 ```
 
 ### Blender Setup
@@ -194,27 +215,28 @@ Math functions are named after their standard name in python **math** module.
 > All bitwise **Integer** operations are prefixed with *bw_*
 
 ``` python
-    a = Float(1)
-    b = gnmath.sin(a)
-    
-    # Add between two Floats
-    c = gnmath.add(b, 7.5)
+    with GeoNodes("Doc gnmath"):
+        a = Float(1)
+        b = gnmath.sin(a)
+        
+        # Add between two Floats
+        c = gnmath.add(b, 7.5)
 
-    i = Integer(123)
-    # Greater Common Divisor exists only for Integers
-    j = gnmath.gcd(i, 17) 
-    
-    # Add exists also for Floats
-    k = gnmath.iadd(j, 7)
-    
-    u = Vector((1, 2, 3))
-    # Cross product exists only for vectors
-    v = gnmath.cross(u, (7, 8, 9))
-    # Add axists also for Floats
-    w = gnmath.vadd(v, (5, 6,7))
+        i = Integer(123)
+        # Greater Common Divisor exists only for Integers
+        j = gnmath.gcd(i, 17) 
+        
+        # Add exists also for Floats
+        k = gnmath.iadd(j, 7)
+        
+        u = Vector((1, 2, 3))
+        # Cross product exists only for vectors
+        v = gnmath.cross(u, (7, 8, 9))
+        # Add axists also for Floats
+        w = gnmath.vadd(v, (5, 6,7))
 
-    # Bitwise functions
-    j = gmath.bw_and(i, 7)
+        # Bitwise functions
+        j = gnmath.bw_and(i, 7)        
 ```
 
 > [!NOTE]
@@ -278,7 +300,7 @@ Each **Geometry Nodes** socket type is wrapped in a dedicated class. The availab
   - Geometry
   - Geometry subclasses : Mesh, Curve, GreasePencil, Cloud, Instances, Volume
 - **Special**
-  - Menu
+  - Menu, Closure, Bundle
 
 Blender **Nodes** are implemented as methods, properties and operators working on these classes.
 For instance, if `a` and `b` are two **Floats**, the script `a + b` will generate a **Math** node with
