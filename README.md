@@ -992,29 +992,29 @@ To create the nodes, use the ***with*** context:
         a.out("Plus One")
 ```
 
-The closure separation is made using the **separate** method. This method
+The closure evaluation is made using the **evaluate** method. This method
 takes a **signature** argument which is a dict describing the closure inputs and outputs.
 
 ``` python
 with GeoNodes("Closure"):
 
-    # Create a closure adding to two entris 
-    with Closure() as cl:
+    # Create a closure adding to two entries 
+    with Closure() as cl0:
         a = Float(1.0, "A")
         b = Float(1.0, "B")
         (a + b).out("Sum")
 
     # If evaluated immediately, the signature is read from the previous nodes.
-    cl.evaluate().out(panel = "Separate 0")
+    cl0.evaluate().out(panel = "Separate 0")
 
     # We can get the closure signature for future use
-    sig = cl.get_signature()
+    sig = cl0.get_signature()
 
-    # We can evaluated a closure using this signature
+    # We can evaluate a closure using this signature
     cl1 = Closure(name="Closure 1")
     cl1.evaluate(signature=sig).out(panel="Signature 1")
 
-    # We can evaluated another closure using a manual signature:
+    # We can evaluate another closure using a manual signature:
     # a couple of dicts for input and output
     sig = (
         {'A': 'Float', 'B': 'Float'},
@@ -1022,6 +1022,20 @@ with GeoNodes("Closure"):
 
     cl2 = Closure(name="Closure 2")
     cl2.evaluate(signature=sig).out(panel="Signature 2")
+
+    # Selecting a closure
+    # Note that since the closure coming from MenuSwitch
+    # doesn't come from a zone, the ***with*** context relates
+    # to the 'Menu Switch', not the zone (compare to the creation of cl0).
+    
+    with Closure.MenuSwitch() as cl:
+        cl0.out("Closure 0")
+        cl1.out("Closure 1")
+        cl2.out("Closure 2")
+
+    cl.node.menu = Input(default_value="Closure 0")
+
+    cl.out()
 ```
 
 ### Loops
@@ -1058,7 +1072,7 @@ The object returned by the iterator exposes the input and output sockets.
 
 > [!NOTE]
 > Within the ***for*** iteration, the geometry is the geometry to compute. The for iteration must
-> end with `xxx.out` where `xxx` is the name of the Geometry class.
+> end with `xxx.out()` where `xxx` is the name of the Geometry class.
 > Outside the ***for*** iteration, the geometry has jumped to the zone output node and cand be used
 > to continue.
 
@@ -1093,7 +1107,8 @@ with GeoNodes("Simulation"):
         # Next iteration
         speed.out("Speed")
         
-        # Within for loop, out to Zone Output Node
+        # Connect the simulated geometry to output node
+        # Within for loop, out refers to Zone Output Node
         cloud.out()
 
     # cloud is now the output socket of the output zone
@@ -1101,7 +1116,7 @@ with GeoNodes("Simulation"):
     mesh = Mesh.Grid(20, 20)
     mesh += cloud.instance_on(instance=Mesh.UVSphere(radius=radius))
         
-    # Outside de the loop, out yo Group Output Node
+    # Outside de the loop, out refers to Group Output Node
     mesh.out()
  ```
 
