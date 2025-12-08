@@ -888,7 +888,7 @@ argument of a function:
 ```
 
 Another way to set values to input socket is to temporarily set the node as current
-output node, replacing the the Group Output None. This is done using the ***with*** context
+output node, replacing the the Group Output Node. This is done using the ***with*** context
 as shown below.
 
 ``` python
@@ -937,7 +937,7 @@ with GeoNodes("Menu Demo") as tree:
     with from_curve:
         Curve.Circle().to_mesh(profile_curve=profile).out("Circle")
         
-    # The best is to set the menu socket one the inputs are completed
+    # The best is to set the menu socket once the inputs are completed
     from_curve.node.menu = Input("From Curve", default="Simple Mesh")
     
     # ----------------------------------------------------------------------------------------------------
@@ -981,7 +981,7 @@ with GeoNodes("Group outputs"):
 
 ### Closure
 
-The two **Closure** zone nodes are created when instantiating a closure.
+The two **Closure** zone nodes are created when instantiating a Closure class.
 To create the nodes, use the ***with*** context:
 
 ``` python
@@ -1048,7 +1048,64 @@ To make the code as clear and pythonistic as possible, the Geometry nodes loop z
         pass
 ```
 
-The value returned by the iterator 
+The object returned by the iterator exposes the input and output sockets.
+
+> [!CAUTION]
+> Within the ***for*** iteration, the **ouput sockets** come from **input node** and the
+> **input sockets** are those of the **output node**.
+> Outside the ***for***, the **ouput sockets** come from **output node** and the
+> **input sockets** are those of the **input node**.
+
+> [!NOTE]
+> Within the ***for*** iteration, the geometry is the geometry to compute. The for iteration must
+> end with `xxx.out` where `xxx` is the name of the Geometry class.
+> Outside the ***for*** iteration, the geometry has jumped to the zone output node and cand be used
+> to continue.
+
+``` python
+with GeoNodes("Simulation"):
+    
+    # Two input parameters
+    count  = Integer(10, "Count", 1, 100)
+    radius = Float(.1, "Radius", 0, 2)
+    
+    # Cloud of points
+    cloud = Cloud.Points(count=count, position=Vector.Random((-5, -5, 5), (5, 5, 15)))
+    
+    # Gravity simulation with initial random speed
+    for sim in cloud.simulation(Speed=Vector.Random(-1, 1)):
+
+        # cloud is now the Simulation Input Node output socket
+        
+        # One speed per point
+        speed = cloud.points.capture_attribute(sim.speed)
+        
+        # Increment the posiion
+        cloud.position += speed*sim.delta_time
+        
+        # Acceleration
+        speed += sim.delta_time*(0, 0, -9.81)
+        
+        # Bounce onfloor
+        x, y, z = speed.xyz
+        speed = speed.switch(nd.position.z.less_than(radius), (.9*x, .9*y, -.7*z))
+        
+        # Next iteration
+        speed.out("Speed")
+        
+        # Within for loop, out to Zone Output Node
+        cloud.out()
+
+    # cloud is now the output socket of the output zone
+        
+    mesh = Mesh.Grid(20, 20)
+    mesh += cloud.instance_on(instance=Mesh.UVSphere(radius=radius))
+        
+    # Outside de the loop, out yo Group Output Node
+    mesh.out()
+ ```
+
+
 
 
 
