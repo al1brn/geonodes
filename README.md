@@ -480,7 +480,7 @@ with GeoNodes("Method names"):
     # 'Subdivide Mesh' the name of the geometry is omitted
 
     mesh = Curve.Circle().fill()
-    curve_line.resample(17)
+    curve_line.resample(count=17)
     cube.subdivide()
 
     # ----------------------------------------------------------------------------------------------------
