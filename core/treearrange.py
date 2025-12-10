@@ -1056,8 +1056,10 @@ class Tree(Frame):
             if node.bl_idname == 'NodeFrame':
                 frames.append(node)
             else:
-                if node.parent is not None:
-                    not_empty.add(node.parent.name)
+                par = node.parent
+                while par is not None:
+                    not_empty.add(par.name)
+                    par = par.parent
 
         for frame in frames:
             if frame.name not in not_empty:

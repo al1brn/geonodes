@@ -41,6 +41,7 @@ __version__ = "3.0.0"
 __blender_version__ = "4.3.0"
 
 import unicodedata
+import difflib
 import numpy as np
 
 from pprint import pprint
@@ -272,6 +273,17 @@ def ensure_uniques(names: list[str], single_digit: bool = False):
     return uniques
 
 # ====================================================================================================
+# Proximity
+# ====================================================================================================
+
+def prox_names(name, valids, n=3, cutoff=0.6):
+    res = difflib.get_close_matches(name, valids, n=n, cutoff=cutoff)
+    if not len(res):
+        res = difflib.get_close_matches(snake_case(name), [snake_case(valid) for valid in valids], n=n, cutoff=cutoff)
+    return res
+
+
+# ====================================================================================================
 # Conversion between socket_type and bl_idname
 # - socket_type in ('FLOAT', 'INT', 'BOOLEAN',...)
 # - bl_idname in ('NodeSocketFloat', 'NodeSocketInt', 'NodeSocketBoolean',...)
@@ -350,6 +362,9 @@ def is_socket(socket):
 
 def is_free(socket):
     bsocket = get_bsocket(socket)
+    return bsocket.is_multi_input or (not bsocket.is_linked)
+
+    # Strangely is_output seems to bo not always reliable :-()
     if bsocket.is_output:
         return True
     else:
@@ -1106,6 +1121,15 @@ def find_snake_case_name(sc_name: str, raw_names: list):
         
     return None
 
+def get_enum_from_string(s):
+    token = "not found in "
+    p = s.find(token)
+    if p < 0:
+        return ()
+    else:
+        return eval(s[p + len(token):])
+
+
 def get_enums(obj, attr):
     token = "not found in "
     try:
@@ -1366,6 +1390,9 @@ def has_bsocket(value):
 
 
 def check_link(link, halt=False):
+
+    if link is None:
+        return False
 
     def ssock(sock):
         sock.node.use_custom_color = True
@@ -1782,6 +1809,10 @@ def check_zones(btree: 'Blender Tree') -> bool:
                 set_node_error(zone_input)
                 set_node_error(zone_output)
                 set_node_error(node)
-                raise NodeError(f"Node '{node.name}' belongs to a zone but is also fed by zone Output'")
+                raise NodeError(
+                    "A node belonging to a zone is linked outside the zone.\n"
+                    f"Zone : {zone_input.bl_idname} -> {zone_output.bl_idname}\n"
+                    f"Wrongly linked Node : {node.name} ({node.label})."
+                )
 
     return True

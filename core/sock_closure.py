@@ -119,19 +119,34 @@ class Closure(generated.Closure):
 
     def _push(self):
 
+        from .treeclass import Layout
+
         if self._has_zone:
+            # I/O
             self._tree._output_stack.append(self.node)
             self._tree._input_stack.append(self.node._paired_input_node)
+
+            # Layout
+            layout = Layout("Closure", node=self.node)
+            layout.include_node(self.node._paired_input_node)
+            layout.push()
+
         else:
             super()._push()
 
     def _pop(self, error: bool = False):
 
         if self._has_zone:
+            # Layout
+            self._tree._layouts.pop()
+
+            # I/O
             self._tree._output_stack.pop()
             self._tree._input_stack.pop()
+
         else:
             super()._pop(error=error)
+
 
     # ====================================================================================================
     # Signature
@@ -255,33 +270,16 @@ class Closure(generated.Closure):
             for name, value in {**named_sockets, **sockets}.items():
                 node.set_input_socket(name, value)
 
-
-        # Link closure input
-        #link = _btree.links.new(self._bsocket, node._bnode.inputs["Closure"], handle_dynamic_sockets=True)
-        #utils.check_link(link)
-
-        if False:
-
-            # ----------------------------------------------------------------------------------------------------
-            # Create sockets from signature
-            # ----------------------------------------------------------------------------------------------------
-
-            bnode = node._bnode
-            Signature(signature.inputs).create_items( bnode.input_items,  use_rank=True, use_panel=True)
-            Signature(signature.outputs).create_items(bnode.output_items, use_rank=True, use_panel=True)
-
-            # ----------------------------------------------------------------------------------------------------
-            # Plug the arguments to the newly created sockets
-            # ----------------------------------------------------------------------------------------------------
-
-            for name, value in named_sockets.items():
-                node.plug_value_into_socket(value, node.socket_by_name('INPUT', name, as_argument=False))
-
-            for name, value in sockets.items():
-                node.plug_value_into_socket(value, node.socket_by_name('INPUT', name, as_argument=True))
-
         # We are done :-)
         return node._out
+    
+    # ----------------------------------------------------------------------------------------------------
+    # Function call syntax
+    # ----------------------------------------------------------------------------------------------------
+    
+    def __call__(self, named_sockets: dict = {}, signature: Signature = None, **sockets):
+        return self.evaluate(named_socket=named_socket, signature=signature, sockets=sockets)
+
     
     # ===============================================s=====================================================
     # Test
@@ -339,8 +337,11 @@ class Closure(generated.Closure):
                 cl1 = Closure(name="Closure 1")
                 cl2 = Closure(name="Closure 2")
                 
+                # Using evaluate method
                 cl1.evaluate(signature=sig1).node.out(panel="Closure 1 out")
-                cl2.evaluate(signature=sig2).node.out(panel="Closure 2 out")
+
+                # Using calling methjod
+                cl2(signature=sig2).node.out(panel="Closure 2 out")
                 
               
             

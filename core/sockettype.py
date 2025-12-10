@@ -37,6 +37,7 @@ __license__ = "GNU GPL V3"
 import numpy as np
 import bpy
 from . import constants
+from .scripterror import NodeError
 
 # ====================================================================================================
 # Socket Type
@@ -103,7 +104,7 @@ class SocketType:
 
         elif isinstance(value, bpy.types.NodeTreeInterfaceSocket):
             tsock = value
-            self._full_socket_id = tsock.type
+            self._full_socket_id = tsock.socket_type
             if hasattr(tsock, 'subtype'):
                 self.subtype = tsock.subtype
             if self.is_vector:
@@ -157,11 +158,24 @@ class SocketType:
                 elif size == 16:
                     sid = 'NodeSocketMatrix'
                 else:
-                    raise RuntimeError(f"Impossible to initialize a socket from array {value} of size {size}. Acceptable sizes are: 2, 3, 4, 16.")
+                    raise NodeError(
+                        f"Error when trying to get the socket type of value {value} (type= {type(value).__name__}).\n"
+                        f"The value seems to be an array of size {1} (shape {np.shape(value)})."
+                        f"Acceptable sizes are 2, 3, 4 and 16.")
 
             else:
-                raise RuntimeError(f"Impossible to initialize a socket type from value {value}.")
-            
+                from .nodeclass import Node
+                if isinstance(value, Node):
+                    s = "The value is a node, you certainly forgot to get one of its sockets.\n"
+                    s += repr(value)
+                else:
+                    s = f"The value is : {value}\nIts type is  : {type(value)}\n"
+
+                raise NodeError(
+                    "Socket type error\n\n"
+                    f"Impossible to build a socket type from the passed value.\n{s}"
+                )
+
             self._full_socket_id = sid
 
     # ====================================================================================================

@@ -593,6 +593,31 @@ def demos():
             
         cube.out()
 
+with GeoNodes("Doc Fpr Eeach"):
+    
+    # Let's assume the input geometry is a mesh
+    mesh = Mesh()
+    
+    # The geometry to add at the center of each face
+    sph = Mesh.UVSphere(radius=Input("Sphere Radius", default_value=.2))
+    
+    # Loop on the faces
+    for feel in mesh.faces.for_each():
+        # Position of the face
+        pos = mesh.faces.sample_index(nd.position, 0)
+        
+        # Move the to the center
+        sph.transform(translation=pos)
+        
+        # By default, out in the generated panel
+        sph.out()
+        
+    # Join the generated geometry
+    mesh += feel.generated
+    
+    mesh.out()
+
+
 
     
 

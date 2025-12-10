@@ -61,6 +61,19 @@ BOTH   = Literal['INPUT', 'OUPUT', 'BOTH']
 ITYPE  = Literal['SOCKET', 'PANEL']
 
 # ====================================================================================================
+# Utilities
+# ====================================================================================================
+
+def check_in_out(in_out, both=False):
+    if in_out in ('INPUT', 'OUTPUT'):
+        return True
+    elif in_out == 'BOTH' and both:
+        return True
+    
+    raise RuntimeError(f"in_out argument '{in_out}' not in ('INPUT', 'OUTPUT')")
+    
+
+# ====================================================================================================
 # Item Path
 # ====================================================================================================
 
@@ -159,7 +172,10 @@ class ItemPath:
             self._path = ItemPath.stack_to_path(value)
 
         else:
-            raise RuntimeError(f"ItemPath error: Impossible to initialize from {value}.")
+            raise NodeError(
+                f"The value '{value}' can't be used as socket name.\n"
+                "Make sure to use the right argument when calling the method."
+                )
         
     def __str__(self):
         return self.path
@@ -694,6 +710,8 @@ class TreeInterface:
         - socket_type (str) : socket type
         - parent (str | NodeTreeInterfacePanel = None) : the parent panel
         """
+        check_in_out(in_out)
+
         if ItemPath(name).is_root:
             raise AttributeError(f"A name must be provided to get a socket.")
         
@@ -702,6 +720,7 @@ class TreeInterface:
         # ---------------------------------------------------------------------------
         
         socket_path = ItemPath(parent) + ItemPath(name)
+
         if len(socket_path.stack) > 1:
             parent_panel = self.get_panel(socket_path.parent)
             if parent_panel is None:
@@ -720,6 +739,7 @@ class TreeInterface:
         count = rank
         found = None
         for item in items:
+
             if (item.item_type != 'SOCKET') or (item.parent.index != parent_index):
                 continue
             if item.in_out != in_out:
@@ -762,9 +782,10 @@ class TreeInterface:
         -------
         - NodeTreeInterfaceSocket : the created sockets
         """
+        check_in_out(in_out)
+
 
         NO_MODIFIER_UPDATE = ['NodeSocketMenu']
-
 
         # ---------------------------------------------------------------------------
         # Arguments checks
@@ -789,7 +810,7 @@ class TreeInterface:
         parent_panel = self.get_panel(socket_path.parent, create=True)
 
         # Try to recover from bin
-        socket = self.get_socket(socket_path.name, TreeInterface.BIN_PANEL, socket_type=socket_type)
+        socket = self.get_socket(in_out, socket_path.name, socket_type=socket_type, parent=TreeInterface.BIN_PANEL)
         created = False
 
         # Not found, let's create it
@@ -829,7 +850,15 @@ class TreeInterface:
             # Could fail for default_value (Menu for instance)
             if True:
                 if value is not None:
-                    setattr(socket, prop, value)
+                    try:
+                        setattr(socket, prop, value)
+                    except TypeError as e:
+                        enums = utils.get_enum_from_string(str(e))
+                        if str(value).upper() in enums:
+                            setattr(socket, prop, str(value).upper())
+                        else:
+                            raise e
+
             else:
                 try:
                     setattr(socket, prop, value)
@@ -900,6 +929,8 @@ class TreeInterface:
         -------
         - list of sockets
         """
+        check_in_out(in_out)
+
         parent_path = ItemPath(parent)
 
         # ---------------------------------------------------------------------------
@@ -951,7 +982,7 @@ class TreeInterface:
                 excl_sockets.append(socket.index)
 
         # ---------------------------------------------------------------------------
-        # Douple loop input and output then items
+        # Loop on sockets
         # ---------------------------------------------------------------------------
 
         sockets = []
@@ -995,10 +1026,11 @@ class TreeInterface:
 
             if enabled_only or free_only:
                 nsock = self.get_node_socket(socket)
+
                 if nsock is not None:
                     if enabled_only and not nsock.enabled:
                         continue
-                    if free_only and not utils.is_free(nsock):
+                    if in_out == 'INPUT' and free_only and not utils.is_free(nsock):
                         continue
 
             # ---------------------------------------------------------------------------
@@ -1126,6 +1158,9 @@ class TreeInterface:
         - NodeTreeInterfaceSocket : None if not found
         - list of NodeTreeInterfaceSocket is return_all is True
         """
+
+        check_in_out(in_out)
+
         sockets = []
         parent = self.get_panel(parent)
         parent_path = ItemPath(parent)
@@ -1319,6 +1354,8 @@ class TreeInterface:
         - list
         """
 
+        check_in_out(in_out, both=True)
+
         if socket_type is not None:
             socket_type = SocketType(socket_type).socket_id
         
@@ -1382,6 +1419,8 @@ class TreeInterface:
         -------
         - dict : shortest name -> socket
         """
+        check_in_out(in_out)
+
         items = [item for item in self.iterate(in_out, panels=False)]
         all_names = [ItemPath(item).get_names(False, True) for item in items]
 

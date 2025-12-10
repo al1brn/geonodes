@@ -430,9 +430,9 @@ class Node:
 
     def __repr__(self):
         s = str(self)
-        s += "\nInputs\n"
+        s += "\nInputs\n   - "
         s += "\n   - ".join([bsock.name for bsock in self._bnode.inputs])
-        s += "\nOutputs\n"
+        s += "\nOutputs\n   - "
         s += "\n   - ".join([bsock.name for bsock in self._bnode.outputs])
         s += "\n"
 
@@ -552,6 +552,8 @@ class Node:
                 parent       = panel,
             )
 
+            print("GET SOCKS", isocks)
+
             sockets = []
             for isock in isocks:
                 path = ItemPath(isock) - ItemPath(panel)
@@ -579,7 +581,7 @@ class Node:
 
         for name, socket in socks:
 
-            if free_only and not utils.is_free(socket):
+            if in_out == 'INPUT' and free_only and not utils.is_free(socket):
                 continue
 
             if panel_path != "" and not name.startswith(panel_path):
@@ -696,9 +698,8 @@ class Node:
                     if enabled_only and not bsocket.enabled:
                         continue
 
-                    if not free_only:
-                        if not utils.is_free(socket):
-                            continue
+                    if in_out == 'INPUT' and free_only and not utils.is_free(socket):
+                        continue
 
                     return socket
                 
@@ -1035,11 +1036,20 @@ class Node:
         value_socket_type = SocketType(value)
         
         # ===========================================================================
-        # Name is the index
+        # Name is the index or the identifier
+        # Note: some generated methods use index or identifier to identify sockets
+        # If a socket is identified, it won't be searched below
         # ===========================================================================
 
-        if isinstance(name, int):
-            name = utils.get_socket_name(self._bnode.inputs[name])
+        found_socket = None
+        if not self._has_dyn_in and name is not None:
+            if isinstance(name, int):
+                found_socket = self._bnode.inputs[name]
+            else:
+                for s in self._bnode.inputs:
+                    if s.identifier == name:
+                        found_socket = s
+                        break
 
         # ===========================================================================
         # Virtual socket : the input socket must exist (or auto data type)
@@ -1056,7 +1066,10 @@ class Node:
                 full_name = (ItemPath(panel) + name).path
 
             # The socket must exist
-            in_socket = self.get_socket('INPUT', full_name, value_socket_type, free_only=True, halt=halt)
+            if found_socket is None:
+                in_socket = self.get_socket('INPUT', full_name, value_socket_type, free_only=True, halt=halt)
+            else:
+                in_socket = found_socket
 
             # However, if auto data type we can create it
             if in_socket is None and auto:
@@ -1109,10 +1122,12 @@ class Node:
         # Get the input socket by its name
         # ---------------------------------------------------------------------------
 
-        full_name = (ItemPath(panel) + name).path
-
-        create_socket = create and self._has_dyn_in        
-        socket = self.get_socket('INPUT', full_name, value_socket_type, free_only=True, halt=not create_socket)
+        create_socket = create and self._has_dyn_in
+        if found_socket is None:
+            full_name = (ItemPath(panel) + name).path
+            socket = self.get_socket('INPUT', full_name, value_socket_type, free_only=True, halt=not create_socket)
+        else:
+            socket = found_socket
 
         # ---------------------------------------------------------------------------
         # Create the dynamic socket
@@ -1579,7 +1594,6 @@ class Node:
 
     @_color.setter
     def _color(self, value):
-        print("?????? COLOR")
         if value is None:
             self._bnode.use_custom_color = False
             return
@@ -1975,8 +1989,6 @@ class Group(Node):
         # ----------------------------------------------------------------------------------------------------
 
         super().__init__('Group', named_sockets=named_sockets, node_tree=node_tree, **sockets)
-
-
 
     # ----------------------------------------------------------------------------------------------------
     # Prefixed instantiation

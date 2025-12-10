@@ -29,6 +29,7 @@ updates
 - update :   2024/09/04
 - update :   2025/01/12
 - update :   2025/01/25 # UV Cylinder
+- update :   2025/12/08 # V5
 
 $ DOC START
 
@@ -62,6 +63,11 @@ arrows.demo()
 """
 
 from geonodes import *
+
+
+# ====================================================================================================
+# Create a cylinder with UV
+# ====================================================================================================
 
 def uv_cylinder():
     with GeoNodes("UV Cylinder"):
@@ -159,14 +165,14 @@ def demo():
 
         with Panel("Arrows"):
             scale      = Float(     1,           "Scale", 0,            tip="Vectors multiplicator")
-            use_log    = Boolean(False,          "Logarithm",           tip="Use a logarithm of vector lengths", single_value=True)
+            use_log    = Boolean(False,          "Logarithm",           tip="Use a logarithm of vector lengths")
             negative   = Float.Factor(0,         "Negative",     0, 1,  tip="Negative factor to pass as 'Negative', named attribute for shader")
 
         with Panel("Appearance"):
-            resol      = Integer(  12,           "Resolution",  3, 64,  tip="Arrows shaft resolution", single_value=True)
-            section    = Float(   .02,           "Section", 0., 1.,     tip="Arrows shaft radius", single_value=True)
-            use_sphere = Boolean(False,          "Sphere",              tip="Use a sphere for the head rather than a cone", single_value=True)
-            color      = Color((0., 0., 1., 1.), "Color",               tip="Color to pass as 'Color' named attribute for shader", single_value=True)
+            resol      = Integer(  12,           "Resolution",  3, 64,  tip="Arrows shaft resolution")
+            section    = Float(   .02,           "Section", 0., 1.,     tip="Arrows shaft radius")
+            use_sphere = Boolean(False,          "Sphere",              tip="Use a sphere for the head rather than a cone")
+            color      = Color((0., 0., 1., 1.), "Color",               tip="Color to pass as 'Color' named attribute for shader")
 
             shaft_mat  = Material("Arrow",       "Shaft",               tip="Material for the shaft")
             head_mat   = Material("Arrow",       "Head",                tip="Material for the head")
@@ -233,7 +239,7 @@ def demo():
     with GeoNodes("Arrow"):
 
         location = Vector(0, "Location", tip="Vector location")
-        vector   = Vector((1, 0, 0), "Vector", tip="Vector components", single_value=True)
+        vector   = Vector((1, 0, 0), "Vector", tip="Vector components")
 
         # ----- Create the points at the given location with Vectors attribute
 
@@ -242,7 +248,10 @@ def demo():
 
         # ----- Call the group with the same parameters
 
-        Group("Arrows", {'Geometry': cloud}, link_from='TREE').out()
+        #Group("Arrows", {'Geometry': cloud}, link_from='TREE').out()
+        node = Group("Arrows", {'Geometry': cloud})
+        node.link_inputs()
+        node.out()
 
     # ----------------------------------------------------------------------------------------------------
     # Single arrow defined by cylindrical components
@@ -262,7 +271,10 @@ def demo():
 
         # ----- Call the group with the same parameters
 
-        Group("Arrows", {'Geometry': cloud, 'Vector': vector}, link_from='TREE').out()
+        #Group("Arrows", {'Geometry': cloud, 'Vector': vector}, link_from='TREE').out()
+        node = Group("Arrows", {'Geometry': cloud, 'Vector': vector})
+        node.link_inputs(exclude=["Vector"])
+        node.out()
 
     # ----------------------------------------------------------------------------------------------------
     # Single arrow defined by its spherical components
@@ -284,7 +296,10 @@ def demo():
 
         # ----- Call the group with the same parameters
 
-        group_node = Group("Arrows", {'Geometry': cloud, 'Vector': vector}, link_from='TREE').out()
+        #group_node = Group("Arrows", {'Geometry': cloud, 'Vector': vector}, link_from='TREE').out()
+        node = Group("Arrows", {'Geometry': cloud, 'Vector': vector})
+        node.link_inputs(exclude=['Vectore'])
+        node.out()
 
     # ----------------------------------------------------------------------------------------------------
     # Any Arrow
@@ -299,10 +314,10 @@ def demo():
         trim0      = Float.Factor(0,         "Trim Sart", 0, 1,     tip="Curve trim start")
         trim1      = Float.Factor(1,         "Trim End", 0, 1,      tip="Curve trim end")
         resamp     = Integer(32,             "Resample", 10)
-        resol      = Integer(  12,           "Resolution",  3, 64,  tip="Arrows shaft resolution", single_value=True)
-        section    = Float(   .02,           "Section", 0., 1.,     tip="Arrows shaft radius", single_value=True)
-        color0     = Color((0., 0., 1., 1.), "Color 0",             tip="First color to pass as 'Color 0' named attribute for shader", single_value=True)
-        color1     = Color((1., 0., 0., 1.), "Color 1",             tip="Second color to pass as 'Color 1' named attribute for shader", single_value=True)
+        resol      = Integer(  12,           "Resolution",  3, 64,  tip="Arrows shaft resolution")
+        section    = Float(   .02,           "Section", 0., 1.,     tip="Arrows shaft radius")
+        color0     = Color((0., 0., 1., 1.), "Color 0",             tip="First color to pass as 'Color 0' named attribute for shader")
+        color1     = Color((1., 0., 0., 1.), "Color 1",             tip="Second color to pass as 'Color 1' named attribute for shader")
 
         shaft_mat  = Material("Arrow",       "Shaft",               tip="Material for the shaft")
         head_mat   = Material("Arrow",       "Head",                tip="Material for the head")
@@ -334,6 +349,7 @@ def demo():
             geo += head.switch_false(show_end)
 
         geo += shaft
+        geo = Mesh(geo)
         geo.faces.smooth = True
         geo.faces._Color   = color0
         geo.faces._Color_1 = color1
@@ -355,9 +371,13 @@ def demo():
 
     with GeoNodes("Arrows Show Case"):
 
-        count = Integer(100, "Count", 10, single_value=True)
-        seed = Integer(0, "Seed", single_value=True)
+        count = Integer(100, "Count", 10)
+        seed = Integer(0, "Seed")
 
         cloud = Cloud.Points(count=count, position=Vector.Random(-10, 10, seed=seed))
 
-        Group("Arrows", geometry=cloud, vector=Vector.Random(-1, 1, seed=seed + 1), link_from='TREE').out()
+        #Group("Arrows", geometry=cloud, vector=Vector.Random(-1, 1, seed=seed + 1), link_from='TREE').out()
+        node = Group("Arrows", geometry=cloud, vector=Vector.Random(-1, 1, seed=seed + 1))
+        node.link_inputs(None, exclude=['Vector", "Seed'])
+        node.out()
+        

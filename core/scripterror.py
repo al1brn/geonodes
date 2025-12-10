@@ -46,14 +46,39 @@ import inspect
 from pathlib import Path
 import bpy
 
-FULL_PATH = False
+# No stack is displayed
+NO_STACK = False
+
+# If True, the errors coming from core files are omitted
+IGNORE_CORE = True
+
+# No stack is returned if keyword argument is not None
 NO_STACK_ON_KEYWORD = True
-NO_STACK = True
+
+# Return file full path
+FULL_PATH = False
+
+# ====================================================================================================
+# Check if a file_name belongs to core module
+# ====================================================================================================
+
+def is_in_core(file_name):
+    p = Path(file_name)
+
+    parent = p.parent.name
+    grandparent = p.parent.parent.name
+
+    return parent == "core" or (parent == "generated" and grandparent == "core")
+
+# ====================================================================================================
+# Geonodes specific Exception
+# ====================================================================================================
 
 class NodeError(Exception):
 
     def __init__(self, *messages, keyword=None, **kwargs):
-        self.message = "Geometry nodes error\n"
+
+        self.message = "\n\nGeometry nodes error\n"
 
         if messages:
             self.message += '-'*100 + "\n"
@@ -115,8 +140,9 @@ class NodeError(Exception):
         # - code
 
         stack = []
+        insp_stack = inspect.stack()
 
-        for i_frame, frame_info in enumerate(inspect.stack()):
+        for i_frame, frame_info in enumerate(insp_stack):
 
             # ----- Generated source code
 
@@ -124,6 +150,9 @@ class NodeError(Exception):
                 continue
 
             path = Path(frame_info.filename)
+
+            if IGNORE_CORE and is_in_core(path) and i_frame < (len(insp_stack) - 1):
+                continue
 
             # ----- Python embedded in a blend file
             # "file.blend/text_name" or "/text_name"" if the file is not saved
@@ -148,7 +177,7 @@ class NodeError(Exception):
                 code_lines = []
                 for i in range(code_line0, code_line1):
                     try:
-                        code_lines.append(f"{i}> {lines[i].body}")
+                        code_lines.append(f"{i + 1}> {lines[i].body}")
                     except:
                         pass
             else:
@@ -186,7 +215,12 @@ class NodeError(Exception):
 
         stack = ["Traceback (most recent call last):\n"]
 
-        for item in NodeError.get_stack()[2:]:
+        # Ignore only the two first items  there the core is not ignored
+        user_stack = NodeError.get_stack()
+        if not IGNORE_CORE:
+            user_stack = user_stack[2:]
+
+        for item in user_stack:
             file_name = item['file_name']
             lineno = item['lineno']
             stack.append(f"File '{file_name}', line {lineno}")

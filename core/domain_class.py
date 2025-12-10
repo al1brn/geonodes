@@ -46,6 +46,7 @@ from inspect import Arguments
 import bpy
 
 from . import utils
+from .scripterror import NodeError
 from .sockettype import SocketType
 from .treeclass import Tree, Layout
 from .nodeclass import Node
@@ -169,13 +170,18 @@ class Domain(Geom, NodeCache):
 
     def __setattr__(self, name, value):
 
-        if name in Domain.__slots__:
+        if name in Domain.__slots__ or name in dir(type(self)):
             super().__setattr__(name, value)
             return
         
         user_name = name.replace("_", " ").strip()
-        
-        self.store_named_attribute(user_name, value)
+        if len(user_name) and user_name[0] == user_name[0].upper():
+            self.store_named_attribute(user_name, value)
+
+        raise NodeError(
+            f"{type(self).__name__} domain doesn't have an attribute named '{name}'.\n"
+            f"If you want to create a Named Attribute on the domain, the name must start with an uppercase character, '{name.title()}' for instance."
+            )
 
     # ====================================================================================================
     # Sample index

@@ -50,14 +50,14 @@ __license__ = "GNU GPL V3"
 
 
 from .scripterror import NodeError
-from .import constants
 from .import utils
+from .import blender
 from .utils import Break
 from .treeinterface import ItemPath
 from .sockettype import SocketType
 from .treeinterface import TreeInterface
 from .treeclass import Tree
-from .nodeclass import Node
+from .nodeclass import Node, Group
 from .nodezone import ZoneNode,ZoneIterator
 
 # =============================================================================================================================
@@ -489,11 +489,10 @@ class Socket(NodeCache):
         self._bsocket.pin_gizmo = value
 
     # ====================================================================================================
-    # Dynamic attributes
-    # Can be a peer socket name
-    # Can be either a named attribute or a sibling socket
-    # - peer socket: _ and a name starting with a Capital
-    # - sibling socket : the socket name or socket named ended with _
+    # A dynamic attribute can be:
+    # - a peer socket : an output socket of the owning node
+    # - a group method
+    # To avoid names collision, the attribute name can be suffixed by '_' which is ignored
     # ====================================================================================================
 
     # ----------------------------------------------------------------------------------------------------
@@ -502,18 +501,89 @@ class Socket(NodeCache):
 
     def __getattr__(self, name):
 
-        peer_name = name
+        # Ignore the ending '_' char
+        true_name = name
         if name[-1] == '_':
-            peer_name = name[:-1]
-            if peer_name == "" or peer_name[-1] == '_':
+            true_name = name[:-1]
+            if true_name == "" or true_name[-1] == '_':
                 raise AttributeError(f"Socket {self} doesn't have peer socket named '{name}'")
             
-        try:
-            socket = self.node.get_socket('OUTPUT', peer_name, None)
-        except AttributeError as e:
-            raise AttributeError(f"Socket {self} doesn't have peer socket named '{name}'.\n {str(e)}")
+        sc_name = utils.snake_case(true_name)
+            
+        # ---------------------------------------------------------------------------
+        # Another node output socket
+        # ---------------------------------------------------------------------------
+            
+        socket = self.node.get_socket('OUTPUT', true_name, None, halt=False)
+        if socket is not None:
+            return socket
         
-        return socket
+        # ---------------------------------------------------------------------------
+        # A group
+        # ---------------------------------------------------------------------------
+
+        trees = utils.get_available_groups(self.node._tree._btree.bl_idname)
+        node_tree = None
+        for group_name, spec in trees.items():
+            if utils.snake_case(group_name) == sc_name:
+                node_tree = blender.load_node_group(spec)
+                break
+
+        if node_tree is not None:
+
+            def group_call(named_sockets={}, **sockets):
+                
+                all_sockets = {**named_sockets, **sockets}
+
+                new_sockets = {**named_sockets}
+
+                check_selec = 'Selection' not in all_sockets and 'selection' not in all_sockets and self._socket_type == 'GEOMETRY'
+
+                interf = TreeInterface(node_tree)
+                socks = interf.get_sockets('INPUT')
+                for isock, sock in enumerate(socks):
+
+                    # Current socket is the proper type
+                    if SocketType(sock) == self._socket_type:
+                        if sock.name not in all_sockets and utils.snake_case(sock.name) not in all_sockets:
+
+                            # Set value to self
+                            new_sockets[sock.name] = self
+
+                            # Selection following a Geometry 
+                            if check_selec and isock < len(socks) - 1:
+                                next_sock = socks[isock + 1]
+                                if next_sock.name == 'Selection' and SocketType(next_sock) == 'BOOLEAN':
+                                    new_sockets['Selection'] = self.get_selection()
+                            break
+
+                return Group(node_tree.name, named_sockets = new_sockets, **sockets)._out
+            
+            # Returns the function creating the group with the proper arguments
+            return group_call
+        
+        # ---------------------------------------------------------------------------
+        # Error message
+        # ---------------------------------------------------------------------------
+
+        is_node = true_name in dir(self.node)
+
+        node_names = list(set([sock.name for sock in self.node._bnode.outputs]))
+        tree_names = list(trees.keys())
+
+        node_prox = utils.prox_names(true_name, node_names)
+        tree_prox = utils.prox_names(true_name, tree_names)
+
+        if is_node:
+            msg = f"Perhaps you want to call the node method '{true_name}', use syntax: 'socket.node.{true_name}(...)' instead of 'socket.{true_name}'"
+        elif len(node_prox):
+            msg = f"Perhaps you wanted to access the peer socket '{node_prox[0]}' ({utils.snake_case(node_prox[0])})"
+        elif len(tree_prox):
+            msg = f"Perhaps you wanted to call the group '{tree_prox[0]}' ({utils.snake_case(tree_prox[0])})"
+        else:
+            msg = f"If you try to access a peer socket, the node sockets are given below:\n{repr(self.node)}"
+
+        raise NodeError(f"{type(self).__name__} socket doesn't have an attribute named '{name}'.\n{msg}")
 
     
 
@@ -761,7 +831,8 @@ class Socket(NodeCache):
         -------
         - Socket
         """
-        return Node('Switch', {'Switch': condition, 'False': false, 'True': true}, input_type=cls.SOCKET_TYPE)._out
+        input_type = SocketType(cls.SOCKET_TYPE).items_type
+        return Node('Switch', {'Switch': condition, 'False': false, 'True': true}, input_type=input_type)._out
 
     # ----------------------------------------------------------------------------------------------------
     # Method version

@@ -158,52 +158,110 @@ class Panel:
 # ====================================================================================================
 
 class Layout:
-    def __init__(self, label=None, color=None):
+    def __init__(self, title: str = "", color: str = None, node = None):
         """ Node Frame
 
         All nodes created when a Layout is open are placed in this layout.
         If the 'color' argument is None, a random color is used
 
+        If the node argument is None, the layout parent is the current layout, otherwise,
+        the layout becomes the parent of the node and the previous parent of the node
+        becomes the layout parent.
+
         ``` python
         with GeoNodes("Layout Demo"):
 
             with Layout("Some maths"):
-                z = gnmath.atan2(nd.position.z, Vector((nd.position.x, nd.position.y, 0)).length)
+                a = Integer(1) + 1
 
             geo = Mesh()
-            geo.points.offset = (0, 0, z)
+            geo.points.offset = (0, 0, a)
 
             geo.out()
         ```
 
         Arguments
         ---------
-        - label (str = None) : Layout title
+        - title (str = "") : Layout title
         - color (blender color = None) : Layout color (randomly generated if None)
+        - node (Node = None) : the layout is inserted as direct parent of the node
         """
-        from .nodeclass import Node
 
         self.tree  = Tree.current_tree()
-        self.frame = Node('Frame')
-        self.title = label
-        if color is not None:
-            self.frame._bnode.use_custom_color = True
-            self.frame._bnode.color = self.tree._get_color(color)
+        self.bnode = self.tree._btree.nodes.new('NodeFrame')
+        self.bnode.select = False
+        self.transparent = title is None
+        if not self.transparent:
+            self.title = title
+
+        self.color = self.tree._get_color(color)
+
+        # Parent from the stack
+        if len(self.tree._layouts):
+            self.bnode.parent = self.tree._layouts[-1].bnode
+
+        # There is a node to become the parent of
+        if node is not None:
+
+            # The node parent can override the current parent
+            if node._bnode.parent is not None:
+                self.bnode.parent = node._bnode.parent
+
+            # Include the node
+            self.include_node(node)
+
+    def __str__(self):
+        nodes = [n for n in self.tree._nodes if n._bnode.parent == self.bnode]
+        return f"<Layout '{self.title}', {len(nodes)} nodes>"
+
+    # ====================================================================================================
+    # Include a node
+    # ====================================================================================================
+
+    def include_node(self, node):
+        if node._bnode.bl_idname not in ('NodeGroupOutput',):
+            if self.transparent:
+                node._bnode.parent = self.bnode.parent
+            else:
+                node._bnode.parent = self.bnode
+
+    # ====================================================================================================
+    # Title / color
+    # ====================================================================================================
 
     @property
     def title(self):
-        return self.frame._bnode.label
+        return self.bnode.label
     
     @title.setter
     def title(self, value):
         if value is not None:
-            self.frame._bnode.label = value
+            self.bnode.label = value
+
+    @property
+    def color(self):
+        return self.bnode.color
+    
+    @color.setter
+    def color(self, value):
+        if value is None:
+            self.bnode.use_custom_color = False
+        else:
+            if isinstance(value, str):
+                value = Tree._get_color(value)
+
+            self.bnode.use_custom_color = True
+            self.bnode.color = value
+
+    # ====================================================================================================
+    # Context
+    # ====================================================================================================
 
     def push(self):
-        self.tree._layouts.append(self.frame._bnode)
+        self.tree._layouts.append(self)
 
     def pop(self):
-        self.tree._layouts.pop()
+        assert self.tree._layouts.pop() == self, f"Shouldn't happen with Layout '{self.title}'"
 
     def __enter__(self):
         self.push()
@@ -276,9 +334,8 @@ class Tree:
         # Stacks
         # ---------------------------------------------------------------------------
 
-        self._panels        = [ItemPath(None)]
-        #self._capture_inout = []
-        self._layouts       = []
+        self._panels  = [ItemPath(None)]
+        self._layouts = []
 
         # Input / output socket creation are performed by node with dynamic
         # sockets (either with items or with tree_node)
@@ -287,9 +344,6 @@ class Tree:
         
         self._output_stack  = []
         self._input_stack   = []
-
-        # Exit error
-        self._exit_error = False
 
         # Prefix
         if prefix is None:
@@ -384,7 +438,7 @@ class Tree:
     # Pop from the stack
     # ----------------------------------------------------------------------------------------------------
 
-    def pop(self):
+    def pop(self, error=False):
         """ > Remove this tree from the stack
 
         > [!IMPORTANT]
@@ -405,9 +459,16 @@ class Tree:
             raise RuntimeError(f"Error in tree stack management")
 
         # Empty the interface bin
-
-        if not self._exit_error and self._interface is not None:
+        if (not error) and self._interface is not None:
             self._interface.empty_bin()
+
+        # Last node in error
+        if error and len(self._nodes):
+            for node in reversed(self._nodes):
+                if node._bnode.bl_idname in ['NodeGroupOutput', 'NodeGroupInput']:
+                    continue
+                utils.set_node_error(node._bnode)
+                break
 
         # Arrange the nodes
         self.arrange()
@@ -428,11 +489,9 @@ class Tree:
 
     def __exit__(self, type, exc_value, traceback):
 
-        # In case of error, the sockets are not cleaned
-        if not isinstance(exc_value, Break):
-            self._exit_error = exc_value is not None
+        ok = exc_value is None or isinstance(exc_value, Break)
 
-        self.pop()
+        self.pop(not ok)
 
         if isinstance(exc_value, Break):
             return True
@@ -639,8 +698,9 @@ class Tree:
 
     def register_node(self, node):
         self._nodes.append(node)
-        if len(self._layouts) and node._bnode.bl_idname != 'NodeGroupOutput':
-            node._bnode.parent = self._layouts[-1]
+        if len(self._layouts):
+            self._layouts[-1].include_node(node)
+
         return node
 
 
@@ -864,6 +924,7 @@ class Tree:
         rng = Tree.current_tree()._rng
         if name is None:
             return tuple(rng.uniform(0., .7, 3))
+        
         elif isinstance(name, str):
             if name in ['OP', 'OPERATION']:
                 return (.406, .541, .608)
@@ -874,7 +935,8 @@ class Tree:
             elif name == 'WARNING':
                 return (.949, .574, .119)
             else:
-                raise Exception(f"Non referenced color", name)
+                return utils.value_to_color(value)
+                #raise Exception(f"Non referenced color", name)
         else:
             return name
 

@@ -128,14 +128,14 @@ class GeoNodes(Tree):
     # =============================================================================================================================
     # End of construction
 
-    def pop(self):
+    def pop(self, error=False):
             
         if self._btree.is_modifier:
             self._interface.set_in_geometry(create = False)
             self._interface.set_out_geometry()
             _ = self.output_node
 
-        super().pop()
+        super().pop(error)
 
 
     # =============================================================================================================================

@@ -122,14 +122,11 @@ if PRODUCTION:
 
     from .core import gnmath, nd
 
-
-# ----------------------------------------------------------------------------------------------------
-# Shader
+    # Shader
 
     from .core import snd, Shader, VolumeShader, ShaderNodes
 
-# ----------------------------------------------------------------------------------------------------
-# Register
+    # Register
 
     from .core import treearrange
     treearrange.register()
