@@ -47,7 +47,7 @@ from . import utils
 from .socket_class import Socket
 from .geom import Geom
 from . import generated
-from .nodeclass import ZoneIterator
+from .treeinterface import ItemPath
 
 # ====================================================================================================
 # Geometry class
@@ -55,18 +55,16 @@ from .nodeclass import ZoneIterator
 
 class Geometry(generated.Geometry, Geom):
 
-    __slots__ = Socket.__slots__ + ['_geo', '_selection']
+    __slots__ = Socket.__slots__ + ('_geo', '_selection')
 
     SOCKET_TYPE = 'GEOMETRY'
 
     def __init__(self,
-        value: Socket = None, 
-        name: str = None, 
-        tip: str = '',
-        panel: str = "",
-        optional_label: bool = False,
-        hide_value: bool = False,
-        hide_in_modifier: bool = False,
+        value               : Socket = None, 
+        name                : str = None,
+        tip                 : str = '',
+        panel               : str = "",
+        **props,
     ):
         """ Socket of type 'GEOMETRY'.
 
@@ -84,9 +82,7 @@ class Geometry(generated.Geometry, Geom):
         - name (str = None) : Create an Group Input socket with the provided str
         - tip  (str = '') : Property description
         - panel (str = "") : Panel name
-        - optional_label  (bool = False) : Property optional_label
-        - hide_value  (bool = False) : Property hide_value
-        - hide_in_modifier  (bool = False) : Property hide_in_modifier
+        - props (dict) : input properties
         """
 
         # ---------------------------------------------------------------------------
@@ -96,33 +92,8 @@ class Geometry(generated.Geometry, Geom):
         self._geo       = self
         self._selection = None
 
-        # ---------------------------------------------------------------------------
-        # Socket
-        # ---------------------------------------------------------------------------
-
-        bsock = utils.get_bsocket(value)
-
-        # ------------------------------------------------------------
-        # bsock is None: we get the Geometry from group input socket
-        # ------------------------------------------------------------
-
-        if bsock is None:
-
-            # Ensure name
-            if name is None:
-                name = type(self).__name__
-
-            # Create the group input socket
-            bsock = self._create_input_socket(name=name,
-                tip=tip, panel=panel, optional_label=optional_label, hide_value=hide_value,
-                hide_in_modifier=hide_in_modifier)
-
-        # ------------------------------------------------------------
-        # Super init
-        # ------------------------------------------------------------
-
-        super().__init__(bsock)
-
+        super().__init__(value, name=name, tip=tip, panel=panel, **props)
+        
     # ====================================================================================================
     # Geometry Operations
     # ====================================================================================================

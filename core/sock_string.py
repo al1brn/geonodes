@@ -55,45 +55,6 @@ class String(generated.String):
 
     SOCKET_TYPE = 'STRING'
 
-    def __init__(self, 
-        value: Socket = None,
-        name: str = None,
-        tip: str = '',
-        panel: str = "",
-        optional_label: bool = False,
-        hide_value: bool = False,
-        hide_in_modifier: bool = False,
-        subtype: str = 'NONE',
-        ):
-        """ Socket of type String
-
-        Node <&Node String>
-
-        A group input socket of type String is created if the name is not None.
-
-        Arguments
-        ---------
-        - value (str or Socket = None) : initial value
-        - name (str = None) : group input socket name if not None
-        - tip  (str = '') : Property description
-        - panel (str = "") : Panel name
-        - optional_label  (bool = False) : Property optional_label
-        - hide_value  (bool = False) : Property hide_value
-        - hide_in_modifier  (bool = False) : Property hide_in_modifier
-        - subtype (str = 'NONE') : Socket sub type in ('NONE', 'FILE_PATH')
-        """
-
-        bsock = utils.get_bsocket(value)
-        if bsock is None:
-            if name is None:
-                bsock = Node('String', string=str(value))._out
-            else:
-                bsock = self._create_input_socket(value=value, name=name, tip=tip,
-                    panel=panel, optional_label=optional_label, hide_value=hide_value,
-                    hide_in_modifier=hide_in_modifier, subtype=subtype)
-                
-        super().__init__(bsock)
-
     # ====================================================================================================
     # Operators
 

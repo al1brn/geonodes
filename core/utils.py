@@ -357,6 +357,9 @@ def get_bsocket(socket):
     else:
         return getattr(socket, '_bsocket', None)
     
+def is_empty_socket(value):
+    return hasattr(value, '_bsocket') and hasattr(value, '_is_empty') and value._is_empty()
+    
 def is_socket(socket):
     return get_bsocket(socket) is not None
 
@@ -613,6 +616,11 @@ def get_socket_info(value):
 # Wrap a NodeSocket into its class
 # ====================================================================================================
 
+def request_empty(value) -> bool:
+    """ Value is equal to constant EMPTY_SOCKET
+    """
+    return isinstance(value, str) and value == constants.EMPTY_SOCKET
+
 # ----------------------------------------------------------------------------------------------------
 # Get the socket class
 # ----------------------------------------------------------------------------------------------------
@@ -731,30 +739,6 @@ def get_node_bl_idname(node_name, tree_type, halt=True):
 def get_node_name(tree_type, bl_idname):
     return list(constants.NODE_NAMES[tree_type].keys())[list(constants.NODE_NAMES[tree_type].values()).index(bl_idname)]
 
-# ====================================================================================================
-# Select the proper data type in the provided dict
-# Used in generated source code
-# ====================================================================================================
-
-def get_argument_data_type_OLD(argument, type_to_value, node_name=None, arg_name=None):
-
-    if argument is None:
-        return list(type_to_value.values())[0]
-    
-    bsocket = get_bsocket(argument)
-    if bsocket is None:
-        socket_type = get_value_socket_type(argument)
-    else:
-        socket_type = bsocket.type
-        
-    if socket_type in type_to_value:
-        return type_to_value[socket_type]
-
-    if node_name is not None and arg_name is not None:
-        print(f"CAUTION node '{node_name}': argument '{arg_name}' type ('{socket_type}') is not in {list(type_to_value.keys())}.")
-
-    return list(type_to_value.values())[0]
-
 # ----------------------------------------------------------------------------------------------------
 # data_type argument can be derived from the argument passed to the node
 # ----------------------------------------------------------------------------------------------------
@@ -784,56 +768,6 @@ def get_data_type_argument(tree_type, bl_idname, socket_type):
         return dts[socket_type]
     raise RuntimeError(f"Socket type '{socket_type}' is not valid for data_type attribute in node {bl_idname}. Valids are {list(dts.keys())}")
 
-
-# =============================================================================================================================
-# Signature management
-# =============================================================================================================================
-
-def get_bnode_OLD(node):
-    if isinstance(node, bpy.types.Node):
-        return node
-    elif isinstance(node, bpy.types.NodeSocket):
-        return node.node
-    elif '_bnode' in node.__dict__:
-        return getattr(node, '_bnode')
-    elif '_bsocket' in node.__dict__:
-        return getattr(node, '_bsocket').node
-    
-    raise RuntimeError(f"Node or Socket expected, not {type(node)}")
-
-def get_signature_OLD(node, enabled_only=False, in_out='INPUT'):
-
-    node = get_bnode(node)
-    sockets = node.inputs if in_out == 'INPUT' else node.outputs
-
-    sig   = {}
-    names = {}
-    for socket in sockets:
-        if socket.type == 'CUSTOM':
-            continue
-        if enabled_only and not socket.enabled:
-            continue
-
-        name = socket.name
-        if socket.name in names:
-            names[name] += 1
-            name = f"{name}.{names[name]:03d}"
-        else:
-            names[name] = 0
-
-        sig[name] = {'bl_idname': socket.bl_idname, 'socket_type': socket.type, 'item_type': get_value_socket_type(socket)}
-
-    return sig
-
-def set_signature_OLD(items, signature):
-
-    assert isinstance(items, bpy.types.bpy_prop_collection), f"Utils.set_signature: bad type for items '{type(items)}'"
-
-    sockets = {}
-    for name, d in signature.items():
-        sockets[name] = items.new(d['item_type'], name)
-
-    return sockets
 
 # =============================================================================================================================
 # Conversion of enum parameters
@@ -1145,217 +1079,13 @@ def get_menu_enums(menu):
     assert menu.bl_idname == 'NodeSocketMenu'
     return get_enums(menu, 'default_value')
 
-
-# =============================================================================================================================
+# ====================================================================================================
 # Value to color
-
-COLORS = {
-    'aliceblue'               : 'f0f8ff',
-    'antiquewhite'            : 'faebd7',
-    'aqua'                    : '00ffff',
-    'aquamarine'              : '7fffd4',
-    'azure'                   : 'f0ffff',
-    'beige'                   : 'f5f5dc',
-    'bisque'                  : 'ffe4c4',
-    'black'                   : '000000',
-    'blanchedalmond'          : 'ffebcd',
-    'blue'                    : '0000ff',
-    'blueviolet'              : '8a2be2',
-    'brown'                   : 'a52a2a',
-    'burlywood'               : 'deb887',
-    'cadetblue'               : '5f9ea0',
-    'chartreuse'              : '7fff00',
-    'chocolate'               : 'd2691e',
-    'coral'                   : 'ff7f50',
-    'cornflowerblue'          : '6495ed',
-    'cornsilk'                : 'fff8dc',
-    'crimson'                 : 'dc143c',
-    'cyan'                    : '00ffff',
-    'darkblue'                : '00008b',
-    'darkcyan'                : '008b8b',
-    'darkgoldenrod'           : 'b8860b',
-    'darkgray'                : 'a9a9a9',
-    'darkgrey'                : 'a9a9a9',
-    'darkgreen'               : '006400',
-    'darkkhaki'               : 'bdb76b',
-    'darkmagenta'             : '8b008b',
-    'darkolivegreen'          : '556b2f',
-    'darkorange'              : 'ff8c00',
-    'darkorchid'              : '9932cc',
-    'darkred'                 : '8b0000',
-    'darksalmon'              : 'e9967a',
-    'darkseagreen'            : '8fbc8f',
-    'darkslateblue'           : '483d8b',
-    'darkslategray'           : '2f4f4f',
-    'darkslategrey'           : '2f4f4f',
-    'darkturquoise'           : '00ced1',
-    'darkviolet'              : '9400d3',
-    'deeppink'                : 'ff1493',
-    'deepskyblue'             : '00bfff',
-    'dimgray'                 : '696969',
-    'dimgrey'                 : '696969',
-    'dodgerblue'              : '1e90ff',
-    'firebrick'               : 'b22222',
-    'floralwhite'             : 'fffaf0',
-    'forestgreen'             : '228b22',
-    'fuchsia'                 : 'ff00ff',
-    'gainsboro'               : 'dcdcdc',
-    'ghostwhite'              : 'f8f8ff',
-    'gold'                    : 'ffd700',
-    'goldenrod'               : 'daa520',
-    'gray'                    : '808080',
-    'grey'                    : '808080',
-    'green'                   : '008000',
-    'greenyellow'             : 'adff2f',
-    'honeydew'                : 'f0fff0',
-    'hotpink'                 : 'ff69b4',
-    'indianred '              : 'cd5c5c',
-    'indigo  '                : '4b0082',
-    'ivory'                   : 'fffff0',
-    'khaki'                   : 'f0e68c',
-    'lavender'                : 'e6e6fa',
-    'lavenderblush'           : 'fff0f5',
-    'lawngreen'               : '7cfc00',
-    'lemonchiffon'            : 'fffacd',
-    'lightblue'               : 'add8e6',
-    'lightcoral'              : 'f08080',
-    'lightcyan'               : 'e0ffff',
-    'lightgoldenrodyellow'    : 'fafad2',
-    'lightgray'               : 'd3d3d3',
-    'lightgrey'               : 'd3d3d3',
-    'lightgreen'              : '90ee90',
-    'lightpink'               : 'ffb6c1',
-    'lightsalmon'             : 'ffa07a',
-    'lightseagreen'           : '20b2aa',
-    'lightskyblue'            : '87cefa',
-    'lightslategray'          : '778899',
-    'lightslategrey'          : '778899',
-    'lightsteelblue'          : 'b0c4de',
-    'lightyellow'             : 'ffffe0',
-    'lime'                    : '00ff00',
-    'limegreen'               : '32cd32',
-    'linen'                   : 'faf0e6',
-    'magenta'                 : 'ff00ff',
-    'maroon'                  : '800000',
-    'mediumaquamarine'        : '66cdaa',
-    'mediumblue'              : '0000cd',
-    'mediumorchid'            : 'ba55d3',
-    'mediumpurple'            : '9370db',
-    'mediumseagreen'          : '3cb371',
-    'mediumslateblue'         : '7b68ee',
-    'mediumspringgreen'       : '00fa9a',
-    'mediumturquoise'         : '48d1cc',
-    'mediumvioletred'         : 'c71585',
-    'midnightblue'            : '191970',
-    'mintcream'               : 'f5fffa',
-    'mistyrose'               : 'ffe4e1',
-    'moccasin'                : 'ffe4b5',
-    'navajowhite'             : 'ffdead',
-    'navy'                    : '000080',
-    'oldlace'                 : 'fdf5e6',
-    'olive'                   : '808000',
-    'olivedrab'               : '6b8e23',
-    'orange'                  : 'ffa500',
-    'orangered'               : 'ff4500',
-    'orchid'                  : 'da70d6',
-    'palegoldenrod'           : 'eee8aa',
-    'palegreen'               : '98fb98',
-    'paleturquoise'           : 'afeeee',
-    'palevioletred'           : 'db7093',
-    'papayawhip'              : 'ffefd5',
-    'peachpuff'               : 'ffdab9',
-    'peru'                    : 'cd853f',
-    'pink'                    : 'ffc0cb',
-    'plum'                    : 'dda0dd',
-    'powderblue'              : 'b0e0e6',
-    'purple'                  : '800080',
-    'rebeccapurple'           : '663399',
-    'red'                     : 'ff0000',
-    'rosybrown'               : 'bc8f8f',
-    'royalblue'               : '4169e1',
-    'saddlebrown'             : '8b4513',
-    'salmon'                  : 'fa8072',
-    'sandybrown'              : 'f4a460',
-    'seagreen'                : '2e8b57',
-    'seashell'                : 'fff5ee',
-    'sienna'                  : 'a0522d',
-    'silver'                  : 'c0c0c0',
-    'skyblue'                 : '87ceeb',
-    'slateblue'               : '6a5acd',
-    'slategray'               : '708090',
-    'slategrey'               : '708090',
-    'snow'                    : 'fffafa',
-    'springgreen'             : '00ff7f',
-    'steelblue'               : '4682b4',
-    'tan'                     : 'd2b48c',
-    'teal'                    : '008080',
-    'thistle'                 : 'd8bfd8',
-    'tomato'                  : 'ff6347',
-    'turquoise'               : '40e0d0',
-    'violet'                  : 'ee82ee',
-    'wheat'                   : 'f5deb3',
-    'white'                   : 'ffffff',
-    'whitesmoke'              : 'f5f5f5',
-    'yellow'                  : 'ffff00',
-    'yellowgreen'             : '9acd32',
-}
-
-def str_is_color(s: str) -> bool:
-    if s.lower() in COLORS:
-        return True
-
-    if s.startswith("0x"):
-        s = s[2:]
-    if s.startswith('#'):
-        s = s[1:]
-
-    if len(s) not in [6, 8]:
-        return False
-
-    for c in s.lower():
-        if not c in '0123456789abcdef':
-            return False
-
-    return True
-
-def linear_rgb(c):
-    if c <= .04045:
-        return c/12.92
-    else:
-        return ((c + .055)/1.055)**2.4
+# ====================================================================================================
 
 def value_to_color(value):
+    return SocketType('COLOR').get_default_from_value(value)
 
-    if np.shape(value) == (3,):
-        return (value[0], value[1], value[2], 1)
-
-    elif np.shape(value) == (4,):
-        return value
-
-    elif isinstance(value, str):
-        if not str_is_color(value):
-            raise NodeError(f"Color code error: the value '{value}' is not a valid color hexa value.")
-
-        s = COLORS.get(value.lower(), value)
-
-        if s.startswith("0x"):
-            s = s[2:]
-        if s.startswith('#'):
-            s = s[1:]
-
-        if True:
-            a = [linear_rgb(int(s[2*i:2*i+2], 16)/255) for i in range(len(s)//2)]
-        else:
-            a = [int(s[2*i:2*i+2], 16)/255 for i in range(len(s)//2)]
-        if len(a) == 3:
-            a.append(1.)
-
-        print("utils value to color", value, '->', a)
-
-        return a
-
-    else:
-        return value_to_array(value, (4,))
 
 # =============================================================================================================================
 # Some utilities
@@ -1409,34 +1139,14 @@ def check_link(link, halt=False):
 
     return False
 
-# =============================================================================================================================
-# Get a Blender Data resource
 
-def get_blender_resource(socket_type, value):
-
-    spec = {
-        'OBJECT':     {'coll': bpy.data.objects,     'type': bpy.types.Object},
-        'COLLECTION': {'coll': bpy.data.collections, 'type': bpy.types.Collection},
-        'IMAGE':      {'coll': bpy.data.images,      'type': bpy.types.Image},
-        'MATERIAL':   {'coll': bpy.data.materials,   'type': bpy.types.Material},
-        'TEXTURE':    {'coll': bpy.data.textures,    'type': bpy.types.Texture},
-        }[socket_type]
-
-    if value is None:
-        return None
-
-    if isinstance(value, spec['type']):
-        return value
-    else:
-        return spec['coll'].get(value)
-
-def get_object(value):
-    return get_blender_resource('OBJECT', value)
 
 # =============================================================================================================================
 # Get a python value compatible with socket default_value
 
 def python_value_for_socket(value, socket_type):
+
+    from . import blender
 
     if value is None:
         return None
@@ -1466,7 +1176,7 @@ def python_value_for_socket(value, socket_type):
         return str(value)
 
     elif socket_type in ['COLLECTION', 'OBJECT', 'IMAGE', 'MATERIAL']:
-        return get_blender_resource(socket_type, value)
+        return get_resource(socket_type, value)
 
     else:
         raise NodeError(f"python_value_for_socket error: impossible to build a value from '{value}' for socket '{socket_type}'")

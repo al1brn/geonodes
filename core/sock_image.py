@@ -47,46 +47,12 @@ from .treeclass import Tree
 from .nodeclass import Node
 from .socket_class import Socket
 from . import generated
+from . import blender
 
 
 class Image(generated.Image):
 
     SOCKET_TYPE = 'IMAGE'
-
-    def __init__(self, 
-        value: Socket | str = None, 
-        name: str = None, 
-        tip: str = '',
-        panel: str = "",
-        optional_label: bool = False,
-        hide_value: bool = False,
-        hide_in_modifier: bool = False,
-        ):
-        """ Class Image data socket
-
-        Node <&Node Image>
-
-        Arguments
-        ---------
-        - value (bpy.types.Image or str = None) : image or image name in bpy.data.images
-        - name (str = None) : create a group input socket of type Image if not None
-        - tip  (str = '') : Property description
-        - panel (str = "") : Panel name
-        - optional_label  (bool = False) : Property optional_label
-        - hide_value  (bool = False) : Property hide_value
-        - hide_in_modifier  (bool = False) : Property hide_in_modifier
-        """
-        bsock = utils.get_bsocket(value)
-        if bsock is None:
-            image = utils.get_blender_resource('IMAGE', value)
-            if name is None:
-                bsock = Node('Image', image=image)._out
-            else:
-                bsock = self._create_input_socket(name=name, tip=tip,
-                    panel=panel, optional_label=optional_label, hide_value=hide_value,
-                    hide_in_modifier=hide_in_modifier)
-
-        super().__init__(bsock)
 
     # ====================================================================================================
     # Class test    

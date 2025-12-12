@@ -48,47 +48,13 @@ from .treeclass import Tree
 from .nodeclass import Node
 from .socket_class import Socket
 from . import generated
+from . import blender
 
 
 class Material(generated.Material):
 
     SOCKET_TYPE = 'MATERIAL'
 
-    def __init__(self, 
-        value: Socket = None, 
-        name: str = None, 
-        tip: str = '',
-        panel: str = "",
-        optional_label: bool = False,
-        hide_value: bool = False,
-        hide_in_modifier: bool = False,
-                 ):
-        """ Class Material data socket
-
-        Node <&Node Material>
-
-        Arguments
-        ---------
-        - value (bpy.types.Material or str = None) : material or material name in bpy.data.materials
-        - name (str = None) : create a group input socket of type Material if not None
-        - tip  (str = '') : Property description
-        - panel (str = "") : Panel name
-        - optional_label  (bool = False) : Property optional_label
-        - hide_value  (bool = False) : Property hide_value
-        - hide_in_modifier  (bool = False) : Property hide_in_modifier
-        """
-
-        bsock = utils.get_bsocket(value)
-        if bsock is None:
-            material = utils.get_blender_resource('MATERIAL', value)
-            if name is None:
-                bsock = Node('Material', material=material)._out
-            else:
-                bsock = self._create_input_socket(name=name,
-                    tip=tip, panel=panel, optional_label=optional_label, hide_value=hide_value,
-                    hide_in_modifier=hide_in_modifier)
-
-        super().__init__(bsock)
 
     # ====================================================================================================
     # Class test    

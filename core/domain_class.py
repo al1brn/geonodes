@@ -57,7 +57,7 @@ from .geometry_class import Geometry
 
 class Domain(Geom, NodeCache):
 
-    __slots__ = NodeCache.__slots__ + ['_geo', '_selection']
+    __slots__ = NodeCache.__slots__ + ('_geo', '_selection')
 
     DOMAIN_NAME = None
 
@@ -177,6 +177,7 @@ class Domain(Geom, NodeCache):
         user_name = name.replace("_", " ").strip()
         if len(user_name) and user_name[0] == user_name[0].upper():
             self.store_named_attribute(user_name, value)
+            return
 
         raise NodeError(
             f"{type(self).__name__} domain doesn't have an attribute named '{name}'.\n"

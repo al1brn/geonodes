@@ -48,16 +48,19 @@ __email__  = "lesideesfroides@gmail.com"
 __copyright__ = "Copyright (c) 2025, Alain Bernard"
 __license__ = "GNU GPL V3"
 
+import bpy
+import numpy as np
 
 from .scripterror import NodeError
 from .import utils
 from .import blender
+from . import constants
 from .utils import Break
 from .treeinterface import ItemPath
 from .sockettype import SocketType
 from .treeinterface import TreeInterface
 from .treeclass import Tree
-from .nodeclass import Node, Group
+from .nodeclass import Node, Group, MenuNode
 from .nodezone import ZoneNode,ZoneIterator
 
 # =============================================================================================================================
@@ -68,7 +71,7 @@ from .nodezone import ZoneNode,ZoneIterator
 
 class NodeCache:
 
-    __slots__ = ['_cached_nodes']
+    __slots__ = ('_cached_nodes',)
 
     # ====================================================================================================
     # Cache mechanism
@@ -108,7 +111,7 @@ class NodeCache:
 
 class Socket(NodeCache):
 
-    __slots__ = NodeCache.__slots__ + ['_tree', '_bsocket', '_socket_type', '_layout', '_use_layout']
+    __slots__ = NodeCache.__slots__ + ('_tree', '_bsocket', '_layout', '_use_layout')
 
     SOCKET_TYPE = None
 
@@ -116,7 +119,12 @@ class Socket(NodeCache):
     # Initialization
     # ====================================================================================================
 
-    def __init__(self, socket):
+    def __init__(self, 
+            socket  = None, 
+            name    : str = None, 
+            tip     : str = '',
+            panel   : str = "",                 
+            **props):
         """ > The output socket of a <!Node>
 
         **Socket** is the base class for data classes such as <!Float>, <!Image> or <!Geometry>.
@@ -158,66 +166,404 @@ class Socket(NodeCache):
         """
 
         # ---------------------------------------------------------------------------
-        # Layout
+        # Attributes
         # ---------------------------------------------------------------------------
 
         self._layout      = None
         self._use_layout  = True
-
-        # ---------------------------------------------------------------------------
-        # Tree
-        # ---------------------------------------------------------------------------
-        
         self._tree = Tree.current_tree()
-
-        # ---------------------------------------------------------------------------
-        # Socket
-        # ---------------------------------------------------------------------------
-
-        # Attribute initiliazd by name
-
-        if isinstance(socket, str):
-            raise NodeError(f"Socket '{type(self).__name__}' is not an attribute. Impossible to create a named attribute '{socket}'")
-
-        # Socket is a socket :-)
-
-        bsocket = utils.get_bsocket(socket)
-        if bsocket is None:
-            raise NodeError(f"Impossible to initialize Socket with a non socket argument: {socket}", socket_type=self.SOCKET_TYPE)
-
-        self._bsocket = bsocket
-
-        # Initialize socket type frpm socket if the same types
-        # otherwise it is a socket transtypage
-
-        stype = SocketType(bsocket)
-        if stype == self.SOCKET_TYPE:
-            self._socket_type = stype
-        else:
-            self._socket_type = SocketType(self.SOCKET_TYPE)
-
+        self._bsocket = None
         self._reset()
 
+        # ---------------------------------------------------------------------------
+        # Empty socket
+        # ---------------------------------------------------------------------------
+
+        if utils.request_empty(socket):
+            return
+        
+        # ---------------------------------------------------------------------------
+        # Named attribute
+        # But Color because string can be the initial value of a color
+        # ---------------------------------------------------------------------------
+
+        socktype = self._socket_type
+        cname = socktype.class_name
+
+        if isinstance(socket, str) and (cname in constants.ATTRIBUTE_CLASSES) and (cname != 'Color'):
+            self._bsocket = self.Named(socket)._bsocket
+            return
+        
+        # ---------------------------------------------------------------------------
+        # Let's get the socket
+        # ---------------------------------------------------------------------------
+
+        self._bsocket = utils.get_bsocket(socket)
+        if self._bsocket is not None:
+            return
+        
+        # ---------------------------------------------------------------------------
+        # No name: we create from a constant Node
+        # The socket argument is the value to set
+        # ---------------------------------------------------------------------------
+
+        if name is None:
+            if socktype == 'GEOMETRY':
+                new_socket = self.Input(None, halt=False)
+                if new_socket is None:
+                    new_socket = self.NewInput("Geometry")
+                self._bsocket = new_socket._bsocket
+                
+            else:
+                self._bsocket = self.Constant(socket)._bsocket
+
+        # ---------------------------------------------------------------------------
+        # With a name, we request the creation from current input
+        # ---------------------------------------------------------------------------
+
+        else:
+            # Socket can be the default value
+            if socket is not None:
+
+                if 'default' not in constants.SOCKETS[self._socket_type.type]['props']:
+                    raise NodeError(f"The {self._socket_type()} socket doesn't accept default value. <{socket}> is not valid.")
+                
+                # Perhaps it is given in the props
+                def_key = 'default' if 'default' in props else None
+                if def_key is None:
+                    def_key = 'default_value' if 'default_value' in props else None
+
+                if def_key is None:
+                    props = {'default_value': socket, **props}
+
+            new_socket = self.NewInput(name, tip=tip, panel=panel, **props)
+            self._bsocket = new_socket._bsocket
+            self._use_layout = new_socket._use_layout
+
+
+    # ====================================================================================================
+    # Constructors
+    # ====================================================================================================
+
+    # ----------------------------------------------------------------------------------------------------
+    # An empty socket
+    # ----------------------------------------------------------------------------------------------------
+
+    @classmethod
+    def Empty(cls, value = None):
+        """ Create an empty socket.
+        
+        An empty socket is used temporarily as an input for nodes with dynamic sockets:
+
+        ``` python
+            # 10 iterations starting from an empty geometry
+            for rep in Geometry.Repeat(10):
+                pass
+            result = rep.geometry
+        ```
+
+        Arguments
+        ---------
+        - value (Any = None) : default value
+        """
+        socket = cls(constants.EMPTY_SOCKET)
+        socket._bsocket = SocketType(cls.SOCKET_TYPE).get_default_from_value(value)
+        return socket
+    
+    # ----------------------------------------------------------------------------------------------------
+    # Named attribute
+    # ----------------------------------------------------------------------------------------------------
+    
+    @classmethod
+    def Named(cls, name):
+        """ > Node <&Node Named Attribute>
+
+        Information
+        -----------
+        - Parameter 'data_type' : 'BOOLEAN'
+
+        Arguments
+        ---------
+        - name (String) : socket 'Name' (id: Name)
+
+        Returns
+        -------
+        - Boolean
+        """
+        if SocketType(cls.SOCKET_TYPE).class_name not in constants.ATTRIBUTE_CLASSES:
+            raise NodeError(
+                f"The class {SocketType(cls.SOCKET_TYPE).class_name} is not an attribute.\n"
+                f"Attribute classes are: {constants.ATTRIBUTE_CLASSES}")
+        
+        node = Node('Named Attribute', name=name)
+        data_type = SocketType(cls.SOCKET_TYPE).get_node_data_type(
+            tree_type = node._tree._._btree.bl_idname,
+            bl_idname = node._bnode.bl_idname,
+            halt = True)
+
+        node._data_type = data_type
+
+        return node._out
+    
+    # ----------------------------------------------------------------------------------------------------
+    # An existing group input socket (output socket of input node)
+    # ----------------------------------------------------------------------------------------------------
+
+    @classmethod
+    def Input(cls, name: str, panel: str = "", halt: bool = True):
+        """ Get an exist input socket from its name and panel.
+
+        > [!NOTE]
+        > The "input" socket here is an "output" socket of the current input node
+
+        To create a input socket use NewInput.
+
+        If the 'name' argument is None, the first socket of the proper type is returned.
+
+        Raises
+        ------
+        - NodeError if socket is not found and halt is requested
+
+        Arguments
+        ---------
+        - name (str | None) : socket name
+        - panel (str = "") : panel name
+        - halt (bool = True) : raises an error if not found
+
+        Returns
+        -------
+        - Socket
+        """
+        in_node = Tree.current_tree().get_input_node()
+
+        include = None if name is None else [name]
+        bsockets = in_node.get_sockets('OUTPUT', include=include, panel=panel)
+
+        for _, bsock in bsockets:
+            if SocketType(bsock).type == cls.SOCKET_TYPE:
+                return cls(bsock._bsocket)
+        
+        if halt:
+            sname = "" if name is None else f" named '{name}'"
+            raise NodeError(
+                f"There is no {SocketType(cls.SOCKET_TYPE).class_name} input socket{sname}.\n"
+                f"Available sockets are : {[bsock[0] for bsock in in_node.get_sockets()]}.")
+        
+        return None
+    
+        #full_name = ItemPath(panel) + ItemPath(name)
+        #return cls(Tree.current_tree().get_input_node().socket_by_name('OUTPUT', full_name.path, None))
+
+    # ----------------------------------------------------------------------------------------------------
+    # Create a new input socket from the current I/O contexte
+    # ----------------------------------------------------------------------------------------------------
+
+    @classmethod
+    def NewInput(cls, name: str, tip: str = "", panel: str = "", **props):
+        """ Create an new input socket
+
+        > [!NOTE]
+        > The "input" socket here is an "output" socket of the current input node
+
+        To get an existing input socket use Input.
+
+        Raises
+        ------
+        - NodeError if socket is not found
+
+        Arguments
+        ---------
+        - name : socket name
+        - panel : panel name
+
+        Returns
+        -------
+        - Socket
+        """
+        value = props.get('default', props.get('default_value'))
+        if value is None:
+            return cls._create_input_socket(name = name, tip = tip, panel = panel, **props)
+        else:
+            value = SocketType(cls.SOCKET_TYPE).get_default_from_value(value)
+            return cls._create_input_socket(value = value, name = name, tip = tip, panel = panel, **props)
+        
+    # ----------------------------------------------------------------------------------------------------
+    # Create a socket from a constant Node
+    # ----------------------------------------------------------------------------------------------------
+
+    @classmethod
+    def Constant(cls, value: None):
+        """ Create an input socket from a constant Node.
+        """
+
+        # ---------------------------------------------------------------------------
+        # Ensure array
+        # ---------------------------------------------------------------------------
+
+        def get_shaped(v, *shapes):
+            r = np.ravel(v)
+            shape = np.shape(r)
+            if shape in shapes:
+                return tuple(r)
+            
+            if shape == (1,):
+                return tuple(np.resize(r, shapes[0]))
+            
+            raise NodeError(
+                f"The value <{v}> can't be transformed in a valid initial value for {SocketType(cls.SOCKET_TYPE).class_name}."
+            )
+        
+        # ---------------------------------------------------------------------------
+        # Does the array contain sockets
+        # ---------------------------------------------------------------------------
+
+        def has_sockets(a):
+            for v in a:
+                if SocketType.get_bsocket(v) is not None:
+                    return True
+            return False
+        
+        # ---------------------------------------------------------------------------
+        # Default value
+        # ---------------------------------------------------------------------------
+
+        socket_type = SocketType(cls.SOCKET_TYPE)
+        if cls.SOCKET_TYPE not in ['RGBA', 'VECTOR', 'ROTATION', 'MATRIX']:
+            def_val = socket_type.get_default_from_value(value)
+
+        # ---------------------------------------------------------------------------
+        # Depending on the socket type
+        # ---------------------------------------------------------------------------
+
+        if cls.SOCKET_TYPE == 'BOOLEAN':
+            return Node('Boolean', boolean=def_val)._out
+
+        elif cls.SOCKET_TYPE == 'BUNDLE':
+            return Node("Combine Bundle")._out
+        
+        elif cls.SOCKET_TYPE == 'CLOSURE':
+            socket = ZoneNode("Closure", None).closure
+            socket._use_layout = False
+            return socket
+
+        elif cls.SOCKET_TYPE == 'COLLECTION':
+            return Node('Collection', collection=def_val)._out
+        
+        elif cls.SOCKET_TYPE == 'RGBA':
+
+            if value is None:
+                a = (0, 0, 0, 1)
+            else:
+                a = get_shaped(value, (4,), (3,))
+
+            if has_sockets:
+                if Tree.is_geonodes():
+                    node = Node('Combine Color', {0: a[0], 1: a[1], 2:a[2]})
+                    if len(a) == 4:
+                        node.alpha = a[3]
+                    return node._out
+                else:
+                    return Node('Combine Color', {0: a[0], 1: a[1], 2:a[2]})._out
+
+            else:
+                def_val = SocketType('COLOR').get_default_from_value(a)
+                if Tree.is_geonodes(col):
+                    return Node('Color', value=def_val)._out
+
+                else:
+                    socket = Node('Color')._out
+                    socket._bsocket.default_value = def_val
+                    return socket
+
+        elif cls.SOCKET_TYPE == 'IMAGE':
+            return Node('Image', image=def_val)._out
+        
+        elif cls.SOCKET_TYPE == 'INT':
+            return Node('Integer', integer=def_val)._out
+        
+        elif cls.SOCKET_TYPE == 'MATERIAL':
+            return Node('Material', material=def_val)._out
+        
+        elif cls.SOCKET_TYPE == 'MATRIX':
+
+            if value is None:
+                a = (1, 0, 0, 0,   0, 1, 0, 0,   0, 0, 1, 0,   0, 0, 0, 1)
+            else:
+                a = get_shaped(value, (16,))
+
+            return Node('Combine Matrix', named_sockets = {i: a[i] for i in range(16)})._out
+        
+        elif cls.SOCKET_TYPE == 'MENU':
+            return Node('Menu Switch')._out
+        
+        elif cls.SOCKET_TYPE == 'OBJECT':
+            return Node('Integer', object=def_val)._out
+        
+        elif cls.SOCKET_TYPE == 'ROTATION':
+
+            if value is None:
+                a = (0, 0, 0)
+            else:
+                a = get_shaped(value, (3,))
+
+            if has_sockets(a):
+                return Node('Combine XYZ', x=a[0], y=a[1], z=a[2])._out.to_rotation()
+            else:
+                return Node('Rotation', rotation_euler=a)._out
+        
+        elif cls.SOCKET_TYPE == 'STRING':
+            return Node('String', string=def_val)._out
+        
+        elif cls.SOCKET_TYPE == 'VALUE':
+            node = Node('Value')
+            node._bnode.outputs[0].default_value = def_val
+            return node._out
+        
+        elif cls.SOCKET_TYPE == 'VECTOR':
+
+            if value is None:
+                a = (0, 0, 0)
+            else:
+                a = get_shaped(value, (3,))
+
+            if has_sockets(a):
+                return Node('Combine XYZ', x=a[0], y=a[1], z=a[2])._out
+            else:
+                return Node('Vector', vector=a)._out
+            
+        elif cls.SOCKET_TYPE == 'GEOMETRY':
+            raise NodeError(f"There is no node to create a Geometry. Use explicit constructors such as 'Mesh.Cube()', 'Curve.Spiral()' or 'Cloud.Points().")
+            
+        else:
+            assert False, f"Shouldn't happen {socket_type}"
+
+    # ====================================================================================================
+    # Emptyness
+    # ====================================================================================================
+
+    def _is_empty(self, halt_message: str = None):
+        if isinstance(self._bsocket, bpy.types.NodeSocket):
+            return False
+        
+        if halt_message is None:
+            return True
+        else:
+            raise NodeError(f"Empty socket error:\n{halt_message}")
+        
     # ====================================================================================================
     # Utilities
     # ====================================================================================================
 
+    @property
+    def _socket_type(self):
+        return SocketType(self.SOCKET_TYPE)
+
     def __str__(self):
-        stype = self._socket_type.class_name if hasattr(self, '_socket_type') else "Node Type"
-        node = self.node
-        if node is None:
-            snode_name = "No Node"
-            sname      = "No Socket"
+        if self._is_empty():
+            return f"<{self._socket_type.class_name}: Empty>"
         else:
-            snode_name = self.node._bnode.name
-            sname      = self._bsocket.name
-
-        return f"<{stype} [{snode_name}].'{sname}'>"
-
-    # ----------------------------------------------------------------------------------------------------
-    # Reset cache
-    # ----------------------------------------------------------------------------------------------------
-
+            return f"<{self._socket_type.class_name}: [{self.node._bnode.name}].'{self._bsocket.name}'>"
+    
     def _reset(self):
         self._cache_reset()
 
@@ -272,6 +618,8 @@ class Socket(NodeCache):
     @property
     def node(self):
 
+        self._is_empty(f"There is not Node")
+
         # Not yet initialized
         if not hasattr(self, '_bsocket'):
             return None
@@ -294,6 +642,8 @@ class Socket(NodeCache):
         -------
         - str : default is ""
         """
+        if self._is_empty():
+            return "<EMPTY SOCKET>"
         return utils.get_socket_name(self._bsocket)
 
     # ----------------------------------------------------------------------------------------------------
@@ -346,50 +696,40 @@ class Socket(NodeCache):
             i_socket.default_value = value
 
     # ====================================================================================================
-    # Get a group input from its name and panel
+    # Getting the socket from nodes
     # ====================================================================================================
 
-    @classmethod
-    def Input(cls, name: str, panel: str = ""):
-        """ Get an group input from its name and panel
 
-        This constructor is used to get a tree input socket which has been previously created.
+    
+    # ----------------------------------------------------------------------------------------------------
+    # Get an existing socket from current input node
+    # Contrarilty to Input, doesn't raise an error
+    # ----------------------------------------------------------------------------------------------------
+        
+    def _get_bsocket_from_input(self, name: str = None) -> bpy.types.NodeSocket:
+        """ Get the availble input socket if any.
 
-        This is typically used after connecting a group node to the tree inputs:
-
-        ``` python
-        with GeoNodes("Geometry Nodes"):
-            # Create an input socket
-
-            param = Float(1., "My Parameter")
-
-            # Call a group, the 'link_from' argument creates the necessary inputs in "Geometry Nodes"
-
-            node = Group("Function Group", link_from='TREE')
-
-            # Let's suppose that the 'Function Group' has created an Integer socket named "Int Parameter"
-            # If we need it, we can get it with
-
-            int_parameter =  Integer.Input("Int Parameter")
-        ```
-
-        Raises
-        ------
-        - NodeError if socket is not found
+        The socket is get a an OUTPUT socket of the current input.
 
         Arguments
         ---------
-        - name : socket name
-        - panel : panel name
+        - name (str = None) : name filter
 
         Returns
         -------
-        - Socket
+        - Socket : or None if not found
         """
-        full_name = ItemPath(panel) + ItemPath(name)
-        return cls(Tree.current_tree().get_input_node().socket_by_name('OUTPUT', full_name.path, None))
-        #return cls(Tree.current_tree().get_in_socket(name=name, panel=panel))
+        in_node = self._tree.get_input_node()
 
+        include = None if name is None else [name]
+
+        bsockets = in_node.get_sockets('OUTPUT', include=include)
+        for _, bsock in bsockets:
+            if SocketType(bsock).type == self.SOCKET_TYPE:
+                return bsock._bsocket
+        else:
+            return None
+        
 
     # ====================================================================================================
     # Grid
@@ -401,6 +741,8 @@ class Socket(NodeCache):
         
         Returns True if socket is a grid (inferred_structure_type == 'GRID').
         """
+        if self._is_empty():
+            return False
         return self._bsocket.inferred_structure_type == 'GRID'
 
     # ====================================================================================================
@@ -459,10 +801,8 @@ class Socket(NodeCache):
         -------
         - self
         """
-
-        node = self.node
-        node._label = label
-        node._color = color
+        self.node_label = label
+        self.node_color = color
         return self
 
     def _lcop(self, label=None):
@@ -482,10 +822,12 @@ class Socket(NodeCache):
 
     @property
     def pin_gizmo(self):
+        self._is_empty("No gizmo is possible.")
         return self._bsocket.pin_gizmo
 
     @pin_gizmo.setter
     def pin_gizmo(self, value):
+        self._is_empty("No gizmo is possible.")
         self._bsocket.pin_gizmo = value
 
     # ====================================================================================================
@@ -500,6 +842,8 @@ class Socket(NodeCache):
     # ----------------------------------------------------------------------------------------------------
 
     def __getattr__(self, name):
+
+        self._is_empty(f"Impossible to get an attribute from an empty socket (name: '{name}')")
 
         # Ignore the ending '_' char
         true_name = name
@@ -622,7 +966,8 @@ class Socket(NodeCache):
         -------
         - None
         """
-        #print("OUTING SOCKET", self._bsocket.name, self._bsocket.type, panel)
+        self._is_empty(f"Impossible to link an empty socket (name: '{name}').")
+
         out_node = self._tree.get_output_node()
         out_node.set_input_socket(name=name, value=self, create=True, panel=panel, **props)
 
@@ -668,7 +1013,8 @@ class Socket(NodeCache):
 
     @classmethod
     def MenuSwitch(cls, 
-                   named_sockets: dict = {},
+                   named_sockets    : dict = {},
+                   default_menu     : str = None,
                    **sockets):
         """ > Node <&Node Menu Switch>
 
@@ -677,15 +1023,17 @@ class Socket(NodeCache):
         Arguments
         ---------
         - named_sockets (dict = {}) : sockets to create
+        - default_menu (str = None) : default menu value
         - sockets (dict) : items
 
         Returns
         -------
         - Socket
         """
-        node = Node('Menu Switch',
+        node = MenuNode('Menu Switch',
                 named_sockets = named_sockets,
                 data_type = SocketType(cls.SOCKET_TYPE).type,
+                default_menu = default_menu,
                 **sockets)
         
         return cls(node._out)
@@ -695,9 +1043,9 @@ class Socket(NodeCache):
     # ----------------------------------------------------------------------------------------------------
 
     def menu_switch(self,
-                self_name: str = 'Self', 
-                named_sockets: dict = {},
-                default_value: str = None,
+                self_name       : str = 'Self', 
+                named_sockets   : dict = {},
+                default_menu    : str = None,
                 **sockets):
         """ > Node <&Node Menu Switch>
 
@@ -711,15 +1059,14 @@ class Socket(NodeCache):
         Arguments
         ---------
         - named_sockets (dict = {}) : sockets to create
+        - default_menu (str = None) : default menu value
         - sockets (dict) : items
 
         Returns
         -------
         - Socket
         """        
-        return self.MenuSwitch(
-            named_sockets = {self_name: self, **named_sockets},
-            **sockets)
+        return self.MenuSwitch(named_sockets = {self_name: self, **named_sockets}, default_menu=default_menu, **sockets)
     
     # ====================================================================================================
     # Index Switch
@@ -730,7 +1077,7 @@ class Socket(NodeCache):
     # ----------------------------------------------------------------------------------------------------
 
     @classmethod
-    def IndexSwitch(cls, *values, index = None):
+    def IndexSwitch(cls, *values, index = None, default_index: int = 0):
         """ > Node <&Node Index Switch>
 
         ``` python
@@ -753,19 +1100,24 @@ class Socket(NodeCache):
         ---------
         - *values : list of Sockets to select into
         - index (Integer = None) : socket 'Index' (Index)
+        - defaut_index (int = 0) : default idex
 
         Returns
         -------
         - Socket
         """
         #return IndexSwitchNode(*values, index=index, data_type=cls.input_type())._out
-        return Node('Index Switch', {str(i): value for i, value in enumerate(values)}, data_type=cls.SOCKET_TYPE, Index=index)._out
+        return MenuNode('Index Switch', 
+                        {str(i): value for i, value in enumerate(values)}, 
+                        data_type=cls.SOCKET_TYPE, 
+                        Index=index,
+                        default_menu = default_index)._out
     
     # ----------------------------------------------------------------------------------------------------
     # Method version
     # ----------------------------------------------------------------------------------------------------
 
-    def index_switch(self, *values, index = None):
+    def index_switch(self, *values, index = None, default_index: int = 0):
         """ > Node <&Node Index Switch>
 
         ``` python
@@ -788,12 +1140,13 @@ class Socket(NodeCache):
         ---------
         - *values : list of Sockets to select into
         - index (Integer = None) : socket 'Index' (Index)
+        - defaut_index (int = 0) : default idex
 
         Returns
         -------
         - Socket
         """
-        return self.IndexSwitch(self, *values, index=index)
+        return self.IndexSwitch(self, *values, index=index, default_index=default_index)
     
     # ====================================================================================================
     # Switch
@@ -953,6 +1306,22 @@ class Socket(NodeCache):
         node = ZoneNode("Repeat", self, named_sockets=named_sockets, Iterations=iterations, **sockets)
         return ZoneIterator(self, node)
     
+    @classmethod
+    def Repeat(cls, iterations=1, named_sockets: dict={}, **sockets):
+        """ Repeat zone
+
+        Arguments
+        ---------
+        - Iteration (Integer = 1) : iteration socket
+        - named_socket (dict) : named sockets
+        - sockets (dict) : other sockets
+
+        Returns
+        -------
+        - ZoneIterator
+        """
+        return cls.Empty().repeat(iterations, named_sockets=named_sockets, **sockets)
+    
     # ----------------------------------------------------------------------------------------------------
     # Simulation
     # ----------------------------------------------------------------------------------------------------
@@ -977,38 +1346,74 @@ class Socket(NodeCache):
     # ====================================================================================================
 
     @staticmethod
-    def _classes_test():
+    def _class_test():
 
         from .utils import SOCKET_CLASSES
         from .geonodes import GeoNodes
         from .geometry_class import Geometry
+        from .sock_float import Float
+        from .treeclass import Layout
+        from .sock_color import Color
+        from .sock_rotation import Rotation
+        from .sock_vector import Vector
+        from .sock_matrix import Matrix
 
-        print()
-        print("Socket._class_test...")
-        print()
+        with GeoNodes("Socket Class Test") as tree:
 
-        with GeoNodes("Tree Inputs") as tree:
-
-            inps = []
-            vars = []
-
+            # Create inputs
             for stype, klass in SOCKET_CLASSES.items():
                 if stype == 'SHADER':
                     continue
-
                 class_name = klass.__name__
-                inps.append(klass(name=class_name))
-                vars.append(klass())
+                a = klass(name=class_name)
 
-            # Avoid error
-            Geometry().out()
+            # Getting existing inputs
+            for stype, klass in SOCKET_CLASSES.items():
+                if stype in ['SHADER', 'MENU']:
+                    continue
+                class_name = klass.__name__
+                klass.Input(class_name).out(f"Out {class_name}")
 
-        for klass in SOCKET_CLASSES.values():
-            if hasattr(klass, '_class_test'):
-                print(f"Testing {klass}...")
-                klass._class_test()
+            # Constants
+            with Layout("Constants"):
+                for stype, klass in SOCKET_CLASSES.items():
+                    if stype == 'SHADER':
+                        continue
+                    a = klass()
 
-        print("Socket._class_test done.")
+            # Arrays
+            with Layout("Colors"):
+                Color(.8).out(panel="Color")
+                Color((.1, .2, .3)).out(panel="Color")
+                Color((.1, .2, .3, .4)).out(panel="Color")
+                Color(Float(.89)).out(panel="Color")
+                Color((Float(.5), 0, 0)).out(panel="Color")
+                Color((0, Float(.5), 1)).out(panel="Color")
+                Color((Float(.5), Float(.5), Float(.5), Float(.5))).out(panel="Color")
+
+            with Layout("Vector"):
+                Vector(.8).out(panel="Vector")
+                Vector((.1, .2, .3)).out(panel="Vector")
+                Vector(Float(.89)).out(panel="Vector")
+                Vector((Float(.5), 0, 0)).out(panel="Vector")
+                Vector((0, Float(.5), 1)).out(panel="Vector")
+                Vector((Float(.5), Float(.5), Float(.5))).out(panel="Vector")
+
+            with Layout("Rotation"):
+                Rotation(.8).out(panel="Rotation")
+                Rotation((.1, .2, .3)).out(panel="Rotation")
+                Rotation(Float(.89)).out(panel="Rotation")
+                Rotation((Float(.5), 0, 0)).out(panel="Rotation")
+                Rotation((0, Float(.5), 1)).out(panel="Rotation")
+                Rotation((Float(.5), Float(.5), Float(.5))).out(panel="Rotation")
+
+            with Layout("Matrix"):
+                Matrix(.8).out(panel="Matrix")
+                Matrix([i for i in range(16)]).out(panel="Matrix")
+                Matrix([Float(i) for i in range(16)]).out(panel="Matrix")
+
+
+
 
 # ====================================================================================================
 # Input socket
@@ -1016,7 +1421,7 @@ class Socket(NodeCache):
 
 class Input(Socket):
 
-    __slots__ = Socket.__slots__ + ['name', 'panel', 'props']
+    __slots__ = Socket.__slots__ + ('name', 'panel', 'props')
 
     SOCKET_TYPE = 'CUSTOM'
 

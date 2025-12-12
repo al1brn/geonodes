@@ -55,69 +55,6 @@ class Rotation(generated.Rotation):
 
     SOCKET_TYPE = 'ROTATION'
 
-    def __init__(self, 
-        value: Socket | tuple = (0, 0, 0),
-        name: str = None,
-        tip: str = '',
-        panel: str = "",
-        optional_label: bool = False,
-        hide_value: bool = False,
-        hide_in_modifier: bool = False,
-        default_attribute: str = '',
-        shape: Literal['AUTO', 'DYNAMIC', 'FIELD', 'SINGLE'] = 'AUTO',
-        ):
-        """ > Socket of type ROTATION
-
-        If **value** argument is None:
-        - if **name** argument is None, a node <&Node Rotation> is added
-        - otherwise a new group input is created using **tip** argument.
-
-        If **value** argument is not None, a new **Rotation** is created from the value:
-        - using a <&Node Rotation> node if the **value** is a float or a tuple of floats
-        - using <&Node Combine XYZ> and <&Node Euler to Rotation> nodes if the **value**
-          is a tuple containing <!Socket"Sockets>
-
-        ``` python
-        rot = Rotation()                    # 'Rotation' node
-        rot = Rotation((1, 2, 3.14)).       # 'Rotation' node
-        rot = Rotation((Float(1), 2, 3.14)) # 'Combine XYZ' + 'Euler to Rotation' nodes
-        rot = Rotation(name="User input").  # Create a new Rotation group input
-        ```
-
-        Arguments
-        ---------
-        - value (tuple of floats or Sockets) : initial value
-        - name (str = None) : Create an Group Input socket with the provided str if not None
-        - tip  (str = '') : Property description
-        - panel (str = "") : Panel name
-        - optional_label  (bool = False) : Property optional_label
-        - hide_value  (bool = False) : Property hide_value
-        - hide_in_modifier  (bool = False) : Property hide_in_modifier
-        - default_attribute  (str = '') : Property default_attribute_name
-        - shape  (str = 'AUTO') : Property structure_type in ('AUTO', 'DYNAMIC', 'FIELD', 'SINGLE')
-        """
-        from geonodes import Vector
-
-        if isinstance(value, str):
-            value = type(self).Named(value)
-
-        bsock = utils.get_bsocket(value)
-        if bsock is None:
-            if name is None:
-                a = utils.value_to_array(value, (3,))
-                if utils.has_bsocket(a):
-                    bsock = Vector(value).to_rotation()
-                    #bsock = Node('Combine XYZ', {0: a[0], 1: a[1], 2:a[2]})._out
-                else:
-                    bsock = Node('Rotation', rotation_euler=value)._out
-            else:
-                bsock = self._create_input_socket(value=value, name=name,
-                    tip=tip, panel=panel, optional_label=optional_label, hide_value=hide_value,
-                    hide_in_modifier=hide_in_modifier, default_attribute=default_attribute,
-                    shape=shape)
-
-        super().__init__(bsock)
-
     # ====================================================================================================
     # Operations
 

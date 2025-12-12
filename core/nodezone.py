@@ -72,13 +72,15 @@ class ZoneNode(Node):
 
     def __init__(self,
             zone_id         : Literal["Simulation", "Repeat", "For Each Element", "Closure"],
-            socket          : Socket,
+            socket          : Socket | SocketType,
             named_sockets   : dict = {}, 
             **sockets):
         """ Paired nodes forming a zone.
 
         This class overload the creation of a zone output node such as 'Simulation Output' or 'Repeat Output'.
         When the node is created, the input node is also created and paired.
+
+        If the socket argument is a SocketType, an empty socket of this type is created.
 
         The two nodes can have dynamic sockets as described below
         
@@ -92,7 +94,7 @@ class ZoneNode(Node):
         Arguments
         ---------
         - zone_id (str in ()"Simulation", "Repeat", "For Each Element", "Closure")) : zone id
-        - socket (Socket) : the socket for zone input
+        - socket (Socket | SocketType) : the socket for zone input
         - named_sockets (dict = {}) : initialization values for the node input sockets
         - domain (str: None) : domain for For Each zone
         - **parameters : node parameters and sockets
@@ -402,6 +404,8 @@ class ZoneIterator:
         self._done          = False
         self._in_zone       = False
 
+        print("ZONE ITER", self._socket)
+
     def __str__(self):
         return f"<ZoneIterator {self._name}, in_zone: {self._in_zone}, done: {self._done}>"
 
@@ -420,7 +424,9 @@ class ZoneIterator:
                 self._socket._jump(self._input_node._bnode.outputs[1])
 
             elif self._name == REPEAT:
+                print("ZONE ITER jumping BEF", self._socket)
                 self._socket._jump(self._input_node._bnode.outputs[1])
+                print("ZONE ITER jumping AFT", self._socket)
 
             elif self._name == FOR_EACH:
                 self._socket._jump(self._input_node._bnode.outputs[1])

@@ -63,6 +63,7 @@ arrows.demo()
 """
 
 from geonodes import *
+from geonodes import macros
 
 
 # ====================================================================================================
@@ -100,9 +101,227 @@ def uv_cylinder():
 
         final.out()
 
-
-
 def demo():
+    with GeoNodes("Arrows"):
+        
+        # ---------------------------------------------------------------------------
+        # Different heads
+        # ---------------------------------------------------------------------------
+        
+        with Layout("Head factory"):
+            
+            # Simple Cone
+            
+            with Closure() as cone_cl:
+                scale = 4
+                
+                radius = Float(0.05, "Radius")
+                aspect = Float(0.5, "Aspect")*scale
+                height = radius*scale
+                cone = Mesh.Cone(
+                    vertices        = Input("Resolution", default_value = 12),
+                    side_segments   = 2,
+                    radius_top      = 0.0,
+                    radius_bottom   = radius*(1 + aspect),
+                    depth           = height,
+                )
+                macros.move_coordinate(cone, height/2, -height/2 + 0.002, summit=height)
+                cone.out("Head")
+                height.out("Height")
+                
+            head_sig = cone_cl.get_signature()
+            
+            # Sphere
+
+            with Closure() as sphere_cl:
+                scale = 2.5
+                
+                radius = Float(0.05, "Radius")
+                aspect = Float(0.5, "Aspect")*scale
+                resol  = Integer(12, "Resolution")
+                sphere = Mesh.UVSphere(
+                    segments = resol*2,
+                    rings    = resol,
+                    radius   = radius*(1 + aspect),
+                )
+                sphere.transform(translation=(0, 0, radius*.9))
+                sphere.out("Head")
+                (radius*1.9).out("Height")
+                
+            # Cylinder
+            
+            with Closure() as cyl_cl:
+                scale = 2.
+                
+                radius = Float(0.05, "Radius")*scale
+                aspect = Float(0.5, "Aspect")
+                resol  = Integer(12, "Resolution")
+                height = radius*0.5
+                cyl = Mesh.Cylinder(
+                    vertices = resol,
+                    radius = radius*(1 + aspect),
+                    depth = height
+                )
+                cyl.transform(translation=(0, 0, height/2))
+                cyl.out("Head")
+                height.out("Height")
+                
+            # None
+            with Closure() as nul_cl:
+                Float(0.05, "Radius")*scale
+                Float(.55, "Aspect")*scale
+                Integer(12, "Resolution")
+
+                Geometry.Switch().out("Head")
+                Float(0.).out("Height")
+        
+        # ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+        # Group input
+        
+        cloud = Cloud()
+        
+        vectors = Vector((0, 0, 1), name="Vectors")
+        
+        with Panel("Shaft"):
+            radius  = Float(.05, "Radius", shape="Single")
+            resol   = Integer(12, "Resolution")
+            mat     = Material(None, "Material")
+            
+        # ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+        
+        with Layout("Preparation"):
+
+            vec = cloud.points.capture(vectors)
+            nvec = vec.normalize()
+            lens = vec.length()
+            rot = Rotation().align_z_to_vector(vec)
+            
+            shaft_offset = Float()
+            shaft_len = lens
+            max_head_height = lens/4
+            pivot = cloud.points.sample_index(nd.position, nd.index)
+            
+        # ---------------------------------------------------------------------------
+        # Twice the same code for bottom and top head
+        # ---------------------------------------------------------------------------
+        
+        for ihead, (panel, default) in enumerate([
+            ('Top',     'Cone'), 
+            ('Bottom',  'None')
+            ]):
+            
+            # Inputs
+            
+            with Layout(panel):
+
+                with Panel(panel):
+                    with Closure.MenuSwitch() as cl:
+                        nul_cl.out("None")
+                        cone_cl.out("Cone")
+                        sphere_cl.out("Sphere")
+                        cyl_cl.out("Flat")
+                        
+                    cl.node.menu = Input("Head", default_value=default)
+                
+                    head = cl.evaluate(signature=head_sig, 
+                        radius=radius, 
+                        resolution=resol,
+                        aspect = Float.Factor(.5, "Aspect", 0, 1))
+                    height = head.height
+                    has_head = height.greater_than(0)
+                
+                    head.material = Material(None, "Material")
+                    
+                    # Rotate 180° if bottom
+                    if ihead == 1:
+                        head.transform(rotation=(0, pi, 0), translation=(0, 0, height))
+                    
+                # Actual head heigh cant' be greater that one 4th
+                heights = gnmath.min(height, max_head_height)
+                shaft_len = shaft_len.switch(has_head, shaft_len - heights)
+                
+                heads = cloud.points[lens.greater_than(0.001)].instance_on(
+                    instance = head,
+                    rotation = rot,
+                    scale = (1, 1, heights/height),
+                ).instances_
+                
+                # Top specific
+                if ihead == 0:
+                    heads.offset = nvec.scale(lens - heights)
+                    the_heads = heads
+                
+                # Bottom specific
+                else:
+                    shaft_offset = Float.Switch(has_head, 0., heights)
+                    
+                    the_heads += heads
+                
+        # ---------------------------------------------------------------------------
+        # Shafts
+        # ---------------------------------------------------------------------------
+
+        with Layout("Shaft"):
+            cyl = Mesh.Cylinder(
+                vertices        = resol,
+                side_segments   = 3, 
+                radius          = radius, 
+                depth           = 1,
+                ).transform(translation=(0, 0, .5))
+            cyl.material = mat
+            macros.move_coordinate(cyl, 1/3, -1/3 + 0.002)
+            macros.move_coordinate(cyl, 2/3, 1/3 - 0.002)
+            
+            cyls = cloud.points[lens.greater_than(0.001)].instance_on(
+                instance = cyl,
+                #rotation = rot,
+                scale = Vector.CombineXYZ(1, 1, shaft_len),
+            )
+            cyls.offset = Vector.CombineXYZ(0, 0, shaft_offset)
+            cyls.rotate(rot, pivot_point=pivot, local_space=False)
+            
+        with Layout("Finalize"):
+            mesh = Mesh(cyls + the_heads)
+            mesh.faces.shade_smooth = Boolean(True, "Smooth")
+            mesh.enable_output(Boolean(True, "Show"))
+            
+        mesh.out()
+        
+    # ===========================================================================
+    # Single Arrow
+    # ===========================================================================
+
+    with GeoNodes("Arrow"):
+        
+        pos = Vector(name="Position", shape="Single")
+        
+        with Panel("Vector"):
+        
+            with Vector.MenuSwitch(default_menu="XYZ", menu=Input("Vector")) as vec:
+                
+                Vector((0, 0, 1), "Vector").out("XYZ")
+                
+                v = G().combine_cylindrical()
+                v.node.link_inputs()
+                v.out("Cylindrical")
+                
+                v = G().combine_spherical()
+                v.node.link_inputs()
+                v.out("Spherical")
+            
+        cloud = Cloud.Points(1, position=pos)
+        
+        arr = cloud.arrows(vectors=vec)
+        
+        arr.node.link_inputs()
+        
+        arr.out()
+        
+
+    
+        
+
+def demo_old():
 
     print("\nCreate Arrows nodes...")
 

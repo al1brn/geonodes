@@ -81,7 +81,7 @@ class ItemPath:
 
     def __init__(self, value: str | list | NodeTreeInterfaceItem):
 
-        __slots__ = ['_path', '_socket_id']
+        __slots__ = ('_path', '_socket_id')
 
         """ A panel name wraps the different ways to name a panel.
 
@@ -848,22 +848,22 @@ class TreeInterface:
                 value = socket_type.subtype
 
             # Could fail for default_value (Menu for instance)
-            if True:
-                if value is not None:
-                    try:
-                        setattr(socket, prop, value)
-                    except TypeError as e:
-                        enums = utils.get_enum_from_string(str(e))
-                        if str(value).upper() in enums:
-                            setattr(socket, prop, str(value).upper())
-                        else:
-                            raise e
-
-            else:
+            if value is not None:
                 try:
                     setattr(socket, prop, value)
-                except:
-                    pass
+                except TypeError as e:
+                    enums = utils.get_enum_from_string(str(e))
+                    if str(value).upper() in enums:
+                        setattr(socket, prop, str(value).upper())
+                    else:
+                        if len(enums):
+                            s = f", acceptaed values are {enums}"
+                        else:
+                            s = ""
+
+                        raise NodeError(
+                            f"An error occurred when creating the {SocketType(socket_type).class_name} socket '{name}' .\n"
+                            f"The property '{prop}' doesn't accept the value '{value}'{s}.\n{str(e)}\n")
 
         # ---------------------------------------------------------------------------
         # Update socket default value
@@ -890,14 +890,15 @@ class TreeInterface:
 
             # ---------------------------------------------------------------------------
             # If created, we must set the modifier value to default value
+            # Done when exiting the tree
             # ---------------------------------------------------------------------------
 
-            if created and hasattr(socket, 'default_value') and socket.socket_type not in NO_MODIFIER_UPDATE:
-                for mod in blender.get_geonodes_modifiers(self.btree):
-                    try:
-                        mod[socket.identifier] = socket.default_value
-                    except Exception as e:
-                        print(f"Info: impossible to set default value {socket.default_value} to modifier for socket '{socket.name}': {str(e)}")
+            #if created and hasattr(socket, 'default_value') and socket.socket_type not in NO_MODIFIER_UPDATE:
+            #    for mod in blender.get_geonodes_modifiers(self.btree):
+            #        try:
+            #            mod[socket.identifier] = socket.default_value
+            #        except Exception as e:
+            #            print(f"Info: impossible to set default value {socket.default_value} to modifier for socket '{socket.name}': {str(e)}")
                             
         return socket
     
@@ -911,7 +912,7 @@ class TreeInterface:
             include: list = None,
             exclude: list = [],
             enabled_only : bool = True,
-            free_only: bool = False,
+            #free_only: bool = False,
             parent: NodeTreeInterfaceSocket = None, 
         ):
         """ Get sockets
@@ -922,7 +923,6 @@ class TreeInterface:
         - include (list = None) : limit sockets to list
         - exclude (list = []) : exclude sockets from list
         - enabled_only (bool = True) : only enabled sockets
-        - free_only (bool = False) : only free sockets
         - parent (NodeTreeInterfacePanel = None) : path up to the parent
 
         Returns
@@ -954,7 +954,7 @@ class TreeInterface:
                         incl_panels.append(panel)
                         continue
 
-                socket = self.get_socket(parent_path + key_path)
+                socket = self.get_socket(in_out, parent_path + key_path, None)
                 if socket is not None:
                     incl_sockets.append(socket.index)
             
@@ -1024,14 +1024,14 @@ class TreeInterface:
             # Socket conditions
             # ---------------------------------------------------------------------------
 
-            if enabled_only or free_only:
-                nsock = self.get_node_socket(socket)
+            #if enabled_only or free_only:
+            #    nsock = self.get_node_socket(socket)
 
-                if nsock is not None:
-                    if enabled_only and not nsock.enabled:
-                        continue
-                    if in_out == 'INPUT' and free_only and not utils.is_free(nsock):
-                        continue
+            #    if nsock is not None:
+            #        if enabled_only and not nsock.enabled:
+            #            continue
+            #        if in_out == 'INPUT' and free_only and not utils.is_free(nsock):
+            #            continue
 
             # ---------------------------------------------------------------------------
             # We can add it in the list
@@ -1298,7 +1298,7 @@ class TreeInterface:
     # Get the associated node socket
     # ----------------------------------------------------------------------------------------------------
 
-    def get_node_socket(self, item):
+    def get_node_socket_OLD(self, item):
 
         if item.in_out == 'INPUT':
             for node in self.btree.nodes:
@@ -1482,7 +1482,7 @@ class TreeInterface:
         }
         if with_socket:
             d['isocket'] = socket
-            d['socket']  = self.get_node_socket(socket)
+            #d['socket']  = self.get_node_socket(socket)
 
         return d
    
@@ -1495,7 +1495,7 @@ class TreeInterface:
             include      : list = None,
             exclude      : list = [],
             enabled_only : bool = True,
-            free_only    : bool = False,
+            #free_only    : bool = False,
             parent       : NodeTreeInterfaceSocket = None, 
             with_sockets : bool = False):
         """ Get the closure signature
@@ -1505,7 +1505,6 @@ class TreeInterface:
         - include (list = None) : limit sockets to list
         - exclude (list = []) : exclude sockets from list
         - enabled_only (bool = True) : only enabled sockets
-        - free_only (bool = False) : only free sockets
         - parent (NodeTreeInterfacePanel = None) : path up to the parent
         - with_sockets (bool = False) : include socket in the dict
 
@@ -1519,7 +1518,8 @@ class TreeInterface:
         signature = Signature()
         for in_out in ['INPUT', 'OUTPUT']:
 
-            sockets = self.get_sockets(in_out, include=include, exclude=exclude, enabled_only=enabled_only, free_only=free_only, parent=parent)
+            #sockets = self.get_sockets(in_out, include=include, exclude=exclude, enabled_only=enabled_only, free_only=free_only, parent=parent)
+            sockets = self.get_sockets(in_out, include=include, exclude=exclude, enabled_only=enabled_only, parent=parent)
             sig = []
             for socket in sockets:
                 d = self

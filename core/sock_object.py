@@ -48,44 +48,12 @@ from .treeclass import Tree
 from .nodeclass import Node
 from .socket_class import Socket
 from . import generated
+from . import blender
+
 
 class Object(generated.Object):
 
     SOCKET_TYPE = 'OBJECT'
-
-    def __init__(self, 
-        value: Socket | str = None,
-        name: str = None,
-        tip: str = '',
-        panel: str = "",
-        optional_label: bool = False,
-        hide_value: bool = False,
-        hide_in_modifier: bool = False,
-        ):
-        """ Class Object data socket
-
-        Arguments
-        ---------
-        - value (bpy.types.Object or str = None) : object or object name in bpy.data.objects
-        - name (str = None) : create a group input socket of type Object if not None
-        - tip  (str = '') : Property description
-        - panel (str = "") : Panel name
-        - optional_label  (bool = False) : Property optional_label
-        - hide_value  (bool = False) : Property hide_value
-        - hide_in_modifier  (bool = False) : Property hide_in_modifier
-        """
-        bsock = utils.get_bsocket(value)
-        if bsock is None:
-            obj = utils.get_blender_resource('OBJECT', value)
-            if name is None:
-                #name = 'Object' # Before Blender 4.4
-                bsock = Node('Object', object=obj)._out
-            else:
-                bsock = self._create_input_socket(name=name, tip=tip,
-            panel=panel, optional_label=optional_label, hide_value=hide_value,
-            hide_in_modifier=hide_in_modifier)
-
-        super().__init__(bsock)
 
     # ====================================================================================================
     # Class test    

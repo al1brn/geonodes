@@ -54,55 +54,6 @@ class Menu(generated.Menu):
 
     SOCKET_TYPE = 'MENU'
 
-    def __init__(self,
-        value: Socket = None,
-        name: str = 'Menu',
-        tip: str = '',
-        panel: str = "",
-        optional_label: bool = False,
-        hide_value: bool = False,
-        hide_in_modifier: bool = False,
-        expanded: bool = False,
-        shape: Literal['AUTO', 'SINGLE'] = 'AUTO',
-    ):
-        """ > Menu socket, node <&Node Menu Switch>
-
-        Arguments
-        ---------
-        - value (Socket = None) : Socket or value to set to 'Menu Switch' node
-        - name (str = None) : Name of the input socket to create if not None
-        - tip  (str = '') : Property description
-        - panel (str = "") : Panel name
-        - optional_label  (bool = False) : Property optional_label
-        - hide_value  (bool = False) : Property hide_value
-        - hide_in_modifier  (bool = False) : Property hide_in_modifier
-        - expanded  (bool = False) : Property menu_expanded
-        - shape  (str = 'AUTO') : Property structure_type in ('AUTO', 'SINGLE')
-        """
-
-        # ----------------------------------------------------------------------------------------------------
-        # Value can be a Socket
-        # ----------------------------------------------------------------------------------------------------
-
-        bsocket = None
-        if value is not None:
-            bsocket = utils.get_bsocket(value)
-
-        # ----------------------------------------------------------------------------------------------------
-        # No socket : we get it either from a Menu Switch node or from Group input
-        # ----------------------------------------------------------------------------------------------------
-
-        if bsocket is None:
-            if name is None:
-                bsocket = Node('Menu Switch')._out._bsocket
-
-            else:
-                bsocket = self._create_input_socket(name=name, tip=tip,
-                    panel=panel, optional_label=optional_label, hide_value=hide_value,
-                    hide_in_modifier=hide_in_modifier, expanded=expanded, shape=shape)
-
-        super().__init__(bsocket)
-
     # ====================================================================================================
     # Class test    
     # ====================================================================================================

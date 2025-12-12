@@ -159,116 +159,121 @@ def demo():
     # ====================================================================================================
     # A digital digit : each light item is a face
 
-    with GeoNodes("Digit"):
+with GeoNodes("Digit"):
 
-        value = Integer(8, "Value", 0, 9, tip="Digit value")
-        size  = Float(1, "Size", 0)
+    size  = Float(1, "Size", 0)
 
-        with Panel("Appearance"):
-            on_mat     = Material("LCD On", "On")
-            off_mat    = Material("LCD Off", "Off")
-            shear      = Float.Factor(.4, "Shear", 0, 1)
+    with Panel("Appearance"):
+        on_mat     = Material("LCD On", "On")
+        off_mat    = Material("LCD Off", "Off")
+        shear      = Float.Factor(.4, "Shear", 0, 1)
 
-        with Panel("Options"):
-            ok_0       = Boolean(True, "Display 0")
-            minus      = Boolean(False, "Minus Sign", tip="Only minus sign")
-            positive   = Boolean(False, "Positive", tip="Sign is off (True) or on (False)")
+    with Panel("Options"):
+        ok_0       = Boolean(True, "Display 0")
+        minus      = Boolean(False, "Minus Sign", tip="Only minus sign")
+        positive   = Boolean(False, "Positive", tip="Sign is off (True) or on (False)")
 
-        # ----- Dimensions
+    # ----- Dimensions
 
-        X = size
-        Z = size*1.8
-        z1 = Z/2
-        z0 = -z1
-        x1 = X/2
-        x0 = -x1
+    X = size
+    Z = size*1.8
+    z1 = Z/2
+    z0 = -z1
+    x1 = X/2
+    x0 = -x1
 
-        d = Z*.1
-        d2 = d/2
-        e = d/10
+    d = Z*.1
+    d2 = d/2
+    e = d/10
+    
+    with Layout("0x10 : Hrz Bottom"):
+        item0 = Mesh.Circle(vertices=4, fill_type='NGON')
+        item0[0].position = (x0 + e, 0, z0)
+        item0[1].position = (x1 - e, 0, z0)
+        item0[2].position = (x1 - d - e, 0, z0 + d)
+        item0[3].position = (x0 + d + e, 0, z0 + d)
 
-        with Layout("Item 0"):
-            item0 = Mesh.Circle(vertices=4, fill_type='NGON')
-            item0[0].position = (x0 + e, 0, z0)
-            item0[1].position = (x1 - e, 0, z0)
-            item0[2].position = (x1 - d - e, 0, z0 + d)
-            item0[3].position = (x0 + d + e, 0, z0 + d)
+        item0.faces.Mask = int(0x10)
+        digit = item0
 
-            digit = item0
+    with Layout("0x20 : Hrz Middle"):
+        item = Mesh.Circle(vertices=6, fill_type='NGON')
+        item[0].position = (x0, 0, 0)
+        item[1].position = (x0 + d, 0, -d2)
+        item[2].position = (x1 - d, 0, -d2)
+        item[3].position = (x1, 0, 0)
+        item[4].position = (x1 - d, 0, d2)
+        item[5].position = (x0 + d, 0, d2)
 
-        with Layout("Item 1"):
-            item = Mesh.Circle(vertices=6, fill_type='NGON')
-            item[0].position = (x0, 0, 0)
-            item[1].position = (x0 + d, 0, -d2)
-            item[2].position = (x1 - d, 0, -d2)
-            item[3].position = (x1, 0, 0)
-            item[4].position = (x1 - d, 0, d2)
-            item[5].position = (x0 + d, 0, d2)
+        item.faces.Mask = int(0x20)
+        digit += item
 
-            digit += item
+        with Layout("Minus sign"):
+            minus_mesh = Mesh(item)
+            minus_mesh.material = on_mat.switch(positive, off_mat)
 
-            with Layout("Minus sign"):
-                minus_mesh = Mesh(item)
-                minus_mesh.material = on_mat.switch(positive, off_mat)
+    with Layout("0x40 : Hrz Top"):
+        item0.faces.Mask = int(0x40)
+        digit += item0.transform(rotation=Rotation.FromEuler((0, pi, 0)))
 
-        with Layout("Item 2"):
-            digit += item0.transform(rotation=Rotation.FromEuler((0, pi, 0)))
+    with Layout("0x01: Bottom Left"):
+        item3 = Mesh.Circle(vertices=4, fill_type='NGON')
+        item3[0].position = (x0, 0, z0 + e)
+        item3[1].position = (x0 + d, 0, z0 + d + e)
+        item3[2].position = (x0 + d, 0, -d2 - e)
+        item3[3].position = (x0, 0, -e)
+        
+        item3.faces.Mask = int(0x01)
 
-        with Layout("Item 3"):
-            item3 = Mesh.Circle(vertices=4, fill_type='NGON')
-            item3[0].position = (x0, 0, z0 + e)
-            item3[1].position = (x0 + d, 0, z0 + d + e)
-            item3[2].position = (x0 + d, 0, -d2 - e)
-            item3[3].position = (x0, 0, -e)
+        digit += item3
 
-            digit += item3
+    with Layout("0x02 : Top Left"):
+        item4 = Mesh(item3).transform(scale=(1, 1, -1))
+        item4.flip_faces()
+        
+        item4.faces.Mask= int(0x02)
 
-        with Layout("Item 4"):
-            item4 = Mesh(item3).transform(scale=(1, 1, -1))
-            item4.flip_faces()
+        digit += item4
 
-            digit += item4
+    with Layout("0x04 : Bottom Right"):
+        item4.faces.Mask= int(0x04)
+        digit += item4.transform(rotation=Rotation.FromEuler((0, pi, 0)))
 
-        with Layout("Item 5"):
-            digit += item4.transform(rotation=Rotation.FromEuler((0, pi, 0)))
+    with Layout("0x08 : Top Right"):
+        item3.faces.Mask = int(0x08)
+        digit += item3.transform(rotation=Rotation.FromEuler((0, pi, 0)))
 
-        with Layout("Item 6"):
-            digit += item3.transform(rotation=Rotation.FromEuler((0, pi, 0)))
+    with Layout("Shear"):
+        digit.offset = (nd.position.z*.4*shear, 0, 0)
+        
+        
+    # 0x10, 0x20, 0x40, Hrz from bot to top
+    # 0x01, 0x02,       Vrt Left
+    # 0x04, 0x08        Vrt Right
 
-        with Layout("Shear"):
-            digit.offset = (nd.position.z*.4*shear, 0, 0)
+    with Integer.IndexSwitch(index=Input("Value")) as mask:
 
-        with Layout("On / Off"):
+        Integer(0x5F).out() # 0
+        Integer(0x0C).out() # 1
+        Integer(0x79).out() # 2
+        Integer(0x7C).out() # 3
+        Integer(0x2E).out() # 4
+        Integer(0x76).out() # 5
+        Integer(0x77).out() # 6
+        Integer(0x7F).out() # 8
+        Integer(0x7E).out() # 9
+        
+    digit.faces.material = off_mat
+    zero_off = Mesh(digit)
 
-            digit.material = off_mat
-            zero_off = Mesh(digit)
+    digit.faces[(Integer("Mask") & mask).not_equal(0)].material =  on_mat
 
-            with Layout("Horizontal Bottom"):
-                digit[0].material = on_mat.switch(value.equal(1) | value.equal(4) | value.equal(7), off_mat)
+    # 0x5F is mask for value 0
+    with Layout("Display 0"):
+        digit = zero_off.switch(ok_0 | mask.not_equal(0x5F), digit)
 
-            with Layout("Horizontal Middle"):
-                digit[1].material = on_mat.switch(value.equal(0) | value.equal(1) | value.equal(7), off_mat)
-
-            with Layout("Horizontal Top"):
-                digit[2].material = on_mat.switch(value.equal(1) | value.equal(4), off_mat)
-
-            with Layout("Vertical Left Bottom"):
-                digit[3].material = off_mat.switch(value.equal(0) | value.equal(2) | value.equal(6) | value.equal(8), on_mat)
-
-            with Layout("Vertical Left Top"):
-                digit[4].material = off_mat.switch(value.equal(0) | value.equal(4) | value.equal(5) | value.equal(6) | (value >= 8), on_mat)
-
-            with Layout("Vertical Right Bottom"):
-                digit[5].material = on_mat.switch(value.equal(2), off_mat)
-
-            with Layout("Vertical Right Top"):
-                digit[6].material = on_mat.switch(value.equal(5) | value.equal(6), off_mat)
-
-        with Layout("Display 0"):
-            digit = zero_off.switch(ok_0 | value.not_equal(0), digit)
-
-        digit.switch(minus, minus_mesh).out()
-
+    digit.switch(minus, minus_mesh).out()
+  
     # ====================================================================================================
     # A digital counter
 

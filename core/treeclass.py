@@ -382,19 +382,48 @@ class Tree:
         self._is_group = is_group
 
         # Managed lists
-        self._nodes = [] # List of nodes
+        self._nodes = []    # List of nodes
+        self._mod_vals = {} # To restore modifiers values when necessary (menus)
 
+
+        # ---------------------------------------------------------------------------
         # Clear the tree
+        # ---------------------------------------------------------------------------
+
         if clear:
+
+            # Store the current value of each input socket
+
+            tinf = TreeInterface(self._btree)
+            for bnode in self._btree.nodes:
+                if bnode.bl_idname != 'NodeGroupInput':
+                    continue
+
+                for name, mod in blender.get_geonodes_modifiers(self._btree).items():
+                    values = {}
+                    for bsock in bnode.outputs:
+                        values[(bsock.name, bsock.bl_idname)] = mod.get(bsock.identifier)
+                    self._mod_vals[name] = values
+
+                break
+
+            # Clear
+
             self.clear()
 
+        # ---------------------------------------------------------------------------
         # Interface
+        # ---------------------------------------------------------------------------
+
         self._interface = None
         if self._is_group or tree_type == 'GeometryNodeTree':
             self._interface = TreeInterface(self._btree)
             self._interface.clear(use_bin=True)
 
+        # ---------------------------------------------------------------------------
         # Random generator for random colors
+        # ---------------------------------------------------------------------------
+
         self._rng = np.random.default_rng(0)
 
     # ====================================================================================================
@@ -453,6 +482,109 @@ class Tree:
             pass
         ```
         """
+
+        # ----------------------------------------------------------------------------------------------------
+        # Adjut menu sockets
+        # ----------------------------------------------------------------------------------------------------
+
+        inputs = {bsock.identifier: bsock for bsock in self.input_node._bnode.outputs}
+        for node in self._nodes:
+
+            # ---------------------------------------------------------------------------
+            # Only MenuNodes with input socket linked to Group input
+            # ---------------------------------------------------------------------------
+
+            bl_id = node._bnode.bl_idname
+            if bl_id not in ['GeometryNodeMenuSwitch', 'GeometryNodeIndexSwitch']:
+                continue
+            insock = node._bnode.inputs[0]
+            if not insock.is_linked:
+                continue
+            outsock = insock.links[0].from_socket
+            if outsock.identifier not in inputs.keys():
+                continue
+
+            # ---------------------------------------------------------------------------
+            # Menu Switch
+            # ---------------------------------------------------------------------------
+
+            sock_id = outsock.identifier
+            itfsock = self._interface.by_identifier(sock_id)
+
+            if node._is_menu_switch:
+                enums = [item.name for item in node._bnode.enum_items]
+                n = len(enums)
+                if n == 0:
+                    continue
+
+                if node._default_menu is None:
+                    node._default_menu = enums[0]
+
+                try:
+                    def_index = enums.index(node._default_menu)
+                except:
+                    def_index = 0
+                    node._default_menu = enums[0]
+
+                outsock.default_value = node._default_menu
+                itfsock.default_value = node._default_menu
+
+                for name, mod in blender.get_geonodes_modifiers(self._btree).items():
+                    
+                    mod_value = None
+                    values = self._mod_vals.get(name)
+                    if values is not None:
+                        mod_value = values.get((outsock.name, outsock.bl_idname))
+
+                    if mod_value is None:
+                        continue
+
+                    if mod_value < 2 or mod_value > n + 1:
+                        mod[sock_id] = def_index + 2
+                    else:
+                        mod[sock_id] = mod_value
+
+            # ---------------------------------------------------------------------------
+            # Index Switch
+            # ---------------------------------------------------------------------------
+
+            else:
+                n = len(node._bnode.index_switch_items)
+                if n == 0:
+                    continue
+                if node._default_menu is None:
+                    node._default_menu = 0
+
+                def_index = node._default_menu
+                if def_index >= n:
+                    def_index = 0
+                    node._default_menu = 0
+
+                outsock.default_value = node._default_menu
+                itfsock.default_value = node._default_menu
+                itfsock.max_value = n - 1
+
+                # Modifiers
+                for name, mod in blender.get_geonodes_modifiers(self._btree).items():
+                    
+                    mod_value = None
+                    values = self._mod_vals.get(name)
+
+                    print("STEP A", values)
+                    if values is not None:
+                        mod_value = values.get((outsock.name, outsock.bl_idname))
+
+                    print("STEP V", mod_value)
+
+                    if mod_value is None:
+                        continue
+
+                    if mod_value > n:
+                        mod[sock_id] = def_index
+                    else:
+                        mod[sock_id] = mod_value
+
+
         # Remove from stack
         tree = Tree.TREE_STACK.pop()
         if tree != self:
@@ -760,6 +892,12 @@ class Tree:
         """
         input_node = self.get_input_node()
         socket = input_node.create_socket('OUTPUT', bl_idname, name, panel=panel, **props)
+        def_val = props.get('default_value')
+        if def_val is not None:
+            try:
+                utils.get_bsocket(socket).default_value = def_val
+            except Exception as e:
+                print(f"WARNING Tree.create_input_socket: {str(e)}")
 
         return socket
             
@@ -972,9 +1110,10 @@ class Tree:
 
         # ---------------------------------------------------------------------------
         # Menu
+        # Done when exiting the tree
         # ---------------------------------------------------------------------------
 
-        if True:
+        if False:
             out_socket = utils.get_bsocket(out_socket)
             in_socket = utils.get_bsocket(in_socket)
 
@@ -992,8 +1131,9 @@ class Tree:
                     index = list(enums).index(def_value) + 1
 
                     # Update modifiers with default value index
-                    for mod in blender.get_geonodes_modifiers(self._btree):
-                        mod[out_socket.identifier] = index
+                    # Update are done when exiting the tree
+                    #for mod in blender.get_geonodes_modifiers(self._btree):
+                    #    mod[out_socket.identifier] = index
 
         return link
     

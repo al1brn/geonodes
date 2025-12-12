@@ -58,51 +58,6 @@ class Boolean(generated.Boolean):
 
     SOCKET_TYPE = 'BOOLEAN'
 
-    def __init__(self, 
-        value: Socket | bool = False,
-        name: str = None,
-        tip: str = '',
-        panel: str = "",
-        optional_label: bool = False,
-        hide_value: bool = False,
-        hide_in_modifier: bool = False,
-        default_attribute: str = '',
-        layer_selection: bool = False,
-        shape: Literal['AUTO', 'SINGLE'] = 'AUTO',
-        ):
-        """ Socket of type BOOLEAN
-
-        > Node <&Node Boolean>
-
-        Aguments
-        --------
-        - value  (Socket | bool = False) : Default value
-        - name  (str = None) : Input socket name
-        - tip  (str = '') : Property description
-        - panel (str = "") : Panel name
-        - optional_label  (bool = False) : Property optional_label
-        - hide_value  (bool = False) : Property hide_value
-        - hide_in_modifier  (bool = False) : Property hide_in_modifier
-        - default_attribute  (str = '') : Property default_attribute_name
-        - layer_selection  (bool = False) : Property layer_selection_field
-        - shape  (str = 'AUTO') : Property structure_type in ('AUTO', 'SINGLE')
-        """
-        
-        if isinstance(value, str):
-            value = type(self).Named(value)
-
-        bsock = utils.get_bsocket(value)
-        if bsock is None:
-            if name is None:
-                bsock = Node('Boolean', boolean=int(value))._out
-            else:
-                bsock = self._create_input_socket(value=value, name=name, tip=tip,
-                    panel=panel, optional_label=optional_label, hide_value=hide_value,
-                    hide_in_modifier=hide_in_modifier, default_attribute=default_attribute,
-                    layer_selection=layer_selection, shape=shape)
-
-        super().__init__(bsock)
-
     # ====================================================================================================
     # Operations
     # ====================================================================================================

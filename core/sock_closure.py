@@ -55,56 +55,6 @@ class Closure(generated.Closure):
 
     SOCKET_TYPE = 'CLOSURE'
 
-    def __init__(self, 
-        value: Socket = None,
-        name: str = None,
-        tip: str = '',
-        panel: str = "",
-        optional_label: bool = False,
-        hide_value: bool = False,
-        hide_in_modifier: bool = False,
-        ):
-        """ Socket of type Closure
-
-        Arguments
-        ---------
-        - value  (Socket = None) : Default value
-        - name  (str = None) : Input socket name
-        - tip  (str = '') : Property description
-        - panel (str = "") : Panel name
-        - optional_label  (bool = False) : Property optional_label
-        - hide_value  (bool = False) : Property hide_value
-        - hide_in_modifier  (bool = False) : Property hide_in_modifier
-        """
-
-        bsock = utils.get_bsocket(value)
-        if bsock is None:
-
-            # ---------------------------------------------------------------------------
-            # No name : let's create a Closure Zone
-            # ---------------------------------------------------------------------------
-
-            if name is None:
-
-                # Creating the output closure node will create the paired input node
-                #node = Node('NodeClosureOutput')
-                node = ZoneNode("Closure", None)
-                bsock = node.closure
-
-            # ---------------------------------------------------------------------------
-            # We have a name: let's create it from the group input
-            # ---------------------------------------------------------------------------
-
-            else:
-                bsock = self._create_input_socket(name=name, tip=tip,
-                    panel=panel, optional_label=optional_label, hide_value=hide_value,
-                    hide_in_modifier=hide_in_modifier)
-                
-        super().__init__(bsock)
-
-        # No layout when capturing in out
-        self._use_layout = False
-
     # ====================================================================================================
     # Zone
     # ====================================================================================================
@@ -278,7 +228,7 @@ class Closure(generated.Closure):
     # ----------------------------------------------------------------------------------------------------
     
     def __call__(self, named_sockets: dict = {}, signature: Signature = None, **sockets):
-        return self.evaluate(named_socket=named_socket, signature=signature, sockets=sockets)
+        return self.evaluate(named_sockets=named_sockets, signature=signature, **sockets)
 
     
     # ===============================================s=====================================================

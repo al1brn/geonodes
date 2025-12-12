@@ -38,6 +38,8 @@ import numpy as np
 import bpy
 from . import constants
 from .scripterror import NodeError
+from . import colors
+from . import blender
 
 # ====================================================================================================
 # Socket Type
@@ -45,12 +47,9 @@ from .scripterror import NodeError
 
 class SocketType:
 
-    __slots__ = ['_full_socket_id']
+    __slots__ = ('_full_socket_id',)
 
     def __init__(self, value):
-
-        from .socket_class import Socket
-        from .domain_class import Domain
 
         self._full_socket_id  = None
 
@@ -59,10 +58,10 @@ class SocketType:
         # ---------------------------------------------------------------------------
 
         # Socket : its type has priority over bsocket
-        if isinstance(value, Socket):
+        if getattr(value, 'SOCKET_TYPE', None) is not None:
             value = value.SOCKET_TYPE
 
-        elif isinstance(value, Domain):
+        elif getattr(value, 'DOMAIN_NAME', None) is not None:
             value = value._geo
 
         # List of sockets
@@ -126,10 +125,10 @@ class SocketType:
             if isinstance(value, bool):
                 sid = 'NodeSocketBool'
 
-            elif isinstance(value, int):
+            elif isinstance(value, (int, np.int8, np.int32, np.int64)):
                 sid = 'NodeSocketInt'
 
-            elif isinstance(value, float):
+            elif isinstance(value, (float, np.float32, np.float64)):
                 sid = 'NodeSocketFloat'
 
             elif isinstance(value, str):
@@ -276,8 +275,11 @@ class SocketType:
         if bsocket is None:
             return None
         
+        # Can be an empty socket
+        if not isinstance(bsocket, bpy.types.NodeSocket):
+            return None
+        
         # Virtual socket can point on the wrong output socket
-
         if value.SOCKET_TYPE != 'CUSTOM':
             return bsocket
         
@@ -479,6 +481,50 @@ class SocketType:
 
         return props
     
+    @property
+    def default_value(self):
+        props = constants.SOCKETS[self.type].get('props')
+        if 'default' in props:
+            return props['default'][2]
+        else:
+            return None
+        
+    def get_default_from_value(self, value = None):
+        if value is None:
+            return self.default_value
+        
+        stype = self.type
+        if stype == 'BOOLEAN':
+            return bool(value)
+        
+        elif stype == 'INT':
+            return int(value)
+        
+        elif stype == 'RGBA':
+            return colors.to_color(value)
+        
+        elif stype in ['ROTATION', 'VECTOR']:
+            if np.shape(value) == ():
+                a = float(value)
+                return (a, a, a)
+            elif np.size(value) == 3:
+                return tuple(np.asarray(value, dtype=float))
+            else:
+                raise NodeError(f"The value <{value}> is not a {self.class_name}.")
+            
+        elif stype == 'STRING':
+            return str(value)
+        
+        elif stype == 'VALUE':
+            return float(value)
+        
+        elif stype in ['COLLECTION', 'IMAGE', 'OBJECT', 'OBJECT']:
+            return blender.get_resource(self.type, value)
+        
+        else:
+            return None
+
+
     # ====================================================================================================
     # Data type for node
     # ====================================================================================================
@@ -515,7 +561,6 @@ class SocketType:
             raise AttributeError(f"Invalid data_type argument '{self}' for node [{info['name']}], valids are {valids}")
         else:
             return None
-
     
     # ====================================================================================================
     # Comparaison

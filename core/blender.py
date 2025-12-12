@@ -36,6 +36,31 @@ import bpy
 from bpy.types import VectorFont
 
 # ====================================================================================================
+# Get a Blender Data resource
+# ====================================================================================================
+
+def get_resource(socket_type, value):
+
+    spec = {
+        'OBJECT':     {'coll': bpy.data.objects,     'type': bpy.types.Object},
+        'COLLECTION': {'coll': bpy.data.collections, 'type': bpy.types.Collection},
+        'IMAGE':      {'coll': bpy.data.images,      'type': bpy.types.Image},
+        'MATERIAL':   {'coll': bpy.data.materials,   'type': bpy.types.Material},
+        'TEXTURE':    {'coll': bpy.data.textures,    'type': bpy.types.Texture},
+        }[socket_type]
+
+    if value is None:
+        return None
+
+    if isinstance(value, spec['type']):
+        return value
+    else:
+        return spec['coll'].get(value)
+
+def get_object(value):
+    return get_resource('OBJECT', value)
+
+# ====================================================================================================
 # Load a system font
 
 def get_font(name: str|VectorFont, path: str|None = None) -> VectorFont | None:
@@ -112,13 +137,13 @@ def get_geonodes_modifiers(tree):
     if tree.bl_idname != 'GeometryNodeTree':
         return []
     
-    modifiers = []
+    modifiers = {}
     for obj in bpy.data.objects:
         for mod in obj.modifiers:
             if not isinstance(mod, bpy.types.NodesModifier) or (mod.node_group != tree):
                 continue
 
-            modifiers.append(mod)
+            modifiers[obj.name] = mod
 
     return modifiers
 

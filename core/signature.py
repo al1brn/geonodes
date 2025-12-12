@@ -43,7 +43,7 @@ from .sockettype import SocketType
 
 class Signature:
 
-    __slots__ = ['_inputs', '_outputs']
+    __slots__ = ('_inputs', '_outputs')
 
     def __init__(self, inputs=None, outputs=None):
         """ Signature encapsulate two lists for inputs and outputs.
