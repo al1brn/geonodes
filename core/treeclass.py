@@ -393,22 +393,20 @@ class Tree:
         if clear:
 
             # Store the current value of each input socket
+            if tree_type == 'GeometryNodeTree' or self._is_group:
+                for bnode in self._btree.nodes:
+                    if bnode.bl_idname != 'NodeGroupInput':
+                        continue
 
-            tinf = TreeInterface(self._btree)
-            for bnode in self._btree.nodes:
-                if bnode.bl_idname != 'NodeGroupInput':
-                    continue
+                    for name, mod in blender.get_geonodes_modifiers(self._btree).items():
+                        values = {}
+                        for bsock in bnode.outputs:
+                            values[(bsock.name, bsock.bl_idname)] = mod.get(bsock.identifier)
+                        self._mod_vals[name] = values
 
-                for name, mod in blender.get_geonodes_modifiers(self._btree).items():
-                    values = {}
-                    for bsock in bnode.outputs:
-                        values[(bsock.name, bsock.bl_idname)] = mod.get(bsock.identifier)
-                    self._mod_vals[name] = values
-
-                break
+                    break
 
             # Clear
-
             self.clear()
 
         # ---------------------------------------------------------------------------
@@ -483,107 +481,16 @@ class Tree:
         ```
         """
 
-        # ----------------------------------------------------------------------------------------------------
-        # Adjut menu sockets
-        # ----------------------------------------------------------------------------------------------------
+        # Adjust menu inputs
+        if not error:
+            for node in self._nodes:
+                if '_default_menu' in node.__slots__:
+                    node._tree_is_completed(self._mod_vals)
 
-        inputs = {bsock.identifier: bsock for bsock in self.input_node._bnode.outputs}
-        for node in self._nodes:
-
-            # ---------------------------------------------------------------------------
-            # Only MenuNodes with input socket linked to Group input
-            # ---------------------------------------------------------------------------
-
-            bl_id = node._bnode.bl_idname
-            if bl_id not in ['GeometryNodeMenuSwitch', 'GeometryNodeIndexSwitch']:
-                continue
-            insock = node._bnode.inputs[0]
-            if not insock.is_linked:
-                continue
-            outsock = insock.links[0].from_socket
-            if outsock.identifier not in inputs.keys():
-                continue
-
-            # ---------------------------------------------------------------------------
-            # Menu Switch
-            # ---------------------------------------------------------------------------
-
-            sock_id = outsock.identifier
-            itfsock = self._interface.by_identifier(sock_id)
-
-            if node._is_menu_switch:
-                enums = [item.name for item in node._bnode.enum_items]
-                n = len(enums)
-                if n == 0:
-                    continue
-
-                if node._default_menu is None:
-                    node._default_menu = enums[0]
-
-                try:
-                    def_index = enums.index(node._default_menu)
-                except:
-                    def_index = 0
-                    node._default_menu = enums[0]
-
-                outsock.default_value = node._default_menu
-                itfsock.default_value = node._default_menu
-
-                for name, mod in blender.get_geonodes_modifiers(self._btree).items():
-                    
-                    mod_value = None
-                    values = self._mod_vals.get(name)
-                    if values is not None:
-                        mod_value = values.get((outsock.name, outsock.bl_idname))
-
-                    if mod_value is None:
-                        continue
-
-                    if mod_value < 2 or mod_value > n + 1:
-                        mod[sock_id] = def_index + 2
-                    else:
-                        mod[sock_id] = mod_value
-
-            # ---------------------------------------------------------------------------
-            # Index Switch
-            # ---------------------------------------------------------------------------
-
-            else:
-                n = len(node._bnode.index_switch_items)
-                if n == 0:
-                    continue
-                if node._default_menu is None:
-                    node._default_menu = 0
-
-                def_index = node._default_menu
-                if def_index >= n:
-                    def_index = 0
-                    node._default_menu = 0
-
-                outsock.default_value = node._default_menu
-                itfsock.default_value = node._default_menu
-                itfsock.max_value = n - 1
-
-                # Modifiers
-                for name, mod in blender.get_geonodes_modifiers(self._btree).items():
-                    
-                    mod_value = None
-                    values = self._mod_vals.get(name)
-
-                    print("STEP A", values)
-                    if values is not None:
-                        mod_value = values.get((outsock.name, outsock.bl_idname))
-
-                    print("STEP V", mod_value)
-
-                    if mod_value is None:
-                        continue
-
-                    if mod_value > n:
-                        mod[sock_id] = def_index
-                    else:
-                        mod[sock_id] = mod_value
-
+        # Check dead ends
+        dead_ends = 0
+        if not error:
+            dead_ends = self.check_dead_ends()
 
         # Remove from stack
         tree = Tree.TREE_STACK.pop()
@@ -606,7 +513,7 @@ class Tree:
         self.arrange()
 
         # Stats
-        print(f"Tree '{self._btree.name}' built: {self._str_stats}")
+        print(f"Tree '{self._btree.name}' built: {self._str_stats}, warnings: {dead_ends}")
 
         Tree._total_nodes += len(self._btree.nodes)
         Tree._total_links += len(self._btree.links)        
@@ -832,6 +739,8 @@ class Tree:
         self._nodes.append(node)
         if len(self._layouts):
             self._layouts[-1].include_node(node)
+
+        node._stack = NodeError.stack_lines()
 
         return node
 
@@ -1073,7 +982,7 @@ class Tree:
             elif name == 'WARNING':
                 return (.949, .574, .119)
             else:
-                return utils.value_to_color(value)
+                return utils.value_to_color(name)
                 #raise Exception(f"Non referenced color", name)
         else:
             return name
@@ -1108,43 +1017,7 @@ class Tree:
         utils.check_link(link)
         utils.check_zones(self._btree)
 
-        # ---------------------------------------------------------------------------
-        # Menu
-        # Done when exiting the tree
-        # ---------------------------------------------------------------------------
-
-        if False:
-            out_socket = utils.get_bsocket(out_socket)
-            in_socket = utils.get_bsocket(in_socket)
-
-            if out_socket.bl_idname == 'NodeSocketMenu' and in_socket.bl_idname == 'NodeSocketMenu':
-
-                enums = utils.get_menu_enums(out_socket)
-                if len(enums):
-                    def_value = in_socket.default_value
-                    if def_value == "":
-                        def_value = out_socket.default_value
-                        if def_value == "":
-                            def_value = enums[0]
-
-                    in_socket.default_value = def_value
-                    index = list(enums).index(def_value) + 1
-
-                    # Update modifiers with default value index
-                    # Update are done when exiting the tree
-                    #for mod in blender.get_geonodes_modifiers(self._btree):
-                    #    mod[out_socket.identifier] = index
-
         return link
-    
-    # ====================================================================================================
-    # Link menu
-    # ====================================================================================================
-
-    def link_menu(self, out_socket, in_socket, default_value=None):
-
-        return self.link(out_socket, in_socket)
-
 
     # ====================================================================================================
     # Tree Input / Output
@@ -1209,117 +1082,6 @@ class Tree:
             return self._output_stack[-1]
         else:
             return self.output_node
-    
-    # ====================================================================================================
-    # Get an existing input socket
-    # ====================================================================================================
-
-    def get_in_socket_OLD(self, name: str, panel: str = ""):
-        """ Get an existing socket within a panel
-
-        Arguments
-        ---------
-        - name (str) : name of the socket
-        - panel (str = "") : panel name
-
-        Returns
-        -------
-        - Socket : None if not found
-        """
-        parent = self.get_bpanel(panel)
-        item = self._interface.get_socket('INPUT', name, parent=parent)
-
-        if item is None:
-            raise RuntimeError(f"Socket input socket '{name}' not found in tree '{self._btree.name}'.")
-
-        return self.input_node.socket_by_identifier('OUTPUT', item.identifier)
-    
-
-    # ====================================================================================================
-    # Link two nodes
-    # ====================================================================================================
-
-    def link_nodes(self, from_node, to_node, include=None, exclude=[], create=True, panel=""):
-        """ Link two nodes
-
-        If from_node is a Group Input node, the necessary sockets can be created if 'create' argument is True.
-
-        Arguments
-        ---------
-        - from_node : the node to get the outputs from (i.e. tree Input Node)
-        - to_node : the node to plug into
-        - include (list = None) : connect only the sockets in the list (or panels)
-        - exclude (list = []) : exclude sockets in this list (or panels)
-        - create : create tree input sockets  (i.e. node output sockets) in from_node if it is a 'Group Input Node'
-        - panel (str = ""): panel name to create, use tree default name if None
-        """
-
-        # ----------------------------------------------------------------------------------------------------
-        # If from group input, we can use TreeInterface
-
-        if from_node._bnode.bl_idname == 'NodeGroupInput':
-            from_interface = from_node._tree._interface
-            from_interface.create_from_node(node=to_node._bnode, include=include, exclude=exclude, create=create, input_node=from_node._bnode, panel=panel)
-            return
-
-        # ----------------------------------------------------------------------------------------------------
-        # We feed from a node which is not a Group Node
-
-        # ----- The available output sockets
-
-        counters = {}
-        out_sockets = {}
-        for out_socket in from_node._bnode.outputs:
-            if not out_socket.enabled:
-                continue
-
-            name = out_socket.name if (out_socket.label is None or out_socket.label == "") else out_socket.label
-            name = utils.snake_case(name)
-            if name in counters:
-                rank = counters[name]
-                counters[name] += 1
-                name += f"_{rank}"
-            else:
-                rank = 0
-                counters[name] = 1
-
-            out_sockets[name] = out_socket
-
-        # ----- Loop on the input sockets
-
-        counters = {}
-        for in_socket in to_node._bnode.inputs:
-            if not in_socket.enabled:
-                continue
-
-            # ----- Rank of the name
-
-            name = in_socket.name if (in_socket.label is None or in_socket.label == "") else in_socket.label
-            name = utils.snake_case(name)
-            if name in counters:
-                rank = counters[name]
-                counters[name] += 1
-                name += f"_{rank}"
-            else:
-                rank = 0
-                counters[name] = 1
-
-            if name not in out_sockets:
-                continue
-
-            # ----- In include or exclude
-
-            if (include is not None) and (name not in include):
-                continue
-            if name in exclude:
-                continue
-
-            # ----- We can link
-
-            link = self._btree.links.new(in_socket, out_sockets[name])
-            utils.check_link(link)
-
-        utils.check_zones(self._btree)
 
     # ====================================================================================================
     # Dict of modifiers using this tree
@@ -1327,9 +1089,50 @@ class Tree:
 
     def get_modifiers(self):
         return blender.get_geondes_modifiers(self._btree)
+    
+    # ====================================================================================================
+    # Check dead ends
+    # ====================================================================================================
 
-    # =============================================================================================================================
+    def check_dead_ends(self):
+
+        tab = "\n   | " 
+        
+        count = 0
+        for node in self._nodes:
+            if node._bnode.bl_idname in ['NodeGroupInput', 'NodeGroupOutput', 'ShaderNodeOutputMaterial']:
+                continue
+
+            is_linked = False
+            n = 0
+            for bsock in node._bnode.outputs:
+                if bsock.is_linked:
+                    is_linked = True
+                    break
+                n += 1
+            if is_linked or n == 0:
+                continue
+
+            if count == 0:
+                print()
+                print("-"*100)
+                print("The following nodes are not connected")
+                
+            count += 1
+            node._bnode.label = f"DEAD END {count}"
+            utils.set_node_error(node._bnode)
+
+            print()
+            print(node)
+            if node._stack is not None:
+                print(tab + tab.join(node._stack[1:]))
+
+        return count
+    
+    # ====================================================================================================
     # Dump content
+    # ====================================================================================================
+
 
     def dump(self):
         for bnode in self._btree.nodes:

@@ -978,16 +978,14 @@ def check_enum_arg(node_name: str, arg_name: str, arg_value: str, meth_name: str
     """
 
     # Argument value can be the parameter value
-
     if arg_value in valids:
         return True
 
     # It can be the user version
-
     param_value = get_enum_param_value(arg_value, node_name, arg_name)
     if param_value in valids:
         return True
-
+    
     raise NodeError(f"Parameter error: '{arg_value}' is not a valid value for argument '{arg_name}' in method '{meth_name}'.",
         keyword = arg_value,
         valids = get_enum_param_users(valids, node_name, arg_name, user_case=True),
@@ -1176,7 +1174,7 @@ def python_value_for_socket(value, socket_type):
         return str(value)
 
     elif socket_type in ['COLLECTION', 'OBJECT', 'IMAGE', 'MATERIAL']:
-        return get_resource(socket_type, value)
+        return blender.get_resource(socket_type, value)
 
     else:
         raise NodeError(f"python_value_for_socket error: impossible to build a value from '{value}' for socket '{socket_type}'")

@@ -234,7 +234,7 @@ class Socket(NodeCache):
                     def_key = 'default_value' if 'default_value' in props else None
 
                 if def_key is None:
-                    props = {'default_value': socket, **props}
+                    props = {'value': socket, **props}
 
             new_socket = self.NewInput(name, tip=tip, panel=panel, **props)
             self._bsocket = new_socket._bsocket
@@ -359,7 +359,7 @@ class Socket(NodeCache):
     # ----------------------------------------------------------------------------------------------------
 
     @classmethod
-    def NewInput(cls, name: str, tip: str = "", panel: str = "", **props):
+    def NewInput(cls, name: str, value = None, tip: str = "", panel: str = "", **props):
         """ Create an new input socket
 
         > [!NOTE]
@@ -373,14 +373,46 @@ class Socket(NodeCache):
 
         Arguments
         ---------
-        - name : socket name
-        - panel : panel name
+        - name (str) : socket name
+        - value (Any = None) : default_value
+        - panel (str: None) : panel name
 
         Returns
         -------
         - Socket
         """
-        value = props.get('default', props.get('default_value'))
+        if value is None:
+            defval = None
+        else:
+            defval = SocketType(cls.SOCKET_TYPE).get_default_from_value(value)
+            new_props = {**props}
+
+            if 'default' in new_props:
+                new_props['default'] = defval
+
+            elif 'default_value' in new_props:
+                new_props['default_value'] = defval
+
+            else:
+                if 'default' not in constants.SOCKETS[cls.SOCKET_TYPE]['props']:
+                    raise NodeError(f"The {SocketType(cls.SOCKET_TYPE).class_name} socket doesn't accept a default value. Value argument <{value}> is invalid.")
+                
+                new_props['default_value'] = defval
+
+            props = new_props
+
+
+            #if props.get('default') is not None or props.get('default_value') is not, None)or 'default_value' in props
+
+
+        return Tree.current_tree().create_input_socket(
+            SocketType(cls.SOCKET_TYPE).socket_id,
+            name = name,
+            panel = panel,
+            **props)
+    
+        # OLD OLD OLD
+
         if value is None:
             return cls._create_input_socket(name = name, tip = tip, panel = panel, **props)
         else:
@@ -927,7 +959,9 @@ class Socket(NodeCache):
         else:
             msg = f"If you try to access a peer socket, the node sockets are given below:\n{repr(self.node)}"
 
-        raise NodeError(f"{type(self).__name__} socket doesn't have an attribute named '{name}'.\n{msg}")
+        ne = NodeError(f"{type(self).__name__} socket doesn't have an attribute named '{name}'.\n{msg}")
+
+        raise AttributeError(str(ne))
 
     
 
@@ -1340,6 +1374,22 @@ class Socket(NodeCache):
         """
         node = ZoneNode("Simulation", self, named_sockets=named_sockets, **sockets)
         return ZoneIterator(self, node)
+    
+    @classmethod
+    def Simulation(cls, named_sockets: dict={}, **sockets):
+        """ Simulation zone
+
+        Arguments
+        ---------
+        - named_socket (dict) : named sockets
+        - sockets (dict) : other sockets
+
+        Returns
+        -------
+        - ZoneIterator
+        """
+        return cls.Empty().simulation(named_sockets=named_sockets, **sockets)        
+
 
     # ====================================================================================================
     # Class Test

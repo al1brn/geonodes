@@ -63,7 +63,7 @@ def get_object(value):
 # ====================================================================================================
 # Load a system font
 
-def get_font(name: str|VectorFont, path: str|None = None) -> VectorFont | None:
+def get_font(name: str | VectorFont, path: str|None = None) -> VectorFont | None:
     """ Get a font by its name
 
     Arguments

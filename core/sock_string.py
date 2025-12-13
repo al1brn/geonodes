@@ -38,18 +38,11 @@ __author__ = "Alain Bernard"
 __email__  = "lesideesfroides@gmail.com"
 __copyright__ = "Copyright (c) 2025, Alain Bernard"
 __license__ = "GNU GPL V3"
-__version__ = "3.0.0"
-__blender_version__ = "4.3.0"
 
-
-import numpy as np
-
-import bpy
-from . import utils
-from .treeclass import Tree
+from . import generated
+from . import blender
 from .nodeclass import Node
-from .socket_class import Socket
-from .  import generated
+from typing import Literal
 
 class String(generated.String):
 

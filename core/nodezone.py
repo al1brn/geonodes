@@ -404,8 +404,6 @@ class ZoneIterator:
         self._done          = False
         self._in_zone       = False
 
-        print("ZONE ITER", self._socket)
-
     def __str__(self):
         return f"<ZoneIterator {self._name}, in_zone: {self._in_zone}, done: {self._done}>"
 
@@ -424,9 +422,7 @@ class ZoneIterator:
                 self._socket._jump(self._input_node._bnode.outputs[1])
 
             elif self._name == REPEAT:
-                print("ZONE ITER jumping BEF", self._socket)
                 self._socket._jump(self._input_node._bnode.outputs[1])
-                print("ZONE ITER jumping AFT", self._socket)
 
             elif self._name == FOR_EACH:
                 self._socket._jump(self._input_node._bnode.outputs[1])
@@ -458,11 +454,15 @@ class ZoneIterator:
         if self._name == FOR_EACH:
             return self._output_node.socket_by_identifier('OUTPUT', "Generation_0")
         else:
-            raise f"Attribute error: {self._name} zone doesn't have an output socket named 'Generated'."
+            raise NodeError(f"Generated attribute is a property of for_each iterator, note {type(self).__name}.")
 
     @property
     def Generated(self):
         return self.generated
+    
+    @property
+    def _out(self):
+        return self._output_node._out
 
     def __setattr__(self, name, value):
         if name in ZoneIterator.__slots__:

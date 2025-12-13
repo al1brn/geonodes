@@ -67,6 +67,35 @@ class Float(generated.Float):
 
     SOCKET_TYPE = 'VALUE'
 
+    def __init__(self,
+        value   = None,
+        name    : str = None,
+        min     : float = -3.40282e+38,
+        max     : float = 3.40282e+38,
+        tip     : str = '',
+        panel   : str = "",
+        **props):
+        """ > Float Input
+
+        New <#Float> input with subtype 'NONE'.
+
+        Aguments
+        --------
+        - value  (object = 0.0) : Default value
+        - name  (str = 'Float') : Input socket name
+        - min  (float = -3.40282e+38) : Property min_value
+        - max  (float = 3.40282e+38) : Property max_value
+        - tip  (str = '') : Property description
+        - panel (str = "") : Panel name
+        - props (dict) : properties
+
+        Returns
+        -------
+        - Float
+        """
+        super().__init__(value, name, min=min, max=max, tip=tip, panel=panel, **props)
+
+
      # ====================================================================================================
      # Constructors
 

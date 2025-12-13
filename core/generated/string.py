@@ -314,11 +314,11 @@ class String(Socket):
         return cls(node._out)
 
     def to_curves(self,
-                    size: Float = None,
-                    character_spacing: Float = None,
-                    word_spacing: Float = None,
-                    line_spacing: Float = None,
-                    text_box_width: Float = None,
+                    size = None,
+                    character_spacing = None,
+                    word_spacing = None,
+                    line_spacing = None,
+                    text_box_width = None,
                     align_x: Literal['LEFT', 'CENTER', 'RIGHT', 'JUSTIFY', 'FLUSH'] = 'LEFT',
                     align_y: Literal['TOP', 'TOP_BASELINE', 'MIDDLE', 'BOTTOM_BASELINE', 'BOTTOM'] = 'TOP_BASELINE',
                     font = None,

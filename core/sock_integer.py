@@ -52,6 +52,35 @@ class Integer(generated.Integer):
 
     SOCKET_TYPE = 'INT'
 
+    def __init__(self,
+        value = None,
+        name    : str = None,
+        min     : int = -2147483648,
+        max     : int = 2147483647,
+        tip     : str = '',
+        panel   : str = "",
+        **props):
+        """ > Integer Input
+
+        New <#Integer> input with subtype 'NONE'.
+
+        Aguments
+        --------
+        - value  (object = 0) : Default value
+        - name  (str = 'Integer') : Input socket name
+        - min  (int = -2147483648) : Property min_value
+        - max  (int = 2147483647) : Property max_value
+        - tip  (str = '') : Property description
+        - panel (str = "") : Panel name
+        - props (dic) : properties
+
+        Returns
+        -------
+        - Integer
+        """
+        super().__init__(value, name, min=min, max=max, tip=tip, panel=panel, **props)
+
+
     # ====================================================================================================
     # Default input constructors
     # ('VALUE', 'INDEX', 'ID_OR_INDEX')

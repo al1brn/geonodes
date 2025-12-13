@@ -518,7 +518,7 @@ class SocketType:
         elif stype == 'VALUE':
             return float(value)
         
-        elif stype in ['COLLECTION', 'IMAGE', 'OBJECT', 'OBJECT']:
+        elif stype in ['COLLECTION', 'IMAGE', 'MATERIAL', 'OBJECT']:
             return blender.get_resource(self.type, value)
         
         else:

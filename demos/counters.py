@@ -94,7 +94,7 @@ updates
 
 from geonodes import *
 
-def demo():
+def demo(font=None):
 
     # ====================================================================================================
     # Shaders for digits
@@ -149,135 +149,289 @@ def demo():
     with ShaderNodes("Wheel Box"):
 
         ped = Shader.Principled(
-            base_color = (.95, .95, .95),
+            #base_color = (.95, .95, .95),
+            base_color = snd.attribute("Box Color").color,
             roughness  = .1,
             metallic   = .95,
         )
 
         ped.out()
 
+        # ===========================================================================
+        # A rounded rect
+        # ===========================================================================
+
+        with GeoNodes("Rounded Rectangle"):
+
+            """ A rounded rect
+
+            Arguments
+            ---------
+            - width (Float) : rectangle total width
+            - height (Float) : rectangle total height
+            - radius (Float) : radius
+            - resol (Integer) : number of points (min is 2)
+            - axis (str = 'Z') : perpendicular axis
+            - geometry (str in ('Mesh', 'Curve')) : the geometry to build
+            - fill_type (str in ('NONE', 'NGON', 'TRIANGLE_FAN') : Mesh circle fill type
+
+            Returns
+            -------
+            - Geometry as requested per geometry argument
+            """
+
+            width  = Float(1., "Width", 0)
+            height = Float(1., "Height", 0)
+            radius = Float(0.01, "Radius", 0)
+            resol  = Integer(12, "Resolution", 2, 128)
+            fill   = Boolean(False, "Fill Mesh")
+
+            with Layout("Prepare"):
+
+                w, h = width/2, height/2
+                l = gnmath.min(w, h)
+                r = gnmath.min(radius, l)
+                resol = gnmath.max(resol, 2)
+                total = resol*4
+                
+                corner = Mesh.Circle(radius=r, vertices=total-4)
+                corner.points[nd.index.greater_than(resol)].delete()
+                
+            with Geometry.MenuSwitch(menu=Input("Geometry"), default_menu='Curve') as geo: 
+                
+                with Mesh.Switch(fill) as circle:         
+                    Mesh.Circle(vertices=total, fill_type='NONE').out()
+                    Mesh.Circle(vertices=total, fill_type='NGON').out()
+                circle.out("Mesh")
+                
+                Curve.Circle(resolution=total).out("Curve")
+                
+            for i in range(4):
+                
+                with Layout(f"Part {i+1}/4"):
+                    
+                    index = nd.index - i*resol
+                    if i == 0:
+                        geo.position = (w - r, h - r, 0) + corner.points.sample_index(nd.position, index)
+                        corner.transform(rotation=(0, 0, pi/2))
+                    elif i == 1:
+                        sel = nd.index.greater_equal(resol)
+                        geo[sel].position = (r - w, h - r, 0) + corner.points.sample_index(nd.position, index)
+                        corner.transform(rotation=(0, 0, pi/2))
+                    elif i == 2:
+                        sel = nd.index.greater_equal(resol*2)
+                        geo[sel].position = (r - w, r - h, 0) + corner.points.sample_index(nd.position, index)
+                        corner.transform(rotation=(0, 0, pi/2))
+                    else:
+                        sel = nd.index.greater_equal(resol*3)
+                        geo[sel].position = (w - r, r - h, 0) + corner.points.sample_index(nd.position, index)
+                        
+                    
+            geo.out()
+
+        # ===========================================================================
+        # A rounded box
+        # ===========================================================================
+
+        with GeoNodes("Rounded Box"):
+
+            size   = Vector(1, "Size", min=0.1)
+            hrad   = Vector(.1, "H Radius", min=0)
+            vrad   = Vector(.1, "V Radius", min=0)
+            resol  = Integer(12, "Resolution", 2, 128)
+
+            with Layout("Prepare"):
+                
+                size_x, size_y, size_z = size.scale(.5).xyz
+                vrad = gnmath.min(vrad, gnmath.min(size_z, gnmath.min(size_x, size_y)))
+                
+                resol = gnmath.max(resol, 2)
+                total = resol*4
+                
+                with Layout("Starting Rectangle"):
+                    w = 2*(size_x - vrad)
+                    h = 2*(size_y - vrad)
+                    base = Group("Rounded Rectangle", 
+                        width       = w,
+                        height      = h, 
+                        radius      = hrad,
+                        resolution  = resol,
+                        geometry    = 'Mesh', 
+                        fill_mesh   = True)._out
+                        
+                    base = Mesh(base)
+                    base.offset = (0, 0, -size_z)
+                    
+                with Layout("Bottom looping"):
+
+                    for rep in base.repeat(resol - 1, selection=True):
+                        
+                        ag = (rep.iteration + 1)/(resol-1)*(pi/2)
+                        dh = gnmath.sin(ag)*vrad
+                        dz = (1 - gnmath.cos(ag))*vrad
+                        
+                        base = base.edges[rep.selection].extrude((0, 0, dz))
+                        top = base.top
+                        
+                        ring = Group("Rounded Rectangle", 
+                            width       = w + dh*2,
+                            height      = h + dh*2, 
+                            radius      = hrad,
+                            resolution  = resol,
+                            geometry    = 'Mesh', 
+                            fill_mesh   = False)._out
+                            
+                        ring = Mesh(ring)
+                        ring.offset = (0, 0, -size_z + dz)
+                            
+                        base[top].position = ring.points.sample_index(nd.position, nd.index - total*(rep.iteration + 1))
+                            
+                        base.out()
+                        rep.selection = top
+                        
+                bot_mesh = Mesh(base)
+                        
+                with Layout("Vertical Mirror"):
+                    
+                    top_mesh = Mesh(bot_mesh)
+                    top_mesh.transform(rotation=(0, pi, 0))
+                    
+                    bot_mesh.edges[rep.selection].extrude((0, 0, 2*(size_z - vrad)))
+                    
+                    box = Mesh(bot_mesh + top_mesh)
+                    box.merge_by_distance()
+                    
+                
+                box.faces.shade_smooth = Boolean(True, "Smooth")
+                box.faces.material = Material(name="Material")
+                    
+                box.out("Mesh")        
+
+
     # ====================================================================================================
     # A digital digit : each light item is a face
+    # ====================================================================================================
 
-with GeoNodes("Digit"):
+    with GeoNodes("G Digit"):
 
-    size  = Float(1, "Size", 0)
+        size  = Float(1, "Size", 0)
 
-    with Panel("Appearance"):
-        on_mat     = Material("LCD On", "On")
-        off_mat    = Material("LCD Off", "Off")
-        shear      = Float.Factor(.4, "Shear", 0, 1)
+        with Panel("Appearance"):
+            on_mat     = Material("LCD On", "On")
+            off_mat    = Material("LCD Off", "Off")
+            shear      = Float.Factor(.4, "Shear", 0, 1)
 
-    with Panel("Options"):
-        ok_0       = Boolean(True, "Display 0")
-        minus      = Boolean(False, "Minus Sign", tip="Only minus sign")
-        positive   = Boolean(False, "Positive", tip="Sign is off (True) or on (False)")
+        with Panel("Options"):
+            ok_0       = Boolean(True, "Display 0")
+            minus      = Boolean(False, "Minus Sign", tip="Only minus sign")
+            positive   = Boolean(False, "Positive", tip="Sign is off (True) or on (False)")
 
-    # ----- Dimensions
+        # ----- Dimensions
 
-    X = size
-    Z = size*1.8
-    z1 = Z/2
-    z0 = -z1
-    x1 = X/2
-    x0 = -x1
+        X = size
+        Z = size*1.8
+        z1 = Z/2
+        z0 = -z1
+        x1 = X/2
+        x0 = -x1
 
-    d = Z*.1
-    d2 = d/2
-    e = d/10
-    
-    with Layout("0x10 : Hrz Bottom"):
-        item0 = Mesh.Circle(vertices=4, fill_type='NGON')
-        item0[0].position = (x0 + e, 0, z0)
-        item0[1].position = (x1 - e, 0, z0)
-        item0[2].position = (x1 - d - e, 0, z0 + d)
-        item0[3].position = (x0 + d + e, 0, z0 + d)
-
-        item0.faces.Mask = int(0x10)
-        digit = item0
-
-    with Layout("0x20 : Hrz Middle"):
-        item = Mesh.Circle(vertices=6, fill_type='NGON')
-        item[0].position = (x0, 0, 0)
-        item[1].position = (x0 + d, 0, -d2)
-        item[2].position = (x1 - d, 0, -d2)
-        item[3].position = (x1, 0, 0)
-        item[4].position = (x1 - d, 0, d2)
-        item[5].position = (x0 + d, 0, d2)
-
-        item.faces.Mask = int(0x20)
-        digit += item
-
-        with Layout("Minus sign"):
-            minus_mesh = Mesh(item)
-            minus_mesh.material = on_mat.switch(positive, off_mat)
-
-    with Layout("0x40 : Hrz Top"):
-        item0.faces.Mask = int(0x40)
-        digit += item0.transform(rotation=Rotation.FromEuler((0, pi, 0)))
-
-    with Layout("0x01: Bottom Left"):
-        item3 = Mesh.Circle(vertices=4, fill_type='NGON')
-        item3[0].position = (x0, 0, z0 + e)
-        item3[1].position = (x0 + d, 0, z0 + d + e)
-        item3[2].position = (x0 + d, 0, -d2 - e)
-        item3[3].position = (x0, 0, -e)
+        d = Z*.1
+        d2 = d/2
+        e = d/10
         
-        item3.faces.Mask = int(0x01)
+        with Layout("0x10 : Hrz Bottom"):
+            item0 = Mesh.Circle(vertices=4, fill_type='NGON')
+            item0[0].position = (x0 + e, 0, z0)
+            item0[1].position = (x1 - e, 0, z0)
+            item0[2].position = (x1 - d - e, 0, z0 + d)
+            item0[3].position = (x0 + d + e, 0, z0 + d)
 
-        digit += item3
+            item0.faces.Mask = int(0x10)
+            digit = item0
 
-    with Layout("0x02 : Top Left"):
-        item4 = Mesh(item3).transform(scale=(1, 1, -1))
-        item4.flip_faces()
-        
-        item4.faces.Mask= int(0x02)
+        with Layout("0x20 : Hrz Middle"):
+            item = Mesh.Circle(vertices=6, fill_type='NGON')
+            item[0].position = (x0, 0, 0)
+            item[1].position = (x0 + d, 0, -d2)
+            item[2].position = (x1 - d, 0, -d2)
+            item[3].position = (x1, 0, 0)
+            item[4].position = (x1 - d, 0, d2)
+            item[5].position = (x0 + d, 0, d2)
 
-        digit += item4
+            item.faces.Mask = int(0x20)
+            digit += item
 
-    with Layout("0x04 : Bottom Right"):
-        item4.faces.Mask= int(0x04)
-        digit += item4.transform(rotation=Rotation.FromEuler((0, pi, 0)))
+            with Layout("Minus sign"):
+                minus_mesh = Mesh(item)
+                minus_mesh.material = on_mat.switch(positive, off_mat)
 
-    with Layout("0x08 : Top Right"):
-        item3.faces.Mask = int(0x08)
-        digit += item3.transform(rotation=Rotation.FromEuler((0, pi, 0)))
+        with Layout("0x40 : Hrz Top"):
+            item0.faces.Mask = int(0x40)
+            digit += item0.transform(rotation=Rotation.FromEuler((0, pi, 0)))
 
-    with Layout("Shear"):
-        digit.offset = (nd.position.z*.4*shear, 0, 0)
-        
-        
-    # 0x10, 0x20, 0x40, Hrz from bot to top
-    # 0x01, 0x02,       Vrt Left
-    # 0x04, 0x08        Vrt Right
+        with Layout("0x01: Bottom Left"):
+            item3 = Mesh.Circle(vertices=4, fill_type='NGON')
+            item3[0].position = (x0, 0, z0 + e)
+            item3[1].position = (x0 + d, 0, z0 + d + e)
+            item3[2].position = (x0 + d, 0, -d2 - e)
+            item3[3].position = (x0, 0, -e)
+            
+            item3.faces.Mask = int(0x01)
 
-    with Integer.IndexSwitch(index=Input("Value")) as mask:
+            digit += item3
 
-        Integer(0x5F).out() # 0
-        Integer(0x0C).out() # 1
-        Integer(0x79).out() # 2
-        Integer(0x7C).out() # 3
-        Integer(0x2E).out() # 4
-        Integer(0x76).out() # 5
-        Integer(0x77).out() # 6
-        Integer(0x7F).out() # 8
-        Integer(0x7E).out() # 9
-        
-    digit.faces.material = off_mat
-    zero_off = Mesh(digit)
+        with Layout("0x02 : Top Left"):
+            item4 = Mesh(item3).transform(scale=(1, 1, -1))
+            item4.flip_faces()
+            
+            item4.faces.Mask= int(0x02)
 
-    digit.faces[(Integer("Mask") & mask).not_equal(0)].material =  on_mat
+            digit += item4
 
-    # 0x5F is mask for value 0
-    with Layout("Display 0"):
-        digit = zero_off.switch(ok_0 | mask.not_equal(0x5F), digit)
+        with Layout("0x04 : Bottom Right"):
+            item4.faces.Mask= int(0x04)
+            digit += item4.transform(rotation=Rotation.FromEuler((0, pi, 0)))
 
-    digit.switch(minus, minus_mesh).out()
-  
+        with Layout("0x08 : Top Right"):
+            item3.faces.Mask = int(0x08)
+            digit += item3.transform(rotation=Rotation.FromEuler((0, pi, 0)))
+
+        with Layout("Shear"):
+            digit.offset = (nd.position.z*.4*shear, 0, 0)
+            
+            
+        # 0x10, 0x20, 0x40, Hrz from bot to top
+        # 0x01, 0x02,       Vrt Left
+        # 0x04, 0x08        Vrt Right
+
+        with Integer.IndexSwitch(index=Input("Value")) as mask:
+
+            Integer(0x5F).out() # 0
+            Integer(0x0C).out() # 1
+            Integer(0x79).out() # 2
+            Integer(0x7C).out() # 3
+            Integer(0x2E).out() # 4
+            Integer(0x76).out() # 5
+            Integer(0x77).out() # 6
+            Integer(0x7F).out() # 8
+            Integer(0x7E).out() # 9
+            
+        digit.faces.material = off_mat
+        zero_off = Mesh(digit)
+
+        digit.faces[(Integer("Mask") & mask).not_equal(0)].material =  on_mat
+
+        # 0x5F is mask for value 0
+        with Layout("Display 0"):
+            digit = zero_off.switch(ok_0 | mask.not_equal(0x5F), digit)
+
+        digit.switch(minus, minus_mesh).out("Digit")
+
     # ====================================================================================================
     # A digital counter
+    # ====================================================================================================
 
-    with GeoNodes("Digital Counter"):
+    with GeoNodes("Counter Digital"):
 
         value    = Integer(12, "Value", tip="Value to display")
         digits   = Integer(3, "Digits", 1, 10, tip="Number of digits")
@@ -293,48 +447,63 @@ with GeoNodes("Digit"):
             minus      = Boolean(True, "Minus Sign")
 
         sign = gnmath.sign(value)
-
+        value = gnmath.abs(value)
+        
         size_factor = 1.25
 
-        with Repeat(mesh=None, value=value, index = 0, iterations=digits) as rep:
+        # Loop on the digits
+        
+        for rep in Mesh.Repeat(digits, value=value):
+            
+            mesh = rep.mesh
 
-            rep.mesh.transform(translation=(size_factor*size, 0, 0))
+            mesh.transform(translation=(size_factor*size, 0, 0))
             digit_value = rep.value % 10
             res_value = (rep.value - digit_value)/10
             rep.value = res_value
 
-            digit_node = Group("Digit", {
+            digit_node = Group("G Digit", {
                 "Value" : digit_value,
                 "Size"  : size,
-                "Display 0" : leading_0 | rep.index.equal(0) | res_value.not_equal(0),
+                "Display 0" : leading_0 | rep.iteration.equal(0) | res_value.not_equal(0),
                 "Minus Sign" : False,
-            }, link_from='TREE')
+            })
+            digit_node.link_inputs('TREE', "Appearance", panel="Appearance")
 
-            rep.index += 1
-            rep.mesh += digit_node.geometry
+            mesh += digit_node.digit
+            
+            mesh.out()
 
         mesh = rep.mesh
 
+        # Add the leading sign 
+
         with Layout("Sign"):
+
             signed_mesh = Mesh(mesh).transform(translation=(size_factor*size, 0, 0))
 
-            signed_mesh = signed_mesh + Group("Digit", {
+            digit = Group("G Digit", {
                 "Size"       : size,
                 "Minus Sign" : True,
                 "Positive"   : sign > 0,
-            }, link_from='TREE').geometry
+            }).digit
+            digit.node.link_inputs('TREE', "Appearance", panel="Appearance")
+            signed_mesh = signed_mesh + digit
+
+        # Combine
 
         mesh = Mesh(mesh).switch(minus, signed_mesh)
-        mesh.transform(translation=(0, y_offset, 0))
+        mesh = Mesh(mesh.transform(translation=(0, y_offset, 0)))
         mesh.faces.store("Color", color)
-        mesh += Geometry.Switch(merge, None, Geometry())
+        mesh += Geometry().switch_false(merge)
 
         mesh.out()
 
     # ====================================================================================================
     # A digital clock
+    # ====================================================================================================
 
-    with GeoNodes("Digital Clock"):
+    with GeoNodes("Clock Digital"):
 
         minutes = Integer(132, "Minutes", tip="Time in minutes")
         size    = Float(1, "Size", 0)
@@ -343,30 +512,36 @@ with GeoNodes("Digit"):
             merge      = Boolean(False, "Merge with Input")
             dots_on    = Boolean(True, "Dots are On")
 
-        mins  = minutes % 60
-        hours = (minutes - mins)/60
+        with Layout("Minutes and hours"):
+            mins  = minutes % 60
+            hours = (minutes - mins)/60
 
-        m_mesh = Group("Digital Counter", {
-            "Value"            : mins,
-            "Digits"           : 2,
-            "Leading 0"        : True,
-            "Minus Sign"       : False,
-            "Merge with Input" : False,
-            "Y Offset"         : 0,
-        }, link_from='TREE').geometry
+        with Layout("Minutes"):
+            m_mesh = Group("Counter Digital", {
+                "Value"            : mins,
+                "Digits"           : 2,
+                "Leading 0"        : True,
+                "Minus Sign"       : False,
+                "Merge with Input" : False,
+                "Y Offset"         : 0,
+            }).geometry
 
-        m_mesh = m_mesh.transform(translation=(.8*size, 0, 0))
+            m_mesh.node.link_inputs(None, "Appearance", panel="Appearance")
+            m_mesh = m_mesh.transform(translation=(.8*size, 0, 0))
 
-        h_mesh = Group("Digital Counter", {
-            "Value"            : hours,
-            "Digits"           : 2,
-            "Leading 0"        : False,
-            "Minus Sign"       : False,
-            "Merge with Input" : False,
-            "Y Offset"         : 0,
-        }, link_from='TREE').geometry
+        with Layout("Hours"):
 
-        h_mesh = h_mesh.transform(translation=(-2.2*size, 0, 0))
+            h_mesh = Group("Counter Digital", {
+                "Value"            : hours,
+                "Digits"           : 2,
+                "Leading 0"        : False,
+                "Minus Sign"       : False,
+                "Merge with Input" : False,
+                "Y Offset"         : 0,
+            }).geometry
+
+            h_mesh.node.link_inputs(None, "Appearance", panel="Appearance")
+            h_mesh = h_mesh.transform(translation=(-2.2*size, 0, 0))
 
         with Layout("Dots"):
 
@@ -384,21 +559,18 @@ with GeoNodes("Digit"):
             squares.material = off_mat.switch(dots_on, on_mat)
             squares.faces._Color = color
 
-        #h_mesh._lc("h_mesh", (1, 0, 0))
-        #squares._lc("squares", (1, 0, 0))
-        #m_mesh._lc("m_mesh", (1, 0, 0))
-
         clock = h_mesh + squares + m_mesh
         clock = clock.transform(translation=(0, y_offset, 0))
 
-        clock += Geometry.Switch(merge, None, Geometry())
+        clock += Geometry().switch_false(merge)
 
         clock.out()
 
     # ====================================================================================================
     # A Figure
+    # ====================================================================================================
 
-    with GeoNodes("Figure"):
+    with GeoNodes("G Figure"):
 
         figure     = Float(8, "Figure", 0, tip="Figure with frac part")
         size       = Float(1, "Size", 0)
@@ -413,8 +585,8 @@ with GeoNodes("Digit"):
         frac = figure - fig0
 
         with Layout("Figure and next"):
-            curve0 = fig0.to_string().to_curves(size=size, align_x='CENTER', align_y='MIDDLE')
-            curve1 = fig1.to_string().to_curves(size=size, align_x='CENTER', align_y='MIDDLE').transform(translation=(0, -size, 0))
+            curve0 = fig0.to_string().to_curves(size=size, align_x='CENTER', align_y='MIDDLE', font = font)
+            curve1 = fig1.to_string().to_curves(size=size, align_x='CENTER', align_y='MIDDLE', font = font).transform(translation=(0, -size, 0))
 
             figure = Curve((curve0 + curve1).realize()).fill()
 
@@ -442,7 +614,7 @@ with GeoNodes("Digit"):
     # ====================================================================================================
     # Wheels counter
 
-    with GeoNodes("Wheels Counter"):
+    with GeoNodes("Counter Wheels"):
 
         value      = Float(123, "Value", 0, tip="Counter value")
         count      = Integer(3, "Number of Wheels", 1, 10)
@@ -452,26 +624,29 @@ with GeoNodes("Digit"):
         with_box   = Boolean(True, "Create Box")
         box_mat    = Material("Wheel Box", "Box material")
         box_color  = Color((.5, .5, .5), "Box Color")
+        box_margin = Float(.3, "Box Margin", .01)
+        box_depth  = Float(.5, "Box Depth", .01)
         merge      = Boolean(False, "Merge with input")
 
         size_factor = 1.05
 
-        with Repeat(wheels=None, value=value, index=0, iterations=count) as rep:
+        for rep in Mesh.Repeat(count, value=value):
 
-            rep.wheels = rep.wheels.transform(translation=(size*size_factor, 0, 0))
+            wheels = rep.mesh
+            wheels.transform(translation=(size*size_factor, 0, 0))
 
             fig = rep.value % 10
-            new_figure = Mesh(Group("Figure", {
+            new_figure = Mesh(Group("G Figure", {
                 "Figure"   : fig,
                 "Size"     : size,
-                "Continuous" : rep.index.equal(0),
+                "Continuous" : rep.iteration.equal(0),
                 "Figure material" : fig_mat,
                 "Background material" : back_mat,
             }).geometry)
 
-            new_figure.faces.store("Wheel", rep.index)
+            new_figure.faces.Wheel = rep.iteration
 
-            rep.wheels += new_figure
+            wheels += new_figure
 
             ifig = gnmath.floor(fig)
             ok9 = ifig.equal(9)
@@ -479,10 +654,9 @@ with GeoNodes("Digit"):
 
             value = gnmath.floor(rep.value/10)
             rep.value = value + Float(0).switch(ok9, frac)
+            wheels.out()
 
-            rep.index += 1
-
-        wheels = rep.wheels
+        wheels = rep.mesh
 
         with Layout("Box"):
 
@@ -490,257 +664,281 @@ with GeoNodes("Digit"):
             center = (bbox.min_ + bbox.max_).scale(-.5)
             wheels = wheels.transform(translation=center)
 
-            bbox = wheels.bounding_box()
-            ext_box = Mesh.Cube(size=bbox.max_.scale(2) + (.1, .5, .11))
-            ext_box = ext_box.transform(translation=(0, .2, 0))
+            margin = gnmath.max(0.05, box_margin)
+            depth  = gnmath.max(0.1, box_depth)
 
-            int_box = Mesh.Cube(size=bbox.max_.scale(2) + (-.1, .3, -.1))
-            int_box = int_box.transform(translation=(0, -.1, 0))
+            bbox = wheels.bounding_box()
+            wsize = bbox.max - bbox.min
+            size = wsize + (margin, depth, margin)
+
+            ext_box = Group("Rounded Box", size=size, h_radius=.1, v_radius=.1, resolution=8, material=box_mat)._out
+            ext_box.faces.Color = box_color
+
+            int_box = Mesh.Cube(size = wsize + (-.1, depth, -.1))
+            int_box = int_box.transform(translation=(0, -depth/2, 0))
 
             box = ext_box.difference(int_box)
-            #box = ext_box + int_box
+            box.transform(translation=(0, depth/5, 0))
             box.material = box_mat
-            box.faces.store("Box Color", box_color)
+            box.faces.Box_Color = box_color
 
-            if False:
-                wheels = wheels.transform(translation=(0, size*.1, 0))
 
-                box = Mesh.Cube(((count + .2)*size, size*2.1, size*1.2))
-                cut = box.transform(scale=(.9, .65, 1), translation=(0, 0, .1))
-                box = box.difference(cut)
-                box = box.transform(rotation=(halfpi, 0, 0), translation=(size*(count-1)/2, size*.6, size*.1))
-                box.material = box_mat
-
-        wheels += Geometry.Switch(with_box, None, box)
-        wheels += Geometry.Switch(merge, None, Geometry())
+        wheels += box.switch_false(with_box)
+        wheels += Geometry().switch_false(merge)
 
 
         wheels.out()
 
-# =============================================================================================================================
-# Analogic clock materials
+    # ====================================================================================================
+    # Analogic clock materials
+    # ====================================================================================================
 
-with ShaderNodes("Clock Background"):
+    with ShaderNodes("Clock Background"):
 
-    ped = Shader.Principled(
-        base_color = (1, 1, 1),
-        roughness = .3,
-        metallic = 0.,
-    )
+        ped = Shader.Principled(
+            base_color = (1, 1, 1),
+            roughness = .3,
+            metallic = 0.,
+        )
 
-    ped.out()
+        ped.out()
 
-with ShaderNodes("Clock Needles"):
+    with ShaderNodes("Clock Needles"):
 
-    ped = Shader.Metallic(
-        base_color = (0.1, 0.05, 0.05),
-        roughness = 0.1,
-    )
+        ped = Shader.Metallic(
+            base_color = (0.1, 0.05, 0.05),
+            roughness = 0.1,
+        )
 
-    ped.out()
+        ped.out()
 
-with ShaderNodes("Clock Seconds"):
+    with ShaderNodes("Clock Seconds"):
 
-    ped = Shader.Principled(
-        base_color = (1, 0, 0),
-        roughness = 0.1,
-    )
+        ped = Shader.Principled(
+            base_color = (1, 0, 0),
+            roughness = 0.1,
+        )
 
-    ped.out()
+        ped.out()
 
-with ShaderNodes("Clock Seconds"):
+    with ShaderNodes("Clock Seconds"):
 
-    ped = Shader.Principled(
-        base_color = (1, 0, 0),
-        roughness = 0.1,
-    )
+        ped = Shader.Principled(
+            base_color = (1, 0, 0),
+            roughness = 0.1,
+        )
 
-    ped.out()
+        ped.out()
 
 
-with ShaderNodes("Clock Marks"):
+    with ShaderNodes("Clock Marks"):
 
-    ped = Shader.Metallic(
-        base_color = (0.1, 0.05, 0.05),
-        roughness = 0.1,
-    )
+        ped = Shader.Metallic(
+            base_color = (0.1, 0.05, 0.05),
+            roughness = 0.1,
+        )
 
-    ped.out()
+        ped.out()
 
 
-with ShaderNodes("Clock Outer"):
+    with ShaderNodes("Clock Outer"):
 
-    ped = Shader.Principled(
-        base_color = snd.attribute("Color"),
-        roughness = 0.1,
-    )
+        ped = Shader.Principled(
+            base_color = snd.attribute("Color").color,
+            roughness = 0.1,
+        )
 
-    ped.out()
+        ped.out()
 
+    # ====================================================================================================
+    # Analogic clock
+    # ====================================================================================================
 
+    with GeoNodes("Clock Needles"):
 
-# =============================================================================================================================
-# Analogic clock Clock
+        t          = Float(438, "Time", tip="Time in seconds")
 
-with GeoNodes("Clock"):
+        show_hours = Boolean(True, "Hours")
+        show_mins  = Boolean(True, "Minutes")
+        show_secs  = Boolean(True, "Seconds")
+        show_torus = Boolean(True, "Outer")
 
-    t          = Float(438, "Time", tip="Time in seconds")
+        radius     = Float(1, "Radius", 0)
+        torus_r    = Float.Percentage(5, "Outer Radius", 1, 25)
 
-    show_hours = Boolean(True, "Hours")
-    show_mins  = Boolean(True, "Minutes")
-    show_secs  = Boolean(True, "Seconds")
-    show_torus = Boolean(True, "Outer")
+        back_mat   = Material("Clock Background", "Background")
+        marks_mat  = Material("Clock Marks", "Marks")
+        needle_mat = Material("Clock Needles", "Needles")
+        sec_mat    = Material("Clock Seconds", "Seconds Needle")
+        torus_mat  = Material("Clock Outer", "Outer")
 
-    radius     = Float(1, "Radius", 0)
-    torus_r    = Float.Percentage(5, "Outer Radius", 1, 25)
+        color      = Color((0, 0, 1), "Color")
 
-    back_mat   = Material("Clock Background", "Background")
-    marks_mat  = Material("Clock Marks", "Marks")
-    needle_mat = Material("Clock Needles", "Needles")
-    sec_mat    = Material("Clock Seconds", "Seconds Needle")
-    torus_mat  = Material("Clock Outer", "Outer")
+        with Panel("Brand"):
+            brand = String("Les Idées Froides", "Brand")
+            brand_mat = Material("Clock Outer", "Material")
+            brand_col = Color(0, "Color")
 
-    color      = Color((0, 0, 1), "Color")
 
+        h_marks = .04
+        h_needle = 0.01
 
-    h_marks = .04
-    h_needle = 0.01
+        with Layout("Base Circle"):
 
-    with Layout("Base Circle"):
+            circle = Mesh.Circle(vertices=12).to_points()
+            hours_circle = Cloud(circle.points[(nd.index % 3).equal(0)].separate())
+            min_circle = Cloud(hours_circle.inverted_)
 
-        circle = Mesh.Circle(vertices=12).to_points()
-        hours_circle = Cloud(circle.points[(nd.index % 3).equal(0)].separate())
-        min_circle = Cloud(hours_circle.inverted_)
+        with Layout("Minutes Marks"):
 
-    with Layout("Minutes Marks"):
+            l = .15
+            scale = (1 - l/2)
+            min_circle.transform(scale=scale)
 
-        l = .15
-        scale = (1 - l/2)
-        min_circle.transform(scale=scale)
+            mark = Mesh.Cube(size=(l, .05, h_marks))
+            marks = min_circle.instance_on(instance=mark, rotation=Rotation.AlignXToVector(nd.position))
 
-        mark = Mesh.Cube(size=(l, .05, h_marks))
-        marks = min_circle.instance_on(instance=mark, rotation=Rotation.AlignXToVector(nd.position))
+        clock = marks
 
-    clock = marks
 
+        with Layout("Hours Marks"):
 
-    with Layout("Hours Marks"):
+            l = .25
+            scale = (1 - l/2)
+            hours_circle.transform(scale=scale)
 
-        l = .25
-        scale = (1 - l/2)
-        hours_circle.transform(scale=scale)
+            mark = Mesh.Cube(size=(l, .05, h_marks))
 
-        mark = Mesh.Cube(size=(l, .05, h_marks))
+            marks = hours_circle.instance_on(instance=mark, rotation=Rotation.AlignXToVector(nd.position))
 
-        marks = hours_circle.instance_on(instance=mark, rotation=Rotation.AlignXToVector(nd.position))
+        clock += marks
 
-    clock += marks
+        with Layout("Seconds Marks"):
 
-    with Layout("Seconds Marks"):
+            l = .1
+            scale = (1 - l/2)
+            sec_circle = Mesh.Circle(radius=scale, vertices=60).to_points()
+            sec_circle.points[(nd.index % 5).equal(0)].delete()
 
-        l = .1
-        scale = (1 - l/2)
-        sec_circle = Mesh.Circle(radius=scale, vertices=60).to_points()
-        sec_circle.points[(nd.index % 5).equal(0)].delete()
+            mark = Mesh.Cube(size=(l, .01, h_marks))
 
-        mark = Mesh.Cube(size=(l, .01, h_marks))
+            marks = sec_circle.instance_on(instance=mark, rotation=Rotation.AlignXToVector(nd.position))
 
-        marks = sec_circle.instance_on(instance=mark, rotation=Rotation.AlignXToVector(nd.position))
+        clock += marks
+        clock.transform(translation=(0, 0, h_marks/2))
+        clock.material = marks_mat
 
-    clock += marks
-    clock.transform(translation=(0, 0, h_marks/2))
-    clock.material = marks_mat
+        with Layout("Hours Needle"):
 
-    with Layout("Hours Needle"):
+            l = .5
+            r = .1
 
-        l = .5
-        r = .1
+            z = Float(h_marks + .1*h_needle)
 
-        z = Float(h_marks + .1*h_needle)
+            needle = Mesh.Grid(vertices_x=2, vertices_y=2, size_x=r, size_y=r).transform(translation=(0, 0, z), rotation=(0, 0, pi/4))
+            needle.points[2].offset = (l - r/2, 0, 0)
 
-        needle = Mesh.Grid(vertices_x=2, vertices_y=2, size_x=r, size_y=r).transform(translation=(0, 0, z), rotation=(0, 0, pi/4))
-        needle.points[2].offset = (l - r/2, 0, 0)
+            angle = gnmath.radians(((t/360) % 60)*(-6) + 90)
+            needle.transform(rotation=(0, 0, angle))
 
-        angle = gnmath.radians(((t/360) % 60)*(-6) + 90)
-        needle.transform(rotation=(0, 0, angle))
+            needle.faces.material = needle_mat
 
-        needle.faces.material = needle_mat
+            needles = needle.switch_false(show_hours)
+            z = z.switch(show_hours, z + 1.1*h_needle)
 
-        needles = needle.switch_false(show_hours)
-        z = z.switch(show_hours, z + 1.1*h_needle)
+        with Layout("Minutes Needle"):
 
-    with Layout("Minutes Needle"):
+            l = .75
+            r = .08
 
-        l = .75
-        r = .08
+            needle = Mesh.Grid(vertices_x=2, vertices_y=2, size_x=r, size_y=r).transform(translation=(0, 0, z), rotation=(0, 0, pi/4))
+            needle.points[2].offset = (l - r/2, 0, 0)
 
-        needle = Mesh.Grid(vertices_x=2, vertices_y=2, size_x=r, size_y=r).transform(translation=(0, 0, z), rotation=(0, 0, pi/4))
-        needle.points[2].offset = (l - r/2, 0, 0)
+            angle = gnmath.radians(((t/60) % 60)*(-6) + 90)
+            needle.transform(rotation=(0, 0, angle))
 
-        angle = gnmath.radians(((t/60) % 60)*(-6) + 90)
-        needle.transform(rotation=(0, 0, angle))
+            needle.faces.material = needle_mat
 
-        needle.faces.material = needle_mat
+            needles += needle.switch_false(show_mins)
+            z = z.switch(show_mins, z + 1.1*h_needle)
 
-        needles += needle.switch_false(show_mins)
-        z = z.switch(show_mins, z + 1.1*h_needle)
+        with Layout("Seconds Needle"):
 
-    with Layout("Seconds Needle"):
+            l = .9
 
-        l = .9
+            angle = gnmath.radians(gnmath.floor(t % 60)*(-6) + 90)
+            needle = Mesh.Circle(radius=.04, fill_type='NGON').transform(translation=(0, 0, z))
+            #needle.faces.smooth = True
+            needle += Mesh.Grid(size_x = l, size_y=.02, vertices_x = 2, vertices_y=2).transform(translation=(l/2, 0, z)).transform(rotation=(0, 0, angle))
 
-        angle = gnmath.radians(gnmath.floor(t % 60)*(-6) + 90)
-        needle = Mesh.Circle(radius=.04, fill_type='NGON').transform(translation=(0, 0, z))
-        #needle.faces.smooth = True
-        needle += Mesh.Grid(size_x = l, size_y=.02, vertices_x = 2, vertices_y=2).transform(translation=(l/2, 0, z)).transform(rotation=(0, 0, angle))
+            needle.faces.material = sec_mat
 
-        needle.faces.material = sec_mat
+            needles += needle.switch_false(show_secs)
+            z = z.switch(show_secs, z + 1.1*h_needle)
 
-        needles += needle.switch_false(show_secs)
-        z = z.switch(show_secs, z + 1.1*h_needle)
 
+        needles = (Mesh(needles).flip_faces() + Mesh(needles).faces.extrude(offset=(0, 0, h_needle))).merge_by_distance()
+        clock += needles
 
-    needles = (Mesh(needles).flip_faces() + Mesh(needles).faces.extrude(offset=(0, 0, h_needle))).merge_by_distance()
-    clock += needles
+        with Layout("Needle Center"):
 
-    with Layout("Needle Center"):
+            h = z + h_needle
+            cyl = Mesh.Cylinder(radius=.01, vertices=12, fill_type='NGON', depth=h).transform(translation=(0, 0, h/2))
+            cyl.faces.material = needle_mat
+            cyl.faces.smooth=True
 
-        h = z + h_needle
-        cyl = Mesh.Cylinder(radius=.01, vertices=12, fill_type='NGON', depth=h).transform(translation=(0, 0, h/2))
-        cyl.faces.material = needle_mat
-        cyl.faces.smooth=True
+        clock += cyl
 
-    clock += cyl
+        with Layout("Background"):
 
-    with Layout("Background"):
+            if True:
+                h = torus_r/100
+                back = Mesh.Cylinder(radius=1.05 + h, vertices=64, fill_type='NGON', depth=h).transform(translation=(0, 0, -h/2))
+                back.faces.material = torus_mat
+                back.faces[0].material = back_mat
 
-        if True:
-            h = torus_r/100
-            back = Mesh.Cylinder(radius=1.05 + h, vertices=64, fill_type='NGON', depth=h).transform(translation=(0, 0, -h/2))
-            back.faces.material = torus_mat
-            back.faces[0].material = back_mat
+            else:
+                back = Mesh.Circle(radius=1.05, vertices=64, fill_type='NGON')
+                back.faces.material = back_mat
 
-        else:
-            back = Mesh.Circle(radius=1.05, vertices=64, fill_type='NGON')
-            back.faces.material = back_mat
 
+        clock += back
 
-    clock += back
+        with Layout("Torus"):
 
-    with Layout("Torus"):
+            r = torus_r/100
 
-        r = torus_r/100
+            torus = Curve.Circle(radius=1.05 + r, resolution=64).to_mesh(profile_curve=Curve.Circle(radius=r, resolution=12))
+            torus.faces.material = torus_mat
+            torus.faces.smooth = True
 
-        torus = Curve.Circle(radius=1.05 + r, resolution=64).to_mesh(profile_curve=Curve.Circle(radius=r, resolution=12))
-        torus.faces.material = torus_mat
-        torus.faces.smooth = True
+            clock += torus.switch_false(show_torus)
 
-        clock += torus.switch_false(show_torus)
+        clock = Mesh(clock)
+        clock.faces.Color = color
 
-    clock = Mesh(clock)
-    clock.faces._Color = color
-    clock.transform(scale=radius, rotation=Rotation((pi/2, 0, 0)))
+        with Layout("Brand"):
+            txt = brand.to_curves(
+                size = 1,
+                align_x = 'CENTER',
+                align_y = 'MIDDLE',
+                font=font).realize()
+            txt = Curve(txt).fill()
 
+            stats = txt.points.attribute_statistic(nd.position)
+            sx, sy, _ = (stats.max_ - stats.min_).xyz
 
+            xmax, ymax = 1.25, 0.45
+            scale = gnmath.min(xmax/sx, ymax/sy)
+            txt.transform(translation = (0, -0.8*ymax, 0.01), scale=scale)
 
-    clock.out()
+            txt = Mesh(txt)
+            txt.faces.material = brand_mat
+            txt.faces.Color = brand_col
+
+            clock += txt
+
+        with Layout("Finalize"):
+            clock.transform(scale=radius, rotation=Rotation((pi/2, 0, 0)))
+
+        clock.out()

@@ -104,7 +104,7 @@ class NodeError(Exception):
 
         # ----- stack
 
-        stack_lines = self.stack_lines()
+        stack_lines = self.stack_lines(IGNORE_CORE)
 
         if keyword is None:
 
@@ -132,7 +132,7 @@ class NodeError(Exception):
     # Loop on the stack
 
     @staticmethod
-    def get_stack():
+    def get_stack(ignore_core: bool = True):
 
         # List of dict:
         # - file_name
@@ -151,7 +151,7 @@ class NodeError(Exception):
 
             path = Path(frame_info.filename)
 
-            if IGNORE_CORE and is_in_core(path) and i_frame < (len(insp_stack) - 1):
+            if ignore_core and is_in_core(path) and i_frame < (len(insp_stack) - 1):
                 continue
 
             # ----- Python embedded in a blend file
@@ -211,13 +211,13 @@ class NodeError(Exception):
     # Loop on the stack
 
     @staticmethod
-    def stack_lines():
+    def stack_lines(ignore_core: bool = True):
 
         stack = ["Traceback (most recent call last):\n"]
 
         # Ignore only the two first items  there the core is not ignored
-        user_stack = NodeError.get_stack()
-        if not IGNORE_CORE:
+        user_stack = NodeError.get_stack(ignore_core)
+        if not ignore_core:
             user_stack = user_stack[2:]
 
         for item in user_stack:
@@ -244,10 +244,15 @@ class NodeError(Exception):
             kws = [str(keyword)]
 
         for kw in kws:
-            for item in NodeError.get_stack()[2:]:
+            for item in NodeError.get_stack(IGNORE_CORE)[2:]:
                 if item['code'].find("raise") >= 0:
                     continue
                 if item['code'].find(kw) >= 0:
                     return item
 
         return None
+    
+class NodeAttributeError(AttributeError):
+    def __str__(self):
+        ne = NodeError(super().__str__())
+        return str(ne)
