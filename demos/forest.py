@@ -133,25 +133,27 @@ def demo():
 
         grid = Mesh.LineEndPoints(end_location=(2*count, 0, 0), count=count)
 
-        with grid.points.for_each(position=nd.position) as feel:
+        #with grid.points.for_each(position=nd.position) as feel:
+        for feel in grid.points.for_each(position=nd.position):
 
             hv = feel.index.hash_value(seed)
+
+            # TBD 
             tree = Mesh(Group("A Tree",
-                base_width    = Float.Random(.1, .6, id=feel.index, seed=hv + 1),
-                tree_height   = Float.Random( 1, 10, id=feel.index, seed=hv + 2),
-                tree_width    = Float.Random( .2,  .5, id=feel.index, seed=hv + 3),
-                trunk_height  = Float.Random(.1, .3, id=feel.index, seed=hv + 4),
-                conic_shape   = Float.Random( .2,  1, id=feel.index, seed=hv + 5),
+                
+                #base_width    = Float.Random(.1, .6, id=feel.index, seed=hv + 1),
+                #tree_height   = Float.Random( 1, 10, id=feel.index, seed=hv + 2),
+                #tree_width    = Float.Random( .2,  .5, id=feel.index, seed=hv + 3),
+                #trunk_height  = Float.Random(.1, .3, id=feel.index, seed=hv + 4),
+                #conic_shape   = Float.Random( .2,  1, id=feel.index, seed=hv + 5),
 
                 seed          = hv,
                 ).geometry)
 
-            #tree.points.offset = feel.position
+            #feel.generated.geometry = tree.to_instance()
+            tree.to_instance().out("Geometry")
 
-            feel.generated.geometry = tree.to_instance()
-
-
-        feel.generated.geometry.out()
+        feel.generated.out()
 
     # ====================================================================================================
     # A forest
@@ -164,7 +166,7 @@ def demo():
 
         cloud = surface.faces.distribute_points_poisson(distance_min=1, density_factor=density, seed=seed)
 
-        trees = Group("Trees Collection", count=10, seed=seed + 1)
+        trees = Group("Trees Collection", count=10, seed=seed + 1)._out
         forest = cloud.points.instance_on(
             instance=trees, pick_instance=True,
             scale=Float.Random(.5, 1.5, seed=seed + 2),
@@ -185,6 +187,6 @@ def demo():
         plane.points.offset = (0, 0, Texture.Noise(scale=.03)*10)
         plane.faces.smooth = True
 
-        forest = Group("Forest", mesh=plane, density=density, seed=seed + 1)
+        forest = Group("Forest", mesh=plane, density=density, seed=seed + 1)._out
 
         (plane + forest).out()

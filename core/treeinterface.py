@@ -840,7 +840,8 @@ class TreeInterface:
                 prop = 'description'
 
             if prop not in self.socket_props[socket_type.socket_id]:
-                raise TypeError(f"create_socket error ('{name}', {socket_type}) : socket property '{prop}' is invalid: '{prop}' not in {self.socket_props[socket_type.socket_id]}.")
+                raise NodeError(f"create_socket error ('{name}', {socket_type}) : socket property '{prop}' is invalid.\n"
+                                f"Valid properties are: {self.socket_props[socket_type.socket_id]}.")
             
             # Ease the use of subtype
             if prop == 'subtype':

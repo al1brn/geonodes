@@ -182,6 +182,11 @@ class ZoneNode(Node):
             inode._items['INPUT']  = self._bnode.input_items
             inode._items['OUTPUT'] = self._bnode.input_items
 
+            # The generated Geometry is not necesssarily of the same type
+            if False:
+                self._bnode.generation_items.clear()
+                self._bnode.generation_items.new(SocketType('Geometry').type, class_name)
+
             inode.set_input_socket('Geometry', socket)
 
         # ---------------------------------------------------------------------------
@@ -206,6 +211,25 @@ class ZoneNode(Node):
 
         for name, value in {**named_sockets, **sockets}.items():
             inode.set_input_socket(name, value)
+
+    # ====================================================================================================
+    # Get the socket default name
+    # ====================================================================================================
+
+    def get_socket_default_name(self, in_out: str, value) -> str:
+        """ Get the socket default name from a value
+
+        Arguments
+        ---------
+        - in_out (str in ('INPUT', 'OUTPUT')) : for input or output socket
+        - value (Any) : the value to name
+        """
+        name = super().get_socket_default_name(in_out, value)
+        if in_out == 'OUTPUT' and name == 'Element' and self._zone_id == FOR_EACH:
+            return type(value).__name__
+        else:
+            return name
+
 
     # ====================================================================================================
     # Loop zone
@@ -261,7 +285,7 @@ class ZoneNode(Node):
             
             # Two panels for items:
             # - main_items
-            # -generation_items
+            # - generation_items
             # Will be selected by code
 
             # Two panels
@@ -451,8 +475,15 @@ class ZoneIterator:
 
     @property
     def generated(self):
+        """ Generated outpuot socket
+
+        Main panel contains 'Geometry' output socket plus n MAIN output sockets + 1 virtual socket.
+        The Generated geometry is the first after them : n + 2
+        """
         if self._name == FOR_EACH:
-            return self._output_node.socket_by_identifier('OUTPUT', "Generation_0")
+            n = len(self._output_node._bnode.main_items)
+            return utils.to_socket(self._output_node._bnode.outputs[n + 2])
+            #return self._output_node.socket_by_identifier('OUTPUT', "Generation_0")
         else:
             raise NodeError(f"Generated attribute is a property of for_each iterator, note {type(self).__name}.")
 
@@ -479,4 +510,38 @@ class ZoneIterator:
             return getattr(self._input_node, name)
         else:
             return getattr(self._output_node, name)
+        
+    # ====================================================================================================
+    # Class test
+    # ====================================================================================================
+
+    def _class_test():
+
+        from geonodes import GeoNodes, Cloud, Mesh, Curve
+
+        with GeoNodes("ZoneIterator class test"):
+
+            g = Cloud()
+            
+            for rep in g.repeat(10):
+                g.out()
+
+            assert type(g).__name__ == 'Cloud', type(g).__name__
+                
+            m = Mesh(g)
+            for sim in m.simulation():
+                m.out()
+
+            assert type(m).__name__ == 'Mesh', type(g).__name__
+
+            c = Curve(m)
+            for feel in c.points.for_each():
+                Mesh(c).out()
+
+            assert type(c).__name__ == 'Curve', type(g).__name__
+            assert type(feel.generated).__name__ == 'Geometry', type(g).__name__
+                
+            (c + feel.generated).out()
+
+
 

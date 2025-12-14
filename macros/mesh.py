@@ -17,7 +17,35 @@ if False:
 
 from geonodes import *
 
-__all__ = ["move_selection", "move_coordinate", "build_flat_cap"]
+__all__ = ["move_selection", "move_coordinate", "build_flat_cap", "solidify"]
+
+# ===========================================================================
+# Solidify a mesh
+# ===========================================================================
+
+def solidify(mesh, thickness=.01, individual=False, merge_distance=.001):
+    """ Solidify a mesh
+
+    Arguments
+    ---------
+    - thickness (Float = .01) : thickness
+    - individual (Boolean = False) : extrude individual faces
+    - merge_distance (Float = .001) : distance to use to merge intial faces and the extruded mesh
+
+    Returns
+    -------
+    - Mesh : the solidified mesh
+    """
+
+    with Layout("Macro - Solidify", color='MACRO'):
+
+        mesh = Mesh(mesh)
+        solidified = Mesh(mesh).flip_faces() + mesh.extrude_faces(offset_scale=thickness, individual=individual)
+        solidified = solidified.switch(Float(merge_distance).greater_than(0), solidified.merge_by_distance(distance=merge_distance))
+        solidified = Mesh(solidified)
+
+        return Mesh(solidified.switch(Float(thickness).less_than(0), solidified.flip_faces()))
+
 
 
 # ===========================================================================

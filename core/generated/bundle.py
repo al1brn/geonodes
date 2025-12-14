@@ -1,4 +1,4 @@
-# Generated 2025-12-08 09:52:50
+# Generated 2025-12-13 19:56:11
 
 from __future__ import annotations
 from .. socket_class import Socket
@@ -93,7 +93,7 @@ class Bundle(Socket):
         - None
         """
         node = Node('Separate Bundle', {'Bundle': self, **named_sockets}, define_signature=define_signature, **sockets)
-        return node
+        return node._out
 
     @classmethod
     def _create_input_socket(cls,

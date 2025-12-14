@@ -106,7 +106,7 @@ def demo():
             font_size = Float(.3, "Font Size")
             face_cam  = Boolean(False, "Orient to Camera")
 
-        with cloud.points[show].for_each(value=value, position=nd.position + dist*direction) as feel:
+        for feel in cloud.points[show].for_each(value=value, position=nd.position + dist*direction):
 
             cam_vec = Object.ActiveCamera().info().location - feel.position
             rot = Rotation((np.pi/2, 0, 0)).align_z_to_vector(cam_vec, factor=face_cam, pivot_axis='Y')
@@ -115,9 +115,10 @@ def demo():
             label.transform(translation=feel.position, rotation=rot)
             label = label.fill()
 
-            feel.generated.geometry = label
+            #feel.generated.geometry = label
+            label.out()
 
-        curves = feel.generated.geometry
+        curves = feel.generated
         curves = Mesh(Instances(curves).realize())
 
         curves.faces._Color = color
@@ -174,15 +175,16 @@ def demo():
 
             cube_size = size*2
 
-            with mesh.corners[Boolean("Select C")].for_each(position=nd.position, face_index=nd.face_of_corner()) as feel:
+            for feel in mesh.corners[Boolean("Select C")].for_each(position=nd.position, face_index=nd.face_of_corner()):
 
                 face_pos = mesh.faces.sample_index(nd.position, index=feel.face_index)
                 v = (face_pos - feel.position).normalize()
                 c_point = Cloud.Points(1, position=feel.position + cube_size*v)
 
-                feel.generated.geometry = c_point
+                c_point.out()
 
-            cloud = Cloud(feel.generated.geometry)
+            cloud = Cloud(feel.generated)
+
             c_vis = Mesh(cloud.instance_on(instance=Mesh.Cube(size=cube_size)).realize())
             c_vis.faces.material = "Topology"
             c_vis.faces.smooth = False
@@ -208,8 +210,8 @@ def demo():
         with Panel("Domain"):
             selection   = Boolean(True,  "Selection")
             use_indices = Boolean(False, "Use Indices")
-            ind0        = Integer(0,     "First Index", 0, single_value=True)
-            ind1        = Integer(1000,  "Last Index", 0, single_value=True)
+            ind0        = Integer(0,     "First Index", 0, shape='Single')
+            ind1        = Integer(1000,  "Last Index", 0, shape='Single')
 
         with Layout("Mesh domains"):
             pt_cloud = mesh.points.to_points()
@@ -260,7 +262,6 @@ def demo():
 
             spline_cloud.points._Selection = curve.splines.sample_index(selection, nd.index)
 
-
         with Layout("Cloud"):
 
             cl_cloud = Cloud(cloud)
@@ -270,21 +271,40 @@ def demo():
             cl_cloud.points._Value = nd.index
             cl_cloud.points._Color  = COL_POINT
 
-        with Panel("Domain"):
-            cloud = Cloud.MenuSwitch(items={
-                "Vertices"          : pt_cloud,
-                "Faces"             : face_cloud,
-                "Edges"             : edge_cloud,
-                "Corners"           : crn_cloud,
-                "Spline Points"     : spt_cloud,
-                "Splines"           : spline_cloud,
-                "Cloud Points"      : cl_cloud,
-            }, menu=0, name="Domain")
+        if True:
+            with Cloud.MenuSwitch(menu=Input("Domain", panel="Domain")) as cloud:
+                pt_cloud.out("Vertices")
+                face_cloud.out("Faces")
+                edge_cloud.out("Edges")
+                crn_cloud.out("Corners")
+                spt_cloud.out("Spline Points")
+                spline_cloud.out("Splines")
+                cl_cloud.out("Cloud Points")
+
+        else:
+            with Panel("Domain"):
+                cloud = Cloud.MenuSwitch(items={
+                    "Vertices"          : pt_cloud,
+                    "Faces"             : face_cloud,
+                    "Edges"             : edge_cloud,
+                    "Corners"           : crn_cloud,
+                    "Spline Points"     : spt_cloud,
+                    "Splines"           : spline_cloud,
+                    "Cloud Points"      : cl_cloud,
+                }, menu=0, name="Domain")
 
         with Layout("Selection"):
             show = Boolean("Selection") & ((nd.index >= ind0) & (nd.index <= ind1) | (-use_indices))
 
-        labels = G().show_labels(cloud=cloud, label_value=cloud._Value, show=show, direction=cloud._Normal, label_color=cloud._Color, link_from='TREE')
+        labels = G().show_labels(
+            cloud       = cloud, 
+            label_value = Float("Value"), 
+            show        = show, 
+            direction   = Vector("Normal"), 
+            label_color = Color.Named("Color"), 
+            )
+
+        labels.node.link_inputs()
 
         labels.switch(merge, geo + labels).out()
 
@@ -301,12 +321,21 @@ def demo():
 
         topo_link = {'exclude': 'Domain'}
 
-        with If(Geometry, "Vertices", name="Domain") as geo:
+        # ----------------------------------------------------------------------------------------------------
+        # Vertices
+        # ----------------------------------------------------------------------------------------------------
+
+        with Geometry.MenuSwitch(menu=Input("Domain")) as geo:
 
             vert_mesh = Mesh(mesh)
             vert_mesh.points._Select_V = nd.index.equal(index)
 
-            vrt_vis = G().topology_indices(geometry=vert_mesh, merge_input_geometry=False, domain='Vertices', selection=Boolean("Select V"), link_from=topo_link)
+            vrt_vis = Group("Topology Indices",
+                geometry                = vert_mesh, 
+                merge_input_geometry    = False, 
+                domain                  = 'Vertices', 
+                selection               = Boolean("Select V"), 
+            ).link_inputs()._out
 
             with Layout("Corners & Faces of Vertex"):
 
@@ -314,39 +343,67 @@ def demo():
                 vert_mesh.corners._Select_C = False
 
                 total = vert_mesh.points.sample_index(Vertex.corners_total(), index)
-                with Repeat(mesh=vert_mesh, iterations=total) as rep:
+                for rep in vert_mesh.repeat(total):
                     corner_index = Vertex.corner_index(index, sort_index=rep.iteration)
-                    rep.mesh.corners[corner_index]._Select_C = True
-                    rep.mesh.faces._Select_F |= nd.index.equal(Corner.face_index(corner_index))
+                    vert_mesh.corners[corner_index]._Select_C = True
+                    vert_mesh.faces._Select_F = Float("Select F") | nd.index.equal(Corner.face_index(corner_index))
+                    vert_mesh.out()
 
-                vert_mesh = rep.mesh
+                vrt_vis += Group("Topology Indices",
+                    geometry             = vert_mesh, 
+                    merge_input_geometry = False, 
+                    domain               = 'Corners', 
+                    selection            = Boolean("Select C"), 
+                ).link_inputs()._out
 
-                vrt_vis += G().topology_indices(geometry=vert_mesh, merge_input_geometry=False, domain='Corners', selection=Boolean("Select C"), link_from=topo_link)
-                vrt_vis += G().topology_indices(geometry=vert_mesh, merge_input_geometry=False, domain='Faces', selection=Boolean("Select F"), link_from=topo_link)
+                vrt_vis += Group("Topology Indices",
+                    geometry             = vert_mesh, 
+                    merge_input_geometry = False, 
+                    domain               = 'Faces', 
+                    selection            = Boolean("Select F"), 
+                ).link_inputs()._out
 
             with Layout("Edges of Vertex"):
                 sel = Edge.vertex_index_1.equal(index) | Edge.vertex_index_2.equal(index)
                 vert_mesh.edges._Select_E = sel
-                vrt_vis += G().topology_indices(geometry=vert_mesh, merge_input_geometry=False, domain='Edges', selection=Boolean("Select E"), link_from=topo_link)
+                vrt_vis += Group("Topology Indices",
+                    geometry             = vert_mesh, 
+                    merge_input_geometry = False, 
+                    domain               = 'Edges', 
+                    selection            = Boolean("Select E"),
+                ).link_inputs()._out
 
-            vrt_vis += Group("Mesh Selection", mesh=vert_mesh, link_from='TREE').geometry
+            vrt_vis += Group("Mesh Selection", mesh=vert_mesh).link_inputs().geometry
 
-            geo.option = vrt_vis
+            vrt_vis.out("Vertices")
 
+        # ----------------------------------------------------------------------------------------------------
+        # Edges
+        # ----------------------------------------------------------------------------------------------------
 
-        #with Layout("Edge Domain"):
-        with Elif(geo, "Edges"):
+        with geo:
 
             edge_mesh = Mesh(mesh)
             edge_mesh.edges._Select_E = nd.index.equal(index)
-            edge_vis = G().topology_indices(geometry=edge_mesh, merge_input_geometry=False, domain='Edges', selection=Boolean("Select E"), link_from=topo_link)
+
+            edge_vis = Group("Topology Indices",
+                geometry             = edge_mesh, 
+                merge_input_geometry = False, 
+                domain               = 'Edges', 
+                selection            = Boolean("Select E"),
+            ).link_inputs()._out
 
             with Layout("Vertices of Edge"):
                 v1 = mesh.edges.sample_index(Edge.vertex_index_1, index)
                 v2 = mesh.edges.sample_index(Edge.vertex_index_2, index)
                 edge_mesh.points._Select_V = nd.index.equal(v1) | nd.index.equal(v2)
 
-                edge_vis += G().topology_indices(geometry=edge_mesh, merge_input_geometry=False, domain='Vertices', selection=Boolean("Select V"), link_from=topo_link)
+                edge_vis += Group("Topology Indices",
+                    geometry             = edge_mesh, 
+                    merge_input_geometry = False, 
+                    domain               = 'Vertices', 
+                    selection            = Boolean("Select V"),
+                ).link_inputs()._out
 
             with Layout("Corners & Faces of Edge"):
 
@@ -354,25 +411,46 @@ def demo():
                 total = edge_mesh.corners.sample_index(Edge.corners_total(index), index)
 
                 with Layout("Repeat Zone"):
-                    with Repeat(mesh=edge_mesh, iterations=total) as rep:
+                    for rep in edge_mesh.repeat(total):
                         corner_index = Edge.corner_index(index, sort_index=rep.iteration)
-                        rep.mesh.corners[corner_index]._Select_C = True
-                        rep.mesh.faces[Corner.face_index(corner_index)]._Select_F = True
+                        edge_mesh.corners[corner_index]._Select_C = True
+                        edge_mesh.faces[Corner.face_index(corner_index)]._Select_F = True
+                        edge_mesh.out()
 
-                edge_mesh = rep.mesh
-                edge_vis += G().topology_indices(geometry=edge_mesh, merge_input_geometry=False, domain='Corners', selection=Boolean("Select C"), link_from=topo_link)
-                edge_vis += G().topology_indices(geometry=edge_mesh, merge_input_geometry=False, domain='Faces', selection=Boolean("Select F"), link_from=topo_link)
+                edge_vis += Group("Topology Indices",
+                    geometry             = edge_mesh, 
+                    merge_input_geometry = False, 
+                    domain               = 'Corners', 
+                    selection            = Boolean("Select C"),
+                ).link_inputs()._out
 
-            edge_vis += Group("Mesh Selection", mesh=edge_mesh, link_from='TREE').geometry
+                edge_vis += Group("Topology Indices",
+                    geometry             = edge_mesh, 
+                    merge_input_geometry = False, 
+                    domain               = 'Faces', 
+                    selection            = Boolean("Select F"),
+                ).link_inputs()._out
 
-            geo.option = edge_vis
+            edge_vis += Group("Mesh Selection", mesh=edge_mesh).link_inputs().geometry
 
-        #with Layout("Face Domain"):
-        with Elif(geo, "Faces"):
+            edge_vis.out("Edges")
+
+        # ----------------------------------------------------------------------------------------------------
+        # Faces
+        # ----------------------------------------------------------------------------------------------------
+
+        with geo:
 
             face_mesh = Mesh(mesh)
             face_mesh.faces._Select_F = nd.index.equal(index)
-            face_vis = G().topology_indices(geometry=face_mesh, merge_input_geometry=False, domain='Faces', selection=Boolean("Select F"), link_from=topo_link)
+
+            face_vis = Group("Topology Indices",
+                geometry             = face_mesh, 
+                merge_input_geometry = False, 
+                domain               = 'Faces', 
+                selection            = Boolean("Select E"),
+            ).link_inputs()._out
+
 
             with Layout("Corners and Vertices of Face"):
                 face_mesh.corners._Select_C = False
@@ -381,30 +459,56 @@ def demo():
 
                 total = face_mesh.faces.sample_index(Face.corners_total(index), index=index)
 
-                with Repeat(mesh=face_mesh, iterations=total) as rep:
+                for rep in face_mesh.repeat(total):
+                    corner_index = face_mesh.faces.sample_index(Face.corner_index(index, sort_index=rep.iteration))
+                    vertex_index = face_mesh.corners.sample_index(Corner.vertex_index(), corner_index)
+                    edge_index = face_mesh.corners.sample_index(Corner.next_edge_index(), corner_index)
+                    face_mesh.corners[corner_index]._Select_C = True
+                    face_mesh.points[vertex_index]._Select_V = True
+                    face_mesh.edges[edge_index]._Select_E = True
+                    face_mesh.out()
 
-                    corner_index = rep.mesh.faces.sample_index(Face.corner_index(index, sort_index=rep.iteration))
-                    vertex_index = rep.mesh.corners.sample_index(Corner.vertex_index(), corner_index)
-                    edge_index = rep.mesh.corners.sample_index(Corner.next_edge_index(), corner_index)
-                    rep.mesh.corners[corner_index]._Select_C = True
-                    rep.mesh.points[vertex_index]._Select_V = True
-                    rep.mesh.edges[edge_index]._Select_E = True
+                face_vis += Group("Topology Indices",
+                    geometry             = face_mesh, 
+                    merge_input_geometry = False, 
+                    domain               = 'Corners', 
+                    selection            = Boolean("Select C"),
+                ).link_inputs()._out
 
-                face_mesh = rep.mesh
-                face_vis += G().topology_indices(geometry=face_mesh, merge_input_geometry=False, domain='Corners', selection=Boolean("Select C"), link_from=topo_link)
-                face_vis += G().topology_indices(geometry=face_mesh, merge_input_geometry=False, domain='Vertices', selection=Boolean("Select V"), link_from=topo_link)
-                face_vis += G().topology_indices(geometry=face_mesh, merge_input_geometry=False, domain='Edges', selection=Boolean("Select E"), link_from=topo_link)
+                face_vis += Group("Topology Indices",
+                    geometry             = face_mesh, 
+                    merge_input_geometry = False, 
+                    domain               = 'Vertices', 
+                    selection            = Boolean("Select V"),
+                ).link_inputs()._out
 
-            face_vis += Group("Mesh Selection", mesh=face_mesh, link_from='TREE').geometry
+                face_vis += Group("Topology Indices",
+                    geometry             = face_mesh, 
+                    merge_input_geometry = False, 
+                    domain               = 'Edges', 
+                    selection            = Boolean("Select E"),
+                ).link_inputs()._out
 
-            geo.option = face_vis
+            face_vis += Group("Mesh Selection", mesh=face_mesh).link_inputs().geometry
 
-        #with Layout("Corner Domain"):
-        with Elif(geo, "Corners"):
+            face_vis.out("Faces")
+
+        # ----------------------------------------------------------------------------------------------------
+        # Faces
+        # ----------------------------------------------------------------------------------------------------
+
+        with geo:
 
             crn_mesh = Mesh(mesh)
             crn_mesh.corners._Select_C = nd.index.equal(index)
-            crn_vis = G().topology_indices(geometry=crn_mesh, merge_input_geometry=False, domain='Corners', selection=Boolean("Select C"), link_from=topo_link)
+
+            crn_vis = Group("Topology Indices",
+                geometry             = crn_mesh, 
+                merge_input_geometry = False, 
+                domain               = 'Corners', 
+                selection            = Boolean("Select C"),
+            ).link_inputs()._out
+
 
             crn_mesh.points._Select_V = nd.index.equal(crn_mesh.corners.sample_index(Corner.vertex_index(), index))
             edge0 = crn_mesh.corners.sample_index(Corner.next_edge_index(), index)
@@ -412,23 +516,30 @@ def demo():
             crn_mesh.edges._Select_E = nd.index.equal(edge0) | nd.index.equal(edge1)
             crn_mesh.faces._Select_F = nd.index.equal(crn_mesh.corners.sample_index(Corner.face_index(), index))
 
-            crn_vis += G().topology_indices(geometry=crn_mesh, merge_input_geometry=False, domain='Vertices', selection=Boolean("Select V"), link_from=topo_link)
-            crn_vis += G().topology_indices(geometry=crn_mesh, merge_input_geometry=False, domain='Faces', selection=Boolean("Select F"), link_from=topo_link)
-            crn_vis += G().topology_indices(geometry=crn_mesh, merge_input_geometry=False, domain='Edges', selection=Boolean("Select E"), link_from=topo_link)
+            crn_vis += Group("Topology Indices",
+                geometry             = crn_mesh, 
+                merge_input_geometry = False, 
+                domain               = 'Vertices', 
+                selection            = Boolean("Select V"),
+            ).link_inputs()._out
 
-            crn_vis += Group("Mesh Selection", mesh=crn_mesh, link_from='TREE').geometry
+            crn_vis += Group("Topology Indices",
+                geometry             = crn_mesh, 
+                merge_input_geometry = False, 
+                domain               = 'Faces', 
+                selection            = Boolean("Select F"),
+            ).link_inputs()._out
 
-            geo.option = crn_vis
+            crn_vis += Group("Topology Indices",
+                geometry             = crn_mesh, 
+                merge_input_geometry = False, 
+                domain               = 'Edges', 
+                selection            = Boolean("Select E"),
+            ).link_inputs()._out
+
+            crn_vis += Group("Mesh Selection", mesh=crn_mesh).link_inputs().geometry
+
+            crn_vis.out("Corners")
 
         geo.out()
 
-        """
-        vis = Geometry.MenuSwitch({
-            "Vertices": vrt_vis,
-            "Edges"   : edge_vis,
-            "Faces"   : face_vis,
-            "Corners" : crn_vis,
-            }, menu="Vertices", name="Domain")
-
-        vis.out()
-        """

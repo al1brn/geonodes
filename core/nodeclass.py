@@ -219,7 +219,7 @@ class Node:
         '_has_items', '_items',
         '_use_interface', '_interface', '_interface_in_out',
         '_is_paired_input', '_is_paired_output', '_paired_input_node', '_paired_output_node',
-        '_stack',
+        '_link_ignore', '_stack',
     )
     
     def __init__(self, node_name: str, named_sockets: dict = {}, **parameters):
@@ -245,6 +245,8 @@ class Node:
         - _paired_input_node (Node) : paired input node
         - _paired_output_node (Node) : paired output node
         - _default_menu (str | int) : specific to MenuSwitch and IndexSwitch, forward menu value
+        - _link_ignore : ignore these sockets in link_inputs method (already set)
+        - _stack : call stack for warnings
 
         > [!NOTE]
         > NodeTree interface is used for Group Input and Output nodes and for Group node.
@@ -400,6 +402,8 @@ class Node:
         # Set the sockets
         # ----------------------------------------------------------------------------------------------------
 
+        self._link_ignore = []
+
         # Menus need to set the socket before the selector
 
         if bl_idname == 'GeometryNodeMenuSwitch':
@@ -428,6 +432,10 @@ class Node:
             for name, value in {**named_sockets, **sockets}.items():
                 self.set_input_socket(name, value)
 
+                # Ignore in further link_inputs method
+                if value is not None:
+                    self._link_ignore.append(name)
+
         # ----------------------------------------------------------------------------------------------------
         # Register the node
         # ----------------------------------------------------------------------------------------------------
@@ -440,9 +448,13 @@ class Node:
 
     def __str__(self):
         sname = self._bnode.label if self._bnode.label != "" else self._bnode.name
-        return f"<Node '{sname}' {self._bnode.bl_idname}>"
+        if self._bnode.bl_idname == 'GeometryNodeGroup':
+            sname += f" [{self._bnode.node_tree.name}]"
+        return f"<Node '{sname}'>"
 
     def __repr__(self):
+        sname = self._bnode.label if self._bnode.label != "" else self._bnode.name
+        s = f"<Node '{sname}' {self._bnode.bl_idname}>"
         s = str(self)
         s += "\nInputs\n   - "
         s += "\n   - ".join([bsock.name for bsock in self._bnode.inputs])
@@ -730,7 +742,7 @@ class Node:
                 else:
                     valids = [s.name for s in self._interface.get_sockets(intf_in_out)]
 
-                raise NodeError(f"Node '{self._bnode.name}' doesn't own an {intf_in_out} socket named '{name}'.\nValids are {valids}")
+                raise NodeError(f"Node {self} doesn't own an {intf_in_out} socket named '{name}'.\nValids are {valids}")
 
             return None
 
@@ -745,7 +757,7 @@ class Node:
 
         if socket is None:
             if halt:
-                raise NodeError(f"Node '{self._bnode.name}' doesn't own an {in_out} socket named '{name}'. Valid names are {socks.names}")
+                raise NodeError(f"Node {self} doesn't own an {in_out} socket named '{name}'. Valid names are {socks.names}")
             
         return socket
 
@@ -793,6 +805,20 @@ class Node:
         
         # Utltimately : the socket name
         return self.socket_by_name(in_out, name, socket_type, enabled_only=enabled_only, free_only=free_only, halt = halt)
+    
+    # ====================================================================================================
+    # Get default_name
+    # ====================================================================================================
+
+    def get_socket_default_name(self, in_out: IN_OUT, value) -> str:
+        """ Get the socket default name from a value
+
+        Arguments
+        ---------
+        - in_out (str in ('INPUT', 'OUTPUT')) : for input or output socket
+        - value (Any) : the value to name
+        """            
+        return utils.get_default_name(value)
     
     # ====================================================================================================
     # Create a new socket from a socket 
@@ -1138,8 +1164,7 @@ class Node:
             if not (create and self._has_dyn_in):
                 raise NodeError(f"Error when setting an input socket to node {self}: no free input socket found for socket {value} of type: {bsocket.type}.")
             
-            #name = utils.get_default_name(bsocket)
-            name = utils.get_default_name(value)
+            name = self.get_socket_default_name('OUTPUT', value)
 
         # ===========================================================================
         # Name is not None
@@ -1468,8 +1493,9 @@ class Node:
         ):
         """ Link input socket from another node
 
-        if from_node is None, the current input node is taken.
-        Input sockets already linked are ignored
+        If from_node is None, the current input node is taken.
+
+        Sockets which has been set at initialization time and sockets already linked are ignored.
 
         If from node is able to create output sockets, they are created, otherwise only the sockets
         with matchin names and types are linked.
@@ -1481,6 +1507,10 @@ class Node:
         - include (list = None) : sockets to include
         - exclude (list = []) : sockets to exclude
         - panel (str = "") : panel to select input socket in
+
+        Returns
+        -------
+        - self
         """
 
         # ---------------------------------------------------------------------------
@@ -1495,7 +1525,7 @@ class Node:
         in_sockets = self.get_sockets(
             'INPUT',
             include      = include,
-            exclude      = exclude,
+            exclude      = exclude + self._link_ignore,
             enabled_only = True,
             free_only    = True,
             panel        = panel,
@@ -1505,7 +1535,7 @@ class Node:
         # Create the links
         # ---------------------------------------------------------------------------
         
-        links = []
+        #links = []
         
         for name, in_socket in in_sockets:
 
@@ -1519,9 +1549,9 @@ class Node:
 
             if out_socket is not None:
                 self._tree.link(out_socket, in_socket)
-                links.append((out_socket, in_socket))
+                #links.append((out_socket, in_socket))
 
-        return links
+        return self
     
     # ====================================================================================================
     # Link input from another node
@@ -1771,6 +1801,7 @@ class Node:
                 g = Group("Curve to Tube")
                 g.link_inputs(None, "Tube")
                 g.link_outputs(None, "Tube")
+
 
 # ====================================================================================================
 # Menu node

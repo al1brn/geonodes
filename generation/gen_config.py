@@ -666,14 +666,35 @@ def get_node_info(sockets):
             # ---------------------------------------------------------------------------
             
             if 'data_type' in node_info['params']:
-                convert = {}
-                for dt in node_info['params']['data_type']['enum']:
-                    if dt in sockets.keys():
-                        convert[dt] = dt
-                    elif dt in DATA_TYPE_HOMONYMS:
-                        convert[DATA_TYPE_HOMONYMS[dt]] = dt
-                    else:
-                        raise RuntimeError(f"Unknown data type '{dt}' in node [{node.name}]. Enums: {node_info['params']['data_type']['enum']}.")
+
+                if tp == 'GeometryNodeStoreNamedAttribute': # Missiong: INT8, FLOAT2, QUATERNION, BYTE_COLOR
+                    # ('FLOAT', 'INT', 'BOOLEAN', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'QUATERNION', 'FLOAT4X4', 'INT8', 'FLOAT2', 'BYTE_COLOR')
+                    convert = {
+                        'VALUE'      : 'FLOAT',
+                        'INT'        : 'INT',
+                        'BOOLEAN'    : 'BOOLEAN',
+                        'VECTOR'     : 'FLOAT_VECTOR',
+                        'MATRIX'     : 'FLOAT4X4',
+                        'RGBA'       : 'FLOAT_COLOR',
+                        'QUATERNION' : 'ROTATION',
+                    }
+                else:
+                    convert = {}
+                    for dt in node_info['params']['data_type']['enum']:
+                        if dt in sockets.keys():
+                            key = dt
+                            #convert[dt] = dt
+                        elif dt in DATA_TYPE_HOMONYMS:
+                            key = DATA_TYPE_HOMONYMS[dt]
+                            #convert[DATA_TYPE_HOMONYMS[dt]] = dt
+                        else:
+                            raise RuntimeError(f"Unknown data type '{dt}' in node [{node.name}]. Enums: {node_info['params']['data_type']['enum']}.")
+                        
+                        if key in convert:
+                            print(f"bl_idname", tp, ", convert\n", node_info['params']['data_type']['enum'])
+                            assert False, "Must be done manually"
+                        convert[key] = dt
+
                 node_info['data_type'] = convert
 
             NODE_INFO[tree_type][node.bl_idname] = node_info

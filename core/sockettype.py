@@ -543,6 +543,7 @@ class SocketType:
         info = constants.NODE_INFO[tree_type][bl_idname]
 
         conv = info.get('data_type')
+
         if conv is None:
             raise RuntimeError(f"Node '{bl_idname}' doesn't have a 'data_type' attribute.")
         

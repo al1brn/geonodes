@@ -649,7 +649,7 @@ def get_socket_class(socket_type, name=None):
             class_name = 'Mesh'
         elif name in ('curve', 'curves', 'profile curve', 'guide curve'):
             class_name = 'Curve'
-        elif name in ('points', 'point cloud'):
+        elif name in ('points', 'point cloud', 'cloud'):
             class_name = 'Cloud'
         elif name in ('grease pencil',):
             class_name = 'GreasePencil'
@@ -1361,6 +1361,12 @@ def set_node_error(bnode):
     bnode.use_custom_color = True
     bnode.color = (1, 0, 0)
     return bnode
+
+def set_node_warning(bnode):
+    bnode.use_custom_color = True
+    bnode.color = (1.000, 0.580, 0.125)
+    return bnode
+
 
 # -----------------------------------------------------------------------------------------------------------------------------
 # Feeding nodes

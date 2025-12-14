@@ -1,4 +1,4 @@
-# Generated 2025-12-08 09:52:50
+# Generated 2025-12-13 19:56:11
 
 from __future__ import annotations
 from .. socket_class import Socket
@@ -314,11 +314,11 @@ class String(Socket):
         return cls(node._out)
 
     def to_curves(self,
-                    size = None,
-                    character_spacing = None,
-                    word_spacing = None,
-                    line_spacing = None,
-                    text_box_width = None,
+                    size: Float = None,
+                    character_spacing: Float = None,
+                    word_spacing: Float = None,
+                    line_spacing: Float = None,
+                    text_box_width: Float = None,
                     align_x: Literal['LEFT', 'CENTER', 'RIGHT', 'JUSTIFY', 'FLUSH'] = 'LEFT',
                     align_y: Literal['TOP', 'TOP_BASELINE', 'MIDDLE', 'BOTTOM_BASELINE', 'BOTTOM'] = 'TOP_BASELINE',
                     font = None,

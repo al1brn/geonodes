@@ -1,6 +1,6 @@
 # GeoNodes configuration
 # Blender (5, 0, 0)
-# Generated 2025-12-08 09:52:50
+# Generated 2025-12-13 19:56:10
 
 
 blender_version = (5, 0, 0)
@@ -8457,12 +8457,12 @@ NODE_INFO = {'GeometryNodeTree': {'FunctionNodeAlignEulerToVector': {'has_custom
                                                                                       'LAYER'),
                                                                              'type': 'str'}}},
                       'GeometryNodeStoreNamedAttribute': {'data_type': {'BOOLEAN': 'BOOLEAN',
-                                                                        'INT': 'INT8',
+                                                                        'INT': 'INT',
                                                                         'MATRIX': 'FLOAT4X4',
-                                                                        'RGBA': 'BYTE_COLOR',
-                                                                        'ROTATION': 'QUATERNION',
+                                                                        'QUATERNION': 'ROTATION',
+                                                                        'RGBA': 'FLOAT_COLOR',
                                                                         'VALUE': 'FLOAT',
-                                                                        'VECTOR': 'FLOAT2'},
+                                                                        'VECTOR': 'FLOAT_VECTOR'},
                                                           'has_custom_in': False,
                                                           'has_custom_out': False,
                                                           'inputs': {'Geometry': {'bl_idname': 'NodeSocketGeometry',

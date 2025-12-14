@@ -52,9 +52,10 @@ import bpy
 import numpy as np
 
 from .scripterror import NodeError
-from .import utils
-from .import blender
+from . import utils
+from . import blender
 from . import constants
+from . import colors
 from .utils import Break
 from .treeinterface import ItemPath
 from .sockettype import SocketType
@@ -211,7 +212,7 @@ class Socket(NodeCache):
             if socktype == 'GEOMETRY':
                 new_socket = self.Input(None, halt=False)
                 if new_socket is None:
-                    new_socket = self.NewInput("Geometry")
+                    new_socket = self.NewInput(type(self).__name__)
                 self._bsocket = new_socket._bsocket
                 
             else:
@@ -405,11 +406,11 @@ class Socket(NodeCache):
             #if props.get('default') is not None or props.get('default_value') is not, None)or 'default_value' in props
 
 
-        return Tree.current_tree().create_input_socket(
+        return cls(Tree.current_tree().create_input_socket(
             SocketType(cls.SOCKET_TYPE).socket_id,
             name = name,
             panel = panel,
-            **props)
+            **props))
     
         # OLD OLD OLD
 
@@ -485,10 +486,12 @@ class Socket(NodeCache):
 
             if value is None:
                 a = (0, 0, 0, 1)
+            elif isinstance(value, str):
+                a = colors.to_color(value)
             else:
                 a = get_shaped(value, (4,), (3,))
 
-            if has_sockets:
+            if has_sockets(a):
                 if Tree.is_geonodes():
                     node = Node('Combine Color', {0: a[0], 1: a[1], 2:a[2]})
                     if len(a) == 4:
@@ -499,7 +502,7 @@ class Socket(NodeCache):
 
             else:
                 def_val = SocketType('COLOR').get_default_from_value(a)
-                if Tree.is_geonodes(col):
+                if Tree.is_geonodes():
                     return Node('Color', value=def_val)._out
 
                 else:
@@ -594,7 +597,7 @@ class Socket(NodeCache):
         if self._is_empty():
             return f"<{self._socket_type.class_name}: Empty>"
         else:
-            return f"<{self._socket_type.class_name}: [{self.node._bnode.name}].'{self._bsocket.name}'>"
+            return f"<{type(self).__name__}: [{self.node._bnode.name}].'{self._bsocket.name}'>"
     
     def _reset(self):
         self._cache_reset()
@@ -844,8 +847,12 @@ class Socket(NodeCache):
     # Link node from
     # =============================================================================================================================
 
-    def link_from(self, **params):
-        self.node.link_from(**params)
+    def link_inputs(self, **kwargs):
+        """ Link input sockets of the node
+
+        Allow to chain input sockets linking.
+        """
+        self.node.link_inputs(**kwargs)
         return self
 
     # =============================================================================================================================

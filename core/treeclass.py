@@ -1120,7 +1120,7 @@ class Tree:
                 
             count += 1
             node._bnode.label = f"DEAD END {count}"
-            utils.set_node_error(node._bnode)
+            utils.set_node_warning(node._bnode)
 
             print()
             print(node)
