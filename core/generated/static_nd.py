@@ -1,4 +1,4 @@
-# Generated 2025-12-13 19:56:11
+# Generated 2025-12-15 16:57:50
 
 from __future__ import annotations
 from .. socket_class import Socket
@@ -744,7 +744,7 @@ class ND:
         """
         utils.check_enum_arg('Separate Color', 'mode', mode, 'separate_color', ('RGB', 'HSV', 'HSL'))
         node = Node('Separate Color', {'Color': color}, mode=mode)
-        return node._out
+        return node
 
     @classmethod
     def separate_matrix(cls, matrix: Matrix = None):
@@ -759,7 +759,7 @@ class ND:
         - Float [column_1_row_2_ (Float), column_1_row_3_ (Float), column_1_row_4_ (Float), column_2_row_1_ (Float), column_2_row_2_ (Float), column_2_row_3_ (Float), column_2_row_4_ (Float), column_3_row_1_ (Float), column_3_row_2_ (Float), column_3_row_3_ (Float), column_3_row_4_ (Float), column_4_row_1_ (Float), column_4_row_2_ (Float), column_4_row_3_ (Float), column_4_row_4_ (Float)]
         """
         node = Node('Separate Matrix', {'Matrix': matrix})
-        return node._out
+        return node
 
     @classmethod
     def separate_transform(cls, transform: Matrix = None):
@@ -774,7 +774,7 @@ class ND:
         - Vector [rotation_ (Rotation), scale_ (Vector)]
         """
         node = Node('Separate Transform', {'Transform': transform})
-        return node._out
+        return node
 
     @classmethod
     def slice_string(cls, string: String = None, position: Integer = None, length: Integer = None):
@@ -1197,7 +1197,7 @@ class ND:
     @classmethod
     def handle_type_selection(cls,
                     handle_type: Literal['FREE', 'AUTO', 'VECTOR', 'ALIGN'] = 'AUTO',
-                    mode = {'RIGHT', 'LEFT'}):
+                    mode = {'LEFT', 'RIGHT'}):
         """ > Node <&Node Handle Type Selection>
 
         Arguments
@@ -1388,7 +1388,7 @@ class ND:
                     curve: Curve = None,
                     selection: Boolean = None,
                     handle_type: Literal['FREE', 'AUTO', 'VECTOR', 'ALIGN'] = 'AUTO',
-                    mode = {'RIGHT', 'LEFT'}):
+                    mode = {'LEFT', 'RIGHT'}):
         """ > Node <&Node Set Handle Type>
 
         Arguments
@@ -4319,7 +4319,7 @@ class ND:
         - Mesh [curve_ (Curve), grease_pencil_ (GreasePencil), point_cloud_ (Cloud), volume_ (Volume), instances_ (Instances)]
         """
         node = Node('Separate Components', {'Geometry': geometry})
-        return node._out
+        return node
 
     @classmethod
     def separate_geometry(cls,
@@ -4340,7 +4340,7 @@ class ND:
         """
         utils.check_enum_arg('Separate Geometry', 'domain', domain, 'separate_geometry', ('POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE', 'LAYER'))
         node = Node('Separate Geometry', {'Geometry': geometry, 'Selection': selection}, domain=domain)
-        return node._out
+        return node
 
     @classmethod
     def set_handle_positions(cls,
@@ -5613,7 +5613,7 @@ class ND:
         - None
         """
         node = Node('Separate Bundle', {'Bundle': bundle, **named_sockets}, define_signature=define_signature, **sockets)
-        return node._out
+        return node
 
     @classmethod
     def blackbody(cls, temperature: Float = None):
@@ -5867,7 +5867,7 @@ class ND:
         - Float [y_ (Float), z_ (Float)]
         """
         node = Node('Separate XYZ', {'Vector': vector})
-        return node._out
+        return node
 
     @classmethod
     def brick_texture(cls,

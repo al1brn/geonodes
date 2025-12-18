@@ -358,27 +358,13 @@ class Node:
             self._interface_in_out  = {'INPUT': 'OUTPUT', 'OUTPUT': None}
             self._has_dyn_in = True
 
-        elif bl_idname == 'ShaderNodeGroup':
-
-            node_tree = parameters.get('node_tree')
-            if node_tree is None:
-                raise NodeError(f"The node 'Group' must be initialized with a valid 'node_tree' argument.")
-            
-            self._bnode.node_tree = node_tree
-
-            self._use_interface = True
-
-            self._interface = TreeInterface(self._bnode.node_tree.interface)
-            self._interface_in_out  = {'INPUT': 'INPUT', 'OUTPUT': 'OUTPUT'}
-            self._has_dyn_in = True
-            self._has_dyn_out = True
-
         # ----------------------------------------------------------------------------------------------------
         # Group Node
         # Read only interface
         # ----------------------------------------------------------------------------------------------------
 
-        elif bl_idname == 'GeometryNodeGroup':
+
+        elif bl_idname in ['GeometryNodeGroup', 'ShaderNodeGroup']:
 
             self._use_interface = True
 
@@ -443,7 +429,7 @@ class Node:
         self._tree.register_node(self)
     
     # ====================================================================================================
-    # Dump
+    # Utilities
     # ====================================================================================================
 
     def __str__(self):
@@ -463,6 +449,26 @@ class Node:
         s += "\n"
 
         return s
+    
+    def _lc(self, label=None, color=None):
+        """ Set node label and color.
+
+        This method returns self to be chained:
+
+        Arguments
+        ---------
+        - label (str = None) : node label
+        - color (color = None) : node color
+
+        Returns
+        -------
+        - self
+        """
+        if label not in ["", None]:
+            self._label = label
+        if color is not None:
+            self._color = color
+        return self    
 
     # ====================================================================================================
     # Set the node parameters
@@ -509,7 +515,11 @@ class Node:
                         valid_values = s[i + len(mark):],
                     )
                 else:
-                    raise type_e
+                    raise NodeError(f"Node parameter error: '{param_value}' is not a valid value for {param_name}.",
+                        node = self._bnode.name,
+                        parameter = param_name,
+                        message = str(type_e)
+                    )
                 
     # ====================================================================================================
     # Accessing the sockets by their name, index or identifier
@@ -1005,8 +1015,15 @@ class Node:
                 items = self._items[in_out]
 
             full_name = (ItemPath(panel) + name).long_name
-            if self._bnode.bl_idname in ['GeometryNodeMenuSwitch']:
+            # No argument
+            if self._bnode.bl_idname in ['GeometryNodeIndexSwitch']:
+                items.new()
+
+            # One argument
+            elif self._bnode.bl_idname in ['GeometryNodeMenuSwitch']:
                 items.new(full_name)
+
+            # Two arguments
             else:
                 try:
                     items.new(socket_type.items_type, full_name)
@@ -1148,10 +1165,6 @@ class Node:
 
         if name is None:
 
-            #bsocket = utils.get_bsocket(value)
-            #if bsocket is None:
-            #    raise NodeError(f"Error when setting an input socket to node {self}: the value must be a socket when name is none ! {value} is not a Socket.")
-            
             # ----- First free input socket
 
             for _, socket in self.get_sockets('INPUT', free_only=True, panel=panel):
@@ -1281,7 +1294,7 @@ class Node:
             try:
                 socket.default_value = str(value)
             except Exception as e:
-                raise TypeError(f"Impossible to set menu [{socket.node.name}]{socket.name} with value <{value}>. {str(e)}")
+                raise NodeError(f"Impossible to set menu [{socket.node.name}]{socket.name} with value <{value}>. {str(e)}")
 
             if self._use_interface:
                 isock = self._interface.by_identifier(socket.identifier)
@@ -1297,8 +1310,7 @@ class Node:
     # ====================================================================================================
 
     def __getitem__(self, name):
-        return self.get_socket('OUTPUT', name)
-        #return self.get_output_socket(name)
+        return self.get_socket('OUTPUT', name, None)
     
     def __setitem__(self, name, value):
         self.set_input_socket(name, value)

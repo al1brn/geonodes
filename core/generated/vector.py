@@ -1,4 +1,4 @@
-# Generated 2025-12-13 19:56:11
+# Generated 2025-12-15 16:57:50
 
 from __future__ import annotations
 from .. socket_class import Socket
@@ -387,10 +387,10 @@ class Vector(Socket):
 
         Returns
         -------
-        - Float [y_ (Float), z_ (Float)]
+        - node [x (Float), y (Float), z (Float)]
         """
         node = self._cache('Separate XYZ', {'Vector': self})
-        return node._out
+        return node
 
     @property
     def x(self):

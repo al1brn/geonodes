@@ -1,4 +1,4 @@
-# Generated 2025-12-13 19:56:11
+# Generated 2025-12-15 16:57:50
 
 from __future__ import annotations
 from .. socket_class import Socket
@@ -247,10 +247,10 @@ class Color(Socket):
 
         Returns
         -------
-        - Float [green_ (Float), blue_ (Float), alpha_ (Float)]
+        - node [red (Float), green (Float), blue (Float), alpha (Float)]
         """
         node = self._cache('Separate Color', {'Color': self}, mode='RGB')
-        return node._out
+        return node
 
     def separate_HSV(self):
         """ > Node <&Node Separate Color>
@@ -262,10 +262,10 @@ class Color(Socket):
 
         Returns
         -------
-        - Float [saturation_ (Float), value_ (Float), alpha_ (Float)]
+        - node [hue (Float), saturation (Float), value (Float), alpha (Float)]
         """
         node = self._cache('Separate Color', {'Color': self}, mode='HSV')
-        return node._out
+        return node
 
     def separate_HSL(self):
         """ > Node <&Node Separate Color>
@@ -277,10 +277,10 @@ class Color(Socket):
 
         Returns
         -------
-        - Float [saturation_ (Float), lightness_ (Float), alpha_ (Float)]
+        - node [hue (Float), saturation (Float), lightness (Float), alpha (Float)]
         """
         node = self._cache('Separate Color', {'Color': self}, mode='HSL')
-        return node._out
+        return node
 
     def separate(self, mode: Literal['RGB', 'HSV', 'HSL'] = 'RGB'):
         """ > Node <&Node Separate Color>
@@ -295,11 +295,11 @@ class Color(Socket):
 
         Returns
         -------
-        - Float [green_ (Float), blue_ (Float), alpha_ (Float)]
+        - node [red (Float), green (Float), blue (Float), alpha (Float)]
         """
         utils.check_enum_arg('Separate Color', 'mode', mode, 'separate', ('RGB', 'HSV', 'HSL'))
         node = self._cache('Separate Color', {'Color': self}, mode=mode)
-        return node._out
+        return node
 
     @property
     def rgb(self):
@@ -343,10 +343,10 @@ class Color(Socket):
 
         Returns
         -------
-        - Float [green_ (Float), blue_ (Float), alpha_ (Float)]
+        - node [red (Float), green (Float), blue (Float), alpha (Float)]
         """
         node = self._cache('Separate Color', {'Color': self}, mode='RGB')
-        return node._out
+        return node
 
     @property
     def hue(self):
@@ -1478,10 +1478,10 @@ class Color(Socket):
 
         Returns
         -------
-        - Float [green_ (Float), blue_ (Float)]
+        - node [red (Float), green (Float), blue (Float)]
         """
         node = Node('Separate Color', {'Color': self}, mode='RGB')
-        return node._out
+        return node
 
     def separate_col_HSV(self):
         """ > Node <&ShaderNode Separate Color>
@@ -1493,10 +1493,10 @@ class Color(Socket):
 
         Returns
         -------
-        - Float [saturation_ (Float), value_ (Float)]
+        - node [hue (Float), saturation (Float), value (Float)]
         """
         node = Node('Separate Color', {'Color': self}, mode='HSV')
-        return node._out
+        return node
 
     def separate_col_HSL(self):
         """ > Node <&ShaderNode Separate Color>
@@ -1508,10 +1508,10 @@ class Color(Socket):
 
         Returns
         -------
-        - Float [saturation_ (Float), lightness_ (Float)]
+        - node [hue (Float), saturation (Float), lightness (Float)]
         """
         node = Node('Separate Color', {'Color': self}, mode='HSL')
-        return node._out
+        return node
 
     def separate_col(self, mode: Literal['RGB', 'HSV', 'HSL'] = 'RGB'):
         """ > Node <&ShaderNode Separate Color>
@@ -1526,11 +1526,11 @@ class Color(Socket):
 
         Returns
         -------
-        - Float [green_ (Float), blue_ (Float)]
+        - node [red (Float), green (Float), blue (Float)]
         """
         utils.check_enum_arg('Separate Color', 'mode', mode, 'separate_col', ('RGB', 'HSV', 'HSL'))
         node = Node('Separate Color', {'Color': self}, mode=mode)
-        return node._out
+        return node
 
     @classmethod
     def SkyTexture(cls,

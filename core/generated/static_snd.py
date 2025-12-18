@@ -1,4 +1,4 @@
-# Generated 2025-12-13 19:56:11
+# Generated 2025-12-15 16:57:50
 
 from __future__ import annotations
 from .. socket_class import Socket
@@ -227,7 +227,7 @@ class SND:
         - None
         """
         node = Node('Separate Bundle', {'Bundle': bundle, **named_sockets}, define_signature=define_signature, **sockets)
-        return node._out
+        return node
 
     @classmethod
     def add_shader(cls, shader: Shader = None, shader_1: Shader = None):
@@ -1599,7 +1599,7 @@ class SND:
         """
         utils.check_enum_arg('Separate Color', 'mode', mode, 'separate_color', ('RGB', 'HSV', 'HSL'))
         node = Node('Separate Color', {'Color': color}, mode=mode)
-        return node._out
+        return node
 
     @classmethod
     def separate_xyz(cls, vector: Vector = None):
@@ -1614,7 +1614,7 @@ class SND:
         - Float [y_ (Float), z_ (Float)]
         """
         node = Node('Separate XYZ', {'Vector': vector})
-        return node._out
+        return node
 
     @classmethod
     def shader_to_rgb(cls, shader: Shader = None):

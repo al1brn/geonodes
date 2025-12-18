@@ -38,6 +38,7 @@ import bpy
 
 from . import constants
 from . import utils
+from .scripterror import NodeError
 from .sockettype import SocketType
 from .treeclass import Tree
 from .treeinterface import ItemPath, TreeInterface
@@ -183,8 +184,8 @@ class ZoneNode(Node):
             inode._items['OUTPUT'] = self._bnode.input_items
 
             # The generated Geometry is not necesssarily of the same type
+            self._bnode.generation_items.clear()
             if False:
-                self._bnode.generation_items.clear()
                 self._bnode.generation_items.new(SocketType('Geometry').type, class_name)
 
             inode.set_input_socket('Geometry', socket)
@@ -482,6 +483,9 @@ class ZoneIterator:
         """
         if self._name == FOR_EACH:
             n = len(self._output_node._bnode.main_items)
+            check = self._output_node._bnode.outputs[n + 2]
+            if check.type == 'CUSTOM':
+                raise NodeError(f"The 'for each' zone doesn't have generated geometry. Make sure to create it in the loop.")
             return utils.to_socket(self._output_node._bnode.outputs[n + 2])
             #return self._output_node.socket_by_identifier('OUTPUT', "Generation_0")
         else:

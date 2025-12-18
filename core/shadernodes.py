@@ -78,11 +78,13 @@ from .scripterror import NodeError
 from .treeinterface import TreeInterface
 
 class ShaderNodes(Tree):
-    def __init__(self, tree_name: str, clear: bool = True, fake_user: bool = False, is_group: bool = False, prefix: Optional[str] = None):
+    def __init__(self, 
+            tree_name : str, 
+            clear     : bool = True, 
+            fake_user : bool = False, 
+            is_group  : bool = False, 
+            prefix    : Optional[str] = None):
         """ > ShaderNodes
-        """
-
-        s = """ > Shader Nodes
 
         Arguments
         ---------
@@ -92,7 +94,6 @@ class ShaderNodes(Tree):
         - is_group (bool = False) : tree is a group
         - prefix (str = None) : name prefix
         """
-
         super().__init__(tree_name, tree_type='ShaderNodeTree', clear=clear, fake_user=fake_user, is_group=is_group, prefix=prefix)
 
     # =============================================================================================================================
@@ -115,9 +116,10 @@ class ShaderNodes(Tree):
         for node in self._nodes:
             if node._bnode.bl_idname ==  'ShaderNodeOutputMaterial':
                 return node
+            
         return Node('ShaderNodeOutputMaterial')
 
-    def get_output_node(self, target: str ='ALL') -> Node:
+    def get_output_node_OLD(self, target: str ='ALL') -> Node:
         # target in ('ALL', 'EEVEE', 'CYCLES')
 
         for node in self._nodes:

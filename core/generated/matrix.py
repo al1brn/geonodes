@@ -1,4 +1,4 @@
-# Generated 2025-12-13 19:56:11
+# Generated 2025-12-15 16:57:50
 
 from __future__ import annotations
 from .. socket_class import Socket
@@ -179,7 +179,7 @@ class Matrix(Socket):
         return node._out
 
     @property
-    def separate(self):
+    def as_tuple(self):
         """ > Node <&Node Separate Matrix>
 
         Information
@@ -193,6 +193,20 @@ class Matrix(Socket):
         node = self._cache('Separate Matrix', {'Matrix': self})
         return (node.column_1_row_1, node.column_1_row_2, node.column_1_row_3, node.column_1_row_4, node.column_2_row_1, node.column_2_row_2, node.column_2_row_3, node.column_2_row_4, node.column_3_row_1, node.column_3_row_2, node.column_3_row_3, node.column_3_row_4, node.column_4_row_1, node.column_4_row_2, node.column_4_row_3, node.column_4_row_4)
 
+    def separate(self):
+        """ > Node <&Node Separate Matrix>
+
+        Information
+        -----------
+        - Socket 'Matrix' : self
+
+        Returns
+        -------
+        - node [column_1_row_1 (Float), column_1_row_2 (Float), column_1_row_3 (Float), column_1_row_4 (Float), column_2_row_1 (Float), column_2_row_2 (Float), column_2_row_3 (Float), column_2_row_4 (Float), column_3_row_1 (Float), column_3_row_2 (Float), column_3_row_3 (Float), column_3_row_4 (Float), column_4_row_1 (Float), column_4_row_2 (Float), column_4_row_3 (Float), column_4_row_4 (Float)]
+        """
+        node = Node('Separate Matrix', {'Matrix': self})
+        return node
+
     def separate_matrix(self):
         """ > Node <&Node Separate Matrix>
 
@@ -202,10 +216,10 @@ class Matrix(Socket):
 
         Returns
         -------
-        - Float [column_1_row_2_ (Float), column_1_row_3_ (Float), column_1_row_4_ (Float), column_2_row_1_ (Float), column_2_row_2_ (Float), column_2_row_3_ (Float), column_2_row_4_ (Float), column_3_row_1_ (Float), column_3_row_2_ (Float), column_3_row_3_ (Float), column_3_row_4_ (Float), column_4_row_1_ (Float), column_4_row_2_ (Float), column_4_row_3_ (Float), column_4_row_4_ (Float)]
+        - node [column_1_row_1 (Float), column_1_row_2 (Float), column_1_row_3 (Float), column_1_row_4 (Float), column_2_row_1 (Float), column_2_row_2 (Float), column_2_row_3 (Float), column_2_row_4 (Float), column_3_row_1 (Float), column_3_row_2 (Float), column_3_row_3 (Float), column_3_row_4 (Float), column_4_row_1 (Float), column_4_row_2 (Float), column_4_row_3 (Float), column_4_row_4 (Float)]
         """
         node = self._cache('Separate Matrix', {'Matrix': self})
-        return node._out
+        return node
 
     @property
     def column_1_row_1(self):
@@ -471,10 +485,10 @@ class Matrix(Socket):
 
         Returns
         -------
-        - Vector [rotation_ (Rotation), scale_ (Vector)]
+        - node [translation (Vector), rotation (Rotation), scale (Vector)]
         """
         node = self._cache('Separate Transform', {'Transform': self})
-        return node._out
+        return node
 
     @property
     def translation(self):

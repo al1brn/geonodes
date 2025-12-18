@@ -482,15 +482,30 @@ class Tree:
         """
 
         # Adjust menu inputs
-        if not error:
+        if self._has_tree and not error:
             for node in self._nodes:
                 if '_default_menu' in node.__slots__:
                     node._tree_is_completed(self._mod_vals)
 
+            innode = self.input_node
+            for bsock in innode._bnode.outputs:
+                if bsock.type != 'MENU' or not bsock.is_linked:
+                    continue
+                isock = self._interface.by_identifier(bsock.identifier)
+                enums = list(utils.get_enums(isock, 'default_value'))
+                if not len(enums):
+                    continue
+
+                for mod in self.get_modifiers().values():
+                    cur_val = mod.get(bsock.identifier)
+                    if cur_val is not None and (cur_val < 2 or cur_val > len(enums) + 2):
+                        mod[bsock.identifier] = enums.index(isock.default_value) + 2
+
+
         # Check dead ends
-        dead_ends = 0
+        warnings = 0
         if not error:
-            dead_ends = self.check_dead_ends()
+            warnings = self.check_warnings()
 
         # Remove from stack
         tree = Tree.TREE_STACK.pop()
@@ -513,7 +528,7 @@ class Tree:
         self.arrange()
 
         # Stats
-        print(f"Tree '{self._btree.name}' built: {self._str_stats}, warnings: {dead_ends}")
+        print(f"Tree '{self._btree.name}' built: {self._str_stats}, warnings: {warnings}")
 
         Tree._total_nodes += len(self._btree.nodes)
         Tree._total_links += len(self._btree.links)        
@@ -1023,6 +1038,13 @@ class Tree:
     # Tree Input / Output
     # ====================================================================================================
 
+    @property
+    def _has_tree(self):
+        if self.is_geonodes():
+            return True
+        elif self.is_shader():
+            return self._is_group 
+
     # ----------------------------------------------------------------------------------------------------
     # Default input node
     # ----------------------------------------------------------------------------------------------------
@@ -1088,20 +1110,28 @@ class Tree:
     # ====================================================================================================
 
     def get_modifiers(self):
-        return blender.get_geondes_modifiers(self._btree)
+        return blender.get_geonodes_modifiers(self._btree)
     
     # ====================================================================================================
-    # Check dead ends
+    # Check warnings
     # ====================================================================================================
 
-    def check_dead_ends(self):
+    def check_warnings(self):
+
+        from .nodezone import ZoneNode
 
         tab = "\n   | " 
         
         count = 0
+
+        dead_ends = []
+        unlinkeds = []
+
         for node in self._nodes:
-            if node._bnode.bl_idname in ['NodeGroupInput', 'NodeGroupOutput', 'ShaderNodeOutputMaterial']:
-                continue
+
+            # ---------------------------------------------------------------------------
+            # Dead ends
+            # ---------------------------------------------------------------------------
 
             is_linked = False
             n = 0
@@ -1110,16 +1140,36 @@ class Tree:
                     is_linked = True
                     break
                 n += 1
-            if is_linked or n == 0:
-                continue
 
-            if count == 0:
-                print()
-                print("-"*100)
-                print("The following nodes are not connected")
-                
-            count += 1
-            node._bnode.label = f"DEAD END {count}"
+            if not is_linked and n > 0:
+                dead_ends.append((node))
+
+            # ---------------------------------------------------------------------------
+            # Unlinked zone output nodes
+            # ---------------------------------------------------------------------------
+
+            if isinstance(node, ZoneNode):
+                unlinked = []
+                for bsock in node._bnode.inputs:
+                    if bsock.type == 'CUSTOM':
+                        continue
+                    if not bsock.is_linked:
+                        unlinked.append(bsock.name)
+
+                if len(unlinked):
+                    unlinkeds.append((node, unlinked))
+
+        # ---------------------------------------------------------------------------
+        # Display
+        # ---------------------------------------------------------------------------
+
+        if len(dead_ends):
+            print()
+            print("-"*100)
+            print(f"The following node{' is' if len(dead_ends) == 1 else 's are'} not connected")
+
+        for i, node in enumerate(dead_ends):
+            node._bnode.label = f"DEAD END {i + 1}"
             utils.set_node_warning(node._bnode)
 
             print()
@@ -1127,7 +1177,39 @@ class Tree:
             if node._stack is not None:
                 print(tab + tab.join(node._stack[1:]))
 
-        return count
+        if len(unlinkeds):
+            print()
+            print("-"*100)
+            print(f"The output node of the following zone{' is' if len(unlinkeds) == 1 else 's are'} missing input links.")
+            print("The variables uses in the loop are not updated.")
+            print()
+            print("="*50)
+            print("# Example with no warning:")
+            print("geo = Geometry()")
+            print("for rep in geo.repeat(10, value=1.):")
+            print("    a = rep.value + 1")
+            print("    rep.value = a    # Update value" )
+            print("    geo.out()        # Update geometry")            
+            print("geo.out() # Simulated geometry to Group output")
+            print()
+            print("# Raises warnings for 'value' and 'geometry' sockets")
+            print("for rep in geo.repeat(10, value=1.):")
+            print("    pass")
+            print("="*50)
+
+            for i, (node, names) in enumerate(unlinkeds):
+                node._bnode.label = f"UPDATE MISSING {i + 1}"
+                utils.set_node_warning(node._bnode)
+
+                print()
+                print(node)
+                print("Unlinked sockets:", names)
+                if node._stack is not None:
+                    print(tab + tab.join(node._stack[1:]))
+
+        # Total number of warnings
+
+        return len(dead_ends) + len(unlinkeds)
     
     # ====================================================================================================
     # Dump content

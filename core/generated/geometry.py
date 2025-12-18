@@ -1,4 +1,4 @@
-# Generated 2025-12-13 19:56:11
+# Generated 2025-12-15 16:57:50
 
 from __future__ import annotations
 from .. socket_class import Socket
@@ -409,10 +409,10 @@ class Geometry(Socket):
 
         Returns
         -------
-        - Mesh [curve_ (Curve), grease_pencil_ (GreasePencil), point_cloud_ (Cloud), volume_ (Volume), instances_ (Instances)]
+        - node [mesh (Mesh), curve (Curve), grease_pencil (GreasePencil), point_cloud (Cloud), volume (Volume), instances (Instances)]
         """
         node = self._cache('Separate Components', {'Geometry': self})
-        return node._out
+        return node
 
     @property
     def mesh(self):

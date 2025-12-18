@@ -1,4 +1,4 @@
-# Generated 2025-12-13 19:56:11
+# Generated 2025-12-15 16:57:50
 
 from __future__ import annotations
 from .. socket_class import Socket
@@ -487,11 +487,11 @@ class Spline:
 
         Returns
         -------
-        - Geometry [inverted_ (Geometry)]
+        - node [selection (Geometry), inverted (Geometry)]
         """
         node = Node('Separate Geometry', {'Geometry': self, 'Selection': self.get_selection()}, domain='CURVE')
         self._jump(node._out)
-        return self._domain_to_geometry
+        return node
 
     def sort(self, group_id: Integer = None, sort_weight: Float = None):
         """ > Node <&Node Sort Elements>

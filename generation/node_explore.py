@@ -61,15 +61,6 @@ _1, _2, _3, _4 = " "*4, " "*8, " "*12, " "*16
 
 
 # ====================================================================================================
-# Node is never returned
-# ====================================================================================================
-
-def check_node_ret(ret):
-    return 'OUT' if ret == 'NODE' else ret
-
-
-
-# ====================================================================================================
 # Node Param
 
 # No static property in static classes
@@ -360,6 +351,19 @@ class NodeInfo:
                     s += f" in {self.enum_params[k]}"
 
         return s + "\n"
+    
+    # ====================================================================================================
+    # Node is returned only when name starts with 'Separate'
+    # ====================================================================================================
+
+    def check_node_ret(self, ret):
+        if self.bnode.name.startswith('Separate'):
+            if ret in ['OUT', 'NODE', None]:
+                return 'NODE'
+            
+        return 'OUT' if ret == 'NODE' else ret
+
+
 
     @classmethod
     def geometry_class(cls, name):
@@ -1700,7 +1704,7 @@ class NodeInfo:
         - name : function name
         """
         
-        ret = check_node_ret(ret)
+        ret = self.check_node_ret(ret)
 
         node_name = self.bnode.name
         bl_idname = self.bnode.bl_idname
@@ -2031,7 +2035,7 @@ class NodeInfo:
         - parameters : node parameters
         """
 
-        ret = check_node_ret(ret)
+        ret = self.check_node_ret(ret)
 
 
         DEBUG = False and self.bnode.name in ['Accumulate Field']
@@ -2453,7 +2457,7 @@ class NodeInfo:
         - parameters : node parameters
         """
 
-        ret = check_node_ret(ret)
+        ret = self.check_node_ret(ret)
 
         # ----------------------------------------------------------------------------------------------------
         # Set user parameters

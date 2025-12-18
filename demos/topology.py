@@ -373,7 +373,7 @@ def demo():
                     selection            = Boolean("Select E"),
                 ).link_inputs()._out
 
-            vrt_vis += Group("Mesh Selection", mesh=vert_mesh).link_inputs().geometry
+            vrt_vis += Group("Mesh Selection", mesh=vert_mesh).link_inputs().mesh
 
             vrt_vis.out("Vertices")
 
@@ -431,7 +431,7 @@ def demo():
                     selection            = Boolean("Select F"),
                 ).link_inputs()._out
 
-            edge_vis += Group("Mesh Selection", mesh=edge_mesh).link_inputs().geometry
+            edge_vis += Group("Mesh Selection", mesh=edge_mesh).link_inputs().mesh
 
             edge_vis.out("Edges")
 
@@ -489,7 +489,7 @@ def demo():
                     selection            = Boolean("Select E"),
                 ).link_inputs()._out
 
-            face_vis += Group("Mesh Selection", mesh=face_mesh).link_inputs().geometry
+            face_vis += Group("Mesh Selection", mesh=face_mesh).link_inputs().mesh
 
             face_vis.out("Faces")
 
@@ -537,7 +537,7 @@ def demo():
                 selection            = Boolean("Select E"),
             ).link_inputs()._out
 
-            crn_vis += Group("Mesh Selection", mesh=crn_mesh).link_inputs().geometry
+            crn_vis += Group("Mesh Selection", mesh=crn_mesh).link_inputs().mesh
 
             crn_vis.out("Corners")
 

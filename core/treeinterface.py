@@ -111,6 +111,10 @@ class ItemPath:
 
             # Make sure path is normalized
             self._path = ItemPath.stack_to_path(ItemPath.path_to_stack(value))
+
+            # If terminated by _0, it is part of the name
+            if len(value) > 2 and value[-2:] == '_0':
+                self._path += '_0'
             
         # ---------------------------------------------------------------------------
         # ItemPath

@@ -188,7 +188,7 @@ class Domain(Geom, NodeCache):
     # Sample index
     # ====================================================================================================
 
-    def __call__(self, value, index=None):
+    def __call__(self, index, value):
 
         from geonodes import nd
 

@@ -184,16 +184,22 @@ class Socket(NodeCache):
             return
         
         # ---------------------------------------------------------------------------
-        # Named attribute
-        # But Color because string can be the initial value of a color
+        # Socket is a string
         # ---------------------------------------------------------------------------
 
         socktype = self._socket_type
         cname = socktype.class_name
 
-        if isinstance(socket, str) and (cname in constants.ATTRIBUTE_CLASSES) and (cname != 'Color'):
-            self._bsocket = self.Named(socket)._bsocket
-            return
+        if isinstance(socket, str):
+
+            # Named attribute (but colors because the string can be the name of a color)
+            if (cname in constants.ATTRIBUTE_CLASSES) and (cname != 'Color'):
+                self._bsocket = self.Named(socket)._bsocket
+                return
+            
+            # Name of a resource
+            elif False and cname in ['Object', 'Collection', 'Image', 'Material']:
+                socket = socktype.get_default_from_value(socket)
         
         # ---------------------------------------------------------------------------
         # Let's get the socket
@@ -214,7 +220,6 @@ class Socket(NodeCache):
                 if new_socket is None:
                     new_socket = self.NewInput(type(self).__name__)
                 self._bsocket = new_socket._bsocket
-                
             else:
                 self._bsocket = self.Constant(socket)._bsocket
 
@@ -532,7 +537,7 @@ class Socket(NodeCache):
             return Node('Menu Switch')._out
         
         elif cls.SOCKET_TYPE == 'OBJECT':
-            return Node('Integer', object=def_val)._out
+            return Node('Object', object=def_val)._out
         
         elif cls.SOCKET_TYPE == 'ROTATION':
 
@@ -847,12 +852,19 @@ class Socket(NodeCache):
     # Link node from
     # =============================================================================================================================
 
-    def link_inputs(self, **kwargs):
+    def link_inputs(self,
+        from_node   : Node = None,
+        from_panel  : str = "",
+        *,
+        include     : list =  None,
+        exclude     : list  = [],
+        panel       : str = "",
+        ):
         """ Link input sockets of the node
 
         Allow to chain input sockets linking.
         """
-        self.node.link_inputs(**kwargs)
+        self.node.link_inputs(from_node, from_panel=from_panel, include=include, exclude=exclude, panel=panel)
         return self
 
     # =============================================================================================================================

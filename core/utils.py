@@ -1003,7 +1003,7 @@ def value_to_array(value, shape):
     if np.size(a) == np.prod(shape).astype(int):
         return np.reshape(a, shape)
     else:
-        raise Exception(f"The value {value} with shape {np.shape(a)} (size: {np.size(a)}) can't be reshaped into {shape} (size: {np.prod(shape).astype(int)})")
+        raise NodeError(f"The value {value} with shape {np.shape(a)} (size: {np.size(a)}) can't be reshaped into {shape} (size: {np.prod(shape).astype(int)})")
 
 def get_dim_vector(value, dims):
     if dims is None:

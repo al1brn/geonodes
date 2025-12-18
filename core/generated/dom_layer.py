@@ -1,4 +1,4 @@
-# Generated 2025-12-13 19:56:11
+# Generated 2025-12-15 16:57:50
 
 from __future__ import annotations
 from .. socket_class import Socket
@@ -442,11 +442,11 @@ class Layer:
 
         Returns
         -------
-        - Geometry [inverted_ (Geometry)]
+        - node [selection (Geometry), inverted (Geometry)]
         """
         node = Node('Separate Geometry', {'Geometry': self, 'Selection': self.get_selection()}, domain='LAYER')
         self._jump(node._out)
-        return self._domain_to_geometry
+        return node
 
     def split_to_instances(self, group_id: Integer = None):
         """ > Node <&Node Split to Instances>
