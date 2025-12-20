@@ -140,6 +140,7 @@ def demo(clear=False):
     Position4.build_nodes()
     Geometry4.build_nodes()
     Curve4.build_nodes()
+    Mesh4.build_nodes()
 
     return
 
@@ -363,7 +364,7 @@ def vis_mat4D(geo, *indices):
         #cloud = Group("4D G To Cloud", geometry=Geometry()).cloud
         cloud = to_cloud(Geometry())
         
-        M = get_projection() @ Matrix("M4D")
+        M = Matrix4.projection_matrix() @ Matrix("M4D")
         Vecs = [Vector4.FromMatrix(M, i) for i in (0,) + tuple(indices)]
         cloud.position = Vecs[0].v
         
@@ -1157,7 +1158,7 @@ class Matrix4:
                 ).out()
             
         # Add the method : set_vector
-        tree.add_method(Matrix4, self_attr='M', ret_class = Matrix4)
+        tree.add_method(Matrix4, self_attr='M', ret_class = Matrix)
             
         # ---------------------------------------------------------------------------
         # Create a Rotation Matrix from 6 angles
@@ -1217,7 +1218,7 @@ class Matrix4:
             rot_mat.out("Matrix")
 
         # Add the method : rotation_matrix
-        tree.add_method(Matrix4, ret_class = Matrix4)
+        tree.add_method(Matrix4, ret_class = Matrix)
                 
             
 # ====================================================================================================
@@ -1317,7 +1318,7 @@ class Position4(Matrix4):
         # Curve Local space
         # ---------------------------------------------------------------------------
 
-        with GeoNodes("Curve Local Space", is_group=True, prefix=mat4_) as tree:
+        with GeoNodes("Curve Local Matrix", is_group=True, prefix=mat4_) as tree:
 
             P = Position4.Input()
             tg_axis = Integer(0, "Tangent Axis", 0, 3)
@@ -1360,13 +1361,13 @@ class Position4(Matrix4):
 
             M.out("Matrix")
 
-        tree.add_method(Position4, self_attr='M', ret_class=Matrix4)
+        tree.add_method(Position4, self_attr='M', ret_class=Matrix)
 
         # ---------------------------------------------------------------------------
         # Mesh Local space
         # ---------------------------------------------------------------------------
 
-        with GeoNodes("Mesh Local Space", is_group=True, prefix=mat4_) as tree:
+        with GeoNodes("Mesh Local Matrix", is_group=True, prefix=mat4_) as tree:
 
             P = Position4.Input()
             perp_last = Boolean(True, "Normals Last", tip="Tangent plane in vectors 0, 1 and Normal plane in 2, 3.")
@@ -1378,7 +1379,7 @@ class Position4(Matrix4):
 
             M.out()
 
-        tree.add_method(Position4, self_attr='M', ret_class=Matrix4)
+        tree.add_method(Position4, self_attr='M', ret_class=Matrix)
 
 
 # ====================================================================================================
@@ -1478,7 +1479,7 @@ class Geometry4:
         # MODIFIER - Plunge a Mesh into 4D
         # ----------------------------------------------------------------------------------------------------
 
-        with GeoNodes("4D_ Plunge"):
+        with GeoNodes("4D_ Plunge") as tree:
             """ Plunge an object into 4D Space
 
             The group is part of the 3 fundamental modifiers:
@@ -1504,7 +1505,7 @@ class Geometry4:
             w = Float(0, "w")
             comps = geo.separate_components()
 
-            R = Matrix4.RotationMatrix().link_inputs(None, "Rotation")
+            R = Matrix4.rotation_matrix().link_inputs(None, "Rotation")
             
             with Layout("Mesh - Normal and W axis"):   
                 
@@ -1540,6 +1541,9 @@ class Geometry4:
                 
             Geometry.Join(mesh, curve, cloud).out()
 
+        tree.add_method(Curve, func_name='plunge', self_attr="self", ret_class=Curve4)
+        tree.add_method(Mesh,  func_name='plunge', self_attr="self", ret_class=Mesh4)
+
         # ----------------------------------------------------------------------------------------------------
         # MODIFIER - Projection
         # ----------------------------------------------------------------------------------------------------
@@ -1561,7 +1565,7 @@ class Geometry4:
                 show_normals = Boolean(False, "Show Normals")
             
             comps = geo.separate_components()
-            M = get_projection() @ Matrix("M4D")
+            M = Matrix4.projection_matrix() @ Matrix("M4D")
             
             Pos = Vector4.FromMatrix(M, index=0)
             
@@ -1593,6 +1597,74 @@ class Geometry4:
 
         tree.add_method(Geometry4, "projection", "", ret_class=Geometry)
 
+        # ----------------------------------------------------------------------------------------------------
+        # MODIFIER - Translation
+        # ----------------------------------------------------------------------------------------------------
+
+        with GeoNodes("Translate", prefix=mod_) as tree:
+
+            geo = Cloud(Geometry())
+            T = Vector4.Input()
+            
+            P = Position4(Matrix("M4D"))._translate(T)
+
+            geo.points.M4D = P.M
+            geo.position = P._get_vector(0).v
+
+            geo.out("Geometry")
+
+        tree.add_method(Curve4, self_attr = "self", ret_class=Curve4)
+        tree.add_method(Mesh4,  self_attr = "self", ret_class=Mesh4)
+
+        # ----------------------------------------------------------------------------------------------------
+        # MODIFIER - Scale
+        # ----------------------------------------------------------------------------------------------------
+
+        with GeoNodes("Scale", prefix=mod_) as tree:
+
+            geo = Cloud(Geometry())
+            scale = Float(1.0, "Scale")
+            pivot = Vector4.Input(name="Pivot")
+            
+            P = Position4(Matrix("M4D"))._scale(scale, pivot=pivot)
+
+            geo.points.M4D = P.M
+            geo.position = P._get_vector(0).v
+
+            geo.out("Geometry")
+
+        tree.add_method(Curve4, self_attr = "self", ret_class=Curve4)
+        tree.add_method(Mesh4,  self_attr = "self", ret_class=Mesh4)
+
+        # ----------------------------------------------------------------------------------------------------
+        # MODIFIER - Rotation
+        # ----------------------------------------------------------------------------------------------------
+
+        with GeoNodes("Rotate", prefix=mod_) as tree:
+
+            geo = Cloud(Geometry())
+            R = Matrix(None, "Rotation")
+            pivot = Vector4.Input(name="Pivot")
+            
+            P = Position4(Matrix("M4D"))._rotate(R, pivot=pivot)
+
+            geo.points.M4D = P.M
+            geo.position = P._get_vector(0).v
+
+            geo.out("Geometry")
+
+        tree.add_method(Curve4, self_attr = "self", ret_class=Curve4)
+        tree.add_method(Mesh4,  self_attr = "self", ret_class=Mesh4)
+
+            
+
+
+
+
+
+
+
+
 # ====================================================================================================
 # Curve 4D
 # ====================================================================================================
@@ -1604,8 +1676,6 @@ class Curve4(Curve, Geometry4):
     # ====================================================================================================
 
     def build_nodes():
-
-        Group.add_method("4D_ Plunge", Curve, func_name='plunge', self_attr="", ret_class=Curve4)
 
         # ----------------------------------------------------------------------------------------------------
         # CONSTRUCTOR - Line
@@ -1715,193 +1785,340 @@ class Curve4(Curve, Geometry4):
 
         tree.add_method(Curve4, ret_class=Curve4)
 
-    # ====================================================================================================
-    # Curve to Surface
-    # ====================================================================================================
+        # ----------------------------------------------------------------------------------------------------
+        # Curve to Surface
+        # ----------------------------------------------------------------------------------------------------
 
-    with GeoNodes("To Surface", prefix=curve_):
+        with GeoNodes("To Surface", prefix=curve_) as tree:
 
-        curve0 = Curve()
-        with Panel("Profile"):
-            use_object  = Boolean(False, "Object")
-            curve1      = Curve(None, "Curve")
-            obj         = Object(None, "Curve Object")
+            curve0 = Curve()
+            with Panel("Profile"):
+                use_object  = Boolean(False, "Object")
+                curve1      = Curve(None, "Curve")
+                obj         = Object(None, "Curve Object")
 
-        with Layout("Profile Curve"):
-            curve1 = Curve(curve1.switch(use_object, obj.info().geometry))
+            with Layout("Profile Curve"):
+                curve1 = Curve(curve1.switch(use_object, obj.info().geometry))
 
-        with Panel("Transformation"):
-            twist_clx = Closure(None, "Twist X", tip="Factor -> Angle")
-            twist_cly = Closure(None, "Twist Y", tip="Factor -> Angle")
+            with Panel("Transformation"):
+                twist_clx = Closure(None, "Twist X", tip="Factor -> Angle")
+                twist_cly = Closure(None, "Twist Y", tip="Factor -> Angle")
 
-            use_scale = Boolean(False, "Scale")
-            scale_cl  = Closure(None, "Scale",    tip="Factor -> Scale")
+                use_scale = Boolean(False, "Scale")
+                scale_cl  = Closure(None, "Scale",    tip="Factor -> Scale")
 
-        mat    = Material("4 Face", "Material")
-        smooth = Boolean(True, "Shade Smooth")
+            mat    = Material("4 Face", "Material")
+            smooth = Boolean(True, "Shade Smooth")
 
-        clouds  = []
-        closeds = []
-        ncurves = []
-        nclouds = []
+            clouds  = []
+            closeds = []
+            ncurves = []
+            nclouds = []
 
-        for curve, name in zip([curve0, curve1], ["x", "y"]):
-            with Layout(f"Transfer Curve {name} to cloud of points"):
+            for curve, name in zip([curve0, curve1], ["x", "y"]):
+                with Layout(f"Transfer Curve {name} to cloud of points"):
 
-                closed = curve.splines.sample_index(nd.is_spline_cyclic, index=0)
-                ncurve = curve.points.count
-                ncloud = ncurve.switch(closed, ncurve + 1)
+                    closed = curve.splines.sample_index(nd.is_spline_cyclic, index=0)
+                    ncurve = curve.points.count
+                    ncloud = ncurve.switch(closed, ncurve + 1)
 
-                cloud  = Cloud.Points(count=ncloud)
-                cloud.points.M4D = curve.points.sample_index(Matrix("M4D"), index=nd.index % ncurve)
+                    cloud  = Cloud.Points(count=ncloud)
+                    cloud.points.M4D = curve.points.sample_index(Matrix("M4D"), index=nd.index % ncurve)
 
-                clouds.append(cloud)
-                closeds.append(closed)
-                ncurves.append(ncurve)
-                nclouds.append(ncloud)
+                    clouds.append(cloud)
+                    closeds.append(closed)
+                    ncurves.append(ncurve)
+                    nclouds.append(ncloud)
 
-        shape = tuple(nclouds)
-        nx, ny = nclouds
-        idx = lambda i, j: ravel_indices(i, j, shape)
-        ix, iy = unravel_index(nd.index, shape)
+            shape = tuple(nclouds)
+            nx, ny = nclouds
+            idx = lambda i, j: ravel_indices(i, j, shape)
+            ix, iy = unravel_index(nd.index, shape)
 
-        ptx, pty = clouds
+            ptx, pty = clouds
+
+            # ---------------------------------------------------------------------------
+            # At each point of the back bone, we rotate the profile such as:
+            # Profile(I, J) -> Backbone(K, L)
+            # ---------------------------------------------------------------------------
+
+            with Layout("Backbone Matrix rotating I & J to Normals 2 & 3 of Curve X"):
+
+                Mx = ptx.points.sample_index(Matrix("M4D"), ix)
+                mx = Mx.as_tuple
+
+                N2 = Vector4.FromMatrix(mx, 2)
+                N3 = Vector4.FromMatrix(mx, 3)
+                N1 = Vector4.FromMatrix(mx, 1)
+                N0 = Vector4.Cross(N2, N3, N1)
+
+                rm = [0]*16
+                rm[:4]   = N2.as_tuple
+                rm[4:8]  = N3.as_tuple
+                rm[8:12] = N1.as_tuple
+                rm[12:]  = N0.as_tuple
+
+                R = Matrix(rm)
+
+            # ---------------------------------------------------------------------------
+            # A twist can be applied to the profile
+            # The twist can vary along the backbone
+            # ---------------------------------------------------------------------------
+
+            with Layout("Twist & scale"):
+
+                sig = ({'Factor': 'Float'}, {'Value': 'Float'})
+
+                fac = ix/(nx - 1)
+                twist_x = twist_clx.evaluate(signature=sig, factor=fac)
+                twist_y = twist_cly.evaluate(signature=sig, factor=fac)
+                scale   = scale_cl.evaluate(signature=sig,  factor=fac)
+                scale = scale.switch_false(use_scale, 1)
+
+                R_twist = Rotation((twist_x, twist_y, 0))
+
+                M_twist = Matrix.CombineTransform(rotation=R_twist, scale=scale)         
+
+                My = pty.points.sample_index(Matrix("M4D"), iy)
+                My = M_twist @ My
+
+            # ---------------------------------------------------------------------------
+            # We can rotate each instance of profile along the backbone
+            # ---------------------------------------------------------------------------
+
+            with Layout("Rotate profile using this matrix"):
+
+                My = R @ My
+
+            # ---------------------------------------------------------------------------
+            # Now we can build he grid
+            # ---------------------------------------------------------------------------
+
+            with Layout("Grid"):
+
+                grid = Mesh.Grid(vertices_x = nx, vertices_y = ny)
+                grid.corners.UV_Map = grid.uv_map
+
+                # The normals are the ones of My
+                grid.points.M4D = My
+
+                with Layout("Position 4D"):
+
+                    m = list(My.as_tuple)
+                    for i in range(4):
+                        m[i] += mx[i]
+
+                    grid.position = m[:3]
+
+                grid.points.M4D = Matrix(m)
+
+            # ---------------------------------------------------------------------------
+            # When closed, the points can be merged
+            # ---------------------------------------------------------------------------
+
+            with Layout("Merge to close"):
+                sel = Boolean.Switch(closeds[0], False, ix.equal(0) | ix.equal(nx - 1))
+                sel |= Boolean.Switch(closeds[1], False, iy.equal(0) | iy.equal(ny - 1))
+                grid.points.Merge = sel
+                #grid = Mesh(grid)[sel].merge_by_distance()
+
+            # ---------------------------------------------------------------------------
+            # Finalized
+            # ---------------------------------------------------------------------------
+
+            with Layout("Finalize"):
+                grid.faces.material = mat
+                grid.faces.shade_smooth = smooth
+
+            grid.out()
+
+        tree.add_method(Curve4, self_attr="", ret_class=Mesh4)
+
+# ====================================================================================================
+# Mesh 4D
+# ====================================================================================================
+
+class Mesh4(Mesh, Geometry4):
+
+    @staticmethod
+    def build_nodes():
 
         # ---------------------------------------------------------------------------
-        # At each point of the back bone, we rotate the profile such as:
-        # Profile(I, J) -> Backbone(K, L)
+        # Plane
         # ---------------------------------------------------------------------------
 
-        with Layout("Backbone Matrix rotating I & J to Normals 2 & 3 of Curve X"):
+        with GeoNodes("Plane", prefix=mesh_) as tree:
+            """ Create a 4-Plane
 
-            Mx = ptx.points.sample_index(Matrix("M4D"), ix)
-            mx = Mx.as_tuple
+            The plane is a XY plane or is defined by two vectors.
 
-            N2 = Vector4.FromMatrix(mx, 2)
-            N3 = Vector4.FromMatrix(mx, 3)
-            N1 = Vector4.FromMatrix(mx, 1)
-            N0 = Vector4.Cross(N2, N3, N1)
+            In addition, the plane can be rotated.
 
-            rm = [0]*16
-            rm[:4]   = N2.as_tuple
-            rm[4:8]  = N3.as_tuple
-            rm[8:12] = N1.as_tuple
-            rm[12:]  = N0.as_tuple
-
-            R = Matrix(rm)
-
-        # ---------------------------------------------------------------------------
-        # A twist can be applied to the profile
-        # The twist can vary along the backbone
-        # ---------------------------------------------------------------------------
-
-        with Layout("Twist & scale"):
-
-            sig = ({'Factor': 'Float'}, {'Value': 'Float'})
-
-            fac = ix/(nx - 1)
-            twist_x = twist_clx.evaluate(signature=sig, factor=fac)
-            twist_y = twist_cly.evaluate(signature=sig, factor=fac)
-            scale   = scale_cl.evaluate(signature=sig,  factor=fac)
-            scale = scale.switch_false(use_scale, 1)
-
-            R_twist = Rotation((twist_x, twist_y, 0))
-
-            M_twist = Matrix.CombineTransform(rotation=R_twist, scale=scale)         
-
-            My = pty.points.sample_index(Matrix("M4D"), iy)
-            My = M_twist @ My
-
-        # ---------------------------------------------------------------------------
-        # We can rotate each instance of profile along the backbone
-        # ---------------------------------------------------------------------------
-
-        with Layout("Rotate profile using this matrix"):
-
-            My = R @ My
-
-        # ---------------------------------------------------------------------------
-        # Now we can build he grid
-        # ---------------------------------------------------------------------------
-
-        with Layout("Grid"):
-
-            grid = Mesh.Grid(vertices_x = nx, vertices_y = ny)
-            grid.corners.UV_Map = grid.uv_map
-
-            # The normals are the ones of My
-            grid.points.M4D = My
-
-            with Layout("Position 4D"):
-
-                m = list(My.as_tuple)
-                for i in range(4):
-                    m[i] += mx[i]
-
-                grid.position = m[:3]
-
-            grid.points.M4D = Matrix(m)
-
-        # ---------------------------------------------------------------------------
-        # When closed, the points can be merged
-        # ---------------------------------------------------------------------------
-
-        with Layout("Merge to close"):
-            sel = Boolean.Switch(closeds[0], False, ix.equal(0) | ix.equal(nx - 1))
-            sel |= Boolean.Switch(closeds[1], False, iy.equal(0) | iy.equal(ny - 1))
-            grid.points.Merge = sel
-            #grid = Mesh(grid)[sel].merge_by_distance()
-
-        # ---------------------------------------------------------------------------
-        # Finalized
-        # ---------------------------------------------------------------------------
-
-        with Layout("Finalize"):
-            grid.faces.material = mat
-            grid.faces.shade_smooth = smooth
-
-        grid.out()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            The user can optionnally create a plane perpendiculare to the two vectors.
+            """
             
+            O = Vector4.Input(name="Origin")
+            
+            use_vectors = Boolean(True, "Use Vectors")
+            use_perp    = Boolean(False, "Perp. Plane")
+
+            V1 = Vector4.Input(shape="Single")
+            V2 = Vector4.Input(shape="Single")
+            
+            grid = Mesh.Grid().link_inputs(None, "Grid")
+            grid = grid.plunge()
+            
+            #grid = Group("4D_ Plunge", geometry=grid)._out
+
+            # Rotation
+            #R = group_.rotation_matrix().link_inputs(None, "Rotation")
+            R = Matrix4.rotation_matrix().link_inputs(None, "Rotation")
+            
+            # Defined only by Rotation
+            with Geometry.Switch(use_vectors) as geo:
+                r_grid = Mesh(grid)
+                r_grid.points.M4D = R @ Matrix("M4D")
+                r_grid.out("False")
+            
+            # Defined by vectors    
+            with geo:
+
+                # Matrix
+                # - 2 first vectors are normalized vectors of the plan
+                # - 2 last vectors are perpendicular
+
+                M = vec4_.perp_plane(**V1.as_args(), **V2.as_args(rank=1))
+                    
+                with Layout("Perpendicular Plane"):
+                    m = M.as_tuple
+                    m2 = [0]*16
+                    m2[:8] = m[8:]
+                    m2[8:] = m[:8]
+                    
+                    M = M.switch(use_perp, Matrix(m2))
+                    
+                v_grid = Mesh(grid)
+                v_grid.points.M4D = R @ (M @ Matrix("M4D"))
+                
+                v_grid.out("True")
+
+            #geo = mod_.translation(geo, **O.as_args())
+            geo = Mesh4(geo)
+            geo = geo.translate(**O.as_args())
+            
+            geo.out("Mesh")
+
+        tree.add_method(Mesh4, ret_class=Mesh4)
 
 
+        # ====================================================================================================
+        # Torus
+        # ====================================================================================================
 
-    
+        with GeoNodes("Torus", prefix=mesh_) as tree:
+
+            curve0 = curve_.circle().link_inputs(None, "Curve 0")
+            curve1 = curve_.circle().link_inputs(None, "Curve 1")
+
+            twist_x = Float.Angle(0, "Twist X")
+            twist_y = Float.Angle(0, "Twist Y")
+
+            use_scale = Boolean(False, "Scale", hide_in_modifier=True)
+            scale = Closure(None, "Scale", hide_in_modifier=True)
+
+            trim0 = Input("Curve 0 > Trim > Start")
+            trim1 = Input("Curve 0 > Trim > End")
+            with Closure(closure=Input("Twist X")) as twist_clx:
+                factor = Float(name="Factor")
+                factor.map_range(to_min=trim0*twist_x, to_max=trim1*twist_x).out("Value")
+
+            with Closure(closure=Input("Twist Y")) as twist_cly:
+                factor = Float(name="Factor")
+                factor.map_range(to_min=trim0*twist_y, to_max=trim1*twist_y).out("Value")
+
+            try:
+                mesh = curve_.to_surface(
+                    curve0, 
+                    curve_1 = curve1,
+                    twist_x = twist_clx,
+                    twist_y = twist_cly,
+                    scale   = use_scale,
+                    scale_1 = scale).link_inputs(None, exclude=["Profile", "Transformation"])
+                
+            except Exception as e:
+                raise curve_.error(curve_.to_surface, e)
+            
+            mesh.out()
+
+        tree.add_method(Mesh4, ret_class=Mesh4)
+
+        # ====================================================================================================
+        # Slices
+        # ====================================================================================================
+
+        with GeoNodes("Slices", prefix=mesh_) as tree:
+
+            mesh = Mesh().plunge(w=0.0)
+
+            with Panel("Backbone"):
+                use_object  = Boolean(False, "Object")
+                curve       = Curve(None, "Curve")
+                obj         = Object(None, "Curve Object")
+
+            with Layout("Backbone"):
+                curve = Curve4(curve.switch(use_object, obj.info().geometry))
+
+                # Mesh Z axis oriented along the backbone tangent
+                #Mloc = group_.curve_local_matrix(Matrix("M4D"), tangent_axis=2)
+                Mloc = Position4(Matrix("M4D")).curve_local_matrix(tangent_axis=2)
+
+            scale = Float(1., "Scale")
+
+            for feel in curve.points.for_each(M4D=Matrix("M4D"), local = Mloc, scale = scale):
+
+                slice = mesh.scale(feel.scale)
+                
+                slice.points.M4D = feel.local @ Matrix("M4D")
+
+                mbb = feel.M4D.as_tuple
+                msl = list(Matrix("M4D").as_tuple)
+
+                msl[0] += mbb[0]
+                msl[1] += mbb[1]
+                msl[2] += mbb[2]
+                msl[3] += mbb[3]
+
+                slice.points.M4D = Matrix(msl)
+                
+                slice.switch(feel.scale.equal(0)).out("Generated")
+
+            feel.generated.out()
+
+        tree.add_method(Mesh, ret_class=Mesh4)
+
+        # ====================================================================================================
+        # Hyper Sphere
+        # ====================================================================================================
+
+        with GeoNodes("Hyper Sphere", prefix=mesh_) as tree:
+
+            radius = Float(1, "Radius", 0)
+            slices = Integer(7, "Slices", 1)
+
+            sphere = Mesh.UVSphere(radius=radius).link_inputs(None, "Sphere")
+            sphere.corners.UV_Map = sphere.uv_map
+
+            line = curve_.line(xyz=0, w = -radius, xyz_1=0, w_1=radius, count=slices + 2)
+            w = 2*nd.index/(slices+1) - 1
+            scale = gnmath.sqrt(gnmath.max(0, 1 - w*w))
+
+            hsph = sphere.slices(curve=line, scale=scale)
+
+            hsph.out()
+
+        tree.add_method(Mesh4, ret_class=Mesh4)
 
 
-
-
-        
-
-
-
-
-    
-
-    
-
-
-
-
-
-    
 
 
     
@@ -2033,181 +2250,6 @@ def build_engine():
             Matrix(m).out()
 
         M.out("Matrix")
-
-
-
-# ====================================================================================================
-# Primitives shapes
-# ====================================================================================================
-
-def build_primitives():
-
-
-    # ====================================================================================================
-    # Mesh Plane
-    # ====================================================================================================
-
-    with GeoNodes("Plane", prefix=mesh_):
-        """ Create a 4-Plane
-
-        The plane is a XY plane or is defined by two vectors.
-
-        In addition, the plane can be rotated.
-
-        The user can optionnally create a plane perpendiculare to the two vectors.
-        """
-        
-        O = Vector4.Input(name="Origin")
-        
-        use_vectors = Boolean(True, "Use Vectors")
-        use_perp    = Boolean(False, "Perp. Plane")
-
-        V1 = Vector4.Input(shape="Single")
-        V2 = Vector4.Input(shape="Single")
-        
-        grid = Mesh.Grid().link_inputs(None, "Grid")
-        
-        grid = Group("4D_ Plunge", geometry=grid)._out
-
-        # Rotation
-        R = group_.rotation_matrix().link_inputs(None, "Rotation")
-        
-        # Defined only by Rotation
-        with Geometry.Switch(use_vectors) as geo:
-            r_grid = Mesh(grid)
-            r_grid.points.M4D = R @ Matrix("M4D")
-            r_grid.out("False")
-        
-        # Defined by vectors    
-        with geo:
-
-            # Matrix
-            # - 2 first vectors are normalized vectors of the plan
-            # - 2 last vectors are perpendicular
-
-            M = vec4_.perp_plane(**V1.as_args(), **V2.as_args(rank=1))
-                
-            with Layout("Perpendicular Plane"):
-                m = M.as_tuple
-                m2 = [0]*16
-                m2[:8] = m[8:]
-                m2[8:] = m[:8]
-                
-                M = M.switch(use_perp, Matrix(m2))
-                
-            v_grid = Mesh(grid)
-            v_grid.points.M4D = R @ (M @ Matrix("M4D"))
-            
-            v_grid.out("True")
-
-        geo = mod_.translation(geo, **O.as_args())
-        
-        geo.out("Mesh")
-
-
-    # ====================================================================================================
-    # Torus
-    # ====================================================================================================
-
-    with GeoNodes("Torus", prefix=mesh_):
-
-        curve0 = curve_.circle().link_inputs(None, "Curve 0")
-        curve1 = curve_.circle().link_inputs(None, "Curve 1")
-
-        twist_x = Float.Angle(0, "Twist X")
-        twist_y = Float.Angle(0, "Twist Y")
-
-        use_scale = Boolean(False, "Scale", hide_in_modifier=True)
-        scale = Closure(None, "Scale", hide_in_modifier=True)
-
-        trim0 = Input("Curve 0 > Trim > Start")
-        trim1 = Input("Curve 0 > Trim > End")
-        with Closure(closure=Input("Twist X")) as twist_clx:
-            factor = Float(name="Factor")
-            factor.map_range(to_min=trim0*twist_x, to_max=trim1*twist_x).out("Value")
-
-        with Closure(closure=Input("Twist Y")) as twist_cly:
-            factor = Float(name="Factor")
-            factor.map_range(to_min=trim0*twist_y, to_max=trim1*twist_y).out("Value")
-
-        try:
-            mesh = curve_.to_surface(
-                curve0, 
-                curve_1 = curve1,
-                twist_x = twist_clx,
-                twist_y = twist_cly,
-                scale   = use_scale,
-                scale_1 = scale).link_inputs(None, exclude=["Profile", "Transformation"])
-            
-        except Exception as e:
-            raise curve_.error(curve_.to_surface, e)
-        
-        mesh.out()
-
-    # ====================================================================================================
-    # Slices
-    # ====================================================================================================
-
-    with GeoNodes("Slices", prefix=mesh_):
-
-        mesh = plunge(Mesh(), 0.0)
-
-        with Panel("Backbone"):
-            use_object  = Boolean(False, "Object")
-            curve       = Curve(None, "Curve")
-            obj         = Object(None, "Curve Object")
-
-        with Layout("Backbone"):
-            curve = Curve(curve.switch(use_object, obj.info().geometry))
-
-            # Mesh Z axis oriented along the backbone tangent
-            Mloc = group_.curve_local_matrix(Matrix("M4D"), tangent_axis=2)
-
-        scale = Float(1., "Scale")
-
-        for feel in curve.points.for_each(M4D=Matrix("M4D"), local = Mloc, scale = scale):
-
-            try:
-                slice = Mesh(mod_.scale(mesh, scale=feel.scale))
-            except Exception as e:
-                raise mod_.error(mod_.scale, e)
-            
-            slice.points.M4D = feel.local @ Matrix("M4D")
-
-            mbb = feel.M4D.as_tuple
-            msl = list(Matrix("M4D").as_tuple)
-
-            msl[0] += mbb[0]
-            msl[1] += mbb[1]
-            msl[2] += mbb[2]
-            msl[3] += mbb[3]
-
-            slice.points.M4D = Matrix(msl)
-            
-            slice.switch(feel.scale.equal(0)).out("Generated")
-
-        feel.generated.out()
-
-    # ====================================================================================================
-    # Hyper Sphere
-    # ====================================================================================================
-
-    with GeoNodes("Hyper Sphere", prefix=mesh_):
-
-        radius = Float(1, "Radius", 0)
-        slices = Integer(7, "Slices", 1)
-        sphere = Mesh.UVSphere(radius=radius).link_inputs(None, "Sphere")
-        sphere.corners.UV_Map = sphere.uv_map
-
-        line = curve_.line(xyz=0, w = -radius, xyz_1=0, w_1=radius, count=slices + 2)
-        w = 2*nd.index/(slices+1) - 1
-        scale = gnmath.sqrt(gnmath.max(0, 1 - w*w))
-
-        hsph = mesh_.slices(sphere, curve=line, scale=scale)
-
-        hsph.out()
-
-
 
 
 

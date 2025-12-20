@@ -1828,11 +1828,11 @@ class Node:
                     f"Socket named '{name}' not found (or already set). "
                     f"Valid sockets are {valids}\nRemaining sockets are {[utils.snake_case(k[0]) for k in remain]}.")
 
-            dones.append(f"{socket.name} <- {name} = <{arg}>")
+            dones.append(f"{socket.name} <- {name} = <{value}>")
             try:            
                 self.set_input_socket_value(key[1], value)
             except Exception as e:
-                print(f"Error when setting socket '{socket.name}' with value <{arg}>.")
+                print(f"Error when setting socket '{socket.name}' with value <{value}>.")
                 print(f"Valid sockets are: {valids}")
                 sdones = "\n - " + "\n - ".join(dones)
                 print(f"Error on socket:{sdones}")
@@ -2053,7 +2053,7 @@ class Node:
         class Test(Mesh):
             pass
 
-        Group.group_as_method("Translation", Test, self_attr="", ret_class=Test, prefix="Advanced", func_name="move_away", scale=2)
+        Group.group_as_method("Translation", Test, self_attr="self", ret_class=Test, prefix="Advanced", func_name="move_away", scale=2)
         Group.group_as_method("Set Smooth", Test, self_attr=None, prefix="Advanced")
 
         with GeoNodes("Group Advanced Demo"):
@@ -2564,14 +2564,13 @@ class Group(Node):
             func_name = utils.snake_case(group_name)
 
         if func_name in dir(target_class):
-            raise NodeError(f"Impossible to add Node method '{func_name}'. This function already exists in class {target_class}.")
-
-        print(f"ADDING: {func_name=} {self_attr=}")
+            #raise NodeError(f"Impossible to add Node method '{func_name}'. This function already exists in class {target_class}.")
+            print(f"CAUTION: the method '{func_name}' (implementing group '{full_name}') already exists in class {target_class}.")
 
         if self_attr is None:            
             setattr(target_class, func_name, staticmethod(static))
 
-        elif self_attr == "":
+        elif self_attr in ["", "self"]:
             setattr(target_class, func_name, self_method)
 
         else:
