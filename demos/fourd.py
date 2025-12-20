@@ -334,23 +334,34 @@ def to_cloud(geo):
         node = Geometry().separate_components()
         cloud = node.point_cloud
         cloud += node.mesh.to_points()
-        cloud += node.curve.to_points(count=node.curve.points.count)
+        cc = node.curve.to_points(count=node.curve.points.count)
+        cc.points.M4D = node.curve.points.sample_index(Matrix("M4D"), index=nd.index)
+        #cloud += node.curve.to_points(count=node.curve.points.count)
+        cloud += cc
         return cloud
 
 # ----------------------------------------------------------------------------------------------------
 # Visualize Matrix vectors
 # ----------------------------------------------------------------------------------------------------
 
-def vis_mat4D(geo, *indices):
+def vis_normals(geo, *indices):
     
-    with Layout("Visualize Matrix vectors"):
+    with Layout("Show Normals"):
         
-        #cloud = Group("4D G To Cloud", geometry=Geometry()).cloud
         cloud = to_cloud(Geometry())
         
         M = Matrix4.projection_matrix() @ Matrix("M4D")
         Vecs = [Vector4.FromMatrix(M, i) for i in (0,) + tuple(indices)]
         cloud.position = Vecs[0].v
+
+
+        DEBUG = True
+        if DEBUG:
+            with Layout("DEBUG"):
+                M_ = Matrix4.projection_matrix() @ Matrix("M4D")
+                Pos_ = Vector4.FromMatrix(M_, index=0)
+                cloud.position = Pos_.v
+
         
         mesh = None
         for index, V in zip(indices, Vecs[1:]):
@@ -372,6 +383,30 @@ def vis_mat4D(geo, *indices):
                 
     return mesh
 
+# ----------------------------------------------------------------------------------------------------
+# Finalize modifiers
+# ----------------------------------------------------------------------------------------------------
+
+def finalize(geo, mesh=True, mat_name="4 Face"):
+    with Layout("Finalize"):
+        with Panel("Finalize"):
+            mat    = Material(mat_name, "Material")
+            smooth = Boolean(True, "Smooth")
+            proj   = Boolean(False, "Project")
+
+        geo.set_material(mat)
+        if mesh:
+            geo = Mesh(geo)
+            geo.faces.shade_smooth = smooth
+
+        geo = Mesh4(geo)
+        Geometry.Switch(proj, geo, Mesh4(geo).projection()).out("Geometry")
+
+
+# ----------------------------------------------------------------------------------------------------
+# Grid Ravel indices
+# ----------------------------------------------------------------------------------------------------
+
 def unravel_index(index, shape, grid=True):
 
     with Layout("Unravel Index", color='MACRO'):
@@ -389,6 +424,8 @@ def ravel_indices(i, j, shape, grid=True):
             return j + i*ny
         else:
             return i + j*nx
+        
+    
 
 # ====================================================================================================
 # 4-Vector
@@ -1231,23 +1268,26 @@ class Position4(Matrix4):
     # ====================================================================================================
 
     def _translate(self, T):
-        T = Vector4(T)
-        self._position = self._position + T
-        return self
+        with Layout("Translate", color='MACRO'):
+            T = Vector4(T)
+            self._position = self._position + T
+            return self
 
     def _rotate(self, R, pivot=None):
-        pivot = Vector4(pivot)
-        self._position = self._position - pivot
-        self._m = R @ self.M
-        self._position = pivot + self._position
-        return self
+        with Layout("Rotate", color='MACRO'):
+            pivot = Vector4(pivot)
+            self._position = self._position - pivot
+            self._m = R @ self.M
+            self._position = pivot + self._position
+            return self
     
     def _scale(self, scale, pivot=None):
-        pivot = Vector4(pivot)
-        pos = self._position - pivot
-        pos = pos.scale(scale)
-        self._position = pivot + pos
-        return self
+        with Layout("Scale", color='MACRO'):
+            pivot = Vector4(pivot)
+            pos = self._position - pivot
+            pos = pos.scale(scale)
+            self._position = pivot + pos
+            return self
     
     # ====================================================================================================
     # Build the nodes
@@ -1553,23 +1593,20 @@ class Geometry4:
             
             Pos = Vector4.FromMatrix(M, index=0)
             
-            with Layout("Mesh - Simple projection"):
+            with Layout("Mesh - Two normals"):
                 
                 mesh = comps.mesh
                 mesh.position = Pos.v
 
-                #mesh = mesh[Boolean("Merge")].merge_by_distance()
-                #mesh.remove_named_attribute(name="Merge")
-
-                vis = vis_mat4D(mesh, 1, 2)        
+                vis = vis_normals(mesh, 1, 2)        
                 mesh += vis.switch_false(show_normals)
                 
-            with Layout("Curve - Projection, tangent and normal"):   
+            with Layout("Curve - Three normals"):   
                 
                 curve = comps.curve
                 curve.position = Pos.v
 
-                vis = vis_mat4D(curve, 1, 2, 3)
+                vis = vis_normals(curve, 1, 2, 3)
                 curve += vis.switch_false(show_normals)
             
             with Layout("Cloud - Simple Projection"):   
@@ -1701,22 +1738,24 @@ def build_mesh_curve_nodes():
             trim0 = Float.Factor(0, "Start", 0, 1)
             trim1 = gnmath.max(trim0, Float.Factor(1, "End", 0, 1))
 
-        Dir = (V1 - V0).normalize()
-
         line = Curve.Line(V0.v, V1.v).trim(trim0, trim1).resample(mode='Count', count=resol)
 
-        M = Dir.align_axis_to(axis=3)
-        m = list(M.as_tuple)
+        with Layout("Local space : tangent as first Vector"):
+            Dir = (V1 - V0).normalize()
+            M = Dir.align_axis_to(axis=0)
+            m = list(M.as_tuple)
 
-        m[:3] = nd.position.xyz
-        
-        w0 = trim0.map_range(to_min=V0.w, to_max=V1.w)
-        w1 = trim1.map_range(to_min=V0.w, to_max=V1.w)
-        m[3] = (nd.index/(resol-1)).map_range(to_min=w0, to_max=w1)
+        with Layout("Local position"):
+            m[:3] = nd.position.xyz
+
+        with Layout("Trim w"):
+            w0 = trim0.map_range(to_min=V0.w, to_max=V1.w)
+            w1 = trim1.map_range(to_min=V0.w, to_max=V1.w)
+            m[3] = (nd.index/(resol-1)).map_range(to_min=w0, to_max=w1)
 
         line.points.M4D = Matrix(m)
-    
-        line.out("Curve")
+
+        finalize(line, False)
 
     tree.add_method(Curve4, ret_class=Curve4)
 
@@ -1786,7 +1825,7 @@ def build_mesh_curve_nodes():
         with Layout("Closed"):
             line = line.switch(close & factor.equal(1), circle)
 
-        line.out("Curve")
+        finalize(line, False)
 
     tree.add_method(Curve4, ret_class=Curve4)
 
@@ -1853,7 +1892,7 @@ def build_mesh_curve_nodes():
         geo = Mesh4(geo)
         geo = geo.translate(**O.as_args())
         
-        geo.out("Mesh")
+        finalize(geo, True)
 
     tree.add_method(Mesh4, ret_class=Mesh4)
 
@@ -2001,7 +2040,7 @@ def build_mesh_curve_nodes():
             grid.faces.material = mat
             grid.faces.shade_smooth = smooth
 
-        grid.out()
+        finalize(grid, True)
 
     tree.add_method(Curve4, self_attr="", ret_class=Mesh4)
 
@@ -2020,8 +2059,8 @@ def build_mesh_curve_nodes():
         use_scale = Boolean(False, "Scale", hide_in_modifier=True)
         scale = Closure(None, "Scale", hide_in_modifier=True)
 
-        trim0 = Input("Curve 0 > Trim > Start")
-        trim1 = Input("Curve 0 > Trim > End")
+        trim0 = Float.Input("Curve 0 > Trim > Start")
+        trim1 = Float.Input("Curve 0 > Trim > End")
         with Closure(closure=Input("Twist X")) as twist_clx:
             factor = Float(name="Factor")
             factor.map_range(to_min=trim0*twist_x, to_max=trim1*twist_x).out("Value")
@@ -2042,9 +2081,56 @@ def build_mesh_curve_nodes():
         except Exception as e:
             raise curve_.error(curve_.to_surface, e)
         
-        mesh.out()
+        finalize(mesh, True)
 
     tree.add_method(Mesh4, ret_class=Mesh4)
+
+    # ====================================================================================================
+    # MODIFIER - Mesh Slices
+    # ====================================================================================================
+
+    with GeoNodes("Slices OLD", prefix=mesh_) as tree:
+
+        mesh = Mesh().plunge(w=0.0)
+
+        with Panel("Backbone"):
+            use_object  = Boolean(False, "Object")
+            curve       = Curve(None, "Curve")
+            obj         = Object(None, "Curve Object")
+
+        with Layout("Backbone"):
+            curve = Curve4(curve.switch(use_object, obj.info().geometry))
+
+            # Mesh Z axis oriented along the backbone tangent
+            Mloc = Position4(Matrix("M4D")).curve_local_matrix(tangent_axis=2)
+
+        scale = Float(1., "Scale")
+
+        for feel in curve.points.for_each(M4D=Matrix("M4D"), local = Mloc, scale = scale):
+
+            # Scaled slice
+            slice = mesh.scale(feel.scale)
+            
+            # Orient in backbone point local space
+            slice.points.M4D = feel.local @ Matrix("M4D")
+
+            # Move the slice at the current position
+            mbb = feel.M4D.as_tuple
+            msl = list(Matrix("M4D").as_tuple)
+
+            msl[0] += mbb[0]
+            msl[1] += mbb[1]
+            msl[2] += mbb[2]
+            msl[3] += mbb[3]
+
+            slice.points.M4D = Matrix(msl)
+
+            # Add to the generated geometry is scale is not null
+            slice.switch(feel.scale.equal(0)).out("Generated")
+
+        feel.generated.out()
+
+    tree.add_method(Mesh, self_attr="self", ret_class=Mesh4)
 
     # ====================================================================================================
     # MODIFIER - Mesh Slices
@@ -2058,37 +2144,47 @@ def build_mesh_curve_nodes():
             use_object  = Boolean(False, "Object")
             curve       = Curve(None, "Curve")
             obj         = Object(None, "Curve Object")
+            scale       = Float(1., "Scale")
+            z_index     = Integer(2, "Z Index")
 
         with Layout("Backbone"):
             curve = Curve4(curve.switch(use_object, obj.info().geometry))
 
             # Mesh Z axis oriented along the backbone tangent
-            #Mloc = group_.curve_local_matrix(Matrix("M4D"), tangent_axis=2)
-            Mloc = Position4(Matrix("M4D")).curve_local_matrix(tangent_axis=2)
+            Mloc = Position4(Matrix("M4D")).curve_local_matrix(tangent_axis=z_index)
 
-        scale = Float(1., "Scale")
+            curve.points.BB_M4D  = Matrix("M4D")
+            curve.points.BB_Mloc = Mloc
+            curve.points.BB_Scale = scale
 
-        for feel in curve.points.for_each(M4D=Matrix("M4D"), local = Mloc, scale = scale):
+            # To avoid collisions with instances
+            curve.remove_named_attribute(name="M4D")
 
-            slice = mesh.scale(feel.scale)
-            
-            slice.points.M4D = feel.local @ Matrix("M4D")
+        hsph = Mesh4(curve.points.instance_on(instance=mesh).realize())
 
-            mbb = feel.M4D.as_tuple
-            msl = list(Matrix("M4D").as_tuple)
+        with Layout("Slice Scale"):
+            P       = Position4(Matrix("M4D"))
+            bbScale = Float("BB Scale")
+            P       = P._scale(bbScale)
 
-            msl[0] += mbb[0]
-            msl[1] += mbb[1]
-            msl[2] += mbb[2]
-            msl[3] += mbb[3]
+        with Layout("Slice Rotation"):
+            bbLoc   = Matrix("BB Mloc")
+            P._m    = bbLoc @ P.M
 
-            slice.points.M4D = Matrix(msl)
-            
-            slice.switch(feel.scale.equal(0)).out("Generated")
+        with Layout("Slice Translation"):
+            bbP     = Position4(Matrix("BB M4D"))
+            P = P._translate(bbP._position)
+        
+        with Layout("Update and clean"):
+            hsph.points.M4D = P.M
+            hsph.points.position = P._position.v
 
-        feel.generated.out()
+            hsph.remove_named_attribute(pattern_mode="Wildcard", name="BB*")
 
-    tree.add_method(Mesh, ret_class=Mesh4)
+        finalize(hsph, True)
+
+
+    tree.add_method(Mesh, self_attr="self", ret_class=Mesh4)    
 
     # ====================================================================================================
     # PRIMITIVE - Mesh Hyper Sphere
@@ -2099,16 +2195,19 @@ def build_mesh_curve_nodes():
         radius = Float(1, "Radius", 0)
         slices = Integer(7, "Slices", 1)
 
-        sphere = Mesh.UVSphere(radius=radius).link_inputs(None, "Sphere")
-        sphere.corners.UV_Map = sphere.uv_map
+        with Layout("A Sphere a slice"):
+            sphere = Mesh.UVSphere(radius=radius).link_inputs(None, "Sphere")
+            sphere.corners.UV_Map = sphere.uv_map
 
-        line = curve_.line(xyz=0, w = -radius, xyz_1=0, w_1=radius, count=slices + 2)
-        w = 2*nd.index/(slices+1) - 1
-        scale = gnmath.sqrt(gnmath.max(0, 1 - w*w))
+        with Layout("Backbone along w"):
+            line = Curve4.line(xyz=0, w = -radius, xyz_1=0, w_1=radius, count=slices + 2)
+            w = 2*nd.index/(slices+1) - 1
+            scale = gnmath.sqrt(gnmath.max(0, 1 - w*w))
 
-        hsph = sphere.slices(curve=line, scale=scale)
+        hsph = sphere.slices(curve=line, scale=scale, z_index=3)
 
-        hsph.out()
+        finalize(hsph, True)
+
 
     tree.add_method(Mesh4, ret_class=Mesh4)
 
