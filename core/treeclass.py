@@ -1212,9 +1212,42 @@ class Tree:
         return len(dead_ends) + len(unlinkeds)
     
     # ====================================================================================================
-    # Dump content
+    # Create a method calling this Group
     # ====================================================================================================
 
+    def add_method(self, 
+        target_class    : type, 
+        func_name       : str = None,
+        self_attr       : str = None, 
+        ret_class       : type = None, 
+        **fixed):
+        """ Add a method calling the Group.
+
+        Arguments
+        ---------
+        - target_class (type) : class to add the method to
+        - func_name (str = None) : name of the method to create (snae case version of group name if None)
+        - self_attr (str = None) : self name attribute name
+        - ret_class (type = None) : class to use to transtype the output socket
+        - fixed (dict) : fixed values for sockets        
+        """
+        from .nodeclass import Group
+
+        group_name = self._btree.name
+        if self._prefix != "":
+            group_name = group_name[len(self._prefix) + 1:]
+
+        Group.add_method(group_name, target_class,
+            func_name       = func_name,
+            self_attr       = self_attr, 
+            ret_class       = ret_class, 
+            prefix          = self._prefix,
+            **fixed)
+
+    
+    # ====================================================================================================
+    # Dump content
+    # ====================================================================================================
 
     def dump(self):
         for bnode in self._btree.nodes:

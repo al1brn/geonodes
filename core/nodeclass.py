@@ -592,7 +592,6 @@ class Node:
                 include      = include,
                 exclude      = exclude,
                 enabled_only = enabled_only,
-                #free_only    = free_only,
                 parent       = panel,
             )
 
@@ -690,7 +689,7 @@ class Node:
             enabled_only : bool = True, 
             free_only    : bool = False, 
             halt         : bool = True) -> Socket:
-        """ Get a socket by its index
+        """ Get a socket by its name
 
         Get a socket by its name. Valid names are:
         - The socket name possibly suffixed by its rank (e.g. `value_1` for second socket named Value)
@@ -728,10 +727,15 @@ class Node:
                 isocks = self._interface.get_socket_by_python_name(
                     intf_in_out, name, socket_type, parent=self._tree.get_panel(), return_all=True)
                 
+                #print("DEBUG NODE 0", name, isocks)
+                
                 # Second without type
                 if not len(isocks):
                     isocks = self._interface.get_socket_by_python_name(
                         intf_in_out, name, None, parent=self._tree.get_panel(), return_all=True)
+                    
+
+                #print("DEBUG NODE 1", name, isocks)
                 
                 # Look for the first one matching the conditions
                 for isock in isocks:
@@ -1049,6 +1053,122 @@ class Node:
         return socket
     
     # ====================================================================================================
+    # Set a value to an input socket
+    # ====================================================================================================
+
+    def set_input_socket_value(self, socket, value):
+        """ Set a value to an input socket
+
+        Arguments
+        ---------
+        - socket (Socket) : the input socket
+        - value (Any) : the value to set
+
+        Returns
+        -------
+        - socket
+        """
+
+        if value is None:
+            return socket
+
+        # ---------------------------------------------------------------------------
+        # We take default value from empty socket
+        # ---------------------------------------------------------------------------
+
+        if utils.is_empty_socket(value):
+            value = value._bsocket
+
+        # ---------------------------------------------------------------------------
+        # If the value is a Node, we take its default output socket
+        # ---------------------------------------------------------------------------
+
+        if '_bnode' in dir(value):
+            value = value._out
+
+        # ---------------------------------------------------------------------------
+        # If the value is a domain, we take its geometry
+        # ---------------------------------------------------------------------------
+
+        if '_geo' in dir(value):
+            value = value._geo
+
+        # ---------------------------------------------------------------------------
+        # We directly have a socket
+        # ---------------------------------------------------------------------------
+
+        out_socket = utils.get_bsocket(value)
+        if out_socket is not None:
+            self._tree.link(out_socket, socket)
+            return socket
+
+        # ---------------------------------------------------------------------------
+        # We need to create a node if:
+        # - in_socket.hide_value is True
+        # - the value is an array containing sockets : vector((0, a, 1))
+        # ---------------------------------------------------------------------------
+
+        socket_type = SocketType(socket)
+        if socket.hide_value:
+            self._tree.link(utils.to_socket(value)._bsocket, socket)
+            return socket
+
+        # ---------------------------------------------------------------------------
+        # Setting according to the socket type
+        # ---------------------------------------------------------------------------
+
+        if socket_type.type in constants.ARRAY_TYPES:
+
+            assert hasattr(socket, 'default_value')
+
+            if socket_type.type == 'RGBA':
+                a = utils.value_to_color(value)
+
+            else:
+                spec = constants.ARRAY_TYPES[socket_type.type]
+                a = utils.value_to_array(value, spec['shape'])
+
+            # There is a bsocket in the array
+            if utils.has_bsocket(a):
+                v = utils.get_socket_class(socket_type)(a)
+                self._tree.link(v, socket)
+
+            else:
+                try:
+                    socket.default_value = list(a)
+                except Exception as e:
+                    raise TypeError(f"Impossible to set input socket [{socket.node.name}].{socket.name} with value <{value}>. {str(e)}")
+
+        elif socket_type.class_name in ['Boolean', 'Integer', 'Float', 'String']:
+            try:
+                socket.default_value = value
+            except Exception as e:
+                raise TypeError(f"Impossible to set input socket [{socket.node.name}].{socket.name} with value <{value}>. {str(e)}")
+
+        elif socket.type in ['OBJECT', 'COLLECTION', 'IMAGE', 'MATERIAL']:
+
+            bobj = blender.get_resource(socket.type, value)
+
+            if bobj is not None:
+                socket.default_value = bobj
+
+        elif socket.type == 'MENU':
+            try:
+                socket.default_value = str(value)
+            except Exception as e:
+                raise NodeError(f"Impossible to set menu [{socket.node.name}]{socket.name} with value <{value}>. {str(e)}")
+
+            if self._use_interface:
+                isock = self._interface.by_identifier(socket.identifier)
+                isock.default_value = socket.default_value
+
+        else:
+            raise TypeError(f"Impossible to set input socket [{socket.node.name}].{socket.name} with value <{value}>. Unsupported socket type '{socket.type}'.")
+                
+
+        return socket
+    
+    # ====================================================================================================
     # Set an input socket
     # ====================================================================================================
 
@@ -1210,6 +1330,9 @@ class Node:
         # Set a value to the socket
         # ===========================================================================
 
+        return self.set_input_socket_value(socket, value)
+
+
         # We take default value from empty socket
         if utils.is_empty_socket(value):
             value = value._bsocket
@@ -1345,7 +1468,7 @@ class Node:
         - Socket : first enabled output socket
         """
         for bsock in self._bnode.outputs:
-            if bsock.enabled and bsock.type != 'CUSTOM':
+            if bsock.enabled and bsock.is_icon_visible and bsock.type != 'CUSTOM':
                 return utils.to_socket(bsock)
         return None
     
@@ -1547,8 +1670,6 @@ class Node:
         # Create the links
         # ---------------------------------------------------------------------------
         
-        #links = []
-        
         for name, in_socket in in_sockets:
 
             path = ItemPath(from_panel) + name
@@ -1629,6 +1750,104 @@ class Node:
                 links.append((out_socket, in_socket))
 
         return links
+    
+    # ====================================================================================================
+    # Method call
+    # ====================================================================================================
+
+    def method_call(self, *args, ret_class = None, **kwargs):
+        """ Link the input sockets with method arguments
+
+        Arguments
+        ---------
+        - args (tuple) : values of the first sockets (but self_ if not None)
+        - ret_class (type) : output class
+        - kwargs (dict) : named sockets
+
+        Returns
+        -------
+        - Socket : node._out
+        """
+
+        # ------------------------------------------------------------
+        # Get the valid input sockets
+        # ------------------------------------------------------------
+
+        sockets = self.get_sockets('INPUT', enabled_only = False, free_only = False)
+        
+        # For error message
+        sig = self.get_signature()
+        ssocks = []
+        for index, d in enumerate(sig.inputs):
+            s = f"{utils.snake_case(d['name']):15s} : {SocketType(d['socket_type']).class_name}"
+            if index < len(args):
+                s += " (arg)"
+            ssocks.append(s)
+        valids = "\n- " + "\n- ".join(ssocks)
+
+        # The number of arguments must not exceed the number of valid sockets
+        n = len(args) + len(kwargs)
+        if n > len(sockets):
+            raise NodeError(
+                f"Error when calling the the Node {self}: to many arguments ({n}),"
+                f"only {len(sockets)} input sockets are available.{valids}")
+        
+        # ------------------------------------------------------------
+        # Sockets set by arguments
+        # ------------------------------------------------------------
+
+        dones = []
+        
+        for (name, socket), arg in zip(sockets, args):
+            dones.append(f"{socket.name} <- <{arg}> (arg)")
+            try:
+                self.set_input_socket_value(socket, arg)
+            except Exception as e:
+                print(f"Error when setting socket '{socket.name}' with value <{arg}>.")
+                print(f"Valid sockets are: {valids}")
+                sdones = "\n - " + "\n - ".join(dones)
+                print(f"Error on socket:{sdones}")
+                raise e
+
+        # ------------------------------------------------------------
+        # Sockets set by key word arguments
+        # ------------------------------------------------------------
+
+        remain = list(sockets[len(args):])
+
+        for name, value in kwargs.items():
+            socket = self.socket_by_name('INPUT', name, None, enabled_only=False)
+            key = None
+            for k in remain:
+                if k[1] == socket:
+                    key = k
+                    break
+
+            if key is None:
+                raise NodeError(
+                    f"Socket named '{name}' not found (or already set). "
+                    f"Valid sockets are {valids}\nRemaining sockets are {[utils.snake_case(k[0]) for k in remain]}.")
+
+            dones.append(f"{socket.name} <- {name} = <{arg}>")
+            try:            
+                self.set_input_socket_value(key[1], value)
+            except Exception as e:
+                print(f"Error when setting socket '{socket.name}' with value <{arg}>.")
+                print(f"Valid sockets are: {valids}")
+                sdones = "\n - " + "\n - ".join(dones)
+                print(f"Error on socket:{sdones}")
+                raise e
+
+            remain.remove(key)
+
+        # ------------------------------------------------------------
+        # Done
+        # ------------------------------------------------------------
+
+        if ret_class is None:
+            return self._out
+        else:
+            return ret_class(self._out)
 
     # ====================================================================================================
     # Color and label
@@ -1723,7 +1942,7 @@ class Node:
     @classmethod
     def _class_test(cls):
 
-        from geonodes import GeoNodes, Node, Group, Closure, Group, Layout, Bundle
+        from geonodes import GeoNodes, Node, Group, Closure, Group, Layout, Bundle, Mesh, Vector, Boolean, Float
         
         group_name = "Group Demo"
 
@@ -1813,6 +2032,40 @@ class Node:
                 g = Group("Curve to Tube")
                 g.link_inputs(None, "Tube")
                 g.link_outputs(None, "Tube")
+
+        # ---------------------------------------------------------------------------
+        # Advanced
+        # ---------------------------------------------------------------------------
+
+        with GeoNodes("Advanced Translation"):
+            mesh = Mesh()
+            t = Vector(0, "Translation")
+            s = Float(1., "Scale")
+            mesh.offset = t*s
+            mesh.out()
+
+        with GeoNodes("Advanced Set Smooth"):
+            mesh = Mesh()
+            smooth = Boolean(False, "Smooth")
+            mesh.faces.smooth = smooth
+            mesh.out()
+
+        class Test(Mesh):
+            pass
+
+        Group.group_as_method("Translation", Test, self_attr="", ret_class=Test, prefix="Advanced", func_name="move_away", scale=2)
+        Group.group_as_method("Set Smooth", Test, self_attr=None, prefix="Advanced")
+
+        with GeoNodes("Group Advanced Demo"):
+
+            test = Test(Mesh.Cube())
+            with Layout("Method call"):
+                test = test.move_away((1, 1, 1))
+            with Layout("Static call"):
+                test = test.set_smooth(mesh=test, smooth=True)
+            test.out()
+
+                    
 
 
 # ====================================================================================================
@@ -2241,6 +2494,155 @@ class Group(Node):
         - Node Group
         """
         return cls(f"{prefix} {group_name}", named_sockets=sockets, **sockets)
+    
+    # ====================================================================================================
+    # Add a group as a class method
+    # ====================================================================================================
+
+    @staticmethod
+    def add_method(
+        group_name      : str, 
+        target_class    : type, 
+        *,
+        func_name       : str = None,
+        self_attr       : str = None,
+        ret_class       : type = None, 
+        prefix          : str = "",
+        **fixed):
+        """ Add a method calling the Group.
+
+        The argument self_attr is the attribute to use to plug the node socket used as self:
+        - None : the method is implemented as static method
+        - "" : self is used directly
+        - other = getattr(self, self_name) is plugged
+
+        Arguments
+        ---------
+        - group_name (str) : name of the Group
+        - target_class (type) : class to add the method to
+        - func_name (str = None) : name of the method to create (snae case version of group name if None)
+        - self_attr (str = None) : self name attribute name
+        - ret_class (type = None) : class to use to transtype the output socket
+        - prefix (str = "") : group prefix
+        - self_attr (Any = None) : which attr
+        - fixed (dict) : fixed values for sockets        
+        """
+
+        # ---------------------------------------------------------------------------
+        # Get the node tree
+        # ---------------------------------------------------------------------------
+
+        pref = str(prefix)
+        if pref != "":
+            pref = pref + " "
+        full_name = pref + group_name
+        btree = bpy.data.node_groups.get(full_name)
+        if btree is None:
+            raise NodeError(f"Impossible to find the Group named '{full_name}'")
+
+        # ---------------------------------------------------------------------------
+        # The 3 possible calls
+        # ---------------------------------------------------------------------------
+
+        def self_method(self_, *args, **kwargs):
+            node = Group(btree.name)
+            return node.method_call(self_, *args, ret_class=ret_class, **kwargs, **fixed)
+        
+        def attr_method(self_, *args, **kwargs):
+            node = Group(btree.name)
+            return node.method_call(getattr(self_, self_attr), *args, ret_class=ret_class, **kwargs, **fixed)
+        
+        def static(*args, **kwargs):
+            node = Group(btree.name)
+            return node.method_call(*args, ret_class=ret_class, **kwargs, **fixed)
+        
+        # ---------------------------------------------------------------------------
+        # Add the method to the class
+        # ---------------------------------------------------------------------------
+        
+        if func_name is None:
+            func_name = utils.snake_case(group_name)
+
+        if func_name in dir(target_class):
+            raise NodeError(f"Impossible to add Node method '{func_name}'. This function already exists in class {target_class}.")
+
+        print(f"ADDING: {func_name=} {self_attr=}")
+
+        if self_attr is None:            
+            setattr(target_class, func_name, staticmethod(static))
+
+        elif self_attr == "":
+            setattr(target_class, func_name, self_method)
+
+        else:
+            setattr(target_class, func_name, attr_method)
+
+        return
+
+
+
+        func_name = utils.snake_case(group_name)
+
+        signature = TreeInterface(btree).get_signature()
+
+        sock_names = [utils.snake_case(s) for s in signature.input_names]
+        sock_names = utils.ensure_uniques(sock_names, single_digit=True)
+
+        # ----- Header
+
+        header = ["self"]
+        call   = []
+        for arg in sock_names:
+            if arg == utils.snake_case(self_socket):
+                call.append(f"{arg} = self")
+            else:
+                header.append(f"{arg} = None")
+                call.append(f"{arg} = {arg}")
+
+        # ----- Code
+
+        ret_class = None
+
+        group_call = f"Group('{btree.name}', " + ", ".join(call) + ")._out"
+        if ret_class is not None:
+            header.append(f"RET_CLASS={ret_class}")
+            group_call = f"RET_CLASS({group_call})"
+
+        s = f"def {func_name}(" + ", ".join(header) + "):\n"        
+        s += f"\treturn {group_call}\n\n"
+        s += f"f = {func_name}\n"
+
+        d = {'f': None}
+        try:
+            exec(s, globals(), d)
+        except Exception as e:
+            print('='*100)
+            print("Error when building function for group", btree.name)
+            print('-'*100)
+            print(s)
+            print('='*100)
+            print()
+            raise e
+
+        f = d['f']
+
+        setattr(target_class, func_name, f)
+
+        # DEBUG
+
+        if True:
+            print('='*100)
+            print("Building", btree.name)
+            print('-'*100)
+            print(s)
+            print('='*100)
+            print()
+
+
+
+
+        
+
 
 # ====================================================================================================
 # G to expose groups as functions
@@ -2343,6 +2745,7 @@ class G:
             if len(self.prefix):
                 self.prefix += " "
         self.verbose = verbose
+        self.functions = {}
 
     # ====================================================================================================
     # Str returns a string to be compatible with prefix argument in Tree initialization
@@ -2372,28 +2775,22 @@ class G:
         """
 
         func_name = utils.snake_case(btree.name)
+        if func_name in self.functions:
+            return self.functions[func_name]['f']
 
         # ---------------------------------------------------------------------------
         # Arguments from signature
         # ---------------------------------------------------------------------------
 
         signature = TreeInterface(btree).get_signature()
-        #sock_names = [utils.snake_case(name) for name in signature.inputs.keys()]
-        sock_names = [utils.snake_case(d['name']) for d in signature.inputs]
 
-        if False:
-            # ----- Input node
-
-            socks, homos = TreeInterface(btree).get_sockets_names('INPUT', python=True, homonyms='SEPARATE')
-
-            sock_names = list(socks.keys())
-            sock_names.extend(list(homos.keys()))
-            sock_names.append('link_from')
+        sock_names = [utils.snake_case(s) for s in signature.input_names]
+        sock_names = utils.ensure_uniques(sock_names, single_digit=True)
 
         # ----- Create the function
 
-        header = [f"{arg}=None"  for arg in sock_names]
-        call   = [f"{arg}={arg}" for arg in sock_names]
+        header = [f"{arg} = None"  for arg in sock_names]
+        call   = [f"{arg} = {arg}" for arg in sock_names]
 
         s = f"def {func_name}(" + ", ".join(header) + "):\n"
         s += f"\treturn Group('{btree.name}', " + ", ".join(call) + ")._out\n\n"
@@ -2402,11 +2799,24 @@ class G:
         # DEBUG
         if False:
             print('-'*100)
-            print(s)
+            print("Build Function for group", btree.name)
             print('-'*100)
+            print(s)
+            print()
 
         d = {'f': None}
-        exec(s, globals(), d)
+        try:
+            exec(s, globals(), d)
+        except Exception as e:
+            print('='*100)
+            print("Error when building function for group", btree.name)
+            print('-'*100)
+            print(s)
+            print('='*100)
+            print()
+            raise e
+
+
         f = d['f']
 
         if G.VERBOSE or self.verbose:
@@ -2416,8 +2826,39 @@ class G:
             print(s)
             print()
 
-        #return getattr(G, func_name)
+        self.functions[func_name] = {'f': f, 'source': f"def {func_name}(\n\t" + ",\n\t".join(header) + "):\n"}
+
         return f
+    
+    # ====================================================================================================
+    # Source code
+    # ====================================================================================================
+
+    def error(self, f, exception=None):
+        """ Raise an error when function call fails.
+
+        Raises
+        ------
+        - NodeError
+
+        Arguments
+        ---------
+        - f (function) : the function in error
+        - exception (Exception) : the exception that was raised
+        """
+
+        spec = self.functions.get(f.__name__)
+        if spec is None:
+            source = f"No source code found for function: {f.__name__}. Existing functions are {list(self.functions.keys())}."
+        else:
+            source = spec['source']
+
+        se = "No exception " if exception is None else str(exception)
+
+        raise NodeError(f"Error when calling function '{f.__name__}' of group {self}.\n\n"
+                        f"Signature is:\n\n{source}\n",
+                        error_message = se)
+
 
     # ====================================================================================================
     # Get a tree by its snake case name
@@ -2433,8 +2874,9 @@ class G:
             raise AttributeError(f"Group '{self.prefix + name}' not found")
         
         group = blender.load_node_group(groups[group_name])
-        return self.build_function(group)
 
+        return self.build_function(group)
+    
 
 # ====================================================================================================
 # GroupF

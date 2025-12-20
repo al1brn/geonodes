@@ -71,6 +71,59 @@ def check_in_out(in_out, both=False):
         return True
     
     raise RuntimeError(f"in_out argument '{in_out}' not in ('INPUT', 'OUTPUT')")
+
+# ====================================================================================================
+# Iterator on NodeTreeInterfacePanel
+# ====================================================================================================
+
+class PanelIterator:
+    def __init__(self, panel: NodeTreeInterfacePanel, sockets=True, panels=False):
+        self.panel   = panel
+        self.panels  = panels
+        self.sockets = sockets
+        
+    def __iter__(self):
+        self.index = 0
+        self.child = None
+        return self
+    
+    def __next__(self):
+
+        # ---------------------------------------------------------------------------
+        # Sub panel in progress
+        # ---------------------------------------------------------------------------
+        
+        if self.child is not None:
+            try:
+                return self.child.__next__()
+            except StopIteration:
+                pass
+            
+            self.child = None
+            
+            return self.__next__()
+        
+        # ---------------------------------------------------------------------------
+        # Next item
+        # ---------------------------------------------------------------------------
+
+        while True:
+
+            if self.index >= len(self.panel.interface_items):
+                raise StopIteration
+                
+            item = self.panel.interface_items[self.index]
+            self.index += 1
+            
+            if item.item_type == 'PANEL':
+                self.child = iter(PanelIterator(item))
+                if self.panels:
+                    return item
+                else:
+                    return self.__next__()
+            else:
+                if self.sockets:
+                    return item
     
 
 # ====================================================================================================
@@ -165,8 +218,18 @@ class ItemPath:
                 # Next
                 cur_item = parent
 
+            # ----- Get path and socket id
+
             self._path = ItemPath.stack_to_path(stack)
             self._socket_id = None if value.item_type != 'SOCKET' else value.socket_type
+
+            # ----- Absolute rank
+
+            for item in PanelIterator(cur_item):
+                if utils.snake_case(item.name) != utils.snake_case(value.name):
+                    continue
+                if value == item:
+                    break
 
         # ---------------------------------------------------------------------------
         # Stack of panels
@@ -340,6 +403,7 @@ class ItemPath:
             name = ItemPath(stack[i:]).path
             if use_name:
                 names.append(name)
+
             if use_python:
                 names.append(utils.snake_case(name))
 
@@ -1138,16 +1202,52 @@ class TreeInterface:
     # ====================================================================================================
 
     # ----------------------------------------------------------------------------------------------------
+    # Get the rank of an item within a parent panel
+    # ----------------------------------------------------------------------------------------------------
+
+    def get_item_rank_in_panel(self, item, panel):
+        
+        rank = -1
+        for itm in PanelIterator(panel, panels=True, sockets=True):
+            if itm.item_type != item.item_type:
+                continue
+            if utils.snake_case(item.name) != utils.snake_case(itm.name):
+                continue
+
+            rank += 1
+            if item == itm:
+                break
+
+        assert rank >= 0, f"{panel=}, {item=}"
+
+        return rank
+
+    # ----------------------------------------------------------------------------------------------------
+    # Get the ranks of an item relatively to its parent panels
+    # ----------------------------------------------------------------------------------------------------
+
+    def get_item_ranks(self, item):
+
+        ranks = []
+        itm = item
+        while itm.index != -1:
+            panel = itm.parent
+            ranks.append((self.get_item_rank_in_panel(item, panel), panel))
+            itm = itm.parent
+
+        return ranks
+
+    # ----------------------------------------------------------------------------------------------------
     # Get a socket by its python name
     # ----------------------------------------------------------------------------------------------------
 
     def get_socket_by_python_name(self, 
-            in_out: IN_OUT, 
-            name: str, 
-            socket_type: str,
+            in_out      : IN_OUT, 
+            name        : str, 
+            socket_type : str,
             *,
-            parent: (NodeTreeInterfacePanel | str) = None,
-            return_all: bool = False):
+            parent      : (NodeTreeInterfacePanel | str) = None,
+            return_all  : bool = False):
         """ Get a socket by its python name.
 
         Arguments
@@ -1170,8 +1270,20 @@ class TreeInterface:
         parent = self.get_panel(parent)
         parent_path = ItemPath(parent)
         for socket in self.iterate(in_out, socket_type=socket_type, panels=False, parent=parent):
-            if name in (ItemPath(socket) - parent_path).get_names(True, True):
-                sockets.append(socket)
+            if True:
+                names = (ItemPath(socket) - parent_path).get_names(False, True)
+                for rank, panel in self.get_item_ranks(socket):
+                    if rank == 0:
+                        names.append((ItemPath(panel) + socket.name).python_path)
+                    else:
+                        names.append((ItemPath(panel) + f"{socket.name}_{rank}").python_path)
+
+                if name in names:
+                    sockets.append(socket)
+
+            else:
+                if name in (ItemPath(socket) - parent_path).get_names(True, True):
+                    sockets.append(socket)
 
         if return_all:
             return sockets
@@ -1408,6 +1520,38 @@ class TreeInterface:
 
         # We've got our list
         return items
+    
+    # ----------------------------------------------------------------------------------------------------
+    # Get all the names of a socket
+    # ----------------------------------------------------------------------------------------------------
+
+    def get_all_socket_names(self, socket, use_name: bool = True, use_python: bool = False):
+        """ Get all the names of a socket
+
+        Arguments
+        ---------
+        - use_name (bool = True) : str names
+        - use_python (bool = False) : python name
+
+        Returns
+        -------
+        - list of possible names
+        """
+
+        names = ItemPath(socket).get_names(use_name=use_name, use_python=use_python)
+
+        for rank, panel in self.get_item_ranks(socket):
+            if rank == 0:
+                itpath = ItemPath(panel) + socket.name
+            else:
+                itpath = ItemPath(panel) + f"{socket.name}_{rank}"
+
+            if use_name:
+                names.append(itpath.path)
+            if use_python:
+                names.append(itpath.python_path)
+
+        return names
 
     # ----------------------------------------------------------------------------------------------------
     # Get the shortest names
