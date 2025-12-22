@@ -1119,7 +1119,8 @@ class Node:
 
         if socket_type.type in constants.ARRAY_TYPES:
 
-            assert hasattr(socket, 'default_value')
+            if not hasattr(socket, 'default_value'):
+                raise NodeError(f"Impossible to set the input socket {self}.'{socket.name}' with the value: <{value}>.")
 
             if socket_type.type == 'RGBA':
                 a = utils.value_to_color(value)
@@ -1137,13 +1138,13 @@ class Node:
                 try:
                     socket.default_value = list(a)
                 except Exception as e:
-                    raise TypeError(f"Impossible to set input socket [{socket.node.name}].{socket.name} with value <{value}>. {str(e)}")
+                    raise NodeError(f"Impossible to set input socket [{socket.node.name}].{socket.name} with value <{value}>. {str(e)}")
 
         elif socket_type.class_name in ['Boolean', 'Integer', 'Float', 'String']:
             try:
                 socket.default_value = value
             except Exception as e:
-                raise TypeError(f"Impossible to set input socket [{socket.node.name}].{socket.name} with value <{value}>. {str(e)}")
+                raise NodeError(f"Impossible to set input socket [{socket.node.name}].{socket.name} with value <{value}>. {str(e)}")
 
         elif socket.type in ['OBJECT', 'COLLECTION', 'IMAGE', 'MATERIAL']:
 

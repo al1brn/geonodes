@@ -78,6 +78,7 @@ class Matrix(generated.Matrix):
 
     # ====================================================================================================
     # Operations
+    # ====================================================================================================
 
     def __invert__(self):
         return self.invert()
@@ -92,6 +93,32 @@ class Matrix(generated.Matrix):
             return self.multiply(Matrix(other))._lcop()
         else:
             return self.transform_point(other)._lcop()
+        
+    # ====================================================================================================
+    # Utilities
+    # ====================================================================================================
+
+    def get_col(self, index=0):
+        m = self.as_tuple
+        return tuple(m[index*4:(index+1)*4])
+    
+    def get_row(self, index=0):
+        m = self.as_tuple
+        return (m[index], m[4+index], m[8+index], m[12 + index])
+    
+    def set_col(self, index, col):
+        with Layout("Set Column {index}", color='MACRO'):
+            m = list(self.as_tuple)
+            m[index*4:(index+1)*4] = col
+            M = Matrix(m)
+            return self._jump(M)
+
+    def set_row(self, index, row):
+        with Layout("Set Row {index}", color='MACRO'):
+            m = list(self.as_tuple)
+            m[index], m[4+index], m[8+index], m[12 + index] = row    
+            M = Matrix(m)
+            return self._jump(M)
         
     # ====================================================================================================
     # Class test    
