@@ -1,4 +1,4 @@
-# Generated 2025-12-15 16:57:50
+# Generated 2025-12-23 17:03:08
 
 from __future__ import annotations
 from .. socket_class import Socket
@@ -314,6 +314,37 @@ class Vector(Socket):
         """
         node = Node('Combine XYZ', {'X': x, 'Y': y, 'Z': z})
         return cls(node._out)
+
+    def map_range(self,
+                    from_min: Vector = None,
+                    from_max: Vector = None,
+                    to_min: Vector = None,
+                    to_max: Vector = None,
+                    clamp = True,
+                    interpolation_type: Literal['LINEAR', 'STEPPED', 'SMOOTHSTEP', 'SMOOTHERSTEP'] = 'LINEAR'):
+        """ > Node <&Node Map Range>
+
+        Information
+        -----------
+        - Socket 'Vector' : self
+        - Parameter 'data_type' : 'FLOAT_VECTOR'
+
+        Arguments
+        ---------
+        - from_min (Vector) : socket 'From Min' (id: From_Min_FLOAT3)
+        - from_max (Vector) : socket 'From Max' (id: From_Max_FLOAT3)
+        - to_min (Vector) : socket 'To Min' (id: To_Min_FLOAT3)
+        - to_max (Vector) : socket 'To Max' (id: To_Max_FLOAT3)
+        - clamp (bool): parameter 'clamp'
+        - interpolation_type (str): parameter 'interpolation_type' in ['LINEAR', 'STEPPED', 'SMOOTHSTEP', 'SMOOTHERSTEP']
+
+        Returns
+        -------
+        - Vector
+        """
+        utils.check_enum_arg('Map Range', 'interpolation_type', interpolation_type, 'map_range', ('LINEAR', 'STEPPED', 'SMOOTHSTEP', 'SMOOTHERSTEP'))
+        node = Node('Map Range', {'Vector': self, 'From_Min_FLOAT3': from_min, 'From_Max_FLOAT3': from_max, 'To_Min_FLOAT3': to_min, 'To_Max_FLOAT3': to_max}, clamp=clamp, data_type='FLOAT_VECTOR', interpolation_type=interpolation_type)
+        return node._out
 
     def mix_uniform(self, b: Vector = None, factor: Float = None, clamp_factor = True):
         """ > Node <&Node Mix>

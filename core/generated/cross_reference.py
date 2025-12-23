@@ -3328,8 +3328,8 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                                   "'AUTO',\n"
                                                                   '                    '
                                                                   'mode = '
-                                                                  "{'LEFT', "
-                                                                  "'RIGHT'})"}],
+                                                                  "{'RIGHT', "
+                                                                  "'LEFT'})"}],
                                           'nd': [{'func_name': 'handle_type_selection',
                                                   'is_classmethod': True,
                                                   'is_get': False,
@@ -3346,8 +3346,8 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                                "'AUTO',\n"
                                                                '                    '
                                                                'mode = '
-                                                               "{'LEFT', "
-                                                               "'RIGHT'})"}]},
+                                                               "{'RIGHT', "
+                                                               "'LEFT'})"}]},
  'GeometryNodeCurveLength': {'Curve': [{'func_name': 'length',
                                         'is_classmethod': False,
                                         'is_get': False,
@@ -3880,8 +3880,8 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                          "'AUTO', 'VECTOR', "
                                                          "'ALIGN'] = 'AUTO',\n"
                                                          '                    '
-                                                         "mode = {'LEFT', "
-                                                         "'RIGHT'})"},
+                                                         "mode = {'RIGHT', "
+                                                         "'LEFT'})"},
                                            {'func_name': 'set_left_handle_type',
                                             'is_classmethod': False,
                                             'is_get': False,
@@ -3944,8 +3944,8 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                       "'VECTOR', 'ALIGN'] = "
                                                       "'AUTO',\n"
                                                       '                    '
-                                                      "mode = {'LEFT', "
-                                                      "'RIGHT'})"}]},
+                                                      "mode = {'RIGHT', "
+                                                      "'LEFT'})"}]},
  'GeometryNodeCurveSpiral': {'Curve': [{'func_name': 'Spiral',
                                         'is_classmethod': True,
                                         'is_get': False,
@@ -15223,6 +15223,30 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                 'Float | Vector = None,\n'
                                                 '                    clamp = '
                                                 'True)'}],
+                        'Vector': [{'func_name': 'map_range',
+                                    'is_classmethod': False,
+                                    'is_get': False,
+                                    'is_jump': False,
+                                    'is_set': False,
+                                    'node_name': 'Map Range',
+                                    'returns': 'OUT',
+                                    'signature': '(self,\n'
+                                                 '                    '
+                                                 'from_min: Vector = None,\n'
+                                                 '                    '
+                                                 'from_max: Vector = None,\n'
+                                                 '                    to_min: '
+                                                 'Vector = None,\n'
+                                                 '                    to_max: '
+                                                 'Vector = None,\n'
+                                                 '                    clamp = '
+                                                 'True,\n'
+                                                 '                    '
+                                                 'interpolation_type: '
+                                                 "Literal['LINEAR', 'STEPPED', "
+                                                 "'SMOOTHSTEP', "
+                                                 "'SMOOTHERSTEP'] = "
+                                                 "'LINEAR')"}],
                         'nd': [{'func_name': 'map_range',
                                 'is_classmethod': True,
                                 'is_get': False,

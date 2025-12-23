@@ -429,7 +429,7 @@ GEONODES = {
                                 ],
 'Combine XYZ'        :          [{f: 'C', name: 'CombineXYZ'}],
 'Float Curve'        :          [{f: 'MANUAL'}],
-'Map Range'          :          [{},
+'Map Range'          :          [{}, {klass: 'Vector', 'data_type': 'FLOAT_VECTOR'},
                                  {param_loop: 'interpolation_type', prefix: 'map_range_', rename: {'smoothstep': 'smooth_step', 'smootherstep': 'smoother_step'}},
                                 ],
 'Math'               :          [{f: 'op', rename: {
