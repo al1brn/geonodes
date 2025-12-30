@@ -981,7 +981,6 @@ class TreeInterface:
             include: list = None,
             exclude: list = [],
             enabled_only : bool = True,
-            #free_only: bool = False,
             parent: NodeTreeInterfaceSocket = None, 
         ):
         """ Get sockets
@@ -1002,6 +1001,26 @@ class TreeInterface:
 
         parent_path = ItemPath(parent)
 
+        # ---------------------------------------------------------------------------
+        # Match an include / exclude condition
+        # ---------------------------------------------------------------------------
+
+        def match(socket, python_name):
+
+            # All python names for socket
+            names = (ItemPath(socket) - parent_path).get_names(False, True)
+
+            # One is in the list
+            if python_name in names:
+                return True
+            
+            # python name is a panel
+            if utils.snake_case(python_name + " " + socket.name) in names:
+                return True
+            
+            return False
+        
+        """
         # ---------------------------------------------------------------------------
         # Panel inclusions and exclusions
         # ---------------------------------------------------------------------------
@@ -1049,6 +1068,7 @@ class TreeInterface:
             socket = self.get_socket(in_out, socket_path.path, socket_path.socket_id)
             if socket is not None:
                 excl_sockets.append(socket.index)
+        """
 
         # ---------------------------------------------------------------------------
         # Loop on sockets
@@ -1057,6 +1077,31 @@ class TreeInterface:
         sockets = []
         for socket in self.iterate(in_out, panels=False, parent=parent):
 
+            # All names
+            names = (ItemPath(socket) - parent_path).get_names(False, True)
+            
+            # Match inclusions
+            if include is not None:
+                ok = False
+                for i_name in include:
+                    sc_name = utils.snake_case(i_name)
+                    if match(socket, sc_name):
+                        ok = True
+                        break
+                if not ok:
+                    continue
+
+            # Match exlcusion
+            ok = True
+            for x_name in exclude:
+                sc_name = utils.snake_case(x_name)
+                if match(socket, sc_name):
+                    ok = False
+                    break
+            if not ok:
+                continue
+
+            """
             # ---------------------------------------------------------------------------
             # Panel Exclusion / inclusion conditions
             # ---------------------------------------------------------------------------
@@ -1088,19 +1133,7 @@ class TreeInterface:
 
             if (incl_sockets is not None) and (socket.index not in incl_sockets):
                 continue
-
-            # ---------------------------------------------------------------------------
-            # Socket conditions
-            # ---------------------------------------------------------------------------
-
-            #if enabled_only or free_only:
-            #    nsock = self.get_node_socket(socket)
-
-            #    if nsock is not None:
-            #        if enabled_only and not nsock.enabled:
-            #            continue
-            #        if in_out == 'INPUT' and free_only and not utils.is_free(nsock):
-            #            continue
+            """
 
             # ---------------------------------------------------------------------------
             # We can add it in the list

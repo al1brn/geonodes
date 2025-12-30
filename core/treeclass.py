@@ -1153,6 +1153,8 @@ class Tree:
                 for bsock in node._bnode.inputs:
                     if bsock.type == 'CUSTOM':
                         continue
+                    if bsock.name in ["Skip"]:
+                        continue
                     if not bsock.is_linked:
                         unlinked.append(bsock.name)
 

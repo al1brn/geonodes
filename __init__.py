@@ -113,9 +113,9 @@ if PRODUCTION:
     from .core import Geometry, Domain
     from .core import Point, Vertex, Face, Edge, Corner, SplinePoint, Spline, CloudPoint, Instance, Layer
     from .core import Mesh, Curve, Cloud, Instances, GreasePencil, Volume
+    from .core import simulation, repeat
 
     from .core import Layout, Panel, Tree, Node, Group, GroupF, G, ColorRamp
-    #from .core import Zone, Repeat, Simulation, ForEachElement
     from .core import Closure, Bundle
 
     from .core import GeoNodes

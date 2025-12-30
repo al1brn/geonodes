@@ -922,7 +922,7 @@ class Node:
                 try:
                     self._items[in_out].new(items_type, full_name)
                 except Exception as e:
-                    raise RuntimeError(f"Node ({self._bnode.bl_idname}), Socket type: '{items_type}': {str(e)}")
+                    raise NodeError(f"Impossible to create the item '{full_name}' in Node ({self._bnode.bl_idname}), Socket type: '{items_type}': {str(e)}")
 
             sockets = self._bnode.inputs if in_out == 'INPUT' else self._bnode.outputs
             created = sockets[-2]
@@ -1032,7 +1032,9 @@ class Node:
                 try:
                     items.new(socket_type.items_type, full_name)
                 except Exception as e:
-                    raise RuntimeError(f"Node.create_socket: [{self._bnode.bl_idname}], type: {socket_type.class_name}, name: {full_name}.\n{str(e)}")
+                    raise NodeError(
+                        f"Impossible to create the socket '{full_name}' of type '{socket_type.items_type} "
+                        f" in node [{self._bnode.bl_idname}].\n{str(e)}")
 
             io_socks = self._bnode.inputs if in_out == 'INPUT' else self._bnode.outputs
             socket = io_socks[-2]
@@ -1216,8 +1218,10 @@ class Node:
         # No value: nothing to do, otherwise let's read the socket type
         # ====================================================================================================
 
-        if value is None:
-            return
+        # If Value is None, the type is Geometry
+        # We don't exit at this stage because it could be a request to create an input socket
+        #if value is None:
+        #    return
         value_socket_type = SocketType(value)
 
         # ----------------------------------------------------------------------------------------------------
@@ -2571,75 +2575,11 @@ class Group(Node):
         if self_attr is None:            
             setattr(target_class, func_name, staticmethod(static))
 
-        elif self_attr in ["", "self"]:
+        elif self_attr.lower() in ["", "self"]:
             setattr(target_class, func_name, self_method)
 
         else:
             setattr(target_class, func_name, attr_method)
-
-        return
-
-
-
-        func_name = utils.snake_case(group_name)
-
-        signature = TreeInterface(btree).get_signature()
-
-        sock_names = [utils.snake_case(s) for s in signature.input_names]
-        sock_names = utils.ensure_uniques(sock_names, single_digit=True)
-
-        # ----- Header
-
-        header = ["self"]
-        call   = []
-        for arg in sock_names:
-            if arg == utils.snake_case(self_socket):
-                call.append(f"{arg} = self")
-            else:
-                header.append(f"{arg} = None")
-                call.append(f"{arg} = {arg}")
-
-        # ----- Code
-
-        ret_class = None
-
-        group_call = f"Group('{btree.name}', " + ", ".join(call) + ")._out"
-        if ret_class is not None:
-            header.append(f"RET_CLASS={ret_class}")
-            group_call = f"RET_CLASS({group_call})"
-
-        s = f"def {func_name}(" + ", ".join(header) + "):\n"        
-        s += f"\treturn {group_call}\n\n"
-        s += f"f = {func_name}\n"
-
-        d = {'f': None}
-        try:
-            exec(s, globals(), d)
-        except Exception as e:
-            print('='*100)
-            print("Error when building function for group", btree.name)
-            print('-'*100)
-            print(s)
-            print('='*100)
-            print()
-            raise e
-
-        f = d['f']
-
-        setattr(target_class, func_name, f)
-
-        # DEBUG
-
-        if True:
-            print('='*100)
-            print("Building", btree.name)
-            print('-'*100)
-            print(s)
-            print('='*100)
-            print()
-
-
-
 
         
 

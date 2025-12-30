@@ -346,14 +346,15 @@ class Socket(NodeCache):
         bsockets = in_node.get_sockets('OUTPUT', include=include, panel=panel)
 
         for _, bsock in bsockets:
-            if SocketType(bsock).type == cls.SOCKET_TYPE:
+            sock_name = bsock._bsocket.name
+            if SocketType(bsock).type == cls.SOCKET_TYPE: # and utils.snake_case(sock_name) == utils.snake_case(name):
                 return cls(bsock._bsocket)
         
         if halt:
             sname = "" if name is None else f" named '{name}'"
             raise NodeError(
                 f"There is no {SocketType(cls.SOCKET_TYPE).class_name} input socket{sname}.\n"
-                f"Available sockets are : {[bsock[0] for bsock in in_node.get_sockets()]}.")
+                f"Available sockets are : {[bsock[0] for bsock in in_node.get_sockets('OUTPUT')]}.")
         
         return None
     
@@ -480,7 +481,7 @@ class Socket(NodeCache):
             return Node("Combine Bundle")._out
         
         elif cls.SOCKET_TYPE == 'CLOSURE':
-            socket = ZoneNode("Closure", None).closure
+            socket = ZoneNode.Closure().closure
             socket._use_layout = False
             return socket
 
@@ -1356,24 +1357,9 @@ class Socket(NodeCache):
         -------
         - ZoneIterator
         """
-        node = ZoneNode("Repeat", self, named_sockets=named_sockets, Iterations=iterations, **sockets)
+        class_name = type(self).__name__
+        node = ZoneNode("Repeat", named_sockets={class_name: self, **named_sockets}, Iterations=iterations, **sockets)
         return ZoneIterator(self, node)
-    
-    @classmethod
-    def Repeat(cls, iterations=1, named_sockets: dict={}, **sockets):
-        """ Repeat zone
-
-        Arguments
-        ---------
-        - Iteration (Integer = 1) : iteration socket
-        - named_socket (dict) : named sockets
-        - sockets (dict) : other sockets
-
-        Returns
-        -------
-        - ZoneIterator
-        """
-        return cls.Empty().repeat(iterations, named_sockets=named_sockets, **sockets)
     
     # ----------------------------------------------------------------------------------------------------
     # Simulation
@@ -1391,24 +1377,9 @@ class Socket(NodeCache):
         -------
         - ZoneIterator
         """
-        node = ZoneNode("Simulation", self, named_sockets=named_sockets, **sockets)
+        class_name = type(self).__name__
+        node = ZoneNode("Simulation", named_sockets={class_name: self, **named_sockets}, **sockets)
         return ZoneIterator(self, node)
-    
-    @classmethod
-    def Simulation(cls, named_sockets: dict={}, **sockets):
-        """ Simulation zone
-
-        Arguments
-        ---------
-        - named_socket (dict) : named sockets
-        - sockets (dict) : other sockets
-
-        Returns
-        -------
-        - ZoneIterator
-        """
-        return cls.Empty().simulation(named_sockets=named_sockets, **sockets)        
-
 
     # ====================================================================================================
     # Class Test

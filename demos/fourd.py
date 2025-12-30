@@ -112,12 +112,16 @@ from geonodes.core import utils
 ZERO = 0.0001
 
 # Prefixes
-group_  = G("4D G")         # Groups
-vec4_   = G("4D Vec")       # 4-Vector math
-mat4_   = G("4D Mat")       # Matrix 4
-mod_    = G("4D Op")        # Modifiers
-curve_  = G("4D Curve")     # Curve
-mesh_   = G("4D Mesh")      # Mesh
+mat_    = G("4D Matrix")
+vec_    = G("4D Vector")
+
+main_   = G("4")
+geo_    = G("4D Geometry")
+mesh_   = G("4D Mesh")
+curve_  = G("4D Curve")
+op_     = G("4D G")
+
+
 
 # =============================================================================================================================
 # Build the 4D engine
@@ -137,9 +141,7 @@ def demo(clear=False):
 
     Vector4.build_nodes()
     Matrix4.build_nodes()
-    #Position4.build_nodes()
-    Geometry4.build_nodes()
-    #build_mesh_curve_nodes()
+    build_geometry_nodes()
 
     Tree._display_counter("4D Engine built")
     print(f"4D Engine built : {Tree._total_nodes} nodes, {Tree._total_links} links in {Tree._total_time:.1f} s")
@@ -204,66 +206,70 @@ def build_shaders():
         ped.out()
 
     # ----------------------------------------------------------------------------------------------------
-    # 4D Light utility
-    # Get the enlightments parameter
+    # GROUP - Reading 4D Shading Attributes
     # ----------------------------------------------------------------------------------------------------
 
-    with ShaderNodes("4D Get Light", is_group=True):
+    with ShaderNodes("4D Attributes", is_group=True):
 
-        light_in  = snd.attribute(attribute_name="Inner Light").factor
-        light_out = snd.attribute(attribute_name="Outer Light").factor
-        int_fac   = snd.attribute(attribute_name="Interior").factor
+        # ---------------------------------------------------------------------------
+        # Interior
+        # ---------------------------------------------------------------------------
 
-        spot_in  = snd.attribute(attribute_name="Inner Spot").factor
-        spot_out = snd.attribute(attribute_name="Outer Spot").factor
+        interior = snd.attribute("Interior").factor
 
-        color_in  = Color((1, 1, 0)).hue_saturation_value(value=2*light_in,  fac=1)
-        color_out = Color((1, 1, 1)).hue_saturation_value(value=2*light_out, fac=1)
+        # ---------------------------------------------------------------------------
+        # Color
+        # ---------------------------------------------------------------------------
 
-        color = color_out.mix(color_in, int_fac)
-        spot = spot_out.mix(spot_in, int_fac)
+        fcol = snd.attribute("Color").color
+        bcol = snd.attribute("Back Color").color
 
-        color.out("Color")
-        spot.out("Spot")
-        light_in.out("Inner")
-        light_out.out("Outer")
-        int_fac.out("Interior")
+        col = fcol.mix(bcol, factor=interior)
 
+        col.out("Color")
+        interior.out("Interior")
+        fcol.out("Front Color")
+        bcol.out("Back Color")
 
-    with ShaderNodes("4 Enlighted"):
+        # ---------------------------------------------------------------------------
+        # Roughness
+        # ---------------------------------------------------------------------------
 
-        #node = G()._4d_get_light().node
-        node = Group("4D Get Light")
-        color = node.color
-        spot  = node.spot
+        snd.attribute("Roughness").factor.out("Roughness")
 
-        grid_node = G().grid().node
-        color = color.mix(grid_node.color, grid_node.grid)
+        # ---------------------------------------------------------------------------
+        # Normal
+        # ---------------------------------------------------------------------------
+
+        fac = snd.attribute("Use Normal").factor
+        attr = snd.attribute("Projected Normal").vector
+        normal = snd.geometry().normal.mix(attr, factor=fac)
+        normal.out("Normal")
+
+        # ---------------------------------------------------------------------------
+        # Emission
+        # ---------------------------------------------------------------------------
+
+        fac = snd.attribute("Use Emission").factor
+        attr = snd.attribute("Emission").factor
+        emission = Float(0).mix(other=attr, factor=fac)
+        emission.out("Emission")
+
+    # ----------------------------------------------------------------------------------------------------
+    # SHADER - Default Material
+    # ----------------------------------------------------------------------------------------------------
+
+    with ShaderNodes("4D Surface"):
+
+        node = Group("4D Attributes")
 
         ped = Shader.Principled(
-            base_color = color,
-            roughness  = node.interior,
-            emission_strength = .1 + spot,
-            emission_color = color,
-            )
-
-        transp_fac = snd.attribute(attribute_name="Transparency").factor
-        transp = Shader.Transparent()
-        shader = snd.mix_shader(ped, transp, factor=transp_fac)
-
-        shader.out()
-
-    with ShaderNodes("4 Faces Orientation"):
-
-        interior = snd.attribute(attribute_name="Interior").factor
-        color = Color((0, 1, 0)).mix((1, 0, 0), interior)
-
-        grid_fac = G().grid()
-
-        ped = Shader.Principled(
-            base_color = color.mix(Color((0, 0, 1)), grid_fac),
-            metallic   = 0.,
-            roughness  = interior,
+            base_color          = node.color,
+            metallic            = 0.1,
+            roughness           = node.roughness, #interior.map_range(to_min=0.1, to_max=0.8),
+            normal              = node.normal,
+            emission_strength   = node.emission,
+            emission_color      = node.color,
             )
 
         ped.out()
@@ -310,10 +316,10 @@ def build_shaders():
     with ShaderNodes("4 Light"):
 
         ped = Shader.Principled(
-            base_color = (1, 1, 1), #snd.attribute(attribute_name="Color").color,
+            base_color = snd.attribute(attribute_name="Color").color,
             metallic   = 0.,
             roughness  = 0.,
-            emission_strength   = 1.,
+            emission_strength   = snd.attribute(attribute_name="Intensity").factor,
             normal     = bump,
             )
 
@@ -323,6 +329,49 @@ def build_shaders():
 # MACROS
 # ====================================================================================================
 
+# ----------------------------------------------------------------------------------------------------
+# Base vertices to draw debug lines
+# ----------------------------------------------------------------------------------------------------
+
+def domain_to_vertices(domain):
+
+    with Layout("Mesh vertices as origin"):
+        pos = domain.capture_attribute(nd.position)
+        pts = Cloud.Points(count=domain.count, position=domain.sample_index(nd.position, index=nd.index))
+        return pts.to_vertices()
+
+# ----------------------------------------------------------------------------------------------------
+# Draw a vector
+# ----------------------------------------------------------------------------------------------------
+
+def draw_vector(domain, v, scale=1.0):
+
+    with Layout("Draw vectors"):
+        verts = domain_to_vertices(domain)
+        v = domain.sample_index(v, index=nd.index)
+        verts = verts.points.extrude(offset=v, offset_scale=scale)
+        return verts
+    
+# ----------------------------------------------------------------------------------------------------
+# Draw UV Normals
+# ----------------------------------------------------------------------------------------------------
+
+def draw_normals(domain, u, v, scale=1.0):
+
+    with Layout("Draw UV Normals"):
+        verts = domain_to_vertices(domain)
+        verts.points.U = domain.sample_index(u, index=nd.index)
+        verts.points.V = domain.sample_index(v, index=nd.index)
+
+        verts = verts.points.extrude(offset=Vector("U"), offset_scale=scale)
+        verts = verts.points[verts.top].extrude(offset=Vector("V"), offset_scale=scale)
+        verts = verts.points[verts.top].extrude(offset=-Vector("U"), offset_scale=scale)
+        verts = verts.points[verts.top].extrude(offset=-Vector("V"), offset_scale=scale)
+        
+        return verts
+
+
+    
 # ----------------------------------------------------------------------------------------------------
 # Visualize Normals
 # ----------------------------------------------------------------------------------------------------
@@ -337,6 +386,8 @@ def vis_normals(geo, scale=1.0):
 
         with Layout("Base"):
             msh = mesh.points[sel].extrude(v, offset_scale=scale)
+
+        return msh
         
         with Layout("First"):
             if order >= 1:
@@ -349,9 +400,6 @@ def vis_normals(geo, scale=1.0):
 
         return msh
     
-    # Projection Matrix
-    #Proj = Matrix4.projection_matrix()
-
     comps = geo.separate_components()
     mesh  = comps.mesh
     curve = comps.curve
@@ -416,7 +464,7 @@ def finalize(geo, mat_name="4 Face"):
         with Panel("Projection"):
             ok_proj = Boolean(False, "Project")
 
-        projected = Geometry4(geo).projection().link_inputs(None, "Projection", exclude=["Options"])
+        projected = Geometry4(geo).projection().link_inputs(None, "Projection") #, exclude=["Debug"])
 
         return geo.switch(ok_proj, projected)
 
@@ -506,6 +554,14 @@ class Vector4:
 
     def __str__(self):
         return f"<Vector4 ({self._v}, {self._w}>"
+    
+    def _lc(self, title, color=None):
+        if hasattr(self._v, 'SOCKET_TYPE'):
+            self._v._lc(title + " v", color)
+        if hasattr(self._w, 'SOCKET_TYPE'):
+            self._w._lc(title + " w", color)
+        return self
+            
 
     # ====================================================================================================
     # Properties
@@ -670,8 +726,8 @@ class Vector4:
         true = Vector4(true)
 
         return cls(
-            Vector.switch(condition, false.v, true.v),
-            Float.switch(condition, false.w, true.w),
+            Vector.Switch(condition, false.v, true.v),
+            Float.Switch(condition, false.w, true.w),
         )
     
     def _squared_length(self):
@@ -714,35 +770,35 @@ class Vector4:
     # ====================================================================================================
 
     def neg(self):
-        return Vector4.FromNode(vec4_.math(**self.args(), operation="Negative")._lc("Negative"))
+        return Vector4.FromNode(vec_.math(**self.args(), operation="Negative")._lc("Negative"))
 
     def add(self, V):
-        return Vector4.FromNode(vec4_.math(**self.args(), **Vector4(V).args(rank=1), operation="Add")._lc("Add"))
+        return Vector4.FromNode(vec_.math(**self.args(), **Vector4(V).args(rank=1), operation="Add")._lc("Add"))
 
     def sub(self, V):
-        return Vector4.FromNode(vec4_.math(**self.args(), **Vector4(V).args(rank=1), operation="Subtract")._lc("Subtract"))
+        return Vector4.FromNode(vec_.math(**self.args(), **Vector4(V).args(rank=1), operation="Subtract")._lc("Subtract"))
         
     def dot(self, V):
-        return vec4_.math(**self.args(), **Vector4(V).args(rank=1), operation="Dot")._lc("Dot")
+        return vec_.math(**self.args(), **Vector4(V).args(rank=1), operation="Dot")._lc("Dot")
         
     def scale(self, scale):
-        return Vector4.FromNode(vec4_.scale(**self.args(), scale=scale))
+        return Vector4.FromNode(vec_.scale(**self.args(), scale=scale))
         
     def length(self):
-        return vec4_.math(**self.args(), operation="Length")._lc("Length")
+        return vec_.math(**self.args(), operation="Length")._lc("Length")
         
     def normalize(self):
-        return Vector4.FromNode(vec4_.math(**self.args(), operation="Normalize")._lc("Normalize"))
+        return Vector4.FromNode(vec_.math(**self.args(), operation="Normalize")._lc("Normalize"))
     
     def switch(self, condition, true=((0, 0, 0), 0)):
-        return Vector4.FromNode(vec4_.switch(condition, **self.args("false"), **true.args("true"))._lc("Switch"))
+        return Vector4.FromNode(vec_.switch(condition, **self.args("false"), **true.args("true"))._lc("Switch"))
 
     def switch_false(self, condition, false=((0, 0, 0), 0)):
-        return Vector4.FromNode(vec4_.switch(condition, **false.args("false"), **self.args("true"))._lc("Switch"))
+        return Vector4.FromNode(vec_.switch(condition, **false.args("false"), **self.args("true"))._lc("Switch"))
     
     @classmethod
     def Cross(cls, V0, V1, V2):
-        return Vector4.FromNode(vec4_.cross(**V0.args(), **V1.args(rank=1), **V2.args(rank=2)))
+        return Vector4.FromNode(vec_.cross(**V0.args(), **V1.args(rank=1), **V2.args(rank=2)))
     
     @classmethod
     def IndexSwitch(cls, *vectors4, index=None):
@@ -756,7 +812,7 @@ class Vector4:
         return Vector4(v, w)
     
     def project_on_plane(self, A=None, B=None, normalize=None):
-        node = vec4_.project_on_plane(**self.args(), **Vector4(A).args(name="A"), **Vector4(B).args(name="B"), normalize=normalize)
+        node = vec_.project_on_plane(**self.args(), **Vector4(A).args(name="A"), **Vector4(B).args(name="B"), normalize=normalize)
         return Vector4(node)
 
     # ====================================================================================================
@@ -770,7 +826,7 @@ class Vector4:
         # Combine / Separate
         # ----------------------------------------------------------------------------------------------------
 
-        with GeoNodes("Combine XYZW", is_group=True, prefix=vec4_):
+        with GeoNodes("Combine XYZW", is_group=True, prefix=vec_):
             x = Float(0, "X")
             y = Float(0, "Y")
             z = Float(0, "Z")
@@ -778,7 +834,7 @@ class Vector4:
             Vector((x, y, z)).out("xyz")
             Float("w").out("w")
 
-        with GeoNodes("Separate", is_group=True, prefix=vec4_):
+        with GeoNodes("Separate", is_group=True, prefix=vec_):
             V4 = Vector4.Input()
             x, y, z, w = V4.xyzw
             x.out("X")
@@ -790,7 +846,7 @@ class Vector4:
         # Dump a matrix
         # ----------------------------------------------------------------------------------------------------
 
-        with GeoNodes("Debug Matrix", is_group=True, prefix=vec4_):
+        with GeoNodes("Debug Matrix", is_group=True, prefix=mat_):
             
             M = Matrix(name="Matrix")
             
@@ -813,7 +869,7 @@ class Vector4:
         # Get an axis vector
         # ----------------------------------------------------------------------------------------------------
 
-        with GeoNodes("Axis", is_group=True, prefix=vec4_) as tree:
+        with GeoNodes("Axis", is_group=True, prefix=vec_) as tree:
             """ Get an axis vector by its index in 0 to 3
             """
             
@@ -832,7 +888,7 @@ class Vector4:
         # 4-Vector math
         # ----------------------------------------------------------------------------------------------------
 
-        with GeoNodes("Math", is_group=True, prefix=vec4_):
+        with GeoNodes("Math", is_group=True, prefix=vec_):
         
             ope = Integer.MenuSwitch(
                 named_sockets = {
@@ -897,7 +953,7 @@ class Vector4:
         # Scale
         # ----------------------------------------------------------------------------------------------------
 
-        with GeoNodes("Scale", is_group=True, prefix=vec4_):
+        with GeoNodes("Scale", is_group=True, prefix=vec_):
             V  = Vector4.Input()
             scale = Float(1., "Scale")
 
@@ -907,7 +963,7 @@ class Vector4:
         # Switch with another 4_vector
         # ----------------------------------------------------------------------------------------------------
 
-        with GeoNodes("Switch", is_group=True,prefix=vec4_):
+        with GeoNodes("Switch", is_group=True,prefix=vec_):
             condition = Boolean(False, "Condition")
             false  = Vector4.Input(name = "False")
             true   = Vector4.Input(name = "True")
@@ -918,7 +974,7 @@ class Vector4:
         # Cross between 3 vectors
         # ----------------------------------------------------------------------------------------------------
 
-        with GeoNodes("Cross", is_group = True, prefix=vec4_):
+        with GeoNodes("Cross", is_group = True, prefix=vec_):
             """ Generalized cross product between three 4-vectors
             """
             V0 = Vector4.Input((1, 0, 0), 0, hide_value=True)
@@ -950,7 +1006,7 @@ class Vector4:
         # One perpendicular vector
         # ----------------------------------------------------------------------------------------------------
 
-        with GeoNodes("One Perp", is_group=True, prefix=vec4_):
+        with GeoNodes("One Perp", is_group=True, prefix=vec_):
             index = Integer(0, "Index", 0, 2)
             V  = Vector4.Input()
             V.one_perp(index=index).out()
@@ -959,7 +1015,7 @@ class Vector4:
         # Project on a plane
         # ----------------------------------------------------------------------------------------------------
 
-        with GeoNodes("Project on Plane", is_group=True, prefix=vec4_) as tree:
+        with GeoNodes("Project on Plane", is_group=True, prefix=vec_) as tree:
 
             V = Vector4.Input()
             A = Vector4.Input(name = "A")
@@ -1031,10 +1087,10 @@ class Matrix4(Matrix):
     
     @classmethod
     def AlignAxisToVector(cls, axis=0, V4=(1, 0, 0, 0)):
-         return cls(mat4_.align_axis_to_vector(axis=axis, **Vector4(V4).args()))
+         return cls(mat_.align_axis_to_vector(axis=axis, **Vector4(V4).args()))
     
     def rotate_vector(self, V4):
-        return Vector4(mat4_.rotate_vector(matrix=self, **Vector4(V4).args()))
+        return Vector4(mat_.rotate_vector(matrix=self, **Vector4(V4).args()))
     
     def __matmul__(self, other):
         if isinstance(other, Vector4):
@@ -1054,7 +1110,7 @@ class Matrix4(Matrix):
         # Get the projection Matrix
         # ---------------------------------------------------------------------------
 
-        with GeoNodes("Projection Matrix", is_group=True, prefix=group_) as tree:
+        with GeoNodes("Projection Matrix", is_group=True, prefix=mat_) as tree:
             """ Get the Global projection Matrix from an object named "4D Parameters"
 
             By using a defined object, 4D parameters can be shared between different objects.
@@ -1071,13 +1127,13 @@ class Matrix4(Matrix):
                 Dir.out()
 
         # Add the static method : projection_matrix
-        tree.add_method(Matrix4)
+        tree.add_method(Matrix4, ret_class=Matrix4)
             
         # ---------------------------------------------------------------------------
         # Create a Rotation Matrix from 6 angles
         # ---------------------------------------------------------------------------
         
-        with GeoNodes("Rotation Matrix", is_group=True, prefix=mat4_) as tree:
+        with GeoNodes("Rotation Matrix", is_group=True, prefix=mat_) as tree:
             """ Create a rotation Matrix from 6 angles.
             """
             
@@ -1131,13 +1187,13 @@ class Matrix4(Matrix):
             rot_mat.out("Matrix")
 
         # Add the method : rotation_matrix
-        tree.add_method(Matrix4, ret_class = Matrix)
+        tree.add_method(Matrix4, ret_class = Matrix4)
 
         # ----------------------------------------------------------------------------------------------------
         # Rotate a vector
         # ----------------------------------------------------------------------------------------------------
 
-        with GeoNodes("Rotate Vector", is_group=True, prefix=mat4_) as tree:
+        with GeoNodes("Rotate Vector", is_group=True, prefix=mat_):
             M = Matrix4(name="Matrix")
             V = Vector4.Input()
 
@@ -1152,13 +1208,11 @@ class Matrix4(Matrix):
 
             )).out()
 
-        #tree.add_method(Matrix4, self_attr="self",  ret_class=Vector4)
-
         # ----------------------------------------------------------------------------------------------------
         # A Matrix rotating an axis to a target vector
         # ----------------------------------------------------------------------------------------------------
 
-        with GeoNodes("Align Axis to Vector", is_group=True, prefix=mat4_) as tree:
+        with GeoNodes("Align Axis to Vector", is_group=True, prefix=mat_) as tree:
 
             axis = Integer(0, "Axis", 0, 3)
             V    = Vector4.Input()
@@ -1197,7 +1251,7 @@ class Matrix4(Matrix):
         # Perpendicular Planes
         # ----------------------------------------------------------------------------------------------------
 
-        with GeoNodes("Perp Planes", is_group=True, prefix=mat4_) as tree:
+        with GeoNodes("Perp Planes", is_group=True, prefix=mat_) as tree:
             """ Compute a Matrix from two vectors.
 
             This Group returns a normalized Matrix with:
@@ -1248,7 +1302,7 @@ class Matrix4(Matrix):
         # Roll vectors
         # ----------------------------------------------------------------------------------------------------
 
-        with GeoNodes("Roll Columns", is_group=True, prefix=mat4_) as tree:
+        with GeoNodes("Roll Columns", is_group=True, prefix=mat_) as tree:
             matrix = Matrix4(None, "Matrix")
             index  = Integer(0, "Count")
 
@@ -1273,319 +1327,712 @@ class Matrix4(Matrix):
 # Geometry 4
 # ====================================================================================================
 
-class Geometry4(Mesh):
-
+class G4Interface:
+    
     @classmethod
-    def Plunge(cls, geo, w=0):
-        return Geometry4(geo).plunge(w=w)
+    def Plunge(cls, geo=None, w=0):
+        if geo is None:
+            return cls(Geometry()).plunge(w=w)
+        else:
+            return cls(geo).plunge(w=w)
     
     @classmethod
     def Plunged(cls, name="Geometry"):
         return cls.Plunge(Geometry(None, name=name))
+    
+class Geometry4(Geometry, G4Interface):
+    pass
+
+class Mesh4(Mesh, G4Interface):
+    pass
+
+class Curve4(Curve, G4Interface):
+    pass
+
+class Cloud4(Cloud, G4Interface):
+    pass
+
+# ====================================================================================================
+# Build nodes
+# ====================================================================================================
+
+def build_geometry_nodes():
 
     # ====================================================================================================
-    # Build nodes
+    # MODIFIER - Plunge a Geometry into 4D
     # ====================================================================================================
 
-    def build_nodes():
+    with GeoNodes("Plunge", prefix=main_) as tree:
+        """ Plunge an object into 4D Space.
 
-        # ====================================================================================================
-        # GROUP - To Cloud
-        # ====================================================================================================
+        Do nothing if already plunged
+        """
 
-        with GeoNodes("To Cloud", is_group=True, prefix="4D Geo") as tree:
+        with Layout("By Geometry type"):
+            geo = Geometry()
+            w = Float(0, "w")
+            comps = geo.separate_components()
 
-            with Layout("By Geometry type"):
-                geo = Geometry()
-                w = Float(0, "w")
-                comps = geo.separate_components()
-
-            cloud = comps.point_cloud
-            cloud.points.Geo4 = 0
-
-            mesh_cloud = comps.mesh.to_points()
-            mesh_cloud.points.Geo4 = 1
+        # ---------------------------------------------------------------------------
+        # Cloud
+        # ---------------------------------------------------------------------------
             
-            curve_cloud = comps.curve.to_mesh().to_points()
-            curve_cloud.points.Geo4 = 2
+        with Layout("Cloud - Nothing"):
+            
+            cloud = comps.point_cloud
 
-            Geometry.Join(cloud, mesh_cloud, curve_cloud).out("Cloud")
+            # Exists if at least one point already plunged
+            exists = cloud.points.sample_index(Float("P4 w").exists, 0)
 
-        tree.add_method(Geometry4, ret_class=Cloud)
+            # Position
+            cloud.points.P4_v = nd.position
+            cloud.points.P4_w = w
 
-        # ====================================================================================================
-        # MODIFIER - Plunge a Mesh into 4D
-        # ====================================================================================================
+        # ---------------------------------------------------------------------------
+        # Mesh
+        # Matrix (U, V, Normal 1, Normal 2) stored on faces
+        # ---------------------------------------------------------------------------
 
-        with GeoNodes("4D_ Plunge") as tree:
-            """ Plunge an object into 4D Space.
+        with Layout("Mesh"):   
+            
+            mesh = comps.mesh
 
-            Do nothing if already plunged
-            """
+            # Exists if at least one point already plunged
+            exists = exists | mesh.points.sample_index(Float("P4 w").exists, 0)
 
-            with Layout("By Geometry type"):
-                geo = Geometry()
-                w = Float(0, "w")
-                comps = geo.separate_components()
+            # Position
+            mesh.points.P4_v = nd.position
+            mesh.points.P4_w = w
 
-            # ---------------------------------------------------------------------------
-            # Cloud
-            # ---------------------------------------------------------------------------
+            # U, V and 2 normals
+            x, y, z = nd.normal.xyz
+
+            u = Vector((y + z, -x, -x)).normalize()
+            v = nd.normal.cross(u)
+
+            U = Vector4(u, 0)
+            V = Vector4(v, 0)
+            N1 = Vector4(nd.normal, 0)
+            N2 = Vector4.Cross(U, V, N1)
+
+            # Local space matrix
+            mesh.faces.UVNN = Matrix4.FromVectors(U, V, N1, N2)
+
+        # ---------------------------------------------------------------------------
+        # Curve
+        # Matrix (Tangent, 3 normals) stored on points
+        # ---------------------------------------------------------------------------
+            
+        with Layout("Curve"):
+            
+            curve = comps.curve
+
+            # Exists if at least one point already plunged
+            exists = exists | curve.points.sample_index(Float("P4 w").exists, 0)
+
+            # Position
+            curve.points.P4_v = nd.position
+            curve.points.P4_w = w
+
+            # Tangent and 3 normals
+            T  = Vector4(nd.curve_tangent, 0)
+            N1 = Vector4(nd.normal, 0)
+            N2 = Vector4(nd.curve_tangent.cross(nd.normal), 0)
+            N3 = Vector4((0, 0, 0, 1))
+
+            curve.points.TNNN = Matrix4.FromVectors(T, N1, N2, N3)
+
+        # ---------------------------------------------------------------------------
+        # Join
+        # ---------------------------------------------------------------------------
+
+        with Layout("Join & switch"):
+            new_geo = Geometry(Geometry.Join(cloud, mesh, curve))
+            new_geo = new_geo.switch(exists, geo)
+
+        new_geo.out("Geometry")
+
+    tree.add_method(Geometry4,  self_attr="self", ret_class=Geometry4)
+    tree.add_method(Mesh4,      self_attr="self", ret_class=Mesh4)
+    tree.add_method(Curve4,     self_attr="self", ret_class=Curve4)
+    tree.add_method(Cloud4,     self_attr="self", ret_class=Cloud4)
+
+    # ====================================================================================================
+    # MODIFIER - Show Normals
+    # ====================================================================================================
+
+    with GeoNodes("Normals", prefix=geo_) as tree:
+
+        # Projected geometry
+        geo = Geometry(tip="Projected Geometry")
+
+        show_proj_normal = Boolean(False, "Show Projected Normal", tip="Projected Normal")
+        show_uv          = Boolean(False, "Show UV", tip="Faces UV")
+        show_uv_normals  = Boolean(False, "Show UV Normals", tip="Faces Normals")
+        show_N1          = Boolean(False, "Show N1", tip="First Normal in Mesh UVNN or Curve TNNN")
+        show_N2          = Boolean(False, "Show N2", tip="Second Normal in Mesh UVNN or Curve TNNN")
+        show_N3          = Boolean(False, "Show N3", tip="Third Normal in Mesh TNNN")
+        show_N4          = Boolean(False, "Show N4", tip="Normal in Mesh points")
+        scale            = Float(1., "Scale")
+
+        with Layout("Separate"):
+            comps  = geo.separate_components()
+            mesh   = comps.mesh
+            curve  = comps.curve
+
+        with Layout("Faces"):
+
+            U, V, N1, N2 = Matrix4("UVNN").get_vectors()
+
+            m_lines  = Mesh.Switch(show_proj_normal, None, draw_vector(mesh.faces, Vector("Projected Normal"), scale=scale))
+            m_lines += Mesh.Switch(show_uv, None, draw_normals(mesh.faces, U.v, V.v, scale=scale))
+            m_lines += Mesh.Switch(show_uv_normals, None, draw_normals(mesh.faces, N1.v, N2.v, scale=scale))
+            m_lines += Mesh.Switch(show_N1, None, draw_vector(mesh.faces, N1.v,scale=scale))
+            m_lines += Mesh.Switch(show_N2, None, draw_vector(mesh.faces, N2.v,scale=scale))
+
+            m_lines += Mesh.Switch(show_N4, None, draw_vector(mesh.points, Vector("N4 v"), scale=scale))
+
+        with Layout("Curve"):
+
+            T, N1, N2, N3 = Matrix4("TNNN").get_vectors()
+
+            c_lines  = Curve.Switch(show_N1, None, draw_vector(curve.points, N1.v,scale=scale))
+            c_lines += Curve.Switch(show_N2, None, draw_vector(curve.points, N2.v,scale=scale))
+            c_lines += Curve.Switch(show_N3, None, draw_vector(curve.points, N3.v,scale=scale))
+
+        (m_lines + c_lines).out("Normals")
+        m_lines.out("Faces")
+        c_lines.out("Curves")
+
+    tree.add_method(Geometry4, self_attr="self", ret_class=Mesh)
+
+
+    # ====================================================================================================
+    # GROUP - Compute faces UV Indices
+    # ====================================================================================================
+
+    with GeoNodes("Compute UV Indices", is_group=True, prefix=op_) as tree:
+        
+        mesh = Mesh4.Plunge()
+        keep = Mesh(mesh)
+        
+        with Layout("4 Vertex indices for a Face Corner"):
+            corner = nd.corners_of_face()
+            edge0 = nd.edges_of_corner(corner)
+            edge1 = edge0.previous_edge_index
+            
+            v1 = nd.edge_vertices().vertex_index_1
+            v2 = v1.vertex_index_2
+            
+        with Layout("Read the 4 indices"):
+            A = mesh.edges.sample_index(v1, index=edge0)._lc("A")
+            B = mesh.edges.sample_index(v2, index=edge0)._lc("B")
+            C = mesh.edges.sample_index(v1, index=edge1)._lc("C")
+            D = mesh.edges.sample_index(v2, index=edge1)._lc("D")
+            
+        with Layout("Exactly two of them are identical"):
+            # A = C : index 0
+            AD = A.equal(D)._lc("A = D") # index = 1
+            BC = B.equal(C)._lc("B = C") # index = 2
+            BD = B.equal(D)._lc("B = D") # index = 3
+            
+        with Layout("Compute an index 0 to 3"):
+            index = Integer.Switch(AD, 0, 1)
+            index = index.switch(BC, 2)
+            index = index.switch(BD, 3)
+            
+        with Layout("The 3 vertex indices in each case"):
+            # ---------------------  A=C A=D B=C B=D
+            Oi = Integer.IndexSwitch( A,  A,  B,  B, index=index)._lc("Origin")
+            Ui = Integer.IndexSwitch( B,  B,  A,  A, index=index)._lc("U Index")
+            Vi = Integer.IndexSwitch( D,  C,  D,  C, index=index)._lc("V Index")
+
+        with Layout("Order to match the normal"):
+            pO = mesh.faces.capture_attribute(mesh.points.sample_index(nd.position, index=Oi))
+            pU = mesh.faces.capture_attribute(mesh.points.sample_index(nd.position, index=Ui))
+            pV = mesh.faces.capture_attribute(mesh.points.sample_index(nd.position, index=Vi))
+
+            U = pU - pO
+            V = pU - pO
+            N = U.cross(V)
+            inv = nd.normal.true_normal.dot(N).less_than(0)
+
+            Ui_ = Ui.switch(inv, Vi)
+            Vi_ = Vi.switch(inv, Ui)
+
+        with Layout("Store the 3 different indices"):
+            mesh.faces.Oi = Oi
+            mesh.faces.Ui = Ui_
+            mesh.faces.Vi = Vi_
+
+        with Layout("No change if already done"):
+            exists = keep.faces.sample_index(Integer("Oi").exists, index=0)
+            mesh = mesh.switch(exists, keep)
+            
+        mesh.out()
+
+    tree.add_method(Mesh4, self_attr="self", ret_class=Mesh4)
+
+    # ====================================================================================================
+    # GROUP - Compute faces UV 4-Vectors
+    # ====================================================================================================
+
+    with GeoNodes("Compute UV Vectors", is_group=True, prefix=op_) as tree:
+        
+        mesh = Mesh4.Plunge().compute_uv_indices()
+
+        P = Vector4.Position()
+
+        with Layout("O Position"):
+            index = Integer("Oi")
+            PO = Vector4(
+                mesh.points.sample_index(P.v, index=index),
+                mesh.points.sample_index(P.w, index=index),
+                )
+
+        with Layout("U Position"):
+            index = Integer("Ui")
+            PU = Vector4(
+                mesh.points.sample_index(P.v, index=index),
+                mesh.points.sample_index(P.w, index=index),
+                )
+
+        with Layout("V Position"):
+            index = Integer("Vi")
+            PV = Vector4(
+                mesh.points.sample_index(P.v, index=index),
+                mesh.points.sample_index(P.w, index=index),
+                )
+            
+        with Layout("Vectors U, V"):
+            U = PU - PO
+            V = PV - PO
+
+        #with Layout("Capture values on faces"):
+        #    node = mesh.faces.capture_attribute(uv=U.v, uw=U.w, vv=V.v, vw=V.w)
+        #    U = Vector4(node.uv, node.uw)
+        #    V = Vector4(node.vv, node.vw)
+
+        mesh.out()
+        U.out(name="U")
+        V.out(name="V")
+
+
+    tree.add_method(Mesh4, self_attr="self", ret_class=Mesh4)
+
+    # ====================================================================================================
+    # GROUP - To Cloud
+    # ====================================================================================================
+
+    """
+    with GeoNodes("To Cloud", is_group=True, prefix=geo_) as tree:
+
+        with Layout("By Geometry type"):
+            geo = Geometry()
+            w = Float(0, "w")
+            comps = geo.separate_components()
+
+        cloud = comps.point_cloud
+        cloud.points.Geo4 = 0
+
+        mesh_cloud = comps.mesh.to_points()
+        mesh_cloud.points.Geo4 = 1
+        
+        curve_cloud = comps.curve.to_mesh().to_points()
+        curve_cloud.points.Geo4 = 2
+
+        Geometry.Join(cloud, mesh_cloud, curve_cloud).out("Cloud")
+
+    tree.add_method(Geometry4, self_attr="self", ret_class=Cloud)
+    """
+
+    # ====================================================================================================
+    # MODIFIER - Compute Visible Faces from a point (typically a source of light)
+    # ====================================================================================================
+
+    with GeoNodes("Compute Visible Faces", is_group=True, prefix=op_) as tree:
+        
+        mesh = Mesh4.Plunge()
+        O = Vector4.Input()
+        tolerance = Float(0.1, "Tolerance", 0, 0.5)
+
+        keep = Mesh(mesh)
+
+        with Layout("Projection 1"):
+            Proj = Matrix4.projection_matrix()
+            P0 = Proj @ Vector4.Position()
+            O0 = Proj @ O
+
+            mesh.position = P0.v
+
+        with Layout("Additional rotation"):
+            Rot = Matrix4.rotation_matrix(w_euler=(1, 1, 1), _3d_euler=(1, 1, 1))
+            P1 = Rot @ P0
+            O1 = Rot @ O0
+
+        for rep in repeat(2, mesh=mesh, o=O0.v):
+
+            mesh = rep.mesh
                 
-            with Layout("Cloud - Nothing"):
-                
-                cloud = comps.point_cloud
+            with Layout("Direction and distance"):
 
-                # Exists if at least one point already plunged
-                exists = cloud.points.sample_index(Float("P4 w").exists, 0)
+                ray = nd.position - rep.o
+                dist = ray.length()
 
-                # Position
-                cloud.points.P4_v = nd.position
-                cloud.points.P4_w = w
+            node = mesh.raycast(
+                #attribute: Float | Integer | Boolean | Vector | Color | Rotation | Matrix = None,
+                #interpolation: Literal['Interpolated', 'Nearest'] = None,
+                source_position = O.v,
+                ray_direction   = ray.normalize(),
+                ray_length      = 1.1*dist,
+            ).node
 
-            # ---------------------------------------------------------------------------
-            # Mesh
-            # Matrix (U, V, Normal 1, Normal 2) stored on faces
-            # ---------------------------------------------------------------------------
+            d = mesh.faces.capture_attribute(nd.position).distance(mesh.faces.capture_attribute(node.hit_position))
+            vis = node.is_hit & d.less_than(tolerance)
 
-            with Layout("Mesh"):   
-                
-                mesh = comps.mesh
+            vis = Boolean.Switch(rep.iteration.equal(0), Boolean("Visible") | vis, vis)
+            mesh.faces.Visible = vis
 
-                # Exists if at least one point already plunged
-                exists = exists | mesh.points.sample_index(Float("P4 w").exists, 0)
+            mesh.position = P1.v
 
-                # Position
-                mesh.points.P4_v = nd.position
-                mesh.points.P4_w = w
+            rep.mesh = mesh
+            rep.o = O1.v
 
-                # U, V and 2 normals
-                x, y, z = nd.normal.xyz
+        keep.faces.Visible = rep.mesh.faces.sample_index(Boolean("Visible"), index=nd.index)
 
-                u = Vector((y + z, -x, -x)).normalize()
-                v = nd.normal.cross(u)
+        keep.out()
+        #rep.mesh.out("Debug")
 
-                U = Vector4(u, 0)
-                V = Vector4(v, 0)
-                N1 = Vector4(nd.normal, 0)
-                N2 = Vector4.Cross(U, V, N1)
+    tree.add_method(Mesh, self_attr="self", ret_class=Mesh)
 
-                mesh.faces.UVNN = Matrix4.FromVectors(U, V, N1, N2)
+    # ====================================================================================================
+    # MODIFIER - Light
+    # ====================================================================================================
 
-            # ---------------------------------------------------------------------------
-            # Curve
-            # Matrix (Tangent, 3 normals) stored on points
-            # ---------------------------------------------------------------------------
-                
-            with Layout("Curve"):
-                
-                curve = comps.curve
+    with GeoNodes("Light", prefix=main_):
 
-                # Exists if at least one point already plunged
-                exists = exists | curve.points.sample_index(Float("P4 w").exists, 0)
+        P4 = Vector4.Input()
+        intensity = Float(1, "Intensity", 0)
+        col = Color(1, "Color")
 
-                # Position
-                curve.points.P4_v = nd.position
-                curve.points.P4_w = w
+        sph = Mesh.UVSphere(radius=.1)
+        sph.faces.P4_v = P4.v
+        sph.faces.P4_w = P4.w
+        sph.faces.Intensity = intensity
+        sph.faces.Color = col
+        sph.faces.material = "4 Light"
 
-                # Tangent and 3 normals
-                T  = Vector4(nd.curve_tangent, 0)
-                N1 = Vector4(nd.normal, 0)
-                N2 = Vector4(nd.curve_tangent.cross(nd.normal), 0)
-                N3 = Vector4((0, 0, 0, 1))
+        # Projection Matrix
+        Proj = Matrix4.projection_matrix()
 
-                curve.points.TNNN = Matrix4.FromVectors(T, N1, N2, N3)
+        P = Matrix4(Proj) @ P4
+        sph.transform(translation=P.v)
 
-            # ---------------------------------------------------------------------------
-            # Join
-            # ---------------------------------------------------------------------------
+        sph.out("Mesh")
 
-            with Layout("Join & switch"):
-                new_geo = Geometry(Geometry.Join(cloud, mesh, curve))
-                new_geo = new_geo.switch(exists, geo)
+    # ====================================================================================================
+    # MODIFIER - Light on surface
+    # ====================================================================================================
 
-            new_geo.out("Geometry")
+    with GeoNodes("Normal Plane Reflection", prefix=mesh_) as tree:
 
-        tree.add_method(Geometry4, func_name='plunge', self_attr="self", ret_class=Geometry4)
+        mesh = Mesh4.Plunged()
+        coll = Collection("4D Lights", "Lights")
+        tolerance = Float(0.1, "Tolerance", 0, 0.5)
 
-        # ====================================================================================================
-        # MODIFIER - Translation
-        # ====================================================================================================
+        with Layout("Projection Matrix"):
+            Proj = Matrix4.projection_matrix()
 
-        with GeoNodes("Translate", prefix=mod_) as tree:
+            # Observation direction
+            Obs = Vector4(Proj.xyz)
 
-            geo = Geometry4.Plunged()
-            T = Vector4.Input()
+        with Layout("Face Position & Perpendicular Plane"):
 
+            UVNN = Matrix4("UVNN")
+            N1 = UVNN.get_vector4(2)
+            N2 = UVNN.get_vector4(3)
             P4 = Vector4.Position()
-            P4 = P4 + T
-            P4.store_position(geo)
 
-            geo.out("Geometry")
+            mesh.faces.Use_Emission = True
+            mesh.faces.Emission     = 0.0
+            mesh.faces.Light_Color  = Vector()
 
-        tree.add_method(Geometry4, self_attr = "self", ret_class=Geometry4)
+        with Layout("Lights"):
+            lights  = coll.info(separate_children=True).instances
+            nlights = lights.insts.count
 
-        # ====================================================================================================
-        # MODIFIER - Scale
-        # ====================================================================================================
+        with Layout("Loop on light sources"):
 
-        with GeoNodes("Scale", prefix=mod_) as tree:
+            for rep in repeat(nlights, mesh=mesh, rays=None):
 
-            geo = Geometry4.Plunged()
+                with Layout("Light info"):
 
-            scale = Float(1.0, "Scale")
-            pivot = Vector4.Input(name="Pivot")
+                    light = Mesh(lights[nd.index.equal(rep.iteration)].realize())
+
+                    S4_v  = light.faces.sample_index(Vector("P4 v"), index=0)
+                    S4_w  = light.faces.sample_index(Float("P4 w"), index=0)
+                    S_int = light.faces.sample_index(Float("Intensity"), index=0)
+                    S_col = light.faces.sample_index(Color.Named("Color"), index=0)
+
+                with Layout("Visible faces from this source"):
+                    mesh = mesh.compute_visible_faces(xyz=S4_v, w=S4_w, tolerance=tolerance)
+
+                with Layout("Incident Direction"):
+                    ray = (P4 - Vector4(S4_v, S4_w))
+                    Dir = ray.normalize()
+
+                with Layout("Projection on the perpendicular plane"):
+                    P1 = N1.scale(N1.dot(Dir))
+                    P2 = N2.scale(N2.dot(Dir))
+
+                    In_plane = P1 + P2
+                    Out_plane = Dir - In_plane
+
+                with Layout("Outcoming direction"):
+                    Out_dir = Out_plane - In_plane
+                    d = Out_dir.dot(Obs)
+
+                with Layout("Color & intensity contribution"):
+
+                    intensity = d.map_range(from_min=0, from_max=-1)*S_int
+
+                    intensity = intensity.switch_false(Boolean("Visible"), 0.0)
+
+                    mesh.faces.Emission = Float("Emission") + intensity
+                    mesh.faces.Light_Color = Vector("Light_Color") + Vector(S_col).scale(intensity)
+
+                with Layout("Ray visualization"):
+
+                    count = mesh.faces.count
+                    light_pos = (Proj @ Vector4(S4_v, S4_w)).v
+                    lines = Cloud.Points(count, position=light_pos).to_vertices()
+
+                    Face_pos = Vector4(
+                        mesh.faces.sample_index(P4.v, index=nd.index), 
+                        mesh.faces.sample_index(P4.w, index=nd.index))
+                    face_pos = (Proj @ Face_pos).v
+                    out_dir = mesh.faces.sample_index((Proj @ Out_dir).v, index=nd.index).normalize()
+
+                    lines.points.Out_Dir = out_dir
+
+                    lines = lines.points.extrude(offset=face_pos - light_pos)
+                    lines.points[lines.top].extrude(offset=Vector("Out Dir"), offset_scale=3)
+
+                    rep.rays = rep.rays + lines
+
+                rep.mesh = mesh
+
+        mesh = rep.mesh
+
+        mesh.faces.Light_Color = Vector("Light Color") / Float("Intensity")
+
+        mesh.out()
+        rep.rays.out("Rays")
+
+    tree.add_method(Mesh4, self_attr="self", ret_class=Mesh4)
+
+    # ====================================================================================================
+    # MODIFIER - Translation
+    # ====================================================================================================
+
+    with GeoNodes("Translation", prefix=geo_) as tree:
+
+        geo = Geometry4.Plunged()
+        T = Vector4.Input()
+
+        P4 = Vector4.Position()
+        P4 = P4 + T
+        P4.store_position(geo)
+
+        geo.out("Geometry")
+
+    tree.add_method(Geometry4, self_attr = "self", ret_class=Geometry4)
+
+    # ====================================================================================================
+    # MODIFIER - Scale
+    # ====================================================================================================
+
+    with GeoNodes("Scale", prefix=geo_) as tree:
+
+        geo = Geometry4.Plunged()
+
+        scale = Float(1.0, "Scale")
+        pivot = Vector4.Input(name="Pivot")
+
+        P4 = Vector4.Position()
+        P4 = P4 - pivot
+
+        P4 = P4.scale(scale)
+
+        P4 = P4 + pivot
+        P4.store_position(geo)
+
+        geo.out("Geometry")
+
+    tree.add_method(Geometry4, self_attr = "self", ret_class=Geometry4)
+
+    # ====================================================================================================
+    # MODIFIER - Matrix Rotation
+    # ====================================================================================================
+
+    with GeoNodes("Matrix Rotation", is_group = True, prefix=op_) as tree:
+
+        geo = Geometry4.Plunged()
+        R = Matrix(None, "Rotation")
+        pivot = Vector4.Input(name="Pivot")
+
+        with Layout("Position"):
 
             P4 = Vector4.Position()
             P4 = P4 - pivot
 
-            P4 = P4.scale(scale)
+            #P4 = P4.matmul(R)
+            P4 = Matrix4(R) @ P4
 
             P4 = P4 + pivot
             P4.store_position(geo)
 
-            geo.out("Geometry")
+        comps = geo.separate_components()
 
-        tree.add_method(Geometry4, self_attr = "self", ret_class=Geometry4)
+        cloud = comps.point_cloud
+        mesh = comps.mesh
+        curve = comps.curve
 
-        # ====================================================================================================
-        # MODIFIER - Rotation
-        # ====================================================================================================
+        with Layout("Face Matrices"):
+            # UV matrix
+            mesh.faces.UVNN = R @ Matrix("UVNN")
 
-        with GeoNodes("Rotate", prefix=mod_) as tree:
+            # Normal
+            N4 = Vector4("N4")
+            exists = N4.v.exists
+            N4 = Matrix4(R) @ N4
+            mesh.faces[exists].N4_v = N4.v
+            mesh.faces[exists].N4_w = N4.w
 
-            geo = Geometry4.Plunged()
-            R = Matrix(None, "Rotation")
-            pivot = Vector4.Input(name="Pivot")
+        with Layout("Curve Matrices"):
+            curve.points.TNNN = R @ Matrix("TNNN")
 
-            with Layout("Position"):
+        Geometry.Join(cloud, mesh, curve).out("Geometry")
 
-                P4 = Vector4.Position()
-                P4 = P4 - pivot
+    tree.add_method(Geometry4, self_attr = "self", ret_class=Geometry4)
 
-                #P4 = P4.matmul(R)
-                P4 = Matrix4(R) @ P4
+    # ====================================================================================================
+    # MODIFIER - Rotation
+    # ====================================================================================================
 
-                P4 = P4 + pivot
-                P4.store_position(geo)
+    with GeoNodes("Rotation", prefix=geo_) as tree:
 
-            comps = geo.separate_components()
+        geo = Geometry4.Plunged()
 
-            cloud = comps.point_cloud
-            mesh = comps.mesh
-            curve = comps.curve
+        R = Matrix4.rotation_matrix().link_inputs()
 
-            with Layout("Face Matrices"):
-                # UV matrix
-                mesh.faces.UVNN = R @ Matrix("UVNN")
+        geo = geo.matrix_rotation(rotation=R).link_inputs()
 
-                # Normal
-                N4 = Matrix4(R) @ Vector4("N4")
-                mesh.faces.N4_v = N4.v
-                mesh.faces.N4_w = N4.w
+        geo.out()
+
+
+    tree.add_method(Geometry4, self_attr = "self", ret_class=Geometry4)    
+
+    # ====================================================================================================
+    # MODIFIER - 4D Parameters
+    # ====================================================================================================
+
+    with GeoNodes("Parameters", prefix=main_):
+        """ Set an object as the global host for shared 4D parameters
+
+        The modifier requires 6 angles to defined the projection Matrix.
+        The projection can be cancelled with 'No Transformation' switch.
+
+        The user can optionnally display the 4 axis.
+        """
+        
+        nope = Boolean(False, "No Transformation")
+        
+        # ---------------------------------------------------------------------------
+        # Projection Matrix
+        # ---------------------------------------------------------------------------
+        
+        with Layout("Store the projection matrix in a 1-Point Cloud"):
+
+            P = Matrix4.rotation_matrix().link_inputs(None, "Angles")
+            
+            cloud = Cloud.Points(1)
+            P = P.switch(nope)
+            cloud.points.Projection = P
+            
+        # ---------------------------------------------------------------------------
+        # Axis
+        # ---------------------------------------------------------------------------
+        
+        with Panel("Axis"):
+            show_axis = Boolean(False, "Show Axis")
+            axis_len  = Float(5, "Length")
+            mat       = Material("4 Axis", "Material")
+            
+        a, b = axis_len*(-1/3), axis_len*(2/3)
+        
+        for i, col in enumerate(('red', 'lime', 'blue', 'black')):
+            
+            with Layout(f"Axis {'XYZW'[i]}"):
+                m = [0]*16
+                m[i] = a
+                m[4 + i] = b
+                M = P @ Matrix(m)
+
+                P0 = Matrix4(M).get_vector4(0)
+                P1 = Matrix4(M).get_vector4(1)
                 
-
-            with Layout("Curve Matrices"):
-                curve.points.TNNN = R @ Matrix("TNNN")
-
-            Geometry.Join(cloud, mesh, curve).out("Geometry")
-
-        tree.add_method(Geometry4, self_attr = "self", ret_class=Geometry4)
-
-
-        # ====================================================================================================
-        # MODIFIER - 4D Parameters
-        # ====================================================================================================
-
-        with GeoNodes("4D_ Parameters"):
-            """ Set an object as the global host for shared 4D parameters
-
-            The modifier requires 6 angles to defined the projection Matrix.
-            The projection can be cancelled with 'No Transformation' switch.
-
-            The user can optionnally display the 4 axis.
-            """
-            
-            nope = Boolean(False, "No Transformation")
-            
-            # ---------------------------------------------------------------------------
-            # Projection Matrix
-            # ---------------------------------------------------------------------------
-            
-            with Layout("Store the projection matrix in a 1-Point Cloud"):
-
-                P = Matrix4.rotation_matrix().link_inputs(None, "Angles")
+                l = Curve.Line(P0.v, P1.v)
+                l.splines.Color = Color(col)
                 
-                cloud = Cloud.Points(1)
-                P = P.switch(nope)
-                cloud.points.Projection = P
+                h = Cloud.Points(1, position=P1.v)
+                h.points.Color = Color(col)
+                h.points.Dir = P1.v - P0.v
+                if i == 0:
+                    lines = l
+                    heads = h
+                else:
+                    lines += l
+                    heads += h
                 
-            # ---------------------------------------------------------------------------
-            # Axis
-            # ---------------------------------------------------------------------------
+        with Layout("Shafts"):
+            axis = lines.to_mesh(profile_curve = Curve.Circle(radius=0.025, resolution=16), fill_caps=True)
             
-            with Panel("Axis"):
-                show_axis = Boolean(False, "Show Axis")
-                axis_len  = Float(5, "Length")
-                mat       = Material("4 Axis", "Material")
-                
-            a, b = axis_len*(-1/3), axis_len*(2/3)
+        with Layout("Heads"):
+            cone = Mesh.Cone(vertices=16, radius_bottom=.15, radius_top=0, depth=0.25)
+            cones = heads.instance_on(instance=cone)
+            cones.rotate(rotation=Rotation().align_to_vector(Vector("Dir")))
             
-            for i, col in enumerate(('red', 'lime', 'blue', 'black')):
-                
-                with Layout(f"Axis {'XYZW'[i]}"):
-                    m = [0]*16
-                    m[i] = a
-                    m[4 + i] = b
-                    M = P @ Matrix(m)
+            axis = Mesh(axis + cones.realize())
+        
+        axis.faces.material = mat
+        axis.faces.shade_smooth = True
+        
+        (cloud + axis.switch_false(show_axis)).out("Geometry")
 
-                    P0 = Matrix4(M).get_vector4(0)
-                    P1 = Matrix4(M).get_vector4(1)
-                    
-                    l = Curve.Line(P0.v, P1.v)
-                    l.splines.Color = Color(col)
-                    
-                    h = Cloud.Points(1, position=P1.v)
-                    h.points.Color = Color(col)
-                    h.points.Dir = P1.v - P0.v
-                    if i == 0:
-                        lines = l
-                        heads = h
-                    else:
-                        lines += l
-                        heads += h
-                    
-            with Layout("Shafts"):
-                axis = lines.to_mesh(profile_curve = Curve.Circle(radius=0.025, resolution=16), fill_caps=True)
-                
-            with Layout("Heads"):
-                cone = Mesh.Cone(vertices=16, radius_bottom=.15, radius_top=0, depth=0.25)
-                cones = heads.instance_on(instance=cone)
-                cones.rotate(rotation=Rotation().align_to_vector(Vector("Dir")))
-                
-                axis = Mesh(axis + cones.realize())
-            
-            axis.faces.material = mat
-            axis.faces.shade_smooth = True
-            
-            (cloud + axis.switch_false(show_axis)).out("Geometry")
+    # ====================================================================================================
+    # MODIFIER - Projection
+    # ====================================================================================================
+        
+    with GeoNodes("Projection", prefix=main_) as tree:
+        """ Projection a 4D geometry into 3D
+        """
+        geo = Geometry4.Plunged()
 
-        # ====================================================================================================
-        # MODIFIER - Projection
-        # ====================================================================================================
-            
-        with GeoNodes("4D_ Projection") as tree:
-            """ Projection a 4D geometry into 3D
-            """
-            geo = Geometry4.Plunged()
+        use_mat = Boolean(False, "Set Material")
+        mat     = Material("4 Face", "Material")
 
-            use_mat = Boolean(False, "Set Material")
-            mat     = Material("4 Face", "Material")
-            smooth  = Boolean(True, "Smooth")
-            
-            with Panel("Options"):
-                show_normals = Boolean(False, "Show Normals")
-                scale_normals = Float(1., "Scale")
+        with Panel("Options"):
+            smooth       = Boolean(True,  "Smooth")
+            use_emission = Boolean(True,  "Emission")
+            use_normal   = Boolean(True,  "Projected Normal")
+            vol_normal   = Boolean(False, "Volume Normal")
+            use_interior = Boolean(True,  "Interior")
+            color        = Color((.6, .6, .8), "Color")
+            back_color   = Color((.1, .1, .2), "Interior Color")
+            roughness    = Float.Factor(.5, "Roughness", 0, 1)
+
+        with Layout("Projection"):
 
             # Projection Matrix
             Proj = Matrix4.projection_matrix()
@@ -1594,502 +2041,681 @@ class Geometry4(Mesh):
             Obs = Vector4(Proj.xyz)
 
             # Rotation
-            geo = geo.rotate(Proj)
+            geo = Geometry4(geo).matrix_rotation(Proj)
 
-            # Finalize
-            geo = geo.switch(use_mat, Mesh(geo).set_material(mat))
-            geo = Mesh(geo)
-            geo.faces.smooth = smooth
-
-            # Normals
-            geo = geo.switch(show_normals, geo + vis_normals(geo, scale_normals))
-
-            geo.out("Geometry")
-
-        tree.add_method(Geometry4, "projection", "", ret_class=Geometry)
-
-        # ====================================================================================================
-        # MODIFIER - Mesh Merge Points
-        # ====================================================================================================
-
-        with GeoNodes("Merge Points", prefix=mesh_) as tree:
-
-            geo = Geometry4.Plunged()
+        with Layout("Separate"):
             comps = geo.separate_components()
-            cloud, mesh, curve = comps.point_cloud, comps.mesh, comps.curve
+            mesh  = comps.mesh
+            curve = comps.curve
+            cloud  = comps.point_cloud
 
-            with Layout("Merge Mesh points"):
-                sel = Boolean(False, "Selection", hide_value=True)
+        with Layout("Faces options"):
+            mesh.faces.Use_Emission  = use_emission
+            mesh.faces.Use_Normal    = use_normal
+            mesh.faces.Color         = color
+            mesh.faces.Back_Color    = back_color
 
-                P4 = Vector4.Position()
+        with Layout("Faces Normals"):
 
-                stats = mesh.points.attribute_statistic(P4.v)
-                vmax = stats.node.max + (1, 1, 1)
+            # UVNN Normal
+            N1 = Matrix4("UVNN").get_vector4(2)
 
-                stats = mesh.points.attribute_statistic(P4.w)
-                wmin = stats.node.min
+            # Volume Normal
+            N4 = Vector4("N4")
 
-                mesh.offset = vmax + P4.w - wmin
+            Normal = N1.switch(vol_normal, N4)
+            mesh.faces.Projected_Normal = Normal.v
 
-                mesh = mesh[sel].merge_by_distance()
+        with Layout("Orientation"):
+            interior = Obs.dot(N1).map_range(from_min=-0.05, from_max=0.05)
+            mesh.faces.Roughness = interior.map_range(to_min=roughness, to_max=roughness + 0.3)
+            mesh.faces.Interior = interior.switch_false(use_interior)
 
-                mesh.position = P4.v
+        with Layout("Material & Smoothness"):
+            mesh = mesh.switch(use_mat, mesh.set_material(mat))
+            mesh = Mesh(mesh)
+            mesh.faces.smooth = smooth
 
-            Geometry.Join(cloud, mesh, curve).out("Geometry")
+        with Layout("Add Normals"):
+            lines = geo.normals().link_inputs(None, "Normals").normals
 
-        tree.add_method(Geometry4, self_attr = "self", ret_class=Geometry4)
+        geo = Geometry.Join(cloud, curve, mesh, lines)
+        geo.out("Geometry")
 
-        # ====================================================================================================
-        # PRIMITIVE - Curve Line
-        # ====================================================================================================
+    tree.add_method(Geometry4, "projection", "", ret_class=Geometry)
 
-        with GeoNodes("Line", prefix=curve_) as tree:
-            """ Create a 4D Line
-            """
-            resol = Integer(2, "Count", 2)
+    # ====================================================================================================
+    # MODIFIER - Mesh Merge Points
+    # ====================================================================================================
 
-            with Panel("Start Point"):
-                V0 = Vector4.Input()
+    with GeoNodes("Merge Points", prefix=mesh_) as tree:
 
-            with Panel("End Point"):
-                V1 = Vector4.Input((0, 0, 1))
+        geo = Mesh4.Plunge()
+        comps = geo.separate_components()
+        cloud, mesh, curve = comps.point_cloud, comps.mesh, comps.curve
 
-            with Panel("Trim"):
-                trim0 = Float.Factor(0, "Start", 0, 1)
-                trim1 = gnmath.max(trim0, Float.Factor(1, "End", 0, 1))
+        with Layout("Merge Mesh points"):
+            sel = Boolean(False, "Selection", hide_value=True)
 
-            # Since the 3D Curve couled be null, we can't rely on P.v for the trim
+            P4 = Vector4.Position()
 
-            line = Curve.Line(0, (1, 1, 1))
-            line.points.P4_v = nd.position.map_range(to_min=V0.v, to_max=V1.v)
-            line.points.P4_w = nd.position.x.map_range(to_min=V0.w, to_max=V1.w)
-            line = line.trim(trim0, trim1).resample(mode='Count', count=resol)
-            line.position = Vector("P4 v")
+            stats = mesh.points.attribute_statistic(P4.v)
+            vmax = stats.node.max + (1, 1, 1)
 
-            T = (V1 - V0).normalize()
-            line.points.TNNN = Matrix4.AlignAxisToVector(axis=0, V4=T)
-            
-            finalize(line).out("Curve'")
+            stats = mesh.points.attribute_statistic(P4.w)
+            wmin = stats.node.min
 
-        tree.add_method(Geometry4, ret_class=Geometry4)
+            mesh.offset = vmax + P4.w - wmin
 
-        # ====================================================================================================
-        # PRIMITIVE - Curve Circle
-        # ====================================================================================================
+            mesh = mesh[sel].merge_by_distance()
 
-        with GeoNodes("Circle", prefix=curve_) as tree:
+            mesh.position = P4.v
 
-            radius  = Float(1, "Radius", 0.)
-            resol   = Integer(32, "Count", 3)
+        Geometry.Join(cloud, mesh, curve).out("Mesh")
 
-            with Panel("Trim"):
-                trim0 = Float.Factor(0, "Start", 0, 1)
-                trim1 = gnmath.max(trim0, Float.Factor(1, "End", 0, 1))
+    tree.add_method(Mesh4, self_attr = "self", ret_class=Mesh4)
 
-            factor     = Float.Factor(1, "Close", 0, 1)
-            move_curve = Boolean(False, "Move Curve", tip="The curve moves to the origin when open")
-            z_rot      = Float.Angle(0, "Rotation")
+    # ====================================================================================================
+    # PRIMITIVE - Curve Line
+    # ====================================================================================================
 
-            close = factor.equal(1) & (trim0.equal(0) & trim1.equal(1))
+    with GeoNodes("Line", prefix=curve_) as tree:
+        """ Create a 4D Line
+        """
+        resol = Integer(2, "Count", 2)
 
-            with Layout("Closed Circle"):
-                circle = Curve.Circle(resolution=resol, radius=radius)
-                circle.transform(rotation = Rotation((0, 0, z_rot)))
-                circle = Geometry4.Plunge(circle)
+        with Panel("Start Point"):
+            V0 = Vector4.Input()
 
-            with Layout("Compute the arc of the open line"):
-                angle = (pi*factor)._lc("Half Arc Angle")
-                r = (radius/factor)._lc("Arc Radius")
-                resol = resol + 1
+        with Panel("End Point"):
+            V1 = Vector4.Input((0, 0, 1))
 
-            with Layout("Base line for angles"):
-                ag_min, ag_max = pi - angle, pi + angle
-                angle0 = trim0.map_range(to_min=ag_min, to_max=ag_max)
-                angle1 = trim1.map_range(to_min=ag_min, to_max=ag_max)
+        with Panel("Trim"):
+            trim0 = Float.Factor(0, "Start", 0, 1)
+            trim1 = gnmath.max(trim0, Float.Factor(1, "End", 0, 1))
 
-                line = Curve.Line((angle0, 0, 0), (angle1, 0, 0)).resample(mode='Count', count=resol)
-                ag = line.points.sample_index(nd.position.x, nd.index)
-                cag, sag = gnmath.cos(ag), gnmath.sin(ag)
+        # Since the 3D Curve could be a single point, we can't rely on P.v for the trim
 
-            with Layout("Curved Line"):
-                offset = Float.Switch(move_curve, -1, -factor)*radius
-                line.position = Vector((offset + r*(1 + cag), r*sag, 0))
+        line = Curve.Line(0, (1, 1, 1))
+        line.points.P4_v = nd.position.map_range(to_min=V0.v, to_max=V1.v)
+        line.points.P4_w = nd.position.x.map_range(to_min=V0.w, to_max=V1.w)
+        line = line.trim(trim0, trim1).resample(mode='Count', count=resol)
+        line.position = Vector("P4 v")
 
-            with Layout("Straigth Line"):
-                half_p = pi*radius
-                straight = Curve.Line((offset, half_p, 0), (offset, -half_p, 0)).trim(trim0, trim1).resample(mode='Count', count=resol)
-                line = line.switch(factor.equal(0), straight)
+        T = (V1 - V0).normalize()
+        line.points.TNNN = Matrix4.AlignAxisToVector(axis=0, V4=T)
+        
+        finalize(line).out("Curve'")
 
-            with Layout("Rotation"):
-                line.transform(rotation=Rotation((0, 0, z_rot)))
+    tree.add_method(Curve4, ret_class=Curve4)
 
-            with Layout("Plunge into 4D"):
+    # ====================================================================================================
+    # PRIMITIVE - Curve Circle
+    # ====================================================================================================
 
-                if True:
-                    line = Geometry4.Plunge(line)
+    with GeoNodes("Circle", prefix=curve_) as tree:
 
-                else:
-                    m = [0]*16
-                    m[:3] = nd.position.xyz
-                    m[4:8]  = gnmath.cos(ag + z_rot), gnmath.sin(ag + z_rot), 0, 0
-                    m[8:12] = 0, 0, 1, 0
-                    m[12:]  = 0, 0, 0, 1
+        radius  = Float(1, "Radius", 0.)
+        resol   = Integer(32, "Count", 3)
 
-                    line = Curve(line)
-                    line.points.M4D = Matrix(m)
+        with Panel("Trim"):
+            trim0 = Float.Factor(0, "Start", 0, 1)
+            trim1 = gnmath.max(trim0, Float.Factor(1, "End", 0, 1))
 
-            with Layout("Closed"):
-                line = line.switch(close & factor.equal(1), circle)
+        factor     = Float.Factor(1, "Close", 0, 1)
+        move_curve = Boolean(False, "Move Curve", tip="The curve moves to the origin when open")
+        z_rot      = Float.Angle(0, "Rotation")
 
-            finalize(line, False).out("Curve")
+        close = factor.equal(1) & (trim0.equal(0) & trim1.equal(1))
 
-        tree.add_method(Geometry4, ret_class=Geometry4)
+        with Layout("Closed Circle"):
+            circle = Curve.Circle(resolution=resol, radius=radius)
+            circle.transform(rotation = Rotation((0, 0, z_rot)))
+            circle = Geometry4.Plunge(circle)
 
-        # ====================================================================================================
-        # PRIMITIVE - Mesh Plane
-        # ====================================================================================================
+        with Layout("Compute the arc of the open line"):
+            angle = (pi*factor)._lc("Half Arc Angle")
+            r = (radius/factor)._lc("Arc Radius")
+            resol = resol + 1
 
-        with GeoNodes("Plane", prefix=mesh_) as tree:
-            """ Create a 4-Plane
+        with Layout("Base line for angles"):
+            ag_min, ag_max = pi - angle, pi + angle
+            angle0 = trim0.map_range(to_min=ag_min, to_max=ag_max)
+            angle1 = trim1.map_range(to_min=ag_min, to_max=ag_max)
 
-            The plane is a XY plane or is defined by two vectors.
+            line = Curve.Line((angle0, 0, 0), (angle1, 0, 0)).resample(mode='Count', count=resol)
+            ag = line.points.sample_index(nd.position.x, nd.index)
+            cag, sag = gnmath.cos(ag), gnmath.sin(ag)
 
-            In addition, the plane can be rotated.
+        with Layout("Curved Line"):
+            offset = Float.Switch(move_curve, -1, -factor)*radius
+            line.position = Vector((offset + r*(1 + cag), r*sag, 0))
 
-            The user can optionnally create a plane perpendiculare to the two vectors.
-            """
-            
-            with Layout("Base Grid"):
-                use_vectors = Boolean(True, "Use Vectors")
-                use_perp    = Boolean(False, "Perp. Plane")
+        with Layout("Straigth Line"):
+            half_p = pi*radius
+            straight = Curve.Line((offset, half_p, 0), (offset, -half_p, 0)).trim(trim0, trim1).resample(mode='Count', count=resol)
+            line = line.switch(factor.equal(0), straight)
 
-                grid = Mesh.Grid().link_inputs(None, "Grid")
-                grid4 = Geometry4.Plunge(grid)
+        with Layout("Rotation"):
+            line.transform(rotation=Rotation((0, 0, z_rot)))
 
-            with Layout("Defined by Rotation"):
+        with Layout("Plunge into 4D"):
 
-                with Matrix.Switch(use_vectors) as R:
-                    Matrix4.rotation_matrix().link_inputs(None, "Rotation").out("False")
+            if True:
+                line = Geometry4.Plunge(line)
 
-            with R:
-                with Panel("Vectors"):
-                    V1 = Vector4.Input((1, 0, 0), shape="Single")
-                    V2 = Vector4.Input((0, 1, 0), shape="Single")
+            else:
+                m = [0]*16
+                m[:3] = nd.position.xyz
+                m[4:8]  = gnmath.cos(ag + z_rot), gnmath.sin(ag + z_rot), 0, 0
+                m[8:12] = 0, 0, 1, 0
+                m[12:]  = 0, 0, 0, 1
 
-                #M = vec4_.perp_plane(**V1.args(), **V2.args(rank=1))
-                M = Matrix4.perp_planes(**V1.args(), **V2.args(rank=1))
-                    
-                with Layout("Perpendicular Plane"):
-                    m = M.as_tuple
-                    m2 = [0]*16
-                    m2[:8] = m[8:]
-                    m2[8:] = m[:8]
-                    
-                    M = M.switch(use_perp, Matrix(m2))
+                line = Curve(line)
+                line.points.M4D = Matrix(m)
 
-                M.out("True")
+        with Layout("Closed"):
+            line = line.switch(close & factor.equal(1), circle)
 
-            # Rotation
-            grid4 = grid4.rotate(R)
+        finalize(line, False).out("Curve")
 
-            finalize(grid4, Material("4 Face", "Material")).out("Mesh")
+    tree.add_method(Curve4, ret_class=Curve4)
 
-        tree.add_method(Geometry4, ret_class=Geometry4)
+    # ====================================================================================================
+    # PRIMITIVE - Mesh Plane
+    # ====================================================================================================
 
-        # ====================================================================================================
-        # MODIFIER - Curve to Surface
-        # ====================================================================================================
+    with GeoNodes("Plane", prefix=mesh_) as tree:
+        """ Create a 4-Plane
 
-        with GeoNodes("To Surface", prefix=curve_) as tree:
+        The plane is a XY plane or is defined by two vectors.
 
-            bbone = Curve(Geometry4.Plunge(Curve()))
+        In addition, the plane can be rotated.
 
-            with Panel("Profile"):
-                use_object  = Boolean(False, "Object")
-                profile     = Curve(None, "Curve", tip="Curve in XY plane")
-                obj         = Object(None, "Curve Object", tip="Curve object in XY plane")
+        The user can optionnally create a plane perpendicular to the two vectors.
+        """
+        
+        with Layout("Base Grid"):
+            use_vectors = Boolean(True, "Use Vectors")
+            use_perp    = Boolean(False, "Perp. Plane")
 
-            with Layout("Profile Curve"):
-                profile = Curve(Geometry4.Plunge(profile.switch(use_object, obj.info().geometry)))
+            grid = Mesh.Grid().link_inputs(None, "Grid")
+            grid.corners.UV_Map = grid.uv_map
+            use_tris = Boolean(False, "Triangles")
 
-            with Panel("Transformation"):
-                twist_clx = Closure(None, "Twist X", tip="Factor -> Angle")
-                twist_cly = Closure(None, "Twist Y", tip="Factor -> Angle")
+            with Layout("Face UV Indices"):
+                nx = Integer.Input("Vertices X")
+                ny = Integer.Input("vertices Y")
 
-                use_scale = Boolean(False, "Scale")
-                scale_cl  = Closure(None, "Scale",    tip="Factor -> Scale")
+                with Layout("Rectangle Faces"):
+                    # Faces along y : faces count = ny - 1
+                    # y ----->
+                    # point : 0 --- 1 --- 2 --- 3 --- 4  : 5 points
+                    # face  :    0     1     2     3     : 4 faces = ny - 1
+                    #
+                    # faces_per_col = ny - 1
+                    # - face_index // faces_per_col : point row index
+                    # - face_index % faces_per_col  : point col index
 
-            mat    = Material("4 Face", "Material")
-            smooth = Boolean(True, "Shade Smooth")
+                    rOi = ( ny*(nd.index // (ny - 1)) ) + ( nd.index%(ny - 1) )
+                    rUi = rOi + ny
+                    rVi = rOi + 1
 
-            # ---------------------------------------------------------------------------
-            # Backbone
-            # ---------------------------------------------------------------------------
+                with Layout("Triangle Faces"):
+                    # Faces along y : faces count = (ny - 1) * 2
+                    # y ----->
+                    # point : 0 --- 1 --- 2 --- 3 --- 4  : 5 points
+                    # face  :   0,1   2,3   4,5   6,7    : 8 faces = 2(ny - 1)
+                    #
+                    # faces_per_col = 2*(ny - 1)
+                    # - face_index // faces_per_col : point row index
+                    # - face_index % faces_per_col  : twice point col index
+
+                    faces_per_col = 2*(ny - 1)
+                    i = nd.index // faces_per_col
+                    j = (nd.index % faces_per_col) // 2
+
+                    if True:
+                        is_odd = (nd.index % 2).equal(1)
+
+                        O0 = i*ny + j
+                        O1 = i*ny + j + ny + 1
+
+                        tOi = Integer.Switch(is_odd, O0,      O1)
+                        tUi = Integer.Switch(is_odd, O0 + ny, O1 - ny)
+                        tVi = Integer.Switch(is_odd, O0 +  1, O1 -  1)
+                    else:
+                        even_Oi = ( ny*(nd.index // faces_y) ) + ( nd.index % faces_y ) // 2
+                        even_Ui = even_Oi + 1
+                        even_Vi = even_Oi + ny
+
+                        odd_Oi = ( ny*(nd.index // nfaces) ) + ( nd.index % nfaces ) // 2 + ny + 1
+                        odd_Ui = odd_Oi - ny
+                        odd_Vi = odd_Oi - 1
+
+                        is_odd = (nd.index % 2).equal(1)
+                        tOi = even_Oi.switch(is_odd, odd_Oi)
+                        tUi = even_Ui.switch(is_odd, odd_Ui)
+                        tVi = even_Vi.switch(is_odd, odd_Vi)
+
+                grid = Mesh(grid.switch(use_tris, Mesh(grid).triangulate()))
+
+                grid.faces.Oi = rOi.switch(use_tris, tOi)
+                grid.faces.Ui = rUi.switch(use_tris, tUi)
+                grid.faces.Vi = rVi.switch(use_tris, tVi)
+
+            # Plunge
+            grid4 = Geometry4.Plunge(grid)
+
+        with Layout("Defined by Rotation"):
+
+            with Matrix.Switch(use_vectors) as R:
+                Matrix4.rotation_matrix().link_inputs(None, "Rotation").out("False")
+
+        with R:
+            with Panel("Vectors"):
+                V1 = Vector4.Input((1, 0, 0), shape="Single")
+                V2 = Vector4.Input((0, 1, 0), shape="Single")
+
+            M = Matrix4.perp_planes(**V1.args(), **V2.args(rank=1))
+                
+            with Layout("Perpendicular Plane"):
+                m = M.as_tuple
+                m2 = [0]*16
+                m2[:8] = m[8:]
+                m2[8:] = m[:8]
+                
+                M = M.switch(use_perp, Matrix(m2))
+
+            M.out("True")
+
+        # Rotation
+        grid4 = grid4.matrix_rotation(R)
+
+        finalize(grid4, Material("4 Face", "Material")).out("Mesh")
+
+    tree.add_method(Mesh4, ret_class=Mesh4)
+
+    # ====================================================================================================
+    # MODIFIER - Curve to Surface
+    # ====================================================================================================
+
+    with GeoNodes("To Surface", prefix=curve_) as tree:
+
+        bbone = Curve(Geometry4.Plunge(Curve()))
+
+        with Panel("Profile"):
+            use_object  = Boolean(False, "Object")
+            profile     = Curve(None, "Curve", tip="Curve in XY plane")
+            obj         = Object(None, "Curve Object", tip="Curve in XY plane")
+
+        with Layout("Profile Curve"):
+            profile = Curve(Geometry4.Plunge(profile.switch(use_object, obj.info().geometry)))
+
+        with Panel("Transformation"):
+            twist_clx = Closure(None, "Twist X", tip="Factor -> Angle")
+            twist_cly = Closure(None, "Twist Y", tip="Factor -> Angle")
+
+            use_scale = Boolean(False, "Scale")
+            scale_cl  = Closure(None, "Scale",    tip="Factor -> Scale")
+
+        mat    = Material("4 Face", "Material")
+        smooth = Boolean(True, "Shade Smooth")
+
+        # ---------------------------------------------------------------------------
+        # Backbone
+        # ---------------------------------------------------------------------------
+
+        with Layout("Backbone"):
+            bb_closed = bbone.splines.sample_index(nd.is_spline_cyclic, index=0)
+            bb_count  = bbone.points.count
+            nx        = bb_count.switch(bb_closed, bb_count + 1)
+
+        # ---------------------------------------------------------------------------
+        # Profile
+        # ---------------------------------------------------------------------------
+
+        with Layout("Profile"):
+            pf_closed = profile.splines.sample_index(nd.is_spline_cyclic, index=0)
+            pf_count  = profile.points.count
+            ny        = pf_count.switch(pf_closed, pf_count + 1)
+
+        # ---------------------------------------------------------------------------
+        # Grid
+        # ---------------------------------------------------------------------------
+
+        with Layout("Grid"):
+
+            shape = (nx, ny)
+            ix, iy = unravel_index(nd.index, shape)
+
+            grid = Mesh4.plane(
+                vertices_x = nx,
+                vertices_y = ny,
+                triangles = True,
+            )
+
+        with Layout("Backbone position and extrusion local matrix"):
+            BB_v = bbone.points.sample_index(  Vector("P4 v"), index=ix % bb_count)
+            BB_w = bbone.points.sample_index(  Float( "P4 w"), index=ix % bb_count)
+
+        with Layout("Profile Position and Normal"):
+
+            # Position
+            P4_v = profile.points.sample_index(Vector("P4 v"), index=iy % pf_count)
+            P4_w = profile.points.sample_index(Float( "P4 w"), index=iy % pf_count)
+            P4 = Vector4(P4_v, P4_w)
+
+            # Normal
+            TNNN = Matrix4(profile.points.sample_index(Matrix("TNNN"), index=iy % pf_count))
+            N4 = TNNN.get_vector4(1)
+
+        """
+        with Layout("Twist & scale"):
+
+            sig = ({'Factor': 'Float'}, {'Value': 'Float'})
+
+            fac = ix/(nx - 1)
+            twist_x = twist_clx.evaluate(signature=sig, factor=fac)
+            twist_y = twist_cly.evaluate(signature=sig, factor=fac)
+            scale   = scale_cl.evaluate(signature=sig,  factor=fac)
+            scale = scale.switch_false(use_scale, 1)
+
+            R_twist = Rotation((twist_x, twist_y, 0))
+            M_twist = Matrix4(Matrix.CombineTransform(rotation=R_twist))
+
+            # Position
+            P4 = M_twist @ Vector4(P4_v, P4_w)
+            P4 = P4.scale(scale)
+
+            # Normal
+            N = M_twist @ Vector4(N_v, N_w)
+        """
+
+        with Layout("Profile points on backbone"):
 
             with Layout("Backbone"):
-                bb_closed = bbone.splines.sample_index(nd.is_spline_cyclic, index=0)
-                bb_count = bbone.points.count
-                nx       = bb_count.switch(bb_closed, bb_count + 1)
+                BB_Rot = Matrix4(bbone.points.sample_index(Matrix("TNNN"), index=ix % bb_count))
 
-            # ---------------------------------------------------------------------------
-            # Profile
-            # ---------------------------------------------------------------------------
+                # TNNN --> NNTN
+                BB_Rot = BB_Rot.roll_columns(2)
 
-            with Layout("Profile"):
-                pf_closed = profile.splines.sample_index(nd.is_spline_cyclic, index=0)
-                pf_count  = profile.points.count
-                ny        = pf_count.switch(pf_closed, pf_count + 1)
-
-            # ---------------------------------------------------------------------------
-            # Grid
-            # ---------------------------------------------------------------------------
-
-            with Layout("Grid"):
-
-                shape = (nx, ny)
-                #idx = lambda i, j: ravel_indices(i, j, shape)
-                ix, iy = unravel_index(nd.index, shape)
-
-                grid = Mesh.Grid(vertices_x = nx, vertices_y = ny)
-                grid.corners.UV_Map = grid.uv_map
-
-                # Backbone position
-                BB_v = bbone.points.sample_index(  Vector("P4 v"), index=ix % bb_count)
-                BB_w = bbone.points.sample_index(  Float( "P4 w"), index=ix % bb_count)
-
-                # Profile position
-                P4_v = profile.points.sample_index(Vector("P4 v"), index=iy % pf_count)
-                P4_w = profile.points.sample_index(Float( "P4 w"), index=iy % pf_count)
-
-                # Profile local space (for faces UV)
-                MV = Matrix4(profile.points.sample_index(Matrix("TNNN"), index=iy % pf_count))
-
-                with Layout("Twist & scale"):
-
-                    sig = ({'Factor': 'Float'}, {'Value': 'Float'})
-
-                    fac = ix/(nx - 1)
-                    twist_x = twist_clx.evaluate(signature=sig, factor=fac)
-                    twist_y = twist_cly.evaluate(signature=sig, factor=fac)
-                    scale   = scale_cl.evaluate(signature=sig,  factor=fac)
-                    scale = scale.switch_false(use_scale, 1)
-
-                    R_twist = Rotation((twist_x, twist_y, 0))
-                    M_twist = Matrix4(Matrix.CombineTransform(rotation=R_twist))
-
-                    P4 = Matrix4(M_twist) @ Vector4(P4_v, P4_w)
-                    P4 = P4.scale(scale)
-
-                    MV = M_twist @ MV
-
-                # Backbone space matrix
-                MU = Matrix4(bbone.points.sample_index(Matrix("TNNN"), index=ix % bb_count))
-
-                # Use it to rotate profile (allegedly on IJ) on KL
-                T, N1, N2, N3 = MU.get_vectors()
-                BB_Rot = Matrix4.FromVectors(N2, N3, T, N1)
-
-                P4 = Matrix4(BB_Rot) @ P4
-
-                MV = BB_Rot @ MV
+            with Layout("Rotation translation"):
+                P4 = BB_Rot @ P4
+                N4 = BB_Rot @ N4
 
                 # Translate to backbone position
-                P4 = P4 + Vector4(BB_v, BB_w)
+                P4 = P4 + Vector4(BB_v, BB_w)._lc("BB Position")
 
                 # Store
                 P4.store_position(grid)
+                grid.points.N4_v = N4.v
+                grid.points.N4_w = N4.w
 
-            # ---------------------------------------------------------------------------
-            # Face normals
-            # ---------------------------------------------------------------------------
+        # ---------------------------------------------------------------------------
+        # Face normals
+        # ---------------------------------------------------------------------------
 
-            with Layout("Faces Normals"):
+        with Layout("Faces Normals"):
+                
+            grid = Mesh4(grid).compute_uv_vectors()
+            U = Vector4(grid.u_xyz, grid.u_w)
+            V = Vector4(grid.v_xyz, grid.v_w)
+            
+            o_index = Integer("Oi")
+            N = Vector4(
+                grid.points.sample_index(Vector("N4 v"), index=o_index),
+                grid.points.sample_index(Float("N4 w"), index=o_index),
+            )
+                
+            N2 = Vector4.Cross(U, V, N)
+            grid.faces.UVNN = Matrix4.FromVectors(U, V, N, N2)
 
-                U = Matrix4(MU).get_vector4(0)
-                V = Matrix4(MV).get_vector4(0)
+        # ---------------------------------------------------------------------------
+        # When closed, the points can be merged
+        # ---------------------------------------------------------------------------
 
-                # U & V are initially points attributes
-                grid.points.TEMP_Uv = U.v
-                grid.points.TEMP_Uw = U.w
-                grid.points.TEMP_Vv = V.v
-                grid.points.TEMP_Vw = V.w
+        with Layout("Merge to close"):
+            sel  = Boolean.Switch(bb_closed, False, ix.equal(0) | ix.equal(nx - 1))
+            sel |= Boolean.Switch(pf_closed, False, iy.equal(0) | iy.equal(ny - 1))
+            grid = grid.merge_points(sel)
 
-                # Let's extrapolate on faces
-                U = Vector4(Vector("TEMP Uv"), Float("TEMP Uw"))
-                V = Vector4(Vector("TEMP Vv"), Float("TEMP Vw"))
+        finalize(grid, Material("4 Face", "Material")).out("Mesh")
 
-                # The 3D Normal
-                if False:
-                    N = Vector4(nd.normal, 0)
-                else:
-                    N = MU.get_vector4(1)
+    tree.add_method(Curve4, self_attr="self", ret_class=Mesh4)
 
-                # Compute two 4D normals
-                N2 = Vector4.Cross(U, V, N)
-                N1 = Vector4.Cross(N2, U, V)
+    # ====================================================================================================
+    # PRIMITVE - Mesh Torus
+    # ====================================================================================================
 
-                # Make sure the sign is correct
-                dot = N.dot(N1)
-                N1 = N1.switch(dot.less_than(0), -N1)
+    with GeoNodes("Torus", prefix=mesh_) as tree:
 
-                #grid.faces.UVNN = Matrix4.perp_planes(**U.args(), **V.args(rank=1))
-                grid.faces.UVNN = Matrix4.FromVectors(U, V, N1, N2)
+        curve0 = Geometry4.Plunge(curve_.circle().link_inputs(None, "Curve 0", exclude=["Projection"]))
+        curve1 = Geometry4.Plunge(curve_.circle().link_inputs(None, "Curve 1", exclude=["Projection"]))
 
-                grid = grid.remove_named_attribute(pattern_mode="Wildcard", name="TEMP*")
+        twist_x = Float.Angle(0, "Twist X")
+        twist_y = Float.Angle(0, "Twist Y")
 
-            # ---------------------------------------------------------------------------
-            # When closed, the points can be merged
-            # ---------------------------------------------------------------------------
+        use_scale = Boolean(False, "Scale", hide_in_modifier=True)
+        scale = Closure(None, "Scale", hide_in_modifier=True)
 
-            with Layout("Merge to close"):
-                sel  = Boolean.Switch(bb_closed, False, ix.equal(0) | ix.equal(nx - 1))
-                sel |= Boolean.Switch(pf_closed, False, iy.equal(0) | iy.equal(ny - 1))
-                grid = Geometry4(grid).merge_points(sel)
+        trim0 = Float.Input("Curve 0 > Trim > Start")
+        trim1 = Float.Input("Curve 0 > Trim > End")
+        with Closure(closure=Input("Twist X")) as twist_clx:
+            factor = Float(name="Factor")
+            factor.map_range(to_min=trim0*twist_x, to_max=trim1*twist_x).out("Value")
 
-            finalize(grid, Material("4 Face", "Material")).out("Mesh")
+        with Closure(closure=Input("Twist Y")) as twist_cly:
+            factor = Float(name="Factor")
+            factor.map_range(to_min=trim0*twist_y, to_max=trim1*twist_y).out("Value")
 
-        tree.add_method(Geometry4, self_attr="self", ret_class=Geometry4)
+        mesh = Curve4(curve0).to_surface(
+            curve_1 = curve1, 
+            twist_x = twist_clx, 
+            twist_y = twist_cly, 
+            scale   = use_scale, 
+            scale_1 = scale).link_inputs(None, exclude=["Profile", "Transformation"])
 
-        # ====================================================================================================
-        # PRIMITVE - Mesh Torus
-        # ====================================================================================================
+        mesh.out("Mesh")
 
-        with GeoNodes("Torus", prefix=mesh_) as tree:
+    tree.add_method(Mesh4, ret_class=Mesh4)
 
-            curve0 = Geometry4.Plunge(curve_.circle().link_inputs(None, "Curve 0", exclude=["Projection"]))
-            curve1 = Geometry4.Plunge(curve_.circle().link_inputs(None, "Curve 1", exclude=["Projection"]))
+    # ====================================================================================================
+    # MODIFIER - Slices along a curve
+    # ====================================================================================================
 
-            twist_x = Float.Angle(0, "Twist X")
-            twist_y = Float.Angle(0, "Twist Y")
+    with GeoNodes("Slices OLD", prefix=curve_) as tree:
 
-            use_scale = Boolean(False, "Scale", hide_in_modifier=True)
-            scale = Closure(None, "Scale", hide_in_modifier=True)
+        bbone = Curve4.Plunge()
 
-            trim0 = Float.Input("Curve 0 > Trim > Start")
-            trim1 = Float.Input("Curve 0 > Trim > End")
-            with Closure(closure=Input("Twist X")) as twist_clx:
-                factor = Float(name="Factor")
-                factor.map_range(to_min=trim0*twist_x, to_max=trim1*twist_x).out("Value")
+        with Panel("3D Profile"):
 
-            with Closure(closure=Input("Twist Y")) as twist_cly:
-                factor = Float(name="Factor")
-                factor.map_range(to_min=trim0*twist_y, to_max=trim1*twist_y).out("Value")
+            profile     = Mesh4.Plunged(name="Profile")
+            use_object  = Boolean(False, "Object")
+            obj         = Object(None, "Mesh Object")
+            scale       = Float(1., "Scale")
+            orient      = Integer(1, "Orientation", 0, 3)
 
-            mesh = curve0.to_surface(
-                curve_1 = curve1, 
-                twist_x = twist_clx, 
-                twist_y = twist_cly, 
-                scale   = use_scale, 
-                scale_1 = scale).link_inputs(None, exclude=["Profile", "Transformation"])
+            profile = Mesh4.Plunge(profile.switch(use_object, obj.info().geometry))
 
-            mesh.out("Mesh")
+        with Layout("Instantiate the profile on the backbone"):
 
-        tree.add_method(Geometry4, ret_class=Geometry4)
+            vol = Mesh(bbone.points.instance_on(instance=profile).realize())
 
-        # ====================================================================================================
-        # MODIFIER - Mesh Slices
-        # ====================================================================================================
+        with Layout("Indices"):
 
-        with GeoNodes("Slices", prefix=mesh_) as tree:
+            nprof = Mesh(profile).points.count + Curve(profile).points.count + Cloud(profile).points.count
+            ix = nd.index // nprof
+            iy = nd.index % nprof
 
-            bbone = Geometry4.Plunge(Curve())
+        with Layout("Backbone Position and Orientation"):
 
-            with Panel("3D Profile"):
-                profile     = Mesh(None, "Profile")
-                use_object  = Boolean(False, "Object")
-                obj         = Object(None, "Mesh Object")
-                scale       = Float(1., "Scale")
-                orient      = Integer(2, "Orientation", 0, 3)
+            BB_v = bbone.points.sample_index(Vector("P4 v"), index=ix)
+            BB_w = bbone.points.sample_index(Float("P4 w"), index=ix)
 
-                profile = Mesh(Geometry4.Plunge(profile.switch(use_object, obj.info().geometry)))
+            TNNN = bbone.points.sample_index(Matrix("TNNN"), index=ix)
 
-            with Layout("Instantiate the profile on the backbone"):
+            BB_scale = bbone.points.sample_index(bbone.points.capture_attribute(scale), index=ix)
 
-                vol = Mesh(bbone.points.instance_on(instance=profile).realize())
+        with Layout("Profile Position"):
 
-            with Layout("Indices"):
-                nprof = profile.points.count
-                ix = nd.index // nprof
-                iy = nd.index % nprof
+            PF_v = profile.points.sample_index(Vector("P4 v"), index=iy)
+            PF_w = profile.points.sample_index(Vector("P4 w"), index=iy)
 
-                nfaces = profile.faces.count
-                iface = nd.index % nfaces
+        with Layout("Scale and rotate slices"):
+
+            with Layout("Scale"):
+                PF_v = PF_v.scale(BB_scale)
+                PF_w = PF_w * BB_scale
+
+            with Layout("Rotate"):
+                Rot = Matrix4(TNNN).roll_columns(orient)
+                P4 = Rot.rotate_vector(Vector4(PF_v, PF_w))
+
+            with Layout("To backbone position"):
+                P4 = P4 + Vector4(BB_v, BB_w)
+                P4.store_position(vol)
+
+        finalize(vol).out("Mesh")
+
+    # ====================================================================================================
+    # MODIFIER - Slices along a curve
+    # ====================================================================================================
+
+    with GeoNodes("Slices", prefix=curve_) as tree:
+
+        bbone = Curve4.Plunge()
+
+        with Panel("3D Profile"):
+
+            profile     = Mesh(name="Profile")
+            use_object  = Boolean(False, "Object")
+            obj         = Object(None, "Mesh Object")
+            use_radius  = Boolean(False, "Use Radius")
+            orient      = Integer(1, "Orientation", 0, 3)
+
+            profile = Geometry4.Plunge(profile.switch(use_object, obj.info().geometry))
+
+
+        for rep in repeat(bbone.points.count, slices=None):
 
             with Layout("Backbone Position and Orientation"):
 
-                BB_v = bbone.points.sample_index(Vector("P4 v"), index=ix)
-                BB_w = bbone.points.sample_index(Float("P4 w"), index=ix)
+                bb_v = bbone.points.sample_index(Vector("P4 v"), index=rep.iteration)
+                bb_w = bbone.points.sample_index(Float("P4 w"),  index=rep.iteration)
 
-                TNNN = bbone.points.sample_index(Matrix("TNNN"), index=ix)
+                TNNN = bbone.points.sample_index(Matrix("TNNN"), index=rep.iteration)
+                Rot = Matrix4(TNNN).roll_columns(orient)
 
-                BB_scale = bbone.points.sample_index(bbone.points.capture_attribute(scale), index=ix)
+                bb_scale = bbone.points.sample_index(nd.radius, index=rep.iteration).switch_false(use_radius, 1.0)
 
-            with Layout("Profile Position and Orientation"):
+            with Layout("Scale & Rotate"):
 
-                PF_v = profile.points.sample_index(Vector("P4 v"), index=iy)
-                PF_w = profile.points.sample_index(Vector("P4 w"), index=iy)
+                sl = profile.matrix_rotation(Rot)
+                sl = sl.scale(bb_scale)
 
-                UVNN = profile.faces.sample_index(Vector("UVNN"), index=iface)
+            with Layout("Translate"):
+                sl = sl.translation(xyz=bb_v, w=bb_w)
 
-            with Layout("Scale and rotate slices"):
+            rep.slices = rep.slices + sl
 
-                with Layout("Scale"):
-                    PF_v = PF_v.scale(BB_scale)
-                    PF_w = PF_w * BB_scale
+        slices = rep.slices
 
-                with Layout("Rotate"):
-                    Rot = Matrix4(TNNN).roll_columns(orient)
-                    P4 = Rot.rotate_vector(Vector4(PF_v, PF_w))
+        finalize(slices).out("Mesh")        
 
-                with Layout("Rotate Faces"):
-                    #FRot = Rot
-                    #vol.faces.UVNN = Matrix4(FRot @ UVNN)
-                    c = nd.corners_of_face(iface)
+    tree.add_method(Curve4, self_attr="self", ret_class=Mesh4)    
 
-                with Layout("To backbone position"):
-                    P4 = P4 + Vector4(BB_v, BB_w)
+    # ====================================================================================================
+    # PRIMITIVE - Dev
+    # ====================================================================================================
 
-                    P4.store_position(vol)
+    with GeoNodes("Slices Test"):
 
-                #with Layout("Volume Normal"):
-                    #U, V, N1, N2 = UVNN.get_vectors()
+        curve = Curve4.Plunged()
+        profile = Mesh(Geometry4.Plunge(Mesh(None, "Profile")))
 
-            finalize(vol).out("Mesh")
+        with Layout("Base Slices"):
+            base = curve.slices(profile=profile)
+            base = base.compute_uv_vectors()
 
-        tree.add_method(Geometry4, self_attr="self", ret_class=Geometry4)    
+        with Layout("Build a fake skin to compute the faces normals"):
+            N = Matrix4("UVNN").get_vector4(2)
+            P4 = Vector4("P4") + N.scale(0.1)
 
-        # ====================================================================================================
-        # PRIMITIVE - Mesh Hyper Sphere
-        # ====================================================================================================
+            count = profile.faces.count
+            cloud = Cloud.Points(count, position=profile.faces.sample_index(P4.v, index=nd.index))
+            cloud.points.P4_v = nd.position
+            cloud.points.P4_w = profile.faces.sample_index(P4.w, index=nd.index)
 
-        with GeoNodes("Hyper Sphere", prefix=mesh_) as tree:
+            skin = curve.slices(profile=cloud)
 
-            radius = Float(1, "Radius", 0)
-            slices = Integer(7, "Slices", 1)
+        with Layout("Compute the direction of the skin as normal"):
+            P4 = Vector4.Position()
 
-            with Layout("A Sphere as slice"):
-                sphere = Mesh.UVSphere(radius=radius).link_inputs(None, "Sphere")
-                sphere.corners.UV_Map = sphere.uv_map
+            Oi = Integer("Oi")
+            O0 = Vector4(base.points.sample_index(P4.v, Oi), base.points.sample_index(P4.w, Oi), )
+            O1 = Vector4(skin.points.sample_index(P4.v, Oi), skin.points.sample_index(P4.w, Oi), )
+            N = (O1 - O0).normalize()
 
-            with Layout("Backbone along w"):
-                line = Geometry4.line(xyz=0, w = -radius, xyz_1=0, w_1=radius, count=slices + 2)
-                w = 2*nd.index/(slices+1) - 1
-                scale = gnmath.sqrt(gnmath.max(0, 1 - w*w))
+        with Layout("Compute the local Matrix wih U, V and N"):
 
-            hsph = line.slices(profile=sphere, scale=scale, orientation=2)
+            U = Vector4("U")
+            V = Vector4("V")
 
-            # ----- Normals are easy to compute
+            N2 = Vector4.Cross(U, V, N)
+            N1 = Vector4.Cross(U, V, N2)
 
-            N4 = Vector4(Vector("P4 v"), Float("P4 w")).normalize()
-            hsph.points.N4_v = N4.v
-            hsph.points.N4_w = N4.w
+            d = N1.dot(N)
 
-            finalize(hsph).out("Mesh")
+            Normal = N1.switch(d.less_than(0), -N1)
+
+            base.faces.UVNN = Matrix4.FromVectors(U, V, Normal, N2)
+
+        base.out()
+        skin.out("Skin")
 
 
-        tree.add_method(Geometry4, ret_class=Geometry4)
+    # ====================================================================================================
+    # PRIMITIVE - Mesh Hyper Sphere
+    # ====================================================================================================
 
-        return
+    with GeoNodes("Hyper Sphere", prefix=mesh_) as tree:
+
+        radius = Float(1, "Radius", 0)
+        slices = Integer(7, "Slices", 1)
+
+        with Layout("A Sphere as slice"):
+            sphere = Mesh.UVSphere(radius=radius).link_inputs(None, "Sphere")
+            sphere.corners.UV_Map = sphere.uv_map
+            sphere.faces.material = Material("4 Face", "Material")
+
+        with Layout("Backbone along w"):
+            line = Curve4.line(xyz=0, w = -radius, xyz_1=0, w_1=radius, count=slices + 2)
+            w = 2*nd.index/(slices+1) - 1
+            #scale = gnmath.sqrt(gnmath.max(0, 1 - w*w))
+            line.radius = gnmath.sqrt(gnmath.max(0, 1 - w*w))
+
+        hsph = line.slices(profile=sphere, use_radius=True, orientation=1)
+
+        # ----- Normals are easy to compute
+
+        N4 = Vector4(Vector("P4 v"), Float("P4 w")).normalize()
+        hsph.points.N4_v = N4.v
+        hsph.points.N4_w = N4.w
+
+        """
+        UVNN = Matrix4("UVNN")
+        U, V, _, N2 = UVNN.get_vectors()
+        node = hsph.faces.capture_attribute(v = Vector("N4 v"), w=Float("N4 w"))
+        N1 = Vector4(node.v, node.w).normalize()
+        hsph.faces.UVNN = Matrix4.FromVectors(U, V, N1, Vector4.Cross(U, V, N1))
+        """
+
+        finalize(hsph).out("Mesh")
+
+    tree.add_method(Mesh4, ret_class=Mesh4)
+
+    return
 
 
 # ====================================================================================================
@@ -2184,7 +2810,7 @@ class Position4(Matrix4):
         # Translation Node
         # ---------------------------------------------------------------------------
 
-        with GeoNodes("Translate", is_group=True, prefix=mat4_) as tree:
+        with GeoNodes("Translate", is_group=True, prefix=mat_) as tree:
 
             P4 = Position4.Input()
             T = Vector4.Input()
@@ -2197,7 +2823,7 @@ class Position4(Matrix4):
         # Rotation Node
         # ---------------------------------------------------------------------------
 
-        with GeoNodes("Rotate", is_group=True, prefix=mat4_) as tree:
+        with GeoNodes("Rotate", is_group=True, prefix=mat_) as tree:
 
             P = Position4.Input()
             R = Matrix(None, "Rotation")
@@ -2282,7 +2908,7 @@ class Position4(Matrix4):
             with Layout("Vectors from Matrix"):
                 V1 = P.get_vector(1)
                 V2 = P.get_vector(2)
-                M = vec4_.perp_plane(**V1.args(), **V2.args(rank=1), last_vectors=perp_last)
+                M = vec_.perp_plane(**V1.args(), **V2.args(rank=1), last_vectors=perp_last)
 
             M.out()
 

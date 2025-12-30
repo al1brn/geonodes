@@ -198,39 +198,6 @@ class Domain(Geom, NodeCache):
         return self.sample_index(value, index=index)
 
     # ====================================================================================================
-    # ForEachElement loop
-
-    def for_each(self, sockets={}, **kwargs):
-        """ > Create a <!ForEachElement> zone on this domain
-
-        The <!ForEachElement> zone is initialized with the domain, its geometry and
-        the selection:
-
-        ``` python
-        ico = Mesh.IcoSphere(subdivisions=2)
-        with ico.faces[(nd.index % 2).equal(0)].for_each(position=nd.position) as feel:
-            face = Mesh(feel.element)
-            face.points.offset = feel.position*1.1
-            feel.generated.geometry = face
-
-        feel.generated.geometry.out()
-        ```
-
-        Arguments
-        ---------
-        - sockets (dict) : input sockets
-        - kwargs : input sockets
-
-        Returns
-        -------
-        - ForEachElement zone
-        """
-
-        from geonodes import ForEachElement
-
-        return ForEachElement(geometry=self._geo, selection=self.get_selection(), domain=self.DOMAIN_NAME, sockets=sockets, **kwargs)
-
-    # ====================================================================================================
     # Methods
     # ====================================================================================================
 
@@ -315,12 +282,13 @@ class Domain(Geom, NodeCache):
     # Loop
     # ====================================================================================================
 
-    def for_each_element(self, named_sockets: dict={}, **sockets):
+    def for_each_element(self, named_sockets: dict={}, selection=None, **sockets):
         """ Simulation zone
 
         Arguments
         ---------
-        - named_socket (dict) : named sockets
+        - named_socket (dict = {}) : named sockets
+        - selection (Boolean = None) : selection
         - sockets (dict) : other sockets
 
         Returns
@@ -328,20 +296,25 @@ class Domain(Geom, NodeCache):
         - ZoneIterator
         """
 
-        # Selecton socket
-        if "selection" not in [k.lower() for k in {**named_sockets, **sockets}.keys()]:
-            named_sockets = {"Selection": self.get_selection(), **named_sockets}
+        # Selection socket
+        if selection is None:
+            selection = self.get_selection()
+            
+        #if "selection" not in [k.lower() for k in {**named_sockets, **sockets}.keys()]:
+        #    named_sockets = {"Selection": self.get_selection(), **named_sockets}
 
         # Node Zone
-        node = ZoneNode('For Each Element', self._geo, named_sockets=named_sockets, domain=self.DOMAIN_NAME, **sockets)
+        #node = ZoneNode('For Each Element', self._geo, named_sockets=named_sockets, domain=self.DOMAIN_NAME, **sockets)
+        class_name = type(self._geo).__name__
+        node = ZoneNode.ForEach(geometry=self._geo, selection=selection, named_sockets=named_sockets, domain=self.DOMAIN_NAME, **sockets)
 
         return ZoneIterator(self, node)
 
-    def for_each(self, named_sockets: dict={}, **sockets):
-        return self.for_each_element(named_sockets=named_sockets, **sockets)
+    def for_each(self, named_sockets: dict={}, selection=None, **sockets):
+        return self.for_each_element(named_sockets=named_sockets, selection=selection, **sockets)
     
-    def foreach(self, named_sockets: dict={}, **sockets):
-        return self.for_each_element(named_sockets=named_sockets, **sockets)
+    def foreach(self, named_sockets: dict={}, selection=None, **sockets):
+        return self.for_each_element(named_sockets=named_sockets, selection=selection, **sockets)
     
     
 

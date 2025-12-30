@@ -45,7 +45,7 @@ from .treeinterface import ItemPath, TreeInterface
 from .nodeclass import Node
 from typing import TYPE_CHECKING, Literal, Any
 
-
+__all__ = ['simulation', 'repeat']
 
 SIMULATION = "Simulation"
 REPEAT     = "Repeat"
@@ -73,15 +73,12 @@ class ZoneNode(Node):
 
     def __init__(self,
             zone_id         : Literal["Simulation", "Repeat", "For Each Element", "Closure"],
-            socket          : Socket | SocketType,
-            named_sockets   : dict = {}, 
+            named_sockets   : dict = {},
             **sockets):
         """ Paired nodes forming a zone.
 
         This class overload the creation of a zone output node such as 'Simulation Output' or 'Repeat Output'.
         When the node is created, the input node is also created and paired.
-
-        If the socket argument is a SocketType, an empty socket of this type is created.
 
         The two nodes can have dynamic sockets as described below
         
@@ -95,9 +92,9 @@ class ZoneNode(Node):
         Arguments
         ---------
         - zone_id (str in ()"Simulation", "Repeat", "For Each Element", "Closure")) : zone id
-        - socket (Socket | SocketType) : the socket for zone input
         - named_sockets (dict = {}) : initialization values for the node input sockets
-        - domain (str: None) : domain for For Each zone
+        - Iterations (Integer = None) : Iterations (for Repeat only)
+        - domain (str: None) : domain for For Each only
         - **parameters : node parameters and sockets
         """
 
@@ -108,14 +105,58 @@ class ZoneNode(Node):
         node_name = ZoneNode.NODES[zone_id]
 
         # ---------------------------------------------------------------------------
+        # Get the first socket
+        # ---------------------------------------------------------------------------
+
+        all_sockets = {**named_sockets, **sockets}
+        socket_name = None
+
+        if zone_id == SIMULATION:
+            if not len(all_sockets):
+                raise NodeError(f"Simulation zone needs at least one argument.")
+
+            socket_name = list(all_sockets.keys())[0]
+            socket = all_sockets[socket_name]
+        
+        elif zone_id == REPEAT:
+            for name in all_sockets.keys():
+                if name.lower() != 'iterations':
+                    socket_name = name
+                    break
+
+            if socket_name is None:
+                raise NodeError(f"Repeat zone needs at least one argument other than 'Iterations'.")
+            
+            socket = all_sockets[socket_name]
+
+        elif zone_id == FOR_EACH:
+            pass
+
+            """
+            socket_name = None
+            for name in all_sockets.keys():
+                if name.lower() != 'domain':
+                    socket_name = name
+                    break
+
+            if socket_name is None:
+                raise NodeError(f"For Each zone needs at least one argument.")
+
+            socket = all_sockets[socket_name]
+            """
+
+        if socket_name is not None:
+            all_sockets = {k:v for k, v in all_sockets.items() if k != socket_name}
+
+        # ---------------------------------------------------------------------------
         # Create the output node
         # ---------------------------------------------------------------------------
 
         # Extract domain parameter for For Each zone
         if zone_id == FOR_EACH:
-            if 'domain' in sockets:
-                domain = sockets['domain']
-                sockets = {k:v for k, v in sockets.items() if k != 'domain'}
+            if 'domain' in all_sockets:
+                domain = all_sockets['domain']
+                all_sockets = {k:v for k, v in all_sockets.items() if k != 'domain'}
             else:
                 domain = 'POINT'
             
@@ -141,7 +182,7 @@ class ZoneNode(Node):
         self._is_paired_output = True
         self._paired_input_node = inode
 
-        class_name = type(socket).__name__
+        #class_name = type(socket).__name__
 
         # ---------------------------------------------------------------------------
         # Simulation
@@ -154,7 +195,7 @@ class ZoneNode(Node):
             inode._items['OUTPUT'] = self._bnode.state_items
 
             self._bnode.state_items.clear()
-            inode.set_input_socket(class_name, socket)
+            inode.set_input_socket(socket_name, socket)
 
         # ---------------------------------------------------------------------------
         # Repeat
@@ -167,7 +208,9 @@ class ZoneNode(Node):
             inode._items['OUTPUT'] = self._bnode.repeat_items
 
             self._bnode.repeat_items.clear()
-            inode.set_input_socket(class_name, socket)
+
+            print("TEST", socket_name, socket)
+            inode.set_input_socket(socket_name, socket)
 
         # ---------------------------------------------------------------------------
         # For each element
@@ -184,11 +227,8 @@ class ZoneNode(Node):
             inode._items['OUTPUT'] = self._bnode.input_items
 
             # The generated Geometry is not necesssarily of the same type
-            self._bnode.generation_items.clear()
-            if False:
-                self._bnode.generation_items.new(SocketType('Geometry').type, class_name)
-
-            inode.set_input_socket('Geometry', socket)
+            #self._bnode.generation_items.clear()
+            #inode.set_input_socket(socket_name, socket)
 
         # ---------------------------------------------------------------------------
         # Closure
@@ -210,8 +250,45 @@ class ZoneNode(Node):
         # Set the arguments to input node
         # ---------------------------------------------------------------------------
 
-        for name, value in {**named_sockets, **sockets}.items():
+        for name, value in all_sockets.items():
             inode.set_input_socket(name, value)
+
+    # ====================================================================================================
+    # Constructors
+    # ====================================================================================================
+
+    @classmethod
+    def Simulation(cls,
+        named_sockets: dict = {},
+        **sockets):
+        sim = cls(SIMULATION, named_sockets, **sockets)
+        return sim
+
+    @classmethod
+    def Repeat(cls, 
+        iterations,
+        named_sockets: dict = {},
+        **sockets):
+        rep = cls(REPEAT, named_sockets, Iterations=iterations, **sockets)
+        return rep
+    
+    @classmethod
+    def ForEach(cls,
+        geometry = None,
+        selection = None,
+        named_sockets: dict = {},
+        domain = 'POINT',
+        **sockets):
+        feel = cls(FOR_EACH, {'Geometry': geometry, 'Selection': selection, **named_sockets}, domain=domain, **sockets)
+        return feel
+    
+    @classmethod
+    def Closure(cls,
+        named_sockets: dict = {},
+        **sockets):
+        cl = cls(CLOSURE, named_sockets, **sockets)
+        return cl
+
 
     # ====================================================================================================
     # Get the socket default name
@@ -230,7 +307,6 @@ class ZoneNode(Node):
             return type(value).__name__
         else:
             return name
-
 
     # ====================================================================================================
     # Loop zone
@@ -460,7 +536,8 @@ class ZoneIterator:
     def __next__(self):
         if self._done:
             self._output_node._loop_end()
-            self._socket._jump(self._output_node._out)
+            if self._socket is not None:
+                self._socket._jump(self._output_node._out)
             self._in_zone = False
 
             raise StopIteration
@@ -476,7 +553,7 @@ class ZoneIterator:
 
     @property
     def generated(self):
-        """ Generated outpuot socket
+        """ Generated output socket
 
         Main panel contains 'Geometry' output socket plus n MAIN output sockets + 1 virtual socket.
         The Generated geometry is the first after them : n + 2
@@ -547,5 +624,38 @@ class ZoneIterator:
                 
             (c + feel.generated).out()
 
+# ====================================================================================================
+# Global functions
+# ====================================================================================================
 
+def repeat(iterations, named_sockets: dict={}, **sockets):
+        """ Repeat zone
+
+        Arguments
+        ---------
+        - Iteration (Integer = 1) : iteration socket
+        - named_socket (dict) : named sockets
+        - sockets (dict) : other sockets
+
+        Returns
+        -------
+        - ZoneIterator
+        """
+        node = ZoneNode.Repeat(iterations, named_sockets=named_sockets, **sockets)
+        return ZoneIterator(None, node)
+    
+def simulation(named_sockets: dict={}, **sockets):
+    """ Simulation zone
+
+    Arguments
+    ---------
+    - named_socket (dict) : named sockets
+    - sockets (dict) : other sockets
+
+    Returns
+    -------
+    - ZoneIterator
+    """
+    node = ZoneNode.Simulation(named_sockets=named_sockets, **sockets)
+    return ZoneIterator(None, node)
 
