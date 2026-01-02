@@ -215,6 +215,7 @@ class Sockets:
 class Node:
     __slots__ = (
         '_tree', '_bnode', '_inputs', '_outputs',
+        '_created_sockets',
         '_has_dyn_in', '_has_dyn_out',
         '_has_items', '_items',
         '_use_interface', '_interface', '_interface_in_out',
@@ -287,6 +288,8 @@ class Node:
         # ----------------------------------------------------------------------------------------------------
         # Dynamic sockets with items
         # ----------------------------------------------------------------------------------------------------
+
+        self._created_sockets = {}
 
         # Able to create sockets
         self._has_dyn_in  = False
@@ -727,7 +730,7 @@ class Node:
                 isocks = self._interface.get_socket_by_python_name(
                     intf_in_out, name, socket_type, parent=self._tree.get_panel(), return_all=True)
                 
-                #print("DEBUG NODE 0", name, isocks)
+                #print("DEBUG NODE 0", name, socket_type, '-->', isocks)
                 
                 # Second without type
                 if not len(isocks):
@@ -735,7 +738,7 @@ class Node:
                         intf_in_out, name, None, parent=self._tree.get_panel(), return_all=True)
                     
 
-                #print("DEBUG NODE 1", name, isocks)
+                #print("DEBUG NODE 1", name, '-->', isocks)
                 
                 # Look for the first one matching the conditions
                 for isock in isocks:
@@ -818,6 +821,7 @@ class Node:
             return socket
         
         # Utltimately : the socket name
+
         return self.socket_by_name(in_out, name, socket_type, enabled_only=enabled_only, free_only=free_only, halt = halt)
     
     # ====================================================================================================
@@ -831,9 +835,15 @@ class Node:
         ---------
         - in_out (str in ('INPUT', 'OUTPUT')) : for input or output socket
         - value (Any) : the value to name
-        """            
+        """
+        if SocketType(value).type == 'GEOMETRY':
+            if in_out == 'OUTPUT' and self._bnode.bl_idname == "GeometryNodeForeachGeometryElementOutput":
+                return "Geometry"
+            
+            return type(value).__name__
+
         return utils.get_default_name(value)
-    
+
     # ====================================================================================================
     # Create a new socket from a socket 
     # ====================================================================================================
@@ -1220,8 +1230,7 @@ class Node:
 
         # If Value is None, the type is Geometry
         # We don't exit at this stage because it could be a request to create an input socket
-        #if value is None:
-        #    return
+
         value_socket_type = SocketType(value)
 
         # ----------------------------------------------------------------------------------------------------
@@ -1278,7 +1287,7 @@ class Node:
             out_socket = value.node.create_from_socket('OUTPUT', in_socket, name=value.name, panel=value.panel, **value.props)
 
             return in_socket
-        
+
         # ===========================================================================
         # Name is None: value must be a socket
         # ===========================================================================
@@ -1293,6 +1302,7 @@ class Node:
             # ----- First free input socket
 
             for _, socket in self.get_sockets('INPUT', free_only=True, panel=panel):
+
                 if socket.type == value_socket_type.type:
                     self._tree.link(value, socket)
                     return socket
@@ -1337,101 +1347,6 @@ class Node:
 
         return self.set_input_socket_value(socket, value)
 
-
-        # We take default value from empty socket
-        if utils.is_empty_socket(value):
-            value = value._bsocket
-
-        if value is None:
-            return socket
-        
-        # ---------------------------------------------------------------------------
-        # If the value is a Node, we take its default output socket
-        # ---------------------------------------------------------------------------
-
-        if '_bnode' in dir(value):
-            value = value._out
-
-        # ---------------------------------------------------------------------------
-        # If the value is a domain, we take its geometry
-        # ---------------------------------------------------------------------------
-
-        if '_geo' in dir(value):
-            value = value._geo
-
-        # ---------------------------------------------------------------------------
-        # We directly have a socket
-        # ---------------------------------------------------------------------------
-
-        out_socket = utils.get_bsocket(value)
-        if out_socket is not None:
-            self._tree.link(out_socket, socket)
-            return socket
-
-        # ---------------------------------------------------------------------------
-        # We need to create a node if:
-        # - in_socket.hide_value is True
-        # - the value is an array containing sockets : vector((0, a, 1))
-        # ---------------------------------------------------------------------------
-
-        socket_type = SocketType(socket)
-        if socket.hide_value:
-            self._tree.link(utils.to_socket(value)._bsocket, socket)
-            return socket
-
-        # ---------------------------------------------------------------------------
-        # Setting according to the socket type
-        # ---------------------------------------------------------------------------
-
-        if socket_type.type in constants.ARRAY_TYPES:
-
-            assert hasattr(socket, 'default_value')
-
-            if socket_type.type == 'RGBA':
-                a = utils.value_to_color(value)
-
-            else:
-                spec = constants.ARRAY_TYPES[socket_type.type]
-                a = utils.value_to_array(value, spec['shape'])
-
-            # There is a bsocket in the array
-            if utils.has_bsocket(a):
-                v = utils.get_socket_class(socket_type)(a)
-                self._tree.link(v, socket)
-
-            else:
-                try:
-                    socket.default_value = list(a)
-                except Exception as e:
-                    raise TypeError(f"Impossible to set input socket [{socket.node.name}].{socket.name} with value <{value}>. {str(e)}")
-
-        elif socket_type.class_name in ['Boolean', 'Integer', 'Float', 'String']:
-            try:
-                socket.default_value = value
-            except Exception as e:
-                raise TypeError(f"Impossible to set input socket [{socket.node.name}].{socket.name} with value <{value}>. {str(e)}")
-
-        elif socket.type in ['OBJECT', 'COLLECTION', 'IMAGE', 'MATERIAL']:
-
-            bobj = blender.get_resource(socket.type, value)
-
-            if bobj is not None:
-                socket.default_value = bobj
-
-        elif socket.type == 'MENU':
-            try:
-                socket.default_value = str(value)
-            except Exception as e:
-                raise NodeError(f"Impossible to set menu [{socket.node.name}]{socket.name} with value <{value}>. {str(e)}")
-
-            if self._use_interface:
-                isock = self._interface.by_identifier(socket.identifier)
-                isock.default_value = socket.default_value
-
-        else:
-            raise TypeError(f"Impossible to set input socket [{socket.node.name}].{socket.name} with value <{value}>. Unsupported socket type '{socket.type}'.")
-        
-        return socket
 
     # ====================================================================================================
     # Item access
@@ -1492,12 +1407,19 @@ class Node:
         input_socket = node_socket.links[0].from_socket
         return TreeInterface(self._tree._btree).by_identifier(input_socket.identifier)
 
-    def _socket_created(self, socket):
-        """ Update node config after changes
+    # ====================================================================================================
+    # Socket creation call back
+    # ====================================================================================================
 
-        Used by MenuNode sub class
+    def _socket_created(self, socket):
+        """ Socket creation call back
         """
-        pass
+        bsocket = utils.get_bsocket(socket)
+        inout = 'OUTPUT' if bsocket.is_output else 'INPUT'
+
+        d = self._created_sockets.get(inout, {})
+        d[bsocket.name] = socket
+        self._created_sockets[inout] = d
 
     # ====================================================================================================
     # Signature

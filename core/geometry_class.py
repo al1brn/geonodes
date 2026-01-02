@@ -98,7 +98,7 @@ class Geometry(generated.Geometry, Geom):
     # Geometry out
     # ====================================================================================================
 
-    def out(self, name: str = None, panel: str = "", **props):
+    def out_OLD(self, name: str = None, panel: str = "", **props):
         """ Plug the value to the Group Output Node.
 
         ``` python
@@ -163,4 +163,7 @@ class Geometry(generated.Geometry, Geom):
 
         else:
             return Geometry.Join(self, other)
+        
+    def __iadd__(self, other):
+        return self._jump(self + other)
         

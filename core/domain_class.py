@@ -308,7 +308,7 @@ class Domain(Geom, NodeCache):
         class_name = type(self._geo).__name__
         node = ZoneNode.ForEach(geometry=self._geo, selection=selection, named_sockets=named_sockets, domain=self.DOMAIN_NAME, **sockets)
 
-        return ZoneIterator(self, node)
+        return ZoneIterator(self._geo, node)
 
     def for_each(self, named_sockets: dict={}, selection=None, **sockets):
         return self.for_each_element(named_sockets=named_sockets, selection=selection, **sockets)

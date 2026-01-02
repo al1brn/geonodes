@@ -28,72 +28,11 @@ updates
 - creation : 2024/07/23
 - update :   2024/09/04
 - update :   2025/01/12
+- update :   2025/12/30
 
 $ DOC START
 
 [Source Code](../demos/fourd.py)
-
-The 4D Engine provides modifiers to create 4D geometries, transform them and project
-them into 3D space.
-
-> [!NOTE]
-> The 4D light is still work in progress
-
-> [!IMPORTANT]
-> - The engine needs an object named "4D Parameters" with the modifier "4D Parameters":
->   this is where you control the 4D paramaters.
-> - The last modifier must be "4D Projection" to project the 4D geometry into a 3D space.
-
-For instance, to visualize an Hypersphere, you have to stack two modifiers:
-- 4D Hyper Sphere
-- 4D Projection
-
-### Creating 4D Geometry
-
-You can use modifiers creating 4D geometry:
-- 4D Hyper Sphere
-- 4D Hyper Cube
-- 4D Hyper Cone
-- 4D 5 Cell Polytope
-- 4D Torus
-- 4-Curve Circle
-- 4-Curve Line
-
-You can also create your own geometry with modifiers and groups
-- 4D Plunge into 4D
-- 4-Math xxx
-- 4-Vector xxx
-- 4-Matrix xxx
-
-You can then transform your geometry with:
-- 4D Rotation
-- 4D Translation
-- 4D Scale
-- 4D Roll Axes
-- 4D Swap Axes
-
-
-
-> [!NOTE]
-> Modifiers:
-> - 4D Parameters
-> - 4D Projection
-> - 4D Hyper Sphere
-> - 4D Hyper Cube
-> - 4D Hyper Cone
-> - 4D 5 Cell Polytope
-> - 4D Torus
-> - 4-Curve Circle
-> - 4-Curve Line
-> - 4D Plunge into 4D
-> - 4D Rotation
-> - 4D Translation
-> - 4D Scale
-> - 4D Roll Axes
-> - 4D Swap Axes
-> - 4-Math xxx (Group)
-> - 4-Vector xxx (Group)
-> - 4-Matrix xxx (Group)
 
 
 ``` python
@@ -120,7 +59,6 @@ geo_    = G("4D Geometry")
 mesh_   = G("4D Mesh")
 curve_  = G("4D Curve")
 op_     = G("4D G")
-
 
 
 # =============================================================================================================================
@@ -232,10 +170,11 @@ def build_shaders():
         bcol.out("Back Color")
 
         # ---------------------------------------------------------------------------
-        # Roughness
+        # Roughness & Transparency
         # ---------------------------------------------------------------------------
 
         snd.attribute("Roughness").factor.out("Roughness")
+        snd.attribute("Transparency").factor.out("Transparency")
 
         # ---------------------------------------------------------------------------
         # Normal
@@ -271,59 +210,24 @@ def build_shaders():
             emission_strength   = node.emission,
             emission_color      = node.color,
             )
+        
+        transp = Shader.Transparent()
+        shader = snd.mix_shader(ped, transp, factor=node.transparency)
 
         ped.out()
 
     # ----------------------------------------------------------------------------------------------------
-    # Face default
-
-    with ShaderNodes("4 Face"):
-
-        noise = Texture.Noise(scale=5.)
-        bump = snd.bump(height=noise.color_, strength=.1)
-
-        ped = Shader.Principled(
-            base_color = (.3, .8, .7),
-            metallic   = 0.,
-            roughness  = 0.,
-            #alpha      = .1,
-            normal     = bump,
-            )
-
-        transp_fac = snd.attribute(attribute_name="Transparency").factor
-
-        transp = Shader.Transparent()
-
-        shader = snd.mix_shader(ped, transp, factor=transp_fac)
-
-        shader.out()
-
+    # SHADER - Wire
     # ----------------------------------------------------------------------------------------------------
-    # Edge default
 
-    with ShaderNodes("4 Edge"):
+    with ShaderNodes("4D Wire"):
 
         ped = Shader.Principled(
             base_color = (0., .05, .9),
             roughness  = 0.,
             )
-
         ped.out()
 
-    # ----------------------------------------------------------------------------------------------------
-    # Light default
-
-    with ShaderNodes("4 Light"):
-
-        ped = Shader.Principled(
-            base_color = snd.attribute(attribute_name="Color").color,
-            metallic   = 0.,
-            roughness  = 0.,
-            emission_strength   = snd.attribute(attribute_name="Intensity").factor,
-            normal     = bump,
-            )
-
-        ped.out()
 
 # ====================================================================================================
 # MACROS
@@ -369,8 +273,6 @@ def draw_normals(domain, u, v, scale=1.0):
         verts = verts.points[verts.top].extrude(offset=-Vector("V"), offset_scale=scale)
         
         return verts
-
-
     
 # ----------------------------------------------------------------------------------------------------
 # Visualize Normals
@@ -453,12 +355,11 @@ def vis_normals(geo, scale=1.0):
 
     return Mesh(faces_normals + curve_normals)
 
-
 # ----------------------------------------------------------------------------------------------------
 # Finalize modifiers
 # ----------------------------------------------------------------------------------------------------
 
-def finalize(geo, mat_name="4 Face"):
+def finalize(geo, mat_name="4D Surface"):
     with Layout("Projection"):
 
         with Panel("Projection"):
@@ -861,7 +762,7 @@ class Vector4:
                 s = feel.value.to_string(decimals=3).to_curves(size=.3)
                 s = Curve(s.realize()).fill()
                 s.transform(translation=feel.pos)
-                s.out()
+                s.out("Geometry")
                 
             feel.generated.out()
 
@@ -1469,6 +1370,7 @@ def build_geometry_nodes():
         show_proj_normal = Boolean(False, "Show Projected Normal", tip="Projected Normal")
         show_uv          = Boolean(False, "Show UV", tip="Faces UV")
         show_uv_normals  = Boolean(False, "Show UV Normals", tip="Faces Normals")
+        show_T           = Boolean(False, "Show T",  tip="Tangent in Curve TNNN")
         show_N1          = Boolean(False, "Show N1", tip="First Normal in Mesh UVNN or Curve TNNN")
         show_N2          = Boolean(False, "Show N2", tip="Second Normal in Mesh UVNN or Curve TNNN")
         show_N3          = Boolean(False, "Show N3", tip="Third Normal in Mesh TNNN")
@@ -1496,7 +1398,8 @@ def build_geometry_nodes():
 
             T, N1, N2, N3 = Matrix4("TNNN").get_vectors()
 
-            c_lines  = Curve.Switch(show_N1, None, draw_vector(curve.points, N1.v,scale=scale))
+            c_lines  = Curve.Switch(show_T,  None, draw_vector(curve.points, T.v,scale=scale))
+            c_lines += Curve.Switch(show_N1, None, draw_vector(curve.points, N1.v,scale=scale))
             c_lines += Curve.Switch(show_N2, None, draw_vector(curve.points, N2.v,scale=scale))
             c_lines += Curve.Switch(show_N3, None, draw_vector(curve.points, N3.v,scale=scale))
 
@@ -1879,7 +1782,8 @@ def build_geometry_nodes():
 
         geo = Geometry4.Plunged()
         R = Matrix(None, "Rotation")
-        pivot = Vector4.Input(name="Pivot")
+        with Panel("Pivot"):
+            pivot = Vector4.Input()
 
         with Layout("Position"):
 
@@ -2019,18 +1923,36 @@ def build_geometry_nodes():
         """
         geo = Geometry4.Plunged()
 
-        use_mat = Boolean(False, "Set Material")
-        mat     = Material("4 Face", "Material")
+        with Panel("Wire"):
+            use_wire    = Boolean(False, "Wire")
+            wire_radius = Float(.1, "Radius")
+            wire_resol  = Integer(12, "Resolution")
+            wire_balls  = Boolean(True, "Balls")
+            wire_mat    = Material("4D Wire", "Material")
+            wire_smooth = Boolean(True, "Smooth")
 
-        with Panel("Options"):
+        with Panel("Object"):
+
+            use_mat      = Boolean(False, "Set Material")
+            mat          = Material("4D Surface", "Material")
+
             smooth       = Boolean(True,  "Smooth")
-            use_emission = Boolean(True,  "Emission")
+            use_emission = Boolean(True,  "2D Normal")
             use_normal   = Boolean(True,  "Projected Normal")
             vol_normal   = Boolean(False, "Volume Normal")
             use_interior = Boolean(True,  "Interior")
             color        = Color((.6, .6, .8), "Color")
             back_color   = Color((.1, .1, .2), "Interior Color")
             roughness    = Float.Factor(.5, "Roughness", 0, 1)
+            transp       = Float.Factor( 0, "Transparency", 0, 1)
+
+        with Layout("4D Lights"):
+            use_lights = Boolean(False, "4D Enlighment", panel="Lights")
+            geo = geo.switch(use_lights, Mesh4(geo).normal_plane_reflection().link_inputs(None, "Lights"))
+
+        # ===========================================================================
+        # Projection
+        # ===========================================================================
 
         with Layout("Projection"):
 
@@ -2043,11 +1965,35 @@ def build_geometry_nodes():
             # Rotation
             geo = Geometry4(geo).matrix_rotation(Proj)
 
+        # ===========================================================================
+        # Separate
+        # ===========================================================================
+
         with Layout("Separate"):
             comps = geo.separate_components()
             mesh  = comps.mesh
             curve = comps.curve
             cloud  = comps.point_cloud
+
+        # ===========================================================================
+        # Wire
+        # ===========================================================================
+
+        with Layout("Wire"):
+            wire = mesh.to_curve().to_mesh(profile_curve=Curve.Circle(radius=wire_radius, resolution=wire_resol))
+            wire.faces.smooth = wire_smooth
+
+            balls = mesh.points.instance_on(instance=Mesh.UVSphere(radius=wire_radius))
+            balls = Mesh(balls.realize())
+            balls.faces.smooth = True
+
+            wire = Mesh(wire.switch(wire_balls, wire + balls))
+            wire.material = wire_mat
+
+
+        # ===========================================================================
+        # Object
+        # ===========================================================================
 
         with Layout("Faces options"):
             mesh.faces.Use_Emission  = use_emission
@@ -2075,11 +2021,15 @@ def build_geometry_nodes():
             mesh = mesh.switch(use_mat, mesh.set_material(mat))
             mesh = Mesh(mesh)
             mesh.faces.smooth = smooth
+            mesh.faces.Transparency = transp
 
         with Layout("Add Normals"):
             lines = geo.normals().link_inputs(None, "Normals").normals
 
         geo = Geometry.Join(cloud, curve, mesh, lines)
+
+        geo = geo.switch(use_wire, wire)
+
         geo.out("Geometry")
 
     tree.add_method(Geometry4, "projection", "", ret_class=Geometry)
@@ -2114,6 +2064,56 @@ def build_geometry_nodes():
         Geometry.Join(cloud, mesh, curve).out("Mesh")
 
     tree.add_method(Mesh4, self_attr = "self", ret_class=Mesh4)
+
+    # ====================================================================================================
+    # MODIFIER - Curve Twist
+    # ====================================================================================================
+
+    with GeoNodes("Twist", prefix=curve_) as tree:
+
+        curve = Curve4.Plunge()
+
+        r1 = Float.Angle(0, "N1")
+        r2 = Float.Angle(0, "N2")
+        r3 = Float.Angle(0, "N3")
+
+        with Layout("Rotation N2 / N3"):
+            ca, sa = gnmath.cos(r1), gnmath.sin(r1)
+
+            R1 = Matrix((
+                 1,  0,   0,   0,
+                 0,  1,   0,   0,
+                 0,  0,   ca,-sa,
+                 0,  0,   sa, ca,
+            ))
+
+        with Layout("Rotation N3 / N1"):
+            ca, sa = gnmath.cos(r2), gnmath.sin(r2)
+
+            R2 = Matrix((
+                 1,  0,   0,   0,
+                 0, ca,   0,  sa,
+                 0,  0,   1,   0,
+                 0,-sa,   0,  ca,
+            ))
+
+        with Layout("Rotation N1 / N2"):
+            ca, sa = gnmath.cos(r3), gnmath.sin(r3)
+
+            R3 = Matrix((
+                 1,  0,   0,   0,
+                 0,  ca,-sa,   0,
+                 0,  sa, ca,   0,
+                 0,  0,   0,   1,
+            ))
+
+        R = R3.multiply(R2.multiply(R1))
+
+        curve.points.TNNN = Matrix("TNNN").multiply(R)
+
+        curve.out("Curve")
+
+    tree.add_method(Curve4, self_attr="self", ret_class=Curve4)
 
     # ====================================================================================================
     # PRIMITIVE - Curve Line
@@ -2162,11 +2162,12 @@ def build_geometry_nodes():
             trim0 = Float.Factor(0, "Start", 0, 1)
             trim1 = gnmath.max(trim0, Float.Factor(1, "End", 0, 1))
 
+        keep_open = Boolean(False, "Keep Open")
         factor     = Float.Factor(1, "Close", 0, 1)
         move_curve = Boolean(False, "Move Curve", tip="The curve moves to the origin when open")
         z_rot      = Float.Angle(0, "Rotation")
-
-        close = factor.equal(1) & (trim0.equal(0) & trim1.equal(1))
+        
+        close = factor.equal(1) & (trim0.equal(0) & trim1.equal(1)) & keep_open.bnot()
 
         with Layout("Closed Circle"):
             circle = Curve.Circle(resolution=resol, radius=radius)
@@ -2200,19 +2201,7 @@ def build_geometry_nodes():
             line.transform(rotation=Rotation((0, 0, z_rot)))
 
         with Layout("Plunge into 4D"):
-
-            if True:
-                line = Geometry4.Plunge(line)
-
-            else:
-                m = [0]*16
-                m[:3] = nd.position.xyz
-                m[4:8]  = gnmath.cos(ag + z_rot), gnmath.sin(ag + z_rot), 0, 0
-                m[8:12] = 0, 0, 1, 0
-                m[12:]  = 0, 0, 0, 1
-
-                line = Curve(line)
-                line.points.M4D = Matrix(m)
+            line = Geometry4.Plunge(line)
 
         with Layout("Closed"):
             line = line.switch(close & factor.equal(1), circle)
@@ -2332,7 +2321,7 @@ def build_geometry_nodes():
         # Rotation
         grid4 = grid4.matrix_rotation(R)
 
-        finalize(grid4, Material("4 Face", "Material")).out("Mesh")
+        finalize(grid4, "4D Surface").out("Mesh")
 
     tree.add_method(Mesh4, ret_class=Mesh4)
 
@@ -2343,23 +2332,19 @@ def build_geometry_nodes():
     with GeoNodes("To Surface", prefix=curve_) as tree:
 
         bbone = Curve(Geometry4.Plunge(Curve()))
+        close_bb = Boolean(False, "Close Backbone")
 
         with Panel("Profile"):
             use_object  = Boolean(False, "Object")
             profile     = Curve(None, "Curve", tip="Curve in XY plane")
             obj         = Object(None, "Curve Object", tip="Curve in XY plane")
+            use_radius  = Boolean(False, "Use Radius")
+            close_pf    = Boolean(False, "Close Profile")
 
         with Layout("Profile Curve"):
             profile = Curve(Geometry4.Plunge(profile.switch(use_object, obj.info().geometry)))
 
-        with Panel("Transformation"):
-            twist_clx = Closure(None, "Twist X", tip="Factor -> Angle")
-            twist_cly = Closure(None, "Twist Y", tip="Factor -> Angle")
-
-            use_scale = Boolean(False, "Scale")
-            scale_cl  = Closure(None, "Scale",    tip="Factor -> Scale")
-
-        mat    = Material("4 Face", "Material")
+        mat    = Material("4D Surface", "Material")
         smooth = Boolean(True, "Shade Smooth")
 
         # ---------------------------------------------------------------------------
@@ -2399,38 +2384,18 @@ def build_geometry_nodes():
             BB_v = bbone.points.sample_index(  Vector("P4 v"), index=ix % bb_count)
             BB_w = bbone.points.sample_index(  Float( "P4 w"), index=ix % bb_count)
 
+            BB_scale = Float.Switch(use_radius, 1.0, bbone.points.sample_index(nd.radius, index=ix % bb_count))
+
         with Layout("Profile Position and Normal"):
 
             # Position
             P4_v = profile.points.sample_index(Vector("P4 v"), index=iy % pf_count)
             P4_w = profile.points.sample_index(Float( "P4 w"), index=iy % pf_count)
-            P4 = Vector4(P4_v, P4_w)
+            P4 = Vector4(P4_v.scale(BB_scale), P4_w*BB_scale)
 
             # Normal
             TNNN = Matrix4(profile.points.sample_index(Matrix("TNNN"), index=iy % pf_count))
             N4 = TNNN.get_vector4(1)
-
-        """
-        with Layout("Twist & scale"):
-
-            sig = ({'Factor': 'Float'}, {'Value': 'Float'})
-
-            fac = ix/(nx - 1)
-            twist_x = twist_clx.evaluate(signature=sig, factor=fac)
-            twist_y = twist_cly.evaluate(signature=sig, factor=fac)
-            scale   = scale_cl.evaluate(signature=sig,  factor=fac)
-            scale = scale.switch_false(use_scale, 1)
-
-            R_twist = Rotation((twist_x, twist_y, 0))
-            M_twist = Matrix4(Matrix.CombineTransform(rotation=R_twist))
-
-            # Position
-            P4 = M_twist @ Vector4(P4_v, P4_w)
-            P4 = P4.scale(scale)
-
-            # Normal
-            N = M_twist @ Vector4(N_v, N_w)
-        """
 
         with Layout("Profile points on backbone"):
 
@@ -2476,11 +2441,11 @@ def build_geometry_nodes():
         # ---------------------------------------------------------------------------
 
         with Layout("Merge to close"):
-            sel  = Boolean.Switch(bb_closed, False, ix.equal(0) | ix.equal(nx - 1))
-            sel |= Boolean.Switch(pf_closed, False, iy.equal(0) | iy.equal(ny - 1))
+            sel  = Boolean.Switch(bb_closed | close_bb, False, ix.equal(0) | ix.equal(nx - 1))
+            sel |= Boolean.Switch(pf_closed | close_pf, False, iy.equal(0) | iy.equal(ny - 1))
             grid = grid.merge_points(sel)
 
-        finalize(grid, Material("4 Face", "Material")).out("Mesh")
+        finalize(grid, "4D Surface").out("Mesh")
 
     tree.add_method(Curve4, self_attr="self", ret_class=Mesh4)
 
@@ -2490,93 +2455,34 @@ def build_geometry_nodes():
 
     with GeoNodes("Torus", prefix=mesh_) as tree:
 
-        curve0 = Geometry4.Plunge(curve_.circle().link_inputs(None, "Curve 0", exclude=["Projection"]))
-        curve1 = Geometry4.Plunge(curve_.circle().link_inputs(None, "Curve 1", exclude=["Projection"]))
+        curve0 = Curve4.Plunge(curve_.circle(keep_open=True).link_inputs(None, "Curve 0", exclude=["Projection"]))
+        curve1 = Curve4.Plunge(curve_.circle(keep_open=True).link_inputs(None, "Curve 1", exclude=["Projection"]))
 
-        twist_x = Float.Angle(0, "Twist X")
-        twist_y = Float.Angle(0, "Twist Y")
+        with Panel("Twist"):
+            t1 = Float.Angle(0, "N1")
+            t2 = Float.Angle(0, "N2")
+            t3 = Float.Angle(0, "N3")
 
-        use_scale = Boolean(False, "Scale", hide_in_modifier=True)
-        scale = Closure(None, "Scale", hide_in_modifier=True)
+        use_radius = Boolean(False, "Use Radius")
 
-        trim0 = Float.Input("Curve 0 > Trim > Start")
-        trim1 = Float.Input("Curve 0 > Trim > End")
-        with Closure(closure=Input("Twist X")) as twist_clx:
-            factor = Float(name="Factor")
-            factor.map_range(to_min=trim0*twist_x, to_max=trim1*twist_x).out("Value")
+        with Layout("Backbone twist"):
 
-        with Closure(closure=Input("Twist Y")) as twist_cly:
-            factor = Float(name="Factor")
-            factor.map_range(to_min=trim0*twist_y, to_max=trim1*twist_y).out("Value")
+            trim0 = Float.Input("Curve 0 > Trim > Start")
+            trim1 = Float.Input("Curve 0 > Trim > End")
 
-        mesh = Curve4(curve0).to_surface(
-            curve_1 = curve1, 
-            twist_x = twist_clx, 
-            twist_y = twist_cly, 
-            scale   = use_scale, 
-            scale_1 = scale).link_inputs(None, exclude=["Profile", "Transformation"])
+            fac = nd.spline_parameter().factor
 
-        mesh.out("Mesh")
+            r1 = fac.map_range(to_min=t1*trim0, to_max=t1*trim1)
+            r2 = fac.map_range(to_min=t2*trim0, to_max=t2*trim1)
+            r3 = fac.map_range(to_min=t3*trim0, to_max=t3*trim1)
+
+            curve0 = curve0.twist(n1=r1, n2=r2, n3=r3)
+
+        mesh = Curve4(curve0, close_backbone=True, close_profile=True).to_surface(curve_1 = curve1, use_radius = use_radius)
+
+        finalize(mesh, "4D Surface").out("Mesh")
 
     tree.add_method(Mesh4, ret_class=Mesh4)
-
-    # ====================================================================================================
-    # MODIFIER - Slices along a curve
-    # ====================================================================================================
-
-    with GeoNodes("Slices OLD", prefix=curve_) as tree:
-
-        bbone = Curve4.Plunge()
-
-        with Panel("3D Profile"):
-
-            profile     = Mesh4.Plunged(name="Profile")
-            use_object  = Boolean(False, "Object")
-            obj         = Object(None, "Mesh Object")
-            scale       = Float(1., "Scale")
-            orient      = Integer(1, "Orientation", 0, 3)
-
-            profile = Mesh4.Plunge(profile.switch(use_object, obj.info().geometry))
-
-        with Layout("Instantiate the profile on the backbone"):
-
-            vol = Mesh(bbone.points.instance_on(instance=profile).realize())
-
-        with Layout("Indices"):
-
-            nprof = Mesh(profile).points.count + Curve(profile).points.count + Cloud(profile).points.count
-            ix = nd.index // nprof
-            iy = nd.index % nprof
-
-        with Layout("Backbone Position and Orientation"):
-
-            BB_v = bbone.points.sample_index(Vector("P4 v"), index=ix)
-            BB_w = bbone.points.sample_index(Float("P4 w"), index=ix)
-
-            TNNN = bbone.points.sample_index(Matrix("TNNN"), index=ix)
-
-            BB_scale = bbone.points.sample_index(bbone.points.capture_attribute(scale), index=ix)
-
-        with Layout("Profile Position"):
-
-            PF_v = profile.points.sample_index(Vector("P4 v"), index=iy)
-            PF_w = profile.points.sample_index(Vector("P4 w"), index=iy)
-
-        with Layout("Scale and rotate slices"):
-
-            with Layout("Scale"):
-                PF_v = PF_v.scale(BB_scale)
-                PF_w = PF_w * BB_scale
-
-            with Layout("Rotate"):
-                Rot = Matrix4(TNNN).roll_columns(orient)
-                P4 = Rot.rotate_vector(Vector4(PF_v, PF_w))
-
-            with Layout("To backbone position"):
-                P4 = P4 + Vector4(BB_v, BB_w)
-                P4.store_position(vol)
-
-        finalize(vol).out("Mesh")
 
     # ====================================================================================================
     # MODIFIER - Slices along a curve
@@ -2626,56 +2532,6 @@ def build_geometry_nodes():
     tree.add_method(Curve4, self_attr="self", ret_class=Mesh4)    
 
     # ====================================================================================================
-    # PRIMITIVE - Dev
-    # ====================================================================================================
-
-    with GeoNodes("Slices Test"):
-
-        curve = Curve4.Plunged()
-        profile = Mesh(Geometry4.Plunge(Mesh(None, "Profile")))
-
-        with Layout("Base Slices"):
-            base = curve.slices(profile=profile)
-            base = base.compute_uv_vectors()
-
-        with Layout("Build a fake skin to compute the faces normals"):
-            N = Matrix4("UVNN").get_vector4(2)
-            P4 = Vector4("P4") + N.scale(0.1)
-
-            count = profile.faces.count
-            cloud = Cloud.Points(count, position=profile.faces.sample_index(P4.v, index=nd.index))
-            cloud.points.P4_v = nd.position
-            cloud.points.P4_w = profile.faces.sample_index(P4.w, index=nd.index)
-
-            skin = curve.slices(profile=cloud)
-
-        with Layout("Compute the direction of the skin as normal"):
-            P4 = Vector4.Position()
-
-            Oi = Integer("Oi")
-            O0 = Vector4(base.points.sample_index(P4.v, Oi), base.points.sample_index(P4.w, Oi), )
-            O1 = Vector4(skin.points.sample_index(P4.v, Oi), skin.points.sample_index(P4.w, Oi), )
-            N = (O1 - O0).normalize()
-
-        with Layout("Compute the local Matrix wih U, V and N"):
-
-            U = Vector4("U")
-            V = Vector4("V")
-
-            N2 = Vector4.Cross(U, V, N)
-            N1 = Vector4.Cross(U, V, N2)
-
-            d = N1.dot(N)
-
-            Normal = N1.switch(d.less_than(0), -N1)
-
-            base.faces.UVNN = Matrix4.FromVectors(U, V, Normal, N2)
-
-        base.out()
-        skin.out("Skin")
-
-
-    # ====================================================================================================
     # PRIMITIVE - Mesh Hyper Sphere
     # ====================================================================================================
 
@@ -2687,7 +2543,7 @@ def build_geometry_nodes():
         with Layout("A Sphere as slice"):
             sphere = Mesh.UVSphere(radius=radius).link_inputs(None, "Sphere")
             sphere.corners.UV_Map = sphere.uv_map
-            sphere.faces.material = Material("4 Face", "Material")
+            sphere.faces.material = Material("4D Surface", "Material")
 
         with Layout("Backbone along w"):
             line = Curve4.line(xyz=0, w = -radius, xyz_1=0, w_1=radius, count=slices + 2)
@@ -2703,227 +2559,617 @@ def build_geometry_nodes():
         hsph.points.N4_v = N4.v
         hsph.points.N4_w = N4.w
 
-        """
-        UVNN = Matrix4("UVNN")
-        U, V, _, N2 = UVNN.get_vectors()
-        node = hsph.faces.capture_attribute(v = Vector("N4 v"), w=Float("N4 w"))
-        N1 = Vector4(node.v, node.w).normalize()
-        hsph.faces.UVNN = Matrix4.FromVectors(U, V, N1, Vector4.Cross(U, V, N1))
-        """
-
         finalize(hsph).out("Mesh")
 
     tree.add_method(Mesh4, ret_class=Mesh4)
 
-    return
+    # ====================================================================================================
+    # MODIFIER - Extrusion
+    # ====================================================================================================
+
+    with GeoNodes("Extrude", is_group=True, prefix=mesh_) as tree:
+
+        mesh = Mesh4.Plunge()
+        Dir = Vector4.Input(0, 1)
+        scale = Float(1.0, "Scale")
+
+        Dir = Dir.scale(scale)
+
+        Temp = Vector4((10, 10, 10, 10))
+        
+        count = mesh.points.count
+        mesh.points.Ref_v = Vector("P4 v")
+        mesh.points.Ref_w = Float("P4 w")
+        mesh.points.New = False
+        
+        second = Mesh4(Geometry4(mesh).translation(**Temp.args()))
+        second.points.New = True
+        
+        extr = mesh.edges.extrude(offset=Temp.v)
+        extr.points[extr.top].New = True
+        
+        extr.points[Boolean("New")].P4_v = Vector("P4 v") + Temp.v
+        extr.points[Boolean("New")].P4_w = Float("P4 w") + Temp.w
+        
+        mesh = Mesh4(extr + second)
+        
+        mesh = mesh.merge_points(True)
+
+        mesh.points[Boolean("New")].P4_v = mesh.points.sample_index(Vector("Ref v"), index=nd.index) + Dir.v
+        mesh.points[Boolean("New")].P4_w = mesh.points.sample_index(Float("Ref w"), index=nd.index) + Dir.w
+        mesh.position = Vector("P4 v")
+
+        mesh.remove_named_attribute(name="Ref v")
+        mesh.remove_named_attribute(name="Ref w")
+        mesh.remove_named_attribute(name="New")
+
+        mesh = Mesh4(mesh).compute_uv_vectors()
+        
+        mesh.out()
+
+    tree.add_method(Mesh4, self_attr="self", ret_class=Mesh4)
+
+    # ====================================================================================================
+    # PRIMITIVE - Hyper Cube
+    # ====================================================================================================
+
+    with GeoNodes("Hyper Cube", prefix=mesh_):
+
+        Size = Vector4.Input((1, 1, 1) , 1, name="Size")
+
+        cube = Mesh4.Plunge(Mesh.Cube(size=Size.v), w=-Size.w/2)
+
+        cube = cube.extrude(w=Size.w)
+
+        cube = Geometry4(cube).rotation().link_inputs(None, "Rotation", exclude=["Pivot"])
+
+        finalize(cube, "4D Surface").out("Mesh")
+
+    tree.add_method(Mesh4, ret_class=Mesh4)
+
+    # ====================================================================================================
+    # MODIFIER - From Object
+    # ====================================================================================================
+
+    with GeoNodes("4D Object") as tree:
+
+        geo = Mesh4()
+        mat = Material("4D Surface", "Material")
+
+        geo = geo.compute_uv_vectors()
+
+        geo = Geometry4(geo).scale(scale=Float(1., "Scale"))
+        geo = Geometry4(geo).rotation().link_inputs(None, "Rotation", exclude=["Pivot"])
+
+        geo.material = mat
+
+        finalize(geo, "4D Surface").out()
 
 
 # ====================================================================================================
-# Class Edges 4
+# Create an object from python
 # ====================================================================================================
 
-class Edges4:
+def create_4d_object(name, points, faces=[]):
+    """ Create a Blender object from python data
 
-    def __init__(self):
-        self.verts = np.zeros((0, 4), float)
-        self.edges = np.zeros((0, 2), int)
+    Created object has the 4D parameters and can be projected.
 
-    def create():
-        pass
+    Arguments
+    ---------
+    - name : object name
+    - points : numpy array of shape (n, 4)
+    - faces : array of tuple of points 
 
+    Returns
+    -------
+    - Created object
+    """
 
+    from geonodes.core.blender import create_object
 
+    obj = create_object(name, type='MESH')
+    mesh = obj.data
 
+    points = np.asarray(points)
+    shape = np.shape(points)
+    if len(shape) != 2 or shape[-1] != 4:
+        raise RuntimeError(f"create_4d_object error: 'points' arguments must be an array of shape (n, 4), not {shape}")
+    
+    verts = points[:, :3]
+    n = len(verts)
 
+    mesh.clear_geometry()
 
+    # Vertices
+    mesh.vertices.add(n)
+    a = np.reshape(verts, n*3).astype(np.float32)
+    mesh.vertices.foreach_set('co', a)
 
+    # Faces
+    loop_start = []
+    loop_total = []
+    corners = []
+    ouv = []
 
+    UVNN = np.zeros((len(faces), 4, 4), np.float32)
+    
+    index = 0
+    for iface, face in enumerate(faces):
+        assert len(face) >= 3, f"Faces must be a list of tuples with at leat 3 items each, not {face}"
+        
+        loop_start.append(index)
+        loop_total.append(len(face))
+        index += len(face)
+        corners.extend(list(face))
+        ouv.append(face[:3])
+        
+        UVNN[iface, 0] = points[face[2]] - points[face[1]]
+        UVNN[iface, 1] = points[face[0]] - points[face[1]]
+
+    mesh.loops.add(len(corners))
+    mesh.loops.foreach_set("vertex_index", corners)
+
+    mesh.polygons.add(len(faces))
+    mesh.polygons.foreach_set("loop_start", loop_start)
+    mesh.polygons.foreach_set("loop_total", loop_total)
+    
+    # Attributes
+    
+    attrs = mesh.attributes
+
+    attr = attrs.new("P4 w", type='FLOAT', domain='POINT')
+    attr.data.foreach_set('value', np.array(points[:, 3]))
     
     
-     
-            
+    attr = attrs.new("P4 v", type='FLOAT_VECTOR', domain='POINT')
+    attr.data.foreach_set('vector', np.reshape(verts, n*3))
+    
+    attr = attrs.new("Oi", type='INT', domain='FACE')
+    attr.data.foreach_set('value', np.array([item[1] for item in ouv]).astype(np.int32))
+    
+    attr = attrs.new("Ui", type='INT', domain='FACE')
+    attr.data.foreach_set('value', np.array([item[2] for item in ouv]).astype(np.int32))
+    
+    attr = attrs.new("Vi", type='INT', domain='FACE')
+    attr.data.foreach_set('value', np.array([item[0] for item in ouv]).astype(np.int32))
+    
+
+    attr = attrs.new("UVNN", type='FLOAT4X4', domain='FACE')
+    attr.data.foreach_set('value', UVNN.ravel())
+    
+    # Done
+
+    mesh.update()
+
+    mod = obj.modifiers.new(name="Plunge", type='NODES')
+    mod.node_group = bpy.data.node_groups.get("4D Object") 
+
+    return obj
+
 # ====================================================================================================
-# Position and Normals
+# Polytopes
 # ====================================================================================================
 
-class Position4(Matrix4):
+# ----------------------------------------------------------------------------------------------------
+# Faces of basic shapes
+# ----------------------------------------------------------------------------------------------------
 
-    @property
-    def location(self):
-        return self.get_vector4(0)
+FACES_INDICES = {
+    'TETRA': [
+        [0, 1, 2],
+        [0, 1, 3],
+        [0, 2, 3],
+        [1, 2, 3],
+    ],
+    'CUBE' : [
+        [0, 1, 2, 3],
+        [4, 5, 6, 7],
+        [0, 1, 5, 4],
+        [1, 2, 6, 5],
+        [2, 3, 7, 6],
+        [3, 0, 4, 7],
+    ],
+    'OCTA' : [
+        [0, 2, 4],
+        [0, 2, 5],
+        [0, 3, 4],
+        [0, 3, 5],
+        [1, 2, 4],
+        [1, 2, 5],
+        [1, 3, 4],
+        [1, 3, 5],
+    ],
+    'DODECA': [
+        [ 0,  1,  2,  3,  4],
+        [ 0,  5, 10,  6,  1],
+        [ 1,  6, 11,  7,  2],
+        [ 2,  7, 12,  8,  3],
+        [ 3,  8, 13,  9,  4],
+        [ 4,  9, 14,  5,  0],
+
+        [15, 10,  5, 14, 19],
+        [16, 11,  6, 10, 15],
+        [17, 12,  7, 11, 16],
+        [18, 13,  8, 12, 17],
+        [19, 14,  9, 13, 18],
+        [19, 18, 17, 16, 15],
+    ],
+}
+
+# ----------------------------------------------------------------------------------------------------
+# Polytopes definition
+# ----------------------------------------------------------------------------------------------------
+
+POLYTOPES = {
+    5 : {
+        'name' : "5-Cell Pentachore",
+        'shape' : 'TETRA',
+        'points' : [
+            ( 1,  1,  1, -1),
+            ( 1, -1, -1, -1),
+            (-1,  1, -1, -1),
+            (-1, -1,  1, -1),
+            ( 0,  0,  0,  1),
+        ],
+        'cells' : [
+            (0,1,2,3),
+            (0,1,2,4),
+            (0,1,3,4),
+            (0,2,3,4),
+            (1,2,3,4),
+        ],
+    },
+
+    8 : {
+        'name' : "8-Cell Hypercube",
+        'shape': 'CUBE',
+        'points' : [
+            (-1, -1, -1, -1),
+            ( 1, -1, -1, -1),
+            (-1,  1, -1, -1),
+            ( 1,  1, -1, -1),
+            (-1, -1,  1, -1),
+            ( 1, -1,  1, -1),
+            (-1,  1,  1, -1),
+            ( 1,  1,  1, -1),
+            (-1, -1, -1,  1),
+            ( 1, -1, -1,  1),
+            (-1,  1, -1,  1),
+            ( 1,  1, -1,  1),
+            (-1, -1,  1,  1),
+            ( 1, -1,  1,  1),
+            (-1,  1,  1,  1),
+            ( 1,  1,  1,  1),
+        ],
+        'cells' : [
+            [ 0,  1,  3,  2,   4,  5,  7,  6],
+            [ 8,  9, 11, 10,  12, 13, 15, 14],
+            [ 0,  1,  3,  2,   8,  9, 11, 10],
+            [ 4,  5,  7,  6,  12, 13, 15, 14],
+            [ 0,  1,  5,  4,   8,  9, 13, 12],
+            [ 2,  3,  7,  6,  10, 11, 15, 14],
+            [ 0,  2,  6,  4,   8, 10, 14, 12],
+            [ 1,  3,  7,  5,   9, 11, 15, 13],
+        ],
+    },
+    16 : {
+        'name' : "16-Cell Cross_Polytope",
+        'shape': 'TETRA',
+        'points': [
+            ( 1,  0,  0,  0),
+            (-1,  0,  0,  0),
+            ( 0,  1,  0,  0),
+            ( 0, -1,  0,  0),
+            ( 0,  0,  1,  0),
+            ( 0,  0, -1,  0),
+            ( 0,  0,  0,  1),
+            ( 0,  0,  0, -1),
+        ],
+        'cells': [
+            [0, 2, 4, 6], [0, 2, 4, 7], [0, 2, 5, 6], [0, 2, 5, 7],
+            [0, 3, 4, 6], [0, 3, 4, 7], [0, 3, 5, 6], [0, 3, 5, 7],
+
+            [1, 2, 4, 6], [1, 2, 4, 7], [1, 2, 5, 6], [1, 2, 5, 7],
+            [1, 3, 4, 6], [1, 3, 4, 7], [1, 3, 5, 6], [1, 3, 5, 7],
+        ],
+    },
+
+    24 : {
+        'name' : "24-Cell",
+        'shape' : 'OCTA',
+        'points' : [
+            ( 1,  1,  0,  0), ( 1, -1,  0,  0), (-1,  1,  0,  0), (-1, -1,  0,  0),
+            ( 1,  0,  1,  0), ( 1,  0, -1,  0), (-1,  0,  1,  0), (-1,  0, -1,  0),
+            ( 1,  0,  0,  1), ( 1,  0,  0, -1), (-1,  0,  0,  1), (-1,  0,  0, -1),
+            ( 0,  1,  1,  0), ( 0,  1, -1,  0), ( 0, -1,  1,  0), ( 0, -1, -1,  0),
+            ( 0,  1,  0,  1), ( 0,  1,  0, -1), ( 0, -1,  0,  1), ( 0, -1,  0, -1),
+            ( 0,  0,  1,  1), ( 0,  0,  1, -1), ( 0,  0, -1,  1), ( 0,  0, -1, -1),
+        ],
+        'cells' : [
+            [0, 1, 4, 5, 8, 9],         [2, 3, 6, 7, 10, 11],
+            [0, 2, 12, 13, 16, 17],     [1, 3, 14, 15, 18, 19],
+            [4, 6, 12, 14, 20, 21],     [5, 7, 13, 15, 22, 23],
+            [8, 10, 16, 18, 20, 22],    [9, 11, 17, 19, 21, 23],
+            [0, 4, 8, 12, 16, 20],      [3, 7, 11, 15, 19, 23],
+            [1, 5, 9, 13, 17, 21],      [2, 6, 10, 14, 18, 22],
+            [0, 1, 8, 9, 12, 13],       [6, 7, 10, 11, 14, 15],
+            [0, 1, 4, 5, 16, 17],       [6, 7, 2, 3, 18, 19],
+            [0, 2, 4, 6, 20, 21],       [1, 3, 5, 7, 22, 23],
+            [0, 2, 8, 10, 16, 18],      [1, 3, 9, 11, 17, 19],
+            [4, 6, 8, 10, 12, 14],      [5, 7, 9, 11, 13, 15],
+        ],
+    },
+}
+
+# ===========================================================================
+# 600 Cells
+# ===========================================================================
+
+def build_600cell_vertices_and_cells(normalize_vertices: bool = False):    
+    """
+    Build the regular 600-cell (H4) in R^4:
+      - 120 vertices
+      - 600 tetrahedral cells (each cell is 4 vertex indices)
+
+    Vertex families (standard scaled coordinates):
+      A) 16 points: (±1/2, ±1/2, ±1/2, ±1/2)
+      B) 8 points : permutations of (±1, 0, 0, 0)
+      C) 96 points: even permutations of (0, ±1/2, ±phi/2, ±1/(2phi))
+         with an even number of minus signs across the 4 coordinates.
+    """
     
-    @location.setter
-    def location(self, V):
-        self.set_vector4(0, V)
-
-    # ====================================================================================================
-    # Operations
-    # ====================================================================================================
-
-    def _translate(self, T):
-        with Layout("Position4 Translate", color='MACRO'):
-            T = Vector4(T)
-            self.position = self.position + T
-            return self
-
-    def _rotate(self, R, pivot=None):
-        with Layout("Position4 Rotate", color='MACRO'):
-
-            P4 = Position4(self)
-
-            if pivot is not None:
-                P = Vector4(P4)
-                P4 = P4.translate(-P)
-
-            P4 = Position4(R @ P4)
-
-            if pivot is not None:
-                P4 = P4.translate(P)
-
-            return self._jump(P4)
+    import itertools
+    import math
+    from typing import List, Tuple
     
-    def _scale(self, scale, pivot=None):
-        with Layout("Position4 Scale", color='MACRO'):
+    Vec4 = Tuple[float, float, float, float]
 
-            pos = self.position
-
-            if pivot is not None:
-                P = Vector4(pivot)
-                pos = pos - P
-
-            pos = pos.scale(scale)
-
-            if pivot is not None:
-                pos = pos + P
-
-            self.position = pos
-            return self
+    eps = 0.0001
     
-    # ====================================================================================================
-    # Build the nodes
-    # ====================================================================================================
+    phi = (1.0 + math.sqrt(5.0)) / 2.0
+    inv_phi = 1.0 / phi
 
-    @staticmethod
-    def build_nodes():
+    # -----------------------------
+    # Helpers
+    # -----------------------------
+    def dist2(a: Vec4, b: Vec4) -> float:
+        return (a[0] - b[0]) ** 2 + (a[1] - b[1]) ** 2 + (a[2] - b[2]) ** 2 + (a[3] - b[3]) ** 2
 
-        # ---------------------------------------------------------------------------
-        # Translation Node
-        # ---------------------------------------------------------------------------
+    def is_even_permutation(perm_indices: Tuple[int, int, int, int]) -> bool:
+        # Permutation parity by inversion count (even => True)
+        inv = 0
+        for i in range(4):
+            for j in range(i + 1, 4):
+                if perm_indices[i] > perm_indices[j]:
+                    inv += 1
+        return (inv % 2) == 0
 
-        with GeoNodes("Translate", is_group=True, prefix=mat_) as tree:
+    # -----------------------------
+    # 1) Build vertices (120)
+    # -----------------------------
+    # A) 16: (±1/2, ±1/2, ±1/2, ±1/2)
+    A = [
+        (sx * 0.5, sy * 0.5, sz * 0.5, sw * 0.5)
+        for sx in (-1.0, 1.0)
+        for sy in (-1.0, 1.0)
+        for sz in (-1.0, 1.0)
+        for sw in (-1.0, 1.0)
+    ]
 
-            P4 = Position4.Input()
-            T = Vector4.Input()
+    # B) 8: permutations of (±1, 0, 0, 0)
+    B = []
+    for i in range(4):
+        for s in (-1.0, 1.0):
+            v = [0.0, 0.0, 0.0, 0.0]
+            v[i] = s
+            B.append(tuple(v))
 
-            P._translate(T).out()
+    # C) 96: even permutations of (0, ±1/2, ±phi/2, ±1/(2phi))
+    base_vals = (0.0, 0.5, 0.5 * phi, 0.5 * inv_phi)
 
-        tree.add_method(Position4, self_attr='M', ret_class=Position4)
+    C = []
+    # Work with permutations of indices 0..3, keep only even permutations
+    for perm_idx in itertools.permutations((0, 1, 2, 3), 4):
+        if not is_even_permutation(perm_idx):
+            continue
 
-        # ---------------------------------------------------------------------------
-        # Rotation Node
-        # ---------------------------------------------------------------------------
+        perm = tuple(base_vals[i] for i in perm_idx)
 
-        with GeoNodes("Rotate", is_group=True, prefix=mat_) as tree:
+        for signs in itertools.product((-1.0, 1.0), repeat=4):
+            # Keep only sign patterns with an even number of minus signs
+            if sum(1 for s in signs if s < 0.0) % 2 != 0:
+                continue
+            v = tuple(perm[k] * signs[k] for k in range(4))
+            C.append(v)
 
-            P = Position4.Input()
-            R = Matrix(None, "Rotation")
-            pivot = Vector4.Input(name="Pivot")
+    vertices: List[Vec4] = sorted(set(A + B + C))
+    if len(vertices) != 120:
+        raise RuntimeError(f"Expected 120 vertices, got {len(vertices)}")
 
-            P._rotate(R, pivot=pivot).out()
+    # -----------------------------
+    # 2) Build adjacency by minimal non-zero distance (edge graph)
+    # -----------------------------
+    n = len(vertices)
 
-        tree.add_method(Position4, self_attr='M', ret_class=Position4)
+    min_d2 = None
+    for i in range(n):
+        vi = vertices[i]
+        for j in range(i + 1, n):
+            d2 = dist2(vi, vertices[j])
+            if d2 > 1e-12:
+                if min_d2 is None or d2 < min_d2:
+                    min_d2 = d2
+    if min_d2 is None:
+        raise RuntimeError("Failed to find a non-zero distance among vertices.")
 
-        # ---------------------------------------------------------------------------
-        # Scale Node
-        # ---------------------------------------------------------------------------
+    neigh = [set() for _ in range(n)]
+    for i in range(n):
+        vi = vertices[i]
+        for j in range(i + 1, n):
+            if abs(dist2(vi, vertices[j]) - min_d2) <= eps:
+                neigh[i].add(j)
+                neigh[j].add(i)
 
-        with GeoNodes("Scale", is_group=True, prefix=mat4_) as tree:
+    # Sanity check: in the 600-cell, each vertex has degree 12
+    degs = [len(neigh[i]) for i in range(n)]
+    if not all(d == 12 for d in degs):
+        raise RuntimeError(f"Unexpected vertex degrees (expected all 12). Min={min(degs)} Max={max(degs)}")
 
-            P = Position4.Input()
-            scale = Float(1., "Scale")
-            pivot = Vector4.Input(name="Pivot")
+    # -----------------------------
+    # 3) Extract tetrahedral cells as K4 cliques of the edge graph
+    #    The 600-cell is simplicial: all 3D cells are tetrahedra.
+    # -----------------------------
+    cells_set = set()
 
-            P._scale(R, pivot=pivot).out()
+    for u in range(n):
+        Nu = neigh[u]
+        for v in (vv for vv in Nu if vv > u):
+            common_uv = Nu.intersection(neigh[v])
+            # choose w in common neighbors (w > v), then x in common neighbors of (u,v,w) (x > w)
+            for w in (ww for ww in common_uv if ww > v):
+                common_uvw = common_uv.intersection(neigh[w])
+                for x in (xx for xx in common_uvw if xx > w):
+                    cells_set.add((u, v, w, x))
 
-        tree.add_method(Position4, self_attr='M', ret_class=Position4)
+    cells = [list(c) for c in sorted(cells_set)]
+    if len(cells) != 600:
+        raise RuntimeError(f"Expected 600 tetrahedral cells, got {len(cells)}")
 
-        # ---------------------------------------------------------------------------
-        # Curve Local space
-        # ---------------------------------------------------------------------------
+    # -----------------------------
+    # 4) Optional normalization (topology unchanged)
+    # -----------------------------
+    if normalize_vertices:
+        def nrm(v: Vec4) -> float:
+            return math.sqrt(v[0]*v[0] + v[1]*v[1] + v[2]*v[2] + v[3]*v[3])
+        vertices = [tuple(x / nrm(v) for x in v) for v in vertices]
 
-        with GeoNodes("Curve Local Matrix", is_group=True, prefix=mat4_) as tree:
-
-            P = Position4.Input()
-            tg_axis = Integer(0, "Tangent Axis", 0, 3)
-
-            with Layout("Vectors from Matrix"):
-                V1 = P.get_vector(1)
-                V2 = P.get_vector(2)
-                V3 = P.get_vector(3)
-                V0 = Vector4.Cross(V1, V2, V3)
-
-            m = [0]*16
-
-            with Matrix.IndexSwitch(index=tg_axis) as M:
-                m[:4]   = V0.as_tuple
-                m[4:8]  = V1.as_tuple
-                m[8:12] = V2.as_tuple
-                m[12:]  = V3.as_tuple
-                Matrix(m).out()
-
-            with M:
-                m[:4]   = V3.as_tuple
-                m[4:8]  = V0.as_tuple
-                m[8:12] = V1.as_tuple
-                m[12:]  = V2.as_tuple
-                Matrix(m).out()
-
-            with M:
-                m[:4]   = V2.as_tuple
-                m[4:8]  = V3.as_tuple
-                m[8:12] = V0.as_tuple
-                m[12:]  = V1.as_tuple
-                Matrix(m).out()
-
-            with M:
-                m[:4]   = V1.as_tuple
-                m[4:8]  = V2.as_tuple
-                m[8:12] = V3.as_tuple
-                m[12:]  = V0.as_tuple
-                Matrix(m).out()
-
-            M.out("Matrix")
-
-        tree.add_method(Position4, self_attr='M', ret_class=Matrix)
-
-        # ---------------------------------------------------------------------------
-        # Mesh Local space
-        # ---------------------------------------------------------------------------
-
-        with GeoNodes("Mesh Local Matrix", is_group=True, prefix=mat4_) as tree:
-
-            P = Position4.Input()
-            perp_last = Boolean(True, "Normals Last", tip="Tangent plane in vectors 0, 1 and Normal plane in 2, 3.")
-
-            with Layout("Vectors from Matrix"):
-                V1 = P.get_vector(1)
-                V2 = P.get_vector(2)
-                M = vec_.perp_plane(**V1.args(), **V2.args(rank=1), last_vectors=perp_last)
-
-            M.out()
-
-        tree.add_method(Position4, self_attr='M', ret_class=Matrix)
-
-
-
-
-
-
+    return vertices, cells
 
 
+def build_120cell_vertices_and_cells(normalize: bool = True):
+    """
+    Build the 120-cell as the dual of the 600-cell.
+
+    Inputs
+    ------
+    V600 : list of 120 vertices (4D)
+    cells600 : list of 600 tetrahedra (each is 4 indices into V600)
+
+    Returns
+    -------
+    V120 : list of 600 vertices (4D) = centroids of 600-cell tetrahedra
+    cells120 : list of 120 cells (each is 20 indices into V120), i.e. 120 dodecahedra as vertex-sets
+    """
+    
+    import itertools
+    import math
+    from typing import List, Tuple
+    
+    Vec4 = Tuple[float, float, float, float]
+    
+    
+    V600, cells600 = build_600cell_vertices_and_cells(True)
+
+    # --- helper: normalize to unit radius (or any consistent radius)
+    def nrm(v: Vec4) -> float:
+        return math.sqrt(v[0]*v[0] + v[1]*v[1] + v[2]*v[2] + v[3]*v[3])
+
+    def normalize_vec(v: Vec4) -> Vec4:
+        r = nrm(v)
+        return (v[0]/r, v[1]/r, v[2]/r, v[3]/r)
+
+    # 1) Dual vertices: centroids of tetrahedral cells of the 600-cell
+    V120 = []
+    for tet in cells600:
+        cx = (V600[tet[0]][0] + V600[tet[1]][0] + V600[tet[2]][0] + V600[tet[3]][0]) / 4.0
+        cy = (V600[tet[0]][1] + V600[tet[1]][1] + V600[tet[2]][1] + V600[tet[3]][1]) / 4.0
+        cz = (V600[tet[0]][2] + V600[tet[1]][2] + V600[tet[2]][2] + V600[tet[3]][2]) / 4.0
+        cw = (V600[tet[0]][3] + V600[tet[1]][3] + V600[tet[2]][3] + V600[tet[3]][3]) / 4.0
+        V120.append((cx, cy, cz, cw))
+
+    if normalize:
+        V120 = [normalize_vec(v) for v in V120]
+
+    # 2) Dual cells: for each 600-cell vertex, collect incident tetrahedra (there are 20)
+    incident = [[] for _ in range(len(V600))]  # 120 lists
+    for cell_id, tet in enumerate(cells600):
+        for vid in tet:
+            incident[vid].append(cell_id)
+
+    # Sanity: each 600-cell vertex should touch 20 tetrahedra
+    degrees = [len(lst) for lst in incident]
+    if not all(d == 20 for d in degrees):
+        raise RuntimeError(f"Expected each 600-cell vertex to have 20 incident tetrahedra. "
+                           f"Min={min(degrees)} Max={max(degrees)}")
+
+    # Each 600-cell vertex -> one dodecahedral cell in the 120-cell,
+    # whose 20 vertices are the centroids (i.e. V120 indices) of those 20 tetrahedra.
+    cells120 = [sorted(lst) for lst in incident]  # 120 cells, each has 20 vertex indices (into V120)
+
+    # Sanity counts
+    if len(V120) != 600:
+        raise RuntimeError(f"Expected 600 dual vertices, got {len(V120)}")
+    if len(cells120) != 120:
+        raise RuntimeError(f"Expected 120 dual cells, got {len(cells120)}")
+
+    return V120, cells120
+
+pts, cells = build_600cell_vertices_and_cells(True)
+POLYTOPES[600] = {
+    'name' : "600-Cell",
+    'shape' : 'TETRA',
+    'points' : pts,
+    'cells' : cells,
+}
+
+pts, cells = build_120cell_vertices_and_cells(True)
+POLYTOPES[120] = {
+    'name' : "120-Cell",
+    'shape' : 'DODECA',
+    'points' : pts,
+    'cells' : cells,
+}
+
+
+# ===========================================================================
+# Create from cells
+# ===========================================================================
+
+def create_4d_from_cells(name, points, cells, shape):
+    
+    faces_indices = FACES_INDICES[shape]
+    
+    faces = []
+    for cell in cells:
+        for face_inds in faces_indices:
+            faces.append([cell[i] for i in face_inds])
+    
+    return create_4d_object(name, points, faces=faces)
+
+def create_polytope(cells):
+    if cells not in POLYTOPES.keys():
+        raise AttributeError(f"Invalid number of cells for a regular polytope. Valid are {list(POLYTOPES.keys())}")
+    
+    return create_4d_from_cells(**POLYTOPES[cells])
+    
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+# OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD 
 
 
 

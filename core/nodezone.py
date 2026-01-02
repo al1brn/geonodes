@@ -182,8 +182,6 @@ class ZoneNode(Node):
         self._is_paired_output = True
         self._paired_input_node = inode
 
-        #class_name = type(socket).__name__
-
         # ---------------------------------------------------------------------------
         # Simulation
         # ---------------------------------------------------------------------------
@@ -209,7 +207,6 @@ class ZoneNode(Node):
 
             self._bnode.repeat_items.clear()
 
-            print("TEST", socket_name, socket)
             inode.set_input_socket(socket_name, socket)
 
         # ---------------------------------------------------------------------------
@@ -288,8 +285,7 @@ class ZoneNode(Node):
         **sockets):
         cl = cls(CLOSURE, named_sockets, **sockets)
         return cl
-
-
+    
     # ====================================================================================================
     # Get the socket default name
     # ====================================================================================================
@@ -433,7 +429,7 @@ class ZoneNode(Node):
 
 class ZoneIterator:
 
-    __slots__ = ('_socket', '_input_node', '_output_node', '_name', '_done', '_in_zone')
+    __slots__ = ('_socket', '_input_node', '_output_node', '_name', '_done', '_in_zone', '_locals')
 
     def __init__(self, socket: Socket, node: ZoneNode):
         """ Wrap the nodes creation within a zone.
@@ -504,9 +500,39 @@ class ZoneIterator:
         self._input_node    = node._paired_input_node
         self._done          = False
         self._in_zone       = False
+        self._locals        = {}
 
     def __str__(self):
         return f"<ZoneIterator {self._name}, in_zone: {self._in_zone}, done: {self._done}>"
+    
+    # ====================================================================================================
+    # End of iteration
+    # ====================================================================================================
+
+    def close_iteration(self):
+        """ Close the iteration
+        """
+
+        if self.use_locals():
+            # Sockets can be created:
+            # input : for rep in repeat(name=value):
+            # output:     v = Float(10, "Name")
+
+            for inout in ('INPUT', 'OUTPUT'):
+                for name in self._input_node._created_sockets.get(inout, {}).keys():
+                    sc_name = utils.snake_case(name)
+                    if self.is_socket_name(sc_name):
+                        self._locals[sc_name]._jump(self._socket)
+                    
+                    value = self._locals.get(sc_name, getattr(self._input_node, sc_name))
+                    setattr(self._output_node, name, value)
+
+        
+        self._output_node._loop_end()
+        if self._socket is not None:
+            self._socket._jump(self._output_node._out)
+        self._in_zone = False
+
 
     # ====================================================================================================
     # Iteration
@@ -519,11 +545,15 @@ class ZoneIterator:
 
         if self._socket is not None:
 
+            name = utils.snake_case(self._socket._bsocket.name)
+
             if self._name == SIMULATION:
                 self._socket._jump(self._input_node._bnode.outputs[1])
+                self._locals[name] = self._socket
 
             elif self._name == REPEAT:
                 self._socket._jump(self._input_node._bnode.outputs[1])
+                self._locals[name] = self._socket
 
             elif self._name == FOR_EACH:
                 self._socket._jump(self._input_node._bnode.outputs[1])
@@ -535,11 +565,7 @@ class ZoneIterator:
 
     def __next__(self):
         if self._done:
-            self._output_node._loop_end()
-            if self._socket is not None:
-                self._socket._jump(self._output_node._out)
-            self._in_zone = False
-
+            self.close_iteration()
             raise StopIteration
         
         else:
@@ -575,6 +601,36 @@ class ZoneIterator:
     @property
     def _out(self):
         return self._output_node._out
+    
+    def use_locals(self, name=None):
+        if self._output_node._zone_id == SIMULATION:
+            if name is None:
+                return True
+            return utils.snake_case(name) not in ['delta_time', 'skip']
+
+        elif self._output_node._zone_id == REPEAT:
+            if name is None:
+                return True
+            return utils.snake_case(name) not in ['iteration']
+        
+        else:
+            return False
+    
+    def get_local(self, name):
+        if name not in self._locals:
+            socket = getattr(self._input_node, name)
+            self._locals[name] = socket
+
+        return self._locals[name]
+    
+    def is_socket_name(self, name):
+        if self._socket is None:
+            return False
+        
+        if name in self._locals:
+            return list(self._locals.keys()).index(name) == 0
+        else:
+            return False
 
     def __setattr__(self, name, value):
         if name in ZoneIterator.__slots__:
@@ -582,13 +638,33 @@ class ZoneIterator:
             return
         
         if self._in_zone:
-            setattr(self._output_node, name, value)
+            if self.use_locals(name):
+                self.get_local(name)
+                bsock = utils.get_bsocket(value)
+                if bsock is None:
+                    value = utils.get_socket_class(value).Constant(value)
+                self._locals[name] = value
+
+                # This is this socket
+                if self.is_socket_name(name):
+                    self._socket._jump(self._locals[name])
+
+            else:
+                setattr(self._output_node, name, value)
         else:
             setattr(self._input_node, name, value)
 
     def __getattr__(self, name):
         if self._in_zone:
-            return getattr(self._input_node, name)
+            if self.use_locals(name):
+
+                # This is this socket
+                if self.is_socket_name(name):
+                    self._locals[name]._jump(self._socket)
+
+                return self.get_local(name)
+            else:
+                return getattr(self._input_node, name)
         else:
             return getattr(self._output_node, name)
         
@@ -602,27 +678,37 @@ class ZoneIterator:
 
         with GeoNodes("ZoneIterator class test"):
 
-            g = Cloud()
+            for rep in repeat(10, Mesh=Geometry(), A=3.14):
+                b = Float(6.26, "B")
             
-            for rep in g.repeat(10):
-                g.out()
-
-            assert type(g).__name__ == 'Cloud', type(g).__name__
+            mesh = rep.mesh
+            
+            for rep in mesh.repeat(10, A=3.14):
+                b = Float(6.26, "B")
+                rep.mesh = Mesh.Cube().join(rep.mesh)
+                rep.a = 1
+                rep.b += rep.a
                 
-            m = Mesh(g)
-            for sim in m.simulation():
-                m.out()
-
-            assert type(m).__name__ == 'Mesh', type(g).__name__
-
-            c = Curve(m)
-            for feel in c.points.for_each():
-                Mesh(c).out()
-
-            assert type(c).__name__ == 'Curve', type(g).__name__
-            assert type(feel.generated).__name__ == 'Geometry', type(g).__name__
                 
-            (c + feel.generated).out()
+            for sim in simulation(mesh=mesh, A=3.14):
+                b = Float(6.26, "B")
+            
+            mesh = sim.mesh
+            
+            for sim in mesh.simulation(A=3.14):
+                b = Float(6.26, "B")
+                sim.mesh = Mesh.Cube().join(sim.mesh)
+                sim.a = 1
+                sim.b += sim.a
+                
+            for feel in mesh.faces.for_each(pos=nd.position):
+                s = Mesh.UVSphere(radius=0.1)
+                (s + feel.element).out()
+                
+            mesh.out()
+    
+
+
 
 # ====================================================================================================
 # Global functions

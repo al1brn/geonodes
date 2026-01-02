@@ -813,7 +813,7 @@ class Tree:
         Returns
         -------
             Socket
-        """
+        """        
         input_node = self.get_input_node()
         socket = input_node.create_socket('OUTPUT', bl_idname, name, panel=panel, **props)
         def_val = props.get('default_value')
@@ -822,111 +822,6 @@ class Tree:
                 utils.get_bsocket(socket).default_value = def_val
             except Exception as e:
                 print(f"WARNING Tree.create_input_socket: {str(e)}")
-
-        return socket
-            
-
-    # ----------------------------------------------------------------------------------------------------
-    # Create a new output socket
-    # ----------------------------------------------------------------------------------------------------
-
-    def create_output_socket_OLD(self, socket, name=None, panel="", **props):
-        """ Create a new output socket.
-
-        This is an **output socket** of the Tree, hence an input socket of the <&Group Output> node.
-
-        Arguments
-        ---------
-        - socket (socket) : socket
-        - name (str) : Socket name
-        - panel (str = "") : Panel name
-
-        Returns
-        -------
-            Socket
-        """
-        if len(self._capture_inout):
-            out_socket = self._capture_inout[-1].create_output_socket(socket, name=name, panel=panel, **props)
-            if out_socket is not None:
-                return out_socket
-
-        # ---------------------------------------------------------------------------
-        # NodeSocket from argument
-        # ---------------------------------------------------------------------------
-
-        bsocket = utils.get_bsocket(socket)
-        assert bsocket is not None, f"Strange {socket=}, {name=}"
-        bl_idname = bsocket.bl_idname
-        
-        s_sub = constants.SOCKET_SUBTYPES[bl_idname]
-        socket_type, subtype = s_sub['nodesocket'], s_sub['subtype']
-        #socket_type, subtype = constants.SOCKET_SUBTYPES[bl_idname]
-        if name is None:
-            name = bsocket.name if bsocket.label == "" else bsocket.label
-
-        # ---------------------------------------------------------------------------
-        # Create in the panel
-        # ---------------------------------------------------------------------------
-
-        bpanel = self.get_bpanel(panel)
-        io_socket = self._interface.create_socket('OUTPUT', name, socket_type, parent=bpanel, **props)
-
-        # Subtype if not provided
-        if subtype is not None and 'subtype' not in props:
-            io_socket.subtype = subtype
-
-        # ---------------------------------------------------------------------------
-        # Create the link
-        # ---------------------------------------------------------------------------
-
-        in_socket = self.output_node.socket_by_identifier('INPUT', io_socket.identifier)
-        self.link(in_socket, socket)
-
-    # ----------------------------------------------------------------------------------------------------
-    # Create a new input socket from an existing node input socket
-    # ----------------------------------------------------------------------------------------------------
-
-    def create_input_from_socket_OLD(self, input_socket, name=None, panel="", **props):
-        """ Create a new group input socket from an existing input socket.
-
-        Arguments
-        ---------
-        - input_socket (socket) : a node input _insocket
-        - name (str = None) : name of the group input socket to create
-        - panel (str = "") : name of the panel
-        - props (dict) : input socket properties
-
-        Returns
-        -------
-        - Socket
-        """
-        if len(self._capture_inout):
-            socket = self._capture_inout[-1].create_input_from_socket(input_socket, name=name, panel=panel, **props)
-            if socket is not None:
-                return socket
-
-        # ---------------------------------------------------------------------------
-        # Create the socket in the parent panel
-        # ---------------------------------------------------------------------------
-
-        bsocket = utils.get_bsocket(input_socket)
-        io_socket = self._interface.create_socket('INPUT', 
-            name        = name, 
-            socket_type = bsocket.bl_idname, 
-            parent      = self.get_bpanel(panel),
-            from_socket = bsocket,
-            **props)
-
-        # ---------------------------------------------------------------------------
-        # Link with the provided socket
-        # ---------------------------------------------------------------------------
-
-        socket = utils.to_socket(self.input_node.socket_by_identifier('OUTPUT', io_socket.identifier))
-
-        if bsocket.type == 'MENU' and bsocket.node.bl_idname == 'GeometryNodeMenuSwitch':
-            self.link_menu(socket, input_socket)
-        else:
-            self.link(socket, input_socket)
 
         return socket
     
@@ -1185,19 +1080,6 @@ class Tree:
             print(f"The output node of the following zone{' is' if len(unlinkeds) == 1 else 's are'} missing input links.")
             print("The variables uses in the loop are not updated.")
             print()
-            print("="*50)
-            print("# Example with no warning:")
-            print("geo = Geometry()")
-            print("for rep in geo.repeat(10, value=1.):")
-            print("    a = rep.value + 1")
-            print("    rep.value = a    # Update value" )
-            print("    geo.out()        # Update geometry")            
-            print("geo.out() # Simulated geometry to Group output")
-            print()
-            print("# Raises warnings for 'value' and 'geometry' sockets")
-            print("for rep in geo.repeat(10, value=1.):")
-            print("    pass")
-            print("="*50)
 
             for i, (node, names) in enumerate(unlinkeds):
                 node._bnode.label = f"UPDATE MISSING {i + 1}"

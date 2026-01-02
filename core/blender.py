@@ -35,6 +35,45 @@ from pathlib import Path
 import bpy
 from bpy.types import VectorFont
 
+
+# ====================================================================================================
+# Create a mesh object
+# ====================================================================================================
+
+def create_object(name, type='MESH', collection=None):
+
+    obj = bpy.data.objects.get(name)
+    if obj is not None:
+        return obj
+
+    if type == 'EMPTY':
+        obj = bpy.data.objects.new(name=name, object_data=None)
+
+    elif type == 'MESH':
+        mesh = bpy.data.meshes.new(name)
+        obj = bpy.data.objects.new(name, mesh)
+
+    elif type in ['POINTCLOUD', 'CLOUD']:
+        cloud = bpy.data.pointclouds.new(name)
+        obj = bpy.data.objects.new(name, cloud)
+
+    elif type == 'CURVE':
+        curve = bpy.data.curves.new("Curve", type='CURVE')
+        curve.dimensions = '3D'
+        obj  = bpy.data.objects.new(name, curve)
+
+    # Link the object to the collection
+
+    if collection is None:
+        coll = bpy.context.collection
+    else:
+        coll = bpy.data.collections.get(collection)
+
+    coll.objects.link(obj)
+
+    return obj
+
+
 # ====================================================================================================
 # Get a Blender Data resource
 # ====================================================================================================

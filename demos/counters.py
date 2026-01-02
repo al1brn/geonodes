@@ -110,7 +110,7 @@ def demo(font=None):
 
     with ShaderNodes("LCD Off"):
         ped = Shader.Principled(
-            base_color = Color.CombineHSV(0, 0, 0.396),
+            base_color = (.1, .1, .1),
             roughness  = .3,
             metallic   = .2,
         )
@@ -123,8 +123,8 @@ def demo(font=None):
     with ShaderNodes("Wheel Figure"):
 
         wheel_index = snd.attribute("Wheel").factor
-        black = Color.Combine(.05, .05, .05)
-        red   = Color.Combine(.95, .05, .05)
+        black = Color((.05, .05, .05))
+        red   = Color((.95, .05, .05))
 
         col = black.mix(red, factor=wheel_index.compare(0))
 
@@ -146,10 +146,9 @@ def demo(font=None):
 
         ped.out()
 
-    with ShaderNodes("Wheel Box"):
+    with ShaderNodes("Box"):
 
         ped = Shader.Principled(
-            #base_color = (.95, .95, .95),
             base_color = snd.attribute("Box Color").color,
             roughness  = .1,
             metallic   = .95,
@@ -200,8 +199,8 @@ def demo(font=None):
             with Geometry.MenuSwitch(menu=Input("Geometry"), default_menu='Curve') as geo: 
                 
                 with Mesh.Switch(fill) as circle:         
-                    Mesh.Circle(vertices=total, fill_type='NONE').out()
-                    Mesh.Circle(vertices=total, fill_type='NGON').out()
+                    Mesh.Circle(vertices=total, fill_type='NONE').out("False")
+                    Mesh.Circle(vertices=total, fill_type='NGON').out("True")
                 circle.out("Mesh")
                 
                 Curve.Circle(resolution=total).out("Curve")
@@ -239,6 +238,16 @@ def demo(font=None):
             hrad   = Vector(.1, "H Radius", min=0)
             vrad   = Vector(.1, "V Radius", min=0)
             resol  = Integer(12, "Resolution", 2, 128)
+            col    = Color(1, "Color")
+            mat    = Material("Box", "Material")
+            smooth = Boolean(True, "Smooth")
+
+            with Panel("Open"):
+                use_open    = Boolean(True,  "Open")
+                margin      = Float(0.1,     "Margin")
+                depth       = Float(0.1,     "Depth")
+                int_col     = Color(0, "Color")
+                int_mat     = Material("Box", "Material")
 
             with Layout("Prepare"):
                 
@@ -264,14 +273,14 @@ def demo(font=None):
                     
                 with Layout("Bottom looping"):
 
-                    for rep in base.repeat(resol - 1, selection=True):
+                    for rep in repeat(resol - 1, base=base, selection=True):
                         
                         ag = (rep.iteration + 1)/(resol-1)*(pi/2)
                         dh = gnmath.sin(ag)*vrad
                         dz = (1 - gnmath.cos(ag))*vrad
                         
-                        base = base.edges[rep.selection].extrude((0, 0, dz))
-                        top = base.top
+                        rep.base = Mesh(rep.base).edges[rep.selection].extrude((0, 0, dz))
+                        top = rep.base.top
                         
                         ring = Group("Rounded Rectangle", 
                             width       = w + dh*2,
@@ -284,12 +293,11 @@ def demo(font=None):
                         ring = Mesh(ring)
                         ring.offset = (0, 0, -size_z + dz)
                             
-                        base[top].position = ring.points.sample_index(nd.position, nd.index - total*(rep.iteration + 1))
+                        rep.base[top].position = ring.points.sample_index(nd.position, nd.index - total*(rep.iteration + 1))
                             
-                        base.out()
                         rep.selection = top
                         
-                bot_mesh = Mesh(base)
+                bot_mesh = Mesh(rep.base)
                         
                 with Layout("Vertical Mirror"):
                     
@@ -300,12 +308,28 @@ def demo(font=None):
                     
                     box = Mesh(bot_mesh + top_mesh)
                     box.merge_by_distance()
+
+                with Layout("Finalize"):
+                    box.faces.shade_smooth = Boolean(True, "Smooth")
+                    box.faces.Box_Color = col
+                    box.faces.material = mat
+
+                with Layout("Interior"):
+
+                    int_size = size - (margin, 0, margin)
+
+                    int_box = Mesh.Cube(size = int_size)
+                    int_box = int_box.transform(translation=(0, -2*size_y + depth, 0))
+                    int_box.faces.Box_Color = int_col
+                    int_box.faces.material = int_mat
+
+                    open_box = Mesh(box).difference(int_box)
+                    open_box.transform(translation=(0, size_y - depth, 0))
+
+                    box = box.switch(use_open, open_box)
+
                     
-                
-                box.faces.shade_smooth = Boolean(True, "Smooth")
-                box.faces.material = Material(name="Material")
-                    
-                box.out("Mesh")        
+                box.out("Mesh")
 
 
     # ====================================================================================================
@@ -328,16 +352,18 @@ def demo(font=None):
 
         # ----- Dimensions
 
-        X = size
-        Z = size*1.8
-        z1 = Z/2
-        z0 = -z1
-        x1 = X/2
-        x0 = -x1
+        with Layout("Dimensions"):
 
-        d = Z*.1
-        d2 = d/2
-        e = d/10
+            X = size
+            Z = size*1.8
+            z1 = Z/2
+            z0 = -z1
+            x1 = X/2
+            x0 = -x1
+
+            d = Z*.1
+            d2 = d/2
+            e = d/10
         
         with Layout("0x10 : Hrz Bottom"):
             item0 = Mesh.Circle(vertices=4, fill_type='NGON')
@@ -347,7 +373,7 @@ def demo(font=None):
             item0[3].position = (x0 + d + e, 0, z0 + d)
 
             item0.faces.Mask = int(0x10)
-            digit = item0
+            digit = Mesh(item0)
 
         with Layout("0x20 : Hrz Middle"):
             item = Mesh.Circle(vertices=6, fill_type='NGON')
@@ -413,6 +439,7 @@ def demo(font=None):
             Integer(0x2E).out() # 4
             Integer(0x76).out() # 5
             Integer(0x77).out() # 6
+            Integer(0x4C).out() # 7
             Integer(0x7F).out() # 8
             Integer(0x7E).out() # 9
             
@@ -453,11 +480,9 @@ def demo(font=None):
 
         # Loop on the digits
         
-        for rep in Mesh.Repeat(digits, value=value):
+        for rep in repeat(digits, Mesh=None, value=value):
             
-            mesh = rep.mesh
-
-            mesh.transform(translation=(size_factor*size, 0, 0))
+            rep.mesh.transform(translation=(size_factor*size, 0, 0))
             digit_value = rep.value % 10
             res_value = (rep.value - digit_value)/10
             rep.value = res_value
@@ -470,9 +495,7 @@ def demo(font=None):
             })
             digit_node.link_inputs('TREE', "Appearance", panel="Appearance")
 
-            mesh += digit_node.digit
-            
-            mesh.out()
+            rep.mesh += digit_node.digit
 
         mesh = rep.mesh
 
@@ -509,8 +532,11 @@ def demo(font=None):
         size    = Float(1, "Size", 0)
 
         with Panel("Options"):
-            merge      = Boolean(False, "Merge with Input")
             dots_on    = Boolean(True, "Dots are On")
+            merge      = Boolean(False, "Merge with Input")
+            with_box   = Boolean(True, "With Box")
+            box_color  = Color(1, "Box Color")
+            box_mat    = Material("Box", "Material")
 
         with Layout("Minutes and hours"):
             mins  = minutes % 60
@@ -524,7 +550,7 @@ def demo(font=None):
                 "Minus Sign"       : False,
                 "Merge with Input" : False,
                 "Y Offset"         : 0,
-            }).geometry
+            })._out
 
             m_mesh.node.link_inputs(None, "Appearance", panel="Appearance")
             m_mesh = m_mesh.transform(translation=(.8*size, 0, 0))
@@ -538,7 +564,7 @@ def demo(font=None):
                 "Minus Sign"       : False,
                 "Merge with Input" : False,
                 "Y Offset"         : 0,
-            }).geometry
+            })._out
 
             h_mesh.node.link_inputs(None, "Appearance", panel="Appearance")
             h_mesh = h_mesh.transform(translation=(-2.2*size, 0, 0))
@@ -556,13 +582,39 @@ def demo(font=None):
             squares = square0 + square1
             squares.offset = (nd.position.z*.4*shear, 0, 0)
 
-            squares.material = off_mat.switch(dots_on, on_mat)
-            squares.faces._Color = color
+            squares.material = Material.Input("Off").switch(dots_on, Material.Input("On"))
+            squares.faces.Color = Color.Input("Color")
 
-        clock = h_mesh + squares + m_mesh
-        clock = clock.transform(translation=(0, y_offset, 0))
+        with Layout("Merge components"):
+            clock = h_mesh + squares + m_mesh
 
-        clock += Geometry().switch_false(merge)
+            clock += Geometry().switch_false(merge)
+
+        with Layout("Box"):
+
+            bbox = clock.bounding_box()
+            clock_size = bbox.max - bbox.min
+            x, y, z = clock_size.xyz
+
+            delta = size*0.55
+
+            box_size = (x + delta*3.0, z*0.9, z + delta*2.0)
+
+            box = Group("Rounded Box",
+                        size        = box_size, 
+                        h_radius    = 0.1, 
+                        v_radius    = 0.1, 
+                        resolution  = 8, 
+                        open        = True,
+                        margin      = 0.9*delta,
+                        depth       = 0.5*delta,
+                        color       = box_color,
+                        material    = box_mat,
+                        )._out
+            clock = Mesh(clock).transform(translation=(0, -0.1*margin, 0))
+
+            clock += box.switch_false(with_box)
+
 
         clock.out()
 
@@ -622,7 +674,7 @@ def demo(font=None):
         fig_mat    = Material("Wheel Figure", "Figure material")
         back_mat   = Material("Wheel Background", "Background material")
         with_box   = Boolean(True, "Create Box")
-        box_mat    = Material("Wheel Box", "Box material")
+        box_mat    = Material("Box", "Box material")
         box_color  = Color((.5, .5, .5), "Box Color")
         box_margin = Float(.3, "Box Margin", .01)
         box_depth  = Float(.5, "Box Depth", .01)
@@ -630,23 +682,22 @@ def demo(font=None):
 
         size_factor = 1.05
 
-        for rep in Mesh.Repeat(count, value=value):
+        for rep in repeat(count, wheels=None, value=value):
 
-            wheels = rep.mesh
-            wheels.transform(translation=(size*size_factor, 0, 0))
+            rep.wheels.transform(translation=(size*size_factor, 0, 0))
 
             fig = rep.value % 10
-            new_figure = Mesh(Group("G Figure", {
+            new_figure = Group("G Figure", {
                 "Figure"   : fig,
                 "Size"     : size,
                 "Continuous" : rep.iteration.equal(0),
                 "Figure material" : fig_mat,
                 "Background material" : back_mat,
-            }).geometry)
+            }).mesh
 
             new_figure.faces.Wheel = rep.iteration
 
-            wheels += new_figure
+            rep.wheels += new_figure
 
             ifig = gnmath.floor(fig)
             ok9 = ifig.equal(9)
@@ -654,9 +705,8 @@ def demo(font=None):
 
             value = gnmath.floor(rep.value/10)
             rep.value = value + Float(0).switch(ok9, frac)
-            wheels.out()
 
-        wheels = rep.mesh
+        wheels = rep.wheels
 
         with Layout("Box"):
 
@@ -682,10 +732,8 @@ def demo(font=None):
             box.material = box_mat
             box.faces.Box_Color = box_color
 
-
         wheels += box.switch_false(with_box)
         wheels += Geometry().switch_false(merge)
-
 
         wheels.out()
 
@@ -779,7 +827,6 @@ def demo(font=None):
             brand_mat = Material("Clock Outer", "Material")
             brand_col = Color(0, "Color")
 
-
         h_marks = .04
         h_needle = 0.01
 
@@ -787,7 +834,7 @@ def demo(font=None):
 
             circle = Mesh.Circle(vertices=12).to_points()
             hours_circle = Cloud(circle.points[(nd.index % 3).equal(0)].separate())
-            min_circle = Cloud(hours_circle.inverted_)
+            min_circle = Cloud(hours_circle.inverted)
 
         with Layout("Minutes Marks"):
 

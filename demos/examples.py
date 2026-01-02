@@ -589,7 +589,7 @@ def demo():
             floor = Mesh.Cube(size=(sz, sz, 1))
             floor.transform(translation=(0, 0, rep.iteration ))
             
-            (cube + floor).out()
+            rep.mesh += floor
             
         cube.out()
 

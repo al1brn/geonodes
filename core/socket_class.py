@@ -172,9 +172,16 @@ class Socket(NodeCache):
 
         self._layout      = None
         self._use_layout  = True
-        self._tree = Tree.current_tree()
-        self._bsocket = None
+        self._tree        = Tree.current_tree()
+        self._bsocket     = None
         self._reset()
+
+        # ---------------------------------------------------------------------------
+        # Socket is a Node
+        # ---------------------------------------------------------------------------
+
+        if isinstance(socket, Node):
+            socket = socket._out
 
         # ---------------------------------------------------------------------------
         # Empty socket
@@ -408,23 +415,12 @@ class Socket(NodeCache):
 
             props = new_props
 
-
-            #if props.get('default') is not None or props.get('default_value') is not, None)or 'default_value' in props
-
-
         return cls(Tree.current_tree().create_input_socket(
             SocketType(cls.SOCKET_TYPE).socket_id,
             name = name,
             panel = panel,
             **props))
     
-        # OLD OLD OLD
-
-        if value is None:
-            return cls._create_input_socket(name = name, tip = tip, panel = panel, **props)
-        else:
-            value = SocketType(cls.SOCKET_TYPE).get_default_from_value(value)
-            return cls._create_input_socket(value = value, name = name, tip = tip, panel = panel, **props)
         
     # ----------------------------------------------------------------------------------------------------
     # Create a socket from a constant Node
@@ -909,7 +905,7 @@ class Socket(NodeCache):
         # ---------------------------------------------------------------------------
         # Another node output socket
         # ---------------------------------------------------------------------------
-            
+
         socket = self.node.get_socket('OUTPUT', true_name, None, halt=False)
         if socket is not None:
             return socket
