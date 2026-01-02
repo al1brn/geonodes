@@ -1091,15 +1091,13 @@ with GeoNodes("Simulation"):
     cloud = Cloud.Points(count=count, position=Vector.Random((-5, -5, 5), (5, 5, 15)))
     
     # Gravity simulation with initial random speed
-    for sim in cloud.simulation(Speed=Vector.Random(-1, 1)):
-
-        # cloud is now the Simulation Input Node output socket
+    for sim in simulation(cloud=cloud, Speed=Vector.Random(-1, 1)):
         
         # One speed per point
-        speed = cloud.points.capture_attribute(sim.speed)
+        speed = sim.cloud.points.capture_attribute(sim.speed)
         
         # Increment the posiion
-        cloud.position += speed*sim.delta_time
+        sim.cloud.position += speed*sim.delta_time
         
         # Acceleration
         speed += sim.delta_time*(0, 0, -9.81)
@@ -1110,17 +1108,15 @@ with GeoNodes("Simulation"):
         
         # Next iteration
         speed.out("Speed")
-        
-        # Connect the simulated geometry to output node
-        # Within for loop, out refers to Zone Output Node
-        cloud.out()
 
-    # cloud is now the output socket of the output zone
+    # Getting the simulation result
+    cloud = sim.cloud
+
+    with Layout("Instantiate the balls"):
+        mesh = Mesh.Grid(20, 20)
+        mesh += cloud.instance_on(instance=Mesh.UVSphere(radius=radius))
         
-    mesh = Mesh.Grid(20, 20)
-    mesh += cloud.instance_on(instance=Mesh.UVSphere(radius=radius))
-        
-    # Outside de the loop, out refers to Group Output Node
+    # Outside de the loop, out to Group Output Node
     mesh.out()
  ```
 
@@ -1143,7 +1139,7 @@ with GeoNodes("Repeat"):
         floor = Mesh.Cube(size=(sz, sz, 1))
         floor.transform(translation=(0, 0, rep.iteration ))
         
-        (cube + floor).out()
+        cube += floor
         
     cube.out()
 ```
