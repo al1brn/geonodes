@@ -813,7 +813,6 @@ from geonodes import *
 with GeoNodes("Panels"):
     
     # Create two options in a panel named Options
-
     with Panel("Options"):
         shade_smooth = Boolean(True, "Shade Smooth")
         subdiv = Integer(1, "Subdivision", 0, 5)
@@ -823,10 +822,17 @@ with GeoNodes("Panels"):
 
     # Methods can be combined
     with Panel("Options"):
-        count = Integer(5, "Count", 1, 10, panel="Sub options")
+        new_mat = Material(None, panel="Sub options")
 
     # The panels can be chained with > char
-    Factor = Float.Factor(.5, "Factor", 0, 1, panel="Options > Sub options")
+    fac = Float.Factor(.5, "Factor", 0, 1, panel="Options > Sub options")
+
+    sph = Mesh.UVSphere().subdivide(subdiv)
+    sph.faces.smooth = shade_smooth
+    sph = Mesh(sph.switch(change_mat, Mesh(sph).set_material(new_mat)))
+    sph.points.Factor = fac
+
+    sph.out()
 ```
 
 ### Blender resources
