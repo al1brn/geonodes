@@ -43,11 +43,11 @@ The 'panel' argument is the default name to use when the tree is called from ano
 
 ## Content
 
-- **A** : [arrange](tree.md#arrange)
-- **C** : [clear](tree.md#clear) :black_small_square: [create_input_from_socket_OLD](tree.md#create_input_from_socket_old) :black_small_square: [create_input_socket](tree.md#create_input_socket) :black_small_square: [create_output_socket_OLD](tree.md#create_output_socket_old) :black_small_square: [current_tree](tree.md#current_tree)
-- **G** : [get_in_socket](tree.md#get_in_socket) :black_small_square: [get_signature](tree.md#get_signature)
+- **A** : [add_method](tree.md#add_method) :black_small_square: [arrange](tree.md#arrange)
+- **C** : [clear](tree.md#clear) :black_small_square: [create_input_socket](tree.md#create_input_socket) :black_small_square: [current_tree](tree.md#current_tree)
+- **G** : [get_signature](tree.md#get_signature)
 - **I** : [\_\_init__](tree.md#__init__) :black_small_square: [input_node](tree.md#input_node) :black_small_square: [is_geonodes](tree.md#is_geonodes) :black_small_square: [is_shader](tree.md#is_shader)
-- **L** : [link](tree.md#link) :black_small_square: [link_nodes](tree.md#link_nodes)
+- **L** : [link](tree.md#link)
 - **O** : [output_node](tree.md#output_node)
 - **P** : [pop](tree.md#pop) :black_small_square: [push](tree.md#push)
 - **R** : [remove_groups](tree.md#remove_groups)
@@ -81,6 +81,26 @@ If the node doesn't already exist, it is created.
 ## Methods
 
 
+
+----------
+### add_method()
+
+> method
+
+``` python
+add_method(target_class: type, func_name: str = None, self_attr: str = None, ret_class: type = None, **fixed)
+```
+
+Add a method calling the Group.
+
+#### Arguments:
+- **target_class** (_type_) : class to add the method to
+- **func_name** (_str_ = None) : name of the method to create (snae case version of group name if None)
+- **self_attr** (_str_ = None) : self name attribute name
+- **ret_class** (_type_ = None) : class to use to transtype the output socket
+- **fixed** (_dict_) : fixed values for sockets
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Tree](tree.md#tree) :black_small_square: [Content](tree.md#content) :black_small_square: [Methods](tree.md#methods)</sub>
 
 ----------
 ### arrange()
@@ -118,30 +138,6 @@ Remove all the nodes in the Tree.
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Tree](tree.md#tree) :black_small_square: [Content](tree.md#content) :black_small_square: [Methods](tree.md#methods)</sub>
 
 ----------
-### create_input_from_socket_OLD()
-
-> method
-
-``` python
-create_input_from_socket_OLD(input_socket, name=None, panel='', **props)
-```
-
-Create a new group input socket from an existing input socket.
-
-#### Arguments:
-- **input_socket** (_socket_) : a node input _insocket
-- **name** (_str_ = None) : name of the group input socket to create
-- **panel** (_str_ = ) : name of the panel
-- **props** (_dict_) : input socket properties
-
-
-
-#### Returns:
-- **Socket** :
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Tree](tree.md#tree) :black_small_square: [Content](tree.md#content) :black_small_square: [Methods](tree.md#methods)</sub>
-
-----------
 ### create_input_socket()
 
 > method
@@ -168,32 +164,6 @@ This is an **input socket** of the zone, hence an **output socket** of the input
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Tree](tree.md#tree) :black_small_square: [Content](tree.md#content) :black_small_square: [Methods](tree.md#methods)</sub>
 
 ----------
-### create_output_socket_OLD()
-
-> method
-
-``` python
-create_output_socket_OLD(socket, name=None, panel='', **props)
-```
-
-Create a new output socket.
-
-This is an **output socket** of the Tree, hence an input socket of the [Output](https://docs.blender.org/manual/en/latest/render/shader_nodes/../../editors/texture_node/types/output/output.html) node.
-
-#### Arguments:
-- **socket** (_socket_) : socket
-- **name** (_str_ = None) : Socket name
-- **panel** (_str_ = ) : Panel name
-- **props**
-
-
-
-#### Returns:
-- **Socket** :
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Tree](tree.md#tree) :black_small_square: [Content](tree.md#content) :black_small_square: [Methods](tree.md#methods)</sub>
-
-----------
 ### current_tree()
 
 > staticmethod
@@ -208,28 +178,6 @@ Returns None if no tree is currently open
 
 #### Returns:
 - **Tree** : current tree or None
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Tree](tree.md#tree) :black_small_square: [Content](tree.md#content) :black_small_square: [Methods](tree.md#methods)</sub>
-
-----------
-### get_in_socket()
-
-> method
-
-``` python
-get_in_socket(name: str, panel: str = '')
-```
-
-Get an existing socket within a panel
-
-#### Arguments:
-- **name** (_str_) : name of the socket
-- **panel** (_str_ = ) : panel name
-
-
-
-#### Returns:
-- **Socket** : None if not found
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Tree](tree.md#tree) :black_small_square: [Content](tree.md#content) :black_small_square: [Methods](tree.md#methods)</sub>
 
@@ -364,35 +312,12 @@ link(out_socket, in_socket, handle_dynamic_sockets=False)
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Tree](tree.md#tree) :black_small_square: [Content](tree.md#content) :black_small_square: [Methods](tree.md#methods)</sub>
 
 ----------
-### link_nodes()
-
-> method
-
-``` python
-link_nodes(from_node, to_node, include=None, exclude=[], create=True, panel='')
-```
-
-Link two nodes
-
-If from_node is a Group Input node, the necessary sockets can be created if 'create' argument is True.
-
-#### Arguments:
-- **from_node** : the node to get the outputs from (i.e. tree Input Node)
-- **to_node** : the node to plug into
-- **include** (_list_ = None) : connect only the sockets in the list (or panels)
-- **exclude** (_list_ = []) : exclude sockets in this list (or panels)
-- **create** ( = True) : create tree input sockets  (i.e. node output sockets) in from_node if it is a 'Group Input Node'
-- **panel** (_str_ = ) : panel name to create, use tree default name if None
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Tree](tree.md#tree) :black_small_square: [Content](tree.md#content) :black_small_square: [Methods](tree.md#methods)</sub>
-
-----------
 ### pop()
 
 > method
 
 ``` python
-pop()
+pop(error=False)
 ```
 
 > Remove this tree from the stack
@@ -408,6 +333,11 @@ with Tree("My Name"):
 
 #### Raises:
 - **NodeError** : if this tree is not the current one
+
+
+
+#### Arguments:
+- **error** ( = False)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Tree](tree.md#tree) :black_small_square: [Content](tree.md#content) :black_small_square: [Methods](tree.md#methods)</sub>
 

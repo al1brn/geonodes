@@ -155,13 +155,14 @@ with GeoNodes("Capture Attribute"):
 > method
 
 ``` python
-for_each_element(named_sockets: dict = {}, **sockets)
+for_each_element(named_sockets: dict = {}, selection=None, **sockets)
 ```
 
 Simulation zone
 
 #### Arguments:
 - **named_sockets** (_dict_ = {})
+- **selection** (_Boolean_ = None) : selection
 - **sockets** (_dict_) : other sockets
 
 

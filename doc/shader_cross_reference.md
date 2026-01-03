@@ -17,7 +17,6 @@ You will find here how nodes are implemented
 - **L** : [Layer Weight](shader_cross_reference.md#layer-weight) :black_small_square: [Light Falloff](shader_cross_reference.md#light-falloff) :black_small_square: [Light Output](shader_cross_reference.md#light-output) :black_small_square: [Line Style Output](shader_cross_reference.md#line-style-output)
 - **M** : [Mapping](shader_cross_reference.md#mapping) :black_small_square: [Material Output](shader_cross_reference.md#material-output) :black_small_square: [Metallic BSDF](shader_cross_reference.md#metallic-bsdf) :black_small_square: [Mix Shader](shader_cross_reference.md#mix-shader)
 - **N** : [Normal](shader_cross_reference.md#normal) :black_small_square: [Normal Map](shader_cross_reference.md#normal-map)
-- **O** : [Output](shader_cross_reference.md#output)
 - **P** : [Principled BSDF](shader_cross_reference.md#principled-bsdf) :black_small_square: [Principled Hair BSDF](shader_cross_reference.md#principled-hair-bsdf) :black_small_square: [Principled Volume](shader_cross_reference.md#principled-volume)
 - **R** : [Ray Portal BSDF](shader_cross_reference.md#ray-portal-bsdf) :black_small_square: [Refraction BSDF](shader_cross_reference.md#refraction-bsdf) :black_small_square: [RGB to BW](shader_cross_reference.md#rgb-to-bw)
 - **S** : [Separate Color](shader_cross_reference.md#separate-color) :black_small_square: [Shader to RGB](shader_cross_reference.md#shader-to-rgb) :black_small_square: [Sheen BSDF](shader_cross_reference.md#sheen-bsdf) :black_small_square: [Sky Texture](shader_cross_reference.md#sky-texture) :black_small_square: [Specular BSDF](shader_cross_reference.md#specular-bsdf) :black_small_square: [Subsurface Scattering](shader_cross_reference.md#subsurface-scattering)
@@ -178,10 +177,6 @@ You will find here how nodes are implemented
 - [Color](color.md#color) :white_small_square: [normal_map](color.md#normal_map)
 - [Float](float.md#float) :white_small_square: [normal_map](float.md#normal_map)
 - [Vector](vector.md#vector) :white_small_square: [NormalMap](vector.md#normalmap)
-
-#### Output
-
-- [Tree](tree.md#tree) :white_small_square: [create_output_socket_OLD](tree.md#create_output_socket_old)
 
 #### Principled BSDF
 

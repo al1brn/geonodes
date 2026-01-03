@@ -1,7 +1,7 @@
 # Layout
 
 ``` python
-Layout(label=None, color=None)
+Layout(title: str = '', color: str = None, node=None)
 ```
 
 Node Frame
@@ -9,21 +9,26 @@ Node Frame
 All nodes created when a Layout is open are placed in this layout.
 If the 'color' argument is None, a random color is used
 
+If the node argument is None, the layout parent is the current layout, otherwise,
+the layout becomes the parent of the node and the previous parent of the node
+becomes the layout parent.
+
 ``` python
 with GeoNodes("Layout Demo"):
 
     with Layout("Some maths"):
-        z = gnmath.atan2(nd.position.z, Vector((nd.position.x, nd.position.y, 0)).length)
+        a = Integer(1) + 1
 
     geo = Mesh()
-    geo.points.offset = (0, 0, z)
+    geo.points.offset = (0, 0, a)
 
     geo.out()
 ```
 
 #### Arguments:
-- **label** (_str_ = None) : Layout title
-- **color** (_blender color_ = None) : Layout color (randomly generated if None)
+- **title** (_str_ = ) : Layout title
+- **color** (_str_ = None) : Layout color (randomly generated if None)
+- **node** (_Node_ = None) : the layout is inserted as direct parent of the node
 
 ## Content
 
@@ -39,7 +44,7 @@ with GeoNodes("Layout Demo"):
 > method
 
 ``` python
-__init__(label=None, color=None)
+__init__(title: str = '', color: str = None, node=None)
 ```
 
 Node Frame
@@ -47,20 +52,25 @@ Node Frame
 All nodes created when a Layout is open are placed in this layout.
 If the 'color' argument is None, a random color is used
 
+If the node argument is None, the layout parent is the current layout, otherwise,
+the layout becomes the parent of the node and the previous parent of the node
+becomes the layout parent.
+
 ``` python
 with GeoNodes("Layout Demo"):
 
     with Layout("Some maths"):
-        z = gnmath.atan2(nd.position.z, Vector((nd.position.x, nd.position.y, 0)).length)
+        a = Integer(1) + 1
 
     geo = Mesh()
-    geo.points.offset = (0, 0, z)
+    geo.points.offset = (0, 0, a)
 
     geo.out()
 ```
 
 #### Arguments:
-- **label** (_str_ = None) : Layout title
-- **color** (_blender color_ = None) : Layout color (randomly generated if None)
+- **title** (_str_ = ) : Layout title
+- **color** (_str_ = None) : Layout color (randomly generated if None)
+- **node** (_Node_ = None) : the layout is inserted as direct parent of the node
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Layout](layout.md#layout) :black_small_square: [Content](layout.md#content) :black_small_square: [Methods](layout.md#methods)</sub>

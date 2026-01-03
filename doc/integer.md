@@ -1,45 +1,40 @@
 # Integer
 
 ``` python
-Integer(value: geonodes.core.socket_class.Socket | int = 0, name: str = None, min: int = -2147483648, max: int = 2147483647, tip: str = '', panel: str = '', optional_label: bool = False, hide_value: bool = False, hide_in_modifier: bool = False, default_attribute: str = '', default_input: Literal['VALUE', 'INDEX', 'ID_OR_INDEX'] = 'VALUE', shape: Literal['AUTO', 'SINGLE'] = 'AUTO', subtype: str = 'NONE')
+Integer(value=None, name: str = None, min: int = -2147483648, max: int = 2147483647, tip: str = '', panel: str = '', **props)
 ```
 
-> Socket of type INTEGER
+> Integer Input
 
-> Node [Value](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/constant/value.html)
+New [Integer](integer.md#integer) input with subtype 'NONE'.
 
-If **value** argument is None:
-- if **name** argument is None, a node 'Integer' is added
-- otherwise a new group input is created using **min**, **max**, **tip** and **subtype**
-  arguments
-
-If **value** argument is not None, a new **Integer** is created from the value, either
-by transtyping or creating a 'Value' node.
-
-``` python
-i = Integer()      # 'Integer' node with default initial vlaue
-i = Integer(123). # 'Integer' node with 123 initial value
-i = Integer(123, name="User input", subtype='PERCENTAGE') # Create a new integer group input
-```
+Aguments
+--------
+- value  (object = 0) : Default value
+- name  (str = 'Integer') : Input socket name
+- min  (int = -2147483648) : Property min_value
+- max  (int = 2147483647) : Property max_value
+- tip  (str = '') : Property description
+- panel (str = "") : Panel name
+- props (dic) : properties
 
 #### Arguments:
-- **value** (_geonodes.core.socket_class.Socket | int_ = 0) : initial value
-- **name** (_str_ = None) : Create an Group Input socket with the provided str if not None
-- **min** (_int_ = -2147483648) : Property min_value
-- **max** (_int_ = 2147483647) : Property max_value
-- **tip** (_str_ = ) : Property description
-- **panel** (_str_ = ) : Panel name
-- **optional_label** (_bool_ = False) : Property optional_label
-- **hide_value** (_bool_ = False) : Property hide_value
-- **hide_in_modifier** (_bool_ = False) : Property hide_in_modifier
-- **default_attribute** (_str_ = ) : Property default_attribute_name
-- **default_input** (_Literal_ = VALUE) : Property default_input in ('VALUE', 'INDEX', 'ID_OR_INDEX')
-- **shape** (_Literal_ = AUTO) : Property structure_type in ('AUTO', 'SINGLE')
-- **subtype** (_str_ = NONE) : Socket sub type in ('NONE', 'PERCENTAGE', 'FACTOR')
+- **value** ( = None)
+- **name** (_str_ = None)
+- **min** (_int_ = -2147483648)
+- **max** (_int_ = 2147483647)
+- **tip** (_str_ = )
+- **panel** (_str_ = )
+- **props**
+
+
+
+#### Returns:
+- **Integer** : 
 
 ### Inherited
 
-['_bsocket' not found]() :black_small_square: [\_cache](nodecache.md#_cache) :black_small_square: ['_cached_nodes' not found]() :black_small_square: [\_cache_reset](nodecache.md#_cache_reset) :black_small_square: [check_in_list](core-socke-socket.md#check_in_list) :black_small_square: [\_classes_test](core-socke-socket.md#_classes_test) :black_small_square: [default_value](core-socke-socket.md#default_value) :black_small_square: [\_domain_to_geometry](core-socke-socket.md#_domain_to_geometry) :black_small_square: [\_\_enter__](core-socke-socket.md#__enter__) :black_small_square: [\_\_exit__](core-socke-socket.md#__exit__) :black_small_square: [\_\_getattr__](core-socke-socket.md#__getattr__) :black_small_square: [IndexSwitch](core-socke-socket.md#indexswitch) :black_small_square: [index_switch](core-socke-socket.md#index_switch) :black_small_square: [Input](core-socke-socket.md#input) :black_small_square: [\_interface_socket](core-socke-socket.md#_interface_socket) :black_small_square: [is_grid](core-socke-socket.md#is_grid) :black_small_square: [\_jump](core-socke-socket.md#_jump) :black_small_square: ['_layout' not found]() :black_small_square: [\_lc](core-socke-socket.md#_lc) :black_small_square: [\_lcop](core-socke-socket.md#_lcop) :black_small_square: [link_from](core-socke-socket.md#link_from) :black_small_square: [MenuSwitch](core-socke-socket.md#menuswitch) :black_small_square: [menu_switch](core-socke-socket.md#menu_switch) :black_small_square: [\_name](core-socke-socket.md#_name) :black_small_square: [node](core-socke-socket.md#node) :black_small_square: [node_color](core-socke-socket.md#node_color) :black_small_square: [node_label](core-socke-socket.md#node_label) :black_small_square: [out](core-socke-socket.md#out) :black_small_square: [\_panel_name](core-socke-socket.md#_panel_name) :black_small_square: [pin_gizmo](core-socke-socket.md#pin_gizmo) :black_small_square: [\_pop](core-socke-socket.md#_pop) :black_small_square: [\_push](core-socke-socket.md#_push) :black_small_square: [repeat](core-socke-socket.md#repeat) :black_small_square: [\_reset](core-socke-socket.md#_reset) :black_small_square: [simulation](core-socke-socket.md#simulation) :black_small_square: ['_socket_type' not found]() :black_small_square: [\_\_str__](core-socke-socket.md#__str__) :black_small_square: [Switch](core-socke-socket.md#switch) :black_small_square: [switch](core-socke-socket.md#switch) :black_small_square: [switch_false](core-socke-socket.md#switch_false) :black_small_square: ['_tree' not found]() :black_small_square: ['_use_layout' not found]() :black_small_square:
+['_bsocket' not found]() :black_small_square: [\_cache](nodecache.md#_cache) :black_small_square: ['_cached_nodes' not found]() :black_small_square: [\_cache_reset](nodecache.md#_cache_reset) :black_small_square: [check_in_list](core-socke-socket.md#check_in_list) :black_small_square: [Constant](core-socke-socket.md#constant) :black_small_square: [default_value](core-socke-socket.md#default_value) :black_small_square: [\_domain_to_geometry](core-socke-socket.md#_domain_to_geometry) :black_small_square: [Empty](core-socke-socket.md#empty) :black_small_square: [\_\_enter__](core-socke-socket.md#__enter__) :black_small_square: [\_\_exit__](core-socke-socket.md#__exit__) :black_small_square: [\_\_getattr__](core-socke-socket.md#__getattr__) :black_small_square: [\_get_bsocket_from_input](core-socke-socket.md#_get_bsocket_from_input) :black_small_square: [IndexSwitch](core-socke-socket.md#indexswitch) :black_small_square: [index_switch](core-socke-socket.md#index_switch) :black_small_square: [Input](core-socke-socket.md#input) :black_small_square: [\_interface_socket](core-socke-socket.md#_interface_socket) :black_small_square: [\_is_empty](core-socke-socket.md#_is_empty) :black_small_square: [is_grid](core-socke-socket.md#is_grid) :black_small_square: [\_jump](core-socke-socket.md#_jump) :black_small_square: ['_layout' not found]() :black_small_square: [\_lc](core-socke-socket.md#_lc) :black_small_square: [\_lcop](core-socke-socket.md#_lcop) :black_small_square: [link_inputs](core-socke-socket.md#link_inputs) :black_small_square: [MenuSwitch](core-socke-socket.md#menuswitch) :black_small_square: [menu_switch](core-socke-socket.md#menu_switch) :black_small_square: [\_name](core-socke-socket.md#_name) :black_small_square: [NewInput](core-socke-socket.md#newinput) :black_small_square: [node](core-socke-socket.md#node) :black_small_square: [node_color](core-socke-socket.md#node_color) :black_small_square: [node_label](core-socke-socket.md#node_label) :black_small_square: [out](core-socke-socket.md#out) :black_small_square: [\_panel_name](core-socke-socket.md#_panel_name) :black_small_square: [pin_gizmo](core-socke-socket.md#pin_gizmo) :black_small_square: [\_pop](core-socke-socket.md#_pop) :black_small_square: [\_push](core-socke-socket.md#_push) :black_small_square: [repeat](core-socke-socket.md#repeat) :black_small_square: [\_reset](core-socke-socket.md#_reset) :black_small_square: [simulation](core-socke-socket.md#simulation) :black_small_square: [\_socket_type](core-socke-socket.md#_socket_type) :black_small_square: [\_\_str__](core-socke-socket.md#__str__) :black_small_square: [Switch](core-socke-socket.md#switch) :black_small_square: [switch](core-socke-socket.md#switch) :black_small_square: [switch_false](core-socke-socket.md#switch_false) :black_small_square: ['_tree' not found]() :black_small_square: ['_use_layout' not found]() :black_small_square:
 
 ## Content
 
@@ -845,41 +840,36 @@ New [Integer](integer.md#integer) input with Index as default value (default_inp
 > method
 
 ``` python
-__init__(value: geonodes.core.socket_class.Socket | int = 0, name: str = None, min: int = -2147483648, max: int = 2147483647, tip: str = '', panel: str = '', optional_label: bool = False, hide_value: bool = False, hide_in_modifier: bool = False, default_attribute: str = '', default_input: Literal['VALUE', 'INDEX', 'ID_OR_INDEX'] = 'VALUE', shape: Literal['AUTO', 'SINGLE'] = 'AUTO', subtype: str = 'NONE')
+__init__(value=None, name: str = None, min: int = -2147483648, max: int = 2147483647, tip: str = '', panel: str = '', **props)
 ```
 
-> Socket of type INTEGER
+> Integer Input
 
-> Node [Value](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/constant/value.html)
+New [Integer](integer.md#integer) input with subtype 'NONE'.
 
-If **value** argument is None:
-- if **name** argument is None, a node 'Integer' is added
-- otherwise a new group input is created using **min**, **max**, **tip** and **subtype**
-  arguments
-
-If **value** argument is not None, a new **Integer** is created from the value, either
-by transtyping or creating a 'Value' node.
-
-``` python
-i = Integer()      # 'Integer' node with default initial vlaue
-i = Integer(123). # 'Integer' node with 123 initial value
-i = Integer(123, name="User input", subtype='PERCENTAGE') # Create a new integer group input
-```
+Aguments
+--------
+- value  (object = 0) : Default value
+- name  (str = 'Integer') : Input socket name
+- min  (int = -2147483648) : Property min_value
+- max  (int = 2147483647) : Property max_value
+- tip  (str = '') : Property description
+- panel (str = "") : Panel name
+- props (dic) : properties
 
 #### Arguments:
-- **value** (_geonodes.core.socket_class.Socket | int_ = 0) : initial value
-- **name** (_str_ = None) : Create an Group Input socket with the provided str if not None
-- **min** (_int_ = -2147483648) : Property min_value
-- **max** (_int_ = 2147483647) : Property max_value
-- **tip** (_str_ = ) : Property description
-- **panel** (_str_ = ) : Panel name
-- **optional_label** (_bool_ = False) : Property optional_label
-- **hide_value** (_bool_ = False) : Property hide_value
-- **hide_in_modifier** (_bool_ = False) : Property hide_in_modifier
-- **default_attribute** (_str_ = ) : Property default_attribute_name
-- **default_input** (_Literal_ = VALUE) : Property default_input in ('VALUE', 'INDEX', 'ID_OR_INDEX')
-- **shape** (_Literal_ = AUTO) : Property structure_type in ('AUTO', 'SINGLE')
-- **subtype** (_str_ = NONE) : Socket sub type in ('NONE', 'PERCENTAGE', 'FACTOR')
+- **value** ( = None)
+- **name** (_str_ = None)
+- **min** (_int_ = -2147483648)
+- **max** (_int_ = 2147483647)
+- **tip** (_str_ = )
+- **panel** (_str_ = )
+- **props**
+
+
+
+#### Returns:
+- **Integer** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Integer](integer.md#integer) :black_small_square: [Content](integer.md#content) :black_small_square: [Methods](integer.md#methods)</sub>
 

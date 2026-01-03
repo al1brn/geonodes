@@ -1,41 +1,54 @@
 # Rotation
 
 ``` python
-Rotation(value: geonodes.core.socket_class.Socket | tuple = (0, 0, 0), name: str = None, tip: str = '', panel: str = '', optional_label: bool = False, hide_value: bool = False, hide_in_modifier: bool = False, default_attribute: str = '', shape: Literal['AUTO', 'DYNAMIC', 'FIELD', 'SINGLE'] = 'AUTO')
+Rotation(socket=None, name: str = None, tip: str = '', panel: str = '', **props)
 ```
 
-> Socket of type ROTATION
+> The output socket of a [Node](node.md#node)
 
-If **value** argument is None:
-- if **name** argument is None, a node [Rotation](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/constant/rotation.html) is added
-- otherwise a new group input is created using **tip** argument.
+**Socket** is the base class for data classes such as [Float](float.md#float), [Image](image.md#image) or [Geometry](geometry.md#geometry).
 
-If **value** argument is not None, a new **Rotation** is created from the value:
-- using a [Rotation](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/constant/rotation.html) node if the **value** is a float or a tuple of floats
-- using [Combine XYZ](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/combine_xyz.html) and [Euler to Rotation](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/euler_to_rotation.html) nodes if the **value**
-  is a tuple containing [Sockets](socket.md#socket)
+It refers to an **output** socket of a [Node](node.md#node). A socket can be set to the **input** socket
+of another [Node](node.md#node) to create a link between the two nodes:
 
 ``` python
-rot = Rotation()                    # 'Rotation' node
-rot = Rotation((1, 2, 3.14)).       # 'Rotation' node
-rot = Rotation((Float(1), 2, 3.14)) # 'Combine XYZ' + 'Euler to Rotation' nodes
-rot = Rotation(name="User input").  # Create a new Rotation group input
+# cube is the output socket 'Mesh' of the node 'Cube'
+cube = Node("Cube").mesh
+
+# cube is set the to socket 'geometry' of node 'Set Position'
+node = Node("Set Position")
+node.geometry = cube
+```
+
+> [!IMPORTANT]
+> You can access to the other output sockets of the node in two different ways:
+> - using ['#node' not found]() attribute
+> - using ***peer socket** naming convention where the **snake_case** name of
+>.  the other sockets is suffixed by '_'
+
+The example below shows how to access the to 'UV Map' socket of node [Cube](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/primitives/cube.html):
+
+``` python
+# cube is the output socket 'Mesh' of the node 'Cube'
+cube = Mesh.Cube()
+
+# Getting 'UV Map' through the node
+uv_map = cube.node.uv_map
+
+# Or using the 'peer socket' naming convention
+uv_map = cuve.uv_map_
 ```
 
 #### Arguments:
-- **value** (_geonodes.core.socket_class.Socket | tuple_ = (0, 0, 0)) : initial value
-- **name** (_str_ = None) : Create an Group Input socket with the provided str if not None
-- **tip** (_str_ = ) : Property description
-- **panel** (_str_ = ) : Panel name
-- **optional_label** (_bool_ = False) : Property optional_label
-- **hide_value** (_bool_ = False) : Property hide_value
-- **hide_in_modifier** (_bool_ = False) : Property hide_in_modifier
-- **default_attribute** (_str_ = ) : Property default_attribute_name
-- **shape** (_Literal_ = AUTO) : Property structure_type in ('AUTO', 'DYNAMIC', 'FIELD', 'SINGLE')
+- **socket** (_NodeSocket_ = None) : the output socket to wrap
+- **name** (_str_ = None)
+- **tip** (_str_ = )
+- **panel** (_str_ = )
+- **props**
 
 ### Inherited
 
-['_bsocket' not found]() :black_small_square: [\_cache](nodecache.md#_cache) :black_small_square: ['_cached_nodes' not found]() :black_small_square: [\_cache_reset](nodecache.md#_cache_reset) :black_small_square: [check_in_list](core-socke-socket.md#check_in_list) :black_small_square: [\_classes_test](core-socke-socket.md#_classes_test) :black_small_square: [default_value](core-socke-socket.md#default_value) :black_small_square: [\_domain_to_geometry](core-socke-socket.md#_domain_to_geometry) :black_small_square: [\_\_enter__](core-socke-socket.md#__enter__) :black_small_square: [\_\_exit__](core-socke-socket.md#__exit__) :black_small_square: [\_\_getattr__](core-socke-socket.md#__getattr__) :black_small_square: [IndexSwitch](core-socke-socket.md#indexswitch) :black_small_square: [index_switch](core-socke-socket.md#index_switch) :black_small_square: [Input](core-socke-socket.md#input) :black_small_square: [\_interface_socket](core-socke-socket.md#_interface_socket) :black_small_square: [is_grid](core-socke-socket.md#is_grid) :black_small_square: [\_jump](core-socke-socket.md#_jump) :black_small_square: ['_layout' not found]() :black_small_square: [\_lc](core-socke-socket.md#_lc) :black_small_square: [\_lcop](core-socke-socket.md#_lcop) :black_small_square: [link_from](core-socke-socket.md#link_from) :black_small_square: [MenuSwitch](core-socke-socket.md#menuswitch) :black_small_square: [menu_switch](core-socke-socket.md#menu_switch) :black_small_square: [\_name](core-socke-socket.md#_name) :black_small_square: [node](core-socke-socket.md#node) :black_small_square: [node_color](core-socke-socket.md#node_color) :black_small_square: [node_label](core-socke-socket.md#node_label) :black_small_square: [out](core-socke-socket.md#out) :black_small_square: [\_panel_name](core-socke-socket.md#_panel_name) :black_small_square: [pin_gizmo](core-socke-socket.md#pin_gizmo) :black_small_square: [\_pop](core-socke-socket.md#_pop) :black_small_square: [\_push](core-socke-socket.md#_push) :black_small_square: [repeat](core-socke-socket.md#repeat) :black_small_square: [\_reset](core-socke-socket.md#_reset) :black_small_square: [simulation](core-socke-socket.md#simulation) :black_small_square: ['_socket_type' not found]() :black_small_square: [\_\_str__](core-socke-socket.md#__str__) :black_small_square: [Switch](core-socke-socket.md#switch) :black_small_square: [switch](core-socke-socket.md#switch) :black_small_square: [switch_false](core-socke-socket.md#switch_false) :black_small_square: ['_tree' not found]() :black_small_square: ['_use_layout' not found]() :black_small_square:
+['_bsocket' not found]() :black_small_square: [\_cache](nodecache.md#_cache) :black_small_square: ['_cached_nodes' not found]() :black_small_square: [\_cache_reset](nodecache.md#_cache_reset) :black_small_square: [check_in_list](core-socke-socket.md#check_in_list) :black_small_square: [Constant](core-socke-socket.md#constant) :black_small_square: [default_value](core-socke-socket.md#default_value) :black_small_square: [\_domain_to_geometry](core-socke-socket.md#_domain_to_geometry) :black_small_square: [Empty](core-socke-socket.md#empty) :black_small_square: [\_\_enter__](core-socke-socket.md#__enter__) :black_small_square: [\_\_exit__](core-socke-socket.md#__exit__) :black_small_square: [\_\_getattr__](core-socke-socket.md#__getattr__) :black_small_square: [\_get_bsocket_from_input](core-socke-socket.md#_get_bsocket_from_input) :black_small_square: [IndexSwitch](core-socke-socket.md#indexswitch) :black_small_square: [index_switch](core-socke-socket.md#index_switch) :black_small_square: [\_\_init__](core-socke-socket.md#__init__) :black_small_square: [Input](core-socke-socket.md#input) :black_small_square: [\_interface_socket](core-socke-socket.md#_interface_socket) :black_small_square: [\_is_empty](core-socke-socket.md#_is_empty) :black_small_square: [is_grid](core-socke-socket.md#is_grid) :black_small_square: [\_jump](core-socke-socket.md#_jump) :black_small_square: ['_layout' not found]() :black_small_square: [\_lc](core-socke-socket.md#_lc) :black_small_square: [\_lcop](core-socke-socket.md#_lcop) :black_small_square: [link_inputs](core-socke-socket.md#link_inputs) :black_small_square: [MenuSwitch](core-socke-socket.md#menuswitch) :black_small_square: [menu_switch](core-socke-socket.md#menu_switch) :black_small_square: [\_name](core-socke-socket.md#_name) :black_small_square: [NewInput](core-socke-socket.md#newinput) :black_small_square: [node](core-socke-socket.md#node) :black_small_square: [node_color](core-socke-socket.md#node_color) :black_small_square: [node_label](core-socke-socket.md#node_label) :black_small_square: [out](core-socke-socket.md#out) :black_small_square: [\_panel_name](core-socke-socket.md#_panel_name) :black_small_square: [pin_gizmo](core-socke-socket.md#pin_gizmo) :black_small_square: [\_pop](core-socke-socket.md#_pop) :black_small_square: [\_push](core-socke-socket.md#_push) :black_small_square: [repeat](core-socke-socket.md#repeat) :black_small_square: [\_reset](core-socke-socket.md#_reset) :black_small_square: [simulation](core-socke-socket.md#simulation) :black_small_square: [\_socket_type](core-socke-socket.md#_socket_type) :black_small_square: [\_\_str__](core-socke-socket.md#__str__) :black_small_square: [Switch](core-socke-socket.md#switch) :black_small_square: [switch](core-socke-socket.md#switch) :black_small_square: [switch_false](core-socke-socket.md#switch_false) :black_small_square: ['_tree' not found]() :black_small_square: ['_use_layout' not found]() :black_small_square:
 
 ## Content
 
@@ -44,7 +57,7 @@ rot = Rotation(name="User input").  # Create a new Rotation group input
 - **E** : [enable_output](rotation.md#enable_output)
 - **F** : [FromAxes](rotation.md#fromaxes) :black_small_square: [FromAxisAngle](rotation.md#fromaxisangle) :black_small_square: [FromEuler](rotation.md#fromeuler) :black_small_square: [FromQuaternion](rotation.md#fromquaternion) :black_small_square: [FromXYAxes](rotation.md#fromxyaxes) :black_small_square: [FromXZAxes](rotation.md#fromxzaxes) :black_small_square: [FromYXAxes](rotation.md#fromyxaxes) :black_small_square: [FromYZAxes](rotation.md#fromyzaxes) :black_small_square: [FromZXAxes](rotation.md#fromzxaxes) :black_small_square: [FromZYAxes](rotation.md#fromzyaxes)
 - **H** : [hash_value](rotation.md#hash_value)
-- **I** : [\_\_init__](rotation.md#__init__) :black_small_square: [invert](rotation.md#invert)
+- **I** : [invert](rotation.md#invert)
 - **M** : [mix](rotation.md#mix)
 - **N** : [Named](rotation.md#named) :black_small_square: [NamedAttribute](rotation.md#namedattribute)
 - **R** : [rotate](rotation.md#rotate) :black_small_square: [rotate_global](rotation.md#rotate_global) :black_small_square: [rotate_local](rotation.md#rotate_local) :black_small_square: [rotate_vector](rotation.md#rotate_vector)
@@ -662,46 +675,6 @@ hash_value(seed: 'Integer' = None)
 
 #### Returns:
 - **Integer** :
-
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Rotation](rotation.md#rotation) :black_small_square: [Content](rotation.md#content) :black_small_square: [Methods](rotation.md#methods)</sub>
-
-----------
-### \_\_init__()
-
-> method
-
-``` python
-__init__(value: geonodes.core.socket_class.Socket | tuple = (0, 0, 0), name: str = None, tip: str = '', panel: str = '', optional_label: bool = False, hide_value: bool = False, hide_in_modifier: bool = False, default_attribute: str = '', shape: Literal['AUTO', 'DYNAMIC', 'FIELD', 'SINGLE'] = 'AUTO')
-```
-
-> Socket of type ROTATION
-
-If **value** argument is None:
-- if **name** argument is None, a node [Rotation](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/constant/rotation.html) is added
-- otherwise a new group input is created using **tip** argument.
-
-If **value** argument is not None, a new **Rotation** is created from the value:
-- using a [Rotation](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/input/constant/rotation.html) node if the **value** is a float or a tuple of floats
-- using [Combine XYZ](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/combine_xyz.html) and [Euler to Rotation](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/euler_to_rotation.html) nodes if the **value**
-  is a tuple containing [Sockets](socket.md#socket)
-
-``` python
-rot = Rotation()                    # 'Rotation' node
-rot = Rotation((1, 2, 3.14)).       # 'Rotation' node
-rot = Rotation((Float(1), 2, 3.14)) # 'Combine XYZ' + 'Euler to Rotation' nodes
-rot = Rotation(name="User input").  # Create a new Rotation group input
-```
-
-#### Arguments:
-- **value** (_geonodes.core.socket_class.Socket | tuple_ = (0, 0, 0)) : initial value
-- **name** (_str_ = None) : Create an Group Input socket with the provided str if not None
-- **tip** (_str_ = ) : Property description
-- **panel** (_str_ = ) : Panel name
-- **optional_label** (_bool_ = False) : Property optional_label
-- **hide_value** (_bool_ = False) : Property hide_value
-- **hide_in_modifier** (_bool_ = False) : Property hide_in_modifier
-- **default_attribute** (_str_ = ) : Property default_attribute_name
-- **shape** (_Literal_ = AUTO) : Property structure_type in ('AUTO', 'DYNAMIC', 'FIELD', 'SINGLE')
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Rotation](rotation.md#rotation) :black_small_square: [Content](rotation.md#content) :black_small_square: [Methods](rotation.md#methods)</sub>
 

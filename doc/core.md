@@ -16,8 +16,8 @@
 - **N** : [Node](node.md#node)
 - **O** : [Object](object.md#object)
 - **P** : [Panel](panel.md#panel) :black_small_square: [Point](point.md#point)
-- **R** : [Rotation](rotation.md#rotation)
-- **S** : [Shader](shader.md#shader) :black_small_square: [ShaderNodes](shadernodes.md#shadernodes) :black_small_square: [Socket](socket.md#socket) :black_small_square: [Socket](socket.md#socket) :black_small_square: [Spline](spline.md#spline) :black_small_square: [SplinePoint](splinepoint.md#splinepoint) :black_small_square: [String](string.md#string)
+- **R** : [repeat](core.md#repeat) :black_small_square: [request_empty](core.md#request_empty) :black_small_square: [Rotation](rotation.md#rotation)
+- **S** : [Shader](shader.md#shader) :black_small_square: [ShaderNodes](shadernodes.md#shadernodes) :black_small_square: [simulation](core.md#simulation) :black_small_square: [Socket](socket.md#socket) :black_small_square: [Socket](socket.md#socket) :black_small_square: [Spline](spline.md#spline) :black_small_square: [SplinePoint](splinepoint.md#splinepoint) :black_small_square: [String](string.md#string) :black_small_square: [str_to_color](core.md#str_to_color)
 - **T** : [Texture](texture.md#texture) :black_small_square: [Tree](tree.md#tree)
 - **V** : [Vector](vector.md#vector) :black_small_square: [Vertex](vertex.md#vertex) :black_small_square: [Volume](volume.md#volume) :black_small_square: [VolumeShader](volumeshader.md#volumeshader)
 - **Z** : [zone_inner_nodes](core.md#zone_inner_nodes) :black_small_square: [ZoneIterator](zoneiterator.md#zoneiterator)
@@ -120,7 +120,7 @@ Check the value of an enum param
 #### Returns:
 - **bool** : True
 
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [core](core.md#core) :black_small_square: [Content](core.md#content) :black_small_square: [Functions](core.md#functions-2)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [core](core.md#core) :black_small_square: [Content](core.md#content) :black_small_square: [Functions](core.md#functions-5)</sub>
 
 ----------
 ### check_zones()
@@ -150,7 +150,7 @@ A problem is raised if a node is fed by zone input and:
 #### Returns:
 - **bool** : True
 
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [core](core.md#core) :black_small_square: [Content](core.md#content) :black_small_square: [Functions](core.md#functions-2)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [core](core.md#core) :black_small_square: [Content](core.md#content) :black_small_square: [Functions](core.md#functions-5)</sub>
 
 ----------
 ### color_ramp_set_stops()
@@ -167,7 +167,7 @@ Set the color ramp stops
 - **bnode** : color ramp node
 - **stops** : list of tuple (position, color)
 
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [core](core.md#core) :black_small_square: [Content](core.md#content) :black_small_square: [Functions](core.md#functions-2)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [core](core.md#core) :black_small_square: [Content](core.md#content) :black_small_square: [Functions](core.md#functions-5)</sub>
 
 ----------
 ### del_tree()
@@ -183,7 +183,7 @@ Delete a tree
 #### Arguments:
 - **btree** : (blender Tree or str : Tree or tree name
 
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [core](core.md#core) :black_small_square: [Content](core.md#content) :black_small_square: [Functions](core.md#functions-2)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [core](core.md#core) :black_small_square: [Content](core.md#content) :black_small_square: [Functions](core.md#functions-5)</sub>
 
 ----------
 ### ensure_uniques()
@@ -208,7 +208,7 @@ Doublons are suffixed by an index:
 #### Returns:
 - **list** : doublons are suffixed by an index
 
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [core](core.md#core) :black_small_square: [Content](core.md#content) :black_small_square: [Functions](core.md#functions-2)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [core](core.md#core) :black_small_square: [Content](core.md#content) :black_small_square: [Functions](core.md#functions-5)</sub>
 
 ----------
 ### fed_nodes()
@@ -231,7 +231,7 @@ A "feeding" node is a node connected directly or indirectly to at least one inpu
 #### Returns:
 - **bool** : the nodes fed by the argument
 
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [core](core.md#core) :black_small_square: [Content](core.md#content) :black_small_square: [Functions](core.md#functions-2)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [core](core.md#core) :black_small_square: [Content](core.md#content) :black_small_square: [Functions](core.md#functions-5)</sub>
 
 ----------
 ### feeding_nodes()
@@ -254,7 +254,7 @@ A "feeding" node is a node connected directly or indirectly to at least one inpu
 #### Returns:
 - **list** : the nodes feeding the argument
 
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [core](core.md#core) :black_small_square: [Content](core.md#content) :black_small_square: [Functions](core.md#functions-2)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [core](core.md#core) :black_small_square: [Content](core.md#content) :black_small_square: [Functions](core.md#functions-5)</sub>
 
 ----------
 ### find_snake_case_name()
@@ -271,7 +271,7 @@ Find the snake case version of a nam in a list of raw names.
 - **sc_name** (_str_)
 - **raw_names** (_list_)
 
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [core](core.md#core) :black_small_square: [Content](core.md#content) :black_small_square: [Functions](core.md#functions-2)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [core](core.md#core) :black_small_square: [Content](core.md#content) :black_small_square: [Functions](core.md#functions-5)</sub>
 
 ----------
 ### get_data_type_from_argument()
@@ -303,7 +303,7 @@ Attribute
 #### Returns:
 - **str** : valid value for data_type
 
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [core](core.md#core) :black_small_square: [Content](core.md#content) :black_small_square: [Functions](core.md#functions-2)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [core](core.md#core) :black_small_square: [Content](core.md#content) :black_small_square: [Functions](core.md#functions-5)</sub>
 
 ----------
 ### get_enum_param_user()
@@ -330,7 +330,7 @@ The user value is searched in two dicts:
 #### Returns:
 - **list** : the user names (starting by specific if any), e.g. ["Cos", "Cosine"]
 
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [core](core.md#core) :black_small_square: [Content](core.md#content) :black_small_square: [Functions](core.md#functions-2)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [core](core.md#core) :black_small_square: [Content](core.md#content) :black_small_square: [Functions](core.md#functions-5)</sub>
 
 ----------
 ### get_enum_param_users()
@@ -351,7 +351,7 @@ Used in dynamic generation code
 - **param_name**
 - **user_case** ( = True)
 
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [core](core.md#core) :black_small_square: [Content](core.md#content) :black_small_square: [Functions](core.md#functions-2)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [core](core.md#core) :black_small_square: [Content](core.md#content) :black_small_square: [Functions](core.md#functions-5)</sub>
 
 ----------
 ### get_enum_param_value()
@@ -374,7 +374,7 @@ Get the param value from a user value
 #### Returns:
 - **str** : The parameter value, e.g. 'COSINE'
 
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [core](core.md#core) :black_small_square: [Content](core.md#content) :black_small_square: [Functions](core.md#functions-2)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [core](core.md#core) :black_small_square: [Content](core.md#content) :black_small_square: [Functions](core.md#functions-5)</sub>
 
 ----------
 ### get_items_socket_type()
@@ -390,7 +390,7 @@ Specific to node items socket type in new method.
 #### Arguments:
 - **socket_type**
 
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [core](core.md#core) :black_small_square: [Content](core.md#content) :black_small_square: [Functions](core.md#functions-2)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [core](core.md#core) :black_small_square: [Content](core.md#content) :black_small_square: [Functions](core.md#functions-5)</sub>
 
 ----------
 ### get_tree()
@@ -413,7 +413,94 @@ Get or create a new nodes tree
 #### Returns:
 - **Tree** :
 
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [core](core.md#core) :black_small_square: [Content](core.md#content) :black_small_square: [Functions](core.md#functions-2)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [core](core.md#core) :black_small_square: [Content](core.md#content) :black_small_square: [Functions](core.md#functions-5)</sub>
+
+----------
+### repeat()
+
+> function
+
+``` python
+repeat(iterations, named_sockets: dict = {}, **sockets)
+```
+
+Repeat zone
+
+#### Arguments:
+- **iterations**
+- **named_sockets** (_dict_ = {})
+- **sockets** (_dict_) : other sockets
+
+
+
+#### Returns:
+- **ZoneIterator** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [core](core.md#core) :black_small_square: [Content](core.md#content) :black_small_square: [Functions](core.md#functions-5)</sub>
+
+----------
+### request_empty()
+
+> function
+
+``` python
+request_empty(value) -> bool
+```
+
+Value is equal to constant EMPTY_SOCKET
+
+#### Arguments:
+- **value**
+
+
+
+#### Returns:
+- **bool**
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [core](core.md#core) :black_small_square: [Content](core.md#content) :black_small_square: [Functions](core.md#functions-5)</sub>
+
+----------
+### simulation()
+
+> function
+
+``` python
+simulation(named_sockets: dict = {}, **sockets)
+```
+
+Simulation zone
+
+#### Arguments:
+- **named_sockets** (_dict_ = {})
+- **sockets** (_dict_) : other sockets
+
+
+
+#### Returns:
+- **ZoneIterator** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [core](core.md#core) :black_small_square: [Content](core.md#content) :black_small_square: [Functions](core.md#functions-5)</sub>
+
+----------
+### str_to_color()
+
+> function
+
+``` python
+str_to_color(name: str) -> tuple
+```
+
+Convert a string to a color
+
+#### Arguments:
+- **name** (_str_) : name of a color or hexa value
+
+
+
+#### Returns:
+- **tuple** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [core](core.md#core) :black_small_square: [Content](core.md#content) :black_small_square: [Functions](core.md#functions-5)</sub>
 
 ----------
 ### zone_inner_nodes()
@@ -431,6 +518,6 @@ A node is in the zone if the zone input node feeds the node AND the node feeds t
 #### Arguments:
 - **zone_input**
 
-##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [core](core.md#core) :black_small_square: [Content](core.md#content) :black_small_square: [Functions](core.md#functions-2)</sub>
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [core](core.md#core) :black_small_square: [Content](core.md#content) :black_small_square: [Functions](core.md#functions-5)</sub>
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [core](core.md#core) :black_small_square: [Content](core.md#content) :black_small_square: [core](core.md#core)</sub>

@@ -645,7 +645,7 @@ separate()
 
 
 #### Returns:
-- **Geometry** (_Geometry_)
+- **node** (_Geometry_)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Point](point.md#point) :black_small_square: [Content](point.md#content) :black_small_square: [Methods](point.md#methods)</sub>
 

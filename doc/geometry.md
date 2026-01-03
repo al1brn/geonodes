@@ -1,7 +1,7 @@
 # Geometry
 
 ``` python
-Geometry(value: geonodes.core.socket_class.Socket = None, name: str = None, tip: str = '', panel: str = '', optional_label: bool = False, hide_value: bool = False, hide_in_modifier: bool = False)
+Geometry(value: geonodes.core.socket_class.Socket = None, name: str = None, tip: str = '', panel: str = '', **props)
 ```
 
 Socket of type 'GEOMETRY'.
@@ -19,13 +19,11 @@ geometry = Geometry(name="Mesh") # Input group geometry
 - **name** (_str_ = None) : Create an Group Input socket with the provided str
 - **tip** (_str_ = ) : Property description
 - **panel** (_str_ = ) : Panel name
-- **optional_label** (_bool_ = False) : Property optional_label
-- **hide_value** (_bool_ = False) : Property hide_value
-- **hide_in_modifier** (_bool_ = False) : Property hide_in_modifier
+- **props** (_dict_) : input properties
 
 ### Inherited
 
-['_bsocket' not found]() :black_small_square: [\_cache](nodecache.md#_cache) :black_small_square: ['_cached_nodes' not found]() :black_small_square: [\_cache_reset](nodecache.md#_cache_reset) :black_small_square: [check_in_list](core-socke-socket.md#check_in_list) :black_small_square: [\_classes_test](core-socke-socket.md#_classes_test) :black_small_square: [default_value](core-socke-socket.md#default_value) :black_small_square: [\_domain_to_geometry](core-socke-socket.md#_domain_to_geometry) :black_small_square: [\_\_enter__](core-socke-socket.md#__enter__) :black_small_square: [\_\_exit__](core-socke-socket.md#__exit__) :black_small_square: [\_geo](cloudpoint.md#_geo) :black_small_square: [\_geo_type](geom.md#_geo_type) :black_small_square: [\_\_getattr__](core-socke-socket.md#__getattr__) :black_small_square: [\_\_getitem__](geom.md#__getitem__) :black_small_square: [get_selection](geom.md#get_selection) :black_small_square: [IndexSwitch](core-socke-socket.md#indexswitch) :black_small_square: [index_switch](core-socke-socket.md#index_switch) :black_small_square: [Input](core-socke-socket.md#input) :black_small_square: [\_interface_socket](core-socke-socket.md#_interface_socket) :black_small_square: [is_grid](core-socke-socket.md#is_grid) :black_small_square: [\_jump](core-socke-socket.md#_jump) :black_small_square: ['_layout' not found]() :black_small_square: [\_lc](core-socke-socket.md#_lc) :black_small_square: [\_lcop](core-socke-socket.md#_lcop) :black_small_square: [link_from](core-socke-socket.md#link_from) :black_small_square: [MenuSwitch](core-socke-socket.md#menuswitch) :black_small_square: [menu_switch](core-socke-socket.md#menu_switch) :black_small_square: [\_name](core-socke-socket.md#_name) :black_small_square: [node](core-socke-socket.md#node) :black_small_square: [node_color](core-socke-socket.md#node_color) :black_small_square: [node_label](core-socke-socket.md#node_label) :black_small_square: [out](core-socke-socket.md#out) :black_small_square: [\_panel_name](core-socke-socket.md#_panel_name) :black_small_square: [pin_gizmo](core-socke-socket.md#pin_gizmo) :black_small_square: [\_pop](core-socke-socket.md#_pop) :black_small_square: [\_push](core-socke-socket.md#_push) :black_small_square: [repeat](core-socke-socket.md#repeat) :black_small_square: [\_reset](core-socke-socket.md#_reset) :black_small_square: ['_selection' not found]() :black_small_square: [simulation](core-socke-socket.md#simulation) :black_small_square: ['_socket_type' not found]() :black_small_square: [\_\_str__](core-socke-socket.md#__str__) :black_small_square: [Switch](core-socke-socket.md#switch) :black_small_square: [switch](core-socke-socket.md#switch) :black_small_square: [switch_false](core-socke-socket.md#switch_false) :black_small_square: ['_tree' not found]() :black_small_square: ['_use_layout' not found]() :black_small_square:
+['_bsocket' not found]() :black_small_square: [\_cache](nodecache.md#_cache) :black_small_square: ['_cached_nodes' not found]() :black_small_square: [\_cache_reset](nodecache.md#_cache_reset) :black_small_square: [check_in_list](core-socke-socket.md#check_in_list) :black_small_square: [\_class_test](core-socke-socket.md#_class_test) :black_small_square: [Constant](core-socke-socket.md#constant) :black_small_square: [default_value](core-socke-socket.md#default_value) :black_small_square: [\_domain_to_geometry](core-socke-socket.md#_domain_to_geometry) :black_small_square: [Empty](core-socke-socket.md#empty) :black_small_square: [\_\_enter__](core-socke-socket.md#__enter__) :black_small_square: [\_\_exit__](core-socke-socket.md#__exit__) :black_small_square: [\_geo](cloudpoint.md#_geo) :black_small_square: [\_geo_type](geom.md#_geo_type) :black_small_square: [\_\_getattr__](core-socke-socket.md#__getattr__) :black_small_square: [\_get_bsocket_from_input](core-socke-socket.md#_get_bsocket_from_input) :black_small_square: [\_\_getitem__](geom.md#__getitem__) :black_small_square: [get_selection](geom.md#get_selection) :black_small_square: [IndexSwitch](core-socke-socket.md#indexswitch) :black_small_square: [index_switch](core-socke-socket.md#index_switch) :black_small_square: [Input](core-socke-socket.md#input) :black_small_square: [\_interface_socket](core-socke-socket.md#_interface_socket) :black_small_square: [\_is_empty](core-socke-socket.md#_is_empty) :black_small_square: [is_grid](core-socke-socket.md#is_grid) :black_small_square: [\_jump](core-socke-socket.md#_jump) :black_small_square: ['_layout' not found]() :black_small_square: [\_lc](core-socke-socket.md#_lc) :black_small_square: [\_lcop](core-socke-socket.md#_lcop) :black_small_square: [link_inputs](core-socke-socket.md#link_inputs) :black_small_square: [MenuSwitch](core-socke-socket.md#menuswitch) :black_small_square: [menu_switch](core-socke-socket.md#menu_switch) :black_small_square: [\_name](core-socke-socket.md#_name) :black_small_square: [Named](core-socke-socket.md#named) :black_small_square: [NewInput](core-socke-socket.md#newinput) :black_small_square: [node](core-socke-socket.md#node) :black_small_square: [node_color](core-socke-socket.md#node_color) :black_small_square: [node_label](core-socke-socket.md#node_label) :black_small_square: [out](core-socke-socket.md#out) :black_small_square: [\_panel_name](core-socke-socket.md#_panel_name) :black_small_square: [pin_gizmo](core-socke-socket.md#pin_gizmo) :black_small_square: [\_pop](core-socke-socket.md#_pop) :black_small_square: [\_push](core-socke-socket.md#_push) :black_small_square: [repeat](core-socke-socket.md#repeat) :black_small_square: [\_reset](core-socke-socket.md#_reset) :black_small_square: ['_selection' not found]() :black_small_square: [simulation](core-socke-socket.md#simulation) :black_small_square: [\_socket_type](core-socke-socket.md#_socket_type) :black_small_square: [\_\_str__](core-socke-socket.md#__str__) :black_small_square: [Switch](core-socke-socket.md#switch) :black_small_square: [switch](core-socke-socket.md#switch) :black_small_square: [switch_false](core-socke-socket.md#switch_false) :black_small_square: ['_tree' not found]() :black_small_square: ['_use_layout' not found]() :black_small_square:
 
 ## Content
 
@@ -37,7 +35,7 @@ geometry = Geometry(name="Mesh") # Input group geometry
 - **J** : [Join](geometry.md#join) :black_small_square: [join](geometry.md#join)
 - **M** : [material](geometry.md#material) :black_small_square: [material_index](geometry.md#material_index) :black_small_square: [merge](geometry.md#merge) :black_small_square: [merge_by_distance](geometry.md#merge_by_distance) :black_small_square: [mesh](geometry.md#mesh)
 - **N** : [name](geometry.md#name)
-- **O** : [offset](geometry.md#offset)
+- **O** : [offset](geometry.md#offset) :black_small_square: [out_OLD](geometry.md#out_old)
 - **P** : [point_cloud](geometry.md#point_cloud) :black_small_square: [position](geometry.md#position) :black_small_square: [proximity](geometry.md#proximity) :black_small_square: [proximity_edges](geometry.md#proximity_edges) :black_small_square: [proximity_faces](geometry.md#proximity_faces) :black_small_square: [proximity_points](geometry.md#proximity_points)
 - **R** : [raycast](geometry.md#raycast) :black_small_square: [realize](geometry.md#realize) :black_small_square: [remove_named_attribute](geometry.md#remove_named_attribute) :black_small_square: [replace_material](geometry.md#replace_material)
 - **S** : [separate_components](geometry.md#separate_components) :black_small_square: [set_id](geometry.md#set_id) :black_small_square: [set_material](geometry.md#set_material) :black_small_square: [set_material_index](geometry.md#set_material_index) :black_small_square: [set_name](geometry.md#set_name) :black_small_square: [set_position](geometry.md#set_position)
@@ -324,7 +322,7 @@ index_of_nearest(position: 'Vector' = None, group_id: 'Integer' = None)
 > method
 
 ``` python
-__init__(value: geonodes.core.socket_class.Socket = None, name: str = None, tip: str = '', panel: str = '', optional_label: bool = False, hide_value: bool = False, hide_in_modifier: bool = False)
+__init__(value: geonodes.core.socket_class.Socket = None, name: str = None, tip: str = '', panel: str = '', **props)
 ```
 
 Socket of type 'GEOMETRY'.
@@ -342,9 +340,7 @@ geometry = Geometry(name="Mesh") # Input group geometry
 - **name** (_str_ = None) : Create an Group Input socket with the provided str
 - **tip** (_str_ = ) : Property description
 - **panel** (_str_ = ) : Panel name
-- **optional_label** (_bool_ = False) : Property optional_label
-- **hide_value** (_bool_ = False) : Property hide_value
-- **hide_in_modifier** (_bool_ = False) : Property hide_in_modifier
+- **props** (_dict_) : input properties
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Geometry](geometry.md#geometry) :black_small_square: [Content](geometry.md#content) :black_small_square: [Methods](geometry.md#methods)</sub>
 
@@ -480,6 +476,39 @@ merge_by_distance(mode: "Literal['All', 'Connected']" = None, distance: 'Float' 
 
 #### Returns:
 - **Geometry** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Geometry](geometry.md#geometry) :black_small_square: [Content](geometry.md#content) :black_small_square: [Methods](geometry.md#methods)</sub>
+
+----------
+### out_OLD()
+
+> method
+
+``` python
+out_OLD(name: str = None, panel: str = '', **props)
+```
+
+Plug the value to the Group Output Node.
+
+``` python
+with GeoNodes("Plug to group output"):
+    # Create a cube
+    geo = Mesh.Cube()
+    # To Group Output geometry as socket named "Cube"
+    geo.out("Cube")
+```
+
+The "Do nothing" modifier is simply ``` Geometry().out() ```
+
+#### Arguments:
+- **name** (_str_ = None) : socket name
+- **panel** (_str_ = )
+- **props**
+
+
+
+#### Returns:
+- **None** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Geometry](geometry.md#geometry) :black_small_square: [Content](geometry.md#content) :black_small_square: [Methods](geometry.md#methods)</sub>
 
@@ -733,7 +762,7 @@ separate_components()
 
 
 #### Returns:
-- **Mesh** (_Curve_)
+- **node** (_Mesh_)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Geometry](geometry.md#geometry) :black_small_square: [Content](geometry.md#content) :black_small_square: [Methods](geometry.md#methods)</sub>
 

@@ -802,7 +802,7 @@ separate()
 
 
 #### Returns:
-- **Geometry** (_Geometry_)
+- **node** (_Geometry_)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Edge](edge.md#edge) :black_small_square: [Content](edge.md#content) :black_small_square: [Methods](edge.md#methods)</sub>
 

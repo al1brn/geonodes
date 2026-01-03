@@ -91,6 +91,7 @@ with Group("Main"):
 ## Content
 
 - [build_function](g.md#build_function)
+- [error](g.md#error)
 - [\_\_init__](g.md#__init__)
 
 ## Methods
@@ -117,6 +118,28 @@ The name of the function is the snake case version of the tree name.
 
 #### Returns:
 - **None** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [G](g.md#g) :black_small_square: [Content](g.md#content) :black_small_square: [Methods](g.md#methods)</sub>
+
+----------
+### error()
+
+> method
+
+``` python
+error(f, exception=None)
+```
+
+Raise an error when function call fails.
+
+#### Raises:
+- **NodeError** : 
+
+
+
+#### Arguments:
+- **f** (_function_) : the function in error
+- **exception** (_Exception_ = None) : the exception that was raised
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [G](g.md#g) :black_small_square: [Content](g.md#content) :black_small_square: [Methods](g.md#methods)</sub>
 
