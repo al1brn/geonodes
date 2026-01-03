@@ -182,7 +182,8 @@ def geonodes_documentation(write_files=True):
     # Socket class is hidden as a sub class of generated classes
     # Let's hunhide it
 
-    doc.top_section.find("Socket").hidden = False
+    # DEBUG
+    #doc.top_section.find("Socket").hidden = False
 
     # -----------------------------------------------------------------------------------------------------------------------------
     # DEBUG
