@@ -84,7 +84,6 @@ def demo():
         with Layout("Transformation Gizmo"):
 
             matrix = Matrix(None, name="Transformation")
-            matrix = Matrix() #None, name="Transformation")
             matrix.transform_gizmo(use_translation_x=False, use_translation_y=False, use_translation_z=False, use_scale_x=False, use_scale_y=False, use_scale_z=False)
             matrix.pin_gizmo = True
 

@@ -553,7 +553,7 @@ class SocketType:
         # Let's find in the valid type
         valids = []
         for stype, node_type in conv.items():
-            if stype == socket_type:
+            if stype == socket_type:                
                 return node_type
             
             valids.append(SocketType(stype).class_name)

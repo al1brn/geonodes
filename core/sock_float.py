@@ -172,7 +172,7 @@ class Float(generated.Float):
         -------
         - Float
         """
-        node = NodeCurves('Float Curve', sockets={'Value': self, 'Factor': factor})
+        node = NodeCurves('Float Curve', named_sockets={'Value': self, 'Factor': factor})
         node.set_curves(curve)
         return node._out
 

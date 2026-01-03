@@ -128,7 +128,7 @@ class Vector(generated.Vector):
         -------
         - Vector
         """
-        node = NodeCurves('Vector Curves', sockets={'Vector': self, 'Fac': fac})
+        node = NodeCurves('Vector Curves', named_sockets={'Vector': self, 'Fac': fac})
         node.set_curves(curves)
         return node._out
 

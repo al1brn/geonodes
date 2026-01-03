@@ -136,7 +136,7 @@ def demo():
             mass = mass.switch_false(mass.exists, Float.Random(min=0.1, max=2.0, seed=seed+2))
             cloud.points.Mass = mass
 
-            omega = Vector.Random(0, tau, seed=seed+2)          
+            #omega = Vector.Random(0, tau, seed=seed+2)          
             frame0 = Integer(1, "Start Frame", shape='Single')
 
         # ---------------------------------------------------------------------------
@@ -147,7 +147,7 @@ def demo():
             gravity   = Closure(name="Gravity")
             viscosity = Closure(name="Viscosity")
 
-            sig = ({'Geometry': 'Cloud', 't': 'Float', 'dt': 'Float'}, {'Geometry': 'Cloud'})
+            sig = ({'Cloud': 'Cloud', 't': 'Float', 'dt': 'Float'}, {'Cloud': 'Cloud'})
 
         for sim in cloud.simulation():
 
@@ -160,9 +160,7 @@ def demo():
 
             # Evaluate the forces
             for cl in [gravity, viscosity]:
-                cloud = cl.evaluate(geometry=cloud, t=0.0, dt=dt, signature=sig)
-
-            cloud = Cloud(cloud)
+                cloud = cl.evaluate(cloud=cloud, t=0.0, dt=dt, signature=sig)
 
             # Simulation
 
@@ -203,9 +201,11 @@ def demo():
         with Panel("Gravity"):
             max_speed = Float(5, "Maximum Speed", 0, shape='Single')
 
+        mesh = Mesh.UVSphere(radius=1)
+
         with Layout("Generate the points on the input mesh"):
             selection = (nd.normal @ (0, 0, 1)).greater_than(0).switch(-only_up, True)
-            cloud = Mesh()[selection].distribute_points_on_faces(density=density, seed=seed)
+            cloud = mesh[selection].distribute_points_on_faces(density=density, seed=seed)
             normal = cloud.normal_
 
         with Layout("Random speeds, aligned with normal plus some noise"):

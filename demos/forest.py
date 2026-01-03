@@ -139,7 +139,7 @@ def demo():
             hv = feel.index.hash_value(seed)
 
             # TBD 
-            tree = Mesh(Group("A Tree",
+            tree = Group("A Tree",
                 
                 #base_width    = Float.Random(.1, .6, id=feel.index, seed=hv + 1),
                 #tree_height   = Float.Random( 1, 10, id=feel.index, seed=hv + 2),
@@ -148,7 +148,7 @@ def demo():
                 #conic_shape   = Float.Random( .2,  1, id=feel.index, seed=hv + 5),
 
                 seed          = hv,
-                ).geometry)
+                ).mesh
 
             #feel.generated.geometry = tree.to_instance()
             tree.to_instance().out("Geometry")

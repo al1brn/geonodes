@@ -54,99 +54,95 @@ def demo():
     with ShaderNodes("Obs Skin"):
 
         color  = [0.650011, 0.523698, 0.411225, 1.000000]
-        transp = snd.attribute(attribute_type='GEOMETRY', attribute_name="Transparency").fac
+        transp = snd.attribute(attribute_type='GEOMETRY', attribute_name="Transparency").factor
 
         ped = Shader.Principled(
             base_color = color,
             roughness  = .9,
         )
 
-        shader = ped.mix(Shader.Transparent(), fac=transp)
+        shader = ped.mix(Shader.Transparent(), factor=transp)
         shader.out()
 
     with ShaderNodes("Obs Eye"):
-        white = snd.attribute(attribute_type='GEOMETRY', attribute_name="White").fac
+        white = snd.attribute(attribute_type='GEOMETRY', attribute_name="White").factor
         color = Color((0, 0, 0)).mix(white, Color((1, 1, 1)))
-        transp  = snd.attribute(attribute_type='GEOMETRY', attribute_name="Transparency").fac
+        transp  = snd.attribute(attribute_type='GEOMETRY', attribute_name="Transparency").factor
 
         ped = Shader.Principled(
             base_color = color,
             roughness  = 0,
         )
 
-        shader = ped.mix(Shader.Transparent(), fac=transp)
+        shader = ped.mix(Shader.Transparent(), factor=transp)
 
         shader.out()
 
     with ShaderNodes("Obs Hair"):
 
         color   = Color(snd.attribute(attribute_type='GEOMETRY', attribute_name="Color").vector)
-        transp  = snd.attribute(attribute_type='GEOMETRY', attribute_name="Transparency").fac
+        transp  = snd.attribute(attribute_type='GEOMETRY', attribute_name="Transparency").factor
 
         ped = Shader.PrincipledHair(
             color = color,
         )
 
-        shader = ped.mix(Shader.Transparent(), fac=transp)
+        shader = ped.mix(Shader.Transparent(), factor=transp)
 
         shader.out()
 
     with ShaderNodes("Obs Blouse"):
 
         color   = Color(snd.attribute(attribute_type='GEOMETRY', attribute_name="Color").vector)
-        transp  = snd.attribute(attribute_type='GEOMETRY', attribute_name="Transparency").fac
+        transp  = snd.attribute(attribute_type='GEOMETRY', attribute_name="Transparency").factor
 
         ped = Shader.Principled(
             base_color = color,
             roughness  = .8,
         )
 
-        shader = ped.mix(Shader.Transparent(), fac=transp)
+        shader = ped.mix(Shader.Transparent(), factor=transp)
 
         shader.out()
 
     with ShaderNodes("Obs Shoe"):
 
         color   = [0.000000, 0.000000, 0.000000, 1.000000]
-        transp  = snd.attribute(attribute_type='GEOMETRY', attribute_name="Transparency").fac
+        transp  = snd.attribute(attribute_type='GEOMETRY', attribute_name="Transparency").factor
 
         ped = Shader.Principled(
             base_color = color,
             roughness  = .3,
         )
 
-        shader = ped.mix(Shader.Transparent(), fac=transp)
+        shader = ped.mix(Shader.Transparent(), factor=transp)
 
         shader.out()
 
-    # =============================================================================================================================
+    # ====================================================================================================
     # Key function
+    # ====================================================================================================
 
     def key_function(param, *keys):
 
-        with Layout("Key Function"):
-            value = None
-            for i in range(len(keys) - 1):
-                (key0, val0), (key1, val1) = keys[i], keys[i+1]
+        curve = [tuple(k) for k in keys]
+        if [curve[0][0]] != 0:
+            curve.insert(0, (0, curve[0][0]))
+        if [curve[-1][0]] != 1:
+            curve.append((1, curve[-1][0]))
 
-                val = param.map_range(from_min=Float(key0), from_max=Float(key1), to_min=Float(val0), to_max=Float(val1))
-
-                if i == 0:
-                    value = val
-
-                else:
-                    value = value.switch(param >= key0, val)
-
-        return value
-
-    # =============================================================================================================================
+        return param.curve(factor = None, curve=curve)
+    
+    # ====================================================================================================
+    # ====================================================================================================
     # =============================================================================================================================
     # Hair and Moustache
-    # =============================================================================================================================
-    # =============================================================================================================================
+    # ====================================================================================================
+    # ====================================================================================================
 
-    # =============================================================================================================================
+    # ====================================================================================================
     # Hair scalp
+    # ====================================================================================================
 
     with GeoNodes("Hair Scalp", is_group=True):
 
@@ -166,13 +162,14 @@ def demo():
         mesh.points._BScalp = Boolean("BScalp") | (z >= top_z)
 
         mesh.points._Hair_Scalp = Float(Boolean("BScalp"))
-        mesh.remove_named_attribute("BScalp")
+        mesh.remove_named_attribute(name="BScalp")
 
         mesh.out()
         Float("Hair Scalp").out("Hair Scalp")
 
-    # =============================================================================================================================
+    # ====================================================================================================
     # Moustache scalp
+    # ====================================================================================================
 
     with GeoNodes("Moustache Scalp", is_group=True):
 
@@ -189,8 +186,9 @@ def demo():
         mesh.out()
         Float("Moustache Scalp").out("Moustache Scalp")
 
-    # =============================================================================================================================
+    # ====================================================================================================
     # Hair
+    # ====================================================================================================
 
     with GeoNodes("Hair", is_group=True):
 
@@ -198,10 +196,11 @@ def demo():
         scalp = Float.Factor(1, "Scalp", 0, 1)
 
         with Panel("Hair"):
-            color  = Color((0.439239, 0.078419, 0.007497, 1.000000), "Color")
-            length = Float(.4, "Length")
-            curl   = Float.Factor(0, "Curl", 0, 1)
-            radius = Float(.01, "Radius", 0, .1)
+            color   = Color((0.439239, 0.078419, 0.007497, 1.000000), "Color")
+            length  = Float(.4, "Length")
+            curl    = Float.Factor(0, "Curl", 0, 1)
+            radius  = Float(.01, "Radius", 0, .1)
+            density = Float(50_000., "Density")
 
         with Layout("Generate"):
 
@@ -211,7 +210,7 @@ def demo():
                     surface         = mesh,
                     hair_length     = length,
                     control_points  = count,
-                    density         = 10000,
+                    density         = density,
                     density_mask    = scalp,
                     viewport_amount = .1,
                     ).node
@@ -229,30 +228,30 @@ def demo():
             )
             hair = Curve(hair)
 
-            hair = hair.to_mesh(profile_curve=Curve.Circle(resolution=6, radius=1), fill_caps=True)
+            hair = hair.to_mesh(profile_curve=Curve.Circle(resolution=6, radius=1), scale=nd.radius, fill_caps=True)
 
-            hair.faces._Color = color
+            hair.faces.Color = color
             hair.faces.material = "Obs Hair"
-            hair.faces._Color = color
 
         (mesh + hair).out()
 
-    # =============================================================================================================================
-    # =============================================================================================================================
+    # ====================================================================================================
+    # ====================================================================================================
     # Observer modifiers
-    # =============================================================================================================================
-    # =============================================================================================================================
+    # ====================================================================================================
+    # ====================================================================================================
 
-    # =============================================================================================================================
+    # ====================================================================================================
     # Articulated sausage
+    # ====================================================================================================
 
     with GeoNodes("Sausage", is_group=True):
 
-        curve   = Curve()
-        profile = Curve(None, "Profile")
-        angle   = Float.Angle(.2, "Angle", hide_value=False)
-        twist   = Float.Angle(0, "Twist", -pi, pi)
-        axis    = Integer.MenuSwitch({'X': 0, 'Y': 1, 'Z': 2}, menu='X', name='Axis')
+        curve    = Curve()
+        profile  = Curve(None, "Profile")
+        angle    = Float.Angle(.2, "Angle", hide_value=False)
+        twist    = Float.Angle(0, "Twist", -pi, pi)
+        axis     = Integer.MenuSwitch({'X': 0, 'Y': 1, 'Z': 2}, menu=Input("Axis"))
         use_mesh = Boolean(True, "Mesh")
 
         with Panel("Joints"):
@@ -267,13 +266,13 @@ def demo():
 
         n  = curve.points.count
 
-        with Repeat(curve=curve, iterations=n-1) as rep:
-            index = rep.iteration + 1
-            pos = nd.position
-            center = rep.curve.points.sample_index(pos, index=index)
-            ag = rep.curve.points.sample_index(angle, index=index)
-            rot = Rotation.IndexSwitch((ag, 0, 0), (0, ag, 0), (0, 0, ag), index=axis)
-            p = center + rot @ (pos - center)
+        for rep in repeat(n-1, curve=curve):
+            index   = rep.iteration + 1
+            pos     = nd.position
+            center  = rep.curve.points.sample_index(pos, index=index)
+            ag      = rep.curve.points.sample_index(angle, index=index)
+            rot     = Rotation.IndexSwitch((ag, 0, 0), (0, ag, 0), (0, 0, ag), index=axis)
+            p       = center + rot @ (pos - center)
             rep.curve.points[nd.index > index].position = p
 
         curve = rep.curve
@@ -304,7 +303,7 @@ def demo():
                 right0 = i // 3
                 right1 = right0 + 1
 
-            new_curve = Curve(curve).resample(m)
+            new_curve = Curve(curve).resample(count=m)
 
             # ----- Left
 
@@ -336,24 +335,18 @@ def demo():
                 new_curve.points[joint_sel].position = curve.points.sample_index(nd.position, index=joint_index)
                 new_curve.points[joint_sel].radius   = curve.points.sample_index(nd.radius,   index=joint_index)
 
-            curve = curve.switch(use_joints, new_curve)
+            curve = Curve(curve.switch(use_joints, new_curve))
             n = curve.points.count
 
         with Layout("Twist"):
             curve = curve.transform(rotation=(0, 0, twist))
-
-
-        if False:
-            pts = curve.points.instance_on(Mesh.UVSphere(radius=.01))
-            (curve + pts).out()
-            raise Break()
 
         with Layout("Start Shape"):
 
             m = n + start_resol
             start_resol1 = start_resol + 1
 
-            new_curve = Curve(curve).resample(m)
+            new_curve = Curve(curve).resample(count=m)
             new_curve.points[nd.index > start_resol].position = curve.points.sample_index(nd.position, index=nd.index - start_resol)
             new_curve.points[nd.index > start_resol].radius   = curve.points.sample_index(nd.radius,   index=nd.index - start_resol)
 
@@ -375,7 +368,7 @@ def demo():
             m = n + end_resol
             last = n - 2
 
-            new_curve = Curve(curve).resample(m)
+            new_curve = Curve(curve).resample(count=m)
             new_curve.points[nd.index <= last].position = curve.points.sample_index(nd.position, index=nd.index)
             new_curve.points[nd.index <= last].radius   = curve.points.sample_index(nd.radius,   index=nd.index)
 
@@ -390,19 +383,16 @@ def demo():
             new_curve.points[nd.index > last].radius = radius*(1-fac)**end_shape
 
             curve = new_curve
-            n = curve.points.count
+            #n = curve.points.count
 
 
-        if True:
-            mesh = curve.to_mesh(profile_curve=profile)
-            curve.switch(use_mesh, mesh).out()
+        mesh = curve.to_mesh(profile_curve=profile, scale=nd.radius)
+        curve.switch(use_mesh, mesh).out()
 
-        else:
-            pts = curve.points.instance_on(Mesh.UVSphere(radius=.02))
-            (curve + pts).out()
 
-    # =============================================================================================================================
+    # ====================================================================================================
     # Finger
+    # ====================================================================================================
 
     with GeoNodes("Finger", is_group=True):
 
@@ -411,9 +401,9 @@ def demo():
         resol        = Integer(4, "Resolution", 1, 8)
         length       = Float(1, "Length", 0)
         radius       = Float(.12, "Radius", 0)
-        bend         = Float.Angle(0, "Bend", 0, pi/2, single_value=True)
-        fold         = Float.Angle(0, "Fold", 0, pi/2, single_value=True)
-        lateral      = Float.Angle(0, "Lateral", -pi/8, pi/8, single_value=True)
+        bend         = Float.Angle(0, "Bend", 0, pi/2, shape='Single')
+        fold         = Float.Angle(0, "Fold", 0, pi/2, shape='Single')
+        lateral      = Float.Angle(0, "Lateral", -pi/8, pi/8, shape='Single')
 
         # oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
 
@@ -421,7 +411,7 @@ def demo():
 
             ind = [nd.index.equal(i) for i in range(6)]
 
-            curve = Curve.Line(start=(0, 0, -.2), end=(0, 0, 1)).resample(6)
+            curve = Curve.Line(start=(0, 0, -.2), end=(0, 0, 1)).resample(count=6)
             curve.points[ind[1]].position = (0, 0, 0)
             curve.points[ind[2]].position = (0, 0, .33)
             curve.points[ind[3]].position = (0, 0, .66)
@@ -443,7 +433,7 @@ def demo():
 
         with Layout("Profile"):
             resolution = resol*4
-            profile = Curve.Circle(radius=radius).resample(resolution)
+            profile = Curve.Circle(radius=radius).resample(count=resolution)
 
         with Layout("Finger Shape"):
 
@@ -466,8 +456,9 @@ def demo():
 
         finger.out()
 
-    # =============================================================================================================================
-    # Finger
+    # ====================================================================================================
+    # Thumb
+    # ====================================================================================================
 
     with GeoNodes("Thumb", is_group=True):
 
@@ -476,10 +467,10 @@ def demo():
         resol        = Integer(4, "Resolution", 1, 8)
         length       = Float(1, "Length", 0)
         radius       = Float(.12, "Radius", 0)
-        pinch        = Float.Angle(0, "Pinch", 0, pi/2, single_value=True)
-        bend         = Float.Angle(0, "Bend", 0, pi/2, single_value=True)
-        fold         = Float.Angle(0, "Fold", 0, pi/2, single_value=True)
-        lateral      = Float.Angle(0, "Lateral", -pi/2, pi/2, single_value=True)
+        pinch        = Float.Angle(0, "Pinch", 0, pi/2, shape='Single')
+        bend         = Float.Angle(0, "Bend", 0, pi/2, shape='Single')
+        fold         = Float.Angle(0, "Fold", 0, pi/2, shape='Single')
+        lateral      = Float.Angle(0, "Lateral", -pi/2, pi/2, shape='Single')
 
         # oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
 
@@ -487,7 +478,7 @@ def demo():
 
             ind = [nd.index.equal(i) for i in range(6)]
 
-            curve = Curve.Line(start=(0, 0, -.5), end=(0, 0, 1)).resample(6)
+            curve = Curve.Line(start=(0, 0, -.5), end=(0, 0, 1)).resample(count=6)
             curve.points[ind[1]].position = (0, 0, 0)
             curve.points[ind[2]].position = (0, 0, .5)
             curve.points[ind[3]].position = (0, 0, 1)
@@ -509,7 +500,7 @@ def demo():
 
         with Layout("Profile"):
             resolution = resol*4
-            profile = Curve.Circle(radius=radius).resample(resolution)
+            profile = Curve.Circle(radius=radius).resample(count=resolution)
 
         with Layout("Finger Shape"):
 
@@ -533,28 +524,31 @@ def demo():
 
         finger.out()
 
-    # =============================================================================================================================
+    # ====================================================================================================
     # Hand
+    # ====================================================================================================
 
     with GeoNodes("Hand", is_group=True):
 
         # oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
 
         resol = Integer(4, "Resolution", 1, 8)
-        left_hand  = Boolean(False, "Left")
+        right_hand = Boolean(False, "Right")
 
         bend    = [None]*5
         fold    = [None]*5
         lateral = [None]*5
-        for i in range(5):
-            name = "Thumb" if i == 0 else f"Finger {i}"
-            with Panel(name):
-                if i == 0:
-                    pinch = Float.Angle(0, "Pinch", 0, pi/2)
-                bend[i]    = Float.Angle(0, "Bend", 0, pi/2)
-                fold[i]    = Float.Angle(0, "Fold", 0, pi/2)
-                ag = pi/2 if i == 0 else pi/8
-                lateral[i] = Float.Angle(0, "Lateral", -ag, ag)
+
+        with Panel("Angles"):
+            for i in range(5):
+                name = "Thumb" if i == 0 else f"Finger {i}"
+                with Panel(name):
+                    if i == 0:
+                        pinch = Float.Angle(0, "Pinch", 0, pi/2)
+                    bend[i]    = Float.Angle(0, "Bend", 0, pi/2)
+                    fold[i]    = Float.Angle(0, "Fold", 0, pi/2)
+                    ag = pi/2 if i == 0 else pi/8
+                    lateral[i] = Float.Angle(0, "Lateral", -ag, ag)
 
         with Panel("Location"):
             use_arm = Boolean(True, "Arm")
@@ -566,6 +560,67 @@ def demo():
 
             walk    = Float.Factor(0, "Walk", 0, 1)
             speed   = Float.Factor(0, "Speed",0, 1)
+
+        with Panel("Hand Shape"):
+            use_shape = Boolean(True, "Shape")
+            shape0 = Integer(0, "From")
+            shape1 = Integer(1, "To")
+            fing_fac = Float.Factor(0, "Factor", 0, 1)
+
+
+        r = lambda deg: np.radians(deg)
+
+        angles = [
+            # Shape 0
+            [{'bend': r(  6), 'fold': r(  6), 'lateral': r(  6), 'pinch': r( 15)},
+             {'bend': r(  6), 'fold': r(  6), 'lateral': r(  0)},
+             {'bend': r(  6), 'fold': r(  6), 'lateral': r(  0)},
+             {'bend': r(  6), 'fold': r(  6), 'lateral': r(  0)},
+             {'bend': r(  6), 'fold': r(  6), 'lateral': r(  0)},],
+
+            # Shape 1 (Fist)
+            [{'bend': r( 43), 'fold': r( 44), 'lateral': r(-90), 'pinch': r( 77)},
+             {'bend': r( 80), 'fold': r( 70), 'lateral': r(  0)},
+             {'bend': r( 80), 'fold': r( 70), 'lateral': r(  0)},
+             {'bend': r( 80), 'fold': r( 70), 'lateral': r(  0)},
+             {'bend': r( 80), 'fold': r( 70), 'lateral': r(  0)},],
+
+            # Shape 2 (Show)
+            [{'bend': r( 41), 'fold': r( 17), 'lateral': r( 17), 'pinch': r( 15)},
+             {'bend': r(  0), 'fold': r(  0), 'lateral': r(  0)},
+             {'bend': r( 80), 'fold': r( 70), 'lateral': r(  0)},
+             {'bend': r( 80), 'fold': r( 70), 'lateral': r(  0)},
+             {'bend': r( 80), 'fold': r( 70), 'lateral': r(  0)},],
+
+            # Shape 2 (Five)
+            [{'bend': r(  0), 'fold': r(  0), 'lateral': r(  0), 'pinch': r( 15)},
+             {'bend': r(  0), 'fold': r(  0), 'lateral': r(-14)},
+             {'bend': r(  0), 'fold': r(  0), 'lateral': r(  0)},
+             {'bend': r(  0), 'fold': r(  0), 'lateral': r(  7)},
+             {'bend': r(  0), 'fold': r(  0), 'lateral': r( 18)},],
+
+        ]
+
+        def get_angle(i, name):
+            with Layout(f"Angle {name}, finger {i}"):
+                with Float.IndexSwitch(index=shape0) as ag0:
+                    Float(angles[0][i][name]).out()
+                    Float(angles[1][i][name]).out()
+                    Float(angles[2][i][name]).out()
+                    Float(angles[3][i][name]).out()
+
+                with Float.IndexSwitch(index=shape1) as ag1:
+                    Float(angles[0][i][name]).out()
+                    Float(angles[1][i][name]).out()
+                    Float(angles[2][i][name]).out()
+                    Float(angles[3][i][name]).out()
+
+                if name == 'pinch':
+                    ag = pinch
+                else:
+                    ag = {'bend': bend, 'fold': fold, 'lateral': lateral}[name][i]
+
+                return ag.switch(use_shape, fing_fac.map_range(to_min=ag0, to_max=ag1))
 
         # oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
 
@@ -579,10 +634,10 @@ def demo():
                     resolution   = resol,
                     length       = lengths[0],
                     radius       = .17,
-                    pinch        = pinch,
-                    bend         = bend[0],
-                    fold         = fold[0],
-                    lateral      = lateral[0],
+                    pinch        = get_angle(0, 'pinch'),
+                    bend         = get_angle(0, 'bend'),
+                    fold         = get_angle(0, 'fold'),
+                    lateral      = get_angle(0, 'lateral'),
                 )
 
             x = -room*3
@@ -592,9 +647,13 @@ def demo():
                     resolution   = resol,
                     length       = lengths[i],
                     radius       = radius,
-                    bend         = .1 + bend[i],
-                    fold         = .1 + fold[i],
-                    lateral      = lateral[i],
+                    bend         = get_angle(i, 'bend'),
+                    fold         = get_angle(i, 'fold'),
+                    lateral      = get_angle(i, 'lateral'),
+
+                    #bend         = .1 + bend[i],
+                    #fold         = .1 + fold[i],
+                    #lateral      = lateral[i],
                 )
 
                 finger.transform(translation=(x, 0, 0))
@@ -651,10 +710,9 @@ def demo():
             hand.faces.shade_smooth = True
             hand.faces.material = "Obs Skin"
 
-
         with Layout("Left Hand"):
-            side_fac = Integer.Switch(left_hand, 1, -1)
-            hand = hand.switch(left_hand, Mesh(hand).transform(scale=(1, -1, 1)).flip_faces())
+            side_fac = Integer.Switch(right_hand, -1, 1)
+            hand = hand.switch_false(right_hand, Mesh(hand).transform(scale=(1, -1, 1)).flip_faces())
 
 
         with Layout("Walk"):
@@ -681,85 +739,76 @@ def demo():
 
         hand.out()
 
-    # =============================================================================================================================
-    # Walk / run control
+    # ====================================================================================================
+    # Walk control
+    # ====================================================================================================
 
     with GeoNodes("Walk", is_group = True):
 
-        # oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+        time  = Float(0,         "Time")
+        speed = Float.Factor(.5, "Speed", 0, 1, tip="Walk speed")
+        size  = Float(1,         "Size", 0)
+        right = Boolean(False,   "Right")
 
-        walk         = Float(0,         "Walk")
-        speed        = Float.Factor(.5, "Speed", 0, 1)
-        walk_factor  = Float.Factor(1,  "Factor", 0, 1)
-        size         = Float(1,         "Size", 0)
-
-        # oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
-
-        # Foot location phases:
-        # 0       -> Back  : Backwards
-        # Back    -> Front : Ellipsis in the air
-        # Front   -> 0     : Back to initial position
-
-        # Tilt phases:
-        # 0       -> flat0 : flat
-        # flat0   -> down  : tilted down
-        # down    -> up    : tilted up
-        # up      -> flat1 : flat agin
-
-        # Tiptoe phases
-        # flat0   -> tip   : 0 to tip
-        # tip     -> tip0  : tip to 0
+        time = time.switch(right, time + 0.5)
 
         with Layout("Walk between 0 and 1"):
-            walk = ((walk % 1).switch(walk < 0, 1 - ((-walk) % 1))*walk_factor)._lc("Walk")
-            speed = (speed*walk_factor)._lc("Speed")
+            time = ((time % 1).switch(time < 0, 1 - ((-time) % 1)))._lc("Walk")
+            walk = time.curve(
+                factor = speed, 
+                curve=[(0.000, 0.000, 'AUTO'), (0.200, 0.300, 'AUTO'), (0.800, 0.700, 'AUTO'), (1.000, 1.000, 'AUTO')])
 
         with Layout("Walk Length and Height"):
-            length  = speed.map_range(to_min=1.1, to_max=1.5)._lc("Length")
-            length2 = (length/2)._lc("Half Length")
-            height  = speed.map_range(to_min=.3, to_max=1.1)._lc("Height")
+            length  = speed.map_range(to_min=0.0, to_max=3.0)._lc("Length")
+            #length2 = (length/2)._lc("Half Length")
+            height  = speed.map_range(to_min=0.0, to_max=1.0)._lc("Height")
+            ag_fac  = speed
 
-        with Layout("Foot Location"):
+        up = 0.28
+        dn = 1 - up
 
-            walk_back  = key_function(speed, (0, .2), (1, 0.18))
-            back       = key_function(speed, (0, -length*.8), (1, -length*.8))
-            walk_front = walk_back + key_function(speed, (0, .4), (1, .7))
-            front      = back + length
-            pivot      = length2# + back
+        with Layout("Horizontal"):
+            shoe_y = walk.curve(factor = None, 
+                curve=[(0.000, 0.500, 'VECTOR'), (up, 0.000, 'VECTOR'), (dn, 1.000, 'VECTOR'), (1.000, 0.500, 'VECTOR')]
+                )
+            # Minus for orientation
+            shoe_y = -shoe_y.map_range(to_min=-0.8*length, to_max=0.5*length)
 
-            angle   = key_function(walk, (walk_back, 0), (walk_front, pi))
-            delta_x = key_function(walk, (0, 0), (walk_back, back), (walk_front, 0), (1, -length))
+        with Layout("Vertical"):        
+            shoe_z = walk.curve(factor=None,
+                curve=[(up, 0.000, 'AUTO'), (up + 0.077, 0.334, 'VECTOR'), (up + 0.314, 0.825, 'VECTOR'), (dn, 0.00, 'VECTOR'), (1.000, 0.000, 'AUTO')]
+                )
+            shoe_z = shoe_z*height
 
-            x = pivot - length2*gnmath.cos(angle)
-            z = height*gnmath.sin(angle)
-            foot_loc = Vector((delta_x + x, 0, z))
+            shoe_x = Float.Switch(right, -size/3, size/3)
+        
+            shoe_loc = Vector((shoe_x, shoe_y, shoe_z))
 
-        with Layout("Foot Tilt"):
-            walk_flat0 = walk_back
-            walk_down  = walk_flat0 + key_function(speed, (0, .1), (1, .05))
-            walk_up    = walk_front
-            walk_flat1 = walk_up + key_function(speed, (0, .1), (1, .05))
-            down       = key_function(speed, (0, .4), (1, .7))
-            up         = key_function(speed, (0, -.4), (1, -1))
-            tilt       = key_function(walk, (walk_flat0, 0), (walk_down, down), (walk_up, up), (walk_flat1, 0))
+        with Layout("Tilt"):
+            shoe_tilt = walk.curve(factor=None,
+                curve=[(0.000, 0.500, 'VECTOR'), (up, 0.500, 'VECTOR'), (0.368, 1.000, 'AUTO'), (0.627, 0.126, 'AUTO'), (dn, 0.500, 'VECTOR'), (1.000, 0.500, 'VECTOR')]
+                )
+            shoe_tilt = shoe_tilt.map_range(to_min=-0.8, to_max=0.8)*ag_fac
 
-        with Layout("Tiptoe"):
-            dt      = key_function(speed, (0, .1), (1, .05))
-            angle   = key_function(speed, (0, -.4), (1, -.8))
-            tiptoe  = key_function(walk, (walk_flat0, 0), (walk_flat0 + dt, angle), (walk_flat0 + 1.6*dt, 0))
+        with Layout("tiptoe"):
+            shoe_tiptoe = walk.curve(factor=None,
+                curve=[(0.000, 0.000, 'AUTO'), (up, 0.000, 'VECTOR'), (0.289, 0.720, 'VECTOR'), (0.466, 0.000, 'VECTOR'), (1.000, 0.000, 'AUTO')]
+                )
+            shoe_tiptoe *= -1*ag_fac
+
+        # Outing
 
         walk.out(       "Walk")
         speed.out(      "Speed")
-        foot_loc.scale(size).out(   "Location")
-        tilt.out(       "Tilt")
-        tiptoe.out(     "Tiptoe")
+        shoe_loc.out(   "Location")
+        shoe_tilt.out(  "Tilt")
+        shoe_tiptoe.out("Tiptoe")
 
-    # =============================================================================================================================
+    # ====================================================================================================
     # Shoe
+    # ====================================================================================================
 
     with GeoNodes("Shoe", is_group=True):
-
-        # oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
 
         resol  = Integer(16,    "Resolution")
         size   = Float(1,       "Size", 0)
@@ -769,13 +818,12 @@ def demo():
         tilt   = Float.Angle(0, "Tilt")
         tiptoe = Float.Angle(0, "Tiptoe")
 
-        # oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
 
         with Layout("Curve"):
 
             ind = [nd.index.equal(i) for i in range(4)]
 
-            curve = Curve.Line(start=(-.2, 0, 0), end=(.8, 0, 0)).resample(4)
+            curve = Curve.Line(start=(-.2, 0, 0), end=(.8, 0, 0)).resample(count=4)
             curve.points[ind[1]].position = (0, 0, 0)
             curve.points[ind[2]].position = (.5, 0, 0)
 
@@ -789,7 +837,7 @@ def demo():
             curve.transform(scale=size)
 
         with Layout("Profile"):
-            profile = Curve.Circle(radius=.22).resample(2*resol + 2)
+            profile = Curve.Circle(radius=.22).resample(count=2*resol + 2)
             profile.points[(nd.index > 0) & (nd.index <= resol)].delete()
             profile.transform(scale=size)
 
@@ -807,95 +855,36 @@ def demo():
                 end_shape           = .4,
                 end_resolution      =  4,
             )
-        shoe = Mesh(shoe)
+        shoe = Mesh(shoe.transform(rotation=(0, 0, -pi/2)))
 
         with Layout("Finalize"):
             shoe.faces.shade_smooth = True
             shoe.faces.material = "Obs Shoe"
 
         with Layout("Orientation in space"):
-            shoe.transform(translation=loc, rotation=(0, tilt, 0))
+            shoe.transform(translation=loc, rotation=(tilt, 0, 0))
             shoe.transform(rotation=(0, 0, twist))
 
         shoe.out()
 
-    # =============================================================================================================================
-    # Shoes
-
-    with GeoNodes("Shoes", is_group=True):
-
-        # oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
-
-        resol  = Integer(16,    "Resolution")
-        size   = Float(1,       "Size", 0)
-
-        with Panel("Walk"):
-            walk    = Float(0,         "Walk")
-            speed   = Float.Factor(.5, "Speed", 0, 1)
-            factor  = Float.Factor(1,  "Factor", 0, 1)
-
-        # oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
-
-        with Layout("Left"):
-            left_walk = G().walk(
-                walk    = walk,
-                speed   = speed,
-                factor  = factor,
-                size    = size).node
-
-            left_shoe = G().shoe(
-                resolution = resol,
-                size       = size,
-                twist      = -pi/2,
-
-                location   = left_walk.location,
-                tilt       = left_walk.tilt,
-                tiptoe     = left_walk.tiptoe,
-                )
-
-            walk_out  = left_walk.walk_
-            speed_out = left_walk.speed_
-
-        with Layout("Right"):
-            right_walk = G().walk(
-                walk    = walk + .5,
-                speed   = speed,
-                factor  = factor,
-                size    = size).node
-
-            right_shoe = G().shoe(
-                resolution = resol,
-                size       = size,
-                twist      = -pi/2,
-
-                location   = right_walk.location,
-                tilt       = right_walk.tilt,
-                tiptoe     = right_walk.tiptoe,
-                )
-
-        dx = .5
-        left_shoe.transform(translation=(dx, 0, 0))
-        right_shoe.transform(translation=(-dx, 0, 0))
-
-        shoes = left_shoe + right_shoe
-        shoes.out()
-        walk_out.out("Walk")
-        speed_out.out("Speed")
-
-    # =============================================================================================================================
+    # ====================================================================================================
     # Observer
+    # ====================================================================================================
 
     with GeoNodes("Observer"):
 
-        # oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+        # ---------------------------------------------------------------------------
+        # Params
+        # ---------------------------------------------------------------------------
 
         resol  = Integer(8, "Resolution", 1, 8)
         color  = Color((1, 0, 0), "Color")
         transp = Float.Factor(0, "Transparency", 0, 1)
 
         with Panel("Walk"):
-            speed       = Float.Factor(.5, "Speed", 0, 1)
-            walk_factor = Float.Factor(0,  "Factor", 0, 1)
+            time  = Float(0.0, "Time")
+            speed = Float.Factor(.5, "Speed", 0, 1)
+            #walk_factor = Float.Factor(0,  "Factor", 0, 1)
 
         with Panel("Head"):
 
@@ -919,7 +908,9 @@ def demo():
                 use_moust = Boolean(True,    "Moustache")
                 moust_col = Color([0.061606, 0.008269, 0.002920, 1.000000], "Moustache Color")
 
-        # oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+        # ---------------------------------------------------------------------------
+        # Main
+        # ---------------------------------------------------------------------------
 
         with Layout("Base Sphere"):
             segments = resol*8
@@ -1017,13 +1008,7 @@ def demo():
             blouse = blouse.difference(cyl)
             blouse.transform(rotation=(0, 0, -pi/2))
 
-            if True:
-                blouse.faces[nd.material_index==0].delete()
-
-            else:
-                blouse += cyl
-                blouse.out()
-                raise Break()
+            blouse.faces[nd.material_index==0].delete()
 
             top = nd.position.z < .01
             for _ in range(10):
@@ -1039,31 +1024,38 @@ def demo():
 
         with Layout("Shoes"):
 
-            walk = nd.scene_time().seconds*speed.map_range(to_min=.5, to_max=2)
+            node  = G().walk(time=time, speed=speed, right=False).node
+            left_shoe = G().shoe(location=node.location, tilt=node.tilt, tiptoe=node.tiptoe)
 
-            shoes = G().shoes(walk=walk, speed=speed, factor=walk_factor)
-            wlk = shoes.walk_
-            spd = shoes.speed_
+            wlk = node.walk
+            spd = node.speed
 
+            node  = G().walk(time=time, speed=speed, right=True).node
+            right_shoe = G().shoe(location=node.location, tilt=node.tilt, tiptoe=node.tiptoe)
 
-        with Layout("Hands"):
+            shoes = left_shoe + right_shoe
+
+        with Panel("Left Hand"):
             left_hand  = G().hand(
                 resolution  = resol,
-                left        = True,
+                right       = False,
                 arm         = True,
                 walk        = wlk,
-                speed       = spd).node.link_from(exclude=['Resolution', 'Left', 'Arm', 'Walk', 'Speed'],  panel="Left Hand")
+                shape       = True,
+                speed       = spd).node.link_inputs(exclude=['Resolution', 'Left', 'Arm', 'Walk', 'Speed', 'Angles'])
 
+        with Panel("Right Hand"):
             right_hand = G().hand(
                 resolution  = resol,
-                left        = False,
+                right       = True,
                 arm         = True,
                 walk        = (wlk + .5)%1,
-                speed       = spd).node.link_from(exclude=['Resolution', 'Left', 'Arm', 'Walk', 'Speed'], panel="Right Hand")
+                shape       = True,
+                speed       = spd).node.link_inputs(exclude=['Resolution', 'Left', 'Arm', 'Walk', 'Speed', 'Angles'])
 
             dx, dz = -.75, 2.5
-            left_hand = left_hand.transform(translation=(dx, 0, dz))
-            right_hand = right_hand.transform(translation=(-dx, 0, dz))
+            left_hand = left_hand._out.transform(translation=(dx, 0, dz))
+            right_hand = right_hand._out.transform(translation=(-dx, 0, dz))
 
             obs += (left_hand, right_hand)
 
@@ -1089,20 +1081,22 @@ def demo():
             scalp = Float("Hair Scalp")
             scalp *= scalp.exists_
             obs = G().hair(obs,
-                scalp  = scalp,
-                color  = hair_col,
-                length = .5,
-                curl   = 0,
-                radius = .002).switch_false(use_hair, obs)
+                scalp   = scalp,
+                color   = hair_col,
+                length  = .5,
+                curl    = 0,
+                density = 5_000,
+                radius  = .01).switch_false(use_hair, obs)
 
             scalp = Float("Moustache Scalp")
             scalp *= scalp.exists_
             obs = G().hair(obs,
-                scalp = scalp,
-                color  = moust_col,
-                length = .16,
-                curl   = 0,
-                radius = .002).switch_false(use_moust, obs)
+                scalp   = scalp,
+                color   = moust_col,
+                length  = .16,
+                curl    = 0,
+                density = 10_000,
+                radius  = .01).switch_false(use_moust, obs)
 
             obs = Mesh(obs)
 

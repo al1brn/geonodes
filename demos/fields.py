@@ -88,7 +88,7 @@ def build_field_derivatives(field_name, name=None, socket_out=None):
         name = f"{field_name} Derivatives"
 
     def call_group(pos, t, label):
-        node = Group(field_name, position=pos, t=t, link_from='TREE')
+        node = Group(field_name, position=pos, t=t).link_inputs()
         if socket_out is None:
             return node._out._lc(label)
         else:
@@ -280,7 +280,7 @@ def demo():
 
         mesh.points._Delta = delta*direction
 
-        with Repeat(mesh=mesh, top=True, iterations=iterations) as rep:
+        for rep in repeat(iterations, mesh=mesh, top=True):
 
             mesh = rep.mesh
 
@@ -347,8 +347,8 @@ def demo():
         # ----------------------------------------------------------------------------------------------------
         # Extrusion in both directions
 
-        mesh0 = G().field_lines_directed(mesh, field, direction=1, link_from='TREE')
-        mesh1 = G().field_lines_directed(mesh, field, direction=-1, link_from='TREE')
+        mesh0 = G().field_lines_directed(mesh, field, direction=1).link_inputs()
+        mesh1 = G().field_lines_directed(mesh, field, direction=-1).link_inputs()
 
         mesh = Mesh((mesh0 + mesh1).merge_by_distance())
 
@@ -366,16 +366,16 @@ def demo():
 
         with Layout("To Mesh"):
 
-            curve.points._Uvmap_u = Spline.parameter().factor
+            curve.points._Uvmap_u = nd.spline_parameter().factor
             circle = Curve.Circle(radius=line_radius, resolution=line_resol)
-            circle.points._Uvmap_v = Spline.parameter().factor
+            circle.points._Uvmap_v = nd.spline_parameter().factor
 
             mesh_lines = curve.to_mesh(profile_curve=circle)
             mesh_lines.faces.material = line_mat
             mesh_lines.faces._Color = line_color
             mesh_lines.faces.smooth = True
             mesh_lines.corners.store_uv("UV Map", Vector((Float("Uvmap u"), Float("Uvmap v"), 0)))
-            mesh_lines.remove_named_attribute(name="Uvmap*")
+            mesh_lines.remove_named_attribute(pattern_mode="Wildcard", name="Uvmap*")
 
         mesh_lines.switch(keep_curves, curve).out()
 
@@ -390,11 +390,10 @@ def demo():
 
         with Layout("Prepare Mesh"):
             mesh = geo.mesh.points.delete_edge_face() + geo.point_cloud.to_vertices()
-            #mesh.points.store("DELTA", delta*direction)
 
-        node = Group("Arrows", geometry=geo, vector=field, link_from='TREE')
+        node = Group("Arrows", cloud=mesh, vectors=field).link_inputs()
 
-        node.geometry.out()
+        node.mesh.out()
 
 
     # =============================================================================================================================
@@ -405,7 +404,7 @@ def demo():
 
     with GeoNodes("Compute Moving Electric Charge", is_group=True):
 
-        pos = Vector.Position()
+        pos = Vector(None, name="Position")
 
         with Panel("Charge"):
             charge_loc = Vector(0, "Charge Location", tip="Location of the moving charge")
@@ -435,17 +434,6 @@ def demo():
             E = gr3*rotated_position
             B = (gr3*beta)*Vector((0, -rotated_position.z, rotated_position.y))
 
-        """
-        with Layout("Maximum length"):
-            if False:
-                l = E.length()
-                E = E.normalize().scale(1/(1 + gnmath.exp(-1*l)))
-                l = B.length()
-                B = B.normalize().scale(1/(1 + gnmath.exp(-1*l)))
-            else:
-                E = E.normalize().scale(gnmath.min(E.length(), max_len))
-                B = B.normalize().scale(gnmath.min(B.length(), max_len))
-        """
 
         with Layout("Back to the initial frame"):
             E = rotation @ E
@@ -460,7 +448,7 @@ def demo():
 
     with GeoNodes("Compute Electric Charges", is_group=True):
 
-        pos = Vector.Position()
+        pos = Vector(None, name="Position")
 
         with Panel("Charges"):
             geo    = Geometry(None, "Charge Locations", tip="Charge locations")
@@ -469,10 +457,7 @@ def demo():
 
         cloud = geo.point_cloud + geo.mesh.to_points() + geo.curve.to_points()
 
-        #with Panel("Options"):
-        #    max_len = Float(1000, "Max Length", 1, tip="Max field vector length", single_value=True)
-
-        with Repeat(cloud=cloud, charge=charge, speed=speed, field_e=Vector(), field_b=Vector(), iterations=cloud.points.count) as rep:
+        for rep in repeat(cloud.points.count, cloud=cloud, charge=charge, speed=speed, field_e=Vector(), field_b=Vector()):
 
             rep_loc    = rep.cloud.points.sample_index(nd.position, rep.iteration)
             rep_charge = rep.cloud.points.sample_index(rep.charge,  rep.iteration)
@@ -540,7 +525,7 @@ def demo():
 
     with GeoNodes("Compute Solenoid", is_group=True):
 
-        pos = Vector.Position()
+        pos = Vector(None, "Position")
 
         with Panel("Solenoid"):
             charge      = Float(1,    "Charge", tip="Total charge of the solenoid")
@@ -552,7 +537,7 @@ def demo():
         with Layout("Position converted to cylindrical coordinates along x"):
             x = pos.x._lc("x")
             r = Vector((0, pos.y, pos.z)).length()._lc("r")
-            lam = gnmath.atan2(pos.z, pos.y)._lc("lambda")
+            #lam = gnmath.atan2(pos.z, pos.y)._lc("lambda")
             cos_lam = (pos.y/r)._lc("cos lambda")
             sin_lam = (pos.z/r)._lc("sin lambda")
 
@@ -567,7 +552,7 @@ def demo():
         # ----------------------------------------------------------------------------------------------------
         # Loop on theta
 
-        with Repeat(ex=0., er=0., bx=0., br=0., index=0, iterations=count) as rep_theta:
+        for rep_theta in repeat(count, ex=0., er=0., bx=0., br=0., index=0):
 
             cs = circle.points.sample_index(nd.position, index=rep_theta.index)
             cos_theta, sin_theta = (cs.x)._lc("cos theta"), cs.y._lc("sin theta")
@@ -578,7 +563,7 @@ def demo():
             # ----------------------------------------------------------------------------------------------------
             # Loop on solenoids loops
 
-            with Repeat(ex=rep_theta.ex, er=rep_theta.er, bx=rep_theta.bx, br=rep_theta.br, index=0, iterations=loops) as rep_xs:
+            for rep_xs in repeat(loops, ex=rep_theta.ex, er=rep_theta.er, bx=rep_theta.bx, br=rep_theta.br, index=0):
 
                 x_s = gnmath.multiply_add(rep_xs.index, dxs, xs0)._lc("x_s")
                 rep_xs.index += 1
@@ -641,7 +626,7 @@ def demo():
 
     with GeoNodes("Compute Magnet", is_group=True):
 
-        pos = Vector.Position()
+        pos = Vector(None, "Position")
 
         with Panel("Magnet"):
             width_scale = Float(1., "Width Scale",  0.01, tip="Width scale")
@@ -747,7 +732,8 @@ def demo():
             sphere.transform(scale=(size.x, size.y, size.z))
             sphere_cloud = sphere.to_volume(density=density).distribute_points(seed=seed)
 
-        cloud = Cloud.MenuSwitch(items={
+        
+        cloud = Cloud.MenuSwitch({
             'Input Geometry'   : Cloud(geo),
             'Points on faces'  : pts_faces_cloud,
             'Points in volume' : pts_vol_cloud,
@@ -756,7 +742,7 @@ def demo():
             'Cube'             : cube_cloud,
             'Cylinder'         : cyl_cloud,
             'Sphere'           : sphere_cloud,
-        }, menu='Cube', name='Shape')
+        }, menu=Input("Shape"))
 
         cloud.transform(translation=location, rotation=rotation)
         cloud.points[nd.position.distance(center).greater_than(max_dist)].delete()
@@ -775,7 +761,7 @@ def demo():
             size = 10,
             density=.1,
             shape='Cube',
-            seed=100).geometry
+            seed=100).cloud
         use_B = Boolean(False, "Magnetic Field")
         vis_arrows = Boolean(False, "Arrows")
         vis_lines  = Boolean(True, "Lines of Field")
@@ -804,11 +790,11 @@ def demo():
             node = Group("Compute Solenoid", charge=1, beta=.8, radius=1, loops=10, length=5)
             fields['Solenoid'] = node.e.switch(use_B, node.b)
 
-        field = Vector.MenuSwitch(fields, menu=0, name='Field')
+        field = Vector.MenuSwitch(fields, menu=Input("Field"))
 
         # ----- Arrows
 
-        arrows = Group("Field Arrows", geometry=source, field=field, color=(0, 0, 1)).geometry
+        arrows = Group("Field Arrows", geometry=source, field=field).mesh
 
         # ----- Lines of field
 

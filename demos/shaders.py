@@ -46,8 +46,8 @@ def demo():
     with ShaderNodes("Arrow"):
 
         pos_color = Color(snd.attribute(attribute_type='GEOMETRY', attribute_name="Color").vector)
-        negative  = snd.attribute(attribute_type='GEOMETRY', attribute_name="Negative").fac
-        transp    = snd.attribute(attribute_type='GEOMETRY', attribute_name="Transparency").fac
+        negative  = snd.attribute(attribute_type='GEOMETRY', attribute_name="Negative").factor
+        transp    = snd.attribute(attribute_type='GEOMETRY', attribute_name="Transparency").factor
 
         neg_color = pos_color.hue_saturation_value(hue=.5, saturation=.9, value=.9)
         color = pos_color.mix(negative, neg_color)
@@ -151,9 +151,9 @@ def demo():
 
     with ShaderNodes("Wood Planks Group", is_group=True):
 
-        splitter = G().planks_splitter(link_from='TREE')
+        splitter = G().planks_splitter().link_inputs()
 
-        wood = G().wood_group(vector=splitter.vector_, link_from='TREE')
+        wood = G().wood_group(vector=splitter.vector_).link_inputs()
 
         m_color = Color("#2E150AFF", "Gap Color", panel="Colors")
 
@@ -162,7 +162,7 @@ def demo():
             normal = snd.bump(strength=1, height=is_mortar, invert=True),
             )
 
-        shader = wood.mix(mortar, fac=splitter)
+        shader = wood.mix(mortar, factor=splitter)
 
         shader.out()
 

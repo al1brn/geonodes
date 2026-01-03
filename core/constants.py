@@ -110,6 +110,17 @@ PAIRED_NODES = {
 	'NodeClosureOutput'							: 'NodeClosureInput',
 }
 
+# ====================================================================================================
+# Ignored Sockets
+# ====================================================================================================
+
+# Some sockets are anot available for all tree
+
+IGNORED_SOCKETS = {
+    'ShaderNodeCombineColor' : ('alpha',), # Shader combinaison doesn't support Alpha
+}
+
+
 
 # ====================================================================================================
 # Nodes enum params transco

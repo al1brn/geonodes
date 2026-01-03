@@ -124,10 +124,14 @@ def demo():
         # ====================================================================================================
         # Simulation
 
-        with Simulation(planets=planets) as sim:
-
+        for sim in simulation(planets=planets):
+            
+            sim.planets = Cloud(sim.planets)
             sim.planets.points._Acceleration = Vector()
-            with Repeat(planets=sim.planets, iterations=sim.planets.points.count) as rep:
+
+            for rep in repeat(sim.planets.points.count, planets=sim.planets):
+
+                rep.planets = Cloud(rep.planets)
 
                 center = sim.planets.points.sample_index(nd.position, index=rep.iteration)
                 M      = sim.planets.points.sample_index(Float("Mass"), index=rep.iteration)
@@ -135,10 +139,9 @@ def demo():
                 v = center - nd.position
                 r = gnmath.max(v.length(), .01)
                 acc = v.scale(G*M*r**(-3))
-                #rep.planets.points[nd.index.not_equal(rep.iteration)]._Acceleration = Vector("Acceleration") + acc
-                rep.planets.points[nd.index.not_equal(rep.iteration)]._Acceleration += acc
+                rep.planets.points[nd.index.not_equal(rep.iteration)].Acceleration = Vector("Acceleration") + acc
 
-            planets = rep.planets
+            planets = Cloud(rep.planets)
 
             with Layout("Move the planets"):
                 old_speed = Vector("Speed")
@@ -208,7 +211,7 @@ def demo():
             with Layout("Sun center"):
                 no_center = Cloud(planets)
                 sun = Cloud(planets)
-                sun.points[sun.points.attribute_statistic(sun._Mass).max > 1.01*sun._Mass].delete()
+                sun.points[sun.points.attribute_statistic(Float("Mass")).max_ > 1.01*Float("Mass")].delete()
                 planets.transform(translation=-sun.points.sample_index(nd.position, 0))
                 planets = no_center.switch(center_sun, planets)
 
@@ -216,8 +219,8 @@ def demo():
 
         # ----- End of Simulation Loop
 
-        planets = sim.planets
-        planets.points._Sun = Float("Mass").equal(planets.points.attribute_statistic(Float("Mass")).max)
+        planets = Cloud(sim.planets)
+        planets.points.Sun = Float("Mass").equal(planets.points.attribute_statistic(Float("Mass")).max_)
 
         # ====================================================================================================
         # Planet spheres

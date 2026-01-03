@@ -168,12 +168,13 @@ def demo():
                 
             # None
             with Closure() as nul_cl:
-                Float(0.05, "Radius")*scale
-                Float(.55, "Aspect")*scale
-                Integer(12, "Resolution")
+                # Input are connected to avoid warnings
+                a  = Float(0.05, "Radius")
+                a += Float(.55, "Aspect")
+                a += Integer(12, "Resolution")
 
                 Geometry.Switch().out("Head")
-                Float(0.).out("Height")
+                Float(a*0.).out("Height")
         
         # ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
         # Group input
@@ -196,7 +197,6 @@ def demo():
             lens = vec.length()
             rot = Rotation().align_z_to_vector(vec)
             
-            shaft_offset = Float()
             shaft_len = lens
             max_head_height = lens/4
             pivot = cloud.points.sample_index(nd.position, nd.index)
@@ -253,8 +253,7 @@ def demo():
                 
                 # Bottom specific
                 else:
-                    shaft_offset = Float.Switch(has_head, 0., heights)
-                    
+                    shaft_offset = Float.Switch(has_head, 0., heights)                    
                     the_heads += heads
                 
         # ---------------------------------------------------------------------------

@@ -406,7 +406,6 @@ def demo():
     with GeoNodes("Doc Panels"):
         
         # Create two options in a panel named Options
-
         with Panel("Options"):
             shade_smooth = Boolean(True, "Shade Smooth")
             subdiv = Integer(1, "Subdivision", 0, 5)
@@ -416,10 +415,18 @@ def demo():
 
         # Methods can be combined
         with Panel("Options"):
-            count = Integer(5, "Count", 1, 10, panel="Sub options")
+            new_mat = Material(None, panel="Sub options")
 
         # The panels can be chained with > char
-        Factor = Float.Factor(.5, "Factor", 0, 1, panel="Options > Sub options")
+        fac = Float.Factor(.5, "Factor", 0, 1, panel="Options > Sub options")
+
+        sph = Mesh.UVSphere().subdivide(subdiv)
+        sph.faces.smooth = shade_smooth
+        sph = Mesh(sph.switch(change_mat, Mesh(sph).set_material(new_mat)))
+        sph.points.Factor = fac
+
+        sph.out()
+
 
     # ====================================================================================================
     # Creating geometries
@@ -489,6 +496,64 @@ def demo():
         Geometry.join(helix, spiral, cube).out()
 
     # ====================================================================================================
+    # Menu
+    # ====================================================================================================
+
+    with GeoNodes("Doc Menu") as tree:
+        
+        # ----------------------------------------------------------------------------------------------------
+        # Geometries are provided as method arguments
+        # ----------------------------------------------------------------------------------------------------
+        
+        simple = Geometry().menu_switch("Input", {
+            "Cube": Mesh.Cube(),
+            "Ico": Mesh.IcoSphere(),
+            "Cone": Mesh.Cone(), 
+            },
+            menu=Input("Simple Mesh", default="Ico"), 
+            )
+
+        # ----------------------------------------------------------------------------------------------------
+        # Here, the geometries are added one after the other, making the source code clearer
+        # ----------------------------------------------------------------------------------------------------
+            
+        profile = Curve.Circle(radius=.1)
+            
+        with Geometry.MenuSwitch() as from_curve:
+            simple.out("Simple Mesh")
+            
+        with from_curve:
+            Curve.Spiral().to_mesh(profile_curve=profile).out("Spiral")
+            
+        with from_curve:
+            Curve.Circle().to_mesh(profile_curve=profile).out("Circle")
+            
+        # The best is to set the menu socket once the inputs are completed
+        from_curve.node.menu = Input("From Curve", default="Simple Mesh")
+        
+        # ----------------------------------------------------------------------------------------------------
+        # Same for Index switch
+        # ----------------------------------------------------------------------------------------------------
+
+        # Each out method feeding an Index Switch node will add an entry
+        
+        curve = Curve.IndexSwitch(index=Input("Curve Index"))
+        with curve:
+            Curve.Spiral().out()
+            
+        with curve:
+            Curve.Circle().out()
+            
+        with curve:
+            Curve.Quadrilateral().out()
+            
+        # ----------------------------------------------------------------------------------------------------
+        # Switch
+        # ----------------------------------------------------------------------------------------------------
+        
+        curve.switch(Input("Mesh/Curve"), from_curve).out()        
+
+    # ====================================================================================================
     # Closure
     # ====================================================================================================
 
@@ -536,19 +601,18 @@ def demo():
         # Two input parameters
         count  = Integer(10, "Count", 1, 100)
         radius = Float(.1, "Radius", 0, 2)
-
         
         # Cloud of points
         cloud = Cloud.Points(count=count, position=Vector.Random((-5, -5, 5), (5, 5, 15)))
         
         # Gravity simulation with initial random speed
-        for sim in cloud.simulation(Speed=Vector.Random(-1, 1)):
+        for sim in simulation(cloud=cloud, Speed=Vector.Random(-1, 1)):
             
             # One speed per point
-            speed = cloud.points.capture_attribute(sim.speed)
+            speed = sim.cloud.points.capture_attribute(sim.speed)
             
             # Increment the posiion
-            cloud.position += speed*sim.delta_time
+            sim.cloud.position += speed*sim.delta_time
             
             # Acceleration
             speed += sim.delta_time*(0, 0, -9.81)
@@ -559,14 +623,15 @@ def demo():
             
             # Next iteration
             speed.out("Speed")
+
+        # Getting the simulation result
+        cloud = sim.cloud
+
+        with Layout("Instantiate the balls"):
+            mesh = Mesh.Grid(20, 20)
+            mesh += cloud.instance_on(instance=Mesh.UVSphere(radius=radius))
             
-            # Within for loop, out to Zone Output Node
-            cloud.out()
-            
-        mesh = Mesh.Grid(20, 20)
-        mesh += cloud.instance_on(instance=Mesh.UVSphere(radius=radius))
-            
-        # Outside de the loop, out yo Group Output Node
+        # Outside de the loop, out to Group Output Node
         mesh.out()
 
     # ====================================================================================================
@@ -589,7 +654,7 @@ def demo():
             floor = Mesh.Cube(size=(sz, sz, 1))
             floor.transform(translation=(0, 0, rep.iteration ))
             
-            rep.mesh += floor
+            cube += floor
             
         cube.out()
 

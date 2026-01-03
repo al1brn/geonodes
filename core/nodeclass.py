@@ -419,7 +419,10 @@ class Node:
 
         else:
             for name, value in {**named_sockets, **sockets}.items():
-                self.set_input_socket(name, value)
+                # In specific case the socket must be ignired
+                # example : Alpha socket for Shader Combine Colore
+                if utils.snake_case(name) not in constants.IGNORED_SOCKETS.get(self._bnode.bl_idname, ()):
+                    self.set_input_socket(name, value)
 
                 # Ignore in further link_inputs method
                 if value is not None:
@@ -2999,7 +3002,7 @@ class NodeCurves(Node):
         -------
         - list of lists of triplets
         """
-        return utils.curves_to_list(self.node._bnode.mapping.curves)
+        return utils.curves_to_list(self._bnode.mapping.curves)
 
     def set_curves(self, curves):
         """ Set the curves points position
@@ -3016,7 +3019,7 @@ class NodeCurves(Node):
         - self
         """
         if curves is not None:
-            utils.list_to_curves(curves, self.node._bnode.mapping.curves)
+            utils.list_to_curves(curves, self._bnode.mapping.curves)
         return self
     
 

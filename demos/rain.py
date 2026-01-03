@@ -173,8 +173,8 @@ def demo():
                 dip_position = puddles.points.sample_index(puddles.position, puddles_index)
                 z = dip_position.z
 
-                new_dips = new_dips.points[z.less_equal(z_water)].separate()
-                start_projs = Cloud(new_dips.inverted_)
+                new_dips = Cloud(new_dips.points[z.less_equal(z_water)].separate().selection)
+                start_projs = Cloud(new_dips.inverted)
 
                 new_dips.points.store("Age", 0)
                 all_dips = Cloud(new_dips + sim.cloud)

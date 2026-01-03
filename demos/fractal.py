@@ -112,7 +112,6 @@ def demo(clear=False):
     sierpinski()
     multires_surface()
     romanesco()
-    growing()
 
 
 # =============================================================================================================================
@@ -423,10 +422,7 @@ def camera_culling():
 
         # ===== Projection into the camera space
 
-        if True:
-            node = camera_.projection(radius=nd.radius).node.link_from(exclude=['Position', 'Normal'])
-        else:
-            node = camera_.projection(position=nd.position, radius=nd.radius, link_from={'exclude': 'Normal'}).node
+        node = camera_.projection(radius=nd.radius).node.link_inputs(exclude=['Position', 'Normal'])
 
         cloud.points[node.behind | node.outside].delete()
 
@@ -441,11 +437,7 @@ def camera_culling():
 
         # ===== Projection
 
-        if True:
-            node = camera_.projection().node.link_from(exclude=['Normal', 'Normal'])
-        else:
-            node = camera_.projection(position=nd.position, link_from={'exclude': 'Normal'}).node
-
+        node = camera_.projection().node.link_inputs(exclude=['Position', 'Normal'])
 
         # Get the created input sockets
         radius = Float.Input("Radius")
@@ -454,7 +446,7 @@ def camera_culling():
         # ===== Both indices are behind
 
         with Layout("Sensor halt sizes and diagonal"):
-            half_width = (aspect_ratio/2)._lc("Width/2")
+            #half_width = (aspect_ratio/2)._lc("Width/2")
             half_height = Float(.5)._lc("Height/2")
             diag = (half_height*gnmath.sqrt(1 + aspect_ratio**2))._lc("Diagonal/2")
 
@@ -463,12 +455,12 @@ def camera_culling():
             i2 = nd.edge_vertices().vertex_index_2
 
         with Layout("A, B: Edge's vertex projected positions"):
-            A  = mesh.points(node.projection, i1)._lc("A")
-            rA = mesh.points(node.radius,     i1)._lc("A Radius")
-            B  = mesh.points(node.projection, i2)._lc("B")
-            rB = mesh.points(node.radius,     i2)._lc("B Radius")
+            A  = mesh.points.sample_index(node.projection, i1)._lc("A")
+            rA = mesh.points.sample_index(node.radius,     i1)._lc("A Radius")
+            B  = mesh.points.sample_index(node.projection, i2)._lc("B")
+            rB = mesh.points.sample_index(node.radius,     i2)._lc("B Radius")
 
-        with Layout("Projection the origin on the edge line"):
+        with Layout("Projection of the origin on the edge line"):
             # Line equation is: OM = OA + tAB
             # Projection H is such as: OH.AB = 0 ==> (A + tAB).AB = 0 <=> t = -A.AB/AB**2
             AB = B - A
@@ -491,13 +483,13 @@ def camera_culling():
             return
 
         with Layout("Both vertices are behind"):
-            ignore = mesh.points(node.behind, i1) & mesh.points(node.behind, i2)
+            ignore = mesh.points.sample_index(node.behind, i1) & mesh.points.sample_index(node.behind, i2)
 
         with Layout("Both vertices are outside but on the same side"):
-            ignore |= mesh.points(node.outside_left,  i1) & mesh.points(node.outside_left,  i2)
-            ignore |= mesh.points(node.outside_right, i1) & mesh.points(node.outside_right, i2)
-            ignore |= mesh.points(node.outside_bot,   i1) & mesh.points(node.outside_bot,   i2)
-            ignore |= mesh.points(node.outside_top,   i1) & mesh.points(node.outside_top,   i2)
+            ignore |= mesh.points.sample_index(node.outside_left,  i1) & mesh.points.sample_index(node.outside_left,  i2)
+            ignore |= mesh.points.sample_index(node.outside_right, i1) & mesh.points.sample_index(node.outside_right, i2)
+            ignore |= mesh.points.sample_index(node.outside_bot,   i1) & mesh.points.sample_index(node.outside_bot,   i2)
+            ignore |= mesh.points.sample_index(node.outside_top,   i1) & mesh.points.sample_index(node.outside_top,   i2)
 
         with Layout("Nearest point farer than diagonal"):
             ignore |= C.length() > diag + rC
@@ -526,10 +518,7 @@ def camera_culling():
         # ===== All the corners behind
 
         # Points projection
-        if True:
-            node = camera_.projection().node.link_from(include="Camera Culling")
-        else:
-            node = camera_.projection(position=nd.position, link_from={'exclude': ['Radius', 'Normal']}).node
+        node = camera_.projection().node.link_inputs(include="Camera Culling")
 
         with Layout("Faces with all vertices behind the sensor"):
             mesh.points.store("TEMP Vertex Behind", Float(node.behind))
@@ -547,9 +536,8 @@ def camera_culling():
         half_width  = Float(None, "Aspect Ratio")/2
         half_height = .5
 
-        inside = -Boolean.Named("TEMP Outside")
-
-        with projected.faces.for_each() as feel:
+        #with projected.faces.for_each() as feel:
+        for feel in projected.faces.for_each():
             bbox = feel.element.bounding_box()
 
             outside =  bbox.max_.x < -half_width
@@ -557,10 +545,12 @@ def camera_culling():
             outside |= bbox.max_.y < -half_height
             outside |= bbox.min_.y >  half_height
 
-            feel.generated.geometry = feel.element
-            feel.generated.outside = outside
+            #feel.generated.geometry = feel.element
+            #feel.generated.outside = outside
+            feel.element.out()
+            outside.out("Outside")
 
-        mesh.faces[Mesh(feel.generated.geometry).faces.sample_index(feel.generated.outside, nd.index)].delete()
+        mesh.faces[Mesh(feel.generated).faces.sample_index(feel.outside, nd.index)].delete()
 
         # ===== Done
 
@@ -572,7 +562,7 @@ def camera_culling():
 
     with ShaderNodes("DBG Face"):
 
-        col = snd.attribute(attribute_name="Color")
+        col = snd.attribute(attribute_name="Color").color
         ped = Shader.Principled(base_color=col)
         ped.out()
 
@@ -588,7 +578,7 @@ def camera_culling():
         # oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
 
         mesh.faces.material = "DBG Face"
-        node = camera_.projection(position=nd.position, radius=None, normal=None, link_from='TREE').node
+        node = camera_.projection(position=nd.position, radius=None, normal=None).node.link_inputs()
 
         # ===== Sensor
 
@@ -613,12 +603,16 @@ def camera_culling():
 
         with Layout("Points"):
 
-            hidden = Boolean.MenuSwitch({'Behind': node.behind, 'Outside': node.outside, 'All': (node.behind | node.outside)}, name='Hidden Points')
+            #hidden = Boolean.MenuSwitch({'Behind': node.behind, 'Outside': node.outside, 'All': (node.behind | node.outside)}, name='Hidden Points')
+            with Boolean.MenuSwitch(menu=Input("Hidden Points")) as hidden:
+                node.behind.out("Behind")
+                node.outside.out("Outside")
+                (node.behind | node.outside).out("All")
 
             mesh.points.store("Point Color", Color((0, 1, 0)).switch(hidden, (1, 0, 0)))
             pts = Mesh(mesh.points.instance_on(instance=Mesh.UVSphere(radius=.02)).realize())
             pts.faces.material = "DBG Face"
-            pts.faces.store("Color", Color("Point Color"))
+            pts.faces.store("Color", Color((0, 0, 1), "Point Color"))
 
             geo = sensor + proj
             cam_info = nd.active_camera.info()
@@ -638,7 +632,14 @@ def camera_culling():
             face_size = node.radius < prec
             face_all = face_behind | face_outside | face_size | face_back
 
-            hidden = Boolean.MenuSwitch({'All': face_all, 'Behind': face_behind, 'Outside': face_outside, 'Backwards': face_back, 'Radius': face_size}, name='Hidden Surfaces')
+            #hidden = Boolean.MenuSwitch({'All': face_all, 'Behind': face_behind, 'Outside': face_outside, 'Backwards': face_back, 'Radius': face_size}, name='Hidden Surfaces')
+            with Boolean.MenuSwitch(menu=Input("Hidden Surfaces")) as hidden:
+                face_all.out("All")
+                face_behind.out("Behind")
+                face_outside.out("Outside")
+                face_back.out("Backwards")
+                face_size.out("Radius")
+
             mesh.faces.store("Color", Color((0, 1, 0)).switch(hidden,  (1, 0, 0)))
 
             mesh.switch(-show_original).join(geo, pts).out()
@@ -673,30 +674,31 @@ def sierpinski():
             triangles.faces.store("Size", gnmath.sqrt(nd.face_area))
             triangles.faces.store("Iterate", True)
 
-        with Repeat(triangles=triangles, max_iteration=0, iterations=iterations) as rep:
+        for rep in repeat(iterations, triangles=triangles, max_iteration=0):
+
+            triangles = Mesh(rep.triangles)
 
             # ===== The coordinates of the triangle corners
 
             with Layout("The 3 triangle corners"):
-                pts = [rep.triangles.points.sample_index(nd.position, nd.vertex_of_corner(nd.offset_corner_in_face(nd.corners_of_face(), i))) for i in range(3)]
+                pts = [triangles.points.sample_index(nd.position, nd.vertex_of_corner(nd.offset_corner_in_face(nd.corners_of_face(), i))) for i in range(3)]
 
-            if True:
-                node = camera_.projection(radius=Float.Named("Size")).node.link_from(include='Camera Culling')
-            else:
-                node = camera_.projection(position=nd.position, radius=Float.Named("Size"), link_from={'exclude': 'Normal'}).node
+            node = camera_.projection(radius=Float.Named("Size")).node.link_inputs(include='Camera Culling')
 
-            rep.triangles.faces[Boolean("Iterate")].store("Iterate", -(node.behind | node.outside | (node.radius < prec)))
-            rep.triangles.faces.store("Size", Float.Named("Size")/2)
+            triangles.faces[Boolean("Iterate")].store("Iterate", -(node.behind | node.outside | (node.radius < prec)))
+            triangles.faces.store("Size", Float.Named("Size")/2)
 
-            with rep.triangles.faces.for_each(iterate=Boolean.Named("Iterate"), p0=pts[0], p1=pts[1], p2=pts[2]) as feel:
+            #with rep.triangles.faces.for_each(iterate=Boolean.Named("Iterate"), p0=pts[0], p1=pts[1], p2=pts[2]) as feel:
+            for feel in triangles.faces.for_each(iterate=Boolean.Named("Iterate"), p0=pts[0], p1=pts[1], p2=pts[2]):
 
                 p0, p1, p2 = feel.p0, feel.p1, feel.p2
 
                 q0, q1, q2 = (p0 + p1).scale(.5), (p1 + p2).scale(.5), (p2 + p0).scale(.5)
 
-                feel.generated.geometry = feel.element.switch(feel.iterate, new_triangle(q0, p1, q1) + new_triangle(q1, p2, q2) + new_triangle(q2, p0, q0))
+                #feel.generated.geometry = feel.element.switch(feel.iterate, new_triangle(q0, p1, q1) + new_triangle(q1, p2, q2) + new_triangle(q2, p0, q0))
+                feel.element.switch(feel.iterate, new_triangle(q0, p1, q1) + new_triangle(q1, p2, q2) + new_triangle(q2, p0, q0)).out()
 
-            rep.triangles = feel.generated.geometry
+            rep.triangles = feel.generated
 
         triangles = Mesh(rep.triangles)
 
@@ -707,7 +709,7 @@ def sierpinski():
 
         ico = Mesh.IcoSphere(subdivisions=2, radius=10)
 
-        fractal = Mesh(fractal_.sierpinski_triangle(ico, link_from='TREE'))
+        fractal = Mesh(fractal_.sierpinski_triangle(ico).link_inputs())
 
         fractal.points.position = fractal.points.position.normalize().scale(10)
 
@@ -763,31 +765,29 @@ def multires_surface():
             uv.points.store("Normal", surface.faces.sample_index(nd.normal, nd.index))
 
         with Layout("Don't iterate faces pointing outwards"):
-            outwards = camera_.projection(position=position, normal=Vector.Named("Normal"), link_from={'exclude': 'Radius'}).outwards_
+            outwards = camera_.projection(position=position, normal=Vector.Named("Normal")).outwards.link_inputs(exclude=['Radius'])
             uv.points.store("Iterate", outwards < back_faces)
 
         # ===== Division loop
 
         max_points = 10000000 * Integer(10).switch(nd.is_viewport, 1)
 
-        with Repeat(uv=uv,iterations=iterations, iter_scale=.5/segments, max_iteration=0) as rep:
+        #with Repeat(uv=uv,iterations=iterations, iter_scale=.5/segments, max_iteration=0) as rep:
+        for rep in repeat(iterations, uv=uv, iter_scale=.5/segments, max_iteration=0):
 
             iterate = Boolean.Named("Iterate")
 
             # ===== Number max of points is reached
 
             with Layout("Max number of points is reached"):
-                count = rep.uv.points.count
+                count = Mesh(rep.uv).points.count
                 stop = count > max_points
                 iterate = iterate & (-stop)
                 rep.max_iteration = rep.iteration.switch(stop, rep.max_iteration)
 
             # ===== Camera projection
 
-            if True:
-                node = camera_.projection(position=position, radius=Float.Named("Size")).node.link_from(include="Camera Culling")
-            else:
-                node = camera_.projection(position=position, radius=Float.Named("Size"), link_from={'exclude':'Normal'}).node
+            node = camera_.projection(position=position, radius=Float.Named("Size")).node.link_inputs(include="Camera Culling")
 
             # ===== Stop iteration for hidden points or small apparent size
 
@@ -798,13 +798,13 @@ def multires_surface():
 
             with Layout("Divide remaining points"):
                 square = Mesh.Grid(size_x=1, size_y=1, vertices_x=2, vertices_y=2).points.to_points()
-                new_squares = Cloud(rep.uv.points[iterate].instance_on(instance=square, scale=rep.iter_scale).realize())
+                new_squares = Cloud(Mesh(rep.uv).points[iterate].instance_on(instance=square, scale=rep.iter_scale).realize())
                 new_squares.points.store("Size",  Float.Named("Size")/2)
                 new_squares.points.store("Scale", Float.Named("Scale")/2)
 
             with Layout("Replace iterated points"):
 
-                rep.uv.points[iterate].delete()
+                rep.uv = Mesh(rep.uv).points[iterate].delete()
                 rep.uv += new_squares
 
             rep.iter_scale /= 2
@@ -844,7 +844,8 @@ def multires_surface():
 
         # ===== Subdivision loop
 
-        with Repeat(mesh=mesh, iterations=iterations) as rep:
+        
+        for rep in repeat(iterations, mesh=mesh):
 
             iterate = Boolean.Named("Iterate")
 
@@ -858,7 +859,7 @@ def multires_surface():
             radius = 4*gnmath.sqrt(nd.face_area)
             #radius = nd.face_area
             if True:
-                node = camera_.projection(radius=radius, normal=nd.normal).node.link_from(include="Camera Culling")
+                node = camera_.projection(radius=radius, normal=nd.normal).node.link_inputs(include="Camera Culling")
             else:
                 node = camera_.projection(position=nd.position, radius=radius, normal=nd.normal).node
 
@@ -867,8 +868,8 @@ def multires_surface():
 
             rep.mesh.faces[Boolean.Named("Iterate")].store("Iterate", iterate)
 
-            subdiv = rep.mesh.faces[Boolean.Named("Iterate")].separate()
-            keep   = subdiv.inverted_
+            subdiv = Mesh(rep.mesh.faces[Boolean.Named("Iterate")].separate().selection)
+            keep   = subdiv.inverted
 
             subdiv.subdivide(1)
 
@@ -913,9 +914,9 @@ def multires_surface():
             sphere = v.scale(size + noise)
 
 
-        position = Vector.MenuSwitch({'Plane': plane, 'Sphere': sphere}, name="Surface")
+        position = Vector.MenuSwitch({'Plane': plane, 'Sphere': sphere}, menu=Input("Surface"))
 
-        surface = Mesh(multires_.surface(position=position, link_from='TREE'))
+        surface = Mesh(multires_.surface(position=position).link_inputs())
 
         with Layout("Finalize"):
             surface.faces.smooth = True
@@ -1073,9 +1074,10 @@ def romanesco():
 
         # ===== Iteration loop
 
-        with Repeat(cloud = cloud, iterations=iterations, thread_scale=thread_scale, iteration_max=0) as rep:
+        #with Repeat(cloud = cloud, iterations=iterations, thread_scale=thread_scale, iteration_max=0) as rep:
+        for rep in repeat(iterations, cloud = cloud, thread_scale=thread_scale, iteration_max=0):
 
-            cloud = rep.cloud
+            cloud = Cloud(rep.cloud)
 
             # ===== We continue only if the max number of points is not
 
@@ -1087,10 +1089,7 @@ def romanesco():
             # ===== Visible points to iterate
 
             with Layout("Projection"):
-                if True:
-                    node = camera_.projection(radius=Float("Scale")*size, normal=Vector("Normal")).node.link_from(include="Camera Culling")
-                else:
-                    node = camera_.projection(position=nd.position, radius=Float("Scale")*size, normal=Vector("Normal"), link_from='TREE').node
+                node = camera_.projection(radius=Float("Scale")*size, normal=Vector("Normal")).node.link_inputs(include="Camera Culling")
 
                 iterate = Boolean("Iterate") & still_ok
                 iterate &= -(node.behind | node.outside | (node.radius < prec) | (node.outwards > back_faces))
@@ -1221,7 +1220,7 @@ def romanesco():
 
         with Layout("Fractal"):
 
-            cloud = Cloud(fractal_.cloud_iterator(geometry=model, normal=Vector("Normal"), link_from='TREE'))
+            cloud = Cloud(fractal_.cloud_iterator(geometry=model, normal=Vector("Normal")).link_inputs())
 
         mesh = Mesh(cloud.points.instance_on(instance=mesh, scale=nd.radius, rotation=Rotation("Rotation")).realize())
 
@@ -1284,7 +1283,7 @@ def romanesco():
 
         # ===== Let's iterate
 
-        cloud = Cloud(fractal_.cloud_iterator(geometry=model, scale=nd.radius, normal=Vector("Normal"), link_from='TREE'))
+        cloud = Cloud(fractal_.cloud_iterator(geometry=model, scale=nd.radius, normal=Vector("Normal")).link_inputs())
 
         # ===== Finalize
 
@@ -1377,7 +1376,7 @@ def romanesco():
 
             height = radius*height_factor
 
-            spiral = Curve(G().logarithmic_spiral(count=500, radius=radius, height=height, link_from='TREE'))
+            spiral = Curve(G().logarithmic_spiral(count=500, radius=radius, height=height).link_inputs())
 
             # ::::: Extract points following a geometric series
 
@@ -1435,12 +1434,7 @@ def romanesco():
 
         cone = Mesh.Cone(radius_bottom=radius, vertices=cone_segms, depth=height)
 
-        cloud = fractal_.cloud_iterator(geometry=spirals, normal=Vector("Normal"), link_from='TREE')
-
-        if False:
-            cloud.out()
-            return
-
+        cloud = fractal_.cloud_iterator(geometry=spirals, normal=Vector("Normal")).link_inputs()
 
         cabbage = Mesh(Cloud(cloud).instance_on(instance=cone, scale=nd.radius, rotation=Rotation("Rotation")))
         geo = cloud.switch(show_cones, cabbage)
@@ -1956,143 +1950,3 @@ def romanesco2():
             cabbage.faces.smooth = True
 
         cabbage.out()
-
-
-
-
-
-def growing():
-
-    # ----- Growing Mesh
-
-    with GeoNodes("Branch"):
-
-        iterations = Integer(10, "Iterations", min=2, max=10)
-        extr_scale = Float.Factor(.3, "Extrude Scale", min=.1, max=2)
-        branches   = Integer(2, "Branches", min=2, max=6)
-
-        seed       = Integer(0, "Seed")
-
-        line = Mesh.LineEndPoints(end_location=(0, 0, 1), count=2)
-
-        with Repeat(tree=line, iterations=iterations) as rep:
-
-            rep_seed = rep.iteration.hash_value(seed)
-
-            with rep.tree.edges.for_each() as feel:
-
-                edge = Mesh(feel.element)
-
-                with Layout("Edge direction and length"):
-                    p0 = edge.points.sample_index(nd.position, index=0)._lc("P0")
-                    p1 = edge.points.sample_index(nd.position, index=1)._lc("P1")
-                    direction = (p1 - p0)._lc("Direction")
-                    length = direction.length()._lc("Length")
-                    direction = direction.normalize()
-
-                with Repeat(edge=edge, iterations=branches) as br_rep:
-
-                    br_seed = rep_seed.hash_value(br_rep.iteration)
-
-                    br_length = length*extr_scale*Float.Random(.8, 1.2, id=feel.index, seed=br_seed)
-                    br_dir = direction + Vector.Random(-.4, .4, id=feel.index, seed=br_seed + 1)
-
-                    #br_rep.edge.points[1].extrude(br_dir*br_length)
-                    br_rep.edge[1].extrude_vertices(br_dir*br_length)
-
-                feel.generated.geometry = br_rep.edge
-
-            rep.tree = feel.generated.geometry
-
-        rep.tree.out()
-
-    # ----- Mesh 1
-
-    with GeoNodes("Branch 1"):
-
-        iterations = Integer(10, "Iterations")
-        trunk_fac  = Float.Factor(.3, "Trunk Factor", min=0, max=1)
-        seed       = Integer(0, "Seed")
-
-        line = Mesh.LineEndPoints(end_location=(0, 0, 1), count=2)
-        line.edges.store_named_attribute("Split", True)
-
-        with Repeat(tree=line, iterations=iterations) as rep:
-
-            rep_seed = rep.iteration.hash_value(seed)
-
-            with rep.tree.edges.for_each() as feel:
-
-                edge = Mesh(feel.element)
-
-                with Layout("Edge direction and length"):
-                    p0 = edge.points.sample_index(nd.position, index=0)._lc("P0")
-                    p1 = edge.points.sample_index(nd.position, index=1)._lc("P1")
-                    direction = (p1 - p0)._lc("Direction")
-                    length = direction.length()._lc("Length")
-
-                with Layout("First edge: from start to point located around trunk factor"):
-                    c  = (p0 + p1)*trunk_fac
-                    c += Vector.Random(-.1*length, .1*length, id=feel.index, seed=rep_seed)._lc("Center")
-
-                    new_edges = Mesh.LineEndPoints(start_location=p0, end_location=c, count=2)
-                    new_edges.edges.store_named_attribute("Split", False)
-
-                with Layout("Extrude till end point"):
-                    #new_edges.points[1].extrude(p1 - c)
-                    new_edges[1].extrude_vertices(p1 - c)
-                    new_edges.edges[1].store_named_attribute("Split", True)
-
-                with Layout("Extrude in another direction"):
-                    direction += Vector.Random(-.4*length, .4*length, id=feel.index, seed=rep_seed + 1)
-                    length *= (1 - trunk_fac)*Float.Random(.8, 1.2, id=feel.index, seed=rep_seed + 2)
-
-                    #new_edges.points[1].extrude(direction.normalize()*length)
-                    new_edges[1].extrude_vertices(direction.normalize()*length)
-                    new_edges.edges[2].store_named_attribute("Split", True)
-
-                with Layout("Keep element if not split"):
-                    feel.generated.geometry = edge.switch(edge.edges.sample_index(Boolean.Named("Split"), 0), new_edges)
-
-            rep.tree = feel.generated.geometry
-
-        rep.tree.out()
-
-
-    # ----- Curve
-
-    with GeoNodes("Branch Curve"):
-
-        iterations = Integer(10, "Iterations")
-        seed       = Integer(0, "Seed")
-
-        fr = Curve.Line(end=(0, 0, 1))
-
-        with Repeat(curve=fr, iterations=iterations) as rep:
-
-            rep_seed = rep.iteration.hash_value(seed)
-
-            with rep.curve.splines.for_each() as feel:
-
-                segment = Curve(feel.element)
-                p0 = segment.points.sample_index(nd.position, index=0)
-                p1 = segment.points.sample_index(nd.position, index=1)
-
-                segment.resample(count=3)
-
-                segment.points[1].offset = Vector.Random(-.1, .1, id=feel.index, seed=rep_seed)
-
-                direction = p1 - p0
-                length = direction.length()
-
-                direction += Vector.Random(-.3, .3, id=feel.index, seed=rep_seed + 1)
-                length *= Float.Random(.8, 1.2, id=feel.index, seed=rep_seed + 2)
-
-                new_segment = Curve.LineDirection(start=segment.points.sample_index(nd.position, index=1), direction=direction.normalize(), length=length)
-
-                feel.generated.geometry = segment + new_segment
-
-
-            rep.curve = feel.generated.geometry
-
-        rep.curve.out()

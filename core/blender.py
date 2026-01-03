@@ -174,7 +174,7 @@ def node_editor_context(tree=None):
 def get_geonodes_modifiers(tree):
 
     if tree.bl_idname != 'GeometryNodeTree':
-        return []
+        return {}
     
     modifiers = {}
     for obj in bpy.data.objects:

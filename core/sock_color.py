@@ -344,7 +344,7 @@ class Color(generated.Color):
         -------
         - Color
         """
-        node = NodeCurves('RGB Curves', sockets={'Color': self, 'Fac': fac})
+        node = NodeCurves('RGB Curves', named_sockets={'Color': self, 'Fac': fac})
         node.set_curves(curves)
         return node._out
     

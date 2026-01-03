@@ -523,10 +523,11 @@ class ZoneIterator:
                     sc_name = utils.snake_case(name)
                     if self.is_socket_name(sc_name):
                         self._locals[sc_name]._jump(self._socket)
-                    
-                    value = self._locals.get(sc_name, getattr(self._input_node, sc_name))
-                    setattr(self._output_node, name, value)
 
+                    # Link if not already linked
+                    if not self._output_node.get_socket('INPUT', sc_name, None).is_linked:
+                        value = self._locals.get(sc_name, getattr(self._input_node, sc_name))
+                        setattr(self._output_node, name, value)
         
         self._output_node._loop_end()
         if self._socket is not None:
