@@ -14,7 +14,6 @@ $ DOC toc_max_depth = 1
 - <!G> : a different way to create a <*Node Group> node
 - <!Layout> : to place nodes in a frame
 - <!Panel> : to place inputs into a panel
-- <!Repeat>, <!Simulation> and <!ForEachElement>: create a <!Zone>
 - Specific node : <!ColorRamp>
 
 ### Libraries
