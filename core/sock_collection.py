@@ -49,6 +49,31 @@ from . import blender
 from . import generated
 
 class Collection(generated.Collection):
+    """ Collection Socket.
+
+    The Collection can be read from bpy.data.collections or passed with its name.
+
+    ``` python
+    import bpy
+    from geonodes import GeoNodes, Collection, nd
+
+    for c in "ABC":
+        test_name = f"Test Coll {c}"
+        coll = bpy.data.collections.get(test_name)
+        if coll is None:
+            coll = bpy.data.collections.new(test_name)
+            bpy.context.collection.children.link(coll)
+
+    with GeoNodes("Collection Test"):
+
+        g = Collection("Test Coll A").info(transform_space='RELATIVE')
+        g += Collection(name="From Input'").info(separate_children=True, reset_children=True)
+        g += nd.collection_info("Test Coll B")
+        g += nd.collection_info(bpy.data.collections["Test Coll C"])
+
+        g.out()
+    ```
+    """
 
     SOCKET_TYPE = 'COLLECTION'
 
@@ -59,14 +84,23 @@ class Collection(generated.Collection):
     @classmethod
     def _class_test(cls):
 
+        import bpy
         from geonodes import GeoNodes, Collection, nd
+
+        for c in "ABC":
+            test_name = f"Test Coll {c}"
+            coll = bpy.data.collections.get(test_name)
+            if coll is None:
+                coll = bpy.data.collections.new(test_name)
+                bpy.context.collection.children.link(coll)
+
 
         with GeoNodes("Collection Test"):
 
-            g = Collection().info()
+            g = Collection("Test Coll A").info(transform_space='RELATIVE')
             g += Collection(name="From Input'").info(separate_children=True, reset_children=True)
-            g += Collection("Collection").info(transform_space='RELATIVE')
-            g += nd.collection_info("Collection")
+            g += nd.collection_info("Test Coll B")
+            g += nd.collection_info(bpy.data.collections["Test Coll C"])
 
             g.out()
 

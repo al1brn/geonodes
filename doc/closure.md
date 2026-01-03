@@ -4,39 +4,83 @@
 Closure(socket=None, name: str = None, tip: str = '', panel: str = '', **props)
 ```
 
-> The output socket of a [Node](node.md#node)
+Closure Socket.
 
-**Socket** is the base class for data classes such as [Float](float.md#float), [Image](image.md#image) or [Geometry](geometry.md#geometry).
-
-It refers to an **output** socket of a [Node](node.md#node). A socket can be set to the **input** socket
-of another [Node](node.md#node) to create a link between the two nodes:
+A Closure is defined as a Tree within a `with` context:
 
 ``` python
-# cube is the output socket 'Mesh' of the node 'Cube'
-cube = Node("Cube").mesh
+with Closure() as c:
+    # Create a closure input socket
+    pi = Float(3.14, "Pi")
+    # Create a closure output socket
+    pi.out("Pi")
+````
 
-# cube is set the to socket 'geometry' of node 'Set Position'
-node = Node("Set Position")
-node.geometry = cube
-```
+The Closure can be then evaluated using `evaluate` method. This method requires a Signature. The
+Signature can be read from an existing Closure or created manually as a couple of dicts.
 
-> [!IMPORTANT]
-> You can access to the other output sockets of the node in two different ways:
-> - using ['#node' not found]() attribute
-> - using ***peer socket** naming convention where the **snake_case** name of
->.  the other sockets is suffixed by '_'
-
-The example below shows how to access the to 'UV Map' socket of node [Cube](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/primitives/cube.html):
 
 ``` python
-# cube is the output socket 'Mesh' of the node 'Cube'
-cube = Mesh.Cube()
+with GeoNodes("Closure Test") as tree:
+    
+    Geometry().out()
+    
+    with Layout("First closure"):
+    
+        with Closure() as cl:
+            g = Mesh()
+            g.points.store(String("Pi Attr", name="Attr Name"), Float(3.14, "Float Attribute"))
+            
+            (Integer(2, "Two") + Integer(2, "Two")).out("Four")
+            
+            cloud = g.faces.distribute_points()
+            cloud.node.link_inputs(None, "Cloud")
+            cloud.node.link_outputs(None, "Cloud")
 
-# Getting 'UV Map' through the node
-uv_map = cube.node.uv_map
+            g.out()
+            cloud.out("Points")
+            
+    with Layout("Direct evaluation"):
+        cl.evaluate().out(panel="First closure")
+        
+    cl.out("First Closure")
+        
+    # Get the first signature
+    sig1 = cl.get_signature()
+        
+    with Layout("Second Closure"):
+        cl = Closure()
+        
+        with cl:
+            spiral = Curve.Spiral(resolution=Integer(name="Resolution"))
+            spiral.out("Spiral")
+            
+        with cl:
+            spiral.to_mesh(profile_curve=Curve(name="Profile")).out("Mesh")
+            
+    cl.out("Second Closure")
+    
+    # Get the second signature
+    sig2 = cl.get_signature()
+    
+    with Layout("Evaluate with signatures"):
+        
+        cl1 = Closure(name="Closure 1")
+        cl2 = Closure(name="Closure 2")
+        
+        # Using evaluate method
+        cl1.evaluate(signature=sig1).node.out(panel="Closure 1 out")
 
-# Or using the 'peer socket' naming convention
-uv_map = cuve.uv_map_
+        # Using calling methjod
+        cl2(signature=sig2).node.out(panel="Closure 2 out")
+
+    # Manual signature
+    with Closure() as cl3:
+        pi = Float(3.14, "Pi")
+        fac = Integer(2, "Multiplicator")
+        (fac*pi).out("Tau")
+
+    cl3.evaluate(signature=({'Pi': Float, 'Multiplicator': Integer}, {'Tau': Float})).out("Manual Signature")
 ```
 
 #### Arguments:

@@ -45,6 +45,10 @@ __blender_version__ = "4.3.0"
 from . import generated
 
 class Texture(generated.Texture):
+    """ Texture class
+
+    The Texture class only exposed texture creation class methods.
+    """
     pass
 
 

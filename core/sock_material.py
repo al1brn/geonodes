@@ -52,6 +52,64 @@ from . import blender
 
 
 class Material(generated.Material):
+    """ Material texture
+
+    You can refer to an existing material using its name in `bpy.data.materials`.
+
+    ``` python
+    from geonodes import GeoNodes, Material, nd, Mesh, ShaderNodes, Shader, Input, Menu
+    
+    # ---------------------------------------------------------------------------
+    # Building 3 materials
+    # ---------------------------------------------------------------------------
+    
+    with ShaderNodes("Red"):
+        ped = Shader.Principled(base_color='red')
+        ped.out()
+        
+    with ShaderNodes("Green"):
+        ped = Shader.Principled(base_color='#00FF00FF')
+        ped.out()
+
+    with ShaderNodes("Blue"):
+        ped = Shader.Principled(base_color=(0, 0, 1))
+        ped.out()
+        
+    # ---------------------------------------------------------------------------
+    # Playing with materials
+    # ---------------------------------------------------------------------------
+
+    with GeoNodes("Material Test"):
+        
+        gs = Node('Menu Switch', menu=Input("Pick Geometry"))
+        
+        with gs:            
+            g = Mesh.IcoSphere()
+            mat0 = Material("Red")
+            g.material = mat0
+            g.out("Full Red")
+            
+        with gs:                
+            mat1 = Material("Blue", name="Your Material")
+            g[3:10].material = mat1
+            g.out("Your material in 3:10")
+            
+        with gs:
+            g.replace_material(mat0, "Green")
+            g.out("Replace Red by Green")
+
+        with gs:
+            g.replace_material(mat0, "Green")
+            g.out("Replace Red by Green")
+            
+        with gs:
+            g[nd.material_index.equal(1)].material = "Red"
+            g.out("Replace mat index 1 by Red")
+            
+            
+        gs._out.out()
+    ```
+    """
 
     SOCKET_TYPE = 'MATERIAL'
 

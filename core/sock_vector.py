@@ -55,6 +55,51 @@ from . import generated
 
 
 class Vector(generated.Vector):
+    """ Vector Socket.
+
+    `x`, `y`, `z` components can be addressed individually using their properties.
+    The `xyz` property returns the triplet of the components.
+
+    A Vector can be created using a triplet or even a single float or Float.
+
+    Use methods Percentage, Factor, Translation, Direction, Velocity, Acceleration, Euler or Xyz
+    to create input sockets with a subtype.
+
+    ``` python
+    from geonodes import GeoNodes, Mesh, Layout, Rotation, Vector, G, Float, Input, pi
+
+    with GeoNodes("Vector Test") as tree:
+        
+        with Layout("Base"):
+            a = Vector()
+            a += Vector((1, 2, 3))
+            a *= Vector(7, name="Vector")
+            a = a.mix(Vector.Translation(1, name="Translate"), factor=Input("Factor", subtype="Percentage", default=.5, min=0, max=100))
+            
+        with Layout("Named Attribute"):
+            g = Mesh()
+            g.points.The_Vector = a
+            
+            a = Vector("The Vector")
+            a += G().combine_cylindrical(r=10, phi=Input("Phi", subtype="Angle"), z=3)
+            g.points.The_Vector = a
+
+        with Layout("Working with components"):
+            
+            # Getting one of the components
+            cx = a.x
+            
+            # Alternative to separate_xyz
+            x, y, z = a.xyz
+
+            # Building from tripler
+            a += (x**2, y + cx, z-1)
+
+        a.separate_xyz().out(panel="xyz")
+        
+        g.out()
+        ```    
+    """
 
     SOCKET_TYPE = 'VECTOR'
 
@@ -443,11 +488,10 @@ class Vector(generated.Vector):
 
         with GeoNodes("Vector Test") as tree:
             
-            
             with Layout("Base"):
                 a = Vector()
                 a += Vector((1, 2, 3))
-                a *= Vector((2, 3, 4), name="Vector")
+                a *= Vector(7, name="Vector")
                 a = a.mix(Vector.Translation(1, name="Translate"), factor=Input("Factor", subtype="Percentage", default=.5, min=0, max=100))
                 
             with Layout("Named Attribute"):
@@ -457,9 +501,19 @@ class Vector(generated.Vector):
                 a = Vector("The Vector")
                 a += G().combine_cylindrical(r=10, phi=Input("Phi", subtype="Angle"), z=3)
                 g.points.The_Vector = a
+
+            with Layout("Working with components"):
                 
+                # Getting one of the components
+                cx = a.x
+                
+                # Alternative to separate_xyz
+                x, y, z = a.xyz
+
+                # Building from tripler
+                a += (x**2, y + cx, z-1)
+
             a.separate_xyz().out(panel="xyz")
-            
             
             g.out()
                 

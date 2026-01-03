@@ -4,40 +4,50 @@
 Vector(socket=None, name: str = None, tip: str = '', panel: str = '', **props)
 ```
 
-> The output socket of a [Node](node.md#node)
+Vector Socket.
 
-**Socket** is the base class for data classes such as [Float](float.md#float), [Image](image.md#image) or [Geometry](geometry.md#geometry).
+`x`, `y`, `z` components can be addressed individually using their properties.
+The `xyz` property returns the triplet of the components.
 
-It refers to an **output** socket of a [Node](node.md#node). A socket can be set to the **input** socket
-of another [Node](node.md#node) to create a link between the two nodes:
+A Vector can be created using a triplet or even a single float or Float.
 
-``` python
-# cube is the output socket 'Mesh' of the node 'Cube'
-cube = Node("Cube").mesh
-
-# cube is set the to socket 'geometry' of node 'Set Position'
-node = Node("Set Position")
-node.geometry = cube
-```
-
-> [!IMPORTANT]
-> You can access to the other output sockets of the node in two different ways:
-> - using ['#node' not found]() attribute
-> - using ***peer socket** naming convention where the **snake_case** name of
->.  the other sockets is suffixed by '_'
-
-The example below shows how to access the to 'UV Map' socket of node [Cube](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/primitives/cube.html):
+Use methods Percentage, Factor, Translation, Direction, Velocity, Acceleration, Euler or Xyz
+to create input sockets with a subtype.
 
 ``` python
-# cube is the output socket 'Mesh' of the node 'Cube'
-cube = Mesh.Cube()
+from geonodes import GeoNodes, Mesh, Layout, Rotation, Vector, G, Float, Input, pi
 
-# Getting 'UV Map' through the node
-uv_map = cube.node.uv_map
+with GeoNodes("Vector Test") as tree:
+    
+    with Layout("Base"):
+        a = Vector()
+        a += Vector((1, 2, 3))
+        a *= Vector(7, name="Vector")
+        a = a.mix(Vector.Translation(1, name="Translate"), factor=Input("Factor", subtype="Percentage", default=.5, min=0, max=100))
+        
+    with Layout("Named Attribute"):
+        g = Mesh()
+        g.points.The_Vector = a
+        
+        a = Vector("The Vector")
+        a += G().combine_cylindrical(r=10, phi=Input("Phi", subtype="Angle"), z=3)
+        g.points.The_Vector = a
 
-# Or using the 'peer socket' naming convention
-uv_map = cuve.uv_map_
-```
+    with Layout("Working with components"):
+        
+        # Getting one of the components
+        cx = a.x
+        
+        # Alternative to separate_xyz
+        x, y, z = a.xyz
+
+        # Building from tripler
+        a += (x**2, y + cx, z-1)
+
+    a.separate_xyz().out(panel="xyz")
+    
+    g.out()
+    ```
 
 #### Arguments:
 - **socket** (_NodeSocket_ = None) : the output socket to wrap

@@ -1503,6 +1503,8 @@ class Node:
         - dict of created sockets
         """
 
+        signature = Signature(signature)
+
         sigs = {}
         if in_out == 'INPUT':
             sigs['INPUT'] = signature.sockets

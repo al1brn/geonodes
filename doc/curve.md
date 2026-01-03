@@ -620,14 +620,14 @@ handle_positions(relative: 'Boolean' = None)
 > classmethod
 
 ``` python
-handle_type_selection(handle_type: "Literal['FREE', 'AUTO', 'VECTOR', 'ALIGN']" = 'AUTO', mode={'LEFT', 'RIGHT'})
+handle_type_selection(handle_type: "Literal['FREE', 'AUTO', 'VECTOR', 'ALIGN']" = 'AUTO', mode={'RIGHT', 'LEFT'})
 ```
 
 > Node [Handle Type Selection](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/read/handle_type_selection.html)
 
 #### Arguments:
 - **handle_type** (_Literal['FREE', 'AUTO', 'VECTOR', 'ALIGN']_ = AUTO) : parameter 'handle_type' in ['FREE', 'AUTO', 'VECTOR', 'ALIGN']
-- **mode** (_set_ = {'LEFT', 'RIGHT'}) : parameter 'mode'
+- **mode** (_set_ = {'RIGHT', 'LEFT'}) : parameter 'mode'
 
 
 
@@ -1265,7 +1265,7 @@ set_handle_positions(position: 'Vector' = None, offset: 'Vector' = None, mode: "
 > method
 
 ``` python
-set_handle_type(handle_type: "Literal['FREE', 'AUTO', 'VECTOR', 'ALIGN']" = 'AUTO', mode={'LEFT', 'RIGHT'})
+set_handle_type(handle_type: "Literal['FREE', 'AUTO', 'VECTOR', 'ALIGN']" = 'AUTO', mode={'RIGHT', 'LEFT'})
 ```
 
 > Node [Set Handle Type](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/write/set_handle_type.html)
@@ -1280,7 +1280,7 @@ set_handle_type(handle_type: "Literal['FREE', 'AUTO', 'VECTOR', 'ALIGN']" = 'AUT
 
 #### Arguments:
 - **handle_type** (_Literal['FREE', 'AUTO', 'VECTOR', 'ALIGN']_ = AUTO) : parameter 'handle_type' in ['FREE', 'AUTO', 'VECTOR', 'ALIGN']
-- **mode** (_set_ = {'LEFT', 'RIGHT'}) : parameter 'mode'
+- **mode** (_set_ = {'RIGHT', 'LEFT'}) : parameter 'mode'
 
 
 

@@ -8,6 +8,9 @@ Float(value=None, name: str = None, min: float = -3.40282e+38, max: float = 3.40
 
 New [Float](float.md#float) input with subtype 'NONE'.
 
+Use methods Percentage, Factor, Angle, Time, TimeAbsolute, Distance, WaveLength, ColorTemperature or Frequency
+to create input sockets with a subtype.
+
 Aguments
 --------
 - value  (object = 0.0) : Default value
@@ -1647,6 +1650,9 @@ __init__(value=None, name: str = None, min: float = -3.40282e+38, max: float = 3
 > Float Input
 
 New [Float](float.md#float) input with subtype 'NONE'.
+
+Use methods Percentage, Factor, Angle, Time, TimeAbsolute, Distance, WaveLength, ColorTemperature or Frequency
+to create input sockets with a subtype.
 
 Aguments
 --------

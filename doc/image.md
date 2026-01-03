@@ -4,39 +4,25 @@
 Image(socket=None, name: str = None, tip: str = '', panel: str = '', **props)
 ```
 
-> The output socket of a [Node](node.md#node)
+Image Socket.
 
-**Socket** is the base class for data classes such as [Float](float.md#float), [Image](image.md#image) or [Geometry](geometry.md#geometry).
+You can create an image with its name in `bpy.data.images`.
 
-It refers to an **output** socket of a [Node](node.md#node). A socket can be set to the **input** socket
-of another [Node](node.md#node) to create a link between the two nodes:
-
-``` python
-# cube is the output socket 'Mesh' of the node 'Cube'
-cube = Node("Cube").mesh
-
-# cube is set the to socket 'geometry' of node 'Set Position'
-node = Node("Set Position")
-node.geometry = cube
-```
-
-> [!IMPORTANT]
-> You can access to the other output sockets of the node in two different ways:
-> - using ['#node' not found]() attribute
-> - using ***peer socket** naming convention where the **snake_case** name of
->.  the other sockets is suffixed by '_'
-
-The example below shows how to access the to 'UV Map' socket of node [Cube](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/primitives/cube.html):
+Use the class `Texture` to create an Image from a Texture.
 
 ``` python
-# cube is the output socket 'Mesh' of the node 'Cube'
-cube = Mesh.Cube()
+from geonodes import GeoNodes, Image, nd, Texture, Geometry
 
-# Getting 'UV Map' through the node
-uv_map = cube.node.uv_map
-
-# Or using the 'peer socket' naming convention
-uv_map = cuve.uv_map_
+with GeoNodes("Image Test"):
+    
+    Geometry().out()
+    
+    img = Image(name="Image")
+    img.info().out(panel="Image Info")
+    
+    Texture.Checker().out("Checker")
+    
+    img.image_texture().out("Image Texture")  
 ```
 
 #### Arguments:

@@ -59,6 +59,55 @@ from .  import generated
 # =============================================================================================================================
 
 class Color(generated.Color):
+    """ Color Socket.
+
+    A Color can be created in various ways:
+    - using a triplet : `col = Color((0.1, 0.2, 0.8))`
+    - using a Combine method : `col = Color.CombineHSV(hue=0.6, saturation=0.7, value=0.3)
+    - using a color name : `col = Color("red")`
+    - using an hexa value : `col = Color("#0F4C8E")`
+
+    Note that because a string is interpreted as a color name, you can use the syntax `Color(name)` to created
+    a named attribute. Use `Color.Named(name)` instead.
+
+    Note that Alpha chanel is ignored when you create a Color in a Shader.
+
+    ``` python
+    from geonodes import GeoNodes, Mesh, Layout, Color, Texture
+
+    with GeoNodes("Color Test"):
+        
+        with Layout("Base"):
+            a = Color()
+            a = a.mix_darken(Color((1, 1, 1)))
+            a = a.mix_multiply(Color(name="Defaut"))
+            a = a.mix_burn((1, 0, 0), Color(name="Red"))
+            a = a.mix(Color.CombineHSV(hue=.5, saturation=.5, value=.5))
+            
+        a.hue.out()
+            
+        with Layout("Named Attribute"):
+            g = Mesh()
+            g.points._Color = a
+            
+            g.points._Mixed = a.mix(Color.Named("Color"))
+
+        with Layout("Textures"):
+            c = Texture.Brick()
+            c = c.mix(Texture.Checker())
+            c = c.mix(Texture.Gabor())
+            c = c.mix(Texture.Gradient())
+            c = c.mix(Texture.Magic())
+            c = c.mix(Texture.Noise())
+            c = c.mix(Texture.Voronoi())
+            c = c.mix(Texture.Wave())
+            c = c.mix(Texture.WhiteNoise())
+            
+            g.edges._Textures = c
+            
+        g.out()
+    ```
+    """
 
     SOCKET_TYPE = 'RGBA'
 

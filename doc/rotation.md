@@ -4,39 +4,34 @@
 Rotation(socket=None, name: str = None, tip: str = '', panel: str = '', **props)
 ```
 
-> The output socket of a [Node](node.md#node)
+Rotation Socket.
 
-**Socket** is the base class for data classes such as [Float](float.md#float), [Image](image.md#image) or [Geometry](geometry.md#geometry).
-
-It refers to an **output** socket of a [Node](node.md#node). A socket can be set to the **input** socket
-of another [Node](node.md#node) to create a link between the two nodes:
+A Rotation can be created directly with a triplet of values. Operations between a Rotation
+and a triplet are also supported.
 
 ``` python
-# cube is the output socket 'Mesh' of the node 'Cube'
-cube = Node("Cube").mesh
+from geonodes import GeoNodes, Mesh, Layout, Rotation, G, Float, Input, pi
 
-# cube is set the to socket 'geometry' of node 'Set Position'
-node = Node("Set Position")
-node.geometry = cube
-```
-
-> [!IMPORTANT]
-> You can access to the other output sockets of the node in two different ways:
-> - using ['#node' not found]() attribute
-> - using ***peer socket** naming convention where the **snake_case** name of
->.  the other sockets is suffixed by '_'
-
-The example below shows how to access the to 'UV Map' socket of node [Cube](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/primitives/cube.html):
-
-``` python
-# cube is the output socket 'Mesh' of the node 'Cube'
-cube = Mesh.Cube()
-
-# Getting 'UV Map' through the node
-uv_map = cube.node.uv_map
-
-# Or using the 'peer socket' naming convention
-uv_map = cuve.uv_map_
+with GeoNodes("Rotation Test") as tree:
+    
+    
+    with Layout("Base"):
+        a = Rotation() @ Rotation((1, 2, 3))
+        a = a.mix(Rotation(1, name="Your entry"), Input("Factor", subtype="Factor", min=0, max=1))
+        b = G().random_rotation(max_zenith=pi/2).align_to_vector(Input("Vector"))
+        c = Rotation.FromAxisAngle(axis=Input("Axis"), angle=Float.Angle(name="Angle"))
+        b = b @ c
+        
+    with Layout("Named Attribute"):
+        g = Mesh()
+        g.points._A_Rotation = a
+        
+        c = a.rotate(Rotation("A Float"), rotation_space='LOCAL')
+        g.faces.store("Another rotation", c)
+        
+    b.to_quaternion().node.out(panel="Quaternion")
+        
+    g.out()
 ```
 
 #### Arguments:

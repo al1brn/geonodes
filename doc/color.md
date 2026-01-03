@@ -4,39 +4,53 @@
 Color(socket=None, name: str = None, tip: str = '', panel: str = '', **props)
 ```
 
-> The output socket of a [Node](node.md#node)
+Color Socket.
 
-**Socket** is the base class for data classes such as [Float](float.md#float), [Image](image.md#image) or [Geometry](geometry.md#geometry).
+A Color can be created in various ways:
+- using a triplet : `col = Color((0.1, 0.2, 0.8))`
+- using a Combine method : `col = Color.CombineHSV(hue=0.6, saturation=0.7, value=0.3)
+- using a color name : `col = Color("red")`
+- using an hexa value : `col = Color("#0F4C8E")`
 
-It refers to an **output** socket of a [Node](node.md#node). A socket can be set to the **input** socket
-of another [Node](node.md#node) to create a link between the two nodes:
+Note that because a string is interpreted as a color name, you can use the syntax `Color(name)` to created
+a named attribute. Use `Color.Named(name)` instead.
 
-``` python
-# cube is the output socket 'Mesh' of the node 'Cube'
-cube = Node("Cube").mesh
-
-# cube is set the to socket 'geometry' of node 'Set Position'
-node = Node("Set Position")
-node.geometry = cube
-```
-
-> [!IMPORTANT]
-> You can access to the other output sockets of the node in two different ways:
-> - using ['#node' not found]() attribute
-> - using ***peer socket** naming convention where the **snake_case** name of
->.  the other sockets is suffixed by '_'
-
-The example below shows how to access the to 'UV Map' socket of node [Cube](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/primitives/cube.html):
+Note that Alpha chanel is ignored when you create a Color in a Shader.
 
 ``` python
-# cube is the output socket 'Mesh' of the node 'Cube'
-cube = Mesh.Cube()
+from geonodes import GeoNodes, Mesh, Layout, Color, Texture
 
-# Getting 'UV Map' through the node
-uv_map = cube.node.uv_map
+with GeoNodes("Color Test"):
+    
+    with Layout("Base"):
+        a = Color()
+        a = a.mix_darken(Color((1, 1, 1)))
+        a = a.mix_multiply(Color(name="Defaut"))
+        a = a.mix_burn((1, 0, 0), Color(name="Red"))
+        a = a.mix(Color.CombineHSV(hue=.5, saturation=.5, value=.5))
+        
+    a.hue.out()
+        
+    with Layout("Named Attribute"):
+        g = Mesh()
+        g.points._Color = a
+        
+        g.points._Mixed = a.mix(Color.Named("Color"))
 
-# Or using the 'peer socket' naming convention
-uv_map = cuve.uv_map_
+    with Layout("Textures"):
+        c = Texture.Brick()
+        c = c.mix(Texture.Checker())
+        c = c.mix(Texture.Gabor())
+        c = c.mix(Texture.Gradient())
+        c = c.mix(Texture.Magic())
+        c = c.mix(Texture.Noise())
+        c = c.mix(Texture.Voronoi())
+        c = c.mix(Texture.Wave())
+        c = c.mix(Texture.WhiteNoise())
+        
+        g.edges._Textures = c
+        
+    g.out()
 ```
 
 #### Arguments:

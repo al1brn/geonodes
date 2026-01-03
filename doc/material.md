@@ -4,39 +4,62 @@
 Material(socket=None, name: str = None, tip: str = '', panel: str = '', **props)
 ```
 
-> The output socket of a [Node](node.md#node)
+Material texture
 
-**Socket** is the base class for data classes such as [Float](float.md#float), [Image](image.md#image) or [Geometry](geometry.md#geometry).
-
-It refers to an **output** socket of a [Node](node.md#node). A socket can be set to the **input** socket
-of another [Node](node.md#node) to create a link between the two nodes:
+You can refer to an existing material using its name in `bpy.data.materials`.
 
 ``` python
-# cube is the output socket 'Mesh' of the node 'Cube'
-cube = Node("Cube").mesh
+from geonodes import GeoNodes, Material, nd, Mesh, ShaderNodes, Shader, Input, Menu
 
-# cube is set the to socket 'geometry' of node 'Set Position'
-node = Node("Set Position")
-node.geometry = cube
-```
+# ---------------------------------------------------------------------------
+# Building 3 materials
+# ---------------------------------------------------------------------------
 
-> [!IMPORTANT]
-> You can access to the other output sockets of the node in two different ways:
-> - using ['#node' not found]() attribute
-> - using ***peer socket** naming convention where the **snake_case** name of
->.  the other sockets is suffixed by '_'
+with ShaderNodes("Red"):
+    ped = Shader.Principled(base_color='red')
+    ped.out()
+    
+with ShaderNodes("Green"):
+    ped = Shader.Principled(base_color='#00FF00FF')
+    ped.out()
 
-The example below shows how to access the to 'UV Map' socket of node [Cube](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/primitives/cube.html):
+with ShaderNodes("Blue"):
+    ped = Shader.Principled(base_color=(0, 0, 1))
+    ped.out()
+    
+# ---------------------------------------------------------------------------
+# Playing with materials
+# ---------------------------------------------------------------------------
 
-``` python
-# cube is the output socket 'Mesh' of the node 'Cube'
-cube = Mesh.Cube()
+with GeoNodes("Material Test"):
+    
+    gs = Node('Menu Switch', menu=Input("Pick Geometry"))
+    
+    with gs:            
+        g = Mesh.IcoSphere()
+        mat0 = Material("Red")
+        g.material = mat0
+        g.out("Full Red")
+        
+    with gs:                
+        mat1 = Material("Blue", name="Your Material")
+        g[3:10].material = mat1
+        g.out("Your material in 3:10")
+        
+    with gs:
+        g.replace_material(mat0, "Green")
+        g.out("Replace Red by Green")
 
-# Getting 'UV Map' through the node
-uv_map = cube.node.uv_map
-
-# Or using the 'peer socket' naming convention
-uv_map = cuve.uv_map_
+    with gs:
+        g.replace_material(mat0, "Green")
+        g.out("Replace Red by Green")
+        
+    with gs:
+        g[nd.material_index.equal(1)].material = "Red"
+        g.out("Replace mat index 1 by Red")
+        
+        
+    gs._out.out()
 ```
 
 #### Arguments:

@@ -4,39 +4,48 @@
 Matrix(socket=None, name: str = None, tip: str = '', panel: str = '', **props)
 ```
 
-> The output socket of a [Node](node.md#node)
+Matrix Socket.
 
-**Socket** is the base class for data classes such as [Float](float.md#float), [Image](image.md#image) or [Geometry](geometry.md#geometry).
+You can easily pass from a python 16-items list of tuple to a Matrix.
 
-It refers to an **output** socket of a [Node](node.md#node). A socket can be set to the **input** socket
-of another [Node](node.md#node) to create a link between the two nodes:
+The Matrix default constructor accepts such as list as initialization argument:
 
 ``` python
-# cube is the output socket 'Mesh' of the node 'Cube'
-cube = Node("Cube").mesh
-
-# cube is set the to socket 'geometry' of node 'Set Position'
-node = Node("Set Position")
-node.geometry = cube
+M = Matrix([0]*16)
 ```
 
-> [!IMPORTANT]
-> You can access to the other output sockets of the node in two different ways:
-> - using ['#node' not found]() attribute
-> - using ***peer socket** naming convention where the **snake_case** name of
->.  the other sockets is suffixed by '_'
-
-The example below shows how to access the to 'UV Map' socket of node [Cube](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/primitives/cube.html):
+You can decompose a Matrix directly to a 16-tuple with the property `as_tuple`:
 
 ``` python
-# cube is the output socket 'Mesh' of the node 'Cube'
-cube = Mesh.Cube()
+m = Matrix().as_tuple
+```
 
-# Getting 'UV Map' through the node
-uv_map = cube.node.uv_map
+``` python
+from geonodes import GeoNodes, Mesh, Layout, Matrix
 
-# Or using the 'peer socket' naming convention
-uv_map = cuve.uv_map_
+with GeoNodes("Matrix Test"):
+    
+    with Layout("Base"):
+        M0 = Matrix()
+        M1 = Matrix(name="Your Matrix")
+        M = M0 @ M1
+        M @= Matrix.CombineTransform((1, 2, 3), (4, 5, 6), (7, 8, 9))
+        
+    with Layout("Combine"):
+        M0 = Matrix([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15])
+        vals = M0.as_tuple
+        M1 = Matrix(vals)
+        
+        M @= M1
+
+    with Layout("Named Attribute"):
+        g = Mesh()
+        g.points.A_Matrix = M
+        
+        b = M1 @ Matrix("A Matrix")
+        g.faces.store("Another matrix", b)
+        
+    g.out()
 ```
 
 #### Arguments:

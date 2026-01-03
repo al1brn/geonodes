@@ -51,6 +51,27 @@ from . import blender
 
 
 class Image(generated.Image):
+    """ Image Socket.
+
+    You can create an image with its name in `bpy.data.images`.
+
+    Use the class `Texture` to create an Image from a Texture.
+
+    ``` python
+    from geonodes import GeoNodes, Image, nd, Texture, Geometry
+
+    with GeoNodes("Image Test"):
+        
+        Geometry().out()
+        
+        img = Image(name="Image")
+        img.info().out(panel="Image Info")
+        
+        Texture.Checker().out("Checker")
+        
+        img.image_texture().out("Image Texture")  
+    ```  
+    """
 
     SOCKET_TYPE = 'IMAGE'
 

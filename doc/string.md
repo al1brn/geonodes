@@ -4,40 +4,54 @@
 String(socket=None, name: str = None, tip: str = '', panel: str = '', **props)
 ```
 
-> The output socket of a [Node](node.md#node)
+String Socket.
 
-**Socket** is the base class for data classes such as [Float](float.md#float), [Image](image.md#image) or [Geometry](geometry.md#geometry).
+    A String socket easily operated with python str.
 
-It refers to an **output** socket of a [Node](node.md#node). A socket can be set to the **input** socket
-of another [Node](node.md#node) to create a link between the two nodes:
+    ``` python
+    from geonodes import GeoNodes, Mesh, Layout, String, Boolean, Integer, nd, Input
 
-``` python
-# cube is the output socket 'Mesh' of the node 'Cube'
-cube = Node("Cube").mesh
-
-# cube is set the to socket 'geometry' of node 'Set Position'
-node = Node("Set Position")
-node.geometry = cube
-```
-
-> [!IMPORTANT]
-> You can access to the other output sockets of the node in two different ways:
-> - using ['#node' not found]() attribute
-> - using ***peer socket** naming convention where the **snake_case** name of
->.  the other sockets is suffixed by '_'
-
-The example below shows how to access the to 'UV Map' socket of node [Cube](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/mesh/primitives/cube.html):
-
-``` python
-# cube is the output socket 'Mesh' of the node 'Cube'
-cube = Mesh.Cube()
-
-# Getting 'UV Map' through the node
-uv_map = cube.node.uv_map
-
-# Or using the 'peer socket' naming convention
-uv_map = cuve.uv_map_
-```
+    with GeoNodes("String Test") as tree:
+        
+        g = Mesh()
+        name = String("Attribute", name="Attr name")
+        g.points.store(name, 0.)
+        
+        a = String("String A ")
+        b = a + "String B "
+        c = a + (b, Integer(123).to_string())
+        d = c.replace("String", "TK")
+        s = String.Join(a, b, c, d, delimiter = "/")
+        Boolean(True).info(s)
+        
+        with Layout("Match String"):
+            ref_string = String("Matching test string")
+            search_string = String("test", name="Search String")
+            
+            ok = ref_string.match_string(Input("Match"), search_string)
+            ok.info(String("'{}' found in '{}'.").format(token=search_string, ref=ref_string))
+            ok.bnot().warning(String("'{}' not found in '{}'.").format(token=search_string, ref=ref_string))
+            
+        with Layout("Conversion"):
+            f = String("3.1415926").to_float()
+            i = String("123").to_integer()
+            
+            sf = f.to_string(decimals=4)
+            si = i.to_string()
+            
+            s = String("Float: {:.2f}, Int: {:05d} ({} and {})").format(float=f, integer=i, sfloat=sf, sint=si)
+            Boolean(True).info(s)
+            
+        with Layout("Special"):
+            _n = nd.special_characters().line_break
+            _t = nd.special_characters().tab
+            s = "Text with 	 and 
+"
+            s = String(s).replace(_t, "TAB").replace(_n, "LINE_BREAK")
+            Boolean(True).info(s)
+            
+        g.out()
+    ```
 
 #### Arguments:
 - **socket** (_NodeSocket_ = None) : the output socket to wrap

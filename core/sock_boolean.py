@@ -55,6 +55,42 @@ from . scripterror import NodeError
 # Boolean
 
 class Boolean(generated.Boolean):
+    """ Boolean socket
+
+    > [!CAUTION]
+    > Boolean operations can't use python operator `and`, `or`,... use `&` `|` instead.
+
+
+    ``` python
+    from geonodes import *
+
+    with GeoNodes("Boolean Test"):
+        
+        with Layout("Base"):
+            a = Boolean(False, "False Entry")
+            b = Boolean(True, "True Entry")
+            # Constant
+            c = Boolean(True)
+
+            d = (a | b) & c
+            d &= True
+            
+            d = d.bnot().warning("No output")
+            
+        with Layout("Named Attribute"):
+            g = Mesh()
+            g.points._Bool = a
+            
+            b = Boolean("Bool") | a
+            g.faces.store("Another bool", b)
+
+        with Layout("Grid Attribute"):
+            vol = g.to_volume()
+            vol.store_named_grid("Bool A", a)
+        
+        vol.enable_output(d).out()
+    ```
+    """
 
     SOCKET_TYPE = 'BOOLEAN'
 

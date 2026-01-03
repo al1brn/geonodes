@@ -79,6 +79,9 @@ class Float(generated.Float):
 
         New <#Float> input with subtype 'NONE'.
 
+        Use methods Percentage, Factor, Angle, Time, TimeAbsolute, Distance, WaveLength, ColorTemperature or Frequency
+        to create input sockets with a subtype.
+
         Aguments
         --------
         - value  (object = 0.0) : Default value

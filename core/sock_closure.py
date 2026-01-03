@@ -52,6 +52,85 @@ from . import generated
 # ====================================================================================================
 
 class Closure(generated.Closure):
+    """ Closure Socket.
+
+    A Closure is defined as a Tree within a `with` context:
+
+    ``` python
+    with Closure() as c:
+        # Create a closure input socket
+        pi = Float(3.14, "Pi")
+        # Create a closure output socket
+        pi.out("Pi")
+    ````
+
+    The Closure can be then evaluated using `evaluate` method. This method requires a Signature. The
+    Signature can be read from an existing Closure or created manually as a couple of dicts.
+
+
+    ``` python
+    with GeoNodes("Closure Test") as tree:
+        
+        Geometry().out()
+        
+        with Layout("First closure"):
+        
+            with Closure() as cl:
+                g = Mesh()
+                g.points.store(String("Pi Attr", name="Attr Name"), Float(3.14, "Float Attribute"))
+                
+                (Integer(2, "Two") + Integer(2, "Two")).out("Four")
+                
+                cloud = g.faces.distribute_points()
+                cloud.node.link_inputs(None, "Cloud")
+                cloud.node.link_outputs(None, "Cloud")
+
+                g.out()
+                cloud.out("Points")
+                
+        with Layout("Direct evaluation"):
+            cl.evaluate().out(panel="First closure")
+            
+        cl.out("First Closure")
+            
+        # Get the first signature
+        sig1 = cl.get_signature()
+            
+        with Layout("Second Closure"):
+            cl = Closure()
+            
+            with cl:
+                spiral = Curve.Spiral(resolution=Integer(name="Resolution"))
+                spiral.out("Spiral")
+                
+            with cl:
+                spiral.to_mesh(profile_curve=Curve(name="Profile")).out("Mesh")
+                
+        cl.out("Second Closure")
+        
+        # Get the second signature
+        sig2 = cl.get_signature()
+        
+        with Layout("Evaluate with signatures"):
+            
+            cl1 = Closure(name="Closure 1")
+            cl2 = Closure(name="Closure 2")
+            
+            # Using evaluate method
+            cl1.evaluate(signature=sig1).node.out(panel="Closure 1 out")
+
+            # Using calling methjod
+            cl2(signature=sig2).node.out(panel="Closure 2 out")
+
+        # Manual signature
+        with Closure() as cl3:
+            pi = Float(3.14, "Pi")
+            fac = Integer(2, "Multiplicator")
+            (fac*pi).out("Tau")
+
+        cl3.evaluate(signature=({'Pi': Float, 'Multiplicator': Integer}, {'Tau': Float})).out("Manual Signature")
+    ```
+    """
 
     SOCKET_TYPE = 'CLOSURE'
 
@@ -292,6 +371,14 @@ class Closure(generated.Closure):
 
                 # Using calling methjod
                 cl2(signature=sig2).node.out(panel="Closure 2 out")
+
+            # Manual signature
+            with Closure() as cl3:
+                pi = Float(3.14, "Pi")
+                fac = Integer(2, "Multiplicator")
+                (fac*pi).out("Tau")
+
+            cl3.evaluate(signature=({'Pi': Float, 'Multiplicator': Integer}, {'Tau': Float})).out("Manual Signature")
                 
               
             

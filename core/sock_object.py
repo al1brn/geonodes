@@ -52,6 +52,41 @@ from . import blender
 
 
 class Object(generated.Object):
+    """ Object Socket.
+
+    An object can be refered to using its name in bpy.data.objects.
+
+    ``` python
+    from geonodes import GeoNodes, Image, nd, Bundle, Object, Mesh, Input, Geometry
+
+    with GeoNodes("Object Test"):
+        
+        # Default cube
+        with Bundle() as b0:
+            def_cube = Object("Cube")
+            def_cube.info().out()
+            
+        # User object
+        with Bundle() as b1:
+            Object("Cube", name="Object").info().out()
+            
+        # Selft object
+        with Bundle() as b2:
+            sobj = nd.self_object
+            nd.self_object.info().node.link_outputs(None, exclude=["Geometry"])
+            Geometry().out()
+            
+        sig = b0.get_signature()
+            
+        bundle = Bundle.MenuSwitch(
+            menu = Input("Object Selection", default_value="Self"),
+            Cube = b0,
+            Input = b1,
+            Self  = b2)
+            
+        bundle.separate(signature=sig).out()    
+    ```
+    """
 
     SOCKET_TYPE = 'OBJECT'
 

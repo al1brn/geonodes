@@ -45,6 +45,54 @@ from .nodeclass import Node
 from typing import Literal
 
 class String(generated.String):
+    """ String Socket.
+
+    A String socket easily operated with python str.
+
+    ``` python
+    from geonodes import GeoNodes, Mesh, Layout, String, Boolean, Integer, nd, Input
+
+    with GeoNodes("String Test") as tree:
+        
+        g = Mesh()
+        name = String("Attribute", name="Attr name")
+        g.points.store(name, 0.)
+        
+        a = String("String A ")
+        b = a + "String B "
+        c = a + (b, Integer(123).to_string())
+        d = c.replace("String", "TK")
+        s = String.Join(a, b, c, d, delimiter = "/")
+        Boolean(True).info(s)
+        
+        with Layout("Match String"):
+            ref_string = String("Matching test string")
+            search_string = String("test", name="Search String")
+            
+            ok = ref_string.match_string(Input("Match"), search_string)
+            ok.info(String("'{}' found in '{}'.").format(token=search_string, ref=ref_string))
+            ok.bnot().warning(String("'{}' not found in '{}'.").format(token=search_string, ref=ref_string))
+            
+        with Layout("Conversion"):
+            f = String("3.1415926").to_float()
+            i = String("123").to_integer()
+            
+            sf = f.to_string(decimals=4)
+            si = i.to_string()
+            
+            s = String("Float: {:.2f}, Int: {:05d} ({} and {})").format(float=f, integer=i, sfloat=sf, sint=si)
+            Boolean(True).info(s)
+            
+        with Layout("Special"):
+            _n = nd.special_characters().line_break
+            _t = nd.special_characters().tab
+            s = "Text with \t and \n"
+            s = String(s).replace(_t, "TAB").replace(_n, "LINE_BREAK")
+            Boolean(True).info(s)
+            
+        g.out()
+    ```
+    """
 
     SOCKET_TYPE = 'STRING'
 

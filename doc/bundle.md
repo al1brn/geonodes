@@ -4,7 +4,55 @@
 Bundle(socket=None, name: str = None, tip: str = '', panel: str = '', **props)
 ```
 
-Docstring pour Bundle
+Bundle Socket.
+
+To create a new Bundle, one can use the `Combine` method with `named_sockets` dict and `sockets` keyword
+arguments.
+
+New items can be added using `with` syntax.
+
+To get the content of a Bundle, use `separate` method. This method requires a `signature` argument giving
+the structure of the bundle. The signature can be read from Bundle or directly created from a dict.
+
+
+``` python
+with GeoNodes("Bundle Test") as tree:
+
+    # One way to combine a new bundle
+    
+    with Layout("Combining from dict"):
+        bundle1 = Bundle.Combine({"Float": 1., "Integer": Integer(2), "Name": "Bundle 1", "Geometry": Geometry()})
+    
+    # Adding entries
+        
+    with bundle1:
+        Mesh.Cube().out("Mesh 1")
+        Mesh.IcoSphere().out("Mesh 2")
+
+    # Get the signature
+
+    sig1 = bundle1.get_signature()
+
+    # Second bundle with its signature
+    
+    bundle2 = Bundle.Combine({"Geometry": Mesh.UVSphere()}, A=1, B=2)
+    sig2 = bundle2.get_signature()
+    
+    # Join the bundles
+    # Raises info on duplicate keys
+    
+    bundle = bundle1 + bundle2
+    
+    # Extract geometry from bundle
+    # Add the signatures to separate properly
+    node = bundle.separate(signature=sig1 + sig2)
+    node.out()
+
+    # Using a dict as signature
+    bundle = Bundle.Combine(pi=3.14, count=123)
+    node = bundle.separate(signature={'pi': Float, 'count': Integer})
+    node.out(panel="Manual Signature")
+```
 
 #### Arguments:
 - **socket** (_NodeSocket_ = None) : the output socket to wrap

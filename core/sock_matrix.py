@@ -55,6 +55,50 @@ from .socket_class import Socket
 from . import generated
 
 class Matrix(generated.Matrix):
+    """ Matrix Socket.
+
+    You can easily pass from a python 16-items list of tuple to a Matrix.
+
+    The Matrix default constructor accepts such as list as initialization argument:
+
+    ``` python
+    M = Matrix([0]*16)
+    ```
+
+    You can decompose a Matrix directly to a 16-tuple with the property `as_tuple`:
+
+    ``` python
+    m = Matrix().as_tuple
+    ```
+
+    ``` python
+    from geonodes import GeoNodes, Mesh, Layout, Matrix
+
+    with GeoNodes("Matrix Test"):
+        
+        with Layout("Base"):
+            M0 = Matrix()
+            M1 = Matrix(name="Your Matrix")
+            M = M0 @ M1
+            M @= Matrix.CombineTransform((1, 2, 3), (4, 5, 6), (7, 8, 9))
+            
+        with Layout("Combine"):
+            M0 = Matrix([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15])
+            vals = M0.as_tuple
+            M1 = Matrix(vals)
+            
+            M @= M1
+
+        with Layout("Named Attribute"):
+            g = Mesh()
+            g.points.A_Matrix = M
+            
+            b = M1 @ Matrix("A Matrix")
+            g.faces.store("Another matrix", b)
+            
+        g.out()
+    ```
+    """
 
     SOCKET_TYPE = 'MATRIX'
 
@@ -147,7 +191,7 @@ class Matrix(generated.Matrix):
                 M1 = Matrix(vals)
                 
                 M @= M1
-                
+
             with Layout("Named Attribute"):
                 g = Mesh()
                 g.points.A_Matrix = M

@@ -52,6 +52,36 @@ from . import generated
 
 
 class Rotation(generated.Rotation):
+    """ Rotation Socket.
+
+    A Rotation can be created directly with a triplet of values. Operations between a Rotation
+    and a triplet are also supported.
+
+    ``` python
+    from geonodes import GeoNodes, Mesh, Layout, Rotation, G, Float, Input, pi
+
+    with GeoNodes("Rotation Test") as tree:
+        
+        
+        with Layout("Base"):
+            a = Rotation() @ Rotation((1, 2, 3))
+            a = a.mix(Rotation(1, name="Your entry"), Input("Factor", subtype="Factor", min=0, max=1))
+            b = G().random_rotation(max_zenith=pi/2).align_to_vector(Input("Vector"))
+            c = Rotation.FromAxisAngle(axis=Input("Axis"), angle=Float.Angle(name="Angle"))
+            b = b @ c
+            
+        with Layout("Named Attribute"):
+            g = Mesh()
+            g.points._A_Rotation = a
+            
+            c = a.rotate(Rotation("A Float"), rotation_space='LOCAL')
+            g.faces.store("Another rotation", c)
+            
+        b.to_quaternion().node.out(panel="Quaternion")
+            
+        g.out()
+    ```
+    """
 
     SOCKET_TYPE = 'ROTATION'
 
