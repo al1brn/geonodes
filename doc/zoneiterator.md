@@ -62,7 +62,7 @@ geo.out()
 
 ### Inherited
 
-['_done' not found]() :black_small_square: ['_input_node' not found]() :black_small_square: ['_in_zone' not found]() :black_small_square: ['_name' not found]() :black_small_square: ['_output_node' not found]() :black_small_square: ['_socket' not found]() :black_small_square:
+['_done' not found]() :black_small_square: ['_input_node' not found]() :black_small_square: ['_in_zone' not found]() :black_small_square: [\_name](core-socket.md#_name) :black_small_square: ['_output_node' not found]() :black_small_square: ['_socket' not found]() :black_small_square:
 
 ## Content
 

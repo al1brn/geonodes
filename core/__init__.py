@@ -19,7 +19,7 @@ if PRODUCTION:
     from .generated import snd
     from .generated import gnmath
 
-    from .socket_class import Input
+    from .socket_class import Socket, Input
 
     from .sock_boolean import Boolean
     from .sock_float import Float

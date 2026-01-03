@@ -29,7 +29,7 @@ $ DOC toc_max_depth = 1
 
 ### Sockets
 
-Rather than using [Node](node.md#node) class, scripting nodes is done by using [Socket](socket.md#socket) classes:
+Rather than using [Node](node.md#node) class, scripting nodes is done by using [Socket](core-socket.md#socket) classes:
 
 - Data sockets:
   - [Attributes](color.md#attribute):
@@ -128,8 +128,9 @@ Geometries have specific [Domain](domain.md#domain):
   - [Rotation](rotation.md#rotation)
   - [Shader](shader.md#shader)
   - [ShaderNodes](shadernodes.md#shadernodes)
-  - [Socket](socket.md#socket)
-  - [Socket](socket.md#socket)
+  - [Socket](core-socket.md#socket)
+  - [Socket](core-socket.md#socket)
+  - [Socket](core-socket.md#socket)
   - [Spline](spline.md#spline)
   - [SplinePoint](splinepoint.md#splinepoint)
   - [String](string.md#string)
