@@ -1021,7 +1021,7 @@ class Matrix4(Matrix):
             with Layout("Projection Matrix"):
                 cloud = Object("4D Parameters").info().geometry.separate_components().point_cloud
                 
-                Proj = cloud.points(0, Matrix("Projection"))
+                Proj = cloud.points.sample_index(Matrix("Projection"), index=0)
                 Dir  = Vector4(Proj.get_row(3))
                 
                 Proj.out("Projection")

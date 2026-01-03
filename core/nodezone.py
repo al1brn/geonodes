@@ -675,7 +675,7 @@ class ZoneIterator:
 
     def _class_test():
 
-        from geonodes import GeoNodes, Cloud, Mesh, Curve
+        from geonodes import nd, GeoNodes, Cloud, Mesh, Curve, Geometry, Float
 
         with GeoNodes("ZoneIterator class test"):
 

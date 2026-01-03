@@ -1810,12 +1810,13 @@ class TreeInterface:
     # Class test
     # ====================================================================================================
 
+    @staticmethod
     def _class_test():
         
         tree_name = "Interface Test"
         tree = bpy.data.node_groups.get(tree_name)
         if tree is None:
-            tree = bpy.data.node_groups.new("GeometryNodeTree", tree_name)
+            tree = bpy.data.node_groups.new(tree_name, type="GeometryNodeTree")
         tree.nodes.clear()
         tree.interface.clear()
         intf = TreeInterface(tree)

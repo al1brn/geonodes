@@ -421,8 +421,9 @@ class Node:
             for name, value in {**named_sockets, **sockets}.items():
                 # In specific case the socket must be ignired
                 # example : Alpha socket for Shader Combine Colore
-                if utils.snake_case(name) not in constants.IGNORED_SOCKETS.get(self._bnode.bl_idname, ()):
-                    self.set_input_socket(name, value)
+                if isinstance(name, str) and utils.snake_case(name) in constants.IGNORED_SOCKETS.get(self._bnode.bl_idname, ()):
+                    continue
+                self.set_input_socket(name, value)
 
                 # Ignore in further link_inputs method
                 if value is not None:
@@ -1967,32 +1968,28 @@ class Node:
         # Advanced
         # ---------------------------------------------------------------------------
 
-        with GeoNodes("Advanced Translation"):
+        class Test(Mesh):
+            pass
+
+        with GeoNodes("Advanced Translation") as tree:
             mesh = Mesh()
             t = Vector(0, "Translation")
             s = Float(1., "Scale")
             mesh.offset = t*s
             mesh.out()
 
-        with GeoNodes("Advanced Set Smooth"):
-            mesh = Mesh()
-            smooth = Boolean(False, "Smooth")
-            mesh.faces.smooth = smooth
-            mesh.out()
+        tree.add_method(Test, self_attr="self", ret_class=Test)
 
-        class Test(Mesh):
-            pass
+        with GeoNodes("New Cube") as tree:
+            Mesh.Cube(size=Float(1., "Size")).out()
 
-        Group.group_as_method("Translation", Test, self_attr="self", ret_class=Test, prefix="Advanced", func_name="move_away", scale=2)
-        Group.group_as_method("Set Smooth", Test, self_attr=None, prefix="Advanced")
+        tree.add_method(Test, self_attr=None, ret_class=Test)
 
         with GeoNodes("Group Advanced Demo"):
 
-            test = Test(Mesh.Cube())
-            with Layout("Method call"):
-                test = test.move_away((1, 1, 1))
-            with Layout("Static call"):
-                test = test.set_smooth(mesh=test, smooth=True)
+            test = Test.new_cube(1.)
+            test = test.advanced_translation((1, 1, 1))
+
             test.out()
 
                     
@@ -2505,8 +2502,6 @@ class Group(Node):
 
         else:
             setattr(target_class, func_name, attr_method)
-
-        
 
 
 # ====================================================================================================

@@ -372,7 +372,7 @@ class Color(generated.Color):
                 g = Mesh()
                 g.points._Color = a
                 
-                g.points._Mixed = a.mix(Color("Color"))
+                g.points._Mixed = a.mix(Color.Named("Color"))
 
             with Layout("Textures"):
                 c = Texture.Brick()

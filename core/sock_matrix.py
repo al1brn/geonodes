@@ -143,7 +143,7 @@ class Matrix(generated.Matrix):
                 
             with Layout("Combine"):
                 M0 = Matrix([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15])
-                vals = M0.separate
+                vals = M0.as_tuple
                 M1 = Matrix(vals)
                 
                 M @= M1
