@@ -741,7 +741,6 @@ class Node:
                     isocks = self._interface.get_socket_by_python_name(
                         intf_in_out, name, None, parent=self._tree.get_panel(), return_all=True)
                     
-
                 #print("DEBUG NODE 1", name, '-->', isocks)
                 
                 # Look for the first one matching the conditions
@@ -1722,56 +1721,79 @@ class Node:
         n = len(args) + len(kwargs)
         if n > len(sockets):
             raise NodeError(
-                f"Error when calling the the Node {self}: to many arguments ({n}),"
-                f"only {len(sockets)} input sockets are available.{valids}")
+                f"Error when calling {self}: too many arguments.\n"
+                f"The node has only {len(sockets)} input sockets but {n} arguments are provided.\n"
+                f"Valid sockets are: {valids}\n")
         
         # ------------------------------------------------------------
         # Sockets set by arguments
         # ------------------------------------------------------------
 
+        n = len(args)        
+        arg_sockets = list(sockets[:n])
+        remain      = list(sockets[n:])
+
         dones = []
-        
-        for (name, socket), arg in zip(sockets, args):
+
+        for (name, socket), arg in zip(arg_sockets, args):
+
             dones.append(f"{socket.name} <- <{arg}> (arg)")
+            
             try:
                 self.set_input_socket_value(socket, arg)
+            
             except Exception as e:
-                print(f"Error when setting socket '{socket.name}' with value <{arg}>.")
-                print(f"Valid sockets are: {valids}")
+
                 sdones = "\n - " + "\n - ".join(dones)
-                print(f"Error on socket:{sdones}")
-                raise e
+
+                raise NodeError(
+                    f"Error when calling '{self}': impossible to set the socket '{socket.name}' with value <{arg}>.\n"
+                    f"Valid sockets are: {valids}\n"
+                    f"Sockets successfully set:{sdones}")
 
         # ------------------------------------------------------------
         # Sockets set by key word arguments
         # ------------------------------------------------------------
 
-        remain = list(sockets[len(args):])
-
         for name, value in kwargs.items():
-            socket = self.socket_by_name('INPUT', name, None, enabled_only=False)
-            key = None
-            for k in remain:
-                if k[1] == socket:
-                    key = k
-                    break
+            self.set_input_socket(name, value)
 
-            if key is None:
-                raise NodeError(
-                    f"Socket named '{name}' not found (or already set). "
-                    f"Valid sockets are {valids}\nRemaining sockets are {[utils.snake_case(k[0]) for k in remain]}.")
+        if False:
+            for name, value in kwargs.items():
+                socket = self.socket_by_name('INPUT', name, None, enabled_only=False)
+                print("DEBUG", name, socket)
+                print("DEBUG", "pi", self.socket_by_name('INPUT', "pi", None, enabled_only=False))
+                print("DEBUG", "pi_1", self.socket_by_name('INPUT', "pi_1", None, enabled_only=False))
+                ok = False
+                for _, s in remain:
+                    if s == socket:
+                        ok = True
+                        break
 
-            dones.append(f"{socket.name} <- {name} = <{value}>")
-            try:            
-                self.set_input_socket_value(key[1], value)
-            except Exception as e:
-                print(f"Error when setting socket '{socket.name}' with value <{value}>.")
-                print(f"Valid sockets are: {valids}")
-                sdones = "\n - " + "\n - ".join(dones)
-                print(f"Error on socket:{sdones}")
-                raise e
+                print("OK", ok)
 
-            remain.remove(key)
+                key = None
+                for k in remain:
+                    if k[1] == socket:
+                        key = k
+                        break
+
+                if key is None:
+                    raise NodeError(
+                        f"Socket named '{name}' not found (or already set). "
+                        f"Valid sockets are {valids}\nRemaining sockets are {[utils.snake_case(k[0]) for k in remain]}.")
+
+                dones.append(f"{socket.name} <- {name} = <{value}>")
+                try:            
+                    self.set_input_socket_value(key[1], value)
+                except Exception as e:
+                    print(f"Error when setting socket '{socket.name}' with value <{value}>.")
+                    print(f"Valid sockets are: {valids}")
+                    sdones = "\n - " + "\n - ".join(dones)
+                    print(f"Error on socket:{sdones}")
+                    raise e
+
+                remain.remove(key)
 
         # ------------------------------------------------------------
         # Done
@@ -2461,13 +2483,18 @@ class Group(Node):
         # Get the node tree
         # ---------------------------------------------------------------------------
 
-        pref = str(prefix)
-        if pref != "":
-            pref = pref + " "
-        full_name = pref + group_name
-        btree = bpy.data.node_groups.get(full_name)
-        if btree is None:
-            raise NodeError(f"Impossible to find the Group named '{full_name}'")
+        if isinstance(group_name, bpy.types.NodeTree):
+            btree = group_name
+            group_name = btree.name
+
+        else:
+            pref = str(prefix)
+            if pref != "":
+                pref = pref + " "
+            full_name = pref + group_name
+            btree = bpy.data.node_groups.get(full_name)
+            if btree is None:
+                raise NodeError(f"Impossible to find the Group named '{full_name}'")
 
         # ---------------------------------------------------------------------------
         # The 3 possible calls
@@ -2518,87 +2545,56 @@ class G:
         """ Group functional call
 
         This class is provided to expose ***Group*** nodes as functions with keyword arguments.
+        When a Group named "Do Something" is created, it can be called with two syntaxes:
+        - Using `Group` node: `node = Group("Do Something", ...)`
+        - Using `G` function with the snake case name : `node = G().do_someting(...)`
 
-        For instance, let's create a group with 3 input sockets named `Geometry`, `Position` and `Parameter` in
-        this order:
+        This facility can be particularilty usedful for projects with a lot of groups. The groups
+        can be grouped by prefixes. The prefixes are hidden in the code.
 
-
-        ``` python
-        with GeoNodes("Deform Function"):
-            geo = Geometry()
-            pos = Vector.Position()
-            param = Float(0, "Parameter")
-            # ...
-            geo.out()
-        ```
-
-        To use this group in another tree, you can write:
 
         ``` python
-        with GeoNodes("Modifier"):
 
-            node = Group("Deform Function", {'geometry': Mesh.Cube(), 'position': (1, 2, 3), 'parameter': 3.14})
+        from geonodes import GeoNodes, Geometry, Float, Mesh, G
 
-            # or
+        with GeoNodes("Do Something", is_group=True, prefix="Utils"):
+            
+            g = Geometry()
+            a = Float(3.14, "Pi")
+            b = Float(6.28, "Tau")
+            g += Mesh.Cube()
+            
+            g = Mesh(g)
+            g.points.Pi = a + b
+            
+            g.out()
 
-            node = Group("Deform Function", geometry=Mesh.Cube(), position = nd.position, parameter = 3.14)
-        ```
-
-        The class G provides a functional interface for the node. You simply use the snake case version
-        of the node name:
-
-        ``` python
-        my_geo = G().deform_function(Mesh.Cube(), position=nd.position, parameter=3.14)
-
-        # NOTE: the first output socket is returned
-        # If you need the node, simply use:
-
-        node = my_geo.node
-        ```
-
-        As for any function or method, you can omit the argument names if you are sure of the order of the
-        sockets. This is for instance the case for the `Geometry` socket which remains the first.
-
-        #### Prefixes
-
-        In big projects, you may want to prefix your groups and modifiers to structure them.
-        The ***G*** class accepts prefix and use it to build the full name of the tree you are looking for.
-
-        The code above could be replaced by:
-
-        ``` python
-        my_geo = G("Deform").function(Mesh.Cube(), position=nd.position, parameter=3.14)
-        ```
-
-        This allows to regroup modifiers of the same family in a kind of meta class:
-
-        ``` python
-        # Prefix for deform modifiers
-        deform = Group("Deform")
-
-        with Group("Function 1", prefix=deform):
-            pass
-
-        with Group("Function 2", prefix=deform):
-            pass
-
-        with Group("Function 3", prefix=deform):
-            pass
-
-        with Group("Main"):
-
-            geo = Geometry()
-            geo = deform.function_1(geo)
-            geo = deform.function_2(geo)
-            geo = deform.function_3(geo)
-
-            geo.out()
+            a.out("Pi")
+            
+        with GeoNodes("Do Something Else", is_group=True, prefix="Utils"):
+            
+            g = Geometry()
+            a = Float(3.14, "Pi")
+            b = Float(6.28, "Tau")
+            g += Mesh.Cube()
+            
+            g = Mesh(g)
+            g.points.Pi = a + b
+            
+            g.out()
+            
+        with GeoNodes("Calling Groups"):
+        
+            utils = G("Utils")
+            
+            g = utils.do_something(Geometry(), pi=6.28)
+            g = utils.do_something_else(g, g.pi, tau=7)
+            g.out()   
         ```
 
         Arguments
         ---------
         - prefix : prefix to use when searching a tree
-        - verbose : print the function header in the console
         """
         if prefix is None:
             self.prefix = ""
@@ -2606,7 +2602,6 @@ class G:
             self.prefix = str(prefix)
             if len(self.prefix):
                 self.prefix += " "
-        self.verbose = verbose
         self.functions = {}
 
     # ====================================================================================================
@@ -2620,6 +2615,7 @@ class G:
 
     # ====================================================================================================
     # Build a function from a node
+    # ====================================================================================================
 
     def build_function(self, btree):
         """ Dynamically create a function to call the tree as Group
@@ -2639,58 +2635,23 @@ class G:
         func_name = utils.snake_case(btree.name)
         if func_name in self.functions:
             return self.functions[func_name]['f']
-
+        
         # ---------------------------------------------------------------------------
-        # Arguments from signature
+        # Calling the node
         # ---------------------------------------------------------------------------
-
-        signature = TreeInterface(btree).get_signature()
-
-        sock_names = [utils.snake_case(s) for s in signature.input_names]
-        sock_names = utils.ensure_uniques(sock_names, single_digit=True)
-
-        # ----- Create the function
-
-        header = [f"{arg} = None"  for arg in sock_names]
-        call   = [f"{arg} = {arg}" for arg in sock_names]
-
-        s = f"def {func_name}(" + ", ".join(header) + "):\n"
-        s += f"\treturn Group('{btree.name}', " + ", ".join(call) + ")._out\n\n"
-        s += f"f = {func_name}\n"
-
-        # DEBUG
-        if False:
-            print('-'*100)
-            print("Build Function for group", btree.name)
-            print('-'*100)
-            print(s)
-            print()
-
-        d = {'f': None}
-        try:
-            exec(s, globals(), d)
-        except Exception as e:
-            print('='*100)
-            print("Error when building function for group", btree.name)
-            print('-'*100)
-            print(s)
-            print('='*100)
-            print()
-            raise e
-
-
-        f = d['f']
-
-        if G.VERBOSE or self.verbose:
-            print('-'*100)
-            print(f"Function created ({f}):\n    {func_name}(" + ", ".join([sname for sname in sock_names if sname != 'link_from']) + ")")
-            print()
-            print(s)
-            print()
-
-        self.functions[func_name] = {'f': f, 'source': f"def {func_name}(\n\t" + ",\n\t".join(header) + "):\n"}
+        
+        def f(*args, **kwargs):
+            node = Group(btree.name)
+            return node.method_call(*args, **kwargs)
+        
+        # ---------------------------------------------------------------------------
+        # Adding the function
+        # ---------------------------------------------------------------------------
+        
+        self.functions[func_name] = {'f': f, 'source': ""}
 
         return f
+
     
     # ====================================================================================================
     # Source code
@@ -2740,86 +2701,44 @@ class G:
         return self.build_function(group)
     
 
-# ====================================================================================================
-# GroupF
-# ====================================================================================================
-
-class GroupF:
-    """ Utility class exposing Groups as python functions.
-
-    This class provides an alternative to 'Group' to call groups. The snake case version of the group name is
-    used as method name of an instance of GroupF: ``` Group("Group Name") ``` is replaced by
-    ``` GroupF().group_name() ```.
-
-    If the group is uses a prefix, the prefix is passed as init argument in GroupF : ``` GroupF(prefix).group_name() ```.
-
-    The arguments can be passed either using the socket names in a dict or as kwargs arguments.
-
-    ``` python
-    # Prefix used to identifiy utility groups
-    UTIL = "UTIL"
-
-    # Create a group utility
-    with GeoNodes("Subtract two values", is_group=True):
-
-        a = Float(0, "a")
-        b = Float(0, "b")
-
-        (a + b).out("Diff")
-
-
-    # Create a prefixed group utility
-    with GeoNodes("Add two values", prefix=UTIL, is_group=True):
-
-        a = Float(0, "a")
-        b = Float(0, "b")
-
-        (a + b).out("Sum")
-
-    with GeoNodes("Gourp function call"):
-
-        Geometry().out()
-
-        a = Float(10, "a")
-        b = Float(20, "b")
-
-        # Call the the utility
-        c = GroupF().subtract_two_values({'a': a}, b=b)._out
-
-        # Call the the prefixed utility
-        d = GroupF(UTIL).add_two_values(a=a, b=b)._out
-
-        c.out("c")
-        d.out("d")
-    ```
-    """
-
-    def __init__(self, prefix=None):
-        if prefix is None:
-            self._prefix = ""
-        else:
-            self._prefix = prefix.lower() + '_'
-
-        print("GroupF is deprecated. Use G insted")
-
     @staticmethod
-    def call(group_name, sockets={}, link_from=None, **kwargs):
-        print("GroupF is deprecated. Use G insted")
-        return Group(group_name, sockets, link_from=link_from, **kwargs)
+    def _class_test():
 
-    def __getattr__(self, name):
-        name = self._prefix + name
+        from geonodes import GeoNodes, Geometry, Float, Mesh, G
 
-        for group_name in bpy.data.node_groups.keys():
+        with GeoNodes("Do Something", is_group=True, prefix="Utils"):
+            
+            g = Geometry()
+            a = Float(3.14, "Pi")
+            b = Float(6.28, "Tau")
+            g += Mesh.Cube()
+            
+            g = Mesh(g)
+            g.points.Pi = a + b
+            
+            g.out()
 
-            if utils.snake_case(group_name) == name:
-
-                def f(sockets={}, **kwargs):
-                    return Group(group_name, sockets, **kwargs)
-
-                return f
-
-        raise AttributeError(f"Impossible to find the group named '{name}'")
+            a.out("Pi")
+            
+        with GeoNodes("Do Something Else", is_group=True, prefix="Utils"):
+            
+            g = Geometry()
+            a = Float(3.14, "Pi")
+            b = Float(6.28, "Tau")
+            g += Mesh.Cube()
+            
+            g = Mesh(g)
+            g.points.Pi = a + b
+            
+            g.out()
+            
+        with GeoNodes("Calling Groups"):
+        
+            utils = G("Utils")
+            
+            g = utils.do_something(Geometry(), pi=6.28)
+            g = utils.do_something_else(g, g.pi, tau=7)
+            g.out()  
 
 
 # ====================================================================================================

@@ -109,7 +109,6 @@ Geometries have specific [Domain](domain.md#domain):
   - [GeoNodes](geonodes.md#geonodes)
   - [GreasePencil](greasepencil.md#greasepencil)
   - [Group](group.md#group)
-  - [GroupF](groupf.md#groupf)
   - [Image](image.md#image)
   - [Input](input.md#input)
   - [Instance](instance.md#instance)

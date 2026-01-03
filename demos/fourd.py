@@ -97,6 +97,8 @@ def build_shaders():
 
     with ShaderNodes("Grid", is_group=True):
 
+        USE_GRID = False
+
         uv = snd.texture_coordinate(from_instancer=False, object=None).uv
 
         x, y, _ = uv.xyz
@@ -104,10 +106,10 @@ def build_shaders():
         thick = .002
         count = 6
 
-        on_x = gnmath.mless_than((x + (thick/2)) % (1/(2*count)), thick)
-        on_y = gnmath.mless_than((y + (thick)) % (1/count), thick*2)
-
-        grid = gnmath.add(on_x, on_y, True)
+        if USE_GRID:
+            on_x = gnmath.mless_than((x + (thick/2)) % (1/(2*count)), thick)
+            on_y = gnmath.mless_than((y + (thick)) % (1/count), thick*2)
+            grid = gnmath.add(on_x, on_y, True)
 
         color = Color() # Black
 
@@ -116,16 +118,17 @@ def build_shaders():
         x_red   = gnmath.mless_than((x + .25 + (thick/2)) % .5, thick)
         y_blue  = gnmath.mless_than((y + .5 + (thick)) % .5, thick*2)
 
-        grid = gnmath.add(grid, x_green, True)
-        grid = gnmath.add(grid, x_red, True)
-        grid = gnmath.add(grid, y_blue, True)
+        if USE_GRID:
+            grid = gnmath.add(grid, x_green, True)
+            grid = gnmath.add(grid, x_red, True)
+            grid = gnmath.add(grid, y_blue, True)
 
         color = color.mix(Color((1, 0, 0)), x_red)
         color = color.mix(Color((0, 1, 0)), x_green)
         color = color.mix(Color((0, 0, 1)), y_blue)
 
         # No grid
-        if True:
+        if not USE_GRID:
             grid = Float(0)
 
         grid.out("Grid")
@@ -214,7 +217,7 @@ def build_shaders():
         transp = Shader.Transparent()
         shader = snd.mix_shader(ped, transp, factor=node.transparency)
 
-        ped.out()
+        shader.out()
 
     # ----------------------------------------------------------------------------------------------------
     # SHADER - Wire
@@ -2577,7 +2580,7 @@ def build_geometry_nodes():
 
         Temp = Vector4((10, 10, 10, 10))
         
-        count = mesh.points.count
+        #count = mesh.points.count
         mesh.points.Ref_v = Vector("P4 v")
         mesh.points.Ref_w = Float("P4 w")
         mesh.points.New = False

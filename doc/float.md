@@ -2580,18 +2580,26 @@ radians(use_clamp=False)
 > classmethod
 
 ``` python
-Random(min=None, max=None, id=None, seed=None)
+Random(min: 'Float' = None, max: 'Float' = None, id: 'Integer' = None, seed: 'Integer' = None)
 ```
-
-> Random float
 
 > Node [Random Value](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/random_value.html)
 
+#### Information:
+- **Parameter** : 'FLOAT'
+
+
+
 #### Arguments:
-- **min** ( = None)
-- **max** ( = None)
-- **id** ( = None)
-- **seed** ( = None)
+- **min** (_Float_ = None) : socket 'Min' (id: Min_001)
+- **max** (_Float_ = None) : socket 'Max' (id: Max_001)
+- **id** (_Integer_ = None) : socket 'ID' (id: ID)
+- **seed** (_Integer_ = None) : socket 'Seed' (id: Seed)
+
+
+
+#### Returns:
+- **Float** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Float](float.md#float) :black_small_square: [Content](float.md#content) :black_small_square: [Methods](float.md#methods)</sub>
 

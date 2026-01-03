@@ -434,54 +434,42 @@ class ZoneIterator:
     def __init__(self, socket: Socket, node: ZoneNode):
         """ Wrap the nodes creation within a zone.
 
-        The ZoneIterator wraps a pair of nodes forming a zone : Simulation, Repeat, For Each, Closure.
+        The ZoneIterator is used to expose the `for` syntax for ***Simulation***, ***Repeat*** and ***For Each Element*** zones.
 
-        The iteration contains exactly one iteration in order to generate the nodes only once.
-
-        The first call to __next__ method pushes the input and output nodes in order to capture inputs and outputs.
-        The second call pops the i/o capture and raises StopIteration.
-
-        The iterator returns itself as it exposes the nodes sockets:
-        - During the iteration, the input sockets are the ones of the output node and the output sockets are
-          the ones of the input node.
-        - Outside the iteration, the input sockets are the ones of the input node and the output sockets are
-          the ones of the output node.
+        Don't call this class directly but use `repeat` or `simulation` functions or the `for_each` method of a domain.
 
         ``` python
-        geo = Geometry()
-        for sim in geo.simulation(A=1.0):
+        from geonodes import nd, GeoNodes, Cloud, Mesh, Curve, Geometry, Float
+
+        with GeoNodes("ZoneIterator class test"):
+
+            for rep in repeat(10, Mesh=Geometry(), A=3.14):
+                b = Float(6.26, "B")
             
-            # Output sockets come from input node
-            a = sim.a
-
-            # Sockets creation is captured
-            # A new simulation socket named B is created
-            b = Float(2.0, name="B")
-
-            # Input sockets come from output node
-            sim.a = a + b
-
-            # Output is captured
-            sim.b = a - b
+            mesh = rep.mesh
             
-            # No socket C was created
-            try:
-                sim.c = 0
-            except AttributeError:
-                print("An error is raised when accessing a non existing socket")
-
-            # Within the loop, geo socket comes from input node
-            # 
-            geo.position += a
-
-            # Default output geometry is in output node
-            geo.out()
-
-        # Outside the loop, geometry is now the output node output geometry
-        # The zone output sockets can be accessed from simulation
-        geo.position += sim.a
-
-        geo.out()
+            for rep in mesh.repeat(10, A=3.14):
+                b = Float(6.26, "B")
+                rep.mesh = Mesh.Cube().join(rep.mesh)
+                rep.a = 1
+                rep.b += rep.a
+                
+            for sim in simulation(mesh=mesh, A=3.14):
+                b = Float(6.26, "B")
+            
+            mesh = sim.mesh
+            
+            for sim in mesh.simulation(A=3.14):
+                b = Float(6.26, "B")
+                sim.mesh = Mesh.Cube().join(sim.mesh)
+                sim.a = 1
+                sim.b += sim.a
+                
+            for feel in mesh.faces.for_each(pos=nd.position):
+                s = Mesh.UVSphere(radius=0.1)
+                (s + feel.element).out()
+                
+            mesh.out()
         ```
 
         Arguments
@@ -689,7 +677,6 @@ class ZoneIterator:
                 rep.mesh = Mesh.Cube().join(rep.mesh)
                 rep.a = 1
                 rep.b += rep.a
-                
                 
             for sim in simulation(mesh=mesh, A=3.14):
                 b = Float(6.26, "B")

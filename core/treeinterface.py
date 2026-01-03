@@ -1310,27 +1310,30 @@ class TreeInterface:
         sockets = []
         parent = self.get_panel(parent)
         parent_path = ItemPath(parent)
+
         for socket in self.iterate(in_out, socket_type=socket_type, panels=False, parent=parent):
-            if True:
-                names = (ItemPath(socket) - parent_path).get_names(False, True)
 
-                for rank, panel in self.get_item_ranks(socket):
-                    if rank == 0:
-                        names.append((ItemPath(panel) + socket.name).python_path)
-                    else:
-                        names.append((ItemPath(panel) + f"{socket.name}_{rank}").python_path)
+            names = (ItemPath(socket) - parent_path).get_names(False, True)
+            if sc_name in names:
+                sockets.append(socket)
+                continue
 
-                if sc_name in names:
-                    sockets.append(socket)
+            # Alternate names within parent
+            for rank, panel in self.get_item_ranks(socket):
+                if rank == 0:
+                    names.append((ItemPath(panel) + socket.name).python_path)
+                else:
+                    names.append((ItemPath(panel) + f"{socket.name}_{rank}").python_path)
 
-            else:
-                if sc_name in (ItemPath(socket) - parent_path).get_names(True, True):
-                    sockets.append(socket)
+            if sc_name in names:
+                sockets.append(socket)
 
         if return_all:
             return sockets
+        
         elif not len(sockets):
             return None
+        
         else:
             return sockets[0]
     

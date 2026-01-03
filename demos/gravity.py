@@ -100,6 +100,7 @@ def demo():
 
             position  = Vector.Random(-1, 1, seed=seed)*(space_size, space_size, space_size.switch(planar))
             speed     = Vector.Random(-1, 1, seed=seed+1).normalize()*(max_speed, max_speed, max_speed.switch(planar))
+
             mass      = Float.Random(1, max_mass, seed=seed+2)
             radius    = vis_radius * mass**(1/3)
             collision = coll_radius * mass**(1/3)

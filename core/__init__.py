@@ -49,7 +49,7 @@ if PRODUCTION:
     from .utils import Break
     from .signature import Signature
     from .treeclass import Layout, Panel, Tree
-    from .nodeclass import Node, Group, GroupF, ColorRamp, G
+    from .nodeclass import Node, Group, ColorRamp, G
     from .nodezone import simulation, repeat
     #from .zones import Zone, Repeat, Simulation, ForEachElement
 

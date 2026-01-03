@@ -119,10 +119,6 @@ class Integer(generated.Integer):
     # Constructors
 
     @classmethod
-    def Random(cls, min=None, max=None, id=None, seed=None):
-        return Node('Random Value', {'Min': min, 'Max': max, 'ID': id, 'Seed': seed}, data_type='INT')._out
-
-    @classmethod
     def FromFloat(cls, float=None, rounding_mode='ROUND'):
         return Float(float).to_integer(rounding_mode)
 

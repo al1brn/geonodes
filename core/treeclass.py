@@ -35,7 +35,6 @@ In addition, other classes are implemented:
 - Layout        : Creates a Frame where the new nodes are placed into
 - Panel         : Current panel into which placing the input and output nodes
 - Group         : Node Group creation
-- GroupF        : (deprecated) Utility class to call a group with python syntax
 - G             : An advanced feature to expose Groups as python methods
 
 updates
@@ -1024,6 +1023,9 @@ class Tree:
 
         for node in self._nodes:
 
+            if node._bnode.bl_idname in ['NodeGroupInput', 'GeometryNodeWarning']:
+                continue
+
             # ---------------------------------------------------------------------------
             # Dead ends
             # ---------------------------------------------------------------------------
@@ -1066,7 +1068,7 @@ class Tree:
             print(f"The following node{' is' if len(dead_ends) == 1 else 's are'} not connected")
 
         for i, node in enumerate(dead_ends):
-            node._bnode.label = f"DEAD END {i + 1}"
+            #node._bnode.label = f"DEAD END {i + 1}"
             utils.set_node_warning(node._bnode)
 
             print()
@@ -1087,6 +1089,7 @@ class Tree:
 
                 print()
                 print(node)
+                #node._bnode.label = f"DEAD END {i + 1}"
                 print("Unlinked sockets:", names)
                 if node._stack is not None:
                     print(tab + tab.join(node._stack[1:]))

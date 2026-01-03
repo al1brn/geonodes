@@ -98,18 +98,6 @@ class Float(generated.Float):
         """
         super().__init__(value, name, min=min, max=max, tip=tip, panel=panel, **props)
 
-
-     # ====================================================================================================
-     # Constructors
-
-    @classmethod
-    def Random(cls, min=None, max=None, id=None, seed=None):
-        """ > Random float
-
-        > Node <&Node Random Value>
-        """
-        return Node('Random Value', {'Min': min, 'Max': max, 'ID': id, 'Seed': seed}, data_type='FLOAT')._out
-
     # ====================================================================================================
     # Methods
 

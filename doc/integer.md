@@ -51,6 +51,7 @@ Aguments
 - **M** : [max](integer.md#max) :black_small_square: [min](integer.md#min) :black_small_square: [mix](integer.md#mix) :black_small_square: [modulo](integer.md#modulo) :black_small_square: [multiply](integer.md#multiply) :black_small_square: [multiply_add](integer.md#multiply_add)
 - **N** : [Named](integer.md#named) :black_small_square: [NamedAttribute](integer.md#namedattribute) :black_small_square: [negate](integer.md#negate) :black_small_square: [not_equal](integer.md#not_equal)
 - **P** : [Percentage](integer.md#percentage) :black_small_square: [power](integer.md#power) :black_small_square: [prune_grid](integer.md#prune_grid)
+- **R** : [Random](integer.md#random)
 - **S** : [sample_grid](integer.md#sample_grid) :black_small_square: [sample_grid_index](integer.md#sample_grid_index) :black_small_square: [set_grid_background](integer.md#set_grid_background) :black_small_square: [set_grid_transform](integer.md#set_grid_transform) :black_small_square: [sign](integer.md#sign) :black_small_square: [subtract](integer.md#subtract)
 - **T** : [to_string](integer.md#to_string)
 - **V** : [voxel_index](integer.md#voxel_index) :black_small_square: [voxelize_grid](integer.md#voxelize_grid)
@@ -1318,6 +1319,35 @@ prune_grid(mode: "Literal['Inactive', 'Threshold', 'SDF']" = None, threshold: 'I
 #### Arguments:
 - **mode** (_Literal['Inactive', 'Threshold', 'SDF']_ = None) : ('Inactive', 'Threshold', 'SDF')
 - **threshold** (_Integer_ = None) : socket 'Threshold' (id: Threshold)
+
+
+
+#### Returns:
+- **Integer** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Integer](integer.md#integer) :black_small_square: [Content](integer.md#content) :black_small_square: [Methods](integer.md#methods)</sub>
+
+----------
+### Random()
+
+> classmethod
+
+``` python
+Random(min: 'Integer' = None, max: 'Integer' = None, id: 'Integer' = None, seed: 'Integer' = None)
+```
+
+> Node [Random Value](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/random_value.html)
+
+#### Information:
+- **Parameter** : 'INT'
+
+
+
+#### Arguments:
+- **min** (_Integer_ = None) : socket 'Min' (id: Min_002)
+- **max** (_Integer_ = None) : socket 'Max' (id: Max_002)
+- **id** (_Integer_ = None) : socket 'ID' (id: ID)
+- **seed** (_Integer_ = None) : socket 'Seed' (id: Seed)
 
 
 

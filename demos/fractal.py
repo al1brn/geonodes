@@ -773,7 +773,7 @@ def multires_surface():
         max_points = 10000000 * Integer(10).switch(nd.is_viewport, 1)
 
         #with Repeat(uv=uv,iterations=iterations, iter_scale=.5/segments, max_iteration=0) as rep:
-        for rep in repeat(iterations, uv=uv, iter_scale=.5/segments, max_iteration=0):
+        for rep in repeat(iterations, uv=uv, iter_scale=0.5/segments, max_iteration=0):
 
             iterate = Boolean.Named("Iterate")
 
@@ -815,7 +815,7 @@ def multires_surface():
 
         with Layout("Build the final surface"):
             square  = Mesh.Grid(vertices_x=2, vertices_y=2)
-            surface  = Mesh(uv.points.instance_on(instance=square, scale=Float.Named("Scale")).realize()).merge_by_distance(rep.iter_scale)
+            surface  = Mesh(uv.points.instance_on(instance=square, scale=Float.Named("Scale")).realize()).merge_by_distance(distance=rep.iter_scale)
 
             surface.corners.store("UV Map", nd.position)
             surface.points.position = position
@@ -1334,7 +1334,7 @@ def romanesco():
         # ----- Normal to the cone
 
         with Layout("Normal"):
-            normal = curve.points.position*(1, 1, 0)
+            #normal = curve.points.position*(1, 1, 0)
             normal = Rotation((0, 0, theta)) @ Vector((height, 0, radius))
             curve.points._Normal = normal.normalize()
 
@@ -1347,7 +1347,7 @@ def romanesco():
 
         # oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
 
-        iterations, prec = iterations_panel(1, 10)
+        #iterations, prec = iterations_panel(1, 10)
 
         with Panel("Debug"):
             show_spiral  = Boolean(False, "Show Initial Spiral")
@@ -1395,7 +1395,7 @@ def romanesco():
                 curve.points._Radius = size_factor*q**nd.index
 
             # Orient progressively the normal to z
-            f = (nd.index/(npoints - 1))**upwards
+            #f = (nd.index/(npoints - 1))**upwards
 
             normal = spiral.sample_length(Vector("Normal"), length=l)
             #normal = normal.mix(f, (0, 0, 1))
@@ -1632,7 +1632,7 @@ def fern():
                 edge.edges[0].store("Use", False)
                 feel.generated.geometry  = feel.element.switch(extrude, edge)
 
-            leaf = feel.generated.geometry #.merge_by_distance()
+            leaf = feel.generated
             rep.leaf = leaf
 
         rep.leaf.out()

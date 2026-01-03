@@ -1153,6 +1153,7 @@ You will find here how nodes are implemented
 
 - [Boolean](boolean.md#boolean) :white_small_square: [Random](boolean.md#random)
 - [Float](float.md#float) :white_small_square: [Random](float.md#random)
+- [Integer](integer.md#integer) :white_small_square: [Random](integer.md#random)
 - [Vector](vector.md#vector) :white_small_square: [Random](vector.md#random)
 
 #### Raycast

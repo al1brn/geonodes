@@ -105,7 +105,6 @@ def demo():
 
     with GeoNodes("Abs"):
 
-        count = Integer(10, "Resolution")
         x_loc = 0
 
         with Layout("A"):
