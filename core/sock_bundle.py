@@ -52,6 +52,9 @@ from . import generated
 # ====================================================================================================
 
 class Bundle(generated.Bundle):
+    """
+    Docstring pour Bundle
+    """
 
     SOCKET_TYPE = 'BUNDLE'
 
