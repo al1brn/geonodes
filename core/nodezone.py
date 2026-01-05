@@ -613,6 +613,7 @@ class ZoneIterator:
         return self._locals[name]
     
     def is_socket_name(self, name):
+        
         if self._socket is None:
             return False
         

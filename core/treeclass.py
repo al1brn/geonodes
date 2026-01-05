@@ -381,6 +381,7 @@ class Tree:
         self._is_group = is_group
 
         # Managed lists
+        self._kept_nodes = []
         self._nodes = []    # List of nodes
         self._mod_vals = {} # To restore modifiers values when necessary (menus)
 
@@ -405,8 +406,8 @@ class Tree:
 
                     break
 
-            # Clear
-            self.clear()
+            # Clear tree
+            self.clear(keep_nodes=True)
 
         # ---------------------------------------------------------------------------
         # Interface
@@ -479,6 +480,10 @@ class Tree:
             pass
         ```
         """
+
+        # Remove kept nodes
+        for bnode in self._kept_nodes:
+            self._btree.nodes.remove(bnode)
 
         # Adjust menu inputs
         if self._has_tree and not error:
@@ -739,15 +744,31 @@ class Tree:
     # Nodes
     # ====================================================================================================
 
-    def clear(self):
+    def clear(self, keep_nodes: bool = True):
         """ Clear the content of the Tree.
 
         Remove all the nodes in the Tree.
         """
-        to_clear = []
         self._nodes.clear()
-        self._btree.links.clear()
-        self._btree.nodes.clear()
+
+        # Keep menu switch nodes to preserver input links
+        # They will be deleted at the end
+
+        if keep_nodes:
+            del_nodes = []
+            self._kept_nodes = []
+            for bnode in self._btree.nodes:
+                if bnode.bl_idname in ['GeometryNodeMenuSwitch', 'NodeGroupInput']:
+                    self._kept_nodes.append(bnode)
+                else:
+                    del_nodes.append(bnode)
+
+            for bnode in del_nodes:
+                self._btree.nodes.remove(bnode)
+
+        else:
+            self._btree.links.clear()
+            self._btree.nodes.clear()
 
     def register_node(self, node):
         self._nodes.append(node)

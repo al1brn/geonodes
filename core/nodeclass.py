@@ -366,7 +366,6 @@ class Node:
         # Read only interface
         # ----------------------------------------------------------------------------------------------------
 
-
         elif bl_idname in ['GeometryNodeGroup', 'ShaderNodeGroup']:
 
             self._use_interface = True
@@ -2016,8 +2015,6 @@ class Node:
 
             test.out()
 
-                    
-
 
 # ====================================================================================================
 # Menu node
@@ -2167,161 +2164,6 @@ class MenuNode(Node):
                 else:
                     mod[sock_id] = mod_value
 
-
-
-# ====================================================================================================
-# Zone Iterator
-# ====================================================================================================
-
-class ZoneIterator:
-
-    SIMULATION = "Simulation"
-    REPEAT     = "Repeat"
-    FOR_EACH   = "For Each Element"
-
-    __slots__ = ('_socket', '_input_node', '_output_node', '_name', '_done', '_in_zone')
-
-    def __init__(self, socket: Socket, node: Node):
-        """ Wrap the nodes creation within a zone.
-
-        The ZoneIterator wraps a pair of nodes forming a zone : Simulation, Repeat, For Each, Closure.
-
-        The iteration contains exactly one iteration in order to generate the nodes only once.
-
-        The first call to __next__ method pushes the input and output nodes in order to capture inputs and outputs.
-        The second call pops the i/o capture and raises StopIteration.
-
-        The iterator returns itself as it exposes the nodes sockets:
-        - During the iteration, the input sockets are the ones of the output node and the output sockets are
-          the ones of the input node.
-        - Outside the iteration, the input sockets are the ones of the input node and the output sockets are
-          the ones of the output node.
-
-        ``` python
-        geo = Geometry()
-        for sim in geo.simulation(A=1.0):
-            
-            # Output sockets come from input node
-            a = sim.a
-
-            # Sockets creation is captured
-            # A new simulation socket named B is created
-            b = Float(2.0, name="B")
-
-            # Input sockets come from output node
-            sim.a = a + b
-
-            # Output is captured
-            sim.b = a - b
-            
-            # No socket C was created
-            try:
-                sim.c = 0
-            except AttributeError:
-                print("An error is raised when accessing a non existing socket")
-
-            # Within the loop, geo socket comes from input node
-            # 
-            geo.position += a
-
-            # Default output geometry is in output node
-            geo.out()
-
-        # Outside the loop, geometry is now the output node output geometry
-        # The zone output sockets can be accessed from simulation
-        geo.position += sim.a
-
-        geo.out()
-        ```
-
-        Arguments
-        ---------
-        - socket (Socket) : the socket to loop on
-        - node (Node) : a valid zone output node
-        """
-
-        node_id       = node._bnode.bl_idname
-
-        if node_id == 'GeometryNodeRepeatOutput':
-            self._name = ZoneIterator.REPEAT
-
-        elif node_id == 'GeometryNodeSimulationOutput':
-            self._name = ZoneIterator.SIMULATION
-
-        elif node_id == 'GeometryNodeForeachGeometryElementOutput':
-            self._name = ZoneIterator.FOR_EACH
-
-        else:
-            raise RuntimeError(f"ZoneIterator must be initialized with a 'Repeat', 'Simulation' or 'For Each Element' output node, not {node}.")
-
-        self._socket        = socket
-        self._output_node   = node
-        self._input_node    = node._paired_input_node
-        self._done          = False
-        self._in_zone       = False
-
-    def __str__(self):
-        return f"<ZoneIterator {self._name}, in_zone: {self._in_zone}, done: {self._done}>"
-
-    # ====================================================================================================
-    # Iteration
-    # ====================================================================================================
-
-    def __iter__(self):
-
-        self._done = False
-        self._output_node._push_paired()
-
-        if self._socket is not None:
-
-            if self._name == ZoneIterator.REPEAT:
-                self._socket._jump(self._input_node._bnode.outputs[1])
-
-            elif self._name == ZoneIterator.SIMULATION:
-                self._socket._jump(self._input_node._bnode.outputs[1])
-
-            elif self._name == ZoneIterator.FOR_EACH:
-                self._socket._jump(self._input_node._bnode.outputs[1])
-
-            else:
-                assert False
-
-        return self
-
-    def __next__(self):
-        if self._done:
-            self._output_node._pop_paired()
-            self._socket._jump(self._output_node._out)
-            self._in_zone = False
-
-            raise StopIteration
-        
-        else:
-            self._done = True
-            self._in_zone = True
-            return self
-        
-    # ====================================================================================================
-    # Attributes
-    # ====================================================================================================
-
-    def __setattr__(self, name, value):
-        if name in ZoneIterator.__slots__:
-            super().__setattr__(name, value)
-            return
-        
-        if self._in_zone:
-            setattr(self._output_node, name, value)
-        else:
-            setattr(self._input_node, name, value)
-
-    def __getattr__(self, name):
-        if self._in_zone:
-            return getattr(self._input_node, name)
-        else:
-            return getattr(self._output_node, name)
-
-          
 
 # ====================================================================================================
 # Group
