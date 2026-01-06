@@ -881,8 +881,6 @@ class TreeInterface:
         socket = self.get_socket(in_out, socket_path.name, socket_type=socket_type, parent=TreeInterface.BIN_PANEL)
         created = False
 
-        print("FROM BIN ?", name, socket)
-
         # Not found, let's create it
         if socket is None:
             socket = self.btree.interface.new_socket(socket_path.name, in_out=in_out, socket_type=socket_type.socket_id, parent=parent_panel)

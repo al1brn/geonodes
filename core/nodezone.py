@@ -645,6 +645,10 @@ class ZoneIterator:
             setattr(self._input_node, name, value)
 
     def __getattr__(self, name):
+
+        if name in {"__dict__", "__weakref__"}:
+            raise AttributeError(name)
+
         if self._in_zone:
             if self.use_locals(name):
 

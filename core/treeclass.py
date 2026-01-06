@@ -407,7 +407,7 @@ class Tree:
                     break
 
             # Clear tree
-            self.clear(keep_nodes=True)
+            self.clear(keep_nodes=False)
 
         # ---------------------------------------------------------------------------
         # Interface

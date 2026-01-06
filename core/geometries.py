@@ -61,6 +61,9 @@ from . import generated
 # Mesh Geometry
 
 class Mesh(Geometry, generated.Mesh):
+
+    __slots__ = Geometry.__slots__ + ('points', 'edges', 'faces', 'corners')
+
     """ > Mesh Geometry
 
     The **Mesh** exposes all methods specific to meshes.
@@ -117,6 +120,9 @@ class Mesh(Geometry, generated.Mesh):
 # Curve Geometry
 
 class Curve(Geometry, generated.Curve):
+
+    __slots__ = Geometry.__slots__ + ('points', 'splines')
+
     """ > Curve Geometry
 
     The **Curve** class exposes all methods specific to curves.
@@ -148,6 +154,9 @@ class Curve(Geometry, generated.Curve):
 # Cloud Geometry
 
 class Cloud(Geometry, generated.Cloud):
+
+    __slots__ = Geometry.__slots__ + ('points',)
+
     """ > Cloud of Points Geometry
 
     > [!NOTE]
@@ -179,6 +188,9 @@ class Cloud(Geometry, generated.Cloud):
 # Instances Geometry
 
 class Instances(Geometry, generated.Instances):
+
+    __slots__ = Geometry.__slots__ + ('insts',)
+
     """ > Instances Geometry
 
     > [!NOTE]
@@ -208,6 +220,9 @@ class Instances(Geometry, generated.Instances):
 # Grease Pencil Geometry
 
 class GreasePencil(Geometry, generated.GreasePencil):
+    
+    __slots__ = Geometry.__slots__ + ('layers',)
+
     """ > Grease Pencil Geometry
 
     Properties

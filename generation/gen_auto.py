@@ -458,11 +458,20 @@ def generate(folder, sub_folder):
                 imports.append(f"from .{module} import {class_name}")
 
             else:
+                from_socket = True
                 super_class = "(Socket)"
                 if class_name in DOMAINS:
+                    from_socket = False
                     super_class = ""
 
                 file.write(f"class {class_name}{super_class}:\n")
+                if from_socket:
+                    # Top Geometries are interfaces, their __slots__ must be empty
+                    if class_name in ('Mesh', 'Curve', 'Cloud', 'Instances', 'Volume', 'GreasePencil'):
+                        file.write('\n    __slots__ = ()\n\n')
+                    else:
+                        file.write('\n    __slots__ = Socket.__slots__\n\n')
+
                 file.write('    """"\n    $DOC SET hidden\n    """\n')
 
                 if module in DOMAINS:

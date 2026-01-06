@@ -43,9 +43,9 @@ __blender_version__ = "4.3.0"
 
 from typing import Literal
 
+from .scripterror import NodeError
 from . import utils
 from .treeclass import Tree
-#from .nodeclass import MenuNode
 from .socket_class import Socket
 from . import generated
 

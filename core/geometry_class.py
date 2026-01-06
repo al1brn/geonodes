@@ -84,7 +84,6 @@ class Geometry(generated.Geometry, Geom):
         - panel (str = "") : Panel name
         - props (dict) : input properties
         """
-
         # ---------------------------------------------------------------------------
         # Geom interface
         # ---------------------------------------------------------------------------

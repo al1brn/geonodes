@@ -1365,6 +1365,10 @@ class Node:
     # ====================================================================================================
 
     def __getattr__(self, name):
+
+        if name in {"__dict__", "__weakref__"}:
+            raise AttributeError(name)
+
         try:
             return self.get_socket('OUTPUT', name, None)
         except NodeError as ne:
@@ -2529,6 +2533,9 @@ class G:
     # Get a tree by its snake case name
 
     def __getattr__(self, name):
+
+        if name in {"__dict__", "__weakref__"}:
+            raise AttributeError(name)
 
         tree_type = Tree.current_tree()._btree.bl_idname
         groups = utils.get_available_groups(tree_type)

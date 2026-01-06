@@ -48,6 +48,8 @@ from . import utils
 
 class Geom:
 
+    __slots__ = ()
+
     """ Interface for Geometry and Domain.
 
     Child classes must implement properties:

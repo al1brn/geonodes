@@ -165,6 +165,7 @@ class Socket(NodeCache):
         ---------
         - socket (NodeSocket) : the output socket to wrap
         """
+        #print("SHOULD CRASH __dict__", self.__dict__)
 
         # ---------------------------------------------------------------------------
         # Attributes
@@ -252,7 +253,6 @@ class Socket(NodeCache):
             new_socket = self.NewInput(name, tip=tip, panel=panel, **props)
             self._bsocket = new_socket._bsocket
             self._use_layout = new_socket._use_layout
-
 
     # ====================================================================================================
     # Constructors
@@ -655,7 +655,7 @@ class Socket(NodeCache):
     @property
     def node(self):
 
-        self._is_empty(f"There is not Node")
+        self._is_empty(f"Impossible to get the node of an empty socket '{type(self).__name__}'.")
 
         # Not yet initialized
         if not hasattr(self, '_bsocket'):
@@ -891,6 +891,9 @@ class Socket(NodeCache):
 
     def __getattr__(self, name):
 
+        if name in {"__dict__", "__weakref__"}:
+            raise AttributeError(name)
+
         self._is_empty(f"Impossible to get an attribute from an empty socket (name: '{name}')")
 
         # Ignore the ending '_' char
@@ -978,9 +981,7 @@ class Socket(NodeCache):
         ne = NodeError(f"{type(self).__name__} socket doesn't have an attribute named '{name}'.\n{msg}")
 
         raise AttributeError(str(ne))
-
     
-
     # ====================================================================================================
     # Test a value in a list
     # ====================================================================================================
@@ -1117,6 +1118,22 @@ class Socket(NodeCache):
         - Socket
         """        
         return self.MenuSwitch(named_sockets = {self_name: self, **named_sockets}, default_menu=default_menu, **sockets)
+    
+    # ====================================================================================================
+    # Setting the menu
+    # ====================================================================================================
+
+    @property
+    def menu(self):
+        raise NodeError(f"Menu Switch error: 'menu' is a write only property.")
+    
+    @menu.setter
+    def menu(self, value):
+        if self.node._bnode.bl_idname != 'GeometryNodeMenuSwitch':
+            raise NodeError(f"Impossible to set the menu, the socket {self} is not the output of a [Menu Switch] node")
+        
+        self.node.set_input_socket("menu", value)
+
     
     # ====================================================================================================
     # Index Switch

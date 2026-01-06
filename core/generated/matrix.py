@@ -1,4 +1,4 @@
-# Generated 2026-01-03 16:39:50
+# Generated 2026-01-06 09:49:06
 
 from __future__ import annotations
 from .. socket_class import Socket
@@ -26,6 +26,9 @@ if TYPE_CHECKING:
 
 
 class Matrix(Socket):
+
+    __slots__ = Socket.__slots__
+
     """"
     $DOC SET hidden
     """
