@@ -677,6 +677,9 @@ def get_node_info(sockets):
                         'MATRIX'     : 'FLOAT4X4',
                         'RGBA'       : 'FLOAT_COLOR',
                         'ROTATION'   : 'QUATERNION',
+                        'INT8'       : 'INT8',
+                        'FLOAT2'     : 'FLOAT2',
+                        'BYTE_COLOR' : 'BYTE_COLOR',
                     }
                 else:
                     convert = {}

@@ -489,7 +489,7 @@ class Node:
 
             # data_type argument
             if param_name == 'data_type':
-                param_value = SocketType(param_value).get_node_data_type(self._tree._btree.bl_idname, self._bnode.bl_idname)
+                param_value = SocketType(param_value).get_node_data_type(self._tree._btree.bl_idname, self._bnode.bl_idname, default=param_value)
 
             # Domain can be specified by a domain class for a node without domain parameter
             if param_name == 'domain' and not hasattr(self._bnode, 'domain'):

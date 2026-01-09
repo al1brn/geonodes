@@ -529,24 +529,23 @@ class SocketType:
     # Data type for node
     # ====================================================================================================
 
-    def get_node_data_type(self, tree_type: str, bl_idname: str, halt: bool = True):
-
-        # Node conversion dict
-        #'FunctionNodeCompare': {'data_type': {
-        #   'INT'   : 'INT',
-        #   'RGBA'  : 'RGBA',
-        #   'STRING': 'STRING',
-        #   'VALUE' : 'FLOAT',
-        #   'VECTOR': 'VECTOR'
-        # }},
+    def get_node_data_type(self, tree_type: str, bl_idname: str, *, default=None, halt: bool = True):
 
         info = constants.NODE_INFO[tree_type][bl_idname]
 
         conv = info.get('data_type')
 
         if conv is None:
-            raise RuntimeError(f"Node '{bl_idname}' doesn't have a 'data_type' attribute.")
+            raise NodeError(f"Node '{bl_idname}' doesn't have a 'data_type' attribute.")
         
+        if default is not None:
+            if default in conv.values():
+                return default
+            if default in conv.keys():
+                return conv[default]
+            
+            raise NodeError(f"Invalid data_type argument '{default}' for node [{info['name']}], valids are {list(conv.keys())}")
+            
         # Argument value
         socket_type = self.type
 
@@ -556,10 +555,10 @@ class SocketType:
             if stype == socket_type:                
                 return node_type
             
-            valids.append(SocketType(stype).class_name)
+        valids.append(SocketType(stype).class_name)
 
         if halt:
-            raise AttributeError(f"Invalid data_type argument '{self}' for node [{info['name']}], valids are {valids}")
+            raise NodeError(f"Invalid data_type argument '{self}' for node [{info['name']}], valids are {valids}")
         else:
             return None
     
