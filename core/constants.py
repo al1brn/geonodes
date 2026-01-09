@@ -37,6 +37,9 @@ __copyright__ = "Copyright (c) 2025, Alain Bernard"
 __license__ = "GNU GPL V3"
 __version__ = "5.0.0"
 
+# Set / unset to debug somewhere in the package
+GLOBAL_DEBUG = False
+
 # ====================================================================================================
 # Import from last generated module
 # ====================================================================================================

@@ -72,7 +72,7 @@ from .treeinterface import ItemPath, TreeInterface
 # ====================================================================================================
 
 class Panel:
-    def __init__(self, name: str, tip: str = "", default_closed: bool = False):
+    def __init__(self, name: str, tip: str = "", default_closed: bool = False, create_layout: bool = False):
         """ Socket panel
 
         All group input and output sockets an panels will be created within the current panel
@@ -85,8 +85,10 @@ class Panel:
         """
 
         self.tree   = Tree.current_tree()
+        self.name   = name
         self.path   = self.tree.get_panel(name)
         self.bpanel = None
+        self.create_layout = create_layout
 
         if self.tree._interface is not None:
             self.bpanel = self.tree._interface.get_panel(self.path, create=True)
@@ -97,8 +99,13 @@ class Panel:
 
     def push(self):
         self.tree.push_panel(self.path)
+        if self.create_layout:
+            self.layout = Layout(self.name)
+            self.layout.push()
 
     def pop(self):
+        if self.create_layout:
+            self.layout.pop()
         self.tree.pop_panel()
 
     def __enter__(self):
@@ -398,7 +405,7 @@ class Tree:
                     if bnode.bl_idname != 'NodeGroupInput':
                         continue
 
-                    for name, mod in blender.get_geonodes_modifiers(self._btree).items():
+                    for name, mod in self.get_modifiers().items():
                         values = {}
                         for bsock in bnode.outputs:
                             values[(bsock.name, bsock.bl_idname)] = mod.get(bsock.identifier)
@@ -501,6 +508,10 @@ class Tree:
                     continue
 
                 for mod in self.get_modifiers().values():
+
+                    if False: # True for DEBUG
+                        continue
+
                     cur_val = mod.get(bsock.identifier)
                     if cur_val is not None and (cur_val < 2 or cur_val > len(enums) + 2):
                         mod[bsock.identifier] = enums.index(isock.default_value) + 2
@@ -1044,7 +1055,10 @@ class Tree:
 
         for node in self._nodes:
 
-            if node._bnode.bl_idname in ['NodeGroupInput', 'GeometryNodeWarning']:
+            if node._bnode.bl_idname in (
+                'NodeGroupInput', 'GeometryNodeWarning',
+                'GeometryNodeGizmoDial', 'GeometryNodeGizmoLinear', 'GeometryNodeGizmoTransform',
+                ):
                 continue
 
             # ---------------------------------------------------------------------------

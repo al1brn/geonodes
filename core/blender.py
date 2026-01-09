@@ -176,6 +176,9 @@ def get_geonodes_modifiers(tree):
     if tree.bl_idname != 'GeometryNodeTree':
         return {}
     
+    if False: # True for DEBUG
+        return {}
+    
     modifiers = {}
     for obj in bpy.data.objects:
         for mod in obj.modifiers:

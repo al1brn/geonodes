@@ -42,7 +42,6 @@ __license__ = "GNU GPL V3"
 
 
 import bpy
-from . import blender
 from . import utils
 from . import constants
 from .sockettype import SocketType
@@ -514,6 +513,7 @@ class TreeInterface:
         'layer_selection'   : 'layer_selection_field',
         'shape'             : 'structure_type',
         'expanded'          : 'menu_expanded',
+        'hide'              : 'hide_in_modifier',
     }
 
     def __init__(self, btree):
@@ -852,7 +852,6 @@ class TreeInterface:
         """
         check_in_out(in_out)
 
-
         NO_MODIFIER_UPDATE = ['NodeSocketMenu']
 
         # ---------------------------------------------------------------------------
@@ -897,7 +896,7 @@ class TreeInterface:
             socket.from_socket(from_socket.node, from_socket)
 
         for prop, value in props.items():
-            
+
             # Synonyms
             prop = self.get_prop_name(prop)
 
@@ -920,6 +919,7 @@ class TreeInterface:
             if value is not None:
                 try:
                     setattr(socket, prop, value)
+
                 except TypeError as e:
                     enums = utils.get_enum_from_string(str(e))
                     if str(value).upper() in enums:
@@ -956,18 +956,6 @@ class TreeInterface:
                             pass
                         break
                 break
-
-            # ---------------------------------------------------------------------------
-            # If created, we must set the modifier value to default value
-            # Done when exiting the tree
-            # ---------------------------------------------------------------------------
-
-            #if created and hasattr(socket, 'default_value') and socket.socket_type not in NO_MODIFIER_UPDATE:
-            #    for mod in blender.get_geonodes_modifiers(self.btree):
-            #        try:
-            #            mod[socket.identifier] = socket.default_value
-            #        except Exception as e:
-            #            print(f"Info: impossible to set default value {socket.default_value} to modifier for socket '{socket.name}': {str(e)}")
                             
         return socket
     
@@ -1148,7 +1136,21 @@ class TreeInterface:
             sockets.append(socket)
 
         return sockets
-        
+    
+    # ====================================================================================================
+    # Copy the properties from another interface socket
+    # ====================================================================================================
+
+    def copy_properties(self, isocket, from_isocket):
+        """ Copy the properties from another interface socket.
+
+        Arguments
+        ---------
+        - isocket (InterfaceSocket) : Socket to copy properties to
+        - from_isocket (InterfaceSocket) : Socket to copy properties from
+        """
+        for prop in self.socket_props[isocket.socket_type]:
+            setattr(isocket, prop, getattr(from_isocket, prop))
     
     # ====================================================================================================
     # Input and output geometry

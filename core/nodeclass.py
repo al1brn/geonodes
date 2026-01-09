@@ -425,8 +425,8 @@ class Node:
                 self.set_input_socket(name, value)
 
                 # Ignore in further link_inputs method
-                if value is not None:
-                    self._link_ignore.append(name)
+                #if value is not None:
+                #    self._link_ignore.append(name)
 
         # ----------------------------------------------------------------------------------------------------
         # Register the node
@@ -1173,9 +1173,11 @@ class Node:
             except Exception as e:
                 raise NodeError(f"Impossible to set menu [{socket.node.name}]{socket.name} with value <{value}>. {str(e)}")
 
-            if self._use_interface:
-                isock = self._interface.by_identifier(socket.identifier)
-                isock.default_value = socket.default_value
+            # Just set the value, not default value in interface
+            if False:
+                if self._use_interface:
+                    isock = self._interface.by_identifier(socket.identifier)
+                    isock.default_value = socket.default_value
 
         else:
             raise TypeError(f"Impossible to set input socket [{socket.node.name}].{socket.name} with value <{value}>. Unsupported socket type '{socket.type}'.")
@@ -1225,6 +1227,13 @@ class Node:
             for v in value:
                 sockets.append(self.set_input_socket(name, v, create=False, panel=panel))
             return sockets
+        
+        # ====================================================================================================
+        # The socket is set, it can ignored in a further link_inputs
+        # ====================================================================================================
+
+        if value is not None:
+            self._link_ignore.append(name)
 
         # ====================================================================================================
         # No value: nothing to do, otherwise let's read the socket type
@@ -1614,6 +1623,13 @@ class Node:
             if out_socket is None:
                 if from_node._has_dyn_out:
                     out_socket = from_node.create_from_socket('OUTPUT', in_socket, name=path)
+
+                    # Copy the properties when both nodes have interface
+                    if self._use_interface and from_node._use_interface:
+                        self._interface.copy_properties(
+                            from_node._interface.by_identifier(out_socket._bsocket.identifier),
+                            self._interface.by_identifier(in_socket.identifier)
+                            )
 
             if out_socket is not None:
                 self._tree.link(out_socket, in_socket)
@@ -2107,7 +2123,10 @@ class MenuNode(Node):
             itfsock.default_value = self._default_menu
 
             # Modifiers
-            for name, mod in blender.get_geonodes_modifiers(self._tree._btree).items():
+            for name, mod in self._tree.get_modifiers().items():
+
+                if False: # True for DEBUG
+                    continue
                 
                 mod_value = None
                 values = mod_values.get(name)
@@ -2152,7 +2171,10 @@ class MenuNode(Node):
             itfsock.max_value = n - 1
 
             # Modifiers
-            for name, mod in blender.get_geonodes_modifiers(self._tree._btree).items():
+            for name, mod in self._tree.get_modifiers().items():
+
+                if False: # True for DEBUG
+                    continue
                 
                 mod_value = None
                 values = mod_values.get(name)
@@ -2385,9 +2407,7 @@ class Group(Node):
 
 class G:
 
-    VERBOSE = False
-
-    def __init__(self, prefix: str = "", verbose: bool = False):
+    def __init__(self, prefix: str = ""):
         """ Group functional call
 
         This class is provided to expose ***Group*** nodes as functions with keyword arguments.
@@ -2497,7 +2517,6 @@ class G:
         self.functions[func_name] = {'f': f, 'source': ""}
 
         return f
-
     
     # ====================================================================================================
     # Source code
