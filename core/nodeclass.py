@@ -1703,6 +1703,37 @@ class Node:
         return links
     
     # ====================================================================================================
+    # Duplicate
+    # ====================================================================================================
+
+    def duplicate_node(self, links=True):
+
+        bl_idname = self._bnode.bl_idname
+
+        if isinstance(self, Group):
+            new_node = Group(self._bnode.node_tree.name)
+        else:
+            new_node = Node(bl_idname)
+        
+        node_info = constants.NODE_INFO[self._tree._btree.bl_idname][bl_idname]
+        for name in node_info['params']:
+            setattr(new_node._bnode, name, getattr(self._bnode, name))
+
+        assert len(self._bnode.inputs) == len(new_node._bnode.inputs), "Shouldn't happen !"
+
+        for sock_from, sock_to  in zip(self._bnode.inputs, new_node._bnode.inputs):
+            try:
+                sock_to.default_value = sock_from.default_value
+            except:
+                pass
+
+            for link in sock_from.links:
+                self._tree._btree.links.new(link.from_socket, sock_to)
+
+        return new_node
+
+    
+    # ====================================================================================================
     # Method call
     # ====================================================================================================
 
