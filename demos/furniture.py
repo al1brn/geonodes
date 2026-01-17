@@ -666,7 +666,7 @@ def demo():
             'user_value'  : user_value,
 
             'offset'      : offset, 
-            'cote0'       : selected_value.switch(no_offset),
+            #'cote0'       : selected_value.switch(no_offset),
             }
         
     # ====================================================================================================
@@ -746,145 +746,7 @@ def demo():
                 'offset'      : offset, 
                 'cote0'       : selected_value.switch(no_offset),
                 }
-                          
-        
-    # ====================================================================================================
-    # MACRO : Get a cote
-    # ====================================================================================================
-        
-    def get_cote_OLD(mesh, name, is_dim, *, default_value=0.0, default_dim=None):
-        """ Get a cote from other planks
-        
-        The cote can be a user defined value or a cote from other planks : dimension, position
-        or distance between two planks.
-        
-        Two special choices are defined:
-        - Zero (for location) : the value zero
-        - Same (for dimension) : keep the model plank dimension
-        
-        In addition, the user can define an offset which is added to is selection.
-        Note the the offset is not proposed for:
-        - Zero : use Value rather than Zero + Offset
-        - Value : Value + Offset has no sense
-        
-        Value and Offset are driven by a linear Gizmo:
-        - direction : given by axis argument
-        - color : given by color argument
-        
-        Arguments
-        ---------
-        - mesh (Mesh) : the stack of planks
-        - name (str) : name of the cote
-        - axis (int in (0, 1, 2)) : axis
-        - is_dim (bool) : the cote is a dimension (not a distance)
-        - default (float or FLoat) : User value default value (is_dim = False) or default dimension (is_dim = True)
-            
-            
-        Returns
-        -------
-        - value, dict: 'offset': Float, 'no_offset': bool (ignore offset), 'user_value': value without offset
-        """
-        
-        with Layout("Get Cote"):
-        
-            id0 = Integer(0, "Plank ID")
-            
-            with Layout("Plank 0"):
-                plank0 = G().get_dimensions(mesh, True, id0)
-                
-            with Layout("Plank 1"):
-                id1 = Integer(1, "Other ID")
-                plank1 = G().get_dimensions(mesh, True, id1)
-                
-                dist_x = plank1.back - plank0.front
-                dist_y = plank1.left - plank0.right
-                dist_z = plank1.bot  - plank0.top
-                
-                dist_x = dist_x.switch(dist_x.less_than(0), plank0.back - plank1.front)
-                dist_y = dist_y.switch(dist_y.less_than(0), plank0.left - plank1.right)
-                dist_z = dist_z.switch(dist_z.less_than(0), plank0.bot  - plank1.top)
-                
-            # User defined value
-            if is_dim:
-                user_value = Float.Distance(default_value, "Value", MIN_DIM)
-            else:
-                user_value = Float.Distance(default_value, "Value")
 
-            # ---------------------------------------------------------------------------
-            # Options
-            # ---------------------------------------------------------------------------
-
-            options = (
-                "Keep" if is_dim else "Zero", 
-                "Value",        #  1
-                "Width",        #  2
-                "Length",       #  3
-                "Thickness",    #  4
-                "Back",         #  5
-                "Left",         #  6
-                "Bottom",       #  7
-                "Front",        #  8
-                "Right",        #  9
-                "Top",          # 10
-                "Size X",       # 11
-                "Size Y",       # 12
-                "Size Z",       # 13
-                "Distance X",   # 14
-                "Distance Y",   # 15
-                "Distance Z",   # 16
-            )
-            menu = Input(name)
-            sel_index = Integer.MenuSwitch({option: i for i, option in enumerate(options)}, menu=Input(name))
-
-            # ---------------------------------------------------------------------------
-            # Value from option
-            # ---------------------------------------------------------------------------
-                                            
-            with Float.IndexSwitch(index=sel_index) as selected_value:
-                if is_dim:                
-                    default_dim.out()
-                else:
-                    Float(0.0).out()
-                    
-                user_value.out()        # Value
-                plank0.width.out()      # Width
-                plank0.length.out()     # Length
-                plank0.thickness.out()  # Thickness
-                plank0.back.out()       # Back
-                plank0.left.out()       # Left
-                plank0.bot.out()        # Bottom
-                plank0.front.out()      # Front
-                plank0.right.out()      # Right
-                plank0.top.out()        # Top
-                plank0.size_x.out()     # Size X
-                plank0.size_y.out()     # Size Y
-                plank0.size_z.out()     # Size Z
-                dist_x.out()            # Distance X
-                dist_y.out()            # Distance Y
-                dist_z.out()            # Distance Z    
-
-            with Layout("Offset"):                                           
-                # Additional offset
-                offset  = Float.Distance(0.0, "Offset")
-
-                if is_dim:
-                    no_offset = sel_index.less_equal(1) # Value
-                else:
-                    no_offset = sel_index.equal(1) # Zero or Value
-
-                value = selected_value.switch_false(no_offset, selected_value + offset)
-                if is_dim:
-                    value = gnmath.max(value, MIN_DIM)
-
-            return value, {
-                'no_offset'   : no_offset, 
-
-                'user_value'  : user_value,
-
-                'offset'      : offset, 
-                'cote0'       : selected_value.switch(no_offset),
-                }
-                
     # ====================================================================================================
     # Locate Plank
     # ====================================================================================================
@@ -893,7 +755,7 @@ def demo():
         
         mesh = Mesh()
         plank_id = Integer(0, "ID", 0)
-        model_id = Integer(0, "ID", 0)
+        model_id = Integer(0, "Model ID", 0)
 
         plank = G().get_dimensions(mesh, True, plank_id)
         size_x, size_y, size_z = plank.size_x, plank.size_y, plank.size_z
@@ -1023,11 +885,11 @@ def demo():
             
             mesh = Mesh()
 
-            with Panel("Model"):
+            with Panel("From Model"):
             
                 with Mesh.MenuSwitch(menu=Input("Model")) as model:
-                    plank_id = Integer(0, "From ID", 0)
-                    plank = Mesh(mesh).points[nd.id.not_equal(plank_id)].delete()
+                    model_id = Integer(0, "Model ID", 0)
+                    plank = Mesh(mesh).points[nd.id.not_equal(model_id)].delete()
 
                     plank_orientation = plank.points.sample_index(Integer("Orientation"), index=0)
 
@@ -1143,7 +1005,7 @@ def demo():
         # Locate
         # ---------------------------------------------------------------------------
         
-        node = Group("Locate", mesh = mesh, id = mesh.plank_id).link_inputs()
+        node = Group("Locate", mesh = mesh, id = mesh.plank_id, model_id=model_id).link_inputs()
         mesh = node.mesh
         
         # ---------------------------------------------------------------------------
@@ -1279,7 +1141,7 @@ def demo():
             mesh        = mesh,
             orientation =  "Horizontal",
             
-        ).link_inputs(None, include=["Model", "Thickness", "Z"])
+        ).link_inputs(None, include=["From Model", "Thickness", "Z"])
 
         node.out()
 
@@ -1321,7 +1183,7 @@ def demo():
             mesh        = mesh,
             orientation =  "Front",
             
-        ).link_inputs(None, include=["Model", "Thickness"])
+        ).link_inputs(None, include=["From Model", "Thickness"])
 
         node.out()
 
@@ -1399,7 +1261,7 @@ def demo():
                 mesh        = mesh,
                 orientation =  "Vertical",
                 
-            ).link_inputs(None, include=["Model", "Thickness"])
+            ).link_inputs(None, include=["From Model", "Thickness"])
 
             left_id = node.plank_id
 
@@ -1510,8 +1372,8 @@ def demo():
             with Layout("Left Side"):
 
                 mesh = Group("Plank", {
-                    "Model > Model"     : 'Default',
-                    "Model > Material"  : side_mat,
+                    "From Model > Model"     : 'Default',
+                    "From Model > Material"  : side_mat,
 
                     "Width > Width"     : 'Value',
                     "Width > Value"     : side_length, # Orientation is 'Side'
@@ -1556,8 +1418,8 @@ def demo():
             with Layout("Back"):
 
                 mesh = Group("Plank", {
-                    "Model > Model"     : 'Plank ID',
-                    "Model > From ID"   : left_id,
+                    "From Model > Model"     : 'Plank ID',
+                    "From Model > Model ID"  : left_id,
 
                     "Width > Width"     : 'Value',
                     "Width > Value"     : back_length, # Orientation is 'Vertical'
@@ -1592,8 +1454,8 @@ def demo():
             with Layout("Bottom"):
 
                 mesh = Group("Plank", {
-                    "Model > Model"     : 'Default',
-                    "Model > Material"  : bot_mat,
+                    "From Model > Model"     : 'Default',
+                    "From Model > Material"  : bot_mat,
 
                     "Width > Width"     : 'Value',
                     "Width > Value"     : bot_depth, # Orientation is 'Horizontal'

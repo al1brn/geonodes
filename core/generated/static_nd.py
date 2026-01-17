@@ -1,4 +1,4 @@
-# Generated 2026-01-09 13:18:08
+# Generated 2026-01-16 10:06:25
 
 from __future__ import annotations
 from .. socket_class import Socket
@@ -1197,7 +1197,7 @@ class ND:
     @classmethod
     def handle_type_selection(cls,
                     handle_type: Literal['FREE', 'AUTO', 'VECTOR', 'ALIGN'] = 'AUTO',
-                    mode = {'RIGHT', 'LEFT'}):
+                    mode = {'LEFT', 'RIGHT'}):
         """ > Node <&Node Handle Type Selection>
 
         Arguments
@@ -1388,7 +1388,7 @@ class ND:
                     curve: Curve = None,
                     selection: Boolean = None,
                     handle_type: Literal['FREE', 'AUTO', 'VECTOR', 'ALIGN'] = 'AUTO',
-                    mode = {'RIGHT', 'LEFT'}):
+                    mode = {'LEFT', 'RIGHT'}):
         """ > Node <&Node Set Handle Type>
 
         Arguments

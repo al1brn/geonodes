@@ -11,6 +11,8 @@ import inspect
 from pathlib import Path
 from pprint import pprint
 
+from .node_dims import NODE_DIMS
+
 # ====================================================================================================
 # Hard stuff
 # ====================================================================================================
@@ -454,7 +456,7 @@ def print_geometry_names():
     print("Sockets names for Geometry sockets classes\n")
                 
     print("Input sockets:", in_names)
-    print("OUtput sockets:", out_names)
+    print("Output sockets:", out_names)
     print()
 
 # ====================================================================================================
@@ -569,6 +571,7 @@ def get_node_info(sockets):
                 'outputs'       : {}, 
                 'has_custom_in' : False,
                 'has_custom_out': False,
+                'dims'          : NODE_DIMS[tree_type][tp],
             }
 
             # ----------------------------------------------------------------------------------------------------

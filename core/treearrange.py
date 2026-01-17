@@ -46,14 +46,25 @@ __blender_version__ = "4.3.0"
 
 
 import bpy
+from mathutils import Vector
+from .constants import NODE_INFO
+
+from typing import Literal, List
 
 X_SEPA = 60
 Y_SEPA = 40
-ZONE_INPUTS  = ['GeometryNodeRepeatInput', 'GeometryNodeSimulationInput', 'GeometryNodeForeachGeometryElementInput', 'Closure Input']
+
+ZONE_INPUTS  = ['GeometryNodeRepeatInput',  'GeometryNodeSimulationInput',  'GeometryNodeForeachGeometryElementInput',  'Closure Input']
 ZONE_OUTPUTS = ['GeometryNodeRepeatOutput', 'GeometryNodeSimulationOutput', 'GeometryNodeForeachGeometryElementOutput', 'Closure Output']
 
-# =============================================================================================================================
-# A link
+INPUT_NODES  = ZONE_INPUTS  + ['NodeGroupInput']
+OUTPUT_NODES = ZONE_OUTPUTS + ['NodeGroupOutput']
+
+TEMP_FRAME = "$TEMP FRAME"
+
+# ====================================================================================================
+# A link between two nodes
+# ====================================================================================================
 
 class Link:
     def __init__(self, tree, blink):
@@ -73,11 +84,20 @@ class Link:
         self.blink  = blink
         self.node0  = tree[blink.from_node]
         self.node1  = tree[blink.to_node]
-        self.index0 = list(blink.from_node.outputs).index(blink.from_socket)
-        self.index1 = list(blink.to_node.inputs).index(blink.to_socket)
+        if True:
+            _, self.index0, _, self.index1 = self.blink_key(blink)
+        else:
+            self.index0 = list(blink.from_node.outputs).index(blink.from_socket)
+            self.index1 = list(blink.to_node.inputs).index(blink.to_socket)
 
     def __str__(self):
         return f"<Link [{self.node0.bnode.name}]({self.index0}) -> [{self.node1.bnode.name}]({self.index1})>"
+
+    @classmethod
+    def blink_key(cls, blink):
+        index0 = list(blink.from_node.outputs).index(blink.from_socket)
+        index1 = list(blink.to_node.inputs).index(blink.to_socket)
+        return (blink.from_node.name, index0, blink.to_node.name, index1)
 
     @property
     def node0_key(self):
@@ -174,587 +194,186 @@ class Link:
         self.replace_from(reroute, index0 = 0)
 
         return reroute
-
-
-# =============================================================================================================================
-# Node
-
-class Node:
-
-    def __init__(self, tree, bnode):
-        """ > Node wrapper
-
-        Properties
-        ----------
-        - tree (Tree) : tree wrapper
-        - bnode (bpy.types.Node) : wrapped node
-        - parent (Node) : parent node if any
-
-        Arguments
-        ---------
-        - tree (Tree) : the tree to arrange
-        - bnode (bpy.types.Node) : the wrapped node
-        """
-        self.tree  = tree
-        self.bnode = bnode
-
-    def __str__(self):
-        sname = self.bnode.name if self.bnode.label == "" else self.bnode.label
-        return f"<Node '{sname}'>"
-
-    def __repr__(self):
-        return str(self)
-
-    def dump(self, depth=0):
-        print("   "*depth, '-', str(self))
-
-    @property
-    def is_frame(self):
-        return self.bnode.bl_idname == 'NodeFrame'
-
-    @property
-    def is_reroute(self):
-        return self.bnode.bl_idname == 'NodeReroute'
-
-    @property
-    def is_layout(self):
-        return self.bnode.bl_idname in ['NodeReroute', 'NodeFrame']
-
-    @property
-    def parent(self):
-        bparent = self.bnode.parent
-        if bparent is None:
-            return self.tree
-        else:
-            return self.tree[bparent]
-
-    # ====================================================================================================
-    # Dimensions
-
-    @property
-    def has_node_editor(self):
-
-        if not self.tree.get_true_dims:
-            return False
-
-        for area in bpy.context.screen.areas:
-            if area.type == 'NODE_EDITOR':
-                for space in area.spaces:
-                    if space.type == 'NODE_EDITOR' and space.node_tree == self.tree.btree:
-                        return True
-
-        return False
-
-    @classmethod
-    def wait(cls):
-        if False and cls.has_node_editor:
-            bpy.ops.wm.redraw_timer(type='DRAW_WIN_SWAP', iterations=1)
-
-    @property
-    def dimensions(self):
-        """ Node dimensions
-
-        Node dimensions are read from bnode if it is available in 'NODE_EDITOR' area.
-        Otherwise, dimensions are approximated
-
-        Returns
-        -------
-        - couple of floats : node dimensions
-        """
-
-        BASE_WIDTH           = 400
-        BASE_HEIGHT          = 56*4
-        SOCKET_HEIGHT        = 44
-        PARAM_HEIGHT         = 53
-        VECTOR_SOCKET_HEIGHT = 164
-
-        if self.has_node_editor:
-            return self.bnode.dimensions
-
-        height = BASE_HEIGHT*2
-
-        # ----- Input sockets
-
-        count = 0
-        for bsock in self.bnode.inputs:
-            if not bsock.enabled:
-                continue
-
-            if bsock.type == 'VECTOR' and not bsock.is_linked:
-                height += VECTOR_SOCKET_HEIGHT
-            else:
-                height += SOCKET_HEIGHT
-
-            count += 1
-
-        # ----- Output sockets
-
-        for bsock in self.bnode.outputs:
-            if not bsock.enabled:
-                continue
-
-            height += SOCKET_HEIGHT
-
-            count += 1
-
-        return (BASE_WIDTH, height/2)
-
-    @property
-    def width(self):
-        """ Node width
-
-        Returns
-        -------
-        - float : node width
-        """
-        return self.dimensions[0]
-
-    @property
-    def height(self):
-        """ Node height
-
-        Returns
-        -------
-        - float : node height
-        """
-        return self.dimensions[1]
-
-    # ====================================================================================================
-    # Input / output nodes
-
-    @property
-    def in_nodes(self):
-        """ List of input nodes
-
-        Returns
-        -------
-        - list of Nodes : nodes linked to one input socket of the node
-        """
-        in_nodes = []
-        for link in self.tree.links:
-            if link.node1 == self:
-                in_nodes.append(link.node0)
-        return in_nodes
-
-    @property
-    def out_nodes(self):
-        """ List of output nodes
-
-        Returns
-        -------
-        - list of Nodes : nodes linked to one output socket of the node
-        """
-        out_nodes = []
-        for link in self.tree.links:
-            if link.node0 == self:
-                out_nodes.append(link.node1)
-
-        return out_nodes
-
-    # =============================================================================================================================
-    # Hierarchy
-
-    def is_child_of(self, frame):
-        """ Belongs to the frame
-
-        Returns
-        -------
-        - bool : True if the frame belongs to the parents hierarchy
-        """
-        if self.parent is None:
-            return False
-        elif self.parent == frame:
-            return True
-        else:
-            return self.parent.is_child_of(frame)
-
-    # =============================================================================================================================
-    # Peer / outside
-
-    def split_peers(self, nodes):
-        """ Separate peer nodes from the other
-
-        Nodes are peer when they share the same parent.
-
-        This method splits the list of nodes in two list:
-        - nodes inside the parent of self
-        - nodes outside the parent of self
-
-        The first list returns the ancestor of the node sharing the parent of self, not
-        the node passed in the list.
-
-        Arguments
-        ---------
-        - nodes (list of Nodes) : the list to split
-
-        Returns
-        -------
-        - tuple of lists : peer nodes and not peer nodes
-        """
-        peers     = []
-        not_peers = []
-        for node in nodes:
-            n = node
-            while True:
-                if n.parent is None:
-                    not_peers.append(node)
-                    break
-
-                if n.parent == self.parent:
-                    peers.append(n)
-                    break
-
-                n = n.parent
-
-        return list(set(peers)), list(set(not_peers))
-
-    # =============================================================================================================================
-    # Forward / backward iterators
-
-    def forwards(self):
-        """ Iterate forwards
-
-        Iterates on the right nodes
-
-        Returns
-        -------
-        - Node
-        """
-        for link in self.tree.links:
-            if link.node0 == self:
-                yield link.node1
-                for node in link.node1.forwards():
-                    yield node
-
-    def backwards(self):
-        """ Iterate backwards
-
-        Iterates on the left nodes
-
-        Returns
-        -------
-        - Node
-        """
-        for link in self.tree.links:
-            if link.node1 == self:
-                yield link.node0
-                for node in link.node0.backwards():
-                    yield node
-
-    # =============================================================================================================================
-    # Is in zone
-
-    def in_zone(self, input_node, output_node):
-        """ The node belongs to a zone
-
-        A node belongs to the zone if the zone input is linked to the node inputs
-        and if the zone output is linked to the node outputs.
-
-        Returns
-        -------
-        - bool : True if the node is in the zone
-        """
-
-        # ----- Frame algo
-        # - Must feed output_zone and not another zone output
-        # - Must not be fed by another zone input ???
-
-        if self.is_frame:
-
-            if self.bnode.parent is not None:
-                return False
-
-            ok = False
-            for node in self.forwards():
-
-                # NO : Feed an zone input
-
-                if node.bnode.bl_idname in ZONE_INPUTS:
-                    return False
-
-                # A zone output : must be the zone we test
-
-                if node.bnode.bl_idname in ZONE_OUTPUTS:
-                    if node != output_node:
-                        return False
-                    else:
-                        ok = True
-                        break
-
-            if not ok:
-                return False
-
-            # Not fed by the zone input
-
-            for node in self.backwards():
-                if node.bnode.bl_idname in ZONE_INPUTS:
-                    if node != input_node:
-                        return False
-                    else:
-                        return True
-
-            return False
-
-        # ----- Node algo
-
-        ok = False
-        for node in self.forwards():
-            if node == output_node:
-                ok = True
-                break
-
-        if not ok:
-            return False
-
-        for node in self.backwards():
-            if node == input_node:
-                return True
-
-        return False
-
-# =============================================================================================================================
-# Frame
-
-class Frame(Node):
-
-    def __init__(self, tree, bnode):
-        """ Frame node
-
-        Properties
-        ----------
-        - input_node (Node)
-        - output_node (Node)
-
-        Arguments
-        ---------
-        - tree (Tree) : tree wrapper
-        - bnode (bpy.types.Node) : the node of type 'NodeFrame'
-        """
-
-        assert(bnode is None or bnode.bl_idname == 'NodeFrame')
-
-        super().__init__(tree, bnode)
-        self.input_node  = None
-        self.output_node = None
-
-    def __str__(self):
-        sname = "No name" if self.bnode.label == "" else self.bnode.label
-        return f"<Frame '{sname}', {len(self.children)} nodes>"
-
-    def dump(self, depth=0):
-        super().dump(depth)
-        print("   "*depth, "  In nodes: ", [node.bnode.name for node in self.in_nodes])
-        print("   "*depth, "  Out nodes:", [node.bnode.name for node in self.out_nodes])
-        for child in self.children:
-            child.dump(depth + 1)
-
-    # =============================================================================================================================
-    # Children
-
-    @property
-    def children(self):
-        """ Child nodes
-
-        Returns
-        -------
-        - list of Nodes : the nodes directly parented to the frame
-        """
-        return [node for node in self.tree.nodes.values() if node.bnode.parent == self.bnode]
-
-    @property
-    def all_children(self):
-        """ All child nodes
-
-        Returns
-        -------
-        - list of Nodes : the nodes parented, directly or not, to the frame
-        """
-        return [node for node in self.tree.nodes.values() if node.is_child_of(self)]
-
-    # =============================================================================================================================
-    # Forward / backward iterators
-
-    def forwards(self):
-        """ Iterate forwards
-
-        Iterates on the right nodes
-
-        Returns
-        -------
-        - Node
-        """
-        for link in self.tree.links:
-            if link.node0.is_child_of(self):
-                if link.node1.is_child_of(self):
-                    continue
-                yield link.node1
-                for node in link.node1.forwards():
-                    if not node.is_child_of(self):
-                        yield node
-
-    def backwards(self):
-        """ Iterate backwards
-
-        Iterates on the left nodes
-
-        Returns
-        -------
-        - Node
-        """
-        for link in self.tree.links:
-            if link.node1.is_child_of(self):
-                if link.node0.is_child_of(self):
-                    continue
-                yield link.node0
-                for node in link.node0.backwards():
-                    if not node.is_child_of(self):
-                        yield node
-
-    # =============================================================================================================================
-    # Frame dimension
-
-    @property
-    def dimensions(self):
-
-        if self.has_node_editor:
-            dims = self.bnode.dimensions
-            return (dims[0] + 120, dims[1] + 120)
-
-        W0, W1, H0, H1 = 0, 400, 0, 400
-
-        for inode, node in enumerate(self.children):
-
-            ndim = node.dimensions
-
-            w1 = 2*node.bnode.location[0]
-            w0 = 2*node.bnode.location[0] - ndim[0]
-            h0 = 2*node.bnode.location[1] - ndim[1]
-            h1 = 2*node.bnode.location[1]
-
-            if inode == 0:
-                W0, W1, H0, H1 = w0, w1, h0, h1
-
-            else:
-                W0 = min(W0, w0)
-                W1 = max(W1, w1)
-                H0 = min(H0, h0)
-                H1 = max(H1, h1)
-
-        return ((W1 - W0) + 120, (H1 - H0) + 120)
-
-    # ====================================================================================================
-    # Input / output nodes
-
-    @property
-    def in_nodes(self):
-        """ List of input nodes
-
-        An input node of a frame is an input node of a node belonging to the frame
-        but which is not in the frame.
-
-        Returns
-        -------
-        - list of Nodes : the frame input nodes
-        """
-        in_nodes = []
-        for child in self.children:
-            for node in child.in_nodes:
-                if node in in_nodes:
-                    continue
-
-                if not node.is_child_of(self):
-                    in_nodes.append(node)
-        return in_nodes
-
-    @property
-    def out_nodes(self):
-        """ List of output nodes
-
-        An output node of a frame is an output node of a node belonging to the frame
-        but which is not in the frame.
-
-        Returns
-        -------
-        - list of Nodes : the frame output nodes
-        """
-        out_nodes = []
-        for child in self.children:
-            for node in child.out_nodes:
-                if node in out_nodes:
-                    continue
-
-                if not node.is_child_of(self):
-                    out_nodes.append(node)
-        return out_nodes
-
-    # =============================================================================================================================
-    # Frame "input / output"
+    
+# ====================================================================================================
+# Hierarchy item
+# Root class for Node and Tree
+# ====================================================================================================
+
+class Item:
+
+    def get_node(self, name):
+        return self.tree.nodes[name]
 
     # ----------------------------------------------------------------------------------------------------
-    # Build frame inputs as reroute nodes
+    # Reset (create the hierarchy attributes)
+    # ----------------------------------------------------------------------------------------------------
 
-    def frame_reroutes(self):
+    def reset(self):
+        self.owner    = None
+        self.children = []
 
-        # ----- All the links between a node inside the frame and a node outside the frame
+        # Will be set by tree.build_hierarchy
+        self.items_in    = {}
+        self.items_out   = {}
+        self.through_in  = {}
+        self.through_out = {}
 
-        in_links = []
-        out_links = []
-        for link in self.tree.links:
-            if link.node0.is_child_of(self):
-                if not link.node1.is_child_of(self):
-                    out_links.append(link)
-            else:
-                if link.node1.is_child_of(self):
-                    in_links.append(link)
+        # Cache
+        self._left_items  = None
+        self._right_items = None
+    
+    # ----------------------------------------------------------------------------------------------------
+    # Hierarchy Interface
+    # ----------------------------------------------------------------------------------------------------
 
-        # ----- Create input reroutes
+    def append(self, item):
+        item.owner = self
+        self.children.append(item)
 
-        x_sepa  = 30
-        y_sepa  = 50
+    @property
+    def is_top(self):
+        return self.owner is None
+    
+    @property
+    def top(self):
+        cur = self
+        while cur.owner is not None:
+            cur = cur.owner
+        return cur
+    
+    @property
+    def depth(self):
+        depth = 0
+        cur = self
+        while cur.owner is not None:
+            cur = cur.owner
+            depth += 1
+        return depth
 
-        x = -self.width/2  - x_sepa
-        y = -self.height/2 + y_sepa
+    @property
+    def is_child_of(self, item):
+        cur = self
+        while cur.owner is not None:
+            if cur.owner == item:
+                return True
+            cur = cur.owner
+        return False
+    
+    @property
+    def owners_stack(self):
+        cur = self.owner
+        owners = []
+        while cur is not None:
+            owners.append(cur)
+            cur = cur.owner
 
-        source_nodes = {}
-        for link in in_links:
-            source_key = link.node0_key
-            reroute = source_nodes.get(source_key)
-            if reroute is None:
-                reroute = link.insert_reroute(self)
-                reroute.bnode.location = (x + 200, y)
-                # Order bottom down
-                if True:
-                    y -= y_sepa
-                else:
-                    y += y_sepa
+        return owners
+    
+    def common_ancestor(self, other):
 
-                source_nodes[source_key] = reroute
+        if self.owner == other.owner:
+            return self.owner, self, other
+        
+        owners0 = self.owners_stack
+        owners1 = other.owners_stack
 
-            else:
-                link.replace_from(reroute, index0=0)
+        assert owners0[-1] == owners1[-1], "Oups"
 
-        # ----- Create the output reroutes
+        n0, n1 = len(owners0), len(owners1)
+        n = min(n0, n1)
 
-        x = 2*x_sepa
-        y = 0
-
-        source_nodes = {}
-        for link in out_links:
-            source_key = link.node0_key
-            reroute = source_nodes.get(source_key)
-            if reroute is None:
-                reroute = link.insert_reroute(self)
-                reroute.bnode.location = (x + 100, y)
-                y -= y_sepa
-                source_nodes[source_key] = reroute
-
-            else:
-                link.replace_from(reroute, index0=0)
+        for i in range(1, n):
+            idx = -i - 1
+            if owners0[idx] != owners1[idx]:
+                return owners0[idx + 1], owners0[idx], owners1[idx]
+            
+        if n == n0:
+            return owners0[-n], self, owners1[-n - 1]
+        else:
+            return owners0[-n], owners0[-n - 1], other
 
     # ====================================================================================================
-    # Arrange
+    # Exploration
+    # ====================================================================================================
 
-    def arrange(self, reroutes=True):
+    def all_children(self):
+        for child in self.children:
+            yield child, 1
+            for ch, depth in child.all_children():
+                yield ch, depth + 1
+
+    # ====================================================================================================
+    # Backward / forward exploration
+    # ====================================================================================================
+
+    # ----------------------------------------------------------------------------------------------------
+    # Build the dicts
+    # ----------------------------------------------------------------------------------------------------
+
+    def left_right_items(self, left):
+        """ All the intems linked to in / out items
+
+        Arguments
+        ---------
+        - left (bool) : left or right items
+
+        Returns
+        -------
+        - dict : name -> (min dist, max dist)
+        """
+
+        items = {}
+
+        # ---------------------------------------------------------------------------
+        # The list of directly linked items (dist min = 1)
+        # ---------------------------------------------------------------------------
+
+        base = self.items_in if left else self.items_out
+        for item_name in base:
+            items[item_name] = (1, 1)
+
+        # ---------------------------------------------------------------------------
+        # Add the linked items of these items
+        # ---------------------------------------------------------------------------
+
+        for item in [self.tree.nodes[item_name] for item_name in base]:
+
+            loop_list = item.left_items if left else item.right_items
+            for next_name, (d_min, d_max) in loop_list.items():
+                if next_name in items:
+                    cur_min, cur_max = items[next_name]
+                    items[next_name] = min(cur_min, d_min + 1), max(cur_max, d_max + 1)
+                else:
+                    items[next_name] = d_min + 1, d_max + 1
+
+        return items
+    
+    # ----------------------------------------------------------------------------------------------------
+    # Left items
+    # ----------------------------------------------------------------------------------------------------
+
+    @property
+    def left_items(self):
+        if self._left_items is None:
+            self._left_items = self.left_right_items(True)
+        return self._left_items
+    
+    # ----------------------------------------------------------------------------------------------------
+    # Right items
+    # ----------------------------------------------------------------------------------------------------
+
+    @property
+    def right_items(self):
+        if self._right_items is None:
+            self._right_items = self.left_right_items(False)
+        return self._right_items
+    
+    # ====================================================================================================
+    # Arrange
+    # ====================================================================================================
+
+    def arrange(self, right_column=[]):
         """ Arrange the content of the frame
 
         The algorithm is the following:
@@ -768,327 +387,730 @@ class Frame(Node):
         Then, the nodes can be placed using the location property of <!Node#bnode>.
         """
 
-        # ----------------------------------------------------------------------------------------------------
-        # No child
-
         if len(self.children) == 0:
             return
+        
+        # ---------------------------------------------------------------------------
+        # The children must be arranged
+        # ---------------------------------------------------------------------------
 
-        # ----------------------------------------------------------------------------------------------------
-        # Group input in the frame
+        for node in self.children:      
+            node.arrange()
 
+        # ===========================================================================
+        # STEP 1 - Compute the columns
+        # ===========================================================================
+
+        # Nodes without items_out are column 0 (rightmost)
+        # Input nodes are put in columns left depending on the distance
+
+        col_max = 10_000
+        cols = set()
         for node in self.children:
-            if self.input_node is None:
-                if node.bnode.bl_idname in ['NodeGroupInput'] + ZONE_INPUTS:
-                    self.input_node = node
 
-            if self.output_node is None:
-                if node.bnode.bl_idname in ZONE_OUTPUTS:
-                    self.output_node = node
-
-        # ----------------------------------------------------------------------------------------------------
-        # Arrange sub frames
-        # Prepare nodes for numbering
-
-        for node in self.children:
-            if node.is_frame:
-                node.arrange(reroutes)
-
-            node.col = None
-            node.row = None
-
-            node.in_peers, _  = node.split_peers(node.in_nodes)
-            node.out_peers, _ = node.split_peers(node.out_nodes)
-
-            if False and node.is_frame:
-                print(">>>", self, "sub frame", node.bnode.label + "/" + node.bnode.name)
-                print("- PEERS IN ", [n.bnode.label + "/" + n.bnode.name for n in node.in_peers])
-                print("- PEERS OUT", [n.bnode.label + "/" + n.bnode.name for n in node.out_peers])
-
-            if False:
-                print(f"  -> OUT {node}: {node.out_peers}")
-                print(f"     {node.out_nodes}")
-
-        # ----------------------------------------------------------------------------------------------------
-        # Column number computed recursively
-
-        def place_in_col(node):
-
-            node.col = -1 # To avoid infinite recursion
-            node.follower = None
-            node.below    = False
-
-            # ----- No node after: right most node
-
-            if len(node.out_peers) == 0 or node == self.output_node:
-                node.col = 0
-                return
-
-            # ----- Get the left most following node
-
-            left_most = None
-            for follower in node.out_peers:
-                if follower.col is None:
-                    place_in_col(follower)
-
-                if left_most is None or left_most.col < follower.col:
-                    left_most = follower
-
-            node.follower = left_most
-            node.col      = left_most.col + 1
-
-            # ----- Place the node below its follower
-
-            # Not a frame or reroute
-            below = not node.is_layout
-
-            # No input sockets or specif
-            if len(node.bnode.inputs) > 0:
-                below = False
-                #below = below and node.bnode.bl_idname.startswith('GeometryNodeInput')
-
-            # Not the group input
-            below = below and node != self.input_node
-
-            # Feed only one output node which is not frame or reroute
-            below = below and (len(node.out_nodes) == 1) and (not left_most.is_layout)
-
-            # Not for output node
-            below = below and (left_most != self.output_node)
-
-            if below:
-                node.col -= 1
-                node.below = True
-
-            # ----- Intricated frames are placed in the same column
-
-            if node.is_frame and left_most.is_frame:
-                if left_most in node.in_peers:
-                    node.col -= 1
-                    node.follower = left_most.follower
-
-        # ----------------------------------------------------------------------------------------------------
-        # Let's compute the column numbers
-
-        # ----- Number of columns
-
-        max_col = 0
-        for node in self.children:
-            if node.col is None:
-                place_in_col(node)
-            max_col = max(max_col, node.col)
-
-        # ----- Columns : a list of list of nodes
-
-        columns = [[] for _ in range(max_col + 1)]
-        for node in self.children:
-            columns[node.col].append(node)
-
-        # ----- Utility to move a node from a column to another
-        # Need to move below nodes to
-
-        def move_node(node, from_col, to_col, at_index=None):
-
-            belows = [n for n in from_col if n.below and n.follower == node]
-
-            from_col.remove(node)
-
-            if at_index is None:
-                to_col.append(node)
-            else:
-                to_col.insert(at_index, node)
-
-            for i, n in enumerate(belows):
-                from_col.remove(n)
-                if at_index is None:
-                    to_col.append(n)
-                else:
-                    to_col.insert(at_index + 1 + i, n)
-
-            return to_col
-
-        # ----- Input node : single left most node
-
-        if self.input_node is not None:
-            icol = self.input_node.col
-
-            # if icol is null: input node has not output links
-            if icol > 0:
-                in_col = columns[icol]
-                if len(in_col) == 1:
-                    if self.input_node.col != max_col:
-                        del columns[icol]
-                        columns.append(in_col)
-                else:
-                    if True:
-                        to_col = move_node(self.input_node, in_col, [])
-                        columns.append(to_col)
-                    else:
-                        in_col.remove(self.input_node)
-                        columns.append([self.input_node])
-
-        if self.output_node is not None:
-            assert(self.output_node in columns[0])
-
-        # ----- Output node is single right most
-
-        if self.output_node is not None:
-            col = columns[0]
-            if len(col) > 1:
-                if True:
-                    to_col = move_node(self.output_node, col, [])
-                    columns.insert(0, to_col)
-                else:
-                    col.remove(self.output_node)
-                    columns.insert(0, [self.output_node])
-
-        # Renum to be sure
-
-        for icol, col in enumerate(columns):
-            for node in col:
-                node.col = icol
-
-        # ----------------------------------------------------------------------------------------------------
-        # Let's sort the columns
-
-        for icol in range(len(columns)):
-            col = columns[icol]
-            if len(col) == 1:
-                col[0].row = 0
+            # Only nodes without items out
+            if len(node.items_out):
                 continue
 
-            # Extract below nodes
-            belows = [node for node in col if node.below]
-            for node in belows:
-                del col[col.index(node)]
-
-            # Sort the nodes
-
-            # sort by number of inputs
-            if icol == 0:
-                new_col = sorted(col, key=lambda nd : -len(nd.in_peers))
-
-            # sort by row of follower
+            if node.is_reroute:
+                node.col = 0
             else:
-                def key_func(nd):
-                    if nd.follower is None:
-                        return 1000 - len(nd.in_peers)
+                node.col = 1
+
+            cols.add(node.col)
+
+            # Other nodes are put left
+            for it_name, (d_min, d_max) in node.left_items.items():
+                it = self.get_node(it_name)
+
+                # In reroute are left most
+                if it.is_reroute:
+                    it.col = col_max
+
+                else:
+                    new_d_max = node.col + d_max
+                    if it.col is None:
+                        it.col = new_d_max
                     else:
-                        row = nd.follower.row
-                        if row is None:
-                            return 0
-                        else:
-                            return row
+                        it.col = max(it.col, new_d_max)
 
-                new_col = sorted(col, key=key_func)
+                cols.add(it.col)
 
-            # Replace the below nodes
-            for node in belows:
-                new_col.insert(new_col.index(node.follower) + 1, node)
+        # Transform col attribute into a valid list index
+        cols = sorted(list(cols))
+        transco = {}
+        for i, col in enumerate(cols):
+            transco[col] = i
 
-            # Row numbers
-            for i, node in enumerate(new_col):
-                node.row = i
+        for node in self.children:
+            node.col = transco[node.col]
 
-            columns[icol] = new_col
+        ncols = len(cols)
 
-        # ----------------------------------------------------------------------------------------------------
-        # We locate the children
+        # ===========================================================================
+        # STEP 2 - Compute the rows
+        # ===========================================================================
 
-        x = 0
-        for icol, col in enumerate(columns):
+        columns    = []
+        col_widths = []
 
-            y, col_width = 0, 0
+        for i_col in range(ncols):
 
-            for node in col:
+            # ---------------------------------------------------------------------------
+            # Current column with its width
+            # ---------------------------------------------------------------------------
+            
+            col_width = 0
+            column = []
+            for node in self.children:
+                if node.col != i_col:
+                    continue
 
+                column.append(node)
                 col_width = max(col_width, node.width)
 
-                if node.below:
-                    y += Y_SEPA/2
-                if node.is_frame:
-                    y -= Y_SEPA
+            assert len(column), f"{debug} ? {i_col}"
 
-                node.bnode.location = (x, y)
+            # ---------------------------------------------------------------------------
+            # Rows of rightmost column
+            # ---------------------------------------------------------------------------
+
+            if i_col == 0:
+                def order(node):
+                    if node.is_group_output:
+                        return 0
+                    
+                    for i_right, right_item in enumerate(right_column):
+                        if right_item in right_column:
+                            return 1 + i_right*1000
+                        
+                    return (len(right_column) + 1)*1000 - len(node.items_in)
+
+                column = sorted(column, key=order)
+
+            # ---------------------------------------------------------------------------
+            # Rows of other columns
+            # ---------------------------------------------------------------------------
+
+            else:
+                def order(node):
+                    for i_right, right_node in enumerate(columns[i_col - 1]):
+                        rank = right_node.input_rank(node)
+                        if rank is not None:
+                            return i_right*1000 + rank
+
+                    return len(columns[i_col - 1])*1000
+                
+                column = sorted(column, key=order)
+
+            # ---------------------------------------------------------------------------
+            # Append the column sorted by its row
+            # ---------------------------------------------------------------------------
+
+            for i_node, node in enumerate(column):
+                node.row = i_node
+
+                if i_col == 0:
+                    node.arrange(right_column = right_column)
+
+                if i_col > 0:
+                    node.arrange(right_column = columns[i_col-1])
+
+                    for right_node in columns[i_col - 1]:
+                        if right_node.name in node.items_out:
+                            node.first_right = right_node
+                            break
+
+            columns.append(column)
+            col_widths.append(col_width)
+
+        # ===========================================================================
+        # STEP 3 - Locate the items
+        # ===========================================================================
+
+        x = 0
+        for icol, (col, col_width) in enumerate(zip(columns, col_widths)):
+
+            assert len(col), f"{icol} : {col}"
+
+            #x -= col_width/2 + X_SEPA
+
+            y = 0
+            for node in col:
+
+                #if node.below:
+                #    y += Y_SEPA/2
+
+                if node.is_frame:
+                    y -= Y_SEPA*5
+
+                # Align vertically to the first right node
+                if node.first_right is not None:
+                    y = min(y, node.first_right.y)
+
+                node.location = (x - node.width/2, y)
+                #node.location = (x, y)
+
                 y -= node.height/2 + Y_SEPA
 
-            x -= col_width/2 + X_SEPA
+            x -= col_width/2
 
-        self.wait()
+            # Sepa proportional to cols width
+            if icol < len(columns) - 1:
+                max_width = max(col_width, col_widths[icol+1])
+            else:
+                max_width = col_width
+            sepa = round(max(X_SEPA, 0.1*max_width))
+            x -= sepa
 
-        # ----------------------------------------------------------------------------------------------------
-        # reroutes
+        # ---------------------------------------------------------------------------
+        # Align vertically to the first left node
+        # ---------------------------------------------------------------------------
 
-        if reroutes and self.bnode is not None and not self.bnode.label.startswith("$TEMP"):
-            self.frame_reroutes()
+        for col, prev_col in zip(columns[:-1], columns[1:]):
+            for i_node, node in enumerate(col):
+                for prev in prev_col:
+                    if prev.name in node.items_in:
+                        offset = prev.y - node.y
+                        if offset < 0:
+                            for nd in col[i_node:]:
+                                nd.y += offset
+                                pass
+                        break
 
-# =============================================================================================================================
-# A Tree
 
-class Tree(Frame):
-    def __init__(self, btree, get_true_dims=False):
+# ====================================================================================================
+# A Node
+# ====================================================================================================
+
+class Node(Item):
+
+    def __init__(self, tree, bnode):
+        """ > Node wrapper
+
+        Properties
+        ----------
+        - tree (Tree) : tree wrapper
+        - bnode (bpy.types.Node) : wrapped node
+
+        Arguments
+        ---------
+        - tree (Tree) : the tree to arrange
+        - bnode (bpy.types.Node) : the wrapped node
+        """
+        self.tree  = tree
+        self.bnode = bnode
+
+        # Location
+        x, y = self.bnode.location
+        self.x = int(x)
+        self.y = int(y)
+
+        # Topology
+        self.reset()
+
+    def reset(self):
+        super().reset()
+
+        self._child_bounds = None
+
+        self.col = None
+        self.row = None
+        self.first_left = None
+        self.first_right = None
+
+        # Right and left nodes
+        self._out_nodes = None
+        self._in_nodes  = None
+        self._rights    = None
+        self._lefts     = None
+
+    def __str__(self):
+        sname = self.bnode.name if self.bnode.label == "" else self.bnode.label
+        x, y = self.bnode.location
+        w, h = self.dimensions
+
+        return f"<{'Frame' if self.is_frame else 'Node '} {sname:15s} ({x:.0f}, {y:.0f}) [{w:.0f}, {h:.0f}]>"
+
+    def __repr__(self):
+        return str(self)
+
+    # ====================================================================================================
+    # Node wrapper
+    # ====================================================================================================
+
+    @property
+    def name(self):
+        return self.bnode.name
+
+    @property
+    def is_frame(self):
+        return self.bnode.bl_idname == 'NodeFrame'
+
+    @property
+    def is_temp_frame(self):
+        if self.bnode is None:
+            return False
+        else:
+            return self.bnode.label.startswith(TEMP_FRAME)
+        
+    @is_temp_frame.setter
+    def is_temp_frame(self, value):
+        if value == True:
+            self.bnode.label = TEMP_FRAME
+        else:
+            self.bnode.label = value
+
+    @property
+    def is_reroute(self):
+        return self.bnode.bl_idname == 'NodeReroute'
+
+    @property
+    def is_layout(self):
+        return self.bnode.bl_idname in ['NodeReroute', 'NodeFrame']
+    
+    @property
+    def is_node(self):
+        return not self.is_frame
+    
+    @property
+    def counter(self):
+        count = len(self.children)
+        for child in self.children:
+            count += child.counter
+
+    @property
+    def is_group_input(self):
+        return self.bnode.bl_idname in ['NodeGroupInput']
+    
+    @property
+    def is_group_output(self):
+        return self.bnode.bl_idname in ['NodeGroupOutput']
+    
+    # ====================================================================================================
+    # Parent Frame
+    # ====================================================================================================
+
+    @property
+    def parent(self):
+        bparent = self.bnode.parent
+        if bparent is None:
+            return None
+        else:
+            return self.tree[bparent.name]
+        
+    @parent.setter
+    def parent(self, value):
+        if value is None:
+            self.bnode.parent = None
+        else:
+            self.bnode.parent = value.bnode
+        
+    def is_in_frame(self, frame):
+        """ Is in a frame
+
+        Arguments
+        ---------
+        - frame (Node) : the frame to test
+
+        Returns
+        -------
+        - bool : True if the frame belongs to the parents hierarchy
+        """
+        if self.parent is None:
+            return False
+        
+        elif self.parent == frame:
+            return True
+        
+        else:
+            return self.parent.is_in_frame(frame)
+        
+    # ====================================================================================================
+    # Directly linked nodes
+    # ====================================================================================================
+
+    @property
+    def in_nodes(self):
+        """ Direct input nodes
+
+        Returns
+        -------
+        - set of Nodes : nodes linked to one input socket of the node
+        """
+        if self._in_nodes is None:
+            self._in_nodes = set()
+            for socket in self.bnode.inputs:
+                for blink in socket.links:
+                    self._in_nodes.add(self.tree.nodes[blink.from_node.name])
+        
+        return self._in_nodes
+
+    @property
+    def out_nodes(self):
+        """ Direct output nodes
+
+        Returns
+        -------
+        - set of Nodes : nodes linked to one output socket of the node
+        """
+        if self._out_nodes is None:
+            self._out_nodes = set()
+            for socket in self.bnode.outputs:
+                for blink in socket.links:
+                    self._out_nodes.add(self.tree.nodes[blink.to_node.name])
+
+        return self._out_nodes
+
+    # ====================================================================================================
+    # Right and left nodes
+    # ====================================================================================================
+
+    # ----------------------------------------------------------------------------------------------------
+    # Build the dicts
+    # ----------------------------------------------------------------------------------------------------
+
+    def left_right_nodes(self, left: bool):
+        """ All the nodes linked to node input sockets
+
+        Arguments
+        ---------
+        - left (bool) : left or right nodes
+
+        Returns
+        -------
+        - dict : name -> (min dist, max dist)
+        """
+
+        nodes = {}
+
+        # ---------------------------------------------------------------------------
+        # The list of directly linked nodes (dist min = 1)
+        # ---------------------------------------------------------------------------
+
+        base = self.in_nodes if left else self.out_nodes
+        for node in base:
+            nodes[node.name] = (1, 1)
+
+        # ---------------------------------------------------------------------------
+        # Add the linked nodes of these nodes
+        # ---------------------------------------------------------------------------
+
+        ends = ZONE_INPUTS if left else ZONE_OUTPUTS
+
+        for node in [self.tree.nodes[node_name] for node_name in nodes]:
+
+            if node.bnode.bl_idname in ends:
+                continue
+
+            loop_list = node.lefts if left else node.rights
+            for next_name, (d_min, d_max) in loop_list.items():
+                if next_name in nodes:
+                    cur_min, cur_max = nodes[next_name]
+                    nodes[next_name] = min(cur_min, d_min + 1), max(cur_max, d_max + 1)
+                else:
+                    nodes[next_name] = d_min + 1, d_max + 1
+
+        return nodes
+    
+    # ----------------------------------------------------------------------------------------------------
+    # Left nodes
+    # ----------------------------------------------------------------------------------------------------
+
+    @property
+    def lefts(self):
+        if self._lefts is None:
+            self._lefts = self.left_right_nodes(True)
+        return self._lefts
+    
+    # ----------------------------------------------------------------------------------------------------
+    # Right nodes
+    # ----------------------------------------------------------------------------------------------------
+
+    @property
+    def rights(self):
+        if self._rights is None:
+            self._rights = self.left_right_nodes(False)
+        return self._rights
+    
+    # ====================================================================================================
+    # Link order
+    # ====================================================================================================
+
+    def input_rank(self, node):
+        """ Return the link input rank of a left node
+
+        Returns
+        -------
+        - int : the linked order, None if not linked
+        """
+        rank = 0
+        for socket in self.bnode.inputs:
+            for blink in socket.links:
+                if blink.from_node.name == node.name:
+                    return rank
+            rank += 1
+
+        return None
+    
+    # ====================================================================================================
+    # Child bounds
+    # ====================================================================================================
+
+    @property
+    def child_bounds(self):
+        """ Child nodes bounds
+
+        CAUTION : height is top down when y is from down to top. Moreover, dimensions are
+        doubled in the coordinates space
+
+        Node top :      y
+                        |
+        Node bottom :  y-h/2
+
+        HENCE : x0, y0 is the left bottom corner (smallest y)
+
+        top left corner is : (x0, y1)
+        dims is : (x1 - x0), (y1 - y0)
+        """
+        if not len(self.children):
+            return None
+        
+        if self._child_bounds is None:
+            X0 = None
+            for child in self.children:
+
+                w, h = child.dimensions
+                x0, y0, x1, y1 = child.x, child.y - round(h/2), child.x + round(w/2), child.y
+
+                if X0 is None:
+                    X0, Y0, X1, Y1 = x0, y0, x1, y1
+                else:
+                    X0, Y0, X1, Y1 = min(X0, x0), min(Y0, y0), max(X1, x1), max(Y1, y1)
+
+            self._child_bounds = X0, Y0, X1, Y1
+
+        return self._child_bounds
+    
+    # ====================================================================================================
+    # Location
+    # ====================================================================================================
+
+    @property
+    def location(self):
+        return self.x, self.y
+
+    @location.setter
+    def location(self, value):
+        x, y = value
+        self.x, self.y = round(x), round(y)
+
+    def location_to_node(self):
+
+        if self.is_node or (len(self.children) == 0):
+            self.bnode.location = (self.x, self.y)
+            return
+        
+        x0, _, _, y0 = self.child_bounds
+
+        for child in self.children:
+            child.x -= x0 # + 30
+            child.y -= y0 # - 36
+            child.location_to_node()
+
+        self.bnode.location = (self.x, self.y)
+
+    # ====================================================================================================
+    # Dimensions
+    # ====================================================================================================
+
+    @property
+    def dimensions(self):
+
+        # ---------------------------------------------------------------------------
+        # Frame
+        # ---------------------------------------------------------------------------
+
+        if self.is_frame:
+            if len(self.children):
+                x0, y0, x1, y1 = self.child_bounds
+                return (x1 - x0)*2 + 120, (y1 - y0)*2 + 132
+            else:
+                return 0, 0
+
+        # ---------------------------------------------------------------------------
+        # Node
+        # ---------------------------------------------------------------------------
+
+        # Dimensions are directly available
+        if self.tree.use_true_dims:
+            w, h = self.bnode.dimensions
+            return round(w), round(h)
+        
+        # ----- Input Socket height
+
+        def socket_height(socket):
+            
+            if not socket.enabled:
+                return 0
+            
+            if socket.hide_value:
+                h = SOCKET
+                
+            else:
+                if socket.type == 'VECTOR':
+                    if socket.is_linked:
+                        h = 24
+                    else:
+                        h = 148
+                        
+                elif socket.type == 'BOOLEAN':
+                    h = 42
+                    
+                else:
+                    h = SOCKET
+
+            return h
+        
+        # ----- Node height
+
+        HEADER    = 56
+        SOCKET    = 44
+        SOCK_SEPA =  6
+    
+        # out height
+        out_height = 0
+        for socket in self.bnode.outputs:
+            out_height += SOCKET
+            
+        # in height
+        in_height = 0
+        for socket in self.bnode.inputs:
+            in_height += socket_height(socket)
+            
+        height = HEADER  + out_height + in_height
+        if in_height and out_height:
+            height += SOCK_SEPA
+            
+        # Delta from constant array
+        dims = NODE_INFO[self.tree.btree.bl_idname][self.bnode.bl_idname]['dims']
+        return dims[0], dims[2] + height
+    
+    @property
+    def width(self):
+        """ Node width
+
+        Returns
+        -------
+        - float : node width
+        """
+        return round(self.dimensions[0])
+
+    @property
+    def height(self):
+        """ Node height
+
+        Returns
+        -------
+        - float : node height
+        """
+        return round(self.dimensions[1])     
+    
+
+
+# ====================================================================================================
+# Tree Wrapper
+# ====================================================================================================
+
+class Tree(Item):
+    def __init__(self, btree, no_empty_frame=True):
         """ > Tree wrapper
 
         Properties
         -----------
         - btree (bpy.types.Tree)
-        - get_true_dims (bool) : read the dimensions from nodes are use an estimate
 
         Arguments
         ---------
         - btree (bpy.types.Tree) : the tree to wrap
-        - get_true_dims (bool) : read the dimensions from nodes are use an estimate
-        """
-
-        super().__init__(self, None)
+        """        
         if isinstance(btree, str):
             btree = bpy.data.node_groups[btree]
-        self.btree = btree
-        self.get_true_dims = get_true_dims
+
+        self.btree       = btree
+        self.input_node  = None
+        self.output_node = None
 
         # ---------------------------------------------------------------------------
         # Delete empty frames
         # ---------------------------------------------------------------------------
 
-        frames = []
-        not_empty = set()
-        for node in self.btree.nodes:
-            if node.bl_idname == 'NodeFrame':
-                frames.append(node)
-            else:
-                par = node.parent
-                while par is not None:
-                    not_empty.add(par.name)
-                    par = par.parent
+        if no_empty_frame:
+            frames = []
+            not_empty = set()
+            for node in self.btree.nodes:
+                if node.bl_idname == 'NodeFrame':
+                    frames.append(node)
+                else:
+                    par = node.parent
+                    while par is not None:
+                        not_empty.add(par.name)
+                        par = par.parent
 
-        for frame in frames:
-            if frame.name not in not_empty:
-                self.btree.nodes.remove(frame)
+            for frame in frames:
+                if frame.name not in not_empty:
+                    self.btree.nodes.remove(frame)
 
         # ---------------------------------------------------------------------------
         # Nodes
         # ---------------------------------------------------------------------------
 
-        self.nodes = {}
+        self.nodes  = {}
         for bnode in self.btree.nodes:
-            if bnode.bl_idname == 'NodeFrame':
-                new_node = Frame(self, bnode)
-            else:
-                new_node = Node(self, bnode)
-                if bnode.bl_idname == 'NodeGroupOutput' and bnode.parent is None:
+            new_node = Node(self, bnode)
+            self.nodes[new_node.name] = new_node
+
+            if bnode.bl_idname == 'NodeGroupOutput':
+                bnode.parent = None
+                if self.output_node is None:
                     self.output_node = new_node
 
-                if bnode.bl_idname == 'NodeGroupInput' and bnode.parent is None:
+            elif bnode.bl_idname == 'NodeGroupInput':
+                if bnode.parent is None or self.input_node is None:
                     self.input_node = new_node
 
-            self.nodes[bnode.name] = new_node
-
-        # ----- Links
+        # ---------------------------------------------------------------------------
+        # Links
+        # ---------------------------------------------------------------------------
 
         self.links = [Link(self, blink) for blink in self.btree.links]
 
+        # ---------------------------------------------------------------------------
+        # Zones
+        # ---------------------------------------------------------------------------
+
+        """
+        self.zones = []
+        for node in self.nodes.values():
+            if node.bnode.bl_idname not in ZONE_INPUTS:
+                continue
+
+            # Shouldn't occur, but just in case
+            if node.bnode.paired_output is None:
+                continue
+
+            self.zones.append(Zone(self, node, self.nodes[node.bnode.paired_output.name]))
+        """
+
     def __str__(self):
-        return f"<Tree '{self.btree.name}', {len(self.nodes)} nodes, {len(self.links)} links, {len(self.children)} children>"
+        return f"<Tree {self.btree.name} {len(self.nodes)} nodes>"
+    
+    def get_node(self, name):
+        return self.nodes[name]
+
+    # ====================================================================================================
+    # As a list of nodes
+    # ====================================================================================================
 
     def __getitem__(self, index):
         if isinstance(index, str):
@@ -1098,20 +1120,15 @@ class Tree(Frame):
             return self.nodes[index.name]
 
         raise AttributeError(f"Node index not valid: {index}")
-
-    @property
-    def parent(self):
-        return None
-
+    
     # ====================================================================================================
     # Nodes management
+    # ====================================================================================================
 
     def new_node(self, bl_idname, frame=None):
         bnode = self.btree.nodes.new(bl_idname)
-        if bl_idname == 'NodeFrame':
-            node = Frame(self, bnode)
-        else:
-            node = Node(self, bnode)
+        bnode.select = False
+        node = Node(self, bnode)
         self.nodes[bnode.name] = node
 
         if frame is not None:
@@ -1119,8 +1136,11 @@ class Tree(Frame):
 
         return node
 
-    def new_frame(self, frame=None):
-        return self.new_node('NodeFrame', frame=frame)
+    def new_frame(self, frame=None, temp=False):
+        frame = self.new_node('NodeFrame', frame=frame)
+        if temp:
+            frame.is_temp_frame = True
+        return frame
 
     def new_reroute(self, frame=None):
         return self.new_node('NodeReroute', frame=frame)
@@ -1138,6 +1158,11 @@ class Tree(Frame):
         del self.nodes[node.bnode.name]
         self.btree.nodes.remove(node.bnode)
 
+    def del_frame(self, node):
+        del self.nodes[node.name]
+        self.btree.nodes.remove(node.bnode)
+
+
     def del_link(self, link):
         self.btree.links.remove(link.blink)
         self.links.remove(link)
@@ -1147,9 +1172,14 @@ class Tree(Frame):
         link = Link(self, blink)
         self.links.append(link)
         return link
-
+    
     # ====================================================================================================
+    # Reroutes
+    # ====================================================================================================
+
+    # ----------------------------------------------------------------------------------------------------
     # Delete the reroute nodes
+    # ----------------------------------------------------------------------------------------------------
 
     def del_reroutes(self):
         """ > Delete reroute nodes
@@ -1178,11 +1208,64 @@ class Tree(Frame):
 
             self.del_node(reroute)
 
-    # =============================================================================================================================
-    # Group input management
+    # ----------------------------------------------------------------------------------------------------
+    # Build frame inputs as reroute nodes
+    # ----------------------------------------------------------------------------------------------------
 
-    # -----------------------------------------------------------------------------------------------------------------------------
-    # Group input nodes
+    def insert_reroutes(self):
+
+        frames = [node for node in self.nodes.values() if node.is_frame]
+
+        for frame in frames:
+
+            if frame.is_temp_frame:
+                continue
+
+            # ----- All the links between a node inside the frame and a node outside the frame
+
+            in_links = []
+            out_links = []
+            for link in self.links:
+                if link.node0.is_in_frame(frame):
+                    if not link.node1.is_in_frame(frame):
+                        out_links.append(link)
+                else:
+                    if link.node1.is_in_frame(frame):
+                        in_links.append(link)
+
+            # ----- Create input reroutes
+
+            source_nodes = {}
+            for link in in_links:
+                source_key = link.node0_key
+                reroute = source_nodes.get(source_key)
+                if reroute is None:
+                    reroute = link.insert_reroute(frame)
+                    source_nodes[source_key] = reroute
+
+                else:
+                    link.replace_from(reroute, index0=0)
+
+            # ----- Create the output reroutes
+
+            source_nodes = {}
+            for link in out_links:
+                source_key = link.node0_key
+                reroute = source_nodes.get(source_key)
+                if reroute is None:
+                    reroute = link.insert_reroute(frame)
+                    source_nodes[source_key] = reroute
+
+                else:
+                    link.replace_from(reroute, index0=0)
+
+    # ====================================================================================================
+    # Group input management
+    # ====================================================================================================
+
+    # ----------------------------------------------------------------------------------------------------
+    # The current list of group input nodes
+    # ----------------------------------------------------------------------------------------------------
 
     @property
     def group_inputs(self):
@@ -1194,8 +1277,9 @@ class Tree(Frame):
         """
         return [node for node in self.nodes.values() if node.bnode.bl_idname == 'NodeGroupInput']
 
-    # -----------------------------------------------------------------------------------------------------------------------------
+    # ----------------------------------------------------------------------------------------------------
     # Keep one single gorup output
+    # ----------------------------------------------------------------------------------------------------
 
     def single_group_input(self):
         """ > Keep only one Group Input node
@@ -1221,14 +1305,17 @@ class Tree(Frame):
 
         group_input.bnode.parent = None
 
-    # -----------------------------------------------------------------------------------------------------------------------------
+    # ----------------------------------------------------------------------------------------------------
     # Create one group input per frame
+    # ----------------------------------------------------------------------------------------------------
 
-    def group_input_per_frame(self):
+    def group_input_per_frame(self, all: bool = False):
         """ Create one group input node per frame linked to the group input
         """
 
-        # ----- One single group input
+        # ---------------------------------------------------------------------------
+        # One single group input
+        # ---------------------------------------------------------------------------
 
         self.single_group_input()
         inputs = self.group_inputs
@@ -1238,27 +1325,41 @@ class Tree(Frame):
         assert(len(inputs) == 1)
         group_input = inputs[0]
 
-        # ----------------------------------------------------------------------------------------------------
+        # ---------------------------------------------------------------------------
         # Loop on the output links
+        # ---------------------------------------------------------------------------
 
         frames = {}
         for link in self.links:
             if link.node0 != group_input:
                 continue
 
-            bframe = link.node1.bnode.parent
-            if bframe is None:
+            frame = link.node1.parent
+
+            if frame is None:
                 continue
 
-            frame = self[bframe]
-            frame_input = frames.get(bframe.name)
+            # Only top frames
+            if not all:
+                while frame.parent is not None:
+                    frame = frame.parent
+
+            print("GI", frame.name)
+
+            # Create the frame group input if it doesn't already exist
+            frame_input = frames.get(frame.name)
             if frame_input is None:
                 frame_input = self.new_node('NodeGroupInput', frame)
-                frames[bframe.name] = frame_input
+                frame_input.bnode.use_custom_color = True
+                frame_input.bnode.color = (.11, .11, .11)
+                frames[frame.name] = frame_input
 
+            # Replace the link to the frame group input
             link.replace_from(frame_input)
 
-        # ----- Remain if not output
+        # ---------------------------------------------------------------------------
+        # Keep if outputs remain
+        # ---------------------------------------------------------------------------
 
         keep = False
         for link in self.btree.links:
@@ -1268,18 +1369,19 @@ class Tree(Frame):
         if not keep:
             self.del_node(group_input)
 
-    # =============================================================================================================================
+    # ====================================================================================================
     # Zones in frames
+    # ====================================================================================================
 
     def zones_in_frame(self):
         """ Create a temporary frame around zones
         """
 
-        # ----------------------------------------------------------------------------------------------------
+        # ---------------------------------------------------------------------------
         # Get the existing zones
+        # ---------------------------------------------------------------------------
 
         zones = []
-
         for node in self.nodes.values():
             if node.bnode.bl_idname not in ZONE_INPUTS:
                 continue
@@ -1289,131 +1391,261 @@ class Tree(Frame):
 
             zone_input  = node
             zone_output = self[node.bnode.paired_output]
+            zone_nodes = [zone_input] + [self.nodes[name] for name in zone_input.rights]
 
-            if False:
-                zone = [zone_input, zone_output] + [node for node in self.nodes.values() if node.in_zone(zone_input, zone_output)]
-            else:
-                zone = [zone_input, zone_output]
-                for node in self.nodes.values():
-                    ok = node.in_zone(zone_input, zone_output)
-                    if ok:
-                        zone.append(node)
+            # The frame can be created only if all the zone nodes belong
+            # to the input node frame
 
-
-            zones.append(zone)
-
-        if len(zones) == 0:
-            return
-
-        # ----------------------------------------------------------------------------------------------------
-        # Zones imbrication
-
-        imbrication = [None] * len(zones)
-        if len(zones) > 1:
-            for izone, zone in enumerate(zones):
-                for iz, z in enumerate(zones):
-                    if iz == izone:
-                        continue
-
-                    # Zone imbricated in z
-                    if zone[0].in_zone(z[0], z[1]):
-                        icur = imbrication[izone]
-                        if icur is None:
-                            imbrication[izone] = iz
-                        else:
-                            cur = zones[icur]
-                            if z[0].in_zone(cur[0], cur[1]):
-                                imbrication[izone] = iz
-
-        # ----------------------------------------------------------------------------------------------------
-        # Create the temporary frames
-        #
-        # Start by the most imbricated zone
-
-        n = len(zones)
-        frames = [None]*n
-        for _ in range(n):
-            for izone, zone in enumerate(zones):
-
-                if zone is None:
-                    continue
-
-                # ----- Has the zone imbricated zones
-
-                KO = False
-                for z in zones:
-                    if z is None or z == zone:
-                        continue
-                    if z[0].in_zone(zone[0], zone[1]):
-                        # z is imbricated in zone, it must be treated before
-                        KO = True
+            zone_frame = zone_input.parent
+            change = zone_frame is None
+            
+            if not change:
+                change = True
+                for node in zone_nodes:
+                    if not node.is_in_frame(zone_frame):
+                        change = False
                         break
 
-                if KO:
-                    continue
+            # In addition, no zone node must belongs to a frame owning anoter input node
 
-                # ----- Creates a frame only if not already in a frame
+            if change:
+                frames = set()
+                for node in zone_nodes:
+                    if node.parent is None or node.parent in frames:
+                        continue
+                    cur = node.parent
+                    for cur_node in self.nodes.values():
+                        if (cur_node.parent != cur) or (cur_node in zone_nodes):
+                            continue
 
-                if zone[0].parent == self and zone[1].parent == self:
-                    frame = self.new_frame()
-                    frame.bnode.label = "$TEMP_ZONE"
-                    frames[izone] = frame
-                    for node in zone:
-                        if node.bnode.parent is None:
-                            node.bnode.parent = frame.bnode
+                        for prev in list(cur_node.lefts.keys()) + [cur_node]:
+                            if prev.bnode.bl_idname in INPUT_NODES and prev != zone_input:
+                                change = False
+                                break
 
-                zones[izone] = None
-                break
+                        if not change:
+                            break
+                    if not change:
+                        break
 
-        # ---- Parent of created frames
+                    frames.add(cur)
 
-        for i, frame in enumerate(frames):
-            if frame is None:
-                continue
-            iparent = imbrication[i]
-            if iparent is not None:
-                frame.bnode.parent = frames[iparent].bnode
+            if change:
+                zones.append((zone_frame, zone_nodes))
 
-        self.wait()
+        # ---------------------------------------------------------------------------
+        # Change the owning frames
+        # ---------------------------------------------------------------------------
 
-    # =============================================================================================================================
+        for zone_frame, zone_nodes in zones:
+
+            new_frame = self.new_frame(temp=True)
+            new_frame.parent = zone_frame
+            for node in zone_nodes:
+                cur = node
+                while cur.parent != new_frame and cur.parent != zone_frame:
+                    cur = cur.parent
+                if cur.parent == zone_frame:
+                    cur.parent = new_frame
+
+    # ====================================================================================================
     # Delete temporary frames
+    # ====================================================================================================
 
     def del_temp_frames(self):
         """ Delete temporary frames
-
-        Temporary frames have a label starting by '$TEMP'
         """
-        to_delete = [frame for frame in self.nodes.values() if frame.bnode.label.startswith("$TEMP")]
-        for frame in to_delete:
+        to_del = set()
+        for node in self.nodes.values():
+            if node.parent is None:
+                continue
+            if node.parent.is_temp_frame:
+                to_del.add(node.parent)
+                node.parent = node.parent.parent
 
-            bframe = frame.bnode
-            for bnode in self.btree.nodes:
-                if bnode.parent == bframe:
-                    bnode.parent = bframe.parent
+        for frame in to_del:
+            self.del_frame(frame)
 
-            self.tree.del_node(frame)
+    # ====================================================================================================
+    # Hierarchy
+    # ====================================================================================================
+
+    def build_hierarchy(self):
+
+        # ---------------------------------------------------------------------------
+        # Reset
+        # ---------------------------------------------------------------------------
+
+        self.reset()
+        for node in self.nodes.values():
+            node.reset()
+
+        # ---------------------------------------------------------------------------
+        # Hierarchy
+        # ---------------------------------------------------------------------------
+
+        for node in self.nodes.values():
+            if node.parent is None:
+                self.append(node)
+            else:
+                self.nodes[node.parent.name].append(node)
+
+        # ---------------------------------------------------------------------------
+        # Link simplification
+        # ---------------------------------------------------------------------------
+        """
+        A link between two nodes is transformed in a link between two items:
+        - if the nodes have the same owner, the link is between their item
+        - if the nodes don'ts share the same owner, the link is created between the two
+          owner nodes sharing the same parent. For instance if is link exists beteween the
+          nodes [Top > Frame > Frame B > Node 1] and [Top > Frame > Node 2], the item link
+          is between [Frame B] and [Node 2].
+
+        The item link is stored in:
+        - The outputs dict of the first item
+        - The inputs dict of the second item
+
+        The key of the dicts is the item name, the value is the list of Node Links.
+
+        Similarily, the items where the links go through maintain the dicts of passing through links:
+        - through_in
+        - through_out
+
+        For exemple, if a link exists between the two nodes:
+        - Top > Frame > Frame A > Frame B > Node 1
+        - Top > Frame > Node 2
+        """
+
+        for link in self.links:
+
+            # Owner nodes sharing the same owner
+
+            _, node0, node1 = link.node0.common_ancestor(link.node1)
+
+            # Update direct
+            #   avoiding strange case of a node being both in and out,
+            #   this could happen with frames.
+            if node0.name not in node1.items_out:
+                if node0.name in node1.items_in:
+                    node1.items_in[node0.name].append(link)
+                else:
+                    node1.items_in[node0.name] = [link]
+
+            if node1.name not in node0.items_in:
+                if node1.name in node0.items_out:
+                    node0.items_out[node1.name].append(link)
+                else:
+                    node0.items_out[node1.name] = [link]
+
+            # Update through
+
+            cur = link.node0
+            while cur != node0:
+                if node1.name in cur.through_out:
+                    cur.through_out[node1.name].append(link)
+                else:
+                    cur.through_out[node1.name] = [link]
+                cur = cur.owner
+
+            cur = link.node1
+            while cur != node1:
+                if node0.name in cur.through_in:
+                    cur.through_in[node0.name].append(link)
+                else:
+                    cur.through_in[node0.name] = [link]
+                cur = cur.owner
+
+
+    
+    # ====================================================================================================
+    # There is a Node editor
+    # ====================================================================================================
+
+    @classmethod
+    def wait(cls):
+        if Tree.use_true_dims:
+            bpy.ops.wm.redraw_timer(type='DRAW_WIN_SWAP', iterations=1)
+
+    @classmethod
+    def use_true_dims(self):
+
+        for area in bpy.context.screen.areas:
+            if area.type == 'NODE_EDITOR':
+                for space in area.spaces:
+                    if space.type == 'NODE_EDITOR' and space.node_tree == self.btree:
+                        return True
+
+        return False
+    
+    # ====================================================================================================
+    # Arrange
+    # ====================================================================================================
+
+    def arrange(self, reroutes: bool = True, input_in_frames: Literal['NO', 'TOP', 'ALL'] = 'TOP'):
+        """ Nodes arrangement
+
+        Arguments
+        ---------
+        - reroutes (bool = True) : insert reroutes in frames as in / out sockets
+        - input_in_frames (str in ('NO', 'TOP', 'ALL') = 'TOP' : one group input node is each frame, top frame or no
+        """
+
+        # ---------------------------------------------------------------------------
+        # Prepare
+        # ---------------------------------------------------------------------------
+
+        # No reroute (we are in auto arrangement !)
+        self.del_reroutes()
+
+        # One input per frame
+
+        assert input_in_frames in ('NO', 'TOP', 'ALL')
+
+        if input_in_frames == 'TOP':
+            self.group_input_per_frame(all=False)
+
+        elif input_in_frames == 'ALL':
+            self.group_input_per_frame(all=True)
+
+        else:
+            self.single_group_input()
+
+        # Zones to temmp frames
+        self.zones_in_frame()
+
+        # Insert reroutes
+        if reroutes:
+            self.insert_reroutes()
+
+        # ---------------------------------------------------------------------------
+        # Arrange
+        # ---------------------------------------------------------------------------
+
+        self.build_hierarchy()
+        self.wait()
+        super().arrange()
+
+        # ---------------------------------------------------------------------------
+        # Finalize
+        # ---------------------------------------------------------------------------
+
+        # From virtual to actual location
+        for child in self.children:
+            child.location_to_node()
+
+        # Delete temp frames
+        self.del_temp_frames()
+
 
 # ====================================================================================================
-# Arrange a tree
+# Main - Arrange a tree
+# ====================================================================================================
 
-def arrange(btree, reroutes=True, input_in_frames=True, get_true_dims=False):
+def arrange(btree, reroutes: bool = True, input_in_frames: Literal['NO', 'TOP', 'ALL'] = 'TOP'):
 
-    # Try to update node dimensions !
-    Node.wait()
+    tree = Tree(btree)
+    tree.arrange(reroutes=reroutes, input_in_frames=input_in_frames)
 
-    tree = Tree(btree, get_true_dims=get_true_dims)
-
-    if reroutes:
-        tree.del_reroutes()
-
-    if input_in_frames:
-        tree.group_input_per_frame()
-
-    if False: # COULD BE VERY SLOW
-        tree.zones_in_frame()
-    tree.arrange(reroutes=reroutes)
-    tree.del_temp_frames()
 
 # ====================================================================================================
 # UI
@@ -1452,7 +1684,7 @@ class ArrangeNodesOperator(bpy.types.Operator):
 
     def execute(self, context):
         space = context.space_data
-        arrange(space.edit_tree, get_true_dims=True)
+        arrange(space.edit_tree) #, get_true_dims=True)
         return {'FINISHED'}
 
 class NodeDumpOperator(bpy.types.Operator):
@@ -1537,3 +1769,4 @@ def unregister():
         bpy.utils.unregister_class(LayoutArrangePanel)
     except:
         pass
+
