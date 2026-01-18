@@ -46,19 +46,18 @@ from . scripterror import NodeError
 from . treeinterface import TreeInterface
 
 class GeoNodes(Tree):
-    def __init__(self, tree_name: str, clear: bool=True, fake_user: bool=False, is_group: bool=False, prefix: str | None=None):
+    def __init__(self, tree_name: str, fake_user: bool=False, is_group: bool=False, prefix: str | None=None):
         """ > Geometry Nodes
 
         Arguments
         ---------
         - tree_name (str) : Geometry Nodes name
-        - clear (bool = True) : clear the tree content
         - fake_user (bool = False) : set fake_user flag
         - is_group (bool = False) : tree is a group
         - prefix (str = None) : name prefix
         """
 
-        super().__init__(tree_name, tree_type='GeometryNodeTree', clear=clear, fake_user=fake_user, is_group=is_group, prefix=prefix)
+        super().__init__(tree_name, tree_type='GeometryNodeTree', fake_user=fake_user, is_group=is_group, prefix=prefix)
 
         self._btree.is_modifier = not is_group
 
@@ -66,14 +65,20 @@ class GeoNodes(Tree):
     # Tool
 
     @classmethod
-    def Tool(cls, tree_name, clear=True, fake_user=False, object_mode=True, edit_mode=False, sculpt_mode=False,
-        mesh=True, curve=False, cloud=False, wait_for_click=False):
+    def Tool(cls, tree_name,
+            fake_user       : bool = False,
+            object_mode     : bool = True, 
+            edit_mode       : bool = False,
+            sculpt_mode     : bool = False,
+            mesh            : bool = True, 
+            curve           : bool = False, 
+            cloud           : bool = False, 
+            wait_for_click  : bool = False):
         """ > Tool Geometry Nodes
 
         Arguments
         ---------
         - tree_name (str) : Geometry Nodes namde
-        - clear (bool = True) : clear the tree content
         - fake_user (bool = False) : set fake_user flag
         - object_mode (bool = True) : tool available in object mode
         - edit_mode (bool = False) : tool available in edit mode
@@ -88,7 +93,7 @@ class GeoNodes(Tree):
         - GeoNodes
         """
 
-        geonodes = cls(tree_name, clear=clear, fake_user=fake_user)
+        geonodes = cls(tree_name, fake_user=fake_user)
 
         geonodes._btree.is_tool = True
 

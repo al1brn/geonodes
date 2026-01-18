@@ -77,24 +77,28 @@ from .nodeclass import Node
 from .scripterror import NodeError
 from .treeinterface import TreeInterface
 
+from typing import Literal
+
 class ShaderNodes(Tree):
     def __init__(self, 
-            tree_name : str, 
-            clear     : bool = True, 
-            fake_user : bool = False, 
-            is_group  : bool = False, 
-            prefix    : Optional[str] = None):
+            tree_name        : str,
+            *,
+            fake_user        : bool = False, 
+            is_group         : bool = False, 
+            prefix           : Optional[str] = None,
+            replace_material : bool = False, 
+            ):
         """ > ShaderNodes
 
         Arguments
         ---------
         - tree_name (str) : Shader Nodes name
-        - clear (bool = True) : clear the tree content
         - fake_user (bool = False) : set fake_user flag
         - is_group (bool = False) : tree is a group
         - prefix (str = None) : name prefix
+        - replace_material (bool = False) : replace material if already exists
         """
-        super().__init__(tree_name, tree_type='ShaderNodeTree', clear=clear, fake_user=fake_user, is_group=is_group, prefix=prefix)
+        super().__init__(tree_name, tree_type='ShaderNodeTree', fake_user=fake_user, is_group=is_group, prefix=prefix, replace_material=replace_material)
 
     # =============================================================================================================================
     # Input Node

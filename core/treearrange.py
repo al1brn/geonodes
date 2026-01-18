@@ -49,6 +49,8 @@ import bpy
 from mathutils import Vector
 from .constants import NODE_INFO
 
+from bpy.props import BoolProperty
+
 from typing import Literal, List
 
 X_SEPA = 60
@@ -61,6 +63,9 @@ INPUT_NODES  = ZONE_INPUTS  + ['NodeGroupInput']
 OUTPUT_NODES = ZONE_OUTPUTS + ['NodeGroupOutput']
 
 TEMP_FRAME = "$TEMP FRAME"
+
+# Minimum input links for a frame to have its dedicated Group Input Node
+MIN_INPUT_LINKS = 5
 
 # ====================================================================================================
 # A link between two nodes
@@ -1309,7 +1314,7 @@ class Tree(Item):
     # Create one group input per frame
     # ----------------------------------------------------------------------------------------------------
 
-    def group_input_per_frame(self, all: bool = False):
+    def group_input_per_frame(self, all_frames: bool = False):
         """ Create one group input node per frame linked to the group input
         """
 
@@ -1326,48 +1331,123 @@ class Tree(Item):
         group_input = inputs[0]
 
         # ---------------------------------------------------------------------------
-        # Loop on the output links
+        # frames dict : frame -> list of links from group input to one of its nodes
         # ---------------------------------------------------------------------------
 
-        frames = {}
+        frame_links = {}
+        frame_depths = {}
+        total = 0
         for link in self.links:
+
+            # Only links from Group Input to a node within a Frame
+
             if link.node0 != group_input:
                 continue
 
-            frame = link.node1.parent
+            total += 1
 
+            frame = link.node1.parent
             if frame is None:
                 continue
 
-            # Only top frames
-            if not all:
-                while frame.parent is not None:
-                    frame = frame.parent
+            # We register the link in the dict
 
-            print("GI", frame.name)
+            links = frame_links.get(frame.name)
+            if links is None:
+                frame_links[frame.name] = [link]
+            else:
+                links.append(link)
 
-            # Create the frame group input if it doesn't already exist
-            frame_input = frames.get(frame.name)
-            if frame_input is None:
-                frame_input = self.new_node('NodeGroupInput', frame)
-                frame_input.bnode.use_custom_color = True
-                frame_input.bnode.color = (.11, .11, .11)
-                frames[frame.name] = frame_input
+            # The depths
+            depth = 0
+            cur = frame
+            while cur.parent is not None:
+                depth -= 1
+                cur = cur.parent
+            frame_depths[frame.name] = depth
 
-            # Replace the link to the frame group input
-            link.replace_from(frame_input)
+        # ---------------------------------------------------------------------------
+        # For frames with less than MIN_INPUT_LINKS, transfer the links to its parent
+        # ---------------------------------------------------------------------------
+        
+        if not all_frames:
+            # Loop on frame links starting from max depth
+            for frame_name in sorted(frame_depths, key=frame_depths.get):
+                links = frame_links[frame_name]
+
+                if len(links) >= MIN_INPUT_LINKS:
+                    continue
+
+                parent = self.nodes[frame_name].parent
+                while (parent is not None) and (parent.name not in frame_links):
+                    parent = parent.parent
+
+                if parent is not None:
+                    frame_links[parent.name].extend(links)
+                    del frame_links[frame_name]
+
+        # ---------------------------------------------------------------------------
+        # Create one group input per frame
+        # ---------------------------------------------------------------------------
+
+        for frame_name, links in frame_links.items():
+
+            frame = self.nodes[frame_name]
+
+            frame_input = self.new_node('NodeGroupInput', frame)
+
+            frame_input.bnode.use_custom_color = True
+            frame_input.bnode.color = (.11, .11, .11)
+
+            #Plug the links to the frame group input
+            for link in links:
+                link.replace_from(frame_input)
+
+            total -= len(links)
+
+        if False:
+            frames = {}
+            for link in self.links:
+                if link.node0 != group_input:
+                    continue
+
+                frame = link.node1.parent
+                if frame is None:
+                    continue
+
+                # Only top frames or frame with more than 5 links
+                if not all:
+                    while frame.parent is not None:
+                        frame = frame.parent
+
+                # Create the frame group input if it doesn't already exist
+                frame_input = frames.get(frame.name)
+                if frame_input is None:
+                    frame_input = self.new_node('NodeGroupInput', frame)
+                    frame_input.bnode.use_custom_color = True
+                    frame_input.bnode.color = (.11, .11, .11)
+                    frames[frame.name] = frame_input
+
+                # Replace the link to the frame group input
+                link.replace_from(frame_input)
 
         # ---------------------------------------------------------------------------
         # Keep if outputs remain
         # ---------------------------------------------------------------------------
 
-        keep = False
-        for link in self.btree.links:
-            if link.from_node == group_input.bnode:
-                keep = True
-                break
-        if not keep:
-            self.del_node(group_input)
+        if True:
+            assert total >= 0, "Oups"
+            if total == 0:
+                self.del_node(group_input)
+
+        else:
+            keep = False
+            for link in self.btree.links:
+                if link.from_node == group_input.bnode:
+                    keep = True
+                    break
+            if not keep:
+                self.del_node(group_input)
 
     # ====================================================================================================
     # Zones in frames
@@ -1418,7 +1498,8 @@ class Tree(Item):
                         if (cur_node.parent != cur) or (cur_node in zone_nodes):
                             continue
 
-                        for prev in list(cur_node.lefts.keys()) + [cur_node]:
+                        for prev_name in list(cur_node.lefts.keys()) + [cur_node.name]:
+                            prev = self.nodes[prev_name]
                             if prev.bnode.bl_idname in INPUT_NODES and prev != zone_input:
                                 change = False
                                 break
@@ -1554,19 +1635,16 @@ class Tree(Item):
                 else:
                     cur.through_in[node0.name] = [link]
                 cur = cur.owner
-
-
     
     # ====================================================================================================
     # There is a Node editor
     # ====================================================================================================
 
-    @classmethod
-    def wait(cls):
-        if Tree.use_true_dims:
+    def wait(self):
+        if self.use_true_dims:
             bpy.ops.wm.redraw_timer(type='DRAW_WIN_SWAP', iterations=1)
 
-    @classmethod
+    @property
     def use_true_dims(self):
 
         for area in bpy.context.screen.areas:
@@ -1581,13 +1659,13 @@ class Tree(Item):
     # Arrange
     # ====================================================================================================
 
-    def arrange(self, reroutes: bool = True, input_in_frames: Literal['NO', 'TOP', 'ALL'] = 'TOP'):
+    def arrange(self, reroutes: bool = True, single_input: bool = False):
         """ Nodes arrangement
 
         Arguments
         ---------
         - reroutes (bool = True) : insert reroutes in frames as in / out sockets
-        - input_in_frames (str in ('NO', 'TOP', 'ALL') = 'TOP' : one group input node is each frame, top frame or no
+        - single_input (bool = False) : one single Group Input node or one per top frame
         """
 
         # ---------------------------------------------------------------------------
@@ -1598,17 +1676,10 @@ class Tree(Item):
         self.del_reroutes()
 
         # One input per frame
-
-        assert input_in_frames in ('NO', 'TOP', 'ALL')
-
-        if input_in_frames == 'TOP':
-            self.group_input_per_frame(all=False)
-
-        elif input_in_frames == 'ALL':
-            self.group_input_per_frame(all=True)
-
-        else:
+        if single_input:
             self.single_group_input()
+        else:
+            self.group_input_per_frame(all_frames=False)
 
         # Zones to temmp frames
         self.zones_in_frame()
@@ -1641,10 +1712,16 @@ class Tree(Item):
 # Main - Arrange a tree
 # ====================================================================================================
 
-def arrange(btree, reroutes: bool = True, input_in_frames: Literal['NO', 'TOP', 'ALL'] = 'TOP'):
+def arrange(btree, reroutes: bool = None, single_input: bool = None):
 
     tree = Tree(btree)
-    tree.arrange(reroutes=reroutes, input_in_frames=input_in_frames)
+
+    if reroutes is None:
+        reroutes = getattr(bpy.context.scene, 'arrange_reroutes', True)
+    if single_input is None:
+        single_input = getattr(bpy.context.scene, 'arrange_single_input', False)
+
+    tree.arrange(reroutes=reroutes, single_input=single_input)
 
 
 # ====================================================================================================
@@ -1653,24 +1730,6 @@ def arrange(btree, reroutes: bool = True, input_in_frames: Literal['NO', 'TOP', 
 # bl_region_type in
 # ('WINDOW', 'HEADER', 'CHANNELS', 'TEMPORARY', 'UI', 'TOOLS', 'TOOL_PROPS', 'ASSET_SHELF',
 # 'ASSET_SHELF_HEADER', 'PREVIEW', 'HUD', 'NAVIGATION_BAR', 'EXECUTE', 'FOOTER', 'TOOL_HEADER', 'XR')
-
-class RemoveReroutesOperator(bpy.types.Operator):
-    """Remove the 'reroute' nodes"""
-    bl_idname = "node.remove_reroutes"
-    bl_label  = "Remove Reroutes"
-
-    @classmethod
-    def poll(cls, context):
-        space = context.space_data
-        return space.type == 'NODE_EDITOR' and space.edit_tree is not None
-        #return space.type == 'NODE_EDITOR' and space.node_tree is not None
-
-    def execute(self, context):
-        space = context.space_data
-        tree = Tree(space.edit_tree)
-        tree.del_reroutes()
-        arrange(space.edit_tree, reroutes=False)
-        return {'FINISHED'}
 
 class ArrangeNodesOperator(bpy.types.Operator):
     """Auto arrange nodes"""
@@ -1684,7 +1743,12 @@ class ArrangeNodesOperator(bpy.types.Operator):
 
     def execute(self, context):
         space = context.space_data
-        arrange(space.edit_tree) #, get_true_dims=True)
+
+        reroutes = context.scene.arrange_reroutes
+        single_input = context.scene.arrange_single_input
+
+        arrange(space.edit_tree, reroutes=reroutes, single_input=single_input)
+        
         return {'FINISHED'}
 
 class NodeDumpOperator(bpy.types.Operator):
@@ -1724,7 +1788,7 @@ class NodeDumpOperator(bpy.types.Operator):
 
 class LayoutArrangePanel(bpy.types.Panel):
     """Creates a Panel in the node editor context of the properties editor"""
-    bl_label       = "Nodes tree arrange"
+    bl_label       = "Module geonodes"
     bl_idname      = "NODE_EDITOR_PT_arrange"
     bl_space_type  = 'NODE_EDITOR'
     bl_region_type = 'UI'
@@ -1741,18 +1805,33 @@ class LayoutArrangePanel(bpy.types.Panel):
         #row.scale_y = 2.0
         row.operator("node.dump_node")
 
+        # Reroutes
+        layout.prop(scene, "arrange_reroutes")
+        layout.prop(scene, "arrange_single_input")
+
         # Arrange
         row = layout.row()
         row.scale_y = 2.0
         row.operator("node.arrange_nodes")
 
         # Remove reroutes
-        row = layout.row()
-        row.operator("node.remove_reroutes")
+        #row = layout.row()
+        #row.operator("node.remove_reroutes")
 
 def register():
     try:
-        bpy.utils.register_class(RemoveReroutesOperator)
+        bpy.types.Scene.arrange_reroutes = bpy.props.BoolProperty(
+            name="Reroutes",
+            description="Add reroute nodes in layouts",
+            default=True,
+        )
+        bpy.types.Scene.arrange_single_input = bpy.props.BoolProperty(
+            name="Single Group Input",
+            description="One single Group Input or create duplicates in layouts",
+            default=False,
+        )
+
+        #bpy.utils.register_class(RemoveReroutesOperator)
         bpy.utils.register_class(ArrangeNodesOperator)
         bpy.utils.register_class(NodeDumpOperator)
 
@@ -1762,11 +1841,14 @@ def register():
 
 def unregister():
     try:
-        bpy.utils.unregister_class(RemoveReroutesOperator)
+        #bpy.utils.unregister_class(RemoveReroutesOperator)
         bpy.utils.unregister_class(ArrangeNodesOperator)
         bpy.utils.unregister_class(NodeDumpOperator)
 
         bpy.utils.unregister_class(LayoutArrangePanel)
+
+        del bpy.types.Scene.arrange_reroutes
+        del bpy.types.Scene.arrange_single_input
     except:
         pass
 

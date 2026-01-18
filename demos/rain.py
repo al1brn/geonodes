@@ -24,6 +24,7 @@ updates
 """
 
 from geonodes import *
+from geonodes.macros import macros
 
 # ====================================================================================================
 # A Wave produced by a dip
@@ -49,24 +50,24 @@ def dip_wave(center, t, length=3., c=5, falloff=30, omega=4, height=1, amp_only=
     - Float : wave heigth at position
     """
 
-    with Layout("Dip Wave", color='MACRO'):
-        dist = nd.position.distance(center)
+    #with Layout("Dip Wave", color='MACRO'):
+    dist = nd.position.distance(center)
 
-        amp = macros.impulsion(dist,
-            from_min     = -length,
-            from_max     = 0,
-            amplitude    = height,
-            increase     = 2.5*length,
-            decrease     = 0.5*length,
-            c            = c,
-            t            = t,
-            dist_falloff = falloff,
-            time_falloff = falloff,
-        )
+    amp = macros.impulsion(dist,
+        from_min     = -length,
+        from_max     = 0,
+        amplitude    = height,
+        increase     = 2.5*length,
+        decrease     = 0.5*length,
+        c            = c,
+        t            = t,
+        dist_falloff = falloff,
+        time_falloff = falloff,
+    )
 
-        z = amp*gnmath.sin(omega*(c*t - dist))
+    z = amp*gnmath.sin(omega*(c*t - dist))
 
-        return z.switch(amp_only, amp)
+    return z.switch(amp_only, amp)
 
 # ====================================================================================================
 # Single wave
@@ -216,9 +217,9 @@ def demo():
                 center = pts.points.sample_index(dips.position, index=rep.iteration)
                 age    = pts.points.sample_index(Float.Named("Age"), index=rep.iteration)
 
-            with Layout("Wave height"):
-                h = dip_wave(center, t=age, c=c, falloff=falloff, omega=omega, height=height)
-                h *= (1 - Float.Named("Water"))
+            #with Layout("Wave height"):
+            h = dip_wave(center, t=age, c=c, falloff=falloff, omega=omega, height=height)
+            h *= (1 - Float.Named("Water"))
 
             #rep.z = rep.z + h
             (z + h).out()

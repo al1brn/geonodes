@@ -491,7 +491,7 @@ def demo():
         # Link all the inputs but the height
         spiral.node.link_inputs(None, "Spiral", exclude=["Height"])
         # The height is fixed
-        spiral.height = Float.Input("Height")
+        spiral.node.height = Float.Input("Height")
 
         Geometry.join(helix, spiral, cube).out()
 

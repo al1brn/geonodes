@@ -291,7 +291,15 @@ class Tree:
 
     TREE_STACK = []
 
-    def __init__(self, tree_name: str, tree_type: str='GeometryNodeTree', clear: bool=True, fake_user: bool=False, is_group: bool=False, prefix: str = ""):
+    def __init__(self,
+            tree_name        : str, 
+            tree_type        : str   = 'GeometryNodeTree',
+            *,
+            fake_user        : bool  = False, 
+            is_group         : bool  = False, 
+            prefix           : str   = "",
+            replace_material : bool  = False):
+        
         """ Root class for <!GeoNodes> and <!ShaderNodes> trees.
 
         The system manages a stack of Trees. When a Tree is created, it is placed at the top of the stack
@@ -302,33 +310,84 @@ class Tree:
 
         ``` python
         with GeoNodes("My Tree") as tree:
-
             pass
-
         ```
 
         > [!IMPORTANT]
         > Trees scripted with **geonodes** are kept distinct from manually created trees by putting the
         > marker string _'GEONODES'_ in the description attribute. If you initialize a Tree with the
         > name of an existing tree:
-        > - it will be cleared if it is a tree scripted with **geonodes**
+        > - it will be replaced if it is a tree scripted with **geonodes**
         > - it will be renamed if it is not the case
         > This avoids to accidentally delete a manually created tree.
 
         > [!CAUTION]
-        > This doesn't work with materials embedded shaders. So, make sure not to override
-        > a existing shader when instantiating a new <!ShaderNodes>.
+        > This doesn't work with shaders embedded in a Material. It is why the argument `replace_material` is set to False
+        > by default when creating a Shader. Hence, an existing material is not replaced by a geonodes scripts
+        > except if you change the default value of `replace_material` argument to True.
 
-        The 'panel' argument is the default name to use when the tree is called from another tree using method <#link_from>.
+        ``` python
+        # Create the material if it doesn't exist
+        # Do nothing if it already exists
+        with ShaderNodes("My Material"):
+            pass
+            
+        # Replace the existing material
+        with ShaderNodes("My Material", replace_material=True):
+            pass
+        ```
+
+        > [!NOTE]
+        > `prefix` argument is added at the begining of the name.
+
+        ``` python
+        # The two following modifiers have the same name
+
+        with GeoNodes("My Modifier", prefix="Utils"):
+            pass
+            
+        with GeoNodes("Utils My Modifier"):
+            pass
+        ````
+
+        The `prefix` is usefull for big projects with numerous Groups and when you want the Groups to be sorted by their name.
+        You can then use the special class `G` to call the groups as python functions:
+
+        ``` python
+        # Prefix
+        util = "Util"
+        math = "Math"
+
+        # Util Change Shape
+        with GeoNodes("Change Shape", prefix=util):
+            pass
+            
+        # Util Rotate
+        with GeoNodes("Rotate", prefix=util):
+            pass
+            
+        # Math Multiply
+        with GeoNodes("Multiply", prefix=math)
+            pass
+            
+        # Math Divide
+        with GeoNodes("Divide", prefix=math)
+            pass
+            
+        # Call the groups
+        with GeoNodes("My Modifier"):
+            # Call a math group with the special class G
+            a = G(math).divide(...)
+        ```
 
         Arguments
         ---------
         - tree_name : tree name
-        - tree_type : tree type in ('GeometryNodeTree', 'ShaderNodeTree')
-        - clear : clear the current tree
-        - fake_user : fake user flag
-        - is_group : Group or not
-        - prefix : str prefix to add at the beging of the tree name
+        - tree_type (str in in ('GeometryNodeTree', 'ShaderNodeTree') = 'GeometryNodeTree'): tree type 
+        - fake_user (bool = False) : fake user flag
+        - is_group (bool = False) : Group or not
+        - prefix (str = "") : prefix to add at the begining of the tree name
+        - replace_material (bool = False) : replace the existing matertial if True
         """
         self._btree = None
 
@@ -364,6 +423,8 @@ class Tree:
         # Shader Node tree is a property of the Material
         # ----------------------------------------------------------------------------------------------------
 
+        self.ignore = False
+
         if tree_type == 'ShaderNodeTree':
 
             self._material = None
@@ -372,6 +433,10 @@ class Tree:
 
                 if self._material is None:
                     self._material = bpy.data.materials.new(tree_name)
+                else:
+                    if not replace_material:
+                        self._material = bpy.data.materials.new("GN TEMP MATERIAL")
+                        self.ignore = True
 
                 self._material.use_nodes = True
                 self._btree = self._material.node_tree
@@ -389,32 +454,29 @@ class Tree:
 
         # Managed lists
         self._kept_nodes = []
-        self._nodes = []    # List of nodes
-        self._mod_vals = {} # To restore modifiers values when necessary (menus)
-
+        self._nodes      = [] # List of nodes
+        self._mod_vals   = {} # To restore modifiers values when necessary (menus)
 
         # ---------------------------------------------------------------------------
-        # Clear the tree
+        # Clear / Keep the tree
         # ---------------------------------------------------------------------------
 
-        if clear:
+        # Store the current value of each input socket
+        if tree_type == 'GeometryNodeTree' or self._is_group:
+            for bnode in self._btree.nodes:
+                if bnode.bl_idname != 'NodeGroupInput':
+                    continue
 
-            # Store the current value of each input socket
-            if tree_type == 'GeometryNodeTree' or self._is_group:
-                for bnode in self._btree.nodes:
-                    if bnode.bl_idname != 'NodeGroupInput':
-                        continue
+                for name, mod in self.get_modifiers().items():
+                    values = {}
+                    for bsock in bnode.outputs:
+                        values[(bsock.name, bsock.bl_idname)] = mod.get(bsock.identifier)
+                    self._mod_vals[name] = values
 
-                    for name, mod in self.get_modifiers().items():
-                        values = {}
-                        for bsock in bnode.outputs:
-                            values[(bsock.name, bsock.bl_idname)] = mod.get(bsock.identifier)
-                        self._mod_vals[name] = values
+                break
 
-                    break
-
-            # Clear tree
-            self.clear(keep_nodes=False)
+        # Clear tree
+        self.clear(keep_nodes=False)
 
         # ---------------------------------------------------------------------------
         # Interface
@@ -487,6 +549,24 @@ class Tree:
             pass
         ```
         """
+        # ---------------------------------------------------------------------------
+        # Ignore changes
+        # ---------------------------------------------------------------------------
+
+        if self.ignore:
+            print(f"CHANGES IGNORED : Material '{self._btree.name}' already exists. Use 'replace_material=True' to overwite it.")
+
+            assert self._btree.bl_idname == 'ShaderNodeTree'
+            assert self._material is not None
+
+            bpy.data.materials.remove(self._material)
+            self._btree = None
+
+            return
+        
+        # ---------------------------------------------------------------------------
+        # Finalize
+        # ---------------------------------------------------------------------------
 
         # Remove kept nodes
         for bnode in self._kept_nodes:
@@ -543,10 +623,17 @@ class Tree:
         self.arrange()
 
         # Stats
-        print(f"Tree '{self._btree.name}' built: {self._str_stats}, warnings: {warnings}")
+        if self._btree.bl_idname == 'ShaderNodeTree' and self._material is not None:
+            name = f"Material '{self._material.name}'"
+        else:
+            name = f"Tree '{self._btree.name}'"
+        
+        print(f"{name} built: {self._str_stats}, warnings: {warnings}")
 
         Tree._total_nodes += len(self._btree.nodes)
-        Tree._total_links += len(self._btree.links)        
+        Tree._total_links += len(self._btree.links)      
+        
+
 
     # ----------------------------------------------------------------------------------------------------
     # Context management

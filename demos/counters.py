@@ -430,18 +430,33 @@ def demo(font=None):
         # 0x01, 0x02,       Vrt Left
         # 0x04, 0x08        Vrt Right
 
-        with Integer.IndexSwitch(index=Input("Value")) as mask:
+        if True:
+            mask = Integer.IndexSwitch(
+                0x5F, # 0
+                0x0C, # 1
+                0x79, # 2
+                0x7C, # 3
+                0x2E, # 4
+                0x76, # 5
+                0x77, # 6
+                0x4C, # 7
+                0x7F, # 8
+                0x7E, # 9
+                index=Input("Value"))
 
-            Integer(0x5F).out() # 0
-            Integer(0x0C).out() # 1
-            Integer(0x79).out() # 2
-            Integer(0x7C).out() # 3
-            Integer(0x2E).out() # 4
-            Integer(0x76).out() # 5
-            Integer(0x77).out() # 6
-            Integer(0x4C).out() # 7
-            Integer(0x7F).out() # 8
-            Integer(0x7E).out() # 9
+        else:
+            with Integer.IndexSwitch(index=Input("Value")) as mask:
+
+                Integer(0x5F).out() # 0
+                Integer(0x0C).out() # 1
+                Integer(0x79).out() # 2
+                Integer(0x7C).out() # 3
+                Integer(0x2E).out() # 4
+                Integer(0x76).out() # 5
+                Integer(0x77).out() # 6
+                Integer(0x4C).out() # 7
+                Integer(0x7F).out() # 8
+                Integer(0x7E).out() # 9
             
         digit.faces.material = off_mat
         zero_off = Mesh(digit)
