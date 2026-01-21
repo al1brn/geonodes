@@ -1,6 +1,7 @@
-# Generated 2026-01-16 10:06:25
+# Generated 2026-01-21 11:40:29
 
 from __future__ import annotations
+from .. sockettype import SocketType
 from .. socket_class import Socket
 from .. nodeclass import Node, ColorRamp, NodeCurves
 from .. import utils
@@ -111,7 +112,7 @@ class VolumeShader(Socket):
         - color (Color) : socket 'Color' (id: Color)
         - density (Float) : socket 'Density' (id: Density)
         - anisotropy (Float) : socket 'Anisotropy' (id: Anisotropy)
-        - phase (str): parameter 'phase' in ['HENYEY_GREENSTEIN', 'FOURNIER_FORAND', 'DRAINE', 'RAYLEIGH', 'MIE']
+        - phase (str): parameter 'phase' in ('Henyey-Greenstein', 'Fournier-Forand', 'Draine', 'Rayleigh', 'Mie')
 
         Returns
         -------

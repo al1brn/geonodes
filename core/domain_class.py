@@ -201,6 +201,22 @@ class Domain(Geom, NodeCache):
     # Methods
     # ====================================================================================================
 
+    def data_type_from_value_OLD(self, value, param_name: str = 'data_type', on_error: str = 'DEFAULT'):
+        """ Get the data_type from the value to plug on socket
+
+        Arguments
+        ---------
+        - value : the value to set on the socket
+        - param_name (str in ('data_type', 'input_type')) : param name
+        - on_error(str in ('HALT', 'NONE', 'DEFAULT')) : what to do if not found
+
+        Returns
+        -------
+        - data_type : a valid data type
+        """
+        return self._geo.node.data_type_from_value(value, param_name=param_name, on_error=on_error)
+
+
     # ----------------------------------------------------------------------------------------------------
     # Capture attribute
     # ----------------------------------------------------------------------------------------------------

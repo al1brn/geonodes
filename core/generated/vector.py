@@ -1,6 +1,7 @@
-# Generated 2026-01-16 10:06:25
+# Generated 2026-01-21 11:40:29
 
 from __future__ import annotations
+from .. sockettype import SocketType
 from .. socket_class import Socket
 from .. nodeclass import Node, ColorRamp, NodeCurves
 from .. import utils
@@ -339,7 +340,7 @@ class Vector(Socket):
         - to_min (Vector) : socket 'To Min' (id: To_Min_FLOAT3)
         - to_max (Vector) : socket 'To Max' (id: To_Max_FLOAT3)
         - clamp (bool): parameter 'clamp'
-        - interpolation_type (str): parameter 'interpolation_type' in ['LINEAR', 'STEPPED', 'SMOOTHSTEP', 'SMOOTHERSTEP']
+        - interpolation_type (str): parameter 'interpolation_type' in ('Linear', 'Stepped Linear', 'Smooth Step', 'Smoother Step')
 
         Returns
         -------
@@ -1004,7 +1005,7 @@ class Vector(Socket):
         - axis (Vector) : socket 'Axis' (id: Axis)
         - angle (Float) : socket 'Angle' (id: Angle)
         - invert (bool): parameter 'invert'
-        - rotation_type (str): parameter 'rotation_type' in ['AXIS_ANGLE', 'X_AXIS', 'Y_AXIS', 'Z_AXIS', 'EULER_XYZ']
+        - rotation_type (str): parameter 'rotation_type' in ('Axis Angle', 'X Axis', 'Y Axis', 'Z Axis', 'Euler')
 
         Returns
         -------
@@ -1410,7 +1411,7 @@ class Vector(Socket):
         - location (Vector) : socket 'Location' (id: Location)
         - rotation (Vector) : socket 'Rotation' (id: Rotation)
         - scale (Vector) : socket 'Scale' (id: Scale)
-        - vector_type (str): parameter 'vector_type' in ['POINT', 'TEXTURE', 'VECTOR', 'NORMAL']
+        - vector_type (str): parameter 'vector_type' in ('Point', 'Texture', 'Vector', 'Normal')
 
         Returns
         -------
@@ -1443,8 +1444,8 @@ class Vector(Socket):
 
         Arguments
         ---------
-        - axis (str): parameter 'axis' in ['X', 'Y', 'Z']
-        - direction_type (str): parameter 'direction_type' in ['RADIAL', 'UV_MAP']
+        - axis (str): parameter 'axis' in ('X', 'Y', 'Z')
+        - direction_type (str): parameter 'direction_type' in ('Radial', 'UV Map')
         - uv_map (str): parameter 'uv_map'
 
         Returns
@@ -1469,8 +1470,8 @@ class Vector(Socket):
         Arguments
         ---------
         - image (NoneType): parameter 'image'
-        - interpolation (str): parameter 'interpolation' in ['Linear', 'Closest', 'Cubic', 'Smart']
-        - projection (str): parameter 'projection' in ['EQUIRECTANGULAR', 'MIRROR_BALL']
+        - interpolation (str): parameter 'interpolation' in ('Linear', 'Closest', 'Cubic', 'Smart')
+        - projection (str): parameter 'projection' in ('Equirectangular', 'Mirror Ball')
 
         Returns
         -------
@@ -1539,7 +1540,7 @@ class Vector(Socket):
         - strength (Float) : socket 'Strength' (id: Strength)
         - filepath (str): parameter 'filepath'
         - ies (NoneType): parameter 'ies'
-        - mode (str): parameter 'mode' in ['INTERNAL', 'EXTERNAL']
+        - mode (str): parameter 'mode' in ('Internal', 'External')
 
         Returns
         -------
@@ -1563,10 +1564,10 @@ class Vector(Socket):
 
         Arguments
         ---------
-        - extension (str): parameter 'extension' in ['REPEAT', 'EXTEND', 'CLIP', 'MIRROR']
+        - extension (str): parameter 'extension' in ('Repeat', 'Extend', 'Clip', 'Mirror')
         - image (NoneType): parameter 'image'
-        - interpolation (str): parameter 'interpolation' in ['Linear', 'Closest', 'Cubic', 'Smart']
-        - projection (str): parameter 'projection' in ['FLAT', 'BOX', 'SPHERE', 'TUBE']
+        - interpolation (str): parameter 'interpolation' in ('Linear', 'Closest', 'Cubic', 'Smart')
+        - projection (str): parameter 'projection' in ('Flat', 'Box', 'Sphere', 'Tube')
         - projection_blend (float): parameter 'projection_blend'
 
         Returns
@@ -1607,9 +1608,9 @@ class Vector(Socket):
 
         Arguments
         ---------
-        - convert_from (str): parameter 'convert_from' in ['WORLD', 'OBJECT', 'CAMERA']
-        - convert_to (str): parameter 'convert_to' in ['WORLD', 'OBJECT', 'CAMERA']
-        - vector_type (str): parameter 'vector_type' in ['POINT', 'VECTOR', 'NORMAL']
+        - convert_from (str): parameter 'convert_from' in ('World', 'Object', 'Camera')
+        - convert_to (str): parameter 'convert_to' in ('World', 'Object', 'Camera')
+        - vector_type (str): parameter 'vector_type' in ('Point', 'Vector', 'Normal')
 
         Returns
         -------

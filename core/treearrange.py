@@ -998,7 +998,7 @@ class Node(Item):
             height += SOCK_SEPA
             
         # Delta from constant array
-        dims = NODE_INFO[self.tree.btree.bl_idname][self.bnode.bl_idname]['dims']
+        dims = NODE_INFO[self.bnode.bl_idname]['dims']
         return dims[0], dims[2] + height
     
     @property

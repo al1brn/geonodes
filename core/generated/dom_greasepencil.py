@@ -1,6 +1,7 @@
-# Generated 2026-01-16 10:06:25
+# Generated 2026-01-21 11:40:29
 
 from __future__ import annotations
+from .. sockettype import SocketType
 from .. socket_class import Socket
 from .. nodeclass import Node, ColorRamp, NodeCurves
 from .. import utils
@@ -132,7 +133,7 @@ class GreasePencil:
 
         Arguments
         ---------
-        - mode (str): parameter 'mode' in ['MERGE_BY_NAME', 'MERGE_BY_ID']
+        - mode (str): parameter 'mode' in ('By Name', 'By Group ID')
 
         Returns
         -------
@@ -208,7 +209,7 @@ class GreasePencil:
         ---------
         - color (Color) : socket 'Color' (id: Color)
         - opacity (Float) : socket 'Opacity' (id: Opacity)
-        - mode (str): parameter 'mode' in ['STROKE', 'FILL']
+        - mode (str): parameter 'mode' in ('Stroke', 'Fill')
 
         Returns
         -------
@@ -230,7 +231,7 @@ class GreasePencil:
 
         Arguments
         ---------
-        - depth_order (str): parameter 'depth_order' in ['2D', '3D']
+        - depth_order (str): parameter 'depth_order' in ('2D Layers', '3D Location')
 
         Returns
         -------
@@ -343,7 +344,7 @@ class GreasePencil:
 
         Arguments
         ---------
-        - depth_order (str): parameter 'depth_order' in ['2D', '3D']
+        - depth_order (str): parameter 'depth_order' in ('2D Layers', '3D Location')
 
         Returns
         -------

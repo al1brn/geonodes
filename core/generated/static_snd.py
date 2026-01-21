@@ -1,6 +1,7 @@
-# Generated 2026-01-16 10:06:25
+# Generated 2026-01-21 11:40:29
 
 from __future__ import annotations
+from .. sockettype import SocketType
 from .. socket_class import Socket
 from .. nodeclass import Node, ColorRamp, NodeCurves
 from .. import utils
@@ -46,7 +47,7 @@ class SND:
         Arguments
         ---------
         - Default selection
-        - data_type (str): parameter 'data_type' in ['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'MENU', 'SHADER', 'BUNDLE', 'CLOSURE']
+        - data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Menu', 'Shader', 'Bundle', 'Closure')
 
         Returns
         -------
@@ -280,7 +281,7 @@ class SND:
         Arguments
         ---------
         - attribute_name (str): parameter 'attribute_name'
-        - attribute_type (str): parameter 'attribute_type' in ['GEOMETRY', 'OBJECT', 'INSTANCER', 'VIEW_LAYER']
+        - attribute_type (str): parameter 'attribute_type' in ('Geometry', 'Object', 'Instancer', 'View Layer')
 
         Returns
         -------
@@ -377,7 +378,7 @@ class SND:
         - normal (Vector) : socket 'Normal' (id: Normal)
         - tangent (Vector) : socket 'Tangent' (id: Tangent)
         - weight (Float) : socket 'Weight' (id: Weight)
-        - distribution (str): parameter 'distribution' in ['BECKMANN', 'GGX', 'ASHIKHMIN_SHIRLEY', 'MULTI_GGX']
+        - distribution (str): parameter 'distribution' in ('Beckmann', 'GGX', 'Ashikhmin-Shirley', 'Multiscatter GGX')
 
         Returns
         -------
@@ -430,7 +431,7 @@ class SND:
         - weight (Float) : socket 'Weight' (id: Weight)
         - thin_film_thickness (Float) : socket 'Thin Film Thickness' (id: Thin Film Thickness)
         - thin_film_ior (Float) : socket 'Thin Film IOR' (id: Thin Film IOR)
-        - distribution (str): parameter 'distribution' in ['BECKMANN', 'GGX', 'MULTI_GGX']
+        - distribution (str): parameter 'distribution' in ('Beckmann', 'GGX', 'Multiscatter GGX')
 
         Returns
         -------
@@ -459,7 +460,7 @@ class SND:
         - roughnessv (Float) : socket 'RoughnessV' (id: RoughnessV)
         - tangent (Vector) : socket 'Tangent' (id: Tangent)
         - weight (Float) : socket 'Weight' (id: Weight)
-        - component (str): parameter 'component' in ['Reflection', 'Transmission']
+        - component (str): parameter 'component' in ('Reflection', 'Transmission')
 
         Returns
         -------
@@ -513,8 +514,8 @@ class SND:
         - reflection (Float) : socket 'Reflection' (id: R lobe)
         - transmission (Float) : socket 'Transmission' (id: TT lobe)
         - secondary_reflection (Float) : socket 'Secondary Reflection' (id: TRT lobe)
-        - model (str): parameter 'model' in ['CHIANG', 'HUANG']
-        - parametrization (str): parameter 'parametrization' in ['ABSORPTION', 'MELANIN', 'COLOR']
+        - model (str): parameter 'model' in ('Chiang', 'Huang')
+        - parametrization (str): parameter 'parametrization' in ('Absorption Coefficient', 'Melanin Concentration', 'Direct Coloring')
 
         Returns
         -------
@@ -557,8 +558,8 @@ class SND:
         - weight (Float) : socket 'Weight' (id: Weight)
         - thin_film_thickness (Float) : socket 'Thin Film Thickness' (id: Thin Film Thickness)
         - thin_film_ior (Float) : socket 'Thin Film IOR' (id: Thin Film IOR)
-        - distribution (str): parameter 'distribution' in ['BECKMANN', 'GGX', 'MULTI_GGX']
-        - fresnel_type (str): parameter 'fresnel_type' in ['PHYSICAL_CONDUCTOR', 'F82']
+        - distribution (str): parameter 'distribution' in ('Beckmann', 'GGX', 'Multiscatter GGX')
+        - fresnel_type (str): parameter 'fresnel_type' in ('Physical Conductor', 'F82 Tint')
 
         Returns
         -------
@@ -639,8 +640,8 @@ class SND:
         - emission_strength (Float) : socket 'Emission Strength' (id: Emission Strength)
         - thin_film_thickness (Float) : socket 'Thin Film Thickness' (id: Thin Film Thickness)
         - thin_film_ior (Float) : socket 'Thin Film IOR' (id: Thin Film IOR)
-        - distribution (str): parameter 'distribution' in ['GGX', 'MULTI_GGX']
-        - subsurface_method (str): parameter 'subsurface_method' in ['BURLEY', 'RANDOM_WALK', 'RANDOM_WALK_SKIN']
+        - distribution (str): parameter 'distribution' in ('GGX', 'Multiscatter GGX')
+        - subsurface_method (str): parameter 'subsurface_method' in ('Christensen-Burley', 'Random Walk', 'Random Walk (Skin)')
 
         Returns
         -------
@@ -690,7 +691,7 @@ class SND:
         - ior (Float) : socket 'IOR' (id: IOR)
         - normal (Vector) : socket 'Normal' (id: Normal)
         - weight (Float) : socket 'Weight' (id: Weight)
-        - distribution (str): parameter 'distribution' in ['BECKMANN', 'GGX']
+        - distribution (str): parameter 'distribution' in ('Beckmann', 'GGX')
 
         Returns
         -------
@@ -715,7 +716,7 @@ class SND:
         - roughness (Float) : socket 'Roughness' (id: Roughness)
         - normal (Vector) : socket 'Normal' (id: Normal)
         - weight (Float) : socket 'Weight' (id: Weight)
-        - distribution (str): parameter 'distribution' in ['ASHIKHMIN', 'MICROFIBER']
+        - distribution (str): parameter 'distribution' in ('Ashikhmin', 'Microfiber')
 
         Returns
         -------
@@ -742,7 +743,7 @@ class SND:
         - smooth (Float) : socket 'Smooth' (id: Smooth)
         - normal (Vector) : socket 'Normal' (id: Normal)
         - weight (Float) : socket 'Weight' (id: Weight)
-        - component (str): parameter 'component' in ['DIFFUSE', 'GLOSSY']
+        - component (str): parameter 'component' in ('Diffuse', 'Glossy')
 
         Returns
         -------
@@ -835,7 +836,7 @@ class SND:
         - value (Float) : socket 'Value' (id: Value)
         - min (Float) : socket 'Min' (id: Min)
         - max (Float) : socket 'Max' (id: Max)
-        - clamp_type (str): parameter 'clamp_type' in ['MINMAX', 'RANGE']
+        - clamp_type (str): parameter 'clamp_type' in ('Min Max', 'Range')
 
         Returns
         -------
@@ -858,7 +859,7 @@ class SND:
         - red (Float) : socket 'Red' (id: Red)
         - green (Float) : socket 'Green' (id: Green)
         - blue (Float) : socket 'Blue' (id: Blue)
-        - mode (str): parameter 'mode' in ['RGB', 'HSV', 'HSL']
+        - mode (str): parameter 'mode' in ('RGB', 'HSV', 'HSL')
 
         Returns
         -------
@@ -900,7 +901,7 @@ class SND:
         - midlevel (Float) : socket 'Midlevel' (id: Midlevel)
         - scale (Float) : socket 'Scale' (id: Scale)
         - normal (Vector) : socket 'Normal' (id: Normal)
-        - space (str): parameter 'space' in ['OBJECT', 'WORLD']
+        - space (str): parameter 'space' in ('Object Space', 'World Space')
 
         Returns
         -------
@@ -1167,8 +1168,8 @@ class SND:
         - to_max_1 (Vector) : socket 'To Max' (id: To_Max_FLOAT3)
         - steps_1 (Vector) : socket 'Steps' (id: Steps_FLOAT3)
         - clamp (bool): parameter 'clamp'
-        - data_type (str): parameter 'data_type' in ['FLOAT', 'FLOAT_VECTOR']
-        - interpolation_type (str): parameter 'interpolation_type' in ['LINEAR', 'STEPPED', 'SMOOTHSTEP', 'SMOOTHERSTEP']
+        - data_type (str): parameter 'data_type' in ('Float', 'Vector')
+        - interpolation_type (str): parameter 'interpolation_type' in ('Linear', 'Stepped Linear', 'Smooth Step', 'Smoother Step')
 
         Returns
         -------
@@ -1193,7 +1194,7 @@ class SND:
         - location (Vector) : socket 'Location' (id: Location)
         - rotation (Vector) : socket 'Rotation' (id: Rotation)
         - scale (Vector) : socket 'Scale' (id: Scale)
-        - vector_type (str): parameter 'vector_type' in ['POINT', 'TEXTURE', 'VECTOR', 'NORMAL']
+        - vector_type (str): parameter 'vector_type' in ('Point', 'Texture', 'Vector', 'Normal')
 
         Returns
         -------
@@ -1217,7 +1218,7 @@ class SND:
         - value (Float) : socket 'Value' (id: Value)
         - value_1 (Float) : socket 'Value' (id: Value_001)
         - value_2 (Float) : socket 'Value' (id: Value_002)
-        - operation (str): parameter 'operation' in ['ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'MULTIPLY_ADD', 'POWER', 'LOGARITHM', 'SQRT', 'INVERSE_SQRT', 'ABSOLUTE', 'EXPONENT', 'MINIMUM', 'MAXIMUM', 'LESS_THAN', 'GREATER_THAN', 'SIGN', 'COMPARE', 'SMOOTH_MIN', 'SMOOTH_MAX', 'ROUND', 'FLOOR', 'CEIL', 'TRUNC', 'FRACT', 'MODULO', 'FLOORED_MODULO', 'WRAP', 'SNAP', 'PINGPONG', 'SINE', 'COSINE', 'TANGENT', 'ARCSINE', 'ARCCOSINE', 'ARCTANGENT', 'ARCTAN2', 'SINH', 'COSH', 'TANH', 'RADIANS', 'DEGREES']
+        - operation (str): parameter 'operation' in ('Add', 'Subtract', 'Multiply', 'Divide', 'Multiply Add', 'Power', 'Logarithm', 'Square Root', 'Inverse Square Root', 'Absolute', 'Exponent', 'Minimum', 'Maximum', 'Less Than', 'Greater Than', 'Sign', 'Compare', 'Smooth Minimum', 'Smooth Maximum', 'Round', 'Floor', 'Ceil', 'Truncate', 'Fraction', 'Truncated Modulo', 'Floored Modulo', 'Wrap', 'Snap', 'Ping-Pong', 'Sine', 'Cosine', 'Tangent', 'Arcsine', 'Arccosine', 'Arctangent', 'Arctan2', 'Hyperbolic Sine', 'Hyperbolic Cosine', 'Hyperbolic Tangent', 'To Radians', 'To Degrees')
         - use_clamp (bool): parameter 'use_clamp'
 
         Returns
@@ -1257,11 +1258,11 @@ class SND:
         - a_3 (Rotation) : socket 'A' (id: A_Rotation)
         - b_3 (Rotation) : socket 'B' (id: B_Rotation)
         - factor (Vector) : socket 'Factor' (id: Factor_Vector)
-        - blend_type (str): parameter 'blend_type' in ['MIX', 'DARKEN', 'MULTIPLY', 'BURN', 'LIGHTEN', 'SCREEN', 'DODGE', 'ADD', 'OVERLAY', 'SOFT_LIGHT', 'LINEAR_LIGHT', 'DIFFERENCE', 'EXCLUSION', 'SUBTRACT', 'DIVIDE', 'HUE', 'SATURATION', 'COLOR', 'VALUE']
+        - blend_type (str): parameter 'blend_type' in ('Mix', 'Darken', 'Multiply', 'Color Burn', 'Lighten', 'Screen', 'Color Dodge', 'Add', 'Overlay', 'Soft Light', 'Linear Light', 'Difference', 'Exclusion', 'Subtract', 'Divide', 'Hue', 'Saturation', 'Color', 'Value')
         - clamp_factor (bool): parameter 'clamp_factor'
         - clamp_result (bool): parameter 'clamp_result'
-        - data_type (str): parameter 'data_type' in ['FLOAT', 'VECTOR', 'RGBA']
-        - factor_mode (str): parameter 'factor_mode' in ['UNIFORM', 'NON_UNIFORM']
+        - data_type (str): parameter 'data_type' in ('Float', 'Vector', 'Color')
+        - factor_mode (str): parameter 'factor_mode' in ('Uniform', 'Non-Uniform')
 
         Returns
         -------
@@ -1327,7 +1328,7 @@ class SND:
         ---------
         - strength (Float) : socket 'Strength' (id: Strength)
         - color (Color) : socket 'Color' (id: Color)
-        - space (str): parameter 'space' in ['TANGENT', 'OBJECT', 'WORLD', 'BLENDER_OBJECT', 'BLENDER_WORLD']
+        - space (str): parameter 'space' in ('Tangent Space', 'Object Space', 'World Space', 'Blender Object Space', 'Blender World Space')
         - uv_map (str): parameter 'uv_map'
 
         Returns
@@ -1377,7 +1378,7 @@ class SND:
         ---------
         - surface (Shader) : socket 'Surface' (id: Surface)
         - is_active_output (bool): parameter 'is_active_output'
-        - target (str): parameter 'target' in ['ALL', 'EEVEE', 'CYCLES']
+        - target (str): parameter 'target' in ('All', 'EEVEE', 'Cycles')
 
         Returns
         -------
@@ -1406,9 +1407,9 @@ class SND:
         - color_fac (Float) : socket 'Color Fac' (id: Color Fac)
         - alpha (Float) : socket 'Alpha' (id: Alpha)
         - alpha_fac (Float) : socket 'Alpha Fac' (id: Alpha Fac)
-        - blend_type (str): parameter 'blend_type' in ['MIX', 'DARKEN', 'MULTIPLY', 'BURN', 'LIGHTEN', 'SCREEN', 'DODGE', 'ADD', 'OVERLAY', 'SOFT_LIGHT', 'LINEAR_LIGHT', 'DIFFERENCE', 'EXCLUSION', 'SUBTRACT', 'DIVIDE', 'HUE', 'SATURATION', 'COLOR', 'VALUE']
+        - blend_type (str): parameter 'blend_type' in ('Mix', 'Darken', 'Multiply', 'Color Burn', 'Lighten', 'Screen', 'Color Dodge', 'Add', 'Overlay', 'Soft Light', 'Linear Light', 'Difference', 'Exclusion', 'Subtract', 'Divide', 'Hue', 'Saturation', 'Color', 'Value')
         - is_active_output (bool): parameter 'is_active_output'
-        - target (str): parameter 'target' in ['ALL', 'EEVEE', 'CYCLES']
+        - target (str): parameter 'target' in ('All', 'EEVEE', 'Cycles')
         - use_alpha (bool): parameter 'use_alpha'
         - use_clamp (bool): parameter 'use_clamp'
 
@@ -1438,7 +1439,7 @@ class SND:
         - displacement (Vector) : socket 'Displacement' (id: Displacement)
         - thickness (Float) : socket 'Thickness' (id: Thickness)
         - is_active_output (bool): parameter 'is_active_output'
-        - target (str): parameter 'target' in ['ALL', 'EEVEE', 'CYCLES']
+        - target (str): parameter 'target' in ('All', 'EEVEE', 'Cycles')
 
         Returns
         -------
@@ -1461,7 +1462,7 @@ class SND:
         - surface (Shader) : socket 'Surface' (id: Surface)
         - volume (VolumeShader) : socket 'Volume' (id: Volume)
         - is_active_output (bool): parameter 'is_active_output'
-        - target (str): parameter 'target' in ['ALL', 'EEVEE', 'CYCLES']
+        - target (str): parameter 'target' in ('All', 'EEVEE', 'Cycles')
 
         Returns
         -------
@@ -1572,7 +1573,7 @@ class SND:
         - bytecode (str): parameter 'bytecode'
         - bytecode_hash (str): parameter 'bytecode_hash'
         - filepath (str): parameter 'filepath'
-        - mode (str): parameter 'mode' in ['INTERNAL', 'EXTERNAL']
+        - mode (str): parameter 'mode' in ('Internal', 'External')
         - script (NoneType): parameter 'script'
         - use_auto_update (bool): parameter 'use_auto_update'
 
@@ -1591,7 +1592,7 @@ class SND:
         Arguments
         ---------
         - color (Color) : socket 'Color' (id: Color)
-        - mode (str): parameter 'mode' in ['RGB', 'HSV', 'HSL']
+        - mode (str): parameter 'mode' in ('RGB', 'HSV', 'HSL')
 
         Returns
         -------
@@ -1654,7 +1655,7 @@ class SND:
         - anisotropy (Float) : socket 'Anisotropy' (id: Anisotropy)
         - normal (Vector) : socket 'Normal' (id: Normal)
         - weight (Float) : socket 'Weight' (id: Weight)
-        - falloff (str): parameter 'falloff' in ['BURLEY', 'RANDOM_WALK', 'RANDOM_WALK_SKIN']
+        - falloff (str): parameter 'falloff' in ('Christensen-Burley', 'Random Walk', 'Random Walk (Skin)')
 
         Returns
         -------
@@ -1673,8 +1674,8 @@ class SND:
 
         Arguments
         ---------
-        - axis (str): parameter 'axis' in ['X', 'Y', 'Z']
-        - direction_type (str): parameter 'direction_type' in ['RADIAL', 'UV_MAP']
+        - axis (str): parameter 'axis' in ('X', 'Y', 'Z')
+        - direction_type (str): parameter 'direction_type' in ('Radial', 'UV Map')
         - uv_map (str): parameter 'uv_map'
 
         Returns
@@ -1778,8 +1779,8 @@ class SND:
         ---------
         - vector (Vector) : socket 'Vector' (id: Vector)
         - image (NoneType): parameter 'image'
-        - interpolation (str): parameter 'interpolation' in ['Linear', 'Closest', 'Cubic', 'Smart']
-        - projection (str): parameter 'projection' in ['EQUIRECTANGULAR', 'MIRROR_BALL']
+        - interpolation (str): parameter 'interpolation' in ('Linear', 'Closest', 'Cubic', 'Smart')
+        - projection (str): parameter 'projection' in ('Equirectangular', 'Mirror Ball')
 
         Returns
         -------
@@ -1809,7 +1810,7 @@ class SND:
         - anisotropy (Float) : socket 'Anisotropy' (id: Anisotropy)
         - orientation (Float) : socket 'Orientation' (id: Orientation 2D)
         - orientation_1 (Vector) : socket 'Orientation' (id: Orientation 3D)
-        - gabor_type (str): parameter 'gabor_type' in ['2D', '3D']
+        - gabor_type (str): parameter 'gabor_type' in ('2D', '3D')
 
         Returns
         -------
@@ -1828,7 +1829,7 @@ class SND:
         Arguments
         ---------
         - vector (Vector) : socket 'Vector' (id: Vector)
-        - gradient_type (str): parameter 'gradient_type' in ['LINEAR', 'QUADRATIC', 'EASING', 'DIAGONAL', 'SPHERICAL', 'QUADRATIC_SPHERE', 'RADIAL']
+        - gradient_type (str): parameter 'gradient_type' in ('Linear', 'Quadratic', 'Easing', 'Diagonal', 'Spherical', 'Quadratic Sphere', 'Radial')
 
         Returns
         -------
@@ -1853,7 +1854,7 @@ class SND:
         - strength (Float) : socket 'Strength' (id: Strength)
         - filepath (str): parameter 'filepath'
         - ies (NoneType): parameter 'ies'
-        - mode (str): parameter 'mode' in ['INTERNAL', 'EXTERNAL']
+        - mode (str): parameter 'mode' in ('Internal', 'External')
 
         Returns
         -------
@@ -1876,10 +1877,10 @@ class SND:
         Arguments
         ---------
         - vector (Vector) : socket 'Vector' (id: Vector)
-        - extension (str): parameter 'extension' in ['REPEAT', 'EXTEND', 'CLIP', 'MIRROR']
+        - extension (str): parameter 'extension' in ('Repeat', 'Extend', 'Clip', 'Mirror')
         - image (NoneType): parameter 'image'
-        - interpolation (str): parameter 'interpolation' in ['Linear', 'Closest', 'Cubic', 'Smart']
-        - projection (str): parameter 'projection' in ['FLAT', 'BOX', 'SPHERE', 'TUBE']
+        - interpolation (str): parameter 'interpolation' in ('Linear', 'Closest', 'Cubic', 'Smart')
+        - projection (str): parameter 'projection' in ('Flat', 'Box', 'Sphere', 'Tube')
         - projection_blend (float): parameter 'projection_blend'
 
         Returns
@@ -1941,8 +1942,8 @@ class SND:
         - offset (Float) : socket 'Offset' (id: Offset)
         - gain (Float) : socket 'Gain' (id: Gain)
         - distortion (Float) : socket 'Distortion' (id: Distortion)
-        - noise_dimensions (str): parameter 'noise_dimensions' in ['1D', '2D', '3D', '4D']
-        - noise_type (str): parameter 'noise_type' in ['MULTIFRACTAL', 'RIDGED_MULTIFRACTAL', 'HYBRID_MULTIFRACTAL', 'FBM', 'HETERO_TERRAIN']
+        - noise_dimensions (str): parameter 'noise_dimensions' in ('1D', '2D', '3D', '4D')
+        - noise_type (str): parameter 'noise_type' in ('Multifractal', 'Ridged Multifractal', 'Hybrid Multifractal', 'fBM', 'Hetero Terrain')
         - normalize (bool): parameter 'normalize'
 
         Returns
@@ -1979,7 +1980,7 @@ class SND:
         - altitude (float): parameter 'altitude'
         - ground_albedo (float): parameter 'ground_albedo'
         - ozone_density (float): parameter 'ozone_density'
-        - sky_type (str): parameter 'sky_type' in ['SINGLE_SCATTERING', 'MULTIPLE_SCATTERING', 'PREETHAM', 'HOSEK_WILKIE']
+        - sky_type (str): parameter 'sky_type' in ('Single Scattering', 'Multiple Scattering', 'Preetham', 'Hosek / Wilkie')
         - sun_disc (bool): parameter 'sun_disc'
         - sun_elevation (float): parameter 'sun_elevation'
         - sun_intensity (float): parameter 'sun_intensity'
@@ -2023,10 +2024,10 @@ class SND:
         - smoothness (Float) : socket 'Smoothness' (id: Smoothness)
         - exponent (Float) : socket 'Exponent' (id: Exponent)
         - randomness (Float) : socket 'Randomness' (id: Randomness)
-        - distance (str): parameter 'distance' in ['EUCLIDEAN', 'MANHATTAN', 'CHEBYCHEV', 'MINKOWSKI']
-        - feature (str): parameter 'feature' in ['F1', 'F2', 'SMOOTH_F1', 'DISTANCE_TO_EDGE', 'N_SPHERE_RADIUS']
+        - distance (str): parameter 'distance' in ('Euclidean', 'Manhattan', 'Chebychev', 'Minkowski')
+        - feature (str): parameter 'feature' in ('F1', 'F2', 'Smooth F1', 'Distance to Edge', 'N-Sphere Radius')
         - normalize (bool): parameter 'normalize'
-        - voronoi_dimensions (str): parameter 'voronoi_dimensions' in ['1D', '2D', '3D', '4D']
+        - voronoi_dimensions (str): parameter 'voronoi_dimensions' in ('1D', '2D', '3D', '4D')
 
         Returns
         -------
@@ -2062,10 +2063,10 @@ class SND:
         - detail_scale (Float) : socket 'Detail Scale' (id: Detail Scale)
         - detail_roughness (Float) : socket 'Detail Roughness' (id: Detail Roughness)
         - phase_offset (Float) : socket 'Phase Offset' (id: Phase Offset)
-        - bands_direction (str): parameter 'bands_direction' in ['X', 'Y', 'Z', 'DIAGONAL']
-        - rings_direction (str): parameter 'rings_direction' in ['X', 'Y', 'Z', 'SPHERICAL']
-        - wave_profile (str): parameter 'wave_profile' in ['SIN', 'SAW', 'TRI']
-        - wave_type (str): parameter 'wave_type' in ['BANDS', 'RINGS']
+        - bands_direction (str): parameter 'bands_direction' in ('X', 'Y', 'Z', 'Diagonal')
+        - rings_direction (str): parameter 'rings_direction' in ('X', 'Y', 'Z', 'Spherical')
+        - wave_profile (str): parameter 'wave_profile' in ('Sine', 'Saw', 'Triangle')
+        - wave_type (str): parameter 'wave_type' in ('Bands', 'Rings')
 
         Returns
         -------
@@ -2089,7 +2090,7 @@ class SND:
         ---------
         - vector (Vector) : socket 'Vector' (id: Vector)
         - w (Float) : socket 'W' (id: W)
-        - noise_dimensions (str): parameter 'noise_dimensions' in ['1D', '2D', '3D', '4D']
+        - noise_dimensions (str): parameter 'noise_dimensions' in ('1D', '2D', '3D', '4D')
 
         Returns
         -------
@@ -2190,7 +2191,7 @@ class SND:
         - vector (Color) : socket 'Vector' (id: Vector)
         - midlevel (Float) : socket 'Midlevel' (id: Midlevel)
         - scale (Float) : socket 'Scale' (id: Scale)
-        - space (str): parameter 'space' in ['TANGENT', 'OBJECT', 'WORLD']
+        - space (str): parameter 'space' in ('Tangent Space', 'Object Space', 'World Space')
 
         Returns
         -------
@@ -2215,7 +2216,7 @@ class SND:
         - vector_1 (Vector) : socket 'Vector' (id: Vector_001)
         - vector_2 (Vector) : socket 'Vector' (id: Vector_002)
         - scale (Float) : socket 'Scale' (id: Scale)
-        - operation (str): parameter 'operation' in ['ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'MULTIPLY_ADD', 'CROSS_PRODUCT', 'PROJECT', 'REFLECT', 'REFRACT', 'FACEFORWARD', 'DOT_PRODUCT', 'DISTANCE', 'LENGTH', 'SCALE', 'NORMALIZE', 'ABSOLUTE', 'POWER', 'SIGN', 'MINIMUM', 'MAXIMUM', 'FLOOR', 'CEIL', 'FRACTION', 'MODULO', 'WRAP', 'SNAP', 'SINE', 'COSINE', 'TANGENT']
+        - operation (str): parameter 'operation' in ('Add', 'Subtract', 'Multiply', 'Divide', 'Multiply Add', 'Cross Product', 'Project', 'Reflect', 'Refract', 'Faceforward', 'Dot Product', 'Distance', 'Length', 'Scale', 'Normalize', 'Absolute', 'Power', 'Sign', 'Minimum', 'Maximum', 'Floor', 'Ceil', 'Fraction', 'Modulo', 'Wrap', 'Snap', 'Sine', 'Cosine', 'Tangent')
 
         Returns
         -------
@@ -2244,7 +2245,7 @@ class SND:
         - angle (Float) : socket 'Angle' (id: Angle)
         - rotation (Vector) : socket 'Rotation' (id: Rotation)
         - invert (bool): parameter 'invert'
-        - rotation_type (str): parameter 'rotation_type' in ['AXIS_ANGLE', 'X_AXIS', 'Y_AXIS', 'Z_AXIS', 'EULER_XYZ']
+        - rotation_type (str): parameter 'rotation_type' in ('Axis Angle', 'X Axis', 'Y Axis', 'Z Axis', 'Euler')
 
         Returns
         -------
@@ -2265,9 +2266,9 @@ class SND:
         Arguments
         ---------
         - vector (Vector) : socket 'Vector' (id: Vector)
-        - convert_from (str): parameter 'convert_from' in ['WORLD', 'OBJECT', 'CAMERA']
-        - convert_to (str): parameter 'convert_to' in ['WORLD', 'OBJECT', 'CAMERA']
-        - vector_type (str): parameter 'vector_type' in ['POINT', 'VECTOR', 'NORMAL']
+        - convert_from (str): parameter 'convert_from' in ('World', 'Object', 'Camera')
+        - convert_to (str): parameter 'convert_to' in ('World', 'Object', 'Camera')
+        - vector_type (str): parameter 'vector_type' in ('Point', 'Vector', 'Normal')
 
         Returns
         -------
@@ -2336,7 +2337,7 @@ class SND:
         - alpha (Float) : socket 'Alpha' (id: Alpha)
         - diameter (Float) : socket 'Diameter' (id: Diameter)
         - emission_coefficients (Vector) : socket 'Emission Coefficients' (id: Emission Coefficients)
-        - phase (str): parameter 'phase' in ['HENYEY_GREENSTEIN', 'FOURNIER_FORAND', 'DRAINE', 'RAYLEIGH', 'MIE']
+        - phase (str): parameter 'phase' in ('Henyey-Greenstein', 'Fournier-Forand', 'Draine', 'Rayleigh', 'Mie')
 
         Returns
         -------
@@ -2420,7 +2421,7 @@ class SND:
         - alpha (Float) : socket 'Alpha' (id: Alpha)
         - diameter (Float) : socket 'Diameter' (id: Diameter)
         - weight (Float) : socket 'Weight' (id: Weight)
-        - phase (str): parameter 'phase' in ['HENYEY_GREENSTEIN', 'FOURNIER_FORAND', 'DRAINE', 'RAYLEIGH', 'MIE']
+        - phase (str): parameter 'phase' in ('Henyey-Greenstein', 'Fournier-Forand', 'Draine', 'Rayleigh', 'Mie')
 
         Returns
         -------

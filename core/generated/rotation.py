@@ -1,6 +1,7 @@
-# Generated 2026-01-16 10:06:25
+# Generated 2026-01-21 11:40:29
 
 from __future__ import annotations
+from .. sockettype import SocketType
 from .. socket_class import Socket
 from .. nodeclass import Node, ColorRamp, NodeCurves
 from .. import utils
@@ -48,8 +49,8 @@ class Rotation(Socket):
         ---------
         - vector (Vector) : socket 'Vector' (id: Vector)
         - factor (Float) : socket 'Factor' (id: Factor)
-        - axis (str): parameter 'axis' in ['X', 'Y', 'Z']
-        - pivot_axis (str): parameter 'pivot_axis' in ['AUTO', 'X', 'Y', 'Z']
+        - axis (str): parameter 'axis' in ('X', 'Y', 'Z')
+        - pivot_axis (str): parameter 'pivot_axis' in ('Auto', 'X', 'Y', 'Z')
 
         Returns
         -------
@@ -76,7 +77,7 @@ class Rotation(Socket):
         ---------
         - vector (Vector) : socket 'Vector' (id: Vector)
         - factor (Float) : socket 'Factor' (id: Factor)
-        - pivot_axis (str): parameter 'pivot_axis' in ['AUTO', 'X', 'Y', 'Z']
+        - pivot_axis (str): parameter 'pivot_axis' in ('Auto', 'X', 'Y', 'Z')
 
         Returns
         -------
@@ -102,7 +103,7 @@ class Rotation(Socket):
         ---------
         - vector (Vector) : socket 'Vector' (id: Vector)
         - factor (Float) : socket 'Factor' (id: Factor)
-        - pivot_axis (str): parameter 'pivot_axis' in ['AUTO', 'X', 'Y', 'Z']
+        - pivot_axis (str): parameter 'pivot_axis' in ('Auto', 'X', 'Y', 'Z')
 
         Returns
         -------
@@ -128,7 +129,7 @@ class Rotation(Socket):
         ---------
         - vector (Vector) : socket 'Vector' (id: Vector)
         - factor (Float) : socket 'Factor' (id: Factor)
-        - pivot_axis (str): parameter 'pivot_axis' in ['AUTO', 'X', 'Y', 'Z']
+        - pivot_axis (str): parameter 'pivot_axis' in ('Auto', 'X', 'Y', 'Z')
 
         Returns
         -------
@@ -153,8 +154,8 @@ class Rotation(Socket):
         ---------
         - vector (Vector) : socket 'Vector' (id: Vector)
         - factor (Float) : socket 'Factor' (id: Factor)
-        - axis (str): parameter 'axis' in ['X', 'Y', 'Z']
-        - pivot_axis (str): parameter 'pivot_axis' in ['AUTO', 'X', 'Y', 'Z']
+        - axis (str): parameter 'axis' in ('X', 'Y', 'Z')
+        - pivot_axis (str): parameter 'pivot_axis' in ('Auto', 'X', 'Y', 'Z')
 
         Returns
         -------
@@ -180,7 +181,7 @@ class Rotation(Socket):
         ---------
         - vector (Vector) : socket 'Vector' (id: Vector)
         - factor (Float) : socket 'Factor' (id: Factor)
-        - pivot_axis (str): parameter 'pivot_axis' in ['AUTO', 'X', 'Y', 'Z']
+        - pivot_axis (str): parameter 'pivot_axis' in ('Auto', 'X', 'Y', 'Z')
 
         Returns
         -------
@@ -205,7 +206,7 @@ class Rotation(Socket):
         ---------
         - vector (Vector) : socket 'Vector' (id: Vector)
         - factor (Float) : socket 'Factor' (id: Factor)
-        - pivot_axis (str): parameter 'pivot_axis' in ['AUTO', 'X', 'Y', 'Z']
+        - pivot_axis (str): parameter 'pivot_axis' in ('Auto', 'X', 'Y', 'Z')
 
         Returns
         -------
@@ -230,7 +231,7 @@ class Rotation(Socket):
         ---------
         - vector (Vector) : socket 'Vector' (id: Vector)
         - factor (Float) : socket 'Factor' (id: Factor)
-        - pivot_axis (str): parameter 'pivot_axis' in ['AUTO', 'X', 'Y', 'Z']
+        - pivot_axis (str): parameter 'pivot_axis' in ('Auto', 'X', 'Y', 'Z')
 
         Returns
         -------
@@ -252,8 +253,8 @@ class Rotation(Socket):
         ---------
         - primary_axis_1 (Vector) : socket 'Primary Axis' (id: Primary Axis)
         - secondary_axis_1 (Vector) : socket 'Secondary Axis' (id: Secondary Axis)
-        - primary_axis (str): parameter 'primary_axis' in ['X', 'Y', 'Z']
-        - secondary_axis (str): parameter 'secondary_axis' in ['X', 'Y', 'Z']
+        - primary_axis (str): parameter 'primary_axis' in ('X', 'Y', 'Z')
+        - secondary_axis (str): parameter 'secondary_axis' in ('X', 'Y', 'Z')
 
         Returns
         -------
@@ -484,7 +485,7 @@ class Rotation(Socket):
         Arguments
         ---------
         - rotate_by (Rotation) : socket 'Rotate By' (id: Rotate By)
-        - rotation_space (str): parameter 'rotation_space' in ['GLOBAL', 'LOCAL']
+        - rotation_space (str): parameter 'rotation_space' in ('Global', 'Local')
 
         Returns
         -------

@@ -1,6 +1,7 @@
-# Generated 2026-01-16 10:06:25
+# Generated 2026-01-21 11:40:29
 
 from __future__ import annotations
+from .. sockettype import SocketType
 from .. socket_class import Socket
 from .. nodeclass import Node, ColorRamp, NodeCurves
 from .. import utils
@@ -47,7 +48,7 @@ class Corner:
         -------
         - Float [trailing_ (Float), total_ (Float)]
         """
-        data_type = utils.get_data_type_from_argument('GeometryNodeTree', 'GeometryNodeAccumulateField', value)
+        data_type = SocketType.get_data_type_for_node(value, 'GeometryNodeAccumulateField')
         node = Node('Accumulate Field', {'Value': value, 'Group Index': group_id}, data_type=data_type, domain='CORNER')
         return node._out
 
@@ -69,7 +70,7 @@ class Corner:
         -------
         - Float [median_ (Float), sum_ (Float), min_ (Float), max_ (Float), range_ (Float), standard_deviation_ (Float), variance_ (Float)]
         """
-        data_type = utils.get_data_type_from_argument('GeometryNodeTree', 'GeometryNodeAttributeStatistic', attribute)
+        data_type = SocketType.get_data_type_for_node(attribute, 'GeometryNodeAttributeStatistic')
         node = Node('Attribute Statistic', {'Geometry': self, 'Selection': self.get_selection(), 'Attribute': attribute}, data_type=data_type, domain='CORNER')
         return node._out
 
@@ -88,14 +89,14 @@ class Corner:
         ---------
         - value (Float | Vector) : socket 'Value' (id: Value)
         - group_id (Integer) : socket 'Group ID' (id: Group Index)
-        - domain (str): parameter 'domain' in ['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']
+        - domain (str): parameter 'domain' in ('Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer')
 
         Returns
         -------
         - Float [median_ (Float)]
         """
         utils.check_enum_arg('Field Average', 'domain', domain, 'field_average', ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'))
-        data_type = utils.get_data_type_from_argument('GeometryNodeTree', 'GeometryNodeFieldAverage', value)
+        data_type = SocketType.get_data_type_for_node(value, 'GeometryNodeFieldAverage')
         node = Node('Field Average', {'Value': value, 'Group Index': group_id}, data_type=data_type, domain=domain)
         return node._out
 
@@ -114,14 +115,14 @@ class Corner:
         ---------
         - value (Float | Integer | Vector) : socket 'Value' (id: Value)
         - group_id (Integer) : socket 'Group ID' (id: Group Index)
-        - domain (str): parameter 'domain' in ['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']
+        - domain (str): parameter 'domain' in ('Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer')
 
         Returns
         -------
         - Float [max_ (Float)]
         """
         utils.check_enum_arg('Field Min & Max', 'domain', domain, 'field_min_max', ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'))
-        data_type = utils.get_data_type_from_argument('GeometryNodeTree', 'GeometryNodeFieldMinAndMax', value)
+        data_type = SocketType.get_data_type_for_node(value, 'GeometryNodeFieldMinAndMax')
         node = Node('Field Min & Max', {'Value': value, 'Group Index': group_id}, data_type=data_type, domain=domain)
         return node._out
 
@@ -140,14 +141,14 @@ class Corner:
         ---------
         - value (Float | Vector) : socket 'Value' (id: Value)
         - group_id (Integer) : socket 'Group ID' (id: Group Index)
-        - domain (str): parameter 'domain' in ['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']
+        - domain (str): parameter 'domain' in ('Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer')
 
         Returns
         -------
         - Float [variance_ (Float)]
         """
         utils.check_enum_arg('Field Variance', 'domain', domain, 'field_variance', ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'))
-        data_type = utils.get_data_type_from_argument('GeometryNodeTree', 'GeometryNodeFieldVariance', value)
+        data_type = SocketType.get_data_type_for_node(value, 'GeometryNodeFieldVariance')
         node = Node('Field Variance', {'Value': value, 'Group Index': group_id}, data_type=data_type, domain=domain)
         return node._out
 
@@ -261,7 +262,7 @@ class Corner:
         -------
         - Float
         """
-        data_type = utils.get_data_type_from_argument('GeometryNodeTree', 'GeometryNodeFieldAtIndex', value)
+        data_type = SocketType.get_data_type_for_node(value, 'GeometryNodeFieldAtIndex')
         node = Node('Evaluate at Index', {'Value': value, 'Index': index}, data_type=data_type, domain='CORNER')
         return node._out
 
@@ -283,7 +284,7 @@ class Corner:
         -------
         - Float
         """
-        data_type = utils.get_data_type_from_argument('GeometryNodeTree', 'GeometryNodeFieldOnDomain', value)
+        data_type = SocketType.get_data_type_for_node(value, 'GeometryNodeFieldOnDomain')
         node = Node('Evaluate on Domain', {'Value': value}, data_type=data_type, domain='CORNER')
         return node._out
 
@@ -346,7 +347,7 @@ class Corner:
         -------
         - Float
         """
-        data_type = utils.get_data_type_from_argument('GeometryNodeTree', 'GeometryNodeSampleIndex', value)
+        data_type = SocketType.get_data_type_for_node(value, 'GeometryNodeSampleIndex')
         node = Node('Sample Index', {'Geometry': self, 'Value': value, 'Index': index}, clamp=clamp, data_type=data_type, domain='CORNER')
         return node._out
 
@@ -392,7 +393,7 @@ class Corner:
         -------
         - Geometry
         """
-        data_type = utils.get_data_type_from_argument('GeometryNodeTree', 'GeometryNodeStoreNamedAttribute', value)
+        data_type = SocketType.get_data_type_for_node(value, 'GeometryNodeStoreNamedAttribute')
         node = Node('Store Named Attribute', {'Geometry': self, 'Selection': self.get_selection(), 'Name': name, 'Value': value}, data_type=data_type, domain='CORNER')
         self._jump(node._out)
         return self._domain_to_geometry
@@ -420,7 +421,7 @@ class Corner:
         -------
         - Geometry
         """
-        data_type = utils.get_data_type_from_argument('GeometryNodeTree', 'GeometryNodeStoreNamedAttribute', value)
+        data_type = SocketType.get_data_type_for_node(value, 'GeometryNodeStoreNamedAttribute')
         node = Node('Store Named Attribute', {'Geometry': self, 'Selection': self.get_selection(), 'Name': name, 'Value': value}, data_type=data_type, domain='CORNER')
         self._jump(node._out)
         return self._domain_to_geometry

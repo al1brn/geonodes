@@ -1,6 +1,7 @@
-# Generated 2026-01-16 10:06:25
+# Generated 2026-01-21 11:40:29
 
 from __future__ import annotations
+from .. sockettype import SocketType
 from .. socket_class import Socket
 from .. nodeclass import Node, ColorRamp, NodeCurves
 from .. import utils
@@ -170,7 +171,7 @@ class Float(Socket):
 
         Arguments
         ---------
-        - rounding_mode (str): parameter 'rounding_mode' in ['ROUND', 'FLOOR', 'CEILING', 'TRUNCATE']
+        - rounding_mode (str): parameter 'rounding_mode' in ('Round', 'Floor', 'Ceiling', 'Truncate')
 
         Returns
         -------
@@ -280,7 +281,7 @@ class Float(Socket):
         - up (Vector) : socket 'Up' (id: Up)
         - screen_space (Boolean) : socket 'Screen Space' (id: Screen Space)
         - radius (Float) : socket 'Radius' (id: Radius)
-        - color_id (str): parameter 'color_id' in ['PRIMARY', 'SECONDARY', 'X', 'Y', 'Z']
+        - color_id (str): parameter 'color_id' in ('Primary', 'Secondary', 'X', 'Y', 'Z')
 
         Returns
         -------
@@ -303,8 +304,8 @@ class Float(Socket):
         - value (Float) : socket 'Value' (id: Value)
         - position (Vector) : socket 'Position' (id: Position)
         - direction (Vector) : socket 'Direction' (id: Direction)
-        - color_id (str): parameter 'color_id' in ['PRIMARY', 'SECONDARY', 'X', 'Y', 'Z']
-        - draw_style (str): parameter 'draw_style' in ['ARROW', 'CROSS', 'BOX']
+        - color_id (str): parameter 'color_id' in ('Primary', 'Secondary', 'X', 'Y', 'Z')
+        - draw_style (str): parameter 'draw_style' in ('Arrow', 'Cross', 'Box')
 
         Returns
         -------
@@ -422,7 +423,7 @@ class Float(Socket):
         ---------
         - min (Float) : socket 'Min' (id: Min)
         - max (Float) : socket 'Max' (id: Max)
-        - clamp_type (str): parameter 'clamp_type' in ['MINMAX', 'RANGE']
+        - clamp_type (str): parameter 'clamp_type' in ('Min Max', 'Range')
 
         Returns
         -------
@@ -493,14 +494,14 @@ class Float(Socket):
         - to_min (Float | Vector) : socket 'To Min' (id: To Min)
         - to_max (Float | Vector) : socket 'To Max' (id: To Max)
         - clamp (bool): parameter 'clamp'
-        - interpolation_type (str): parameter 'interpolation_type' in ['LINEAR', 'STEPPED', 'SMOOTHSTEP', 'SMOOTHERSTEP']
+        - interpolation_type (str): parameter 'interpolation_type' in ('Linear', 'Stepped Linear', 'Smooth Step', 'Smoother Step')
 
         Returns
         -------
         - Float
         """
         utils.check_enum_arg('Map Range', 'interpolation_type', interpolation_type, 'map_range', ('LINEAR', 'STEPPED', 'SMOOTHSTEP', 'SMOOTHERSTEP'))
-        data_type = utils.get_data_type_from_argument('GeometryNodeTree', 'ShaderNodeMapRange', from_min)
+        data_type = SocketType.get_data_type_for_node(from_min, 'ShaderNodeMapRange')
         node = Node('Map Range', {'Value': self, 'From Min': from_min, 'From Max': from_max, 'To Min': to_min, 'To Max': to_max}, clamp=clamp, data_type=data_type, interpolation_type=interpolation_type)
         return node._out
 
@@ -530,7 +531,7 @@ class Float(Socket):
         -------
         - Float
         """
-        data_type = utils.get_data_type_from_argument('GeometryNodeTree', 'ShaderNodeMapRange', from_min)
+        data_type = SocketType.get_data_type_for_node(from_min, 'ShaderNodeMapRange')
         node = Node('Map Range', {'Value': self, 'From Min': from_min, 'From Max': from_max, 'To Min': to_min, 'To Max': to_max}, clamp=clamp, data_type=data_type, interpolation_type='LINEAR')
         return node._out
 
@@ -562,7 +563,7 @@ class Float(Socket):
         -------
         - Float
         """
-        data_type = utils.get_data_type_from_argument('GeometryNodeTree', 'ShaderNodeMapRange', from_min)
+        data_type = SocketType.get_data_type_for_node(from_min, 'ShaderNodeMapRange')
         node = Node('Map Range', {'Value': self, 'From Min': from_min, 'From Max': from_max, 'To Min': to_min, 'To Max': to_max, 'Steps': steps}, clamp=clamp, data_type=data_type, interpolation_type='STEPPED')
         return node._out
 
@@ -592,7 +593,7 @@ class Float(Socket):
         -------
         - Float
         """
-        data_type = utils.get_data_type_from_argument('GeometryNodeTree', 'ShaderNodeMapRange', from_min)
+        data_type = SocketType.get_data_type_for_node(from_min, 'ShaderNodeMapRange')
         node = Node('Map Range', {'Value': self, 'From Min': from_min, 'From Max': from_max, 'To Min': to_min, 'To Max': to_max}, clamp=clamp, data_type=data_type, interpolation_type='SMOOTHSTEP')
         return node._out
 
@@ -622,7 +623,7 @@ class Float(Socket):
         -------
         - Float
         """
-        data_type = utils.get_data_type_from_argument('GeometryNodeTree', 'ShaderNodeMapRange', from_min)
+        data_type = SocketType.get_data_type_for_node(from_min, 'ShaderNodeMapRange')
         node = Node('Map Range', {'Value': self, 'From Min': from_min, 'From Max': from_max, 'To Min': to_min, 'To Max': to_max}, clamp=clamp, data_type=data_type, interpolation_type='SMOOTHERSTEP')
         return node._out
 
@@ -1471,7 +1472,7 @@ class Float(Socket):
         - frequency (Float) : socket 'Frequency' (id: Frequency)
         - anisotropy (Float) : socket 'Anisotropy' (id: Anisotropy)
         - orientation (Float) : socket 'Orientation' (id: Orientation 2D)
-        - gabor_type (str): parameter 'gabor_type' in ['2D', '3D']
+        - gabor_type (str): parameter 'gabor_type' in ('2D', '3D')
 
         Returns
         -------
@@ -1502,8 +1503,8 @@ class Float(Socket):
         - roughness (Float) : socket 'Roughness' (id: Roughness)
         - lacunarity (Float) : socket 'Lacunarity' (id: Lacunarity)
         - distortion (Float) : socket 'Distortion' (id: Distortion)
-        - noise_dimensions (str): parameter 'noise_dimensions' in ['1D', '2D', '3D', '4D']
-        - noise_type (str): parameter 'noise_type' in ['MULTIFRACTAL', 'RIDGED_MULTIFRACTAL', 'HYBRID_MULTIFRACTAL', 'FBM', 'HETERO_TERRAIN']
+        - noise_dimensions (str): parameter 'noise_dimensions' in ('1D', '2D', '3D', '4D')
+        - noise_type (str): parameter 'noise_type' in ('Multifractal', 'Ridged Multifractal', 'Hybrid Multifractal', 'fBM', 'Hetero Terrain')
         - normalize (bool): parameter 'normalize'
 
         Returns
@@ -1537,10 +1538,10 @@ class Float(Socket):
         - roughness (Float) : socket 'Roughness' (id: Roughness)
         - lacunarity (Float) : socket 'Lacunarity' (id: Lacunarity)
         - randomness (Float) : socket 'Randomness' (id: Randomness)
-        - distance (str): parameter 'distance' in ['EUCLIDEAN', 'MANHATTAN', 'CHEBYCHEV', 'MINKOWSKI']
-        - feature (str): parameter 'feature' in ['F1', 'F2', 'SMOOTH_F1', 'DISTANCE_TO_EDGE', 'N_SPHERE_RADIUS']
+        - distance (str): parameter 'distance' in ('Euclidean', 'Manhattan', 'Chebychev', 'Minkowski')
+        - feature (str): parameter 'feature' in ('F1', 'F2', 'Smooth F1', 'Distance to Edge', 'N-Sphere Radius')
         - normalize (bool): parameter 'normalize'
-        - voronoi_dimensions (str): parameter 'voronoi_dimensions' in ['1D', '2D', '3D', '4D']
+        - voronoi_dimensions (str): parameter 'voronoi_dimensions' in ('1D', '2D', '3D', '4D')
 
         Returns
         -------
@@ -1561,7 +1562,7 @@ class Float(Socket):
         Arguments
         ---------
         - vector (Vector) : socket 'Vector' (id: Vector)
-        - noise_dimensions (str): parameter 'noise_dimensions' in ['1D', '2D', '3D', '4D']
+        - noise_dimensions (str): parameter 'noise_dimensions' in ('1D', '2D', '3D', '4D')
 
         Returns
         -------
@@ -1948,7 +1949,7 @@ class Float(Socket):
         ---------
         - density (Float) : socket 'Density' (id: Density)
         - seed (Integer) : socket 'Seed' (id: Seed)
-        - mode (str): parameter 'mode' in ['DENSITY_RANDOM', 'DENSITY_GRID']
+        - mode (str): parameter 'mode' in ('Random', 'Grid')
 
         Returns
         -------
@@ -1970,7 +1971,7 @@ class Float(Socket):
         Arguments
         ---------
         - grid_2 (Float) : socket 'Grid 2' (id: Grid 2)
-        - operation (str): parameter 'operation' in ['INTERSECT', 'UNION', 'DIFFERENCE']
+        - operation (str): parameter 'operation' in ('Intersect', 'Union', 'Difference')
 
         Returns
         -------
@@ -2174,7 +2175,7 @@ class Float(Socket):
         ---------
         - green (Float) : socket 'Green' (id: Green)
         - blue (Float) : socket 'Blue' (id: Blue)
-        - mode (str): parameter 'mode' in ['RGB', 'HSV', 'HSL']
+        - mode (str): parameter 'mode' in ('RGB', 'HSV', 'HSL')
 
         Returns
         -------
@@ -2200,7 +2201,7 @@ class Float(Socket):
         - midlevel (Float) : socket 'Midlevel' (id: Midlevel)
         - scale (Float) : socket 'Scale' (id: Scale)
         - normal (Vector) : socket 'Normal' (id: Normal)
-        - space (str): parameter 'space' in ['OBJECT', 'WORLD']
+        - space (str): parameter 'space' in ('Object Space', 'World Space')
 
         Returns
         -------
@@ -2302,7 +2303,7 @@ class Float(Socket):
         Arguments
         ---------
         - color (Color) : socket 'Color' (id: Color)
-        - space (str): parameter 'space' in ['TANGENT', 'OBJECT', 'WORLD', 'BLENDER_OBJECT', 'BLENDER_WORLD']
+        - space (str): parameter 'space' in ('Tangent Space', 'Object Space', 'World Space', 'Blender Object Space', 'Blender World Space')
         - uv_map (str): parameter 'uv_map'
 
         Returns

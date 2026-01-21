@@ -1,6 +1,7 @@
-# Generated 2026-01-16 10:06:25
+# Generated 2026-01-21 11:40:29
 
 from __future__ import annotations
+from .. sockettype import SocketType
 from .. socket_class import Socket
 from .. nodeclass import Node, ColorRamp, NodeCurves
 from .. import utils
@@ -228,7 +229,7 @@ class Geometry(Socket):
         - group_id (Integer) : socket 'Group ID' (id: Group ID)
         - sample_position (Vector) : socket 'Sample Position' (id: Source Position)
         - sample_group_id (Integer) : socket 'Sample Group ID' (id: Sample Group ID)
-        - target_element (str): parameter 'target_element' in ['POINTS', 'EDGES', 'FACES']
+        - target_element (str): parameter 'target_element' in ('Points', 'Edges', 'Faces')
 
         Returns
         -------
@@ -335,7 +336,7 @@ class Geometry(Socket):
         -------
         - Boolean [hit_position_ (Vector), hit_normal_ (Vector), hit_distance_ (Float), attribute_ (Float)]
         """
-        data_type = utils.get_data_type_from_argument('GeometryNodeTree', 'GeometryNodeRaycast', attribute)
+        data_type = SocketType.get_data_type_for_node(attribute, 'GeometryNodeRaycast')
         node = Node('Raycast', {'Target Geometry': self, 'Attribute': attribute, 'Interpolation': interpolation, 'Source Position': source_position, 'Ray Direction': ray_direction, 'Ray Length': ray_length}, data_type=data_type)
         return node._out
 

@@ -1,6 +1,7 @@
-# Generated 2026-01-16 10:06:25
+# Generated 2026-01-21 11:40:29
 
 from __future__ import annotations
+from .. sockettype import SocketType
 from .. socket_class import Socket
 from .. nodeclass import Node, ColorRamp, NodeCurves
 from .. import utils
@@ -46,7 +47,7 @@ class Collection(Socket):
         ---------
         - separate_children (Boolean) : socket 'Separate Children' (id: Separate Children)
         - reset_children (Boolean) : socket 'Reset Children' (id: Reset Children)
-        - transform_space (str): parameter 'transform_space' in ['ORIGINAL', 'RELATIVE']
+        - transform_space (str): parameter 'transform_space' in ('Original', 'Relative')
 
         Returns
         -------

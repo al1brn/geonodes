@@ -555,8 +555,11 @@ def get_node_info(sockets):
         
         tree = get_tree(tree_type)
 
-        NODE_INFO[tree_type] = {}
         for tp in dir(bpy.types):
+
+            if tp in NODE_INFO:
+                continue
+
             try:
                 node = tree.nodes.new(type=tp)
             except:
@@ -703,7 +706,7 @@ def get_node_info(sockets):
 
                 node_info['data_type'] = convert
 
-            NODE_INFO[tree_type][node.bl_idname] = node_info
+            NODE_INFO[node.bl_idname] = node_info
         
     return NODE_INFO
 
@@ -838,17 +841,16 @@ BUILTIN_GROUPS = get_builtin_groups()
 ONE_ITEMS_NODES = {}
 SEVERAL_ITEMS_NODES = {}
 
-for tt in TREE_TYPES:
-    for blid, info in NODE_INFO[tt].items():
-        # Ignore paired nodes
-        if blid in ['GeometryNodeRepeatOutput', 'GeometryNodeSimulationOutput']:
-            continue
+for blid, info in NODE_INFO.items():
+    # Ignore paired nodes
+    if blid in ['GeometryNodeRepeatOutput', 'GeometryNodeSimulationOutput']:
+        continue
 
-        if len(info['items']) == 1:
-            ONE_ITEMS_NODES[blid] = info['items'][0]
+    if len(info['items']) == 1:
+        ONE_ITEMS_NODES[blid] = info['items'][0]
 
-        if len(info['items']) > 1:
-            SEVERAL_ITEMS_NODES[blid] = info['items']
+    if len(info['items']) > 1:
+        SEVERAL_ITEMS_NODES[blid] = info['items']
 
 
 CLASS_NAMES = {}

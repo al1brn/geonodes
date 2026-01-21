@@ -420,7 +420,6 @@ class Socket(NodeCache):
             name = name,
             panel = panel,
             **props))
-    
         
     # ----------------------------------------------------------------------------------------------------
     # Create a socket from a constant Node
@@ -1399,6 +1398,149 @@ class Socket(NodeCache):
     # ====================================================================================================
 
     @staticmethod
+    def _test_socket_to_data_type():
+
+        from .constants import SOCKET_CLASSES
+        from pprint import pprint
+        
+        # ----------------------------------------------------------------------------------------------------
+        # Create the test tree
+        # ----------------------------------------------------------------------------------------------------
+        
+        tree = bpy.data.node_groups.get("Test")
+        if tree is None:
+            tree = bpy.data.node_groups.new("Test", 'GeometryNodeTree')
+            
+        tree.nodes.clear()
+        
+        # ----------------------------------------------------------------------------------------------------
+        # Loop on nodes
+        # ----------------------------------------------------------------------------------------------------
+        
+        tested_nodes        = {}
+        tests               = {}
+        data_type_to_socket = {}
+        socket_to_data_type = {}
+        orphans             = set()
+        mults               = set()
+            
+        for type_name in dir(bpy.types):
+            
+            # Create the node
+            
+            try:
+                node = tree.nodes.new(type_name)
+            except:
+                continue
+            
+            # data_type and input_type params
+            
+            T = type(node)
+            param_name = None
+            for name in ['data_type', 'input_type']:
+                if name in dir(node):
+                    param_name = name
+                    break
+                
+            if param_name is None:
+                continue
+            
+            # List of valid identifier
+            # dt_to_sock : all socket types giving the data_type
+            
+            dt_to_sock = {enum.identifier: [] for enum in T.bl_rna.properties[param_name].enum_items}
+            
+            # Register
+            tested_nodes[node.name] = {'param_name': param_name, 'enums': tuple(dt_to_sock.keys())}
+            
+            # Test identical lists once
+            key = str(set(dt_to_sock.keys()))
+            if key in tests:
+                tests[key]['nodes'].append(node.name)
+                continue
+            
+            # loop on SOCKET_TYPE
+            
+            sock_to_dt = {}
+            for socket_type in SOCKET_CLASSES:
+                
+                st = SocketType(socket_type)
+                
+                # The core method to test
+                dt = st.get_data_type_for_node(socket_type, node.bl_idname, param_name, on_error='NONE')
+                
+                # We have a result
+                if dt is not None:
+                    sock_to_dt[st.class_name] = dt
+                    dt_to_sock[dt].append(st.class_name)
+                    
+                    l = socket_to_data_type.get(st.class_name, set())
+                    l.add(dt)
+                    socket_to_data_type[st.class_name] = l
+                    
+                    l = data_type_to_socket.get(dt, set())
+                    l.add(st.class_name)
+                    data_type_to_socket[dt] = l
+                    
+                    
+            # Register the result
+            tests[key] = {
+                "nodes"      : [node.name],
+                "sock_to_dt" : sock_to_dt,
+                "dt_to_sock" : dt_to_sock,
+                }
+                
+            # Check that all possible choices are reached
+            # Could happen with the node 'Store Named Attribute' for instance
+            
+            node_orphans = set()
+            node_mults = set()
+            for k, v in dt_to_sock.items():
+                if len(v) == 0:
+                    node_orphans.add(k)
+                elif len(v) > 1:
+                    node_mults.add((k, v))
+
+            orphans = orphans.union(node_orphans)
+            mults = mults.union(node_mults)
+            
+        # ----------------------------------------------------------------------------------------------------
+        # Print the results
+        # ----------------------------------------------------------------------------------------------------
+        
+        print('-'*100)
+        print("Test Socket to data_type")
+        print('-'*100)
+        print()
+        print(f"Nodes: {len(tested_nodes)}")
+        for k, v in tested_nodes.items():
+            print(f"- {k:25s} : {v['param_name']}")
+        print()
+        
+        print(f"Enums: {len(tests)}")
+        for k, v in tests.items():
+            print(f"{len(v['nodes'])} :", tuple(v['dt_to_sock'].keys()))        
+        print()
+        
+        print("Socket -> data_type")
+        for k, v in socket_to_data_type.items():
+            print(f"- {k:15s} :", v)
+        print()
+        
+        print("data_type -> Socket")
+        for k, v in data_type_to_socket.items():
+            print(f"- {k:15s} :", v)
+        print()
+        
+        print("Orphans: data_type not coming from a Socket")
+        pprint(orphans)
+        print()
+        
+        print("Mults: sockets giving the same data_type")
+        pprint(mults)
+        print()
+
+    @staticmethod
     def _class_test():
 
         from .utils import SOCKET_CLASSES
@@ -1410,6 +1552,8 @@ class Socket(NodeCache):
         from .sock_rotation import Rotation
         from .sock_vector import Vector
         from .sock_matrix import Matrix
+
+        Socket._test_socket_to_data_type()
 
         with GeoNodes("Socket Class Test") as tree:
 

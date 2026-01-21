@@ -1,6 +1,7 @@
-# Generated 2026-01-16 10:06:25
+# Generated 2026-01-21 11:40:29
 
 from __future__ import annotations
+from .. sockettype import SocketType
 from .. socket_class import Socket
 from .. nodeclass import Node, ColorRamp, NodeCurves
 from .. import utils
@@ -128,7 +129,7 @@ class Curve(Socket):
         - sweep_angle (Float) : socket 'Sweep Angle' (id: Sweep Angle)
         - connect_center (Boolean) : socket 'Connect Center' (id: Connect Center)
         - invert_arc (Boolean) : socket 'Invert Arc' (id: Invert Arc)
-        - mode (str): parameter 'mode' in ['POINTS', 'RADIUS']
+        - mode (str): parameter 'mode' in ('Points', 'Radius')
 
         Returns
         -------
@@ -162,7 +163,7 @@ class Curve(Socket):
 
         Arguments
         ---------
-        - handle_type (str): parameter 'handle_type' in ['FREE', 'AUTO', 'VECTOR', 'ALIGN']
+        - handle_type (str): parameter 'handle_type' in ('Free', 'Auto', 'Vector', 'Align')
         - mode (set): parameter 'mode'
 
         Returns
@@ -275,7 +276,7 @@ class Curve(Socket):
         - start_handle (Vector) : socket 'Start Handle' (id: Start Handle)
         - end_handle (Vector) : socket 'End Handle' (id: End Handle)
         - end (Vector) : socket 'End' (id: End)
-        - mode (str): parameter 'mode' in ['POSITION', 'OFFSET']
+        - mode (str): parameter 'mode' in ('Position', 'Offset')
 
         Returns
         -------
@@ -342,7 +343,7 @@ class Curve(Socket):
         ---------
         - resolution (Integer) : socket 'Resolution' (id: Resolution)
         - radius (Float) : socket 'Radius' (id: Radius)
-        - mode (str): parameter 'mode' in ['POINTS', 'RADIUS']
+        - mode (str): parameter 'mode' in ('Points', 'Radius')
 
         Returns
         -------
@@ -404,7 +405,7 @@ class Curve(Socket):
         ---------
         - start (Vector) : socket 'Start' (id: Start)
         - end (Vector) : socket 'End' (id: End)
-        - mode (str): parameter 'mode' in ['POINTS', 'DIRECTION']
+        - mode (str): parameter 'mode' in ('Points', 'Direction')
 
         Returns
         -------
@@ -542,7 +543,7 @@ class Curve(Socket):
         ---------
         - width (Float) : socket 'Width' (id: Width)
         - height (Float) : socket 'Height' (id: Height)
-        - mode (str): parameter 'mode' in ['RECTANGLE', 'PARALLELOGRAM', 'TRAPEZOID', 'KITE', 'POINTS']
+        - mode (str): parameter 'mode' in ('Rectangle', 'Parallelogram', 'Trapezoid', 'Kite', 'Points')
 
         Returns
         -------
@@ -588,7 +589,7 @@ class Curve(Socket):
 
         Arguments
         ---------
-        - handle_type (str): parameter 'handle_type' in ['FREE', 'AUTO', 'VECTOR', 'ALIGN']
+        - handle_type (str): parameter 'handle_type' in ('Free', 'Auto', 'Vector', 'Align')
         - mode (set): parameter 'mode'
 
         Returns
@@ -613,7 +614,7 @@ class Curve(Socket):
 
         Arguments
         ---------
-        - handle_type (str): parameter 'handle_type' in ['FREE', 'AUTO', 'VECTOR', 'ALIGN']
+        - handle_type (str): parameter 'handle_type' in ('Free', 'Auto', 'Vector', 'Align')
 
         Returns
         -------
@@ -637,7 +638,7 @@ class Curve(Socket):
 
         Arguments
         ---------
-        - handle_type (str): parameter 'handle_type' in ['FREE', 'AUTO', 'VECTOR', 'ALIGN']
+        - handle_type (str): parameter 'handle_type' in ('Free', 'Auto', 'Vector', 'Align')
 
         Returns
         -------
@@ -661,7 +662,7 @@ class Curve(Socket):
 
         Arguments
         ---------
-        - handle_type (str): parameter 'handle_type' in ['FREE', 'AUTO', 'VECTOR', 'ALIGN']
+        - handle_type (str): parameter 'handle_type' in ('Free', 'Auto', 'Vector', 'Align')
 
         Returns
         -------
@@ -710,7 +711,7 @@ class Curve(Socket):
 
         Arguments
         ---------
-        - spline_type (str): parameter 'spline_type' in ['CATMULL_ROM', 'POLY', 'BEZIER', 'NURBS']
+        - spline_type (str): parameter 'spline_type' in ('Catmull Rom', 'Poly', 'Bézier', 'NURBS')
 
         Returns
         -------
@@ -831,7 +832,7 @@ class Curve(Socket):
         Arguments
         ---------
         - count (Integer) : socket 'Count' (id: Count)
-        - mode (str): parameter 'mode' in ['EVALUATED', 'COUNT', 'LENGTH']
+        - mode (str): parameter 'mode' in ('Evaluated', 'Count', 'Length')
 
         Returns
         -------
@@ -1133,7 +1134,7 @@ class Curve(Socket):
         -------
         - Float [position_ (Vector), tangent_ (Vector), normal_ (Vector)]
         """
-        data_type = utils.get_data_type_from_argument('GeometryNodeTree', 'GeometryNodeSampleCurve', value)
+        data_type = SocketType.get_data_type_for_node(value, 'GeometryNodeSampleCurve')
         node = Node('Sample Curve', {'Curves': self, 'Value': value, 'Curve Index': curve_index, 'Factor': factor}, data_type=data_type, mode='FACTOR', use_all_curves=use_all_curves)
         return node._out
 
@@ -1161,7 +1162,7 @@ class Curve(Socket):
         -------
         - Float [position_ (Vector), tangent_ (Vector), normal_ (Vector)]
         """
-        data_type = utils.get_data_type_from_argument('GeometryNodeTree', 'GeometryNodeSampleCurve', value)
+        data_type = SocketType.get_data_type_for_node(value, 'GeometryNodeSampleCurve')
         node = Node('Sample Curve', {'Curves': self, 'Value': value, 'Length': length, 'Curve Index': curve_index}, data_type=data_type, mode='LENGTH', use_all_curves=use_all_curves)
         return node._out
 
@@ -1183,7 +1184,7 @@ class Curve(Socket):
         - value (Float | Integer | Boolean | Vector | Color | Rotation | Matrix) : socket 'Value' (id: Value)
         - curve_index (Integer) : socket 'Curve Index' (id: Curve Index)
         - factor (Float) : socket 'Factor' (id: Factor)
-        - mode (str): parameter 'mode' in ['FACTOR', 'LENGTH']
+        - mode (str): parameter 'mode' in ('Factor', 'Length')
         - use_all_curves (bool): parameter 'use_all_curves'
 
         Returns
@@ -1191,7 +1192,7 @@ class Curve(Socket):
         - Float [position_ (Vector), tangent_ (Vector), normal_ (Vector)]
         """
         utils.check_enum_arg('Sample Curve', 'mode', mode, 'sample', ('FACTOR', 'LENGTH'))
-        data_type = utils.get_data_type_from_argument('GeometryNodeTree', 'GeometryNodeSampleCurve', value)
+        data_type = SocketType.get_data_type_for_node(value, 'GeometryNodeSampleCurve')
         node = Node('Sample Curve', {'Curves': self, 'Value': value, 'Curve Index': curve_index, 'Factor': factor}, data_type=data_type, mode=mode, use_all_curves=use_all_curves)
         return node._out
 
@@ -1212,7 +1213,7 @@ class Curve(Socket):
         ---------
         - position (Vector) : socket 'Position' (id: Position)
         - offset (Vector) : socket 'Offset' (id: Offset)
-        - mode (str): parameter 'mode' in ['LEFT', 'RIGHT']
+        - mode (str): parameter 'mode' in ('Left', 'Right')
 
         Returns
         -------
@@ -1492,7 +1493,7 @@ class Curve(Socket):
         ---------
         - start (Float) : socket 'Start' (id: Start)
         - end (Float) : socket 'End' (id: End)
-        - mode (str): parameter 'mode' in ['FACTOR', 'LENGTH']
+        - mode (str): parameter 'mode' in ('Factor', 'Length')
 
         Returns
         -------
@@ -1676,7 +1677,7 @@ class Curve(Socket):
 
         Arguments
         ---------
-        - handle_type (str): parameter 'handle_type' in ['FREE', 'AUTO', 'VECTOR', 'ALIGN']
+        - handle_type (str): parameter 'handle_type' in ('Free', 'Auto', 'Vector', 'Align')
 
         Returns
         -------
@@ -1707,7 +1708,7 @@ class Curve(Socket):
 
         Arguments
         ---------
-        - handle_type (str): parameter 'handle_type' in ['FREE', 'AUTO', 'VECTOR', 'ALIGN']
+        - handle_type (str): parameter 'handle_type' in ('Free', 'Auto', 'Vector', 'Align')
 
         Returns
         -------
@@ -1738,7 +1739,7 @@ class Curve(Socket):
 
         Arguments
         ---------
-        - handle_type (str): parameter 'handle_type' in ['FREE', 'AUTO', 'VECTOR', 'ALIGN']
+        - handle_type (str): parameter 'handle_type' in ('Free', 'Auto', 'Vector', 'Align')
 
         Returns
         -------
@@ -1885,7 +1886,7 @@ class Curve(Socket):
 
         Arguments
         ---------
-        - spline_type (str): parameter 'spline_type' in ['CATMULL_ROM', 'POLY', 'BEZIER', 'NURBS']
+        - spline_type (str): parameter 'spline_type' in ('Catmull Rom', 'Poly', 'Bézier', 'NURBS')
 
         Returns
         -------

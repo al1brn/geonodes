@@ -1,6 +1,7 @@
-# Generated 2026-01-16 10:06:25
+# Generated 2026-01-21 11:40:29
 
 from __future__ import annotations
+from .. sockettype import SocketType
 from .. socket_class import Socket
 from .. nodeclass import Node, ColorRamp, NodeCurves
 from .. import utils
@@ -122,7 +123,7 @@ class Mesh(Socket):
         ---------
         - density (Float) : socket 'Density' (id: Density)
         - seed (Integer) : socket 'Seed' (id: Seed)
-        - distribute_method (str): parameter 'distribute_method' in ['RANDOM', 'POISSON']
+        - distribute_method (str): parameter 'distribute_method' in ('Random', 'Poisson Disk')
 
         Returns
         -------
@@ -381,7 +382,7 @@ class Mesh(Socket):
         - offset (Vector) : socket 'Offset' (id: Offset)
         - offset_scale (Float) : socket 'Offset Scale' (id: Offset Scale)
         - individual (Boolean) : socket 'Individual' (id: Individual)
-        - mode (str): parameter 'mode' in ['VERTICES', 'EDGES', 'FACES']
+        - mode (str): parameter 'mode' in ('Vertices', 'Edges', 'Faces')
 
         Returns
         -------
@@ -648,8 +649,8 @@ class Mesh(Socket):
         Arguments
         ---------
         - mesh_2 (Mesh) : socket 'Mesh 2' (id: Mesh 2)
-        - operation (str): parameter 'operation' in ['INTERSECT', 'UNION', 'DIFFERENCE']
-        - solver (str): parameter 'solver' in ['EXACT', 'FLOAT', 'MANIFOLD']
+        - operation (str): parameter 'operation' in ('Intersect', 'Union', 'Difference')
+        - solver (str): parameter 'solver' in ('Exact', 'Float', 'Manifold')
 
         Returns
         -------
@@ -673,8 +674,8 @@ class Mesh(Socket):
         ---------
         - mesh_1 (Mesh) : socket 'Mesh 1' (id: Mesh 1)
         - mesh_2 (Mesh) : socket 'Mesh 2' (id: Mesh 2)
-        - operation (str): parameter 'operation' in ['INTERSECT', 'UNION', 'DIFFERENCE']
-        - solver (str): parameter 'solver' in ['EXACT', 'FLOAT', 'MANIFOLD']
+        - operation (str): parameter 'operation' in ('Intersect', 'Union', 'Difference')
+        - solver (str): parameter 'solver' in ('Exact', 'Float', 'Manifold')
 
         Returns
         -------
@@ -697,7 +698,7 @@ class Mesh(Socket):
         Arguments
         ---------
         - mesh (Mesh) : socket 'Mesh' (id: Mesh 2)
-        - solver (str): parameter 'solver' in ['EXACT', 'FLOAT', 'MANIFOLD']
+        - solver (str): parameter 'solver' in ('Exact', 'Float', 'Manifold')
 
         Returns
         -------
@@ -720,7 +721,7 @@ class Mesh(Socket):
         Arguments
         ---------
         - mesh (Mesh) : socket 'Mesh' (id: Mesh 2)
-        - solver (str): parameter 'solver' in ['EXACT', 'FLOAT', 'MANIFOLD']
+        - solver (str): parameter 'solver' in ('Exact', 'Float', 'Manifold')
 
         Returns
         -------
@@ -744,7 +745,7 @@ class Mesh(Socket):
         Arguments
         ---------
         - mesh_2 (Mesh) : socket 'Mesh 2' (id: Mesh 2)
-        - solver (str): parameter 'solver' in ['EXACT', 'FLOAT', 'MANIFOLD']
+        - solver (str): parameter 'solver' in ('Exact', 'Float', 'Manifold')
 
         Returns
         -------
@@ -766,7 +767,7 @@ class Mesh(Socket):
         Arguments
         ---------
         - mesh (Mesh) : socket 'Mesh' (id: Mesh 2)
-        - solver (str): parameter 'solver' in ['EXACT', 'FLOAT', 'MANIFOLD']
+        - solver (str): parameter 'solver' in ('Exact', 'Float', 'Manifold')
 
         Returns
         -------
@@ -787,7 +788,7 @@ class Mesh(Socket):
         Arguments
         ---------
         - mesh (Mesh) : socket 'Mesh' (id: Mesh 2)
-        - solver (str): parameter 'solver' in ['EXACT', 'FLOAT', 'MANIFOLD']
+        - solver (str): parameter 'solver' in ('Exact', 'Float', 'Manifold')
 
         Returns
         -------
@@ -812,7 +813,7 @@ class Mesh(Socket):
         ---------
         - mesh_1 (Mesh) : socket 'Mesh 1' (id: Mesh 1)
         - mesh_2 (Mesh) : socket 'Mesh 2' (id: Mesh 2)
-        - solver (str): parameter 'solver' in ['EXACT', 'FLOAT', 'MANIFOLD']
+        - solver (str): parameter 'solver' in ('Exact', 'Float', 'Manifold')
 
         Returns
         -------
@@ -833,7 +834,7 @@ class Mesh(Socket):
         ---------
         - vertices (Integer) : socket 'Vertices' (id: Vertices)
         - radius (Float) : socket 'Radius' (id: Radius)
-        - fill_type (str): parameter 'fill_type' in ['NONE', 'NGON', 'TRIANGLE_FAN']
+        - fill_type (str): parameter 'fill_type' in ('None', 'N-Gon', 'Triangles')
 
         Returns
         -------
@@ -862,7 +863,7 @@ class Mesh(Socket):
         - radius_top (Float) : socket 'Radius Top' (id: Radius Top)
         - radius_bottom (Float) : socket 'Radius Bottom' (id: Radius Bottom)
         - depth (Float) : socket 'Depth' (id: Depth)
-        - fill_type (str): parameter 'fill_type' in ['NONE', 'NGON', 'TRIANGLE_FAN']
+        - fill_type (str): parameter 'fill_type' in ('None', 'N-Gon', 'Triangles')
 
         Returns
         -------
@@ -911,7 +912,7 @@ class Mesh(Socket):
         - fill_segments (Integer) : socket 'Fill Segments' (id: Fill Segments)
         - radius (Float) : socket 'Radius' (id: Radius)
         - depth (Float) : socket 'Depth' (id: Depth)
-        - fill_type (str): parameter 'fill_type' in ['NONE', 'NGON', 'TRIANGLE_FAN']
+        - fill_type (str): parameter 'fill_type' in ('None', 'N-Gon', 'Triangles')
 
         Returns
         -------
@@ -991,7 +992,7 @@ class Mesh(Socket):
         - count (Integer) : socket 'Count' (id: Count)
         - start_location (Vector) : socket 'Start Location' (id: Start Location)
         - offset (Vector) : socket 'Offset' (id: Offset)
-        - count_mode (str): parameter 'count_mode' in ['TOTAL', 'RESOLUTION']
+        - count_mode (str): parameter 'count_mode' in ('Count', 'Resolution')
 
         Returns
         -------
@@ -1018,7 +1019,7 @@ class Mesh(Socket):
         - count (Integer) : socket 'Count' (id: Count)
         - start_location (Vector) : socket 'Start Location' (id: Start Location)
         - end_location (Vector) : socket 'End Location' (id: Offset)
-        - count_mode (str): parameter 'count_mode' in ['TOTAL', 'RESOLUTION']
+        - count_mode (str): parameter 'count_mode' in ('Count', 'Resolution')
 
         Returns
         -------
@@ -1042,8 +1043,8 @@ class Mesh(Socket):
         - count (Integer) : socket 'Count' (id: Count)
         - start_location (Vector) : socket 'Start Location' (id: Start Location)
         - offset (Vector) : socket 'Offset' (id: Offset)
-        - count_mode (str): parameter 'count_mode' in ['TOTAL', 'RESOLUTION']
-        - mode (str): parameter 'mode' in ['OFFSET', 'END_POINTS']
+        - count_mode (str): parameter 'count_mode' in ('Count', 'Resolution')
+        - mode (str): parameter 'mode' in ('Offset', 'End Points')
 
         Returns
         -------
@@ -1096,7 +1097,7 @@ class Mesh(Socket):
 
         Arguments
         ---------
-        - mode (str): parameter 'mode' in ['EDGES', 'FACES']
+        - mode (str): parameter 'mode' in ('Edges', 'Faces')
 
         Returns
         -------
@@ -1121,7 +1122,7 @@ class Mesh(Socket):
         ---------
         - position (Vector) : socket 'Position' (id: Position)
         - radius (Float) : socket 'Radius' (id: Radius)
-        - mode (str): parameter 'mode' in ['VERTICES', 'EDGES', 'FACES', 'CORNERS']
+        - mode (str): parameter 'mode' in ('Vertices', 'Edges', 'Faces', 'Corners')
 
         Returns
         -------
@@ -1298,7 +1299,7 @@ class Mesh(Socket):
         -------
         - Float [is_valid_ (Boolean)]
         """
-        data_type = utils.get_data_type_from_argument('GeometryNodeTree', 'GeometryNodeSampleNearestSurface', value)
+        data_type = SocketType.get_data_type_for_node(value, 'GeometryNodeSampleNearestSurface')
         node = Node('Sample Nearest Surface', {'Mesh': self, 'Value': value, 'Group ID': group_id, 'Sample Position': sample_position, 'Sample Group ID': sample_group_id}, data_type=data_type)
         return node._out
 
@@ -1323,7 +1324,7 @@ class Mesh(Socket):
         -------
         - Float [is_valid_ (Boolean)]
         """
-        data_type = utils.get_data_type_from_argument('GeometryNodeTree', 'GeometryNodeSampleUVSurface', value)
+        data_type = SocketType.get_data_type_for_node(value, 'GeometryNodeSampleUVSurface')
         node = Node('Sample UV Surface', {'Mesh': self, 'Value': value, 'Source UV Map': uv_map, 'Sample UV': sample_uv}, data_type=data_type)
         return node._out
 
@@ -1346,7 +1347,7 @@ class Mesh(Socket):
         - remove_custom (Boolean) : socket 'Remove Custom' (id: Remove Custom)
         - edge_sharpness (Boolean) : socket 'Edge Sharpness' (id: Edge Sharpness)
         - face_sharpness (Boolean) : socket 'Face Sharpness' (id: Face Sharpness)
-        - domain (str): parameter 'domain' in ['POINT', 'FACE', 'CORNER']
+        - domain (str): parameter 'domain' in ('Point', 'Face', 'Face Corner')
 
         Returns
         -------
@@ -1372,7 +1373,7 @@ class Mesh(Socket):
         Arguments
         ---------
         - custom_normal (Vector) : socket 'Custom Normal' (id: Custom Normal)
-        - domain (str): parameter 'domain' in ['POINT', 'FACE', 'CORNER']
+        - domain (str): parameter 'domain' in ('Point', 'Face', 'Face Corner')
 
         Returns
         -------
@@ -1398,7 +1399,7 @@ class Mesh(Socket):
         Arguments
         ---------
         - custom_normal (Vector) : socket 'Custom Normal' (id: Custom Normal)
-        - domain (str): parameter 'domain' in ['POINT', 'FACE', 'CORNER']
+        - domain (str): parameter 'domain' in ('Point', 'Face', 'Face Corner')
 
         Returns
         -------
@@ -1428,8 +1429,8 @@ class Mesh(Socket):
         - remove_custom (Boolean) : socket 'Remove Custom' (id: Remove Custom)
         - edge_sharpness (Boolean) : socket 'Edge Sharpness' (id: Edge Sharpness)
         - face_sharpness (Boolean) : socket 'Face Sharpness' (id: Face Sharpness)
-        - domain (str): parameter 'domain' in ['POINT', 'FACE', 'CORNER']
-        - mode (str): parameter 'mode' in ['SHARPNESS', 'FREE', 'TANGENT_SPACE']
+        - domain (str): parameter 'domain' in ('Point', 'Face', 'Face Corner')
+        - mode (str): parameter 'mode' in ('Sharpness', 'Free', 'Tangent Space')
 
         Returns
         -------

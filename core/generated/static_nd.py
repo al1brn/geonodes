@@ -1,6 +1,7 @@
-# Generated 2026-01-16 10:06:25
+# Generated 2026-01-21 11:40:29
 
 from __future__ import annotations
+from .. sockettype import SocketType
 from .. socket_class import Socket
 from .. nodeclass import Node, ColorRamp, NodeCurves
 from .. import utils
@@ -49,8 +50,8 @@ class ND:
         - rotation (Rotation) : socket 'Rotation' (id: Rotation)
         - vector (Vector) : socket 'Vector' (id: Vector)
         - factor (Float) : socket 'Factor' (id: Factor)
-        - axis (str): parameter 'axis' in ['X', 'Y', 'Z']
-        - pivot_axis (str): parameter 'pivot_axis' in ['AUTO', 'X', 'Y', 'Z']
+        - axis (str): parameter 'axis' in ('X', 'Y', 'Z')
+        - pivot_axis (str): parameter 'pivot_axis' in ('Auto', 'X', 'Y', 'Z')
 
         Returns
         -------
@@ -73,8 +74,8 @@ class ND:
         ---------
         - primary_axis_1 (Vector) : socket 'Primary Axis' (id: Primary Axis)
         - secondary_axis_1 (Vector) : socket 'Secondary Axis' (id: Secondary Axis)
-        - primary_axis (str): parameter 'primary_axis' in ['X', 'Y', 'Z']
-        - secondary_axis (str): parameter 'secondary_axis' in ['X', 'Y', 'Z']
+        - primary_axis (str): parameter 'primary_axis' in ('X', 'Y', 'Z')
+        - secondary_axis (str): parameter 'secondary_axis' in ('X', 'Y', 'Z')
 
         Returns
         -------
@@ -114,7 +115,7 @@ class ND:
         - a (Integer) : socket 'A' (id: A)
         - b (Integer) : socket 'B' (id: B)
         - shift (Integer) : socket 'Shift' (id: Shift)
-        - operation (str): parameter 'operation' in ['AND', 'OR', 'XOR', 'NOT', 'SHIFT', 'ROTATE']
+        - operation (str): parameter 'operation' in ('And', 'Or', 'Exclusive Or', 'Not', 'Shift', 'Rotate')
 
         Returns
         -------
@@ -135,7 +136,7 @@ class ND:
         ---------
         - boolean (Boolean) : socket 'Boolean' (id: Boolean)
         - boolean_1 (Boolean) : socket 'Boolean' (id: Boolean_001)
-        - operation (str): parameter 'operation' in ['AND', 'OR', 'NOT', 'NAND', 'NOR', 'XNOR', 'XOR', 'IMPLY', 'NIMPLY']
+        - operation (str): parameter 'operation' in ('And', 'Or', 'Not', 'Not And', 'Nor', 'Equal', 'Not Equal', 'Imply', 'Subtract')
 
         Returns
         -------
@@ -160,7 +161,7 @@ class ND:
         - green (Float) : socket 'Green' (id: Green)
         - blue (Float) : socket 'Blue' (id: Blue)
         - alpha (Float) : socket 'Alpha' (id: Alpha)
-        - mode (str): parameter 'mode' in ['RGB', 'HSV', 'HSL']
+        - mode (str): parameter 'mode' in ('RGB', 'HSV', 'HSL')
 
         Returns
         -------
@@ -271,9 +272,9 @@ class ND:
         - c (Float) : socket 'C' (id: C)
         - angle (Float) : socket 'Angle' (id: Angle)
         - epsilon (Float) : socket 'Epsilon' (id: Epsilon)
-        - data_type (str): parameter 'data_type' in ['FLOAT', 'INT', 'VECTOR', 'RGBA', 'STRING']
-        - mode (str): parameter 'mode' in ['ELEMENT', 'LENGTH', 'AVERAGE', 'DOT_PRODUCT', 'DIRECTION']
-        - operation (str): parameter 'operation' in ['LESS_THAN', 'LESS_EQUAL', 'GREATER_THAN', 'GREATER_EQUAL', 'EQUAL', 'NOT_EQUAL']
+        - data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Vector', 'Color', 'String')
+        - mode (str): parameter 'mode' in ('Element-Wise', 'Length', 'Average', 'Dot Product', 'Direction')
+        - operation (str): parameter 'operation' in ('Less Than', 'Less Than or Equal', 'Greater Than', 'Greater Than or Equal', 'Equal', 'Not Equal')
 
         Returns
         -------
@@ -324,7 +325,7 @@ class ND:
         Arguments
         ---------
         - float (Float) : socket 'Float' (id: Float)
-        - rounding_mode (str): parameter 'rounding_mode' in ['ROUND', 'FLOOR', 'CEILING', 'TRUNCATE']
+        - rounding_mode (str): parameter 'rounding_mode' in ('Round', 'Floor', 'Ceiling', 'Truncate')
 
         Returns
         -------
@@ -360,7 +361,7 @@ class ND:
         ---------
         - value (Integer) : socket 'Value' (id: Value)
         - seed (Integer) : socket 'Seed' (id: Seed)
-        - data_type (str): parameter 'data_type' in ['FLOAT', 'INT', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING']
+        - data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Vector', 'Color', 'Rotation', 'Matrix', 'String')
 
         Returns
         -------
@@ -471,7 +472,7 @@ class ND:
         - value (Integer) : socket 'Value' (id: Value)
         - value_1 (Integer) : socket 'Value' (id: Value_001)
         - value_2 (Integer) : socket 'Value' (id: Value_002)
-        - operation (str): parameter 'operation' in ['ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'MULTIPLY_ADD', 'ABSOLUTE', 'NEGATE', 'POWER', 'MINIMUM', 'MAXIMUM', 'SIGN', 'DIVIDE_ROUND', 'DIVIDE_FLOOR', 'DIVIDE_CEIL', 'FLOORED_MODULO', 'MODULO', 'GCD', 'LCM']
+        - operation (str): parameter 'operation' in ('Add', 'Subtract', 'Multiply', 'Divide', 'Multiply Add', 'Absolute', 'Negate', 'Power', 'Minimum', 'Maximum', 'Sign', 'Divide Round', 'Divide Floor', 'Divide Ceiling', 'Floored Modulo', 'Modulo', 'Greatest Common Divisor', 'Least Common Multiple')
 
         Returns
         -------
@@ -621,7 +622,7 @@ class ND:
         - probability (Float) : socket 'Probability' (id: Probability)
         - id (Integer) : socket 'ID' (id: ID)
         - seed (Integer) : socket 'Seed' (id: Seed)
-        - data_type (str): parameter 'data_type' in ['FLOAT', 'INT', 'BOOLEAN', 'FLOAT_VECTOR']
+        - data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector')
 
         Returns
         -------
@@ -658,7 +659,7 @@ class ND:
         ---------
         - rotation (Rotation) : socket 'Rotation' (id: Rotation)
         - rotate_by (Rotation) : socket 'Rotate By' (id: Rotate By)
-        - rotation_space (str): parameter 'rotation_space' in ['GLOBAL', 'LOCAL']
+        - rotation_space (str): parameter 'rotation_space' in ('Global', 'Local')
 
         Returns
         -------
@@ -736,7 +737,7 @@ class ND:
         Arguments
         ---------
         - color (Color) : socket 'Color' (id: Color)
-        - mode (str): parameter 'mode' in ['RGB', 'HSV', 'HSL']
+        - mode (str): parameter 'mode' in ('RGB', 'HSV', 'HSL')
 
         Returns
         -------
@@ -815,7 +816,7 @@ class ND:
         Arguments
         ---------
         - string (String) : socket 'String' (id: String)
-        - data_type (str): parameter 'data_type' in ['FLOAT', 'INT']
+        - data_type (str): parameter 'data_type' in ('Float', 'Integer')
 
         Returns
         -------
@@ -882,7 +883,7 @@ class ND:
         ---------
         - value (Float) : socket 'Value' (id: Value)
         - decimals (Integer) : socket 'Decimals' (id: Decimals)
-        - data_type (str): parameter 'data_type' in ['FLOAT', 'INT']
+        - data_type (str): parameter 'data_type' in ('Float', 'Integer')
 
         Returns
         -------
@@ -903,8 +904,8 @@ class ND:
         ---------
         - value (Float) : socket 'Value' (id: Value)
         - group_id (Integer) : socket 'Group ID' (id: Group Index)
-        - data_type (str): parameter 'data_type' in ['FLOAT', 'INT', 'FLOAT_VECTOR', 'TRANSFORM']
-        - domain (str): parameter 'domain' in ['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']
+        - data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Vector', 'Transform')
+        - domain (str): parameter 'domain' in ('Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer')
 
         Returns
         -------
@@ -923,7 +924,7 @@ class ND:
         Arguments
         ---------
         - geometry (Geometry) : socket 'Geometry' (id: Geometry)
-        - component (str): parameter 'component' in ['MESH', 'POINTCLOUD', 'CURVE', 'INSTANCES', 'GREASEPENCIL']
+        - component (str): parameter 'component' in ('Mesh', 'Point Cloud', 'Curve', 'Instances', 'Grease Pencil')
 
         Returns
         -------
@@ -947,8 +948,8 @@ class ND:
         - geometry (Geometry) : socket 'Geometry' (id: Geometry)
         - selection (Boolean) : socket 'Selection' (id: Selection)
         - attribute (Float) : socket 'Attribute' (id: Attribute)
-        - data_type (str): parameter 'data_type' in ['FLOAT', 'FLOAT_VECTOR']
-        - domain (str): parameter 'domain' in ['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']
+        - data_type (str): parameter 'data_type' in ('Float', 'Vector')
+        - domain (str): parameter 'domain' in ('Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer')
 
         Returns
         -------
@@ -982,7 +983,7 @@ class ND:
         - value (Float) : socket 'Value' (id: Value)
         - iterations (Integer) : socket 'Iterations' (id: Iterations)
         - weight (Float) : socket 'Weight' (id: Weight)
-        - data_type (str): parameter 'data_type' in ['FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR']
+        - data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Vector', 'Color')
 
         Returns
         -------
@@ -1033,7 +1034,7 @@ class ND:
         Arguments
         ---------
         - geometry (Geometry) : socket 'Geometry' (id: Geometry)
-        - domain (str): parameter 'domain' in ['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']
+        - domain (str): parameter 'domain' in ('Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer')
 
         Returns
         -------
@@ -1056,7 +1057,7 @@ class ND:
         - collection (Collection) : socket 'Collection' (id: Collection)
         - separate_children (Boolean) : socket 'Separate Children' (id: Separate Children)
         - reset_children (Boolean) : socket 'Reset Children' (id: Reset Children)
-        - transform_space (str): parameter 'transform_space' in ['ORIGINAL', 'RELATIVE']
+        - transform_space (str): parameter 'transform_space' in ('Original', 'Relative')
 
         Returns
         -------
@@ -1168,7 +1169,7 @@ class ND:
         - offset_angle (Float) : socket 'Offset Angle' (id: Offset Angle)
         - connect_center (Boolean) : socket 'Connect Center' (id: Connect Center)
         - invert_arc (Boolean) : socket 'Invert Arc' (id: Invert Arc)
-        - mode (str): parameter 'mode' in ['POINTS', 'RADIUS']
+        - mode (str): parameter 'mode' in ('Points', 'Radius')
 
         Returns
         -------
@@ -1202,7 +1203,7 @@ class ND:
 
         Arguments
         ---------
-        - handle_type (str): parameter 'handle_type' in ['FREE', 'AUTO', 'VECTOR', 'ALIGN']
+        - handle_type (str): parameter 'handle_type' in ('Free', 'Auto', 'Vector', 'Align')
         - mode (set): parameter 'mode'
 
         Returns
@@ -1260,7 +1261,7 @@ class ND:
         - start_handle (Vector) : socket 'Start Handle' (id: Start Handle)
         - end_handle (Vector) : socket 'End Handle' (id: End Handle)
         - end (Vector) : socket 'End' (id: End)
-        - mode (str): parameter 'mode' in ['POSITION', 'OFFSET']
+        - mode (str): parameter 'mode' in ('Position', 'Offset')
 
         Returns
         -------
@@ -1287,7 +1288,7 @@ class ND:
         - point_2 (Vector) : socket 'Point 2' (id: Point 2)
         - point_3 (Vector) : socket 'Point 3' (id: Point 3)
         - radius (Float) : socket 'Radius' (id: Radius)
-        - mode (str): parameter 'mode' in ['POINTS', 'RADIUS']
+        - mode (str): parameter 'mode' in ('Points', 'Radius')
 
         Returns
         -------
@@ -1312,7 +1313,7 @@ class ND:
         - end (Vector) : socket 'End' (id: End)
         - direction (Vector) : socket 'Direction' (id: Direction)
         - length (Float) : socket 'Length' (id: Length)
-        - mode (str): parameter 'mode' in ['POINTS', 'DIRECTION']
+        - mode (str): parameter 'mode' in ('Points', 'Direction')
 
         Returns
         -------
@@ -1351,7 +1352,7 @@ class ND:
         - point_2 (Vector) : socket 'Point 2' (id: Point 2)
         - point_3 (Vector) : socket 'Point 3' (id: Point 3)
         - point_4 (Vector) : socket 'Point 4' (id: Point 4)
-        - mode (str): parameter 'mode' in ['RECTANGLE', 'PARALLELOGRAM', 'TRAPEZOID', 'KITE', 'POINTS']
+        - mode (str): parameter 'mode' in ('Rectangle', 'Parallelogram', 'Trapezoid', 'Kite', 'Points')
 
         Returns
         -------
@@ -1395,7 +1396,7 @@ class ND:
         ---------
         - curve (Curve) : socket 'Curve' (id: Curve)
         - selection (Boolean) : socket 'Selection' (id: Selection)
-        - handle_type (str): parameter 'handle_type' in ['FREE', 'AUTO', 'VECTOR', 'ALIGN']
+        - handle_type (str): parameter 'handle_type' in ('Free', 'Auto', 'Vector', 'Align')
         - mode (set): parameter 'mode'
 
         Returns
@@ -1443,7 +1444,7 @@ class ND:
         ---------
         - curve (Curve) : socket 'Curve' (id: Curve)
         - selection (Boolean) : socket 'Selection' (id: Selection)
-        - spline_type (str): parameter 'spline_type' in ['CATMULL_ROM', 'POLY', 'BEZIER', 'NURBS']
+        - spline_type (str): parameter 'spline_type' in ('Catmull Rom', 'Poly', 'Bézier', 'NURBS')
 
         Returns
         -------
@@ -1510,7 +1511,7 @@ class ND:
         - curve (Curve) : socket 'Curve' (id: Curve)
         - count (Integer) : socket 'Count' (id: Count)
         - length (Float) : socket 'Length' (id: Length)
-        - mode (str): parameter 'mode' in ['EVALUATED', 'COUNT', 'LENGTH']
+        - mode (str): parameter 'mode' in ('Evaluated', 'Count', 'Length')
 
         Returns
         -------
@@ -1567,8 +1568,8 @@ class ND:
         ---------
         - geometry (Geometry) : socket 'Geometry' (id: Geometry)
         - selection (Boolean) : socket 'Selection' (id: Selection)
-        - domain (str): parameter 'domain' in ['POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE', 'LAYER']
-        - mode (str): parameter 'mode' in ['ALL', 'EDGE_FACE', 'ONLY_FACE']
+        - domain (str): parameter 'domain' in ('Point', 'Edge', 'Face', 'Spline', 'Instance', 'Layer')
+        - mode (str): parameter 'mode' in ('All', 'Only Edges & Faces', 'Only Faces')
 
         Returns
         -------
@@ -1596,7 +1597,7 @@ class ND:
         - seed (Integer) : socket 'Seed' (id: Seed)
         - spacing (Vector) : socket 'Spacing' (id: Spacing)
         - threshold (Float) : socket 'Threshold' (id: Threshold)
-        - mode (str): parameter 'mode' in ['DENSITY_RANDOM', 'DENSITY_GRID']
+        - mode (str): parameter 'mode' in ('Random', 'Grid')
 
         Returns
         -------
@@ -1653,7 +1654,7 @@ class ND:
         - density (Float) : socket 'Density' (id: Density)
         - density_factor (Float) : socket 'Density Factor' (id: Density Factor)
         - seed (Integer) : socket 'Seed' (id: Seed)
-        - distribute_method (str): parameter 'distribute_method' in ['RANDOM', 'POISSON']
+        - distribute_method (str): parameter 'distribute_method' in ('Random', 'Poisson Disk')
 
         Returns
         -------
@@ -1692,7 +1693,7 @@ class ND:
         - geometry (Geometry) : socket 'Geometry' (id: Geometry)
         - selection (Boolean) : socket 'Selection' (id: Selection)
         - amount (Integer) : socket 'Amount' (id: Amount)
-        - domain (str): parameter 'domain' in ['POINT', 'EDGE', 'FACE', 'SPLINE', 'LAYER', 'INSTANCE']
+        - domain (str): parameter 'domain' in ('Point', 'Edge', 'Face', 'Spline', 'Layer', 'Instance')
 
         Returns
         -------
@@ -1805,7 +1806,7 @@ class ND:
         - offset (Vector) : socket 'Offset' (id: Offset)
         - offset_scale (Float) : socket 'Offset Scale' (id: Offset Scale)
         - individual (Boolean) : socket 'Individual' (id: Individual)
-        - mode (str): parameter 'mode' in ['VERTICES', 'EDGES', 'FACES']
+        - mode (str): parameter 'mode' in ('Vertices', 'Edges', 'Faces')
 
         Returns
         -------
@@ -1842,8 +1843,8 @@ class ND:
         ---------
         - value (Float) : socket 'Value' (id: Value)
         - index (Integer) : socket 'Index' (id: Index)
-        - data_type (str): parameter 'data_type' in ['FLOAT', 'INT', 'BOOLEAN', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'QUATERNION', 'FLOAT4X4']
-        - domain (str): parameter 'domain' in ['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']
+        - data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Quaternion', '4x4 Matrix')
+        - domain (str): parameter 'domain' in ('Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer')
 
         Returns
         -------
@@ -1865,8 +1866,8 @@ class ND:
         ---------
         - value (Float) : socket 'Value' (id: Value)
         - group_id (Integer) : socket 'Group ID' (id: Group Index)
-        - data_type (str): parameter 'data_type' in ['FLOAT', 'FLOAT_VECTOR']
-        - domain (str): parameter 'domain' in ['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']
+        - data_type (str): parameter 'data_type' in ('Float', 'Vector')
+        - domain (str): parameter 'domain' in ('Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer')
 
         Returns
         -------
@@ -1888,8 +1889,8 @@ class ND:
         ---------
         - value (Float) : socket 'Value' (id: Value)
         - group_id (Integer) : socket 'Group ID' (id: Group Index)
-        - data_type (str): parameter 'data_type' in ['FLOAT', 'INT', 'FLOAT_VECTOR']
-        - domain (str): parameter 'domain' in ['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']
+        - data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Vector')
+        - domain (str): parameter 'domain' in ('Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer')
 
         Returns
         -------
@@ -1909,8 +1910,8 @@ class ND:
         Arguments
         ---------
         - value (Float) : socket 'Value' (id: Value)
-        - data_type (str): parameter 'data_type' in ['FLOAT', 'INT', 'BOOLEAN', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'QUATERNION', 'FLOAT4X4']
-        - domain (str): parameter 'domain' in ['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']
+        - data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Quaternion', '4x4 Matrix')
+        - domain (str): parameter 'domain' in ('Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer')
 
         Returns
         -------
@@ -1931,7 +1932,7 @@ class ND:
         Arguments
         ---------
         - topology (Float) : socket 'Topology' (id: Topology)
-        - data_type (str): parameter 'data_type' in ['FLOAT', 'INT', 'BOOLEAN', 'VECTOR']
+        - data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector')
 
         Returns
         -------
@@ -1952,8 +1953,8 @@ class ND:
         ---------
         - value (Float) : socket 'Value' (id: Value)
         - group_id (Integer) : socket 'Group ID' (id: Group Index)
-        - data_type (str): parameter 'data_type' in ['FLOAT', 'FLOAT_VECTOR']
-        - domain (str): parameter 'domain' in ['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']
+        - data_type (str): parameter 'data_type' in ('Float', 'Vector')
+        - domain (str): parameter 'domain' in ('Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer')
 
         Returns
         -------
@@ -2055,7 +2056,7 @@ class ND:
         - active_generation_index (int): parameter 'active_generation_index'
         - active_input_index (int): parameter 'active_input_index'
         - active_main_index (int): parameter 'active_main_index'
-        - domain (str): parameter 'domain' in ['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']
+        - domain (str): parameter 'domain' in ('Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer')
         - inspection_index (int): parameter 'inspection_index'
 
         Returns
@@ -2094,7 +2095,7 @@ class ND:
         - volume (Volume) : socket 'Volume' (id: Volume)
         - name (String) : socket 'Name' (id: Name)
         - remove (Boolean) : socket 'Remove' (id: Remove)
-        - data_type (str): parameter 'data_type' in ['FLOAT', 'INT', 'BOOLEAN', 'VECTOR']
+        - data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector')
 
         Returns
         -------
@@ -2120,7 +2121,7 @@ class ND:
         - up (Vector) : socket 'Up' (id: Up)
         - screen_space (Boolean) : socket 'Screen Space' (id: Screen Space)
         - radius (Float) : socket 'Radius' (id: Radius)
-        - color_id (str): parameter 'color_id' in ['PRIMARY', 'SECONDARY', 'X', 'Y', 'Z']
+        - color_id (str): parameter 'color_id' in ('Primary', 'Secondary', 'X', 'Y', 'Z')
 
         Returns
         -------
@@ -2144,8 +2145,8 @@ class ND:
         - value (Float) : socket 'Value' (id: Value)
         - position (Vector) : socket 'Position' (id: Position)
         - direction (Vector) : socket 'Direction' (id: Direction)
-        - color_id (str): parameter 'color_id' in ['PRIMARY', 'SECONDARY', 'X', 'Y', 'Z']
-        - draw_style (str): parameter 'draw_style' in ['ARROW', 'CROSS', 'BOX']
+        - color_id (str): parameter 'color_id' in ('Primary', 'Secondary', 'X', 'Y', 'Z')
+        - draw_style (str): parameter 'draw_style' in ('Arrow', 'Cross', 'Box')
 
         Returns
         -------
@@ -2231,7 +2232,7 @@ class ND:
         - time_step (Float) : socket 'Time Step' (id: Time Step)
         - integration_scheme (menu='Runge-Kutta 3') : ('Semi-Lagrangian', 'Midpoint', 'Runge-Kutta 3', 'Runge-Kutta 4', 'MacCormack', 'BFECC')
         - limiter (menu='Clamp') : ('None', 'Clamp', 'Revert')
-        - data_type (str): parameter 'data_type' in ['FLOAT', 'INT', 'VECTOR']
+        - data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Vector')
 
         Returns
         -------
@@ -2294,7 +2295,7 @@ class ND:
         Arguments
         ---------
         - grid (Float) : socket 'Grid' (id: Grid)
-        - data_type (str): parameter 'data_type' in ['FLOAT', 'INT', 'BOOLEAN', 'VECTOR']
+        - data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector')
 
         Returns
         -------
@@ -2331,7 +2332,7 @@ class ND:
         - grid (Float) : socket 'Grid' (id: Grid)
         - mode (menu='Threshold') : ('Inactive', 'Threshold', 'SDF')
         - threshold (Float) : socket 'Threshold' (id: Threshold)
-        - data_type (str): parameter 'data_type' in ['FLOAT', 'INT', 'BOOLEAN', 'VECTOR']
+        - data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector')
 
         Returns
         -------
@@ -2366,7 +2367,7 @@ class ND:
         Arguments
         ---------
         - grid (Float) : socket 'Grid' (id: Grid)
-        - data_type (str): parameter 'data_type' in ['FLOAT', 'INT', 'BOOLEAN', 'VECTOR']
+        - data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector')
 
         Returns
         -------
@@ -2420,8 +2421,8 @@ class ND:
         - image (Image) : socket 'Image' (id: Image)
         - vector (Vector) : socket 'Vector' (id: Vector)
         - frame (Integer) : socket 'Frame' (id: Frame)
-        - extension (str): parameter 'extension' in ['REPEAT', 'EXTEND', 'CLIP', 'MIRROR']
-        - interpolation (str): parameter 'interpolation' in ['Linear', 'Closest', 'Cubic']
+        - extension (str): parameter 'extension' in ('Repeat', 'Extend', 'Clip', 'Mirror')
+        - interpolation (str): parameter 'interpolation' in ('Linear', 'Closest', 'Cubic')
 
         Returns
         -------
@@ -2554,7 +2555,7 @@ class ND:
         - index (Integer) : socket 'Index' (id: Index)
         - _0 (Geometry) : socket '0' (id: Item_0)
         - _1 (Geometry) : socket '1' (id: Item_1)
-        - data_type (str): parameter 'data_type' in ['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE']
+        - data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Rotation', 'Matrix', 'String', 'Menu', 'Object', 'Image', 'Geometry', 'Collection', 'Material', 'Bundle', 'Closure')
 
         Returns
         -------
@@ -2827,7 +2828,7 @@ class ND:
         Arguments
         ---------
         - name (String) : socket 'Name' (id: Name)
-        - data_type (str): parameter 'data_type' in ['FLOAT', 'INT', 'BOOLEAN', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'QUATERNION', 'FLOAT4X4']
+        - data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Quaternion', '4x4 Matrix')
 
         Returns
         -------
@@ -3107,7 +3108,7 @@ class ND:
         ---------
         - count (Integer) : socket 'Count' (id: Count)
         - value (Float) : socket 'Value' (id: Value)
-        - data_type (str): parameter 'data_type' in ['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'MENU']
+        - data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Rotation', 'Matrix', 'Menu')
 
         Returns
         -------
@@ -3127,7 +3128,7 @@ class ND:
         ---------
         - list (Float) : socket 'List' (id: List)
         - index (Integer) : socket 'Index' (id: Index)
-        - data_type (str): parameter 'data_type' in ['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'MENU']
+        - data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Rotation', 'Matrix', 'Menu')
 
         Returns
         -------
@@ -3145,7 +3146,7 @@ class ND:
         Arguments
         ---------
         - list (Float) : socket 'List' (id: List)
-        - data_type (str): parameter 'data_type' in ['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'MENU']
+        - data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Rotation', 'Matrix', 'Menu')
 
         Returns
         -------
@@ -3180,7 +3181,7 @@ class ND:
         Arguments
         ---------
         - Default selection
-        - data_type (str): parameter 'data_type' in ['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE']
+        - data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Rotation', 'Matrix', 'String', 'Menu', 'Object', 'Image', 'Geometry', 'Collection', 'Material', 'Bundle', 'Closure')
 
         Returns
         -------
@@ -3224,7 +3225,7 @@ class ND:
         - grease_pencil (GreasePencil) : socket 'Grease Pencil' (id: Grease Pencil)
         - selection (Boolean) : socket 'Selection' (id: Selection)
         - group_id (Integer) : socket 'Group ID' (id: Group ID)
-        - mode (str): parameter 'mode' in ['MERGE_BY_NAME', 'MERGE_BY_ID']
+        - mode (str): parameter 'mode' in ('By Name', 'By Group ID')
 
         Returns
         -------
@@ -3250,8 +3251,8 @@ class ND:
         - mesh_2 (Mesh) : socket 'Mesh 2' (id: Mesh 2)
         - self_intersection (Boolean) : socket 'Self Intersection' (id: Self Intersection)
         - hole_tolerant (Boolean) : socket 'Hole Tolerant' (id: Hole Tolerant)
-        - operation (str): parameter 'operation' in ['INTERSECT', 'UNION', 'DIFFERENCE']
-        - solver (str): parameter 'solver' in ['EXACT', 'FLOAT', 'MANIFOLD']
+        - operation (str): parameter 'operation' in ('Intersect', 'Union', 'Difference')
+        - solver (str): parameter 'solver' in ('Exact', 'Float', 'Manifold')
 
         Returns
         -------
@@ -3273,7 +3274,7 @@ class ND:
         ---------
         - vertices (Integer) : socket 'Vertices' (id: Vertices)
         - radius (Float) : socket 'Radius' (id: Radius)
-        - fill_type (str): parameter 'fill_type' in ['NONE', 'NGON', 'TRIANGLE_FAN']
+        - fill_type (str): parameter 'fill_type' in ('None', 'N-Gon', 'Triangles')
 
         Returns
         -------
@@ -3302,7 +3303,7 @@ class ND:
         - radius_top (Float) : socket 'Radius Top' (id: Radius Top)
         - radius_bottom (Float) : socket 'Radius Bottom' (id: Radius Bottom)
         - depth (Float) : socket 'Depth' (id: Depth)
-        - fill_type (str): parameter 'fill_type' in ['NONE', 'NGON', 'TRIANGLE_FAN']
+        - fill_type (str): parameter 'fill_type' in ('None', 'N-Gon', 'Triangles')
 
         Returns
         -------
@@ -3351,7 +3352,7 @@ class ND:
         - fill_segments (Integer) : socket 'Fill Segments' (id: Fill Segments)
         - radius (Float) : socket 'Radius' (id: Radius)
         - depth (Float) : socket 'Depth' (id: Depth)
-        - fill_type (str): parameter 'fill_type' in ['NONE', 'NGON', 'TRIANGLE_FAN']
+        - fill_type (str): parameter 'fill_type' in ('None', 'N-Gon', 'Triangles')
 
         Returns
         -------
@@ -3430,8 +3431,8 @@ class ND:
         - resolution (Float) : socket 'Resolution' (id: Resolution)
         - start_location (Vector) : socket 'Start Location' (id: Start Location)
         - offset (Vector) : socket 'Offset' (id: Offset)
-        - count_mode (str): parameter 'count_mode' in ['TOTAL', 'RESOLUTION']
-        - mode (str): parameter 'mode' in ['OFFSET', 'END_POINTS']
+        - count_mode (str): parameter 'count_mode' in ('Count', 'Resolution')
+        - mode (str): parameter 'mode' in ('Offset', 'End Points')
 
         Returns
         -------
@@ -3453,7 +3454,7 @@ class ND:
         ---------
         - mesh (Mesh) : socket 'Mesh' (id: Mesh)
         - selection (Boolean) : socket 'Selection' (id: Selection)
-        - mode (str): parameter 'mode' in ['EDGES', 'FACES']
+        - mode (str): parameter 'mode' in ('Edges', 'Faces')
 
         Returns
         -------
@@ -3500,7 +3501,7 @@ class ND:
         - selection (Boolean) : socket 'Selection' (id: Selection)
         - position (Vector) : socket 'Position' (id: Position)
         - radius (Float) : socket 'Radius' (id: Radius)
-        - mode (str): parameter 'mode' in ['VERTICES', 'EDGES', 'FACES', 'CORNERS']
+        - mode (str): parameter 'mode' in ('Vertices', 'Edges', 'Faces', 'Corners')
 
         Returns
         -------
@@ -3581,7 +3582,7 @@ class ND:
         ---------
         - object (Object) : socket 'Object' (id: Object)
         - as_instance (Boolean) : socket 'As Instance' (id: As Instance)
-        - transform_space (str): parameter 'transform_space' in ['ORIGINAL', 'RELATIVE']
+        - transform_space (str): parameter 'transform_space' in ('Original', 'Relative')
 
         Returns
         -------
@@ -3754,7 +3755,7 @@ class ND:
         - group_id (Integer) : socket 'Group ID' (id: Group ID)
         - sample_position (Vector) : socket 'Sample Position' (id: Source Position)
         - sample_group_id (Integer) : socket 'Sample Group ID' (id: Sample Group ID)
-        - target_element (str): parameter 'target_element' in ['POINTS', 'EDGES', 'FACES']
+        - target_element (str): parameter 'target_element' in ('Points', 'Edges', 'Faces')
 
         Returns
         -------
@@ -3783,7 +3784,7 @@ class ND:
         - source_position (Vector) : socket 'Source Position' (id: Source Position)
         - ray_direction (Vector) : socket 'Ray Direction' (id: Ray Direction)
         - ray_length (Float) : socket 'Ray Length' (id: Ray Length)
-        - data_type (str): parameter 'data_type' in ['FLOAT', 'INT', 'BOOLEAN', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'QUATERNION', 'FLOAT4X4']
+        - data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Quaternion', '4x4 Matrix')
 
         Returns
         -------
@@ -3959,7 +3960,7 @@ class ND:
         ---------
         - grid_1 (Float) : socket 'Grid 1' (id: Grid 1)
         - grid_2 (Float) : socket 'Grid 2' (id: Grid 2)
-        - operation (str): parameter 'operation' in ['INTERSECT', 'UNION', 'DIFFERENCE']
+        - operation (str): parameter 'operation' in ('Intersect', 'Union', 'Difference')
 
         Returns
         -------
@@ -4086,8 +4087,8 @@ class ND:
         - length (Float) : socket 'Length' (id: Length)
         - curve_index (Integer) : socket 'Curve Index' (id: Curve Index)
         - factor (Float) : socket 'Factor' (id: Factor)
-        - data_type (str): parameter 'data_type' in ['FLOAT', 'INT', 'BOOLEAN', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'QUATERNION', 'FLOAT4X4']
-        - mode (str): parameter 'mode' in ['FACTOR', 'LENGTH']
+        - data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Quaternion', '4x4 Matrix')
+        - mode (str): parameter 'mode' in ('Factor', 'Length')
         - use_all_curves (bool): parameter 'use_all_curves'
 
         Returns
@@ -4111,7 +4112,7 @@ class ND:
         - grid (Float) : socket 'Grid' (id: Grid)
         - position (Vector) : socket 'Position' (id: Position)
         - interpolation (menu='Trilinear') : ('Nearest Neighbor', 'Trilinear', 'Triquadratic')
-        - data_type (str): parameter 'data_type' in ['FLOAT', 'INT', 'BOOLEAN', 'VECTOR']
+        - data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector')
 
         Returns
         -------
@@ -4135,7 +4136,7 @@ class ND:
         - x (Integer) : socket 'X' (id: X)
         - y (Integer) : socket 'Y' (id: Y)
         - z (Integer) : socket 'Z' (id: Z)
-        - data_type (str): parameter 'data_type' in ['FLOAT', 'INT', 'BOOLEAN', 'VECTOR']
+        - data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector')
 
         Returns
         -------
@@ -4160,8 +4161,8 @@ class ND:
         - value (Float) : socket 'Value' (id: Value)
         - index (Integer) : socket 'Index' (id: Index)
         - clamp (bool): parameter 'clamp'
-        - data_type (str): parameter 'data_type' in ['FLOAT', 'INT', 'BOOLEAN', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'QUATERNION', 'FLOAT4X4']
-        - domain (str): parameter 'domain' in ['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']
+        - data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Quaternion', '4x4 Matrix')
+        - domain (str): parameter 'domain' in ('Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer')
 
         Returns
         -------
@@ -4182,7 +4183,7 @@ class ND:
         ---------
         - geometry (Geometry) : socket 'Geometry' (id: Geometry)
         - sample_position (Vector) : socket 'Sample Position' (id: Sample Position)
-        - domain (str): parameter 'domain' in ['POINT', 'EDGE', 'FACE', 'CORNER']
+        - domain (str): parameter 'domain' in ('Point', 'Edge', 'Face', 'Face Corner')
 
         Returns
         -------
@@ -4209,7 +4210,7 @@ class ND:
         - group_id (Integer) : socket 'Group ID' (id: Group ID)
         - sample_position (Vector) : socket 'Sample Position' (id: Sample Position)
         - sample_group_id (Integer) : socket 'Sample Group ID' (id: Sample Group ID)
-        - data_type (str): parameter 'data_type' in ['FLOAT', 'INT', 'BOOLEAN', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'QUATERNION', 'FLOAT4X4']
+        - data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Quaternion', '4x4 Matrix')
 
         Returns
         -------
@@ -4233,7 +4234,7 @@ class ND:
         - value (Float) : socket 'Value' (id: Value)
         - uv_map (Vector) : socket 'UV Map' (id: Source UV Map)
         - sample_uv (Vector) : socket 'Sample UV' (id: Sample UV)
-        - data_type (str): parameter 'data_type' in ['FLOAT', 'INT', 'BOOLEAN', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'QUATERNION', 'FLOAT4X4']
+        - data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Quaternion', '4x4 Matrix')
 
         Returns
         -------
@@ -4261,7 +4262,7 @@ class ND:
         - center (Vector) : socket 'Center' (id: Center)
         - scale_mode (menu='Uniform') : ('Uniform', 'Single Axis')
         - axis (Vector) : socket 'Axis' (id: Axis)
-        - domain (str): parameter 'domain' in ['FACE', 'EDGE']
+        - domain (str): parameter 'domain' in ('Face', 'Edge')
 
         Returns
         -------
@@ -4332,7 +4333,7 @@ class ND:
         ---------
         - geometry (Geometry) : socket 'Geometry' (id: Geometry)
         - selection (Boolean) : socket 'Selection' (id: Selection)
-        - domain (str): parameter 'domain' in ['POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE', 'LAYER']
+        - domain (str): parameter 'domain' in ('Point', 'Edge', 'Face', 'Spline', 'Instance', 'Layer')
 
         Returns
         -------
@@ -4357,7 +4358,7 @@ class ND:
         - selection (Boolean) : socket 'Selection' (id: Selection)
         - position (Vector) : socket 'Position' (id: Position)
         - offset (Vector) : socket 'Offset' (id: Offset)
-        - mode (str): parameter 'mode' in ['LEFT', 'RIGHT']
+        - mode (str): parameter 'mode' in ('Left', 'Right')
 
         Returns
         -------
@@ -4454,7 +4455,7 @@ class ND:
         - selection (Boolean) : socket 'Selection' (id: Selection)
         - color (Color) : socket 'Color' (id: Color)
         - opacity (Float) : socket 'Opacity' (id: Opacity)
-        - mode (str): parameter 'mode' in ['STROKE', 'FILL']
+        - mode (str): parameter 'mode' in ('Stroke', 'Fill')
 
         Returns
         -------
@@ -4473,7 +4474,7 @@ class ND:
         Arguments
         ---------
         - grease_pencil (GreasePencil) : socket 'Grease Pencil' (id: Grease Pencil)
-        - depth_order (str): parameter 'depth_order' in ['2D', '3D']
+        - depth_order (str): parameter 'depth_order' in ('2D Layers', '3D Location')
 
         Returns
         -------
@@ -4514,7 +4515,7 @@ class ND:
         ---------
         - grid (Float) : socket 'Grid' (id: Grid)
         - background (Float) : socket 'Background' (id: Background)
-        - data_type (str): parameter 'data_type' in ['FLOAT', 'INT', 'BOOLEAN', 'VECTOR']
+        - data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector')
 
         Returns
         -------
@@ -4534,7 +4535,7 @@ class ND:
         ---------
         - grid (Float) : socket 'Grid' (id: Grid)
         - transform (Matrix) : socket 'Transform' (id: Transform)
-        - data_type (str): parameter 'data_type' in ['FLOAT', 'INT', 'BOOLEAN', 'VECTOR']
+        - data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector')
 
         Returns
         -------
@@ -4636,8 +4637,8 @@ class ND:
         - remove_custom (Boolean) : socket 'Remove Custom' (id: Remove Custom)
         - edge_sharpness (Boolean) : socket 'Edge Sharpness' (id: Edge Sharpness)
         - face_sharpness (Boolean) : socket 'Face Sharpness' (id: Face Sharpness)
-        - domain (str): parameter 'domain' in ['POINT', 'FACE', 'CORNER']
-        - mode (str): parameter 'mode' in ['SHARPNESS', 'FREE', 'TANGENT_SPACE']
+        - domain (str): parameter 'domain' in ('Point', 'Face', 'Face Corner')
+        - mode (str): parameter 'mode' in ('Sharpness', 'Free', 'Tangent Space')
 
         Returns
         -------
@@ -4700,7 +4701,7 @@ class ND:
         - mesh (Mesh) : socket 'Mesh' (id: Geometry)
         - selection (Boolean) : socket 'Selection' (id: Selection)
         - shade_smooth (Boolean) : socket 'Shade Smooth' (id: Shade Smooth)
-        - domain (str): parameter 'domain' in ['EDGE', 'FACE']
+        - domain (str): parameter 'domain' in ('Edge', 'Face')
 
         Returns
         -------
@@ -4789,7 +4790,7 @@ class ND:
         - selection (Boolean) : socket 'Selection' (id: Selection)
         - group_id (Integer) : socket 'Group ID' (id: Group ID)
         - sort_weight (Float) : socket 'Sort Weight' (id: Sort Weight)
-        - domain (str): parameter 'domain' in ['POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE']
+        - domain (str): parameter 'domain' in ('Point', 'Edge', 'Face', 'Spline', 'Instance')
 
         Returns
         -------
@@ -4850,7 +4851,7 @@ class ND:
         - geometry (Geometry) : socket 'Geometry' (id: Geometry)
         - selection (Boolean) : socket 'Selection' (id: Selection)
         - group_id (Integer) : socket 'Group ID' (id: Group ID)
-        - domain (str): parameter 'domain' in ['POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE', 'LAYER']
+        - domain (str): parameter 'domain' in ('Point', 'Edge', 'Face', 'Spline', 'Instance', 'Layer')
 
         Returns
         -------
@@ -4876,8 +4877,8 @@ class ND:
         - selection (Boolean) : socket 'Selection' (id: Selection)
         - name (String) : socket 'Name' (id: Name)
         - value (Float) : socket 'Value' (id: Value)
-        - data_type (str): parameter 'data_type' in ['FLOAT', 'INT', 'BOOLEAN', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'QUATERNION', 'FLOAT4X4', 'INT8', 'FLOAT2', 'BYTE_COLOR']
-        - domain (str): parameter 'domain' in ['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']
+        - data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Quaternion', '4x4 Matrix', '8-Bit Integer', '2D Vector', 'Byte Color')
+        - domain (str): parameter 'domain' in ('Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer')
 
         Returns
         -------
@@ -4900,7 +4901,7 @@ class ND:
         - volume (Volume) : socket 'Volume' (id: Volume)
         - name (String) : socket 'Name' (id: Name)
         - grid (Float) : socket 'Grid' (id: Grid)
-        - data_type (str): parameter 'data_type' in ['BOOLEAN', 'FLOAT', 'INT', 'VECTOR_FLOAT']
+        - data_type (str): parameter 'data_type' in ('Boolean', 'Float', 'Integer', 'Vector')
 
         Returns
         -------
@@ -4950,11 +4951,11 @@ class ND:
         - line_spacing (Float) : socket 'Line Spacing' (id: Line Spacing)
         - text_box_width (Float) : socket 'Text Box Width' (id: Text Box Width)
         - text_box_height (Float) : socket 'Text Box Height' (id: Text Box Height)
-        - align_x (str): parameter 'align_x' in ['LEFT', 'CENTER', 'RIGHT', 'JUSTIFY', 'FLUSH']
-        - align_y (str): parameter 'align_y' in ['TOP', 'TOP_BASELINE', 'MIDDLE', 'BOTTOM_BASELINE', 'BOTTOM']
+        - align_x (str): parameter 'align_x' in ('Left', 'Center', 'Right', 'Justify', 'Flush')
+        - align_y (str): parameter 'align_y' in ('Top', 'Top Baseline', 'Middle', 'Bottom Baseline', 'Bottom')
         - font (Blender VectorFont | str): VectorFont, or name of a valid font in bpy.types.fonts (see `utils.get_font`)
-        - overflow (str): parameter 'overflow' in ['OVERFLOW', 'SCALE_TO_FIT', 'TRUNCATE']
-        - pivot_mode (str): parameter 'pivot_mode' in ['MIDPOINT', 'TOP_LEFT', 'TOP_CENTER', 'TOP_RIGHT', 'BOTTOM_LEFT', 'BOTTOM_CENTER', 'BOTTOM_RIGHT']
+        - overflow (str): parameter 'overflow' in ('Overflow', 'Scale To Fit', 'Truncate')
+        - pivot_mode (str): parameter 'pivot_mode' in ('Midpoint', 'Top Left', 'Top Center', 'Top Right', 'Bottom Left', 'Bottom Center', 'Bottom Right')
 
         Returns
         -------
@@ -5040,7 +5041,7 @@ class ND:
         - switch (Boolean) : socket 'Switch' (id: Switch)
         - false (Geometry) : socket 'False' (id: False)
         - true (Geometry) : socket 'True' (id: True)
-        - input_type (str): parameter 'input_type' in ['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE']
+        - input_type (str): parameter 'input_type' in ('Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Rotation', 'Matrix', 'String', 'Menu', 'Object', 'Image', 'Geometry', 'Collection', 'Material', 'Bundle', 'Closure')
 
         Returns
         -------
@@ -5067,7 +5068,7 @@ class ND:
 
         Arguments
         ---------
-        - domain (str): parameter 'domain' in ['POINT', 'EDGE', 'FACE', 'LAYER']
+        - domain (str): parameter 'domain' in ('Point', 'Edge', 'Face', 'Layer')
 
         Returns
         -------
@@ -5139,8 +5140,8 @@ class ND:
         ---------
         - geometry (Geometry) : socket 'Geometry' (id: Geometry)
         - selection (Boolean) : socket 'Selection' (id: Selection)
-        - domain (str): parameter 'domain' in ['POINT', 'EDGE', 'FACE', 'CURVE']
-        - selection_type (str): parameter 'selection_type' in ['BOOLEAN', 'FLOAT']
+        - domain (str): parameter 'domain' in ('Point', 'Edge', 'Face', 'Spline')
+        - selection_type (str): parameter 'selection_type' in ('Boolean', 'Float')
 
         Returns
         -------
@@ -5240,7 +5241,7 @@ class ND:
         - end (Float) : socket 'End' (id: End)
         - start_1 (Float) : socket 'Start' (id: Start_001)
         - end_1 (Float) : socket 'End' (id: End_001)
-        - mode (str): parameter 'mode' in ['FACTOR', 'LENGTH']
+        - mode (str): parameter 'mode' in ('Factor', 'Length')
 
         Returns
         -------
@@ -5339,7 +5340,7 @@ class ND:
 
         Arguments
         ---------
-        - domain (str): parameter 'domain' in ['AUTO', 'POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']
+        - domain (str): parameter 'domain' in ('Auto', 'Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer')
         - ui_shortcut (int): parameter 'ui_shortcut'
 
         Returns
@@ -5426,7 +5427,7 @@ class ND:
         ---------
         - show (Boolean) : socket 'Show' (id: Show)
         - message (String) : socket 'Message' (id: Message)
-        - warning_type (str): parameter 'warning_type' in ['ERROR', 'WARNING', 'INFO']
+        - warning_type (str): parameter 'warning_type' in ('Error', 'Warning', 'Info')
 
         Returns
         -------
@@ -5490,7 +5491,7 @@ class ND:
         ---------
         - enable (Boolean) : socket 'Enable' (id: Enable)
         - value (Float) : socket 'Value' (id: Value)
-        - data_type (str): parameter 'data_type' in ['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE']
+        - data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Rotation', 'Matrix', 'String', 'Menu', 'Object', 'Image', 'Geometry', 'Collection', 'Material', 'Bundle', 'Closure')
 
         Returns
         -------
@@ -5643,7 +5644,7 @@ class ND:
         - value (Float) : socket 'Value' (id: Value)
         - min (Float) : socket 'Min' (id: Min)
         - max (Float) : socket 'Max' (id: Max)
-        - clamp_type (str): parameter 'clamp_type' in ['MINMAX', 'RANGE']
+        - clamp_type (str): parameter 'clamp_type' in ('Min Max', 'Range')
 
         Returns
         -------
@@ -5736,8 +5737,8 @@ class ND:
         - to_max_1 (Vector) : socket 'To Max' (id: To_Max_FLOAT3)
         - steps_1 (Vector) : socket 'Steps' (id: Steps_FLOAT3)
         - clamp (bool): parameter 'clamp'
-        - data_type (str): parameter 'data_type' in ['FLOAT', 'FLOAT_VECTOR']
-        - interpolation_type (str): parameter 'interpolation_type' in ['LINEAR', 'STEPPED', 'SMOOTHSTEP', 'SMOOTHERSTEP']
+        - data_type (str): parameter 'data_type' in ('Float', 'Vector')
+        - interpolation_type (str): parameter 'interpolation_type' in ('Linear', 'Stepped Linear', 'Smooth Step', 'Smoother Step')
 
         Returns
         -------
@@ -5761,7 +5762,7 @@ class ND:
         - value (Float) : socket 'Value' (id: Value)
         - value_1 (Float) : socket 'Value' (id: Value_001)
         - value_2 (Float) : socket 'Value' (id: Value_002)
-        - operation (str): parameter 'operation' in ['ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'MULTIPLY_ADD', 'POWER', 'LOGARITHM', 'SQRT', 'INVERSE_SQRT', 'ABSOLUTE', 'EXPONENT', 'MINIMUM', 'MAXIMUM', 'LESS_THAN', 'GREATER_THAN', 'SIGN', 'COMPARE', 'SMOOTH_MIN', 'SMOOTH_MAX', 'ROUND', 'FLOOR', 'CEIL', 'TRUNC', 'FRACT', 'MODULO', 'FLOORED_MODULO', 'WRAP', 'SNAP', 'PINGPONG', 'SINE', 'COSINE', 'TANGENT', 'ARCSINE', 'ARCCOSINE', 'ARCTANGENT', 'ARCTAN2', 'SINH', 'COSH', 'TANH', 'RADIANS', 'DEGREES']
+        - operation (str): parameter 'operation' in ('Add', 'Subtract', 'Multiply', 'Divide', 'Multiply Add', 'Power', 'Logarithm', 'Square Root', 'Inverse Square Root', 'Absolute', 'Exponent', 'Minimum', 'Maximum', 'Less Than', 'Greater Than', 'Sign', 'Compare', 'Smooth Minimum', 'Smooth Maximum', 'Round', 'Floor', 'Ceil', 'Truncate', 'Fraction', 'Truncated Modulo', 'Floored Modulo', 'Wrap', 'Snap', 'Ping-Pong', 'Sine', 'Cosine', 'Tangent', 'Arcsine', 'Arccosine', 'Arctangent', 'Arctan2', 'Hyperbolic Sine', 'Hyperbolic Cosine', 'Hyperbolic Tangent', 'To Radians', 'To Degrees')
         - use_clamp (bool): parameter 'use_clamp'
 
         Returns
@@ -5801,11 +5802,11 @@ class ND:
         - a_3 (Rotation) : socket 'A' (id: A_Rotation)
         - b_3 (Rotation) : socket 'B' (id: B_Rotation)
         - factor (Vector) : socket 'Factor' (id: Factor_Vector)
-        - blend_type (str): parameter 'blend_type' in ['MIX', 'DARKEN', 'MULTIPLY', 'BURN', 'LIGHTEN', 'SCREEN', 'DODGE', 'ADD', 'OVERLAY', 'SOFT_LIGHT', 'LINEAR_LIGHT', 'DIFFERENCE', 'EXCLUSION', 'SUBTRACT', 'DIVIDE', 'HUE', 'SATURATION', 'COLOR', 'VALUE']
+        - blend_type (str): parameter 'blend_type' in ('Mix', 'Darken', 'Multiply', 'Color Burn', 'Lighten', 'Screen', 'Color Dodge', 'Add', 'Overlay', 'Soft Light', 'Linear Light', 'Difference', 'Exclusion', 'Subtract', 'Divide', 'Hue', 'Saturation', 'Color', 'Value')
         - clamp_factor (bool): parameter 'clamp_factor'
         - clamp_result (bool): parameter 'clamp_result'
-        - data_type (str): parameter 'data_type' in ['FLOAT', 'VECTOR', 'RGBA', 'ROTATION']
-        - factor_mode (str): parameter 'factor_mode' in ['UNIFORM', 'NON_UNIFORM']
+        - data_type (str): parameter 'data_type' in ('Float', 'Vector', 'Color', 'Rotation')
+        - factor_mode (str): parameter 'factor_mode' in ('Uniform', 'Non-Uniform')
 
         Returns
         -------
@@ -5952,7 +5953,7 @@ class ND:
         - anisotropy (Float) : socket 'Anisotropy' (id: Anisotropy)
         - orientation (Float) : socket 'Orientation' (id: Orientation 2D)
         - orientation_1 (Vector) : socket 'Orientation' (id: Orientation 3D)
-        - gabor_type (str): parameter 'gabor_type' in ['2D', '3D']
+        - gabor_type (str): parameter 'gabor_type' in ('2D', '3D')
 
         Returns
         -------
@@ -5971,7 +5972,7 @@ class ND:
         Arguments
         ---------
         - vector (Vector) : socket 'Vector' (id: Vector)
-        - gradient_type (str): parameter 'gradient_type' in ['LINEAR', 'QUADRATIC', 'EASING', 'DIAGONAL', 'SPHERICAL', 'QUADRATIC_SPHERE', 'RADIAL']
+        - gradient_type (str): parameter 'gradient_type' in ('Linear', 'Quadratic', 'Easing', 'Diagonal', 'Spherical', 'Quadratic Sphere', 'Radial')
 
         Returns
         -------
@@ -6030,8 +6031,8 @@ class ND:
         - offset (Float) : socket 'Offset' (id: Offset)
         - gain (Float) : socket 'Gain' (id: Gain)
         - distortion (Float) : socket 'Distortion' (id: Distortion)
-        - noise_dimensions (str): parameter 'noise_dimensions' in ['1D', '2D', '3D', '4D']
-        - noise_type (str): parameter 'noise_type' in ['MULTIFRACTAL', 'RIDGED_MULTIFRACTAL', 'HYBRID_MULTIFRACTAL', 'FBM', 'HETERO_TERRAIN']
+        - noise_dimensions (str): parameter 'noise_dimensions' in ('1D', '2D', '3D', '4D')
+        - noise_type (str): parameter 'noise_type' in ('Multifractal', 'Ridged Multifractal', 'Hybrid Multifractal', 'fBM', 'Hetero Terrain')
         - normalize (bool): parameter 'normalize'
 
         Returns
@@ -6071,10 +6072,10 @@ class ND:
         - smoothness (Float) : socket 'Smoothness' (id: Smoothness)
         - exponent (Float) : socket 'Exponent' (id: Exponent)
         - randomness (Float) : socket 'Randomness' (id: Randomness)
-        - distance (str): parameter 'distance' in ['EUCLIDEAN', 'MANHATTAN', 'CHEBYCHEV', 'MINKOWSKI']
-        - feature (str): parameter 'feature' in ['F1', 'F2', 'SMOOTH_F1', 'DISTANCE_TO_EDGE', 'N_SPHERE_RADIUS']
+        - distance (str): parameter 'distance' in ('Euclidean', 'Manhattan', 'Chebychev', 'Minkowski')
+        - feature (str): parameter 'feature' in ('F1', 'F2', 'Smooth F1', 'Distance to Edge', 'N-Sphere Radius')
         - normalize (bool): parameter 'normalize'
-        - voronoi_dimensions (str): parameter 'voronoi_dimensions' in ['1D', '2D', '3D', '4D']
+        - voronoi_dimensions (str): parameter 'voronoi_dimensions' in ('1D', '2D', '3D', '4D')
 
         Returns
         -------
@@ -6110,10 +6111,10 @@ class ND:
         - detail_scale (Float) : socket 'Detail Scale' (id: Detail Scale)
         - detail_roughness (Float) : socket 'Detail Roughness' (id: Detail Roughness)
         - phase_offset (Float) : socket 'Phase Offset' (id: Phase Offset)
-        - bands_direction (str): parameter 'bands_direction' in ['X', 'Y', 'Z', 'DIAGONAL']
-        - rings_direction (str): parameter 'rings_direction' in ['X', 'Y', 'Z', 'SPHERICAL']
-        - wave_profile (str): parameter 'wave_profile' in ['SIN', 'SAW', 'TRI']
-        - wave_type (str): parameter 'wave_type' in ['BANDS', 'RINGS']
+        - bands_direction (str): parameter 'bands_direction' in ('X', 'Y', 'Z', 'Diagonal')
+        - rings_direction (str): parameter 'rings_direction' in ('X', 'Y', 'Z', 'Spherical')
+        - wave_profile (str): parameter 'wave_profile' in ('Sine', 'Saw', 'Triangle')
+        - wave_type (str): parameter 'wave_type' in ('Bands', 'Rings')
 
         Returns
         -------
@@ -6137,7 +6138,7 @@ class ND:
         ---------
         - vector (Vector) : socket 'Vector' (id: Vector)
         - w (Float) : socket 'W' (id: W)
-        - noise_dimensions (str): parameter 'noise_dimensions' in ['1D', '2D', '3D', '4D']
+        - noise_dimensions (str): parameter 'noise_dimensions' in ('1D', '2D', '3D', '4D')
 
         Returns
         -------
@@ -6209,7 +6210,7 @@ class ND:
         - vector_1 (Vector) : socket 'Vector' (id: Vector_001)
         - vector_2 (Vector) : socket 'Vector' (id: Vector_002)
         - scale (Float) : socket 'Scale' (id: Scale)
-        - operation (str): parameter 'operation' in ['ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'MULTIPLY_ADD', 'CROSS_PRODUCT', 'PROJECT', 'REFLECT', 'REFRACT', 'FACEFORWARD', 'DOT_PRODUCT', 'DISTANCE', 'LENGTH', 'SCALE', 'NORMALIZE', 'ABSOLUTE', 'POWER', 'SIGN', 'MINIMUM', 'MAXIMUM', 'FLOOR', 'CEIL', 'FRACTION', 'MODULO', 'WRAP', 'SNAP', 'SINE', 'COSINE', 'TANGENT']
+        - operation (str): parameter 'operation' in ('Add', 'Subtract', 'Multiply', 'Divide', 'Multiply Add', 'Cross Product', 'Project', 'Reflect', 'Refract', 'Faceforward', 'Dot Product', 'Distance', 'Length', 'Scale', 'Normalize', 'Absolute', 'Power', 'Sign', 'Minimum', 'Maximum', 'Floor', 'Ceil', 'Fraction', 'Modulo', 'Wrap', 'Snap', 'Sine', 'Cosine', 'Tangent')
 
         Returns
         -------
@@ -6238,7 +6239,7 @@ class ND:
         - angle (Float) : socket 'Angle' (id: Angle)
         - rotation (Vector) : socket 'Rotation' (id: Rotation)
         - invert (bool): parameter 'invert'
-        - rotation_type (str): parameter 'rotation_type' in ['AXIS_ANGLE', 'X_AXIS', 'Y_AXIS', 'Z_AXIS', 'EULER_XYZ']
+        - rotation_type (str): parameter 'rotation_type' in ('Axis Angle', 'X Axis', 'Y Axis', 'Z Axis', 'Euler')
 
         Returns
         -------

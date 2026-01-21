@@ -1,6 +1,7 @@
-# Generated 2026-01-16 10:06:25
+# Generated 2026-01-21 11:40:29
 
 from __future__ import annotations
+from .. sockettype import SocketType
 from .. socket_class import Socket
 from .. nodeclass import Node, ColorRamp, NodeCurves
 from .. import utils
@@ -44,7 +45,7 @@ class Menu(Socket):
         -------
         - Geometry [a_ (Boolean), b_ (Boolean)]
         """
-        data_type = utils.get_data_type_from_argument('GeometryNodeTree', 'GeometryNodeMenuSwitch', a)
+        data_type = SocketType.get_data_type_for_node(a, 'GeometryNodeMenuSwitch')
         node = Node('Menu Switch', data_type=data_type)
         node._bnode.enum_items.clear()
         node.menu = menu

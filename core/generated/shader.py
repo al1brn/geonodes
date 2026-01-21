@@ -1,6 +1,7 @@
-# Generated 2026-01-16 10:06:25
+# Generated 2026-01-21 11:40:29
 
 from __future__ import annotations
+from .. sockettype import SocketType
 from .. socket_class import Socket
 from .. nodeclass import Node, ColorRamp, NodeCurves
 from .. import utils
@@ -69,7 +70,7 @@ class Shader(Socket):
         - rotation (Float) : socket 'Rotation' (id: Rotation)
         - normal (Vector) : socket 'Normal' (id: Normal)
         - tangent (Vector) : socket 'Tangent' (id: Tangent)
-        - distribution (str): parameter 'distribution' in ['BECKMANN', 'GGX', 'ASHIKHMIN_SHIRLEY', 'MULTI_GGX']
+        - distribution (str): parameter 'distribution' in ('Beckmann', 'GGX', 'Ashikhmin-Shirley', 'Multiscatter GGX')
 
         Returns
         -------
@@ -115,7 +116,7 @@ class Shader(Socket):
         - normal (Vector) : socket 'Normal' (id: Normal)
         - thin_film_thickness (Float) : socket 'Thin Film Thickness' (id: Thin Film Thickness)
         - thin_film_ior (Float) : socket 'Thin Film IOR' (id: Thin Film IOR)
-        - distribution (str): parameter 'distribution' in ['BECKMANN', 'GGX', 'MULTI_GGX']
+        - distribution (str): parameter 'distribution' in ('Beckmann', 'GGX', 'Multiscatter GGX')
 
         Returns
         -------
@@ -142,7 +143,7 @@ class Shader(Socket):
         - roughnessu (Float) : socket 'RoughnessU' (id: RoughnessU)
         - roughnessv (Float) : socket 'RoughnessV' (id: RoughnessV)
         - tangent (Vector) : socket 'Tangent' (id: Tangent)
-        - component (str): parameter 'component' in ['Reflection', 'Transmission']
+        - component (str): parameter 'component' in ('Reflection', 'Transmission')
 
         Returns
         -------
@@ -176,8 +177,8 @@ class Shader(Socket):
         - offset (Float) : socket 'Offset' (id: Offset)
         - random_roughness (Float) : socket 'Random Roughness' (id: Random Roughness)
         - random (Float) : socket 'Random' (id: Random)
-        - model (str): parameter 'model' in ['CHIANG', 'HUANG']
-        - parametrization (str): parameter 'parametrization' in ['ABSORPTION', 'MELANIN', 'COLOR']
+        - model (str): parameter 'model' in ('Chiang', 'Huang')
+        - parametrization (str): parameter 'parametrization' in ('Absorption Coefficient', 'Melanin Concentration', 'Direct Coloring')
 
         Returns
         -------
@@ -214,8 +215,8 @@ class Shader(Socket):
         - tangent (Vector) : socket 'Tangent' (id: Tangent)
         - thin_film_thickness (Float) : socket 'Thin Film Thickness' (id: Thin Film Thickness)
         - thin_film_ior (Float) : socket 'Thin Film IOR' (id: Thin Film IOR)
-        - distribution (str): parameter 'distribution' in ['BECKMANN', 'GGX', 'MULTI_GGX']
-        - fresnel_type (str): parameter 'fresnel_type' in ['PHYSICAL_CONDUCTOR', 'F82']
+        - distribution (str): parameter 'distribution' in ('Beckmann', 'GGX', 'Multiscatter GGX')
+        - fresnel_type (str): parameter 'fresnel_type' in ('Physical Conductor', 'F82 Tint')
 
         Returns
         -------
@@ -292,8 +293,8 @@ class Shader(Socket):
         - emission_strength (Float) : socket 'Emission Strength' (id: Emission Strength)
         - thin_film_thickness (Float) : socket 'Thin Film Thickness' (id: Thin Film Thickness)
         - thin_film_ior (Float) : socket 'Thin Film IOR' (id: Thin Film IOR)
-        - distribution (str): parameter 'distribution' in ['GGX', 'MULTI_GGX']
-        - subsurface_method (str): parameter 'subsurface_method' in ['BURLEY', 'RANDOM_WALK', 'RANDOM_WALK_SKIN']
+        - distribution (str): parameter 'distribution' in ('GGX', 'Multiscatter GGX')
+        - subsurface_method (str): parameter 'subsurface_method' in ('Christensen-Burley', 'Random Walk', 'Random Walk (Skin)')
 
         Returns
         -------
@@ -336,7 +337,7 @@ class Shader(Socket):
         - roughness (Float) : socket 'Roughness' (id: Roughness)
         - ior (Float) : socket 'IOR' (id: IOR)
         - normal (Vector) : socket 'Normal' (id: Normal)
-        - distribution (str): parameter 'distribution' in ['BECKMANN', 'GGX']
+        - distribution (str): parameter 'distribution' in ('Beckmann', 'GGX')
 
         Returns
         -------
@@ -359,7 +360,7 @@ class Shader(Socket):
         - color (Color) : socket 'Color' (id: Color)
         - roughness (Float) : socket 'Roughness' (id: Roughness)
         - normal (Vector) : socket 'Normal' (id: Normal)
-        - distribution (str): parameter 'distribution' in ['ASHIKHMIN', 'MICROFIBER']
+        - distribution (str): parameter 'distribution' in ('Ashikhmin', 'Microfiber')
 
         Returns
         -------
@@ -384,7 +385,7 @@ class Shader(Socket):
         - size (Float) : socket 'Size' (id: Size)
         - smooth (Float) : socket 'Smooth' (id: Smooth)
         - normal (Vector) : socket 'Normal' (id: Normal)
-        - component (str): parameter 'component' in ['DIFFUSE', 'GLOSSY']
+        - component (str): parameter 'component' in ('Diffuse', 'Glossy')
 
         Returns
         -------
@@ -515,7 +516,7 @@ class Shader(Socket):
         Arguments
         ---------
         - is_active_output (bool): parameter 'is_active_output'
-        - target (str): parameter 'target' in ['ALL', 'EEVEE', 'CYCLES']
+        - target (str): parameter 'target' in ('All', 'EEVEE', 'Cycles')
 
         Returns
         -------
@@ -543,7 +544,7 @@ class Shader(Socket):
         - displacement (Vector) : socket 'Displacement' (id: Displacement)
         - thickness (Float) : socket 'Thickness' (id: Thickness)
         - is_active_output (bool): parameter 'is_active_output'
-        - target (str): parameter 'target' in ['ALL', 'EEVEE', 'CYCLES']
+        - target (str): parameter 'target' in ('All', 'EEVEE', 'Cycles')
 
         Returns
         -------
@@ -567,7 +568,7 @@ class Shader(Socket):
         ---------
         - volume (VolumeShader) : socket 'Volume' (id: Volume)
         - is_active_output (bool): parameter 'is_active_output'
-        - target (str): parameter 'target' in ['ALL', 'EEVEE', 'CYCLES']
+        - target (str): parameter 'target' in ('All', 'EEVEE', 'Cycles')
 
         Returns
         -------
@@ -612,7 +613,7 @@ class Shader(Socket):
         - roughness (Float) : socket 'Roughness' (id: Roughness)
         - anisotropy (Float) : socket 'Anisotropy' (id: Anisotropy)
         - normal (Vector) : socket 'Normal' (id: Normal)
-        - falloff (str): parameter 'falloff' in ['BURLEY', 'RANDOM_WALK', 'RANDOM_WALK_SKIN']
+        - falloff (str): parameter 'falloff' in ('Christensen-Burley', 'Random Walk', 'Random Walk (Skin)')
 
         Returns
         -------

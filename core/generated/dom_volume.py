@@ -1,6 +1,7 @@
-# Generated 2026-01-16 10:06:25
+# Generated 2026-01-21 11:40:29
 
 from __future__ import annotations
+from .. sockettype import SocketType
 from .. socket_class import Socket
 from .. nodeclass import Node, ColorRamp, NodeCurves
 from .. import utils
@@ -145,7 +146,7 @@ class Volume:
         -------
         - Volume
         """
-        data_type = utils.get_data_type_from_argument('GeometryNodeTree', 'GeometryNodeStoreNamedGrid', grid)
+        data_type = SocketType.get_data_type_for_node(grid, 'GeometryNodeStoreNamedGrid')
         node = Node('Store Named Grid', {'Volume': self, 'Name': name, 'Grid': grid}, data_type=data_type)
         self._jump(node._out)
         return self._domain_to_geometry
@@ -166,7 +167,7 @@ class Volume:
         ---------
         - name (String) : socket 'Name' (id: Name)
         - remove (Boolean) : socket 'Remove' (id: Remove)
-        - data_type (str): parameter 'data_type' in ['FLOAT', 'INT', 'BOOLEAN', 'VECTOR']
+        - data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector')
 
         Returns
         -------

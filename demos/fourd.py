@@ -1700,7 +1700,7 @@ def build_geometry_nodes():
 
                 with Layout("Color & intensity contribution"):
 
-                    intensity = d.map_range(from_min=0, from_max=-1)*S_int
+                    intensity = d.map_range(from_min=0., from_max=-1.)*S_int
 
                     intensity = intensity.switch_false(Boolean("Visible"), 0.0)
 

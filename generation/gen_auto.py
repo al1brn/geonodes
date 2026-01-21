@@ -432,6 +432,7 @@ def generate(folder, sub_folder):
             file.write(f"# Generated {time_stamp}\n\n")
 
             file.write(f"from __future__ import annotations\n")
+            file.write("from .. sockettype import SocketType\n")
             file.write("from .. socket_class import Socket\n")
             file.write("from .. nodeclass import Node, ColorRamp, NodeCurves\n")
             file.write("from .. import utils\n")

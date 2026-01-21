@@ -138,7 +138,12 @@ class NodeParam:
         """
         if not isinstance(self.value, str):
             return None
-
+        
+        prop = self.bnode.bl_rna.properties[self.name]
+        if prop.type != 'ENUM':
+            return None
+        
+        # Raises a TypeError
         try:
             setattr(self.bnode, self.name, 'GERR')
 
@@ -154,7 +159,8 @@ class NodeParam:
                 vals = (vals,)
 
             if user_version:
-                return utils.get_enum_param_users(vals, self.bnode.name, self.name)
+                transco = {enum_item.identifier: enum_item.name for enum_item in prop.enum_items}
+                return tuple([transco[v] for v in vals])
             else:
                 return vals
 
@@ -271,7 +277,9 @@ class NodeInfo:
             if name in ['domain', 'data_type', 'input_type']:
                 self.user_params[name] = param.enums
             else:
-                self.user_params[name] = utils.get_enum_param_users(param.enums, self.bnode.name, name, user_case=True)
+                #self.user_params[name] = utils.get_enum_param_users(param.enums, self.bnode.name, name, user_case=True)
+                prop = self.bnode.bl_rna.properties[name]
+                self.user_params[name] = [enum_item.name for enum_item in prop.enum_items]
 
         self.data_type_sockets = self.get_data_type_sockets()
 
@@ -698,7 +706,7 @@ class NodeInfo:
 
         # ----- Loop on the possible param values
 
-        # Parame values
+        # Param values
         param_values = self.enum_params[driver_name]
 
         # Save init Value
@@ -2369,13 +2377,13 @@ class NodeInfo:
         # ---------------------------------------------------------------------------
 
         if data_type is not None:
-            if True:
-                driving_arg_name = utils.snake_case(data_type_sockets['in_sockets'][0])
-                s += f"{_2}{data_type} = utils.get_data_type_from_argument('{self.btree.bl_idname}', '{self.bnode.bl_idname}', {driving_arg_name})\n"
-                #, {data_type_sockets['type_to_value']}, '{class_name}.{func_name}', '{driving_arg_name}')\n"
-            else:
-                driving_arg_name = utils.snake_case(data_type_sockets['in_sockets'][0])
-                s += f"{_2}{data_type} = utils.get_argument_data_type({driving_arg_name}, {data_type_sockets['type_to_value']}, '{class_name}.{func_name}', '{driving_arg_name}')\n"
+            driving_arg_name = utils.snake_case(data_type_sockets['in_sockets'][0])
+            # OLD
+            #s += f"{_2}{data_type} = utils.get_data_type_from_argument('{self.btree.bl_idname}', '{self.bnode.bl_idname}', {driving_arg_name})\n"
+            # NEW
+            #s += f"{_2}{data_type} = self.data_type_from_value({driving_arg_name}, param_name='data_type')\n"
+            s += f"{_2}{data_type} = SocketType.get_data_type_for_node({driving_arg_name}, '{self.bnode.bl_idname}')\n"
+
 
         # ---------------------------------------------------------------------------
         # Node call

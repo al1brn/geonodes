@@ -1,6 +1,7 @@
-# Generated 2026-01-16 10:06:25
+# Generated 2026-01-21 11:40:29
 
 from __future__ import annotations
+from .. sockettype import SocketType
 from .. socket_class import Socket
 from .. nodeclass import Node, ColorRamp, NodeCurves
 from .. import utils
@@ -113,7 +114,7 @@ class Texture(Socket):
         - frequency (Float) : socket 'Frequency' (id: Frequency)
         - anisotropy (Float) : socket 'Anisotropy' (id: Anisotropy)
         - orientation (Float) : socket 'Orientation' (id: Orientation 2D)
-        - gabor_type (str): parameter 'gabor_type' in ['2D', '3D']
+        - gabor_type (str): parameter 'gabor_type' in ('2D', '3D')
 
         Returns
         -------
@@ -132,7 +133,7 @@ class Texture(Socket):
         Arguments
         ---------
         - vector (Vector) : socket 'Vector' (id: Vector)
-        - gradient_type (str): parameter 'gradient_type' in ['LINEAR', 'QUADRATIC', 'EASING', 'DIAGONAL', 'SPHERICAL', 'QUADRATIC_SPHERE', 'RADIAL']
+        - gradient_type (str): parameter 'gradient_type' in ('Linear', 'Quadratic', 'Easing', 'Diagonal', 'Spherical', 'Quadratic Sphere', 'Radial')
 
         Returns
         -------
@@ -185,8 +186,8 @@ class Texture(Socket):
         - roughness (Float) : socket 'Roughness' (id: Roughness)
         - lacunarity (Float) : socket 'Lacunarity' (id: Lacunarity)
         - distortion (Float) : socket 'Distortion' (id: Distortion)
-        - noise_dimensions (str): parameter 'noise_dimensions' in ['1D', '2D', '3D', '4D']
-        - noise_type (str): parameter 'noise_type' in ['MULTIFRACTAL', 'RIDGED_MULTIFRACTAL', 'HYBRID_MULTIFRACTAL', 'FBM', 'HETERO_TERRAIN']
+        - noise_dimensions (str): parameter 'noise_dimensions' in ('1D', '2D', '3D', '4D')
+        - noise_type (str): parameter 'noise_type' in ('Multifractal', 'Ridged Multifractal', 'Hybrid Multifractal', 'fBM', 'Hetero Terrain')
         - normalize (bool): parameter 'normalize'
 
         Returns
@@ -220,10 +221,10 @@ class Texture(Socket):
         - roughness (Float) : socket 'Roughness' (id: Roughness)
         - lacunarity (Float) : socket 'Lacunarity' (id: Lacunarity)
         - randomness (Float) : socket 'Randomness' (id: Randomness)
-        - distance (str): parameter 'distance' in ['EUCLIDEAN', 'MANHATTAN', 'CHEBYCHEV', 'MINKOWSKI']
-        - feature (str): parameter 'feature' in ['F1', 'F2', 'SMOOTH_F1', 'DISTANCE_TO_EDGE', 'N_SPHERE_RADIUS']
+        - distance (str): parameter 'distance' in ('Euclidean', 'Manhattan', 'Chebychev', 'Minkowski')
+        - feature (str): parameter 'feature' in ('F1', 'F2', 'Smooth F1', 'Distance to Edge', 'N-Sphere Radius')
         - normalize (bool): parameter 'normalize'
-        - voronoi_dimensions (str): parameter 'voronoi_dimensions' in ['1D', '2D', '3D', '4D']
+        - voronoi_dimensions (str): parameter 'voronoi_dimensions' in ('1D', '2D', '3D', '4D')
 
         Returns
         -------
@@ -259,10 +260,10 @@ class Texture(Socket):
         - detail_scale (Float) : socket 'Detail Scale' (id: Detail Scale)
         - detail_roughness (Float) : socket 'Detail Roughness' (id: Detail Roughness)
         - phase_offset (Float) : socket 'Phase Offset' (id: Phase Offset)
-        - bands_direction (str): parameter 'bands_direction' in ['X', 'Y', 'Z', 'DIAGONAL']
-        - rings_direction (str): parameter 'rings_direction' in ['X', 'Y', 'Z', 'SPHERICAL']
-        - wave_profile (str): parameter 'wave_profile' in ['SIN', 'SAW', 'TRI']
-        - wave_type (str): parameter 'wave_type' in ['BANDS', 'RINGS']
+        - bands_direction (str): parameter 'bands_direction' in ('X', 'Y', 'Z', 'Diagonal')
+        - rings_direction (str): parameter 'rings_direction' in ('X', 'Y', 'Z', 'Spherical')
+        - wave_profile (str): parameter 'wave_profile' in ('Sine', 'Saw', 'Triangle')
+        - wave_type (str): parameter 'wave_type' in ('Bands', 'Rings')
 
         Returns
         -------
@@ -284,7 +285,7 @@ class Texture(Socket):
         Arguments
         ---------
         - vector (Vector) : socket 'Vector' (id: Vector)
-        - noise_dimensions (str): parameter 'noise_dimensions' in ['1D', '2D', '3D', '4D']
+        - noise_dimensions (str): parameter 'noise_dimensions' in ('1D', '2D', '3D', '4D')
 
         Returns
         -------

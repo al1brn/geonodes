@@ -1,6 +1,7 @@
-# Generated 2026-01-16 10:06:25
+# Generated 2026-01-21 11:40:29
 
 from __future__ import annotations
+from .. sockettype import SocketType
 from .. socket_class import Socket
 from .. nodeclass import Node, ColorRamp, NodeCurves
 from .. import utils
@@ -125,7 +126,7 @@ class Color(Socket):
         - green (Float) : socket 'Green' (id: Green)
         - blue (Float) : socket 'Blue' (id: Blue)
         - alpha (Float) : socket 'Alpha' (id: Alpha)
-        - mode (str): parameter 'mode' in ['RGB', 'HSV', 'HSL']
+        - mode (str): parameter 'mode' in ('RGB', 'HSV', 'HSL')
 
         Returns
         -------
@@ -294,7 +295,7 @@ class Color(Socket):
 
         Arguments
         ---------
-        - mode (str): parameter 'mode' in ['RGB', 'HSV', 'HSL']
+        - mode (str): parameter 'mode' in ('RGB', 'HSV', 'HSL')
 
         Returns
         -------
@@ -1104,7 +1105,7 @@ class Color(Socket):
         - factor (Float) : socket 'Factor' (id: Factor_Float)
         - clamp_factor (bool): parameter 'clamp_factor'
         - clamp_result (bool): parameter 'clamp_result'
-        - factor_mode (str): parameter 'factor_mode' in ['UNIFORM', 'NON_UNIFORM']
+        - factor_mode (str): parameter 'factor_mode' in ('Uniform', 'Non-Uniform')
 
         Returns
         -------
@@ -1187,7 +1188,7 @@ class Color(Socket):
         Arguments
         ---------
         - vector (Vector) : socket 'Vector' (id: Vector)
-        - gradient_type (str): parameter 'gradient_type' in ['LINEAR', 'QUADRATIC', 'EASING', 'DIAGONAL', 'SPHERICAL', 'QUADRATIC_SPHERE', 'RADIAL']
+        - gradient_type (str): parameter 'gradient_type' in ('Linear', 'Quadratic', 'Easing', 'Diagonal', 'Spherical', 'Quadratic Sphere', 'Radial')
 
         Returns
         -------
@@ -1243,10 +1244,10 @@ class Color(Socket):
         - detail_scale (Float) : socket 'Detail Scale' (id: Detail Scale)
         - detail_roughness (Float) : socket 'Detail Roughness' (id: Detail Roughness)
         - phase_offset (Float) : socket 'Phase Offset' (id: Phase Offset)
-        - bands_direction (str): parameter 'bands_direction' in ['X', 'Y', 'Z', 'DIAGONAL']
-        - rings_direction (str): parameter 'rings_direction' in ['X', 'Y', 'Z', 'SPHERICAL']
-        - wave_profile (str): parameter 'wave_profile' in ['SIN', 'SAW', 'TRI']
-        - wave_type (str): parameter 'wave_type' in ['BANDS', 'RINGS']
+        - bands_direction (str): parameter 'bands_direction' in ('X', 'Y', 'Z', 'Diagonal')
+        - rings_direction (str): parameter 'rings_direction' in ('X', 'Y', 'Z', 'Spherical')
+        - wave_profile (str): parameter 'wave_profile' in ('Sine', 'Saw', 'Triangle')
+        - wave_type (str): parameter 'wave_type' in ('Bands', 'Rings')
 
         Returns
         -------
@@ -1442,9 +1443,9 @@ class Color(Socket):
         - color_fac (Float) : socket 'Color Fac' (id: Color Fac)
         - alpha (Float) : socket 'Alpha' (id: Alpha)
         - alpha_fac (Float) : socket 'Alpha Fac' (id: Alpha Fac)
-        - blend_type (str): parameter 'blend_type' in ['MIX', 'DARKEN', 'MULTIPLY', 'BURN', 'LIGHTEN', 'SCREEN', 'DODGE', 'ADD', 'OVERLAY', 'SOFT_LIGHT', 'LINEAR_LIGHT', 'DIFFERENCE', 'EXCLUSION', 'SUBTRACT', 'DIVIDE', 'HUE', 'SATURATION', 'COLOR', 'VALUE']
+        - blend_type (str): parameter 'blend_type' in ('Mix', 'Darken', 'Multiply', 'Color Burn', 'Lighten', 'Screen', 'Color Dodge', 'Add', 'Overlay', 'Soft Light', 'Linear Light', 'Difference', 'Exclusion', 'Subtract', 'Divide', 'Hue', 'Saturation', 'Color', 'Value')
         - is_active_output (bool): parameter 'is_active_output'
-        - target (str): parameter 'target' in ['ALL', 'EEVEE', 'CYCLES']
+        - target (str): parameter 'target' in ('All', 'EEVEE', 'Cycles')
         - use_alpha (bool): parameter 'use_alpha'
         - use_clamp (bool): parameter 'use_clamp'
 
@@ -1525,7 +1526,7 @@ class Color(Socket):
 
         Arguments
         ---------
-        - mode (str): parameter 'mode' in ['RGB', 'HSV', 'HSL']
+        - mode (str): parameter 'mode' in ('RGB', 'HSV', 'HSL')
 
         Returns
         -------
@@ -1558,7 +1559,7 @@ class Color(Socket):
         - altitude (float): parameter 'altitude'
         - ground_albedo (float): parameter 'ground_albedo'
         - ozone_density (float): parameter 'ozone_density'
-        - sky_type (str): parameter 'sky_type' in ['SINGLE_SCATTERING', 'MULTIPLE_SCATTERING', 'PREETHAM', 'HOSEK_WILKIE']
+        - sky_type (str): parameter 'sky_type' in ('Single Scattering', 'Multiple Scattering', 'Preetham', 'Hosek / Wilkie')
         - sun_disc (bool): parameter 'sun_disc'
         - sun_elevation (float): parameter 'sun_elevation'
         - sun_intensity (float): parameter 'sun_intensity'
@@ -1588,7 +1589,7 @@ class Color(Socket):
         ---------
         - midlevel (Float) : socket 'Midlevel' (id: Midlevel)
         - scale (Float) : socket 'Scale' (id: Scale)
-        - space (str): parameter 'space' in ['TANGENT', 'OBJECT', 'WORLD']
+        - space (str): parameter 'space' in ('Tangent Space', 'Object Space', 'World Space')
 
         Returns
         -------

@@ -41,6 +41,8 @@ from .scripterror import NodeError
 from . import colors
 from . import blender
 
+from typing import Literal
+
 # ====================================================================================================
 # Socket Type
 # ====================================================================================================
@@ -524,14 +526,100 @@ class SocketType:
         else:
             return None
 
-
     # ====================================================================================================
     # Data type for node
     # ====================================================================================================
 
-    def get_node_data_type(self, tree_type: str, bl_idname: str, *, default=None, halt: bool = True):
+    @classmethod
+    def get_data_type_for_node(cls,
+            value,
+            bl_idname: str,
+            param_name: str = 'data_type',            
+            on_error: Literal['HALT', 'NONE', 'DEFAULT'] = 'HALT',
+            *,
+            float_int: bool = True):
+        """ Get the data_type param
 
-        info = constants.NODE_INFO[tree_type][bl_idname]
+        Arguments
+        ---------
+        - value (any) : the value to get a data_type from
+        - bl_idname (str) : node id
+        - param_name (str = 'data_type') : parameter name
+        - valids (tuple of strs = None) : the valid identifiers
+        - on_error (str in ('HALT', 'NONE', 'DEFAULT')) = 'HALT' : halt if the socket type is not accepted
+
+        Returns
+        -------
+        - str : value for the parameter or None if not valid
+        """
+        from .constants import NODE_INFO
+
+        params = NODE_INFO[bl_idname]['params'][param_name]
+        if value is None:
+            return params['default']
+        
+        stype = cls(value)
+        T = getattr(bpy.types, bl_idname)
+
+        prop = T.bl_rna.properties[param_name]
+        idents = {enum.name: enum.identifier for enum in prop.enum_items if enum.identifier in params['enum']}
+
+        # Value is the identifier
+        if stype.type in idents.values():
+            return stype.type
+        
+        # Value is the UI name
+        by_name = idents.get(stype.class_name, None)
+        if by_name is not None:
+            return by_name
+        
+        # Specific cases
+        if stype.type == 'ROTATION':
+            if 'QUATERNION' in idents.values():
+                return 'QUATERNION'
+            
+        elif stype.type == 'MATRIX':
+            if 'FLOAT4X4' in idents.values():
+                return 'FLOAT4X4'
+            if 'TRANSFORM' in idents.values():
+                return 'TRANSFORM'
+            
+        
+        """
+        elif stype.type == 'INT':
+            if float_int:
+                res = cls.get_data_type_for_node('FLOAT', bl_idname, param_name=param_name, on_error='NONE', float_int=False)
+                if res is not None:
+                    return res
+            
+        elif stype.type == 'FLOAT':
+            if float_int:
+                res = cls.get_data_type_for_node('INT', bl_idname, param_name=param_name, on_error='NONE', float_int=False)
+                if res is not None:
+                    return res
+        """
+            
+        # Not found
+        if on_error == 'HALT':
+            raise NodeError(
+                f"Parameter [{bl_idname}].{param_name} doesn't accept type {stype.class_name}.\n"
+                f"Valid values are: {list(idents.values())}\n"
+                f"or {list(idents.keys())}"
+            )
+        
+        elif on_error == 'DEFAULT':
+            return params['default']
+        
+        else:
+            return None
+        
+    # ====================================================================================================
+    # Data type for node
+    # ====================================================================================================
+
+    def get_node_data_type_OLD(self, tree_type: str, bl_idname: str, *, default=None, halt: bool = True):
+
+        info = constants.NODE_INFO[bl_idname]
 
         conv = info.get('data_type')
 

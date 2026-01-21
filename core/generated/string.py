@@ -1,6 +1,7 @@
-# Generated 2026-01-16 10:06:25
+# Generated 2026-01-21 11:40:29
 
 from __future__ import annotations
+from .. sockettype import SocketType
 from .. socket_class import Socket
 from .. nodeclass import Node, ColorRamp, NodeCurves
 from .. import utils
@@ -340,11 +341,11 @@ class String(Socket):
         - word_spacing (Float) : socket 'Word Spacing' (id: Word Spacing)
         - line_spacing (Float) : socket 'Line Spacing' (id: Line Spacing)
         - text_box_width (Float) : socket 'Text Box Width' (id: Text Box Width)
-        - align_x (str): parameter 'align_x' in ['LEFT', 'CENTER', 'RIGHT', 'JUSTIFY', 'FLUSH']
-        - align_y (str): parameter 'align_y' in ['TOP', 'TOP_BASELINE', 'MIDDLE', 'BOTTOM_BASELINE', 'BOTTOM']
+        - align_x (str): parameter 'align_x' in ('Left', 'Center', 'Right', 'Justify', 'Flush')
+        - align_y (str): parameter 'align_y' in ('Top', 'Top Baseline', 'Middle', 'Bottom Baseline', 'Bottom')
         - font (Blender VectorFont | str): VectorFont, or name of a valid font in bpy.types.fonts (see `utils.get_font`)
-        - overflow (str): parameter 'overflow' in ['OVERFLOW', 'SCALE_TO_FIT', 'TRUNCATE']
-        - pivot_mode (str): parameter 'pivot_mode' in ['MIDPOINT', 'TOP_LEFT', 'TOP_CENTER', 'TOP_RIGHT', 'BOTTOM_LEFT', 'BOTTOM_CENTER', 'BOTTOM_RIGHT']
+        - overflow (str): parameter 'overflow' in ('Overflow', 'Scale To Fit', 'Truncate')
+        - pivot_mode (str): parameter 'pivot_mode' in ('Midpoint', 'Top Left', 'Top Center', 'Top Right', 'Bottom Left', 'Bottom Center', 'Bottom Right')
 
         Returns
         -------
@@ -366,7 +367,7 @@ class String(Socket):
 
         Arguments
         ---------
-        - data_type (str): parameter 'data_type' in ['FLOAT', 'INT']
+        - data_type (str): parameter 'data_type' in ('Float', 'Integer')
 
         Returns
         -------

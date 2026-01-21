@@ -326,7 +326,7 @@ class Node:
         # Parameters / sockets
         # ----------------------------------------------------------------------------------------------------
 
-        node_info = constants.NODE_INFO[tree_type][bl_idname]
+        node_info = constants.NODE_INFO[bl_idname]
 
         params  = {}
         sockets = {}
@@ -480,7 +480,135 @@ class Node:
     # Set the node parameters
     # ====================================================================================================
 
+    # ----------------------------------------------------------------------------------------------------
+    # Set one parameter
+    # ----------------------------------------------------------------------------------------------------
+
+    def data_type_from_value(self, value, param_name: str = 'data_type', on_error: str = 'DEFAULT'):
+        """ Get the data_type from the value to plug on socket
+
+        Arguments
+        ---------
+        - value : the value to set on the socket
+        - param_name (str in ('data_type', 'input_type')) : param name
+        - on_error(str in ('HALT', 'NONE', 'DEFAULT')) : what to do if not found
+
+        Returns
+        -------
+        - data_type : a valid data type
+        """
+        return SocketType.get_data_type_for_node(value, self._bnode.bl_idname, param_name, on_error='DEFAULT')
+
+
+    # ----------------------------------------------------------------------------------------------------
+    # Set one parameter
+    # ----------------------------------------------------------------------------------------------------
+
+    def set_parameter(self, name: str, value, halt: bool = True):
+        """ Set a node parameter
+
+        Arguments
+        - name (str) : parameter name
+        - value (any) : parameter value
+        - halt (bool = True) : raise an error if name is not a parameter
+
+        Returns
+        -------
+        - str : parameter name if properly set, None otherwise
+        """
+        from .constants import NODE_INFO
+
+        node_info = NODE_INFO[self._bnode.bl_idname]
+        params = node_info['params']
+
+        param_name = name
+
+        prop = self._bnode.bl_rna.properties.get(param_name)
+        if prop is None:
+            if halt:
+                raise NodeError(
+                    f"Node {self} doesn't have a parameter named '{name}'. "
+                    f"Valid parameters are: {list(params.keys())}.")
+            else:
+                return None
+            
+        if value is None:
+            return param_name
+        
+        # ---------------------------------------------------------------------------
+        # Enum validation
+        # ---------------------------------------------------------------------------
+
+        if prop.type == 'ENUM':
+
+            if param_name in ['data_type', 'input_type']:
+                #param_value = SocketType(value).get_node_data_type(self._tree._btree.bl_idname, self._bnode.bl_idname, default=value)
+                param_value = SocketType.get_data_type_for_node(value, self._bnode.bl_idname, param_name, on_error='HALT' if halt else 'DEFAULT')
+
+            # Font
+            elif param_name == 'font' and isinstance(param_value, str):
+                param_value = blender.get_font(param_value)
+
+            else:
+                param_value = value
+
+            if prop.is_enum_flag:
+
+                if isinstance(param_value, str):
+                    param_value = set(param_value)
+
+                values = set()
+                for v in param_value:
+                    lvalue = v.lower()
+
+                    ok = False
+                    for enum_item in prop.enum_items:
+                        if lvalue in (enum_item.name.lower(), enum_item.identifier.lower()):
+                            values.add(enum_item.identifier)
+                            ok = True
+                            break
+
+                    if not ok:
+                        raise NodeError(f"Value '{v}' is not valid for node parameter [{self._bnode.name}].{name}.\n"
+                            f"Valid values are {[enum_item.name for enum_item in prop.enum_items]}.")
+                    
+                setattr(self._bnode, param_name, values)
+                
+            else:
+                lvalue = param_value.lower()
+            
+                for enum_item in prop.enum_items:
+                    if lvalue in (enum_item.name.lower(), enum_item.identifier.lower()):
+                        setattr(self._bnode, param_name, enum_item.identifier)
+                        return param_name
+                
+                raise NodeError(f"Value '{param_value}' is not valid for node parameter {[{self._bnode.name}]}.{name}.\n"
+                    f"Valid values are {[enum_item.name for enum_item in prop.enum_items]},\n"
+                    f"or {[enum_item.identifier for enum_item in prop.enum_items]},"
+                    )
+
+        # ---------------------------------------------------------------------------
+        # Not enum
+        # ---------------------------------------------------------------------------
+
+        else:
+            setattr(self._bnode, param_name, value)
+
+        return param_name
+    
+    # ----------------------------------------------------------------------------------------------------
+    # Set several parameters
+    # ----------------------------------------------------------------------------------------------------
+
     def set_parameters(self, **parameters):
+
+        for param_name, param_value in parameters.items():
+            self.set_parameter(param_name, param_value, halt=True)
+
+        return
+
+
+
 
         for param_name, param_value in parameters.items():
 
@@ -1715,7 +1843,7 @@ class Node:
         else:
             new_node = Node(bl_idname)
         
-        node_info = constants.NODE_INFO[self._tree._btree.bl_idname][bl_idname]
+        node_info = constants.NODE_INFO[bl_idname]
         for name in node_info['params']:
             setattr(new_node._bnode, name, getattr(self._bnode, name))
 
