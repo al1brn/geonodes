@@ -389,7 +389,8 @@ def demo(font=None):
 
             with Layout("Minus sign"):
                 minus_mesh = Mesh(item)
-                minus_mesh.material = on_mat.switch(positive, off_mat)
+                #minus_mesh.material = Material(on_mat).switch(positive, off_mat)
+                minus_mesh.material = Material.Switch(positive, on_mat, off_mat)
 
         with Layout("0x40 : Hrz Top"):
             item0.faces.Mask = int(0x40)

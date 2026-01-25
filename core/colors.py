@@ -212,7 +212,7 @@ def linear_rgb(c: float) -> float:
 # Convert a string to a color tuple (4 values)
 # ====================================================================================================
 
-def str_to_color(name: str) -> tuple:
+def str_to_color_tuple(name: str) -> tuple:
     """ Convert a string to a color
 
     Arguments
@@ -253,9 +253,16 @@ def str_to_color(name: str) -> tuple:
 # Convert a value to a color tuple (RGBA)
 # ====================================================================================================
 
-def to_color(value) -> tuple:
+def to_color_tuple(value) -> tuple:
 
-    if isinstance(value, Color):
+    if isinstance(value, SysColor):
+        value = value.col
+
+
+    if value is None:
+        return None
+    
+    elif isinstance(value, Color):
         return (value.r, value.g, value.b, 1.0)
     
     elif np.shape(value) != ():
@@ -277,7 +284,7 @@ def to_color(value) -> tuple:
                 )
 
     elif isinstance(value, str):
-        col = str_to_color(value)
+        col = str_to_color_tuple(value)
         if col is None:
             raise NodeError(
                 f"Color code error: the value '{value}' is not a valid color name or hexa value.\n"
@@ -301,4 +308,53 @@ def to_hexa(color: tuple, with_alpha: bool = True) -> str:
     if with_alpha:
         hexa += f"{int(a*255):02x}"
     return hexa.upper()
+
+# ====================================================================================================
+# Yet another Color class
+# ====================================================================================================
+
+class SysColor:
+    def __init__(self, value):
+        self.col = to_color_tuple(value)
+
+    def __str__(self):
+        if self.is_none:
+            return '<No Color>'
+        
+        return self.hexa(True)
+
+    @property
+    def is_none(self):
+        return self.col is None
+
+    @property
+    def rgb(self):
+        if self.is_none:
+            return None
+        
+        return self.col[:3]
+    
+    @property
+    def rgba(self):
+        if self.is_none:
+            return None
+
+        return self.col
+    
+    def hexa(self, alpha: bool = True):
+        if self.is_none:
+            return None
+
+        return to_hexa(self.rgba, with_alpha=alpha)
+    
+    @property
+    def bcolor(self):
+        if self.is_none:
+            return None
+
+        return Color(self.rgb)
+    
+
+
+
 

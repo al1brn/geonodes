@@ -58,6 +58,7 @@ import bpy
 from time import time
 
 from .scripterror import NodeError
+from .colors import SysColor
 from . import treearrange
 from . import constants
 from . import utils
@@ -250,6 +251,16 @@ class Layout:
     
     @color.setter
     def color(self, value):
+        color = Tree._get_color(value)
+        if color.is_none:
+            self.bnode.use_custom_color = False
+        else:
+            self.bnode.use_custom_color = True
+            self.bnode.color = color.bcolor
+
+        return
+
+
         if value is None:
             self.bnode.use_custom_color = False
         else:
@@ -991,28 +1002,25 @@ class Tree:
     # ====================================================================================================
 
     @staticmethod
-    def _get_color(name):
-        if isinstance(name, tuple):
-            return name
-        
-        rng = Tree.current_tree()._rng
-        if name is None:
-            return tuple(rng.uniform(0., .7, 3))
-        
-        elif isinstance(name, str):
-            if name in ['OP', 'OPERATION']:
-                return (.406, .541, .608)
-            elif name == 'MACRO':
-                return (.261, .963, .409)
-            elif name == 'AUTO_GEN':
-                return (.583, .229, .963)
-            elif name == 'WARNING':
-                return (.949, .574, .119)
+    def _get_color(value):
+
+        if value is None:
+            rng = Tree.current_tree()._rng
+            value = tuple(rng.uniform(0., .7, 3))
+
+        elif isinstance(value, str):
+            if value in ['OP', 'OPERATION']:
+                value = (.406, .541, .608)
+            elif value == 'MACRO':
+                value = (.261, .963, .409)
+            elif value == 'AUTO_GEN':
+                value = (.583, .229, .963)
+            elif value == 'WARNING':
+                value = (.949, .574, .119)
             else:
-                return utils.value_to_color(name)
-                #raise Exception(f"Non referenced color", name)
-        else:
-            return name
+                return SysColor(value)
+            
+        return SysColor(value)
 
     # ====================================================================================================
     # Create a link

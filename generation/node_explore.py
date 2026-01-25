@@ -2378,10 +2378,6 @@ class NodeInfo:
 
         if data_type is not None:
             driving_arg_name = utils.snake_case(data_type_sockets['in_sockets'][0])
-            # OLD
-            #s += f"{_2}{data_type} = utils.get_data_type_from_argument('{self.btree.bl_idname}', '{self.bnode.bl_idname}', {driving_arg_name})\n"
-            # NEW
-            #s += f"{_2}{data_type} = self.data_type_from_value({driving_arg_name}, param_name='data_type')\n"
             s += f"{_2}{data_type} = SocketType.get_data_type_for_node({driving_arg_name}, '{self.bnode.bl_idname}')\n"
 
 

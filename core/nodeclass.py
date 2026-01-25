@@ -49,6 +49,7 @@ from .scripterror import NodeError
 from . import constants
 from . import blender
 from . import utils
+from .colors import SysColor
 from .sockettype import SocketType
 from .utils import Break
 from .signature import Signature
@@ -207,6 +208,20 @@ class Sockets:
         if socket is None:
             raise IndexError(f"Index {index} not valid in sockets {self.names}.")
         return socket
+    
+    # ====================================================================================================
+    # Socket rank
+    # ====================================================================================================
+
+    def get_socket_rank(self, socket):
+        bsocket = utils.get_bsocket(socket)
+        rank = 0
+        for _, sock in self:
+            if utils.get_bsocket(sock) == bsocket:
+                return rank
+            rank += 1
+        return None
+    
 
 # ====================================================================================================
 # Node
@@ -214,7 +229,7 @@ class Sockets:
 
 class Node:
     __slots__ = (
-        '_tree', '_bnode', '_inputs', '_outputs',
+        '_tree', '_bnode', '_inputs', '_outputs', '_lc_rank',
         '_created_sockets',
         '_has_dyn_in', '_has_dyn_out',
         '_has_items', '_items',
@@ -248,6 +263,7 @@ class Node:
         - _default_menu (str | int) : specific to MenuSwitch and IndexSwitch, forward menu value
         - _link_ignore : ignore these sockets in link_inputs method (already set)
         - _stack : call stack for warnings
+        - _lc_rank : socket rank to use to set auto set label and color
 
         > [!NOTE]
         > NodeTree interface is used for Group Input and Output nodes and for Group node.
@@ -277,6 +293,10 @@ class Node:
         tree_type = btree.bl_idname
 
         bl_idname = utils.get_node_bl_idname(node_name, tree_type)
+
+        self._lc_rank = 0
+        if bl_idname in ['GeometryNodeSwitch', 'GeometryNodeMenuSwitch', 'GeometryNodeIndexSwitch']:
+            self._lc_rank = 1
 
         self._bnode = btree.nodes.new(type=bl_idname)
         self._bnode.select = False
@@ -418,15 +438,13 @@ class Node:
 
         else:
             for name, value in {**named_sockets, **sockets}.items():
-                # In specific case the socket must be ignired
+                # In specific case the socket must be ignored
                 # example : Alpha socket for Shader Combine Colore
                 if isinstance(name, str) and utils.snake_case(name) in constants.IGNORED_SOCKETS.get(self._bnode.bl_idname, ()):
                     continue
+
                 self.set_input_socket(name, value)
 
-                # Ignore in further link_inputs method
-                #if value is not None:
-                #    self._link_ignore.append(name)
 
         # ----------------------------------------------------------------------------------------------------
         # Register the node
@@ -498,7 +516,6 @@ class Node:
         - data_type : a valid data type
         """
         return SocketType.get_data_type_for_node(value, self._bnode.bl_idname, param_name, on_error='DEFAULT')
-
 
     # ----------------------------------------------------------------------------------------------------
     # Set one parameter
@@ -1242,6 +1259,11 @@ class Node:
         out_socket = utils.get_bsocket(value)
         if out_socket is not None:
             self._tree.link(out_socket, socket)
+
+            # If first socket, we use it to set node label and color
+            if hasattr(value, 'socket_lc') and self._inputs.get_socket_rank(socket) == self._lc_rank:
+                value.socket_lc.set_node(self)
+
             return socket
 
         # ---------------------------------------------------------------------------
@@ -1265,7 +1287,7 @@ class Node:
                 raise NodeError(f"Impossible to set the input socket {self}.'{socket.name}' with the value: <{value}>.")
 
             if socket_type.type == 'RGBA':
-                a = utils.value_to_color(value)
+                a = SysColor(value).rgba
 
             else:
                 spec = constants.ARRAY_TYPES[socket_type.type]
@@ -1532,7 +1554,9 @@ class Node:
         """
         for bsock in self._bnode.outputs:
             if bsock.enabled and bsock.is_icon_visible and bsock.type != 'CUSTOM':
-                return utils.to_socket(bsock)
+                socket = utils.to_socket(bsock)
+                socket.socket_lc.from_node(self)
+                return socket
         return None
     
     # ====================================================================================================
@@ -1992,15 +2016,14 @@ class Node:
 
     @_color.setter
     def _color(self, value):
-        if value is None:
+
+        color = Tree._get_color(value)
+
+        if color.is_none:
             self._bnode.use_custom_color = False
-            return
-
-        if isinstance(value, str):
-            value = Tree._get_color(value)
-
-        self._bnode.use_custom_color = True
-        self._bnode.color = value
+        else:
+            self._bnode.use_custom_color = True
+            self._bnode.color = color.bcolor
 
     @property
     def _label(self):

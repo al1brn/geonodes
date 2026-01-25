@@ -312,14 +312,15 @@ def demo():
         plank = Mesh(name="Plank")
         orient = Integer(0, "Orientation")
         
-        max_id = planks.points.attribute_statistic(nd.id).max_.to_integer()
+        max_id = planks.points.attribute_statistic(Float(nd.id)).max_.to_integer()
         plank_id = max_id + 1
         plank_id = plank_id.switch(planks.points.count.equal(0), 0)
         plank.set_id(plank_id)
         plank.faces.Face_Random = Float.Random(0, 1, seed=plank_id)
 
         new_mesh = Mesh(mesh + plank)
-        new_mesh.points[nd.id.equal(plank_id)].Orientation = orient
+        sel = nd.id.equal(plank_id)
+        new_mesh.points[sel].Orientation = orient
 
         new_mesh.out("Mesh")
         plank_id.out("Plank ID")
@@ -335,7 +336,7 @@ def demo():
             use_id = Boolean(False, "Use ID")
             id = Integer(0, "ID")
             
-            max_id = mesh.points.attribute_statistic(nd.id).max_.to_integer()
+            max_id = mesh.points.attribute_statistic(Float(nd.id)).max_.to_integer()
             
             mesh = Mesh(mesh.switch(use_id, Mesh(mesh).points[nd.id.not_equal(id)].delete()))
             
@@ -880,7 +881,7 @@ def demo():
         # ---------------------------------------------------------------------------
         # Init
         # ---------------------------------------------------------------------------
-        
+
         with Layout("Get the model"):
             
             mesh = Mesh()
@@ -894,11 +895,16 @@ def demo():
                     plank_orientation = plank.points.sample_index(Integer("Orientation"), index=0)
 
                     # Rotate horizontal to keep UV
-                    rot = Rotation.IndexSwitch(0, (-pi/2, 0, 0), (0, -pi/2, 0), index=plank_orientation)
+                    rot = Rotation.IndexSwitch(
+                        0,                      # Horizontal
+                        (-pi/2, 0, 0),          # Side
+                        (0, -pi/2, 0),          # Front
+                        (-pi/2, -pi/2, 0),      # Vertical
+                        index=plank_orientation)
                     plank.transform(rotation=rot)
 
                     plank.out("Plank ID")
-                    
+
                 with model:
                     def_size = (0.3, 1.0, .02)
                     plank = Mesh.Cube(size=def_size)
@@ -1517,7 +1523,7 @@ def demo():
             plank = Mesh(mesh).points[nd.id.not_equal(rep.iteration)].delete()
             
             sel = nd.index.equal(rep.iteration)
-            rep.cloud.points[sel].Dimensions = plank.points.sample_index(Vector("Dimensions"), index=rep.iteration)
+            rep.cloud.points[sel].Dimensions = plank.points.sample_index(Vector("Dimensions"), index=0)
             rep.cloud[sel].position = plank.points.attribute_statistic(nd.position).mean
             
         cloud = rep.cloud
@@ -1571,9 +1577,90 @@ def demo():
             ids = feel.generated.switch_false(show_ids)
             
         (mesh + ids).out()
-                          
-                
+
+# ====================================================================================================
+# To millimeters
+# ====================================================================================================
+
+def to_mm(v):
+    return round(v*1000)
+
+# ====================================================================================================
+# Cut sheet
+# ====================================================================================================
+
+def cut_sheet(name, raw: bool = False):
+    
+    obj = bpy.data.objects[name]
+    depsgraph = bpy.context.evaluated_depsgraph_get()
+    obj = obj.evaluated_get(depsgraph)
+    
+    mesh = obj.data
+    
+    planks = {}
+    
+    ids    = set()
+    
+    id_data = mesh.attributes["id"].data
+    id_dims = mesh.attributes["Dimensions"].data
+    
+    # ---------------------------------------------------------------------------
+    # Loop in verts, one per plank id
+    # ---------------------------------------------------------------------------
+
+    for i in range(len(id_data)):
+        id = id_data[i].value
+        if id in ids:
+            continue
+        
+        ids.add(id)
+        
+        vec = id_dims[i].vector
+        dx, dy, dz = vec
+        dx, dy, dz = to_mm(dx), to_mm(dy), to_mm(dz)
+        
+        if dz not in planks:
+            planks[dz] = {'dims': {}, 'surface': 0.0}
             
-                
-                
+        cur = planks[dz]
+        dims = (dx, dy)
+        
+        if dims in cur['dims']:
+            cur['dims'][dims].append(id)
+        else:
+            cur['dims'][dims] = [id]
+
+        cur['surface'] += dx*dy
+            
+    # ---------------------------------------------------------------------------
+    # Print the results
+    # ---------------------------------------------------------------------------
+
+    print()
+    print(f"Decoupe du meuble: {name}")
+    print("="*30)
+    print()
+    print()
+
+    if raw:
+        print("Count;Thickness;Width;Length;Plank ids")
+
+    for thick, dims_surf in planks.items():
+
+        if not raw:
+            print(f"Epaisseur {thick} mm - surface : {dims_surf['surface']/1_000_000:.2f} m^2")
+            print('-'*30)
+            print()
+        
+        for dims, plank_ids in dims_surf['dims'].items():
+
+            if raw:
+                print(f"{len(plank_ids):2d};{thick};{dims[1]/10:5.1f};{dims[0]/10:5.1f};{plank_ids}")
+            else:
+                print(f"{len(plank_ids):2d} : {dims[1]/10:5.1f} X {dims[0]/10:5.1f} cm  | {plank_ids}")
+
+        if not raw:
+            print()     
+
+       
                 

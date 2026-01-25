@@ -38,7 +38,7 @@ import numpy as np
 import bpy
 from . import constants
 from .scripterror import NodeError
-from . import colors
+from .colors import SysColor
 from . import blender
 
 from typing import Literal
@@ -503,7 +503,8 @@ class SocketType:
             return int(value)
         
         elif stype == 'RGBA':
-            return colors.to_color(value)
+            #return colors.to_color(value)
+            return SysColor(value).rgba
         
         elif stype in ['ROTATION', 'VECTOR']:
             if np.shape(value) == ():

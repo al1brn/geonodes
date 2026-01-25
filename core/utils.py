@@ -47,6 +47,7 @@ import numpy as np
 from pprint import pprint
 import bpy
 
+from .colors import SysColor
 from .sockettype import SocketType
 from .scripterror import NodeError
 from . import constants
@@ -817,12 +818,13 @@ def check_enum_arg(node_name: str, arg_name: str, arg_value: str, meth_name: str
     -------
     - bool : True
     """
+    return True
 
     # Argument value can be the parameter value
     if arg_value in valids:
         return True
 
-    # It can be the user version
+    # It can be the user version ?
     param_value = get_enum_param_value(arg_value, node_name, arg_name)
     if param_value in valids:
         return True
@@ -918,14 +920,6 @@ def get_menu_enums(menu):
     assert menu.bl_idname == 'NodeSocketMenu'
     return get_enums(menu, 'default_value')
 
-# ====================================================================================================
-# Value to color
-# ====================================================================================================
-
-def value_to_color(value):
-    return SocketType('COLOR').get_default_from_value(value)
-
-
 # =============================================================================================================================
 # Some utilities
 
@@ -1009,7 +1003,7 @@ def python_value_for_socket(value, socket_type):
         return value_to_array(value, (3,))
 
     elif socket_type in ['RGBA', 'COLOR']:
-        return value_to_color(value)
+        return SysColor(value).rgba
 
     elif socket_type in ['STRING', 'MENU']:
         return str(value)

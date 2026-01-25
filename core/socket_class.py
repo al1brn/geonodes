@@ -55,7 +55,7 @@ from .scripterror import NodeError
 from . import utils
 from . import blender
 from . import constants
-from . import colors
+from .colors import SysColor
 from .utils import Break
 from .treeinterface import ItemPath
 from .sockettype import SocketType
@@ -103,6 +103,45 @@ class NodeCache:
         self._cached_nodes[cache_name] = node
 
         return node
+    
+class SocketLC:
+    def __init__(self, label: str = None, color: SysColor = None, default: str = None):
+        """ Socket Label and Color
+
+        This attributes belong to a Socket through the actual output socket of different nodes. In
+        the example below `geo` is an instance of Geometry class, its attribute `socket_lc` is
+        preserved despite its actual node socket is changed to `[Transform Geometry].geometry` :
+
+        ``` python
+        geo.transform()
+        ```
+
+        Argument
+        --------
+        - label (str = None) : socket persitent label
+        - color (SysColor = None) : socket persistent color
+        - default (str = None) : socket name, used as default label if label is None
+
+        """
+        self.label = default if label is None else label
+        self.color = SysColor(color)
+
+    def __str__(self):
+        return f"<SocketLC: '{'no label' if self.label is None else self.label}', color: {str(self.color)}>"
+    
+    def set_node(self, node):
+        if self.label is not None:
+            node._label = self.label
+        if not self.color.is_none:
+            node._color = self.color
+
+    def from_node(self, node):
+        self.label = None
+        self.color = SysColor(None)
+        if node._label is not None and node._label != "":
+            self.label = node._label
+        if node._bnode.use_custom_color:
+            self.color = SysColor(node._bnode.color)
 
 # =============================================================================================================================
 # =============================================================================================================================
@@ -112,7 +151,7 @@ class NodeCache:
 
 class Socket(NodeCache):
 
-    __slots__ = NodeCache.__slots__ + ('_tree', '_bsocket', '_layout', '_use_layout')
+    __slots__ = NodeCache.__slots__ + ('_tree', '_bsocket', '_layout', '_use_layout', 'socket_lc')
 
     SOCKET_TYPE = None
 
@@ -122,9 +161,11 @@ class Socket(NodeCache):
 
     def __init__(self, 
             socket  = None, 
-            name    : str = None, 
-            tip     : str = '',
-            panel   : str = "",                 
+            name         : str = None, 
+            tip          : str = "",
+            panel        : str = "",
+            socket_label : str = None,
+            socket_color : SysColor = None,
             **props):
         """ > The output socket of a <!Node>
 
@@ -163,9 +204,13 @@ class Socket(NodeCache):
 
         Arguments
         ---------
-        - socket (NodeSocket) : the output socket to wrap
+        - socket (NodeSocket = None) : the output socket to wrap
+        - name (str = None) : input name if not None
+        - tip (str = "") : description
+        - panel (str = "") : panel name
+        - socket_label (str = None) : socket name (used to rename nodes if not None)
+        - socket_color (SysColor = None) : socket color (used to color nodes if not None)
         """
-        #print("SHOULD CRASH __dict__", self.__dict__)
 
         # ---------------------------------------------------------------------------
         # Attributes
@@ -175,6 +220,8 @@ class Socket(NodeCache):
         self._use_layout  = True
         self._tree        = Tree.current_tree()
         self._bsocket     = None
+        self.socket_lc    = SocketLC(socket_label, socket_color, name)
+
         self._reset()
 
         # ---------------------------------------------------------------------------
@@ -268,13 +315,6 @@ class Socket(NodeCache):
         
         An empty socket is used temporarily as an input for nodes with dynamic sockets:
 
-        ``` python
-            # 10 iterations starting from an empty geometry
-            for rep in Geometry.Repeat(10):
-                pass
-            result = rep.geometry
-        ```
-
         Arguments
         ---------
         - value (Any = None) : default value
@@ -288,7 +328,7 @@ class Socket(NodeCache):
     # ----------------------------------------------------------------------------------------------------
     
     @classmethod
-    def Named(cls, name):
+    def Named(cls, name, socket_color: SysColor='darkgreen'):
         """ > Node <&Node Named Attribute>
 
         Information
@@ -298,11 +338,15 @@ class Socket(NodeCache):
         Arguments
         ---------
         - name (String) : socket 'Name' (id: Name)
+        - socket_color (SysColor = 'darkgreen') : socket color (used to color nodes if not None)
 
         Returns
         -------
         - Boolean
         """
+        if socket_color is None:
+            socket_color = 'darkgreen'
+
         if SocketType(cls.SOCKET_TYPE).class_name not in constants.ATTRIBUTE_CLASSES:
             raise NodeError(
                 f"The class {SocketType(cls.SOCKET_TYPE).class_name} is not an attribute.\n"
@@ -316,14 +360,14 @@ class Socket(NodeCache):
 
         node._data_type = data_type
 
-        return node._out
+        return node._out._lc(name, socket_color)
     
     # ----------------------------------------------------------------------------------------------------
     # An existing group input socket (output socket of input node)
     # ----------------------------------------------------------------------------------------------------
 
     @classmethod
-    def Input(cls, name: str, panel: str = "", halt: bool = True):
+    def Input(cls, name: str, panel: str = "", halt: bool = True, socket_color: SysColor = None):
         """ Get an exist input socket from its name and panel.
 
         > [!NOTE]
@@ -342,6 +386,7 @@ class Socket(NodeCache):
         - name (str | None) : socket name
         - panel (str = "") : panel name
         - halt (bool = True) : raises an error if not found
+        - socket_color (SysColor = None) : socket color (used to color nodes if not None)
 
         Returns
         -------
@@ -353,9 +398,9 @@ class Socket(NodeCache):
         bsockets = in_node.get_sockets('OUTPUT', include=include, panel=panel)
 
         for _, bsock in bsockets:
-            sock_name = bsock._bsocket.name
+            #sock_name = bsock._bsocket.name
             if SocketType(bsock).type == cls.SOCKET_TYPE: # and utils.snake_case(sock_name) == utils.snake_case(name):
-                return cls(bsock._bsocket)
+                return cls(bsock._bsocket)._lc(name, socket_color, set_node=False)
         
         if halt:
             sname = "" if name is None else f" named '{name}'"
@@ -365,15 +410,19 @@ class Socket(NodeCache):
         
         return None
     
-        #full_name = ItemPath(panel) + ItemPath(name)
-        #return cls(Tree.current_tree().get_input_node().socket_by_name('OUTPUT', full_name.path, None))
 
     # ----------------------------------------------------------------------------------------------------
     # Create a new input socket from the current I/O contexte
     # ----------------------------------------------------------------------------------------------------
 
     @classmethod
-    def NewInput(cls, name: str, value = None, tip: str = "", panel: str = "", **props):
+    def NewInput(cls,
+            name: str, 
+            value       = None, 
+            tip: str    = "", 
+            panel: str  = "", 
+            socket_color: SysColor = None,         
+            **props):
         """ Create an new input socket
 
         > [!NOTE]
@@ -389,7 +438,9 @@ class Socket(NodeCache):
         ---------
         - name (str) : socket name
         - value (Any = None) : default_value
+        - tip (str = "") : description
         - panel (str: None) : panel name
+        - socket_color (SysColor = None) : socket color (used to color nodes if not None)
 
         Returns
         -------
@@ -417,8 +468,10 @@ class Socket(NodeCache):
 
         return cls(Tree.current_tree().create_input_socket(
             SocketType(cls.SOCKET_TYPE).socket_id,
-            name = name,
-            panel = panel,
+            name         = name,
+            tip          = tip,
+            panel        = panel,
+            socket_color = socket_color,
             **props))
         
     # ----------------------------------------------------------------------------------------------------
@@ -426,9 +479,18 @@ class Socket(NodeCache):
     # ----------------------------------------------------------------------------------------------------
 
     @classmethod
-    def Constant(cls, value: None):
+    def Constant(cls, value: None, socket_label: str = None, socket_color: SysColor = 'cadetblue'):
         """ Create an input socket from a constant Node.
+
+        Arguments
+        ---------
+        - value (Any = None) : constant default value
+        - socket_label (str = None) : socket name (used to rename nodes if not None)
+        - socket_color (SysColor = 'cyan') : socket color (used to color nodes if not None)
         """
+
+        if socket_color is None:
+            socket_color = 'cadetblue'
 
         # ---------------------------------------------------------------------------
         # Ensure array
@@ -470,25 +532,26 @@ class Socket(NodeCache):
         # ---------------------------------------------------------------------------
 
         if cls.SOCKET_TYPE == 'BOOLEAN':
-            return Node('Boolean', boolean=def_val)._out
+            return Node('Boolean', boolean=def_val)._out._lc(socket_label, socket_color)
 
         elif cls.SOCKET_TYPE == 'BUNDLE':
-            return Node("Combine Bundle")._out
+            return Node("Combine Bundle")._out._lc(socket_label, socket_color)
         
         elif cls.SOCKET_TYPE == 'CLOSURE':
             socket = ZoneNode.Closure().closure
             socket._use_layout = False
-            return socket
+            return socket._lc(socket_label, socket_color)
 
         elif cls.SOCKET_TYPE == 'COLLECTION':
-            return Node('Collection', collection=def_val)._out
+            return Node('Collection', collection=def_val)._out._lc(socket_label, socket_color)
         
         elif cls.SOCKET_TYPE == 'RGBA':
 
             if value is None:
                 a = (0, 0, 0, 1)
             elif isinstance(value, str):
-                a = colors.to_color(value)
+                #a = colors.to_color(value)
+                a = SysColor(value).rgba
             else:
                 a = get_shaped(value, (4,), (3,))
 
@@ -497,28 +560,28 @@ class Socket(NodeCache):
                     node = Node('Combine Color', {0: a[0], 1: a[1], 2:a[2]})
                     if len(a) == 4:
                         node.alpha = a[3]
-                    return node._out
+                    return node._out._lc(socket_label, socket_color)
                 else:
-                    return Node('Combine Color', {0: a[0], 1: a[1], 2:a[2]})._out
+                    return Node('Combine Color', {0: a[0], 1: a[1], 2:a[2]})._out._lc(socket_label, socket_color)
 
             else:
                 def_val = SocketType('COLOR').get_default_from_value(a)
                 if Tree.is_geonodes():
-                    return Node('Color', value=def_val)._out
+                    return Node('Color', value=def_val)._out._lc(socket_label, socket_color)
 
                 else:
                     socket = Node('Color')._out
                     socket._bsocket.default_value = def_val
-                    return socket
+                    return socket._lc(socket_label, socket_color)
 
         elif cls.SOCKET_TYPE == 'IMAGE':
-            return Node('Image', image=def_val)._out
+            return Node('Image', image=def_val)._out._lc(socket_label, socket_color)
         
         elif cls.SOCKET_TYPE == 'INT':
-            return Node('Integer', integer=def_val)._out
+            return Node('Integer', integer=def_val)._out._lc(socket_label, socket_color)
         
         elif cls.SOCKET_TYPE == 'MATERIAL':
-            return Node('Material', material=def_val)._out
+            return Node('Material', material=def_val)._out._lc(socket_label, socket_color)
         
         elif cls.SOCKET_TYPE == 'MATRIX':
 
@@ -527,13 +590,13 @@ class Socket(NodeCache):
             else:
                 a = get_shaped(value, (16,))
 
-            return Node('Combine Matrix', named_sockets = {i: a[i] for i in range(16)})._out
+            return Node('Combine Matrix', named_sockets = {i: a[i] for i in range(16)})._out._lc(socket_label, socket_color)
         
         elif cls.SOCKET_TYPE == 'MENU':
-            return Node('Menu Switch')._out
+            return Node('Menu Switch')._out._lc(socket_label, socket_color)
         
         elif cls.SOCKET_TYPE == 'OBJECT':
-            return Node('Object', object=def_val)._out
+            return Node('Object', object=def_val)._out._lc(socket_label, socket_color)
         
         elif cls.SOCKET_TYPE == 'ROTATION':
 
@@ -543,17 +606,17 @@ class Socket(NodeCache):
                 a = get_shaped(value, (3,))
 
             if has_sockets(a):
-                return Node('Combine XYZ', x=a[0], y=a[1], z=a[2])._out.to_rotation()
+                return Node('Combine XYZ', x=a[0], y=a[1], z=a[2])._out.to_rotation()._lc(socket_label, socket_color)
             else:
-                return Node('Rotation', rotation_euler=a)._out
+                return Node('Rotation', rotation_euler=a)._out._lc(socket_label, socket_color)
         
         elif cls.SOCKET_TYPE == 'STRING':
-            return Node('String', string=def_val)._out
+            return Node('String', string=def_val)._out._lc(socket_label, socket_color)
         
         elif cls.SOCKET_TYPE == 'VALUE':
             node = Node('Value')
             node._bnode.outputs[0].default_value = def_val
-            return node._out
+            return node._out._lc(socket_label, socket_color)
         
         elif cls.SOCKET_TYPE == 'VECTOR':
 
@@ -563,9 +626,9 @@ class Socket(NodeCache):
                 a = get_shaped(value, (3,))
 
             if has_sockets(a):
-                return Node('Combine XYZ', x=a[0], y=a[1], z=a[2])._out
+                return Node('Combine XYZ', x=a[0], y=a[1], z=a[2])._out._lc(socket_label, socket_color)
             else:
-                return Node('Vector', vector=a)._out
+                return Node('Vector', vector=a)._out._lc(socket_label, socket_color)
             
         elif cls.SOCKET_TYPE == 'GEOMETRY':
             raise NodeError(f"There is no node to create a Geometry. Use explicit constructors such as 'Mesh.Cube()', 'Curve.Spiral()' or 'Cloud.Points().")
@@ -616,6 +679,8 @@ class Socket(NodeCache):
         self._bsocket = bsocket
         if reset:
             self._reset()
+
+        self.socket_lc.set_node(self.node)
 
         return self
     
@@ -734,8 +799,6 @@ class Socket(NodeCache):
     # ====================================================================================================
     # Getting the socket from nodes
     # ====================================================================================================
-
-
     
     # ----------------------------------------------------------------------------------------------------
     # Get an existing socket from current input node
@@ -765,7 +828,6 @@ class Socket(NodeCache):
                 return bsock._bsocket
         else:
             return None
-        
 
     # ====================================================================================================
     # Grid
@@ -814,7 +876,7 @@ class Socket(NodeCache):
         self.node._label = value
 
     # To chain in a short way
-    def _lc(self, label=None, color=None):
+    def _lc(self, label: str = None, color: SysColor = None, set_node: bool = True):
         """ Set node label and color.
 
         This method returns self to be chained to as socket:
@@ -831,14 +893,18 @@ class Socket(NodeCache):
         Arguments
         ---------
         - label (str = None) : node label
-        - color (color = None) : node color
+        - color (SysColor = None) : node color
+        - set_node (bool = True) : change node value 
 
         Returns
         -------
         - self
         """
-        self.node_label = label
-        self.node_color = color
+        self.socket_lc = SocketLC(label, color)
+        if set_node:
+            self.node._label = self.socket_lc.label
+            self.node._color = self.socket_lc.color
+
         return self
 
     def _lcop(self, label=None):
@@ -1260,12 +1326,18 @@ class Socket(NodeCache):
     def switch(self, condition=None, true=None):
         """ > Node <&Node Switch>
 
-        [&NO_JUMP]
-
         Self is connected to 'false' socket.
+
+        > [!NOTE]
+        > switch returns self if global constant SWITCH_JUMP = True (default)
+        > set SWITCH_JUMP = False for legacy behavior
 
         ``` python
         with GeoNodes("Switch demo"):
+        
+            from geonodes.core import constants
+            # Legacy behavior (default is True)
+            constants.SWITCH_JUMP = False
 
             choice = Boolean(True, "Use Sphere")
 
@@ -1274,6 +1346,7 @@ class Socket(NodeCache):
             sphere = Mesh.IcoSphere()
 
             # Select
+            # Legacy behavior: cube is unchanged otherwise cube
             geo = cube.switch(choice, sphere)
 
             # To group output
@@ -1291,9 +1364,13 @@ class Socket(NodeCache):
 
         Returns
         -------
-        - Socket
+        - Socket (self)
         """
-        return self.Switch(condition=condition, false=self, true=true)
+        res = self.Switch(condition=condition, false=self, true=true)
+        if constants.SWITCH_JUMP:
+            return self._jump(res)
+        else:
+            return res
     
     # ----------------------------------------------------------------------------------------------------
     # Alternative method version
@@ -1302,7 +1379,7 @@ class Socket(NodeCache):
     def switch_false(self, condition=None, false=None):
         """ > Node <&Node Switch>
 
-        [&NO_JUMP]
+        [&JUMP]
 
         Self is connected to 'true' socket.
 
@@ -1346,7 +1423,11 @@ class Socket(NodeCache):
         -------
         - Socket
         """
-        return self.Switch(condition=condition, false=false, true=self)
+        res = self.Switch(condition=condition, false=false, true=self)
+        if constants.SWITCH_JUMP:
+            return self._jump(res)
+        else:
+            return res
     
     # ====================================================================================================
     # Loops
