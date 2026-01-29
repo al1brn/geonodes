@@ -680,7 +680,7 @@ def to_socket(socket):
     if bsocket is None:
         return get_socket_class(get_value_socket_type(socket))(socket)
     else:
-        return get_socket_class(bsocket.type, name=bsocket.name)(bsocket)
+        return get_socket_class(bsocket.type, name=bsocket.name)(bsocket)._auto_sd()
     
 # ----------------------------------------------------------------------------------------------------
 # Socket sub type

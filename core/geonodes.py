@@ -46,7 +46,12 @@ from . scripterror import NodeError
 from . treeinterface import TreeInterface
 
 class GeoNodes(Tree):
-    def __init__(self, tree_name: str, fake_user: bool=False, is_group: bool=False, prefix: str | None=None):
+    def __init__(self, 
+            tree_name: str, 
+            fake_user: bool = False, 
+            is_group: bool  = False, 
+            prefix: str     = "",
+            ):
         """ > Geometry Nodes
 
         Arguments
@@ -54,15 +59,22 @@ class GeoNodes(Tree):
         - tree_name (str) : Geometry Nodes name
         - fake_user (bool = False) : set fake_user flag
         - is_group (bool = False) : tree is a group
-        - prefix (str = None) : name prefix
+        - prefix (str = "") : prefix name
         """
 
-        super().__init__(tree_name, tree_type='GeometryNodeTree', fake_user=fake_user, is_group=is_group, prefix=prefix)
+        super().__init__(
+            tree_name,
+            tree_type   = 'GeometryNodeTree', 
+            fake_user   = fake_user, 
+            is_group    = is_group, 
+            prefix      = prefix,
+            )
 
         self._btree.is_modifier = not is_group
 
-    # =============================================================================================================================
+    # ====================================================================================================
     # Tool
+    # ====================================================================================================
 
     @classmethod
     def Tool(cls, tree_name,

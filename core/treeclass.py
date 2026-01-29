@@ -92,7 +92,7 @@ class Panel:
         self.create_layout = create_layout
 
         if self.tree._interface is not None:
-            self.bpanel = self.tree._interface.get_panel(self.path, create=True)
+            self.bpanel = self.tree._interface.get_panel(self.path, default_closed=default_closed, create=True)
             self.bpanel.description = tip
 
     def __str__(self):

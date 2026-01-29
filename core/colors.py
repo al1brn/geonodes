@@ -258,7 +258,6 @@ def to_color_tuple(value) -> tuple:
     if isinstance(value, SysColor):
         value = value.col
 
-
     if value is None:
         return None
     

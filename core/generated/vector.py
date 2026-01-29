@@ -411,6 +411,7 @@ class Vector(Socket):
         - tuple (Float, Float, Float)
         """
         node = self._cache('Separate XYZ', {'Vector': self})
+
         return (node.x, node.y, node.z)
 
     def separate_xyz(self):
@@ -439,6 +440,7 @@ class Vector(Socket):
         -------
         - x
         """
+        return self.xyz[0]
         node = self._cache('Separate XYZ', {'Vector': self})
         return node.x
 
@@ -454,6 +456,8 @@ class Vector(Socket):
         -------
         - y
         """
+        return self.xyz[1]
+    
         node = self._cache('Separate XYZ', {'Vector': self})
         return node.y
 
@@ -469,6 +473,8 @@ class Vector(Socket):
         -------
         - z
         """
+        return self.xyz[2]
+    
         node = self._cache('Separate XYZ', {'Vector': self})
         return node.z
 

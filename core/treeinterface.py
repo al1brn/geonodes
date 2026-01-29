@@ -582,6 +582,7 @@ class TreeInterface:
 
     def get_panel(self, 
             path    : str | NodeTreeInterfacePanel = "", 
+            default_closed : bool = False,
             create  : bool = False):
         """ Get a panel by its name.
 
@@ -628,8 +629,8 @@ class TreeInterface:
 
         Arguments
         ---------
-        - name (str | NodeTreeInterfacePanel = "") : name of the panel
-        - parent (str | NodeTreeInterfacePanel = None) : parent panel
+        - path (str | NodeTreeInterfacePanel = "") : name of the panel
+        - default_closed (bool = False) : default closed fag
         - create (bool = False) : create the panel if is doesn't exist
 
         Returns
@@ -685,7 +686,7 @@ class TreeInterface:
                     return None
                 
                 for i in range(count + 1):
-                    found = self.btree.interface.new_panel(name)
+                    found = self.btree.interface.new_panel(name, default_closed=default_closed)
                     self.btree.interface.move_to_parent(found, parent_panel, 9999)
 
             # ---------------------------------------------------------------------------
@@ -705,7 +706,8 @@ class TreeInterface:
     def create_panel(self, 
             name    : str, 
             parent  : str | NodeTreeInterfacePanel = None,
-            tip     : str = ""):
+            tip     : str = "",
+            default_closed : bool = False):
         """ Create a new panel within a parent panel.
 
         Arguments
@@ -713,6 +715,7 @@ class TreeInterface:
         - name (str) : name of the panel to create
         - parent (str | NodeTreeInterfacePanel = None) : the panel wehre to create the panel
         - tip (str = "") : panel description
+        - default_closed (bool = False) : default_closed flag
 
         Returns
         -------
@@ -725,7 +728,7 @@ class TreeInterface:
         panel_path = ItemPath(parent) + ItemPath(name)
         parent_panel = self.get_panel(panel_path.parent)
 
-        new_panel = self.btree.interface.new_panel(name)
+        new_panel = self.btree.interface.new_panel(name, default_closed=default_closed)
         self.btree.interface.move_to_parent(new_panel, parent_panel, 9999)
         new_panel.description = tip
 

@@ -229,7 +229,7 @@ class Sockets:
 
 class Node:
     __slots__ = (
-        '_tree', '_bnode', '_inputs', '_outputs', '_lc_rank',
+        '_tree', '_bnode', '_inputs', '_outputs',
         '_created_sockets',
         '_has_dyn_in', '_has_dyn_out',
         '_has_items', '_items',
@@ -263,7 +263,6 @@ class Node:
         - _default_menu (str | int) : specific to MenuSwitch and IndexSwitch, forward menu value
         - _link_ignore : ignore these sockets in link_inputs method (already set)
         - _stack : call stack for warnings
-        - _lc_rank : socket rank to use to set auto set label and color
 
         > [!NOTE]
         > NodeTree interface is used for Group Input and Output nodes and for Group node.
@@ -293,10 +292,6 @@ class Node:
         tree_type = btree.bl_idname
 
         bl_idname = utils.get_node_bl_idname(node_name, tree_type)
-
-        self._lc_rank = 0
-        if bl_idname in ['GeometryNodeSwitch', 'GeometryNodeMenuSwitch', 'GeometryNodeIndexSwitch']:
-            self._lc_rank = 1
 
         self._bnode = btree.nodes.new(type=bl_idname)
         self._bnode.select = False
@@ -488,10 +483,8 @@ class Node:
         -------
         - self
         """
-        if label not in ["", None]:
-            self._label = label
-        if color is not None:
-            self._color = color
+        self._label = label
+        self._color = color
         return self    
 
     # ====================================================================================================
@@ -1258,13 +1251,7 @@ class Node:
 
         out_socket = utils.get_bsocket(value)
         if out_socket is not None:
-            self._tree.link(out_socket, socket)
-
-            # If first socket, we use it to set node label and color
-            if hasattr(value, 'socket_lc') and self._inputs.get_socket_rank(socket) == self._lc_rank:
-                value.socket_lc.set_node(self)
-
-            return socket
+            return self._tree.link(out_socket, socket)
 
         # ---------------------------------------------------------------------------
         # We need to create a node if:
@@ -1554,9 +1541,7 @@ class Node:
         """
         for bsock in self._bnode.outputs:
             if bsock.enabled and bsock.is_icon_visible and bsock.type != 'CUSTOM':
-                socket = utils.to_socket(bsock)
-                socket.socket_lc.from_node(self)
-                return socket
+                return utils.to_socket(bsock)
         return None
     
     # ====================================================================================================
@@ -1707,8 +1692,6 @@ class Node:
         - panel (str = "") : panel to use
         """
         self.link_outputs(None, to_panel=panel)
-        #for name, socket in self.get_sockets('OUTPUT'):
-        #    socket.out(name, panel=panel)
 
     # ====================================================================================================
     # Link input from another node
@@ -1960,43 +1943,6 @@ class Node:
         for name, value in kwargs.items():
             self.set_input_socket(name, value)
 
-        if False:
-            for name, value in kwargs.items():
-                socket = self.socket_by_name('INPUT', name, None, enabled_only=False)
-                print("DEBUG", name, socket)
-                print("DEBUG", "pi", self.socket_by_name('INPUT', "pi", None, enabled_only=False))
-                print("DEBUG", "pi_1", self.socket_by_name('INPUT', "pi_1", None, enabled_only=False))
-                ok = False
-                for _, s in remain:
-                    if s == socket:
-                        ok = True
-                        break
-
-                print("OK", ok)
-
-                key = None
-                for k in remain:
-                    if k[1] == socket:
-                        key = k
-                        break
-
-                if key is None:
-                    raise NodeError(
-                        f"Socket named '{name}' not found (or already set). "
-                        f"Valid sockets are {valids}\nRemaining sockets are {[utils.snake_case(k[0]) for k in remain]}.")
-
-                dones.append(f"{socket.name} <- {name} = <{value}>")
-                try:            
-                    self.set_input_socket_value(key[1], value)
-                except Exception as e:
-                    print(f"Error when setting socket '{socket.name}' with value <{value}>.")
-                    print(f"Valid sockets are: {valids}")
-                    sdones = "\n - " + "\n - ".join(dones)
-                    print(f"Error on socket:{sdones}")
-                    raise e
-
-                remain.remove(key)
-
         # ------------------------------------------------------------
         # Done
         # ------------------------------------------------------------
@@ -2012,7 +1958,10 @@ class Node:
 
     @property
     def _color(self):
-        return self._bnode.color
+        if self._bnode.use_custom_color:
+            return SysColor(self._bnode.color)
+        else:
+            return SysColor(None)
 
     @_color.setter
     def _color(self, value):
@@ -2494,7 +2443,7 @@ class Group(Node):
         -------
         - Node Group
         """
-        return cls(f"{prefix} {group_name}", named_sockets=sockets, **sockets)
+        return cls(f"{str(prefix)} {group_name}", named_sockets=sockets, **sockets)
     
     # ====================================================================================================
     # Add a group as a class method

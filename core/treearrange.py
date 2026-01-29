@@ -186,11 +186,21 @@ class Link:
         reroute = self.tree.new_reroute(frame)
 
         # ----- Label
-        node_lab = self.node0.bnode.label
-        if node_lab is None or node_lab == '':
-            reroute.bnode.label = self.blink.from_socket.name
+        sock_descr = self.blink.from_socket.description
+        if sock_descr.startswith("UL "):
+            sock_descr = sock_descr[3:]
         else:
-            reroute.bnode.label = node_lab
+            sock_descr = ""
+
+        if sock_descr == "":
+            node_lab = self.node0.bnode.label
+            if node_lab is None or node_lab == '':
+                reroute.bnode.label = self.blink.from_socket.name
+            else:
+                reroute.bnode.label = node_lab
+        else:
+            reroute.bnode.label = sock_descr
+
 
         # ----- From source node to reroute
         self.tree.new_link(self.node0, self.index0, reroute, 0)
