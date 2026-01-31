@@ -218,7 +218,7 @@ class Layout:
             self.include_node(node)
 
     def __str__(self):
-        nodes = [n for n in self.tree._nodes if n._bnode.parent == self.bnode]
+        nodes = [n for n in self.tree._nodes.values() if n._bnode.parent == self.bnode]
         return f"<Layout '{self.title}', {len(nodes)} nodes>"
 
     # ====================================================================================================
@@ -465,7 +465,7 @@ class Tree:
 
         # Managed lists
         self._kept_nodes = []
-        self._nodes      = [] # List of nodes
+        self._nodes      = {} # Registered nodes: bpy.types.Node.name -> Node
         self._mod_vals   = {} # To restore modifiers values when necessary (menus)
 
         # ---------------------------------------------------------------------------
@@ -585,7 +585,7 @@ class Tree:
 
         # Adjust menu inputs
         if self._has_tree and not error:
-            for node in self._nodes:
+            for node in self._nodes.values():
                 if '_default_menu' in node.__slots__:
                     node._tree_is_completed(self._mod_vals)
 
@@ -624,7 +624,7 @@ class Tree:
 
         # Last node in error
         if error and len(self._nodes):
-            for node in reversed(self._nodes):
+            for node in reversed(self._nodes.values()):
                 if node._bnode.bl_idname in ['NodeGroupOutput', 'NodeGroupInput']:
                     continue
                 utils.set_node_error(node._bnode)
@@ -853,6 +853,10 @@ class Tree:
     # Nodes
     # ====================================================================================================
 
+    # ----------------------------------------------------------------------------------------------------
+    # Clear the Tree
+    # ----------------------------------------------------------------------------------------------------
+
     def clear(self, keep_nodes: bool = True):
         """ Clear the content of the Tree.
 
@@ -879,12 +883,37 @@ class Tree:
             self._btree.links.clear()
             self._btree.nodes.clear()
 
+    # ----------------------------------------------------------------------------------------------------
+    # Register a new Node
+    # ----------------------------------------------------------------------------------------------------
+
     def register_node(self, node):
-        self._nodes.append(node)
+        """ Register a new Node.
+
+        This method is called by the Node class constructor. Never call directly.
+
+        Registered Nodes are stored in the dictionary : _nodes = bpy.types.Node.name -> Node
+
+        Arguments
+        ---------
+        - node (Node) : the newly created Node to register
+
+        Returns
+        -------
+        - Node : the passed argument
+        """
+
+        self._nodes[node._bnode.name] = node
         if len(self._layouts):
             self._layouts[-1].include_node(node)
 
         node._stack = NodeError.stack_lines()
+
+        if self._input_node is None and node._bnode.bl_idname == 'NodeGroupInput':
+            self._input_node = node
+
+        if self._output_node is None and node._bnode.bl_idname == 'NodeGroupOutput':
+            self._output_node = node
 
         return node
 
@@ -1081,6 +1110,12 @@ class Tree:
         """
         from .nodeclass import Node
 
+        if self._input_node is None:
+            return Node('NodeGroupInput')
+        else:
+            return self._input_node
+
+
         for node in self._nodes:
             if node._bnode.bl_idname ==  'NodeGroupInput':
                 return node
@@ -1102,6 +1137,14 @@ class Tree:
         - Node
         """
         from .nodeclass import Node
+
+        if self._output_node is None:
+            return Node('NodeGroupOutput')
+        else:
+            return self._output_node
+
+
+
 
         for node in self._nodes:
             if node._bnode.bl_idname ==  'NodeGroupOutput':
@@ -1147,7 +1190,7 @@ class Tree:
         dead_ends = []
         unlinkeds = []
 
-        for node in self._nodes:
+        for node in self._nodes.values():
 
             if node._bnode.bl_idname in (
                 'NodeGroupInput', 'GeometryNodeWarning',

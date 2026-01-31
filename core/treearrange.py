@@ -484,16 +484,24 @@ class Item:
                 column.append(node)
                 col_width = max(col_width, node.width)
 
-            assert len(column), f"{debug} ? {i_col}"
-
             # ---------------------------------------------------------------------------
             # Rows of rightmost column
             # ---------------------------------------------------------------------------
 
             if i_col == 0:
+                # Rightmost colum order
+                # First : Output
+                # If reroute
+                # - Geometry first
+                # Else:
+                # - Right column
                 def order(node):
                     if node.is_group_output:
                         return 0
+                    
+                    if node.is_reroute:
+                        if node.bnode.outputs[0].type == 'GEOMETRY':
+                            return 0
                     
                     for i_right, right_item in enumerate(right_column):
                         if right_item in right_column:

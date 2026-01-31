@@ -117,20 +117,11 @@ class ShaderNodes(Tree):
         if self._is_group:
             return super().output_node
 
-        for node in self._nodes:
+        for node in self._nodes.values():
             if node._bnode.bl_idname ==  'ShaderNodeOutputMaterial':
                 return node
             
         return Node('ShaderNodeOutputMaterial')
-
-    def get_output_node_OLD(self, target: str ='ALL') -> Node:
-        # target in ('ALL', 'EEVEE', 'CYCLES')
-
-        for node in self._nodes:
-            if node._bnode.bl_idname ==  'ShaderNodeOutputMaterial':
-                if node._bnode.target == target:
-                    return node
-        return Node('ShaderNodeOutputMaterial', target=target)
 
     def set_surface(self, value: Any, target: str ='ALL') -> None:
         node = self.get_output_node(target=target)

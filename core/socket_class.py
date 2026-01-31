@@ -638,11 +638,8 @@ class Socket(NodeCache):
         - self
         """
 
-        descr = self.user_label
-        if self.node._bnode.bl_idname == 'NodeGroupInput':
-            color = SysColor(None)
-        else:
-            color = self.node_color
+        # Keep user label stored in socket description
+        user_label = self.user_label
 
         bsocket = utils.get_bsocket(socket)
         if bsocket is None:
@@ -652,11 +649,9 @@ class Socket(NodeCache):
         if reset:
             self._reset()
 
-        if descr != "":
-            bsocket.description = "UL " + descr
+        # Restore user label
+        self.user_label = user_label
 
-        self.node_color = color
-        self.node_label = descr
 
         return self
     
@@ -701,11 +696,7 @@ class Socket(NodeCache):
         if not hasattr(self, '_bsocket'):
             return None
         
-        for node in self._tree._nodes:
-            if node._bnode == self._bsocket.node:
-                return node
-            
-        assert False, f"Shouldn't happen, {self._bsocket=}, {self._bsocket.node=}"
+        return self._tree._nodes[self._bsocket.node.name]
 
     # ----------------------------------------------------------------------------------------------------
     # Name or label
@@ -858,6 +849,9 @@ class Socket(NodeCache):
 
     @property
     def user_label(self):
+        if self.node._bnode.bl_idname == 'NodeGroupInput':
+            return self._bsocket.name
+        
         d = self._bsocket.description
         if d.startswith("UL "):
             return d[3:]
@@ -866,6 +860,9 @@ class Socket(NodeCache):
     
     @user_label.setter
     def user_label(self, value):
+        if self.node._bnode.bl_idname == 'NodeGroupInput':
+            return
+
         if value is None:
             return
         
@@ -890,24 +887,6 @@ class Socket(NodeCache):
         """
         self.user_label = label
         return self
-    
-    def _auto_sd(self):
-
-        if self.node._label == "":
-            self.user_label = self._bsocket.name
-            return self
-    
-        n = 0
-        for bsock in self.node._bnode.outputs:
-            if bsock.enabled:
-                n += 1
-        if n == 1:
-            self.user_label = self.node._label
-        else:
-            self.user_label = f"{self.node._label}.{self._bsocket.name}"
-
-        return self
-
 
     # ----------------------------------------------------------------------------------------------------
     # Set Node color and label plus socket description 
@@ -937,8 +916,11 @@ class Socket(NodeCache):
         - self
         """
 
-        self.node_label = label
-        self.node_color = color
+        if self.node._bnode.bl_idname == 'NodeGroupInput':
+            return
+
+        self.node_label  = label
+        self.node_color  = color
         self._user_label = label
 
         return self

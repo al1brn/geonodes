@@ -1361,7 +1361,8 @@ class Node:
         is_multi = name in self._inputs.multi_names
         if is_multi and isinstance(value, list):
             sockets = []
-            for v in value:
+            # Reversed for join strings !
+            for v in reversed(value):
                 sockets.append(self.set_input_socket(name, v, create=False, panel=panel))
             return sockets
         

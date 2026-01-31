@@ -40,7 +40,7 @@ import bpy
 
 from .. import ShaderNodes, Shader, snd
 from .. import GeoNodes, G, Mesh, Curve, Cloud, Layout, Panel, gnmath, nd, pi, Break
-from .. import Float, Boolean, Integer, Vector, Rotation, Object, Input, Material, Color, Group
+from .. import Float, Boolean, Integer, Vector, Rotation, Object, Input, Material, Color, Group, String
 from .. import repeat
 
 USE_GIZMO = True
@@ -51,7 +51,9 @@ USE_GIZMO = True
 # The mesh type is determined by the named attribute "Content"
 # ---------------------------------------------------------------------------
 
-IS_COMPONENT = 0x80  # Flag : is a component of the piece of furniture vs a cote line
+IS_COMPONENT = 0x10  # Flag : is a component of the piece of furniture
+IS_ACCESSORY = 0x20  # Flag : is an accessory
+IS_COTE      = 0x80  # Flag : is a cote line
 
 MASK_TYPE  = 0x0F  # Component type mask 
 
@@ -60,14 +62,21 @@ TYPE_CLEAT =  1
 TYPE_PANEL =  2
 TYPE_MESH  = 15
 
-TYPE_COTE = 0
-
 # ---------------------------------------------------------------------------
 # Min max dimensions
 # ---------------------------------------------------------------------------
 
 MIN_DIM = 0.001 # 1 mm
 MAX_DIM = 5.0   # 5 meters
+TR_MAX  = 5.0
+TR_MIN  = -TR_MAX
+
+TH_MAX = 0.1 # Thickness max 
+
+
+FREE_WIDTH   = 0x01
+FREE_LENGTH  = 0x02
+TILABLE      = 0X04
 
 # ---------------------------------------------------------------------------
 # UV Attributes
@@ -83,6 +92,26 @@ CUT_SIDE = 2
 
 FONT_SIZE = 0.1
 SECTION   = 0.01
+
+# ---------------------------------------------------------------------------
+# Orientations
+# ---------------------------------------------------------------------------
+
+SHELF         = 0
+SIDE          = 1
+DOOR          = 2
+DRAWER        = 3
+ROTATED_SHELF = 4
+ROTATED_SIDE  = 5
+
+ORIENTATIONS = {
+    "Shelf"         : SHELF,
+    "Side"          : SIDE,
+    "Door"          : DOOR,
+    "Drawer"        : DRAWER,
+    "Rotated Shelf" : ROTATED_SHELF,
+    "Rotated Side"  : ROTATED_SIDE,
+}
 
 # ---------------------------------------------------------------------------
 # Group Prefix
@@ -102,11 +131,24 @@ def snap(v, d=MIN_DIM):
     return gnmath.round(v/d)*d
 
 # ----------------------------------------------------------------------------------------------------
-# Components selector
+# Rotation from shelf to target orientation
 # ----------------------------------------------------------------------------------------------------
 
-def all_components():
-    return (Integer("Content") & IS_COMPONENT).not_equal(0)
+def orient_rotation(orient, invert=False):
+
+    rot = Rotation.IndexSwitch(
+        (0,     0,      0),
+        (pi/2,  0,      0),
+        (pi/2,  0,   pi/2),
+        (0,    pi/2,    0),
+        (0,     0,   pi/2),
+        (0,    pi/2, pi/2),
+        index=orient,
+    )
+    if invert:
+        return rot.invert()
+    else:
+        return rot
 
 # ----------------------------------------------------------------------------------------------------
 # MACRO : Dimension input
@@ -169,11 +211,11 @@ def get_dimension(mesh, name, i_axis, same_value, color=None):
 
         comp_id0 = Integer(1, "From Id", 0)
         use_max0 = Boolean(True, f"From Max")
-        offset0 = Float.Distance(0.0, "Offset From")
+        offset0 = Float.Distance(0.0, "Offset From", TR_MIN, TR_MAX)
         
         comp_id1 = Integer(2, "To Id", 0)
         use_min1 = Boolean(True, f"To Min")
-        offset1 = Float.Distance(0.0, "Offset To")
+        offset1 = Float.Distance(0.0, "Offset To", TR_MIN, TR_MAX)
 
         comp0 = mesh.extract(utils.selector(comp_id0))
         comp1 = mesh.extract(utils.selector(comp_id1))
@@ -196,8 +238,8 @@ def get_dimension(mesh, name, i_axis, same_value, color=None):
         # Custom value
         # ---------------------------------------------------------------------------
 
-        custom = Float.Distance(1.0, "Value", MIN_DIM)
-        offset = Float.Distance(0.0, "Offset")
+        custom = Float.Distance(1.0, "Value", MIN_DIM, MAX_DIM)
+        offset = Float.Distance(0.0, "Offset", TR_MIN, TR_MAX)
 
         # ---------------------------------------------------------------------------
         # Select the value
@@ -251,16 +293,23 @@ def demo():
     # ====================================================================================================
 
     with GeoNodes("Add Cote Line", is_group=True, prefix=utils):
+
+        mesh = Mesh()
+
+        # Full (with Aspect)
+        mesh.add_method(jump=True)
+        # Short (without Aspect)
+        mesh.add_method("cote_line", jump=True, font_size=FONT_SIZE, section=SECTION)
         
-        show       = Boolean(True,          "Show")
-        pos        = Vector.Translation(0,  "Position")
-        i_axis     = Integer(0,             "Axis", 0, 2)
-        value      = Float.Distance(1.0,    "Value")
+        show   = Boolean(True,          "Show")
+        pos    = Vector.Translation(0,  "Position")
+        i_axis = Integer(0,             "Axis", 0, 2)
+        value  = Float.Distance(1.0,    "Value", TR_MIN, TR_MAX)
+        invert = Boolean(False,         "Invert")
 
         with Panel("Aspect"):
             font_size  = Float(FONT_SIZE,  "Font Size", 0.01)
             section    = Float(SECTION,    "Section", 0)
-            invert     = Boolean(False,    "Invert")
         
         offset_a = Float(0, "Cote Offset A", hide_in_modifier=True)
         offset_b = Float(0, "Cote Offset B", hide_in_modifier=True)
@@ -371,13 +420,17 @@ def demo():
             line.transform(translation=dir_a.scale(offset_a) + dir_b.scale(offset_b))
             
         line = Mesh(line)
-        line.points.Content = TYPE_COTE
+        line.points.Content = IS_COTE
         line.points.Axis = i_axis
         
-        line.switch_false(show).out()
+        line.switch_false(show)
+
+        mesh += line
+
+        mesh.out()
 
     # ====================================================================================================
-    # Stock
+    # Base Component
     # ====================================================================================================
 
     with GeoNodes("Base Component"):
@@ -395,10 +448,13 @@ def demo():
         - Content (Integer) : component type and flag
         - Reference (Integer) : Unique identifier used to compute the cut sheet
         - Orientation (Integer) : 0 as default orientation
+        - Free Dims (Integer) : Free dimensions
         """
 
+        input_mesh = Mesh()
+
         # ---------------------------------------------------------------------------
-        # Selection
+        # Input
         # ---------------------------------------------------------------------------
         
         comp_type = Integer.MenuSwitch({
@@ -408,45 +464,118 @@ def demo():
             "Geometry" : 3,
             }, menu = Input("Type")
         )
+        with Panel("Tiles"):
+            tilable = Boolean(False, "Tilable")
+            width_gap  = Float.Distance(0, "Width Gap", -TH_MAX, TH_MAX)
+            length_gap = Float.Distance(0, "Length Gap", -TH_MAX, TH_MAX)
 
+        mat = Material(None, "Material")
+        #is_custom = comp_type.geometry
+
+        # ---------------------------------------------------------------------------
         # Plank
+        # ---------------------------------------------------------------------------
+
         with Mesh.IndexSwitch(index=comp_type) as component:
 
-            width  = Float.Distance(.30, "Width",     MIN_DIM)
-            thick  = Float.Distance(.02, "Thickness", MIN_DIM)
-            length = Float.Distance(2.0, "Max Length", MIN_DIM)
+            width  = Float.Distance(0.30, "Width",     MIN_DIM, MAX_DIM)
+            length = Float.Distance(2.00, "Max Length", MIN_DIM, MAX_DIM)
+            thick  = Float.Distance(0.02, "Thickness", MIN_DIM, MAX_DIM)
 
-            mesh = Mesh.Cube(size=(width, length, thick))
-            mesh.points.Content = IS_COMPONENT | TYPE_PLANK
+            dims = Vector((width, length, thick))
+
+            mesh = Mesh.Cube(size=dims)
+
+            mesh.points.Content         = IS_COMPONENT | TYPE_PLANK
+            mesh.points.Free_Dims       = FREE_LENGTH | FREE_WIDTH
+            mesh.points.Max_Dimensions  = dims
+            mesh.points.Dimensions      = dims
+            mesh.points.Orientation     = SHELF
+
+            mesh.faces.material         = mat
 
             mesh.out()
 
+        # ---------------------------------------------------------------------------
         # Cleat
+        # ---------------------------------------------------------------------------
+
         with component:
-            width  = Float.Distance(.05, "Width",     MIN_DIM)
-            thick  = Float.Distance(.05, "Thickness", MIN_DIM)
-            length = Float.Distance(2.0, "Max Length", MIN_DIM)
+            width  = Float.Distance(0.05, "Width",     MIN_DIM, MAX_DIM)
+            length = Float.Distance(2.00, "Max Length", MIN_DIM, MAX_DIM)
+            thick  = Float.Distance(0.05, "Thickness", MIN_DIM, MAX_DIM)
 
+            dims = Vector((width, length, thick))
 
-            mesh = Mesh.Cube(size=(width, length, thick))
-            mesh.points.Content = IS_COMPONENT | TYPE_CLEAT
+            mesh = Mesh.Cube(size=dims)
+
+            mesh.points.Content         = IS_COMPONENT | TYPE_CLEAT
+            mesh.points.Free_Dims       = FREE_LENGTH
+            mesh.points.Max_Dimensions  = dims
+            mesh.points.Dimensions      = dims
+            mesh.points.Orientation     = SHELF
+
+            mesh.faces.material         = mat
 
             mesh.out()
 
-        # Back Panel
-        with component:
-            thick   = Float.Distance(.005, "Thickness", MIN_DIM)
-            max_dim = Float.Distance(3.0, "Max Dimension", MIN_DIM)
+        # ---------------------------------------------------------------------------
+        # Panel
+        # ---------------------------------------------------------------------------
 
-            mesh = Mesh.Cube(size=(max_dim, max_dim, thick))
-            mesh.points.Content = IS_COMPONENT | TYPE_PANEL
+        with component:
+            thick   = Float.Distance(0.005, "Thickness", MIN_DIM, MAX_DIM)
+            max_dim = Float.Distance(3.0,   "Max Dimension", MIN_DIM, MAX_DIM)
+
+            max_dims = Vector((max_dim, max_dim, thick))
+            dims = Vector((1.0, 1.0, thick))
+
+            mesh = Mesh.Cube(size=dims)
+
+            mesh.points.Content         = IS_COMPONENT | TYPE_PANEL
+            mesh.points.Free_Dims       = FREE_LENGTH | FREE_WIDTH
+            mesh.points.Max_Dimensions  = max_dims
+            mesh.points.Dimensions      = dims
+            mesh.points.Orientation     = SHELF
+
+            mesh.faces.material         = mat
 
             mesh.out()
 
+        # ---------------------------------------------------------------------------
         # Input Geometry
+        # ---------------------------------------------------------------------------
+
         with component:
-            mesh = Mesh()
-            mesh.points.Content = IS_COMPONENT | TYPE_MESH
+
+            with Panel("Options"):
+                orient = Integer.MenuSwitch(ORIENTATIONS, menu=Input("Orientation"))
+                free_width  = Boolean(False, "Free Width")
+                free_length = Boolean(False, "Free Length")
+
+            mesh = input_mesh
+
+            node = mesh.points.attribute_statistic(nd.position).node
+            sx, sy, sz = (node.max - node.min).xyz
+
+            dims = Vector.IndexSwitch(
+                (sx, sy, sz), # Shelf
+                (sx, sz, sy), # Side
+                (sy, sz, sx), # Door
+                (sz, sy, sx), # Drawer
+                (sy, sx, sz), # Rotated Shelf
+                (sz, sx, sy), # Rotated Side
+                index = orient)
+            
+            free_dims = Integer.Switch(free_width, 0, FREE_WIDTH)
+            free_dims.switch(free_length, free_dims | FREE_LENGTH)
+            
+            mesh.points.Content         = IS_COMPONENT | TYPE_MESH
+            mesh.points.Free_Dims       = free_dims
+            mesh.points.Max_Dimensions  = dims
+            mesh.points.Dimensions      = dims
+            mesh.points.Orientation     = orient
+
             mesh.out()
 
         # ---------------------------------------------------------------------------
@@ -455,39 +584,159 @@ def demo():
 
         with Layout("Dimensions"):
             component = Mesh(component)
-            dims = component.points.attribute_statistic(nd.position)
-            dimensions = dims.max_ - dims.min_
-
-            component.points.Max_Dimensions = dimensions
-            component.points.Dimensions     = dimensions
-            component.transform(translation=dimensions.scale(0.5))
+            min_pos = component.points.attribute_statistic(nd.position).min_
+            component.transform(translation=-min_pos)
 
         with Layout("Component Information"):
-            component.points.Reference = dimensions.hash_value(seed=comp_type)
-            component.faces.material   = Material(None, "Material")
+            component.points.Free_Dims = Integer("Free Dims") | tilable
+            component.points.Tile_Gap = width_gap + 100*gnmath.round(length_gap*10)
+            component.points.Reference = component.points.sample_index(Vector("Dimensions"), index=0).hash_value(seed=comp_type)
 
         component.out()
 
     # ====================================================================================================
-    # Plank Selector
+    # Cut a component
+    # ====================================================================================================
+
+    with GeoNodes("Cut"):
+
+        mesh = Mesh()
+        mesh.add_method()
+
+        width  = Float.Distance(0.3, "Width",  MIN_DIM, MAX_DIM)
+        length = Float.Distance(1.0, "Length", MIN_DIM, MAX_DIM)
+
+        node = mesh.points.attribute_statistic(nd.position).node
+        size = node.max - node.min
+        sz = size.z
+
+        dims = Vector((width + 0.1, length + 0.1, 3*sz))
+        cube = Mesh.Cube(size=dims).transform(translation = node.min + dims.scale(.5) - (0.1, 0.1, sz) )
+
+        mesh.intersect(cube)
+        mesh.out()
+
+    # ====================================================================================================
+    # Tile a component
+    # ====================================================================================================
+
+    with GeoNodes("Create Tiles", is_group=True, prefix=True):
+
+        mesh = Mesh()
+
+        mesh.add_method()
+
+        # ---------------------------------------------------------------------------
+        # Input
+        # ---------------------------------------------------------------------------
+
+        width_input  = Float.Distance(1.0, "Width",  MIN_DIM, MAX_DIM)
+        length_input = Float.Distance(1.0, "Length", MIN_DIM, MAX_DIM)
+
+        orient = Integer(0, "Orientation", 0, 5)
+
+        rot = Rotation.MenuSwitch({
+            "Same"                : (0, 0, 0),
+            "Upside down"         : (0, 0, pi),
+            "Perp. Clockwise"     : (0, 0, pi/2),
+            "Perp. Counter Clock" : (0, 0, -pi/2),
+        }, menu = Input("Direction"))
+
+        w_gap = Float.Distance(0.0, "Width Gap", -TH_MAX, TH_MAX)
+        l_gap = Float.Distance(0.0, "Length Gap", -TH_MAX, TH_MAX)
+
+        # ---------------------------------------------------------------------------
+        # Dimensions
+        # ---------------------------------------------------------------------------
+
+        with Layout("Switch target Width / Length"):
+
+            keep_wl = rot.same | rot.upside_down
+
+            width  = Float.Switch(keep_wl, length_input, width_input)
+            length = Float.Switch(keep_wl, width_input, length_input)
+
+        with Layout("Plank tile dimensions"):
+
+            node = mesh.points.attribute_statistic(nd.position).node
+            mesh.transform(translation=-node.min)
+            w, l, _ = (node.max - node.min).xyz
+
+            tile_w = (w + w_gap)._lc("Width Tile")
+            tile_l = (l + l_gap)._lc("Length Tile")
+
+        with Layout("Number of tiles"):
+
+            w_count  = gnmath.trunc(width/tile_w)._lc("Count along width")
+            l_count  = gnmath.trunc(length/tile_l)._lc("Count along length")
+
+            total = ((w_count + 3)*(l_count + 3))._lc("Max Number of planks")
+
+        # ---------------------------------------------------------------------------
+        # Tiling loop
+        # ---------------------------------------------------------------------------
+
+        l_min = (0.1*tile_l)._lc("Length Min")
+        for rep in repeat(total, tiles=None, x=0.0, y=0.0, remain=tile_l, count=0):
+
+            with Layout("Length Cut"):
+                l_cut = gnmath.min(tile_l, gnmath.min(rep.remain, length - rep.y))
+
+            with Layout("Width Cut"):
+                x_cut = gnmath.min(tile_w, width - rep.x)
+
+            #cut = mesh.cut(width=x_cut, length=l_cut)
+            cut = Mesh(mesh)
+            cut.transform(translation=(rep.x, rep.y, 0))
+
+            rep.tiles += cut
+
+            new_y = (rep.y + l_cut)._lc("New Y")
+            new_row = new_y.greater_equal(0.999*length)
+
+            rep.y = Float.Switch(new_row, new_y, 0)
+            rep.x.switch(new_row, rep.x + tile_w)
+
+            remain = rep.remain - l_cut
+            rep.remain = Float.Switch(remain.less_equal(l_min), remain, tile_l)
+
+        tiles = Mesh(rep.tiles)
+        tiles = tiles.cut(width, length)
+
+        # ---------------------------------------------------------------------------
+        # Rotate to match the required direction
+        # ---------------------------------------------------------------------------
+
+        tiles.transform(rotation=rot)
+
+        node = tiles.points.attribute_statistic(nd.position).node
+        tiles.transform(translation=-node.min)
+        tiles.transform(rotation = orient_rotation(orient))
+
+        tiles.out()
+
+    # ====================================================================================================
+    # Component Selector
     # ====================================================================================================
 
     with GeoNodes("Selector", is_group=True, prefix=utils):
 
-        comp_id = Integer(0,     "Comp Id", 0)
-        linked  = Boolean(False, "Linked")
+        comp_id  = Integer(0,     "Comp Id", 0)
+        linked   = Boolean(False, "Linked")
+        with_acc = Boolean(False, "Accessories")
 
-        all_comps = (Integer("Content") & IS_COMPONENT).not_equal(0)
+        is_comp = (Integer("Content") & IS_COMPONENT).not_equal(0)
+        is_acc  = (Integer("Content") & IS_ACCESSORY).not_equal(0) & with_acc
 
-        sel = Integer("Comp Id").equal(comp_id)
+        comp_sel   = Integer("Comp Id").equal(comp_id)
         linked_sel = Integer("Owner Id").equal(comp_id)
 
-        sel.switch(linked, sel | linked_sel)
+        sel = comp_sel | (linked_sel & linked)
+        acc_sel = linked_sel & is_acc
 
-        (sel & all_comps).out("Selection")
-        (sel.bnot() & all_comps).out("Invert")
-        all_comps.out("All")
-
+        ((sel & is_comp) | acc_sel).out("Selection")
+        (sel.bnot() & is_comp).out("Invert")
+        is_comp.out("All")
 
     # ====================================================================================================
     # Plank location and size
@@ -497,6 +746,8 @@ def demo():
 
         mesh = Mesh()
         sel  = Boolean(False, "Selection", hide_value=True)
+
+        sel &= (Integer("Content") & IS_COMPONENT).not_equal(0)
 
         node = mesh.points[sel].attribute_statistic(nd.position).node
 
@@ -525,13 +776,18 @@ def demo():
 
         comp = mesh.points[sel.bnot()].delete()
 
-        max_dims = comp.points.sample_index(Vector("Max Dimensions"), index=0)
-        dims     = comp.points.sample_index(Vector("Dimensions"), index=0)
-        orient   = comp.points.sample_index(Integer("Orientation"), index=0)
-        content  = comp.points.sample_index(Integer("Content"), index=0)
+        # Remove what is not a component
+        comp_only = Mesh(comp).points[(Integer("Content") & IS_COMPONENT).equal(0)].delete()
 
-        loc_size = utils.get_location_and_size(comp, True).node
-        
+        max_dims  = comp_only.points.sample_index(Vector("Max Dimensions"), index=0)
+        dims      = comp_only.points.sample_index(Vector("Dimensions"), index=0)
+        free_dims = comp_only.points.sample_index(Integer("Free Dims"), index=0)
+        orient    = comp_only.points.sample_index(Integer("Orientation"), index=0)
+        content   = comp_only.points.sample_index(Integer("Content"), index=0)
+        tile_gap  = comp_only.points.sample_index(Float("Tile Gap"), index=0)
+
+        loc_size = utils.get_location_and_size(comp_only, True).node
+
         comp.out("Mesh")
 
         loc_size.out()
@@ -540,12 +796,14 @@ def demo():
         orient.out("Orientation")
         content.out("Content")
 
-        masked = content & MASK_TYPE
-        masked.equal(TYPE_PLANK).out("Plank")
-        masked.equal(TYPE_CLEAT).out("Cleat")
-        masked.equal(TYPE_PANEL).out("Panel")
-        masked.equal(TYPE_MESH).out("Custom")
+        (free_dims & FREE_WIDTH).not_equal(0).out("Free Width")
+        (free_dims & FREE_LENGTH).not_equal(0).out("Free Length")
+        (free_dims & TILABLE).not_equal(0).out("Tilable")
+        (tile_gap % 100).out("Width Gap")
+        (gnmath.round(tile_gap / 100)/10).out("Length Gap")
 
+        masked = content & MASK_TYPE
+        masked.equal(TYPE_MESH).out("Custom")
 
     # ====================================================================================================
     # Stock Input
@@ -569,14 +827,6 @@ def demo():
 
             plank.out("False")
 
-            """
-            dimensions = plank.points.sample_index(Vector("Dimensions"), index=0)
-            node = plank.points.attribute_statistic(nd.position).node
-            cur_dims = node.max - node.min
-            plank.transform(scale=dimensions/cur_dims)
-
-            plank.out("False")
-            """
 
         with stock:
             obj = Object(None, "Base Material")
@@ -586,6 +836,49 @@ def demo():
 
         stock = Mesh(stock).extract(True).node
         stock.out()
+
+    # ====================================================================================================
+    # Count the number of components
+    # ====================================================================================================
+
+    with GeoNodes("Components Count", is_group = True, prefix=utils):
+
+        mesh = Mesh()
+
+        # As Mesh method
+        mesh.add_method()
+
+        max_id = mesh.points.attribute_statistic(Float(Integer("Comp Id"))).max_.to_integer()
+        count = mesh.points.attribute_statistic(Float(Integer("Single"))).sum.to_integer()
+
+        count.out("Count")
+        max_id.out("Max Id")
+
+
+    # ====================================================================================================
+    # Identifiers
+    # ====================================================================================================
+
+    with GeoNodes("Identifiers"):
+        """ Return a cloud of points, one per component
+        """
+
+        mesh = Mesh()
+
+        # As Mesh method
+        mesh.add_method()
+
+        # Max Id
+        max_id = mesh.components_count().max_id
+
+        cloud = mesh.points[Integer("Single").equal(0)].delete().to_points()
+
+        count = cloud.points.count
+
+        cloud.out("Cloud")
+        count.out("Count")
+        max_id.out("Max Id")
+
 
     # ====================================================================================================
     # Join a Component
@@ -599,16 +892,16 @@ def demo():
         - Comp Id (Integer) : max of the existing ids + 1
         - Content (Integer) : Ensure flag CONTENT PART is set to "Content" named attribute
         - Face Random (Float) : a random float per face
+        - Single (Integer) : First vertex flag (1 for the first vertex, 0 for the other ones)
         """
         
         mesh = Mesh()
         comp = Mesh(name = "Component")
+        join = Boolean(True, "Join")
 
         # As Mesh method
         mesh.add_method(jump=True)
 
-        comp_info = comp.extract(True).node
-        
         max_id = mesh.points.attribute_statistic(Float(Integer("Comp Id"))).max_.to_integer()
         
         comp_id = max_id + 1
@@ -617,10 +910,112 @@ def demo():
         comp.points.Comp_Id = comp_id
         comp.faces.Face_Random = Float.Random(0, 1, seed=comp_id)
 
-        new_mesh = Mesh(mesh + comp)
+        # Use to keep one point per component
+        comp.points.Single = Integer.Switch(nd.index.equal(0), 0, 1)
 
-        new_mesh.out("Mesh")
-        comp_id.out("Comp Id")
+        mesh.switch(join, mesh + comp)
+
+        mesh.out("Mesh")
+        comp_id.switch_false(join).out("Comp Id")
+
+        show_id = Boolean(True, "Display Id", hide_in_modifier=True)
+        Boolean(show_id & join).info("Id " + comp_id.to_string())
+
+    # ====================================================================================================
+    # Join a Block
+    # ====================================================================================================
+
+    with GeoNodes("Join Block", is_group=True, prefix=utils):
+        """ Add a block of components to the furniture
+
+        Shift the "Comp Id" and "Owner Id" attributes to avoid duplicates in the resulting furniture.
+
+        Named Attributes
+        ----------------
+        - Comp Id (Integer) : max of the existing ids + 1
+        - Owner Id (Integer) : Ensure flag CONTENT PART is set to "Content" named attribute
+        """
+        
+        mesh  = Mesh()
+        block = Mesh(name = "Block")
+
+        # As Mesh method
+        mesh.add_method(jump=True)
+
+        max_id = mesh.components_count().max_id
+
+        with Layout("Block new ids"):
+
+            idents = block.identifiers()
+            count = idents.count
+
+            for rep in repeat(count, cloud=idents, block=block, cur_id=max_id):
+
+                cid = Integer("Comp Id")
+                comp_id = rep.cloud.points.sample_index(cid, index=rep.iteration)
+
+                sel = cid.equal(comp_id)
+                new_id = rep.cur_id + 1
+
+                rep.cloud.points[sel].New_Id = new_id
+
+                block = Mesh(rep.block)
+                block.points[sel].Comp_Id = new_id
+
+                rep.block = block
+                rep.cur_id = new_id
+
+            idents = rep.cloud
+            block = Mesh(rep.block)
+            max_id = rep.cur_id
+
+
+        with Layout("Update Owner Id"):
+            for rep in repeat(count, block=block):
+
+                oid = Integer("Owner Id")
+                owner_id = idents.points.sample_index(oid, index=rep.iteration)
+                new_owner = idents.points[Integer("Comp Id").equal(owner_id)].attribute_statistic(Float(Integer("New Id"))).sum.to_integer()
+
+                sel = oid.not_equal(0) & oid.equal(owner_id)
+
+                block = Mesh(rep.block)
+                block.points[sel].Owner_Id = new_owner
+
+                rep.block = block
+
+            block = rep.block
+
+        mesh += block
+        mesh.out()
+        max_id.out("Max Id")
+
+    # ====================================================================================================
+    # Join an accessory
+    # ====================================================================================================
+
+    with GeoNodes("Join Accessory"):
+
+        mesh    = Mesh()
+        comp_id = Integer(0, "Comp Id")
+        acc_obj = Object(None, "Accessory")
+        rel_pos = Vector.Factor((.5, .5, .5), "Position", 0, 1)
+        ofs     = Vector(0, "Offset")
+
+        mesh.add_method(jump=True)
+
+        comp = mesh.extract(utils.selector(comp_id))
+        pos = comp.min + comp.size*rel_pos + ofs
+
+        acc = Mesh(acc_obj.info().geometry)
+        acc.points.Owner_Id = comp_id
+        acc.points.Content = IS_ACCESSORY
+        acc.points.offset = pos
+
+        mesh += acc
+
+        mesh.out()
+
 
     # ====================================================================================================
     # Create a component from a model
@@ -636,24 +1031,32 @@ def demo():
         # As Mesh method
         comp.add_method()
 
-        model_info = comp.extract(True).node
+        with Layout("Model Info"):
+            model_info = comp.extract(True).node
+            width, length, _ = dims.xyz
+            width._ul("Model Width")
+            length._ul("Model Length")
 
         # ---------------------------------------------------------------------------
         # Dimensions
         # ---------------------------------------------------------------------------
 
-        with Layout("Scale to fit required dimensions"):
+        with Layout("Scale to the required dimensions"):
 
-            width, length, _ = dims.xyz
             max_width, max_length, thickness = model_info.max_dimensions.xyz
 
-            width.switch(model_info.panel, max_width)
+            width.switch_false(model_info.free_width, max_width)
             width = gnmath.min(width, max_width)
+
+            length.switch_false(model_info.free_length, max_length)
             length = gnmath.min(length, max_length)
 
             dims = Vector((width, length, thickness))
 
-            comp.transform(scale=dims/model_info.size)
+            rot = orient_rotation(model_info.orientation, invert=True)
+            comp.transform(rotation=rot)
+
+            comp.transform(scale=dims/model_info.dimensions)
             comp.points.Dimensions = dims
 
         # ---------------------------------------------------------------------------
@@ -680,9 +1083,9 @@ def demo():
             w = dx.switch(longer, dy)
             l = dy.switch(longer, dx)
 
-            comp.corners[Integer("Face Type").equal(FACE)].store_uv(     "UVMap", ( w,  l, 0))
-            comp.corners[Integer("Face Type").equal(LONG_SIDE)].store_uv("UVMap", (dz,  l, 0))
-            comp.corners[Integer("Face Type").equal(CUT_SIDE)].store_uv( "UVMap", (dz,  w, 0))
+            comp.corners[Integer("Face Type").equal(FACE)].store_uv(     "Dims", ( w,  l, 0))
+            comp.corners[Integer("Face Type").equal(LONG_SIDE)].store_uv("Dims", (dz,  l, 0))
+            comp.corners[Integer("Face Type").equal(CUT_SIDE)].store_uv( "Dims", (dz,  w, 0))
 
         # ---------------------------------------------------------------------------
         # Orientation
@@ -691,15 +1094,7 @@ def demo():
         with Layout("Set Orientation"):
             comp.points.Orientation = orient
 
-            rot = Rotation.IndexSwitch(
-                (0,     0,      0),
-                (pi/2,  0,      0),
-                (pi/2,  0,   pi/2),
-                (0,    pi/2,    0),
-                (0,     0,   pi/2),
-                (0,    pi/2, pi/2),
-                index=orient,
-            )
+            rot = orient_rotation(orient)
             comp.transform(rotation=rot)
 
         # ---------------------------------------------------------------------------
@@ -760,7 +1155,7 @@ def demo():
 
                 axis = 'XYZ'[i_axis]
                 with Panel(f"Cotes {axis}", create_layout=True):
-                    line = utils.add_cote_line(
+                    mesh.cote_line(
                         show     = Input(f"{axis} Dimension", default=False),
                         position = comp.min,
                         axis     = i_axis, 
@@ -768,10 +1163,9 @@ def demo():
                         cote_offset_a = Float(0, "Dimension Offset A", hide_in_modifier=True),
                         cote_offset_b = Float(0, "Dimension Offset B", hide_in_modifier=True),
                     )
-                    node0 = line.node
-                    mesh += line
+                    node0 = mesh.node
 
-                    line = utils.add_cote_line(
+                    mesh.cote_line(
                         show     = Input(f"{axis} Position", default=False),
                         position = 0,
                         axis     = i_axis,
@@ -779,8 +1173,7 @@ def demo():
                         cote_offset_a = Float(0, "Position Offset A", hide_in_modifier=True),
                         cote_offset_b = Float(0, "Position Offset B", hide_in_modifier=True),
                     )
-                    node1 = line.node
-                    mesh += line     
+                    node1 = mesh.node
 
                     invert = Boolean(False, "Invert")
                     node0.invert = invert
@@ -850,7 +1243,7 @@ def demo():
                         menu=Input("Position"),
                         default_menu = "Same",
                     )
-                    user_value = Float.Distance(0.0, "Value")
+                    user_value = Float.Distance(0.0, "Value", TR_MIN, TR_MAX)
 
                     # ---------------------------------------------------------------------------
                     # Relative to model
@@ -944,7 +1337,7 @@ def demo():
                 pos[i] = cote_start[i]
 
                 with Panel(f"Cotes > {'XYZ'[i]}"):
-                    mesh += utils.add_cote_line(show=show_cotes[i], position=pos, axis=i, value=cote_len[i]).link_inputs(exclude=["Aspect"]) 
+                    mesh.cote_line(show=show_cotes[i], position=pos, axis=i, value=cote_len[i], invert=inverts[i]).link_inputs() 
 
         mesh.out()
 
@@ -960,16 +1353,10 @@ def demo():
         with Panel("Model", create_layout=True):
             
             model = utils.component_input(mesh).link_inputs(None)
-            fixed_width = model.cleat
+            fixed_width  = model.free_width.bnot()
+            fixed_length = model.free_length.bnot()
 
-            orient = Integer.MenuSwitch({
-                "Shelf"         : 0,
-                "Side"          : 1,
-                "Door"          : 2,
-                "Drawer"        : 3,
-                "Rotated Shelf" : 4,
-                "Rotated Side"  : 5,
-            }, menu=Input("Orientation"))
+            orient = Integer.MenuSwitch(ORIENTATIONS, menu=Input("Orientation"))
 
         with Panel("Dimensions"):
 
@@ -985,7 +1372,10 @@ def demo():
                 length_axis = Integer.IndexSwitch(1, 2, 2, 1, 0, 0, index=orient)
                 l_dict = get_dimension(mesh, "Length", i_axis=length_axis, same_value=length, color="darkblue")
                 length = l_dict['value']
+                tiled_length = length
+
                 length = gnmath.min(length, max_length)
+                length.switch(fixed_length, max_length)
 
             # ---------------------------------------------------------------------------
             # Width
@@ -995,8 +1385,24 @@ def demo():
                 width_axis = Integer.IndexSwitch(0, 0, 1, 2, 1, 2, index=orient)
                 w_dict = get_dimension(mesh, "Width", i_axis=width_axis, same_value=width, color="orangered")
                 width = w_dict['value']
+                tiled_width = width
+
                 width = gnmath.min(width, max_width)
                 width.switch(fixed_width, max_width)
+
+            # ---------------------------------------------------------------------------
+            # Tiles
+            # ---------------------------------------------------------------------------
+
+            with Panel("Tiles"):
+                use_tiles = Boolean(False, "Tiles")
+                tiles = model.create_tiles(
+                    width       = tiled_width,
+                    length      = tiled_length, 
+                    orientation = orient,
+                    width_gap   = info.width_gap,
+                    length_gap  = info.length_gap,
+                    ).link_inputs()
 
         # ---------------------------------------------------------------------------
         # Create the component at (0, 0, 0)
@@ -1004,6 +1410,7 @@ def demo():
 
         with Layout("Create the component"):
             comp = model.create_from_model(dimensions=(width, length, thickness), orientation=orient)
+            comp.switch(use_tiles, tiles)
 
         # ---------------------------------------------------------------------------
         # Join the component plank
@@ -1073,9 +1480,6 @@ def demo():
 
         mesh = Mesh()
 
-        # As Mesh method
-        mesh.add_method(jump=True)
-
         show = Boolean(True, "Show")
         i_axis = Integer.MenuSwitch({"X": 0, "Y": 1, "Z": 2}, menu=Input("Axis"))
 
@@ -1085,20 +1489,15 @@ def demo():
         v0 = mesh.get_component_position(utils.selector(from_id), axis=i_axis).link_inputs(None, "From")
         v1 = mesh.get_component_position(utils.selector(to_id), axis=i_axis).link_inputs(None, "To")
 
-        axis = Vector.IndexSwitch((1, 0, 0), (0, 1, 0), (0, 0, 1), index=i_axis)
         x, y, z = mesh.extract(from_id).center.xyz
 
-        line = utils.add_cote_line(
+        mesh.add_cote_line(
             position = Vector.IndexSwitch((v0, y, z), (x, v0, z), (x, y, v0), index=i_axis),
             axis     = i_axis, 
             value    = v1 - v0,
         ).link_inputs()
 
-        mesh += line
         mesh.out()
-
-
-    return
 
     # ====================================================================================================
     # Duplicate a component
@@ -1106,117 +1505,91 @@ def demo():
 
     with GeoNodes("Duplicate Component"):
 
-        mesh = Mesh()
-        comp_id = Integer(0, "Comp Id", 0)
-        with Panel("X"):
-            x_change = Boolean(False, "Translate X")
-            x_offset = Float.Distance(0.0, "Offset X")
+        mesh     = Mesh()
+        comp_sel = utils.selector().link_inputs()
+        count    = Integer(1, "Count", 0, 10)
 
-        with Panel("Y"):
-            y_change = Boolean(False, "Translate Y")
-            y_offset = Float.Distance(0.0, "Offset Y")
+        mesh.add_method(jump=True)
 
-        with Panel("Z"):
-            z_change = Boolean(False, "Translate Z")
-            z_offset = Float.Distance(0.0, "Offset Z")
+        transl      = [0]*3
+        #change      = [False]*3
+        show_cote   = [False]*3
+        dist_cote   = [False]*3
+        invert_cote = [False]*3 
 
-        with Panel("Options"):
-            count  = Integer(1, "Count", 1)
-            linked = Integer(0, "Linked", 0)
+        for i_axis in range(3):
+            axis = 'XYZ'[i_axis]
+            
+            with Panel(axis):
+                #change[i_axis] = Boolean(False, f"Translate {axis}")
+                transl[i_axis] = Float.Distance(0.0, f"Offset {axis}", TR_MIN, TR_MAX)
+                show_cote[i_axis] = Boolean(False, "Cote")
+                dist_cote[i_axis] = Boolean(True, "Distance")
+                invert_cote[i_axis] = Boolean(False, "Invert")
 
-        with Layout("Translation Vector"):
-            trans = Vector((
-                x_offset.switch_false(x_change),
-                y_offset.switch_false(y_change),
-                z_offset.switch_false(z_change),
-            ))
+            # 0 if no change
+            #transl[i_axis].switch_false(change[i_axis])
 
         with Layout("Gizmo"):
 
-            comp_dims = mesh.extract(utils.selector(comp_id))
+            components = mesh.extract(comp_sel)
 
-            O = comp_dims.center + trans
+            O = components.center + transl
 
-            x_offset.linear_gizmo(position = O, direction=(1, 0, 0), color_id='X')
-            y_offset.linear_gizmo(position = O, direction=(0, 1, 0), color_id='Y')
-            z_offset.linear_gizmo(position = O, direction=(0, 0, 1), color_id='Z')
+            transl[0].linear_gizmo(position = O, direction=(1, 0, 0), color_id='X')
+            transl[1].linear_gizmo(position = O, direction=(0, 1, 0), color_id='Y')
+            transl[2].linear_gizmo(position = O, direction=(0, 0, 1), color_id='Z')
 
-        for rep_count in repeat(count, mesh=mesh, last_id=0):
+        # ----------------------------------------------------------------------------------------------------
+        # Duplicate count times
+        # ----------------------------------------------------------------------------------------------------
 
-            cur_trans = trans.scale(rep_count.iteration + 1)
+        with Layout("Join count times"):
 
-            for rep_linked in repeat(1 + linked, mesh=rep_count.mesh, comp_id=comp_id, last_id=0):
+            for rep in repeat(count, mesh=mesh, comp=components, max_id=0):
 
-                plank = mesh.extract(utils.selector(rep_linked.comp_id))
-                plank.offset = cur_trans
+                comp = rep.comp
+                comp.transform(translation=transl)
+                rep.comp = comp
 
-                rep_linked.mesh = rep_linked.mesh.join_component(plank)
-                rep_linked.comp_id += 1
-                rep_linked.last_id = rep_linked.mesh.comp_id
+                rep.mesh.join_block(comp)
+                rep.max_id = rep.mesh.max_id
 
-            rep_count.mesh = rep_linked.mesh
-            rep_count.last_id = rep_linked.last_id
+            mesh = rep.mesh
+            max_id = rep.max_id
 
         # ---------------------------------------------------------------------------
         # Cotes
         # ---------------------------------------------------------------------------
 
-        mesh = rep_count.mesh
-
         with Layout("Dimensions"):
-            x0, y0, z0         = center.xyz
-            back, left, bottom = comp_dims.min.xyz
-            front, right, top  = comp_dims.max.xyz
-            size_x, size_y, size_z  = comp_dims.size.xyz
+            center_xyz = components.center.xyz
+            min_xyz    = components.min.xyz
+            max_xyz    = components.max.xyz
+            size_xyz   = components.size.xyz
 
-        with Layout("Cote X"):
-            negative = x_offset.less_than(0)
-            x = front.switch(negative, back)
-            d = (x_offset - size_x).switch(negative, x_offset + size_x)
-            cote = utils.cote_line(
-                axis        = 0,
-                show        = Boolean(False, "Cote", panel="X") & x_change,
-                from_       = (x,     y0, z0),
-                to          = (x + d, y0, z0),
-                font_size   = FONT_SIZE,
-                section     = SECTION,
-                invert      = Boolean(False, "Invert", panel="X"),
-                ).link_inputs(None, "X")
-            mesh += cote
+        for i_axis in range(3):
 
-        with Layout("Cote X"):
-            negative = y_offset.less_than(0)
-            y = right.switch(negative, left)
-            d = (y_offset - size_y).switch(negative, y_offset + size_y)
-            cote = utils.cote_line(
-                axis        = 1,
-                show        = Boolean(False, "Cote", panel="Y") & y_change,
-                from_       = (x0, y    , z0),
-                to          = (x0, y + d, z0),
-                font_size   = FONT_SIZE,
-                section     = SECTION,
-                invert      = Boolean(False, "Invert", panel="Y"),
-                ).link_inputs(None, "Y")
-            mesh += cote
+            axis = "XYZ"[i_axis]
+            dist = transl[i_axis]
 
-        with Layout("Cote Z"):
-            negative = z_offset.less_than(0)
-            z = top.switch(negative, bottom)
-            d = (z_offset - size_z).switch(negative, z_offset + size_z)
-            cote = utils.cote_line(
-                axis        = 2,
-                show        = Boolean(False, "Cote", panel="Z") & z_change,
-                from_       = (x0, y0, z),
-                to          = (x0, y0, z + d),
-                font_size   = FONT_SIZE,
-                section     = SECTION,
-                invert      = Boolean(False, "Invert", panel="Z"),
-                ).link_inputs(None, "Z")
-            mesh += cote
+            negative = dist.less_than(0)
+
+            pos = list(center_xyz)
+            pos[i_axis] = Float.Switch(negative, max_xyz[i_axis], min_xyz[i_axis])
+            dist.switch(dist_cote[i_axis], Float.Switch(negative, dist - size_xyz[i_axis], dist + size_xyz[i_axis]))
+
+            mesh.add_cote_line(
+                position = pos,
+                axis     = i_axis, 
+                value    = dist,
+                show        = show_cote[i_axis],
+                invert      = invert_cote[i_axis],
+                ).link_inputs(None, axis, exclude=["Aspect"])
 
         mesh.out()
-        rep_count.last_id.out("Comp Id")
-        (count * (linked + 1)).out("Total")
+        comp_sel.out("Selection")
+        max_id.out("Max Id")
 
     # ====================================================================================================
     # Rotate a Component
@@ -1225,33 +1598,47 @@ def demo():
     with GeoNodes("Rotate Component"):
 
         mesh     = Mesh()
-        comp_id = Integer(0, "Comp Id", 0)
-        linked   = Integer(0, "Linked", 0)
-
-        i_axis = Integer(0, "Axis", 0, 2)
+        comp_sel = utils.selector().link_inputs()
+        i_axis   = Integer(0, "Axis", 0, 2)
 
         with Panel("Pivot", create_layout=True):
+
+            comp_dims = mesh.extract(comp_sel)
 
             a = []
             for i in range(3):
                 with Panel("XYZ"[i]):
+
                     # Selector as first UI
                     i_sel = Integer.MenuSwitch({
-                        "Value" : 0,
-                        "Min"   : 1,
-                        "Max"   : 2,
+                        "Value"     : 0,
+                        "Component" : 1,
+                        "Other"     : 2,
                         },
                     menu = Input("Position")
                     )
+                    pid      = Integer(0, "Other Id")
+                    value    = Float.Distance(0.0, "Value", TR_MIN, TR_MAX)
+                    fraction = Float.Factor(0.5, "Fraction", 0, 1)
 
-                    pid = Integer(0, "Comp Id")
-                    value = Float.Distance(0.0, "Value")
-                    offset = Float.Distance(0.0, "Offset")
-                    dims = mesh.extract(utils.selector(pid))
+                    # Fraction of component
+                    v0 = comp_dims.min.xyz[i]
+                    v1 = comp_dims.max.xyz[i]
 
-                    a.append(Float.IndexSwitch(value, dims.min.xyz[i] + offset, dims.max.xyz[i] + offset, index=i_sel))
+                    comp_ref = fraction.map_range(to_min=v0, to_max=v1, interpolation_type="Linear")
 
-            pivot = Vector.IndexSwitch((0, a[1], a[2]), (a[0], 0, a[2]), (a[0], a[1], 0), index=i_axis)._lc("Pivot")
+                    # Fraction of other component
+                    other_dims = mesh.extract(utils.selector(pid))
+                    v0 = other_dims.min.xyz[i]
+                    v1 = other_dims.max.xyz[i]
+
+                    other_ref = fraction.map_range(to_min=v0, to_max=v1, interpolation_type="Linear")
+
+                    # Final
+                    a.append(Float.IndexSwitch(0.0, comp_ref, other_ref, index=i_sel) + value)
+
+            O = comp_dims.center.xyz
+            pivot = Vector.IndexSwitch((O[0], a[1], a[2]), (a[0], O[1], a[2]), (a[0], a[1], O[2]), index=i_axis)._lc("Pivot")
 
         with Panel("Angle"):
             angle   = Float.Angle(0, "Angle")
@@ -1266,7 +1653,7 @@ def demo():
             p = pivot + (rot @ (nd.position - pivot))
 
             pid = Integer("Comp Id")
-            mesh[pid.greater_equal(comp_id) & pid.less_equal(comp_id + linked)].position = p
+            mesh[comp_sel].position = p
 
         # ---------------------------------------------------------------------------
         # Gizmo
@@ -1278,7 +1665,7 @@ def demo():
         )
 
         mesh.out()
-        comp_id.out("Comp Id")   
+        comp_sel.out("Selection")
 
     # ====================================================================================================
     # Translate a Plank
@@ -1287,21 +1674,19 @@ def demo():
     with GeoNodes("Translate Component"):
 
         mesh     = Mesh()
-        comp_id = Integer(0, "Comp Id", 0)
-        linked   = Integer(0, "Linked", 0)
+        comp_sel = utils.selector().link_inputs()
+        i_axis   = Integer(0, "Axis", 0, 2)
 
-        i_axis = Integer(0, "Axis", 0, 2)
         with Panel("Value"):
-            value    = Float.Distance( 0.0, "Value")
-            val_min  = Float.Distance(-1.0, "Min")
-            val_max  = Float.Distance( 1.0, "Max")
+            value    = Float.Distance( 0.0, "Value", TR_MIN, TR_MAX)
+            val_min  = Float.Distance(-1.0, "Min", TR_MIN, TR_MAX)
+            val_max  = Float.Distance( 1.0, "Max", TR_MIN, TR_MAX)
 
             clip_value = gnmath.min(gnmath.max(val_min, value), val_max)
 
         with Layout("Vector Offset"):
             trans = Vector.IndexSwitch((clip_value, 0, 0), (0, clip_value, 0), (0, 0, clip_value), index=i_axis)
-            pid = Integer("Comp Id")
-            mesh[pid.greater_equal(comp_id) & pid.less_equal(comp_id + linked)].offset = trans
+            mesh[comp_sel].offset = trans
 
         # ---------------------------------------------------------------------------
         # Gizmo
@@ -1309,18 +1694,54 @@ def demo():
 
         with Layout("Gizmo"):
 
-            dims = mesh.extract(utils.selector(comp_id))
-            O = dims.center
+            dims = mesh.extract(comp_sel)
 
             value.linear_gizmo(
-                position = O,
+                position = dims.center,
                 direction = Vector.IndexSwitch((1, 0, 0), (0, 1, 0), (0, 0, 1), index=i_axis),
             )
 
         mesh.out()
-        comp_id.out("Comp Id")
+        comp_sel.out("Selection")
 
-    return
+    # ====================================================================================================
+    # Select a box
+    # ====================================================================================================
+
+    with GeoNodes("Box Input", is_group=True, prefix=utils):
+
+        mesh = Mesh()
+        mesh.add_method()
+
+        comp_ids = [0]*4
+        comps    = [None]*4
+        has_ids  = [False]*4
+
+        names = ("Left", "Right", "Bottom", "Top")
+
+        with Panel("Bounding Box"):
+            x0 = 1000
+            x1 = 0
+            for i, name in enumerate(names):
+                comp_ids[i] = Integer(0, name)
+                comps[i]    = mesh.extract(utils.selector(comp_ids[i]))
+                has_ids[i]  = comp_ids[i].not_equal(0)
+
+                x0 = Float.Switch(has_ids[i], x0, gnmath.min(x0, comps[i].min.x))
+                x1 = Float.Switch(has_ids[i], x1, gnmath.max(x1, comps[i].max.x))
+
+        comps[0].max.y.out("Left")
+        comps[1].min.y.out("Right")
+        comps[2].max.z.out("Bottom")
+        comps[3].min.z.out("Top")
+        x0.out("x0")
+        x1.out("x1")
+
+        for has_id, name in zip(has_ids, names):
+            has_id.out(f"Has {name}")
+
+        for comp_id, name in zip(comp_ids, names):
+            comp_id.out(f"{name} Id")
 
     # ====================================================================================================
     # Shelf
@@ -1330,161 +1751,176 @@ def demo():
         
         mesh = Mesh()
 
-        left_id  = Integer(0, "Left Comp Id")
-        right_id = Integer(0, "Right Comp Id")
-        
-        setback0 = Float.Distance(0.0,  "Back Setback", 0)
-        setback1 = Float.Distance(0.02, "Front Setback", 0)
-        
-        node = Group("Plank", {
-            "Dimensions > Length > Length" : 'Between Planks',
-            "Dimensions > Length > From Plank" : left_id,
-            "Dimensions > Length > From Max" : True,
-            "Dimensions > Length > To Plank" : right_id,
-            "Dimensions > Length > To Min" : True,
+        model = utils.component_input(mesh).link_inputs()
+        count = Integer(1, "Count", 1)
 
-            "Dimensions > Width > Offset" : -(setback0 + setback1),
-            },            
-            mesh        = mesh,
-            orientation =  "Shelf",
-            
-        ).link_inputs(None, include=["Model", "Position > Z", "Cotes"])
+        box = mesh.box_input().link_inputs()
 
-        node.out()
+        z = Float.Distance(.1, "Height", MIN_DIM, MAX_DIM)
+        setback0 = Float.Distance(0.0,  "Back Setback", 0, TH_MAX)
+        setback1 = Float.Distance(0.02, "Front Setback", 0, TH_MAX)
+
+        pos  = Vector((box.x0 + setback0, box.left, box.bottom + z))
+        dims = Vector((box.x1 - box.x0 - setback0 - setback1, box.right - box.left, model.dimensions.z))
+
+        # Gizmo
+        z.linear_gizmo(position = pos + dims/2, direction=(0, 0, 1), color_id='Z', draw_style='ARROW')
+
+        new_comp = model.create_from_model(
+            position    = pos,
+            dimensions  = dims,
+            orientation = SHELF,
+        )
+
+        mesh.join_component(new_comp)
+        comp_id = mesh.comp_id
+
+        # Cote
+        mesh.cote_line(
+            show     = Boolean(False, "Cote"),
+            position = pos + (dims.x/2, dims.y/2, -z),
+            axis     = 2,
+            value    = z,
+            invert   = Boolean(False, "Invert"),
+            ).link_inputs()
+
+        # ---------------------------------------------------------------------------
+        # Other shelves
+        # ---------------------------------------------------------------------------
+
+        shelf = mesh.extract(utils.selector(comp_id))
+        for rep in repeat(count-1, mesh=mesh):
+
+            shelf.transform(translation=(0, 0, (rep.iteration+1)*z))
+            shelf.points.Owner_Id = comp_id
+
+            rep.mesh.join_component(shelf)
+
+        mesh = rep.mesh
+
+        mesh.out()
+        comp_id.out("Comp Id")
 
     # ====================================================================================================
-    # Plinths
+    # Plinth
     # ====================================================================================================
 
-    with GeoNodes("Plinth Front"):
+    with GeoNodes("Plinth"):
         
         mesh = Mesh()
-        comp_id = Integer(0, "Under Comp Id")
-        setback = Float.Distance(0.02, "Setback", 0)
-        
-        left_ofs = Float.Distance(0.0, "Left Offset")
-        right_ofs = Float.Distance(0.0, "Right Offset")
 
-        node = Group("Plank", {
-            "Dimensions > Length > Length" : 'Plank Size Y',
-            "Dimensions > Length > Plank" : comp_id,
-            "Dimensions > Length > Offset" : -(left_ofs + right_ofs),
+        model = utils.component_input(mesh).link_inputs()
+        thick = model.dimensions.z
 
-            "Dimensions > Width > Width" : 'Between Planks',
-            "Dimensions > Width > From Plank" : 0,
-            "Dimensions > Width > To Plank" : comp_id,
-            "Dimensions > Width > To Min" : True,
+        comp_id = Integer(0, "Under Id")
+        comp = mesh.extract(utils.selector(comp_id))
 
-            "Position > X > Behind" : True,
-            "Position > X > Position" : 'Plank X Max',
-            "Position > X > Plank" : comp_id,
-            "Position > X > Offset" : -setback,
+        sel_index = Integer.MenuSwitch({"Front": 0, "Left": 1, "Right": 2}, menu=Input("Location"))
 
-            "Position > Y > Left" : False,
-            "Position > Y > Position" : 'Plank Y Min',
-            "Position > Y > Plank" : comp_id,
-            "Position > Y > Offset" : left_ofs,
+        setback = Float.Distance(0.02, "Setback", 0, TH_MAX)        
+        ofs0    = Float.Distance(0.0, "Offset Start", -TH_MAX, TH_MAX)
+        ofs1    = Float.Distance(0.0, "Offset End", -TH_MAX, TH_MAX)
 
-            },            
-            mesh        = mesh,
-            orientation =  "Drawer",
-            
-        ).link_inputs(None, include=["Model", "Cotes"])
+        # ---------------------------------------------------------------------------
+        # Position
+        # ---------------------------------------------------------------------------
 
-        node.out()
+        with Vector.IndexSwitch(index=sel_index) as pos:
+            Vector((comp.max.x - setback - thick, comp.min.y + ofs0, 0)).out()
 
-    with GeoNodes("Plinth Side"):
-        
-        mesh = Mesh()
-        comp_id = Integer(0, "Under Comp Id")
-        setback = Float.Distance(0.02, "Setback", 0)
-        
-        back_ofs = Float.Distance(0.0, "Back Offset")
-        front_ofs = Float.Distance(0.0, "Front Offset")
+        with pos:
+            Vector((comp.min.x + ofs0, comp.min.y + setback, 0)).out()
 
-        node = Group("Plank", {
-            "Dimensions > Length > Length" : 'Plank Size X',
-            "Dimensions > Length > Plank" : comp_id,
-            "Dimensions > Length > Offset" : -(back_ofs + front_ofs),
+        with pos:
+            Vector((comp.min.x + ofs0, comp.max.y - setback - thick, 0)).out()
 
-            "Dimensions > Width > Width" : 'Between Planks',
-            "Dimensions > Width > From Plank" : 0,
-            "Dimensions > Width > To Plank" : comp_id,
-            "Dimensions > Width > To Min" : True,
+        # ---------------------------------------------------------------------------
+        # Dimensions
+        # ---------------------------------------------------------------------------
 
-            "Position > X > Behind" : False,
-            "Position > X > Position" : 'Value',
-            "Position > X > Value" : back_ofs,
+        with Vector.Switch(sel_index.front) as dims:
+            Vector((comp.min.z, comp.size.y - ofs0 - ofs1, thick)).out("True")
 
-            "Position > Y > Left" : False,
-            "Position > Y > Position" : 'Plank Y Min',
-            "Position > Y > Plank" : comp_id,
-            "Position > Y > Offset" : setback,
-            },            
-            mesh        = mesh,
-            orientation =  "Rotated Side",
-            
-        ).link_inputs(None, include=["Model", "Cotes"])
+        with dims:
+            Vector((comp.min.z, comp.size.x - ofs0 - ofs1, thick)).out("False")
 
-        node.out()
+        # ---------------------------------------------------------------------------
+        # Plinth
+        # ---------------------------------------------------------------------------
+
+        plinth = model.create_from_model(
+            position    = pos,
+            dimensions  = dims,
+            orientation = Integer.Switch(sel_index.front, ROTATED_SIDE, DRAWER),
+        )
+        mesh.join_component(plinth)
+
+        # Cote
+        dx, dy, dz = dims.xyz
+        mesh.cote_line(
+            show     = Boolean(False, "Cote"),
+            position = pos + Vector.Switch(sel_index.front, (dx/2, 0, 0), (dx, dy/2, 0)),
+            axis     = 2,
+            value    = dx,
+            invert   = Boolean(False, "Invert"),
+            ).link_inputs()
+
+        mesh.out()
 
     # ====================================================================================================
-    # Ask for a box
+    # Hinge
     # ====================================================================================================
 
-    with GeoNodes("Box Dimensions", is_group=True, prefix=utils):
+    with GeoNodes("Hinge"):
 
         mesh = Mesh()
 
-        with Panel("Planks"):
-            left_id  = Integer(0, "Left Plank")
-            right_id = Integer(0, "Right Plank")
-            bot_id   = Integer(0, "Bottom Plank")
-            top_id   = Integer(0, "Top Plank")
+        mesh.add_method()
 
-        with Layout("Left"):
-            left_dims  = mesh.extract(utils.selector(left_id))
+        comp_id = Integer(0, "Comp Id")
+        i_axis  = Integer.MenuSwitch({"X": 0, "Y": 1, "Z": 2}, menu=Input("Axis"), default_menu="Z")
 
-            x0, out_y0, _ = left_dims.min.xyz
-            x1, in_y0, _  = left_dims.max.xyz
+        comp_sel = utils.selector(comp_id, linked=True, accessories=True)
+        comp = mesh.extract(comp_sel)
+        min_xyz = comp.min.xyz
+        max_xyz = comp.max.xyz
+        O_xyz = comp.center.xyz
 
-        with Layout("Right"):
-            right_dims = mesh.extract(utils.selector(right_id))
+
+        facs = [0]*3
+        pos = [0]*3
+
+        for i in range(3):
+            axis = 'XYZ'[i]
+            facs[i] = Float.Factor(0, f"{axis} Position", 0, 1)
+            pos[i] = facs[i].map_range(to_min=min_xyz[i], to_max=max_xyz[i], interpolation_type='Linear')
+
+        angle = Float.Angle(0.0, "Angle", -pi, pi)
+        angle0 = Float.Angle(-pi, "Angle Min", -2*pi, 2*pi)
+        angle1 = Float.Angle( pi, "Angle Max", -2*pi, 2*pi)
+
+        pivot = Vector.IndexSwitch(
+            (O_xyz[0], pos[1], pos[2]),
+            (pos[0], O_xyz[1], pos[2]),
+            (pos[0], pos[1], O_xyz[2]),
+            index=i_axis,
+        )
+
+        # Gizmo
+        angle.dial_gizmo(
+            position = pivot,
+            up = Vector.IndexSwitch((1, 0, 0), (0, 1, 0), (0, 0, 1), index=i_axis),
+        )
+
+        # Clamp
+        angle = angle.clamp_minmax(angle0, angle1)
+
+        rot = Rotation.IndexSwitch((angle, 0, 0), (0, angle, 0), (0, 0, angle), index=i_axis)
         
-            x, in_y1, _ = right_dims.min.xyz
-            x0 = gnmath.min(x0, x)
-            x, out_y1, _  = right_dims.max.xyz
-            x1 = gnmath.max(x1, x)
-
-        with Layout("Bottom"):
-            bot_dims   = mesh.extract(utils.selector(bot_id))
-        
-            x, _, out_z0 = bot_dims.min.xyz
-            x0 = gnmath.min(x0, x)
-            x, _, in_z0  = bot_dims.max.xyz
-            x1 = gnmath.max(x1, x)
+        mesh.points[comp_sel].position = pivot + rot @ (nd.position - pivot)
 
 
-        with Layout("Top"):
-            top_dims   = mesh.extract(utils.selector(top_id))
-
-            x, _, in_z1 = top_dims.min.xyz
-            x0 = gnmath.min(x0, x)
-            x, _, out_z1  = top_dims.max.xyz
-            x1 = gnmath.max(x1, x)
-
-        in_y0.out("In y0")
-        in_y1.out("In y1")
-        in_z0.out("In z0")
-        in_z1.out("In z1")
-
-        out_y0.out("Out y0")
-        out_y1.out("Out y1")
-        out_z0.out("Out z0")
-        out_z1.out("Out z1")
-
-        x0.out("x0")
-        x1.out("x1")
+        mesh.out()
 
     # ====================================================================================================
     # Door
@@ -1494,125 +1930,134 @@ def demo():
         
         mesh = Mesh()
 
-        inside = Boolean(True,  "Inside")
-        double = Boolean(False, "Double")
+        # Box
+        box = mesh.box_input().link_inputs()
 
-        gap  = Float.Distance(0.002, "Gap")
-        over = Float.Distance(0.007, "Over")
+        # Component model
+        with Panel("Model"):
+            model =  utils.component_input(mesh).link_inputs()
+            thick = model.dimensions.z
 
-        with Panel("Opening", create_layout=True):
+        # Options
+        with Panel("Door"):
 
-            right_hinge = Boolean(False, "Right Hinge")
+            hinge_loc = Integer.MenuSwitch({
+                "Single Left"  : 0,
+                "Single Right" : 1,
+                "Double"       : 2,
+                "Bottom"       : 3,
+                "Top"          : 4,
+                }, menu=Input("Hinge"))
 
-            left_angle  = Float.Angle(0, "Angle",    -pi, 0, hide_in_modifier=True)._lc("Left Angle")
-            right_angle = Float.Angle(0, "Right Angle", 0, pi, hide_in_modifier=True)._lc("Right Angle")
+            inside = Boolean(True,  "Inside")
 
-            open_left = (double | right_hinge.bnot())._lc("Open Left")
-            open_right = (double | right_hinge)._lc("Open Right")
-            
-        # ---------------------------------------------------------------------------
-        # Dimensions
-        # ---------------------------------------------------------------------------
+            gap  = Float.Distance(0.002, "Gap", 0, TH_MAX)
+            over = Float.Distance(0.007, "Over", 0, TH_MAX)
 
-        with Layout("Box values"):
-            
-            box = utils.box_dimensions(mesh).link_inputs()
-
-            y0 = Float.Switch(inside, box.in_y0 - over, box.in_y0 + gap)._lc("y0")
-            y1 = Float.Switch(inside, box.in_y1 + over, box.in_y1 - gap)._lc("y1")
-            z0 = Float.Switch(inside, box.in_z0 - over, box.in_z0 + gap)._lc("z0")
-            z1 = Float.Switch(inside, box.in_z1 + over, box.in_z1 - gap)._lc("z1")
-
-            front = box.x1._lc("Front")
+            left_open  = Float.Angle(0, "Left Open")
+            right_open = Float.Angle(0, "Right Open")
+            bot_open   = Float.Angle(0, "Bottom Open")
+            top_open   = Float.Angle(0, "Top Open")
 
         with Layout("Dimensions"):
-            width = (y1 - y0)._lc("Width")
-            width.switch(double, (width - gap)/2)
-            height = (z1 - z0)._lc("Height")
-
-        # ---------------------------------------------------------------------------
-        # First door
-        # ---------------------------------------------------------------------------
-
-        with Layout("First Door (left)"):
-
-            mesh = Group("Plank", {                
-                "Dimensions > Length > Length" : 'Value',
-                "Dimensions > Length > Value" : height,
-
-                "Dimensions > Width > Width" : 'Value',
-                "Dimensions > Width > Value" : width,
-                
-                "Position > X > Behind" : inside,
-                "Position > X > Position" : 'Value',
-                "Position > X > Value" : front,
-
-                "Position > Y > Position" : 'Value',
-                "Position > Y > Value" : y0,
-
-                "Position > Z > Position" : 'Value',
-                "Position > Z > Value" : z0,
-                },            
-                mesh        = mesh,
-                orientation =  "Door",
-                
-            ).link_inputs(None, include=["Model", "Cotes"]).mesh
-
-            left_door_id = mesh.comp_id._lc("Left Door Id")
-
-        # ---------------------------------------------------------------------------
-        # Second door (right)
-        # ---------------------------------------------------------------------------
-
-        with Layout("Second Door"):
-
-            mesh2 = G().duplicate_plank(mesh, left_door_id, translate_y = True, offset_y = width + gap)
-            right_door_id = mesh2.comp_id._lc("Right Door Id")
-            right_door_id.switch_false(double)            
-
-            mesh = mesh.switch(double, mesh2)
-
-        # ---------------------------------------------------------------------------
-        # Open the doors
-        # ---------------------------------------------------------------------------
-
-        with Layout("Rotate doors"):
-
-            left_mesh = G().rotate_plank(
-                mesh,
-                comp_id = left_door_id,
-                axis = 2,
-                pivot_x_position = "Value",
-                pivot_x_value = front, #left_dims.max.x,
-                pivot_y_position = "Value",
-                pivot_y_value = y0,
-                angle = left_angle,
-                angle_min = -pi,
-                angle_max = pi,
-            )
-            mesh.switch(open_left, left_mesh)
-
-            right_mesh = G().rotate_plank(
-                mesh,
-                comp_id = right_door_id,
-                axis = 2,
-                pivot_x_position = "Value",
-                pivot_x_value = front, #right_dims.max.x,
-                pivot_y_position = "Value",
-                pivot_y_value = y1,
-                angle = right_angle,
-                angle_min = -pi,
-                angle_max = pi,
-            )
-            mesh.switch(open_right, right_mesh)
+            height = box.top - box.bottom
+            height = Float.Switch(inside, height + 2*over, height - 2*gap)
             
+            width = box.right - box.left
+            width = Float.Switch(inside, width + 2*over, width - 2*gap)
+
+            left_width = Float.Switch(hinge_loc.double, width, (width - gap)/2)
+        
+        # ---------------------------------------------------------------------------
+        # Left Door
+        # ---------------------------------------------------------------------------
+
+        with Layout("Left Door"):
+        
+            left_pos = Vector.Switch(inside,
+                    (box.x1, box.left - over, box.bottom - over),
+                    (box.x1 - thick, box.left + gap, box.bottom + gap),
+                    )
+            
+            dims = (left_width, height, thick)
+
+            left_door = model.create_from_model(
+                position    = left_pos,
+                dimensions  = dims,
+                orientation = DOOR,
+            )
+            mesh.join_component(left_door)
+            left_id = mesh.comp_id
+
+        # ---------------------------------------------------------------------------
+        # Right Door
+        # ---------------------------------------------------------------------------
+
+        with Layout("Right Door"):
+
+            right_pos = left_pos + (0, left_width + gap, 0)
+            right_door = model.create_from_model(
+                position    = right_pos,
+                dimensions  = dims,
+                orientation = DOOR,
+            )
+            mesh.join_component(right_door, join=hinge_loc.double)
+            right_id = mesh.comp_id
+
+        # ---------------------------------------------------------------------------
+        # Hinges
+        # ---------------------------------------------------------------------------
+
+        with Layout("Hinges"):
+
+            mesh1 = mesh.hinge(
+                comp_id = left_id, 
+                axis='Z',
+                x_position = Integer.Switch(inside, 0, 1),
+                y_position = 0,
+                angle = -left_open,
+                angle_min = -pi,
+                angle_max = 0,
+            )
+            mesh.switch(hinge_loc.single_left | hinge_loc.double, mesh1)
+
+            mesh1 = mesh.hinge(
+                comp_id = Integer.Switch(hinge_loc.double, left_id, right_id),
+                axis='Z',
+                x_position = Integer.Switch(inside, 0, 1),
+                y_position = 1,
+                angle = right_open,
+                angle_min = 0,
+                angle_max = pi,
+            )
+            mesh.switch(hinge_loc.single_right | hinge_loc.double, mesh1)
+
+            mesh1 = mesh.hinge(
+                comp_id = left_id, 
+                axis='Y',
+                x_position = Integer.Switch(inside, 0, 1),
+                z_position = 0,
+                angle = bot_open,
+                angle_min = 0,
+                angle_max = pi,
+            )
+            mesh.switch(hinge_loc.bottom, mesh1)
+
+            mesh1 = mesh.hinge(
+                comp_id = left_id, 
+                axis='Y',
+                x_position = Integer.Switch(inside, 0, 1),
+                z_position = 1,
+                angle = -top_open,
+                angle_min = -pi,
+                angle_max = 0,
+            )
+            mesh.switch(hinge_loc.top, mesh1)
 
         mesh.out()
-        left_door_id.out("Left Id")
-        right_door_id.out("Right Id")
-
-
-    return
+        left_id.out("Comp Id")
+        hinge_loc.double.out("Double")
+        right_id.out("Right Id")
 
     # ====================================================================================================
     # Drawer
@@ -1622,218 +2067,250 @@ def demo():
 
         mesh = Mesh()
 
-        mesh = G().door(mesh=mesh, double=False).link_inputs(None, "Drawer Front")
-        front_id = mesh.comp_id
+        # ----------------------------------------------------------------------------------------------------
+        # Inputs
+        # ----------------------------------------------------------------------------------------------------
 
-        with Panel("Drawer Box", create_layout=True):
+        with Panel("Count"):
+            dupl_count = Integer(1, "Count", 1, 10)
+            dupl_vert  = Boolean(True, "Vertical")
+            dupl_tr    = Float.Distance(0, "Gap", TR_MIN, TR_MAX)
 
-            depth = Float.Distance(0.3, "Depth", 0.05)
+        # Box
+        box = mesh.box_input().link_inputs()
 
-            with Panel("Sides"):
-                sb_side    = Float.Distance(0.0,   "Side Setback",   0.0)
-                sb_bot     = Float.Distance(0.0,   "Bottom Setback", 0.0)
-                sb_top     = Float.Distance(0.0,   "Top Setback",    0.0)
-                side_thick = Float.Distance(0.012, "Thickness",      MIN_DIM)
-                back_fix   = Integer.MenuSwitch({
-                    "Back Nailed on Sides": 0,
-                    "Sides Nailed on Back": 1,
-                    "Back and Sides @ 45°": 2,
-                    },
-                    menu = Input("Back Fixing")
-                )
-                side_mat   = Material("Plank", "Material")
+        # Component models
+        with Panel("Front", create_layout=True):
+            front_model =  utils.component_input(mesh).link_inputs()
+            front_thick = front_model.dimensions.z._lc("Front Thickness")
 
-            with Panel("Bottom"):
-                bot_thick  = Float.Distance(0.002, "Bottom Thickness", 0.0)
-                bot_nailed = Boolean(True, "Nailed Underneath")
-                sb_groove  = Float.Distance(0.005, "Groove Setback", 0.0)
-                groove     = Float.Distance(0.002, "Groove Depth", MIN_DIM)
+            inside = Boolean(True,  "Inside")
 
-                bot_mat    = Material("Plank", "Material")
+            gap  = Float.Distance(0.002, "Gap", 0, TH_MAX)
+            over = Float.Distance(0.007, "Over", 0, TH_MAX)
 
-            dims = G().get_dimensions(mesh, True, front_id).node
-            x0, y0, z0 = dims.min.xyz
-            sx, sy, sz = dims.size.xyz
+            open = Float.Distance(0.0, "Open", 0, TR_MAX)
 
-            with Layout("Sides Z0"):
-                side_z0 = (z0 + sb_bot)._lc("Sides Z0")
-                side_z0 = side_z0.switch(bot_nailed, side_z0 + bot_thick)._lc("Sides Z0")
+            with Panel("Handle"):
+                handle_obj = Object(None, "Handle")
+                handle_pos = Float.Factor(.5, "Height", 0, 1)
 
-            with Layout("Sides Height"):
-                side_height = (sz - sb_top - sb_bot)._lc("Sides Height, Bot Nailed")
-                side_height = side_height.switch(bot_nailed, side_height - bot_thick)._lc("Sides Height")
+        with Panel("Box Sides", create_layout=True):
+            side_model =  utils.component_input(mesh).link_inputs()
+            side_thick = side_model.dimensions.z._lc("Side Thickness")
 
-            with Layout("Left Side Y0"):
-                left_y0 = (y0 + sb_side)._lc("Left Side Y0")
+            use_box_front = Boolean(True, "Front Panel")
+            side_fix_index = Integer.MenuSwitch({
+                "Side Nails"  : 0,
+                "45° Shear"   : 1,
+                "Front Nails" : 2,
+            }, menu=Input("Fixation"))
 
-            with Layout("Left & Right Sides Length"):
-                side_length = depth.switch(back_fix.equal(0), depth - side_thick)._lc("Sides Length")
+            side_nails  = side_fix_index.side_nails
+            front_nails = side_fix_index.front_nails
 
-            with Layout("Back Length"):
-                back_length = sy - 2*sb_side
-                back_length = back_length.switch(back_fix.equal(1), back_length - 2*side_thick)._lc("Back Length")
+            rear_setback = Float.Distance(0.01, "Rear SetBack", 0, TH_MAX)
+            side_setback = Float.Distance(0.13, "Side SetBack", 0, TH_MAX)
+            bot_setback  = Float.Distance(0.05, "Bottom Setback", 0, TH_MAX)
+            top_setback  = Float.Distance(0.02, "Top Setback", 0, TH_MAX)
 
-            with Layout("Back X0"):
-                back_x0 = (x0 - depth)._lc("Back X0")
+        with Panel("Bottom Panel Options", create_layout=True):
+            bot_model =  utils.component_input(mesh).link_inputs()
+            bot_thick = bot_model.dimensions.z._lc("Bottom Thickness")
 
-            with Layout("Back Y0"):
-                back_y0 = left_y0.switch(back_fix.equal(1), left_y0 + side_thick)._lc("Back Y0")
+            bot_fix_index = Integer.MenuSwitch({
+                "Groove"       : 0,
+                "Rabbet"       : 1,
+                "Nailed Underneath" : 2,
+            }, menu=Input("Fixation"))
+            underneath = bot_fix_index.nailed_underneath
 
-            with Layout("Bottom"):
-                groove_delta = (side_thick - groove)._lc("Groove Delta")
+            groove = Float.Distance(0.005, "Grove/Rabbet", MIN_DIM, TH_MAX)
+            groove_setback = Float.Distance(0.005, "Groove Setback", MIN_DIM, TH_MAX)
+            # 0 if nailed underneath
+            groove_setback.switch_false(bot_fix_index.groove)
 
-                bot_width = (sy - 2*sb_side)._lc("Bottom Nailed Width")
-                bot_width = bot_width.switch_false(bot_nailed, bot_width - 2*groove_delta)._lc("Bottom Width")
+        # ----------------------------------------------------------------------------------------------------
+        # Create the front panel
+        # ----------------------------------------------------------------------------------------------------
 
-                bot_depth = depth._lc("Bottom Nailed Depth")
-                bot_depth = bot_depth.switch_false(bot_nailed, bot_depth - groove_delta + groove)
+        with Layout("Front Dimensions"):
+            front_height = box.top - box.bottom
+            front_height = Float.Switch(inside, front_height + 2*over, front_height - 2*gap)._ul("Front Height")
+            
+            front_width = box.right - box.left
+            front_width = Float.Switch(inside, front_width + 2*over, front_width - 2*gap)._ul("Front Width")
+        
+        with Layout("Front"):
+        
+            front_pos = Vector.Switch(inside,
+                    (box.x1, box.left - over, box.bottom - over),
+                    (box.x1 - front_thick, box.left + gap, box.bottom + gap),
+                    )
+            
+            # Drawer orientation
+            front_dims = (front_height, front_width, front_thick)
 
-                bot_x0 = (x0 - depth)._lc("Bottom Nailed X0")
-                bot_x0 = bot_x0.switch_false(bot_nailed, bot_x0 + groove_delta)._lc("Bottom X0")
-
-                bot_y0 = left_y0.switch_false(bot_nailed, left_y0 + groove_delta)._lc("Bottom Y0")
-
-                nailed_z0 = (side_z0 - bot_thick)._lc("Bottom Nailed Z0")
-                groove_z0 = (side_z0 + sb_groove)._lc("Bottom Groove Z0")
-                bot_z0 = groove_z0.switch(bot_nailed, nailed_z0)._lc("Bottom Z0")
-
-            # ---------------------------------------------------------------------------
-            # Side Panels
-            # ---------------------------------------------------------------------------
-
-            with Layout("Left Side"):
-
-                mesh = Group("Plank", {
-                    "From Model > Model"     : 'Default',
-                    "From Model > Material"  : side_mat,
-
-                    "Width > Width"     : 'Value',
-                    "Width > Value"     : side_length, # Orientation is 'Side'
-                    
-                    "Length > Length"   : 'Value',
-                    "Length > Value"    : side_height,
-
-                    "Thickness > Thickness" : 'Value',
-                    "Thickness > Value"     : side_thick,
-                    
-                    "X > Alignment"     : 'Behind',
-                    "X > X"             : 'Value',
-                    "X > Value"         : x0,
-                    
-                    "Y > Alignment"     : 'Right',
-                    "Y > Y"             : 'Value',
-                    "Y > Value"         : left_y0,
-                    
-                    "Z > Alignment"     : 'Above',
-                    "Z > Z"             : 'Value',
-                    "Z > Value"         : side_z0,
-                    },
-                    mesh        = mesh,
-                    orientation =  "Side",
-                    ).mesh
-                left_id = mesh.comp_id
-
-            with Layout("Duplicate for right side"):
-                mesh = G().duplicate_plank(
-                    mesh        = mesh,
-                    comp_id    = left_id,
-                    count       = 1,
-                    translate_y = True,
-                    offset_y    = sy - 2*sb_side - side_thick,
-                )
-                right_id = mesh.comp_id
-
-            # ---------------------------------------------------------------------------
-            # Back Panel
-            # ---------------------------------------------------------------------------
-
-            with Layout("Back"):
-
-                mesh = Group("Plank", {
-                    "From Model > Model"     : 'Comp Id',
-                    "From Model > Model ID"  : left_id,
-
-                    "Width > Width"     : 'Value',
-                    "Width > Value"     : back_length, # Orientation is 'Vertical'
-                    
-                    "Length > Length"   : 'Value',
-                    "Length > Value"    : side_height,
-
-                    "Thickness > Thickness" : 'Value',
-                    "Thickness > Value"     : side_thick,
-                    
-                    "X > Alignment"     : 'In Front',
-                    "X > X"             : 'Value',
-                    "X > Value"         : back_x0,
-                    
-                    "Y > Alignment"     : 'Right',
-                    "Y > Y"             : 'Value',
-                    "Y > Value"         : back_y0,
-                    
-                    "Z > Alignment"     : 'Above',
-                    "Z > Z"             : 'Value',
-                    "Z > Value"         : side_z0,
-                    },
-                    mesh        = mesh,
-                    orientation =  "Vertical",
-                    ).mesh
-                back_id = mesh.comp_id
-
-            # ---------------------------------------------------------------------------
-            # Bottom
-            # ---------------------------------------------------------------------------
-
-            with Layout("Bottom"):
-
-                mesh = Group("Plank", {
-                    "From Model > Model"     : 'Default',
-                    "From Model > Material"  : bot_mat,
-
-                    "Width > Width"     : 'Value',
-                    "Width > Value"     : bot_depth, # Orientation is 'Horizontal'
-                    
-                    "Length > Length"   : 'Value',
-                    "Length > Value"    : bot_width, # Orientation is 'Horizontal'
-
-                    "Thickness > Thickness" : 'Value',
-                    "Thickness > Value"     : bot_thick,
-                    
-                    "X > Alignment"     : 'In Front',
-                    "X > X"             : 'Value',
-                    "X > Value"         : bot_x0,
-                    
-                    "Y > Alignment"     : 'Right',
-                    "Y > Y"             : 'Value',
-                    "Y > Value"         : bot_y0,
-                    
-                    "Z > Alignment"     : 'Above',
-                    "Z > Z"             : 'Value',
-                    "Z > Value"         : bot_z0,
-                    },
-                    mesh        = mesh,
-                    orientation =  "Horizontal",
-                    ).mesh
-                bot_id = mesh.comp_id
-
-        with Panel("Opening", create_layout=True):
-
-            mesh = G().translate_plank(
-                mesh     = mesh,
-                comp_id = front_id,
-                linked   = 4,
-                axis     = 0,
-                value    = Float.Distance(0.0, "Open"),
-                min      = 0.0,
-                max      = 0.9*depth,
+            front = front_model.create_from_model(
+                position    = front_pos,
+                dimensions  = front_dims,
+                orientation = DRAWER,
             )
+            mesh.join_component(front)
+            front_id = mesh.comp_id
+
+            open.linear_gizmo(position=front_pos + (front_thick + open, front_width/2, front_height/2), direction=(1, 0, 0), color_id='PRIMARY', draw_style='ARROW')
+
+        # ----------------------------------------------------------------------------------------------------
+        # Create the box
+        # ----------------------------------------------------------------------------------------------------
+
+        with Layout("Box dimensions and positions"):
+
+            with Layout("Box min max"):
+                box_min = [box.x0 + rear_setback, box.left + side_setback, box.bottom + bot_setback]
+                box_max = [front_pos.x, box.right - side_setback, box.top - top_setback]
+                for i in range(3):
+                    box_min[i]._lc(f"Box Min {'XYZ'[i]}")
+                    box_max[i]._lc(f"Box Max {'XYZ'[i]}")
+
+                box_depth  = (box_max[0] - box_min[0])._ul("Box Depth")
+                box_width  = (box_max[1] - box_min[1])._ul("Box Width")
+                #box_height = (box_max[2] - box_min[2])._ul("Box Height")
+
+            with Layout("Side z min"):
+                side_z = Float.Switch(underneath, box_min[2], box_min[2] + bot_thick)._lc("Side Z0")
+                side_height = (box_max[2] - side_z)._ul("Side Height")
+
+            with Layout("Left Side Dims and Pos"):
+                lr_length = Float.Switch(front_nails, box_depth, box_depth - side_thick)._ul("Left/Right Length")
+                lr_length.switch(front_nails & use_box_front, lr_length - side_thick)
+
+                left_pos = Vector((
+                    Float.Switch(front_nails, box_min[0], box_min[0] + side_thick),
+                    box_min[1],
+                    side_z,
+                ))._lc("Left Side Pos")
+
+            with Layout("Rear Side Dims and Pos"):
+                rf_length = Float.Switch(side_nails, box_width, box_width - 2*side_thick)._ul("Rear/Front Length")
+
+                rear_pos = Vector((
+                    box_min[0],
+                    Float.Switch(side_nails, box_min[1], box_min[1] + side_thick),
+                    side_z
+                ))._lc("Rear Side Pos")
+
+        with Layout("Left Side"):
+
+            left_side = side_model.create_from_model(
+                position    = left_pos,
+                dimensions  = (side_height, lr_length, side_thick),
+                orientation = ROTATED_SIDE,
+            )
+            left_side.points.Owner_Id = front_id
+            mesh.join_component(left_side)
+            left_id = mesh.comp_id
+
+        with Layout("Right Side"):
+
+            right_side = side_model.create_from_model(
+                position    = left_pos + (0, box_width - side_thick, 0),
+                dimensions  = (side_height, lr_length, side_thick),
+                orientation = ROTATED_SIDE,
+            )
+            right_side.points.Owner_Id = front_id
+            mesh.join_component(right_side)
+            right_id = mesh.comp_id
+
+        with Layout("Rear Side"):
+
+            rear_side = side_model.create_from_model(
+                position    = rear_pos,
+                dimensions  = (side_height, rf_length, side_thick),
+                orientation = DRAWER,
+            )
+            rear_side.points.Owner_Id = front_id
+            mesh.join_component(rear_side)
+            rear_id = mesh.comp_id
+
+        with Layout("Optional Front Side"):
+
+            frt_side = side_model.create_from_model(
+                position    = rear_pos + (box_depth - side_thick, 0, 0),
+                dimensions  = (side_height, rf_length, side_thick),
+                orientation = DRAWER,
+            )
+            frt_side.points.Owner_Id = front_id
+            mesh.join_component(frt_side, join=use_box_front)
+            frt_id = mesh.comp_id
+
+        # ----------------------------------------------------------------------------------------------------
+        # Bottom panel
+        # ----------------------------------------------------------------------------------------------------
+
+        with Layout("Bottom Panel Dimensions"):
+
+            hrz_ofs   = Float.Switch(underneath, side_thick - groove, 0.0)._ul("Groove Hrz Offset")
+            bot_width = Float.Switch(underneath, box_width - 2*hrz_ofs, box_width)._ul("Bottom Width")
+
+            bot_length = Float.Switch(underneath, box_depth - hrz_ofs + groove, box_depth)._lc("Bottom Length")
+            bot_length.switch(underneath.bnot() & use_box_front, bot_length - side_thick)
+
+            bot_pos = Vector((box_min[0] + hrz_ofs, box_min[1] + hrz_ofs, box_min[2] + groove_setback))._lc("Bottom Pos")
+
+        with Layout("Create Bottom Panel"):
+
+            bot_panel = bot_model.create_from_model(
+                position    = bot_pos,
+                dimensions  = (bot_width, bot_length, bot_thick),
+                orientation = ROTATED_SHELF,
+            )
+            bot_panel.points.Owner_Id = front_id
+            mesh.join_component(bot_panel)
+            bot_id = mesh.comp_id
+
+        # ----------------------------------------------------------------------------------------------------
+        # Add the handle
+        # ----------------------------------------------------------------------------------------------------
+
+        with Layout("Handle"):
+            mesh.join_accessory(comp_id=front_id, accessory=handle_obj, position=(1, 0.5, handle_pos))
+
+        # ----------------------------------------------------------------------------------------------------
+        # Duplicate
+        # ----------------------------------------------------------------------------------------------------
+
+        with Layout("Duplicate"):
+            ty = Float.Switch(dupl_vert, Float.Switch(dupl_tr.less_than(0), dupl_tr + front_width, dupl_tr -front_width), 0.0)
+            tz = Float.Switch(dupl_vert, 0.0, Float.Switch(dupl_tr.less_than(0), dupl_tr + front_height, dupl_tr - front_height))
+            mesh.duplicate_component(
+                comp_id     = front_id,
+                linked      = True, 
+                accessories = True,
+                count       = dupl_count - 1,
+                offset_y    = ty,
+                offset_z    = tz,
+                )
+
+        # ----------------------------------------------------------------------------------------------------
+        # Open the drawer
+        # ----------------------------------------------------------------------------------------------------
+
+        with Layout("Open the Drawer"):
+            mesh.points[utils.selector(comp_id=front_id, linked=True, accessories=True)].offset = (open, 0, 0)
 
         mesh.out()
+        front_id.out("Front Id")
+        left_id.out("Left Id")
+        right_id.out("Right Id")
+        frt_id.out("Inner Front Id")
+        rear_id.out("Rear Id")
+        bot_id.out("Bottom Id")
 
-        front_id.out(   "Front ID")
-        left_id.out(    "Left ID")
-        right_id.out(   "Right_ID")
-        back_id.out(    "Back ID")
-        bot_id.out(     "Bottom ID")
+        return
+
+
         
     # ====================================================================================================
     # Cut sheet
@@ -1856,9 +2333,6 @@ def demo():
         cloud.set_id(nd.index)
             
         cloud.out()
-
-
-
 
 
     return
