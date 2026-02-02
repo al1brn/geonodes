@@ -165,7 +165,7 @@ class Panel:
 # ====================================================================================================
 
 class Layout:
-    def __init__(self, title: str = "", color: str = None, node = None):
+    def __init__(self, title: str = "", color: str = 'RANDOM', node = None):
         """ Node Frame
 
         All nodes created when a Layout is open are placed in this layout.
@@ -1033,12 +1033,12 @@ class Tree:
     @staticmethod
     def _get_color(value):
 
-        if value is None:
-            rng = Tree.current_tree()._rng
-            value = tuple(rng.uniform(0., .7, 3))
-
-        elif isinstance(value, str):
-            if value in ['OP', 'OPERATION']:
+        if isinstance(value, str):
+            if value == 'RANDOM':
+                rng = Tree.current_tree()._rng
+                value = tuple(rng.uniform(0., .7, 3))
+    
+            elif value in ['OP', 'OPERATION']:
                 value = (.406, .541, .608)
             elif value == 'MACRO':
                 value = (.261, .963, .409)

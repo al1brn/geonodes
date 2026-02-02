@@ -867,8 +867,11 @@ class Socket(NodeCache):
             return
         
         d = self._bsocket.description
-        if not d.startswith("UL "):
+        if True:
             self._bsocket.description = "UL " + str(value)
+        else:
+            if not d.startswith("UL "):
+                self._bsocket.description = "UL " + str(value)
 
     # ----------------------------------------------------------------------------------------------------
     # Set user label and returns self for chaining
@@ -919,9 +922,9 @@ class Socket(NodeCache):
         if self.node._bnode.bl_idname == 'NodeGroupInput':
             return
 
-        self.node_label  = label
-        self.node_color  = color
-        self._user_label = label
+        self.node_label = label
+        self.node_color = color
+        self.user_label = label
 
         return self
     

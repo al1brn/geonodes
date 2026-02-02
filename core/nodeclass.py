@@ -1695,6 +1695,31 @@ class Node:
         self.link_outputs(None, to_panel=panel)
 
     # ====================================================================================================
+    # Sockets as tuple
+    # ====================================================================================================
+
+    def as_tuple(self):
+        """ Returns the output sockets as a tuple
+
+        Used in nodes such a separate_xyz to get the 3 components in a tuple
+
+        ``` python
+        v = Vector()
+
+        # Split without node label
+        x, y, z = v.xyz
+
+        # Split with label
+        x, y, z = v.separate_xyz()._lc("Size").as_tuple()
+        ```
+
+        Returns
+        -------
+        - tuple : tuple of enabled sockets
+        """
+        return tuple([socket for _, socket in self.get_sockets('OUTPUT')])
+
+    # ====================================================================================================
     # Link input from another node
     # ====================================================================================================
 

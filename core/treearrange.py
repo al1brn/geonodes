@@ -192,14 +192,17 @@ class Link:
         else:
             sock_descr = ""
 
-        if sock_descr == "":
-            node_lab = self.node0.bnode.label
-            if node_lab is None or node_lab == '':
-                reroute.bnode.label = self.blink.from_socket.name
+        node_lab = self.node0.bnode.label
+        if node_lab == "":
+            if sock_descr == "":
+                sock_descr = self.blink.from_socket.name
+        elif node_lab != sock_descr:
+            if sock_descr == "":
+                sock_descr = f"{node_lab}.{self.blink.from_socket.name}"
             else:
-                reroute.bnode.label = node_lab
-        else:
-            reroute.bnode.label = sock_descr
+                sock_descr = f"{node_lab}.{sock_descr}"
+        
+        reroute.bnode.label = sock_descr
 
 
         # ----- From source node to reroute
