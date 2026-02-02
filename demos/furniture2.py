@@ -43,6 +43,7 @@ from .. import GeoNodes, G, Mesh, Curve, Cloud, Layout, Panel, gnmath, nd, pi, B
 from .. import Float, Boolean, Integer, Vector, Rotation, Object, Input, Material, Color, Group, String
 from .. import repeat
 
+DEBUG_NODES = True # Add debug output sockets
 USE_GIZMO = True
 
 
@@ -1652,7 +1653,6 @@ def demo():
 
             p = pivot + (rot @ (nd.position - pivot))
 
-            pid = Integer("Comp Id")
             mesh[comp_sel].position = p
 
         # ---------------------------------------------------------------------------
@@ -1705,43 +1705,241 @@ def demo():
         comp_sel.out("Selection")
 
     # ====================================================================================================
-    # Select a box
+    # The 3 Box Input
     # ====================================================================================================
 
-    with GeoNodes("Box Input", is_group=True, prefix=utils):
+    """ Build the 3 box input boxes
 
-        mesh = Mesh()
-        mesh.add_method()
+    The 3 directions are:
+    - front : door for instance
+    - lid   : lid
+    - side  : side door
 
-        comp_ids = [0]*4
-        comps    = [None]*4
-        has_ids  = [False]*4
+    Exemple with front box:
+    - Left is given:
+      . Either by an id : y_min and y_max
+      . Either by a perp id (bot or top) if explicit id is missing : y_min
+    """
+    for direc in range(3):
 
-        names = ("Left", "Right", "Bottom", "Top")
+        # Direction parameters
 
-        with Panel("Bounding Box"):
-            x0 = 1000
-            x1 = 0
-            for i, name in enumerate(names):
-                comp_ids[i] = Integer(0, name)
-                comps[i]    = mesh.extract(utils.selector(comp_ids[i]))
-                has_ids[i]  = comp_ids[i].not_equal(0)
+        if direc == 0:
+            tree_name = "Front Box Input"
+            names  = ("Left", "Right", "Bottom", "Top")
+            A_index, B_index = 1, 2
+            depth_index = 0
 
-                x0 = Float.Switch(has_ids[i], x0, gnmath.min(x0, comps[i].min.x))
-                x1 = Float.Switch(has_ids[i], x1, gnmath.max(x1, comps[i].max.x))
+        elif direc == 1:
+            tree_name = "Lid Box Input"
+            names = ("Left", "Right", "Back", "Front")
+            A_index, B_index = 1, 0
+            depth_index = 2
 
-        comps[0].max.y.out("Left")
-        comps[1].min.y.out("Right")
-        comps[2].max.z.out("Bottom")
-        comps[3].min.z.out("Top")
-        x0.out("x0")
-        x1.out("x1")
+        else:
+            tree_name = "Side Box Input"
+            names = ("Back", "Front", "Bottom", "Top")
+            A_index, B_index = 0, 2
+            depth_index = 1
 
-        for has_id, name in zip(has_ids, names):
-            has_id.out(f"Has {name}")
+        with GeoNodes(tree_name, is_group=False, prefix=utils):
 
-        for comp_id, name in zip(comp_ids, names):
-            comp_id.out(f"{name} Id")
+            mesh = Mesh()
+            mesh.add_method()
+
+            # Values defined by a component
+            # DIM IS 4 : A_index min, max and B_index min, max
+            # e.g. with front box:
+            # - left   :
+            #   . values0 = y min
+            #   . values1 = y max 
+            #
+            # has_ids indicates values which are not defined
+
+            has_ids = [0]*4
+            values0 = [0]*4 # Comp min, e.g. with left: y min
+            values1 = [0]*4 # Comp max, e.g. with left: y max
+            factors = [0]*4 # Factor between values0 and values1
+            offsets = [0]*4
+
+            # Lateral values are defined by perp components, 
+            # DIMS IS 3 : the 3 axis
+
+            lat0_mins = [TR_MAX]*3
+            lat0_maxs = [TR_MIN]*3
+            lat1_mins = [TR_MAX]*3
+            lat1_maxs = [TR_MIN]*3
+
+            # ----------------------------------------------------------------------------------------------------
+            # Loop on the A, B dimensions
+            # ----------------------------------------------------------------------------------------------------
+
+            for index, name in enumerate(names):
+
+                AB_index = (A_index, B_index)[index // 2]
+
+                with Panel(names[index], create_layout=True):
+
+                    comp_id = Integer(0, "Id", 0)
+                    factors[index] = Float.Factor(0.5, f"Overlap", 0, 1)
+                    offsets[index] = Float.Distance(0.0, "Offset", TR_MIN, TR_MAX)
+
+                    with Layout("Dimensions"):
+
+                        has_ids[index] = comp_id.not_equal(0)._ul(f"{name} id exists")
+                        comp = mesh.extract(utils.selector(comp_id))
+
+                        xyz0 = comp.min.xyz
+                        xyz1 = comp.max.xyz
+
+                        values0[index] = xyz0[AB_index]
+                        values1[index] = xyz1[AB_index]
+
+                        if index == 0:
+                            one_id = has_ids[index]
+                        else:
+                            one_id |= has_ids[index]
+                        one_id._lc("One Id exists")
+
+                    with Layout("Lateral min max"):
+                        for i in range(3):
+
+                            # Lateral only
+                            if i == AB_index:
+                                continue
+
+                            axis = 'XYZ'[i]
+                            # Note : use constructor because listes are initialized with float not Float
+                            lat0_mins[i] = Float.Switch(has_ids[index], lat0_mins[i], gnmath.min(lat0_mins[i], xyz0[i]))._ul(f"Lat 0 Min {axis}")
+                            lat0_maxs[i] = Float.Switch(has_ids[index], lat0_maxs[i], gnmath.max(lat0_maxs[i], xyz0[i]))._ul(f"Lat 0 Max {axis}")
+                            lat1_mins[i] = Float.Switch(has_ids[index], lat1_mins[i], gnmath.min(lat1_mins[i], xyz1[i]))._ul(f"Lat 1 Min {axis}")
+                            lat1_maxs[i] = Float.Switch(has_ids[index], lat1_maxs[i], gnmath.max(lat1_maxs[i], xyz1[i]))._ul(f"Lat 1 Max {axis}")
+
+            # ----------------------------------------------------------------------------------------------------
+            # Lateral values to 0 when missing components
+            # ----------------------------------------------------------------------------------------------------
+
+            with Layout(f"{names[0]} / {names[1]} Lateral is Null if {names[2]} or {names[3]} is defined"):                    
+                ok_id = has_ids[2] | has_ids[3]
+                lat0_mins[A_index].switch_false(ok_id)._ul(f"Lat 0 Min {names[0]}")
+                lat0_maxs[A_index].switch_false(ok_id)._ul(f"Lat 0 Max {names[0]}")
+                lat1_mins[A_index].switch_false(ok_id)._ul(f"Lat 0 Min {names[1]}")
+                lat1_maxs[A_index].switch_false(ok_id)._ul(f"Lat 0 Max {names[1]}")
+
+            with Layout(f"{names[2]} / {names[3]} Lateral is Null if {names[0]} or {names[1]} is defined"):
+                ok_id = has_ids[0] | has_ids[1]
+                lat0_mins[B_index].switch_false(ok_id)._ul(f"Lat 1 Min {names[2]}")
+                lat0_maxs[B_index].switch_false(ok_id)._ul(f"Lat 1 Max {names[2]}")
+                lat1_mins[B_index].switch_false(ok_id)._ul(f"Lat 1 Min {names[3]}")
+                lat1_maxs[B_index].switch_false(ok_id)._ul(f"Lat 1 Max {names[3]}")
+
+            with Layout("Depth lateral is nul if no componnent is defined"):
+                lat0_mins[depth_index].switch_false(one_id)._ul(f"Lat 0 Min Depth")
+                lat0_maxs[depth_index].switch_false(one_id)._ul(f"Lat 0 Max Depth")
+                lat1_mins[depth_index].switch_false(one_id)._ul(f"Lat 1 Min Depth")
+                lat1_maxs[depth_index].switch_false(one_id)._ul(f"Lat 1 Max Depth")
+
+            # ----------------------------------------------------------------------------------------------------
+            # Replace values by lateral values when no component is defined
+            # ----------------------------------------------------------------------------------------------------
+
+            with Layout("Use Lateral values when no component is defined"):
+                values0[0].switch_false(has_ids[0], lat0_mins[A_index])._lc(f"{names[0]} Min")
+                values1[0].switch_false(has_ids[0], lat0_maxs[A_index])._lc(f"{names[0]} Max")
+
+                values0[1].switch_false(has_ids[1], lat1_mins[A_index])._lc(f"{names[1]} Min")
+                values1[1].switch_false(has_ids[1], lat1_maxs[A_index])._lc(f"{names[1]} Max")
+                
+                values0[2].switch_false(has_ids[2], lat0_mins[B_index])._lc(f"{names[2]} Min")
+                values1[2].switch_false(has_ids[2], lat0_maxs[B_index])._lc(f"{names[2]} Max")
+
+                values0[3].switch_false(has_ids[3], lat1_mins[B_index])._lc(f"{names[3]} Min")
+                values1[3].switch_false(has_ids[3], lat1_maxs[B_index])._lc(f"{names[3]} Max")
+
+            # ----------------------------------------------------------------------------------------------------
+            # Add offsets
+            # ----------------------------------------------------------------------------------------------------
+
+            with Layout("Add offsets"):
+                for index in range(4):
+                    values0[index] += offsets[index]
+                    values1[index] += offsets[index]
+
+            # ----------------------------------------------------------------------------------------------------
+            # Outer values
+            # ----------------------------------------------------------------------------------------------------
+
+            with Layout("Outer values"):
+                outers = [0]*4
+                for i in range(4):
+                    outers[i] = factors[i].map_range(to_min=values0[i], to_max=values1[i])._lc(f"Outer {names[i]}")
+
+            # ----------------------------------------------------------------------------------------------------
+            # Depth
+            # ----------------------------------------------------------------------------------------------------
+
+            with Panel("Depth", create_layout=True):
+                min_factor = Float.Factor(0.0,   "Min Factor", 0, 1)
+                min_ofs    = Float.Distance(0.0, "Min Offset", TR_MIN, TR_MAX)
+                max_factor = Float.Factor(1.0,   "Max Factor", 0, 1)
+                max_ofs    = Float.Distance(0.0, "Max Offset", TR_MIN, TR_MAX)
+
+                inner_depth_min = (min_ofs + lat0_maxs[depth_index])._ul("Inner Depth Min")
+                inner_depth_max = (max_ofs + lat1_mins[depth_index])._ul("Inner Depth Max")
+                outer_depth_min = (min_ofs + min_factor.map_range(to_min=lat0_mins[depth_index], to_max=lat0_maxs[depth_index]))._ul("Outer Depth Min")
+                outer_depth_max = (max_ofs + max_factor.map_range(to_min=lat1_mins[depth_index], to_max=lat1_maxs[depth_index]))._ul("Outer Depth Max")
+
+            # ----------------------------------------------------------------------------------------------------
+            # Positions
+            # ----------------------------------------------------------------------------------------------------
+
+            with Layout("Resulting Positions"):
+                if direc == 0:
+                    inner_pos0 = Vector((inner_depth_min, values1[0], values0[2]))._lc("Inner min pos")
+                    inner_pos1 = Vector((inner_depth_max, values1[1], values0[3]))._lc("Inner max pos")
+                    outer_pos0 = Vector((outer_depth_min, outers[0], outers[2]))._lc("Outer min pos")
+                    outer_pos1 = Vector((outer_depth_max, outers[1], outers[3]))._lc("Outer max pos")
+
+                elif direc == 1:
+                    inner_pos0 = Vector((values1[2], values0[0], inner_depth_min))._lc("Inner min pos")
+                    inner_pos1 = Vector((values1[3], values0[1], inner_depth_max))._lc("Inner max pos")
+                    outer_pos0 = Vector((outers[2], outers[0], outer_depth_min))._lc("Outer min pos")
+                    outer_pos1 = Vector((outers[3], outers[1], outer_depth_max))._lc("Outer max pos")
+
+                else:
+                    inner_pos0 = Vector((values1[0], inner_depth_min, values0[2]))._lc("Inner min pos")
+                    inner_pos1 = Vector((values1[1], inner_depth_max, values0[3]))._lc("Inner max pos")
+                    outer_pos0 = Vector((outers[0], outer_depth_min, outers[2]))._lc("Outer min pos")
+                    outer_pos1 = Vector((outers[1], outer_depth_max, outers[3]))._lc("Outer max pos")
+
+                inner_size = inner_pos1 - inner_pos0
+                outer_size = outer_pos1 - outer_pos0
+
+
+            with Panel("Inner"):
+                inner_pos0.out("Min")
+                inner_pos1.out("Max")
+                inner_size.out("Size")
+
+            with Panel("Outer"):
+                outer_pos0.out("Min")
+                outer_pos1.out("Max")
+                outer_size.out("Size")
+
+            # ----------------------------------------------------------------------------------------------------
+            # Box for debug
+            # ----------------------------------------------------------------------------------------------------
+
+            if DEBUG_NODES:
+                with Panel("Debug"):
+                    cube = Mesh.Cube(size=inner_size).transform(translation=inner_pos0 + inner_size/2)
+                    cube.faces.material = "Debug"
+                    cube.out("Inner Cube")
+
+                    cube = Mesh.Cube(size=outer_size).transform(translation=outer_pos0 + outer_size/2)
+                    cube.faces.material = "Debug"
+                    cube.out("Outer Cube")
+            
 
     # ====================================================================================================
     # Shelf
@@ -1754,14 +1952,16 @@ def demo():
         model = utils.component_input(mesh).link_inputs()
         count = Integer(1, "Count", 1)
 
-        box = mesh.box_input().link_inputs()
+        with Panel("Bounding Box"):
+            box = mesh.front_box_input().link_inputs(exclude=["Top", "Bottom > Overlap"])
 
         z = Float.Distance(.1, "Height", MIN_DIM, MAX_DIM)
-        setback0 = Float.Distance(0.0,  "Back Setback", 0, TH_MAX)
-        setback1 = Float.Distance(0.02, "Front Setback", 0, TH_MAX)
 
-        pos  = Vector((box.x0 + setback0, box.left, box.bottom + z))
-        dims = Vector((box.x1 - box.x0 - setback0 - setback1, box.right - box.left, model.dimensions.z))
+        #pos  = Vector((box.depth_min, box.outer_left, box.inner_bottom + z))
+        #dims = Vector((box.depth_max - box.depth_min, box.outer_right - box.outer_left, model.dimensions.z))
+
+        pos = box.outer_min + (0, 0, z)
+        dims = Vector((box.outer_size.x, box.outer_size.y, model.dimensions.z))
 
         # Gizmo
         z.linear_gizmo(position = pos + dims/2, direction=(0, 0, 1), color_id='Z', draw_style='ARROW')
@@ -1931,7 +2131,8 @@ def demo():
         mesh = Mesh()
 
         # Box
-        box = mesh.box_input().link_inputs()
+        with Panel("Bounding Box"):
+            box = mesh.front_box_input().link_inputs()
 
         # Component model
         with Panel("Model"):
@@ -1952,7 +2153,7 @@ def demo():
             inside = Boolean(True,  "Inside")
 
             gap  = Float.Distance(0.002, "Gap", 0, TH_MAX)
-            over = Float.Distance(0.007, "Over", 0, TH_MAX)
+            #over = Float.Distance(0.007, "Over", 0, TH_MAX)
 
             left_open  = Float.Angle(0, "Left Open")
             right_open = Float.Angle(0, "Right Open")
@@ -1960,12 +2161,13 @@ def demo():
             top_open   = Float.Angle(0, "Top Open")
 
         with Layout("Dimensions"):
-            height = box.top - box.bottom
-            height = Float.Switch(inside, height + 2*over, height - 2*gap)
-            
-            width = box.right - box.left
-            width = Float.Switch(inside, width + 2*over, width - 2*gap)
+            #height = Float.Switch(inside, box.outer_top - box.outer_bottom, box.inner_top - box.inner_bottom - 2*gap)
+            #width = Float.Switch(inside, box.outer_right - box.outer_left, box.inner_right - box.inner_left - 2*gap)
 
+            box_size = Vector.Switch(inside, box.outer_size, box.inner_size - 2*gap)
+            height = box_size.z._ul("Door Height")
+            width  = box_size.y._ul("Door Width")
+            
             left_width = Float.Switch(hinge_loc.double, width, (width - gap)/2)
         
         # ---------------------------------------------------------------------------
@@ -1974,9 +2176,13 @@ def demo():
 
         with Layout("Left Door"):
         
-            left_pos = Vector.Switch(inside,
-                    (box.x1, box.left - over, box.bottom - over),
-                    (box.x1 - thick, box.left + gap, box.bottom + gap),
+            #left_pos = Vector.Switch(inside,
+            #        (box.depth_max, box.outer_left, box.outer_bottom),
+            #        (box.depth_max - thick, box.inner_left + gap, box.inner_bottom + gap),
+            #        )
+            left_pos = Vector.Switch(inside, 
+                    (box.outer_max.x,         box.outer_min.y,       box.outer_min.z),
+                    (box.outer_max.x - thick, box.inner_min.y + gap, box.inner_min.z + gap),
                     )
             
             dims = (left_width, height, thick)
@@ -2077,7 +2283,8 @@ def demo():
             dupl_tr    = Float.Distance(0, "Gap", TR_MIN, TR_MAX)
 
         # Box
-        box = mesh.box_input().link_inputs()
+        with Panel("Bounding Box"):
+            box = mesh.front_box_input().link_inputs()
 
         # Component models
         with Panel("Front", create_layout=True):
@@ -2087,7 +2294,6 @@ def demo():
             inside = Boolean(True,  "Inside")
 
             gap  = Float.Distance(0.002, "Gap", 0, TH_MAX)
-            over = Float.Distance(0.007, "Over", 0, TH_MAX)
 
             open = Float.Distance(0.0, "Open", 0, TR_MAX)
 
@@ -2109,10 +2315,9 @@ def demo():
             side_nails  = side_fix_index.side_nails
             front_nails = side_fix_index.front_nails
 
-            rear_setback = Float.Distance(0.01, "Rear SetBack", 0, TH_MAX)
-            side_setback = Float.Distance(0.13, "Side SetBack", 0, TH_MAX)
-            bot_setback  = Float.Distance(0.05, "Bottom Setback", 0, TH_MAX)
-            top_setback  = Float.Distance(0.02, "Top Setback", 0, TH_MAX)
+            side_setback = Float.Distance(0.013, "Side SetBack", 0, TH_MAX)
+            bot_setback  = Float.Distance(0.01,  "Bottom Setback", 0, TH_MAX)
+            top_setback  = Float.Distance(0.02,  "Top Setback", 0, TH_MAX)
 
         with Panel("Bottom Panel Options", create_layout=True):
             bot_model =  utils.component_input(mesh).link_inputs()
@@ -2135,18 +2340,26 @@ def demo():
         # ----------------------------------------------------------------------------------------------------
 
         with Layout("Front Dimensions"):
-            front_height = box.top - box.bottom
-            front_height = Float.Switch(inside, front_height + 2*over, front_height - 2*gap)._ul("Front Height")
-            
-            front_width = box.right - box.left
-            front_width = Float.Switch(inside, front_width + 2*over, front_width - 2*gap)._ul("Front Width")
-        
+            #front_height = Float.Switch(inside, box.outer_top - box.outer_bottom, box.inner_top - box.inner_bottom - 2*gap)._ul("Front Height")
+            #front_width  = Float.Switch(inside, box.outer_right - box.outer_left, box.inner_right - box.inner_left - 2*gap)._ul("Front Width")
+
+            front_box_size = Vector.Switch(inside, box.outer_size, box.inner_size - 2*gap)
+            front_height = front_box_size.z._ul("Front Height")
+            front_width  = front_box_size.y._ul("Front Width")
+
         with Layout("Front"):
         
+            #front_pos = Vector.Switch(inside,
+            #        (box.depth_max,               box.outer_left,       box.outer_bottom),
+            #        (box.depth_max - front_thick, box.inner_left + gap, box.inner_bottom + gap),
+            #        )
+            
             front_pos = Vector.Switch(inside,
-                    (box.x1, box.left - over, box.bottom - over),
-                    (box.x1 - front_thick, box.left + gap, box.bottom + gap),
+                    (box.outer_max.x,               box.outer_min.y,       box.outer_min.z),
+                    (box.outer_max.x - front_thick, box.inner_min.y + gap, box.outer_min.z + gap),
                     )
+            
+            
             
             # Drawer orientation
             front_dims = (front_height, front_width, front_thick)
@@ -2168,15 +2381,18 @@ def demo():
         with Layout("Box dimensions and positions"):
 
             with Layout("Box min max"):
-                box_min = [box.x0 + rear_setback, box.left + side_setback, box.bottom + bot_setback]
-                box_max = [front_pos.x, box.right - side_setback, box.top - top_setback]
+                #box_min = [box.depth_min, box.inner_left + side_setback,  box.inner_bottom + bot_setback]
+                #box_max = [front_pos.x,   box.inner_right - side_setback, box.inner_top - top_setback]
+
+                box_min = [box.outer_min.x, box.inner_min.y + side_setback, box.inner_min.z + bot_setback]
+                box_max = [front_pos.x,     box.inner_max.y - side_setback, box.inner_max.z - top_setback]
+
                 for i in range(3):
                     box_min[i]._lc(f"Box Min {'XYZ'[i]}")
                     box_max[i]._lc(f"Box Max {'XYZ'[i]}")
 
                 box_depth  = (box_max[0] - box_min[0])._ul("Box Depth")
                 box_width  = (box_max[1] - box_min[1])._ul("Box Width")
-                #box_height = (box_max[2] - box_min[2])._ul("Box Height")
 
             with Layout("Side z min"):
                 side_z = Float.Switch(underneath, box_min[2], box_min[2] + bot_thick)._lc("Side Z0")
