@@ -39,8 +39,8 @@ furniture.demo()
 import bpy
 
 from .. import ShaderNodes, Shader, snd
-from .. import GeoNodes, G, Mesh, Curve, Cloud, Layout, Panel, gnmath, nd, pi, Break
-from .. import Float, Boolean, Integer, Vector, Rotation, Object, Input, Material, Color, Group, String
+from .. import GeoNodes, G, Mesh, Curve, Cloud, Layout, Panel, gnmath, nd, pi, Break, Tree
+from .. import Float, Boolean, Integer, Vector, Rotation, Object, Input, Material, Color, Group, String, Matrix
 from .. import repeat
 
 DEBUG_NODES = True # Add debug output sockets
@@ -279,6 +279,8 @@ def get_dimension(mesh, name, i_axis, same_value, color=None):
 # ====================================================================================================
 
 def demo():
+
+    Tree._reset_counters()
 
     # ====================================================================================================
     # Shader
@@ -1800,6 +1802,58 @@ def demo():
         comp_sel.out("Selection")
 
     # ====================================================================================================
+    # Cut a Component
+    # ====================================================================================================
+
+    with GeoNodes("Cut Component"):
+
+        mesh     = Mesh()
+        comp_sel = utils.selector(accessories=False).link_inputs()
+        i_axis   = Integer(0, "Axis", 0, 2)
+
+        mesh.add_method(jump=True)
+        
+        pos = Vector.Translation(None, "Position")
+        rot = Rotation(None, "Direction")
+
+        with Layout("Cutting Cube"):
+            #comp = mesh.extract(comp_sel)
+            node = mesh.points.attribute_statistic(nd.position).node
+            x, y, z = (node.max - node.min).xyz
+            
+            #x, y, z = comp.size.xyz
+            s = gnmath.max(gnmath.max(x, y), z)*4
+            size = Vector(s)
+            
+            cube = Mesh.Cube(size=size)
+            cube.transform(translation=(0, 0, s/2))
+            cube.transform(rotation=rot)
+            cube.transform(translation=pos)
+
+        with Layout("Cut"):
+            to_cut = Mesh(mesh.points[comp_sel].separate())
+            remain = to_cut.inverted
+
+            to_cut = to_cut.intersect(cube, solver="Exact")
+
+            mesh = remain + to_cut
+
+
+        mesh.out("Mesh")
+        comp_sel.out("Selection")                
+        if DEBUG_NODES:
+            cube.out("Cube")
+
+        # ---------------------------------------------------------------------------
+        # Gizmo
+        # ---------------------------------------------------------------------------
+
+        matrix = Matrix.CombineTransform(translation=pos, rotation=rot)
+        matrix.transform_gizmo(position=pos, rotation=rot)
+    
+    
+
+    # ====================================================================================================
     # Translate a Plank
     # ====================================================================================================
 
@@ -1837,6 +1891,7 @@ def demo():
 
         mesh.out()
         comp_sel.out("Selection")
+
 
     # ====================================================================================================
     # The 3 Box Input
@@ -2954,10 +3009,15 @@ def demo():
             right_open  = pi/5,   
         )._lc("Door")
             
-
-            
         fur.out()
-                
+
+    # ====================================================================================================
+    # Demo done
+    # ====================================================================================================
+
+    print("-"*80)
+    print(f"Furniture built : {Tree._total_nodes} nodes, {Tree._total_links} links")
+
 
 # ====================================================================================================
 # Python macros

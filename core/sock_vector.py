@@ -230,12 +230,16 @@ class Vector(generated.Vector):
     # ----- Division
 
     def __truediv__(self, other):
+        if utils.is_value_like(other):
+            return self.scale(1/other)
         return self.divide(other)
 
     def __rtruediv__(self, other):
         return Vector(other).divide(self)
 
     def __itruediv__(self, other):
+        if utils.is_value_like(other):
+            return self._jump(self.scale(1/other))
         return self._jump(self.divide(other))
 
     # ----- Modulo
