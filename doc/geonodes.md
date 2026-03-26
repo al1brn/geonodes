@@ -1,21 +1,20 @@
 # GeoNodes
 
 ``` python
-GeoNodes(tree_name: str, clear: bool = True, fake_user: bool = False, is_group: bool = False, prefix: str | None = None)
+GeoNodes(tree_name: str, fake_user: bool = False, is_group: bool = False, prefix: str = '')
 ```
 
 > Geometry Nodes
 
 #### Arguments:
 - **tree_name** (_str_) : Geometry Nodes name
-- **clear** (_bool_ = True) : clear the tree content
 - **fake_user** (_bool_ = False) : set fake_user flag
 - **is_group** (_bool_ = False) : tree is a group
-- **prefix** (_str | None_ = None) : name prefix
+- **prefix** (_str_ = ) : prefix name
 
 ### Inherited
 
-[add_method](group.md#add_method) :black_small_square: [arrange](tree.md#arrange) :black_small_square: [\_btree_repr](tree.md#_btree_repr) :black_small_square: [check_warnings](tree.md#check_warnings) :black_small_square: [clear](tree.md#clear) :black_small_square: [create_input_socket](tree.md#create_input_socket) :black_small_square: [current_tree](tree.md#current_tree) :black_small_square: [\_display_counter](tree.md#_display_counter) :black_small_square: [dump](tree.md#dump) :black_small_square: [\_\_enter__](layout.md#__enter__) :black_small_square: [\_\_exit__](layout.md#__exit__) :black_small_square: [gen_node_headers](tree.md#gen_node_headers) :black_small_square: [\_get_color](tree.md#_get_color) :black_small_square: [get_input_node](tree.md#get_input_node) :black_small_square: [get_modifiers](tree.md#get_modifiers) :black_small_square: [get_output_node](tree.md#get_output_node) :black_small_square: [get_panel](tree.md#get_panel) :black_small_square: [get_signature](bundle.md#get_signature) :black_small_square: [\_has_tree](tree.md#_has_tree) :black_small_square: [input_node](shadernodes.md#input_node) :black_small_square: [is_compositor](tree.md#is_compositor) :black_small_square: [is_geonodes](tree.md#is_geonodes) :black_small_square: [is_shader](tree.md#is_shader) :black_small_square: [link](tree.md#link) :black_small_square: [output_node](shadernodes.md#output_node) :black_small_square: [pop_panel](tree.md#pop_panel) :black_small_square: [push](layout.md#push) :black_small_square: [push_panel](tree.md#push_panel) :black_small_square: [register_node](tree.md#register_node) :black_small_square: [remove_groups](tree.md#remove_groups) :black_small_square: [\_\_repr__](node.md#__repr__) :black_small_square: [\_reset_counters](tree.md#_reset_counters) :black_small_square: [set_input_socket_default](tree.md#set_input_socket_default) :black_small_square: [\_\_str__](core-treea-tree.md#__str__) :black_small_square: [\_str_stats](tree.md#_str_stats) :black_small_square:
+[add_method](group.md#add_method) :black_small_square: [arrange](core-treea-tree.md#arrange) :black_small_square: [\_btree_repr](tree.md#_btree_repr) :black_small_square: [check_warnings](tree.md#check_warnings) :black_small_square: [clear](tree.md#clear) :black_small_square: [create_input_socket](tree.md#create_input_socket) :black_small_square: [current_tree](tree.md#current_tree) :black_small_square: [\_display_counter](tree.md#_display_counter) :black_small_square: [dump](tree.md#dump) :black_small_square: [\_\_enter__](layout.md#__enter__) :black_small_square: [\_\_exit__](layout.md#__exit__) :black_small_square: [gen_node_headers](tree.md#gen_node_headers) :black_small_square: [\_get_color](tree.md#_get_color) :black_small_square: [get_input_node](tree.md#get_input_node) :black_small_square: [get_modifiers](tree.md#get_modifiers) :black_small_square: [get_output_node](tree.md#get_output_node) :black_small_square: [get_panel](tree.md#get_panel) :black_small_square: [get_signature](core-bundle.md#get_signature) :black_small_square: [\_has_tree](tree.md#_has_tree) :black_small_square: [input_node](shadernodes.md#input_node) :black_small_square: [is_compositor](tree.md#is_compositor) :black_small_square: [is_geonodes](tree.md#is_geonodes) :black_small_square: [is_shader](tree.md#is_shader) :black_small_square: [link](tree.md#link) :black_small_square: [output_node](shadernodes.md#output_node) :black_small_square: [pop_panel](tree.md#pop_panel) :black_small_square: [push](layout.md#push) :black_small_square: [push_panel](tree.md#push_panel) :black_small_square: [register_node](tree.md#register_node) :black_small_square: [remove_groups](tree.md#remove_groups) :black_small_square: [\_\_repr__](node.md#__repr__) :black_small_square: [\_reset_counters](tree.md#_reset_counters) :black_small_square: [set_input_socket_default](tree.md#set_input_socket_default) :black_small_square: [\_\_str__](core-treea-tree.md#__str__) :black_small_square: [\_str_stats](tree.md#_str_stats) :black_small_square:
 
 ## Content
 
@@ -46,17 +45,16 @@ GeoNodes(tree_name: str, clear: bool = True, fake_user: bool = False, is_group: 
 > method
 
 ``` python
-__init__(tree_name: str, clear: bool = True, fake_user: bool = False, is_group: bool = False, prefix: str | None = None)
+__init__(tree_name: str, fake_user: bool = False, is_group: bool = False, prefix: str = '')
 ```
 
 > Geometry Nodes
 
 #### Arguments:
 - **tree_name** (_str_) : Geometry Nodes name
-- **clear** (_bool_ = True) : clear the tree content
 - **fake_user** (_bool_ = False) : set fake_user flag
 - **is_group** (_bool_ = False) : tree is a group
-- **prefix** (_str | None_ = None) : name prefix
+- **prefix** (_str_ = ) : prefix name
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [GeoNodes](geonodes.md#geonodes) :black_small_square: [Content](geonodes.md#content) :black_small_square: [Methods](geonodes.md#methods)</sub>
 
@@ -66,14 +64,13 @@ __init__(tree_name: str, clear: bool = True, fake_user: bool = False, is_group: 
 > classmethod
 
 ``` python
-Tool(tree_name, clear=True, fake_user=False, object_mode=True, edit_mode=False, sculpt_mode=False, mesh=True, curve=False, cloud=False, wait_for_click=False)
+Tool(tree_name, fake_user: bool = False, object_mode: bool = True, edit_mode: bool = False, sculpt_mode: bool = False, mesh: bool = True, curve: bool = False, cloud: bool = False, wait_for_click: bool = False)
 ```
 
 > Tool Geometry Nodes
 
 #### Arguments:
 - **tree_name** (_str_) : Geometry Nodes namde
-- **clear** (_bool_ = True) : clear the tree content
 - **fake_user** (_bool_ = False) : set fake_user flag
 - **object_mode** (_bool_ = True) : tool available in object mode
 - **edit_mode** (_bool_ = False) : tool available in edit mode

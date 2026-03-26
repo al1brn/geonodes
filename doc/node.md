@@ -49,13 +49,15 @@ _ _interface_in_out (dict['INPUT', 'OUTPUT']) : in_out argument to access the Tr
 
 ## Content
 
+- **A** : [as_tuple](node.md#as_tuple)
 - **C** : [create_from_socket](node.md#create_from_socket) :black_small_square: [create_socket](node.md#create_socket)
+- **D** : [data_type_from_value](node.md#data_type_from_value)
 - **G** : [get_signature](node.md#get_signature) :black_small_square: [get_socket](node.md#get_socket) :black_small_square: [get_socket_default_name](node.md#get_socket_default_name) :black_small_square: [get_sockets](node.md#get_sockets)
 - **I** : [\_\_init__](node.md#__init__)
 - **L** : [\_lc](node.md#_lc) :black_small_square: [link_inputs](node.md#link_inputs) :black_small_square: [link_outputs](node.md#link_outputs)
 - **M** : [method_call](node.md#method_call)
 - **O** : [\_out](node.md#_out) :black_small_square: [out](node.md#out)
-- **S** : [set_input_socket](node.md#set_input_socket) :black_small_square: [set_input_socket_value](node.md#set_input_socket_value) :black_small_square: [set_signature](node.md#set_signature) :black_small_square: [socket_by_index](node.md#socket_by_index) :black_small_square: [socket_by_name](node.md#socket_by_name) :black_small_square: [\_socket_created](node.md#_socket_created)
+- **S** : [set_input_socket](node.md#set_input_socket) :black_small_square: [set_input_socket_value](node.md#set_input_socket_value) :black_small_square: [set_parameter](node.md#set_parameter) :black_small_square: [set_signature](node.md#set_signature) :black_small_square: [socket_by_index](node.md#socket_by_index) :black_small_square: [socket_by_name](node.md#socket_by_name) :black_small_square: [\_socket_created](node.md#_socket_created)
 
 ## Properties
 
@@ -73,6 +75,34 @@ Returns the first enabled output socket.
 ## Methods
 
 
+
+----------
+### as_tuple()
+
+> method
+
+``` python
+as_tuple()
+```
+
+Returns the output sockets as a tuple
+
+Used in nodes such a separate_xyz to get the 3 components in a tuple
+
+``` python
+v = Vector()
+
+# Split without node label
+x, y, z = v.xyz
+
+# Split with label
+x, y, z = v.separate_xyz()._lc("Size").as_tuple()
+```
+
+#### Returns:
+- **tuple** : tuple of enabled sockets
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Node](node.md#node) :black_small_square: [Content](node.md#content) :black_small_square: [Methods](node.md#methods)</sub>
 
 ----------
 ### create_from_socket()
@@ -131,6 +161,29 @@ Create a new socket.
 
 #### Returns:
 - **Socket** (_output_) : the created socket
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Node](node.md#node) :black_small_square: [Content](node.md#content) :black_small_square: [Methods](node.md#methods)</sub>
+
+----------
+### data_type_from_value()
+
+> method
+
+``` python
+data_type_from_value(value, param_name: str = 'data_type', on_error: str = 'DEFAULT')
+```
+
+Get the data_type from the value to plug on socket
+
+#### Arguments:
+- **value** : the value to set on the socket
+- **param_name** (_str_ = data_type) : param name
+- **on_error** (_str_ = DEFAULT) : what to do if not found
+
+
+
+#### Returns:
+- **data_type** : a valid data type
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Node](node.md#node) :black_small_square: [Content](node.md#content) :black_small_square: [Methods](node.md#methods)</sub>
 
@@ -456,6 +509,34 @@ Set a value to an input socket
 
 #### Returns:
 - **socket** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Node](node.md#node) :black_small_square: [Content](node.md#content) :black_small_square: [Methods](node.md#methods)</sub>
+
+----------
+### set_parameter()
+
+> method
+
+``` python
+set_parameter(name: str, value, halt: bool = True)
+```
+
+Set a node parameter
+
+Arguments
+- name (str) : parameter name
+- value (any) : parameter value
+- halt (bool = True) : raise an error if name is not a parameter
+
+#### Arguments:
+- **name** (_str_)
+- **value**
+- **halt** (_bool_ = True)
+
+
+
+#### Returns:
+- **str** : parameter name if properly set, None otherwise
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Node](node.md#node) :black_small_square: [Content](node.md#content) :black_small_square: [Methods](node.md#methods)</sub>
 

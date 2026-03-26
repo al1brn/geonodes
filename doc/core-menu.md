@@ -1,0 +1,224 @@
+# Menu
+
+``` python
+Menu(socket=None, name: str = None, tip: str = '', panel: str = '', user_label: str = None, **props)
+```
+
+Menu Socket.
+
+There are two main ways to create a Menu:
+- In a single instruction using the constructor : `geo = Geometry.MenuSwitch(...)`
+- Item per item using the `with` context : `with Geometry.MenuSwitch() as geo:`
+
+One can prefer the second method when the items need a lot of instructions to be built.
+Each context management creates a Layout.
+
+``` python
+# First way
+item1 = Mesh.Cube()
+item2 = Mesh.UVSphere()
+item2 = Mesh.Cone()
+geo = Geometry.MenuSwitch({'Cube': item1, 'Sphere': item2, 'Cone': item3})
+
+# Second way
+with Geometry.MenuSwitch() as geo:
+    Mesh.Cube().out("Cube")
+    Mesh.UVSphere().out("Sphere")
+    Mesh.Cone().out("Cone")
+
+# Or, to make the code clearer
+# Cube construction
+with Geometry.MenuSwitch() as geo:
+    Mesh.Cube().out("Cube")
+
+# Sphere construction
+with geo:
+    Mesh.UVSphere().out("Sphere")
+
+# Cone construction
+with geo:
+    Mesh.Cone().out("Cone")
+
+# Tree output socket
+
+geo.out("Selected Geometry")
+```
+
+In general, the selection socket is linked to the group input. Use the `Input` virtual socket
+to connect the Menu selector.
+
+
+``` python
+from geonodes import GeoNodes, Geometry, Mesh, Menu, Input, Curve
+
+with GeoNodes("Menu Demo") as tree:
+    
+    # ----------------------------------------------------------------------------------------------------
+    # First Menu
+    # ----------------------------------------------------------------------------------------------------
+    
+    simple = Geometry().menu_switch("Input", {
+        "Cube": Mesh.Cube(),
+        "Ico": Mesh.IcoSphere(),
+        "Cone": Mesh.Cone(), 
+        },
+        menu=Input("Simple Mesh", default="Ico"), 
+        )
+
+    # ----------------------------------------------------------------------------------------------------
+    # Second Menu
+    # ----------------------------------------------------------------------------------------------------
+        
+    profile = Curve.Circle(radius=.1)
+        
+    with Geometry.MenuSwitch() as from_curve:
+        simple.out("Simple Mesh")
+        
+    with from_curve:
+        Curve.Spiral().to_mesh(profile_curve=profile).out("Spiral")
+        
+    with from_curve:
+        Curve.Circle().to_mesh(profile_curve=profile).out("Circle")
+        
+    from_curve.node.menu = Input("From Curve", default="Simple Mesh")
+    
+    # ----------------------------------------------------------------------------------------------------
+    # Index Switch
+    # ----------------------------------------------------------------------------------------------------
+    
+    curve = Curve.IndexSwitch(index=Input("Curve Index"))
+    with curve:
+        Curve.Spiral().out()
+        
+    with curve:
+        Curve.Circle().out()
+        
+    with curve:
+        Curve.Quadrilateral().out()
+        
+    # ----------------------------------------------------------------------------------------------------
+    # Switch
+    # ----------------------------------------------------------------------------------------------------
+    
+    curve.switch(Input("Mesh/Curve"), from_curve).out()
+```
+
+#### Arguments:
+- **socket** (_NodeSocket_ = None) : the output socket to wrap
+- **name** (_str_ = None) : input name if not None
+- **tip** (_str_ = ) : description
+- **panel** (_str_ = ) : panel name
+- **user_label** (_str_ = None) : user label
+- **props**
+
+### Inherited
+
+[add_method](group.md#add_method) :black_small_square: ['_bsocket' not found]() :black_small_square: [\_cache](nodecache.md#_cache) :black_small_square: ['_cached_nodes' not found]() :black_small_square: [\_cache_reset](nodecache.md#_cache_reset) :black_small_square: [check_in_list](core-socket.md#check_in_list) :black_small_square: [Constant](core-socket.md#constant) :black_small_square: [default_value](core-socket.md#default_value) :black_small_square: [\_domain_to_geometry](domain.md#_domain_to_geometry) :black_small_square: [Empty](core-socket.md#empty) :black_small_square: [\_\_enter__](layout.md#__enter__) :black_small_square: [\_\_exit__](layout.md#__exit__) :black_small_square: [\_\_getattr__](g.md#__getattr__) :black_small_square: [\_get_bsocket_from_input](core-socket.md#_get_bsocket_from_input) :black_small_square: [IndexSwitch](core-socket.md#indexswitch) :black_small_square: [index_switch](core-socket.md#index_switch) :black_small_square: [\_\_init__](colorramp.md#__init__) :black_small_square: [Input](input.md#input) :black_small_square: [\_interface_socket](core-socket.md#_interface_socket) :black_small_square: [\_is_empty](core-socket.md#_is_empty) :black_small_square: [is_grid](core-socket.md#is_grid) :black_small_square: [\_jump](domain.md#_jump) :black_small_square: ['_layout' not found]() :black_small_square: [\_lc](node.md#_lc) :black_small_square: [\_lcop](core-socket.md#_lcop) :black_small_square: [link_inputs](node.md#link_inputs) :black_small_square: [menu](core-gener-menu---menu.md#menu) :black_small_square: [MenuSwitch](core-socket.md#menuswitch) :black_small_square: [\_name](core-socket.md#_name) :black_small_square: [Named](core-gener-boole-boolean.md#named) :black_small_square: [NewInput](core-socket.md#newinput) :black_small_square: [node](core-socket.md#node) :black_small_square: [node_color](core-socket.md#node_color) :black_small_square: [node_label](core-socket.md#node_label) :black_small_square: [out](core-color.md#out) :black_small_square: [\_panel_name](core-socket.md#_panel_name) :black_small_square: [pin_gizmo](node.md#pin_gizmo) :black_small_square: [\_pop](core-closure.md#_pop) :black_small_square: [\_push](core-closure.md#_push) :black_small_square: [repeat](core-socket.md#repeat) :black_small_square: [\_reset](core-cloud.md#_reset) :black_small_square: [simulation](core-socket.md#simulation) :black_small_square: [\_socket_type](core-socket.md#_socket_type) :black_small_square: [\_\_str__](domain.md#__str__) :black_small_square: [Switch](core-socket.md#switch) :black_small_square: [switch](core-socket.md#switch) :black_small_square: [switch_false](core-socket.md#switch_false) :black_small_square: [\_test_socket_to_data_type](core-socket.md#_test_socket_to_data_type) :black_small_square: ['_tree' not found]() :black_small_square: [\_ul](core-socket.md#_ul) :black_small_square: ['_use_layout' not found]() :black_small_square: [user_label](core-socket.md#user_label) :black_small_square:
+
+## Content
+
+- [\_create_input_socket](core-menu.md#_create_input_socket)
+- [enable_output](core-menu.md#enable_output)
+- [menu_switch](core-menu.md#menu_switch)
+
+## Methods
+
+
+
+----------
+### \_create_input_socket()
+
+> classmethod
+
+``` python
+_create_input_socket(value: 'object' = None, name: 'str' = 'Menu', tip: 'str' = '', panel: 'str' = '', optional_label: 'bool' = False, hide_value: 'bool' = False, hide_in_modifier: 'bool' = False, expanded: 'bool' = False, shape: "Literal['AUTO', 'SINGLE']" = 'AUTO')
+```
+
+> Menu Input
+
+New [Menu](core-gener-menu-menu.md#menu) input with subtype 'NONE'.
+
+Aguments
+--------
+- value  (object = None) : Default value
+- name  (str = 'Menu') : Input socket name
+- tip  (str = '') : Property description
+- panel (str = "") : Panel name
+- optional_label  (bool = False) : Property optional_label
+- hide_value  (bool = False) : Property hide_value
+- hide_in_modifier  (bool = False) : Property hide_in_modifier
+- expanded  (bool = False) : Property menu_expanded
+- shape  (str = 'AUTO') : Property structure_type in ('AUTO', 'SINGLE')
+
+#### Arguments:
+- **value** (_object_ = None)
+- **name** (_str_ = Menu)
+- **tip** (_str_ = )
+- **panel** (_str_ = )
+- **optional_label** (_bool_ = False)
+- **hide_value** (_bool_ = False)
+- **hide_in_modifier** (_bool_ = False)
+- **expanded** (_bool_ = False)
+- **shape** (_Literal['AUTO', 'SINGLE']_ = AUTO)
+
+
+
+#### Returns:
+- **Menu** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Menu](core-menu.md#menu) :black_small_square: [Content](core-menu.md#content) :black_small_square: [Methods](core-menu.md#methods)</sub>
+
+----------
+### enable_output()
+
+> method
+
+``` python
+enable_output(enable: 'Boolean' = None)
+```
+
+> Node [Enable Output](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../interface/controls/nodes/types/output/enable_output.html)
+
+#### Information:
+- **Socket** : self
+- **Parameter** : 'MENU'
+
+
+
+#### Arguments:
+- **enable** (_Boolean_ = None) : socket 'Enable' (id: Enable)
+
+
+
+#### Returns:
+- **Menu** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Menu](core-menu.md#menu) :black_small_square: [Content](core-menu.md#content) :black_small_square: [Methods](core-menu.md#methods)</sub>
+
+----------
+### menu_switch()
+
+> method
+
+``` python
+menu_switch(named_sockets: 'dict' = {}, **sockets)
+```
+
+> Node [Menu Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/menu_switch.html)
+
+#### Information:
+- **Socket** : self
+- **Parameter** : depending on 'a' type
+
+
+
+#### Arguments:
+- **named_sockets** (_dict_ = {})
+- **sockets**
+
+
+
+#### Returns:
+- **Geometry** (_Boolean_)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Menu](core-menu.md#menu) :black_small_square: [Content](core-menu.md#content) :black_small_square: [Methods](core-menu.md#methods)</sub>

@@ -1,7 +1,7 @@
 # G
 
 ``` python
-G(prefix: str = '', verbose: bool = False)
+G(prefix: str = '')
 ```
 
 Group functional call
@@ -56,7 +56,6 @@ with GeoNodes("Calling Groups"):
 
 #### Arguments:
 - **prefix** (_str_ = ) : prefix to use when searching a tree
-- **verbose** (_bool_ = False)
 
 ## Content
 
@@ -119,7 +118,7 @@ Raise an error when function call fails.
 > method
 
 ``` python
-__init__(prefix: str = '', verbose: bool = False)
+__init__(prefix: str = '')
 ```
 
 Group functional call
@@ -174,6 +173,5 @@ with GeoNodes("Calling Groups"):
 
 #### Arguments:
 - **prefix** (_str_ = ) : prefix to use when searching a tree
-- **verbose** (_bool_ = False)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [G](g.md#g) :black_small_square: [Content](g.md#content) :black_small_square: [Methods](g.md#methods)</sub>

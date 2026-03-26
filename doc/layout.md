@@ -1,7 +1,7 @@
 # Layout
 
 ``` python
-Layout(title: str = '', color: str = None, node=None)
+Layout(title: str = '', color: str = 'RANDOM', node=None)
 ```
 
 Node Frame
@@ -27,7 +27,7 @@ with GeoNodes("Layout Demo"):
 
 #### Arguments:
 - **title** (_str_ = ) : Layout title
-- **color** (_str_ = None) : Layout color (randomly generated if None)
+- **color** (_str_ = RANDOM) : Layout color (randomly generated if None)
 - **node** (_Node_ = None) : the layout is inserted as direct parent of the node
 
 ## Content
@@ -44,7 +44,7 @@ with GeoNodes("Layout Demo"):
 > method
 
 ``` python
-__init__(title: str = '', color: str = None, node=None)
+__init__(title: str = '', color: str = 'RANDOM', node=None)
 ```
 
 Node Frame
@@ -70,7 +70,7 @@ with GeoNodes("Layout Demo"):
 
 #### Arguments:
 - **title** (_str_ = ) : Layout title
-- **color** (_str_ = None) : Layout color (randomly generated if None)
+- **color** (_str_ = RANDOM) : Layout color (randomly generated if None)
 - **node** (_Node_ = None) : the layout is inserted as direct parent of the node
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Layout](layout.md#layout) :black_small_square: [Content](layout.md#content) :black_small_square: [Methods](layout.md#methods)</sub>
