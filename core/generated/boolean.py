@@ -1,4 +1,4 @@
-# Generated 2026-01-21 11:40:29
+# Generated 2026-03-26 08:37:01
 
 from __future__ import annotations
 from .. sockettype import SocketType
@@ -15,7 +15,7 @@ if TYPE_CHECKING:
     class Cloud: ...
     class Instances: ...
     class Volume: ...
-    class GrasePencil: ...
+    class GreasePencil: ...
     class Boolean: ...
     class Integer: ...
     class Float: ...
@@ -259,8 +259,7 @@ class Boolean(Socket):
         node = Node('Named Attribute', {'Name': name}, data_type='BOOLEAN')
         return cls(node._out)
 
-    @classmethod
-    @property
+    @utils.classproperty
     def is_viewport(cls):
         """ > Node <&Node Is Viewport>
 
@@ -275,7 +274,9 @@ class Boolean(Socket):
                     seam: Boolean = None,
                     margin: Float = None,
                     fill_holes: Boolean = None,
-                    method: Literal['Angle Based', 'Conformal'] = None):
+                    method: Literal['Angle Based', 'Conformal', 'Minimum Stretch'] = None,
+                    iterations: Integer = None,
+                    no_flip: Boolean = None):
         """ > Node <&Node UV Unwrap>
 
         Information
@@ -287,13 +288,15 @@ class Boolean(Socket):
         - seam (Boolean) : socket 'Seam' (id: Seam)
         - margin (Float) : socket 'Margin' (id: Margin)
         - fill_holes (Boolean) : socket 'Fill Holes' (id: Fill Holes)
-        - method (menu='Angle Based') : ('Angle Based', 'Conformal')
+        - method (menu='Angle Based') : ('Angle Based', 'Conformal', 'Minimum Stretch')
+        - iterations (Integer) : socket 'Iterations' (id: Iterations)
+        - no_flip (Boolean) : socket 'No Flip' (id: No Flip)
 
         Returns
         -------
         - Vector
         """
-        node = Node('UV Unwrap', {'Selection': self, 'Seam': seam, 'Margin': margin, 'Fill Holes': fill_holes, 'Method': method})
+        node = Node('UV Unwrap', {'Selection': self, 'Seam': seam, 'Margin': margin, 'Fill Holes': fill_holes, 'Method': method, 'Iterations': iterations, 'No Flip': no_flip})
         return node._out
 
     def error(self, message: String = None):
@@ -456,7 +459,7 @@ class Boolean(Socket):
         node = Node('Voxel Index', )
         return node._out
 
-    def set_grid_background(self, background: Boolean = None):
+    def set_grid_background(self, background: Boolean = None, update_inactive: Boolean = None):
         """ > Node <&Node Set Grid Background>
 
         Information
@@ -467,12 +470,13 @@ class Boolean(Socket):
         Arguments
         ---------
         - background (Boolean) : socket 'Background' (id: Background)
+        - update_inactive (Boolean) : socket 'Update Inactive' (id: Update Inactive)
 
         Returns
         -------
         - Boolean
         """
-        node = Node('Set Grid Background', {'Grid': self, 'Background': background}, data_type='BOOLEAN')
+        node = Node('Set Grid Background', {'Grid': self, 'Background': background, 'Update Inactive': update_inactive}, data_type='BOOLEAN')
         return node._out
 
     def set_grid_transform(self, transform: Matrix = None):
@@ -526,6 +530,105 @@ class Boolean(Socket):
         - Boolean
         """
         node = Node('Enable Output', {'Enable': enable, 'Value': self}, data_type='BOOLEAN')
+        return node._out
+
+    @classmethod
+    def CubeGridTopology(cls,
+                    bounds_min: Vector = None,
+                    bounds_max: Vector = None,
+                    resolution_x: Integer = None,
+                    resolution_y: Integer = None,
+                    resolution_z: Integer = None,
+                    min_x: Integer = None,
+                    min_y: Integer = None,
+                    min_z: Integer = None):
+        """ > Node <&Node Cube Grid Topology>
+
+        Arguments
+        ---------
+        - bounds_min (Vector) : socket 'Bounds Min' (id: Bounds Min)
+        - bounds_max (Vector) : socket 'Bounds Max' (id: Bounds Max)
+        - resolution_x (Integer) : socket 'Resolution X' (id: Resolution X)
+        - resolution_y (Integer) : socket 'Resolution Y' (id: Resolution Y)
+        - resolution_z (Integer) : socket 'Resolution Z' (id: Resolution Z)
+        - min_x (Integer) : socket 'Min X' (id: Min X)
+        - min_y (Integer) : socket 'Min Y' (id: Min Y)
+        - min_z (Integer) : socket 'Min Z' (id: Min Z)
+
+        Returns
+        -------
+        - Boolean
+        """
+        node = Node('Cube Grid Topology', {'Bounds Min': bounds_min, 'Bounds Max': bounds_max, 'Resolution X': resolution_x, 'Resolution Y': resolution_y, 'Resolution Z': resolution_z, 'Min X': min_x, 'Min Y': min_y, 'Min Z': min_z})
+        return cls(node._out)
+
+    def clip_grid(self,
+                    min_x: Integer = None,
+                    min_y: Integer = None,
+                    min_z: Integer = None,
+                    max_x: Integer = None,
+                    max_y: Integer = None,
+                    max_z: Integer = None):
+        """ > Node <&Node Clip Grid>
+
+        Information
+        -----------
+        - Socket 'Grid' : self
+        - Parameter 'data_type' : 'BOOLEAN'
+
+        Arguments
+        ---------
+        - min_x (Integer) : socket 'Min X' (id: Min X)
+        - min_y (Integer) : socket 'Min Y' (id: Min Y)
+        - min_z (Integer) : socket 'Min Z' (id: Min Z)
+        - max_x (Integer) : socket 'Max X' (id: Max X)
+        - max_y (Integer) : socket 'Max Y' (id: Max Y)
+        - max_z (Integer) : socket 'Max Z' (id: Max Z)
+
+        Returns
+        -------
+        - Boolean
+        """
+        node = Node('Clip Grid', {'Grid': self, 'Min X': min_x, 'Min Y': min_y, 'Min Z': min_z, 'Max X': max_x, 'Max Y': max_y, 'Max Z': max_z}, data_type='BOOLEAN')
+        return node._out
+
+    def grid_dilate_erode(self,
+                    connectivity: Literal['Face', 'Edge', 'Vertex'] = None,
+                    tiles: Literal['Ignore', 'Expand', 'Preserve'] = None,
+                    steps: Integer = None):
+        """ > Node <&Node Grid Dilate & Erode>
+
+        Information
+        -----------
+        - Socket 'Grid' : self
+        - Parameter 'data_type' : 'BOOLEAN'
+
+        Arguments
+        ---------
+        - connectivity (menu='Face') : ('Face', 'Edge', 'Vertex')
+        - tiles (menu='Preserve') : ('Ignore', 'Expand', 'Preserve')
+        - steps (Integer) : socket 'Steps' (id: Steps)
+
+        Returns
+        -------
+        - Boolean
+        """
+        node = Node('Grid Dilate & Erode', {'Grid': self, 'Connectivity': connectivity, 'Tiles': tiles, 'Steps': steps}, data_type='BOOLEAN')
+        return node._out
+
+    def grid_to_points(self):
+        """ > Node <&Node Grid to Points>
+
+        Information
+        -----------
+        - Socket 'Grid' : self
+        - Parameter 'data_type' : 'BOOLEAN'
+
+        Returns
+        -------
+        - Cloud [value_ (Boolean), x_ (Integer), y_ (Integer), z_ (Integer), is_tile_ (Boolean), extent_ (Integer)]
+        """
+        node = Node('Grid to Points', {'Grid': self}, data_type='BOOLEAN')
         return node._out
 
     @classmethod

@@ -1,4 +1,4 @@
-# Generated 2026-01-21 11:40:29
+# Generated 2026-03-26 08:37:01
 
 from __future__ import annotations
 from .. sockettype import SocketType
@@ -15,7 +15,7 @@ if TYPE_CHECKING:
     class Cloud: ...
     class Instances: ...
     class Volume: ...
-    class GrasePencil: ...
+    class GreasePencil: ...
     class Boolean: ...
     class Integer: ...
     class Float: ...
@@ -281,7 +281,9 @@ class Vector(Socket):
     def pack_uv_islands(self,
                     margin: Float = None,
                     rotate: Boolean = None,
-                    method: Literal['Bounding Box', 'Convex Hull', 'Exact Shape'] = None):
+                    method: Literal['Bounding Box', 'Convex Hull', 'Exact Shape'] = None,
+                    bottom_left: Vector = None,
+                    top_right: Vector = None):
         """ > Node <&Node Pack UV Islands>
 
         Information
@@ -294,12 +296,14 @@ class Vector(Socket):
         - margin (Float) : socket 'Margin' (id: Margin)
         - rotate (Boolean) : socket 'Rotate' (id: Rotate)
         - method (menu='Bounding Box') : ('Bounding Box', 'Convex Hull', 'Exact Shape')
+        - bottom_left (Vector) : socket 'Bottom Left' (id: Bottom Left)
+        - top_right (Vector) : socket 'Top Right' (id: Top Right)
 
         Returns
         -------
         - Vector
         """
-        node = Node('Pack UV Islands', {'UV': self, 'Selection': self.get_selection(), 'Margin': margin, 'Rotate': rotate, 'Method': method})
+        node = Node('Pack UV Islands', {'UV': self, 'Selection': self.get_selection(), 'Margin': margin, 'Rotate': rotate, 'Method': method, 'Bottom Left': bottom_left, 'Top Right': top_right})
         return node._out
 
     @classmethod
@@ -411,7 +415,6 @@ class Vector(Socket):
         - tuple (Float, Float, Float)
         """
         node = self._cache('Separate XYZ', {'Vector': self})
-
         return (node.x, node.y, node.z)
 
     def separate_xyz(self):
@@ -440,7 +443,6 @@ class Vector(Socket):
         -------
         - x
         """
-        return self.xyz[0]
         node = self._cache('Separate XYZ', {'Vector': self})
         return node.x
 
@@ -456,8 +458,6 @@ class Vector(Socket):
         -------
         - y
         """
-        return self.xyz[1]
-    
         node = self._cache('Separate XYZ', {'Vector': self})
         return node.y
 
@@ -473,8 +473,6 @@ class Vector(Socket):
         -------
         - z
         """
-        return self.xyz[2]
-    
         node = self._cache('Separate XYZ', {'Vector': self})
         return node.z
 
@@ -843,6 +841,21 @@ class Vector(Socket):
         - Vector
         """
         node = Node('Vector Math', {'Vector': self, 'Vector_001': vector}, operation='MAXIMUM')
+        return node._out
+
+    def round(self):
+        """ > Node <&Node Vector Math>
+
+        Information
+        -----------
+        - Socket 'Vector' : self
+        - Parameter 'operation' : 'ROUND'
+
+        Returns
+        -------
+        - Vector
+        """
+        node = Node('Vector Math', {'Vector': self}, operation='ROUND')
         return node._out
 
     def floor(self):
@@ -1291,7 +1304,7 @@ class Vector(Socket):
         node = Node('Voxel Index', )
         return node._out
 
-    def set_grid_background(self, background: Vector = None):
+    def set_grid_background(self, background: Vector = None, update_inactive: Boolean = None):
         """ > Node <&Node Set Grid Background>
 
         Information
@@ -1302,12 +1315,13 @@ class Vector(Socket):
         Arguments
         ---------
         - background (Vector) : socket 'Background' (id: Background)
+        - update_inactive (Boolean) : socket 'Update Inactive' (id: Update Inactive)
 
         Returns
         -------
         - Vector
         """
-        node = Node('Set Grid Background', {'Grid': self, 'Background': background}, data_type='VECTOR')
+        node = Node('Set Grid Background', {'Grid': self, 'Background': background, 'Update Inactive': update_inactive}, data_type='VECTOR')
         return node._out
 
     def set_grid_transform(self, transform: Matrix = None):
@@ -1399,6 +1413,115 @@ class Vector(Socket):
         - Vector [segment_id_ (Float), segment_width_ (Float), segment_rotation_ (Float)]
         """
         node = Node('Radial Tiling', {'Vector': self, 'Sides': sides, 'Roundness': roundness}, normalize=normalize)
+        return node._out
+
+    def clip_grid(self,
+                    min_x: Integer = None,
+                    min_y: Integer = None,
+                    min_z: Integer = None,
+                    max_x: Integer = None,
+                    max_y: Integer = None,
+                    max_z: Integer = None):
+        """ > Node <&Node Clip Grid>
+
+        Information
+        -----------
+        - Socket 'Grid' : self
+        - Parameter 'data_type' : 'VECTOR'
+
+        Arguments
+        ---------
+        - min_x (Integer) : socket 'Min X' (id: Min X)
+        - min_y (Integer) : socket 'Min Y' (id: Min Y)
+        - min_z (Integer) : socket 'Min Z' (id: Min Z)
+        - max_x (Integer) : socket 'Max X' (id: Max X)
+        - max_y (Integer) : socket 'Max Y' (id: Max Y)
+        - max_z (Integer) : socket 'Max Z' (id: Max Z)
+
+        Returns
+        -------
+        - Vector
+        """
+        node = Node('Clip Grid', {'Grid': self, 'Min X': min_x, 'Min Y': min_y, 'Min Z': min_z, 'Max X': max_x, 'Max Y': max_y, 'Max Z': max_z}, data_type='VECTOR')
+        return node._out
+
+    def grid_dilate_erode(self,
+                    connectivity: Literal['Face', 'Edge', 'Vertex'] = None,
+                    tiles: Literal['Ignore', 'Expand', 'Preserve'] = None,
+                    steps: Integer = None):
+        """ > Node <&Node Grid Dilate & Erode>
+
+        Information
+        -----------
+        - Socket 'Grid' : self
+        - Parameter 'data_type' : 'VECTOR'
+
+        Arguments
+        ---------
+        - connectivity (menu='Face') : ('Face', 'Edge', 'Vertex')
+        - tiles (menu='Preserve') : ('Ignore', 'Expand', 'Preserve')
+        - steps (Integer) : socket 'Steps' (id: Steps)
+
+        Returns
+        -------
+        - Vector
+        """
+        node = Node('Grid Dilate & Erode', {'Grid': self, 'Connectivity': connectivity, 'Tiles': tiles, 'Steps': steps}, data_type='VECTOR')
+        return node._out
+
+    def grid_mean(self, width: Integer = None, iterations: Integer = None):
+        """ > Node <&Node Grid Mean>
+
+        Information
+        -----------
+        - Socket 'Grid' : self
+        - Parameter 'data_type' : 'VECTOR'
+
+        Arguments
+        ---------
+        - width (Integer) : socket 'Width' (id: Width)
+        - iterations (Integer) : socket 'Iterations' (id: Iterations)
+
+        Returns
+        -------
+        - Vector
+        """
+        node = Node('Grid Mean', {'Grid': self, 'Width': width, 'Iterations': iterations}, data_type='VECTOR')
+        return node._out
+
+    def grid_median(self, width: Integer = None, iterations: Integer = None):
+        """ > Node <&Node Grid Median>
+
+        Information
+        -----------
+        - Socket 'Grid' : self
+        - Parameter 'data_type' : 'VECTOR'
+
+        Arguments
+        ---------
+        - width (Integer) : socket 'Width' (id: Width)
+        - iterations (Integer) : socket 'Iterations' (id: Iterations)
+
+        Returns
+        -------
+        - Vector
+        """
+        node = Node('Grid Median', {'Grid': self, 'Width': width, 'Iterations': iterations}, data_type='VECTOR')
+        return node._out
+
+    def grid_to_points(self):
+        """ > Node <&Node Grid to Points>
+
+        Information
+        -----------
+        - Socket 'Grid' : self
+        - Parameter 'data_type' : 'VECTOR'
+
+        Returns
+        -------
+        - Cloud [value_ (Vector), x_ (Integer), y_ (Integer), z_ (Integer), is_tile_ (Boolean), extent_ (Integer)]
+        """
+        node = Node('Grid to Points', {'Grid': self}, data_type='VECTOR')
         return node._out
 
     def mapping(self,
@@ -1626,6 +1749,26 @@ class Vector(Socket):
         utils.check_enum_arg('Vector Transform', 'convert_to', convert_to, 'vector_transform', ('WORLD', 'OBJECT', 'CAMERA'))
         utils.check_enum_arg('Vector Transform', 'vector_type', vector_type, 'vector_transform', ('POINT', 'VECTOR', 'NORMAL'))
         node = Node('Vector Transform', {'Vector': self}, convert_from=convert_from, convert_to=convert_to, vector_type=vector_type)
+        return node._out
+
+    def raycast(self, direction: Vector = None, length: Float = None, only_local = False):
+        """ > Node <&ShaderNode Raycast>
+
+        Information
+        -----------
+        - Socket 'Position' : self
+
+        Arguments
+        ---------
+        - direction (Vector) : socket 'Direction' (id: Direction)
+        - length (Float) : socket 'Length' (id: Length)
+        - only_local (bool): parameter 'only_local'
+
+        Returns
+        -------
+        - Float [self_hit_ (Float), hit_distance_ (Float), hit_position_ (Vector), hit_normal_ (Vector)]
+        """
+        node = Node('Raycast', {'Position': self, 'Direction': direction, 'Length': length}, only_local=only_local)
         return node._out
 
     @classmethod

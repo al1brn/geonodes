@@ -1,4 +1,4 @@
-# Generated 2026-01-21 11:40:29
+# Generated 2026-03-26 08:37:01
 
 from __future__ import annotations
 from .. sockettype import SocketType
@@ -15,7 +15,7 @@ if TYPE_CHECKING:
     class Cloud: ...
     class Instances: ...
     class Volume: ...
-    class GrasePencil: ...
+    class GreasePencil: ...
     class Boolean: ...
     class Integer: ...
     class Float: ...
@@ -550,8 +550,7 @@ class Face:
         node = Node('Evaluate on Domain', {'Value': value}, data_type=data_type, domain='FACE')
         return node._out
 
-    @classmethod
-    @property
+    @utils.classproperty
     def area(cls):
         """ > Node <&Node Face Area>
 
@@ -577,8 +576,7 @@ class Face:
         node = Node('Is Face Planar', {'Threshold': threshold})
         return node._out
 
-    @classmethod
-    @property
+    @utils.classproperty
     def neighbors(cls):
         """ > Node <&Node Face Neighbors>
 
@@ -589,8 +587,7 @@ class Face:
         node = Node('Face Neighbors', )
         return node._out
 
-    @classmethod
-    @property
+    @utils.classproperty
     def neighbors_vertex_count(cls):
         """ > Node <&Node Face Neighbors>
 
@@ -601,8 +598,7 @@ class Face:
         node = Node('Face Neighbors', )
         return node.vertex_count
 
-    @classmethod
-    @property
+    @utils.classproperty
     def neighbors_face_count(cls):
         """ > Node <&Node Face Neighbors>
 

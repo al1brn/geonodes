@@ -20,7 +20,7 @@ from .node_dims import NODE_DIMS
 # These are simply copied to config
 # This allow to expose these file to gen_auto
 
-GEOMETRY_CLASSES  = ['Geometry', 'Mesh', 'Curve', 'Cloud', 'Instances', 'Volume', 'GrasePencil']
+GEOMETRY_CLASSES  = ['Geometry', 'Mesh', 'Curve', 'Cloud', 'Instances', 'Volume', 'GreasePencil']
 DOMAIN_CLASSES    = ['Domain', 'Point', 'Vertex', 'CloudPoint', 'SplinePoint', 'Face', 'Edge', 'Corner', 'Spline', 'Layer', 'Instance']
 ATTRIBUTE_CLASSES = ['Boolean', 'Integer', 'Float', 'Vector', 'Color', 'Matrix', 'Rotation']
 PYTHON_TYPES = {
@@ -69,6 +69,7 @@ BLID_TO_STYPE = {
     'NodeSocketRotation'    : 'ROTATION', 
     'NodeSocketString'      : 'STRING', 
     'NodeSocketVector'      : 'VECTOR',
+    'NodeSocketFont'        : 'FONT',   #Blender 5.1
     
     'NodeSocketShader'      : 'SHADER',
 
@@ -260,6 +261,16 @@ INPUT_SOCKETS_PROPS = {
         'subtype'           : ('subtype',               'str', 'NONE'),
         },
 
+    'FONT': {
+        'tip'               : ('description',           'str', ""),
+        'optional_label'    : ('optional_label',        'bool', True),
+        'hide_value'        : ('hide_value',            'bool', False),
+        'hide_in_modifier'  : ('hide_in_modifier',      'bool', False),
+        
+        'default'           : ('default_value',         'VectorFont', None),
+        },
+
+
     'SHADER': {
         'tip'               : ('description',           'str', ""),
         'optional_label'    : ('optional_label',        'bool', False),
@@ -281,7 +292,6 @@ INPUT_SOCKETS_PROPS = {
 # ----------------------------------------------------------------------------------------------------
 
 NODE_DEF_ATTRIBUTES = []
-
 
 # ====================================================================================================
 # Utilities
@@ -408,7 +418,7 @@ def update_input_sockets_props(tree):
         item = tree.interface.new_socket(stype, in_out='INPUT', socket_type=blid)
 
         if stype not in INPUT_SOCKETS_PROPS:
-            raise RuntimeError(f"The dict INPUT_SOCKET_PROPS doesn't contain entry for node socket {blid} (socket_type: {stype}).")
+            raise RuntimeError(f"The dict INPUT_SOCKETS_PROPS doesn't contain entry for node socket {blid} (socket_type: {stype}).")
         
         props = INPUT_SOCKETS_PROPS[stype]
 
@@ -499,7 +509,7 @@ def get_sockets():
         # ---------------------------------------------------------------------------
         # From sockets in the nodes
         # ---------------------------------------------------------------------------
-        
+
         for tp in dir(bpy.types):
             try:
                 node = tree.nodes.new(type=tp)
@@ -507,10 +517,9 @@ def get_sockets():
                 continue
             
             for socket in [sock for sock in node.inputs] + [sock for sock in node.outputs]:
-                stype = socket.type
-                #if stype == 'CUSTOM':
-                #    continue
                 
+                stype = socket.type
+
                 if stype not in SOCKETS:
                     SOCKETS[stype] = {
                         'class_name': TRANSCO.get(stype, stype.title()),
@@ -529,10 +538,10 @@ def get_sockets():
         
         for k in INPUT_SOCKETS_PROPS.keys():
             if k not in SOCKETS.keys():
-                print(f"CAUTION> {tree_type}: Socket type {k} in INPUT_SOCKET_PROPS is not in SOCKETS")
+                print(f"CAUTION> {tree_type}: Socket type {k} in INPUT_SOCKETS_PROPS is not in SOCKETS")
         for k in SOCKETS.keys():
             if k not in INPUT_SOCKETS_PROPS.keys():
-                print(f"CAUTION> {tree_type}: Socket type {k} in SOCKETS is not in INPUT_SOCKET_PROPS")
+                print(f"CAUTION> {tree_type}: Socket type {k} in SOCKETS is not in INPUT_SOCKETS_PROPS")
                 
         for stype, d in SOCKETS.items():
             prop = INPUT_SOCKETS_PROPS.get(stype)
@@ -574,7 +583,7 @@ def get_node_info(sockets):
                 'outputs'       : {}, 
                 'has_custom_in' : False,
                 'has_custom_out': False,
-                'dims'          : NODE_DIMS[tree_type][tp],
+                'dims'          : NODE_DIMS[tree_type].get(tp, None),
             }
 
             # ----------------------------------------------------------------------------------------------------
@@ -727,7 +736,9 @@ def get_socket_subtypes(nodesockets):
     SOCKET_SUBTYPES = {}
     for tp in dir(bpy.types):
 
-        if not tp.startswith(sns) or tp in [sns, "NodeSocketStandard", "NodeSocketTexture"]: #, "NodeSocketVirtual"]:
+        if not tp.startswith(sns) or tp in [sns, 
+                        "NodeSocketStandard", "NodeSocketTexture", 
+                        "NodeSocketMask", "NodeSocketScene", "NodeSocketSound", "NodeSocketText"]:
             continue
 
         # ------------------------------------------------------------
@@ -752,9 +763,9 @@ def get_socket_subtypes(nodesockets):
             if tp.startswith(nodesocket):
                 base = nodesocket
                 break
-            
+    
         if base is None:
-            raise RuntimeError(f"Impossible to get the base socket of f{tp}")
+            raise RuntimeError(f"Impossible to get the base socket of '{tp}'")
             
         if tp == base:
             subtype = None
@@ -784,8 +795,6 @@ def get_socket_subtypes(nodesockets):
             }
         
     return SOCKET_SUBTYPES
-        
-
 
 # ====================================================================================================
 # Builtin groups
@@ -813,11 +822,36 @@ def get_builtin_groups():
 
     return BUILTIN_GROUPS
 
+# ====================================================================================================
+# Check new sockets
+#
+# Will raise an error if a socket is not in BLID_TO_STYPE
+# ====================================================================================================
+
+UNREGISTERED = {}
+for tree_type in TREE_TYPES:
+    
+    tree = get_tree(tree_type)
+
+    for tp in dir(bpy.types):
+        
+        try:
+            node = tree.nodes.new(type=tp)
+        except:
+            continue
+        
+        for socket in [sock for sock in node.inputs] + [sock for sock in node.outputs]:
+
+            if socket.type not in BLID_TO_STYPE.values():
+                UNREGISTERED[socket.bl_idname] = socket.type
+
+if len(UNREGISTERED):
+    pprint(UNREGISTERED)
+    raise RuntimeError(f"Unregistered sockets: " + " ".join(list(UNREGISTERED.keys())))
 
 # ====================================================================================================
 # Global vars
 # ====================================================================================================
-
 
 SOCKETS = get_sockets()
 NODE_NAMES = get_node_names()
@@ -905,6 +939,128 @@ def get_socket_ids():
     return SOCKET_IDS
 
 SOCKET_IDS = get_socket_ids()
+
+# ====================================================================================================
+# Compare versions
+# ====================================================================================================
+
+def compare_versions(old_module):
+
+    # ---------------------------------------------------------------------------
+    # Compare two dicts
+    # ---------------------------------------------------------------------------
+
+    def compare_dicts(old_dict, new_dict, tab=""):
+
+        lines = []
+
+        # Lengths are the same ?
+
+        old_n = len(old_dict)
+        new_n = len(new_dict)
+        if old_n != new_n:
+            lines.append(f"{tab}Lengths are diff: old: {old_n}, new: {new_n}")
+
+        # Type list
+
+        if isinstance(old_dict, list):
+            for i in range(len(old_dict)):
+                if i >= len(new_dict):
+                    lines.append(f"{tab}Item i: <{old_dict[i]}> doesn't exist in new list")
+                elif old_dict[i] != new_dict[i]:
+                    lines.append(f"{tab}Item i: old <{old_dict[i]}> doesn't match new <{new_dict[i]}>")
+
+            return lines
+
+        # Type dict
+
+        for k, old_v in old_dict.items():
+            if k not in new_dict:
+                lines.append(f"{tab}Key '{k}': doesn't exist in new dict")
+                continue
+
+            new_v = new_dict[k]
+            if isinstance(new_v, dict):
+                sub_lines = compare_dicts(old_v, new_v, tab=tab + "   ")
+                if len(sub_lines):
+                    lines.append(f"{tab}Key '{k}': dicts are different")
+                    for l in sub_lines:
+                        lines.append("   " + l)
+                
+            else:
+                # Hack = 5.0 -> 5.1 : label property from "" to name
+                if k == 'label':
+                    continue
+
+                if new_v != old_v:
+                    lines.append(f"{tab}Key '{k}': value has changed: old: <{old_v}> -> new: <{new_v}>")
+
+        for k in new_dict:
+            if k not in old_dict:
+                lines.append(f"{tab}Key '{k}': new key in new dict")
+
+        return lines
+    
+    # ---------------------------------------------------------------------------
+    # Compare two global dicts
+    # ---------------------------------------------------------------------------
+
+    def compare_global(name, old_dict, new_dict):
+        lines = compare_dicts(old_dict, new_dict)
+        if lines:
+            print(f"{name:20s}: changes...")
+            print("\n".join(lines))
+            print()
+        else:
+            print(f"{name:20s}: ok")
+        
+
+    # ---------------------------------------------------------------------------
+    # Compare with old version
+    # ---------------------------------------------------------------------------
+
+    print('\n'*3)
+    print("="*100)
+    print('Compare old to new version...')
+    print("="*100)
+    print()
+
+    compare_global("GEOMETRY_CLASSES",      old_module.GEOMETRY_CLASSES,    GEOMETRY_CLASSES)
+    compare_global("DOMAIN_CLASSES",        old_module.DOMAIN_CLASSES,      DOMAIN_CLASSES)
+    compare_global("ATTRIBUTE_CLASSES",     old_module.ATTRIBUTE_CLASSES,   ATTRIBUTE_CLASSES)
+    compare_global("ATTRIBUTE_CLASSES",     old_module.ATTRIBUTE_CLASSES,   ATTRIBUTE_CLASSES)
+
+    compare_global("CLASS_NAMES",           old_module.CLASS_NAMES,         CLASS_NAMES)
+    compare_global("DATA_TYPE_HOMONYMS",    old_module.DATA_TYPE_HOMONYMS,  DATA_TYPE_HOMONYMS)
+
+    compare_global("SOCKET_IDS",            old_module.SOCKET_IDS,          SOCKET_IDS)
+    compare_global("SOCKETS",               old_module.SOCKETS,             SOCKETS)
+    compare_global("SOCKET_SUBTYPES",       old_module.SOCKET_SUBTYPES,     SOCKET_SUBTYPES)
+
+    compare_global("BUILTIN_GROUPS",        old_module.BUILTIN_GROUPS,      BUILTIN_GROUPS)
+    compare_global("ONE_ITEMS_NODES",       old_module.ONE_ITEMS_NODES,     ONE_ITEMS_NODES)
+    compare_global("SEVERAL_ITEMS_NODES",   old_module.SEVERAL_ITEMS_NODES, SEVERAL_ITEMS_NODES)
+
+    compare_global("INPUT_SOCKETS_PROPS",   old_module.INPUT_SOCKETS_PROPS, INPUT_SOCKETS_PROPS)
+    compare_global("NODE_NAMES",            old_module.NODE_NAMES,          NODE_NAMES)
+    compare_global("NODE_INFO",             old_module.NODE_INFO,           NODE_INFO)
+
+    print('='*100)
+    for tt in ['GeometryNodeTree', 'ShaderNodeTree']:
+        print(f"\n{tt} new nodes:")
+        print('-'*40)
+
+        for k in NODE_NAMES[tt]:
+            if k not in old_module.NODE_NAMES[tt]:
+                print("-", k)
+
+    print()
+    print('='*100)
+
+    
+    print()
+    print("Done")
+
 
 # ====================================================================================================
 # Write the config file

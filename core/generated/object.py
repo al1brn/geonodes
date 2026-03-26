@@ -1,4 +1,4 @@
-# Generated 2026-01-21 11:40:29
+# Generated 2026-03-26 08:37:01
 
 from __future__ import annotations
 from .. sockettype import SocketType
@@ -15,7 +15,7 @@ if TYPE_CHECKING:
     class Cloud: ...
     class Instances: ...
     class Volume: ...
-    class GrasePencil: ...
+    class GreasePencil: ...
     class Boolean: ...
     class Integer: ...
     class Float: ...
@@ -108,6 +108,28 @@ class Object(Socket):
         - Object
         """
         node = Node('Enable Output', {'Enable': enable, 'Value': self}, data_type='OBJECT')
+        return node._out
+
+    def bone_info(self,
+                    bone_name: String = None,
+                    transform_space: Literal['ORIGINAL', 'RELATIVE'] = 'ORIGINAL'):
+        """ > Node <&Node Bone Info>
+
+        Information
+        -----------
+        - Socket 'Armature' : self
+
+        Arguments
+        ---------
+        - bone_name (String) : socket 'Bone Name' (id: Bone Name)
+        - transform_space (str): parameter 'transform_space' in ('Original', 'Relative')
+
+        Returns
+        -------
+        - Matrix [local_pose_ (Matrix), transform_pose_ (Matrix), rest_pose_ (Matrix), rest_length_ (Float)]
+        """
+        utils.check_enum_arg('Bone Info', 'transform_space', transform_space, 'bone_info', ('ORIGINAL', 'RELATIVE'))
+        node = Node('Bone Info', {'Armature': self, 'Bone Name': bone_name}, transform_space=transform_space)
         return node._out
 
     @classmethod

@@ -107,7 +107,7 @@ if PRODUCTION:
     from .core import Signature
 
     from .core import Socket, Input, Boolean, Float, Integer, Vector, Rotation, Matrix, Color, String
-    from .core import Texture, Collection, Object, Image, Material
+    from .core import Texture, Collection, Object, Image, Material, Font
     from .core import Menu
     from .core import Geometry, Domain
     from .core import Point, Vertex, Face, Edge, Corner, SplinePoint, Spline, CloudPoint, Instance, Layer
@@ -129,3 +129,5 @@ if PRODUCTION:
 
     from .core import treearrange
     treearrange.register()
+
+    print(f"geonodes: Geometry nodes with python for Blender version {core.version}")

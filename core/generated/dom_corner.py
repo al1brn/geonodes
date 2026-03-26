@@ -1,4 +1,4 @@
-# Generated 2026-01-21 11:40:29
+# Generated 2026-03-26 08:37:01
 
 from __future__ import annotations
 from .. sockettype import SocketType
@@ -15,7 +15,7 @@ if TYPE_CHECKING:
     class Cloud: ...
     class Instances: ...
     class Volume: ...
-    class GrasePencil: ...
+    class GreasePencil: ...
     class Boolean: ...
     class Integer: ...
     class Float: ...
@@ -456,7 +456,9 @@ class Corner:
                     uv: Vector = None,
                     margin: Float = None,
                     rotate: Boolean = None,
-                    method: Literal['Bounding Box', 'Convex Hull', 'Exact Shape'] = None):
+                    method: Literal['Bounding Box', 'Convex Hull', 'Exact Shape'] = None,
+                    bottom_left: Vector = None,
+                    top_right: Vector = None):
         """ > Node <&Node Pack UV Islands>
 
         Information
@@ -469,12 +471,14 @@ class Corner:
         - margin (Float) : socket 'Margin' (id: Margin)
         - rotate (Boolean) : socket 'Rotate' (id: Rotate)
         - method (menu='Bounding Box') : ('Bounding Box', 'Convex Hull', 'Exact Shape')
+        - bottom_left (Vector) : socket 'Bottom Left' (id: Bottom Left)
+        - top_right (Vector) : socket 'Top Right' (id: Top Right)
 
         Returns
         -------
         - Vector
         """
-        node = Node('Pack UV Islands', {'UV': uv, 'Selection': self.get_selection(), 'Margin': margin, 'Rotate': rotate, 'Method': method})
+        node = Node('Pack UV Islands', {'UV': uv, 'Selection': self.get_selection(), 'Margin': margin, 'Rotate': rotate, 'Method': method, 'Bottom Left': bottom_left, 'Top Right': top_right})
         return node._out
 
     @classmethod
@@ -482,7 +486,9 @@ class Corner:
                     seam: Boolean = None,
                     margin: Float = None,
                     fill_holes: Boolean = None,
-                    method: Literal['Angle Based', 'Conformal'] = None):
+                    method: Literal['Angle Based', 'Conformal', 'Minimum Stretch'] = None,
+                    iterations: Integer = None,
+                    no_flip: Boolean = None):
         """ > Node <&Node UV Unwrap>
 
         Information
@@ -494,13 +500,15 @@ class Corner:
         - seam (Boolean) : socket 'Seam' (id: Seam)
         - margin (Float) : socket 'Margin' (id: Margin)
         - fill_holes (Boolean) : socket 'Fill Holes' (id: Fill Holes)
-        - method (menu='Angle Based') : ('Angle Based', 'Conformal')
+        - method (menu='Angle Based') : ('Angle Based', 'Conformal', 'Minimum Stretch')
+        - iterations (Integer) : socket 'Iterations' (id: Iterations)
+        - no_flip (Boolean) : socket 'No Flip' (id: No Flip)
 
         Returns
         -------
         - Vector
         """
-        node = Node('UV Unwrap', {'Selection': self.get_selection(), 'Seam': seam, 'Margin': margin, 'Fill Holes': fill_holes, 'Method': method})
+        node = Node('UV Unwrap', {'Selection': self.get_selection(), 'Seam': seam, 'Margin': margin, 'Fill Holes': fill_holes, 'Method': method, 'Iterations': iterations, 'No Flip': no_flip})
         return node._out
 
     @classmethod

@@ -1,4 +1,4 @@
-# Generated 2026-01-21 11:40:29
+# Generated 2026-03-26 08:37:01
 
 from __future__ import annotations
 from .. sockettype import SocketType
@@ -15,7 +15,7 @@ if TYPE_CHECKING:
     class Cloud: ...
     class Instances: ...
     class Volume: ...
-    class GrasePencil: ...
+    class GreasePencil: ...
     class Boolean: ...
     class Integer: ...
     class Float: ...
@@ -1842,6 +1842,24 @@ def vmax(vector: Vector = None, vector_1: Vector = None):
     - Vector
     """
     node = Node('Vector Math', {'Vector': vector, 'Vector_001': vector_1}, operation='MAXIMUM')
+    return node._out
+
+def vround(vector: Vector = None):
+    """ > Node <&Node Vector Math>
+
+    Information
+    -----------
+    - Parameter 'operation' : 'ROUND'
+
+    Arguments
+    ---------
+    - vector (Vector) : socket 'Vector' (id: Vector)
+
+    Returns
+    -------
+    - Vector
+    """
+    node = Node('Vector Math', {'Vector': vector}, operation='ROUND')
     return node._out
 
 def vfloor(vector: Vector = None):

@@ -94,7 +94,7 @@ updates
 
 from geonodes import *
 
-def demo(font=None):
+def demo():
 
     # ====================================================================================================
     # Shaders for digits
@@ -641,10 +641,15 @@ def demo(font=None):
     with GeoNodes("G Figure"):
 
         figure     = Float(8, "Figure", 0, tip="Figure with frac part")
-        size       = Float(1, "Size", 0)
         continuous = Boolean(False, "Continuous", tip="Move continuously between the figure and the next one using fract part")
-        fig_mat    = Material("Wheel Figure", "Figure material")
-        back_mat   = Material("Wheel Background", "Background material")
+
+        with Layout("Aspect"):
+            font       = Font(None, "Font")
+            size       = Float(1, "Size", 0)
+            font_size  = Float(1, "Font Size", 0)
+            fig_mat    = Material("Wheel Figure", "Figure material")
+            with_back  = Boolean(True, "With Background")
+            back_mat   = Material("Wheel Background", "Background material")
 
         figure = figure % 10
 
@@ -653,8 +658,8 @@ def demo(font=None):
         frac = figure - fig0
 
         with Layout("Figure and next"):
-            curve0 = fig0.to_string().to_curves(size=size, align_x='CENTER', align_y='MIDDLE', font = font)
-            curve1 = fig1.to_string().to_curves(size=size, align_x='CENTER', align_y='MIDDLE', font = font).transform(translation=(0, -size, 0))
+            curve0 = fig0.to_string().to_curves(size=font_size, align_x='CENTER', align_y='MIDDLE', font = font)
+            curve1 = fig1.to_string().to_curves(size=font_size, align_x='CENTER', align_y='MIDDLE', font = font).transform(translation=(0, -size, 0))
 
             figure = Curve((curve0 + curve1).realize()).fill()
 
@@ -674,8 +679,8 @@ def demo(font=None):
         back.material = back_mat
         back = back.transform(translation=(0, 0, size*(-.05)))
 
-        figure = back + figure
-        figure = figure.transform(rotation=(halfpi, 0, 0))
+        figure.switch(with_back,back + figure)
+        figure.transform(rotation=(halfpi, 0, 0))
 
         figure.out()
 
@@ -687,27 +692,36 @@ def demo(font=None):
         value      = Float(123, "Value", 0, tip="Counter value")
         count      = Integer(3, "Number of Wheels", 1, 10)
         size       = Float(1, "Size", 0)
-        fig_mat    = Material("Wheel Figure", "Figure material")
-        back_mat   = Material("Wheel Background", "Background material")
-        with_box   = Boolean(True, "Create Box")
-        box_mat    = Material("Box", "Box material")
-        box_color  = Color((.5, .5, .5), "Box Color")
-        box_margin = Float(.3, "Box Margin", .01)
-        box_depth  = Float(.5, "Box Depth", .01)
-        merge      = Boolean(False, "Merge with input")
 
-        size_factor = 1.05
+        with Panel("Font"):
+            fig_font   = Font(None, "Font")
+            fig_size   = Float(1., "Size")
+            fig_mat    = Material("Wheel Figure", "Figure material")
+
+        with Panel("Box"):
+            merge      = Boolean(False, "Merge with input")
+            with_back  = Boolean(True, "With Background")
+            with_box   = Boolean(True, "Create Box")
+            back_mat   = Material("Wheel Background", "Background material")
+            box_mat    = Material("Box", "Box material")
+            box_color  = Color((.5, .5, .5), "Box Color")
+            box_margin = Float(.3, "Box Margin", .01)
+            box_depth  = Float(.5, "Box Depth", .01)
 
         for rep in repeat(count, wheels=None, value=value):
 
-            rep.wheels.transform(translation=(size*size_factor, 0, 0))
+            rep.wheels.transform(translation=(size, 0, 0))
 
             fig = rep.value % 10
             new_figure = Group("G Figure", {
-                "Figure"   : fig,
-                "Size"     : size,
-                "Continuous" : rep.iteration.equal(0),
-                "Figure material" : fig_mat,
+                "Figure"              : fig,
+                "Continuous"          : rep.iteration.equal(0),
+
+                "Font"                : fig_font,
+                "Size"                : size,
+                "Font Size"           : fig_size,
+                "Figure material"     : fig_mat,
+                "With Background"     : with_back,
                 "Background material" : back_mat,
             }).mesh
 
@@ -840,6 +854,7 @@ def demo(font=None):
 
         with Panel("Brand"):
             brand = String("Les Idées Froides", "Brand")
+            brand_font = Font(None, "Font")
             brand_mat = Material("Clock Outer", "Material")
             brand_col = Color(0, "Color")
 
@@ -985,7 +1000,7 @@ def demo(font=None):
                 size = 1,
                 align_x = 'CENTER',
                 align_y = 'MIDDLE',
-                font=font).realize()
+                font=brand_font).realize()
             txt = Curve(txt).fill()
 
             stats = txt.points.attribute_statistic(nd.position)

@@ -524,6 +524,9 @@ class SocketType:
         elif stype in ['COLLECTION', 'IMAGE', 'MATERIAL', 'OBJECT']:
             return blender.get_resource(self.type, value)
         
+        elif stype == 'FONT':
+            return blender.get_font(value)
+        
         else:
             return None
 

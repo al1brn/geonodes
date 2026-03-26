@@ -1674,6 +1674,21 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                         'signature': '(cls, matrix: Matrix = '
                                                      'None, matrix_1: Matrix = '
                                                      'None)'}]},
+ 'FunctionNodeMatrixSVD': {'Matrix': [{'func_name': 'svd',
+                                       'is_classmethod': False,
+                                       'is_get': False,
+                                       'is_jump': False,
+                                       'is_set': False,
+                                       'node_name': 'Matrix SVD',
+                                       'returns': 'OUT',
+                                       'signature': '(self)'}],
+                           'nd': [{'func_name': 'matrix_svd',
+                                   'is_classmethod': True,
+                                   'is_get': False,
+                                   'node_name': 'Matrix SVD',
+                                   'returns': 'OUT',
+                                   'signature': '(cls, matrix: Matrix = '
+                                                'None)'}]},
  'FunctionNodeProjectPoint': {'Matrix': [{'func_name': 'project_point',
                                           'is_classmethod': False,
                                           'is_get': False,
@@ -2846,6 +2861,35 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                     "'FLOAT_VECTOR', "
                                                     "'FLOAT_COLOR'] = "
                                                     "'FLOAT')"}]},
+ 'GeometryNodeBoneInfo': {'Object': [{'func_name': 'bone_info',
+                                      'is_classmethod': False,
+                                      'is_get': False,
+                                      'is_jump': False,
+                                      'is_set': False,
+                                      'node_name': 'Bone Info',
+                                      'returns': 'OUT',
+                                      'signature': '(self,\n'
+                                                   '                    '
+                                                   'bone_name: String = None,\n'
+                                                   '                    '
+                                                   'transform_space: '
+                                                   "Literal['ORIGINAL', "
+                                                   "'RELATIVE'] = "
+                                                   "'ORIGINAL')"}],
+                          'nd': [{'func_name': 'bone_info',
+                                  'is_classmethod': True,
+                                  'is_get': False,
+                                  'node_name': 'Bone Info',
+                                  'returns': 'OUT',
+                                  'signature': '(cls,\n'
+                                               '                    armature: '
+                                               'Object = None,\n'
+                                               '                    bone_name: '
+                                               'String = None,\n'
+                                               '                    '
+                                               'transform_space: '
+                                               "Literal['ORIGINAL', "
+                                               "'RELATIVE'] = 'ORIGINAL')"}]},
  'GeometryNodeBoundBox': {'Geometry': [{'func_name': 'bounding_box',
                                         'is_classmethod': False,
                                         'is_get': False,
@@ -3184,6 +3228,67 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                       '                    '
                                                       'sort_index: Integer = '
                                                       'None)'}]},
+ 'GeometryNodeCubeGridTopology': {'Boolean': [{'func_name': 'CubeGridTopology',
+                                               'is_classmethod': True,
+                                               'is_get': False,
+                                               'node_name': 'Cube Grid '
+                                                            'Topology',
+                                               'returns': 'OUT',
+                                               'signature': '(cls,\n'
+                                                            '                    '
+                                                            'bounds_min: '
+                                                            'Vector = None,\n'
+                                                            '                    '
+                                                            'bounds_max: '
+                                                            'Vector = None,\n'
+                                                            '                    '
+                                                            'resolution_x: '
+                                                            'Integer = None,\n'
+                                                            '                    '
+                                                            'resolution_y: '
+                                                            'Integer = None,\n'
+                                                            '                    '
+                                                            'resolution_z: '
+                                                            'Integer = None,\n'
+                                                            '                    '
+                                                            'min_x: Integer = '
+                                                            'None,\n'
+                                                            '                    '
+                                                            'min_y: Integer = '
+                                                            'None,\n'
+                                                            '                    '
+                                                            'min_z: Integer = '
+                                                            'None)'}],
+                                  'nd': [{'func_name': 'cube_grid_topology',
+                                          'is_classmethod': True,
+                                          'is_get': False,
+                                          'node_name': 'Cube Grid Topology',
+                                          'returns': 'OUT',
+                                          'signature': '(cls,\n'
+                                                       '                    '
+                                                       'bounds_min: Vector = '
+                                                       'None,\n'
+                                                       '                    '
+                                                       'bounds_max: Vector = '
+                                                       'None,\n'
+                                                       '                    '
+                                                       'resolution_x: Integer '
+                                                       '= None,\n'
+                                                       '                    '
+                                                       'resolution_y: Integer '
+                                                       '= None,\n'
+                                                       '                    '
+                                                       'resolution_z: Integer '
+                                                       '= None,\n'
+                                                       '                    '
+                                                       'min_x: Integer = '
+                                                       'None,\n'
+                                                       '                    '
+                                                       'min_y: Integer = '
+                                                       'None,\n'
+                                                       '                    '
+                                                       'min_z: Integer = '
+                                                       'None)'}]},
  'GeometryNodeCurveArc': {'Curve': [{'func_name': 'ArcPoints',
                                      'is_classmethod': True,
                                      'is_get': False,
@@ -6108,6 +6213,14 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                   "= 'FLOAT',\n"
                                                   '                    '
                                                   '**sockets)'}]},
+ 'GeometryNodeFieldToList': {'nd': [{'func_name': 'field_to_list',
+                                     'is_classmethod': True,
+                                     'is_get': False,
+                                     'node_name': 'Field to List',
+                                     'returns': 'OUT',
+                                     'signature': '(cls, named_sockets: dict = '
+                                                  '{}, count: Integer = None, '
+                                                  '**sockets)'}]},
  'GeometryNodeFieldVariance': {'Corner': [{'func_name': 'field_variance',
                                            'is_classmethod': True,
                                            'is_get': False,
@@ -6284,10 +6397,16 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                       'is_set': False,
                                       'node_name': 'Fill Curve',
                                       'returns': 'OUT',
-                                      'signature': '(self, group_id: Integer = '
-                                                   'None, mode: '
+                                      'signature': '(self,\n'
+                                                   '                    '
+                                                   'group_id: Integer = None,\n'
+                                                   '                    mode: '
                                                    "Literal['Triangles', "
-                                                   "'N-gons'] = None)"}],
+                                                   "'N-gons'] = None,\n"
+                                                   '                    '
+                                                   'fill_rule: '
+                                                   "Literal['Even-Odd', "
+                                                   "'Non-Zero'] = None)"}],
                            'nd': [{'func_name': 'fill_curve',
                                    'is_classmethod': True,
                                    'is_get': False,
@@ -6300,7 +6419,11 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                 'Integer = None,\n'
                                                 '                    mode: '
                                                 "Literal['Triangles', "
-                                                "'N-gons'] = None)"}]},
+                                                "'N-gons'] = None,\n"
+                                                '                    '
+                                                'fill_rule: '
+                                                "Literal['Even-Odd', "
+                                                "'Non-Zero'] = None)"}]},
  'GeometryNodeFilletCurve': {'Curve': [{'func_name': 'fillet',
                                         'is_classmethod': False,
                                         'is_get': False,
@@ -6415,6 +6538,15 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                             'returns': 'OUT',
                                             'signature': '(cls, *geometry: '
                                                          'Geometry)'}]},
+ 'GeometryNodeGetGeometryBundle': {'nd': [{'func_name': 'get_geometry_bundle',
+                                           'is_classmethod': True,
+                                           'is_get': False,
+                                           'node_name': 'Get Geometry Bundle',
+                                           'returns': 'OUT',
+                                           'signature': '(cls, geometry: '
+                                                        'Geometry = None, '
+                                                        'remove: Boolean = '
+                                                        'None)'}]},
  'GeometryNodeGetNamedGrid': {'Volume': [{'func_name': 'get_named_grid',
                                           'is_classmethod': False,
                                           'is_get': False,
@@ -6750,6 +6882,110 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                  "data_type: Literal['FLOAT', "
                                                  "'INT', 'VECTOR'] = "
                                                  "'FLOAT')"}]},
+ 'GeometryNodeGridClip': {'Boolean': [{'func_name': 'clip_grid',
+                                       'is_classmethod': False,
+                                       'is_get': False,
+                                       'is_jump': False,
+                                       'is_set': False,
+                                       'node_name': 'Clip Grid',
+                                       'returns': 'OUT',
+                                       'signature': '(self,\n'
+                                                    '                    '
+                                                    'min_x: Integer = None,\n'
+                                                    '                    '
+                                                    'min_y: Integer = None,\n'
+                                                    '                    '
+                                                    'min_z: Integer = None,\n'
+                                                    '                    '
+                                                    'max_x: Integer = None,\n'
+                                                    '                    '
+                                                    'max_y: Integer = None,\n'
+                                                    '                    '
+                                                    'max_z: Integer = None)'}],
+                          'Float': [{'func_name': 'clip_grid',
+                                     'is_classmethod': False,
+                                     'is_get': False,
+                                     'is_jump': False,
+                                     'is_set': False,
+                                     'node_name': 'Clip Grid',
+                                     'returns': 'OUT',
+                                     'signature': '(self,\n'
+                                                  '                    min_x: '
+                                                  'Integer = None,\n'
+                                                  '                    min_y: '
+                                                  'Integer = None,\n'
+                                                  '                    min_z: '
+                                                  'Integer = None,\n'
+                                                  '                    max_x: '
+                                                  'Integer = None,\n'
+                                                  '                    max_y: '
+                                                  'Integer = None,\n'
+                                                  '                    max_z: '
+                                                  'Integer = None)'}],
+                          'Integer': [{'func_name': 'clip_grid',
+                                       'is_classmethod': False,
+                                       'is_get': False,
+                                       'is_jump': False,
+                                       'is_set': False,
+                                       'node_name': 'Clip Grid',
+                                       'returns': 'OUT',
+                                       'signature': '(self,\n'
+                                                    '                    '
+                                                    'min_x: Integer = None,\n'
+                                                    '                    '
+                                                    'min_y: Integer = None,\n'
+                                                    '                    '
+                                                    'min_z: Integer = None,\n'
+                                                    '                    '
+                                                    'max_x: Integer = None,\n'
+                                                    '                    '
+                                                    'max_y: Integer = None,\n'
+                                                    '                    '
+                                                    'max_z: Integer = None)'}],
+                          'Vector': [{'func_name': 'clip_grid',
+                                      'is_classmethod': False,
+                                      'is_get': False,
+                                      'is_jump': False,
+                                      'is_set': False,
+                                      'node_name': 'Clip Grid',
+                                      'returns': 'OUT',
+                                      'signature': '(self,\n'
+                                                   '                    min_x: '
+                                                   'Integer = None,\n'
+                                                   '                    min_y: '
+                                                   'Integer = None,\n'
+                                                   '                    min_z: '
+                                                   'Integer = None,\n'
+                                                   '                    max_x: '
+                                                   'Integer = None,\n'
+                                                   '                    max_y: '
+                                                   'Integer = None,\n'
+                                                   '                    max_z: '
+                                                   'Integer = None)'}],
+                          'nd': [{'func_name': 'clip_grid',
+                                  'is_classmethod': True,
+                                  'is_get': False,
+                                  'node_name': 'Clip Grid',
+                                  'returns': 'OUT',
+                                  'signature': '(cls,\n'
+                                               '                    grid: '
+                                               'Float = None,\n'
+                                               '                    min_x: '
+                                               'Integer = None,\n'
+                                               '                    min_y: '
+                                               'Integer = None,\n'
+                                               '                    min_z: '
+                                               'Integer = None,\n'
+                                               '                    max_x: '
+                                               'Integer = None,\n'
+                                               '                    max_y: '
+                                               'Integer = None,\n'
+                                               '                    max_z: '
+                                               'Integer = None,\n'
+                                               '                    data_type: '
+                                               "Literal['FLOAT', 'INT', "
+                                               "'BOOLEAN', 'VECTOR'] = "
+                                               "'FLOAT')"}]},
  'GeometryNodeGridCurl': {'Vector': [{'func_name': 'grid_curl',
                                       'is_classmethod': False,
                                       'is_get': False,
@@ -6764,6 +7000,128 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                   'node_name': 'Grid Curl',
                                   'returns': 'OUT',
                                   'signature': '(cls, grid: Vector = None)'}]},
+ 'GeometryNodeGridDilateAndErode': {'Boolean': [{'func_name': 'grid_dilate_erode',
+                                                 'is_classmethod': False,
+                                                 'is_get': False,
+                                                 'is_jump': False,
+                                                 'is_set': False,
+                                                 'node_name': 'Grid Dilate & '
+                                                              'Erode',
+                                                 'returns': 'OUT',
+                                                 'signature': '(self,\n'
+                                                              '                    '
+                                                              'connectivity: '
+                                                              "Literal['Face', "
+                                                              "'Edge', "
+                                                              "'Vertex'] = "
+                                                              'None,\n'
+                                                              '                    '
+                                                              'tiles: '
+                                                              "Literal['Ignore', "
+                                                              "'Expand', "
+                                                              "'Preserve'] = "
+                                                              'None,\n'
+                                                              '                    '
+                                                              'steps: Integer '
+                                                              '= None)'}],
+                                    'Float': [{'func_name': 'grid_dilate_erode',
+                                               'is_classmethod': False,
+                                               'is_get': False,
+                                               'is_jump': False,
+                                               'is_set': False,
+                                               'node_name': 'Grid Dilate & '
+                                                            'Erode',
+                                               'returns': 'OUT',
+                                               'signature': '(self,\n'
+                                                            '                    '
+                                                            'connectivity: '
+                                                            "Literal['Face', "
+                                                            "'Edge', 'Vertex'] "
+                                                            '= None,\n'
+                                                            '                    '
+                                                            'tiles: '
+                                                            "Literal['Ignore', "
+                                                            "'Expand', "
+                                                            "'Preserve'] = "
+                                                            'None,\n'
+                                                            '                    '
+                                                            'steps: Integer = '
+                                                            'None)'}],
+                                    'Integer': [{'func_name': 'grid_dilate_erode',
+                                                 'is_classmethod': False,
+                                                 'is_get': False,
+                                                 'is_jump': False,
+                                                 'is_set': False,
+                                                 'node_name': 'Grid Dilate & '
+                                                              'Erode',
+                                                 'returns': 'OUT',
+                                                 'signature': '(self,\n'
+                                                              '                    '
+                                                              'connectivity: '
+                                                              "Literal['Face', "
+                                                              "'Edge', "
+                                                              "'Vertex'] = "
+                                                              'None,\n'
+                                                              '                    '
+                                                              'tiles: '
+                                                              "Literal['Ignore', "
+                                                              "'Expand', "
+                                                              "'Preserve'] = "
+                                                              'None,\n'
+                                                              '                    '
+                                                              'steps: Integer '
+                                                              '= None)'}],
+                                    'Vector': [{'func_name': 'grid_dilate_erode',
+                                                'is_classmethod': False,
+                                                'is_get': False,
+                                                'is_jump': False,
+                                                'is_set': False,
+                                                'node_name': 'Grid Dilate & '
+                                                             'Erode',
+                                                'returns': 'OUT',
+                                                'signature': '(self,\n'
+                                                             '                    '
+                                                             'connectivity: '
+                                                             "Literal['Face', "
+                                                             "'Edge', "
+                                                             "'Vertex'] = "
+                                                             'None,\n'
+                                                             '                    '
+                                                             'tiles: '
+                                                             "Literal['Ignore', "
+                                                             "'Expand', "
+                                                             "'Preserve'] = "
+                                                             'None,\n'
+                                                             '                    '
+                                                             'steps: Integer = '
+                                                             'None)'}],
+                                    'nd': [{'func_name': 'grid_dilate_erode',
+                                            'is_classmethod': True,
+                                            'is_get': False,
+                                            'node_name': 'Grid Dilate & Erode',
+                                            'returns': 'OUT',
+                                            'signature': '(cls,\n'
+                                                         '                    '
+                                                         'grid: Float = None,\n'
+                                                         '                    '
+                                                         'connectivity: '
+                                                         "Literal['Face', "
+                                                         "'Edge', 'Vertex'] = "
+                                                         'None,\n'
+                                                         '                    '
+                                                         'tiles: '
+                                                         "Literal['Ignore', "
+                                                         "'Expand', "
+                                                         "'Preserve'] = None,\n"
+                                                         '                    '
+                                                         'steps: Integer = '
+                                                         'None,\n'
+                                                         '                    '
+                                                         'data_type: '
+                                                         "Literal['FLOAT', "
+                                                         "'INT', 'BOOLEAN', "
+                                                         "'VECTOR'] = "
+                                                         "'FLOAT')"}]},
  'GeometryNodeGridDivergence': {'Vector': [{'func_name': 'grid_divergence',
                                             'is_classmethod': False,
                                             'is_get': False,
@@ -6853,6 +7211,97 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                        'returns': 'OUT',
                                        'signature': '(cls, grid: Float = '
                                                     'None)'}]},
+ 'GeometryNodeGridMean': {'Float': [{'func_name': 'grid_mean',
+                                     'is_classmethod': False,
+                                     'is_get': False,
+                                     'is_jump': False,
+                                     'is_set': False,
+                                     'node_name': 'Grid Mean',
+                                     'returns': 'OUT',
+                                     'signature': '(self, width: Integer = '
+                                                  'None, iterations: Integer = '
+                                                  'None)'}],
+                          'Integer': [{'func_name': 'grid_mean',
+                                       'is_classmethod': False,
+                                       'is_get': False,
+                                       'is_jump': False,
+                                       'is_set': False,
+                                       'node_name': 'Grid Mean',
+                                       'returns': 'OUT',
+                                       'signature': '(self, width: Integer = '
+                                                    'None, iterations: Integer '
+                                                    '= None)'}],
+                          'Vector': [{'func_name': 'grid_mean',
+                                      'is_classmethod': False,
+                                      'is_get': False,
+                                      'is_jump': False,
+                                      'is_set': False,
+                                      'node_name': 'Grid Mean',
+                                      'returns': 'OUT',
+                                      'signature': '(self, width: Integer = '
+                                                   'None, iterations: Integer '
+                                                   '= None)'}],
+                          'nd': [{'func_name': 'grid_mean',
+                                  'is_classmethod': True,
+                                  'is_get': False,
+                                  'node_name': 'Grid Mean',
+                                  'returns': 'OUT',
+                                  'signature': '(cls,\n'
+                                               '                    grid: '
+                                               'Float = None,\n'
+                                               '                    width: '
+                                               'Integer = None,\n'
+                                               '                    '
+                                               'iterations: Integer = None,\n'
+                                               '                    data_type: '
+                                               "Literal['FLOAT', 'INT', "
+                                               "'VECTOR'] = 'FLOAT')"}]},
+ 'GeometryNodeGridMedian': {'Float': [{'func_name': 'grid_median',
+                                       'is_classmethod': False,
+                                       'is_get': False,
+                                       'is_jump': False,
+                                       'is_set': False,
+                                       'node_name': 'Grid Median',
+                                       'returns': 'OUT',
+                                       'signature': '(self, width: Integer = '
+                                                    'None, iterations: Integer '
+                                                    '= None)'}],
+                            'Integer': [{'func_name': 'grid_median',
+                                         'is_classmethod': False,
+                                         'is_get': False,
+                                         'is_jump': False,
+                                         'is_set': False,
+                                         'node_name': 'Grid Median',
+                                         'returns': 'OUT',
+                                         'signature': '(self, width: Integer = '
+                                                      'None, iterations: '
+                                                      'Integer = None)'}],
+                            'Vector': [{'func_name': 'grid_median',
+                                        'is_classmethod': False,
+                                        'is_get': False,
+                                        'is_jump': False,
+                                        'is_set': False,
+                                        'node_name': 'Grid Median',
+                                        'returns': 'OUT',
+                                        'signature': '(self, width: Integer = '
+                                                     'None, iterations: '
+                                                     'Integer = None)'}],
+                            'nd': [{'func_name': 'grid_median',
+                                    'is_classmethod': True,
+                                    'is_get': False,
+                                    'node_name': 'Grid Median',
+                                    'returns': 'OUT',
+                                    'signature': '(cls,\n'
+                                                 '                    grid: '
+                                                 'Float = None,\n'
+                                                 '                    width: '
+                                                 'Integer = None,\n'
+                                                 '                    '
+                                                 'iterations: Integer = None,\n'
+                                                 '                    '
+                                                 "data_type: Literal['FLOAT', "
+                                                 "'INT', 'VECTOR'] = "
+                                                 "'FLOAT')"}]},
  'GeometryNodeGridPrune': {'Boolean': [{'func_name': 'prune_grid',
                                         'is_classmethod': False,
                                         'is_get': False,
@@ -6944,6 +7393,51 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                     'signature': '(cls, grid: Float = None, '
                                                  'threshold: Float = None, '
                                                  'adaptivity: Float = None)'}]},
+ 'GeometryNodeGridToPoints': {'Boolean': [{'func_name': 'grid_to_points',
+                                           'is_classmethod': False,
+                                           'is_get': False,
+                                           'is_jump': False,
+                                           'is_set': False,
+                                           'node_name': 'Grid to Points',
+                                           'returns': 'OUT',
+                                           'signature': '(self)'}],
+                              'Float': [{'func_name': 'grid_to_points',
+                                         'is_classmethod': False,
+                                         'is_get': False,
+                                         'is_jump': False,
+                                         'is_set': False,
+                                         'node_name': 'Grid to Points',
+                                         'returns': 'OUT',
+                                         'signature': '(self)'}],
+                              'Integer': [{'func_name': 'grid_to_points',
+                                           'is_classmethod': False,
+                                           'is_get': False,
+                                           'is_jump': False,
+                                           'is_set': False,
+                                           'node_name': 'Grid to Points',
+                                           'returns': 'OUT',
+                                           'signature': '(self)'}],
+                              'Vector': [{'func_name': 'grid_to_points',
+                                          'is_classmethod': False,
+                                          'is_get': False,
+                                          'is_jump': False,
+                                          'is_set': False,
+                                          'node_name': 'Grid to Points',
+                                          'returns': 'OUT',
+                                          'signature': '(self)'}],
+                              'nd': [{'func_name': 'grid_to_points',
+                                      'is_classmethod': True,
+                                      'is_get': False,
+                                      'node_name': 'Grid to Points',
+                                      'returns': 'OUT',
+                                      'signature': '(cls,\n'
+                                                   '                    grid: '
+                                                   'Float = None,\n'
+                                                   '                    '
+                                                   'data_type: '
+                                                   "Literal['FLOAT', 'INT', "
+                                                   "'BOOLEAN', 'VECTOR'] = "
+                                                   "'FLOAT')"}]},
  'GeometryNodeGridVoxelize': {'Boolean': [{'func_name': 'voxelize_grid',
                                            'is_classmethod': False,
                                            'is_get': False,
@@ -8361,20 +8855,6 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                       'returns': 'OUT',
                                       'signature': '(cls, *geometry: '
                                                    'Geometry)'}]},
- 'GeometryNodeList': {'nd': [{'func_name': 'list',
-                              'is_classmethod': True,
-                              'is_get': False,
-                              'node_name': 'List',
-                              'returns': 'OUT',
-                              'signature': '(cls,\n'
-                                           '                    count: Integer '
-                                           '= None,\n'
-                                           '                    value: Float = '
-                                           'None,\n'
-                                           '                    data_type: '
-                                           "Literal['FLOAT', 'INT', 'BOOLEAN', "
-                                           "'VECTOR', 'RGBA', 'ROTATION', "
-                                           "'MATRIX', 'MENU'] = 'FLOAT')"}]},
  'GeometryNodeListGetItem': {'nd': [{'func_name': 'get_list_item',
                                      'is_classmethod': True,
                                      'is_get': False,
@@ -8386,11 +8866,21 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                   '                    index: '
                                                   'Integer = None,\n'
                                                   '                    '
-                                                  "data_type: Literal['FLOAT', "
-                                                  "'INT', 'BOOLEAN', 'VECTOR', "
+                                                  'socket_type: '
+                                                  "Literal['FLOAT', 'INT', "
+                                                  "'BOOLEAN', 'VECTOR', "
                                                   "'RGBA', 'ROTATION', "
-                                                  "'MATRIX', 'MENU'] = "
-                                                  "'FLOAT')"}]},
+                                                  "'MATRIX', 'STRING', 'MENU', "
+                                                  "'OBJECT', 'IMAGE', "
+                                                  "'GEOMETRY', 'COLLECTION', "
+                                                  "'MATERIAL', 'BUNDLE', "
+                                                  "'CLOSURE', 'FONT'] = "
+                                                  "'FLOAT',\n"
+                                                  '                    '
+                                                  'structure_type: '
+                                                  "Literal['AUTO', 'DYNAMIC', "
+                                                  "'FIELD', 'GRID', 'LIST', "
+                                                  "'SINGLE'] = 'AUTO')"}]},
  'GeometryNodeListLength': {'nd': [{'func_name': 'list_length',
                                     'is_classmethod': True,
                                     'is_get': False,
@@ -8403,7 +8893,11 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                  "data_type: Literal['FLOAT', "
                                                  "'INT', 'BOOLEAN', 'VECTOR', "
                                                  "'RGBA', 'ROTATION', "
-                                                 "'MATRIX', 'MENU'] = "
+                                                 "'MATRIX', 'STRING', 'MENU', "
+                                                 "'OBJECT', 'IMAGE', "
+                                                 "'GEOMETRY', 'COLLECTION', "
+                                                 "'MATERIAL', 'BUNDLE', "
+                                                 "'CLOSURE', 'FONT'] = "
                                                  "'FLOAT')"}]},
  'GeometryNodeMaterialSelection': {'Curve': [{'func_name': 'material_selection',
                                               'is_classmethod': True,
@@ -9696,11 +10190,16 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                 'node_name': 'Realize '
                                                              'Instances',
                                                 'returns': 'OUT',
-                                                'signature': '(self, '
+                                                'signature': '(self,\n'
+                                                             '                    '
                                                              'realize_all: '
-                                                             'Boolean = None, '
+                                                             'Boolean = None,\n'
+                                                             '                    '
                                                              'depth: Integer = '
-                                                             'None)'}],
+                                                             'None,\n'
+                                                             '                    '
+                                                             'realize_to_point_domain '
+                                                             '= False)'}],
                                   'nd': [{'func_name': 'realize_instances',
                                           'is_classmethod': True,
                                           'is_get': False,
@@ -9718,7 +10217,10 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                        'None,\n'
                                                        '                    '
                                                        'depth: Integer = '
-                                                       'None)'}]},
+                                                       'None,\n'
+                                                       '                    '
+                                                       'realize_to_point_domain '
+                                                       '= False)'}]},
  'GeometryNodeRemoveAttribute': {'Geometry': [{'func_name': 'remove_named_attribute',
                                                'is_classmethod': False,
                                                'is_get': False,
@@ -11048,6 +11550,15 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                       'signature': '(cls, curve: Curve = None, '
                                                    'selection: Boolean = None, '
                                                    'tilt: Float = None)'}]},
+ 'GeometryNodeSetGeometryBundle': {'nd': [{'func_name': 'set_geometry_bundle',
+                                           'is_classmethod': True,
+                                           'is_get': False,
+                                           'node_name': 'Set Geometry Bundle',
+                                           'returns': 'OUT',
+                                           'signature': '(cls, geometry: '
+                                                        'Geometry = None, '
+                                                        'bundle: Bundle = '
+                                                        'None)'}]},
  'GeometryNodeSetGeometryName': {'Geometry': [{'func_name': 'set_name',
                                                'is_classmethod': False,
                                                'is_get': False,
@@ -11255,6 +11766,8 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                 'returns': 'OUT',
                                                 'signature': '(self, '
                                                              'background: '
+                                                             'Boolean = None, '
+                                                             'update_inactive: '
                                                              'Boolean = '
                                                              'None)'}],
                                    'Float': [{'func_name': 'set_grid_background',
@@ -11266,7 +11779,9 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                            'Background',
                                               'returns': 'OUT',
                                               'signature': '(self, background: '
-                                                           'Float = None)'}],
+                                                           'Float = None, '
+                                                           'update_inactive: '
+                                                           'Boolean = None)'}],
                                    'Integer': [{'func_name': 'set_grid_background',
                                                 'is_classmethod': False,
                                                 'is_get': False,
@@ -11277,7 +11792,9 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                 'returns': 'OUT',
                                                 'signature': '(self, '
                                                              'background: '
-                                                             'Integer = '
+                                                             'Integer = None, '
+                                                             'update_inactive: '
+                                                             'Boolean = '
                                                              'None)'}],
                                    'Vector': [{'func_name': 'set_grid_background',
                                                'is_classmethod': False,
@@ -11289,7 +11806,9 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                'returns': 'OUT',
                                                'signature': '(self, '
                                                             'background: '
-                                                            'Vector = None)'}],
+                                                            'Vector = None, '
+                                                            'update_inactive: '
+                                                            'Boolean = None)'}],
                                    'nd': [{'func_name': 'set_grid_background',
                                            'is_classmethod': True,
                                            'is_get': False,
@@ -11301,6 +11820,9 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                         '                    '
                                                         'background: Float = '
                                                         'None,\n'
+                                                        '                    '
+                                                        'update_inactive: '
+                                                        'Boolean = None,\n'
                                                         '                    '
                                                         'data_type: '
                                                         "Literal['FLOAT', "
@@ -12506,6 +13028,29 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                          '                    '
                                                          'size: Float = None,\n'
                                                          '                    '
+                                                         'font: Font = None,\n'
+                                                         '                    '
+                                                         'align_x: '
+                                                         "Literal['Left', "
+                                                         "'Center', 'Right', "
+                                                         "'Justify', 'Flush'] "
+                                                         '= None,\n'
+                                                         '                    '
+                                                         'align_y: '
+                                                         "Literal['Top', 'Top "
+                                                         "Baseline', 'Middle', "
+                                                         "'Bottom Baseline', "
+                                                         "'Bottom'] = None,\n"
+                                                         '                    '
+                                                         'pivot_point: '
+                                                         "Literal['Midpoint', "
+                                                         "'Top Left', 'Top "
+                                                         "Center', 'Top "
+                                                         "Right', 'Bottom "
+                                                         "Left', 'Bottom "
+                                                         "Center', 'Bottom "
+                                                         "Right'] = None,\n"
+                                                         '                    '
                                                          'character_spacing: '
                                                          'Float = None,\n'
                                                          '                    '
@@ -12515,40 +13060,16 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                          'line_spacing: Float '
                                                          '= None,\n'
                                                          '                    '
+                                                         'overflow: '
+                                                         "Literal['Overflow', "
+                                                         "'Scale To Fit', "
+                                                         "'Truncate'] = None,\n"
+                                                         '                    '
                                                          'text_box_width: '
                                                          'Float = None,\n'
                                                          '                    '
-                                                         'align_x: '
-                                                         "Literal['LEFT', "
-                                                         "'CENTER', 'RIGHT', "
-                                                         "'JUSTIFY', 'FLUSH'] "
-                                                         "= 'LEFT',\n"
-                                                         '                    '
-                                                         'align_y: '
-                                                         "Literal['TOP', "
-                                                         "'TOP_BASELINE', "
-                                                         "'MIDDLE', "
-                                                         "'BOTTOM_BASELINE', "
-                                                         "'BOTTOM'] = "
-                                                         "'TOP_BASELINE',\n"
-                                                         '                    '
-                                                         'font = None,\n'
-                                                         '                    '
-                                                         'overflow: '
-                                                         "Literal['OVERFLOW', "
-                                                         "'SCALE_TO_FIT', "
-                                                         "'TRUNCATE'] = "
-                                                         "'OVERFLOW',\n"
-                                                         '                    '
-                                                         'pivot_mode: '
-                                                         "Literal['MIDPOINT', "
-                                                         "'TOP_LEFT', "
-                                                         "'TOP_CENTER', "
-                                                         "'TOP_RIGHT', "
-                                                         "'BOTTOM_LEFT', "
-                                                         "'BOTTOM_CENTER', "
-                                                         "'BOTTOM_RIGHT'] = "
-                                                         "'BOTTOM_LEFT')"}],
+                                                         'text_box_height: '
+                                                         'Float = None)'}],
                                 'nd': [{'func_name': 'string_to_curves',
                                         'is_classmethod': True,
                                         'is_get': False,
@@ -12560,6 +13081,26 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                      '                    '
                                                      'size: Float = None,\n'
                                                      '                    '
+                                                     'font: Font = None,\n'
+                                                     '                    '
+                                                     "align_x: Literal['Left', "
+                                                     "'Center', 'Right', "
+                                                     "'Justify', 'Flush'] = "
+                                                     'None,\n'
+                                                     '                    '
+                                                     "align_y: Literal['Top', "
+                                                     "'Top Baseline', "
+                                                     "'Middle', 'Bottom "
+                                                     "Baseline', 'Bottom'] = "
+                                                     'None,\n'
+                                                     '                    '
+                                                     'pivot_point: '
+                                                     "Literal['Midpoint', 'Top "
+                                                     "Left', 'Top Center', "
+                                                     "'Top Right', 'Bottom "
+                                                     "Left', 'Bottom Center', "
+                                                     "'Bottom Right'] = None,\n"
+                                                     '                    '
                                                      'character_spacing: Float '
                                                      '= None,\n'
                                                      '                    '
@@ -12569,41 +13110,16 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                      'line_spacing: Float = '
                                                      'None,\n'
                                                      '                    '
+                                                     'overflow: '
+                                                     "Literal['Overflow', "
+                                                     "'Scale To Fit', "
+                                                     "'Truncate'] = None,\n"
+                                                     '                    '
                                                      'text_box_width: Float = '
                                                      'None,\n'
                                                      '                    '
                                                      'text_box_height: Float = '
-                                                     'None,\n'
-                                                     '                    '
-                                                     "align_x: Literal['LEFT', "
-                                                     "'CENTER', 'RIGHT', "
-                                                     "'JUSTIFY', 'FLUSH'] = "
-                                                     "'LEFT',\n"
-                                                     '                    '
-                                                     "align_y: Literal['TOP', "
-                                                     "'TOP_BASELINE', "
-                                                     "'MIDDLE', "
-                                                     "'BOTTOM_BASELINE', "
-                                                     "'BOTTOM'] = "
-                                                     "'TOP_BASELINE',\n"
-                                                     '                    font '
-                                                     '= None,\n'
-                                                     '                    '
-                                                     'overflow: '
-                                                     "Literal['OVERFLOW', "
-                                                     "'SCALE_TO_FIT', "
-                                                     "'TRUNCATE'] = "
-                                                     "'OVERFLOW',\n"
-                                                     '                    '
-                                                     'pivot_mode: '
-                                                     "Literal['MIDPOINT', "
-                                                     "'TOP_LEFT', "
-                                                     "'TOP_CENTER', "
-                                                     "'TOP_RIGHT', "
-                                                     "'BOTTOM_LEFT', "
-                                                     "'BOTTOM_CENTER', "
-                                                     "'BOTTOM_RIGHT'] = "
-                                                     "'BOTTOM_LEFT')"}]},
+                                                     'None)'}]},
  'GeometryNodeSubdivideCurve': {'Curve': [{'func_name': 'subdivide',
                                            'is_classmethod': False,
                                            'is_get': False,
@@ -13048,6 +13564,12 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                         "Literal['Bounding "
                                                         "Box', 'Convex Hull', "
                                                         "'Exact Shape'] = "
+                                                        'None,\n'
+                                                        '                    '
+                                                        'bottom_left: Vector = '
+                                                        'None,\n'
+                                                        '                    '
+                                                        'top_right: Vector = '
                                                         'None)'}],
                                'Vector': [{'func_name': 'pack_uv_islands',
                                            'is_classmethod': False,
@@ -13068,6 +13590,12 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                         "Literal['Bounding "
                                                         "Box', 'Convex Hull', "
                                                         "'Exact Shape'] = "
+                                                        'None,\n'
+                                                        '                    '
+                                                        'bottom_left: Vector = '
+                                                        'None,\n'
+                                                        '                    '
+                                                        'top_right: Vector = '
                                                         'None)'}],
                                'nd': [{'func_name': 'pack_uv_islands',
                                        'is_classmethod': True,
@@ -13087,7 +13615,13 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                     '                    '
                                                     "method: Literal['Bounding "
                                                     "Box', 'Convex Hull', "
-                                                    "'Exact Shape'] = None)"}]},
+                                                    "'Exact Shape'] = None,\n"
+                                                    '                    '
+                                                    'bottom_left: Vector = '
+                                                    'None,\n'
+                                                    '                    '
+                                                    'top_right: Vector = '
+                                                    'None)'}]},
  'GeometryNodeUVTangent': {'Vector': [{'func_name': 'uv_tangent',
                                        'is_classmethod': False,
                                        'is_get': False,
@@ -13123,7 +13657,14 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                     'None,\n'
                                                     '                    '
                                                     "method: Literal['Angle "
-                                                    "Based', 'Conformal'] = "
+                                                    "Based', 'Conformal', "
+                                                    "'Minimum Stretch'] = "
+                                                    'None,\n'
+                                                    '                    '
+                                                    'iterations: Integer = '
+                                                    'None,\n'
+                                                    '                    '
+                                                    'no_flip: Boolean = '
                                                     'None)'}],
                           'Corner': [{'func_name': 'uv_unwrap',
                                       'is_classmethod': True,
@@ -13142,8 +13683,14 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                    'None,\n'
                                                    '                    '
                                                    "method: Literal['Angle "
-                                                   "Based', 'Conformal'] = "
-                                                   'None)'}],
+                                                   "Based', 'Conformal', "
+                                                   "'Minimum Stretch'] = "
+                                                   'None,\n'
+                                                   '                    '
+                                                   'iterations: Integer = '
+                                                   'None,\n'
+                                                   '                    '
+                                                   'no_flip: Boolean = None)'}],
                           'nd': [{'func_name': 'uv_unwrap',
                                   'is_classmethod': True,
                                   'is_get': False,
@@ -13160,7 +13707,12 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                'fill_holes: Boolean = None,\n'
                                                '                    method: '
                                                "Literal['Angle Based', "
-                                               "'Conformal'] = None)"}]},
+                                               "'Conformal', 'Minimum "
+                                               "Stretch'] = None,\n"
+                                               '                    '
+                                               'iterations: Integer = None,\n'
+                                               '                    no_flip: '
+                                               'Boolean = None)'}]},
  'GeometryNodeVertexOfCorner': {'Corner': [{'func_name': 'vertex_index',
                                             'is_classmethod': True,
                                             'is_get': False,
@@ -13529,6 +14081,14 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                  'returns': 'OUT',
                                  'signature': '(self, enable: Boolean = '
                                               'None)'}],
+                      'Font': [{'func_name': 'enable_output',
+                                'is_classmethod': False,
+                                'is_get': False,
+                                'is_jump': False,
+                                'is_set': False,
+                                'node_name': 'Enable Output',
+                                'returns': 'OUT',
+                                'signature': '(self, enable: Boolean = None)'}],
                       'Geometry': [{'func_name': 'enable_output',
                                     'is_classmethod': False,
                                     'is_get': False,
@@ -13634,7 +14194,8 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                            "'MATRIX', 'STRING', 'MENU', "
                                            "'OBJECT', 'IMAGE', 'GEOMETRY', "
                                            "'COLLECTION', 'MATERIAL', "
-                                           "'BUNDLE', 'CLOSURE'] = 'FLOAT')"}]},
+                                           "'BUNDLE', 'CLOSURE', 'FONT'] = "
+                                           "'FLOAT')"}]},
  'NodeEvaluateClosure': {'nd': [{'func_name': 'evaluate_closure',
                                  'is_classmethod': True,
                                  'is_get': False,
@@ -13670,6 +14231,56 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                    '    a = Float(2)\n'
                                    '    b = Float(2)\n'
                                    '    c = a + b\n'}]},
+ 'NodeGetBundleItem': {'Bundle': [{'func_name': 'get_item',
+                                   'is_classmethod': False,
+                                   'is_get': False,
+                                   'is_jump': True,
+                                   'is_set': False,
+                                   'node_name': 'Get Bundle Item',
+                                   'returns': 'Item',
+                                   'signature': '(self,\n'
+                                                '                    path: '
+                                                'String = None,\n'
+                                                '                    remove: '
+                                                'Boolean = None,\n'
+                                                '                    '
+                                                "socket_type: Literal['FLOAT', "
+                                                "'INT', 'BOOLEAN', 'VECTOR', "
+                                                "'RGBA', 'ROTATION', 'MATRIX', "
+                                                "'STRING', 'MENU', 'OBJECT', "
+                                                "'IMAGE', 'GEOMETRY', "
+                                                "'COLLECTION', 'MATERIAL', "
+                                                "'BUNDLE', 'CLOSURE', 'FONT'] "
+                                                "= 'FLOAT',\n"
+                                                '                    '
+                                                'structure_type: '
+                                                "Literal['AUTO', 'DYNAMIC', "
+                                                "'FIELD', 'GRID', 'LIST', "
+                                                "'SINGLE'] = 'AUTO')"}],
+                       'nd': [{'func_name': 'get_bundle_item',
+                               'is_classmethod': True,
+                               'is_get': False,
+                               'node_name': 'Get Bundle Item',
+                               'returns': 'OUT',
+                               'signature': '(cls,\n'
+                                            '                    bundle: '
+                                            'Bundle = None,\n'
+                                            '                    path: String '
+                                            '= None,\n'
+                                            '                    remove: '
+                                            'Boolean = None,\n'
+                                            '                    socket_type: '
+                                            "Literal['FLOAT', 'INT', "
+                                            "'BOOLEAN', 'VECTOR', 'RGBA', "
+                                            "'ROTATION', 'MATRIX', 'STRING', "
+                                            "'MENU', 'OBJECT', 'IMAGE', "
+                                            "'GEOMETRY', 'COLLECTION', "
+                                            "'MATERIAL', 'BUNDLE', 'CLOSURE', "
+                                            "'FONT'] = 'FLOAT',\n"
+                                            '                    '
+                                            "structure_type: Literal['AUTO', "
+                                            "'DYNAMIC', 'FIELD', 'GRID', "
+                                            "'LIST', 'SINGLE'] = 'AUTO')"}]},
  'NodeGroupInput': {'nd': [{'func_name': 'group_input',
                             'is_classmethod': True,
                             'is_get': True,
@@ -13701,13 +14312,27 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                 'is_set': False,
                                 'node_name': 'Join Bundle',
                                 'returns': 'OUT',
+                                'signature': '(self, *bundle: Bundle)'},
+                               {'func_name': 'join_bundle',
+                                'is_classmethod': False,
+                                'is_get': False,
+                                'is_jump': False,
+                                'is_set': False,
+                                'node_name': 'Join Bundle',
+                                'returns': 'OUT',
                                 'signature': '(self, *bundle: Bundle)'}],
                     'nd': [{'func_name': 'join_bundle',
                             'is_classmethod': True,
                             'is_get': False,
                             'node_name': 'Join Bundle',
                             'returns': 'OUT',
-                            'signature': '(cls, *bundle: Bundle)'}]},
+                            'signature': '(cls, *bundle: Bundle)'}],
+                    'snd': [{'func_name': 'join_bundle',
+                             'is_classmethod': True,
+                             'is_get': False,
+                             'node_name': 'Join Bundle',
+                             'returns': 'OUT',
+                             'signature': '(cls, *bundle: Bundle)'}]},
  'NodeReroute': {'nd': [{'func_name': 'reroute',
                          'is_classmethod': True,
                          'is_get': False,
@@ -13759,6 +14384,65 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                               'define_signature = False,\n'
                                               '                    '
                                               '**sockets)'}]},
+ 'NodeStoreBundleItem': {'Bundle': [{'func_name': 'set_item',
+                                     'is_classmethod': False,
+                                     'is_get': False,
+                                     'is_jump': True,
+                                     'is_set': False,
+                                     'node_name': 'Store Bundle Item',
+                                     'returns': 'OUT',
+                                     'signature': '(self,\n'
+                                                  '                    path: '
+                                                  'String = None,\n'
+                                                  '                    item: '
+                                                  'Float = None,\n'
+                                                  '                    '
+                                                  'structure_type: '
+                                                  "Literal['AUTO', 'DYNAMIC', "
+                                                  "'FIELD', 'GRID', 'LIST', "
+                                                  "'SINGLE'] = 'AUTO')"},
+                                    {'func_name': 'store_item',
+                                     'is_classmethod': False,
+                                     'is_get': False,
+                                     'is_jump': True,
+                                     'is_set': False,
+                                     'node_name': 'Store Bundle Item',
+                                     'returns': 'OUT',
+                                     'signature': '(self,\n'
+                                                  '                    path: '
+                                                  'String = None,\n'
+                                                  '                    item: '
+                                                  'Float = None,\n'
+                                                  '                    '
+                                                  'structure_type: '
+                                                  "Literal['AUTO', 'DYNAMIC', "
+                                                  "'FIELD', 'GRID', 'LIST', "
+                                                  "'SINGLE'] = 'AUTO')"}],
+                         'nd': [{'func_name': 'store_bundle_item',
+                                 'is_classmethod': True,
+                                 'is_get': False,
+                                 'node_name': 'Store Bundle Item',
+                                 'returns': 'OUT',
+                                 'signature': '(cls,\n'
+                                              '                    bundle: '
+                                              'Bundle = None,\n'
+                                              '                    path: '
+                                              'String = None,\n'
+                                              '                    item: Float '
+                                              '= None,\n'
+                                              '                    '
+                                              "socket_type: Literal['FLOAT', "
+                                              "'INT', 'BOOLEAN', 'VECTOR', "
+                                              "'RGBA', 'ROTATION', 'MATRIX', "
+                                              "'STRING', 'MENU', 'OBJECT', "
+                                              "'IMAGE', 'GEOMETRY', "
+                                              "'COLLECTION', 'MATERIAL', "
+                                              "'BUNDLE', 'CLOSURE', 'FONT'] = "
+                                              "'FLOAT',\n"
+                                              '                    '
+                                              "structure_type: Literal['AUTO', "
+                                              "'DYNAMIC', 'FIELD', 'GRID', "
+                                              "'LIST', 'SINGLE'] = 'AUTO')"}]},
  'ShaderNodeAddShader': {'Shader': [{'func_name': 'add',
                                      'is_classmethod': False,
                                      'is_get': False,
@@ -16511,6 +17195,13 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                     'signature': '(self,\n'
                                                  '                    color: '
                                                  'Color = None,\n'
+                                                 '                    base: '
+                                                 "Literal['ORIGINAL', "
+                                                 "'DISPLACED'] = 'DISPLACED',\n"
+                                                 '                    '
+                                                 'convention: '
+                                                 "Literal['OPENGL', 'DIRECTX'] "
+                                                 "= 'OPENGL',\n"
                                                  '                    space: '
                                                  "Literal['TANGENT', 'OBJECT', "
                                                  "'WORLD', 'BLENDER_OBJECT', "
@@ -16528,6 +17219,12 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                'Float = None,\n'
                                                '                    color: '
                                                'Color = None,\n'
+                                               '                    base: '
+                                               "Literal['ORIGINAL', "
+                                               "'DISPLACED'] = 'DISPLACED',\n"
+                                               '                    '
+                                               "convention: Literal['OPENGL', "
+                                               "'DIRECTX'] = 'OPENGL',\n"
                                                '                    space: '
                                                "Literal['TANGENT', 'OBJECT', "
                                                "'WORLD', 'BLENDER_OBJECT', "
@@ -16829,6 +17526,30 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                   'roundness: Float = None,\n'
                                                   '                    '
                                                   'normalize = False)'}]},
+ 'ShaderNodeRaycast': {'Vector': [{'func_name': 'raycast',
+                                   'is_classmethod': False,
+                                   'is_get': False,
+                                   'is_jump': False,
+                                   'is_set': False,
+                                   'node_name': 'Raycast',
+                                   'returns': 'OUT',
+                                   'signature': '(self, direction: Vector = '
+                                                'None, length: Float = None, '
+                                                'only_local = False)'}],
+                       'snd': [{'func_name': 'raycast',
+                                'is_classmethod': True,
+                                'is_get': False,
+                                'node_name': 'Raycast',
+                                'returns': 'OUT',
+                                'signature': '(cls,\n'
+                                             '                    position: '
+                                             'Vector = None,\n'
+                                             '                    direction: '
+                                             'Vector = None,\n'
+                                             '                    length: '
+                                             'Float = None,\n'
+                                             '                    only_local = '
+                                             'False)'}]},
  'ShaderNodeScript': {'snd': [{'func_name': 'script',
                                'is_classmethod': True,
                                'is_get': False,
@@ -18418,6 +19139,14 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                       'returns': 'OUT',
                                       'signature': '(self, vector: Vector = '
                                                    'None)'},
+                                     {'func_name': 'round',
+                                      'is_classmethod': False,
+                                      'is_get': False,
+                                      'is_jump': False,
+                                      'is_set': False,
+                                      'node_name': 'Vector Math',
+                                      'returns': 'OUT',
+                                      'signature': '(self)'},
                                      {'func_name': 'floor',
                                       'is_classmethod': False,
                                       'is_get': False,
@@ -18592,6 +19321,10 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                       'returns': 'OUT',
                                       'signature': '(vector: Vector = None, '
                                                    'vector_1: Vector = None)'},
+                                     {'func_name': 'vround',
+                                      'node_name': 'Vector Math',
+                                      'returns': 'OUT',
+                                      'signature': '(vector: Vector = None)'},
                                      {'func_name': 'vfloor',
                                       'node_name': 'Vector Math',
                                       'returns': 'OUT',
@@ -18656,10 +19389,11 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                "'DISTANCE', 'LENGTH', 'SCALE', "
                                                "'NORMALIZE', 'ABSOLUTE', "
                                                "'POWER', 'SIGN', 'MINIMUM', "
-                                               "'MAXIMUM', 'FLOOR', 'CEIL', "
-                                               "'FRACTION', 'MODULO', 'WRAP', "
-                                               "'SNAP', 'SINE', 'COSINE', "
-                                               "'TANGENT'] = 'ADD')"}],
+                                               "'MAXIMUM', 'ROUND', 'FLOOR', "
+                                               "'CEIL', 'FRACTION', 'MODULO', "
+                                               "'WRAP', 'SNAP', 'SINE', "
+                                               "'COSINE', 'TANGENT'] = "
+                                               "'ADD')"}],
                           'snd': [{'func_name': 'vector_math',
                                    'is_classmethod': True,
                                    'is_get': False,
@@ -18685,10 +19419,10 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                 "'SCALE', 'NORMALIZE', "
                                                 "'ABSOLUTE', 'POWER', 'SIGN', "
                                                 "'MINIMUM', 'MAXIMUM', "
-                                                "'FLOOR', 'CEIL', 'FRACTION', "
-                                                "'MODULO', 'WRAP', 'SNAP', "
-                                                "'SINE', 'COSINE', 'TANGENT'] "
-                                                "= 'ADD')"}]},
+                                                "'ROUND', 'FLOOR', 'CEIL', "
+                                                "'FRACTION', 'MODULO', 'WRAP', "
+                                                "'SNAP', 'SINE', 'COSINE', "
+                                                "'TANGENT'] = 'ADD')"}]},
  'ShaderNodeVectorRotate': {'Vector': [{'func_name': 'rotate',
                                         'is_classmethod': False,
                                         'is_get': False,

@@ -1,4 +1,4 @@
-# Generated 2026-01-21 11:40:29
+# Generated 2026-03-26 08:37:01
 
 from __future__ import annotations
 from .. sockettype import SocketType
@@ -15,7 +15,7 @@ if TYPE_CHECKING:
     class Cloud: ...
     class Instances: ...
     class Volume: ...
-    class GrasePencil: ...
+    class GreasePencil: ...
     class Boolean: ...
     class Integer: ...
     class Float: ...
@@ -373,8 +373,7 @@ class Float(Socket):
         node = Node('Named Attribute', {'Name': name}, data_type='FLOAT')
         return cls(node._out)
 
-    @classmethod
-    @property
+    @utils.classproperty
     def scene_time(cls):
         """ > Node <&Node Scene Time>
 
@@ -385,8 +384,7 @@ class Float(Socket):
         node = Node('Scene Time', )
         return node._out
 
-    @classmethod
-    @property
+    @utils.classproperty
     def seconds(cls):
         """ > Node <&Node Scene Time>
 
@@ -397,8 +395,7 @@ class Float(Socket):
         node = Node('Scene Time', )
         return node.seconds
 
-    @classmethod
-    @property
+    @utils.classproperty
     def frame(cls):
         """ > Node <&Node Scene Time>
 
@@ -1842,7 +1839,7 @@ class Float(Socket):
         node = Node('SDF Grid Offset', {'Grid': self, 'Distance': distance})
         return node._out
 
-    def set_grid_background(self, background: Float = None):
+    def set_grid_background(self, background: Float = None, update_inactive: Boolean = None):
         """ > Node <&Node Set Grid Background>
 
         Information
@@ -1853,12 +1850,13 @@ class Float(Socket):
         Arguments
         ---------
         - background (Float) : socket 'Background' (id: Background)
+        - update_inactive (Boolean) : socket 'Update Inactive' (id: Update Inactive)
 
         Returns
         -------
         - Float
         """
-        node = Node('Set Grid Background', {'Grid': self, 'Background': background}, data_type='FLOAT')
+        node = Node('Set Grid Background', {'Grid': self, 'Background': background, 'Update Inactive': update_inactive}, data_type='FLOAT')
         return node._out
 
     def set_grid_transform(self, transform: Matrix = None):
@@ -2053,6 +2051,115 @@ class Float(Socket):
         - Float
         """
         node = Node('Enable Output', {'Enable': enable, 'Value': self}, data_type='FLOAT')
+        return node._out
+
+    def clip_grid(self,
+                    min_x: Integer = None,
+                    min_y: Integer = None,
+                    min_z: Integer = None,
+                    max_x: Integer = None,
+                    max_y: Integer = None,
+                    max_z: Integer = None):
+        """ > Node <&Node Clip Grid>
+
+        Information
+        -----------
+        - Socket 'Grid' : self
+        - Parameter 'data_type' : 'FLOAT'
+
+        Arguments
+        ---------
+        - min_x (Integer) : socket 'Min X' (id: Min X)
+        - min_y (Integer) : socket 'Min Y' (id: Min Y)
+        - min_z (Integer) : socket 'Min Z' (id: Min Z)
+        - max_x (Integer) : socket 'Max X' (id: Max X)
+        - max_y (Integer) : socket 'Max Y' (id: Max Y)
+        - max_z (Integer) : socket 'Max Z' (id: Max Z)
+
+        Returns
+        -------
+        - Float
+        """
+        node = Node('Clip Grid', {'Grid': self, 'Min X': min_x, 'Min Y': min_y, 'Min Z': min_z, 'Max X': max_x, 'Max Y': max_y, 'Max Z': max_z}, data_type='FLOAT')
+        return node._out
+
+    def grid_dilate_erode(self,
+                    connectivity: Literal['Face', 'Edge', 'Vertex'] = None,
+                    tiles: Literal['Ignore', 'Expand', 'Preserve'] = None,
+                    steps: Integer = None):
+        """ > Node <&Node Grid Dilate & Erode>
+
+        Information
+        -----------
+        - Socket 'Grid' : self
+        - Parameter 'data_type' : 'FLOAT'
+
+        Arguments
+        ---------
+        - connectivity (menu='Face') : ('Face', 'Edge', 'Vertex')
+        - tiles (menu='Preserve') : ('Ignore', 'Expand', 'Preserve')
+        - steps (Integer) : socket 'Steps' (id: Steps)
+
+        Returns
+        -------
+        - Float
+        """
+        node = Node('Grid Dilate & Erode', {'Grid': self, 'Connectivity': connectivity, 'Tiles': tiles, 'Steps': steps}, data_type='FLOAT')
+        return node._out
+
+    def grid_mean(self, width: Integer = None, iterations: Integer = None):
+        """ > Node <&Node Grid Mean>
+
+        Information
+        -----------
+        - Socket 'Grid' : self
+        - Parameter 'data_type' : 'FLOAT'
+
+        Arguments
+        ---------
+        - width (Integer) : socket 'Width' (id: Width)
+        - iterations (Integer) : socket 'Iterations' (id: Iterations)
+
+        Returns
+        -------
+        - Float
+        """
+        node = Node('Grid Mean', {'Grid': self, 'Width': width, 'Iterations': iterations}, data_type='FLOAT')
+        return node._out
+
+    def grid_median(self, width: Integer = None, iterations: Integer = None):
+        """ > Node <&Node Grid Median>
+
+        Information
+        -----------
+        - Socket 'Grid' : self
+        - Parameter 'data_type' : 'FLOAT'
+
+        Arguments
+        ---------
+        - width (Integer) : socket 'Width' (id: Width)
+        - iterations (Integer) : socket 'Iterations' (id: Iterations)
+
+        Returns
+        -------
+        - Float
+        """
+        node = Node('Grid Median', {'Grid': self, 'Width': width, 'Iterations': iterations}, data_type='FLOAT')
+        return node._out
+
+    def grid_to_points(self):
+        """ > Node <&Node Grid to Points>
+
+        Information
+        -----------
+        - Socket 'Grid' : self
+        - Parameter 'data_type' : 'FLOAT'
+
+        Returns
+        -------
+        - Cloud [value_ (Float), x_ (Integer), y_ (Integer), z_ (Integer), is_tile_ (Boolean), extent_ (Integer)]
+        """
+        node = Node('Grid to Points', {'Grid': self}, data_type='FLOAT')
         return node._out
 
     def bevel(self, normal: Vector = None, samples = 4):
@@ -2292,6 +2399,8 @@ class Float(Socket):
 
     def normal_map(self,
                     color: Color = None,
+                    base: Literal['ORIGINAL', 'DISPLACED'] = 'DISPLACED',
+                    convention: Literal['OPENGL', 'DIRECTX'] = 'OPENGL',
                     space: Literal['TANGENT', 'OBJECT', 'WORLD', 'BLENDER_OBJECT', 'BLENDER_WORLD'] = 'TANGENT',
                     uv_map = ''):
         """ > Node <&ShaderNode Normal Map>
@@ -2303,6 +2412,8 @@ class Float(Socket):
         Arguments
         ---------
         - color (Color) : socket 'Color' (id: Color)
+        - base (str): parameter 'base' in ('Original Base', 'Displaced Base')
+        - convention (str): parameter 'convention' in ('OpenGL', 'DirectX')
         - space (str): parameter 'space' in ('Tangent Space', 'Object Space', 'World Space', 'Blender Object Space', 'Blender World Space')
         - uv_map (str): parameter 'uv_map'
 
@@ -2310,8 +2421,10 @@ class Float(Socket):
         -------
         - Vector
         """
+        utils.check_enum_arg('Normal Map', 'base', base, 'normal_map', ('ORIGINAL', 'DISPLACED'))
+        utils.check_enum_arg('Normal Map', 'convention', convention, 'normal_map', ('OPENGL', 'DIRECTX'))
         utils.check_enum_arg('Normal Map', 'space', space, 'normal_map', ('TANGENT', 'OBJECT', 'WORLD', 'BLENDER_OBJECT', 'BLENDER_WORLD'))
-        node = Node('Normal Map', {'Strength': self, 'Color': color}, space=space, uv_map=uv_map)
+        node = Node('Normal Map', {'Strength': self, 'Color': color}, base=base, convention=convention, space=space, uv_map=uv_map)
         return node._out
 
     def wavelength(self):
@@ -2378,7 +2491,7 @@ class Float(Socket):
         - hide_in_modifier  (bool = False) : Property hide_in_modifier
         - default_attribute  (str = '') : Property default_attribute_name
         - shape  (str = 'AUTO') : Property structure_type in ('AUTO', 'SINGLE')
-        - subtype (str = 'NONE') : Socket sub type in ('NONE', 'PERCENTAGE', 'FACTOR', 'ANGLE', 'TIME', 'TIME_ABSOLUTE', 'DISTANCE', 'WAVELENGTH', 'COLOR_TEMPERATURE', 'FREQUENCY')
+        - subtype (str = 'NONE') : Socket sub type in ('NONE', 'PERCENTAGE', 'FACTOR', 'MASS', 'ANGLE', 'TIME', 'TIME_ABSOLUTE', 'DISTANCE', 'WAVELENGTH', 'COLOR_TEMPERATURE', 'FREQUENCY')
 
         Returns
         -------
@@ -2472,6 +2585,46 @@ class Float(Socket):
         return cls(value=value, name=name, min=min, max=max, tip=tip, panel=panel,
             optional_label=optional_label, hide_value=hide_value, hide_in_modifier=hide_in_modifier,
             default_attribute=default_attribute, shape=shape, subtype='FACTOR')
+
+    @classmethod
+    def Mass(cls,
+        value: object = 0.0,
+        name: str = 'Mass',
+        min: float = -3.40282e+38,
+        max: float = 3.40282e+38,
+        tip: str = '',
+        panel: str = "",
+        optional_label: bool = False,
+        hide_value: bool = False,
+        hide_in_modifier: bool = False,
+        default_attribute: str = '',
+        shape: Literal['AUTO', 'SINGLE'] = 'AUTO',
+         ):
+        """ > Mass Input
+
+        New <#Float> input with subtype 'MASS'.
+
+        Aguments
+        --------
+        - value  (object = 0.0) : Default value
+        - name  (str = 'Mass') : Input socket name
+        - min  (float = -3.40282e+38) : Property min_value
+        - max  (float = 3.40282e+38) : Property max_value
+        - tip  (str = '') : Property description
+        - panel (str = "") : Panel name
+        - optional_label  (bool = False) : Property optional_label
+        - hide_value  (bool = False) : Property hide_value
+        - hide_in_modifier  (bool = False) : Property hide_in_modifier
+        - default_attribute  (str = '') : Property default_attribute_name
+        - shape  (str = 'AUTO') : Property structure_type in ('AUTO', 'SINGLE')
+
+        Returns
+        -------
+        - Float
+        """
+        return cls(value=value, name=name, min=min, max=max, tip=tip, panel=panel,
+            optional_label=optional_label, hide_value=hide_value, hide_in_modifier=hide_in_modifier,
+            default_attribute=default_attribute, shape=shape, subtype='MASS')
 
     @classmethod
     def Angle(cls,

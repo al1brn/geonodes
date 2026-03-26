@@ -1,4 +1,4 @@
-# Generated 2026-01-21 11:40:29
+# Generated 2026-03-26 08:37:01
 
 from __future__ import annotations
 from .. sockettype import SocketType
@@ -15,7 +15,7 @@ if TYPE_CHECKING:
     class Cloud: ...
     class Instances: ...
     class Volume: ...
-    class GrasePencil: ...
+    class GreasePencil: ...
     class Boolean: ...
     class Integer: ...
     class Float: ...
@@ -95,8 +95,7 @@ class Geometry(Socket):
         node = Node('Index of Nearest', {'Position': position, 'Group ID': group_id})
         return node._out
 
-    @classmethod
-    @property
+    @utils.classproperty
     def index(cls):
         """ > Node <&Node Index>
 
@@ -340,7 +339,10 @@ class Geometry(Socket):
         node = Node('Raycast', {'Target Geometry': self, 'Attribute': attribute, 'Interpolation': interpolation, 'Source Position': source_position, 'Ray Direction': ray_direction, 'Ray Length': ray_length}, data_type=data_type)
         return node._out
 
-    def realize(self, realize_all: Boolean = None, depth: Integer = None):
+    def realize(self,
+                    realize_all: Boolean = None,
+                    depth: Integer = None,
+                    realize_to_point_domain = False):
         """ > Node <&Node Realize Instances>
 
         Information
@@ -352,12 +354,13 @@ class Geometry(Socket):
         ---------
         - realize_all (Boolean) : socket 'Realize All' (id: Realize All)
         - depth (Integer) : socket 'Depth' (id: Depth)
+        - realize_to_point_domain (bool): parameter 'realize_to_point_domain'
 
         Returns
         -------
         - Geometry
         """
-        node = Node('Realize Instances', {'Geometry': self, 'Selection': self.get_selection(), 'Realize All': realize_all, 'Depth': depth})
+        node = Node('Realize Instances', {'Geometry': self, 'Selection': self.get_selection(), 'Realize All': realize_all, 'Depth': depth}, realize_to_point_domain=realize_to_point_domain)
         return node._out
 
     def remove_named_attribute(self, pattern_mode: Literal['Exact', 'Wildcard'] = None, name: String = None):

@@ -83,6 +83,16 @@ class Break(Exception):
     """
     pass
 
+# ====================================================================================================
+# Class property
+# ====================================================================================================
+
+class classproperty:
+    def __init__(self, func):
+        self.func = func
+
+    def __get__(self, instance, owner):
+        return self.func(owner)
 
 # ====================================================================================================
 # Get / delete a tree
@@ -353,10 +363,18 @@ def bl_idname_to_socket_type(bl_idname, halt = True):
 
 def get_bsocket(socket):
     return SocketType.get_bsocket(socket)
-    if isinstance(socket, bpy.types.NodeSocket):
-        return socket
-    else:
-        return getattr(socket, '_bsocket', None)
+
+def get_enabled_bsocket(bnode, name):
+    if hasattr(bnode, '_bnode'):
+        bnode = bnode._bnode
+
+    cur = []
+    for bsock in bnode.outputs:
+        cur.append(f"{bsock.name}: {bsock.enabled}")
+        if bsock.name == name and bsock.enabled:
+            return bsock
+        
+    raise NodeError(f"Node '{bnode}' has no enabled socket named '{name}'.\n- ", "\n- ".join(cur))
     
 def is_empty_socket(value):
     return hasattr(value, '_bsocket') and hasattr(value, '_is_empty') and value._is_empty()
@@ -1013,6 +1031,13 @@ def python_value_for_socket(value, socket_type):
 
     else:
         raise NodeError(f"python_value_for_socket error: impossible to build a value from '{value}' for socket '{socket_type}'")
+
+# =============================================================================================================================
+# Valid values of a socket param enums
+
+def get_node_param_enum(blid, param):
+    return constants.NODE_INFO[blid]['params'][param]['enum']
+
 
 
 # =============================================================================================================================

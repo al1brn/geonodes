@@ -19,7 +19,7 @@
 - **R** : [radians](gnmath.md#radians) :black_small_square: [reflect](gnmath.md#reflect) :black_small_square: [refract](gnmath.md#refract) :black_small_square: [round](gnmath.md#round)
 - **S** : [scale](gnmath.md#scale) :black_small_square: [sign](gnmath.md#sign) :black_small_square: [sin](gnmath.md#sin) :black_small_square: [sinh](gnmath.md#sinh) :black_small_square: [smooth_max](gnmath.md#smooth_max) :black_small_square: [smooth_min](gnmath.md#smooth_min) :black_small_square: [snap](gnmath.md#snap) :black_small_square: [sqrt](gnmath.md#sqrt) :black_small_square: [subtract](gnmath.md#subtract)
 - **T** : [tan](gnmath.md#tan) :black_small_square: [tanh](gnmath.md#tanh) :black_small_square: [trunc](gnmath.md#trunc)
-- **V** : [vabs](gnmath.md#vabs) :black_small_square: [vadd](gnmath.md#vadd) :black_small_square: [vceil](gnmath.md#vceil) :black_small_square: [vcos](gnmath.md#vcos) :black_small_square: [vdivide](gnmath.md#vdivide) :black_small_square: [vfloor](gnmath.md#vfloor) :black_small_square: [vfraction](gnmath.md#vfraction) :black_small_square: [vmax](gnmath.md#vmax) :black_small_square: [vmin](gnmath.md#vmin) :black_small_square: [vmodulo](gnmath.md#vmodulo) :black_small_square: [vmultiply](gnmath.md#vmultiply) :black_small_square: [vmultiply_add](gnmath.md#vmultiply_add) :black_small_square: [vpower](gnmath.md#vpower) :black_small_square: [vsign](gnmath.md#vsign) :black_small_square: [vsin](gnmath.md#vsin) :black_small_square: [vsnap](gnmath.md#vsnap) :black_small_square: [vsubtract](gnmath.md#vsubtract) :black_small_square: [vtan](gnmath.md#vtan) :black_small_square: [vwrap](gnmath.md#vwrap)
+- **V** : [vabs](gnmath.md#vabs) :black_small_square: [vadd](gnmath.md#vadd) :black_small_square: [vceil](gnmath.md#vceil) :black_small_square: [vcos](gnmath.md#vcos) :black_small_square: [vdivide](gnmath.md#vdivide) :black_small_square: [vfloor](gnmath.md#vfloor) :black_small_square: [vfraction](gnmath.md#vfraction) :black_small_square: [vmax](gnmath.md#vmax) :black_small_square: [vmin](gnmath.md#vmin) :black_small_square: [vmodulo](gnmath.md#vmodulo) :black_small_square: [vmultiply](gnmath.md#vmultiply) :black_small_square: [vmultiply_add](gnmath.md#vmultiply_add) :black_small_square: [vpower](gnmath.md#vpower) :black_small_square: [vround](gnmath.md#vround) :black_small_square: [vsign](gnmath.md#vsign) :black_small_square: [vsin](gnmath.md#vsin) :black_small_square: [vsnap](gnmath.md#vsnap) :black_small_square: [vsubtract](gnmath.md#vsubtract) :black_small_square: [vtan](gnmath.md#vtan) :black_small_square: [vwrap](gnmath.md#vwrap)
 - **W** : [wrap](gnmath.md#wrap)
 - **X** : [xnor](gnmath.md#xnor) :black_small_square: [xor](gnmath.md#xor)
 
@@ -2572,6 +2572,32 @@ vpower(base: 'Vector' = None, exponent: 'Vector' = None)
 #### Arguments:
 - **base** (_Vector_ = None) : socket 'Base' (id: Vector)
 - **exponent** (_Vector_ = None) : socket 'Exponent' (id: Vector_001)
+
+
+
+#### Returns:
+- **Vector** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [gnmath](gnmath.md#gnmath) :black_small_square: [Content](gnmath.md#content) :black_small_square: [Functions](gnmath.md#functions)</sub>
+
+----------
+### vround()
+
+> function
+
+``` python
+vround(vector: 'Vector' = None)
+```
+
+> Node [Vector Math](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_math.html)
+
+#### Information:
+- **Parameter** : 'ROUND'
+
+
+
+#### Arguments:
+- **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
 
 
 

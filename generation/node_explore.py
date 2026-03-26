@@ -371,8 +371,6 @@ class NodeInfo:
             
         return 'OUT' if ret == 'NODE' else ret
 
-
-
     @classmethod
     def geometry_class(cls, name):
         if name in ['Mesh', 'Meshes', 'Mesh 1', 'Mesh 2', 'Bounding Box', 'Convex Hull', 'Dual Mesh']:
@@ -387,7 +385,7 @@ class NodeInfo:
             return 'Volume'
         elif name in ['Grease Pencil']:
             return 'GreasePencil'
-        elif name in ['Geometry', 'Geometries', 'Transform', 'Target Geometry', 'Selection', 'Inverted', 'Output', '0', '1', 'A', 'B', 'False', 'True', 'Value']:
+        elif name in ['Geometry', 'Geometries', 'Transform', 'Target Geometry', 'Selection', 'Inverted', 'Output', '0', '1', 'A', 'B', 'False', 'True', 'Value', 'List']:
             return 'Geometry'        
         else:
             raise Exception(f"Unkown Geometry socket name: '{name}'")
@@ -989,8 +987,13 @@ class NodeInfo:
     # Get arguments
     # ====================================================================================================
 
-    def get_arguments(self, self_socket: str | None = None, expose_selection: bool = True,
-            enabled_only: bool = True, ignore_sockets: list[str] = [], **parameters):
+    def get_arguments(self, 
+            self_socket: str | None = None, 
+            expose_selection: bool = True,
+            enabled_only: bool = True, 
+            ignore_sockets: list[str] = [],
+            func_params = [],
+            **parameters):
         """ Build arguments list
 
         One dictionary is returned for each socket:
@@ -1012,9 +1015,9 @@ class NodeInfo:
         Arguments
         ---------
         - self_socket : socket name to use to plug self
-        - expose_selection : put 'Selection' socket (if exists) in the list of arguments or set to 'self.get_selection()'
-        - enabled_only : sue only enabled sockets
-        - ignore_sockets : list of sockets to ignore
+        - expose_selection (bool = True) : put 'Selection' socket (if exists) in the list of arguments or set to 'self.get_selection()'
+        - enabled_only (bool = True) : sue only enabled sockets
+        - ignore_sockets (list) : list of sockets to ignore
         - parameters : forced node parameters
 
         Returns
@@ -1038,11 +1041,14 @@ class NodeInfo:
             pprint(param_values)
 
         data_type = None
+        func_params = []
         for param_name, param_value in parameters.items():
             if param_name not in self.params.keys():
                 raise Exception(f"Parameter '{param_name}' not found in node '{self.bnode.name}' parameters: {list(self.params.keys())}")
             if param_value == 'DATA_TYPE':
                 data_type = param_name
+            elif isinstance(param_value, str) and param_value.startswith('@'):
+                func_params.append(param_name)
             else:
                 setattr(self.bnode, param_name, param_value)
 
@@ -1068,14 +1074,18 @@ class NodeInfo:
 
             forced = param in parameters
             if forced:
-                value = parameters[param]
-                str_value : str
-                if isinstance(value, str):
-                    str_value = f"'{value}'"
-                elif str(value)[0] == '<':
-                    str_value = "None"
+                if param in func_params:
+                    str_value = str(param)
+
                 else:
-                    str_value = str(value)
+                    value = parameters[param]
+                    str_value : str
+                    if isinstance(value, str):
+                        str_value = f"'{value}'"
+                    elif str(value)[0] == '<':
+                        str_value = "None"
+                    else:
+                        str_value = str(value)
 
                 node_value = param
 
@@ -1813,15 +1823,22 @@ class NodeInfo:
         # Decorator
         # ---------------------------------------------------------------------------
 
-        if NO_STATIC_PROP:
+        if True:
             if is_prop:
-                s = f"{_1}@property\n"
+                s = f"{_1}@utils.classproperty\n"
             else:
                 s = f"{_1}@classmethod\n"
+
         else:
-            s  = f"{_1}@classmethod\n"
-            if is_prop:
-                s += f"{_1}@property\n"
+            if NO_STATIC_PROP:
+                if is_prop:
+                    s = f"{_1}@property\n"
+                else:
+                    s = f"{_1}@classmethod\n"
+            else:
+                s  = f"{_1}@classmethod\n"
+                if is_prop:
+                    s += f"{_1}@property\n"
 
         # ---------------------------------------------------------------------------
         # Header
@@ -1981,9 +1998,16 @@ class NodeInfo:
         # ----------------------------------------------------------------------------------------------------
         # Source code
 
-        s  = f"{_1}@classmethod\n"
-        if is_prop:
-            s += f"{_1}@property\n"
+        if True:
+            if is_prop:
+                s = f"{_1}@utils.classproperty\n"
+            else:
+                s = f"{_1}@classmethod\n"
+
+        else:
+            s  = f"{_1}@classmethod\n"
+            if is_prop:
+                s += f"{_1}@property\n"
 
         signature = self.signature('CLASS', args)
         s += f"{_1}def {func_name}{signature}:\n"
@@ -2066,7 +2090,15 @@ class NodeInfo:
         # ----------------------------------------------------------------------------------------------------
         # Set user parameters
 
-        mem_params = self.set_user_parameters(**parameters)
+        val_params = {}
+        func_params = {}
+        for k, v in parameters.items():
+            if isinstance(v, str) and v.startswith('@'):
+                func_params[k] = v[1:]
+            else:
+                val_params[k] = v
+
+        mem_params = self.set_user_parameters(**val_params)
 
         # ----------------------------------------------------------------------------------------------------
         # Shader Node
@@ -2340,11 +2372,18 @@ class NodeInfo:
         # Decorators
         # ---------------------------------------------------------------------------
 
-        s = f"{_1}@classmethod\n" if is_class_method else ""
-        if is_get:
-            s += f"{_1}@property\n"
-        if func == 'set':
-            s += f"{_1}@{func_name}.setter\n"
+        if is_class_method:
+            if is_get:
+                s = f"{_1}@utils.classproperty\n"
+            else:
+                s = f"{_1}@classmethod\n"
+        else:
+            if is_get:
+                s = f"{_1}@property\n"
+            elif func == 'set':
+                s = f"{_1}@{func_name}.setter\n"
+            else:
+                s = ""
 
         # ---------------------------------------------------------------------------
         # Header
@@ -2380,6 +2419,13 @@ class NodeInfo:
             driving_arg_name = utils.snake_case(data_type_sockets['in_sockets'][0])
             s += f"{_2}{data_type} = SocketType.get_data_type_for_node({driving_arg_name}, '{self.bnode.bl_idname}')\n"
 
+        # ---------------------------------------------------------------------------
+        # Functional parameters
+        # ---------------------------------------------------------------------------
+
+        for k, v in parameters.items():
+            if k in func_params:
+                s += f"{_2}{k} = {v[1:]}\n"
 
         # ---------------------------------------------------------------------------
         # Node call

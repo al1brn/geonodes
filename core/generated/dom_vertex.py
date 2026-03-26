@@ -1,4 +1,4 @@
-# Generated 2026-01-21 11:40:29
+# Generated 2026-03-26 08:37:01
 
 from __future__ import annotations
 from .. sockettype import SocketType
@@ -15,7 +15,7 @@ if TYPE_CHECKING:
     class Cloud: ...
     class Instances: ...
     class Volume: ...
-    class GrasePencil: ...
+    class GreasePencil: ...
     class Boolean: ...
     class Integer: ...
     class Float: ...
@@ -174,8 +174,7 @@ class Vertex:
         self._jump(node._out)
         return self._domain_to_geometry
 
-    @classmethod
-    @property
+    @utils.classproperty
     def neighbors(cls):
         """ > Node <&Node Vertex Neighbors>
 
@@ -186,8 +185,7 @@ class Vertex:
         node = Node('Vertex Neighbors', )
         return node._out
 
-    @classmethod
-    @property
+    @utils.classproperty
     def neighbors_vertex_count(cls):
         """ > Node <&Node Vertex Neighbors>
 
@@ -198,8 +196,7 @@ class Vertex:
         node = Node('Vertex Neighbors', )
         return node.vertex_count
 
-    @classmethod
-    @property
+    @utils.classproperty
     def neighbors_face_count(cls):
         """ > Node <&Node Vertex Neighbors>
 

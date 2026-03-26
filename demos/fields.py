@@ -804,7 +804,7 @@ def demo():
             iterations=50,
             delta=.5,
             radius=line_sect,
-            color=(0, 1, 0)).geometry
+            color=(0, 1, 0)).mesh
 
         geo = Geometry.Switch(vis_arrows, None, arrows) + Geometry.Switch(vis_lines, None, lines)
 

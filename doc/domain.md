@@ -59,6 +59,7 @@ All the domain classes are a subclass of [Domain](domain.md#domain).
 
 - [capture](domain.md#capture)
 - [capture_attribute](domain.md#capture_attribute)
+- [data_type_from_value_OLD](domain.md#data_type_from_value_old)
 - [for_each_element](domain.md#for_each_element)
 - [\_geo](domain.md#_geo)
 - [get_selection](domain.md#get_selection)
@@ -146,6 +147,29 @@ with GeoNodes("Capture Attribute"):
 
 #### Returns:
 - **Node** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Domain](domain.md#domain) :black_small_square: [Content](domain.md#content) :black_small_square: [Methods](domain.md#methods)</sub>
+
+----------
+### data_type_from_value_OLD()
+
+> method
+
+``` python
+data_type_from_value_OLD(value, param_name: str = 'data_type', on_error: str = 'DEFAULT')
+```
+
+Get the data_type from the value to plug on socket
+
+#### Arguments:
+- **value** : the value to set on the socket
+- **param_name** (_str_ = data_type) : param name
+- **on_error** (_str_ = DEFAULT) : what to do if not found
+
+
+
+#### Returns:
+- **data_type** : a valid data type
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Domain](domain.md#domain) :black_small_square: [Content](domain.md#content) :black_small_square: [Methods](domain.md#methods)</sub>
 

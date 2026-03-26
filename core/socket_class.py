@@ -217,16 +217,23 @@ class Socket(NodeCache):
                 self._bsocket = self.Named(socket)._bsocket
                 return
             
-            # Name of a resource
-            elif False and cname in ['Object', 'Collection', 'Image', 'Material']:
-                socket = socktype.get_default_from_value(socket)
-        
         # ---------------------------------------------------------------------------
         # Let's get the socket
         # ---------------------------------------------------------------------------
 
         self._bsocket = utils.get_bsocket(socket)
         if self._bsocket is not None:
+
+            if self._bsocket.type != self.SOCKET_TYPE:
+
+                # "Bundle Get Item" like nodes : we change the data_type
+                node = self.node
+
+                blid = node._bnode.bl_idname
+                if blid == 'NodeGetBundleItem'and self.SOCKET_TYPE in utils.get_node_param_enum(blid, 'socket_type'):
+                    node._bnode.socket_type = self.SOCKET_TYPE
+                    self._bsocket = utils.get_enabled_bsocket(node, 'Item')
+
             return
         
         # ---------------------------------------------------------------------------
@@ -248,6 +255,10 @@ class Socket(NodeCache):
         # ---------------------------------------------------------------------------
 
         else:
+            # Font : make sure it is a font 
+            if self.SOCKET_TYPE == 'FONT':
+                socket = blender.get_font(socket)
+
             # Socket can be the default value
             if socket is not None:
 
@@ -371,7 +382,7 @@ class Socket(NodeCache):
     
 
     # ----------------------------------------------------------------------------------------------------
-    # Create a new input socket from the current I/O contexte
+    # Create a new input socket from the current I/O context
     # ----------------------------------------------------------------------------------------------------
 
     @classmethod
@@ -550,6 +561,9 @@ class Socket(NodeCache):
         elif cls.SOCKET_TYPE == 'OBJECT':
             return Node('Object', object=def_val)._out._ul(user_label)
         
+        elif cls.SOCKET_TYPE == 'FONT':
+            return cls.NewInput("Font", value)
+        
         elif cls.SOCKET_TYPE == 'ROTATION':
 
             if value is None:
@@ -581,7 +595,7 @@ class Socket(NodeCache):
                 return Node('Combine XYZ', x=a[0], y=a[1], z=a[2])._out._ul(user_label)
             else:
                 return Node('Vector', vector=a)._out._ul(user_label)
-            
+
         elif cls.SOCKET_TYPE == 'GEOMETRY':
             raise NodeError(f"There is no node to create a Geometry. Use explicit constructors such as 'Mesh.Cube()', 'Curve.Spiral()' or 'Cloud.Points().")
             
@@ -1578,7 +1592,7 @@ class Socket(NodeCache):
     @staticmethod
     def _test_socket_to_data_type():
 
-        from .constants import SOCKET_CLASSES
+        from .utils import SOCKET_CLASSES
         from pprint import pprint
         
         # ----------------------------------------------------------------------------------------------------

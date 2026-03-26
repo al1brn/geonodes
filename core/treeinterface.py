@@ -896,7 +896,9 @@ class TreeInterface:
         # ---------------------------------------------------------------------------
 
         if from_socket is not None:
-            socket.from_socket(from_socket.node, from_socket)
+            # NodeTreeInterfaceSocketFont has no from_socket method in Blender 5.1
+            if 'from_socket' in dir(socket):
+                socket.from_socket(from_socket.node, from_socket)
 
         for prop, value in props.items():
 

@@ -1,4 +1,4 @@
-# Generated 2026-01-21 11:40:29
+# Generated 2026-03-26 08:37:01
 
 from __future__ import annotations
 from .. sockettype import SocketType
@@ -15,7 +15,7 @@ if TYPE_CHECKING:
     class Cloud: ...
     class Instances: ...
     class Volume: ...
-    class GrasePencil: ...
+    class GreasePencil: ...
     class Boolean: ...
     class Integer: ...
     class Float: ...
@@ -456,8 +456,7 @@ class Mesh(Socket):
         node = Node('Import STL', {'Path': path})
         return cls(node._out)
 
-    @classmethod
-    @property
+    @utils.classproperty
     def edge_angle(cls):
         """ > Node <&Node Edge Angle>
 
@@ -468,8 +467,7 @@ class Mesh(Socket):
         node = Node('Edge Angle', )
         return node._out
 
-    @classmethod
-    @property
+    @utils.classproperty
     def unsigned_edge_angle(cls):
         """ > Node <&Node Edge Angle>
 
@@ -480,8 +478,7 @@ class Mesh(Socket):
         node = Node('Edge Angle', )
         return node.unsigned_angle
 
-    @classmethod
-    @property
+    @utils.classproperty
     def signed_edge_angle(cls):
         """ > Node <&Node Edge Angle>
 
@@ -492,8 +489,7 @@ class Mesh(Socket):
         node = Node('Edge Angle', )
         return node.signed_angle
 
-    @classmethod
-    @property
+    @utils.classproperty
     def edge_neighbors(cls):
         """ > Node <&Node Edge Neighbors>
 
@@ -504,8 +500,7 @@ class Mesh(Socket):
         node = Node('Edge Neighbors', )
         return node._out
 
-    @classmethod
-    @property
+    @utils.classproperty
     def edge_vertices(cls):
         """ > Node <&Node Edge Vertices>
 
@@ -516,8 +511,7 @@ class Mesh(Socket):
         node = Node('Edge Vertices', )
         return node._out
 
-    @classmethod
-    @property
+    @utils.classproperty
     def face_area(cls):
         """ > Node <&Node Face Area>
 
@@ -543,8 +537,7 @@ class Mesh(Socket):
         node = Node('Is Face Planar', {'Threshold': threshold})
         return node._out
 
-    @classmethod
-    @property
+    @utils.classproperty
     def face_neighbors(cls):
         """ > Node <&Node Face Neighbors>
 
@@ -555,8 +548,7 @@ class Mesh(Socket):
         node = Node('Face Neighbors', )
         return node._out
 
-    @classmethod
-    @property
+    @utils.classproperty
     def mesh_island(cls):
         """ > Node <&Node Mesh Island>
 
@@ -567,8 +559,7 @@ class Mesh(Socket):
         node = Node('Mesh Island', )
         return node._out
 
-    @classmethod
-    @property
+    @utils.classproperty
     def island_index(cls):
         """ > Node <&Node Mesh Island>
 
@@ -579,8 +570,7 @@ class Mesh(Socket):
         node = Node('Mesh Island', )
         return node.island_index
 
-    @classmethod
-    @property
+    @utils.classproperty
     def island_count(cls):
         """ > Node <&Node Mesh Island>
 
@@ -591,8 +581,7 @@ class Mesh(Socket):
         node = Node('Mesh Island', )
         return node.island_count
 
-    @classmethod
-    @property
+    @utils.classproperty
     def vertex_neighbors(cls):
         """ > Node <&Node Vertex Neighbors>
 

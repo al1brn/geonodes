@@ -32,6 +32,7 @@ set_sock     = 'setter_sockets'
 get_sock     = 'getter_sockets'
 
 
+
 GEONODES = {
 
 'Align Rotation to Vector' :    [{f: 'C', name: 'AlignToVector',  ign_sock: {'Rotation'}},
@@ -516,6 +517,7 @@ GEONODES = {
                                         'modulo'        : 'vmodulo',
                                         'wrap'          : 'vwrap',
                                         'snap'          : 'vsnap',
+                                        'round'         : 'vround',
 
                                         'sine'          : 'vsin',
                                         'cosine'        : 'vcos',
@@ -565,10 +567,21 @@ GEONODES = {
 'Separate Bundle'    :          [{}],
 'Evaluate Closure'   :          [],  # Manual implementation
 
-
-
-
-
+'Matrix SVD'         :          [{name: 'svd'}],
+'Bone Info'          :          [{}],
+'Cube Grid Topology' :          [{f:'C'}],
+'Field to List'      :          [], # Not implemented
+'Get Geometry Bundle':          [], # Not implemented
+'Clip Grid'          :          [{}],
+'Grid Dilate & Erode':          [{}],
+'Grid Mean'          :          [{}],
+'Grid Median'        :          [{}],
+'Grid to Points'     :          [{}],
+'Set Geometry Bundle':          [], # Not Implemented
+'Get Bundle Item'    :          [{name: 'get_item', jump: True, ret: "Item"}],
+'Store Bundle Item'  :          [{name: 'set_item',   jump: True, 'socket_type': '@SocketType(item).class_name'}, 
+                                 {name: 'store_item', jump: True, 'socket_type': '@SocketType(item).class_name'},
+                                 ],
 
 }
 
@@ -711,4 +724,9 @@ SHADERNODES = {
 'Volume Scatter'            : [{f: 'C', name: 'Scatter'}],
 'Wavelength'                : [{}],
 'Wireframe'                 : [{}],
+
+# V5.1
+'Join Bundle'               : [{}],
+'Raycast'                   : [{}],
+
 }

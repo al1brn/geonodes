@@ -549,11 +549,14 @@ class Node:
         # Enum validation
         # ---------------------------------------------------------------------------
 
+        # Alternate value
+        alt_value = None
+
         if prop.type == 'ENUM':
 
             if param_name in ['data_type', 'input_type']:
-                #param_value = SocketType(value).get_node_data_type(self._tree._btree.bl_idname, self._bnode.bl_idname, default=value)
-                param_value = SocketType.get_data_type_for_node(value, self._bnode.bl_idname, param_name, on_error='HALT' if halt else 'DEFAULT')
+                param_value = value
+                alt_value = SocketType.get_data_type_for_node(value, self._bnode.bl_idname, param_name, on_error='HALT' if halt else 'DEFAULT')
 
             # Font
             elif param_name == 'font' and isinstance(param_value, str):
@@ -591,7 +594,11 @@ class Node:
                     if lvalue in (enum_item.name.lower(), enum_item.identifier.lower()):
                         setattr(self._bnode, param_name, enum_item.identifier)
                         return param_name
-                
+                    
+                if alt_value is not None:
+                    setattr(self._bnode, param_name, alt_value)
+                    return param_name
+
                 raise NodeError(f"Value '{param_value}' is not valid for node parameter {[{self._bnode.name}]}.{name}.\n"
                     f"Valid values are {[enum_item.name for enum_item in prop.enum_items]},\n"
                     f"or {[enum_item.identifier for enum_item in prop.enum_items]},"
@@ -1304,17 +1311,40 @@ class Node:
             if bobj is not None:
                 socket.default_value = bobj
 
+        elif socket.type == 'FONT':
+            socket.default_value = blender.get_font(value)
+
         elif socket.type == 'MENU':
-            try:
+
+            try:    
                 socket.default_value = str(value)
+
+            except TypeError as te:
+                s = str(te)
+                nfi = "not found in "
+                p = s.find(nfi)
+                valids = eval(s[p + len(nfi):])
+
+                ok = False
+                sval = str(value).lower()
+                for itm in valids:
+                    if itm.lower() == sval:
+                        socket.default_value = itm
+                        ok = True
+                        break
+
+                if not ok:
+                    raise NodeError(f"Impossible to set menu [{socket.node.name}]{socket.name} with value <{value}>. {str(e)}")
+
             except Exception as e:
                 raise NodeError(f"Impossible to set menu [{socket.node.name}]{socket.name} with value <{value}>. {str(e)}")
-
-            # Just set the value, not default value in interface
+            
+            # OLD
             if False:
-                if self._use_interface:
-                    isock = self._interface.by_identifier(socket.identifier)
-                    isock.default_value = socket.default_value
+                try:
+                    socket.default_value = str(value)
+                except Exception as e:
+                    raise NodeError(f"Impossible to set menu [{socket.node.name}]{socket.name} with value <{value}>. {str(e)}")
 
         else:
             raise TypeError(f"Impossible to set input socket [{socket.node.name}].{socket.name} with value <{value}>. Unsupported socket type '{socket.type}'.")

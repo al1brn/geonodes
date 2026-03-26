@@ -248,7 +248,7 @@ def demo():
             spt_cloud.points._Selection = curve.points.sample_index(selection, nd.index)
 
             spt_cloud.position = curve.points.sample_index(nd.position, nd.index)
-            spt_cloud.points._Normal = curve.points.sample_index(curve.tangent, nd.index).cross((0, 0, 1)).normalize()
+            spt_cloud.points._Normal = curve.points.sample_index(nd.curve_tangent, nd.index).cross((0, 0, 1)).normalize()
 
             spt_cloud.points._Value = curve.points.sample_index(nd.index, nd.index)
             spt_cloud.points._Color  = COL_POINT

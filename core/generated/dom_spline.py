@@ -1,4 +1,4 @@
-# Generated 2026-01-21 11:40:29
+# Generated 2026-03-26 08:37:01
 
 from __future__ import annotations
 from .. sockettype import SocketType
@@ -15,7 +15,7 @@ if TYPE_CHECKING:
     class Cloud: ...
     class Instances: ...
     class Volume: ...
-    class GrasePencil: ...
+    class GreasePencil: ...
     class Boolean: ...
     class Integer: ...
     class Float: ...
@@ -518,8 +518,7 @@ class Spline:
         self._jump(node._out)
         return self._domain_to_geometry
 
-    @classmethod
-    @property
+    @utils.classproperty
     def spline_length(cls):
         """ > Node <&Node Spline Length>
 
@@ -530,8 +529,7 @@ class Spline:
         node = Node('Spline Length', )
         return node._out
 
-    @classmethod
-    @property
+    @utils.classproperty
     def length(cls):
         """ > Node <&Node Spline Length>
 
@@ -542,8 +540,7 @@ class Spline:
         node = Node('Spline Length', )
         return node.length
 
-    @classmethod
-    @property
+    @utils.classproperty
     def point_count(cls):
         """ > Node <&Node Spline Length>
 
@@ -554,8 +551,7 @@ class Spline:
         node = Node('Spline Length', )
         return node.point_count
 
-    @classmethod
-    @property
+    @utils.classproperty
     def parameter(cls):
         """ > Node <&Node Spline Parameter>
 
@@ -566,8 +562,7 @@ class Spline:
         node = Node('Spline Parameter', )
         return node._out
 
-    @classmethod
-    @property
+    @utils.classproperty
     def parameter_factor(cls):
         """ > Node <&Node Spline Parameter>
 
@@ -578,8 +573,7 @@ class Spline:
         node = Node('Spline Parameter', )
         return node.factor
 
-    @classmethod
-    @property
+    @utils.classproperty
     def parameter_length(cls):
         """ > Node <&Node Spline Parameter>
 
@@ -590,8 +584,7 @@ class Spline:
         node = Node('Spline Parameter', )
         return node.length
 
-    @classmethod
-    @property
+    @utils.classproperty
     def parameter_index(cls):
         """ > Node <&Node Spline Parameter>
 

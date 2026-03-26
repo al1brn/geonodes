@@ -1,4 +1,4 @@
-# Generated 2026-01-21 11:40:29
+# Generated 2026-03-26 08:37:01
 
 from __future__ import annotations
 from .. sockettype import SocketType
@@ -15,7 +15,7 @@ if TYPE_CHECKING:
     class Cloud: ...
     class Instances: ...
     class Volume: ...
-    class GrasePencil: ...
+    class GreasePencil: ...
     class Boolean: ...
     class Integer: ...
     class Float: ...
@@ -98,6 +98,108 @@ class Bundle(Socket):
         """
         node = Node('Separate Bundle', {'Bundle': self, **named_sockets}, define_signature=define_signature, **sockets)
         return node
+
+    def get_item(self,
+                    path: String = None,
+                    remove: Boolean = None,
+                    socket_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT'] = 'FLOAT',
+                    structure_type: Literal['AUTO', 'DYNAMIC', 'FIELD', 'GRID', 'LIST', 'SINGLE'] = 'AUTO'):
+        """ > Node <&Node Get Bundle Item>
+
+        > ***Jump*** : Socket refers to node output socket after the call
+
+        Information
+        -----------
+        - Socket 'Bundle' : self
+
+        Arguments
+        ---------
+        - path (String) : socket 'Path' (id: Path)
+        - remove (Boolean) : socket 'Remove' (id: Remove)
+        - socket_type (str): parameter 'socket_type' in ('Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Rotation', 'Matrix', 'String', 'Menu', 'Object', 'Image', 'Geometry', 'Collection', 'Material', 'Bundle', 'Closure', 'Font')
+        - structure_type (str): parameter 'structure_type' in ('Auto', 'Dynamic', 'Field', 'Grid', 'List', 'Single')
+
+        Returns
+        -------
+        - Item
+        """
+        utils.check_enum_arg('Get Bundle Item', 'socket_type', socket_type, 'get_item', ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT'))
+        utils.check_enum_arg('Get Bundle Item', 'structure_type', structure_type, 'get_item', ('AUTO', 'DYNAMIC', 'FIELD', 'GRID', 'LIST', 'SINGLE'))
+        node = Node('Get Bundle Item', {'Bundle': self, 'Path': path, 'Remove': remove}, socket_type=socket_type, structure_type=structure_type)
+        self._jump(node._out)
+        return node.Item
+
+    def set_item(self,
+                    path: String = None,
+                    item: Float = None,
+                    structure_type: Literal['AUTO', 'DYNAMIC', 'FIELD', 'GRID', 'LIST', 'SINGLE'] = 'AUTO'):
+        """ > Node <&Node Store Bundle Item>
+
+        > ***Jump*** : Socket refers to node output socket after the call
+
+        Information
+        -----------
+        - Socket 'Bundle' : self
+        - Parameter 'socket_type' : socket_type
+
+        Arguments
+        ---------
+        - path (String) : socket 'Path' (id: Path)
+        - item (Float) : socket 'Item' (id: Item)
+        - structure_type (str): parameter 'structure_type' in ('Auto', 'Dynamic', 'Field', 'Grid', 'List', 'Single')
+
+        Returns
+        -------
+        - Bundle
+        """
+        utils.check_enum_arg('Store Bundle Item', 'structure_type', structure_type, 'set_item', ('AUTO', 'DYNAMIC', 'FIELD', 'GRID', 'LIST', 'SINGLE'))
+        socket_type = SocketType(item).class_name
+        node = Node('Store Bundle Item', {'Bundle': self, 'Path': path, 'Item': item}, socket_type=socket_type, structure_type=structure_type)
+        self._jump(node._out)
+        return self._domain_to_geometry
+
+    def store_item(self,
+                    path: String = None,
+                    item: Float = None,
+                    structure_type: Literal['AUTO', 'DYNAMIC', 'FIELD', 'GRID', 'LIST', 'SINGLE'] = 'AUTO'):
+        """ > Node <&Node Store Bundle Item>
+
+        > ***Jump*** : Socket refers to node output socket after the call
+
+        Information
+        -----------
+        - Socket 'Bundle' : self
+        - Parameter 'socket_type' : socket_type
+
+        Arguments
+        ---------
+        - path (String) : socket 'Path' (id: Path)
+        - item (Float) : socket 'Item' (id: Item)
+        - structure_type (str): parameter 'structure_type' in ('Auto', 'Dynamic', 'Field', 'Grid', 'List', 'Single')
+
+        Returns
+        -------
+        - Bundle
+        """
+        utils.check_enum_arg('Store Bundle Item', 'structure_type', structure_type, 'store_item', ('AUTO', 'DYNAMIC', 'FIELD', 'GRID', 'LIST', 'SINGLE'))
+        socket_type = SocketType(item).class_name
+        node = Node('Store Bundle Item', {'Bundle': self, 'Path': path, 'Item': item}, socket_type=socket_type, structure_type=structure_type)
+        self._jump(node._out)
+        return self._domain_to_geometry
+
+    def join_bundle(self, *bundle: Bundle):
+        """ > Node <&ShaderNode Join Bundle>
+
+        Arguments
+        ---------
+        - bundle (Bundle) : socket 'Bundle' (id: Bundle)
+
+        Returns
+        -------
+        - Bundle
+        """
+        node = Node('Join Bundle', {'Bundle': [self] + list(bundle)})
+        return node._out
 
     @classmethod
     def _create_input_socket(cls,

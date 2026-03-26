@@ -1,4 +1,4 @@
-# Generated 2026-01-21 11:40:29
+# Generated 2026-03-26 08:37:01
 
 from __future__ import annotations
 from .. sockettype import SocketType
@@ -15,7 +15,7 @@ if TYPE_CHECKING:
     class Cloud: ...
     class Instances: ...
     class Volume: ...
-    class GrasePencil: ...
+    class GreasePencil: ...
     class Boolean: ...
     class Integer: ...
     class Float: ...
@@ -681,6 +681,20 @@ class Matrix(Socket):
         - Matrix
         """
         node = Node('Enable Output', {'Enable': enable, 'Value': self}, data_type='MATRIX')
+        return node._out
+
+    def svd(self):
+        """ > Node <&Node Matrix SVD>
+
+        Information
+        -----------
+        - Socket 'Matrix' : self
+
+        Returns
+        -------
+        - Matrix [s_ (Vector), v_ (Matrix)]
+        """
+        node = Node('Matrix SVD', {'Matrix': self})
         return node._out
 
     @classmethod

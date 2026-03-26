@@ -1,4 +1,4 @@
-# Generated 2026-01-21 11:40:29
+# Generated 2026-03-26 08:37:01
 
 from __future__ import annotations
 from .. sockettype import SocketType
@@ -15,7 +15,7 @@ if TYPE_CHECKING:
     class Cloud: ...
     class Instances: ...
     class Volume: ...
-    class GrasePencil: ...
+    class GreasePencil: ...
     class Boolean: ...
     class Integer: ...
     class Float: ...
@@ -523,8 +523,7 @@ class Edge:
         node = Node('Evaluate on Domain', {'Value': value}, data_type=data_type, domain='EDGE')
         return node._out
 
-    @classmethod
-    @property
+    @utils.classproperty
     def edge_angle(cls):
         """ > Node <&Node Edge Angle>
 
@@ -535,8 +534,7 @@ class Edge:
         node = Node('Edge Angle', )
         return node._out
 
-    @classmethod
-    @property
+    @utils.classproperty
     def unsigned_angle(cls):
         """ > Node <&Node Edge Angle>
 
@@ -547,8 +545,7 @@ class Edge:
         node = Node('Edge Angle', )
         return node.unsigned_angle
 
-    @classmethod
-    @property
+    @utils.classproperty
     def signed_angle(cls):
         """ > Node <&Node Edge Angle>
 
@@ -559,8 +556,7 @@ class Edge:
         node = Node('Edge Angle', )
         return node.signed_angle
 
-    @classmethod
-    @property
+    @utils.classproperty
     def face_count(cls):
         """ > Node <&Node Edge Neighbors>
 
@@ -571,8 +567,7 @@ class Edge:
         node = Node('Edge Neighbors', )
         return node._out
 
-    @classmethod
-    @property
+    @utils.classproperty
     def edge_vertices(cls):
         """ > Node <&Node Edge Vertices>
 
@@ -583,8 +578,7 @@ class Edge:
         node = Node('Edge Vertices', )
         return node._out
 
-    @classmethod
-    @property
+    @utils.classproperty
     def vertex_index_1(cls):
         """ > Node <&Node Edge Vertices>
 
@@ -595,8 +589,7 @@ class Edge:
         node = Node('Edge Vertices', )
         return node.vertex_index_1
 
-    @classmethod
-    @property
+    @utils.classproperty
     def vertex_index_2(cls):
         """ > Node <&Node Edge Vertices>
 
@@ -607,8 +600,7 @@ class Edge:
         node = Node('Edge Vertices', )
         return node.vertex_index_2
 
-    @classmethod
-    @property
+    @utils.classproperty
     def position_1(cls):
         """ > Node <&Node Edge Vertices>
 
@@ -619,8 +611,7 @@ class Edge:
         node = Node('Edge Vertices', )
         return node.position_1
 
-    @classmethod
-    @property
+    @utils.classproperty
     def position_2(cls):
         """ > Node <&Node Edge Vertices>
 

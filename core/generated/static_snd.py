@@ -1,4 +1,4 @@
-# Generated 2026-01-21 11:40:29
+# Generated 2026-03-26 08:37:01
 
 from __future__ import annotations
 from .. sockettype import SocketType
@@ -15,7 +15,7 @@ if TYPE_CHECKING:
     class Cloud: ...
     class Instances: ...
     class Volume: ...
-    class GrasePencil: ...
+    class GreasePencil: ...
     class Boolean: ...
     class Integer: ...
     class Float: ...
@@ -86,7 +86,7 @@ class SND:
         node = Node('Repeat Output', inspection_index=inspection_index)
         return node._out
 
-    @property
+    @utils.classproperty
     def closure_input(self):
         """ > Node <&ShaderNode Closure Input>
 
@@ -168,7 +168,7 @@ class SND:
         node = Node('Frame', label_size=label_size, shrink=shrink, text=text)
         return node._out
 
-    @property
+    @utils.classproperty
     def group_input(self):
         """ > Node <&ShaderNode Group Input>
 
@@ -192,6 +192,21 @@ class SND:
         - None
         """
         node = Node('Group Output', is_active_output=is_active_output)
+        return node._out
+
+    @classmethod
+    def join_bundle(cls, *bundle: Bundle):
+        """ > Node <&ShaderNode Join Bundle>
+
+        Arguments
+        ---------
+        - bundle (Bundle) : socket 'Bundle' (id: Bundle)
+
+        Returns
+        -------
+        - Bundle
+        """
+        node = Node('Join Bundle', {'Bundle': list(bundle)})
         return node._out
 
     @classmethod
@@ -1320,6 +1335,8 @@ class SND:
     def normal_map(cls,
                     strength: Float = None,
                     color: Color = None,
+                    base: Literal['ORIGINAL', 'DISPLACED'] = 'DISPLACED',
+                    convention: Literal['OPENGL', 'DIRECTX'] = 'OPENGL',
                     space: Literal['TANGENT', 'OBJECT', 'WORLD', 'BLENDER_OBJECT', 'BLENDER_WORLD'] = 'TANGENT',
                     uv_map = ''):
         """ > Node <&ShaderNode Normal Map>
@@ -1328,6 +1345,8 @@ class SND:
         ---------
         - strength (Float) : socket 'Strength' (id: Strength)
         - color (Color) : socket 'Color' (id: Color)
+        - base (str): parameter 'base' in ('Original Base', 'Displaced Base')
+        - convention (str): parameter 'convention' in ('OpenGL', 'DirectX')
         - space (str): parameter 'space' in ('Tangent Space', 'Object Space', 'World Space', 'Blender Object Space', 'Blender World Space')
         - uv_map (str): parameter 'uv_map'
 
@@ -1335,8 +1354,10 @@ class SND:
         -------
         - Vector
         """
+        utils.check_enum_arg('Normal Map', 'base', base, 'normal_map', ('ORIGINAL', 'DISPLACED'))
+        utils.check_enum_arg('Normal Map', 'convention', convention, 'normal_map', ('OPENGL', 'DIRECTX'))
         utils.check_enum_arg('Normal Map', 'space', space, 'normal_map', ('TANGENT', 'OBJECT', 'WORLD', 'BLENDER_OBJECT', 'BLENDER_WORLD'))
-        node = Node('Normal Map', {'Strength': strength, 'Color': color}, space=space, uv_map=uv_map)
+        node = Node('Normal Map', {'Strength': strength, 'Color': color}, base=base, convention=convention, space=space, uv_map=uv_map)
         return node._out
 
     @classmethod
@@ -1494,7 +1515,7 @@ class SND:
         node = Node('Point Info', )
         return node
 
-    @property
+    @utils.classproperty
     def color(self):
         """ > Node <&ShaderNode Color>
 
@@ -1556,6 +1577,28 @@ class SND:
         - Vector [segment_id_ (Float), segment_width_ (Float), segment_rotation_ (Float)]
         """
         node = Node('Radial Tiling', {'Vector': vector, 'Sides': sides, 'Roundness': roundness}, normalize=normalize)
+        return node._out
+
+    @classmethod
+    def raycast(cls,
+                    position: Vector = None,
+                    direction: Vector = None,
+                    length: Float = None,
+                    only_local = False):
+        """ > Node <&ShaderNode Raycast>
+
+        Arguments
+        ---------
+        - position (Vector) : socket 'Position' (id: Position)
+        - direction (Vector) : socket 'Direction' (id: Direction)
+        - length (Float) : socket 'Length' (id: Length)
+        - only_local (bool): parameter 'only_local'
+
+        Returns
+        -------
+        - Float [self_hit_ (Float), hit_distance_ (Float), hit_position_ (Vector), hit_normal_ (Vector)]
+        """
+        node = Node('Raycast', {'Position': position, 'Direction': direction, 'Length': length}, only_local=only_local)
         return node._out
 
     @classmethod
@@ -2151,7 +2194,7 @@ class SND:
         node = ColorRamp(fac=fac, stops=stops, interpolation=interpolation)
         return node._out
 
-    @property
+    @utils.classproperty
     def value(self):
         """ > Node <&ShaderNode Value>
 
@@ -2207,7 +2250,7 @@ class SND:
                     vector_1: Vector = None,
                     vector_2: Vector = None,
                     scale: Float = None,
-                    operation: Literal['ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'MULTIPLY_ADD', 'CROSS_PRODUCT', 'PROJECT', 'REFLECT', 'REFRACT', 'FACEFORWARD', 'DOT_PRODUCT', 'DISTANCE', 'LENGTH', 'SCALE', 'NORMALIZE', 'ABSOLUTE', 'POWER', 'SIGN', 'MINIMUM', 'MAXIMUM', 'FLOOR', 'CEIL', 'FRACTION', 'MODULO', 'WRAP', 'SNAP', 'SINE', 'COSINE', 'TANGENT'] = 'ADD'):
+                    operation: Literal['ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'MULTIPLY_ADD', 'CROSS_PRODUCT', 'PROJECT', 'REFLECT', 'REFRACT', 'FACEFORWARD', 'DOT_PRODUCT', 'DISTANCE', 'LENGTH', 'SCALE', 'NORMALIZE', 'ABSOLUTE', 'POWER', 'SIGN', 'MINIMUM', 'MAXIMUM', 'ROUND', 'FLOOR', 'CEIL', 'FRACTION', 'MODULO', 'WRAP', 'SNAP', 'SINE', 'COSINE', 'TANGENT'] = 'ADD'):
         """ > Node <&ShaderNode Vector Math>
 
         Arguments
@@ -2216,13 +2259,13 @@ class SND:
         - vector_1 (Vector) : socket 'Vector' (id: Vector_001)
         - vector_2 (Vector) : socket 'Vector' (id: Vector_002)
         - scale (Float) : socket 'Scale' (id: Scale)
-        - operation (str): parameter 'operation' in ('Add', 'Subtract', 'Multiply', 'Divide', 'Multiply Add', 'Cross Product', 'Project', 'Reflect', 'Refract', 'Faceforward', 'Dot Product', 'Distance', 'Length', 'Scale', 'Normalize', 'Absolute', 'Power', 'Sign', 'Minimum', 'Maximum', 'Floor', 'Ceil', 'Fraction', 'Modulo', 'Wrap', 'Snap', 'Sine', 'Cosine', 'Tangent')
+        - operation (str): parameter 'operation' in ('Add', 'Subtract', 'Multiply', 'Divide', 'Multiply Add', 'Cross Product', 'Project', 'Reflect', 'Refract', 'Faceforward', 'Dot Product', 'Distance', 'Length', 'Scale', 'Normalize', 'Absolute', 'Power', 'Sign', 'Minimum', 'Maximum', 'Round', 'Floor', 'Ceil', 'Fraction', 'Modulo', 'Wrap', 'Snap', 'Sine', 'Cosine', 'Tangent')
 
         Returns
         -------
         - Vector
         """
-        utils.check_enum_arg('Vector Math', 'operation', operation, 'vector_math', ('ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'MULTIPLY_ADD', 'CROSS_PRODUCT', 'PROJECT', 'REFLECT', 'REFRACT', 'FACEFORWARD', 'DOT_PRODUCT', 'DISTANCE', 'LENGTH', 'SCALE', 'NORMALIZE', 'ABSOLUTE', 'POWER', 'SIGN', 'MINIMUM', 'MAXIMUM', 'FLOOR', 'CEIL', 'FRACTION', 'MODULO', 'WRAP', 'SNAP', 'SINE', 'COSINE', 'TANGENT'))
+        utils.check_enum_arg('Vector Math', 'operation', operation, 'vector_math', ('ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'MULTIPLY_ADD', 'CROSS_PRODUCT', 'PROJECT', 'REFLECT', 'REFRACT', 'FACEFORWARD', 'DOT_PRODUCT', 'DISTANCE', 'LENGTH', 'SCALE', 'NORMALIZE', 'ABSOLUTE', 'POWER', 'SIGN', 'MINIMUM', 'MAXIMUM', 'ROUND', 'FLOOR', 'CEIL', 'FRACTION', 'MODULO', 'WRAP', 'SNAP', 'SINE', 'COSINE', 'TANGENT'))
         node = Node('Vector Math', {'Vector': vector, 'Vector_001': vector_1, 'Vector_002': vector_2, 'Scale': scale}, operation=operation)
         return node._out
 

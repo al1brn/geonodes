@@ -86,6 +86,7 @@ def get_resource(socket_type, value):
         'IMAGE':      {'coll': bpy.data.images,      'type': bpy.types.Image},
         'MATERIAL':   {'coll': bpy.data.materials,   'type': bpy.types.Material},
         'TEXTURE':    {'coll': bpy.data.textures,    'type': bpy.types.Texture},
+        #'FONT':       {'coll': bpy.data.fonts,       'type': bpy.types.VectorFont},
         }[socket_type]
 
     if value is None:
@@ -115,7 +116,8 @@ def get_font(name: str | VectorFont, path: str|None = None) -> VectorFont | None
     - font
     """
     if name is None:
-        return None
+        return bpy.data.fonts.load("<builtin>")
+        #return None
 
     if isinstance(name, VectorFont):
         return name
@@ -124,8 +126,12 @@ def get_font(name: str | VectorFont, path: str|None = None) -> VectorFont | None
     if font is None:
         if path is None:
             path = bpy.context.preferences.filepaths.font_directory
-        font = bpy.data.fonts.load(str(Path(path) / (name + '.ttf')))
-        font.name = name
+        
+        try:
+            font = bpy.data.fonts.load(str(Path(path) / (name + '.ttf')))
+            font.name = name
+        except:
+            font = bpy.data.fonts.load("<builtin>")
 
     return font
 

@@ -11,7 +11,7 @@ __all__ = ['blender_version', 'CLASS_NAMES', 'DATA_TYPE_HOMONYMS', 'SOCKETS', 'N
 # Classes lists
 #--------------------------------------------------------------------------------
 
-GEOMETRY_CLASSES = ['Geometry', 'Mesh', 'Curve', 'Cloud', 'Instances', 'Volume', 'GrasePencil']
+GEOMETRY_CLASSES = ['Geometry', 'Mesh', 'Curve', 'Cloud', 'Instances', 'Volume', 'GreasePencil']
 DOMAIN_CLASSES = ['Domain', 'Point', 'Vertex', 'CloudPoint', 'SplinePoint', 'Face', 'Edge', 'Corner', 'Spline', 'Layer', 'Instance']
 ATTRIBUTE_CLASSES = ['Boolean', 'Integer', 'Float', 'Vector', 'Color', 'Matrix', 'Rotation']
 
@@ -61,7 +61,6 @@ DATA_TYPE_HOMONYMS = {'BYTE_COLOR': 'RGBA',
  'TRANSFORM': 'MATRIX',
  'VECTOR_FLOAT': 'VECTOR'}
 
-
 #--------------------------------------------------------------------------------
 # Sockets ids for SocketType class
 #--------------------------------------------------------------------------------
@@ -93,7 +92,7 @@ SOCKET_IDS = {'BOOLEAN': 'NodeSocketBool',
  'Float': 'NodeSocketFloat',
  'GEOMETRY': 'NodeSocketGeometry',
  'Geometry': 'NodeSocketGeometry',
- 'GrasePencil': 'NodeSocketGeometry',
+ 'GreasePencil': 'NodeSocketGeometry',
  'IMAGE': 'NodeSocketImage',
  'INT': 'NodeSocketInt',
  'INT8': 'NodeSocketInt',

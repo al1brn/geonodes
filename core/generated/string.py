@@ -1,4 +1,4 @@
-# Generated 2026-01-21 11:40:29
+# Generated 2026-03-26 08:37:01
 
 from __future__ import annotations
 from .. sockettype import SocketType
@@ -15,7 +15,7 @@ if TYPE_CHECKING:
     class Cloud: ...
     class Instances: ...
     class Volume: ...
-    class GrasePencil: ...
+    class GreasePencil: ...
     class Boolean: ...
     class Integer: ...
     class Float: ...
@@ -130,8 +130,7 @@ class String(Socket):
         node = Node('Hash Value', {'Value': self, 'Seed': seed}, data_type='STRING')
         return node._out
 
-    @classmethod
-    @property
+    @utils.classproperty
     def special_characters(cls):
         """ > Node <&Node Special Characters>
 
@@ -142,8 +141,7 @@ class String(Socket):
         node = Node('Special Characters', )
         return node._out
 
-    @classmethod
-    @property
+    @utils.classproperty
     def line_break(cls):
         """ > Node <&Node Special Characters>
 
@@ -154,8 +152,7 @@ class String(Socket):
         node = Node('Special Characters', )
         return node._out
 
-    @classmethod
-    @property
+    @utils.classproperty
     def tab(cls):
         """ > Node <&Node Special Characters>
 
@@ -319,15 +316,16 @@ class String(Socket):
 
     def to_curves(self,
                     size: Float = None,
+                    font: Font = None,
+                    align_x: Literal['Left', 'Center', 'Right', 'Justify', 'Flush'] = None,
+                    align_y: Literal['Top', 'Top Baseline', 'Middle', 'Bottom Baseline', 'Bottom'] = None,
+                    pivot_point: Literal['Midpoint', 'Top Left', 'Top Center', 'Top Right', 'Bottom Left', 'Bottom Center', 'Bottom Right'] = None,
                     character_spacing: Float = None,
                     word_spacing: Float = None,
                     line_spacing: Float = None,
+                    overflow: Literal['Overflow', 'Scale To Fit', 'Truncate'] = None,
                     text_box_width: Float = None,
-                    align_x: Literal['LEFT', 'CENTER', 'RIGHT', 'JUSTIFY', 'FLUSH'] = 'LEFT',
-                    align_y: Literal['TOP', 'TOP_BASELINE', 'MIDDLE', 'BOTTOM_BASELINE', 'BOTTOM'] = 'TOP_BASELINE',
-                    font = None,
-                    overflow: Literal['OVERFLOW', 'SCALE_TO_FIT', 'TRUNCATE'] = 'OVERFLOW',
-                    pivot_mode: Literal['MIDPOINT', 'TOP_LEFT', 'TOP_CENTER', 'TOP_RIGHT', 'BOTTOM_LEFT', 'BOTTOM_CENTER', 'BOTTOM_RIGHT'] = 'BOTTOM_LEFT'):
+                    text_box_height: Float = None):
         """ > Node <&Node String to Curves>
 
         Information
@@ -337,25 +335,22 @@ class String(Socket):
         Arguments
         ---------
         - size (Float) : socket 'Size' (id: Size)
+        - font (Font) : socket 'Font' (id: Font)
+        - align_x (menu='Left') : ('Left', 'Center', 'Right', 'Justify', 'Flush')
+        - align_y (menu='Top Baseline') : ('Top', 'Top Baseline', 'Middle', 'Bottom Baseline', 'Bottom')
+        - pivot_point (menu='Midpoint') : ('Midpoint', 'Top Left', 'Top Center', 'Top Right', 'Bottom Left', 'Bottom Center', 'Bottom Right')
         - character_spacing (Float) : socket 'Character Spacing' (id: Character Spacing)
         - word_spacing (Float) : socket 'Word Spacing' (id: Word Spacing)
         - line_spacing (Float) : socket 'Line Spacing' (id: Line Spacing)
+        - overflow (menu='Overflow') : ('Overflow', 'Scale To Fit', 'Truncate')
         - text_box_width (Float) : socket 'Text Box Width' (id: Text Box Width)
-        - align_x (str): parameter 'align_x' in ('Left', 'Center', 'Right', 'Justify', 'Flush')
-        - align_y (str): parameter 'align_y' in ('Top', 'Top Baseline', 'Middle', 'Bottom Baseline', 'Bottom')
-        - font (Blender VectorFont | str): VectorFont, or name of a valid font in bpy.types.fonts (see `utils.get_font`)
-        - overflow (str): parameter 'overflow' in ('Overflow', 'Scale To Fit', 'Truncate')
-        - pivot_mode (str): parameter 'pivot_mode' in ('Midpoint', 'Top Left', 'Top Center', 'Top Right', 'Bottom Left', 'Bottom Center', 'Bottom Right')
+        - text_box_height (Float) : socket 'Text Box Height' (id: Text Box Height)
 
         Returns
         -------
-        - Instances [line_ (Integer), pivot_point_ (Vector)]
+        - Instances [remainder_ (String), line_ (Integer), word_ (Integer), pivot_point_ (Vector)]
         """
-        utils.check_enum_arg('String to Curves', 'align_x', align_x, 'to_curves', ('LEFT', 'CENTER', 'RIGHT', 'JUSTIFY', 'FLUSH'))
-        utils.check_enum_arg('String to Curves', 'align_y', align_y, 'to_curves', ('TOP', 'TOP_BASELINE', 'MIDDLE', 'BOTTOM_BASELINE', 'BOTTOM'))
-        utils.check_enum_arg('String to Curves', 'overflow', overflow, 'to_curves', ('OVERFLOW', 'SCALE_TO_FIT', 'TRUNCATE'))
-        utils.check_enum_arg('String to Curves', 'pivot_mode', pivot_mode, 'to_curves', ('MIDPOINT', 'TOP_LEFT', 'TOP_CENTER', 'TOP_RIGHT', 'BOTTOM_LEFT', 'BOTTOM_CENTER', 'BOTTOM_RIGHT'))
-        node = Node('String to Curves', {'String': self, 'Size': size, 'Character Spacing': character_spacing, 'Word Spacing': word_spacing, 'Line Spacing': line_spacing, 'Text Box Width': text_box_width}, align_x=align_x, align_y=align_y, font=utils.get_font(font), overflow=overflow, pivot_mode=pivot_mode)
+        node = Node('String to Curves', {'String': self, 'Size': size, 'Font': font, 'Align X': align_x, 'Align Y': align_y, 'Pivot Point': pivot_point, 'Character Spacing': character_spacing, 'Word Spacing': word_spacing, 'Line Spacing': line_spacing, 'Overflow': overflow, 'Text Box Width': text_box_width, 'Text Box Height': text_box_height})
         return node._out
 
     def to_value(self, data_type: Literal['FLOAT', 'INT'] = 'FLOAT'):

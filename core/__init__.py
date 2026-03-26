@@ -12,6 +12,8 @@ d270   = np.pi*1.5
 d360   = tau
 e      = np.e
 
+version = "5.1.0"
+
 PRODUCTION = True
 
 if PRODUCTION:
@@ -35,6 +37,7 @@ if PRODUCTION:
     from .sock_object import Object
     from .sock_image import Image
     from .sock_material import Material
+    from .sock_font import Font
 
     from .sock_menu import Menu
 
@@ -51,7 +54,6 @@ if PRODUCTION:
     from .treeclass import Layout, Panel, Tree
     from .nodeclass import Node, Group, ColorRamp, G
     from .nodezone import simulation, repeat
-    #from .zones import Zone, Repeat, Simulation, ForEachElement
 
     from .geonodes import GeoNodes
 
@@ -82,6 +84,7 @@ if PRODUCTION:
     SOCKET_CLASSES[Shader.SOCKET_TYPE]      = Shader
     SOCKET_CLASSES[String.SOCKET_TYPE]      = String
     SOCKET_CLASSES[Vector.SOCKET_TYPE]      = Vector
+    SOCKET_CLASSES[Font.SOCKET_TYPE]        = Font
 
     GEOMETRY_CLASSES['Geometry']     = Geometry
     GEOMETRY_CLASSES['Mesh']         = Mesh

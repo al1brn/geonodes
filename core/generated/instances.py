@@ -1,4 +1,4 @@
-# Generated 2026-01-21 11:40:29
+# Generated 2026-03-26 08:37:01
 
 from __future__ import annotations
 from .. sockettype import SocketType
@@ -15,7 +15,7 @@ if TYPE_CHECKING:
     class Cloud: ...
     class Instances: ...
     class Volume: ...
-    class GrasePencil: ...
+    class GreasePencil: ...
     class Boolean: ...
     class Integer: ...
     class Float: ...
@@ -78,8 +78,7 @@ class Instances(Socket):
         node = Node('Import OBJ', {'Path': path})
         return cls(node._out)
 
-    @classmethod
-    @property
+    @utils.classproperty
     def rotation(cls):
         """ > Node <&Node Instance Rotation>
 
@@ -90,8 +89,7 @@ class Instances(Socket):
         node = Node('Instance Rotation', )
         return node._out
 
-    @classmethod
-    @property
+    @utils.classproperty
     def instance_scale(cls):
         """ > Node <&Node Instance Scale>
 

@@ -1,4 +1,4 @@
-# Generated 2026-01-21 11:40:29
+# Generated 2026-03-26 08:37:01
 
 from __future__ import annotations
 from .. sockettype import SocketType
@@ -15,7 +15,7 @@ if TYPE_CHECKING:
     class Cloud: ...
     class Instances: ...
     class Volume: ...
-    class GrasePencil: ...
+    class GreasePencil: ...
     class Boolean: ...
     class Integer: ...
     class Float: ...
@@ -878,7 +878,10 @@ class Curve(Socket):
         self._jump(node._out)
         return self._domain_to_geometry
 
-    def fill(self, group_id: Integer = None, mode: Literal['Triangles', 'N-gons'] = None):
+    def fill(self,
+                    group_id: Integer = None,
+                    mode: Literal['Triangles', 'N-gons'] = None,
+                    fill_rule: Literal['Even-Odd', 'Non-Zero'] = None):
         """ > Node <&Node Fill Curve>
 
         Information
@@ -889,12 +892,13 @@ class Curve(Socket):
         ---------
         - group_id (Integer) : socket 'Group ID' (id: Group ID)
         - mode (menu='Triangles') : ('Triangles', 'N-gons')
+        - fill_rule (menu='Even-Odd') : ('Even-Odd', 'Non-Zero')
 
         Returns
         -------
         - Mesh
         """
-        node = Node('Fill Curve', {'Curve': self, 'Group ID': group_id, 'Mode': mode})
+        node = Node('Fill Curve', {'Curve': self, 'Group ID': group_id, 'Mode': mode, 'Fill Rule': fill_rule})
         return node._out
 
     def fillet(self,
@@ -940,8 +944,7 @@ class Curve(Socket):
         node = Node('Curve Handle Positions', {'Relative': relative})
         return node._out
 
-    @classmethod
-    @property
+    @utils.classproperty
     def tangent(cls):
         """ > Node <&Node Curve Tangent>
 

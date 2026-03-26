@@ -113,16 +113,18 @@ def demo():
             # Simple Cone
             
             with Closure() as cone_cl:
-                scale = 4
+                bot_size = 5
+                height_scale = 20
+                height_min = 2
                 
                 radius = Float(0.05, "Radius")
-                aspect = Float(0.5, "Aspect")*scale
-                height = radius*scale
+                aspect = (Float(0.5, "Aspect")*height_scale + height_min)._lc("Aspect")
+                height = (radius*aspect)._lc("Height")
                 cone = Mesh.Cone(
                     vertices        = Input("Resolution", default_value = 12),
                     side_segments   = 2,
                     radius_top      = 0.0,
-                    radius_bottom   = radius*(1 + aspect),
+                    radius_bottom   = radius*bot_size,
                     depth           = height,
                 )
                 macros.move_coordinate(cone, height/2, -height/2 + 0.002, summit=height)
@@ -248,7 +250,8 @@ def demo():
                 
                 # Top specific
                 if ihead == 0:
-                    heads.offset = nvec.scale(lens - heights)
+                    #heads.offset = nvec.scale(lens - heights)
+                    heads.offset = nvec.scale(lens)
                     the_heads = heads
                 
                 # Bottom specific
