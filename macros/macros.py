@@ -45,19 +45,41 @@ def impulsion(value, from_min=0, from_max=1, amplitude=1., increase=.5, decrease
     Motion is taken into account by moving the intervals with c*t
     Falloff can take place with time and/or time. The fall is exp(-falloff * x^2))
 
-    Arguments
-    ---------
-    - value (Float) : the input value
-    - from_min (Float = 0) : value where the impulse starts
-    - from_max (Float = 1) : value where the impulse ends
-    - amplitude (Float = 1) : max returned value
-    - increase (Float = .5) : increase length
-    - decrease (Float = .5) : ecrease length
-    - c (Float = 0) : impulse celerity
-    - t (Float = 0) : time
-    - dist_falloff (Float = 0) : distance falloff
-    - time_falloff (Float = 0) : time falloff
-    - smooth (Boolean = True) : use map_range smooth option
+    Parameters
+    ----------
+    value : Float
+            the input value
+
+    from_min : Float, optional
+        value where the impulse starts Default: 0.
+
+    from_max : Float, optional
+        value where the impulse ends Default: 1.
+
+    amplitude : Float, optional
+        max returned value Default: 1.
+
+    increase : Float, optional
+        increase length Default: .5.
+
+    decrease : Float, optional
+        ecrease length Default: .5.
+
+    c : Float, optional
+        impulse celerity Default: 0.
+
+    t : Float, optional
+        time Default: 0.
+
+    dist_falloff : Float, optional
+        distance falloff Default: 0.
+
+    time_falloff : Float, optional
+        time falloff Default: 0.
+
+    smooth : Boolean, optional
+        use map_range smooth option Default: True.
+
     """
 
     with Layout("Macro - Inpulse Factor", color='MACRO'):
@@ -113,16 +135,24 @@ def integrals(x0=0, x1=1, count=100, **values):
     mesh.out()
     ```
 
-    Arguments
-    ---------
-    - x0 (Float = 0) : Left bound of the integration interval
-    - x1 (Float = 1) : Right bound of the integration interval
-    - count (Integer = 100) : number of intervals
-    - values (keyword arguments) : named argument
+    Parameters
+    ----------
+    x0 : Float, optional
+        Left bound of the integration interval Default: 0.
+
+    x1 : Float, optional
+        Right bound of the integration interval Default: 1.
+
+    count : Integer, optional
+        number of intervals Default: 100.
+
+    values : keyword arguments
+            named argument
+
 
     Returns
     -------
-    - dict keyed by values keys : the integrals
+    dict keyed by values keys : the integrals
     """
 
     with Layout("Macro - Integrals", color='MACRO'):
@@ -172,19 +202,33 @@ def double_integrals(x0=0, x1=1, y0=0, y1=1, count_x=100, count_y=100, **values)
     mesh.out()
     ```
 
-    Arguments
-    ---------
-    - x0 (Float = 0) : Left bound of the x integration interval
-    - x1 (Float = 1) : Right bound of the x integration interval
-    - y0 (Float = 0) : Left bound of the y integration interval
-    - y1 (Float = 1) : Right bound of the y integration interval
-    - count_x (Integer = 100) : number of intervals on x
-    - count_y (Integer = 100) : number of intervals on y
-    - values (keyword arguments) : named argument
+    Parameters
+    ----------
+    x0 : Float, optional
+        Left bound of the x integration interval Default: 0.
+
+    x1 : Float, optional
+        Right bound of the x integration interval Default: 1.
+
+    y0 : Float, optional
+        Left bound of the y integration interval Default: 0.
+
+    y1 : Float, optional
+        Right bound of the y integration interval Default: 1.
+
+    count_x : Integer, optional
+        number of intervals on x Default: 100.
+
+    count_y : Integer, optional
+        number of intervals on y Default: 100.
+
+    values : keyword arguments
+            named argument
+
 
     Returns
     -------
-    - dict keyed by values keys : the integrals
+    dict keyed by values keys : the integrals
     """
 
     with Layout("Macro - Double integrals", color='MACRO'):

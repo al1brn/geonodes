@@ -1,4 +1,4 @@
-# Generated 2026-03-26 08:37:01
+# Generated 2026-04-04 12:37:35
 
 from __future__ import annotations
 from .. sockettype import SocketType
@@ -36,14 +36,18 @@ class Menu(Socket):
     def menu_switch(self, named_sockets: dict = {}, **sockets):
         """ > Node <&Node Menu Switch>
 
-        Information
-        -----------
-        - Socket 'Menu' : self
-        - Parameter 'data_type' : depending on 'a' type
+        **Fixed values**
+
+        | Kind      | Name        | Value         |
+        | --------- | ----------- | ------------- |
+        | Socket    | Menu        | `self`        |
+        | Parameter | `data_type` | from `a` type |
 
         Returns
         -------
-        - Geometry [a_ (Boolean), b_ (Boolean)]
+        Geometry
+            peer sockets: a_ (Boolean), b_ (Boolean)
+
         """
         data_type = SocketType.get_data_type_for_node(a, 'GeometryNodeMenuSwitch')
         node = Node('Menu Switch', data_type=data_type)
@@ -54,18 +58,22 @@ class Menu(Socket):
     def enable_output(self, enable: Boolean = None):
         """ > Node <&Node Enable Output>
 
-        Information
-        -----------
-        - Socket 'Value' : self
-        - Parameter 'data_type' : 'MENU'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name        | Value    |
+        | --------- | ----------- | -------- |
+        | Socket    | Value       | `self`   |
+        | Parameter | `data_type` | `'MENU'` |
+
+        Parameters
         ---------
-        - enable (Boolean) : socket 'Enable' (id: Enable)
+        enable : Boolean, optional
+            socket 'Enable' (id: Enable)
+        
 
         Returns
         -------
-        - Menu
+        Menu
         """
         node = Node('Enable Output', {'Enable': enable, 'Value': self}, data_type='MENU')
         return node._out

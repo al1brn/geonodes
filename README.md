@@ -93,7 +93,7 @@ All nodes belong to a tree. Two tree types are available:
 
 # Tutorial
 
-> [!IMPORTANT]
+!!! important
 > Geometry Nodes modifiers and groups scripted by **geonodes** don't overwrite existing **modifier** or **groups**.
 
 > [!CAUTION]
@@ -187,7 +187,7 @@ with GeoNodes("Do Nothing"):
 
 A Geometry Nodes modifier has been created with the name "Do Nothing". You can use it on any object.
 
-> [!NOTE]
+!!! note
 > All scripts are supposed to start with ``` from geonodes import * ```.
 > Then, nodes must be created only in the sccope of **with** context.
 
@@ -209,7 +209,7 @@ _Math_, _Integer Math_, _Vector Math_ and _Boolean Math_ nodes.
 
 Math functions are named after their standard name in python **math** module.
 
-> [!NOTE]
+!!! note
 > **Vector** functions having the same name as their **Float** equivalent are prefixed with the letter *v*
 > **Integer** functions having the same name as their **Float** equivalent are prefixed with the letter *i*
 > All bitwise **Integer** operations are prefixed with *bw_*
@@ -239,7 +239,7 @@ Math functions are named after their standard name in python **math** module.
         j = gnmath.bw_and(i, 7)        
 ```
 
-> [!NOTE]
+!!! note
 > Similarly **Boolean** functions _and_, _or_ and _not_ are prefixed by the letter *b*
 
 ``` python
@@ -249,7 +249,7 @@ Math functions are named after their standard name in python **math** module.
     d = gnmath.band(b, False)
 ```
 
-> [!NOTE]
+!!! note
 > Math functions are also available as methods and some of them as operators.
 
 The following example gives the same result as the two previous ones:
@@ -340,7 +340,7 @@ the node '_Store Named Attribute_' is setup with the domain calling the method:
       mesh.faces.store_named_attribute("Face Value", 0.)
 ```
 
-> [!NOTE]
+!!! note
 > A **Domain** is never instanced directly, it is always initialized as a property of a Geometry Class.
 
 ### Operators
@@ -391,7 +391,7 @@ mesh = cube * ico # Union
 mesh = cube / ico # Intersect
 ```
 
-> [!NOTE]
+!!! note
 > Python _bool_ operators _or_, _and_ and _not_ don't apply on **Boolean** class, use their binary
 > equivalent instead : |, & and -.
 
@@ -401,7 +401,7 @@ When using ***geonodes***, a question rapidly arises: ***What is the name of the
 
 Naming conventions are used to easily answer to this question.
 
-> [!IMPORTANT]
+!!! important
 > In addition to the rules below, you can use the button ***[Node Help]*** in the right _Tool_ panel in the ***Geometry Nodes***
 > editor. This button generates the implementations of the selected nodes into a script named 'Node Help'.
 
@@ -536,7 +536,7 @@ The following conventions are used:
 6. **RULE G** : nodes having a _mode_ like parameter are implemented once per possible value:
   - You can write `mesh.raycast(mapping='INTERPOLATED')` or alternatively `mesh.raycast_interpolated()`
 
-> [!NOTE]
+!!! note
 > Use the button ***[Node Help]*** in the right _Tool_ panel in the ***Geometry Nodes***
 > editor to see all the methods which implement the selected nodes.
 
@@ -1076,7 +1076,7 @@ The object returned by the iterator exposes the input and output sockets.
 > Outside the ***for***, the **ouput sockets** come from **output node** and the
 > **input sockets** are those of the **input node**.
 
-> [!NOTE]
+!!! note
 > Within the ***for*** iteration, the geometry is the geometry to compute. The for iteration must
 > end with `xxx.out()` where `xxx` is the name of the Geometry class.
 > Outside the ***for*** iteration, the geometry has jumped to the zone output node and cand be used
@@ -1252,7 +1252,7 @@ must be called on a domain, such as in `Mesh.points.store("A Named Int", 1)`.
 One can also uses the named attribute property syntax which creates a named attribute for a property starting by a capital
 letter: `Mesh.points.A_Named_Int = 1` is equivalent to `Mesh.points.store("A Named Int", 1)`.
 
-> [!IMPORTANT]
+!!! important
 > To avoid names collision, the named attribute ***MUST*** start with a capital letter.
 > Underscore chars are replaced by spaces in the stored name.
 

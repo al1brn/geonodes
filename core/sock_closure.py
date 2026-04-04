@@ -186,16 +186,24 @@ class Closure(generated.Closure):
 
         Closure signature is the tuple (input_signature, output_signature)
 
-        Arguments
-        ---------
-        - include (list = None) : sockets to include
-        - exclude (list = []) : sockets to exclude
-        - enabled_only (bool = True) : ignore disabled sockets
-        - with_sockets (bool = False) : include sockets
+        Parameters
+        ----------
+        include : list, optional
+            sockets to include Default: None.
+
+        exclude : list, optional
+            sockets to exclude Default: [].
+
+        enabled_only : bool, optional
+            ignore disabled sockets Default: True.
+
+        with_sockets : bool, optional
+            include sockets Default: False.
+
 
         Returns
         -------
-        - Signature
+        Signature
         """
         if self._has_zone:
             return Signature(
@@ -253,15 +261,21 @@ class Closure(generated.Closure):
             closure.evaluate(closure_signature=ico.node.get_signature(), radius=3.14).out("Third Closure")
         ```
 
-        Arguments
-        ---------
-        - named_sockets (dict = {}) : named sockets values
-        - signature (Signature = None) : the evaluation signature
-        - sockets : socket values
+        Parameters
+        ----------
+        named_sockets : dict, optional
+            named sockets values Default: {}.
+
+        signature : Signature, optional
+            the evaluation signature Default: None.
+
+        sockets
+            socket values
+
 
         Returns
         -------
-        - First output socket of evaluation node
+        First output socket of evaluation node
         """
 
         _btree = self._tree._btree

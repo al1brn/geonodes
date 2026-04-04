@@ -1,4 +1,4 @@
-# Generated 2026-03-26 08:37:01
+# Generated 2026-04-04 12:37:35
 
 from __future__ import annotations
 from .. sockettype import SocketType
@@ -36,20 +36,24 @@ class String(Socket):
     def equal(self, b: String = None):
         """ > Node <&Node Compare>
 
-        Information
-        -----------
-        - Socket 'A' : self
-        - Parameter 'data_type' : 'STRING'
-        - Parameter 'mode' : 'ELEMENT'
-        - Parameter 'operation' : 'EQUAL'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name        | Value       |
+        | --------- | ----------- | ----------- |
+        | Socket    | A           | `self`      |
+        | Parameter | `data_type` | `'STRING'`  |
+        | Parameter | `mode`      | `'ELEMENT'` |
+        | Parameter | `operation` | `'EQUAL'`   |
+
+        Parameters
         ---------
-        - b (String) : socket 'B' (id: B_STR)
+        b : String, optional
+            socket 'B' (id: B_STR)
+        
 
         Returns
         -------
-        - Boolean
+        Boolean
         """
         node = Node('Compare', {'A_STR': self, 'B_STR': b}, data_type='STRING', mode='ELEMENT', operation='EQUAL')
         return node._out
@@ -57,20 +61,24 @@ class String(Socket):
     def not_equal(self, b: String = None):
         """ > Node <&Node Compare>
 
-        Information
-        -----------
-        - Socket 'A' : self
-        - Parameter 'data_type' : 'STRING'
-        - Parameter 'mode' : 'ELEMENT'
-        - Parameter 'operation' : 'NOT_EQUAL'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name        | Value         |
+        | --------- | ----------- | ------------- |
+        | Socket    | A           | `self`        |
+        | Parameter | `data_type` | `'STRING'`    |
+        | Parameter | `mode`      | `'ELEMENT'`   |
+        | Parameter | `operation` | `'NOT_EQUAL'` |
+
+        Parameters
         ---------
-        - b (String) : socket 'B' (id: B_STR)
+        b : String, optional
+            socket 'B' (id: B_STR)
+        
 
         Returns
         -------
-        - Boolean
+        Boolean
         """
         node = Node('Compare', {'A_STR': self, 'B_STR': b}, data_type='STRING', mode='ELEMENT', operation='NOT_EQUAL')
         return node._out
@@ -78,17 +86,23 @@ class String(Socket):
     def find_in_string(self, search: String = None):
         """ > Node <&Node Find in String>
 
-        Information
-        -----------
-        - Socket 'String' : self
+        **Fixed values**
 
-        Arguments
+        | Kind   | Name   | Value  |
+        | ------ | ------ | ------ |
+        | Socket | String | `self` |
+
+        Parameters
         ---------
-        - search (String) : socket 'Search' (id: Search)
+        search : String, optional
+            socket 'Search' (id: Search)
+        
 
         Returns
         -------
-        - Integer [count_ (Integer)]
+        Integer
+            peer sockets: count_ (Integer)
+
         """
         node = Node('Find in String', {'String': self, 'Search': search})
         return node._out
@@ -96,17 +110,23 @@ class String(Socket):
     def find(self, search: String = None):
         """ > Node <&Node Find in String>
 
-        Information
-        -----------
-        - Socket 'String' : self
+        **Fixed values**
 
-        Arguments
+        | Kind   | Name   | Value  |
+        | ------ | ------ | ------ |
+        | Socket | String | `self` |
+
+        Parameters
         ---------
-        - search (String) : socket 'Search' (id: Search)
+        search : String, optional
+            socket 'Search' (id: Search)
+        
 
         Returns
         -------
-        - Integer [count_ (Integer)]
+        Integer
+            peer sockets: count_ (Integer)
+
         """
         node = Node('Find in String', {'String': self, 'Search': search})
         return node._out
@@ -114,18 +134,22 @@ class String(Socket):
     def hash_value(self, seed: Integer = None):
         """ > Node <&Node Hash Value>
 
-        Information
-        -----------
-        - Socket 'Value' : self
-        - Parameter 'data_type' : 'STRING'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name        | Value      |
+        | --------- | ----------- | ---------- |
+        | Socket    | Value       | `self`     |
+        | Parameter | `data_type` | `'STRING'` |
+
+        Parameters
         ---------
-        - seed (Integer) : socket 'Seed' (id: Seed)
+        seed : Integer, optional
+            socket 'Seed' (id: Seed)
+        
 
         Returns
         -------
-        - Integer
+        Integer
         """
         node = Node('Hash Value', {'Value': self, 'Seed': seed}, data_type='STRING')
         return node._out
@@ -136,7 +160,9 @@ class String(Socket):
 
         Returns
         -------
-        - String [tab_ (String)]
+        String
+            peer sockets: tab_ (String)
+
         """
         node = Node('Special Characters', )
         return node._out
@@ -147,7 +173,9 @@ class String(Socket):
 
         Returns
         -------
-        - String [tab_ (String)]
+        String
+            peer sockets: tab_ (String)
+
         """
         node = Node('Special Characters', )
         return node._out
@@ -158,7 +186,7 @@ class String(Socket):
 
         Returns
         -------
-        - tab
+        tab
         """
         node = Node('Special Characters', )
         return node.tab
@@ -166,18 +194,24 @@ class String(Socket):
     def replace(self, find: String = None, replace: String = None):
         """ > Node <&Node Replace String>
 
-        Information
-        -----------
-        - Socket 'String' : self
+        **Fixed values**
 
-        Arguments
+        | Kind   | Name   | Value  |
+        | ------ | ------ | ------ |
+        | Socket | String | `self` |
+
+        Parameters
         ---------
-        - find (String) : socket 'Find' (id: Find)
-        - replace (String) : socket 'Replace' (id: Replace)
+        find : String, optional
+            socket 'Find' (id: Find)
+        
+        replace : String, optional
+            socket 'Replace' (id: Replace)
+        
 
         Returns
         -------
-        - String
+        String
         """
         node = Node('Replace String', {'String': self, 'Find': find, 'Replace': replace})
         return node._out
@@ -185,18 +219,24 @@ class String(Socket):
     def slice(self, position: Integer = None, length: Integer = None):
         """ > Node <&Node Slice String>
 
-        Information
-        -----------
-        - Socket 'String' : self
+        **Fixed values**
 
-        Arguments
+        | Kind   | Name   | Value  |
+        | ------ | ------ | ------ |
+        | Socket | String | `self` |
+
+        Parameters
         ---------
-        - position (Integer) : socket 'Position' (id: Position)
-        - length (Integer) : socket 'Length' (id: Length)
+        position : Integer, optional
+            socket 'Position' (id: Position)
+        
+        length : Integer, optional
+            socket 'Length' (id: Length)
+        
 
         Returns
         -------
-        - String
+        String
         """
         node = Node('Slice String', {'String': self, 'Position': position, 'Length': length})
         return node._out
@@ -204,13 +244,15 @@ class String(Socket):
     def length(self):
         """ > Node <&Node String Length>
 
-        Information
-        -----------
-        - Socket 'String' : self
+        **Fixed values**
+
+        | Kind   | Name   | Value  |
+        | ------ | ------ | ------ |
+        | Socket | String | `self` |
 
         Returns
         -------
-        - Integer
+        Integer
         """
         node = Node('String Length', {'String': self})
         return node._out
@@ -218,13 +260,15 @@ class String(Socket):
     def format(self, named_sockets: dict = {}, **sockets):
         """ > Node <&Node Format String>
 
-        Information
-        -----------
-        - Socket 'Format' : self
+        **Fixed values**
+
+        | Kind   | Name   | Value  |
+        | ------ | ------ | ------ |
+        | Socket | Format | `self` |
 
         Returns
         -------
-        - String
+        String
         """
         node = Node('Format String', {'Format': self, **named_sockets}, **sockets)
         return node._out
@@ -233,13 +277,15 @@ class String(Socket):
     def Format(cls, named_sockets: dict = {}, format: String = None, **sockets):
         """ > Node <&Node Format String>
 
-        Arguments
+        Parameters
         ---------
-        - format (String) : socket 'Format' (id: Format)
+        format : String, optional
+            socket 'Format' (id: Format)
+        
 
         Returns
         -------
-        - String
+        String
         """
         node = Node('Format String', {'Format': format, **named_sockets}, **sockets)
         return cls(node._out)
@@ -248,13 +294,15 @@ class String(Socket):
     def ImportText(cls, path: String = None):
         """ > Node <&Node Import Text>
 
-        Arguments
+        Parameters
         ---------
-        - path (String) : socket 'Path' (id: Path)
+        path : String, optional
+            socket 'Path' (id: Path)
+        
 
         Returns
         -------
-        - String
+        String
         """
         node = Node('Import Text', {'Path': path})
         return cls(node._out)
@@ -264,18 +312,24 @@ class String(Socket):
                     key: String = None):
         """ > Node <&Node Match String>
 
-        Information
-        -----------
-        - Socket 'String' : self
+        **Fixed values**
 
-        Arguments
+        | Kind   | Name   | Value  |
+        | ------ | ------ | ------ |
+        | Socket | String | `self` |
+
+        Parameters
         ---------
-        - operation (menu='Starts With') : ('Starts With', 'Ends With', 'Contains')
-        - key (String) : socket 'Key' (id: Key)
+        operation : menu='Starts With', optional
+            ('Starts With', 'Ends With', 'Contains')
+        
+        key : String, optional
+            socket 'Key' (id: Key)
+        
 
         Returns
         -------
-        - Boolean
+        Boolean
         """
         node = Node('Match String', {'String': self, 'Operation': operation, 'Key': key})
         return node._out
@@ -283,17 +337,21 @@ class String(Socket):
     def join(self, *strings: String):
         """ > Node <&Node Join Strings>
 
-        Information
-        -----------
-        - Socket 'Delimiter' : self
+        **Fixed values**
 
-        Arguments
+        | Kind   | Name      | Value  |
+        | ------ | --------- | ------ |
+        | Socket | Delimiter | `self` |
+
+        Parameters
         ---------
-        - strings (String) : socket 'Strings' (id: Strings)
+        strings : String, optional
+            socket 'Strings' (id: Strings)
+        
 
         Returns
         -------
-        - String
+        String
         """
         node = Node('Join Strings', {'Delimiter': self, 'Strings': list(strings)})
         return node._out
@@ -302,14 +360,18 @@ class String(Socket):
     def Join(cls, *strings: String, delimiter: String = None):
         """ > Node <&Node Join Strings>
 
-        Arguments
+        Parameters
         ---------
-        - delimiter (String) : socket 'Delimiter' (id: Delimiter)
-        - strings (String) : socket 'Strings' (id: Strings)
+        delimiter : String, optional
+            socket 'Delimiter' (id: Delimiter)
+        
+        strings : String, optional
+            socket 'Strings' (id: Strings)
+        
 
         Returns
         -------
-        - String
+        String
         """
         node = Node('Join Strings', {'Delimiter': delimiter, 'Strings': list(strings)})
         return cls(node._out)
@@ -328,27 +390,53 @@ class String(Socket):
                     text_box_height: Float = None):
         """ > Node <&Node String to Curves>
 
-        Information
-        -----------
-        - Socket 'String' : self
+        **Fixed values**
 
-        Arguments
+        | Kind   | Name   | Value  |
+        | ------ | ------ | ------ |
+        | Socket | String | `self` |
+
+        Parameters
         ---------
-        - size (Float) : socket 'Size' (id: Size)
-        - font (Font) : socket 'Font' (id: Font)
-        - align_x (menu='Left') : ('Left', 'Center', 'Right', 'Justify', 'Flush')
-        - align_y (menu='Top Baseline') : ('Top', 'Top Baseline', 'Middle', 'Bottom Baseline', 'Bottom')
-        - pivot_point (menu='Midpoint') : ('Midpoint', 'Top Left', 'Top Center', 'Top Right', 'Bottom Left', 'Bottom Center', 'Bottom Right')
-        - character_spacing (Float) : socket 'Character Spacing' (id: Character Spacing)
-        - word_spacing (Float) : socket 'Word Spacing' (id: Word Spacing)
-        - line_spacing (Float) : socket 'Line Spacing' (id: Line Spacing)
-        - overflow (menu='Overflow') : ('Overflow', 'Scale To Fit', 'Truncate')
-        - text_box_width (Float) : socket 'Text Box Width' (id: Text Box Width)
-        - text_box_height (Float) : socket 'Text Box Height' (id: Text Box Height)
+        size : Float, optional
+            socket 'Size' (id: Size)
+        
+        font : Font, optional
+            socket 'Font' (id: Font)
+        
+        align_x : menu='Left', optional
+            ('Left', 'Center', 'Right', 'Justify', 'Flush')
+        
+        align_y : menu='Top Baseline', optional
+            ('Top', 'Top Baseline', 'Middle', 'Bottom Baseline', 'Bottom')
+        
+        pivot_point : menu='Midpoint', optional
+            ('Midpoint', 'Top Left', 'Top Center', 'Top Right', 'Bottom Left', 'Bottom Center', 'Bottom Right')
+        
+        character_spacing : Float, optional
+            socket 'Character Spacing' (id: Character Spacing)
+        
+        word_spacing : Float, optional
+            socket 'Word Spacing' (id: Word Spacing)
+        
+        line_spacing : Float, optional
+            socket 'Line Spacing' (id: Line Spacing)
+        
+        overflow : menu='Overflow', optional
+            ('Overflow', 'Scale To Fit', 'Truncate')
+        
+        text_box_width : Float, optional
+            socket 'Text Box Width' (id: Text Box Width)
+        
+        text_box_height : Float, optional
+            socket 'Text Box Height' (id: Text Box Height)
+        
 
         Returns
         -------
-        - Instances [remainder_ (String), line_ (Integer), word_ (Integer), pivot_point_ (Vector)]
+        Instances
+            peer sockets: remainder_ (String), line_ (Integer), word_ (Integer), pivot_point_ (Vector)
+
         """
         node = Node('String to Curves', {'String': self, 'Size': size, 'Font': font, 'Align X': align_x, 'Align Y': align_y, 'Pivot Point': pivot_point, 'Character Spacing': character_spacing, 'Word Spacing': word_spacing, 'Line Spacing': line_spacing, 'Overflow': overflow, 'Text Box Width': text_box_width, 'Text Box Height': text_box_height})
         return node._out
@@ -356,17 +444,21 @@ class String(Socket):
     def to_value(self, data_type: Literal['FLOAT', 'INT'] = 'FLOAT'):
         """ > Node <&Node String to Value>
 
-        Information
-        -----------
-        - Socket 'String' : self
+        **Fixed values**
 
-        Arguments
+        | Kind   | Name   | Value  |
+        | ------ | ------ | ------ |
+        | Socket | String | `self` |
+
+        Parameters
         ---------
-        - data_type (str): parameter 'data_type' in ('Float', 'Integer')
+        data_type (str): parameter 'data_type' in ('Float', 'Integer')
 
         Returns
         -------
-        - Float [length_ (Integer)]
+        Float
+            peer sockets: length_ (Integer)
+
         """
         node = Node('String to Value', {'String': self}, data_type=data_type)
         return node._out
@@ -374,14 +466,18 @@ class String(Socket):
     def to_float(self):
         """ > Node <&Node String to Value>
 
-        Information
-        -----------
-        - Socket 'String' : self
-        - Parameter 'data_type' : 'FLOAT'
+        **Fixed values**
+
+        | Kind      | Name        | Value     |
+        | --------- | ----------- | --------- |
+        | Socket    | String      | `self`    |
+        | Parameter | `data_type` | `'FLOAT'` |
 
         Returns
         -------
-        - Float [length_ (Integer)]
+        Float
+            peer sockets: length_ (Integer)
+
         """
         node = Node('String to Value', {'String': self}, data_type='FLOAT')
         return node._out
@@ -389,14 +485,18 @@ class String(Socket):
     def to_integer(self):
         """ > Node <&Node String to Value>
 
-        Information
-        -----------
-        - Socket 'String' : self
-        - Parameter 'data_type' : 'INT'
+        **Fixed values**
+
+        | Kind      | Name        | Value   |
+        | --------- | ----------- | ------- |
+        | Socket    | String      | `self`  |
+        | Parameter | `data_type` | `'INT'` |
 
         Returns
         -------
-        - Integer [length_ (Integer)]
+        Integer
+            peer sockets: length_ (Integer)
+
         """
         node = Node('String to Value', {'String': self}, data_type='INT')
         return node._out
@@ -404,18 +504,22 @@ class String(Socket):
     def enable_output(self, enable: Boolean = None):
         """ > Node <&Node Enable Output>
 
-        Information
-        -----------
-        - Socket 'Value' : self
-        - Parameter 'data_type' : 'STRING'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name        | Value      |
+        | --------- | ----------- | ---------- |
+        | Socket    | Value       | `self`     |
+        | Parameter | `data_type` | `'STRING'` |
+
+        Parameters
         ---------
-        - enable (Boolean) : socket 'Enable' (id: Enable)
+        enable : Boolean, optional
+            socket 'Enable' (id: Enable)
+        
 
         Returns
         -------
-        - String
+        String
         """
         node = Node('Enable Output', {'Enable': enable, 'Value': self}, data_type='STRING')
         return node._out

@@ -76,13 +76,23 @@ class Geometry(generated.Geometry, Geom):
         geometry = Geometry(name="Mesh") # Input group geometry
         ```
 
-        Arguments
-        ---------
-        - value (Socket = None) : initial value
-        - name (str = None) : Create an Group Input socket with the provided str
-        - tip  (str = '') : Property description
-        - panel (str = "") : Panel name
-        - props (dict) : input properties
+        Parameters
+        ----------
+        value : Socket, optional
+            initial value Default: None.
+
+        name : str, optional
+            Create an Group Input socket with the provided str Default: None.
+
+        tip : str, default=''
+            Property description
+
+        panel : str, optional
+            Panel name Default: "".
+
+        props : dict
+            input properties
+
         """
         # ---------------------------------------------------------------------------
         # Geom interface
@@ -110,13 +120,15 @@ class Geometry(generated.Geometry, Geom):
 
         The "Do nothing" modifier is simply ``` Geometry().out() ```
 
-        Arguments
-        ---------
-        - name (str = None) : socket name
+        Parameters
+        ----------
+        name : str, optional
+            socket name Default: None.
+
 
         Returns
         -------
-        - None
+        None
         """
         if name is None:
             name = type(self).__name__
@@ -138,7 +150,9 @@ class Geometry(generated.Geometry, Geom):
 
         Returns
         -------
-        - Geometry : self
+        Geometry
+            self
+
         """
 
         node = Node('Bake', {'Geometry': self})

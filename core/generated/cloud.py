@@ -1,4 +1,4 @@
-# Generated 2026-03-26 08:37:01
+# Generated 2026-04-04 12:37:35
 
 from __future__ import annotations
 from .. sockettype import SocketType
@@ -36,14 +36,16 @@ class Cloud(Socket):
     def domain_size(self):
         """ > Node <&Node Domain Size>
 
-        Information
-        -----------
-        - Socket 'Geometry' : self
-        - Parameter 'component' : 'POINTCLOUD'
+        **Fixed values**
+
+        | Kind      | Name        | Value          |
+        | --------- | ----------- | -------------- |
+        | Socket    | Geometry    | `self`         |
+        | Parameter | `component` | `'POINTCLOUD'` |
 
         Returns
         -------
-        - Integer
+        Integer
         """
         node = self._cache('Domain Size', {'Geometry': self}, component='POINTCLOUD')
         return node._out
@@ -52,14 +54,18 @@ class Cloud(Socket):
     def ImportCSV(cls, path: String = None, delimiter: String = None):
         """ > Node <&Node Import CSV>
 
-        Arguments
+        Parameters
         ---------
-        - path (String) : socket 'Path' (id: Path)
-        - delimiter (String) : socket 'Delimiter' (id: Delimiter)
+        path : String, optional
+            socket 'Path' (id: Path)
+        
+        delimiter : String, optional
+            socket 'Delimiter' (id: Delimiter)
+        
 
         Returns
         -------
-        - Cloud
+        Cloud
         """
         node = Node('Import CSV', {'Path': path, 'Delimiter': delimiter})
         return cls(node._out)
@@ -72,22 +78,34 @@ class Cloud(Socket):
                     scale: Vector = None):
         """ > Node <&Node Instance on Points>
 
-        Information
-        -----------
-        - Socket 'Points' : self
-        - Socket 'Selection' : self[selection]
+        **Fixed values**
 
-        Arguments
+        | Kind   | Name      | Value             |
+        | ------ | --------- | ----------------- |
+        | Socket | Points    | `self`            |
+        | Socket | Selection | `self[selection]` |
+
+        Parameters
         ---------
-        - instance (Instances) : socket 'Instance' (id: Instance)
-        - pick_instance (Boolean) : socket 'Pick Instance' (id: Pick Instance)
-        - instance_index (Integer) : socket 'Instance Index' (id: Instance Index)
-        - rotation (Rotation) : socket 'Rotation' (id: Rotation)
-        - scale (Vector) : socket 'Scale' (id: Scale)
+        instance : Instances, optional
+            socket 'Instance' (id: Instance)
+        
+        pick_instance : Boolean, optional
+            socket 'Pick Instance' (id: Pick Instance)
+        
+        instance_index : Integer, optional
+            socket 'Instance Index' (id: Instance Index)
+        
+        rotation : Rotation, optional
+            socket 'Rotation' (id: Rotation)
+        
+        scale : Vector, optional
+            socket 'Scale' (id: Scale)
+        
 
         Returns
         -------
-        - Instances
+        Instances
         """
         node = Node('Instance on Points', {'Points': self, 'Selection': self.get_selection(), 'Instance': instance, 'Pick Instance': pick_instance, 'Instance Index': instance_index, 'Rotation': rotation, 'Scale': scale})
         return node._out
@@ -101,22 +119,38 @@ class Cloud(Socket):
                     max_neighbors: Integer = None):
         """ > Node <&Node Interpolate Curves>
 
-        Information
-        -----------
-        - Socket 'Points' : self
+        **Fixed values**
 
-        Arguments
+        | Kind   | Name   | Value  |
+        | ------ | ------ | ------ |
+        | Socket | Points | `self` |
+
+        Parameters
         ---------
-        - guide_curves (Curve) : socket 'Guide Curves' (id: Guide Curves)
-        - guide_up (Vector) : socket 'Guide Up' (id: Guide Up)
-        - guide_group_id (Integer) : socket 'Guide Group ID' (id: Guide Group ID)
-        - point_up (Vector) : socket 'Point Up' (id: Point Up)
-        - point_group_id (Integer) : socket 'Point Group ID' (id: Point Group ID)
-        - max_neighbors (Integer) : socket 'Max Neighbors' (id: Max Neighbors)
+        guide_curves : Curve, optional
+            socket 'Guide Curves' (id: Guide Curves)
+        
+        guide_up : Vector, optional
+            socket 'Guide Up' (id: Guide Up)
+        
+        guide_group_id : Integer, optional
+            socket 'Guide Group ID' (id: Guide Group ID)
+        
+        point_up : Vector, optional
+            socket 'Point Up' (id: Point Up)
+        
+        point_group_id : Integer, optional
+            socket 'Point Group ID' (id: Point Group ID)
+        
+        max_neighbors : Integer, optional
+            socket 'Max Neighbors' (id: Max Neighbors)
+        
 
         Returns
         -------
-        - Curve [closest_index_ (Integer), closest_weight_ (Float)]
+        Curve
+            peer sockets: closest_index_ (Integer), closest_weight_ (Float)
+
         """
         node = Node('Interpolate Curves', {'Guide Curves': guide_curves, 'Guide Up': guide_up, 'Guide Group ID': guide_group_id, 'Points': self, 'Point Up': point_up, 'Point Group ID': point_group_id, 'Max Neighbors': max_neighbors})
         return node._out
@@ -125,15 +159,21 @@ class Cloud(Socket):
     def Points(cls, count: Integer = None, position: Vector = None, radius: Float = None):
         """ > Node <&Node Points>
 
-        Arguments
+        Parameters
         ---------
-        - count (Integer) : socket 'Count' (id: Count)
-        - position (Vector) : socket 'Position' (id: Position)
-        - radius (Float) : socket 'Radius' (id: Radius)
+        count : Integer, optional
+            socket 'Count' (id: Count)
+        
+        position : Vector, optional
+            socket 'Position' (id: Position)
+        
+        radius : Float, optional
+            socket 'Radius' (id: Radius)
+        
 
         Returns
         -------
-        - Cloud
+        Cloud
         """
         node = Node('Points', {'Count': count, 'Position': position, 'Radius': radius})
         return cls(node._out)
@@ -141,18 +181,24 @@ class Cloud(Socket):
     def to_curves(self, curve_group_id: Integer = None, weight: Float = None):
         """ > Node <&Node Points to Curves>
 
-        Information
-        -----------
-        - Socket 'Points' : self
+        **Fixed values**
 
-        Arguments
+        | Kind   | Name   | Value  |
+        | ------ | ------ | ------ |
+        | Socket | Points | `self` |
+
+        Parameters
         ---------
-        - curve_group_id (Integer) : socket 'Curve Group ID' (id: Curve Group ID)
-        - weight (Float) : socket 'Weight' (id: Weight)
+        curve_group_id : Integer, optional
+            socket 'Curve Group ID' (id: Curve Group ID)
+        
+        weight : Float, optional
+            socket 'Weight' (id: Weight)
+        
 
         Returns
         -------
-        - Curve
+        Curve
         """
         node = Node('Points to Curves', {'Points': self, 'Curve Group ID': curve_group_id, 'Weight': weight})
         return node._out
@@ -160,14 +206,16 @@ class Cloud(Socket):
     def to_vertices(self):
         """ > Node <&Node Points to Vertices>
 
-        Information
-        -----------
-        - Socket 'Points' : self
-        - Socket 'Selection' : self[selection]
+        **Fixed values**
+
+        | Kind   | Name      | Value             |
+        | ------ | --------- | ----------------- |
+        | Socket | Points    | `self`            |
+        | Socket | Selection | `self[selection]` |
 
         Returns
         -------
-        - Mesh
+        Mesh
         """
         node = Node('Points to Vertices', {'Points': self, 'Selection': self.get_selection()})
         return node._out
@@ -180,21 +228,33 @@ class Cloud(Socket):
                     radius: Float = None):
         """ > Node <&Node Points to Volume>
 
-        Information
-        -----------
-        - Socket 'Points' : self
+        **Fixed values**
 
-        Arguments
+        | Kind   | Name   | Value  |
+        | ------ | ------ | ------ |
+        | Socket | Points | `self` |
+
+        Parameters
         ---------
-        - density (Float) : socket 'Density' (id: Density)
-        - resolution_mode (menu='Amount') : ('Amount', 'Size')
-        - voxel_size (Float) : socket 'Voxel Size' (id: Voxel Size)
-        - voxel_amount (Float) : socket 'Voxel Amount' (id: Voxel Amount)
-        - radius (Float) : socket 'Radius' (id: Radius)
+        density : Float, optional
+            socket 'Density' (id: Density)
+        
+        resolution_mode : menu='Amount', optional
+            ('Amount', 'Size')
+        
+        voxel_size : Float, optional
+            socket 'Voxel Size' (id: Voxel Size)
+        
+        voxel_amount : Float, optional
+            socket 'Voxel Amount' (id: Voxel Amount)
+        
+        radius : Float, optional
+            socket 'Radius' (id: Radius)
+        
 
         Returns
         -------
-        - Volume
+        Volume
         """
         node = Node('Points to Volume', {'Points': self, 'Density': density, 'Resolution Mode': resolution_mode, 'Voxel Size': voxel_size, 'Voxel Amount': voxel_amount, 'Radius': radius})
         return node._out
@@ -202,18 +262,24 @@ class Cloud(Socket):
     def to_sdf_grid(self, radius: Float = None, voxel_size: Float = None):
         """ > Node <&Node Points to SDF Grid>
 
-        Information
-        -----------
-        - Socket 'Points' : self
+        **Fixed values**
 
-        Arguments
+        | Kind   | Name   | Value  |
+        | ------ | ------ | ------ |
+        | Socket | Points | `self` |
+
+        Parameters
         ---------
-        - radius (Float) : socket 'Radius' (id: Radius)
-        - voxel_size (Float) : socket 'Voxel Size' (id: Voxel Size)
+        radius : Float, optional
+            socket 'Radius' (id: Radius)
+        
+        voxel_size : Float, optional
+            socket 'Voxel Size' (id: Voxel Size)
+        
 
         Returns
         -------
-        - Float
+        Float
         """
         node = Node('Points to SDF Grid', {'Points': self, 'Radius': radius, 'Voxel Size': voxel_size})
         return node._out
@@ -230,18 +296,22 @@ class Cloud(Socket):
 
         > ***Jump*** : Socket refers to node output socket after the call
 
-        Information
-        -----------
-        - Socket 'Points' : self
-        - Socket 'Selection' : self[selection]
+        **Fixed values**
 
-        Arguments
+        | Kind   | Name      | Value             |
+        | ------ | --------- | ----------------- |
+        | Socket | Points    | `self`            |
+        | Socket | Selection | `self[selection]` |
+
+        Parameters
         ---------
-        - radius (Float) : socket 'Radius' (id: Radius)
+        radius : Float, optional
+            socket 'Radius' (id: Radius)
+        
 
         Returns
         -------
-        - Cloud
+        Cloud
         """
         node = Node('Set Point Radius', {'Points': self, 'Selection': self.get_selection(), 'Radius': radius})
         self._jump(node._out)

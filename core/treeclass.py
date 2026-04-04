@@ -78,11 +78,15 @@ class Panel:
 
         All group input and output sockets an panels will be created within the current panel
 
-        Arguments
-        ---------
+        Parameters
+        ----------
         - name :panel title
-        - tip : panel description
-        - default_closed : closed by default
+        tip
+            panel description
+
+        default_closed
+            closed by default
+
         """
 
         self.tree   = Tree.current_tree()
@@ -187,11 +191,17 @@ class Layout:
             geo.out()
         ```
 
-        Arguments
-        ---------
-        - title (str = "") : Layout title
-        - color (blender color = None) : Layout color (randomly generated if None)
-        - node (Node = None) : the layout is inserted as direct parent of the node
+        Parameters
+        ----------
+        title : str, optional
+            Layout title Default: "".
+
+        color : blender color, optional
+            Layout color (randomly generated if None) Default: None.
+
+        node : Node, optional
+            the layout is inserted as direct parent of the node Default: None.
+
         """
 
         self.tree  = Tree.current_tree()
@@ -324,18 +334,21 @@ class Tree:
             pass
         ```
 
-        > [!IMPORTANT]
-        > Trees scripted with **geonodes** are kept distinct from manually created trees by putting the
-        > marker string _'GEONODES'_ in the description attribute. If you initialize a Tree with the
-        > name of an existing tree:
-        > - it will be replaced if it is a tree scripted with **geonodes**
-        > - it will be renamed if it is not the case
-        > This avoids to accidentally delete a manually created tree.
+        !!! important
 
-        > [!CAUTION]
-        > This doesn't work with shaders embedded in a Material. It is why the argument `replace_material` is set to False
-        > by default when creating a Shader. Hence, an existing material is not replaced by a geonodes scripts
-        > except if you change the default value of `replace_material` argument to True.
+            Trees scripted with **geonodes** are kept distinct from manually created trees by putting the
+            marker string _'GEONODES'_ in the description attribute. If you initialize a Tree with the
+            name of an existing tree:
+
+            - it will be replaced if it is a tree scripted with **geonodes**
+            - it will be renamed if it is not the case
+
+            This avoids to accidentally delete a manually created tree.
+
+        !!! warning
+            This doesn't work with shaders embedded in a Material. It is why the argument `replace_material` is set to False
+            by default when creating a Shader. Hence, an existing material is not replaced by a geonodes scripts
+            except if you change the default value of `replace_material` argument to True.
 
         ``` python
         # Create the material if it doesn't exist
@@ -348,8 +361,8 @@ class Tree:
             pass
         ```
 
-        > [!NOTE]
-        > `prefix` argument is added at the begining of the name.
+        !!! note
+            `prefix` argument is added at the begining of the name.
 
         ``` python
         # The two following modifiers have the same name
@@ -391,14 +404,24 @@ class Tree:
             a = G(math).divide(...)
         ```
 
-        Arguments
-        ---------
-        - tree_name : tree name
+        Parameters
+        ----------
+        tree_name
+            tree name
+
         - tree_type (str in in ('GeometryNodeTree', 'ShaderNodeTree') = 'GeometryNodeTree'): tree type 
-        - fake_user (bool = False) : fake user flag
-        - is_group (bool = False) : Group or not
-        - prefix (str = "") : prefix to add at the begining of the tree name
-        - replace_material (bool = False) : replace the existing matertial if True
+        fake_user : bool, optional
+            fake user flag Default: False.
+
+        is_group : bool, optional
+            Group or not Default: False.
+
+        prefix : str, optional
+            prefix to add at the begining of the tree name Default: "".
+
+        replace_material : bool, optional
+            replace the existing matertial if True Default: False.
+
         """
         self._btree = None
 
@@ -516,7 +539,9 @@ class Tree:
 
         Returns
         -------
-        - Tree : current tree or None
+        Tree
+            current tree or None
+
         """
         if len(Tree.TREE_STACK):
             return Tree.TREE_STACK[-1]
@@ -530,8 +555,8 @@ class Tree:
     def push(self):
         """ > Make this tree zone the current one
 
-        > [!IMPORTANT]
-        > This methods shouldn't be called directly, better use a **with** context block.
+        !!! important
+            This methods shouldn't be called directly, better use a **with** context block.
 
         ``` python
         with Tree("My Name"):
@@ -548,12 +573,14 @@ class Tree:
     def pop(self, error=False):
         """ > Remove this tree from the stack
 
-        > [!IMPORTANT]
-        > This methods shouldn't be called directly, better use a **with** context block.
+        !!! important
+            This methods shouldn't be called directly, better use a **with** context block.
 
         Raises
         ------
-        - NodeError : if this tree is not the current one
+        NodeError
+            if this tree is not the current one
+
 
         ``` python
         with Tree("My Name"):
@@ -671,19 +698,27 @@ class Tree:
     def remove_groups(names=None, prefix=None, geonodes=True, shadernodes=True):
         """ > Remove Groups created by GeoNodes.
 
-        > [!IMPORTANT]
-        > This method can only remove groups created by **GeoNodes**.
+        !!! important
+             This method can only remove groups created by **GeoNodes**.
 
-        Arguments
-        ---------
-        - names (str or list of strs = None) : name of the node groups to remove (all if None)
-        - prefix (str = None) : name prefix for the groups to delete
-        - geonodes (bool = True) : remove geometry nodes groups
-        - shaderndes (bool = True) : remove shader nodes groups
+        Parameters
+        ----------
+        names : str or list of strs, optional
+            name of the node groups to remove (all if None) Default: None.
+
+        prefix : str, optional
+            name prefix for the groups to delete Default: None.
+
+        geonodes : bool, optional
+            remove geometry nodes groups Default: True.
+
+        shaderndes : bool, optional
+            remove shader nodes groups Default: True.
+
 
         Returns
         -------
-        - None
+        None
         """
 
         groups = []
@@ -817,7 +852,7 @@ class Tree:
 
         Returns
         -------
-        - True if Tree is GeoNodes, False otherwise
+        True if Tree is GeoNodes, False otherwise
         """
         return cls.current_tree()._btree.bl_idname == 'GeometryNodeTree'
 
@@ -827,7 +862,7 @@ class Tree:
 
         Returns
         -------
-        - True if Tree is ShaderNodes, False otherwise
+        True if Tree is ShaderNodes, False otherwise
         """
         return cls.current_tree()._btree.bl_idname == 'ShaderNodeTree'
 
@@ -894,13 +929,17 @@ class Tree:
 
         Registered Nodes are stored in the dictionary : _nodes = bpy.types.Node.name -> Node
 
-        Arguments
-        ---------
-        - node (Node) : the newly created Node to register
+        Parameters
+        ----------
+        node : Node
+            the newly created Node to register
+
 
         Returns
         -------
-        - Node : the passed argument
+        Node
+            the passed argument
+
         """
 
         self._nodes[node._bnode.name] = node
@@ -961,12 +1000,20 @@ class Tree:
 
         This is an **input socket** of the zone, hence an **output socket** of the input node.
 
-        Arguments
-        ---------
-            - bl_idname (str) : socket bl_idname
-            - name (str): Socket name
-            - panel (str = "") : Panel to place the socket in
-            - props : properties specific to interface socket
+        Parameters
+        ----------
+            bl_idname : str
+            socket bl_idname
+
+            name : str
+                Socket name
+
+            panel : str, optional
+                Panel to place the socket in Default: "".
+
+            props
+                properties specific to interface socket
+
 
         Returns
         -------
@@ -995,7 +1042,7 @@ class Tree:
 
         Returns
         -------
-        - Signature
+        Signature
         """
         return Signature(
             Signature.from_node(
@@ -1022,7 +1069,7 @@ class Tree:
 
         Returns
         -------
-        - None
+        None
         """
         treearrange.arrange(self._btree)
 
@@ -1058,14 +1105,18 @@ class Tree:
     def link(self, out_socket, in_socket, handle_dynamic_sockets=False):
         """ > Create a link between two sockets.
 
-        Arguments
-        ---------
-        - out_socket (socket) : a node output socket
-        - in_socket (socket) : input socket from another node
+        Parameters
+        ----------
+        out_socket : socket
+            a node output socket
+
+        in_socket : socket
+            input socket from another node
+
 
         Returns
         -------
-        - Link
+        Link
         """
 
         #if hasattr(out_socket, '_bsocket'):
@@ -1106,7 +1157,7 @@ class Tree:
 
         Returns
         -------
-        - Node
+        Node
         """
         from .nodeclass import Node
 
@@ -1134,7 +1185,7 @@ class Tree:
 
         Returns
         -------
-        - Node
+        Node
         """
         from .nodeclass import Node
 
@@ -1282,13 +1333,23 @@ class Tree:
         **fixed):
         """ Add a method calling the Group.
 
-        Arguments
-        ---------
-        - target_class (type) : class to add the method to
-        - func_name (str = None) : name of the method to create (snae case version of group name if None)
-        - self_attr (str = None) : self name attribute name
-        - ret_class (type = None) : class to use to transtype the output socket
-        - fixed (dict) : fixed values for sockets        
+        Parameters
+        ----------
+        target_class : type
+            class to add the method to
+
+        func_name : str, optional
+            name of the method to create (snae case version of group name if None) Default: None.
+
+        self_attr : str, optional
+            self name attribute name Default: None.
+
+        ret_class : type, optional
+            class to use to transtype the output socket Default: None.
+
+        fixed : dict
+            fixed values for sockets        
+
         """
         from .nodeclass import Group
 

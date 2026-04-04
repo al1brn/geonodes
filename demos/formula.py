@@ -453,10 +453,14 @@ def build_groups():
     with GeoNodes("Dimensions", prefix=util_prefix, is_group=True):
         """ Compute dimensions of a selection in the mesh
 
-        Arguments
-        ---------
-        - Mesh (Mesh): input geometry
-        - Selection (Boolean) : Selection on mesh
+        Parameters
+        ----------
+        Mesh : Mesh
+            input geometry
+
+        Selection : Boolean
+            Selection on mesh
+
 
         Returns (meaning is obvious !)
         ------------------------------
@@ -501,13 +505,15 @@ def build_groups():
 
         For instance : \exists -> '∃'
 
-        Arguments
-        ---------
-        - String (String) : input string
+        Parameters
+        ----------
+        String : String
+            input string
+
 
         Returns
         -------
-        - String : string where LaTeX codes are replaced
+        String : string where LaTeX codes are replaced
         """
 
         s = String(None, "String")
@@ -574,21 +580,27 @@ def build_groups():
     with GeoNodes("Characters", prefix=char_prefix, is_group=True):
         """ Create a reference mesh from a string.
 
-        > [!NOTE]
+        !!! note
         > - LaTeX codes are accepted and replaced by there unicode value.
         > - The created meshes id left aligned
         > - The node also returns the dimensions of the created mesh using the
         >   output sockets of "Util Dimensions"
 
-        Arguments
-        ---------
-        - Chars (String) : the input string
-        - Italic (Boolean) : use italic font
-        - Bold (Boolean) : use bold font
+        Parameters
+        ----------
+        Chars : String
+            the input string
+
+        Italic : Boolean
+            use italic font
+
+        Bold : Boolean
+            use bold font
+
 
         Returns
         -------
-        - Mesh : the reference mesh
+        Mesh : the reference mesh
         - Output sockets of "Util Dimensions"
         """
 
@@ -633,21 +645,29 @@ def build_groups():
         - 1 : Circle / Ellipse
         - 2 : Triangle
 
-        > [!NOTE]
+        !!! note
         > - The created mesh is left aligned
         > - The node also returns the dimensions of the created mesh using the
         >   output sockets of "Util Dimensions"
 
-        Arguments
-        ---------
-        - Code (Integer) : shape code
-        - Width (Float) : shape width
-        - Height (Float) : shape height
-        - Tracking (Float) : tracking value (length below 0)
+        Parameters
+        ----------
+        Code : Integer
+            shape code
+
+        Width : Float
+            shape width
+
+        Height : Float
+            shape height
+
+        Tracking : Float
+            tracking value (length below 0)
+
 
         Returns
         -------
-        - Mesh : the reference mesh
+        Mesh : the reference mesh
         - Output sockets of "Util Dimensions"
         """
 
@@ -692,19 +712,23 @@ def build_groups():
         - SYMB_EQUAL    = 1 # Alternative to '=' character
         - SYMB_SIGN     = 2
 
-        > [!NOTE]
+        !!! note
         > - The created mesh is left aligned
         > - The node also returns the dimensions of the created mesh using the
         >   output sockets of "Util Dimensions"
 
-        Arguments
-        ---------
-        - Symbol (Integer) : symbol code
-        - Parameter (Float) : Factor for varying meshes
+        Parameters
+        ----------
+        Symbol : Integer
+            symbol code
+
+        Parameter : Float
+            Factor for varying meshes
+
 
         Returns
         -------
-        - Mesh : the reference mesh
+        Mesh : the reference mesh
         - Output sockets of "Util Dimensions"
         """
 
@@ -748,14 +772,18 @@ def build_groups():
     with GeoNodes("Index Info", prefix=util_prefix, is_group=True):
         """ Read the node info by index.
 
-        Arguments
-        ---------
-        - Formula (Geometry) : Geometry with tree structure
-        - Index (Integer) : an index on the tree structure
+        Parameters
+        ----------
+        Formula : Geometry
+            Geometry with tree structure
+
+        Index : Integer
+            an index on the tree structure
+
 
         Returns
         -------
-        - Default node info (index, ID, Owner, Depth, Order, Total, Explore)
+        Default node info (index, ID, Owner, Depth, Order, Total, Explore)
         - Type (Integer)
         - Code (Integer)
         - Argument (Integer)
@@ -803,14 +831,18 @@ def build_groups():
     with GeoNodes("Id Info", prefix=util_prefix, is_group=True):
         """ Read the node info by ID.
 
-        Arguments
-        ---------
-        - Formula (Geometry) : Geometry with tree structure
-        - Id (Integer) : an ID on the tree structure
+        Parameters
+        ----------
+        Formula : Geometry
+            Geometry with tree structure
+
+        Id : Integer
+            an ID on the tree structure
+
 
         Returns
         -------
-        - see "Util Index Info"
+        see "Util Index Info"
         """
 
         # :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -827,14 +859,18 @@ def build_groups():
     with GeoNodes("Explore Info", prefix=util_prefix, is_group=True):
         """ Read the node info by Explore index.
 
-        Arguments
-        ---------
-        - Formula (Geometry) : Geometry with tree structure
-        - Explore (Integer) : an Explore index on the tree structure
+        Parameters
+        ----------
+        Formula : Geometry
+            Geometry with tree structure
+
+        Explore : Integer
+            an Explore index on the tree structure
+
 
         Returns
         -------
-        - see "Util Index Info"
+        see "Util Index Info"
         """
 
         formula = Geometry(None, "Formula")
@@ -845,14 +881,18 @@ def build_groups():
     with GeoNodes("Selection Info", prefix=util_prefix, is_group=True):
         """ Read the node info by selection in the tree.
 
-        Arguments
-        ---------
-        - Formula (Geometry) : Geometry with tree structure
-        - Selection (Boolean) : an Explore index on the tree structure
+        Parameters
+        ----------
+        Formula : Geometry
+            Geometry with tree structure
+
+        Selection : Boolean
+            an Explore index on the tree structure
+
 
         Returns
         -------
-        - see "Util Index Info"
+        see "Util Index Info"
         """
 
         formula   = Geometry(None, "Formula")
@@ -871,15 +911,15 @@ def build_groups():
     with GeoNodes("Initialize Node", prefix=util_prefix, is_group=True):
         """ Initialize a node with its default values
 
-        Arguments
-        ---------
+        Parameters
+        ----------
         - Tree (Cloud)
         - Selection (Boolean)
         - Initial values
 
         Returns
         -------
-        - Tree
+        Tree
         """
 
         # :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -921,8 +961,8 @@ def build_groups():
     with GeoNodes("Transform", prefix=util_prefix, is_group=True):
         """ Rotate a term
 
-        Arguments
-        ---------
+        Parameters
+        ----------
         - Mesh
         - Scale X (Float)
         - Scale Y (Float)
@@ -930,11 +970,13 @@ def build_groups():
         - Set Color (Boolean)
         - Color (Color)
         - Fade (Float)
-        - Selection (Boolean = True) : selection
+        Selection : Boolean, optional
+            selection Default: True.
+
 
         Returns
         -------
-        - Mesh : Transformed Mesh
+        Mesh : Transformed Mesh
         """
 
         # oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
@@ -973,17 +1015,23 @@ def build_groups():
         Child meshes have be previously compiled, i.e. having ID and Explore attributes.
         These child mesh are aligned to form the group mesh.
 
-        Arguments
-        ---------
-        - Mesh (Mesh) : current compiled mesh
-        - Tree (Cloud) : tree
-        - Factor (Float) : animation factor
+        Parameters
+        ----------
+        Mesh : Mesh
+            current compiled mesh
+
+        Tree : Cloud
+            tree
+
+        Factor : Float
+            animation factor
+
         - Node > ID (Integer): compilation node ID
         - Node > Explore (Integer) : compilation node explore index
 
         Returns
         -------
-        - Mesh (Mesh)
+        Mesh (Mesh)
         """
         # oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
 
@@ -1034,11 +1082,17 @@ def build_groups():
 
         The reference mesh is duplicated and aligned left with proper material.
 
-        Arguments
-        ---------
-        - Mesh (Mesh) : current compiled mesh
-        - Tree (Cloud) : tree
-        - Factor (Float) : animation factor
+        Parameters
+        ----------
+        Mesh : Mesh
+            current compiled mesh
+
+        Tree : Cloud
+            tree
+
+        Factor : Float
+            animation factor
+
         - Node > ID (Integer): compilation node ID
         - Node > Explore (Integer) : compilation node explore index
         - Reference > Reference Mesh (Mesh) : reference mesh to copy faces from
@@ -1046,7 +1100,7 @@ def build_groups():
 
         Returns
         -------
-        - Mesh (Mesh)
+        Mesh (Mesh)
         """
         # oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
 
@@ -1085,11 +1139,17 @@ def build_groups():
 
         Faces are built form symbol code
 
-        Arguments
-        ---------
-        - Mesh (Mesh) : current compiled mesh
-        - Tree (Cloud) : tree
-        - Factor (Float) : animation factor
+        Parameters
+        ----------
+        Mesh : Mesh
+            current compiled mesh
+
+        Tree : Cloud
+            tree
+
+        Factor : Float
+            animation factor
+
         - Node > ID (Integer): compilation node ID
         - Node > Explore (Integer) : compilation node explore index
         - Symbol > Symbol Code (Integer) : symbol code
@@ -1097,7 +1157,7 @@ def build_groups():
 
         Returns
         -------
-        - Mesh (Mesh)
+        Mesh (Mesh)
         """
         # oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
 
@@ -1143,7 +1203,7 @@ def build_groups():
 
         This process is controlled by a factor to animated the decoration process.
 
-        > [!NOTE]
+        !!! note
         > If 'Apply' argument is False, the mesh is returned unchanged. This allows
         > to use this group to add optional decorator, typically with the following
         > piece of code:
@@ -1154,19 +1214,27 @@ def build_groups():
         mesh = GUtil.add_decorator(mesh, decorator=deco, apply=my_code.equal(DECO_CODE))
         ```
 
-        Arguments
-        ---------
+        Parameters
+        ----------
         - Mesh : mesh being built
-        - Content (Boolean) : selection on the mesh where to locate the decorator
-        - Apply (Boolean) : apply the decoration if True, keep unchange otherwise
-        - Decorator (Mesh) : the decorator to add
+        Content : Boolean
+            selection on the mesh where to locate the decorator
+
+        Apply : Boolean
+            apply the decoration if True, keep unchange otherwise
+
+        Decorator : Mesh
+            the decorator to add
+
         - Left Shift (Float) : horizontal translation of the mesh content
         - Vertical Shift (Float) : vertical translation of the mesh content
-        - Factor (Float in [0, 1]) : apply effect
+        Factor : Float in [0, 1]
+            apply effect
+
 
         Returns
         -------
-        - Mesh : the decorated mesh
+        Mesh : the decorated mesh
         """
 
         # :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -1203,11 +1271,17 @@ def build_groups():
 
         The decorator is built on the first child
 
-        Arguments
-        ---------
-        - Mesh (Mesh) : current compiled mesh
-        - Tree (Cloud) : tree
-        - Factor (Float) : animation factor
+        Parameters
+        ----------
+        Mesh : Mesh
+            current compiled mesh
+
+        Tree : Cloud
+            tree
+
+        Factor : Float
+            animation factor
+
         - Node > ID (Integer): compilation node ID
         - Node > Explore (Integer) : compilation node explore index
         - Decorator > Decoration Code (Integer) : decoration code
@@ -1215,7 +1289,7 @@ def build_groups():
 
         Returns
         -------
-        - Mesh (Mesh)
+        Mesh (Mesh)
         """
 
         unit = DECO_THICK
@@ -1420,17 +1494,23 @@ def build_groups():
 
         The fraction node has two children with roles ROLE_CONTENT ROLE_NUMERATOR
 
-        Arguments
-        ---------
-        - Mesh (Mesh) : current compiled mesh
-        - Tree (Cloud) : tree
-        - Factor (Float) : animation factor
+        Parameters
+        ----------
+        Mesh : Mesh
+            current compiled mesh
+
+        Tree : Cloud
+            tree
+
+        Factor : Float
+            animation factor
+
         - Node > ID (Integer): compilation node ID
         - Node > Explore (Integer) : compilation node explore index
 
         Returns
         -------
-        - Mesh (Mesh)
+        Mesh (Mesh)
         """
         # oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
 
@@ -1493,17 +1573,23 @@ def build_groups():
         - Indice
         - Exponent
 
-        Arguments
-        ---------
-        - Mesh (Mesh) : current compiled mesh
-        - Tree (Cloud) : tree
-        - Factor (Float) : animation factor
+        Parameters
+        ----------
+        Mesh : Mesh
+            current compiled mesh
+
+        Tree : Cloud
+            tree
+
+        Factor : Float
+            animation factor
+
         - Node > ID (Integer): compilation node ID
         - Node > Explore (Integer) : compilation node explore index
 
         Returns
         -------
-        - Mesh (Mesh)
+        Mesh (Mesh)
         """
         # oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
 
@@ -1557,17 +1643,23 @@ def build_groups():
         - Below
         - Above
 
-        Arguments
-        ---------
-        - Mesh (Mesh) : current compiled mesh
-        - Tree (Cloud) : tree
-        - Factor (Float) : animation factor
+        Parameters
+        ----------
+        Mesh : Mesh
+            current compiled mesh
+
+        Tree : Cloud
+            tree
+
+        Factor : Float
+            animation factor
+
         - Node > ID (Integer): compilation node ID
         - Node > Explore (Integer) : compilation node explore index
 
         Returns
         -------
-        - Mesh (Mesh)
+        Mesh (Mesh)
         """
         # oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
 
@@ -1650,17 +1742,23 @@ def build_groups():
         - From
         - To
 
-        Arguments
-        ---------
-        - Mesh (Mesh) : current compiled mesh
-        - Tree (Cloud) : tree
-        - Factor (Float) : animation factor
+        Parameters
+        ----------
+        Mesh : Mesh
+            current compiled mesh
+
+        Tree : Cloud
+            tree
+
+        Factor : Float
+            animation factor
+
         - Node > ID (Integer): compilation node ID
         - Node > Explore (Integer) : compilation node explore index
 
         Returns
         -------
-        - Mesh (Mesh)
+        Mesh (Mesh)
         """
         # oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
 
@@ -1878,14 +1976,18 @@ def build_groups():
         This guarantees that each group has if children ready for scaling and translation.
 
 
-        Arguments
-        ---------
-        - Formula (Mesh + Cloud) : the formula to compile
-        - Compile (Boolean) : compile or node
+        Parameters
+        ----------
+        Formula : Mesh + Cloud
+            the formula to compile
+
+        Compile : Boolean
+            compile or node
+
 
         Returns
         -------
-        - Formula (Mesh + Cloud)
+        Formula (Mesh + Cloud)
         """
         # oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
 
@@ -1981,18 +2083,22 @@ def build_groups():
     with GeoNodes("Insert Owner", prefix=util_prefix, is_group=True):
         """ Insert an owner on top of the given node
 
-        Arguments
-        ---------
+        Parameters
+        ----------
         - Formula (Geometry)
-        - ID (Integer) : Target node
+        ID : Integer
+            Target node
+
         - Create > Type (Integer) : created node type
         - Create > Role (Integer) : created node role
         - Create > Code (Integer) : created node core
 
         Returns
         -------
-        - Formula (Geometry)
-        - ID (Integer) : created node ID
+        Formula (Geometry)
+        ID : Integer
+            created node ID
+
         """
         # oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
 
@@ -2090,14 +2196,18 @@ def build_groups():
     with GeoNodes("Ensure Group", prefix=util_prefix, is_group=True):
         """ Make sure the tree root is a group
 
-        Arguments
-        ---------
+        Parameters
+        ----------
         - Formula (Geometry)
 
         Returns
         -------
-        - Formula (Geometry) : formula with root node to type TYPE_GROUP
-        - Empty (Boolean) : True if no points
+        Formula : Geometry
+            formula with root node to type TYPE_GROUP
+
+        Empty : Boolean
+            True if no points
+
         """
         # oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
 
@@ -2136,19 +2246,25 @@ def build_groups():
 
         The term is joined as last join of the formula root.
 
-        > [!NOTE]
+        !!! note
         > If formula is empty, the term is returned without change
 
-        Arguments
-        ---------
-        - Formula (Geometry) : the current formula
-        - Term (Geometry) : he term to append
+        Parameters
+        ----------
+        Formula : Geometry
+            the current formula
+
+        Term : Geometry
+            he term to append
+
         - Compile > Compile : compile the result
 
         Returns
         -------
-        - Formula (Geometry)
-        - ID (Integer) : ID of the inserted term
+        Formula (Geometry)
+        ID : Integer
+            ID of the inserted term
+
         """
         # oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
 
@@ -2201,16 +2317,22 @@ def build_groups():
     with GeoNodes("Characters", prefix=term_prefix, is_group=True):
         """ A term made of characters
 
-        Arguments
-        ---------
-        - Formula (Geometry) : the current formula
-        - Characters (String) : characters forming the term
+        Parameters
+        ----------
+        Formula : Geometry
+            the current formula
+
+        Characters : String
+            characters forming the term
+
         - Compile > Compile : compile the result
 
         Returns
         -------
-        - Formula (Geometry)
-        - ID (Integer) : ID of the created term
+        Formula (Geometry)
+        ID : Integer
+            ID of the created term
+
         """
         # oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
 
@@ -2245,17 +2367,25 @@ def build_groups():
     with GeoNodes("Symbol", prefix=term_prefix, is_group=True):
         """ A symbol
 
-        Arguments
-        ---------
-        - Formula (Geometry) : the current formula
-        - Symbol (Menu) : symbol
-        - Parameter (Integer) : parameters
+        Parameters
+        ----------
+        Formula : Geometry
+            the current formula
+
+        Symbol : Menu
+            symbol
+
+        Parameter : Integer
+            parameters
+
         - Compile > Compile : compile the result
 
         Returns
         -------
-        - Formula (Geometry)
-        - ID (Integer) : ID of the created term
+        Formula (Geometry)
+        ID : Integer
+            ID of the created term
+
         """
 
         # oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
@@ -2295,13 +2425,23 @@ def build_groups():
         - Role 2 : Exponent / above
         - Role 3 : RFU
 
-        Arguments
-        ---------
-        - Formula (Geometry) : the current formula
-        - Type (Integer) : the group type
-        - Code (Integer) : code
-        - Parameter (Integer) : parameter
-        - Content (Geometry) : content term
+        Parameters
+        ----------
+        Formula : Geometry
+            the current formula
+
+        Type : Integer
+            the group type
+
+        Code : Integer
+            code
+
+        Parameter : Integer
+            parameter
+
+        Content : Geometry
+            content term
+
         - Role 1 (Geometry) : role 1 term
         - Role 2 (Geometry) : role 2 term
         - Role 3 (Geometry) : role 3 term
@@ -2309,8 +2449,12 @@ def build_groups():
 
         Returns
         -------
-        - Formula (Geometry) : formula
-        - ID (Integer) : ID of the created node
+        Formula : Geometry
+            formula
+
+        ID : Integer
+            ID of the created node
+
         """
         # oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
 
@@ -2367,15 +2511,27 @@ def build_groups():
     with GeoNodes("Parameter", fake_user=True, prefix="Formula Set"):
         """ Set parameter on selection
 
-        Arguments
-        ---------
-        - Formula (Geometry) : the formula to set
-        - ID (Integer) : the formula term to change
-        - Scope (Menu) : group scope
+        Parameters
+        ----------
+        Formula : Geometry
+            the formula to set
+
+        ID : Integer
+            the formula term to change
+
+        Scope : Menu
+            group scope
+
         - Change Color (Boolean) : change color
-        - Color (Color) : color to set if change is requested
-        - Factor (Float = 1.) : factor
-        - Scale (Float = 1.) : scale
+        Color : Color
+            color to set if change is requested
+
+        Factor : Float, optional
+            factor Default: 1..
+
+        Scale : Float, optional
+            scale Default: 1..
+
         - X Scale (Float = 1.) : x scale
         - Y Scale (Float = 1.) : y scale
         """

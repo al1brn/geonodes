@@ -38,7 +38,7 @@ A central sun can be created.
 
 Simulation can be run in 2D or 3D.
 
-> [!NOTE]
+!!! note
 > Modifiers:
 > - A Tree
 > - Trees Collection

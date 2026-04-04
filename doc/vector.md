@@ -172,7 +172,9 @@ Aguments
 - min  (float = -3.40282e+38) : Property min_value
 - max  (float = 3.40282e+38) : Property max_value
 - tip  (str = '') : Property description
-- panel (str = "") : Panel name
+panel : str, optional
+    Panel name Default: "".
+
 - optional_label  (bool = False) : Property optional_label
 - hide_value  (bool = False) : Property hide_value
 - hide_in_modifier  (bool = False) : Property hide_in_modifier
@@ -301,7 +303,7 @@ bump(strength=None, distance=None, height=None, invert=False)
 
 [!SHADER]
 
-> [!NOTE]
+!!! note
 > Self Vector is plugged to 'Normal' socket
 
 #### Arguments:
@@ -404,7 +406,9 @@ Aguments
 - min  (float = -3.40282e+38) : Property min_value
 - max  (float = 3.40282e+38) : Property max_value
 - tip  (str = '') : Property description
-- panel (str = "") : Panel name
+panel : str, optional
+    Panel name Default: "".
+
 - optional_label  (bool = False) : Property optional_label
 - hide_value  (bool = False) : Property hide_value
 - hide_in_modifier  (bool = False) : Property hide_in_modifier
@@ -412,7 +416,9 @@ Aguments
 - default_attribute  (str = '') : Property default_attribute_name
 - default_input  (str = 'VALUE') : Property default_input in ('VALUE', 'NORMAL', 'POSITION', 'HANDLE_LEFT', 'HANDLE_RIGHT')
 - shape  (str = 'AUTO') : Property structure_type in ('AUTO', 'SINGLE')
-- subtype (str = 'NONE') : Socket sub type in ('NONE', 'PERCENTAGE', 'FACTOR', 'TRANSLATION', 'DIRECTION', 'VELOCITY', 'ACCELERATION', 'EULER', 'XYZ')
+subtype : str, optional
+    Socket sub type in ('NONE', 'PERCENTAGE', 'FACTOR', 'TRANSLATION', 'DIRECTION', 'VELOCITY', 'ACCELERATION', 'EULER', 'XYZ') Default: 'NONE'.
+
 
 #### Arguments:
 - **value** (_object_ = (0, 0, 0))
@@ -476,11 +482,17 @@ curves(fac=None, curves=None)
 > Node [Vector Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/vector/vector_curves.html)
 
 A curve is defined by a list of 3-tuples (not list):
-- x (float) : x position
-- y (float) : y position
-- handle_type (str) : handle type in ('AUTO', 'AUTO_CLAMPED', 'VECTOR')
+x : float
+            x position
 
-> [!NOTE]
+y : float
+            y position
+
+handle_type : str
+            handle type in ('AUTO', 'AUTO_CLAMPED', 'VECTOR')
+
+
+!!! note
 > handle_type is optional, its default value is 'AUTO'. Valid values are ('AUTO', 'AUTO_CLAMPED', 'VECTOR')
 
 #### Information:
@@ -519,7 +531,9 @@ Aguments
 - min  (float = -3.40282e+38) : Property min_value
 - max  (float = 3.40282e+38) : Property max_value
 - tip  (str = '') : Property description
-- panel (str = "") : Panel name
+panel : str, optional
+    Panel name Default: "".
+
 - optional_label  (bool = False) : Property optional_label
 - hide_value  (bool = False) : Property hide_value
 - hide_in_modifier  (bool = False) : Property hide_in_modifier
@@ -563,7 +577,7 @@ displacement(height=None, midlevel=None, scale=None, space='OBJECT')
 
 [!SHADER]
 
-> [!NOTE]
+!!! note
 > Self Vector is plugged to 'Normal' socket
 
 #### Arguments:
@@ -783,7 +797,9 @@ Aguments
 - min  (float = -3.40282e+38) : Property min_value
 - max  (float = 3.40282e+38) : Property max_value
 - tip  (str = '') : Property description
-- panel (str = "") : Panel name
+panel : str, optional
+    Panel name Default: "".
+
 - optional_label  (bool = False) : Property optional_label
 - hide_value  (bool = False) : Property hide_value
 - hide_in_modifier  (bool = False) : Property hide_in_modifier
@@ -862,7 +878,9 @@ Aguments
 - min  (float = -3.40282e+38) : Property min_value
 - max  (float = 3.40282e+38) : Property max_value
 - tip  (str = '') : Property description
-- panel (str = "") : Panel name
+panel : str, optional
+    Panel name Default: "".
+
 - optional_label  (bool = False) : Property optional_label
 - hide_value  (bool = False) : Property hide_value
 - hide_in_modifier  (bool = False) : Property hide_in_modifier
@@ -1786,7 +1804,7 @@ out(name=None, **props)
 
 [!MIX]
 
-> [!NOTE]
+!!! note
 > - [GeoNodes](geonodes.md#geonodes) : the Vector is plug as group output
 > - [ShaderNodes](shadernodes.md#shadernodes) : if **name** argument is None, the vecteur is plugged
 >.  into the `Displacement` socket of ERROR: Node '&Material Output' not found,
@@ -1847,7 +1865,9 @@ Aguments
 - min  (float = -3.40282e+38) : Property min_value
 - max  (float = 3.40282e+38) : Property max_value
 - tip  (str = '') : Property description
-- panel (str = "") : Panel name
+panel : str, optional
+    Panel name Default: "".
+
 - optional_label  (bool = False) : Property optional_label
 - hide_value  (bool = False) : Property hide_value
 - hide_in_modifier  (bool = False) : Property hide_in_modifier
@@ -2618,7 +2638,9 @@ Aguments
 - min  (float = -3.40282e+38) : Property min_value
 - max  (float = 3.40282e+38) : Property max_value
 - tip  (str = '') : Property description
-- panel (str = "") : Panel name
+panel : str, optional
+    Panel name Default: "".
+
 - optional_label  (bool = False) : Property optional_label
 - hide_value  (bool = False) : Property hide_value
 - hide_in_modifier  (bool = False) : Property hide_in_modifier
@@ -2794,7 +2816,9 @@ Aguments
 - min  (float = -3.40282e+38) : Property min_value
 - max  (float = 3.40282e+38) : Property max_value
 - tip  (str = '') : Property description
-- panel (str = "") : Panel name
+panel : str, optional
+    Panel name Default: "".
+
 - optional_label  (bool = False) : Property optional_label
 - hide_value  (bool = False) : Property hide_value
 - hide_in_modifier  (bool = False) : Property hide_in_modifier
@@ -2911,7 +2935,9 @@ Aguments
 - min  (float = -3.40282e+38) : Property min_value
 - max  (float = 3.40282e+38) : Property max_value
 - tip  (str = '') : Property description
-- panel (str = "") : Panel name
+panel : str, optional
+    Panel name Default: "".
+
 - optional_label  (bool = False) : Property optional_label
 - hide_value  (bool = False) : Property hide_value
 - hide_in_modifier  (bool = False) : Property hide_in_modifier

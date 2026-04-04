@@ -14,28 +14,50 @@ Attributes
 ----------
 - _tree (bpy.types.NodeTree): the tree the node belongs to
 - _bnode (bpy.types.Node): the Blender wrapped Node
-- _has_dyn_in (bool) : able to create dynamic input sockets
-- _has_dyn_out (bool) : able to create dynamic output sockets
-- _has_items (bool) : has at least one collection of dynamic items
-- _items (dict['INPUT', 'OUTPUT']) : items collections or None
-- _use_interface (bool) : the node dynamic sockets are managed with a NodeTree interface
-- _interface (TreeInterface) : interface of the node if it exists
+_has_dyn_in : bool
+            able to create dynamic input sockets
+
+_has_dyn_out : bool
+            able to create dynamic output sockets
+
+_has_items : bool
+            has at least one collection of dynamic items
+
+_items : dict['INPUT', 'OUTPUT']
+            items collections or None
+
+_use_interface : bool
+            the node dynamic sockets are managed with a NodeTree interface
+
+_interface : TreeInterface
+            interface of the node if it exists
+
 _ _interface_in_out (dict['INPUT', 'OUTPUT']) : in_out argument to access the Tree
-- _is_paired_input (bool) : the node is the input node of a zone of paired nodes
-- _is_paired_output (bool) : the node is the output node of a zone of paired nodes
-- _paired_input_node (Node) : paired input node
-- _paired_output_node (Node) : paired output node
-- _default_menu (str | int) : specific to MenuSwitch and IndexSwitch, forward menu value
+_is_paired_input : bool
+            the node is the input node of a zone of paired nodes
+
+_is_paired_output : bool
+            the node is the output node of a zone of paired nodes
+
+_paired_input_node : Node
+            paired input node
+
+_paired_output_node : Node
+            paired output node
+
+_default_menu : str | int
+            specific to MenuSwitch and IndexSwitch, forward menu value
+
 - _link_ignore : ignore these sockets in link_inputs method (already set)
 - _stack : call stack for warnings
 
-> [!NOTE]
+!!! note
 > NodeTree interface is used for Group Input and Output nodes and for Group node.
 > - Group Node : the input sockets are interface sockets for the TreeNode
 > - Group Input Node : the output sockets are input sockets of the interface
 > - Group Output Node : the input sockets are output sockets of the interface
 
-> [!NOTE]
+!!! note
 >  The '_out' property returns the first enabled output socket
 
 #### Arguments:
@@ -305,28 +327,50 @@ Attributes
 ----------
 - _tree (bpy.types.NodeTree): the tree the node belongs to
 - _bnode (bpy.types.Node): the Blender wrapped Node
-- _has_dyn_in (bool) : able to create dynamic input sockets
-- _has_dyn_out (bool) : able to create dynamic output sockets
-- _has_items (bool) : has at least one collection of dynamic items
-- _items (dict['INPUT', 'OUTPUT']) : items collections or None
-- _use_interface (bool) : the node dynamic sockets are managed with a NodeTree interface
-- _interface (TreeInterface) : interface of the node if it exists
+_has_dyn_in : bool
+            able to create dynamic input sockets
+
+_has_dyn_out : bool
+            able to create dynamic output sockets
+
+_has_items : bool
+            has at least one collection of dynamic items
+
+_items : dict['INPUT', 'OUTPUT']
+            items collections or None
+
+_use_interface : bool
+            the node dynamic sockets are managed with a NodeTree interface
+
+_interface : TreeInterface
+            interface of the node if it exists
+
 _ _interface_in_out (dict['INPUT', 'OUTPUT']) : in_out argument to access the Tree
-- _is_paired_input (bool) : the node is the input node of a zone of paired nodes
-- _is_paired_output (bool) : the node is the output node of a zone of paired nodes
-- _paired_input_node (Node) : paired input node
-- _paired_output_node (Node) : paired output node
-- _default_menu (str | int) : specific to MenuSwitch and IndexSwitch, forward menu value
+_is_paired_input : bool
+            the node is the input node of a zone of paired nodes
+
+_is_paired_output : bool
+            the node is the output node of a zone of paired nodes
+
+_paired_input_node : Node
+            paired input node
+
+_paired_output_node : Node
+            paired output node
+
+_default_menu : str | int
+            specific to MenuSwitch and IndexSwitch, forward menu value
+
 - _link_ignore : ignore these sockets in link_inputs method (already set)
 - _stack : call stack for warnings
 
-> [!NOTE]
+!!! note
 > NodeTree interface is used for Group Input and Output nodes and for Group node.
 > - Group Node : the input sockets are interface sockets for the TreeNode
 > - Group Input Node : the output sockets are input sockets of the interface
 > - Group Output Node : the input sockets are output sockets of the interface
 
-> [!NOTE]
+!!! note
 >  The '_out' property returns the first enabled output socket
 
 #### Arguments:
@@ -524,9 +568,15 @@ set_parameter(name: str, value, halt: bool = True)
 Set a node parameter
 
 Arguments
-- name (str) : parameter name
-- value (any) : parameter value
-- halt (bool = True) : raise an error if name is not a parameter
+name : str
+            parameter name
+
+value : any
+            parameter value
+
+halt : bool, optional
+    raise an error if name is not a parameter Default: True.
+
 
 #### Arguments:
 - **name** (_str_)

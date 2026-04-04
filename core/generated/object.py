@@ -1,4 +1,4 @@
-# Generated 2026-03-26 08:37:01
+# Generated 2026-04-04 12:37:35
 
 from __future__ import annotations
 from .. sockettype import SocketType
@@ -36,13 +36,17 @@ class Object(Socket):
     def camera_info(self):
         """ > Node <&Node Camera Info>
 
-        Information
-        -----------
-        - Socket 'Camera' : self
+        **Fixed values**
+
+        | Kind   | Name   | Value  |
+        | ------ | ------ | ------ |
+        | Socket | Camera | `self` |
 
         Returns
         -------
-        - Matrix [focal_length_ (Float), sensor_ (Vector), shift_ (Vector), clip_start_ (Float), clip_end_ (Float), focus_distance_ (Float), is_orthographic_ (Boolean), orthographic_scale_ (Float)]
+        Matrix
+            peer sockets: focal_length_ (Float), sensor_ (Vector), shift_ (Vector), clip_start_ (Float), clip_end_ (Float), focus_distance_ (Float), is_orthographic_ (Boolean), orthographic_scale_ (Float)
+
         """
         node = Node('Camera Info', {'Camera': self})
         return node._out
@@ -53,7 +57,7 @@ class Object(Socket):
 
         Returns
         -------
-        - Object
+        Object
         """
         node = Node('Active Camera', )
         return cls(node._out)
@@ -63,18 +67,24 @@ class Object(Socket):
                     transform_space: Literal['ORIGINAL', 'RELATIVE'] = 'ORIGINAL'):
         """ > Node <&Node Object Info>
 
-        Information
-        -----------
-        - Socket 'Object' : self
+        **Fixed values**
 
-        Arguments
+        | Kind   | Name   | Value  |
+        | ------ | ------ | ------ |
+        | Socket | Object | `self` |
+
+        Parameters
         ---------
-        - as_instance (Boolean) : socket 'As Instance' (id: As Instance)
-        - transform_space (str): parameter 'transform_space' in ('Original', 'Relative')
+        as_instance : Boolean, optional
+            socket 'As Instance' (id: As Instance)
+        
+        transform_space (str): parameter 'transform_space' in ('Original', 'Relative')
 
         Returns
         -------
-        - Matrix [location_ (Vector), rotation_ (Rotation), scale_ (Vector), geometry_ (Geometry)]
+        Matrix
+            peer sockets: location_ (Vector), rotation_ (Rotation), scale_ (Vector), geometry_ (Geometry)
+
         """
         utils.check_enum_arg('Object Info', 'transform_space', transform_space, 'info', ('ORIGINAL', 'RELATIVE'))
         node = Node('Object Info', {'Object': self, 'As Instance': as_instance}, transform_space=transform_space)
@@ -86,7 +96,7 @@ class Object(Socket):
 
         Returns
         -------
-        - Object
+        Object
         """
         node = Node('Self Object', )
         return cls(node._out)
@@ -94,18 +104,22 @@ class Object(Socket):
     def enable_output(self, enable: Boolean = None):
         """ > Node <&Node Enable Output>
 
-        Information
-        -----------
-        - Socket 'Value' : self
-        - Parameter 'data_type' : 'OBJECT'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name        | Value      |
+        | --------- | ----------- | ---------- |
+        | Socket    | Value       | `self`     |
+        | Parameter | `data_type` | `'OBJECT'` |
+
+        Parameters
         ---------
-        - enable (Boolean) : socket 'Enable' (id: Enable)
+        enable : Boolean, optional
+            socket 'Enable' (id: Enable)
+        
 
         Returns
         -------
-        - Object
+        Object
         """
         node = Node('Enable Output', {'Enable': enable, 'Value': self}, data_type='OBJECT')
         return node._out
@@ -115,18 +129,24 @@ class Object(Socket):
                     transform_space: Literal['ORIGINAL', 'RELATIVE'] = 'ORIGINAL'):
         """ > Node <&Node Bone Info>
 
-        Information
-        -----------
-        - Socket 'Armature' : self
+        **Fixed values**
 
-        Arguments
+        | Kind   | Name     | Value  |
+        | ------ | -------- | ------ |
+        | Socket | Armature | `self` |
+
+        Parameters
         ---------
-        - bone_name (String) : socket 'Bone Name' (id: Bone Name)
-        - transform_space (str): parameter 'transform_space' in ('Original', 'Relative')
+        bone_name : String, optional
+            socket 'Bone Name' (id: Bone Name)
+        
+        transform_space (str): parameter 'transform_space' in ('Original', 'Relative')
 
         Returns
         -------
-        - Matrix [local_pose_ (Matrix), transform_pose_ (Matrix), rest_pose_ (Matrix), rest_length_ (Float)]
+        Matrix
+            peer sockets: local_pose_ (Matrix), transform_pose_ (Matrix), rest_pose_ (Matrix), rest_length_ (Float)
+
         """
         utils.check_enum_arg('Bone Info', 'transform_space', transform_space, 'bone_info', ('ORIGINAL', 'RELATIVE'))
         node = Node('Bone Info', {'Armature': self, 'Bone Name': bone_name}, transform_space=transform_space)

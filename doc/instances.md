@@ -6,7 +6,7 @@ Instances(value: geonodes.core.socket_class.Socket = None, name: str = None, tip
 
 > Instances Geometry
 
-> [!NOTE]
+!!! note
 > The name of geometry class is plural : **Instances** when the name of the
 > domain is singular : [Instance](instance.md#instance). The named of the domain property is [insts](instances.md#insts).
 

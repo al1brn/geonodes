@@ -1,4 +1,4 @@
-# Generated 2026-03-26 08:37:01
+# Generated 2026-04-04 12:37:35
 
 from __future__ import annotations
 from .. sockettype import SocketType
@@ -53,28 +53,60 @@ class Matrix(Socket):
                     column_4_row_4: Float = None):
         """ > Node <&Node Combine Matrix>
 
-        Arguments
+        Parameters
         ---------
-        - column_1_row_1 (Float) : socket 'Column 1 Row 1' (id: Column 1 Row 1)
-        - column_1_row_2 (Float) : socket 'Column 1 Row 2' (id: Column 1 Row 2)
-        - column_1_row_3 (Float) : socket 'Column 1 Row 3' (id: Column 1 Row 3)
-        - column_1_row_4 (Float) : socket 'Column 1 Row 4' (id: Column 1 Row 4)
-        - column_2_row_1 (Float) : socket 'Column 2 Row 1' (id: Column 2 Row 1)
-        - column_2_row_2 (Float) : socket 'Column 2 Row 2' (id: Column 2 Row 2)
-        - column_2_row_3 (Float) : socket 'Column 2 Row 3' (id: Column 2 Row 3)
-        - column_2_row_4 (Float) : socket 'Column 2 Row 4' (id: Column 2 Row 4)
-        - column_3_row_1 (Float) : socket 'Column 3 Row 1' (id: Column 3 Row 1)
-        - column_3_row_2 (Float) : socket 'Column 3 Row 2' (id: Column 3 Row 2)
-        - column_3_row_3 (Float) : socket 'Column 3 Row 3' (id: Column 3 Row 3)
-        - column_3_row_4 (Float) : socket 'Column 3 Row 4' (id: Column 3 Row 4)
-        - column_4_row_1 (Float) : socket 'Column 4 Row 1' (id: Column 4 Row 1)
-        - column_4_row_2 (Float) : socket 'Column 4 Row 2' (id: Column 4 Row 2)
-        - column_4_row_3 (Float) : socket 'Column 4 Row 3' (id: Column 4 Row 3)
-        - column_4_row_4 (Float) : socket 'Column 4 Row 4' (id: Column 4 Row 4)
+        column_1_row_1 : Float, optional
+            socket 'Column 1 Row 1' (id: Column 1 Row 1)
+        
+        column_1_row_2 : Float, optional
+            socket 'Column 1 Row 2' (id: Column 1 Row 2)
+        
+        column_1_row_3 : Float, optional
+            socket 'Column 1 Row 3' (id: Column 1 Row 3)
+        
+        column_1_row_4 : Float, optional
+            socket 'Column 1 Row 4' (id: Column 1 Row 4)
+        
+        column_2_row_1 : Float, optional
+            socket 'Column 2 Row 1' (id: Column 2 Row 1)
+        
+        column_2_row_2 : Float, optional
+            socket 'Column 2 Row 2' (id: Column 2 Row 2)
+        
+        column_2_row_3 : Float, optional
+            socket 'Column 2 Row 3' (id: Column 2 Row 3)
+        
+        column_2_row_4 : Float, optional
+            socket 'Column 2 Row 4' (id: Column 2 Row 4)
+        
+        column_3_row_1 : Float, optional
+            socket 'Column 3 Row 1' (id: Column 3 Row 1)
+        
+        column_3_row_2 : Float, optional
+            socket 'Column 3 Row 2' (id: Column 3 Row 2)
+        
+        column_3_row_3 : Float, optional
+            socket 'Column 3 Row 3' (id: Column 3 Row 3)
+        
+        column_3_row_4 : Float, optional
+            socket 'Column 3 Row 4' (id: Column 3 Row 4)
+        
+        column_4_row_1 : Float, optional
+            socket 'Column 4 Row 1' (id: Column 4 Row 1)
+        
+        column_4_row_2 : Float, optional
+            socket 'Column 4 Row 2' (id: Column 4 Row 2)
+        
+        column_4_row_3 : Float, optional
+            socket 'Column 4 Row 3' (id: Column 4 Row 3)
+        
+        column_4_row_4 : Float, optional
+            socket 'Column 4 Row 4' (id: Column 4 Row 4)
+        
 
         Returns
         -------
-        - Matrix
+        Matrix
         """
         node = Node('Combine Matrix', {'Column 1 Row 1': column_1_row_1, 'Column 1 Row 2': column_1_row_2, 'Column 1 Row 3': column_1_row_3, 'Column 1 Row 4': column_1_row_4, 'Column 2 Row 1': column_2_row_1, 'Column 2 Row 2': column_2_row_2, 'Column 2 Row 3': column_2_row_3, 'Column 2 Row 4': column_2_row_4, 'Column 3 Row 1': column_3_row_1, 'Column 3 Row 2': column_3_row_2, 'Column 3 Row 3': column_3_row_3, 'Column 3 Row 4': column_3_row_4, 'Column 4 Row 1': column_4_row_1, 'Column 4 Row 2': column_4_row_2, 'Column 4 Row 3': column_4_row_3, 'Column 4 Row 4': column_4_row_4})
         return cls(node._out)
@@ -86,15 +118,21 @@ class Matrix(Socket):
                     scale: Vector = None):
         """ > Node <&Node Combine Transform>
 
-        Arguments
+        Parameters
         ---------
-        - translation (Vector) : socket 'Translation' (id: Translation)
-        - rotation (Rotation) : socket 'Rotation' (id: Rotation)
-        - scale (Vector) : socket 'Scale' (id: Scale)
+        translation : Vector, optional
+            socket 'Translation' (id: Translation)
+        
+        rotation : Rotation, optional
+            socket 'Rotation' (id: Rotation)
+        
+        scale : Vector, optional
+            socket 'Scale' (id: Scale)
+        
 
         Returns
         -------
-        - Matrix
+        Matrix
         """
         node = Node('Combine Transform', {'Translation': translation, 'Rotation': rotation, 'Scale': scale})
         return cls(node._out)
@@ -102,18 +140,22 @@ class Matrix(Socket):
     def hash_value(self, seed: Integer = None):
         """ > Node <&Node Hash Value>
 
-        Information
-        -----------
-        - Socket 'Value' : self
-        - Parameter 'data_type' : 'MATRIX'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name        | Value      |
+        | --------- | ----------- | ---------- |
+        | Socket    | Value       | `self`     |
+        | Parameter | `data_type` | `'MATRIX'` |
+
+        Parameters
         ---------
-        - seed (Integer) : socket 'Seed' (id: Seed)
+        seed : Integer, optional
+            socket 'Seed' (id: Seed)
+        
 
         Returns
         -------
-        - Integer
+        Integer
         """
         node = Node('Hash Value', {'Value': self, 'Seed': seed}, data_type='MATRIX')
         return node._out
@@ -121,13 +163,17 @@ class Matrix(Socket):
     def invert(self):
         """ > Node <&Node Invert Matrix>
 
-        Information
-        -----------
-        - Socket 'Matrix' : self
+        **Fixed values**
+
+        | Kind   | Name   | Value  |
+        | ------ | ------ | ------ |
+        | Socket | Matrix | `self` |
 
         Returns
         -------
-        - Matrix [invertible_ (Boolean)]
+        Matrix
+            peer sockets: invertible_ (Boolean)
+
         """
         node = Node('Invert Matrix', {'Matrix': self})
         return node._out
@@ -135,13 +181,15 @@ class Matrix(Socket):
     def determinant(self):
         """ > Node <&Node Matrix Determinant>
 
-        Information
-        -----------
-        - Socket 'Matrix' : self
+        **Fixed values**
+
+        | Kind   | Name   | Value  |
+        | ------ | ------ | ------ |
+        | Socket | Matrix | `self` |
 
         Returns
         -------
-        - Float
+        Float
         """
         node = Node('Matrix Determinant', {'Matrix': self})
         return node._out
@@ -149,17 +197,21 @@ class Matrix(Socket):
     def multiply(self, matrix: Matrix = None):
         """ > Node <&Node Multiply Matrices>
 
-        Information
-        -----------
-        - Socket 'Matrix' : self
+        **Fixed values**
 
-        Arguments
+        | Kind   | Name   | Value  |
+        | ------ | ------ | ------ |
+        | Socket | Matrix | `self` |
+
+        Parameters
         ---------
-        - matrix (Matrix) : socket 'Matrix' (id: Matrix_001)
+        matrix : Matrix, optional
+            socket 'Matrix' (id: Matrix_001)
+        
 
         Returns
         -------
-        - Matrix
+        Matrix
         """
         node = Node('Multiply Matrices', {'Matrix': self, 'Matrix_001': matrix})
         return node._out
@@ -167,17 +219,21 @@ class Matrix(Socket):
     def project_point(self, vector: Vector = None):
         """ > Node <&Node Project Point>
 
-        Information
-        -----------
-        - Socket 'Transform' : self
+        **Fixed values**
 
-        Arguments
+        | Kind   | Name      | Value  |
+        | ------ | --------- | ------ |
+        | Socket | Transform | `self` |
+
+        Parameters
         ---------
-        - vector (Vector) : socket 'Vector' (id: Vector)
+        vector : Vector, optional
+            socket 'Vector' (id: Vector)
+        
 
         Returns
         -------
-        - Vector
+        Vector
         """
         node = Node('Project Point', {'Vector': vector, 'Transform': self})
         return node._out
@@ -186,13 +242,15 @@ class Matrix(Socket):
     def as_tuple(self):
         """ > Node <&Node Separate Matrix>
 
-        Information
-        -----------
-        - Socket 'Matrix' : self
+        **Fixed values**
+
+        | Kind   | Name   | Value  |
+        | ------ | ------ | ------ |
+        | Socket | Matrix | `self` |
 
         Returns
         -------
-        - tuple (Float, Float, Float, Float, Float, Float, Float, Float, Float, Float, Float, Float, Float, Float, Float, Float)
+        tuple (Float, Float, Float, Float, Float, Float, Float, Float, Float, Float, Float, Float, Float, Float, Float, Float)
         """
         node = self._cache('Separate Matrix', {'Matrix': self})
         return (node.column_1_row_1, node.column_1_row_2, node.column_1_row_3, node.column_1_row_4, node.column_2_row_1, node.column_2_row_2, node.column_2_row_3, node.column_2_row_4, node.column_3_row_1, node.column_3_row_2, node.column_3_row_3, node.column_3_row_4, node.column_4_row_1, node.column_4_row_2, node.column_4_row_3, node.column_4_row_4)
@@ -200,13 +258,15 @@ class Matrix(Socket):
     def separate(self):
         """ > Node <&Node Separate Matrix>
 
-        Information
-        -----------
-        - Socket 'Matrix' : self
+        **Fixed values**
+
+        | Kind   | Name   | Value  |
+        | ------ | ------ | ------ |
+        | Socket | Matrix | `self` |
 
         Returns
         -------
-        - node [column_1_row_1 (Float), column_1_row_2 (Float), column_1_row_3 (Float), column_1_row_4 (Float), column_2_row_1 (Float), column_2_row_2 (Float), column_2_row_3 (Float), column_2_row_4 (Float), column_3_row_1 (Float), column_3_row_2 (Float), column_3_row_3 (Float), column_3_row_4 (Float), column_4_row_1 (Float), column_4_row_2 (Float), column_4_row_3 (Float), column_4_row_4 (Float)]
+        node [column_1_row_1 (Float), column_1_row_2 (Float), column_1_row_3 (Float), column_1_row_4 (Float), column_2_row_1 (Float), column_2_row_2 (Float), column_2_row_3 (Float), column_2_row_4 (Float), column_3_row_1 (Float), column_3_row_2 (Float), column_3_row_3 (Float), column_3_row_4 (Float), column_4_row_1 (Float), column_4_row_2 (Float), column_4_row_3 (Float), column_4_row_4 (Float)]
         """
         node = Node('Separate Matrix', {'Matrix': self})
         return node
@@ -214,13 +274,15 @@ class Matrix(Socket):
     def separate_matrix(self):
         """ > Node <&Node Separate Matrix>
 
-        Information
-        -----------
-        - Socket 'Matrix' : self
+        **Fixed values**
+
+        | Kind   | Name   | Value  |
+        | ------ | ------ | ------ |
+        | Socket | Matrix | `self` |
 
         Returns
         -------
-        - node [column_1_row_1 (Float), column_1_row_2 (Float), column_1_row_3 (Float), column_1_row_4 (Float), column_2_row_1 (Float), column_2_row_2 (Float), column_2_row_3 (Float), column_2_row_4 (Float), column_3_row_1 (Float), column_3_row_2 (Float), column_3_row_3 (Float), column_3_row_4 (Float), column_4_row_1 (Float), column_4_row_2 (Float), column_4_row_3 (Float), column_4_row_4 (Float)]
+        node [column_1_row_1 (Float), column_1_row_2 (Float), column_1_row_3 (Float), column_1_row_4 (Float), column_2_row_1 (Float), column_2_row_2 (Float), column_2_row_3 (Float), column_2_row_4 (Float), column_3_row_1 (Float), column_3_row_2 (Float), column_3_row_3 (Float), column_3_row_4 (Float), column_4_row_1 (Float), column_4_row_2 (Float), column_4_row_3 (Float), column_4_row_4 (Float)]
         """
         node = self._cache('Separate Matrix', {'Matrix': self})
         return node
@@ -229,13 +291,15 @@ class Matrix(Socket):
     def column_1_row_1(self):
         """ > Node <&Node Separate Matrix>
 
-        Information
-        -----------
-        - Socket 'Matrix' : self
+        **Fixed values**
+
+        | Kind   | Name   | Value  |
+        | ------ | ------ | ------ |
+        | Socket | Matrix | `self` |
 
         Returns
         -------
-        - column_1_row_1
+        column_1_row_1
         """
         node = self._cache('Separate Matrix', {'Matrix': self})
         return node.column_1_row_1
@@ -244,13 +308,15 @@ class Matrix(Socket):
     def column_1_row_2(self):
         """ > Node <&Node Separate Matrix>
 
-        Information
-        -----------
-        - Socket 'Matrix' : self
+        **Fixed values**
+
+        | Kind   | Name   | Value  |
+        | ------ | ------ | ------ |
+        | Socket | Matrix | `self` |
 
         Returns
         -------
-        - column_1_row_2
+        column_1_row_2
         """
         node = self._cache('Separate Matrix', {'Matrix': self})
         return node.column_1_row_2
@@ -259,13 +325,15 @@ class Matrix(Socket):
     def column_1_row_3(self):
         """ > Node <&Node Separate Matrix>
 
-        Information
-        -----------
-        - Socket 'Matrix' : self
+        **Fixed values**
+
+        | Kind   | Name   | Value  |
+        | ------ | ------ | ------ |
+        | Socket | Matrix | `self` |
 
         Returns
         -------
-        - column_1_row_3
+        column_1_row_3
         """
         node = self._cache('Separate Matrix', {'Matrix': self})
         return node.column_1_row_3
@@ -274,13 +342,15 @@ class Matrix(Socket):
     def column_1_row_4(self):
         """ > Node <&Node Separate Matrix>
 
-        Information
-        -----------
-        - Socket 'Matrix' : self
+        **Fixed values**
+
+        | Kind   | Name   | Value  |
+        | ------ | ------ | ------ |
+        | Socket | Matrix | `self` |
 
         Returns
         -------
-        - column_1_row_4
+        column_1_row_4
         """
         node = self._cache('Separate Matrix', {'Matrix': self})
         return node.column_1_row_4
@@ -289,13 +359,15 @@ class Matrix(Socket):
     def column_2_row_1(self):
         """ > Node <&Node Separate Matrix>
 
-        Information
-        -----------
-        - Socket 'Matrix' : self
+        **Fixed values**
+
+        | Kind   | Name   | Value  |
+        | ------ | ------ | ------ |
+        | Socket | Matrix | `self` |
 
         Returns
         -------
-        - column_2_row_1
+        column_2_row_1
         """
         node = self._cache('Separate Matrix', {'Matrix': self})
         return node.column_2_row_1
@@ -304,13 +376,15 @@ class Matrix(Socket):
     def column_2_row_2(self):
         """ > Node <&Node Separate Matrix>
 
-        Information
-        -----------
-        - Socket 'Matrix' : self
+        **Fixed values**
+
+        | Kind   | Name   | Value  |
+        | ------ | ------ | ------ |
+        | Socket | Matrix | `self` |
 
         Returns
         -------
-        - column_2_row_2
+        column_2_row_2
         """
         node = self._cache('Separate Matrix', {'Matrix': self})
         return node.column_2_row_2
@@ -319,13 +393,15 @@ class Matrix(Socket):
     def column_2_row_3(self):
         """ > Node <&Node Separate Matrix>
 
-        Information
-        -----------
-        - Socket 'Matrix' : self
+        **Fixed values**
+
+        | Kind   | Name   | Value  |
+        | ------ | ------ | ------ |
+        | Socket | Matrix | `self` |
 
         Returns
         -------
-        - column_2_row_3
+        column_2_row_3
         """
         node = self._cache('Separate Matrix', {'Matrix': self})
         return node.column_2_row_3
@@ -334,13 +410,15 @@ class Matrix(Socket):
     def column_2_row_4(self):
         """ > Node <&Node Separate Matrix>
 
-        Information
-        -----------
-        - Socket 'Matrix' : self
+        **Fixed values**
+
+        | Kind   | Name   | Value  |
+        | ------ | ------ | ------ |
+        | Socket | Matrix | `self` |
 
         Returns
         -------
-        - column_2_row_4
+        column_2_row_4
         """
         node = self._cache('Separate Matrix', {'Matrix': self})
         return node.column_2_row_4
@@ -349,13 +427,15 @@ class Matrix(Socket):
     def column_3_row_1(self):
         """ > Node <&Node Separate Matrix>
 
-        Information
-        -----------
-        - Socket 'Matrix' : self
+        **Fixed values**
+
+        | Kind   | Name   | Value  |
+        | ------ | ------ | ------ |
+        | Socket | Matrix | `self` |
 
         Returns
         -------
-        - column_3_row_1
+        column_3_row_1
         """
         node = self._cache('Separate Matrix', {'Matrix': self})
         return node.column_3_row_1
@@ -364,13 +444,15 @@ class Matrix(Socket):
     def column_3_row_2(self):
         """ > Node <&Node Separate Matrix>
 
-        Information
-        -----------
-        - Socket 'Matrix' : self
+        **Fixed values**
+
+        | Kind   | Name   | Value  |
+        | ------ | ------ | ------ |
+        | Socket | Matrix | `self` |
 
         Returns
         -------
-        - column_3_row_2
+        column_3_row_2
         """
         node = self._cache('Separate Matrix', {'Matrix': self})
         return node.column_3_row_2
@@ -379,13 +461,15 @@ class Matrix(Socket):
     def column_3_row_3(self):
         """ > Node <&Node Separate Matrix>
 
-        Information
-        -----------
-        - Socket 'Matrix' : self
+        **Fixed values**
+
+        | Kind   | Name   | Value  |
+        | ------ | ------ | ------ |
+        | Socket | Matrix | `self` |
 
         Returns
         -------
-        - column_3_row_3
+        column_3_row_3
         """
         node = self._cache('Separate Matrix', {'Matrix': self})
         return node.column_3_row_3
@@ -394,13 +478,15 @@ class Matrix(Socket):
     def column_3_row_4(self):
         """ > Node <&Node Separate Matrix>
 
-        Information
-        -----------
-        - Socket 'Matrix' : self
+        **Fixed values**
+
+        | Kind   | Name   | Value  |
+        | ------ | ------ | ------ |
+        | Socket | Matrix | `self` |
 
         Returns
         -------
-        - column_3_row_4
+        column_3_row_4
         """
         node = self._cache('Separate Matrix', {'Matrix': self})
         return node.column_3_row_4
@@ -409,13 +495,15 @@ class Matrix(Socket):
     def column_4_row_1(self):
         """ > Node <&Node Separate Matrix>
 
-        Information
-        -----------
-        - Socket 'Matrix' : self
+        **Fixed values**
+
+        | Kind   | Name   | Value  |
+        | ------ | ------ | ------ |
+        | Socket | Matrix | `self` |
 
         Returns
         -------
-        - column_4_row_1
+        column_4_row_1
         """
         node = self._cache('Separate Matrix', {'Matrix': self})
         return node.column_4_row_1
@@ -424,13 +512,15 @@ class Matrix(Socket):
     def column_4_row_2(self):
         """ > Node <&Node Separate Matrix>
 
-        Information
-        -----------
-        - Socket 'Matrix' : self
+        **Fixed values**
+
+        | Kind   | Name   | Value  |
+        | ------ | ------ | ------ |
+        | Socket | Matrix | `self` |
 
         Returns
         -------
-        - column_4_row_2
+        column_4_row_2
         """
         node = self._cache('Separate Matrix', {'Matrix': self})
         return node.column_4_row_2
@@ -439,13 +529,15 @@ class Matrix(Socket):
     def column_4_row_3(self):
         """ > Node <&Node Separate Matrix>
 
-        Information
-        -----------
-        - Socket 'Matrix' : self
+        **Fixed values**
+
+        | Kind   | Name   | Value  |
+        | ------ | ------ | ------ |
+        | Socket | Matrix | `self` |
 
         Returns
         -------
-        - column_4_row_3
+        column_4_row_3
         """
         node = self._cache('Separate Matrix', {'Matrix': self})
         return node.column_4_row_3
@@ -454,13 +546,15 @@ class Matrix(Socket):
     def column_4_row_4(self):
         """ > Node <&Node Separate Matrix>
 
-        Information
-        -----------
-        - Socket 'Matrix' : self
+        **Fixed values**
+
+        | Kind   | Name   | Value  |
+        | ------ | ------ | ------ |
+        | Socket | Matrix | `self` |
 
         Returns
         -------
-        - column_4_row_4
+        column_4_row_4
         """
         node = self._cache('Separate Matrix', {'Matrix': self})
         return node.column_4_row_4
@@ -469,13 +563,15 @@ class Matrix(Socket):
     def trs(self):
         """ > Node <&Node Separate Transform>
 
-        Information
-        -----------
-        - Socket 'Transform' : self
+        **Fixed values**
+
+        | Kind   | Name      | Value  |
+        | ------ | --------- | ------ |
+        | Socket | Transform | `self` |
 
         Returns
         -------
-        - tuple (Vector, Rotation, Vector)
+        tuple (Vector, Rotation, Vector)
         """
         node = Node('Separate Transform', {'Transform': self})
         return (node.translation, node.rotation, node.scale)
@@ -483,13 +579,15 @@ class Matrix(Socket):
     def separate_transform(self):
         """ > Node <&Node Separate Transform>
 
-        Information
-        -----------
-        - Socket 'Transform' : self
+        **Fixed values**
+
+        | Kind   | Name      | Value  |
+        | ------ | --------- | ------ |
+        | Socket | Transform | `self` |
 
         Returns
         -------
-        - node [translation (Vector), rotation (Rotation), scale (Vector)]
+        node [translation (Vector), rotation (Rotation), scale (Vector)]
         """
         node = self._cache('Separate Transform', {'Transform': self})
         return node
@@ -498,13 +596,15 @@ class Matrix(Socket):
     def translation(self):
         """ > Node <&Node Separate Transform>
 
-        Information
-        -----------
-        - Socket 'Transform' : self
+        **Fixed values**
+
+        | Kind   | Name      | Value  |
+        | ------ | --------- | ------ |
+        | Socket | Transform | `self` |
 
         Returns
         -------
-        - translation
+        translation
         """
         node = self._cache('Separate Transform', {'Transform': self})
         return node.translation
@@ -513,13 +613,15 @@ class Matrix(Socket):
     def rotation(self):
         """ > Node <&Node Separate Transform>
 
-        Information
-        -----------
-        - Socket 'Transform' : self
+        **Fixed values**
+
+        | Kind   | Name      | Value  |
+        | ------ | --------- | ------ |
+        | Socket | Transform | `self` |
 
         Returns
         -------
-        - rotation
+        rotation
         """
         node = self._cache('Separate Transform', {'Transform': self})
         return node.rotation
@@ -528,13 +630,15 @@ class Matrix(Socket):
     def scale(self):
         """ > Node <&Node Separate Transform>
 
-        Information
-        -----------
-        - Socket 'Transform' : self
+        **Fixed values**
+
+        | Kind   | Name      | Value  |
+        | ------ | --------- | ------ |
+        | Socket | Transform | `self` |
 
         Returns
         -------
-        - scale
+        scale
         """
         node = self._cache('Separate Transform', {'Transform': self})
         return node.scale
@@ -542,17 +646,21 @@ class Matrix(Socket):
     def transform_direction(self, direction: Vector = None):
         """ > Node <&Node Transform Direction>
 
-        Information
-        -----------
-        - Socket 'Transform' : self
+        **Fixed values**
 
-        Arguments
+        | Kind   | Name      | Value  |
+        | ------ | --------- | ------ |
+        | Socket | Transform | `self` |
+
+        Parameters
         ---------
-        - direction (Vector) : socket 'Direction' (id: Direction)
+        direction : Vector, optional
+            socket 'Direction' (id: Direction)
+        
 
         Returns
         -------
-        - Vector
+        Vector
         """
         node = Node('Transform Direction', {'Direction': direction, 'Transform': self})
         return node._out
@@ -560,17 +668,21 @@ class Matrix(Socket):
     def transform_point(self, vector: Vector = None):
         """ > Node <&Node Transform Point>
 
-        Information
-        -----------
-        - Socket 'Transform' : self
+        **Fixed values**
 
-        Arguments
+        | Kind   | Name      | Value  |
+        | ------ | --------- | ------ |
+        | Socket | Transform | `self` |
+
+        Parameters
         ---------
-        - vector (Vector) : socket 'Vector' (id: Vector)
+        vector : Vector, optional
+            socket 'Vector' (id: Vector)
+        
 
         Returns
         -------
-        - Vector
+        Vector
         """
         node = Node('Transform Point', {'Vector': vector, 'Transform': self})
         return node._out
@@ -578,13 +690,15 @@ class Matrix(Socket):
     def transpose(self):
         """ > Node <&Node Transpose Matrix>
 
-        Information
-        -----------
-        - Socket 'Matrix' : self
+        **Fixed values**
+
+        | Kind   | Name   | Value  |
+        | ------ | ------ | ------ |
+        | Socket | Matrix | `self` |
 
         Returns
         -------
-        - Matrix
+        Matrix
         """
         node = Node('Transpose Matrix', {'Matrix': self})
         return node._out
@@ -604,24 +718,30 @@ class Matrix(Socket):
                     use_translation_z = True):
         """ > Node <&Node Transform Gizmo>
 
-        Arguments
+        Parameters
         ---------
-        - value (Matrix) : socket 'Value' (id: Value)
-        - position (Vector) : socket 'Position' (id: Position)
-        - rotation (Rotation) : socket 'Rotation' (id: Rotation)
-        - use_rotation_x (bool): parameter 'use_rotation_x'
-        - use_rotation_y (bool): parameter 'use_rotation_y'
-        - use_rotation_z (bool): parameter 'use_rotation_z'
-        - use_scale_x (bool): parameter 'use_scale_x'
-        - use_scale_y (bool): parameter 'use_scale_y'
-        - use_scale_z (bool): parameter 'use_scale_z'
-        - use_translation_x (bool): parameter 'use_translation_x'
-        - use_translation_y (bool): parameter 'use_translation_y'
-        - use_translation_z (bool): parameter 'use_translation_z'
+        value : Matrix, optional
+            socket 'Value' (id: Value)
+        
+        position : Vector, optional
+            socket 'Position' (id: Position)
+        
+        rotation : Rotation, optional
+            socket 'Rotation' (id: Rotation)
+        
+        use_rotation_x (bool): parameter 'use_rotation_x'
+        use_rotation_y (bool): parameter 'use_rotation_y'
+        use_rotation_z (bool): parameter 'use_rotation_z'
+        use_scale_x (bool): parameter 'use_scale_x'
+        use_scale_y (bool): parameter 'use_scale_y'
+        use_scale_z (bool): parameter 'use_scale_z'
+        use_translation_x (bool): parameter 'use_translation_x'
+        use_translation_y (bool): parameter 'use_translation_y'
+        use_translation_z (bool): parameter 'use_translation_z'
 
         Returns
         -------
-        - Geometry
+        Geometry
         """
         node = Node('Transform Gizmo', {'Value': [self] + list(value), 'Position': position, 'Rotation': rotation}, use_rotation_x=use_rotation_x, use_rotation_y=use_rotation_y, use_rotation_z=use_rotation_z, use_scale_x=use_scale_x, use_scale_y=use_scale_y, use_scale_z=use_scale_z, use_translation_x=use_translation_x, use_translation_y=use_translation_y, use_translation_z=use_translation_z)
         return node._out
@@ -630,17 +750,21 @@ class Matrix(Socket):
     def Named(cls, name: String = None):
         """ > Node <&Node Named Attribute>
 
-        Information
-        -----------
-        - Parameter 'data_type' : 'FLOAT4X4'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name        | Value        |
+        | --------- | ----------- | ------------ |
+        | Parameter | `data_type` | `'FLOAT4X4'` |
+
+        Parameters
         ---------
-        - name (String) : socket 'Name' (id: Name)
+        name : String, optional
+            socket 'Name' (id: Name)
+        
 
         Returns
         -------
-        - Matrix
+        Matrix
         """
         node = Node('Named Attribute', {'Name': name}, data_type='FLOAT4X4')
         return cls(node._out)
@@ -649,17 +773,21 @@ class Matrix(Socket):
     def NamedAttribute(cls, name: String = None):
         """ > Node <&Node Named Attribute>
 
-        Information
-        -----------
-        - Parameter 'data_type' : 'FLOAT4X4'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name        | Value        |
+        | --------- | ----------- | ------------ |
+        | Parameter | `data_type` | `'FLOAT4X4'` |
+
+        Parameters
         ---------
-        - name (String) : socket 'Name' (id: Name)
+        name : String, optional
+            socket 'Name' (id: Name)
+        
 
         Returns
         -------
-        - Matrix
+        Matrix
         """
         node = Node('Named Attribute', {'Name': name}, data_type='FLOAT4X4')
         return cls(node._out)
@@ -667,18 +795,22 @@ class Matrix(Socket):
     def enable_output(self, enable: Boolean = None):
         """ > Node <&Node Enable Output>
 
-        Information
-        -----------
-        - Socket 'Value' : self
-        - Parameter 'data_type' : 'MATRIX'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name        | Value      |
+        | --------- | ----------- | ---------- |
+        | Socket    | Value       | `self`     |
+        | Parameter | `data_type` | `'MATRIX'` |
+
+        Parameters
         ---------
-        - enable (Boolean) : socket 'Enable' (id: Enable)
+        enable : Boolean, optional
+            socket 'Enable' (id: Enable)
+        
 
         Returns
         -------
-        - Matrix
+        Matrix
         """
         node = Node('Enable Output', {'Enable': enable, 'Value': self}, data_type='MATRIX')
         return node._out
@@ -686,13 +818,17 @@ class Matrix(Socket):
     def svd(self):
         """ > Node <&Node Matrix SVD>
 
-        Information
-        -----------
-        - Socket 'Matrix' : self
+        **Fixed values**
+
+        | Kind   | Name   | Value  |
+        | ------ | ------ | ------ |
+        | Socket | Matrix | `self` |
 
         Returns
         -------
-        - Matrix [s_ (Vector), v_ (Matrix)]
+        Matrix
+            peer sockets: s_ (Vector), v_ (Matrix)
+
         """
         node = Node('Matrix SVD', {'Matrix': self})
         return node._out

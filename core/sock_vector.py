@@ -109,7 +109,7 @@ class Vector(generated.Vector):
 
         Returns
         -------
-        - Vector
+        Vector
         """
         from .sock_rotation import Rotation
         return Rotation(rotation).to_euler()
@@ -131,15 +131,21 @@ class Vector(generated.Vector):
         - Parameter 'data_type' : 'VECTOR'
         - Parameter 'factor_mode' : 'UNIFORM' or 'NON_UNIFORM' depending on factor argument
 
-        Arguments
-        ---------
-        - b (Vector) : socket 'B' (id: B_Vector)
-        - factor (Float or Vector) : socket 'Factor'
-        - clamp_factor (bool): parameter 'clamp_factor'
+        Parameters
+        ----------
+        b : Vector
+            socket 'B' (id: B_Vector)
+
+        factor : Float or Vector
+            socket 'Factor'
+
+        clamp_factor : bool
+            parameter 'clamp_factor'
+
 
         Returns
         -------
-        - Vector
+        Vector
         """
         if utils.is_vector_like(factor):
             return self.mix_non_uniform(b, factor=factor, clamp_factor=clamp_factor)
@@ -153,25 +159,38 @@ class Vector(generated.Vector):
         """ > Node <&Node Vector Curves>
 
         A curve is defined by a list of 3-tuples (not list):
-        - x (float) : x position
-        - y (float) : y position
-        - handle_type (str) : handle type in ('AUTO', 'AUTO_CLAMPED', 'VECTOR')
+        x : float
+            x position
 
-        > [!NOTE]
-        > handle_type is optional, its default value is 'AUTO'. Valid values are ('AUTO', 'AUTO_CLAMPED', 'VECTOR')
+        y : float
+            y position
 
-        Information
-        -----------
-        - Socket 'Vector' : self
+        handle_type : str
+            handle type in ('AUTO', 'AUTO_CLAMPED', 'VECTOR')
 
-        Arguments
-        ---------
-        - fac (Float) : socket 'Fac' (id: Fac)
-        - curves (list of lists of tuples (float, float, str)) : curves points
+
+        !!! note
+            handle_type is optional, its default value is 'AUTO'. Valid values are ('AUTO', 'AUTO_CLAMPED', 'VECTOR')
+
+        **Fixed values**
+
+        **Fixed values**
+
+        | Kind      | Name        | Value   |
+        | --------- | ----------- | ------- |
+        | Socket    | Vector      | `self`  |
+
+        Parameters
+        ----------
+        fac : Float
+            socket 'Fac' (id: Fac)
+
+        curves : list[list[tuple[float, float, str]]]
+            curves points
 
         Returns
         -------
-        - Vector
+        Vector
         """
         node = NodeCurves('Vector Curves', named_sockets={'Vector': self, 'Fac': fac})
         node.set_curves(curves)
@@ -285,11 +304,12 @@ class Vector(generated.Vector):
 
         [!MIX]
 
-        > [!NOTE]
-        > - <!GeoNodes> : the Vector is plug as group output
-        > - <!ShaderNodes> : if **name** argument is None, the vecteur is plugged
-        >.  into the `Displacement` socket of <&ShaderNode &Material Output>,
-        >   otherwise it is plugged to a <&ShaderNode AOV Output> node.
+        !!! note
+
+            - <!GeoNodes> : the Vector is plugged as group output
+            - <!ShaderNodes> : if **name** argument is None, the vecteur is plugged
+              into the `Displacement` socket of <&ShaderNode &Material Output>,
+              otherwise it is plugged to a <&ShaderNode AOV Output> node.
 
         """
         if self._tree._btree.bl_idname == 'ShaderNodeTree' and not self._tree._is_group:
@@ -314,15 +334,21 @@ class Vector(generated.Vector):
 
         [!SHADER]
 
-        Arguments
-        ---------
-        - axis (str): Node.axis in ('X', 'Y', 'Z')
-        - direction_type (str): Node.direction_type in ('RADIAL', 'UV_MAP')
-        - uv_map (str): Node.uv_map
+        Parameters
+        ----------
+        axis : str
+            Node.axis in ('X', 'Y', 'Z')
+
+        direction_type : str
+            Node.direction_type in ('RADIAL', 'UV_MAP')
+
+        uv_map : str
+            Node.uv_map
+
 
         Returns
         -------
-        - Vector
+        Vector
         """
         node = Node('Tangent', axis=axis, direction_type=direction_type, uv_map=uv_map)
         return node._out
@@ -333,14 +359,18 @@ class Vector(generated.Vector):
 
         [!SHADER]
 
-        Arguments
-        ---------
-        - uv_map (str): Node.uv_map
-        - from_instancer (bool): Node.from_instancer
+        Parameters
+        ----------
+        uv_map : str
+            Node.uv_map
+
+        from_instancer : bool
+            Node.from_instancer
+
 
         Returns
         -------
-        - Vector
+        Vector
         """
         node = Node('UV Map', from_instancer=from_instancer, uv_map=uv_map)
         return node._out
@@ -352,19 +382,27 @@ class Vector(generated.Vector):
 
         [!SHADER]
 
-        > [!NOTE]
-        > Self Vector is plugged to 'Normal' socket
+        !!! note
+            Self Vector is plugged to 'Normal' socket
 
-        Arguments
-        ---------
-        - strength (Float) : socket 'Strength' (Strength)
-        - distance (Float) : socket 'Distance' (Distance)
-        - height (Float) : socket 'Height' (Height)
-        - invert (bool): Node.invert
+        Parameters
+        ----------
+        strength : Float
+            socket 'Strength' (Strength)
+
+        distance : Float
+            socket 'Distance' (Distance)
+
+        height : Float
+            socket 'Height' (Height)
+
+        invert : bool
+            Node.invert
+
 
         Returns
         -------
-        - Vector
+        Vector
         """
         node = Node('Bump', {'Strength': strength, 'Distance': distance, 'Height': height, 'Normal': self}, invert=invert)
         return node._out
@@ -374,19 +412,27 @@ class Vector(generated.Vector):
 
         [!SHADER]
 
-        > [!NOTE]
-        > Self Vector is plugged to 'Normal' socket
+        !!! note
+            Self Vector is plugged to 'Normal' socket
 
-        Arguments
-        ---------
-        - height (Float) : socket 'Height' (Height)
-        - midlevel (Float) : socket 'Midlevel' (Midlevel)
-        - scale (Float) : socket 'Scale' (Scale)
-        - space (str): Node.space in ('OBJECT', 'WORLD')
+        Parameters
+        ----------
+        height : Float
+            socket 'Height' (Height)
+
+        midlevel : Float
+            socket 'Midlevel' (Midlevel)
+
+        scale : Float
+            socket 'Scale' (Scale)
+
+        space : str
+            Node.space in ('OBJECT', 'WORLD')
+
 
         Returns
         -------
-        - Vector
+        Vector
         """
         node = Node('Displacement', {'Height': height, 'Midlevel': midlevel, 'Scale': scale, 'Normal': self}, space=space)
         return node._out
@@ -396,16 +442,24 @@ class Vector(generated.Vector):
 
         [!SHADER]
 
-        Arguments
-        ---------
-        - location (Vector) : socket 'Location' (Location)
-        - rotation (Vector) : socket 'Rotation' (Rotation)
-        - scale (Vector) : socket 'Scale' (Scale)
-        - vector_type (str): Node.vector_type in ('POINT', 'TEXTURE', 'VECTOR', 'NORMAL')
+        Parameters
+        ----------
+        location : Vector
+            socket 'Location' (Location)
+
+        rotation : Vector
+            socket 'Rotation' (Rotation)
+
+        scale : Vector
+            socket 'Scale' (Scale)
+
+        vector_type : str
+            Node.vector_type in ('POINT', 'TEXTURE', 'VECTOR', 'NORMAL')
+
 
         Returns
         -------
-        - Vector
+        Vector
         """
         node = Node('Mapping', {'Vector': self, 'Location': location, 'Rotation': rotation, 'Scale': scale}, vector_type=vector_type)
         return node._out
@@ -417,7 +471,7 @@ class Vector(generated.Vector):
 
         Returns
         -------
-        - Vector
+        Vector
         """
         node = Node('Normal', {'Normal': self})
         vect = node._out
@@ -430,16 +484,24 @@ class Vector(generated.Vector):
 
         [!SHADER]
 
-        Arguments
-        ---------
-        - strength (Float) : socket 'Strength' (Strength)
-        - color (Color) : socket 'Color' (Color)
-        - space (str): Node.space in ('TANGENT', 'OBJECT', 'WORLD', 'BLENDER_OBJECT', 'BLENDER_WORLD')
-        - uv_map (str): Node.uv_map
+        Parameters
+        ----------
+        strength : Float
+            socket 'Strength' (Strength)
+
+        color : Color
+            socket 'Color' (Color)
+
+        space : str
+            Node.space in ('TANGENT', 'OBJECT', 'WORLD', 'BLENDER_OBJECT', 'BLENDER_WORLD')
+
+        uv_map : str
+            Node.uv_map
+
 
         Returns
         -------
-        - Vector
+        Vector
         """
         node = Node('Normal Map', {'Strength': strength, 'Color': color}, space=space, uv_map=uv_map)
         return node._out
@@ -449,15 +511,21 @@ class Vector(generated.Vector):
 
         [!SHADER]
 
-        Arguments
-        ---------
-        - midlevel (Float) : socket 'Midlevel' (Midlevel)
-        - scale (Float) : socket 'Scale' (Scale)
-        - space (str): Node.space in ('TANGENT', 'OBJECT', 'WORLD')
+        Parameters
+        ----------
+        midlevel : Float
+            socket 'Midlevel' (Midlevel)
+
+        scale : Float
+            socket 'Scale' (Scale)
+
+        space : str
+            Node.space in ('TANGENT', 'OBJECT', 'WORLD')
+
 
         Returns
         -------
-        - Vector
+        Vector
         """
         node = Node('Vector Displacement', {'Vector': self, 'Midlevel': midlevel, 'Scale': scale}, space=space)
         return node._out
@@ -467,15 +535,21 @@ class Vector(generated.Vector):
 
         [!SHADER]
 
-        Arguments
-        ---------
-        - convert_from (str): Node.convert_from in ('WORLD', 'OBJECT', 'CAMERA')
-        - convert_to (str): Node.convert_to in ('WORLD', 'OBJECT', 'CAMERA')
-        - vector_type (str): Node.vector_type in ('POINT', 'VECTOR', 'NORMAL')
+        Parameters
+        ----------
+        convert_from : str
+            Node.convert_from in ('WORLD', 'OBJECT', 'CAMERA')
+
+        convert_to : str
+            Node.convert_to in ('WORLD', 'OBJECT', 'CAMERA')
+
+        vector_type : str
+            Node.vector_type in ('POINT', 'VECTOR', 'NORMAL')
+
 
         Returns
         -------
-        - Vector
+        Vector
         """
         node = Node('Vector Transform', {'Vector': self}, convert_from=convert_from, convert_to=convert_to, vector_type=vector_type)
         return node._out

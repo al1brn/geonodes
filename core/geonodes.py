@@ -54,12 +54,20 @@ class GeoNodes(Tree):
             ):
         """ > Geometry Nodes
 
-        Arguments
-        ---------
-        - tree_name (str) : Geometry Nodes name
-        - fake_user (bool = False) : set fake_user flag
-        - is_group (bool = False) : tree is a group
-        - prefix (str = "") : prefix name
+        Parameters
+        ----------
+        tree_name : str
+            Geometry Nodes name
+
+        fake_user : bool, optional
+            set fake_user flag Default: False.
+
+        is_group : bool, optional
+            tree is a group Default: False.
+
+        prefix : str, optional
+            prefix name Default: "".
+
         """
 
         super().__init__(
@@ -88,21 +96,39 @@ class GeoNodes(Tree):
             wait_for_click  : bool = False):
         """ > Tool Geometry Nodes
 
-        Arguments
-        ---------
-        - tree_name (str) : Geometry Nodes namde
-        - fake_user (bool = False) : set fake_user flag
-        - object_mode (bool = True) : tool available in object mode
-        - edit_mode (bool = False) : tool available in edit mode
-        - sculpt_mode (bool = False) : tool available in sculpt mode
-        - mesh (bool = True) : mesh tool
-        - curve (bool = False) : curve tool
-        - cloud (bool = False) : cloud tool
-        - wait_for_click (bool = False) : wait for click flag
+        Parameters
+        ----------
+        tree_name : str
+            Geometry Nodes namde
+
+        fake_user : bool, optional
+            set fake_user flag Default: False.
+
+        object_mode : bool, optional
+            tool available in object mode Default: True.
+
+        edit_mode : bool, optional
+            tool available in edit mode Default: False.
+
+        sculpt_mode : bool, optional
+            tool available in sculpt mode Default: False.
+
+        mesh : bool, optional
+            mesh tool Default: True.
+
+        curve : bool, optional
+            curve tool Default: False.
+
+        cloud : bool, optional
+            cloud tool Default: False.
+
+        wait_for_click : bool, optional
+            wait for click flag Default: False.
+
 
         Returns
         -------
-        - GeoNodes
+        GeoNodes
         """
 
         geonodes = cls(tree_name, fake_user=fake_user)
@@ -127,7 +153,9 @@ class GeoNodes(Tree):
 
         Returns
         -------
-        - bool : True if tree is a tool
+        bool
+            True if tree is a tool
+
         """
         return self._btree.is_tool
 

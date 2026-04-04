@@ -1,7 +1,7 @@
 # Tree
 
 ``` python
-Tree(tree_name: str, tree_type: str = 'GeometryNodeTree', clear: bool = True, fake_user: bool = False, is_group: bool = False, prefix: str = '')
+Tree(tree_name: str, tree_type: str = 'GeometryNodeTree', *, fake_user: bool = False, is_group: bool = False, prefix: str = '', replace_material: bool = False)
 ```
 
 Root class for [GeoNodes](geonodes.md#geonodes) and [ShaderNodes](shadernodes.md#shadernodes) trees.
@@ -14,32 +14,83 @@ Better use the context management syntax:
 
 ``` python
 with GeoNodes("My Tree") as tree:
-
     pass
-
 ```
 
-> [!IMPORTANT]
+!!! important
 > Trees scripted with **geonodes** are kept distinct from manually created trees by putting the
 > marker string _'GEONODES'_ in the description attribute. If you initialize a Tree with the
 > name of an existing tree:
-> - it will be cleared if it is a tree scripted with **geonodes**
+> - it will be replaced if it is a tree scripted with **geonodes**
 > - it will be renamed if it is not the case
 > This avoids to accidentally delete a manually created tree.
 
 > [!CAUTION]
-> This doesn't work with materials embedded shaders. So, make sure not to override
-> a existing shader when instantiating a new [ShaderNodes](shadernodes.md#shadernodes).
+> This doesn't work with shaders embedded in a Material. It is why the argument `replace_material` is set to False
+> by default when creating a Shader. Hence, an existing material is not replaced by a geonodes scripts
+> except if you change the default value of `replace_material` argument to True.
 
-The 'panel' argument is the default name to use when the tree is called from another tree using method ['#link_from' not found]().
+``` python
+# Create the material if it doesn't exist
+# Do nothing if it already exists
+with ShaderNodes("My Material"):
+    pass
+    
+# Replace the existing material
+with ShaderNodes("My Material", replace_material=True):
+    pass
+```
+
+!!! note
+> `prefix` argument is added at the begining of the name.
+
+``` python
+# The two following modifiers have the same name
+
+with GeoNodes("My Modifier", prefix="Utils"):
+    pass
+    
+with GeoNodes("Utils My Modifier"):
+    pass
+````
+
+The `prefix` is usefull for big projects with numerous Groups and when you want the Groups to be sorted by their name.
+You can then use the special class `G` to call the groups as python functions:
+
+``` python
+# Prefix
+util = "Util"
+math = "Math"
+
+# Util Change Shape
+with GeoNodes("Change Shape", prefix=util):
+    pass
+    
+# Util Rotate
+with GeoNodes("Rotate", prefix=util):
+    pass
+    
+# Math Multiply
+with GeoNodes("Multiply", prefix=math)
+    pass
+    
+# Math Divide
+with GeoNodes("Divide", prefix=math)
+    pass
+    
+# Call the groups
+with GeoNodes("My Modifier"):
+    # Call a math group with the special class G
+    a = G(math).divide(...)
+```
 
 #### Arguments:
 - **tree_name** (_str_) : tree name
-- **tree_type** (_str_ = GeometryNodeTree) : tree type in ('GeometryNodeTree', 'ShaderNodeTree')
-- **clear** (_bool_ = True) : clear the current tree
+- **tree_type** (_str_ = GeometryNodeTree) : tree type
 - **fake_user** (_bool_ = False) : fake user flag
 - **is_group** (_bool_ = False) : Group or not
-- **prefix** (_str_ = ) : str prefix to add at the beging of the tree name
+- **prefix** (_str_ = ) : prefix to add at the begining of the tree name
+- **replace_material** (_bool_ = False) : replace the existing matertial if True
 
 ## Content
 
@@ -50,7 +101,7 @@ The 'panel' argument is the default name to use when the tree is called from ano
 - **L** : [link](tree.md#link)
 - **O** : [output_node](tree.md#output_node)
 - **P** : [pop](tree.md#pop) :black_small_square: [push](tree.md#push)
-- **R** : [remove_groups](tree.md#remove_groups)
+- **R** : [register_node](tree.md#register_node) :black_small_square: [remove_groups](tree.md#remove_groups)
 
 ## Properties
 
@@ -128,12 +179,15 @@ This method is called when the Tree is poped from the stack.
 > method
 
 ``` python
-clear()
+clear(keep_nodes: bool = True)
 ```
 
 Clear the content of the Tree.
 
 Remove all the nodes in the Tree.
+
+#### Arguments:
+- **keep_nodes** (_bool_ = True)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Tree](tree.md#tree) :black_small_square: [Content](tree.md#content) :black_small_square: [Methods](tree.md#methods)</sub>
 
@@ -214,7 +268,7 @@ and the input signature of the output node
 > method
 
 ``` python
-__init__(tree_name: str, tree_type: str = 'GeometryNodeTree', clear: bool = True, fake_user: bool = False, is_group: bool = False, prefix: str = '')
+__init__(tree_name: str, tree_type: str = 'GeometryNodeTree', *, fake_user: bool = False, is_group: bool = False, prefix: str = '', replace_material: bool = False)
 ```
 
 Root class for [GeoNodes](geonodes.md#geonodes) and [ShaderNodes](shadernodes.md#shadernodes) trees.
@@ -227,32 +281,83 @@ Better use the context management syntax:
 
 ``` python
 with GeoNodes("My Tree") as tree:
-
     pass
-
 ```
 
-> [!IMPORTANT]
+!!! important
 > Trees scripted with **geonodes** are kept distinct from manually created trees by putting the
 > marker string _'GEONODES'_ in the description attribute. If you initialize a Tree with the
 > name of an existing tree:
-> - it will be cleared if it is a tree scripted with **geonodes**
+> - it will be replaced if it is a tree scripted with **geonodes**
 > - it will be renamed if it is not the case
 > This avoids to accidentally delete a manually created tree.
 
 > [!CAUTION]
-> This doesn't work with materials embedded shaders. So, make sure not to override
-> a existing shader when instantiating a new [ShaderNodes](shadernodes.md#shadernodes).
+> This doesn't work with shaders embedded in a Material. It is why the argument `replace_material` is set to False
+> by default when creating a Shader. Hence, an existing material is not replaced by a geonodes scripts
+> except if you change the default value of `replace_material` argument to True.
 
-The 'panel' argument is the default name to use when the tree is called from another tree using method ['#link_from' not found]().
+``` python
+# Create the material if it doesn't exist
+# Do nothing if it already exists
+with ShaderNodes("My Material"):
+    pass
+    
+# Replace the existing material
+with ShaderNodes("My Material", replace_material=True):
+    pass
+```
+
+!!! note
+> `prefix` argument is added at the begining of the name.
+
+``` python
+# The two following modifiers have the same name
+
+with GeoNodes("My Modifier", prefix="Utils"):
+    pass
+    
+with GeoNodes("Utils My Modifier"):
+    pass
+````
+
+The `prefix` is usefull for big projects with numerous Groups and when you want the Groups to be sorted by their name.
+You can then use the special class `G` to call the groups as python functions:
+
+``` python
+# Prefix
+util = "Util"
+math = "Math"
+
+# Util Change Shape
+with GeoNodes("Change Shape", prefix=util):
+    pass
+    
+# Util Rotate
+with GeoNodes("Rotate", prefix=util):
+    pass
+    
+# Math Multiply
+with GeoNodes("Multiply", prefix=math)
+    pass
+    
+# Math Divide
+with GeoNodes("Divide", prefix=math)
+    pass
+    
+# Call the groups
+with GeoNodes("My Modifier"):
+    # Call a math group with the special class G
+    a = G(math).divide(...)
+```
 
 #### Arguments:
 - **tree_name** (_str_) : tree name
-- **tree_type** (_str_ = GeometryNodeTree) : tree type in ('GeometryNodeTree', 'ShaderNodeTree')
-- **clear** (_bool_ = True) : clear the current tree
+- **tree_type** (_str_ = GeometryNodeTree) : tree type
 - **fake_user** (_bool_ = False) : fake user flag
 - **is_group** (_bool_ = False) : Group or not
-- **prefix** (_str_ = ) : str prefix to add at the beging of the tree name
+- **prefix** (_str_ = ) : prefix to add at the begining of the tree name
+- **replace_material** (_bool_ = False) : replace the existing matertial if True
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Tree](tree.md#tree) :black_small_square: [Content](tree.md#content) :black_small_square: [Methods](tree.md#methods)</sub>
 
@@ -322,7 +427,7 @@ pop(error=False)
 
 > Remove this tree from the stack
 
-> [!IMPORTANT]
+!!! important
 > This methods shouldn't be called directly, better use a **with** context block.
 
 
@@ -352,13 +457,38 @@ push()
 
 > Make this tree zone the current one
 
-> [!IMPORTANT]
+!!! important
 > This methods shouldn't be called directly, better use a **with** context block.
 
 ``` python
 with Tree("My Name"):
     pass
 ```
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Tree](tree.md#tree) :black_small_square: [Content](tree.md#content) :black_small_square: [Methods](tree.md#methods)</sub>
+
+----------
+### register_node()
+
+> method
+
+``` python
+register_node(node)
+```
+
+Register a new Node.
+
+This method is called by the Node class constructor. Never call directly.
+
+Registered Nodes are stored in the dictionary : _nodes = bpy.types.Node.name -> Node
+
+#### Arguments:
+- **node** (_Node_) : the newly created Node to register
+
+
+
+#### Returns:
+- **Node** : the passed argument
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Tree](tree.md#tree) :black_small_square: [Content](tree.md#content) :black_small_square: [Methods](tree.md#methods)</sub>
 
@@ -373,7 +503,7 @@ remove_groups(names=None, prefix=None, geonodes=True, shadernodes=True)
 
 > Remove Groups created by GeoNodes.
 
-> [!IMPORTANT]
+!!! important
 > This method can only remove groups created by **GeoNodes**.
 
 #### Arguments:

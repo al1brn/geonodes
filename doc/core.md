@@ -288,10 +288,18 @@ data_type argument is derived from the type of the passed argument.
 
 Attribute
 ---------
-- tree_type (str) : tree type
-- bl_idname (str) : node bl_idname
-- argument (Any) : the argument the derive data_type from
-- arg_name (str = None) : in case of an error
+tree_type : str
+            tree type
+
+bl_idname : str
+            node bl_idname
+
+argument : Any
+            the argument the derive data_type from
+
+arg_name : str, optional
+    in case of an error Default: None.
+
 
 #### Arguments:
 - **tree_type** (_str_)

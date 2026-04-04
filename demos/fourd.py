@@ -2658,15 +2658,15 @@ def create_4d_object(name, points, faces=[]):
 
     Created object has the 4D parameters and can be projected.
 
-    Arguments
-    ---------
+    Parameters
+    ----------
     - name : object name
     - points : numpy array of shape (n, 4)
     - faces : array of tuple of points 
 
     Returns
     -------
-    - Created object
+    Created object
     """
 
     from geonodes.core.blender import create_object
@@ -4416,9 +4416,15 @@ def build_primitives_OLD():
     # Duplicate a profile along a curve
     #
     # The extrusion can be made in two modes:
-    # - Surface (curve profile) : a surface is produced between each instance
-    # - Slices (mesh profile) : one separate instance at each point
-    # - Edges (mesh profile) : faces are deleted and edges between each instance
+    # Surface : curve profile
+            a surface is produced between each instance
+
+    # Slices : mesh profile
+            one separate instance at each point
+
+    # Edges : mesh profile
+            faces are deleted and edges between each instance
+
     #
     # In surface mode, a curve is extrude along the backbone
     # The extrusion is made along Normal B. Normals A and C become the two normals of the resulting surface

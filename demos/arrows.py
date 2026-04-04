@@ -47,7 +47,7 @@ This demo provides four modifiers:
 
 In addition, the "Arrows Show Case" gives an example on the use or Arrows modifier.
 
-> [!NOTE]
+!!! note
 > Modifiers:
 > - Arrows
 > - Arrow

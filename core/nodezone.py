@@ -89,12 +89,18 @@ class ZoneNode(Node):
         For Each        dyn_out              dyn_in (two panels)
         Closure         dyn_out              dyn_in
 
-        Arguments
-        ---------
+        Parameters
+        ----------
         - zone_id (str in ()"Simulation", "Repeat", "For Each Element", "Closure")) : zone id
-        - named_sockets (dict = {}) : initialization values for the node input sockets
-        - Iterations (Integer = None) : Iterations (for Repeat only)
-        - domain (str: None) : domain for For Each only
+        named_sockets : dict, optional
+            initialization values for the node input sockets Default: {}.
+
+        Iterations : Integer, optional
+            Iterations (for Repeat only) Default: None.
+
+        domain : str: None
+            domain for For Each only
+
         - **parameters : node parameters and sockets
         """
 
@@ -293,10 +299,14 @@ class ZoneNode(Node):
     def get_socket_default_name(self, in_out: str, value) -> str:
         """ Get the socket default name from a value
 
-        Arguments
-        ---------
-        - in_out (str in ('INPUT', 'OUTPUT')) : for input or output socket
-        - value (Any) : the value to name
+        Parameters
+        ----------
+        in_out : {'INPUT', 'OUTPUT'}
+            for input or output socket
+
+        value : Any
+            the value to name
+
         """
         name = super().get_socket_default_name(in_out, value)
         if in_out == 'OUTPUT' and name == 'Element' and self._zone_id == FOR_EACH:
@@ -472,10 +482,14 @@ class ZoneIterator:
             mesh.out()
         ```
 
-        Arguments
-        ---------
-        - socket (Socket) : the socket to loop on
-        - node (Node) : a valid zone output node
+        Parameters
+        ----------
+        socket : Socket
+            the socket to loop on
+
+        node : Node
+            a valid zone output node
+
         """
 
         if not isinstance(node, ZoneNode) or node._zone_id == CLOSURE:
@@ -578,8 +592,8 @@ class ZoneIterator:
             check = self._output_node._bnode.outputs[n + 2]
             if check.type == 'CUSTOM':
                 raise NodeError(f"The 'for each' zone doesn't have generated geometry. Make sure to create it in the loop.")
+
             return utils.to_socket(self._output_node._bnode.outputs[n + 2])
-            #return self._output_node.socket_by_identifier('OUTPUT', "Generation_0")
         else:
             raise NodeError(f"Generated attribute is a property of for_each iterator, note {type(self).__name}.")
 
@@ -710,15 +724,21 @@ class ZoneIterator:
 def repeat(iterations, named_sockets: dict={}, **sockets):
         """ Repeat zone
 
-        Arguments
-        ---------
-        - Iteration (Integer = 1) : iteration socket
-        - named_socket (dict) : named sockets
-        - sockets (dict) : other sockets
+        Parameters
+        ----------
+        Iteration : Integer, optional
+            iteration socket Default: 1.
+
+        named_socket : dict
+            named sockets
+
+        sockets : dict
+            other sockets
+
 
         Returns
         -------
-        - ZoneIterator
+        ZoneIterator
         """
         node = ZoneNode.Repeat(iterations, named_sockets=named_sockets, **sockets)
         return ZoneIterator(None, node)
@@ -726,14 +746,18 @@ def repeat(iterations, named_sockets: dict={}, **sockets):
 def simulation(named_sockets: dict={}, **sockets):
     """ Simulation zone
 
-    Arguments
-    ---------
-    - named_socket (dict) : named sockets
-    - sockets (dict) : other sockets
+    Parameters
+    ----------
+    named_socket : dict
+            named sockets
+
+    sockets : dict
+            other sockets
+
 
     Returns
     -------
-    - ZoneIterator
+    ZoneIterator
     """
     node = ZoneNode.Simulation(named_sockets=named_sockets, **sockets)
     return ZoneIterator(None, node)

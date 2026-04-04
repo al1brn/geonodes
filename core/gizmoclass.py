@@ -57,18 +57,29 @@ class Gizmo(Node):
     def dial(cls, *value, position=None, up=None, screen_space=None, radius=None, color_id='PRIMARY'):
         """ > Node <&Node Dial Gizmo>
 
-        Arguments
-        ---------
-        - value (Float) : socket 'Value' (Value)
-        - position (Vector) : socket 'Position' (Position)
-        - up (Vector) : socket 'Up' (Up)
-        - screen_space (Boolean) : socket 'Screen Space' (Screen Space)
-        - radius (Float) : socket 'Radius' (Radius)
-        - color_id (str): Node.color_id in ('PRIMARY', 'SECONDARY', 'X', 'Y', 'Z')
+        Parameters
+        ----------
+        value : Float
+            socket 'Value' (Value)
+
+        position : Vector
+            socket 'Position' (Position)
+
+        up : Vector
+            socket 'Up' (Up)
+
+        screen_space : Boolean
+            socket 'Screen Space' (Screen Space)
+
+        radius : Float
+            socket 'Radius' (Radius)
+
+        color_id : str
+            Node.color_id in ('PRIMARY', 'SECONDARY', 'X', 'Y', 'Z')
 
         Returns
         -------
-        - Geometry
+        Geometry
         """
         values = list(value) if len(value) else None
         return cls('Dial Gizmo', {'Value': values, 'Position': position, 'Up': up, 'Screen Space': screen_space, 'Radius': radius}, color_id=color_id)._out
@@ -77,17 +88,26 @@ class Gizmo(Node):
     def linear(cls, *value, position=None, direction=None, color_id='PRIMARY', draw_style='ARROW'):
         """ > Node <&Node Linear Gizmo>
 
-        Arguments
-        ---------
-        - value (Float) : socket 'Value' (Value)
-        - position (Vector) : socket 'Position' (Position)
-        - direction (Vector) : socket 'Direction' (Direction)
-        - color_id (str): Node.color_id in ('PRIMARY', 'SECONDARY', 'X', 'Y', 'Z')
-        - draw_style (str): Node.draw_style in ('ARROW', 'CROSS', 'BOX')
+        Parameters
+        ----------
+        value : Float
+            socket 'Value' (Value)
+
+        position : Vector
+            socket 'Position' (Position)
+
+        direction : Vector
+            socket 'Direction' (Direction)
+
+        color_id : str
+            Node.color_id in ('PRIMARY', 'SECONDARY', 'X', 'Y', 'Z')
+
+        draw_style : str
+            Node.draw_style in ('ARROW', 'CROSS', 'BOX')
 
         Returns
         -------
-        - Geometry
+        Geometry
         """
         values = list(value) if len(value) else None
         return cls('Linear Gizmo', {'Value': values, 'Position': position, 'Direction': direction}, color_id=color_id, draw_style=draw_style)._out
@@ -96,18 +116,29 @@ class Gizmo(Node):
     def transform(cls, *value, position=None, rotation=None, use_rotation=True, use_scale=True, use_translation=True):
         """ > Node <&Node Transform Gizmo>
 
-        Arguments
-        ---------
-        - value (Matrix) : socket 'Value' (Value)
-        - position (Vector) : socket 'Position' (Position)
-        - rotation (Rotation) : socket 'Rotation' (Rotation)
-        - use_rotation (bool or triplet of bools): use_rotation_x, use_rotation_y, use_rotation_z
-        - use_scale (bool or triplet of bools): use_scale_x, use_scale_y, use_scale_z
-        - use_translation (bool or triplet of bools): use_translation_x, translation_y, use_translation_z
+        Parameters
+        ----------
+        value : Matrix
+            socket 'Value' (Value)
+
+        position : Vector
+            socket 'Position' (Position)
+
+        rotation : Rotation
+            socket 'Rotation' (Rotation)
+
+        use_rotation : bool or tuple[bool, bool, bool]
+            use_rotation_x, use_rotation_y, use_rotation_z
+
+        use_scale :bool or tuple[bool, bool, bool]
+            use_scale_x, use_scale_y, use_scale_z
+
+        use_translation : bool or tuple[bool, bool, bool]
+            use_translation_x, translation_y, use_translation_z
 
         Returns
         -------
-        - Geometry
+        Geometry
         """
         values = list(value) if len(value) else None
 

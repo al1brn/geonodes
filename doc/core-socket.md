@@ -1,12 +1,12 @@
 # Socket
 
 ``` python
-Socket(socket=None, name: str = None, tip: str = '', panel: str = '', **props)
+Socket(socket=None, name: str = None, tip: str = '', panel: str = '', user_label: str = None, **props)
 ```
 
 > The output socket of a [Node](node.md#node)
 
-**Socket** is the base class for data classes such as [Float](float.md#float), [Image](image.md#image) or [Geometry](geometry.md#geometry).
+**Socket** is the base class for data classes such as [Float](core-gener-float-float.md#float), [Image](core-gener-image-image.md#image) or [Geometry](core-gener-geome-geometry.md#geometry).
 
 It refers to an **output** socket of a [Node](node.md#node). A socket can be set to the **input** socket
 of another [Node](node.md#node) to create a link between the two nodes:
@@ -20,7 +20,7 @@ node = Node("Set Position")
 node.geometry = cube
 ```
 
-> [!IMPORTANT]
+!!! important
 > You can access to the other output sockets of the node in two different ways:
 > - using [node](core-socket.md#node) attribute
 > - using ***peer socket** naming convention where the **snake_case** name of
@@ -41,9 +41,10 @@ uv_map = cuve.uv_map_
 
 #### Arguments:
 - **socket** (_NodeSocket_ = None) : the output socket to wrap
-- **name** (_str_ = None)
-- **tip** (_str_ = )
-- **panel** (_str_ = )
+- **name** (_str_ = None) : input name if not None
+- **tip** (_str_ = ) : description
+- **panel** (_str_ = ) : panel name
+- **user_label** (_str_ = None) : user label
 - **props**
 
 ### Inherited
@@ -52,10 +53,12 @@ uv_map = cuve.uv_map_
 
 ## Content
 
+- **A** : [add_method](core-socket.md#add_method)
 - **C** : [Constant](core-socket.md#constant)
 - **E** : [Empty](core-socket.md#empty)
 - **G** : [\_get_bsocket_from_input](core-socket.md#_get_bsocket_from_input)
 - **I** : [IndexSwitch](core-socket.md#indexswitch) :black_small_square: [index_switch](core-socket.md#index_switch) :black_small_square: [\_\_init__](core-socket.md#__init__) :black_small_square: [Input](core-socket.md#input) :black_small_square: [\_interface_socket](core-socket.md#_interface_socket) :black_small_square: [is_grid](core-socket.md#is_grid)
+- **J** : [\_jump](core-socket.md#_jump)
 - **L** : [\_lc](core-socket.md#_lc) :black_small_square: [link_inputs](core-socket.md#link_inputs)
 - **M** : [MenuSwitch](core-socket.md#menuswitch) :black_small_square: [menu_switch](core-socket.md#menu_switch)
 - **N** : [\_name](core-socket.md#_name) :black_small_square: [Named](core-socket.md#named) :black_small_square: [NewInput](core-socket.md#newinput) :black_small_square: [node_color](core-socket.md#node_color) :black_small_square: [node_label](core-socket.md#node_label)
@@ -63,6 +66,7 @@ uv_map = cuve.uv_map_
 - **P** : [\_panel_name](core-socket.md#_panel_name)
 - **R** : [repeat](core-socket.md#repeat)
 - **S** : [simulation](core-socket.md#simulation) :black_small_square: [Switch](core-socket.md#switch) :black_small_square: [switch](core-socket.md#switch) :black_small_square: [switch_false](core-socket.md#switch_false)
+- **U** : [\_ul](core-socket.md#_ul)
 
 ## Properties
 
@@ -102,7 +106,7 @@ Return the name or the label
 
 ### node_color
 
-> _type_: **mathutils**
+> _type_: **SysColor**
 >
 
 Node color
@@ -132,18 +136,53 @@ Return the name of the panel
 
 
 ----------
+### add_method()
+
+> method
+
+``` python
+add_method(name: str = None, jump: bool = False, ret_class: type = None, **fixed)
+```
+
+Add the current tree as a method of the Socket class.
+
+> [!Important]
+> The socket instance must be an input socket of the Tree. This input plays the role of
+> self argument.
+
+``` python
+with GeoNodes("Translate"):
+    geo = Geometry()
+    v = Vector(0, "Translation)
+    geo.transform(translation=v)
+
+    geo.add_method(jump=True)
+```
+
+Once the modifier completed, it can be called as a method of geometry ```geo.translate(translation=(1, 2, 3))```
+
+#### Arguments:
+- **name** (_str_ = None) : replace the default name which is the snake case version of the group name
+- **jump** (_bool_ = False) : the calling socket jumps to the node outpus after the call
+- **ret_class** (_type_ = None) : transtype the default node output
+- **fixed**
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Socket](core-socket.md#socket) :black_small_square: [Content](core-socket.md#content) :black_small_square: [Methods](core-socket.md#methods)</sub>
+
+----------
 ### Constant()
 
 > classmethod
 
 ``` python
-Constant(value: None)
+Constant(value: None, user_label: str = '')
 ```
 
 Create an input socket from a constant Node.
 
 #### Arguments:
-- **value**
+- **value** (_Any_ = None) : constant default value
+- **user_label** (_str_ = ) : socket name (used to rename nodes if not None)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Socket](core-socket.md#socket) :black_small_square: [Content](core-socket.md#content) :black_small_square: [Methods](core-socket.md#methods)</sub>
 
@@ -159,13 +198,6 @@ Empty(value=None)
 Create an empty socket.
 
 An empty socket is used temporarily as an input for nodes with dynamic sockets:
-
-``` python
-    # 10 iterations starting from an empty geometry
-    for rep in Geometry.Repeat(10):
-        pass
-    result = rep.geometry
-```
 
 #### Arguments:
 - **value** (_Any_ = None) : default value
@@ -279,12 +311,12 @@ with GeoNodes("index_switch demo") as tree:
 > method
 
 ``` python
-__init__(socket=None, name: str = None, tip: str = '', panel: str = '', **props)
+__init__(socket=None, name: str = None, tip: str = '', panel: str = '', user_label: str = None, **props)
 ```
 
 > The output socket of a [Node](node.md#node)
 
-**Socket** is the base class for data classes such as [Float](float.md#float), [Image](image.md#image) or [Geometry](geometry.md#geometry).
+**Socket** is the base class for data classes such as [Float](core-gener-float-float.md#float), [Image](core-gener-image-image.md#image) or [Geometry](core-gener-geome-geometry.md#geometry).
 
 It refers to an **output** socket of a [Node](node.md#node). A socket can be set to the **input** socket
 of another [Node](node.md#node) to create a link between the two nodes:
@@ -298,7 +330,7 @@ node = Node("Set Position")
 node.geometry = cube
 ```
 
-> [!IMPORTANT]
+!!! important
 > You can access to the other output sockets of the node in two different ways:
 > - using [node](core-socket.md#node) attribute
 > - using ***peer socket** naming convention where the **snake_case** name of
@@ -319,9 +351,10 @@ uv_map = cuve.uv_map_
 
 #### Arguments:
 - **socket** (_NodeSocket_ = None) : the output socket to wrap
-- **name** (_str_ = None)
-- **tip** (_str_ = )
-- **panel** (_str_ = )
+- **name** (_str_ = None) : input name if not None
+- **tip** (_str_ = ) : description
+- **panel** (_str_ = ) : panel name
+- **user_label** (_str_ = None) : user label
 - **props**
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Socket](core-socket.md#socket) :black_small_square: [Content](core-socket.md#content) :black_small_square: [Methods](core-socket.md#methods)</sub>
@@ -337,7 +370,7 @@ Input(name: str, panel: str = '', halt: bool = True)
 
 Get an exist input socket from its name and panel.
 
-> [!NOTE]
+!!! note
 > The "input" socket here is an "output" socket of the current input node
 
 To create a input socket use NewInput.
@@ -362,12 +395,37 @@ If the 'name' argument is None, the first socket of the proper type is returned.
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Socket](core-socket.md#socket) :black_small_square: [Content](core-socket.md#content) :black_small_square: [Methods](core-socket.md#methods)</sub>
 
 ----------
+### \_jump()
+
+> method
+
+``` python
+_jump(socket: _bpy_types.NodeSocket, reset: bool = True)
+```
+
+Change the wrapped output socket
+
+When changing the socket, the description is copied to the new socket.
+The node color, if any, is also propagated.
+
+#### Arguments:
+- **socket** (_NodeSocket_) : the new output socket to jump to
+- **reset** (_bool_ = True) : reset the cache
+
+
+
+#### Returns:
+- **self** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Socket](core-socket.md#socket) :black_small_square: [Content](core-socket.md#content) :black_small_square: [Methods](core-socket.md#methods)</sub>
+
+----------
 ### \_lc()
 
 > method
 
 ``` python
-_lc(label=None, color=None)
+_lc(label: str = None, color: geonodes.core.colors.SysColor = None)
 ```
 
 Set node label and color.
@@ -385,7 +443,7 @@ with GeoNodes("Node label and color"):
 
 #### Arguments:
 - **label** (_str_ = None) : node label
-- **color** (_color_ = None) : node color
+- **color** (_SysColor_ = None) : node color
 
 
 
@@ -509,7 +567,7 @@ NewInput(name: str, value=None, tip: str = '', panel: str = '', **props)
 
 Create an new input socket
 
-> [!NOTE]
+!!! note
 > The "input" socket here is an "output" socket of the current input node
 
 To get an existing input socket use Input.
@@ -522,7 +580,7 @@ To get an existing input socket use Input.
 #### Arguments:
 - **name** (_str_) : socket name
 - **value** (_Any_ = None) : default_value
-- **tip** (_str_ = )
+- **tip** (_str_ = ) : description
 - **panel** (_str_ = ) : panel name
 - **props**
 
@@ -659,12 +717,18 @@ switch(condition=None, true=None)
 
 > Node [Switch](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/switch.html)
 
-
-
 Self is connected to 'false' socket.
+
+!!! note
+> switch returns self if global constant SWITCH_JUMP = True (default)
+> set SWITCH_JUMP = False for legacy behavior
 
 ``` python
 with GeoNodes("Switch demo"):
+
+    from geonodes.core import constants
+    # Legacy behavior (default is True)
+    constants.SWITCH_JUMP = False
 
     choice = Boolean(True, "Use Sphere")
 
@@ -673,6 +737,7 @@ with GeoNodes("Switch demo"):
     sphere = Mesh.IcoSphere()
 
     # Select
+    # Legacy behavior: cube is unchanged otherwise cube
     geo = cube.switch(choice, sphere)
 
     # To group output
@@ -691,7 +756,7 @@ with GeoNodes("Switch demo"):
 
 
 #### Returns:
-- **Socket** :
+- **Socket** (_self_)
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Socket](core-socket.md#socket) :black_small_square: [Content](core-socket.md#content) :black_small_square: [Methods](core-socket.md#methods)</sub>
 
@@ -710,10 +775,10 @@ switch_false(condition=None, false=None)
 
 Self is connected to 'true' socket.
 
-> [!IMPORTANT]
+!!! important
 > This methods behaves the inverse of [switch](core-socket.md#switch) : self is connected to "True" socket and  the argument to "False", socket
 
-> [!NOTE]
+!!! note
 > This method is mainly provided to cover the case when 'False' socket is None
 
 ``` python
@@ -734,7 +799,7 @@ with GeoNodes("Switch demo"):
     geo.out()
 ```
 
-> [!NOTE]
+!!! note
 > This method let self socket unchanged. To set self socket to the result
 
 #### Information:
@@ -750,5 +815,26 @@ with GeoNodes("Switch demo"):
 
 #### Returns:
 - **Socket** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Socket](core-socket.md#socket) :black_small_square: [Content](core-socket.md#content) :black_small_square: [Methods](core-socket.md#methods)</sub>
+
+----------
+### \_ul()
+
+> method
+
+``` python
+_ul(label: str)
+```
+
+Set the user label
+
+#### Arguments:
+- **label** (_str_) : the label to append
+
+
+
+#### Returns:
+- **self** :
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Socket](core-socket.md#socket) :black_small_square: [Content](core-socket.md#content) :black_small_square: [Methods](core-socket.md#methods)</sub>

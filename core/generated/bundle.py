@@ -1,4 +1,4 @@
-# Generated 2026-03-26 08:37:01
+# Generated 2026-04-04 12:37:35
 
 from __future__ import annotations
 from .. sockettype import SocketType
@@ -36,18 +36,22 @@ class Bundle(Socket):
     def enable_output(self, enable: Boolean = None):
         """ > Node <&Node Enable Output>
 
-        Information
-        -----------
-        - Socket 'Value' : self
-        - Parameter 'data_type' : 'BUNDLE'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name        | Value      |
+        | --------- | ----------- | ---------- |
+        | Socket    | Value       | `self`     |
+        | Parameter | `data_type` | `'BUNDLE'` |
+
+        Parameters
         ---------
-        - enable (Boolean) : socket 'Enable' (id: Enable)
+        enable : Boolean, optional
+            socket 'Enable' (id: Enable)
+        
 
         Returns
         -------
-        - Bundle
+        Bundle
         """
         node = Node('Enable Output', {'Enable': enable, 'Value': self}, data_type='BUNDLE')
         return node._out
@@ -55,13 +59,15 @@ class Bundle(Socket):
     def join(self, *bundle: Bundle):
         """ > Node <&Node Join Bundle>
 
-        Arguments
+        Parameters
         ---------
-        - bundle (Bundle) : socket 'Bundle' (id: Bundle)
+        bundle : Bundle, optional
+            socket 'Bundle' (id: Bundle)
+        
 
         Returns
         -------
-        - Bundle
+        Bundle
         """
         node = Node('Join Bundle', {'Bundle': [self] + list(bundle)})
         return node._out
@@ -70,13 +76,13 @@ class Bundle(Socket):
     def Combine(cls, named_sockets: dict = {}, define_signature = False, **sockets):
         """ > Node <&Node Combine Bundle>
 
-        Arguments
+        Parameters
         ---------
-        - define_signature (bool): parameter 'define_signature'
+        define_signature (bool): parameter 'define_signature'
 
         Returns
         -------
-        - Bundle
+        Bundle
         """
         node = Node('Combine Bundle', named_sockets, define_signature=define_signature, **sockets)
         return cls(node._out)
@@ -84,17 +90,19 @@ class Bundle(Socket):
     def separate_bundle(self, named_sockets: dict = {}, define_signature = False, **sockets):
         """ > Node <&Node Separate Bundle>
 
-        Information
-        -----------
-        - Socket 'Bundle' : self
+        **Fixed values**
 
-        Arguments
+        | Kind   | Name   | Value  |
+        | ------ | ------ | ------ |
+        | Socket | Bundle | `self` |
+
+        Parameters
         ---------
-        - define_signature (bool): parameter 'define_signature'
+        define_signature (bool): parameter 'define_signature'
 
         Returns
         -------
-        - node []
+        node []
         """
         node = Node('Separate Bundle', {'Bundle': self, **named_sockets}, define_signature=define_signature, **sockets)
         return node
@@ -108,20 +116,26 @@ class Bundle(Socket):
 
         > ***Jump*** : Socket refers to node output socket after the call
 
-        Information
-        -----------
-        - Socket 'Bundle' : self
+        **Fixed values**
 
-        Arguments
+        | Kind   | Name   | Value  |
+        | ------ | ------ | ------ |
+        | Socket | Bundle | `self` |
+
+        Parameters
         ---------
-        - path (String) : socket 'Path' (id: Path)
-        - remove (Boolean) : socket 'Remove' (id: Remove)
-        - socket_type (str): parameter 'socket_type' in ('Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Rotation', 'Matrix', 'String', 'Menu', 'Object', 'Image', 'Geometry', 'Collection', 'Material', 'Bundle', 'Closure', 'Font')
-        - structure_type (str): parameter 'structure_type' in ('Auto', 'Dynamic', 'Field', 'Grid', 'List', 'Single')
+        path : String, optional
+            socket 'Path' (id: Path)
+        
+        remove : Boolean, optional
+            socket 'Remove' (id: Remove)
+        
+        socket_type (str): parameter 'socket_type' in ('Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Rotation', 'Matrix', 'String', 'Menu', 'Object', 'Image', 'Geometry', 'Collection', 'Material', 'Bundle', 'Closure', 'Font')
+        structure_type (str): parameter 'structure_type' in ('Auto', 'Dynamic', 'Field', 'Grid', 'List', 'Single')
 
         Returns
         -------
-        - Item
+        Item
         """
         utils.check_enum_arg('Get Bundle Item', 'socket_type', socket_type, 'get_item', ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT'))
         utils.check_enum_arg('Get Bundle Item', 'structure_type', structure_type, 'get_item', ('AUTO', 'DYNAMIC', 'FIELD', 'GRID', 'LIST', 'SINGLE'))
@@ -137,20 +151,26 @@ class Bundle(Socket):
 
         > ***Jump*** : Socket refers to node output socket after the call
 
-        Information
-        -----------
-        - Socket 'Bundle' : self
-        - Parameter 'socket_type' : socket_type
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name          | Value         |
+        | --------- | ------------- | ------------- |
+        | Socket    | Bundle        | `self`        |
+        | Parameter | `socket_type` | `socket_type` |
+
+        Parameters
         ---------
-        - path (String) : socket 'Path' (id: Path)
-        - item (Float) : socket 'Item' (id: Item)
-        - structure_type (str): parameter 'structure_type' in ('Auto', 'Dynamic', 'Field', 'Grid', 'List', 'Single')
+        path : String, optional
+            socket 'Path' (id: Path)
+        
+        item : Float, optional
+            socket 'Item' (id: Item)
+        
+        structure_type (str): parameter 'structure_type' in ('Auto', 'Dynamic', 'Field', 'Grid', 'List', 'Single')
 
         Returns
         -------
-        - Bundle
+        Bundle
         """
         utils.check_enum_arg('Store Bundle Item', 'structure_type', structure_type, 'set_item', ('AUTO', 'DYNAMIC', 'FIELD', 'GRID', 'LIST', 'SINGLE'))
         socket_type = SocketType(item).class_name
@@ -166,20 +186,26 @@ class Bundle(Socket):
 
         > ***Jump*** : Socket refers to node output socket after the call
 
-        Information
-        -----------
-        - Socket 'Bundle' : self
-        - Parameter 'socket_type' : socket_type
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name          | Value         |
+        | --------- | ------------- | ------------- |
+        | Socket    | Bundle        | `self`        |
+        | Parameter | `socket_type` | `socket_type` |
+
+        Parameters
         ---------
-        - path (String) : socket 'Path' (id: Path)
-        - item (Float) : socket 'Item' (id: Item)
-        - structure_type (str): parameter 'structure_type' in ('Auto', 'Dynamic', 'Field', 'Grid', 'List', 'Single')
+        path : String, optional
+            socket 'Path' (id: Path)
+        
+        item : Float, optional
+            socket 'Item' (id: Item)
+        
+        structure_type (str): parameter 'structure_type' in ('Auto', 'Dynamic', 'Field', 'Grid', 'List', 'Single')
 
         Returns
         -------
-        - Bundle
+        Bundle
         """
         utils.check_enum_arg('Store Bundle Item', 'structure_type', structure_type, 'store_item', ('AUTO', 'DYNAMIC', 'FIELD', 'GRID', 'LIST', 'SINGLE'))
         socket_type = SocketType(item).class_name
@@ -190,13 +216,15 @@ class Bundle(Socket):
     def join_bundle(self, *bundle: Bundle):
         """ > Node <&ShaderNode Join Bundle>
 
-        Arguments
+        Parameters
         ---------
-        - bundle (Bundle) : socket 'Bundle' (id: Bundle)
+        bundle : Bundle, optional
+            socket 'Bundle' (id: Bundle)
+        
 
         Returns
         -------
-        - Bundle
+        Bundle
         """
         node = Node('Join Bundle', {'Bundle': [self] + list(bundle)})
         return node._out

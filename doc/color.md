@@ -644,7 +644,9 @@ Aguments
 - value  (object = (1, 1, 1)) : Default value
 - name  (str = 'Color') : Input socket name
 - tip  (str = '') : Property description
-- panel (str = "") : Panel name
+panel : str, optional
+    Panel name Default: "".
+
 - optional_label  (bool = False) : Property optional_label
 - hide_value  (bool = False) : Property hide_value
 - hide_in_modifier  (bool = False) : Property hide_in_modifier
@@ -681,11 +683,17 @@ curves(fac=None, curves=None)
 > Node [RGB Curves](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/rgb_curves.html)
 
 A curve is defined by a list of 3-tuples (not list):
-- x (float) : x position
-- y (float) : y position
-- handle_type (str) : handle type in ('AUTO', 'AUTO_CLAMPED', 'VECTOR')
+x : float
+            x position
 
-> [!NOTE]
+y : float
+            y position
+
+handle_type : str
+            handle type in ('AUTO', 'AUTO_CLAMPED', 'VECTOR')
+
+
+!!! note
 > handle_type is optional, its default value is 'AUTO'. Valid values are ('AUTO', 'AUTO_CLAMPED', 'VECTOR')
 
 #### Information:
@@ -1788,7 +1796,7 @@ out(name=None, panel: str = '')
 :sunrise: **ShaderNodes** only
 
 
-> [!IMPORTANT]
+!!! important
 > - Geometry Nodes : create a group output socket with the provided name
 > - Shader : create a node [AOV Output](https://docs.blender.org/manual/en/latest/render/shader_nodes/output/aov.html)
 

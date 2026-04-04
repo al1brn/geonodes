@@ -1,4 +1,4 @@
-# Generated 2026-03-26 08:37:01
+# Generated 2026-04-04 12:37:35
 
 from __future__ import annotations
 from .. sockettype import SocketType
@@ -51,26 +51,48 @@ class Texture(Socket):
                     squash_frequency = 2):
         """ > Node <&Node Brick Texture>
 
-        Arguments
+        Parameters
         ---------
-        - vector (Vector) : socket 'Vector' (id: Vector)
-        - color1 (Color) : socket 'Color1' (id: Color1)
-        - color2 (Color) : socket 'Color2' (id: Color2)
-        - mortar (Color) : socket 'Mortar' (id: Mortar)
-        - scale (Float) : socket 'Scale' (id: Scale)
-        - mortar_size (Float) : socket 'Mortar Size' (id: Mortar Size)
-        - mortar_smooth (Float) : socket 'Mortar Smooth' (id: Mortar Smooth)
-        - bias (Float) : socket 'Bias' (id: Bias)
-        - brick_width (Float) : socket 'Brick Width' (id: Brick Width)
-        - row_height (Float) : socket 'Row Height' (id: Row Height)
-        - offset (float): parameter 'offset'
-        - offset_frequency (int): parameter 'offset_frequency'
-        - squash (float): parameter 'squash'
-        - squash_frequency (int): parameter 'squash_frequency'
+        vector : Vector, optional
+            socket 'Vector' (id: Vector)
+        
+        color1 : Color, optional
+            socket 'Color1' (id: Color1)
+        
+        color2 : Color, optional
+            socket 'Color2' (id: Color2)
+        
+        mortar : Color, optional
+            socket 'Mortar' (id: Mortar)
+        
+        scale : Float, optional
+            socket 'Scale' (id: Scale)
+        
+        mortar_size : Float, optional
+            socket 'Mortar Size' (id: Mortar Size)
+        
+        mortar_smooth : Float, optional
+            socket 'Mortar Smooth' (id: Mortar Smooth)
+        
+        bias : Float, optional
+            socket 'Bias' (id: Bias)
+        
+        brick_width : Float, optional
+            socket 'Brick Width' (id: Brick Width)
+        
+        row_height : Float, optional
+            socket 'Row Height' (id: Row Height)
+        
+        offset (float): parameter 'offset'
+        offset_frequency (int): parameter 'offset_frequency'
+        squash (float): parameter 'squash'
+        squash_frequency (int): parameter 'squash_frequency'
 
         Returns
         -------
-        - Color [factor_ (Float)]
+        Color
+            peer sockets: factor_ (Float)
+
         """
         node = Node('Brick Texture', {'Vector': vector, 'Color1': color1, 'Color2': color2, 'Mortar': mortar, 'Scale': scale, 'Mortar Size': mortar_size, 'Mortar Smooth': mortar_smooth, 'Bias': bias, 'Brick Width': brick_width, 'Row Height': row_height}, offset=offset, offset_frequency=offset_frequency, squash=squash, squash_frequency=squash_frequency)
         return node._out
@@ -83,16 +105,26 @@ class Texture(Socket):
                     scale: Float = None):
         """ > Node <&Node Checker Texture>
 
-        Arguments
+        Parameters
         ---------
-        - vector (Vector) : socket 'Vector' (id: Vector)
-        - color1 (Color) : socket 'Color1' (id: Color1)
-        - color2 (Color) : socket 'Color2' (id: Color2)
-        - scale (Float) : socket 'Scale' (id: Scale)
+        vector : Vector, optional
+            socket 'Vector' (id: Vector)
+        
+        color1 : Color, optional
+            socket 'Color1' (id: Color1)
+        
+        color2 : Color, optional
+            socket 'Color2' (id: Color2)
+        
+        scale : Float, optional
+            socket 'Scale' (id: Scale)
+        
 
         Returns
         -------
-        - Color [factor_ (Float)]
+        Color
+            peer sockets: factor_ (Float)
+
         """
         node = Node('Checker Texture', {'Vector': vector, 'Color1': color1, 'Color2': color2, 'Scale': scale})
         return node._out
@@ -107,18 +139,30 @@ class Texture(Socket):
                     gabor_type: Literal['2D', '3D'] = '2D'):
         """ > Node <&Node Gabor Texture>
 
-        Arguments
+        Parameters
         ---------
-        - vector (Vector) : socket 'Vector' (id: Vector)
-        - scale (Float) : socket 'Scale' (id: Scale)
-        - frequency (Float) : socket 'Frequency' (id: Frequency)
-        - anisotropy (Float) : socket 'Anisotropy' (id: Anisotropy)
-        - orientation (Float) : socket 'Orientation' (id: Orientation 2D)
-        - gabor_type (str): parameter 'gabor_type' in ('2D', '3D')
+        vector : Vector, optional
+            socket 'Vector' (id: Vector)
+        
+        scale : Float, optional
+            socket 'Scale' (id: Scale)
+        
+        frequency : Float, optional
+            socket 'Frequency' (id: Frequency)
+        
+        anisotropy : Float, optional
+            socket 'Anisotropy' (id: Anisotropy)
+        
+        orientation : Float, optional
+            socket 'Orientation' (id: Orientation 2D)
+        
+        gabor_type (str): parameter 'gabor_type' in ('2D', '3D')
 
         Returns
         -------
-        - Float [phase_ (Float), intensity_ (Float)]
+        Float
+            peer sockets: phase_ (Float), intensity_ (Float)
+
         """
         utils.check_enum_arg('Gabor Texture', 'gabor_type', gabor_type, 'Gabor', ('2D', '3D'))
         node = Node('Gabor Texture', {'Vector': vector, 'Scale': scale, 'Frequency': frequency, 'Anisotropy': anisotropy, 'Orientation 2D': orientation}, gabor_type=gabor_type)
@@ -130,14 +174,18 @@ class Texture(Socket):
                     gradient_type: Literal['LINEAR', 'QUADRATIC', 'EASING', 'DIAGONAL', 'SPHERICAL', 'QUADRATIC_SPHERE', 'RADIAL'] = 'LINEAR'):
         """ > Node <&Node Gradient Texture>
 
-        Arguments
+        Parameters
         ---------
-        - vector (Vector) : socket 'Vector' (id: Vector)
-        - gradient_type (str): parameter 'gradient_type' in ('Linear', 'Quadratic', 'Easing', 'Diagonal', 'Spherical', 'Quadratic Sphere', 'Radial')
+        vector : Vector, optional
+            socket 'Vector' (id: Vector)
+        
+        gradient_type (str): parameter 'gradient_type' in ('Linear', 'Quadratic', 'Easing', 'Diagonal', 'Spherical', 'Quadratic Sphere', 'Radial')
 
         Returns
         -------
-        - Color [factor_ (Float)]
+        Color
+            peer sockets: factor_ (Float)
+
         """
         utils.check_enum_arg('Gradient Texture', 'gradient_type', gradient_type, 'Gradient', ('LINEAR', 'QUADRATIC', 'EASING', 'DIAGONAL', 'SPHERICAL', 'QUADRATIC_SPHERE', 'RADIAL'))
         node = Node('Gradient Texture', {'Vector': vector}, gradient_type=gradient_type)
@@ -151,16 +199,24 @@ class Texture(Socket):
                     turbulence_depth = 2):
         """ > Node <&Node Magic Texture>
 
-        Arguments
+        Parameters
         ---------
-        - vector (Vector) : socket 'Vector' (id: Vector)
-        - scale (Float) : socket 'Scale' (id: Scale)
-        - distortion (Float) : socket 'Distortion' (id: Distortion)
-        - turbulence_depth (int): parameter 'turbulence_depth'
+        vector : Vector, optional
+            socket 'Vector' (id: Vector)
+        
+        scale : Float, optional
+            socket 'Scale' (id: Scale)
+        
+        distortion : Float, optional
+            socket 'Distortion' (id: Distortion)
+        
+        turbulence_depth (int): parameter 'turbulence_depth'
 
         Returns
         -------
-        - Color [factor_ (Float)]
+        Color
+            peer sockets: factor_ (Float)
+
         """
         node = Node('Magic Texture', {'Vector': vector, 'Scale': scale, 'Distortion': distortion}, turbulence_depth=turbulence_depth)
         return node._out
@@ -178,21 +234,35 @@ class Texture(Socket):
                     normalize = True):
         """ > Node <&Node Noise Texture>
 
-        Arguments
+        Parameters
         ---------
-        - vector (Vector) : socket 'Vector' (id: Vector)
-        - scale (Float) : socket 'Scale' (id: Scale)
-        - detail (Float) : socket 'Detail' (id: Detail)
-        - roughness (Float) : socket 'Roughness' (id: Roughness)
-        - lacunarity (Float) : socket 'Lacunarity' (id: Lacunarity)
-        - distortion (Float) : socket 'Distortion' (id: Distortion)
-        - noise_dimensions (str): parameter 'noise_dimensions' in ('1D', '2D', '3D', '4D')
-        - noise_type (str): parameter 'noise_type' in ('Multifractal', 'Ridged Multifractal', 'Hybrid Multifractal', 'fBM', 'Hetero Terrain')
-        - normalize (bool): parameter 'normalize'
+        vector : Vector, optional
+            socket 'Vector' (id: Vector)
+        
+        scale : Float, optional
+            socket 'Scale' (id: Scale)
+        
+        detail : Float, optional
+            socket 'Detail' (id: Detail)
+        
+        roughness : Float, optional
+            socket 'Roughness' (id: Roughness)
+        
+        lacunarity : Float, optional
+            socket 'Lacunarity' (id: Lacunarity)
+        
+        distortion : Float, optional
+            socket 'Distortion' (id: Distortion)
+        
+        noise_dimensions (str): parameter 'noise_dimensions' in ('1D', '2D', '3D', '4D')
+        noise_type (str): parameter 'noise_type' in ('Multifractal', 'Ridged Multifractal', 'Hybrid Multifractal', 'fBM', 'Hetero Terrain')
+        normalize (bool): parameter 'normalize'
 
         Returns
         -------
-        - Float [color_ (Color)]
+        Float
+            peer sockets: color_ (Color)
+
         """
         utils.check_enum_arg('Noise Texture', 'noise_dimensions', noise_dimensions, 'Noise', ('1D', '2D', '3D', '4D'))
         utils.check_enum_arg('Noise Texture', 'noise_type', noise_type, 'Noise', ('MULTIFRACTAL', 'RIDGED_MULTIFRACTAL', 'HYBRID_MULTIFRACTAL', 'FBM', 'HETERO_TERRAIN'))
@@ -213,22 +283,36 @@ class Texture(Socket):
                     voronoi_dimensions: Literal['1D', '2D', '3D', '4D'] = '3D'):
         """ > Node <&Node Voronoi Texture>
 
-        Arguments
+        Parameters
         ---------
-        - vector (Vector) : socket 'Vector' (id: Vector)
-        - scale (Float) : socket 'Scale' (id: Scale)
-        - detail (Float) : socket 'Detail' (id: Detail)
-        - roughness (Float) : socket 'Roughness' (id: Roughness)
-        - lacunarity (Float) : socket 'Lacunarity' (id: Lacunarity)
-        - randomness (Float) : socket 'Randomness' (id: Randomness)
-        - distance (str): parameter 'distance' in ('Euclidean', 'Manhattan', 'Chebychev', 'Minkowski')
-        - feature (str): parameter 'feature' in ('F1', 'F2', 'Smooth F1', 'Distance to Edge', 'N-Sphere Radius')
-        - normalize (bool): parameter 'normalize'
-        - voronoi_dimensions (str): parameter 'voronoi_dimensions' in ('1D', '2D', '3D', '4D')
+        vector : Vector, optional
+            socket 'Vector' (id: Vector)
+        
+        scale : Float, optional
+            socket 'Scale' (id: Scale)
+        
+        detail : Float, optional
+            socket 'Detail' (id: Detail)
+        
+        roughness : Float, optional
+            socket 'Roughness' (id: Roughness)
+        
+        lacunarity : Float, optional
+            socket 'Lacunarity' (id: Lacunarity)
+        
+        randomness : Float, optional
+            socket 'Randomness' (id: Randomness)
+        
+        distance (str): parameter 'distance' in ('Euclidean', 'Manhattan', 'Chebychev', 'Minkowski')
+        feature (str): parameter 'feature' in ('F1', 'F2', 'Smooth F1', 'Distance to Edge', 'N-Sphere Radius')
+        normalize (bool): parameter 'normalize'
+        voronoi_dimensions (str): parameter 'voronoi_dimensions' in ('1D', '2D', '3D', '4D')
 
         Returns
         -------
-        - Float [color_ (Color), position_ (Vector)]
+        Float
+            peer sockets: color_ (Color), position_ (Vector)
+
         """
         utils.check_enum_arg('Voronoi Texture', 'distance', distance, 'Voronoi', ('EUCLIDEAN', 'MANHATTAN', 'CHEBYCHEV', 'MINKOWSKI'))
         utils.check_enum_arg('Voronoi Texture', 'feature', feature, 'Voronoi', ('F1', 'F2', 'SMOOTH_F1', 'DISTANCE_TO_EDGE', 'N_SPHERE_RADIUS'))
@@ -251,23 +335,39 @@ class Texture(Socket):
                     wave_type: Literal['BANDS', 'RINGS'] = 'BANDS'):
         """ > Node <&Node Wave Texture>
 
-        Arguments
+        Parameters
         ---------
-        - vector (Vector) : socket 'Vector' (id: Vector)
-        - scale (Float) : socket 'Scale' (id: Scale)
-        - distortion (Float) : socket 'Distortion' (id: Distortion)
-        - detail (Float) : socket 'Detail' (id: Detail)
-        - detail_scale (Float) : socket 'Detail Scale' (id: Detail Scale)
-        - detail_roughness (Float) : socket 'Detail Roughness' (id: Detail Roughness)
-        - phase_offset (Float) : socket 'Phase Offset' (id: Phase Offset)
-        - bands_direction (str): parameter 'bands_direction' in ('X', 'Y', 'Z', 'Diagonal')
-        - rings_direction (str): parameter 'rings_direction' in ('X', 'Y', 'Z', 'Spherical')
-        - wave_profile (str): parameter 'wave_profile' in ('Sine', 'Saw', 'Triangle')
-        - wave_type (str): parameter 'wave_type' in ('Bands', 'Rings')
+        vector : Vector, optional
+            socket 'Vector' (id: Vector)
+        
+        scale : Float, optional
+            socket 'Scale' (id: Scale)
+        
+        distortion : Float, optional
+            socket 'Distortion' (id: Distortion)
+        
+        detail : Float, optional
+            socket 'Detail' (id: Detail)
+        
+        detail_scale : Float, optional
+            socket 'Detail Scale' (id: Detail Scale)
+        
+        detail_roughness : Float, optional
+            socket 'Detail Roughness' (id: Detail Roughness)
+        
+        phase_offset : Float, optional
+            socket 'Phase Offset' (id: Phase Offset)
+        
+        bands_direction (str): parameter 'bands_direction' in ('X', 'Y', 'Z', 'Diagonal')
+        rings_direction (str): parameter 'rings_direction' in ('X', 'Y', 'Z', 'Spherical')
+        wave_profile (str): parameter 'wave_profile' in ('Sine', 'Saw', 'Triangle')
+        wave_type (str): parameter 'wave_type' in ('Bands', 'Rings')
 
         Returns
         -------
-        - Color [factor_ (Float)]
+        Color
+            peer sockets: factor_ (Float)
+
         """
         utils.check_enum_arg('Wave Texture', 'bands_direction', bands_direction, 'Wave', ('X', 'Y', 'Z', 'DIAGONAL'))
         utils.check_enum_arg('Wave Texture', 'rings_direction', rings_direction, 'Wave', ('X', 'Y', 'Z', 'SPHERICAL'))
@@ -282,14 +382,18 @@ class Texture(Socket):
                     noise_dimensions: Literal['1D', '2D', '3D', '4D'] = '3D'):
         """ > Node <&Node White Noise Texture>
 
-        Arguments
+        Parameters
         ---------
-        - vector (Vector) : socket 'Vector' (id: Vector)
-        - noise_dimensions (str): parameter 'noise_dimensions' in ('1D', '2D', '3D', '4D')
+        vector : Vector, optional
+            socket 'Vector' (id: Vector)
+        
+        noise_dimensions (str): parameter 'noise_dimensions' in ('1D', '2D', '3D', '4D')
 
         Returns
         -------
-        - Float [color_ (Color)]
+        Float
+            peer sockets: color_ (Color)
+
         """
         utils.check_enum_arg('White Noise Texture', 'noise_dimensions', noise_dimensions, 'WhiteNoise', ('1D', '2D', '3D', '4D'))
         node = Node('White Noise Texture', {'Vector': vector}, noise_dimensions=noise_dimensions)

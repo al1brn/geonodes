@@ -1,4 +1,4 @@
-# Generated 2026-03-26 08:37:01
+# Generated 2026-04-04 12:37:35
 
 from __future__ import annotations
 from .. sockettype import SocketType
@@ -36,17 +36,23 @@ class Geometry(Socket):
     def bounding_box(self, use_radius: Boolean = None):
         """ > Node <&Node Bounding Box>
 
-        Information
-        -----------
-        - Socket 'Geometry' : self
+        **Fixed values**
 
-        Arguments
+        | Kind   | Name     | Value  |
+        | ------ | -------- | ------ |
+        | Socket | Geometry | `self` |
+
+        Parameters
         ---------
-        - use_radius (Boolean) : socket 'Use Radius' (id: Use Radius)
+        use_radius : Boolean, optional
+            socket 'Use Radius' (id: Use Radius)
+        
 
         Returns
         -------
-        - Mesh [min_ (Vector), max_ (Vector)]
+        Mesh
+            peer sockets: min_ (Vector), max_ (Vector)
+
         """
         node = Node('Bounding Box', {'Geometry': self, 'Use Radius': use_radius})
         return node._out
@@ -54,13 +60,15 @@ class Geometry(Socket):
     def convex_hull(self):
         """ > Node <&Node Convex Hull>
 
-        Information
-        -----------
-        - Socket 'Geometry' : self
+        **Fixed values**
+
+        | Kind   | Name     | Value  |
+        | ------ | -------- | ------ |
+        | Socket | Geometry | `self` |
 
         Returns
         -------
-        - Mesh
+        Mesh
         """
         node = Node('Convex Hull', {'Geometry': self})
         return node._out
@@ -68,13 +76,15 @@ class Geometry(Socket):
     def to_instance(self, *geometry: Geometry):
         """ > Node <&Node Geometry to Instance>
 
-        Arguments
+        Parameters
         ---------
-        - geometry (Geometry) : socket 'Geometry' (id: Geometry)
+        geometry : Geometry, optional
+            socket 'Geometry' (id: Geometry)
+        
 
         Returns
         -------
-        - Instances
+        Instances
         """
         node = Node('Geometry to Instance', {'Geometry': [self] + list(geometry)})
         return node._out
@@ -83,14 +93,20 @@ class Geometry(Socket):
     def index_of_nearest(cls, position: Vector = None, group_id: Integer = None):
         """ > Node <&Node Index of Nearest>
 
-        Arguments
+        Parameters
         ---------
-        - position (Vector) : socket 'Position' (id: Position)
-        - group_id (Integer) : socket 'Group ID' (id: Group ID)
+        position : Vector, optional
+            socket 'Position' (id: Position)
+        
+        group_id : Integer, optional
+            socket 'Group ID' (id: Group ID)
+        
 
         Returns
         -------
-        - Integer [has_neighbor_ (Boolean)]
+        Integer
+            peer sockets: has_neighbor_ (Boolean)
+
         """
         node = Node('Index of Nearest', {'Position': position, 'Group ID': group_id})
         return node._out
@@ -101,7 +117,7 @@ class Geometry(Socket):
 
         Returns
         -------
-        - Integer
+        Integer
         """
         node = Node('Index', )
         return node._out
@@ -114,22 +130,34 @@ class Geometry(Socket):
                     scale: Vector = None):
         """ > Node <&Node Instance on Points>
 
-        Information
-        -----------
-        - Socket 'Points' : self
-        - Socket 'Selection' : self[selection]
+        **Fixed values**
 
-        Arguments
+        | Kind   | Name      | Value             |
+        | ------ | --------- | ----------------- |
+        | Socket | Points    | `self`            |
+        | Socket | Selection | `self[selection]` |
+
+        Parameters
         ---------
-        - instance (Instances) : socket 'Instance' (id: Instance)
-        - pick_instance (Boolean) : socket 'Pick Instance' (id: Pick Instance)
-        - instance_index (Integer) : socket 'Instance Index' (id: Instance Index)
-        - rotation (Rotation) : socket 'Rotation' (id: Rotation)
-        - scale (Vector) : socket 'Scale' (id: Scale)
+        instance : Instances, optional
+            socket 'Instance' (id: Instance)
+        
+        pick_instance : Boolean, optional
+            socket 'Pick Instance' (id: Pick Instance)
+        
+        instance_index : Integer, optional
+            socket 'Instance Index' (id: Instance Index)
+        
+        rotation : Rotation, optional
+            socket 'Rotation' (id: Rotation)
+        
+        scale : Vector, optional
+            socket 'Scale' (id: Scale)
+        
 
         Returns
         -------
-        - Instances
+        Instances
         """
         node = Node('Instance on Points', {'Points': self, 'Selection': self.get_selection(), 'Instance': instance, 'Pick Instance': pick_instance, 'Instance Index': instance_index, 'Rotation': rotation, 'Scale': scale})
         return node._out
@@ -139,13 +167,15 @@ class Geometry(Socket):
 
         > ***Jump*** : Socket refers to node output socket after the call
 
-        Arguments
+        Parameters
         ---------
-        - geometry (Geometry) : socket 'Geometry' (id: Geometry)
+        geometry : Geometry, optional
+            socket 'Geometry' (id: Geometry)
+        
 
         Returns
         -------
-        - Geometry
+        Geometry
         """
         node = Node('Join Geometry', {'Geometry': [self] + list(geometry)})
         self._jump(node._out)
@@ -155,13 +185,15 @@ class Geometry(Socket):
     def Join(cls, *geometry: Geometry):
         """ > Node <&Node Join Geometry>
 
-        Arguments
+        Parameters
         ---------
-        - geometry (Geometry) : socket 'Geometry' (id: Geometry)
+        geometry : Geometry, optional
+            socket 'Geometry' (id: Geometry)
+        
 
         Returns
         -------
-        - Geometry
+        Geometry
         """
         node = Node('Join Geometry', {'Geometry': list(geometry)})
         return cls(node._out)
@@ -171,19 +203,25 @@ class Geometry(Socket):
 
         > ***Jump*** : Socket refers to node output socket after the call
 
-        Information
-        -----------
-        - Socket 'Geometry' : self
-        - Socket 'Selection' : self[selection]
+        **Fixed values**
 
-        Arguments
+        | Kind   | Name      | Value             |
+        | ------ | --------- | ----------------- |
+        | Socket | Geometry  | `self`            |
+        | Socket | Selection | `self[selection]` |
+
+        Parameters
         ---------
-        - mode (menu='All') : ('All', 'Connected')
-        - distance (Float) : socket 'Distance' (id: Distance)
+        mode : menu='All', optional
+            ('All', 'Connected')
+        
+        distance : Float, optional
+            socket 'Distance' (id: Distance)
+        
 
         Returns
         -------
-        - Geometry
+        Geometry
         """
         node = Node('Merge by Distance', {'Geometry': self, 'Selection': self.get_selection(), 'Mode': mode, 'Distance': distance})
         self._jump(node._out)
@@ -194,19 +232,25 @@ class Geometry(Socket):
 
         > ***Jump*** : Socket refers to node output socket after the call
 
-        Information
-        -----------
-        - Socket 'Geometry' : self
-        - Socket 'Selection' : self[selection]
+        **Fixed values**
 
-        Arguments
+        | Kind   | Name      | Value             |
+        | ------ | --------- | ----------------- |
+        | Socket | Geometry  | `self`            |
+        | Socket | Selection | `self[selection]` |
+
+        Parameters
         ---------
-        - mode (menu='All') : ('All', 'Connected')
-        - distance (Float) : socket 'Distance' (id: Distance)
+        mode : menu='All', optional
+            ('All', 'Connected')
+        
+        distance : Float, optional
+            socket 'Distance' (id: Distance)
+        
 
         Returns
         -------
-        - Geometry
+        Geometry
         """
         node = Node('Merge by Distance', {'Geometry': self, 'Selection': self.get_selection(), 'Mode': mode, 'Distance': distance})
         self._jump(node._out)
@@ -219,20 +263,30 @@ class Geometry(Socket):
                     target_element: Literal['POINTS', 'EDGES', 'FACES'] = 'FACES'):
         """ > Node <&Node Geometry Proximity>
 
-        Information
-        -----------
-        - Socket 'Geometry' : self
+        **Fixed values**
 
-        Arguments
+        | Kind   | Name     | Value  |
+        | ------ | -------- | ------ |
+        | Socket | Geometry | `self` |
+
+        Parameters
         ---------
-        - group_id (Integer) : socket 'Group ID' (id: Group ID)
-        - sample_position (Vector) : socket 'Sample Position' (id: Source Position)
-        - sample_group_id (Integer) : socket 'Sample Group ID' (id: Sample Group ID)
-        - target_element (str): parameter 'target_element' in ('Points', 'Edges', 'Faces')
+        group_id : Integer, optional
+            socket 'Group ID' (id: Group ID)
+        
+        sample_position : Vector, optional
+            socket 'Sample Position' (id: Source Position)
+        
+        sample_group_id : Integer, optional
+            socket 'Sample Group ID' (id: Sample Group ID)
+        
+        target_element (str): parameter 'target_element' in ('Points', 'Edges', 'Faces')
 
         Returns
         -------
-        - Vector [distance_ (Float), is_valid_ (Boolean)]
+        Vector
+            peer sockets: distance_ (Float), is_valid_ (Boolean)
+
         """
         utils.check_enum_arg('Geometry Proximity', 'target_element', target_element, 'proximity', ('POINTS', 'EDGES', 'FACES'))
         node = Node('Geometry Proximity', {'Target': self, 'Group ID': group_id, 'Source Position': sample_position, 'Sample Group ID': sample_group_id}, target_element=target_element)
@@ -244,20 +298,30 @@ class Geometry(Socket):
                     sample_group_id: Integer = None):
         """ > Node <&Node Geometry Proximity>
 
-        Information
-        -----------
-        - Socket 'Geometry' : self
-        - Parameter 'target_element' : 'POINTS'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name             | Value      |
+        | --------- | ---------------- | ---------- |
+        | Socket    | Geometry         | `self`     |
+        | Parameter | `target_element` | `'POINTS'` |
+
+        Parameters
         ---------
-        - group_id (Integer) : socket 'Group ID' (id: Group ID)
-        - sample_position (Vector) : socket 'Sample Position' (id: Source Position)
-        - sample_group_id (Integer) : socket 'Sample Group ID' (id: Sample Group ID)
+        group_id : Integer, optional
+            socket 'Group ID' (id: Group ID)
+        
+        sample_position : Vector, optional
+            socket 'Sample Position' (id: Source Position)
+        
+        sample_group_id : Integer, optional
+            socket 'Sample Group ID' (id: Sample Group ID)
+        
 
         Returns
         -------
-        - Vector [distance_ (Float), is_valid_ (Boolean)]
+        Vector
+            peer sockets: distance_ (Float), is_valid_ (Boolean)
+
         """
         node = Node('Geometry Proximity', {'Target': self, 'Group ID': group_id, 'Source Position': sample_position, 'Sample Group ID': sample_group_id}, target_element='POINTS')
         return node._out
@@ -268,20 +332,30 @@ class Geometry(Socket):
                     sample_group_id: Integer = None):
         """ > Node <&Node Geometry Proximity>
 
-        Information
-        -----------
-        - Socket 'Geometry' : self
-        - Parameter 'target_element' : 'EDGES'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name             | Value     |
+        | --------- | ---------------- | --------- |
+        | Socket    | Geometry         | `self`    |
+        | Parameter | `target_element` | `'EDGES'` |
+
+        Parameters
         ---------
-        - group_id (Integer) : socket 'Group ID' (id: Group ID)
-        - sample_position (Vector) : socket 'Sample Position' (id: Source Position)
-        - sample_group_id (Integer) : socket 'Sample Group ID' (id: Sample Group ID)
+        group_id : Integer, optional
+            socket 'Group ID' (id: Group ID)
+        
+        sample_position : Vector, optional
+            socket 'Sample Position' (id: Source Position)
+        
+        sample_group_id : Integer, optional
+            socket 'Sample Group ID' (id: Sample Group ID)
+        
 
         Returns
         -------
-        - Vector [distance_ (Float), is_valid_ (Boolean)]
+        Vector
+            peer sockets: distance_ (Float), is_valid_ (Boolean)
+
         """
         node = Node('Geometry Proximity', {'Target': self, 'Group ID': group_id, 'Source Position': sample_position, 'Sample Group ID': sample_group_id}, target_element='EDGES')
         return node._out
@@ -292,20 +366,30 @@ class Geometry(Socket):
                     sample_group_id: Integer = None):
         """ > Node <&Node Geometry Proximity>
 
-        Information
-        -----------
-        - Socket 'Geometry' : self
-        - Parameter 'target_element' : 'FACES'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name             | Value     |
+        | --------- | ---------------- | --------- |
+        | Socket    | Geometry         | `self`    |
+        | Parameter | `target_element` | `'FACES'` |
+
+        Parameters
         ---------
-        - group_id (Integer) : socket 'Group ID' (id: Group ID)
-        - sample_position (Vector) : socket 'Sample Position' (id: Source Position)
-        - sample_group_id (Integer) : socket 'Sample Group ID' (id: Sample Group ID)
+        group_id : Integer, optional
+            socket 'Group ID' (id: Group ID)
+        
+        sample_position : Vector, optional
+            socket 'Sample Position' (id: Source Position)
+        
+        sample_group_id : Integer, optional
+            socket 'Sample Group ID' (id: Sample Group ID)
+        
 
         Returns
         -------
-        - Vector [distance_ (Float), is_valid_ (Boolean)]
+        Vector
+            peer sockets: distance_ (Float), is_valid_ (Boolean)
+
         """
         node = Node('Geometry Proximity', {'Target': self, 'Group ID': group_id, 'Source Position': sample_position, 'Sample Group ID': sample_group_id}, target_element='FACES')
         return node._out
@@ -318,22 +402,36 @@ class Geometry(Socket):
                     ray_length: Float = None):
         """ > Node <&Node Raycast>
 
-        Information
-        -----------
-        - Socket 'Target Geometry' : self
-        - Parameter 'data_type' : depending on 'attribute' type
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name            | Value                 |
+        | --------- | --------------- | --------------------- |
+        | Socket    | Target Geometry | `self`                |
+        | Parameter | `data_type`     | from `attribute` type |
+
+        Parameters
         ---------
-        - attribute (Float | Integer | Boolean | Vector | Color | Rotation | Matrix) : socket 'Attribute' (id: Attribute)
-        - interpolation (menu='Interpolated') : ('Interpolated', 'Nearest')
-        - source_position (Vector) : socket 'Source Position' (id: Source Position)
-        - ray_direction (Vector) : socket 'Ray Direction' (id: Ray Direction)
-        - ray_length (Float) : socket 'Ray Length' (id: Ray Length)
+        attribute : Float | Integer | Boolean | Vector | Color | Rotation | Matrix, optional
+            socket 'Attribute' (id: Attribute)
+        
+        interpolation : menu='Interpolated', optional
+            ('Interpolated', 'Nearest')
+        
+        source_position : Vector, optional
+            socket 'Source Position' (id: Source Position)
+        
+        ray_direction : Vector, optional
+            socket 'Ray Direction' (id: Ray Direction)
+        
+        ray_length : Float, optional
+            socket 'Ray Length' (id: Ray Length)
+        
 
         Returns
         -------
-        - Boolean [hit_position_ (Vector), hit_normal_ (Vector), hit_distance_ (Float), attribute_ (Float)]
+        Boolean
+            peer sockets: hit_position_ (Vector), hit_normal_ (Vector), hit_distance_ (Float), attribute_ (Float)
+
         """
         data_type = SocketType.get_data_type_for_node(attribute, 'GeometryNodeRaycast')
         node = Node('Raycast', {'Target Geometry': self, 'Attribute': attribute, 'Interpolation': interpolation, 'Source Position': source_position, 'Ray Direction': ray_direction, 'Ray Length': ray_length}, data_type=data_type)
@@ -345,20 +443,26 @@ class Geometry(Socket):
                     realize_to_point_domain = False):
         """ > Node <&Node Realize Instances>
 
-        Information
-        -----------
-        - Socket 'Geometry' : self
-        - Socket 'Selection' : self[selection]
+        **Fixed values**
 
-        Arguments
+        | Kind   | Name      | Value             |
+        | ------ | --------- | ----------------- |
+        | Socket | Geometry  | `self`            |
+        | Socket | Selection | `self[selection]` |
+
+        Parameters
         ---------
-        - realize_all (Boolean) : socket 'Realize All' (id: Realize All)
-        - depth (Integer) : socket 'Depth' (id: Depth)
-        - realize_to_point_domain (bool): parameter 'realize_to_point_domain'
+        realize_all : Boolean, optional
+            socket 'Realize All' (id: Realize All)
+        
+        depth : Integer, optional
+            socket 'Depth' (id: Depth)
+        
+        realize_to_point_domain (bool): parameter 'realize_to_point_domain'
 
         Returns
         -------
-        - Geometry
+        Geometry
         """
         node = Node('Realize Instances', {'Geometry': self, 'Selection': self.get_selection(), 'Realize All': realize_all, 'Depth': depth}, realize_to_point_domain=realize_to_point_domain)
         return node._out
@@ -368,18 +472,24 @@ class Geometry(Socket):
 
         > ***Jump*** : Socket refers to node output socket after the call
 
-        Information
-        -----------
-        - Socket 'Geometry' : self
+        **Fixed values**
 
-        Arguments
+        | Kind   | Name     | Value  |
+        | ------ | -------- | ------ |
+        | Socket | Geometry | `self` |
+
+        Parameters
         ---------
-        - pattern_mode (menu='Exact') : ('Exact', 'Wildcard')
-        - name (String) : socket 'Name' (id: Name)
+        pattern_mode : menu='Exact', optional
+            ('Exact', 'Wildcard')
+        
+        name : String, optional
+            socket 'Name' (id: Name)
+        
 
         Returns
         -------
-        - Geometry
+        Geometry
         """
         node = Node('Remove Named Attribute', {'Geometry': self, 'Pattern Mode': pattern_mode, 'Name': name})
         self._jump(node._out)
@@ -390,18 +500,24 @@ class Geometry(Socket):
 
         > ***Jump*** : Socket refers to node output socket after the call
 
-        Information
-        -----------
-        - Socket 'Geometry' : self
+        **Fixed values**
 
-        Arguments
+        | Kind   | Name     | Value  |
+        | ------ | -------- | ------ |
+        | Socket | Geometry | `self` |
+
+        Parameters
         ---------
-        - old (Material) : socket 'Old' (id: Old)
-        - new (Material) : socket 'New' (id: New)
+        old : Material, optional
+            socket 'Old' (id: Old)
+        
+        new : Material, optional
+            socket 'New' (id: New)
+        
 
         Returns
         -------
-        - Geometry
+        Geometry
         """
         node = Node('Replace Material', {'Geometry': self, 'Old': old, 'New': new})
         self._jump(node._out)
@@ -410,13 +526,15 @@ class Geometry(Socket):
     def separate_components(self):
         """ > Node <&Node Separate Components>
 
-        Information
-        -----------
-        - Socket 'Geometry' : self
+        **Fixed values**
+
+        | Kind   | Name     | Value  |
+        | ------ | -------- | ------ |
+        | Socket | Geometry | `self` |
 
         Returns
         -------
-        - node [mesh (Mesh), curve (Curve), grease_pencil (GreasePencil), point_cloud (Cloud), volume (Volume), instances (Instances)]
+        node [mesh (Mesh), curve (Curve), grease_pencil (GreasePencil), point_cloud (Cloud), volume (Volume), instances (Instances)]
         """
         node = self._cache('Separate Components', {'Geometry': self})
         return node
@@ -425,13 +543,15 @@ class Geometry(Socket):
     def mesh(self):
         """ > Node <&Node Separate Components>
 
-        Information
-        -----------
-        - Socket 'Geometry' : self
+        **Fixed values**
+
+        | Kind   | Name     | Value  |
+        | ------ | -------- | ------ |
+        | Socket | Geometry | `self` |
 
         Returns
         -------
-        - mesh
+        mesh
         """
         node = self._cache('Separate Components', {'Geometry': self})
         return node.mesh
@@ -440,13 +560,15 @@ class Geometry(Socket):
     def curve(self):
         """ > Node <&Node Separate Components>
 
-        Information
-        -----------
-        - Socket 'Geometry' : self
+        **Fixed values**
+
+        | Kind   | Name     | Value  |
+        | ------ | -------- | ------ |
+        | Socket | Geometry | `self` |
 
         Returns
         -------
-        - curve
+        curve
         """
         node = self._cache('Separate Components', {'Geometry': self})
         return node.curve
@@ -455,13 +577,15 @@ class Geometry(Socket):
     def grease_pencil(self):
         """ > Node <&Node Separate Components>
 
-        Information
-        -----------
-        - Socket 'Geometry' : self
+        **Fixed values**
+
+        | Kind   | Name     | Value  |
+        | ------ | -------- | ------ |
+        | Socket | Geometry | `self` |
 
         Returns
         -------
-        - grease_pencil
+        grease_pencil
         """
         node = self._cache('Separate Components', {'Geometry': self})
         return node.grease_pencil
@@ -470,13 +594,15 @@ class Geometry(Socket):
     def point_cloud(self):
         """ > Node <&Node Separate Components>
 
-        Information
-        -----------
-        - Socket 'Geometry' : self
+        **Fixed values**
+
+        | Kind   | Name     | Value  |
+        | ------ | -------- | ------ |
+        | Socket | Geometry | `self` |
 
         Returns
         -------
-        - point_cloud
+        point_cloud
         """
         node = self._cache('Separate Components', {'Geometry': self})
         return node.point_cloud
@@ -485,13 +611,15 @@ class Geometry(Socket):
     def volume(self):
         """ > Node <&Node Separate Components>
 
-        Information
-        -----------
-        - Socket 'Geometry' : self
+        **Fixed values**
+
+        | Kind   | Name     | Value  |
+        | ------ | -------- | ------ |
+        | Socket | Geometry | `self` |
 
         Returns
         -------
-        - volume
+        volume
         """
         node = self._cache('Separate Components', {'Geometry': self})
         return node.volume
@@ -500,13 +628,15 @@ class Geometry(Socket):
     def instances(self):
         """ > Node <&Node Separate Components>
 
-        Information
-        -----------
-        - Socket 'Geometry' : self
+        **Fixed values**
+
+        | Kind   | Name     | Value  |
+        | ------ | -------- | ------ |
+        | Socket | Geometry | `self` |
 
         Returns
         -------
-        - instances
+        instances
         """
         node = self._cache('Separate Components', {'Geometry': self})
         return node.instances
@@ -516,17 +646,21 @@ class Geometry(Socket):
 
         > ***Jump*** : Socket refers to node output socket after the call
 
-        Information
-        -----------
-        - Socket 'Geometry' : self
+        **Fixed values**
 
-        Arguments
+        | Kind   | Name     | Value  |
+        | ------ | -------- | ------ |
+        | Socket | Geometry | `self` |
+
+        Parameters
         ---------
-        - name (String) : socket 'Name' (id: Name)
+        name : String, optional
+            socket 'Name' (id: Name)
+        
 
         Returns
         -------
-        - Geometry
+        Geometry
         """
         node = Node('Set Geometry Name', {'Geometry': self, 'Name': name})
         self._jump(node._out)
@@ -537,18 +671,22 @@ class Geometry(Socket):
 
         > ***Jump*** : Socket refers to node output socket after the call
 
-        Information
-        -----------
-        - Socket 'Geometry' : self
-        - Socket 'Selection' : self[selection]
+        **Fixed values**
 
-        Arguments
+        | Kind   | Name      | Value             |
+        | ------ | --------- | ----------------- |
+        | Socket | Geometry  | `self`            |
+        | Socket | Selection | `self[selection]` |
+
+        Parameters
         ---------
-        - id (Integer) : socket 'ID' (id: ID)
+        id : Integer, optional
+            socket 'ID' (id: ID)
+        
 
         Returns
         -------
-        - Geometry
+        Geometry
         """
         node = Node('Set ID', {'Geometry': self, 'Selection': self.get_selection(), 'ID': id})
         self._jump(node._out)
@@ -559,18 +697,22 @@ class Geometry(Socket):
 
         > ***Jump*** : Socket refers to node output socket after the call
 
-        Information
-        -----------
-        - Socket 'Geometry' : self
-        - Socket 'Selection' : self[selection]
+        **Fixed values**
 
-        Arguments
+        | Kind   | Name      | Value             |
+        | ------ | --------- | ----------------- |
+        | Socket | Geometry  | `self`            |
+        | Socket | Selection | `self[selection]` |
+
+        Parameters
         ---------
-        - material (Material) : socket 'Material' (id: Material)
+        material : Material, optional
+            socket 'Material' (id: Material)
+        
 
         Returns
         -------
-        - Geometry
+        Geometry
         """
         node = Node('Set Material', {'Geometry': self, 'Selection': self.get_selection(), 'Material': material})
         self._jump(node._out)
@@ -581,18 +723,22 @@ class Geometry(Socket):
 
         > ***Jump*** : Socket refers to node output socket after the call
 
-        Information
-        -----------
-        - Socket 'Geometry' : self
-        - Socket 'Selection' : self[selection]
+        **Fixed values**
 
-        Arguments
+        | Kind   | Name      | Value             |
+        | ------ | --------- | ----------------- |
+        | Socket | Geometry  | `self`            |
+        | Socket | Selection | `self[selection]` |
+
+        Parameters
         ---------
-        - material_index (Integer) : socket 'Material Index' (id: Material Index)
+        material_index : Integer, optional
+            socket 'Material Index' (id: Material Index)
+        
 
         Returns
         -------
-        - Geometry
+        Geometry
         """
         node = Node('Set Material Index', {'Geometry': self, 'Selection': self.get_selection(), 'Material Index': material_index})
         self._jump(node._out)
@@ -603,19 +749,25 @@ class Geometry(Socket):
 
         > ***Jump*** : Socket refers to node output socket after the call
 
-        Information
-        -----------
-        - Socket 'Geometry' : self
-        - Socket 'Selection' : self[selection]
+        **Fixed values**
 
-        Arguments
+        | Kind   | Name      | Value             |
+        | ------ | --------- | ----------------- |
+        | Socket | Geometry  | `self`            |
+        | Socket | Selection | `self[selection]` |
+
+        Parameters
         ---------
-        - position (Vector) : socket 'Position' (id: Position)
-        - offset (Vector) : socket 'Offset' (id: Offset)
+        position : Vector, optional
+            socket 'Position' (id: Position)
+        
+        offset : Vector, optional
+            socket 'Offset' (id: Offset)
+        
 
         Returns
         -------
-        - Geometry
+        Geometry
         """
         node = Node('Set Position', {'Geometry': self, 'Selection': self.get_selection(), 'Position': position, 'Offset': offset})
         self._jump(node._out)
@@ -631,21 +783,33 @@ class Geometry(Socket):
 
         > ***Jump*** : Socket refers to node output socket after the call
 
-        Information
-        -----------
-        - Socket 'Geometry' : self
+        **Fixed values**
 
-        Arguments
+        | Kind   | Name     | Value  |
+        | ------ | -------- | ------ |
+        | Socket | Geometry | `self` |
+
+        Parameters
         ---------
-        - mode (menu='Components') : ('Components', 'Matrix')
-        - translation (Vector) : socket 'Translation' (id: Translation)
-        - rotation (Rotation) : socket 'Rotation' (id: Rotation)
-        - scale (Vector) : socket 'Scale' (id: Scale)
-        - transform (Matrix) : socket 'Transform' (id: Transform)
+        mode : menu='Components', optional
+            ('Components', 'Matrix')
+        
+        translation : Vector, optional
+            socket 'Translation' (id: Translation)
+        
+        rotation : Rotation, optional
+            socket 'Rotation' (id: Rotation)
+        
+        scale : Vector, optional
+            socket 'Scale' (id: Scale)
+        
+        transform : Matrix, optional
+            socket 'Transform' (id: Transform)
+        
 
         Returns
         -------
-        - Geometry
+        Geometry
         """
         node = Node('Transform Geometry', {'Geometry': self, 'Mode': mode, 'Translation': translation, 'Rotation': rotation, 'Scale': scale, 'Transform': transform})
         self._jump(node._out)
@@ -655,13 +819,15 @@ class Geometry(Socket):
     def viewer(cls, named_sockets: dict = {}, ui_shortcut = 0, **sockets):
         """ > Node <&Node Viewer>
 
-        Information
-        -----------
-        - Parameter 'domain' : 'AUTO'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name     | Value    |
+        | --------- | -------- | -------- |
+        | Parameter | `domain` | `'AUTO'` |
+
+        Parameters
         ---------
-        - ui_shortcut (int): parameter 'ui_shortcut'
+        ui_shortcut (int): parameter 'ui_shortcut'
 
         """
         node = Node('Viewer', named_sockets, domain='AUTO', ui_shortcut=ui_shortcut, **sockets)
@@ -672,18 +838,22 @@ class Geometry(Socket):
 
         > ***Jump*** : Socket refers to node output socket after the call
 
-        Information
-        -----------
-        - Socket 'Value' : self
-        - Parameter 'data_type' : 'GEOMETRY'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name        | Value        |
+        | --------- | ----------- | ------------ |
+        | Socket    | Value       | `self`       |
+        | Parameter | `data_type` | `'GEOMETRY'` |
+
+        Parameters
         ---------
-        - enable (Boolean) : socket 'Enable' (id: Enable)
+        enable : Boolean, optional
+            socket 'Enable' (id: Enable)
+        
 
         Returns
         -------
-        - Geometry
+        Geometry
         """
         node = Node('Enable Output', {'Enable': enable, 'Value': self}, data_type='GEOMETRY')
         self._jump(node._out)
@@ -701,19 +871,23 @@ class Geometry(Socket):
 
         > ***Jump*** : Socket refers to node output socket after the call
 
-        Information
-        -----------
-        - Socket 'Geometry' : self
-        - Socket 'Selection' : self[selection]
-        - Socket 'Offset' : ignored
+        **Fixed values**
 
-        Arguments
+        | Kind   | Name      | Value             |
+        | ------ | --------- | ----------------- |
+        | Socket | Geometry  | `self`            |
+        | Socket | Selection | `self[selection]` |
+        | Socket | Offset    | ignored           |
+
+        Parameters
         ---------
-        - position (Vector) : socket 'Position' (id: Position)
+        position : Vector, optional
+            socket 'Position' (id: Position)
+        
 
         Returns
         -------
-        - Geometry
+        Geometry
         """
         node = Node('Set Position', {'Geometry': self, 'Selection': self.get_selection(), 'Position': position, 'Offset': None})
         self._jump(node._out)
@@ -731,19 +905,23 @@ class Geometry(Socket):
 
         > ***Jump*** : Socket refers to node output socket after the call
 
-        Information
-        -----------
-        - Socket 'Geometry' : self
-        - Socket 'Selection' : self[selection]
-        - Socket 'Position' : ignored
+        **Fixed values**
 
-        Arguments
+        | Kind   | Name      | Value             |
+        | ------ | --------- | ----------------- |
+        | Socket | Geometry  | `self`            |
+        | Socket | Selection | `self[selection]` |
+        | Socket | Position  | ignored           |
+
+        Parameters
         ---------
-        - offset (Vector) : socket 'Offset' (id: Offset)
+        offset : Vector, optional
+            socket 'Offset' (id: Offset)
+        
 
         Returns
         -------
-        - Geometry
+        Geometry
         """
         node = Node('Set Position', {'Geometry': self, 'Selection': self.get_selection(), 'Position': None, 'Offset': offset})
         self._jump(node._out)
@@ -761,18 +939,22 @@ class Geometry(Socket):
 
         > ***Jump*** : Socket refers to node output socket after the call
 
-        Information
-        -----------
-        - Socket 'Geometry' : self
-        - Socket 'Selection' : self[selection]
+        **Fixed values**
 
-        Arguments
+        | Kind   | Name      | Value             |
+        | ------ | --------- | ----------------- |
+        | Socket | Geometry  | `self`            |
+        | Socket | Selection | `self[selection]` |
+
+        Parameters
         ---------
-        - id (Integer) : socket 'ID' (id: ID)
+        id : Integer, optional
+            socket 'ID' (id: ID)
+        
 
         Returns
         -------
-        - Geometry
+        Geometry
         """
         node = Node('Set ID', {'Geometry': self, 'Selection': self.get_selection(), 'ID': id})
         self._jump(node._out)
@@ -790,18 +972,22 @@ class Geometry(Socket):
 
         > ***Jump*** : Socket refers to node output socket after the call
 
-        Information
-        -----------
-        - Socket 'Geometry' : self
-        - Socket 'Selection' : self[selection]
+        **Fixed values**
 
-        Arguments
+        | Kind   | Name      | Value             |
+        | ------ | --------- | ----------------- |
+        | Socket | Geometry  | `self`            |
+        | Socket | Selection | `self[selection]` |
+
+        Parameters
         ---------
-        - material (Material) : socket 'Material' (id: Material)
+        material : Material, optional
+            socket 'Material' (id: Material)
+        
 
         Returns
         -------
-        - Geometry
+        Geometry
         """
         node = Node('Set Material', {'Geometry': self, 'Selection': self.get_selection(), 'Material': material})
         self._jump(node._out)
@@ -819,17 +1005,21 @@ class Geometry(Socket):
 
         > ***Jump*** : Socket refers to node output socket after the call
 
-        Information
-        -----------
-        - Socket 'Geometry' : self
+        **Fixed values**
 
-        Arguments
+        | Kind   | Name     | Value  |
+        | ------ | -------- | ------ |
+        | Socket | Geometry | `self` |
+
+        Parameters
         ---------
-        - name (String) : socket 'Name' (id: Name)
+        name : String, optional
+            socket 'Name' (id: Name)
+        
 
         Returns
         -------
-        - Geometry
+        Geometry
         """
         node = Node('Set Geometry Name', {'Geometry': self, 'Name': name})
         self._jump(node._out)
@@ -847,18 +1037,22 @@ class Geometry(Socket):
 
         > ***Jump*** : Socket refers to node output socket after the call
 
-        Information
-        -----------
-        - Socket 'Geometry' : self
-        - Socket 'Selection' : self[selection]
+        **Fixed values**
 
-        Arguments
+        | Kind   | Name      | Value             |
+        | ------ | --------- | ----------------- |
+        | Socket | Geometry  | `self`            |
+        | Socket | Selection | `self[selection]` |
+
+        Parameters
         ---------
-        - material_index (Integer) : socket 'Material Index' (id: Material Index)
+        material_index : Integer, optional
+            socket 'Material Index' (id: Material Index)
+        
 
         Returns
         -------
-        - Geometry
+        Geometry
         """
         node = Node('Set Material Index', {'Geometry': self, 'Selection': self.get_selection(), 'Material Index': material_index})
         self._jump(node._out)

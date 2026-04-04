@@ -65,7 +65,7 @@ class Point(Domain, generated.Point):
 
         Returns
         -------
-        - Integer
+        Integer
         """
         return self._geo.domain_size().point_count
 
@@ -93,7 +93,7 @@ class Face(Domain, generated.Face):
 
         Returns
         -------
-        - Integer
+        Integer
         """
         return self._geo.domain_size().face_count
 
@@ -112,7 +112,7 @@ class Edge(Domain, generated.Edge):
 
         Returns
         -------
-        - Integer
+        Integer
         """
         return self._geo.domain_size().edge_count
 
@@ -124,7 +124,7 @@ class Edge(Domain, generated.Edge):
 
         Returns
         -------
-        - Integer
+        Integer
         """
         return Node('Edges to Face Groups', {'Boundary Edges': self.get_selection()})._out
 
@@ -143,7 +143,7 @@ class Corner(Domain, generated.Corner):
 
         Returns
         -------
-        - Integer
+        Integer
         """
         return self._geo.domain_size().face_corner_count
 
@@ -166,7 +166,7 @@ class Spline(Domain, generated.Spline):
 
         Returns
         -------
-        - Integer
+        Integer
         """
         return self._geo.domain_size().spline_count
 
@@ -186,7 +186,7 @@ class Layer(Domain, generated.Layer):
 
         Returns
         -------
-        - Integer
+        Integer
         """
         return self._geo.domain_size().layer_count
 
@@ -196,11 +196,12 @@ class Layer(Domain, generated.Layer):
 class Instance(Domain, generated.Instance):
     """ > Instance domain of <!Instances>
 
-    > [!NOTE]
-    > The geometry has only one domain sharing the same name:
-    > - <!Instances> : name of geometry class
-    > - **Instance** : name of domain class
-    > - <!Instances#insts> : name of the domain property of class <!Instances>
+    !!! note
+      The geometry has only one domain sharing the same name:
+
+        - <!Instances> : name of geometry class
+        - **Instance** : name of domain class
+        - <!Instances#insts> : name of the domain property of class <!Instances>
     """
 
     DOMAIN_NAME = 'INSTANCE'
@@ -211,7 +212,7 @@ class Instance(Domain, generated.Instance):
 
         Returns
         -------
-        - Integer
+        Integer
         """
         return self._geo.domain_size().instance_count
 
@@ -238,7 +239,7 @@ class Instance(Domain, generated.Instance):
 
         Returns
         -------
-        - Vector
+        Vector
         """
         return Node('Instance Scale')._out
 
@@ -276,7 +277,7 @@ class Instance(Domain, generated.Instance):
 
         Returns
         -------
-        - Rotation
+        Rotation
         """
         return Node('Instance Rotation')._out
 

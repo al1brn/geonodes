@@ -6,7 +6,7 @@ Instance(geometry: geonodes.core.geometry_class.Geometry)
 
 > Instance domain of [Instances](core-gener-insta-instances.md#instances)
 
-> [!NOTE]
+!!! note
 > The geometry has only one domain sharing the same name:
 > - [Instances](core-gener-insta-instances.md#instances) : name of geometry class
 > - **Instance** : name of domain class
@@ -64,7 +64,7 @@ Instance(geometry: geonodes.core.geometry_class.Geometry)
 
  Returns
  -------
- - Rotation
+ Rotation
 
 ##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Instance](instance.md#instance) :black_small_square: [Content](instance.md#content) :black_small_square: [Properties](instance.md#properties)</sub>
 

@@ -268,21 +268,25 @@ def build_tree(prefix='Tree'):
     with GeoNodes("Index Info", prefix=prefix, is_group=True):
         """ Get the node information from its index
 
-        Arguments
-        ---------
+        Parameters
+        ----------
         - Tree (Cloud)
-        - Index (Integer) : point index
+        Index : Integer
+            point index
+
 
         Returns
         -------
-        - Index (Integer)
+        Index (Integer)
         - ID : (Integer)
         - Owner (Integer)
         - Depth (Integer)
         - Order (Integer)
         - Total (Integer)
         - Explore (Integer)
-        - Exists (Boolean) : False if the index is not valid
+        Exists : Boolean
+            False if the index is not valid
+
         """
 
         # oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
@@ -306,21 +310,25 @@ def build_tree(prefix='Tree'):
     with GeoNodes("ID Info", prefix=prefix, is_group=True):
         """ Get the node information from its ID
 
-        Arguments
-        ---------
+        Parameters
+        ----------
         - Tree (Cloud)
-        - ID (Integer) : point ID
+        ID : Integer
+            point ID
+
 
         Returns
         -------
-        - Index (Integer)
+        Index (Integer)
         - ID : (Integer)
         - Owner (Integer)
         - Depth (Integer)
         - Order (Integer)
         - Total (Integer)
         - Explore (Integer)
-        - Exists (Boolean) : False if the ID is not valid
+        Exists : Boolean
+            False if the ID is not valid
+
         """
 
         # oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
@@ -339,21 +347,25 @@ def build_tree(prefix='Tree'):
     with GeoNodes("Explore Info", prefix=prefix, is_group=True):
         """ Get the node information from its exploration index
 
-        Arguments
-        ---------
+        Parameters
+        ----------
         - Tree (Cloud)
-        - ID (Integer) : point ID
+        ID : Integer
+            point ID
+
 
         Returns
         -------
-        - Index (Integer)
+        Index (Integer)
         - ID : (Integer)
         - Owner (Integer)
         - Depth (Integer)
         - Order (Integer)
         - Total (Integer)
         - Explore (Integer)
-        - Exists (Boolean) : False if the exploration index is not valid
+        Exists : Boolean
+            False if the exploration index is not valid
+
         """
 
         # oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
@@ -372,21 +384,25 @@ def build_tree(prefix='Tree'):
     with GeoNodes("Selection Info", prefix=prefix, is_group=True):
         """ Get the node information from selection in the tree
 
-        Arguments
-        ---------
+        Parameters
+        ----------
         - Tree (Cloud)
-        - ID (Integer) : point ID
+        ID : Integer
+            point ID
+
 
         Returns
         -------
-        - Index (Integer)
+        Index (Integer)
         - ID : (Integer)
         - Owner (Integer)
         - Depth (Integer)
         - Order (Integer)
         - Total (Integer)
         - Explore (Integer)
-        - Exists (Boolean) : False if the number of selected points is not equal to 1
+        Exists : Boolean
+            False if the number of selected points is not equal to 1
+
         """
 
         # oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
@@ -411,15 +427,19 @@ def build_tree(prefix='Tree'):
     with GeoNodes("Children Count", prefix=prefix, is_group=True):
         """ Count the number of children
 
-        Arguments
-        ---------
+        Parameters
+        ----------
         - Tree (Cloud)
         - ID (Integer)
 
         Returns
         -------
-        - Count (Integer) : number of children
-        - Empty (Boolean) : if no child (i.e. `count.equal(0)`)
+        Count : Integer
+            number of children
+
+        Empty : Boolean
+            if no child (i.e. `count.equal(0)`)
+
         """
         # oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
 
@@ -435,19 +455,25 @@ def build_tree(prefix='Tree'):
     with GeoNodes("Get Child", prefix=prefix, is_group=True):
         """ Get information on a child by its order
 
-        > [!NOTE]
+        !!! note
         > As for a list, the order can be given from the last using a negative order
 
-        Arguments
-        ---------
+        Parameters
+        ----------
         - Tree (Cloud)
         - ID (Integer)
-        - Order (Integer) : order of the child, from last one if negative
+        Order : Integer
+            order of the child, from last one if negative
+
 
         Returns
         -------
-        - Count (Integer) : number of children
-        - Empty (Boolean) : if no child (i.e. `count.equal(0)`)
+        Count : Integer
+            number of children
+
+        Empty : Boolean
+            if no child (i.e. `count.equal(0)`)
+
         """
         # oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
 
@@ -498,15 +524,19 @@ def build_tree(prefix='Tree'):
         - Direct : the direct children
         - Single : The node only (equivalent to `Integer("ID").equal(node_id)`)
 
-        Arguments
-        ---------
+        Parameters
+        ----------
         - Tree (Cloud)
-        - ID (Integer) : node ID
-        - Mode (Menu) : what to select
+        ID : Integer
+            node ID
+
+        Mode : Menu
+            what to select
+
 
         Returns
         -------
-        - Selection (Boolean)
+        Selection (Boolean)
         """
         # oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
 
@@ -557,14 +587,14 @@ def build_tree(prefix='Tree'):
         - Order   : +1 for the following siblings
         - Depth   : -1 for all children
 
-        Arguments
-        ---------
+        Parameters
+        ----------
         - Tree (Cloud)
         - ID (Integer)
 
         Returns
         -------
-        - Points (Cloud)
+        Points (Cloud)
         """
 
         # oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
@@ -638,14 +668,14 @@ def build_tree(prefix='Tree'):
         - Order   : node order         0            .
         - Depth   : node depth         (+1)  <==    +1 for branch
 
-        Arguments
-        ---------
+        Parameters
+        ----------
         - Tree (Cloud)
         - ID (Integer)
 
         Returns
         -------
-        - Points (Cloud)
+        Points (Cloud)
         """
 
         # oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
@@ -715,16 +745,20 @@ def build_tree(prefix='Tree'):
         - Order   : 0                  .            .
         - Depth   : node depth + 1     .            +1 for branch
 
-        Arguments
-        ---------
+        Parameters
+        ----------
         - Tree (Cloud)
         - ID (Integer)
-        - Force (Boolean) : group the children even if there is only one child
+        Force : Boolean
+            group the children even if there is only one child
+
 
         Returns
         -------
-        - Points (Cloud)
-        - ID (Integer) : ID of the node grouping the children
+        Points (Cloud)
+        ID : Integer
+            ID of the node grouping the children
+
         """
 
         # oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
@@ -811,17 +845,23 @@ def build_tree(prefix='Tree'):
         - Total                 .           .           .
         - Explore              all         all        all
 
-        Arguments
-        ---------
+        Parameters
+        ----------
         - Tree (Cloud)
         - Branch (Cloud)
-        - ID (Integer) : ID of the node where to attache the branch
-        - Location (Integer) : where to attach the new branch
+        ID : Integer
+            ID of the node where to attache the branch
+
+        Location : Integer
+            where to attach the new branch
+
 
         Returns
         -------
-        - Points (Cloud)
-        - ID (Integer) : ID of top node of the attached branch
+        Points (Cloud)
+        ID : Integer
+            ID of top node of the attached branch
+
         """
 
         # oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
@@ -991,17 +1031,23 @@ def build_tree(prefix='Tree'):
 
         Symply "Attach" a Tree made of a single node
 
-        Arguments
-        ---------
+        Parameters
+        ----------
         - Tree (Cloud)
         - Branch (Cloud)
-        - ID (Integer) : ID of the node where to attach the branch
-        - Location (Integer) : where to attach the new branch
+        ID : Integer
+            ID of the node where to attach the branch
+
+        Location : Integer
+            where to attach the new branch
+
 
         Returns
         -------
-        - Points (Cloud)
-        - ID (Integer) : ID of top node of the attached branch
+        Points (Cloud)
+        ID : Integer
+            ID of top node of the attached branch
+
         """
 
         # oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
@@ -1031,15 +1077,21 @@ def build_tree(prefix='Tree'):
     with GeoNodes("Detach", prefix=prefix, is_group=True):
         """ Detach a node and its children
 
-        Arguments
-        ---------
+        Parameters
+        ----------
         - Tree (Cloud)
-        - ID (Integer) : the ID to detach
+        ID : Integer
+            the ID to detach
+
 
         Returns
         -------
-        - Points (Cloud) : main tree
-        - Branch (Cloud) : detached tree
+        Points : Cloud
+            main tree
+
+        Branch : Cloud
+            detached tree
+
         """
 
         # oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
@@ -1084,16 +1136,20 @@ def build_tree(prefix='Tree'):
     with GeoNodes("Move", prefix=prefix, is_group=True):
         """ Move a branchj to another location
 
-        Arguments
-        ---------
+        Parameters
+        ----------
         - Tree (Cloud)
-        - ID (Integer) : ID of the node to move
+        ID : Integer
+            ID of the node to move
+
         - To ID (Integer) : target ID where to move
-        - Location (Integer) : where to attach the new branch relatively to "To ID"
+        Location : Integer
+            where to attach the new branch relatively to "To ID"
+
 
         Returns
         -------
-        - Points (Cloud)
+        Points (Cloud)
         """
 
         # oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
@@ -1129,16 +1185,20 @@ def build_tree(prefix='Tree'):
     with GeoNodes("Group", prefix=prefix, is_group=True):
         """ Group selected nodes
 
-        Arguments
-        ---------
+        Parameters
+        ----------
         - Tree (Cloud)
         - Selection (Boolean)
 
         Returns
         -------
-        - Points (Cloud)
-        - ID (Integer) : ID of the created node
-        - Valid (Boolean) : selection is valid
+        Points (Cloud)
+        ID : Integer
+            ID of the created node
+
+        Valid : Boolean
+            selection is valid
+
         """
 
         # oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
@@ -1183,8 +1243,8 @@ def build_tree(prefix='Tree'):
     with GeoNodes("Face Selection", prefix=prefix, is_group=True):
         """ Select faces based on Tree selection
 
-        Arguments
-        ---------
+        Parameters
+        ----------
         - Geometry
         - Domain
         - ID
@@ -1193,7 +1253,7 @@ def build_tree(prefix='Tree'):
 
         Returns
         -------
-        - Geometry
+        Geometry
         - Selection
         """
 

@@ -105,11 +105,17 @@ class classproperty:
 def get_tree(name, tree_type='GeometryNodeTree', create=True):
     """ Get or create a new nodes tree
 
-    Arguments
-    ---------
-        - name (str) : Tree name
-        - tree_type (str = 'GeometryNodeTree') : tree type in ('CompositorNodeTree', 'TextureNodeTree', 'GeometryNodeTree', 'ShaderNodeTree')
-        - create (bool = False) : Create the tree if it doesn't exist
+    Parameters
+    ----------
+        name : str
+            Tree name
+
+        tree_type : str, optional
+            tree type in ('CompositorNodeTree', 'TextureNodeTree', 'GeometryNodeTree', 'ShaderNodeTree') Default: 'GeometryNodeTree'.
+
+        create : bool, optional
+            Create the tree if it doesn't exist Default: False.
+
 
     Returns
     -------
@@ -148,8 +154,8 @@ def del_tree(btree):
 
     """ Delete a tree
 
-    Arguments
-    ---------
+    Parameters
+    ----------
         - btree (blender Tree or str : Tree or tree name
     """
 
@@ -259,14 +265,18 @@ def ensure_uniques(names: list[str], single_digit: bool = False):
     Doublons are suffixed by an index:
     - ['key', 'key', 'other'] -> ['key', 'key_001', 'other']
 
-    Arguments
-    ---------
-    - names : list of names with possible doublons
-    - single_digit : 'key_1' rather that 'key_001'
+    Parameters
+    ----------
+    names
+        list of names with possible doublons
+
+    single_digit
+        'key_1' rather that 'key_001'
+
 
     Returns
     -------
-    - list of str : doublons are suffixed by an index
+    list of str : doublons are suffixed by an index
     """
     homos  = {}
     uniques = []
@@ -769,14 +779,24 @@ def get_data_type_from_argument(tree_type: str, bl_idname: str, argument):
 
     Attribute
     ---------
-    - tree_type (str) : tree type
-    - bl_idname (str) : node bl_idname
-    - argument (Any) : the argument the derive data_type from
-    - arg_name (str = None) : in case of an error
+    tree_type : str
+            tree type
+
+    bl_idname : str
+            node bl_idname
+
+    argument : Any
+            the argument the derive data_type from
+
+    arg_name : str, optional
+        in case of an error Default: None.
+
 
     Returns
     -------
-    - str : valid value for data_type
+    str
+        valid value for data_type
+
     """
     return SocketType(argument).get_node_data_type(tree_type, bl_idname, halt=False)
 
@@ -821,20 +841,36 @@ def check_enum_arg(node_name: str, arg_name: str, arg_value: str, meth_name: str
 
     Raises
     ------
-    - NodeError : if arg_value is not in valids
+    NodeError
+        if arg_value is not in valids
 
-    Arguments
-    ---------
-    - node_name : node name
-    - param_name : parameter name
-    - arg_name : argument name
-    - arg_value : argument value
-    - meth_name : method name
-    - valids : tuple of valid values
+
+    Parameters
+    ----------
+    node_name
+        node name
+
+    param_name
+        parameter name
+
+    arg_name
+        argument name
+
+    arg_value
+        argument value
+
+    meth_name
+        method name
+
+    valids
+        tuple of valid values
+
 
     Returns
     -------
-    - bool : True
+    bool
+        True
+
     """
     return True
 
@@ -1095,10 +1131,14 @@ def color_ramp_get_stops(bnode, as_str=False):
 def color_ramp_set_stops(bnode, *stops):
     """ Set the color ramp stops
 
-    Arguments
-    ---------
-    - bnode : color ramp node
-    - stops : list of tuple (position, color)
+    Parameters
+    ----------
+    bnode
+        color ramp node
+
+    stops
+        list of tuple (position, color)
+
     """
 
     if len(stops) == 0:
@@ -1236,13 +1276,15 @@ def feeding_nodes(bnode: 'Blender Node') -> list:
 
     A "feeding" node is a node connected directly or indirectly to at least one input socket.
 
-    Arguments
-    ---------
-    - bnode : the node the get the feeding nodes
+    Parameters
+    ----------
+    bnode
+        the node the get the feeding nodes
+
 
     Returns
     -------
-    - list of Nodes : the nodes feeding the argument
+    list of Nodes : the nodes feeding the argument
     """
 
     def trace(bnode, feeders):
@@ -1273,13 +1315,15 @@ def fed_nodes(bnode: 'Blender Node') -> bool:
 
     A "feeding" node is a node connected directly or indirectly to at least one input socket.
 
-    Arguments
-    ---------
-    - bnode : the node the get the fed nodes
+    Parameters
+    ----------
+    bnode
+        the node the get the fed nodes
+
 
     Returns
     -------
-    - list of Nodes : the nodes fed by the argument
+    list of Nodes : the nodes fed by the argument
     """
 
     def trace(bnode, feds):
@@ -1341,9 +1385,11 @@ def check_zones(btree: 'Blender Tree') -> bool:
     - either feeds a node fed by the zone output
     - or feeds the tree output
 
-    Arguments
-    ---------
-    - btree : the tree to work with
+    Parameters
+    ----------
+    btree
+        the tree to work with
+
 
     Raises
     ------
@@ -1351,7 +1397,9 @@ def check_zones(btree: 'Blender Tree') -> bool:
 
     Returns
     -------
-    - bool : True
+    bool
+        True
+
     """
 
     # ----- Loop on the zones

@@ -9,16 +9,24 @@ def dichotomy(f: Closure=None, t0: Float=None, t1: Float=None, count: Integer=No
 
     Solve f(t) = 0. by dichotomy
 
-    Arguments
-    ---------
-    - f (Closure) : function to solve, signature is (t: Float -> Value : Float)
-    - t0 (Float) : min t value
-    - t1 (Float) : max t value
-    - Count (Integer) : number of loops
+    Parameters
+    ----------
+    f : Closure
+            function to solve, signature is (t: Float -> Value : Float)
+
+    t0 : Float
+            min t value
+
+    t1 : Float
+            max t value
+
+    Count : Integer
+            number of loops
+
     
     Returns
     -------
-    - Float t sich as f(t) = 0
+    Float t sich as f(t) = 0
     """
 
     # Store arguments which are used by Group creation

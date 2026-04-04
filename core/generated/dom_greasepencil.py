@@ -1,4 +1,4 @@
-# Generated 2026-03-26 08:37:01
+# Generated 2026-04-04 12:37:35
 
 from __future__ import annotations
 from .. sockettype import SocketType
@@ -33,14 +33,16 @@ class GreasePencil:
     def domain_size(self):
         """ > Node <&Node Domain Size>
 
-        Information
-        -----------
-        - Socket 'Geometry' : self
-        - Parameter 'component' : 'GREASEPENCIL'
+        **Fixed values**
+
+        | Kind      | Name        | Value            |
+        | --------- | ----------- | ---------------- |
+        | Socket    | Geometry    | `self`           |
+        | Parameter | `component` | `'GREASEPENCIL'` |
 
         Returns
         -------
-        - Integer
+        Integer
         """
         node = self._cache('Domain Size', {'Geometry': self}, component='GREASEPENCIL')
         return node._out
@@ -48,18 +50,22 @@ class GreasePencil:
     def to_curves(self, layers_as_instances: Boolean = None):
         """ > Node <&Node Grease Pencil to Curves>
 
-        Information
-        -----------
-        - Socket 'Grease Pencil' : self
-        - Socket 'Selection' : self[selection]
+        **Fixed values**
 
-        Arguments
+        | Kind   | Name          | Value             |
+        | ------ | ------------- | ----------------- |
+        | Socket | Grease Pencil | `self`            |
+        | Socket | Selection     | `self[selection]` |
+
+        Parameters
         ---------
-        - layers_as_instances (Boolean) : socket 'Layers as Instances' (id: Layers as Instances)
+        layers_as_instances : Boolean, optional
+            socket 'Layers as Instances' (id: Layers as Instances)
+        
 
         Returns
         -------
-        - Curve
+        Curve
         """
         node = Node('Grease Pencil to Curves', {'Grease Pencil': self, 'Selection': self.get_selection(), 'Layers as Instances': layers_as_instances})
         return node._out
@@ -68,13 +74,15 @@ class GreasePencil:
     def named_layer_selection(cls, name: String = None):
         """ > Node <&Node Named Layer Selection>
 
-        Arguments
+        Parameters
         ---------
-        - name (String) : socket 'Name' (id: Name)
+        name : String, optional
+            socket 'Name' (id: Name)
+        
 
         Returns
         -------
-        - Boolean
+        Boolean
         """
         node = Node('Named Layer Selection', {'Name': name})
         return node._out
@@ -84,15 +92,17 @@ class GreasePencil:
 
         > ***Jump*** : Socket refers to node output socket after the call
 
-        Information
-        -----------
-        - Socket 'Grease Pencil' : self
-        - Socket 'Selection' : self[selection]
-        - Parameter 'mode' : 'MERGE_BY_NAME'
+        **Fixed values**
+
+        | Kind      | Name          | Value             |
+        | --------- | ------------- | ----------------- |
+        | Socket    | Grease Pencil | `self`            |
+        | Socket    | Selection     | `self[selection]` |
+        | Parameter | `mode`        | `'MERGE_BY_NAME'` |
 
         Returns
         -------
-        - GreasePencil
+        GreasePencil
         """
         node = Node('Merge Layers', {'Grease Pencil': self, 'Selection': self.get_selection()}, mode='MERGE_BY_NAME')
         self._jump(node._out)
@@ -103,19 +113,23 @@ class GreasePencil:
 
         > ***Jump*** : Socket refers to node output socket after the call
 
-        Information
-        -----------
-        - Socket 'Grease Pencil' : self
-        - Socket 'Selection' : self[selection]
-        - Parameter 'mode' : 'MERGE_BY_ID'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name          | Value             |
+        | --------- | ------------- | ----------------- |
+        | Socket    | Grease Pencil | `self`            |
+        | Socket    | Selection     | `self[selection]` |
+        | Parameter | `mode`        | `'MERGE_BY_ID'`   |
+
+        Parameters
         ---------
-        - group_id (Integer) : socket 'Group ID' (id: Group ID)
+        group_id : Integer, optional
+            socket 'Group ID' (id: Group ID)
+        
 
         Returns
         -------
-        - GreasePencil
+        GreasePencil
         """
         node = Node('Merge Layers', {'Grease Pencil': self, 'Selection': self.get_selection(), 'Group ID': group_id}, mode='MERGE_BY_ID')
         self._jump(node._out)
@@ -126,18 +140,20 @@ class GreasePencil:
 
         > ***Jump*** : Socket refers to node output socket after the call
 
-        Information
-        -----------
-        - Socket 'Grease Pencil' : self
-        - Socket 'Selection' : self[selection]
+        **Fixed values**
 
-        Arguments
+        | Kind   | Name          | Value             |
+        | ------ | ------------- | ----------------- |
+        | Socket | Grease Pencil | `self`            |
+        | Socket | Selection     | `self[selection]` |
+
+        Parameters
         ---------
-        - mode (str): parameter 'mode' in ('By Name', 'By Group ID')
+        mode (str): parameter 'mode' in ('By Name', 'By Group ID')
 
         Returns
         -------
-        - GreasePencil
+        GreasePencil
         """
         utils.check_enum_arg('Merge Layers', 'mode', mode, 'merge_layers', ('MERGE_BY_NAME', 'MERGE_BY_ID'))
         node = Node('Merge Layers', {'Grease Pencil': self, 'Selection': self.get_selection()}, mode=mode)
@@ -149,20 +165,26 @@ class GreasePencil:
 
         > ***Jump*** : Socket refers to node output socket after the call
 
-        Information
-        -----------
-        - Socket 'Grease Pencil' : self
-        - Socket 'Selection' : self[selection]
-        - Parameter 'mode' : 'STROKE'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name          | Value             |
+        | --------- | ------------- | ----------------- |
+        | Socket    | Grease Pencil | `self`            |
+        | Socket    | Selection     | `self[selection]` |
+        | Parameter | `mode`        | `'STROKE'`        |
+
+        Parameters
         ---------
-        - color (Color) : socket 'Color' (id: Color)
-        - opacity (Float) : socket 'Opacity' (id: Opacity)
+        color : Color, optional
+            socket 'Color' (id: Color)
+        
+        opacity : Float, optional
+            socket 'Opacity' (id: Opacity)
+        
 
         Returns
         -------
-        - GreasePencil
+        GreasePencil
         """
         node = Node('Set Grease Pencil Color', {'Grease Pencil': self, 'Selection': self.get_selection(), 'Color': color, 'Opacity': opacity}, mode='STROKE')
         self._jump(node._out)
@@ -173,20 +195,26 @@ class GreasePencil:
 
         > ***Jump*** : Socket refers to node output socket after the call
 
-        Information
-        -----------
-        - Socket 'Grease Pencil' : self
-        - Socket 'Selection' : self[selection]
-        - Parameter 'mode' : 'FILL'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name          | Value             |
+        | --------- | ------------- | ----------------- |
+        | Socket    | Grease Pencil | `self`            |
+        | Socket    | Selection     | `self[selection]` |
+        | Parameter | `mode`        | `'FILL'`          |
+
+        Parameters
         ---------
-        - color (Color) : socket 'Color' (id: Color)
-        - opacity (Float) : socket 'Opacity' (id: Opacity)
+        color : Color, optional
+            socket 'Color' (id: Color)
+        
+        opacity : Float, optional
+            socket 'Opacity' (id: Opacity)
+        
 
         Returns
         -------
-        - GreasePencil
+        GreasePencil
         """
         node = Node('Set Grease Pencil Color', {'Grease Pencil': self, 'Selection': self.get_selection(), 'Color': color, 'Opacity': opacity}, mode='FILL')
         self._jump(node._out)
@@ -200,20 +228,26 @@ class GreasePencil:
 
         > ***Jump*** : Socket refers to node output socket after the call
 
-        Information
-        -----------
-        - Socket 'Grease Pencil' : self
-        - Socket 'Selection' : self[selection]
+        **Fixed values**
 
-        Arguments
+        | Kind   | Name          | Value             |
+        | ------ | ------------- | ----------------- |
+        | Socket | Grease Pencil | `self`            |
+        | Socket | Selection     | `self[selection]` |
+
+        Parameters
         ---------
-        - color (Color) : socket 'Color' (id: Color)
-        - opacity (Float) : socket 'Opacity' (id: Opacity)
-        - mode (str): parameter 'mode' in ('Stroke', 'Fill')
+        color : Color, optional
+            socket 'Color' (id: Color)
+        
+        opacity : Float, optional
+            socket 'Opacity' (id: Opacity)
+        
+        mode (str): parameter 'mode' in ('Stroke', 'Fill')
 
         Returns
         -------
-        - GreasePencil
+        GreasePencil
         """
         utils.check_enum_arg('Set Grease Pencil Color', 'mode', mode, 'set_color', ('STROKE', 'FILL'))
         node = Node('Set Grease Pencil Color', {'Grease Pencil': self, 'Selection': self.get_selection(), 'Color': color, 'Opacity': opacity}, mode=mode)
@@ -225,17 +259,19 @@ class GreasePencil:
 
         > ***Jump*** : Socket refers to node output socket after the call
 
-        Information
-        -----------
-        - Socket 'Grease Pencil' : self
+        **Fixed values**
 
-        Arguments
+        | Kind   | Name          | Value  |
+        | ------ | ------------- | ------ |
+        | Socket | Grease Pencil | `self` |
+
+        Parameters
         ---------
-        - depth_order (str): parameter 'depth_order' in ('2D Layers', '3D Location')
+        depth_order (str): parameter 'depth_order' in ('2D Layers', '3D Location')
 
         Returns
         -------
-        - GreasePencil
+        GreasePencil
         """
         utils.check_enum_arg('Set Grease Pencil Depth', 'depth_order', depth_order, 'set_depth', ('2D', '3D'))
         node = Node('Set Grease Pencil Depth', {'Grease Pencil': self}, depth_order=depth_order)
@@ -247,18 +283,22 @@ class GreasePencil:
 
         > ***Jump*** : Socket refers to node output socket after the call
 
-        Information
-        -----------
-        - Socket 'Grease Pencil' : self
-        - Socket 'Selection' : self[selection]
+        **Fixed values**
 
-        Arguments
+        | Kind   | Name          | Value             |
+        | ------ | ------------- | ----------------- |
+        | Socket | Grease Pencil | `self`            |
+        | Socket | Selection     | `self[selection]` |
+
+        Parameters
         ---------
-        - softness (Float) : socket 'Softness' (id: Softness)
+        softness : Float, optional
+            socket 'Softness' (id: Softness)
+        
 
         Returns
         -------
-        - GreasePencil
+        GreasePencil
         """
         node = Node('Set Grease Pencil Softness', {'Grease Pencil': self, 'Selection': self.get_selection(), 'Softness': softness})
         self._jump(node._out)
@@ -276,20 +316,24 @@ class GreasePencil:
 
         > ***Jump*** : Socket refers to node output socket after the call
 
-        Information
-        -----------
-        - Socket 'Grease Pencil' : self
-        - Socket 'Selection' : self[selection]
-        - Socket 'Opacity' : ignored
-        - Parameter 'mode' : 'STROKE'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name          | Value             |
+        | --------- | ------------- | ----------------- |
+        | Socket    | Grease Pencil | `self`            |
+        | Socket    | Selection     | `self[selection]` |
+        | Socket    | Opacity       | ignored           |
+        | Parameter | `mode`        | `'STROKE'`        |
+
+        Parameters
         ---------
-        - color (Color) : socket 'Color' (id: Color)
+        color : Color, optional
+            socket 'Color' (id: Color)
+        
 
         Returns
         -------
-        - GreasePencil
+        GreasePencil
         """
         node = Node('Set Grease Pencil Color', {'Grease Pencil': self, 'Selection': self.get_selection(), 'Color': color, 'Opacity': None}, mode='STROKE')
         self._jump(node._out)
@@ -307,20 +351,24 @@ class GreasePencil:
 
         > ***Jump*** : Socket refers to node output socket after the call
 
-        Information
-        -----------
-        - Socket 'Grease Pencil' : self
-        - Socket 'Selection' : self[selection]
-        - Socket 'Opacity' : ignored
-        - Parameter 'mode' : 'FILL'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name          | Value             |
+        | --------- | ------------- | ----------------- |
+        | Socket    | Grease Pencil | `self`            |
+        | Socket    | Selection     | `self[selection]` |
+        | Socket    | Opacity       | ignored           |
+        | Parameter | `mode`        | `'FILL'`          |
+
+        Parameters
         ---------
-        - color (Color) : socket 'Color' (id: Color)
+        color : Color, optional
+            socket 'Color' (id: Color)
+        
 
         Returns
         -------
-        - GreasePencil
+        GreasePencil
         """
         node = Node('Set Grease Pencil Color', {'Grease Pencil': self, 'Selection': self.get_selection(), 'Color': color, 'Opacity': None}, mode='FILL')
         self._jump(node._out)
@@ -338,17 +386,19 @@ class GreasePencil:
 
         > ***Jump*** : Socket refers to node output socket after the call
 
-        Information
-        -----------
-        - Socket 'Grease Pencil' : self
+        **Fixed values**
 
-        Arguments
+        | Kind   | Name          | Value  |
+        | ------ | ------------- | ------ |
+        | Socket | Grease Pencil | `self` |
+
+        Parameters
         ---------
-        - depth_order (str): parameter 'depth_order' in ('2D Layers', '3D Location')
+        depth_order (str): parameter 'depth_order' in ('2D Layers', '3D Location')
 
         Returns
         -------
-        - GreasePencil
+        GreasePencil
         """
         utils.check_enum_arg('Set Grease Pencil Depth', 'depth_order', depth_order, 'depth', ('2D', '3D'))
         node = Node('Set Grease Pencil Depth', {'Grease Pencil': self}, depth_order=depth_order)
@@ -367,18 +417,22 @@ class GreasePencil:
 
         > ***Jump*** : Socket refers to node output socket after the call
 
-        Information
-        -----------
-        - Socket 'Grease Pencil' : self
-        - Socket 'Selection' : self[selection]
+        **Fixed values**
 
-        Arguments
+        | Kind   | Name          | Value             |
+        | ------ | ------------- | ----------------- |
+        | Socket | Grease Pencil | `self`            |
+        | Socket | Selection     | `self[selection]` |
+
+        Parameters
         ---------
-        - softness (Float) : socket 'Softness' (id: Softness)
+        softness : Float, optional
+            socket 'Softness' (id: Softness)
+        
 
         Returns
         -------
-        - GreasePencil
+        GreasePencil
         """
         node = Node('Set Grease Pencil Softness', {'Grease Pencil': self, 'Selection': self.get_selection(), 'Softness': softness})
         self._jump(node._out)

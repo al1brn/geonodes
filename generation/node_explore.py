@@ -59,6 +59,66 @@ SPEC_NODES = {
 # Tabulation
 _1, _2, _3, _4 = " "*4, " "*8, " "*12, " "*16
 
+# ===========================================================================
+# Build a MD table
+# ===========================================================================
+
+def to_mk_table(headers, lines, prefix=''):
+    """
+    Build a padded Markdown table with optional left indentation.
+
+    Parameters
+    ----------
+    headers : list of str
+    lines : list of list
+    indent : int
+        Number of spaces to indent the table (use 4 inside docstrings).
+
+    Returns
+    -------
+    str
+    """
+
+    # Normalize
+    headers = [str(h) for h in headers]
+
+    old = lines
+    lines = []
+    for line in old:
+        skind = str(line[0]).title()
+        sname = f"`{str(line[1])}`" if skind == 'Parameter' else str(line[1])
+        lines.append([skind, sname, str(line[2])])
+
+    cols = len(headers)
+
+    # Compute widths
+    widths = [len(headers[i]) for i in range(cols)]
+    for row in lines:
+        for i in range(cols):
+            if i < len(row):
+                widths[i] = max(widths[i], len(row[i]))
+
+    # Header
+    header_line = prefix + "| " + " | ".join(
+        headers[i].ljust(widths[i]) for i in range(cols)
+    ) + " |"
+
+    # Separator
+    sep_line = prefix + "| " + " | ".join(
+        "-" * widths[i] for i in range(cols)
+    ) + " |"
+
+    # Rows
+    row_lines = []
+    for row in lines:
+        padded = [
+            (row[i] if i < len(row) else "").ljust(widths[i])
+            for i in range(cols)
+        ]
+        row_lines.append(prefix + "| " + " | ".join(padded) + " |")
+
+    return "\n".join([header_line, sep_line] + row_lines)
+
 
 # ====================================================================================================
 # Node Param
@@ -128,13 +188,13 @@ class NodeParam:
 
         The list can vary when node parameters are changed.
 
-        Arguments
-        ---------
+        Parameters
+        ----------
         - user_version (bool = False) user version
 
         Returns
         -------
-        - tuple of valid values or None if the parameter is not a enum parameter
+        tuple of valid values or None if the parameter is not a enum parameter
         """
         if not isinstance(self.value, str):
             return None
@@ -220,10 +280,14 @@ class NodeInfo:
             - List of output sockets
             - List or parameters
 
-        Arguments
-        ---------
-            - btree (Blender NodeTree) : the current node tree
-            - bnode (Blender Node) : a node in the tree
+        Parameters
+        ----------
+            btree : Blender NodeTree
+            the current node tree
+
+            bnode : Blender Node
+            a node in the tree
+
         """
         if isinstance(bnode, str):
             bl_idname = utils.get_node_bl_idname(bnode, btree.bl_idname)
@@ -669,7 +733,7 @@ class NodeInfo:
     def get_data_type_sockets(self):
         """ Get the dict describing the sockets driven by data_type
 
-        > [!NOTE]
+        !!! note
         > Return None if the node has not, data_type, input_type or selection_type parameter
 
         The returned dict has the following structure:
@@ -680,13 +744,13 @@ class NodeInfo:
         - type_to_value : dict socket type -> param value
         - in_typings : typing of driven input sockets (typically : "Float | Integer | Boolean")
 
-        > [!NOTE]
+        !!! note
         > type_to_value is not always the transposition of value_to_type since different parameter values
         > can use the same socket type such as in 'Store Named Value'
 
         Returns
         -------
-        - dict : sockets driven by data_type
+        dict : sockets driven by data_type
         """
 
         driver_name = None
@@ -863,14 +927,16 @@ class NodeInfo:
 
         The list can vary when node parameters are changed.
 
-        Arguments
-        ---------
-        - param (str) : Node parameter name
+        Parameters
+        ----------
+        param : str
+            Node parameter name
+
         - user_version (bool = False) user version
 
         Returns
         -------
-        - tuple of valid values or None if the parameter is not a enum parameter
+        tuple of valid values or None if the parameter is not a enum parameter
         """
 
         if self.params[param].param_type != 'ENUM':
@@ -975,7 +1041,7 @@ class NodeInfo:
 
         Returns
         -------
-        - str : name of the first input socket
+        str : name of the first input socket
         """
         in_sockets = self.get_in_sockets(True)
         if len(in_sockets):
@@ -997,6 +1063,7 @@ class NodeInfo:
         """ Build arguments list
 
         One dictionary is returned for each socket:
+
         - 'arg_type'     : enum in ('SOCKET', 'PARAM', 'OTHER', 'FIRST')
         - 'identifier'   : socket identifier
         - 'socket_name'  : socket name
@@ -1009,20 +1076,27 @@ class NodeInfo:
         - 'arg_value'    : argument default value
         - 'socket_value' : argument value
         - 'comment'      : comment
-        - 'info'         : information for non argument sockets
+        #- 'info'         : information for non argument sockets
+        - 'fixed'        : fixed socket or parameter
         - 'typing'       : typing info
 
-        Arguments
-        ---------
+        Parameters
+        ----------
         - self_socket : socket name to use to plug self
-        - expose_selection (bool = True) : put 'Selection' socket (if exists) in the list of arguments or set to 'self.get_selection()'
-        - enabled_only (bool = True) : sue only enabled sockets
-        - ignore_sockets (list) : list of sockets to ignore
+        expose_selection : bool, optional
+            put 'Selection' socket (if exists) in the list of arguments or set to 'self.get_selection()' Default: True.
+
+        enabled_only : bool, optional
+            sue only enabled sockets Default: True.
+
+        ignore_sockets : list
+            list of sockets to ignore
+
         - parameters : forced node parameters
 
         Returns
         -------
-        - list of dicts
+        list of dicts
         """
 
         DEBUG = False and self.bnode.name == "Image Texture"
@@ -1064,7 +1138,8 @@ class NodeInfo:
                     'arg_name'     : param,
                     'is_argument'  : False,
                     'comment'      : None,
-                    'info'         : f"Parameter '{param}' : depending on '{driving_arg_name}' type",
+                    #'info'         : f"Parameter '{param}' : depending on '{driving_arg_name}' type",
+                    'fixed'        : ('Parameter', param, f"from `{driving_arg_name}` type"),
                     'node_value'   : param,
                     'typing'       : "'data_type'",
                 })
@@ -1100,13 +1175,15 @@ class NodeInfo:
                 'arg_name'     : param,
                 'is_argument'  : not forced,
                 'comment'      : None,
-                'info'         : None,
+                #'info'         : None,
+                'fixed'        : None,
                 #'typing'       : "'IN_PROGRESS'",
             }
 
             if forced:
                 d['node_value'] = str_value
-                d['info'] = f"Parameter '{param}' : {str_value}"
+                #d['info'] = f"Parameter '{param}' : {str_value}"
+                d['fixed'] = ('Parameter', param, f"`{str_value}`")
 
             else:
                 d['arg_value']  = str_value
@@ -1166,7 +1243,8 @@ class NodeInfo:
                     'class_name'  : class_name,
                     'node_value'  : None,
                     'multiple'    : 'NO',
-                    'info'        : f"Socket '{socket_name}' : ignored",
+                    #'info'        : f"Socket '{socket_name}' : ignored",
+                    'fixed'       : ["Socket", socket_name, "ignored"],
                     'typing'      : "'IGNORED'",
                 })
                 continue
@@ -1177,7 +1255,8 @@ class NodeInfo:
             multiple    = 'ARGS' if socket.is_multi_input else 'NO'
             is_argument = True
             comment     = None
-            info        = None
+            #info        = None
+            fixed       = None
 
             # ----- Self socket
 
@@ -1190,7 +1269,8 @@ class NodeInfo:
                 else:
                     node_value  = 'self'
                     is_argument = False
-                    info        = f"Socket '{socket_name}' : self"
+                    #info        = f"Socket '{socket_name}' : self"
+                    fixed       = ("Socket", socket_name, "`self`")
 
             # ----- Not self socket
 
@@ -1205,7 +1285,8 @@ class NodeInfo:
                 if socket_name == 'Selection' and not expose_selection:
                     is_argument = False
                     node_value = "self.get_selection()"
-                    info       = "Socket 'Selection' : self[selection]"
+                    #info       = "Socket 'Selection' : self[selection]"
+                    fixed      = ("Socket", "Selection", "`self[selection]`")
 
                 # Any other socket
                 else:
@@ -1226,14 +1307,19 @@ class NodeInfo:
                     index = dts['in_sockets'].index(socket.name)
                     styping = self.data_type_sockets['in_typings'][index]
 
-            # ----- Comment
+            # ----- Parameter documentation
 
             if socket.identifier in self.menu_sockets:
                 menu = self.menu_sockets[socket.identifier]
                 comment = f"{arg_name} (menu='{menu['default']}') : {menu['values']}"
+                prm_doc_type = f"menu='{menu['default']}'"
+                prm_doc_desc = f"{menu['values']}"
             else:
-                #comment = f"{arg_name} ({constants.CLASS_NAMES[socket.type]}) : socket '{socket_name}' (id: {socket.identifier})"
                 comment = f"{arg_name} ({styping}) : socket '{socket_name}' (id: {socket.identifier})"
+                prm_doc_type = styping
+                prm_doc_desc = f"socket '{socket_name}' (id: {socket.identifier})"
+
+            comment = f"{arg_name} : {prm_doc_type}, optional\n{_1}{prm_doc_desc}\n"
 
             # ----- Store the socket usage
 
@@ -1251,7 +1337,8 @@ class NodeInfo:
                 'arg_value'   : "None",
                 'node_value'  : node_value,
                 'comment'     : comment,
-                'info'        : info,
+                #'info'        : info,
+                'fixed'       : fixed, 
                 'typing'      : styping,
             })
 
@@ -1268,7 +1355,8 @@ class NodeInfo:
                 'arg_name'    : 'named_sockets',
                 'arg_value'   : '{}',
                 'comment'     : "Sockets created with string names",
-                'info'        : None,
+                #'info'        : None,
+                'fixed'       : None,
                 'typing'      : "dict",
             })
 
@@ -1279,7 +1367,8 @@ class NodeInfo:
                 'multiple'    : 'KWARGS',
                 'arg_name'    : 'sockets',
                 'comment'     : "Sockets created with python name attributes",
-                'info'        : None,
+                #'info'        : None,
+                'fixed'       : None,
             })
 
         # ----- Restore the parameters
@@ -1451,25 +1540,32 @@ class NodeInfo:
 
         arg_doc = []
         inf_doc = []
-        #for is_socket in [True, False]:
+        fixed_doc = []
         for arg_type in ['SOCKET', 'PARAM']:
             for arg in args:
                 if arg['arg_type'] != arg_type:
                     continue
                 if arg['is_argument']:
-                    arg_doc.append(arg['comment'])
-                if arg['info'] is not None:
-                    inf_doc.append(arg['info'])
+                    arg_doc.extend(arg['comment'].split("\n"))
+                #if arg['info'] is not None:
+                #    inf_doc.append(arg['info'])
+                if arg['fixed'] is not None:
+                    fixed_doc.append(arg['fixed'])
 
-        if len(inf_doc):
-            doc += f"{_2}Information\n"
-            doc += f"{_2}-----------\n{_2}- "
-            doc += f"\n{_2}- ".join(inf_doc) + "\n\n"
+
+        #if len(inf_doc):
+        #    doc += f"{_2}**Information**\n\n"
+        #    doc += f"{_2}-----------\n{_2}- "
+        #    doc += f"\n{_2}- ".join(inf_doc) + "\n\n"
+
+        if len(fixed_doc):
+            doc += f"{_2}**Fixed values**\n\n"
+            doc += to_mk_table(('Kind', 'Name', 'Value'), fixed_doc, prefix=_2) + "\n\n"
 
         if len(arg_doc):
-            doc += f"{_2}Arguments\n"
-            doc += f"{_2}---------\n{_2}- "
-            doc += f"\n{_2}- ".join(arg_doc) + "\n\n"
+            doc += f"{_2}Parameters\n"
+            doc += f"{_2}---------\n{_2}"
+            doc += f"\n{_2}".join(arg_doc) + "\n\n"
 
         # Returns
 
@@ -1481,32 +1577,35 @@ class NodeInfo:
 
             if returns == 'NODE':
                 a = [f"{socket_name} ({class_name})" for socket_name, class_name in out.items()]
-                doc += f"{_2}- node [{', '.join(a)}]\n"
+                doc += f"{_2}node [{', '.join(a)}]\n"
 
             elif returns == 'OUT':
                 if implementation == 'JUMP':
-                    doc += f"{_2}- self"
+                    doc += f"{_2}self"
                     if len(out) > 1:
-                        doc += f" [{list(out.values())[1]}_]\n"
+                        #doc += f" [{list(out.values())[1]}_]\n"
+                        doc += f"\n{_3}peer sockets: {list(out.values())[1]}\n"
                     doc += "\n"
 
                 else:
                     if len(out):
-                        doc += f"{_2}- {list(out.values())[0]}"
+                        doc += f"{_2}{list(out.values())[0]}"
+
                         a = [f"{socket_name}_ ({class_name})" for socket_name, class_name in out.items()]
                         if len(a) > 1:
-                            doc += f" [{', '.join(a[1:])}]"
+                            #doc += f" [{', '.join(a[1:])}]"
+                            doc += f"\n{_3}peer sockets: {', '.join(a[1:])}\n"
                         doc += "\n"
                     else:
-                        doc += f"{_2}- None\n"
+                        doc += f"{_2}None\n"
 
 
             elif returns == 'TUPLE':
                 a = [class_name for class_name in out.values()]
-                doc += f"{_2}- tuple ({', '.join(a)})\n"
+                doc += f"{_2}tuple ({', '.join(a)})\n"
 
             else:
-                doc += f"{_2}- {returns}\n"
+                doc += f"{_2}{returns}\n"
 
         doc += _2 + '"""\n'
 
@@ -1643,8 +1742,8 @@ class NodeInfo:
         ramp2 = ColorRamp(.5, stops=[(.1, (1, 0, 0)), (.5, 1), (.9, (0, 0, 1))])
         ```
 
-        Arguments
-        ---------
+        Parameters
+        ----------
         - fac (Float = None)
         - stops (list of tuple(float, tuple)) : stops made of (float, color as tuple of floats)
         - interpolation in ('EASE', 'CARDINAL', 'LINEAR', 'B_SPLINE', 'CONSTANT')
@@ -1665,13 +1764,23 @@ class NodeInfo:
             **sockets):
         """ > Node <&Node Menu Switch>
 
-        Arguments
-        ---------
-        - named_sockets (dict = {}) : sockets to create
-        - menu (Socket | str = None) : socket to plug in
-        - default_value (str | int) : default value
-        - data_type (str = None): data type, auto if None
-        - sockets (dict) : items
+        Parameters
+        ----------
+        named_sockets : dict, optional
+            sockets to create Default: {}.
+
+        menu : Socket | str, optional
+            socket to plug in Default: None.
+
+        default_value : str | int
+            default value
+
+        data_type : str, default=None
+            data type, auto if None
+
+        sockets : dict
+            items
+
         """
         #return MenuNode(named_sockets=named_sockets, menu=menu, default_value=default_value, data_type=data_type, **sockets)
         return Node('Menu Switch', named_sockets=named_sockets, Menu=menu, data_type=data_type, **sockets)
@@ -1696,15 +1805,19 @@ class NodeInfo:
             pick_geo.out()
         ```
 
-        Arguments
-        ---------
+        Parameters
+        ----------
         - *values : list of Sockets to select into
-        - index (Integer) : socket 'Index' (Index)
-        - data_type (str = None) : socket data_type
+        index : Integer
+            socket 'Index' (Index)
+
+        data_type : str, optional
+            socket data_type Default: None.
+
 
         Returns
         -------
-        - Socket
+        Socket
         """
         node = IndexSwitchNode(*values, index=index, data_type=data_type)
         return node._out
@@ -1715,8 +1828,8 @@ class NodeInfo:
 
     def static_code(self, gen: dict, module: str, name: str | None = None, ret=None):
         """
-        Arguments
-        ---------
+        Parameters
+        ----------
         - gen : key = class name -> : dict of function name -> source code
         - module : module name
         - name : function name
@@ -1931,8 +2044,8 @@ class NodeInfo:
     def constructor_code(self, gen: dict, func_name: str | None = None, class_name: str | None = None, ignore_sockets: dict = {}, **parameters):
         """ Class constructor code
 
-        Arguments
-        ---------
+        Parameters
+        ----------
         - gen : dict [class name -> dict[method name -> source code]]
         - func_name : function name, from node name if None
         - class_name : class name, deduced from output socket type if None
@@ -2046,8 +2159,8 @@ class NodeInfo:
         **parameters):
         """ Method code
 
-        Arguments
-        ---------
+        Parameters
+        ----------
         - gen : dict [class name -> dict[method name -> source code]]
         - func : type of implementation
         - func_name : function name, from node name if None
@@ -2498,8 +2611,8 @@ class NodeInfo:
     def global_code(self, gen, module: str, func_name: str | None = None, ret: str = 'OUT', **parameters):
         """ Method code
 
-        Arguments
-        ---------
+        Parameters
+        ----------
         - gen : dict [class name -> dict[method name -> source code]]
         - func_name : function name, from node name if None
         - module : module name
@@ -2616,8 +2729,8 @@ class NodeInfo:
         **kwargs):
         """ Source code from user spec
 
-        Arguments
-        ---------
+        Parameters
+        ----------
         - gen : dict [class name -> dict[method name -> source code]]
         - func : type of implementation
         - func_name : function name, from node name if None
@@ -2762,8 +2875,8 @@ class NodeInfo:
         class_name: str | None = None, in_socket: str | None = None, out_socket: str | None = None,
         setter_params: dict = {}, getter_params: dict = {}, setter_sockets: dict = {}, getter_sockets: dict = {}):
         """
-        Arguments
-        ---------
+        Parameters
+        ----------
         - gen : dict [class name -> dict[method name -> source code]]
         - func_name : property name
         - setter : node name for setter
@@ -3217,7 +3330,6 @@ def build_data_types_dict():
                 print(node_info.bnode.name)
                 pprint(sockets)
                 print(node_info.enum_params[name])
-                aaa
 
             # Initialize the entry
             nodes[node_info.bnode.bl_idname] = {

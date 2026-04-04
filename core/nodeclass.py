@@ -131,7 +131,7 @@ class Sockets:
 
         Returns
         -------
-        - list of (name, socket)
+        list of (name, socket)
         """
         keys  = {}
         sockets = []
@@ -247,36 +247,67 @@ class Node:
 
         Attributes
         ----------
-        - _tree (bpy.types.NodeTree): the tree the node belongs to
-        - _bnode (bpy.types.Node): the Blender wrapped Node
-        - _has_dyn_in (bool) : able to create dynamic input sockets
-        - _has_dyn_out (bool) : able to create dynamic output sockets
-        - _has_items (bool) : has at least one collection of dynamic items
-        - _items (dict['INPUT', 'OUTPUT']) : items collections or None
-        - _use_interface (bool) : the node dynamic sockets are managed with a NodeTree interface
-        - _interface (TreeInterface) : interface of the node if it exists
+        _tree : bpy.types.NodeTree
+            the tree the node belongs to
+
+        _bnode : bpy.types.Node
+            the Blender wrapped Node
+
+        _has_dyn_in : bool
+            able to create dynamic input sockets
+
+        _has_dyn_out : bool
+            able to create dynamic output sockets
+
+        _has_items : bool
+            has at least one collection of dynamic items
+
+        _items : dict['INPUT', 'OUTPUT']
+            items collections or None
+
+        _use_interface : bool
+            the node dynamic sockets are managed with a NodeTree interface
+
+        _interface : TreeInterface
+            interface of the node if it exists
+
         _ _interface_in_out (dict['INPUT', 'OUTPUT']) : in_out argument to access the Tree
-        - _is_paired_input (bool) : the node is the input node of a zone of paired nodes
-        - _is_paired_output (bool) : the node is the output node of a zone of paired nodes
-        - _paired_input_node (Node) : paired input node
-        - _paired_output_node (Node) : paired output node
-        - _default_menu (str | int) : specific to MenuSwitch and IndexSwitch, forward menu value
+        _is_paired_input : bool
+            the node is the input node of a zone of paired nodes
+
+        _is_paired_output : bool
+            the node is the output node of a zone of paired nodes
+
+        _paired_input_node : Node
+            paired input node
+
+        _paired_output_node : Node
+            paired output node
+
+        _default_menu : str | int
+            specific to MenuSwitch and IndexSwitch, forward menu value
+
         - _link_ignore : ignore these sockets in link_inputs method (already set)
         - _stack : call stack for warnings
 
-        > [!NOTE]
-        > NodeTree interface is used for Group Input and Output nodes and for Group node.
-        > - Group Node : the input sockets are interface sockets for the TreeNode
-        > - Group Input Node : the output sockets are input sockets of the interface
-        > - Group Output Node : the input sockets are output sockets of the interface
+        !!! note
+            NodeTree interface is used for Group Input and Output nodes and for Group node.
 
-        > [!NOTE]
-        >  The '_out' property returns the first enabled output socket
+            - Group Node : the input sockets are interface sockets for the TreeNode
+            - Group Input Node : the output sockets are input sockets of the interface
+            - Group Output Node : the input sockets are output sockets of the interface
 
-        Arguments
-        ---------
-        - node_name (str) : Node name
-        - named_sockets (dict = {}) : initialization values for the node input sockets
+        !!! note
+            The '_out' property returns the first enabled output socket
+
+        Parameters
+        ----------
+        node_name : str
+            Node name
+
+        named_sockets : dict, optional
+            initialization values for the node input sockets Default: {}.
+
         - **parameters : node parameters and sockets
         """
 
@@ -474,14 +505,18 @@ class Node:
 
         This method returns self to be chained:
 
-        Arguments
-        ---------
-        - label (str = None) : node label
-        - color (color = None) : node color
+        Parameters
+        ----------
+        label : str, optional
+            node label Default: None.
+
+        color : color, optional
+            node color Default: None.
+
 
         Returns
         -------
-        - self
+        self
         """
         self._label = label
         self._color = color
@@ -498,15 +533,23 @@ class Node:
     def data_type_from_value(self, value, param_name: str = 'data_type', on_error: str = 'DEFAULT'):
         """ Get the data_type from the value to plug on socket
 
-        Arguments
-        ---------
-        - value : the value to set on the socket
-        - param_name (str in ('data_type', 'input_type')) : param name
-        - on_error(str in ('HALT', 'NONE', 'DEFAULT')) : what to do if not found
+        Parameters
+        ----------
+        value
+            the value to set on the socket
+
+        param_name : {'data_type', 'input_type'}
+            param name
+
+        on_error : {'HALT', 'NONE', 'DEFAULT'}
+            what to do if not found
+
 
         Returns
         -------
-        - data_type : a valid data type
+        data_type
+            a valid data type
+
         """
         return SocketType.get_data_type_for_node(value, self._bnode.bl_idname, param_name, on_error='DEFAULT')
 
@@ -518,13 +561,21 @@ class Node:
         """ Set a node parameter
 
         Arguments
-        - name (str) : parameter name
-        - value (any) : parameter value
-        - halt (bool = True) : raise an error if name is not a parameter
+        name : str
+            parameter name
+
+        value : any
+            parameter value
+
+        halt : bool, optional
+            raise an error if name is not a parameter Default: True.
+
 
         Returns
         -------
-        - str : parameter name if properly set, None otherwise
+        str
+            parameter name if properly set, None otherwise
+
         """
         from .constants import NODE_INFO
 
@@ -713,17 +764,27 @@ class Node:
             panel        : str = "") -> list[(str, Socket)]:
         """ Build a list of sockets.
 
-        Arguments
-        ---------
-        - in_out (str in ('INPUT', 'OUTPUT')) : input or output sockets
-        - include (list = None) : sockets to include
-        - exclude (list = []) : sockets to exclude
-        - enabled_only : (bool = True) : ignore disabled sockets
-        - free_only : (bool = False) : ignore linked sockets
+        Parameters
+        ----------
+        in_out : {'INPUT', 'OUTPUT'}
+            input or output sockets
+
+        include : list, optional
+            sockets to include Default: None.
+
+        exclude : list, optional
+            sockets to exclude Default: [].
+
+        enabled_only
+            (bool = True) : ignore disabled sockets
+
+        free_only
+            (bool = False) : ignore linked sockets
+
 
         Returns
         -------
-        - list of sockets
+        list of sockets
         """
 
         assert(in_out in ('INPUT', 'OUTPUT'))
@@ -812,11 +873,17 @@ class Node:
             enabled_only : bool = True) -> Socket:
         """ Get a socket by its index
 
-        Arguments
-        ---------
-        - in_out (str in ('INPUT', 'OUTPUT')) : input or output sockets
-        - index (int) : socket index
-        - enabled_only : (bool = True) : ignore disabled sockets
+        Parameters
+        ----------
+        in_out : {'INPUT', 'OUTPUT'}
+            input or output sockets
+
+        index : int
+            socket index
+
+        enabled_only
+            (bool = True) : ignore disabled sockets
+
 
         Raises
         ------
@@ -824,7 +891,7 @@ class Node:
 
         Returns
         -------
-        - Socket
+        Socket
         """
         sockets = self.get_sockets(in_out, enabled_only=enabled_only)
         return sockets[index][1]
@@ -846,14 +913,26 @@ class Node:
         - The socket name possibly suffixed by its rank (e.g. `value_1` for second socket named Value)
         - The python version
 
-        Arguments
-        ---------
-        - in_out (str in ('INPUT', 'OUTPUT')) : input or output sockets
-        - name (str) : socket name
-        - socket_type (str) : socket_type
-        - enabled_only : (bool = True) : ignore disabled sockets
-        - free_only (bool = False) : ignore linked sockets
-        - halt (bool = True) : raises an error if not found
+        Parameters
+        ----------
+        in_out : {'INPUT', 'OUTPUT'}
+            input or output sockets
+
+        name : str
+            socket name
+
+        socket_type : str
+            socket_type
+
+        enabled_only : bool
+            ignore disabled sockets Default: True
+
+        free_only : bool, optional
+            ignore linked sockets Default: False.
+
+        halt : bool, optional
+            raises an error if not found Default: True.
+
 
         Raises
         ------
@@ -861,7 +940,7 @@ class Node:
 
         Returns
         -------
-        - Socket
+        Socket
         """
 
         # ====================================================================================================
@@ -939,18 +1018,30 @@ class Node:
             halt         : bool = True) -> Socket:
         """ Get a socket by a reference
 
-        Arguments
-        ---------
-        - in_out (str in ('INPUT', 'OUTPUT')) : input or output sockets
-        - name (str | int | Socket) : socket index, name, identifier or the socket itself
-        - socket_type (str) : socket type
-        - enabled_only : (bool = True) : ignore disabled sockets
-        - free_only (bool = False) : ignore linked sockets
-        - halt (bool = True) : raises an error if not found
+        Parameters
+        ----------
+        in_out : {'INPUT', 'OUTPUT'}
+            input or output sockets
+
+        name : str | int | Socket
+            socket index, name, identifier or the socket itself
+
+        socket_type : str
+            socket type
+
+        enabled_only : bool
+            ignore disabled sockets Default: True
+
+        free_only : bool, optional
+            ignore linked sockets Default: False.
+
+        halt : bool, optional
+            raises an error if not found Default: True.
+
 
         Returns
         -------
-        - Socket if found
+        Socket if found
         """
 
         # The result is provided
@@ -978,10 +1069,14 @@ class Node:
     def get_socket_default_name(self, in_out: IN_OUT, value) -> str:
         """ Get the socket default name from a value
 
-        Arguments
-        ---------
-        - in_out (str in ('INPUT', 'OUTPUT')) : for input or output socket
-        - value (Any) : the value to name
+        Parameters
+        ----------
+        in_out : {'INPUT', 'OUTPUT'}
+            for input or output socket
+
+        value : Any
+            the value to name
+
         """
         if SocketType(value).type == 'GEOMETRY':
             if in_out == 'OUTPUT' and self._bnode.bl_idname == "GeometryNodeForeachGeometryElementOutput":
@@ -1002,12 +1097,20 @@ class Node:
             panel   : str="", **props) -> Socket:
         """ Create a new socket from a socket and link them
 
-        Arguments
-        ---------
-        - in_out (str in ('INPUT', 'OUPUT')) : input or output socket
-        - socket (Socket | bpy.types.NodeSocket) : socket to create from
-        - panel (str = "") : creation panel
-        - props (dict) : additional properties
+        Parameters
+        ----------
+        in_out : {'INPUT', 'OUPUT'}
+            input or output socket
+
+        socket : Socket | bpy.types.NodeSocket
+            socket to create from
+
+        panel : str, optional
+            creation panel Default: "".
+
+        props : dict
+            additional properties
+
 
         Raises
         ------
@@ -1015,7 +1118,9 @@ class Node:
 
         Returns
         -------
-        - Socket : the created socket
+        Socket
+            the created socket
+
         """
 
         # ---------------------------------------------------------------------------
@@ -1109,12 +1214,20 @@ class Node:
             **props) -> Socket:
         """ Create a new socket.
 
-        Arguments
-        ---------
-        - in_out (str in ('INPUT', 'OUPUT')) : input or output socket
-        - socket_type (str | Socket) : type of socket to create
-        - panel (str = "") : creation panel
-        - props (dict) : additional properties
+        Parameters
+        ----------
+        in_out : {'INPUT', 'OUPUT'}
+            input or output socket
+
+        socket_type : str | Socket
+            type of socket to create
+
+        panel : str, optional
+            creation panel Default: "".
+
+        props : dict
+            additional properties
+
 
         Raises
         ------
@@ -1122,7 +1235,7 @@ class Node:
 
         Returns
         -------
-        - Socket (output) or bpy.types.NodeSocket (input) : the created socket
+        Socket (output) or bpy.types.NodeSocket (input) : the created socket
         """
 
         # ---------------------------------------------------------------------------
@@ -1218,14 +1331,18 @@ class Node:
     def set_input_socket_value(self, socket, value):
         """ Set a value to an input socket
 
-        Arguments
-        ---------
-        - socket (Socket) : the input socket
-        - value (Any) : the value to set
+        Parameters
+        ----------
+        socket : Socket
+            the input socket
+
+        value : Any
+            the value to set
+
 
         Returns
         -------
-        - socket
+        socket
         """
 
         if value is None:
@@ -1367,13 +1484,23 @@ class Node:
         - The first free input socket of the proper type is chosen
         - If not found, a socket is created when possible
 
-        Arguments
-        ---------
-        - name (Socket | str | int | None) : socket name of socket index
-        - value (Socket or any value) : value to set to the socket
-        - create (bool = True) : create the value (only for node with dynamic input sockets)
-        - panel (str = "") : creation panel
-        - props (dict) : additional properties (ignored)
+        Parameters
+        ----------
+        name : Socket | str | int | None
+            socket name of socket index
+
+        value : Socket or any value
+            value to set to the socket
+
+        create : bool, optional
+            create the value (only for node with dynamic input sockets) Default: True.
+
+        panel : str, optional
+            creation panel Default: "".
+
+        props : dict
+            additional properties (ignored)
+
 
         Raises
         ------
@@ -1381,7 +1508,7 @@ class Node:
 
         Returns
         -------
-        - The input socket
+        The input socket
         """
 
         # ====================================================================================================
@@ -1568,7 +1695,9 @@ class Node:
 
         Returns
         -------
-        - Socket : first enabled output socket
+        Socket
+            first enabled output socket
+
         """
         for bsock in self._bnode.outputs:
             if bsock.enabled and bsock.is_icon_visible and bsock.type != 'CUSTOM':
@@ -1620,17 +1749,25 @@ class Node:
             with_sockets : bool = False) -> Signature:
         """ Build the signature of the node.
 
-        Arguments
-        ---------
-        - include (list = None) : sockets to include
-        - exclude (list = []) : sockets to exclude
-        - enabled_only : (bool = True) : ignore disabled sockets
+        Parameters
+        ----------
+        include : list, optional
+            sockets to include Default: None.
+
+        exclude : list, optional
+            sockets to exclude Default: [].
+
+        enabled_only
+            (bool = True) : ignore disabled sockets
+
         - free_only : (bool = False) : ignore linked sockets
-        - with_socket (bool = False) : include sockets
+        with_socket : bool, optional
+            include sockets Default: False.
+
 
         Returns
         -------
-        - Signature
+        Signature
         """
 
         sigs = []
@@ -1671,15 +1808,21 @@ class Node:
         panel       : str = ""):
         """ Set the signature .
 
-        Arguments
-        ---------
-        - in_out (str in ('INPUT, 'OUTPUT', 'BOTH')) : input or output sockets or both
-        - signature (Signature) : the signature to apply
-        - panel (str = "") : the panel where to create the sockets
+        Parameters
+        ----------
+        in_out : {'INPUT, 'OUTPUT', 'BOTH'}
+            input or output sockets or both
+
+        signature : Signature
+            the signature to apply
+
+        panel : str, optional
+            the panel where to create the sockets Default: "".
+
 
         Returns
         -------
-        - dict of created sockets
+        dict of created sockets
         """
 
         signature = Signature(signature)
@@ -1718,9 +1861,11 @@ class Node:
     def out(self, panel: str = ""):
         """ Plug the output sockets to the current tree output.
 
-        Arguments
-        ---------
-        - panel (str = "") : panel to use
+        Parameters
+        ----------
+        panel : str, optional
+            panel to use Default: "".
+
         """
         self.link_outputs(None, to_panel=panel)
 
@@ -1745,7 +1890,9 @@ class Node:
 
         Returns
         -------
-        - tuple : tuple of enabled sockets
+        tuple
+            tuple of enabled sockets
+
         """
         return tuple([socket for _, socket in self.get_sockets('OUTPUT')])
 
@@ -1770,17 +1917,27 @@ class Node:
         If from node is able to create output sockets, they are created, otherwise only the sockets
         with matchin names and types are linked.
 
-        Arguments
-        ---------
-        - from_node (Node = None) : node to get output sockets from
-        - from_panel (str = "") : the panel to use in from_node
-        - include (list = None) : sockets to include
-        - exclude (list = []) : sockets to exclude
-        - panel (str = "") : panel to select input socket in
+        Parameters
+        ----------
+        from_node : Node, optional
+            node to get output sockets from Default: None.
+
+        from_panel : str, optional
+            the panel to use in from_node Default: "".
+
+        include : list, optional
+            sockets to include Default: None.
+
+        exclude : list, optional
+            sockets to exclude Default: [].
+
+        panel : str, optional
+            panel to select input socket in Default: "".
+
 
         Returns
         -------
-        - self
+        self
         """
 
         # ---------------------------------------------------------------------------
@@ -1847,13 +2004,23 @@ class Node:
         If from node is able to create output sockets, they are created, otherwise only the sockets
         with matchin names and types are linked.
 
-        Arguments
-        ---------
-        - to_node (Node = None) : node to plug into
-        - to_panel (str = "") : the panel to use in to_node
-        - include (list = None) : sockets to include
-        - exclude (list = []) : sockets to exclude
-        - panel (str = "") : panel to select input socket in
+        Parameters
+        ----------
+        to_node : Node, optional
+            node to plug into Default: None.
+
+        to_panel : str, optional
+            the panel to use in to_node Default: "".
+
+        include : list, optional
+            sockets to include Default: None.
+
+        exclude : list, optional
+            sockets to exclude Default: [].
+
+        panel : str, optional
+            panel to select input socket in Default: "".
+
         """
 
         # ---------------------------------------------------------------------------
@@ -1931,15 +2098,23 @@ class Node:
     def method_call(self, *args, ret_class = None, **kwargs):
         """ Link the input sockets with method arguments
 
-        Arguments
-        ---------
-        - args (tuple) : values of the first sockets (but self_ if not None)
-        - ret_class (type) : output class
-        - kwargs (dict) : named sockets
+        Parameters
+        ----------
+        args : tuple
+            values of the first sockets (but self_ if not None)
+
+        ret_class : type
+            output class
+
+        kwargs : dict
+            named sockets
+
 
         Returns
         -------
-        - Socket : node._out
+        Socket
+            node._out
+
         """
 
         # ------------------------------------------------------------
@@ -2255,9 +2430,11 @@ class MenuNode(Node):
         - max value of Index Switch connected socket is ok
         - modifiers values are preserved
 
-        Arguments
-        ---------
-        - mod_values (dict) : modifiers initial values, before clearing the Tree
+        Parameters
+        ----------
+        mod_values : dict
+            modifiers initial values, before clearing the Tree
+
         """
 
         # All the Tree input sockets
@@ -2418,15 +2595,19 @@ class Group(Node):
             node._out.out("d")
         ```
 
-        Arguments
-        ---------
-        - group_name (str) : name of the group to use
-        - named_sockets (dict) : sockets initialization values
+        Parameters
+        ----------
+        group_name : str
+            name of the group to use
+
+        named_sockets : dict
+            sockets initialization values
+
         - **sockets (dict) : sockets  initialization with their snake_case name
 
         Returns
         -------
-        - Node Group
+        Node Group
         """
 
         tree = Tree.current_tree()
@@ -2488,16 +2669,22 @@ class Group(Node):
             node._out.out("d")
         ```
 
-        Arguments
-        ---------
-        - prefix (str) : prefix
-        - group_name (str) : name of the group to use
-        - sockets (dict) : sockets initialization values
+        Parameters
+        ----------
+        prefix : str
+            prefix
+
+        group_name : str
+            name of the group to use
+
+        sockets : dict
+            sockets initialization values
+
         - **kwargs (dict) : sockets  initialization with their snake_case name
 
         Returns
         -------
-        - Node Group
+        Node Group
         """
         return cls(f"{str(prefix)} {group_name}", named_sockets=sockets, **sockets)
     
@@ -2522,16 +2709,32 @@ class Group(Node):
         - "" : self is used directly
         - other = getattr(self, self_name) is plugged
 
-        Arguments
-        ---------
-        - group_name (str) : name of the Group
-        - target_class (type) : class to add the method to
-        - func_name (str = None) : name of the method to create (snae case version of group name if None)
-        - self_attr (str = None) : self name attribute name
-        - ret_class (type = None) : class to use to transtype the output socket
-        - prefix (str = "") : group prefix
-        - self_attr (Any = None) : which attr
-        - fixed (dict) : fixed values for sockets        
+        Parameters
+        ----------
+        group_name : str
+            name of the Group
+
+        target_class : type
+            class to add the method to
+
+        func_name : str, optional
+            name of the method to create (snae case version of group name if None) Default: None.
+
+        self_attr : str, optional
+            self name attribute name Default: None.
+
+        ret_class : type, optional
+            class to use to transtype the output socket Default: None.
+
+        prefix : str, optional
+            group prefix Default: "".
+
+        self_attr : Any, optional
+            which attr Default: None.
+
+        fixed : dict
+            fixed values for sockets        
+
         """
 
         # ---------------------------------------------------------------------------
@@ -2645,9 +2848,11 @@ class G:
             g.out()   
         ```
 
-        Arguments
-        ---------
-        - prefix : prefix to use when searching a tree
+        Parameters
+        ----------
+        prefix
+            prefix to use when searching a tree
+
         """
         if prefix is None:
             self.prefix = ""
@@ -2675,14 +2880,18 @@ class G:
 
         The name of the function is the snake case version of the tree name.
 
-        Arguments
-        ---------
-        - btree (Blender GeometryNodeTree | ShaderNodeTree) : the tree
-        - prefix (str = "") : function prefix
+        Parameters
+        ----------
+        btree : Blender GeometryNodeTree | ShaderNodeTree
+            the tree
+
+        prefix : str, optional
+            function prefix Default: "".
+
 
         Returns
         -------
-        - None
+        None
         """
 
         func_name = utils.snake_case(btree.name)
@@ -2716,10 +2925,14 @@ class G:
         ------
         - NodeError
 
-        Arguments
-        ---------
-        - f (function) : the function in error
-        - exception (Exception) : the exception that was raised
+        Parameters
+        ----------
+        f : function
+            the function in error
+
+        exception : Exception
+            the exception that was raised
+
         """
 
         spec = self.functions.get(f.__name__)
@@ -2817,8 +3030,8 @@ class ColorRamp(Node):
         ramp2 = ColorRamp(.5, stops=[(.1, (1, 0, 0)), (.5, 1), (.9, (0, 0, 1))])
         ```
 
-        Arguments
-        ---------
+        Parameters
+        ----------
         - fac (Float = None)
         - stops (list of tuple(float, tuple)) : stops made of (float, color as tuple of floats)
         - interpolation in ('EASE', 'CARDINAL', 'LINEAR', 'B_SPLINE', 'CONSTANT')
@@ -2834,7 +3047,7 @@ class ColorRamp(Node):
 
         Returns
         -------
-        - bpy.types.ColorRamp
+        bpy.types.ColorRamp
         """
         return self._bnode.color_ramp
 
@@ -2844,7 +3057,7 @@ class ColorRamp(Node):
 
         Returns
         -------
-        - str
+        str
         """
         return self.color_ramp.interpolation
 
@@ -2860,7 +3073,7 @@ class ColorRamp(Node):
 
         Returns
         -------
-        - list of tuples : (float, color)
+        list of tuples : (float, color)
         """
         return utils.color_ramp_get_stops(self.node._bnode, as_str=False)
 
@@ -2871,9 +3084,11 @@ class ColorRamp(Node):
         ``` python
         ramp =
 
-        Arguments
-        ---------
-        - stops : list of tuple (position, color)
+        Parameters
+        ----------
+        stops
+            list of tuple (position, color)
+
         """
         if stops is not None:
             self.set_stops(*stops)
@@ -2931,29 +3146,37 @@ class NodeCurves(Node):
         """ Get the Float Curve as a list of tuples
 
         Each tuple is a triplet
-        - x (float) : x position
-        - y (float) : y position
-        - handle_type (str) : handle type in ('AUTO', 'AUTO_CLAMPED', 'VECTOR')
+        x : float
+            x position
+
+        y : float
+            y position
+
+        handle_type : str
+            handle type in ('AUTO', 'AUTO_CLAMPED', 'VECTOR')
+
 
         Returns
         -------
-        - list of 3-tuples : float, float, str in ('AUTO', 'AUTO_CLAMPED', 'VECTOR')
+        list of 3-tuples : float, float, str in ('AUTO', 'AUTO_CLAMPED', 'VECTOR')
         """
         return self.get_curves()[0]
 
     def set_curve(self, curve):
         """ Set the Float Curve as a list of tuples
 
-        > [!NOTE]
+        !!! note
         > handle_type is optional, its default value is 'AUTO'. Valid values are ('AUTO', 'AUTO_CLAMPED', 'VECTOR')
 
-        Arguments
-        ---------
-        - curves : list of 3-tuples (x, y, handle_type in ('AUTO', 'AUTO_CLAMPED', 'VECTOR'))
+        Parameters
+        ----------
+        curves
+            list of 3-tuples (x, y, handle_type in ('AUTO', 'AUTO_CLAMPED', 'VECTOR'))
+
 
         Returns
         -------
-        - self
+        self
         """
         self.set_curves([curve])
         return self
@@ -2965,29 +3188,37 @@ class NodeCurves(Node):
         """ Get the curves as a list of list of tuples
 
         Each tuple is a triplet
-        - x (float) : x position
-        - y (float) : y position
-        - handle_type (str) : handle type in ('AUTO', 'AUTO_CLAMPED', 'VECTOR')
+        x : float
+            x position
+
+        y : float
+            y position
+
+        handle_type : str
+            handle type in ('AUTO', 'AUTO_CLAMPED', 'VECTOR')
+
 
         Returns
         -------
-        - list of lists of triplets
+        list of lists of triplets
         """
         return utils.curves_to_list(self._bnode.mapping.curves)
 
     def set_curves(self, curves):
         """ Set the curves points position
 
-        > [!NOTE]
-        > handle_type is optional, its default value is 'AUTO'. Valid values are ('AUTO', 'AUTO_CLAMPED', 'VECTOR')
+        !!! note
+            handle_type is optional, its default value is 'AUTO'. Valid values are ('AUTO', 'AUTO_CLAMPED', 'VECTOR')
 
-        Arguments
-        ---------
-        - curves : list of 3-tuples (x, y, handle_type) or list of such lists
+        Parameters
+        ----------
+        curves
+            list of 3-tuples (x, y, handle_type) or list of such lists
+
 
         Returns
         -------
-        - self
+        self
         """
         if curves is not None:
             utils.list_to_curves(curves, self._bnode.mapping.curves)

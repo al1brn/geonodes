@@ -1,4 +1,4 @@
-# Generated 2026-03-26 08:37:01
+# Generated 2026-04-04 12:37:35
 
 from __future__ import annotations
 from .. sockettype import SocketType
@@ -34,19 +34,27 @@ class Instance:
     def accumulate_field(cls, value: Float | Integer | Vector | Matrix = None, group_id: Integer = None):
         """ > Node <&Node Accumulate Field>
 
-        Information
-        -----------
-        - Parameter 'data_type' : depending on 'value' type
-        - Parameter 'domain' : 'INSTANCE'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name        | Value             |
+        | --------- | ----------- | ----------------- |
+        | Parameter | `data_type` | from `value` type |
+        | Parameter | `domain`    | `'INSTANCE'`      |
+
+        Parameters
         ---------
-        - value (Float | Integer | Vector | Matrix) : socket 'Value' (id: Value)
-        - group_id (Integer) : socket 'Group ID' (id: Group Index)
+        value : Float | Integer | Vector | Matrix, optional
+            socket 'Value' (id: Value)
+        
+        group_id : Integer, optional
+            socket 'Group ID' (id: Group Index)
+        
 
         Returns
         -------
-        - Float [trailing_ (Float), total_ (Float)]
+        Float
+            peer sockets: trailing_ (Float), total_ (Float)
+
         """
         data_type = SocketType.get_data_type_for_node(value, 'GeometryNodeAccumulateField')
         node = Node('Accumulate Field', {'Value': value, 'Group Index': group_id}, data_type=data_type, domain='INSTANCE')
@@ -55,20 +63,26 @@ class Instance:
     def attribute_statistic(self, attribute: Float | Vector = None):
         """ > Node <&Node Attribute Statistic>
 
-        Information
-        -----------
-        - Socket 'Geometry' : self
-        - Socket 'Selection' : self[selection]
-        - Parameter 'data_type' : depending on 'attribute' type
-        - Parameter 'domain' : 'INSTANCE'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name        | Value                 |
+        | --------- | ----------- | --------------------- |
+        | Socket    | Geometry    | `self`                |
+        | Socket    | Selection   | `self[selection]`     |
+        | Parameter | `data_type` | from `attribute` type |
+        | Parameter | `domain`    | `'INSTANCE'`          |
+
+        Parameters
         ---------
-        - attribute (Float | Vector) : socket 'Attribute' (id: Attribute)
+        attribute : Float | Vector, optional
+            socket 'Attribute' (id: Attribute)
+        
 
         Returns
         -------
-        - Float [median_ (Float), sum_ (Float), min_ (Float), max_ (Float), range_ (Float), standard_deviation_ (Float), variance_ (Float)]
+        Float
+            peer sockets: median_ (Float), sum_ (Float), min_ (Float), max_ (Float), range_ (Float), standard_deviation_ (Float), variance_ (Float)
+
         """
         data_type = SocketType.get_data_type_for_node(attribute, 'GeometryNodeAttributeStatistic')
         node = Node('Attribute Statistic', {'Geometry': self, 'Selection': self.get_selection(), 'Attribute': attribute}, data_type=data_type, domain='INSTANCE')
@@ -81,19 +95,27 @@ class Instance:
                     domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'] = 'POINT'):
         """ > Node <&Node Field Average>
 
-        Information
-        -----------
-        - Parameter 'data_type' : depending on 'value' type
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name        | Value             |
+        | --------- | ----------- | ----------------- |
+        | Parameter | `data_type` | from `value` type |
+
+        Parameters
         ---------
-        - value (Float | Vector) : socket 'Value' (id: Value)
-        - group_id (Integer) : socket 'Group ID' (id: Group Index)
-        - domain (str): parameter 'domain' in ('Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer')
+        value : Float | Vector, optional
+            socket 'Value' (id: Value)
+        
+        group_id : Integer, optional
+            socket 'Group ID' (id: Group Index)
+        
+        domain (str): parameter 'domain' in ('Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer')
 
         Returns
         -------
-        - Float [median_ (Float)]
+        Float
+            peer sockets: median_ (Float)
+
         """
         utils.check_enum_arg('Field Average', 'domain', domain, 'field_average', ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'))
         data_type = SocketType.get_data_type_for_node(value, 'GeometryNodeFieldAverage')
@@ -107,19 +129,27 @@ class Instance:
                     domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'] = 'POINT'):
         """ > Node <&Node Field Min & Max>
 
-        Information
-        -----------
-        - Parameter 'data_type' : depending on 'value' type
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name        | Value             |
+        | --------- | ----------- | ----------------- |
+        | Parameter | `data_type` | from `value` type |
+
+        Parameters
         ---------
-        - value (Float | Integer | Vector) : socket 'Value' (id: Value)
-        - group_id (Integer) : socket 'Group ID' (id: Group Index)
-        - domain (str): parameter 'domain' in ('Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer')
+        value : Float | Integer | Vector, optional
+            socket 'Value' (id: Value)
+        
+        group_id : Integer, optional
+            socket 'Group ID' (id: Group Index)
+        
+        domain (str): parameter 'domain' in ('Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer')
 
         Returns
         -------
-        - Float [max_ (Float)]
+        Float
+            peer sockets: max_ (Float)
+
         """
         utils.check_enum_arg('Field Min & Max', 'domain', domain, 'field_min_max', ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'))
         data_type = SocketType.get_data_type_for_node(value, 'GeometryNodeFieldMinAndMax')
@@ -133,19 +163,27 @@ class Instance:
                     domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'] = 'POINT'):
         """ > Node <&Node Field Variance>
 
-        Information
-        -----------
-        - Parameter 'data_type' : depending on 'value' type
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name        | Value             |
+        | --------- | ----------- | ----------------- |
+        | Parameter | `data_type` | from `value` type |
+
+        Parameters
         ---------
-        - value (Float | Vector) : socket 'Value' (id: Value)
-        - group_id (Integer) : socket 'Group ID' (id: Group Index)
-        - domain (str): parameter 'domain' in ('Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer')
+        value : Float | Vector, optional
+            socket 'Value' (id: Value)
+        
+        group_id : Integer, optional
+            socket 'Group ID' (id: Group Index)
+        
+        domain (str): parameter 'domain' in ('Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer')
 
         Returns
         -------
-        - Float [variance_ (Float)]
+        Float
+            peer sockets: variance_ (Float)
+
         """
         utils.check_enum_arg('Field Variance', 'domain', domain, 'field_variance', ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'))
         data_type = SocketType.get_data_type_for_node(value, 'GeometryNodeFieldVariance')
@@ -157,16 +195,18 @@ class Instance:
 
         > ***Jump*** : Socket refers to node output socket after the call
 
-        Information
-        -----------
-        - Socket 'Geometry' : self
-        - Socket 'Selection' : self[selection]
-        - Parameter 'domain' : 'INSTANCE'
-        - Parameter 'mode' : 'ALL'
+        **Fixed values**
+
+        | Kind      | Name      | Value             |
+        | --------- | --------- | ----------------- |
+        | Socket    | Geometry  | `self`            |
+        | Socket    | Selection | `self[selection]` |
+        | Parameter | `domain`  | `'INSTANCE'`      |
+        | Parameter | `mode`    | `'ALL'`           |
 
         Returns
         -------
-        - Geometry
+        Geometry
         """
         node = Node('Delete Geometry', {'Geometry': self, 'Selection': self.get_selection()}, domain='INSTANCE', mode='ALL')
         self._jump(node._out)
@@ -177,16 +217,18 @@ class Instance:
 
         > ***Jump*** : Socket refers to node output socket after the call
 
-        Information
-        -----------
-        - Socket 'Geometry' : self
-        - Socket 'Selection' : self[selection]
-        - Parameter 'domain' : 'INSTANCE'
-        - Parameter 'mode' : 'EDGE_FACE'
+        **Fixed values**
+
+        | Kind      | Name      | Value             |
+        | --------- | --------- | ----------------- |
+        | Socket    | Geometry  | `self`            |
+        | Socket    | Selection | `self[selection]` |
+        | Parameter | `domain`  | `'INSTANCE'`      |
+        | Parameter | `mode`    | `'EDGE_FACE'`     |
 
         Returns
         -------
-        - Geometry
+        Geometry
         """
         node = Node('Delete Geometry', {'Geometry': self, 'Selection': self.get_selection()}, domain='INSTANCE', mode='EDGE_FACE')
         self._jump(node._out)
@@ -197,16 +239,18 @@ class Instance:
 
         > ***Jump*** : Socket refers to node output socket after the call
 
-        Information
-        -----------
-        - Socket 'Geometry' : self
-        - Socket 'Selection' : self[selection]
-        - Parameter 'domain' : 'INSTANCE'
-        - Parameter 'mode' : 'ONLY_FACE'
+        **Fixed values**
+
+        | Kind      | Name      | Value             |
+        | --------- | --------- | ----------------- |
+        | Socket    | Geometry  | `self`            |
+        | Socket    | Selection | `self[selection]` |
+        | Parameter | `domain`  | `'INSTANCE'`      |
+        | Parameter | `mode`    | `'ONLY_FACE'`     |
 
         Returns
         -------
-        - Geometry
+        Geometry
         """
         node = Node('Delete Geometry', {'Geometry': self, 'Selection': self.get_selection()}, domain='INSTANCE', mode='ONLY_FACE')
         self._jump(node._out)
@@ -217,19 +261,21 @@ class Instance:
 
         > ***Jump*** : Socket refers to node output socket after the call
 
-        Information
-        -----------
-        - Socket 'Geometry' : self
-        - Socket 'Selection' : self[selection]
-        - Parameter 'domain' : 'INSTANCE'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name      | Value             |
+        | --------- | --------- | ----------------- |
+        | Socket    | Geometry  | `self`            |
+        | Socket    | Selection | `self[selection]` |
+        | Parameter | `domain`  | `'INSTANCE'`      |
+
+        Parameters
         ---------
-        - mode (str): parameter 'mode' in ('All', 'Only Edges & Faces', 'Only Faces')
+        mode (str): parameter 'mode' in ('All', 'Only Edges & Faces', 'Only Faces')
 
         Returns
         -------
-        - Geometry
+        Geometry
         """
         utils.check_enum_arg('Delete Geometry', 'mode', mode, 'delete_geometry', ('ALL', 'EDGE_FACE', 'ONLY_FACE'))
         node = Node('Delete Geometry', {'Geometry': self, 'Selection': self.get_selection()}, domain='INSTANCE', mode=mode)
@@ -241,16 +287,18 @@ class Instance:
 
         > ***Jump*** : Socket refers to node output socket after the call
 
-        Information
-        -----------
-        - Socket 'Geometry' : self
-        - Socket 'Selection' : self[selection]
-        - Parameter 'domain' : 'INSTANCE'
-        - Parameter 'mode' : 'ALL'
+        **Fixed values**
+
+        | Kind      | Name      | Value             |
+        | --------- | --------- | ----------------- |
+        | Socket    | Geometry  | `self`            |
+        | Socket    | Selection | `self[selection]` |
+        | Parameter | `domain`  | `'INSTANCE'`      |
+        | Parameter | `mode`    | `'ALL'`           |
 
         Returns
         -------
-        - Geometry
+        Geometry
         """
         node = Node('Delete Geometry', {'Geometry': self, 'Selection': self.get_selection()}, domain='INSTANCE', mode='ALL')
         self._jump(node._out)
@@ -261,16 +309,18 @@ class Instance:
 
         > ***Jump*** : Socket refers to node output socket after the call
 
-        Information
-        -----------
-        - Socket 'Geometry' : self
-        - Socket 'Selection' : self[selection]
-        - Parameter 'domain' : 'INSTANCE'
-        - Parameter 'mode' : 'EDGE_FACE'
+        **Fixed values**
+
+        | Kind      | Name      | Value             |
+        | --------- | --------- | ----------------- |
+        | Socket    | Geometry  | `self`            |
+        | Socket    | Selection | `self[selection]` |
+        | Parameter | `domain`  | `'INSTANCE'`      |
+        | Parameter | `mode`    | `'EDGE_FACE'`     |
 
         Returns
         -------
-        - Geometry
+        Geometry
         """
         node = Node('Delete Geometry', {'Geometry': self, 'Selection': self.get_selection()}, domain='INSTANCE', mode='EDGE_FACE')
         self._jump(node._out)
@@ -281,16 +331,18 @@ class Instance:
 
         > ***Jump*** : Socket refers to node output socket after the call
 
-        Information
-        -----------
-        - Socket 'Geometry' : self
-        - Socket 'Selection' : self[selection]
-        - Parameter 'domain' : 'INSTANCE'
-        - Parameter 'mode' : 'ONLY_FACE'
+        **Fixed values**
+
+        | Kind      | Name      | Value             |
+        | --------- | --------- | ----------------- |
+        | Socket    | Geometry  | `self`            |
+        | Socket    | Selection | `self[selection]` |
+        | Parameter | `domain`  | `'INSTANCE'`      |
+        | Parameter | `mode`    | `'ONLY_FACE'`     |
 
         Returns
         -------
-        - Geometry
+        Geometry
         """
         node = Node('Delete Geometry', {'Geometry': self, 'Selection': self.get_selection()}, domain='INSTANCE', mode='ONLY_FACE')
         self._jump(node._out)
@@ -301,19 +353,21 @@ class Instance:
 
         > ***Jump*** : Socket refers to node output socket after the call
 
-        Information
-        -----------
-        - Socket 'Geometry' : self
-        - Socket 'Selection' : self[selection]
-        - Parameter 'domain' : 'INSTANCE'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name      | Value             |
+        | --------- | --------- | ----------------- |
+        | Socket    | Geometry  | `self`            |
+        | Socket    | Selection | `self[selection]` |
+        | Parameter | `domain`  | `'INSTANCE'`      |
+
+        Parameters
         ---------
-        - mode (str): parameter 'mode' in ('All', 'Only Edges & Faces', 'Only Faces')
+        mode (str): parameter 'mode' in ('All', 'Only Edges & Faces', 'Only Faces')
 
         Returns
         -------
-        - Geometry
+        Geometry
         """
         utils.check_enum_arg('Delete Geometry', 'mode', mode, 'delete', ('ALL', 'EDGE_FACE', 'ONLY_FACE'))
         node = Node('Delete Geometry', {'Geometry': self, 'Selection': self.get_selection()}, domain='INSTANCE', mode=mode)
@@ -325,19 +379,25 @@ class Instance:
 
         > ***Jump*** : Socket refers to node output socket after the call
 
-        Information
-        -----------
-        - Socket 'Geometry' : self
-        - Socket 'Selection' : self[selection]
-        - Parameter 'domain' : 'INSTANCE'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name      | Value             |
+        | --------- | --------- | ----------------- |
+        | Socket    | Geometry  | `self`            |
+        | Socket    | Selection | `self[selection]` |
+        | Parameter | `domain`  | `'INSTANCE'`      |
+
+        Parameters
         ---------
-        - amount (Integer) : socket 'Amount' (id: Amount)
+        amount : Integer, optional
+            socket 'Amount' (id: Amount)
+        
 
         Returns
         -------
-        - Geometry [duplicate_index_ (Integer)]
+        Geometry
+            peer sockets: duplicate_index_ (Integer)
+
         """
         node = Node('Duplicate Elements', {'Geometry': self, 'Selection': self.get_selection(), 'Amount': amount}, domain='INSTANCE')
         self._jump(node._out)
@@ -349,19 +409,25 @@ class Instance:
                     index: Integer = None):
         """ > Node <&Node Evaluate at Index>
 
-        Information
-        -----------
-        - Parameter 'data_type' : depending on 'value' type
-        - Parameter 'domain' : 'INSTANCE'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name        | Value             |
+        | --------- | ----------- | ----------------- |
+        | Parameter | `data_type` | from `value` type |
+        | Parameter | `domain`    | `'INSTANCE'`      |
+
+        Parameters
         ---------
-        - value (Float | Integer | Boolean | Vector | Color | Rotation | Matrix) : socket 'Value' (id: Value)
-        - index (Integer) : socket 'Index' (id: Index)
+        value : Float | Integer | Boolean | Vector | Color | Rotation | Matrix, optional
+            socket 'Value' (id: Value)
+        
+        index : Integer, optional
+            socket 'Index' (id: Index)
+        
 
         Returns
         -------
-        - Float
+        Float
         """
         data_type = SocketType.get_data_type_for_node(value, 'GeometryNodeFieldAtIndex')
         node = Node('Evaluate at Index', {'Value': value, 'Index': index}, data_type=data_type, domain='INSTANCE')
@@ -372,18 +438,22 @@ class Instance:
                     value: Float | Integer | Boolean | Vector | Color | Rotation | Matrix = None):
         """ > Node <&Node Evaluate on Domain>
 
-        Information
-        -----------
-        - Parameter 'data_type' : depending on 'value' type
-        - Parameter 'domain' : 'INSTANCE'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name        | Value             |
+        | --------- | ----------- | ----------------- |
+        | Parameter | `data_type` | from `value` type |
+        | Parameter | `domain`    | `'INSTANCE'`      |
+
+        Parameters
         ---------
-        - value (Float | Integer | Boolean | Vector | Color | Rotation | Matrix) : socket 'Value' (id: Value)
+        value : Float | Integer | Boolean | Vector | Color | Rotation | Matrix, optional
+            socket 'Value' (id: Value)
+        
 
         Returns
         -------
-        - Float
+        Float
         """
         data_type = SocketType.get_data_type_for_node(value, 'GeometryNodeFieldOnDomain')
         node = Node('Evaluate on Domain', {'Value': value}, data_type=data_type, domain='INSTANCE')
@@ -395,21 +465,27 @@ class Instance:
                     clamp = False):
         """ > Node <&Node Sample Index>
 
-        Information
-        -----------
-        - Socket 'Geometry' : self
-        - Parameter 'data_type' : depending on 'value' type
-        - Parameter 'domain' : 'INSTANCE'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name        | Value             |
+        | --------- | ----------- | ----------------- |
+        | Socket    | Geometry    | `self`            |
+        | Parameter | `data_type` | from `value` type |
+        | Parameter | `domain`    | `'INSTANCE'`      |
+
+        Parameters
         ---------
-        - value (Float | Integer | Boolean | Vector | Color | Rotation | Matrix) : socket 'Value' (id: Value)
-        - index (Integer) : socket 'Index' (id: Index)
-        - clamp (bool): parameter 'clamp'
+        value : Float | Integer | Boolean | Vector | Color | Rotation | Matrix, optional
+            socket 'Value' (id: Value)
+        
+        index : Integer, optional
+            socket 'Index' (id: Index)
+        
+        clamp (bool): parameter 'clamp'
 
         Returns
         -------
-        - Float
+        Float
         """
         data_type = SocketType.get_data_type_for_node(value, 'GeometryNodeSampleIndex')
         node = Node('Sample Index', {'Geometry': self, 'Value': value, 'Index': index}, clamp=clamp, data_type=data_type, domain='INSTANCE')
@@ -420,15 +496,17 @@ class Instance:
 
         > ***Jump*** : Socket refers to node output socket after the call
 
-        Information
-        -----------
-        - Socket 'Geometry' : self
-        - Socket 'Selection' : self[selection]
-        - Parameter 'domain' : 'INSTANCE'
+        **Fixed values**
+
+        | Kind      | Name      | Value             |
+        | --------- | --------- | ----------------- |
+        | Socket    | Geometry  | `self`            |
+        | Socket    | Selection | `self[selection]` |
+        | Parameter | `domain`  | `'INSTANCE'`      |
 
         Returns
         -------
-        - node [selection (Geometry), inverted (Geometry)]
+        node [selection (Geometry), inverted (Geometry)]
         """
         node = Node('Separate Geometry', {'Geometry': self, 'Selection': self.get_selection()}, domain='INSTANCE')
         self._jump(node._out)
@@ -439,20 +517,26 @@ class Instance:
 
         > ***Jump*** : Socket refers to node output socket after the call
 
-        Information
-        -----------
-        - Socket 'Geometry' : self
-        - Socket 'Selection' : self[selection]
-        - Parameter 'domain' : 'INSTANCE'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name      | Value             |
+        | --------- | --------- | ----------------- |
+        | Socket    | Geometry  | `self`            |
+        | Socket    | Selection | `self[selection]` |
+        | Parameter | `domain`  | `'INSTANCE'`      |
+
+        Parameters
         ---------
-        - group_id (Integer) : socket 'Group ID' (id: Group ID)
-        - sort_weight (Float) : socket 'Sort Weight' (id: Sort Weight)
+        group_id : Integer, optional
+            socket 'Group ID' (id: Group ID)
+        
+        sort_weight : Float, optional
+            socket 'Sort Weight' (id: Sort Weight)
+        
 
         Returns
         -------
-        - Geometry
+        Geometry
         """
         node = Node('Sort Elements', {'Geometry': self, 'Selection': self.get_selection(), 'Group ID': group_id, 'Sort Weight': sort_weight}, domain='INSTANCE')
         self._jump(node._out)
@@ -461,19 +545,25 @@ class Instance:
     def split_to_instances(self, group_id: Integer = None):
         """ > Node <&Node Split to Instances>
 
-        Information
-        -----------
-        - Socket 'Geometry' : self
-        - Socket 'Selection' : self[selection]
-        - Parameter 'domain' : 'INSTANCE'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name      | Value             |
+        | --------- | --------- | ----------------- |
+        | Socket    | Geometry  | `self`            |
+        | Socket    | Selection | `self[selection]` |
+        | Parameter | `domain`  | `'INSTANCE'`      |
+
+        Parameters
         ---------
-        - group_id (Integer) : socket 'Group ID' (id: Group ID)
+        group_id : Integer, optional
+            socket 'Group ID' (id: Group ID)
+        
 
         Returns
         -------
-        - Instances [group_id_ (Integer)]
+        Instances
+            peer sockets: group_id_ (Integer)
+
         """
         node = Node('Split to Instances', {'Geometry': self, 'Selection': self.get_selection(), 'Group ID': group_id}, domain='INSTANCE')
         return node._out
@@ -485,21 +575,27 @@ class Instance:
 
         > ***Jump*** : Socket refers to node output socket after the call
 
-        Information
-        -----------
-        - Socket 'Geometry' : self
-        - Socket 'Selection' : self[selection]
-        - Parameter 'data_type' : depending on 'value' type
-        - Parameter 'domain' : 'INSTANCE'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name        | Value             |
+        | --------- | ----------- | ----------------- |
+        | Socket    | Geometry    | `self`            |
+        | Socket    | Selection   | `self[selection]` |
+        | Parameter | `data_type` | from `value` type |
+        | Parameter | `domain`    | `'INSTANCE'`      |
+
+        Parameters
         ---------
-        - name (String) : socket 'Name' (id: Name)
-        - value (Float | Integer | Boolean | Vector | Color | Rotation | Matrix | Integer | Vector | Color) : socket 'Value' (id: Value)
+        name : String, optional
+            socket 'Name' (id: Name)
+        
+        value : Float | Integer | Boolean | Vector | Color | Rotation | Matrix | Integer | Vector | Color, optional
+            socket 'Value' (id: Value)
+        
 
         Returns
         -------
-        - Geometry
+        Geometry
         """
         data_type = SocketType.get_data_type_for_node(value, 'GeometryNodeStoreNamedAttribute')
         node = Node('Store Named Attribute', {'Geometry': self, 'Selection': self.get_selection(), 'Name': name, 'Value': value}, data_type=data_type, domain='INSTANCE')
@@ -513,21 +609,27 @@ class Instance:
 
         > ***Jump*** : Socket refers to node output socket after the call
 
-        Information
-        -----------
-        - Socket 'Geometry' : self
-        - Socket 'Selection' : self[selection]
-        - Parameter 'data_type' : depending on 'value' type
-        - Parameter 'domain' : 'INSTANCE'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name        | Value             |
+        | --------- | ----------- | ----------------- |
+        | Socket    | Geometry    | `self`            |
+        | Socket    | Selection   | `self[selection]` |
+        | Parameter | `data_type` | from `value` type |
+        | Parameter | `domain`    | `'INSTANCE'`      |
+
+        Parameters
         ---------
-        - name (String) : socket 'Name' (id: Name)
-        - value (Float | Integer | Boolean | Vector | Color | Rotation | Matrix | Integer | Vector | Color) : socket 'Value' (id: Value)
+        name : String, optional
+            socket 'Name' (id: Name)
+        
+        value : Float | Integer | Boolean | Vector | Color | Rotation | Matrix | Integer | Vector | Color, optional
+            socket 'Value' (id: Value)
+        
 
         Returns
         -------
-        - Geometry
+        Geometry
         """
         data_type = SocketType.get_data_type_for_node(value, 'GeometryNodeStoreNamedAttribute')
         node = Node('Store Named Attribute', {'Geometry': self, 'Selection': self.get_selection(), 'Name': name, 'Value': value}, data_type=data_type, domain='INSTANCE')
@@ -538,13 +640,15 @@ class Instance:
     def viewer(cls, named_sockets: dict = {}, ui_shortcut = 0, **sockets):
         """ > Node <&Node Viewer>
 
-        Information
-        -----------
-        - Parameter 'domain' : 'INSTANCE'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name     | Value        |
+        | --------- | -------- | ------------ |
+        | Parameter | `domain` | `'INSTANCE'` |
+
+        Parameters
         ---------
-        - ui_shortcut (int): parameter 'ui_shortcut'
+        ui_shortcut (int): parameter 'ui_shortcut'
 
         """
         node = Node('Viewer', named_sockets, domain='INSTANCE', ui_shortcut=ui_shortcut, **sockets)

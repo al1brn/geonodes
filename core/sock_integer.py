@@ -64,19 +64,33 @@ class Integer(generated.Integer):
 
         New <#Integer> input with subtype 'NONE'.
 
-        Aguments
-        --------
-        - value  (object = 0) : Default value
-        - name  (str = 'Integer') : Input socket name
-        - min  (int = -2147483648) : Property min_value
-        - max  (int = 2147483647) : Property max_value
-        - tip  (str = '') : Property description
-        - panel (str = "") : Panel name
-        - props (dic) : properties
+        Parameters
+        ----------
+        value : object, default=0
+            Default value
+
+        name : str, default='Integer'
+            Input socket name
+
+        min : int, default=-2147483648
+            Property min_value
+
+        max : int, default=2147483647
+            Property max_value
+
+        tip : str, default=''
+            Property description
+
+        panel : str, optional
+            Panel name Default: "".
+
+        props : dic
+            properties
+
 
         Returns
         -------
-        - Integer
+        Integer
         """
         super().__init__(value, name, min=min, max=max, tip=tip, panel=panel, **props)
 
@@ -91,12 +105,12 @@ class Integer(generated.Integer):
 
         New <#Integer> input with Index as default value (default_input='INDEX')
 
-        > [!NOTE]
-        > By default, 'hide_in_modifier' is set to True
+        !!! note
+            By default, 'hide_in_modifier' is set to True
 
         Returns
         -------
-        - Integer
+        Integer
         """
         return cls(value=None, name=name, tip=tip, panel=panel, default_input='INDEX', hide_in_modifier=hide_in_modifier)
 
@@ -106,12 +120,12 @@ class Integer(generated.Integer):
 
         New <#Integer> input with 'ID or Index' as default value (default_input='ID_OR_INDEX')
 
-        > [!NOTE]
-        > By default, 'hide_in_modifier' is set to True
+        !!! note
+            By default, 'hide_in_modifier' is set to True
 
         Returns
         -------
-        - Integer
+        Integer
         """
         return cls(value=None, name=name, tip=tip, panel=panel, default_input='ID_OR_INDEX', hide_in_modifier=hide_in_modifier)
 
@@ -132,15 +146,20 @@ class Integer(generated.Integer):
 
         > Node <&Node Mix>
 
-        Arguments
-        ---------
-        - factor (Float) : socket 'Factor' (Factor_Float)
-        - other (Socket) : socket 'B' (B_Float)
-        - clamp_factor (bool): Node.clamp_factor
+        Parameters
+        ----------
+        factor : Float
+            socket 'Factor' (Factor_Float)
+
+        other : Socket
+            socket 'B' (B_Float)
+
+        clamp_factor : bool
+            Node.clamp_factor
 
         Returns
         -------
-        - Socket
+        Socket
         """
         return Float(Node('Mix', {'Factor': factor, 'A': self, 'B': other}, clamp_factor=clamp_factor, data_type='FLOAT')._out)
 

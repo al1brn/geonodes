@@ -1,4 +1,4 @@
-# Generated 2026-03-26 08:37:01
+# Generated 2026-04-04 12:37:35
 
 from __future__ import annotations
 from .. sockettype import SocketType
@@ -34,13 +34,17 @@ class SplinePoint:
     def curve_of_point(cls, point_index: Integer = None):
         """ > Node <&Node Curve of Point>
 
-        Arguments
+        Parameters
         ---------
-        - point_index (Integer) : socket 'Point Index' (id: Point Index)
+        point_index : Integer, optional
+            socket 'Point Index' (id: Point Index)
+        
 
         Returns
         -------
-        - Integer [index_in_curve_ (Integer)]
+        Integer
+            peer sockets: index_in_curve_ (Integer)
+
         """
         node = Node('Curve of Point', {'Point Index': point_index})
         return node._out
@@ -49,13 +53,15 @@ class SplinePoint:
     def curve_index(cls, point_index: Integer = None):
         """ > Node <&Node Curve of Point>
 
-        Arguments
+        Parameters
         ---------
-        - point_index (Integer) : socket 'Point Index' (id: Point Index)
+        point_index : Integer, optional
+            socket 'Point Index' (id: Point Index)
+        
 
         Returns
         -------
-        - curve_index
+        curve_index
         """
         node = Node('Curve of Point', {'Point Index': point_index})
         return node.curve_index
@@ -64,13 +70,15 @@ class SplinePoint:
     def index_in_curve(cls, point_index: Integer = None):
         """ > Node <&Node Curve of Point>
 
-        Arguments
+        Parameters
         ---------
-        - point_index (Integer) : socket 'Point Index' (id: Point Index)
+        point_index : Integer, optional
+            socket 'Point Index' (id: Point Index)
+        
 
         Returns
         -------
-        - index_in_curve
+        index_in_curve
         """
         node = Node('Curve of Point', {'Point Index': point_index})
         return node.index_in_curve
@@ -78,14 +86,18 @@ class SplinePoint:
     def to_points_evaluated(self):
         """ > Node <&Node Curve to Points>
 
-        Information
-        -----------
-        - Socket 'Curve' : self
-        - Parameter 'mode' : 'EVALUATED'
+        **Fixed values**
+
+        | Kind      | Name   | Value         |
+        | --------- | ------ | ------------- |
+        | Socket    | Curve  | `self`        |
+        | Parameter | `mode` | `'EVALUATED'` |
 
         Returns
         -------
-        - Cloud [tangent_ (Vector), normal_ (Vector), rotation_ (Rotation)]
+        Cloud
+            peer sockets: tangent_ (Vector), normal_ (Vector), rotation_ (Rotation)
+
         """
         node = Node('Curve to Points', {'Curve': self}, mode='EVALUATED')
         return node._out
@@ -93,18 +105,24 @@ class SplinePoint:
     def to_points_count(self, count: Integer = None):
         """ > Node <&Node Curve to Points>
 
-        Information
-        -----------
-        - Socket 'Curve' : self
-        - Parameter 'mode' : 'COUNT'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name   | Value     |
+        | --------- | ------ | --------- |
+        | Socket    | Curve  | `self`    |
+        | Parameter | `mode` | `'COUNT'` |
+
+        Parameters
         ---------
-        - count (Integer) : socket 'Count' (id: Count)
+        count : Integer, optional
+            socket 'Count' (id: Count)
+        
 
         Returns
         -------
-        - Cloud [tangent_ (Vector), normal_ (Vector), rotation_ (Rotation)]
+        Cloud
+            peer sockets: tangent_ (Vector), normal_ (Vector), rotation_ (Rotation)
+
         """
         node = Node('Curve to Points', {'Curve': self, 'Count': count}, mode='COUNT')
         return node._out
@@ -112,18 +130,24 @@ class SplinePoint:
     def to_points_length(self, length: Float = None):
         """ > Node <&Node Curve to Points>
 
-        Information
-        -----------
-        - Socket 'Curve' : self
-        - Parameter 'mode' : 'LENGTH'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name   | Value      |
+        | --------- | ------ | ---------- |
+        | Socket    | Curve  | `self`     |
+        | Parameter | `mode` | `'LENGTH'` |
+
+        Parameters
         ---------
-        - length (Float) : socket 'Length' (id: Length)
+        length : Float, optional
+            socket 'Length' (id: Length)
+        
 
         Returns
         -------
-        - Cloud [tangent_ (Vector), normal_ (Vector), rotation_ (Rotation)]
+        Cloud
+            peer sockets: tangent_ (Vector), normal_ (Vector), rotation_ (Rotation)
+
         """
         node = Node('Curve to Points', {'Curve': self, 'Length': length}, mode='LENGTH')
         return node._out
@@ -133,18 +157,24 @@ class SplinePoint:
                     mode: Literal['EVALUATED', 'COUNT', 'LENGTH'] = 'COUNT'):
         """ > Node <&Node Curve to Points>
 
-        Information
-        -----------
-        - Socket 'Curve' : self
+        **Fixed values**
 
-        Arguments
+        | Kind   | Name  | Value  |
+        | ------ | ----- | ------ |
+        | Socket | Curve | `self` |
+
+        Parameters
         ---------
-        - count (Integer) : socket 'Count' (id: Count)
-        - mode (str): parameter 'mode' in ('Evaluated', 'Count', 'Length')
+        count : Integer, optional
+            socket 'Count' (id: Count)
+        
+        mode (str): parameter 'mode' in ('Evaluated', 'Count', 'Length')
 
         Returns
         -------
-        - Cloud [tangent_ (Vector), normal_ (Vector), rotation_ (Rotation)]
+        Cloud
+            peer sockets: tangent_ (Vector), normal_ (Vector), rotation_ (Rotation)
+
         """
         utils.check_enum_arg('Curve to Points', 'mode', mode, 'to_points', ('EVALUATED', 'COUNT', 'LENGTH'))
         node = Node('Curve to Points', {'Curve': self, 'Count': count}, mode=mode)
@@ -154,14 +184,20 @@ class SplinePoint:
     def offset_in_curve(cls, point_index: Integer = None, offset: Integer = None):
         """ > Node <&Node Offset Point in Curve>
 
-        Arguments
+        Parameters
         ---------
-        - point_index (Integer) : socket 'Point Index' (id: Point Index)
-        - offset (Integer) : socket 'Offset' (id: Offset)
+        point_index : Integer, optional
+            socket 'Point Index' (id: Point Index)
+        
+        offset : Integer, optional
+            socket 'Offset' (id: Offset)
+        
 
         Returns
         -------
-        - Boolean [point_index_ (Integer)]
+        Boolean
+            peer sockets: point_index_ (Integer)
+
         """
         node = Node('Offset Point in Curve', {'Point Index': point_index, 'Offset': offset})
         return node._out
@@ -178,18 +214,22 @@ class SplinePoint:
 
         > ***Jump*** : Socket refers to node output socket after the call
 
-        Information
-        -----------
-        - Socket 'Curve' : self
-        - Socket 'Selection' : self[selection]
+        **Fixed values**
 
-        Arguments
+        | Kind   | Name      | Value             |
+        | ------ | --------- | ----------------- |
+        | Socket | Curve     | `self`            |
+        | Socket | Selection | `self[selection]` |
+
+        Parameters
         ---------
-        - radius (Float) : socket 'Radius' (id: Radius)
+        radius : Float, optional
+            socket 'Radius' (id: Radius)
+        
 
         Returns
         -------
-        - Curve
+        Curve
         """
         node = Node('Set Curve Radius', {'Curve': self, 'Selection': self.get_selection(), 'Radius': radius})
         self._jump(node._out)

@@ -34,20 +34,36 @@ def dip_wave(center, t, length=3., c=5, falloff=30, omega=4, height=1, amp_only=
 
     Note that location and center are supposed to be in plane (x, y)
 
-    Arguments
-    ---------
-    - center (Vector): dip impact location
-    - t (Float) : time
-    - length (Float = 3) : length non null amplitude
-    - c (Float = 5) : wave celerity
-    - falloff (Float = 30) : falloff factor
-    - omega (Float = 4) : wave omega
-    - height (Float = 1) : wave height
-    - amp_only (Boolean = False) : show only the amplitude
+    Parameters
+    ----------
+    center : Vector
+        dip impact location
+
+    t : Float
+            time
+
+    length : Float, optional
+        length non null amplitude Default: 3.
+
+    c : Float, optional
+        wave celerity Default: 5.
+
+    falloff : Float, optional
+        falloff factor Default: 30.
+
+    omega : Float, optional
+        wave omega Default: 4.
+
+    height : Float, optional
+        wave height Default: 1.
+
+    amp_only : Boolean, optional
+        show only the amplitude Default: False.
+
 
     Returns
     -------
-    - Float : wave heigth at position
+    Float : wave heigth at position
     """
 
     #with Layout("Dip Wave", color='MACRO'):

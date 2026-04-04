@@ -26,15 +26,21 @@ __all__ = ["move_selection", "move_coordinate", "build_flat_cap", "solidify"]
 def solidify(mesh, thickness=.01, individual=False, merge_distance=.001):
     """ Solidify a mesh
 
-    Arguments
-    ---------
-    - thickness (Float = .01) : thickness
-    - individual (Boolean = False) : extrude individual faces
-    - merge_distance (Float = .001) : distance to use to merge intial faces and the extruded mesh
+    Parameters
+    ----------
+    thickness : Float, optional
+        thickness Default: .01.
+
+    individual : Boolean, optional
+        extrude individual faces Default: False.
+
+    merge_distance : Float, optional
+        distance to use to merge intial faces and the extruded mesh Default: .001.
+
 
     Returns
     -------
-    - Mesh : the solidified mesh
+    Mesh : the solidified mesh
     """
 
     with Layout("Macro - Solidify", color='MACRO'):
@@ -64,18 +70,30 @@ def move_selection(
     
     This macro is intended to move a circular ring of a cone or a cylinder.
     
-    Arguments
-    ---------
-    - mesh (Mesh) : the mesh
-    - selection (Boolean) : selection to apply
-    - offset (Float) : the displacement value
-    - axis (str = 'Z' in ('X', 'Y', 'Z') : axis to move along
-    - summit (Float = None) : cone summit
-    - title (str) : Layout title
+    Parameters
+    ----------
+    mesh : Mesh
+            the mesh
+
+    selection : Boolean
+            selection to apply
+
+    offset : Float
+            the displacement value
+
+    axis : str, optional
+        axis to move along Default: 'Z' in ('X', 'Y', 'Z'.
+
+    summit : Float, optional
+        cone summit Default: None.
+
+    title : str
+            Layout title
+
     
     Returns
     -------
-    - Mesh
+    Mesh
     """
     
     if title is not None:
@@ -132,19 +150,33 @@ def move_coordinate(
     
     This macro is intended to move a circular ring of a cone or a cylinder.
     
-    Arguments
-    ---------
-    - mesh (Mesh) : the mesh
-    - coord (Float) : The coordinate value
-    - offset (Float) : the displacement value
-    - axis (str = 'Z' in ('X', 'Y', 'Z') : axis to move along
-    - summit (Float = None) : cone summit
-    - epsilon (Float = None) : epsilon value for compare
-    - title (str) : Layout title
+    Parameters
+    ----------
+    mesh : Mesh
+            the mesh
+
+    coord : Float
+            The coordinate value
+
+    offset : Float
+            the displacement value
+
+    axis : str, optional
+        axis to move along Default: 'Z' in ('X', 'Y', 'Z'.
+
+    summit : Float, optional
+        cone summit Default: None.
+
+    epsilon : Float, optional
+        epsilon value for compare Default: None.
+
+    title : str
+            Layout title
+
     
     Returns
     -------
-    - Mesh
+    Mesh
     """
     
     if title is not None:

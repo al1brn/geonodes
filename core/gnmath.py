@@ -69,10 +69,14 @@ def band(value, other):
 
     > Node <&Node Boolean Math>
 
-    Arguments
-    ---------
-    - value (Boolean) : first value
-    - other (Boolean) : second value
+    Parameters
+    ----------
+    value : Boolean
+            first value
+
+    other : Boolean
+            second value
+
 
     Returns
     - Boolean
@@ -85,10 +89,14 @@ def bor(value, other):
 
     > Node <&Node Boolean Math>
 
-    Arguments
-    ---------
-    - value (Boolean) : first value
-    - other (Boolean) : second value
+    Parameters
+    ----------
+    value : Boolean
+            first value
+
+    other : Boolean
+            second value
+
 
     Returns
     - Boolean
@@ -101,9 +109,11 @@ def bnot(value):
 
     > Node <&Node Boolean Math>
 
-    Arguments
-    ---------
-    - value (Boolean) : value
+    Parameters
+    ----------
+    value : Boolean
+            value
+
 
     Returns
     - Boolean
@@ -116,10 +126,14 @@ def nand(value, other):
 
     > Node <&Node Boolean Math>
 
-    Arguments
-    ---------
-    - value (Boolean) : first value
-    - other (Boolean) : second value
+    Parameters
+    ----------
+    value : Boolean
+            first value
+
+    other : Boolean
+            second value
+
 
     Returns
     - Boolean
@@ -132,10 +146,14 @@ def nor(value, other):
 
     > Node <&Node Boolean Math>
 
-    Arguments
-    ---------
-    - value (Boolean) : first value
-    - other (Boolean) : second value
+    Parameters
+    ----------
+    value : Boolean
+            first value
+
+    other : Boolean
+            second value
+
 
     Returns
     - Boolean
@@ -148,10 +166,14 @@ def xnor(value, other):
 
     > Node <&Node Boolean Math>
 
-    Arguments
-    ---------
-    - value (Boolean) : first value
-    - other (Boolean) : second value
+    Parameters
+    ----------
+    value : Boolean
+            first value
+
+    other : Boolean
+            second value
+
 
     Returns
     - Boolean
@@ -164,10 +186,14 @@ def equal(value, other):
 
     > Node <&Node Boolean Math>
 
-    Arguments
-    ---------
-    - value (Boolean) : first value
-    - other (Boolean) : second value
+    Parameters
+    ----------
+    value : Boolean
+            first value
+
+    other : Boolean
+            second value
+
 
     Returns
     - Boolean
@@ -180,10 +206,14 @@ def xor(value, other):
 
     > Node <&Node Boolean Math>
 
-    Arguments
-    ---------
-    - value (Boolean) : first value
-    - other (Boolean) : second value
+    Parameters
+    ----------
+    value : Boolean
+            first value
+
+    other : Boolean
+            second value
+
 
     Returns
     - Boolean
@@ -196,10 +226,14 @@ def not_equal(value, other):
 
     > Node <&Node Boolean Math>
 
-    Arguments
-    ---------
-    - value (Boolean) : first value
-    - other (Boolean) : second value
+    Parameters
+    ----------
+    value : Boolean
+            first value
+
+    other : Boolean
+            second value
+
 
     Returns
     - Boolean
@@ -212,10 +246,14 @@ def imply(value, other):
 
     > Node <&Node Boolean Math>
 
-    Arguments
-    ---------
-    - value (Boolean) : first value
-    - other (Boolean) : second value
+    Parameters
+    ----------
+    value : Boolean
+            first value
+
+    other : Boolean
+            second value
+
 
     Returns
     - Boolean
@@ -228,10 +266,14 @@ def nimply(value, other):
 
     > Node <&Node Boolean Math>
 
-    Arguments
-    ---------
-    - value (Boolean) : first value
-    - other (Boolean) : second value
+    Parameters
+    ----------
+    value : Boolean
+            first value
+
+    other : Boolean
+            second value
+
 
     Returns
     - Boolean
@@ -244,10 +286,14 @@ def bsubtract(value, other):
 
     > Node <&Node Boolean Math>
 
-    Arguments
-    ---------
-    - value (Boolean) : first value
-    - other (Boolean) : second value
+    Parameters
+    ----------
+    value : Boolean
+            first value
+
+    other : Boolean
+            second value
+
 
     Returns
     - Boolean
@@ -264,11 +310,17 @@ def add(value, other, use_clamp=None):
 
     > Node <&Node Math>
 
-    Arguments
-    ---------
-    - value (Float) : first value
-    - other (Float) : second value
-    - use_clamp (bool) : use_clamp flag
+    Parameters
+    ----------
+    value : Float
+            first value
+
+    other : Float
+            second value
+
+    use_clamp : bool
+            use_clamp flag
+
 
     Returns
     - Float
@@ -281,11 +333,17 @@ def subtract(value, other, use_clamp=None):
 
     > Node <&Node Math>
 
-    Arguments
-    ---------
-    - value (Float) : first value
-    - other (Float) : second value
-    - use_clamp (bool) : use_clamp flag
+    Parameters
+    ----------
+    value : Float
+            first value
+
+    other : Float
+            second value
+
+    use_clamp : bool
+            use_clamp flag
+
 
     Returns
     - Float
@@ -298,11 +356,17 @@ def multiply(value, other, use_clamp=None):
 
     > Node <&Node Math>
 
-    Arguments
-    ---------
-    - value (Float) : first value
-    - other (Float) : second value
-    - use_clamp (bool) : use_clamp flag
+    Parameters
+    ----------
+    value : Float
+            first value
+
+    other : Float
+            second value
+
+    use_clamp : bool
+            use_clamp flag
+
 
     Returns
     - Float
@@ -315,11 +379,17 @@ def divide(value, other, use_clamp=None):
 
     > Node <&Node Math>
 
-    Arguments
-    ---------
-    - value (Float) : first value
-    - other (Float) : second value
-    - use_clamp (bool) : use_clamp flag
+    Parameters
+    ----------
+    value : Float
+            first value
+
+    other : Float
+            second value
+
+    use_clamp : bool
+            use_clamp flag
+
 
     Returns
     - Float
@@ -332,12 +402,20 @@ def multiply_add(value, multiplier, addend, use_clamp=None):
 
     > Node <&Node Math>
 
-    Arguments
-    ---------
-    - value (Float) : value
-    - multiplier (Float) : multiplier value
-    - addend(Float) : add end value
-    - use_clamp (bool) : use_clamp flag
+    Parameters
+    ----------
+    value : Float
+            value
+
+    multiplier : Float
+            multiplier value
+
+    addend : Float
+        add end value
+
+    use_clamp : bool
+            use_clamp flag
+
 
     Returns
     - Float
@@ -350,11 +428,17 @@ def power(base, exponent, use_clamp=None):
 
     > Node <&Node Math>
 
-    Arguments
-    ---------
-    - base (Float) : base value
-    - exponent (Float) : exponent value
-    - use_clamp (bool) : use_clamp flag
+    Parameters
+    ----------
+    base : Float
+            base value
+
+    exponent : Float
+            exponent value
+
+    use_clamp : bool
+            use_clamp flag
+
 
     Returns
     - Float
@@ -366,11 +450,17 @@ def log(value, base=10, use_clamp=None):
 
     > Node <&Node Math>
 
-    Arguments
-    ---------
-    - value (Float) : value
-    - base (Float) : second value
-    - use_clamp (bool) : use_clamp flag
+    Parameters
+    ----------
+    value : Float
+            value
+
+    base : Float
+            second value
+
+    use_clamp : bool
+            use_clamp flag
+
 
     Returns
     - Float
@@ -383,10 +473,14 @@ def ln(value, use_clamp=None):
 
     > Node <&Node Math>
 
-    Arguments
-    ---------
-    - value (Float) : value
-    - use_clamp (bool) : use_clamp flag
+    Parameters
+    ----------
+    value : Float
+            value
+
+    use_clamp : bool
+            use_clamp flag
+
 
     Returns
     - Float
@@ -399,10 +493,14 @@ def sqrt(value, use_clamp=None):
 
     > Node <&Node Math>
 
-    Arguments
-    ---------
-    - value (Float) : value
-    - use_clamp (bool) : use_clamp flag
+    Parameters
+    ----------
+    value : Float
+            value
+
+    use_clamp : bool
+            use_clamp flag
+
 
     Returns
     - Float
@@ -415,10 +513,14 @@ def inverse_sqrt(value, use_clamp=None):
 
     > Node <&Node Math>
 
-    Arguments
-    ---------
-    - value (Float) : value
-    - use_clamp (bool) : use_clamp flag
+    Parameters
+    ----------
+    value : Float
+            value
+
+    use_clamp : bool
+            use_clamp flag
+
 
     Returns
     - Float
@@ -431,10 +533,14 @@ def abs(value, use_clamp=None):
 
     > Node <&Node Math>
 
-    Arguments
-    ---------
-    - value (Float) : value
-    - use_clamp (bool) : use_clamp flag
+    Parameters
+    ----------
+    value : Float
+            value
+
+    use_clamp : bool
+            use_clamp flag
+
 
     Returns
     - Float
@@ -447,10 +553,14 @@ def exponent(value, use_clamp=None):
 
     > Node <&Node Math>
 
-    Arguments
-    ---------
-    - value (Float) : value
-    - use_clamp (bool) : use_clamp flag
+    Parameters
+    ----------
+    value : Float
+            value
+
+    use_clamp : bool
+            use_clamp flag
+
 
     Returns
     - Float
@@ -463,10 +573,14 @@ def exp(value, use_clamp=None):
 
     > Node <&Node Math>
 
-    Arguments
-    ---------
-    - value (Float) : value
-    - use_clamp (bool) : use_clamp flag
+    Parameters
+    ----------
+    value : Float
+            value
+
+    use_clamp : bool
+            use_clamp flag
+
 
     Returns
     - Float
@@ -478,11 +592,17 @@ def min(value, other, use_clamp=None):
 
     > Node <&Node Math>
 
-    Arguments
-    ---------
-    - value (Float) : first value
-    - other (Float) : second value
-    - use_clamp (bool) : use_clamp flag
+    Parameters
+    ----------
+    value : Float
+            first value
+
+    other : Float
+            second value
+
+    use_clamp : bool
+            use_clamp flag
+
 
     Returns
     - Float
@@ -495,11 +615,17 @@ def max(value, other, use_clamp=None):
 
     > Node <&Node Math>
 
-    Arguments
-    ---------
-    - value (Float) : first value
-    - other (Float) : second value
-    - use_clamp (bool) : use_clamp flag
+    Parameters
+    ----------
+    value : Float
+            first value
+
+    other : Float
+            second value
+
+    use_clamp : bool
+            use_clamp flag
+
 
     Returns
     - Float
@@ -512,11 +638,17 @@ def less_than(value, threshold, use_clamp=None):
 
     > Node <&Node Math>
 
-    Arguments
-    ---------
-    - value (Float) : value
-    - threshold (Float) : second value
-    - use_clamp (bool) : use_clamp flag
+    Parameters
+    ----------
+    value : Float
+            value
+
+    threshold : Float
+            second value
+
+    use_clamp : bool
+            use_clamp flag
+
 
     Returns
     - Float
@@ -529,11 +661,17 @@ def greater_than(value, threshold, use_clamp=None):
 
     > Node <&Node Math>
 
-    Arguments
-    ---------
-    - value (Float) : first value
-    - threshold (Float) : second value
-    - use_clamp (bool) : use_clamp flag
+    Parameters
+    ----------
+    value : Float
+            first value
+
+    threshold : Float
+            second value
+
+    use_clamp : bool
+            use_clamp flag
+
 
     Returns
     - Float
@@ -546,9 +684,11 @@ def sign(value):
 
     > Node <&Node Math>
 
-    Arguments
-    ---------
-    - value (Float) : value
+    Parameters
+    ----------
+    value : Float
+            value
+
 
     Returns
     - Float
@@ -561,12 +701,20 @@ def compare(value, other, epsilon=None, use_clamp=None):
 
     > Node <&Node Math>
 
-    Arguments
-    ---------
-    - value (Float) : first value
-    - other (Float) : second value
-    - epsilon (Float=None) : epsilon
-    - use_clamp (bool) : use_clamp flag
+    Parameters
+    ----------
+    value : Float
+            first value
+
+    other : Float
+            second value
+
+    epsilon : Float, default=None
+        epsilon
+
+    use_clamp : bool
+            use_clamp flag
+
 
     Returns
     - Float
@@ -579,12 +727,20 @@ def smooth_min(value, other, distance=None, use_clamp=None):
 
     > Node <&Node Math>
 
-    Arguments
-    ---------
-    - value (Float) : first value
-    - other (Float) : second value
-    - distance (Float) : distance
-    - use_clamp (bool) : use_clamp flag
+    Parameters
+    ----------
+    value : Float
+            first value
+
+    other : Float
+            second value
+
+    distance : Float
+            distance
+
+    use_clamp : bool
+            use_clamp flag
+
 
     Returns
     - Float
@@ -597,12 +753,20 @@ def smooth_max(value, other, distance=None, use_clamp=None):
 
     > Node <&Node Math>
 
-    Arguments
-    ---------
-    - value (Float) : first value
-    - other (Float) : second value
-    - distance (Float) : distance
-    - use_clamp (bool) : use_clamp flag
+    Parameters
+    ----------
+    value : Float
+            first value
+
+    other : Float
+            second value
+
+    distance : Float
+            distance
+
+    use_clamp : bool
+            use_clamp flag
+
 
     Returns
     - Float
@@ -615,10 +779,14 @@ def math_round(value, use_clamp=None):
 
     > Node <&Node Math>
 
-    Arguments
-    ---------
-    - value (Float) : value
-    - use_clamp (bool) : use_clamp flag
+    Parameters
+    ----------
+    value : Float
+            value
+
+    use_clamp : bool
+            use_clamp flag
+
 
     Returns
     - Float
@@ -631,10 +799,14 @@ def math_floor(value, use_clamp=None):
 
     > Node <&Node Math>
 
-    Arguments
-    ---------
-    - value (Float) : value
-    - use_clamp (bool) : use_clamp flag
+    Parameters
+    ----------
+    value : Float
+            value
+
+    use_clamp : bool
+            use_clamp flag
+
 
     Returns
     - Float
@@ -646,10 +818,14 @@ def math_ceil(value, use_clamp=None):
 
     > Node <&Node Math>
 
-    Arguments
-    ---------
-    - value (Float) : value
-    - use_clamp (bool) : use_clamp flag
+    Parameters
+    ----------
+    value : Float
+            value
+
+    use_clamp : bool
+            use_clamp flag
+
 
     Returns
     - Float
@@ -661,10 +837,14 @@ def math_trunc(value, use_clamp=None):
 
     > Node <&Node Math>
 
-    Arguments
-    ---------
-    - value (Float) : value
-    - use_clamp (bool) : use_clamp flag
+    Parameters
+    ----------
+    value : Float
+            value
+
+    use_clamp : bool
+            use_clamp flag
+
 
     Returns
     - Float
@@ -680,10 +860,14 @@ def round(value, use_clamp=None):
 
     rounding_mode in ('ROUND', 'FLOOR', 'CEILING', 'TRUNCATE')
 
-    Arguments
-    ---------
-    - value (Float) : value
-    - use_clamp (bool) : use_clamp flag
+    Parameters
+    ----------
+    value : Float
+            value
+
+    use_clamp : bool
+            use_clamp flag
+
 
     Returns
     - Float (ShaderNodes) or Integer (GeoNodes)
@@ -702,10 +886,14 @@ def floor(value, use_clamp=None):
 
     rounding_mode in ('ROUND', 'FLOOR', 'CEILING', 'TRUNCATE')
 
-    Arguments
-    ---------
-    - value (Float) : value
-    - use_clamp (bool) : use_clamp flag
+    Parameters
+    ----------
+    value : Float
+            value
+
+    use_clamp : bool
+            use_clamp flag
+
 
     Returns
     - Float (ShaderNodes) or Integer (GeoNodes)
@@ -724,10 +912,14 @@ def ceil(value, use_clamp=None):
 
     rounding_mode in ('ROUND', 'FLOOR', 'CEILING', 'TRUNCATE')
 
-    Arguments
-    ---------
-    - value (Float) : value
-    - use_clamp (bool) : use_clamp flag
+    Parameters
+    ----------
+    value : Float
+            value
+
+    use_clamp : bool
+            use_clamp flag
+
 
     Returns
     - Float (ShaderNodes) or Integer (GeoNodes)
@@ -746,10 +938,14 @@ def trunc(value, use_clamp=None):
 
     rounding_mode in ('ROUND', 'FLOOR', 'CEILING', 'TRUNCATE')
 
-    Arguments
-    ---------
-    - value (Float) : value
-    - use_clamp (bool) : use_clamp flag
+    Parameters
+    ----------
+    value : Float
+            value
+
+    use_clamp : bool
+            use_clamp flag
+
 
     Returns
     - Float (ShaderNodes) or Integer (GeoNodes)
@@ -765,10 +961,14 @@ def fract(value, use_clamp=None):
 
     > Node <&Node Math>
 
-    Arguments
-    ---------
-    - value (Float) : value
-    - use_clamp (bool) : use_clamp flag
+    Parameters
+    ----------
+    value : Float
+            value
+
+    use_clamp : bool
+            use_clamp flag
+
 
     Returns
     - Float
@@ -780,11 +980,17 @@ def modulo(value, other, use_clamp=None):
 
     > Node <&Node Math>
 
-    Arguments
-    ---------
-    - value (Float) : value
-    - other (Float) : other value
-    - use_clamp (bool) : use_clamp flag
+    Parameters
+    ----------
+    value : Float
+            value
+
+    other : Float
+            other value
+
+    use_clamp : bool
+            use_clamp flag
+
 
     Returns
     - Float
@@ -796,11 +1002,17 @@ def floored_modulo(value, other, use_clamp=None):
 
     > Node <&Node Math>
 
-    Arguments
-    ---------
-    - value (Float) : value
-    - other (Float) : other value
-    - use_clamp (bool) : use_clamp flag
+    Parameters
+    ----------
+    value : Float
+            value
+
+    other : Float
+            other value
+
+    use_clamp : bool
+            use_clamp flag
+
 
     Returns
     - Float
@@ -812,12 +1024,20 @@ def wrap(value, max=None, min=None, use_clamp=None):
 
     > Node <&Node Math>
 
-    Arguments
-    ---------
-    - value (Float) : value
-    - max (Float) : max value
-    - min (Float) : min value
-    - use_clamp (bool) : use_clamp flag
+    Parameters
+    ----------
+    value : Float
+            value
+
+    max : Float
+            max value
+
+    min : Float
+            min value
+
+    use_clamp : bool
+            use_clamp flag
+
 
     Returns
     - Float
@@ -829,11 +1049,17 @@ def snap(value, increment=None, use_clamp=None):
 
     > Node <&Node Math>
 
-    Arguments
-    ---------
-    - value (Float) : value
-    - increment (Float) : other value
-    - use_clamp (bool) : use_clamp flag
+    Parameters
+    ----------
+    value : Float
+            value
+
+    increment : Float
+            other value
+
+    use_clamp : bool
+            use_clamp flag
+
 
     Returns
     - Float
@@ -845,11 +1071,17 @@ def ping_pong(value, scale=None, use_clamp=None):
 
     > Node <&Node Math>
 
-    Arguments
-    ---------
-    - value (Float) : value
-    - scale (Float) : other value
-    - use_clamp (bool) : use_clamp flag
+    Parameters
+    ----------
+    value : Float
+            value
+
+    scale : Float
+            other value
+
+    use_clamp : bool
+            use_clamp flag
+
 
     Returns
     - Float
@@ -861,11 +1093,17 @@ def pingpong(value, scale=None, use_clamp=None):
 
     > Node <&Node Math>
 
-    Arguments
-    ---------
-    - value (Float) : value
-    - scale (Float) : other value
-    - use_clamp (bool) : use_clamp flag
+    Parameters
+    ----------
+    value : Float
+            value
+
+    scale : Float
+            other value
+
+    use_clamp : bool
+            use_clamp flag
+
 
     Returns
     - Float
@@ -877,10 +1115,14 @@ def sin(value, use_clamp=None):
 
     > Node <&Node Math>
 
-    Arguments
-    ---------
-    - value (Float) : value
-    - use_clamp (bool) : use_clamp flag
+    Parameters
+    ----------
+    value : Float
+            value
+
+    use_clamp : bool
+            use_clamp flag
+
 
     Returns
     - Float
@@ -892,10 +1134,14 @@ def cos(value, use_clamp=None):
 
     > Node <&Node Math>
 
-    Arguments
-    ---------
-    - value (Float) : value
-    - use_clamp (bool) : use_clamp flag
+    Parameters
+    ----------
+    value : Float
+            value
+
+    use_clamp : bool
+            use_clamp flag
+
 
     Returns
     - Float
@@ -907,10 +1153,14 @@ def tan(value, use_clamp=None):
 
     > Node <&Node Math>
 
-    Arguments
-    ---------
-    - value (Float) : value
-    - use_clamp (bool) : use_clamp flag
+    Parameters
+    ----------
+    value : Float
+            value
+
+    use_clamp : bool
+            use_clamp flag
+
 
     Returns
     - Float
@@ -922,10 +1172,14 @@ def asin(value, use_clamp=None):
 
     > Node <&Node Math>
 
-    Arguments
-    ---------
-    - value (Float) : value
-    - use_clamp (bool) : use_clamp flag
+    Parameters
+    ----------
+    value : Float
+            value
+
+    use_clamp : bool
+            use_clamp flag
+
 
     Returns
     - Float
@@ -937,10 +1191,14 @@ def acos(value, use_clamp=None):
 
     > Node <&Node Math>
 
-    Arguments
-    ---------
-    - value (Float) : value
-    - use_clamp (bool) : use_clamp flag
+    Parameters
+    ----------
+    value : Float
+            value
+
+    use_clamp : bool
+            use_clamp flag
+
 
     Returns
     - Float
@@ -952,10 +1210,14 @@ def atan(value, use_clamp=None):
 
     > Node <&Node Math>
 
-    Arguments
-    ---------
-    - value (Float) : value
-    - use_clamp (bool) : use_clamp flag
+    Parameters
+    ----------
+    value : Float
+            value
+
+    use_clamp : bool
+            use_clamp flag
+
 
     Returns
     - Float
@@ -967,11 +1229,17 @@ def atan2(value, other, use_clamp=None):
 
     > Node <&Node Math>
 
-    Arguments
-    ---------
-    - value (Float) : value
-    - other (Float) : other value
-    - use_clamp (bool) : use_clamp flag
+    Parameters
+    ----------
+    value : Float
+            value
+
+    other : Float
+            other value
+
+    use_clamp : bool
+            use_clamp flag
+
 
     Returns
     - Float
@@ -983,10 +1251,14 @@ def sinh(value, use_clamp=None):
 
     > Node <&Node Math>
 
-    Arguments
-    ---------
-    - value (Float) : value
-    - use_clamp (bool) : use_clamp flag
+    Parameters
+    ----------
+    value : Float
+            value
+
+    use_clamp : bool
+            use_clamp flag
+
 
     Returns
     - Float
@@ -998,10 +1270,14 @@ def cosh(value, use_clamp=None):
 
     > Node <&Node Math>
 
-    Arguments
-    ---------
-    - value (Float) : value
-    - use_clamp (bool) : use_clamp flag
+    Parameters
+    ----------
+    value : Float
+            value
+
+    use_clamp : bool
+            use_clamp flag
+
 
     Returns
     - Float
@@ -1013,10 +1289,14 @@ def tanh(value, use_clamp=None):
 
     > Node <&Node Math>
 
-    Arguments
-    ---------
-    - value (Float) : value
-    - use_clamp (bool) : use_clamp flag
+    Parameters
+    ----------
+    value : Float
+            value
+
+    use_clamp : bool
+            use_clamp flag
+
 
     Returns
     - Float
@@ -1028,10 +1308,14 @@ def radians(value, use_clamp=None):
 
     > Node <&Node Math>
 
-    Arguments
-    ---------
-    - value (Float) : value
-    - use_clamp (bool) : use_clamp flag
+    Parameters
+    ----------
+    value : Float
+            value
+
+    use_clamp : bool
+            use_clamp flag
+
 
     Returns
     - Float
@@ -1043,10 +1327,14 @@ def degrees(value, use_clamp=None):
 
     > Node <&Node Math>
 
-    Arguments
-    ---------
-    - value (Float) : value
-    - use_clamp (bool) : use_clamp flag
+    Parameters
+    ----------
+    value : Float
+            value
+
+    use_clamp : bool
+            use_clamp flag
+
 
     Returns
     - Float
@@ -1067,10 +1355,14 @@ def iadd(value, other):
 
     > Node <&Node Integer Math>
 
-    Arguments
-    ---------
-    - value (Integer) : first value
-    - other (Integer) : second value
+    Parameters
+    ----------
+    value : Integer
+            first value
+
+    other : Integer
+            second value
+
 
     Returns
     - Integer
@@ -1082,10 +1374,14 @@ def isubtract(value, other):
 
     > Node <&Node Integer Math>
 
-    Arguments
-    ---------
-    - value (Integer) : first value
-    - other (Integer) : second value
+    Parameters
+    ----------
+    value : Integer
+            first value
+
+    other : Integer
+            second value
+
 
     Returns
     - Integer
@@ -1097,10 +1393,14 @@ def imultiply(value, other):
 
     > Node <&Node Integer Math>
 
-    Arguments
-    ---------
-    - value (Integer) : first value
-    - other (Integer) : second value
+    Parameters
+    ----------
+    value : Integer
+            first value
+
+    other : Integer
+            second value
+
 
     Returns
     - Integer
@@ -1112,10 +1412,14 @@ def idivide(value, other):
 
     > Node <&Node Integer Math>
 
-    Arguments
-    ---------
-    - value (Integer) : first value
-    - other (Integer) : second value
+    Parameters
+    ----------
+    value : Integer
+            first value
+
+    other : Integer
+            second value
+
 
     Returns
     - Integer
@@ -1127,11 +1431,16 @@ def imultiply_add(value, multiplier, addend):
 
     > Node <&Node Integer Math>
 
-    Arguments
-    ---------
-    - value (Integer) : value
-    - multiplier (Integer) : multiplier value
-    - addend(Integer) : add end value
+    Parameters
+    ----------
+    value : Integer
+        value
+
+    multiplier : Integer
+        multiplier value
+
+    addend : Integer
+        add end value
 
     Returns
     - Integer
@@ -1143,9 +1452,11 @@ def iabs(value):
 
     > Node <&Node Integer Math>
 
-    Arguments
-    ---------
-    - value (Integer) : value
+    Parameters
+    ----------
+    value : Integer
+        value
+
 
     Returns
     - Integer
@@ -1157,9 +1468,11 @@ def inegate(value):
 
     > Node <&Node Integer Math>
 
-    Arguments
-    ---------
-    - value (Integer) : value
+    Parameters
+    ----------
+    value : Integer
+        value
+
 
     Returns
     - Integer
@@ -1171,10 +1484,14 @@ def ipower(base, exponent):
 
     > Node <&Node Integer Math>
 
-    Arguments
-    ---------
-    - base (Integer) : value
-    - exponent (Integer) : value
+    Parameters
+    ----------
+    base : Integer
+            value
+
+    exponent : Integer
+            value
+
 
     Returns
     - Integer
@@ -1186,10 +1503,14 @@ def imin(value, other):
 
     > Node <&Node Integer Math>
 
-    Arguments
-    ---------
-    - value (Integer) : first value
-    - other (Integer) : second value
+    Parameters
+    ----------
+    value : Integer
+            first value
+
+    other : Integer
+            second value
+
 
     Returns
     - Integer
@@ -1201,10 +1522,14 @@ def imax(value, other):
 
     > Node <&Node Integer Math>
 
-    Arguments
-    ---------
-    - value (Integer) : first value
-    - other (Integer) : second value
+    Parameters
+    ----------
+    value : Integer
+            first value
+
+    other : Integer
+            second value
+
 
     Returns
     - Integer
@@ -1216,9 +1541,11 @@ def isign(value):
 
     > Node <&Node Integer Math>
 
-    Arguments
-    ---------
-    - value (Integer) : value
+    Parameters
+    ----------
+    value : Integer
+            value
+
 
     Returns
     - Integer
@@ -1230,10 +1557,14 @@ def idivide_round(value, other):
 
     > Node <&Node Integer Math>
 
-    Arguments
-    ---------
-    - value (Integer) : first value
-    - other (Integer) : second value
+    Parameters
+    ----------
+    value : Integer
+            first value
+
+    other : Integer
+            second value
+
 
     Returns
     - Integer
@@ -1245,10 +1576,14 @@ def idivide_floor(value, other):
 
     > Node <&Node Integer Math>
 
-    Arguments
-    ---------
-    - value (Integer) : first value
-    - other (Integer) : second value
+    Parameters
+    ----------
+    value : Integer
+            first value
+
+    other : Integer
+            second value
+
 
     Returns
     - Integer
@@ -1260,10 +1595,14 @@ def idivide_ceiling(value, other):
 
     > Node <&Node Integer Math>
 
-    Arguments
-    ---------
-    - value (Integer) : first value
-    - other (Integer) : second value
+    Parameters
+    ----------
+    value : Integer
+            first value
+
+    other : Integer
+            second value
+
 
     Returns
     - Integer
@@ -1275,10 +1614,14 @@ def ifloored_modulo(value, other):
 
     > Node <&Node Integer Math>
 
-    Arguments
-    ---------
-    - value (Integer) : first value
-    - other (Integer) : second value
+    Parameters
+    ----------
+    value : Integer
+            first value
+
+    other : Integer
+            second value
+
 
     Returns
     - Integer
@@ -1291,10 +1634,14 @@ def imodulo(value, other):
 
     > Node <&Node Integer Math>
 
-    Arguments
-    ---------
-    - value (Integer) : first value
-    - other (Integer) : second value
+    Parameters
+    ----------
+    value : Integer
+            first value
+
+    other : Integer
+            second value
+
 
     Returns
     - Integer
@@ -1306,10 +1653,14 @@ def GCD(value, other):
 
     > Node <&Node Integer Math>
 
-    Arguments
-    ---------
-    - value (Integer) : first value
-    - other (Integer) : second value
+    Parameters
+    ----------
+    value : Integer
+            first value
+
+    other : Integer
+            second value
+
 
     Returns
     - Integer
@@ -1321,10 +1672,14 @@ def LCM(value, other):
 
     > Node <&Node Integer Math>
 
-    Arguments
-    ---------
-    - value (Integer) : first value
-    - other (Integer) : second value
+    Parameters
+    ----------
+    value : Integer
+            first value
+
+    other : Integer
+            second value
+
 
     Returns
     - Integer
@@ -1339,10 +1694,14 @@ def vadd(value, other):
 
     > Node <&Node Vector Math>
 
-    Arguments
-    ---------
-    - value (Vector) : vector
-    - other (Vector) : other vector
+    Parameters
+    ----------
+    value : Vector
+            vector
+
+    other : Vector
+            other vector
+
 
     Returns
     - Vector
@@ -1355,10 +1714,14 @@ def vsubtract(value, other):
 
     > Node <&Node Vector Math>
 
-    Arguments
-    ---------
-    - value (Vector) : vector
-    - other (Vector) : other vector
+    Parameters
+    ----------
+    value : Vector
+            vector
+
+    other : Vector
+            other vector
+
 
     Returns
     - Vector
@@ -1370,10 +1733,14 @@ def vmultiply(value, other):
 
     > Node <&Node Vector Math>
 
-    Arguments
-    ---------
-    - value (Vector) : vector
-    - other (Vector) : other vector
+    Parameters
+    ----------
+    value : Vector
+            vector
+
+    other : Vector
+            other vector
+
 
     Returns
     - Vector
@@ -1385,10 +1752,14 @@ def vdivide(value, other):
 
     > Node <&Node Vector Math>
 
-    Arguments
-    ---------
-    - value (Vector) : vector
-    - other (Vector) : other vector
+    Parameters
+    ----------
+    value : Vector
+            vector
+
+    other : Vector
+            other vector
+
 
     Returns
     - Vector
@@ -1400,11 +1771,17 @@ def vmultiply_add(value, multiplier, addend):
 
     > Node <&Node Vector Math>
 
-    Arguments
-    ---------
-    - value (Vector) : vector
-    - multiplier (Vector) : other vector
-    - addend (Vector) : add end vector
+    Parameters
+    ----------
+    value : Vector
+            vector
+
+    multiplier : Vector
+            other vector
+
+    addend : Vector
+            add end vector
+
 
     Returns
     - Vector
@@ -1416,10 +1793,14 @@ def cross_product(value, other):
 
     > Node <&Node Vector Math>
 
-    Arguments
-    ---------
-    - value (Vector) : vector
-    - other (Vector) : other vector
+    Parameters
+    ----------
+    value : Vector
+            vector
+
+    other : Vector
+            other vector
+
 
     Returns
     - Vector
@@ -1431,10 +1812,14 @@ def project(value, other):
 
     > Node <&Node Vector Math>
 
-    Arguments
-    ---------
-    - value (Vector) : vector
-    - other (Vector) : other vector
+    Parameters
+    ----------
+    value : Vector
+            vector
+
+    other : Vector
+            other vector
+
 
     Returns
     - Vector
@@ -1446,10 +1831,14 @@ def reflect(value, other):
 
     > Node <&Node Vector Math>
 
-    Arguments
-    ---------
-    - value (Vector) : vector
-    - other (Vector) : other vector
+    Parameters
+    ----------
+    value : Vector
+            vector
+
+    other : Vector
+            other vector
+
 
     Returns
     - Vector
@@ -1461,11 +1850,17 @@ def refract(value, other, ior=None):
 
     > Node <&Node Vector Math>
 
-    Arguments
-    ---------
-    - value (Vector) : vector
-    - other (Vector) : other vector
-    - ior (Float) : IOR
+    Parameters
+    ----------
+    value : Vector
+            vector
+
+    other : Vector
+            other vector
+
+    ior : Float
+            IOR
+
 
     Returns
     - Vector
@@ -1477,11 +1872,17 @@ def faceforward(value, incident=None, reference=None):
 
     > Node <&Node Vector Math>
 
-    Arguments
-    ---------
-    - value (Vector) : vector
-    - incident (Vector) : incident vector
-    - reference (Vector) : reference vector
+    Parameters
+    ----------
+    value : Vector
+            vector
+
+    incident : Vector
+            incident vector
+
+    reference : Vector
+            reference vector
+
 
     Returns
     - Vector
@@ -1493,10 +1894,14 @@ def dot_product(value, other):
 
     > Node <&Node Vector Math>
 
-    Arguments
-    ---------
-    - value (Vector) : vector
-    - other (Vector) : other vector
+    Parameters
+    ----------
+    value : Vector
+            vector
+
+    other : Vector
+            other vector
+
 
     Returns
     - Float
@@ -1508,10 +1913,14 @@ def distance(value, other):
 
     > Node <&Node Vector Math>
 
-    Arguments
-    ---------
-    - value (Vector) : vector
-    - other (Vector) : other vector
+    Parameters
+    ----------
+    value : Vector
+            vector
+
+    other : Vector
+            other vector
+
 
     Returns
     - Float
@@ -1523,9 +1932,11 @@ def length(value):
 
     > Node <&Node Vector Math>
 
-    Arguments
-    ---------
-    - value (Vector) : vector
+    Parameters
+    ----------
+    value : Vector
+            vector
+
 
     Returns
     - Float
@@ -1537,10 +1948,14 @@ def scale(value, scale):
 
     > Node <&Node Vector Math>
 
-    Arguments
-    ---------
-    - value (Vector) : vector
-    - scale (Float) : scale factor
+    Parameters
+    ----------
+    value : Vector
+            vector
+
+    scale : Float
+            scale factor
+
 
     Returns
     - Vector
@@ -1552,9 +1967,11 @@ def normalize(value):
 
     > Node <&Node Vector Math>
 
-    Arguments
-    ---------
-    - value (Vector) : vector
+    Parameters
+    ----------
+    value : Vector
+            vector
+
 
     Returns
     - Vector
@@ -1566,9 +1983,11 @@ def vabs(value):
 
     > Node <&Node Vector Math>
 
-    Arguments
-    ---------
-    - value (Vector) : vector
+    Parameters
+    ----------
+    value : Vector
+            vector
+
 
     Returns
     - Vector
@@ -1580,10 +1999,14 @@ def vmin(value, other):
 
     > Node <&Node Vector Math>
 
-    Arguments
-    ---------
-    - value (Vector) : vector
-    - other (Vector) : other vector
+    Parameters
+    ----------
+    value : Vector
+            vector
+
+    other : Vector
+            other vector
+
 
     Returns
     - Vector
@@ -1595,10 +2018,14 @@ def vmax(value, other):
 
     > Node <&Node Vector Math>
 
-    Arguments
-    ---------
-    - value (Vector) : vector
-    - other (Vector) : other vector
+    Parameters
+    ----------
+    value : Vector
+            vector
+
+    other : Vector
+            other vector
+
 
     Returns
     - Vector
@@ -1610,9 +2037,11 @@ def vfloor(value):
 
     > Node <&Node Vector Math>
 
-    Arguments
-    ---------
-    - value (Vector) : vector
+    Parameters
+    ----------
+    value : Vector
+            vector
+
 
     Returns
     - Vector
@@ -1624,9 +2053,11 @@ def vceil(value):
 
     > Node <&Node Vector Math>
 
-    Arguments
-    ---------
-    - value (Vector) : vector
+    Parameters
+    ----------
+    value : Vector
+            vector
+
 
     Returns
     - Vector
@@ -1638,9 +2069,11 @@ def vfract(value):
 
     > Node <&Node Vector Math>
 
-    Arguments
-    ---------
-    - value (Vector) : vector
+    Parameters
+    ----------
+    value : Vector
+            vector
+
 
     Returns
     - Vector
@@ -1652,9 +2085,11 @@ def vmodulo(value, other):
 
     > Node <&Node Vector Math>
 
-    Arguments
-    ---------
-    - value (Vector) : vector
+    Parameters
+    ----------
+    value : Vector
+            vector
+
 
     Returns
     - Vector
@@ -1666,11 +2101,17 @@ def vwrap(value, max=None, min=None):
 
     > Node <&Node Vector Math>
 
-    Arguments
-    ---------
-    - value (Vector) : vector
-    - max (Vector) : max vector
-    - min (Vector) : min vector
+    Parameters
+    ----------
+    value : Vector
+            vector
+
+    max : Vector
+            max vector
+
+    min : Vector
+            min vector
+
 
     Returns
     - Vector
@@ -1682,10 +2123,14 @@ def vsnap(value, increment):
 
     > Node <&Node Vector Math>
 
-    Arguments
-    ---------
-    - value (Vector) : vector
-    - increment (Vector) : increment vector
+    Parameters
+    ----------
+    value : Vector
+            vector
+
+    increment : Vector
+            increment vector
+
 
     Returns
     - Vector
@@ -1697,9 +2142,11 @@ def vsin(value):
 
     > Node <&Node Vector Math>
 
-    Arguments
-    ---------
-    - value (Vector) : vector
+    Parameters
+    ----------
+    value : Vector
+            vector
+
 
     Returns
     - Vector
@@ -1711,9 +2158,11 @@ def vcos(value):
 
     > Node <&Node Vector Math>
 
-    Arguments
-    ---------
-    - value (Vector) : vector
+    Parameters
+    ----------
+    value : Vector
+            vector
+
 
     Returns
     - Vector
@@ -1725,9 +2174,11 @@ def vtan(value):
 
     > Node <&Node Vector Math>
 
-    Arguments
-    ---------
-    - value (Vector) : vector
+    Parameters
+    ----------
+    value : Vector
+            vector
+
 
     Returns
     - Vector

@@ -1,4 +1,4 @@
-# Generated 2026-03-26 08:37:01
+# Generated 2026-04-04 12:37:35
 
 from __future__ import annotations
 from .. sockettype import SocketType
@@ -41,20 +41,26 @@ class Rotation(Socket):
                     pivot_axis: Literal['AUTO', 'X', 'Y', 'Z'] = 'AUTO'):
         """ > Node <&Node Align Rotation to Vector>
 
-        Information
-        -----------
-        - Socket 'Rotation' : ignored
+        **Fixed values**
 
-        Arguments
+        | Kind   | Name     | Value   |
+        | ------ | -------- | ------- |
+        | Socket | Rotation | ignored |
+
+        Parameters
         ---------
-        - vector (Vector) : socket 'Vector' (id: Vector)
-        - factor (Float) : socket 'Factor' (id: Factor)
-        - axis (str): parameter 'axis' in ('X', 'Y', 'Z')
-        - pivot_axis (str): parameter 'pivot_axis' in ('Auto', 'X', 'Y', 'Z')
+        vector : Vector, optional
+            socket 'Vector' (id: Vector)
+        
+        factor : Float, optional
+            socket 'Factor' (id: Factor)
+        
+        axis (str): parameter 'axis' in ('X', 'Y', 'Z')
+        pivot_axis (str): parameter 'pivot_axis' in ('Auto', 'X', 'Y', 'Z')
 
         Returns
         -------
-        - Rotation
+        Rotation
         """
         utils.check_enum_arg('Align Rotation to Vector', 'axis', axis, 'AlignToVector', ('X', 'Y', 'Z'))
         utils.check_enum_arg('Align Rotation to Vector', 'pivot_axis', pivot_axis, 'AlignToVector', ('AUTO', 'X', 'Y', 'Z'))
@@ -68,20 +74,26 @@ class Rotation(Socket):
                     pivot_axis: Literal['AUTO', 'X', 'Y', 'Z'] = 'AUTO'):
         """ > Node <&Node Align Rotation to Vector>
 
-        Information
-        -----------
-        - Socket 'Rotation' : ignored
-        - Parameter 'axis' : 'X'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name     | Value   |
+        | --------- | -------- | ------- |
+        | Socket    | Rotation | ignored |
+        | Parameter | `axis`   | `'X'`   |
+
+        Parameters
         ---------
-        - vector (Vector) : socket 'Vector' (id: Vector)
-        - factor (Float) : socket 'Factor' (id: Factor)
-        - pivot_axis (str): parameter 'pivot_axis' in ('Auto', 'X', 'Y', 'Z')
+        vector : Vector, optional
+            socket 'Vector' (id: Vector)
+        
+        factor : Float, optional
+            socket 'Factor' (id: Factor)
+        
+        pivot_axis (str): parameter 'pivot_axis' in ('Auto', 'X', 'Y', 'Z')
 
         Returns
         -------
-        - Rotation
+        Rotation
         """
         utils.check_enum_arg('Align Rotation to Vector', 'pivot_axis', pivot_axis, 'AlignXToVector', ('AUTO', 'X', 'Y', 'Z'))
         node = Node('Align Rotation to Vector', {'Rotation': None, 'Vector': vector, 'Factor': factor}, axis='X', pivot_axis=pivot_axis)
@@ -94,20 +106,26 @@ class Rotation(Socket):
                     pivot_axis: Literal['AUTO', 'X', 'Y', 'Z'] = 'AUTO'):
         """ > Node <&Node Align Rotation to Vector>
 
-        Information
-        -----------
-        - Socket 'Rotation' : ignored
-        - Parameter 'axis' : 'Y'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name     | Value   |
+        | --------- | -------- | ------- |
+        | Socket    | Rotation | ignored |
+        | Parameter | `axis`   | `'Y'`   |
+
+        Parameters
         ---------
-        - vector (Vector) : socket 'Vector' (id: Vector)
-        - factor (Float) : socket 'Factor' (id: Factor)
-        - pivot_axis (str): parameter 'pivot_axis' in ('Auto', 'X', 'Y', 'Z')
+        vector : Vector, optional
+            socket 'Vector' (id: Vector)
+        
+        factor : Float, optional
+            socket 'Factor' (id: Factor)
+        
+        pivot_axis (str): parameter 'pivot_axis' in ('Auto', 'X', 'Y', 'Z')
 
         Returns
         -------
-        - Rotation
+        Rotation
         """
         utils.check_enum_arg('Align Rotation to Vector', 'pivot_axis', pivot_axis, 'AlignYToVector', ('AUTO', 'X', 'Y', 'Z'))
         node = Node('Align Rotation to Vector', {'Rotation': None, 'Vector': vector, 'Factor': factor}, axis='Y', pivot_axis=pivot_axis)
@@ -120,20 +138,26 @@ class Rotation(Socket):
                     pivot_axis: Literal['AUTO', 'X', 'Y', 'Z'] = 'AUTO'):
         """ > Node <&Node Align Rotation to Vector>
 
-        Information
-        -----------
-        - Socket 'Rotation' : ignored
-        - Parameter 'axis' : 'Z'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name     | Value   |
+        | --------- | -------- | ------- |
+        | Socket    | Rotation | ignored |
+        | Parameter | `axis`   | `'Z'`   |
+
+        Parameters
         ---------
-        - vector (Vector) : socket 'Vector' (id: Vector)
-        - factor (Float) : socket 'Factor' (id: Factor)
-        - pivot_axis (str): parameter 'pivot_axis' in ('Auto', 'X', 'Y', 'Z')
+        vector : Vector, optional
+            socket 'Vector' (id: Vector)
+        
+        factor : Float, optional
+            socket 'Factor' (id: Factor)
+        
+        pivot_axis (str): parameter 'pivot_axis' in ('Auto', 'X', 'Y', 'Z')
 
         Returns
         -------
-        - Rotation
+        Rotation
         """
         utils.check_enum_arg('Align Rotation to Vector', 'pivot_axis', pivot_axis, 'AlignZToVector', ('AUTO', 'X', 'Y', 'Z'))
         node = Node('Align Rotation to Vector', {'Rotation': None, 'Vector': vector, 'Factor': factor}, axis='Z', pivot_axis=pivot_axis)
@@ -146,20 +170,26 @@ class Rotation(Socket):
                     pivot_axis: Literal['AUTO', 'X', 'Y', 'Z'] = 'AUTO'):
         """ > Node <&Node Align Rotation to Vector>
 
-        Information
-        -----------
-        - Socket 'Rotation' : self
+        **Fixed values**
 
-        Arguments
+        | Kind   | Name     | Value  |
+        | ------ | -------- | ------ |
+        | Socket | Rotation | `self` |
+
+        Parameters
         ---------
-        - vector (Vector) : socket 'Vector' (id: Vector)
-        - factor (Float) : socket 'Factor' (id: Factor)
-        - axis (str): parameter 'axis' in ('X', 'Y', 'Z')
-        - pivot_axis (str): parameter 'pivot_axis' in ('Auto', 'X', 'Y', 'Z')
+        vector : Vector, optional
+            socket 'Vector' (id: Vector)
+        
+        factor : Float, optional
+            socket 'Factor' (id: Factor)
+        
+        axis (str): parameter 'axis' in ('X', 'Y', 'Z')
+        pivot_axis (str): parameter 'pivot_axis' in ('Auto', 'X', 'Y', 'Z')
 
         Returns
         -------
-        - Rotation
+        Rotation
         """
         utils.check_enum_arg('Align Rotation to Vector', 'axis', axis, 'align_to_vector', ('X', 'Y', 'Z'))
         utils.check_enum_arg('Align Rotation to Vector', 'pivot_axis', pivot_axis, 'align_to_vector', ('AUTO', 'X', 'Y', 'Z'))
@@ -172,20 +202,26 @@ class Rotation(Socket):
                     pivot_axis: Literal['AUTO', 'X', 'Y', 'Z'] = 'AUTO'):
         """ > Node <&Node Align Rotation to Vector>
 
-        Information
-        -----------
-        - Socket 'Rotation' : self
-        - Parameter 'axis' : 'X'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name     | Value  |
+        | --------- | -------- | ------ |
+        | Socket    | Rotation | `self` |
+        | Parameter | `axis`   | `'X'`  |
+
+        Parameters
         ---------
-        - vector (Vector) : socket 'Vector' (id: Vector)
-        - factor (Float) : socket 'Factor' (id: Factor)
-        - pivot_axis (str): parameter 'pivot_axis' in ('Auto', 'X', 'Y', 'Z')
+        vector : Vector, optional
+            socket 'Vector' (id: Vector)
+        
+        factor : Float, optional
+            socket 'Factor' (id: Factor)
+        
+        pivot_axis (str): parameter 'pivot_axis' in ('Auto', 'X', 'Y', 'Z')
 
         Returns
         -------
-        - Rotation
+        Rotation
         """
         utils.check_enum_arg('Align Rotation to Vector', 'pivot_axis', pivot_axis, 'align_x_to_vector', ('AUTO', 'X', 'Y', 'Z'))
         node = Node('Align Rotation to Vector', {'Rotation': self, 'Vector': vector, 'Factor': factor}, axis='X', pivot_axis=pivot_axis)
@@ -197,20 +233,26 @@ class Rotation(Socket):
                     pivot_axis: Literal['AUTO', 'X', 'Y', 'Z'] = 'AUTO'):
         """ > Node <&Node Align Rotation to Vector>
 
-        Information
-        -----------
-        - Socket 'Rotation' : self
-        - Parameter 'axis' : 'Y'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name     | Value  |
+        | --------- | -------- | ------ |
+        | Socket    | Rotation | `self` |
+        | Parameter | `axis`   | `'Y'`  |
+
+        Parameters
         ---------
-        - vector (Vector) : socket 'Vector' (id: Vector)
-        - factor (Float) : socket 'Factor' (id: Factor)
-        - pivot_axis (str): parameter 'pivot_axis' in ('Auto', 'X', 'Y', 'Z')
+        vector : Vector, optional
+            socket 'Vector' (id: Vector)
+        
+        factor : Float, optional
+            socket 'Factor' (id: Factor)
+        
+        pivot_axis (str): parameter 'pivot_axis' in ('Auto', 'X', 'Y', 'Z')
 
         Returns
         -------
-        - Rotation
+        Rotation
         """
         utils.check_enum_arg('Align Rotation to Vector', 'pivot_axis', pivot_axis, 'align_y_to_vector', ('AUTO', 'X', 'Y', 'Z'))
         node = Node('Align Rotation to Vector', {'Rotation': self, 'Vector': vector, 'Factor': factor}, axis='Y', pivot_axis=pivot_axis)
@@ -222,20 +264,26 @@ class Rotation(Socket):
                     pivot_axis: Literal['AUTO', 'X', 'Y', 'Z'] = 'AUTO'):
         """ > Node <&Node Align Rotation to Vector>
 
-        Information
-        -----------
-        - Socket 'Rotation' : self
-        - Parameter 'axis' : 'Z'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name     | Value  |
+        | --------- | -------- | ------ |
+        | Socket    | Rotation | `self` |
+        | Parameter | `axis`   | `'Z'`  |
+
+        Parameters
         ---------
-        - vector (Vector) : socket 'Vector' (id: Vector)
-        - factor (Float) : socket 'Factor' (id: Factor)
-        - pivot_axis (str): parameter 'pivot_axis' in ('Auto', 'X', 'Y', 'Z')
+        vector : Vector, optional
+            socket 'Vector' (id: Vector)
+        
+        factor : Float, optional
+            socket 'Factor' (id: Factor)
+        
+        pivot_axis (str): parameter 'pivot_axis' in ('Auto', 'X', 'Y', 'Z')
 
         Returns
         -------
-        - Rotation
+        Rotation
         """
         utils.check_enum_arg('Align Rotation to Vector', 'pivot_axis', pivot_axis, 'align_z_to_vector', ('AUTO', 'X', 'Y', 'Z'))
         node = Node('Align Rotation to Vector', {'Rotation': self, 'Vector': vector, 'Factor': factor}, axis='Z', pivot_axis=pivot_axis)
@@ -249,16 +297,20 @@ class Rotation(Socket):
                     secondary_axis: Literal['X', 'Y', 'Z'] = 'X'):
         """ > Node <&Node Axes to Rotation>
 
-        Arguments
+        Parameters
         ---------
-        - primary_axis_1 (Vector) : socket 'Primary Axis' (id: Primary Axis)
-        - secondary_axis_1 (Vector) : socket 'Secondary Axis' (id: Secondary Axis)
-        - primary_axis (str): parameter 'primary_axis' in ('X', 'Y', 'Z')
-        - secondary_axis (str): parameter 'secondary_axis' in ('X', 'Y', 'Z')
+        primary_axis_1 : Vector, optional
+            socket 'Primary Axis' (id: Primary Axis)
+        
+        secondary_axis_1 : Vector, optional
+            socket 'Secondary Axis' (id: Secondary Axis)
+        
+        primary_axis (str): parameter 'primary_axis' in ('X', 'Y', 'Z')
+        secondary_axis (str): parameter 'secondary_axis' in ('X', 'Y', 'Z')
 
         Returns
         -------
-        - Rotation
+        Rotation
         """
         utils.check_enum_arg('Axes to Rotation', 'primary_axis', primary_axis, 'FromAxes', ('X', 'Y', 'Z'))
         utils.check_enum_arg('Axes to Rotation', 'secondary_axis', secondary_axis, 'FromAxes', ('X', 'Y', 'Z'))
@@ -269,19 +321,25 @@ class Rotation(Socket):
     def FromXYAxes(cls, primary_axis: Vector = None, secondary_axis: Vector = None):
         """ > Node <&Node Axes to Rotation>
 
-        Information
-        -----------
-        - Parameter 'primary_axis' : 'X'
-        - Parameter 'secondary_axis' : 'Y'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name             | Value |
+        | --------- | ---------------- | ----- |
+        | Parameter | `primary_axis`   | `'X'` |
+        | Parameter | `secondary_axis` | `'Y'` |
+
+        Parameters
         ---------
-        - primary_axis (Vector) : socket 'Primary Axis' (id: Primary Axis)
-        - secondary_axis (Vector) : socket 'Secondary Axis' (id: Secondary Axis)
+        primary_axis : Vector, optional
+            socket 'Primary Axis' (id: Primary Axis)
+        
+        secondary_axis : Vector, optional
+            socket 'Secondary Axis' (id: Secondary Axis)
+        
 
         Returns
         -------
-        - Rotation
+        Rotation
         """
         node = Node('Axes to Rotation', {'Primary Axis': primary_axis, 'Secondary Axis': secondary_axis}, primary_axis='X', secondary_axis='Y')
         return cls(node._out)
@@ -290,19 +348,25 @@ class Rotation(Socket):
     def FromYXAxes(cls, primary_axis: Vector = None, secondary_axis: Vector = None):
         """ > Node <&Node Axes to Rotation>
 
-        Information
-        -----------
-        - Parameter 'primary_axis' : 'Y'
-        - Parameter 'secondary_axis' : 'X'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name             | Value |
+        | --------- | ---------------- | ----- |
+        | Parameter | `primary_axis`   | `'Y'` |
+        | Parameter | `secondary_axis` | `'X'` |
+
+        Parameters
         ---------
-        - primary_axis (Vector) : socket 'Primary Axis' (id: Primary Axis)
-        - secondary_axis (Vector) : socket 'Secondary Axis' (id: Secondary Axis)
+        primary_axis : Vector, optional
+            socket 'Primary Axis' (id: Primary Axis)
+        
+        secondary_axis : Vector, optional
+            socket 'Secondary Axis' (id: Secondary Axis)
+        
 
         Returns
         -------
-        - Rotation
+        Rotation
         """
         node = Node('Axes to Rotation', {'Primary Axis': primary_axis, 'Secondary Axis': secondary_axis}, primary_axis='Y', secondary_axis='X')
         return cls(node._out)
@@ -311,19 +375,25 @@ class Rotation(Socket):
     def FromXZAxes(cls, primary_axis: Vector = None, secondary_axis: Vector = None):
         """ > Node <&Node Axes to Rotation>
 
-        Information
-        -----------
-        - Parameter 'primary_axis' : 'X'
-        - Parameter 'secondary_axis' : 'Z'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name             | Value |
+        | --------- | ---------------- | ----- |
+        | Parameter | `primary_axis`   | `'X'` |
+        | Parameter | `secondary_axis` | `'Z'` |
+
+        Parameters
         ---------
-        - primary_axis (Vector) : socket 'Primary Axis' (id: Primary Axis)
-        - secondary_axis (Vector) : socket 'Secondary Axis' (id: Secondary Axis)
+        primary_axis : Vector, optional
+            socket 'Primary Axis' (id: Primary Axis)
+        
+        secondary_axis : Vector, optional
+            socket 'Secondary Axis' (id: Secondary Axis)
+        
 
         Returns
         -------
-        - Rotation
+        Rotation
         """
         node = Node('Axes to Rotation', {'Primary Axis': primary_axis, 'Secondary Axis': secondary_axis}, primary_axis='X', secondary_axis='Z')
         return cls(node._out)
@@ -332,19 +402,25 @@ class Rotation(Socket):
     def FromZXAxes(cls, primary_axis: Vector = None, secondary_axis: Vector = None):
         """ > Node <&Node Axes to Rotation>
 
-        Information
-        -----------
-        - Parameter 'primary_axis' : 'Z'
-        - Parameter 'secondary_axis' : 'X'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name             | Value |
+        | --------- | ---------------- | ----- |
+        | Parameter | `primary_axis`   | `'Z'` |
+        | Parameter | `secondary_axis` | `'X'` |
+
+        Parameters
         ---------
-        - primary_axis (Vector) : socket 'Primary Axis' (id: Primary Axis)
-        - secondary_axis (Vector) : socket 'Secondary Axis' (id: Secondary Axis)
+        primary_axis : Vector, optional
+            socket 'Primary Axis' (id: Primary Axis)
+        
+        secondary_axis : Vector, optional
+            socket 'Secondary Axis' (id: Secondary Axis)
+        
 
         Returns
         -------
-        - Rotation
+        Rotation
         """
         node = Node('Axes to Rotation', {'Primary Axis': primary_axis, 'Secondary Axis': secondary_axis}, primary_axis='Z', secondary_axis='X')
         return cls(node._out)
@@ -353,19 +429,25 @@ class Rotation(Socket):
     def FromYZAxes(cls, primary_axis: Vector = None, secondary_axis: Vector = None):
         """ > Node <&Node Axes to Rotation>
 
-        Information
-        -----------
-        - Parameter 'primary_axis' : 'Y'
-        - Parameter 'secondary_axis' : 'Z'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name             | Value |
+        | --------- | ---------------- | ----- |
+        | Parameter | `primary_axis`   | `'Y'` |
+        | Parameter | `secondary_axis` | `'Z'` |
+
+        Parameters
         ---------
-        - primary_axis (Vector) : socket 'Primary Axis' (id: Primary Axis)
-        - secondary_axis (Vector) : socket 'Secondary Axis' (id: Secondary Axis)
+        primary_axis : Vector, optional
+            socket 'Primary Axis' (id: Primary Axis)
+        
+        secondary_axis : Vector, optional
+            socket 'Secondary Axis' (id: Secondary Axis)
+        
 
         Returns
         -------
-        - Rotation
+        Rotation
         """
         node = Node('Axes to Rotation', {'Primary Axis': primary_axis, 'Secondary Axis': secondary_axis}, primary_axis='Y', secondary_axis='Z')
         return cls(node._out)
@@ -374,19 +456,25 @@ class Rotation(Socket):
     def FromZYAxes(cls, primary_axis: Vector = None, secondary_axis: Vector = None):
         """ > Node <&Node Axes to Rotation>
 
-        Information
-        -----------
-        - Parameter 'primary_axis' : 'Z'
-        - Parameter 'secondary_axis' : 'Y'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name             | Value |
+        | --------- | ---------------- | ----- |
+        | Parameter | `primary_axis`   | `'Z'` |
+        | Parameter | `secondary_axis` | `'Y'` |
+
+        Parameters
         ---------
-        - primary_axis (Vector) : socket 'Primary Axis' (id: Primary Axis)
-        - secondary_axis (Vector) : socket 'Secondary Axis' (id: Secondary Axis)
+        primary_axis : Vector, optional
+            socket 'Primary Axis' (id: Primary Axis)
+        
+        secondary_axis : Vector, optional
+            socket 'Secondary Axis' (id: Secondary Axis)
+        
 
         Returns
         -------
-        - Rotation
+        Rotation
         """
         node = Node('Axes to Rotation', {'Primary Axis': primary_axis, 'Secondary Axis': secondary_axis}, primary_axis='Z', secondary_axis='Y')
         return cls(node._out)
@@ -395,14 +483,18 @@ class Rotation(Socket):
     def FromAxisAngle(cls, axis: Vector = None, angle: Float = None):
         """ > Node <&Node Axis Angle to Rotation>
 
-        Arguments
+        Parameters
         ---------
-        - axis (Vector) : socket 'Axis' (id: Axis)
-        - angle (Float) : socket 'Angle' (id: Angle)
+        axis : Vector, optional
+            socket 'Axis' (id: Axis)
+        
+        angle : Float, optional
+            socket 'Angle' (id: Angle)
+        
 
         Returns
         -------
-        - Rotation
+        Rotation
         """
         node = Node('Axis Angle to Rotation', {'Axis': axis, 'Angle': angle})
         return cls(node._out)
@@ -411,13 +503,15 @@ class Rotation(Socket):
     def FromEuler(cls, euler: Vector = None):
         """ > Node <&Node Euler to Rotation>
 
-        Arguments
+        Parameters
         ---------
-        - euler (Vector) : socket 'Euler' (id: Euler)
+        euler : Vector, optional
+            socket 'Euler' (id: Euler)
+        
 
         Returns
         -------
-        - Rotation
+        Rotation
         """
         node = Node('Euler to Rotation', {'Euler': euler})
         return cls(node._out)
@@ -425,18 +519,22 @@ class Rotation(Socket):
     def hash_value(self, seed: Integer = None):
         """ > Node <&Node Hash Value>
 
-        Information
-        -----------
-        - Socket 'Value' : self
-        - Parameter 'data_type' : 'ROTATION'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name        | Value        |
+        | --------- | ----------- | ------------ |
+        | Socket    | Value       | `self`       |
+        | Parameter | `data_type` | `'ROTATION'` |
+
+        Parameters
         ---------
-        - seed (Integer) : socket 'Seed' (id: Seed)
+        seed : Integer, optional
+            socket 'Seed' (id: Seed)
+        
 
         Returns
         -------
-        - Integer
+        Integer
         """
         node = Node('Hash Value', {'Value': self, 'Seed': seed}, data_type='ROTATION')
         return node._out
@@ -444,13 +542,15 @@ class Rotation(Socket):
     def invert(self):
         """ > Node <&Node Invert Rotation>
 
-        Information
-        -----------
-        - Socket 'Rotation' : self
+        **Fixed values**
+
+        | Kind   | Name     | Value  |
+        | ------ | -------- | ------ |
+        | Socket | Rotation | `self` |
 
         Returns
         -------
-        - Rotation
+        Rotation
         """
         node = Node('Invert Rotation', {'Rotation': self})
         return node._out
@@ -459,16 +559,24 @@ class Rotation(Socket):
     def FromQuaternion(cls, w: Float = None, x: Float = None, y: Float = None, z: Float = None):
         """ > Node <&Node Quaternion to Rotation>
 
-        Arguments
+        Parameters
         ---------
-        - w (Float) : socket 'W' (id: W)
-        - x (Float) : socket 'X' (id: X)
-        - y (Float) : socket 'Y' (id: Y)
-        - z (Float) : socket 'Z' (id: Z)
+        w : Float, optional
+            socket 'W' (id: W)
+        
+        x : Float, optional
+            socket 'X' (id: X)
+        
+        y : Float, optional
+            socket 'Y' (id: Y)
+        
+        z : Float, optional
+            socket 'Z' (id: Z)
+        
 
         Returns
         -------
-        - Rotation
+        Rotation
         """
         node = Node('Quaternion to Rotation', {'W': w, 'X': x, 'Y': y, 'Z': z})
         return cls(node._out)
@@ -478,18 +586,22 @@ class Rotation(Socket):
                     rotation_space: Literal['GLOBAL', 'LOCAL'] = 'GLOBAL'):
         """ > Node <&Node Rotate Rotation>
 
-        Information
-        -----------
-        - Socket 'Rotation' : self
+        **Fixed values**
 
-        Arguments
+        | Kind   | Name     | Value  |
+        | ------ | -------- | ------ |
+        | Socket | Rotation | `self` |
+
+        Parameters
         ---------
-        - rotate_by (Rotation) : socket 'Rotate By' (id: Rotate By)
-        - rotation_space (str): parameter 'rotation_space' in ('Global', 'Local')
+        rotate_by : Rotation, optional
+            socket 'Rotate By' (id: Rotate By)
+        
+        rotation_space (str): parameter 'rotation_space' in ('Global', 'Local')
 
         Returns
         -------
-        - Rotation
+        Rotation
         """
         utils.check_enum_arg('Rotate Rotation', 'rotation_space', rotation_space, 'rotate', ('GLOBAL', 'LOCAL'))
         node = Node('Rotate Rotation', {'Rotation': self, 'Rotate By': rotate_by}, rotation_space=rotation_space)
@@ -498,18 +610,22 @@ class Rotation(Socket):
     def rotate_global(self, rotate_by: Rotation = None):
         """ > Node <&Node Rotate Rotation>
 
-        Information
-        -----------
-        - Socket 'Rotation' : self
-        - Parameter 'rotation_space' : 'GLOBAL'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name             | Value      |
+        | --------- | ---------------- | ---------- |
+        | Socket    | Rotation         | `self`     |
+        | Parameter | `rotation_space` | `'GLOBAL'` |
+
+        Parameters
         ---------
-        - rotate_by (Rotation) : socket 'Rotate By' (id: Rotate By)
+        rotate_by : Rotation, optional
+            socket 'Rotate By' (id: Rotate By)
+        
 
         Returns
         -------
-        - Rotation
+        Rotation
         """
         node = Node('Rotate Rotation', {'Rotation': self, 'Rotate By': rotate_by}, rotation_space='GLOBAL')
         return node._out
@@ -517,18 +633,22 @@ class Rotation(Socket):
     def rotate_local(self, rotate_by: Rotation = None):
         """ > Node <&Node Rotate Rotation>
 
-        Information
-        -----------
-        - Socket 'Rotation' : self
-        - Parameter 'rotation_space' : 'LOCAL'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name             | Value     |
+        | --------- | ---------------- | --------- |
+        | Socket    | Rotation         | `self`    |
+        | Parameter | `rotation_space` | `'LOCAL'` |
+
+        Parameters
         ---------
-        - rotate_by (Rotation) : socket 'Rotate By' (id: Rotate By)
+        rotate_by : Rotation, optional
+            socket 'Rotate By' (id: Rotate By)
+        
 
         Returns
         -------
-        - Rotation
+        Rotation
         """
         node = Node('Rotate Rotation', {'Rotation': self, 'Rotate By': rotate_by}, rotation_space='LOCAL')
         return node._out
@@ -536,17 +656,21 @@ class Rotation(Socket):
     def rotate_vector(self, vector: Vector = None):
         """ > Node <&Node Rotate Vector>
 
-        Information
-        -----------
-        - Socket 'Rotation' : self
+        **Fixed values**
 
-        Arguments
+        | Kind   | Name     | Value  |
+        | ------ | -------- | ------ |
+        | Socket | Rotation | `self` |
+
+        Parameters
         ---------
-        - vector (Vector) : socket 'Vector' (id: Vector)
+        vector : Vector, optional
+            socket 'Vector' (id: Vector)
+        
 
         Returns
         -------
-        - Vector
+        Vector
         """
         node = Node('Rotate Vector', {'Vector': vector, 'Rotation': self})
         return node._out
@@ -554,13 +678,17 @@ class Rotation(Socket):
     def to_axis_angle(self):
         """ > Node <&Node Rotation to Axis Angle>
 
-        Information
-        -----------
-        - Socket 'Rotation' : self
+        **Fixed values**
+
+        | Kind   | Name     | Value  |
+        | ------ | -------- | ------ |
+        | Socket | Rotation | `self` |
 
         Returns
         -------
-        - Vector [angle_ (Float)]
+        Vector
+            peer sockets: angle_ (Float)
+
         """
         node = Node('Rotation to Axis Angle', {'Rotation': self})
         return node._out
@@ -569,13 +697,15 @@ class Rotation(Socket):
     def axis_angle(self):
         """ > Node <&Node Rotation to Axis Angle>
 
-        Information
-        -----------
-        - Socket 'Rotation' : self
+        **Fixed values**
+
+        | Kind   | Name     | Value  |
+        | ------ | -------- | ------ |
+        | Socket | Rotation | `self` |
 
         Returns
         -------
-        - tuple (Vector, Float)
+        tuple (Vector, Float)
         """
         node = Node('Rotation to Axis Angle', {'Rotation': self})
         return (node.axis, node.angle)
@@ -583,13 +713,15 @@ class Rotation(Socket):
     def to_euler(self):
         """ > Node <&Node Rotation to Euler>
 
-        Information
-        -----------
-        - Socket 'Rotation' : self
+        **Fixed values**
+
+        | Kind   | Name     | Value  |
+        | ------ | -------- | ------ |
+        | Socket | Rotation | `self` |
 
         Returns
         -------
-        - Vector
+        Vector
         """
         node = Node('Rotation to Euler', {'Rotation': self})
         return node._out
@@ -597,13 +729,17 @@ class Rotation(Socket):
     def to_quaternion(self):
         """ > Node <&Node Rotation to Quaternion>
 
-        Information
-        -----------
-        - Socket 'Rotation' : self
+        **Fixed values**
+
+        | Kind   | Name     | Value  |
+        | ------ | -------- | ------ |
+        | Socket | Rotation | `self` |
 
         Returns
         -------
-        - Float [x_ (Float), y_ (Float), z_ (Float)]
+        Float
+            peer sockets: x_ (Float), y_ (Float), z_ (Float)
+
         """
         node = Node('Rotation to Quaternion', {'Rotation': self})
         return node._out
@@ -612,13 +748,15 @@ class Rotation(Socket):
     def wxyz(self):
         """ > Node <&Node Rotation to Quaternion>
 
-        Information
-        -----------
-        - Socket 'Rotation' : self
+        **Fixed values**
+
+        | Kind   | Name     | Value  |
+        | ------ | -------- | ------ |
+        | Socket | Rotation | `self` |
 
         Returns
         -------
-        - tuple (Float, Float, Float, Float)
+        tuple (Float, Float, Float, Float)
         """
         node = Node('Rotation to Quaternion', {'Rotation': self})
         return (node.w, node.x, node.y, node.z)
@@ -627,17 +765,21 @@ class Rotation(Socket):
     def Named(cls, name: String = None):
         """ > Node <&Node Named Attribute>
 
-        Information
-        -----------
-        - Parameter 'data_type' : 'QUATERNION'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name        | Value          |
+        | --------- | ----------- | -------------- |
+        | Parameter | `data_type` | `'QUATERNION'` |
+
+        Parameters
         ---------
-        - name (String) : socket 'Name' (id: Name)
+        name : String, optional
+            socket 'Name' (id: Name)
+        
 
         Returns
         -------
-        - Rotation
+        Rotation
         """
         node = Node('Named Attribute', {'Name': name}, data_type='QUATERNION')
         return cls(node._out)
@@ -646,17 +788,21 @@ class Rotation(Socket):
     def NamedAttribute(cls, name: String = None):
         """ > Node <&Node Named Attribute>
 
-        Information
-        -----------
-        - Parameter 'data_type' : 'QUATERNION'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name        | Value          |
+        | --------- | ----------- | -------------- |
+        | Parameter | `data_type` | `'QUATERNION'` |
+
+        Parameters
         ---------
-        - name (String) : socket 'Name' (id: Name)
+        name : String, optional
+            socket 'Name' (id: Name)
+        
 
         Returns
         -------
-        - Rotation
+        Rotation
         """
         node = Node('Named Attribute', {'Name': name}, data_type='QUATERNION')
         return cls(node._out)
@@ -664,23 +810,29 @@ class Rotation(Socket):
     def mix(self, b: Rotation = None, factor: Float = None, clamp_factor = True):
         """ > Node <&Node Mix>
 
-        Information
-        -----------
-        - Socket 'A' : self
-        - Parameter 'blend_type' : 'MIX'
-        - Parameter 'clamp_result' : False
-        - Parameter 'data_type' : 'ROTATION'
-        - Parameter 'factor_mode' : 'UNIFORM'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name           | Value        |
+        | --------- | -------------- | ------------ |
+        | Socket    | A              | `self`       |
+        | Parameter | `blend_type`   | `'MIX'`      |
+        | Parameter | `clamp_result` | `False`      |
+        | Parameter | `data_type`    | `'ROTATION'` |
+        | Parameter | `factor_mode`  | `'UNIFORM'`  |
+
+        Parameters
         ---------
-        - b (Rotation) : socket 'B' (id: B_Rotation)
-        - factor (Float) : socket 'Factor' (id: Factor_Float)
-        - clamp_factor (bool): parameter 'clamp_factor'
+        b : Rotation, optional
+            socket 'B' (id: B_Rotation)
+        
+        factor : Float, optional
+            socket 'Factor' (id: Factor_Float)
+        
+        clamp_factor (bool): parameter 'clamp_factor'
 
         Returns
         -------
-        - Rotation
+        Rotation
         """
         node = Node('Mix', {'A_Rotation': self, 'B_Rotation': b, 'Factor_Float': factor}, blend_type='MIX', clamp_factor=clamp_factor, clamp_result=False, data_type='ROTATION', factor_mode='UNIFORM')
         return node._out
@@ -688,18 +840,22 @@ class Rotation(Socket):
     def enable_output(self, enable: Boolean = None):
         """ > Node <&Node Enable Output>
 
-        Information
-        -----------
-        - Socket 'Value' : self
-        - Parameter 'data_type' : 'ROTATION'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name        | Value        |
+        | --------- | ----------- | ------------ |
+        | Socket    | Value       | `self`       |
+        | Parameter | `data_type` | `'ROTATION'` |
+
+        Parameters
         ---------
-        - enable (Boolean) : socket 'Enable' (id: Enable)
+        enable : Boolean, optional
+            socket 'Enable' (id: Enable)
+        
 
         Returns
         -------
-        - Rotation
+        Rotation
         """
         node = Node('Enable Output', {'Enable': enable, 'Value': self}, data_type='ROTATION')
         return node._out

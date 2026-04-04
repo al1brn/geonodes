@@ -34,7 +34,7 @@ $ DOC START
 Playing with gizmos
 
 
-> [!NOTE]
+!!! note
 > Modifiers:
 > - Gizmo Demo
 

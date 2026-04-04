@@ -33,7 +33,7 @@ $ DOC START
 
 This demo provides a modifier which crates an animated Observer
 
-> [!NOTE]
+!!! note
 > Modifiers:
 > - Observer
 

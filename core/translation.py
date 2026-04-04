@@ -15,11 +15,17 @@ from .utils import snake_case
 def add(english, fr = None, **translations):
     """ Add translations of an english term
 
-    Arguments
-    ---------
-    - english (str) : the english terme to translate
-    - fr (str = None) : translation into fr
-    - translation (dict of language code -> translation) : translations into other languages
+    Parameters
+    ----------
+    english : str
+            the english terme to translate
+
+    fr : str, optional
+        translation into fr Default: None.
+
+    translation : dict of language code -> translation
+            translations into other languages
+
     """
     sc_english = snake_case(english)
 
@@ -44,10 +50,14 @@ def add(english, fr = None, **translations):
 def add_dictionary(language, dictionary):
     """ Add a language dictionnay
 
-    Arguments
-    ---------
-    - language (str) : language code
-    - dictionary (dict of english -> translation in langugae) : translation dictionaty
+    Parameters
+    ----------
+    language : str
+            language code
+
+    dictionary : dict of english -> translation in langugae
+            translation dictionaty
+
     """
     for english, translation in dictionary.items():
         add(english, **{language: translation})

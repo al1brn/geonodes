@@ -77,12 +77,24 @@ class Link:
 
         Properties
         ----------
-        - tree (Tree) : tree wrapper
-        - blink (bpy.types.Link) : wrapped link
-        - node0 (Node) : starting node
-        - node1 (Node) : ending node
-        - index0 (int) : starting socket index
-        - index1 (int) : ending socket index
+        tree : Tree
+            tree wrapper
+
+        blink : bpy.types.Link
+            wrapped link
+
+        node0 : Node
+            starting node
+
+        node1 : Node
+            ending node
+
+        index0 : int
+            starting socket index
+
+        index1 : int
+            ending socket index
+
         """
         self.tree  = tree
 
@@ -116,12 +128,12 @@ class Link:
     def socket0(self):
         """ Starting socket
 
-        > [!IMPORTANT]
-        > The socket is not directly read from the link but from <#node0> using <#index0>.
+        !!! important
+            The socket is not directly read from the link but from <#node0> using <#index0>.
 
         Returns
         -------
-        - bpy.types.NodeSocket : from socket
+        bpy.types.NodeSocket : from socket
         """
         return self.node0.bnode.outputs[self.index0]
 
@@ -129,12 +141,12 @@ class Link:
     def socket1(self):
         """ Starting socket
 
-        > [!IMPORTANT]
-        > The socket is not directly read from the link but from <#node1> using <#index1>.
+        !!! important
+            The socket is not directly read from the link but from <#node1> using <#index1>.
 
         Returns
         -------
-        - bpy.types.NodeSocket : to socket
+        bpy.types.NodeSocket : to socket
         """
         return self.node1.bnode.inputs[self.index1]
 
@@ -143,10 +155,14 @@ class Link:
 
         The link is deleted and replaced by a link from <#node0> to the new <#node1>
 
-        Arguments
-        ---------
-        - node1 (Node) : new 'node to'
-        - index1 (int = None) : new index1, keep current if None
+        Parameters
+        ----------
+        node1 : Node
+            new 'node to'
+
+        index1 : int, optional
+            new index1, keep current if None Default: None.
+
         """
         self.tree.btree.links.remove(self.blink)
         self.node1 = node1
@@ -159,10 +175,14 @@ class Link:
 
         The link is deleted and replaced by a link from new <#node0> to <#node1>
 
-        Arguments
-        ---------
-        - node0 (Node) : new 'from node'
-        - index0 (int = None) : new index0, keep current if None
+        Parameters
+        ----------
+        node0 : Node
+            new 'from node'
+
+        index0 : int, optional
+            new index0, keep current if None Default: None.
+
         """
         self.tree.btree.links.remove(self.blink)
         self.node0 = node0
@@ -173,13 +193,17 @@ class Link:
     def insert_reroute(self, frame):
         """ Insert a reroute node
 
-        Arguments
-        ---------
-        - parent (Frame) : parent frame
+        Parameters
+        ----------
+        parent : Frame
+            parent frame
+
 
         Returns
         -------
-        - Node : reroute node
+        Node
+            reroute node
+
         """
 
         # ----- Create the reroute node
@@ -332,13 +356,17 @@ class Item:
     def left_right_items(self, left):
         """ All the intems linked to in / out items
 
-        Arguments
-        ---------
-        - left (bool) : left or right items
+        Parameters
+        ----------
+        left : bool
+            left or right items
+
 
         Returns
         -------
-        - dict : name -> (min dist, max dist)
+        dict
+            name -> (min dist, max dist)
+
         """
 
         items = {}
@@ -616,13 +644,21 @@ class Node(Item):
 
         Properties
         ----------
-        - tree (Tree) : tree wrapper
-        - bnode (bpy.types.Node) : wrapped node
+        tree : Tree
+            tree wrapper
 
-        Arguments
-        ---------
-        - tree (Tree) : the tree to arrange
-        - bnode (bpy.types.Node) : the wrapped node
+        bnode : bpy.types.Node
+            wrapped node
+
+
+        Parameters
+        ----------
+        tree : Tree
+            the tree to arrange
+
+        bnode : bpy.types.Node
+            the wrapped node
+
         """
         self.tree  = tree
         self.bnode = bnode
@@ -735,13 +771,17 @@ class Node(Item):
     def is_in_frame(self, frame):
         """ Is in a frame
 
-        Arguments
-        ---------
-        - frame (Node) : the frame to test
+        Parameters
+        ----------
+        frame : Node
+            the frame to test
+
 
         Returns
         -------
-        - bool : True if the frame belongs to the parents hierarchy
+        bool
+            True if the frame belongs to the parents hierarchy
+
         """
         if self.parent is None:
             return False
@@ -762,7 +802,7 @@ class Node(Item):
 
         Returns
         -------
-        - set of Nodes : nodes linked to one input socket of the node
+        set of Nodes : nodes linked to one input socket of the node
         """
         if self._in_nodes is None:
             self._in_nodes = set()
@@ -778,7 +818,7 @@ class Node(Item):
 
         Returns
         -------
-        - set of Nodes : nodes linked to one output socket of the node
+        set of Nodes : nodes linked to one output socket of the node
         """
         if self._out_nodes is None:
             self._out_nodes = set()
@@ -799,13 +839,17 @@ class Node(Item):
     def left_right_nodes(self, left: bool):
         """ All the nodes linked to node input sockets
 
-        Arguments
-        ---------
-        - left (bool) : left or right nodes
+        Parameters
+        ----------
+        left : bool
+            left or right nodes
+
 
         Returns
         -------
-        - dict : name -> (min dist, max dist)
+        dict
+            name -> (min dist, max dist)
+
         """
 
         nodes = {}
@@ -868,7 +912,9 @@ class Node(Item):
 
         Returns
         -------
-        - int : the linked order, None if not linked
+        int
+            the linked order, None if not linked
+
         """
         rank = 0
         for socket in self.bnode.inputs:
@@ -1028,7 +1074,9 @@ class Node(Item):
 
         Returns
         -------
-        - float : node width
+        float
+            node width
+
         """
         return round(self.dimensions[0])
 
@@ -1038,7 +1086,9 @@ class Node(Item):
 
         Returns
         -------
-        - float : node height
+        float
+            node height
+
         """
         return round(self.dimensions[1])     
     
@@ -1056,9 +1106,11 @@ class Tree(Item):
         -----------
         - btree (bpy.types.Tree)
 
-        Arguments
-        ---------
-        - btree (bpy.types.Tree) : the tree to wrap
+        Parameters
+        ----------
+        btree : bpy.types.Tree
+            the tree to wrap
+
         """        
         if isinstance(btree, str):
             btree = bpy.data.node_groups[btree]
@@ -1299,7 +1351,7 @@ class Tree(Item):
 
         Returns
         -------
-        - list of nodes : nodes with bl_idname equal to 'NodeGroupInput'
+        list of nodes : nodes with bl_idname equal to 'NodeGroupInput'
         """
         return [node for node in self.nodes.values() if node.bnode.bl_idname == 'NodeGroupInput']
 
@@ -1683,10 +1735,14 @@ class Tree(Item):
     def arrange(self, reroutes: bool = True, single_input: bool = False):
         """ Nodes arrangement
 
-        Arguments
-        ---------
-        - reroutes (bool = True) : insert reroutes in frames as in / out sockets
-        - single_input (bool = False) : one single Group Input node or one per top frame
+        Parameters
+        ----------
+        reroutes : bool, optional
+            insert reroutes in frames as in / out sockets Default: True.
+
+        single_input : bool, optional
+            one single Group Input node or one per top frame Default: False.
+
         """
 
         # ---------------------------------------------------------------------------

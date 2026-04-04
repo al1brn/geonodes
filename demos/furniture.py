@@ -164,17 +164,25 @@ def get_dimension(mesh, name, i_axis, same_value, color=None):
     Use a Macro rather than a Group to allow Gizmo. When dimension is required,
     we don't know yet the position.
 
-    Arguments
-    ---------
-    - mesh (Mesh) : current piece of furniture
-    - name (str) : "Width" or "Length"
+    Parameters
+    ----------
+    mesh : Mesh
+            current piece of furniture
+
+    name : str
+            "Width" or "Length"
+
     - i_axis (integer in (0, 1)) : axis to compute "Between" option
-    - same_value (Float) : value vor option "Same"
-    - color (SysColor) : the color to use for nodes
+    same_value : Float
+            value vor option "Same"
+
+    color : SysColor
+            the color to use for nodes
+
 
     Returns
     -------
-    - dict : used to set the values and create Gizmo controls
+    dict : used to set the values and create Gizmo controls
     """
 
     with Layout(name):
@@ -453,11 +461,17 @@ def demo():
         - Comp Id : reset to 0
         - Owner Id : reset to 0
         - Max Dimensions (Vector) : Max dimensions of the stock
-        - Dimensions (Vector) : initial dimensions (equal to max dimensions)
+        Dimensions : Vector
+            initial dimensions (equal to max dimensions)
+
         - Free Dims (Integer) : add tilable flag
         - Tile Gap (Float) : width and length gap when tiling
-        - Content (Integer) : component type and flag
-        - Reference (Integer) : Base stock unique identifier
+        Content : Integer
+            component type and flag
+
+        Reference : Integer
+            Base stock unique identifier
+
 
         """
 
@@ -513,10 +527,18 @@ def demo():
         Named Attributes
         ----------------
         - Max Dimensions (Vector) : Max dimensions
-        - Dimensions (Vector) : init value of component dimensions, equal to Max Dimensions
-        - Content (Integer) : component type and flag
-        - Reference (Integer) : Unique identifier used to compute the cut sheet
-        - Orientation (Integer) : 0 as default orientation
+        Dimensions : Vector
+            init value of component dimensions, equal to Max Dimensions
+
+        Content : Integer
+            component type and flag
+
+        Reference : Integer
+            Unique identifier used to compute the cut sheet
+
+        Orientation : Integer
+            0 as default orientation
+
         - Free Dims (Integer) : Free dimensions
         """
 
@@ -984,9 +1006,13 @@ def demo():
         Named Attributes
         ----------------
         - Comp Id (Integer) : max of the existing ids + 1
-        - Content (Integer) : Ensure flag CONTENT PART is set to "Content" named attribute
+        Content : Integer
+            Ensure flag CONTENT PART is set to "Content" named attribute
+
         - Face Random (Float) : a random float per face
-        - Single (Integer) : First vertex flag (1 for the first vertex, 0 for the other ones)
+        Single : Integer
+            First vertex flag (1 for the first vertex, 0 for the other ones)
+
         """
         
         mesh = Mesh()
@@ -3032,7 +3058,7 @@ def get_references(refs):
 
     Returns
     -------
-    - dict : reference -> Object name
+    dict : reference -> Object name
     """
     
     if refs is not None:

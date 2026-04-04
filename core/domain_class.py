@@ -81,8 +81,8 @@ class Domain(Geom, NodeCache):
             Mesh().points[my_selection].store_named_attribute("Name", value)
         ```
 
-        > [!IMPORTANT]
-        > Domains are never instantiated directly but created by geometries.
+        !!! important
+            Domains are never instantiated directly but created by geometries.
 
         The domain specific to geometries are the followings:
             - Mesh:
@@ -108,7 +108,8 @@ class Domain(Geom, NodeCache):
 
         Properties
         ----------
-        - _geo (Geometry) : the geometry the domain belongs to
+        _geo : Geometry
+            the geometry the domain belongs to
         """
 
         # ---------------------------------------------------------------------------
@@ -204,15 +205,23 @@ class Domain(Geom, NodeCache):
     def data_type_from_value_OLD(self, value, param_name: str = 'data_type', on_error: str = 'DEFAULT'):
         """ Get the data_type from the value to plug on socket
 
-        Arguments
-        ---------
-        - value : the value to set on the socket
-        - param_name (str in ('data_type', 'input_type')) : param name
-        - on_error(str in ('HALT', 'NONE', 'DEFAULT')) : what to do if not found
+        Parameters
+        ----------
+        value
+            the value to set on the socket
+
+        param_name : {'data_type', 'input_type'}
+            param name
+
+        on_error : {'HALT', 'NONE', 'DEFAULT'}
+            what to do if not found
+
 
         Returns
         -------
-        - data_type : a valid data type
+        data_type
+            a valid data type
+
         """
         return self._geo.node.data_type_from_value(value, param_name=param_name, on_error=on_error)
 
@@ -244,14 +253,15 @@ class Domain(Geom, NodeCache):
             captured_attr3 = mesh.points.capture_attribute(attr3)
         ```
 
-        Arguments
-        ---------
-        - attribute (Socket) : first attribute to capture
+        Parameters
+        ----------
+        attribute : Socket
+            first attribute to capture
         - **attributes (Sockets): named attributes to capture
 
         Returns
         -------
-        - Node or Socket
+        Node or Socket
         """
         if len(attributes) == 0:
             attrs = {'attribute': attribute}
@@ -283,14 +293,16 @@ class Domain(Geom, NodeCache):
 
         > Short name for <#capture_attribute>
 
-        Arguments
-        ---------
-        - attribute (Socket) : first attribute to capture
+        Parameters
+        ----------
+        attribute : Socket
+            first attribute to capture
+
         - **attributes (Sockets): named attributes to capture
 
         Returns
         -------
-        - Node or Socket
+        Node or Socket
         """
         return self.capture_attribute(attribute=attribute, **attributes)
     
@@ -301,15 +313,21 @@ class Domain(Geom, NodeCache):
     def for_each_element(self, named_sockets: dict={}, selection=None, **sockets):
         """ Simulation zone
 
-        Arguments
-        ---------
-        - named_socket (dict = {}) : named sockets
-        - selection (Boolean = None) : selection
-        - sockets (dict) : other sockets
+        Parameters
+        ----------
+        named_socket : dict, optional
+            named sockets Default: {}.
+
+        selection : Boolean, optional
+            selection Default: None.
+
+        sockets : dict
+            other sockets
+
 
         Returns
         -------
-        - ZoneIterator
+        ZoneIterator
         """
 
         # Selection socket

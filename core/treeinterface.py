@@ -144,9 +144,11 @@ class ItemPath:
         The class can be initialized from a NodeTreeInterfaceItem, from a path or
         from a list.
 
-        Arguments
-        ---------
-        - value (str | list | NodeTreeInterfaceItem) : the panel to initiaize
+        Parameters
+        ----------
+        value : str | list | NodeTreeInterfaceItem
+            the panel to initiaize
+
         """
 
         self._path      = ""
@@ -280,13 +282,15 @@ class ItemPath:
     def path_to_stack(path: str) -> list:
         """ Return a list of (name, rank).
 
-        Arguments
-        ---------
-        - path (str) : panel path
+        Parameters
+        ----------
+        path : str
+            panel path
+
 
         Returns
         -------
-        - list of couples (name, rank)
+        list of couples (name, rank)
         """
 
         stack = []
@@ -314,13 +318,17 @@ class ItemPath:
     def stack_to_path(stack: list) -> str:
         """ Convert a stack of couples (name, rank) to path.
 
-        Arguments
-        ---------
-        - stack (list) : stack of (name, rank)
+        Parameters
+        ----------
+        stack : list
+            stack of (name, rank)
+
 
         Returns
         -------
-        - str : panel path
+        str
+            panel path
+
         """
         a = []
         for spec in stack:
@@ -451,13 +459,17 @@ class ItemPath:
         
         The parent path must be shorter that path and be equal.
         
-        Arguments
-        ---------
-        - parent (ItemPath) : parent panel
+        Parameters
+        ----------
+        parent : ItemPath
+            parent panel
+
         
         Returns
         -------
-        - ItemPath : path relative to the parent
+        ItemPath
+            path relative to the parent
+
         """
         parent_path = ItemPath.to_item_path(parent)
         if parent.socket_id not in [None, ""]:
@@ -587,21 +599,23 @@ class TreeInterface:
         """ Get a panel by its name.
 
         If create is True, the panel is created.
-        > [!NOTE]
-        > The panel is created only if the parent panels exist
+        !!! note
+            The panel is created only if the parent panels exist
 
-        > [!NOTE]
-        > - If the name is `None`, returns `None'.
-        > - If If the name is empty, returns the parent panel.
+        !!! note
+
+            - If the name is `None`, returns `None'.
+            - If If the name is empty, returns the parent panel.
 
         Both the name and the parent name use `'>'` char as a separator between parent panel names.
 
-        > [!NOTE]
-        > When several panels share the same name within a parent, the name can be suffixed by its order
-        > starting from 0, for exemple:
-        > - First : `"Panel"`
-        > - Second : `"Panel_1"`
-        > - Third : `"Panel_2`"
+        !!! note
+            When several panels share the same name within a parent, the name can be suffixed by its order
+            starting from 0, for exemple:
+
+              - First : `"Panel"`
+              - Second : `"Panel_1"`
+              - Third : `"Panel_2`"
 
         ``` python
         tinf = TreeInterface(...)
@@ -627,15 +641,23 @@ class TreeInterface:
         sub_panel = tinf.get_panel("Top_1 > Sub")
         ``` 
 
-        Arguments
-        ---------
-        - path (str | NodeTreeInterfacePanel = "") : name of the panel
-        - default_closed (bool = False) : default closed fag
-        - create (bool = False) : create the panel if is doesn't exist
+        Parameters
+        ----------
+        path : str | NodeTreeInterfacePanel, optional
+            name of the panel Default: "".
+
+        default_closed : bool, optional
+            default closed fag Default: False.
+
+        create : bool, optional
+            create the panel if is doesn't exist Default: False.
+
 
         Returns
         -------
-        - NodeTreeInterfacePanel : None if not found or impossible to create
+        NodeTreeInterfacePanel
+            None if not found or impossible to create
+
 
         """
         # ---------------------------------------------------------------------------
@@ -710,16 +732,26 @@ class TreeInterface:
             default_closed : bool = False):
         """ Create a new panel within a parent panel.
 
-        Arguments
-        ---------
-        - name (str) : name of the panel to create
-        - parent (str | NodeTreeInterfacePanel = None) : the panel wehre to create the panel
-        - tip (str = "") : panel description
-        - default_closed (bool = False) : default_closed flag
+        Parameters
+        ----------
+        name : str
+            name of the panel to create
+
+        parent : str | NodeTreeInterfacePanel, optional
+            the panel wehre to create the panel Default: None.
+
+        tip : str, optional
+            panel description Default: "".
+
+        default_closed : bool, optional
+            default_closed flag Default: False.
+
 
         Returns
         -------
-        - NodeTreeInterfacePanel : the created panel
+        NodeTreeInterfacePanel
+            the created panel
+
         """
 
         if ItemPath(name).is_root:
@@ -742,14 +774,18 @@ class TreeInterface:
     def belongs_to(item: NodeTreeInterfaceItem, parent: NodeTreeInterfacePanel=None):
         """ Check if an item belongs to a parent panel
 
-        Arguments
-        ---------
-        - item (NodeTreeInterfaceItem) : the item to test
-        - parent (NodeTreeInterfacePanel = None) : the panel to test
+        Parameters
+        ----------
+        item : NodeTreeInterfaceItem
+            the item to test
+
+        parent : NodeTreeInterfacePanel, optional
+            the panel to test Default: None.
+
 
         Returns
         -------
-        - True if item is in the panel hierarchy
+        True if item is in the panel hierarchy
         """
         parent_path = ItemPath(parent)
         if parent_path.is_root:
@@ -774,12 +810,20 @@ class TreeInterface:
         
         """ Get a socket by its name.
 
-        Arguments
-        ---------
-        - in_out (str in ('INPUT', 'OUTPUT')) : input or output socket
-        - name (str | NodeTreeInterfaceSocket) : the socket to retrieve
-        - socket_type (str) : socket type
-        - parent (str | NodeTreeInterfacePanel = None) : the parent panel
+        Parameters
+        ----------
+        in_out : {'INPUT', 'OUTPUT'}
+            input or output socket
+
+        name : str | NodeTreeInterfaceSocket
+            the socket to retrieve
+
+        socket_type : str
+            socket type
+
+        parent : str | NodeTreeInterfacePanel, optional
+            the parent panel Default: None.
+
         """
         check_in_out(in_out)
 
@@ -840,18 +884,32 @@ class TreeInterface:
             **props):
         """ Create a new socket.
 
-        Arguments
-        ---------
-        - in_out (str in ('INPUT', 'OUTPUT')) : input or output socket
-        - name (str) : name of the socket to create
-        - socket_type (str | SocketType) : a valid socket type
-        - parent (str | NodeTreeInterfacePanel = None) : the parent panel where to create the socket
-        - from_socket (NodeSocket = None) : an existing socket to configure the created socket
-        - props (dict) : properties specific to the socket type
+        Parameters
+        ----------
+        in_out : {'INPUT', 'OUTPUT'}
+            input or output socket
+
+        name : str
+            name of the socket to create
+
+        socket_type : str | SocketType
+            a valid socket type
+
+        parent : str | NodeTreeInterfacePanel, optional
+            the parent panel where to create the socket Default: None.
+
+        from_socket : NodeSocket, optional
+            an existing socket to configure the created socket Default: None.
+
+        props : dict
+            properties specific to the socket type
+
 
         Returns
         -------
-        - NodeTreeInterfaceSocket : the created sockets
+        NodeTreeInterfaceSocket
+            the created sockets
+
         """
         check_in_out(in_out)
 
@@ -980,15 +1038,25 @@ class TreeInterface:
 
         Attributes
         ----------
-        - in_out (str in ('INPUT', 'OUTPUT')) : input or output sockets
-        - include (list = None) : limit sockets to list
-        - exclude (list = []) : exclude sockets from list
-        - enabled_only (bool = True) : only enabled sockets
-        - parent (NodeTreeInterfacePanel = None) : path up to the parent
+        in_out : {'INPUT', 'OUTPUT'}
+            input or output sockets
+
+        include : list, optional
+            limit sockets to list Default: None.
+
+        exclude : list, optional
+            exclude sockets from list Default: [].
+
+        enabled_only : bool, optional
+            only enabled sockets Default: True.
+
+        parent : NodeTreeInterfacePanel, optional
+            path up to the parent Default: None.
+
 
         Returns
         -------
-        - list of sockets
+        list of sockets
         """
         check_in_out(in_out)
 
@@ -1149,10 +1217,14 @@ class TreeInterface:
     def copy_properties(self, isocket, from_isocket):
         """ Copy the properties from another interface socket.
 
-        Arguments
-        ---------
-        - isocket (InterfaceSocket) : Socket to copy properties to
-        - from_isocket (InterfaceSocket) : Socket to copy properties from
+        Parameters
+        ----------
+        isocket : InterfaceSocket
+            Socket to copy properties to
+
+        from_isocket : InterfaceSocket
+            Socket to copy properties from
+
         """
         for prop in self.socket_props[isocket.socket_type]:
             setattr(isocket, prop, getattr(from_isocket, prop))
@@ -1168,14 +1240,18 @@ class TreeInterface:
     def set_in_geometry(self, name: str | None = None, create: bool = False):
         """ Ensure that the Geometry input socket is the first
 
-        Arguments
-        ---------
-        - name : socket name, 'Geometry' if None
-        - create : create the socket if it doesn't exist
+        Parameters
+        ----------
+        name
+            socket name, 'Geometry' if None
+
+        create
+            create the socket if it doesn't exist
+
 
         Returns
         -------
-        - Geometry socket
+        Geometry socket
         """
 
         if name is None:
@@ -1214,13 +1290,15 @@ class TreeInterface:
 
         If the tree has no output Geometry socket, one is created
 
-        Arguments
-        ---------
-        - name : socket name, 'Geometry' if None
+        Parameters
+        ----------
+        name
+            socket name, 'Geometry' if None
+
 
         Returns
         -------
-        - Geometry socket
+        Geometry socket
         """
 
         if name is None:
@@ -1296,17 +1374,29 @@ class TreeInterface:
             return_all  : bool = False):
         """ Get a socket by its python name.
 
-        Arguments
-        ---------
-        - in_out (str in ('INPUT', 'OUTPUT')) : input or output socket
-        - name (str) : the python name
-        - socket_type (str) : socket type
-        - parent (str | NodeTreeInterfacePanel = None) : the parent panel
-        - return_all (bool = False) : return all candidates
+        Parameters
+        ----------
+        in_out : {'INPUT', 'OUTPUT'}
+            input or output socket
+
+        name : str
+            the python name
+
+        socket_type : str
+            socket type
+
+        parent : str | NodeTreeInterfacePanel, optional
+            the parent panel Default: None.
+
+        return_all : bool, optional
+            return all candidates Default: False.
+
 
         Returns
         -------
-        - NodeTreeInterfaceSocket : None if not found
+        NodeTreeInterfaceSocket
+            None if not found
+
         - list of NodeTreeInterfaceSocket is return_all is True
         """
 
@@ -1353,14 +1443,20 @@ class TreeInterface:
             parent: (NodeTreeInterfacePanel | str) = None):
         """ Get a panel by its python name.
 
-        Arguments
-        ---------
-        - name (str) : the python name
-        - parent (str | NodeTreeInterfacePanel = None) : the parent panel
+        Parameters
+        ----------
+        name : str
+            the python name
+
+        parent : str | NodeTreeInterfacePanel, optional
+            the parent panel Default: None.
+
 
         Returns
         -------
-        - NodeTreeInterfacePanel : None if not found
+        NodeTreeInterfacePanel
+            None if not found
+
         """
         #parent = self.get_panel(parent)
         parent_path = ItemPath(parent)
@@ -1416,9 +1512,11 @@ class TreeInterface:
         tinf.empty_bin()
         ````
 
-        Arguments
-        ---------
-        - use_bin (bool=True) : move the sockets to a bin if True
+        Parameters
+        ----------
+        use_bin : bool, default=True
+            move the sockets to a bin if True
+
         """
 
         if True:
@@ -1509,21 +1607,33 @@ class TreeInterface:
                 ignore_bin  : bool = True):
         """ Iterate over sockets and or panels.
 
-        > [!NOTE]
-        > The methods return the list of items and not a true Iterator
+        !!! note
+            The methods return the list of items and not a true Iterator
 
-        Arguments
-        ---------
-        - in_out (str in ('INPUT', 'OUTPUT', 'BOTH')) : filter on sockets input / output
-        - sockets (bool = True) : iterate of sockets
-        - panels (bool = True) : iterate of panels
-        - parent (NodeTreeInterfacePanel = None) : iterate on items within this parent
-        - sub_panels (bool = True) : iterate in sub panels of the parent
-        - ignore_bin (bool = True) : ignore sockets in bin
+        Parameters
+        ----------
+        in_out : {'INPUT', 'OUTPUT', 'BOTH'}
+            filter on sockets input / output
+
+        sockets : bool, optional
+            iterate of sockets Default: True.
+
+        panels : bool, optional
+            iterate of panels Default: True.
+
+        parent : NodeTreeInterfacePanel, optional
+            iterate on items within this parent Default: None.
+
+        sub_panels : bool, optional
+            iterate in sub panels of the parent Default: True.
+
+        ignore_bin : bool, optional
+            ignore sockets in bin Default: True.
+
 
         Returns
         -------
-        - list
+        list
         """
 
         check_in_out(in_out, both=True)
@@ -1583,14 +1693,18 @@ class TreeInterface:
     def get_all_socket_names(self, socket, use_name: bool = True, use_python: bool = False):
         """ Get all the names of a socket
 
-        Arguments
-        ---------
-        - use_name (bool = True) : str names
-        - use_python (bool = False) : python name
+        Parameters
+        ----------
+        use_name : bool, optional
+            str names Default: True.
+
+        use_python : bool, optional
+            python name Default: False.
+
 
         Returns
         -------
-        - list of possible names
+        list of possible names
         """
 
         names = ItemPath(socket).get_names(use_name=use_name, use_python=use_python)
@@ -1615,13 +1729,15 @@ class TreeInterface:
     def get_shortest_names(self, in_out: IN_OUT):
         """ Return the sockets index by their shortest name.
 
-        Arguments
-        ---------
-        - in_out (str in ('INPUT', 'OUTPUT', 'BOTH')) : filter on sockets input / output
+        Parameters
+        ----------
+        in_out : {'INPUT', 'OUTPUT', 'BOTH'}
+            filter on sockets input / output
+
 
         Returns
         -------
-        - dict : shortest name -> socket
+        dict : shortest name -> socket
         """
         check_in_out(in_out)
 
@@ -1664,15 +1780,21 @@ class TreeInterface:
 
         The dict can be used to create sockets with the same setup.
 
-        Arguments
-        ---------
-        - item (NodeTreeInterfaceItem) : the item
-        - parent (NodeTreeInterfacePanel = None) : path up to the parent
-        - with_socket (bool = False) : include the NodeSocket
+        Parameters
+        ----------
+        item : NodeTreeInterfaceItem
+            the item
+
+        parent : NodeTreeInterfacePanel, optional
+            path up to the parent Default: None.
+
+        with_socket : bool, optional
+            include the NodeSocket Default: False.
+
 
         Returns
         -------
-        - dict
+        dict
         """
         path = ItemPath(socket) - ItemPath(parent)
         name = path.name
@@ -1706,15 +1828,25 @@ class TreeInterface:
 
         Attributes
         ----------
-        - include (list = None) : limit sockets to list
-        - exclude (list = []) : exclude sockets from list
-        - enabled_only (bool = True) : only enabled sockets
-        - parent (NodeTreeInterfacePanel = None) : path up to the parent
-        - with_sockets (bool = False) : include socket in the dict
+        include : list, optional
+            limit sockets to list Default: None.
+
+        exclude : list, optional
+            exclude sockets from list Default: [].
+
+        enabled_only : bool, optional
+            only enabled sockets Default: True.
+
+        parent : NodeTreeInterfacePanel, optional
+            path up to the parent Default: None.
+
+        with_sockets : bool, optional
+            include socket in the dict Default: False.
+
 
         Returns
         -------
-        - Signature
+        Signature
         """
 
         parent_path = ItemPath(parent)
@@ -1744,15 +1876,21 @@ class TreeInterface:
         The returns dict contains two lists keyed by 'INPUT' and 'OUPUT'. The two values
         are lists of couple (creation dict, created socket).
 
-        Arguments
-        ---------
-        - signature (Signature) : the signature to set
-        - reuse (bool = True) : doesn't create a socket if it already exists
-        - parent (NodeTreeInterfacePanel) : the parent where to create the signature
+        Parameters
+        ----------
+        signature : Signature
+            the signature to set
+
+        reuse : bool, optional
+            doesn't create a socket if it already exists Default: True.
+
+        parent : NodeTreeInterfacePanel
+            the parent where to create the signature
+
 
         Returns
         -------
-        - dict of two lists of couples (dict, created sockets)
+        dict of two lists of couples (dict, created sockets)
         """
 
         created = {}
@@ -1786,15 +1924,21 @@ class TreeInterface:
     def set_input_signature(self, signature, reuse: bool = True, parent: NodeTreeInterfacePanel=None):
         """ Set a signature.
 
-        Arguments
-        ---------
-        - signature (Signature) : the signature to set
-        - reuse (bool = True) : doesn't create a socket if it already exists
-        - parent (NodeTreeInterfacePanel) : the parent where to create the signature
+        Parameters
+        ----------
+        signature : Signature
+            the signature to set
+
+        reuse : bool, optional
+            doesn't create a socket if it already exists Default: True.
+
+        parent : NodeTreeInterfacePanel
+            the parent where to create the signature
+
 
         Returns
         -------
-        - list of couples (creation dict, created sockets)
+        list of couples (creation dict, created sockets)
         """
         signature = Signature(signature)
         return self.set_signature(Signature(signature.sockets), reuse=reuse, parent=parent)['INPUT']
@@ -1806,15 +1950,21 @@ class TreeInterface:
     def set_output_signature(self, signature, reuse: bool = True, parent: NodeTreeInterfacePanel=None):
         """ Set a signature.
 
-        Arguments
-        ---------
-        - signature (Signature) : the signature to set
-        - reuse (bool = True) : doesn't create a socket if it already exists
-        - parent (NodeTreeInterfacePanel) : the parent where to create the signature
+        Parameters
+        ----------
+        signature : Signature
+            the signature to set
+
+        reuse : bool, optional
+            doesn't create a socket if it already exists Default: True.
+
+        parent : NodeTreeInterfacePanel
+            the parent where to create the signature
+
 
         Returns
         -------
-        - list of couples (creation dict, created sockets)
+        list of couples (creation dict, created sockets)
         """
         signature = Signature(signature)
         return self.set_signature(Signature({}, signature.sockets), reuse=reuse, parent=parent)['OUTPUT']

@@ -20,7 +20,7 @@ node = Node("Set Position")
 node.geometry = cube
 ```
 
-> [!IMPORTANT]
+!!! important
 > You can access to the other output sockets of the node in two different ways:
 > - using [node](core-socket.md#node) attribute
 > - using ***peer socket** naming convention where the **snake_case** name of
@@ -114,7 +114,9 @@ Aguments
 --------
 - name  (str = 'Shader') : Input socket name
 - tip  (str = '') : Property description
-- panel (str = "") : Panel name
+panel : str, optional
+    Panel name Default: "".
+
 - optional_label  (bool = False) : Property optional_label
 - hide_value  (bool = False) : Property hide_value
 - hide_in_modifier  (bool = False) : Property hide_in_modifier

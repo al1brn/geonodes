@@ -1,4 +1,4 @@
-# Generated 2026-03-26 08:37:01
+# Generated 2026-04-04 12:37:35
 
 from __future__ import annotations
 from .. sockettype import SocketType
@@ -34,19 +34,27 @@ class Corner:
     def accumulate_field(cls, value: Float | Integer | Vector | Matrix = None, group_id: Integer = None):
         """ > Node <&Node Accumulate Field>
 
-        Information
-        -----------
-        - Parameter 'data_type' : depending on 'value' type
-        - Parameter 'domain' : 'CORNER'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name        | Value             |
+        | --------- | ----------- | ----------------- |
+        | Parameter | `data_type` | from `value` type |
+        | Parameter | `domain`    | `'CORNER'`        |
+
+        Parameters
         ---------
-        - value (Float | Integer | Vector | Matrix) : socket 'Value' (id: Value)
-        - group_id (Integer) : socket 'Group ID' (id: Group Index)
+        value : Float | Integer | Vector | Matrix, optional
+            socket 'Value' (id: Value)
+        
+        group_id : Integer, optional
+            socket 'Group ID' (id: Group Index)
+        
 
         Returns
         -------
-        - Float [trailing_ (Float), total_ (Float)]
+        Float
+            peer sockets: trailing_ (Float), total_ (Float)
+
         """
         data_type = SocketType.get_data_type_for_node(value, 'GeometryNodeAccumulateField')
         node = Node('Accumulate Field', {'Value': value, 'Group Index': group_id}, data_type=data_type, domain='CORNER')
@@ -55,20 +63,26 @@ class Corner:
     def attribute_statistic(self, attribute: Float | Vector = None):
         """ > Node <&Node Attribute Statistic>
 
-        Information
-        -----------
-        - Socket 'Geometry' : self
-        - Socket 'Selection' : self[selection]
-        - Parameter 'data_type' : depending on 'attribute' type
-        - Parameter 'domain' : 'CORNER'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name        | Value                 |
+        | --------- | ----------- | --------------------- |
+        | Socket    | Geometry    | `self`                |
+        | Socket    | Selection   | `self[selection]`     |
+        | Parameter | `data_type` | from `attribute` type |
+        | Parameter | `domain`    | `'CORNER'`            |
+
+        Parameters
         ---------
-        - attribute (Float | Vector) : socket 'Attribute' (id: Attribute)
+        attribute : Float | Vector, optional
+            socket 'Attribute' (id: Attribute)
+        
 
         Returns
         -------
-        - Float [median_ (Float), sum_ (Float), min_ (Float), max_ (Float), range_ (Float), standard_deviation_ (Float), variance_ (Float)]
+        Float
+            peer sockets: median_ (Float), sum_ (Float), min_ (Float), max_ (Float), range_ (Float), standard_deviation_ (Float), variance_ (Float)
+
         """
         data_type = SocketType.get_data_type_for_node(attribute, 'GeometryNodeAttributeStatistic')
         node = Node('Attribute Statistic', {'Geometry': self, 'Selection': self.get_selection(), 'Attribute': attribute}, data_type=data_type, domain='CORNER')
@@ -81,19 +95,27 @@ class Corner:
                     domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'] = 'POINT'):
         """ > Node <&Node Field Average>
 
-        Information
-        -----------
-        - Parameter 'data_type' : depending on 'value' type
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name        | Value             |
+        | --------- | ----------- | ----------------- |
+        | Parameter | `data_type` | from `value` type |
+
+        Parameters
         ---------
-        - value (Float | Vector) : socket 'Value' (id: Value)
-        - group_id (Integer) : socket 'Group ID' (id: Group Index)
-        - domain (str): parameter 'domain' in ('Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer')
+        value : Float | Vector, optional
+            socket 'Value' (id: Value)
+        
+        group_id : Integer, optional
+            socket 'Group ID' (id: Group Index)
+        
+        domain (str): parameter 'domain' in ('Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer')
 
         Returns
         -------
-        - Float [median_ (Float)]
+        Float
+            peer sockets: median_ (Float)
+
         """
         utils.check_enum_arg('Field Average', 'domain', domain, 'field_average', ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'))
         data_type = SocketType.get_data_type_for_node(value, 'GeometryNodeFieldAverage')
@@ -107,19 +129,27 @@ class Corner:
                     domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'] = 'POINT'):
         """ > Node <&Node Field Min & Max>
 
-        Information
-        -----------
-        - Parameter 'data_type' : depending on 'value' type
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name        | Value             |
+        | --------- | ----------- | ----------------- |
+        | Parameter | `data_type` | from `value` type |
+
+        Parameters
         ---------
-        - value (Float | Integer | Vector) : socket 'Value' (id: Value)
-        - group_id (Integer) : socket 'Group ID' (id: Group Index)
-        - domain (str): parameter 'domain' in ('Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer')
+        value : Float | Integer | Vector, optional
+            socket 'Value' (id: Value)
+        
+        group_id : Integer, optional
+            socket 'Group ID' (id: Group Index)
+        
+        domain (str): parameter 'domain' in ('Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer')
 
         Returns
         -------
-        - Float [max_ (Float)]
+        Float
+            peer sockets: max_ (Float)
+
         """
         utils.check_enum_arg('Field Min & Max', 'domain', domain, 'field_min_max', ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'))
         data_type = SocketType.get_data_type_for_node(value, 'GeometryNodeFieldMinAndMax')
@@ -133,19 +163,27 @@ class Corner:
                     domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'] = 'POINT'):
         """ > Node <&Node Field Variance>
 
-        Information
-        -----------
-        - Parameter 'data_type' : depending on 'value' type
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name        | Value             |
+        | --------- | ----------- | ----------------- |
+        | Parameter | `data_type` | from `value` type |
+
+        Parameters
         ---------
-        - value (Float | Vector) : socket 'Value' (id: Value)
-        - group_id (Integer) : socket 'Group ID' (id: Group Index)
-        - domain (str): parameter 'domain' in ('Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer')
+        value : Float | Vector, optional
+            socket 'Value' (id: Value)
+        
+        group_id : Integer, optional
+            socket 'Group ID' (id: Group Index)
+        
+        domain (str): parameter 'domain' in ('Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer')
 
         Returns
         -------
-        - Float [variance_ (Float)]
+        Float
+            peer sockets: variance_ (Float)
+
         """
         utils.check_enum_arg('Field Variance', 'domain', domain, 'field_variance', ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'))
         data_type = SocketType.get_data_type_for_node(value, 'GeometryNodeFieldVariance')
@@ -156,13 +194,17 @@ class Corner:
     def edges(cls, corner_index: Integer = None):
         """ > Node <&Node Edges of Corner>
 
-        Arguments
+        Parameters
         ---------
-        - corner_index (Integer) : socket 'Corner Index' (id: Corner Index)
+        corner_index : Integer, optional
+            socket 'Corner Index' (id: Corner Index)
+        
 
         Returns
         -------
-        - Integer [previous_edge_index_ (Integer)]
+        Integer
+            peer sockets: previous_edge_index_ (Integer)
+
         """
         node = Node('Edges of Corner', {'Corner Index': corner_index})
         return node._out
@@ -171,13 +213,15 @@ class Corner:
     def next_edge_index(cls, corner_index: Integer = None):
         """ > Node <&Node Edges of Corner>
 
-        Arguments
+        Parameters
         ---------
-        - corner_index (Integer) : socket 'Corner Index' (id: Corner Index)
+        corner_index : Integer, optional
+            socket 'Corner Index' (id: Corner Index)
+        
 
         Returns
         -------
-        - next_edge_index
+        next_edge_index
         """
         node = Node('Edges of Corner', {'Corner Index': corner_index})
         return node.next_edge_index
@@ -186,13 +230,15 @@ class Corner:
     def previous_edge_index(cls, corner_index: Integer = None):
         """ > Node <&Node Edges of Corner>
 
-        Arguments
+        Parameters
         ---------
-        - corner_index (Integer) : socket 'Corner Index' (id: Corner Index)
+        corner_index : Integer, optional
+            socket 'Corner Index' (id: Corner Index)
+        
 
         Returns
         -------
-        - previous_edge_index
+        previous_edge_index
         """
         node = Node('Edges of Corner', {'Corner Index': corner_index})
         return node.previous_edge_index
@@ -201,13 +247,17 @@ class Corner:
     def face(cls, corner_index: Integer = None):
         """ > Node <&Node Face of Corner>
 
-        Arguments
+        Parameters
         ---------
-        - corner_index (Integer) : socket 'Corner Index' (id: Corner Index)
+        corner_index : Integer, optional
+            socket 'Corner Index' (id: Corner Index)
+        
 
         Returns
         -------
-        - Integer [index_in_face_ (Integer)]
+        Integer
+            peer sockets: index_in_face_ (Integer)
+
         """
         node = Node('Face of Corner', {'Corner Index': corner_index})
         return node._out
@@ -216,13 +266,15 @@ class Corner:
     def face_index(cls, corner_index: Integer = None):
         """ > Node <&Node Face of Corner>
 
-        Arguments
+        Parameters
         ---------
-        - corner_index (Integer) : socket 'Corner Index' (id: Corner Index)
+        corner_index : Integer, optional
+            socket 'Corner Index' (id: Corner Index)
+        
 
         Returns
         -------
-        - face_index
+        face_index
         """
         node = Node('Face of Corner', {'Corner Index': corner_index})
         return node.face_index
@@ -231,13 +283,15 @@ class Corner:
     def index_in_face(cls, corner_index: Integer = None):
         """ > Node <&Node Face of Corner>
 
-        Arguments
+        Parameters
         ---------
-        - corner_index (Integer) : socket 'Corner Index' (id: Corner Index)
+        corner_index : Integer, optional
+            socket 'Corner Index' (id: Corner Index)
+        
 
         Returns
         -------
-        - index_in_face
+        index_in_face
         """
         node = Node('Face of Corner', {'Corner Index': corner_index})
         return node.index_in_face
@@ -248,19 +302,25 @@ class Corner:
                     index: Integer = None):
         """ > Node <&Node Evaluate at Index>
 
-        Information
-        -----------
-        - Parameter 'data_type' : depending on 'value' type
-        - Parameter 'domain' : 'CORNER'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name        | Value             |
+        | --------- | ----------- | ----------------- |
+        | Parameter | `data_type` | from `value` type |
+        | Parameter | `domain`    | `'CORNER'`        |
+
+        Parameters
         ---------
-        - value (Float | Integer | Boolean | Vector | Color | Rotation | Matrix) : socket 'Value' (id: Value)
-        - index (Integer) : socket 'Index' (id: Index)
+        value : Float | Integer | Boolean | Vector | Color | Rotation | Matrix, optional
+            socket 'Value' (id: Value)
+        
+        index : Integer, optional
+            socket 'Index' (id: Index)
+        
 
         Returns
         -------
-        - Float
+        Float
         """
         data_type = SocketType.get_data_type_for_node(value, 'GeometryNodeFieldAtIndex')
         node = Node('Evaluate at Index', {'Value': value, 'Index': index}, data_type=data_type, domain='CORNER')
@@ -271,18 +331,22 @@ class Corner:
                     value: Float | Integer | Boolean | Vector | Color | Rotation | Matrix = None):
         """ > Node <&Node Evaluate on Domain>
 
-        Information
-        -----------
-        - Parameter 'data_type' : depending on 'value' type
-        - Parameter 'domain' : 'CORNER'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name        | Value             |
+        | --------- | ----------- | ----------------- |
+        | Parameter | `data_type` | from `value` type |
+        | Parameter | `domain`    | `'CORNER'`        |
+
+        Parameters
         ---------
-        - value (Float | Integer | Boolean | Vector | Color | Rotation | Matrix) : socket 'Value' (id: Value)
+        value : Float | Integer | Boolean | Vector | Color | Rotation | Matrix, optional
+            socket 'Value' (id: Value)
+        
 
         Returns
         -------
-        - Float
+        Float
         """
         data_type = SocketType.get_data_type_for_node(value, 'GeometryNodeFieldOnDomain')
         node = Node('Evaluate on Domain', {'Value': value}, data_type=data_type, domain='CORNER')
@@ -291,20 +355,26 @@ class Corner:
     def to_points(self, position: Vector = None, radius: Float = None):
         """ > Node <&Node Mesh to Points>
 
-        Information
-        -----------
-        - Socket 'Mesh' : self
-        - Socket 'Selection' : self[selection]
-        - Parameter 'mode' : 'CORNERS'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name      | Value             |
+        | --------- | --------- | ----------------- |
+        | Socket    | Mesh      | `self`            |
+        | Socket    | Selection | `self[selection]` |
+        | Parameter | `mode`    | `'CORNERS'`       |
+
+        Parameters
         ---------
-        - position (Vector) : socket 'Position' (id: Position)
-        - radius (Float) : socket 'Radius' (id: Radius)
+        position : Vector, optional
+            socket 'Position' (id: Position)
+        
+        radius : Float, optional
+            socket 'Radius' (id: Radius)
+        
 
         Returns
         -------
-        - Cloud
+        Cloud
         """
         node = Node('Mesh to Points', {'Mesh': self, 'Selection': self.get_selection(), 'Position': position, 'Radius': radius}, mode='CORNERS')
         return node._out
@@ -313,14 +383,18 @@ class Corner:
     def offset_in_face(cls, corner_index: Integer = None, offset: Integer = None):
         """ > Node <&Node Offset Corner in Face>
 
-        Arguments
+        Parameters
         ---------
-        - corner_index (Integer) : socket 'Corner Index' (id: Corner Index)
-        - offset (Integer) : socket 'Offset' (id: Offset)
+        corner_index : Integer, optional
+            socket 'Corner Index' (id: Corner Index)
+        
+        offset : Integer, optional
+            socket 'Offset' (id: Offset)
+        
 
         Returns
         -------
-        - Integer
+        Integer
         """
         node = Node('Offset Corner in Face', {'Corner Index': corner_index, 'Offset': offset})
         return node._out
@@ -331,21 +405,27 @@ class Corner:
                     clamp = False):
         """ > Node <&Node Sample Index>
 
-        Information
-        -----------
-        - Socket 'Geometry' : self
-        - Parameter 'data_type' : depending on 'value' type
-        - Parameter 'domain' : 'CORNER'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name        | Value             |
+        | --------- | ----------- | ----------------- |
+        | Socket    | Geometry    | `self`            |
+        | Parameter | `data_type` | from `value` type |
+        | Parameter | `domain`    | `'CORNER'`        |
+
+        Parameters
         ---------
-        - value (Float | Integer | Boolean | Vector | Color | Rotation | Matrix) : socket 'Value' (id: Value)
-        - index (Integer) : socket 'Index' (id: Index)
-        - clamp (bool): parameter 'clamp'
+        value : Float | Integer | Boolean | Vector | Color | Rotation | Matrix, optional
+            socket 'Value' (id: Value)
+        
+        index : Integer, optional
+            socket 'Index' (id: Index)
+        
+        clamp (bool): parameter 'clamp'
 
         Returns
         -------
-        - Float
+        Float
         """
         data_type = SocketType.get_data_type_for_node(value, 'GeometryNodeSampleIndex')
         node = Node('Sample Index', {'Geometry': self, 'Value': value, 'Index': index}, clamp=clamp, data_type=data_type, domain='CORNER')
@@ -354,18 +434,22 @@ class Corner:
     def sample_nearest(self, sample_position: Vector = None):
         """ > Node <&Node Sample Nearest>
 
-        Information
-        -----------
-        - Socket 'Geometry' : self
-        - Parameter 'domain' : 'CORNER'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name     | Value      |
+        | --------- | -------- | ---------- |
+        | Socket    | Geometry | `self`     |
+        | Parameter | `domain` | `'CORNER'` |
+
+        Parameters
         ---------
-        - sample_position (Vector) : socket 'Sample Position' (id: Sample Position)
+        sample_position : Vector, optional
+            socket 'Sample Position' (id: Sample Position)
+        
 
         Returns
         -------
-        - Integer
+        Integer
         """
         node = Node('Sample Nearest', {'Geometry': self, 'Sample Position': sample_position}, domain='CORNER')
         return node._out
@@ -377,21 +461,27 @@ class Corner:
 
         > ***Jump*** : Socket refers to node output socket after the call
 
-        Information
-        -----------
-        - Socket 'Geometry' : self
-        - Socket 'Selection' : self[selection]
-        - Parameter 'data_type' : depending on 'value' type
-        - Parameter 'domain' : 'CORNER'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name        | Value             |
+        | --------- | ----------- | ----------------- |
+        | Socket    | Geometry    | `self`            |
+        | Socket    | Selection   | `self[selection]` |
+        | Parameter | `data_type` | from `value` type |
+        | Parameter | `domain`    | `'CORNER'`        |
+
+        Parameters
         ---------
-        - name (String) : socket 'Name' (id: Name)
-        - value (Float | Integer | Boolean | Vector | Color | Rotation | Matrix | Integer | Vector | Color) : socket 'Value' (id: Value)
+        name : String, optional
+            socket 'Name' (id: Name)
+        
+        value : Float | Integer | Boolean | Vector | Color | Rotation | Matrix | Integer | Vector | Color, optional
+            socket 'Value' (id: Value)
+        
 
         Returns
         -------
-        - Geometry
+        Geometry
         """
         data_type = SocketType.get_data_type_for_node(value, 'GeometryNodeStoreNamedAttribute')
         node = Node('Store Named Attribute', {'Geometry': self, 'Selection': self.get_selection(), 'Name': name, 'Value': value}, data_type=data_type, domain='CORNER')
@@ -405,21 +495,27 @@ class Corner:
 
         > ***Jump*** : Socket refers to node output socket after the call
 
-        Information
-        -----------
-        - Socket 'Geometry' : self
-        - Socket 'Selection' : self[selection]
-        - Parameter 'data_type' : depending on 'value' type
-        - Parameter 'domain' : 'CORNER'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name        | Value             |
+        | --------- | ----------- | ----------------- |
+        | Socket    | Geometry    | `self`            |
+        | Socket    | Selection   | `self[selection]` |
+        | Parameter | `data_type` | from `value` type |
+        | Parameter | `domain`    | `'CORNER'`        |
+
+        Parameters
         ---------
-        - name (String) : socket 'Name' (id: Name)
-        - value (Float | Integer | Boolean | Vector | Color | Rotation | Matrix | Integer | Vector | Color) : socket 'Value' (id: Value)
+        name : String, optional
+            socket 'Name' (id: Name)
+        
+        value : Float | Integer | Boolean | Vector | Color | Rotation | Matrix | Integer | Vector | Color, optional
+            socket 'Value' (id: Value)
+        
 
         Returns
         -------
-        - Geometry
+        Geometry
         """
         data_type = SocketType.get_data_type_for_node(value, 'GeometryNodeStoreNamedAttribute')
         node = Node('Store Named Attribute', {'Geometry': self, 'Selection': self.get_selection(), 'Name': name, 'Value': value}, data_type=data_type, domain='CORNER')
@@ -431,21 +527,27 @@ class Corner:
 
         > ***Jump*** : Socket refers to node output socket after the call
 
-        Information
-        -----------
-        - Socket 'Geometry' : self
-        - Socket 'Selection' : self[selection]
-        - Parameter 'data_type' : 'FLOAT2'
-        - Parameter 'domain' : 'CORNER'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name        | Value             |
+        | --------- | ----------- | ----------------- |
+        | Socket    | Geometry    | `self`            |
+        | Socket    | Selection   | `self[selection]` |
+        | Parameter | `data_type` | `'FLOAT2'`        |
+        | Parameter | `domain`    | `'CORNER'`        |
+
+        Parameters
         ---------
-        - name (String) : socket 'Name' (id: Name)
-        - value (Vector) : socket 'Value' (id: Value)
+        name : String, optional
+            socket 'Name' (id: Name)
+        
+        value : Vector, optional
+            socket 'Value' (id: Value)
+        
 
         Returns
         -------
-        - Geometry
+        Geometry
         """
         node = Node('Store Named Attribute', {'Geometry': self, 'Selection': self.get_selection(), 'Name': name, 'Value': value}, data_type='FLOAT2', domain='CORNER')
         self._jump(node._out)
@@ -461,22 +563,36 @@ class Corner:
                     top_right: Vector = None):
         """ > Node <&Node Pack UV Islands>
 
-        Information
-        -----------
-        - Socket 'Selection' : self[selection]
+        **Fixed values**
 
-        Arguments
+        | Kind   | Name      | Value             |
+        | ------ | --------- | ----------------- |
+        | Socket | Selection | `self[selection]` |
+
+        Parameters
         ---------
-        - uv (Vector) : socket 'UV' (id: UV)
-        - margin (Float) : socket 'Margin' (id: Margin)
-        - rotate (Boolean) : socket 'Rotate' (id: Rotate)
-        - method (menu='Bounding Box') : ('Bounding Box', 'Convex Hull', 'Exact Shape')
-        - bottom_left (Vector) : socket 'Bottom Left' (id: Bottom Left)
-        - top_right (Vector) : socket 'Top Right' (id: Top Right)
+        uv : Vector, optional
+            socket 'UV' (id: UV)
+        
+        margin : Float, optional
+            socket 'Margin' (id: Margin)
+        
+        rotate : Boolean, optional
+            socket 'Rotate' (id: Rotate)
+        
+        method : menu='Bounding Box', optional
+            ('Bounding Box', 'Convex Hull', 'Exact Shape')
+        
+        bottom_left : Vector, optional
+            socket 'Bottom Left' (id: Bottom Left)
+        
+        top_right : Vector, optional
+            socket 'Top Right' (id: Top Right)
+        
 
         Returns
         -------
-        - Vector
+        Vector
         """
         node = Node('Pack UV Islands', {'UV': uv, 'Selection': self.get_selection(), 'Margin': margin, 'Rotate': rotate, 'Method': method, 'Bottom Left': bottom_left, 'Top Right': top_right})
         return node._out
@@ -491,22 +607,36 @@ class Corner:
                     no_flip: Boolean = None):
         """ > Node <&Node UV Unwrap>
 
-        Information
-        -----------
-        - Socket 'Selection' : self[selection]
+        **Fixed values**
 
-        Arguments
+        | Kind   | Name      | Value             |
+        | ------ | --------- | ----------------- |
+        | Socket | Selection | `self[selection]` |
+
+        Parameters
         ---------
-        - seam (Boolean) : socket 'Seam' (id: Seam)
-        - margin (Float) : socket 'Margin' (id: Margin)
-        - fill_holes (Boolean) : socket 'Fill Holes' (id: Fill Holes)
-        - method (menu='Angle Based') : ('Angle Based', 'Conformal', 'Minimum Stretch')
-        - iterations (Integer) : socket 'Iterations' (id: Iterations)
-        - no_flip (Boolean) : socket 'No Flip' (id: No Flip)
+        seam : Boolean, optional
+            socket 'Seam' (id: Seam)
+        
+        margin : Float, optional
+            socket 'Margin' (id: Margin)
+        
+        fill_holes : Boolean, optional
+            socket 'Fill Holes' (id: Fill Holes)
+        
+        method : menu='Angle Based', optional
+            ('Angle Based', 'Conformal', 'Minimum Stretch')
+        
+        iterations : Integer, optional
+            socket 'Iterations' (id: Iterations)
+        
+        no_flip : Boolean, optional
+            socket 'No Flip' (id: No Flip)
+        
 
         Returns
         -------
-        - Vector
+        Vector
         """
         node = Node('UV Unwrap', {'Selection': self.get_selection(), 'Seam': seam, 'Margin': margin, 'Fill Holes': fill_holes, 'Method': method, 'Iterations': iterations, 'No Flip': no_flip})
         return node._out
@@ -515,13 +645,15 @@ class Corner:
     def vertex_index(cls, corner_index: Integer = None):
         """ > Node <&Node Vertex of Corner>
 
-        Arguments
+        Parameters
         ---------
-        - corner_index (Integer) : socket 'Corner Index' (id: Corner Index)
+        corner_index : Integer, optional
+            socket 'Corner Index' (id: Corner Index)
+        
 
         Returns
         -------
-        - Integer
+        Integer
         """
         node = Node('Vertex of Corner', {'Corner Index': corner_index})
         return node._out
@@ -530,13 +662,15 @@ class Corner:
     def viewer(cls, named_sockets: dict = {}, ui_shortcut = 0, **sockets):
         """ > Node <&Node Viewer>
 
-        Information
-        -----------
-        - Parameter 'domain' : 'CORNER'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name     | Value      |
+        | --------- | -------- | ---------- |
+        | Parameter | `domain` | `'CORNER'` |
+
+        Parameters
         ---------
-        - ui_shortcut (int): parameter 'ui_shortcut'
+        ui_shortcut (int): parameter 'ui_shortcut'
 
         """
         node = Node('Viewer', named_sockets, domain='CORNER', ui_shortcut=ui_shortcut, **sockets)
@@ -554,19 +688,23 @@ class Corner:
 
         > ***Jump*** : Socket refers to node output socket after the call
 
-        Information
-        -----------
-        - Socket 'Mesh' : self
-        - Parameter 'domain' : 'CORNER'
-        - Parameter 'mode' : 'FREE'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name     | Value      |
+        | --------- | -------- | ---------- |
+        | Socket    | Mesh     | `self`     |
+        | Parameter | `domain` | `'CORNER'` |
+        | Parameter | `mode`   | `'FREE'`   |
+
+        Parameters
         ---------
-        - custom_normal (Vector) : socket 'Custom Normal' (id: Custom Normal)
+        custom_normal : Vector, optional
+            socket 'Custom Normal' (id: Custom Normal)
+        
 
         Returns
         -------
-        - Mesh
+        Mesh
         """
         node = Node('Set Mesh Normal', {'Mesh': self, 'Custom Normal': custom_normal}, domain='CORNER', mode='FREE')
         self._jump(node._out)

@@ -18,8 +18,12 @@ Aguments
 - min  (float = -3.40282e+38) : Property min_value
 - max  (float = 3.40282e+38) : Property max_value
 - tip  (str = '') : Property description
-- panel (str = "") : Panel name
-- props (dict) : properties
+panel : str, optional
+    Panel name Default: "".
+
+props : dict
+            properties
+
 
 #### Arguments:
 - **value** ( = None)
@@ -197,7 +201,9 @@ Aguments
 - min  (float = -3.40282e+38) : Property min_value
 - max  (float = 3.40282e+38) : Property max_value
 - tip  (str = '') : Property description
-- panel (str = "") : Panel name
+panel : str, optional
+    Panel name Default: "".
+
 - optional_label  (bool = False) : Property optional_label
 - hide_value  (bool = False) : Property hide_value
 - hide_in_modifier  (bool = False) : Property hide_in_modifier
@@ -578,7 +584,9 @@ Aguments
 - min  (float = -3.40282e+38) : Property min_value
 - max  (float = 3.40282e+38) : Property max_value
 - tip  (str = '') : Property description
-- panel (str = "") : Panel name
+panel : str, optional
+    Panel name Default: "".
+
 - optional_label  (bool = False) : Property optional_label
 - hide_value  (bool = False) : Property hide_value
 - hide_in_modifier  (bool = False) : Property hide_in_modifier
@@ -820,13 +828,17 @@ Aguments
 - min  (float = -3.40282e+38) : Property min_value
 - max  (float = 3.40282e+38) : Property max_value
 - tip  (str = '') : Property description
-- panel (str = "") : Panel name
+panel : str, optional
+    Panel name Default: "".
+
 - optional_label  (bool = False) : Property optional_label
 - hide_value  (bool = False) : Property hide_value
 - hide_in_modifier  (bool = False) : Property hide_in_modifier
 - default_attribute  (str = '') : Property default_attribute_name
 - shape  (str = 'AUTO') : Property structure_type in ('AUTO', 'SINGLE')
-- subtype (str = 'NONE') : Socket sub type in ('NONE', 'PERCENTAGE', 'FACTOR', 'MASS', 'ANGLE', 'TIME', 'TIME_ABSOLUTE', 'DISTANCE', 'WAVELENGTH', 'COLOR_TEMPERATURE', 'FREQUENCY')
+subtype : str, optional
+    Socket sub type in ('NONE', 'PERCENTAGE', 'FACTOR', 'MASS', 'ANGLE', 'TIME', 'TIME_ABSOLUTE', 'DISTANCE', 'WAVELENGTH', 'COLOR_TEMPERATURE', 'FREQUENCY') Default: 'NONE'.
+
 
 #### Arguments:
 - **value** (_object_ = 0.0)
@@ -861,11 +873,17 @@ curve(factor=None, curve=None)
 > Node ERROR: Node 'Float Curve' not found
 
 A curve is defined by a list of 3-tuples (not list):
-- x (float) : x position
-- y (float) : y position
-- handle_type (str) : handle type in ('AUTO', 'AUTO_CLAMPED', 'VECTOR')
+x : float
+            x position
 
-> [!NOTE]
+y : float
+            y position
+
+handle_type : str
+            handle type in ('AUTO', 'AUTO_CLAMPED', 'VECTOR')
+
+
+!!! note
 > handle_type is optional, its default value is 'AUTO'. Valid values are ('AUTO', 'AUTO_CLAMPED', 'VECTOR')
 
 #### Information:
@@ -986,7 +1004,9 @@ Aguments
 - min  (float = -3.40282e+38) : Property min_value
 - max  (float = 3.40282e+38) : Property max_value
 - tip  (str = '') : Property description
-- panel (str = "") : Panel name
+panel : str, optional
+    Panel name Default: "".
+
 - optional_label  (bool = False) : Property optional_label
 - hide_value  (bool = False) : Property hide_value
 - hide_in_modifier  (bool = False) : Property hide_in_modifier
@@ -1229,7 +1249,9 @@ Aguments
 - min  (float = -3.40282e+38) : Property min_value
 - max  (float = 3.40282e+38) : Property max_value
 - tip  (str = '') : Property description
-- panel (str = "") : Panel name
+panel : str, optional
+    Panel name Default: "".
+
 - optional_label  (bool = False) : Property optional_label
 - hide_value  (bool = False) : Property hide_value
 - hide_in_modifier  (bool = False) : Property hide_in_modifier
@@ -1386,7 +1408,9 @@ Aguments
 - min  (float = -3.40282e+38) : Property min_value
 - max  (float = 3.40282e+38) : Property max_value
 - tip  (str = '') : Property description
-- panel (str = "") : Panel name
+panel : str, optional
+    Panel name Default: "".
+
 - optional_label  (bool = False) : Property optional_label
 - hide_value  (bool = False) : Property hide_value
 - hide_in_modifier  (bool = False) : Property hide_in_modifier
@@ -1800,8 +1824,12 @@ Aguments
 - min  (float = -3.40282e+38) : Property min_value
 - max  (float = 3.40282e+38) : Property max_value
 - tip  (str = '') : Property description
-- panel (str = "") : Panel name
-- props (dict) : properties
+panel : str, optional
+    Panel name Default: "".
+
+props : dict
+            properties
+
 
 #### Arguments:
 - **value** ( = None)
@@ -2190,7 +2218,9 @@ Aguments
 - min  (float = -3.40282e+38) : Property min_value
 - max  (float = 3.40282e+38) : Property max_value
 - tip  (str = '') : Property description
-- panel (str = "") : Panel name
+panel : str, optional
+    Panel name Default: "".
+
 - optional_label  (bool = False) : Property optional_label
 - hide_value  (bool = False) : Property hide_value
 - hide_in_modifier  (bool = False) : Property hide_in_modifier
@@ -2594,7 +2624,7 @@ out(name=None, **props)
 :sunrise: **ShaderNodes** only
 
 
-> [!IMPORTANT]
+!!! important
 > - Geometry Nodes : create a group output socket with the provided name
 > - Shader : create a node [AOV Output](https://docs.blender.org/manual/en/latest/render/shader_nodes/output/aov.html)
 
@@ -2624,7 +2654,9 @@ Aguments
 - min  (float = -3.40282e+38) : Property min_value
 - max  (float = 3.40282e+38) : Property max_value
 - tip  (str = '') : Property description
-- panel (str = "") : Panel name
+panel : str, optional
+    Panel name Default: "".
+
 - optional_label  (bool = False) : Property optional_label
 - hide_value  (bool = False) : Property hide_value
 - hide_in_modifier  (bool = False) : Property hide_in_modifier
@@ -3490,7 +3522,9 @@ Aguments
 - min  (float = -3.40282e+38) : Property min_value
 - max  (float = 3.40282e+38) : Property max_value
 - tip  (str = '') : Property description
-- panel (str = "") : Panel name
+panel : str, optional
+    Panel name Default: "".
+
 - optional_label  (bool = False) : Property optional_label
 - hide_value  (bool = False) : Property hide_value
 - hide_in_modifier  (bool = False) : Property hide_in_modifier
@@ -3537,7 +3571,9 @@ Aguments
 - min  (float = -3.40282e+38) : Property min_value
 - max  (float = 3.40282e+38) : Property max_value
 - tip  (str = '') : Property description
-- panel (str = "") : Panel name
+panel : str, optional
+    Panel name Default: "".
+
 - optional_label  (bool = False) : Property optional_label
 - hide_value  (bool = False) : Property hide_value
 - hide_in_modifier  (bool = False) : Property hide_in_modifier
@@ -3732,7 +3768,9 @@ Aguments
 - min  (float = -3.40282e+38) : Property min_value
 - max  (float = 3.40282e+38) : Property max_value
 - tip  (str = '') : Property description
-- panel (str = "") : Panel name
+panel : str, optional
+    Panel name Default: "".
+
 - optional_label  (bool = False) : Property optional_label
 - hide_value  (bool = False) : Property hide_value
 - hide_in_modifier  (bool = False) : Property hide_in_modifier

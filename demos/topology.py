@@ -41,7 +41,7 @@ This demo provides two modifiers:
   The modifiers displays the linked domain elements, for instance the edges, faces and corners
   linked to a selected vertex.
 
-> [!NOTE]
+!!! note
 > Modifiers:
 > - Topology Indices
 > - Mesh Topology

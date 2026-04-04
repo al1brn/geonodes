@@ -52,7 +52,7 @@ Specific modifiers can be generated using specic functions:
 
 
 
-> [!NOTE]
+!!! note
 > Modifiers:
 > - Random Normal Value
 > - Random Normal Vector
@@ -238,7 +238,9 @@ def camera_culling():
     The camera is defined by the following arguments
     - Aspect Ratio (Float) : width / height
     - Focal Length (Float) : expressed in mm
-    - Margin (Float) : margin extended the visibility area
+    Margin : Float
+            margin extended the visibility area
+
 
     Relative
     ========
@@ -247,16 +249,24 @@ def camera_culling():
 
     Transform position in space relative to camera and project the points on the sensor
 
-    Arguments
-    ---------
+    Parameters
+    ----------
     - Focal Length (Float = 50) : camera focal
 
     Returns
     -------
-    - Position (Vector) : points position in the camera space
-    - Projection (Vector) : projection on the sensr
-    - Ratio (Float) : distance divided by focal length
-    - Behind (Vector) : the points are behind the sensor
+    Position : Vector
+            points position in the camera space
+
+    Projection : Vector
+            projection on the sensr
+
+    Ratio : Float
+            distance divided by focal length
+
+    Behind : Vector
+            the points are behind the sensor
+
 
     Point Culling
     =============
@@ -267,16 +277,20 @@ def camera_culling():
 
     Delete all the points which are not visible (calling "Position Culling").
 
-    Arguments
-    ---------
-    - Geometry (Geometry with point domain) : Input geometry
+    Parameters
+    ----------
+    Geometry : Geometry with point domain
+            Input geometry
+
     - Focal Length (Float = 50) : camera focal
     - Aspect Ratio (Float = 16/9) : camera aspect ratio
-    - Margin (Float = .1) : culling margin
+    Margin : Float, optional
+        culling margin Default: .1.
+
 
     Returns
     -------
-    - Geometry
+    Geometry
 
     Face Culling
     =============
@@ -287,17 +301,21 @@ def camera_culling():
 
     To determine if a face is visible, it is subdivided and if all the points are not visible, the face is not visible
 
-    Arguments
-    ---------
-    - Mesh (Mesh) : Input geometry
+    Parameters
+    ----------
+    Mesh : Mesh
+            Input geometry
+
     - Use Normal (Boolean = True) : delete backward faces
     - Aspect Ratio (Float = 16/9) : camera aspect ratio
     - Focal Length (Float = 50) : camera focal
-    - Margin (Float = .1) : culling margin
+    Margin : Float, optional
+        culling margin Default: .1.
+
 
     Returns
     -------
-    - Geometry
+    Geometry
 
     Edge Culling
     =============
@@ -309,16 +327,20 @@ def camera_culling():
     > [!NODE]
     > This particular modifier is relevant only for meshes made only of edges
 
-    Arguments
-    ---------
-    - Mesh (Mesh) : Input geometry
+    Parameters
+    ----------
+    Mesh : Mesh
+            Input geometry
+
     - Aspect Ratio (Float = 16/9) : camera aspect ratio
     - Focal Length (Float = 50) : camera focal
-    - Margin (Float = .1) : culling margin
+    Margin : Float, optional
+        culling margin Default: .1.
+
 
     Returns
     -------
-    - Geometry
+    Geometry
     """
 
     DEBUG_GEO = False
@@ -935,8 +957,12 @@ def romanesco():
     limit the fractal depth.
 
     A point has the following attributes:
-    - radius (Float) : size
-    - Up (Vector) : upwards direction
+    radius : Float
+            size
+
+    Up : Vector
+            upwards direction
+
 
     A fractal iteration replaces each point by other points applying the fractal specific shrink factor.
 
@@ -945,11 +971,15 @@ def romanesco():
 
     Deforms the point to be less annoying
 
-    Arguments
-    ---------
+    Parameters
+    ----------
     - Geometry : Geometry with points
-    - Twist (Angle) : twist angle per meter
-    - Bend (Angle) : ben angle per meter
+    Twist : Angle
+            twist angle per meter
+
+    Bend : Angle
+            ben angle per meter
+
     """
 
     with GeoNodes("Deform Shape", prefix=fractal_):

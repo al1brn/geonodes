@@ -6,7 +6,7 @@ Cloud(value: geonodes.core.socket_class.Socket = None, name: str = None, tip: st
 
 > Cloud of Points Geometry
 
-> [!NOTE]
+!!! note
 > In Blender, the name can vary between **Point Cloud** and **Points**.
 > In GeoNodes, the geometry is named **Cloud**.
 

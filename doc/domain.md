@@ -23,7 +23,7 @@ When a node as a ***Selection*** socket, the value can be set using the get item
     Mesh().points[my_selection].store_named_attribute("Name", value)
 ```
 
-> [!IMPORTANT]
+!!! important
 > Domains are never instantiated directly but created by geometries.
 
 The domain specific to geometries are the followings:
@@ -237,7 +237,7 @@ When a node as a ***Selection*** socket, the value can be set using the get item
     Mesh().points[my_selection].store_named_attribute("Name", value)
 ```
 
-> [!IMPORTANT]
+!!! important
 > Domains are never instantiated directly but created by geometries.
 
 The domain specific to geometries are the followings:

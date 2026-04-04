@@ -1,4 +1,4 @@
-# Generated 2026-03-26 08:37:01
+# Generated 2026-04-04 12:37:35
 
 from __future__ import annotations
 from .. sockettype import SocketType
@@ -37,15 +37,23 @@ class Vertex:
                     sort_index: Integer = None):
         """ > Node <&Node Corners of Vertex>
 
-        Arguments
+        Parameters
         ---------
-        - vertex_index (Integer) : socket 'Vertex Index' (id: Vertex Index)
-        - weights (Float) : socket 'Weights' (id: Weights)
-        - sort_index (Integer) : socket 'Sort Index' (id: Sort Index)
+        vertex_index : Integer, optional
+            socket 'Vertex Index' (id: Vertex Index)
+        
+        weights : Float, optional
+            socket 'Weights' (id: Weights)
+        
+        sort_index : Integer, optional
+            socket 'Sort Index' (id: Sort Index)
+        
 
         Returns
         -------
-        - Integer [total_ (Integer)]
+        Integer
+            peer sockets: total_ (Integer)
+
         """
         node = Node('Corners of Vertex', {'Vertex Index': vertex_index, 'Weights': weights, 'Sort Index': sort_index})
         return node._out
@@ -57,15 +65,21 @@ class Vertex:
                     sort_index: Integer = None):
         """ > Node <&Node Corners of Vertex>
 
-        Arguments
+        Parameters
         ---------
-        - vertex_index (Integer) : socket 'Vertex Index' (id: Vertex Index)
-        - weights (Float) : socket 'Weights' (id: Weights)
-        - sort_index (Integer) : socket 'Sort Index' (id: Sort Index)
+        vertex_index : Integer, optional
+            socket 'Vertex Index' (id: Vertex Index)
+        
+        weights : Float, optional
+            socket 'Weights' (id: Weights)
+        
+        sort_index : Integer, optional
+            socket 'Sort Index' (id: Sort Index)
+        
 
         Returns
         -------
-        - corner_index
+        corner_index
         """
         node = Node('Corners of Vertex', {'Vertex Index': vertex_index, 'Weights': weights, 'Sort Index': sort_index})
         return node.corner_index
@@ -77,15 +91,21 @@ class Vertex:
                     sort_index: Integer = None):
         """ > Node <&Node Corners of Vertex>
 
-        Arguments
+        Parameters
         ---------
-        - vertex_index (Integer) : socket 'Vertex Index' (id: Vertex Index)
-        - weights (Float) : socket 'Weights' (id: Weights)
-        - sort_index (Integer) : socket 'Sort Index' (id: Sort Index)
+        vertex_index : Integer, optional
+            socket 'Vertex Index' (id: Vertex Index)
+        
+        weights : Float, optional
+            socket 'Weights' (id: Weights)
+        
+        sort_index : Integer, optional
+            socket 'Sort Index' (id: Sort Index)
+        
 
         Returns
         -------
-        - total
+        total
         """
         node = Node('Corners of Vertex', {'Vertex Index': vertex_index, 'Weights': weights, 'Sort Index': sort_index})
         return node.total
@@ -97,15 +117,23 @@ class Vertex:
                     sort_index: Integer = None):
         """ > Node <&Node Edges of Vertex>
 
-        Arguments
+        Parameters
         ---------
-        - vertex_index (Integer) : socket 'Vertex Index' (id: Vertex Index)
-        - weights (Float) : socket 'Weights' (id: Weights)
-        - sort_index (Integer) : socket 'Sort Index' (id: Sort Index)
+        vertex_index : Integer, optional
+            socket 'Vertex Index' (id: Vertex Index)
+        
+        weights : Float, optional
+            socket 'Weights' (id: Weights)
+        
+        sort_index : Integer, optional
+            socket 'Sort Index' (id: Sort Index)
+        
 
         Returns
         -------
-        - Integer [total_ (Integer)]
+        Integer
+            peer sockets: total_ (Integer)
+
         """
         node = Node('Edges of Vertex', {'Vertex Index': vertex_index, 'Weights': weights, 'Sort Index': sort_index})
         return node._out
@@ -117,15 +145,21 @@ class Vertex:
                     sort_index: Integer = None):
         """ > Node <&Node Edges of Vertex>
 
-        Arguments
+        Parameters
         ---------
-        - vertex_index (Integer) : socket 'Vertex Index' (id: Vertex Index)
-        - weights (Float) : socket 'Weights' (id: Weights)
-        - sort_index (Integer) : socket 'Sort Index' (id: Sort Index)
+        vertex_index : Integer, optional
+            socket 'Vertex Index' (id: Vertex Index)
+        
+        weights : Float, optional
+            socket 'Weights' (id: Weights)
+        
+        sort_index : Integer, optional
+            socket 'Sort Index' (id: Sort Index)
+        
 
         Returns
         -------
-        - edge_index
+        edge_index
         """
         node = Node('Edges of Vertex', {'Vertex Index': vertex_index, 'Weights': weights, 'Sort Index': sort_index})
         return node.edge_index
@@ -137,15 +171,21 @@ class Vertex:
                     sort_index: Integer = None):
         """ > Node <&Node Edges of Vertex>
 
-        Arguments
+        Parameters
         ---------
-        - vertex_index (Integer) : socket 'Vertex Index' (id: Vertex Index)
-        - weights (Float) : socket 'Weights' (id: Weights)
-        - sort_index (Integer) : socket 'Sort Index' (id: Sort Index)
+        vertex_index : Integer, optional
+            socket 'Vertex Index' (id: Vertex Index)
+        
+        weights : Float, optional
+            socket 'Weights' (id: Weights)
+        
+        sort_index : Integer, optional
+            socket 'Sort Index' (id: Sort Index)
+        
 
         Returns
         -------
-        - total
+        total
         """
         node = Node('Edges of Vertex', {'Vertex Index': vertex_index, 'Weights': weights, 'Sort Index': sort_index})
         return node.total
@@ -155,20 +195,28 @@ class Vertex:
 
         > ***Jump*** : Socket refers to node output socket after the call
 
-        Information
-        -----------
-        - Socket 'Mesh' : self
-        - Socket 'Selection' : self[selection]
-        - Parameter 'mode' : 'VERTICES'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name      | Value             |
+        | --------- | --------- | ----------------- |
+        | Socket    | Mesh      | `self`            |
+        | Socket    | Selection | `self[selection]` |
+        | Parameter | `mode`    | `'VERTICES'`      |
+
+        Parameters
         ---------
-        - offset (Vector) : socket 'Offset' (id: Offset)
-        - offset_scale (Float) : socket 'Offset Scale' (id: Offset Scale)
+        offset : Vector, optional
+            socket 'Offset' (id: Offset)
+        
+        offset_scale : Float, optional
+            socket 'Offset Scale' (id: Offset Scale)
+        
 
         Returns
         -------
-        - Mesh [top_ (Boolean), side_ (Boolean)]
+        Mesh
+            peer sockets: top_ (Boolean), side_ (Boolean)
+
         """
         node = Node('Extrude Mesh', {'Mesh': self, 'Selection': self.get_selection(), 'Offset': offset, 'Offset Scale': offset_scale}, mode='VERTICES')
         self._jump(node._out)
@@ -180,7 +228,9 @@ class Vertex:
 
         Returns
         -------
-        - Integer [face_count_ (Integer)]
+        Integer
+            peer sockets: face_count_ (Integer)
+
         """
         node = Node('Vertex Neighbors', )
         return node._out
@@ -191,7 +241,7 @@ class Vertex:
 
         Returns
         -------
-        - vertex_count
+        vertex_count
         """
         node = Node('Vertex Neighbors', )
         return node.vertex_count
@@ -202,7 +252,7 @@ class Vertex:
 
         Returns
         -------
-        - face_count
+        face_count
         """
         node = Node('Vertex Neighbors', )
         return node.face_count
@@ -210,20 +260,26 @@ class Vertex:
     def to_points(self, position: Vector = None, radius: Float = None):
         """ > Node <&Node Mesh to Points>
 
-        Information
-        -----------
-        - Socket 'Mesh' : self
-        - Socket 'Selection' : self[selection]
-        - Parameter 'mode' : 'VERTICES'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name      | Value             |
+        | --------- | --------- | ----------------- |
+        | Socket    | Mesh      | `self`            |
+        | Socket    | Selection | `self[selection]` |
+        | Parameter | `mode`    | `'VERTICES'`      |
+
+        Parameters
         ---------
-        - position (Vector) : socket 'Position' (id: Position)
-        - radius (Float) : socket 'Radius' (id: Radius)
+        position : Vector, optional
+            socket 'Position' (id: Position)
+        
+        radius : Float, optional
+            socket 'Radius' (id: Radius)
+        
 
         Returns
         -------
-        - Cloud
+        Cloud
         """
         node = Node('Mesh to Points', {'Mesh': self, 'Selection': self.get_selection(), 'Position': position, 'Radius': radius}, mode='VERTICES')
         return node._out

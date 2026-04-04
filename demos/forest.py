@@ -34,7 +34,7 @@ $ DOC START
 A simple parameterized forest.
 
 
-> [!NOTE]
+!!! note
 > Modifiers:
 > - A Tree
 > - Trees Collection

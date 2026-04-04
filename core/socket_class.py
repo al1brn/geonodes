@@ -118,6 +118,41 @@ class NodeCache:
 # =============================================================================================================================
 
 class Socket(NodeCache):
+    """ > The output socket of a <!Node>
+
+    **Socket** is the base class for data classes such as <!Float>, <!Image> or <!Geometry>.
+
+    It refers to an **output** socket of a <!Node>. A socket can be set to the **input** socket
+    of another <!Node> to create a link between the two nodes:
+
+    ``` python
+    # cube is the output socket 'Mesh' of the node 'Cube'
+    cube = Node("Cube").mesh
+
+    # cube is set the to socket 'geometry' of node 'Set Position'
+    node = Node("Set Position")
+    node.geometry = cube
+    ```
+
+    !!! important
+        You can access to the other output sockets of the node in two different ways:
+
+        - using <#node> attribute
+        - using ***peer socket** naming convention where the **snake_case** name of the other sockets is suffixed by '_'
+
+    The example below shows how to access the to 'UV Map' socket of node <*Node Cube>:
+
+    ``` python
+    # cube is the output socket 'Mesh' of the node 'Cube'
+    cube = Mesh.Cube()
+
+    # Getting 'UV Map' through the node
+    uv_map = cube.node.uv_map
+
+    # Or using the 'peer socket' naming convention
+    uv_map = cuve.uv_map_
+    ```
+    """    
 
     __slots__ = NodeCache.__slots__ + ('_tree', '_bsocket', '_layout', '_use_layout')
 
@@ -134,48 +169,25 @@ class Socket(NodeCache):
             panel        : str = "",
             user_label   : str = None,
             **props):
-        """ > The output socket of a <!Node>
+        """
+        
+        Parameters
+        ----------
+        socket : NodeSocket, optional
+            the output socket to wrap Default: None.
 
-        **Socket** is the base class for data classes such as <!Float>, <!Image> or <!Geometry>.
+        name : str, optional
+            input name if not None Default: None.
 
-        It refers to an **output** socket of a <!Node>. A socket can be set to the **input** socket
-        of another <!Node> to create a link between the two nodes:
+        tip : str, optional
+            description Default: "".
 
-        ``` python
-        # cube is the output socket 'Mesh' of the node 'Cube'
-        cube = Node("Cube").mesh
+        panel : str, optional
+            panel name Default: "".
 
-        # cube is set the to socket 'geometry' of node 'Set Position'
-        node = Node("Set Position")
-        node.geometry = cube
-        ```
+        user_label : str, optional
+            user label Default: None.
 
-        > [!IMPORTANT]
-        > You can access to the other output sockets of the node in two different ways:
-        > - using <#node> attribute
-        > - using ***peer socket** naming convention where the **snake_case** name of
-        >.  the other sockets is suffixed by '_'
-
-        The example below shows how to access the to 'UV Map' socket of node <*Node Cube>:
-
-        ``` python
-        # cube is the output socket 'Mesh' of the node 'Cube'
-        cube = Mesh.Cube()
-
-        # Getting 'UV Map' through the node
-        uv_map = cube.node.uv_map
-
-        # Or using the 'peer socket' naming convention
-        uv_map = cuve.uv_map_
-        ```
-
-        Arguments
-        ---------
-        - socket (NodeSocket = None) : the output socket to wrap
-        - name (str = None) : input name if not None
-        - tip (str = "") : description
-        - panel (str = "") : panel name
-        - user_label (str = None) : user label
         """
 
         # ---------------------------------------------------------------------------
@@ -291,9 +303,11 @@ class Socket(NodeCache):
         
         An empty socket is used temporarily as an input for nodes with dynamic sockets:
 
-        Arguments
-        ---------
-        - value (Any = None) : default value
+        Parameters
+        ----------
+        value : Any, optional
+            default value Default: None.
+
         """
         socket = cls(constants.EMPTY_SOCKET)
         socket._bsocket = SocketType(cls.SOCKET_TYPE).get_default_from_value(value)
@@ -311,13 +325,15 @@ class Socket(NodeCache):
         -----------
         - Parameter 'data_type' : 'BOOLEAN'
 
-        Arguments
-        ---------
-        - name (String) : socket 'Name' (id: Name)
+        Parameters
+        ----------
+        name : String
+            socket 'Name' (id: Name)
+
 
         Returns
         -------
-        - Boolean
+        Boolean
         """
         if SocketType(cls.SOCKET_TYPE).class_name not in constants.ATTRIBUTE_CLASSES:
             raise NodeError(
@@ -342,8 +358,8 @@ class Socket(NodeCache):
     def Input(cls, name: str, panel: str = "", halt: bool = True):
         """ Get an exist input socket from its name and panel.
 
-        > [!NOTE]
-        > The "input" socket here is an "output" socket of the current input node
+        !!! note
+            The "input" socket here is an "output" socket of the current input node
 
         To create a input socket use NewInput.
 
@@ -353,15 +369,21 @@ class Socket(NodeCache):
         ------
         - NodeError if socket is not found and halt is requested
 
-        Arguments
-        ---------
-        - name (str | None) : socket name
-        - panel (str = "") : panel name
-        - halt (bool = True) : raises an error if not found
+        Parameters
+        ----------
+        name : str | None
+            socket name
+
+        panel : str, optional
+            panel name Default: "".
+
+        halt : bool, optional
+            raises an error if not found Default: True.
+
 
         Returns
         -------
-        - Socket
+        Socket
         """
         in_node = Tree.current_tree().get_input_node()
 
@@ -394,8 +416,8 @@ class Socket(NodeCache):
             **props):
         """ Create an new input socket
 
-        > [!NOTE]
-        > The "input" socket here is an "output" socket of the current input node
+        !!! note
+            The "input" socket here is an "output" socket of the current input node
 
         To get an existing input socket use Input.
 
@@ -403,16 +425,24 @@ class Socket(NodeCache):
         ------
         - NodeError if socket is not found
 
-        Arguments
-        ---------
-        - name (str) : socket name
-        - value (Any = None) : default_value
-        - tip (str = "") : description
-        - panel (str: None) : panel name
+        Parameters
+        ----------
+        name : str
+            socket name
+
+        value : Any, optional
+            default_value Default: None.
+
+        tip : str, optional
+            description Default: "".
+
+        panel : str: None
+            panel name
+
 
         Returns
         -------
-        - Socket
+        Socket
         """
         if value is None:
             defval = None
@@ -449,10 +479,14 @@ class Socket(NodeCache):
     def Constant(cls, value: None, user_label: str = ""):
         """ Create an input socket from a constant Node.
 
-        Arguments
-        ---------
-        - value (Any = None) : constant default value
-        - user_label (str = "") : socket name (used to rename nodes if not None)
+        Parameters
+        ----------
+        value : Any, optional
+            constant default value Default: None.
+
+        user_label : str, optional
+            socket name (used to rename nodes if not None) Default: "".
+
         """
 
         # ---------------------------------------------------------------------------
@@ -627,7 +661,14 @@ class Socket(NodeCache):
         if self._is_empty():
             return f"<{self._socket_type.class_name}: Empty>"
         else:
-            return f"<{type(self).__name__}: [{self.node._bnode.name}].'{self._bsocket.name}'>"
+            bnode = self._bsocket.node
+            index = None
+            for i, bsock in enumerate(bnode.outputs):
+                if bsock == self._bsocket:
+                    index = i
+                    break
+
+            return f"<{type(self).__name__}: [{self.node._bnode.name}][{index}].'{self._bsocket.name}'>"
     
     def _reset(self):
         self._cache_reset()
@@ -642,14 +683,18 @@ class Socket(NodeCache):
         When changing the socket, the description is copied to the new socket.
         The node color, if any, is also propagated.
 
-        Arguments
-        ---------
-        - socket (bpy.types.NodeSocket) : the new output socket to jump to
-        - reset (bool = True) : reset the cache
+        Parameters
+        ----------
+        socket : bpy.types.NodeSocket
+            the new output socket to jump to
+
+        reset : bool, optional
+            reset the cache Default: True.
+
 
         Returns
         -------
-        - self
+        self
         """
 
         # Keep user label stored in socket description
@@ -690,7 +735,7 @@ class Socket(NodeCache):
 
         Returns
         -------
-        - Interface Socket
+        Interface Socket
         """
         if self.node.use_interface:
             return self.node._interface._use_interface(self._bsocket.identifier)
@@ -722,7 +767,9 @@ class Socket(NodeCache):
 
         Returns
         -------
-        - str : default is ""
+        str
+            default is ""
+
         """
         if self._is_empty():
             return "<EMPTY SOCKET>"
@@ -738,7 +785,9 @@ class Socket(NodeCache):
 
         Returns
         -------
-        - str : default is ""
+        str
+            default is ""
+
         """
         i_socket = self._interface_socket
         if i_socket is None:
@@ -791,13 +840,17 @@ class Socket(NodeCache):
 
         The socket is get a an OUTPUT socket of the current input.
 
-        Arguments
-        ---------
-        - name (str = None) : name filter
+        Parameters
+        ----------
+        name : str, optional
+            name filter Default: None.
+
 
         Returns
         -------
-        - Socket : or None if not found
+        Socket
+            or None if not found
+
         """
         in_node = self._tree.get_input_node()
 
@@ -834,7 +887,7 @@ class Socket(NodeCache):
 
         Returns
         -------
-        - SysColor
+        SysColor
         """
         return self.node._color
 
@@ -848,7 +901,7 @@ class Socket(NodeCache):
 
         Returns
         -------
-        - str
+        str
         """
         return self.node._label
 
@@ -894,13 +947,15 @@ class Socket(NodeCache):
     def _ul(self, label : str):
         """ Set the user label
 
-        Arguments
-        ---------
-        - label (str) : the label to append
+        Parameters
+        ----------
+        label : str
+            the label to append
+
 
         Returns
         -------
-        - self
+        self
         """
         self.user_label = label
         return self
@@ -923,14 +978,18 @@ class Socket(NodeCache):
             c = (a + b)._lc("a + b", (1, 0, 0))
         ```
 
-        Arguments
-        ---------
-        - label (str = None) : node label
-        - color (SysColor = None) : node color
+        Parameters
+        ----------
+        label : str, optional
+            node label Default: None.
+
+        color : SysColor, optional
+            node color Default: None.
+
 
         Returns
         -------
-        - self
+        self
         """
 
         if self.node._bnode.bl_idname == 'NodeGroupInput':
@@ -1109,13 +1168,15 @@ class Socket(NodeCache):
 
         The "Do nothing" modifier is simply ``` Geometry().out() ```
 
-        Arguments
-        ---------
-        - name (str = None) : socket name
+        Parameters
+        ----------
+        name : str, optional
+            socket name Default: None.
+
 
         Returns
         -------
-        - None
+        None
         """
         self._is_empty(f"Impossible to link an empty socket (name: '{name}').")
 
@@ -1171,15 +1232,21 @@ class Socket(NodeCache):
 
         The items of the Menu Switch node are provided in the 'items' dict.
 
-        Arguments
-        ---------
-        - named_sockets (dict = {}) : sockets to create
-        - default_menu (str = None) : default menu value
-        - sockets (dict) : items
+        Parameters
+        ----------
+        named_sockets : dict, optional
+            sockets to create Default: {}.
+
+        default_menu : str, optional
+            default menu value Default: None.
+
+        sockets : dict
+            items
+
 
         Returns
         -------
-        - Socket
+        Socket
         """
         node = MenuNode('Menu Switch',
                 named_sockets = named_sockets,
@@ -1207,15 +1274,21 @@ class Socket(NodeCache):
         The items of the Menu Switch node are provided in the 'items' dict.
         An group input socket named after the 'name' argument is linked to menu selector.
 
-        Arguments
-        ---------
-        - named_sockets (dict = {}) : sockets to create
-        - default_menu (str = None) : default menu value
-        - sockets (dict) : items
+        Parameters
+        ----------
+        named_sockets : dict, optional
+            sockets to create Default: {}.
+
+        default_menu : str, optional
+            default menu value Default: None.
+
+        sockets : dict
+            items
+
 
         Returns
         -------
-        - Socket
+        Socket
         """        
         return self.MenuSwitch(named_sockets = {self_name: self, **named_sockets}, default_menu=default_menu, **sockets)
     
@@ -1263,15 +1336,19 @@ class Socket(NodeCache):
             pick_geo.out()
         ```
 
-        Arguments
-        ---------
+        Parameters
+        ----------
         - *values : list of Sockets to select into
-        - index (Integer = None) : socket 'Index' (Index)
-        - defaut_index (int = 0) : default idex
+        index : Integer, optional
+            socket 'Index' (Index) Default: None.
+
+        defaut_index : int, optional
+            default idex Default: 0.
+
 
         Returns
         -------
-        - Socket
+        Socket
         """
         #return IndexSwitchNode(*values, index=index, data_type=cls.input_type())._out
         return MenuNode('Index Switch', 
@@ -1303,15 +1380,19 @@ class Socket(NodeCache):
             pick_geo.out()
         ```
 
-        Arguments
-        ---------
+        Parameters
+        ----------
         - *values : list of Sockets to select into
-        - index (Integer = None) : socket 'Index' (Index)
-        - defaut_index (int = 0) : default idex
+        index : Integer, optional
+            socket 'Index' (Index) Default: None.
+
+        defaut_index : int, optional
+            default idex Default: 0.
+
 
         Returns
         -------
-        - Socket
+        Socket
         """
         return self.IndexSwitch(self, *values, index=index, default_index=default_index)
     
@@ -1341,15 +1422,21 @@ class Socket(NodeCache):
             geo.out()
         ```
 
-        Arguments
-        ---------
-        - condition (Boolean) : socket 'Switch' (Switch)
-        - false : socket 'False' (False)
-        - true : socket 'True' (True)
+        Parameters
+        ----------
+        condition : Boolean
+            socket 'Switch' (Switch)
+
+        false
+            socket 'False' (False)
+
+        true
+            socket 'True' (True)
+
 
         Returns
         -------
-        - Socket
+        Socket
         """
         input_type = SocketType(cls.SOCKET_TYPE).items_type
         return Node('Switch', {'Switch': condition, 'False': false, 'True': true}, input_type=input_type)._out
@@ -1363,9 +1450,9 @@ class Socket(NodeCache):
 
         Self is connected to 'false' socket.
 
-        > [!NOTE]
-        > switch returns self if global constant SWITCH_JUMP = True (default)
-        > set SWITCH_JUMP = False for legacy behavior
+        !!! note
+            switch returns self if global constant SWITCH_JUMP = True (default)
+            set SWITCH_JUMP = False for legacy behavior
 
         ``` python
         with GeoNodes("Switch demo"):
@@ -1392,14 +1479,18 @@ class Socket(NodeCache):
         -----------
         - Socket 'False' : self
 
-        Arguments
-        ---------
-        - condition (Boolean) : socket 'Switch' (Switch)
-        - true : socket 'True' (True)
+        Parameters
+        ----------
+        condition : Boolean
+            socket 'Switch' (Switch)
+
+        true
+            socket 'True' (True)
+
 
         Returns
         -------
-        - Socket (self)
+        Socket (self)
         """
         res = self.Switch(condition=condition, false=self, true=true)
         if constants.SWITCH_JUMP:
@@ -1418,11 +1509,11 @@ class Socket(NodeCache):
 
         Self is connected to 'true' socket.
 
-        > [!IMPORTANT]
-        > This methods behaves the inverse of <#switch> : self is connected to "True" socket and  the argument to "False", socket
+        !!! important
+            This methods behaves the inverse of <#switch> : self is connected to "True" socket and  the argument to "False", socket
 
-        > [!NOTE]
-        > This method is mainly provided to cover the case when 'False' socket is None
+        !!! note
+            This method is mainly provided to cover the case when 'False' socket is None
 
         ``` python
         with GeoNodes("Switch demo"):
@@ -1442,21 +1533,25 @@ class Socket(NodeCache):
             geo.out()
         ```
 
-        > [!NOTE]
-        > This method let self socket unchanged. To set self socket to the result
+        !!! note
+            This method let self socket unchanged. To set self socket to the result
 
         Information
         -----------
         - Socket 'True' : self
 
-        Arguments
-        ---------
-        - condition (Boolean) : socket 'Switch' (Switch)
-        - false : socket 'False' (False)
+        Parameters
+        ----------
+        condition : Boolean
+            socket 'Switch' (Switch)
+
+        false
+            socket 'False' (False)
+
 
         Returns
         -------
-        - Socket
+        Socket
         """
         res = self.Switch(condition=condition, false=false, true=self)
         if constants.SWITCH_JUMP:
@@ -1475,15 +1570,21 @@ class Socket(NodeCache):
     def repeat(self, iterations=1, named_sockets: dict={}, **sockets):
         """ Repeat zone
 
-        Arguments
-        ---------
-        - Iteration (Integer = 1) : iteration socket
-        - named_socket (dict) : named sockets
-        - sockets (dict) : other sockets
+        Parameters
+        ----------
+        Iteration : Integer, optional
+            iteration socket Default: 1.
+
+        named_socket : dict
+            named sockets
+
+        sockets : dict
+            other sockets
+
 
         Returns
         -------
-        - ZoneIterator
+        ZoneIterator
         """
         class_name = type(self).__name__
         node = ZoneNode("Repeat", named_sockets={class_name: self, **named_sockets}, Iterations=iterations, **sockets)
@@ -1496,14 +1597,18 @@ class Socket(NodeCache):
     def simulation(self, named_sockets: dict={}, **sockets):
         """ Simulation zone
 
-        Arguments
-        ---------
-        - named_socket (dict) : named sockets
-        - sockets (dict) : other sockets
+        Parameters
+        ----------
+        named_socket : dict
+            named sockets
+
+        sockets : dict
+            other sockets
+
 
         Returns
         -------
-        - ZoneIterator
+        ZoneIterator
         """
         class_name = type(self).__name__
         node = ZoneNode("Simulation", named_sockets={class_name: self, **named_sockets}, **sockets)
@@ -1531,12 +1636,20 @@ class Socket(NodeCache):
 
         Once the modifier completed, it can be called as a method of geometry ```geo.translate(translation=(1, 2, 3))```
 
-        Arguments
-        ---------
-        - name (str = None) : replace the default name which is the snake case version of the group name
-        - ret_class (type = None) : transtype the default node output
-        - jump (bool = False) : the calling socket jumps to the node outpus after the call
-        - ret_class (type = None) : transtype the result with this class if not None
+        Parameters
+        ----------
+        name : str, optional
+            replace the default name which is the snake case version of the group name Default: None.
+
+        ret_class : type, optional
+            transtype the default node output Default: None.
+
+        jump : bool, optional
+            the calling socket jumps to the node outpus after the call Default: False.
+
+        ret_class : type, optional
+            transtype the result with this class if not None Default: None.
+
         """
 
         if self.node._bnode.bl_idname != 'NodeGroupInput':
@@ -1822,11 +1935,17 @@ class Input(Socket):
 
         When plugging to the input socket of a Node, a New socket is creaated.
 
-        Arguments
-        ---------
-        - name (str = None) : the name to give to the output
-        - panel (str = "") : the panel to create if possible
-        - props (dict) : socket properties
+        Parameters
+        ----------
+        name : str, optional
+            the name to give to the output Default: None.
+
+        panel : str, optional
+            the panel to create if possible Default: "".
+
+        props : dict
+            socket properties
+
         """
 
         innode = Tree.current_tree().get_input_node()

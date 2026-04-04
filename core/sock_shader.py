@@ -59,18 +59,22 @@ class ShaderRoot:
     def surface_out(self, target='ALL'):
         """ Connect the shader to the Surface socket of Material Output
 
-        Arguments
-        ---------
-        - target (str = 'ALL') : parameter ' target' in ('ALL', 'EEVEE', 'CYCLES')
+        Parameters
+        ----------
+        target : str, optional
+            parameter ' target' in ('ALL', 'EEVEE', 'CYCLES') Default: 'ALL'.
+
         """
         self._tree.set_surface(self, target=target)
 
     def volume_out(self, target='ALL'):
         """ Connect the shader to the Volume socket of Material Output
 
-        Arguments
-        ---------
-        - target (str = 'ALL') : parameter ' target' in ('ALL', 'EEVEE', 'CYCLES')
+        Parameters
+        ----------
+        target : str, optional
+            parameter ' target' in ('ALL', 'EEVEE', 'CYCLES') Default: 'ALL'.
+
         """
         self._tree.set_volume(self, target=target)
 
@@ -106,15 +110,29 @@ class Shader(ShaderRoot, generated.Shader):
 
         A group input socket of type Shader.
 
-        Arguments
-        ---------
-        - value (Socket) : initial value
-        - name (str = None) : group input socket name if not None
-        - tip  (str = '') : Property description
-        - panel (str = "") : Panel name
-        - optional_label  (bool = False) : Property optional_label
-        - hide_value  (bool = False) : Property hide_value
-        - hide_in_modifier  (bool = False) : Property hide_in_modifier
+        Parameters
+        ----------
+        value : Socket
+            initial value
+
+        name : str, optional
+            group input socket name if not None Default: None.
+
+        tip : str, default=''
+            Property description
+
+        panel : str, optional
+            Panel name Default: "".
+
+        optional_label : bool, default=False
+            Property optional_label
+
+        hide_value : bool, default=False
+            Property hide_value
+
+        hide_in_modifier : bool, default=False
+            Property hide_in_modifier
+
         """
 
         bsock = utils.get_bsocket(value)

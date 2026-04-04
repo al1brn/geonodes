@@ -1,4 +1,4 @@
-# Generated 2026-03-26 08:37:01
+# Generated 2026-04-04 12:37:35
 
 from __future__ import annotations
 from .. sockettype import SocketType
@@ -38,21 +38,33 @@ class Volume:
                     threshold: Float = None):
         """ > Node <&Node Distribute Points in Volume>
 
-        Information
-        -----------
-        - Socket 'Volume' : self
+        **Fixed values**
 
-        Arguments
+        | Kind   | Name   | Value  |
+        | ------ | ------ | ------ |
+        | Socket | Volume | `self` |
+
+        Parameters
         ---------
-        - mode (menu='Random') : ('Random', 'Grid')
-        - density (Float) : socket 'Density' (id: Density)
-        - seed (Integer) : socket 'Seed' (id: Seed)
-        - spacing (Vector) : socket 'Spacing' (id: Spacing)
-        - threshold (Float) : socket 'Threshold' (id: Threshold)
+        mode : menu='Random', optional
+            ('Random', 'Grid')
+        
+        density : Float, optional
+            socket 'Density' (id: Density)
+        
+        seed : Integer, optional
+            socket 'Seed' (id: Seed)
+        
+        spacing : Vector, optional
+            socket 'Spacing' (id: Spacing)
+        
+        threshold : Float, optional
+            socket 'Threshold' (id: Threshold)
+        
 
         Returns
         -------
-        - Cloud
+        Cloud
         """
         node = Node('Distribute Points in Volume', {'Volume': self, 'Mode': mode, 'Density': density, 'Seed': seed, 'Spacing': spacing, 'Threshold': threshold})
         return node._out
@@ -61,13 +73,15 @@ class Volume:
     def ImportVDB(cls, path: String = None):
         """ > Node <&Node Import VDB>
 
-        Arguments
+        Parameters
         ---------
-        - path (String) : socket 'Path' (id: Path)
+        path : String, optional
+            socket 'Path' (id: Path)
+        
 
         Returns
         -------
-        - Volume
+        Volume
         """
         node = Node('Import VDB', {'Path': path})
         return cls(node._out)
@@ -83,19 +97,33 @@ class Volume:
                     resolution_z: Integer = None):
         """ > Node <&Node Volume Cube>
 
-        Arguments
+        Parameters
         ---------
-        - density (Float) : socket 'Density' (id: Density)
-        - background (Float) : socket 'Background' (id: Background)
-        - min (Vector) : socket 'Min' (id: Min)
-        - max (Vector) : socket 'Max' (id: Max)
-        - resolution_x (Integer) : socket 'Resolution X' (id: Resolution X)
-        - resolution_y (Integer) : socket 'Resolution Y' (id: Resolution Y)
-        - resolution_z (Integer) : socket 'Resolution Z' (id: Resolution Z)
+        density : Float, optional
+            socket 'Density' (id: Density)
+        
+        background : Float, optional
+            socket 'Background' (id: Background)
+        
+        min : Vector, optional
+            socket 'Min' (id: Min)
+        
+        max : Vector, optional
+            socket 'Max' (id: Max)
+        
+        resolution_x : Integer, optional
+            socket 'Resolution X' (id: Resolution X)
+        
+        resolution_y : Integer, optional
+            socket 'Resolution Y' (id: Resolution Y)
+        
+        resolution_z : Integer, optional
+            socket 'Resolution Z' (id: Resolution Z)
+        
 
         Returns
         -------
-        - Volume
+        Volume
         """
         node = Node('Volume Cube', {'Density': density, 'Background': background, 'Min': min, 'Max': max, 'Resolution X': resolution_x, 'Resolution Y': resolution_y, 'Resolution Z': resolution_z})
         return cls(node._out)
@@ -108,21 +136,33 @@ class Volume:
                     adaptivity: Float = None):
         """ > Node <&Node Volume to Mesh>
 
-        Information
-        -----------
-        - Socket 'Volume' : self
+        **Fixed values**
 
-        Arguments
+        | Kind   | Name   | Value  |
+        | ------ | ------ | ------ |
+        | Socket | Volume | `self` |
+
+        Parameters
         ---------
-        - resolution_mode (menu='Grid') : ('Grid', 'Amount', 'Size')
-        - voxel_size (Float) : socket 'Voxel Size' (id: Voxel Size)
-        - voxel_amount (Float) : socket 'Voxel Amount' (id: Voxel Amount)
-        - threshold (Float) : socket 'Threshold' (id: Threshold)
-        - adaptivity (Float) : socket 'Adaptivity' (id: Adaptivity)
+        resolution_mode : menu='Grid', optional
+            ('Grid', 'Amount', 'Size')
+        
+        voxel_size : Float, optional
+            socket 'Voxel Size' (id: Voxel Size)
+        
+        voxel_amount : Float, optional
+            socket 'Voxel Amount' (id: Voxel Amount)
+        
+        threshold : Float, optional
+            socket 'Threshold' (id: Threshold)
+        
+        adaptivity : Float, optional
+            socket 'Adaptivity' (id: Adaptivity)
+        
 
         Returns
         -------
-        - Mesh
+        Mesh
         """
         node = Node('Volume to Mesh', {'Volume': self, 'Resolution Mode': resolution_mode, 'Voxel Size': voxel_size, 'Voxel Amount': voxel_amount, 'Threshold': threshold, 'Adaptivity': adaptivity})
         return node._out
@@ -132,19 +172,25 @@ class Volume:
 
         > ***Jump*** : Socket refers to node output socket after the call
 
-        Information
-        -----------
-        - Socket 'Volume' : self
-        - Parameter 'data_type' : depending on 'grid' type
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name        | Value            |
+        | --------- | ----------- | ---------------- |
+        | Socket    | Volume      | `self`           |
+        | Parameter | `data_type` | from `grid` type |
+
+        Parameters
         ---------
-        - name (String) : socket 'Name' (id: Name)
-        - grid (Boolean | Float | Integer | Vector) : socket 'Grid' (id: Grid)
+        name : String, optional
+            socket 'Name' (id: Name)
+        
+        grid : Boolean | Float | Integer | Vector, optional
+            socket 'Grid' (id: Grid)
+        
 
         Returns
         -------
-        - Volume
+        Volume
         """
         data_type = SocketType.get_data_type_for_node(grid, 'GeometryNodeStoreNamedGrid')
         node = Node('Store Named Grid', {'Volume': self, 'Name': name, 'Grid': grid}, data_type=data_type)
@@ -159,19 +205,25 @@ class Volume:
 
         > ***Jump*** : Socket refers to node output socket after the call
 
-        Information
-        -----------
-        - Socket 'Volume' : self
+        **Fixed values**
 
-        Arguments
+        | Kind   | Name   | Value  |
+        | ------ | ------ | ------ |
+        | Socket | Volume | `self` |
+
+        Parameters
         ---------
-        - name (String) : socket 'Name' (id: Name)
-        - remove (Boolean) : socket 'Remove' (id: Remove)
-        - data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector')
+        name : String, optional
+            socket 'Name' (id: Name)
+        
+        remove : Boolean, optional
+            socket 'Remove' (id: Remove)
+        
+        data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector')
 
         Returns
         -------
-        - grid
+        grid
         """
         node = Node('Get Named Grid', {'Volume': self, 'Name': name, 'Remove': remove}, data_type=data_type)
         self._jump(node._out)

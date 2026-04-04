@@ -15,8 +15,12 @@ Aguments
 - min  (int = -2147483648) : Property min_value
 - max  (int = 2147483647) : Property max_value
 - tip  (str = '') : Property description
-- panel (str = "") : Panel name
-- props (dic) : properties
+panel : str, optional
+    Panel name Default: "".
+
+props : dic
+            properties
+
 
 #### Arguments:
 - **value** ( = None)
@@ -344,14 +348,18 @@ Aguments
 - min  (int = -2147483648) : Property min_value
 - max  (int = 2147483647) : Property max_value
 - tip  (str = '') : Property description
-- panel (str = "") : Panel name
+panel : str, optional
+    Panel name Default: "".
+
 - optional_label  (bool = False) : Property optional_label
 - hide_value  (bool = False) : Property hide_value
 - hide_in_modifier  (bool = False) : Property hide_in_modifier
 - default_attribute  (str = '') : Property default_attribute_name
 - default_input  (str = 'VALUE') : Property default_input in ('VALUE', 'INDEX', 'ID_OR_INDEX')
 - shape  (str = 'AUTO') : Property structure_type in ('AUTO', 'SINGLE')
-- subtype (str = 'NONE') : Socket sub type in ('NONE', 'PERCENTAGE', 'FACTOR')
+subtype : str, optional
+    Socket sub type in ('NONE', 'PERCENTAGE', 'FACTOR') Default: 'NONE'.
+
 
 #### Arguments:
 - **value** (_object_ = 0)
@@ -559,7 +567,9 @@ Aguments
 - min  (int = -2147483648) : Property min_value
 - max  (int = 2147483647) : Property max_value
 - tip  (str = '') : Property description
-- panel (str = "") : Panel name
+panel : str, optional
+    Panel name Default: "".
+
 - optional_label  (bool = False) : Property optional_label
 - hide_value  (bool = False) : Property hide_value
 - hide_in_modifier  (bool = False) : Property hide_in_modifier
@@ -790,7 +800,7 @@ IdOrIndex(name='ID or Index', tip=None, panel='', hide_in_modifier=True)
 
 New [Integer](integer.md#integer) input with 'ID or Index' as default value (default_input='ID_OR_INDEX')
 
-> [!NOTE]
+!!! note
 > By default, 'hide_in_modifier' is set to True
 
 #### Arguments:
@@ -819,7 +829,7 @@ Index(name='Index', tip=None, panel='', hide_in_modifier=True)
 
 New [Integer](integer.md#integer) input with Index as default value (default_input='INDEX')
 
-> [!NOTE]
+!!! note
 > By default, 'hide_in_modifier' is set to True
 
 #### Arguments:
@@ -855,8 +865,12 @@ Aguments
 - min  (int = -2147483648) : Property min_value
 - max  (int = 2147483647) : Property max_value
 - tip  (str = '') : Property description
-- panel (str = "") : Panel name
-- props (dic) : properties
+panel : str, optional
+    Panel name Default: "".
+
+props : dic
+            properties
+
 
 #### Arguments:
 - **value** ( = None)
@@ -1243,7 +1257,9 @@ Aguments
 - min  (int = -2147483648) : Property min_value
 - max  (int = 2147483647) : Property max_value
 - tip  (str = '') : Property description
-- panel (str = "") : Panel name
+panel : str, optional
+    Panel name Default: "".
+
 - optional_label  (bool = False) : Property optional_label
 - hide_value  (bool = False) : Property hide_value
 - hide_in_modifier  (bool = False) : Property hide_in_modifier

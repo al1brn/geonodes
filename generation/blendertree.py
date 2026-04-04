@@ -48,11 +48,17 @@ from pprint import pprint
 def get_tree(name, tree_type='GeometryNodeTree', create=True):
     """ Get or create a new nodes tree
 
-    Arguments
-    ---------
-        - name (str) : Tree name
-        - tree_type (str = 'GeometryNodeTree') : tree type in ('CompositorNodeTree', 'TextureNodeTree', 'GeometryNodeTree', 'ShaderNodeTree')
-        - create (bool = False) : Create the tree if it doesn't exist
+    Parameters
+    ----------
+        name : str
+            Tree name
+
+        tree_type : str, optional
+            tree type in ('CompositorNodeTree', 'TextureNodeTree', 'GeometryNodeTree', 'ShaderNodeTree') Default: 'GeometryNodeTree'.
+
+        create : bool, optional
+            Create the tree if it doesn't exist Default: False.
+
 
     Returns
     -------
@@ -90,8 +96,8 @@ def del_tree(btree):
 
     """ Delete a tree
 
-    Arguments
-    ---------
+    Parameters
+    ----------
         - btree (blender Tree or str : Tree or tree name
     """
 

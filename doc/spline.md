@@ -4,18 +4,18 @@
 Spline(geometry: geonodes.core.geometry_class.Geometry)
 ```
 
-> Curve, or Spline, domain of a [Curve](curve.md#curve)
+> Curve, or Spline, domain of a [Curve](core-gener-curve-curve.md#curve)
 
 Methods of **Spline** class are nodes which accept a SPLINE or CURVE domain.
 
-In addition, the node [Points of Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/topology/points_of_curve.html) is implemented as method [points](cloud.md#points).
+In addition, the node [Points of Curve](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/curve/topology/points_of_curve.html) is implemented as method ['#points' not found]().
 
 #### Arguments:
 - **geometry** (_Geometry_)
 
 ### Inherited
 
-[\_cache](nodecache.md#_cache) :black_small_square: ['_cached_nodes' not found]() :black_small_square: [\_cache_reset](nodecache.md#_cache_reset) :black_small_square: [\_\_call__](domain.md#__call__) :black_small_square: [capture](domain.md#capture) :black_small_square: [capture_attribute](domain.md#capture_attribute) :black_small_square: [\_domain_to_geometry](domain.md#_domain_to_geometry) :black_small_square: [for_each](domain.md#for_each) :black_small_square: [foreach](domain.md#foreach) :black_small_square: [for_each_element](domain.md#for_each_element) :black_small_square: [\_geo](domain.md#_geo) :black_small_square: [\_geo_type](geom.md#_geo_type) :black_small_square: [\_\_getitem__](geom.md#__getitem__) :black_small_square: [get_selection](domain.md#get_selection) :black_small_square: [\_\_init__](domain.md#__init__) :black_small_square: [\_jump](domain.md#_jump) :black_small_square: ['_selection' not found]() :black_small_square: [\_\_setattr__](domain.md#__setattr__) :black_small_square: [\_\_str__](domain.md#__str__) :black_small_square:
+[\_cache](nodecache.md#_cache) :black_small_square: ['_cached_nodes' not found]() :black_small_square: [\_cache_reset](nodecache.md#_cache_reset) :black_small_square: [\_\_call__](domain.md#__call__) :black_small_square: [capture](domain.md#capture) :black_small_square: [capture_attribute](domain.md#capture_attribute) :black_small_square: [data_type_from_value_OLD](domain.md#data_type_from_value_old) :black_small_square: [\_domain_to_geometry](domain.md#_domain_to_geometry) :black_small_square: [for_each](domain.md#for_each) :black_small_square: [foreach](domain.md#foreach) :black_small_square: [for_each_element](domain.md#for_each_element) :black_small_square: [\_geo](domain.md#_geo) :black_small_square: [\_geo_type](geom.md#_geo_type) :black_small_square: [\_\_getitem__](geom.md#__getitem__) :black_small_square: [get_selection](domain.md#get_selection) :black_small_square: [\_\_init__](domain.md#__init__) :black_small_square: [\_jump](domain.md#_jump) :black_small_square: ['_selection' not found]() :black_small_square: [\_\_setattr__](domain.md#__setattr__) :black_small_square: [\_\_str__](domain.md#__str__) :black_small_square:
 
 ## Content
 
@@ -182,7 +182,7 @@ delete(mode: "Literal['ALL', 'EDGE_FACE', 'ONLY_FACE']" = 'ALL')
 
 
 #### Arguments:
-- **mode** (_Literal['ALL', 'EDGE_FACE', 'ONLY_FACE']_ = ALL) : parameter 'mode' in ['ALL', 'EDGE_FACE', 'ONLY_FACE']
+- **mode** (_Literal['ALL', 'EDGE_FACE', 'ONLY_FACE']_ = ALL) : parameter 'mode' in ('All', 'Only Edges & Faces', 'Only Faces')
 
 
 
@@ -264,7 +264,7 @@ delete_geometry(mode: "Literal['ALL', 'EDGE_FACE', 'ONLY_FACE']" = 'ALL')
 
 
 #### Arguments:
-- **mode** (_Literal['ALL', 'EDGE_FACE', 'ONLY_FACE']_ = ALL) : parameter 'mode' in ['ALL', 'EDGE_FACE', 'ONLY_FACE']
+- **mode** (_Literal['ALL', 'EDGE_FACE', 'ONLY_FACE']_ = ALL) : parameter 'mode' in ('All', 'Only Edges & Faces', 'Only Faces')
 
 
 
@@ -481,7 +481,7 @@ field_average(value: 'Float | Vector' = None, group_id: 'Integer' = None, domain
 #### Arguments:
 - **value** (_Float | Vector_ = None) : socket 'Value' (id: Value)
 - **group_id** (_Integer_ = None) : socket 'Group ID' (id: Group Index)
-- **domain** (_Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']_ = POINT) : parameter 'domain' in ['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']
+- **domain** (_Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']_ = POINT) : parameter 'domain' in ('Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer')
 
 
 
@@ -509,7 +509,7 @@ field_min_max(value: 'Float | Integer | Vector' = None, group_id: 'Integer' = No
 #### Arguments:
 - **value** (_Float | Integer | Vector_ = None) : socket 'Value' (id: Value)
 - **group_id** (_Integer_ = None) : socket 'Group ID' (id: Group Index)
-- **domain** (_Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']_ = POINT) : parameter 'domain' in ['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']
+- **domain** (_Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']_ = POINT) : parameter 'domain' in ('Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer')
 
 
 
@@ -537,7 +537,7 @@ field_variance(value: 'Float | Vector' = None, group_id: 'Integer' = None, domai
 #### Arguments:
 - **value** (_Float | Vector_ = None) : socket 'Value' (id: Value)
 - **group_id** (_Integer_ = None) : socket 'Group ID' (id: Group Index)
-- **domain** (_Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']_ = POINT) : parameter 'domain' in ['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']
+- **domain** (_Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']_ = POINT) : parameter 'domain' in ('Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer')
 
 
 

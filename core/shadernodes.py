@@ -90,13 +90,23 @@ class ShaderNodes(Tree):
             ):
         """ > ShaderNodes
 
-        Arguments
-        ---------
-        - tree_name (str) : Shader Nodes name
-        - fake_user (bool = False) : set fake_user flag
-        - is_group (bool = False) : tree is a group
-        - prefix (str = None) : name prefix
-        - replace_material (bool = False) : replace material if already exists
+        Parameters
+        ----------
+        tree_name : str
+            Shader Nodes name
+
+        fake_user : bool, optional
+            set fake_user flag Default: False.
+
+        is_group : bool, optional
+            tree is a group Default: False.
+
+        prefix : str, optional
+            name prefix Default: None.
+
+        replace_material : bool, optional
+            replace material if already exists Default: False.
+
         """
         super().__init__(tree_name, tree_type='ShaderNodeTree', fake_user=fake_user, is_group=is_group, prefix=prefix, replace_material=replace_material)
 

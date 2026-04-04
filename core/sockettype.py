@@ -544,17 +544,28 @@ class SocketType:
             float_int: bool = True):
         """ Get the data_type param
 
-        Arguments
-        ---------
-        - value (any) : the value to get a data_type from
-        - bl_idname (str) : node id
-        - param_name (str = 'data_type') : parameter name
-        - valids (tuple of strs = None) : the valid identifiers
-        - on_error (str in ('HALT', 'NONE', 'DEFAULT')) = 'HALT' : halt if the socket type is not accepted
+        Parameters
+        ----------
+        value : any
+            the value to get a data_type from
+
+        bl_idname : str
+            node id
+
+        param_name : str, optional
+            parameter name Default: 'data_type'.
+
+        valids : tuple of strs, optional
+            the valid identifiers Default: None.
+
+        on_error : str in ('HALT', 'NONE', 'DEFAULT')), default:'HALT'
+            halt if the socket type is not accepted
 
         Returns
         -------
-        - str : value for the parameter or None if not valid
+        str
+            value for the parameter or None if not valid
+
         """
         from .constants import NODE_INFO
 

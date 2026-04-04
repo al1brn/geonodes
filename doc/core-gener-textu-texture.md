@@ -20,7 +20,7 @@ node = Node("Set Position")
 node.geometry = cube
 ```
 
-> [!IMPORTANT]
+!!! important
 > You can access to the other output sockets of the node in two different ways:
 > - using [node](core-socket.md#node) attribute
 > - using ***peer socket** naming convention where the **snake_case** name of

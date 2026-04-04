@@ -82,19 +82,33 @@ class Float(generated.Float):
         Use methods Percentage, Factor, Angle, Time, TimeAbsolute, Distance, WaveLength, ColorTemperature or Frequency
         to create input sockets with a subtype.
 
-        Aguments
-        --------
-        - value  (object = 0.0) : Default value
-        - name  (str = 'Float') : Input socket name
-        - min  (float = -3.40282e+38) : Property min_value
-        - max  (float = 3.40282e+38) : Property max_value
-        - tip  (str = '') : Property description
-        - panel (str = "") : Panel name
-        - props (dict) : properties
+        Parameters
+        ----------
+        value : object, default=0.0
+            Default value
+
+        name : str, default='Float'
+            Input socket name
+
+        min : float, default=-3.40282e+38
+            Property min_value
+
+        max : float, default=3.40282e+38
+            Property max_value
+
+        tip : str, default=''
+            Property description
+
+        panel : str, optional
+            Panel name Default: "".
+
+        props : dict
+            properties
+
 
         Returns
         -------
-        - Float
+        Float
         """
         super().__init__(value, name, min=min, max=max, tip=tip, panel=panel, **props)
 
@@ -108,15 +122,20 @@ class Float(generated.Float):
 
         > Node <&Node Mix>
 
-        Arguments
-        ---------
-        - factor (Float) : socket 'Factor' (Factor_Float)
-        - other (Socket) : socket 'B' (B_Float)
-        - clamp_factor (bool): Node.clamp_factor
+        Parameters
+        ----------
+        factor : Float
+            socket 'Factor' (Factor_Float)
+
+        other : Socket
+            socket 'B' (B_Float)
+
+        clamp_factor : bool
+            Node.clamp_factor
 
         Returns
         -------
-        - Socket
+        Socket
         """
         return Float(Node('Mix', {'Factor': factor, 'A': self, 'B': other}, clamp_factor=clamp_factor, data_type='FLOAT')._out)
 
@@ -125,14 +144,14 @@ class Float(generated.Float):
 
         > Node <&Node Color Ramp>
 
-        Arguments
-        ---------
+        Parameters
+        ----------
         - stops (list of tuple(float, tuple)) : stops made of (float, color as tuple of floats)
         - interpolation in ('EASE', 'CARDINAL', 'LINEAR', 'B_SPLINE', 'CONSTANT')
 
         Returns
         -------
-        - Color
+        Color
         """
         return ColorRamp(fac=self, stops=stops, interpolation=interpolation)._out
 
@@ -143,25 +162,33 @@ class Float(generated.Float):
         """ > Node <&Node Float Curve>
 
         A curve is defined by a list of 3-tuples (not list):
-        - x (float) : x position
-        - y (float) : y position
-        - handle_type (str) : handle type in ('AUTO', 'AUTO_CLAMPED', 'VECTOR')
+        x : float
+            x position
 
-        > [!NOTE]
-        > handle_type is optional, its default value is 'AUTO'. Valid values are ('AUTO', 'AUTO_CLAMPED', 'VECTOR')
+        y : float
+            y position
+
+        handle_type : str
+            handle type in ('AUTO', 'AUTO_CLAMPED', 'VECTOR')
+
+
+        !!! note
+            handle_type is optional, its default value is 'AUTO'. Valid values are ('AUTO', 'AUTO_CLAMPED', 'VECTOR')
 
         Information
         -----------
         - Socket 'Value' : self
 
-        Arguments
-        ---------
-        - factor (Float) : socket 'Factor' (id: Factor)
+        Parameters
+        ----------
+        factor : Float
+            socket 'Factor' (id: Factor)
+
         - curve (list of tuples (float, float, str)) : curve points
 
         Returns
         -------
-        - Float
+        Float
         """
         node = NodeCurves('Float Curve', named_sockets={'Value': self, 'Factor': factor})
         node.set_curves(curve)
@@ -318,11 +345,10 @@ class Float(generated.Float):
     def out(self, name=None, **props):
         """ > Connect to output
 
-        [&SHADER]
+        !!! important "Behavior"
 
-        > [!IMPORTANT]
-        > - Geometry Nodes : create a group output socket with the provided name
-        > - Shader : create a node <&ShaderNode AOV Output>
+            - Geometry Nodes : create a group output socket with the provided name
+            - Shader : create a node <&ShaderNode AOV Output>
         """
         if self._tree._btree.bl_idname == 'ShaderNodeTree' and not self._tree._is_group:
             if name is None:

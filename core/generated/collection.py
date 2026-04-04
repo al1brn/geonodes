@@ -1,4 +1,4 @@
-# Generated 2026-03-26 08:37:01
+# Generated 2026-04-04 12:37:35
 
 from __future__ import annotations
 from .. sockettype import SocketType
@@ -39,19 +39,25 @@ class Collection(Socket):
                     transform_space: Literal['ORIGINAL', 'RELATIVE'] = 'ORIGINAL'):
         """ > Node <&Node Collection Info>
 
-        Information
-        -----------
-        - Socket 'Collection' : self
+        **Fixed values**
 
-        Arguments
+        | Kind   | Name       | Value  |
+        | ------ | ---------- | ------ |
+        | Socket | Collection | `self` |
+
+        Parameters
         ---------
-        - separate_children (Boolean) : socket 'Separate Children' (id: Separate Children)
-        - reset_children (Boolean) : socket 'Reset Children' (id: Reset Children)
-        - transform_space (str): parameter 'transform_space' in ('Original', 'Relative')
+        separate_children : Boolean, optional
+            socket 'Separate Children' (id: Separate Children)
+        
+        reset_children : Boolean, optional
+            socket 'Reset Children' (id: Reset Children)
+        
+        transform_space (str): parameter 'transform_space' in ('Original', 'Relative')
 
         Returns
         -------
-        - Instances
+        Instances
         """
         utils.check_enum_arg('Collection Info', 'transform_space', transform_space, 'info', ('ORIGINAL', 'RELATIVE'))
         node = self._cache('Collection Info', {'Collection': self, 'Separate Children': separate_children, 'Reset Children': reset_children}, transform_space=transform_space)
@@ -60,18 +66,22 @@ class Collection(Socket):
     def enable_output(self, enable: Boolean = None):
         """ > Node <&Node Enable Output>
 
-        Information
-        -----------
-        - Socket 'Value' : self
-        - Parameter 'data_type' : 'COLLECTION'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name        | Value          |
+        | --------- | ----------- | -------------- |
+        | Socket    | Value       | `self`         |
+        | Parameter | `data_type` | `'COLLECTION'` |
+
+        Parameters
         ---------
-        - enable (Boolean) : socket 'Enable' (id: Enable)
+        enable : Boolean, optional
+            socket 'Enable' (id: Enable)
+        
 
         Returns
         -------
-        - Collection
+        Collection
         """
         node = Node('Enable Output', {'Enable': enable, 'Value': self}, data_type='COLLECTION')
         return node._out

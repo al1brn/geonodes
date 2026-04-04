@@ -1,4 +1,4 @@
-# Generated 2026-03-26 08:37:01
+# Generated 2026-04-04 12:37:35
 
 from __future__ import annotations
 from .. sockettype import SocketType
@@ -45,17 +45,23 @@ class ND:
                     pivot_axis: Literal['AUTO', 'X', 'Y', 'Z'] = 'AUTO'):
         """ > Node <&Node Align Rotation to Vector>
 
-        Arguments
+        Parameters
         ---------
-        - rotation (Rotation) : socket 'Rotation' (id: Rotation)
-        - vector (Vector) : socket 'Vector' (id: Vector)
-        - factor (Float) : socket 'Factor' (id: Factor)
-        - axis (str): parameter 'axis' in ('X', 'Y', 'Z')
-        - pivot_axis (str): parameter 'pivot_axis' in ('Auto', 'X', 'Y', 'Z')
+        rotation : Rotation, optional
+            socket 'Rotation' (id: Rotation)
+        
+        vector : Vector, optional
+            socket 'Vector' (id: Vector)
+        
+        factor : Float, optional
+            socket 'Factor' (id: Factor)
+        
+        axis (str): parameter 'axis' in ('X', 'Y', 'Z')
+        pivot_axis (str): parameter 'pivot_axis' in ('Auto', 'X', 'Y', 'Z')
 
         Returns
         -------
-        - Rotation
+        Rotation
         """
         utils.check_enum_arg('Align Rotation to Vector', 'axis', axis, 'align_rotation_to_vector', ('X', 'Y', 'Z'))
         utils.check_enum_arg('Align Rotation to Vector', 'pivot_axis', pivot_axis, 'align_rotation_to_vector', ('AUTO', 'X', 'Y', 'Z'))
@@ -70,16 +76,20 @@ class ND:
                     secondary_axis: Literal['X', 'Y', 'Z'] = 'X'):
         """ > Node <&Node Axes to Rotation>
 
-        Arguments
+        Parameters
         ---------
-        - primary_axis_1 (Vector) : socket 'Primary Axis' (id: Primary Axis)
-        - secondary_axis_1 (Vector) : socket 'Secondary Axis' (id: Secondary Axis)
-        - primary_axis (str): parameter 'primary_axis' in ('X', 'Y', 'Z')
-        - secondary_axis (str): parameter 'secondary_axis' in ('X', 'Y', 'Z')
+        primary_axis_1 : Vector, optional
+            socket 'Primary Axis' (id: Primary Axis)
+        
+        secondary_axis_1 : Vector, optional
+            socket 'Secondary Axis' (id: Secondary Axis)
+        
+        primary_axis (str): parameter 'primary_axis' in ('X', 'Y', 'Z')
+        secondary_axis (str): parameter 'secondary_axis' in ('X', 'Y', 'Z')
 
         Returns
         -------
-        - Rotation
+        Rotation
         """
         utils.check_enum_arg('Axes to Rotation', 'primary_axis', primary_axis, 'axes_to_rotation', ('X', 'Y', 'Z'))
         utils.check_enum_arg('Axes to Rotation', 'secondary_axis', secondary_axis, 'axes_to_rotation', ('X', 'Y', 'Z'))
@@ -90,14 +100,18 @@ class ND:
     def axis_angle_to_rotation(cls, axis: Vector = None, angle: Float = None):
         """ > Node <&Node Axis Angle to Rotation>
 
-        Arguments
+        Parameters
         ---------
-        - axis (Vector) : socket 'Axis' (id: Axis)
-        - angle (Float) : socket 'Angle' (id: Angle)
+        axis : Vector, optional
+            socket 'Axis' (id: Axis)
+        
+        angle : Float, optional
+            socket 'Angle' (id: Angle)
+        
 
         Returns
         -------
-        - Rotation
+        Rotation
         """
         node = Node('Axis Angle to Rotation', {'Axis': axis, 'Angle': angle})
         return node._out
@@ -110,16 +124,22 @@ class ND:
                     operation: Literal['AND', 'OR', 'XOR', 'NOT', 'SHIFT', 'ROTATE'] = 'AND'):
         """ > Node <&Node Bit Math>
 
-        Arguments
+        Parameters
         ---------
-        - a (Integer) : socket 'A' (id: A)
-        - b (Integer) : socket 'B' (id: B)
-        - shift (Integer) : socket 'Shift' (id: Shift)
-        - operation (str): parameter 'operation' in ('And', 'Or', 'Exclusive Or', 'Not', 'Shift', 'Rotate')
+        a : Integer, optional
+            socket 'A' (id: A)
+        
+        b : Integer, optional
+            socket 'B' (id: B)
+        
+        shift : Integer, optional
+            socket 'Shift' (id: Shift)
+        
+        operation (str): parameter 'operation' in ('And', 'Or', 'Exclusive Or', 'Not', 'Shift', 'Rotate')
 
         Returns
         -------
-        - Integer
+        Integer
         """
         utils.check_enum_arg('Bit Math', 'operation', operation, 'bit_math', ('AND', 'OR', 'XOR', 'NOT', 'SHIFT', 'ROTATE'))
         node = Node('Bit Math', {'A': a, 'B': b, 'Shift': shift}, operation=operation)
@@ -132,15 +152,19 @@ class ND:
                     operation: Literal['AND', 'OR', 'NOT', 'NAND', 'NOR', 'XNOR', 'XOR', 'IMPLY', 'NIMPLY'] = 'AND'):
         """ > Node <&Node Boolean Math>
 
-        Arguments
+        Parameters
         ---------
-        - boolean (Boolean) : socket 'Boolean' (id: Boolean)
-        - boolean_1 (Boolean) : socket 'Boolean' (id: Boolean_001)
-        - operation (str): parameter 'operation' in ('And', 'Or', 'Not', 'Not And', 'Nor', 'Equal', 'Not Equal', 'Imply', 'Subtract')
+        boolean : Boolean, optional
+            socket 'Boolean' (id: Boolean)
+        
+        boolean_1 : Boolean, optional
+            socket 'Boolean' (id: Boolean_001)
+        
+        operation (str): parameter 'operation' in ('And', 'Or', 'Not', 'Not And', 'Nor', 'Equal', 'Not Equal', 'Imply', 'Subtract')
 
         Returns
         -------
-        - Boolean
+        Boolean
         """
         utils.check_enum_arg('Boolean Math', 'operation', operation, 'boolean_math', ('AND', 'OR', 'NOT', 'NAND', 'NOR', 'XNOR', 'XOR', 'IMPLY', 'NIMPLY'))
         node = Node('Boolean Math', {'Boolean': boolean, 'Boolean_001': boolean_1}, operation=operation)
@@ -155,17 +179,25 @@ class ND:
                     mode: Literal['RGB', 'HSV', 'HSL'] = 'RGB'):
         """ > Node <&Node Combine Color>
 
-        Arguments
+        Parameters
         ---------
-        - red (Float) : socket 'Red' (id: Red)
-        - green (Float) : socket 'Green' (id: Green)
-        - blue (Float) : socket 'Blue' (id: Blue)
-        - alpha (Float) : socket 'Alpha' (id: Alpha)
-        - mode (str): parameter 'mode' in ('RGB', 'HSV', 'HSL')
+        red : Float, optional
+            socket 'Red' (id: Red)
+        
+        green : Float, optional
+            socket 'Green' (id: Green)
+        
+        blue : Float, optional
+            socket 'Blue' (id: Blue)
+        
+        alpha : Float, optional
+            socket 'Alpha' (id: Alpha)
+        
+        mode (str): parameter 'mode' in ('RGB', 'HSV', 'HSL')
 
         Returns
         -------
-        - Color
+        Color
         """
         utils.check_enum_arg('Combine Color', 'mode', mode, 'combine_color', ('RGB', 'HSV', 'HSL'))
         node = Node('Combine Color', {'Red': red, 'Green': green, 'Blue': blue, 'Alpha': alpha}, mode=mode)
@@ -191,28 +223,60 @@ class ND:
                     column_4_row_4: Float = None):
         """ > Node <&Node Combine Matrix>
 
-        Arguments
+        Parameters
         ---------
-        - column_1_row_1 (Float) : socket 'Column 1 Row 1' (id: Column 1 Row 1)
-        - column_1_row_2 (Float) : socket 'Column 1 Row 2' (id: Column 1 Row 2)
-        - column_1_row_3 (Float) : socket 'Column 1 Row 3' (id: Column 1 Row 3)
-        - column_1_row_4 (Float) : socket 'Column 1 Row 4' (id: Column 1 Row 4)
-        - column_2_row_1 (Float) : socket 'Column 2 Row 1' (id: Column 2 Row 1)
-        - column_2_row_2 (Float) : socket 'Column 2 Row 2' (id: Column 2 Row 2)
-        - column_2_row_3 (Float) : socket 'Column 2 Row 3' (id: Column 2 Row 3)
-        - column_2_row_4 (Float) : socket 'Column 2 Row 4' (id: Column 2 Row 4)
-        - column_3_row_1 (Float) : socket 'Column 3 Row 1' (id: Column 3 Row 1)
-        - column_3_row_2 (Float) : socket 'Column 3 Row 2' (id: Column 3 Row 2)
-        - column_3_row_3 (Float) : socket 'Column 3 Row 3' (id: Column 3 Row 3)
-        - column_3_row_4 (Float) : socket 'Column 3 Row 4' (id: Column 3 Row 4)
-        - column_4_row_1 (Float) : socket 'Column 4 Row 1' (id: Column 4 Row 1)
-        - column_4_row_2 (Float) : socket 'Column 4 Row 2' (id: Column 4 Row 2)
-        - column_4_row_3 (Float) : socket 'Column 4 Row 3' (id: Column 4 Row 3)
-        - column_4_row_4 (Float) : socket 'Column 4 Row 4' (id: Column 4 Row 4)
+        column_1_row_1 : Float, optional
+            socket 'Column 1 Row 1' (id: Column 1 Row 1)
+        
+        column_1_row_2 : Float, optional
+            socket 'Column 1 Row 2' (id: Column 1 Row 2)
+        
+        column_1_row_3 : Float, optional
+            socket 'Column 1 Row 3' (id: Column 1 Row 3)
+        
+        column_1_row_4 : Float, optional
+            socket 'Column 1 Row 4' (id: Column 1 Row 4)
+        
+        column_2_row_1 : Float, optional
+            socket 'Column 2 Row 1' (id: Column 2 Row 1)
+        
+        column_2_row_2 : Float, optional
+            socket 'Column 2 Row 2' (id: Column 2 Row 2)
+        
+        column_2_row_3 : Float, optional
+            socket 'Column 2 Row 3' (id: Column 2 Row 3)
+        
+        column_2_row_4 : Float, optional
+            socket 'Column 2 Row 4' (id: Column 2 Row 4)
+        
+        column_3_row_1 : Float, optional
+            socket 'Column 3 Row 1' (id: Column 3 Row 1)
+        
+        column_3_row_2 : Float, optional
+            socket 'Column 3 Row 2' (id: Column 3 Row 2)
+        
+        column_3_row_3 : Float, optional
+            socket 'Column 3 Row 3' (id: Column 3 Row 3)
+        
+        column_3_row_4 : Float, optional
+            socket 'Column 3 Row 4' (id: Column 3 Row 4)
+        
+        column_4_row_1 : Float, optional
+            socket 'Column 4 Row 1' (id: Column 4 Row 1)
+        
+        column_4_row_2 : Float, optional
+            socket 'Column 4 Row 2' (id: Column 4 Row 2)
+        
+        column_4_row_3 : Float, optional
+            socket 'Column 4 Row 3' (id: Column 4 Row 3)
+        
+        column_4_row_4 : Float, optional
+            socket 'Column 4 Row 4' (id: Column 4 Row 4)
+        
 
         Returns
         -------
-        - Matrix
+        Matrix
         """
         node = Node('Combine Matrix', {'Column 1 Row 1': column_1_row_1, 'Column 1 Row 2': column_1_row_2, 'Column 1 Row 3': column_1_row_3, 'Column 1 Row 4': column_1_row_4, 'Column 2 Row 1': column_2_row_1, 'Column 2 Row 2': column_2_row_2, 'Column 2 Row 3': column_2_row_3, 'Column 2 Row 4': column_2_row_4, 'Column 3 Row 1': column_3_row_1, 'Column 3 Row 2': column_3_row_2, 'Column 3 Row 3': column_3_row_3, 'Column 3 Row 4': column_3_row_4, 'Column 4 Row 1': column_4_row_1, 'Column 4 Row 2': column_4_row_2, 'Column 4 Row 3': column_4_row_3, 'Column 4 Row 4': column_4_row_4})
         return node._out
@@ -224,15 +288,21 @@ class ND:
                     scale: Vector = None):
         """ > Node <&Node Combine Transform>
 
-        Arguments
+        Parameters
         ---------
-        - translation (Vector) : socket 'Translation' (id: Translation)
-        - rotation (Rotation) : socket 'Rotation' (id: Rotation)
-        - scale (Vector) : socket 'Scale' (id: Scale)
+        translation : Vector, optional
+            socket 'Translation' (id: Translation)
+        
+        rotation : Rotation, optional
+            socket 'Rotation' (id: Rotation)
+        
+        scale : Vector, optional
+            socket 'Scale' (id: Scale)
+        
 
         Returns
         -------
-        - Matrix
+        Matrix
         """
         node = Node('Combine Transform', {'Translation': translation, 'Rotation': rotation, 'Scale': scale})
         return node._out
@@ -257,28 +327,54 @@ class ND:
                     operation: Literal['LESS_THAN', 'LESS_EQUAL', 'GREATER_THAN', 'GREATER_EQUAL', 'EQUAL', 'NOT_EQUAL'] = 'GREATER_THAN'):
         """ > Node <&Node Compare>
 
-        Arguments
+        Parameters
         ---------
-        - a (Float) : socket 'A' (id: A)
-        - b (Float) : socket 'B' (id: B)
-        - a_1 (Integer) : socket 'A' (id: A_INT)
-        - b_1 (Integer) : socket 'B' (id: B_INT)
-        - a_2 (Vector) : socket 'A' (id: A_VEC3)
-        - b_2 (Vector) : socket 'B' (id: B_VEC3)
-        - a_3 (Color) : socket 'A' (id: A_COL)
-        - b_3 (Color) : socket 'B' (id: B_COL)
-        - a_4 (String) : socket 'A' (id: A_STR)
-        - b_4 (String) : socket 'B' (id: B_STR)
-        - c (Float) : socket 'C' (id: C)
-        - angle (Float) : socket 'Angle' (id: Angle)
-        - epsilon (Float) : socket 'Epsilon' (id: Epsilon)
-        - data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Vector', 'Color', 'String')
-        - mode (str): parameter 'mode' in ('Element-Wise', 'Length', 'Average', 'Dot Product', 'Direction')
-        - operation (str): parameter 'operation' in ('Less Than', 'Less Than or Equal', 'Greater Than', 'Greater Than or Equal', 'Equal', 'Not Equal')
+        a : Float, optional
+            socket 'A' (id: A)
+        
+        b : Float, optional
+            socket 'B' (id: B)
+        
+        a_1 : Integer, optional
+            socket 'A' (id: A_INT)
+        
+        b_1 : Integer, optional
+            socket 'B' (id: B_INT)
+        
+        a_2 : Vector, optional
+            socket 'A' (id: A_VEC3)
+        
+        b_2 : Vector, optional
+            socket 'B' (id: B_VEC3)
+        
+        a_3 : Color, optional
+            socket 'A' (id: A_COL)
+        
+        b_3 : Color, optional
+            socket 'B' (id: B_COL)
+        
+        a_4 : String, optional
+            socket 'A' (id: A_STR)
+        
+        b_4 : String, optional
+            socket 'B' (id: B_STR)
+        
+        c : Float, optional
+            socket 'C' (id: C)
+        
+        angle : Float, optional
+            socket 'Angle' (id: Angle)
+        
+        epsilon : Float, optional
+            socket 'Epsilon' (id: Epsilon)
+        
+        data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Vector', 'Color', 'String')
+        mode (str): parameter 'mode' in ('Element-Wise', 'Length', 'Average', 'Dot Product', 'Direction')
+        operation (str): parameter 'operation' in ('Less Than', 'Less Than or Equal', 'Greater Than', 'Greater Than or Equal', 'Equal', 'Not Equal')
 
         Returns
         -------
-        - Boolean
+        Boolean
         """
         utils.check_enum_arg('Compare', 'mode', mode, 'compare', ('ELEMENT', 'LENGTH', 'AVERAGE', 'DOT_PRODUCT', 'DIRECTION'))
         utils.check_enum_arg('Compare', 'operation', operation, 'compare', ('LESS_THAN', 'LESS_EQUAL', 'GREATER_THAN', 'GREATER_EQUAL', 'EQUAL', 'NOT_EQUAL'))
@@ -289,13 +385,15 @@ class ND:
     def euler_to_rotation(cls, euler: Vector = None):
         """ > Node <&Node Euler to Rotation>
 
-        Arguments
+        Parameters
         ---------
-        - euler (Vector) : socket 'Euler' (id: Euler)
+        euler : Vector, optional
+            socket 'Euler' (id: Euler)
+        
 
         Returns
         -------
-        - Rotation
+        Rotation
         """
         node = Node('Euler to Rotation', {'Euler': euler})
         return node._out
@@ -304,14 +402,20 @@ class ND:
     def find_in_string(cls, string: String = None, search: String = None):
         """ > Node <&Node Find in String>
 
-        Arguments
+        Parameters
         ---------
-        - string (String) : socket 'String' (id: String)
-        - search (String) : socket 'Search' (id: Search)
+        string : String, optional
+            socket 'String' (id: String)
+        
+        search : String, optional
+            socket 'Search' (id: Search)
+        
 
         Returns
         -------
-        - Integer [count_ (Integer)]
+        Integer
+            peer sockets: count_ (Integer)
+
         """
         node = Node('Find in String', {'String': string, 'Search': search})
         return node._out
@@ -322,14 +426,16 @@ class ND:
                     rounding_mode: Literal['ROUND', 'FLOOR', 'CEILING', 'TRUNCATE'] = 'ROUND'):
         """ > Node <&Node Float to Integer>
 
-        Arguments
+        Parameters
         ---------
-        - float (Float) : socket 'Float' (id: Float)
-        - rounding_mode (str): parameter 'rounding_mode' in ('Round', 'Floor', 'Ceiling', 'Truncate')
+        float : Float, optional
+            socket 'Float' (id: Float)
+        
+        rounding_mode (str): parameter 'rounding_mode' in ('Round', 'Floor', 'Ceiling', 'Truncate')
 
         Returns
         -------
-        - Integer
+        Integer
         """
         utils.check_enum_arg('Float to Integer', 'rounding_mode', rounding_mode, 'float_to_integer', ('ROUND', 'FLOOR', 'CEILING', 'TRUNCATE'))
         node = Node('Float to Integer', {'Float': float}, rounding_mode=rounding_mode)
@@ -339,13 +445,15 @@ class ND:
     def format_string(cls, named_sockets: dict = {}, format: String = None, **sockets):
         """ > Node <&Node Format String>
 
-        Arguments
+        Parameters
         ---------
-        - format (String) : socket 'Format' (id: Format)
+        format : String, optional
+            socket 'Format' (id: Format)
+        
 
         Returns
         -------
-        - String
+        String
         """
         node = Node('Format String', {'Format': format, **named_sockets}, **sockets)
         return node._out
@@ -357,15 +465,19 @@ class ND:
                     data_type: Literal['FLOAT', 'INT', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING'] = 'INT'):
         """ > Node <&Node Hash Value>
 
-        Arguments
+        Parameters
         ---------
-        - value (Integer) : socket 'Value' (id: Value)
-        - seed (Integer) : socket 'Seed' (id: Seed)
-        - data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Vector', 'Color', 'Rotation', 'Matrix', 'String')
+        value : Integer, optional
+            socket 'Value' (id: Value)
+        
+        seed : Integer, optional
+            socket 'Seed' (id: Seed)
+        
+        data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Vector', 'Color', 'Rotation', 'Matrix', 'String')
 
         Returns
         -------
-        - Integer
+        Integer
         """
         node = Node('Hash Value', {'Value': value, 'Seed': seed}, data_type=data_type)
         return node._out
@@ -374,13 +486,13 @@ class ND:
     def boolean(cls, boolean = False):
         """ > Node <&Node Boolean>
 
-        Arguments
+        Parameters
         ---------
-        - boolean (bool): parameter 'boolean'
+        boolean (bool): parameter 'boolean'
 
         Returns
         -------
-        - Boolean
+        Boolean
         """
         node = Node('Boolean', boolean=boolean)
         return node._out
@@ -391,7 +503,7 @@ class ND:
 
         Returns
         -------
-        - Color
+        Color
         """
         node = Node('Color', )
         return node._out
@@ -400,13 +512,13 @@ class ND:
     def integer(cls, integer = 0):
         """ > Node <&Node Integer>
 
-        Arguments
+        Parameters
         ---------
-        - integer (int): parameter 'integer'
+        integer (int): parameter 'integer'
 
         Returns
         -------
-        - Integer
+        Integer
         """
         node = Node('Integer', integer=integer)
         return node._out
@@ -417,7 +529,7 @@ class ND:
 
         Returns
         -------
-        - Rotation
+        Rotation
         """
         node = Node('Rotation', )
         return node._out
@@ -428,7 +540,9 @@ class ND:
 
         Returns
         -------
-        - String [tab_ (String)]
+        String
+            peer sockets: tab_ (String)
+
         """
         node = Node('Special Characters', )
         return node
@@ -437,13 +551,13 @@ class ND:
     def string(cls, string = ''):
         """ > Node <&Node String>
 
-        Arguments
+        Parameters
         ---------
-        - string (str): parameter 'string'
+        string (str): parameter 'string'
 
         Returns
         -------
-        - String
+        String
         """
         node = Node('String', string=string)
         return node._out
@@ -454,7 +568,7 @@ class ND:
 
         Returns
         -------
-        - Vector
+        Vector
         """
         node = Node('Vector', )
         return node._out
@@ -467,16 +581,22 @@ class ND:
                     operation: Literal['ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'MULTIPLY_ADD', 'ABSOLUTE', 'NEGATE', 'POWER', 'MINIMUM', 'MAXIMUM', 'SIGN', 'DIVIDE_ROUND', 'DIVIDE_FLOOR', 'DIVIDE_CEIL', 'FLOORED_MODULO', 'MODULO', 'GCD', 'LCM'] = 'ADD'):
         """ > Node <&Node Integer Math>
 
-        Arguments
+        Parameters
         ---------
-        - value (Integer) : socket 'Value' (id: Value)
-        - value_1 (Integer) : socket 'Value' (id: Value_001)
-        - value_2 (Integer) : socket 'Value' (id: Value_002)
-        - operation (str): parameter 'operation' in ('Add', 'Subtract', 'Multiply', 'Divide', 'Multiply Add', 'Absolute', 'Negate', 'Power', 'Minimum', 'Maximum', 'Sign', 'Divide Round', 'Divide Floor', 'Divide Ceiling', 'Floored Modulo', 'Modulo', 'Greatest Common Divisor', 'Least Common Multiple')
+        value : Integer, optional
+            socket 'Value' (id: Value)
+        
+        value_1 : Integer, optional
+            socket 'Value' (id: Value_001)
+        
+        value_2 : Integer, optional
+            socket 'Value' (id: Value_002)
+        
+        operation (str): parameter 'operation' in ('Add', 'Subtract', 'Multiply', 'Divide', 'Multiply Add', 'Absolute', 'Negate', 'Power', 'Minimum', 'Maximum', 'Sign', 'Divide Round', 'Divide Floor', 'Divide Ceiling', 'Floored Modulo', 'Modulo', 'Greatest Common Divisor', 'Least Common Multiple')
 
         Returns
         -------
-        - Integer
+        Integer
         """
         utils.check_enum_arg('Integer Math', 'operation', operation, 'integer_math', ('ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'MULTIPLY_ADD', 'ABSOLUTE', 'NEGATE', 'POWER', 'MINIMUM', 'MAXIMUM', 'SIGN', 'DIVIDE_ROUND', 'DIVIDE_FLOOR', 'DIVIDE_CEIL', 'FLOORED_MODULO', 'MODULO', 'GCD', 'LCM'))
         node = Node('Integer Math', {'Value': value, 'Value_001': value_1, 'Value_002': value_2}, operation=operation)
@@ -486,13 +606,17 @@ class ND:
     def invert_matrix(cls, matrix: Matrix = None):
         """ > Node <&Node Invert Matrix>
 
-        Arguments
+        Parameters
         ---------
-        - matrix (Matrix) : socket 'Matrix' (id: Matrix)
+        matrix : Matrix, optional
+            socket 'Matrix' (id: Matrix)
+        
 
         Returns
         -------
-        - Matrix [invertible_ (Boolean)]
+        Matrix
+            peer sockets: invertible_ (Boolean)
+
         """
         node = Node('Invert Matrix', {'Matrix': matrix})
         return node._out
@@ -501,13 +625,15 @@ class ND:
     def invert_rotation(cls, rotation: Rotation = None):
         """ > Node <&Node Invert Rotation>
 
-        Arguments
+        Parameters
         ---------
-        - rotation (Rotation) : socket 'Rotation' (id: Rotation)
+        rotation : Rotation, optional
+            socket 'Rotation' (id: Rotation)
+        
 
         Returns
         -------
-        - Rotation
+        Rotation
         """
         node = Node('Invert Rotation', {'Rotation': rotation})
         return node._out
@@ -519,15 +645,21 @@ class ND:
                     key: String = None):
         """ > Node <&Node Match String>
 
-        Arguments
+        Parameters
         ---------
-        - string (String) : socket 'String' (id: String)
-        - operation (menu='Starts With') : ('Starts With', 'Ends With', 'Contains')
-        - key (String) : socket 'Key' (id: Key)
+        string : String, optional
+            socket 'String' (id: String)
+        
+        operation : menu='Starts With', optional
+            ('Starts With', 'Ends With', 'Contains')
+        
+        key : String, optional
+            socket 'Key' (id: Key)
+        
 
         Returns
         -------
-        - Boolean
+        Boolean
         """
         node = Node('Match String', {'String': string, 'Operation': operation, 'Key': key})
         return node._out
@@ -536,13 +668,15 @@ class ND:
     def matrix_determinant(cls, matrix: Matrix = None):
         """ > Node <&Node Matrix Determinant>
 
-        Arguments
+        Parameters
         ---------
-        - matrix (Matrix) : socket 'Matrix' (id: Matrix)
+        matrix : Matrix, optional
+            socket 'Matrix' (id: Matrix)
+        
 
         Returns
         -------
-        - Float
+        Float
         """
         node = Node('Matrix Determinant', {'Matrix': matrix})
         return node._out
@@ -551,14 +685,18 @@ class ND:
     def multiply_matrices(cls, matrix: Matrix = None, matrix_1: Matrix = None):
         """ > Node <&Node Multiply Matrices>
 
-        Arguments
+        Parameters
         ---------
-        - matrix (Matrix) : socket 'Matrix' (id: Matrix)
-        - matrix_1 (Matrix) : socket 'Matrix' (id: Matrix_001)
+        matrix : Matrix, optional
+            socket 'Matrix' (id: Matrix)
+        
+        matrix_1 : Matrix, optional
+            socket 'Matrix' (id: Matrix_001)
+        
 
         Returns
         -------
-        - Matrix
+        Matrix
         """
         node = Node('Multiply Matrices', {'Matrix': matrix, 'Matrix_001': matrix_1})
         return node._out
@@ -567,13 +705,17 @@ class ND:
     def matrix_svd(cls, matrix: Matrix = None):
         """ > Node <&Node Matrix SVD>
 
-        Arguments
+        Parameters
         ---------
-        - matrix (Matrix) : socket 'Matrix' (id: Matrix)
+        matrix : Matrix, optional
+            socket 'Matrix' (id: Matrix)
+        
 
         Returns
         -------
-        - Matrix [s_ (Vector), v_ (Matrix)]
+        Matrix
+            peer sockets: s_ (Vector), v_ (Matrix)
+
         """
         node = Node('Matrix SVD', {'Matrix': matrix})
         return node._out
@@ -582,14 +724,18 @@ class ND:
     def project_point(cls, vector: Vector = None, transform: Matrix = None):
         """ > Node <&Node Project Point>
 
-        Arguments
+        Parameters
         ---------
-        - vector (Vector) : socket 'Vector' (id: Vector)
-        - transform (Matrix) : socket 'Transform' (id: Transform)
+        vector : Vector, optional
+            socket 'Vector' (id: Vector)
+        
+        transform : Matrix, optional
+            socket 'Transform' (id: Transform)
+        
 
         Returns
         -------
-        - Vector
+        Vector
         """
         node = Node('Project Point', {'Vector': vector, 'Transform': transform})
         return node._out
@@ -598,16 +744,24 @@ class ND:
     def quaternion_to_rotation(cls, w: Float = None, x: Float = None, y: Float = None, z: Float = None):
         """ > Node <&Node Quaternion to Rotation>
 
-        Arguments
+        Parameters
         ---------
-        - w (Float) : socket 'W' (id: W)
-        - x (Float) : socket 'X' (id: X)
-        - y (Float) : socket 'Y' (id: Y)
-        - z (Float) : socket 'Z' (id: Z)
+        w : Float, optional
+            socket 'W' (id: W)
+        
+        x : Float, optional
+            socket 'X' (id: X)
+        
+        y : Float, optional
+            socket 'Y' (id: Y)
+        
+        z : Float, optional
+            socket 'Z' (id: Z)
+        
 
         Returns
         -------
-        - Rotation
+        Rotation
         """
         node = Node('Quaternion to Rotation', {'W': w, 'X': x, 'Y': y, 'Z': z})
         return node._out
@@ -626,22 +780,40 @@ class ND:
                     data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'FLOAT_VECTOR'] = 'FLOAT'):
         """ > Node <&Node Random Value>
 
-        Arguments
+        Parameters
         ---------
-        - min (Vector) : socket 'Min' (id: Min)
-        - max (Vector) : socket 'Max' (id: Max)
-        - min_1 (Float) : socket 'Min' (id: Min_001)
-        - max_1 (Float) : socket 'Max' (id: Max_001)
-        - min_2 (Integer) : socket 'Min' (id: Min_002)
-        - max_2 (Integer) : socket 'Max' (id: Max_002)
-        - probability (Float) : socket 'Probability' (id: Probability)
-        - id (Integer) : socket 'ID' (id: ID)
-        - seed (Integer) : socket 'Seed' (id: Seed)
-        - data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector')
+        min : Vector, optional
+            socket 'Min' (id: Min)
+        
+        max : Vector, optional
+            socket 'Max' (id: Max)
+        
+        min_1 : Float, optional
+            socket 'Min' (id: Min_001)
+        
+        max_1 : Float, optional
+            socket 'Max' (id: Max_001)
+        
+        min_2 : Integer, optional
+            socket 'Min' (id: Min_002)
+        
+        max_2 : Integer, optional
+            socket 'Max' (id: Max_002)
+        
+        probability : Float, optional
+            socket 'Probability' (id: Probability)
+        
+        id : Integer, optional
+            socket 'ID' (id: ID)
+        
+        seed : Integer, optional
+            socket 'Seed' (id: Seed)
+        
+        data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector')
 
         Returns
         -------
-        - Float
+        Float
         """
         node = Node('Random Value', {'Min': min, 'Max': max, 'Min_001': min_1, 'Max_001': max_1, 'Min_002': min_2, 'Max_002': max_2, 'Probability': probability, 'ID': id, 'Seed': seed}, data_type=data_type)
         return node._out
@@ -650,15 +822,21 @@ class ND:
     def replace_string(cls, string: String = None, find: String = None, replace: String = None):
         """ > Node <&Node Replace String>
 
-        Arguments
+        Parameters
         ---------
-        - string (String) : socket 'String' (id: String)
-        - find (String) : socket 'Find' (id: Find)
-        - replace (String) : socket 'Replace' (id: Replace)
+        string : String, optional
+            socket 'String' (id: String)
+        
+        find : String, optional
+            socket 'Find' (id: Find)
+        
+        replace : String, optional
+            socket 'Replace' (id: Replace)
+        
 
         Returns
         -------
-        - String
+        String
         """
         node = Node('Replace String', {'String': string, 'Find': find, 'Replace': replace})
         return node._out
@@ -670,15 +848,19 @@ class ND:
                     rotation_space: Literal['GLOBAL', 'LOCAL'] = 'GLOBAL'):
         """ > Node <&Node Rotate Rotation>
 
-        Arguments
+        Parameters
         ---------
-        - rotation (Rotation) : socket 'Rotation' (id: Rotation)
-        - rotate_by (Rotation) : socket 'Rotate By' (id: Rotate By)
-        - rotation_space (str): parameter 'rotation_space' in ('Global', 'Local')
+        rotation : Rotation, optional
+            socket 'Rotation' (id: Rotation)
+        
+        rotate_by : Rotation, optional
+            socket 'Rotate By' (id: Rotate By)
+        
+        rotation_space (str): parameter 'rotation_space' in ('Global', 'Local')
 
         Returns
         -------
-        - Rotation
+        Rotation
         """
         utils.check_enum_arg('Rotate Rotation', 'rotation_space', rotation_space, 'rotate_rotation', ('GLOBAL', 'LOCAL'))
         node = Node('Rotate Rotation', {'Rotation': rotation, 'Rotate By': rotate_by}, rotation_space=rotation_space)
@@ -688,14 +870,18 @@ class ND:
     def rotate_vector(cls, vector: Vector = None, rotation: Rotation = None):
         """ > Node <&Node Rotate Vector>
 
-        Arguments
+        Parameters
         ---------
-        - vector (Vector) : socket 'Vector' (id: Vector)
-        - rotation (Rotation) : socket 'Rotation' (id: Rotation)
+        vector : Vector, optional
+            socket 'Vector' (id: Vector)
+        
+        rotation : Rotation, optional
+            socket 'Rotation' (id: Rotation)
+        
 
         Returns
         -------
-        - Vector
+        Vector
         """
         node = Node('Rotate Vector', {'Vector': vector, 'Rotation': rotation})
         return node._out
@@ -704,13 +890,17 @@ class ND:
     def rotation_to_axis_angle(cls, rotation: Rotation = None):
         """ > Node <&Node Rotation to Axis Angle>
 
-        Arguments
+        Parameters
         ---------
-        - rotation (Rotation) : socket 'Rotation' (id: Rotation)
+        rotation : Rotation, optional
+            socket 'Rotation' (id: Rotation)
+        
 
         Returns
         -------
-        - Vector [angle_ (Float)]
+        Vector
+            peer sockets: angle_ (Float)
+
         """
         node = Node('Rotation to Axis Angle', {'Rotation': rotation})
         return node._out
@@ -719,13 +909,15 @@ class ND:
     def rotation_to_euler(cls, rotation: Rotation = None):
         """ > Node <&Node Rotation to Euler>
 
-        Arguments
+        Parameters
         ---------
-        - rotation (Rotation) : socket 'Rotation' (id: Rotation)
+        rotation : Rotation, optional
+            socket 'Rotation' (id: Rotation)
+        
 
         Returns
         -------
-        - Vector
+        Vector
         """
         node = Node('Rotation to Euler', {'Rotation': rotation})
         return node._out
@@ -734,13 +926,17 @@ class ND:
     def rotation_to_quaternion(cls, rotation: Rotation = None):
         """ > Node <&Node Rotation to Quaternion>
 
-        Arguments
+        Parameters
         ---------
-        - rotation (Rotation) : socket 'Rotation' (id: Rotation)
+        rotation : Rotation, optional
+            socket 'Rotation' (id: Rotation)
+        
 
         Returns
         -------
-        - Float [x_ (Float), y_ (Float), z_ (Float)]
+        Float
+            peer sockets: x_ (Float), y_ (Float), z_ (Float)
+
         """
         node = Node('Rotation to Quaternion', {'Rotation': rotation})
         return node._out
@@ -749,14 +945,18 @@ class ND:
     def separate_color(cls, color: Color = None, mode: Literal['RGB', 'HSV', 'HSL'] = 'RGB'):
         """ > Node <&Node Separate Color>
 
-        Arguments
+        Parameters
         ---------
-        - color (Color) : socket 'Color' (id: Color)
-        - mode (str): parameter 'mode' in ('RGB', 'HSV', 'HSL')
+        color : Color, optional
+            socket 'Color' (id: Color)
+        
+        mode (str): parameter 'mode' in ('RGB', 'HSV', 'HSL')
 
         Returns
         -------
-        - Float [green_ (Float), blue_ (Float), alpha_ (Float)]
+        Float
+            peer sockets: green_ (Float), blue_ (Float), alpha_ (Float)
+
         """
         utils.check_enum_arg('Separate Color', 'mode', mode, 'separate_color', ('RGB', 'HSV', 'HSL'))
         node = Node('Separate Color', {'Color': color}, mode=mode)
@@ -766,13 +966,17 @@ class ND:
     def separate_matrix(cls, matrix: Matrix = None):
         """ > Node <&Node Separate Matrix>
 
-        Arguments
+        Parameters
         ---------
-        - matrix (Matrix) : socket 'Matrix' (id: Matrix)
+        matrix : Matrix, optional
+            socket 'Matrix' (id: Matrix)
+        
 
         Returns
         -------
-        - Float [column_1_row_2_ (Float), column_1_row_3_ (Float), column_1_row_4_ (Float), column_2_row_1_ (Float), column_2_row_2_ (Float), column_2_row_3_ (Float), column_2_row_4_ (Float), column_3_row_1_ (Float), column_3_row_2_ (Float), column_3_row_3_ (Float), column_3_row_4_ (Float), column_4_row_1_ (Float), column_4_row_2_ (Float), column_4_row_3_ (Float), column_4_row_4_ (Float)]
+        Float
+            peer sockets: column_1_row_2_ (Float), column_1_row_3_ (Float), column_1_row_4_ (Float), column_2_row_1_ (Float), column_2_row_2_ (Float), column_2_row_3_ (Float), column_2_row_4_ (Float), column_3_row_1_ (Float), column_3_row_2_ (Float), column_3_row_3_ (Float), column_3_row_4_ (Float), column_4_row_1_ (Float), column_4_row_2_ (Float), column_4_row_3_ (Float), column_4_row_4_ (Float)
+
         """
         node = Node('Separate Matrix', {'Matrix': matrix})
         return node
@@ -781,13 +985,17 @@ class ND:
     def separate_transform(cls, transform: Matrix = None):
         """ > Node <&Node Separate Transform>
 
-        Arguments
+        Parameters
         ---------
-        - transform (Matrix) : socket 'Transform' (id: Transform)
+        transform : Matrix, optional
+            socket 'Transform' (id: Transform)
+        
 
         Returns
         -------
-        - Vector [rotation_ (Rotation), scale_ (Vector)]
+        Vector
+            peer sockets: rotation_ (Rotation), scale_ (Vector)
+
         """
         node = Node('Separate Transform', {'Transform': transform})
         return node
@@ -796,15 +1004,21 @@ class ND:
     def slice_string(cls, string: String = None, position: Integer = None, length: Integer = None):
         """ > Node <&Node Slice String>
 
-        Arguments
+        Parameters
         ---------
-        - string (String) : socket 'String' (id: String)
-        - position (Integer) : socket 'Position' (id: Position)
-        - length (Integer) : socket 'Length' (id: Length)
+        string : String, optional
+            socket 'String' (id: String)
+        
+        position : Integer, optional
+            socket 'Position' (id: Position)
+        
+        length : Integer, optional
+            socket 'Length' (id: Length)
+        
 
         Returns
         -------
-        - String
+        String
         """
         node = Node('Slice String', {'String': string, 'Position': position, 'Length': length})
         return node._out
@@ -813,13 +1027,15 @@ class ND:
     def string_length(cls, string: String = None):
         """ > Node <&Node String Length>
 
-        Arguments
+        Parameters
         ---------
-        - string (String) : socket 'String' (id: String)
+        string : String, optional
+            socket 'String' (id: String)
+        
 
         Returns
         -------
-        - Integer
+        Integer
         """
         node = Node('String Length', {'String': string})
         return node._out
@@ -828,14 +1044,18 @@ class ND:
     def string_to_value(cls, string: String = None, data_type: Literal['FLOAT', 'INT'] = 'FLOAT'):
         """ > Node <&Node String to Value>
 
-        Arguments
+        Parameters
         ---------
-        - string (String) : socket 'String' (id: String)
-        - data_type (str): parameter 'data_type' in ('Float', 'Integer')
+        string : String, optional
+            socket 'String' (id: String)
+        
+        data_type (str): parameter 'data_type' in ('Float', 'Integer')
 
         Returns
         -------
-        - Float [length_ (Integer)]
+        Float
+            peer sockets: length_ (Integer)
+
         """
         node = Node('String to Value', {'String': string}, data_type=data_type)
         return node._out
@@ -844,14 +1064,18 @@ class ND:
     def transform_direction(cls, direction: Vector = None, transform: Matrix = None):
         """ > Node <&Node Transform Direction>
 
-        Arguments
+        Parameters
         ---------
-        - direction (Vector) : socket 'Direction' (id: Direction)
-        - transform (Matrix) : socket 'Transform' (id: Transform)
+        direction : Vector, optional
+            socket 'Direction' (id: Direction)
+        
+        transform : Matrix, optional
+            socket 'Transform' (id: Transform)
+        
 
         Returns
         -------
-        - Vector
+        Vector
         """
         node = Node('Transform Direction', {'Direction': direction, 'Transform': transform})
         return node._out
@@ -860,14 +1084,18 @@ class ND:
     def transform_point(cls, vector: Vector = None, transform: Matrix = None):
         """ > Node <&Node Transform Point>
 
-        Arguments
+        Parameters
         ---------
-        - vector (Vector) : socket 'Vector' (id: Vector)
-        - transform (Matrix) : socket 'Transform' (id: Transform)
+        vector : Vector, optional
+            socket 'Vector' (id: Vector)
+        
+        transform : Matrix, optional
+            socket 'Transform' (id: Transform)
+        
 
         Returns
         -------
-        - Vector
+        Vector
         """
         node = Node('Transform Point', {'Vector': vector, 'Transform': transform})
         return node._out
@@ -876,13 +1104,15 @@ class ND:
     def transpose_matrix(cls, matrix: Matrix = None):
         """ > Node <&Node Transpose Matrix>
 
-        Arguments
+        Parameters
         ---------
-        - matrix (Matrix) : socket 'Matrix' (id: Matrix)
+        matrix : Matrix, optional
+            socket 'Matrix' (id: Matrix)
+        
 
         Returns
         -------
-        - Matrix
+        Matrix
         """
         node = Node('Transpose Matrix', {'Matrix': matrix})
         return node._out
@@ -894,15 +1124,19 @@ class ND:
                     data_type: Literal['FLOAT', 'INT'] = 'FLOAT'):
         """ > Node <&Node Value to String>
 
-        Arguments
+        Parameters
         ---------
-        - value (Float) : socket 'Value' (id: Value)
-        - decimals (Integer) : socket 'Decimals' (id: Decimals)
-        - data_type (str): parameter 'data_type' in ('Float', 'Integer')
+        value : Float, optional
+            socket 'Value' (id: Value)
+        
+        decimals : Integer, optional
+            socket 'Decimals' (id: Decimals)
+        
+        data_type (str): parameter 'data_type' in ('Float', 'Integer')
 
         Returns
         -------
-        - String
+        String
         """
         node = Node('Value to String', {'Value': value, 'Decimals': decimals}, data_type=data_type)
         return node._out
@@ -915,16 +1149,22 @@ class ND:
                     domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'] = 'POINT'):
         """ > Node <&Node Accumulate Field>
 
-        Arguments
+        Parameters
         ---------
-        - value (Float) : socket 'Value' (id: Value)
-        - group_id (Integer) : socket 'Group ID' (id: Group Index)
-        - data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Vector', 'Transform')
-        - domain (str): parameter 'domain' in ('Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer')
+        value : Float, optional
+            socket 'Value' (id: Value)
+        
+        group_id : Integer, optional
+            socket 'Group ID' (id: Group Index)
+        
+        data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Vector', 'Transform')
+        domain (str): parameter 'domain' in ('Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer')
 
         Returns
         -------
-        - Float [trailing_ (Float), total_ (Float)]
+        Float
+            peer sockets: trailing_ (Float), total_ (Float)
+
         """
         utils.check_enum_arg('Accumulate Field', 'domain', domain, 'accumulate_field', ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'))
         node = Node('Accumulate Field', {'Value': value, 'Group Index': group_id}, data_type=data_type, domain=domain)
@@ -936,14 +1176,18 @@ class ND:
                     component: Literal['MESH', 'POINTCLOUD', 'CURVE', 'INSTANCES', 'GREASEPENCIL'] = 'MESH'):
         """ > Node <&Node Domain Size>
 
-        Arguments
+        Parameters
         ---------
-        - geometry (Geometry) : socket 'Geometry' (id: Geometry)
-        - component (str): parameter 'component' in ('Mesh', 'Point Cloud', 'Curve', 'Instances', 'Grease Pencil')
+        geometry : Geometry, optional
+            socket 'Geometry' (id: Geometry)
+        
+        component (str): parameter 'component' in ('Mesh', 'Point Cloud', 'Curve', 'Instances', 'Grease Pencil')
 
         Returns
         -------
-        - Integer [edge_count_ (Integer), face_count_ (Integer), face_corner_count_ (Integer)]
+        Integer
+            peer sockets: edge_count_ (Integer), face_count_ (Integer), face_corner_count_ (Integer)
+
         """
         utils.check_enum_arg('Domain Size', 'component', component, 'domain_size', ('MESH', 'POINTCLOUD', 'CURVE', 'INSTANCES', 'GREASEPENCIL'))
         node = Node('Domain Size', {'Geometry': geometry}, component=component)
@@ -958,17 +1202,25 @@ class ND:
                     domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'] = 'POINT'):
         """ > Node <&Node Attribute Statistic>
 
-        Arguments
+        Parameters
         ---------
-        - geometry (Geometry) : socket 'Geometry' (id: Geometry)
-        - selection (Boolean) : socket 'Selection' (id: Selection)
-        - attribute (Float) : socket 'Attribute' (id: Attribute)
-        - data_type (str): parameter 'data_type' in ('Float', 'Vector')
-        - domain (str): parameter 'domain' in ('Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer')
+        geometry : Geometry, optional
+            socket 'Geometry' (id: Geometry)
+        
+        selection : Boolean, optional
+            socket 'Selection' (id: Selection)
+        
+        attribute : Float, optional
+            socket 'Attribute' (id: Attribute)
+        
+        data_type (str): parameter 'data_type' in ('Float', 'Vector')
+        domain (str): parameter 'domain' in ('Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer')
 
         Returns
         -------
-        - Float [median_ (Float), sum_ (Float), min_ (Float), max_ (Float), range_ (Float), standard_deviation_ (Float), variance_ (Float)]
+        Float
+            peer sockets: median_ (Float), sum_ (Float), min_ (Float), max_ (Float), range_ (Float), standard_deviation_ (Float), variance_ (Float)
+
         """
         utils.check_enum_arg('Attribute Statistic', 'domain', domain, 'attribute_statistic', ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'))
         node = Node('Attribute Statistic', {'Geometry': geometry, 'Selection': selection, 'Attribute': attribute}, data_type=data_type, domain=domain)
@@ -980,7 +1232,7 @@ class ND:
 
         Returns
         -------
-        - None
+        None
         """
         node = Node('Bake', named_sockets, **sockets)
         return node._out
@@ -993,16 +1245,22 @@ class ND:
                     data_type: Literal['FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR'] = 'FLOAT'):
         """ > Node <&Node Blur Attribute>
 
-        Arguments
+        Parameters
         ---------
-        - value (Float) : socket 'Value' (id: Value)
-        - iterations (Integer) : socket 'Iterations' (id: Iterations)
-        - weight (Float) : socket 'Weight' (id: Weight)
-        - data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Vector', 'Color')
+        value : Float, optional
+            socket 'Value' (id: Value)
+        
+        iterations : Integer, optional
+            socket 'Iterations' (id: Iterations)
+        
+        weight : Float, optional
+            socket 'Weight' (id: Weight)
+        
+        data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Vector', 'Color')
 
         Returns
         -------
-        - Float
+        Float
         """
         node = Node('Blur Attribute', {'Value': value, 'Iterations': iterations, 'Weight': weight}, data_type=data_type)
         return node._out
@@ -1014,15 +1272,21 @@ class ND:
                     transform_space: Literal['ORIGINAL', 'RELATIVE'] = 'ORIGINAL'):
         """ > Node <&Node Bone Info>
 
-        Arguments
+        Parameters
         ---------
-        - armature (Object) : socket 'Armature' (id: Armature)
-        - bone_name (String) : socket 'Bone Name' (id: Bone Name)
-        - transform_space (str): parameter 'transform_space' in ('Original', 'Relative')
+        armature : Object, optional
+            socket 'Armature' (id: Armature)
+        
+        bone_name : String, optional
+            socket 'Bone Name' (id: Bone Name)
+        
+        transform_space (str): parameter 'transform_space' in ('Original', 'Relative')
 
         Returns
         -------
-        - Matrix [local_pose_ (Matrix), transform_pose_ (Matrix), rest_pose_ (Matrix), rest_length_ (Float)]
+        Matrix
+            peer sockets: local_pose_ (Matrix), transform_pose_ (Matrix), rest_pose_ (Matrix), rest_length_ (Float)
+
         """
         utils.check_enum_arg('Bone Info', 'transform_space', transform_space, 'bone_info', ('ORIGINAL', 'RELATIVE'))
         node = Node('Bone Info', {'Armature': armature, 'Bone Name': bone_name}, transform_space=transform_space)
@@ -1032,14 +1296,20 @@ class ND:
     def bounding_box(cls, geometry: Geometry = None, use_radius: Boolean = None):
         """ > Node <&Node Bounding Box>
 
-        Arguments
+        Parameters
         ---------
-        - geometry (Geometry) : socket 'Geometry' (id: Geometry)
-        - use_radius (Boolean) : socket 'Use Radius' (id: Use Radius)
+        geometry : Geometry, optional
+            socket 'Geometry' (id: Geometry)
+        
+        use_radius : Boolean, optional
+            socket 'Use Radius' (id: Use Radius)
+        
 
         Returns
         -------
-        - Mesh [min_ (Vector), max_ (Vector)]
+        Mesh
+            peer sockets: min_ (Vector), max_ (Vector)
+
         """
         node = Node('Bounding Box', {'Geometry': geometry, 'Use Radius': use_radius})
         return node._out
@@ -1048,13 +1318,17 @@ class ND:
     def camera_info(cls, camera: Object = None):
         """ > Node <&Node Camera Info>
 
-        Arguments
+        Parameters
         ---------
-        - camera (Object) : socket 'Camera' (id: Camera)
+        camera : Object, optional
+            socket 'Camera' (id: Camera)
+        
 
         Returns
         -------
-        - Matrix [focal_length_ (Float), sensor_ (Vector), shift_ (Vector), clip_start_ (Float), clip_end_ (Float), focus_distance_ (Float), is_orthographic_ (Boolean), orthographic_scale_ (Float)]
+        Matrix
+            peer sockets: focal_length_ (Float), sensor_ (Vector), shift_ (Vector), clip_start_ (Float), clip_end_ (Float), focus_distance_ (Float), is_orthographic_ (Boolean), orthographic_scale_ (Float)
+
         """
         node = Node('Camera Info', {'Camera': camera})
         return node._out
@@ -1067,14 +1341,16 @@ class ND:
                     **sockets):
         """ > Node <&Node Capture Attribute>
 
-        Arguments
+        Parameters
         ---------
-        - geometry (Geometry) : socket 'Geometry' (id: Geometry)
-        - domain (str): parameter 'domain' in ('Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer')
+        geometry : Geometry, optional
+            socket 'Geometry' (id: Geometry)
+        
+        domain (str): parameter 'domain' in ('Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer')
 
         Returns
         -------
-        - Geometry
+        Geometry
         """
         utils.check_enum_arg('Capture Attribute', 'domain', domain, 'capture_attribute', ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'))
         node = Node('Capture Attribute', {'Geometry': geometry, **named_sockets}, domain=domain, **sockets)
@@ -1088,16 +1364,22 @@ class ND:
                     transform_space: Literal['ORIGINAL', 'RELATIVE'] = 'ORIGINAL'):
         """ > Node <&Node Collection Info>
 
-        Arguments
+        Parameters
         ---------
-        - collection (Collection) : socket 'Collection' (id: Collection)
-        - separate_children (Boolean) : socket 'Separate Children' (id: Separate Children)
-        - reset_children (Boolean) : socket 'Reset Children' (id: Reset Children)
-        - transform_space (str): parameter 'transform_space' in ('Original', 'Relative')
+        collection : Collection, optional
+            socket 'Collection' (id: Collection)
+        
+        separate_children : Boolean, optional
+            socket 'Separate Children' (id: Separate Children)
+        
+        reset_children : Boolean, optional
+            socket 'Reset Children' (id: Reset Children)
+        
+        transform_space (str): parameter 'transform_space' in ('Original', 'Relative')
 
         Returns
         -------
-        - Instances
+        Instances
         """
         utils.check_enum_arg('Collection Info', 'transform_space', transform_space, 'collection_info', ('ORIGINAL', 'RELATIVE'))
         node = Node('Collection Info', {'Collection': collection, 'Separate Children': separate_children, 'Reset Children': reset_children}, transform_space=transform_space)
@@ -1107,13 +1389,15 @@ class ND:
     def convex_hull(cls, geometry: Geometry = None):
         """ > Node <&Node Convex Hull>
 
-        Arguments
+        Parameters
         ---------
-        - geometry (Geometry) : socket 'Geometry' (id: Geometry)
+        geometry : Geometry, optional
+            socket 'Geometry' (id: Geometry)
+        
 
         Returns
         -------
-        - Mesh
+        Mesh
         """
         node = Node('Convex Hull', {'Geometry': geometry})
         return node._out
@@ -1125,15 +1409,23 @@ class ND:
                     sort_index: Integer = None):
         """ > Node <&Node Corners of Edge>
 
-        Arguments
+        Parameters
         ---------
-        - edge_index (Integer) : socket 'Edge Index' (id: Edge Index)
-        - weights (Float) : socket 'Weights' (id: Weights)
-        - sort_index (Integer) : socket 'Sort Index' (id: Sort Index)
+        edge_index : Integer, optional
+            socket 'Edge Index' (id: Edge Index)
+        
+        weights : Float, optional
+            socket 'Weights' (id: Weights)
+        
+        sort_index : Integer, optional
+            socket 'Sort Index' (id: Sort Index)
+        
 
         Returns
         -------
-        - Integer [total_ (Integer)]
+        Integer
+            peer sockets: total_ (Integer)
+
         """
         node = Node('Corners of Edge', {'Edge Index': edge_index, 'Weights': weights, 'Sort Index': sort_index})
         return node._out
@@ -1145,15 +1437,23 @@ class ND:
                     sort_index: Integer = None):
         """ > Node <&Node Corners of Face>
 
-        Arguments
+        Parameters
         ---------
-        - face_index (Integer) : socket 'Face Index' (id: Face Index)
-        - weights (Float) : socket 'Weights' (id: Weights)
-        - sort_index (Integer) : socket 'Sort Index' (id: Sort Index)
+        face_index : Integer, optional
+            socket 'Face Index' (id: Face Index)
+        
+        weights : Float, optional
+            socket 'Weights' (id: Weights)
+        
+        sort_index : Integer, optional
+            socket 'Sort Index' (id: Sort Index)
+        
 
         Returns
         -------
-        - Integer [total_ (Integer)]
+        Integer
+            peer sockets: total_ (Integer)
+
         """
         node = Node('Corners of Face', {'Face Index': face_index, 'Weights': weights, 'Sort Index': sort_index})
         return node._out
@@ -1165,15 +1465,23 @@ class ND:
                     sort_index: Integer = None):
         """ > Node <&Node Corners of Vertex>
 
-        Arguments
+        Parameters
         ---------
-        - vertex_index (Integer) : socket 'Vertex Index' (id: Vertex Index)
-        - weights (Float) : socket 'Weights' (id: Weights)
-        - sort_index (Integer) : socket 'Sort Index' (id: Sort Index)
+        vertex_index : Integer, optional
+            socket 'Vertex Index' (id: Vertex Index)
+        
+        weights : Float, optional
+            socket 'Weights' (id: Weights)
+        
+        sort_index : Integer, optional
+            socket 'Sort Index' (id: Sort Index)
+        
 
         Returns
         -------
-        - Integer [total_ (Integer)]
+        Integer
+            peer sockets: total_ (Integer)
+
         """
         node = Node('Corners of Vertex', {'Vertex Index': vertex_index, 'Weights': weights, 'Sort Index': sort_index})
         return node._out
@@ -1190,20 +1498,36 @@ class ND:
                     min_z: Integer = None):
         """ > Node <&Node Cube Grid Topology>
 
-        Arguments
+        Parameters
         ---------
-        - bounds_min (Vector) : socket 'Bounds Min' (id: Bounds Min)
-        - bounds_max (Vector) : socket 'Bounds Max' (id: Bounds Max)
-        - resolution_x (Integer) : socket 'Resolution X' (id: Resolution X)
-        - resolution_y (Integer) : socket 'Resolution Y' (id: Resolution Y)
-        - resolution_z (Integer) : socket 'Resolution Z' (id: Resolution Z)
-        - min_x (Integer) : socket 'Min X' (id: Min X)
-        - min_y (Integer) : socket 'Min Y' (id: Min Y)
-        - min_z (Integer) : socket 'Min Z' (id: Min Z)
+        bounds_min : Vector, optional
+            socket 'Bounds Min' (id: Bounds Min)
+        
+        bounds_max : Vector, optional
+            socket 'Bounds Max' (id: Bounds Max)
+        
+        resolution_x : Integer, optional
+            socket 'Resolution X' (id: Resolution X)
+        
+        resolution_y : Integer, optional
+            socket 'Resolution Y' (id: Resolution Y)
+        
+        resolution_z : Integer, optional
+            socket 'Resolution Z' (id: Resolution Z)
+        
+        min_x : Integer, optional
+            socket 'Min X' (id: Min X)
+        
+        min_y : Integer, optional
+            socket 'Min Y' (id: Min Y)
+        
+        min_z : Integer, optional
+            socket 'Min Z' (id: Min Z)
+        
 
         Returns
         -------
-        - Boolean
+        Boolean
         """
         node = Node('Cube Grid Topology', {'Bounds Min': bounds_min, 'Bounds Max': bounds_max, 'Resolution X': resolution_x, 'Resolution Y': resolution_y, 'Resolution Z': resolution_z, 'Min X': min_x, 'Min Y': min_y, 'Min Z': min_z})
         return node._out
@@ -1223,23 +1547,43 @@ class ND:
                     mode: Literal['POINTS', 'RADIUS'] = 'RADIUS'):
         """ > Node <&Node Arc>
 
-        Arguments
+        Parameters
         ---------
-        - resolution (Integer) : socket 'Resolution' (id: Resolution)
-        - start (Vector) : socket 'Start' (id: Start)
-        - middle (Vector) : socket 'Middle' (id: Middle)
-        - end (Vector) : socket 'End' (id: End)
-        - radius (Float) : socket 'Radius' (id: Radius)
-        - start_angle (Float) : socket 'Start Angle' (id: Start Angle)
-        - sweep_angle (Float) : socket 'Sweep Angle' (id: Sweep Angle)
-        - offset_angle (Float) : socket 'Offset Angle' (id: Offset Angle)
-        - connect_center (Boolean) : socket 'Connect Center' (id: Connect Center)
-        - invert_arc (Boolean) : socket 'Invert Arc' (id: Invert Arc)
-        - mode (str): parameter 'mode' in ('Points', 'Radius')
+        resolution : Integer, optional
+            socket 'Resolution' (id: Resolution)
+        
+        start : Vector, optional
+            socket 'Start' (id: Start)
+        
+        middle : Vector, optional
+            socket 'Middle' (id: Middle)
+        
+        end : Vector, optional
+            socket 'End' (id: End)
+        
+        radius : Float, optional
+            socket 'Radius' (id: Radius)
+        
+        start_angle : Float, optional
+            socket 'Start Angle' (id: Start Angle)
+        
+        sweep_angle : Float, optional
+            socket 'Sweep Angle' (id: Sweep Angle)
+        
+        offset_angle : Float, optional
+            socket 'Offset Angle' (id: Offset Angle)
+        
+        connect_center : Boolean, optional
+            socket 'Connect Center' (id: Connect Center)
+        
+        invert_arc : Boolean, optional
+            socket 'Invert Arc' (id: Invert Arc)
+        
+        mode (str): parameter 'mode' in ('Points', 'Radius')
 
         Returns
         -------
-        - Curve
+        Curve
         """
         utils.check_enum_arg('Arc', 'mode', mode, 'arc', ('POINTS', 'RADIUS'))
         node = Node('Arc', {'Resolution': resolution, 'Start': start, 'Middle': middle, 'End': end, 'Radius': radius, 'Start Angle': start_angle, 'Sweep Angle': sweep_angle, 'Offset Angle': offset_angle, 'Connect Center': connect_center, 'Invert Arc': invert_arc}, mode=mode)
@@ -1249,14 +1593,18 @@ class ND:
     def endpoint_selection(cls, start_size: Integer = None, end_size: Integer = None):
         """ > Node <&Node Endpoint Selection>
 
-        Arguments
+        Parameters
         ---------
-        - start_size (Integer) : socket 'Start Size' (id: Start Size)
-        - end_size (Integer) : socket 'End Size' (id: End Size)
+        start_size : Integer, optional
+            socket 'Start Size' (id: Start Size)
+        
+        end_size : Integer, optional
+            socket 'End Size' (id: End Size)
+        
 
         Returns
         -------
-        - Boolean
+        Boolean
         """
         node = Node('Endpoint Selection', {'Start Size': start_size, 'End Size': end_size})
         return node._out
@@ -1264,17 +1612,17 @@ class ND:
     @classmethod
     def handle_type_selection(cls,
                     handle_type: Literal['FREE', 'AUTO', 'VECTOR', 'ALIGN'] = 'AUTO',
-                    mode = {'LEFT', 'RIGHT'}):
+                    mode = {'RIGHT', 'LEFT'}):
         """ > Node <&Node Handle Type Selection>
 
-        Arguments
+        Parameters
         ---------
-        - handle_type (str): parameter 'handle_type' in ('Free', 'Auto', 'Vector', 'Align')
-        - mode (set): parameter 'mode'
+        handle_type (str): parameter 'handle_type' in ('Free', 'Auto', 'Vector', 'Align')
+        mode (set): parameter 'mode'
 
         Returns
         -------
-        - Boolean
+        Boolean
         """
         utils.check_enum_arg('Handle Type Selection', 'handle_type', handle_type, 'handle_type_selection', ('FREE', 'AUTO', 'VECTOR', 'ALIGN'))
         node = Node('Handle Type Selection', handle_type=handle_type, mode=mode)
@@ -1284,13 +1632,15 @@ class ND:
     def curve_length(cls, curve: Curve = None):
         """ > Node <&Node Curve Length>
 
-        Arguments
+        Parameters
         ---------
-        - curve (Curve) : socket 'Curve' (id: Curve)
+        curve : Curve, optional
+            socket 'Curve' (id: Curve)
+        
 
         Returns
         -------
-        - Float
+        Float
         """
         node = Node('Curve Length', {'Curve': curve})
         return node._out
@@ -1299,13 +1649,17 @@ class ND:
     def curve_of_point(cls, point_index: Integer = None):
         """ > Node <&Node Curve of Point>
 
-        Arguments
+        Parameters
         ---------
-        - point_index (Integer) : socket 'Point Index' (id: Point Index)
+        point_index : Integer, optional
+            socket 'Point Index' (id: Point Index)
+        
 
         Returns
         -------
-        - Integer [index_in_curve_ (Integer)]
+        Integer
+            peer sockets: index_in_curve_ (Integer)
+
         """
         node = Node('Curve of Point', {'Point Index': point_index})
         return node._out
@@ -1320,18 +1674,28 @@ class ND:
                     mode: Literal['POSITION', 'OFFSET'] = 'POSITION'):
         """ > Node <&Node Bézier Segment>
 
-        Arguments
+        Parameters
         ---------
-        - resolution (Integer) : socket 'Resolution' (id: Resolution)
-        - start (Vector) : socket 'Start' (id: Start)
-        - start_handle (Vector) : socket 'Start Handle' (id: Start Handle)
-        - end_handle (Vector) : socket 'End Handle' (id: End Handle)
-        - end (Vector) : socket 'End' (id: End)
-        - mode (str): parameter 'mode' in ('Position', 'Offset')
+        resolution : Integer, optional
+            socket 'Resolution' (id: Resolution)
+        
+        start : Vector, optional
+            socket 'Start' (id: Start)
+        
+        start_handle : Vector, optional
+            socket 'Start Handle' (id: Start Handle)
+        
+        end_handle : Vector, optional
+            socket 'End Handle' (id: End Handle)
+        
+        end : Vector, optional
+            socket 'End' (id: End)
+        
+        mode (str): parameter 'mode' in ('Position', 'Offset')
 
         Returns
         -------
-        - Curve
+        Curve
         """
         utils.check_enum_arg('Bézier Segment', 'mode', mode, 'bezier_segment', ('POSITION', 'OFFSET'))
         node = Node('Bézier Segment', {'Resolution': resolution, 'Start': start, 'Start Handle': start_handle, 'End Handle': end_handle, 'End': end}, mode=mode)
@@ -1347,18 +1711,28 @@ class ND:
                     mode: Literal['POINTS', 'RADIUS'] = 'RADIUS'):
         """ > Node <&Node Curve Circle>
 
-        Arguments
+        Parameters
         ---------
-        - resolution (Integer) : socket 'Resolution' (id: Resolution)
-        - point_1 (Vector) : socket 'Point 1' (id: Point 1)
-        - point_2 (Vector) : socket 'Point 2' (id: Point 2)
-        - point_3 (Vector) : socket 'Point 3' (id: Point 3)
-        - radius (Float) : socket 'Radius' (id: Radius)
-        - mode (str): parameter 'mode' in ('Points', 'Radius')
+        resolution : Integer, optional
+            socket 'Resolution' (id: Resolution)
+        
+        point_1 : Vector, optional
+            socket 'Point 1' (id: Point 1)
+        
+        point_2 : Vector, optional
+            socket 'Point 2' (id: Point 2)
+        
+        point_3 : Vector, optional
+            socket 'Point 3' (id: Point 3)
+        
+        radius : Float, optional
+            socket 'Radius' (id: Radius)
+        
+        mode (str): parameter 'mode' in ('Points', 'Radius')
 
         Returns
         -------
-        - Curve
+        Curve
         """
         utils.check_enum_arg('Curve Circle', 'mode', mode, 'curve_circle', ('POINTS', 'RADIUS'))
         node = Node('Curve Circle', {'Resolution': resolution, 'Point 1': point_1, 'Point 2': point_2, 'Point 3': point_3, 'Radius': radius}, mode=mode)
@@ -1373,17 +1747,25 @@ class ND:
                     mode: Literal['POINTS', 'DIRECTION'] = 'POINTS'):
         """ > Node <&Node Curve Line>
 
-        Arguments
+        Parameters
         ---------
-        - start (Vector) : socket 'Start' (id: Start)
-        - end (Vector) : socket 'End' (id: End)
-        - direction (Vector) : socket 'Direction' (id: Direction)
-        - length (Float) : socket 'Length' (id: Length)
-        - mode (str): parameter 'mode' in ('Points', 'Direction')
+        start : Vector, optional
+            socket 'Start' (id: Start)
+        
+        end : Vector, optional
+            socket 'End' (id: End)
+        
+        direction : Vector, optional
+            socket 'Direction' (id: Direction)
+        
+        length : Float, optional
+            socket 'Length' (id: Length)
+        
+        mode (str): parameter 'mode' in ('Points', 'Direction')
 
         Returns
         -------
-        - Curve
+        Curve
         """
         utils.check_enum_arg('Curve Line', 'mode', mode, 'curve_line', ('POINTS', 'DIRECTION'))
         node = Node('Curve Line', {'Start': start, 'End': end, 'Direction': direction, 'Length': length}, mode=mode)
@@ -1405,24 +1787,46 @@ class ND:
                     mode: Literal['RECTANGLE', 'PARALLELOGRAM', 'TRAPEZOID', 'KITE', 'POINTS'] = 'RECTANGLE'):
         """ > Node <&Node Quadrilateral>
 
-        Arguments
+        Parameters
         ---------
-        - width (Float) : socket 'Width' (id: Width)
-        - height (Float) : socket 'Height' (id: Height)
-        - bottom_width (Float) : socket 'Bottom Width' (id: Bottom Width)
-        - top_width (Float) : socket 'Top Width' (id: Top Width)
-        - offset (Float) : socket 'Offset' (id: Offset)
-        - bottom_height (Float) : socket 'Bottom Height' (id: Bottom Height)
-        - top_height (Float) : socket 'Top Height' (id: Top Height)
-        - point_1 (Vector) : socket 'Point 1' (id: Point 1)
-        - point_2 (Vector) : socket 'Point 2' (id: Point 2)
-        - point_3 (Vector) : socket 'Point 3' (id: Point 3)
-        - point_4 (Vector) : socket 'Point 4' (id: Point 4)
-        - mode (str): parameter 'mode' in ('Rectangle', 'Parallelogram', 'Trapezoid', 'Kite', 'Points')
+        width : Float, optional
+            socket 'Width' (id: Width)
+        
+        height : Float, optional
+            socket 'Height' (id: Height)
+        
+        bottom_width : Float, optional
+            socket 'Bottom Width' (id: Bottom Width)
+        
+        top_width : Float, optional
+            socket 'Top Width' (id: Top Width)
+        
+        offset : Float, optional
+            socket 'Offset' (id: Offset)
+        
+        bottom_height : Float, optional
+            socket 'Bottom Height' (id: Bottom Height)
+        
+        top_height : Float, optional
+            socket 'Top Height' (id: Top Height)
+        
+        point_1 : Vector, optional
+            socket 'Point 1' (id: Point 1)
+        
+        point_2 : Vector, optional
+            socket 'Point 2' (id: Point 2)
+        
+        point_3 : Vector, optional
+            socket 'Point 3' (id: Point 3)
+        
+        point_4 : Vector, optional
+            socket 'Point 4' (id: Point 4)
+        
+        mode (str): parameter 'mode' in ('Rectangle', 'Parallelogram', 'Trapezoid', 'Kite', 'Points')
 
         Returns
         -------
-        - Curve
+        Curve
         """
         utils.check_enum_arg('Quadrilateral', 'mode', mode, 'quadrilateral', ('RECTANGLE', 'PARALLELOGRAM', 'TRAPEZOID', 'KITE', 'POINTS'))
         node = Node('Quadrilateral', {'Width': width, 'Height': height, 'Bottom Width': bottom_width, 'Top Width': top_width, 'Offset': offset, 'Bottom Height': bottom_height, 'Top Height': top_height, 'Point 1': point_1, 'Point 2': point_2, 'Point 3': point_3, 'Point 4': point_4}, mode=mode)
@@ -1436,16 +1840,24 @@ class ND:
                     end: Vector = None):
         """ > Node <&Node Quadratic Bézier>
 
-        Arguments
+        Parameters
         ---------
-        - resolution (Integer) : socket 'Resolution' (id: Resolution)
-        - start (Vector) : socket 'Start' (id: Start)
-        - middle (Vector) : socket 'Middle' (id: Middle)
-        - end (Vector) : socket 'End' (id: End)
+        resolution : Integer, optional
+            socket 'Resolution' (id: Resolution)
+        
+        start : Vector, optional
+            socket 'Start' (id: Start)
+        
+        middle : Vector, optional
+            socket 'Middle' (id: Middle)
+        
+        end : Vector, optional
+            socket 'End' (id: End)
+        
 
         Returns
         -------
-        - Curve
+        Curve
         """
         node = Node('Quadratic Bézier', {'Resolution': resolution, 'Start': start, 'Middle': middle, 'End': end})
         return node._out
@@ -1455,19 +1867,23 @@ class ND:
                     curve: Curve = None,
                     selection: Boolean = None,
                     handle_type: Literal['FREE', 'AUTO', 'VECTOR', 'ALIGN'] = 'AUTO',
-                    mode = {'LEFT', 'RIGHT'}):
+                    mode = {'RIGHT', 'LEFT'}):
         """ > Node <&Node Set Handle Type>
 
-        Arguments
+        Parameters
         ---------
-        - curve (Curve) : socket 'Curve' (id: Curve)
-        - selection (Boolean) : socket 'Selection' (id: Selection)
-        - handle_type (str): parameter 'handle_type' in ('Free', 'Auto', 'Vector', 'Align')
-        - mode (set): parameter 'mode'
+        curve : Curve, optional
+            socket 'Curve' (id: Curve)
+        
+        selection : Boolean, optional
+            socket 'Selection' (id: Selection)
+        
+        handle_type (str): parameter 'handle_type' in ('Free', 'Auto', 'Vector', 'Align')
+        mode (set): parameter 'mode'
 
         Returns
         -------
-        - Curve
+        Curve
         """
         utils.check_enum_arg('Set Handle Type', 'handle_type', handle_type, 'set_handle_type', ('FREE', 'AUTO', 'VECTOR', 'ALIGN'))
         node = Node('Set Handle Type', {'Curve': curve, 'Selection': selection}, handle_type=handle_type, mode=mode)
@@ -1483,18 +1899,30 @@ class ND:
                     reverse: Boolean = None):
         """ > Node <&Node Spiral>
 
-        Arguments
+        Parameters
         ---------
-        - resolution (Integer) : socket 'Resolution' (id: Resolution)
-        - rotations (Float) : socket 'Rotations' (id: Rotations)
-        - start_radius (Float) : socket 'Start Radius' (id: Start Radius)
-        - end_radius (Float) : socket 'End Radius' (id: End Radius)
-        - height (Float) : socket 'Height' (id: Height)
-        - reverse (Boolean) : socket 'Reverse' (id: Reverse)
+        resolution : Integer, optional
+            socket 'Resolution' (id: Resolution)
+        
+        rotations : Float, optional
+            socket 'Rotations' (id: Rotations)
+        
+        start_radius : Float, optional
+            socket 'Start Radius' (id: Start Radius)
+        
+        end_radius : Float, optional
+            socket 'End Radius' (id: End Radius)
+        
+        height : Float, optional
+            socket 'Height' (id: Height)
+        
+        reverse : Boolean, optional
+            socket 'Reverse' (id: Reverse)
+        
 
         Returns
         -------
-        - Curve
+        Curve
         """
         node = Node('Spiral', {'Resolution': resolution, 'Rotations': rotations, 'Start Radius': start_radius, 'End Radius': end_radius, 'Height': height, 'Reverse': reverse})
         return node._out
@@ -1506,15 +1934,19 @@ class ND:
                     spline_type: Literal['CATMULL_ROM', 'POLY', 'BEZIER', 'NURBS'] = 'POLY'):
         """ > Node <&Node Set Spline Type>
 
-        Arguments
+        Parameters
         ---------
-        - curve (Curve) : socket 'Curve' (id: Curve)
-        - selection (Boolean) : socket 'Selection' (id: Selection)
-        - spline_type (str): parameter 'spline_type' in ('Catmull Rom', 'Poly', 'Bézier', 'NURBS')
+        curve : Curve, optional
+            socket 'Curve' (id: Curve)
+        
+        selection : Boolean, optional
+            socket 'Selection' (id: Selection)
+        
+        spline_type (str): parameter 'spline_type' in ('Catmull Rom', 'Poly', 'Bézier', 'NURBS')
 
         Returns
         -------
-        - Curve
+        Curve
         """
         utils.check_enum_arg('Set Spline Type', 'spline_type', spline_type, 'set_spline_type', ('CATMULL_ROM', 'POLY', 'BEZIER', 'NURBS'))
         node = Node('Set Spline Type', {'Curve': curve, 'Selection': selection}, spline_type=spline_type)
@@ -1528,16 +1960,26 @@ class ND:
                     twist: Float = None):
         """ > Node <&Node Star>
 
-        Arguments
+        Parameters
         ---------
-        - points (Integer) : socket 'Points' (id: Points)
-        - inner_radius (Float) : socket 'Inner Radius' (id: Inner Radius)
-        - outer_radius (Float) : socket 'Outer Radius' (id: Outer Radius)
-        - twist (Float) : socket 'Twist' (id: Twist)
+        points : Integer, optional
+            socket 'Points' (id: Points)
+        
+        inner_radius : Float, optional
+            socket 'Inner Radius' (id: Inner Radius)
+        
+        outer_radius : Float, optional
+            socket 'Outer Radius' (id: Outer Radius)
+        
+        twist : Float, optional
+            socket 'Twist' (id: Twist)
+        
 
         Returns
         -------
-        - Curve [outer_points_ (Boolean)]
+        Curve
+            peer sockets: outer_points_ (Boolean)
+
         """
         node = Node('Star', {'Points': points, 'Inner Radius': inner_radius, 'Outer Radius': outer_radius, 'Twist': twist})
         return node._out
@@ -1550,16 +1992,24 @@ class ND:
                     fill_caps: Boolean = None):
         """ > Node <&Node Curve to Mesh>
 
-        Arguments
+        Parameters
         ---------
-        - curve (Curve) : socket 'Curve' (id: Curve)
-        - profile_curve (Curve) : socket 'Profile Curve' (id: Profile Curve)
-        - scale (Float) : socket 'Scale' (id: Scale)
-        - fill_caps (Boolean) : socket 'Fill Caps' (id: Fill Caps)
+        curve : Curve, optional
+            socket 'Curve' (id: Curve)
+        
+        profile_curve : Curve, optional
+            socket 'Profile Curve' (id: Profile Curve)
+        
+        scale : Float, optional
+            socket 'Scale' (id: Scale)
+        
+        fill_caps : Boolean, optional
+            socket 'Fill Caps' (id: Fill Caps)
+        
 
         Returns
         -------
-        - Mesh
+        Mesh
         """
         node = Node('Curve to Mesh', {'Curve': curve, 'Profile Curve': profile_curve, 'Scale': scale, 'Fill Caps': fill_caps})
         return node._out
@@ -1572,16 +2022,24 @@ class ND:
                     mode: Literal['EVALUATED', 'COUNT', 'LENGTH'] = 'COUNT'):
         """ > Node <&Node Curve to Points>
 
-        Arguments
+        Parameters
         ---------
-        - curve (Curve) : socket 'Curve' (id: Curve)
-        - count (Integer) : socket 'Count' (id: Count)
-        - length (Float) : socket 'Length' (id: Length)
-        - mode (str): parameter 'mode' in ('Evaluated', 'Count', 'Length')
+        curve : Curve, optional
+            socket 'Curve' (id: Curve)
+        
+        count : Integer, optional
+            socket 'Count' (id: Count)
+        
+        length : Float, optional
+            socket 'Length' (id: Length)
+        
+        mode (str): parameter 'mode' in ('Evaluated', 'Count', 'Length')
 
         Returns
         -------
-        - Cloud [tangent_ (Vector), normal_ (Vector), rotation_ (Rotation)]
+        Cloud
+            peer sockets: tangent_ (Vector), normal_ (Vector), rotation_ (Rotation)
+
         """
         utils.check_enum_arg('Curve to Points', 'mode', mode, 'curve_to_points', ('EVALUATED', 'COUNT', 'LENGTH'))
         node = Node('Curve to Points', {'Curve': curve, 'Count': count, 'Length': length}, mode=mode)
@@ -1594,15 +2052,21 @@ class ND:
                     instances_as_layers: Boolean = None):
         """ > Node <&Node Curves to Grease Pencil>
 
-        Arguments
+        Parameters
         ---------
-        - curves (Curve) : socket 'Curves' (id: Curves)
-        - selection (Boolean) : socket 'Selection' (id: Selection)
-        - instances_as_layers (Boolean) : socket 'Instances as Layers' (id: Instances as Layers)
+        curves : Curve, optional
+            socket 'Curves' (id: Curves)
+        
+        selection : Boolean, optional
+            socket 'Selection' (id: Selection)
+        
+        instances_as_layers : Boolean, optional
+            socket 'Instances as Layers' (id: Instances as Layers)
+        
 
         Returns
         -------
-        - GreasePencil
+        GreasePencil
         """
         node = Node('Curves to Grease Pencil', {'Curves': curves, 'Selection': selection, 'Instances as Layers': instances_as_layers})
         return node._out
@@ -1611,13 +2075,15 @@ class ND:
     def deform_curves_on_surface(cls, curves: Curve = None):
         """ > Node <&Node Deform Curves on Surface>
 
-        Arguments
+        Parameters
         ---------
-        - curves (Curve) : socket 'Curves' (id: Curves)
+        curves : Curve, optional
+            socket 'Curves' (id: Curves)
+        
 
         Returns
         -------
-        - Curve
+        Curve
         """
         node = Node('Deform Curves on Surface', {'Curves': curves})
         return node._out
@@ -1630,16 +2096,20 @@ class ND:
                     mode: Literal['ALL', 'EDGE_FACE', 'ONLY_FACE'] = 'ALL'):
         """ > Node <&Node Delete Geometry>
 
-        Arguments
+        Parameters
         ---------
-        - geometry (Geometry) : socket 'Geometry' (id: Geometry)
-        - selection (Boolean) : socket 'Selection' (id: Selection)
-        - domain (str): parameter 'domain' in ('Point', 'Edge', 'Face', 'Spline', 'Instance', 'Layer')
-        - mode (str): parameter 'mode' in ('All', 'Only Edges & Faces', 'Only Faces')
+        geometry : Geometry, optional
+            socket 'Geometry' (id: Geometry)
+        
+        selection : Boolean, optional
+            socket 'Selection' (id: Selection)
+        
+        domain (str): parameter 'domain' in ('Point', 'Edge', 'Face', 'Spline', 'Instance', 'Layer')
+        mode (str): parameter 'mode' in ('All', 'Only Edges & Faces', 'Only Faces')
 
         Returns
         -------
-        - Geometry
+        Geometry
         """
         utils.check_enum_arg('Delete Geometry', 'domain', domain, 'delete_geometry', ('POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE', 'LAYER'))
         utils.check_enum_arg('Delete Geometry', 'mode', mode, 'delete_geometry', ('ALL', 'EDGE_FACE', 'ONLY_FACE'))
@@ -1656,18 +2126,28 @@ class ND:
                     mode: Literal['DENSITY_RANDOM', 'DENSITY_GRID'] = 'DENSITY_RANDOM'):
         """ > Node <&Node Distribute Points in Grid>
 
-        Arguments
+        Parameters
         ---------
-        - grid (Float) : socket 'Grid' (id: Grid)
-        - density (Float) : socket 'Density' (id: Density)
-        - seed (Integer) : socket 'Seed' (id: Seed)
-        - spacing (Vector) : socket 'Spacing' (id: Spacing)
-        - threshold (Float) : socket 'Threshold' (id: Threshold)
-        - mode (str): parameter 'mode' in ('Random', 'Grid')
+        grid : Float, optional
+            socket 'Grid' (id: Grid)
+        
+        density : Float, optional
+            socket 'Density' (id: Density)
+        
+        seed : Integer, optional
+            socket 'Seed' (id: Seed)
+        
+        spacing : Vector, optional
+            socket 'Spacing' (id: Spacing)
+        
+        threshold : Float, optional
+            socket 'Threshold' (id: Threshold)
+        
+        mode (str): parameter 'mode' in ('Random', 'Grid')
 
         Returns
         -------
-        - Cloud
+        Cloud
         """
         utils.check_enum_arg('Distribute Points in Grid', 'mode', mode, 'distribute_points_in_grid', ('DENSITY_RANDOM', 'DENSITY_GRID'))
         node = Node('Distribute Points in Grid', {'Grid': grid, 'Density': density, 'Seed': seed, 'Spacing': spacing, 'Threshold': threshold}, mode=mode)
@@ -1683,18 +2163,30 @@ class ND:
                     threshold: Float = None):
         """ > Node <&Node Distribute Points in Volume>
 
-        Arguments
+        Parameters
         ---------
-        - volume (Volume) : socket 'Volume' (id: Volume)
-        - mode (menu='Random') : ('Random', 'Grid')
-        - density (Float) : socket 'Density' (id: Density)
-        - seed (Integer) : socket 'Seed' (id: Seed)
-        - spacing (Vector) : socket 'Spacing' (id: Spacing)
-        - threshold (Float) : socket 'Threshold' (id: Threshold)
+        volume : Volume, optional
+            socket 'Volume' (id: Volume)
+        
+        mode : menu='Random', optional
+            ('Random', 'Grid')
+        
+        density : Float, optional
+            socket 'Density' (id: Density)
+        
+        seed : Integer, optional
+            socket 'Seed' (id: Seed)
+        
+        spacing : Vector, optional
+            socket 'Spacing' (id: Spacing)
+        
+        threshold : Float, optional
+            socket 'Threshold' (id: Threshold)
+        
 
         Returns
         -------
-        - Cloud
+        Cloud
         """
         node = Node('Distribute Points in Volume', {'Volume': volume, 'Mode': mode, 'Density': density, 'Seed': seed, 'Spacing': spacing, 'Threshold': threshold})
         return node._out
@@ -1711,20 +2203,36 @@ class ND:
                     distribute_method: Literal['RANDOM', 'POISSON'] = 'RANDOM'):
         """ > Node <&Node Distribute Points on Faces>
 
-        Arguments
+        Parameters
         ---------
-        - mesh (Mesh) : socket 'Mesh' (id: Mesh)
-        - selection (Boolean) : socket 'Selection' (id: Selection)
-        - distance_min (Float) : socket 'Distance Min' (id: Distance Min)
-        - density_max (Float) : socket 'Density Max' (id: Density Max)
-        - density (Float) : socket 'Density' (id: Density)
-        - density_factor (Float) : socket 'Density Factor' (id: Density Factor)
-        - seed (Integer) : socket 'Seed' (id: Seed)
-        - distribute_method (str): parameter 'distribute_method' in ('Random', 'Poisson Disk')
+        mesh : Mesh, optional
+            socket 'Mesh' (id: Mesh)
+        
+        selection : Boolean, optional
+            socket 'Selection' (id: Selection)
+        
+        distance_min : Float, optional
+            socket 'Distance Min' (id: Distance Min)
+        
+        density_max : Float, optional
+            socket 'Density Max' (id: Density Max)
+        
+        density : Float, optional
+            socket 'Density' (id: Density)
+        
+        density_factor : Float, optional
+            socket 'Density Factor' (id: Density Factor)
+        
+        seed : Integer, optional
+            socket 'Seed' (id: Seed)
+        
+        distribute_method (str): parameter 'distribute_method' in ('Random', 'Poisson Disk')
 
         Returns
         -------
-        - Cloud [normal_ (Vector), rotation_ (Rotation)]
+        Cloud
+            peer sockets: normal_ (Vector), rotation_ (Rotation)
+
         """
         utils.check_enum_arg('Distribute Points on Faces', 'distribute_method', distribute_method, 'distribute_points_on_faces', ('RANDOM', 'POISSON'))
         node = Node('Distribute Points on Faces', {'Mesh': mesh, 'Selection': selection, 'Distance Min': distance_min, 'Density Max': density_max, 'Density': density, 'Density Factor': density_factor, 'Seed': seed}, distribute_method=distribute_method)
@@ -1734,14 +2242,18 @@ class ND:
     def dual_mesh(cls, mesh: Mesh = None, keep_boundaries: Boolean = None):
         """ > Node <&Node Dual Mesh>
 
-        Arguments
+        Parameters
         ---------
-        - mesh (Mesh) : socket 'Mesh' (id: Mesh)
-        - keep_boundaries (Boolean) : socket 'Keep Boundaries' (id: Keep Boundaries)
+        mesh : Mesh, optional
+            socket 'Mesh' (id: Mesh)
+        
+        keep_boundaries : Boolean, optional
+            socket 'Keep Boundaries' (id: Keep Boundaries)
+        
 
         Returns
         -------
-        - Mesh
+        Mesh
         """
         node = Node('Dual Mesh', {'Mesh': mesh, 'Keep Boundaries': keep_boundaries})
         return node._out
@@ -1754,16 +2266,24 @@ class ND:
                     domain: Literal['POINT', 'EDGE', 'FACE', 'SPLINE', 'LAYER', 'INSTANCE'] = 'POINT'):
         """ > Node <&Node Duplicate Elements>
 
-        Arguments
+        Parameters
         ---------
-        - geometry (Geometry) : socket 'Geometry' (id: Geometry)
-        - selection (Boolean) : socket 'Selection' (id: Selection)
-        - amount (Integer) : socket 'Amount' (id: Amount)
-        - domain (str): parameter 'domain' in ('Point', 'Edge', 'Face', 'Spline', 'Layer', 'Instance')
+        geometry : Geometry, optional
+            socket 'Geometry' (id: Geometry)
+        
+        selection : Boolean, optional
+            socket 'Selection' (id: Selection)
+        
+        amount : Integer, optional
+            socket 'Amount' (id: Amount)
+        
+        domain (str): parameter 'domain' in ('Point', 'Edge', 'Face', 'Spline', 'Layer', 'Instance')
 
         Returns
         -------
-        - Geometry [duplicate_index_ (Integer)]
+        Geometry
+            peer sockets: duplicate_index_ (Integer)
+
         """
         utils.check_enum_arg('Duplicate Elements', 'domain', domain, 'duplicate_elements', ('POINT', 'EDGE', 'FACE', 'SPLINE', 'LAYER', 'INSTANCE'))
         node = Node('Duplicate Elements', {'Geometry': geometry, 'Selection': selection, 'Amount': amount}, domain=domain)
@@ -1776,15 +2296,21 @@ class ND:
                     next_vertex_index: Integer = None):
         """ > Node <&Node Edge Paths to Curves>
 
-        Arguments
+        Parameters
         ---------
-        - mesh (Mesh) : socket 'Mesh' (id: Mesh)
-        - start_vertices (Boolean) : socket 'Start Vertices' (id: Start Vertices)
-        - next_vertex_index (Integer) : socket 'Next Vertex Index' (id: Next Vertex Index)
+        mesh : Mesh, optional
+            socket 'Mesh' (id: Mesh)
+        
+        start_vertices : Boolean, optional
+            socket 'Start Vertices' (id: Start Vertices)
+        
+        next_vertex_index : Integer, optional
+            socket 'Next Vertex Index' (id: Next Vertex Index)
+        
 
         Returns
         -------
-        - Curve
+        Curve
         """
         node = Node('Edge Paths to Curves', {'Mesh': mesh, 'Start Vertices': start_vertices, 'Next Vertex Index': next_vertex_index})
         return node._out
@@ -1793,14 +2319,18 @@ class ND:
     def edge_paths_to_selection(cls, start_vertices: Boolean = None, next_vertex_index: Integer = None):
         """ > Node <&Node Edge Paths to Selection>
 
-        Arguments
+        Parameters
         ---------
-        - start_vertices (Boolean) : socket 'Start Vertices' (id: Start Vertices)
-        - next_vertex_index (Integer) : socket 'Next Vertex Index' (id: Next Vertex Index)
+        start_vertices : Boolean, optional
+            socket 'Start Vertices' (id: Start Vertices)
+        
+        next_vertex_index : Integer, optional
+            socket 'Next Vertex Index' (id: Next Vertex Index)
+        
 
         Returns
         -------
-        - Boolean
+        Boolean
         """
         node = Node('Edge Paths to Selection', {'Start Vertices': start_vertices, 'Next Vertex Index': next_vertex_index})
         return node._out
@@ -1809,13 +2339,17 @@ class ND:
     def edges_of_corner(cls, corner_index: Integer = None):
         """ > Node <&Node Edges of Corner>
 
-        Arguments
+        Parameters
         ---------
-        - corner_index (Integer) : socket 'Corner Index' (id: Corner Index)
+        corner_index : Integer, optional
+            socket 'Corner Index' (id: Corner Index)
+        
 
         Returns
         -------
-        - Integer [previous_edge_index_ (Integer)]
+        Integer
+            peer sockets: previous_edge_index_ (Integer)
+
         """
         node = Node('Edges of Corner', {'Corner Index': corner_index})
         return node._out
@@ -1827,15 +2361,23 @@ class ND:
                     sort_index: Integer = None):
         """ > Node <&Node Edges of Vertex>
 
-        Arguments
+        Parameters
         ---------
-        - vertex_index (Integer) : socket 'Vertex Index' (id: Vertex Index)
-        - weights (Float) : socket 'Weights' (id: Weights)
-        - sort_index (Integer) : socket 'Sort Index' (id: Sort Index)
+        vertex_index : Integer, optional
+            socket 'Vertex Index' (id: Vertex Index)
+        
+        weights : Float, optional
+            socket 'Weights' (id: Weights)
+        
+        sort_index : Integer, optional
+            socket 'Sort Index' (id: Sort Index)
+        
 
         Returns
         -------
-        - Integer [total_ (Integer)]
+        Integer
+            peer sockets: total_ (Integer)
+
         """
         node = Node('Edges of Vertex', {'Vertex Index': vertex_index, 'Weights': weights, 'Sort Index': sort_index})
         return node._out
@@ -1844,13 +2386,15 @@ class ND:
     def edges_to_face_groups(cls, boundary_edges: Boolean = None):
         """ > Node <&Node Edges to Face Groups>
 
-        Arguments
+        Parameters
         ---------
-        - boundary_edges (Boolean) : socket 'Boundary Edges' (id: Boundary Edges)
+        boundary_edges : Boolean, optional
+            socket 'Boundary Edges' (id: Boundary Edges)
+        
 
         Returns
         -------
-        - Integer
+        Integer
         """
         node = Node('Edges to Face Groups', {'Boundary Edges': boundary_edges})
         return node._out
@@ -1865,18 +2409,30 @@ class ND:
                     mode: Literal['VERTICES', 'EDGES', 'FACES'] = 'FACES'):
         """ > Node <&Node Extrude Mesh>
 
-        Arguments
+        Parameters
         ---------
-        - mesh (Mesh) : socket 'Mesh' (id: Mesh)
-        - selection (Boolean) : socket 'Selection' (id: Selection)
-        - offset (Vector) : socket 'Offset' (id: Offset)
-        - offset_scale (Float) : socket 'Offset Scale' (id: Offset Scale)
-        - individual (Boolean) : socket 'Individual' (id: Individual)
-        - mode (str): parameter 'mode' in ('Vertices', 'Edges', 'Faces')
+        mesh : Mesh, optional
+            socket 'Mesh' (id: Mesh)
+        
+        selection : Boolean, optional
+            socket 'Selection' (id: Selection)
+        
+        offset : Vector, optional
+            socket 'Offset' (id: Offset)
+        
+        offset_scale : Float, optional
+            socket 'Offset Scale' (id: Offset Scale)
+        
+        individual : Boolean, optional
+            socket 'Individual' (id: Individual)
+        
+        mode (str): parameter 'mode' in ('Vertices', 'Edges', 'Faces')
 
         Returns
         -------
-        - Mesh [top_ (Boolean), side_ (Boolean)]
+        Mesh
+            peer sockets: top_ (Boolean), side_ (Boolean)
+
         """
         utils.check_enum_arg('Extrude Mesh', 'mode', mode, 'extrude_mesh', ('VERTICES', 'EDGES', 'FACES'))
         node = Node('Extrude Mesh', {'Mesh': mesh, 'Selection': selection, 'Offset': offset, 'Offset Scale': offset_scale, 'Individual': individual}, mode=mode)
@@ -1886,13 +2442,17 @@ class ND:
     def face_of_corner(cls, corner_index: Integer = None):
         """ > Node <&Node Face of Corner>
 
-        Arguments
+        Parameters
         ---------
-        - corner_index (Integer) : socket 'Corner Index' (id: Corner Index)
+        corner_index : Integer, optional
+            socket 'Corner Index' (id: Corner Index)
+        
 
         Returns
         -------
-        - Integer [index_in_face_ (Integer)]
+        Integer
+            peer sockets: index_in_face_ (Integer)
+
         """
         node = Node('Face of Corner', {'Corner Index': corner_index})
         return node._out
@@ -1905,16 +2465,20 @@ class ND:
                     domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'] = 'POINT'):
         """ > Node <&Node Evaluate at Index>
 
-        Arguments
+        Parameters
         ---------
-        - value (Float) : socket 'Value' (id: Value)
-        - index (Integer) : socket 'Index' (id: Index)
-        - data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Quaternion', '4x4 Matrix')
-        - domain (str): parameter 'domain' in ('Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer')
+        value : Float, optional
+            socket 'Value' (id: Value)
+        
+        index : Integer, optional
+            socket 'Index' (id: Index)
+        
+        data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Quaternion', '4x4 Matrix')
+        domain (str): parameter 'domain' in ('Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer')
 
         Returns
         -------
-        - Float
+        Float
         """
         utils.check_enum_arg('Evaluate at Index', 'domain', domain, 'evaluate_at_index', ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'))
         node = Node('Evaluate at Index', {'Value': value, 'Index': index}, data_type=data_type, domain=domain)
@@ -1928,16 +2492,22 @@ class ND:
                     domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'] = 'POINT'):
         """ > Node <&Node Field Average>
 
-        Arguments
+        Parameters
         ---------
-        - value (Float) : socket 'Value' (id: Value)
-        - group_id (Integer) : socket 'Group ID' (id: Group Index)
-        - data_type (str): parameter 'data_type' in ('Float', 'Vector')
-        - domain (str): parameter 'domain' in ('Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer')
+        value : Float, optional
+            socket 'Value' (id: Value)
+        
+        group_id : Integer, optional
+            socket 'Group ID' (id: Group Index)
+        
+        data_type (str): parameter 'data_type' in ('Float', 'Vector')
+        domain (str): parameter 'domain' in ('Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer')
 
         Returns
         -------
-        - Float [median_ (Float)]
+        Float
+            peer sockets: median_ (Float)
+
         """
         utils.check_enum_arg('Field Average', 'domain', domain, 'field_average', ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'))
         node = Node('Field Average', {'Value': value, 'Group Index': group_id}, data_type=data_type, domain=domain)
@@ -1951,16 +2521,22 @@ class ND:
                     domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'] = 'POINT'):
         """ > Node <&Node Field Min & Max>
 
-        Arguments
+        Parameters
         ---------
-        - value (Float) : socket 'Value' (id: Value)
-        - group_id (Integer) : socket 'Group ID' (id: Group Index)
-        - data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Vector')
-        - domain (str): parameter 'domain' in ('Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer')
+        value : Float, optional
+            socket 'Value' (id: Value)
+        
+        group_id : Integer, optional
+            socket 'Group ID' (id: Group Index)
+        
+        data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Vector')
+        domain (str): parameter 'domain' in ('Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer')
 
         Returns
         -------
-        - Float [max_ (Float)]
+        Float
+            peer sockets: max_ (Float)
+
         """
         utils.check_enum_arg('Field Min & Max', 'domain', domain, 'field_min_max', ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'))
         node = Node('Field Min & Max', {'Value': value, 'Group Index': group_id}, data_type=data_type, domain=domain)
@@ -1973,15 +2549,17 @@ class ND:
                     domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'] = 'POINT'):
         """ > Node <&Node Evaluate on Domain>
 
-        Arguments
+        Parameters
         ---------
-        - value (Float) : socket 'Value' (id: Value)
-        - data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Quaternion', '4x4 Matrix')
-        - domain (str): parameter 'domain' in ('Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer')
+        value : Float, optional
+            socket 'Value' (id: Value)
+        
+        data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Quaternion', '4x4 Matrix')
+        domain (str): parameter 'domain' in ('Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer')
 
         Returns
         -------
-        - Float
+        Float
         """
         utils.check_enum_arg('Evaluate on Domain', 'domain', domain, 'evaluate_on_domain', ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'))
         node = Node('Evaluate on Domain', {'Value': value}, data_type=data_type, domain=domain)
@@ -1995,14 +2573,16 @@ class ND:
                     **sockets):
         """ > Node <&Node Field to Grid>
 
-        Arguments
+        Parameters
         ---------
-        - topology (Float) : socket 'Topology' (id: Topology)
-        - data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector')
+        topology : Float, optional
+            socket 'Topology' (id: Topology)
+        
+        data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector')
 
         Returns
         -------
-        - None
+        None
         """
         node = Node('Field to Grid', {'Topology': topology, **named_sockets}, data_type=data_type, **sockets)
         return node._out
@@ -2011,13 +2591,15 @@ class ND:
     def field_to_list(cls, named_sockets: dict = {}, count: Integer = None, **sockets):
         """ > Node <&Node Field to List>
 
-        Arguments
+        Parameters
         ---------
-        - count (Integer) : socket 'Count' (id: Count)
+        count : Integer, optional
+            socket 'Count' (id: Count)
+        
 
         Returns
         -------
-        - None
+        None
         """
         node = Node('Field to List', {'Count': count, **named_sockets}, **sockets)
         return node._out
@@ -2030,16 +2612,22 @@ class ND:
                     domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'] = 'POINT'):
         """ > Node <&Node Field Variance>
 
-        Arguments
+        Parameters
         ---------
-        - value (Float) : socket 'Value' (id: Value)
-        - group_id (Integer) : socket 'Group ID' (id: Group Index)
-        - data_type (str): parameter 'data_type' in ('Float', 'Vector')
-        - domain (str): parameter 'domain' in ('Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer')
+        value : Float, optional
+            socket 'Value' (id: Value)
+        
+        group_id : Integer, optional
+            socket 'Group ID' (id: Group Index)
+        
+        data_type (str): parameter 'data_type' in ('Float', 'Vector')
+        domain (str): parameter 'domain' in ('Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer')
 
         Returns
         -------
-        - Float [variance_ (Float)]
+        Float
+            peer sockets: variance_ (Float)
+
         """
         utils.check_enum_arg('Field Variance', 'domain', domain, 'field_variance', ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'))
         node = Node('Field Variance', {'Value': value, 'Group Index': group_id}, data_type=data_type, domain=domain)
@@ -2053,16 +2641,24 @@ class ND:
                     fill_rule: Literal['Even-Odd', 'Non-Zero'] = None):
         """ > Node <&Node Fill Curve>
 
-        Arguments
+        Parameters
         ---------
-        - curve (Curve) : socket 'Curve' (id: Curve)
-        - group_id (Integer) : socket 'Group ID' (id: Group ID)
-        - mode (menu='Triangles') : ('Triangles', 'N-gons')
-        - fill_rule (menu='Even-Odd') : ('Even-Odd', 'Non-Zero')
+        curve : Curve, optional
+            socket 'Curve' (id: Curve)
+        
+        group_id : Integer, optional
+            socket 'Group ID' (id: Group ID)
+        
+        mode : menu='Triangles', optional
+            ('Triangles', 'N-gons')
+        
+        fill_rule : menu='Even-Odd', optional
+            ('Even-Odd', 'Non-Zero')
+        
 
         Returns
         -------
-        - Mesh
+        Mesh
         """
         node = Node('Fill Curve', {'Curve': curve, 'Group ID': group_id, 'Mode': mode, 'Fill Rule': fill_rule})
         return node._out
@@ -2076,17 +2672,27 @@ class ND:
                     count: Integer = None):
         """ > Node <&Node Fillet Curve>
 
-        Arguments
+        Parameters
         ---------
-        - curve (Curve) : socket 'Curve' (id: Curve)
-        - radius (Float) : socket 'Radius' (id: Radius)
-        - limit_radius (Boolean) : socket 'Limit Radius' (id: Limit Radius)
-        - mode (menu='Bézier') : ('Bézier', 'Poly')
-        - count (Integer) : socket 'Count' (id: Count)
+        curve : Curve, optional
+            socket 'Curve' (id: Curve)
+        
+        radius : Float, optional
+            socket 'Radius' (id: Radius)
+        
+        limit_radius : Boolean, optional
+            socket 'Limit Radius' (id: Limit Radius)
+        
+        mode : menu='Bézier', optional
+            ('Bézier', 'Poly')
+        
+        count : Integer, optional
+            socket 'Count' (id: Count)
+        
 
         Returns
         -------
-        - Curve
+        Curve
         """
         node = Node('Fillet Curve', {'Curve': curve, 'Radius': radius, 'Limit Radius': limit_radius, 'Mode': mode, 'Count': count})
         return node._out
@@ -2095,14 +2701,18 @@ class ND:
     def flip_faces(cls, mesh: Mesh = None, selection: Boolean = None):
         """ > Node <&Node Flip Faces>
 
-        Arguments
+        Parameters
         ---------
-        - mesh (Mesh) : socket 'Mesh' (id: Mesh)
-        - selection (Boolean) : socket 'Selection' (id: Selection)
+        mesh : Mesh, optional
+            socket 'Mesh' (id: Mesh)
+        
+        selection : Boolean, optional
+            socket 'Selection' (id: Selection)
+        
 
         Returns
         -------
-        - Mesh
+        Mesh
         """
         node = Node('Flip Faces', {'Mesh': mesh, 'Selection': selection})
         return node._out
@@ -2111,14 +2721,18 @@ class ND:
     def for_each_geometry_element_input(cls, geometry: Geometry = None, selection: Boolean = None):
         """ > Node <&Node For Each Geometry Element Input>
 
-        Arguments
+        Parameters
         ---------
-        - geometry (Geometry) : socket 'Geometry' (id: Geometry)
-        - selection (Boolean) : socket 'Selection' (id: Selection)
+        geometry : Geometry, optional
+            socket 'Geometry' (id: Geometry)
+        
+        selection : Boolean, optional
+            socket 'Selection' (id: Selection)
+        
 
         Returns
         -------
-        - Integer
+        Integer
         """
         node = Node('For Each Geometry Element Input', {'Geometry': geometry, 'Selection': selection})
         return node._out
@@ -2133,18 +2747,20 @@ class ND:
                     inspection_index = 0):
         """ > Node <&Node For Each Geometry Element Output>
 
-        Arguments
+        Parameters
         ---------
-        - geometry (Geometry) : socket 'Geometry' (id: Generation_0)
-        - active_generation_index (int): parameter 'active_generation_index'
-        - active_input_index (int): parameter 'active_input_index'
-        - active_main_index (int): parameter 'active_main_index'
-        - domain (str): parameter 'domain' in ('Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer')
-        - inspection_index (int): parameter 'inspection_index'
+        geometry : Geometry, optional
+            socket 'Geometry' (id: Generation_0)
+        
+        active_generation_index (int): parameter 'active_generation_index'
+        active_input_index (int): parameter 'active_input_index'
+        active_main_index (int): parameter 'active_main_index'
+        domain (str): parameter 'domain' in ('Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer')
+        inspection_index (int): parameter 'inspection_index'
 
         Returns
         -------
-        - Geometry
+        Geometry
         """
         utils.check_enum_arg('For Each Geometry Element Output', 'domain', domain, 'for_each_geometry_element_output', ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'))
         node = Node('For Each Geometry Element Output', {'Generation_0': geometry}, active_generation_index=active_generation_index, active_input_index=active_input_index, active_main_index=active_main_index, domain=domain, inspection_index=inspection_index)
@@ -2154,13 +2770,15 @@ class ND:
     def geometry_to_instance(cls, *geometry: Geometry):
         """ > Node <&Node Geometry to Instance>
 
-        Arguments
+        Parameters
         ---------
-        - geometry (Geometry) : socket 'Geometry' (id: Geometry)
+        geometry : Geometry, optional
+            socket 'Geometry' (id: Geometry)
+        
 
         Returns
         -------
-        - Instances
+        Instances
         """
         node = Node('Geometry to Instance', {'Geometry': list(geometry)})
         return node._out
@@ -2169,14 +2787,20 @@ class ND:
     def get_geometry_bundle(cls, geometry: Geometry = None, remove: Boolean = None):
         """ > Node <&Node Get Geometry Bundle>
 
-        Arguments
+        Parameters
         ---------
-        - geometry (Geometry) : socket 'Geometry' (id: Geometry)
-        - remove (Boolean) : socket 'Remove' (id: Remove)
+        geometry : Geometry, optional
+            socket 'Geometry' (id: Geometry)
+        
+        remove : Boolean, optional
+            socket 'Remove' (id: Remove)
+        
 
         Returns
         -------
-        - Geometry [bundle_ (Bundle)]
+        Geometry
+            peer sockets: bundle_ (Bundle)
+
         """
         node = Node('Get Geometry Bundle', {'Geometry': geometry, 'Remove': remove})
         return node._out
@@ -2189,16 +2813,24 @@ class ND:
                     data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR'] = 'FLOAT'):
         """ > Node <&Node Get Named Grid>
 
-        Arguments
+        Parameters
         ---------
-        - volume (Volume) : socket 'Volume' (id: Volume)
-        - name (String) : socket 'Name' (id: Name)
-        - remove (Boolean) : socket 'Remove' (id: Remove)
-        - data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector')
+        volume : Volume, optional
+            socket 'Volume' (id: Volume)
+        
+        name : String, optional
+            socket 'Name' (id: Name)
+        
+        remove : Boolean, optional
+            socket 'Remove' (id: Remove)
+        
+        data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector')
 
         Returns
         -------
-        - Volume [grid_ (Float)]
+        Volume
+            peer sockets: grid_ (Float)
+
         """
         node = Node('Get Named Grid', {'Volume': volume, 'Name': name, 'Remove': remove}, data_type=data_type)
         return node._out
@@ -2213,18 +2845,28 @@ class ND:
                     color_id: Literal['PRIMARY', 'SECONDARY', 'X', 'Y', 'Z'] = 'PRIMARY'):
         """ > Node <&Node Dial Gizmo>
 
-        Arguments
+        Parameters
         ---------
-        - value (Float) : socket 'Value' (id: Value)
-        - position (Vector) : socket 'Position' (id: Position)
-        - up (Vector) : socket 'Up' (id: Up)
-        - screen_space (Boolean) : socket 'Screen Space' (id: Screen Space)
-        - radius (Float) : socket 'Radius' (id: Radius)
-        - color_id (str): parameter 'color_id' in ('Primary', 'Secondary', 'X', 'Y', 'Z')
+        value : Float, optional
+            socket 'Value' (id: Value)
+        
+        position : Vector, optional
+            socket 'Position' (id: Position)
+        
+        up : Vector, optional
+            socket 'Up' (id: Up)
+        
+        screen_space : Boolean, optional
+            socket 'Screen Space' (id: Screen Space)
+        
+        radius : Float, optional
+            socket 'Radius' (id: Radius)
+        
+        color_id (str): parameter 'color_id' in ('Primary', 'Secondary', 'X', 'Y', 'Z')
 
         Returns
         -------
-        - Geometry
+        Geometry
         """
         utils.check_enum_arg('Dial Gizmo', 'color_id', color_id, 'dial_gizmo', ('PRIMARY', 'SECONDARY', 'X', 'Y', 'Z'))
         node = Node('Dial Gizmo', {'Value': list(value), 'Position': position, 'Up': up, 'Screen Space': screen_space, 'Radius': radius}, color_id=color_id)
@@ -2239,17 +2881,23 @@ class ND:
                     draw_style: Literal['ARROW', 'CROSS', 'BOX'] = 'ARROW'):
         """ > Node <&Node Linear Gizmo>
 
-        Arguments
+        Parameters
         ---------
-        - value (Float) : socket 'Value' (id: Value)
-        - position (Vector) : socket 'Position' (id: Position)
-        - direction (Vector) : socket 'Direction' (id: Direction)
-        - color_id (str): parameter 'color_id' in ('Primary', 'Secondary', 'X', 'Y', 'Z')
-        - draw_style (str): parameter 'draw_style' in ('Arrow', 'Cross', 'Box')
+        value : Float, optional
+            socket 'Value' (id: Value)
+        
+        position : Vector, optional
+            socket 'Position' (id: Position)
+        
+        direction : Vector, optional
+            socket 'Direction' (id: Direction)
+        
+        color_id (str): parameter 'color_id' in ('Primary', 'Secondary', 'X', 'Y', 'Z')
+        draw_style (str): parameter 'draw_style' in ('Arrow', 'Cross', 'Box')
 
         Returns
         -------
-        - Geometry
+        Geometry
         """
         utils.check_enum_arg('Linear Gizmo', 'color_id', color_id, 'linear_gizmo', ('PRIMARY', 'SECONDARY', 'X', 'Y', 'Z'))
         utils.check_enum_arg('Linear Gizmo', 'draw_style', draw_style, 'linear_gizmo', ('ARROW', 'CROSS', 'BOX'))
@@ -2272,24 +2920,30 @@ class ND:
                     use_translation_z = True):
         """ > Node <&Node Transform Gizmo>
 
-        Arguments
+        Parameters
         ---------
-        - value (Matrix) : socket 'Value' (id: Value)
-        - position (Vector) : socket 'Position' (id: Position)
-        - rotation (Rotation) : socket 'Rotation' (id: Rotation)
-        - use_rotation_x (bool): parameter 'use_rotation_x'
-        - use_rotation_y (bool): parameter 'use_rotation_y'
-        - use_rotation_z (bool): parameter 'use_rotation_z'
-        - use_scale_x (bool): parameter 'use_scale_x'
-        - use_scale_y (bool): parameter 'use_scale_y'
-        - use_scale_z (bool): parameter 'use_scale_z'
-        - use_translation_x (bool): parameter 'use_translation_x'
-        - use_translation_y (bool): parameter 'use_translation_y'
-        - use_translation_z (bool): parameter 'use_translation_z'
+        value : Matrix, optional
+            socket 'Value' (id: Value)
+        
+        position : Vector, optional
+            socket 'Position' (id: Position)
+        
+        rotation : Rotation, optional
+            socket 'Rotation' (id: Rotation)
+        
+        use_rotation_x (bool): parameter 'use_rotation_x'
+        use_rotation_y (bool): parameter 'use_rotation_y'
+        use_rotation_z (bool): parameter 'use_rotation_z'
+        use_scale_x (bool): parameter 'use_scale_x'
+        use_scale_y (bool): parameter 'use_scale_y'
+        use_scale_z (bool): parameter 'use_scale_z'
+        use_translation_x (bool): parameter 'use_translation_x'
+        use_translation_y (bool): parameter 'use_translation_y'
+        use_translation_z (bool): parameter 'use_translation_z'
 
         Returns
         -------
-        - Geometry
+        Geometry
         """
         node = Node('Transform Gizmo', {'Value': list(value), 'Position': position, 'Rotation': rotation}, use_rotation_x=use_rotation_x, use_rotation_y=use_rotation_y, use_rotation_z=use_rotation_z, use_scale_x=use_scale_x, use_scale_y=use_scale_y, use_scale_z=use_scale_z, use_translation_x=use_translation_x, use_translation_y=use_translation_y, use_translation_z=use_translation_z)
         return node._out
@@ -2301,15 +2955,21 @@ class ND:
                     layers_as_instances: Boolean = None):
         """ > Node <&Node Grease Pencil to Curves>
 
-        Arguments
+        Parameters
         ---------
-        - grease_pencil (GreasePencil) : socket 'Grease Pencil' (id: Grease Pencil)
-        - selection (Boolean) : socket 'Selection' (id: Selection)
-        - layers_as_instances (Boolean) : socket 'Layers as Instances' (id: Layers as Instances)
+        grease_pencil : GreasePencil, optional
+            socket 'Grease Pencil' (id: Grease Pencil)
+        
+        selection : Boolean, optional
+            socket 'Selection' (id: Selection)
+        
+        layers_as_instances : Boolean, optional
+            socket 'Layers as Instances' (id: Layers as Instances)
+        
 
         Returns
         -------
-        - Curve
+        Curve
         """
         node = Node('Grease Pencil to Curves', {'Grease Pencil': grease_pencil, 'Selection': selection, 'Layers as Instances': layers_as_instances})
         return node._out
@@ -2324,18 +2984,28 @@ class ND:
                     data_type: Literal['FLOAT', 'INT', 'VECTOR'] = 'FLOAT'):
         """ > Node <&Node Advect Grid>
 
-        Arguments
+        Parameters
         ---------
-        - grid (Float) : socket 'Grid' (id: Grid)
-        - velocity (Vector) : socket 'Velocity' (id: Velocity)
-        - time_step (Float) : socket 'Time Step' (id: Time Step)
-        - integration_scheme (menu='Runge-Kutta 3') : ('Semi-Lagrangian', 'Midpoint', 'Runge-Kutta 3', 'Runge-Kutta 4', 'MacCormack', 'BFECC')
-        - limiter (menu='Clamp') : ('None', 'Clamp', 'Revert')
-        - data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Vector')
+        grid : Float, optional
+            socket 'Grid' (id: Grid)
+        
+        velocity : Vector, optional
+            socket 'Velocity' (id: Velocity)
+        
+        time_step : Float, optional
+            socket 'Time Step' (id: Time Step)
+        
+        integration_scheme : menu='Runge-Kutta 3', optional
+            ('Semi-Lagrangian', 'Midpoint', 'Runge-Kutta 3', 'Runge-Kutta 4', 'MacCormack', 'BFECC')
+        
+        limiter : menu='Clamp', optional
+            ('None', 'Clamp', 'Revert')
+        
+        data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Vector')
 
         Returns
         -------
-        - Float
+        Float
         """
         node = Node('Advect Grid', {'Grid': grid, 'Velocity': velocity, 'Time Step': time_step, 'Integration Scheme': integration_scheme, 'Limiter': limiter}, data_type=data_type)
         return node._out
@@ -2352,20 +3022,34 @@ class ND:
                     data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR'] = 'FLOAT'):
         """ > Node <&Node Clip Grid>
 
-        Arguments
+        Parameters
         ---------
-        - grid (Float) : socket 'Grid' (id: Grid)
-        - min_x (Integer) : socket 'Min X' (id: Min X)
-        - min_y (Integer) : socket 'Min Y' (id: Min Y)
-        - min_z (Integer) : socket 'Min Z' (id: Min Z)
-        - max_x (Integer) : socket 'Max X' (id: Max X)
-        - max_y (Integer) : socket 'Max Y' (id: Max Y)
-        - max_z (Integer) : socket 'Max Z' (id: Max Z)
-        - data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector')
+        grid : Float, optional
+            socket 'Grid' (id: Grid)
+        
+        min_x : Integer, optional
+            socket 'Min X' (id: Min X)
+        
+        min_y : Integer, optional
+            socket 'Min Y' (id: Min Y)
+        
+        min_z : Integer, optional
+            socket 'Min Z' (id: Min Z)
+        
+        max_x : Integer, optional
+            socket 'Max X' (id: Max X)
+        
+        max_y : Integer, optional
+            socket 'Max Y' (id: Max Y)
+        
+        max_z : Integer, optional
+            socket 'Max Z' (id: Max Z)
+        
+        data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector')
 
         Returns
         -------
-        - Float
+        Float
         """
         node = Node('Clip Grid', {'Grid': grid, 'Min X': min_x, 'Min Y': min_y, 'Min Z': min_z, 'Max X': max_x, 'Max Y': max_y, 'Max Z': max_z}, data_type=data_type)
         return node._out
@@ -2374,13 +3058,15 @@ class ND:
     def grid_curl(cls, grid: Vector = None):
         """ > Node <&Node Grid Curl>
 
-        Arguments
+        Parameters
         ---------
-        - grid (Vector) : socket 'Grid' (id: Grid)
+        grid : Vector, optional
+            socket 'Grid' (id: Grid)
+        
 
         Returns
         -------
-        - Vector
+        Vector
         """
         node = Node('Grid Curl', {'Grid': grid})
         return node._out
@@ -2394,17 +3080,25 @@ class ND:
                     data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR'] = 'FLOAT'):
         """ > Node <&Node Grid Dilate & Erode>
 
-        Arguments
+        Parameters
         ---------
-        - grid (Float) : socket 'Grid' (id: Grid)
-        - connectivity (menu='Face') : ('Face', 'Edge', 'Vertex')
-        - tiles (menu='Preserve') : ('Ignore', 'Expand', 'Preserve')
-        - steps (Integer) : socket 'Steps' (id: Steps)
-        - data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector')
+        grid : Float, optional
+            socket 'Grid' (id: Grid)
+        
+        connectivity : menu='Face', optional
+            ('Face', 'Edge', 'Vertex')
+        
+        tiles : menu='Preserve', optional
+            ('Ignore', 'Expand', 'Preserve')
+        
+        steps : Integer, optional
+            socket 'Steps' (id: Steps)
+        
+        data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector')
 
         Returns
         -------
-        - Float
+        Float
         """
         node = Node('Grid Dilate & Erode', {'Grid': grid, 'Connectivity': connectivity, 'Tiles': tiles, 'Steps': steps}, data_type=data_type)
         return node._out
@@ -2413,13 +3107,15 @@ class ND:
     def grid_divergence(cls, grid: Vector = None):
         """ > Node <&Node Grid Divergence>
 
-        Arguments
+        Parameters
         ---------
-        - grid (Vector) : socket 'Grid' (id: Grid)
+        grid : Vector, optional
+            socket 'Grid' (id: Grid)
+        
 
         Returns
         -------
-        - Float
+        Float
         """
         node = Node('Grid Divergence', {'Grid': grid})
         return node._out
@@ -2428,13 +3124,15 @@ class ND:
     def grid_gradient(cls, grid: Float = None):
         """ > Node <&Node Grid Gradient>
 
-        Arguments
+        Parameters
         ---------
-        - grid (Float) : socket 'Grid' (id: Grid)
+        grid : Float, optional
+            socket 'Grid' (id: Grid)
+        
 
         Returns
         -------
-        - Vector
+        Vector
         """
         node = Node('Grid Gradient', {'Grid': grid})
         return node._out
@@ -2445,14 +3143,18 @@ class ND:
                     data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR'] = 'FLOAT'):
         """ > Node <&Node Grid Info>
 
-        Arguments
+        Parameters
         ---------
-        - grid (Float) : socket 'Grid' (id: Grid)
-        - data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector')
+        grid : Float, optional
+            socket 'Grid' (id: Grid)
+        
+        data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector')
 
         Returns
         -------
-        - Matrix [background_value_ (Float)]
+        Matrix
+            peer sockets: background_value_ (Float)
+
         """
         node = Node('Grid Info', {'Grid': grid}, data_type=data_type)
         return node._out
@@ -2461,13 +3163,15 @@ class ND:
     def grid_laplacian(cls, grid: Float = None):
         """ > Node <&Node Grid Laplacian>
 
-        Arguments
+        Parameters
         ---------
-        - grid (Float) : socket 'Grid' (id: Grid)
+        grid : Float, optional
+            socket 'Grid' (id: Grid)
+        
 
         Returns
         -------
-        - Float
+        Float
         """
         node = Node('Grid Laplacian', {'Grid': grid})
         return node._out
@@ -2480,16 +3184,22 @@ class ND:
                     data_type: Literal['FLOAT', 'INT', 'VECTOR'] = 'FLOAT'):
         """ > Node <&Node Grid Mean>
 
-        Arguments
+        Parameters
         ---------
-        - grid (Float) : socket 'Grid' (id: Grid)
-        - width (Integer) : socket 'Width' (id: Width)
-        - iterations (Integer) : socket 'Iterations' (id: Iterations)
-        - data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Vector')
+        grid : Float, optional
+            socket 'Grid' (id: Grid)
+        
+        width : Integer, optional
+            socket 'Width' (id: Width)
+        
+        iterations : Integer, optional
+            socket 'Iterations' (id: Iterations)
+        
+        data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Vector')
 
         Returns
         -------
-        - Float
+        Float
         """
         node = Node('Grid Mean', {'Grid': grid, 'Width': width, 'Iterations': iterations}, data_type=data_type)
         return node._out
@@ -2502,16 +3212,22 @@ class ND:
                     data_type: Literal['FLOAT', 'INT', 'VECTOR'] = 'FLOAT'):
         """ > Node <&Node Grid Median>
 
-        Arguments
+        Parameters
         ---------
-        - grid (Float) : socket 'Grid' (id: Grid)
-        - width (Integer) : socket 'Width' (id: Width)
-        - iterations (Integer) : socket 'Iterations' (id: Iterations)
-        - data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Vector')
+        grid : Float, optional
+            socket 'Grid' (id: Grid)
+        
+        width : Integer, optional
+            socket 'Width' (id: Width)
+        
+        iterations : Integer, optional
+            socket 'Iterations' (id: Iterations)
+        
+        data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Vector')
 
         Returns
         -------
-        - Float
+        Float
         """
         node = Node('Grid Median', {'Grid': grid, 'Width': width, 'Iterations': iterations}, data_type=data_type)
         return node._out
@@ -2524,16 +3240,22 @@ class ND:
                     data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR'] = 'FLOAT'):
         """ > Node <&Node Prune Grid>
 
-        Arguments
+        Parameters
         ---------
-        - grid (Float) : socket 'Grid' (id: Grid)
-        - mode (menu='Threshold') : ('Inactive', 'Threshold', 'SDF')
-        - threshold (Float) : socket 'Threshold' (id: Threshold)
-        - data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector')
+        grid : Float, optional
+            socket 'Grid' (id: Grid)
+        
+        mode : menu='Threshold', optional
+            ('Inactive', 'Threshold', 'SDF')
+        
+        threshold : Float, optional
+            socket 'Threshold' (id: Threshold)
+        
+        data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector')
 
         Returns
         -------
-        - Float
+        Float
         """
         node = Node('Prune Grid', {'Grid': grid, 'Mode': mode, 'Threshold': threshold}, data_type=data_type)
         return node._out
@@ -2542,15 +3264,21 @@ class ND:
     def grid_to_mesh(cls, grid: Float = None, threshold: Float = None, adaptivity: Float = None):
         """ > Node <&Node Grid to Mesh>
 
-        Arguments
+        Parameters
         ---------
-        - grid (Float) : socket 'Grid' (id: Grid)
-        - threshold (Float) : socket 'Threshold' (id: Threshold)
-        - adaptivity (Float) : socket 'Adaptivity' (id: Adaptivity)
+        grid : Float, optional
+            socket 'Grid' (id: Grid)
+        
+        threshold : Float, optional
+            socket 'Threshold' (id: Threshold)
+        
+        adaptivity : Float, optional
+            socket 'Adaptivity' (id: Adaptivity)
+        
 
         Returns
         -------
-        - Mesh
+        Mesh
         """
         node = Node('Grid to Mesh', {'Grid': grid, 'Threshold': threshold, 'Adaptivity': adaptivity})
         return node._out
@@ -2561,14 +3289,18 @@ class ND:
                     data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR'] = 'FLOAT'):
         """ > Node <&Node Grid to Points>
 
-        Arguments
+        Parameters
         ---------
-        - grid (Float) : socket 'Grid' (id: Grid)
-        - data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector')
+        grid : Float, optional
+            socket 'Grid' (id: Grid)
+        
+        data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector')
 
         Returns
         -------
-        - Cloud [value_ (Float), x_ (Integer), y_ (Integer), z_ (Integer), is_tile_ (Boolean), extent_ (Integer)]
+        Cloud
+            peer sockets: value_ (Float), x_ (Integer), y_ (Integer), z_ (Integer), is_tile_ (Boolean), extent_ (Integer)
+
         """
         node = Node('Grid to Points', {'Grid': grid}, data_type=data_type)
         return node._out
@@ -2579,14 +3311,16 @@ class ND:
                     data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR'] = 'FLOAT'):
         """ > Node <&Node Voxelize Grid>
 
-        Arguments
+        Parameters
         ---------
-        - grid (Float) : socket 'Grid' (id: Grid)
-        - data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector')
+        grid : Float, optional
+            socket 'Grid' (id: Grid)
+        
+        data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector')
 
         Returns
         -------
-        - Float
+        Float
         """
         node = Node('Voxelize Grid', {'Grid': grid}, data_type=data_type)
         return node._out
@@ -2595,13 +3329,13 @@ class ND:
     def group(cls, node_tree = None):
         """ > Node <&Node Group>
 
-        Arguments
+        Parameters
         ---------
-        - node_tree (NoneType): parameter 'node_tree'
+        node_tree (NoneType): parameter 'node_tree'
 
         Returns
         -------
-        - None
+        None
         """
         node = Node('Group', node_tree=node_tree)
         return node._out
@@ -2610,14 +3344,20 @@ class ND:
     def image_info(cls, image: Image = None, frame: Integer = None):
         """ > Node <&Node Image Info>
 
-        Arguments
+        Parameters
         ---------
-        - image (Image) : socket 'Image' (id: Image)
-        - frame (Integer) : socket 'Frame' (id: Frame)
+        image : Image, optional
+            socket 'Image' (id: Image)
+        
+        frame : Integer, optional
+            socket 'Frame' (id: Frame)
+        
 
         Returns
         -------
-        - Integer [height_ (Integer), has_alpha_ (Boolean), frame_count_ (Integer), fps_ (Float)]
+        Integer
+            peer sockets: height_ (Integer), has_alpha_ (Boolean), frame_count_ (Integer), fps_ (Float)
+
         """
         node = Node('Image Info', {'Image': image, 'Frame': frame})
         return node._out
@@ -2631,17 +3371,25 @@ class ND:
                     interpolation: Literal['Linear', 'Closest', 'Cubic'] = 'Linear'):
         """ > Node <&Node Image Texture>
 
-        Arguments
+        Parameters
         ---------
-        - image (Image) : socket 'Image' (id: Image)
-        - vector (Vector) : socket 'Vector' (id: Vector)
-        - frame (Integer) : socket 'Frame' (id: Frame)
-        - extension (str): parameter 'extension' in ('Repeat', 'Extend', 'Clip', 'Mirror')
-        - interpolation (str): parameter 'interpolation' in ('Linear', 'Closest', 'Cubic')
+        image : Image, optional
+            socket 'Image' (id: Image)
+        
+        vector : Vector, optional
+            socket 'Vector' (id: Vector)
+        
+        frame : Integer, optional
+            socket 'Frame' (id: Frame)
+        
+        extension (str): parameter 'extension' in ('Repeat', 'Extend', 'Clip', 'Mirror')
+        interpolation (str): parameter 'interpolation' in ('Linear', 'Closest', 'Cubic')
 
         Returns
         -------
-        - Color [alpha_ (Float)]
+        Color
+            peer sockets: alpha_ (Float)
+
         """
         utils.check_enum_arg('Image Texture', 'extension', extension, 'image_texture', ('REPEAT', 'EXTEND', 'CLIP', 'MIRROR'))
         utils.check_enum_arg('Image Texture', 'interpolation', interpolation, 'image_texture', ('Linear', 'Closest', 'Cubic'))
@@ -2652,14 +3400,18 @@ class ND:
     def import_csv(cls, path: String = None, delimiter: String = None):
         """ > Node <&Node Import CSV>
 
-        Arguments
+        Parameters
         ---------
-        - path (String) : socket 'Path' (id: Path)
-        - delimiter (String) : socket 'Delimiter' (id: Delimiter)
+        path : String, optional
+            socket 'Path' (id: Path)
+        
+        delimiter : String, optional
+            socket 'Delimiter' (id: Delimiter)
+        
 
         Returns
         -------
-        - Cloud
+        Cloud
         """
         node = Node('Import CSV', {'Path': path, 'Delimiter': delimiter})
         return node._out
@@ -2668,13 +3420,15 @@ class ND:
     def import_obj(cls, path: String = None):
         """ > Node <&Node Import OBJ>
 
-        Arguments
+        Parameters
         ---------
-        - path (String) : socket 'Path' (id: Path)
+        path : String, optional
+            socket 'Path' (id: Path)
+        
 
         Returns
         -------
-        - Instances
+        Instances
         """
         node = Node('Import OBJ', {'Path': path})
         return node._out
@@ -2683,13 +3437,15 @@ class ND:
     def import_ply(cls, path: String = None):
         """ > Node <&Node Import PLY>
 
-        Arguments
+        Parameters
         ---------
-        - path (String) : socket 'Path' (id: Path)
+        path : String, optional
+            socket 'Path' (id: Path)
+        
 
         Returns
         -------
-        - Mesh
+        Mesh
         """
         node = Node('Import PLY', {'Path': path})
         return node._out
@@ -2698,13 +3454,15 @@ class ND:
     def import_stl(cls, path: String = None):
         """ > Node <&Node Import STL>
 
-        Arguments
+        Parameters
         ---------
-        - path (String) : socket 'Path' (id: Path)
+        path : String, optional
+            socket 'Path' (id: Path)
+        
 
         Returns
         -------
-        - Mesh
+        Mesh
         """
         node = Node('Import STL', {'Path': path})
         return node._out
@@ -2713,13 +3471,15 @@ class ND:
     def import_text(cls, path: String = None):
         """ > Node <&Node Import Text>
 
-        Arguments
+        Parameters
         ---------
-        - path (String) : socket 'Path' (id: Path)
+        path : String, optional
+            socket 'Path' (id: Path)
+        
 
         Returns
         -------
-        - String
+        String
         """
         node = Node('Import Text', {'Path': path})
         return node._out
@@ -2728,13 +3488,15 @@ class ND:
     def import_vdb(cls, path: String = None):
         """ > Node <&Node Import VDB>
 
-        Arguments
+        Parameters
         ---------
-        - path (String) : socket 'Path' (id: Path)
+        path : String, optional
+            socket 'Path' (id: Path)
+        
 
         Returns
         -------
-        - Volume
+        Volume
         """
         node = Node('Import VDB', {'Path': path})
         return node._out
@@ -2743,14 +3505,20 @@ class ND:
     def index_of_nearest(cls, position: Vector = None, group_id: Integer = None):
         """ > Node <&Node Index of Nearest>
 
-        Arguments
+        Parameters
         ---------
-        - position (Vector) : socket 'Position' (id: Position)
-        - group_id (Integer) : socket 'Group ID' (id: Group ID)
+        position : Vector, optional
+            socket 'Position' (id: Position)
+        
+        group_id : Integer, optional
+            socket 'Group ID' (id: Group ID)
+        
 
         Returns
         -------
-        - Integer [has_neighbor_ (Boolean)]
+        Integer
+            peer sockets: has_neighbor_ (Boolean)
+
         """
         node = Node('Index of Nearest', {'Position': position, 'Group ID': group_id})
         return node._out
@@ -2765,16 +3533,22 @@ class ND:
                     **sockets):
         """ > Node <&Node Index Switch>
 
-        Arguments
+        Parameters
         ---------
-        - index (Integer) : socket 'Index' (id: Index)
-        - _0 (Float) : socket '0' (id: Item_0)
-        - _1 (Float) : socket '1' (id: Item_1)
-        - data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Rotation', 'Matrix', 'String', 'Menu', 'Object', 'Image', 'Geometry', 'Collection', 'Material', 'Bundle', 'Closure', 'Font')
+        index : Integer, optional
+            socket 'Index' (id: Index)
+        
+        _0 : Float, optional
+            socket '0' (id: Item_0)
+        
+        _1 : Float, optional
+            socket '1' (id: Item_1)
+        
+        data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Rotation', 'Matrix', 'String', 'Menu', 'Object', 'Image', 'Geometry', 'Collection', 'Material', 'Bundle', 'Closure', 'Font')
 
         Returns
         -------
-        - Float
+        Float
         """
         node = Node('Index Switch', {'Index': index, 'Item_0': _0, 'Item_1': _1, **named_sockets}, data_type=data_type, **sockets)
         return node._out
@@ -2785,7 +3559,7 @@ class ND:
 
         Returns
         -------
-        - Object
+        Object
         """
         node = Node('Active Camera', )
         return node._out
@@ -2794,13 +3568,13 @@ class ND:
     def collection(cls, collection = None):
         """ > Node <&Node Collection>
 
-        Arguments
+        Parameters
         ---------
-        - collection (NoneType): parameter 'collection'
+        collection (NoneType): parameter 'collection'
 
         Returns
         -------
-        - Collection
+        Collection
         """
         node = Node('Collection', collection=collection)
         return node._out
@@ -2809,13 +3583,17 @@ class ND:
     def curve_handle_positions(cls, relative: Boolean = None):
         """ > Node <&Node Curve Handle Positions>
 
-        Arguments
+        Parameters
         ---------
-        - relative (Boolean) : socket 'Relative' (id: Relative)
+        relative : Boolean, optional
+            socket 'Relative' (id: Relative)
+        
 
         Returns
         -------
-        - Vector [right_ (Vector)]
+        Vector
+            peer sockets: right_ (Vector)
+
         """
         node = Node('Curve Handle Positions', {'Relative': relative})
         return node._out
@@ -2826,7 +3604,7 @@ class ND:
 
         Returns
         -------
-        - Float
+        Float
         """
         node = Node('Curve Tilt', )
         return node._out
@@ -2837,7 +3615,7 @@ class ND:
 
         Returns
         -------
-        - Boolean
+        Boolean
         """
         node = Node('Is Edge Smooth', )
         return node._out
@@ -2848,7 +3626,7 @@ class ND:
 
         Returns
         -------
-        - Integer
+        Integer
         """
         node = Node('ID', )
         return node._out
@@ -2857,13 +3635,13 @@ class ND:
     def image(cls, image = None):
         """ > Node <&Node Image>
 
-        Arguments
+        Parameters
         ---------
-        - image (NoneType): parameter 'image'
+        image (NoneType): parameter 'image'
 
         Returns
         -------
-        - Image
+        Image
         """
         node = Node('Image', image=image)
         return node._out
@@ -2874,7 +3652,7 @@ class ND:
 
         Returns
         -------
-        - Integer
+        Integer
         """
         node = Node('Index', )
         return node._out
@@ -2883,13 +3661,17 @@ class ND:
     def instance_bounds(cls, use_radius: Boolean = None):
         """ > Node <&Node Instance Bounds>
 
-        Arguments
+        Parameters
         ---------
-        - use_radius (Boolean) : socket 'Use Radius' (id: Use Radius)
+        use_radius : Boolean, optional
+            socket 'Use Radius' (id: Use Radius)
+        
 
         Returns
         -------
-        - Vector [max_ (Vector)]
+        Vector
+            peer sockets: max_ (Vector)
+
         """
         node = Node('Instance Bounds', {'Use Radius': use_radius})
         return node._out
@@ -2900,7 +3682,7 @@ class ND:
 
         Returns
         -------
-        - Rotation
+        Rotation
         """
         node = Node('Instance Rotation', )
         return node._out
@@ -2911,7 +3693,7 @@ class ND:
 
         Returns
         -------
-        - Vector
+        Vector
         """
         node = Node('Instance Scale', )
         return node._out
@@ -2920,13 +3702,13 @@ class ND:
     def material(cls, material = None):
         """ > Node <&Node Material>
 
-        Arguments
+        Parameters
         ---------
-        - material (NoneType): parameter 'material'
+        material (NoneType): parameter 'material'
 
         Returns
         -------
-        - Material
+        Material
         """
         node = Node('Material', material=material)
         return node._out
@@ -2937,7 +3719,7 @@ class ND:
 
         Returns
         -------
-        - Integer
+        Integer
         """
         node = Node('Material Index', )
         return node._out
@@ -2948,7 +3730,9 @@ class ND:
 
         Returns
         -------
-        - Float [signed_angle_ (Float)]
+        Float
+            peer sockets: signed_angle_ (Float)
+
         """
         node = Node('Edge Angle', )
         return node
@@ -2959,7 +3743,7 @@ class ND:
 
         Returns
         -------
-        - Integer
+        Integer
         """
         node = Node('Edge Neighbors', )
         return node._out
@@ -2970,7 +3754,9 @@ class ND:
 
         Returns
         -------
-        - Integer [vertex_index_2_ (Integer), position_1_ (Vector), position_2_ (Vector)]
+        Integer
+            peer sockets: vertex_index_2_ (Integer), position_1_ (Vector), position_2_ (Vector)
+
         """
         node = Node('Edge Vertices', )
         return node
@@ -2981,7 +3767,7 @@ class ND:
 
         Returns
         -------
-        - Float
+        Float
         """
         node = Node('Face Area', )
         return node._out
@@ -2990,13 +3776,15 @@ class ND:
     def is_face_planar(cls, threshold: Float = None):
         """ > Node <&Node Is Face Planar>
 
-        Arguments
+        Parameters
         ---------
-        - threshold (Float) : socket 'Threshold' (id: Threshold)
+        threshold : Float, optional
+            socket 'Threshold' (id: Threshold)
+        
 
         Returns
         -------
-        - Boolean
+        Boolean
         """
         node = Node('Is Face Planar', {'Threshold': threshold})
         return node._out
@@ -3007,7 +3795,9 @@ class ND:
 
         Returns
         -------
-        - Integer [face_count_ (Integer)]
+        Integer
+            peer sockets: face_count_ (Integer)
+
         """
         node = Node('Face Neighbors', )
         return node
@@ -3018,7 +3808,9 @@ class ND:
 
         Returns
         -------
-        - Integer [island_count_ (Integer)]
+        Integer
+            peer sockets: island_count_ (Integer)
+
         """
         node = Node('Mesh Island', )
         return node
@@ -3029,7 +3821,9 @@ class ND:
 
         Returns
         -------
-        - Integer [face_count_ (Integer)]
+        Integer
+            peer sockets: face_count_ (Integer)
+
         """
         node = Node('Vertex Neighbors', )
         return node
@@ -3040,14 +3834,18 @@ class ND:
                     data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'QUATERNION', 'FLOAT4X4'] = 'FLOAT'):
         """ > Node <&Node Named Attribute>
 
-        Arguments
+        Parameters
         ---------
-        - name (String) : socket 'Name' (id: Name)
-        - data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Quaternion', '4x4 Matrix')
+        name : String, optional
+            socket 'Name' (id: Name)
+        
+        data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Quaternion', '4x4 Matrix')
 
         Returns
         -------
-        - Float [exists_ (Boolean)]
+        Float
+            peer sockets: exists_ (Boolean)
+
         """
         node = Node('Named Attribute', {'Name': name}, data_type=data_type)
         return node._out
@@ -3056,13 +3854,15 @@ class ND:
     def named_layer_selection(cls, name: String = None):
         """ > Node <&Node Named Layer Selection>
 
-        Arguments
+        Parameters
         ---------
-        - name (String) : socket 'Name' (id: Name)
+        name : String, optional
+            socket 'Name' (id: Name)
+        
 
         Returns
         -------
-        - Boolean
+        Boolean
         """
         node = Node('Named Layer Selection', {'Name': name})
         return node._out
@@ -3073,7 +3873,9 @@ class ND:
 
         Returns
         -------
-        - Vector [true_normal_ (Vector)]
+        Vector
+            peer sockets: true_normal_ (Vector)
+
         """
         node = Node('Normal', )
         return node._out
@@ -3082,13 +3884,13 @@ class ND:
     def object(cls, object = None):
         """ > Node <&Node Object>
 
-        Arguments
+        Parameters
         ---------
-        - object (NoneType): parameter 'object'
+        object (NoneType): parameter 'object'
 
         Returns
         -------
-        - Object
+        Object
         """
         node = Node('Object', object=object)
         return node._out
@@ -3099,7 +3901,7 @@ class ND:
 
         Returns
         -------
-        - Vector
+        Vector
         """
         node = Node('Position', )
         return node._out
@@ -3110,7 +3912,7 @@ class ND:
 
         Returns
         -------
-        - Float
+        Float
         """
         node = Node('Radius', )
         return node._out
@@ -3121,7 +3923,9 @@ class ND:
 
         Returns
         -------
-        - Float [frame_ (Float)]
+        Float
+            peer sockets: frame_ (Float)
+
         """
         node = Node('Scene Time', )
         return node
@@ -3132,7 +3936,7 @@ class ND:
 
         Returns
         -------
-        - Boolean
+        Boolean
         """
         node = Node('Is Face Smooth', )
         return node._out
@@ -3141,14 +3945,20 @@ class ND:
     def shortest_edge_paths(cls, end_vertex: Boolean = None, edge_cost: Float = None):
         """ > Node <&Node Shortest Edge Paths>
 
-        Arguments
+        Parameters
         ---------
-        - end_vertex (Boolean) : socket 'End Vertex' (id: End Vertex)
-        - edge_cost (Float) : socket 'Edge Cost' (id: Edge Cost)
+        end_vertex : Boolean, optional
+            socket 'End Vertex' (id: End Vertex)
+        
+        edge_cost : Float, optional
+            socket 'Edge Cost' (id: Edge Cost)
+        
 
         Returns
         -------
-        - Integer [total_cost_ (Float)]
+        Integer
+            peer sockets: total_cost_ (Float)
+
         """
         node = Node('Shortest Edge Paths', {'End Vertex': end_vertex, 'Edge Cost': edge_cost})
         return node._out
@@ -3159,7 +3969,7 @@ class ND:
 
         Returns
         -------
-        - Boolean
+        Boolean
         """
         node = Node('Is Spline Cyclic', )
         return node._out
@@ -3170,7 +3980,7 @@ class ND:
 
         Returns
         -------
-        - Integer
+        Integer
         """
         node = Node('Spline Resolution', )
         return node._out
@@ -3181,7 +3991,7 @@ class ND:
 
         Returns
         -------
-        - Vector
+        Vector
         """
         node = Node('Curve Tangent', )
         return node._out
@@ -3192,7 +4002,9 @@ class ND:
 
         Returns
         -------
-        - Integer [y_ (Integer), z_ (Integer), is_tile_ (Boolean), extent_x_ (Integer), extent_y_ (Integer), extent_z_ (Integer)]
+        Integer
+            peer sockets: y_ (Integer), z_ (Integer), is_tile_ (Boolean), extent_x_ (Integer), extent_y_ (Integer), extent_z_ (Integer)
+
         """
         node = Node('Voxel Index', )
         return node
@@ -3208,19 +4020,33 @@ class ND:
                     scale: Vector = None):
         """ > Node <&Node Instance on Points>
 
-        Arguments
+        Parameters
         ---------
-        - points (Cloud) : socket 'Points' (id: Points)
-        - selection (Boolean) : socket 'Selection' (id: Selection)
-        - instance (Instances) : socket 'Instance' (id: Instance)
-        - pick_instance (Boolean) : socket 'Pick Instance' (id: Pick Instance)
-        - instance_index (Integer) : socket 'Instance Index' (id: Instance Index)
-        - rotation (Rotation) : socket 'Rotation' (id: Rotation)
-        - scale (Vector) : socket 'Scale' (id: Scale)
+        points : Cloud, optional
+            socket 'Points' (id: Points)
+        
+        selection : Boolean, optional
+            socket 'Selection' (id: Selection)
+        
+        instance : Instances, optional
+            socket 'Instance' (id: Instance)
+        
+        pick_instance : Boolean, optional
+            socket 'Pick Instance' (id: Pick Instance)
+        
+        instance_index : Integer, optional
+            socket 'Instance Index' (id: Instance Index)
+        
+        rotation : Rotation, optional
+            socket 'Rotation' (id: Rotation)
+        
+        scale : Vector, optional
+            socket 'Scale' (id: Scale)
+        
 
         Returns
         -------
-        - Instances
+        Instances
         """
         node = Node('Instance on Points', {'Points': points, 'Selection': selection, 'Instance': instance, 'Pick Instance': pick_instance, 'Instance Index': instance_index, 'Rotation': rotation, 'Scale': scale})
         return node._out
@@ -3231,7 +4057,7 @@ class ND:
 
         Returns
         -------
-        - Matrix
+        Matrix
         """
         node = Node('Instance Transform', )
         return node._out
@@ -3244,16 +4070,24 @@ class ND:
                     radius: Float = None):
         """ > Node <&Node Instances to Points>
 
-        Arguments
+        Parameters
         ---------
-        - instances (Instances) : socket 'Instances' (id: Instances)
-        - selection (Boolean) : socket 'Selection' (id: Selection)
-        - position (Vector) : socket 'Position' (id: Position)
-        - radius (Float) : socket 'Radius' (id: Radius)
+        instances : Instances, optional
+            socket 'Instances' (id: Instances)
+        
+        selection : Boolean, optional
+            socket 'Selection' (id: Selection)
+        
+        position : Vector, optional
+            socket 'Position' (id: Position)
+        
+        radius : Float, optional
+            socket 'Radius' (id: Radius)
+        
 
         Returns
         -------
-        - Cloud
+        Cloud
         """
         node = Node('Instances to Points', {'Instances': instances, 'Selection': selection, 'Position': position, 'Radius': radius})
         return node._out
@@ -3269,19 +4103,35 @@ class ND:
                     max_neighbors: Integer = None):
         """ > Node <&Node Interpolate Curves>
 
-        Arguments
+        Parameters
         ---------
-        - guide_curves (Curve) : socket 'Guide Curves' (id: Guide Curves)
-        - guide_up (Vector) : socket 'Guide Up' (id: Guide Up)
-        - guide_group_id (Integer) : socket 'Guide Group ID' (id: Guide Group ID)
-        - points (Cloud) : socket 'Points' (id: Points)
-        - point_up (Vector) : socket 'Point Up' (id: Point Up)
-        - point_group_id (Integer) : socket 'Point Group ID' (id: Point Group ID)
-        - max_neighbors (Integer) : socket 'Max Neighbors' (id: Max Neighbors)
+        guide_curves : Curve, optional
+            socket 'Guide Curves' (id: Guide Curves)
+        
+        guide_up : Vector, optional
+            socket 'Guide Up' (id: Guide Up)
+        
+        guide_group_id : Integer, optional
+            socket 'Guide Group ID' (id: Guide Group ID)
+        
+        points : Cloud, optional
+            socket 'Points' (id: Points)
+        
+        point_up : Vector, optional
+            socket 'Point Up' (id: Point Up)
+        
+        point_group_id : Integer, optional
+            socket 'Point Group ID' (id: Point Group ID)
+        
+        max_neighbors : Integer, optional
+            socket 'Max Neighbors' (id: Max Neighbors)
+        
 
         Returns
         -------
-        - Curve [closest_index_ (Integer), closest_weight_ (Float)]
+        Curve
+            peer sockets: closest_index_ (Integer), closest_weight_ (Float)
+
         """
         node = Node('Interpolate Curves', {'Guide Curves': guide_curves, 'Guide Up': guide_up, 'Guide Group ID': guide_group_id, 'Points': points, 'Point Up': point_up, 'Point Group ID': point_group_id, 'Max Neighbors': max_neighbors})
         return node._out
@@ -3292,7 +4142,7 @@ class ND:
 
         Returns
         -------
-        - Boolean
+        Boolean
         """
         node = Node('Is Viewport', )
         return node._out
@@ -3301,13 +4151,15 @@ class ND:
     def join_geometry(cls, *geometry: Geometry):
         """ > Node <&Node Join Geometry>
 
-        Arguments
+        Parameters
         ---------
-        - geometry (Geometry) : socket 'Geometry' (id: Geometry)
+        geometry : Geometry, optional
+            socket 'Geometry' (id: Geometry)
+        
 
         Returns
         -------
-        - Geometry
+        Geometry
         """
         node = Node('Join Geometry', {'Geometry': list(geometry)})
         return node._out
@@ -3320,16 +4172,20 @@ class ND:
                     structure_type: Literal['AUTO', 'DYNAMIC', 'FIELD', 'GRID', 'LIST', 'SINGLE'] = 'AUTO'):
         """ > Node <&Node Get List Item>
 
-        Arguments
+        Parameters
         ---------
-        - list (Float) : socket 'List' (id: List)
-        - index (Integer) : socket 'Index' (id: Index)
-        - socket_type (str): parameter 'socket_type' in ('Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Rotation', 'Matrix', 'String', 'Menu', 'Object', 'Image', 'Geometry', 'Collection', 'Material', 'Bundle', 'Closure', 'Font')
-        - structure_type (str): parameter 'structure_type' in ('Auto', 'Dynamic', 'Field', 'Grid', 'List', 'Single')
+        list : Float, optional
+            socket 'List' (id: List)
+        
+        index : Integer, optional
+            socket 'Index' (id: Index)
+        
+        socket_type (str): parameter 'socket_type' in ('Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Rotation', 'Matrix', 'String', 'Menu', 'Object', 'Image', 'Geometry', 'Collection', 'Material', 'Bundle', 'Closure', 'Font')
+        structure_type (str): parameter 'structure_type' in ('Auto', 'Dynamic', 'Field', 'Grid', 'List', 'Single')
 
         Returns
         -------
-        - Float
+        Float
         """
         utils.check_enum_arg('Get List Item', 'socket_type', socket_type, 'get_list_item', ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT'))
         utils.check_enum_arg('Get List Item', 'structure_type', structure_type, 'get_list_item', ('AUTO', 'DYNAMIC', 'FIELD', 'GRID', 'LIST', 'SINGLE'))
@@ -3342,14 +4198,16 @@ class ND:
                     data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT'] = 'FLOAT'):
         """ > Node <&Node List Length>
 
-        Arguments
+        Parameters
         ---------
-        - list (Float) : socket 'List' (id: List)
-        - data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Rotation', 'Matrix', 'String', 'Menu', 'Object', 'Image', 'Geometry', 'Collection', 'Material', 'Bundle', 'Closure', 'Font')
+        list : Float, optional
+            socket 'List' (id: List)
+        
+        data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Rotation', 'Matrix', 'String', 'Menu', 'Object', 'Image', 'Geometry', 'Collection', 'Material', 'Bundle', 'Closure', 'Font')
 
         Returns
         -------
-        - Integer
+        Integer
         """
         node = Node('List Length', {'List': list}, data_type=data_type)
         return node._out
@@ -3358,13 +4216,15 @@ class ND:
     def material_selection(cls, material: Material = None):
         """ > Node <&Node Material Selection>
 
-        Arguments
+        Parameters
         ---------
-        - material (Material) : socket 'Material' (id: Material)
+        material : Material, optional
+            socket 'Material' (id: Material)
+        
 
         Returns
         -------
-        - Boolean
+        Boolean
         """
         node = Node('Material Selection', {'Material': material})
         return node._out
@@ -3377,14 +4237,16 @@ class ND:
                     **sockets):
         """ > Node <&Node Menu Switch>
 
-        Arguments
+        Parameters
         ---------
-        - Default selection
-        - data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Rotation', 'Matrix', 'String', 'Menu', 'Object', 'Image', 'Geometry', 'Collection', 'Material', 'Bundle', 'Closure', 'Font')
+        Default selection
+        data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Rotation', 'Matrix', 'String', 'Menu', 'Object', 'Image', 'Geometry', 'Collection', 'Material', 'Bundle', 'Closure', 'Font')
 
         Returns
         -------
-        - Geometry [a_ (Boolean), b_ (Boolean)]
+        Geometry
+            peer sockets: a_ (Boolean), b_ (Boolean)
+
         """
         node = Node('Menu Switch', {'Menu': menu, **named_sockets}, data_type=data_type, **sockets)
         return node._out
@@ -3397,16 +4259,24 @@ class ND:
                     distance: Float = None):
         """ > Node <&Node Merge by Distance>
 
-        Arguments
+        Parameters
         ---------
-        - geometry (Geometry) : socket 'Geometry' (id: Geometry)
-        - selection (Boolean) : socket 'Selection' (id: Selection)
-        - mode (menu='All') : ('All', 'Connected')
-        - distance (Float) : socket 'Distance' (id: Distance)
+        geometry : Geometry, optional
+            socket 'Geometry' (id: Geometry)
+        
+        selection : Boolean, optional
+            socket 'Selection' (id: Selection)
+        
+        mode : menu='All', optional
+            ('All', 'Connected')
+        
+        distance : Float, optional
+            socket 'Distance' (id: Distance)
+        
 
         Returns
         -------
-        - Geometry
+        Geometry
         """
         node = Node('Merge by Distance', {'Geometry': geometry, 'Selection': selection, 'Mode': mode, 'Distance': distance})
         return node._out
@@ -3419,16 +4289,22 @@ class ND:
                     mode: Literal['MERGE_BY_NAME', 'MERGE_BY_ID'] = 'MERGE_BY_NAME'):
         """ > Node <&Node Merge Layers>
 
-        Arguments
+        Parameters
         ---------
-        - grease_pencil (GreasePencil) : socket 'Grease Pencil' (id: Grease Pencil)
-        - selection (Boolean) : socket 'Selection' (id: Selection)
-        - group_id (Integer) : socket 'Group ID' (id: Group ID)
-        - mode (str): parameter 'mode' in ('By Name', 'By Group ID')
+        grease_pencil : GreasePencil, optional
+            socket 'Grease Pencil' (id: Grease Pencil)
+        
+        selection : Boolean, optional
+            socket 'Selection' (id: Selection)
+        
+        group_id : Integer, optional
+            socket 'Group ID' (id: Group ID)
+        
+        mode (str): parameter 'mode' in ('By Name', 'By Group ID')
 
         Returns
         -------
-        - GreasePencil
+        GreasePencil
         """
         utils.check_enum_arg('Merge Layers', 'mode', mode, 'merge_layers', ('MERGE_BY_NAME', 'MERGE_BY_ID'))
         node = Node('Merge Layers', {'Grease Pencil': grease_pencil, 'Selection': selection, 'Group ID': group_id}, mode=mode)
@@ -3444,18 +4320,26 @@ class ND:
                     solver: Literal['EXACT', 'FLOAT', 'MANIFOLD'] = 'FLOAT'):
         """ > Node <&Node Mesh Boolean>
 
-        Arguments
+        Parameters
         ---------
-        - mesh_1 (Mesh) : socket 'Mesh 1' (id: Mesh 1)
-        - mesh_2 (Mesh) : socket 'Mesh 2' (id: Mesh 2)
-        - self_intersection (Boolean) : socket 'Self Intersection' (id: Self Intersection)
-        - hole_tolerant (Boolean) : socket 'Hole Tolerant' (id: Hole Tolerant)
-        - operation (str): parameter 'operation' in ('Intersect', 'Union', 'Difference')
-        - solver (str): parameter 'solver' in ('Exact', 'Float', 'Manifold')
+        mesh_1 : Mesh, optional
+            socket 'Mesh 1' (id: Mesh 1)
+        
+        mesh_2 : Mesh, optional
+            socket 'Mesh 2' (id: Mesh 2)
+        
+        self_intersection : Boolean, optional
+            socket 'Self Intersection' (id: Self Intersection)
+        
+        hole_tolerant : Boolean, optional
+            socket 'Hole Tolerant' (id: Hole Tolerant)
+        
+        operation (str): parameter 'operation' in ('Intersect', 'Union', 'Difference')
+        solver (str): parameter 'solver' in ('Exact', 'Float', 'Manifold')
 
         Returns
         -------
-        - Mesh
+        Mesh
         """
         utils.check_enum_arg('Mesh Boolean', 'operation', operation, 'mesh_boolean', ('INTERSECT', 'UNION', 'DIFFERENCE'))
         utils.check_enum_arg('Mesh Boolean', 'solver', solver, 'mesh_boolean', ('EXACT', 'FLOAT', 'MANIFOLD'))
@@ -3469,15 +4353,19 @@ class ND:
                     fill_type: Literal['NONE', 'NGON', 'TRIANGLE_FAN'] = 'NONE'):
         """ > Node <&Node Mesh Circle>
 
-        Arguments
+        Parameters
         ---------
-        - vertices (Integer) : socket 'Vertices' (id: Vertices)
-        - radius (Float) : socket 'Radius' (id: Radius)
-        - fill_type (str): parameter 'fill_type' in ('None', 'N-Gon', 'Triangles')
+        vertices : Integer, optional
+            socket 'Vertices' (id: Vertices)
+        
+        radius : Float, optional
+            socket 'Radius' (id: Radius)
+        
+        fill_type (str): parameter 'fill_type' in ('None', 'N-Gon', 'Triangles')
 
         Returns
         -------
-        - Mesh
+        Mesh
         """
         utils.check_enum_arg('Mesh Circle', 'fill_type', fill_type, 'mesh_circle', ('NONE', 'NGON', 'TRIANGLE_FAN'))
         node = Node('Mesh Circle', {'Vertices': vertices, 'Radius': radius}, fill_type=fill_type)
@@ -3494,19 +4382,33 @@ class ND:
                     fill_type: Literal['NONE', 'NGON', 'TRIANGLE_FAN'] = 'NGON'):
         """ > Node <&Node Cone>
 
-        Arguments
+        Parameters
         ---------
-        - vertices (Integer) : socket 'Vertices' (id: Vertices)
-        - side_segments (Integer) : socket 'Side Segments' (id: Side Segments)
-        - fill_segments (Integer) : socket 'Fill Segments' (id: Fill Segments)
-        - radius_top (Float) : socket 'Radius Top' (id: Radius Top)
-        - radius_bottom (Float) : socket 'Radius Bottom' (id: Radius Bottom)
-        - depth (Float) : socket 'Depth' (id: Depth)
-        - fill_type (str): parameter 'fill_type' in ('None', 'N-Gon', 'Triangles')
+        vertices : Integer, optional
+            socket 'Vertices' (id: Vertices)
+        
+        side_segments : Integer, optional
+            socket 'Side Segments' (id: Side Segments)
+        
+        fill_segments : Integer, optional
+            socket 'Fill Segments' (id: Fill Segments)
+        
+        radius_top : Float, optional
+            socket 'Radius Top' (id: Radius Top)
+        
+        radius_bottom : Float, optional
+            socket 'Radius Bottom' (id: Radius Bottom)
+        
+        depth : Float, optional
+            socket 'Depth' (id: Depth)
+        
+        fill_type (str): parameter 'fill_type' in ('None', 'N-Gon', 'Triangles')
 
         Returns
         -------
-        - Mesh [top_ (Boolean), bottom_ (Boolean), side_ (Boolean), uv_map_ (Vector)]
+        Mesh
+            peer sockets: top_ (Boolean), bottom_ (Boolean), side_ (Boolean), uv_map_ (Vector)
+
         """
         utils.check_enum_arg('Cone', 'fill_type', fill_type, 'cone', ('NONE', 'NGON', 'TRIANGLE_FAN'))
         node = Node('Cone', {'Vertices': vertices, 'Side Segments': side_segments, 'Fill Segments': fill_segments, 'Radius Top': radius_top, 'Radius Bottom': radius_bottom, 'Depth': depth}, fill_type=fill_type)
@@ -3520,16 +4422,26 @@ class ND:
                     vertices_z: Integer = None):
         """ > Node <&Node Cube>
 
-        Arguments
+        Parameters
         ---------
-        - size (Vector) : socket 'Size' (id: Size)
-        - vertices_x (Integer) : socket 'Vertices X' (id: Vertices X)
-        - vertices_y (Integer) : socket 'Vertices Y' (id: Vertices Y)
-        - vertices_z (Integer) : socket 'Vertices Z' (id: Vertices Z)
+        size : Vector, optional
+            socket 'Size' (id: Size)
+        
+        vertices_x : Integer, optional
+            socket 'Vertices X' (id: Vertices X)
+        
+        vertices_y : Integer, optional
+            socket 'Vertices Y' (id: Vertices Y)
+        
+        vertices_z : Integer, optional
+            socket 'Vertices Z' (id: Vertices Z)
+        
 
         Returns
         -------
-        - Mesh [uv_map_ (Vector)]
+        Mesh
+            peer sockets: uv_map_ (Vector)
+
         """
         node = Node('Cube', {'Size': size, 'Vertices X': vertices_x, 'Vertices Y': vertices_y, 'Vertices Z': vertices_z})
         return node._out
@@ -3544,18 +4456,30 @@ class ND:
                     fill_type: Literal['NONE', 'NGON', 'TRIANGLE_FAN'] = 'NGON'):
         """ > Node <&Node Cylinder>
 
-        Arguments
+        Parameters
         ---------
-        - vertices (Integer) : socket 'Vertices' (id: Vertices)
-        - side_segments (Integer) : socket 'Side Segments' (id: Side Segments)
-        - fill_segments (Integer) : socket 'Fill Segments' (id: Fill Segments)
-        - radius (Float) : socket 'Radius' (id: Radius)
-        - depth (Float) : socket 'Depth' (id: Depth)
-        - fill_type (str): parameter 'fill_type' in ('None', 'N-Gon', 'Triangles')
+        vertices : Integer, optional
+            socket 'Vertices' (id: Vertices)
+        
+        side_segments : Integer, optional
+            socket 'Side Segments' (id: Side Segments)
+        
+        fill_segments : Integer, optional
+            socket 'Fill Segments' (id: Fill Segments)
+        
+        radius : Float, optional
+            socket 'Radius' (id: Radius)
+        
+        depth : Float, optional
+            socket 'Depth' (id: Depth)
+        
+        fill_type (str): parameter 'fill_type' in ('None', 'N-Gon', 'Triangles')
 
         Returns
         -------
-        - Mesh [top_ (Boolean), side_ (Boolean), bottom_ (Boolean), uv_map_ (Vector)]
+        Mesh
+            peer sockets: top_ (Boolean), side_ (Boolean), bottom_ (Boolean), uv_map_ (Vector)
+
         """
         utils.check_enum_arg('Cylinder', 'fill_type', fill_type, 'cylinder', ('NONE', 'NGON', 'TRIANGLE_FAN'))
         node = Node('Cylinder', {'Vertices': vertices, 'Side Segments': side_segments, 'Fill Segments': fill_segments, 'Radius': radius, 'Depth': depth}, fill_type=fill_type)
@@ -3565,13 +4489,15 @@ class ND:
     def face_group_boundaries(cls, face_group_id: Integer = None):
         """ > Node <&Node Face Group Boundaries>
 
-        Arguments
+        Parameters
         ---------
-        - face_group_id (Integer) : socket 'Face Group ID' (id: Face Set)
+        face_group_id : Integer, optional
+            socket 'Face Group ID' (id: Face Set)
+        
 
         Returns
         -------
-        - Boolean
+        Boolean
         """
         node = Node('Face Group Boundaries', {'Face Set': face_group_id})
         return node._out
@@ -3584,16 +4510,26 @@ class ND:
                     vertices_y: Integer = None):
         """ > Node <&Node Grid>
 
-        Arguments
+        Parameters
         ---------
-        - size_x (Float) : socket 'Size X' (id: Size X)
-        - size_y (Float) : socket 'Size Y' (id: Size Y)
-        - vertices_x (Integer) : socket 'Vertices X' (id: Vertices X)
-        - vertices_y (Integer) : socket 'Vertices Y' (id: Vertices Y)
+        size_x : Float, optional
+            socket 'Size X' (id: Size X)
+        
+        size_y : Float, optional
+            socket 'Size Y' (id: Size Y)
+        
+        vertices_x : Integer, optional
+            socket 'Vertices X' (id: Vertices X)
+        
+        vertices_y : Integer, optional
+            socket 'Vertices Y' (id: Vertices Y)
+        
 
         Returns
         -------
-        - Mesh [uv_map_ (Vector)]
+        Mesh
+            peer sockets: uv_map_ (Vector)
+
         """
         node = Node('Grid', {'Size X': size_x, 'Size Y': size_y, 'Vertices X': vertices_x, 'Vertices Y': vertices_y})
         return node._out
@@ -3602,14 +4538,20 @@ class ND:
     def ico_sphere(cls, radius: Float = None, subdivisions: Integer = None):
         """ > Node <&Node Ico Sphere>
 
-        Arguments
+        Parameters
         ---------
-        - radius (Float) : socket 'Radius' (id: Radius)
-        - subdivisions (Integer) : socket 'Subdivisions' (id: Subdivisions)
+        radius : Float, optional
+            socket 'Radius' (id: Radius)
+        
+        subdivisions : Integer, optional
+            socket 'Subdivisions' (id: Subdivisions)
+        
 
         Returns
         -------
-        - Mesh [uv_map_ (Vector)]
+        Mesh
+            peer sockets: uv_map_ (Vector)
+
         """
         node = Node('Ico Sphere', {'Radius': radius, 'Subdivisions': subdivisions})
         return node._out
@@ -3624,18 +4566,26 @@ class ND:
                     mode: Literal['OFFSET', 'END_POINTS'] = 'OFFSET'):
         """ > Node <&Node Mesh Line>
 
-        Arguments
+        Parameters
         ---------
-        - count (Integer) : socket 'Count' (id: Count)
-        - resolution (Float) : socket 'Resolution' (id: Resolution)
-        - start_location (Vector) : socket 'Start Location' (id: Start Location)
-        - offset (Vector) : socket 'Offset' (id: Offset)
-        - count_mode (str): parameter 'count_mode' in ('Count', 'Resolution')
-        - mode (str): parameter 'mode' in ('Offset', 'End Points')
+        count : Integer, optional
+            socket 'Count' (id: Count)
+        
+        resolution : Float, optional
+            socket 'Resolution' (id: Resolution)
+        
+        start_location : Vector, optional
+            socket 'Start Location' (id: Start Location)
+        
+        offset : Vector, optional
+            socket 'Offset' (id: Offset)
+        
+        count_mode (str): parameter 'count_mode' in ('Count', 'Resolution')
+        mode (str): parameter 'mode' in ('Offset', 'End Points')
 
         Returns
         -------
-        - Mesh
+        Mesh
         """
         utils.check_enum_arg('Mesh Line', 'count_mode', count_mode, 'mesh_line', ('TOTAL', 'RESOLUTION'))
         utils.check_enum_arg('Mesh Line', 'mode', mode, 'mesh_line', ('OFFSET', 'END_POINTS'))
@@ -3649,15 +4599,19 @@ class ND:
                     mode: Literal['EDGES', 'FACES'] = 'EDGES'):
         """ > Node <&Node Mesh to Curve>
 
-        Arguments
+        Parameters
         ---------
-        - mesh (Mesh) : socket 'Mesh' (id: Mesh)
-        - selection (Boolean) : socket 'Selection' (id: Selection)
-        - mode (str): parameter 'mode' in ('Edges', 'Faces')
+        mesh : Mesh, optional
+            socket 'Mesh' (id: Mesh)
+        
+        selection : Boolean, optional
+            socket 'Selection' (id: Selection)
+        
+        mode (str): parameter 'mode' in ('Edges', 'Faces')
 
         Returns
         -------
-        - Curve
+        Curve
         """
         utils.check_enum_arg('Mesh to Curve', 'mode', mode, 'mesh_to_curve', ('EDGES', 'FACES'))
         node = Node('Mesh to Curve', {'Mesh': mesh, 'Selection': selection}, mode=mode)
@@ -3671,16 +4625,24 @@ class ND:
                     gradient_width: Float = None):
         """ > Node <&Node Mesh to Density Grid>
 
-        Arguments
+        Parameters
         ---------
-        - mesh (Mesh) : socket 'Mesh' (id: Mesh)
-        - density (Float) : socket 'Density' (id: Density)
-        - voxel_size (Float) : socket 'Voxel Size' (id: Voxel Size)
-        - gradient_width (Float) : socket 'Gradient Width' (id: Gradient Width)
+        mesh : Mesh, optional
+            socket 'Mesh' (id: Mesh)
+        
+        density : Float, optional
+            socket 'Density' (id: Density)
+        
+        voxel_size : Float, optional
+            socket 'Voxel Size' (id: Voxel Size)
+        
+        gradient_width : Float, optional
+            socket 'Gradient Width' (id: Gradient Width)
+        
 
         Returns
         -------
-        - Float
+        Float
         """
         node = Node('Mesh to Density Grid', {'Mesh': mesh, 'Density': density, 'Voxel Size': voxel_size, 'Gradient Width': gradient_width})
         return node._out
@@ -3694,17 +4656,25 @@ class ND:
                     mode: Literal['VERTICES', 'EDGES', 'FACES', 'CORNERS'] = 'VERTICES'):
         """ > Node <&Node Mesh to Points>
 
-        Arguments
+        Parameters
         ---------
-        - mesh (Mesh) : socket 'Mesh' (id: Mesh)
-        - selection (Boolean) : socket 'Selection' (id: Selection)
-        - position (Vector) : socket 'Position' (id: Position)
-        - radius (Float) : socket 'Radius' (id: Radius)
-        - mode (str): parameter 'mode' in ('Vertices', 'Edges', 'Faces', 'Corners')
+        mesh : Mesh, optional
+            socket 'Mesh' (id: Mesh)
+        
+        selection : Boolean, optional
+            socket 'Selection' (id: Selection)
+        
+        position : Vector, optional
+            socket 'Position' (id: Position)
+        
+        radius : Float, optional
+            socket 'Radius' (id: Radius)
+        
+        mode (str): parameter 'mode' in ('Vertices', 'Edges', 'Faces', 'Corners')
 
         Returns
         -------
-        - Cloud
+        Cloud
         """
         utils.check_enum_arg('Mesh to Points', 'mode', mode, 'mesh_to_points', ('VERTICES', 'EDGES', 'FACES', 'CORNERS'))
         node = Node('Mesh to Points', {'Mesh': mesh, 'Selection': selection, 'Position': position, 'Radius': radius}, mode=mode)
@@ -3714,15 +4684,21 @@ class ND:
     def mesh_to_sdf_grid(cls, mesh: Mesh = None, voxel_size: Float = None, band_width: Integer = None):
         """ > Node <&Node Mesh to SDF Grid>
 
-        Arguments
+        Parameters
         ---------
-        - mesh (Mesh) : socket 'Mesh' (id: Mesh)
-        - voxel_size (Float) : socket 'Voxel Size' (id: Voxel Size)
-        - band_width (Integer) : socket 'Band Width' (id: Band Width)
+        mesh : Mesh, optional
+            socket 'Mesh' (id: Mesh)
+        
+        voxel_size : Float, optional
+            socket 'Voxel Size' (id: Voxel Size)
+        
+        band_width : Integer, optional
+            socket 'Band Width' (id: Band Width)
+        
 
         Returns
         -------
-        - Float
+        Float
         """
         node = Node('Mesh to SDF Grid', {'Mesh': mesh, 'Voxel Size': voxel_size, 'Band Width': band_width})
         return node._out
@@ -3737,18 +4713,30 @@ class ND:
                     interior_band_width: Float = None):
         """ > Node <&Node Mesh to Volume>
 
-        Arguments
+        Parameters
         ---------
-        - mesh (Mesh) : socket 'Mesh' (id: Mesh)
-        - density (Float) : socket 'Density' (id: Density)
-        - resolution_mode (menu='Amount') : ('Amount', 'Size')
-        - voxel_size (Float) : socket 'Voxel Size' (id: Voxel Size)
-        - voxel_amount (Float) : socket 'Voxel Amount' (id: Voxel Amount)
-        - interior_band_width (Float) : socket 'Interior Band Width' (id: Interior Band Width)
+        mesh : Mesh, optional
+            socket 'Mesh' (id: Mesh)
+        
+        density : Float, optional
+            socket 'Density' (id: Density)
+        
+        resolution_mode : menu='Amount', optional
+            ('Amount', 'Size')
+        
+        voxel_size : Float, optional
+            socket 'Voxel Size' (id: Voxel Size)
+        
+        voxel_amount : Float, optional
+            socket 'Voxel Amount' (id: Voxel Amount)
+        
+        interior_band_width : Float, optional
+            socket 'Interior Band Width' (id: Interior Band Width)
+        
 
         Returns
         -------
-        - Volume
+        Volume
         """
         node = Node('Mesh to Volume', {'Mesh': mesh, 'Density': density, 'Resolution Mode': resolution_mode, 'Voxel Size': voxel_size, 'Voxel Amount': voxel_amount, 'Interior Band Width': interior_band_width})
         return node._out
@@ -3757,15 +4745,23 @@ class ND:
     def uv_sphere(cls, segments: Integer = None, rings: Integer = None, radius: Float = None):
         """ > Node <&Node UV Sphere>
 
-        Arguments
+        Parameters
         ---------
-        - segments (Integer) : socket 'Segments' (id: Segments)
-        - rings (Integer) : socket 'Rings' (id: Rings)
-        - radius (Float) : socket 'Radius' (id: Radius)
+        segments : Integer, optional
+            socket 'Segments' (id: Segments)
+        
+        rings : Integer, optional
+            socket 'Rings' (id: Rings)
+        
+        radius : Float, optional
+            socket 'Radius' (id: Radius)
+        
 
         Returns
         -------
-        - Mesh [uv_map_ (Vector)]
+        Mesh
+            peer sockets: uv_map_ (Vector)
+
         """
         node = Node('UV Sphere', {'Segments': segments, 'Rings': rings, 'Radius': radius})
         return node._out
@@ -3777,15 +4773,21 @@ class ND:
                     transform_space: Literal['ORIGINAL', 'RELATIVE'] = 'ORIGINAL'):
         """ > Node <&Node Object Info>
 
-        Arguments
+        Parameters
         ---------
-        - object (Object) : socket 'Object' (id: Object)
-        - as_instance (Boolean) : socket 'As Instance' (id: As Instance)
-        - transform_space (str): parameter 'transform_space' in ('Original', 'Relative')
+        object : Object, optional
+            socket 'Object' (id: Object)
+        
+        as_instance : Boolean, optional
+            socket 'As Instance' (id: As Instance)
+        
+        transform_space (str): parameter 'transform_space' in ('Original', 'Relative')
 
         Returns
         -------
-        - Matrix [location_ (Vector), rotation_ (Rotation), scale_ (Vector), geometry_ (Geometry)]
+        Matrix
+            peer sockets: location_ (Vector), rotation_ (Rotation), scale_ (Vector), geometry_ (Geometry)
+
         """
         utils.check_enum_arg('Object Info', 'transform_space', transform_space, 'object_info', ('ORIGINAL', 'RELATIVE'))
         node = Node('Object Info', {'Object': object, 'As Instance': as_instance}, transform_space=transform_space)
@@ -3795,14 +4797,18 @@ class ND:
     def offset_corner_in_face(cls, corner_index: Integer = None, offset: Integer = None):
         """ > Node <&Node Offset Corner in Face>
 
-        Arguments
+        Parameters
         ---------
-        - corner_index (Integer) : socket 'Corner Index' (id: Corner Index)
-        - offset (Integer) : socket 'Offset' (id: Offset)
+        corner_index : Integer, optional
+            socket 'Corner Index' (id: Corner Index)
+        
+        offset : Integer, optional
+            socket 'Offset' (id: Offset)
+        
 
         Returns
         -------
-        - Integer
+        Integer
         """
         node = Node('Offset Corner in Face', {'Corner Index': corner_index, 'Offset': offset})
         return node._out
@@ -3811,14 +4817,20 @@ class ND:
     def offset_point_in_curve(cls, point_index: Integer = None, offset: Integer = None):
         """ > Node <&Node Offset Point in Curve>
 
-        Arguments
+        Parameters
         ---------
-        - point_index (Integer) : socket 'Point Index' (id: Point Index)
-        - offset (Integer) : socket 'Offset' (id: Offset)
+        point_index : Integer, optional
+            socket 'Point Index' (id: Point Index)
+        
+        offset : Integer, optional
+            socket 'Offset' (id: Offset)
+        
 
         Returns
         -------
-        - Boolean [point_index_ (Integer)]
+        Boolean
+            peer sockets: point_index_ (Integer)
+
         """
         node = Node('Offset Point in Curve', {'Point Index': point_index, 'Offset': offset})
         return node._out
@@ -3827,15 +4839,21 @@ class ND:
     def points(cls, count: Integer = None, position: Vector = None, radius: Float = None):
         """ > Node <&Node Points>
 
-        Arguments
+        Parameters
         ---------
-        - count (Integer) : socket 'Count' (id: Count)
-        - position (Vector) : socket 'Position' (id: Position)
-        - radius (Float) : socket 'Radius' (id: Radius)
+        count : Integer, optional
+            socket 'Count' (id: Count)
+        
+        position : Vector, optional
+            socket 'Position' (id: Position)
+        
+        radius : Float, optional
+            socket 'Radius' (id: Radius)
+        
 
         Returns
         -------
-        - Cloud
+        Cloud
         """
         node = Node('Points', {'Count': count, 'Position': position, 'Radius': radius})
         return node._out
@@ -3847,15 +4865,23 @@ class ND:
                     sort_index: Integer = None):
         """ > Node <&Node Points of Curve>
 
-        Arguments
+        Parameters
         ---------
-        - curve_index (Integer) : socket 'Curve Index' (id: Curve Index)
-        - weights (Float) : socket 'Weights' (id: Weights)
-        - sort_index (Integer) : socket 'Sort Index' (id: Sort Index)
+        curve_index : Integer, optional
+            socket 'Curve Index' (id: Curve Index)
+        
+        weights : Float, optional
+            socket 'Weights' (id: Weights)
+        
+        sort_index : Integer, optional
+            socket 'Sort Index' (id: Sort Index)
+        
 
         Returns
         -------
-        - Integer [total_ (Integer)]
+        Integer
+            peer sockets: total_ (Integer)
+
         """
         node = Node('Points of Curve', {'Curve Index': curve_index, 'Weights': weights, 'Sort Index': sort_index})
         return node._out
@@ -3867,15 +4893,21 @@ class ND:
                     weight: Float = None):
         """ > Node <&Node Points to Curves>
 
-        Arguments
+        Parameters
         ---------
-        - points (Cloud) : socket 'Points' (id: Points)
-        - curve_group_id (Integer) : socket 'Curve Group ID' (id: Curve Group ID)
-        - weight (Float) : socket 'Weight' (id: Weight)
+        points : Cloud, optional
+            socket 'Points' (id: Points)
+        
+        curve_group_id : Integer, optional
+            socket 'Curve Group ID' (id: Curve Group ID)
+        
+        weight : Float, optional
+            socket 'Weight' (id: Weight)
+        
 
         Returns
         -------
-        - Curve
+        Curve
         """
         node = Node('Points to Curves', {'Points': points, 'Curve Group ID': curve_group_id, 'Weight': weight})
         return node._out
@@ -3884,15 +4916,21 @@ class ND:
     def points_to_sdf_grid(cls, points: Cloud = None, radius: Float = None, voxel_size: Float = None):
         """ > Node <&Node Points to SDF Grid>
 
-        Arguments
+        Parameters
         ---------
-        - points (Cloud) : socket 'Points' (id: Points)
-        - radius (Float) : socket 'Radius' (id: Radius)
-        - voxel_size (Float) : socket 'Voxel Size' (id: Voxel Size)
+        points : Cloud, optional
+            socket 'Points' (id: Points)
+        
+        radius : Float, optional
+            socket 'Radius' (id: Radius)
+        
+        voxel_size : Float, optional
+            socket 'Voxel Size' (id: Voxel Size)
+        
 
         Returns
         -------
-        - Float
+        Float
         """
         node = Node('Points to SDF Grid', {'Points': points, 'Radius': radius, 'Voxel Size': voxel_size})
         return node._out
@@ -3901,14 +4939,18 @@ class ND:
     def points_to_vertices(cls, points: Cloud = None, selection: Boolean = None):
         """ > Node <&Node Points to Vertices>
 
-        Arguments
+        Parameters
         ---------
-        - points (Cloud) : socket 'Points' (id: Points)
-        - selection (Boolean) : socket 'Selection' (id: Selection)
+        points : Cloud, optional
+            socket 'Points' (id: Points)
+        
+        selection : Boolean, optional
+            socket 'Selection' (id: Selection)
+        
 
         Returns
         -------
-        - Mesh
+        Mesh
         """
         node = Node('Points to Vertices', {'Points': points, 'Selection': selection})
         return node._out
@@ -3923,18 +4965,30 @@ class ND:
                     radius: Float = None):
         """ > Node <&Node Points to Volume>
 
-        Arguments
+        Parameters
         ---------
-        - points (Cloud) : socket 'Points' (id: Points)
-        - density (Float) : socket 'Density' (id: Density)
-        - resolution_mode (menu='Amount') : ('Amount', 'Size')
-        - voxel_size (Float) : socket 'Voxel Size' (id: Voxel Size)
-        - voxel_amount (Float) : socket 'Voxel Amount' (id: Voxel Amount)
-        - radius (Float) : socket 'Radius' (id: Radius)
+        points : Cloud, optional
+            socket 'Points' (id: Points)
+        
+        density : Float, optional
+            socket 'Density' (id: Density)
+        
+        resolution_mode : menu='Amount', optional
+            ('Amount', 'Size')
+        
+        voxel_size : Float, optional
+            socket 'Voxel Size' (id: Voxel Size)
+        
+        voxel_amount : Float, optional
+            socket 'Voxel Amount' (id: Voxel Amount)
+        
+        radius : Float, optional
+            socket 'Radius' (id: Radius)
+        
 
         Returns
         -------
-        - Volume
+        Volume
         """
         node = Node('Points to Volume', {'Points': points, 'Density': density, 'Resolution Mode': resolution_mode, 'Voxel Size': voxel_size, 'Voxel Amount': voxel_amount, 'Radius': radius})
         return node._out
@@ -3948,17 +5002,27 @@ class ND:
                     target_element: Literal['POINTS', 'EDGES', 'FACES'] = 'FACES'):
         """ > Node <&Node Geometry Proximity>
 
-        Arguments
+        Parameters
         ---------
-        - geometry (Geometry) : socket 'Geometry' (id: Target)
-        - group_id (Integer) : socket 'Group ID' (id: Group ID)
-        - sample_position (Vector) : socket 'Sample Position' (id: Source Position)
-        - sample_group_id (Integer) : socket 'Sample Group ID' (id: Sample Group ID)
-        - target_element (str): parameter 'target_element' in ('Points', 'Edges', 'Faces')
+        geometry : Geometry, optional
+            socket 'Geometry' (id: Target)
+        
+        group_id : Integer, optional
+            socket 'Group ID' (id: Group ID)
+        
+        sample_position : Vector, optional
+            socket 'Sample Position' (id: Source Position)
+        
+        sample_group_id : Integer, optional
+            socket 'Sample Group ID' (id: Sample Group ID)
+        
+        target_element (str): parameter 'target_element' in ('Points', 'Edges', 'Faces')
 
         Returns
         -------
-        - Vector [distance_ (Float), is_valid_ (Boolean)]
+        Vector
+            peer sockets: distance_ (Float), is_valid_ (Boolean)
+
         """
         utils.check_enum_arg('Geometry Proximity', 'target_element', target_element, 'geometry_proximity', ('POINTS', 'EDGES', 'FACES'))
         node = Node('Geometry Proximity', {'Target': geometry, 'Group ID': group_id, 'Source Position': sample_position, 'Sample Group ID': sample_group_id}, target_element=target_element)
@@ -3975,19 +5039,33 @@ class ND:
                     data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'QUATERNION', 'FLOAT4X4'] = 'FLOAT'):
         """ > Node <&Node Raycast>
 
-        Arguments
+        Parameters
         ---------
-        - target_geometry (Geometry) : socket 'Target Geometry' (id: Target Geometry)
-        - attribute (Float) : socket 'Attribute' (id: Attribute)
-        - interpolation (menu='Interpolated') : ('Interpolated', 'Nearest')
-        - source_position (Vector) : socket 'Source Position' (id: Source Position)
-        - ray_direction (Vector) : socket 'Ray Direction' (id: Ray Direction)
-        - ray_length (Float) : socket 'Ray Length' (id: Ray Length)
-        - data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Quaternion', '4x4 Matrix')
+        target_geometry : Geometry, optional
+            socket 'Target Geometry' (id: Target Geometry)
+        
+        attribute : Float, optional
+            socket 'Attribute' (id: Attribute)
+        
+        interpolation : menu='Interpolated', optional
+            ('Interpolated', 'Nearest')
+        
+        source_position : Vector, optional
+            socket 'Source Position' (id: Source Position)
+        
+        ray_direction : Vector, optional
+            socket 'Ray Direction' (id: Ray Direction)
+        
+        ray_length : Float, optional
+            socket 'Ray Length' (id: Ray Length)
+        
+        data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Quaternion', '4x4 Matrix')
 
         Returns
         -------
-        - Boolean [hit_position_ (Vector), hit_normal_ (Vector), hit_distance_ (Float), attribute_ (Float)]
+        Boolean
+            peer sockets: hit_position_ (Vector), hit_normal_ (Vector), hit_distance_ (Float), attribute_ (Float)
+
         """
         node = Node('Raycast', {'Target Geometry': target_geometry, 'Attribute': attribute, 'Interpolation': interpolation, 'Source Position': source_position, 'Ray Direction': ray_direction, 'Ray Length': ray_length}, data_type=data_type)
         return node._out
@@ -4001,17 +5079,25 @@ class ND:
                     realize_to_point_domain = False):
         """ > Node <&Node Realize Instances>
 
-        Arguments
+        Parameters
         ---------
-        - geometry (Geometry) : socket 'Geometry' (id: Geometry)
-        - selection (Boolean) : socket 'Selection' (id: Selection)
-        - realize_all (Boolean) : socket 'Realize All' (id: Realize All)
-        - depth (Integer) : socket 'Depth' (id: Depth)
-        - realize_to_point_domain (bool): parameter 'realize_to_point_domain'
+        geometry : Geometry, optional
+            socket 'Geometry' (id: Geometry)
+        
+        selection : Boolean, optional
+            socket 'Selection' (id: Selection)
+        
+        realize_all : Boolean, optional
+            socket 'Realize All' (id: Realize All)
+        
+        depth : Integer, optional
+            socket 'Depth' (id: Depth)
+        
+        realize_to_point_domain (bool): parameter 'realize_to_point_domain'
 
         Returns
         -------
-        - Geometry
+        Geometry
         """
         node = Node('Realize Instances', {'Geometry': geometry, 'Selection': selection, 'Realize All': realize_all, 'Depth': depth}, realize_to_point_domain=realize_to_point_domain)
         return node._out
@@ -4023,15 +5109,21 @@ class ND:
                     name: String = None):
         """ > Node <&Node Remove Named Attribute>
 
-        Arguments
+        Parameters
         ---------
-        - geometry (Geometry) : socket 'Geometry' (id: Geometry)
-        - pattern_mode (menu='Exact') : ('Exact', 'Wildcard')
-        - name (String) : socket 'Name' (id: Name)
+        geometry : Geometry, optional
+            socket 'Geometry' (id: Geometry)
+        
+        pattern_mode : menu='Exact', optional
+            ('Exact', 'Wildcard')
+        
+        name : String, optional
+            socket 'Name' (id: Name)
+        
 
         Returns
         -------
-        - Geometry
+        Geometry
         """
         node = Node('Remove Named Attribute', {'Geometry': geometry, 'Pattern Mode': pattern_mode, 'Name': name})
         return node._out
@@ -4040,13 +5132,15 @@ class ND:
     def repeat_input(cls, iterations: Integer = None):
         """ > Node <&Node Repeat Input>
 
-        Arguments
+        Parameters
         ---------
-        - iterations (Integer) : socket 'Iterations' (id: Iterations)
+        iterations : Integer, optional
+            socket 'Iterations' (id: Iterations)
+        
 
         Returns
         -------
-        - Integer
+        Integer
         """
         node = Node('Repeat Input', {'Iterations': iterations})
         return node._out
@@ -4055,14 +5149,16 @@ class ND:
     def repeat_output(cls, geometry: Geometry = None, inspection_index = 0):
         """ > Node <&Node Repeat Output>
 
-        Arguments
+        Parameters
         ---------
-        - geometry (Geometry) : socket 'Geometry' (id: Item_0)
-        - inspection_index (int): parameter 'inspection_index'
+        geometry : Geometry, optional
+            socket 'Geometry' (id: Item_0)
+        
+        inspection_index (int): parameter 'inspection_index'
 
         Returns
         -------
-        - Geometry
+        Geometry
         """
         node = Node('Repeat Output', {'Item_0': geometry}, inspection_index=inspection_index)
         return node._out
@@ -4071,15 +5167,21 @@ class ND:
     def replace_material(cls, geometry: Geometry = None, old: Material = None, new: Material = None):
         """ > Node <&Node Replace Material>
 
-        Arguments
+        Parameters
         ---------
-        - geometry (Geometry) : socket 'Geometry' (id: Geometry)
-        - old (Material) : socket 'Old' (id: Old)
-        - new (Material) : socket 'New' (id: New)
+        geometry : Geometry, optional
+            socket 'Geometry' (id: Geometry)
+        
+        old : Material, optional
+            socket 'Old' (id: Old)
+        
+        new : Material, optional
+            socket 'New' (id: New)
+        
 
         Returns
         -------
-        - Geometry
+        Geometry
         """
         node = Node('Replace Material', {'Geometry': geometry, 'Old': old, 'New': new})
         return node._out
@@ -4094,18 +5196,28 @@ class ND:
                     keep_last_segment = True):
         """ > Node <&Node Resample Curve>
 
-        Arguments
+        Parameters
         ---------
-        - curve (Curve) : socket 'Curve' (id: Curve)
-        - selection (Boolean) : socket 'Selection' (id: Selection)
-        - mode (menu='Count') : ('Evaluated', 'Count', 'Length')
-        - count (Integer) : socket 'Count' (id: Count)
-        - length (Float) : socket 'Length' (id: Length)
-        - keep_last_segment (bool): parameter 'keep_last_segment'
+        curve : Curve, optional
+            socket 'Curve' (id: Curve)
+        
+        selection : Boolean, optional
+            socket 'Selection' (id: Selection)
+        
+        mode : menu='Count', optional
+            ('Evaluated', 'Count', 'Length')
+        
+        count : Integer, optional
+            socket 'Count' (id: Count)
+        
+        length : Float, optional
+            socket 'Length' (id: Length)
+        
+        keep_last_segment (bool): parameter 'keep_last_segment'
 
         Returns
         -------
-        - Curve
+        Curve
         """
         node = Node('Resample Curve', {'Curve': curve, 'Selection': selection, 'Mode': mode, 'Count': count, 'Length': length}, keep_last_segment=keep_last_segment)
         return node._out
@@ -4114,14 +5226,18 @@ class ND:
     def reverse_curve(cls, curve: Curve = None, selection: Boolean = None):
         """ > Node <&Node Reverse Curve>
 
-        Arguments
+        Parameters
         ---------
-        - curve (Curve) : socket 'Curve' (id: Curve)
-        - selection (Boolean) : socket 'Selection' (id: Selection)
+        curve : Curve, optional
+            socket 'Curve' (id: Curve)
+        
+        selection : Boolean, optional
+            socket 'Selection' (id: Selection)
+        
 
         Returns
         -------
-        - Curve
+        Curve
         """
         node = Node('Reverse Curve', {'Curve': curve, 'Selection': selection})
         return node._out
@@ -4135,17 +5251,27 @@ class ND:
                     local_space: Boolean = None):
         """ > Node <&Node Rotate Instances>
 
-        Arguments
+        Parameters
         ---------
-        - instances (Instances) : socket 'Instances' (id: Instances)
-        - selection (Boolean) : socket 'Selection' (id: Selection)
-        - rotation (Rotation) : socket 'Rotation' (id: Rotation)
-        - pivot_point (Vector) : socket 'Pivot Point' (id: Pivot Point)
-        - local_space (Boolean) : socket 'Local Space' (id: Local Space)
+        instances : Instances, optional
+            socket 'Instances' (id: Instances)
+        
+        selection : Boolean, optional
+            socket 'Selection' (id: Selection)
+        
+        rotation : Rotation, optional
+            socket 'Rotation' (id: Rotation)
+        
+        pivot_point : Vector, optional
+            socket 'Pivot Point' (id: Pivot Point)
+        
+        local_space : Boolean, optional
+            socket 'Local Space' (id: Local Space)
+        
 
         Returns
         -------
-        - Instances
+        Instances
         """
         node = Node('Rotate Instances', {'Instances': instances, 'Selection': selection, 'Rotation': rotation, 'Pivot Point': pivot_point, 'Local Space': local_space})
         return node._out
@@ -4157,15 +5283,19 @@ class ND:
                     operation: Literal['INTERSECT', 'UNION', 'DIFFERENCE'] = 'DIFFERENCE'):
         """ > Node <&Node SDF Grid Boolean>
 
-        Arguments
+        Parameters
         ---------
-        - grid_1 (Float) : socket 'Grid 1' (id: Grid 1)
-        - grid_2 (Float) : socket 'Grid 2' (id: Grid 2)
-        - operation (str): parameter 'operation' in ('Intersect', 'Union', 'Difference')
+        grid_1 : Float, optional
+            socket 'Grid 1' (id: Grid 1)
+        
+        grid_2 : Float, optional
+            socket 'Grid 2' (id: Grid 2)
+        
+        operation (str): parameter 'operation' in ('Intersect', 'Union', 'Difference')
 
         Returns
         -------
-        - Float
+        Float
         """
         utils.check_enum_arg('SDF Grid Boolean', 'operation', operation, 'sdf_grid_boolean', ('INTERSECT', 'UNION', 'DIFFERENCE'))
         node = Node('SDF Grid Boolean', {'Grid 1': grid_1, 'Grid 2': list(grid_2)}, operation=operation)
@@ -4175,14 +5305,18 @@ class ND:
     def sdf_grid_fillet(cls, grid: Float = None, iterations: Integer = None):
         """ > Node <&Node SDF Grid Fillet>
 
-        Arguments
+        Parameters
         ---------
-        - grid (Float) : socket 'Grid' (id: Grid)
-        - iterations (Integer) : socket 'Iterations' (id: Iterations)
+        grid : Float, optional
+            socket 'Grid' (id: Grid)
+        
+        iterations : Integer, optional
+            socket 'Iterations' (id: Iterations)
+        
 
         Returns
         -------
-        - Float
+        Float
         """
         node = Node('SDF Grid Fillet', {'Grid': grid, 'Iterations': iterations})
         return node._out
@@ -4191,14 +5325,18 @@ class ND:
     def sdf_grid_laplacian(cls, grid: Float = None, iterations: Integer = None):
         """ > Node <&Node SDF Grid Laplacian>
 
-        Arguments
+        Parameters
         ---------
-        - grid (Float) : socket 'Grid' (id: Grid)
-        - iterations (Integer) : socket 'Iterations' (id: Iterations)
+        grid : Float, optional
+            socket 'Grid' (id: Grid)
+        
+        iterations : Integer, optional
+            socket 'Iterations' (id: Iterations)
+        
 
         Returns
         -------
-        - Float
+        Float
         """
         node = Node('SDF Grid Laplacian', {'Grid': grid, 'Iterations': iterations})
         return node._out
@@ -4207,15 +5345,21 @@ class ND:
     def sdf_grid_mean(cls, grid: Float = None, width: Integer = None, iterations: Integer = None):
         """ > Node <&Node SDF Grid Mean>
 
-        Arguments
+        Parameters
         ---------
-        - grid (Float) : socket 'Grid' (id: Grid)
-        - width (Integer) : socket 'Width' (id: Width)
-        - iterations (Integer) : socket 'Iterations' (id: Iterations)
+        grid : Float, optional
+            socket 'Grid' (id: Grid)
+        
+        width : Integer, optional
+            socket 'Width' (id: Width)
+        
+        iterations : Integer, optional
+            socket 'Iterations' (id: Iterations)
+        
 
         Returns
         -------
-        - Float
+        Float
         """
         node = Node('SDF Grid Mean', {'Grid': grid, 'Width': width, 'Iterations': iterations})
         return node._out
@@ -4224,14 +5368,18 @@ class ND:
     def sdf_grid_mean_curvature(cls, grid: Float = None, iterations: Integer = None):
         """ > Node <&Node SDF Grid Mean Curvature>
 
-        Arguments
+        Parameters
         ---------
-        - grid (Float) : socket 'Grid' (id: Grid)
-        - iterations (Integer) : socket 'Iterations' (id: Iterations)
+        grid : Float, optional
+            socket 'Grid' (id: Grid)
+        
+        iterations : Integer, optional
+            socket 'Iterations' (id: Iterations)
+        
 
         Returns
         -------
-        - Float
+        Float
         """
         node = Node('SDF Grid Mean Curvature', {'Grid': grid, 'Iterations': iterations})
         return node._out
@@ -4240,15 +5388,21 @@ class ND:
     def sdf_grid_median(cls, grid: Float = None, width: Integer = None, iterations: Integer = None):
         """ > Node <&Node SDF Grid Median>
 
-        Arguments
+        Parameters
         ---------
-        - grid (Float) : socket 'Grid' (id: Grid)
-        - width (Integer) : socket 'Width' (id: Width)
-        - iterations (Integer) : socket 'Iterations' (id: Iterations)
+        grid : Float, optional
+            socket 'Grid' (id: Grid)
+        
+        width : Integer, optional
+            socket 'Width' (id: Width)
+        
+        iterations : Integer, optional
+            socket 'Iterations' (id: Iterations)
+        
 
         Returns
         -------
-        - Float
+        Float
         """
         node = Node('SDF Grid Median', {'Grid': grid, 'Width': width, 'Iterations': iterations})
         return node._out
@@ -4257,14 +5411,18 @@ class ND:
     def sdf_grid_offset(cls, grid: Float = None, distance: Float = None):
         """ > Node <&Node SDF Grid Offset>
 
-        Arguments
+        Parameters
         ---------
-        - grid (Float) : socket 'Grid' (id: Grid)
-        - distance (Float) : socket 'Distance' (id: Distance)
+        grid : Float, optional
+            socket 'Grid' (id: Grid)
+        
+        distance : Float, optional
+            socket 'Distance' (id: Distance)
+        
 
         Returns
         -------
-        - Float
+        Float
         """
         node = Node('SDF Grid Offset', {'Grid': grid, 'Distance': distance})
         return node._out
@@ -4281,20 +5439,32 @@ class ND:
                     use_all_curves = False):
         """ > Node <&Node Sample Curve>
 
-        Arguments
+        Parameters
         ---------
-        - curves (Curve) : socket 'Curves' (id: Curves)
-        - value (Float) : socket 'Value' (id: Value)
-        - length (Float) : socket 'Length' (id: Length)
-        - curve_index (Integer) : socket 'Curve Index' (id: Curve Index)
-        - factor (Float) : socket 'Factor' (id: Factor)
-        - data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Quaternion', '4x4 Matrix')
-        - mode (str): parameter 'mode' in ('Factor', 'Length')
-        - use_all_curves (bool): parameter 'use_all_curves'
+        curves : Curve, optional
+            socket 'Curves' (id: Curves)
+        
+        value : Float, optional
+            socket 'Value' (id: Value)
+        
+        length : Float, optional
+            socket 'Length' (id: Length)
+        
+        curve_index : Integer, optional
+            socket 'Curve Index' (id: Curve Index)
+        
+        factor : Float, optional
+            socket 'Factor' (id: Factor)
+        
+        data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Quaternion', '4x4 Matrix')
+        mode (str): parameter 'mode' in ('Factor', 'Length')
+        use_all_curves (bool): parameter 'use_all_curves'
 
         Returns
         -------
-        - Float [position_ (Vector), tangent_ (Vector), normal_ (Vector)]
+        Float
+            peer sockets: position_ (Vector), tangent_ (Vector), normal_ (Vector)
+
         """
         utils.check_enum_arg('Sample Curve', 'mode', mode, 'sample_curve', ('FACTOR', 'LENGTH'))
         node = Node('Sample Curve', {'Curves': curves, 'Value': value, 'Length': length, 'Curve Index': curve_index, 'Factor': factor}, data_type=data_type, mode=mode, use_all_curves=use_all_curves)
@@ -4308,16 +5478,22 @@ class ND:
                     data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR'] = 'FLOAT'):
         """ > Node <&Node Sample Grid>
 
-        Arguments
+        Parameters
         ---------
-        - grid (Float) : socket 'Grid' (id: Grid)
-        - position (Vector) : socket 'Position' (id: Position)
-        - interpolation (menu='Trilinear') : ('Nearest Neighbor', 'Trilinear', 'Triquadratic')
-        - data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector')
+        grid : Float, optional
+            socket 'Grid' (id: Grid)
+        
+        position : Vector, optional
+            socket 'Position' (id: Position)
+        
+        interpolation : menu='Trilinear', optional
+            ('Nearest Neighbor', 'Trilinear', 'Triquadratic')
+        
+        data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector')
 
         Returns
         -------
-        - Float
+        Float
         """
         node = Node('Sample Grid', {'Grid': grid, 'Position': position, 'Interpolation': interpolation}, data_type=data_type)
         return node._out
@@ -4331,17 +5507,25 @@ class ND:
                     data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR'] = 'FLOAT'):
         """ > Node <&Node Sample Grid Index>
 
-        Arguments
+        Parameters
         ---------
-        - grid (Float) : socket 'Grid' (id: Grid)
-        - x (Integer) : socket 'X' (id: X)
-        - y (Integer) : socket 'Y' (id: Y)
-        - z (Integer) : socket 'Z' (id: Z)
-        - data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector')
+        grid : Float, optional
+            socket 'Grid' (id: Grid)
+        
+        x : Integer, optional
+            socket 'X' (id: X)
+        
+        y : Integer, optional
+            socket 'Y' (id: Y)
+        
+        z : Integer, optional
+            socket 'Z' (id: Z)
+        
+        data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector')
 
         Returns
         -------
-        - Float
+        Float
         """
         node = Node('Sample Grid Index', {'Grid': grid, 'X': x, 'Y': y, 'Z': z}, data_type=data_type)
         return node._out
@@ -4356,18 +5540,24 @@ class ND:
                     domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'] = 'POINT'):
         """ > Node <&Node Sample Index>
 
-        Arguments
+        Parameters
         ---------
-        - geometry (Geometry) : socket 'Geometry' (id: Geometry)
-        - value (Float) : socket 'Value' (id: Value)
-        - index (Integer) : socket 'Index' (id: Index)
-        - clamp (bool): parameter 'clamp'
-        - data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Quaternion', '4x4 Matrix')
-        - domain (str): parameter 'domain' in ('Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer')
+        geometry : Geometry, optional
+            socket 'Geometry' (id: Geometry)
+        
+        value : Float, optional
+            socket 'Value' (id: Value)
+        
+        index : Integer, optional
+            socket 'Index' (id: Index)
+        
+        clamp (bool): parameter 'clamp'
+        data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Quaternion', '4x4 Matrix')
+        domain (str): parameter 'domain' in ('Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer')
 
         Returns
         -------
-        - Float
+        Float
         """
         utils.check_enum_arg('Sample Index', 'domain', domain, 'sample_index', ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'))
         node = Node('Sample Index', {'Geometry': geometry, 'Value': value, 'Index': index}, clamp=clamp, data_type=data_type, domain=domain)
@@ -4380,15 +5570,19 @@ class ND:
                     domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER'] = 'POINT'):
         """ > Node <&Node Sample Nearest>
 
-        Arguments
+        Parameters
         ---------
-        - geometry (Geometry) : socket 'Geometry' (id: Geometry)
-        - sample_position (Vector) : socket 'Sample Position' (id: Sample Position)
-        - domain (str): parameter 'domain' in ('Point', 'Edge', 'Face', 'Face Corner')
+        geometry : Geometry, optional
+            socket 'Geometry' (id: Geometry)
+        
+        sample_position : Vector, optional
+            socket 'Sample Position' (id: Sample Position)
+        
+        domain (str): parameter 'domain' in ('Point', 'Edge', 'Face', 'Face Corner')
 
         Returns
         -------
-        - Integer
+        Integer
         """
         utils.check_enum_arg('Sample Nearest', 'domain', domain, 'sample_nearest', ('POINT', 'EDGE', 'FACE', 'CORNER'))
         node = Node('Sample Nearest', {'Geometry': geometry, 'Sample Position': sample_position}, domain=domain)
@@ -4404,18 +5598,30 @@ class ND:
                     data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'QUATERNION', 'FLOAT4X4'] = 'FLOAT'):
         """ > Node <&Node Sample Nearest Surface>
 
-        Arguments
+        Parameters
         ---------
-        - mesh (Mesh) : socket 'Mesh' (id: Mesh)
-        - value (Float) : socket 'Value' (id: Value)
-        - group_id (Integer) : socket 'Group ID' (id: Group ID)
-        - sample_position (Vector) : socket 'Sample Position' (id: Sample Position)
-        - sample_group_id (Integer) : socket 'Sample Group ID' (id: Sample Group ID)
-        - data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Quaternion', '4x4 Matrix')
+        mesh : Mesh, optional
+            socket 'Mesh' (id: Mesh)
+        
+        value : Float, optional
+            socket 'Value' (id: Value)
+        
+        group_id : Integer, optional
+            socket 'Group ID' (id: Group ID)
+        
+        sample_position : Vector, optional
+            socket 'Sample Position' (id: Sample Position)
+        
+        sample_group_id : Integer, optional
+            socket 'Sample Group ID' (id: Sample Group ID)
+        
+        data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Quaternion', '4x4 Matrix')
 
         Returns
         -------
-        - Float [is_valid_ (Boolean)]
+        Float
+            peer sockets: is_valid_ (Boolean)
+
         """
         node = Node('Sample Nearest Surface', {'Mesh': mesh, 'Value': value, 'Group ID': group_id, 'Sample Position': sample_position, 'Sample Group ID': sample_group_id}, data_type=data_type)
         return node._out
@@ -4429,17 +5635,27 @@ class ND:
                     data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'QUATERNION', 'FLOAT4X4'] = 'FLOAT'):
         """ > Node <&Node Sample UV Surface>
 
-        Arguments
+        Parameters
         ---------
-        - mesh (Mesh) : socket 'Mesh' (id: Mesh)
-        - value (Float) : socket 'Value' (id: Value)
-        - uv_map (Vector) : socket 'UV Map' (id: Source UV Map)
-        - sample_uv (Vector) : socket 'Sample UV' (id: Sample UV)
-        - data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Quaternion', '4x4 Matrix')
+        mesh : Mesh, optional
+            socket 'Mesh' (id: Mesh)
+        
+        value : Float, optional
+            socket 'Value' (id: Value)
+        
+        uv_map : Vector, optional
+            socket 'UV Map' (id: Source UV Map)
+        
+        sample_uv : Vector, optional
+            socket 'Sample UV' (id: Sample UV)
+        
+        data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Quaternion', '4x4 Matrix')
 
         Returns
         -------
-        - Float [is_valid_ (Boolean)]
+        Float
+            peer sockets: is_valid_ (Boolean)
+
         """
         node = Node('Sample UV Surface', {'Mesh': mesh, 'Value': value, 'Source UV Map': uv_map, 'Sample UV': sample_uv}, data_type=data_type)
         return node._out
@@ -4455,19 +5671,31 @@ class ND:
                     domain: Literal['FACE', 'EDGE'] = 'FACE'):
         """ > Node <&Node Scale Elements>
 
-        Arguments
+        Parameters
         ---------
-        - geometry (Geometry) : socket 'Geometry' (id: Geometry)
-        - selection (Boolean) : socket 'Selection' (id: Selection)
-        - scale (Float) : socket 'Scale' (id: Scale)
-        - center (Vector) : socket 'Center' (id: Center)
-        - scale_mode (menu='Uniform') : ('Uniform', 'Single Axis')
-        - axis (Vector) : socket 'Axis' (id: Axis)
-        - domain (str): parameter 'domain' in ('Face', 'Edge')
+        geometry : Geometry, optional
+            socket 'Geometry' (id: Geometry)
+        
+        selection : Boolean, optional
+            socket 'Selection' (id: Selection)
+        
+        scale : Float, optional
+            socket 'Scale' (id: Scale)
+        
+        center : Vector, optional
+            socket 'Center' (id: Center)
+        
+        scale_mode : menu='Uniform', optional
+            ('Uniform', 'Single Axis')
+        
+        axis : Vector, optional
+            socket 'Axis' (id: Axis)
+        
+        domain (str): parameter 'domain' in ('Face', 'Edge')
 
         Returns
         -------
-        - Geometry
+        Geometry
         """
         utils.check_enum_arg('Scale Elements', 'domain', domain, 'scale_elements', ('FACE', 'EDGE'))
         node = Node('Scale Elements', {'Geometry': geometry, 'Selection': selection, 'Scale': scale, 'Center': center, 'Scale Mode': scale_mode, 'Axis': axis}, domain=domain)
@@ -4482,17 +5710,27 @@ class ND:
                     local_space: Boolean = None):
         """ > Node <&Node Scale Instances>
 
-        Arguments
+        Parameters
         ---------
-        - instances (Instances) : socket 'Instances' (id: Instances)
-        - selection (Boolean) : socket 'Selection' (id: Selection)
-        - scale (Vector) : socket 'Scale' (id: Scale)
-        - center (Vector) : socket 'Center' (id: Center)
-        - local_space (Boolean) : socket 'Local Space' (id: Local Space)
+        instances : Instances, optional
+            socket 'Instances' (id: Instances)
+        
+        selection : Boolean, optional
+            socket 'Selection' (id: Selection)
+        
+        scale : Vector, optional
+            socket 'Scale' (id: Scale)
+        
+        center : Vector, optional
+            socket 'Center' (id: Center)
+        
+        local_space : Boolean, optional
+            socket 'Local Space' (id: Local Space)
+        
 
         Returns
         -------
-        - Instances
+        Instances
         """
         node = Node('Scale Instances', {'Instances': instances, 'Selection': selection, 'Scale': scale, 'Center': center, 'Local Space': local_space})
         return node._out
@@ -4503,7 +5741,7 @@ class ND:
 
         Returns
         -------
-        - Object
+        Object
         """
         node = Node('Self Object', )
         return node._out
@@ -4512,13 +5750,17 @@ class ND:
     def separate_components(cls, geometry: Geometry = None):
         """ > Node <&Node Separate Components>
 
-        Arguments
+        Parameters
         ---------
-        - geometry (Geometry) : socket 'Geometry' (id: Geometry)
+        geometry : Geometry, optional
+            socket 'Geometry' (id: Geometry)
+        
 
         Returns
         -------
-        - Mesh [curve_ (Curve), grease_pencil_ (GreasePencil), point_cloud_ (Cloud), volume_ (Volume), instances_ (Instances)]
+        Mesh
+            peer sockets: curve_ (Curve), grease_pencil_ (GreasePencil), point_cloud_ (Cloud), volume_ (Volume), instances_ (Instances)
+
         """
         node = Node('Separate Components', {'Geometry': geometry})
         return node
@@ -4530,15 +5772,21 @@ class ND:
                     domain: Literal['POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE', 'LAYER'] = 'POINT'):
         """ > Node <&Node Separate Geometry>
 
-        Arguments
+        Parameters
         ---------
-        - geometry (Geometry) : socket 'Geometry' (id: Geometry)
-        - selection (Boolean) : socket 'Selection' (id: Selection)
-        - domain (str): parameter 'domain' in ('Point', 'Edge', 'Face', 'Spline', 'Instance', 'Layer')
+        geometry : Geometry, optional
+            socket 'Geometry' (id: Geometry)
+        
+        selection : Boolean, optional
+            socket 'Selection' (id: Selection)
+        
+        domain (str): parameter 'domain' in ('Point', 'Edge', 'Face', 'Spline', 'Instance', 'Layer')
 
         Returns
         -------
-        - Geometry [inverted_ (Geometry)]
+        Geometry
+            peer sockets: inverted_ (Geometry)
+
         """
         utils.check_enum_arg('Separate Geometry', 'domain', domain, 'separate_geometry', ('POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE', 'LAYER'))
         node = Node('Separate Geometry', {'Geometry': geometry, 'Selection': selection}, domain=domain)
@@ -4553,17 +5801,25 @@ class ND:
                     mode: Literal['LEFT', 'RIGHT'] = 'LEFT'):
         """ > Node <&Node Set Handle Positions>
 
-        Arguments
+        Parameters
         ---------
-        - curve (Curve) : socket 'Curve' (id: Curve)
-        - selection (Boolean) : socket 'Selection' (id: Selection)
-        - position (Vector) : socket 'Position' (id: Position)
-        - offset (Vector) : socket 'Offset' (id: Offset)
-        - mode (str): parameter 'mode' in ('Left', 'Right')
+        curve : Curve, optional
+            socket 'Curve' (id: Curve)
+        
+        selection : Boolean, optional
+            socket 'Selection' (id: Selection)
+        
+        position : Vector, optional
+            socket 'Position' (id: Position)
+        
+        offset : Vector, optional
+            socket 'Offset' (id: Offset)
+        
+        mode (str): parameter 'mode' in ('Left', 'Right')
 
         Returns
         -------
-        - Curve
+        Curve
         """
         utils.check_enum_arg('Set Handle Positions', 'mode', mode, 'set_handle_positions', ('LEFT', 'RIGHT'))
         node = Node('Set Handle Positions', {'Curve': curve, 'Selection': selection, 'Position': position, 'Offset': offset}, mode=mode)
@@ -4577,16 +5833,24 @@ class ND:
                     normal: Vector = None):
         """ > Node <&Node Set Curve Normal>
 
-        Arguments
+        Parameters
         ---------
-        - curve (Curve) : socket 'Curve' (id: Curve)
-        - selection (Boolean) : socket 'Selection' (id: Selection)
-        - mode (menu='Minimum Twist') : ('Minimum Twist', 'Z Up', 'Free')
-        - normal (Vector) : socket 'Normal' (id: Normal)
+        curve : Curve, optional
+            socket 'Curve' (id: Curve)
+        
+        selection : Boolean, optional
+            socket 'Selection' (id: Selection)
+        
+        mode : menu='Minimum Twist', optional
+            ('Minimum Twist', 'Z Up', 'Free')
+        
+        normal : Vector, optional
+            socket 'Normal' (id: Normal)
+        
 
         Returns
         -------
-        - Curve
+        Curve
         """
         node = Node('Set Curve Normal', {'Curve': curve, 'Selection': selection, 'Mode': mode, 'Normal': normal})
         return node._out
@@ -4595,15 +5859,21 @@ class ND:
     def set_curve_radius(cls, curve: Curve = None, selection: Boolean = None, radius: Float = None):
         """ > Node <&Node Set Curve Radius>
 
-        Arguments
+        Parameters
         ---------
-        - curve (Curve) : socket 'Curve' (id: Curve)
-        - selection (Boolean) : socket 'Selection' (id: Selection)
-        - radius (Float) : socket 'Radius' (id: Radius)
+        curve : Curve, optional
+            socket 'Curve' (id: Curve)
+        
+        selection : Boolean, optional
+            socket 'Selection' (id: Selection)
+        
+        radius : Float, optional
+            socket 'Radius' (id: Radius)
+        
 
         Returns
         -------
-        - Curve
+        Curve
         """
         node = Node('Set Curve Radius', {'Curve': curve, 'Selection': selection, 'Radius': radius})
         return node._out
@@ -4612,15 +5882,21 @@ class ND:
     def set_curve_tilt(cls, curve: Curve = None, selection: Boolean = None, tilt: Float = None):
         """ > Node <&Node Set Curve Tilt>
 
-        Arguments
+        Parameters
         ---------
-        - curve (Curve) : socket 'Curve' (id: Curve)
-        - selection (Boolean) : socket 'Selection' (id: Selection)
-        - tilt (Float) : socket 'Tilt' (id: Tilt)
+        curve : Curve, optional
+            socket 'Curve' (id: Curve)
+        
+        selection : Boolean, optional
+            socket 'Selection' (id: Selection)
+        
+        tilt : Float, optional
+            socket 'Tilt' (id: Tilt)
+        
 
         Returns
         -------
-        - Curve
+        Curve
         """
         node = Node('Set Curve Tilt', {'Curve': curve, 'Selection': selection, 'Tilt': tilt})
         return node._out
@@ -4629,14 +5905,18 @@ class ND:
     def set_geometry_bundle(cls, geometry: Geometry = None, bundle: Bundle = None):
         """ > Node <&Node Set Geometry Bundle>
 
-        Arguments
+        Parameters
         ---------
-        - geometry (Geometry) : socket 'Geometry' (id: Geometry)
-        - bundle (Bundle) : socket 'Bundle' (id: Bundle)
+        geometry : Geometry, optional
+            socket 'Geometry' (id: Geometry)
+        
+        bundle : Bundle, optional
+            socket 'Bundle' (id: Bundle)
+        
 
         Returns
         -------
-        - Geometry
+        Geometry
         """
         node = Node('Set Geometry Bundle', {'Geometry': geometry, 'Bundle': bundle})
         return node._out
@@ -4645,14 +5925,18 @@ class ND:
     def set_geometry_name(cls, geometry: Geometry = None, name: String = None):
         """ > Node <&Node Set Geometry Name>
 
-        Arguments
+        Parameters
         ---------
-        - geometry (Geometry) : socket 'Geometry' (id: Geometry)
-        - name (String) : socket 'Name' (id: Name)
+        geometry : Geometry, optional
+            socket 'Geometry' (id: Geometry)
+        
+        name : String, optional
+            socket 'Name' (id: Name)
+        
 
         Returns
         -------
-        - Geometry
+        Geometry
         """
         node = Node('Set Geometry Name', {'Geometry': geometry, 'Name': name})
         return node._out
@@ -4666,17 +5950,25 @@ class ND:
                     mode: Literal['STROKE', 'FILL'] = 'STROKE'):
         """ > Node <&Node Set Grease Pencil Color>
 
-        Arguments
+        Parameters
         ---------
-        - grease_pencil (GreasePencil) : socket 'Grease Pencil' (id: Grease Pencil)
-        - selection (Boolean) : socket 'Selection' (id: Selection)
-        - color (Color) : socket 'Color' (id: Color)
-        - opacity (Float) : socket 'Opacity' (id: Opacity)
-        - mode (str): parameter 'mode' in ('Stroke', 'Fill')
+        grease_pencil : GreasePencil, optional
+            socket 'Grease Pencil' (id: Grease Pencil)
+        
+        selection : Boolean, optional
+            socket 'Selection' (id: Selection)
+        
+        color : Color, optional
+            socket 'Color' (id: Color)
+        
+        opacity : Float, optional
+            socket 'Opacity' (id: Opacity)
+        
+        mode (str): parameter 'mode' in ('Stroke', 'Fill')
 
         Returns
         -------
-        - GreasePencil
+        GreasePencil
         """
         utils.check_enum_arg('Set Grease Pencil Color', 'mode', mode, 'set_grease_pencil_color', ('STROKE', 'FILL'))
         node = Node('Set Grease Pencil Color', {'Grease Pencil': grease_pencil, 'Selection': selection, 'Color': color, 'Opacity': opacity}, mode=mode)
@@ -4688,14 +5980,16 @@ class ND:
                     depth_order: Literal['2D', '3D'] = '2D'):
         """ > Node <&Node Set Grease Pencil Depth>
 
-        Arguments
+        Parameters
         ---------
-        - grease_pencil (GreasePencil) : socket 'Grease Pencil' (id: Grease Pencil)
-        - depth_order (str): parameter 'depth_order' in ('2D Layers', '3D Location')
+        grease_pencil : GreasePencil, optional
+            socket 'Grease Pencil' (id: Grease Pencil)
+        
+        depth_order (str): parameter 'depth_order' in ('2D Layers', '3D Location')
 
         Returns
         -------
-        - GreasePencil
+        GreasePencil
         """
         utils.check_enum_arg('Set Grease Pencil Depth', 'depth_order', depth_order, 'set_grease_pencil_depth', ('2D', '3D'))
         node = Node('Set Grease Pencil Depth', {'Grease Pencil': grease_pencil}, depth_order=depth_order)
@@ -4708,15 +6002,21 @@ class ND:
                     softness: Float = None):
         """ > Node <&Node Set Grease Pencil Softness>
 
-        Arguments
+        Parameters
         ---------
-        - grease_pencil (GreasePencil) : socket 'Grease Pencil' (id: Grease Pencil)
-        - selection (Boolean) : socket 'Selection' (id: Selection)
-        - softness (Float) : socket 'Softness' (id: Softness)
+        grease_pencil : GreasePencil, optional
+            socket 'Grease Pencil' (id: Grease Pencil)
+        
+        selection : Boolean, optional
+            socket 'Selection' (id: Selection)
+        
+        softness : Float, optional
+            socket 'Softness' (id: Softness)
+        
 
         Returns
         -------
-        - GreasePencil
+        GreasePencil
         """
         node = Node('Set Grease Pencil Softness', {'Grease Pencil': grease_pencil, 'Selection': selection, 'Softness': softness})
         return node._out
@@ -4729,16 +6029,22 @@ class ND:
                     data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR'] = 'FLOAT'):
         """ > Node <&Node Set Grid Background>
 
-        Arguments
+        Parameters
         ---------
-        - grid (Float) : socket 'Grid' (id: Grid)
-        - background (Float) : socket 'Background' (id: Background)
-        - update_inactive (Boolean) : socket 'Update Inactive' (id: Update Inactive)
-        - data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector')
+        grid : Float, optional
+            socket 'Grid' (id: Grid)
+        
+        background : Float, optional
+            socket 'Background' (id: Background)
+        
+        update_inactive : Boolean, optional
+            socket 'Update Inactive' (id: Update Inactive)
+        
+        data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector')
 
         Returns
         -------
-        - Float
+        Float
         """
         node = Node('Set Grid Background', {'Grid': grid, 'Background': background, 'Update Inactive': update_inactive}, data_type=data_type)
         return node._out
@@ -4750,15 +6056,21 @@ class ND:
                     data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR'] = 'FLOAT'):
         """ > Node <&Node Set Grid Transform>
 
-        Arguments
+        Parameters
         ---------
-        - grid (Float) : socket 'Grid' (id: Grid)
-        - transform (Matrix) : socket 'Transform' (id: Transform)
-        - data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector')
+        grid : Float, optional
+            socket 'Grid' (id: Grid)
+        
+        transform : Matrix, optional
+            socket 'Transform' (id: Transform)
+        
+        data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector')
 
         Returns
         -------
-        - Boolean [grid_ (Float)]
+        Boolean
+            peer sockets: grid_ (Float)
+
         """
         node = Node('Set Grid Transform', {'Grid': grid, 'Transform': transform}, data_type=data_type)
         return node._out
@@ -4767,15 +6079,21 @@ class ND:
     def set_id(cls, geometry: Geometry = None, selection: Boolean = None, id: Integer = None):
         """ > Node <&Node Set ID>
 
-        Arguments
+        Parameters
         ---------
-        - geometry (Geometry) : socket 'Geometry' (id: Geometry)
-        - selection (Boolean) : socket 'Selection' (id: Selection)
-        - id (Integer) : socket 'ID' (id: ID)
+        geometry : Geometry, optional
+            socket 'Geometry' (id: Geometry)
+        
+        selection : Boolean, optional
+            socket 'Selection' (id: Selection)
+        
+        id : Integer, optional
+            socket 'ID' (id: ID)
+        
 
         Returns
         -------
-        - Geometry
+        Geometry
         """
         node = Node('Set ID', {'Geometry': geometry, 'Selection': selection, 'ID': id})
         return node._out
@@ -4787,15 +6105,21 @@ class ND:
                     transform: Matrix = None):
         """ > Node <&Node Set Instance Transform>
 
-        Arguments
+        Parameters
         ---------
-        - instances (Instances) : socket 'Instances' (id: Instances)
-        - selection (Boolean) : socket 'Selection' (id: Selection)
-        - transform (Matrix) : socket 'Transform' (id: Transform)
+        instances : Instances, optional
+            socket 'Instances' (id: Instances)
+        
+        selection : Boolean, optional
+            socket 'Selection' (id: Selection)
+        
+        transform : Matrix, optional
+            socket 'Transform' (id: Transform)
+        
 
         Returns
         -------
-        - Instances
+        Instances
         """
         node = Node('Set Instance Transform', {'Instances': instances, 'Selection': selection, 'Transform': transform})
         return node._out
@@ -4807,15 +6131,21 @@ class ND:
                     material: Material = None):
         """ > Node <&Node Set Material>
 
-        Arguments
+        Parameters
         ---------
-        - geometry (Geometry) : socket 'Geometry' (id: Geometry)
-        - selection (Boolean) : socket 'Selection' (id: Selection)
-        - material (Material) : socket 'Material' (id: Material)
+        geometry : Geometry, optional
+            socket 'Geometry' (id: Geometry)
+        
+        selection : Boolean, optional
+            socket 'Selection' (id: Selection)
+        
+        material : Material, optional
+            socket 'Material' (id: Material)
+        
 
         Returns
         -------
-        - Geometry
+        Geometry
         """
         node = Node('Set Material', {'Geometry': geometry, 'Selection': selection, 'Material': material})
         return node._out
@@ -4827,15 +6157,21 @@ class ND:
                     material_index: Integer = None):
         """ > Node <&Node Set Material Index>
 
-        Arguments
+        Parameters
         ---------
-        - geometry (Geometry) : socket 'Geometry' (id: Geometry)
-        - selection (Boolean) : socket 'Selection' (id: Selection)
-        - material_index (Integer) : socket 'Material Index' (id: Material Index)
+        geometry : Geometry, optional
+            socket 'Geometry' (id: Geometry)
+        
+        selection : Boolean, optional
+            socket 'Selection' (id: Selection)
+        
+        material_index : Integer, optional
+            socket 'Material Index' (id: Material Index)
+        
 
         Returns
         -------
-        - Geometry
+        Geometry
         """
         node = Node('Set Material Index', {'Geometry': geometry, 'Selection': selection, 'Material Index': material_index})
         return node._out
@@ -4850,18 +6186,26 @@ class ND:
                     mode: Literal['SHARPNESS', 'FREE', 'TANGENT_SPACE'] = 'SHARPNESS'):
         """ > Node <&Node Set Mesh Normal>
 
-        Arguments
+        Parameters
         ---------
-        - mesh (Mesh) : socket 'Mesh' (id: Mesh)
-        - remove_custom (Boolean) : socket 'Remove Custom' (id: Remove Custom)
-        - edge_sharpness (Boolean) : socket 'Edge Sharpness' (id: Edge Sharpness)
-        - face_sharpness (Boolean) : socket 'Face Sharpness' (id: Face Sharpness)
-        - domain (str): parameter 'domain' in ('Point', 'Face', 'Face Corner')
-        - mode (str): parameter 'mode' in ('Sharpness', 'Free', 'Tangent Space')
+        mesh : Mesh, optional
+            socket 'Mesh' (id: Mesh)
+        
+        remove_custom : Boolean, optional
+            socket 'Remove Custom' (id: Remove Custom)
+        
+        edge_sharpness : Boolean, optional
+            socket 'Edge Sharpness' (id: Edge Sharpness)
+        
+        face_sharpness : Boolean, optional
+            socket 'Face Sharpness' (id: Face Sharpness)
+        
+        domain (str): parameter 'domain' in ('Point', 'Face', 'Face Corner')
+        mode (str): parameter 'mode' in ('Sharpness', 'Free', 'Tangent Space')
 
         Returns
         -------
-        - Mesh
+        Mesh
         """
         utils.check_enum_arg('Set Mesh Normal', 'domain', domain, 'set_mesh_normal', ('POINT', 'FACE', 'CORNER'))
         utils.check_enum_arg('Set Mesh Normal', 'mode', mode, 'set_mesh_normal', ('SHARPNESS', 'FREE', 'TANGENT_SPACE'))
@@ -4872,15 +6216,21 @@ class ND:
     def set_point_radius(cls, points: Cloud = None, selection: Boolean = None, radius: Float = None):
         """ > Node <&Node Set Point Radius>
 
-        Arguments
+        Parameters
         ---------
-        - points (Cloud) : socket 'Points' (id: Points)
-        - selection (Boolean) : socket 'Selection' (id: Selection)
-        - radius (Float) : socket 'Radius' (id: Radius)
+        points : Cloud, optional
+            socket 'Points' (id: Points)
+        
+        selection : Boolean, optional
+            socket 'Selection' (id: Selection)
+        
+        radius : Float, optional
+            socket 'Radius' (id: Radius)
+        
 
         Returns
         -------
-        - Cloud
+        Cloud
         """
         node = Node('Set Point Radius', {'Points': points, 'Selection': selection, 'Radius': radius})
         return node._out
@@ -4893,16 +6243,24 @@ class ND:
                     offset: Vector = None):
         """ > Node <&Node Set Position>
 
-        Arguments
+        Parameters
         ---------
-        - geometry (Geometry) : socket 'Geometry' (id: Geometry)
-        - selection (Boolean) : socket 'Selection' (id: Selection)
-        - position (Vector) : socket 'Position' (id: Position)
-        - offset (Vector) : socket 'Offset' (id: Offset)
+        geometry : Geometry, optional
+            socket 'Geometry' (id: Geometry)
+        
+        selection : Boolean, optional
+            socket 'Selection' (id: Selection)
+        
+        position : Vector, optional
+            socket 'Position' (id: Position)
+        
+        offset : Vector, optional
+            socket 'Offset' (id: Offset)
+        
 
         Returns
         -------
-        - Geometry
+        Geometry
         """
         node = Node('Set Position', {'Geometry': geometry, 'Selection': selection, 'Position': position, 'Offset': offset})
         return node._out
@@ -4915,16 +6273,22 @@ class ND:
                     domain: Literal['EDGE', 'FACE'] = 'FACE'):
         """ > Node <&Node Set Shade Smooth>
 
-        Arguments
+        Parameters
         ---------
-        - mesh (Mesh) : socket 'Mesh' (id: Geometry)
-        - selection (Boolean) : socket 'Selection' (id: Selection)
-        - shade_smooth (Boolean) : socket 'Shade Smooth' (id: Shade Smooth)
-        - domain (str): parameter 'domain' in ('Edge', 'Face')
+        mesh : Mesh, optional
+            socket 'Mesh' (id: Geometry)
+        
+        selection : Boolean, optional
+            socket 'Selection' (id: Selection)
+        
+        shade_smooth : Boolean, optional
+            socket 'Shade Smooth' (id: Shade Smooth)
+        
+        domain (str): parameter 'domain' in ('Edge', 'Face')
 
         Returns
         -------
-        - Mesh
+        Mesh
         """
         utils.check_enum_arg('Set Shade Smooth', 'domain', domain, 'set_shade_smooth', ('EDGE', 'FACE'))
         node = Node('Set Shade Smooth', {'Geometry': mesh, 'Selection': selection, 'Shade Smooth': shade_smooth}, domain=domain)
@@ -4934,15 +6298,21 @@ class ND:
     def set_spline_cyclic(cls, curve: Curve = None, selection: Boolean = None, cyclic: Boolean = None):
         """ > Node <&Node Set Spline Cyclic>
 
-        Arguments
+        Parameters
         ---------
-        - curve (Curve) : socket 'Curve' (id: Geometry)
-        - selection (Boolean) : socket 'Selection' (id: Selection)
-        - cyclic (Boolean) : socket 'Cyclic' (id: Cyclic)
+        curve : Curve, optional
+            socket 'Curve' (id: Geometry)
+        
+        selection : Boolean, optional
+            socket 'Selection' (id: Selection)
+        
+        cyclic : Boolean, optional
+            socket 'Cyclic' (id: Cyclic)
+        
 
         Returns
         -------
-        - Curve
+        Curve
         """
         node = Node('Set Spline Cyclic', {'Geometry': curve, 'Selection': selection, 'Cyclic': cyclic})
         return node._out
@@ -4954,15 +6324,21 @@ class ND:
                     resolution: Integer = None):
         """ > Node <&Node Set Spline Resolution>
 
-        Arguments
+        Parameters
         ---------
-        - curve (Curve) : socket 'Curve' (id: Geometry)
-        - selection (Boolean) : socket 'Selection' (id: Selection)
-        - resolution (Integer) : socket 'Resolution' (id: Resolution)
+        curve : Curve, optional
+            socket 'Curve' (id: Geometry)
+        
+        selection : Boolean, optional
+            socket 'Selection' (id: Selection)
+        
+        resolution : Integer, optional
+            socket 'Resolution' (id: Resolution)
+        
 
         Returns
         -------
-        - Curve
+        Curve
         """
         node = Node('Set Spline Resolution', {'Geometry': curve, 'Selection': selection, 'Resolution': resolution})
         return node._out
@@ -4973,7 +6349,7 @@ class ND:
 
         Returns
         -------
-        - Float
+        Float
         """
         node = Node('Simulation Input', )
         return node._out
@@ -4982,14 +6358,18 @@ class ND:
     def simulation_output(cls, skip: Boolean = None, geometry: Geometry = None):
         """ > Node <&Node Simulation Output>
 
-        Arguments
+        Parameters
         ---------
-        - skip (Boolean) : socket 'Skip' (id: Skip)
-        - geometry (Geometry) : socket 'Geometry' (id: Item_0)
+        skip : Boolean, optional
+            socket 'Skip' (id: Skip)
+        
+        geometry : Geometry, optional
+            socket 'Geometry' (id: Item_0)
+        
 
         Returns
         -------
-        - Geometry
+        Geometry
         """
         node = Node('Simulation Output', {'Skip': skip, 'Item_0': geometry})
         return node._out
@@ -5003,17 +6383,25 @@ class ND:
                     domain: Literal['POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE'] = 'POINT'):
         """ > Node <&Node Sort Elements>
 
-        Arguments
+        Parameters
         ---------
-        - geometry (Geometry) : socket 'Geometry' (id: Geometry)
-        - selection (Boolean) : socket 'Selection' (id: Selection)
-        - group_id (Integer) : socket 'Group ID' (id: Group ID)
-        - sort_weight (Float) : socket 'Sort Weight' (id: Sort Weight)
-        - domain (str): parameter 'domain' in ('Point', 'Edge', 'Face', 'Spline', 'Instance')
+        geometry : Geometry, optional
+            socket 'Geometry' (id: Geometry)
+        
+        selection : Boolean, optional
+            socket 'Selection' (id: Selection)
+        
+        group_id : Integer, optional
+            socket 'Group ID' (id: Group ID)
+        
+        sort_weight : Float, optional
+            socket 'Sort Weight' (id: Sort Weight)
+        
+        domain (str): parameter 'domain' in ('Point', 'Edge', 'Face', 'Spline', 'Instance')
 
         Returns
         -------
-        - Geometry
+        Geometry
         """
         utils.check_enum_arg('Sort Elements', 'domain', domain, 'sort_elements', ('POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE'))
         node = Node('Sort Elements', {'Geometry': geometry, 'Selection': selection, 'Group ID': group_id, 'Sort Weight': sort_weight}, domain=domain)
@@ -5025,7 +6413,9 @@ class ND:
 
         Returns
         -------
-        - Float [point_count_ (Integer)]
+        Float
+            peer sockets: point_count_ (Integer)
+
         """
         node = Node('Spline Length', )
         return node
@@ -5036,7 +6426,9 @@ class ND:
 
         Returns
         -------
-        - Float [length_ (Float), index_ (Integer)]
+        Float
+            peer sockets: length_ (Float), index_ (Integer)
+
         """
         node = Node('Spline Parameter', )
         return node
@@ -5045,14 +6437,18 @@ class ND:
     def split_edges(cls, mesh: Mesh = None, selection: Boolean = None):
         """ > Node <&Node Split Edges>
 
-        Arguments
+        Parameters
         ---------
-        - mesh (Mesh) : socket 'Mesh' (id: Mesh)
-        - selection (Boolean) : socket 'Selection' (id: Selection)
+        mesh : Mesh, optional
+            socket 'Mesh' (id: Mesh)
+        
+        selection : Boolean, optional
+            socket 'Selection' (id: Selection)
+        
 
         Returns
         -------
-        - Mesh
+        Mesh
         """
         node = Node('Split Edges', {'Mesh': mesh, 'Selection': selection})
         return node._out
@@ -5065,16 +6461,24 @@ class ND:
                     domain: Literal['POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE', 'LAYER'] = 'POINT'):
         """ > Node <&Node Split to Instances>
 
-        Arguments
+        Parameters
         ---------
-        - geometry (Geometry) : socket 'Geometry' (id: Geometry)
-        - selection (Boolean) : socket 'Selection' (id: Selection)
-        - group_id (Integer) : socket 'Group ID' (id: Group ID)
-        - domain (str): parameter 'domain' in ('Point', 'Edge', 'Face', 'Spline', 'Instance', 'Layer')
+        geometry : Geometry, optional
+            socket 'Geometry' (id: Geometry)
+        
+        selection : Boolean, optional
+            socket 'Selection' (id: Selection)
+        
+        group_id : Integer, optional
+            socket 'Group ID' (id: Group ID)
+        
+        domain (str): parameter 'domain' in ('Point', 'Edge', 'Face', 'Spline', 'Instance', 'Layer')
 
         Returns
         -------
-        - Instances [group_id_ (Integer)]
+        Instances
+            peer sockets: group_id_ (Integer)
+
         """
         utils.check_enum_arg('Split to Instances', 'domain', domain, 'split_to_instances', ('POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE', 'LAYER'))
         node = Node('Split to Instances', {'Geometry': geometry, 'Selection': selection, 'Group ID': group_id}, domain=domain)
@@ -5090,18 +6494,26 @@ class ND:
                     domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'] = 'POINT'):
         """ > Node <&Node Store Named Attribute>
 
-        Arguments
+        Parameters
         ---------
-        - geometry (Geometry) : socket 'Geometry' (id: Geometry)
-        - selection (Boolean) : socket 'Selection' (id: Selection)
-        - name (String) : socket 'Name' (id: Name)
-        - value (Float) : socket 'Value' (id: Value)
-        - data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Quaternion', '4x4 Matrix', '8-Bit Integer', '2D Vector', 'Byte Color')
-        - domain (str): parameter 'domain' in ('Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer')
+        geometry : Geometry, optional
+            socket 'Geometry' (id: Geometry)
+        
+        selection : Boolean, optional
+            socket 'Selection' (id: Selection)
+        
+        name : String, optional
+            socket 'Name' (id: Name)
+        
+        value : Float, optional
+            socket 'Value' (id: Value)
+        
+        data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Quaternion', '4x4 Matrix', '8-Bit Integer', '2D Vector', 'Byte Color')
+        domain (str): parameter 'domain' in ('Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer')
 
         Returns
         -------
-        - Geometry
+        Geometry
         """
         utils.check_enum_arg('Store Named Attribute', 'domain', domain, 'store_named_attribute', ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'))
         node = Node('Store Named Attribute', {'Geometry': geometry, 'Selection': selection, 'Name': name, 'Value': value}, data_type=data_type, domain=domain)
@@ -5115,16 +6527,22 @@ class ND:
                     data_type: Literal['BOOLEAN', 'FLOAT', 'INT', 'VECTOR_FLOAT'] = 'FLOAT'):
         """ > Node <&Node Store Named Grid>
 
-        Arguments
+        Parameters
         ---------
-        - volume (Volume) : socket 'Volume' (id: Volume)
-        - name (String) : socket 'Name' (id: Name)
-        - grid (Float) : socket 'Grid' (id: Grid)
-        - data_type (str): parameter 'data_type' in ('Boolean', 'Float', 'Integer', 'Vector')
+        volume : Volume, optional
+            socket 'Volume' (id: Volume)
+        
+        name : String, optional
+            socket 'Name' (id: Name)
+        
+        grid : Float, optional
+            socket 'Grid' (id: Grid)
+        
+        data_type (str): parameter 'data_type' in ('Boolean', 'Float', 'Integer', 'Vector')
 
         Returns
         -------
-        - Volume
+        Volume
         """
         node = Node('Store Named Grid', {'Volume': volume, 'Name': name, 'Grid': grid}, data_type=data_type)
         return node._out
@@ -5133,14 +6551,18 @@ class ND:
     def join_strings(cls, *strings: String, delimiter: String = None):
         """ > Node <&Node Join Strings>
 
-        Arguments
+        Parameters
         ---------
-        - delimiter (String) : socket 'Delimiter' (id: Delimiter)
-        - strings (String) : socket 'Strings' (id: Strings)
+        delimiter : String, optional
+            socket 'Delimiter' (id: Delimiter)
+        
+        strings : String, optional
+            socket 'Strings' (id: Strings)
+        
 
         Returns
         -------
-        - String
+        String
         """
         node = Node('Join Strings', {'Delimiter': delimiter, 'Strings': list(strings)})
         return node._out
@@ -5161,24 +6583,50 @@ class ND:
                     text_box_height: Float = None):
         """ > Node <&Node String to Curves>
 
-        Arguments
+        Parameters
         ---------
-        - string (String) : socket 'String' (id: String)
-        - size (Float) : socket 'Size' (id: Size)
-        - font (Font) : socket 'Font' (id: Font)
-        - align_x (menu='Left') : ('Left', 'Center', 'Right', 'Justify', 'Flush')
-        - align_y (menu='Top Baseline') : ('Top', 'Top Baseline', 'Middle', 'Bottom Baseline', 'Bottom')
-        - pivot_point (menu='Midpoint') : ('Midpoint', 'Top Left', 'Top Center', 'Top Right', 'Bottom Left', 'Bottom Center', 'Bottom Right')
-        - character_spacing (Float) : socket 'Character Spacing' (id: Character Spacing)
-        - word_spacing (Float) : socket 'Word Spacing' (id: Word Spacing)
-        - line_spacing (Float) : socket 'Line Spacing' (id: Line Spacing)
-        - overflow (menu='Overflow') : ('Overflow', 'Scale To Fit', 'Truncate')
-        - text_box_width (Float) : socket 'Text Box Width' (id: Text Box Width)
-        - text_box_height (Float) : socket 'Text Box Height' (id: Text Box Height)
+        string : String, optional
+            socket 'String' (id: String)
+        
+        size : Float, optional
+            socket 'Size' (id: Size)
+        
+        font : Font, optional
+            socket 'Font' (id: Font)
+        
+        align_x : menu='Left', optional
+            ('Left', 'Center', 'Right', 'Justify', 'Flush')
+        
+        align_y : menu='Top Baseline', optional
+            ('Top', 'Top Baseline', 'Middle', 'Bottom Baseline', 'Bottom')
+        
+        pivot_point : menu='Midpoint', optional
+            ('Midpoint', 'Top Left', 'Top Center', 'Top Right', 'Bottom Left', 'Bottom Center', 'Bottom Right')
+        
+        character_spacing : Float, optional
+            socket 'Character Spacing' (id: Character Spacing)
+        
+        word_spacing : Float, optional
+            socket 'Word Spacing' (id: Word Spacing)
+        
+        line_spacing : Float, optional
+            socket 'Line Spacing' (id: Line Spacing)
+        
+        overflow : menu='Overflow', optional
+            ('Overflow', 'Scale To Fit', 'Truncate')
+        
+        text_box_width : Float, optional
+            socket 'Text Box Width' (id: Text Box Width)
+        
+        text_box_height : Float, optional
+            socket 'Text Box Height' (id: Text Box Height)
+        
 
         Returns
         -------
-        - Instances [remainder_ (String), line_ (Integer), word_ (Integer), pivot_point_ (Vector)]
+        Instances
+            peer sockets: remainder_ (String), line_ (Integer), word_ (Integer), pivot_point_ (Vector)
+
         """
         node = Node('String to Curves', {'String': string, 'Size': size, 'Font': font, 'Align X': align_x, 'Align Y': align_y, 'Pivot Point': pivot_point, 'Character Spacing': character_spacing, 'Word Spacing': word_spacing, 'Line Spacing': line_spacing, 'Overflow': overflow, 'Text Box Width': text_box_width, 'Text Box Height': text_box_height})
         return node._out
@@ -5187,14 +6635,18 @@ class ND:
     def subdivide_curve(cls, curve: Curve = None, cuts: Integer = None):
         """ > Node <&Node Subdivide Curve>
 
-        Arguments
+        Parameters
         ---------
-        - curve (Curve) : socket 'Curve' (id: Curve)
-        - cuts (Integer) : socket 'Cuts' (id: Cuts)
+        curve : Curve, optional
+            socket 'Curve' (id: Curve)
+        
+        cuts : Integer, optional
+            socket 'Cuts' (id: Cuts)
+        
 
         Returns
         -------
-        - Curve
+        Curve
         """
         node = Node('Subdivide Curve', {'Curve': curve, 'Cuts': cuts})
         return node._out
@@ -5203,14 +6655,18 @@ class ND:
     def subdivide_mesh(cls, mesh: Mesh = None, level: Integer = None):
         """ > Node <&Node Subdivide Mesh>
 
-        Arguments
+        Parameters
         ---------
-        - mesh (Mesh) : socket 'Mesh' (id: Mesh)
-        - level (Integer) : socket 'Level' (id: Level)
+        mesh : Mesh, optional
+            socket 'Mesh' (id: Mesh)
+        
+        level : Integer, optional
+            socket 'Level' (id: Level)
+        
 
         Returns
         -------
-        - Mesh
+        Mesh
         """
         node = Node('Subdivide Mesh', {'Mesh': mesh, 'Level': level})
         return node._out
@@ -5226,19 +6682,33 @@ class ND:
                     boundary_smooth: Literal['Keep Corners', 'All'] = None):
         """ > Node <&Node Subdivision Surface>
 
-        Arguments
+        Parameters
         ---------
-        - mesh (Mesh) : socket 'Mesh' (id: Mesh)
-        - level (Integer) : socket 'Level' (id: Level)
-        - edge_crease (Float) : socket 'Edge Crease' (id: Edge Crease)
-        - vertex_crease (Float) : socket 'Vertex Crease' (id: Vertex Crease)
-        - limit_surface (Boolean) : socket 'Limit Surface' (id: Limit Surface)
-        - uv_smooth (menu='Keep Boundaries') : ('None', 'Keep Corners', 'Keep Corners, Junctions', 'Keep Corners, Junctions, Concave', 'Keep Boundaries', 'All')
-        - boundary_smooth (menu='All') : ('Keep Corners', 'All')
+        mesh : Mesh, optional
+            socket 'Mesh' (id: Mesh)
+        
+        level : Integer, optional
+            socket 'Level' (id: Level)
+        
+        edge_crease : Float, optional
+            socket 'Edge Crease' (id: Edge Crease)
+        
+        vertex_crease : Float, optional
+            socket 'Vertex Crease' (id: Vertex Crease)
+        
+        limit_surface : Boolean, optional
+            socket 'Limit Surface' (id: Limit Surface)
+        
+        uv_smooth : menu='Keep Boundaries', optional
+            ('None', 'Keep Corners', 'Keep Corners, Junctions', 'Keep Corners, Junctions, Concave', 'Keep Boundaries', 'All')
+        
+        boundary_smooth : menu='All', optional
+            ('Keep Corners', 'All')
+        
 
         Returns
         -------
-        - Mesh
+        Mesh
         """
         node = Node('Subdivision Surface', {'Mesh': mesh, 'Level': level, 'Edge Crease': edge_crease, 'Vertex Crease': vertex_crease, 'Limit Surface': limit_surface, 'UV Smooth': uv_smooth, 'Boundary Smooth': boundary_smooth})
         return node._out
@@ -5251,16 +6721,22 @@ class ND:
                     input_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT'] = 'FLOAT'):
         """ > Node <&Node Switch>
 
-        Arguments
+        Parameters
         ---------
-        - switch (Boolean) : socket 'Switch' (id: Switch)
-        - false (Float) : socket 'False' (id: False)
-        - true (Float) : socket 'True' (id: True)
-        - input_type (str): parameter 'input_type' in ('Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Rotation', 'Matrix', 'String', 'Menu', 'Object', 'Image', 'Geometry', 'Collection', 'Material', 'Bundle', 'Closure', 'Font')
+        switch : Boolean, optional
+            socket 'Switch' (id: Switch)
+        
+        false : Float, optional
+            socket 'False' (id: False)
+        
+        true : Float, optional
+            socket 'True' (id: True)
+        
+        input_type (str): parameter 'input_type' in ('Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Rotation', 'Matrix', 'String', 'Menu', 'Object', 'Image', 'Geometry', 'Collection', 'Material', 'Bundle', 'Closure', 'Font')
 
         Returns
         -------
-        - Float
+        Float
         """
         utils.check_enum_arg('Switch', 'input_type', input_type, 'switch', ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT'))
         node = Node('Switch', {'Switch': switch, 'False': false, 'True': true}, input_type=input_type)
@@ -5272,7 +6748,9 @@ class ND:
 
         Returns
         -------
-        - Vector [rotation_ (Rotation)]
+        Vector
+            peer sockets: rotation_ (Rotation)
+
         """
         node = Node('3D Cursor', )
         return node
@@ -5281,13 +6759,15 @@ class ND:
     def active_element(cls, domain: Literal['POINT', 'EDGE', 'FACE', 'LAYER'] = 'POINT'):
         """ > Node <&Node Active Element>
 
-        Arguments
+        Parameters
         ---------
-        - domain (str): parameter 'domain' in ('Point', 'Edge', 'Face', 'Layer')
+        domain (str): parameter 'domain' in ('Point', 'Edge', 'Face', 'Layer')
 
         Returns
         -------
-        - Integer [exists_ (Boolean)]
+        Integer
+            peer sockets: exists_ (Boolean)
+
         """
         utils.check_enum_arg('Active Element', 'domain', domain, 'active_element', ('POINT', 'EDGE', 'FACE', 'LAYER'))
         node = Node('Active Element', domain=domain)
@@ -5299,7 +6779,9 @@ class ND:
 
         Returns
         -------
-        - Integer [exists_ (Boolean)]
+        Integer
+            peer sockets: exists_ (Boolean)
+
         """
         node = Node('Face Set', )
         return node
@@ -5310,7 +6792,9 @@ class ND:
 
         Returns
         -------
-        - Integer [mouse_y_ (Integer), region_width_ (Integer), region_height_ (Integer)]
+        Integer
+            peer sockets: mouse_y_ (Integer), region_width_ (Integer), region_height_ (Integer)
+
         """
         node = Node('Mouse Position', )
         return node
@@ -5321,7 +6805,9 @@ class ND:
 
         Returns
         -------
-        - Boolean [float_ (Float)]
+        Boolean
+            peer sockets: float_ (Float)
+
         """
         node = Node('Selection', )
         return node
@@ -5330,15 +6816,21 @@ class ND:
     def set_face_set(cls, mesh: Mesh = None, selection: Boolean = None, face_set: Integer = None):
         """ > Node <&Node Set Face Set>
 
-        Arguments
+        Parameters
         ---------
-        - mesh (Mesh) : socket 'Mesh' (id: Mesh)
-        - selection (Boolean) : socket 'Selection' (id: Selection)
-        - face_set (Integer) : socket 'Face Set' (id: Face Set)
+        mesh : Mesh, optional
+            socket 'Mesh' (id: Mesh)
+        
+        selection : Boolean, optional
+            socket 'Selection' (id: Selection)
+        
+        face_set : Integer, optional
+            socket 'Face Set' (id: Face Set)
+        
 
         Returns
         -------
-        - Mesh
+        Mesh
         """
         node = Node('Set Face Set', {'Mesh': mesh, 'Selection': selection, 'Face Set': face_set})
         return node._out
@@ -5351,16 +6843,20 @@ class ND:
                     selection_type: Literal['BOOLEAN', 'FLOAT'] = 'BOOLEAN'):
         """ > Node <&Node Set Selection>
 
-        Arguments
+        Parameters
         ---------
-        - geometry (Geometry) : socket 'Geometry' (id: Geometry)
-        - selection (Boolean) : socket 'Selection' (id: Selection)
-        - domain (str): parameter 'domain' in ('Point', 'Edge', 'Face', 'Spline')
-        - selection_type (str): parameter 'selection_type' in ('Boolean', 'Float')
+        geometry : Geometry, optional
+            socket 'Geometry' (id: Geometry)
+        
+        selection : Boolean, optional
+            socket 'Selection' (id: Selection)
+        
+        domain (str): parameter 'domain' in ('Point', 'Edge', 'Face', 'Spline')
+        selection_type (str): parameter 'selection_type' in ('Boolean', 'Float')
 
         Returns
         -------
-        - Geometry
+        Geometry
         """
         utils.check_enum_arg('Set Selection', 'domain', domain, 'set_selection', ('POINT', 'EDGE', 'FACE', 'CURVE'))
         utils.check_enum_arg('Set Selection', 'selection_type', selection_type, 'set_selection', ('BOOLEAN', 'FLOAT'))
@@ -5377,18 +6873,30 @@ class ND:
                     transform: Matrix = None):
         """ > Node <&Node Transform Geometry>
 
-        Arguments
+        Parameters
         ---------
-        - geometry (Geometry) : socket 'Geometry' (id: Geometry)
-        - mode (menu='Components') : ('Components', 'Matrix')
-        - translation (Vector) : socket 'Translation' (id: Translation)
-        - rotation (Rotation) : socket 'Rotation' (id: Rotation)
-        - scale (Vector) : socket 'Scale' (id: Scale)
-        - transform (Matrix) : socket 'Transform' (id: Transform)
+        geometry : Geometry, optional
+            socket 'Geometry' (id: Geometry)
+        
+        mode : menu='Components', optional
+            ('Components', 'Matrix')
+        
+        translation : Vector, optional
+            socket 'Translation' (id: Translation)
+        
+        rotation : Rotation, optional
+            socket 'Rotation' (id: Rotation)
+        
+        scale : Vector, optional
+            socket 'Scale' (id: Scale)
+        
+        transform : Matrix, optional
+            socket 'Transform' (id: Transform)
+        
 
         Returns
         -------
-        - Geometry
+        Geometry
         """
         node = Node('Transform Geometry', {'Geometry': geometry, 'Mode': mode, 'Translation': translation, 'Rotation': rotation, 'Scale': scale, 'Transform': transform})
         return node._out
@@ -5401,16 +6909,24 @@ class ND:
                     local_space: Boolean = None):
         """ > Node <&Node Translate Instances>
 
-        Arguments
+        Parameters
         ---------
-        - instances (Instances) : socket 'Instances' (id: Instances)
-        - selection (Boolean) : socket 'Selection' (id: Selection)
-        - translation (Vector) : socket 'Translation' (id: Translation)
-        - local_space (Boolean) : socket 'Local Space' (id: Local Space)
+        instances : Instances, optional
+            socket 'Instances' (id: Instances)
+        
+        selection : Boolean, optional
+            socket 'Selection' (id: Selection)
+        
+        translation : Vector, optional
+            socket 'Translation' (id: Translation)
+        
+        local_space : Boolean, optional
+            socket 'Local Space' (id: Local Space)
+        
 
         Returns
         -------
-        - Instances
+        Instances
         """
         node = Node('Translate Instances', {'Instances': instances, 'Selection': selection, 'Translation': translation, 'Local Space': local_space})
         return node._out
@@ -5423,16 +6939,24 @@ class ND:
                     n_gon_method: Literal['Beauty', 'Clip'] = None):
         """ > Node <&Node Triangulate>
 
-        Arguments
+        Parameters
         ---------
-        - mesh (Mesh) : socket 'Mesh' (id: Mesh)
-        - selection (Boolean) : socket 'Selection' (id: Selection)
-        - quad_method (menu='Shortest Diagonal') : ('Beauty', 'Fixed', 'Fixed Alternate', 'Shortest Diagonal', 'Longest Diagonal')
-        - n_gon_method (menu='Beauty') : ('Beauty', 'Clip')
+        mesh : Mesh, optional
+            socket 'Mesh' (id: Mesh)
+        
+        selection : Boolean, optional
+            socket 'Selection' (id: Selection)
+        
+        quad_method : menu='Shortest Diagonal', optional
+            ('Beauty', 'Fixed', 'Fixed Alternate', 'Shortest Diagonal', 'Longest Diagonal')
+        
+        n_gon_method : menu='Beauty', optional
+            ('Beauty', 'Clip')
+        
 
         Returns
         -------
-        - Mesh
+        Mesh
         """
         node = Node('Triangulate', {'Mesh': mesh, 'Selection': selection, 'Quad Method': quad_method, 'N-gon Method': n_gon_method})
         return node._out
@@ -5448,19 +6972,31 @@ class ND:
                     mode: Literal['FACTOR', 'LENGTH'] = 'FACTOR'):
         """ > Node <&Node Trim Curve>
 
-        Arguments
+        Parameters
         ---------
-        - curve (Curve) : socket 'Curve' (id: Curve)
-        - selection (Boolean) : socket 'Selection' (id: Selection)
-        - start (Float) : socket 'Start' (id: Start)
-        - end (Float) : socket 'End' (id: End)
-        - start_1 (Float) : socket 'Start' (id: Start_001)
-        - end_1 (Float) : socket 'End' (id: End_001)
-        - mode (str): parameter 'mode' in ('Factor', 'Length')
+        curve : Curve, optional
+            socket 'Curve' (id: Curve)
+        
+        selection : Boolean, optional
+            socket 'Selection' (id: Selection)
+        
+        start : Float, optional
+            socket 'Start' (id: Start)
+        
+        end : Float, optional
+            socket 'End' (id: End)
+        
+        start_1 : Float, optional
+            socket 'Start' (id: Start_001)
+        
+        end_1 : Float, optional
+            socket 'End' (id: End_001)
+        
+        mode (str): parameter 'mode' in ('Factor', 'Length')
 
         Returns
         -------
-        - Curve
+        Curve
         """
         utils.check_enum_arg('Trim Curve', 'mode', mode, 'trim_curve', ('FACTOR', 'LENGTH'))
         node = Node('Trim Curve', {'Curve': curve, 'Selection': selection, 'Start': start, 'End': end, 'Start_001': start_1, 'End_001': end_1}, mode=mode)
@@ -5477,19 +7013,33 @@ class ND:
                     top_right: Vector = None):
         """ > Node <&Node Pack UV Islands>
 
-        Arguments
+        Parameters
         ---------
-        - uv (Vector) : socket 'UV' (id: UV)
-        - selection (Boolean) : socket 'Selection' (id: Selection)
-        - margin (Float) : socket 'Margin' (id: Margin)
-        - rotate (Boolean) : socket 'Rotate' (id: Rotate)
-        - method (menu='Bounding Box') : ('Bounding Box', 'Convex Hull', 'Exact Shape')
-        - bottom_left (Vector) : socket 'Bottom Left' (id: Bottom Left)
-        - top_right (Vector) : socket 'Top Right' (id: Top Right)
+        uv : Vector, optional
+            socket 'UV' (id: UV)
+        
+        selection : Boolean, optional
+            socket 'Selection' (id: Selection)
+        
+        margin : Float, optional
+            socket 'Margin' (id: Margin)
+        
+        rotate : Boolean, optional
+            socket 'Rotate' (id: Rotate)
+        
+        method : menu='Bounding Box', optional
+            ('Bounding Box', 'Convex Hull', 'Exact Shape')
+        
+        bottom_left : Vector, optional
+            socket 'Bottom Left' (id: Bottom Left)
+        
+        top_right : Vector, optional
+            socket 'Top Right' (id: Top Right)
+        
 
         Returns
         -------
-        - Vector
+        Vector
         """
         node = Node('Pack UV Islands', {'UV': uv, 'Selection': selection, 'Margin': margin, 'Rotate': rotate, 'Method': method, 'Bottom Left': bottom_left, 'Top Right': top_right})
         return node._out
@@ -5498,14 +7048,18 @@ class ND:
     def uv_tangent(cls, method: Literal['Exact', 'Fast'] = None, uv: Vector = None):
         """ > Node <&Node UV Tangent>
 
-        Arguments
+        Parameters
         ---------
-        - method (menu='Exact') : ('Exact', 'Fast')
-        - uv (Vector) : socket 'UV' (id: UV)
+        method : menu='Exact', optional
+            ('Exact', 'Fast')
+        
+        uv : Vector, optional
+            socket 'UV' (id: UV)
+        
 
         Returns
         -------
-        - Vector
+        Vector
         """
         node = Node('UV Tangent', {'Method': method, 'UV': uv})
         return node._out
@@ -5521,19 +7075,33 @@ class ND:
                     no_flip: Boolean = None):
         """ > Node <&Node UV Unwrap>
 
-        Arguments
+        Parameters
         ---------
-        - selection (Boolean) : socket 'Selection' (id: Selection)
-        - seam (Boolean) : socket 'Seam' (id: Seam)
-        - margin (Float) : socket 'Margin' (id: Margin)
-        - fill_holes (Boolean) : socket 'Fill Holes' (id: Fill Holes)
-        - method (menu='Angle Based') : ('Angle Based', 'Conformal', 'Minimum Stretch')
-        - iterations (Integer) : socket 'Iterations' (id: Iterations)
-        - no_flip (Boolean) : socket 'No Flip' (id: No Flip)
+        selection : Boolean, optional
+            socket 'Selection' (id: Selection)
+        
+        seam : Boolean, optional
+            socket 'Seam' (id: Seam)
+        
+        margin : Float, optional
+            socket 'Margin' (id: Margin)
+        
+        fill_holes : Boolean, optional
+            socket 'Fill Holes' (id: Fill Holes)
+        
+        method : menu='Angle Based', optional
+            ('Angle Based', 'Conformal', 'Minimum Stretch')
+        
+        iterations : Integer, optional
+            socket 'Iterations' (id: Iterations)
+        
+        no_flip : Boolean, optional
+            socket 'No Flip' (id: No Flip)
+        
 
         Returns
         -------
-        - Vector
+        Vector
         """
         node = Node('UV Unwrap', {'Selection': selection, 'Seam': seam, 'Margin': margin, 'Fill Holes': fill_holes, 'Method': method, 'Iterations': iterations, 'No Flip': no_flip})
         return node._out
@@ -5542,13 +7110,15 @@ class ND:
     def vertex_of_corner(cls, corner_index: Integer = None):
         """ > Node <&Node Vertex of Corner>
 
-        Arguments
+        Parameters
         ---------
-        - corner_index (Integer) : socket 'Corner Index' (id: Corner Index)
+        corner_index : Integer, optional
+            socket 'Corner Index' (id: Corner Index)
+        
 
         Returns
         -------
-        - Integer
+        Integer
         """
         node = Node('Vertex of Corner', {'Corner Index': corner_index})
         return node._out
@@ -5561,14 +7131,14 @@ class ND:
                     **sockets):
         """ > Node <&Node Viewer>
 
-        Arguments
+        Parameters
         ---------
-        - domain (str): parameter 'domain' in ('Auto', 'Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer')
-        - ui_shortcut (int): parameter 'ui_shortcut'
+        domain (str): parameter 'domain' in ('Auto', 'Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer')
+        ui_shortcut (int): parameter 'ui_shortcut'
 
         Returns
         -------
-        - None
+        None
         """
         utils.check_enum_arg('Viewer', 'domain', domain, 'viewer', ('AUTO', 'POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'))
         node = Node('Viewer', named_sockets, domain=domain, ui_shortcut=ui_shortcut, **sockets)
@@ -5580,7 +7150,9 @@ class ND:
 
         Returns
         -------
-        - Matrix [view_ (Matrix), is_orthographic_ (Boolean)]
+        Matrix
+            peer sockets: view_ (Matrix), is_orthographic_ (Boolean)
+
         """
         node = Node('Viewport Transform', )
         return node
@@ -5596,19 +7168,33 @@ class ND:
                     resolution_z: Integer = None):
         """ > Node <&Node Volume Cube>
 
-        Arguments
+        Parameters
         ---------
-        - density (Float) : socket 'Density' (id: Density)
-        - background (Float) : socket 'Background' (id: Background)
-        - min (Vector) : socket 'Min' (id: Min)
-        - max (Vector) : socket 'Max' (id: Max)
-        - resolution_x (Integer) : socket 'Resolution X' (id: Resolution X)
-        - resolution_y (Integer) : socket 'Resolution Y' (id: Resolution Y)
-        - resolution_z (Integer) : socket 'Resolution Z' (id: Resolution Z)
+        density : Float, optional
+            socket 'Density' (id: Density)
+        
+        background : Float, optional
+            socket 'Background' (id: Background)
+        
+        min : Vector, optional
+            socket 'Min' (id: Min)
+        
+        max : Vector, optional
+            socket 'Max' (id: Max)
+        
+        resolution_x : Integer, optional
+            socket 'Resolution X' (id: Resolution X)
+        
+        resolution_y : Integer, optional
+            socket 'Resolution Y' (id: Resolution Y)
+        
+        resolution_z : Integer, optional
+            socket 'Resolution Z' (id: Resolution Z)
+        
 
         Returns
         -------
-        - Volume
+        Volume
         """
         node = Node('Volume Cube', {'Density': density, 'Background': background, 'Min': min, 'Max': max, 'Resolution X': resolution_x, 'Resolution Y': resolution_y, 'Resolution Z': resolution_z})
         return node._out
@@ -5623,18 +7209,30 @@ class ND:
                     adaptivity: Float = None):
         """ > Node <&Node Volume to Mesh>
 
-        Arguments
+        Parameters
         ---------
-        - volume (Volume) : socket 'Volume' (id: Volume)
-        - resolution_mode (menu='Grid') : ('Grid', 'Amount', 'Size')
-        - voxel_size (Float) : socket 'Voxel Size' (id: Voxel Size)
-        - voxel_amount (Float) : socket 'Voxel Amount' (id: Voxel Amount)
-        - threshold (Float) : socket 'Threshold' (id: Threshold)
-        - adaptivity (Float) : socket 'Adaptivity' (id: Adaptivity)
+        volume : Volume, optional
+            socket 'Volume' (id: Volume)
+        
+        resolution_mode : menu='Grid', optional
+            ('Grid', 'Amount', 'Size')
+        
+        voxel_size : Float, optional
+            socket 'Voxel Size' (id: Voxel Size)
+        
+        voxel_amount : Float, optional
+            socket 'Voxel Amount' (id: Voxel Amount)
+        
+        threshold : Float, optional
+            socket 'Threshold' (id: Threshold)
+        
+        adaptivity : Float, optional
+            socket 'Adaptivity' (id: Adaptivity)
+        
 
         Returns
         -------
-        - Mesh
+        Mesh
         """
         node = Node('Volume to Mesh', {'Volume': volume, 'Resolution Mode': resolution_mode, 'Voxel Size': voxel_size, 'Voxel Amount': voxel_amount, 'Threshold': threshold, 'Adaptivity': adaptivity})
         return node._out
@@ -5646,15 +7244,19 @@ class ND:
                     warning_type: Literal['ERROR', 'WARNING', 'INFO'] = 'ERROR'):
         """ > Node <&Node Warning>
 
-        Arguments
+        Parameters
         ---------
-        - show (Boolean) : socket 'Show' (id: Show)
-        - message (String) : socket 'Message' (id: Message)
-        - warning_type (str): parameter 'warning_type' in ('Error', 'Warning', 'Info')
+        show : Boolean, optional
+            socket 'Show' (id: Show)
+        
+        message : String, optional
+            socket 'Message' (id: Message)
+        
+        warning_type (str): parameter 'warning_type' in ('Error', 'Warning', 'Info')
 
         Returns
         -------
-        - Boolean
+        Boolean
         """
         utils.check_enum_arg('Warning', 'warning_type', warning_type, 'warning', ('ERROR', 'WARNING', 'INFO'))
         node = Node('Warning', {'Show': show, 'Message': message}, warning_type=warning_type)
@@ -5666,7 +7268,7 @@ class ND:
 
         Returns
         -------
-        - None
+        None
         """
         node = Node('Closure Input', )
         return node._out
@@ -5675,15 +7277,15 @@ class ND:
     def closure_output(cls, active_input_index = 0, active_output_index = 0, define_signature = False):
         """ > Node <&Node Closure Output>
 
-        Arguments
+        Parameters
         ---------
-        - active_input_index (int): parameter 'active_input_index'
-        - active_output_index (int): parameter 'active_output_index'
-        - define_signature (bool): parameter 'define_signature'
+        active_input_index (int): parameter 'active_input_index'
+        active_output_index (int): parameter 'active_output_index'
+        define_signature (bool): parameter 'define_signature'
 
         Returns
         -------
-        - Closure
+        Closure
         """
         node = Node('Closure Output', active_input_index=active_input_index, active_output_index=active_output_index, define_signature=define_signature)
         return node._out
@@ -5692,13 +7294,13 @@ class ND:
     def combine_bundle(cls, named_sockets: dict = {}, define_signature = False, **sockets):
         """ > Node <&Node Combine Bundle>
 
-        Arguments
+        Parameters
         ---------
-        - define_signature (bool): parameter 'define_signature'
+        define_signature (bool): parameter 'define_signature'
 
         Returns
         -------
-        - Bundle
+        Bundle
         """
         node = Node('Combine Bundle', named_sockets, define_signature=define_signature, **sockets)
         return node._out
@@ -5710,15 +7312,19 @@ class ND:
                     data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT'] = 'FLOAT'):
         """ > Node <&Node Enable Output>
 
-        Arguments
+        Parameters
         ---------
-        - enable (Boolean) : socket 'Enable' (id: Enable)
-        - value (Float) : socket 'Value' (id: Value)
-        - data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Rotation', 'Matrix', 'String', 'Menu', 'Object', 'Image', 'Geometry', 'Collection', 'Material', 'Bundle', 'Closure', 'Font')
+        enable : Boolean, optional
+            socket 'Enable' (id: Enable)
+        
+        value : Float, optional
+            socket 'Value' (id: Value)
+        
+        data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Rotation', 'Matrix', 'String', 'Menu', 'Object', 'Image', 'Geometry', 'Collection', 'Material', 'Bundle', 'Closure', 'Font')
 
         Returns
         -------
-        - Float
+        Float
         """
         node = Node('Enable Output', {'Enable': enable, 'Value': value}, data_type=data_type)
         return node._out
@@ -5731,16 +7337,18 @@ class ND:
                     define_signature = False):
         """ > Node <&Node Evaluate Closure>
 
-        Arguments
+        Parameters
         ---------
-        - closure (Closure) : socket 'Closure' (id: Closure)
-        - active_input_index (int): parameter 'active_input_index'
-        - active_output_index (int): parameter 'active_output_index'
-        - define_signature (bool): parameter 'define_signature'
+        closure : Closure, optional
+            socket 'Closure' (id: Closure)
+        
+        active_input_index (int): parameter 'active_input_index'
+        active_output_index (int): parameter 'active_output_index'
+        define_signature (bool): parameter 'define_signature'
 
         Returns
         -------
-        - None
+        None
         """
         node = Node('Evaluate Closure', {'Closure': closure}, active_input_index=active_input_index, active_output_index=active_output_index, define_signature=define_signature)
         return node._out
@@ -5749,15 +7357,15 @@ class ND:
     def frame(cls, label_size = 20, shrink = True, text = None):
         """ > Node <&Node Frame>
 
-        Arguments
+        Parameters
         ---------
-        - label_size (int): parameter 'label_size'
-        - shrink (bool): parameter 'shrink'
-        - text (NoneType): parameter 'text'
+        label_size (int): parameter 'label_size'
+        shrink (bool): parameter 'shrink'
+        text (NoneType): parameter 'text'
 
         Returns
         -------
-        - None
+        None
         """
         node = Node('Frame', label_size=label_size, shrink=shrink, text=text)
         return node._out
@@ -5771,17 +7379,25 @@ class ND:
                     structure_type: Literal['AUTO', 'DYNAMIC', 'FIELD', 'GRID', 'LIST', 'SINGLE'] = 'AUTO'):
         """ > Node <&Node Get Bundle Item>
 
-        Arguments
+        Parameters
         ---------
-        - bundle (Bundle) : socket 'Bundle' (id: Bundle)
-        - path (String) : socket 'Path' (id: Path)
-        - remove (Boolean) : socket 'Remove' (id: Remove)
-        - socket_type (str): parameter 'socket_type' in ('Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Rotation', 'Matrix', 'String', 'Menu', 'Object', 'Image', 'Geometry', 'Collection', 'Material', 'Bundle', 'Closure', 'Font')
-        - structure_type (str): parameter 'structure_type' in ('Auto', 'Dynamic', 'Field', 'Grid', 'List', 'Single')
+        bundle : Bundle, optional
+            socket 'Bundle' (id: Bundle)
+        
+        path : String, optional
+            socket 'Path' (id: Path)
+        
+        remove : Boolean, optional
+            socket 'Remove' (id: Remove)
+        
+        socket_type (str): parameter 'socket_type' in ('Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Rotation', 'Matrix', 'String', 'Menu', 'Object', 'Image', 'Geometry', 'Collection', 'Material', 'Bundle', 'Closure', 'Font')
+        structure_type (str): parameter 'structure_type' in ('Auto', 'Dynamic', 'Field', 'Grid', 'List', 'Single')
 
         Returns
         -------
-        - Bundle [item_ (Float), exists_ (Boolean)]
+        Bundle
+            peer sockets: item_ (Float), exists_ (Boolean)
+
         """
         utils.check_enum_arg('Get Bundle Item', 'socket_type', socket_type, 'get_bundle_item', ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT'))
         utils.check_enum_arg('Get Bundle Item', 'structure_type', structure_type, 'get_bundle_item', ('AUTO', 'DYNAMIC', 'FIELD', 'GRID', 'LIST', 'SINGLE'))
@@ -5794,7 +7410,7 @@ class ND:
 
         Returns
         -------
-        - None
+        None
         """
         node = Node('Group Input', )
         return node._out
@@ -5803,13 +7419,13 @@ class ND:
     def group_output(cls, is_active_output = True):
         """ > Node <&Node Group Output>
 
-        Arguments
+        Parameters
         ---------
-        - is_active_output (bool): parameter 'is_active_output'
+        is_active_output (bool): parameter 'is_active_output'
 
         Returns
         -------
-        - None
+        None
         """
         node = Node('Group Output', is_active_output=is_active_output)
         return node._out
@@ -5818,13 +7434,15 @@ class ND:
     def join_bundle(cls, *bundle: Bundle):
         """ > Node <&Node Join Bundle>
 
-        Arguments
+        Parameters
         ---------
-        - bundle (Bundle) : socket 'Bundle' (id: Bundle)
+        bundle : Bundle, optional
+            socket 'Bundle' (id: Bundle)
+        
 
         Returns
         -------
-        - Bundle
+        Bundle
         """
         node = Node('Join Bundle', {'Bundle': list(bundle)})
         return node._out
@@ -5833,14 +7451,16 @@ class ND:
     def reroute(cls, input: Color = None, socket_idname = 'NodeSocketColor'):
         """ > Node <&Node Reroute>
 
-        Arguments
+        Parameters
         ---------
-        - input (Color) : socket 'Input' (id: Input)
-        - socket_idname (str): parameter 'socket_idname'
+        input : Color, optional
+            socket 'Input' (id: Input)
+        
+        socket_idname (str): parameter 'socket_idname'
 
         Returns
         -------
-        - Color
+        Color
         """
         node = Node('Reroute', {'Input': input}, socket_idname=socket_idname)
         return node._out
@@ -5853,14 +7473,16 @@ class ND:
                     **sockets):
         """ > Node <&Node Separate Bundle>
 
-        Arguments
+        Parameters
         ---------
-        - bundle (Bundle) : socket 'Bundle' (id: Bundle)
-        - define_signature (bool): parameter 'define_signature'
+        bundle : Bundle, optional
+            socket 'Bundle' (id: Bundle)
+        
+        define_signature (bool): parameter 'define_signature'
 
         Returns
         -------
-        - None
+        None
         """
         node = Node('Separate Bundle', {'Bundle': bundle, **named_sockets}, define_signature=define_signature, **sockets)
         return node
@@ -5874,17 +7496,23 @@ class ND:
                     structure_type: Literal['AUTO', 'DYNAMIC', 'FIELD', 'GRID', 'LIST', 'SINGLE'] = 'AUTO'):
         """ > Node <&Node Store Bundle Item>
 
-        Arguments
+        Parameters
         ---------
-        - bundle (Bundle) : socket 'Bundle' (id: Bundle)
-        - path (String) : socket 'Path' (id: Path)
-        - item (Float) : socket 'Item' (id: Item)
-        - socket_type (str): parameter 'socket_type' in ('Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Rotation', 'Matrix', 'String', 'Menu', 'Object', 'Image', 'Geometry', 'Collection', 'Material', 'Bundle', 'Closure', 'Font')
-        - structure_type (str): parameter 'structure_type' in ('Auto', 'Dynamic', 'Field', 'Grid', 'List', 'Single')
+        bundle : Bundle, optional
+            socket 'Bundle' (id: Bundle)
+        
+        path : String, optional
+            socket 'Path' (id: Path)
+        
+        item : Float, optional
+            socket 'Item' (id: Item)
+        
+        socket_type (str): parameter 'socket_type' in ('Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Rotation', 'Matrix', 'String', 'Menu', 'Object', 'Image', 'Geometry', 'Collection', 'Material', 'Bundle', 'Closure', 'Font')
+        structure_type (str): parameter 'structure_type' in ('Auto', 'Dynamic', 'Field', 'Grid', 'List', 'Single')
 
         Returns
         -------
-        - Bundle
+        Bundle
         """
         utils.check_enum_arg('Store Bundle Item', 'socket_type', socket_type, 'store_bundle_item', ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT'))
         utils.check_enum_arg('Store Bundle Item', 'structure_type', structure_type, 'store_bundle_item', ('AUTO', 'DYNAMIC', 'FIELD', 'GRID', 'LIST', 'SINGLE'))
@@ -5895,13 +7523,15 @@ class ND:
     def blackbody(cls, temperature: Float = None):
         """ > Node <&Node Blackbody>
 
-        Arguments
+        Parameters
         ---------
-        - temperature (Float) : socket 'Temperature' (id: Temperature)
+        temperature : Float, optional
+            socket 'Temperature' (id: Temperature)
+        
 
         Returns
         -------
-        - Color
+        Color
         """
         node = Node('Blackbody', {'Temperature': temperature})
         return node._out
@@ -5914,16 +7544,22 @@ class ND:
                     clamp_type: Literal['MINMAX', 'RANGE'] = 'MINMAX'):
         """ > Node <&Node Clamp>
 
-        Arguments
+        Parameters
         ---------
-        - value (Float) : socket 'Value' (id: Value)
-        - min (Float) : socket 'Min' (id: Min)
-        - max (Float) : socket 'Max' (id: Max)
-        - clamp_type (str): parameter 'clamp_type' in ('Min Max', 'Range')
+        value : Float, optional
+            socket 'Value' (id: Value)
+        
+        min : Float, optional
+            socket 'Min' (id: Min)
+        
+        max : Float, optional
+            socket 'Max' (id: Max)
+        
+        clamp_type (str): parameter 'clamp_type' in ('Min Max', 'Range')
 
         Returns
         -------
-        - Float
+        Float
         """
         utils.check_enum_arg('Clamp', 'clamp_type', clamp_type, 'clamp', ('MINMAX', 'RANGE'))
         node = Node('Clamp', {'Value': value, 'Min': min, 'Max': max}, clamp_type=clamp_type)
@@ -5933,15 +7569,21 @@ class ND:
     def combine_xyz(cls, x: Float = None, y: Float = None, z: Float = None):
         """ > Node <&Node Combine XYZ>
 
-        Arguments
+        Parameters
         ---------
-        - x (Float) : socket 'X' (id: X)
-        - y (Float) : socket 'Y' (id: Y)
-        - z (Float) : socket 'Z' (id: Z)
+        x : Float, optional
+            socket 'X' (id: X)
+        
+        y : Float, optional
+            socket 'Y' (id: Y)
+        
+        z : Float, optional
+            socket 'Z' (id: Z)
+        
 
         Returns
         -------
-        - Vector
+        Vector
         """
         node = Node('Combine XYZ', {'X': x, 'Y': y, 'Z': z})
         return node._out
@@ -5950,14 +7592,18 @@ class ND:
     def float_curve(cls, value: Float = None, factor: Float = None):
         """ > Node <&Node Float Curve>
 
-        Arguments
+        Parameters
         ---------
-        - value (Float) : socket 'Value' (id: Value)
-        - factor (Float) : socket 'Factor' (id: Factor)
+        value : Float, optional
+            socket 'Value' (id: Value)
+        
+        factor : Float, optional
+            socket 'Factor' (id: Factor)
+        
 
         Returns
         -------
-        - Float
+        Float
         """
         node = NodeCurves('Float Curve', {'Value': value, 'Factor': factor})
         return node._out
@@ -5966,14 +7612,18 @@ class ND:
     def gamma(cls, color: Color = None, gamma: Float = None):
         """ > Node <&Node Gamma>
 
-        Arguments
+        Parameters
         ---------
-        - color (Color) : socket 'Color' (id: Color)
-        - gamma (Float) : socket 'Gamma' (id: Gamma)
+        color : Color, optional
+            socket 'Color' (id: Color)
+        
+        gamma : Float, optional
+            socket 'Gamma' (id: Gamma)
+        
 
         Returns
         -------
-        - Color
+        Color
         """
         node = Node('Gamma', {'Color': color, 'Gamma': gamma})
         return node._out
@@ -5997,27 +7647,51 @@ class ND:
                     interpolation_type: Literal['LINEAR', 'STEPPED', 'SMOOTHSTEP', 'SMOOTHERSTEP'] = 'LINEAR'):
         """ > Node <&Node Map Range>
 
-        Arguments
+        Parameters
         ---------
-        - value (Float) : socket 'Value' (id: Value)
-        - from_min (Float) : socket 'From Min' (id: From Min)
-        - from_max (Float) : socket 'From Max' (id: From Max)
-        - to_min (Float) : socket 'To Min' (id: To Min)
-        - to_max (Float) : socket 'To Max' (id: To Max)
-        - steps (Float) : socket 'Steps' (id: Steps)
-        - vector (Vector) : socket 'Vector' (id: Vector)
-        - from_min_1 (Vector) : socket 'From Min' (id: From_Min_FLOAT3)
-        - from_max_1 (Vector) : socket 'From Max' (id: From_Max_FLOAT3)
-        - to_min_1 (Vector) : socket 'To Min' (id: To_Min_FLOAT3)
-        - to_max_1 (Vector) : socket 'To Max' (id: To_Max_FLOAT3)
-        - steps_1 (Vector) : socket 'Steps' (id: Steps_FLOAT3)
-        - clamp (bool): parameter 'clamp'
-        - data_type (str): parameter 'data_type' in ('Float', 'Vector')
-        - interpolation_type (str): parameter 'interpolation_type' in ('Linear', 'Stepped Linear', 'Smooth Step', 'Smoother Step')
+        value : Float, optional
+            socket 'Value' (id: Value)
+        
+        from_min : Float, optional
+            socket 'From Min' (id: From Min)
+        
+        from_max : Float, optional
+            socket 'From Max' (id: From Max)
+        
+        to_min : Float, optional
+            socket 'To Min' (id: To Min)
+        
+        to_max : Float, optional
+            socket 'To Max' (id: To Max)
+        
+        steps : Float, optional
+            socket 'Steps' (id: Steps)
+        
+        vector : Vector, optional
+            socket 'Vector' (id: Vector)
+        
+        from_min_1 : Vector, optional
+            socket 'From Min' (id: From_Min_FLOAT3)
+        
+        from_max_1 : Vector, optional
+            socket 'From Max' (id: From_Max_FLOAT3)
+        
+        to_min_1 : Vector, optional
+            socket 'To Min' (id: To_Min_FLOAT3)
+        
+        to_max_1 : Vector, optional
+            socket 'To Max' (id: To_Max_FLOAT3)
+        
+        steps_1 : Vector, optional
+            socket 'Steps' (id: Steps_FLOAT3)
+        
+        clamp (bool): parameter 'clamp'
+        data_type (str): parameter 'data_type' in ('Float', 'Vector')
+        interpolation_type (str): parameter 'interpolation_type' in ('Linear', 'Stepped Linear', 'Smooth Step', 'Smoother Step')
 
         Returns
         -------
-        - Float
+        Float
         """
         utils.check_enum_arg('Map Range', 'interpolation_type', interpolation_type, 'map_range', ('LINEAR', 'STEPPED', 'SMOOTHSTEP', 'SMOOTHERSTEP'))
         node = Node('Map Range', {'Value': value, 'From Min': from_min, 'From Max': from_max, 'To Min': to_min, 'To Max': to_max, 'Steps': steps, 'Vector': vector, 'From_Min_FLOAT3': from_min_1, 'From_Max_FLOAT3': from_max_1, 'To_Min_FLOAT3': to_min_1, 'To_Max_FLOAT3': to_max_1, 'Steps_FLOAT3': steps_1}, clamp=clamp, data_type=data_type, interpolation_type=interpolation_type)
@@ -6032,17 +7706,23 @@ class ND:
                     use_clamp = False):
         """ > Node <&Node Math>
 
-        Arguments
+        Parameters
         ---------
-        - value (Float) : socket 'Value' (id: Value)
-        - value_1 (Float) : socket 'Value' (id: Value_001)
-        - value_2 (Float) : socket 'Value' (id: Value_002)
-        - operation (str): parameter 'operation' in ('Add', 'Subtract', 'Multiply', 'Divide', 'Multiply Add', 'Power', 'Logarithm', 'Square Root', 'Inverse Square Root', 'Absolute', 'Exponent', 'Minimum', 'Maximum', 'Less Than', 'Greater Than', 'Sign', 'Compare', 'Smooth Minimum', 'Smooth Maximum', 'Round', 'Floor', 'Ceil', 'Truncate', 'Fraction', 'Truncated Modulo', 'Floored Modulo', 'Wrap', 'Snap', 'Ping-Pong', 'Sine', 'Cosine', 'Tangent', 'Arcsine', 'Arccosine', 'Arctangent', 'Arctan2', 'Hyperbolic Sine', 'Hyperbolic Cosine', 'Hyperbolic Tangent', 'To Radians', 'To Degrees')
-        - use_clamp (bool): parameter 'use_clamp'
+        value : Float, optional
+            socket 'Value' (id: Value)
+        
+        value_1 : Float, optional
+            socket 'Value' (id: Value_001)
+        
+        value_2 : Float, optional
+            socket 'Value' (id: Value_002)
+        
+        operation (str): parameter 'operation' in ('Add', 'Subtract', 'Multiply', 'Divide', 'Multiply Add', 'Power', 'Logarithm', 'Square Root', 'Inverse Square Root', 'Absolute', 'Exponent', 'Minimum', 'Maximum', 'Less Than', 'Greater Than', 'Sign', 'Compare', 'Smooth Minimum', 'Smooth Maximum', 'Round', 'Floor', 'Ceil', 'Truncate', 'Fraction', 'Truncated Modulo', 'Floored Modulo', 'Wrap', 'Snap', 'Ping-Pong', 'Sine', 'Cosine', 'Tangent', 'Arcsine', 'Arccosine', 'Arctangent', 'Arctan2', 'Hyperbolic Sine', 'Hyperbolic Cosine', 'Hyperbolic Tangent', 'To Radians', 'To Degrees')
+        use_clamp (bool): parameter 'use_clamp'
 
         Returns
         -------
-        - Float
+        Float
         """
         utils.check_enum_arg('Math', 'operation', operation, 'math', ('ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'MULTIPLY_ADD', 'POWER', 'LOGARITHM', 'SQRT', 'INVERSE_SQRT', 'ABSOLUTE', 'EXPONENT', 'MINIMUM', 'MAXIMUM', 'LESS_THAN', 'GREATER_THAN', 'SIGN', 'COMPARE', 'SMOOTH_MIN', 'SMOOTH_MAX', 'ROUND', 'FLOOR', 'CEIL', 'TRUNC', 'FRACT', 'MODULO', 'FLOORED_MODULO', 'WRAP', 'SNAP', 'PINGPONG', 'SINE', 'COSINE', 'TANGENT', 'ARCSINE', 'ARCCOSINE', 'ARCTANGENT', 'ARCTAN2', 'SINH', 'COSH', 'TANH', 'RADIANS', 'DEGREES'))
         node = Node('Math', {'Value': value, 'Value_001': value_1, 'Value_002': value_2}, operation=operation, use_clamp=use_clamp)
@@ -6066,26 +7746,44 @@ class ND:
                     factor_mode: Literal['UNIFORM', 'NON_UNIFORM'] = 'UNIFORM'):
         """ > Node <&Node Mix>
 
-        Arguments
+        Parameters
         ---------
-        - a (Float) : socket 'A' (id: A_Float)
-        - b (Float) : socket 'B' (id: B_Float)
-        - a_1 (Vector) : socket 'A' (id: A_Vector)
-        - b_1 (Vector) : socket 'B' (id: B_Vector)
-        - a_2 (Color) : socket 'A' (id: A_Color)
-        - b_2 (Color) : socket 'B' (id: B_Color)
-        - a_3 (Rotation) : socket 'A' (id: A_Rotation)
-        - b_3 (Rotation) : socket 'B' (id: B_Rotation)
-        - factor (Vector) : socket 'Factor' (id: Factor_Vector)
-        - blend_type (str): parameter 'blend_type' in ('Mix', 'Darken', 'Multiply', 'Color Burn', 'Lighten', 'Screen', 'Color Dodge', 'Add', 'Overlay', 'Soft Light', 'Linear Light', 'Difference', 'Exclusion', 'Subtract', 'Divide', 'Hue', 'Saturation', 'Color', 'Value')
-        - clamp_factor (bool): parameter 'clamp_factor'
-        - clamp_result (bool): parameter 'clamp_result'
-        - data_type (str): parameter 'data_type' in ('Float', 'Vector', 'Color', 'Rotation')
-        - factor_mode (str): parameter 'factor_mode' in ('Uniform', 'Non-Uniform')
+        a : Float, optional
+            socket 'A' (id: A_Float)
+        
+        b : Float, optional
+            socket 'B' (id: B_Float)
+        
+        a_1 : Vector, optional
+            socket 'A' (id: A_Vector)
+        
+        b_1 : Vector, optional
+            socket 'B' (id: B_Vector)
+        
+        a_2 : Color, optional
+            socket 'A' (id: A_Color)
+        
+        b_2 : Color, optional
+            socket 'B' (id: B_Color)
+        
+        a_3 : Rotation, optional
+            socket 'A' (id: A_Rotation)
+        
+        b_3 : Rotation, optional
+            socket 'B' (id: B_Rotation)
+        
+        factor : Vector, optional
+            socket 'Factor' (id: Factor_Vector)
+        
+        blend_type (str): parameter 'blend_type' in ('Mix', 'Darken', 'Multiply', 'Color Burn', 'Lighten', 'Screen', 'Color Dodge', 'Add', 'Overlay', 'Soft Light', 'Linear Light', 'Difference', 'Exclusion', 'Subtract', 'Divide', 'Hue', 'Saturation', 'Color', 'Value')
+        clamp_factor (bool): parameter 'clamp_factor'
+        clamp_result (bool): parameter 'clamp_result'
+        data_type (str): parameter 'data_type' in ('Float', 'Vector', 'Color', 'Rotation')
+        factor_mode (str): parameter 'factor_mode' in ('Uniform', 'Non-Uniform')
 
         Returns
         -------
-        - Float
+        Float
         """
         utils.check_enum_arg('Mix', 'blend_type', blend_type, 'mix', ('MIX', 'DARKEN', 'MULTIPLY', 'BURN', 'LIGHTEN', 'SCREEN', 'DODGE', 'ADD', 'OVERLAY', 'SOFT_LIGHT', 'LINEAR_LIGHT', 'DIFFERENCE', 'EXCLUSION', 'SUBTRACT', 'DIVIDE', 'HUE', 'SATURATION', 'COLOR', 'VALUE'))
         utils.check_enum_arg('Mix', 'factor_mode', factor_mode, 'mix', ('UNIFORM', 'NON_UNIFORM'))
@@ -6096,14 +7794,18 @@ class ND:
     def rgb_curves(cls, color: Color = None, factor: Float = None):
         """ > Node <&Node RGB Curves>
 
-        Arguments
+        Parameters
         ---------
-        - color (Color) : socket 'Color' (id: Color)
-        - factor (Float) : socket 'Factor' (id: Fac)
+        color : Color, optional
+            socket 'Color' (id: Color)
+        
+        factor : Float, optional
+            socket 'Factor' (id: Fac)
+        
 
         Returns
         -------
-        - Color
+        Color
         """
         node = NodeCurves('RGB Curves', {'Color': color, 'Fac': factor})
         return node._out
@@ -6116,16 +7818,24 @@ class ND:
                     normalize = False):
         """ > Node <&Node Radial Tiling>
 
-        Arguments
+        Parameters
         ---------
-        - vector (Vector) : socket 'Vector' (id: Vector)
-        - sides (Float) : socket 'Sides' (id: Sides)
-        - roundness (Float) : socket 'Roundness' (id: Roundness)
-        - normalize (bool): parameter 'normalize'
+        vector : Vector, optional
+            socket 'Vector' (id: Vector)
+        
+        sides : Float, optional
+            socket 'Sides' (id: Sides)
+        
+        roundness : Float, optional
+            socket 'Roundness' (id: Roundness)
+        
+        normalize (bool): parameter 'normalize'
 
         Returns
         -------
-        - Vector [segment_id_ (Float), segment_width_ (Float), segment_rotation_ (Float)]
+        Vector
+            peer sockets: segment_id_ (Float), segment_width_ (Float), segment_rotation_ (Float)
+
         """
         node = Node('Radial Tiling', {'Vector': vector, 'Sides': sides, 'Roundness': roundness}, normalize=normalize)
         return node._out
@@ -6134,13 +7844,17 @@ class ND:
     def separate_xyz(cls, vector: Vector = None):
         """ > Node <&Node Separate XYZ>
 
-        Arguments
+        Parameters
         ---------
-        - vector (Vector) : socket 'Vector' (id: Vector)
+        vector : Vector, optional
+            socket 'Vector' (id: Vector)
+        
 
         Returns
         -------
-        - Float [y_ (Float), z_ (Float)]
+        Float
+            peer sockets: y_ (Float), z_ (Float)
+
         """
         node = Node('Separate XYZ', {'Vector': vector})
         return node
@@ -6163,26 +7877,48 @@ class ND:
                     squash_frequency = 2):
         """ > Node <&Node Brick Texture>
 
-        Arguments
+        Parameters
         ---------
-        - vector (Vector) : socket 'Vector' (id: Vector)
-        - color1 (Color) : socket 'Color1' (id: Color1)
-        - color2 (Color) : socket 'Color2' (id: Color2)
-        - mortar (Color) : socket 'Mortar' (id: Mortar)
-        - scale (Float) : socket 'Scale' (id: Scale)
-        - mortar_size (Float) : socket 'Mortar Size' (id: Mortar Size)
-        - mortar_smooth (Float) : socket 'Mortar Smooth' (id: Mortar Smooth)
-        - bias (Float) : socket 'Bias' (id: Bias)
-        - brick_width (Float) : socket 'Brick Width' (id: Brick Width)
-        - row_height (Float) : socket 'Row Height' (id: Row Height)
-        - offset (float): parameter 'offset'
-        - offset_frequency (int): parameter 'offset_frequency'
-        - squash (float): parameter 'squash'
-        - squash_frequency (int): parameter 'squash_frequency'
+        vector : Vector, optional
+            socket 'Vector' (id: Vector)
+        
+        color1 : Color, optional
+            socket 'Color1' (id: Color1)
+        
+        color2 : Color, optional
+            socket 'Color2' (id: Color2)
+        
+        mortar : Color, optional
+            socket 'Mortar' (id: Mortar)
+        
+        scale : Float, optional
+            socket 'Scale' (id: Scale)
+        
+        mortar_size : Float, optional
+            socket 'Mortar Size' (id: Mortar Size)
+        
+        mortar_smooth : Float, optional
+            socket 'Mortar Smooth' (id: Mortar Smooth)
+        
+        bias : Float, optional
+            socket 'Bias' (id: Bias)
+        
+        brick_width : Float, optional
+            socket 'Brick Width' (id: Brick Width)
+        
+        row_height : Float, optional
+            socket 'Row Height' (id: Row Height)
+        
+        offset (float): parameter 'offset'
+        offset_frequency (int): parameter 'offset_frequency'
+        squash (float): parameter 'squash'
+        squash_frequency (int): parameter 'squash_frequency'
 
         Returns
         -------
-        - Color [factor_ (Float)]
+        Color
+            peer sockets: factor_ (Float)
+
         """
         node = Node('Brick Texture', {'Vector': vector, 'Color1': color1, 'Color2': color2, 'Mortar': mortar, 'Scale': scale, 'Mortar Size': mortar_size, 'Mortar Smooth': mortar_smooth, 'Bias': bias, 'Brick Width': brick_width, 'Row Height': row_height}, offset=offset, offset_frequency=offset_frequency, squash=squash, squash_frequency=squash_frequency)
         return node._out
@@ -6195,16 +7931,26 @@ class ND:
                     scale: Float = None):
         """ > Node <&Node Checker Texture>
 
-        Arguments
+        Parameters
         ---------
-        - vector (Vector) : socket 'Vector' (id: Vector)
-        - color1 (Color) : socket 'Color1' (id: Color1)
-        - color2 (Color) : socket 'Color2' (id: Color2)
-        - scale (Float) : socket 'Scale' (id: Scale)
+        vector : Vector, optional
+            socket 'Vector' (id: Vector)
+        
+        color1 : Color, optional
+            socket 'Color1' (id: Color1)
+        
+        color2 : Color, optional
+            socket 'Color2' (id: Color2)
+        
+        scale : Float, optional
+            socket 'Scale' (id: Scale)
+        
 
         Returns
         -------
-        - Color [factor_ (Float)]
+        Color
+            peer sockets: factor_ (Float)
+
         """
         node = Node('Checker Texture', {'Vector': vector, 'Color1': color1, 'Color2': color2, 'Scale': scale})
         return node._out
@@ -6220,19 +7966,33 @@ class ND:
                     gabor_type: Literal['2D', '3D'] = '2D'):
         """ > Node <&Node Gabor Texture>
 
-        Arguments
+        Parameters
         ---------
-        - vector (Vector) : socket 'Vector' (id: Vector)
-        - scale (Float) : socket 'Scale' (id: Scale)
-        - frequency (Float) : socket 'Frequency' (id: Frequency)
-        - anisotropy (Float) : socket 'Anisotropy' (id: Anisotropy)
-        - orientation (Float) : socket 'Orientation' (id: Orientation 2D)
-        - orientation_1 (Vector) : socket 'Orientation' (id: Orientation 3D)
-        - gabor_type (str): parameter 'gabor_type' in ('2D', '3D')
+        vector : Vector, optional
+            socket 'Vector' (id: Vector)
+        
+        scale : Float, optional
+            socket 'Scale' (id: Scale)
+        
+        frequency : Float, optional
+            socket 'Frequency' (id: Frequency)
+        
+        anisotropy : Float, optional
+            socket 'Anisotropy' (id: Anisotropy)
+        
+        orientation : Float, optional
+            socket 'Orientation' (id: Orientation 2D)
+        
+        orientation_1 : Vector, optional
+            socket 'Orientation' (id: Orientation 3D)
+        
+        gabor_type (str): parameter 'gabor_type' in ('2D', '3D')
 
         Returns
         -------
-        - Float [phase_ (Float), intensity_ (Float)]
+        Float
+            peer sockets: phase_ (Float), intensity_ (Float)
+
         """
         utils.check_enum_arg('Gabor Texture', 'gabor_type', gabor_type, 'gabor_texture', ('2D', '3D'))
         node = Node('Gabor Texture', {'Vector': vector, 'Scale': scale, 'Frequency': frequency, 'Anisotropy': anisotropy, 'Orientation 2D': orientation, 'Orientation 3D': orientation_1}, gabor_type=gabor_type)
@@ -6244,14 +8004,18 @@ class ND:
                     gradient_type: Literal['LINEAR', 'QUADRATIC', 'EASING', 'DIAGONAL', 'SPHERICAL', 'QUADRATIC_SPHERE', 'RADIAL'] = 'LINEAR'):
         """ > Node <&Node Gradient Texture>
 
-        Arguments
+        Parameters
         ---------
-        - vector (Vector) : socket 'Vector' (id: Vector)
-        - gradient_type (str): parameter 'gradient_type' in ('Linear', 'Quadratic', 'Easing', 'Diagonal', 'Spherical', 'Quadratic Sphere', 'Radial')
+        vector : Vector, optional
+            socket 'Vector' (id: Vector)
+        
+        gradient_type (str): parameter 'gradient_type' in ('Linear', 'Quadratic', 'Easing', 'Diagonal', 'Spherical', 'Quadratic Sphere', 'Radial')
 
         Returns
         -------
-        - Color [factor_ (Float)]
+        Color
+            peer sockets: factor_ (Float)
+
         """
         utils.check_enum_arg('Gradient Texture', 'gradient_type', gradient_type, 'gradient_texture', ('LINEAR', 'QUADRATIC', 'EASING', 'DIAGONAL', 'SPHERICAL', 'QUADRATIC_SPHERE', 'RADIAL'))
         node = Node('Gradient Texture', {'Vector': vector}, gradient_type=gradient_type)
@@ -6265,16 +8029,24 @@ class ND:
                     turbulence_depth = 2):
         """ > Node <&Node Magic Texture>
 
-        Arguments
+        Parameters
         ---------
-        - vector (Vector) : socket 'Vector' (id: Vector)
-        - scale (Float) : socket 'Scale' (id: Scale)
-        - distortion (Float) : socket 'Distortion' (id: Distortion)
-        - turbulence_depth (int): parameter 'turbulence_depth'
+        vector : Vector, optional
+            socket 'Vector' (id: Vector)
+        
+        scale : Float, optional
+            socket 'Scale' (id: Scale)
+        
+        distortion : Float, optional
+            socket 'Distortion' (id: Distortion)
+        
+        turbulence_depth (int): parameter 'turbulence_depth'
 
         Returns
         -------
-        - Color [factor_ (Float)]
+        Color
+            peer sockets: factor_ (Float)
+
         """
         node = Node('Magic Texture', {'Vector': vector, 'Scale': scale, 'Distortion': distortion}, turbulence_depth=turbulence_depth)
         return node._out
@@ -6295,24 +8067,44 @@ class ND:
                     normalize = True):
         """ > Node <&Node Noise Texture>
 
-        Arguments
+        Parameters
         ---------
-        - vector (Vector) : socket 'Vector' (id: Vector)
-        - w (Float) : socket 'W' (id: W)
-        - scale (Float) : socket 'Scale' (id: Scale)
-        - detail (Float) : socket 'Detail' (id: Detail)
-        - roughness (Float) : socket 'Roughness' (id: Roughness)
-        - lacunarity (Float) : socket 'Lacunarity' (id: Lacunarity)
-        - offset (Float) : socket 'Offset' (id: Offset)
-        - gain (Float) : socket 'Gain' (id: Gain)
-        - distortion (Float) : socket 'Distortion' (id: Distortion)
-        - noise_dimensions (str): parameter 'noise_dimensions' in ('1D', '2D', '3D', '4D')
-        - noise_type (str): parameter 'noise_type' in ('Multifractal', 'Ridged Multifractal', 'Hybrid Multifractal', 'fBM', 'Hetero Terrain')
-        - normalize (bool): parameter 'normalize'
+        vector : Vector, optional
+            socket 'Vector' (id: Vector)
+        
+        w : Float, optional
+            socket 'W' (id: W)
+        
+        scale : Float, optional
+            socket 'Scale' (id: Scale)
+        
+        detail : Float, optional
+            socket 'Detail' (id: Detail)
+        
+        roughness : Float, optional
+            socket 'Roughness' (id: Roughness)
+        
+        lacunarity : Float, optional
+            socket 'Lacunarity' (id: Lacunarity)
+        
+        offset : Float, optional
+            socket 'Offset' (id: Offset)
+        
+        gain : Float, optional
+            socket 'Gain' (id: Gain)
+        
+        distortion : Float, optional
+            socket 'Distortion' (id: Distortion)
+        
+        noise_dimensions (str): parameter 'noise_dimensions' in ('1D', '2D', '3D', '4D')
+        noise_type (str): parameter 'noise_type' in ('Multifractal', 'Ridged Multifractal', 'Hybrid Multifractal', 'fBM', 'Hetero Terrain')
+        normalize (bool): parameter 'normalize'
 
         Returns
         -------
-        - Float [color_ (Color)]
+        Float
+            peer sockets: color_ (Color)
+
         """
         utils.check_enum_arg('Noise Texture', 'noise_dimensions', noise_dimensions, 'noise_texture', ('1D', '2D', '3D', '4D'))
         utils.check_enum_arg('Noise Texture', 'noise_type', noise_type, 'noise_texture', ('MULTIFRACTAL', 'RIDGED_MULTIFRACTAL', 'HYBRID_MULTIFRACTAL', 'FBM', 'HETERO_TERRAIN'))
@@ -6336,25 +8128,45 @@ class ND:
                     voronoi_dimensions: Literal['1D', '2D', '3D', '4D'] = '3D'):
         """ > Node <&Node Voronoi Texture>
 
-        Arguments
+        Parameters
         ---------
-        - vector (Vector) : socket 'Vector' (id: Vector)
-        - w (Float) : socket 'W' (id: W)
-        - scale (Float) : socket 'Scale' (id: Scale)
-        - detail (Float) : socket 'Detail' (id: Detail)
-        - roughness (Float) : socket 'Roughness' (id: Roughness)
-        - lacunarity (Float) : socket 'Lacunarity' (id: Lacunarity)
-        - smoothness (Float) : socket 'Smoothness' (id: Smoothness)
-        - exponent (Float) : socket 'Exponent' (id: Exponent)
-        - randomness (Float) : socket 'Randomness' (id: Randomness)
-        - distance (str): parameter 'distance' in ('Euclidean', 'Manhattan', 'Chebychev', 'Minkowski')
-        - feature (str): parameter 'feature' in ('F1', 'F2', 'Smooth F1', 'Distance to Edge', 'N-Sphere Radius')
-        - normalize (bool): parameter 'normalize'
-        - voronoi_dimensions (str): parameter 'voronoi_dimensions' in ('1D', '2D', '3D', '4D')
+        vector : Vector, optional
+            socket 'Vector' (id: Vector)
+        
+        w : Float, optional
+            socket 'W' (id: W)
+        
+        scale : Float, optional
+            socket 'Scale' (id: Scale)
+        
+        detail : Float, optional
+            socket 'Detail' (id: Detail)
+        
+        roughness : Float, optional
+            socket 'Roughness' (id: Roughness)
+        
+        lacunarity : Float, optional
+            socket 'Lacunarity' (id: Lacunarity)
+        
+        smoothness : Float, optional
+            socket 'Smoothness' (id: Smoothness)
+        
+        exponent : Float, optional
+            socket 'Exponent' (id: Exponent)
+        
+        randomness : Float, optional
+            socket 'Randomness' (id: Randomness)
+        
+        distance (str): parameter 'distance' in ('Euclidean', 'Manhattan', 'Chebychev', 'Minkowski')
+        feature (str): parameter 'feature' in ('F1', 'F2', 'Smooth F1', 'Distance to Edge', 'N-Sphere Radius')
+        normalize (bool): parameter 'normalize'
+        voronoi_dimensions (str): parameter 'voronoi_dimensions' in ('1D', '2D', '3D', '4D')
 
         Returns
         -------
-        - Float [color_ (Color), position_ (Vector)]
+        Float
+            peer sockets: color_ (Color), position_ (Vector)
+
         """
         utils.check_enum_arg('Voronoi Texture', 'distance', distance, 'voronoi_texture', ('EUCLIDEAN', 'MANHATTAN', 'CHEBYCHEV', 'MINKOWSKI'))
         utils.check_enum_arg('Voronoi Texture', 'feature', feature, 'voronoi_texture', ('F1', 'F2', 'SMOOTH_F1', 'DISTANCE_TO_EDGE', 'N_SPHERE_RADIUS'))
@@ -6377,23 +8189,39 @@ class ND:
                     wave_type: Literal['BANDS', 'RINGS'] = 'BANDS'):
         """ > Node <&Node Wave Texture>
 
-        Arguments
+        Parameters
         ---------
-        - vector (Vector) : socket 'Vector' (id: Vector)
-        - scale (Float) : socket 'Scale' (id: Scale)
-        - distortion (Float) : socket 'Distortion' (id: Distortion)
-        - detail (Float) : socket 'Detail' (id: Detail)
-        - detail_scale (Float) : socket 'Detail Scale' (id: Detail Scale)
-        - detail_roughness (Float) : socket 'Detail Roughness' (id: Detail Roughness)
-        - phase_offset (Float) : socket 'Phase Offset' (id: Phase Offset)
-        - bands_direction (str): parameter 'bands_direction' in ('X', 'Y', 'Z', 'Diagonal')
-        - rings_direction (str): parameter 'rings_direction' in ('X', 'Y', 'Z', 'Spherical')
-        - wave_profile (str): parameter 'wave_profile' in ('Sine', 'Saw', 'Triangle')
-        - wave_type (str): parameter 'wave_type' in ('Bands', 'Rings')
+        vector : Vector, optional
+            socket 'Vector' (id: Vector)
+        
+        scale : Float, optional
+            socket 'Scale' (id: Scale)
+        
+        distortion : Float, optional
+            socket 'Distortion' (id: Distortion)
+        
+        detail : Float, optional
+            socket 'Detail' (id: Detail)
+        
+        detail_scale : Float, optional
+            socket 'Detail Scale' (id: Detail Scale)
+        
+        detail_roughness : Float, optional
+            socket 'Detail Roughness' (id: Detail Roughness)
+        
+        phase_offset : Float, optional
+            socket 'Phase Offset' (id: Phase Offset)
+        
+        bands_direction (str): parameter 'bands_direction' in ('X', 'Y', 'Z', 'Diagonal')
+        rings_direction (str): parameter 'rings_direction' in ('X', 'Y', 'Z', 'Spherical')
+        wave_profile (str): parameter 'wave_profile' in ('Sine', 'Saw', 'Triangle')
+        wave_type (str): parameter 'wave_type' in ('Bands', 'Rings')
 
         Returns
         -------
-        - Color [factor_ (Float)]
+        Color
+            peer sockets: factor_ (Float)
+
         """
         utils.check_enum_arg('Wave Texture', 'bands_direction', bands_direction, 'wave_texture', ('X', 'Y', 'Z', 'DIAGONAL'))
         utils.check_enum_arg('Wave Texture', 'rings_direction', rings_direction, 'wave_texture', ('X', 'Y', 'Z', 'SPHERICAL'))
@@ -6409,15 +8237,21 @@ class ND:
                     noise_dimensions: Literal['1D', '2D', '3D', '4D'] = '3D'):
         """ > Node <&Node White Noise Texture>
 
-        Arguments
+        Parameters
         ---------
-        - vector (Vector) : socket 'Vector' (id: Vector)
-        - w (Float) : socket 'W' (id: W)
-        - noise_dimensions (str): parameter 'noise_dimensions' in ('1D', '2D', '3D', '4D')
+        vector : Vector, optional
+            socket 'Vector' (id: Vector)
+        
+        w : Float, optional
+            socket 'W' (id: W)
+        
+        noise_dimensions (str): parameter 'noise_dimensions' in ('1D', '2D', '3D', '4D')
 
         Returns
         -------
-        - Float [color_ (Color)]
+        Float
+            peer sockets: color_ (Color)
+
         """
         utils.check_enum_arg('White Noise Texture', 'noise_dimensions', noise_dimensions, 'white_noise_texture', ('1D', '2D', '3D', '4D'))
         node = Node('White Noise Texture', {'Vector': vector, 'W': w}, noise_dimensions=noise_dimensions)
@@ -6434,8 +8268,8 @@ class ND:
         ramp2 = ColorRamp(.5, stops=[(.1, (1, 0, 0)), (.5, 1), (.9, (0, 0, 1))])
         ```
 
-        Arguments
-        ---------
+        Parameters
+        ----------
         - fac (Float = None)
         - stops (list of tuple(float, tuple)) : stops made of (float, color as tuple of floats)
         - interpolation in ('EASE', 'CARDINAL', 'LINEAR', 'B_SPLINE', 'CONSTANT')
@@ -6449,7 +8283,7 @@ class ND:
 
         Returns
         -------
-        - Float
+        Float
         """
         node = Node('Value', )
         return node._out
@@ -6458,14 +8292,18 @@ class ND:
     def vector_curves(cls, vector: Vector = None, factor: Float = None):
         """ > Node <&Node Vector Curves>
 
-        Arguments
+        Parameters
         ---------
-        - vector (Vector) : socket 'Vector' (id: Vector)
-        - factor (Float) : socket 'Factor' (id: Fac)
+        vector : Vector, optional
+            socket 'Vector' (id: Vector)
+        
+        factor : Float, optional
+            socket 'Factor' (id: Fac)
+        
 
         Returns
         -------
-        - Vector
+        Vector
         """
         node = NodeCurves('Vector Curves', {'Vector': vector, 'Fac': factor})
         return node._out
@@ -6479,17 +8317,25 @@ class ND:
                     operation: Literal['ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'MULTIPLY_ADD', 'CROSS_PRODUCT', 'PROJECT', 'REFLECT', 'REFRACT', 'FACEFORWARD', 'DOT_PRODUCT', 'DISTANCE', 'LENGTH', 'SCALE', 'NORMALIZE', 'ABSOLUTE', 'POWER', 'SIGN', 'MINIMUM', 'MAXIMUM', 'ROUND', 'FLOOR', 'CEIL', 'FRACTION', 'MODULO', 'WRAP', 'SNAP', 'SINE', 'COSINE', 'TANGENT'] = 'ADD'):
         """ > Node <&Node Vector Math>
 
-        Arguments
+        Parameters
         ---------
-        - vector (Vector) : socket 'Vector' (id: Vector)
-        - vector_1 (Vector) : socket 'Vector' (id: Vector_001)
-        - vector_2 (Vector) : socket 'Vector' (id: Vector_002)
-        - scale (Float) : socket 'Scale' (id: Scale)
-        - operation (str): parameter 'operation' in ('Add', 'Subtract', 'Multiply', 'Divide', 'Multiply Add', 'Cross Product', 'Project', 'Reflect', 'Refract', 'Faceforward', 'Dot Product', 'Distance', 'Length', 'Scale', 'Normalize', 'Absolute', 'Power', 'Sign', 'Minimum', 'Maximum', 'Round', 'Floor', 'Ceil', 'Fraction', 'Modulo', 'Wrap', 'Snap', 'Sine', 'Cosine', 'Tangent')
+        vector : Vector, optional
+            socket 'Vector' (id: Vector)
+        
+        vector_1 : Vector, optional
+            socket 'Vector' (id: Vector_001)
+        
+        vector_2 : Vector, optional
+            socket 'Vector' (id: Vector_002)
+        
+        scale : Float, optional
+            socket 'Scale' (id: Scale)
+        
+        operation (str): parameter 'operation' in ('Add', 'Subtract', 'Multiply', 'Divide', 'Multiply Add', 'Cross Product', 'Project', 'Reflect', 'Refract', 'Faceforward', 'Dot Product', 'Distance', 'Length', 'Scale', 'Normalize', 'Absolute', 'Power', 'Sign', 'Minimum', 'Maximum', 'Round', 'Floor', 'Ceil', 'Fraction', 'Modulo', 'Wrap', 'Snap', 'Sine', 'Cosine', 'Tangent')
 
         Returns
         -------
-        - Vector
+        Vector
         """
         utils.check_enum_arg('Vector Math', 'operation', operation, 'vector_math', ('ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'MULTIPLY_ADD', 'CROSS_PRODUCT', 'PROJECT', 'REFLECT', 'REFRACT', 'FACEFORWARD', 'DOT_PRODUCT', 'DISTANCE', 'LENGTH', 'SCALE', 'NORMALIZE', 'ABSOLUTE', 'POWER', 'SIGN', 'MINIMUM', 'MAXIMUM', 'ROUND', 'FLOOR', 'CEIL', 'FRACTION', 'MODULO', 'WRAP', 'SNAP', 'SINE', 'COSINE', 'TANGENT'))
         node = Node('Vector Math', {'Vector': vector, 'Vector_001': vector_1, 'Vector_002': vector_2, 'Scale': scale}, operation=operation)
@@ -6506,19 +8352,29 @@ class ND:
                     rotation_type: Literal['AXIS_ANGLE', 'X_AXIS', 'Y_AXIS', 'Z_AXIS', 'EULER_XYZ'] = 'AXIS_ANGLE'):
         """ > Node <&Node Vector Rotate>
 
-        Arguments
+        Parameters
         ---------
-        - vector (Vector) : socket 'Vector' (id: Vector)
-        - center (Vector) : socket 'Center' (id: Center)
-        - axis (Vector) : socket 'Axis' (id: Axis)
-        - angle (Float) : socket 'Angle' (id: Angle)
-        - rotation (Vector) : socket 'Rotation' (id: Rotation)
-        - invert (bool): parameter 'invert'
-        - rotation_type (str): parameter 'rotation_type' in ('Axis Angle', 'X Axis', 'Y Axis', 'Z Axis', 'Euler')
+        vector : Vector, optional
+            socket 'Vector' (id: Vector)
+        
+        center : Vector, optional
+            socket 'Center' (id: Center)
+        
+        axis : Vector, optional
+            socket 'Axis' (id: Axis)
+        
+        angle : Float, optional
+            socket 'Angle' (id: Angle)
+        
+        rotation : Vector, optional
+            socket 'Rotation' (id: Rotation)
+        
+        invert (bool): parameter 'invert'
+        rotation_type (str): parameter 'rotation_type' in ('Axis Angle', 'X Axis', 'Y Axis', 'Z Axis', 'Euler')
 
         Returns
         -------
-        - Vector
+        Vector
         """
         utils.check_enum_arg('Vector Rotate', 'rotation_type', rotation_type, 'vector_rotate', ('AXIS_ANGLE', 'X_AXIS', 'Y_AXIS', 'Z_AXIS', 'EULER_XYZ'))
         node = Node('Vector Rotate', {'Vector': vector, 'Center': center, 'Axis': axis, 'Angle': angle, 'Rotation': rotation}, invert=invert, rotation_type=rotation_type)

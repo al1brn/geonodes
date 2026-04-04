@@ -1,4 +1,4 @@
-# Generated 2026-03-26 08:37:01
+# Generated 2026-04-04 12:37:35
 
 from __future__ import annotations
 from .. sockettype import SocketType
@@ -42,18 +42,22 @@ class CloudPoint:
 
         > ***Jump*** : Socket refers to node output socket after the call
 
-        Information
-        -----------
-        - Socket 'Points' : self
-        - Socket 'Selection' : self[selection]
+        **Fixed values**
 
-        Arguments
+        | Kind   | Name      | Value             |
+        | ------ | --------- | ----------------- |
+        | Socket | Points    | `self`            |
+        | Socket | Selection | `self[selection]` |
+
+        Parameters
         ---------
-        - radius (Float) : socket 'Radius' (id: Radius)
+        radius : Float, optional
+            socket 'Radius' (id: Radius)
+        
 
         Returns
         -------
-        - Cloud
+        Cloud
         """
         node = Node('Set Point Radius', {'Points': self, 'Selection': self.get_selection(), 'Radius': radius})
         self._jump(node._out)

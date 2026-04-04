@@ -109,13 +109,15 @@ class Matrix(generated.Matrix):
     def FromArray(cls, array):
         """ > Constructor node <&Node Combine Matrix>
 
-        Arguments
-        ---------
-        - array (array of size 16) : 16 values to use as matrix components
+        Parameters
+        ----------
+        array : array of size 16
+            16 values to use as matrix components
+
 
         Returns
         -------
-        - Matrix
+        Matrix
         """
         a = utils.value_to_array(array, (16,))
         return Node('Combine Matrix', list(a))._out

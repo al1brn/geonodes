@@ -48,7 +48,7 @@ To visualize a field, you have to stack 3 groupds:
 
 The modifier "Fields Show Case" is an example of this process.
 
-> [!NOTE]
+!!! note
 > Modifiers:
 > - Field Computation Points: generated points in space where to compute the field
 > - Field Lines: visualize the lines of fields at starting positions

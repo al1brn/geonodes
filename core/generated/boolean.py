@@ -1,4 +1,4 @@
-# Generated 2026-03-26 08:37:01
+# Generated 2026-04-04 12:37:35
 
 from __future__ import annotations
 from .. sockettype import SocketType
@@ -36,18 +36,22 @@ class Boolean(Socket):
     def band(self, boolean: Boolean = None):
         """ > Node <&Node Boolean Math>
 
-        Information
-        -----------
-        - Socket 'Boolean' : self
-        - Parameter 'operation' : 'AND'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name        | Value   |
+        | --------- | ----------- | ------- |
+        | Socket    | Boolean     | `self`  |
+        | Parameter | `operation` | `'AND'` |
+
+        Parameters
         ---------
-        - boolean (Boolean) : socket 'Boolean' (id: Boolean_001)
+        boolean : Boolean, optional
+            socket 'Boolean' (id: Boolean_001)
+        
 
         Returns
         -------
-        - Boolean
+        Boolean
         """
         node = Node('Boolean Math', {'Boolean': self, 'Boolean_001': boolean}, operation='AND')
         return node._out
@@ -55,18 +59,22 @@ class Boolean(Socket):
     def bor(self, boolean: Boolean = None):
         """ > Node <&Node Boolean Math>
 
-        Information
-        -----------
-        - Socket 'Boolean' : self
-        - Parameter 'operation' : 'OR'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name        | Value  |
+        | --------- | ----------- | ------ |
+        | Socket    | Boolean     | `self` |
+        | Parameter | `operation` | `'OR'` |
+
+        Parameters
         ---------
-        - boolean (Boolean) : socket 'Boolean' (id: Boolean_001)
+        boolean : Boolean, optional
+            socket 'Boolean' (id: Boolean_001)
+        
 
         Returns
         -------
-        - Boolean
+        Boolean
         """
         node = Node('Boolean Math', {'Boolean': self, 'Boolean_001': boolean}, operation='OR')
         return node._out
@@ -74,14 +82,16 @@ class Boolean(Socket):
     def bnot(self):
         """ > Node <&Node Boolean Math>
 
-        Information
-        -----------
-        - Socket 'Boolean' : self
-        - Parameter 'operation' : 'NOT'
+        **Fixed values**
+
+        | Kind      | Name        | Value   |
+        | --------- | ----------- | ------- |
+        | Socket    | Boolean     | `self`  |
+        | Parameter | `operation` | `'NOT'` |
 
         Returns
         -------
-        - Boolean
+        Boolean
         """
         node = Node('Boolean Math', {'Boolean': self}, operation='NOT')
         return node._out
@@ -89,18 +99,22 @@ class Boolean(Socket):
     def not_and(self, boolean: Boolean = None):
         """ > Node <&Node Boolean Math>
 
-        Information
-        -----------
-        - Socket 'Boolean' : self
-        - Parameter 'operation' : 'NAND'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name        | Value    |
+        | --------- | ----------- | -------- |
+        | Socket    | Boolean     | `self`   |
+        | Parameter | `operation` | `'NAND'` |
+
+        Parameters
         ---------
-        - boolean (Boolean) : socket 'Boolean' (id: Boolean_001)
+        boolean : Boolean, optional
+            socket 'Boolean' (id: Boolean_001)
+        
 
         Returns
         -------
-        - Boolean
+        Boolean
         """
         node = Node('Boolean Math', {'Boolean': self, 'Boolean_001': boolean}, operation='NAND')
         return node._out
@@ -108,18 +122,22 @@ class Boolean(Socket):
     def nor(self, boolean: Boolean = None):
         """ > Node <&Node Boolean Math>
 
-        Information
-        -----------
-        - Socket 'Boolean' : self
-        - Parameter 'operation' : 'NOR'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name        | Value   |
+        | --------- | ----------- | ------- |
+        | Socket    | Boolean     | `self`  |
+        | Parameter | `operation` | `'NOR'` |
+
+        Parameters
         ---------
-        - boolean (Boolean) : socket 'Boolean' (id: Boolean_001)
+        boolean : Boolean, optional
+            socket 'Boolean' (id: Boolean_001)
+        
 
         Returns
         -------
-        - Boolean
+        Boolean
         """
         node = Node('Boolean Math', {'Boolean': self, 'Boolean_001': boolean}, operation='NOR')
         return node._out
@@ -127,18 +145,22 @@ class Boolean(Socket):
     def xnor(self, boolean: Boolean = None):
         """ > Node <&Node Boolean Math>
 
-        Information
-        -----------
-        - Socket 'Boolean' : self
-        - Parameter 'operation' : 'XNOR'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name        | Value    |
+        | --------- | ----------- | -------- |
+        | Socket    | Boolean     | `self`   |
+        | Parameter | `operation` | `'XNOR'` |
+
+        Parameters
         ---------
-        - boolean (Boolean) : socket 'Boolean' (id: Boolean_001)
+        boolean : Boolean, optional
+            socket 'Boolean' (id: Boolean_001)
+        
 
         Returns
         -------
-        - Boolean
+        Boolean
         """
         node = Node('Boolean Math', {'Boolean': self, 'Boolean_001': boolean}, operation='XNOR')
         return node._out
@@ -146,18 +168,22 @@ class Boolean(Socket):
     def xor(self, boolean: Boolean = None):
         """ > Node <&Node Boolean Math>
 
-        Information
-        -----------
-        - Socket 'Boolean' : self
-        - Parameter 'operation' : 'XOR'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name        | Value   |
+        | --------- | ----------- | ------- |
+        | Socket    | Boolean     | `self`  |
+        | Parameter | `operation` | `'XOR'` |
+
+        Parameters
         ---------
-        - boolean (Boolean) : socket 'Boolean' (id: Boolean_001)
+        boolean : Boolean, optional
+            socket 'Boolean' (id: Boolean_001)
+        
 
         Returns
         -------
-        - Boolean
+        Boolean
         """
         node = Node('Boolean Math', {'Boolean': self, 'Boolean_001': boolean}, operation='XOR')
         return node._out
@@ -165,18 +191,22 @@ class Boolean(Socket):
     def imply(self, boolean: Boolean = None):
         """ > Node <&Node Boolean Math>
 
-        Information
-        -----------
-        - Socket 'Boolean' : self
-        - Parameter 'operation' : 'IMPLY'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name        | Value     |
+        | --------- | ----------- | --------- |
+        | Socket    | Boolean     | `self`    |
+        | Parameter | `operation` | `'IMPLY'` |
+
+        Parameters
         ---------
-        - boolean (Boolean) : socket 'Boolean' (id: Boolean_001)
+        boolean : Boolean, optional
+            socket 'Boolean' (id: Boolean_001)
+        
 
         Returns
         -------
-        - Boolean
+        Boolean
         """
         node = Node('Boolean Math', {'Boolean': self, 'Boolean_001': boolean}, operation='IMPLY')
         return node._out
@@ -184,18 +214,22 @@ class Boolean(Socket):
     def nimply(self, boolean: Boolean = None):
         """ > Node <&Node Boolean Math>
 
-        Information
-        -----------
-        - Socket 'Boolean' : self
-        - Parameter 'operation' : 'NIMPLY'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name        | Value      |
+        | --------- | ----------- | ---------- |
+        | Socket    | Boolean     | `self`     |
+        | Parameter | `operation` | `'NIMPLY'` |
+
+        Parameters
         ---------
-        - boolean (Boolean) : socket 'Boolean' (id: Boolean_001)
+        boolean : Boolean, optional
+            socket 'Boolean' (id: Boolean_001)
+        
 
         Returns
         -------
-        - Boolean
+        Boolean
         """
         node = Node('Boolean Math', {'Boolean': self, 'Boolean_001': boolean}, operation='NIMPLY')
         return node._out
@@ -204,19 +238,27 @@ class Boolean(Socket):
     def Random(cls, probability: Float = None, id: Integer = None, seed: Integer = None):
         """ > Node <&Node Random Value>
 
-        Information
-        -----------
-        - Parameter 'data_type' : 'BOOLEAN'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name        | Value       |
+        | --------- | ----------- | ----------- |
+        | Parameter | `data_type` | `'BOOLEAN'` |
+
+        Parameters
         ---------
-        - probability (Float) : socket 'Probability' (id: Probability)
-        - id (Integer) : socket 'ID' (id: ID)
-        - seed (Integer) : socket 'Seed' (id: Seed)
+        probability : Float, optional
+            socket 'Probability' (id: Probability)
+        
+        id : Integer, optional
+            socket 'ID' (id: ID)
+        
+        seed : Integer, optional
+            socket 'Seed' (id: Seed)
+        
 
         Returns
         -------
-        - Boolean
+        Boolean
         """
         node = Node('Random Value', {'Probability': probability, 'ID': id, 'Seed': seed}, data_type='BOOLEAN')
         return cls(node._out)
@@ -225,17 +267,21 @@ class Boolean(Socket):
     def Named(cls, name: String = None):
         """ > Node <&Node Named Attribute>
 
-        Information
-        -----------
-        - Parameter 'data_type' : 'BOOLEAN'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name        | Value       |
+        | --------- | ----------- | ----------- |
+        | Parameter | `data_type` | `'BOOLEAN'` |
+
+        Parameters
         ---------
-        - name (String) : socket 'Name' (id: Name)
+        name : String, optional
+            socket 'Name' (id: Name)
+        
 
         Returns
         -------
-        - Boolean
+        Boolean
         """
         node = Node('Named Attribute', {'Name': name}, data_type='BOOLEAN')
         return cls(node._out)
@@ -244,17 +290,21 @@ class Boolean(Socket):
     def NamedAttribute(cls, name: String = None):
         """ > Node <&Node Named Attribute>
 
-        Information
-        -----------
-        - Parameter 'data_type' : 'BOOLEAN'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name        | Value       |
+        | --------- | ----------- | ----------- |
+        | Parameter | `data_type` | `'BOOLEAN'` |
+
+        Parameters
         ---------
-        - name (String) : socket 'Name' (id: Name)
+        name : String, optional
+            socket 'Name' (id: Name)
+        
 
         Returns
         -------
-        - Boolean
+        Boolean
         """
         node = Node('Named Attribute', {'Name': name}, data_type='BOOLEAN')
         return cls(node._out)
@@ -265,7 +315,7 @@ class Boolean(Socket):
 
         Returns
         -------
-        - Boolean
+        Boolean
         """
         node = Node('Is Viewport', )
         return node._out
@@ -279,22 +329,36 @@ class Boolean(Socket):
                     no_flip: Boolean = None):
         """ > Node <&Node UV Unwrap>
 
-        Information
-        -----------
-        - Socket 'Selection' : self
+        **Fixed values**
 
-        Arguments
+        | Kind   | Name      | Value  |
+        | ------ | --------- | ------ |
+        | Socket | Selection | `self` |
+
+        Parameters
         ---------
-        - seam (Boolean) : socket 'Seam' (id: Seam)
-        - margin (Float) : socket 'Margin' (id: Margin)
-        - fill_holes (Boolean) : socket 'Fill Holes' (id: Fill Holes)
-        - method (menu='Angle Based') : ('Angle Based', 'Conformal', 'Minimum Stretch')
-        - iterations (Integer) : socket 'Iterations' (id: Iterations)
-        - no_flip (Boolean) : socket 'No Flip' (id: No Flip)
+        seam : Boolean, optional
+            socket 'Seam' (id: Seam)
+        
+        margin : Float, optional
+            socket 'Margin' (id: Margin)
+        
+        fill_holes : Boolean, optional
+            socket 'Fill Holes' (id: Fill Holes)
+        
+        method : menu='Angle Based', optional
+            ('Angle Based', 'Conformal', 'Minimum Stretch')
+        
+        iterations : Integer, optional
+            socket 'Iterations' (id: Iterations)
+        
+        no_flip : Boolean, optional
+            socket 'No Flip' (id: No Flip)
+        
 
         Returns
         -------
-        - Vector
+        Vector
         """
         node = Node('UV Unwrap', {'Selection': self, 'Seam': seam, 'Margin': margin, 'Fill Holes': fill_holes, 'Method': method, 'Iterations': iterations, 'No Flip': no_flip})
         return node._out
@@ -302,18 +366,22 @@ class Boolean(Socket):
     def error(self, message: String = None):
         """ > Node <&Node Warning>
 
-        Information
-        -----------
-        - Socket 'Show' : self
-        - Parameter 'warning_type' : 'ERROR'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name           | Value     |
+        | --------- | -------------- | --------- |
+        | Socket    | Show           | `self`    |
+        | Parameter | `warning_type` | `'ERROR'` |
+
+        Parameters
         ---------
-        - message (String) : socket 'Message' (id: Message)
+        message : String, optional
+            socket 'Message' (id: Message)
+        
 
         Returns
         -------
-        - Boolean
+        Boolean
         """
         node = Node('Warning', {'Show': self, 'Message': message}, warning_type='ERROR')
         return node._out
@@ -321,18 +389,22 @@ class Boolean(Socket):
     def warning(self, message: String = None):
         """ > Node <&Node Warning>
 
-        Information
-        -----------
-        - Socket 'Show' : self
-        - Parameter 'warning_type' : 'WARNING'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name           | Value       |
+        | --------- | -------------- | ----------- |
+        | Socket    | Show           | `self`      |
+        | Parameter | `warning_type` | `'WARNING'` |
+
+        Parameters
         ---------
-        - message (String) : socket 'Message' (id: Message)
+        message : String, optional
+            socket 'Message' (id: Message)
+        
 
         Returns
         -------
-        - Boolean
+        Boolean
         """
         node = Node('Warning', {'Show': self, 'Message': message}, warning_type='WARNING')
         return node._out
@@ -340,18 +412,22 @@ class Boolean(Socket):
     def info(self, message: String = None):
         """ > Node <&Node Warning>
 
-        Information
-        -----------
-        - Socket 'Show' : self
-        - Parameter 'warning_type' : 'INFO'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name           | Value    |
+        | --------- | -------------- | -------- |
+        | Socket    | Show           | `self`   |
+        | Parameter | `warning_type` | `'INFO'` |
+
+        Parameters
         ---------
-        - message (String) : socket 'Message' (id: Message)
+        message : String, optional
+            socket 'Message' (id: Message)
+        
 
         Returns
         -------
-        - Boolean
+        Boolean
         """
         node = Node('Warning', {'Show': self, 'Message': message}, warning_type='INFO')
         return node._out
@@ -361,19 +437,25 @@ class Boolean(Socket):
                     interpolation: Literal['Nearest Neighbor', 'Trilinear', 'Triquadratic'] = None):
         """ > Node <&Node Sample Grid>
 
-        Information
-        -----------
-        - Socket 'Grid' : self
-        - Parameter 'data_type' : 'BOOLEAN'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name        | Value       |
+        | --------- | ----------- | ----------- |
+        | Socket    | Grid        | `self`      |
+        | Parameter | `data_type` | `'BOOLEAN'` |
+
+        Parameters
         ---------
-        - position (Vector) : socket 'Position' (id: Position)
-        - interpolation (menu='Trilinear') : ('Nearest Neighbor', 'Trilinear', 'Triquadratic')
+        position : Vector, optional
+            socket 'Position' (id: Position)
+        
+        interpolation : menu='Trilinear', optional
+            ('Nearest Neighbor', 'Trilinear', 'Triquadratic')
+        
 
         Returns
         -------
-        - Boolean
+        Boolean
         """
         node = Node('Sample Grid', {'Grid': self, 'Position': position, 'Interpolation': interpolation}, data_type='BOOLEAN')
         return node._out
@@ -381,20 +463,28 @@ class Boolean(Socket):
     def sample_grid_index(self, x: Integer = None, y: Integer = None, z: Integer = None):
         """ > Node <&Node Sample Grid Index>
 
-        Information
-        -----------
-        - Socket 'Grid' : self
-        - Parameter 'data_type' : 'BOOLEAN'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name        | Value       |
+        | --------- | ----------- | ----------- |
+        | Socket    | Grid        | `self`      |
+        | Parameter | `data_type` | `'BOOLEAN'` |
+
+        Parameters
         ---------
-        - x (Integer) : socket 'X' (id: X)
-        - y (Integer) : socket 'Y' (id: Y)
-        - z (Integer) : socket 'Z' (id: Z)
+        x : Integer, optional
+            socket 'X' (id: X)
+        
+        y : Integer, optional
+            socket 'Y' (id: Y)
+        
+        z : Integer, optional
+            socket 'Z' (id: Z)
+        
 
         Returns
         -------
-        - Boolean
+        Boolean
         """
         node = Node('Sample Grid Index', {'Grid': self, 'X': x, 'Y': y, 'Z': z}, data_type='BOOLEAN')
         return node._out
@@ -402,14 +492,16 @@ class Boolean(Socket):
     def field_to_grid(self, named_sockets: dict = {}, **sockets):
         """ > Node <&Node Field to Grid>
 
-        Information
-        -----------
-        - Socket 'Topology' : self
-        - Parameter 'data_type' : 'BOOLEAN'
+        **Fixed values**
+
+        | Kind      | Name        | Value       |
+        | --------- | ----------- | ----------- |
+        | Socket    | Topology    | `self`      |
+        | Parameter | `data_type` | `'BOOLEAN'` |
 
         Returns
         -------
-        - None
+        None
         """
         node = Node('Field to Grid', {'Topology': self, **named_sockets}, data_type='BOOLEAN', **sockets)
         return node._out
@@ -417,18 +509,22 @@ class Boolean(Socket):
     def prune_grid(self, mode: Literal['Inactive', 'Threshold', 'SDF'] = None):
         """ > Node <&Node Prune Grid>
 
-        Information
-        -----------
-        - Socket 'Grid' : self
-        - Parameter 'data_type' : 'BOOLEAN'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name        | Value       |
+        | --------- | ----------- | ----------- |
+        | Socket    | Grid        | `self`      |
+        | Parameter | `data_type` | `'BOOLEAN'` |
+
+        Parameters
         ---------
-        - mode (menu='Threshold') : ('Inactive', 'Threshold', 'SDF')
+        mode : menu='Threshold', optional
+            ('Inactive', 'Threshold', 'SDF')
+        
 
         Returns
         -------
-        - Boolean
+        Boolean
         """
         node = Node('Prune Grid', {'Grid': self, 'Mode': mode}, data_type='BOOLEAN')
         return node._out
@@ -436,14 +532,16 @@ class Boolean(Socket):
     def voxelize_grid(self):
         """ > Node <&Node Voxelize Grid>
 
-        Information
-        -----------
-        - Socket 'Grid' : self
-        - Parameter 'data_type' : 'BOOLEAN'
+        **Fixed values**
+
+        | Kind      | Name        | Value       |
+        | --------- | ----------- | ----------- |
+        | Socket    | Grid        | `self`      |
+        | Parameter | `data_type` | `'BOOLEAN'` |
 
         Returns
         -------
-        - Boolean
+        Boolean
         """
         node = Node('Voxelize Grid', {'Grid': self}, data_type='BOOLEAN')
         return node._out
@@ -454,7 +552,9 @@ class Boolean(Socket):
 
         Returns
         -------
-        - Integer [y_ (Integer), z_ (Integer), is_tile_ (Boolean), extent_x_ (Integer), extent_y_ (Integer), extent_z_ (Integer)]
+        Integer
+            peer sockets: y_ (Integer), z_ (Integer), is_tile_ (Boolean), extent_x_ (Integer), extent_y_ (Integer), extent_z_ (Integer)
+
         """
         node = Node('Voxel Index', )
         return node._out
@@ -462,19 +562,25 @@ class Boolean(Socket):
     def set_grid_background(self, background: Boolean = None, update_inactive: Boolean = None):
         """ > Node <&Node Set Grid Background>
 
-        Information
-        -----------
-        - Socket 'Grid' : self
-        - Parameter 'data_type' : 'BOOLEAN'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name        | Value       |
+        | --------- | ----------- | ----------- |
+        | Socket    | Grid        | `self`      |
+        | Parameter | `data_type` | `'BOOLEAN'` |
+
+        Parameters
         ---------
-        - background (Boolean) : socket 'Background' (id: Background)
-        - update_inactive (Boolean) : socket 'Update Inactive' (id: Update Inactive)
+        background : Boolean, optional
+            socket 'Background' (id: Background)
+        
+        update_inactive : Boolean, optional
+            socket 'Update Inactive' (id: Update Inactive)
+        
 
         Returns
         -------
-        - Boolean
+        Boolean
         """
         node = Node('Set Grid Background', {'Grid': self, 'Background': background, 'Update Inactive': update_inactive}, data_type='BOOLEAN')
         return node._out
@@ -482,18 +588,24 @@ class Boolean(Socket):
     def set_grid_transform(self, transform: Matrix = None):
         """ > Node <&Node Set Grid Transform>
 
-        Information
-        -----------
-        - Socket 'Grid' : self
-        - Parameter 'data_type' : 'BOOLEAN'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name        | Value       |
+        | --------- | ----------- | ----------- |
+        | Socket    | Grid        | `self`      |
+        | Parameter | `data_type` | `'BOOLEAN'` |
+
+        Parameters
         ---------
-        - transform (Matrix) : socket 'Transform' (id: Transform)
+        transform : Matrix, optional
+            socket 'Transform' (id: Transform)
+        
 
         Returns
         -------
-        - Boolean [grid_ (Boolean)]
+        Boolean
+            peer sockets: grid_ (Boolean)
+
         """
         node = Node('Set Grid Transform', {'Grid': self, 'Transform': transform}, data_type='BOOLEAN')
         return node._out
@@ -501,14 +613,18 @@ class Boolean(Socket):
     def grid_info(self):
         """ > Node <&Node Grid Info>
 
-        Information
-        -----------
-        - Socket 'Grid' : self
-        - Parameter 'data_type' : 'BOOLEAN'
+        **Fixed values**
+
+        | Kind      | Name        | Value       |
+        | --------- | ----------- | ----------- |
+        | Socket    | Grid        | `self`      |
+        | Parameter | `data_type` | `'BOOLEAN'` |
 
         Returns
         -------
-        - Matrix [background_value_ (Boolean)]
+        Matrix
+            peer sockets: background_value_ (Boolean)
+
         """
         node = Node('Grid Info', {'Grid': self}, data_type='BOOLEAN')
         return node._out
@@ -516,18 +632,22 @@ class Boolean(Socket):
     def enable_output(self, enable: Boolean = None):
         """ > Node <&Node Enable Output>
 
-        Information
-        -----------
-        - Socket 'Value' : self
-        - Parameter 'data_type' : 'BOOLEAN'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name        | Value       |
+        | --------- | ----------- | ----------- |
+        | Socket    | Value       | `self`      |
+        | Parameter | `data_type` | `'BOOLEAN'` |
+
+        Parameters
         ---------
-        - enable (Boolean) : socket 'Enable' (id: Enable)
+        enable : Boolean, optional
+            socket 'Enable' (id: Enable)
+        
 
         Returns
         -------
-        - Boolean
+        Boolean
         """
         node = Node('Enable Output', {'Enable': enable, 'Value': self}, data_type='BOOLEAN')
         return node._out
@@ -544,20 +664,36 @@ class Boolean(Socket):
                     min_z: Integer = None):
         """ > Node <&Node Cube Grid Topology>
 
-        Arguments
+        Parameters
         ---------
-        - bounds_min (Vector) : socket 'Bounds Min' (id: Bounds Min)
-        - bounds_max (Vector) : socket 'Bounds Max' (id: Bounds Max)
-        - resolution_x (Integer) : socket 'Resolution X' (id: Resolution X)
-        - resolution_y (Integer) : socket 'Resolution Y' (id: Resolution Y)
-        - resolution_z (Integer) : socket 'Resolution Z' (id: Resolution Z)
-        - min_x (Integer) : socket 'Min X' (id: Min X)
-        - min_y (Integer) : socket 'Min Y' (id: Min Y)
-        - min_z (Integer) : socket 'Min Z' (id: Min Z)
+        bounds_min : Vector, optional
+            socket 'Bounds Min' (id: Bounds Min)
+        
+        bounds_max : Vector, optional
+            socket 'Bounds Max' (id: Bounds Max)
+        
+        resolution_x : Integer, optional
+            socket 'Resolution X' (id: Resolution X)
+        
+        resolution_y : Integer, optional
+            socket 'Resolution Y' (id: Resolution Y)
+        
+        resolution_z : Integer, optional
+            socket 'Resolution Z' (id: Resolution Z)
+        
+        min_x : Integer, optional
+            socket 'Min X' (id: Min X)
+        
+        min_y : Integer, optional
+            socket 'Min Y' (id: Min Y)
+        
+        min_z : Integer, optional
+            socket 'Min Z' (id: Min Z)
+        
 
         Returns
         -------
-        - Boolean
+        Boolean
         """
         node = Node('Cube Grid Topology', {'Bounds Min': bounds_min, 'Bounds Max': bounds_max, 'Resolution X': resolution_x, 'Resolution Y': resolution_y, 'Resolution Z': resolution_z, 'Min X': min_x, 'Min Y': min_y, 'Min Z': min_z})
         return cls(node._out)
@@ -571,23 +707,37 @@ class Boolean(Socket):
                     max_z: Integer = None):
         """ > Node <&Node Clip Grid>
 
-        Information
-        -----------
-        - Socket 'Grid' : self
-        - Parameter 'data_type' : 'BOOLEAN'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name        | Value       |
+        | --------- | ----------- | ----------- |
+        | Socket    | Grid        | `self`      |
+        | Parameter | `data_type` | `'BOOLEAN'` |
+
+        Parameters
         ---------
-        - min_x (Integer) : socket 'Min X' (id: Min X)
-        - min_y (Integer) : socket 'Min Y' (id: Min Y)
-        - min_z (Integer) : socket 'Min Z' (id: Min Z)
-        - max_x (Integer) : socket 'Max X' (id: Max X)
-        - max_y (Integer) : socket 'Max Y' (id: Max Y)
-        - max_z (Integer) : socket 'Max Z' (id: Max Z)
+        min_x : Integer, optional
+            socket 'Min X' (id: Min X)
+        
+        min_y : Integer, optional
+            socket 'Min Y' (id: Min Y)
+        
+        min_z : Integer, optional
+            socket 'Min Z' (id: Min Z)
+        
+        max_x : Integer, optional
+            socket 'Max X' (id: Max X)
+        
+        max_y : Integer, optional
+            socket 'Max Y' (id: Max Y)
+        
+        max_z : Integer, optional
+            socket 'Max Z' (id: Max Z)
+        
 
         Returns
         -------
-        - Boolean
+        Boolean
         """
         node = Node('Clip Grid', {'Grid': self, 'Min X': min_x, 'Min Y': min_y, 'Min Z': min_z, 'Max X': max_x, 'Max Y': max_y, 'Max Z': max_z}, data_type='BOOLEAN')
         return node._out
@@ -598,20 +748,28 @@ class Boolean(Socket):
                     steps: Integer = None):
         """ > Node <&Node Grid Dilate & Erode>
 
-        Information
-        -----------
-        - Socket 'Grid' : self
-        - Parameter 'data_type' : 'BOOLEAN'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name        | Value       |
+        | --------- | ----------- | ----------- |
+        | Socket    | Grid        | `self`      |
+        | Parameter | `data_type` | `'BOOLEAN'` |
+
+        Parameters
         ---------
-        - connectivity (menu='Face') : ('Face', 'Edge', 'Vertex')
-        - tiles (menu='Preserve') : ('Ignore', 'Expand', 'Preserve')
-        - steps (Integer) : socket 'Steps' (id: Steps)
+        connectivity : menu='Face', optional
+            ('Face', 'Edge', 'Vertex')
+        
+        tiles : menu='Preserve', optional
+            ('Ignore', 'Expand', 'Preserve')
+        
+        steps : Integer, optional
+            socket 'Steps' (id: Steps)
+        
 
         Returns
         -------
-        - Boolean
+        Boolean
         """
         node = Node('Grid Dilate & Erode', {'Grid': self, 'Connectivity': connectivity, 'Tiles': tiles, 'Steps': steps}, data_type='BOOLEAN')
         return node._out
@@ -619,14 +777,18 @@ class Boolean(Socket):
     def grid_to_points(self):
         """ > Node <&Node Grid to Points>
 
-        Information
-        -----------
-        - Socket 'Grid' : self
-        - Parameter 'data_type' : 'BOOLEAN'
+        **Fixed values**
+
+        | Kind      | Name        | Value       |
+        | --------- | ----------- | ----------- |
+        | Socket    | Grid        | `self`      |
+        | Parameter | `data_type` | `'BOOLEAN'` |
 
         Returns
         -------
-        - Cloud [value_ (Boolean), x_ (Integer), y_ (Integer), z_ (Integer), is_tile_ (Boolean), extent_ (Integer)]
+        Cloud
+            peer sockets: value_ (Boolean), x_ (Integer), y_ (Integer), z_ (Integer), is_tile_ (Boolean), extent_ (Integer)
+
         """
         node = Node('Grid to Points', {'Grid': self}, data_type='BOOLEAN')
         return node._out

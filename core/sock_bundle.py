@@ -121,13 +121,15 @@ class Bundle(generated.Bundle):
     def get_signature(self, with_sockets: bool = False):
         """ Build the closure signature of the node.
 
-        Arguments
-        ---------
-        - with_sockets (bool = False) : include sockets
+        Parameters
+        ----------
+        with_sockets : bool, optional
+            include sockets Default: False.
+
 
         Returns
         -------
-        - Signature
+        Signature
         """
         if self._is_combine:
             return Signature(self.node.get_signature(with_sockets=with_sockets).inputs)

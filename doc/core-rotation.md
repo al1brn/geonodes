@@ -1,0 +1,952 @@
+# Rotation
+
+``` python
+Rotation(socket=None, name: str = None, tip: str = '', panel: str = '', user_label: str = None, **props)
+```
+
+Rotation Socket.
+
+A Rotation can be created directly with a triplet of values. Operations between a Rotation
+and a triplet are also supported.
+
+``` python
+from geonodes import GeoNodes, Mesh, Layout, Rotation, G, Float, Input, pi
+
+with GeoNodes("Rotation Test") as tree:
+    
+    
+    with Layout("Base"):
+        a = Rotation() @ Rotation((1, 2, 3))
+        a = a.mix(Rotation(1, name="Your entry"), Input("Factor", subtype="Factor", min=0, max=1))
+        b = G().random_rotation(max_zenith=pi/2).align_to_vector(Input("Vector"))
+        c = Rotation.FromAxisAngle(axis=Input("Axis"), angle=Float.Angle(name="Angle"))
+        b = b @ c
+        
+    with Layout("Named Attribute"):
+        g = Mesh()
+        g.points._A_Rotation = a
+        
+        c = a.rotate(Rotation("A Float"), rotation_space='LOCAL')
+        g.faces.store("Another rotation", c)
+        
+    b.to_quaternion().node.out(panel="Quaternion")
+        
+    g.out()
+```
+
+#### Arguments:
+- **socket** (_NodeSocket_ = None) : the output socket to wrap
+- **name** (_str_ = None) : input name if not None
+- **tip** (_str_ = ) : description
+- **panel** (_str_ = ) : panel name
+- **user_label** (_str_ = None) : user label
+- **props**
+
+### Inherited
+
+[add_method](group.md#add_method) :black_small_square: ['_bsocket' not found]() :black_small_square: [\_cache](nodecache.md#_cache) :black_small_square: ['_cached_nodes' not found]() :black_small_square: [\_cache_reset](nodecache.md#_cache_reset) :black_small_square: [check_in_list](core-socket.md#check_in_list) :black_small_square: [Constant](core-socket.md#constant) :black_small_square: [default_value](core-socket.md#default_value) :black_small_square: [\_domain_to_geometry](domain.md#_domain_to_geometry) :black_small_square: [Empty](core-socket.md#empty) :black_small_square: [\_\_enter__](layout.md#__enter__) :black_small_square: [\_\_exit__](layout.md#__exit__) :black_small_square: [\_\_getattr__](g.md#__getattr__) :black_small_square: [\_get_bsocket_from_input](core-socket.md#_get_bsocket_from_input) :black_small_square: [IndexSwitch](core-socket.md#indexswitch) :black_small_square: [index_switch](core-socket.md#index_switch) :black_small_square: [\_\_init__](colorramp.md#__init__) :black_small_square: [Input](input.md#input) :black_small_square: [\_interface_socket](core-socket.md#_interface_socket) :black_small_square: [\_is_empty](core-socket.md#_is_empty) :black_small_square: [is_grid](core-socket.md#is_grid) :black_small_square: [\_jump](domain.md#_jump) :black_small_square: ['_layout' not found]() :black_small_square: [\_lc](node.md#_lc) :black_small_square: [\_lcop](core-socket.md#_lcop) :black_small_square: [link_inputs](node.md#link_inputs) :black_small_square: [menu](core-gener-menu---menu.md#menu) :black_small_square: [MenuSwitch](core-socket.md#menuswitch) :black_small_square: [menu_switch](core-gener-menu-menu.md#menu_switch) :black_small_square: [\_name](core-socket.md#_name) :black_small_square: [NewInput](core-socket.md#newinput) :black_small_square: [node](core-socket.md#node) :black_small_square: [node_color](core-socket.md#node_color) :black_small_square: [node_label](core-socket.md#node_label) :black_small_square: [out](core-color.md#out) :black_small_square: [\_panel_name](core-socket.md#_panel_name) :black_small_square: [pin_gizmo](node.md#pin_gizmo) :black_small_square: [\_pop](core-closure.md#_pop) :black_small_square: [\_push](core-closure.md#_push) :black_small_square: [repeat](core-socket.md#repeat) :black_small_square: [\_reset](core-cloud.md#_reset) :black_small_square: [simulation](core-socket.md#simulation) :black_small_square: [\_socket_type](core-socket.md#_socket_type) :black_small_square: [\_\_str__](domain.md#__str__) :black_small_square: [Switch](core-socket.md#switch) :black_small_square: [switch](core-socket.md#switch) :black_small_square: [switch_false](core-socket.md#switch_false) :black_small_square: [\_test_socket_to_data_type](core-socket.md#_test_socket_to_data_type) :black_small_square: ['_tree' not found]() :black_small_square: [\_ul](core-socket.md#_ul) :black_small_square: ['_use_layout' not found]() :black_small_square: [user_label](core-socket.md#user_label) :black_small_square:
+
+## Content
+
+- **A** : [AlignToVector](core-rotation.md#aligntovector) :black_small_square: [align_to_vector](core-rotation.md#align_to_vector) :black_small_square: [AlignXToVector](core-rotation.md#alignxtovector) :black_small_square: [align_x_to_vector](core-rotation.md#align_x_to_vector) :black_small_square: [AlignYToVector](core-rotation.md#alignytovector) :black_small_square: [align_y_to_vector](core-rotation.md#align_y_to_vector) :black_small_square: [AlignZToVector](core-rotation.md#alignztovector) :black_small_square: [align_z_to_vector](core-rotation.md#align_z_to_vector) :black_small_square: [axis_angle](core-rotation.md#axis_angle)
+- **C** : [\_create_input_socket](core-rotation.md#_create_input_socket)
+- **E** : [enable_output](core-rotation.md#enable_output)
+- **F** : [FromAxes](core-rotation.md#fromaxes) :black_small_square: [FromAxisAngle](core-rotation.md#fromaxisangle) :black_small_square: [FromEuler](core-rotation.md#fromeuler) :black_small_square: [FromQuaternion](core-rotation.md#fromquaternion) :black_small_square: [FromXYAxes](core-rotation.md#fromxyaxes) :black_small_square: [FromXZAxes](core-rotation.md#fromxzaxes) :black_small_square: [FromYXAxes](core-rotation.md#fromyxaxes) :black_small_square: [FromYZAxes](core-rotation.md#fromyzaxes) :black_small_square: [FromZXAxes](core-rotation.md#fromzxaxes) :black_small_square: [FromZYAxes](core-rotation.md#fromzyaxes)
+- **H** : [hash_value](core-rotation.md#hash_value)
+- **I** : [invert](core-rotation.md#invert)
+- **M** : [mix](core-rotation.md#mix)
+- **N** : [Named](core-rotation.md#named) :black_small_square: [NamedAttribute](core-rotation.md#namedattribute)
+- **R** : [rotate](core-rotation.md#rotate) :black_small_square: [rotate_global](core-rotation.md#rotate_global) :black_small_square: [rotate_local](core-rotation.md#rotate_local) :black_small_square: [rotate_vector](core-rotation.md#rotate_vector)
+- **T** : [to_axis_angle](core-rotation.md#to_axis_angle) :black_small_square: [to_euler](core-rotation.md#to_euler) :black_small_square: [to_quaternion](core-rotation.md#to_quaternion)
+- **W** : [wxyz](core-rotation.md#wxyz)
+
+## Properties
+
+
+
+### axis_angle
+
+> _type_: **tuple**
+>
+
+> Node ERROR: Node 'Rotation to Axis Angle' not found
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Rotation](core-rotation.md#rotation) :black_small_square: [Content](core-rotation.md#content) :black_small_square: [Properties](core-rotation.md#properties)</sub>
+
+### wxyz
+
+> _type_: **tuple**
+>
+
+> Node [Rotation to Quaternion](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/rotation_to_quaternion.html)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Rotation](core-rotation.md#rotation) :black_small_square: [Content](core-rotation.md#content) :black_small_square: [Properties](core-rotation.md#properties)</sub>
+
+## Methods
+
+
+
+----------
+### AlignToVector()
+
+> classmethod
+
+``` python
+AlignToVector(vector: 'Vector' = None, factor: 'Float' = None, axis: "Literal['X', 'Y', 'Z']" = 'Z', pivot_axis: "Literal['AUTO', 'X', 'Y', 'Z']" = 'AUTO')
+```
+
+> Node [Align Rotation to Vector](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/align_rotation_to_vector.html)
+
+#### Information:
+- **Socket** : ignored
+
+
+
+#### Arguments:
+- **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
+- **factor** (_Float_ = None) : socket 'Factor' (id: Factor)
+- **axis** (_Literal['X', 'Y', 'Z']_ = Z) : parameter 'axis' in ('X', 'Y', 'Z')
+- **pivot_axis** (_Literal['AUTO', 'X', 'Y', 'Z']_ = AUTO) : parameter 'pivot_axis' in ('Auto', 'X', 'Y', 'Z')
+
+
+
+#### Returns:
+- **Rotation** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Rotation](core-rotation.md#rotation) :black_small_square: [Content](core-rotation.md#content) :black_small_square: [Methods](core-rotation.md#methods)</sub>
+
+----------
+### align_to_vector()
+
+> method
+
+``` python
+align_to_vector(vector: 'Vector' = None, factor: 'Float' = None, axis: "Literal['X', 'Y', 'Z']" = 'Z', pivot_axis: "Literal['AUTO', 'X', 'Y', 'Z']" = 'AUTO')
+```
+
+> Node [Align Rotation to Vector](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/align_rotation_to_vector.html)
+
+#### Information:
+- **Socket** : self
+
+
+
+#### Arguments:
+- **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
+- **factor** (_Float_ = None) : socket 'Factor' (id: Factor)
+- **axis** (_Literal['X', 'Y', 'Z']_ = Z) : parameter 'axis' in ('X', 'Y', 'Z')
+- **pivot_axis** (_Literal['AUTO', 'X', 'Y', 'Z']_ = AUTO) : parameter 'pivot_axis' in ('Auto', 'X', 'Y', 'Z')
+
+
+
+#### Returns:
+- **Rotation** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Rotation](core-rotation.md#rotation) :black_small_square: [Content](core-rotation.md#content) :black_small_square: [Methods](core-rotation.md#methods)</sub>
+
+----------
+### AlignXToVector()
+
+> classmethod
+
+``` python
+AlignXToVector(vector: 'Vector' = None, factor: 'Float' = None, pivot_axis: "Literal['AUTO', 'X', 'Y', 'Z']" = 'AUTO')
+```
+
+> Node [Align Rotation to Vector](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/align_rotation_to_vector.html)
+
+#### Information:
+- **Socket** : ignored
+- **Parameter** : 'X'
+
+
+
+#### Arguments:
+- **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
+- **factor** (_Float_ = None) : socket 'Factor' (id: Factor)
+- **pivot_axis** (_Literal['AUTO', 'X', 'Y', 'Z']_ = AUTO) : parameter 'pivot_axis' in ('Auto', 'X', 'Y', 'Z')
+
+
+
+#### Returns:
+- **Rotation** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Rotation](core-rotation.md#rotation) :black_small_square: [Content](core-rotation.md#content) :black_small_square: [Methods](core-rotation.md#methods)</sub>
+
+----------
+### align_x_to_vector()
+
+> method
+
+``` python
+align_x_to_vector(vector: 'Vector' = None, factor: 'Float' = None, pivot_axis: "Literal['AUTO', 'X', 'Y', 'Z']" = 'AUTO')
+```
+
+> Node [Align Rotation to Vector](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/align_rotation_to_vector.html)
+
+#### Information:
+- **Socket** : self
+- **Parameter** : 'X'
+
+
+
+#### Arguments:
+- **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
+- **factor** (_Float_ = None) : socket 'Factor' (id: Factor)
+- **pivot_axis** (_Literal['AUTO', 'X', 'Y', 'Z']_ = AUTO) : parameter 'pivot_axis' in ('Auto', 'X', 'Y', 'Z')
+
+
+
+#### Returns:
+- **Rotation** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Rotation](core-rotation.md#rotation) :black_small_square: [Content](core-rotation.md#content) :black_small_square: [Methods](core-rotation.md#methods)</sub>
+
+----------
+### AlignYToVector()
+
+> classmethod
+
+``` python
+AlignYToVector(vector: 'Vector' = None, factor: 'Float' = None, pivot_axis: "Literal['AUTO', 'X', 'Y', 'Z']" = 'AUTO')
+```
+
+> Node [Align Rotation to Vector](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/align_rotation_to_vector.html)
+
+#### Information:
+- **Socket** : ignored
+- **Parameter** : 'Y'
+
+
+
+#### Arguments:
+- **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
+- **factor** (_Float_ = None) : socket 'Factor' (id: Factor)
+- **pivot_axis** (_Literal['AUTO', 'X', 'Y', 'Z']_ = AUTO) : parameter 'pivot_axis' in ('Auto', 'X', 'Y', 'Z')
+
+
+
+#### Returns:
+- **Rotation** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Rotation](core-rotation.md#rotation) :black_small_square: [Content](core-rotation.md#content) :black_small_square: [Methods](core-rotation.md#methods)</sub>
+
+----------
+### align_y_to_vector()
+
+> method
+
+``` python
+align_y_to_vector(vector: 'Vector' = None, factor: 'Float' = None, pivot_axis: "Literal['AUTO', 'X', 'Y', 'Z']" = 'AUTO')
+```
+
+> Node [Align Rotation to Vector](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/align_rotation_to_vector.html)
+
+#### Information:
+- **Socket** : self
+- **Parameter** : 'Y'
+
+
+
+#### Arguments:
+- **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
+- **factor** (_Float_ = None) : socket 'Factor' (id: Factor)
+- **pivot_axis** (_Literal['AUTO', 'X', 'Y', 'Z']_ = AUTO) : parameter 'pivot_axis' in ('Auto', 'X', 'Y', 'Z')
+
+
+
+#### Returns:
+- **Rotation** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Rotation](core-rotation.md#rotation) :black_small_square: [Content](core-rotation.md#content) :black_small_square: [Methods](core-rotation.md#methods)</sub>
+
+----------
+### AlignZToVector()
+
+> classmethod
+
+``` python
+AlignZToVector(vector: 'Vector' = None, factor: 'Float' = None, pivot_axis: "Literal['AUTO', 'X', 'Y', 'Z']" = 'AUTO')
+```
+
+> Node [Align Rotation to Vector](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/align_rotation_to_vector.html)
+
+#### Information:
+- **Socket** : ignored
+- **Parameter** : 'Z'
+
+
+
+#### Arguments:
+- **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
+- **factor** (_Float_ = None) : socket 'Factor' (id: Factor)
+- **pivot_axis** (_Literal['AUTO', 'X', 'Y', 'Z']_ = AUTO) : parameter 'pivot_axis' in ('Auto', 'X', 'Y', 'Z')
+
+
+
+#### Returns:
+- **Rotation** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Rotation](core-rotation.md#rotation) :black_small_square: [Content](core-rotation.md#content) :black_small_square: [Methods](core-rotation.md#methods)</sub>
+
+----------
+### align_z_to_vector()
+
+> method
+
+``` python
+align_z_to_vector(vector: 'Vector' = None, factor: 'Float' = None, pivot_axis: "Literal['AUTO', 'X', 'Y', 'Z']" = 'AUTO')
+```
+
+> Node [Align Rotation to Vector](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/align_rotation_to_vector.html)
+
+#### Information:
+- **Socket** : self
+- **Parameter** : 'Z'
+
+
+
+#### Arguments:
+- **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
+- **factor** (_Float_ = None) : socket 'Factor' (id: Factor)
+- **pivot_axis** (_Literal['AUTO', 'X', 'Y', 'Z']_ = AUTO) : parameter 'pivot_axis' in ('Auto', 'X', 'Y', 'Z')
+
+
+
+#### Returns:
+- **Rotation** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Rotation](core-rotation.md#rotation) :black_small_square: [Content](core-rotation.md#content) :black_small_square: [Methods](core-rotation.md#methods)</sub>
+
+----------
+### \_create_input_socket()
+
+> classmethod
+
+``` python
+_create_input_socket(value: 'object' = (0, 0, 0), name: 'str' = 'Rotation', tip: 'str' = '', panel: 'str' = '', optional_label: 'bool' = False, hide_value: 'bool' = False, hide_in_modifier: 'bool' = False, default_attribute: 'str' = '', shape: "Literal['AUTO', 'DYNAMIC', 'FIELD', 'SINGLE']" = 'AUTO')
+```
+
+> Rotation Input
+
+New [Rotation](core-gener-rotat-rotation.md#rotation) input with subtype 'NONE'.
+
+Aguments
+--------
+- value  (object = (0, 0, 0)) : Default value
+- name  (str = 'Rotation') : Input socket name
+- tip  (str = '') : Property description
+panel : str, optional
+    Panel name Default: "".
+
+- optional_label  (bool = False) : Property optional_label
+- hide_value  (bool = False) : Property hide_value
+- hide_in_modifier  (bool = False) : Property hide_in_modifier
+- default_attribute  (str = '') : Property default_attribute_name
+- shape  (str = 'AUTO') : Property structure_type in ('AUTO', 'DYNAMIC', 'FIELD', 'SINGLE')
+
+#### Arguments:
+- **value** (_object_ = (0, 0, 0))
+- **name** (_str_ = Rotation)
+- **tip** (_str_ = )
+- **panel** (_str_ = )
+- **optional_label** (_bool_ = False)
+- **hide_value** (_bool_ = False)
+- **hide_in_modifier** (_bool_ = False)
+- **default_attribute** (_str_ = )
+- **shape** (_Literal['AUTO', 'DYNAMIC', 'FIELD', 'SINGLE']_ = AUTO)
+
+
+
+#### Returns:
+- **Rotation** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Rotation](core-rotation.md#rotation) :black_small_square: [Content](core-rotation.md#content) :black_small_square: [Methods](core-rotation.md#methods)</sub>
+
+----------
+### enable_output()
+
+> method
+
+``` python
+enable_output(enable: 'Boolean' = None)
+```
+
+> Node [Enable Output](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../interface/controls/nodes/types/output/enable_output.html)
+
+#### Information:
+- **Socket** : self
+- **Parameter** : 'ROTATION'
+
+
+
+#### Arguments:
+- **enable** (_Boolean_ = None) : socket 'Enable' (id: Enable)
+
+
+
+#### Returns:
+- **Rotation** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Rotation](core-rotation.md#rotation) :black_small_square: [Content](core-rotation.md#content) :black_small_square: [Methods](core-rotation.md#methods)</sub>
+
+----------
+### FromAxes()
+
+> classmethod
+
+``` python
+FromAxes(primary_axis_1: 'Vector' = None, secondary_axis_1: 'Vector' = None, primary_axis: "Literal['X', 'Y', 'Z']" = 'Z', secondary_axis: "Literal['X', 'Y', 'Z']" = 'X')
+```
+
+> Node [Axes to Rotation](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/axes_to_rotation.html)
+
+#### Arguments:
+- **primary_axis_1** (_Vector_ = None) : socket 'Primary Axis' (id: Primary Axis)
+- **secondary_axis_1** (_Vector_ = None) : socket 'Secondary Axis' (id: Secondary Axis)
+- **primary_axis** (_Literal['X', 'Y', 'Z']_ = Z) : parameter 'primary_axis' in ('X', 'Y', 'Z')
+- **secondary_axis** (_Literal['X', 'Y', 'Z']_ = X) : parameter 'secondary_axis' in ('X', 'Y', 'Z')
+
+
+
+#### Returns:
+- **Rotation** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Rotation](core-rotation.md#rotation) :black_small_square: [Content](core-rotation.md#content) :black_small_square: [Methods](core-rotation.md#methods)</sub>
+
+----------
+### FromAxisAngle()
+
+> classmethod
+
+``` python
+FromAxisAngle(axis: 'Vector' = None, angle: 'Float' = None)
+```
+
+> Node [Axis Angle to Rotation](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/axis_angle_to_rotation.html)
+
+#### Arguments:
+- **axis** (_Vector_ = None) : socket 'Axis' (id: Axis)
+- **angle** (_Float_ = None) : socket 'Angle' (id: Angle)
+
+
+
+#### Returns:
+- **Rotation** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Rotation](core-rotation.md#rotation) :black_small_square: [Content](core-rotation.md#content) :black_small_square: [Methods](core-rotation.md#methods)</sub>
+
+----------
+### FromEuler()
+
+> classmethod
+
+``` python
+FromEuler(euler: 'Vector' = None)
+```
+
+> Node [Euler to Rotation](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/euler_to_rotation.html)
+
+#### Arguments:
+- **euler** (_Vector_ = None) : socket 'Euler' (id: Euler)
+
+
+
+#### Returns:
+- **Rotation** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Rotation](core-rotation.md#rotation) :black_small_square: [Content](core-rotation.md#content) :black_small_square: [Methods](core-rotation.md#methods)</sub>
+
+----------
+### FromQuaternion()
+
+> classmethod
+
+``` python
+FromQuaternion(w: 'Float' = None, x: 'Float' = None, y: 'Float' = None, z: 'Float' = None)
+```
+
+> Node [Quaternion to Rotation](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/quaternion_to_rotation.html)
+
+#### Arguments:
+- **w** (_Float_ = None) : socket 'W' (id: W)
+- **x** (_Float_ = None) : socket 'X' (id: X)
+- **y** (_Float_ = None) : socket 'Y' (id: Y)
+- **z** (_Float_ = None) : socket 'Z' (id: Z)
+
+
+
+#### Returns:
+- **Rotation** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Rotation](core-rotation.md#rotation) :black_small_square: [Content](core-rotation.md#content) :black_small_square: [Methods](core-rotation.md#methods)</sub>
+
+----------
+### FromXYAxes()
+
+> classmethod
+
+``` python
+FromXYAxes(primary_axis: 'Vector' = None, secondary_axis: 'Vector' = None)
+```
+
+> Node [Axes to Rotation](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/axes_to_rotation.html)
+
+#### Information:
+- **Parameter** : 'X'
+- **Parameter** : 'Y'
+
+
+
+#### Arguments:
+- **primary_axis** (_Vector_ = None) : socket 'Primary Axis' (id: Primary Axis)
+- **secondary_axis** (_Vector_ = None) : socket 'Secondary Axis' (id: Secondary Axis)
+
+
+
+#### Returns:
+- **Rotation** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Rotation](core-rotation.md#rotation) :black_small_square: [Content](core-rotation.md#content) :black_small_square: [Methods](core-rotation.md#methods)</sub>
+
+----------
+### FromXZAxes()
+
+> classmethod
+
+``` python
+FromXZAxes(primary_axis: 'Vector' = None, secondary_axis: 'Vector' = None)
+```
+
+> Node [Axes to Rotation](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/axes_to_rotation.html)
+
+#### Information:
+- **Parameter** : 'X'
+- **Parameter** : 'Z'
+
+
+
+#### Arguments:
+- **primary_axis** (_Vector_ = None) : socket 'Primary Axis' (id: Primary Axis)
+- **secondary_axis** (_Vector_ = None) : socket 'Secondary Axis' (id: Secondary Axis)
+
+
+
+#### Returns:
+- **Rotation** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Rotation](core-rotation.md#rotation) :black_small_square: [Content](core-rotation.md#content) :black_small_square: [Methods](core-rotation.md#methods)</sub>
+
+----------
+### FromYXAxes()
+
+> classmethod
+
+``` python
+FromYXAxes(primary_axis: 'Vector' = None, secondary_axis: 'Vector' = None)
+```
+
+> Node [Axes to Rotation](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/axes_to_rotation.html)
+
+#### Information:
+- **Parameter** : 'Y'
+- **Parameter** : 'X'
+
+
+
+#### Arguments:
+- **primary_axis** (_Vector_ = None) : socket 'Primary Axis' (id: Primary Axis)
+- **secondary_axis** (_Vector_ = None) : socket 'Secondary Axis' (id: Secondary Axis)
+
+
+
+#### Returns:
+- **Rotation** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Rotation](core-rotation.md#rotation) :black_small_square: [Content](core-rotation.md#content) :black_small_square: [Methods](core-rotation.md#methods)</sub>
+
+----------
+### FromYZAxes()
+
+> classmethod
+
+``` python
+FromYZAxes(primary_axis: 'Vector' = None, secondary_axis: 'Vector' = None)
+```
+
+> Node [Axes to Rotation](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/axes_to_rotation.html)
+
+#### Information:
+- **Parameter** : 'Y'
+- **Parameter** : 'Z'
+
+
+
+#### Arguments:
+- **primary_axis** (_Vector_ = None) : socket 'Primary Axis' (id: Primary Axis)
+- **secondary_axis** (_Vector_ = None) : socket 'Secondary Axis' (id: Secondary Axis)
+
+
+
+#### Returns:
+- **Rotation** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Rotation](core-rotation.md#rotation) :black_small_square: [Content](core-rotation.md#content) :black_small_square: [Methods](core-rotation.md#methods)</sub>
+
+----------
+### FromZXAxes()
+
+> classmethod
+
+``` python
+FromZXAxes(primary_axis: 'Vector' = None, secondary_axis: 'Vector' = None)
+```
+
+> Node [Axes to Rotation](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/axes_to_rotation.html)
+
+#### Information:
+- **Parameter** : 'Z'
+- **Parameter** : 'X'
+
+
+
+#### Arguments:
+- **primary_axis** (_Vector_ = None) : socket 'Primary Axis' (id: Primary Axis)
+- **secondary_axis** (_Vector_ = None) : socket 'Secondary Axis' (id: Secondary Axis)
+
+
+
+#### Returns:
+- **Rotation** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Rotation](core-rotation.md#rotation) :black_small_square: [Content](core-rotation.md#content) :black_small_square: [Methods](core-rotation.md#methods)</sub>
+
+----------
+### FromZYAxes()
+
+> classmethod
+
+``` python
+FromZYAxes(primary_axis: 'Vector' = None, secondary_axis: 'Vector' = None)
+```
+
+> Node [Axes to Rotation](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/axes_to_rotation.html)
+
+#### Information:
+- **Parameter** : 'Z'
+- **Parameter** : 'Y'
+
+
+
+#### Arguments:
+- **primary_axis** (_Vector_ = None) : socket 'Primary Axis' (id: Primary Axis)
+- **secondary_axis** (_Vector_ = None) : socket 'Secondary Axis' (id: Secondary Axis)
+
+
+
+#### Returns:
+- **Rotation** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Rotation](core-rotation.md#rotation) :black_small_square: [Content](core-rotation.md#content) :black_small_square: [Methods](core-rotation.md#methods)</sub>
+
+----------
+### hash_value()
+
+> method
+
+``` python
+hash_value(seed: 'Integer' = None)
+```
+
+> Node [Hash Value](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/math/hash_value.html)
+
+#### Information:
+- **Socket** : self
+- **Parameter** : 'ROTATION'
+
+
+
+#### Arguments:
+- **seed** (_Integer_ = None) : socket 'Seed' (id: Seed)
+
+
+
+#### Returns:
+- **Integer** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Rotation](core-rotation.md#rotation) :black_small_square: [Content](core-rotation.md#content) :black_small_square: [Methods](core-rotation.md#methods)</sub>
+
+----------
+### invert()
+
+> method
+
+``` python
+invert()
+```
+
+> Node [Invert Rotation](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/invert_rotation.html)
+
+#### Information:
+- **Socket** : self
+
+
+
+#### Returns:
+- **Rotation** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Rotation](core-rotation.md#rotation) :black_small_square: [Content](core-rotation.md#content) :black_small_square: [Methods](core-rotation.md#methods)</sub>
+
+----------
+### mix()
+
+> method
+
+``` python
+mix(b: 'Rotation' = None, factor: 'Float' = None, clamp_factor=True)
+```
+
+> Node [Mix](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/../../editors/texture_node/types/color/mix_rgb.html)
+
+#### Information:
+- **Socket** : self
+- **Parameter** : 'MIX'
+- **Parameter** : False
+- **Parameter** : 'ROTATION'
+- **Parameter** : 'UNIFORM'
+
+
+
+#### Arguments:
+- **b** (_Rotation_ = None) : socket 'B' (id: B_Rotation)
+- **factor** (_Float_ = None) : socket 'Factor' (id: Factor_Float)
+- **clamp_factor** (_bool_ = True) : parameter 'clamp_factor'
+
+
+
+#### Returns:
+- **Rotation** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Rotation](core-rotation.md#rotation) :black_small_square: [Content](core-rotation.md#content) :black_small_square: [Methods](core-rotation.md#methods)</sub>
+
+----------
+### Named()
+
+> classmethod
+
+``` python
+Named(name: 'String' = None)
+```
+
+> Node [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/named_attribute.html)
+
+#### Information:
+- **Parameter** : 'QUATERNION'
+
+
+
+#### Arguments:
+- **name** (_String_ = None) : socket 'Name' (id: Name)
+
+
+
+#### Returns:
+- **Rotation** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Rotation](core-rotation.md#rotation) :black_small_square: [Content](core-rotation.md#content) :black_small_square: [Methods](core-rotation.md#methods)</sub>
+
+----------
+### NamedAttribute()
+
+> classmethod
+
+``` python
+NamedAttribute(name: 'String' = None)
+```
+
+> Node [Named Attribute](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/geometry/read/named_attribute.html)
+
+#### Information:
+- **Parameter** : 'QUATERNION'
+
+
+
+#### Arguments:
+- **name** (_String_ = None) : socket 'Name' (id: Name)
+
+
+
+#### Returns:
+- **Rotation** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Rotation](core-rotation.md#rotation) :black_small_square: [Content](core-rotation.md#content) :black_small_square: [Methods](core-rotation.md#methods)</sub>
+
+----------
+### rotate()
+
+> method
+
+``` python
+rotate(rotate_by: 'Rotation' = None, rotation_space: "Literal['GLOBAL', 'LOCAL']" = 'GLOBAL')
+```
+
+> Node [Rotate Rotation](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/rotate_rotation.html)
+
+#### Information:
+- **Socket** : self
+
+
+
+#### Arguments:
+- **rotate_by** (_Rotation_ = None) : socket 'Rotate By' (id: Rotate By)
+- **rotation_space** (_Literal['GLOBAL', 'LOCAL']_ = GLOBAL) : parameter 'rotation_space' in ('Global', 'Local')
+
+
+
+#### Returns:
+- **Rotation** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Rotation](core-rotation.md#rotation) :black_small_square: [Content](core-rotation.md#content) :black_small_square: [Methods](core-rotation.md#methods)</sub>
+
+----------
+### rotate_global()
+
+> method
+
+``` python
+rotate_global(rotate_by: 'Rotation' = None)
+```
+
+> Node [Rotate Rotation](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/rotate_rotation.html)
+
+#### Information:
+- **Socket** : self
+- **Parameter** : 'GLOBAL'
+
+
+
+#### Arguments:
+- **rotate_by** (_Rotation_ = None) : socket 'Rotate By' (id: Rotate By)
+
+
+
+#### Returns:
+- **Rotation** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Rotation](core-rotation.md#rotation) :black_small_square: [Content](core-rotation.md#content) :black_small_square: [Methods](core-rotation.md#methods)</sub>
+
+----------
+### rotate_local()
+
+> method
+
+``` python
+rotate_local(rotate_by: 'Rotation' = None)
+```
+
+> Node [Rotate Rotation](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/rotate_rotation.html)
+
+#### Information:
+- **Socket** : self
+- **Parameter** : 'LOCAL'
+
+
+
+#### Arguments:
+- **rotate_by** (_Rotation_ = None) : socket 'Rotate By' (id: Rotate By)
+
+
+
+#### Returns:
+- **Rotation** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Rotation](core-rotation.md#rotation) :black_small_square: [Content](core-rotation.md#content) :black_small_square: [Methods](core-rotation.md#methods)</sub>
+
+----------
+### rotate_vector()
+
+> method
+
+``` python
+rotate_vector(vector: 'Vector' = None)
+```
+
+> Node [Rotate Vector](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/rotate_vector.html)
+
+#### Information:
+- **Socket** : self
+
+
+
+#### Arguments:
+- **vector** (_Vector_ = None) : socket 'Vector' (id: Vector)
+
+
+
+#### Returns:
+- **Vector** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Rotation](core-rotation.md#rotation) :black_small_square: [Content](core-rotation.md#content) :black_small_square: [Methods](core-rotation.md#methods)</sub>
+
+----------
+### to_axis_angle()
+
+> method
+
+``` python
+to_axis_angle()
+```
+
+> Node ERROR: Node 'Rotation to Axis Angle' not found
+
+#### Information:
+- **Socket** : self
+
+
+
+#### Returns:
+- **Vector** (_Float_)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Rotation](core-rotation.md#rotation) :black_small_square: [Content](core-rotation.md#content) :black_small_square: [Methods](core-rotation.md#methods)</sub>
+
+----------
+### to_euler()
+
+> method
+
+``` python
+to_euler()
+```
+
+> Node [Rotation to Euler](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/rotation_to_euler.html)
+
+#### Information:
+- **Socket** : self
+
+
+
+#### Returns:
+- **Vector** :
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Rotation](core-rotation.md#rotation) :black_small_square: [Content](core-rotation.md#content) :black_small_square: [Methods](core-rotation.md#methods)</sub>
+
+----------
+### to_quaternion()
+
+> method
+
+``` python
+to_quaternion()
+```
+
+> Node [Rotation to Quaternion](https://docs.blender.org/manual/en/latest/modeling/geometry_nodes/utilities/rotation/rotation_to_quaternion.html)
+
+#### Information:
+- **Socket** : self
+
+
+
+#### Returns:
+- **Float** (_Float_)
+
+##### <sub>:arrow_right: [geonodes](index.md#geonodes) :black_small_square: [Rotation](core-rotation.md#rotation) :black_small_square: [Content](core-rotation.md#content) :black_small_square: [Methods](core-rotation.md#methods)</sub>

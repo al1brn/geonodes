@@ -121,14 +121,14 @@ class Color(generated.Color):
 
         > Node <&Node Color Ramp>
 
-        Arguments
-        ---------
+        Parameters
+        ----------
         - fac (Float)
         - stops (list of tuple(float, tuple)) : stops made of (float, color as tuple of floats)
 
         Returns
         -------
-        - Color
+        Color
         """
         return ColorRamp(fac=fac, stops=stops)._out
 
@@ -138,11 +138,10 @@ class Color(generated.Color):
     def out(self, name=None, panel: str = ""):
         """ > Connect to output
 
-        [&SHADER]
-
-        > [!IMPORTANT]
-        > - Geometry Nodes : create a group output socket with the provided name
-        > - Shader : create a node <&ShaderNode AOV Output>
+        !!! important "Behavior"
+        
+            - Geometry Nodes : create a group output socket with the provided name
+            - Shader : create a node <&ShaderNode AOV Output>
         """
         if self._tree._btree.bl_idname == 'ShaderNodeTree' and not self._tree._is_group:
             if name is None:
@@ -160,13 +159,15 @@ class Color(generated.Color):
         [&SHADER]
         > Node <&ShaderNode Color Attribute>
 
-        Arguments
-        ---------
+        Parameters
+        ----------
         - name (str)
 
         Returns
         -------
-        - Color : 'Color' socket, [alpha_]
+        Color
+            'Color' socket, [alpha_]
+
 
         """
         return Node('Color Attribute', layer_name=name)._out
@@ -177,17 +178,29 @@ class Color(generated.Color):
         [&SHADER]
         > Node <&ShaderNode Color Attribute>
 
-        Arguments
-        ---------
-        - distance (Float) : socket
-        - inside (Vector) : socket
-        - inside (bool) : parameter
-        - only_local (bool) : parameter
-        - samples (int) : parameter
+        Parameters
+        ----------
+        distance : Float
+            socket
+
+        inside : Vector
+            socket
+
+        inside : bool
+            parameter
+
+        only_local : bool
+            parameter
+
+        samples : int
+            parameter
+
 
         Returns
         -------
-        - Color : 'Color' socket, [ao_]
+        Color
+            'Color' socket, [ao_]
+
 
         """
         return Node('Ambient Occlusion', {'Color': self, 'Distance': distance, 'Normal': normal}, inside=inside, only_local=only_local, samples=samples)._out
@@ -201,13 +214,17 @@ class Color(generated.Color):
         [&SHADER]
         > Node <&ShaderNode Blackbody>
 
-        Arguments
-        ---------
-        - temperature (Float) : socket
+        Parameters
+        ----------
+        temperature : Float
+            socket
+
 
         Returns
         -------
-        - Color : 'Color' socket
+        Color
+            'Color' socket
+
         """
         return Node('Blackbody', {'Temperature': temperature})._out
 
@@ -218,13 +235,17 @@ class Color(generated.Color):
         [&SHADER]
         > Node <&ShaderNode Shader to RGB>
 
-        Arguments
-        ---------
-        - shader (Shader) : socket
+        Parameters
+        ----------
+        shader : Shader
+            socket
+
 
         Returns
         -------
-        - Color : 'Color' socket, [alpha_]
+        Color
+            'Color' socket, [alpha_]
+
         """
         return Node('Shader to RGB', {'Shader': shader})._out
 
@@ -235,13 +256,17 @@ class Color(generated.Color):
         [&SHADER]
         > Node <&ShaderNode Wavelength>
 
-        Arguments
-        ---------
-        - wavelength (Float) : socket
+        Parameters
+        ----------
+        wavelength : Float
+            socket
+
 
         Returns
         -------
-        - Color : 'Color' socket
+        Color
+            'Color' socket
+
         """
         return Node('Wavelength', {'Wavelength': wavelength})._out
 
@@ -254,7 +279,9 @@ class Color(generated.Color):
 
         Returns
         -------
-        - Float : 'Val' socket
+        Float
+            'Val' socket
+
         """
         return Node('RGB to BW', {'Color': self})._out
 
@@ -266,14 +293,20 @@ class Color(generated.Color):
         [&SHADER]
         > Node <&ShaderNode Brightness/Contrast>
 
-        Arguments
-        ---------
-        - bright (Float) : socket
-        - contrast (Float) : socket
+        Parameters
+        ----------
+        bright : Float
+            socket
+
+        contrast : Float
+            socket
+
 
         Returns
         -------
-        - Color : 'Color' socket
+        Color
+            'Color' socket
+
         """
         return Node('Brightness/Contrast', {'Color': self, 'Bright': bright, 'Contrast': contrast})._out
 
@@ -283,13 +316,17 @@ class Color(generated.Color):
         [&SHADER]
         > Node <&ShaderNode Gamma>
 
-        Arguments
-        ---------
-        - gamma (Float) : socket
+        Parameters
+        ----------
+        gamma : Float
+            socket
+
 
         Returns
         -------
-        - Color : 'Gamma' socket
+        Color
+            'Gamma' socket
+
         """
         node = Node('Gamma', {'Color': self, 'Gamma': gamma})
         return node._out
@@ -300,16 +337,26 @@ class Color(generated.Color):
         [&SHADER]
         > Node <&ShaderNode Hue/Saturation/Value>
 
-        Arguments
-        ---------
-        - hue (Float) : socket
-        - saturation (Float) : socket
-        - value (Float) : socket
-        - fac (Float) : socket
+        Parameters
+        ----------
+        hue : Float
+            socket
+
+        saturation : Float
+            socket
+
+        value : Float
+            socket
+
+        fac : Float
+            socket
+
 
         Returns
         -------
-        - Color : 'Color' socket
+        Color
+            'Color' socket
+
         """
         node = Node('Hue/Saturation/Value', {'Hue': hue, 'Saturation': saturation, 'Value': value, 'Fac': fac, 'Color': self})
         return node._out
@@ -320,13 +367,17 @@ class Color(generated.Color):
         [&SHADER]
         > Node <&ShaderNode Invert Color>
 
-        Arguments
-        ---------
-        - fac (Float) : socket
+        Parameters
+        ----------
+        fac : Float
+            socket
+
 
         Returns
         -------
-        - Color : 'Color' socket
+        Color
+            'Color' socket
+
         """
         node = Node('Invert Color', {'Fac': fac, 'Color': self})
         return node._out
@@ -337,14 +388,20 @@ class Color(generated.Color):
         [&SHADER]
         > Node <&ShaderNode Normal Map>
 
-        Arguments
-        ---------
-        - strength (Float) : socket
-        - space (str = 'TANGENT') : str in ('TANGENT', 'OBJECT', 'WORLD', 'BLENDER_OBJECT', 'BLENDER_WORLD')
+        Parameters
+        ----------
+        strength : Float
+            socket
+
+        space : str, optional
+            str in ('TANGENT', 'OBJECT', 'WORLD', 'BLENDER_OBJECT', 'BLENDER_WORLD') Default: 'TANGENT'.
+
 
         Returns
         -------
-        - Color : 'Color' socket
+        Color
+            'Color' socket
+
         """
         node = Node('Normal Map', {'Strength': strength, 'Color': self}, space=space, uv_map=uv_map)
         return node._out
@@ -355,16 +412,26 @@ class Color(generated.Color):
         [&SHADER]
         > Node <&ShaderNode Vector Displacement>
 
-        Arguments
-        ---------
-        - strength (Float) : socket
-        - midlevel (Float) : socket
-        - scale (Float) : socket
-        - space (str = 'TANGENT') : str in ('TANGENT', 'OBJECT', 'WORLD')
+        Parameters
+        ----------
+        strength : Float
+            socket
+
+        midlevel : Float
+            socket
+
+        scale : Float
+            socket
+
+        space : str, optional
+            str in ('TANGENT', 'OBJECT', 'WORLD') Default: 'TANGENT'.
+
 
         Returns
         -------
-        - Vector : 'Displacement' socket
+        Vector
+            'Displacement' socket
+
         """
         node = Node('Vector Displacement', {'Vector': self, 'Midlevel': midlevel, 'Scale': scale}, space=space)
         return node._out
@@ -373,25 +440,33 @@ class Color(generated.Color):
         """ > Node <&Node RGB Curves>
 
         A curve is defined by a list of 3-tuples (not list):
-        - x (float) : x position
-        - y (float) : y position
-        - handle_type (str) : handle type in ('AUTO', 'AUTO_CLAMPED', 'VECTOR')
+        x : float
+            x position
 
-        > [!NOTE]
-        > handle_type is optional, its default value is 'AUTO'. Valid values are ('AUTO', 'AUTO_CLAMPED', 'VECTOR')
+        y : float
+            y position
+
+        handle_type : str
+            handle type in ('AUTO', 'AUTO_CLAMPED', 'VECTOR')
+
+
+        !!! note
+            handle_type is optional, its default value is 'AUTO'. Valid values are ('AUTO', 'AUTO_CLAMPED', 'VECTOR')
 
         Information
         -----------
         - Socket 'Color' : self
 
-        Arguments
-        ---------
-        - fac (Float) : socket 'Fac' (id: Fac)
+        Parameters
+        ----------
+        fac : Float
+            socket 'Fac' (id: Fac)
+
         - curves (list of lists of tuples (float, float, str)) : curves points
 
         Returns
         -------
-        - Color
+        Color
         """
         node = NodeCurves('RGB Curves', named_sockets={'Color': self, 'Fac': fac})
         node.set_curves(curves)

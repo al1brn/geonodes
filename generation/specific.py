@@ -35,14 +35,18 @@ class FormatStringNode(SpecificNode):
     def static_template(cls, *strings, **kwstrings):
         """ > Node <&Node Format String>
 
-        Arguments
-        ---------
-        - strings (list of Strings) : auto named String sockets
-        - kwstrings (dict of Strings) : named String socket
+        Parameters
+        ----------
+        strings : list of Strings
+            auto named String sockets
+
+        kwstrings : dict of Strings
+            named String socket
+
 
         Returns
         -------
-        - String
+        String
         """
 
         format_string = None

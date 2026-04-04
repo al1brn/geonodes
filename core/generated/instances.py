@@ -1,4 +1,4 @@
-# Generated 2026-03-26 08:37:01
+# Generated 2026-04-04 12:37:35
 
 from __future__ import annotations
 from .. sockettype import SocketType
@@ -36,14 +36,16 @@ class Instances(Socket):
     def domain_size(self):
         """ > Node <&Node Domain Size>
 
-        Information
-        -----------
-        - Socket 'Geometry' : self
-        - Parameter 'component' : 'INSTANCES'
+        **Fixed values**
+
+        | Kind      | Name        | Value         |
+        | --------- | ----------- | ------------- |
+        | Socket    | Geometry    | `self`        |
+        | Parameter | `component` | `'INSTANCES'` |
 
         Returns
         -------
-        - Integer
+        Integer
         """
         node = self._cache('Domain Size', {'Geometry': self}, component='INSTANCES')
         return node._out
@@ -52,13 +54,15 @@ class Instances(Socket):
     def FromGeometry(cls, *geometry: Geometry):
         """ > Node <&Node Geometry to Instance>
 
-        Arguments
+        Parameters
         ---------
-        - geometry (Geometry) : socket 'Geometry' (id: Geometry)
+        geometry : Geometry, optional
+            socket 'Geometry' (id: Geometry)
+        
 
         Returns
         -------
-        - Instances
+        Instances
         """
         node = Node('Geometry to Instance', {'Geometry': list(geometry)})
         return cls(node._out)
@@ -67,13 +71,15 @@ class Instances(Socket):
     def ImportOBJ(cls, path: String = None):
         """ > Node <&Node Import OBJ>
 
-        Arguments
+        Parameters
         ---------
-        - path (String) : socket 'Path' (id: Path)
+        path : String, optional
+            socket 'Path' (id: Path)
+        
 
         Returns
         -------
-        - Instances
+        Instances
         """
         node = Node('Import OBJ', {'Path': path})
         return cls(node._out)
@@ -84,7 +90,7 @@ class Instances(Socket):
 
         Returns
         -------
-        - Rotation
+        Rotation
         """
         node = Node('Instance Rotation', )
         return node._out
@@ -95,7 +101,7 @@ class Instances(Socket):
 
         Returns
         -------
-        - Vector
+        Vector
         """
         node = Node('Instance Scale', )
         return node._out
@@ -103,19 +109,25 @@ class Instances(Socket):
     def to_points(self, position: Vector = None, radius: Float = None):
         """ > Node <&Node Instances to Points>
 
-        Information
-        -----------
-        - Socket 'Instances' : self
-        - Socket 'Selection' : self[selection]
+        **Fixed values**
 
-        Arguments
+        | Kind   | Name      | Value             |
+        | ------ | --------- | ----------------- |
+        | Socket | Instances | `self`            |
+        | Socket | Selection | `self[selection]` |
+
+        Parameters
         ---------
-        - position (Vector) : socket 'Position' (id: Position)
-        - radius (Float) : socket 'Radius' (id: Radius)
+        position : Vector, optional
+            socket 'Position' (id: Position)
+        
+        radius : Float, optional
+            socket 'Radius' (id: Radius)
+        
 
         Returns
         -------
-        - Cloud
+        Cloud
         """
         node = Node('Instances to Points', {'Instances': self, 'Selection': self.get_selection(), 'Position': position, 'Radius': radius})
         return node._out
@@ -128,20 +140,28 @@ class Instances(Socket):
 
         > ***Jump*** : Socket refers to node output socket after the call
 
-        Information
-        -----------
-        - Socket 'Instances' : self
-        - Socket 'Selection' : self[selection]
+        **Fixed values**
 
-        Arguments
+        | Kind   | Name      | Value             |
+        | ------ | --------- | ----------------- |
+        | Socket | Instances | `self`            |
+        | Socket | Selection | `self[selection]` |
+
+        Parameters
         ---------
-        - rotation (Rotation) : socket 'Rotation' (id: Rotation)
-        - pivot_point (Vector) : socket 'Pivot Point' (id: Pivot Point)
-        - local_space (Boolean) : socket 'Local Space' (id: Local Space)
+        rotation : Rotation, optional
+            socket 'Rotation' (id: Rotation)
+        
+        pivot_point : Vector, optional
+            socket 'Pivot Point' (id: Pivot Point)
+        
+        local_space : Boolean, optional
+            socket 'Local Space' (id: Local Space)
+        
 
         Returns
         -------
-        - Instances
+        Instances
         """
         node = Node('Rotate Instances', {'Instances': self, 'Selection': self.get_selection(), 'Rotation': rotation, 'Pivot Point': pivot_point, 'Local Space': local_space})
         self._jump(node._out)
@@ -152,20 +172,28 @@ class Instances(Socket):
 
         > ***Jump*** : Socket refers to node output socket after the call
 
-        Information
-        -----------
-        - Socket 'Instances' : self
-        - Socket 'Selection' : self[selection]
+        **Fixed values**
 
-        Arguments
+        | Kind   | Name      | Value             |
+        | ------ | --------- | ----------------- |
+        | Socket | Instances | `self`            |
+        | Socket | Selection | `self[selection]` |
+
+        Parameters
         ---------
-        - scale (Vector) : socket 'Scale' (id: Scale)
-        - center (Vector) : socket 'Center' (id: Center)
-        - local_space (Boolean) : socket 'Local Space' (id: Local Space)
+        scale : Vector, optional
+            socket 'Scale' (id: Scale)
+        
+        center : Vector, optional
+            socket 'Center' (id: Center)
+        
+        local_space : Boolean, optional
+            socket 'Local Space' (id: Local Space)
+        
 
         Returns
         -------
-        - Instances
+        Instances
         """
         node = Node('Scale Instances', {'Instances': self, 'Selection': self.get_selection(), 'Scale': scale, 'Center': center, 'Local Space': local_space})
         self._jump(node._out)
@@ -176,18 +204,22 @@ class Instances(Socket):
 
         > ***Jump*** : Socket refers to node output socket after the call
 
-        Information
-        -----------
-        - Socket 'Instances' : self
-        - Socket 'Selection' : self[selection]
+        **Fixed values**
 
-        Arguments
+        | Kind   | Name      | Value             |
+        | ------ | --------- | ----------------- |
+        | Socket | Instances | `self`            |
+        | Socket | Selection | `self[selection]` |
+
+        Parameters
         ---------
-        - transform (Matrix) : socket 'Transform' (id: Transform)
+        transform : Matrix, optional
+            socket 'Transform' (id: Transform)
+        
 
         Returns
         -------
-        - Instances
+        Instances
         """
         node = Node('Set Instance Transform', {'Instances': self, 'Selection': self.get_selection(), 'Transform': transform})
         self._jump(node._out)
@@ -198,19 +230,25 @@ class Instances(Socket):
 
         > ***Jump*** : Socket refers to node output socket after the call
 
-        Information
-        -----------
-        - Socket 'Instances' : self
-        - Socket 'Selection' : self[selection]
+        **Fixed values**
 
-        Arguments
+        | Kind   | Name      | Value             |
+        | ------ | --------- | ----------------- |
+        | Socket | Instances | `self`            |
+        | Socket | Selection | `self[selection]` |
+
+        Parameters
         ---------
-        - translation (Vector) : socket 'Translation' (id: Translation)
-        - local_space (Boolean) : socket 'Local Space' (id: Local Space)
+        translation : Vector, optional
+            socket 'Translation' (id: Translation)
+        
+        local_space : Boolean, optional
+            socket 'Local Space' (id: Local Space)
+        
 
         Returns
         -------
-        - Instances
+        Instances
         """
         node = Node('Translate Instances', {'Instances': self, 'Selection': self.get_selection(), 'Translation': translation, 'Local Space': local_space})
         self._jump(node._out)
@@ -228,18 +266,22 @@ class Instances(Socket):
 
         > ***Jump*** : Socket refers to node output socket after the call
 
-        Information
-        -----------
-        - Socket 'Instances' : self
-        - Socket 'Selection' : self[selection]
+        **Fixed values**
 
-        Arguments
+        | Kind   | Name      | Value             |
+        | ------ | --------- | ----------------- |
+        | Socket | Instances | `self`            |
+        | Socket | Selection | `self[selection]` |
+
+        Parameters
         ---------
-        - transform (Matrix) : socket 'Transform' (id: Transform)
+        transform : Matrix, optional
+            socket 'Transform' (id: Transform)
+        
 
         Returns
         -------
-        - Instances
+        Instances
         """
         node = Node('Set Instance Transform', {'Instances': self, 'Selection': self.get_selection(), 'Transform': transform})
         self._jump(node._out)

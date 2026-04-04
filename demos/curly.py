@@ -35,7 +35,7 @@ $ DOC START
 
 In this demo we play with curve topology
 
-> [!NOTE]
+!!! note
 > Modifiers:
 > - Frise
 > - Abs

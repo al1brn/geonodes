@@ -64,6 +64,11 @@ class Mesh(Geometry, generated.Mesh):
 
     __slots__ = Geometry.__slots__ + ('points', 'edges', 'faces', 'corners')
 
+    points: Vertex
+    edges: Edge
+    faces: Face
+    corners: Corner
+
     """ > Mesh Geometry
 
     The **Mesh** exposes all methods specific to meshes.
@@ -75,15 +80,19 @@ class Mesh(Geometry, generated.Mesh):
     cloud = mesh.to_points() # Node 'Mesh to Points'
     ```
 
-    Nodes requiring a domain parameter, are implemented in one of the four domains of Mesh: <#points>,
-    <#faces>, <#edges> or <#corners>.
+    Nodes requiring a domain parameter, are implemented in one of the four domains of Mesh: [`points`](#points),
+    [`faces`](#faces), [`edges`](#edges) or [`corners`](#corners).
 
-    Properties
+    Attributes
     ----------
-    - points (Vertex) : POINT domain
-    - faces (Face) : FACE domain
-    - edges (Edge) : EDGE domain
-    - corners (Corner) : CORNER domain
+    points : Vertex
+        POINT domain
+    faces : Face
+        FACE domain
+    edges : Edge
+        EDGE domain
+    corners : Corner
+        CORNER domain
     """
 
     def _reset(self):
@@ -123,6 +132,9 @@ class Curve(Geometry, generated.Curve):
 
     __slots__ = Geometry.__slots__ + ('points', 'splines')
 
+    points : SplinePoint
+    splines : Spline
+
     """ > Curve Geometry
 
     The **Curve** class exposes all methods specific to curves.
@@ -137,10 +149,12 @@ class Curve(Geometry, generated.Curve):
     Nodes requiring a domain parameter, are implemented in one of the two domains of **Curve** <#points>,
     <#splines>.
 
-    Properties
+    Attributes
     ----------
-    - points (SplinePoint) : POINT domain
-    - splines (Spline) : CURVE (or SPLINE) domain
+    points : SplinePoint
+        POINT domain
+    splines : Spline
+        CURVE (or SPLINE) domain
     """
 
     def _reset(self):
@@ -157,11 +171,13 @@ class Cloud(Geometry, generated.Cloud):
 
     __slots__ = Geometry.__slots__ + ('points',)
 
+    points : CloudPoint
+
     """ > Cloud of Points Geometry
 
-    > [!NOTE]
-    > In Blender, the name can vary between **Point Cloud** and **Points**.
-    > In GeoNodes, the geometry is named **Cloud**.
+    !!! note
+        In Blender, the name can vary between **Point Cloud** and **Points**.
+        In GeoNodes, the geometry is named **Cloud**.
 
     The **Cloud** exposes all methods specific to points cloud.
     Since there is no ambiguity, the word **points** is omitted in the name of
@@ -173,9 +189,10 @@ class Cloud(Geometry, generated.Cloud):
 
     Nodes requiring a domain parameter, are implemented in the domain <#points>.
 
-    Properties
+    Attributes
     ----------
-    - points (CloudPoint) : POINT domain
+    points : CloudPoint
+        POINT domain
     """
 
     def _reset(self):
@@ -191,11 +208,13 @@ class Instances(Geometry, generated.Instances):
 
     __slots__ = Geometry.__slots__ + ('insts',)
 
+    insts : Instance
+
     """ > Instances Geometry
 
-    > [!NOTE]
-    > The name of geometry class is plural : **Instances** when the name of the
-    > domain is singular : <!Instance>. The named of the domain property is <#insts>.
+    !!! note
+        The name of geometry class is plural : **Instances** when the name of the
+        domain is singular : <!Instance>. The named of the domain property is <#insts>.
 
     The **Instances** class exposes all methods specific to instances.
     Since there is no ambiguity, the word **instances** is omitted in the name of
@@ -206,9 +225,10 @@ class Instances(Geometry, generated.Instances):
     ```
     Nodes requiring a domain parameter, are implemented in the domain <#insts>.
 
-    Properties
+    Attributes
     ----------
-    - insts (Instance) : INSTANCES domain
+    insts : Instance
+        INSTANCES domain
     """
 
     def _reset(self):
@@ -223,12 +243,14 @@ class GreasePencil(Geometry, generated.GreasePencil):
     
     __slots__ = Geometry.__slots__ + ('layers',)
 
+    layers : Layer
+
     """ > Grease Pencil Geometry
 
-    Properties
+    Attributes
     ----------
-    - layers (Layer) : LAYER domain
-
+    layers : Layer
+        LAYER domain
     """
     def _reset(self):
 

@@ -1,4 +1,4 @@
-# Generated 2026-03-26 08:37:01
+# Generated 2026-04-04 12:37:35
 
 from __future__ import annotations
 from .. sockettype import SocketType
@@ -36,17 +36,23 @@ class Image(Socket):
     def info(self, frame: Integer = None):
         """ > Node <&Node Image Info>
 
-        Information
-        -----------
-        - Socket 'Image' : self
+        **Fixed values**
 
-        Arguments
+        | Kind   | Name  | Value  |
+        | ------ | ----- | ------ |
+        | Socket | Image | `self` |
+
+        Parameters
         ---------
-        - frame (Integer) : socket 'Frame' (id: Frame)
+        frame : Integer, optional
+            socket 'Frame' (id: Frame)
+        
 
         Returns
         -------
-        - Integer [height_ (Integer), has_alpha_ (Boolean), frame_count_ (Integer), fps_ (Float)]
+        Integer
+            peer sockets: height_ (Integer), has_alpha_ (Boolean), frame_count_ (Integer), fps_ (Float)
+
         """
         node = self._cache('Image Info', {'Image': self, 'Frame': frame})
         return node._out
@@ -54,17 +60,21 @@ class Image(Socket):
     def width(self, frame: Integer = None):
         """ > Node <&Node Image Info>
 
-        Information
-        -----------
-        - Socket 'Image' : self
+        **Fixed values**
 
-        Arguments
+        | Kind   | Name  | Value  |
+        | ------ | ----- | ------ |
+        | Socket | Image | `self` |
+
+        Parameters
         ---------
-        - frame (Integer) : socket 'Frame' (id: Frame)
+        frame : Integer, optional
+            socket 'Frame' (id: Frame)
+        
 
         Returns
         -------
-        - width
+        width
         """
         node = self._cache('Image Info', {'Image': self, 'Frame': frame})
         return node.width
@@ -72,17 +82,21 @@ class Image(Socket):
     def height(self, frame: Integer = None):
         """ > Node <&Node Image Info>
 
-        Information
-        -----------
-        - Socket 'Image' : self
+        **Fixed values**
 
-        Arguments
+        | Kind   | Name  | Value  |
+        | ------ | ----- | ------ |
+        | Socket | Image | `self` |
+
+        Parameters
         ---------
-        - frame (Integer) : socket 'Frame' (id: Frame)
+        frame : Integer, optional
+            socket 'Frame' (id: Frame)
+        
 
         Returns
         -------
-        - height
+        height
         """
         node = self._cache('Image Info', {'Image': self, 'Frame': frame})
         return node.height
@@ -90,17 +104,21 @@ class Image(Socket):
     def has_alpha(self, frame: Integer = None):
         """ > Node <&Node Image Info>
 
-        Information
-        -----------
-        - Socket 'Image' : self
+        **Fixed values**
 
-        Arguments
+        | Kind   | Name  | Value  |
+        | ------ | ----- | ------ |
+        | Socket | Image | `self` |
+
+        Parameters
         ---------
-        - frame (Integer) : socket 'Frame' (id: Frame)
+        frame : Integer, optional
+            socket 'Frame' (id: Frame)
+        
 
         Returns
         -------
-        - has_alpha
+        has_alpha
         """
         node = self._cache('Image Info', {'Image': self, 'Frame': frame})
         return node.has_alpha
@@ -108,17 +126,21 @@ class Image(Socket):
     def frame_count(self, frame: Integer = None):
         """ > Node <&Node Image Info>
 
-        Information
-        -----------
-        - Socket 'Image' : self
+        **Fixed values**
 
-        Arguments
+        | Kind   | Name  | Value  |
+        | ------ | ----- | ------ |
+        | Socket | Image | `self` |
+
+        Parameters
         ---------
-        - frame (Integer) : socket 'Frame' (id: Frame)
+        frame : Integer, optional
+            socket 'Frame' (id: Frame)
+        
 
         Returns
         -------
-        - frame_count
+        frame_count
         """
         node = self._cache('Image Info', {'Image': self, 'Frame': frame})
         return node.frame_count
@@ -126,17 +148,21 @@ class Image(Socket):
     def fps(self, frame: Integer = None):
         """ > Node <&Node Image Info>
 
-        Information
-        -----------
-        - Socket 'Image' : self
+        **Fixed values**
 
-        Arguments
+        | Kind   | Name  | Value  |
+        | ------ | ----- | ------ |
+        | Socket | Image | `self` |
+
+        Parameters
         ---------
-        - frame (Integer) : socket 'Frame' (id: Frame)
+        frame : Integer, optional
+            socket 'Frame' (id: Frame)
+        
 
         Returns
         -------
-        - fps
+        fps
         """
         node = self._cache('Image Info', {'Image': self, 'Frame': frame})
         return node.fps
@@ -148,20 +174,28 @@ class Image(Socket):
                     interpolation: Literal['Linear', 'Closest', 'Cubic'] = 'Linear'):
         """ > Node <&Node Image Texture>
 
-        Information
-        -----------
-        - Socket 'Image' : self
+        **Fixed values**
 
-        Arguments
+        | Kind   | Name  | Value  |
+        | ------ | ----- | ------ |
+        | Socket | Image | `self` |
+
+        Parameters
         ---------
-        - vector (Vector) : socket 'Vector' (id: Vector)
-        - frame (Integer) : socket 'Frame' (id: Frame)
-        - extension (str): parameter 'extension' in ('Repeat', 'Extend', 'Clip', 'Mirror')
-        - interpolation (str): parameter 'interpolation' in ('Linear', 'Closest', 'Cubic')
+        vector : Vector, optional
+            socket 'Vector' (id: Vector)
+        
+        frame : Integer, optional
+            socket 'Frame' (id: Frame)
+        
+        extension (str): parameter 'extension' in ('Repeat', 'Extend', 'Clip', 'Mirror')
+        interpolation (str): parameter 'interpolation' in ('Linear', 'Closest', 'Cubic')
 
         Returns
         -------
-        - Color [alpha_ (Float)]
+        Color
+            peer sockets: alpha_ (Float)
+
         """
         utils.check_enum_arg('Image Texture', 'extension', extension, 'image_texture', ('REPEAT', 'EXTEND', 'CLIP', 'MIRROR'))
         utils.check_enum_arg('Image Texture', 'interpolation', interpolation, 'image_texture', ('Linear', 'Closest', 'Cubic'))
@@ -171,18 +205,22 @@ class Image(Socket):
     def enable_output(self, enable: Boolean = None):
         """ > Node <&Node Enable Output>
 
-        Information
-        -----------
-        - Socket 'Value' : self
-        - Parameter 'data_type' : 'IMAGE'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name        | Value     |
+        | --------- | ----------- | --------- |
+        | Socket    | Value       | `self`    |
+        | Parameter | `data_type` | `'IMAGE'` |
+
+        Parameters
         ---------
-        - enable (Boolean) : socket 'Enable' (id: Enable)
+        enable : Boolean, optional
+            socket 'Enable' (id: Enable)
+        
 
         Returns
         -------
-        - Image
+        Image
         """
         node = Node('Enable Output', {'Enable': enable, 'Value': self}, data_type='IMAGE')
         return node._out

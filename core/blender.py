@@ -106,14 +106,18 @@ def get_object(value):
 def get_font(name: str | VectorFont, path: str|None = None) -> VectorFont | None:
     """ Get a font by its name
 
-    Arguments
-    ---------
-    - name : font name
-    - path : path the font file
+    Parameters
+    ----------
+    name : str | VectorFont
+        font name
+
+    path
+        path the font file
+
 
     Returns
     -------
-    - font
+    font
     """
     if name is None:
         return bpy.data.fonts.load("<builtin>")

@@ -65,12 +65,24 @@ class Link:
 
         Properties
         ----------
-        - tree (Tree) : tree wrapper
-        - blink (bpy.types.Link) : wrapped link
-        - node0 (Node) : starting node
-        - node1 (Node) : ending node
-        - index0 (int) : starting socket index
-        - index1 (int) : ending socket index
+        tree : Tree
+            tree wrapper
+
+        blink : bpy.types.Link
+            wrapped link
+
+        node0 : Node
+            starting node
+
+        node1 : Node
+            ending node
+
+        index0 : int
+            starting socket index
+
+        index1 : int
+            ending socket index
+
         """
         self.tree  = tree
 
@@ -95,12 +107,12 @@ class Link:
     def socket0(self):
         """ Starting socket
 
-        > [!IMPORTANT]
+        !!! important
         > The socket is not directly read from the link but from <#node0> using <#index0>.
 
         Returns
         -------
-        - bpy.types.NodeSocket : from socket
+        bpy.types.NodeSocket : from socket
         """
         return self.node0.bnode.outputs[self.index0]
 
@@ -108,12 +120,12 @@ class Link:
     def socket1(self):
         """ Starting socket
 
-        > [!IMPORTANT]
+        !!! important
         > The socket is not directly read from the link but from <#node1> using <#index1>.
 
         Returns
         -------
-        - bpy.types.NodeSocket : to socket
+        bpy.types.NodeSocket : to socket
         """
         return self.node1.bnode.inputs[self.index1]
 
@@ -122,10 +134,10 @@ class Link:
 
         The link is deleted and replaced by a link from <#node0> to the new <#node1>
 
-        Arguments
-        ---------
-        - node1 (Node) : new 'node to'
-        - index1 (int = None) : new index1, keep current if None
+        Parameters
+        ----------
+        index1 : int, default=None
+            new index1, keep current if None
         """
         self.tree.btree.links.remove(self.blink)
         self.node1 = node1
@@ -138,10 +150,10 @@ class Link:
 
         The link is deleted and replaced by a link from new <#node0> to <#node1>
 
-        Arguments
-        ---------
-        - node0 (Node) : new 'from node'
-        - index0 (int = None) : new index0, keep current if None
+        Parameters
+        ----------
+        index0 : int, default=None
+            new index0, keep current if None
         """
         self.tree.btree.links.remove(self.blink)
         self.node0 = node0
@@ -152,13 +164,15 @@ class Link:
     def insert_reroute(self, frame):
         """ Insert a reroute node
 
-        Arguments
-        ---------
-        - parent (Frame) : parent frame
+        Parameters
+        ----------
+        parent : Frame
+            parent frame
+
 
         Returns
         -------
-        - Node : reroute node
+        Node : reroute node
         """
 
         # ----- Create the reroute node
@@ -190,14 +204,24 @@ class Node:
 
         Properties
         ----------
-        - tree (Tree) : tree wrapper
-        - bnode (bpy.types.Node) : wrapped node
-        - parent (Node) : parent node if any
+        tree : Tree
+            tree wrapper
 
-        Arguments
-        ---------
-        - tree (Tree) : the tree to arrange
-        - bnode (bpy.types.Node) : the wrapped node
+        bnode : bpy.types.Node
+            wrapped node
+
+        parent : Node
+            parent node if any
+
+
+        Parameters
+        ----------
+        tree : Tree
+            the tree to arrange
+
+        bnode : bpy.types.Node
+            the wrapped node
+
         """
         self.tree  = tree
         self.bnode = bnode
@@ -263,7 +287,7 @@ class Node:
 
         Returns
         -------
-        - couple of floats : node dimensions
+        couple of floats : node dimensions
         """
 
         BASE_WIDTH           = 400
@@ -309,7 +333,7 @@ class Node:
 
         Returns
         -------
-        - float : node width
+        float : node width
         """
         return self.dimensions[0]
 
@@ -319,7 +343,7 @@ class Node:
 
         Returns
         -------
-        - float : node height
+        float : node height
         """
         return self.dimensions[1]
 
@@ -332,7 +356,7 @@ class Node:
 
         Returns
         -------
-        - list of Nodes : nodes linked to one input socket of the node
+        list of Nodes : nodes linked to one input socket of the node
         """
         in_nodes = []
         for link in self.tree.links:
@@ -346,7 +370,7 @@ class Node:
 
         Returns
         -------
-        - list of Nodes : nodes linked to one output socket of the node
+        list of Nodes : nodes linked to one output socket of the node
         """
         out_nodes = []
         for link in self.tree.links:
@@ -363,7 +387,7 @@ class Node:
 
         Returns
         -------
-        - bool : True if the frame belongs to the parents hierarchy
+        bool : True if the frame belongs to the parents hierarchy
         """
         if self.parent is None:
             return False
@@ -387,13 +411,15 @@ class Node:
         The first list returns the ancestor of the node sharing the parent of self, not
         the node passed in the list.
 
-        Arguments
-        ---------
-        - nodes (list of Nodes) : the list to split
+        Parameters
+        ----------
+        nodes : list of Nodes
+            the list to split
+
 
         Returns
         -------
-        - tuple of lists : peer nodes and not peer nodes
+        tuple of lists : peer nodes and not peer nodes
         """
         peers     = []
         not_peers = []
@@ -421,7 +447,7 @@ class Node:
 
         Returns
         -------
-        - set of Nodes
+        set of Nodes
         """
         nodes = set()
         for link in self.tree.links:
@@ -434,7 +460,7 @@ class Node:
 
         Returns
         -------
-        - set of Nodes
+        set of Nodes
         """
         nodes = set()
         for link in self.tree.links:
@@ -453,7 +479,7 @@ class Node:
 
         Returns
         -------
-        - Node
+        Node
         """
         nodes = set()
 
@@ -486,7 +512,7 @@ class Node:
 
         Returns
         -------
-        - Node
+        Node
         """
         nodes = set()
 
@@ -589,7 +615,7 @@ class Node:
 
         Returns
         -------
-        - bool : True if the node is in the zone
+        bool : True if the node is in the zone
         """
 
         # ----- Frame algo
@@ -662,10 +688,14 @@ class Frame(Node):
         - input_node (Node)
         - output_node (Node)
 
-        Arguments
-        ---------
-        - tree (Tree) : tree wrapper
-        - bnode (bpy.types.Node) : the node of type 'NodeFrame'
+        Parameters
+        ----------
+        tree : Tree
+            tree wrapper
+
+        bnode : bpy.types.Node
+            the node of type 'NodeFrame'
+
         """
 
         assert(bnode is None or bnode.bl_idname == 'NodeFrame')
@@ -694,7 +724,7 @@ class Frame(Node):
 
         Returns
         -------
-        - list of Nodes : the nodes directly parented to the frame
+        list of Nodes : the nodes directly parented to the frame
         """
         return [node for node in self.tree.nodes.values() if node.bnode.parent == self.bnode]
 
@@ -704,7 +734,7 @@ class Frame(Node):
 
         Returns
         -------
-        - list of Nodes : the nodes parented, directly or not, to the frame
+        list of Nodes : the nodes parented, directly or not, to the frame
         """
         return [node for node in self.tree.nodes.values() if node.is_child_of(self)]
     
@@ -717,7 +747,7 @@ class Frame(Node):
 
         Returns
         -------
-        - set of Nodes
+        set of Nodes
         """
         nodes = set()
         for link in self.tree.links:
@@ -734,7 +764,7 @@ class Frame(Node):
 
         Returns
         -------
-        - set of Nodes
+        set of Nodes
         """
         nodes = set()
         for link in self.tree.links:
@@ -752,7 +782,7 @@ class Frame(Node):
 
         Returns
         -------
-        - Node
+        Node
         """
         for link in self.tree.links:
             if link.node0.is_child_of(self):
@@ -770,7 +800,7 @@ class Frame(Node):
 
         Returns
         -------
-        - Node
+        Node
         """
         for link in self.tree.links:
             if link.node1.is_child_of(self):
@@ -825,7 +855,7 @@ class Frame(Node):
 
         Returns
         -------
-        - list of Nodes : the frame input nodes
+        list of Nodes : the frame input nodes
         """
         in_nodes = []
         for child in self.children:
@@ -846,7 +876,7 @@ class Frame(Node):
 
         Returns
         -------
-        - list of Nodes : the frame output nodes
+        list of Nodes : the frame output nodes
         """
         out_nodes = []
         for child in self.children:
@@ -1234,12 +1264,18 @@ class Tree(Frame):
         Properties
         -----------
         - btree (bpy.types.Tree)
-        - get_true_dims (bool) : read the dimensions from nodes are use an estimate
+        get_true_dims : bool
+            read the dimensions from nodes are use an estimate
 
-        Arguments
-        ---------
-        - btree (bpy.types.Tree) : the tree to wrap
-        - get_true_dims (bool) : read the dimensions from nodes are use an estimate
+
+        Parameters
+        ----------
+        btree : bpy.types.Tree
+            the tree to wrap
+
+        get_true_dims : bool
+            read the dimensions from nodes are use an estimate
+
         """
 
         super().__init__(self, None)
@@ -1410,7 +1446,7 @@ class Tree(Frame):
 
         Returns
         -------
-        - list of nodes : nodes with bl_idname equal to 'NodeGroupInput'
+        list of nodes : nodes with bl_idname equal to 'NodeGroupInput'
         """
         return [node for node in self.nodes.values() if node.bnode.bl_idname == 'NodeGroupInput']
 

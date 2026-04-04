@@ -38,7 +38,7 @@ A simple demo of a ***Simulation*** zone.
 Explode points from the points of the initial geometry.
 The particles can be either generated or taken from a collection.
 
-> [!NOTE]
+!!! note
 > Modifiers:
 > - Explosion
 

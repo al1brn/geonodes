@@ -215,13 +215,14 @@ def linear_rgb(c: float) -> float:
 def str_to_color_tuple(name: str) -> tuple:
     """ Convert a string to a color
 
-    Arguments
-    ---------
-    - name (str) : name of a color or hexa value
+    Parameters
+    ----------
+    name : str
+        name of a color or hexa value
 
     Returns
     -------
-    - tuple or None if the name is not a color
+    tuple or None if the name is not a color
     """
 
     hexa = COLORS.get(name.lower(), name)

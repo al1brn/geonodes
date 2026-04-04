@@ -1,4 +1,4 @@
-# Generated 2026-03-26 08:37:01
+# Generated 2026-04-04 12:37:35
 
 from __future__ import annotations
 from .. sockettype import SocketType
@@ -41,20 +41,30 @@ class Color(Socket):
                     alpha: Float = None):
         """ > Node <&Node Combine Color>
 
-        Information
-        -----------
-        - Parameter 'mode' : 'RGB'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name   | Value   |
+        | --------- | ------ | ------- |
+        | Parameter | `mode` | `'RGB'` |
+
+        Parameters
         ---------
-        - red (Float) : socket 'Red' (id: Red)
-        - green (Float) : socket 'Green' (id: Green)
-        - blue (Float) : socket 'Blue' (id: Blue)
-        - alpha (Float) : socket 'Alpha' (id: Alpha)
+        red : Float, optional
+            socket 'Red' (id: Red)
+        
+        green : Float, optional
+            socket 'Green' (id: Green)
+        
+        blue : Float, optional
+            socket 'Blue' (id: Blue)
+        
+        alpha : Float, optional
+            socket 'Alpha' (id: Alpha)
+        
 
         Returns
         -------
-        - Color
+        Color
         """
         node = Node('Combine Color', {'Red': red, 'Green': green, 'Blue': blue, 'Alpha': alpha}, mode='RGB')
         return cls(node._out)
@@ -67,20 +77,30 @@ class Color(Socket):
                     alpha: Float = None):
         """ > Node <&Node Combine Color>
 
-        Information
-        -----------
-        - Parameter 'mode' : 'HSV'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name   | Value   |
+        | --------- | ------ | ------- |
+        | Parameter | `mode` | `'HSV'` |
+
+        Parameters
         ---------
-        - hue (Float) : socket 'Hue' (id: Red)
-        - saturation (Float) : socket 'Saturation' (id: Green)
-        - value (Float) : socket 'Value' (id: Blue)
-        - alpha (Float) : socket 'Alpha' (id: Alpha)
+        hue : Float, optional
+            socket 'Hue' (id: Red)
+        
+        saturation : Float, optional
+            socket 'Saturation' (id: Green)
+        
+        value : Float, optional
+            socket 'Value' (id: Blue)
+        
+        alpha : Float, optional
+            socket 'Alpha' (id: Alpha)
+        
 
         Returns
         -------
-        - Color
+        Color
         """
         node = Node('Combine Color', {'Red': hue, 'Green': saturation, 'Blue': value, 'Alpha': alpha}, mode='HSV')
         return cls(node._out)
@@ -93,20 +113,30 @@ class Color(Socket):
                     alpha: Float = None):
         """ > Node <&Node Combine Color>
 
-        Information
-        -----------
-        - Parameter 'mode' : 'HSL'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name   | Value   |
+        | --------- | ------ | ------- |
+        | Parameter | `mode` | `'HSL'` |
+
+        Parameters
         ---------
-        - hue (Float) : socket 'Hue' (id: Red)
-        - saturation (Float) : socket 'Saturation' (id: Green)
-        - lightness (Float) : socket 'Lightness' (id: Blue)
-        - alpha (Float) : socket 'Alpha' (id: Alpha)
+        hue : Float, optional
+            socket 'Hue' (id: Red)
+        
+        saturation : Float, optional
+            socket 'Saturation' (id: Green)
+        
+        lightness : Float, optional
+            socket 'Lightness' (id: Blue)
+        
+        alpha : Float, optional
+            socket 'Alpha' (id: Alpha)
+        
 
         Returns
         -------
-        - Color
+        Color
         """
         node = Node('Combine Color', {'Red': hue, 'Green': saturation, 'Blue': lightness, 'Alpha': alpha}, mode='HSL')
         return cls(node._out)
@@ -120,17 +150,25 @@ class Color(Socket):
                     mode: Literal['RGB', 'HSV', 'HSL'] = 'RGB'):
         """ > Node <&Node Combine Color>
 
-        Arguments
+        Parameters
         ---------
-        - red (Float) : socket 'Red' (id: Red)
-        - green (Float) : socket 'Green' (id: Green)
-        - blue (Float) : socket 'Blue' (id: Blue)
-        - alpha (Float) : socket 'Alpha' (id: Alpha)
-        - mode (str): parameter 'mode' in ('RGB', 'HSV', 'HSL')
+        red : Float, optional
+            socket 'Red' (id: Red)
+        
+        green : Float, optional
+            socket 'Green' (id: Green)
+        
+        blue : Float, optional
+            socket 'Blue' (id: Blue)
+        
+        alpha : Float, optional
+            socket 'Alpha' (id: Alpha)
+        
+        mode (str): parameter 'mode' in ('RGB', 'HSV', 'HSL')
 
         Returns
         -------
-        - Color
+        Color
         """
         utils.check_enum_arg('Combine Color', 'mode', mode, 'Combine', ('RGB', 'HSV', 'HSL'))
         node = Node('Combine Color', {'Red': red, 'Green': green, 'Blue': blue, 'Alpha': alpha}, mode=mode)
@@ -139,21 +177,27 @@ class Color(Socket):
     def equal(self, b: Color = None, epsilon: Float = None):
         """ > Node <&Node Compare>
 
-        Information
-        -----------
-        - Socket 'A' : self
-        - Parameter 'data_type' : 'RGBA'
-        - Parameter 'mode' : 'ELEMENT'
-        - Parameter 'operation' : 'EQUAL'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name        | Value       |
+        | --------- | ----------- | ----------- |
+        | Socket    | A           | `self`      |
+        | Parameter | `data_type` | `'RGBA'`    |
+        | Parameter | `mode`      | `'ELEMENT'` |
+        | Parameter | `operation` | `'EQUAL'`   |
+
+        Parameters
         ---------
-        - b (Color) : socket 'B' (id: B_COL)
-        - epsilon (Float) : socket 'Epsilon' (id: Epsilon)
+        b : Color, optional
+            socket 'B' (id: B_COL)
+        
+        epsilon : Float, optional
+            socket 'Epsilon' (id: Epsilon)
+        
 
         Returns
         -------
-        - Boolean
+        Boolean
         """
         node = Node('Compare', {'A_COL': self, 'B_COL': b, 'Epsilon': epsilon}, data_type='RGBA', mode='ELEMENT', operation='EQUAL')
         return node._out
@@ -161,21 +205,27 @@ class Color(Socket):
     def not_equal(self, b: Color = None, epsilon: Float = None):
         """ > Node <&Node Compare>
 
-        Information
-        -----------
-        - Socket 'A' : self
-        - Parameter 'data_type' : 'RGBA'
-        - Parameter 'mode' : 'ELEMENT'
-        - Parameter 'operation' : 'NOT_EQUAL'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name        | Value         |
+        | --------- | ----------- | ------------- |
+        | Socket    | A           | `self`        |
+        | Parameter | `data_type` | `'RGBA'`      |
+        | Parameter | `mode`      | `'ELEMENT'`   |
+        | Parameter | `operation` | `'NOT_EQUAL'` |
+
+        Parameters
         ---------
-        - b (Color) : socket 'B' (id: B_COL)
-        - epsilon (Float) : socket 'Epsilon' (id: Epsilon)
+        b : Color, optional
+            socket 'B' (id: B_COL)
+        
+        epsilon : Float, optional
+            socket 'Epsilon' (id: Epsilon)
+        
 
         Returns
         -------
-        - Boolean
+        Boolean
         """
         node = Node('Compare', {'A_COL': self, 'B_COL': b, 'Epsilon': epsilon}, data_type='RGBA', mode='ELEMENT', operation='NOT_EQUAL')
         return node._out
@@ -183,20 +233,24 @@ class Color(Socket):
     def brighter(self, b: Color = None):
         """ > Node <&Node Compare>
 
-        Information
-        -----------
-        - Socket 'A' : self
-        - Parameter 'data_type' : 'RGBA'
-        - Parameter 'mode' : 'ELEMENT'
-        - Parameter 'operation' : 'BRIGHTER'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name        | Value        |
+        | --------- | ----------- | ------------ |
+        | Socket    | A           | `self`       |
+        | Parameter | `data_type` | `'RGBA'`     |
+        | Parameter | `mode`      | `'ELEMENT'`  |
+        | Parameter | `operation` | `'BRIGHTER'` |
+
+        Parameters
         ---------
-        - b (Color) : socket 'B' (id: B_COL)
+        b : Color, optional
+            socket 'B' (id: B_COL)
+        
 
         Returns
         -------
-        - Boolean
+        Boolean
         """
         node = Node('Compare', {'A_COL': self, 'B_COL': b}, data_type='RGBA', mode='ELEMENT', operation='BRIGHTER')
         return node._out
@@ -204,20 +258,24 @@ class Color(Socket):
     def darker(self, b: Color = None):
         """ > Node <&Node Compare>
 
-        Information
-        -----------
-        - Socket 'A' : self
-        - Parameter 'data_type' : 'RGBA'
-        - Parameter 'mode' : 'ELEMENT'
-        - Parameter 'operation' : 'DARKER'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name        | Value       |
+        | --------- | ----------- | ----------- |
+        | Socket    | A           | `self`      |
+        | Parameter | `data_type` | `'RGBA'`    |
+        | Parameter | `mode`      | `'ELEMENT'` |
+        | Parameter | `operation` | `'DARKER'`  |
+
+        Parameters
         ---------
-        - b (Color) : socket 'B' (id: B_COL)
+        b : Color, optional
+            socket 'B' (id: B_COL)
+        
 
         Returns
         -------
-        - Boolean
+        Boolean
         """
         node = Node('Compare', {'A_COL': self, 'B_COL': b}, data_type='RGBA', mode='ELEMENT', operation='DARKER')
         return node._out
@@ -225,18 +283,22 @@ class Color(Socket):
     def hash_value(self, seed: Integer = None):
         """ > Node <&Node Hash Value>
 
-        Information
-        -----------
-        - Socket 'Value' : self
-        - Parameter 'data_type' : 'RGBA'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name        | Value    |
+        | --------- | ----------- | -------- |
+        | Socket    | Value       | `self`   |
+        | Parameter | `data_type` | `'RGBA'` |
+
+        Parameters
         ---------
-        - seed (Integer) : socket 'Seed' (id: Seed)
+        seed : Integer, optional
+            socket 'Seed' (id: Seed)
+        
 
         Returns
         -------
-        - Integer
+        Integer
         """
         node = Node('Hash Value', {'Value': self, 'Seed': seed}, data_type='RGBA')
         return node._out
@@ -244,14 +306,16 @@ class Color(Socket):
     def separate_RGB(self):
         """ > Node <&Node Separate Color>
 
-        Information
-        -----------
-        - Socket 'Color' : self
-        - Parameter 'mode' : 'RGB'
+        **Fixed values**
+
+        | Kind      | Name   | Value   |
+        | --------- | ------ | ------- |
+        | Socket    | Color  | `self`  |
+        | Parameter | `mode` | `'RGB'` |
 
         Returns
         -------
-        - node [red (Float), green (Float), blue (Float), alpha (Float)]
+        node [red (Float), green (Float), blue (Float), alpha (Float)]
         """
         node = self._cache('Separate Color', {'Color': self}, mode='RGB')
         return node
@@ -259,14 +323,16 @@ class Color(Socket):
     def separate_HSV(self):
         """ > Node <&Node Separate Color>
 
-        Information
-        -----------
-        - Socket 'Color' : self
-        - Parameter 'mode' : 'HSV'
+        **Fixed values**
+
+        | Kind      | Name   | Value   |
+        | --------- | ------ | ------- |
+        | Socket    | Color  | `self`  |
+        | Parameter | `mode` | `'HSV'` |
 
         Returns
         -------
-        - node [hue (Float), saturation (Float), value (Float), alpha (Float)]
+        node [hue (Float), saturation (Float), value (Float), alpha (Float)]
         """
         node = self._cache('Separate Color', {'Color': self}, mode='HSV')
         return node
@@ -274,14 +340,16 @@ class Color(Socket):
     def separate_HSL(self):
         """ > Node <&Node Separate Color>
 
-        Information
-        -----------
-        - Socket 'Color' : self
-        - Parameter 'mode' : 'HSL'
+        **Fixed values**
+
+        | Kind      | Name   | Value   |
+        | --------- | ------ | ------- |
+        | Socket    | Color  | `self`  |
+        | Parameter | `mode` | `'HSL'` |
 
         Returns
         -------
-        - node [hue (Float), saturation (Float), lightness (Float), alpha (Float)]
+        node [hue (Float), saturation (Float), lightness (Float), alpha (Float)]
         """
         node = self._cache('Separate Color', {'Color': self}, mode='HSL')
         return node
@@ -289,17 +357,19 @@ class Color(Socket):
     def separate(self, mode: Literal['RGB', 'HSV', 'HSL'] = 'RGB'):
         """ > Node <&Node Separate Color>
 
-        Information
-        -----------
-        - Socket 'Color' : self
+        **Fixed values**
 
-        Arguments
+        | Kind   | Name  | Value  |
+        | ------ | ----- | ------ |
+        | Socket | Color | `self` |
+
+        Parameters
         ---------
-        - mode (str): parameter 'mode' in ('RGB', 'HSV', 'HSL')
+        mode (str): parameter 'mode' in ('RGB', 'HSV', 'HSL')
 
         Returns
         -------
-        - node [red (Float), green (Float), blue (Float), alpha (Float)]
+        node [red (Float), green (Float), blue (Float), alpha (Float)]
         """
         utils.check_enum_arg('Separate Color', 'mode', mode, 'separate', ('RGB', 'HSV', 'HSL'))
         node = self._cache('Separate Color', {'Color': self}, mode=mode)
@@ -309,14 +379,16 @@ class Color(Socket):
     def rgb(self):
         """ > Node <&Node Separate Color>
 
-        Information
-        -----------
-        - Socket 'Color' : self
-        - Parameter 'mode' : 'RGB'
+        **Fixed values**
+
+        | Kind      | Name   | Value   |
+        | --------- | ------ | ------- |
+        | Socket    | Color  | `self`  |
+        | Parameter | `mode` | `'RGB'` |
 
         Returns
         -------
-        - tuple (Float, Float, Float, Float)
+        tuple (Float, Float, Float, Float)
         """
         node = self._cache('Separate Color', {'Color': self}, mode='RGB')
         return (node.red, node.green, node.blue, node.alpha)
@@ -325,14 +397,16 @@ class Color(Socket):
     def hsv(self):
         """ > Node <&Node Separate Color>
 
-        Information
-        -----------
-        - Socket 'Color' : self
-        - Parameter 'mode' : 'HSL'
+        **Fixed values**
+
+        | Kind      | Name   | Value   |
+        | --------- | ------ | ------- |
+        | Socket    | Color  | `self`  |
+        | Parameter | `mode` | `'HSL'` |
 
         Returns
         -------
-        - tuple (Float, Float, Float, Float)
+        tuple (Float, Float, Float, Float)
         """
         node = self._cache('Separate Color', {'Color': self}, mode='HSL')
         return (node.hue, node.saturation, node.lightness, node.alpha)
@@ -340,14 +414,16 @@ class Color(Socket):
     def separate_color(self):
         """ > Node <&Node Separate Color>
 
-        Information
-        -----------
-        - Socket 'Color' : self
-        - Parameter 'mode' : 'RGB'
+        **Fixed values**
+
+        | Kind      | Name   | Value   |
+        | --------- | ------ | ------- |
+        | Socket    | Color  | `self`  |
+        | Parameter | `mode` | `'RGB'` |
 
         Returns
         -------
-        - node [red (Float), green (Float), blue (Float), alpha (Float)]
+        node [red (Float), green (Float), blue (Float), alpha (Float)]
         """
         node = self._cache('Separate Color', {'Color': self}, mode='RGB')
         return node
@@ -356,14 +432,16 @@ class Color(Socket):
     def hue(self):
         """ > Node <&Node Separate Color>
 
-        Information
-        -----------
-        - Socket 'Color' : self
-        - Parameter 'mode' : 'HSV'
+        **Fixed values**
+
+        | Kind      | Name   | Value   |
+        | --------- | ------ | ------- |
+        | Socket    | Color  | `self`  |
+        | Parameter | `mode` | `'HSV'` |
 
         Returns
         -------
-        - hue
+        hue
         """
         node = self._cache('Separate Color', {'Color': self}, mode='HSV')
         return node.hue
@@ -372,14 +450,16 @@ class Color(Socket):
     def saturation(self):
         """ > Node <&Node Separate Color>
 
-        Information
-        -----------
-        - Socket 'Color' : self
-        - Parameter 'mode' : 'HSV'
+        **Fixed values**
+
+        | Kind      | Name   | Value   |
+        | --------- | ------ | ------- |
+        | Socket    | Color  | `self`  |
+        | Parameter | `mode` | `'HSV'` |
 
         Returns
         -------
-        - saturation
+        saturation
         """
         node = self._cache('Separate Color', {'Color': self}, mode='HSV')
         return node.saturation
@@ -388,14 +468,16 @@ class Color(Socket):
     def lightness(self):
         """ > Node <&Node Separate Color>
 
-        Information
-        -----------
-        - Socket 'Color' : self
-        - Parameter 'mode' : 'HSL'
+        **Fixed values**
+
+        | Kind      | Name   | Value   |
+        | --------- | ------ | ------- |
+        | Socket    | Color  | `self`  |
+        | Parameter | `mode` | `'HSL'` |
 
         Returns
         -------
-        - lightness
+        lightness
         """
         node = self._cache('Separate Color', {'Color': self}, mode='HSL')
         return node.lightness
@@ -404,14 +486,16 @@ class Color(Socket):
     def alpha(self):
         """ > Node <&Node Separate Color>
 
-        Information
-        -----------
-        - Socket 'Color' : self
-        - Parameter 'mode' : 'RGB'
+        **Fixed values**
+
+        | Kind      | Name   | Value   |
+        | --------- | ------ | ------- |
+        | Socket    | Color  | `self`  |
+        | Parameter | `mode` | `'RGB'` |
 
         Returns
         -------
-        - alpha
+        alpha
         """
         node = self._cache('Separate Color', {'Color': self}, mode='RGB')
         return node.alpha
@@ -420,14 +504,16 @@ class Color(Socket):
     def value(self):
         """ > Node <&Node Separate Color>
 
-        Information
-        -----------
-        - Socket 'Color' : self
-        - Parameter 'mode' : 'HSV'
+        **Fixed values**
+
+        | Kind      | Name   | Value   |
+        | --------- | ------ | ------- |
+        | Socket    | Color  | `self`  |
+        | Parameter | `mode` | `'HSV'` |
 
         Returns
         -------
-        - value
+        value
         """
         node = self._cache('Separate Color', {'Color': self}, mode='HSV')
         return node.value
@@ -436,14 +522,16 @@ class Color(Socket):
     def red(self):
         """ > Node <&Node Separate Color>
 
-        Information
-        -----------
-        - Socket 'Color' : self
-        - Parameter 'mode' : 'RGB'
+        **Fixed values**
+
+        | Kind      | Name   | Value   |
+        | --------- | ------ | ------- |
+        | Socket    | Color  | `self`  |
+        | Parameter | `mode` | `'RGB'` |
 
         Returns
         -------
-        - red
+        red
         """
         node = self._cache('Separate Color', {'Color': self}, mode='RGB')
         return node.red
@@ -452,14 +540,16 @@ class Color(Socket):
     def green(self):
         """ > Node <&Node Separate Color>
 
-        Information
-        -----------
-        - Socket 'Color' : self
-        - Parameter 'mode' : 'RGB'
+        **Fixed values**
+
+        | Kind      | Name   | Value   |
+        | --------- | ------ | ------- |
+        | Socket    | Color  | `self`  |
+        | Parameter | `mode` | `'RGB'` |
 
         Returns
         -------
-        - green
+        green
         """
         node = self._cache('Separate Color', {'Color': self}, mode='RGB')
         return node.green
@@ -468,14 +558,16 @@ class Color(Socket):
     def blue(self):
         """ > Node <&Node Separate Color>
 
-        Information
-        -----------
-        - Socket 'Color' : self
-        - Parameter 'mode' : 'RGB'
+        **Fixed values**
+
+        | Kind      | Name   | Value   |
+        | --------- | ------ | ------- |
+        | Socket    | Color  | `self`  |
+        | Parameter | `mode` | `'RGB'` |
 
         Returns
         -------
-        - blue
+        blue
         """
         node = self._cache('Separate Color', {'Color': self}, mode='RGB')
         return node.blue
@@ -483,19 +575,25 @@ class Color(Socket):
     def blur(self, iterations: Integer = None, weight: Float = None):
         """ > Node <&Node Blur Attribute>
 
-        Information
-        -----------
-        - Socket 'Value' : self
-        - Parameter 'data_type' : 'FLOAT_COLOR'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name        | Value           |
+        | --------- | ----------- | --------------- |
+        | Socket    | Value       | `self`          |
+        | Parameter | `data_type` | `'FLOAT_COLOR'` |
+
+        Parameters
         ---------
-        - iterations (Integer) : socket 'Iterations' (id: Iterations)
-        - weight (Float) : socket 'Weight' (id: Weight)
+        iterations : Integer, optional
+            socket 'Iterations' (id: Iterations)
+        
+        weight : Float, optional
+            socket 'Weight' (id: Weight)
+        
 
         Returns
         -------
-        - Color
+        Color
         """
         node = Node('Blur Attribute', {'Value': self, 'Iterations': iterations, 'Weight': weight}, data_type='FLOAT_COLOR')
         return node._out
@@ -504,17 +602,21 @@ class Color(Socket):
     def Named(cls, name: String = None):
         """ > Node <&Node Named Attribute>
 
-        Information
-        -----------
-        - Parameter 'data_type' : 'FLOAT_COLOR'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name        | Value           |
+        | --------- | ----------- | --------------- |
+        | Parameter | `data_type` | `'FLOAT_COLOR'` |
+
+        Parameters
         ---------
-        - name (String) : socket 'Name' (id: Name)
+        name : String, optional
+            socket 'Name' (id: Name)
+        
 
         Returns
         -------
-        - Color
+        Color
         """
         node = Node('Named Attribute', {'Name': name}, data_type='FLOAT_COLOR')
         return cls(node._out)
@@ -523,17 +625,21 @@ class Color(Socket):
     def NamedAttribute(cls, name: String = None):
         """ > Node <&Node Named Attribute>
 
-        Information
-        -----------
-        - Parameter 'data_type' : 'FLOAT_COLOR'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name        | Value           |
+        | --------- | ----------- | --------------- |
+        | Parameter | `data_type` | `'FLOAT_COLOR'` |
+
+        Parameters
         ---------
-        - name (String) : socket 'Name' (id: Name)
+        name : String, optional
+            socket 'Name' (id: Name)
+        
 
         Returns
         -------
-        - Color
+        Color
         """
         node = Node('Named Attribute', {'Name': name}, data_type='FLOAT_COLOR')
         return cls(node._out)
@@ -542,13 +648,15 @@ class Color(Socket):
     def Blackbody(cls, temperature: Float = None):
         """ > Node <&Node Blackbody>
 
-        Arguments
+        Parameters
         ---------
-        - temperature (Float) : socket 'Temperature' (id: Temperature)
+        temperature : Float, optional
+            socket 'Temperature' (id: Temperature)
+        
 
         Returns
         -------
-        - Color
+        Color
         """
         node = Node('Blackbody', {'Temperature': temperature})
         return cls(node._out)
@@ -560,23 +668,29 @@ class Color(Socket):
                     clamp_result = False):
         """ > Node <&Node Mix>
 
-        Information
-        -----------
-        - Socket 'A' : self
-        - Parameter 'blend_type' : 'MIX'
-        - Parameter 'data_type' : 'RGBA'
-        - Parameter 'factor_mode' : 'UNIFORM'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name          | Value       |
+        | --------- | ------------- | ----------- |
+        | Socket    | A             | `self`      |
+        | Parameter | `blend_type`  | `'MIX'`     |
+        | Parameter | `data_type`   | `'RGBA'`    |
+        | Parameter | `factor_mode` | `'UNIFORM'` |
+
+        Parameters
         ---------
-        - b (Color) : socket 'B' (id: B_Color)
-        - factor (Float) : socket 'Factor' (id: Factor_Float)
-        - clamp_factor (bool): parameter 'clamp_factor'
-        - clamp_result (bool): parameter 'clamp_result'
+        b : Color, optional
+            socket 'B' (id: B_Color)
+        
+        factor : Float, optional
+            socket 'Factor' (id: Factor_Float)
+        
+        clamp_factor (bool): parameter 'clamp_factor'
+        clamp_result (bool): parameter 'clamp_result'
 
         Returns
         -------
-        - Color
+        Color
         """
         node = Node('Mix', {'A_Color': self, 'B_Color': b, 'Factor_Float': factor}, blend_type='MIX', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM')
         return node._out
@@ -588,23 +702,29 @@ class Color(Socket):
                     clamp_result = False):
         """ > Node <&Node Mix>
 
-        Information
-        -----------
-        - Socket 'A' : self
-        - Parameter 'blend_type' : 'DARKEN'
-        - Parameter 'data_type' : 'RGBA'
-        - Parameter 'factor_mode' : 'UNIFORM'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name          | Value       |
+        | --------- | ------------- | ----------- |
+        | Socket    | A             | `self`      |
+        | Parameter | `blend_type`  | `'DARKEN'`  |
+        | Parameter | `data_type`   | `'RGBA'`    |
+        | Parameter | `factor_mode` | `'UNIFORM'` |
+
+        Parameters
         ---------
-        - b (Color) : socket 'B' (id: B_Color)
-        - factor (Float) : socket 'Factor' (id: Factor_Float)
-        - clamp_factor (bool): parameter 'clamp_factor'
-        - clamp_result (bool): parameter 'clamp_result'
+        b : Color, optional
+            socket 'B' (id: B_Color)
+        
+        factor : Float, optional
+            socket 'Factor' (id: Factor_Float)
+        
+        clamp_factor (bool): parameter 'clamp_factor'
+        clamp_result (bool): parameter 'clamp_result'
 
         Returns
         -------
-        - Color
+        Color
         """
         node = Node('Mix', {'A_Color': self, 'B_Color': b, 'Factor_Float': factor}, blend_type='DARKEN', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM')
         return node._out
@@ -616,23 +736,29 @@ class Color(Socket):
                     clamp_result = False):
         """ > Node <&Node Mix>
 
-        Information
-        -----------
-        - Socket 'A' : self
-        - Parameter 'blend_type' : 'MULTIPLY'
-        - Parameter 'data_type' : 'RGBA'
-        - Parameter 'factor_mode' : 'UNIFORM'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name          | Value        |
+        | --------- | ------------- | ------------ |
+        | Socket    | A             | `self`       |
+        | Parameter | `blend_type`  | `'MULTIPLY'` |
+        | Parameter | `data_type`   | `'RGBA'`     |
+        | Parameter | `factor_mode` | `'UNIFORM'`  |
+
+        Parameters
         ---------
-        - b (Color) : socket 'B' (id: B_Color)
-        - factor (Float) : socket 'Factor' (id: Factor_Float)
-        - clamp_factor (bool): parameter 'clamp_factor'
-        - clamp_result (bool): parameter 'clamp_result'
+        b : Color, optional
+            socket 'B' (id: B_Color)
+        
+        factor : Float, optional
+            socket 'Factor' (id: Factor_Float)
+        
+        clamp_factor (bool): parameter 'clamp_factor'
+        clamp_result (bool): parameter 'clamp_result'
 
         Returns
         -------
-        - Color
+        Color
         """
         node = Node('Mix', {'A_Color': self, 'B_Color': b, 'Factor_Float': factor}, blend_type='MULTIPLY', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM')
         return node._out
@@ -644,23 +770,29 @@ class Color(Socket):
                     clamp_result = False):
         """ > Node <&Node Mix>
 
-        Information
-        -----------
-        - Socket 'A' : self
-        - Parameter 'blend_type' : 'BURN'
-        - Parameter 'data_type' : 'RGBA'
-        - Parameter 'factor_mode' : 'UNIFORM'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name          | Value       |
+        | --------- | ------------- | ----------- |
+        | Socket    | A             | `self`      |
+        | Parameter | `blend_type`  | `'BURN'`    |
+        | Parameter | `data_type`   | `'RGBA'`    |
+        | Parameter | `factor_mode` | `'UNIFORM'` |
+
+        Parameters
         ---------
-        - b (Color) : socket 'B' (id: B_Color)
-        - factor (Float) : socket 'Factor' (id: Factor_Float)
-        - clamp_factor (bool): parameter 'clamp_factor'
-        - clamp_result (bool): parameter 'clamp_result'
+        b : Color, optional
+            socket 'B' (id: B_Color)
+        
+        factor : Float, optional
+            socket 'Factor' (id: Factor_Float)
+        
+        clamp_factor (bool): parameter 'clamp_factor'
+        clamp_result (bool): parameter 'clamp_result'
 
         Returns
         -------
-        - Color
+        Color
         """
         node = Node('Mix', {'A_Color': self, 'B_Color': b, 'Factor_Float': factor}, blend_type='BURN', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM')
         return node._out
@@ -672,23 +804,29 @@ class Color(Socket):
                     clamp_result = False):
         """ > Node <&Node Mix>
 
-        Information
-        -----------
-        - Socket 'A' : self
-        - Parameter 'blend_type' : 'LIGHTEN'
-        - Parameter 'data_type' : 'RGBA'
-        - Parameter 'factor_mode' : 'UNIFORM'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name          | Value       |
+        | --------- | ------------- | ----------- |
+        | Socket    | A             | `self`      |
+        | Parameter | `blend_type`  | `'LIGHTEN'` |
+        | Parameter | `data_type`   | `'RGBA'`    |
+        | Parameter | `factor_mode` | `'UNIFORM'` |
+
+        Parameters
         ---------
-        - b (Color) : socket 'B' (id: B_Color)
-        - factor (Float) : socket 'Factor' (id: Factor_Float)
-        - clamp_factor (bool): parameter 'clamp_factor'
-        - clamp_result (bool): parameter 'clamp_result'
+        b : Color, optional
+            socket 'B' (id: B_Color)
+        
+        factor : Float, optional
+            socket 'Factor' (id: Factor_Float)
+        
+        clamp_factor (bool): parameter 'clamp_factor'
+        clamp_result (bool): parameter 'clamp_result'
 
         Returns
         -------
-        - Color
+        Color
         """
         node = Node('Mix', {'A_Color': self, 'B_Color': b, 'Factor_Float': factor}, blend_type='LIGHTEN', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM')
         return node._out
@@ -700,23 +838,29 @@ class Color(Socket):
                     clamp_result = False):
         """ > Node <&Node Mix>
 
-        Information
-        -----------
-        - Socket 'A' : self
-        - Parameter 'blend_type' : 'SCREEN'
-        - Parameter 'data_type' : 'RGBA'
-        - Parameter 'factor_mode' : 'UNIFORM'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name          | Value       |
+        | --------- | ------------- | ----------- |
+        | Socket    | A             | `self`      |
+        | Parameter | `blend_type`  | `'SCREEN'`  |
+        | Parameter | `data_type`   | `'RGBA'`    |
+        | Parameter | `factor_mode` | `'UNIFORM'` |
+
+        Parameters
         ---------
-        - b (Color) : socket 'B' (id: B_Color)
-        - factor (Float) : socket 'Factor' (id: Factor_Float)
-        - clamp_factor (bool): parameter 'clamp_factor'
-        - clamp_result (bool): parameter 'clamp_result'
+        b : Color, optional
+            socket 'B' (id: B_Color)
+        
+        factor : Float, optional
+            socket 'Factor' (id: Factor_Float)
+        
+        clamp_factor (bool): parameter 'clamp_factor'
+        clamp_result (bool): parameter 'clamp_result'
 
         Returns
         -------
-        - Color
+        Color
         """
         node = Node('Mix', {'A_Color': self, 'B_Color': b, 'Factor_Float': factor}, blend_type='SCREEN', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM')
         return node._out
@@ -728,23 +872,29 @@ class Color(Socket):
                     clamp_result = False):
         """ > Node <&Node Mix>
 
-        Information
-        -----------
-        - Socket 'A' : self
-        - Parameter 'blend_type' : 'DODGE'
-        - Parameter 'data_type' : 'RGBA'
-        - Parameter 'factor_mode' : 'UNIFORM'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name          | Value       |
+        | --------- | ------------- | ----------- |
+        | Socket    | A             | `self`      |
+        | Parameter | `blend_type`  | `'DODGE'`   |
+        | Parameter | `data_type`   | `'RGBA'`    |
+        | Parameter | `factor_mode` | `'UNIFORM'` |
+
+        Parameters
         ---------
-        - b (Color) : socket 'B' (id: B_Color)
-        - factor (Float) : socket 'Factor' (id: Factor_Float)
-        - clamp_factor (bool): parameter 'clamp_factor'
-        - clamp_result (bool): parameter 'clamp_result'
+        b : Color, optional
+            socket 'B' (id: B_Color)
+        
+        factor : Float, optional
+            socket 'Factor' (id: Factor_Float)
+        
+        clamp_factor (bool): parameter 'clamp_factor'
+        clamp_result (bool): parameter 'clamp_result'
 
         Returns
         -------
-        - Color
+        Color
         """
         node = Node('Mix', {'A_Color': self, 'B_Color': b, 'Factor_Float': factor}, blend_type='DODGE', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM')
         return node._out
@@ -756,23 +906,29 @@ class Color(Socket):
                     clamp_result = False):
         """ > Node <&Node Mix>
 
-        Information
-        -----------
-        - Socket 'A' : self
-        - Parameter 'blend_type' : 'ADD'
-        - Parameter 'data_type' : 'RGBA'
-        - Parameter 'factor_mode' : 'UNIFORM'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name          | Value       |
+        | --------- | ------------- | ----------- |
+        | Socket    | A             | `self`      |
+        | Parameter | `blend_type`  | `'ADD'`     |
+        | Parameter | `data_type`   | `'RGBA'`    |
+        | Parameter | `factor_mode` | `'UNIFORM'` |
+
+        Parameters
         ---------
-        - b (Color) : socket 'B' (id: B_Color)
-        - factor (Float) : socket 'Factor' (id: Factor_Float)
-        - clamp_factor (bool): parameter 'clamp_factor'
-        - clamp_result (bool): parameter 'clamp_result'
+        b : Color, optional
+            socket 'B' (id: B_Color)
+        
+        factor : Float, optional
+            socket 'Factor' (id: Factor_Float)
+        
+        clamp_factor (bool): parameter 'clamp_factor'
+        clamp_result (bool): parameter 'clamp_result'
 
         Returns
         -------
-        - Color
+        Color
         """
         node = Node('Mix', {'A_Color': self, 'B_Color': b, 'Factor_Float': factor}, blend_type='ADD', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM')
         return node._out
@@ -784,23 +940,29 @@ class Color(Socket):
                     clamp_result = False):
         """ > Node <&Node Mix>
 
-        Information
-        -----------
-        - Socket 'A' : self
-        - Parameter 'blend_type' : 'OVERLAY'
-        - Parameter 'data_type' : 'RGBA'
-        - Parameter 'factor_mode' : 'UNIFORM'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name          | Value       |
+        | --------- | ------------- | ----------- |
+        | Socket    | A             | `self`      |
+        | Parameter | `blend_type`  | `'OVERLAY'` |
+        | Parameter | `data_type`   | `'RGBA'`    |
+        | Parameter | `factor_mode` | `'UNIFORM'` |
+
+        Parameters
         ---------
-        - b (Color) : socket 'B' (id: B_Color)
-        - factor (Float) : socket 'Factor' (id: Factor_Float)
-        - clamp_factor (bool): parameter 'clamp_factor'
-        - clamp_result (bool): parameter 'clamp_result'
+        b : Color, optional
+            socket 'B' (id: B_Color)
+        
+        factor : Float, optional
+            socket 'Factor' (id: Factor_Float)
+        
+        clamp_factor (bool): parameter 'clamp_factor'
+        clamp_result (bool): parameter 'clamp_result'
 
         Returns
         -------
-        - Color
+        Color
         """
         node = Node('Mix', {'A_Color': self, 'B_Color': b, 'Factor_Float': factor}, blend_type='OVERLAY', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM')
         return node._out
@@ -812,23 +974,29 @@ class Color(Socket):
                     clamp_result = False):
         """ > Node <&Node Mix>
 
-        Information
-        -----------
-        - Socket 'A' : self
-        - Parameter 'blend_type' : 'SOFT_LIGHT'
-        - Parameter 'data_type' : 'RGBA'
-        - Parameter 'factor_mode' : 'UNIFORM'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name          | Value          |
+        | --------- | ------------- | -------------- |
+        | Socket    | A             | `self`         |
+        | Parameter | `blend_type`  | `'SOFT_LIGHT'` |
+        | Parameter | `data_type`   | `'RGBA'`       |
+        | Parameter | `factor_mode` | `'UNIFORM'`    |
+
+        Parameters
         ---------
-        - b (Color) : socket 'B' (id: B_Color)
-        - factor (Float) : socket 'Factor' (id: Factor_Float)
-        - clamp_factor (bool): parameter 'clamp_factor'
-        - clamp_result (bool): parameter 'clamp_result'
+        b : Color, optional
+            socket 'B' (id: B_Color)
+        
+        factor : Float, optional
+            socket 'Factor' (id: Factor_Float)
+        
+        clamp_factor (bool): parameter 'clamp_factor'
+        clamp_result (bool): parameter 'clamp_result'
 
         Returns
         -------
-        - Color
+        Color
         """
         node = Node('Mix', {'A_Color': self, 'B_Color': b, 'Factor_Float': factor}, blend_type='SOFT_LIGHT', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM')
         return node._out
@@ -840,23 +1008,29 @@ class Color(Socket):
                     clamp_result = False):
         """ > Node <&Node Mix>
 
-        Information
-        -----------
-        - Socket 'A' : self
-        - Parameter 'blend_type' : 'LINEAR_LIGHT'
-        - Parameter 'data_type' : 'RGBA'
-        - Parameter 'factor_mode' : 'UNIFORM'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name          | Value            |
+        | --------- | ------------- | ---------------- |
+        | Socket    | A             | `self`           |
+        | Parameter | `blend_type`  | `'LINEAR_LIGHT'` |
+        | Parameter | `data_type`   | `'RGBA'`         |
+        | Parameter | `factor_mode` | `'UNIFORM'`      |
+
+        Parameters
         ---------
-        - b (Color) : socket 'B' (id: B_Color)
-        - factor (Float) : socket 'Factor' (id: Factor_Float)
-        - clamp_factor (bool): parameter 'clamp_factor'
-        - clamp_result (bool): parameter 'clamp_result'
+        b : Color, optional
+            socket 'B' (id: B_Color)
+        
+        factor : Float, optional
+            socket 'Factor' (id: Factor_Float)
+        
+        clamp_factor (bool): parameter 'clamp_factor'
+        clamp_result (bool): parameter 'clamp_result'
 
         Returns
         -------
-        - Color
+        Color
         """
         node = Node('Mix', {'A_Color': self, 'B_Color': b, 'Factor_Float': factor}, blend_type='LINEAR_LIGHT', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM')
         return node._out
@@ -868,23 +1042,29 @@ class Color(Socket):
                     clamp_result = False):
         """ > Node <&Node Mix>
 
-        Information
-        -----------
-        - Socket 'A' : self
-        - Parameter 'blend_type' : 'DIFFERENCE'
-        - Parameter 'data_type' : 'RGBA'
-        - Parameter 'factor_mode' : 'UNIFORM'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name          | Value          |
+        | --------- | ------------- | -------------- |
+        | Socket    | A             | `self`         |
+        | Parameter | `blend_type`  | `'DIFFERENCE'` |
+        | Parameter | `data_type`   | `'RGBA'`       |
+        | Parameter | `factor_mode` | `'UNIFORM'`    |
+
+        Parameters
         ---------
-        - b (Color) : socket 'B' (id: B_Color)
-        - factor (Float) : socket 'Factor' (id: Factor_Float)
-        - clamp_factor (bool): parameter 'clamp_factor'
-        - clamp_result (bool): parameter 'clamp_result'
+        b : Color, optional
+            socket 'B' (id: B_Color)
+        
+        factor : Float, optional
+            socket 'Factor' (id: Factor_Float)
+        
+        clamp_factor (bool): parameter 'clamp_factor'
+        clamp_result (bool): parameter 'clamp_result'
 
         Returns
         -------
-        - Color
+        Color
         """
         node = Node('Mix', {'A_Color': self, 'B_Color': b, 'Factor_Float': factor}, blend_type='DIFFERENCE', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM')
         return node._out
@@ -896,23 +1076,29 @@ class Color(Socket):
                     clamp_result = False):
         """ > Node <&Node Mix>
 
-        Information
-        -----------
-        - Socket 'A' : self
-        - Parameter 'blend_type' : 'EXCLUSION'
-        - Parameter 'data_type' : 'RGBA'
-        - Parameter 'factor_mode' : 'UNIFORM'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name          | Value         |
+        | --------- | ------------- | ------------- |
+        | Socket    | A             | `self`        |
+        | Parameter | `blend_type`  | `'EXCLUSION'` |
+        | Parameter | `data_type`   | `'RGBA'`      |
+        | Parameter | `factor_mode` | `'UNIFORM'`   |
+
+        Parameters
         ---------
-        - b (Color) : socket 'B' (id: B_Color)
-        - factor (Float) : socket 'Factor' (id: Factor_Float)
-        - clamp_factor (bool): parameter 'clamp_factor'
-        - clamp_result (bool): parameter 'clamp_result'
+        b : Color, optional
+            socket 'B' (id: B_Color)
+        
+        factor : Float, optional
+            socket 'Factor' (id: Factor_Float)
+        
+        clamp_factor (bool): parameter 'clamp_factor'
+        clamp_result (bool): parameter 'clamp_result'
 
         Returns
         -------
-        - Color
+        Color
         """
         node = Node('Mix', {'A_Color': self, 'B_Color': b, 'Factor_Float': factor}, blend_type='EXCLUSION', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM')
         return node._out
@@ -924,23 +1110,29 @@ class Color(Socket):
                     clamp_result = False):
         """ > Node <&Node Mix>
 
-        Information
-        -----------
-        - Socket 'A' : self
-        - Parameter 'blend_type' : 'SUBTRACT'
-        - Parameter 'data_type' : 'RGBA'
-        - Parameter 'factor_mode' : 'UNIFORM'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name          | Value        |
+        | --------- | ------------- | ------------ |
+        | Socket    | A             | `self`       |
+        | Parameter | `blend_type`  | `'SUBTRACT'` |
+        | Parameter | `data_type`   | `'RGBA'`     |
+        | Parameter | `factor_mode` | `'UNIFORM'`  |
+
+        Parameters
         ---------
-        - b (Color) : socket 'B' (id: B_Color)
-        - factor (Float) : socket 'Factor' (id: Factor_Float)
-        - clamp_factor (bool): parameter 'clamp_factor'
-        - clamp_result (bool): parameter 'clamp_result'
+        b : Color, optional
+            socket 'B' (id: B_Color)
+        
+        factor : Float, optional
+            socket 'Factor' (id: Factor_Float)
+        
+        clamp_factor (bool): parameter 'clamp_factor'
+        clamp_result (bool): parameter 'clamp_result'
 
         Returns
         -------
-        - Color
+        Color
         """
         node = Node('Mix', {'A_Color': self, 'B_Color': b, 'Factor_Float': factor}, blend_type='SUBTRACT', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM')
         return node._out
@@ -952,23 +1144,29 @@ class Color(Socket):
                     clamp_result = False):
         """ > Node <&Node Mix>
 
-        Information
-        -----------
-        - Socket 'A' : self
-        - Parameter 'blend_type' : 'DIVIDE'
-        - Parameter 'data_type' : 'RGBA'
-        - Parameter 'factor_mode' : 'UNIFORM'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name          | Value       |
+        | --------- | ------------- | ----------- |
+        | Socket    | A             | `self`      |
+        | Parameter | `blend_type`  | `'DIVIDE'`  |
+        | Parameter | `data_type`   | `'RGBA'`    |
+        | Parameter | `factor_mode` | `'UNIFORM'` |
+
+        Parameters
         ---------
-        - b (Color) : socket 'B' (id: B_Color)
-        - factor (Float) : socket 'Factor' (id: Factor_Float)
-        - clamp_factor (bool): parameter 'clamp_factor'
-        - clamp_result (bool): parameter 'clamp_result'
+        b : Color, optional
+            socket 'B' (id: B_Color)
+        
+        factor : Float, optional
+            socket 'Factor' (id: Factor_Float)
+        
+        clamp_factor (bool): parameter 'clamp_factor'
+        clamp_result (bool): parameter 'clamp_result'
 
         Returns
         -------
-        - Color
+        Color
         """
         node = Node('Mix', {'A_Color': self, 'B_Color': b, 'Factor_Float': factor}, blend_type='DIVIDE', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM')
         return node._out
@@ -980,23 +1178,29 @@ class Color(Socket):
                     clamp_result = False):
         """ > Node <&Node Mix>
 
-        Information
-        -----------
-        - Socket 'A' : self
-        - Parameter 'blend_type' : 'HUE'
-        - Parameter 'data_type' : 'RGBA'
-        - Parameter 'factor_mode' : 'UNIFORM'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name          | Value       |
+        | --------- | ------------- | ----------- |
+        | Socket    | A             | `self`      |
+        | Parameter | `blend_type`  | `'HUE'`     |
+        | Parameter | `data_type`   | `'RGBA'`    |
+        | Parameter | `factor_mode` | `'UNIFORM'` |
+
+        Parameters
         ---------
-        - b (Color) : socket 'B' (id: B_Color)
-        - factor (Float) : socket 'Factor' (id: Factor_Float)
-        - clamp_factor (bool): parameter 'clamp_factor'
-        - clamp_result (bool): parameter 'clamp_result'
+        b : Color, optional
+            socket 'B' (id: B_Color)
+        
+        factor : Float, optional
+            socket 'Factor' (id: Factor_Float)
+        
+        clamp_factor (bool): parameter 'clamp_factor'
+        clamp_result (bool): parameter 'clamp_result'
 
         Returns
         -------
-        - Color
+        Color
         """
         node = Node('Mix', {'A_Color': self, 'B_Color': b, 'Factor_Float': factor}, blend_type='HUE', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM')
         return node._out
@@ -1008,23 +1212,29 @@ class Color(Socket):
                     clamp_result = False):
         """ > Node <&Node Mix>
 
-        Information
-        -----------
-        - Socket 'A' : self
-        - Parameter 'blend_type' : 'SATURATION'
-        - Parameter 'data_type' : 'RGBA'
-        - Parameter 'factor_mode' : 'UNIFORM'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name          | Value          |
+        | --------- | ------------- | -------------- |
+        | Socket    | A             | `self`         |
+        | Parameter | `blend_type`  | `'SATURATION'` |
+        | Parameter | `data_type`   | `'RGBA'`       |
+        | Parameter | `factor_mode` | `'UNIFORM'`    |
+
+        Parameters
         ---------
-        - b (Color) : socket 'B' (id: B_Color)
-        - factor (Float) : socket 'Factor' (id: Factor_Float)
-        - clamp_factor (bool): parameter 'clamp_factor'
-        - clamp_result (bool): parameter 'clamp_result'
+        b : Color, optional
+            socket 'B' (id: B_Color)
+        
+        factor : Float, optional
+            socket 'Factor' (id: Factor_Float)
+        
+        clamp_factor (bool): parameter 'clamp_factor'
+        clamp_result (bool): parameter 'clamp_result'
 
         Returns
         -------
-        - Color
+        Color
         """
         node = Node('Mix', {'A_Color': self, 'B_Color': b, 'Factor_Float': factor}, blend_type='SATURATION', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM')
         return node._out
@@ -1036,23 +1246,29 @@ class Color(Socket):
                     clamp_result = False):
         """ > Node <&Node Mix>
 
-        Information
-        -----------
-        - Socket 'A' : self
-        - Parameter 'blend_type' : 'COLOR'
-        - Parameter 'data_type' : 'RGBA'
-        - Parameter 'factor_mode' : 'UNIFORM'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name          | Value       |
+        | --------- | ------------- | ----------- |
+        | Socket    | A             | `self`      |
+        | Parameter | `blend_type`  | `'COLOR'`   |
+        | Parameter | `data_type`   | `'RGBA'`    |
+        | Parameter | `factor_mode` | `'UNIFORM'` |
+
+        Parameters
         ---------
-        - b (Color) : socket 'B' (id: B_Color)
-        - factor (Float) : socket 'Factor' (id: Factor_Float)
-        - clamp_factor (bool): parameter 'clamp_factor'
-        - clamp_result (bool): parameter 'clamp_result'
+        b : Color, optional
+            socket 'B' (id: B_Color)
+        
+        factor : Float, optional
+            socket 'Factor' (id: Factor_Float)
+        
+        clamp_factor (bool): parameter 'clamp_factor'
+        clamp_result (bool): parameter 'clamp_result'
 
         Returns
         -------
-        - Color
+        Color
         """
         node = Node('Mix', {'A_Color': self, 'B_Color': b, 'Factor_Float': factor}, blend_type='COLOR', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM')
         return node._out
@@ -1064,23 +1280,29 @@ class Color(Socket):
                     clamp_result = False):
         """ > Node <&Node Mix>
 
-        Information
-        -----------
-        - Socket 'A' : self
-        - Parameter 'blend_type' : 'VALUE'
-        - Parameter 'data_type' : 'RGBA'
-        - Parameter 'factor_mode' : 'UNIFORM'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name          | Value       |
+        | --------- | ------------- | ----------- |
+        | Socket    | A             | `self`      |
+        | Parameter | `blend_type`  | `'VALUE'`   |
+        | Parameter | `data_type`   | `'RGBA'`    |
+        | Parameter | `factor_mode` | `'UNIFORM'` |
+
+        Parameters
         ---------
-        - b (Color) : socket 'B' (id: B_Color)
-        - factor (Float) : socket 'Factor' (id: Factor_Float)
-        - clamp_factor (bool): parameter 'clamp_factor'
-        - clamp_result (bool): parameter 'clamp_result'
+        b : Color, optional
+            socket 'B' (id: B_Color)
+        
+        factor : Float, optional
+            socket 'Factor' (id: Factor_Float)
+        
+        clamp_factor (bool): parameter 'clamp_factor'
+        clamp_result (bool): parameter 'clamp_result'
 
         Returns
         -------
-        - Color
+        Color
         """
         node = Node('Mix', {'A_Color': self, 'B_Color': b, 'Factor_Float': factor}, blend_type='VALUE', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode='UNIFORM')
         return node._out
@@ -1093,23 +1315,29 @@ class Color(Socket):
                     factor_mode: Literal['UNIFORM', 'NON_UNIFORM'] = 'UNIFORM'):
         """ > Node <&Node Mix>
 
-        Information
-        -----------
-        - Socket 'A' : self
-        - Parameter 'blend_type' : 'MIX'
-        - Parameter 'data_type' : 'RGBA'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name         | Value    |
+        | --------- | ------------ | -------- |
+        | Socket    | A            | `self`   |
+        | Parameter | `blend_type` | `'MIX'`  |
+        | Parameter | `data_type`  | `'RGBA'` |
+
+        Parameters
         ---------
-        - b (Color) : socket 'B' (id: B_Color)
-        - factor (Float) : socket 'Factor' (id: Factor_Float)
-        - clamp_factor (bool): parameter 'clamp_factor'
-        - clamp_result (bool): parameter 'clamp_result'
-        - factor_mode (str): parameter 'factor_mode' in ('Uniform', 'Non-Uniform')
+        b : Color, optional
+            socket 'B' (id: B_Color)
+        
+        factor : Float, optional
+            socket 'Factor' (id: Factor_Float)
+        
+        clamp_factor (bool): parameter 'clamp_factor'
+        clamp_result (bool): parameter 'clamp_result'
+        factor_mode (str): parameter 'factor_mode' in ('Uniform', 'Non-Uniform')
 
         Returns
         -------
-        - Color
+        Color
         """
         utils.check_enum_arg('Mix', 'factor_mode', factor_mode, 'mix', ('UNIFORM', 'NON_UNIFORM'))
         node = Node('Mix', {'A_Color': self, 'B_Color': b, 'Factor_Float': factor}, blend_type='MIX', clamp_factor=clamp_factor, clamp_result=clamp_result, data_type='RGBA', factor_mode=factor_mode)
@@ -1133,26 +1361,46 @@ class Color(Socket):
                     squash_frequency = 2):
         """ > Node <&Node Brick Texture>
 
-        Arguments
+        Parameters
         ---------
-        - vector (Vector) : socket 'Vector' (id: Vector)
-        - color1 (Color) : socket 'Color1' (id: Color1)
-        - color2 (Color) : socket 'Color2' (id: Color2)
-        - mortar (Color) : socket 'Mortar' (id: Mortar)
-        - scale (Float) : socket 'Scale' (id: Scale)
-        - mortar_size (Float) : socket 'Mortar Size' (id: Mortar Size)
-        - mortar_smooth (Float) : socket 'Mortar Smooth' (id: Mortar Smooth)
-        - bias (Float) : socket 'Bias' (id: Bias)
-        - brick_width (Float) : socket 'Brick Width' (id: Brick Width)
-        - row_height (Float) : socket 'Row Height' (id: Row Height)
-        - offset (float): parameter 'offset'
-        - offset_frequency (int): parameter 'offset_frequency'
-        - squash (float): parameter 'squash'
-        - squash_frequency (int): parameter 'squash_frequency'
+        vector : Vector, optional
+            socket 'Vector' (id: Vector)
+        
+        color1 : Color, optional
+            socket 'Color1' (id: Color1)
+        
+        color2 : Color, optional
+            socket 'Color2' (id: Color2)
+        
+        mortar : Color, optional
+            socket 'Mortar' (id: Mortar)
+        
+        scale : Float, optional
+            socket 'Scale' (id: Scale)
+        
+        mortar_size : Float, optional
+            socket 'Mortar Size' (id: Mortar Size)
+        
+        mortar_smooth : Float, optional
+            socket 'Mortar Smooth' (id: Mortar Smooth)
+        
+        bias : Float, optional
+            socket 'Bias' (id: Bias)
+        
+        brick_width : Float, optional
+            socket 'Brick Width' (id: Brick Width)
+        
+        row_height : Float, optional
+            socket 'Row Height' (id: Row Height)
+        
+        offset (float): parameter 'offset'
+        offset_frequency (int): parameter 'offset_frequency'
+        squash (float): parameter 'squash'
+        squash_frequency (int): parameter 'squash_frequency'
 
         Returns
         -------
-        - Color
+        Color
         """
         node = Node('Brick Texture', {'Vector': vector, 'Color1': color1, 'Color2': color2, 'Mortar': mortar, 'Scale': scale, 'Mortar Size': mortar_size, 'Mortar Smooth': mortar_smooth, 'Bias': bias, 'Brick Width': brick_width, 'Row Height': row_height}, offset=offset, offset_frequency=offset_frequency, squash=squash, squash_frequency=squash_frequency)
         return cls(node._out)
@@ -1165,16 +1413,24 @@ class Color(Socket):
                     scale: Float = None):
         """ > Node <&Node Checker Texture>
 
-        Arguments
+        Parameters
         ---------
-        - vector (Vector) : socket 'Vector' (id: Vector)
-        - color1 (Color) : socket 'Color1' (id: Color1)
-        - color2 (Color) : socket 'Color2' (id: Color2)
-        - scale (Float) : socket 'Scale' (id: Scale)
+        vector : Vector, optional
+            socket 'Vector' (id: Vector)
+        
+        color1 : Color, optional
+            socket 'Color1' (id: Color1)
+        
+        color2 : Color, optional
+            socket 'Color2' (id: Color2)
+        
+        scale : Float, optional
+            socket 'Scale' (id: Scale)
+        
 
         Returns
         -------
-        - Color
+        Color
         """
         node = Node('Checker Texture', {'Vector': vector, 'Color1': color1, 'Color2': color2, 'Scale': scale})
         return cls(node._out)
@@ -1185,14 +1441,16 @@ class Color(Socket):
                     gradient_type: Literal['LINEAR', 'QUADRATIC', 'EASING', 'DIAGONAL', 'SPHERICAL', 'QUADRATIC_SPHERE', 'RADIAL'] = 'LINEAR'):
         """ > Node <&Node Gradient Texture>
 
-        Arguments
+        Parameters
         ---------
-        - vector (Vector) : socket 'Vector' (id: Vector)
-        - gradient_type (str): parameter 'gradient_type' in ('Linear', 'Quadratic', 'Easing', 'Diagonal', 'Spherical', 'Quadratic Sphere', 'Radial')
+        vector : Vector, optional
+            socket 'Vector' (id: Vector)
+        
+        gradient_type (str): parameter 'gradient_type' in ('Linear', 'Quadratic', 'Easing', 'Diagonal', 'Spherical', 'Quadratic Sphere', 'Radial')
 
         Returns
         -------
-        - Color
+        Color
         """
         utils.check_enum_arg('Gradient Texture', 'gradient_type', gradient_type, 'Gradient', ('LINEAR', 'QUADRATIC', 'EASING', 'DIAGONAL', 'SPHERICAL', 'QUADRATIC_SPHERE', 'RADIAL'))
         node = Node('Gradient Texture', {'Vector': vector}, gradient_type=gradient_type)
@@ -1206,16 +1464,22 @@ class Color(Socket):
                     turbulence_depth = 2):
         """ > Node <&Node Magic Texture>
 
-        Arguments
+        Parameters
         ---------
-        - vector (Vector) : socket 'Vector' (id: Vector)
-        - scale (Float) : socket 'Scale' (id: Scale)
-        - distortion (Float) : socket 'Distortion' (id: Distortion)
-        - turbulence_depth (int): parameter 'turbulence_depth'
+        vector : Vector, optional
+            socket 'Vector' (id: Vector)
+        
+        scale : Float, optional
+            socket 'Scale' (id: Scale)
+        
+        distortion : Float, optional
+            socket 'Distortion' (id: Distortion)
+        
+        turbulence_depth (int): parameter 'turbulence_depth'
 
         Returns
         -------
-        - Color
+        Color
         """
         node = Node('Magic Texture', {'Vector': vector, 'Scale': scale, 'Distortion': distortion}, turbulence_depth=turbulence_depth)
         return cls(node._out)
@@ -1235,23 +1499,37 @@ class Color(Socket):
                     wave_type: Literal['BANDS', 'RINGS'] = 'BANDS'):
         """ > Node <&Node Wave Texture>
 
-        Arguments
+        Parameters
         ---------
-        - vector (Vector) : socket 'Vector' (id: Vector)
-        - scale (Float) : socket 'Scale' (id: Scale)
-        - distortion (Float) : socket 'Distortion' (id: Distortion)
-        - detail (Float) : socket 'Detail' (id: Detail)
-        - detail_scale (Float) : socket 'Detail Scale' (id: Detail Scale)
-        - detail_roughness (Float) : socket 'Detail Roughness' (id: Detail Roughness)
-        - phase_offset (Float) : socket 'Phase Offset' (id: Phase Offset)
-        - bands_direction (str): parameter 'bands_direction' in ('X', 'Y', 'Z', 'Diagonal')
-        - rings_direction (str): parameter 'rings_direction' in ('X', 'Y', 'Z', 'Spherical')
-        - wave_profile (str): parameter 'wave_profile' in ('Sine', 'Saw', 'Triangle')
-        - wave_type (str): parameter 'wave_type' in ('Bands', 'Rings')
+        vector : Vector, optional
+            socket 'Vector' (id: Vector)
+        
+        scale : Float, optional
+            socket 'Scale' (id: Scale)
+        
+        distortion : Float, optional
+            socket 'Distortion' (id: Distortion)
+        
+        detail : Float, optional
+            socket 'Detail' (id: Detail)
+        
+        detail_scale : Float, optional
+            socket 'Detail Scale' (id: Detail Scale)
+        
+        detail_roughness : Float, optional
+            socket 'Detail Roughness' (id: Detail Roughness)
+        
+        phase_offset : Float, optional
+            socket 'Phase Offset' (id: Phase Offset)
+        
+        bands_direction (str): parameter 'bands_direction' in ('X', 'Y', 'Z', 'Diagonal')
+        rings_direction (str): parameter 'rings_direction' in ('X', 'Y', 'Z', 'Spherical')
+        wave_profile (str): parameter 'wave_profile' in ('Sine', 'Saw', 'Triangle')
+        wave_type (str): parameter 'wave_type' in ('Bands', 'Rings')
 
         Returns
         -------
-        - Color
+        Color
         """
         utils.check_enum_arg('Wave Texture', 'bands_direction', bands_direction, 'Wave', ('X', 'Y', 'Z', 'DIAGONAL'))
         utils.check_enum_arg('Wave Texture', 'rings_direction', rings_direction, 'Wave', ('X', 'Y', 'Z', 'SPHERICAL'))
@@ -1263,18 +1541,22 @@ class Color(Socket):
     def enable_output(self, enable: Boolean = None):
         """ > Node <&Node Enable Output>
 
-        Information
-        -----------
-        - Socket 'Value' : self
-        - Parameter 'data_type' : 'RGBA'
+        **Fixed values**
 
-        Arguments
+        | Kind      | Name        | Value    |
+        | --------- | ----------- | -------- |
+        | Socket    | Value       | `self`   |
+        | Parameter | `data_type` | `'RGBA'` |
+
+        Parameters
         ---------
-        - enable (Boolean) : socket 'Enable' (id: Enable)
+        enable : Boolean, optional
+            socket 'Enable' (id: Enable)
+        
 
         Returns
         -------
-        - Color
+        Color
         """
         node = Node('Enable Output', {'Enable': enable, 'Value': self}, data_type='RGBA')
         return node._out
@@ -1282,17 +1564,21 @@ class Color(Socket):
     def gamma(self, gamma: Float = None):
         """ > Node <&Node Gamma>
 
-        Information
-        -----------
-        - Socket 'Color' : self
+        **Fixed values**
 
-        Arguments
+        | Kind   | Name  | Value  |
+        | ------ | ----- | ------ |
+        | Socket | Color | `self` |
+
+        Parameters
         ---------
-        - gamma (Float) : socket 'Gamma' (id: Gamma)
+        gamma : Float, optional
+            socket 'Gamma' (id: Gamma)
+        
 
         Returns
         -------
-        - Color
+        Color
         """
         node = Node('Gamma', {'Color': self, 'Gamma': gamma})
         return node._out
@@ -1305,21 +1591,29 @@ class Color(Socket):
                     samples = 16):
         """ > Node <&ShaderNode Ambient Occlusion>
 
-        Information
-        -----------
-        - Socket 'Color' : self
+        **Fixed values**
 
-        Arguments
+        | Kind   | Name  | Value  |
+        | ------ | ----- | ------ |
+        | Socket | Color | `self` |
+
+        Parameters
         ---------
-        - distance (Float) : socket 'Distance' (id: Distance)
-        - normal (Vector) : socket 'Normal' (id: Normal)
-        - inside (bool): parameter 'inside'
-        - only_local (bool): parameter 'only_local'
-        - samples (int): parameter 'samples'
+        distance : Float, optional
+            socket 'Distance' (id: Distance)
+        
+        normal : Vector, optional
+            socket 'Normal' (id: Normal)
+        
+        inside (bool): parameter 'inside'
+        only_local (bool): parameter 'only_local'
+        samples (int): parameter 'samples'
 
         Returns
         -------
-        - Color [ao_ (Float)]
+        Color
+            peer sockets: ao_ (Float)
+
         """
         node = Node('Ambient Occlusion', {'Color': self, 'Distance': distance, 'Normal': normal}, inside=inside, only_local=only_local, samples=samples)
         return node._out
@@ -1327,17 +1621,21 @@ class Color(Socket):
     def background(self, strength: Float = None):
         """ > Node <&ShaderNode Background>
 
-        Information
-        -----------
-        - Socket 'Color' : self
+        **Fixed values**
 
-        Arguments
+        | Kind   | Name  | Value  |
+        | ------ | ----- | ------ |
+        | Socket | Color | `self` |
+
+        Parameters
         ---------
-        - strength (Float) : socket 'Strength' (id: Strength)
+        strength : Float, optional
+            socket 'Strength' (id: Strength)
+        
 
         Returns
         -------
-        - Shader
+        Shader
         """
         node = Node('Background', {'Color': self, 'Strength': strength})
         return node._out
@@ -1345,18 +1643,24 @@ class Color(Socket):
     def brightness_contrast(self, brightness: Float = None, contrast: Float = None):
         """ > Node <&ShaderNode Brightness/Contrast>
 
-        Information
-        -----------
-        - Socket 'Color' : self
+        **Fixed values**
 
-        Arguments
+        | Kind   | Name  | Value  |
+        | ------ | ----- | ------ |
+        | Socket | Color | `self` |
+
+        Parameters
         ---------
-        - brightness (Float) : socket 'Brightness' (id: Bright)
-        - contrast (Float) : socket 'Contrast' (id: Contrast)
+        brightness : Float, optional
+            socket 'Brightness' (id: Bright)
+        
+        contrast : Float, optional
+            socket 'Contrast' (id: Contrast)
+        
 
         Returns
         -------
-        - Color
+        Color
         """
         node = Node('Brightness/Contrast', {'Color': self, 'Bright': brightness, 'Contrast': contrast})
         return node._out
@@ -1368,20 +1672,30 @@ class Color(Socket):
                     factor: Float = None):
         """ > Node <&ShaderNode Hue/Saturation/Value>
 
-        Information
-        -----------
-        - Socket 'Color' : self
+        **Fixed values**
 
-        Arguments
+        | Kind   | Name  | Value  |
+        | ------ | ----- | ------ |
+        | Socket | Color | `self` |
+
+        Parameters
         ---------
-        - hue (Float) : socket 'Hue' (id: Hue)
-        - saturation (Float) : socket 'Saturation' (id: Saturation)
-        - value (Float) : socket 'Value' (id: Value)
-        - factor (Float) : socket 'Factor' (id: Fac)
+        hue : Float, optional
+            socket 'Hue' (id: Hue)
+        
+        saturation : Float, optional
+            socket 'Saturation' (id: Saturation)
+        
+        value : Float, optional
+            socket 'Value' (id: Value)
+        
+        factor : Float, optional
+            socket 'Factor' (id: Fac)
+        
 
         Returns
         -------
-        - Color
+        Color
         """
         node = Node('Hue/Saturation/Value', {'Hue': hue, 'Saturation': saturation, 'Value': value, 'Color': self, 'Fac': factor})
         return node._out
@@ -1389,17 +1703,21 @@ class Color(Socket):
     def invert_color(self, factor: Float = None):
         """ > Node <&ShaderNode Invert Color>
 
-        Information
-        -----------
-        - Socket 'Color' : self
+        **Fixed values**
 
-        Arguments
+        | Kind   | Name  | Value  |
+        | ------ | ----- | ------ |
+        | Socket | Color | `self` |
+
+        Parameters
         ---------
-        - factor (Float) : socket 'Factor' (id: Fac)
+        factor : Float, optional
+            socket 'Factor' (id: Fac)
+        
 
         Returns
         -------
-        - Color
+        Color
         """
         node = Node('Invert Color', {'Color': self, 'Fac': factor})
         return node._out
@@ -1407,18 +1725,22 @@ class Color(Socket):
     def aov_output(self, value: Float = None, aov_name = ''):
         """ > Node <&ShaderNode AOV Output>
 
-        Information
-        -----------
-        - Socket 'Color' : self
+        **Fixed values**
 
-        Arguments
+        | Kind   | Name  | Value  |
+        | ------ | ----- | ------ |
+        | Socket | Color | `self` |
+
+        Parameters
         ---------
-        - value (Float) : socket 'Value' (id: Value)
-        - aov_name (str): parameter 'aov_name'
+        value : Float, optional
+            socket 'Value' (id: Value)
+        
+        aov_name (str): parameter 'aov_name'
 
         Returns
         -------
-        - None
+        None
         """
         node = Node('AOV Output', {'Color': self, 'Value': value}, aov_name=aov_name)
         return node._out
@@ -1434,24 +1756,32 @@ class Color(Socket):
                     use_clamp = False):
         """ > Node <&ShaderNode Line Style Output>
 
-        Information
-        -----------
-        - Socket 'Color' : self
+        **Fixed values**
 
-        Arguments
+        | Kind   | Name  | Value  |
+        | ------ | ----- | ------ |
+        | Socket | Color | `self` |
+
+        Parameters
         ---------
-        - color_fac (Float) : socket 'Color Fac' (id: Color Fac)
-        - alpha (Float) : socket 'Alpha' (id: Alpha)
-        - alpha_fac (Float) : socket 'Alpha Fac' (id: Alpha Fac)
-        - blend_type (str): parameter 'blend_type' in ('Mix', 'Darken', 'Multiply', 'Color Burn', 'Lighten', 'Screen', 'Color Dodge', 'Add', 'Overlay', 'Soft Light', 'Linear Light', 'Difference', 'Exclusion', 'Subtract', 'Divide', 'Hue', 'Saturation', 'Color', 'Value')
-        - is_active_output (bool): parameter 'is_active_output'
-        - target (str): parameter 'target' in ('All', 'EEVEE', 'Cycles')
-        - use_alpha (bool): parameter 'use_alpha'
-        - use_clamp (bool): parameter 'use_clamp'
+        color_fac : Float, optional
+            socket 'Color Fac' (id: Color Fac)
+        
+        alpha : Float, optional
+            socket 'Alpha' (id: Alpha)
+        
+        alpha_fac : Float, optional
+            socket 'Alpha Fac' (id: Alpha Fac)
+        
+        blend_type (str): parameter 'blend_type' in ('Mix', 'Darken', 'Multiply', 'Color Burn', 'Lighten', 'Screen', 'Color Dodge', 'Add', 'Overlay', 'Soft Light', 'Linear Light', 'Difference', 'Exclusion', 'Subtract', 'Divide', 'Hue', 'Saturation', 'Color', 'Value')
+        is_active_output (bool): parameter 'is_active_output'
+        target (str): parameter 'target' in ('All', 'EEVEE', 'Cycles')
+        use_alpha (bool): parameter 'use_alpha'
+        use_clamp (bool): parameter 'use_clamp'
 
         Returns
         -------
-        - None
+        None
         """
         utils.check_enum_arg('Line Style Output', 'blend_type', blend_type, 'line_style_output', ('MIX', 'DARKEN', 'MULTIPLY', 'BURN', 'LIGHTEN', 'SCREEN', 'DODGE', 'ADD', 'OVERLAY', 'SOFT_LIGHT', 'LINEAR_LIGHT', 'DIFFERENCE', 'EXCLUSION', 'SUBTRACT', 'DIVIDE', 'HUE', 'SATURATION', 'COLOR', 'VALUE'))
         utils.check_enum_arg('Line Style Output', 'target', target, 'line_style_output', ('ALL', 'EEVEE', 'CYCLES'))
@@ -1461,13 +1791,15 @@ class Color(Socket):
     def rgb_to_bw(self):
         """ > Node <&ShaderNode RGB to BW>
 
-        Information
-        -----------
-        - Socket 'Color' : self
+        **Fixed values**
+
+        | Kind   | Name  | Value  |
+        | ------ | ----- | ------ |
+        | Socket | Color | `self` |
 
         Returns
         -------
-        - Float
+        Float
         """
         node = Node('RGB to BW', {'Color': self})
         return node._out
@@ -1475,14 +1807,16 @@ class Color(Socket):
     def separate_col_RGB(self):
         """ > Node <&ShaderNode Separate Color>
 
-        Information
-        -----------
-        - Socket 'Color' : self
-        - Parameter 'mode' : 'RGB'
+        **Fixed values**
+
+        | Kind      | Name   | Value   |
+        | --------- | ------ | ------- |
+        | Socket    | Color  | `self`  |
+        | Parameter | `mode` | `'RGB'` |
 
         Returns
         -------
-        - node [red (Float), green (Float), blue (Float)]
+        node [red (Float), green (Float), blue (Float)]
         """
         node = Node('Separate Color', {'Color': self}, mode='RGB')
         return node
@@ -1490,14 +1824,16 @@ class Color(Socket):
     def separate_col_HSV(self):
         """ > Node <&ShaderNode Separate Color>
 
-        Information
-        -----------
-        - Socket 'Color' : self
-        - Parameter 'mode' : 'HSV'
+        **Fixed values**
+
+        | Kind      | Name   | Value   |
+        | --------- | ------ | ------- |
+        | Socket    | Color  | `self`  |
+        | Parameter | `mode` | `'HSV'` |
 
         Returns
         -------
-        - node [hue (Float), saturation (Float), value (Float)]
+        node [hue (Float), saturation (Float), value (Float)]
         """
         node = Node('Separate Color', {'Color': self}, mode='HSV')
         return node
@@ -1505,14 +1841,16 @@ class Color(Socket):
     def separate_col_HSL(self):
         """ > Node <&ShaderNode Separate Color>
 
-        Information
-        -----------
-        - Socket 'Color' : self
-        - Parameter 'mode' : 'HSL'
+        **Fixed values**
+
+        | Kind      | Name   | Value   |
+        | --------- | ------ | ------- |
+        | Socket    | Color  | `self`  |
+        | Parameter | `mode` | `'HSL'` |
 
         Returns
         -------
-        - node [hue (Float), saturation (Float), lightness (Float)]
+        node [hue (Float), saturation (Float), lightness (Float)]
         """
         node = Node('Separate Color', {'Color': self}, mode='HSL')
         return node
@@ -1520,17 +1858,19 @@ class Color(Socket):
     def separate_col(self, mode: Literal['RGB', 'HSV', 'HSL'] = 'RGB'):
         """ > Node <&ShaderNode Separate Color>
 
-        Information
-        -----------
-        - Socket 'Color' : self
+        **Fixed values**
 
-        Arguments
+        | Kind   | Name  | Value  |
+        | ------ | ----- | ------ |
+        | Socket | Color | `self` |
+
+        Parameters
         ---------
-        - mode (str): parameter 'mode' in ('RGB', 'HSV', 'HSL')
+        mode (str): parameter 'mode' in ('RGB', 'HSV', 'HSL')
 
         Returns
         -------
-        - node [red (Float), green (Float), blue (Float)]
+        node [red (Float), green (Float), blue (Float)]
         """
         utils.check_enum_arg('Separate Color', 'mode', mode, 'separate_col', ('RGB', 'HSV', 'HSL'))
         node = Node('Separate Color', {'Color': self}, mode=mode)
@@ -1552,24 +1892,24 @@ class Color(Socket):
                     turbidity = 2.200000047683716):
         """ > Node <&ShaderNode Sky Texture>
 
-        Arguments
+        Parameters
         ---------
-        - aerosol_density (float): parameter 'aerosol_density'
-        - air_density (float): parameter 'air_density'
-        - altitude (float): parameter 'altitude'
-        - ground_albedo (float): parameter 'ground_albedo'
-        - ozone_density (float): parameter 'ozone_density'
-        - sky_type (str): parameter 'sky_type' in ('Single Scattering', 'Multiple Scattering', 'Preetham', 'Hosek / Wilkie')
-        - sun_disc (bool): parameter 'sun_disc'
-        - sun_elevation (float): parameter 'sun_elevation'
-        - sun_intensity (float): parameter 'sun_intensity'
-        - sun_rotation (float): parameter 'sun_rotation'
-        - sun_size (float): parameter 'sun_size'
-        - turbidity (float): parameter 'turbidity'
+        aerosol_density (float): parameter 'aerosol_density'
+        air_density (float): parameter 'air_density'
+        altitude (float): parameter 'altitude'
+        ground_albedo (float): parameter 'ground_albedo'
+        ozone_density (float): parameter 'ozone_density'
+        sky_type (str): parameter 'sky_type' in ('Single Scattering', 'Multiple Scattering', 'Preetham', 'Hosek / Wilkie')
+        sun_disc (bool): parameter 'sun_disc'
+        sun_elevation (float): parameter 'sun_elevation'
+        sun_intensity (float): parameter 'sun_intensity'
+        sun_rotation (float): parameter 'sun_rotation'
+        sun_size (float): parameter 'sun_size'
+        turbidity (float): parameter 'turbidity'
 
         Returns
         -------
-        - Color
+        Color
         """
         utils.check_enum_arg('Sky Texture', 'sky_type', sky_type, 'SkyTexture', ('SINGLE_SCATTERING', 'MULTIPLE_SCATTERING', 'PREETHAM', 'HOSEK_WILKIE'))
         node = Node('Sky Texture', aerosol_density=aerosol_density, air_density=air_density, altitude=altitude, ground_albedo=ground_albedo, ozone_density=ozone_density, sky_type=sky_type, sun_disc=sun_disc, sun_elevation=sun_elevation, sun_intensity=sun_intensity, sun_rotation=sun_rotation, sun_size=sun_size, turbidity=turbidity)
@@ -1581,19 +1921,25 @@ class Color(Socket):
                     space: Literal['TANGENT', 'OBJECT', 'WORLD'] = 'TANGENT'):
         """ > Node <&ShaderNode Vector Displacement>
 
-        Information
-        -----------
-        - Socket 'Vector' : self
+        **Fixed values**
 
-        Arguments
+        | Kind   | Name   | Value  |
+        | ------ | ------ | ------ |
+        | Socket | Vector | `self` |
+
+        Parameters
         ---------
-        - midlevel (Float) : socket 'Midlevel' (id: Midlevel)
-        - scale (Float) : socket 'Scale' (id: Scale)
-        - space (str): parameter 'space' in ('Tangent Space', 'Object Space', 'World Space')
+        midlevel : Float, optional
+            socket 'Midlevel' (id: Midlevel)
+        
+        scale : Float, optional
+            socket 'Scale' (id: Scale)
+        
+        space (str): parameter 'space' in ('Tangent Space', 'Object Space', 'World Space')
 
         Returns
         -------
-        - Vector
+        Vector
         """
         utils.check_enum_arg('Vector Displacement', 'space', space, 'vector_displacement', ('TANGENT', 'OBJECT', 'WORLD'))
         node = Node('Vector Displacement', {'Vector': self, 'Midlevel': midlevel, 'Scale': scale}, space=space)
@@ -1603,13 +1949,13 @@ class Color(Socket):
     def ColorAttribute(cls, layer_name = ''):
         """ > Node <&ShaderNode Color Attribute>
 
-        Arguments
+        Parameters
         ---------
-        - layer_name (str): parameter 'layer_name'
+        layer_name (str): parameter 'layer_name'
 
         Returns
         -------
-        - Color
+        Color
         """
         node = Node('Color Attribute', layer_name=layer_name)
         return cls(node._out)

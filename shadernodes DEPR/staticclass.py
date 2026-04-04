@@ -79,8 +79,8 @@ class StaticClass:
     def frame(cls, label_size=20, shrink=True, text=None):
         """ ShaderNode 'Frame' (NodeFrame)
 
-        Arguments
-        ---------
+        Parameters
+        ----------
         - label_size (int): Node.label_size
         - shrink (bool): Node.shrink
         - text (NoneType): Node.text
@@ -107,8 +107,8 @@ class StaticClass:
     def group_output(cls, is_active_output=True):
         """ ShaderNode 'Group Output' (NodeGroupOutput)
 
-        Arguments
-        ---------
+        Parameters
+        ----------
         - is_active_output (bool): Node.is_active_output
         """
 
@@ -120,13 +120,15 @@ class StaticClass:
     def reroute(cls, input=None):
         """ ShaderNode 'Reroute' (NodeReroute)
 
-        Arguments
-        ---------
-        - input (Color) : socket 'Input' (Input)
+        Parameters
+        ----------
+        input : Color
+            socket 'Input' (Input)
+
 
         Returns
         -------
-        - output (Color)
+        output (Color)
         """
 
         node = Node('Reroute', {'Input': input})
@@ -137,14 +139,18 @@ class StaticClass:
     def add_shader(cls, shader=None, shader_1=None):
         """ ShaderNode 'Add Shader' (ShaderNodeAddShader)
 
-        Arguments
-        ---------
-        - shader (Shader) : socket 'Shader' (Shader)
-        - shader_1 (Shader) : socket 'Shader' (Shader_001)
+        Parameters
+        ----------
+        shader : Shader
+            socket 'Shader' (Shader)
+
+        shader_1 : Shader
+            socket 'Shader' (Shader_001)
+
 
         Returns
         -------
-        - shader (Shader)
+        shader (Shader)
         """
 
         node = Node('Add Shader', {'Shader': shader, 'Shader_001': shader_1})
@@ -155,18 +161,24 @@ class StaticClass:
     def ambient_occlusion(cls, color=None, distance=None, normal=None, inside=False, only_local=False, samples=16):
         """ ShaderNode 'Ambient Occlusion' (ShaderNodeAmbientOcclusion)
 
-        Arguments
-        ---------
-        - color (Color) : socket 'Color' (Color)
-        - distance (Float) : socket 'Distance' (Distance)
-        - normal (Vector) : socket 'Normal' (Normal)
+        Parameters
+        ----------
+        color : Color
+            socket 'Color' (Color)
+
+        distance : Float
+            socket 'Distance' (Distance)
+
+        normal : Vector
+            socket 'Normal' (Normal)
+
         - inside (bool): Node.inside
         - only_local (bool): Node.only_local
         - samples (int): Node.samples
 
         Returns
         -------
-        - Node: [color (Color), ao (Float)]
+        Node: [color (Color), ao (Float)]
         """
 
         node = Node('Ambient Occlusion', {'Color': color, 'Distance': distance, 'Normal': normal}, inside=inside, only_local=only_local, samples=samples)
@@ -177,14 +189,14 @@ class StaticClass:
     def attribute(cls, attribute_name='', attribute_type='GEOMETRY'):
         """ ShaderNode 'Attribute' (ShaderNodeAttribute)
 
-        Arguments
-        ---------
+        Parameters
+        ----------
         - attribute_name (str): Node.attribute_name
         - attribute_type (str): Node.attribute_type in ('GEOMETRY', 'OBJECT', 'INSTANCER', 'VIEW_LAYER')
 
         Returns
         -------
-        - Node: [color (Color), vector (Vector), fac (Float), alpha (Float)]
+        Node: [color (Color), vector (Vector), fac (Float), alpha (Float)]
         """
 
         node = Node('Attribute', attribute_name=attribute_name, attribute_type=attribute_type)
@@ -195,14 +207,18 @@ class StaticClass:
     def background(cls, color=None, strength=None):
         """ ShaderNode 'Background' (ShaderNodeBackground)
 
-        Arguments
-        ---------
-        - color (Color) : socket 'Color' (Color)
-        - strength (Float) : socket 'Strength' (Strength)
+        Parameters
+        ----------
+        color : Color
+            socket 'Color' (Color)
+
+        strength : Float
+            socket 'Strength' (Strength)
+
 
         Returns
         -------
-        - background (Shader)
+        background (Shader)
         """
 
         node = Node('Background', {'Color': color, 'Strength': strength})
@@ -213,15 +229,19 @@ class StaticClass:
     def bevel(cls, radius=None, normal=None, samples=4):
         """ ShaderNode 'Bevel' (ShaderNodeBevel)
 
-        Arguments
-        ---------
-        - radius (Float) : socket 'Radius' (Radius)
-        - normal (Vector) : socket 'Normal' (Normal)
+        Parameters
+        ----------
+        radius : Float
+            socket 'Radius' (Radius)
+
+        normal : Vector
+            socket 'Normal' (Normal)
+
         - samples (int): Node.samples
 
         Returns
         -------
-        - normal (Vector)
+        normal (Vector)
         """
 
         node = Node('Bevel', {'Radius': radius, 'Normal': normal}, samples=samples)
@@ -232,13 +252,15 @@ class StaticClass:
     def blackbody(cls, temperature=None):
         """ ShaderNode 'Blackbody' (ShaderNodeBlackbody)
 
-        Arguments
-        ---------
-        - temperature (Float) : socket 'Temperature' (Temperature)
+        Parameters
+        ----------
+        temperature : Float
+            socket 'Temperature' (Temperature)
+
 
         Returns
         -------
-        - color (Color)
+        color (Color)
         """
 
         node = Node('Blackbody', {'Temperature': temperature})
@@ -249,15 +271,21 @@ class StaticClass:
     def brightness_contrast(cls, color=None, bright=None, contrast=None):
         """ ShaderNode 'Brightness/Contrast' (ShaderNodeBrightContrast)
 
-        Arguments
-        ---------
-        - color (Color) : socket 'Color' (Color)
-        - bright (Float) : socket 'Bright' (Bright)
-        - contrast (Float) : socket 'Contrast' (Contrast)
+        Parameters
+        ----------
+        color : Color
+            socket 'Color' (Color)
+
+        bright : Float
+            socket 'Bright' (Bright)
+
+        contrast : Float
+            socket 'Contrast' (Contrast)
+
 
         Returns
         -------
-        - color (Color)
+        color (Color)
         """
 
         node = Node('Brightness/Contrast', {'Color': color, 'Bright': bright, 'Contrast': contrast})
@@ -268,19 +296,31 @@ class StaticClass:
     def glossy_bsdf(cls, color=None, roughness=None, anisotropy=None, rotation=None, normal=None, tangent=None, distribution='MULTI_GGX'):
         """ ShaderNode 'Glossy BSDF' (ShaderNodeBsdfAnisotropic)
 
-        Arguments
-        ---------
-        - color (Color) : socket 'Color' (Color)
-        - roughness (Float) : socket 'Roughness' (Roughness)
-        - anisotropy (Float) : socket 'Anisotropy' (Anisotropy)
-        - rotation (Float) : socket 'Rotation' (Rotation)
-        - normal (Vector) : socket 'Normal' (Normal)
-        - tangent (Vector) : socket 'Tangent' (Tangent)
+        Parameters
+        ----------
+        color : Color
+            socket 'Color' (Color)
+
+        roughness : Float
+            socket 'Roughness' (Roughness)
+
+        anisotropy : Float
+            socket 'Anisotropy' (Anisotropy)
+
+        rotation : Float
+            socket 'Rotation' (Rotation)
+
+        normal : Vector
+            socket 'Normal' (Normal)
+
+        tangent : Vector
+            socket 'Tangent' (Tangent)
+
         - distribution (str): Node.distribution in ('BECKMANN', 'GGX', 'ASHIKHMIN_SHIRLEY', 'MULTI_GGX')
 
         Returns
         -------
-        - bsdf (Shader)
+        bsdf (Shader)
         """
 
         node = Node('Glossy BSDF', {'Color': color, 'Roughness': roughness, 'Anisotropy': anisotropy, 'Rotation': rotation, 'Normal': normal, 'Tangent': tangent}, distribution=distribution)
@@ -291,15 +331,21 @@ class StaticClass:
     def diffuse_bsdf(cls, color=None, roughness=None, normal=None):
         """ ShaderNode 'Diffuse BSDF' (ShaderNodeBsdfDiffuse)
 
-        Arguments
-        ---------
-        - color (Color) : socket 'Color' (Color)
-        - roughness (Float) : socket 'Roughness' (Roughness)
-        - normal (Vector) : socket 'Normal' (Normal)
+        Parameters
+        ----------
+        color : Color
+            socket 'Color' (Color)
+
+        roughness : Float
+            socket 'Roughness' (Roughness)
+
+        normal : Vector
+            socket 'Normal' (Normal)
+
 
         Returns
         -------
-        - bsdf (Shader)
+        bsdf (Shader)
         """
 
         node = Node('Diffuse BSDF', {'Color': color, 'Roughness': roughness, 'Normal': normal})
@@ -310,17 +356,25 @@ class StaticClass:
     def glass_bsdf(cls, color=None, roughness=None, ior=None, normal=None, distribution='MULTI_GGX'):
         """ ShaderNode 'Glass BSDF' (ShaderNodeBsdfGlass)
 
-        Arguments
-        ---------
-        - color (Color) : socket 'Color' (Color)
-        - roughness (Float) : socket 'Roughness' (Roughness)
-        - ior (Float) : socket 'IOR' (IOR)
-        - normal (Vector) : socket 'Normal' (Normal)
+        Parameters
+        ----------
+        color : Color
+            socket 'Color' (Color)
+
+        roughness : Float
+            socket 'Roughness' (Roughness)
+
+        ior : Float
+            socket 'IOR' (IOR)
+
+        normal : Vector
+            socket 'Normal' (Normal)
+
         - distribution (str): Node.distribution in ('BECKMANN', 'GGX', 'MULTI_GGX')
 
         Returns
         -------
-        - bsdf (Shader)
+        bsdf (Shader)
         """
 
         node = Node('Glass BSDF', {'Color': color, 'Roughness': roughness, 'IOR': ior, 'Normal': normal}, distribution=distribution)
@@ -331,18 +385,28 @@ class StaticClass:
     def hair_bsdf(cls, color=None, offset=None, roughnessu=None, roughnessv=None, tangent=None, component='Reflection'):
         """ ShaderNode 'Hair BSDF' (ShaderNodeBsdfHair)
 
-        Arguments
-        ---------
-        - color (Color) : socket 'Color' (Color)
-        - offset (Float) : socket 'Offset' (Offset)
-        - roughnessu (Float) : socket 'RoughnessU' (RoughnessU)
-        - roughnessv (Float) : socket 'RoughnessV' (RoughnessV)
-        - tangent (Vector) : socket 'Tangent' (Tangent)
+        Parameters
+        ----------
+        color : Color
+            socket 'Color' (Color)
+
+        offset : Float
+            socket 'Offset' (Offset)
+
+        roughnessu : Float
+            socket 'RoughnessU' (RoughnessU)
+
+        roughnessv : Float
+            socket 'RoughnessV' (RoughnessV)
+
+        tangent : Vector
+            socket 'Tangent' (Tangent)
+
         - component (str): Node.component in ('Reflection', 'Transmission')
 
         Returns
         -------
-        - bsdf (Shader)
+        bsdf (Shader)
         """
 
         node = Node('Hair BSDF', {'Color': color, 'Offset': offset, 'RoughnessU': roughnessu, 'RoughnessV': roughnessv, 'Tangent': tangent}, component=component)
@@ -353,22 +417,38 @@ class StaticClass:
     def principled_hair_bsdf(cls, color=None, roughness=None, radial_roughness=None, coat=None, ior=None, offset=None, random_roughness=None, random=None, model='CHIANG', parametrization='COLOR'):
         """ ShaderNode 'Principled Hair BSDF' (ShaderNodeBsdfHairPrincipled)
 
-        Arguments
-        ---------
-        - color (Color) : socket 'Color' (Color)
-        - roughness (Float) : socket 'Roughness' (Roughness)
-        - radial_roughness (Float) : socket 'Radial Roughness' (Radial Roughness)
-        - coat (Float) : socket 'Coat' (Coat)
-        - ior (Float) : socket 'IOR' (IOR)
-        - offset (Float) : socket 'Offset' (Offset)
-        - random_roughness (Float) : socket 'Random Roughness' (Random Roughness)
-        - random (Float) : socket 'Random' (Random)
+        Parameters
+        ----------
+        color : Color
+            socket 'Color' (Color)
+
+        roughness : Float
+            socket 'Roughness' (Roughness)
+
+        radial_roughness : Float
+            socket 'Radial Roughness' (Radial Roughness)
+
+        coat : Float
+            socket 'Coat' (Coat)
+
+        ior : Float
+            socket 'IOR' (IOR)
+
+        offset : Float
+            socket 'Offset' (Offset)
+
+        random_roughness : Float
+            socket 'Random Roughness' (Random Roughness)
+
+        random : Float
+            socket 'Random' (Random)
+
         - model (str): Node.model in ('CHIANG', 'HUANG')
         - parametrization (str): Node.parametrization in ('ABSORPTION', 'MELANIN', 'COLOR')
 
         Returns
         -------
-        - bsdf (Shader)
+        bsdf (Shader)
         """
 
         node = Node('Principled Hair BSDF', {'Color': color, 'Roughness': roughness, 'Radial Roughness': radial_roughness, 'Coat': coat, 'IOR': ior, 'Offset': offset, 'Random Roughness': random_roughness, 'Random': random}, model=model, parametrization=parametrization)
@@ -379,42 +459,98 @@ class StaticClass:
     def principled_bsdf(cls, base_color=None, metallic=None, roughness=None, ior=None, alpha=None, normal=None, subsurface_weight=None, subsurface_radius=None, subsurface_scale=None, subsurface_anisotropy=None, specular_ior_level=None, specular_tint=None, anisotropic=None, anisotropic_rotation=None, tangent=None, transmission_weight=None, coat_weight=None, coat_roughness=None, coat_ior=None, coat_tint=None, coat_normal=None, sheen_weight=None, sheen_roughness=None, sheen_tint=None, emission_color=None, emission_strength=None, thin_film_thickness=None, thin_film_ior=None, distribution='MULTI_GGX', subsurface_method='RANDOM_WALK'):
         """ ShaderNode 'Principled BSDF' (ShaderNodeBsdfPrincipled)
 
-        Arguments
-        ---------
-        - base_color (Color) : socket 'Base Color' (Base Color)
-        - metallic (Float) : socket 'Metallic' (Metallic)
-        - roughness (Float) : socket 'Roughness' (Roughness)
-        - ior (Float) : socket 'IOR' (IOR)
-        - alpha (Float) : socket 'Alpha' (Alpha)
-        - normal (Vector) : socket 'Normal' (Normal)
-        - subsurface_weight (Float) : socket 'Subsurface Weight' (Subsurface Weight)
-        - subsurface_radius (Vector) : socket 'Subsurface Radius' (Subsurface Radius)
-        - subsurface_scale (Float) : socket 'Subsurface Scale' (Subsurface Scale)
-        - subsurface_anisotropy (Float) : socket 'Subsurface Anisotropy' (Subsurface Anisotropy)
-        - specular_ior_level (Float) : socket 'Specular IOR Level' (Specular IOR Level)
-        - specular_tint (Color) : socket 'Specular Tint' (Specular Tint)
-        - anisotropic (Float) : socket 'Anisotropic' (Anisotropic)
-        - anisotropic_rotation (Float) : socket 'Anisotropic Rotation' (Anisotropic Rotation)
-        - tangent (Vector) : socket 'Tangent' (Tangent)
-        - transmission_weight (Float) : socket 'Transmission Weight' (Transmission Weight)
-        - coat_weight (Float) : socket 'Coat Weight' (Coat Weight)
-        - coat_roughness (Float) : socket 'Coat Roughness' (Coat Roughness)
-        - coat_ior (Float) : socket 'Coat IOR' (Coat IOR)
-        - coat_tint (Color) : socket 'Coat Tint' (Coat Tint)
-        - coat_normal (Vector) : socket 'Coat Normal' (Coat Normal)
-        - sheen_weight (Float) : socket 'Sheen Weight' (Sheen Weight)
-        - sheen_roughness (Float) : socket 'Sheen Roughness' (Sheen Roughness)
-        - sheen_tint (Color) : socket 'Sheen Tint' (Sheen Tint)
-        - emission_color (Color) : socket 'Emission Color' (Emission Color)
-        - emission_strength (Float) : socket 'Emission Strength' (Emission Strength)
-        - thin_film_thickness (Float) : socket 'Thin Film Thickness' (Thin Film Thickness)
-        - thin_film_ior (Float) : socket 'Thin Film IOR' (Thin Film IOR)
+        Parameters
+        ----------
+        base_color : Color
+            socket 'Base Color' (Base Color)
+
+        metallic : Float
+            socket 'Metallic' (Metallic)
+
+        roughness : Float
+            socket 'Roughness' (Roughness)
+
+        ior : Float
+            socket 'IOR' (IOR)
+
+        alpha : Float
+            socket 'Alpha' (Alpha)
+
+        normal : Vector
+            socket 'Normal' (Normal)
+
+        subsurface_weight : Float
+            socket 'Subsurface Weight' (Subsurface Weight)
+
+        subsurface_radius : Vector
+            socket 'Subsurface Radius' (Subsurface Radius)
+
+        subsurface_scale : Float
+            socket 'Subsurface Scale' (Subsurface Scale)
+
+        subsurface_anisotropy : Float
+            socket 'Subsurface Anisotropy' (Subsurface Anisotropy)
+
+        specular_ior_level : Float
+            socket 'Specular IOR Level' (Specular IOR Level)
+
+        specular_tint : Color
+            socket 'Specular Tint' (Specular Tint)
+
+        anisotropic : Float
+            socket 'Anisotropic' (Anisotropic)
+
+        anisotropic_rotation : Float
+            socket 'Anisotropic Rotation' (Anisotropic Rotation)
+
+        tangent : Vector
+            socket 'Tangent' (Tangent)
+
+        transmission_weight : Float
+            socket 'Transmission Weight' (Transmission Weight)
+
+        coat_weight : Float
+            socket 'Coat Weight' (Coat Weight)
+
+        coat_roughness : Float
+            socket 'Coat Roughness' (Coat Roughness)
+
+        coat_ior : Float
+            socket 'Coat IOR' (Coat IOR)
+
+        coat_tint : Color
+            socket 'Coat Tint' (Coat Tint)
+
+        coat_normal : Vector
+            socket 'Coat Normal' (Coat Normal)
+
+        sheen_weight : Float
+            socket 'Sheen Weight' (Sheen Weight)
+
+        sheen_roughness : Float
+            socket 'Sheen Roughness' (Sheen Roughness)
+
+        sheen_tint : Color
+            socket 'Sheen Tint' (Sheen Tint)
+
+        emission_color : Color
+            socket 'Emission Color' (Emission Color)
+
+        emission_strength : Float
+            socket 'Emission Strength' (Emission Strength)
+
+        thin_film_thickness : Float
+            socket 'Thin Film Thickness' (Thin Film Thickness)
+
+        thin_film_ior : Float
+            socket 'Thin Film IOR' (Thin Film IOR)
+
         - distribution (str): Node.distribution in ('GGX', 'MULTI_GGX')
         - subsurface_method (str): Node.subsurface_method in ('BURLEY', 'RANDOM_WALK', 'RANDOM_WALK_SKIN')
 
         Returns
         -------
-        - bsdf (Shader)
+        bsdf (Shader)
         """
 
         node = Node('Principled BSDF', {'Base Color': base_color, 'Metallic': metallic, 'Roughness': roughness, 'IOR': ior, 'Alpha': alpha, 'Normal': normal, 'Subsurface Weight': subsurface_weight, 'Subsurface Radius': subsurface_radius, 'Subsurface Scale': subsurface_scale, 'Subsurface Anisotropy': subsurface_anisotropy, 'Specular IOR Level': specular_ior_level, 'Specular Tint': specular_tint, 'Anisotropic': anisotropic, 'Anisotropic Rotation': anisotropic_rotation, 'Tangent': tangent, 'Transmission Weight': transmission_weight, 'Coat Weight': coat_weight, 'Coat Roughness': coat_roughness, 'Coat IOR': coat_ior, 'Coat Tint': coat_tint, 'Coat Normal': coat_normal, 'Sheen Weight': sheen_weight, 'Sheen Roughness': sheen_roughness, 'Sheen Tint': sheen_tint, 'Emission Color': emission_color, 'Emission Strength': emission_strength, 'Thin Film Thickness': thin_film_thickness, 'Thin Film IOR': thin_film_ior}, distribution=distribution, subsurface_method=subsurface_method)
@@ -425,15 +561,21 @@ class StaticClass:
     def ray_portal_bsdf(cls, color=None, position=None, direction=None):
         """ ShaderNode 'Ray Portal BSDF' (ShaderNodeBsdfRayPortal)
 
-        Arguments
-        ---------
-        - color (Color) : socket 'Color' (Color)
-        - position (Vector) : socket 'Position' (Position)
-        - direction (Vector) : socket 'Direction' (Direction)
+        Parameters
+        ----------
+        color : Color
+            socket 'Color' (Color)
+
+        position : Vector
+            socket 'Position' (Position)
+
+        direction : Vector
+            socket 'Direction' (Direction)
+
 
         Returns
         -------
-        - bsdf (Shader)
+        bsdf (Shader)
         """
 
         node = Node('Ray Portal BSDF', {'Color': color, 'Position': position, 'Direction': direction})
@@ -444,17 +586,25 @@ class StaticClass:
     def refraction_bsdf(cls, color=None, roughness=None, ior=None, normal=None, distribution='BECKMANN'):
         """ ShaderNode 'Refraction BSDF' (ShaderNodeBsdfRefraction)
 
-        Arguments
-        ---------
-        - color (Color) : socket 'Color' (Color)
-        - roughness (Float) : socket 'Roughness' (Roughness)
-        - ior (Float) : socket 'IOR' (IOR)
-        - normal (Vector) : socket 'Normal' (Normal)
+        Parameters
+        ----------
+        color : Color
+            socket 'Color' (Color)
+
+        roughness : Float
+            socket 'Roughness' (Roughness)
+
+        ior : Float
+            socket 'IOR' (IOR)
+
+        normal : Vector
+            socket 'Normal' (Normal)
+
         - distribution (str): Node.distribution in ('BECKMANN', 'GGX')
 
         Returns
         -------
-        - bsdf (Shader)
+        bsdf (Shader)
         """
 
         node = Node('Refraction BSDF', {'Color': color, 'Roughness': roughness, 'IOR': ior, 'Normal': normal}, distribution=distribution)
@@ -465,16 +615,22 @@ class StaticClass:
     def sheen_bsdf(cls, color=None, roughness=None, normal=None, distribution='MICROFIBER'):
         """ ShaderNode 'Sheen BSDF' (ShaderNodeBsdfSheen)
 
-        Arguments
-        ---------
-        - color (Color) : socket 'Color' (Color)
-        - roughness (Float) : socket 'Roughness' (Roughness)
-        - normal (Vector) : socket 'Normal' (Normal)
+        Parameters
+        ----------
+        color : Color
+            socket 'Color' (Color)
+
+        roughness : Float
+            socket 'Roughness' (Roughness)
+
+        normal : Vector
+            socket 'Normal' (Normal)
+
         - distribution (str): Node.distribution in ('ASHIKHMIN', 'MICROFIBER')
 
         Returns
         -------
-        - bsdf (Shader)
+        bsdf (Shader)
         """
 
         node = Node('Sheen BSDF', {'Color': color, 'Roughness': roughness, 'Normal': normal}, distribution=distribution)
@@ -485,17 +641,25 @@ class StaticClass:
     def toon_bsdf(cls, color=None, size=None, smooth=None, normal=None, component='DIFFUSE'):
         """ ShaderNode 'Toon BSDF' (ShaderNodeBsdfToon)
 
-        Arguments
-        ---------
-        - color (Color) : socket 'Color' (Color)
-        - size (Float) : socket 'Size' (Size)
-        - smooth (Float) : socket 'Smooth' (Smooth)
-        - normal (Vector) : socket 'Normal' (Normal)
+        Parameters
+        ----------
+        color : Color
+            socket 'Color' (Color)
+
+        size : Float
+            socket 'Size' (Size)
+
+        smooth : Float
+            socket 'Smooth' (Smooth)
+
+        normal : Vector
+            socket 'Normal' (Normal)
+
         - component (str): Node.component in ('DIFFUSE', 'GLOSSY')
 
         Returns
         -------
-        - bsdf (Shader)
+        bsdf (Shader)
         """
 
         node = Node('Toon BSDF', {'Color': color, 'Size': size, 'Smooth': smooth, 'Normal': normal}, component=component)
@@ -506,14 +670,18 @@ class StaticClass:
     def translucent_bsdf(cls, color=None, normal=None):
         """ ShaderNode 'Translucent BSDF' (ShaderNodeBsdfTranslucent)
 
-        Arguments
-        ---------
-        - color (Color) : socket 'Color' (Color)
-        - normal (Vector) : socket 'Normal' (Normal)
+        Parameters
+        ----------
+        color : Color
+            socket 'Color' (Color)
+
+        normal : Vector
+            socket 'Normal' (Normal)
+
 
         Returns
         -------
-        - bsdf (Shader)
+        bsdf (Shader)
         """
 
         node = Node('Translucent BSDF', {'Color': color, 'Normal': normal})
@@ -524,13 +692,15 @@ class StaticClass:
     def transparent_bsdf(cls, color=None):
         """ ShaderNode 'Transparent BSDF' (ShaderNodeBsdfTransparent)
 
-        Arguments
-        ---------
-        - color (Color) : socket 'Color' (Color)
+        Parameters
+        ----------
+        color : Color
+            socket 'Color' (Color)
+
 
         Returns
         -------
-        - bsdf (Shader)
+        bsdf (Shader)
         """
 
         node = Node('Transparent BSDF', {'Color': color})
@@ -541,17 +711,25 @@ class StaticClass:
     def bump(cls, strength=None, distance=None, height=None, normal=None, invert=False):
         """ ShaderNode 'Bump' (ShaderNodeBump)
 
-        Arguments
-        ---------
-        - strength (Float) : socket 'Strength' (Strength)
-        - distance (Float) : socket 'Distance' (Distance)
-        - height (Float) : socket 'Height' (Height)
-        - normal (Vector) : socket 'Normal' (Normal)
+        Parameters
+        ----------
+        strength : Float
+            socket 'Strength' (Strength)
+
+        distance : Float
+            socket 'Distance' (Distance)
+
+        height : Float
+            socket 'Height' (Height)
+
+        normal : Vector
+            socket 'Normal' (Normal)
+
         - invert (bool): Node.invert
 
         Returns
         -------
-        - normal (Vector)
+        normal (Vector)
         """
 
         node = Node('Bump', {'Strength': strength, 'Distance': distance, 'Height': height, 'Normal': normal}, invert=invert)
@@ -565,7 +743,7 @@ class StaticClass:
 
         Returns
         -------
-        - Node: [view_vector (Vector), view_z_depth (Float), view_distance (Float)]
+        Node: [view_vector (Vector), view_z_depth (Float), view_distance (Float)]
         """
 
         node = Node('Camera Data')
@@ -576,16 +754,22 @@ class StaticClass:
     def clamp(cls, value=None, min=None, max=None, clamp_type='MINMAX'):
         """ ShaderNode 'Clamp' (ShaderNodeClamp)
 
-        Arguments
-        ---------
-        - value (Float) : socket 'Value' (Value)
-        - min (Float) : socket 'Min' (Min)
-        - max (Float) : socket 'Max' (Max)
+        Parameters
+        ----------
+        value : Float
+            socket 'Value' (Value)
+
+        min : Float
+            socket 'Min' (Min)
+
+        max : Float
+            socket 'Max' (Max)
+
         - clamp_type (str): Node.clamp_type in ('MINMAX', 'RANGE')
 
         Returns
         -------
-        - result (Float)
+        result (Float)
         """
 
         node = Node('Clamp', {'Value': value, 'Min': min, 'Max': max}, clamp_type=clamp_type)
@@ -596,16 +780,22 @@ class StaticClass:
     def combine_color(cls, red=None, green=None, blue=None, mode='RGB'):
         """ ShaderNode 'Combine Color' (ShaderNodeCombineColor)
 
-        Arguments
-        ---------
-        - red (Float) : socket 'Red' (Red)
-        - green (Float) : socket 'Green' (Green)
-        - blue (Float) : socket 'Blue' (Blue)
+        Parameters
+        ----------
+        red : Float
+            socket 'Red' (Red)
+
+        green : Float
+            socket 'Green' (Green)
+
+        blue : Float
+            socket 'Blue' (Blue)
+
         - mode (str): Node.mode in ('RGB', 'HSV', 'HSL')
 
         Returns
         -------
-        - color (Color)
+        color (Color)
         """
 
         node = Node('Combine Color', {'Red': red, 'Green': green, 'Blue': blue}, mode=mode)
@@ -616,15 +806,21 @@ class StaticClass:
     def combine_xyz(cls, x=None, y=None, z=None):
         """ ShaderNode 'Combine XYZ' (ShaderNodeCombineXYZ)
 
-        Arguments
-        ---------
-        - x (Float) : socket 'X' (X)
-        - y (Float) : socket 'Y' (Y)
-        - z (Float) : socket 'Z' (Z)
+        Parameters
+        ----------
+        x : Float
+            socket 'X' (X)
+
+        y : Float
+            socket 'Y' (Y)
+
+        z : Float
+            socket 'Z' (Z)
+
 
         Returns
         -------
-        - vector (Vector)
+        vector (Vector)
         """
 
         node = Node('Combine XYZ', {'X': x, 'Y': y, 'Z': z})
@@ -635,17 +831,25 @@ class StaticClass:
     def displacement(cls, height=None, midlevel=None, scale=None, normal=None, space='OBJECT'):
         """ ShaderNode 'Displacement' (ShaderNodeDisplacement)
 
-        Arguments
-        ---------
-        - height (Float) : socket 'Height' (Height)
-        - midlevel (Float) : socket 'Midlevel' (Midlevel)
-        - scale (Float) : socket 'Scale' (Scale)
-        - normal (Vector) : socket 'Normal' (Normal)
+        Parameters
+        ----------
+        height : Float
+            socket 'Height' (Height)
+
+        midlevel : Float
+            socket 'Midlevel' (Midlevel)
+
+        scale : Float
+            socket 'Scale' (Scale)
+
+        normal : Vector
+            socket 'Normal' (Normal)
+
         - space (str): Node.space in ('OBJECT', 'WORLD')
 
         Returns
         -------
-        - displacement (Vector)
+        displacement (Vector)
         """
 
         node = Node('Displacement', {'Height': height, 'Midlevel': midlevel, 'Scale': scale, 'Normal': normal}, space=space)
@@ -656,21 +860,39 @@ class StaticClass:
     def specular_bsdf(cls, base_color=None, specular=None, roughness=None, emissive_color=None, transparency=None, normal=None, clear_coat=None, clear_coat_roughness=None, clear_coat_normal=None):
         """ ShaderNode 'Specular BSDF' (ShaderNodeEeveeSpecular)
 
-        Arguments
-        ---------
-        - base_color (Color) : socket 'Base Color' (Base Color)
-        - specular (Color) : socket 'Specular' (Specular)
-        - roughness (Float) : socket 'Roughness' (Roughness)
-        - emissive_color (Color) : socket 'Emissive Color' (Emissive Color)
-        - transparency (Float) : socket 'Transparency' (Transparency)
-        - normal (Vector) : socket 'Normal' (Normal)
-        - clear_coat (Float) : socket 'Clear Coat' (Clear Coat)
-        - clear_coat_roughness (Float) : socket 'Clear Coat Roughness' (Clear Coat Roughness)
-        - clear_coat_normal (Vector) : socket 'Clear Coat Normal' (Clear Coat Normal)
+        Parameters
+        ----------
+        base_color : Color
+            socket 'Base Color' (Base Color)
+
+        specular : Color
+            socket 'Specular' (Specular)
+
+        roughness : Float
+            socket 'Roughness' (Roughness)
+
+        emissive_color : Color
+            socket 'Emissive Color' (Emissive Color)
+
+        transparency : Float
+            socket 'Transparency' (Transparency)
+
+        normal : Vector
+            socket 'Normal' (Normal)
+
+        clear_coat : Float
+            socket 'Clear Coat' (Clear Coat)
+
+        clear_coat_roughness : Float
+            socket 'Clear Coat Roughness' (Clear Coat Roughness)
+
+        clear_coat_normal : Vector
+            socket 'Clear Coat Normal' (Clear Coat Normal)
+
 
         Returns
         -------
-        - bsdf (Shader)
+        bsdf (Shader)
         """
 
         node = Node('Specular BSDF', {'Base Color': base_color, 'Specular': specular, 'Roughness': roughness, 'Emissive Color': emissive_color, 'Transparency': transparency, 'Normal': normal, 'Clear Coat': clear_coat, 'Clear Coat Roughness': clear_coat_roughness, 'Clear Coat Normal': clear_coat_normal})
@@ -681,14 +903,18 @@ class StaticClass:
     def emission(cls, color=None, strength=None):
         """ ShaderNode 'Emission' (ShaderNodeEmission)
 
-        Arguments
-        ---------
-        - color (Color) : socket 'Color' (Color)
-        - strength (Float) : socket 'Strength' (Strength)
+        Parameters
+        ----------
+        color : Color
+            socket 'Color' (Color)
+
+        strength : Float
+            socket 'Strength' (Strength)
+
 
         Returns
         -------
-        - emission (Shader)
+        emission (Shader)
         """
 
         node = Node('Emission', {'Color': color, 'Strength': strength})
@@ -699,15 +925,19 @@ class StaticClass:
     def float_curve(cls, factor=None, value=None, mapping=None):
         """ ShaderNode 'Float Curve' (ShaderNodeFloatCurve)
 
-        Arguments
-        ---------
-        - factor (Float) : socket 'Factor' (Factor)
-        - value (Float) : socket 'Value' (Value)
+        Parameters
+        ----------
+        factor : Float
+            socket 'Factor' (Factor)
+
+        value : Float
+            socket 'Value' (Value)
+
         - mapping (CurveMapping): Node.mapping
 
         Returns
         -------
-        - value (Float)
+        value (Float)
         """
 
         node = Node('Float Curve', {'Factor': factor, 'Value': value}, mapping=mapping)
@@ -718,14 +948,18 @@ class StaticClass:
     def fresnel(cls, ior=None, normal=None):
         """ ShaderNode 'Fresnel' (ShaderNodeFresnel)
 
-        Arguments
-        ---------
-        - ior (Float) : socket 'IOR' (IOR)
-        - normal (Vector) : socket 'Normal' (Normal)
+        Parameters
+        ----------
+        ior : Float
+            socket 'IOR' (IOR)
+
+        normal : Vector
+            socket 'Normal' (Normal)
+
 
         Returns
         -------
-        - fac (Float)
+        fac (Float)
         """
 
         node = Node('Fresnel', {'IOR': ior, 'Normal': normal})
@@ -736,14 +970,18 @@ class StaticClass:
     def gamma(cls, color=None, gamma=None):
         """ ShaderNode 'Gamma' (ShaderNodeGamma)
 
-        Arguments
-        ---------
-        - color (Color) : socket 'Color' (Color)
-        - gamma (Float) : socket 'Gamma' (Gamma)
+        Parameters
+        ----------
+        color : Color
+            socket 'Color' (Color)
+
+        gamma : Float
+            socket 'Gamma' (Gamma)
+
 
         Returns
         -------
-        - color (Color)
+        color (Color)
         """
 
         node = Node('Gamma', {'Color': color, 'Gamma': gamma})
@@ -754,8 +992,8 @@ class StaticClass:
     def group(cls, node_tree=None):
         """ ShaderNode 'Group' (ShaderNodeGroup)
 
-        Arguments
-        ---------
+        Parameters
+        ----------
         - node_tree (NoneType): Node.node_tree
         """
 
@@ -770,7 +1008,7 @@ class StaticClass:
 
         Returns
         -------
-        - Node: [is_strand (Float), intercept (Float), length (Float), thickness (Float), tangent_normal (Vector), random (Float)]
+        Node: [is_strand (Float), intercept (Float), length (Float), thickness (Float), tangent_normal (Vector), random (Float)]
         """
 
         node = Node('Curves Info')
@@ -783,7 +1021,7 @@ class StaticClass:
 
         Returns
         -------
-        - holdout (Shader)
+        holdout (Shader)
         """
 
         node = Node('Holdout')
@@ -794,17 +1032,27 @@ class StaticClass:
     def hue_saturation_value(cls, hue=None, saturation=None, value=None, fac=None, color=None):
         """ ShaderNode 'Hue/Saturation/Value' (ShaderNodeHueSaturation)
 
-        Arguments
-        ---------
-        - hue (Float) : socket 'Hue' (Hue)
-        - saturation (Float) : socket 'Saturation' (Saturation)
-        - value (Float) : socket 'Value' (Value)
-        - fac (Float) : socket 'Fac' (Fac)
-        - color (Color) : socket 'Color' (Color)
+        Parameters
+        ----------
+        hue : Float
+            socket 'Hue' (Hue)
+
+        saturation : Float
+            socket 'Saturation' (Saturation)
+
+        value : Float
+            socket 'Value' (Value)
+
+        fac : Float
+            socket 'Fac' (Fac)
+
+        color : Color
+            socket 'Color' (Color)
+
 
         Returns
         -------
-        - color (Color)
+        color (Color)
         """
 
         node = Node('Hue/Saturation/Value', {'Hue': hue, 'Saturation': saturation, 'Value': value, 'Fac': fac, 'Color': color})
@@ -815,14 +1063,18 @@ class StaticClass:
     def invert_color(cls, fac=None, color=None):
         """ ShaderNode 'Invert Color' (ShaderNodeInvert)
 
-        Arguments
-        ---------
-        - fac (Float) : socket 'Fac' (Fac)
-        - color (Color) : socket 'Color' (Color)
+        Parameters
+        ----------
+        fac : Float
+            socket 'Fac' (Fac)
+
+        color : Color
+            socket 'Color' (Color)
+
 
         Returns
         -------
-        - color (Color)
+        color (Color)
         """
 
         node = Node('Invert Color', {'Fac': fac, 'Color': color})
@@ -833,14 +1085,18 @@ class StaticClass:
     def layer_weight(cls, blend=None, normal=None):
         """ ShaderNode 'Layer Weight' (ShaderNodeLayerWeight)
 
-        Arguments
-        ---------
-        - blend (Float) : socket 'Blend' (Blend)
-        - normal (Vector) : socket 'Normal' (Normal)
+        Parameters
+        ----------
+        blend : Float
+            socket 'Blend' (Blend)
+
+        normal : Vector
+            socket 'Normal' (Normal)
+
 
         Returns
         -------
-        - Node: [fresnel (Float), facing (Float)]
+        Node: [fresnel (Float), facing (Float)]
         """
 
         node = Node('Layer Weight', {'Blend': blend, 'Normal': normal})
@@ -851,14 +1107,18 @@ class StaticClass:
     def light_falloff(cls, strength=None, smooth=None):
         """ ShaderNode 'Light Falloff' (ShaderNodeLightFalloff)
 
-        Arguments
-        ---------
-        - strength (Float) : socket 'Strength' (Strength)
-        - smooth (Float) : socket 'Smooth' (Smooth)
+        Parameters
+        ----------
+        strength : Float
+            socket 'Strength' (Strength)
+
+        smooth : Float
+            socket 'Smooth' (Smooth)
+
 
         Returns
         -------
-        - Node: [quadratic (Float), linear (Float), constant (Float)]
+        Node: [quadratic (Float), linear (Float), constant (Float)]
         """
 
         node = Node('Light Falloff', {'Strength': strength, 'Smooth': smooth})
@@ -872,7 +1132,7 @@ class StaticClass:
 
         Returns
         -------
-        - Node: [is_camera_ray (Float), is_shadow_ray (Float), is_diffuse_ray (Float), is_glossy_ray (Float), is_singular_ray (Float), is_reflection_ray (Float), is_transmission_ray (Float), ray_length (Float), ray_depth (Float), diffuse_depth (Float), glossy_depth (Float), transparent_depth (Float), transmission_depth (Float)]
+        Node: [is_camera_ray (Float), is_shadow_ray (Float), is_diffuse_ray (Float), is_glossy_ray (Float), is_singular_ray (Float), is_reflection_ray (Float), is_transmission_ray (Float), ray_length (Float), ray_depth (Float), diffuse_depth (Float), glossy_depth (Float), transparent_depth (Float), transmission_depth (Float)]
         """
 
         node = Node('Light Path')
@@ -883,20 +1143,30 @@ class StaticClass:
     def map_range(cls, value=None, from_min=None, from_max=None, to_min=None, to_max=None, clamp=True, data_type='FLOAT', interpolation_type='LINEAR'):
         """ ShaderNode 'Map Range' (ShaderNodeMapRange)
 
-        Arguments
-        ---------
-        - value (Float) : socket 'Value' (Value)
-        - from_min (Float) : socket 'From Min' (From Min)
-        - from_max (Float) : socket 'From Max' (From Max)
-        - to_min (Float) : socket 'To Min' (To Min)
-        - to_max (Float) : socket 'To Max' (To Max)
+        Parameters
+        ----------
+        value : Float
+            socket 'Value' (Value)
+
+        from_min : Float
+            socket 'From Min' (From Min)
+
+        from_max : Float
+            socket 'From Max' (From Max)
+
+        to_min : Float
+            socket 'To Min' (To Min)
+
+        to_max : Float
+            socket 'To Max' (To Max)
+
         - clamp (bool): Node.clamp
         - data_type (str): Node.data_type in ('FLOAT', 'FLOAT_VECTOR')
         - interpolation_type (str): Node.interpolation_type in ('LINEAR', 'STEPPED', 'SMOOTHSTEP', 'SMOOTHERSTEP')
 
         Returns
         -------
-        - Node: [result (Float), vector (Vector)]
+        Node: [result (Float), vector (Vector)]
         """
 
         node = Node('Map Range', {'Value': value, 'From Min': from_min, 'From Max': from_max, 'To Min': to_min, 'To Max': to_max}, clamp=clamp, data_type=data_type, interpolation_type=interpolation_type)
@@ -907,17 +1177,25 @@ class StaticClass:
     def mapping(cls, vector=None, location=None, rotation=None, scale=None, vector_type='POINT'):
         """ ShaderNode 'Mapping' (ShaderNodeMapping)
 
-        Arguments
-        ---------
-        - vector (Vector) : socket 'Vector' (Vector)
-        - location (Vector) : socket 'Location' (Location)
-        - rotation (Vector) : socket 'Rotation' (Rotation)
-        - scale (Vector) : socket 'Scale' (Scale)
+        Parameters
+        ----------
+        vector : Vector
+            socket 'Vector' (Vector)
+
+        location : Vector
+            socket 'Location' (Location)
+
+        rotation : Vector
+            socket 'Rotation' (Rotation)
+
+        scale : Vector
+            socket 'Scale' (Scale)
+
         - vector_type (str): Node.vector_type in ('POINT', 'TEXTURE', 'VECTOR', 'NORMAL')
 
         Returns
         -------
-        - vector (Vector)
+        vector (Vector)
         """
 
         node = Node('Mapping', {'Vector': vector, 'Location': location, 'Rotation': rotation, 'Scale': scale}, vector_type=vector_type)
@@ -928,16 +1206,20 @@ class StaticClass:
     def math(cls, value=None, value_1=None, operation='ADD', use_clamp=False):
         """ ShaderNode 'Math' (ShaderNodeMath)
 
-        Arguments
-        ---------
-        - value (Float) : socket 'Value' (Value)
-        - value_1 (Float) : socket 'Value' (Value_001)
+        Parameters
+        ----------
+        value : Float
+            socket 'Value' (Value)
+
+        value_1 : Float
+            socket 'Value' (Value_001)
+
         - operation (str): Node.operation in ('ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'MULTIPLY_ADD', 'POWER', 'LOGARITHM', 'SQRT', 'INVERSE_SQRT', 'ABSOLUTE', 'EXPONENT', 'MINIMUM', 'MAXIMUM', 'LESS_THAN', 'GREATER_THAN', 'SIGN', 'COMPARE', 'SMOOTH_MIN', 'SMOOTH_MAX', 'ROUND', 'FLOOR', 'CEIL', 'TRUNC', 'FRACT', 'MODULO', 'FLOORED_MODULO', 'WRAP', 'SNAP', 'PINGPONG', 'SINE', 'COSINE', 'TANGENT', 'ARCSINE', 'ARCCOSINE', 'ARCTANGENT', 'ARCTAN2', 'SINH', 'COSH', 'TANH', 'RADIANS', 'DEGREES')
         - use_clamp (bool): Node.use_clamp
 
         Returns
         -------
-        - value (Float)
+        value (Float)
         """
 
         node = Node('Math', {'Value': value, 'Value_001': value_1}, operation=operation, use_clamp=use_clamp)
@@ -948,11 +1230,17 @@ class StaticClass:
     def mix(cls, factor=None, a=None, b=None, blend_type='MIX', clamp_factor=True, clamp_result=False, data_type='FLOAT', factor_mode='UNIFORM'):
         """ ShaderNode 'Mix' (ShaderNodeMix)
 
-        Arguments
-        ---------
-        - factor (Float) : socket 'Factor' (Factor_Float)
-        - a (Float) : socket 'A' (A_Float)
-        - b (Float) : socket 'B' (B_Float)
+        Parameters
+        ----------
+        factor : Float
+            socket 'Factor' (Factor_Float)
+
+        a : Float
+            socket 'A' (A_Float)
+
+        b : Float
+            socket 'B' (B_Float)
+
         - blend_type (str): Node.blend_type in ('MIX', 'DARKEN', 'MULTIPLY', 'BURN', 'LIGHTEN', 'SCREEN', 'DODGE', 'ADD', 'OVERLAY', 'SOFT_LIGHT', 'LINEAR_LIGHT', 'DIFFERENCE', 'EXCLUSION', 'SUBTRACT', 'DIVIDE', 'HUE', 'SATURATION', 'COLOR', 'VALUE')
         - clamp_factor (bool): Node.clamp_factor
         - clamp_result (bool): Node.clamp_result
@@ -961,7 +1249,7 @@ class StaticClass:
 
         Returns
         -------
-        - Node: [result (Float), result (Vector), result (Color), result (Rotation)]
+        Node: [result (Float), result (Vector), result (Color), result (Rotation)]
         """
 
         node = Node('Mix', {'Factor_Float': factor, 'A': a, 'B': b}, blend_type=blend_type, clamp_factor=clamp_factor, clamp_result=clamp_result, data_type=data_type, factor_mode=factor_mode)
@@ -972,15 +1260,21 @@ class StaticClass:
     def mix_shader(cls, fac=None, shader=None, shader_1=None):
         """ ShaderNode 'Mix Shader' (ShaderNodeMixShader)
 
-        Arguments
-        ---------
-        - fac (Float) : socket 'Fac' (Fac)
-        - shader (Shader) : socket 'Shader' (Shader)
-        - shader_1 (Shader) : socket 'Shader' (Shader_001)
+        Parameters
+        ----------
+        fac : Float
+            socket 'Fac' (Fac)
+
+        shader : Shader
+            socket 'Shader' (Shader)
+
+        shader_1 : Shader
+            socket 'Shader' (Shader_001)
+
 
         Returns
         -------
-        - shader (Shader)
+        shader (Shader)
         """
 
         node = Node('Mix Shader', {'Fac': fac, 'Shader': shader, 'Shader_001': shader_1})
@@ -994,7 +1288,7 @@ class StaticClass:
 
         Returns
         -------
-        - Node: [position (Vector), normal (Vector), tangent (Vector), true_normal (Vector), incoming (Vector), parametric (Vector), backfacing (Float), pointiness (Float), random_per_island (Float)]
+        Node: [position (Vector), normal (Vector), tangent (Vector), true_normal (Vector), incoming (Vector), parametric (Vector), backfacing (Float), pointiness (Float), random_per_island (Float)]
         """
 
         node = Node('Geometry')
@@ -1005,13 +1299,15 @@ class StaticClass:
     def normal(cls, normal=None):
         """ ShaderNode 'Normal' (ShaderNodeNormal)
 
-        Arguments
-        ---------
-        - normal (Vector) : socket 'Normal' (Normal)
+        Parameters
+        ----------
+        normal : Vector
+            socket 'Normal' (Normal)
+
 
         Returns
         -------
-        - Node: [normal (Vector), dot (Float)]
+        Node: [normal (Vector), dot (Float)]
         """
 
         node = Node('Normal', {'Normal': normal})
@@ -1022,16 +1318,20 @@ class StaticClass:
     def normal_map(cls, strength=None, color=None, space='TANGENT', uv_map=''):
         """ ShaderNode 'Normal Map' (ShaderNodeNormalMap)
 
-        Arguments
-        ---------
-        - strength (Float) : socket 'Strength' (Strength)
-        - color (Color) : socket 'Color' (Color)
+        Parameters
+        ----------
+        strength : Float
+            socket 'Strength' (Strength)
+
+        color : Color
+            socket 'Color' (Color)
+
         - space (str): Node.space in ('TANGENT', 'OBJECT', 'WORLD', 'BLENDER_OBJECT', 'BLENDER_WORLD')
         - uv_map (str): Node.uv_map
 
         Returns
         -------
-        - normal (Vector)
+        normal (Vector)
         """
 
         node = Node('Normal Map', {'Strength': strength, 'Color': color}, space=space, uv_map=uv_map)
@@ -1045,7 +1345,7 @@ class StaticClass:
 
         Returns
         -------
-        - Node: [location (Vector), color (Color), alpha (Float), object_index (Float), material_index (Float), random (Float)]
+        Node: [location (Vector), color (Color), alpha (Float), object_index (Float), material_index (Float), random (Float)]
         """
 
         node = Node('Object Info')
@@ -1056,10 +1356,14 @@ class StaticClass:
     def aov_output(cls, color=None, value=None, aov_name=''):
         """ ShaderNode 'AOV Output' (ShaderNodeOutputAOV)
 
-        Arguments
-        ---------
-        - color (Color) : socket 'Color' (Color)
-        - value (Float) : socket 'Value' (Value)
+        Parameters
+        ----------
+        color : Color
+            socket 'Color' (Color)
+
+        value : Float
+            socket 'Value' (Value)
+
         - aov_name (str): Node.aov_name
         """
 
@@ -1071,9 +1375,11 @@ class StaticClass:
     def light_output(cls, surface=None, is_active_output=True, target='ALL'):
         """ ShaderNode 'Light Output' (ShaderNodeOutputLight)
 
-        Arguments
-        ---------
-        - surface (Shader) : socket 'Surface' (Surface)
+        Parameters
+        ----------
+        surface : Shader
+            socket 'Surface' (Surface)
+
         - is_active_output (bool): Node.is_active_output
         - target (str): Node.target in ('ALL', 'EEVEE', 'CYCLES')
         """
@@ -1086,12 +1392,20 @@ class StaticClass:
     def line_style_output(cls, color=None, color_fac=None, alpha=None, alpha_fac=None, blend_type='MIX', is_active_output=True, target='ALL', use_alpha=False, use_clamp=False):
         """ ShaderNode 'Line Style Output' (ShaderNodeOutputLineStyle)
 
-        Arguments
-        ---------
-        - color (Color) : socket 'Color' (Color)
-        - color_fac (Float) : socket 'Color Fac' (Color Fac)
-        - alpha (Float) : socket 'Alpha' (Alpha)
-        - alpha_fac (Float) : socket 'Alpha Fac' (Alpha Fac)
+        Parameters
+        ----------
+        color : Color
+            socket 'Color' (Color)
+
+        color_fac : Float
+            socket 'Color Fac' (Color Fac)
+
+        alpha : Float
+            socket 'Alpha' (Alpha)
+
+        alpha_fac : Float
+            socket 'Alpha Fac' (Alpha Fac)
+
         - blend_type (str): Node.blend_type in ('MIX', 'DARKEN', 'MULTIPLY', 'BURN', 'LIGHTEN', 'SCREEN', 'DODGE', 'ADD', 'OVERLAY', 'SOFT_LIGHT', 'LINEAR_LIGHT', 'DIFFERENCE', 'EXCLUSION', 'SUBTRACT', 'DIVIDE', 'HUE', 'SATURATION', 'COLOR', 'VALUE')
         - is_active_output (bool): Node.is_active_output
         - target (str): Node.target in ('ALL', 'EEVEE', 'CYCLES')
@@ -1107,12 +1421,20 @@ class StaticClass:
     def material_output(cls, surface=None, volume=None, displacement=None, thickness=None, is_active_output=True, target='ALL'):
         """ ShaderNode 'Material Output' (ShaderNodeOutputMaterial)
 
-        Arguments
-        ---------
-        - surface (Shader) : socket 'Surface' (Surface)
-        - volume (Shader) : socket 'Volume' (Volume)
-        - displacement (Vector) : socket 'Displacement' (Displacement)
-        - thickness (Float) : socket 'Thickness' (Thickness)
+        Parameters
+        ----------
+        surface : Shader
+            socket 'Surface' (Surface)
+
+        volume : Shader
+            socket 'Volume' (Volume)
+
+        displacement : Vector
+            socket 'Displacement' (Displacement)
+
+        thickness : Float
+            socket 'Thickness' (Thickness)
+
         - is_active_output (bool): Node.is_active_output
         - target (str): Node.target in ('ALL', 'EEVEE', 'CYCLES')
         """
@@ -1125,10 +1447,14 @@ class StaticClass:
     def world_output(cls, surface=None, volume=None, is_active_output=True, target='ALL'):
         """ ShaderNode 'World Output' (ShaderNodeOutputWorld)
 
-        Arguments
-        ---------
-        - surface (Shader) : socket 'Surface' (Surface)
-        - volume (Shader) : socket 'Volume' (Volume)
+        Parameters
+        ----------
+        surface : Shader
+            socket 'Surface' (Surface)
+
+        volume : Shader
+            socket 'Volume' (Volume)
+
         - is_active_output (bool): Node.is_active_output
         - target (str): Node.target in ('ALL', 'EEVEE', 'CYCLES')
         """
@@ -1144,7 +1470,7 @@ class StaticClass:
 
         Returns
         -------
-        - Node: [index (Float), random (Float), age (Float), lifetime (Float), location (Vector), size (Float), velocity (Vector), angular_velocity (Vector)]
+        Node: [index (Float), random (Float), age (Float), lifetime (Float), location (Vector), size (Float), velocity (Vector), angular_velocity (Vector)]
         """
 
         node = Node('Particle Info')
@@ -1158,7 +1484,7 @@ class StaticClass:
 
         Returns
         -------
-        - Node: [position (Vector), radius (Float), random (Float)]
+        Node: [position (Vector), radius (Float), random (Float)]
         """
 
         node = Node('Point Info')
@@ -1172,7 +1498,7 @@ class StaticClass:
 
         Returns
         -------
-        - color (Color)
+        color (Color)
         """
 
         node = Node('RGB')
@@ -1183,15 +1509,19 @@ class StaticClass:
     def rgb_curves(cls, fac=None, color=None, mapping=None):
         """ ShaderNode 'RGB Curves' (ShaderNodeRGBCurve)
 
-        Arguments
-        ---------
-        - fac (Float) : socket 'Fac' (Fac)
-        - color (Color) : socket 'Color' (Color)
+        Parameters
+        ----------
+        fac : Float
+            socket 'Fac' (Fac)
+
+        color : Color
+            socket 'Color' (Color)
+
         - mapping (CurveMapping): Node.mapping
 
         Returns
         -------
-        - color (Color)
+        color (Color)
         """
 
         node = Node('RGB Curves', {'Fac': fac, 'Color': color}, mapping=mapping)
@@ -1202,13 +1532,15 @@ class StaticClass:
     def rgb_to_bw(cls, color=None):
         """ ShaderNode 'RGB to BW' (ShaderNodeRGBToBW)
 
-        Arguments
-        ---------
-        - color (Color) : socket 'Color' (Color)
+        Parameters
+        ----------
+        color : Color
+            socket 'Color' (Color)
+
 
         Returns
         -------
-        - val (Float)
+        val (Float)
         """
 
         node = Node('RGB to BW', {'Color': color})
@@ -1219,8 +1551,8 @@ class StaticClass:
     def script(cls, bytecode='', bytecode_hash='', filepath='', mode='INTERNAL', script=None, use_auto_update=False):
         """ ShaderNode 'Script' (ShaderNodeScript)
 
-        Arguments
-        ---------
+        Parameters
+        ----------
         - bytecode (str): Node.bytecode
         - bytecode_hash (str): Node.bytecode_hash
         - filepath (str): Node.filepath
@@ -1237,14 +1569,16 @@ class StaticClass:
     def separate_color(cls, color=None, mode='RGB'):
         """ ShaderNode 'Separate Color' (ShaderNodeSeparateColor)
 
-        Arguments
-        ---------
-        - color (Color) : socket 'Color' (Color)
+        Parameters
+        ----------
+        color : Color
+            socket 'Color' (Color)
+
         - mode (str): Node.mode in ('RGB', 'HSV', 'HSL')
 
         Returns
         -------
-        - Node: [red (Float), green (Float), blue (Float)]
+        Node: [red (Float), green (Float), blue (Float)]
         """
 
         node = Node('Separate Color', {'Color': color}, mode=mode)
@@ -1255,13 +1589,15 @@ class StaticClass:
     def separate_xyz(cls, vector=None):
         """ ShaderNode 'Separate XYZ' (ShaderNodeSeparateXYZ)
 
-        Arguments
-        ---------
-        - vector (Vector) : socket 'Vector' (Vector)
+        Parameters
+        ----------
+        vector : Vector
+            socket 'Vector' (Vector)
+
 
         Returns
         -------
-        - Node: [x (Float), y (Float), z (Float)]
+        Node: [x (Float), y (Float), z (Float)]
         """
 
         node = Node('Separate XYZ', {'Vector': vector})
@@ -1272,13 +1608,15 @@ class StaticClass:
     def shader_to_rgb(cls, shader=None):
         """ ShaderNode 'Shader to RGB' (ShaderNodeShaderToRGB)
 
-        Arguments
-        ---------
-        - shader (Shader) : socket 'Shader' (Shader)
+        Parameters
+        ----------
+        shader : Shader
+            socket 'Shader' (Shader)
+
 
         Returns
         -------
-        - Node: [color (Color), alpha (Float)]
+        Node: [color (Color), alpha (Float)]
         """
 
         node = Node('Shader to RGB', {'Shader': shader})
@@ -1289,20 +1627,34 @@ class StaticClass:
     def subsurface_scattering(cls, color=None, scale=None, radius=None, ior=None, roughness=None, anisotropy=None, normal=None, falloff='RANDOM_WALK'):
         """ ShaderNode 'Subsurface Scattering' (ShaderNodeSubsurfaceScattering)
 
-        Arguments
-        ---------
-        - color (Color) : socket 'Color' (Color)
-        - scale (Float) : socket 'Scale' (Scale)
-        - radius (Vector) : socket 'Radius' (Radius)
-        - ior (Float) : socket 'IOR' (IOR)
-        - roughness (Float) : socket 'Roughness' (Roughness)
-        - anisotropy (Float) : socket 'Anisotropy' (Anisotropy)
-        - normal (Vector) : socket 'Normal' (Normal)
+        Parameters
+        ----------
+        color : Color
+            socket 'Color' (Color)
+
+        scale : Float
+            socket 'Scale' (Scale)
+
+        radius : Vector
+            socket 'Radius' (Radius)
+
+        ior : Float
+            socket 'IOR' (IOR)
+
+        roughness : Float
+            socket 'Roughness' (Roughness)
+
+        anisotropy : Float
+            socket 'Anisotropy' (Anisotropy)
+
+        normal : Vector
+            socket 'Normal' (Normal)
+
         - falloff (str): Node.falloff in ('BURLEY', 'RANDOM_WALK', 'RANDOM_WALK_SKIN')
 
         Returns
         -------
-        - bssrdf (Shader)
+        bssrdf (Shader)
         """
 
         node = Node('Subsurface Scattering', {'Color': color, 'Scale': scale, 'Radius': radius, 'IOR': ior, 'Roughness': roughness, 'Anisotropy': anisotropy, 'Normal': normal}, falloff=falloff)
@@ -1313,15 +1665,15 @@ class StaticClass:
     def tangent(cls, axis='Z', direction_type='RADIAL', uv_map=''):
         """ ShaderNode 'Tangent' (ShaderNodeTangent)
 
-        Arguments
-        ---------
+        Parameters
+        ----------
         - axis (str): Node.axis in ('X', 'Y', 'Z')
         - direction_type (str): Node.direction_type in ('RADIAL', 'UV_MAP')
         - uv_map (str): Node.uv_map
 
         Returns
         -------
-        - tangent (Vector)
+        tangent (Vector)
         """
 
         node = Node('Tangent', axis=axis, direction_type=direction_type, uv_map=uv_map)
@@ -1332,18 +1684,38 @@ class StaticClass:
     def brick_texture(cls, vector=None, color1=None, color2=None, mortar=None, scale=None, mortar_size=None, mortar_smooth=None, bias=None, brick_width=None, row_height=None, color_mapping=None, offset=0.5, offset_frequency=2, squash=1.0, squash_frequency=2, texture_mapping=None):
         """ ShaderNode 'Brick Texture' (ShaderNodeTexBrick)
 
-        Arguments
-        ---------
-        - vector (Vector) : socket 'Vector' (Vector)
-        - color1 (Color) : socket 'Color1' (Color1)
-        - color2 (Color) : socket 'Color2' (Color2)
-        - mortar (Color) : socket 'Mortar' (Mortar)
-        - scale (Float) : socket 'Scale' (Scale)
-        - mortar_size (Float) : socket 'Mortar Size' (Mortar Size)
-        - mortar_smooth (Float) : socket 'Mortar Smooth' (Mortar Smooth)
-        - bias (Float) : socket 'Bias' (Bias)
-        - brick_width (Float) : socket 'Brick Width' (Brick Width)
-        - row_height (Float) : socket 'Row Height' (Row Height)
+        Parameters
+        ----------
+        vector : Vector
+            socket 'Vector' (Vector)
+
+        color1 : Color
+            socket 'Color1' (Color1)
+
+        color2 : Color
+            socket 'Color2' (Color2)
+
+        mortar : Color
+            socket 'Mortar' (Mortar)
+
+        scale : Float
+            socket 'Scale' (Scale)
+
+        mortar_size : Float
+            socket 'Mortar Size' (Mortar Size)
+
+        mortar_smooth : Float
+            socket 'Mortar Smooth' (Mortar Smooth)
+
+        bias : Float
+            socket 'Bias' (Bias)
+
+        brick_width : Float
+            socket 'Brick Width' (Brick Width)
+
+        row_height : Float
+            socket 'Row Height' (Row Height)
+
         - color_mapping (ColorMapping): Node.color_mapping
         - offset (float): Node.offset
         - offset_frequency (int): Node.offset_frequency
@@ -1353,7 +1725,7 @@ class StaticClass:
 
         Returns
         -------
-        - Node: [color (Color), fac (Float)]
+        Node: [color (Color), fac (Float)]
         """
 
         node = Node('Brick Texture', {'Vector': vector, 'Color1': color1, 'Color2': color2, 'Mortar': mortar, 'Scale': scale, 'Mortar Size': mortar_size, 'Mortar Smooth': mortar_smooth, 'Bias': bias, 'Brick Width': brick_width, 'Row Height': row_height}, color_mapping=color_mapping, offset=offset, offset_frequency=offset_frequency, squash=squash, squash_frequency=squash_frequency, texture_mapping=texture_mapping)
@@ -1364,18 +1736,26 @@ class StaticClass:
     def checker_texture(cls, vector=None, color1=None, color2=None, scale=None, color_mapping=None, texture_mapping=None):
         """ ShaderNode 'Checker Texture' (ShaderNodeTexChecker)
 
-        Arguments
-        ---------
-        - vector (Vector) : socket 'Vector' (Vector)
-        - color1 (Color) : socket 'Color1' (Color1)
-        - color2 (Color) : socket 'Color2' (Color2)
-        - scale (Float) : socket 'Scale' (Scale)
+        Parameters
+        ----------
+        vector : Vector
+            socket 'Vector' (Vector)
+
+        color1 : Color
+            socket 'Color1' (Color1)
+
+        color2 : Color
+            socket 'Color2' (Color2)
+
+        scale : Float
+            socket 'Scale' (Scale)
+
         - color_mapping (ColorMapping): Node.color_mapping
         - texture_mapping (TexMapping): Node.texture_mapping
 
         Returns
         -------
-        - Node: [color (Color), fac (Float)]
+        Node: [color (Color), fac (Float)]
         """
 
         node = Node('Checker Texture', {'Vector': vector, 'Color1': color1, 'Color2': color2, 'Scale': scale}, color_mapping=color_mapping, texture_mapping=texture_mapping)
@@ -1386,14 +1766,14 @@ class StaticClass:
     def texture_coordinate(cls, from_instancer=False, object=None):
         """ ShaderNode 'Texture Coordinate' (ShaderNodeTexCoord)
 
-        Arguments
-        ---------
+        Parameters
+        ----------
         - from_instancer (bool): Node.from_instancer
         - object (NoneType): Node.object
 
         Returns
         -------
-        - Node: [generated (Vector), normal (Vector), uv (Vector), object (Vector), camera (Vector), window (Vector), reflection (Vector)]
+        Node: [generated (Vector), normal (Vector), uv (Vector), object (Vector), camera (Vector), window (Vector), reflection (Vector)]
         """
 
         node = Node('Texture Coordinate', from_instancer=from_instancer, object=get_object(object))
@@ -1404,9 +1784,11 @@ class StaticClass:
     def environment_texture(cls, vector=None, color_mapping=None, image=None, image_user=None, interpolation='Linear', projection='EQUIRECTANGULAR', texture_mapping=None):
         """ ShaderNode 'Environment Texture' (ShaderNodeTexEnvironment)
 
-        Arguments
-        ---------
-        - vector (Vector) : socket 'Vector' (Vector)
+        Parameters
+        ----------
+        vector : Vector
+            socket 'Vector' (Vector)
+
         - color_mapping (ColorMapping): Node.color_mapping
         - image (NoneType): Node.image
         - image_user (ImageUser): Node.image_user
@@ -1416,7 +1798,7 @@ class StaticClass:
 
         Returns
         -------
-        - color (Color)
+        color (Color)
         """
 
         node = Node('Environment Texture', {'Vector': vector}, color_mapping=color_mapping, image=image, image_user=image_user, interpolation=interpolation, projection=projection, texture_mapping=texture_mapping)
@@ -1427,16 +1809,18 @@ class StaticClass:
     def gradient_texture(cls, vector=None, color_mapping=None, gradient_type='LINEAR', texture_mapping=None):
         """ ShaderNode 'Gradient Texture' (ShaderNodeTexGradient)
 
-        Arguments
-        ---------
-        - vector (Vector) : socket 'Vector' (Vector)
+        Parameters
+        ----------
+        vector : Vector
+            socket 'Vector' (Vector)
+
         - color_mapping (ColorMapping): Node.color_mapping
         - gradient_type (str): Node.gradient_type in ('LINEAR', 'QUADRATIC', 'EASING', 'DIAGONAL', 'SPHERICAL', 'QUADRATIC_SPHERE', 'RADIAL')
         - texture_mapping (TexMapping): Node.texture_mapping
 
         Returns
         -------
-        - Node: [color (Color), fac (Float)]
+        Node: [color (Color), fac (Float)]
         """
 
         node = Node('Gradient Texture', {'Vector': vector}, color_mapping=color_mapping, gradient_type=gradient_type, texture_mapping=texture_mapping)
@@ -1447,17 +1831,21 @@ class StaticClass:
     def ies_texture(cls, vector=None, strength=None, filepath='', ies=None, mode='INTERNAL'):
         """ ShaderNode 'IES Texture' (ShaderNodeTexIES)
 
-        Arguments
-        ---------
-        - vector (Vector) : socket 'Vector' (Vector)
-        - strength (Float) : socket 'Strength' (Strength)
+        Parameters
+        ----------
+        vector : Vector
+            socket 'Vector' (Vector)
+
+        strength : Float
+            socket 'Strength' (Strength)
+
         - filepath (str): Node.filepath
         - ies (NoneType): Node.ies
         - mode (str): Node.mode in ('INTERNAL', 'EXTERNAL')
 
         Returns
         -------
-        - fac (Float)
+        fac (Float)
         """
 
         node = Node('IES Texture', {'Vector': vector, 'Strength': strength}, filepath=filepath, ies=ies, mode=mode)
@@ -1468,9 +1856,11 @@ class StaticClass:
     def image_texture(cls, vector=None, color_mapping=None, extension='REPEAT', image=None, image_user=None, interpolation='Linear', projection='FLAT', projection_blend=0.0, texture_mapping=None):
         """ ShaderNode 'Image Texture' (ShaderNodeTexImage)
 
-        Arguments
-        ---------
-        - vector (Vector) : socket 'Vector' (Vector)
+        Parameters
+        ----------
+        vector : Vector
+            socket 'Vector' (Vector)
+
         - color_mapping (ColorMapping): Node.color_mapping
         - extension (str): Node.extension in ('REPEAT', 'EXTEND', 'CLIP', 'MIRROR')
         - image (NoneType): Node.image
@@ -1482,7 +1872,7 @@ class StaticClass:
 
         Returns
         -------
-        - Node: [color (Color), alpha (Float)]
+        Node: [color (Color), alpha (Float)]
         """
 
         node = Node('Image Texture', {'Vector': vector}, color_mapping=color_mapping, extension=extension, image=image, image_user=image_user, interpolation=interpolation, projection=projection, projection_blend=projection_blend, texture_mapping=texture_mapping)
@@ -1493,18 +1883,24 @@ class StaticClass:
     def magic_texture(cls, vector=None, scale=None, distortion=None, color_mapping=None, texture_mapping=None, turbulence_depth=2):
         """ ShaderNode 'Magic Texture' (ShaderNodeTexMagic)
 
-        Arguments
-        ---------
-        - vector (Vector) : socket 'Vector' (Vector)
-        - scale (Float) : socket 'Scale' (Scale)
-        - distortion (Float) : socket 'Distortion' (Distortion)
+        Parameters
+        ----------
+        vector : Vector
+            socket 'Vector' (Vector)
+
+        scale : Float
+            socket 'Scale' (Scale)
+
+        distortion : Float
+            socket 'Distortion' (Distortion)
+
         - color_mapping (ColorMapping): Node.color_mapping
         - texture_mapping (TexMapping): Node.texture_mapping
         - turbulence_depth (int): Node.turbulence_depth
 
         Returns
         -------
-        - Node: [color (Color), fac (Float)]
+        Node: [color (Color), fac (Float)]
         """
 
         node = Node('Magic Texture', {'Vector': vector, 'Scale': scale, 'Distortion': distortion}, color_mapping=color_mapping, texture_mapping=texture_mapping, turbulence_depth=turbulence_depth)
@@ -1515,14 +1911,26 @@ class StaticClass:
     def noise_texture(cls, vector=None, scale=None, detail=None, roughness=None, lacunarity=None, distortion=None, color_mapping=None, noise_dimensions='3D', noise_type='FBM', normalize=True, texture_mapping=None):
         """ ShaderNode 'Noise Texture' (ShaderNodeTexNoise)
 
-        Arguments
-        ---------
-        - vector (Vector) : socket 'Vector' (Vector)
-        - scale (Float) : socket 'Scale' (Scale)
-        - detail (Float) : socket 'Detail' (Detail)
-        - roughness (Float) : socket 'Roughness' (Roughness)
-        - lacunarity (Float) : socket 'Lacunarity' (Lacunarity)
-        - distortion (Float) : socket 'Distortion' (Distortion)
+        Parameters
+        ----------
+        vector : Vector
+            socket 'Vector' (Vector)
+
+        scale : Float
+            socket 'Scale' (Scale)
+
+        detail : Float
+            socket 'Detail' (Detail)
+
+        roughness : Float
+            socket 'Roughness' (Roughness)
+
+        lacunarity : Float
+            socket 'Lacunarity' (Lacunarity)
+
+        distortion : Float
+            socket 'Distortion' (Distortion)
+
         - color_mapping (ColorMapping): Node.color_mapping
         - noise_dimensions (str): Node.noise_dimensions in ('1D', '2D', '3D', '4D')
         - noise_type (str): Node.noise_type in ('MULTIFRACTAL', 'RIDGED_MULTIFRACTAL', 'HYBRID_MULTIFRACTAL', 'FBM', 'HETERO_TERRAIN')
@@ -1531,7 +1939,7 @@ class StaticClass:
 
         Returns
         -------
-        - Node: [fac (Float), color (Color)]
+        Node: [fac (Float), color (Color)]
         """
 
         node = Node('Noise Texture', {'Vector': vector, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Distortion': distortion}, color_mapping=color_mapping, noise_dimensions=noise_dimensions, noise_type=noise_type, normalize=normalize, texture_mapping=texture_mapping)
@@ -1542,9 +1950,11 @@ class StaticClass:
     def point_density(cls, vector=None, cache_point_density=None, calc_point_density=None, calc_point_density_minmax=None, interpolation='Linear', object=None, particle_color_source='PARTICLE_AGE', particle_system=None, point_source='PARTICLE_SYSTEM', radius=0.30000001192092896, resolution=100, space='OBJECT', vertex_attribute_name='', vertex_color_source='VERTEX_COLOR'):
         """ ShaderNode 'Point Density' (ShaderNodeTexPointDensity)
 
-        Arguments
-        ---------
-        - vector (Vector) : socket 'Vector' (Vector)
+        Parameters
+        ----------
+        vector : Vector
+            socket 'Vector' (Vector)
+
         - cache_point_density (bpy_func): Node.cache_point_density
         - calc_point_density (bpy_func): Node.calc_point_density
         - calc_point_density_minmax (bpy_func): Node.calc_point_density_minmax
@@ -1561,7 +1971,7 @@ class StaticClass:
 
         Returns
         -------
-        - Node: [color (Color), density (Float)]
+        Node: [color (Color), density (Float)]
         """
 
         node = Node('Point Density', {'Vector': vector}, cache_point_density=cache_point_density, calc_point_density=calc_point_density, calc_point_density_minmax=calc_point_density_minmax, interpolation=interpolation, object=get_object(object), particle_color_source=particle_color_source, particle_system=particle_system, point_source=point_source, radius=radius, resolution=resolution, space=space, vertex_attribute_name=vertex_attribute_name, vertex_color_source=vertex_color_source)
@@ -1572,8 +1982,8 @@ class StaticClass:
     def sky_texture(cls, air_density=1.0, altitude=0.0, color_mapping=None, dust_density=1.0, ground_albedo=0.30000001192092896, ozone_density=1.0, sky_type='NISHITA', sun_direction=None, sun_disc=True, sun_elevation=0.2617993950843811, sun_intensity=1.0, sun_rotation=0.0, sun_size=0.009512044489383698, texture_mapping=None, turbidity=2.200000047683716):
         """ ShaderNode 'Sky Texture' (ShaderNodeTexSky)
 
-        Arguments
-        ---------
+        Parameters
+        ----------
         - air_density (float): Node.air_density
         - altitude (float): Node.altitude
         - color_mapping (ColorMapping): Node.color_mapping
@@ -1592,7 +2002,7 @@ class StaticClass:
 
         Returns
         -------
-        - color (Color)
+        color (Color)
         """
 
         node = Node('Sky Texture', air_density=air_density, altitude=altitude, color_mapping=color_mapping, dust_density=dust_density, ground_albedo=ground_albedo, ozone_density=ozone_density, sky_type=sky_type, sun_direction=sun_direction, sun_disc=sun_disc, sun_elevation=sun_elevation, sun_intensity=sun_intensity, sun_rotation=sun_rotation, sun_size=sun_size, texture_mapping=texture_mapping, turbidity=turbidity)
@@ -1603,14 +2013,26 @@ class StaticClass:
     def voronoi_texture(cls, vector=None, scale=None, detail=None, roughness=None, lacunarity=None, randomness=None, color_mapping=None, distance='EUCLIDEAN', feature='F1', normalize=False, texture_mapping=None, voronoi_dimensions='3D'):
         """ ShaderNode 'Voronoi Texture' (ShaderNodeTexVoronoi)
 
-        Arguments
-        ---------
-        - vector (Vector) : socket 'Vector' (Vector)
-        - scale (Float) : socket 'Scale' (Scale)
-        - detail (Float) : socket 'Detail' (Detail)
-        - roughness (Float) : socket 'Roughness' (Roughness)
-        - lacunarity (Float) : socket 'Lacunarity' (Lacunarity)
-        - randomness (Float) : socket 'Randomness' (Randomness)
+        Parameters
+        ----------
+        vector : Vector
+            socket 'Vector' (Vector)
+
+        scale : Float
+            socket 'Scale' (Scale)
+
+        detail : Float
+            socket 'Detail' (Detail)
+
+        roughness : Float
+            socket 'Roughness' (Roughness)
+
+        lacunarity : Float
+            socket 'Lacunarity' (Lacunarity)
+
+        randomness : Float
+            socket 'Randomness' (Randomness)
+
         - color_mapping (ColorMapping): Node.color_mapping
         - distance (str): Node.distance in ('EUCLIDEAN', 'MANHATTAN', 'CHEBYCHEV', 'MINKOWSKI')
         - feature (str): Node.feature in ('F1', 'F2', 'SMOOTH_F1', 'DISTANCE_TO_EDGE', 'N_SPHERE_RADIUS')
@@ -1620,7 +2042,7 @@ class StaticClass:
 
         Returns
         -------
-        - Node: [distance (Float), color (Color), position (Vector), w (Float), radius (Float)]
+        Node: [distance (Float), color (Color), position (Vector), w (Float), radius (Float)]
         """
 
         node = Node('Voronoi Texture', {'Vector': vector, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Randomness': randomness}, color_mapping=color_mapping, distance=distance, feature=feature, normalize=normalize, texture_mapping=texture_mapping, voronoi_dimensions=voronoi_dimensions)
@@ -1631,15 +2053,29 @@ class StaticClass:
     def wave_texture(cls, vector=None, scale=None, distortion=None, detail=None, detail_scale=None, detail_roughness=None, phase_offset=None, bands_direction='X', color_mapping=None, rings_direction='X', texture_mapping=None, wave_profile='SIN', wave_type='BANDS'):
         """ ShaderNode 'Wave Texture' (ShaderNodeTexWave)
 
-        Arguments
-        ---------
-        - vector (Vector) : socket 'Vector' (Vector)
-        - scale (Float) : socket 'Scale' (Scale)
-        - distortion (Float) : socket 'Distortion' (Distortion)
-        - detail (Float) : socket 'Detail' (Detail)
-        - detail_scale (Float) : socket 'Detail Scale' (Detail Scale)
-        - detail_roughness (Float) : socket 'Detail Roughness' (Detail Roughness)
-        - phase_offset (Float) : socket 'Phase Offset' (Phase Offset)
+        Parameters
+        ----------
+        vector : Vector
+            socket 'Vector' (Vector)
+
+        scale : Float
+            socket 'Scale' (Scale)
+
+        distortion : Float
+            socket 'Distortion' (Distortion)
+
+        detail : Float
+            socket 'Detail' (Detail)
+
+        detail_scale : Float
+            socket 'Detail Scale' (Detail Scale)
+
+        detail_roughness : Float
+            socket 'Detail Roughness' (Detail Roughness)
+
+        phase_offset : Float
+            socket 'Phase Offset' (Phase Offset)
+
         - bands_direction (str): Node.bands_direction in ('X', 'Y', 'Z', 'DIAGONAL')
         - color_mapping (ColorMapping): Node.color_mapping
         - rings_direction (str): Node.rings_direction in ('X', 'Y', 'Z', 'SPHERICAL')
@@ -1649,7 +2085,7 @@ class StaticClass:
 
         Returns
         -------
-        - Node: [color (Color), fac (Float)]
+        Node: [color (Color), fac (Float)]
         """
 
         node = Node('Wave Texture', {'Vector': vector, 'Scale': scale, 'Distortion': distortion, 'Detail': detail, 'Detail Scale': detail_scale, 'Detail Roughness': detail_roughness, 'Phase Offset': phase_offset}, bands_direction=bands_direction, color_mapping=color_mapping, rings_direction=rings_direction, texture_mapping=texture_mapping, wave_profile=wave_profile, wave_type=wave_type)
@@ -1660,14 +2096,16 @@ class StaticClass:
     def white_noise_texture(cls, vector=None, noise_dimensions='3D'):
         """ ShaderNode 'White Noise Texture' (ShaderNodeTexWhiteNoise)
 
-        Arguments
-        ---------
-        - vector (Vector) : socket 'Vector' (Vector)
+        Parameters
+        ----------
+        vector : Vector
+            socket 'Vector' (Vector)
+
         - noise_dimensions (str): Node.noise_dimensions in ('1D', '2D', '3D', '4D')
 
         Returns
         -------
-        - Node: [value (Float), color (Color)]
+        Node: [value (Float), color (Color)]
         """
 
         node = Node('White Noise Texture', {'Vector': vector}, noise_dimensions=noise_dimensions)
@@ -1678,13 +2116,13 @@ class StaticClass:
     def uv_along_stroke(cls, use_tips=False):
         """ ShaderNode 'UV Along Stroke' (ShaderNodeUVAlongStroke)
 
-        Arguments
-        ---------
+        Parameters
+        ----------
         - use_tips (bool): Node.use_tips
 
         Returns
         -------
-        - uv (Vector)
+        uv (Vector)
         """
 
         node = Node('UV Along Stroke', use_tips=use_tips)
@@ -1695,14 +2133,14 @@ class StaticClass:
     def uv_map(cls, from_instancer=False, uv_map=''):
         """ ShaderNode 'UV Map' (ShaderNodeUVMap)
 
-        Arguments
-        ---------
+        Parameters
+        ----------
         - from_instancer (bool): Node.from_instancer
         - uv_map (str): Node.uv_map
 
         Returns
         -------
-        - uv (Vector)
+        uv (Vector)
         """
 
         node = Node('UV Map', from_instancer=from_instancer, uv_map=uv_map)
@@ -1713,14 +2151,16 @@ class StaticClass:
     def color_ramp(cls, fac=None, stops=None):
         """ ShaderNode 'Color Ramp' (ShaderNodeValToRGB)
 
-        Arguments
-        ---------
-        - fac (Float) : socket 'Fac' (Fac)
+        Parameters
+        ----------
+        fac : Float
+            socket 'Fac' (Fac)
+
         - stops (list of tuple(float, tuple)) : stops made of (float, color as tuple of floats)
 
         Returns
         -------
-        - Node
+        Node
         """
         return ColorRamp(fac=fac, stops=stops)
 
@@ -1732,7 +2172,7 @@ class StaticClass:
 
         Returns
         -------
-        - value (Float)
+        value (Float)
         """
 
         node = Node('Value')
@@ -1743,15 +2183,19 @@ class StaticClass:
     def vector_curves(cls, fac=None, vector=None, mapping=None):
         """ ShaderNode 'Vector Curves' (ShaderNodeVectorCurve)
 
-        Arguments
-        ---------
-        - fac (Float) : socket 'Fac' (Fac)
-        - vector (Vector) : socket 'Vector' (Vector)
+        Parameters
+        ----------
+        fac : Float
+            socket 'Fac' (Fac)
+
+        vector : Vector
+            socket 'Vector' (Vector)
+
         - mapping (CurveMapping): Node.mapping
 
         Returns
         -------
-        - vector (Vector)
+        vector (Vector)
         """
 
         node = Node('Vector Curves', {'Fac': fac, 'Vector': vector}, mapping=mapping)
@@ -1762,16 +2206,22 @@ class StaticClass:
     def vector_displacement(cls, vector=None, midlevel=None, scale=None, space='TANGENT'):
         """ ShaderNode 'Vector Displacement' (ShaderNodeVectorDisplacement)
 
-        Arguments
-        ---------
-        - vector (Color) : socket 'Vector' (Vector)
-        - midlevel (Float) : socket 'Midlevel' (Midlevel)
-        - scale (Float) : socket 'Scale' (Scale)
+        Parameters
+        ----------
+        vector : Color
+            socket 'Vector' (Vector)
+
+        midlevel : Float
+            socket 'Midlevel' (Midlevel)
+
+        scale : Float
+            socket 'Scale' (Scale)
+
         - space (str): Node.space in ('TANGENT', 'OBJECT', 'WORLD')
 
         Returns
         -------
-        - displacement (Vector)
+        displacement (Vector)
         """
 
         node = Node('Vector Displacement', {'Vector': vector, 'Midlevel': midlevel, 'Scale': scale}, space=space)
@@ -1782,15 +2232,19 @@ class StaticClass:
     def vector_math(cls, vector=None, vector_1=None, operation='ADD'):
         """ ShaderNode 'Vector Math' (ShaderNodeVectorMath)
 
-        Arguments
-        ---------
-        - vector (Vector) : socket 'Vector' (Vector)
-        - vector_1 (Vector) : socket 'Vector' (Vector_001)
+        Parameters
+        ----------
+        vector : Vector
+            socket 'Vector' (Vector)
+
+        vector_1 : Vector
+            socket 'Vector' (Vector_001)
+
         - operation (str): Node.operation in ('ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'MULTIPLY_ADD', 'CROSS_PRODUCT', 'PROJECT', 'REFLECT', 'REFRACT', 'FACEFORWARD', 'DOT_PRODUCT', 'DISTANCE', 'LENGTH', 'SCALE', 'NORMALIZE', 'ABSOLUTE', 'MINIMUM', 'MAXIMUM', 'FLOOR', 'CEIL', 'FRACTION', 'MODULO', 'WRAP', 'SNAP', 'SINE', 'COSINE', 'TANGENT')
 
         Returns
         -------
-        - Node: [vector (Vector), value (Float)]
+        Node: [vector (Vector), value (Float)]
         """
 
         node = Node('Vector Math', {'Vector': vector, 'Vector_001': vector_1}, operation=operation)
@@ -1801,18 +2255,26 @@ class StaticClass:
     def vector_rotate(cls, vector=None, center=None, axis=None, angle=None, invert=False, rotation_type='AXIS_ANGLE'):
         """ ShaderNode 'Vector Rotate' (ShaderNodeVectorRotate)
 
-        Arguments
-        ---------
-        - vector (Vector) : socket 'Vector' (Vector)
-        - center (Vector) : socket 'Center' (Center)
-        - axis (Vector) : socket 'Axis' (Axis)
-        - angle (Float) : socket 'Angle' (Angle)
+        Parameters
+        ----------
+        vector : Vector
+            socket 'Vector' (Vector)
+
+        center : Vector
+            socket 'Center' (Center)
+
+        axis : Vector
+            socket 'Axis' (Axis)
+
+        angle : Float
+            socket 'Angle' (Angle)
+
         - invert (bool): Node.invert
         - rotation_type (str): Node.rotation_type in ('AXIS_ANGLE', 'X_AXIS', 'Y_AXIS', 'Z_AXIS', 'EULER_XYZ')
 
         Returns
         -------
-        - vector (Vector)
+        vector (Vector)
         """
 
         node = Node('Vector Rotate', {'Vector': vector, 'Center': center, 'Axis': axis, 'Angle': angle}, invert=invert, rotation_type=rotation_type)
@@ -1823,16 +2285,18 @@ class StaticClass:
     def vector_transform(cls, vector=None, convert_from='WORLD', convert_to='OBJECT', vector_type='VECTOR'):
         """ ShaderNode 'Vector Transform' (ShaderNodeVectorTransform)
 
-        Arguments
-        ---------
-        - vector (Vector) : socket 'Vector' (Vector)
+        Parameters
+        ----------
+        vector : Vector
+            socket 'Vector' (Vector)
+
         - convert_from (str): Node.convert_from in ('WORLD', 'OBJECT', 'CAMERA')
         - convert_to (str): Node.convert_to in ('WORLD', 'OBJECT', 'CAMERA')
         - vector_type (str): Node.vector_type in ('POINT', 'VECTOR', 'NORMAL')
 
         Returns
         -------
-        - vector (Vector)
+        vector (Vector)
         """
 
         node = Node('Vector Transform', {'Vector': vector}, convert_from=convert_from, convert_to=convert_to, vector_type=vector_type)
@@ -1843,13 +2307,13 @@ class StaticClass:
     def color_attribute(cls, layer_name=''):
         """ ShaderNode 'Color Attribute' (ShaderNodeVertexColor)
 
-        Arguments
-        ---------
+        Parameters
+        ----------
         - layer_name (str): Node.layer_name
 
         Returns
         -------
-        - Node: [color (Color), alpha (Float)]
+        Node: [color (Color), alpha (Float)]
         """
 
         node = Node('Color Attribute', layer_name=layer_name)
@@ -1860,14 +2324,18 @@ class StaticClass:
     def volume_absorption(cls, color=None, density=None):
         """ ShaderNode 'Volume Absorption' (ShaderNodeVolumeAbsorption)
 
-        Arguments
-        ---------
-        - color (Color) : socket 'Color' (Color)
-        - density (Float) : socket 'Density' (Density)
+        Parameters
+        ----------
+        color : Color
+            socket 'Color' (Color)
+
+        density : Float
+            socket 'Density' (Density)
+
 
         Returns
         -------
-        - volume (Shader)
+        volume (Shader)
         """
 
         node = Node('Volume Absorption', {'Color': color, 'Density': density})
@@ -1881,7 +2349,7 @@ class StaticClass:
 
         Returns
         -------
-        - Node: [color (Color), density (Float), flame (Float), temperature (Float)]
+        Node: [color (Color), density (Float), flame (Float), temperature (Float)]
         """
 
         node = Node('Volume Info')
@@ -1892,24 +2360,48 @@ class StaticClass:
     def principled_volume(cls, color=None, color_attribute=None, density=None, density_attribute=None, anisotropy=None, absorption_color=None, emission_strength=None, emission_color=None, blackbody_intensity=None, blackbody_tint=None, temperature=None, temperature_attribute=None):
         """ ShaderNode 'Principled Volume' (ShaderNodeVolumePrincipled)
 
-        Arguments
-        ---------
-        - color (Color) : socket 'Color' (Color)
-        - color_attribute (String) : socket 'Color Attribute' (Color Attribute)
-        - density (Float) : socket 'Density' (Density)
-        - density_attribute (String) : socket 'Density Attribute' (Density Attribute)
-        - anisotropy (Float) : socket 'Anisotropy' (Anisotropy)
-        - absorption_color (Color) : socket 'Absorption Color' (Absorption Color)
-        - emission_strength (Float) : socket 'Emission Strength' (Emission Strength)
-        - emission_color (Color) : socket 'Emission Color' (Emission Color)
-        - blackbody_intensity (Float) : socket 'Blackbody Intensity' (Blackbody Intensity)
-        - blackbody_tint (Color) : socket 'Blackbody Tint' (Blackbody Tint)
-        - temperature (Float) : socket 'Temperature' (Temperature)
-        - temperature_attribute (String) : socket 'Temperature Attribute' (Temperature Attribute)
+        Parameters
+        ----------
+        color : Color
+            socket 'Color' (Color)
+
+        color_attribute : String
+            socket 'Color Attribute' (Color Attribute)
+
+        density : Float
+            socket 'Density' (Density)
+
+        density_attribute : String
+            socket 'Density Attribute' (Density Attribute)
+
+        anisotropy : Float
+            socket 'Anisotropy' (Anisotropy)
+
+        absorption_color : Color
+            socket 'Absorption Color' (Absorption Color)
+
+        emission_strength : Float
+            socket 'Emission Strength' (Emission Strength)
+
+        emission_color : Color
+            socket 'Emission Color' (Emission Color)
+
+        blackbody_intensity : Float
+            socket 'Blackbody Intensity' (Blackbody Intensity)
+
+        blackbody_tint : Color
+            socket 'Blackbody Tint' (Blackbody Tint)
+
+        temperature : Float
+            socket 'Temperature' (Temperature)
+
+        temperature_attribute : String
+            socket 'Temperature Attribute' (Temperature Attribute)
+
 
         Returns
         -------
-        - volume (Shader)
+        volume (Shader)
         """
 
         node = Node('Principled Volume', {'Color': color, 'Color Attribute': color_attribute, 'Density': density, 'Density Attribute': density_attribute, 'Anisotropy': anisotropy, 'Absorption Color': absorption_color, 'Emission Strength': emission_strength, 'Emission Color': emission_color, 'Blackbody Intensity': blackbody_intensity, 'Blackbody Tint': blackbody_tint, 'Temperature': temperature, 'Temperature Attribute': temperature_attribute})
@@ -1920,15 +2412,21 @@ class StaticClass:
     def volume_scatter(cls, color=None, density=None, anisotropy=None):
         """ ShaderNode 'Volume Scatter' (ShaderNodeVolumeScatter)
 
-        Arguments
-        ---------
-        - color (Color) : socket 'Color' (Color)
-        - density (Float) : socket 'Density' (Density)
-        - anisotropy (Float) : socket 'Anisotropy' (Anisotropy)
+        Parameters
+        ----------
+        color : Color
+            socket 'Color' (Color)
+
+        density : Float
+            socket 'Density' (Density)
+
+        anisotropy : Float
+            socket 'Anisotropy' (Anisotropy)
+
 
         Returns
         -------
-        - volume (Shader)
+        volume (Shader)
         """
 
         node = Node('Volume Scatter', {'Color': color, 'Density': density, 'Anisotropy': anisotropy})
@@ -1939,13 +2437,15 @@ class StaticClass:
     def wavelength(cls, wavelength=None):
         """ ShaderNode 'Wavelength' (ShaderNodeWavelength)
 
-        Arguments
-        ---------
-        - wavelength (Float) : socket 'Wavelength' (Wavelength)
+        Parameters
+        ----------
+        wavelength : Float
+            socket 'Wavelength' (Wavelength)
+
 
         Returns
         -------
-        - color (Color)
+        color (Color)
         """
 
         node = Node('Wavelength', {'Wavelength': wavelength})
@@ -1956,14 +2456,16 @@ class StaticClass:
     def wireframe(cls, size=None, use_pixel_size=False):
         """ ShaderNode 'Wireframe' (ShaderNodeWireframe)
 
-        Arguments
-        ---------
-        - size (Float) : socket 'Size' (Size)
+        Parameters
+        ----------
+        size : Float
+            socket 'Size' (Size)
+
         - use_pixel_size (bool): Node.use_pixel_size
 
         Returns
         -------
-        - fac (Float)
+        fac (Float)
         """
 
         node = Node('Wireframe', {'Size': size}, use_pixel_size=use_pixel_size)

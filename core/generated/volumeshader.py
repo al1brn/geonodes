@@ -1,4 +1,4 @@
-# Generated 2026-03-26 08:37:01
+# Generated 2026-04-04 12:37:35
 
 from __future__ import annotations
 from .. sockettype import SocketType
@@ -37,14 +37,18 @@ class VolumeShader(Socket):
     def Absorption(cls, color: Color = None, density: Float = None):
         """ > Node <&ShaderNode Volume Absorption>
 
-        Arguments
+        Parameters
         ---------
-        - color (Color) : socket 'Color' (id: Color)
-        - density (Float) : socket 'Density' (id: Density)
+        color : Color, optional
+            socket 'Color' (id: Color)
+        
+        density : Float, optional
+            socket 'Density' (id: Density)
+        
 
         Returns
         -------
-        - VolumeShader
+        VolumeShader
         """
         node = Node('Volume Absorption', {'Color': color, 'Density': density})
         return cls(node._out)
@@ -55,7 +59,9 @@ class VolumeShader(Socket):
 
         Returns
         -------
-        - Color [density_ (Float), flame_ (Float), temperature_ (Float)]
+        Color
+            peer sockets: density_ (Float), flame_ (Float), temperature_ (Float)
+
         """
         node = Node('Volume Info', )
         return node._out
@@ -76,24 +82,48 @@ class VolumeShader(Socket):
                     temperature_attribute: String = None):
         """ > Node <&ShaderNode Principled Volume>
 
-        Arguments
+        Parameters
         ---------
-        - color (Color) : socket 'Color' (id: Color)
-        - color_attribute (String) : socket 'Color Attribute' (id: Color Attribute)
-        - density (Float) : socket 'Density' (id: Density)
-        - density_attribute (String) : socket 'Density Attribute' (id: Density Attribute)
-        - anisotropy (Float) : socket 'Anisotropy' (id: Anisotropy)
-        - absorption_color (Color) : socket 'Absorption Color' (id: Absorption Color)
-        - emission_strength (Float) : socket 'Emission Strength' (id: Emission Strength)
-        - emission_color (Color) : socket 'Emission Color' (id: Emission Color)
-        - blackbody_intensity (Float) : socket 'Blackbody Intensity' (id: Blackbody Intensity)
-        - blackbody_tint (Color) : socket 'Blackbody Tint' (id: Blackbody Tint)
-        - temperature (Float) : socket 'Temperature' (id: Temperature)
-        - temperature_attribute (String) : socket 'Temperature Attribute' (id: Temperature Attribute)
+        color : Color, optional
+            socket 'Color' (id: Color)
+        
+        color_attribute : String, optional
+            socket 'Color Attribute' (id: Color Attribute)
+        
+        density : Float, optional
+            socket 'Density' (id: Density)
+        
+        density_attribute : String, optional
+            socket 'Density Attribute' (id: Density Attribute)
+        
+        anisotropy : Float, optional
+            socket 'Anisotropy' (id: Anisotropy)
+        
+        absorption_color : Color, optional
+            socket 'Absorption Color' (id: Absorption Color)
+        
+        emission_strength : Float, optional
+            socket 'Emission Strength' (id: Emission Strength)
+        
+        emission_color : Color, optional
+            socket 'Emission Color' (id: Emission Color)
+        
+        blackbody_intensity : Float, optional
+            socket 'Blackbody Intensity' (id: Blackbody Intensity)
+        
+        blackbody_tint : Color, optional
+            socket 'Blackbody Tint' (id: Blackbody Tint)
+        
+        temperature : Float, optional
+            socket 'Temperature' (id: Temperature)
+        
+        temperature_attribute : String, optional
+            socket 'Temperature Attribute' (id: Temperature Attribute)
+        
 
         Returns
         -------
-        - VolumeShader
+        VolumeShader
         """
         node = Node('Principled Volume', {'Color': color, 'Color Attribute': color_attribute, 'Density': density, 'Density Attribute': density_attribute, 'Anisotropy': anisotropy, 'Absorption Color': absorption_color, 'Emission Strength': emission_strength, 'Emission Color': emission_color, 'Blackbody Intensity': blackbody_intensity, 'Blackbody Tint': blackbody_tint, 'Temperature': temperature, 'Temperature Attribute': temperature_attribute})
         return cls(node._out)
@@ -106,16 +136,22 @@ class VolumeShader(Socket):
                     phase: Literal['HENYEY_GREENSTEIN', 'FOURNIER_FORAND', 'DRAINE', 'RAYLEIGH', 'MIE'] = 'HENYEY_GREENSTEIN'):
         """ > Node <&ShaderNode Volume Scatter>
 
-        Arguments
+        Parameters
         ---------
-        - color (Color) : socket 'Color' (id: Color)
-        - density (Float) : socket 'Density' (id: Density)
-        - anisotropy (Float) : socket 'Anisotropy' (id: Anisotropy)
-        - phase (str): parameter 'phase' in ('Henyey-Greenstein', 'Fournier-Forand', 'Draine', 'Rayleigh', 'Mie')
+        color : Color, optional
+            socket 'Color' (id: Color)
+        
+        density : Float, optional
+            socket 'Density' (id: Density)
+        
+        anisotropy : Float, optional
+            socket 'Anisotropy' (id: Anisotropy)
+        
+        phase (str): parameter 'phase' in ('Henyey-Greenstein', 'Fournier-Forand', 'Draine', 'Rayleigh', 'Mie')
 
         Returns
         -------
-        - VolumeShader
+        VolumeShader
         """
         utils.check_enum_arg('Volume Scatter', 'phase', phase, 'Scatter', ('HENYEY_GREENSTEIN', 'FOURNIER_FORAND', 'DRAINE', 'RAYLEIGH', 'MIE'))
         node = Node('Volume Scatter', {'Color': color, 'Density': density, 'Anisotropy': anisotropy}, phase=phase)

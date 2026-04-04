@@ -1,0 +1,87 @@
+site_name: GeoNodes
+site_description: Python API for Blender Geometry Nodes
+site_author: al1brn
+
+theme:
+  name: material
+
+nav:
+  - Home: index.md
+  - API:
+    - Overview: api/index.md
+    - Trees:
+        - GeoNodes: api/geonodes.md
+        - ShaderNodes: api/shadernodes.md
+        - Layout: api/layout.md
+        - Panel: api/panel.md
+        - Break: api/break.md
+        - Tree: api/tree.md
+
+    - Geometry Sockets:
+        - Geometry : api/geometry.md
+        - Mesh: api/mesh.md
+        - Curve: api/curve.md
+        - Instances: api/instances.md
+        - Cloud: api/cloud.md
+        - Volume: api/volume.md
+        - Grease Pencil: api/grease_pencil.md
+
+    - Other Sockets:
+        - Socket: api/socket.md
+        - Boolean: api/boolean.md
+        - Bundle: api/bundle.md
+        - Closure: api/closure.md
+        - Collection : api/collection.md
+        - Color: api/color.md
+        - Float: api/float.md
+        - Image : api/image.md
+        - Integer: api/integer.md
+        - Material : api/material.md
+        - Matrix: api/matrix.md
+        - Menu: api/menu.md
+        - Object : api/object.md
+        - Rotation: api/rotation.md
+        - String: api/volume.md
+        - Vector: api/vector.md
+
+    - Nodes:
+        - Group: api/group.md
+        - G: api/g.md
+        - Node: api/node.md
+
+    - Domains:
+        - Vertex: api/vertex.md
+        - Edge: api/edge.md
+        - Face: api/face.md
+        - Corner: api/corner.md
+        - SplinePoint: api/spline_point.md
+        - Spline: api/spline.md
+        - CloudPoint: api/cloud_point.md
+        - Instance: api/instance.md
+        - Layer: api/layer.md
+
+    - Utilities:
+        - gnmath module: api/gnmath.md
+        - nd module: api/snd.md
+        - snd module: api/nd.md
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+
+hooks:
+  - mkdocs_hooks.py
+  
+plugins:
+  - search
+  - mkdocstrings:
+      handlers:
+        python:
+          paths: [..]
+          options:
+            docstring_style: numpy
+            inherited_members: true
+            show_signature: true
+            merge_init_into_class: false
+            filters:
+              - "!^__slots__$"

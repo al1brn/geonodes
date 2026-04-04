@@ -49,7 +49,7 @@ A counter is made of a variable number of analog figure.
 To be complete, a analogic clock is provided with its default shaders
 
 
-> [!NOTE]
+!!! note
 > Modifiers:
 > - Digit
 > - Digital Clock
@@ -164,19 +164,33 @@ def demo():
 
             """ A rounded rect
 
-            Arguments
-            ---------
-            - width (Float) : rectangle total width
-            - height (Float) : rectangle total height
-            - radius (Float) : radius
-            - resol (Integer) : number of points (min is 2)
-            - axis (str = 'Z') : perpendicular axis
-            - geometry (str in ('Mesh', 'Curve')) : the geometry to build
-            - fill_type (str in ('NONE', 'NGON', 'TRIANGLE_FAN') : Mesh circle fill type
+            Parameters
+            ----------
+            width : Float
+            rectangle total width
+
+            height : Float
+            rectangle total height
+
+            radius : Float
+            radius
+
+            resol : Integer
+            number of points (min is 2)
+
+            axis : str, optional
+                perpendicular axis Default: 'Z'.
+
+            geometry : {'Mesh', 'Curve'}
+                the geometry to build
+
+            fill_type : str in ('NONE', 'NGON', 'TRIANGLE_FAN'
+            Mesh circle fill type
+
 
             Returns
             -------
-            - Geometry as requested per geometry argument
+            Geometry as requested per geometry argument
             """
 
             width  = Float(1., "Width", 0)
