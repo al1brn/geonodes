@@ -1,6 +1,7 @@
 site_name: GeoNodes
 site_description: Python API for Blender Geometry Nodes
 site_author: al1brn
+site_url: https://al1brn.github.io/geonodes/
 
 theme:
   name: material
@@ -59,7 +60,7 @@ nav:
         - Menu: api/menu.md
         - Object : api/object.md
         - Rotation: api/rotation.md
-        - String: api/volume.md
+        - String: api/string.md
         - Vector: api/vector.md
 
     - Nodes:
@@ -80,8 +81,8 @@ nav:
 
     - Utilities:
         - gnmath module: api/gnmath.md
-        - nd module: api/snd.md
-        - snd module: api/nd.md
+        - nd module: api/nd.md
+        - snd module: api/snd.md
 
 markdown_extensions:
   - admonition

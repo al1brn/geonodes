@@ -1,6 +1,12 @@
-# GeoNodes
+# geonodes
 
-Test documentation.
+> Scripting Blender **Geometry Nodes**
 
-If you see this page, MkDocs is working.
+Welcome fo **geonodes** documentation
+
+- [Overview](getting_started/overview.md)
+- [API reference](api/index.md)
+
+
+
 
