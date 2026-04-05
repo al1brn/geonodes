@@ -31,10 +31,6 @@ updates
 - update :   2025/01/25 # UV Cylinder
 - update :   2025/12/08 # V5
 
-$ DOC START
-
-[Source Code](../demos/arrows.py)
-
 This demo provides four modifiers:
 - Arrows :
   Display a field of arrows on the geometry points

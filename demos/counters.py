@@ -29,10 +29,6 @@ updates
 - update :   2024/09/04
 - update :   2025/01/12
 
-$ DOC START
-
-[Source Code](../demos/counters.py)
-
 The elementay digit can be either digital or analogic.
 
 A digital figure is made of 7 elementary segments with a different material
@@ -50,6 +46,7 @@ To be complete, a analogic clock is provided with its default shaders
 
 
 !!! note
+
 > Modifiers:
 > - Digit
 > - Digital Clock

@@ -55,8 +55,8 @@ def demo():
 
         with Layout("Frise"):
 
-            count       = Integer(10,   "Patterns Count", 1)
-            use_circle  = Boolean(True, "Circular Shape")
+            count       = Integer(5,   "Patterns Count", 1)
+            use_circle  = Boolean(False, "Circular Shape")
             rot_handles = Boolean(True, "Rotate handles")
 
             resol = 2
