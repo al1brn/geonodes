@@ -1,4 +1,4 @@
-# Generated 2026-04-04 12:37:35
+# Generated 2026-04-04 17:31:31
 
 from __future__ import annotations
 from .. sockettype import SocketType
@@ -36,7 +36,7 @@ def bw_and(a: Integer = None, b: Integer = None):
     | Parameter | `operation` | `'AND'` |
 
     Parameters
-    ---------
+    ----------
     a : Integer, optional
         socket 'A' (id: A)
     
@@ -61,7 +61,7 @@ def bw_or(a: Integer = None, b: Integer = None):
     | Parameter | `operation` | `'OR'` |
 
     Parameters
-    ---------
+    ----------
     a : Integer, optional
         socket 'A' (id: A)
     
@@ -86,7 +86,7 @@ def bw_xor(a: Integer = None, b: Integer = None):
     | Parameter | `operation` | `'XOR'` |
 
     Parameters
-    ---------
+    ----------
     a : Integer, optional
         socket 'A' (id: A)
     
@@ -111,7 +111,7 @@ def bw_not(a: Integer = None):
     | Parameter | `operation` | `'NOT'` |
 
     Parameters
-    ---------
+    ----------
     a : Integer, optional
         socket 'A' (id: A)
     
@@ -133,7 +133,7 @@ def bw_shift(a: Integer = None, shift: Integer = None):
     | Parameter | `operation` | `'SHIFT'` |
 
     Parameters
-    ---------
+    ----------
     a : Integer, optional
         socket 'A' (id: A)
     
@@ -158,7 +158,7 @@ def bw_rotate(a: Integer = None, shift: Integer = None):
     | Parameter | `operation` | `'ROTATE'` |
 
     Parameters
-    ---------
+    ----------
     a : Integer, optional
         socket 'A' (id: A)
     
@@ -183,7 +183,7 @@ def band(boolean: Boolean = None, boolean_1: Boolean = None):
     | Parameter | `operation` | `'AND'` |
 
     Parameters
-    ---------
+    ----------
     boolean : Boolean, optional
         socket 'Boolean' (id: Boolean)
     
@@ -201,14 +201,8 @@ def band(boolean: Boolean = None, boolean_1: Boolean = None):
 def bor(boolean: Boolean = None, boolean_1: Boolean = None):
     """ > Node <&Node Boolean Math>
 
-    **Fixed values**
-
-    | Kind      | Name        | Value  |
-    | --------- | ----------- | ------ |
-    | Parameter | `operation` | `'OR'` |
-
     Parameters
-    ---------
+    ----------
     boolean : Boolean, optional
         socket 'Boolean' (id: Boolean)
     
@@ -233,7 +227,7 @@ def bnot(boolean: Boolean = None):
     | Parameter | `operation` | `'NOT'` |
 
     Parameters
-    ---------
+    ----------
     boolean : Boolean, optional
         socket 'Boolean' (id: Boolean)
     
@@ -255,7 +249,7 @@ def not_and(boolean: Boolean = None, boolean_1: Boolean = None):
     | Parameter | `operation` | `'NAND'` |
 
     Parameters
-    ---------
+    ----------
     boolean : Boolean, optional
         socket 'Boolean' (id: Boolean)
     
@@ -280,7 +274,7 @@ def nor(boolean: Boolean = None, boolean_1: Boolean = None):
     | Parameter | `operation` | `'NOR'` |
 
     Parameters
-    ---------
+    ----------
     boolean : Boolean, optional
         socket 'Boolean' (id: Boolean)
     
@@ -305,7 +299,7 @@ def xnor(boolean: Boolean = None, boolean_1: Boolean = None):
     | Parameter | `operation` | `'XNOR'` |
 
     Parameters
-    ---------
+    ----------
     boolean : Boolean, optional
         socket 'Boolean' (id: Boolean)
     
@@ -330,7 +324,7 @@ def xor(boolean: Boolean = None, boolean_1: Boolean = None):
     | Parameter | `operation` | `'XOR'` |
 
     Parameters
-    ---------
+    ----------
     boolean : Boolean, optional
         socket 'Boolean' (id: Boolean)
     
@@ -355,7 +349,7 @@ def imply(boolean: Boolean = None, boolean_1: Boolean = None):
     | Parameter | `operation` | `'IMPLY'` |
 
     Parameters
-    ---------
+    ----------
     boolean : Boolean, optional
         socket 'Boolean' (id: Boolean)
     
@@ -380,7 +374,7 @@ def nimply(boolean: Boolean = None, boolean_1: Boolean = None):
     | Parameter | `operation` | `'NIMPLY'` |
 
     Parameters
-    ---------
+    ----------
     boolean : Boolean, optional
         socket 'Boolean' (id: Boolean)
     
@@ -405,7 +399,7 @@ def iadd(value: Integer = None, value_1: Integer = None):
     | Parameter | `operation` | `'ADD'` |
 
     Parameters
-    ---------
+    ----------
     value : Integer, optional
         socket 'Value' (id: Value)
     
@@ -430,7 +424,7 @@ def isubtract(value: Integer = None, value_1: Integer = None):
     | Parameter | `operation` | `'SUBTRACT'` |
 
     Parameters
-    ---------
+    ----------
     value : Integer, optional
         socket 'Value' (id: Value)
     
@@ -455,7 +449,7 @@ def imultiply(value: Integer = None, value_1: Integer = None):
     | Parameter | `operation` | `'MULTIPLY'` |
 
     Parameters
-    ---------
+    ----------
     value : Integer, optional
         socket 'Value' (id: Value)
     
@@ -480,7 +474,7 @@ def idivide(value: Integer = None, value_1: Integer = None):
     | Parameter | `operation` | `'DIVIDE'` |
 
     Parameters
-    ---------
+    ----------
     value : Integer, optional
         socket 'Value' (id: Value)
     
@@ -505,7 +499,7 @@ def imultiply_add(value: Integer = None, multiplier: Integer = None, addend: Int
     | Parameter | `operation` | `'MULTIPLY_ADD'` |
 
     Parameters
-    ---------
+    ----------
     value : Integer, optional
         socket 'Value' (id: Value)
     
@@ -533,7 +527,7 @@ def iabs(value: Integer = None):
     | Parameter | `operation` | `'ABSOLUTE'` |
 
     Parameters
-    ---------
+    ----------
     value : Integer, optional
         socket 'Value' (id: Value)
     
@@ -555,7 +549,7 @@ def negate(value: Integer = None):
     | Parameter | `operation` | `'NEGATE'` |
 
     Parameters
-    ---------
+    ----------
     value : Integer, optional
         socket 'Value' (id: Value)
     
@@ -577,7 +571,7 @@ def ipower(base: Integer = None, exponent: Integer = None):
     | Parameter | `operation` | `'POWER'` |
 
     Parameters
-    ---------
+    ----------
     base : Integer, optional
         socket 'Base' (id: Value)
     
@@ -602,7 +596,7 @@ def imin(value: Integer = None, value_1: Integer = None):
     | Parameter | `operation` | `'MINIMUM'` |
 
     Parameters
-    ---------
+    ----------
     value : Integer, optional
         socket 'Value' (id: Value)
     
@@ -627,7 +621,7 @@ def imax(value: Integer = None, value_1: Integer = None):
     | Parameter | `operation` | `'MAXIMUM'` |
 
     Parameters
-    ---------
+    ----------
     value : Integer, optional
         socket 'Value' (id: Value)
     
@@ -652,7 +646,7 @@ def isign(value: Integer = None):
     | Parameter | `operation` | `'SIGN'` |
 
     Parameters
-    ---------
+    ----------
     value : Integer, optional
         socket 'Value' (id: Value)
     
@@ -674,7 +668,7 @@ def divide_round(value: Integer = None, value_1: Integer = None):
     | Parameter | `operation` | `'DIVIDE_ROUND'` |
 
     Parameters
-    ---------
+    ----------
     value : Integer, optional
         socket 'Value' (id: Value)
     
@@ -699,7 +693,7 @@ def divide_floor(value: Integer = None, value_1: Integer = None):
     | Parameter | `operation` | `'DIVIDE_FLOOR'` |
 
     Parameters
-    ---------
+    ----------
     value : Integer, optional
         socket 'Value' (id: Value)
     
@@ -724,7 +718,7 @@ def divide_ceil(value: Integer = None, value_1: Integer = None):
     | Parameter | `operation` | `'DIVIDE_CEIL'` |
 
     Parameters
-    ---------
+    ----------
     value : Integer, optional
         socket 'Value' (id: Value)
     
@@ -749,7 +743,7 @@ def ifloored_modulo(value: Integer = None, value_1: Integer = None):
     | Parameter | `operation` | `'FLOORED_MODULO'` |
 
     Parameters
-    ---------
+    ----------
     value : Integer, optional
         socket 'Value' (id: Value)
     
@@ -774,7 +768,7 @@ def imodulo(value: Integer = None, value_1: Integer = None):
     | Parameter | `operation` | `'MODULO'` |
 
     Parameters
-    ---------
+    ----------
     value : Integer, optional
         socket 'Value' (id: Value)
     
@@ -799,7 +793,7 @@ def gcd(value: Integer = None, value_1: Integer = None):
     | Parameter | `operation` | `'GCD'` |
 
     Parameters
-    ---------
+    ----------
     value : Integer, optional
         socket 'Value' (id: Value)
     
@@ -824,7 +818,7 @@ def lcm(value: Integer = None, value_1: Integer = None):
     | Parameter | `operation` | `'LCM'` |
 
     Parameters
-    ---------
+    ----------
     value : Integer, optional
         socket 'Value' (id: Value)
     
@@ -849,14 +843,16 @@ def add(value: Float = None, value_1: Float = None, use_clamp = False):
     | Parameter | `operation` | `'ADD'` |
 
     Parameters
-    ---------
+    ----------
     value : Float, optional
         socket 'Value' (id: Value)
     
     value_1 : Float, optional
         socket 'Value' (id: Value_001)
     
-    use_clamp (bool): parameter 'use_clamp'
+    use_clamp : bool
+        parameter `use_clamp`
+    
 
     Returns
     -------
@@ -875,14 +871,16 @@ def subtract(value: Float = None, value_1: Float = None, use_clamp = False):
     | Parameter | `operation` | `'SUBTRACT'` |
 
     Parameters
-    ---------
+    ----------
     value : Float, optional
         socket 'Value' (id: Value)
     
     value_1 : Float, optional
         socket 'Value' (id: Value_001)
     
-    use_clamp (bool): parameter 'use_clamp'
+    use_clamp : bool
+        parameter `use_clamp`
+    
 
     Returns
     -------
@@ -901,14 +899,16 @@ def multiply(value: Float = None, value_1: Float = None, use_clamp = False):
     | Parameter | `operation` | `'MULTIPLY'` |
 
     Parameters
-    ---------
+    ----------
     value : Float, optional
         socket 'Value' (id: Value)
     
     value_1 : Float, optional
         socket 'Value' (id: Value_001)
     
-    use_clamp (bool): parameter 'use_clamp'
+    use_clamp : bool
+        parameter `use_clamp`
+    
 
     Returns
     -------
@@ -927,14 +927,16 @@ def divide(value: Float = None, value_1: Float = None, use_clamp = False):
     | Parameter | `operation` | `'DIVIDE'` |
 
     Parameters
-    ---------
+    ----------
     value : Float, optional
         socket 'Value' (id: Value)
     
     value_1 : Float, optional
         socket 'Value' (id: Value_001)
     
-    use_clamp (bool): parameter 'use_clamp'
+    use_clamp : bool
+        parameter `use_clamp`
+    
 
     Returns
     -------
@@ -956,7 +958,7 @@ def multiply_add(value: Float = None,
     | Parameter | `operation` | `'MULTIPLY_ADD'` |
 
     Parameters
-    ---------
+    ----------
     value : Float, optional
         socket 'Value' (id: Value)
     
@@ -966,7 +968,9 @@ def multiply_add(value: Float = None,
     addend : Float, optional
         socket 'Addend' (id: Value_002)
     
-    use_clamp (bool): parameter 'use_clamp'
+    use_clamp : bool
+        parameter `use_clamp`
+    
 
     Returns
     -------
@@ -985,14 +989,16 @@ def power(base: Float = None, exponent: Float = None, use_clamp = False):
     | Parameter | `operation` | `'POWER'` |
 
     Parameters
-    ---------
+    ----------
     base : Float, optional
         socket 'Base' (id: Value)
     
     exponent : Float, optional
         socket 'Exponent' (id: Value_001)
     
-    use_clamp (bool): parameter 'use_clamp'
+    use_clamp : bool
+        parameter `use_clamp`
+    
 
     Returns
     -------
@@ -1011,14 +1017,16 @@ def log(value: Float = None, base: Float = None, use_clamp = False):
     | Parameter | `operation` | `'LOGARITHM'` |
 
     Parameters
-    ---------
+    ----------
     value : Float, optional
         socket 'Value' (id: Value)
     
     base : Float, optional
         socket 'Base' (id: Value_001)
     
-    use_clamp (bool): parameter 'use_clamp'
+    use_clamp : bool
+        parameter `use_clamp`
+    
 
     Returns
     -------
@@ -1037,11 +1045,13 @@ def sqrt(value: Float = None, use_clamp = False):
     | Parameter | `operation` | `'SQRT'` |
 
     Parameters
-    ---------
+    ----------
     value : Float, optional
         socket 'Value' (id: Value)
     
-    use_clamp (bool): parameter 'use_clamp'
+    use_clamp : bool
+        parameter `use_clamp`
+    
 
     Returns
     -------
@@ -1060,11 +1070,13 @@ def inverse_sqrt(value: Float = None, use_clamp = False):
     | Parameter | `operation` | `'INVERSE_SQRT'` |
 
     Parameters
-    ---------
+    ----------
     value : Float, optional
         socket 'Value' (id: Value)
     
-    use_clamp (bool): parameter 'use_clamp'
+    use_clamp : bool
+        parameter `use_clamp`
+    
 
     Returns
     -------
@@ -1083,11 +1095,13 @@ def abs(value: Float = None, use_clamp = False):
     | Parameter | `operation` | `'ABSOLUTE'` |
 
     Parameters
-    ---------
+    ----------
     value : Float, optional
         socket 'Value' (id: Value)
     
-    use_clamp (bool): parameter 'use_clamp'
+    use_clamp : bool
+        parameter `use_clamp`
+    
 
     Returns
     -------
@@ -1106,11 +1120,13 @@ def exp(value: Float = None, use_clamp = False):
     | Parameter | `operation` | `'EXPONENT'` |
 
     Parameters
-    ---------
+    ----------
     value : Float, optional
         socket 'Value' (id: Value)
     
-    use_clamp (bool): parameter 'use_clamp'
+    use_clamp : bool
+        parameter `use_clamp`
+    
 
     Returns
     -------
@@ -1129,14 +1145,16 @@ def min(value: Float = None, value_1: Float = None, use_clamp = False):
     | Parameter | `operation` | `'MINIMUM'` |
 
     Parameters
-    ---------
+    ----------
     value : Float, optional
         socket 'Value' (id: Value)
     
     value_1 : Float, optional
         socket 'Value' (id: Value_001)
     
-    use_clamp (bool): parameter 'use_clamp'
+    use_clamp : bool
+        parameter `use_clamp`
+    
 
     Returns
     -------
@@ -1155,14 +1173,16 @@ def max(value: Float = None, value_1: Float = None, use_clamp = False):
     | Parameter | `operation` | `'MAXIMUM'` |
 
     Parameters
-    ---------
+    ----------
     value : Float, optional
         socket 'Value' (id: Value)
     
     value_1 : Float, optional
         socket 'Value' (id: Value_001)
     
-    use_clamp (bool): parameter 'use_clamp'
+    use_clamp : bool
+        parameter `use_clamp`
+    
 
     Returns
     -------
@@ -1181,14 +1201,16 @@ def mless_than(value: Float = None, threshold: Float = None, use_clamp = False):
     | Parameter | `operation` | `'LESS_THAN'` |
 
     Parameters
-    ---------
+    ----------
     value : Float, optional
         socket 'Value' (id: Value)
     
     threshold : Float, optional
         socket 'Threshold' (id: Value_001)
     
-    use_clamp (bool): parameter 'use_clamp'
+    use_clamp : bool
+        parameter `use_clamp`
+    
 
     Returns
     -------
@@ -1207,14 +1229,16 @@ def mgreater_than(value: Float = None, threshold: Float = None, use_clamp = Fals
     | Parameter | `operation` | `'GREATER_THAN'` |
 
     Parameters
-    ---------
+    ----------
     value : Float, optional
         socket 'Value' (id: Value)
     
     threshold : Float, optional
         socket 'Threshold' (id: Value_001)
     
-    use_clamp (bool): parameter 'use_clamp'
+    use_clamp : bool
+        parameter `use_clamp`
+    
 
     Returns
     -------
@@ -1233,11 +1257,13 @@ def sign(value: Float = None, use_clamp = False):
     | Parameter | `operation` | `'SIGN'` |
 
     Parameters
-    ---------
+    ----------
     value : Float, optional
         socket 'Value' (id: Value)
     
-    use_clamp (bool): parameter 'use_clamp'
+    use_clamp : bool
+        parameter `use_clamp`
+    
 
     Returns
     -------
@@ -1259,7 +1285,7 @@ def compare(value: Float = None,
     | Parameter | `operation` | `'COMPARE'` |
 
     Parameters
-    ---------
+    ----------
     value : Float, optional
         socket 'Value' (id: Value)
     
@@ -1269,7 +1295,9 @@ def compare(value: Float = None,
     epsilon : Float, optional
         socket 'Epsilon' (id: Value_002)
     
-    use_clamp (bool): parameter 'use_clamp'
+    use_clamp : bool
+        parameter `use_clamp`
+    
 
     Returns
     -------
@@ -1291,7 +1319,7 @@ def smooth_min(value: Float = None,
     | Parameter | `operation` | `'SMOOTH_MIN'` |
 
     Parameters
-    ---------
+    ----------
     value : Float, optional
         socket 'Value' (id: Value)
     
@@ -1301,7 +1329,9 @@ def smooth_min(value: Float = None,
     distance : Float, optional
         socket 'Distance' (id: Value_002)
     
-    use_clamp (bool): parameter 'use_clamp'
+    use_clamp : bool
+        parameter `use_clamp`
+    
 
     Returns
     -------
@@ -1323,7 +1353,7 @@ def smooth_max(value: Float = None,
     | Parameter | `operation` | `'SMOOTH_MAX'` |
 
     Parameters
-    ---------
+    ----------
     value : Float, optional
         socket 'Value' (id: Value)
     
@@ -1333,7 +1363,9 @@ def smooth_max(value: Float = None,
     distance : Float, optional
         socket 'Distance' (id: Value_002)
     
-    use_clamp (bool): parameter 'use_clamp'
+    use_clamp : bool
+        parameter `use_clamp`
+    
 
     Returns
     -------
@@ -1352,11 +1384,13 @@ def round(value: Float = None, use_clamp = False):
     | Parameter | `operation` | `'ROUND'` |
 
     Parameters
-    ---------
+    ----------
     value : Float, optional
         socket 'Value' (id: Value)
     
-    use_clamp (bool): parameter 'use_clamp'
+    use_clamp : bool
+        parameter `use_clamp`
+    
 
     Returns
     -------
@@ -1375,11 +1409,13 @@ def floor(value: Float = None, use_clamp = False):
     | Parameter | `operation` | `'FLOOR'` |
 
     Parameters
-    ---------
+    ----------
     value : Float, optional
         socket 'Value' (id: Value)
     
-    use_clamp (bool): parameter 'use_clamp'
+    use_clamp : bool
+        parameter `use_clamp`
+    
 
     Returns
     -------
@@ -1398,11 +1434,13 @@ def ceil(value: Float = None, use_clamp = False):
     | Parameter | `operation` | `'CEIL'` |
 
     Parameters
-    ---------
+    ----------
     value : Float, optional
         socket 'Value' (id: Value)
     
-    use_clamp (bool): parameter 'use_clamp'
+    use_clamp : bool
+        parameter `use_clamp`
+    
 
     Returns
     -------
@@ -1421,11 +1459,13 @@ def trunc(value: Float = None, use_clamp = False):
     | Parameter | `operation` | `'TRUNC'` |
 
     Parameters
-    ---------
+    ----------
     value : Float, optional
         socket 'Value' (id: Value)
     
-    use_clamp (bool): parameter 'use_clamp'
+    use_clamp : bool
+        parameter `use_clamp`
+    
 
     Returns
     -------
@@ -1444,11 +1484,13 @@ def fract(value: Float = None, use_clamp = False):
     | Parameter | `operation` | `'FRACT'` |
 
     Parameters
-    ---------
+    ----------
     value : Float, optional
         socket 'Value' (id: Value)
     
-    use_clamp (bool): parameter 'use_clamp'
+    use_clamp : bool
+        parameter `use_clamp`
+    
 
     Returns
     -------
@@ -1467,14 +1509,16 @@ def modulo(value: Float = None, value_1: Float = None, use_clamp = False):
     | Parameter | `operation` | `'MODULO'` |
 
     Parameters
-    ---------
+    ----------
     value : Float, optional
         socket 'Value' (id: Value)
     
     value_1 : Float, optional
         socket 'Value' (id: Value_001)
     
-    use_clamp (bool): parameter 'use_clamp'
+    use_clamp : bool
+        parameter `use_clamp`
+    
 
     Returns
     -------
@@ -1493,14 +1537,16 @@ def floored_modulo(value: Float = None, value_1: Float = None, use_clamp = False
     | Parameter | `operation` | `'FLOORED_MODULO'` |
 
     Parameters
-    ---------
+    ----------
     value : Float, optional
         socket 'Value' (id: Value)
     
     value_1 : Float, optional
         socket 'Value' (id: Value_001)
     
-    use_clamp (bool): parameter 'use_clamp'
+    use_clamp : bool
+        parameter `use_clamp`
+    
 
     Returns
     -------
@@ -1519,7 +1565,7 @@ def wrap(value: Float = None, max: Float = None, min: Float = None, use_clamp = 
     | Parameter | `operation` | `'WRAP'` |
 
     Parameters
-    ---------
+    ----------
     value : Float, optional
         socket 'Value' (id: Value)
     
@@ -1529,7 +1575,9 @@ def wrap(value: Float = None, max: Float = None, min: Float = None, use_clamp = 
     min : Float, optional
         socket 'Min' (id: Value_002)
     
-    use_clamp (bool): parameter 'use_clamp'
+    use_clamp : bool
+        parameter `use_clamp`
+    
 
     Returns
     -------
@@ -1548,14 +1596,16 @@ def snap(value: Float = None, increment: Float = None, use_clamp = False):
     | Parameter | `operation` | `'SNAP'` |
 
     Parameters
-    ---------
+    ----------
     value : Float, optional
         socket 'Value' (id: Value)
     
     increment : Float, optional
         socket 'Increment' (id: Value_001)
     
-    use_clamp (bool): parameter 'use_clamp'
+    use_clamp : bool
+        parameter `use_clamp`
+    
 
     Returns
     -------
@@ -1574,14 +1624,16 @@ def pingpong(value: Float = None, scale: Float = None, use_clamp = False):
     | Parameter | `operation` | `'PINGPONG'` |
 
     Parameters
-    ---------
+    ----------
     value : Float, optional
         socket 'Value' (id: Value)
     
     scale : Float, optional
         socket 'Scale' (id: Value_001)
     
-    use_clamp (bool): parameter 'use_clamp'
+    use_clamp : bool
+        parameter `use_clamp`
+    
 
     Returns
     -------
@@ -1600,11 +1652,13 @@ def sin(value: Float = None, use_clamp = False):
     | Parameter | `operation` | `'SINE'` |
 
     Parameters
-    ---------
+    ----------
     value : Float, optional
         socket 'Value' (id: Value)
     
-    use_clamp (bool): parameter 'use_clamp'
+    use_clamp : bool
+        parameter `use_clamp`
+    
 
     Returns
     -------
@@ -1623,11 +1677,13 @@ def cos(value: Float = None, use_clamp = False):
     | Parameter | `operation` | `'COSINE'` |
 
     Parameters
-    ---------
+    ----------
     value : Float, optional
         socket 'Value' (id: Value)
     
-    use_clamp (bool): parameter 'use_clamp'
+    use_clamp : bool
+        parameter `use_clamp`
+    
 
     Returns
     -------
@@ -1646,11 +1702,13 @@ def tan(value: Float = None, use_clamp = False):
     | Parameter | `operation` | `'TANGENT'` |
 
     Parameters
-    ---------
+    ----------
     value : Float, optional
         socket 'Value' (id: Value)
     
-    use_clamp (bool): parameter 'use_clamp'
+    use_clamp : bool
+        parameter `use_clamp`
+    
 
     Returns
     -------
@@ -1669,11 +1727,13 @@ def asin(value: Float = None, use_clamp = False):
     | Parameter | `operation` | `'ARCSINE'` |
 
     Parameters
-    ---------
+    ----------
     value : Float, optional
         socket 'Value' (id: Value)
     
-    use_clamp (bool): parameter 'use_clamp'
+    use_clamp : bool
+        parameter `use_clamp`
+    
 
     Returns
     -------
@@ -1692,11 +1752,13 @@ def acos(value: Float = None, use_clamp = False):
     | Parameter | `operation` | `'ARCCOSINE'` |
 
     Parameters
-    ---------
+    ----------
     value : Float, optional
         socket 'Value' (id: Value)
     
-    use_clamp (bool): parameter 'use_clamp'
+    use_clamp : bool
+        parameter `use_clamp`
+    
 
     Returns
     -------
@@ -1715,11 +1777,13 @@ def arctangent(value: Float = None, use_clamp = False):
     | Parameter | `operation` | `'ARCTANGENT'` |
 
     Parameters
-    ---------
+    ----------
     value : Float, optional
         socket 'Value' (id: Value)
     
-    use_clamp (bool): parameter 'use_clamp'
+    use_clamp : bool
+        parameter `use_clamp`
+    
 
     Returns
     -------
@@ -1738,14 +1802,16 @@ def atan2(value: Float = None, value_1: Float = None, use_clamp = False):
     | Parameter | `operation` | `'ARCTAN2'` |
 
     Parameters
-    ---------
+    ----------
     value : Float, optional
         socket 'Value' (id: Value)
     
     value_1 : Float, optional
         socket 'Value' (id: Value_001)
     
-    use_clamp (bool): parameter 'use_clamp'
+    use_clamp : bool
+        parameter `use_clamp`
+    
 
     Returns
     -------
@@ -1764,11 +1830,13 @@ def sinh(value: Float = None, use_clamp = False):
     | Parameter | `operation` | `'SINH'` |
 
     Parameters
-    ---------
+    ----------
     value : Float, optional
         socket 'Value' (id: Value)
     
-    use_clamp (bool): parameter 'use_clamp'
+    use_clamp : bool
+        parameter `use_clamp`
+    
 
     Returns
     -------
@@ -1787,11 +1855,13 @@ def cosh(value: Float = None, use_clamp = False):
     | Parameter | `operation` | `'COSH'` |
 
     Parameters
-    ---------
+    ----------
     value : Float, optional
         socket 'Value' (id: Value)
     
-    use_clamp (bool): parameter 'use_clamp'
+    use_clamp : bool
+        parameter `use_clamp`
+    
 
     Returns
     -------
@@ -1810,11 +1880,13 @@ def tanh(value: Float = None, use_clamp = False):
     | Parameter | `operation` | `'TANH'` |
 
     Parameters
-    ---------
+    ----------
     value : Float, optional
         socket 'Value' (id: Value)
     
-    use_clamp (bool): parameter 'use_clamp'
+    use_clamp : bool
+        parameter `use_clamp`
+    
 
     Returns
     -------
@@ -1833,11 +1905,13 @@ def radians(degrees: Float = None, use_clamp = False):
     | Parameter | `operation` | `'RADIANS'` |
 
     Parameters
-    ---------
+    ----------
     degrees : Float, optional
         socket 'Degrees' (id: Value)
     
-    use_clamp (bool): parameter 'use_clamp'
+    use_clamp : bool
+        parameter `use_clamp`
+    
 
     Returns
     -------
@@ -1856,11 +1930,13 @@ def degrees(radians: Float = None, use_clamp = False):
     | Parameter | `operation` | `'DEGREES'` |
 
     Parameters
-    ---------
+    ----------
     radians : Float, optional
         socket 'Radians' (id: Value)
     
-    use_clamp (bool): parameter 'use_clamp'
+    use_clamp : bool
+        parameter `use_clamp`
+    
 
     Returns
     -------
@@ -1879,7 +1955,7 @@ def vadd(vector: Vector = None, vector_1: Vector = None):
     | Parameter | `operation` | `'ADD'` |
 
     Parameters
-    ---------
+    ----------
     vector : Vector, optional
         socket 'Vector' (id: Vector)
     
@@ -1904,7 +1980,7 @@ def vsubtract(vector: Vector = None, vector_1: Vector = None):
     | Parameter | `operation` | `'SUBTRACT'` |
 
     Parameters
-    ---------
+    ----------
     vector : Vector, optional
         socket 'Vector' (id: Vector)
     
@@ -1929,7 +2005,7 @@ def vmultiply(vector: Vector = None, vector_1: Vector = None):
     | Parameter | `operation` | `'MULTIPLY'` |
 
     Parameters
-    ---------
+    ----------
     vector : Vector, optional
         socket 'Vector' (id: Vector)
     
@@ -1954,7 +2030,7 @@ def vdivide(vector: Vector = None, vector_1: Vector = None):
     | Parameter | `operation` | `'DIVIDE'` |
 
     Parameters
-    ---------
+    ----------
     vector : Vector, optional
         socket 'Vector' (id: Vector)
     
@@ -1979,7 +2055,7 @@ def vmultiply_add(vector: Vector = None, multiplier: Vector = None, addend: Vect
     | Parameter | `operation` | `'MULTIPLY_ADD'` |
 
     Parameters
-    ---------
+    ----------
     vector : Vector, optional
         socket 'Vector' (id: Vector)
     
@@ -2007,7 +2083,7 @@ def cross(vector: Vector = None, vector_1: Vector = None):
     | Parameter | `operation` | `'CROSS_PRODUCT'` |
 
     Parameters
-    ---------
+    ----------
     vector : Vector, optional
         socket 'Vector' (id: Vector)
     
@@ -2032,7 +2108,7 @@ def project(vector: Vector = None, vector_1: Vector = None):
     | Parameter | `operation` | `'PROJECT'` |
 
     Parameters
-    ---------
+    ----------
     vector : Vector, optional
         socket 'Vector' (id: Vector)
     
@@ -2057,7 +2133,7 @@ def reflect(vector: Vector = None, vector_1: Vector = None):
     | Parameter | `operation` | `'REFLECT'` |
 
     Parameters
-    ---------
+    ----------
     vector : Vector, optional
         socket 'Vector' (id: Vector)
     
@@ -2082,7 +2158,7 @@ def refract(vector: Vector = None, vector_1: Vector = None, ior: Float = None):
     | Parameter | `operation` | `'REFRACT'` |
 
     Parameters
-    ---------
+    ----------
     vector : Vector, optional
         socket 'Vector' (id: Vector)
     
@@ -2110,7 +2186,7 @@ def faceforward(vector: Vector = None, incident: Vector = None, reference: Vecto
     | Parameter | `operation` | `'FACEFORWARD'` |
 
     Parameters
-    ---------
+    ----------
     vector : Vector, optional
         socket 'Vector' (id: Vector)
     
@@ -2138,7 +2214,7 @@ def dot(vector: Vector = None, vector_1: Vector = None):
     | Parameter | `operation` | `'DOT_PRODUCT'` |
 
     Parameters
-    ---------
+    ----------
     vector : Vector, optional
         socket 'Vector' (id: Vector)
     
@@ -2163,7 +2239,7 @@ def distance(vector: Vector = None, vector_1: Vector = None):
     | Parameter | `operation` | `'DISTANCE'` |
 
     Parameters
-    ---------
+    ----------
     vector : Vector, optional
         socket 'Vector' (id: Vector)
     
@@ -2188,7 +2264,7 @@ def length(vector: Vector = None):
     | Parameter | `operation` | `'LENGTH'` |
 
     Parameters
-    ---------
+    ----------
     vector : Vector, optional
         socket 'Vector' (id: Vector)
     
@@ -2210,7 +2286,7 @@ def scale(vector: Vector = None, scale: Float = None):
     | Parameter | `operation` | `'SCALE'` |
 
     Parameters
-    ---------
+    ----------
     vector : Vector, optional
         socket 'Vector' (id: Vector)
     
@@ -2235,7 +2311,7 @@ def normalize(vector: Vector = None):
     | Parameter | `operation` | `'NORMALIZE'` |
 
     Parameters
-    ---------
+    ----------
     vector : Vector, optional
         socket 'Vector' (id: Vector)
     
@@ -2257,7 +2333,7 @@ def vabs(vector: Vector = None):
     | Parameter | `operation` | `'ABSOLUTE'` |
 
     Parameters
-    ---------
+    ----------
     vector : Vector, optional
         socket 'Vector' (id: Vector)
     
@@ -2279,7 +2355,7 @@ def vpower(base: Vector = None, exponent: Vector = None):
     | Parameter | `operation` | `'POWER'` |
 
     Parameters
-    ---------
+    ----------
     base : Vector, optional
         socket 'Base' (id: Vector)
     
@@ -2304,7 +2380,7 @@ def vsign(vector: Vector = None):
     | Parameter | `operation` | `'SIGN'` |
 
     Parameters
-    ---------
+    ----------
     vector : Vector, optional
         socket 'Vector' (id: Vector)
     
@@ -2326,7 +2402,7 @@ def vmin(vector: Vector = None, vector_1: Vector = None):
     | Parameter | `operation` | `'MINIMUM'` |
 
     Parameters
-    ---------
+    ----------
     vector : Vector, optional
         socket 'Vector' (id: Vector)
     
@@ -2351,7 +2427,7 @@ def vmax(vector: Vector = None, vector_1: Vector = None):
     | Parameter | `operation` | `'MAXIMUM'` |
 
     Parameters
-    ---------
+    ----------
     vector : Vector, optional
         socket 'Vector' (id: Vector)
     
@@ -2376,7 +2452,7 @@ def vround(vector: Vector = None):
     | Parameter | `operation` | `'ROUND'` |
 
     Parameters
-    ---------
+    ----------
     vector : Vector, optional
         socket 'Vector' (id: Vector)
     
@@ -2398,7 +2474,7 @@ def vfloor(vector: Vector = None):
     | Parameter | `operation` | `'FLOOR'` |
 
     Parameters
-    ---------
+    ----------
     vector : Vector, optional
         socket 'Vector' (id: Vector)
     
@@ -2420,7 +2496,7 @@ def vceil(vector: Vector = None):
     | Parameter | `operation` | `'CEIL'` |
 
     Parameters
-    ---------
+    ----------
     vector : Vector, optional
         socket 'Vector' (id: Vector)
     
@@ -2442,7 +2518,7 @@ def vfraction(vector: Vector = None):
     | Parameter | `operation` | `'FRACTION'` |
 
     Parameters
-    ---------
+    ----------
     vector : Vector, optional
         socket 'Vector' (id: Vector)
     
@@ -2464,7 +2540,7 @@ def vmodulo(vector: Vector = None, vector_1: Vector = None):
     | Parameter | `operation` | `'MODULO'` |
 
     Parameters
-    ---------
+    ----------
     vector : Vector, optional
         socket 'Vector' (id: Vector)
     
@@ -2489,7 +2565,7 @@ def vwrap(vector: Vector = None, max: Vector = None, min: Vector = None):
     | Parameter | `operation` | `'WRAP'` |
 
     Parameters
-    ---------
+    ----------
     vector : Vector, optional
         socket 'Vector' (id: Vector)
     
@@ -2517,7 +2593,7 @@ def vsnap(vector: Vector = None, increment: Vector = None):
     | Parameter | `operation` | `'SNAP'` |
 
     Parameters
-    ---------
+    ----------
     vector : Vector, optional
         socket 'Vector' (id: Vector)
     
@@ -2542,7 +2618,7 @@ def vsin(vector: Vector = None):
     | Parameter | `operation` | `'SINE'` |
 
     Parameters
-    ---------
+    ----------
     vector : Vector, optional
         socket 'Vector' (id: Vector)
     
@@ -2564,7 +2640,7 @@ def vcos(vector: Vector = None):
     | Parameter | `operation` | `'COSINE'` |
 
     Parameters
-    ---------
+    ----------
     vector : Vector, optional
         socket 'Vector' (id: Vector)
     
@@ -2586,7 +2662,7 @@ def vtan(vector: Vector = None):
     | Parameter | `operation` | `'TANGENT'` |
 
     Parameters
-    ---------
+    ----------
     vector : Vector, optional
         socket 'Vector' (id: Vector)
     

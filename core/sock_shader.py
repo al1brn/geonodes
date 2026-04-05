@@ -62,7 +62,7 @@ class ShaderRoot:
         Parameters
         ----------
         target : str, optional
-            parameter ' target' in ('ALL', 'EEVEE', 'CYCLES') Default: 'ALL'.
+            parameter ' target' in ('ALL', 'EEVEE', 'CYCLES') default='ALL'.
 
         """
         self._tree.set_surface(self, target=target)
@@ -73,7 +73,7 @@ class ShaderRoot:
         Parameters
         ----------
         target : str, optional
-            parameter ' target' in ('ALL', 'EEVEE', 'CYCLES') Default: 'ALL'.
+            parameter ' target' in ('ALL', 'EEVEE', 'CYCLES') default='ALL'.
 
         """
         self._tree.set_volume(self, target=target)
@@ -116,13 +116,13 @@ class Shader(ShaderRoot, generated.Shader):
             initial value
 
         name : str, optional
-            group input socket name if not None Default: None.
+            group input socket name if not None default=None.
 
         tip : str, default=''
             Property description
 
         panel : str, optional
-            Panel name Default: "".
+            Panel name default="".
 
         optional_label : bool, default=False
             Property optional_label

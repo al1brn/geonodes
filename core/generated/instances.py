@@ -1,4 +1,4 @@
-# Generated 2026-04-04 12:37:35
+# Generated 2026-04-04 17:31:31
 
 from __future__ import annotations
 from .. sockettype import SocketType
@@ -55,7 +55,7 @@ class Instances(Socket):
         """ > Node <&Node Geometry to Instance>
 
         Parameters
-        ---------
+        ----------
         geometry : Geometry, optional
             socket 'Geometry' (id: Geometry)
         
@@ -72,7 +72,7 @@ class Instances(Socket):
         """ > Node <&Node Import OBJ>
 
         Parameters
-        ---------
+        ----------
         path : String, optional
             socket 'Path' (id: Path)
         
@@ -117,7 +117,7 @@ class Instances(Socket):
         | Socket | Selection | `self[selection]` |
 
         Parameters
-        ---------
+        ----------
         position : Vector, optional
             socket 'Position' (id: Position)
         
@@ -148,7 +148,7 @@ class Instances(Socket):
         | Socket | Selection | `self[selection]` |
 
         Parameters
-        ---------
+        ----------
         rotation : Rotation, optional
             socket 'Rotation' (id: Rotation)
         
@@ -180,7 +180,7 @@ class Instances(Socket):
         | Socket | Selection | `self[selection]` |
 
         Parameters
-        ---------
+        ----------
         scale : Vector, optional
             socket 'Scale' (id: Scale)
         
@@ -212,7 +212,7 @@ class Instances(Socket):
         | Socket | Selection | `self[selection]` |
 
         Parameters
-        ---------
+        ----------
         transform : Matrix, optional
             socket 'Transform' (id: Transform)
         
@@ -238,7 +238,7 @@ class Instances(Socket):
         | Socket | Selection | `self[selection]` |
 
         Parameters
-        ---------
+        ----------
         translation : Vector, optional
             socket 'Translation' (id: Translation)
         
@@ -274,7 +274,7 @@ class Instances(Socket):
         | Socket | Selection | `self[selection]` |
 
         Parameters
-        ---------
+        ----------
         transform : Matrix, optional
             socket 'Transform' (id: Transform)
         

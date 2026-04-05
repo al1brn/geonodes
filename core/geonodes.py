@@ -60,13 +60,13 @@ class GeoNodes(Tree):
             Geometry Nodes name
 
         fake_user : bool, optional
-            set fake_user flag Default: False.
+            set fake_user flag default=False.
 
         is_group : bool, optional
-            tree is a group Default: False.
+            tree is a group default=False.
 
         prefix : str, optional
-            prefix name Default: "".
+            prefix name default="".
 
         """
 
@@ -102,28 +102,28 @@ class GeoNodes(Tree):
             Geometry Nodes namde
 
         fake_user : bool, optional
-            set fake_user flag Default: False.
+            set fake_user flag default=False.
 
         object_mode : bool, optional
-            tool available in object mode Default: True.
+            tool available in object mode default=True.
 
         edit_mode : bool, optional
-            tool available in edit mode Default: False.
+            tool available in edit mode default=False.
 
         sculpt_mode : bool, optional
-            tool available in sculpt mode Default: False.
+            tool available in sculpt mode default=False.
 
         mesh : bool, optional
-            mesh tool Default: True.
+            mesh tool default=True.
 
         curve : bool, optional
-            curve tool Default: False.
+            curve tool default=False.
 
         cloud : bool, optional
-            cloud tool Default: False.
+            cloud tool default=False.
 
         wait_for_click : bool, optional
-            wait for click flag Default: False.
+            wait for click flag default=False.
 
 
         Returns

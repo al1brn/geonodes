@@ -1,4 +1,4 @@
-# Generated 2026-04-04 12:37:35
+# Generated 2026-04-04 17:31:31
 
 from __future__ import annotations
 from .. sockettype import SocketType
@@ -44,7 +44,7 @@ class Boolean(Socket):
         | Parameter | `operation` | `'AND'` |
 
         Parameters
-        ---------
+        ----------
         boolean : Boolean, optional
             socket 'Boolean' (id: Boolean_001)
         
@@ -67,7 +67,7 @@ class Boolean(Socket):
         | Parameter | `operation` | `'OR'` |
 
         Parameters
-        ---------
+        ----------
         boolean : Boolean, optional
             socket 'Boolean' (id: Boolean_001)
         
@@ -107,7 +107,7 @@ class Boolean(Socket):
         | Parameter | `operation` | `'NAND'` |
 
         Parameters
-        ---------
+        ----------
         boolean : Boolean, optional
             socket 'Boolean' (id: Boolean_001)
         
@@ -130,7 +130,7 @@ class Boolean(Socket):
         | Parameter | `operation` | `'NOR'` |
 
         Parameters
-        ---------
+        ----------
         boolean : Boolean, optional
             socket 'Boolean' (id: Boolean_001)
         
@@ -153,7 +153,7 @@ class Boolean(Socket):
         | Parameter | `operation` | `'XNOR'` |
 
         Parameters
-        ---------
+        ----------
         boolean : Boolean, optional
             socket 'Boolean' (id: Boolean_001)
         
@@ -176,7 +176,7 @@ class Boolean(Socket):
         | Parameter | `operation` | `'XOR'` |
 
         Parameters
-        ---------
+        ----------
         boolean : Boolean, optional
             socket 'Boolean' (id: Boolean_001)
         
@@ -199,7 +199,7 @@ class Boolean(Socket):
         | Parameter | `operation` | `'IMPLY'` |
 
         Parameters
-        ---------
+        ----------
         boolean : Boolean, optional
             socket 'Boolean' (id: Boolean_001)
         
@@ -222,7 +222,7 @@ class Boolean(Socket):
         | Parameter | `operation` | `'NIMPLY'` |
 
         Parameters
-        ---------
+        ----------
         boolean : Boolean, optional
             socket 'Boolean' (id: Boolean_001)
         
@@ -245,7 +245,7 @@ class Boolean(Socket):
         | Parameter | `data_type` | `'BOOLEAN'` |
 
         Parameters
-        ---------
+        ----------
         probability : Float, optional
             socket 'Probability' (id: Probability)
         
@@ -274,7 +274,7 @@ class Boolean(Socket):
         | Parameter | `data_type` | `'BOOLEAN'` |
 
         Parameters
-        ---------
+        ----------
         name : String, optional
             socket 'Name' (id: Name)
         
@@ -297,7 +297,7 @@ class Boolean(Socket):
         | Parameter | `data_type` | `'BOOLEAN'` |
 
         Parameters
-        ---------
+        ----------
         name : String, optional
             socket 'Name' (id: Name)
         
@@ -336,7 +336,7 @@ class Boolean(Socket):
         | Socket | Selection | `self` |
 
         Parameters
-        ---------
+        ----------
         seam : Boolean, optional
             socket 'Seam' (id: Seam)
         
@@ -374,7 +374,7 @@ class Boolean(Socket):
         | Parameter | `warning_type` | `'ERROR'` |
 
         Parameters
-        ---------
+        ----------
         message : String, optional
             socket 'Message' (id: Message)
         
@@ -397,7 +397,7 @@ class Boolean(Socket):
         | Parameter | `warning_type` | `'WARNING'` |
 
         Parameters
-        ---------
+        ----------
         message : String, optional
             socket 'Message' (id: Message)
         
@@ -420,7 +420,7 @@ class Boolean(Socket):
         | Parameter | `warning_type` | `'INFO'` |
 
         Parameters
-        ---------
+        ----------
         message : String, optional
             socket 'Message' (id: Message)
         
@@ -445,7 +445,7 @@ class Boolean(Socket):
         | Parameter | `data_type` | `'BOOLEAN'` |
 
         Parameters
-        ---------
+        ----------
         position : Vector, optional
             socket 'Position' (id: Position)
         
@@ -471,7 +471,7 @@ class Boolean(Socket):
         | Parameter | `data_type` | `'BOOLEAN'` |
 
         Parameters
-        ---------
+        ----------
         x : Integer, optional
             socket 'X' (id: X)
         
@@ -499,6 +499,14 @@ class Boolean(Socket):
         | Socket    | Topology    | `self`      |
         | Parameter | `data_type` | `'BOOLEAN'` |
 
+        Parameters
+        ----------
+        named_sockets : dict, default={}
+            Sockets created with string names
+        
+        sockets : dict, default={}
+            Socket created with python name attributes
+
         Returns
         -------
         None
@@ -517,7 +525,7 @@ class Boolean(Socket):
         | Parameter | `data_type` | `'BOOLEAN'` |
 
         Parameters
-        ---------
+        ----------
         mode : menu='Threshold', optional
             ('Inactive', 'Threshold', 'SDF')
         
@@ -570,7 +578,7 @@ class Boolean(Socket):
         | Parameter | `data_type` | `'BOOLEAN'` |
 
         Parameters
-        ---------
+        ----------
         background : Boolean, optional
             socket 'Background' (id: Background)
         
@@ -596,7 +604,7 @@ class Boolean(Socket):
         | Parameter | `data_type` | `'BOOLEAN'` |
 
         Parameters
-        ---------
+        ----------
         transform : Matrix, optional
             socket 'Transform' (id: Transform)
         
@@ -640,7 +648,7 @@ class Boolean(Socket):
         | Parameter | `data_type` | `'BOOLEAN'` |
 
         Parameters
-        ---------
+        ----------
         enable : Boolean, optional
             socket 'Enable' (id: Enable)
         
@@ -665,7 +673,7 @@ class Boolean(Socket):
         """ > Node <&Node Cube Grid Topology>
 
         Parameters
-        ---------
+        ----------
         bounds_min : Vector, optional
             socket 'Bounds Min' (id: Bounds Min)
         
@@ -715,7 +723,7 @@ class Boolean(Socket):
         | Parameter | `data_type` | `'BOOLEAN'` |
 
         Parameters
-        ---------
+        ----------
         min_x : Integer, optional
             socket 'Min X' (id: Min X)
         
@@ -756,7 +764,7 @@ class Boolean(Socket):
         | Parameter | `data_type` | `'BOOLEAN'` |
 
         Parameters
-        ---------
+        ----------
         connectivity : menu='Face', optional
             ('Face', 'Edge', 'Vertex')
         
@@ -810,22 +818,42 @@ class Boolean(Socket):
 
         New <#Boolean> input with subtype 'NONE'.
 
-        Aguments
-        --------
-        - value  (object = False) : Default value
-        - name  (str = 'Boolean') : Input socket name
-        - tip  (str = '') : Property description
-        - panel (str = "") : Panel name
-        - optional_label  (bool = False) : Property optional_label
-        - hide_value  (bool = False) : Property hide_value
-        - hide_in_modifier  (bool = False) : Property hide_in_modifier
-        - default_attribute  (str = '') : Property default_attribute_name
-        - layer_selection  (bool = False) : Property layer_selection_field
-        - shape  (str = 'AUTO') : Property structure_type in ('AUTO', 'SINGLE')
+        Parameters
+        ----------
+        value : object, default=`False`
+            Default value
+
+        name : str, default=`Boolean`
+            Input socket name
+
+        tip : str, default=`''`
+            Property description
+
+        panel : str, default=``
+            Panel name
+
+        optional_label : bool, default=`False`
+            Property optional_label
+
+        hide_value : bool, default=`False`
+            Property hide_value
+
+        hide_in_modifier : bool, default=`False`
+            Property hide_in_modifier
+
+        default_attribute : str, default=`''`
+            Property default_attribute_name
+
+        layer_selection : bool, default=`False`
+            Property layer_selection_field
+
+        shape : str, default=`'AUTO'`
+            Property structure_type in ('AUTO', 'SINGLE')
+
 
         Returns
         -------
-        - Boolean
+        Boolean
         """
         from ..treeclass import Tree
 

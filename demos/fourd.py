@@ -4417,13 +4417,13 @@ def build_primitives_OLD():
     #
     # The extrusion can be made in two modes:
     # Surface : curve profile
-            a surface is produced between each instance
+    #        a surface is produced between each instance
 
     # Slices : mesh profile
-            one separate instance at each point
+    #        one separate instance at each point
 
     # Edges : mesh profile
-            faces are deleted and edges between each instance
+    #        faces are deleted and edges between each instance
 
     #
     # In surface mode, a curve is extrude along the backbone

@@ -93,15 +93,16 @@ class ZoneNode(Node):
         ----------
         - zone_id (str in ()"Simulation", "Repeat", "For Each Element", "Closure")) : zone id
         named_sockets : dict, optional
-            initialization values for the node input sockets Default: {}.
+            initialization values for the node input sockets default={}.
 
         Iterations : Integer, optional
-            Iterations (for Repeat only) Default: None.
+            Iterations (for Repeat only) default=None.
 
         domain : str: None
             domain for For Each only
 
-        - **parameters : node parameters and sockets
+        **parameters : dict, default={}
+            node parameters and sockets
         """
 
         if zone_id not in ZoneNode.NODES:
@@ -727,7 +728,7 @@ def repeat(iterations, named_sockets: dict={}, **sockets):
         Parameters
         ----------
         Iteration : Integer, optional
-            iteration socket Default: 1.
+            iteration socket default=1.
 
         named_socket : dict
             named sockets

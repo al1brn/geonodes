@@ -1,4 +1,4 @@
-# Generated 2026-04-04 12:37:35
+# Generated 2026-04-04 17:31:31
 
 from __future__ import annotations
 from .. sockettype import SocketType
@@ -43,6 +43,14 @@ class Menu(Socket):
         | Socket    | Menu        | `self`        |
         | Parameter | `data_type` | from `a` type |
 
+        Parameters
+        ----------
+        named_sockets : dict, default={}
+            Sockets created with string names
+        
+        sockets : dict, default={}
+            Socket created with python name attributes
+
         Returns
         -------
         Geometry
@@ -66,7 +74,7 @@ class Menu(Socket):
         | Parameter | `data_type` | `'MENU'` |
 
         Parameters
-        ---------
+        ----------
         enable : Boolean, optional
             socket 'Enable' (id: Enable)
         
@@ -94,21 +102,39 @@ class Menu(Socket):
 
         New <#Menu> input with subtype 'NONE'.
 
-        Aguments
-        --------
-        - value  (object = None) : Default value
-        - name  (str = 'Menu') : Input socket name
-        - tip  (str = '') : Property description
-        - panel (str = "") : Panel name
-        - optional_label  (bool = False) : Property optional_label
-        - hide_value  (bool = False) : Property hide_value
-        - hide_in_modifier  (bool = False) : Property hide_in_modifier
-        - expanded  (bool = False) : Property menu_expanded
-        - shape  (str = 'AUTO') : Property structure_type in ('AUTO', 'SINGLE')
+        Parameters
+        ----------
+        value : object, default=`None`
+            Default value
+
+        name : str, default=`Menu`
+            Input socket name
+
+        tip : str, default=`''`
+            Property description
+
+        panel : str, default=``
+            Panel name
+
+        optional_label : bool, default=`False`
+            Property optional_label
+
+        hide_value : bool, default=`False`
+            Property hide_value
+
+        hide_in_modifier : bool, default=`False`
+            Property hide_in_modifier
+
+        expanded : bool, default=`False`
+            Property menu_expanded
+
+        shape : str, default=`'AUTO'`
+            Property structure_type in ('AUTO', 'SINGLE')
+
 
         Returns
         -------
-        - Menu
+        Menu
         """
         from ..treeclass import Tree
 

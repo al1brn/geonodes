@@ -1,4 +1,4 @@
-# Generated 2026-04-04 12:37:35
+# Generated 2026-04-04 17:31:31
 
 from __future__ import annotations
 from .. sockettype import SocketType
@@ -42,7 +42,7 @@ class Spline:
         | Parameter | `domain`    | `'CURVE'`         |
 
         Parameters
-        ---------
+        ----------
         value : Float | Integer | Vector | Matrix, optional
             socket 'Value' (id: Value)
         
@@ -73,7 +73,7 @@ class Spline:
         | Parameter | `domain`    | `'CURVE'`             |
 
         Parameters
-        ---------
+        ----------
         attribute : Float | Vector, optional
             socket 'Attribute' (id: Attribute)
         
@@ -102,14 +102,16 @@ class Spline:
         | Parameter | `data_type` | from `value` type |
 
         Parameters
-        ---------
+        ----------
         value : Float | Vector, optional
             socket 'Value' (id: Value)
         
         group_id : Integer, optional
             socket 'Group ID' (id: Group Index)
         
-        domain (str): parameter 'domain' in ('Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer')
+        domain : Literal['Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer']
+            parameter `domain`
+        
 
         Returns
         -------
@@ -136,14 +138,16 @@ class Spline:
         | Parameter | `data_type` | from `value` type |
 
         Parameters
-        ---------
+        ----------
         value : Float | Integer | Vector, optional
             socket 'Value' (id: Value)
         
         group_id : Integer, optional
             socket 'Group ID' (id: Group Index)
         
-        domain (str): parameter 'domain' in ('Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer')
+        domain : Literal['Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer']
+            parameter `domain`
+        
 
         Returns
         -------
@@ -170,14 +174,16 @@ class Spline:
         | Parameter | `data_type` | from `value` type |
 
         Parameters
-        ---------
+        ----------
         value : Float | Vector, optional
             socket 'Value' (id: Value)
         
         group_id : Integer, optional
             socket 'Group ID' (id: Group Index)
         
-        domain (str): parameter 'domain' in ('Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer')
+        domain : Literal['Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer']
+            parameter `domain`
+        
 
         Returns
         -------
@@ -270,8 +276,10 @@ class Spline:
         | Parameter | `domain`  | `'CURVE'`         |
 
         Parameters
-        ---------
-        mode (str): parameter 'mode' in ('All', 'Only Edges & Faces', 'Only Faces')
+        ----------
+        mode : Literal['All', 'Only Edges & Faces', 'Only Faces']
+            parameter `mode`
+        
 
         Returns
         -------
@@ -362,8 +370,10 @@ class Spline:
         | Parameter | `domain`  | `'CURVE'`         |
 
         Parameters
-        ---------
-        mode (str): parameter 'mode' in ('All', 'Only Edges & Faces', 'Only Faces')
+        ----------
+        mode : Literal['All', 'Only Edges & Faces', 'Only Faces']
+            parameter `mode`
+        
 
         Returns
         -------
@@ -388,7 +398,7 @@ class Spline:
         | Parameter | `domain`  | `'SPLINE'`        |
 
         Parameters
-        ---------
+        ----------
         amount : Integer, optional
             socket 'Amount' (id: Amount)
         
@@ -417,7 +427,7 @@ class Spline:
         | Parameter | `domain`    | `'CURVE'`         |
 
         Parameters
-        ---------
+        ----------
         value : Float | Integer | Boolean | Vector | Color | Rotation | Matrix, optional
             socket 'Value' (id: Value)
         
@@ -446,7 +456,7 @@ class Spline:
         | Parameter | `domain`    | `'CURVE'`         |
 
         Parameters
-        ---------
+        ----------
         value : Float | Integer | Boolean | Vector | Color | Rotation | Matrix, optional
             socket 'Value' (id: Value)
         
@@ -467,7 +477,7 @@ class Spline:
         """ > Node <&Node Points of Curve>
 
         Parameters
-        ---------
+        ----------
         curve_index : Integer, optional
             socket 'Curve Index' (id: Curve Index)
         
@@ -495,7 +505,7 @@ class Spline:
         """ > Node <&Node Points of Curve>
 
         Parameters
-        ---------
+        ----------
         curve_index : Integer, optional
             socket 'Curve Index' (id: Curve Index)
         
@@ -521,7 +531,7 @@ class Spline:
         """ > Node <&Node Points of Curve>
 
         Parameters
-        ---------
+        ----------
         curve_index : Integer, optional
             socket 'Curve Index' (id: Curve Index)
         
@@ -554,14 +564,16 @@ class Spline:
         | Parameter | `domain`    | `'CURVE'`         |
 
         Parameters
-        ---------
+        ----------
         value : Float | Integer | Boolean | Vector | Color | Rotation | Matrix, optional
             socket 'Value' (id: Value)
         
         index : Integer, optional
             socket 'Index' (id: Index)
         
-        clamp (bool): parameter 'clamp'
+        clamp : bool
+            parameter `clamp`
+        
 
         Returns
         -------
@@ -606,7 +618,7 @@ class Spline:
         | Parameter | `domain`  | `'CURVE'`         |
 
         Parameters
-        ---------
+        ----------
         group_id : Integer, optional
             socket 'Group ID' (id: Group ID)
         
@@ -715,7 +727,7 @@ class Spline:
         | Parameter | `domain`  | `'CURVE'`         |
 
         Parameters
-        ---------
+        ----------
         group_id : Integer, optional
             socket 'Group ID' (id: Group ID)
         
@@ -746,7 +758,7 @@ class Spline:
         | Parameter | `domain`    | `'CURVE'`         |
 
         Parameters
-        ---------
+        ----------
         name : String, optional
             socket 'Name' (id: Name)
         
@@ -780,7 +792,7 @@ class Spline:
         | Parameter | `domain`    | `'CURVE'`         |
 
         Parameters
-        ---------
+        ----------
         name : String, optional
             socket 'Name' (id: Name)
         
@@ -831,8 +843,15 @@ class Spline:
         | Parameter | `domain` | `'CURVE'` |
 
         Parameters
-        ---------
-        ui_shortcut (int): parameter 'ui_shortcut'
+        ----------
+        named_sockets : dict, default={}
+            Sockets created with string names
+        
+        ui_shortcut : int
+            parameter `ui_shortcut`
+        
+        sockets : dict, default={}
+            Socket created with python name attributes
 
         """
         node = Node('Viewer', named_sockets, domain='CURVE', ui_shortcut=ui_shortcut, **sockets)
@@ -858,7 +877,7 @@ class Spline:
         | Socket | Selection | `self[selection]` |
 
         Parameters
-        ---------
+        ----------
         material_index : Integer, optional
             socket 'Material Index' (id: Material Index)
         
@@ -891,7 +910,7 @@ class Spline:
         | Socket | Selection | `self[selection]` |
 
         Parameters
-        ---------
+        ----------
         tilt : Float, optional
             socket 'Tilt' (id: Tilt)
         
@@ -925,7 +944,7 @@ class Spline:
         | Socket | Normal    | ignored           |
 
         Parameters
-        ---------
+        ----------
         mode : menu='Minimum Twist', optional
             ('Minimum Twist', 'Z Up', 'Free')
         
@@ -958,7 +977,7 @@ class Spline:
         | Socket | Selection | `self[selection]` |
 
         Parameters
-        ---------
+        ----------
         cyclic : Boolean, optional
             socket 'Cyclic' (id: Cyclic)
         
@@ -991,7 +1010,7 @@ class Spline:
         | Socket | Selection | `self[selection]` |
 
         Parameters
-        ---------
+        ----------
         resolution : Integer, optional
             socket 'Resolution' (id: Resolution)
         
@@ -1024,8 +1043,10 @@ class Spline:
         | Socket | Selection | `self[selection]` |
 
         Parameters
-        ---------
-        spline_type (str): parameter 'spline_type' in ('Catmull Rom', 'Poly', 'Bézier', 'NURBS')
+        ----------
+        spline_type : Literal['Catmull Rom', 'Poly', 'Bézier', 'NURBS']
+            parameter `spline_type`
+        
 
         Returns
         -------

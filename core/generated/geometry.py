@@ -1,4 +1,4 @@
-# Generated 2026-04-04 12:37:35
+# Generated 2026-04-04 17:31:31
 
 from __future__ import annotations
 from .. sockettype import SocketType
@@ -43,7 +43,7 @@ class Geometry(Socket):
         | Socket | Geometry | `self` |
 
         Parameters
-        ---------
+        ----------
         use_radius : Boolean, optional
             socket 'Use Radius' (id: Use Radius)
         
@@ -77,7 +77,7 @@ class Geometry(Socket):
         """ > Node <&Node Geometry to Instance>
 
         Parameters
-        ---------
+        ----------
         geometry : Geometry, optional
             socket 'Geometry' (id: Geometry)
         
@@ -94,7 +94,7 @@ class Geometry(Socket):
         """ > Node <&Node Index of Nearest>
 
         Parameters
-        ---------
+        ----------
         position : Vector, optional
             socket 'Position' (id: Position)
         
@@ -138,7 +138,7 @@ class Geometry(Socket):
         | Socket | Selection | `self[selection]` |
 
         Parameters
-        ---------
+        ----------
         instance : Instances, optional
             socket 'Instance' (id: Instance)
         
@@ -168,7 +168,7 @@ class Geometry(Socket):
         > ***Jump*** : Socket refers to node output socket after the call
 
         Parameters
-        ---------
+        ----------
         geometry : Geometry, optional
             socket 'Geometry' (id: Geometry)
         
@@ -186,7 +186,7 @@ class Geometry(Socket):
         """ > Node <&Node Join Geometry>
 
         Parameters
-        ---------
+        ----------
         geometry : Geometry, optional
             socket 'Geometry' (id: Geometry)
         
@@ -211,7 +211,7 @@ class Geometry(Socket):
         | Socket | Selection | `self[selection]` |
 
         Parameters
-        ---------
+        ----------
         mode : menu='All', optional
             ('All', 'Connected')
         
@@ -240,7 +240,7 @@ class Geometry(Socket):
         | Socket | Selection | `self[selection]` |
 
         Parameters
-        ---------
+        ----------
         mode : menu='All', optional
             ('All', 'Connected')
         
@@ -270,7 +270,7 @@ class Geometry(Socket):
         | Socket | Geometry | `self` |
 
         Parameters
-        ---------
+        ----------
         group_id : Integer, optional
             socket 'Group ID' (id: Group ID)
         
@@ -280,7 +280,9 @@ class Geometry(Socket):
         sample_group_id : Integer, optional
             socket 'Sample Group ID' (id: Sample Group ID)
         
-        target_element (str): parameter 'target_element' in ('Points', 'Edges', 'Faces')
+        target_element : Literal['Points', 'Edges', 'Faces']
+            parameter `target_element`
+        
 
         Returns
         -------
@@ -306,7 +308,7 @@ class Geometry(Socket):
         | Parameter | `target_element` | `'POINTS'` |
 
         Parameters
-        ---------
+        ----------
         group_id : Integer, optional
             socket 'Group ID' (id: Group ID)
         
@@ -340,7 +342,7 @@ class Geometry(Socket):
         | Parameter | `target_element` | `'EDGES'` |
 
         Parameters
-        ---------
+        ----------
         group_id : Integer, optional
             socket 'Group ID' (id: Group ID)
         
@@ -374,7 +376,7 @@ class Geometry(Socket):
         | Parameter | `target_element` | `'FACES'` |
 
         Parameters
-        ---------
+        ----------
         group_id : Integer, optional
             socket 'Group ID' (id: Group ID)
         
@@ -410,7 +412,7 @@ class Geometry(Socket):
         | Parameter | `data_type`     | from `attribute` type |
 
         Parameters
-        ---------
+        ----------
         attribute : Float | Integer | Boolean | Vector | Color | Rotation | Matrix, optional
             socket 'Attribute' (id: Attribute)
         
@@ -451,14 +453,16 @@ class Geometry(Socket):
         | Socket | Selection | `self[selection]` |
 
         Parameters
-        ---------
+        ----------
         realize_all : Boolean, optional
             socket 'Realize All' (id: Realize All)
         
         depth : Integer, optional
             socket 'Depth' (id: Depth)
         
-        realize_to_point_domain (bool): parameter 'realize_to_point_domain'
+        realize_to_point_domain : bool
+            parameter `realize_to_point_domain`
+        
 
         Returns
         -------
@@ -479,7 +483,7 @@ class Geometry(Socket):
         | Socket | Geometry | `self` |
 
         Parameters
-        ---------
+        ----------
         pattern_mode : menu='Exact', optional
             ('Exact', 'Wildcard')
         
@@ -507,7 +511,7 @@ class Geometry(Socket):
         | Socket | Geometry | `self` |
 
         Parameters
-        ---------
+        ----------
         old : Material, optional
             socket 'Old' (id: Old)
         
@@ -653,7 +657,7 @@ class Geometry(Socket):
         | Socket | Geometry | `self` |
 
         Parameters
-        ---------
+        ----------
         name : String, optional
             socket 'Name' (id: Name)
         
@@ -679,7 +683,7 @@ class Geometry(Socket):
         | Socket | Selection | `self[selection]` |
 
         Parameters
-        ---------
+        ----------
         id : Integer, optional
             socket 'ID' (id: ID)
         
@@ -705,7 +709,7 @@ class Geometry(Socket):
         | Socket | Selection | `self[selection]` |
 
         Parameters
-        ---------
+        ----------
         material : Material, optional
             socket 'Material' (id: Material)
         
@@ -731,7 +735,7 @@ class Geometry(Socket):
         | Socket | Selection | `self[selection]` |
 
         Parameters
-        ---------
+        ----------
         material_index : Integer, optional
             socket 'Material Index' (id: Material Index)
         
@@ -757,7 +761,7 @@ class Geometry(Socket):
         | Socket | Selection | `self[selection]` |
 
         Parameters
-        ---------
+        ----------
         position : Vector, optional
             socket 'Position' (id: Position)
         
@@ -790,7 +794,7 @@ class Geometry(Socket):
         | Socket | Geometry | `self` |
 
         Parameters
-        ---------
+        ----------
         mode : menu='Components', optional
             ('Components', 'Matrix')
         
@@ -826,8 +830,15 @@ class Geometry(Socket):
         | Parameter | `domain` | `'AUTO'` |
 
         Parameters
-        ---------
-        ui_shortcut (int): parameter 'ui_shortcut'
+        ----------
+        named_sockets : dict, default={}
+            Sockets created with string names
+        
+        ui_shortcut : int
+            parameter `ui_shortcut`
+        
+        sockets : dict, default={}
+            Socket created with python name attributes
 
         """
         node = Node('Viewer', named_sockets, domain='AUTO', ui_shortcut=ui_shortcut, **sockets)
@@ -846,7 +857,7 @@ class Geometry(Socket):
         | Parameter | `data_type` | `'GEOMETRY'` |
 
         Parameters
-        ---------
+        ----------
         enable : Boolean, optional
             socket 'Enable' (id: Enable)
         
@@ -880,7 +891,7 @@ class Geometry(Socket):
         | Socket | Offset    | ignored           |
 
         Parameters
-        ---------
+        ----------
         position : Vector, optional
             socket 'Position' (id: Position)
         
@@ -914,7 +925,7 @@ class Geometry(Socket):
         | Socket | Position  | ignored           |
 
         Parameters
-        ---------
+        ----------
         offset : Vector, optional
             socket 'Offset' (id: Offset)
         
@@ -947,7 +958,7 @@ class Geometry(Socket):
         | Socket | Selection | `self[selection]` |
 
         Parameters
-        ---------
+        ----------
         id : Integer, optional
             socket 'ID' (id: ID)
         
@@ -980,7 +991,7 @@ class Geometry(Socket):
         | Socket | Selection | `self[selection]` |
 
         Parameters
-        ---------
+        ----------
         material : Material, optional
             socket 'Material' (id: Material)
         
@@ -1012,7 +1023,7 @@ class Geometry(Socket):
         | Socket | Geometry | `self` |
 
         Parameters
-        ---------
+        ----------
         name : String, optional
             socket 'Name' (id: Name)
         
@@ -1045,7 +1056,7 @@ class Geometry(Socket):
         | Socket | Selection | `self[selection]` |
 
         Parameters
-        ---------
+        ----------
         material_index : Integer, optional
             socket 'Material Index' (id: Material Index)
         
@@ -1071,18 +1082,30 @@ class Geometry(Socket):
 
         New <#Geometry> input with subtype 'NONE'.
 
-        Aguments
-        --------
-        - name  (str = 'Geometry') : Input socket name
-        - tip  (str = '') : Property description
-        - panel (str = "") : Panel name
-        - optional_label  (bool = False) : Property optional_label
-        - hide_value  (bool = False) : Property hide_value
-        - hide_in_modifier  (bool = False) : Property hide_in_modifier
+        Parameters
+        ----------
+        name : str, default=`Geometry`
+            Input socket name
+
+        tip : str, default=`''`
+            Property description
+
+        panel : str, default=``
+            Panel name
+
+        optional_label : bool, default=`False`
+            Property optional_label
+
+        hide_value : bool, default=`False`
+            Property hide_value
+
+        hide_in_modifier : bool, default=`False`
+            Property hide_in_modifier
+
 
         Returns
         -------
-        - Geometry
+        Geometry
         """
         from ..treeclass import Tree
 

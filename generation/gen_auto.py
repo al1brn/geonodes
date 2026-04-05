@@ -278,17 +278,20 @@ def generate(folder, sub_folder):
                 if create_socket:
                     args['value'] = (
                         f": {ptype} = {def_val}",
-                        f" ({ptype} = {def_val}) : Default value",
+                        #f" ({ptype} = {def_val}) : Default value",
+                        (ptype, def_val, "Default value"),
                         'default_value = defval')
                 else:
                     args['value'] = (
                         f": {ptype} = {def_val}",
-                        f" ({ptype} = {def_val}) : Default value",
+                        #f" ({ptype} = {def_val}) : Default value",
+                        (ptype, def_val, "Default value"),
                         'value')
 
             args['name']  = (
                 f": str = '{name}'", 
-                f" (str = '{name}') : Input socket name", 
+                #f" (str = '{name}') : Input socket name", 
+                ("str", name, "Input socket name"), 
                 'name')
             
             # ----- sort properties
@@ -318,18 +321,21 @@ def generate(folder, sub_folder):
 
                 args[prop] = (
                     f": {stype} = {sdef}",
-                    f" ({doctype} = {sdef}) : {scomm}",
+                    #f" ({doctype} = {sdef}) : {scomm}",
+                    (doctype, sdef, scomm),
                     prop,
                 )
 
                 if prop == "tip":
-                    args["panel"] = (': str = ""', '(str = "") : Panel name', "panel")
+                    #args["panel"] = (': str = ""', '(str = "") : Panel name', "panel")
+                    args["panel"] = (': str = ""', ("str", "", "Panel name"), "panel")
 
             if len(d['subtypes']):
                 if create_socket:
                     args["subtype"] = (
                         f": str = 'NONE'",
-                        f"(str = 'NONE') : Socket sub type in {d['subtypes']}",
+                        #f"(str = 'NONE') : Socket sub type in {d['subtypes']}",
+                        ("str", 'NONE', f"Socket sub type in {d['subtypes']}"),
                         "subtype",
                     )
                 else:
@@ -353,16 +359,17 @@ def generate(folder, sub_folder):
             code += f'{_2}""" > {name} Input\n\n'
             code += f"{_2}New <#{class_name}> input with subtype '{subtype}'.\n\n"
 
-            code += f"{_2}Aguments\n"
-            code += f"{_2}--------\n"
+            code += f"{_2}Parameters\n"
+            code += f"{_2}----------\n"
             for arg_name, arg_val in args.items():
                 if arg_val[0] is not None:
-                    code += f"{_2}- {arg_name} {arg_val[1]}\n"
+                    #code += f"{_2}- {arg_name} {arg_val[1]}\n"
+                    code += f"{_2}{arg_name} : {arg_val[1][0]}, default=`{arg_val[1][1]}`\n{_2}    {arg_val[1][2]}\n\n"
             code += "\n"
 
             code += f"{_2}Returns\n"
             code += f"{_2}-------\n"
-            code += f"{_2}- {class_name}\n"
+            code += f"{_2}{class_name}\n"
             code += f'{_2}"""\n'
 
             # ---------------------------------------------------------------------------

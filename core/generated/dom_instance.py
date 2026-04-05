@@ -1,4 +1,4 @@
-# Generated 2026-04-04 12:37:35
+# Generated 2026-04-04 17:31:31
 
 from __future__ import annotations
 from .. sockettype import SocketType
@@ -42,7 +42,7 @@ class Instance:
         | Parameter | `domain`    | `'INSTANCE'`      |
 
         Parameters
-        ---------
+        ----------
         value : Float | Integer | Vector | Matrix, optional
             socket 'Value' (id: Value)
         
@@ -73,7 +73,7 @@ class Instance:
         | Parameter | `domain`    | `'INSTANCE'`          |
 
         Parameters
-        ---------
+        ----------
         attribute : Float | Vector, optional
             socket 'Attribute' (id: Attribute)
         
@@ -102,14 +102,16 @@ class Instance:
         | Parameter | `data_type` | from `value` type |
 
         Parameters
-        ---------
+        ----------
         value : Float | Vector, optional
             socket 'Value' (id: Value)
         
         group_id : Integer, optional
             socket 'Group ID' (id: Group Index)
         
-        domain (str): parameter 'domain' in ('Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer')
+        domain : Literal['Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer']
+            parameter `domain`
+        
 
         Returns
         -------
@@ -136,14 +138,16 @@ class Instance:
         | Parameter | `data_type` | from `value` type |
 
         Parameters
-        ---------
+        ----------
         value : Float | Integer | Vector, optional
             socket 'Value' (id: Value)
         
         group_id : Integer, optional
             socket 'Group ID' (id: Group Index)
         
-        domain (str): parameter 'domain' in ('Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer')
+        domain : Literal['Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer']
+            parameter `domain`
+        
 
         Returns
         -------
@@ -170,14 +174,16 @@ class Instance:
         | Parameter | `data_type` | from `value` type |
 
         Parameters
-        ---------
+        ----------
         value : Float | Vector, optional
             socket 'Value' (id: Value)
         
         group_id : Integer, optional
             socket 'Group ID' (id: Group Index)
         
-        domain (str): parameter 'domain' in ('Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer')
+        domain : Literal['Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer']
+            parameter `domain`
+        
 
         Returns
         -------
@@ -270,8 +276,10 @@ class Instance:
         | Parameter | `domain`  | `'INSTANCE'`      |
 
         Parameters
-        ---------
-        mode (str): parameter 'mode' in ('All', 'Only Edges & Faces', 'Only Faces')
+        ----------
+        mode : Literal['All', 'Only Edges & Faces', 'Only Faces']
+            parameter `mode`
+        
 
         Returns
         -------
@@ -362,8 +370,10 @@ class Instance:
         | Parameter | `domain`  | `'INSTANCE'`      |
 
         Parameters
-        ---------
-        mode (str): parameter 'mode' in ('All', 'Only Edges & Faces', 'Only Faces')
+        ----------
+        mode : Literal['All', 'Only Edges & Faces', 'Only Faces']
+            parameter `mode`
+        
 
         Returns
         -------
@@ -388,7 +398,7 @@ class Instance:
         | Parameter | `domain`  | `'INSTANCE'`      |
 
         Parameters
-        ---------
+        ----------
         amount : Integer, optional
             socket 'Amount' (id: Amount)
         
@@ -417,7 +427,7 @@ class Instance:
         | Parameter | `domain`    | `'INSTANCE'`      |
 
         Parameters
-        ---------
+        ----------
         value : Float | Integer | Boolean | Vector | Color | Rotation | Matrix, optional
             socket 'Value' (id: Value)
         
@@ -446,7 +456,7 @@ class Instance:
         | Parameter | `domain`    | `'INSTANCE'`      |
 
         Parameters
-        ---------
+        ----------
         value : Float | Integer | Boolean | Vector | Color | Rotation | Matrix, optional
             socket 'Value' (id: Value)
         
@@ -474,14 +484,16 @@ class Instance:
         | Parameter | `domain`    | `'INSTANCE'`      |
 
         Parameters
-        ---------
+        ----------
         value : Float | Integer | Boolean | Vector | Color | Rotation | Matrix, optional
             socket 'Value' (id: Value)
         
         index : Integer, optional
             socket 'Index' (id: Index)
         
-        clamp (bool): parameter 'clamp'
+        clamp : bool
+            parameter `clamp`
+        
 
         Returns
         -------
@@ -526,7 +538,7 @@ class Instance:
         | Parameter | `domain`  | `'INSTANCE'`      |
 
         Parameters
-        ---------
+        ----------
         group_id : Integer, optional
             socket 'Group ID' (id: Group ID)
         
@@ -554,7 +566,7 @@ class Instance:
         | Parameter | `domain`  | `'INSTANCE'`      |
 
         Parameters
-        ---------
+        ----------
         group_id : Integer, optional
             socket 'Group ID' (id: Group ID)
         
@@ -585,7 +597,7 @@ class Instance:
         | Parameter | `domain`    | `'INSTANCE'`      |
 
         Parameters
-        ---------
+        ----------
         name : String, optional
             socket 'Name' (id: Name)
         
@@ -619,7 +631,7 @@ class Instance:
         | Parameter | `domain`    | `'INSTANCE'`      |
 
         Parameters
-        ---------
+        ----------
         name : String, optional
             socket 'Name' (id: Name)
         
@@ -647,8 +659,15 @@ class Instance:
         | Parameter | `domain` | `'INSTANCE'` |
 
         Parameters
-        ---------
-        ui_shortcut (int): parameter 'ui_shortcut'
+        ----------
+        named_sockets : dict, default={}
+            Sockets created with string names
+        
+        ui_shortcut : int
+            parameter `ui_shortcut`
+        
+        sockets : dict, default={}
+            Socket created with python name attributes
 
         """
         node = Node('Viewer', named_sockets, domain='INSTANCE', ui_shortcut=ui_shortcut, **sockets)

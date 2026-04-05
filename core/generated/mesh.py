@@ -1,4 +1,4 @@
-# Generated 2026-04-04 12:37:35
+# Generated 2026-04-04 17:31:31
 
 from __future__ import annotations
 from .. sockettype import SocketType
@@ -60,7 +60,7 @@ class Mesh(Socket):
         """ > Node <&Node Corners of Edge>
 
         Parameters
-        ---------
+        ----------
         edge_index : Integer, optional
             socket 'Edge Index' (id: Edge Index)
         
@@ -88,7 +88,7 @@ class Mesh(Socket):
         """ > Node <&Node Corners of Face>
 
         Parameters
-        ---------
+        ----------
         face_index : Integer, optional
             socket 'Face Index' (id: Face Index)
         
@@ -116,7 +116,7 @@ class Mesh(Socket):
         """ > Node <&Node Corners of Vertex>
 
         Parameters
-        ---------
+        ----------
         vertex_index : Integer, optional
             socket 'Vertex Index' (id: Vertex Index)
         
@@ -150,14 +150,16 @@ class Mesh(Socket):
         | Socket | Selection | `self[selection]` |
 
         Parameters
-        ---------
+        ----------
         density : Float, optional
             socket 'Density' (id: Density)
         
         seed : Integer, optional
             socket 'Seed' (id: Seed)
         
-        distribute_method (str): parameter 'distribute_method' in ('Random', 'Poisson Disk')
+        distribute_method : Literal['Random', 'Poisson Disk']
+            parameter `distribute_method`
+        
 
         Returns
         -------
@@ -181,7 +183,7 @@ class Mesh(Socket):
         | Parameter | `distribute_method` | `'RANDOM'`        |
 
         Parameters
-        ---------
+        ----------
         density : Float, optional
             socket 'Density' (id: Density)
         
@@ -214,7 +216,7 @@ class Mesh(Socket):
         | Parameter | `distribute_method` | `'POISSON'`       |
 
         Parameters
-        ---------
+        ----------
         distance_min : Float, optional
             socket 'Distance Min' (id: Distance Min)
         
@@ -249,7 +251,7 @@ class Mesh(Socket):
         | Socket | Mesh | `self` |
 
         Parameters
-        ---------
+        ----------
         keep_boundaries : Boolean, optional
             socket 'Keep Boundaries' (id: Keep Boundaries)
         
@@ -272,7 +274,7 @@ class Mesh(Socket):
         | Socket | Mesh | `self` |
 
         Parameters
-        ---------
+        ----------
         start_vertices : Boolean, optional
             socket 'Start Vertices' (id: Start Vertices)
         
@@ -292,7 +294,7 @@ class Mesh(Socket):
         """ > Node <&Node Edge Paths to Selection>
 
         Parameters
-        ---------
+        ----------
         start_vertices : Boolean, optional
             socket 'Start Vertices' (id: Start Vertices)
         
@@ -312,7 +314,7 @@ class Mesh(Socket):
         """ > Node <&Node Edges of Corner>
 
         Parameters
-        ---------
+        ----------
         corner_index : Integer, optional
             socket 'Corner Index' (id: Corner Index)
         
@@ -334,7 +336,7 @@ class Mesh(Socket):
         """ > Node <&Node Edges of Vertex>
 
         Parameters
-        ---------
+        ----------
         vertex_index : Integer, optional
             socket 'Vertex Index' (id: Vertex Index)
         
@@ -359,7 +361,7 @@ class Mesh(Socket):
         """ > Node <&Node Edges to Face Groups>
 
         Parameters
-        ---------
+        ----------
         boundary_edges : Boolean, optional
             socket 'Boundary Edges' (id: Boundary Edges)
         
@@ -385,7 +387,7 @@ class Mesh(Socket):
         | Parameter | `mode`    | `'VERTICES'`      |
 
         Parameters
-        ---------
+        ----------
         offset : Vector, optional
             socket 'Offset' (id: Offset)
         
@@ -417,7 +419,7 @@ class Mesh(Socket):
         | Parameter | `mode`    | `'EDGES'`         |
 
         Parameters
-        ---------
+        ----------
         offset : Vector, optional
             socket 'Offset' (id: Offset)
         
@@ -452,7 +454,7 @@ class Mesh(Socket):
         | Parameter | `mode`    | `'FACES'`         |
 
         Parameters
-        ---------
+        ----------
         offset : Vector, optional
             socket 'Offset' (id: Offset)
         
@@ -490,7 +492,7 @@ class Mesh(Socket):
         | Socket | Selection | `self[selection]` |
 
         Parameters
-        ---------
+        ----------
         offset : Vector, optional
             socket 'Offset' (id: Offset)
         
@@ -500,7 +502,9 @@ class Mesh(Socket):
         individual : Boolean, optional
             socket 'Individual' (id: Individual)
         
-        mode (str): parameter 'mode' in ('Vertices', 'Edges', 'Faces')
+        mode : Literal['Vertices', 'Edges', 'Faces']
+            parameter `mode`
+        
 
         Returns
         -------
@@ -518,7 +522,7 @@ class Mesh(Socket):
         """ > Node <&Node Face of Corner>
 
         Parameters
-        ---------
+        ----------
         corner_index : Integer, optional
             socket 'Corner Index' (id: Corner Index)
         
@@ -557,7 +561,7 @@ class Mesh(Socket):
         """ > Node <&Node Import PLY>
 
         Parameters
-        ---------
+        ----------
         path : String, optional
             socket 'Path' (id: Path)
         
@@ -574,7 +578,7 @@ class Mesh(Socket):
         """ > Node <&Node Import STL>
 
         Parameters
-        ---------
+        ----------
         path : String, optional
             socket 'Path' (id: Path)
         
@@ -661,7 +665,7 @@ class Mesh(Socket):
         """ > Node <&Node Is Face Planar>
 
         Parameters
-        ---------
+        ----------
         threshold : Float, optional
             socket 'Threshold' (id: Threshold)
         
@@ -739,7 +743,7 @@ class Mesh(Socket):
         """ > Node <&Node Shortest Edge Paths>
 
         Parameters
-        ---------
+        ----------
         end_vertex : Boolean, optional
             socket 'End Vertex' (id: End Vertex)
         
@@ -761,7 +765,7 @@ class Mesh(Socket):
         """ > Node <&Node Material Selection>
 
         Parameters
-        ---------
+        ----------
         material : Material, optional
             socket 'Material' (id: Material)
         
@@ -788,12 +792,16 @@ class Mesh(Socket):
         | Socket | Mesh 1 | `self` |
 
         Parameters
-        ---------
+        ----------
         mesh_2 : Mesh, optional
             socket 'Mesh 2' (id: Mesh 2)
         
-        operation (str): parameter 'operation' in ('Intersect', 'Union', 'Difference')
-        solver (str): parameter 'solver' in ('Exact', 'Float', 'Manifold')
+        operation : Literal['Intersect', 'Union', 'Difference']
+            parameter `operation`
+        
+        solver : Literal['Exact', 'Float', 'Manifold']
+            parameter `solver`
+        
 
         Returns
         -------
@@ -814,15 +822,19 @@ class Mesh(Socket):
         """ > Node <&Node Mesh Boolean>
 
         Parameters
-        ---------
+        ----------
         mesh_1 : Mesh, optional
             socket 'Mesh 1' (id: Mesh 1)
         
         mesh_2 : Mesh, optional
             socket 'Mesh 2' (id: Mesh 2)
         
-        operation (str): parameter 'operation' in ('Intersect', 'Union', 'Difference')
-        solver (str): parameter 'solver' in ('Exact', 'Float', 'Manifold')
+        operation : Literal['Intersect', 'Union', 'Difference']
+            parameter `operation`
+        
+        solver : Literal['Exact', 'Float', 'Manifold']
+            parameter `solver`
+        
 
         Returns
         -------
@@ -845,11 +857,13 @@ class Mesh(Socket):
         | Parameter | `operation` | `'INTERSECT'` |
 
         Parameters
-        ---------
+        ----------
         mesh : Mesh, optional
             socket 'Mesh' (id: Mesh 2)
         
-        solver (str): parameter 'solver' in ('Exact', 'Float', 'Manifold')
+        solver : Literal['Exact', 'Float', 'Manifold']
+            parameter `solver`
+        
 
         Returns
         -------
@@ -872,11 +886,13 @@ class Mesh(Socket):
         | Parameter | `operation` | `'UNION'` |
 
         Parameters
-        ---------
+        ----------
         mesh : Mesh, optional
             socket 'Mesh' (id: Mesh 2)
         
-        solver (str): parameter 'solver' in ('Exact', 'Float', 'Manifold')
+        solver : Literal['Exact', 'Float', 'Manifold']
+            parameter `solver`
+        
 
         Returns
         -------
@@ -900,11 +916,13 @@ class Mesh(Socket):
         | Parameter | `operation` | `'DIFFERENCE'` |
 
         Parameters
-        ---------
+        ----------
         mesh_2 : Mesh, optional
             socket 'Mesh 2' (id: Mesh 2)
         
-        solver (str): parameter 'solver' in ('Exact', 'Float', 'Manifold')
+        solver : Literal['Exact', 'Float', 'Manifold']
+            parameter `solver`
+        
 
         Returns
         -------
@@ -926,11 +944,13 @@ class Mesh(Socket):
         | Parameter | `operation` | `'INTERSECT'` |
 
         Parameters
-        ---------
+        ----------
         mesh : Mesh, optional
             socket 'Mesh' (id: Mesh 2)
         
-        solver (str): parameter 'solver' in ('Exact', 'Float', 'Manifold')
+        solver : Literal['Exact', 'Float', 'Manifold']
+            parameter `solver`
+        
 
         Returns
         -------
@@ -951,11 +971,13 @@ class Mesh(Socket):
         | Parameter | `operation` | `'UNION'` |
 
         Parameters
-        ---------
+        ----------
         mesh : Mesh, optional
             socket 'Mesh' (id: Mesh 2)
         
-        solver (str): parameter 'solver' in ('Exact', 'Float', 'Manifold')
+        solver : Literal['Exact', 'Float', 'Manifold']
+            parameter `solver`
+        
 
         Returns
         -------
@@ -979,14 +1001,16 @@ class Mesh(Socket):
         | Parameter | `operation` | `'DIFFERENCE'` |
 
         Parameters
-        ---------
+        ----------
         mesh_1 : Mesh, optional
             socket 'Mesh 1' (id: Mesh 1)
         
         mesh_2 : Mesh, optional
             socket 'Mesh 2' (id: Mesh 2)
         
-        solver (str): parameter 'solver' in ('Exact', 'Float', 'Manifold')
+        solver : Literal['Exact', 'Float', 'Manifold']
+            parameter `solver`
+        
 
         Returns
         -------
@@ -1004,14 +1028,16 @@ class Mesh(Socket):
         """ > Node <&Node Mesh Circle>
 
         Parameters
-        ---------
+        ----------
         vertices : Integer, optional
             socket 'Vertices' (id: Vertices)
         
         radius : Float, optional
             socket 'Radius' (id: Radius)
         
-        fill_type (str): parameter 'fill_type' in ('None', 'N-Gon', 'Triangles')
+        fill_type : Literal['None', 'N-Gon', 'Triangles']
+            parameter `fill_type`
+        
 
         Returns
         -------
@@ -1033,7 +1059,7 @@ class Mesh(Socket):
         """ > Node <&Node Cone>
 
         Parameters
-        ---------
+        ----------
         vertices : Integer, optional
             socket 'Vertices' (id: Vertices)
         
@@ -1052,7 +1078,9 @@ class Mesh(Socket):
         depth : Float, optional
             socket 'Depth' (id: Depth)
         
-        fill_type (str): parameter 'fill_type' in ('None', 'N-Gon', 'Triangles')
+        fill_type : Literal['None', 'N-Gon', 'Triangles']
+            parameter `fill_type`
+        
 
         Returns
         -------
@@ -1071,7 +1099,7 @@ class Mesh(Socket):
         """ > Node <&Node Cube>
 
         Parameters
-        ---------
+        ----------
         size : Vector, optional
             socket 'Size' (id: Size)
         
@@ -1103,7 +1131,7 @@ class Mesh(Socket):
         """ > Node <&Node Cylinder>
 
         Parameters
-        ---------
+        ----------
         vertices : Integer, optional
             socket 'Vertices' (id: Vertices)
         
@@ -1119,7 +1147,9 @@ class Mesh(Socket):
         depth : Float, optional
             socket 'Depth' (id: Depth)
         
-        fill_type (str): parameter 'fill_type' in ('None', 'N-Gon', 'Triangles')
+        fill_type : Literal['None', 'N-Gon', 'Triangles']
+            parameter `fill_type`
+        
 
         Returns
         -------
@@ -1134,7 +1164,7 @@ class Mesh(Socket):
         """ > Node <&Node Face Group Boundaries>
 
         Parameters
-        ---------
+        ----------
         face_group_id : Integer, optional
             socket 'Face Group ID' (id: Face Set)
         
@@ -1155,7 +1185,7 @@ class Mesh(Socket):
         """ > Node <&Node Grid>
 
         Parameters
-        ---------
+        ----------
         size_x : Float, optional
             socket 'Size X' (id: Size X)
         
@@ -1181,7 +1211,7 @@ class Mesh(Socket):
         """ > Node <&Node Ico Sphere>
 
         Parameters
-        ---------
+        ----------
         radius : Float, optional
             socket 'Radius' (id: Radius)
         
@@ -1211,7 +1241,7 @@ class Mesh(Socket):
         | Parameter | `mode` | `'OFFSET'` |
 
         Parameters
-        ---------
+        ----------
         count : Integer, optional
             socket 'Count' (id: Count)
         
@@ -1221,7 +1251,9 @@ class Mesh(Socket):
         offset : Vector, optional
             socket 'Offset' (id: Offset)
         
-        count_mode (str): parameter 'count_mode' in ('Count', 'Resolution')
+        count_mode : Literal['Count', 'Resolution']
+            parameter `count_mode`
+        
 
         Returns
         -------
@@ -1246,7 +1278,7 @@ class Mesh(Socket):
         | Parameter | `mode` | `'END_POINTS'` |
 
         Parameters
-        ---------
+        ----------
         count : Integer, optional
             socket 'Count' (id: Count)
         
@@ -1256,7 +1288,9 @@ class Mesh(Socket):
         end_location : Vector, optional
             socket 'End Location' (id: Offset)
         
-        count_mode (str): parameter 'count_mode' in ('Count', 'Resolution')
+        count_mode : Literal['Count', 'Resolution']
+            parameter `count_mode`
+        
 
         Returns
         -------
@@ -1276,7 +1310,7 @@ class Mesh(Socket):
         """ > Node <&Node Mesh Line>
 
         Parameters
-        ---------
+        ----------
         count : Integer, optional
             socket 'Count' (id: Count)
         
@@ -1286,8 +1320,12 @@ class Mesh(Socket):
         offset : Vector, optional
             socket 'Offset' (id: Offset)
         
-        count_mode (str): parameter 'count_mode' in ('Count', 'Resolution')
-        mode (str): parameter 'mode' in ('Offset', 'End Points')
+        count_mode : Literal['Count', 'Resolution']
+            parameter `count_mode`
+        
+        mode : Literal['Offset', 'End Points']
+            parameter `mode`
+        
 
         Returns
         -------
@@ -1345,8 +1383,10 @@ class Mesh(Socket):
         | Socket | Selection | `self[selection]` |
 
         Parameters
-        ---------
-        mode (str): parameter 'mode' in ('Edges', 'Faces')
+        ----------
+        mode : Literal['Edges', 'Faces']
+            parameter `mode`
+        
 
         Returns
         -------
@@ -1370,14 +1410,16 @@ class Mesh(Socket):
         | Socket | Selection | `self[selection]` |
 
         Parameters
-        ---------
+        ----------
         position : Vector, optional
             socket 'Position' (id: Position)
         
         radius : Float, optional
             socket 'Radius' (id: Radius)
         
-        mode (str): parameter 'mode' in ('Vertices', 'Edges', 'Faces', 'Corners')
+        mode : Literal['Vertices', 'Edges', 'Faces', 'Corners']
+            parameter `mode`
+        
 
         Returns
         -------
@@ -1399,7 +1441,7 @@ class Mesh(Socket):
         | Parameter | `mode`    | `'VERTICES'`      |
 
         Parameters
-        ---------
+        ----------
         position : Vector, optional
             socket 'Position' (id: Position)
         
@@ -1426,7 +1468,7 @@ class Mesh(Socket):
         | Parameter | `mode`    | `'EDGES'`         |
 
         Parameters
-        ---------
+        ----------
         position : Vector, optional
             socket 'Position' (id: Position)
         
@@ -1453,7 +1495,7 @@ class Mesh(Socket):
         | Parameter | `mode`    | `'FACES'`         |
 
         Parameters
-        ---------
+        ----------
         position : Vector, optional
             socket 'Position' (id: Position)
         
@@ -1480,7 +1522,7 @@ class Mesh(Socket):
         | Parameter | `mode`    | `'CORNERS'`       |
 
         Parameters
-        ---------
+        ----------
         position : Vector, optional
             socket 'Position' (id: Position)
         
@@ -1510,7 +1552,7 @@ class Mesh(Socket):
         | Socket | Mesh | `self` |
 
         Parameters
-        ---------
+        ----------
         density : Float, optional
             socket 'Density' (id: Density)
         
@@ -1539,7 +1581,7 @@ class Mesh(Socket):
         """ > Node <&Node UV Sphere>
 
         Parameters
-        ---------
+        ----------
         segments : Integer, optional
             socket 'Segments' (id: Segments)
         
@@ -1562,7 +1604,7 @@ class Mesh(Socket):
         """ > Node <&Node Offset Corner in Face>
 
         Parameters
-        ---------
+        ----------
         corner_index : Integer, optional
             socket 'Corner Index' (id: Corner Index)
         
@@ -1592,7 +1634,7 @@ class Mesh(Socket):
         | Parameter | `data_type` | from `value` type |
 
         Parameters
-        ---------
+        ----------
         value : Float | Integer | Boolean | Vector | Color | Rotation | Matrix, optional
             socket 'Value' (id: Value)
         
@@ -1630,7 +1672,7 @@ class Mesh(Socket):
         | Parameter | `data_type` | from `value` type |
 
         Parameters
-        ---------
+        ----------
         value : Float | Integer | Boolean | Vector | Color | Rotation | Matrix, optional
             socket 'Value' (id: Value)
         
@@ -1668,7 +1710,7 @@ class Mesh(Socket):
         | Parameter | `mode` | `'SHARPNESS'` |
 
         Parameters
-        ---------
+        ----------
         remove_custom : Boolean, optional
             socket 'Remove Custom' (id: Remove Custom)
         
@@ -1678,7 +1720,9 @@ class Mesh(Socket):
         face_sharpness : Boolean, optional
             socket 'Face Sharpness' (id: Face Sharpness)
         
-        domain (str): parameter 'domain' in ('Point', 'Face', 'Face Corner')
+        domain : Literal['Point', 'Face', 'Face Corner']
+            parameter `domain`
+        
 
         Returns
         -------
@@ -1704,11 +1748,13 @@ class Mesh(Socket):
         | Parameter | `mode` | `'FREE'` |
 
         Parameters
-        ---------
+        ----------
         custom_normal : Vector, optional
             socket 'Custom Normal' (id: Custom Normal)
         
-        domain (str): parameter 'domain' in ('Point', 'Face', 'Face Corner')
+        domain : Literal['Point', 'Face', 'Face Corner']
+            parameter `domain`
+        
 
         Returns
         -------
@@ -1734,11 +1780,13 @@ class Mesh(Socket):
         | Parameter | `mode` | `'TANGENT_SPACE'` |
 
         Parameters
-        ---------
+        ----------
         custom_normal : Vector, optional
             socket 'Custom Normal' (id: Custom Normal)
         
-        domain (str): parameter 'domain' in ('Point', 'Face', 'Face Corner')
+        domain : Literal['Point', 'Face', 'Face Corner']
+            parameter `domain`
+        
 
         Returns
         -------
@@ -1766,7 +1814,7 @@ class Mesh(Socket):
         | Socket | Mesh | `self` |
 
         Parameters
-        ---------
+        ----------
         remove_custom : Boolean, optional
             socket 'Remove Custom' (id: Remove Custom)
         
@@ -1776,8 +1824,12 @@ class Mesh(Socket):
         face_sharpness : Boolean, optional
             socket 'Face Sharpness' (id: Face Sharpness)
         
-        domain (str): parameter 'domain' in ('Point', 'Face', 'Face Corner')
-        mode (str): parameter 'mode' in ('Sharpness', 'Free', 'Tangent Space')
+        domain : Literal['Point', 'Face', 'Face Corner']
+            parameter `domain`
+        
+        mode : Literal['Sharpness', 'Free', 'Tangent Space']
+            parameter `mode`
+        
 
         Returns
         -------
@@ -1821,7 +1873,7 @@ class Mesh(Socket):
         | Socket | Mesh | `self` |
 
         Parameters
-        ---------
+        ----------
         level : Integer, optional
             socket 'Level' (id: Level)
         
@@ -1852,7 +1904,7 @@ class Mesh(Socket):
         | Socket | Mesh | `self` |
 
         Parameters
-        ---------
+        ----------
         level : Integer, optional
             socket 'Level' (id: Level)
         
@@ -1893,7 +1945,7 @@ class Mesh(Socket):
         | Socket | Selection | `self[selection]` |
 
         Parameters
-        ---------
+        ----------
         face_set : Integer, optional
             socket 'Face Set' (id: Face Set)
         
@@ -1921,7 +1973,7 @@ class Mesh(Socket):
         | Socket | Selection | `self[selection]` |
 
         Parameters
-        ---------
+        ----------
         quad_method : menu='Shortest Diagonal', optional
             ('Beauty', 'Fixed', 'Fixed Alternate', 'Shortest Diagonal', 'Longest Diagonal')
         
@@ -1942,7 +1994,7 @@ class Mesh(Socket):
         """ > Node <&Node Vertex of Corner>
 
         Parameters
-        ---------
+        ----------
         corner_index : Integer, optional
             socket 'Corner Index' (id: Corner Index)
         
@@ -1967,7 +2019,7 @@ class Mesh(Socket):
         | Socket | Mesh | `self` |
 
         Parameters
-        ---------
+        ----------
         density : Float, optional
             socket 'Density' (id: Density)
         
@@ -1995,7 +2047,7 @@ class Mesh(Socket):
         | Socket | Mesh | `self` |
 
         Parameters
-        ---------
+        ----------
         voxel_size : Float, optional
             socket 'Voxel Size' (id: Voxel Size)
         
@@ -2031,7 +2083,7 @@ class Mesh(Socket):
         | Parameter | `mode`   | `'TANGENT_SPACE'` |
 
         Parameters
-        ---------
+        ----------
         custom_normal : Vector, optional
             socket 'Custom Normal' (id: Custom Normal)
         

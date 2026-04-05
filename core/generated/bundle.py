@@ -1,4 +1,4 @@
-# Generated 2026-04-04 12:37:35
+# Generated 2026-04-04 17:31:31
 
 from __future__ import annotations
 from .. sockettype import SocketType
@@ -44,7 +44,7 @@ class Bundle(Socket):
         | Parameter | `data_type` | `'BUNDLE'` |
 
         Parameters
-        ---------
+        ----------
         enable : Boolean, optional
             socket 'Enable' (id: Enable)
         
@@ -60,7 +60,7 @@ class Bundle(Socket):
         """ > Node <&Node Join Bundle>
 
         Parameters
-        ---------
+        ----------
         bundle : Bundle, optional
             socket 'Bundle' (id: Bundle)
         
@@ -77,8 +77,15 @@ class Bundle(Socket):
         """ > Node <&Node Combine Bundle>
 
         Parameters
-        ---------
-        define_signature (bool): parameter 'define_signature'
+        ----------
+        named_sockets : dict, default={}
+            Sockets created with string names
+        
+        define_signature : bool
+            parameter `define_signature`
+        
+        sockets : dict, default={}
+            Socket created with python name attributes
 
         Returns
         -------
@@ -97,8 +104,15 @@ class Bundle(Socket):
         | Socket | Bundle | `self` |
 
         Parameters
-        ---------
-        define_signature (bool): parameter 'define_signature'
+        ----------
+        named_sockets : dict, default={}
+            Sockets created with string names
+        
+        define_signature : bool
+            parameter `define_signature`
+        
+        sockets : dict, default={}
+            Socket created with python name attributes
 
         Returns
         -------
@@ -123,15 +137,19 @@ class Bundle(Socket):
         | Socket | Bundle | `self` |
 
         Parameters
-        ---------
+        ----------
         path : String, optional
             socket 'Path' (id: Path)
         
         remove : Boolean, optional
             socket 'Remove' (id: Remove)
         
-        socket_type (str): parameter 'socket_type' in ('Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Rotation', 'Matrix', 'String', 'Menu', 'Object', 'Image', 'Geometry', 'Collection', 'Material', 'Bundle', 'Closure', 'Font')
-        structure_type (str): parameter 'structure_type' in ('Auto', 'Dynamic', 'Field', 'Grid', 'List', 'Single')
+        socket_type : Literal['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Rotation', 'Matrix', 'String', 'Menu', 'Object', 'Image', 'Geometry', 'Collection', 'Material', 'Bundle', 'Closure', 'Font']
+            parameter `socket_type`
+        
+        structure_type : Literal['Auto', 'Dynamic', 'Field', 'Grid', 'List', 'Single']
+            parameter `structure_type`
+        
 
         Returns
         -------
@@ -159,14 +177,16 @@ class Bundle(Socket):
         | Parameter | `socket_type` | `socket_type` |
 
         Parameters
-        ---------
+        ----------
         path : String, optional
             socket 'Path' (id: Path)
         
         item : Float, optional
             socket 'Item' (id: Item)
         
-        structure_type (str): parameter 'structure_type' in ('Auto', 'Dynamic', 'Field', 'Grid', 'List', 'Single')
+        structure_type : Literal['Auto', 'Dynamic', 'Field', 'Grid', 'List', 'Single']
+            parameter `structure_type`
+        
 
         Returns
         -------
@@ -194,14 +214,16 @@ class Bundle(Socket):
         | Parameter | `socket_type` | `socket_type` |
 
         Parameters
-        ---------
+        ----------
         path : String, optional
             socket 'Path' (id: Path)
         
         item : Float, optional
             socket 'Item' (id: Item)
         
-        structure_type (str): parameter 'structure_type' in ('Auto', 'Dynamic', 'Field', 'Grid', 'List', 'Single')
+        structure_type : Literal['Auto', 'Dynamic', 'Field', 'Grid', 'List', 'Single']
+            parameter `structure_type`
+        
 
         Returns
         -------
@@ -217,7 +239,7 @@ class Bundle(Socket):
         """ > Node <&ShaderNode Join Bundle>
 
         Parameters
-        ---------
+        ----------
         bundle : Bundle, optional
             socket 'Bundle' (id: Bundle)
         
@@ -242,18 +264,30 @@ class Bundle(Socket):
 
         New <#Bundle> input with subtype 'NONE'.
 
-        Aguments
-        --------
-        - name  (str = 'Bundle') : Input socket name
-        - tip  (str = '') : Property description
-        - panel (str = "") : Panel name
-        - optional_label  (bool = False) : Property optional_label
-        - hide_value  (bool = False) : Property hide_value
-        - hide_in_modifier  (bool = False) : Property hide_in_modifier
+        Parameters
+        ----------
+        name : str, default=`Bundle`
+            Input socket name
+
+        tip : str, default=`''`
+            Property description
+
+        panel : str, default=``
+            Panel name
+
+        optional_label : bool, default=`False`
+            Property optional_label
+
+        hide_value : bool, default=`False`
+            Property hide_value
+
+        hide_in_modifier : bool, default=`False`
+            Property hide_in_modifier
+
 
         Returns
         -------
-        - Bundle
+        Bundle
         """
         from ..treeclass import Tree
 

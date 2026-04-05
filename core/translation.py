@@ -21,7 +21,7 @@ def add(english, fr = None, **translations):
             the english terme to translate
 
     fr : str, optional
-        translation into fr Default: None.
+        translation into fr default=None.
 
     translation : dict of language code -> translation
             translations into other languages

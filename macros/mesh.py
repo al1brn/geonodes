@@ -29,13 +29,13 @@ def solidify(mesh, thickness=.01, individual=False, merge_distance=.001):
     Parameters
     ----------
     thickness : Float, optional
-        thickness Default: .01.
+        thickness default=.01.
 
     individual : Boolean, optional
-        extrude individual faces Default: False.
+        extrude individual faces default=False.
 
     merge_distance : Float, optional
-        distance to use to merge intial faces and the extruded mesh Default: .001.
+        distance to use to merge intial faces and the extruded mesh default=.001.
 
 
     Returns
@@ -82,10 +82,10 @@ def move_selection(
             the displacement value
 
     axis : str, optional
-        axis to move along Default: 'Z' in ('X', 'Y', 'Z'.
+        axis to move along default='Z' in ('X', 'Y', 'Z'.
 
     summit : Float, optional
-        cone summit Default: None.
+        cone summit default=None.
 
     title : str
             Layout title
@@ -162,13 +162,13 @@ def move_coordinate(
             the displacement value
 
     axis : str, optional
-        axis to move along Default: 'Z' in ('X', 'Y', 'Z'.
+        axis to move along default='Z' in ('X', 'Y', 'Z'.
 
     summit : Float, optional
-        cone summit Default: None.
+        cone summit default=None.
 
     epsilon : Float, optional
-        epsilon value for compare Default: None.
+        epsilon value for compare default=None.
 
     title : str
             Layout title

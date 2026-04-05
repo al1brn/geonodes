@@ -82,7 +82,7 @@ class Integer(generated.Integer):
             Property description
 
         panel : str, optional
-            Panel name Default: "".
+            Panel name default="".
 
         props : dic
             properties

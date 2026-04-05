@@ -96,16 +96,16 @@ class ShaderNodes(Tree):
             Shader Nodes name
 
         fake_user : bool, optional
-            set fake_user flag Default: False.
+            set fake_user flag default=False.
 
         is_group : bool, optional
-            tree is a group Default: False.
+            tree is a group default=False.
 
         prefix : str, optional
-            name prefix Default: None.
+            name prefix default=None.
 
         replace_material : bool, optional
-            replace material if already exists Default: False.
+            replace material if already exists default=False.
 
         """
         super().__init__(tree_name, tree_type='ShaderNodeTree', fake_user=fake_user, is_group=is_group, prefix=prefix, replace_material=replace_material)

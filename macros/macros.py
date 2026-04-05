@@ -51,34 +51,34 @@ def impulsion(value, from_min=0, from_max=1, amplitude=1., increase=.5, decrease
             the input value
 
     from_min : Float, optional
-        value where the impulse starts Default: 0.
+        value where the impulse starts default=0.
 
     from_max : Float, optional
-        value where the impulse ends Default: 1.
+        value where the impulse ends default=1.
 
     amplitude : Float, optional
-        max returned value Default: 1.
+        max returned value default=1.
 
     increase : Float, optional
-        increase length Default: .5.
+        increase length default=.5.
 
     decrease : Float, optional
-        ecrease length Default: .5.
+        ecrease length default=.5.
 
     c : Float, optional
-        impulse celerity Default: 0.
+        impulse celerity default=0.
 
     t : Float, optional
-        time Default: 0.
+        time default=0.
 
     dist_falloff : Float, optional
-        distance falloff Default: 0.
+        distance falloff default=0.
 
     time_falloff : Float, optional
-        time falloff Default: 0.
+        time falloff default=0.
 
     smooth : Boolean, optional
-        use map_range smooth option Default: True.
+        use map_range smooth option default=True.
 
     """
 
@@ -138,13 +138,13 @@ def integrals(x0=0, x1=1, count=100, **values):
     Parameters
     ----------
     x0 : Float, optional
-        Left bound of the integration interval Default: 0.
+        Left bound of the integration interval default=0.
 
     x1 : Float, optional
-        Right bound of the integration interval Default: 1.
+        Right bound of the integration interval default=1.
 
     count : Integer, optional
-        number of intervals Default: 100.
+        number of intervals default=100.
 
     values : keyword arguments
             named argument
@@ -205,22 +205,22 @@ def double_integrals(x0=0, x1=1, y0=0, y1=1, count_x=100, count_y=100, **values)
     Parameters
     ----------
     x0 : Float, optional
-        Left bound of the x integration interval Default: 0.
+        Left bound of the x integration interval default=0.
 
     x1 : Float, optional
-        Right bound of the x integration interval Default: 1.
+        Right bound of the x integration interval default=1.
 
     y0 : Float, optional
-        Left bound of the y integration interval Default: 0.
+        Left bound of the y integration interval default=0.
 
     y1 : Float, optional
-        Right bound of the y integration interval Default: 1.
+        Right bound of the y integration interval default=1.
 
     count_x : Integer, optional
-        number of intervals on x Default: 100.
+        number of intervals on x default=100.
 
     count_y : Integer, optional
-        number of intervals on y Default: 100.
+        number of intervals on y default=100.
 
     values : keyword arguments
             named argument

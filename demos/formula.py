@@ -501,9 +501,9 @@ def build_groups():
     # LaTeX codes
 
     with GeoNodes("LaTeX Codes", prefix=char_prefix, is_group=True):
-        """ Replace LaTeX code '\key_word' by its unicode value
+        """ Replace LaTeX code '\\key_word' by its unicode value
 
-        For instance : \exists -> '∃'
+        For instance : \\exists -> '∃'
 
         Parameters
         ----------
@@ -971,7 +971,7 @@ def build_groups():
         - Color (Color)
         - Fade (Float)
         Selection : Boolean, optional
-            selection Default: True.
+            selection default=True.
 
 
         Returns
@@ -2527,10 +2527,10 @@ def build_groups():
             color to set if change is requested
 
         Factor : Float, optional
-            factor Default: 1..
+            factor default=1..
 
         Scale : Float, optional
-            scale Default: 1..
+            scale default=1..
 
         - X Scale (Float = 1.) : x scale
         - Y Scale (Float = 1.) : y scale

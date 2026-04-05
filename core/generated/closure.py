@@ -1,4 +1,4 @@
-# Generated 2026-04-04 12:37:35
+# Generated 2026-04-04 17:31:31
 
 from __future__ import annotations
 from .. sockettype import SocketType
@@ -44,7 +44,7 @@ class Closure(Socket):
         | Parameter | `data_type` | `'CLOSURE'` |
 
         Parameters
-        ---------
+        ----------
         enable : Boolean, optional
             socket 'Enable' (id: Enable)
         
@@ -69,18 +69,30 @@ class Closure(Socket):
 
         New <#Closure> input with subtype 'NONE'.
 
-        Aguments
-        --------
-        - name  (str = 'Closure') : Input socket name
-        - tip  (str = '') : Property description
-        - panel (str = "") : Panel name
-        - optional_label  (bool = False) : Property optional_label
-        - hide_value  (bool = False) : Property hide_value
-        - hide_in_modifier  (bool = False) : Property hide_in_modifier
+        Parameters
+        ----------
+        name : str, default=`Closure`
+            Input socket name
+
+        tip : str, default=`''`
+            Property description
+
+        panel : str, default=``
+            Panel name
+
+        optional_label : bool, default=`False`
+            Property optional_label
+
+        hide_value : bool, default=`False`
+            Property hide_value
+
+        hide_in_modifier : bool, default=`False`
+            Property hide_in_modifier
+
 
         Returns
         -------
-        - Closure
+        Closure
         """
         from ..treeclass import Tree
 

@@ -235,9 +235,10 @@ class Domain(Geom, NodeCache):
 
         [&JUMP]
 
-        > [!CAUTION]
-        > When there is only one attribute, the function returns the captured attribute,
-        > otherwise returns the node.
+        !!! caution
+
+            When there is only one attribute, the function returns the captured attribute,
+            otherwise returns the node.
 
         ``` python
         with GeoNodes("Capture Attribute"):
@@ -257,7 +258,8 @@ class Domain(Geom, NodeCache):
         ----------
         attribute : Socket
             first attribute to capture
-        - **attributes (Sockets): named attributes to capture
+
+        **attributes : dict(Sockets): named attributes to capture
 
         Returns
         -------
@@ -298,7 +300,8 @@ class Domain(Geom, NodeCache):
         attribute : Socket
             first attribute to capture
 
-        - **attributes (Sockets): named attributes to capture
+        **attributes : dict, default={}
+            named attributes to capture
 
         Returns
         -------
@@ -315,11 +318,11 @@ class Domain(Geom, NodeCache):
 
         Parameters
         ----------
-        named_socket : dict, optional
-            named sockets Default: {}.
+        named_sockets : dict, optional
+            named sockets default={}.
 
         selection : Boolean, optional
-            selection Default: None.
+            selection default=None.
 
         sockets : dict
             other sockets

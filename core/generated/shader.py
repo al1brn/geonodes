@@ -1,4 +1,4 @@
-# Generated 2026-04-04 12:37:35
+# Generated 2026-04-04 17:31:31
 
 from __future__ import annotations
 from .. sockettype import SocketType
@@ -43,7 +43,7 @@ class Shader(Socket):
         | Socket | Shader | `self` |
 
         Parameters
-        ---------
+        ----------
         shader : Shader, optional
             socket 'Shader' (id: Shader_001)
         
@@ -67,7 +67,7 @@ class Shader(Socket):
         """ > Node <&ShaderNode Glossy BSDF>
 
         Parameters
-        ---------
+        ----------
         color : Color, optional
             socket 'Color' (id: Color)
         
@@ -86,7 +86,9 @@ class Shader(Socket):
         tangent : Vector, optional
             socket 'Tangent' (id: Tangent)
         
-        distribution (str): parameter 'distribution' in ('Beckmann', 'GGX', 'Ashikhmin-Shirley', 'Multiscatter GGX')
+        distribution : Literal['Beckmann', 'GGX', 'Ashikhmin-Shirley', 'Multiscatter GGX']
+            parameter `distribution`
+        
 
         Returns
         -------
@@ -101,7 +103,7 @@ class Shader(Socket):
         """ > Node <&ShaderNode Diffuse BSDF>
 
         Parameters
-        ---------
+        ----------
         color : Color, optional
             socket 'Color' (id: Color)
         
@@ -131,7 +133,7 @@ class Shader(Socket):
         """ > Node <&ShaderNode Glass BSDF>
 
         Parameters
-        ---------
+        ----------
         color : Color, optional
             socket 'Color' (id: Color)
         
@@ -150,7 +152,9 @@ class Shader(Socket):
         thin_film_ior : Float, optional
             socket 'Thin Film IOR' (id: Thin Film IOR)
         
-        distribution (str): parameter 'distribution' in ('Beckmann', 'GGX', 'Multiscatter GGX')
+        distribution : Literal['Beckmann', 'GGX', 'Multiscatter GGX']
+            parameter `distribution`
+        
 
         Returns
         -------
@@ -171,7 +175,7 @@ class Shader(Socket):
         """ > Node <&ShaderNode Hair BSDF>
 
         Parameters
-        ---------
+        ----------
         color : Color, optional
             socket 'Color' (id: Color)
         
@@ -187,7 +191,9 @@ class Shader(Socket):
         tangent : Vector, optional
             socket 'Tangent' (id: Tangent)
         
-        component (str): parameter 'component' in ('Reflection', 'Transmission')
+        component : Literal['Reflection', 'Transmission']
+            parameter `component`
+        
 
         Returns
         -------
@@ -212,7 +218,7 @@ class Shader(Socket):
         """ > Node <&ShaderNode Principled Hair BSDF>
 
         Parameters
-        ---------
+        ----------
         color : Color, optional
             socket 'Color' (id: Color)
         
@@ -237,8 +243,12 @@ class Shader(Socket):
         random : Float, optional
             socket 'Random' (id: Random)
         
-        model (str): parameter 'model' in ('Chiang', 'Huang')
-        parametrization (str): parameter 'parametrization' in ('Absorption Coefficient', 'Melanin Concentration', 'Direct Coloring')
+        model : Literal['Chiang', 'Huang']
+            parameter `model`
+        
+        parametrization : Literal['Absorption Coefficient', 'Melanin Concentration', 'Direct Coloring']
+            parameter `parametrization`
+        
 
         Returns
         -------
@@ -265,7 +275,7 @@ class Shader(Socket):
         """ > Node <&ShaderNode Metallic BSDF>
 
         Parameters
-        ---------
+        ----------
         base_color : Color, optional
             socket 'Base Color' (id: Base Color)
         
@@ -293,8 +303,12 @@ class Shader(Socket):
         thin_film_ior : Float, optional
             socket 'Thin Film IOR' (id: Thin Film IOR)
         
-        distribution (str): parameter 'distribution' in ('Beckmann', 'GGX', 'Multiscatter GGX')
-        fresnel_type (str): parameter 'fresnel_type' in ('Physical Conductor', 'F82 Tint')
+        distribution : Literal['Beckmann', 'GGX', 'Multiscatter GGX']
+            parameter `distribution`
+        
+        fresnel_type : Literal['Physical Conductor', 'F82 Tint']
+            parameter `fresnel_type`
+        
 
         Returns
         -------
@@ -341,7 +355,7 @@ class Shader(Socket):
         """ > Node <&ShaderNode Principled BSDF>
 
         Parameters
-        ---------
+        ----------
         base_color : Color, optional
             socket 'Base Color' (id: Base Color)
         
@@ -429,8 +443,12 @@ class Shader(Socket):
         thin_film_ior : Float, optional
             socket 'Thin Film IOR' (id: Thin Film IOR)
         
-        distribution (str): parameter 'distribution' in ('GGX', 'Multiscatter GGX')
-        subsurface_method (str): parameter 'subsurface_method' in ('Christensen-Burley', 'Random Walk', 'Random Walk (Skin)')
+        distribution : Literal['GGX', 'Multiscatter GGX']
+            parameter `distribution`
+        
+        subsurface_method : Literal['Christensen-Burley', 'Random Walk', 'Random Walk (Skin)']
+            parameter `subsurface_method`
+        
 
         Returns
         -------
@@ -446,7 +464,7 @@ class Shader(Socket):
         """ > Node <&ShaderNode Ray Portal BSDF>
 
         Parameters
-        ---------
+        ----------
         color : Color, optional
             socket 'Color' (id: Color)
         
@@ -474,7 +492,7 @@ class Shader(Socket):
         """ > Node <&ShaderNode Refraction BSDF>
 
         Parameters
-        ---------
+        ----------
         color : Color, optional
             socket 'Color' (id: Color)
         
@@ -487,7 +505,9 @@ class Shader(Socket):
         normal : Vector, optional
             socket 'Normal' (id: Normal)
         
-        distribution (str): parameter 'distribution' in ('Beckmann', 'GGX')
+        distribution : Literal['Beckmann', 'GGX']
+            parameter `distribution`
+        
 
         Returns
         -------
@@ -506,7 +526,7 @@ class Shader(Socket):
         """ > Node <&ShaderNode Sheen BSDF>
 
         Parameters
-        ---------
+        ----------
         color : Color, optional
             socket 'Color' (id: Color)
         
@@ -516,7 +536,9 @@ class Shader(Socket):
         normal : Vector, optional
             socket 'Normal' (id: Normal)
         
-        distribution (str): parameter 'distribution' in ('Ashikhmin', 'Microfiber')
+        distribution : Literal['Ashikhmin', 'Microfiber']
+            parameter `distribution`
+        
 
         Returns
         -------
@@ -536,7 +558,7 @@ class Shader(Socket):
         """ > Node <&ShaderNode Toon BSDF>
 
         Parameters
-        ---------
+        ----------
         color : Color, optional
             socket 'Color' (id: Color)
         
@@ -549,7 +571,9 @@ class Shader(Socket):
         normal : Vector, optional
             socket 'Normal' (id: Normal)
         
-        component (str): parameter 'component' in ('Diffuse', 'Glossy')
+        component : Literal['Diffuse', 'Glossy']
+            parameter `component`
+        
 
         Returns
         -------
@@ -564,7 +588,7 @@ class Shader(Socket):
         """ > Node <&ShaderNode Translucent BSDF>
 
         Parameters
-        ---------
+        ----------
         color : Color, optional
             socket 'Color' (id: Color)
         
@@ -584,7 +608,7 @@ class Shader(Socket):
         """ > Node <&ShaderNode Transparent BSDF>
 
         Parameters
-        ---------
+        ----------
         color : Color, optional
             socket 'Color' (id: Color)
         
@@ -610,7 +634,7 @@ class Shader(Socket):
         """ > Node <&ShaderNode Specular BSDF>
 
         Parameters
-        ---------
+        ----------
         base_color : Color, optional
             socket 'Base Color' (id: Base Color)
         
@@ -651,7 +675,7 @@ class Shader(Socket):
         """ > Node <&ShaderNode Emission>
 
         Parameters
-        ---------
+        ----------
         color : Color, optional
             socket 'Color' (id: Color)
         
@@ -687,7 +711,7 @@ class Shader(Socket):
         | Socket | Shader | `self` |
 
         Parameters
-        ---------
+        ----------
         shader : Shader, optional
             socket 'Shader' (id: Shader_001)
         
@@ -714,9 +738,13 @@ class Shader(Socket):
         | Socket | Surface | `self` |
 
         Parameters
-        ---------
-        is_active_output (bool): parameter 'is_active_output'
-        target (str): parameter 'target' in ('All', 'EEVEE', 'Cycles')
+        ----------
+        is_active_output : bool
+            parameter `is_active_output`
+        
+        target : Literal['All', 'EEVEE', 'Cycles']
+            parameter `target`
+        
 
         Returns
         -------
@@ -741,7 +769,7 @@ class Shader(Socket):
         | Socket | Surface | `self` |
 
         Parameters
-        ---------
+        ----------
         volume : VolumeShader, optional
             socket 'Volume' (id: Volume)
         
@@ -751,8 +779,12 @@ class Shader(Socket):
         thickness : Float, optional
             socket 'Thickness' (id: Thickness)
         
-        is_active_output (bool): parameter 'is_active_output'
-        target (str): parameter 'target' in ('All', 'EEVEE', 'Cycles')
+        is_active_output : bool
+            parameter `is_active_output`
+        
+        target : Literal['All', 'EEVEE', 'Cycles']
+            parameter `target`
+        
 
         Returns
         -------
@@ -775,12 +807,16 @@ class Shader(Socket):
         | Socket | Surface | `self` |
 
         Parameters
-        ---------
+        ----------
         volume : VolumeShader, optional
             socket 'Volume' (id: Volume)
         
-        is_active_output (bool): parameter 'is_active_output'
-        target (str): parameter 'target' in ('All', 'EEVEE', 'Cycles')
+        is_active_output : bool
+            parameter `is_active_output`
+        
+        target : Literal['All', 'EEVEE', 'Cycles']
+            parameter `target`
+        
 
         Returns
         -------
@@ -821,7 +857,7 @@ class Shader(Socket):
         """ > Node <&ShaderNode Subsurface Scattering>
 
         Parameters
-        ---------
+        ----------
         color : Color, optional
             socket 'Color' (id: Color)
         
@@ -843,7 +879,9 @@ class Shader(Socket):
         normal : Vector, optional
             socket 'Normal' (id: Normal)
         
-        falloff (str): parameter 'falloff' in ('Christensen-Burley', 'Random Walk', 'Random Walk (Skin)')
+        falloff : Literal['Christensen-Burley', 'Random Walk', 'Random Walk (Skin)']
+            parameter `falloff`
+        
 
         Returns
         -------
@@ -866,18 +904,30 @@ class Shader(Socket):
 
         New <#Shader> input with subtype 'NONE'.
 
-        Aguments
-        --------
-        - name  (str = 'Shader') : Input socket name
-        - tip  (str = '') : Property description
-        - panel (str = "") : Panel name
-        - optional_label  (bool = False) : Property optional_label
-        - hide_value  (bool = False) : Property hide_value
-        - hide_in_modifier  (bool = False) : Property hide_in_modifier
+        Parameters
+        ----------
+        name : str, default=`Shader`
+            Input socket name
+
+        tip : str, default=`''`
+            Property description
+
+        panel : str, default=``
+            Panel name
+
+        optional_label : bool, default=`False`
+            Property optional_label
+
+        hide_value : bool, default=`False`
+            Property hide_value
+
+        hide_in_modifier : bool, default=`False`
+            Property hide_in_modifier
+
 
         Returns
         -------
-        - Shader
+        Shader
         """
         from ..treeclass import Tree
 

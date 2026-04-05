@@ -100,7 +100,7 @@ class Float(generated.Float):
             Property description
 
         panel : str, optional
-            Panel name Default: "".
+            Panel name default="".
 
         props : dict
             properties
@@ -146,8 +146,12 @@ class Float(generated.Float):
 
         Parameters
         ----------
-        - stops (list of tuple(float, tuple)) : stops made of (float, color as tuple of floats)
-        - interpolation in ('EASE', 'CARDINAL', 'LINEAR', 'B_SPLINE', 'CONSTANT')
+
+        stops : list[tuple[float, tuple]]
+            Stops made of (float, color as tuple of floats)
+
+        interpolation : {'EASE', 'CARDINAL', 'LINEAR', 'B_SPLINE', 'CONSTANT'}
+
 
         Returns
         -------
@@ -162,18 +166,10 @@ class Float(generated.Float):
         """ > Node <&Node Float Curve>
 
         A curve is defined by a list of 3-tuples (not list):
-        x : float
-            x position
 
-        y : float
-            y position
-
-        handle_type : str
-            handle type in ('AUTO', 'AUTO_CLAMPED', 'VECTOR')
-
-
-        !!! note
-            handle_type is optional, its default value is 'AUTO'. Valid values are ('AUTO', 'AUTO_CLAMPED', 'VECTOR')
+        - x (float) : x position
+        - y (float) : y position
+        - handle_type (str) : handle type in ('AUTO', 'AUTO_CLAMPED', 'VECTOR'), default='AUTO'
 
         Information
         -----------
@@ -184,8 +180,9 @@ class Float(generated.Float):
         factor : Float
             socket 'Factor' (id: Factor)
 
-        - curve (list of tuples (float, float, str)) : curve points
-
+        curve : list[tuple[float, float, str]]
+            Curve points
+        
         Returns
         -------
         Float

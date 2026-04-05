@@ -1,4 +1,4 @@
-# Generated 2026-04-04 12:37:35
+# Generated 2026-04-04 17:31:31
 
 from __future__ import annotations
 from .. sockettype import SocketType
@@ -38,7 +38,7 @@ class Vertex:
         """ > Node <&Node Corners of Vertex>
 
         Parameters
-        ---------
+        ----------
         vertex_index : Integer, optional
             socket 'Vertex Index' (id: Vertex Index)
         
@@ -66,7 +66,7 @@ class Vertex:
         """ > Node <&Node Corners of Vertex>
 
         Parameters
-        ---------
+        ----------
         vertex_index : Integer, optional
             socket 'Vertex Index' (id: Vertex Index)
         
@@ -92,7 +92,7 @@ class Vertex:
         """ > Node <&Node Corners of Vertex>
 
         Parameters
-        ---------
+        ----------
         vertex_index : Integer, optional
             socket 'Vertex Index' (id: Vertex Index)
         
@@ -118,7 +118,7 @@ class Vertex:
         """ > Node <&Node Edges of Vertex>
 
         Parameters
-        ---------
+        ----------
         vertex_index : Integer, optional
             socket 'Vertex Index' (id: Vertex Index)
         
@@ -146,7 +146,7 @@ class Vertex:
         """ > Node <&Node Edges of Vertex>
 
         Parameters
-        ---------
+        ----------
         vertex_index : Integer, optional
             socket 'Vertex Index' (id: Vertex Index)
         
@@ -172,7 +172,7 @@ class Vertex:
         """ > Node <&Node Edges of Vertex>
 
         Parameters
-        ---------
+        ----------
         vertex_index : Integer, optional
             socket 'Vertex Index' (id: Vertex Index)
         
@@ -204,7 +204,7 @@ class Vertex:
         | Parameter | `mode`    | `'VERTICES'`      |
 
         Parameters
-        ---------
+        ----------
         offset : Vector, optional
             socket 'Offset' (id: Offset)
         
@@ -269,7 +269,7 @@ class Vertex:
         | Parameter | `mode`    | `'VERTICES'`      |
 
         Parameters
-        ---------
+        ----------
         position : Vector, optional
             socket 'Position' (id: Position)
         

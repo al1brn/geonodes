@@ -31,7 +31,9 @@ Rather than using [Node](node.md#node) class, scripting nodes is done by using [
   - Attributes: [Boolean](boolean.md), [Integer](integer.md), [Float](float.md), [Color](color.md), [Vector](vector.md), [Rotation](rotation.md), [Matrix](matrix.md)
   - Other: [String](string.md), [Menu](menu.md), [Bundle](bundle.md), [Closure](closure.md)
 
-- Blender resources: [Collection](collection.md), [Object](object.md), [Image](image.md), [Material](material.md), [Texture](texture.md)
+- Blender resources: [Collection](collection.md), [Object](object.md), [Image](image.md), [Material](material.md), 
+  [Font](font.md), [Texture](texture.md)
+
 - [Geometry](geometry.md) sockets: [Mesh](mesh.md), [Curve](curve.md), [GreasePencil](grease_pencil.md), [Cloud](cloud.md), [Instances](instances.md), [Volume](volume.md)
 - Shaders specific: [Shader](shader.md), [VolumeShader](volume_shader.md)
 

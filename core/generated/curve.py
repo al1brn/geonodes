@@ -1,4 +1,4 @@
-# Generated 2026-04-04 12:37:35
+# Generated 2026-04-04 17:31:31
 
 from __future__ import annotations
 from .. sockettype import SocketType
@@ -70,7 +70,7 @@ class Curve(Socket):
         | Parameter | `mode` | `'POINTS'` |
 
         Parameters
-        ---------
+        ----------
         resolution : Integer, optional
             socket 'Resolution' (id: Resolution)
         
@@ -117,7 +117,7 @@ class Curve(Socket):
         | Parameter | `mode` | `'RADIUS'` |
 
         Parameters
-        ---------
+        ----------
         resolution : Integer, optional
             socket 'Resolution' (id: Resolution)
         
@@ -156,7 +156,7 @@ class Curve(Socket):
         """ > Node <&Node Arc>
 
         Parameters
-        ---------
+        ----------
         resolution : Integer, optional
             socket 'Resolution' (id: Resolution)
         
@@ -175,7 +175,9 @@ class Curve(Socket):
         invert_arc : Boolean, optional
             socket 'Invert Arc' (id: Invert Arc)
         
-        mode (str): parameter 'mode' in ('Points', 'Radius')
+        mode : Literal['Points', 'Radius']
+            parameter `mode`
+        
 
         Returns
         -------
@@ -190,7 +192,7 @@ class Curve(Socket):
         """ > Node <&Node Endpoint Selection>
 
         Parameters
-        ---------
+        ----------
         start_size : Integer, optional
             socket 'Start Size' (id: Start Size)
         
@@ -208,13 +210,17 @@ class Curve(Socket):
     @classmethod
     def handle_type_selection(cls,
                     handle_type: Literal['FREE', 'AUTO', 'VECTOR', 'ALIGN'] = 'AUTO',
-                    mode = {'RIGHT', 'LEFT'}):
+                    mode = {'LEFT', 'RIGHT'}):
         """ > Node <&Node Handle Type Selection>
 
         Parameters
-        ---------
-        handle_type (str): parameter 'handle_type' in ('Free', 'Auto', 'Vector', 'Align')
-        mode (set): parameter 'mode'
+        ----------
+        handle_type : Literal['Free', 'Auto', 'Vector', 'Align']
+            parameter `handle_type`
+        
+        mode : set
+            parameter `mode`
+        
 
         Returns
         -------
@@ -245,7 +251,7 @@ class Curve(Socket):
         """ > Node <&Node Curve of Point>
 
         Parameters
-        ---------
+        ----------
         point_index : Integer, optional
             socket 'Point Index' (id: Point Index)
         
@@ -275,7 +281,7 @@ class Curve(Socket):
         | Parameter | `mode` | `'POSITION'` |
 
         Parameters
-        ---------
+        ----------
         resolution : Integer, optional
             socket 'Resolution' (id: Resolution)
         
@@ -315,7 +321,7 @@ class Curve(Socket):
         | Parameter | `mode` | `'OFFSET'` |
 
         Parameters
-        ---------
+        ----------
         resolution : Integer, optional
             socket 'Resolution' (id: Resolution)
         
@@ -350,7 +356,7 @@ class Curve(Socket):
         """ > Node <&Node Bézier Segment>
 
         Parameters
-        ---------
+        ----------
         resolution : Integer, optional
             socket 'Resolution' (id: Resolution)
         
@@ -366,7 +372,9 @@ class Curve(Socket):
         end : Vector, optional
             socket 'End' (id: End)
         
-        mode (str): parameter 'mode' in ('Position', 'Offset')
+        mode : Literal['Position', 'Offset']
+            parameter `mode`
+        
 
         Returns
         -------
@@ -391,7 +399,7 @@ class Curve(Socket):
         | Parameter | `mode` | `'POINTS'` |
 
         Parameters
-        ---------
+        ----------
         resolution : Integer, optional
             socket 'Resolution' (id: Resolution)
         
@@ -423,7 +431,7 @@ class Curve(Socket):
         | Parameter | `mode` | `'RADIUS'` |
 
         Parameters
-        ---------
+        ----------
         resolution : Integer, optional
             socket 'Resolution' (id: Resolution)
         
@@ -446,14 +454,16 @@ class Curve(Socket):
         """ > Node <&Node Curve Circle>
 
         Parameters
-        ---------
+        ----------
         resolution : Integer, optional
             socket 'Resolution' (id: Resolution)
         
         radius : Float, optional
             socket 'Radius' (id: Radius)
         
-        mode (str): parameter 'mode' in ('Points', 'Radius')
+        mode : Literal['Points', 'Radius']
+            parameter `mode`
+        
 
         Returns
         -------
@@ -474,7 +484,7 @@ class Curve(Socket):
         | Parameter | `mode` | `'POINTS'` |
 
         Parameters
-        ---------
+        ----------
         start : Vector, optional
             socket 'Start' (id: Start)
         
@@ -500,7 +510,7 @@ class Curve(Socket):
         | Parameter | `mode` | `'DIRECTION'` |
 
         Parameters
-        ---------
+        ----------
         start : Vector, optional
             socket 'Start' (id: Start)
         
@@ -526,14 +536,16 @@ class Curve(Socket):
         """ > Node <&Node Curve Line>
 
         Parameters
-        ---------
+        ----------
         start : Vector, optional
             socket 'Start' (id: Start)
         
         end : Vector, optional
             socket 'End' (id: End)
         
-        mode (str): parameter 'mode' in ('Points', 'Direction')
+        mode : Literal['Points', 'Direction']
+            parameter `mode`
+        
 
         Returns
         -------
@@ -554,7 +566,7 @@ class Curve(Socket):
         | Parameter | `mode` | `'RECTANGLE'` |
 
         Parameters
-        ---------
+        ----------
         width : Float, optional
             socket 'Width' (id: Width)
         
@@ -580,7 +592,7 @@ class Curve(Socket):
         | Parameter | `mode` | `'PARALLELOGRAM'` |
 
         Parameters
-        ---------
+        ----------
         width : Float, optional
             socket 'Width' (id: Width)
         
@@ -613,7 +625,7 @@ class Curve(Socket):
         | Parameter | `mode` | `'TRAPEZOID'` |
 
         Parameters
-        ---------
+        ----------
         height : Float, optional
             socket 'Height' (id: Height)
         
@@ -648,7 +660,7 @@ class Curve(Socket):
         | Parameter | `mode` | `'KITE'` |
 
         Parameters
-        ---------
+        ----------
         width : Float, optional
             socket 'Width' (id: Width)
         
@@ -681,7 +693,7 @@ class Curve(Socket):
         | Parameter | `mode` | `'POINTS'` |
 
         Parameters
-        ---------
+        ----------
         point_1 : Vector, optional
             socket 'Point 1' (id: Point 1)
         
@@ -710,14 +722,16 @@ class Curve(Socket):
         """ > Node <&Node Quadrilateral>
 
         Parameters
-        ---------
+        ----------
         width : Float, optional
             socket 'Width' (id: Width)
         
         height : Float, optional
             socket 'Height' (id: Height)
         
-        mode (str): parameter 'mode' in ('Rectangle', 'Parallelogram', 'Trapezoid', 'Kite', 'Points')
+        mode : Literal['Rectangle', 'Parallelogram', 'Trapezoid', 'Kite', 'Points']
+            parameter `mode`
+        
 
         Returns
         -------
@@ -736,7 +750,7 @@ class Curve(Socket):
         """ > Node <&Node Quadratic Bézier>
 
         Parameters
-        ---------
+        ----------
         resolution : Integer, optional
             socket 'Resolution' (id: Resolution)
         
@@ -759,7 +773,7 @@ class Curve(Socket):
 
     def set_handle_type(self,
                     handle_type: Literal['FREE', 'AUTO', 'VECTOR', 'ALIGN'] = 'AUTO',
-                    mode = {'RIGHT', 'LEFT'}):
+                    mode = {'LEFT', 'RIGHT'}):
         """ > Node <&Node Set Handle Type>
 
         > ***Jump*** : Socket refers to node output socket after the call
@@ -772,9 +786,13 @@ class Curve(Socket):
         | Socket | Selection | `self[selection]` |
 
         Parameters
-        ---------
-        handle_type (str): parameter 'handle_type' in ('Free', 'Auto', 'Vector', 'Align')
-        mode (set): parameter 'mode'
+        ----------
+        handle_type : Literal['Free', 'Auto', 'Vector', 'Align']
+            parameter `handle_type`
+        
+        mode : set
+            parameter `mode`
+        
 
         Returns
         -------
@@ -799,8 +817,10 @@ class Curve(Socket):
         | Parameter | `mode`    | `{'LEFT'}`        |
 
         Parameters
-        ---------
-        handle_type (str): parameter 'handle_type' in ('Free', 'Auto', 'Vector', 'Align')
+        ----------
+        handle_type : Literal['Free', 'Auto', 'Vector', 'Align']
+            parameter `handle_type`
+        
 
         Returns
         -------
@@ -825,8 +845,10 @@ class Curve(Socket):
         | Parameter | `mode`    | `{'RIGHT'}`       |
 
         Parameters
-        ---------
-        handle_type (str): parameter 'handle_type' in ('Free', 'Auto', 'Vector', 'Align')
+        ----------
+        handle_type : Literal['Free', 'Auto', 'Vector', 'Align']
+            parameter `handle_type`
+        
 
         Returns
         -------
@@ -848,18 +870,20 @@ class Curve(Socket):
         | --------- | --------- | ------------------- |
         | Socket    | Curve     | `self`              |
         | Socket    | Selection | `self[selection]`   |
-        | Parameter | `mode`    | `{'RIGHT', 'LEFT'}` |
+        | Parameter | `mode`    | `{'LEFT', 'RIGHT'}` |
 
         Parameters
-        ---------
-        handle_type (str): parameter 'handle_type' in ('Free', 'Auto', 'Vector', 'Align')
+        ----------
+        handle_type : Literal['Free', 'Auto', 'Vector', 'Align']
+            parameter `handle_type`
+        
 
         Returns
         -------
         Curve
         """
         utils.check_enum_arg('Set Handle Type', 'handle_type', handle_type, 'set_both_handle_type', ('FREE', 'AUTO', 'VECTOR', 'ALIGN'))
-        node = Node('Set Handle Type', {'Curve': self, 'Selection': self.get_selection()}, handle_type=handle_type, mode={'RIGHT', 'LEFT'})
+        node = Node('Set Handle Type', {'Curve': self, 'Selection': self.get_selection()}, handle_type=handle_type, mode={'LEFT', 'RIGHT'})
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -874,7 +898,7 @@ class Curve(Socket):
         """ > Node <&Node Spiral>
 
         Parameters
-        ---------
+        ----------
         resolution : Integer, optional
             socket 'Resolution' (id: Resolution)
         
@@ -914,8 +938,10 @@ class Curve(Socket):
         | Socket | Selection | `self[selection]` |
 
         Parameters
-        ---------
-        spline_type (str): parameter 'spline_type' in ('Catmull Rom', 'Poly', 'Bézier', 'NURBS')
+        ----------
+        spline_type : Literal['Catmull Rom', 'Poly', 'Bézier', 'NURBS']
+            parameter `spline_type`
+        
 
         Returns
         -------
@@ -935,7 +961,7 @@ class Curve(Socket):
         """ > Node <&Node Star>
 
         Parameters
-        ---------
+        ----------
         points : Integer, optional
             socket 'Points' (id: Points)
         
@@ -969,7 +995,7 @@ class Curve(Socket):
         | Socket | Curve | `self` |
 
         Parameters
-        ---------
+        ----------
         profile_curve : Curve, optional
             socket 'Profile Curve' (id: Profile Curve)
         
@@ -1017,7 +1043,7 @@ class Curve(Socket):
         | Parameter | `mode` | `'COUNT'` |
 
         Parameters
-        ---------
+        ----------
         count : Integer, optional
             socket 'Count' (id: Count)
         
@@ -1042,7 +1068,7 @@ class Curve(Socket):
         | Parameter | `mode` | `'LENGTH'` |
 
         Parameters
-        ---------
+        ----------
         length : Float, optional
             socket 'Length' (id: Length)
         
@@ -1068,11 +1094,13 @@ class Curve(Socket):
         | Socket | Curve | `self` |
 
         Parameters
-        ---------
+        ----------
         count : Integer, optional
             socket 'Count' (id: Count)
         
-        mode (str): parameter 'mode' in ('Evaluated', 'Count', 'Length')
+        mode : Literal['Evaluated', 'Count', 'Length']
+            parameter `mode`
+        
 
         Returns
         -------
@@ -1095,7 +1123,7 @@ class Curve(Socket):
         | Socket | Selection | `self[selection]` |
 
         Parameters
-        ---------
+        ----------
         instances_as_layers : Boolean, optional
             socket 'Instances as Layers' (id: Instances as Layers)
         
@@ -1139,7 +1167,7 @@ class Curve(Socket):
         | Socket | Curve | `self` |
 
         Parameters
-        ---------
+        ----------
         group_id : Integer, optional
             socket 'Group ID' (id: Group ID)
         
@@ -1173,7 +1201,7 @@ class Curve(Socket):
         | Socket | Curve | `self` |
 
         Parameters
-        ---------
+        ----------
         radius : Float, optional
             socket 'Radius' (id: Radius)
         
@@ -1200,7 +1228,7 @@ class Curve(Socket):
         """ > Node <&Node Curve Handle Positions>
 
         Parameters
-        ---------
+        ----------
         relative : Boolean, optional
             socket 'Relative' (id: Relative)
         
@@ -1237,7 +1265,7 @@ class Curve(Socket):
         """ > Node <&Node Interpolate Curves>
 
         Parameters
-        ---------
+        ----------
         guide_curves : Curve, optional
             socket 'Guide Curves' (id: Guide Curves)
         
@@ -1285,7 +1313,7 @@ class Curve(Socket):
         | Socket | Guide Curves | `self` |
 
         Parameters
-        ---------
+        ----------
         guide_up : Vector, optional
             socket 'Guide Up' (id: Guide Up)
         
@@ -1320,7 +1348,7 @@ class Curve(Socket):
         """ > Node <&Node Material Selection>
 
         Parameters
-        ---------
+        ----------
         material : Material, optional
             socket 'Material' (id: Material)
         
@@ -1337,7 +1365,7 @@ class Curve(Socket):
         """ > Node <&Node Offset Point in Curve>
 
         Parameters
-        ---------
+        ----------
         point_index : Integer, optional
             socket 'Point Index' (id: Point Index)
         
@@ -1362,7 +1390,7 @@ class Curve(Socket):
         """ > Node <&Node Points of Curve>
 
         Parameters
-        ---------
+        ----------
         curve_index : Integer, optional
             socket 'Curve Index' (id: Curve Index)
         
@@ -1399,7 +1427,7 @@ class Curve(Socket):
         | Socket | Selection | `self[selection]` |
 
         Parameters
-        ---------
+        ----------
         mode : menu='Count', optional
             ('Evaluated', 'Count', 'Length')
         
@@ -1409,7 +1437,9 @@ class Curve(Socket):
         length : Float, optional
             socket 'Length' (id: Length)
         
-        keep_last_segment (bool): parameter 'keep_last_segment'
+        keep_last_segment : bool
+            parameter `keep_last_segment`
+        
 
         Returns
         -------
@@ -1455,7 +1485,7 @@ class Curve(Socket):
         | Parameter | `mode`      | `'FACTOR'`        |
 
         Parameters
-        ---------
+        ----------
         value : Float | Integer | Boolean | Vector | Color | Rotation | Matrix, optional
             socket 'Value' (id: Value)
         
@@ -1465,7 +1495,9 @@ class Curve(Socket):
         factor : Float, optional
             socket 'Factor' (id: Factor)
         
-        use_all_curves (bool): parameter 'use_all_curves'
+        use_all_curves : bool
+            parameter `use_all_curves`
+        
 
         Returns
         -------
@@ -1493,7 +1525,7 @@ class Curve(Socket):
         | Parameter | `mode`      | `'LENGTH'`        |
 
         Parameters
-        ---------
+        ----------
         value : Float | Integer | Boolean | Vector | Color | Rotation | Matrix, optional
             socket 'Value' (id: Value)
         
@@ -1503,7 +1535,9 @@ class Curve(Socket):
         curve_index : Integer, optional
             socket 'Curve Index' (id: Curve Index)
         
-        use_all_curves (bool): parameter 'use_all_curves'
+        use_all_curves : bool
+            parameter `use_all_curves`
+        
 
         Returns
         -------
@@ -1531,7 +1565,7 @@ class Curve(Socket):
         | Parameter | `data_type` | from `value` type |
 
         Parameters
-        ---------
+        ----------
         value : Float | Integer | Boolean | Vector | Color | Rotation | Matrix, optional
             socket 'Value' (id: Value)
         
@@ -1541,8 +1575,12 @@ class Curve(Socket):
         factor : Float, optional
             socket 'Factor' (id: Factor)
         
-        mode (str): parameter 'mode' in ('Factor', 'Length')
-        use_all_curves (bool): parameter 'use_all_curves'
+        mode : Literal['Factor', 'Length']
+            parameter `mode`
+        
+        use_all_curves : bool
+            parameter `use_all_curves`
+        
 
         Returns
         -------
@@ -1571,14 +1609,16 @@ class Curve(Socket):
         | Socket | Selection | `self[selection]` |
 
         Parameters
-        ---------
+        ----------
         position : Vector, optional
             socket 'Position' (id: Position)
         
         offset : Vector, optional
             socket 'Offset' (id: Offset)
         
-        mode (str): parameter 'mode' in ('Left', 'Right')
+        mode : Literal['Left', 'Right']
+            parameter `mode`
+        
 
         Returns
         -------
@@ -1603,7 +1643,7 @@ class Curve(Socket):
         | Parameter | `mode`    | `'LEFT'`          |
 
         Parameters
-        ---------
+        ----------
         position : Vector, optional
             socket 'Position' (id: Position)
         
@@ -1633,7 +1673,7 @@ class Curve(Socket):
         | Parameter | `mode`    | `'RIGHT'`         |
 
         Parameters
-        ---------
+        ----------
         position : Vector, optional
             socket 'Position' (id: Position)
         
@@ -1664,7 +1704,7 @@ class Curve(Socket):
         | Socket | Selection | `self[selection]` |
 
         Parameters
-        ---------
+        ----------
         mode : menu='Minimum Twist', optional
             ('Minimum Twist', 'Z Up', 'Free')
         
@@ -1693,7 +1733,7 @@ class Curve(Socket):
         | Socket | Selection | `self[selection]` |
 
         Parameters
-        ---------
+        ----------
         radius : Float, optional
             socket 'Radius' (id: Radius)
         
@@ -1719,7 +1759,7 @@ class Curve(Socket):
         | Socket | Selection | `self[selection]` |
 
         Parameters
-        ---------
+        ----------
         tilt : Float, optional
             socket 'Tilt' (id: Tilt)
         
@@ -1745,7 +1785,7 @@ class Curve(Socket):
         | Socket | Selection | `self[selection]` |
 
         Parameters
-        ---------
+        ----------
         cyclic : Boolean, optional
             socket 'Cyclic' (id: Cyclic)
         
@@ -1771,7 +1811,7 @@ class Curve(Socket):
         | Socket | Selection | `self[selection]` |
 
         Parameters
-        ---------
+        ----------
         resolution : Integer, optional
             socket 'Resolution' (id: Resolution)
         
@@ -1822,7 +1862,7 @@ class Curve(Socket):
         | Socket | Curve | `self` |
 
         Parameters
-        ---------
+        ----------
         cuts : Integer, optional
             socket 'Cuts' (id: Cuts)
         
@@ -1849,7 +1889,7 @@ class Curve(Socket):
         | Parameter | `mode`    | `'FACTOR'`        |
 
         Parameters
-        ---------
+        ----------
         start : Float, optional
             socket 'Start' (id: Start)
         
@@ -1879,7 +1919,7 @@ class Curve(Socket):
         | Parameter | `mode`    | `'LENGTH'`        |
 
         Parameters
-        ---------
+        ----------
         start : Float, optional
             socket 'Start' (id: Start_001)
         
@@ -1911,14 +1951,16 @@ class Curve(Socket):
         | Socket | Selection | `self[selection]` |
 
         Parameters
-        ---------
+        ----------
         start : Float, optional
             socket 'Start' (id: Start)
         
         end : Float, optional
             socket 'End' (id: End)
         
-        mode (str): parameter 'mode' in ('Factor', 'Length')
+        mode : Literal['Factor', 'Length']
+            parameter `mode`
+        
 
         Returns
         -------
@@ -1949,7 +1991,7 @@ class Curve(Socket):
         | Socket | Selection | `self[selection]` |
 
         Parameters
-        ---------
+        ----------
         radius : Float, optional
             socket 'Radius' (id: Radius)
         
@@ -1984,7 +2026,7 @@ class Curve(Socket):
         | Parameter | `mode`    | `'LEFT'`          |
 
         Parameters
-        ---------
+        ----------
         position : Vector, optional
             socket 'Position' (id: Position)
         
@@ -2019,7 +2061,7 @@ class Curve(Socket):
         | Parameter | `mode`    | `'RIGHT'`         |
 
         Parameters
-        ---------
+        ----------
         position : Vector, optional
             socket 'Position' (id: Position)
         
@@ -2054,7 +2096,7 @@ class Curve(Socket):
         | Parameter | `mode`    | `'LEFT'`          |
 
         Parameters
-        ---------
+        ----------
         offset : Vector, optional
             socket 'Offset' (id: Offset)
         
@@ -2089,7 +2131,7 @@ class Curve(Socket):
         | Parameter | `mode`    | `'RIGHT'`         |
 
         Parameters
-        ---------
+        ----------
         offset : Vector, optional
             socket 'Offset' (id: Offset)
         
@@ -2120,18 +2162,20 @@ class Curve(Socket):
         | --------- | --------- | ------------------- |
         | Socket    | Curve     | `self`              |
         | Socket    | Selection | `self[selection]`   |
-        | Parameter | `mode`    | `{'RIGHT', 'LEFT'}` |
+        | Parameter | `mode`    | `{'LEFT', 'RIGHT'}` |
 
         Parameters
-        ---------
-        handle_type (str): parameter 'handle_type' in ('Free', 'Auto', 'Vector', 'Align')
+        ----------
+        handle_type : Literal['Free', 'Auto', 'Vector', 'Align']
+            parameter `handle_type`
+        
 
         Returns
         -------
         Curve
         """
         utils.check_enum_arg('Set Handle Type', 'handle_type', handle_type, 'handle_type', ('FREE', 'AUTO', 'VECTOR', 'ALIGN'))
-        node = Node('Set Handle Type', {'Curve': self, 'Selection': self.get_selection()}, handle_type=handle_type, mode={'RIGHT', 'LEFT'})
+        node = Node('Set Handle Type', {'Curve': self, 'Selection': self.get_selection()}, handle_type=handle_type, mode={'LEFT', 'RIGHT'})
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -2156,8 +2200,10 @@ class Curve(Socket):
         | Parameter | `mode`    | `{'LEFT'}`        |
 
         Parameters
-        ---------
-        handle_type (str): parameter 'handle_type' in ('Free', 'Auto', 'Vector', 'Align')
+        ----------
+        handle_type : Literal['Free', 'Auto', 'Vector', 'Align']
+            parameter `handle_type`
+        
 
         Returns
         -------
@@ -2189,8 +2235,10 @@ class Curve(Socket):
         | Parameter | `mode`    | `{'RIGHT'}`       |
 
         Parameters
-        ---------
-        handle_type (str): parameter 'handle_type' in ('Free', 'Auto', 'Vector', 'Align')
+        ----------
+        handle_type : Literal['Free', 'Auto', 'Vector', 'Align']
+            parameter `handle_type`
+        
 
         Returns
         -------
@@ -2221,7 +2269,7 @@ class Curve(Socket):
         | Socket | Selection | `self[selection]` |
 
         Parameters
-        ---------
+        ----------
         tilt : Float, optional
             socket 'Tilt' (id: Tilt)
         
@@ -2255,7 +2303,7 @@ class Curve(Socket):
         | Socket | Normal    | ignored           |
 
         Parameters
-        ---------
+        ----------
         mode : menu='Minimum Twist', optional
             ('Minimum Twist', 'Z Up', 'Free')
         
@@ -2288,7 +2336,7 @@ class Curve(Socket):
         | Socket | Selection | `self[selection]` |
 
         Parameters
-        ---------
+        ----------
         cyclic : Boolean, optional
             socket 'Cyclic' (id: Cyclic)
         
@@ -2321,7 +2369,7 @@ class Curve(Socket):
         | Socket | Selection | `self[selection]` |
 
         Parameters
-        ---------
+        ----------
         resolution : Integer, optional
             socket 'Resolution' (id: Resolution)
         
@@ -2354,8 +2402,10 @@ class Curve(Socket):
         | Socket | Selection | `self[selection]` |
 
         Parameters
-        ---------
-        spline_type (str): parameter 'spline_type' in ('Catmull Rom', 'Poly', 'Bézier', 'NURBS')
+        ----------
+        spline_type : Literal['Catmull Rom', 'Poly', 'Bézier', 'NURBS']
+            parameter `spline_type`
+        
 
         Returns
         -------

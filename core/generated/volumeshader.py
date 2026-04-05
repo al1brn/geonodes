@@ -1,4 +1,4 @@
-# Generated 2026-04-04 12:37:35
+# Generated 2026-04-04 17:31:31
 
 from __future__ import annotations
 from .. sockettype import SocketType
@@ -38,7 +38,7 @@ class VolumeShader(Socket):
         """ > Node <&ShaderNode Volume Absorption>
 
         Parameters
-        ---------
+        ----------
         color : Color, optional
             socket 'Color' (id: Color)
         
@@ -83,7 +83,7 @@ class VolumeShader(Socket):
         """ > Node <&ShaderNode Principled Volume>
 
         Parameters
-        ---------
+        ----------
         color : Color, optional
             socket 'Color' (id: Color)
         
@@ -137,7 +137,7 @@ class VolumeShader(Socket):
         """ > Node <&ShaderNode Volume Scatter>
 
         Parameters
-        ---------
+        ----------
         color : Color, optional
             socket 'Color' (id: Color)
         
@@ -147,7 +147,9 @@ class VolumeShader(Socket):
         anisotropy : Float, optional
             socket 'Anisotropy' (id: Anisotropy)
         
-        phase (str): parameter 'phase' in ('Henyey-Greenstein', 'Fournier-Forand', 'Draine', 'Rayleigh', 'Mie')
+        phase : Literal['Henyey-Greenstein', 'Fournier-Forand', 'Draine', 'Rayleigh', 'Mie']
+            parameter `phase`
+        
 
         Returns
         -------

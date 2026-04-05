@@ -124,7 +124,7 @@ class Bundle(generated.Bundle):
         Parameters
         ----------
         with_sockets : bool, optional
-            include sockets Default: False.
+            include sockets default=False.
 
 
         Returns

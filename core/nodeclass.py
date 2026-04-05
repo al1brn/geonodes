@@ -306,9 +306,10 @@ class Node:
             Node name
 
         named_sockets : dict, optional
-            initialization values for the node input sockets Default: {}.
+            initialization values for the node input sockets default={}.
 
-        - **parameters : node parameters and sockets
+        **parameters : dict
+            node parameters and sockets
         """
 
         # ----------------------------------------------------------------------------------------------------
@@ -508,10 +509,10 @@ class Node:
         Parameters
         ----------
         label : str, optional
-            node label Default: None.
+            node label default=None.
 
         color : color, optional
-            node color Default: None.
+            node color default=None.
 
 
         Returns
@@ -568,7 +569,7 @@ class Node:
             parameter value
 
         halt : bool, optional
-            raise an error if name is not a parameter Default: True.
+            raise an error if name is not a parameter default=True.
 
 
         Returns
@@ -770,10 +771,10 @@ class Node:
             input or output sockets
 
         include : list, optional
-            sockets to include Default: None.
+            sockets to include default=None.
 
         exclude : list, optional
-            sockets to exclude Default: [].
+            sockets to exclude default=[].
 
         enabled_only
             (bool = True) : ignore disabled sockets
@@ -925,13 +926,13 @@ class Node:
             socket_type
 
         enabled_only : bool
-            ignore disabled sockets Default: True
+            ignore disabled sockets default=True
 
         free_only : bool, optional
-            ignore linked sockets Default: False.
+            ignore linked sockets default=False.
 
         halt : bool, optional
-            raises an error if not found Default: True.
+            raises an error if not found default=True.
 
 
         Raises
@@ -1030,13 +1031,13 @@ class Node:
             socket type
 
         enabled_only : bool
-            ignore disabled sockets Default: True
+            ignore disabled sockets default=True
 
         free_only : bool, optional
-            ignore linked sockets Default: False.
+            ignore linked sockets default=False.
 
         halt : bool, optional
-            raises an error if not found Default: True.
+            raises an error if not found default=True.
 
 
         Returns
@@ -1106,7 +1107,7 @@ class Node:
             socket to create from
 
         panel : str, optional
-            creation panel Default: "".
+            creation panel default="".
 
         props : dict
             additional properties
@@ -1223,7 +1224,7 @@ class Node:
             type of socket to create
 
         panel : str, optional
-            creation panel Default: "".
+            creation panel default="".
 
         props : dict
             additional properties
@@ -1493,10 +1494,10 @@ class Node:
             value to set to the socket
 
         create : bool, optional
-            create the value (only for node with dynamic input sockets) Default: True.
+            create the value (only for node with dynamic input sockets) default=True.
 
         panel : str, optional
-            creation panel Default: "".
+            creation panel default="".
 
         props : dict
             additional properties (ignored)
@@ -1752,17 +1753,19 @@ class Node:
         Parameters
         ----------
         include : list, optional
-            sockets to include Default: None.
+            sockets to include default=None.
 
         exclude : list, optional
-            sockets to exclude Default: [].
+            sockets to exclude default=[].
 
         enabled_only
             (bool = True) : ignore disabled sockets
 
-        - free_only : (bool = False) : ignore linked sockets
-        with_socket : bool, optional
-            include sockets Default: False.
+        free_only : bool, default=False
+            ignore linked sockets
+
+        with_sockets : bool, optional
+            include sockets default=False.
 
 
         Returns
@@ -1817,7 +1820,7 @@ class Node:
             the signature to apply
 
         panel : str, optional
-            the panel where to create the sockets Default: "".
+            the panel where to create the sockets default="".
 
 
         Returns
@@ -1864,7 +1867,7 @@ class Node:
         Parameters
         ----------
         panel : str, optional
-            panel to use Default: "".
+            panel to use default="".
 
         """
         self.link_outputs(None, to_panel=panel)
@@ -1920,19 +1923,19 @@ class Node:
         Parameters
         ----------
         from_node : Node, optional
-            node to get output sockets from Default: None.
+            node to get output sockets from default=None.
 
         from_panel : str, optional
-            the panel to use in from_node Default: "".
+            the panel to use in from_node default="".
 
         include : list, optional
-            sockets to include Default: None.
+            sockets to include default=None.
 
         exclude : list, optional
-            sockets to exclude Default: [].
+            sockets to exclude default=[].
 
         panel : str, optional
-            panel to select input socket in Default: "".
+            panel to select input socket in default="".
 
 
         Returns
@@ -2007,19 +2010,19 @@ class Node:
         Parameters
         ----------
         to_node : Node, optional
-            node to plug into Default: None.
+            node to plug into default=None.
 
         to_panel : str, optional
-            the panel to use in to_node Default: "".
+            the panel to use in to_node default="".
 
         include : list, optional
-            sockets to include Default: None.
+            sockets to include default=None.
 
         exclude : list, optional
-            sockets to exclude Default: [].
+            sockets to exclude default=[].
 
         panel : str, optional
-            panel to select input socket in Default: "".
+            panel to select input socket in default="".
 
         """
 
@@ -2603,7 +2606,8 @@ class Group(Node):
         named_sockets : dict
             sockets initialization values
 
-        - **sockets (dict) : sockets  initialization with their snake_case name
+        **sockets : dict, default={}
+            sockets  initialization with their snake_case name
 
         Returns
         -------
@@ -2680,7 +2684,8 @@ class Group(Node):
         sockets : dict
             sockets initialization values
 
-        - **kwargs (dict) : sockets  initialization with their snake_case name
+        **sockets : dict, default={}
+            sockets  initialization with their snake_case name
 
         Returns
         -------
@@ -2718,19 +2723,19 @@ class Group(Node):
             class to add the method to
 
         func_name : str, optional
-            name of the method to create (snae case version of group name if None) Default: None.
+            name of the method to create (snae case version of group name if None) default=None.
 
         self_attr : str, optional
-            self name attribute name Default: None.
+            self name attribute name default=None.
 
         ret_class : type, optional
-            class to use to transtype the output socket Default: None.
+            class to use to transtype the output socket default=None.
 
         prefix : str, optional
-            group prefix Default: "".
+            group prefix default="".
 
         self_attr : Any, optional
-            which attr Default: None.
+            which attr default=None.
 
         fixed : dict
             fixed values for sockets        
@@ -2885,10 +2890,6 @@ class G:
         btree : Blender GeometryNodeTree | ShaderNodeTree
             the tree
 
-        prefix : str, optional
-            function prefix Default: "".
-
-
         Returns
         -------
         None
@@ -3032,9 +3033,13 @@ class ColorRamp(Node):
 
         Parameters
         ----------
-        - fac (Float = None)
-        - stops (list of tuple(float, tuple)) : stops made of (float, color as tuple of floats)
-        - interpolation in ('EASE', 'CARDINAL', 'LINEAR', 'B_SPLINE', 'CONSTANT')
+        fac : Float, optional
+
+        stops : list[tuple[float, tuple]]
+            stops made of (float, color as tuple of floats)
+
+        interpolation : {'EASE', 'CARDINAL', 'LINEAR', 'B_SPLINE', 'CONSTANT'}
+
         """
         super().__init__('Color Ramp', {'Fac': fac})
         self.color_ramp.interpolation = interpolation
@@ -3080,9 +3085,6 @@ class ColorRamp(Node):
     @stops.setter
     def stops(self, stops):
         """ Set the color ramp stops
-
-        ``` python
-        ramp =
 
         Parameters
         ----------

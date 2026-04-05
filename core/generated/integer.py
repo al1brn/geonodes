@@ -1,4 +1,4 @@
-# Generated 2026-04-04 12:37:35
+# Generated 2026-04-04 17:31:31
 
 from __future__ import annotations
 from .. sockettype import SocketType
@@ -44,7 +44,7 @@ class Integer(Socket):
         | Parameter | `operation` | `'AND'` |
 
         Parameters
-        ---------
+        ----------
         b : Integer, optional
             socket 'B' (id: B)
         
@@ -67,7 +67,7 @@ class Integer(Socket):
         | Parameter | `operation` | `'OR'` |
 
         Parameters
-        ---------
+        ----------
         b : Integer, optional
             socket 'B' (id: B)
         
@@ -90,7 +90,7 @@ class Integer(Socket):
         | Parameter | `operation` | `'XOR'` |
 
         Parameters
-        ---------
+        ----------
         b : Integer, optional
             socket 'B' (id: B)
         
@@ -130,7 +130,7 @@ class Integer(Socket):
         | Parameter | `operation` | `'SHIFT'` |
 
         Parameters
-        ---------
+        ----------
         shift : Integer, optional
             socket 'Shift' (id: Shift)
         
@@ -153,7 +153,7 @@ class Integer(Socket):
         | Parameter | `operation` | `'ROTATE'` |
 
         Parameters
-        ---------
+        ----------
         shift : Integer, optional
             socket 'Shift' (id: Shift)
         
@@ -178,7 +178,7 @@ class Integer(Socket):
         | Parameter | `operation` | `'LESS_THAN'` |
 
         Parameters
-        ---------
+        ----------
         b : Integer, optional
             socket 'B' (id: B_INT)
         
@@ -203,7 +203,7 @@ class Integer(Socket):
         | Parameter | `operation` | `'LESS_EQUAL'` |
 
         Parameters
-        ---------
+        ----------
         b : Integer, optional
             socket 'B' (id: B_INT)
         
@@ -228,7 +228,7 @@ class Integer(Socket):
         | Parameter | `operation` | `'GREATER_THAN'` |
 
         Parameters
-        ---------
+        ----------
         b : Integer, optional
             socket 'B' (id: B_INT)
         
@@ -253,7 +253,7 @@ class Integer(Socket):
         | Parameter | `operation` | `'GREATER_EQUAL'` |
 
         Parameters
-        ---------
+        ----------
         b : Integer, optional
             socket 'B' (id: B_INT)
         
@@ -278,7 +278,7 @@ class Integer(Socket):
         | Parameter | `operation` | `'EQUAL'`   |
 
         Parameters
-        ---------
+        ----------
         b : Integer, optional
             socket 'B' (id: B_INT)
         
@@ -303,7 +303,7 @@ class Integer(Socket):
         | Parameter | `operation` | `'NOT_EQUAL'` |
 
         Parameters
-        ---------
+        ----------
         b : Integer, optional
             socket 'B' (id: B_INT)
         
@@ -326,7 +326,7 @@ class Integer(Socket):
         | Parameter | `data_type` | `'INT'` |
 
         Parameters
-        ---------
+        ----------
         seed : Integer, optional
             socket 'Seed' (id: Seed)
         
@@ -349,7 +349,7 @@ class Integer(Socket):
         | Parameter | `operation` | `'ADD'` |
 
         Parameters
-        ---------
+        ----------
         value : Integer, optional
             socket 'Value' (id: Value_001)
         
@@ -372,7 +372,7 @@ class Integer(Socket):
         | Parameter | `operation` | `'SUBTRACT'` |
 
         Parameters
-        ---------
+        ----------
         value : Integer, optional
             socket 'Value' (id: Value_001)
         
@@ -395,7 +395,7 @@ class Integer(Socket):
         | Parameter | `operation` | `'MULTIPLY'` |
 
         Parameters
-        ---------
+        ----------
         value : Integer, optional
             socket 'Value' (id: Value_001)
         
@@ -418,7 +418,7 @@ class Integer(Socket):
         | Parameter | `operation` | `'DIVIDE'` |
 
         Parameters
-        ---------
+        ----------
         value : Integer, optional
             socket 'Value' (id: Value_001)
         
@@ -441,7 +441,7 @@ class Integer(Socket):
         | Parameter | `operation` | `'MULTIPLY_ADD'` |
 
         Parameters
-        ---------
+        ----------
         multiplier : Integer, optional
             socket 'Multiplier' (id: Value_001)
         
@@ -501,7 +501,7 @@ class Integer(Socket):
         | Parameter | `operation` | `'POWER'` |
 
         Parameters
-        ---------
+        ----------
         exponent : Integer, optional
             socket 'Exponent' (id: Value_001)
         
@@ -524,7 +524,7 @@ class Integer(Socket):
         | Parameter | `operation` | `'MINIMUM'` |
 
         Parameters
-        ---------
+        ----------
         value : Integer, optional
             socket 'Value' (id: Value_001)
         
@@ -547,7 +547,7 @@ class Integer(Socket):
         | Parameter | `operation` | `'MAXIMUM'` |
 
         Parameters
-        ---------
+        ----------
         value : Integer, optional
             socket 'Value' (id: Value_001)
         
@@ -587,7 +587,7 @@ class Integer(Socket):
         | Parameter | `operation` | `'DIVIDE_ROUND'` |
 
         Parameters
-        ---------
+        ----------
         value : Integer, optional
             socket 'Value' (id: Value_001)
         
@@ -610,7 +610,7 @@ class Integer(Socket):
         | Parameter | `operation` | `'DIVIDE_FLOOR'` |
 
         Parameters
-        ---------
+        ----------
         value : Integer, optional
             socket 'Value' (id: Value_001)
         
@@ -633,7 +633,7 @@ class Integer(Socket):
         | Parameter | `operation` | `'DIVIDE_CEIL'` |
 
         Parameters
-        ---------
+        ----------
         value : Integer, optional
             socket 'Value' (id: Value_001)
         
@@ -656,7 +656,7 @@ class Integer(Socket):
         | Parameter | `operation` | `'FLOORED_MODULO'` |
 
         Parameters
-        ---------
+        ----------
         value : Integer, optional
             socket 'Value' (id: Value_001)
         
@@ -679,7 +679,7 @@ class Integer(Socket):
         | Parameter | `operation` | `'MODULO'` |
 
         Parameters
-        ---------
+        ----------
         value : Integer, optional
             socket 'Value' (id: Value_001)
         
@@ -702,7 +702,7 @@ class Integer(Socket):
         | Parameter | `operation` | `'GCD'` |
 
         Parameters
-        ---------
+        ----------
         value : Integer, optional
             socket 'Value' (id: Value_001)
         
@@ -725,7 +725,7 @@ class Integer(Socket):
         | Parameter | `operation` | `'LCM'` |
 
         Parameters
-        ---------
+        ----------
         value : Integer, optional
             socket 'Value' (id: Value_001)
         
@@ -752,7 +752,7 @@ class Integer(Socket):
         | Parameter | `data_type` | `'INT'` |
 
         Parameters
-        ---------
+        ----------
         min : Integer, optional
             socket 'Min' (id: Min_002)
         
@@ -801,7 +801,7 @@ class Integer(Socket):
         | Parameter | `data_type` | `'INT'` |
 
         Parameters
-        ---------
+        ----------
         iterations : Integer, optional
             socket 'Iterations' (id: Iterations)
         
@@ -827,7 +827,7 @@ class Integer(Socket):
         | Parameter | `data_type` | `'INT'` |
 
         Parameters
-        ---------
+        ----------
         name : String, optional
             socket 'Name' (id: Name)
         
@@ -850,7 +850,7 @@ class Integer(Socket):
         | Parameter | `data_type` | `'INT'` |
 
         Parameters
-        ---------
+        ----------
         name : String, optional
             socket 'Name' (id: Name)
         
@@ -875,7 +875,7 @@ class Integer(Socket):
         | Parameter | `data_type` | `'INT'` |
 
         Parameters
-        ---------
+        ----------
         position : Vector, optional
             socket 'Position' (id: Position)
         
@@ -901,7 +901,7 @@ class Integer(Socket):
         | Parameter | `data_type` | `'INT'` |
 
         Parameters
-        ---------
+        ----------
         x : Integer, optional
             socket 'X' (id: X)
         
@@ -929,6 +929,14 @@ class Integer(Socket):
         | Socket    | Topology    | `self`  |
         | Parameter | `data_type` | `'INT'` |
 
+        Parameters
+        ----------
+        named_sockets : dict, default={}
+            Sockets created with string names
+        
+        sockets : dict, default={}
+            Socket created with python name attributes
+
         Returns
         -------
         None
@@ -951,7 +959,7 @@ class Integer(Socket):
         | Parameter | `data_type` | `'INT'` |
 
         Parameters
-        ---------
+        ----------
         velocity : Vector, optional
             socket 'Velocity' (id: Velocity)
         
@@ -985,7 +993,7 @@ class Integer(Socket):
         | Parameter | `data_type` | `'INT'` |
 
         Parameters
-        ---------
+        ----------
         mode : menu='Threshold', optional
             ('Inactive', 'Threshold', 'SDF')
         
@@ -1041,7 +1049,7 @@ class Integer(Socket):
         | Parameter | `data_type` | `'INT'` |
 
         Parameters
-        ---------
+        ----------
         background : Integer, optional
             socket 'Background' (id: Background)
         
@@ -1067,7 +1075,7 @@ class Integer(Socket):
         | Parameter | `data_type` | `'INT'` |
 
         Parameters
-        ---------
+        ----------
         transform : Matrix, optional
             socket 'Transform' (id: Transform)
         
@@ -1111,7 +1119,7 @@ class Integer(Socket):
         | Parameter | `data_type` | `'INT'` |
 
         Parameters
-        ---------
+        ----------
         enable : Boolean, optional
             socket 'Enable' (id: Enable)
         
@@ -1140,7 +1148,7 @@ class Integer(Socket):
         | Parameter | `data_type` | `'INT'` |
 
         Parameters
-        ---------
+        ----------
         min_x : Integer, optional
             socket 'Min X' (id: Min X)
         
@@ -1181,7 +1189,7 @@ class Integer(Socket):
         | Parameter | `data_type` | `'INT'` |
 
         Parameters
-        ---------
+        ----------
         connectivity : menu='Face', optional
             ('Face', 'Edge', 'Vertex')
         
@@ -1210,7 +1218,7 @@ class Integer(Socket):
         | Parameter | `data_type` | `'INT'` |
 
         Parameters
-        ---------
+        ----------
         width : Integer, optional
             socket 'Width' (id: Width)
         
@@ -1236,7 +1244,7 @@ class Integer(Socket):
         | Parameter | `data_type` | `'INT'` |
 
         Parameters
-        ---------
+        ----------
         width : Integer, optional
             socket 'Width' (id: Width)
         
@@ -1290,25 +1298,51 @@ class Integer(Socket):
 
         New <#Integer> input with subtype 'NONE'.
 
-        Aguments
-        --------
-        - value  (object = 0) : Default value
-        - name  (str = 'Integer') : Input socket name
-        - min  (int = -2147483648) : Property min_value
-        - max  (int = 2147483647) : Property max_value
-        - tip  (str = '') : Property description
-        - panel (str = "") : Panel name
-        - optional_label  (bool = False) : Property optional_label
-        - hide_value  (bool = False) : Property hide_value
-        - hide_in_modifier  (bool = False) : Property hide_in_modifier
-        - default_attribute  (str = '') : Property default_attribute_name
-        - default_input  (str = 'VALUE') : Property default_input in ('VALUE', 'INDEX', 'ID_OR_INDEX')
-        - shape  (str = 'AUTO') : Property structure_type in ('AUTO', 'SINGLE')
-        - subtype (str = 'NONE') : Socket sub type in ('NONE', 'PERCENTAGE', 'FACTOR')
+        Parameters
+        ----------
+        value : object, default=`0`
+            Default value
+
+        name : str, default=`Integer`
+            Input socket name
+
+        min : int, default=`-2147483648`
+            Property min_value
+
+        max : int, default=`2147483647`
+            Property max_value
+
+        tip : str, default=`''`
+            Property description
+
+        panel : str, default=``
+            Panel name
+
+        optional_label : bool, default=`False`
+            Property optional_label
+
+        hide_value : bool, default=`False`
+            Property hide_value
+
+        hide_in_modifier : bool, default=`False`
+            Property hide_in_modifier
+
+        default_attribute : str, default=`''`
+            Property default_attribute_name
+
+        default_input : str, default=`'VALUE'`
+            Property default_input in ('VALUE', 'INDEX', 'ID_OR_INDEX')
+
+        shape : str, default=`'AUTO'`
+            Property structure_type in ('AUTO', 'SINGLE')
+
+        subtype : str, default=`NONE`
+            Socket sub type in ('NONE', 'PERCENTAGE', 'FACTOR')
+
 
         Returns
         -------
-        - Integer
+        Integer
         """
         from ..treeclass import Tree
 
@@ -1338,24 +1372,48 @@ class Integer(Socket):
 
         New <#Integer> input with subtype 'PERCENTAGE'.
 
-        Aguments
-        --------
-        - value  (object = 0) : Default value
-        - name  (str = 'Percentage') : Input socket name
-        - min  (int = -2147483648) : Property min_value
-        - max  (int = 2147483647) : Property max_value
-        - tip  (str = '') : Property description
-        - panel (str = "") : Panel name
-        - optional_label  (bool = False) : Property optional_label
-        - hide_value  (bool = False) : Property hide_value
-        - hide_in_modifier  (bool = False) : Property hide_in_modifier
-        - default_attribute  (str = '') : Property default_attribute_name
-        - default_input  (str = 'VALUE') : Property default_input in ('VALUE', 'INDEX', 'ID_OR_INDEX')
-        - shape  (str = 'AUTO') : Property structure_type in ('AUTO', 'SINGLE')
+        Parameters
+        ----------
+        value : object, default=`0`
+            Default value
+
+        name : str, default=`Percentage`
+            Input socket name
+
+        min : int, default=`-2147483648`
+            Property min_value
+
+        max : int, default=`2147483647`
+            Property max_value
+
+        tip : str, default=`''`
+            Property description
+
+        panel : str, default=``
+            Panel name
+
+        optional_label : bool, default=`False`
+            Property optional_label
+
+        hide_value : bool, default=`False`
+            Property hide_value
+
+        hide_in_modifier : bool, default=`False`
+            Property hide_in_modifier
+
+        default_attribute : str, default=`''`
+            Property default_attribute_name
+
+        default_input : str, default=`'VALUE'`
+            Property default_input in ('VALUE', 'INDEX', 'ID_OR_INDEX')
+
+        shape : str, default=`'AUTO'`
+            Property structure_type in ('AUTO', 'SINGLE')
+
 
         Returns
         -------
-        - Integer
+        Integer
         """
         return cls(value=value, name=name, min=min, max=max, tip=tip, panel=panel,
             optional_label=optional_label, hide_value=hide_value, hide_in_modifier=hide_in_modifier,
@@ -1380,24 +1438,48 @@ class Integer(Socket):
 
         New <#Integer> input with subtype 'FACTOR'.
 
-        Aguments
-        --------
-        - value  (object = 0) : Default value
-        - name  (str = 'Factor') : Input socket name
-        - min  (int = -2147483648) : Property min_value
-        - max  (int = 2147483647) : Property max_value
-        - tip  (str = '') : Property description
-        - panel (str = "") : Panel name
-        - optional_label  (bool = False) : Property optional_label
-        - hide_value  (bool = False) : Property hide_value
-        - hide_in_modifier  (bool = False) : Property hide_in_modifier
-        - default_attribute  (str = '') : Property default_attribute_name
-        - default_input  (str = 'VALUE') : Property default_input in ('VALUE', 'INDEX', 'ID_OR_INDEX')
-        - shape  (str = 'AUTO') : Property structure_type in ('AUTO', 'SINGLE')
+        Parameters
+        ----------
+        value : object, default=`0`
+            Default value
+
+        name : str, default=`Factor`
+            Input socket name
+
+        min : int, default=`-2147483648`
+            Property min_value
+
+        max : int, default=`2147483647`
+            Property max_value
+
+        tip : str, default=`''`
+            Property description
+
+        panel : str, default=``
+            Panel name
+
+        optional_label : bool, default=`False`
+            Property optional_label
+
+        hide_value : bool, default=`False`
+            Property hide_value
+
+        hide_in_modifier : bool, default=`False`
+            Property hide_in_modifier
+
+        default_attribute : str, default=`''`
+            Property default_attribute_name
+
+        default_input : str, default=`'VALUE'`
+            Property default_input in ('VALUE', 'INDEX', 'ID_OR_INDEX')
+
+        shape : str, default=`'AUTO'`
+            Property structure_type in ('AUTO', 'SINGLE')
+
 
         Returns
         -------
-        - Integer
+        Integer
         """
         return cls(value=value, name=name, min=min, max=max, tip=tip, panel=panel,
             optional_label=optional_label, hide_value=hide_value, hide_in_modifier=hide_in_modifier,

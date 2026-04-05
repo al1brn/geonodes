@@ -1,4 +1,4 @@
-# Generated 2026-04-04 12:37:35
+# Generated 2026-04-04 17:31:31
 
 from __future__ import annotations
 from .. sockettype import SocketType
@@ -58,7 +58,7 @@ class GreasePencil:
         | Socket | Selection     | `self[selection]` |
 
         Parameters
-        ---------
+        ----------
         layers_as_instances : Boolean, optional
             socket 'Layers as Instances' (id: Layers as Instances)
         
@@ -75,7 +75,7 @@ class GreasePencil:
         """ > Node <&Node Named Layer Selection>
 
         Parameters
-        ---------
+        ----------
         name : String, optional
             socket 'Name' (id: Name)
         
@@ -122,7 +122,7 @@ class GreasePencil:
         | Parameter | `mode`        | `'MERGE_BY_ID'`   |
 
         Parameters
-        ---------
+        ----------
         group_id : Integer, optional
             socket 'Group ID' (id: Group ID)
         
@@ -148,8 +148,10 @@ class GreasePencil:
         | Socket | Selection     | `self[selection]` |
 
         Parameters
-        ---------
-        mode (str): parameter 'mode' in ('By Name', 'By Group ID')
+        ----------
+        mode : Literal['By Name', 'By Group ID']
+            parameter `mode`
+        
 
         Returns
         -------
@@ -174,7 +176,7 @@ class GreasePencil:
         | Parameter | `mode`        | `'STROKE'`        |
 
         Parameters
-        ---------
+        ----------
         color : Color, optional
             socket 'Color' (id: Color)
         
@@ -204,7 +206,7 @@ class GreasePencil:
         | Parameter | `mode`        | `'FILL'`          |
 
         Parameters
-        ---------
+        ----------
         color : Color, optional
             socket 'Color' (id: Color)
         
@@ -236,14 +238,16 @@ class GreasePencil:
         | Socket | Selection     | `self[selection]` |
 
         Parameters
-        ---------
+        ----------
         color : Color, optional
             socket 'Color' (id: Color)
         
         opacity : Float, optional
             socket 'Opacity' (id: Opacity)
         
-        mode (str): parameter 'mode' in ('Stroke', 'Fill')
+        mode : Literal['Stroke', 'Fill']
+            parameter `mode`
+        
 
         Returns
         -------
@@ -266,8 +270,10 @@ class GreasePencil:
         | Socket | Grease Pencil | `self` |
 
         Parameters
-        ---------
-        depth_order (str): parameter 'depth_order' in ('2D Layers', '3D Location')
+        ----------
+        depth_order : Literal['2D Layers', '3D Location']
+            parameter `depth_order`
+        
 
         Returns
         -------
@@ -291,7 +297,7 @@ class GreasePencil:
         | Socket | Selection     | `self[selection]` |
 
         Parameters
-        ---------
+        ----------
         softness : Float, optional
             socket 'Softness' (id: Softness)
         
@@ -326,7 +332,7 @@ class GreasePencil:
         | Parameter | `mode`        | `'STROKE'`        |
 
         Parameters
-        ---------
+        ----------
         color : Color, optional
             socket 'Color' (id: Color)
         
@@ -361,7 +367,7 @@ class GreasePencil:
         | Parameter | `mode`        | `'FILL'`          |
 
         Parameters
-        ---------
+        ----------
         color : Color, optional
             socket 'Color' (id: Color)
         
@@ -393,8 +399,10 @@ class GreasePencil:
         | Socket | Grease Pencil | `self` |
 
         Parameters
-        ---------
-        depth_order (str): parameter 'depth_order' in ('2D Layers', '3D Location')
+        ----------
+        depth_order : Literal['2D Layers', '3D Location']
+            parameter `depth_order`
+        
 
         Returns
         -------
@@ -425,7 +433,7 @@ class GreasePencil:
         | Socket | Selection     | `self[selection]` |
 
         Parameters
-        ---------
+        ----------
         softness : Float, optional
             socket 'Softness' (id: Softness)
         

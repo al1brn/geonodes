@@ -1,4 +1,4 @@
-# Generated 2026-04-04 12:37:35
+# Generated 2026-04-04 17:31:31
 
 from __future__ import annotations
 from .. sockettype import SocketType
@@ -42,7 +42,7 @@ class Face:
         | Parameter | `domain`    | `'FACE'`          |
 
         Parameters
-        ---------
+        ----------
         value : Float | Integer | Vector | Matrix, optional
             socket 'Value' (id: Value)
         
@@ -73,7 +73,7 @@ class Face:
         | Parameter | `domain`    | `'FACE'`              |
 
         Parameters
-        ---------
+        ----------
         attribute : Float | Vector, optional
             socket 'Attribute' (id: Attribute)
         
@@ -102,14 +102,16 @@ class Face:
         | Parameter | `data_type` | from `value` type |
 
         Parameters
-        ---------
+        ----------
         value : Float | Vector, optional
             socket 'Value' (id: Value)
         
         group_id : Integer, optional
             socket 'Group ID' (id: Group Index)
         
-        domain (str): parameter 'domain' in ('Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer')
+        domain : Literal['Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer']
+            parameter `domain`
+        
 
         Returns
         -------
@@ -136,14 +138,16 @@ class Face:
         | Parameter | `data_type` | from `value` type |
 
         Parameters
-        ---------
+        ----------
         value : Float | Integer | Vector, optional
             socket 'Value' (id: Value)
         
         group_id : Integer, optional
             socket 'Group ID' (id: Group Index)
         
-        domain (str): parameter 'domain' in ('Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer')
+        domain : Literal['Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer']
+            parameter `domain`
+        
 
         Returns
         -------
@@ -170,14 +174,16 @@ class Face:
         | Parameter | `data_type` | from `value` type |
 
         Parameters
-        ---------
+        ----------
         value : Float | Vector, optional
             socket 'Value' (id: Value)
         
         group_id : Integer, optional
             socket 'Group ID' (id: Group Index)
         
-        domain (str): parameter 'domain' in ('Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer')
+        domain : Literal['Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer']
+            parameter `domain`
+        
 
         Returns
         -------
@@ -198,7 +204,7 @@ class Face:
         """ > Node <&Node Corners of Face>
 
         Parameters
-        ---------
+        ----------
         face_index : Integer, optional
             socket 'Face Index' (id: Face Index)
         
@@ -226,7 +232,7 @@ class Face:
         """ > Node <&Node Corners of Face>
 
         Parameters
-        ---------
+        ----------
         face_index : Integer, optional
             socket 'Face Index' (id: Face Index)
         
@@ -252,7 +258,7 @@ class Face:
         """ > Node <&Node Corners of Face>
 
         Parameters
-        ---------
+        ----------
         face_index : Integer, optional
             socket 'Face Index' (id: Face Index)
         
@@ -350,8 +356,10 @@ class Face:
         | Parameter | `domain`  | `'FACE'`          |
 
         Parameters
-        ---------
-        mode (str): parameter 'mode' in ('All', 'Only Edges & Faces', 'Only Faces')
+        ----------
+        mode : Literal['All', 'Only Edges & Faces', 'Only Faces']
+            parameter `mode`
+        
 
         Returns
         -------
@@ -442,8 +450,10 @@ class Face:
         | Parameter | `domain`  | `'FACE'`          |
 
         Parameters
-        ---------
-        mode (str): parameter 'mode' in ('All', 'Only Edges & Faces', 'Only Faces')
+        ----------
+        mode : Literal['All', 'Only Edges & Faces', 'Only Faces']
+            parameter `mode`
+        
 
         Returns
         -------
@@ -468,14 +478,16 @@ class Face:
         | Socket | Selection | `self[selection]` |
 
         Parameters
-        ---------
+        ----------
         density : Float, optional
             socket 'Density' (id: Density)
         
         seed : Integer, optional
             socket 'Seed' (id: Seed)
         
-        distribute_method (str): parameter 'distribute_method' in ('Random', 'Poisson Disk')
+        distribute_method : Literal['Random', 'Poisson Disk']
+            parameter `distribute_method`
+        
 
         Returns
         -------
@@ -499,7 +511,7 @@ class Face:
         | Parameter | `distribute_method` | `'RANDOM'`        |
 
         Parameters
-        ---------
+        ----------
         density : Float, optional
             socket 'Density' (id: Density)
         
@@ -532,7 +544,7 @@ class Face:
         | Parameter | `distribute_method` | `'POISSON'`       |
 
         Parameters
-        ---------
+        ----------
         distance_min : Float, optional
             socket 'Distance Min' (id: Distance Min)
         
@@ -569,7 +581,7 @@ class Face:
         | Parameter | `domain`  | `'FACE'`          |
 
         Parameters
-        ---------
+        ----------
         amount : Integer, optional
             socket 'Amount' (id: Amount)
         
@@ -601,7 +613,7 @@ class Face:
         | Parameter | `mode`    | `'FACES'`         |
 
         Parameters
-        ---------
+        ----------
         offset : Vector, optional
             socket 'Offset' (id: Offset)
         
@@ -636,7 +648,7 @@ class Face:
         | Parameter | `domain`    | `'FACE'`          |
 
         Parameters
-        ---------
+        ----------
         value : Float | Integer | Boolean | Vector | Color | Rotation | Matrix, optional
             socket 'Value' (id: Value)
         
@@ -665,7 +677,7 @@ class Face:
         | Parameter | `domain`    | `'FACE'`          |
 
         Parameters
-        ---------
+        ----------
         value : Float | Integer | Boolean | Vector | Color | Rotation | Matrix, optional
             socket 'Value' (id: Value)
         
@@ -694,7 +706,7 @@ class Face:
         """ > Node <&Node Is Face Planar>
 
         Parameters
-        ---------
+        ----------
         threshold : Float, optional
             socket 'Threshold' (id: Threshold)
         
@@ -753,7 +765,7 @@ class Face:
         | Parameter | `mode`    | `'FACES'`         |
 
         Parameters
-        ---------
+        ----------
         position : Vector, optional
             socket 'Position' (id: Position)
         
@@ -783,14 +795,16 @@ class Face:
         | Parameter | `domain`    | `'FACE'`          |
 
         Parameters
-        ---------
+        ----------
         value : Float | Integer | Boolean | Vector | Color | Rotation | Matrix, optional
             socket 'Value' (id: Value)
         
         index : Integer, optional
             socket 'Index' (id: Index)
         
-        clamp (bool): parameter 'clamp'
+        clamp : bool
+            parameter `clamp`
+        
 
         Returns
         -------
@@ -811,7 +825,7 @@ class Face:
         | Parameter | `domain` | `'FACE'` |
 
         Parameters
-        ---------
+        ----------
         sample_position : Vector, optional
             socket 'Sample Position' (id: Sample Position)
         
@@ -841,7 +855,7 @@ class Face:
         | Parameter | `domain`  | `'FACE'`          |
 
         Parameters
-        ---------
+        ----------
         scale : Float, optional
             socket 'Scale' (id: Scale)
         
@@ -898,7 +912,7 @@ class Face:
         | Parameter | `domain`  | `'FACE'`          |
 
         Parameters
-        ---------
+        ----------
         shade_smooth : Boolean, optional
             socket 'Shade Smooth' (id: Shade Smooth)
         
@@ -925,7 +939,7 @@ class Face:
         | Parameter | `domain`  | `'FACE'`          |
 
         Parameters
-        ---------
+        ----------
         group_id : Integer, optional
             socket 'Group ID' (id: Group ID)
         
@@ -953,7 +967,7 @@ class Face:
         | Parameter | `domain`  | `'FACE'`          |
 
         Parameters
-        ---------
+        ----------
         group_id : Integer, optional
             socket 'Group ID' (id: Group ID)
         
@@ -984,7 +998,7 @@ class Face:
         | Parameter | `domain`    | `'FACE'`          |
 
         Parameters
-        ---------
+        ----------
         name : String, optional
             socket 'Name' (id: Name)
         
@@ -1018,7 +1032,7 @@ class Face:
         | Parameter | `domain`    | `'FACE'`          |
 
         Parameters
-        ---------
+        ----------
         name : String, optional
             socket 'Name' (id: Name)
         
@@ -1088,8 +1102,15 @@ class Face:
         | Parameter | `domain` | `'FACE'` |
 
         Parameters
-        ---------
-        ui_shortcut (int): parameter 'ui_shortcut'
+        ----------
+        named_sockets : dict, default={}
+            Sockets created with string names
+        
+        ui_shortcut : int
+            parameter `ui_shortcut`
+        
+        sockets : dict, default={}
+            Socket created with python name attributes
 
         """
         node = Node('Viewer', named_sockets, domain='FACE', ui_shortcut=ui_shortcut, **sockets)
@@ -1115,7 +1136,7 @@ class Face:
         | Socket | Selection | `self[selection]` |
 
         Parameters
-        ---------
+        ----------
         material : Material, optional
             socket 'Material' (id: Material)
         
@@ -1148,7 +1169,7 @@ class Face:
         | Socket | Selection | `self[selection]` |
 
         Parameters
-        ---------
+        ----------
         material_index : Integer, optional
             socket 'Material Index' (id: Material Index)
         
@@ -1182,7 +1203,7 @@ class Face:
         | Parameter | `domain`  | `'FACE'`          |
 
         Parameters
-        ---------
+        ----------
         shade_smooth : Boolean, optional
             socket 'Shade Smooth' (id: Shade Smooth)
         
@@ -1216,7 +1237,7 @@ class Face:
         | Parameter | `domain`  | `'FACE'`          |
 
         Parameters
-        ---------
+        ----------
         shade_smooth : Boolean, optional
             socket 'Shade Smooth' (id: Shade Smooth)
         
@@ -1250,7 +1271,7 @@ class Face:
         | Parameter | `mode`   | `'FREE'` |
 
         Parameters
-        ---------
+        ----------
         custom_normal : Vector, optional
             socket 'Custom Normal' (id: Custom Normal)
         

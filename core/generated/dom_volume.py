@@ -1,4 +1,4 @@
-# Generated 2026-04-04 12:37:35
+# Generated 2026-04-04 17:31:31
 
 from __future__ import annotations
 from .. sockettype import SocketType
@@ -45,7 +45,7 @@ class Volume:
         | Socket | Volume | `self` |
 
         Parameters
-        ---------
+        ----------
         mode : menu='Random', optional
             ('Random', 'Grid')
         
@@ -74,7 +74,7 @@ class Volume:
         """ > Node <&Node Import VDB>
 
         Parameters
-        ---------
+        ----------
         path : String, optional
             socket 'Path' (id: Path)
         
@@ -98,7 +98,7 @@ class Volume:
         """ > Node <&Node Volume Cube>
 
         Parameters
-        ---------
+        ----------
         density : Float, optional
             socket 'Density' (id: Density)
         
@@ -143,7 +143,7 @@ class Volume:
         | Socket | Volume | `self` |
 
         Parameters
-        ---------
+        ----------
         resolution_mode : menu='Grid', optional
             ('Grid', 'Amount', 'Size')
         
@@ -180,7 +180,7 @@ class Volume:
         | Parameter | `data_type` | from `grid` type |
 
         Parameters
-        ---------
+        ----------
         name : String, optional
             socket 'Name' (id: Name)
         
@@ -212,14 +212,16 @@ class Volume:
         | Socket | Volume | `self` |
 
         Parameters
-        ---------
+        ----------
         name : String, optional
             socket 'Name' (id: Name)
         
         remove : Boolean, optional
             socket 'Remove' (id: Remove)
         
-        data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector')
+        data_type : Literal['Float', 'Integer', 'Boolean', 'Vector']
+            parameter `data_type`
+        
 
         Returns
         -------

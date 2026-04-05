@@ -1,4 +1,4 @@
-# Generated 2026-04-04 12:37:35
+# Generated 2026-04-04 17:31:31
 
 from __future__ import annotations
 from .. sockettype import SocketType
@@ -45,9 +45,18 @@ class SND:
         """ > Node <&ShaderNode Menu Switch>
 
         Parameters
-        ---------
-        Default selection
-        data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Menu', 'Shader', 'Bundle', 'Closure')
+        ----------
+        named_sockets : dict, default={}
+            Sockets created with string names
+        
+        menu : Menu, optional
+            Menu selection
+        
+        data_type : Literal['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Menu', 'Shader', 'Bundle', 'Closure']
+            parameter `data_type`
+        
+        sockets : dict, default={}
+            Socket created with python name attributes
 
         Returns
         -------
@@ -63,7 +72,7 @@ class SND:
         """ > Node <&ShaderNode Repeat Input>
 
         Parameters
-        ---------
+        ----------
         iterations : Integer, optional
             socket 'Iterations' (id: Iterations)
         
@@ -80,8 +89,10 @@ class SND:
         """ > Node <&ShaderNode Repeat Output>
 
         Parameters
-        ---------
-        inspection_index (int): parameter 'inspection_index'
+        ----------
+        inspection_index : int
+            parameter `inspection_index`
+        
 
         Returns
         -------
@@ -106,10 +117,16 @@ class SND:
         """ > Node <&ShaderNode Closure Output>
 
         Parameters
-        ---------
-        active_input_index (int): parameter 'active_input_index'
-        active_output_index (int): parameter 'active_output_index'
-        define_signature (bool): parameter 'define_signature'
+        ----------
+        active_input_index : int
+            parameter `active_input_index`
+        
+        active_output_index : int
+            parameter `active_output_index`
+        
+        define_signature : bool
+            parameter `define_signature`
+        
 
         Returns
         -------
@@ -123,8 +140,15 @@ class SND:
         """ > Node <&ShaderNode Combine Bundle>
 
         Parameters
-        ---------
-        define_signature (bool): parameter 'define_signature'
+        ----------
+        named_sockets : dict, default={}
+            Sockets created with string names
+        
+        define_signature : bool
+            parameter `define_signature`
+        
+        sockets : dict, default={}
+            Socket created with python name attributes
 
         Returns
         -------
@@ -142,13 +166,19 @@ class SND:
         """ > Node <&ShaderNode Evaluate Closure>
 
         Parameters
-        ---------
+        ----------
         closure : Closure, optional
             socket 'Closure' (id: Closure)
         
-        active_input_index (int): parameter 'active_input_index'
-        active_output_index (int): parameter 'active_output_index'
-        define_signature (bool): parameter 'define_signature'
+        active_input_index : int
+            parameter `active_input_index`
+        
+        active_output_index : int
+            parameter `active_output_index`
+        
+        define_signature : bool
+            parameter `define_signature`
+        
 
         Returns
         -------
@@ -162,10 +192,16 @@ class SND:
         """ > Node <&ShaderNode Frame>
 
         Parameters
-        ---------
-        label_size (int): parameter 'label_size'
-        shrink (bool): parameter 'shrink'
-        text (NoneType): parameter 'text'
+        ----------
+        label_size : int
+            parameter `label_size`
+        
+        shrink : bool
+            parameter `shrink`
+        
+        text : NoneType
+            parameter `text`
+        
 
         Returns
         -------
@@ -190,8 +226,10 @@ class SND:
         """ > Node <&ShaderNode Group Output>
 
         Parameters
-        ---------
-        is_active_output (bool): parameter 'is_active_output'
+        ----------
+        is_active_output : bool
+            parameter `is_active_output`
+        
 
         Returns
         -------
@@ -205,7 +243,7 @@ class SND:
         """ > Node <&ShaderNode Join Bundle>
 
         Parameters
-        ---------
+        ----------
         bundle : Bundle, optional
             socket 'Bundle' (id: Bundle)
         
@@ -222,11 +260,13 @@ class SND:
         """ > Node <&ShaderNode Reroute>
 
         Parameters
-        ---------
+        ----------
         input : Color, optional
             socket 'Input' (id: Input)
         
-        socket_idname (str): parameter 'socket_idname'
+        socket_idname : str
+            parameter `socket_idname`
+        
 
         Returns
         -------
@@ -244,11 +284,18 @@ class SND:
         """ > Node <&ShaderNode Separate Bundle>
 
         Parameters
-        ---------
+        ----------
+        named_sockets : dict, default={}
+            Sockets created with string names
+        
         bundle : Bundle, optional
             socket 'Bundle' (id: Bundle)
         
-        define_signature (bool): parameter 'define_signature'
+        define_signature : bool
+            parameter `define_signature`
+        
+        sockets : dict, default={}
+            Socket created with python name attributes
 
         Returns
         -------
@@ -262,7 +309,7 @@ class SND:
         """ > Node <&ShaderNode Add Shader>
 
         Parameters
-        ---------
+        ----------
         shader : Shader, optional
             socket 'Shader' (id: Shader)
         
@@ -288,7 +335,7 @@ class SND:
         """ > Node <&ShaderNode Ambient Occlusion>
 
         Parameters
-        ---------
+        ----------
         color : Color, optional
             socket 'Color' (id: Color)
         
@@ -298,9 +345,15 @@ class SND:
         normal : Vector, optional
             socket 'Normal' (id: Normal)
         
-        inside (bool): parameter 'inside'
-        only_local (bool): parameter 'only_local'
-        samples (int): parameter 'samples'
+        inside : bool
+            parameter `inside`
+        
+        only_local : bool
+            parameter `only_local`
+        
+        samples : int
+            parameter `samples`
+        
 
         Returns
         -------
@@ -318,9 +371,13 @@ class SND:
         """ > Node <&ShaderNode Attribute>
 
         Parameters
-        ---------
-        attribute_name (str): parameter 'attribute_name'
-        attribute_type (str): parameter 'attribute_type' in ('Geometry', 'Object', 'Instancer', 'View Layer')
+        ----------
+        attribute_name : str
+            parameter `attribute_name`
+        
+        attribute_type : Literal['Geometry', 'Object', 'Instancer', 'View Layer']
+            parameter `attribute_type`
+        
 
         Returns
         -------
@@ -337,7 +394,7 @@ class SND:
         """ > Node <&ShaderNode Background>
 
         Parameters
-        ---------
+        ----------
         color : Color, optional
             socket 'Color' (id: Color)
         
@@ -360,14 +417,16 @@ class SND:
         """ > Node <&ShaderNode Bevel>
 
         Parameters
-        ---------
+        ----------
         radius : Float, optional
             socket 'Radius' (id: Radius)
         
         normal : Vector, optional
             socket 'Normal' (id: Normal)
         
-        samples (int): parameter 'samples'
+        samples : int
+            parameter `samples`
+        
 
         Returns
         -------
@@ -381,7 +440,7 @@ class SND:
         """ > Node <&ShaderNode Blackbody>
 
         Parameters
-        ---------
+        ----------
         temperature : Float, optional
             socket 'Temperature' (id: Temperature)
         
@@ -398,7 +457,7 @@ class SND:
         """ > Node <&ShaderNode Brightness/Contrast>
 
         Parameters
-        ---------
+        ----------
         color : Color, optional
             socket 'Color' (id: Color)
         
@@ -429,7 +488,7 @@ class SND:
         """ > Node <&ShaderNode Glossy BSDF>
 
         Parameters
-        ---------
+        ----------
         color : Color, optional
             socket 'Color' (id: Color)
         
@@ -451,7 +510,9 @@ class SND:
         weight : Float, optional
             socket 'Weight' (id: Weight)
         
-        distribution (str): parameter 'distribution' in ('Beckmann', 'GGX', 'Ashikhmin-Shirley', 'Multiscatter GGX')
+        distribution : Literal['Beckmann', 'GGX', 'Ashikhmin-Shirley', 'Multiscatter GGX']
+            parameter `distribution`
+        
 
         Returns
         -------
@@ -470,7 +531,7 @@ class SND:
         """ > Node <&ShaderNode Diffuse BSDF>
 
         Parameters
-        ---------
+        ----------
         color : Color, optional
             socket 'Color' (id: Color)
         
@@ -504,7 +565,7 @@ class SND:
         """ > Node <&ShaderNode Glass BSDF>
 
         Parameters
-        ---------
+        ----------
         color : Color, optional
             socket 'Color' (id: Color)
         
@@ -526,7 +587,9 @@ class SND:
         thin_film_ior : Float, optional
             socket 'Thin Film IOR' (id: Thin Film IOR)
         
-        distribution (str): parameter 'distribution' in ('Beckmann', 'GGX', 'Multiscatter GGX')
+        distribution : Literal['Beckmann', 'GGX', 'Multiscatter GGX']
+            parameter `distribution`
+        
 
         Returns
         -------
@@ -548,7 +611,7 @@ class SND:
         """ > Node <&ShaderNode Hair BSDF>
 
         Parameters
-        ---------
+        ----------
         color : Color, optional
             socket 'Color' (id: Color)
         
@@ -567,7 +630,9 @@ class SND:
         weight : Float, optional
             socket 'Weight' (id: Weight)
         
-        component (str): parameter 'component' in ('Reflection', 'Transmission')
+        component : Literal['Reflection', 'Transmission']
+            parameter `component`
+        
 
         Returns
         -------
@@ -602,7 +667,7 @@ class SND:
         """ > Node <&ShaderNode Principled Hair BSDF>
 
         Parameters
-        ---------
+        ----------
         color : Color, optional
             socket 'Color' (id: Color)
         
@@ -657,8 +722,12 @@ class SND:
         secondary_reflection : Float, optional
             socket 'Secondary Reflection' (id: TRT lobe)
         
-        model (str): parameter 'model' in ('Chiang', 'Huang')
-        parametrization (str): parameter 'parametrization' in ('Absorption Coefficient', 'Melanin Concentration', 'Direct Coloring')
+        model : Literal['Chiang', 'Huang']
+            parameter `model`
+        
+        parametrization : Literal['Absorption Coefficient', 'Melanin Concentration', 'Direct Coloring']
+            parameter `parametrization`
+        
 
         Returns
         -------
@@ -688,7 +757,7 @@ class SND:
         """ > Node <&ShaderNode Metallic BSDF>
 
         Parameters
-        ---------
+        ----------
         base_color : Color, optional
             socket 'Base Color' (id: Base Color)
         
@@ -725,8 +794,12 @@ class SND:
         thin_film_ior : Float, optional
             socket 'Thin Film IOR' (id: Thin Film IOR)
         
-        distribution (str): parameter 'distribution' in ('Beckmann', 'GGX', 'Multiscatter GGX')
-        fresnel_type (str): parameter 'fresnel_type' in ('Physical Conductor', 'F82 Tint')
+        distribution : Literal['Beckmann', 'GGX', 'Multiscatter GGX']
+            parameter `distribution`
+        
+        fresnel_type : Literal['Physical Conductor', 'F82 Tint']
+            parameter `fresnel_type`
+        
 
         Returns
         -------
@@ -775,7 +848,7 @@ class SND:
         """ > Node <&ShaderNode Principled BSDF>
 
         Parameters
-        ---------
+        ----------
         base_color : Color, optional
             socket 'Base Color' (id: Base Color)
         
@@ -869,8 +942,12 @@ class SND:
         thin_film_ior : Float, optional
             socket 'Thin Film IOR' (id: Thin Film IOR)
         
-        distribution (str): parameter 'distribution' in ('GGX', 'Multiscatter GGX')
-        subsurface_method (str): parameter 'subsurface_method' in ('Christensen-Burley', 'Random Walk', 'Random Walk (Skin)')
+        distribution : Literal['GGX', 'Multiscatter GGX']
+            parameter `distribution`
+        
+        subsurface_method : Literal['Christensen-Burley', 'Random Walk', 'Random Walk (Skin)']
+            parameter `subsurface_method`
+        
 
         Returns
         -------
@@ -890,7 +967,7 @@ class SND:
         """ > Node <&ShaderNode Ray Portal BSDF>
 
         Parameters
-        ---------
+        ----------
         color : Color, optional
             socket 'Color' (id: Color)
         
@@ -922,7 +999,7 @@ class SND:
         """ > Node <&ShaderNode Refraction BSDF>
 
         Parameters
-        ---------
+        ----------
         color : Color, optional
             socket 'Color' (id: Color)
         
@@ -938,7 +1015,9 @@ class SND:
         weight : Float, optional
             socket 'Weight' (id: Weight)
         
-        distribution (str): parameter 'distribution' in ('Beckmann', 'GGX')
+        distribution : Literal['Beckmann', 'GGX']
+            parameter `distribution`
+        
 
         Returns
         -------
@@ -958,7 +1037,7 @@ class SND:
         """ > Node <&ShaderNode Sheen BSDF>
 
         Parameters
-        ---------
+        ----------
         color : Color, optional
             socket 'Color' (id: Color)
         
@@ -971,7 +1050,9 @@ class SND:
         weight : Float, optional
             socket 'Weight' (id: Weight)
         
-        distribution (str): parameter 'distribution' in ('Ashikhmin', 'Microfiber')
+        distribution : Literal['Ashikhmin', 'Microfiber']
+            parameter `distribution`
+        
 
         Returns
         -------
@@ -992,7 +1073,7 @@ class SND:
         """ > Node <&ShaderNode Toon BSDF>
 
         Parameters
-        ---------
+        ----------
         color : Color, optional
             socket 'Color' (id: Color)
         
@@ -1008,7 +1089,9 @@ class SND:
         weight : Float, optional
             socket 'Weight' (id: Weight)
         
-        component (str): parameter 'component' in ('Diffuse', 'Glossy')
+        component : Literal['Diffuse', 'Glossy']
+            parameter `component`
+        
 
         Returns
         -------
@@ -1023,7 +1106,7 @@ class SND:
         """ > Node <&ShaderNode Translucent BSDF>
 
         Parameters
-        ---------
+        ----------
         color : Color, optional
             socket 'Color' (id: Color)
         
@@ -1046,7 +1129,7 @@ class SND:
         """ > Node <&ShaderNode Transparent BSDF>
 
         Parameters
-        ---------
+        ----------
         color : Color, optional
             socket 'Color' (id: Color)
         
@@ -1072,7 +1155,7 @@ class SND:
         """ > Node <&ShaderNode Bump>
 
         Parameters
-        ---------
+        ----------
         strength : Float, optional
             socket 'Strength' (id: Strength)
         
@@ -1088,7 +1171,9 @@ class SND:
         normal : Vector, optional
             socket 'Normal' (id: Normal)
         
-        invert (bool): parameter 'invert'
+        invert : bool
+            parameter `invert`
+        
 
         Returns
         -------
@@ -1119,7 +1204,7 @@ class SND:
         """ > Node <&ShaderNode Clamp>
 
         Parameters
-        ---------
+        ----------
         value : Float, optional
             socket 'Value' (id: Value)
         
@@ -1129,7 +1214,9 @@ class SND:
         max : Float, optional
             socket 'Max' (id: Max)
         
-        clamp_type (str): parameter 'clamp_type' in ('Min Max', 'Range')
+        clamp_type : Literal['Min Max', 'Range']
+            parameter `clamp_type`
+        
 
         Returns
         -------
@@ -1148,7 +1235,7 @@ class SND:
         """ > Node <&ShaderNode Combine Color>
 
         Parameters
-        ---------
+        ----------
         red : Float, optional
             socket 'Red' (id: Red)
         
@@ -1158,7 +1245,9 @@ class SND:
         blue : Float, optional
             socket 'Blue' (id: Blue)
         
-        mode (str): parameter 'mode' in ('RGB', 'HSV', 'HSL')
+        mode : Literal['RGB', 'HSV', 'HSL']
+            parameter `mode`
+        
 
         Returns
         -------
@@ -1173,7 +1262,7 @@ class SND:
         """ > Node <&ShaderNode Combine XYZ>
 
         Parameters
-        ---------
+        ----------
         x : Float, optional
             socket 'X' (id: X)
         
@@ -1201,7 +1290,7 @@ class SND:
         """ > Node <&ShaderNode Displacement>
 
         Parameters
-        ---------
+        ----------
         height : Float, optional
             socket 'Height' (id: Height)
         
@@ -1214,7 +1303,9 @@ class SND:
         normal : Vector, optional
             socket 'Normal' (id: Normal)
         
-        space (str): parameter 'space' in ('Object Space', 'World Space')
+        space : Literal['Object Space', 'World Space']
+            parameter `space`
+        
 
         Returns
         -------
@@ -1239,7 +1330,7 @@ class SND:
         """ > Node <&ShaderNode Specular BSDF>
 
         Parameters
-        ---------
+        ----------
         base_color : Color, optional
             socket 'Base Color' (id: Base Color)
         
@@ -1283,7 +1374,7 @@ class SND:
         """ > Node <&ShaderNode Emission>
 
         Parameters
-        ---------
+        ----------
         color : Color, optional
             socket 'Color' (id: Color)
         
@@ -1306,7 +1397,7 @@ class SND:
         """ > Node <&ShaderNode Float Curve>
 
         Parameters
-        ---------
+        ----------
         value : Float, optional
             socket 'Value' (id: Value)
         
@@ -1326,7 +1417,7 @@ class SND:
         """ > Node <&ShaderNode Fresnel>
 
         Parameters
-        ---------
+        ----------
         ior : Float, optional
             socket 'IOR' (id: IOR)
         
@@ -1346,7 +1437,7 @@ class SND:
         """ > Node <&ShaderNode Gamma>
 
         Parameters
-        ---------
+        ----------
         color : Color, optional
             socket 'Color' (id: Color)
         
@@ -1366,8 +1457,10 @@ class SND:
         """ > Node <&ShaderNode Group>
 
         Parameters
-        ---------
-        node_tree (NoneType): parameter 'node_tree'
+        ----------
+        node_tree : NoneType
+            parameter `node_tree`
+        
 
         Returns
         -------
@@ -1394,7 +1487,7 @@ class SND:
         """ > Node <&ShaderNode Holdout>
 
         Parameters
-        ---------
+        ----------
         weight : Float, optional
             socket 'Weight' (id: Weight)
         
@@ -1416,7 +1509,7 @@ class SND:
         """ > Node <&ShaderNode Hue/Saturation/Value>
 
         Parameters
-        ---------
+        ----------
         hue : Float, optional
             socket 'Hue' (id: Hue)
         
@@ -1445,7 +1538,7 @@ class SND:
         """ > Node <&ShaderNode Invert Color>
 
         Parameters
-        ---------
+        ----------
         color : Color, optional
             socket 'Color' (id: Color)
         
@@ -1465,7 +1558,7 @@ class SND:
         """ > Node <&ShaderNode Layer Weight>
 
         Parameters
-        ---------
+        ----------
         blend : Float, optional
             socket 'Blend' (id: Blend)
         
@@ -1487,7 +1580,7 @@ class SND:
         """ > Node <&ShaderNode Light Falloff>
 
         Parameters
-        ---------
+        ----------
         strength : Float, optional
             socket 'Strength' (id: Strength)
         
@@ -1537,7 +1630,7 @@ class SND:
         """ > Node <&ShaderNode Map Range>
 
         Parameters
-        ---------
+        ----------
         value : Float, optional
             socket 'Value' (id: Value)
         
@@ -1574,9 +1667,15 @@ class SND:
         steps_1 : Vector, optional
             socket 'Steps' (id: Steps_FLOAT3)
         
-        clamp (bool): parameter 'clamp'
-        data_type (str): parameter 'data_type' in ('Float', 'Vector')
-        interpolation_type (str): parameter 'interpolation_type' in ('Linear', 'Stepped Linear', 'Smooth Step', 'Smoother Step')
+        clamp : bool
+            parameter `clamp`
+        
+        data_type : Literal['Float', 'Vector']
+            parameter `data_type`
+        
+        interpolation_type : Literal['Linear', 'Stepped Linear', 'Smooth Step', 'Smoother Step']
+            parameter `interpolation_type`
+        
 
         Returns
         -------
@@ -1596,7 +1695,7 @@ class SND:
         """ > Node <&ShaderNode Mapping>
 
         Parameters
-        ---------
+        ----------
         vector : Vector, optional
             socket 'Vector' (id: Vector)
         
@@ -1609,7 +1708,9 @@ class SND:
         scale : Vector, optional
             socket 'Scale' (id: Scale)
         
-        vector_type (str): parameter 'vector_type' in ('Point', 'Texture', 'Vector', 'Normal')
+        vector_type : Literal['Point', 'Texture', 'Vector', 'Normal']
+            parameter `vector_type`
+        
 
         Returns
         -------
@@ -1629,7 +1730,7 @@ class SND:
         """ > Node <&ShaderNode Math>
 
         Parameters
-        ---------
+        ----------
         value : Float, optional
             socket 'Value' (id: Value)
         
@@ -1639,8 +1740,12 @@ class SND:
         value_2 : Float, optional
             socket 'Value' (id: Value_002)
         
-        operation (str): parameter 'operation' in ('Add', 'Subtract', 'Multiply', 'Divide', 'Multiply Add', 'Power', 'Logarithm', 'Square Root', 'Inverse Square Root', 'Absolute', 'Exponent', 'Minimum', 'Maximum', 'Less Than', 'Greater Than', 'Sign', 'Compare', 'Smooth Minimum', 'Smooth Maximum', 'Round', 'Floor', 'Ceil', 'Truncate', 'Fraction', 'Truncated Modulo', 'Floored Modulo', 'Wrap', 'Snap', 'Ping-Pong', 'Sine', 'Cosine', 'Tangent', 'Arcsine', 'Arccosine', 'Arctangent', 'Arctan2', 'Hyperbolic Sine', 'Hyperbolic Cosine', 'Hyperbolic Tangent', 'To Radians', 'To Degrees')
-        use_clamp (bool): parameter 'use_clamp'
+        operation : Literal['Add', 'Subtract', 'Multiply', 'Divide', 'Multiply Add', 'Power', 'Logarithm', 'Square Root', 'Inverse Square Root', 'Absolute', 'Exponent', 'Minimum', 'Maximum', 'Less Than', 'Greater Than', 'Sign', 'Compare', 'Smooth Minimum', 'Smooth Maximum', 'Round', 'Floor', 'Ceil', 'Truncate', 'Fraction', 'Truncated Modulo', 'Floored Modulo', 'Wrap', 'Snap', 'Ping-Pong', 'Sine', 'Cosine', 'Tangent', 'Arcsine', 'Arccosine', 'Arctangent', 'Arctan2', 'Hyperbolic Sine', 'Hyperbolic Cosine', 'Hyperbolic Tangent', 'To Radians', 'To Degrees']
+            parameter `operation`
+        
+        use_clamp : bool
+            parameter `use_clamp`
+        
 
         Returns
         -------
@@ -1669,7 +1774,7 @@ class SND:
         """ > Node <&ShaderNode Mix>
 
         Parameters
-        ---------
+        ----------
         a : Float, optional
             socket 'A' (id: A_Float)
         
@@ -1697,11 +1802,21 @@ class SND:
         factor : Vector, optional
             socket 'Factor' (id: Factor_Vector)
         
-        blend_type (str): parameter 'blend_type' in ('Mix', 'Darken', 'Multiply', 'Color Burn', 'Lighten', 'Screen', 'Color Dodge', 'Add', 'Overlay', 'Soft Light', 'Linear Light', 'Difference', 'Exclusion', 'Subtract', 'Divide', 'Hue', 'Saturation', 'Color', 'Value')
-        clamp_factor (bool): parameter 'clamp_factor'
-        clamp_result (bool): parameter 'clamp_result'
-        data_type (str): parameter 'data_type' in ('Float', 'Vector', 'Color')
-        factor_mode (str): parameter 'factor_mode' in ('Uniform', 'Non-Uniform')
+        blend_type : Literal['Mix', 'Darken', 'Multiply', 'Color Burn', 'Lighten', 'Screen', 'Color Dodge', 'Add', 'Overlay', 'Soft Light', 'Linear Light', 'Difference', 'Exclusion', 'Subtract', 'Divide', 'Hue', 'Saturation', 'Color', 'Value']
+            parameter `blend_type`
+        
+        clamp_factor : bool
+            parameter `clamp_factor`
+        
+        clamp_result : bool
+            parameter `clamp_result`
+        
+        data_type : Literal['Float', 'Vector', 'Color']
+            parameter `data_type`
+        
+        factor_mode : Literal['Uniform', 'Non-Uniform']
+            parameter `factor_mode`
+        
 
         Returns
         -------
@@ -1717,7 +1832,7 @@ class SND:
         """ > Node <&ShaderNode Mix Shader>
 
         Parameters
-        ---------
+        ----------
         shader : Shader, optional
             socket 'Shader' (id: Shader)
         
@@ -1753,7 +1868,7 @@ class SND:
         """ > Node <&ShaderNode Normal>
 
         Parameters
-        ---------
+        ----------
         normal : Vector, optional
             socket 'Normal' (id: Normal)
         
@@ -1778,17 +1893,25 @@ class SND:
         """ > Node <&ShaderNode Normal Map>
 
         Parameters
-        ---------
+        ----------
         strength : Float, optional
             socket 'Strength' (id: Strength)
         
         color : Color, optional
             socket 'Color' (id: Color)
         
-        base (str): parameter 'base' in ('Original Base', 'Displaced Base')
-        convention (str): parameter 'convention' in ('OpenGL', 'DirectX')
-        space (str): parameter 'space' in ('Tangent Space', 'Object Space', 'World Space', 'Blender Object Space', 'Blender World Space')
-        uv_map (str): parameter 'uv_map'
+        base : Literal['Original Base', 'Displaced Base']
+            parameter `base`
+        
+        convention : Literal['OpenGL', 'DirectX']
+            parameter `convention`
+        
+        space : Literal['Tangent Space', 'Object Space', 'World Space', 'Blender Object Space', 'Blender World Space']
+            parameter `space`
+        
+        uv_map : str
+            parameter `uv_map`
+        
 
         Returns
         -------
@@ -1818,14 +1941,16 @@ class SND:
         """ > Node <&ShaderNode AOV Output>
 
         Parameters
-        ---------
+        ----------
         color : Color, optional
             socket 'Color' (id: Color)
         
         value : Float, optional
             socket 'Value' (id: Value)
         
-        aov_name (str): parameter 'aov_name'
+        aov_name : str
+            parameter `aov_name`
+        
 
         Returns
         -------
@@ -1842,12 +1967,16 @@ class SND:
         """ > Node <&ShaderNode Light Output>
 
         Parameters
-        ---------
+        ----------
         surface : Shader, optional
             socket 'Surface' (id: Surface)
         
-        is_active_output (bool): parameter 'is_active_output'
-        target (str): parameter 'target' in ('All', 'EEVEE', 'Cycles')
+        is_active_output : bool
+            parameter `is_active_output`
+        
+        target : Literal['All', 'EEVEE', 'Cycles']
+            parameter `target`
+        
 
         Returns
         -------
@@ -1871,7 +2000,7 @@ class SND:
         """ > Node <&ShaderNode Line Style Output>
 
         Parameters
-        ---------
+        ----------
         color : Color, optional
             socket 'Color' (id: Color)
         
@@ -1884,11 +2013,21 @@ class SND:
         alpha_fac : Float, optional
             socket 'Alpha Fac' (id: Alpha Fac)
         
-        blend_type (str): parameter 'blend_type' in ('Mix', 'Darken', 'Multiply', 'Color Burn', 'Lighten', 'Screen', 'Color Dodge', 'Add', 'Overlay', 'Soft Light', 'Linear Light', 'Difference', 'Exclusion', 'Subtract', 'Divide', 'Hue', 'Saturation', 'Color', 'Value')
-        is_active_output (bool): parameter 'is_active_output'
-        target (str): parameter 'target' in ('All', 'EEVEE', 'Cycles')
-        use_alpha (bool): parameter 'use_alpha'
-        use_clamp (bool): parameter 'use_clamp'
+        blend_type : Literal['Mix', 'Darken', 'Multiply', 'Color Burn', 'Lighten', 'Screen', 'Color Dodge', 'Add', 'Overlay', 'Soft Light', 'Linear Light', 'Difference', 'Exclusion', 'Subtract', 'Divide', 'Hue', 'Saturation', 'Color', 'Value']
+            parameter `blend_type`
+        
+        is_active_output : bool
+            parameter `is_active_output`
+        
+        target : Literal['All', 'EEVEE', 'Cycles']
+            parameter `target`
+        
+        use_alpha : bool
+            parameter `use_alpha`
+        
+        use_clamp : bool
+            parameter `use_clamp`
+        
 
         Returns
         -------
@@ -1910,7 +2049,7 @@ class SND:
         """ > Node <&ShaderNode Material Output>
 
         Parameters
-        ---------
+        ----------
         surface : Shader, optional
             socket 'Surface' (id: Surface)
         
@@ -1923,8 +2062,12 @@ class SND:
         thickness : Float, optional
             socket 'Thickness' (id: Thickness)
         
-        is_active_output (bool): parameter 'is_active_output'
-        target (str): parameter 'target' in ('All', 'EEVEE', 'Cycles')
+        is_active_output : bool
+            parameter `is_active_output`
+        
+        target : Literal['All', 'EEVEE', 'Cycles']
+            parameter `target`
+        
 
         Returns
         -------
@@ -1943,15 +2086,19 @@ class SND:
         """ > Node <&ShaderNode World Output>
 
         Parameters
-        ---------
+        ----------
         surface : Shader, optional
             socket 'Surface' (id: Surface)
         
         volume : VolumeShader, optional
             socket 'Volume' (id: Volume)
         
-        is_active_output (bool): parameter 'is_active_output'
-        target (str): parameter 'target' in ('All', 'EEVEE', 'Cycles')
+        is_active_output : bool
+            parameter `is_active_output`
+        
+        target : Literal['All', 'EEVEE', 'Cycles']
+            parameter `target`
+        
 
         Returns
         -------
@@ -2003,7 +2150,7 @@ class SND:
         """ > Node <&ShaderNode RGB Curves>
 
         Parameters
-        ---------
+        ----------
         color : Color, optional
             socket 'Color' (id: Color)
         
@@ -2023,7 +2170,7 @@ class SND:
         """ > Node <&ShaderNode RGB to BW>
 
         Parameters
-        ---------
+        ----------
         color : Color, optional
             socket 'Color' (id: Color)
         
@@ -2044,7 +2191,7 @@ class SND:
         """ > Node <&ShaderNode Radial Tiling>
 
         Parameters
-        ---------
+        ----------
         vector : Vector, optional
             socket 'Vector' (id: Vector)
         
@@ -2054,7 +2201,9 @@ class SND:
         roundness : Float, optional
             socket 'Roundness' (id: Roundness)
         
-        normalize (bool): parameter 'normalize'
+        normalize : bool
+            parameter `normalize`
+        
 
         Returns
         -------
@@ -2074,7 +2223,7 @@ class SND:
         """ > Node <&ShaderNode Raycast>
 
         Parameters
-        ---------
+        ----------
         position : Vector, optional
             socket 'Position' (id: Position)
         
@@ -2084,7 +2233,9 @@ class SND:
         length : Float, optional
             socket 'Length' (id: Length)
         
-        only_local (bool): parameter 'only_local'
+        only_local : bool
+            parameter `only_local`
+        
 
         Returns
         -------
@@ -2106,13 +2257,25 @@ class SND:
         """ > Node <&ShaderNode Script>
 
         Parameters
-        ---------
-        bytecode (str): parameter 'bytecode'
-        bytecode_hash (str): parameter 'bytecode_hash'
-        filepath (str): parameter 'filepath'
-        mode (str): parameter 'mode' in ('Internal', 'External')
-        script (NoneType): parameter 'script'
-        use_auto_update (bool): parameter 'use_auto_update'
+        ----------
+        bytecode : str
+            parameter `bytecode`
+        
+        bytecode_hash : str
+            parameter `bytecode_hash`
+        
+        filepath : str
+            parameter `filepath`
+        
+        mode : Literal['Internal', 'External']
+            parameter `mode`
+        
+        script : NoneType
+            parameter `script`
+        
+        use_auto_update : bool
+            parameter `use_auto_update`
+        
 
         Returns
         -------
@@ -2127,11 +2290,13 @@ class SND:
         """ > Node <&ShaderNode Separate Color>
 
         Parameters
-        ---------
+        ----------
         color : Color, optional
             socket 'Color' (id: Color)
         
-        mode (str): parameter 'mode' in ('RGB', 'HSV', 'HSL')
+        mode : Literal['RGB', 'HSV', 'HSL']
+            parameter `mode`
+        
 
         Returns
         -------
@@ -2148,7 +2313,7 @@ class SND:
         """ > Node <&ShaderNode Separate XYZ>
 
         Parameters
-        ---------
+        ----------
         vector : Vector, optional
             socket 'Vector' (id: Vector)
         
@@ -2167,7 +2332,7 @@ class SND:
         """ > Node <&ShaderNode Shader to RGB>
 
         Parameters
-        ---------
+        ----------
         shader : Shader, optional
             socket 'Shader' (id: Shader)
         
@@ -2195,7 +2360,7 @@ class SND:
         """ > Node <&ShaderNode Subsurface Scattering>
 
         Parameters
-        ---------
+        ----------
         color : Color, optional
             socket 'Color' (id: Color)
         
@@ -2220,7 +2385,9 @@ class SND:
         weight : Float, optional
             socket 'Weight' (id: Weight)
         
-        falloff (str): parameter 'falloff' in ('Christensen-Burley', 'Random Walk', 'Random Walk (Skin)')
+        falloff : Literal['Christensen-Burley', 'Random Walk', 'Random Walk (Skin)']
+            parameter `falloff`
+        
 
         Returns
         -------
@@ -2238,10 +2405,16 @@ class SND:
         """ > Node <&ShaderNode Tangent>
 
         Parameters
-        ---------
-        axis (str): parameter 'axis' in ('X', 'Y', 'Z')
-        direction_type (str): parameter 'direction_type' in ('Radial', 'UV Map')
-        uv_map (str): parameter 'uv_map'
+        ----------
+        axis : Literal['X', 'Y', 'Z']
+            parameter `axis`
+        
+        direction_type : Literal['Radial', 'UV Map']
+            parameter `direction_type`
+        
+        uv_map : str
+            parameter `uv_map`
+        
 
         Returns
         -------
@@ -2271,7 +2444,7 @@ class SND:
         """ > Node <&ShaderNode Brick Texture>
 
         Parameters
-        ---------
+        ----------
         vector : Vector, optional
             socket 'Vector' (id: Vector)
         
@@ -2302,10 +2475,18 @@ class SND:
         row_height : Float, optional
             socket 'Row Height' (id: Row Height)
         
-        offset (float): parameter 'offset'
-        offset_frequency (int): parameter 'offset_frequency'
-        squash (float): parameter 'squash'
-        squash_frequency (int): parameter 'squash_frequency'
+        offset : float
+            parameter `offset`
+        
+        offset_frequency : int
+            parameter `offset_frequency`
+        
+        squash : float
+            parameter `squash`
+        
+        squash_frequency : int
+            parameter `squash_frequency`
+        
 
         Returns
         -------
@@ -2325,7 +2506,7 @@ class SND:
         """ > Node <&ShaderNode Checker Texture>
 
         Parameters
-        ---------
+        ----------
         vector : Vector, optional
             socket 'Vector' (id: Vector)
         
@@ -2353,9 +2534,13 @@ class SND:
         """ > Node <&ShaderNode Texture Coordinate>
 
         Parameters
-        ---------
-        from_instancer (bool): parameter 'from_instancer'
-        object (NoneType): parameter 'object'
+        ----------
+        from_instancer : bool
+            parameter `from_instancer`
+        
+        object : NoneType
+            parameter `object`
+        
 
         Returns
         -------
@@ -2375,13 +2560,19 @@ class SND:
         """ > Node <&ShaderNode Environment Texture>
 
         Parameters
-        ---------
+        ----------
         vector : Vector, optional
             socket 'Vector' (id: Vector)
         
-        image (NoneType): parameter 'image'
-        interpolation (str): parameter 'interpolation' in ('Linear', 'Closest', 'Cubic', 'Smart')
-        projection (str): parameter 'projection' in ('Equirectangular', 'Mirror Ball')
+        image : NoneType
+            parameter `image`
+        
+        interpolation : Literal['Linear', 'Closest', 'Cubic', 'Smart']
+            parameter `interpolation`
+        
+        projection : Literal['Equirectangular', 'Mirror Ball']
+            parameter `projection`
+        
 
         Returns
         -------
@@ -2404,7 +2595,7 @@ class SND:
         """ > Node <&ShaderNode Gabor Texture>
 
         Parameters
-        ---------
+        ----------
         vector : Vector, optional
             socket 'Vector' (id: Vector)
         
@@ -2423,7 +2614,9 @@ class SND:
         orientation_1 : Vector, optional
             socket 'Orientation' (id: Orientation 3D)
         
-        gabor_type (str): parameter 'gabor_type' in ('2D', '3D')
+        gabor_type : Literal['2D', '3D']
+            parameter `gabor_type`
+        
 
         Returns
         -------
@@ -2442,11 +2635,13 @@ class SND:
         """ > Node <&ShaderNode Gradient Texture>
 
         Parameters
-        ---------
+        ----------
         vector : Vector, optional
             socket 'Vector' (id: Vector)
         
-        gradient_type (str): parameter 'gradient_type' in ('Linear', 'Quadratic', 'Easing', 'Diagonal', 'Spherical', 'Quadratic Sphere', 'Radial')
+        gradient_type : Literal['Linear', 'Quadratic', 'Easing', 'Diagonal', 'Spherical', 'Quadratic Sphere', 'Radial']
+            parameter `gradient_type`
+        
 
         Returns
         -------
@@ -2468,16 +2663,22 @@ class SND:
         """ > Node <&ShaderNode IES Texture>
 
         Parameters
-        ---------
+        ----------
         vector : Vector, optional
             socket 'Vector' (id: Vector)
         
         strength : Float, optional
             socket 'Strength' (id: Strength)
         
-        filepath (str): parameter 'filepath'
-        ies (NoneType): parameter 'ies'
-        mode (str): parameter 'mode' in ('Internal', 'External')
+        filepath : str
+            parameter `filepath`
+        
+        ies : NoneType
+            parameter `ies`
+        
+        mode : Literal['Internal', 'External']
+            parameter `mode`
+        
 
         Returns
         -------
@@ -2498,15 +2699,25 @@ class SND:
         """ > Node <&ShaderNode Image Texture>
 
         Parameters
-        ---------
+        ----------
         vector : Vector, optional
             socket 'Vector' (id: Vector)
         
-        extension (str): parameter 'extension' in ('Repeat', 'Extend', 'Clip', 'Mirror')
-        image (NoneType): parameter 'image'
-        interpolation (str): parameter 'interpolation' in ('Linear', 'Closest', 'Cubic', 'Smart')
-        projection (str): parameter 'projection' in ('Flat', 'Box', 'Sphere', 'Tube')
-        projection_blend (float): parameter 'projection_blend'
+        extension : Literal['Repeat', 'Extend', 'Clip', 'Mirror']
+            parameter `extension`
+        
+        image : NoneType
+            parameter `image`
+        
+        interpolation : Literal['Linear', 'Closest', 'Cubic', 'Smart']
+            parameter `interpolation`
+        
+        projection : Literal['Flat', 'Box', 'Sphere', 'Tube']
+            parameter `projection`
+        
+        projection_blend : float
+            parameter `projection_blend`
+        
 
         Returns
         -------
@@ -2529,7 +2740,7 @@ class SND:
         """ > Node <&ShaderNode Magic Texture>
 
         Parameters
-        ---------
+        ----------
         vector : Vector, optional
             socket 'Vector' (id: Vector)
         
@@ -2539,7 +2750,9 @@ class SND:
         distortion : Float, optional
             socket 'Distortion' (id: Distortion)
         
-        turbulence_depth (int): parameter 'turbulence_depth'
+        turbulence_depth : int
+            parameter `turbulence_depth`
+        
 
         Returns
         -------
@@ -2567,7 +2780,7 @@ class SND:
         """ > Node <&ShaderNode Noise Texture>
 
         Parameters
-        ---------
+        ----------
         vector : Vector, optional
             socket 'Vector' (id: Vector)
         
@@ -2595,9 +2808,15 @@ class SND:
         distortion : Float, optional
             socket 'Distortion' (id: Distortion)
         
-        noise_dimensions (str): parameter 'noise_dimensions' in ('1D', '2D', '3D', '4D')
-        noise_type (str): parameter 'noise_type' in ('Multifractal', 'Ridged Multifractal', 'Hybrid Multifractal', 'fBM', 'Hetero Terrain')
-        normalize (bool): parameter 'normalize'
+        noise_dimensions : Literal['1D', '2D', '3D', '4D']
+            parameter `noise_dimensions`
+        
+        noise_type : Literal['Multifractal', 'Ridged Multifractal', 'Hybrid Multifractal', 'fBM', 'Hetero Terrain']
+            parameter `noise_type`
+        
+        normalize : bool
+            parameter `normalize`
+        
 
         Returns
         -------
@@ -2628,22 +2847,46 @@ class SND:
         """ > Node <&ShaderNode Sky Texture>
 
         Parameters
-        ---------
+        ----------
         vector : Vector, optional
             socket 'Vector' (id: Vector)
         
-        aerosol_density (float): parameter 'aerosol_density'
-        air_density (float): parameter 'air_density'
-        altitude (float): parameter 'altitude'
-        ground_albedo (float): parameter 'ground_albedo'
-        ozone_density (float): parameter 'ozone_density'
-        sky_type (str): parameter 'sky_type' in ('Single Scattering', 'Multiple Scattering', 'Preetham', 'Hosek / Wilkie')
-        sun_disc (bool): parameter 'sun_disc'
-        sun_elevation (float): parameter 'sun_elevation'
-        sun_intensity (float): parameter 'sun_intensity'
-        sun_rotation (float): parameter 'sun_rotation'
-        sun_size (float): parameter 'sun_size'
-        turbidity (float): parameter 'turbidity'
+        aerosol_density : float
+            parameter `aerosol_density`
+        
+        air_density : float
+            parameter `air_density`
+        
+        altitude : float
+            parameter `altitude`
+        
+        ground_albedo : float
+            parameter `ground_albedo`
+        
+        ozone_density : float
+            parameter `ozone_density`
+        
+        sky_type : Literal['Single Scattering', 'Multiple Scattering', 'Preetham', 'Hosek / Wilkie']
+            parameter `sky_type`
+        
+        sun_disc : bool
+            parameter `sun_disc`
+        
+        sun_elevation : float
+            parameter `sun_elevation`
+        
+        sun_intensity : float
+            parameter `sun_intensity`
+        
+        sun_rotation : float
+            parameter `sun_rotation`
+        
+        sun_size : float
+            parameter `sun_size`
+        
+        turbidity : float
+            parameter `turbidity`
+        
 
         Returns
         -------
@@ -2671,7 +2914,7 @@ class SND:
         """ > Node <&ShaderNode Voronoi Texture>
 
         Parameters
-        ---------
+        ----------
         vector : Vector, optional
             socket 'Vector' (id: Vector)
         
@@ -2699,10 +2942,18 @@ class SND:
         randomness : Float, optional
             socket 'Randomness' (id: Randomness)
         
-        distance (str): parameter 'distance' in ('Euclidean', 'Manhattan', 'Chebychev', 'Minkowski')
-        feature (str): parameter 'feature' in ('F1', 'F2', 'Smooth F1', 'Distance to Edge', 'N-Sphere Radius')
-        normalize (bool): parameter 'normalize'
-        voronoi_dimensions (str): parameter 'voronoi_dimensions' in ('1D', '2D', '3D', '4D')
+        distance : Literal['Euclidean', 'Manhattan', 'Chebychev', 'Minkowski']
+            parameter `distance`
+        
+        feature : Literal['F1', 'F2', 'Smooth F1', 'Distance to Edge', 'N-Sphere Radius']
+            parameter `feature`
+        
+        normalize : bool
+            parameter `normalize`
+        
+        voronoi_dimensions : Literal['1D', '2D', '3D', '4D']
+            parameter `voronoi_dimensions`
+        
 
         Returns
         -------
@@ -2732,7 +2983,7 @@ class SND:
         """ > Node <&ShaderNode Wave Texture>
 
         Parameters
-        ---------
+        ----------
         vector : Vector, optional
             socket 'Vector' (id: Vector)
         
@@ -2754,10 +3005,18 @@ class SND:
         phase_offset : Float, optional
             socket 'Phase Offset' (id: Phase Offset)
         
-        bands_direction (str): parameter 'bands_direction' in ('X', 'Y', 'Z', 'Diagonal')
-        rings_direction (str): parameter 'rings_direction' in ('X', 'Y', 'Z', 'Spherical')
-        wave_profile (str): parameter 'wave_profile' in ('Sine', 'Saw', 'Triangle')
-        wave_type (str): parameter 'wave_type' in ('Bands', 'Rings')
+        bands_direction : Literal['X', 'Y', 'Z', 'Diagonal']
+            parameter `bands_direction`
+        
+        rings_direction : Literal['X', 'Y', 'Z', 'Spherical']
+            parameter `rings_direction`
+        
+        wave_profile : Literal['Sine', 'Saw', 'Triangle']
+            parameter `wave_profile`
+        
+        wave_type : Literal['Bands', 'Rings']
+            parameter `wave_type`
+        
 
         Returns
         -------
@@ -2780,14 +3039,16 @@ class SND:
         """ > Node <&ShaderNode White Noise Texture>
 
         Parameters
-        ---------
+        ----------
         vector : Vector, optional
             socket 'Vector' (id: Vector)
         
         w : Float, optional
             socket 'W' (id: W)
         
-        noise_dimensions (str): parameter 'noise_dimensions' in ('1D', '2D', '3D', '4D')
+        noise_dimensions : Literal['1D', '2D', '3D', '4D']
+            parameter `noise_dimensions`
+        
 
         Returns
         -------
@@ -2804,8 +3065,10 @@ class SND:
         """ > Node <&ShaderNode UV Along Stroke>
 
         Parameters
-        ---------
-        use_tips (bool): parameter 'use_tips'
+        ----------
+        use_tips : bool
+            parameter `use_tips`
+        
 
         Returns
         -------
@@ -2819,9 +3082,13 @@ class SND:
         """ > Node <&ShaderNode UV Map>
 
         Parameters
-        ---------
-        from_instancer (bool): parameter 'from_instancer'
-        uv_map (str): parameter 'uv_map'
+        ----------
+        from_instancer : bool
+            parameter `from_instancer`
+        
+        uv_map : str
+            parameter `uv_map`
+        
 
         Returns
         -------
@@ -2843,9 +3110,13 @@ class SND:
 
         Parameters
         ----------
-        - fac (Float = None)
-        - stops (list of tuple(float, tuple)) : stops made of (float, color as tuple of floats)
-        - interpolation in ('EASE', 'CARDINAL', 'LINEAR', 'B_SPLINE', 'CONSTANT')
+        fac : Float, optional
+
+        stops : list[tuple[float, tuple]]
+            Stops made of (float, color as tuple of floats)
+
+        interpolation : {'EASE', 'CARDINAL', 'LINEAR', 'B_SPLINE', 'CONSTANT'}
+
         """
         node = ColorRamp(fac=fac, stops=stops, interpolation=interpolation)
         return node._out
@@ -2866,7 +3137,7 @@ class SND:
         """ > Node <&ShaderNode Vector Curves>
 
         Parameters
-        ---------
+        ----------
         vector : Vector, optional
             socket 'Vector' (id: Vector)
         
@@ -2890,7 +3161,7 @@ class SND:
         """ > Node <&ShaderNode Vector Displacement>
 
         Parameters
-        ---------
+        ----------
         vector : Color, optional
             socket 'Vector' (id: Vector)
         
@@ -2900,7 +3171,9 @@ class SND:
         scale : Float, optional
             socket 'Scale' (id: Scale)
         
-        space (str): parameter 'space' in ('Tangent Space', 'Object Space', 'World Space')
+        space : Literal['Tangent Space', 'Object Space', 'World Space']
+            parameter `space`
+        
 
         Returns
         -------
@@ -2920,7 +3193,7 @@ class SND:
         """ > Node <&ShaderNode Vector Math>
 
         Parameters
-        ---------
+        ----------
         vector : Vector, optional
             socket 'Vector' (id: Vector)
         
@@ -2933,7 +3206,9 @@ class SND:
         scale : Float, optional
             socket 'Scale' (id: Scale)
         
-        operation (str): parameter 'operation' in ('Add', 'Subtract', 'Multiply', 'Divide', 'Multiply Add', 'Cross Product', 'Project', 'Reflect', 'Refract', 'Faceforward', 'Dot Product', 'Distance', 'Length', 'Scale', 'Normalize', 'Absolute', 'Power', 'Sign', 'Minimum', 'Maximum', 'Round', 'Floor', 'Ceil', 'Fraction', 'Modulo', 'Wrap', 'Snap', 'Sine', 'Cosine', 'Tangent')
+        operation : Literal['Add', 'Subtract', 'Multiply', 'Divide', 'Multiply Add', 'Cross Product', 'Project', 'Reflect', 'Refract', 'Faceforward', 'Dot Product', 'Distance', 'Length', 'Scale', 'Normalize', 'Absolute', 'Power', 'Sign', 'Minimum', 'Maximum', 'Round', 'Floor', 'Ceil', 'Fraction', 'Modulo', 'Wrap', 'Snap', 'Sine', 'Cosine', 'Tangent']
+            parameter `operation`
+        
 
         Returns
         -------
@@ -2955,7 +3230,7 @@ class SND:
         """ > Node <&ShaderNode Vector Rotate>
 
         Parameters
-        ---------
+        ----------
         vector : Vector, optional
             socket 'Vector' (id: Vector)
         
@@ -2971,8 +3246,12 @@ class SND:
         rotation : Vector, optional
             socket 'Rotation' (id: Rotation)
         
-        invert (bool): parameter 'invert'
-        rotation_type (str): parameter 'rotation_type' in ('Axis Angle', 'X Axis', 'Y Axis', 'Z Axis', 'Euler')
+        invert : bool
+            parameter `invert`
+        
+        rotation_type : Literal['Axis Angle', 'X Axis', 'Y Axis', 'Z Axis', 'Euler']
+            parameter `rotation_type`
+        
 
         Returns
         -------
@@ -2991,13 +3270,19 @@ class SND:
         """ > Node <&ShaderNode Vector Transform>
 
         Parameters
-        ---------
+        ----------
         vector : Vector, optional
             socket 'Vector' (id: Vector)
         
-        convert_from (str): parameter 'convert_from' in ('World', 'Object', 'Camera')
-        convert_to (str): parameter 'convert_to' in ('World', 'Object', 'Camera')
-        vector_type (str): parameter 'vector_type' in ('Point', 'Vector', 'Normal')
+        convert_from : Literal['World', 'Object', 'Camera']
+            parameter `convert_from`
+        
+        convert_to : Literal['World', 'Object', 'Camera']
+            parameter `convert_to`
+        
+        vector_type : Literal['Point', 'Vector', 'Normal']
+            parameter `vector_type`
+        
 
         Returns
         -------
@@ -3014,8 +3299,10 @@ class SND:
         """ > Node <&ShaderNode Color Attribute>
 
         Parameters
-        ---------
-        layer_name (str): parameter 'layer_name'
+        ----------
+        layer_name : str
+            parameter `layer_name`
+        
 
         Returns
         -------
@@ -3031,7 +3318,7 @@ class SND:
         """ > Node <&ShaderNode Volume Absorption>
 
         Parameters
-        ---------
+        ----------
         color : Color, optional
             socket 'Color' (id: Color)
         
@@ -3064,7 +3351,7 @@ class SND:
         """ > Node <&ShaderNode Volume Coefficients>
 
         Parameters
-        ---------
+        ----------
         weight : Float, optional
             socket 'Weight' (id: Weight)
         
@@ -3092,7 +3379,9 @@ class SND:
         emission_coefficients : Vector, optional
             socket 'Emission Coefficients' (id: Emission Coefficients)
         
-        phase (str): parameter 'phase' in ('Henyey-Greenstein', 'Fournier-Forand', 'Draine', 'Rayleigh', 'Mie')
+        phase : Literal['Henyey-Greenstein', 'Fournier-Forand', 'Draine', 'Rayleigh', 'Mie']
+            parameter `phase`
+        
 
         Returns
         -------
@@ -3133,7 +3422,7 @@ class SND:
         """ > Node <&ShaderNode Principled Volume>
 
         Parameters
-        ---------
+        ----------
         color : Color, optional
             socket 'Color' (id: Color)
         
@@ -3195,7 +3484,7 @@ class SND:
         """ > Node <&ShaderNode Volume Scatter>
 
         Parameters
-        ---------
+        ----------
         color : Color, optional
             socket 'Color' (id: Color)
         
@@ -3220,7 +3509,9 @@ class SND:
         weight : Float, optional
             socket 'Weight' (id: Weight)
         
-        phase (str): parameter 'phase' in ('Henyey-Greenstein', 'Fournier-Forand', 'Draine', 'Rayleigh', 'Mie')
+        phase : Literal['Henyey-Greenstein', 'Fournier-Forand', 'Draine', 'Rayleigh', 'Mie']
+            parameter `phase`
+        
 
         Returns
         -------
@@ -3235,7 +3526,7 @@ class SND:
         """ > Node <&ShaderNode Wavelength>
 
         Parameters
-        ---------
+        ----------
         wavelength : Float, optional
             socket 'Wavelength' (id: Wavelength)
         
@@ -3252,11 +3543,13 @@ class SND:
         """ > Node <&ShaderNode Wireframe>
 
         Parameters
-        ---------
+        ----------
         size : Float, optional
             socket 'Size' (id: Size)
         
-        use_pixel_size (bool): parameter 'use_pixel_size'
+        use_pixel_size : bool
+            parameter `use_pixel_size`
+        
 
         Returns
         -------

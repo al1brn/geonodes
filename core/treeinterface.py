@@ -644,13 +644,13 @@ class TreeInterface:
         Parameters
         ----------
         path : str | NodeTreeInterfacePanel, optional
-            name of the panel Default: "".
+            name of the panel default="".
 
         default_closed : bool, optional
-            default closed fag Default: False.
+            default closed fag default=False.
 
         create : bool, optional
-            create the panel if is doesn't exist Default: False.
+            create the panel if is doesn't exist default=False.
 
 
         Returns
@@ -738,13 +738,13 @@ class TreeInterface:
             name of the panel to create
 
         parent : str | NodeTreeInterfacePanel, optional
-            the panel wehre to create the panel Default: None.
+            the panel wehre to create the panel default=None.
 
         tip : str, optional
-            panel description Default: "".
+            panel description default="".
 
         default_closed : bool, optional
-            default_closed flag Default: False.
+            default_closed flag default=False.
 
 
         Returns
@@ -780,7 +780,7 @@ class TreeInterface:
             the item to test
 
         parent : NodeTreeInterfacePanel, optional
-            the panel to test Default: None.
+            the panel to test default=None.
 
 
         Returns
@@ -822,7 +822,7 @@ class TreeInterface:
             socket type
 
         parent : str | NodeTreeInterfacePanel, optional
-            the parent panel Default: None.
+            the parent panel default=None.
 
         """
         check_in_out(in_out)
@@ -896,10 +896,10 @@ class TreeInterface:
             a valid socket type
 
         parent : str | NodeTreeInterfacePanel, optional
-            the parent panel where to create the socket Default: None.
+            the parent panel where to create the socket default=None.
 
         from_socket : NodeSocket, optional
-            an existing socket to configure the created socket Default: None.
+            an existing socket to configure the created socket default=None.
 
         props : dict
             properties specific to the socket type
@@ -1042,16 +1042,16 @@ class TreeInterface:
             input or output sockets
 
         include : list, optional
-            limit sockets to list Default: None.
+            limit sockets to list default=None.
 
         exclude : list, optional
-            exclude sockets from list Default: [].
+            exclude sockets from list default=[].
 
         enabled_only : bool, optional
-            only enabled sockets Default: True.
+            only enabled sockets default=True.
 
         parent : NodeTreeInterfacePanel, optional
-            path up to the parent Default: None.
+            path up to the parent default=None.
 
 
         Returns
@@ -1386,10 +1386,10 @@ class TreeInterface:
             socket type
 
         parent : str | NodeTreeInterfacePanel, optional
-            the parent panel Default: None.
+            the parent panel default=None.
 
         return_all : bool, optional
-            return all candidates Default: False.
+            return all candidates default=False.
 
 
         Returns
@@ -1449,7 +1449,7 @@ class TreeInterface:
             the python name
 
         parent : str | NodeTreeInterfacePanel, optional
-            the parent panel Default: None.
+            the parent panel default=None.
 
 
         Returns
@@ -1616,19 +1616,19 @@ class TreeInterface:
             filter on sockets input / output
 
         sockets : bool, optional
-            iterate of sockets Default: True.
+            iterate of sockets default=True.
 
         panels : bool, optional
-            iterate of panels Default: True.
+            iterate of panels default=True.
 
         parent : NodeTreeInterfacePanel, optional
-            iterate on items within this parent Default: None.
+            iterate on items within this parent default=None.
 
         sub_panels : bool, optional
-            iterate in sub panels of the parent Default: True.
+            iterate in sub panels of the parent default=True.
 
         ignore_bin : bool, optional
-            ignore sockets in bin Default: True.
+            ignore sockets in bin default=True.
 
 
         Returns
@@ -1696,10 +1696,10 @@ class TreeInterface:
         Parameters
         ----------
         use_name : bool, optional
-            str names Default: True.
+            str names default=True.
 
         use_python : bool, optional
-            python name Default: False.
+            python name default=False.
 
 
         Returns
@@ -1786,10 +1786,10 @@ class TreeInterface:
             the item
 
         parent : NodeTreeInterfacePanel, optional
-            path up to the parent Default: None.
+            path up to the parent default=None.
 
         with_socket : bool, optional
-            include the NodeSocket Default: False.
+            include the NodeSocket default=False.
 
 
         Returns
@@ -1829,19 +1829,19 @@ class TreeInterface:
         Attributes
         ----------
         include : list, optional
-            limit sockets to list Default: None.
+            limit sockets to list default=None.
 
         exclude : list, optional
-            exclude sockets from list Default: [].
+            exclude sockets from list default=[].
 
         enabled_only : bool, optional
-            only enabled sockets Default: True.
+            only enabled sockets default=True.
 
         parent : NodeTreeInterfacePanel, optional
-            path up to the parent Default: None.
+            path up to the parent default=None.
 
         with_sockets : bool, optional
-            include socket in the dict Default: False.
+            include socket in the dict default=False.
 
 
         Returns
@@ -1882,7 +1882,7 @@ class TreeInterface:
             the signature to set
 
         reuse : bool, optional
-            doesn't create a socket if it already exists Default: True.
+            doesn't create a socket if it already exists default=True.
 
         parent : NodeTreeInterfacePanel
             the parent where to create the signature
@@ -1930,7 +1930,7 @@ class TreeInterface:
             the signature to set
 
         reuse : bool, optional
-            doesn't create a socket if it already exists Default: True.
+            doesn't create a socket if it already exists default=True.
 
         parent : NodeTreeInterfacePanel
             the parent where to create the signature
@@ -1956,7 +1956,7 @@ class TreeInterface:
             the signature to set
 
         reuse : bool, optional
-            doesn't create a socket if it already exists Default: True.
+            doesn't create a socket if it already exists default=True.
 
         parent : NodeTreeInterfacePanel
             the parent where to create the signature

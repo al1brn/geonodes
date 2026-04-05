@@ -1,4 +1,4 @@
-# Generated 2026-04-04 12:37:35
+# Generated 2026-04-04 17:31:31
 
 from __future__ import annotations
 from .. sockettype import SocketType
@@ -52,7 +52,7 @@ class Texture(Socket):
         """ > Node <&Node Brick Texture>
 
         Parameters
-        ---------
+        ----------
         vector : Vector, optional
             socket 'Vector' (id: Vector)
         
@@ -83,10 +83,18 @@ class Texture(Socket):
         row_height : Float, optional
             socket 'Row Height' (id: Row Height)
         
-        offset (float): parameter 'offset'
-        offset_frequency (int): parameter 'offset_frequency'
-        squash (float): parameter 'squash'
-        squash_frequency (int): parameter 'squash_frequency'
+        offset : float
+            parameter `offset`
+        
+        offset_frequency : int
+            parameter `offset_frequency`
+        
+        squash : float
+            parameter `squash`
+        
+        squash_frequency : int
+            parameter `squash_frequency`
+        
 
         Returns
         -------
@@ -106,7 +114,7 @@ class Texture(Socket):
         """ > Node <&Node Checker Texture>
 
         Parameters
-        ---------
+        ----------
         vector : Vector, optional
             socket 'Vector' (id: Vector)
         
@@ -140,7 +148,7 @@ class Texture(Socket):
         """ > Node <&Node Gabor Texture>
 
         Parameters
-        ---------
+        ----------
         vector : Vector, optional
             socket 'Vector' (id: Vector)
         
@@ -156,7 +164,9 @@ class Texture(Socket):
         orientation : Float, optional
             socket 'Orientation' (id: Orientation 2D)
         
-        gabor_type (str): parameter 'gabor_type' in ('2D', '3D')
+        gabor_type : Literal['2D', '3D']
+            parameter `gabor_type`
+        
 
         Returns
         -------
@@ -175,11 +185,13 @@ class Texture(Socket):
         """ > Node <&Node Gradient Texture>
 
         Parameters
-        ---------
+        ----------
         vector : Vector, optional
             socket 'Vector' (id: Vector)
         
-        gradient_type (str): parameter 'gradient_type' in ('Linear', 'Quadratic', 'Easing', 'Diagonal', 'Spherical', 'Quadratic Sphere', 'Radial')
+        gradient_type : Literal['Linear', 'Quadratic', 'Easing', 'Diagonal', 'Spherical', 'Quadratic Sphere', 'Radial']
+            parameter `gradient_type`
+        
 
         Returns
         -------
@@ -200,7 +212,7 @@ class Texture(Socket):
         """ > Node <&Node Magic Texture>
 
         Parameters
-        ---------
+        ----------
         vector : Vector, optional
             socket 'Vector' (id: Vector)
         
@@ -210,7 +222,9 @@ class Texture(Socket):
         distortion : Float, optional
             socket 'Distortion' (id: Distortion)
         
-        turbulence_depth (int): parameter 'turbulence_depth'
+        turbulence_depth : int
+            parameter `turbulence_depth`
+        
 
         Returns
         -------
@@ -235,7 +249,7 @@ class Texture(Socket):
         """ > Node <&Node Noise Texture>
 
         Parameters
-        ---------
+        ----------
         vector : Vector, optional
             socket 'Vector' (id: Vector)
         
@@ -254,9 +268,15 @@ class Texture(Socket):
         distortion : Float, optional
             socket 'Distortion' (id: Distortion)
         
-        noise_dimensions (str): parameter 'noise_dimensions' in ('1D', '2D', '3D', '4D')
-        noise_type (str): parameter 'noise_type' in ('Multifractal', 'Ridged Multifractal', 'Hybrid Multifractal', 'fBM', 'Hetero Terrain')
-        normalize (bool): parameter 'normalize'
+        noise_dimensions : Literal['1D', '2D', '3D', '4D']
+            parameter `noise_dimensions`
+        
+        noise_type : Literal['Multifractal', 'Ridged Multifractal', 'Hybrid Multifractal', 'fBM', 'Hetero Terrain']
+            parameter `noise_type`
+        
+        normalize : bool
+            parameter `normalize`
+        
 
         Returns
         -------
@@ -284,7 +304,7 @@ class Texture(Socket):
         """ > Node <&Node Voronoi Texture>
 
         Parameters
-        ---------
+        ----------
         vector : Vector, optional
             socket 'Vector' (id: Vector)
         
@@ -303,10 +323,18 @@ class Texture(Socket):
         randomness : Float, optional
             socket 'Randomness' (id: Randomness)
         
-        distance (str): parameter 'distance' in ('Euclidean', 'Manhattan', 'Chebychev', 'Minkowski')
-        feature (str): parameter 'feature' in ('F1', 'F2', 'Smooth F1', 'Distance to Edge', 'N-Sphere Radius')
-        normalize (bool): parameter 'normalize'
-        voronoi_dimensions (str): parameter 'voronoi_dimensions' in ('1D', '2D', '3D', '4D')
+        distance : Literal['Euclidean', 'Manhattan', 'Chebychev', 'Minkowski']
+            parameter `distance`
+        
+        feature : Literal['F1', 'F2', 'Smooth F1', 'Distance to Edge', 'N-Sphere Radius']
+            parameter `feature`
+        
+        normalize : bool
+            parameter `normalize`
+        
+        voronoi_dimensions : Literal['1D', '2D', '3D', '4D']
+            parameter `voronoi_dimensions`
+        
 
         Returns
         -------
@@ -336,7 +364,7 @@ class Texture(Socket):
         """ > Node <&Node Wave Texture>
 
         Parameters
-        ---------
+        ----------
         vector : Vector, optional
             socket 'Vector' (id: Vector)
         
@@ -358,10 +386,18 @@ class Texture(Socket):
         phase_offset : Float, optional
             socket 'Phase Offset' (id: Phase Offset)
         
-        bands_direction (str): parameter 'bands_direction' in ('X', 'Y', 'Z', 'Diagonal')
-        rings_direction (str): parameter 'rings_direction' in ('X', 'Y', 'Z', 'Spherical')
-        wave_profile (str): parameter 'wave_profile' in ('Sine', 'Saw', 'Triangle')
-        wave_type (str): parameter 'wave_type' in ('Bands', 'Rings')
+        bands_direction : Literal['X', 'Y', 'Z', 'Diagonal']
+            parameter `bands_direction`
+        
+        rings_direction : Literal['X', 'Y', 'Z', 'Spherical']
+            parameter `rings_direction`
+        
+        wave_profile : Literal['Sine', 'Saw', 'Triangle']
+            parameter `wave_profile`
+        
+        wave_type : Literal['Bands', 'Rings']
+            parameter `wave_type`
+        
 
         Returns
         -------
@@ -383,11 +419,13 @@ class Texture(Socket):
         """ > Node <&Node White Noise Texture>
 
         Parameters
-        ---------
+        ----------
         vector : Vector, optional
             socket 'Vector' (id: Vector)
         
-        noise_dimensions (str): parameter 'noise_dimensions' in ('1D', '2D', '3D', '4D')
+        noise_dimensions : Literal['1D', '2D', '3D', '4D']
+            parameter `noise_dimensions`
+        
 
         Returns
         -------

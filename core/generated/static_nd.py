@@ -1,4 +1,4 @@
-# Generated 2026-04-04 12:37:35
+# Generated 2026-04-04 17:31:31
 
 from __future__ import annotations
 from .. sockettype import SocketType
@@ -46,7 +46,7 @@ class ND:
         """ > Node <&Node Align Rotation to Vector>
 
         Parameters
-        ---------
+        ----------
         rotation : Rotation, optional
             socket 'Rotation' (id: Rotation)
         
@@ -56,8 +56,12 @@ class ND:
         factor : Float, optional
             socket 'Factor' (id: Factor)
         
-        axis (str): parameter 'axis' in ('X', 'Y', 'Z')
-        pivot_axis (str): parameter 'pivot_axis' in ('Auto', 'X', 'Y', 'Z')
+        axis : Literal['X', 'Y', 'Z']
+            parameter `axis`
+        
+        pivot_axis : Literal['Auto', 'X', 'Y', 'Z']
+            parameter `pivot_axis`
+        
 
         Returns
         -------
@@ -77,15 +81,19 @@ class ND:
         """ > Node <&Node Axes to Rotation>
 
         Parameters
-        ---------
+        ----------
         primary_axis_1 : Vector, optional
             socket 'Primary Axis' (id: Primary Axis)
         
         secondary_axis_1 : Vector, optional
             socket 'Secondary Axis' (id: Secondary Axis)
         
-        primary_axis (str): parameter 'primary_axis' in ('X', 'Y', 'Z')
-        secondary_axis (str): parameter 'secondary_axis' in ('X', 'Y', 'Z')
+        primary_axis : Literal['X', 'Y', 'Z']
+            parameter `primary_axis`
+        
+        secondary_axis : Literal['X', 'Y', 'Z']
+            parameter `secondary_axis`
+        
 
         Returns
         -------
@@ -101,7 +109,7 @@ class ND:
         """ > Node <&Node Axis Angle to Rotation>
 
         Parameters
-        ---------
+        ----------
         axis : Vector, optional
             socket 'Axis' (id: Axis)
         
@@ -125,7 +133,7 @@ class ND:
         """ > Node <&Node Bit Math>
 
         Parameters
-        ---------
+        ----------
         a : Integer, optional
             socket 'A' (id: A)
         
@@ -135,7 +143,9 @@ class ND:
         shift : Integer, optional
             socket 'Shift' (id: Shift)
         
-        operation (str): parameter 'operation' in ('And', 'Or', 'Exclusive Or', 'Not', 'Shift', 'Rotate')
+        operation : Literal['And', 'Or', 'Exclusive Or', 'Not', 'Shift', 'Rotate']
+            parameter `operation`
+        
 
         Returns
         -------
@@ -153,14 +163,16 @@ class ND:
         """ > Node <&Node Boolean Math>
 
         Parameters
-        ---------
+        ----------
         boolean : Boolean, optional
             socket 'Boolean' (id: Boolean)
         
         boolean_1 : Boolean, optional
             socket 'Boolean' (id: Boolean_001)
         
-        operation (str): parameter 'operation' in ('And', 'Or', 'Not', 'Not And', 'Nor', 'Equal', 'Not Equal', 'Imply', 'Subtract')
+        operation : Literal['And', 'Or', 'Not', 'Not And', 'Nor', 'Equal', 'Not Equal', 'Imply', 'Subtract']
+            parameter `operation`
+        
 
         Returns
         -------
@@ -180,7 +192,7 @@ class ND:
         """ > Node <&Node Combine Color>
 
         Parameters
-        ---------
+        ----------
         red : Float, optional
             socket 'Red' (id: Red)
         
@@ -193,7 +205,9 @@ class ND:
         alpha : Float, optional
             socket 'Alpha' (id: Alpha)
         
-        mode (str): parameter 'mode' in ('RGB', 'HSV', 'HSL')
+        mode : Literal['RGB', 'HSV', 'HSL']
+            parameter `mode`
+        
 
         Returns
         -------
@@ -224,7 +238,7 @@ class ND:
         """ > Node <&Node Combine Matrix>
 
         Parameters
-        ---------
+        ----------
         column_1_row_1 : Float, optional
             socket 'Column 1 Row 1' (id: Column 1 Row 1)
         
@@ -289,7 +303,7 @@ class ND:
         """ > Node <&Node Combine Transform>
 
         Parameters
-        ---------
+        ----------
         translation : Vector, optional
             socket 'Translation' (id: Translation)
         
@@ -328,7 +342,7 @@ class ND:
         """ > Node <&Node Compare>
 
         Parameters
-        ---------
+        ----------
         a : Float, optional
             socket 'A' (id: A)
         
@@ -368,9 +382,15 @@ class ND:
         epsilon : Float, optional
             socket 'Epsilon' (id: Epsilon)
         
-        data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Vector', 'Color', 'String')
-        mode (str): parameter 'mode' in ('Element-Wise', 'Length', 'Average', 'Dot Product', 'Direction')
-        operation (str): parameter 'operation' in ('Less Than', 'Less Than or Equal', 'Greater Than', 'Greater Than or Equal', 'Equal', 'Not Equal')
+        data_type : Literal['Float', 'Integer', 'Vector', 'Color', 'String']
+            parameter `data_type`
+        
+        mode : Literal['Element-Wise', 'Length', 'Average', 'Dot Product', 'Direction']
+            parameter `mode`
+        
+        operation : Literal['Less Than', 'Less Than or Equal', 'Greater Than', 'Greater Than or Equal', 'Equal', 'Not Equal']
+            parameter `operation`
+        
 
         Returns
         -------
@@ -386,7 +406,7 @@ class ND:
         """ > Node <&Node Euler to Rotation>
 
         Parameters
-        ---------
+        ----------
         euler : Vector, optional
             socket 'Euler' (id: Euler)
         
@@ -403,7 +423,7 @@ class ND:
         """ > Node <&Node Find in String>
 
         Parameters
-        ---------
+        ----------
         string : String, optional
             socket 'String' (id: String)
         
@@ -427,11 +447,13 @@ class ND:
         """ > Node <&Node Float to Integer>
 
         Parameters
-        ---------
+        ----------
         float : Float, optional
             socket 'Float' (id: Float)
         
-        rounding_mode (str): parameter 'rounding_mode' in ('Round', 'Floor', 'Ceiling', 'Truncate')
+        rounding_mode : Literal['Round', 'Floor', 'Ceiling', 'Truncate']
+            parameter `rounding_mode`
+        
 
         Returns
         -------
@@ -446,10 +468,15 @@ class ND:
         """ > Node <&Node Format String>
 
         Parameters
-        ---------
+        ----------
+        named_sockets : dict, default={}
+            Sockets created with string names
+        
         format : String, optional
             socket 'Format' (id: Format)
         
+        sockets : dict, default={}
+            Socket created with python name attributes
 
         Returns
         -------
@@ -466,14 +493,16 @@ class ND:
         """ > Node <&Node Hash Value>
 
         Parameters
-        ---------
+        ----------
         value : Integer, optional
             socket 'Value' (id: Value)
         
         seed : Integer, optional
             socket 'Seed' (id: Seed)
         
-        data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Vector', 'Color', 'Rotation', 'Matrix', 'String')
+        data_type : Literal['Float', 'Integer', 'Vector', 'Color', 'Rotation', 'Matrix', 'String']
+            parameter `data_type`
+        
 
         Returns
         -------
@@ -487,8 +516,10 @@ class ND:
         """ > Node <&Node Boolean>
 
         Parameters
-        ---------
-        boolean (bool): parameter 'boolean'
+        ----------
+        boolean : bool
+            parameter `boolean`
+        
 
         Returns
         -------
@@ -513,8 +544,10 @@ class ND:
         """ > Node <&Node Integer>
 
         Parameters
-        ---------
-        integer (int): parameter 'integer'
+        ----------
+        integer : int
+            parameter `integer`
+        
 
         Returns
         -------
@@ -552,8 +585,10 @@ class ND:
         """ > Node <&Node String>
 
         Parameters
-        ---------
-        string (str): parameter 'string'
+        ----------
+        string : str
+            parameter `string`
+        
 
         Returns
         -------
@@ -582,7 +617,7 @@ class ND:
         """ > Node <&Node Integer Math>
 
         Parameters
-        ---------
+        ----------
         value : Integer, optional
             socket 'Value' (id: Value)
         
@@ -592,7 +627,9 @@ class ND:
         value_2 : Integer, optional
             socket 'Value' (id: Value_002)
         
-        operation (str): parameter 'operation' in ('Add', 'Subtract', 'Multiply', 'Divide', 'Multiply Add', 'Absolute', 'Negate', 'Power', 'Minimum', 'Maximum', 'Sign', 'Divide Round', 'Divide Floor', 'Divide Ceiling', 'Floored Modulo', 'Modulo', 'Greatest Common Divisor', 'Least Common Multiple')
+        operation : Literal['Add', 'Subtract', 'Multiply', 'Divide', 'Multiply Add', 'Absolute', 'Negate', 'Power', 'Minimum', 'Maximum', 'Sign', 'Divide Round', 'Divide Floor', 'Divide Ceiling', 'Floored Modulo', 'Modulo', 'Greatest Common Divisor', 'Least Common Multiple']
+            parameter `operation`
+        
 
         Returns
         -------
@@ -607,7 +644,7 @@ class ND:
         """ > Node <&Node Invert Matrix>
 
         Parameters
-        ---------
+        ----------
         matrix : Matrix, optional
             socket 'Matrix' (id: Matrix)
         
@@ -626,7 +663,7 @@ class ND:
         """ > Node <&Node Invert Rotation>
 
         Parameters
-        ---------
+        ----------
         rotation : Rotation, optional
             socket 'Rotation' (id: Rotation)
         
@@ -646,7 +683,7 @@ class ND:
         """ > Node <&Node Match String>
 
         Parameters
-        ---------
+        ----------
         string : String, optional
             socket 'String' (id: String)
         
@@ -669,7 +706,7 @@ class ND:
         """ > Node <&Node Matrix Determinant>
 
         Parameters
-        ---------
+        ----------
         matrix : Matrix, optional
             socket 'Matrix' (id: Matrix)
         
@@ -686,7 +723,7 @@ class ND:
         """ > Node <&Node Multiply Matrices>
 
         Parameters
-        ---------
+        ----------
         matrix : Matrix, optional
             socket 'Matrix' (id: Matrix)
         
@@ -706,7 +743,7 @@ class ND:
         """ > Node <&Node Matrix SVD>
 
         Parameters
-        ---------
+        ----------
         matrix : Matrix, optional
             socket 'Matrix' (id: Matrix)
         
@@ -725,7 +762,7 @@ class ND:
         """ > Node <&Node Project Point>
 
         Parameters
-        ---------
+        ----------
         vector : Vector, optional
             socket 'Vector' (id: Vector)
         
@@ -745,7 +782,7 @@ class ND:
         """ > Node <&Node Quaternion to Rotation>
 
         Parameters
-        ---------
+        ----------
         w : Float, optional
             socket 'W' (id: W)
         
@@ -781,7 +818,7 @@ class ND:
         """ > Node <&Node Random Value>
 
         Parameters
-        ---------
+        ----------
         min : Vector, optional
             socket 'Min' (id: Min)
         
@@ -809,7 +846,9 @@ class ND:
         seed : Integer, optional
             socket 'Seed' (id: Seed)
         
-        data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector')
+        data_type : Literal['Float', 'Integer', 'Boolean', 'Vector']
+            parameter `data_type`
+        
 
         Returns
         -------
@@ -823,7 +862,7 @@ class ND:
         """ > Node <&Node Replace String>
 
         Parameters
-        ---------
+        ----------
         string : String, optional
             socket 'String' (id: String)
         
@@ -849,14 +888,16 @@ class ND:
         """ > Node <&Node Rotate Rotation>
 
         Parameters
-        ---------
+        ----------
         rotation : Rotation, optional
             socket 'Rotation' (id: Rotation)
         
         rotate_by : Rotation, optional
             socket 'Rotate By' (id: Rotate By)
         
-        rotation_space (str): parameter 'rotation_space' in ('Global', 'Local')
+        rotation_space : Literal['Global', 'Local']
+            parameter `rotation_space`
+        
 
         Returns
         -------
@@ -871,7 +912,7 @@ class ND:
         """ > Node <&Node Rotate Vector>
 
         Parameters
-        ---------
+        ----------
         vector : Vector, optional
             socket 'Vector' (id: Vector)
         
@@ -891,7 +932,7 @@ class ND:
         """ > Node <&Node Rotation to Axis Angle>
 
         Parameters
-        ---------
+        ----------
         rotation : Rotation, optional
             socket 'Rotation' (id: Rotation)
         
@@ -910,7 +951,7 @@ class ND:
         """ > Node <&Node Rotation to Euler>
 
         Parameters
-        ---------
+        ----------
         rotation : Rotation, optional
             socket 'Rotation' (id: Rotation)
         
@@ -927,7 +968,7 @@ class ND:
         """ > Node <&Node Rotation to Quaternion>
 
         Parameters
-        ---------
+        ----------
         rotation : Rotation, optional
             socket 'Rotation' (id: Rotation)
         
@@ -946,11 +987,13 @@ class ND:
         """ > Node <&Node Separate Color>
 
         Parameters
-        ---------
+        ----------
         color : Color, optional
             socket 'Color' (id: Color)
         
-        mode (str): parameter 'mode' in ('RGB', 'HSV', 'HSL')
+        mode : Literal['RGB', 'HSV', 'HSL']
+            parameter `mode`
+        
 
         Returns
         -------
@@ -967,7 +1010,7 @@ class ND:
         """ > Node <&Node Separate Matrix>
 
         Parameters
-        ---------
+        ----------
         matrix : Matrix, optional
             socket 'Matrix' (id: Matrix)
         
@@ -986,7 +1029,7 @@ class ND:
         """ > Node <&Node Separate Transform>
 
         Parameters
-        ---------
+        ----------
         transform : Matrix, optional
             socket 'Transform' (id: Transform)
         
@@ -1005,7 +1048,7 @@ class ND:
         """ > Node <&Node Slice String>
 
         Parameters
-        ---------
+        ----------
         string : String, optional
             socket 'String' (id: String)
         
@@ -1028,7 +1071,7 @@ class ND:
         """ > Node <&Node String Length>
 
         Parameters
-        ---------
+        ----------
         string : String, optional
             socket 'String' (id: String)
         
@@ -1045,11 +1088,13 @@ class ND:
         """ > Node <&Node String to Value>
 
         Parameters
-        ---------
+        ----------
         string : String, optional
             socket 'String' (id: String)
         
-        data_type (str): parameter 'data_type' in ('Float', 'Integer')
+        data_type : Literal['Float', 'Integer']
+            parameter `data_type`
+        
 
         Returns
         -------
@@ -1065,7 +1110,7 @@ class ND:
         """ > Node <&Node Transform Direction>
 
         Parameters
-        ---------
+        ----------
         direction : Vector, optional
             socket 'Direction' (id: Direction)
         
@@ -1085,7 +1130,7 @@ class ND:
         """ > Node <&Node Transform Point>
 
         Parameters
-        ---------
+        ----------
         vector : Vector, optional
             socket 'Vector' (id: Vector)
         
@@ -1105,7 +1150,7 @@ class ND:
         """ > Node <&Node Transpose Matrix>
 
         Parameters
-        ---------
+        ----------
         matrix : Matrix, optional
             socket 'Matrix' (id: Matrix)
         
@@ -1125,14 +1170,16 @@ class ND:
         """ > Node <&Node Value to String>
 
         Parameters
-        ---------
+        ----------
         value : Float, optional
             socket 'Value' (id: Value)
         
         decimals : Integer, optional
             socket 'Decimals' (id: Decimals)
         
-        data_type (str): parameter 'data_type' in ('Float', 'Integer')
+        data_type : Literal['Float', 'Integer']
+            parameter `data_type`
+        
 
         Returns
         -------
@@ -1150,15 +1197,19 @@ class ND:
         """ > Node <&Node Accumulate Field>
 
         Parameters
-        ---------
+        ----------
         value : Float, optional
             socket 'Value' (id: Value)
         
         group_id : Integer, optional
             socket 'Group ID' (id: Group Index)
         
-        data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Vector', 'Transform')
-        domain (str): parameter 'domain' in ('Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer')
+        data_type : Literal['Float', 'Integer', 'Vector', 'Transform']
+            parameter `data_type`
+        
+        domain : Literal['Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer']
+            parameter `domain`
+        
 
         Returns
         -------
@@ -1177,11 +1228,13 @@ class ND:
         """ > Node <&Node Domain Size>
 
         Parameters
-        ---------
+        ----------
         geometry : Geometry, optional
             socket 'Geometry' (id: Geometry)
         
-        component (str): parameter 'component' in ('Mesh', 'Point Cloud', 'Curve', 'Instances', 'Grease Pencil')
+        component : Literal['Mesh', 'Point Cloud', 'Curve', 'Instances', 'Grease Pencil']
+            parameter `component`
+        
 
         Returns
         -------
@@ -1203,7 +1256,7 @@ class ND:
         """ > Node <&Node Attribute Statistic>
 
         Parameters
-        ---------
+        ----------
         geometry : Geometry, optional
             socket 'Geometry' (id: Geometry)
         
@@ -1213,8 +1266,12 @@ class ND:
         attribute : Float, optional
             socket 'Attribute' (id: Attribute)
         
-        data_type (str): parameter 'data_type' in ('Float', 'Vector')
-        domain (str): parameter 'domain' in ('Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer')
+        data_type : Literal['Float', 'Vector']
+            parameter `data_type`
+        
+        domain : Literal['Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer']
+            parameter `domain`
+        
 
         Returns
         -------
@@ -1229,6 +1286,14 @@ class ND:
     @classmethod
     def bake(cls, named_sockets: dict = {}, **sockets):
         """ > Node <&Node Bake>
+
+        Parameters
+        ----------
+        named_sockets : dict, default={}
+            Sockets created with string names
+        
+        sockets : dict, default={}
+            Socket created with python name attributes
 
         Returns
         -------
@@ -1246,7 +1311,7 @@ class ND:
         """ > Node <&Node Blur Attribute>
 
         Parameters
-        ---------
+        ----------
         value : Float, optional
             socket 'Value' (id: Value)
         
@@ -1256,7 +1321,9 @@ class ND:
         weight : Float, optional
             socket 'Weight' (id: Weight)
         
-        data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Vector', 'Color')
+        data_type : Literal['Float', 'Integer', 'Vector', 'Color']
+            parameter `data_type`
+        
 
         Returns
         -------
@@ -1273,14 +1340,16 @@ class ND:
         """ > Node <&Node Bone Info>
 
         Parameters
-        ---------
+        ----------
         armature : Object, optional
             socket 'Armature' (id: Armature)
         
         bone_name : String, optional
             socket 'Bone Name' (id: Bone Name)
         
-        transform_space (str): parameter 'transform_space' in ('Original', 'Relative')
+        transform_space : Literal['Original', 'Relative']
+            parameter `transform_space`
+        
 
         Returns
         -------
@@ -1297,7 +1366,7 @@ class ND:
         """ > Node <&Node Bounding Box>
 
         Parameters
-        ---------
+        ----------
         geometry : Geometry, optional
             socket 'Geometry' (id: Geometry)
         
@@ -1319,7 +1388,7 @@ class ND:
         """ > Node <&Node Camera Info>
 
         Parameters
-        ---------
+        ----------
         camera : Object, optional
             socket 'Camera' (id: Camera)
         
@@ -1342,11 +1411,18 @@ class ND:
         """ > Node <&Node Capture Attribute>
 
         Parameters
-        ---------
+        ----------
+        named_sockets : dict, default={}
+            Sockets created with string names
+        
         geometry : Geometry, optional
             socket 'Geometry' (id: Geometry)
         
-        domain (str): parameter 'domain' in ('Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer')
+        domain : Literal['Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer']
+            parameter `domain`
+        
+        sockets : dict, default={}
+            Socket created with python name attributes
 
         Returns
         -------
@@ -1365,7 +1441,7 @@ class ND:
         """ > Node <&Node Collection Info>
 
         Parameters
-        ---------
+        ----------
         collection : Collection, optional
             socket 'Collection' (id: Collection)
         
@@ -1375,7 +1451,9 @@ class ND:
         reset_children : Boolean, optional
             socket 'Reset Children' (id: Reset Children)
         
-        transform_space (str): parameter 'transform_space' in ('Original', 'Relative')
+        transform_space : Literal['Original', 'Relative']
+            parameter `transform_space`
+        
 
         Returns
         -------
@@ -1390,7 +1468,7 @@ class ND:
         """ > Node <&Node Convex Hull>
 
         Parameters
-        ---------
+        ----------
         geometry : Geometry, optional
             socket 'Geometry' (id: Geometry)
         
@@ -1410,7 +1488,7 @@ class ND:
         """ > Node <&Node Corners of Edge>
 
         Parameters
-        ---------
+        ----------
         edge_index : Integer, optional
             socket 'Edge Index' (id: Edge Index)
         
@@ -1438,7 +1516,7 @@ class ND:
         """ > Node <&Node Corners of Face>
 
         Parameters
-        ---------
+        ----------
         face_index : Integer, optional
             socket 'Face Index' (id: Face Index)
         
@@ -1466,7 +1544,7 @@ class ND:
         """ > Node <&Node Corners of Vertex>
 
         Parameters
-        ---------
+        ----------
         vertex_index : Integer, optional
             socket 'Vertex Index' (id: Vertex Index)
         
@@ -1499,7 +1577,7 @@ class ND:
         """ > Node <&Node Cube Grid Topology>
 
         Parameters
-        ---------
+        ----------
         bounds_min : Vector, optional
             socket 'Bounds Min' (id: Bounds Min)
         
@@ -1548,7 +1626,7 @@ class ND:
         """ > Node <&Node Arc>
 
         Parameters
-        ---------
+        ----------
         resolution : Integer, optional
             socket 'Resolution' (id: Resolution)
         
@@ -1579,7 +1657,9 @@ class ND:
         invert_arc : Boolean, optional
             socket 'Invert Arc' (id: Invert Arc)
         
-        mode (str): parameter 'mode' in ('Points', 'Radius')
+        mode : Literal['Points', 'Radius']
+            parameter `mode`
+        
 
         Returns
         -------
@@ -1594,7 +1674,7 @@ class ND:
         """ > Node <&Node Endpoint Selection>
 
         Parameters
-        ---------
+        ----------
         start_size : Integer, optional
             socket 'Start Size' (id: Start Size)
         
@@ -1612,13 +1692,17 @@ class ND:
     @classmethod
     def handle_type_selection(cls,
                     handle_type: Literal['FREE', 'AUTO', 'VECTOR', 'ALIGN'] = 'AUTO',
-                    mode = {'RIGHT', 'LEFT'}):
+                    mode = {'LEFT', 'RIGHT'}):
         """ > Node <&Node Handle Type Selection>
 
         Parameters
-        ---------
-        handle_type (str): parameter 'handle_type' in ('Free', 'Auto', 'Vector', 'Align')
-        mode (set): parameter 'mode'
+        ----------
+        handle_type : Literal['Free', 'Auto', 'Vector', 'Align']
+            parameter `handle_type`
+        
+        mode : set
+            parameter `mode`
+        
 
         Returns
         -------
@@ -1633,7 +1717,7 @@ class ND:
         """ > Node <&Node Curve Length>
 
         Parameters
-        ---------
+        ----------
         curve : Curve, optional
             socket 'Curve' (id: Curve)
         
@@ -1650,7 +1734,7 @@ class ND:
         """ > Node <&Node Curve of Point>
 
         Parameters
-        ---------
+        ----------
         point_index : Integer, optional
             socket 'Point Index' (id: Point Index)
         
@@ -1675,7 +1759,7 @@ class ND:
         """ > Node <&Node Bézier Segment>
 
         Parameters
-        ---------
+        ----------
         resolution : Integer, optional
             socket 'Resolution' (id: Resolution)
         
@@ -1691,7 +1775,9 @@ class ND:
         end : Vector, optional
             socket 'End' (id: End)
         
-        mode (str): parameter 'mode' in ('Position', 'Offset')
+        mode : Literal['Position', 'Offset']
+            parameter `mode`
+        
 
         Returns
         -------
@@ -1712,7 +1798,7 @@ class ND:
         """ > Node <&Node Curve Circle>
 
         Parameters
-        ---------
+        ----------
         resolution : Integer, optional
             socket 'Resolution' (id: Resolution)
         
@@ -1728,7 +1814,9 @@ class ND:
         radius : Float, optional
             socket 'Radius' (id: Radius)
         
-        mode (str): parameter 'mode' in ('Points', 'Radius')
+        mode : Literal['Points', 'Radius']
+            parameter `mode`
+        
 
         Returns
         -------
@@ -1748,7 +1836,7 @@ class ND:
         """ > Node <&Node Curve Line>
 
         Parameters
-        ---------
+        ----------
         start : Vector, optional
             socket 'Start' (id: Start)
         
@@ -1761,7 +1849,9 @@ class ND:
         length : Float, optional
             socket 'Length' (id: Length)
         
-        mode (str): parameter 'mode' in ('Points', 'Direction')
+        mode : Literal['Points', 'Direction']
+            parameter `mode`
+        
 
         Returns
         -------
@@ -1788,7 +1878,7 @@ class ND:
         """ > Node <&Node Quadrilateral>
 
         Parameters
-        ---------
+        ----------
         width : Float, optional
             socket 'Width' (id: Width)
         
@@ -1822,7 +1912,9 @@ class ND:
         point_4 : Vector, optional
             socket 'Point 4' (id: Point 4)
         
-        mode (str): parameter 'mode' in ('Rectangle', 'Parallelogram', 'Trapezoid', 'Kite', 'Points')
+        mode : Literal['Rectangle', 'Parallelogram', 'Trapezoid', 'Kite', 'Points']
+            parameter `mode`
+        
 
         Returns
         -------
@@ -1841,7 +1933,7 @@ class ND:
         """ > Node <&Node Quadratic Bézier>
 
         Parameters
-        ---------
+        ----------
         resolution : Integer, optional
             socket 'Resolution' (id: Resolution)
         
@@ -1867,19 +1959,23 @@ class ND:
                     curve: Curve = None,
                     selection: Boolean = None,
                     handle_type: Literal['FREE', 'AUTO', 'VECTOR', 'ALIGN'] = 'AUTO',
-                    mode = {'RIGHT', 'LEFT'}):
+                    mode = {'LEFT', 'RIGHT'}):
         """ > Node <&Node Set Handle Type>
 
         Parameters
-        ---------
+        ----------
         curve : Curve, optional
             socket 'Curve' (id: Curve)
         
         selection : Boolean, optional
             socket 'Selection' (id: Selection)
         
-        handle_type (str): parameter 'handle_type' in ('Free', 'Auto', 'Vector', 'Align')
-        mode (set): parameter 'mode'
+        handle_type : Literal['Free', 'Auto', 'Vector', 'Align']
+            parameter `handle_type`
+        
+        mode : set
+            parameter `mode`
+        
 
         Returns
         -------
@@ -1900,7 +1996,7 @@ class ND:
         """ > Node <&Node Spiral>
 
         Parameters
-        ---------
+        ----------
         resolution : Integer, optional
             socket 'Resolution' (id: Resolution)
         
@@ -1935,14 +2031,16 @@ class ND:
         """ > Node <&Node Set Spline Type>
 
         Parameters
-        ---------
+        ----------
         curve : Curve, optional
             socket 'Curve' (id: Curve)
         
         selection : Boolean, optional
             socket 'Selection' (id: Selection)
         
-        spline_type (str): parameter 'spline_type' in ('Catmull Rom', 'Poly', 'Bézier', 'NURBS')
+        spline_type : Literal['Catmull Rom', 'Poly', 'Bézier', 'NURBS']
+            parameter `spline_type`
+        
 
         Returns
         -------
@@ -1961,7 +2059,7 @@ class ND:
         """ > Node <&Node Star>
 
         Parameters
-        ---------
+        ----------
         points : Integer, optional
             socket 'Points' (id: Points)
         
@@ -1993,7 +2091,7 @@ class ND:
         """ > Node <&Node Curve to Mesh>
 
         Parameters
-        ---------
+        ----------
         curve : Curve, optional
             socket 'Curve' (id: Curve)
         
@@ -2023,7 +2121,7 @@ class ND:
         """ > Node <&Node Curve to Points>
 
         Parameters
-        ---------
+        ----------
         curve : Curve, optional
             socket 'Curve' (id: Curve)
         
@@ -2033,7 +2131,9 @@ class ND:
         length : Float, optional
             socket 'Length' (id: Length)
         
-        mode (str): parameter 'mode' in ('Evaluated', 'Count', 'Length')
+        mode : Literal['Evaluated', 'Count', 'Length']
+            parameter `mode`
+        
 
         Returns
         -------
@@ -2053,7 +2153,7 @@ class ND:
         """ > Node <&Node Curves to Grease Pencil>
 
         Parameters
-        ---------
+        ----------
         curves : Curve, optional
             socket 'Curves' (id: Curves)
         
@@ -2076,7 +2176,7 @@ class ND:
         """ > Node <&Node Deform Curves on Surface>
 
         Parameters
-        ---------
+        ----------
         curves : Curve, optional
             socket 'Curves' (id: Curves)
         
@@ -2097,15 +2197,19 @@ class ND:
         """ > Node <&Node Delete Geometry>
 
         Parameters
-        ---------
+        ----------
         geometry : Geometry, optional
             socket 'Geometry' (id: Geometry)
         
         selection : Boolean, optional
             socket 'Selection' (id: Selection)
         
-        domain (str): parameter 'domain' in ('Point', 'Edge', 'Face', 'Spline', 'Instance', 'Layer')
-        mode (str): parameter 'mode' in ('All', 'Only Edges & Faces', 'Only Faces')
+        domain : Literal['Point', 'Edge', 'Face', 'Spline', 'Instance', 'Layer']
+            parameter `domain`
+        
+        mode : Literal['All', 'Only Edges & Faces', 'Only Faces']
+            parameter `mode`
+        
 
         Returns
         -------
@@ -2127,7 +2231,7 @@ class ND:
         """ > Node <&Node Distribute Points in Grid>
 
         Parameters
-        ---------
+        ----------
         grid : Float, optional
             socket 'Grid' (id: Grid)
         
@@ -2143,7 +2247,9 @@ class ND:
         threshold : Float, optional
             socket 'Threshold' (id: Threshold)
         
-        mode (str): parameter 'mode' in ('Random', 'Grid')
+        mode : Literal['Random', 'Grid']
+            parameter `mode`
+        
 
         Returns
         -------
@@ -2164,7 +2270,7 @@ class ND:
         """ > Node <&Node Distribute Points in Volume>
 
         Parameters
-        ---------
+        ----------
         volume : Volume, optional
             socket 'Volume' (id: Volume)
         
@@ -2204,7 +2310,7 @@ class ND:
         """ > Node <&Node Distribute Points on Faces>
 
         Parameters
-        ---------
+        ----------
         mesh : Mesh, optional
             socket 'Mesh' (id: Mesh)
         
@@ -2226,7 +2332,9 @@ class ND:
         seed : Integer, optional
             socket 'Seed' (id: Seed)
         
-        distribute_method (str): parameter 'distribute_method' in ('Random', 'Poisson Disk')
+        distribute_method : Literal['Random', 'Poisson Disk']
+            parameter `distribute_method`
+        
 
         Returns
         -------
@@ -2243,7 +2351,7 @@ class ND:
         """ > Node <&Node Dual Mesh>
 
         Parameters
-        ---------
+        ----------
         mesh : Mesh, optional
             socket 'Mesh' (id: Mesh)
         
@@ -2267,7 +2375,7 @@ class ND:
         """ > Node <&Node Duplicate Elements>
 
         Parameters
-        ---------
+        ----------
         geometry : Geometry, optional
             socket 'Geometry' (id: Geometry)
         
@@ -2277,7 +2385,9 @@ class ND:
         amount : Integer, optional
             socket 'Amount' (id: Amount)
         
-        domain (str): parameter 'domain' in ('Point', 'Edge', 'Face', 'Spline', 'Layer', 'Instance')
+        domain : Literal['Point', 'Edge', 'Face', 'Spline', 'Layer', 'Instance']
+            parameter `domain`
+        
 
         Returns
         -------
@@ -2297,7 +2407,7 @@ class ND:
         """ > Node <&Node Edge Paths to Curves>
 
         Parameters
-        ---------
+        ----------
         mesh : Mesh, optional
             socket 'Mesh' (id: Mesh)
         
@@ -2320,7 +2430,7 @@ class ND:
         """ > Node <&Node Edge Paths to Selection>
 
         Parameters
-        ---------
+        ----------
         start_vertices : Boolean, optional
             socket 'Start Vertices' (id: Start Vertices)
         
@@ -2340,7 +2450,7 @@ class ND:
         """ > Node <&Node Edges of Corner>
 
         Parameters
-        ---------
+        ----------
         corner_index : Integer, optional
             socket 'Corner Index' (id: Corner Index)
         
@@ -2362,7 +2472,7 @@ class ND:
         """ > Node <&Node Edges of Vertex>
 
         Parameters
-        ---------
+        ----------
         vertex_index : Integer, optional
             socket 'Vertex Index' (id: Vertex Index)
         
@@ -2387,7 +2497,7 @@ class ND:
         """ > Node <&Node Edges to Face Groups>
 
         Parameters
-        ---------
+        ----------
         boundary_edges : Boolean, optional
             socket 'Boundary Edges' (id: Boundary Edges)
         
@@ -2410,7 +2520,7 @@ class ND:
         """ > Node <&Node Extrude Mesh>
 
         Parameters
-        ---------
+        ----------
         mesh : Mesh, optional
             socket 'Mesh' (id: Mesh)
         
@@ -2426,7 +2536,9 @@ class ND:
         individual : Boolean, optional
             socket 'Individual' (id: Individual)
         
-        mode (str): parameter 'mode' in ('Vertices', 'Edges', 'Faces')
+        mode : Literal['Vertices', 'Edges', 'Faces']
+            parameter `mode`
+        
 
         Returns
         -------
@@ -2443,7 +2555,7 @@ class ND:
         """ > Node <&Node Face of Corner>
 
         Parameters
-        ---------
+        ----------
         corner_index : Integer, optional
             socket 'Corner Index' (id: Corner Index)
         
@@ -2466,15 +2578,19 @@ class ND:
         """ > Node <&Node Evaluate at Index>
 
         Parameters
-        ---------
+        ----------
         value : Float, optional
             socket 'Value' (id: Value)
         
         index : Integer, optional
             socket 'Index' (id: Index)
         
-        data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Quaternion', '4x4 Matrix')
-        domain (str): parameter 'domain' in ('Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer')
+        data_type : Literal['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Quaternion', '4x4 Matrix']
+            parameter `data_type`
+        
+        domain : Literal['Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer']
+            parameter `domain`
+        
 
         Returns
         -------
@@ -2493,15 +2609,19 @@ class ND:
         """ > Node <&Node Field Average>
 
         Parameters
-        ---------
+        ----------
         value : Float, optional
             socket 'Value' (id: Value)
         
         group_id : Integer, optional
             socket 'Group ID' (id: Group Index)
         
-        data_type (str): parameter 'data_type' in ('Float', 'Vector')
-        domain (str): parameter 'domain' in ('Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer')
+        data_type : Literal['Float', 'Vector']
+            parameter `data_type`
+        
+        domain : Literal['Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer']
+            parameter `domain`
+        
 
         Returns
         -------
@@ -2522,15 +2642,19 @@ class ND:
         """ > Node <&Node Field Min & Max>
 
         Parameters
-        ---------
+        ----------
         value : Float, optional
             socket 'Value' (id: Value)
         
         group_id : Integer, optional
             socket 'Group ID' (id: Group Index)
         
-        data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Vector')
-        domain (str): parameter 'domain' in ('Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer')
+        data_type : Literal['Float', 'Integer', 'Vector']
+            parameter `data_type`
+        
+        domain : Literal['Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer']
+            parameter `domain`
+        
 
         Returns
         -------
@@ -2550,12 +2674,16 @@ class ND:
         """ > Node <&Node Evaluate on Domain>
 
         Parameters
-        ---------
+        ----------
         value : Float, optional
             socket 'Value' (id: Value)
         
-        data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Quaternion', '4x4 Matrix')
-        domain (str): parameter 'domain' in ('Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer')
+        data_type : Literal['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Quaternion', '4x4 Matrix']
+            parameter `data_type`
+        
+        domain : Literal['Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer']
+            parameter `domain`
+        
 
         Returns
         -------
@@ -2574,11 +2702,18 @@ class ND:
         """ > Node <&Node Field to Grid>
 
         Parameters
-        ---------
+        ----------
+        named_sockets : dict, default={}
+            Sockets created with string names
+        
         topology : Float, optional
             socket 'Topology' (id: Topology)
         
-        data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector')
+        data_type : Literal['Float', 'Integer', 'Boolean', 'Vector']
+            parameter `data_type`
+        
+        sockets : dict, default={}
+            Socket created with python name attributes
 
         Returns
         -------
@@ -2592,10 +2727,15 @@ class ND:
         """ > Node <&Node Field to List>
 
         Parameters
-        ---------
+        ----------
+        named_sockets : dict, default={}
+            Sockets created with string names
+        
         count : Integer, optional
             socket 'Count' (id: Count)
         
+        sockets : dict, default={}
+            Socket created with python name attributes
 
         Returns
         -------
@@ -2613,15 +2753,19 @@ class ND:
         """ > Node <&Node Field Variance>
 
         Parameters
-        ---------
+        ----------
         value : Float, optional
             socket 'Value' (id: Value)
         
         group_id : Integer, optional
             socket 'Group ID' (id: Group Index)
         
-        data_type (str): parameter 'data_type' in ('Float', 'Vector')
-        domain (str): parameter 'domain' in ('Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer')
+        data_type : Literal['Float', 'Vector']
+            parameter `data_type`
+        
+        domain : Literal['Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer']
+            parameter `domain`
+        
 
         Returns
         -------
@@ -2642,7 +2786,7 @@ class ND:
         """ > Node <&Node Fill Curve>
 
         Parameters
-        ---------
+        ----------
         curve : Curve, optional
             socket 'Curve' (id: Curve)
         
@@ -2673,7 +2817,7 @@ class ND:
         """ > Node <&Node Fillet Curve>
 
         Parameters
-        ---------
+        ----------
         curve : Curve, optional
             socket 'Curve' (id: Curve)
         
@@ -2702,7 +2846,7 @@ class ND:
         """ > Node <&Node Flip Faces>
 
         Parameters
-        ---------
+        ----------
         mesh : Mesh, optional
             socket 'Mesh' (id: Mesh)
         
@@ -2722,7 +2866,7 @@ class ND:
         """ > Node <&Node For Each Geometry Element Input>
 
         Parameters
-        ---------
+        ----------
         geometry : Geometry, optional
             socket 'Geometry' (id: Geometry)
         
@@ -2748,15 +2892,25 @@ class ND:
         """ > Node <&Node For Each Geometry Element Output>
 
         Parameters
-        ---------
+        ----------
         geometry : Geometry, optional
             socket 'Geometry' (id: Generation_0)
         
-        active_generation_index (int): parameter 'active_generation_index'
-        active_input_index (int): parameter 'active_input_index'
-        active_main_index (int): parameter 'active_main_index'
-        domain (str): parameter 'domain' in ('Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer')
-        inspection_index (int): parameter 'inspection_index'
+        active_generation_index : int
+            parameter `active_generation_index`
+        
+        active_input_index : int
+            parameter `active_input_index`
+        
+        active_main_index : int
+            parameter `active_main_index`
+        
+        domain : Literal['Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer']
+            parameter `domain`
+        
+        inspection_index : int
+            parameter `inspection_index`
+        
 
         Returns
         -------
@@ -2771,7 +2925,7 @@ class ND:
         """ > Node <&Node Geometry to Instance>
 
         Parameters
-        ---------
+        ----------
         geometry : Geometry, optional
             socket 'Geometry' (id: Geometry)
         
@@ -2788,7 +2942,7 @@ class ND:
         """ > Node <&Node Get Geometry Bundle>
 
         Parameters
-        ---------
+        ----------
         geometry : Geometry, optional
             socket 'Geometry' (id: Geometry)
         
@@ -2814,7 +2968,7 @@ class ND:
         """ > Node <&Node Get Named Grid>
 
         Parameters
-        ---------
+        ----------
         volume : Volume, optional
             socket 'Volume' (id: Volume)
         
@@ -2824,7 +2978,9 @@ class ND:
         remove : Boolean, optional
             socket 'Remove' (id: Remove)
         
-        data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector')
+        data_type : Literal['Float', 'Integer', 'Boolean', 'Vector']
+            parameter `data_type`
+        
 
         Returns
         -------
@@ -2846,7 +3002,7 @@ class ND:
         """ > Node <&Node Dial Gizmo>
 
         Parameters
-        ---------
+        ----------
         value : Float, optional
             socket 'Value' (id: Value)
         
@@ -2862,7 +3018,9 @@ class ND:
         radius : Float, optional
             socket 'Radius' (id: Radius)
         
-        color_id (str): parameter 'color_id' in ('Primary', 'Secondary', 'X', 'Y', 'Z')
+        color_id : Literal['Primary', 'Secondary', 'X', 'Y', 'Z']
+            parameter `color_id`
+        
 
         Returns
         -------
@@ -2882,7 +3040,7 @@ class ND:
         """ > Node <&Node Linear Gizmo>
 
         Parameters
-        ---------
+        ----------
         value : Float, optional
             socket 'Value' (id: Value)
         
@@ -2892,8 +3050,12 @@ class ND:
         direction : Vector, optional
             socket 'Direction' (id: Direction)
         
-        color_id (str): parameter 'color_id' in ('Primary', 'Secondary', 'X', 'Y', 'Z')
-        draw_style (str): parameter 'draw_style' in ('Arrow', 'Cross', 'Box')
+        color_id : Literal['Primary', 'Secondary', 'X', 'Y', 'Z']
+            parameter `color_id`
+        
+        draw_style : Literal['Arrow', 'Cross', 'Box']
+            parameter `draw_style`
+        
 
         Returns
         -------
@@ -2921,7 +3083,7 @@ class ND:
         """ > Node <&Node Transform Gizmo>
 
         Parameters
-        ---------
+        ----------
         value : Matrix, optional
             socket 'Value' (id: Value)
         
@@ -2931,15 +3093,33 @@ class ND:
         rotation : Rotation, optional
             socket 'Rotation' (id: Rotation)
         
-        use_rotation_x (bool): parameter 'use_rotation_x'
-        use_rotation_y (bool): parameter 'use_rotation_y'
-        use_rotation_z (bool): parameter 'use_rotation_z'
-        use_scale_x (bool): parameter 'use_scale_x'
-        use_scale_y (bool): parameter 'use_scale_y'
-        use_scale_z (bool): parameter 'use_scale_z'
-        use_translation_x (bool): parameter 'use_translation_x'
-        use_translation_y (bool): parameter 'use_translation_y'
-        use_translation_z (bool): parameter 'use_translation_z'
+        use_rotation_x : bool
+            parameter `use_rotation_x`
+        
+        use_rotation_y : bool
+            parameter `use_rotation_y`
+        
+        use_rotation_z : bool
+            parameter `use_rotation_z`
+        
+        use_scale_x : bool
+            parameter `use_scale_x`
+        
+        use_scale_y : bool
+            parameter `use_scale_y`
+        
+        use_scale_z : bool
+            parameter `use_scale_z`
+        
+        use_translation_x : bool
+            parameter `use_translation_x`
+        
+        use_translation_y : bool
+            parameter `use_translation_y`
+        
+        use_translation_z : bool
+            parameter `use_translation_z`
+        
 
         Returns
         -------
@@ -2956,7 +3136,7 @@ class ND:
         """ > Node <&Node Grease Pencil to Curves>
 
         Parameters
-        ---------
+        ----------
         grease_pencil : GreasePencil, optional
             socket 'Grease Pencil' (id: Grease Pencil)
         
@@ -2985,7 +3165,7 @@ class ND:
         """ > Node <&Node Advect Grid>
 
         Parameters
-        ---------
+        ----------
         grid : Float, optional
             socket 'Grid' (id: Grid)
         
@@ -3001,7 +3181,9 @@ class ND:
         limiter : menu='Clamp', optional
             ('None', 'Clamp', 'Revert')
         
-        data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Vector')
+        data_type : Literal['Float', 'Integer', 'Vector']
+            parameter `data_type`
+        
 
         Returns
         -------
@@ -3023,7 +3205,7 @@ class ND:
         """ > Node <&Node Clip Grid>
 
         Parameters
-        ---------
+        ----------
         grid : Float, optional
             socket 'Grid' (id: Grid)
         
@@ -3045,7 +3227,9 @@ class ND:
         max_z : Integer, optional
             socket 'Max Z' (id: Max Z)
         
-        data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector')
+        data_type : Literal['Float', 'Integer', 'Boolean', 'Vector']
+            parameter `data_type`
+        
 
         Returns
         -------
@@ -3059,7 +3243,7 @@ class ND:
         """ > Node <&Node Grid Curl>
 
         Parameters
-        ---------
+        ----------
         grid : Vector, optional
             socket 'Grid' (id: Grid)
         
@@ -3081,7 +3265,7 @@ class ND:
         """ > Node <&Node Grid Dilate & Erode>
 
         Parameters
-        ---------
+        ----------
         grid : Float, optional
             socket 'Grid' (id: Grid)
         
@@ -3094,7 +3278,9 @@ class ND:
         steps : Integer, optional
             socket 'Steps' (id: Steps)
         
-        data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector')
+        data_type : Literal['Float', 'Integer', 'Boolean', 'Vector']
+            parameter `data_type`
+        
 
         Returns
         -------
@@ -3108,7 +3294,7 @@ class ND:
         """ > Node <&Node Grid Divergence>
 
         Parameters
-        ---------
+        ----------
         grid : Vector, optional
             socket 'Grid' (id: Grid)
         
@@ -3125,7 +3311,7 @@ class ND:
         """ > Node <&Node Grid Gradient>
 
         Parameters
-        ---------
+        ----------
         grid : Float, optional
             socket 'Grid' (id: Grid)
         
@@ -3144,11 +3330,13 @@ class ND:
         """ > Node <&Node Grid Info>
 
         Parameters
-        ---------
+        ----------
         grid : Float, optional
             socket 'Grid' (id: Grid)
         
-        data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector')
+        data_type : Literal['Float', 'Integer', 'Boolean', 'Vector']
+            parameter `data_type`
+        
 
         Returns
         -------
@@ -3164,7 +3352,7 @@ class ND:
         """ > Node <&Node Grid Laplacian>
 
         Parameters
-        ---------
+        ----------
         grid : Float, optional
             socket 'Grid' (id: Grid)
         
@@ -3185,7 +3373,7 @@ class ND:
         """ > Node <&Node Grid Mean>
 
         Parameters
-        ---------
+        ----------
         grid : Float, optional
             socket 'Grid' (id: Grid)
         
@@ -3195,7 +3383,9 @@ class ND:
         iterations : Integer, optional
             socket 'Iterations' (id: Iterations)
         
-        data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Vector')
+        data_type : Literal['Float', 'Integer', 'Vector']
+            parameter `data_type`
+        
 
         Returns
         -------
@@ -3213,7 +3403,7 @@ class ND:
         """ > Node <&Node Grid Median>
 
         Parameters
-        ---------
+        ----------
         grid : Float, optional
             socket 'Grid' (id: Grid)
         
@@ -3223,7 +3413,9 @@ class ND:
         iterations : Integer, optional
             socket 'Iterations' (id: Iterations)
         
-        data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Vector')
+        data_type : Literal['Float', 'Integer', 'Vector']
+            parameter `data_type`
+        
 
         Returns
         -------
@@ -3241,7 +3433,7 @@ class ND:
         """ > Node <&Node Prune Grid>
 
         Parameters
-        ---------
+        ----------
         grid : Float, optional
             socket 'Grid' (id: Grid)
         
@@ -3251,7 +3443,9 @@ class ND:
         threshold : Float, optional
             socket 'Threshold' (id: Threshold)
         
-        data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector')
+        data_type : Literal['Float', 'Integer', 'Boolean', 'Vector']
+            parameter `data_type`
+        
 
         Returns
         -------
@@ -3265,7 +3459,7 @@ class ND:
         """ > Node <&Node Grid to Mesh>
 
         Parameters
-        ---------
+        ----------
         grid : Float, optional
             socket 'Grid' (id: Grid)
         
@@ -3290,11 +3484,13 @@ class ND:
         """ > Node <&Node Grid to Points>
 
         Parameters
-        ---------
+        ----------
         grid : Float, optional
             socket 'Grid' (id: Grid)
         
-        data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector')
+        data_type : Literal['Float', 'Integer', 'Boolean', 'Vector']
+            parameter `data_type`
+        
 
         Returns
         -------
@@ -3312,11 +3508,13 @@ class ND:
         """ > Node <&Node Voxelize Grid>
 
         Parameters
-        ---------
+        ----------
         grid : Float, optional
             socket 'Grid' (id: Grid)
         
-        data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector')
+        data_type : Literal['Float', 'Integer', 'Boolean', 'Vector']
+            parameter `data_type`
+        
 
         Returns
         -------
@@ -3330,8 +3528,10 @@ class ND:
         """ > Node <&Node Group>
 
         Parameters
-        ---------
-        node_tree (NoneType): parameter 'node_tree'
+        ----------
+        node_tree : NoneType
+            parameter `node_tree`
+        
 
         Returns
         -------
@@ -3345,7 +3545,7 @@ class ND:
         """ > Node <&Node Image Info>
 
         Parameters
-        ---------
+        ----------
         image : Image, optional
             socket 'Image' (id: Image)
         
@@ -3372,7 +3572,7 @@ class ND:
         """ > Node <&Node Image Texture>
 
         Parameters
-        ---------
+        ----------
         image : Image, optional
             socket 'Image' (id: Image)
         
@@ -3382,8 +3582,12 @@ class ND:
         frame : Integer, optional
             socket 'Frame' (id: Frame)
         
-        extension (str): parameter 'extension' in ('Repeat', 'Extend', 'Clip', 'Mirror')
-        interpolation (str): parameter 'interpolation' in ('Linear', 'Closest', 'Cubic')
+        extension : Literal['Repeat', 'Extend', 'Clip', 'Mirror']
+            parameter `extension`
+        
+        interpolation : Literal['Linear', 'Closest', 'Cubic']
+            parameter `interpolation`
+        
 
         Returns
         -------
@@ -3401,7 +3605,7 @@ class ND:
         """ > Node <&Node Import CSV>
 
         Parameters
-        ---------
+        ----------
         path : String, optional
             socket 'Path' (id: Path)
         
@@ -3421,7 +3625,7 @@ class ND:
         """ > Node <&Node Import OBJ>
 
         Parameters
-        ---------
+        ----------
         path : String, optional
             socket 'Path' (id: Path)
         
@@ -3438,7 +3642,7 @@ class ND:
         """ > Node <&Node Import PLY>
 
         Parameters
-        ---------
+        ----------
         path : String, optional
             socket 'Path' (id: Path)
         
@@ -3455,7 +3659,7 @@ class ND:
         """ > Node <&Node Import STL>
 
         Parameters
-        ---------
+        ----------
         path : String, optional
             socket 'Path' (id: Path)
         
@@ -3472,7 +3676,7 @@ class ND:
         """ > Node <&Node Import Text>
 
         Parameters
-        ---------
+        ----------
         path : String, optional
             socket 'Path' (id: Path)
         
@@ -3489,7 +3693,7 @@ class ND:
         """ > Node <&Node Import VDB>
 
         Parameters
-        ---------
+        ----------
         path : String, optional
             socket 'Path' (id: Path)
         
@@ -3506,7 +3710,7 @@ class ND:
         """ > Node <&Node Index of Nearest>
 
         Parameters
-        ---------
+        ----------
         position : Vector, optional
             socket 'Position' (id: Position)
         
@@ -3534,7 +3738,10 @@ class ND:
         """ > Node <&Node Index Switch>
 
         Parameters
-        ---------
+        ----------
+        named_sockets : dict, default={}
+            Sockets created with string names
+        
         index : Integer, optional
             socket 'Index' (id: Index)
         
@@ -3544,7 +3751,11 @@ class ND:
         _1 : Float, optional
             socket '1' (id: Item_1)
         
-        data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Rotation', 'Matrix', 'String', 'Menu', 'Object', 'Image', 'Geometry', 'Collection', 'Material', 'Bundle', 'Closure', 'Font')
+        data_type : Literal['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Rotation', 'Matrix', 'String', 'Menu', 'Object', 'Image', 'Geometry', 'Collection', 'Material', 'Bundle', 'Closure', 'Font']
+            parameter `data_type`
+        
+        sockets : dict, default={}
+            Socket created with python name attributes
 
         Returns
         -------
@@ -3569,8 +3780,10 @@ class ND:
         """ > Node <&Node Collection>
 
         Parameters
-        ---------
-        collection (NoneType): parameter 'collection'
+        ----------
+        collection : NoneType
+            parameter `collection`
+        
 
         Returns
         -------
@@ -3584,7 +3797,7 @@ class ND:
         """ > Node <&Node Curve Handle Positions>
 
         Parameters
-        ---------
+        ----------
         relative : Boolean, optional
             socket 'Relative' (id: Relative)
         
@@ -3636,8 +3849,10 @@ class ND:
         """ > Node <&Node Image>
 
         Parameters
-        ---------
-        image (NoneType): parameter 'image'
+        ----------
+        image : NoneType
+            parameter `image`
+        
 
         Returns
         -------
@@ -3662,7 +3877,7 @@ class ND:
         """ > Node <&Node Instance Bounds>
 
         Parameters
-        ---------
+        ----------
         use_radius : Boolean, optional
             socket 'Use Radius' (id: Use Radius)
         
@@ -3703,8 +3918,10 @@ class ND:
         """ > Node <&Node Material>
 
         Parameters
-        ---------
-        material (NoneType): parameter 'material'
+        ----------
+        material : NoneType
+            parameter `material`
+        
 
         Returns
         -------
@@ -3777,7 +3994,7 @@ class ND:
         """ > Node <&Node Is Face Planar>
 
         Parameters
-        ---------
+        ----------
         threshold : Float, optional
             socket 'Threshold' (id: Threshold)
         
@@ -3835,11 +4052,13 @@ class ND:
         """ > Node <&Node Named Attribute>
 
         Parameters
-        ---------
+        ----------
         name : String, optional
             socket 'Name' (id: Name)
         
-        data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Quaternion', '4x4 Matrix')
+        data_type : Literal['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Quaternion', '4x4 Matrix']
+            parameter `data_type`
+        
 
         Returns
         -------
@@ -3855,7 +4074,7 @@ class ND:
         """ > Node <&Node Named Layer Selection>
 
         Parameters
-        ---------
+        ----------
         name : String, optional
             socket 'Name' (id: Name)
         
@@ -3885,8 +4104,10 @@ class ND:
         """ > Node <&Node Object>
 
         Parameters
-        ---------
-        object (NoneType): parameter 'object'
+        ----------
+        object : NoneType
+            parameter `object`
+        
 
         Returns
         -------
@@ -3946,7 +4167,7 @@ class ND:
         """ > Node <&Node Shortest Edge Paths>
 
         Parameters
-        ---------
+        ----------
         end_vertex : Boolean, optional
             socket 'End Vertex' (id: End Vertex)
         
@@ -4021,7 +4242,7 @@ class ND:
         """ > Node <&Node Instance on Points>
 
         Parameters
-        ---------
+        ----------
         points : Cloud, optional
             socket 'Points' (id: Points)
         
@@ -4071,7 +4292,7 @@ class ND:
         """ > Node <&Node Instances to Points>
 
         Parameters
-        ---------
+        ----------
         instances : Instances, optional
             socket 'Instances' (id: Instances)
         
@@ -4104,7 +4325,7 @@ class ND:
         """ > Node <&Node Interpolate Curves>
 
         Parameters
-        ---------
+        ----------
         guide_curves : Curve, optional
             socket 'Guide Curves' (id: Guide Curves)
         
@@ -4152,7 +4373,7 @@ class ND:
         """ > Node <&Node Join Geometry>
 
         Parameters
-        ---------
+        ----------
         geometry : Geometry, optional
             socket 'Geometry' (id: Geometry)
         
@@ -4173,15 +4394,19 @@ class ND:
         """ > Node <&Node Get List Item>
 
         Parameters
-        ---------
+        ----------
         list : Float, optional
             socket 'List' (id: List)
         
         index : Integer, optional
             socket 'Index' (id: Index)
         
-        socket_type (str): parameter 'socket_type' in ('Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Rotation', 'Matrix', 'String', 'Menu', 'Object', 'Image', 'Geometry', 'Collection', 'Material', 'Bundle', 'Closure', 'Font')
-        structure_type (str): parameter 'structure_type' in ('Auto', 'Dynamic', 'Field', 'Grid', 'List', 'Single')
+        socket_type : Literal['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Rotation', 'Matrix', 'String', 'Menu', 'Object', 'Image', 'Geometry', 'Collection', 'Material', 'Bundle', 'Closure', 'Font']
+            parameter `socket_type`
+        
+        structure_type : Literal['Auto', 'Dynamic', 'Field', 'Grid', 'List', 'Single']
+            parameter `structure_type`
+        
 
         Returns
         -------
@@ -4199,11 +4424,13 @@ class ND:
         """ > Node <&Node List Length>
 
         Parameters
-        ---------
+        ----------
         list : Float, optional
             socket 'List' (id: List)
         
-        data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Rotation', 'Matrix', 'String', 'Menu', 'Object', 'Image', 'Geometry', 'Collection', 'Material', 'Bundle', 'Closure', 'Font')
+        data_type : Literal['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Rotation', 'Matrix', 'String', 'Menu', 'Object', 'Image', 'Geometry', 'Collection', 'Material', 'Bundle', 'Closure', 'Font']
+            parameter `data_type`
+        
 
         Returns
         -------
@@ -4217,7 +4444,7 @@ class ND:
         """ > Node <&Node Material Selection>
 
         Parameters
-        ---------
+        ----------
         material : Material, optional
             socket 'Material' (id: Material)
         
@@ -4238,9 +4465,18 @@ class ND:
         """ > Node <&Node Menu Switch>
 
         Parameters
-        ---------
-        Default selection
-        data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Rotation', 'Matrix', 'String', 'Menu', 'Object', 'Image', 'Geometry', 'Collection', 'Material', 'Bundle', 'Closure', 'Font')
+        ----------
+        named_sockets : dict, default={}
+            Sockets created with string names
+        
+        menu : Menu, optional
+            Menu selection
+        
+        data_type : Literal['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Rotation', 'Matrix', 'String', 'Menu', 'Object', 'Image', 'Geometry', 'Collection', 'Material', 'Bundle', 'Closure', 'Font']
+            parameter `data_type`
+        
+        sockets : dict, default={}
+            Socket created with python name attributes
 
         Returns
         -------
@@ -4260,7 +4496,7 @@ class ND:
         """ > Node <&Node Merge by Distance>
 
         Parameters
-        ---------
+        ----------
         geometry : Geometry, optional
             socket 'Geometry' (id: Geometry)
         
@@ -4290,7 +4526,7 @@ class ND:
         """ > Node <&Node Merge Layers>
 
         Parameters
-        ---------
+        ----------
         grease_pencil : GreasePencil, optional
             socket 'Grease Pencil' (id: Grease Pencil)
         
@@ -4300,7 +4536,9 @@ class ND:
         group_id : Integer, optional
             socket 'Group ID' (id: Group ID)
         
-        mode (str): parameter 'mode' in ('By Name', 'By Group ID')
+        mode : Literal['By Name', 'By Group ID']
+            parameter `mode`
+        
 
         Returns
         -------
@@ -4321,7 +4559,7 @@ class ND:
         """ > Node <&Node Mesh Boolean>
 
         Parameters
-        ---------
+        ----------
         mesh_1 : Mesh, optional
             socket 'Mesh 1' (id: Mesh 1)
         
@@ -4334,8 +4572,12 @@ class ND:
         hole_tolerant : Boolean, optional
             socket 'Hole Tolerant' (id: Hole Tolerant)
         
-        operation (str): parameter 'operation' in ('Intersect', 'Union', 'Difference')
-        solver (str): parameter 'solver' in ('Exact', 'Float', 'Manifold')
+        operation : Literal['Intersect', 'Union', 'Difference']
+            parameter `operation`
+        
+        solver : Literal['Exact', 'Float', 'Manifold']
+            parameter `solver`
+        
 
         Returns
         -------
@@ -4354,14 +4596,16 @@ class ND:
         """ > Node <&Node Mesh Circle>
 
         Parameters
-        ---------
+        ----------
         vertices : Integer, optional
             socket 'Vertices' (id: Vertices)
         
         radius : Float, optional
             socket 'Radius' (id: Radius)
         
-        fill_type (str): parameter 'fill_type' in ('None', 'N-Gon', 'Triangles')
+        fill_type : Literal['None', 'N-Gon', 'Triangles']
+            parameter `fill_type`
+        
 
         Returns
         -------
@@ -4383,7 +4627,7 @@ class ND:
         """ > Node <&Node Cone>
 
         Parameters
-        ---------
+        ----------
         vertices : Integer, optional
             socket 'Vertices' (id: Vertices)
         
@@ -4402,7 +4646,9 @@ class ND:
         depth : Float, optional
             socket 'Depth' (id: Depth)
         
-        fill_type (str): parameter 'fill_type' in ('None', 'N-Gon', 'Triangles')
+        fill_type : Literal['None', 'N-Gon', 'Triangles']
+            parameter `fill_type`
+        
 
         Returns
         -------
@@ -4423,7 +4669,7 @@ class ND:
         """ > Node <&Node Cube>
 
         Parameters
-        ---------
+        ----------
         size : Vector, optional
             socket 'Size' (id: Size)
         
@@ -4457,7 +4703,7 @@ class ND:
         """ > Node <&Node Cylinder>
 
         Parameters
-        ---------
+        ----------
         vertices : Integer, optional
             socket 'Vertices' (id: Vertices)
         
@@ -4473,7 +4719,9 @@ class ND:
         depth : Float, optional
             socket 'Depth' (id: Depth)
         
-        fill_type (str): parameter 'fill_type' in ('None', 'N-Gon', 'Triangles')
+        fill_type : Literal['None', 'N-Gon', 'Triangles']
+            parameter `fill_type`
+        
 
         Returns
         -------
@@ -4490,7 +4738,7 @@ class ND:
         """ > Node <&Node Face Group Boundaries>
 
         Parameters
-        ---------
+        ----------
         face_group_id : Integer, optional
             socket 'Face Group ID' (id: Face Set)
         
@@ -4511,7 +4759,7 @@ class ND:
         """ > Node <&Node Grid>
 
         Parameters
-        ---------
+        ----------
         size_x : Float, optional
             socket 'Size X' (id: Size X)
         
@@ -4539,7 +4787,7 @@ class ND:
         """ > Node <&Node Ico Sphere>
 
         Parameters
-        ---------
+        ----------
         radius : Float, optional
             socket 'Radius' (id: Radius)
         
@@ -4567,7 +4815,7 @@ class ND:
         """ > Node <&Node Mesh Line>
 
         Parameters
-        ---------
+        ----------
         count : Integer, optional
             socket 'Count' (id: Count)
         
@@ -4580,8 +4828,12 @@ class ND:
         offset : Vector, optional
             socket 'Offset' (id: Offset)
         
-        count_mode (str): parameter 'count_mode' in ('Count', 'Resolution')
-        mode (str): parameter 'mode' in ('Offset', 'End Points')
+        count_mode : Literal['Count', 'Resolution']
+            parameter `count_mode`
+        
+        mode : Literal['Offset', 'End Points']
+            parameter `mode`
+        
 
         Returns
         -------
@@ -4600,14 +4852,16 @@ class ND:
         """ > Node <&Node Mesh to Curve>
 
         Parameters
-        ---------
+        ----------
         mesh : Mesh, optional
             socket 'Mesh' (id: Mesh)
         
         selection : Boolean, optional
             socket 'Selection' (id: Selection)
         
-        mode (str): parameter 'mode' in ('Edges', 'Faces')
+        mode : Literal['Edges', 'Faces']
+            parameter `mode`
+        
 
         Returns
         -------
@@ -4626,7 +4880,7 @@ class ND:
         """ > Node <&Node Mesh to Density Grid>
 
         Parameters
-        ---------
+        ----------
         mesh : Mesh, optional
             socket 'Mesh' (id: Mesh)
         
@@ -4657,7 +4911,7 @@ class ND:
         """ > Node <&Node Mesh to Points>
 
         Parameters
-        ---------
+        ----------
         mesh : Mesh, optional
             socket 'Mesh' (id: Mesh)
         
@@ -4670,7 +4924,9 @@ class ND:
         radius : Float, optional
             socket 'Radius' (id: Radius)
         
-        mode (str): parameter 'mode' in ('Vertices', 'Edges', 'Faces', 'Corners')
+        mode : Literal['Vertices', 'Edges', 'Faces', 'Corners']
+            parameter `mode`
+        
 
         Returns
         -------
@@ -4685,7 +4941,7 @@ class ND:
         """ > Node <&Node Mesh to SDF Grid>
 
         Parameters
-        ---------
+        ----------
         mesh : Mesh, optional
             socket 'Mesh' (id: Mesh)
         
@@ -4714,7 +4970,7 @@ class ND:
         """ > Node <&Node Mesh to Volume>
 
         Parameters
-        ---------
+        ----------
         mesh : Mesh, optional
             socket 'Mesh' (id: Mesh)
         
@@ -4746,7 +5002,7 @@ class ND:
         """ > Node <&Node UV Sphere>
 
         Parameters
-        ---------
+        ----------
         segments : Integer, optional
             socket 'Segments' (id: Segments)
         
@@ -4774,14 +5030,16 @@ class ND:
         """ > Node <&Node Object Info>
 
         Parameters
-        ---------
+        ----------
         object : Object, optional
             socket 'Object' (id: Object)
         
         as_instance : Boolean, optional
             socket 'As Instance' (id: As Instance)
         
-        transform_space (str): parameter 'transform_space' in ('Original', 'Relative')
+        transform_space : Literal['Original', 'Relative']
+            parameter `transform_space`
+        
 
         Returns
         -------
@@ -4798,7 +5056,7 @@ class ND:
         """ > Node <&Node Offset Corner in Face>
 
         Parameters
-        ---------
+        ----------
         corner_index : Integer, optional
             socket 'Corner Index' (id: Corner Index)
         
@@ -4818,7 +5076,7 @@ class ND:
         """ > Node <&Node Offset Point in Curve>
 
         Parameters
-        ---------
+        ----------
         point_index : Integer, optional
             socket 'Point Index' (id: Point Index)
         
@@ -4840,7 +5098,7 @@ class ND:
         """ > Node <&Node Points>
 
         Parameters
-        ---------
+        ----------
         count : Integer, optional
             socket 'Count' (id: Count)
         
@@ -4866,7 +5124,7 @@ class ND:
         """ > Node <&Node Points of Curve>
 
         Parameters
-        ---------
+        ----------
         curve_index : Integer, optional
             socket 'Curve Index' (id: Curve Index)
         
@@ -4894,7 +5152,7 @@ class ND:
         """ > Node <&Node Points to Curves>
 
         Parameters
-        ---------
+        ----------
         points : Cloud, optional
             socket 'Points' (id: Points)
         
@@ -4917,7 +5175,7 @@ class ND:
         """ > Node <&Node Points to SDF Grid>
 
         Parameters
-        ---------
+        ----------
         points : Cloud, optional
             socket 'Points' (id: Points)
         
@@ -4940,7 +5198,7 @@ class ND:
         """ > Node <&Node Points to Vertices>
 
         Parameters
-        ---------
+        ----------
         points : Cloud, optional
             socket 'Points' (id: Points)
         
@@ -4966,7 +5224,7 @@ class ND:
         """ > Node <&Node Points to Volume>
 
         Parameters
-        ---------
+        ----------
         points : Cloud, optional
             socket 'Points' (id: Points)
         
@@ -5003,7 +5261,7 @@ class ND:
         """ > Node <&Node Geometry Proximity>
 
         Parameters
-        ---------
+        ----------
         geometry : Geometry, optional
             socket 'Geometry' (id: Target)
         
@@ -5016,7 +5274,9 @@ class ND:
         sample_group_id : Integer, optional
             socket 'Sample Group ID' (id: Sample Group ID)
         
-        target_element (str): parameter 'target_element' in ('Points', 'Edges', 'Faces')
+        target_element : Literal['Points', 'Edges', 'Faces']
+            parameter `target_element`
+        
 
         Returns
         -------
@@ -5040,7 +5300,7 @@ class ND:
         """ > Node <&Node Raycast>
 
         Parameters
-        ---------
+        ----------
         target_geometry : Geometry, optional
             socket 'Target Geometry' (id: Target Geometry)
         
@@ -5059,7 +5319,9 @@ class ND:
         ray_length : Float, optional
             socket 'Ray Length' (id: Ray Length)
         
-        data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Quaternion', '4x4 Matrix')
+        data_type : Literal['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Quaternion', '4x4 Matrix']
+            parameter `data_type`
+        
 
         Returns
         -------
@@ -5080,7 +5342,7 @@ class ND:
         """ > Node <&Node Realize Instances>
 
         Parameters
-        ---------
+        ----------
         geometry : Geometry, optional
             socket 'Geometry' (id: Geometry)
         
@@ -5093,7 +5355,9 @@ class ND:
         depth : Integer, optional
             socket 'Depth' (id: Depth)
         
-        realize_to_point_domain (bool): parameter 'realize_to_point_domain'
+        realize_to_point_domain : bool
+            parameter `realize_to_point_domain`
+        
 
         Returns
         -------
@@ -5110,7 +5374,7 @@ class ND:
         """ > Node <&Node Remove Named Attribute>
 
         Parameters
-        ---------
+        ----------
         geometry : Geometry, optional
             socket 'Geometry' (id: Geometry)
         
@@ -5133,7 +5397,7 @@ class ND:
         """ > Node <&Node Repeat Input>
 
         Parameters
-        ---------
+        ----------
         iterations : Integer, optional
             socket 'Iterations' (id: Iterations)
         
@@ -5150,11 +5414,13 @@ class ND:
         """ > Node <&Node Repeat Output>
 
         Parameters
-        ---------
+        ----------
         geometry : Geometry, optional
             socket 'Geometry' (id: Item_0)
         
-        inspection_index (int): parameter 'inspection_index'
+        inspection_index : int
+            parameter `inspection_index`
+        
 
         Returns
         -------
@@ -5168,7 +5434,7 @@ class ND:
         """ > Node <&Node Replace Material>
 
         Parameters
-        ---------
+        ----------
         geometry : Geometry, optional
             socket 'Geometry' (id: Geometry)
         
@@ -5197,7 +5463,7 @@ class ND:
         """ > Node <&Node Resample Curve>
 
         Parameters
-        ---------
+        ----------
         curve : Curve, optional
             socket 'Curve' (id: Curve)
         
@@ -5213,7 +5479,9 @@ class ND:
         length : Float, optional
             socket 'Length' (id: Length)
         
-        keep_last_segment (bool): parameter 'keep_last_segment'
+        keep_last_segment : bool
+            parameter `keep_last_segment`
+        
 
         Returns
         -------
@@ -5227,7 +5495,7 @@ class ND:
         """ > Node <&Node Reverse Curve>
 
         Parameters
-        ---------
+        ----------
         curve : Curve, optional
             socket 'Curve' (id: Curve)
         
@@ -5252,7 +5520,7 @@ class ND:
         """ > Node <&Node Rotate Instances>
 
         Parameters
-        ---------
+        ----------
         instances : Instances, optional
             socket 'Instances' (id: Instances)
         
@@ -5284,14 +5552,16 @@ class ND:
         """ > Node <&Node SDF Grid Boolean>
 
         Parameters
-        ---------
+        ----------
         grid_1 : Float, optional
             socket 'Grid 1' (id: Grid 1)
         
         grid_2 : Float, optional
             socket 'Grid 2' (id: Grid 2)
         
-        operation (str): parameter 'operation' in ('Intersect', 'Union', 'Difference')
+        operation : Literal['Intersect', 'Union', 'Difference']
+            parameter `operation`
+        
 
         Returns
         -------
@@ -5306,7 +5576,7 @@ class ND:
         """ > Node <&Node SDF Grid Fillet>
 
         Parameters
-        ---------
+        ----------
         grid : Float, optional
             socket 'Grid' (id: Grid)
         
@@ -5326,7 +5596,7 @@ class ND:
         """ > Node <&Node SDF Grid Laplacian>
 
         Parameters
-        ---------
+        ----------
         grid : Float, optional
             socket 'Grid' (id: Grid)
         
@@ -5346,7 +5616,7 @@ class ND:
         """ > Node <&Node SDF Grid Mean>
 
         Parameters
-        ---------
+        ----------
         grid : Float, optional
             socket 'Grid' (id: Grid)
         
@@ -5369,7 +5639,7 @@ class ND:
         """ > Node <&Node SDF Grid Mean Curvature>
 
         Parameters
-        ---------
+        ----------
         grid : Float, optional
             socket 'Grid' (id: Grid)
         
@@ -5389,7 +5659,7 @@ class ND:
         """ > Node <&Node SDF Grid Median>
 
         Parameters
-        ---------
+        ----------
         grid : Float, optional
             socket 'Grid' (id: Grid)
         
@@ -5412,7 +5682,7 @@ class ND:
         """ > Node <&Node SDF Grid Offset>
 
         Parameters
-        ---------
+        ----------
         grid : Float, optional
             socket 'Grid' (id: Grid)
         
@@ -5440,7 +5710,7 @@ class ND:
         """ > Node <&Node Sample Curve>
 
         Parameters
-        ---------
+        ----------
         curves : Curve, optional
             socket 'Curves' (id: Curves)
         
@@ -5456,9 +5726,15 @@ class ND:
         factor : Float, optional
             socket 'Factor' (id: Factor)
         
-        data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Quaternion', '4x4 Matrix')
-        mode (str): parameter 'mode' in ('Factor', 'Length')
-        use_all_curves (bool): parameter 'use_all_curves'
+        data_type : Literal['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Quaternion', '4x4 Matrix']
+            parameter `data_type`
+        
+        mode : Literal['Factor', 'Length']
+            parameter `mode`
+        
+        use_all_curves : bool
+            parameter `use_all_curves`
+        
 
         Returns
         -------
@@ -5479,7 +5755,7 @@ class ND:
         """ > Node <&Node Sample Grid>
 
         Parameters
-        ---------
+        ----------
         grid : Float, optional
             socket 'Grid' (id: Grid)
         
@@ -5489,7 +5765,9 @@ class ND:
         interpolation : menu='Trilinear', optional
             ('Nearest Neighbor', 'Trilinear', 'Triquadratic')
         
-        data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector')
+        data_type : Literal['Float', 'Integer', 'Boolean', 'Vector']
+            parameter `data_type`
+        
 
         Returns
         -------
@@ -5508,7 +5786,7 @@ class ND:
         """ > Node <&Node Sample Grid Index>
 
         Parameters
-        ---------
+        ----------
         grid : Float, optional
             socket 'Grid' (id: Grid)
         
@@ -5521,7 +5799,9 @@ class ND:
         z : Integer, optional
             socket 'Z' (id: Z)
         
-        data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector')
+        data_type : Literal['Float', 'Integer', 'Boolean', 'Vector']
+            parameter `data_type`
+        
 
         Returns
         -------
@@ -5541,7 +5821,7 @@ class ND:
         """ > Node <&Node Sample Index>
 
         Parameters
-        ---------
+        ----------
         geometry : Geometry, optional
             socket 'Geometry' (id: Geometry)
         
@@ -5551,9 +5831,15 @@ class ND:
         index : Integer, optional
             socket 'Index' (id: Index)
         
-        clamp (bool): parameter 'clamp'
-        data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Quaternion', '4x4 Matrix')
-        domain (str): parameter 'domain' in ('Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer')
+        clamp : bool
+            parameter `clamp`
+        
+        data_type : Literal['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Quaternion', '4x4 Matrix']
+            parameter `data_type`
+        
+        domain : Literal['Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer']
+            parameter `domain`
+        
 
         Returns
         -------
@@ -5571,14 +5857,16 @@ class ND:
         """ > Node <&Node Sample Nearest>
 
         Parameters
-        ---------
+        ----------
         geometry : Geometry, optional
             socket 'Geometry' (id: Geometry)
         
         sample_position : Vector, optional
             socket 'Sample Position' (id: Sample Position)
         
-        domain (str): parameter 'domain' in ('Point', 'Edge', 'Face', 'Face Corner')
+        domain : Literal['Point', 'Edge', 'Face', 'Face Corner']
+            parameter `domain`
+        
 
         Returns
         -------
@@ -5599,7 +5887,7 @@ class ND:
         """ > Node <&Node Sample Nearest Surface>
 
         Parameters
-        ---------
+        ----------
         mesh : Mesh, optional
             socket 'Mesh' (id: Mesh)
         
@@ -5615,7 +5903,9 @@ class ND:
         sample_group_id : Integer, optional
             socket 'Sample Group ID' (id: Sample Group ID)
         
-        data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Quaternion', '4x4 Matrix')
+        data_type : Literal['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Quaternion', '4x4 Matrix']
+            parameter `data_type`
+        
 
         Returns
         -------
@@ -5636,7 +5926,7 @@ class ND:
         """ > Node <&Node Sample UV Surface>
 
         Parameters
-        ---------
+        ----------
         mesh : Mesh, optional
             socket 'Mesh' (id: Mesh)
         
@@ -5649,7 +5939,9 @@ class ND:
         sample_uv : Vector, optional
             socket 'Sample UV' (id: Sample UV)
         
-        data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Quaternion', '4x4 Matrix')
+        data_type : Literal['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Quaternion', '4x4 Matrix']
+            parameter `data_type`
+        
 
         Returns
         -------
@@ -5672,7 +5964,7 @@ class ND:
         """ > Node <&Node Scale Elements>
 
         Parameters
-        ---------
+        ----------
         geometry : Geometry, optional
             socket 'Geometry' (id: Geometry)
         
@@ -5691,7 +5983,9 @@ class ND:
         axis : Vector, optional
             socket 'Axis' (id: Axis)
         
-        domain (str): parameter 'domain' in ('Face', 'Edge')
+        domain : Literal['Face', 'Edge']
+            parameter `domain`
+        
 
         Returns
         -------
@@ -5711,7 +6005,7 @@ class ND:
         """ > Node <&Node Scale Instances>
 
         Parameters
-        ---------
+        ----------
         instances : Instances, optional
             socket 'Instances' (id: Instances)
         
@@ -5751,7 +6045,7 @@ class ND:
         """ > Node <&Node Separate Components>
 
         Parameters
-        ---------
+        ----------
         geometry : Geometry, optional
             socket 'Geometry' (id: Geometry)
         
@@ -5773,14 +6067,16 @@ class ND:
         """ > Node <&Node Separate Geometry>
 
         Parameters
-        ---------
+        ----------
         geometry : Geometry, optional
             socket 'Geometry' (id: Geometry)
         
         selection : Boolean, optional
             socket 'Selection' (id: Selection)
         
-        domain (str): parameter 'domain' in ('Point', 'Edge', 'Face', 'Spline', 'Instance', 'Layer')
+        domain : Literal['Point', 'Edge', 'Face', 'Spline', 'Instance', 'Layer']
+            parameter `domain`
+        
 
         Returns
         -------
@@ -5802,7 +6098,7 @@ class ND:
         """ > Node <&Node Set Handle Positions>
 
         Parameters
-        ---------
+        ----------
         curve : Curve, optional
             socket 'Curve' (id: Curve)
         
@@ -5815,7 +6111,9 @@ class ND:
         offset : Vector, optional
             socket 'Offset' (id: Offset)
         
-        mode (str): parameter 'mode' in ('Left', 'Right')
+        mode : Literal['Left', 'Right']
+            parameter `mode`
+        
 
         Returns
         -------
@@ -5834,7 +6132,7 @@ class ND:
         """ > Node <&Node Set Curve Normal>
 
         Parameters
-        ---------
+        ----------
         curve : Curve, optional
             socket 'Curve' (id: Curve)
         
@@ -5860,7 +6158,7 @@ class ND:
         """ > Node <&Node Set Curve Radius>
 
         Parameters
-        ---------
+        ----------
         curve : Curve, optional
             socket 'Curve' (id: Curve)
         
@@ -5883,7 +6181,7 @@ class ND:
         """ > Node <&Node Set Curve Tilt>
 
         Parameters
-        ---------
+        ----------
         curve : Curve, optional
             socket 'Curve' (id: Curve)
         
@@ -5906,7 +6204,7 @@ class ND:
         """ > Node <&Node Set Geometry Bundle>
 
         Parameters
-        ---------
+        ----------
         geometry : Geometry, optional
             socket 'Geometry' (id: Geometry)
         
@@ -5926,7 +6224,7 @@ class ND:
         """ > Node <&Node Set Geometry Name>
 
         Parameters
-        ---------
+        ----------
         geometry : Geometry, optional
             socket 'Geometry' (id: Geometry)
         
@@ -5951,7 +6249,7 @@ class ND:
         """ > Node <&Node Set Grease Pencil Color>
 
         Parameters
-        ---------
+        ----------
         grease_pencil : GreasePencil, optional
             socket 'Grease Pencil' (id: Grease Pencil)
         
@@ -5964,7 +6262,9 @@ class ND:
         opacity : Float, optional
             socket 'Opacity' (id: Opacity)
         
-        mode (str): parameter 'mode' in ('Stroke', 'Fill')
+        mode : Literal['Stroke', 'Fill']
+            parameter `mode`
+        
 
         Returns
         -------
@@ -5981,11 +6281,13 @@ class ND:
         """ > Node <&Node Set Grease Pencil Depth>
 
         Parameters
-        ---------
+        ----------
         grease_pencil : GreasePencil, optional
             socket 'Grease Pencil' (id: Grease Pencil)
         
-        depth_order (str): parameter 'depth_order' in ('2D Layers', '3D Location')
+        depth_order : Literal['2D Layers', '3D Location']
+            parameter `depth_order`
+        
 
         Returns
         -------
@@ -6003,7 +6305,7 @@ class ND:
         """ > Node <&Node Set Grease Pencil Softness>
 
         Parameters
-        ---------
+        ----------
         grease_pencil : GreasePencil, optional
             socket 'Grease Pencil' (id: Grease Pencil)
         
@@ -6030,7 +6332,7 @@ class ND:
         """ > Node <&Node Set Grid Background>
 
         Parameters
-        ---------
+        ----------
         grid : Float, optional
             socket 'Grid' (id: Grid)
         
@@ -6040,7 +6342,9 @@ class ND:
         update_inactive : Boolean, optional
             socket 'Update Inactive' (id: Update Inactive)
         
-        data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector')
+        data_type : Literal['Float', 'Integer', 'Boolean', 'Vector']
+            parameter `data_type`
+        
 
         Returns
         -------
@@ -6057,14 +6361,16 @@ class ND:
         """ > Node <&Node Set Grid Transform>
 
         Parameters
-        ---------
+        ----------
         grid : Float, optional
             socket 'Grid' (id: Grid)
         
         transform : Matrix, optional
             socket 'Transform' (id: Transform)
         
-        data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector')
+        data_type : Literal['Float', 'Integer', 'Boolean', 'Vector']
+            parameter `data_type`
+        
 
         Returns
         -------
@@ -6080,7 +6386,7 @@ class ND:
         """ > Node <&Node Set ID>
 
         Parameters
-        ---------
+        ----------
         geometry : Geometry, optional
             socket 'Geometry' (id: Geometry)
         
@@ -6106,7 +6412,7 @@ class ND:
         """ > Node <&Node Set Instance Transform>
 
         Parameters
-        ---------
+        ----------
         instances : Instances, optional
             socket 'Instances' (id: Instances)
         
@@ -6132,7 +6438,7 @@ class ND:
         """ > Node <&Node Set Material>
 
         Parameters
-        ---------
+        ----------
         geometry : Geometry, optional
             socket 'Geometry' (id: Geometry)
         
@@ -6158,7 +6464,7 @@ class ND:
         """ > Node <&Node Set Material Index>
 
         Parameters
-        ---------
+        ----------
         geometry : Geometry, optional
             socket 'Geometry' (id: Geometry)
         
@@ -6187,7 +6493,7 @@ class ND:
         """ > Node <&Node Set Mesh Normal>
 
         Parameters
-        ---------
+        ----------
         mesh : Mesh, optional
             socket 'Mesh' (id: Mesh)
         
@@ -6200,8 +6506,12 @@ class ND:
         face_sharpness : Boolean, optional
             socket 'Face Sharpness' (id: Face Sharpness)
         
-        domain (str): parameter 'domain' in ('Point', 'Face', 'Face Corner')
-        mode (str): parameter 'mode' in ('Sharpness', 'Free', 'Tangent Space')
+        domain : Literal['Point', 'Face', 'Face Corner']
+            parameter `domain`
+        
+        mode : Literal['Sharpness', 'Free', 'Tangent Space']
+            parameter `mode`
+        
 
         Returns
         -------
@@ -6217,7 +6527,7 @@ class ND:
         """ > Node <&Node Set Point Radius>
 
         Parameters
-        ---------
+        ----------
         points : Cloud, optional
             socket 'Points' (id: Points)
         
@@ -6244,7 +6554,7 @@ class ND:
         """ > Node <&Node Set Position>
 
         Parameters
-        ---------
+        ----------
         geometry : Geometry, optional
             socket 'Geometry' (id: Geometry)
         
@@ -6274,7 +6584,7 @@ class ND:
         """ > Node <&Node Set Shade Smooth>
 
         Parameters
-        ---------
+        ----------
         mesh : Mesh, optional
             socket 'Mesh' (id: Geometry)
         
@@ -6284,7 +6594,9 @@ class ND:
         shade_smooth : Boolean, optional
             socket 'Shade Smooth' (id: Shade Smooth)
         
-        domain (str): parameter 'domain' in ('Edge', 'Face')
+        domain : Literal['Edge', 'Face']
+            parameter `domain`
+        
 
         Returns
         -------
@@ -6299,7 +6611,7 @@ class ND:
         """ > Node <&Node Set Spline Cyclic>
 
         Parameters
-        ---------
+        ----------
         curve : Curve, optional
             socket 'Curve' (id: Geometry)
         
@@ -6325,7 +6637,7 @@ class ND:
         """ > Node <&Node Set Spline Resolution>
 
         Parameters
-        ---------
+        ----------
         curve : Curve, optional
             socket 'Curve' (id: Geometry)
         
@@ -6359,7 +6671,7 @@ class ND:
         """ > Node <&Node Simulation Output>
 
         Parameters
-        ---------
+        ----------
         skip : Boolean, optional
             socket 'Skip' (id: Skip)
         
@@ -6384,7 +6696,7 @@ class ND:
         """ > Node <&Node Sort Elements>
 
         Parameters
-        ---------
+        ----------
         geometry : Geometry, optional
             socket 'Geometry' (id: Geometry)
         
@@ -6397,7 +6709,9 @@ class ND:
         sort_weight : Float, optional
             socket 'Sort Weight' (id: Sort Weight)
         
-        domain (str): parameter 'domain' in ('Point', 'Edge', 'Face', 'Spline', 'Instance')
+        domain : Literal['Point', 'Edge', 'Face', 'Spline', 'Instance']
+            parameter `domain`
+        
 
         Returns
         -------
@@ -6438,7 +6752,7 @@ class ND:
         """ > Node <&Node Split Edges>
 
         Parameters
-        ---------
+        ----------
         mesh : Mesh, optional
             socket 'Mesh' (id: Mesh)
         
@@ -6462,7 +6776,7 @@ class ND:
         """ > Node <&Node Split to Instances>
 
         Parameters
-        ---------
+        ----------
         geometry : Geometry, optional
             socket 'Geometry' (id: Geometry)
         
@@ -6472,7 +6786,9 @@ class ND:
         group_id : Integer, optional
             socket 'Group ID' (id: Group ID)
         
-        domain (str): parameter 'domain' in ('Point', 'Edge', 'Face', 'Spline', 'Instance', 'Layer')
+        domain : Literal['Point', 'Edge', 'Face', 'Spline', 'Instance', 'Layer']
+            parameter `domain`
+        
 
         Returns
         -------
@@ -6495,7 +6811,7 @@ class ND:
         """ > Node <&Node Store Named Attribute>
 
         Parameters
-        ---------
+        ----------
         geometry : Geometry, optional
             socket 'Geometry' (id: Geometry)
         
@@ -6508,8 +6824,12 @@ class ND:
         value : Float, optional
             socket 'Value' (id: Value)
         
-        data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Quaternion', '4x4 Matrix', '8-Bit Integer', '2D Vector', 'Byte Color')
-        domain (str): parameter 'domain' in ('Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer')
+        data_type : Literal['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Quaternion', '4x4 Matrix', '8-Bit Integer', '2D Vector', 'Byte Color']
+            parameter `data_type`
+        
+        domain : Literal['Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer']
+            parameter `domain`
+        
 
         Returns
         -------
@@ -6528,7 +6848,7 @@ class ND:
         """ > Node <&Node Store Named Grid>
 
         Parameters
-        ---------
+        ----------
         volume : Volume, optional
             socket 'Volume' (id: Volume)
         
@@ -6538,7 +6858,9 @@ class ND:
         grid : Float, optional
             socket 'Grid' (id: Grid)
         
-        data_type (str): parameter 'data_type' in ('Boolean', 'Float', 'Integer', 'Vector')
+        data_type : Literal['Boolean', 'Float', 'Integer', 'Vector']
+            parameter `data_type`
+        
 
         Returns
         -------
@@ -6552,7 +6874,7 @@ class ND:
         """ > Node <&Node Join Strings>
 
         Parameters
-        ---------
+        ----------
         delimiter : String, optional
             socket 'Delimiter' (id: Delimiter)
         
@@ -6584,7 +6906,7 @@ class ND:
         """ > Node <&Node String to Curves>
 
         Parameters
-        ---------
+        ----------
         string : String, optional
             socket 'String' (id: String)
         
@@ -6636,7 +6958,7 @@ class ND:
         """ > Node <&Node Subdivide Curve>
 
         Parameters
-        ---------
+        ----------
         curve : Curve, optional
             socket 'Curve' (id: Curve)
         
@@ -6656,7 +6978,7 @@ class ND:
         """ > Node <&Node Subdivide Mesh>
 
         Parameters
-        ---------
+        ----------
         mesh : Mesh, optional
             socket 'Mesh' (id: Mesh)
         
@@ -6683,7 +7005,7 @@ class ND:
         """ > Node <&Node Subdivision Surface>
 
         Parameters
-        ---------
+        ----------
         mesh : Mesh, optional
             socket 'Mesh' (id: Mesh)
         
@@ -6722,7 +7044,7 @@ class ND:
         """ > Node <&Node Switch>
 
         Parameters
-        ---------
+        ----------
         switch : Boolean, optional
             socket 'Switch' (id: Switch)
         
@@ -6732,7 +7054,9 @@ class ND:
         true : Float, optional
             socket 'True' (id: True)
         
-        input_type (str): parameter 'input_type' in ('Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Rotation', 'Matrix', 'String', 'Menu', 'Object', 'Image', 'Geometry', 'Collection', 'Material', 'Bundle', 'Closure', 'Font')
+        input_type : Literal['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Rotation', 'Matrix', 'String', 'Menu', 'Object', 'Image', 'Geometry', 'Collection', 'Material', 'Bundle', 'Closure', 'Font']
+            parameter `input_type`
+        
 
         Returns
         -------
@@ -6760,8 +7084,10 @@ class ND:
         """ > Node <&Node Active Element>
 
         Parameters
-        ---------
-        domain (str): parameter 'domain' in ('Point', 'Edge', 'Face', 'Layer')
+        ----------
+        domain : Literal['Point', 'Edge', 'Face', 'Layer']
+            parameter `domain`
+        
 
         Returns
         -------
@@ -6817,7 +7143,7 @@ class ND:
         """ > Node <&Node Set Face Set>
 
         Parameters
-        ---------
+        ----------
         mesh : Mesh, optional
             socket 'Mesh' (id: Mesh)
         
@@ -6844,15 +7170,19 @@ class ND:
         """ > Node <&Node Set Selection>
 
         Parameters
-        ---------
+        ----------
         geometry : Geometry, optional
             socket 'Geometry' (id: Geometry)
         
         selection : Boolean, optional
             socket 'Selection' (id: Selection)
         
-        domain (str): parameter 'domain' in ('Point', 'Edge', 'Face', 'Spline')
-        selection_type (str): parameter 'selection_type' in ('Boolean', 'Float')
+        domain : Literal['Point', 'Edge', 'Face', 'Spline']
+            parameter `domain`
+        
+        selection_type : Literal['Boolean', 'Float']
+            parameter `selection_type`
+        
 
         Returns
         -------
@@ -6874,7 +7204,7 @@ class ND:
         """ > Node <&Node Transform Geometry>
 
         Parameters
-        ---------
+        ----------
         geometry : Geometry, optional
             socket 'Geometry' (id: Geometry)
         
@@ -6910,7 +7240,7 @@ class ND:
         """ > Node <&Node Translate Instances>
 
         Parameters
-        ---------
+        ----------
         instances : Instances, optional
             socket 'Instances' (id: Instances)
         
@@ -6940,7 +7270,7 @@ class ND:
         """ > Node <&Node Triangulate>
 
         Parameters
-        ---------
+        ----------
         mesh : Mesh, optional
             socket 'Mesh' (id: Mesh)
         
@@ -6973,7 +7303,7 @@ class ND:
         """ > Node <&Node Trim Curve>
 
         Parameters
-        ---------
+        ----------
         curve : Curve, optional
             socket 'Curve' (id: Curve)
         
@@ -6992,7 +7322,9 @@ class ND:
         end_1 : Float, optional
             socket 'End' (id: End_001)
         
-        mode (str): parameter 'mode' in ('Factor', 'Length')
+        mode : Literal['Factor', 'Length']
+            parameter `mode`
+        
 
         Returns
         -------
@@ -7014,7 +7346,7 @@ class ND:
         """ > Node <&Node Pack UV Islands>
 
         Parameters
-        ---------
+        ----------
         uv : Vector, optional
             socket 'UV' (id: UV)
         
@@ -7049,7 +7381,7 @@ class ND:
         """ > Node <&Node UV Tangent>
 
         Parameters
-        ---------
+        ----------
         method : menu='Exact', optional
             ('Exact', 'Fast')
         
@@ -7076,7 +7408,7 @@ class ND:
         """ > Node <&Node UV Unwrap>
 
         Parameters
-        ---------
+        ----------
         selection : Boolean, optional
             socket 'Selection' (id: Selection)
         
@@ -7111,7 +7443,7 @@ class ND:
         """ > Node <&Node Vertex of Corner>
 
         Parameters
-        ---------
+        ----------
         corner_index : Integer, optional
             socket 'Corner Index' (id: Corner Index)
         
@@ -7132,9 +7464,18 @@ class ND:
         """ > Node <&Node Viewer>
 
         Parameters
-        ---------
-        domain (str): parameter 'domain' in ('Auto', 'Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer')
-        ui_shortcut (int): parameter 'ui_shortcut'
+        ----------
+        named_sockets : dict, default={}
+            Sockets created with string names
+        
+        domain : Literal['Auto', 'Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer']
+            parameter `domain`
+        
+        ui_shortcut : int
+            parameter `ui_shortcut`
+        
+        sockets : dict, default={}
+            Socket created with python name attributes
 
         Returns
         -------
@@ -7169,7 +7510,7 @@ class ND:
         """ > Node <&Node Volume Cube>
 
         Parameters
-        ---------
+        ----------
         density : Float, optional
             socket 'Density' (id: Density)
         
@@ -7210,7 +7551,7 @@ class ND:
         """ > Node <&Node Volume to Mesh>
 
         Parameters
-        ---------
+        ----------
         volume : Volume, optional
             socket 'Volume' (id: Volume)
         
@@ -7245,14 +7586,16 @@ class ND:
         """ > Node <&Node Warning>
 
         Parameters
-        ---------
+        ----------
         show : Boolean, optional
             socket 'Show' (id: Show)
         
         message : String, optional
             socket 'Message' (id: Message)
         
-        warning_type (str): parameter 'warning_type' in ('Error', 'Warning', 'Info')
+        warning_type : Literal['Error', 'Warning', 'Info']
+            parameter `warning_type`
+        
 
         Returns
         -------
@@ -7278,10 +7621,16 @@ class ND:
         """ > Node <&Node Closure Output>
 
         Parameters
-        ---------
-        active_input_index (int): parameter 'active_input_index'
-        active_output_index (int): parameter 'active_output_index'
-        define_signature (bool): parameter 'define_signature'
+        ----------
+        active_input_index : int
+            parameter `active_input_index`
+        
+        active_output_index : int
+            parameter `active_output_index`
+        
+        define_signature : bool
+            parameter `define_signature`
+        
 
         Returns
         -------
@@ -7295,8 +7644,15 @@ class ND:
         """ > Node <&Node Combine Bundle>
 
         Parameters
-        ---------
-        define_signature (bool): parameter 'define_signature'
+        ----------
+        named_sockets : dict, default={}
+            Sockets created with string names
+        
+        define_signature : bool
+            parameter `define_signature`
+        
+        sockets : dict, default={}
+            Socket created with python name attributes
 
         Returns
         -------
@@ -7313,14 +7669,16 @@ class ND:
         """ > Node <&Node Enable Output>
 
         Parameters
-        ---------
+        ----------
         enable : Boolean, optional
             socket 'Enable' (id: Enable)
         
         value : Float, optional
             socket 'Value' (id: Value)
         
-        data_type (str): parameter 'data_type' in ('Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Rotation', 'Matrix', 'String', 'Menu', 'Object', 'Image', 'Geometry', 'Collection', 'Material', 'Bundle', 'Closure', 'Font')
+        data_type : Literal['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Rotation', 'Matrix', 'String', 'Menu', 'Object', 'Image', 'Geometry', 'Collection', 'Material', 'Bundle', 'Closure', 'Font']
+            parameter `data_type`
+        
 
         Returns
         -------
@@ -7338,13 +7696,19 @@ class ND:
         """ > Node <&Node Evaluate Closure>
 
         Parameters
-        ---------
+        ----------
         closure : Closure, optional
             socket 'Closure' (id: Closure)
         
-        active_input_index (int): parameter 'active_input_index'
-        active_output_index (int): parameter 'active_output_index'
-        define_signature (bool): parameter 'define_signature'
+        active_input_index : int
+            parameter `active_input_index`
+        
+        active_output_index : int
+            parameter `active_output_index`
+        
+        define_signature : bool
+            parameter `define_signature`
+        
 
         Returns
         -------
@@ -7358,10 +7722,16 @@ class ND:
         """ > Node <&Node Frame>
 
         Parameters
-        ---------
-        label_size (int): parameter 'label_size'
-        shrink (bool): parameter 'shrink'
-        text (NoneType): parameter 'text'
+        ----------
+        label_size : int
+            parameter `label_size`
+        
+        shrink : bool
+            parameter `shrink`
+        
+        text : NoneType
+            parameter `text`
+        
 
         Returns
         -------
@@ -7380,7 +7750,7 @@ class ND:
         """ > Node <&Node Get Bundle Item>
 
         Parameters
-        ---------
+        ----------
         bundle : Bundle, optional
             socket 'Bundle' (id: Bundle)
         
@@ -7390,8 +7760,12 @@ class ND:
         remove : Boolean, optional
             socket 'Remove' (id: Remove)
         
-        socket_type (str): parameter 'socket_type' in ('Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Rotation', 'Matrix', 'String', 'Menu', 'Object', 'Image', 'Geometry', 'Collection', 'Material', 'Bundle', 'Closure', 'Font')
-        structure_type (str): parameter 'structure_type' in ('Auto', 'Dynamic', 'Field', 'Grid', 'List', 'Single')
+        socket_type : Literal['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Rotation', 'Matrix', 'String', 'Menu', 'Object', 'Image', 'Geometry', 'Collection', 'Material', 'Bundle', 'Closure', 'Font']
+            parameter `socket_type`
+        
+        structure_type : Literal['Auto', 'Dynamic', 'Field', 'Grid', 'List', 'Single']
+            parameter `structure_type`
+        
 
         Returns
         -------
@@ -7420,8 +7794,10 @@ class ND:
         """ > Node <&Node Group Output>
 
         Parameters
-        ---------
-        is_active_output (bool): parameter 'is_active_output'
+        ----------
+        is_active_output : bool
+            parameter `is_active_output`
+        
 
         Returns
         -------
@@ -7435,7 +7811,7 @@ class ND:
         """ > Node <&Node Join Bundle>
 
         Parameters
-        ---------
+        ----------
         bundle : Bundle, optional
             socket 'Bundle' (id: Bundle)
         
@@ -7452,11 +7828,13 @@ class ND:
         """ > Node <&Node Reroute>
 
         Parameters
-        ---------
+        ----------
         input : Color, optional
             socket 'Input' (id: Input)
         
-        socket_idname (str): parameter 'socket_idname'
+        socket_idname : str
+            parameter `socket_idname`
+        
 
         Returns
         -------
@@ -7474,11 +7852,18 @@ class ND:
         """ > Node <&Node Separate Bundle>
 
         Parameters
-        ---------
+        ----------
+        named_sockets : dict, default={}
+            Sockets created with string names
+        
         bundle : Bundle, optional
             socket 'Bundle' (id: Bundle)
         
-        define_signature (bool): parameter 'define_signature'
+        define_signature : bool
+            parameter `define_signature`
+        
+        sockets : dict, default={}
+            Socket created with python name attributes
 
         Returns
         -------
@@ -7497,7 +7882,7 @@ class ND:
         """ > Node <&Node Store Bundle Item>
 
         Parameters
-        ---------
+        ----------
         bundle : Bundle, optional
             socket 'Bundle' (id: Bundle)
         
@@ -7507,8 +7892,12 @@ class ND:
         item : Float, optional
             socket 'Item' (id: Item)
         
-        socket_type (str): parameter 'socket_type' in ('Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Rotation', 'Matrix', 'String', 'Menu', 'Object', 'Image', 'Geometry', 'Collection', 'Material', 'Bundle', 'Closure', 'Font')
-        structure_type (str): parameter 'structure_type' in ('Auto', 'Dynamic', 'Field', 'Grid', 'List', 'Single')
+        socket_type : Literal['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Rotation', 'Matrix', 'String', 'Menu', 'Object', 'Image', 'Geometry', 'Collection', 'Material', 'Bundle', 'Closure', 'Font']
+            parameter `socket_type`
+        
+        structure_type : Literal['Auto', 'Dynamic', 'Field', 'Grid', 'List', 'Single']
+            parameter `structure_type`
+        
 
         Returns
         -------
@@ -7524,7 +7913,7 @@ class ND:
         """ > Node <&Node Blackbody>
 
         Parameters
-        ---------
+        ----------
         temperature : Float, optional
             socket 'Temperature' (id: Temperature)
         
@@ -7545,7 +7934,7 @@ class ND:
         """ > Node <&Node Clamp>
 
         Parameters
-        ---------
+        ----------
         value : Float, optional
             socket 'Value' (id: Value)
         
@@ -7555,7 +7944,9 @@ class ND:
         max : Float, optional
             socket 'Max' (id: Max)
         
-        clamp_type (str): parameter 'clamp_type' in ('Min Max', 'Range')
+        clamp_type : Literal['Min Max', 'Range']
+            parameter `clamp_type`
+        
 
         Returns
         -------
@@ -7570,7 +7961,7 @@ class ND:
         """ > Node <&Node Combine XYZ>
 
         Parameters
-        ---------
+        ----------
         x : Float, optional
             socket 'X' (id: X)
         
@@ -7593,7 +7984,7 @@ class ND:
         """ > Node <&Node Float Curve>
 
         Parameters
-        ---------
+        ----------
         value : Float, optional
             socket 'Value' (id: Value)
         
@@ -7613,7 +8004,7 @@ class ND:
         """ > Node <&Node Gamma>
 
         Parameters
-        ---------
+        ----------
         color : Color, optional
             socket 'Color' (id: Color)
         
@@ -7648,7 +8039,7 @@ class ND:
         """ > Node <&Node Map Range>
 
         Parameters
-        ---------
+        ----------
         value : Float, optional
             socket 'Value' (id: Value)
         
@@ -7685,9 +8076,15 @@ class ND:
         steps_1 : Vector, optional
             socket 'Steps' (id: Steps_FLOAT3)
         
-        clamp (bool): parameter 'clamp'
-        data_type (str): parameter 'data_type' in ('Float', 'Vector')
-        interpolation_type (str): parameter 'interpolation_type' in ('Linear', 'Stepped Linear', 'Smooth Step', 'Smoother Step')
+        clamp : bool
+            parameter `clamp`
+        
+        data_type : Literal['Float', 'Vector']
+            parameter `data_type`
+        
+        interpolation_type : Literal['Linear', 'Stepped Linear', 'Smooth Step', 'Smoother Step']
+            parameter `interpolation_type`
+        
 
         Returns
         -------
@@ -7707,7 +8104,7 @@ class ND:
         """ > Node <&Node Math>
 
         Parameters
-        ---------
+        ----------
         value : Float, optional
             socket 'Value' (id: Value)
         
@@ -7717,8 +8114,12 @@ class ND:
         value_2 : Float, optional
             socket 'Value' (id: Value_002)
         
-        operation (str): parameter 'operation' in ('Add', 'Subtract', 'Multiply', 'Divide', 'Multiply Add', 'Power', 'Logarithm', 'Square Root', 'Inverse Square Root', 'Absolute', 'Exponent', 'Minimum', 'Maximum', 'Less Than', 'Greater Than', 'Sign', 'Compare', 'Smooth Minimum', 'Smooth Maximum', 'Round', 'Floor', 'Ceil', 'Truncate', 'Fraction', 'Truncated Modulo', 'Floored Modulo', 'Wrap', 'Snap', 'Ping-Pong', 'Sine', 'Cosine', 'Tangent', 'Arcsine', 'Arccosine', 'Arctangent', 'Arctan2', 'Hyperbolic Sine', 'Hyperbolic Cosine', 'Hyperbolic Tangent', 'To Radians', 'To Degrees')
-        use_clamp (bool): parameter 'use_clamp'
+        operation : Literal['Add', 'Subtract', 'Multiply', 'Divide', 'Multiply Add', 'Power', 'Logarithm', 'Square Root', 'Inverse Square Root', 'Absolute', 'Exponent', 'Minimum', 'Maximum', 'Less Than', 'Greater Than', 'Sign', 'Compare', 'Smooth Minimum', 'Smooth Maximum', 'Round', 'Floor', 'Ceil', 'Truncate', 'Fraction', 'Truncated Modulo', 'Floored Modulo', 'Wrap', 'Snap', 'Ping-Pong', 'Sine', 'Cosine', 'Tangent', 'Arcsine', 'Arccosine', 'Arctangent', 'Arctan2', 'Hyperbolic Sine', 'Hyperbolic Cosine', 'Hyperbolic Tangent', 'To Radians', 'To Degrees']
+            parameter `operation`
+        
+        use_clamp : bool
+            parameter `use_clamp`
+        
 
         Returns
         -------
@@ -7747,7 +8148,7 @@ class ND:
         """ > Node <&Node Mix>
 
         Parameters
-        ---------
+        ----------
         a : Float, optional
             socket 'A' (id: A_Float)
         
@@ -7775,11 +8176,21 @@ class ND:
         factor : Vector, optional
             socket 'Factor' (id: Factor_Vector)
         
-        blend_type (str): parameter 'blend_type' in ('Mix', 'Darken', 'Multiply', 'Color Burn', 'Lighten', 'Screen', 'Color Dodge', 'Add', 'Overlay', 'Soft Light', 'Linear Light', 'Difference', 'Exclusion', 'Subtract', 'Divide', 'Hue', 'Saturation', 'Color', 'Value')
-        clamp_factor (bool): parameter 'clamp_factor'
-        clamp_result (bool): parameter 'clamp_result'
-        data_type (str): parameter 'data_type' in ('Float', 'Vector', 'Color', 'Rotation')
-        factor_mode (str): parameter 'factor_mode' in ('Uniform', 'Non-Uniform')
+        blend_type : Literal['Mix', 'Darken', 'Multiply', 'Color Burn', 'Lighten', 'Screen', 'Color Dodge', 'Add', 'Overlay', 'Soft Light', 'Linear Light', 'Difference', 'Exclusion', 'Subtract', 'Divide', 'Hue', 'Saturation', 'Color', 'Value']
+            parameter `blend_type`
+        
+        clamp_factor : bool
+            parameter `clamp_factor`
+        
+        clamp_result : bool
+            parameter `clamp_result`
+        
+        data_type : Literal['Float', 'Vector', 'Color', 'Rotation']
+            parameter `data_type`
+        
+        factor_mode : Literal['Uniform', 'Non-Uniform']
+            parameter `factor_mode`
+        
 
         Returns
         -------
@@ -7795,7 +8206,7 @@ class ND:
         """ > Node <&Node RGB Curves>
 
         Parameters
-        ---------
+        ----------
         color : Color, optional
             socket 'Color' (id: Color)
         
@@ -7819,7 +8230,7 @@ class ND:
         """ > Node <&Node Radial Tiling>
 
         Parameters
-        ---------
+        ----------
         vector : Vector, optional
             socket 'Vector' (id: Vector)
         
@@ -7829,7 +8240,9 @@ class ND:
         roundness : Float, optional
             socket 'Roundness' (id: Roundness)
         
-        normalize (bool): parameter 'normalize'
+        normalize : bool
+            parameter `normalize`
+        
 
         Returns
         -------
@@ -7845,7 +8258,7 @@ class ND:
         """ > Node <&Node Separate XYZ>
 
         Parameters
-        ---------
+        ----------
         vector : Vector, optional
             socket 'Vector' (id: Vector)
         
@@ -7878,7 +8291,7 @@ class ND:
         """ > Node <&Node Brick Texture>
 
         Parameters
-        ---------
+        ----------
         vector : Vector, optional
             socket 'Vector' (id: Vector)
         
@@ -7909,10 +8322,18 @@ class ND:
         row_height : Float, optional
             socket 'Row Height' (id: Row Height)
         
-        offset (float): parameter 'offset'
-        offset_frequency (int): parameter 'offset_frequency'
-        squash (float): parameter 'squash'
-        squash_frequency (int): parameter 'squash_frequency'
+        offset : float
+            parameter `offset`
+        
+        offset_frequency : int
+            parameter `offset_frequency`
+        
+        squash : float
+            parameter `squash`
+        
+        squash_frequency : int
+            parameter `squash_frequency`
+        
 
         Returns
         -------
@@ -7932,7 +8353,7 @@ class ND:
         """ > Node <&Node Checker Texture>
 
         Parameters
-        ---------
+        ----------
         vector : Vector, optional
             socket 'Vector' (id: Vector)
         
@@ -7967,7 +8388,7 @@ class ND:
         """ > Node <&Node Gabor Texture>
 
         Parameters
-        ---------
+        ----------
         vector : Vector, optional
             socket 'Vector' (id: Vector)
         
@@ -7986,7 +8407,9 @@ class ND:
         orientation_1 : Vector, optional
             socket 'Orientation' (id: Orientation 3D)
         
-        gabor_type (str): parameter 'gabor_type' in ('2D', '3D')
+        gabor_type : Literal['2D', '3D']
+            parameter `gabor_type`
+        
 
         Returns
         -------
@@ -8005,11 +8428,13 @@ class ND:
         """ > Node <&Node Gradient Texture>
 
         Parameters
-        ---------
+        ----------
         vector : Vector, optional
             socket 'Vector' (id: Vector)
         
-        gradient_type (str): parameter 'gradient_type' in ('Linear', 'Quadratic', 'Easing', 'Diagonal', 'Spherical', 'Quadratic Sphere', 'Radial')
+        gradient_type : Literal['Linear', 'Quadratic', 'Easing', 'Diagonal', 'Spherical', 'Quadratic Sphere', 'Radial']
+            parameter `gradient_type`
+        
 
         Returns
         -------
@@ -8030,7 +8455,7 @@ class ND:
         """ > Node <&Node Magic Texture>
 
         Parameters
-        ---------
+        ----------
         vector : Vector, optional
             socket 'Vector' (id: Vector)
         
@@ -8040,7 +8465,9 @@ class ND:
         distortion : Float, optional
             socket 'Distortion' (id: Distortion)
         
-        turbulence_depth (int): parameter 'turbulence_depth'
+        turbulence_depth : int
+            parameter `turbulence_depth`
+        
 
         Returns
         -------
@@ -8068,7 +8495,7 @@ class ND:
         """ > Node <&Node Noise Texture>
 
         Parameters
-        ---------
+        ----------
         vector : Vector, optional
             socket 'Vector' (id: Vector)
         
@@ -8096,9 +8523,15 @@ class ND:
         distortion : Float, optional
             socket 'Distortion' (id: Distortion)
         
-        noise_dimensions (str): parameter 'noise_dimensions' in ('1D', '2D', '3D', '4D')
-        noise_type (str): parameter 'noise_type' in ('Multifractal', 'Ridged Multifractal', 'Hybrid Multifractal', 'fBM', 'Hetero Terrain')
-        normalize (bool): parameter 'normalize'
+        noise_dimensions : Literal['1D', '2D', '3D', '4D']
+            parameter `noise_dimensions`
+        
+        noise_type : Literal['Multifractal', 'Ridged Multifractal', 'Hybrid Multifractal', 'fBM', 'Hetero Terrain']
+            parameter `noise_type`
+        
+        normalize : bool
+            parameter `normalize`
+        
 
         Returns
         -------
@@ -8129,7 +8562,7 @@ class ND:
         """ > Node <&Node Voronoi Texture>
 
         Parameters
-        ---------
+        ----------
         vector : Vector, optional
             socket 'Vector' (id: Vector)
         
@@ -8157,10 +8590,18 @@ class ND:
         randomness : Float, optional
             socket 'Randomness' (id: Randomness)
         
-        distance (str): parameter 'distance' in ('Euclidean', 'Manhattan', 'Chebychev', 'Minkowski')
-        feature (str): parameter 'feature' in ('F1', 'F2', 'Smooth F1', 'Distance to Edge', 'N-Sphere Radius')
-        normalize (bool): parameter 'normalize'
-        voronoi_dimensions (str): parameter 'voronoi_dimensions' in ('1D', '2D', '3D', '4D')
+        distance : Literal['Euclidean', 'Manhattan', 'Chebychev', 'Minkowski']
+            parameter `distance`
+        
+        feature : Literal['F1', 'F2', 'Smooth F1', 'Distance to Edge', 'N-Sphere Radius']
+            parameter `feature`
+        
+        normalize : bool
+            parameter `normalize`
+        
+        voronoi_dimensions : Literal['1D', '2D', '3D', '4D']
+            parameter `voronoi_dimensions`
+        
 
         Returns
         -------
@@ -8190,7 +8631,7 @@ class ND:
         """ > Node <&Node Wave Texture>
 
         Parameters
-        ---------
+        ----------
         vector : Vector, optional
             socket 'Vector' (id: Vector)
         
@@ -8212,10 +8653,18 @@ class ND:
         phase_offset : Float, optional
             socket 'Phase Offset' (id: Phase Offset)
         
-        bands_direction (str): parameter 'bands_direction' in ('X', 'Y', 'Z', 'Diagonal')
-        rings_direction (str): parameter 'rings_direction' in ('X', 'Y', 'Z', 'Spherical')
-        wave_profile (str): parameter 'wave_profile' in ('Sine', 'Saw', 'Triangle')
-        wave_type (str): parameter 'wave_type' in ('Bands', 'Rings')
+        bands_direction : Literal['X', 'Y', 'Z', 'Diagonal']
+            parameter `bands_direction`
+        
+        rings_direction : Literal['X', 'Y', 'Z', 'Spherical']
+            parameter `rings_direction`
+        
+        wave_profile : Literal['Sine', 'Saw', 'Triangle']
+            parameter `wave_profile`
+        
+        wave_type : Literal['Bands', 'Rings']
+            parameter `wave_type`
+        
 
         Returns
         -------
@@ -8238,14 +8687,16 @@ class ND:
         """ > Node <&Node White Noise Texture>
 
         Parameters
-        ---------
+        ----------
         vector : Vector, optional
             socket 'Vector' (id: Vector)
         
         w : Float, optional
             socket 'W' (id: W)
         
-        noise_dimensions (str): parameter 'noise_dimensions' in ('1D', '2D', '3D', '4D')
+        noise_dimensions : Literal['1D', '2D', '3D', '4D']
+            parameter `noise_dimensions`
+        
 
         Returns
         -------
@@ -8270,9 +8721,13 @@ class ND:
 
         Parameters
         ----------
-        - fac (Float = None)
-        - stops (list of tuple(float, tuple)) : stops made of (float, color as tuple of floats)
-        - interpolation in ('EASE', 'CARDINAL', 'LINEAR', 'B_SPLINE', 'CONSTANT')
+        fac : Float, optional
+
+        stops : list[tuple[float, tuple]]
+            Stops made of (float, color as tuple of floats)
+
+        interpolation : {'EASE', 'CARDINAL', 'LINEAR', 'B_SPLINE', 'CONSTANT'}
+
         """
         node = ColorRamp(fac=fac, stops=stops, interpolation=interpolation)
         return node._out
@@ -8293,7 +8748,7 @@ class ND:
         """ > Node <&Node Vector Curves>
 
         Parameters
-        ---------
+        ----------
         vector : Vector, optional
             socket 'Vector' (id: Vector)
         
@@ -8318,7 +8773,7 @@ class ND:
         """ > Node <&Node Vector Math>
 
         Parameters
-        ---------
+        ----------
         vector : Vector, optional
             socket 'Vector' (id: Vector)
         
@@ -8331,7 +8786,9 @@ class ND:
         scale : Float, optional
             socket 'Scale' (id: Scale)
         
-        operation (str): parameter 'operation' in ('Add', 'Subtract', 'Multiply', 'Divide', 'Multiply Add', 'Cross Product', 'Project', 'Reflect', 'Refract', 'Faceforward', 'Dot Product', 'Distance', 'Length', 'Scale', 'Normalize', 'Absolute', 'Power', 'Sign', 'Minimum', 'Maximum', 'Round', 'Floor', 'Ceil', 'Fraction', 'Modulo', 'Wrap', 'Snap', 'Sine', 'Cosine', 'Tangent')
+        operation : Literal['Add', 'Subtract', 'Multiply', 'Divide', 'Multiply Add', 'Cross Product', 'Project', 'Reflect', 'Refract', 'Faceforward', 'Dot Product', 'Distance', 'Length', 'Scale', 'Normalize', 'Absolute', 'Power', 'Sign', 'Minimum', 'Maximum', 'Round', 'Floor', 'Ceil', 'Fraction', 'Modulo', 'Wrap', 'Snap', 'Sine', 'Cosine', 'Tangent']
+            parameter `operation`
+        
 
         Returns
         -------
@@ -8353,7 +8810,7 @@ class ND:
         """ > Node <&Node Vector Rotate>
 
         Parameters
-        ---------
+        ----------
         vector : Vector, optional
             socket 'Vector' (id: Vector)
         
@@ -8369,8 +8826,12 @@ class ND:
         rotation : Vector, optional
             socket 'Rotation' (id: Rotation)
         
-        invert (bool): parameter 'invert'
-        rotation_type (str): parameter 'rotation_type' in ('Axis Angle', 'X Axis', 'Y Axis', 'Z Axis', 'Euler')
+        invert : bool
+            parameter `invert`
+        
+        rotation_type : Literal['Axis Angle', 'X Axis', 'Y Axis', 'Z Axis', 'Euler']
+            parameter `rotation_type`
+        
 
         Returns
         -------

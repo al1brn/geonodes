@@ -1,4 +1,4 @@
-# Generated 2026-04-04 12:37:35
+# Generated 2026-04-04 17:31:31
 
 from __future__ import annotations
 from .. sockettype import SocketType
@@ -46,7 +46,7 @@ class Float(Socket):
         | Parameter | `operation` | `'LESS_THAN'` |
 
         Parameters
-        ---------
+        ----------
         b : Float, optional
             socket 'B' (id: B)
         
@@ -71,7 +71,7 @@ class Float(Socket):
         | Parameter | `operation` | `'LESS_EQUAL'` |
 
         Parameters
-        ---------
+        ----------
         b : Float, optional
             socket 'B' (id: B)
         
@@ -96,7 +96,7 @@ class Float(Socket):
         | Parameter | `operation` | `'GREATER_THAN'` |
 
         Parameters
-        ---------
+        ----------
         b : Float, optional
             socket 'B' (id: B)
         
@@ -121,7 +121,7 @@ class Float(Socket):
         | Parameter | `operation` | `'GREATER_EQUAL'` |
 
         Parameters
-        ---------
+        ----------
         b : Float, optional
             socket 'B' (id: B)
         
@@ -146,7 +146,7 @@ class Float(Socket):
         | Parameter | `operation` | `'EQUAL'`   |
 
         Parameters
-        ---------
+        ----------
         b : Float, optional
             socket 'B' (id: B)
         
@@ -174,7 +174,7 @@ class Float(Socket):
         | Parameter | `operation` | `'NOT_EQUAL'` |
 
         Parameters
-        ---------
+        ----------
         b : Float, optional
             socket 'B' (id: B)
         
@@ -200,8 +200,10 @@ class Float(Socket):
         | Socket | Float | `self` |
 
         Parameters
-        ---------
-        rounding_mode (str): parameter 'rounding_mode' in ('Round', 'Floor', 'Ceiling', 'Truncate')
+        ----------
+        rounding_mode : Literal['Round', 'Floor', 'Ceiling', 'Truncate']
+            parameter `rounding_mode`
+        
 
         Returns
         -------
@@ -222,7 +224,7 @@ class Float(Socket):
         | Parameter | `data_type` | `'FLOAT'` |
 
         Parameters
-        ---------
+        ----------
         seed : Integer, optional
             socket 'Seed' (id: Seed)
         
@@ -249,7 +251,7 @@ class Float(Socket):
         | Parameter | `data_type` | `'FLOAT'` |
 
         Parameters
-        ---------
+        ----------
         min : Float, optional
             socket 'Min' (id: Min_001)
         
@@ -281,7 +283,7 @@ class Float(Socket):
         | Parameter | `data_type` | `'FLOAT'` |
 
         Parameters
-        ---------
+        ----------
         decimals : Integer, optional
             socket 'Decimals' (id: Decimals)
         
@@ -304,7 +306,7 @@ class Float(Socket):
         | Parameter | `data_type` | `'FLOAT'` |
 
         Parameters
-        ---------
+        ----------
         iterations : Integer, optional
             socket 'Iterations' (id: Iterations)
         
@@ -329,7 +331,7 @@ class Float(Socket):
         """ > Node <&Node Dial Gizmo>
 
         Parameters
-        ---------
+        ----------
         value : Float, optional
             socket 'Value' (id: Value)
         
@@ -345,7 +347,9 @@ class Float(Socket):
         radius : Float, optional
             socket 'Radius' (id: Radius)
         
-        color_id (str): parameter 'color_id' in ('Primary', 'Secondary', 'X', 'Y', 'Z')
+        color_id : Literal['Primary', 'Secondary', 'X', 'Y', 'Z']
+            parameter `color_id`
+        
 
         Returns
         -------
@@ -364,7 +368,7 @@ class Float(Socket):
         """ > Node <&Node Linear Gizmo>
 
         Parameters
-        ---------
+        ----------
         value : Float, optional
             socket 'Value' (id: Value)
         
@@ -374,8 +378,12 @@ class Float(Socket):
         direction : Vector, optional
             socket 'Direction' (id: Direction)
         
-        color_id (str): parameter 'color_id' in ('Primary', 'Secondary', 'X', 'Y', 'Z')
-        draw_style (str): parameter 'draw_style' in ('Arrow', 'Cross', 'Box')
+        color_id : Literal['Primary', 'Secondary', 'X', 'Y', 'Z']
+            parameter `color_id`
+        
+        draw_style : Literal['Arrow', 'Cross', 'Box']
+            parameter `draw_style`
+        
 
         Returns
         -------
@@ -396,7 +404,7 @@ class Float(Socket):
         | Socket | Grid | `self` |
 
         Parameters
-        ---------
+        ----------
         threshold : Float, optional
             socket 'Threshold' (id: Threshold)
         
@@ -422,7 +430,7 @@ class Float(Socket):
         | Parameter | `data_type` | `'FLOAT'` |
 
         Parameters
-        ---------
+        ----------
         name : String, optional
             socket 'Name' (id: Name)
         
@@ -445,7 +453,7 @@ class Float(Socket):
         | Parameter | `data_type` | `'FLOAT'` |
 
         Parameters
-        ---------
+        ----------
         name : String, optional
             socket 'Name' (id: Name)
         
@@ -505,14 +513,16 @@ class Float(Socket):
         | Socket | Value | `self` |
 
         Parameters
-        ---------
+        ----------
         min : Float, optional
             socket 'Min' (id: Min)
         
         max : Float, optional
             socket 'Max' (id: Max)
         
-        clamp_type (str): parameter 'clamp_type' in ('Min Max', 'Range')
+        clamp_type : Literal['Min Max', 'Range']
+            parameter `clamp_type`
+        
 
         Returns
         -------
@@ -533,7 +543,7 @@ class Float(Socket):
         | Parameter | `clamp_type` | `'MINMAX'` |
 
         Parameters
-        ---------
+        ----------
         min : Float, optional
             socket 'Min' (id: Min)
         
@@ -559,7 +569,7 @@ class Float(Socket):
         | Parameter | `clamp_type` | `'RANGE'` |
 
         Parameters
-        ---------
+        ----------
         min : Float, optional
             socket 'Min' (id: Min)
         
@@ -591,7 +601,7 @@ class Float(Socket):
         | Parameter | `data_type` | from `from_min` type |
 
         Parameters
-        ---------
+        ----------
         from_min : Float | Vector, optional
             socket 'From Min' (id: From Min)
         
@@ -604,8 +614,12 @@ class Float(Socket):
         to_max : Float | Vector, optional
             socket 'To Max' (id: To Max)
         
-        clamp (bool): parameter 'clamp'
-        interpolation_type (str): parameter 'interpolation_type' in ('Linear', 'Stepped Linear', 'Smooth Step', 'Smoother Step')
+        clamp : bool
+            parameter `clamp`
+        
+        interpolation_type : Literal['Linear', 'Stepped Linear', 'Smooth Step', 'Smoother Step']
+            parameter `interpolation_type`
+        
 
         Returns
         -------
@@ -633,7 +647,7 @@ class Float(Socket):
         | Parameter | `interpolation_type` | `'LINEAR'`           |
 
         Parameters
-        ---------
+        ----------
         from_min : Float | Vector, optional
             socket 'From Min' (id: From Min)
         
@@ -646,7 +660,9 @@ class Float(Socket):
         to_max : Float | Vector, optional
             socket 'To Max' (id: To Max)
         
-        clamp (bool): parameter 'clamp'
+        clamp : bool
+            parameter `clamp`
+        
 
         Returns
         -------
@@ -674,7 +690,7 @@ class Float(Socket):
         | Parameter | `interpolation_type` | `'STEPPED'`          |
 
         Parameters
-        ---------
+        ----------
         from_min : Float | Vector, optional
             socket 'From Min' (id: From Min)
         
@@ -690,7 +706,9 @@ class Float(Socket):
         steps : Float, optional
             socket 'Steps' (id: Steps)
         
-        clamp (bool): parameter 'clamp'
+        clamp : bool
+            parameter `clamp`
+        
 
         Returns
         -------
@@ -717,7 +735,7 @@ class Float(Socket):
         | Parameter | `interpolation_type` | `'SMOOTHSTEP'`       |
 
         Parameters
-        ---------
+        ----------
         from_min : Float | Vector, optional
             socket 'From Min' (id: From Min)
         
@@ -730,7 +748,9 @@ class Float(Socket):
         to_max : Float | Vector, optional
             socket 'To Max' (id: To Max)
         
-        clamp (bool): parameter 'clamp'
+        clamp : bool
+            parameter `clamp`
+        
 
         Returns
         -------
@@ -757,7 +777,7 @@ class Float(Socket):
         | Parameter | `interpolation_type` | `'SMOOTHERSTEP'`     |
 
         Parameters
-        ---------
+        ----------
         from_min : Float | Vector, optional
             socket 'From Min' (id: From Min)
         
@@ -770,7 +790,9 @@ class Float(Socket):
         to_max : Float | Vector, optional
             socket 'To Max' (id: To Max)
         
-        clamp (bool): parameter 'clamp'
+        clamp : bool
+            parameter `clamp`
+        
 
         Returns
         -------
@@ -791,11 +813,13 @@ class Float(Socket):
         | Parameter | `operation` | `'ADD'` |
 
         Parameters
-        ---------
+        ----------
         value : Float, optional
             socket 'Value' (id: Value_001)
         
-        use_clamp (bool): parameter 'use_clamp'
+        use_clamp : bool
+            parameter `use_clamp`
+        
 
         Returns
         -------
@@ -815,11 +839,13 @@ class Float(Socket):
         | Parameter | `operation` | `'SUBTRACT'` |
 
         Parameters
-        ---------
+        ----------
         value : Float, optional
             socket 'Value' (id: Value_001)
         
-        use_clamp (bool): parameter 'use_clamp'
+        use_clamp : bool
+            parameter `use_clamp`
+        
 
         Returns
         -------
@@ -839,11 +865,13 @@ class Float(Socket):
         | Parameter | `operation` | `'MULTIPLY'` |
 
         Parameters
-        ---------
+        ----------
         value : Float, optional
             socket 'Value' (id: Value_001)
         
-        use_clamp (bool): parameter 'use_clamp'
+        use_clamp : bool
+            parameter `use_clamp`
+        
 
         Returns
         -------
@@ -863,11 +891,13 @@ class Float(Socket):
         | Parameter | `operation` | `'DIVIDE'` |
 
         Parameters
-        ---------
+        ----------
         value : Float, optional
             socket 'Value' (id: Value_001)
         
-        use_clamp (bool): parameter 'use_clamp'
+        use_clamp : bool
+            parameter `use_clamp`
+        
 
         Returns
         -------
@@ -887,14 +917,16 @@ class Float(Socket):
         | Parameter | `operation` | `'MULTIPLY_ADD'` |
 
         Parameters
-        ---------
+        ----------
         multiplier : Float, optional
             socket 'Multiplier' (id: Value_001)
         
         addend : Float, optional
             socket 'Addend' (id: Value_002)
         
-        use_clamp (bool): parameter 'use_clamp'
+        use_clamp : bool
+            parameter `use_clamp`
+        
 
         Returns
         -------
@@ -914,11 +946,13 @@ class Float(Socket):
         | Parameter | `operation` | `'POWER'` |
 
         Parameters
-        ---------
+        ----------
         exponent : Float, optional
             socket 'Exponent' (id: Value_001)
         
-        use_clamp (bool): parameter 'use_clamp'
+        use_clamp : bool
+            parameter `use_clamp`
+        
 
         Returns
         -------
@@ -938,11 +972,13 @@ class Float(Socket):
         | Parameter | `operation` | `'LOGARITHM'` |
 
         Parameters
-        ---------
+        ----------
         base : Float, optional
             socket 'Base' (id: Value_001)
         
-        use_clamp (bool): parameter 'use_clamp'
+        use_clamp : bool
+            parameter `use_clamp`
+        
 
         Returns
         -------
@@ -962,8 +998,10 @@ class Float(Socket):
         | Parameter | `operation` | `'SQRT'` |
 
         Parameters
-        ---------
-        use_clamp (bool): parameter 'use_clamp'
+        ----------
+        use_clamp : bool
+            parameter `use_clamp`
+        
 
         Returns
         -------
@@ -983,8 +1021,10 @@ class Float(Socket):
         | Parameter | `operation` | `'INVERSE_SQRT'` |
 
         Parameters
-        ---------
-        use_clamp (bool): parameter 'use_clamp'
+        ----------
+        use_clamp : bool
+            parameter `use_clamp`
+        
 
         Returns
         -------
@@ -1004,8 +1044,10 @@ class Float(Socket):
         | Parameter | `operation` | `'ABSOLUTE'` |
 
         Parameters
-        ---------
-        use_clamp (bool): parameter 'use_clamp'
+        ----------
+        use_clamp : bool
+            parameter `use_clamp`
+        
 
         Returns
         -------
@@ -1025,8 +1067,10 @@ class Float(Socket):
         | Parameter | `operation` | `'EXPONENT'` |
 
         Parameters
-        ---------
-        use_clamp (bool): parameter 'use_clamp'
+        ----------
+        use_clamp : bool
+            parameter `use_clamp`
+        
 
         Returns
         -------
@@ -1046,11 +1090,13 @@ class Float(Socket):
         | Parameter | `operation` | `'MINIMUM'` |
 
         Parameters
-        ---------
+        ----------
         value : Float, optional
             socket 'Value' (id: Value_001)
         
-        use_clamp (bool): parameter 'use_clamp'
+        use_clamp : bool
+            parameter `use_clamp`
+        
 
         Returns
         -------
@@ -1070,11 +1116,13 @@ class Float(Socket):
         | Parameter | `operation` | `'MAXIMUM'` |
 
         Parameters
-        ---------
+        ----------
         value : Float, optional
             socket 'Value' (id: Value_001)
         
-        use_clamp (bool): parameter 'use_clamp'
+        use_clamp : bool
+            parameter `use_clamp`
+        
 
         Returns
         -------
@@ -1094,11 +1142,13 @@ class Float(Socket):
         | Parameter | `operation` | `'LESS_THAN'` |
 
         Parameters
-        ---------
+        ----------
         threshold : Float, optional
             socket 'Threshold' (id: Value_001)
         
-        use_clamp (bool): parameter 'use_clamp'
+        use_clamp : bool
+            parameter `use_clamp`
+        
 
         Returns
         -------
@@ -1118,11 +1168,13 @@ class Float(Socket):
         | Parameter | `operation` | `'GREATER_THAN'` |
 
         Parameters
-        ---------
+        ----------
         threshold : Float, optional
             socket 'Threshold' (id: Value_001)
         
-        use_clamp (bool): parameter 'use_clamp'
+        use_clamp : bool
+            parameter `use_clamp`
+        
 
         Returns
         -------
@@ -1142,8 +1194,10 @@ class Float(Socket):
         | Parameter | `operation` | `'SIGN'` |
 
         Parameters
-        ---------
-        use_clamp (bool): parameter 'use_clamp'
+        ----------
+        use_clamp : bool
+            parameter `use_clamp`
+        
 
         Returns
         -------
@@ -1163,14 +1217,16 @@ class Float(Socket):
         | Parameter | `operation` | `'COMPARE'` |
 
         Parameters
-        ---------
+        ----------
         value : Float, optional
             socket 'Value' (id: Value_001)
         
         epsilon : Float, optional
             socket 'Epsilon' (id: Value_002)
         
-        use_clamp (bool): parameter 'use_clamp'
+        use_clamp : bool
+            parameter `use_clamp`
+        
 
         Returns
         -------
@@ -1190,14 +1246,16 @@ class Float(Socket):
         | Parameter | `operation` | `'SMOOTH_MIN'` |
 
         Parameters
-        ---------
+        ----------
         value : Float, optional
             socket 'Value' (id: Value_001)
         
         distance : Float, optional
             socket 'Distance' (id: Value_002)
         
-        use_clamp (bool): parameter 'use_clamp'
+        use_clamp : bool
+            parameter `use_clamp`
+        
 
         Returns
         -------
@@ -1217,14 +1275,16 @@ class Float(Socket):
         | Parameter | `operation` | `'SMOOTH_MAX'` |
 
         Parameters
-        ---------
+        ----------
         value : Float, optional
             socket 'Value' (id: Value_001)
         
         distance : Float, optional
             socket 'Distance' (id: Value_002)
         
-        use_clamp (bool): parameter 'use_clamp'
+        use_clamp : bool
+            parameter `use_clamp`
+        
 
         Returns
         -------
@@ -1244,8 +1304,10 @@ class Float(Socket):
         | Parameter | `operation` | `'ROUND'` |
 
         Parameters
-        ---------
-        use_clamp (bool): parameter 'use_clamp'
+        ----------
+        use_clamp : bool
+            parameter `use_clamp`
+        
 
         Returns
         -------
@@ -1265,8 +1327,10 @@ class Float(Socket):
         | Parameter | `operation` | `'FLOOR'` |
 
         Parameters
-        ---------
-        use_clamp (bool): parameter 'use_clamp'
+        ----------
+        use_clamp : bool
+            parameter `use_clamp`
+        
 
         Returns
         -------
@@ -1286,8 +1350,10 @@ class Float(Socket):
         | Parameter | `operation` | `'CEIL'` |
 
         Parameters
-        ---------
-        use_clamp (bool): parameter 'use_clamp'
+        ----------
+        use_clamp : bool
+            parameter `use_clamp`
+        
 
         Returns
         -------
@@ -1307,8 +1373,10 @@ class Float(Socket):
         | Parameter | `operation` | `'TRUNC'` |
 
         Parameters
-        ---------
-        use_clamp (bool): parameter 'use_clamp'
+        ----------
+        use_clamp : bool
+            parameter `use_clamp`
+        
 
         Returns
         -------
@@ -1328,8 +1396,10 @@ class Float(Socket):
         | Parameter | `operation` | `'FRACT'` |
 
         Parameters
-        ---------
-        use_clamp (bool): parameter 'use_clamp'
+        ----------
+        use_clamp : bool
+            parameter `use_clamp`
+        
 
         Returns
         -------
@@ -1349,11 +1419,13 @@ class Float(Socket):
         | Parameter | `operation` | `'MODULO'` |
 
         Parameters
-        ---------
+        ----------
         value : Float, optional
             socket 'Value' (id: Value_001)
         
-        use_clamp (bool): parameter 'use_clamp'
+        use_clamp : bool
+            parameter `use_clamp`
+        
 
         Returns
         -------
@@ -1373,11 +1445,13 @@ class Float(Socket):
         | Parameter | `operation` | `'FLOORED_MODULO'` |
 
         Parameters
-        ---------
+        ----------
         value : Float, optional
             socket 'Value' (id: Value_001)
         
-        use_clamp (bool): parameter 'use_clamp'
+        use_clamp : bool
+            parameter `use_clamp`
+        
 
         Returns
         -------
@@ -1397,14 +1471,16 @@ class Float(Socket):
         | Parameter | `operation` | `'WRAP'` |
 
         Parameters
-        ---------
+        ----------
         max : Float, optional
             socket 'Max' (id: Value_001)
         
         min : Float, optional
             socket 'Min' (id: Value_002)
         
-        use_clamp (bool): parameter 'use_clamp'
+        use_clamp : bool
+            parameter `use_clamp`
+        
 
         Returns
         -------
@@ -1424,11 +1500,13 @@ class Float(Socket):
         | Parameter | `operation` | `'SNAP'` |
 
         Parameters
-        ---------
+        ----------
         increment : Float, optional
             socket 'Increment' (id: Value_001)
         
-        use_clamp (bool): parameter 'use_clamp'
+        use_clamp : bool
+            parameter `use_clamp`
+        
 
         Returns
         -------
@@ -1448,11 +1526,13 @@ class Float(Socket):
         | Parameter | `operation` | `'PINGPONG'` |
 
         Parameters
-        ---------
+        ----------
         scale : Float, optional
             socket 'Scale' (id: Value_001)
         
-        use_clamp (bool): parameter 'use_clamp'
+        use_clamp : bool
+            parameter `use_clamp`
+        
 
         Returns
         -------
@@ -1472,8 +1552,10 @@ class Float(Socket):
         | Parameter | `operation` | `'SINE'` |
 
         Parameters
-        ---------
-        use_clamp (bool): parameter 'use_clamp'
+        ----------
+        use_clamp : bool
+            parameter `use_clamp`
+        
 
         Returns
         -------
@@ -1493,8 +1575,10 @@ class Float(Socket):
         | Parameter | `operation` | `'COSINE'` |
 
         Parameters
-        ---------
-        use_clamp (bool): parameter 'use_clamp'
+        ----------
+        use_clamp : bool
+            parameter `use_clamp`
+        
 
         Returns
         -------
@@ -1514,8 +1598,10 @@ class Float(Socket):
         | Parameter | `operation` | `'TANGENT'` |
 
         Parameters
-        ---------
-        use_clamp (bool): parameter 'use_clamp'
+        ----------
+        use_clamp : bool
+            parameter `use_clamp`
+        
 
         Returns
         -------
@@ -1535,8 +1621,10 @@ class Float(Socket):
         | Parameter | `operation` | `'ARCSINE'` |
 
         Parameters
-        ---------
-        use_clamp (bool): parameter 'use_clamp'
+        ----------
+        use_clamp : bool
+            parameter `use_clamp`
+        
 
         Returns
         -------
@@ -1556,8 +1644,10 @@ class Float(Socket):
         | Parameter | `operation` | `'ARCCOSINE'` |
 
         Parameters
-        ---------
-        use_clamp (bool): parameter 'use_clamp'
+        ----------
+        use_clamp : bool
+            parameter `use_clamp`
+        
 
         Returns
         -------
@@ -1577,8 +1667,10 @@ class Float(Socket):
         | Parameter | `operation` | `'ARCTANGENT'` |
 
         Parameters
-        ---------
-        use_clamp (bool): parameter 'use_clamp'
+        ----------
+        use_clamp : bool
+            parameter `use_clamp`
+        
 
         Returns
         -------
@@ -1598,11 +1690,13 @@ class Float(Socket):
         | Parameter | `operation` | `'ARCTAN2'` |
 
         Parameters
-        ---------
+        ----------
         value : Float, optional
             socket 'Value' (id: Value_001)
         
-        use_clamp (bool): parameter 'use_clamp'
+        use_clamp : bool
+            parameter `use_clamp`
+        
 
         Returns
         -------
@@ -1622,8 +1716,10 @@ class Float(Socket):
         | Parameter | `operation` | `'SINH'` |
 
         Parameters
-        ---------
-        use_clamp (bool): parameter 'use_clamp'
+        ----------
+        use_clamp : bool
+            parameter `use_clamp`
+        
 
         Returns
         -------
@@ -1643,8 +1739,10 @@ class Float(Socket):
         | Parameter | `operation` | `'COSH'` |
 
         Parameters
-        ---------
-        use_clamp (bool): parameter 'use_clamp'
+        ----------
+        use_clamp : bool
+            parameter `use_clamp`
+        
 
         Returns
         -------
@@ -1664,8 +1762,10 @@ class Float(Socket):
         | Parameter | `operation` | `'TANH'` |
 
         Parameters
-        ---------
-        use_clamp (bool): parameter 'use_clamp'
+        ----------
+        use_clamp : bool
+            parameter `use_clamp`
+        
 
         Returns
         -------
@@ -1685,8 +1785,10 @@ class Float(Socket):
         | Parameter | `operation` | `'RADIANS'` |
 
         Parameters
-        ---------
-        use_clamp (bool): parameter 'use_clamp'
+        ----------
+        use_clamp : bool
+            parameter `use_clamp`
+        
 
         Returns
         -------
@@ -1706,8 +1808,10 @@ class Float(Socket):
         | Parameter | `operation` | `'DEGREES'` |
 
         Parameters
-        ---------
-        use_clamp (bool): parameter 'use_clamp'
+        ----------
+        use_clamp : bool
+            parameter `use_clamp`
+        
 
         Returns
         -------
@@ -1730,14 +1834,16 @@ class Float(Socket):
         | Parameter | `factor_mode`  | `'UNIFORM'` |
 
         Parameters
-        ---------
+        ----------
         b : Float, optional
             socket 'B' (id: B_Float)
         
         factor : Float, optional
             socket 'Factor' (id: Factor_Float)
         
-        clamp_factor (bool): parameter 'clamp_factor'
+        clamp_factor : bool
+            parameter `clamp_factor`
+        
 
         Returns
         -------
@@ -1757,7 +1863,7 @@ class Float(Socket):
         """ > Node <&Node Gabor Texture>
 
         Parameters
-        ---------
+        ----------
         vector : Vector, optional
             socket 'Vector' (id: Vector)
         
@@ -1773,7 +1879,9 @@ class Float(Socket):
         orientation : Float, optional
             socket 'Orientation' (id: Orientation 2D)
         
-        gabor_type (str): parameter 'gabor_type' in ('2D', '3D')
+        gabor_type : Literal['2D', '3D']
+            parameter `gabor_type`
+        
 
         Returns
         -------
@@ -1797,7 +1905,7 @@ class Float(Socket):
         """ > Node <&Node Noise Texture>
 
         Parameters
-        ---------
+        ----------
         vector : Vector, optional
             socket 'Vector' (id: Vector)
         
@@ -1816,9 +1924,15 @@ class Float(Socket):
         distortion : Float, optional
             socket 'Distortion' (id: Distortion)
         
-        noise_dimensions (str): parameter 'noise_dimensions' in ('1D', '2D', '3D', '4D')
-        noise_type (str): parameter 'noise_type' in ('Multifractal', 'Ridged Multifractal', 'Hybrid Multifractal', 'fBM', 'Hetero Terrain')
-        normalize (bool): parameter 'normalize'
+        noise_dimensions : Literal['1D', '2D', '3D', '4D']
+            parameter `noise_dimensions`
+        
+        noise_type : Literal['Multifractal', 'Ridged Multifractal', 'Hybrid Multifractal', 'fBM', 'Hetero Terrain']
+            parameter `noise_type`
+        
+        normalize : bool
+            parameter `normalize`
+        
 
         Returns
         -------
@@ -1844,7 +1958,7 @@ class Float(Socket):
         """ > Node <&Node Voronoi Texture>
 
         Parameters
-        ---------
+        ----------
         vector : Vector, optional
             socket 'Vector' (id: Vector)
         
@@ -1863,10 +1977,18 @@ class Float(Socket):
         randomness : Float, optional
             socket 'Randomness' (id: Randomness)
         
-        distance (str): parameter 'distance' in ('Euclidean', 'Manhattan', 'Chebychev', 'Minkowski')
-        feature (str): parameter 'feature' in ('F1', 'F2', 'Smooth F1', 'Distance to Edge', 'N-Sphere Radius')
-        normalize (bool): parameter 'normalize'
-        voronoi_dimensions (str): parameter 'voronoi_dimensions' in ('1D', '2D', '3D', '4D')
+        distance : Literal['Euclidean', 'Manhattan', 'Chebychev', 'Minkowski']
+            parameter `distance`
+        
+        feature : Literal['F1', 'F2', 'Smooth F1', 'Distance to Edge', 'N-Sphere Radius']
+            parameter `feature`
+        
+        normalize : bool
+            parameter `normalize`
+        
+        voronoi_dimensions : Literal['1D', '2D', '3D', '4D']
+            parameter `voronoi_dimensions`
+        
 
         Returns
         -------
@@ -1885,11 +2007,13 @@ class Float(Socket):
         """ > Node <&Node White Noise Texture>
 
         Parameters
-        ---------
+        ----------
         vector : Vector, optional
             socket 'Vector' (id: Vector)
         
-        noise_dimensions (str): parameter 'noise_dimensions' in ('1D', '2D', '3D', '4D')
+        noise_dimensions : Literal['1D', '2D', '3D', '4D']
+            parameter `noise_dimensions`
+        
 
         Returns
         -------
@@ -1912,7 +2036,7 @@ class Float(Socket):
         | Parameter | `data_type` | `'FLOAT'` |
 
         Parameters
-        ---------
+        ----------
         position : Vector, optional
             socket 'Position' (id: Position)
         
@@ -1938,7 +2062,7 @@ class Float(Socket):
         | Parameter | `data_type` | `'FLOAT'` |
 
         Parameters
-        ---------
+        ----------
         x : Integer, optional
             socket 'X' (id: X)
         
@@ -1966,6 +2090,14 @@ class Float(Socket):
         | Socket    | Topology    | `self`    |
         | Parameter | `data_type` | `'FLOAT'` |
 
+        Parameters
+        ----------
+        named_sockets : dict, default={}
+            Sockets created with string names
+        
+        sockets : dict, default={}
+            Socket created with python name attributes
+
         Returns
         -------
         None
@@ -1988,7 +2120,7 @@ class Float(Socket):
         | Parameter | `data_type` | `'FLOAT'` |
 
         Parameters
-        ---------
+        ----------
         velocity : Vector, optional
             socket 'Velocity' (id: Velocity)
         
@@ -2054,7 +2186,7 @@ class Float(Socket):
         | Parameter | `data_type` | `'FLOAT'` |
 
         Parameters
-        ---------
+        ----------
         mode : menu='Threshold', optional
             ('Inactive', 'Threshold', 'SDF')
         
@@ -2109,7 +2241,7 @@ class Float(Socket):
         | Socket | Grid | `self` |
 
         Parameters
-        ---------
+        ----------
         iterations : Integer, optional
             socket 'Iterations' (id: Iterations)
         
@@ -2131,7 +2263,7 @@ class Float(Socket):
         | Socket | Grid | `self` |
 
         Parameters
-        ---------
+        ----------
         iterations : Integer, optional
             socket 'Iterations' (id: Iterations)
         
@@ -2153,7 +2285,7 @@ class Float(Socket):
         | Socket | Grid | `self` |
 
         Parameters
-        ---------
+        ----------
         width : Integer, optional
             socket 'Width' (id: Width)
         
@@ -2178,7 +2310,7 @@ class Float(Socket):
         | Socket | Grid | `self` |
 
         Parameters
-        ---------
+        ----------
         iterations : Integer, optional
             socket 'Iterations' (id: Iterations)
         
@@ -2200,7 +2332,7 @@ class Float(Socket):
         | Socket | Grid | `self` |
 
         Parameters
-        ---------
+        ----------
         width : Integer, optional
             socket 'Width' (id: Width)
         
@@ -2225,7 +2357,7 @@ class Float(Socket):
         | Socket | Grid | `self` |
 
         Parameters
-        ---------
+        ----------
         distance : Float, optional
             socket 'Distance' (id: Distance)
         
@@ -2248,7 +2380,7 @@ class Float(Socket):
         | Parameter | `data_type` | `'FLOAT'` |
 
         Parameters
-        ---------
+        ----------
         background : Float, optional
             socket 'Background' (id: Background)
         
@@ -2274,7 +2406,7 @@ class Float(Socket):
         | Parameter | `data_type` | `'FLOAT'` |
 
         Parameters
-        ---------
+        ----------
         transform : Matrix, optional
             socket 'Transform' (id: Transform)
         
@@ -2318,7 +2450,7 @@ class Float(Socket):
         | Parameter | `mode` | `'DENSITY_RANDOM'` |
 
         Parameters
-        ---------
+        ----------
         density : Float, optional
             socket 'Density' (id: Density)
         
@@ -2344,7 +2476,7 @@ class Float(Socket):
         | Parameter | `mode` | `'DENSITY_GRID'` |
 
         Parameters
-        ---------
+        ----------
         spacing : Vector, optional
             socket 'Spacing' (id: Spacing)
         
@@ -2372,14 +2504,16 @@ class Float(Socket):
         | Socket | Grid | `self` |
 
         Parameters
-        ---------
+        ----------
         density : Float, optional
             socket 'Density' (id: Density)
         
         seed : Integer, optional
             socket 'Seed' (id: Seed)
         
-        mode (str): parameter 'mode' in ('Random', 'Grid')
+        mode : Literal['Random', 'Grid']
+            parameter `mode`
+        
 
         Returns
         -------
@@ -2401,11 +2535,13 @@ class Float(Socket):
         | Socket | Grid 1 | `self` |
 
         Parameters
-        ---------
+        ----------
         grid_2 : Float, optional
             socket 'Grid 2' (id: Grid 2)
         
-        operation (str): parameter 'operation' in ('Intersect', 'Union', 'Difference')
+        operation : Literal['Intersect', 'Union', 'Difference']
+            parameter `operation`
+        
 
         Returns
         -------
@@ -2425,7 +2561,7 @@ class Float(Socket):
         | Parameter | `operation` | `'INTERSECT'` |
 
         Parameters
-        ---------
+        ----------
         grid : Float, optional
             socket 'Grid' (id: Grid 2)
         
@@ -2447,7 +2583,7 @@ class Float(Socket):
         | Parameter | `operation` | `'UNION'` |
 
         Parameters
-        ---------
+        ----------
         grid : Float, optional
             socket 'Grid' (id: Grid 2)
         
@@ -2470,7 +2606,7 @@ class Float(Socket):
         | Parameter | `operation` | `'DIFFERENCE'` |
 
         Parameters
-        ---------
+        ----------
         grid_2 : Float, optional
             socket 'Grid 2' (id: Grid 2)
         
@@ -2493,7 +2629,7 @@ class Float(Socket):
         | Parameter | `data_type` | `'FLOAT'` |
 
         Parameters
-        ---------
+        ----------
         enable : Boolean, optional
             socket 'Enable' (id: Enable)
         
@@ -2522,7 +2658,7 @@ class Float(Socket):
         | Parameter | `data_type` | `'FLOAT'` |
 
         Parameters
-        ---------
+        ----------
         min_x : Integer, optional
             socket 'Min X' (id: Min X)
         
@@ -2563,7 +2699,7 @@ class Float(Socket):
         | Parameter | `data_type` | `'FLOAT'` |
 
         Parameters
-        ---------
+        ----------
         connectivity : menu='Face', optional
             ('Face', 'Edge', 'Vertex')
         
@@ -2592,7 +2728,7 @@ class Float(Socket):
         | Parameter | `data_type` | `'FLOAT'` |
 
         Parameters
-        ---------
+        ----------
         width : Integer, optional
             socket 'Width' (id: Width)
         
@@ -2618,7 +2754,7 @@ class Float(Socket):
         | Parameter | `data_type` | `'FLOAT'` |
 
         Parameters
-        ---------
+        ----------
         width : Integer, optional
             socket 'Width' (id: Width)
         
@@ -2662,11 +2798,13 @@ class Float(Socket):
         | Socket | Radius | `self` |
 
         Parameters
-        ---------
+        ----------
         normal : Vector, optional
             socket 'Normal' (id: Normal)
         
-        samples (int): parameter 'samples'
+        samples : int
+            parameter `samples`
+        
 
         Returns
         -------
@@ -2690,7 +2828,7 @@ class Float(Socket):
         | Socket | Strength | `self` |
 
         Parameters
-        ---------
+        ----------
         distance : Float, optional
             socket 'Distance' (id: Distance)
         
@@ -2703,7 +2841,9 @@ class Float(Socket):
         normal : Vector, optional
             socket 'Normal' (id: Normal)
         
-        invert (bool): parameter 'invert'
+        invert : bool
+            parameter `invert`
+        
 
         Returns
         -------
@@ -2723,7 +2863,7 @@ class Float(Socket):
         | Parameter | `mode` | `'RGB'` |
 
         Parameters
-        ---------
+        ----------
         green : Float, optional
             socket 'Green' (id: Green)
         
@@ -2749,7 +2889,7 @@ class Float(Socket):
         | Parameter | `mode` | `'HSV'` |
 
         Parameters
-        ---------
+        ----------
         saturation : Float, optional
             socket 'Saturation' (id: Green)
         
@@ -2775,7 +2915,7 @@ class Float(Socket):
         | Parameter | `mode` | `'HSL'` |
 
         Parameters
-        ---------
+        ----------
         saturation : Float, optional
             socket 'Saturation' (id: Green)
         
@@ -2803,14 +2943,16 @@ class Float(Socket):
         | Socket | Red  | `self` |
 
         Parameters
-        ---------
+        ----------
         green : Float, optional
             socket 'Green' (id: Green)
         
         blue : Float, optional
             socket 'Blue' (id: Blue)
         
-        mode (str): parameter 'mode' in ('RGB', 'HSV', 'HSL')
+        mode : Literal['RGB', 'HSV', 'HSL']
+            parameter `mode`
+        
 
         Returns
         -------
@@ -2834,7 +2976,7 @@ class Float(Socket):
         | Socket | Height | `self` |
 
         Parameters
-        ---------
+        ----------
         midlevel : Float, optional
             socket 'Midlevel' (id: Midlevel)
         
@@ -2844,7 +2986,9 @@ class Float(Socket):
         normal : Vector, optional
             socket 'Normal' (id: Normal)
         
-        space (str): parameter 'space' in ('Object Space', 'World Space')
+        space : Literal['Object Space', 'World Space']
+            parameter `space`
+        
 
         Returns
         -------
@@ -2864,7 +3008,7 @@ class Float(Socket):
         | Socket | IOR  | `self` |
 
         Parameters
-        ---------
+        ----------
         normal : Vector, optional
             socket 'Normal' (id: Normal)
         
@@ -2890,7 +3034,7 @@ class Float(Socket):
         | Socket | Hue  | `self` |
 
         Parameters
-        ---------
+        ----------
         saturation : Float, optional
             socket 'Saturation' (id: Saturation)
         
@@ -2921,7 +3065,7 @@ class Float(Socket):
         | Socket | Blend | `self` |
 
         Parameters
-        ---------
+        ----------
         normal : Vector, optional
             socket 'Normal' (id: Normal)
         
@@ -2945,7 +3089,7 @@ class Float(Socket):
         | Socket | Strength | `self` |
 
         Parameters
-        ---------
+        ----------
         smooth : Float, optional
             socket 'Smooth' (id: Smooth)
         
@@ -2974,14 +3118,22 @@ class Float(Socket):
         | Socket | Strength | `self` |
 
         Parameters
-        ---------
+        ----------
         color : Color, optional
             socket 'Color' (id: Color)
         
-        base (str): parameter 'base' in ('Original Base', 'Displaced Base')
-        convention (str): parameter 'convention' in ('OpenGL', 'DirectX')
-        space (str): parameter 'space' in ('Tangent Space', 'Object Space', 'World Space', 'Blender Object Space', 'Blender World Space')
-        uv_map (str): parameter 'uv_map'
+        base : Literal['Original Base', 'Displaced Base']
+            parameter `base`
+        
+        convention : Literal['OpenGL', 'DirectX']
+            parameter `convention`
+        
+        space : Literal['Tangent Space', 'Object Space', 'World Space', 'Blender Object Space', 'Blender World Space']
+            parameter `space`
+        
+        uv_map : str
+            parameter `uv_map`
+        
 
         Returns
         -------
@@ -3019,8 +3171,10 @@ class Float(Socket):
         | Socket | Size | `self` |
 
         Parameters
-        ---------
-        use_pixel_size (bool): parameter 'use_pixel_size'
+        ----------
+        use_pixel_size : bool
+            parameter `use_pixel_size`
+        
 
         Returns
         -------
@@ -3048,24 +3202,48 @@ class Float(Socket):
 
         New <#Float> input with subtype 'NONE'.
 
-        Aguments
-        --------
-        - value  (object = 0.0) : Default value
-        - name  (str = 'Float') : Input socket name
-        - min  (float = -3.40282e+38) : Property min_value
-        - max  (float = 3.40282e+38) : Property max_value
-        - tip  (str = '') : Property description
-        - panel (str = "") : Panel name
-        - optional_label  (bool = False) : Property optional_label
-        - hide_value  (bool = False) : Property hide_value
-        - hide_in_modifier  (bool = False) : Property hide_in_modifier
-        - default_attribute  (str = '') : Property default_attribute_name
-        - shape  (str = 'AUTO') : Property structure_type in ('AUTO', 'SINGLE')
-        - subtype (str = 'NONE') : Socket sub type in ('NONE', 'PERCENTAGE', 'FACTOR', 'MASS', 'ANGLE', 'TIME', 'TIME_ABSOLUTE', 'DISTANCE', 'WAVELENGTH', 'COLOR_TEMPERATURE', 'FREQUENCY')
+        Parameters
+        ----------
+        value : object, default=`0.0`
+            Default value
+
+        name : str, default=`Float`
+            Input socket name
+
+        min : float, default=`-3.40282e+38`
+            Property min_value
+
+        max : float, default=`3.40282e+38`
+            Property max_value
+
+        tip : str, default=`''`
+            Property description
+
+        panel : str, default=``
+            Panel name
+
+        optional_label : bool, default=`False`
+            Property optional_label
+
+        hide_value : bool, default=`False`
+            Property hide_value
+
+        hide_in_modifier : bool, default=`False`
+            Property hide_in_modifier
+
+        default_attribute : str, default=`''`
+            Property default_attribute_name
+
+        shape : str, default=`'AUTO'`
+            Property structure_type in ('AUTO', 'SINGLE')
+
+        subtype : str, default=`NONE`
+            Socket sub type in ('NONE', 'PERCENTAGE', 'FACTOR', 'MASS', 'ANGLE', 'TIME', 'TIME_ABSOLUTE', 'DISTANCE', 'WAVELENGTH', 'COLOR_TEMPERATURE', 'FREQUENCY')
+
 
         Returns
         -------
-        - Float
+        Float
         """
         from ..treeclass import Tree
 
@@ -3094,23 +3272,45 @@ class Float(Socket):
 
         New <#Float> input with subtype 'PERCENTAGE'.
 
-        Aguments
-        --------
-        - value  (object = 0.0) : Default value
-        - name  (str = 'Percentage') : Input socket name
-        - min  (float = -3.40282e+38) : Property min_value
-        - max  (float = 3.40282e+38) : Property max_value
-        - tip  (str = '') : Property description
-        - panel (str = "") : Panel name
-        - optional_label  (bool = False) : Property optional_label
-        - hide_value  (bool = False) : Property hide_value
-        - hide_in_modifier  (bool = False) : Property hide_in_modifier
-        - default_attribute  (str = '') : Property default_attribute_name
-        - shape  (str = 'AUTO') : Property structure_type in ('AUTO', 'SINGLE')
+        Parameters
+        ----------
+        value : object, default=`0.0`
+            Default value
+
+        name : str, default=`Percentage`
+            Input socket name
+
+        min : float, default=`-3.40282e+38`
+            Property min_value
+
+        max : float, default=`3.40282e+38`
+            Property max_value
+
+        tip : str, default=`''`
+            Property description
+
+        panel : str, default=``
+            Panel name
+
+        optional_label : bool, default=`False`
+            Property optional_label
+
+        hide_value : bool, default=`False`
+            Property hide_value
+
+        hide_in_modifier : bool, default=`False`
+            Property hide_in_modifier
+
+        default_attribute : str, default=`''`
+            Property default_attribute_name
+
+        shape : str, default=`'AUTO'`
+            Property structure_type in ('AUTO', 'SINGLE')
+
 
         Returns
         -------
-        - Float
+        Float
         """
         return cls(value=value, name=name, min=min, max=max, tip=tip, panel=panel,
             optional_label=optional_label, hide_value=hide_value, hide_in_modifier=hide_in_modifier,
@@ -3134,23 +3334,45 @@ class Float(Socket):
 
         New <#Float> input with subtype 'FACTOR'.
 
-        Aguments
-        --------
-        - value  (object = 0.0) : Default value
-        - name  (str = 'Factor') : Input socket name
-        - min  (float = -3.40282e+38) : Property min_value
-        - max  (float = 3.40282e+38) : Property max_value
-        - tip  (str = '') : Property description
-        - panel (str = "") : Panel name
-        - optional_label  (bool = False) : Property optional_label
-        - hide_value  (bool = False) : Property hide_value
-        - hide_in_modifier  (bool = False) : Property hide_in_modifier
-        - default_attribute  (str = '') : Property default_attribute_name
-        - shape  (str = 'AUTO') : Property structure_type in ('AUTO', 'SINGLE')
+        Parameters
+        ----------
+        value : object, default=`0.0`
+            Default value
+
+        name : str, default=`Factor`
+            Input socket name
+
+        min : float, default=`-3.40282e+38`
+            Property min_value
+
+        max : float, default=`3.40282e+38`
+            Property max_value
+
+        tip : str, default=`''`
+            Property description
+
+        panel : str, default=``
+            Panel name
+
+        optional_label : bool, default=`False`
+            Property optional_label
+
+        hide_value : bool, default=`False`
+            Property hide_value
+
+        hide_in_modifier : bool, default=`False`
+            Property hide_in_modifier
+
+        default_attribute : str, default=`''`
+            Property default_attribute_name
+
+        shape : str, default=`'AUTO'`
+            Property structure_type in ('AUTO', 'SINGLE')
+
 
         Returns
         -------
-        - Float
+        Float
         """
         return cls(value=value, name=name, min=min, max=max, tip=tip, panel=panel,
             optional_label=optional_label, hide_value=hide_value, hide_in_modifier=hide_in_modifier,
@@ -3174,23 +3396,45 @@ class Float(Socket):
 
         New <#Float> input with subtype 'MASS'.
 
-        Aguments
-        --------
-        - value  (object = 0.0) : Default value
-        - name  (str = 'Mass') : Input socket name
-        - min  (float = -3.40282e+38) : Property min_value
-        - max  (float = 3.40282e+38) : Property max_value
-        - tip  (str = '') : Property description
-        - panel (str = "") : Panel name
-        - optional_label  (bool = False) : Property optional_label
-        - hide_value  (bool = False) : Property hide_value
-        - hide_in_modifier  (bool = False) : Property hide_in_modifier
-        - default_attribute  (str = '') : Property default_attribute_name
-        - shape  (str = 'AUTO') : Property structure_type in ('AUTO', 'SINGLE')
+        Parameters
+        ----------
+        value : object, default=`0.0`
+            Default value
+
+        name : str, default=`Mass`
+            Input socket name
+
+        min : float, default=`-3.40282e+38`
+            Property min_value
+
+        max : float, default=`3.40282e+38`
+            Property max_value
+
+        tip : str, default=`''`
+            Property description
+
+        panel : str, default=``
+            Panel name
+
+        optional_label : bool, default=`False`
+            Property optional_label
+
+        hide_value : bool, default=`False`
+            Property hide_value
+
+        hide_in_modifier : bool, default=`False`
+            Property hide_in_modifier
+
+        default_attribute : str, default=`''`
+            Property default_attribute_name
+
+        shape : str, default=`'AUTO'`
+            Property structure_type in ('AUTO', 'SINGLE')
+
 
         Returns
         -------
-        - Float
+        Float
         """
         return cls(value=value, name=name, min=min, max=max, tip=tip, panel=panel,
             optional_label=optional_label, hide_value=hide_value, hide_in_modifier=hide_in_modifier,
@@ -3214,23 +3458,45 @@ class Float(Socket):
 
         New <#Float> input with subtype 'ANGLE'.
 
-        Aguments
-        --------
-        - value  (object = 0.0) : Default value
-        - name  (str = 'Angle') : Input socket name
-        - min  (float = -3.40282e+38) : Property min_value
-        - max  (float = 3.40282e+38) : Property max_value
-        - tip  (str = '') : Property description
-        - panel (str = "") : Panel name
-        - optional_label  (bool = False) : Property optional_label
-        - hide_value  (bool = False) : Property hide_value
-        - hide_in_modifier  (bool = False) : Property hide_in_modifier
-        - default_attribute  (str = '') : Property default_attribute_name
-        - shape  (str = 'AUTO') : Property structure_type in ('AUTO', 'SINGLE')
+        Parameters
+        ----------
+        value : object, default=`0.0`
+            Default value
+
+        name : str, default=`Angle`
+            Input socket name
+
+        min : float, default=`-3.40282e+38`
+            Property min_value
+
+        max : float, default=`3.40282e+38`
+            Property max_value
+
+        tip : str, default=`''`
+            Property description
+
+        panel : str, default=``
+            Panel name
+
+        optional_label : bool, default=`False`
+            Property optional_label
+
+        hide_value : bool, default=`False`
+            Property hide_value
+
+        hide_in_modifier : bool, default=`False`
+            Property hide_in_modifier
+
+        default_attribute : str, default=`''`
+            Property default_attribute_name
+
+        shape : str, default=`'AUTO'`
+            Property structure_type in ('AUTO', 'SINGLE')
+
 
         Returns
         -------
-        - Float
+        Float
         """
         return cls(value=value, name=name, min=min, max=max, tip=tip, panel=panel,
             optional_label=optional_label, hide_value=hide_value, hide_in_modifier=hide_in_modifier,
@@ -3254,23 +3520,45 @@ class Float(Socket):
 
         New <#Float> input with subtype 'TIME'.
 
-        Aguments
-        --------
-        - value  (object = 0.0) : Default value
-        - name  (str = 'Time') : Input socket name
-        - min  (float = -3.40282e+38) : Property min_value
-        - max  (float = 3.40282e+38) : Property max_value
-        - tip  (str = '') : Property description
-        - panel (str = "") : Panel name
-        - optional_label  (bool = False) : Property optional_label
-        - hide_value  (bool = False) : Property hide_value
-        - hide_in_modifier  (bool = False) : Property hide_in_modifier
-        - default_attribute  (str = '') : Property default_attribute_name
-        - shape  (str = 'AUTO') : Property structure_type in ('AUTO', 'SINGLE')
+        Parameters
+        ----------
+        value : object, default=`0.0`
+            Default value
+
+        name : str, default=`Time`
+            Input socket name
+
+        min : float, default=`-3.40282e+38`
+            Property min_value
+
+        max : float, default=`3.40282e+38`
+            Property max_value
+
+        tip : str, default=`''`
+            Property description
+
+        panel : str, default=``
+            Panel name
+
+        optional_label : bool, default=`False`
+            Property optional_label
+
+        hide_value : bool, default=`False`
+            Property hide_value
+
+        hide_in_modifier : bool, default=`False`
+            Property hide_in_modifier
+
+        default_attribute : str, default=`''`
+            Property default_attribute_name
+
+        shape : str, default=`'AUTO'`
+            Property structure_type in ('AUTO', 'SINGLE')
+
 
         Returns
         -------
-        - Float
+        Float
         """
         return cls(value=value, name=name, min=min, max=max, tip=tip, panel=panel,
             optional_label=optional_label, hide_value=hide_value, hide_in_modifier=hide_in_modifier,
@@ -3294,23 +3582,45 @@ class Float(Socket):
 
         New <#Float> input with subtype 'TIME_ABSOLUTE'.
 
-        Aguments
-        --------
-        - value  (object = 0.0) : Default value
-        - name  (str = 'TimeAbsolute') : Input socket name
-        - min  (float = -3.40282e+38) : Property min_value
-        - max  (float = 3.40282e+38) : Property max_value
-        - tip  (str = '') : Property description
-        - panel (str = "") : Panel name
-        - optional_label  (bool = False) : Property optional_label
-        - hide_value  (bool = False) : Property hide_value
-        - hide_in_modifier  (bool = False) : Property hide_in_modifier
-        - default_attribute  (str = '') : Property default_attribute_name
-        - shape  (str = 'AUTO') : Property structure_type in ('AUTO', 'SINGLE')
+        Parameters
+        ----------
+        value : object, default=`0.0`
+            Default value
+
+        name : str, default=`TimeAbsolute`
+            Input socket name
+
+        min : float, default=`-3.40282e+38`
+            Property min_value
+
+        max : float, default=`3.40282e+38`
+            Property max_value
+
+        tip : str, default=`''`
+            Property description
+
+        panel : str, default=``
+            Panel name
+
+        optional_label : bool, default=`False`
+            Property optional_label
+
+        hide_value : bool, default=`False`
+            Property hide_value
+
+        hide_in_modifier : bool, default=`False`
+            Property hide_in_modifier
+
+        default_attribute : str, default=`''`
+            Property default_attribute_name
+
+        shape : str, default=`'AUTO'`
+            Property structure_type in ('AUTO', 'SINGLE')
+
 
         Returns
         -------
-        - Float
+        Float
         """
         return cls(value=value, name=name, min=min, max=max, tip=tip, panel=panel,
             optional_label=optional_label, hide_value=hide_value, hide_in_modifier=hide_in_modifier,
@@ -3334,23 +3644,45 @@ class Float(Socket):
 
         New <#Float> input with subtype 'DISTANCE'.
 
-        Aguments
-        --------
-        - value  (object = 0.0) : Default value
-        - name  (str = 'Distance') : Input socket name
-        - min  (float = -3.40282e+38) : Property min_value
-        - max  (float = 3.40282e+38) : Property max_value
-        - tip  (str = '') : Property description
-        - panel (str = "") : Panel name
-        - optional_label  (bool = False) : Property optional_label
-        - hide_value  (bool = False) : Property hide_value
-        - hide_in_modifier  (bool = False) : Property hide_in_modifier
-        - default_attribute  (str = '') : Property default_attribute_name
-        - shape  (str = 'AUTO') : Property structure_type in ('AUTO', 'SINGLE')
+        Parameters
+        ----------
+        value : object, default=`0.0`
+            Default value
+
+        name : str, default=`Distance`
+            Input socket name
+
+        min : float, default=`-3.40282e+38`
+            Property min_value
+
+        max : float, default=`3.40282e+38`
+            Property max_value
+
+        tip : str, default=`''`
+            Property description
+
+        panel : str, default=``
+            Panel name
+
+        optional_label : bool, default=`False`
+            Property optional_label
+
+        hide_value : bool, default=`False`
+            Property hide_value
+
+        hide_in_modifier : bool, default=`False`
+            Property hide_in_modifier
+
+        default_attribute : str, default=`''`
+            Property default_attribute_name
+
+        shape : str, default=`'AUTO'`
+            Property structure_type in ('AUTO', 'SINGLE')
+
 
         Returns
         -------
-        - Float
+        Float
         """
         return cls(value=value, name=name, min=min, max=max, tip=tip, panel=panel,
             optional_label=optional_label, hide_value=hide_value, hide_in_modifier=hide_in_modifier,
@@ -3374,23 +3706,45 @@ class Float(Socket):
 
         New <#Float> input with subtype 'WAVELENGTH'.
 
-        Aguments
-        --------
-        - value  (object = 0.0) : Default value
-        - name  (str = 'Wavelength') : Input socket name
-        - min  (float = -3.40282e+38) : Property min_value
-        - max  (float = 3.40282e+38) : Property max_value
-        - tip  (str = '') : Property description
-        - panel (str = "") : Panel name
-        - optional_label  (bool = False) : Property optional_label
-        - hide_value  (bool = False) : Property hide_value
-        - hide_in_modifier  (bool = False) : Property hide_in_modifier
-        - default_attribute  (str = '') : Property default_attribute_name
-        - shape  (str = 'AUTO') : Property structure_type in ('AUTO', 'SINGLE')
+        Parameters
+        ----------
+        value : object, default=`0.0`
+            Default value
+
+        name : str, default=`Wavelength`
+            Input socket name
+
+        min : float, default=`-3.40282e+38`
+            Property min_value
+
+        max : float, default=`3.40282e+38`
+            Property max_value
+
+        tip : str, default=`''`
+            Property description
+
+        panel : str, default=``
+            Panel name
+
+        optional_label : bool, default=`False`
+            Property optional_label
+
+        hide_value : bool, default=`False`
+            Property hide_value
+
+        hide_in_modifier : bool, default=`False`
+            Property hide_in_modifier
+
+        default_attribute : str, default=`''`
+            Property default_attribute_name
+
+        shape : str, default=`'AUTO'`
+            Property structure_type in ('AUTO', 'SINGLE')
+
 
         Returns
         -------
-        - Float
+        Float
         """
         return cls(value=value, name=name, min=min, max=max, tip=tip, panel=panel,
             optional_label=optional_label, hide_value=hide_value, hide_in_modifier=hide_in_modifier,
@@ -3414,23 +3768,45 @@ class Float(Socket):
 
         New <#Float> input with subtype 'COLOR_TEMPERATURE'.
 
-        Aguments
-        --------
-        - value  (object = 0.0) : Default value
-        - name  (str = 'ColorTemperature') : Input socket name
-        - min  (float = -3.40282e+38) : Property min_value
-        - max  (float = 3.40282e+38) : Property max_value
-        - tip  (str = '') : Property description
-        - panel (str = "") : Panel name
-        - optional_label  (bool = False) : Property optional_label
-        - hide_value  (bool = False) : Property hide_value
-        - hide_in_modifier  (bool = False) : Property hide_in_modifier
-        - default_attribute  (str = '') : Property default_attribute_name
-        - shape  (str = 'AUTO') : Property structure_type in ('AUTO', 'SINGLE')
+        Parameters
+        ----------
+        value : object, default=`0.0`
+            Default value
+
+        name : str, default=`ColorTemperature`
+            Input socket name
+
+        min : float, default=`-3.40282e+38`
+            Property min_value
+
+        max : float, default=`3.40282e+38`
+            Property max_value
+
+        tip : str, default=`''`
+            Property description
+
+        panel : str, default=``
+            Panel name
+
+        optional_label : bool, default=`False`
+            Property optional_label
+
+        hide_value : bool, default=`False`
+            Property hide_value
+
+        hide_in_modifier : bool, default=`False`
+            Property hide_in_modifier
+
+        default_attribute : str, default=`''`
+            Property default_attribute_name
+
+        shape : str, default=`'AUTO'`
+            Property structure_type in ('AUTO', 'SINGLE')
+
 
         Returns
         -------
-        - Float
+        Float
         """
         return cls(value=value, name=name, min=min, max=max, tip=tip, panel=panel,
             optional_label=optional_label, hide_value=hide_value, hide_in_modifier=hide_in_modifier,
@@ -3454,23 +3830,45 @@ class Float(Socket):
 
         New <#Float> input with subtype 'FREQUENCY'.
 
-        Aguments
-        --------
-        - value  (object = 0.0) : Default value
-        - name  (str = 'Frequency') : Input socket name
-        - min  (float = -3.40282e+38) : Property min_value
-        - max  (float = 3.40282e+38) : Property max_value
-        - tip  (str = '') : Property description
-        - panel (str = "") : Panel name
-        - optional_label  (bool = False) : Property optional_label
-        - hide_value  (bool = False) : Property hide_value
-        - hide_in_modifier  (bool = False) : Property hide_in_modifier
-        - default_attribute  (str = '') : Property default_attribute_name
-        - shape  (str = 'AUTO') : Property structure_type in ('AUTO', 'SINGLE')
+        Parameters
+        ----------
+        value : object, default=`0.0`
+            Default value
+
+        name : str, default=`Frequency`
+            Input socket name
+
+        min : float, default=`-3.40282e+38`
+            Property min_value
+
+        max : float, default=`3.40282e+38`
+            Property max_value
+
+        tip : str, default=`''`
+            Property description
+
+        panel : str, default=``
+            Panel name
+
+        optional_label : bool, default=`False`
+            Property optional_label
+
+        hide_value : bool, default=`False`
+            Property hide_value
+
+        hide_in_modifier : bool, default=`False`
+            Property hide_in_modifier
+
+        default_attribute : str, default=`''`
+            Property default_attribute_name
+
+        shape : str, default=`'AUTO'`
+            Property structure_type in ('AUTO', 'SINGLE')
+
 
         Returns
         -------
-        - Float
+        Float
         """
         return cls(value=value, name=name, min=min, max=max, tip=tip, panel=panel,
             optional_label=optional_label, hide_value=hide_value, hide_in_modifier=hide_in_modifier,

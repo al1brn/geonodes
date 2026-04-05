@@ -1,4 +1,4 @@
-# Generated 2026-04-04 12:37:35
+# Generated 2026-04-04 17:31:31
 
 from __future__ import annotations
 from .. sockettype import SocketType
@@ -35,7 +35,7 @@ class SplinePoint:
         """ > Node <&Node Curve of Point>
 
         Parameters
-        ---------
+        ----------
         point_index : Integer, optional
             socket 'Point Index' (id: Point Index)
         
@@ -54,7 +54,7 @@ class SplinePoint:
         """ > Node <&Node Curve of Point>
 
         Parameters
-        ---------
+        ----------
         point_index : Integer, optional
             socket 'Point Index' (id: Point Index)
         
@@ -71,7 +71,7 @@ class SplinePoint:
         """ > Node <&Node Curve of Point>
 
         Parameters
-        ---------
+        ----------
         point_index : Integer, optional
             socket 'Point Index' (id: Point Index)
         
@@ -113,7 +113,7 @@ class SplinePoint:
         | Parameter | `mode` | `'COUNT'` |
 
         Parameters
-        ---------
+        ----------
         count : Integer, optional
             socket 'Count' (id: Count)
         
@@ -138,7 +138,7 @@ class SplinePoint:
         | Parameter | `mode` | `'LENGTH'` |
 
         Parameters
-        ---------
+        ----------
         length : Float, optional
             socket 'Length' (id: Length)
         
@@ -164,11 +164,13 @@ class SplinePoint:
         | Socket | Curve | `self` |
 
         Parameters
-        ---------
+        ----------
         count : Integer, optional
             socket 'Count' (id: Count)
         
-        mode (str): parameter 'mode' in ('Evaluated', 'Count', 'Length')
+        mode : Literal['Evaluated', 'Count', 'Length']
+            parameter `mode`
+        
 
         Returns
         -------
@@ -185,7 +187,7 @@ class SplinePoint:
         """ > Node <&Node Offset Point in Curve>
 
         Parameters
-        ---------
+        ----------
         point_index : Integer, optional
             socket 'Point Index' (id: Point Index)
         
@@ -222,7 +224,7 @@ class SplinePoint:
         | Socket | Selection | `self[selection]` |
 
         Parameters
-        ---------
+        ----------
         radius : Float, optional
             socket 'Radius' (id: Radius)
         

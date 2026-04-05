@@ -57,8 +57,8 @@ from . scripterror import NodeError
 class Boolean(generated.Boolean):
     """ Boolean socket
 
-    > [!CAUTION]
-    > Boolean operations can't use python operator `and`, `or`,... use `&` `|` instead.
+    !!! caution
+        Boolean operations can't use python operator `and`, `or`,... use `&` `|` instead.
 
 
     ``` python

@@ -174,19 +174,19 @@ class Socket(NodeCache):
         Parameters
         ----------
         socket : NodeSocket, optional
-            the output socket to wrap Default: None.
+            the output socket to wrap default=None.
 
         name : str, optional
-            input name if not None Default: None.
+            input name if not None default=None.
 
         tip : str, optional
-            description Default: "".
+            description default="".
 
         panel : str, optional
-            panel name Default: "".
+            panel name default="".
 
         user_label : str, optional
-            user label Default: None.
+            user label default=None.
 
         """
 
@@ -306,7 +306,7 @@ class Socket(NodeCache):
         Parameters
         ----------
         value : Any, optional
-            default value Default: None.
+            default value default=None.
 
         """
         socket = cls(constants.EMPTY_SOCKET)
@@ -375,10 +375,10 @@ class Socket(NodeCache):
             socket name
 
         panel : str, optional
-            panel name Default: "".
+            panel name default="".
 
         halt : bool, optional
-            raises an error if not found Default: True.
+            raises an error if not found default=True.
 
 
         Returns
@@ -431,10 +431,10 @@ class Socket(NodeCache):
             socket name
 
         value : Any, optional
-            default_value Default: None.
+            default_value default=None.
 
         tip : str, optional
-            description Default: "".
+            description default="".
 
         panel : str: None
             panel name
@@ -482,10 +482,10 @@ class Socket(NodeCache):
         Parameters
         ----------
         value : Any, optional
-            constant default value Default: None.
+            constant default value default=None.
 
         user_label : str, optional
-            socket name (used to rename nodes if not None) Default: "".
+            socket name (used to rename nodes if not None) default="".
 
         """
 
@@ -689,7 +689,7 @@ class Socket(NodeCache):
             the new output socket to jump to
 
         reset : bool, optional
-            reset the cache Default: True.
+            reset the cache default=True.
 
 
         Returns
@@ -843,7 +843,7 @@ class Socket(NodeCache):
         Parameters
         ----------
         name : str, optional
-            name filter Default: None.
+            name filter default=None.
 
 
         Returns
@@ -981,10 +981,10 @@ class Socket(NodeCache):
         Parameters
         ----------
         label : str, optional
-            node label Default: None.
+            node label default=None.
 
         color : SysColor, optional
-            node color Default: None.
+            node color default=None.
 
 
         Returns
@@ -1171,7 +1171,7 @@ class Socket(NodeCache):
         Parameters
         ----------
         name : str, optional
-            socket name Default: None.
+            socket name default=None.
 
 
         Returns
@@ -1235,10 +1235,10 @@ class Socket(NodeCache):
         Parameters
         ----------
         named_sockets : dict, optional
-            sockets to create Default: {}.
+            sockets to create default={}.
 
         default_menu : str, optional
-            default menu value Default: None.
+            default menu value default=None.
 
         sockets : dict
             items
@@ -1277,10 +1277,10 @@ class Socket(NodeCache):
         Parameters
         ----------
         named_sockets : dict, optional
-            sockets to create Default: {}.
+            sockets to create default={}.
 
         default_menu : str, optional
-            default menu value Default: None.
+            default menu value default=None.
 
         sockets : dict
             items
@@ -1338,12 +1338,14 @@ class Socket(NodeCache):
 
         Parameters
         ----------
-        - *values : list of Sockets to select into
-        index : Integer, optional
-            socket 'Index' (Index) Default: None.
+        *values : Any
+            List of Sockets to select into
 
-        defaut_index : int, optional
-            default idex Default: 0.
+        index : Integer, optional
+            socket 'Index' (Index) default=None.
+
+        default_index : int, optional
+            default idex default=0.
 
 
         Returns
@@ -1382,13 +1384,14 @@ class Socket(NodeCache):
 
         Parameters
         ----------
-        - *values : list of Sockets to select into
+        *values : Any
+            List of Sockets to select into
+
         index : Integer, optional
-            socket 'Index' (Index) Default: None.
+            socket 'Index' (Index)
 
-        defaut_index : int, optional
-            default idex Default: 0.
-
+        default_index : int, default=0
+            default idex
 
         Returns
         -------
@@ -1572,13 +1575,13 @@ class Socket(NodeCache):
 
         Parameters
         ----------
-        Iteration : Integer, optional
-            iteration socket Default: 1.
+        iterations : Integer, default=1
+            iteration socket
 
-        named_socket : dict
+        named_sockets : dict, default={}
             named sockets
 
-        sockets : dict
+        sockets : dict, optional
             other sockets
 
 
@@ -1599,12 +1602,11 @@ class Socket(NodeCache):
 
         Parameters
         ----------
-        named_socket : dict
+        named_sockets : dict, default={}
             named sockets
 
-        sockets : dict
+        sockets : dict, optional
             other sockets
-
 
         Returns
         -------
@@ -1621,9 +1623,10 @@ class Socket(NodeCache):
     def add_method(self, name: str = None, jump: bool = False, ret_class: type = None, **fixed):
         """ Add the current tree as a method of the Socket class.
 
-        > [!Important]
-        > The socket instance must be an input socket of the Tree. This input plays the role of
-        > self argument.
+        !!! important
+
+            The socket instance must be an input socket of the Tree. This input plays the role of
+            self argument.
 
         ``` python
         with GeoNodes("Translate"):
@@ -1639,16 +1642,16 @@ class Socket(NodeCache):
         Parameters
         ----------
         name : str, optional
-            replace the default name which is the snake case version of the group name Default: None.
+            replace the default name which is the snake case version of the group name default=None.
 
         ret_class : type, optional
-            transtype the default node output Default: None.
+            transtype the default node output default=None.
 
         jump : bool, optional
-            the calling socket jumps to the node outpus after the call Default: False.
+            the calling socket jumps to the node outpus after the call default=False.
 
         ret_class : type, optional
-            transtype the result with this class if not None Default: None.
+            transtype the result with this class if not None default=None.
 
         """
 
@@ -1938,10 +1941,10 @@ class Input(Socket):
         Parameters
         ----------
         name : str, optional
-            the name to give to the output Default: None.
+            the name to give to the output default=None.
 
         panel : str, optional
-            the panel to create if possible Default: "".
+            the panel to create if possible default="".
 
         props : dict
             socket properties

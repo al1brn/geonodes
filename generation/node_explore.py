@@ -233,6 +233,18 @@ class NodeParam:
     def comment(self):
 
         if self.param_type == 'ENUM':
+            return f"{self.name} : Literal{list(self.get_enum_list(user_version=True))}\n    parameter `{self.name}`\n"
+
+        elif self.param_type == 'FONT':
+            return f"{self.name} : Blender VectorFont | str\n    VectorFont, or name of a valid font in bpy.types.fonts (see `utils.get_font`)\n"
+
+        else:
+            return f"{self.name} : {type(self.value).__name__}\n    parameter `{self.name}`\n"
+        
+        # OLD
+
+
+        if self.param_type == 'ENUM':
             return f"{self.name} (str): parameter '{self.name}' in {self.get_enum_list(user_version=True)}"
 
         elif self.param_type == 'FONT':
@@ -1075,8 +1087,7 @@ class NodeInfo:
         - 'arg_name'     : argument name
         - 'arg_value'    : argument default value
         - 'socket_value' : argument value
-        - 'comment'      : comment
-        #- 'info'         : information for non argument sockets
+        - 'comment'      : formatted comment
         - 'fixed'        : fixed socket or parameter
         - 'typing'       : typing info
 
@@ -1084,10 +1095,10 @@ class NodeInfo:
         ----------
         - self_socket : socket name to use to plug self
         expose_selection : bool, optional
-            put 'Selection' socket (if exists) in the list of arguments or set to 'self.get_selection()' Default: True.
+            put 'Selection' socket (if exists) in the list of arguments or set to 'self.get_selection()' default=True.
 
         enabled_only : bool, optional
-            sue only enabled sockets Default: True.
+            sue only enabled sockets default=True.
 
         ignore_sockets : list
             list of sockets to ignore
@@ -1099,7 +1110,7 @@ class NodeInfo:
         list of dicts
         """
 
-        DEBUG = False and self.bnode.name == "Image Texture"
+        DEBUG = True and self.bnode.name == "Menu Switch"
 
         args = []
 
@@ -1130,6 +1141,12 @@ class NodeInfo:
 
         for param, param_value in self.params.items():
 
+            if DEBUG:
+                print(f">>>> param: {param}")
+                pprint(param_value)
+                pprint(param_value.comment)
+                print()
+
             if param == data_type:
                 driving_arg_name = utils.snake_case(self.data_type_sockets['in_sockets'][0])
 
@@ -1138,7 +1155,6 @@ class NodeInfo:
                     'arg_name'     : param,
                     'is_argument'  : False,
                     'comment'      : None,
-                    #'info'         : f"Parameter '{param}' : depending on '{driving_arg_name}' type",
                     'fixed'        : ('Parameter', param, f"from `{driving_arg_name}` type"),
                     'node_value'   : param,
                     'typing'       : "'data_type'",
@@ -1175,21 +1191,19 @@ class NodeInfo:
                 'arg_name'     : param,
                 'is_argument'  : not forced,
                 'comment'      : None,
-                #'info'         : None,
                 'fixed'        : None,
                 #'typing'       : "'IN_PROGRESS'",
             }
 
             if forced:
                 d['node_value'] = str_value
-                #d['info'] = f"Parameter '{param}' : {str_value}"
                 d['fixed'] = ('Parameter', param, f"`{str_value}`")
 
             else:
                 d['arg_value']  = str_value
                 d['node_value'] = node_value
-
                 d['comment'] = param_value.comment
+
                 if param in self.enum_params:
                     # Data type is now converted by Node class
                     if param not in ['data_type']:
@@ -1243,7 +1257,6 @@ class NodeInfo:
                     'class_name'  : class_name,
                     'node_value'  : None,
                     'multiple'    : 'NO',
-                    #'info'        : f"Socket '{socket_name}' : ignored",
                     'fixed'       : ["Socket", socket_name, "ignored"],
                     'typing'      : "'IGNORED'",
                 })
@@ -1255,7 +1268,6 @@ class NodeInfo:
             multiple    = 'ARGS' if socket.is_multi_input else 'NO'
             is_argument = True
             comment     = None
-            #info        = None
             fixed       = None
 
             # ----- Self socket
@@ -1269,7 +1281,6 @@ class NodeInfo:
                 else:
                     node_value  = 'self'
                     is_argument = False
-                    #info        = f"Socket '{socket_name}' : self"
                     fixed       = ("Socket", socket_name, "`self`")
 
             # ----- Not self socket
@@ -1285,7 +1296,6 @@ class NodeInfo:
                 if socket_name == 'Selection' and not expose_selection:
                     is_argument = False
                     node_value = "self.get_selection()"
-                    #info       = "Socket 'Selection' : self[selection]"
                     fixed      = ("Socket", "Selection", "`self[selection]`")
 
                 # Any other socket
@@ -1311,11 +1321,14 @@ class NodeInfo:
 
             if socket.identifier in self.menu_sockets:
                 menu = self.menu_sockets[socket.identifier]
-                comment = f"{arg_name} (menu='{menu['default']}') : {menu['values']}"
+                #comment = f"{arg_name} (menu='{menu['default']}') : {menu['values']}"
+                comment = f"{arg_name} : Menu, default=`{menu['default']}`\n    {menu['values']}\n"
                 prm_doc_type = f"menu='{menu['default']}'"
                 prm_doc_desc = f"{menu['values']}"
+
             else:
-                comment = f"{arg_name} ({styping}) : socket '{socket_name}' (id: {socket.identifier})"
+                #comment = f"{arg_name} ({styping}) : socket '{socket_name}' (id: {socket.identifier})"
+                comment = f"{arg_name} : {styping}\n    socket '{socket_name}' (id: {socket.identifier})"
                 prm_doc_type = styping
                 prm_doc_desc = f"socket '{socket_name}' (id: {socket.identifier})"
 
@@ -1337,7 +1350,6 @@ class NodeInfo:
                 'arg_value'   : "None",
                 'node_value'  : node_value,
                 'comment'     : comment,
-                #'info'        : info,
                 'fixed'       : fixed, 
                 'typing'      : styping,
             })
@@ -1354,8 +1366,7 @@ class NodeInfo:
                 'multiple'    : 'NO',
                 'arg_name'    : 'named_sockets',
                 'arg_value'   : '{}',
-                'comment'     : "Sockets created with string names",
-                #'info'        : None,
+                'comment'     : "named_sockets : dict, default={}\n    Sockets created with string names\n",
                 'fixed'       : None,
                 'typing'      : "dict",
             })
@@ -1366,8 +1377,7 @@ class NodeInfo:
                 'is_self'     : False,
                 'multiple'    : 'KWARGS',
                 'arg_name'    : 'sockets',
-                'comment'     : "Sockets created with python name attributes",
-                #'info'        : None,
+                'comment'     : "sockets : dict, default={}\n    Socket created with python name attributes",
                 'fixed'       : None,
             })
 
@@ -1386,7 +1396,8 @@ class NodeInfo:
                 if arg['arg_name'] in ['a', 'b']:
                     continue
                 if arg['arg_name'] == 'menu':
-                    arg['comment'] = "Default selection"
+                    #arg['comment'] = "Default selection"
+                    arg['comment'] = f"menu : Menu, optional\n    Menu selection\n"
                     arg['typing'] = None
                 new_args.append(arg)
 
@@ -1524,11 +1535,12 @@ class NodeInfo:
             'STATIC'        : 'Node',
         }
 
+        DEBUG = False and self.bnode.name in ["Menu Switch"]
+
         if implementation == 'FUNCTION':
             _1, _2 = "", " "*4
         else:
             _1, _2 = " "*4, " "*8
-
 
         snode = "ShaderNode" if self.is_shader else "Node"
 
@@ -1539,24 +1551,25 @@ class NodeInfo:
         # Arguments
 
         arg_doc = []
-        inf_doc = []
         fixed_doc = []
-        for arg_type in ['SOCKET', 'PARAM']:
+
+        # DEV
+        if False:
             for arg in args:
+                if arg['arg_type'] not in ('PARAM', 'SOCKET', 'FIRST', 'OTHER'):
+                    assert False, f"Invalid arg_type : '{arg}'"
+
+        for arg_type in ['FIRST', 'SOCKET', 'PARAM', 'OTHER']:
+            for arg in args:
+
                 if arg['arg_type'] != arg_type:
                     continue
+
                 if arg['is_argument']:
                     arg_doc.extend(arg['comment'].split("\n"))
-                #if arg['info'] is not None:
-                #    inf_doc.append(arg['info'])
+
                 if arg['fixed'] is not None:
                     fixed_doc.append(arg['fixed'])
-
-
-        #if len(inf_doc):
-        #    doc += f"{_2}**Information**\n\n"
-        #    doc += f"{_2}-----------\n{_2}- "
-        #    doc += f"\n{_2}- ".join(inf_doc) + "\n\n"
 
         if len(fixed_doc):
             doc += f"{_2}**Fixed values**\n\n"
@@ -1564,7 +1577,7 @@ class NodeInfo:
 
         if len(arg_doc):
             doc += f"{_2}Parameters\n"
-            doc += f"{_2}---------\n{_2}"
+            doc += f"{_2}----------\n{_2}"
             doc += f"\n{_2}".join(arg_doc) + "\n\n"
 
         # Returns
@@ -1583,7 +1596,6 @@ class NodeInfo:
                 if implementation == 'JUMP':
                     doc += f"{_2}self"
                     if len(out) > 1:
-                        #doc += f" [{list(out.values())[1]}_]\n"
                         doc += f"\n{_3}peer sockets: {list(out.values())[1]}\n"
                     doc += "\n"
 
@@ -1593,7 +1605,6 @@ class NodeInfo:
 
                         a = [f"{socket_name}_ ({class_name})" for socket_name, class_name in out.items()]
                         if len(a) > 1:
-                            #doc += f" [{', '.join(a[1:])}]"
                             doc += f"\n{_3}peer sockets: {', '.join(a[1:])}\n"
                         doc += "\n"
                     else:
@@ -1744,9 +1755,13 @@ class NodeInfo:
 
         Parameters
         ----------
-        - fac (Float = None)
-        - stops (list of tuple(float, tuple)) : stops made of (float, color as tuple of floats)
-        - interpolation in ('EASE', 'CARDINAL', 'LINEAR', 'B_SPLINE', 'CONSTANT')
+        fac : Float, optional
+
+        stops : list[tuple[float, tuple]]
+            Stops made of (float, color as tuple of floats)
+
+        interpolation : {'EASE', 'CARDINAL', 'LINEAR', 'B_SPLINE', 'CONSTANT'}
+
         """
         node = ColorRamp(fac=fac, stops=stops, interpolation=interpolation)
         return node._out
@@ -1767,10 +1782,10 @@ class NodeInfo:
         Parameters
         ----------
         named_sockets : dict, optional
-            sockets to create Default: {}.
+            sockets to create default={}.
 
         menu : Socket | str, optional
-            socket to plug in Default: None.
+            socket to plug in default=None.
 
         default_value : str | int
             default value
@@ -1812,7 +1827,7 @@ class NodeInfo:
             socket 'Index' (Index)
 
         data_type : str, optional
-            socket data_type Default: None.
+            socket data_type default=None.
 
 
         Returns
@@ -1840,7 +1855,7 @@ class NodeInfo:
         node_name = self.bnode.name
         bl_idname = self.bnode.bl_idname
 
-        DEBUG = False and node_name in ["Image Texture"]
+        DEBUG = False and node_name in ["Menu Switch", "Set Position"]
 
         # ====================================================================================================
         # Non standard implementations
@@ -1901,7 +1916,7 @@ class NodeInfo:
 
         args = self.get_arguments(self_socket=None, expose_selection=True, enabled_only=False)
 
-        if False and DEBUG:
+        if True and DEBUG:
             print("ARGS", node_name)
             print([(d['arg_name'], d['arg_type']) for d in args])
 
@@ -1936,22 +1951,10 @@ class NodeInfo:
         # Decorator
         # ---------------------------------------------------------------------------
 
-        if True:
-            if is_prop:
-                s = f"{_1}@utils.classproperty\n"
-            else:
-                s = f"{_1}@classmethod\n"
-
+        if is_prop:
+            s = f"{_1}@utils.classproperty\n"
         else:
-            if NO_STATIC_PROP:
-                if is_prop:
-                    s = f"{_1}@property\n"
-                else:
-                    s = f"{_1}@classmethod\n"
-            else:
-                s  = f"{_1}@classmethod\n"
-                if is_prop:
-                    s += f"{_1}@property\n"
+            s = f"{_1}@classmethod\n"
 
         # ---------------------------------------------------------------------------
         # Header
@@ -1967,6 +1970,11 @@ class NodeInfo:
         # ---------------------------------------------------------------------------
         # Documentation
         # ---------------------------------------------------------------------------
+
+        if DEBUG:
+            print("ARGS", node_name)
+            pprint(args)
+            print()
 
         s += self.documentation('STATIC', args, returns='OUT')
 
@@ -1992,6 +2000,12 @@ class NodeInfo:
         # ---------------------------------------------------------------------------
         # Return
         # ---------------------------------------------------------------------------
+
+        if DEBUG:
+            print("-"*100)
+            print(node_name, "\n")
+            print(s)
+            print("-"*100)
 
         if ret_node:
             s += f"{_2}return node\n"

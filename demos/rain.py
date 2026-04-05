@@ -43,22 +43,22 @@ def dip_wave(center, t, length=3., c=5, falloff=30, omega=4, height=1, amp_only=
             time
 
     length : Float, optional
-        length non null amplitude Default: 3.
+        length non null amplitude default=3.
 
     c : Float, optional
-        wave celerity Default: 5.
+        wave celerity default=5.
 
     falloff : Float, optional
-        falloff factor Default: 30.
+        falloff factor default=30.
 
     omega : Float, optional
-        wave omega Default: 4.
+        wave omega default=4.
 
     height : Float, optional
-        wave height Default: 1.
+        wave height default=1.
 
     amp_only : Boolean, optional
-        show only the amplitude Default: False.
+        show only the amplitude default=False.
 
 
     Returns

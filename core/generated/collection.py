@@ -1,4 +1,4 @@
-# Generated 2026-04-04 12:37:35
+# Generated 2026-04-04 17:31:31
 
 from __future__ import annotations
 from .. sockettype import SocketType
@@ -46,14 +46,16 @@ class Collection(Socket):
         | Socket | Collection | `self` |
 
         Parameters
-        ---------
+        ----------
         separate_children : Boolean, optional
             socket 'Separate Children' (id: Separate Children)
         
         reset_children : Boolean, optional
             socket 'Reset Children' (id: Reset Children)
         
-        transform_space (str): parameter 'transform_space' in ('Original', 'Relative')
+        transform_space : Literal['Original', 'Relative']
+            parameter `transform_space`
+        
 
         Returns
         -------
@@ -74,7 +76,7 @@ class Collection(Socket):
         | Parameter | `data_type` | `'COLLECTION'` |
 
         Parameters
-        ---------
+        ----------
         enable : Boolean, optional
             socket 'Enable' (id: Enable)
         
@@ -100,19 +102,33 @@ class Collection(Socket):
 
         New <#Collection> input with subtype 'NONE'.
 
-        Aguments
-        --------
-        - value  (object = None) : Default value
-        - name  (str = 'Collection') : Input socket name
-        - tip  (str = '') : Property description
-        - panel (str = "") : Panel name
-        - optional_label  (bool = False) : Property optional_label
-        - hide_value  (bool = False) : Property hide_value
-        - hide_in_modifier  (bool = False) : Property hide_in_modifier
+        Parameters
+        ----------
+        value : object, default=`None`
+            Default value
+
+        name : str, default=`Collection`
+            Input socket name
+
+        tip : str, default=`''`
+            Property description
+
+        panel : str, default=``
+            Panel name
+
+        optional_label : bool, default=`False`
+            Property optional_label
+
+        hide_value : bool, default=`False`
+            Property hide_value
+
+        hide_in_modifier : bool, default=`False`
+            Property hide_in_modifier
+
 
         Returns
         -------
-        - Collection
+        Collection
         """
         from ..treeclass import Tree
 

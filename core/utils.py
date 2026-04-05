@@ -111,10 +111,10 @@ def get_tree(name, tree_type='GeometryNodeTree', create=True):
             Tree name
 
         tree_type : str, optional
-            tree type in ('CompositorNodeTree', 'TextureNodeTree', 'GeometryNodeTree', 'ShaderNodeTree') Default: 'GeometryNodeTree'.
+            tree type in ('CompositorNodeTree', 'TextureNodeTree', 'GeometryNodeTree', 'ShaderNodeTree') default='GeometryNodeTree'.
 
         create : bool, optional
-            Create the tree if it doesn't exist Default: False.
+            Create the tree if it doesn't exist default=False.
 
 
     Returns
@@ -789,7 +789,7 @@ def get_data_type_from_argument(tree_type: str, bl_idname: str, argument):
             the argument the derive data_type from
 
     arg_name : str, optional
-        in case of an error Default: None.
+        in case of an error default=None.
 
 
     Returns

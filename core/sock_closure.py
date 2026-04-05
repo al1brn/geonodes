@@ -188,18 +188,9 @@ class Closure(generated.Closure):
 
         Parameters
         ----------
-        include : list, optional
-            sockets to include Default: None.
 
-        exclude : list, optional
-            sockets to exclude Default: [].
-
-        enabled_only : bool, optional
-            ignore disabled sockets Default: True.
-
-        with_sockets : bool, optional
-            include sockets Default: False.
-
+        with_sockets : bool, default=False
+            include sockets
 
         Returns
         -------
@@ -264,10 +255,10 @@ class Closure(generated.Closure):
         Parameters
         ----------
         named_sockets : dict, optional
-            named sockets values Default: {}.
+            named sockets values default={}.
 
         signature : Signature, optional
-            the evaluation signature Default: None.
+            the evaluation signature default=None.
 
         sockets
             socket values

@@ -1,4 +1,4 @@
-# Generated 2026-04-04 12:37:35
+# Generated 2026-04-04 17:31:31
 
 from __future__ import annotations
 from .. sockettype import SocketType
@@ -48,7 +48,7 @@ class Color(Socket):
         | Parameter | `mode` | `'RGB'` |
 
         Parameters
-        ---------
+        ----------
         red : Float, optional
             socket 'Red' (id: Red)
         
@@ -84,7 +84,7 @@ class Color(Socket):
         | Parameter | `mode` | `'HSV'` |
 
         Parameters
-        ---------
+        ----------
         hue : Float, optional
             socket 'Hue' (id: Red)
         
@@ -120,7 +120,7 @@ class Color(Socket):
         | Parameter | `mode` | `'HSL'` |
 
         Parameters
-        ---------
+        ----------
         hue : Float, optional
             socket 'Hue' (id: Red)
         
@@ -151,7 +151,7 @@ class Color(Socket):
         """ > Node <&Node Combine Color>
 
         Parameters
-        ---------
+        ----------
         red : Float, optional
             socket 'Red' (id: Red)
         
@@ -164,7 +164,9 @@ class Color(Socket):
         alpha : Float, optional
             socket 'Alpha' (id: Alpha)
         
-        mode (str): parameter 'mode' in ('RGB', 'HSV', 'HSL')
+        mode : Literal['RGB', 'HSV', 'HSL']
+            parameter `mode`
+        
 
         Returns
         -------
@@ -187,7 +189,7 @@ class Color(Socket):
         | Parameter | `operation` | `'EQUAL'`   |
 
         Parameters
-        ---------
+        ----------
         b : Color, optional
             socket 'B' (id: B_COL)
         
@@ -215,7 +217,7 @@ class Color(Socket):
         | Parameter | `operation` | `'NOT_EQUAL'` |
 
         Parameters
-        ---------
+        ----------
         b : Color, optional
             socket 'B' (id: B_COL)
         
@@ -243,7 +245,7 @@ class Color(Socket):
         | Parameter | `operation` | `'BRIGHTER'` |
 
         Parameters
-        ---------
+        ----------
         b : Color, optional
             socket 'B' (id: B_COL)
         
@@ -268,7 +270,7 @@ class Color(Socket):
         | Parameter | `operation` | `'DARKER'`  |
 
         Parameters
-        ---------
+        ----------
         b : Color, optional
             socket 'B' (id: B_COL)
         
@@ -291,7 +293,7 @@ class Color(Socket):
         | Parameter | `data_type` | `'RGBA'` |
 
         Parameters
-        ---------
+        ----------
         seed : Integer, optional
             socket 'Seed' (id: Seed)
         
@@ -364,8 +366,10 @@ class Color(Socket):
         | Socket | Color | `self` |
 
         Parameters
-        ---------
-        mode (str): parameter 'mode' in ('RGB', 'HSV', 'HSL')
+        ----------
+        mode : Literal['RGB', 'HSV', 'HSL']
+            parameter `mode`
+        
 
         Returns
         -------
@@ -583,7 +587,7 @@ class Color(Socket):
         | Parameter | `data_type` | `'FLOAT_COLOR'` |
 
         Parameters
-        ---------
+        ----------
         iterations : Integer, optional
             socket 'Iterations' (id: Iterations)
         
@@ -609,7 +613,7 @@ class Color(Socket):
         | Parameter | `data_type` | `'FLOAT_COLOR'` |
 
         Parameters
-        ---------
+        ----------
         name : String, optional
             socket 'Name' (id: Name)
         
@@ -632,7 +636,7 @@ class Color(Socket):
         | Parameter | `data_type` | `'FLOAT_COLOR'` |
 
         Parameters
-        ---------
+        ----------
         name : String, optional
             socket 'Name' (id: Name)
         
@@ -649,7 +653,7 @@ class Color(Socket):
         """ > Node <&Node Blackbody>
 
         Parameters
-        ---------
+        ----------
         temperature : Float, optional
             socket 'Temperature' (id: Temperature)
         
@@ -678,15 +682,19 @@ class Color(Socket):
         | Parameter | `factor_mode` | `'UNIFORM'` |
 
         Parameters
-        ---------
+        ----------
         b : Color, optional
             socket 'B' (id: B_Color)
         
         factor : Float, optional
             socket 'Factor' (id: Factor_Float)
         
-        clamp_factor (bool): parameter 'clamp_factor'
-        clamp_result (bool): parameter 'clamp_result'
+        clamp_factor : bool
+            parameter `clamp_factor`
+        
+        clamp_result : bool
+            parameter `clamp_result`
+        
 
         Returns
         -------
@@ -712,15 +720,19 @@ class Color(Socket):
         | Parameter | `factor_mode` | `'UNIFORM'` |
 
         Parameters
-        ---------
+        ----------
         b : Color, optional
             socket 'B' (id: B_Color)
         
         factor : Float, optional
             socket 'Factor' (id: Factor_Float)
         
-        clamp_factor (bool): parameter 'clamp_factor'
-        clamp_result (bool): parameter 'clamp_result'
+        clamp_factor : bool
+            parameter `clamp_factor`
+        
+        clamp_result : bool
+            parameter `clamp_result`
+        
 
         Returns
         -------
@@ -746,15 +758,19 @@ class Color(Socket):
         | Parameter | `factor_mode` | `'UNIFORM'`  |
 
         Parameters
-        ---------
+        ----------
         b : Color, optional
             socket 'B' (id: B_Color)
         
         factor : Float, optional
             socket 'Factor' (id: Factor_Float)
         
-        clamp_factor (bool): parameter 'clamp_factor'
-        clamp_result (bool): parameter 'clamp_result'
+        clamp_factor : bool
+            parameter `clamp_factor`
+        
+        clamp_result : bool
+            parameter `clamp_result`
+        
 
         Returns
         -------
@@ -780,15 +796,19 @@ class Color(Socket):
         | Parameter | `factor_mode` | `'UNIFORM'` |
 
         Parameters
-        ---------
+        ----------
         b : Color, optional
             socket 'B' (id: B_Color)
         
         factor : Float, optional
             socket 'Factor' (id: Factor_Float)
         
-        clamp_factor (bool): parameter 'clamp_factor'
-        clamp_result (bool): parameter 'clamp_result'
+        clamp_factor : bool
+            parameter `clamp_factor`
+        
+        clamp_result : bool
+            parameter `clamp_result`
+        
 
         Returns
         -------
@@ -814,15 +834,19 @@ class Color(Socket):
         | Parameter | `factor_mode` | `'UNIFORM'` |
 
         Parameters
-        ---------
+        ----------
         b : Color, optional
             socket 'B' (id: B_Color)
         
         factor : Float, optional
             socket 'Factor' (id: Factor_Float)
         
-        clamp_factor (bool): parameter 'clamp_factor'
-        clamp_result (bool): parameter 'clamp_result'
+        clamp_factor : bool
+            parameter `clamp_factor`
+        
+        clamp_result : bool
+            parameter `clamp_result`
+        
 
         Returns
         -------
@@ -848,15 +872,19 @@ class Color(Socket):
         | Parameter | `factor_mode` | `'UNIFORM'` |
 
         Parameters
-        ---------
+        ----------
         b : Color, optional
             socket 'B' (id: B_Color)
         
         factor : Float, optional
             socket 'Factor' (id: Factor_Float)
         
-        clamp_factor (bool): parameter 'clamp_factor'
-        clamp_result (bool): parameter 'clamp_result'
+        clamp_factor : bool
+            parameter `clamp_factor`
+        
+        clamp_result : bool
+            parameter `clamp_result`
+        
 
         Returns
         -------
@@ -882,15 +910,19 @@ class Color(Socket):
         | Parameter | `factor_mode` | `'UNIFORM'` |
 
         Parameters
-        ---------
+        ----------
         b : Color, optional
             socket 'B' (id: B_Color)
         
         factor : Float, optional
             socket 'Factor' (id: Factor_Float)
         
-        clamp_factor (bool): parameter 'clamp_factor'
-        clamp_result (bool): parameter 'clamp_result'
+        clamp_factor : bool
+            parameter `clamp_factor`
+        
+        clamp_result : bool
+            parameter `clamp_result`
+        
 
         Returns
         -------
@@ -916,15 +948,19 @@ class Color(Socket):
         | Parameter | `factor_mode` | `'UNIFORM'` |
 
         Parameters
-        ---------
+        ----------
         b : Color, optional
             socket 'B' (id: B_Color)
         
         factor : Float, optional
             socket 'Factor' (id: Factor_Float)
         
-        clamp_factor (bool): parameter 'clamp_factor'
-        clamp_result (bool): parameter 'clamp_result'
+        clamp_factor : bool
+            parameter `clamp_factor`
+        
+        clamp_result : bool
+            parameter `clamp_result`
+        
 
         Returns
         -------
@@ -950,15 +986,19 @@ class Color(Socket):
         | Parameter | `factor_mode` | `'UNIFORM'` |
 
         Parameters
-        ---------
+        ----------
         b : Color, optional
             socket 'B' (id: B_Color)
         
         factor : Float, optional
             socket 'Factor' (id: Factor_Float)
         
-        clamp_factor (bool): parameter 'clamp_factor'
-        clamp_result (bool): parameter 'clamp_result'
+        clamp_factor : bool
+            parameter `clamp_factor`
+        
+        clamp_result : bool
+            parameter `clamp_result`
+        
 
         Returns
         -------
@@ -984,15 +1024,19 @@ class Color(Socket):
         | Parameter | `factor_mode` | `'UNIFORM'`    |
 
         Parameters
-        ---------
+        ----------
         b : Color, optional
             socket 'B' (id: B_Color)
         
         factor : Float, optional
             socket 'Factor' (id: Factor_Float)
         
-        clamp_factor (bool): parameter 'clamp_factor'
-        clamp_result (bool): parameter 'clamp_result'
+        clamp_factor : bool
+            parameter `clamp_factor`
+        
+        clamp_result : bool
+            parameter `clamp_result`
+        
 
         Returns
         -------
@@ -1018,15 +1062,19 @@ class Color(Socket):
         | Parameter | `factor_mode` | `'UNIFORM'`      |
 
         Parameters
-        ---------
+        ----------
         b : Color, optional
             socket 'B' (id: B_Color)
         
         factor : Float, optional
             socket 'Factor' (id: Factor_Float)
         
-        clamp_factor (bool): parameter 'clamp_factor'
-        clamp_result (bool): parameter 'clamp_result'
+        clamp_factor : bool
+            parameter `clamp_factor`
+        
+        clamp_result : bool
+            parameter `clamp_result`
+        
 
         Returns
         -------
@@ -1052,15 +1100,19 @@ class Color(Socket):
         | Parameter | `factor_mode` | `'UNIFORM'`    |
 
         Parameters
-        ---------
+        ----------
         b : Color, optional
             socket 'B' (id: B_Color)
         
         factor : Float, optional
             socket 'Factor' (id: Factor_Float)
         
-        clamp_factor (bool): parameter 'clamp_factor'
-        clamp_result (bool): parameter 'clamp_result'
+        clamp_factor : bool
+            parameter `clamp_factor`
+        
+        clamp_result : bool
+            parameter `clamp_result`
+        
 
         Returns
         -------
@@ -1086,15 +1138,19 @@ class Color(Socket):
         | Parameter | `factor_mode` | `'UNIFORM'`   |
 
         Parameters
-        ---------
+        ----------
         b : Color, optional
             socket 'B' (id: B_Color)
         
         factor : Float, optional
             socket 'Factor' (id: Factor_Float)
         
-        clamp_factor (bool): parameter 'clamp_factor'
-        clamp_result (bool): parameter 'clamp_result'
+        clamp_factor : bool
+            parameter `clamp_factor`
+        
+        clamp_result : bool
+            parameter `clamp_result`
+        
 
         Returns
         -------
@@ -1120,15 +1176,19 @@ class Color(Socket):
         | Parameter | `factor_mode` | `'UNIFORM'`  |
 
         Parameters
-        ---------
+        ----------
         b : Color, optional
             socket 'B' (id: B_Color)
         
         factor : Float, optional
             socket 'Factor' (id: Factor_Float)
         
-        clamp_factor (bool): parameter 'clamp_factor'
-        clamp_result (bool): parameter 'clamp_result'
+        clamp_factor : bool
+            parameter `clamp_factor`
+        
+        clamp_result : bool
+            parameter `clamp_result`
+        
 
         Returns
         -------
@@ -1154,15 +1214,19 @@ class Color(Socket):
         | Parameter | `factor_mode` | `'UNIFORM'` |
 
         Parameters
-        ---------
+        ----------
         b : Color, optional
             socket 'B' (id: B_Color)
         
         factor : Float, optional
             socket 'Factor' (id: Factor_Float)
         
-        clamp_factor (bool): parameter 'clamp_factor'
-        clamp_result (bool): parameter 'clamp_result'
+        clamp_factor : bool
+            parameter `clamp_factor`
+        
+        clamp_result : bool
+            parameter `clamp_result`
+        
 
         Returns
         -------
@@ -1188,15 +1252,19 @@ class Color(Socket):
         | Parameter | `factor_mode` | `'UNIFORM'` |
 
         Parameters
-        ---------
+        ----------
         b : Color, optional
             socket 'B' (id: B_Color)
         
         factor : Float, optional
             socket 'Factor' (id: Factor_Float)
         
-        clamp_factor (bool): parameter 'clamp_factor'
-        clamp_result (bool): parameter 'clamp_result'
+        clamp_factor : bool
+            parameter `clamp_factor`
+        
+        clamp_result : bool
+            parameter `clamp_result`
+        
 
         Returns
         -------
@@ -1222,15 +1290,19 @@ class Color(Socket):
         | Parameter | `factor_mode` | `'UNIFORM'`    |
 
         Parameters
-        ---------
+        ----------
         b : Color, optional
             socket 'B' (id: B_Color)
         
         factor : Float, optional
             socket 'Factor' (id: Factor_Float)
         
-        clamp_factor (bool): parameter 'clamp_factor'
-        clamp_result (bool): parameter 'clamp_result'
+        clamp_factor : bool
+            parameter `clamp_factor`
+        
+        clamp_result : bool
+            parameter `clamp_result`
+        
 
         Returns
         -------
@@ -1256,15 +1328,19 @@ class Color(Socket):
         | Parameter | `factor_mode` | `'UNIFORM'` |
 
         Parameters
-        ---------
+        ----------
         b : Color, optional
             socket 'B' (id: B_Color)
         
         factor : Float, optional
             socket 'Factor' (id: Factor_Float)
         
-        clamp_factor (bool): parameter 'clamp_factor'
-        clamp_result (bool): parameter 'clamp_result'
+        clamp_factor : bool
+            parameter `clamp_factor`
+        
+        clamp_result : bool
+            parameter `clamp_result`
+        
 
         Returns
         -------
@@ -1290,15 +1366,19 @@ class Color(Socket):
         | Parameter | `factor_mode` | `'UNIFORM'` |
 
         Parameters
-        ---------
+        ----------
         b : Color, optional
             socket 'B' (id: B_Color)
         
         factor : Float, optional
             socket 'Factor' (id: Factor_Float)
         
-        clamp_factor (bool): parameter 'clamp_factor'
-        clamp_result (bool): parameter 'clamp_result'
+        clamp_factor : bool
+            parameter `clamp_factor`
+        
+        clamp_result : bool
+            parameter `clamp_result`
+        
 
         Returns
         -------
@@ -1324,16 +1404,22 @@ class Color(Socket):
         | Parameter | `data_type`  | `'RGBA'` |
 
         Parameters
-        ---------
+        ----------
         b : Color, optional
             socket 'B' (id: B_Color)
         
         factor : Float, optional
             socket 'Factor' (id: Factor_Float)
         
-        clamp_factor (bool): parameter 'clamp_factor'
-        clamp_result (bool): parameter 'clamp_result'
-        factor_mode (str): parameter 'factor_mode' in ('Uniform', 'Non-Uniform')
+        clamp_factor : bool
+            parameter `clamp_factor`
+        
+        clamp_result : bool
+            parameter `clamp_result`
+        
+        factor_mode : Literal['Uniform', 'Non-Uniform']
+            parameter `factor_mode`
+        
 
         Returns
         -------
@@ -1362,7 +1448,7 @@ class Color(Socket):
         """ > Node <&Node Brick Texture>
 
         Parameters
-        ---------
+        ----------
         vector : Vector, optional
             socket 'Vector' (id: Vector)
         
@@ -1393,10 +1479,18 @@ class Color(Socket):
         row_height : Float, optional
             socket 'Row Height' (id: Row Height)
         
-        offset (float): parameter 'offset'
-        offset_frequency (int): parameter 'offset_frequency'
-        squash (float): parameter 'squash'
-        squash_frequency (int): parameter 'squash_frequency'
+        offset : float
+            parameter `offset`
+        
+        offset_frequency : int
+            parameter `offset_frequency`
+        
+        squash : float
+            parameter `squash`
+        
+        squash_frequency : int
+            parameter `squash_frequency`
+        
 
         Returns
         -------
@@ -1414,7 +1508,7 @@ class Color(Socket):
         """ > Node <&Node Checker Texture>
 
         Parameters
-        ---------
+        ----------
         vector : Vector, optional
             socket 'Vector' (id: Vector)
         
@@ -1442,11 +1536,13 @@ class Color(Socket):
         """ > Node <&Node Gradient Texture>
 
         Parameters
-        ---------
+        ----------
         vector : Vector, optional
             socket 'Vector' (id: Vector)
         
-        gradient_type (str): parameter 'gradient_type' in ('Linear', 'Quadratic', 'Easing', 'Diagonal', 'Spherical', 'Quadratic Sphere', 'Radial')
+        gradient_type : Literal['Linear', 'Quadratic', 'Easing', 'Diagonal', 'Spherical', 'Quadratic Sphere', 'Radial']
+            parameter `gradient_type`
+        
 
         Returns
         -------
@@ -1465,7 +1561,7 @@ class Color(Socket):
         """ > Node <&Node Magic Texture>
 
         Parameters
-        ---------
+        ----------
         vector : Vector, optional
             socket 'Vector' (id: Vector)
         
@@ -1475,7 +1571,9 @@ class Color(Socket):
         distortion : Float, optional
             socket 'Distortion' (id: Distortion)
         
-        turbulence_depth (int): parameter 'turbulence_depth'
+        turbulence_depth : int
+            parameter `turbulence_depth`
+        
 
         Returns
         -------
@@ -1500,7 +1598,7 @@ class Color(Socket):
         """ > Node <&Node Wave Texture>
 
         Parameters
-        ---------
+        ----------
         vector : Vector, optional
             socket 'Vector' (id: Vector)
         
@@ -1522,10 +1620,18 @@ class Color(Socket):
         phase_offset : Float, optional
             socket 'Phase Offset' (id: Phase Offset)
         
-        bands_direction (str): parameter 'bands_direction' in ('X', 'Y', 'Z', 'Diagonal')
-        rings_direction (str): parameter 'rings_direction' in ('X', 'Y', 'Z', 'Spherical')
-        wave_profile (str): parameter 'wave_profile' in ('Sine', 'Saw', 'Triangle')
-        wave_type (str): parameter 'wave_type' in ('Bands', 'Rings')
+        bands_direction : Literal['X', 'Y', 'Z', 'Diagonal']
+            parameter `bands_direction`
+        
+        rings_direction : Literal['X', 'Y', 'Z', 'Spherical']
+            parameter `rings_direction`
+        
+        wave_profile : Literal['Sine', 'Saw', 'Triangle']
+            parameter `wave_profile`
+        
+        wave_type : Literal['Bands', 'Rings']
+            parameter `wave_type`
+        
 
         Returns
         -------
@@ -1549,7 +1655,7 @@ class Color(Socket):
         | Parameter | `data_type` | `'RGBA'` |
 
         Parameters
-        ---------
+        ----------
         enable : Boolean, optional
             socket 'Enable' (id: Enable)
         
@@ -1571,7 +1677,7 @@ class Color(Socket):
         | Socket | Color | `self` |
 
         Parameters
-        ---------
+        ----------
         gamma : Float, optional
             socket 'Gamma' (id: Gamma)
         
@@ -1598,16 +1704,22 @@ class Color(Socket):
         | Socket | Color | `self` |
 
         Parameters
-        ---------
+        ----------
         distance : Float, optional
             socket 'Distance' (id: Distance)
         
         normal : Vector, optional
             socket 'Normal' (id: Normal)
         
-        inside (bool): parameter 'inside'
-        only_local (bool): parameter 'only_local'
-        samples (int): parameter 'samples'
+        inside : bool
+            parameter `inside`
+        
+        only_local : bool
+            parameter `only_local`
+        
+        samples : int
+            parameter `samples`
+        
 
         Returns
         -------
@@ -1628,7 +1740,7 @@ class Color(Socket):
         | Socket | Color | `self` |
 
         Parameters
-        ---------
+        ----------
         strength : Float, optional
             socket 'Strength' (id: Strength)
         
@@ -1650,7 +1762,7 @@ class Color(Socket):
         | Socket | Color | `self` |
 
         Parameters
-        ---------
+        ----------
         brightness : Float, optional
             socket 'Brightness' (id: Bright)
         
@@ -1679,7 +1791,7 @@ class Color(Socket):
         | Socket | Color | `self` |
 
         Parameters
-        ---------
+        ----------
         hue : Float, optional
             socket 'Hue' (id: Hue)
         
@@ -1710,7 +1822,7 @@ class Color(Socket):
         | Socket | Color | `self` |
 
         Parameters
-        ---------
+        ----------
         factor : Float, optional
             socket 'Factor' (id: Fac)
         
@@ -1732,11 +1844,13 @@ class Color(Socket):
         | Socket | Color | `self` |
 
         Parameters
-        ---------
+        ----------
         value : Float, optional
             socket 'Value' (id: Value)
         
-        aov_name (str): parameter 'aov_name'
+        aov_name : str
+            parameter `aov_name`
+        
 
         Returns
         -------
@@ -1763,7 +1877,7 @@ class Color(Socket):
         | Socket | Color | `self` |
 
         Parameters
-        ---------
+        ----------
         color_fac : Float, optional
             socket 'Color Fac' (id: Color Fac)
         
@@ -1773,11 +1887,21 @@ class Color(Socket):
         alpha_fac : Float, optional
             socket 'Alpha Fac' (id: Alpha Fac)
         
-        blend_type (str): parameter 'blend_type' in ('Mix', 'Darken', 'Multiply', 'Color Burn', 'Lighten', 'Screen', 'Color Dodge', 'Add', 'Overlay', 'Soft Light', 'Linear Light', 'Difference', 'Exclusion', 'Subtract', 'Divide', 'Hue', 'Saturation', 'Color', 'Value')
-        is_active_output (bool): parameter 'is_active_output'
-        target (str): parameter 'target' in ('All', 'EEVEE', 'Cycles')
-        use_alpha (bool): parameter 'use_alpha'
-        use_clamp (bool): parameter 'use_clamp'
+        blend_type : Literal['Mix', 'Darken', 'Multiply', 'Color Burn', 'Lighten', 'Screen', 'Color Dodge', 'Add', 'Overlay', 'Soft Light', 'Linear Light', 'Difference', 'Exclusion', 'Subtract', 'Divide', 'Hue', 'Saturation', 'Color', 'Value']
+            parameter `blend_type`
+        
+        is_active_output : bool
+            parameter `is_active_output`
+        
+        target : Literal['All', 'EEVEE', 'Cycles']
+            parameter `target`
+        
+        use_alpha : bool
+            parameter `use_alpha`
+        
+        use_clamp : bool
+            parameter `use_clamp`
+        
 
         Returns
         -------
@@ -1865,8 +1989,10 @@ class Color(Socket):
         | Socket | Color | `self` |
 
         Parameters
-        ---------
-        mode (str): parameter 'mode' in ('RGB', 'HSV', 'HSL')
+        ----------
+        mode : Literal['RGB', 'HSV', 'HSL']
+            parameter `mode`
+        
 
         Returns
         -------
@@ -1893,19 +2019,43 @@ class Color(Socket):
         """ > Node <&ShaderNode Sky Texture>
 
         Parameters
-        ---------
-        aerosol_density (float): parameter 'aerosol_density'
-        air_density (float): parameter 'air_density'
-        altitude (float): parameter 'altitude'
-        ground_albedo (float): parameter 'ground_albedo'
-        ozone_density (float): parameter 'ozone_density'
-        sky_type (str): parameter 'sky_type' in ('Single Scattering', 'Multiple Scattering', 'Preetham', 'Hosek / Wilkie')
-        sun_disc (bool): parameter 'sun_disc'
-        sun_elevation (float): parameter 'sun_elevation'
-        sun_intensity (float): parameter 'sun_intensity'
-        sun_rotation (float): parameter 'sun_rotation'
-        sun_size (float): parameter 'sun_size'
-        turbidity (float): parameter 'turbidity'
+        ----------
+        aerosol_density : float
+            parameter `aerosol_density`
+        
+        air_density : float
+            parameter `air_density`
+        
+        altitude : float
+            parameter `altitude`
+        
+        ground_albedo : float
+            parameter `ground_albedo`
+        
+        ozone_density : float
+            parameter `ozone_density`
+        
+        sky_type : Literal['Single Scattering', 'Multiple Scattering', 'Preetham', 'Hosek / Wilkie']
+            parameter `sky_type`
+        
+        sun_disc : bool
+            parameter `sun_disc`
+        
+        sun_elevation : float
+            parameter `sun_elevation`
+        
+        sun_intensity : float
+            parameter `sun_intensity`
+        
+        sun_rotation : float
+            parameter `sun_rotation`
+        
+        sun_size : float
+            parameter `sun_size`
+        
+        turbidity : float
+            parameter `turbidity`
+        
 
         Returns
         -------
@@ -1928,14 +2078,16 @@ class Color(Socket):
         | Socket | Vector | `self` |
 
         Parameters
-        ---------
+        ----------
         midlevel : Float, optional
             socket 'Midlevel' (id: Midlevel)
         
         scale : Float, optional
             socket 'Scale' (id: Scale)
         
-        space (str): parameter 'space' in ('Tangent Space', 'Object Space', 'World Space')
+        space : Literal['Tangent Space', 'Object Space', 'World Space']
+            parameter `space`
+        
 
         Returns
         -------
@@ -1950,8 +2102,10 @@ class Color(Socket):
         """ > Node <&ShaderNode Color Attribute>
 
         Parameters
-        ---------
-        layer_name (str): parameter 'layer_name'
+        ----------
+        layer_name : str
+            parameter `layer_name`
+        
 
         Returns
         -------
@@ -1976,21 +2130,39 @@ class Color(Socket):
 
         New <#Color> input with subtype 'NONE'.
 
-        Aguments
-        --------
-        - value  (object = (1, 1, 1)) : Default value
-        - name  (str = 'Color') : Input socket name
-        - tip  (str = '') : Property description
-        - panel (str = "") : Panel name
-        - optional_label  (bool = False) : Property optional_label
-        - hide_value  (bool = False) : Property hide_value
-        - hide_in_modifier  (bool = False) : Property hide_in_modifier
-        - default_attribute  (str = '') : Property default_attribute_name
-        - shape  (str = 'AUTO') : Property structure_type in ('AUTO', 'SINGLE')
+        Parameters
+        ----------
+        value : object, default=`(1, 1, 1)`
+            Default value
+
+        name : str, default=`Color`
+            Input socket name
+
+        tip : str, default=`''`
+            Property description
+
+        panel : str, default=``
+            Panel name
+
+        optional_label : bool, default=`False`
+            Property optional_label
+
+        hide_value : bool, default=`False`
+            Property hide_value
+
+        hide_in_modifier : bool, default=`False`
+            Property hide_in_modifier
+
+        default_attribute : str, default=`''`
+            Property default_attribute_name
+
+        shape : str, default=`'AUTO'`
+            Property structure_type in ('AUTO', 'SINGLE')
+
 
         Returns
         -------
-        - Color
+        Color
         """
         from ..treeclass import Tree
 

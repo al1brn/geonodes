@@ -161,7 +161,7 @@ class Link:
             new 'node to'
 
         index1 : int, optional
-            new index1, keep current if None Default: None.
+            new index1, keep current if None default=None.
 
         """
         self.tree.btree.links.remove(self.blink)
@@ -181,7 +181,7 @@ class Link:
             new 'from node'
 
         index0 : int, optional
-            new index0, keep current if None Default: None.
+            new index0, keep current if None default=None.
 
         """
         self.tree.btree.links.remove(self.blink)
@@ -1738,10 +1738,10 @@ class Tree(Item):
         Parameters
         ----------
         reroutes : bool, optional
-            insert reroutes in frames as in / out sockets Default: True.
+            insert reroutes in frames as in / out sockets default=True.
 
         single_input : bool, optional
-            one single Group Input node or one per top frame Default: False.
+            one single Group Input node or one per top frame default=False.
 
         """
 

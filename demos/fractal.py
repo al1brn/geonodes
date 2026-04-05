@@ -285,7 +285,7 @@ def camera_culling():
     - Focal Length (Float = 50) : camera focal
     - Aspect Ratio (Float = 16/9) : camera aspect ratio
     Margin : Float, optional
-        culling margin Default: .1.
+        culling margin default=.1.
 
 
     Returns
@@ -310,7 +310,7 @@ def camera_culling():
     - Aspect Ratio (Float = 16/9) : camera aspect ratio
     - Focal Length (Float = 50) : camera focal
     Margin : Float, optional
-        culling margin Default: .1.
+        culling margin default=.1.
 
 
     Returns
@@ -335,7 +335,7 @@ def camera_culling():
     - Aspect Ratio (Float = 16/9) : camera aspect ratio
     - Focal Length (Float = 50) : camera focal
     Margin : Float, optional
-        culling margin Default: .1.
+        culling margin default=.1.
 
 
     Returns

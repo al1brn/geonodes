@@ -1,4 +1,4 @@
-# Generated 2026-04-04 12:37:35
+# Generated 2026-04-04 17:31:31
 
 from __future__ import annotations
 from .. sockettype import SocketType
@@ -46,7 +46,7 @@ class String(Socket):
         | Parameter | `operation` | `'EQUAL'`   |
 
         Parameters
-        ---------
+        ----------
         b : String, optional
             socket 'B' (id: B_STR)
         
@@ -71,7 +71,7 @@ class String(Socket):
         | Parameter | `operation` | `'NOT_EQUAL'` |
 
         Parameters
-        ---------
+        ----------
         b : String, optional
             socket 'B' (id: B_STR)
         
@@ -93,7 +93,7 @@ class String(Socket):
         | Socket | String | `self` |
 
         Parameters
-        ---------
+        ----------
         search : String, optional
             socket 'Search' (id: Search)
         
@@ -117,7 +117,7 @@ class String(Socket):
         | Socket | String | `self` |
 
         Parameters
-        ---------
+        ----------
         search : String, optional
             socket 'Search' (id: Search)
         
@@ -142,7 +142,7 @@ class String(Socket):
         | Parameter | `data_type` | `'STRING'` |
 
         Parameters
-        ---------
+        ----------
         seed : Integer, optional
             socket 'Seed' (id: Seed)
         
@@ -201,7 +201,7 @@ class String(Socket):
         | Socket | String | `self` |
 
         Parameters
-        ---------
+        ----------
         find : String, optional
             socket 'Find' (id: Find)
         
@@ -226,7 +226,7 @@ class String(Socket):
         | Socket | String | `self` |
 
         Parameters
-        ---------
+        ----------
         position : Integer, optional
             socket 'Position' (id: Position)
         
@@ -266,6 +266,14 @@ class String(Socket):
         | ------ | ------ | ------ |
         | Socket | Format | `self` |
 
+        Parameters
+        ----------
+        named_sockets : dict, default={}
+            Sockets created with string names
+        
+        sockets : dict, default={}
+            Socket created with python name attributes
+
         Returns
         -------
         String
@@ -278,10 +286,15 @@ class String(Socket):
         """ > Node <&Node Format String>
 
         Parameters
-        ---------
+        ----------
+        named_sockets : dict, default={}
+            Sockets created with string names
+        
         format : String, optional
             socket 'Format' (id: Format)
         
+        sockets : dict, default={}
+            Socket created with python name attributes
 
         Returns
         -------
@@ -295,7 +308,7 @@ class String(Socket):
         """ > Node <&Node Import Text>
 
         Parameters
-        ---------
+        ----------
         path : String, optional
             socket 'Path' (id: Path)
         
@@ -319,7 +332,7 @@ class String(Socket):
         | Socket | String | `self` |
 
         Parameters
-        ---------
+        ----------
         operation : menu='Starts With', optional
             ('Starts With', 'Ends With', 'Contains')
         
@@ -344,7 +357,7 @@ class String(Socket):
         | Socket | Delimiter | `self` |
 
         Parameters
-        ---------
+        ----------
         strings : String, optional
             socket 'Strings' (id: Strings)
         
@@ -361,7 +374,7 @@ class String(Socket):
         """ > Node <&Node Join Strings>
 
         Parameters
-        ---------
+        ----------
         delimiter : String, optional
             socket 'Delimiter' (id: Delimiter)
         
@@ -397,7 +410,7 @@ class String(Socket):
         | Socket | String | `self` |
 
         Parameters
-        ---------
+        ----------
         size : Float, optional
             socket 'Size' (id: Size)
         
@@ -451,8 +464,10 @@ class String(Socket):
         | Socket | String | `self` |
 
         Parameters
-        ---------
-        data_type (str): parameter 'data_type' in ('Float', 'Integer')
+        ----------
+        data_type : Literal['Float', 'Integer']
+            parameter `data_type`
+        
 
         Returns
         -------
@@ -512,7 +527,7 @@ class String(Socket):
         | Parameter | `data_type` | `'STRING'` |
 
         Parameters
-        ---------
+        ----------
         enable : Boolean, optional
             socket 'Enable' (id: Enable)
         
@@ -539,20 +554,36 @@ class String(Socket):
 
         New <#String> input with subtype 'NONE'.
 
-        Aguments
-        --------
-        - value  (object = "") : Default value
-        - name  (str = 'String') : Input socket name
-        - tip  (str = '') : Property description
-        - panel (str = "") : Panel name
-        - optional_label  (bool = False) : Property optional_label
-        - hide_value  (bool = False) : Property hide_value
-        - hide_in_modifier  (bool = False) : Property hide_in_modifier
-        - subtype (str = 'NONE') : Socket sub type in ('NONE', 'FILE_PATH')
+        Parameters
+        ----------
+        value : object, default=`""`
+            Default value
+
+        name : str, default=`String`
+            Input socket name
+
+        tip : str, default=`''`
+            Property description
+
+        panel : str, default=``
+            Panel name
+
+        optional_label : bool, default=`False`
+            Property optional_label
+
+        hide_value : bool, default=`False`
+            Property hide_value
+
+        hide_in_modifier : bool, default=`False`
+            Property hide_in_modifier
+
+        subtype : str, default=`NONE`
+            Socket sub type in ('NONE', 'FILE_PATH')
+
 
         Returns
         -------
-        - String
+        String
         """
         from ..treeclass import Tree
 
@@ -576,19 +607,33 @@ class String(Socket):
 
         New <#String> input with subtype 'FILE_PATH'.
 
-        Aguments
-        --------
-        - value  (object = "") : Default value
-        - name  (str = 'FilePath') : Input socket name
-        - tip  (str = '') : Property description
-        - panel (str = "") : Panel name
-        - optional_label  (bool = False) : Property optional_label
-        - hide_value  (bool = False) : Property hide_value
-        - hide_in_modifier  (bool = False) : Property hide_in_modifier
+        Parameters
+        ----------
+        value : object, default=`""`
+            Default value
+
+        name : str, default=`FilePath`
+            Input socket name
+
+        tip : str, default=`''`
+            Property description
+
+        panel : str, default=``
+            Panel name
+
+        optional_label : bool, default=`False`
+            Property optional_label
+
+        hide_value : bool, default=`False`
+            Property hide_value
+
+        hide_in_modifier : bool, default=`False`
+            Property hide_in_modifier
+
 
         Returns
         -------
-        - String
+        String
         """
         return cls(value=value, name=name, tip=tip, panel=panel, optional_label=optional_label,
             hide_value=hide_value, hide_in_modifier=hide_in_modifier, subtype='FILE_PATH')

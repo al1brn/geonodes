@@ -1,4 +1,4 @@
-# Generated 2026-04-04 12:37:35
+# Generated 2026-04-04 17:31:31
 
 from __future__ import annotations
 from .. sockettype import SocketType
@@ -43,7 +43,7 @@ class Image(Socket):
         | Socket | Image | `self` |
 
         Parameters
-        ---------
+        ----------
         frame : Integer, optional
             socket 'Frame' (id: Frame)
         
@@ -67,7 +67,7 @@ class Image(Socket):
         | Socket | Image | `self` |
 
         Parameters
-        ---------
+        ----------
         frame : Integer, optional
             socket 'Frame' (id: Frame)
         
@@ -89,7 +89,7 @@ class Image(Socket):
         | Socket | Image | `self` |
 
         Parameters
-        ---------
+        ----------
         frame : Integer, optional
             socket 'Frame' (id: Frame)
         
@@ -111,7 +111,7 @@ class Image(Socket):
         | Socket | Image | `self` |
 
         Parameters
-        ---------
+        ----------
         frame : Integer, optional
             socket 'Frame' (id: Frame)
         
@@ -133,7 +133,7 @@ class Image(Socket):
         | Socket | Image | `self` |
 
         Parameters
-        ---------
+        ----------
         frame : Integer, optional
             socket 'Frame' (id: Frame)
         
@@ -155,7 +155,7 @@ class Image(Socket):
         | Socket | Image | `self` |
 
         Parameters
-        ---------
+        ----------
         frame : Integer, optional
             socket 'Frame' (id: Frame)
         
@@ -181,15 +181,19 @@ class Image(Socket):
         | Socket | Image | `self` |
 
         Parameters
-        ---------
+        ----------
         vector : Vector, optional
             socket 'Vector' (id: Vector)
         
         frame : Integer, optional
             socket 'Frame' (id: Frame)
         
-        extension (str): parameter 'extension' in ('Repeat', 'Extend', 'Clip', 'Mirror')
-        interpolation (str): parameter 'interpolation' in ('Linear', 'Closest', 'Cubic')
+        extension : Literal['Repeat', 'Extend', 'Clip', 'Mirror']
+            parameter `extension`
+        
+        interpolation : Literal['Linear', 'Closest', 'Cubic']
+            parameter `interpolation`
+        
 
         Returns
         -------
@@ -213,7 +217,7 @@ class Image(Socket):
         | Parameter | `data_type` | `'IMAGE'` |
 
         Parameters
-        ---------
+        ----------
         enable : Boolean, optional
             socket 'Enable' (id: Enable)
         
@@ -239,19 +243,33 @@ class Image(Socket):
 
         New <#Image> input with subtype 'NONE'.
 
-        Aguments
-        --------
-        - value  (object = None) : Default value
-        - name  (str = 'Image') : Input socket name
-        - tip  (str = '') : Property description
-        - panel (str = "") : Panel name
-        - optional_label  (bool = False) : Property optional_label
-        - hide_value  (bool = False) : Property hide_value
-        - hide_in_modifier  (bool = False) : Property hide_in_modifier
+        Parameters
+        ----------
+        value : object, default=`None`
+            Default value
+
+        name : str, default=`Image`
+            Input socket name
+
+        tip : str, default=`''`
+            Property description
+
+        panel : str, default=``
+            Panel name
+
+        optional_label : bool, default=`False`
+            Property optional_label
+
+        hide_value : bool, default=`False`
+            Property hide_value
+
+        hide_in_modifier : bool, default=`False`
+            Property hide_in_modifier
+
 
         Returns
         -------
-        - Image
+        Image
         """
         from ..treeclass import Tree
 

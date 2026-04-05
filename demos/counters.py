@@ -179,7 +179,7 @@ def demo():
             number of points (min is 2)
 
             axis : str, optional
-                perpendicular axis Default: 'Z'.
+                perpendicular axis default='Z'.
 
             geometry : {'Mesh', 'Curve'}
                 the geometry to build

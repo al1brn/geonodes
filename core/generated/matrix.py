@@ -1,4 +1,4 @@
-# Generated 2026-04-04 12:37:35
+# Generated 2026-04-04 17:31:31
 
 from __future__ import annotations
 from .. sockettype import SocketType
@@ -54,7 +54,7 @@ class Matrix(Socket):
         """ > Node <&Node Combine Matrix>
 
         Parameters
-        ---------
+        ----------
         column_1_row_1 : Float, optional
             socket 'Column 1 Row 1' (id: Column 1 Row 1)
         
@@ -119,7 +119,7 @@ class Matrix(Socket):
         """ > Node <&Node Combine Transform>
 
         Parameters
-        ---------
+        ----------
         translation : Vector, optional
             socket 'Translation' (id: Translation)
         
@@ -148,7 +148,7 @@ class Matrix(Socket):
         | Parameter | `data_type` | `'MATRIX'` |
 
         Parameters
-        ---------
+        ----------
         seed : Integer, optional
             socket 'Seed' (id: Seed)
         
@@ -204,7 +204,7 @@ class Matrix(Socket):
         | Socket | Matrix | `self` |
 
         Parameters
-        ---------
+        ----------
         matrix : Matrix, optional
             socket 'Matrix' (id: Matrix_001)
         
@@ -226,7 +226,7 @@ class Matrix(Socket):
         | Socket | Transform | `self` |
 
         Parameters
-        ---------
+        ----------
         vector : Vector, optional
             socket 'Vector' (id: Vector)
         
@@ -653,7 +653,7 @@ class Matrix(Socket):
         | Socket | Transform | `self` |
 
         Parameters
-        ---------
+        ----------
         direction : Vector, optional
             socket 'Direction' (id: Direction)
         
@@ -675,7 +675,7 @@ class Matrix(Socket):
         | Socket | Transform | `self` |
 
         Parameters
-        ---------
+        ----------
         vector : Vector, optional
             socket 'Vector' (id: Vector)
         
@@ -719,7 +719,7 @@ class Matrix(Socket):
         """ > Node <&Node Transform Gizmo>
 
         Parameters
-        ---------
+        ----------
         value : Matrix, optional
             socket 'Value' (id: Value)
         
@@ -729,15 +729,33 @@ class Matrix(Socket):
         rotation : Rotation, optional
             socket 'Rotation' (id: Rotation)
         
-        use_rotation_x (bool): parameter 'use_rotation_x'
-        use_rotation_y (bool): parameter 'use_rotation_y'
-        use_rotation_z (bool): parameter 'use_rotation_z'
-        use_scale_x (bool): parameter 'use_scale_x'
-        use_scale_y (bool): parameter 'use_scale_y'
-        use_scale_z (bool): parameter 'use_scale_z'
-        use_translation_x (bool): parameter 'use_translation_x'
-        use_translation_y (bool): parameter 'use_translation_y'
-        use_translation_z (bool): parameter 'use_translation_z'
+        use_rotation_x : bool
+            parameter `use_rotation_x`
+        
+        use_rotation_y : bool
+            parameter `use_rotation_y`
+        
+        use_rotation_z : bool
+            parameter `use_rotation_z`
+        
+        use_scale_x : bool
+            parameter `use_scale_x`
+        
+        use_scale_y : bool
+            parameter `use_scale_y`
+        
+        use_scale_z : bool
+            parameter `use_scale_z`
+        
+        use_translation_x : bool
+            parameter `use_translation_x`
+        
+        use_translation_y : bool
+            parameter `use_translation_y`
+        
+        use_translation_z : bool
+            parameter `use_translation_z`
+        
 
         Returns
         -------
@@ -757,7 +775,7 @@ class Matrix(Socket):
         | Parameter | `data_type` | `'FLOAT4X4'` |
 
         Parameters
-        ---------
+        ----------
         name : String, optional
             socket 'Name' (id: Name)
         
@@ -780,7 +798,7 @@ class Matrix(Socket):
         | Parameter | `data_type` | `'FLOAT4X4'` |
 
         Parameters
-        ---------
+        ----------
         name : String, optional
             socket 'Name' (id: Name)
         
@@ -803,7 +821,7 @@ class Matrix(Socket):
         | Parameter | `data_type` | `'MATRIX'` |
 
         Parameters
-        ---------
+        ----------
         enable : Boolean, optional
             socket 'Enable' (id: Enable)
         
@@ -849,21 +867,39 @@ class Matrix(Socket):
 
         New <#Matrix> input with subtype 'NONE'.
 
-        Aguments
-        --------
-        - name  (str = 'Matrix') : Input socket name
-        - tip  (str = '') : Property description
-        - panel (str = "") : Panel name
-        - optional_label  (bool = False) : Property optional_label
-        - hide_value  (bool = False) : Property hide_value
-        - hide_in_modifier  (bool = False) : Property hide_in_modifier
-        - default_attribute  (str = '') : Property default_attribute_name
-        - default_input  (str = 'VALUE') : Property default_input in ('VALUE', 'INSTANCE_TRANSFORM')
-        - shape  (str = 'AUTO') : Property structure_type in ('AUTO', 'DYNAMIC', 'FIELD', 'SINGLE')
+        Parameters
+        ----------
+        name : str, default=`Matrix`
+            Input socket name
+
+        tip : str, default=`''`
+            Property description
+
+        panel : str, default=``
+            Panel name
+
+        optional_label : bool, default=`False`
+            Property optional_label
+
+        hide_value : bool, default=`False`
+            Property hide_value
+
+        hide_in_modifier : bool, default=`False`
+            Property hide_in_modifier
+
+        default_attribute : str, default=`''`
+            Property default_attribute_name
+
+        default_input : str, default=`'VALUE'`
+            Property default_input in ('VALUE', 'INSTANCE_TRANSFORM')
+
+        shape : str, default=`'AUTO'`
+            Property structure_type in ('AUTO', 'DYNAMIC', 'FIELD', 'SINGLE')
+
 
         Returns
         -------
-        - Matrix
+        Matrix
         """
         from ..treeclass import Tree
 

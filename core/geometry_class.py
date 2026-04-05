@@ -79,16 +79,16 @@ class Geometry(generated.Geometry, Geom):
         Parameters
         ----------
         value : Socket, optional
-            initial value Default: None.
+            initial value default=None.
 
         name : str, optional
-            Create an Group Input socket with the provided str Default: None.
+            Create an Group Input socket with the provided str default=None.
 
         tip : str, default=''
             Property description
 
         panel : str, optional
-            Panel name Default: "".
+            Panel name default="".
 
         props : dict
             input properties
@@ -123,7 +123,7 @@ class Geometry(generated.Geometry, Geom):
         Parameters
         ----------
         name : str, optional
-            socket name Default: None.
+            socket name default=None.
 
 
         Returns

@@ -2156,7 +2156,8 @@ class StaticClass:
         fac : Float
             socket 'Fac' (Fac)
 
-        - stops (list of tuple(float, tuple)) : stops made of (float, color as tuple of floats)
+        stops : list[tuple[float, tuple]]
+            Stops made of (float, color as tuple of floats)
 
         Returns
         -------

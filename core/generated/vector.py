@@ -1,4 +1,4 @@
-# Generated 2026-04-04 12:37:35
+# Generated 2026-04-04 17:31:31
 
 from __future__ import annotations
 from .. sockettype import SocketType
@@ -46,7 +46,7 @@ class Vector(Socket):
         | Parameter | `operation` | `'LESS_THAN'` |
 
         Parameters
-        ---------
+        ----------
         b : Vector, optional
             socket 'B' (id: B_VEC3)
         
@@ -71,7 +71,7 @@ class Vector(Socket):
         | Parameter | `operation` | `'LESS_EQUAL'` |
 
         Parameters
-        ---------
+        ----------
         b : Vector, optional
             socket 'B' (id: B_VEC3)
         
@@ -96,7 +96,7 @@ class Vector(Socket):
         | Parameter | `operation` | `'GREATER_THAN'` |
 
         Parameters
-        ---------
+        ----------
         b : Vector, optional
             socket 'B' (id: B_VEC3)
         
@@ -121,7 +121,7 @@ class Vector(Socket):
         | Parameter | `operation` | `'GREATER_EQUAL'` |
 
         Parameters
-        ---------
+        ----------
         b : Vector, optional
             socket 'B' (id: B_VEC3)
         
@@ -146,7 +146,7 @@ class Vector(Socket):
         | Parameter | `operation` | `'EQUAL'`   |
 
         Parameters
-        ---------
+        ----------
         b : Vector, optional
             socket 'B' (id: B_VEC3)
         
@@ -174,7 +174,7 @@ class Vector(Socket):
         | Parameter | `operation` | `'NOT_EQUAL'` |
 
         Parameters
-        ---------
+        ----------
         b : Vector, optional
             socket 'B' (id: B_VEC3)
         
@@ -216,7 +216,7 @@ class Vector(Socket):
         | Parameter | `data_type` | `'VECTOR'` |
 
         Parameters
-        ---------
+        ----------
         seed : Integer, optional
             socket 'Seed' (id: Seed)
         
@@ -243,7 +243,7 @@ class Vector(Socket):
         | Parameter | `data_type` | `'FLOAT_VECTOR'` |
 
         Parameters
-        ---------
+        ----------
         min : Vector, optional
             socket 'Min' (id: Min)
         
@@ -275,7 +275,7 @@ class Vector(Socket):
         | Parameter | `data_type` | `'FLOAT_VECTOR'` |
 
         Parameters
-        ---------
+        ----------
         iterations : Integer, optional
             socket 'Iterations' (id: Iterations)
         
@@ -301,7 +301,7 @@ class Vector(Socket):
         | Parameter | `data_type` | `'FLOAT_VECTOR'` |
 
         Parameters
-        ---------
+        ----------
         name : String, optional
             socket 'Name' (id: Name)
         
@@ -324,7 +324,7 @@ class Vector(Socket):
         | Parameter | `data_type` | `'FLOAT_VECTOR'` |
 
         Parameters
-        ---------
+        ----------
         name : String, optional
             socket 'Name' (id: Name)
         
@@ -352,7 +352,7 @@ class Vector(Socket):
         | Socket | Selection | `self[selection]` |
 
         Parameters
-        ---------
+        ----------
         margin : Float, optional
             socket 'Margin' (id: Margin)
         
@@ -381,7 +381,7 @@ class Vector(Socket):
         """ > Node <&Node Combine XYZ>
 
         Parameters
-        ---------
+        ----------
         x : Float, optional
             socket 'X' (id: X)
         
@@ -416,7 +416,7 @@ class Vector(Socket):
         | Parameter | `data_type` | `'FLOAT_VECTOR'` |
 
         Parameters
-        ---------
+        ----------
         from_min : Vector, optional
             socket 'From Min' (id: From_Min_FLOAT3)
         
@@ -429,8 +429,12 @@ class Vector(Socket):
         to_max : Vector, optional
             socket 'To Max' (id: To_Max_FLOAT3)
         
-        clamp (bool): parameter 'clamp'
-        interpolation_type (str): parameter 'interpolation_type' in ('Linear', 'Stepped Linear', 'Smooth Step', 'Smoother Step')
+        clamp : bool
+            parameter `clamp`
+        
+        interpolation_type : Literal['Linear', 'Stepped Linear', 'Smooth Step', 'Smoother Step']
+            parameter `interpolation_type`
+        
 
         Returns
         -------
@@ -454,14 +458,16 @@ class Vector(Socket):
         | Parameter | `factor_mode`  | `'UNIFORM'` |
 
         Parameters
-        ---------
+        ----------
         b : Vector, optional
             socket 'B' (id: B_Vector)
         
         factor : Float, optional
             socket 'Factor' (id: Factor_Float)
         
-        clamp_factor (bool): parameter 'clamp_factor'
+        clamp_factor : bool
+            parameter `clamp_factor`
+        
 
         Returns
         -------
@@ -484,14 +490,16 @@ class Vector(Socket):
         | Parameter | `factor_mode`  | `'NON_UNIFORM'` |
 
         Parameters
-        ---------
+        ----------
         b : Vector, optional
             socket 'B' (id: B_Vector)
         
         factor : Vector, optional
             socket 'Factor' (id: Factor_Vector)
         
-        clamp_factor (bool): parameter 'clamp_factor'
+        clamp_factor : bool
+            parameter `clamp_factor`
+        
 
         Returns
         -------
@@ -595,7 +603,7 @@ class Vector(Socket):
         | Parameter | `operation` | `'ADD'` |
 
         Parameters
-        ---------
+        ----------
         vector : Vector, optional
             socket 'Vector' (id: Vector_001)
         
@@ -618,7 +626,7 @@ class Vector(Socket):
         | Parameter | `operation` | `'SUBTRACT'` |
 
         Parameters
-        ---------
+        ----------
         vector : Vector, optional
             socket 'Vector' (id: Vector_001)
         
@@ -641,7 +649,7 @@ class Vector(Socket):
         | Parameter | `operation` | `'MULTIPLY'` |
 
         Parameters
-        ---------
+        ----------
         vector : Vector, optional
             socket 'Vector' (id: Vector_001)
         
@@ -664,7 +672,7 @@ class Vector(Socket):
         | Parameter | `operation` | `'DIVIDE'` |
 
         Parameters
-        ---------
+        ----------
         vector : Vector, optional
             socket 'Vector' (id: Vector_001)
         
@@ -687,7 +695,7 @@ class Vector(Socket):
         | Parameter | `operation` | `'MULTIPLY_ADD'` |
 
         Parameters
-        ---------
+        ----------
         multiplier : Vector, optional
             socket 'Multiplier' (id: Vector_001)
         
@@ -713,7 +721,7 @@ class Vector(Socket):
         | Parameter | `operation` | `'CROSS_PRODUCT'` |
 
         Parameters
-        ---------
+        ----------
         vector : Vector, optional
             socket 'Vector' (id: Vector_001)
         
@@ -736,7 +744,7 @@ class Vector(Socket):
         | Parameter | `operation` | `'PROJECT'` |
 
         Parameters
-        ---------
+        ----------
         vector : Vector, optional
             socket 'Vector' (id: Vector_001)
         
@@ -759,7 +767,7 @@ class Vector(Socket):
         | Parameter | `operation` | `'REFLECT'` |
 
         Parameters
-        ---------
+        ----------
         vector : Vector, optional
             socket 'Vector' (id: Vector_001)
         
@@ -782,7 +790,7 @@ class Vector(Socket):
         | Parameter | `operation` | `'REFRACT'` |
 
         Parameters
-        ---------
+        ----------
         vector : Vector, optional
             socket 'Vector' (id: Vector_001)
         
@@ -808,7 +816,7 @@ class Vector(Socket):
         | Parameter | `operation` | `'FACEFORWARD'` |
 
         Parameters
-        ---------
+        ----------
         incident : Vector, optional
             socket 'Incident' (id: Vector_001)
         
@@ -834,7 +842,7 @@ class Vector(Socket):
         | Parameter | `operation` | `'DOT_PRODUCT'` |
 
         Parameters
-        ---------
+        ----------
         vector : Vector, optional
             socket 'Vector' (id: Vector_001)
         
@@ -857,7 +865,7 @@ class Vector(Socket):
         | Parameter | `operation` | `'DISTANCE'` |
 
         Parameters
-        ---------
+        ----------
         vector : Vector, optional
             socket 'Vector' (id: Vector_001)
         
@@ -897,7 +905,7 @@ class Vector(Socket):
         | Parameter | `operation` | `'SCALE'` |
 
         Parameters
-        ---------
+        ----------
         scale : Float, optional
             socket 'Scale' (id: Scale)
         
@@ -954,7 +962,7 @@ class Vector(Socket):
         | Parameter | `operation` | `'POWER'` |
 
         Parameters
-        ---------
+        ----------
         exponent : Vector, optional
             socket 'Exponent' (id: Vector_001)
         
@@ -994,7 +1002,7 @@ class Vector(Socket):
         | Parameter | `operation` | `'MINIMUM'` |
 
         Parameters
-        ---------
+        ----------
         vector : Vector, optional
             socket 'Vector' (id: Vector_001)
         
@@ -1017,7 +1025,7 @@ class Vector(Socket):
         | Parameter | `operation` | `'MAXIMUM'` |
 
         Parameters
-        ---------
+        ----------
         vector : Vector, optional
             socket 'Vector' (id: Vector_001)
         
@@ -1108,7 +1116,7 @@ class Vector(Socket):
         | Parameter | `operation` | `'MODULO'` |
 
         Parameters
-        ---------
+        ----------
         vector : Vector, optional
             socket 'Vector' (id: Vector_001)
         
@@ -1131,7 +1139,7 @@ class Vector(Socket):
         | Parameter | `operation` | `'WRAP'` |
 
         Parameters
-        ---------
+        ----------
         max : Vector, optional
             socket 'Max' (id: Vector_001)
         
@@ -1157,7 +1165,7 @@ class Vector(Socket):
         | Parameter | `operation` | `'SNAP'` |
 
         Parameters
-        ---------
+        ----------
         increment : Vector, optional
             socket 'Increment' (id: Vector_001)
         
@@ -1235,7 +1243,7 @@ class Vector(Socket):
         | Socket | Vector | `self` |
 
         Parameters
-        ---------
+        ----------
         center : Vector, optional
             socket 'Center' (id: Center)
         
@@ -1245,8 +1253,12 @@ class Vector(Socket):
         angle : Float, optional
             socket 'Angle' (id: Angle)
         
-        invert (bool): parameter 'invert'
-        rotation_type (str): parameter 'rotation_type' in ('Axis Angle', 'X Axis', 'Y Axis', 'Z Axis', 'Euler')
+        invert : bool
+            parameter `invert`
+        
+        rotation_type : Literal['Axis Angle', 'X Axis', 'Y Axis', 'Z Axis', 'Euler']
+            parameter `rotation_type`
+        
 
         Returns
         -------
@@ -1271,7 +1283,7 @@ class Vector(Socket):
         | Parameter | `rotation_type` | `'AXIS_ANGLE'` |
 
         Parameters
-        ---------
+        ----------
         center : Vector, optional
             socket 'Center' (id: Center)
         
@@ -1281,7 +1293,9 @@ class Vector(Socket):
         angle : Float, optional
             socket 'Angle' (id: Angle)
         
-        invert (bool): parameter 'invert'
+        invert : bool
+            parameter `invert`
+        
 
         Returns
         -------
@@ -1301,14 +1315,16 @@ class Vector(Socket):
         | Parameter | `rotation_type` | `'X_AXIS'` |
 
         Parameters
-        ---------
+        ----------
         center : Vector, optional
             socket 'Center' (id: Center)
         
         angle : Float, optional
             socket 'Angle' (id: Angle)
         
-        invert (bool): parameter 'invert'
+        invert : bool
+            parameter `invert`
+        
 
         Returns
         -------
@@ -1328,14 +1344,16 @@ class Vector(Socket):
         | Parameter | `rotation_type` | `'Y_AXIS'` |
 
         Parameters
-        ---------
+        ----------
         center : Vector, optional
             socket 'Center' (id: Center)
         
         angle : Float, optional
             socket 'Angle' (id: Angle)
         
-        invert (bool): parameter 'invert'
+        invert : bool
+            parameter `invert`
+        
 
         Returns
         -------
@@ -1355,14 +1373,16 @@ class Vector(Socket):
         | Parameter | `rotation_type` | `'Z_AXIS'` |
 
         Parameters
-        ---------
+        ----------
         center : Vector, optional
             socket 'Center' (id: Center)
         
         angle : Float, optional
             socket 'Angle' (id: Angle)
         
-        invert (bool): parameter 'invert'
+        invert : bool
+            parameter `invert`
+        
 
         Returns
         -------
@@ -1382,14 +1402,16 @@ class Vector(Socket):
         | Parameter | `rotation_type` | `'EULER_XYZ'` |
 
         Parameters
-        ---------
+        ----------
         center : Vector, optional
             socket 'Center' (id: Center)
         
         rotation : Vector, optional
             socket 'Rotation' (id: Rotation)
         
-        invert (bool): parameter 'invert'
+        invert : bool
+            parameter `invert`
+        
 
         Returns
         -------
@@ -1411,7 +1433,7 @@ class Vector(Socket):
         | Parameter | `data_type` | `'VECTOR'` |
 
         Parameters
-        ---------
+        ----------
         position : Vector, optional
             socket 'Position' (id: Position)
         
@@ -1437,7 +1459,7 @@ class Vector(Socket):
         | Parameter | `data_type` | `'VECTOR'` |
 
         Parameters
-        ---------
+        ----------
         x : Integer, optional
             socket 'X' (id: X)
         
@@ -1465,6 +1487,14 @@ class Vector(Socket):
         | Socket    | Topology    | `self`     |
         | Parameter | `data_type` | `'VECTOR'` |
 
+        Parameters
+        ----------
+        named_sockets : dict, default={}
+            Sockets created with string names
+        
+        sockets : dict, default={}
+            Socket created with python name attributes
+
         Returns
         -------
         None
@@ -1487,7 +1517,7 @@ class Vector(Socket):
         | Parameter | `data_type` | `'VECTOR'` |
 
         Parameters
-        ---------
+        ----------
         velocity : Vector, optional
             socket 'Velocity' (id: Velocity)
         
@@ -1553,7 +1583,7 @@ class Vector(Socket):
         | Parameter | `data_type` | `'VECTOR'` |
 
         Parameters
-        ---------
+        ----------
         mode : menu='Threshold', optional
             ('Inactive', 'Threshold', 'SDF')
         
@@ -1609,7 +1639,7 @@ class Vector(Socket):
         | Parameter | `data_type` | `'VECTOR'` |
 
         Parameters
-        ---------
+        ----------
         background : Vector, optional
             socket 'Background' (id: Background)
         
@@ -1635,7 +1665,7 @@ class Vector(Socket):
         | Parameter | `data_type` | `'VECTOR'` |
 
         Parameters
-        ---------
+        ----------
         transform : Matrix, optional
             socket 'Transform' (id: Transform)
         
@@ -1678,7 +1708,7 @@ class Vector(Socket):
         | Socket | UV   | `self` |
 
         Parameters
-        ---------
+        ----------
         method : menu='Exact', optional
             ('Exact', 'Fast')
         
@@ -1701,7 +1731,7 @@ class Vector(Socket):
         | Parameter | `data_type` | `'VECTOR'` |
 
         Parameters
-        ---------
+        ----------
         enable : Boolean, optional
             socket 'Enable' (id: Enable)
         
@@ -1723,14 +1753,16 @@ class Vector(Socket):
         | Socket | Vector | `self` |
 
         Parameters
-        ---------
+        ----------
         sides : Float, optional
             socket 'Sides' (id: Sides)
         
         roundness : Float, optional
             socket 'Roundness' (id: Roundness)
         
-        normalize (bool): parameter 'normalize'
+        normalize : bool
+            parameter `normalize`
+        
 
         Returns
         -------
@@ -1758,7 +1790,7 @@ class Vector(Socket):
         | Parameter | `data_type` | `'VECTOR'` |
 
         Parameters
-        ---------
+        ----------
         min_x : Integer, optional
             socket 'Min X' (id: Min X)
         
@@ -1799,7 +1831,7 @@ class Vector(Socket):
         | Parameter | `data_type` | `'VECTOR'` |
 
         Parameters
-        ---------
+        ----------
         connectivity : menu='Face', optional
             ('Face', 'Edge', 'Vertex')
         
@@ -1828,7 +1860,7 @@ class Vector(Socket):
         | Parameter | `data_type` | `'VECTOR'` |
 
         Parameters
-        ---------
+        ----------
         width : Integer, optional
             socket 'Width' (id: Width)
         
@@ -1854,7 +1886,7 @@ class Vector(Socket):
         | Parameter | `data_type` | `'VECTOR'` |
 
         Parameters
-        ---------
+        ----------
         width : Integer, optional
             socket 'Width' (id: Width)
         
@@ -1902,7 +1934,7 @@ class Vector(Socket):
         | Socket | Vector | `self` |
 
         Parameters
-        ---------
+        ----------
         location : Vector, optional
             socket 'Location' (id: Location)
         
@@ -1912,7 +1944,9 @@ class Vector(Socket):
         scale : Vector, optional
             socket 'Scale' (id: Scale)
         
-        vector_type (str): parameter 'vector_type' in ('Point', 'Texture', 'Vector', 'Normal')
+        vector_type : Literal['Point', 'Texture', 'Vector', 'Normal']
+            parameter `vector_type`
+        
 
         Returns
         -------
@@ -1948,10 +1982,16 @@ class Vector(Socket):
         """ > Node <&ShaderNode Tangent>
 
         Parameters
-        ---------
-        axis (str): parameter 'axis' in ('X', 'Y', 'Z')
-        direction_type (str): parameter 'direction_type' in ('Radial', 'UV Map')
-        uv_map (str): parameter 'uv_map'
+        ----------
+        axis : Literal['X', 'Y', 'Z']
+            parameter `axis`
+        
+        direction_type : Literal['Radial', 'UV Map']
+            parameter `direction_type`
+        
+        uv_map : str
+            parameter `uv_map`
+        
 
         Returns
         -------
@@ -1975,10 +2015,16 @@ class Vector(Socket):
         | Socket | Vector | `self` |
 
         Parameters
-        ---------
-        image (NoneType): parameter 'image'
-        interpolation (str): parameter 'interpolation' in ('Linear', 'Closest', 'Cubic', 'Smart')
-        projection (str): parameter 'projection' in ('Equirectangular', 'Mirror Ball')
+        ----------
+        image : NoneType
+            parameter `image`
+        
+        interpolation : Literal['Linear', 'Closest', 'Cubic', 'Smart']
+            parameter `interpolation`
+        
+        projection : Literal['Equirectangular', 'Mirror Ball']
+            parameter `projection`
+        
 
         Returns
         -------
@@ -2000,12 +2046,16 @@ class Vector(Socket):
         | Parameter | `mode` | `'INTERNAL'` |
 
         Parameters
-        ---------
+        ----------
         strength : Float, optional
             socket 'Strength' (id: Strength)
         
-        filepath (str): parameter 'filepath'
-        ies (NoneType): parameter 'ies'
+        filepath : str
+            parameter `filepath`
+        
+        ies : NoneType
+            parameter `ies`
+        
 
         Returns
         -------
@@ -2025,12 +2075,16 @@ class Vector(Socket):
         | Parameter | `mode` | `'EXTERNAL'` |
 
         Parameters
-        ---------
+        ----------
         strength : Float, optional
             socket 'Strength' (id: Strength)
         
-        filepath (str): parameter 'filepath'
-        ies (NoneType): parameter 'ies'
+        filepath : str
+            parameter `filepath`
+        
+        ies : NoneType
+            parameter `ies`
+        
 
         Returns
         -------
@@ -2053,13 +2107,19 @@ class Vector(Socket):
         | Socket | Vector | `self` |
 
         Parameters
-        ---------
+        ----------
         strength : Float, optional
             socket 'Strength' (id: Strength)
         
-        filepath (str): parameter 'filepath'
-        ies (NoneType): parameter 'ies'
-        mode (str): parameter 'mode' in ('Internal', 'External')
+        filepath : str
+            parameter `filepath`
+        
+        ies : NoneType
+            parameter `ies`
+        
+        mode : Literal['Internal', 'External']
+            parameter `mode`
+        
 
         Returns
         -------
@@ -2084,12 +2144,22 @@ class Vector(Socket):
         | Socket | Vector | `self` |
 
         Parameters
-        ---------
-        extension (str): parameter 'extension' in ('Repeat', 'Extend', 'Clip', 'Mirror')
-        image (NoneType): parameter 'image'
-        interpolation (str): parameter 'interpolation' in ('Linear', 'Closest', 'Cubic', 'Smart')
-        projection (str): parameter 'projection' in ('Flat', 'Box', 'Sphere', 'Tube')
-        projection_blend (float): parameter 'projection_blend'
+        ----------
+        extension : Literal['Repeat', 'Extend', 'Clip', 'Mirror']
+            parameter `extension`
+        
+        image : NoneType
+            parameter `image`
+        
+        interpolation : Literal['Linear', 'Closest', 'Cubic', 'Smart']
+            parameter `interpolation`
+        
+        projection : Literal['Flat', 'Box', 'Sphere', 'Tube']
+            parameter `projection`
+        
+        projection_blend : float
+            parameter `projection_blend`
+        
 
         Returns
         -------
@@ -2108,9 +2178,13 @@ class Vector(Socket):
         """ > Node <&ShaderNode UV Map>
 
         Parameters
-        ---------
-        from_instancer (bool): parameter 'from_instancer'
-        uv_map (str): parameter 'uv_map'
+        ----------
+        from_instancer : bool
+            parameter `from_instancer`
+        
+        uv_map : str
+            parameter `uv_map`
+        
 
         Returns
         -------
@@ -2132,10 +2206,16 @@ class Vector(Socket):
         | Socket | Vector | `self` |
 
         Parameters
-        ---------
-        convert_from (str): parameter 'convert_from' in ('World', 'Object', 'Camera')
-        convert_to (str): parameter 'convert_to' in ('World', 'Object', 'Camera')
-        vector_type (str): parameter 'vector_type' in ('Point', 'Vector', 'Normal')
+        ----------
+        convert_from : Literal['World', 'Object', 'Camera']
+            parameter `convert_from`
+        
+        convert_to : Literal['World', 'Object', 'Camera']
+            parameter `convert_to`
+        
+        vector_type : Literal['Point', 'Vector', 'Normal']
+            parameter `vector_type`
+        
 
         Returns
         -------
@@ -2157,14 +2237,16 @@ class Vector(Socket):
         | Socket | Position | `self` |
 
         Parameters
-        ---------
+        ----------
         direction : Vector, optional
             socket 'Direction' (id: Direction)
         
         length : Float, optional
             socket 'Length' (id: Length)
         
-        only_local (bool): parameter 'only_local'
+        only_local : bool
+            parameter `only_local`
+        
 
         Returns
         -------
@@ -2196,26 +2278,54 @@ class Vector(Socket):
 
         New <#Vector> input with subtype 'NONE'.
 
-        Aguments
-        --------
-        - value  (object = (0, 0, 0)) : Default value
-        - name  (str = 'Vector') : Input socket name
-        - min  (float = -3.40282e+38) : Property min_value
-        - max  (float = 3.40282e+38) : Property max_value
-        - tip  (str = '') : Property description
-        - panel (str = "") : Panel name
-        - optional_label  (bool = False) : Property optional_label
-        - hide_value  (bool = False) : Property hide_value
-        - hide_in_modifier  (bool = False) : Property hide_in_modifier
-        - dimensions  (int = 3) : Property dimensions
-        - default_attribute  (str = '') : Property default_attribute_name
-        - default_input  (str = 'VALUE') : Property default_input in ('VALUE', 'NORMAL', 'POSITION', 'HANDLE_LEFT', 'HANDLE_RIGHT')
-        - shape  (str = 'AUTO') : Property structure_type in ('AUTO', 'SINGLE')
-        - subtype (str = 'NONE') : Socket sub type in ('NONE', 'PERCENTAGE', 'FACTOR', 'TRANSLATION', 'DIRECTION', 'VELOCITY', 'ACCELERATION', 'EULER', 'XYZ')
+        Parameters
+        ----------
+        value : object, default=`(0, 0, 0)`
+            Default value
+
+        name : str, default=`Vector`
+            Input socket name
+
+        min : float, default=`-3.40282e+38`
+            Property min_value
+
+        max : float, default=`3.40282e+38`
+            Property max_value
+
+        tip : str, default=`''`
+            Property description
+
+        panel : str, default=``
+            Panel name
+
+        optional_label : bool, default=`False`
+            Property optional_label
+
+        hide_value : bool, default=`False`
+            Property hide_value
+
+        hide_in_modifier : bool, default=`False`
+            Property hide_in_modifier
+
+        dimensions : int, default=`3`
+            Property dimensions
+
+        default_attribute : str, default=`''`
+            Property default_attribute_name
+
+        default_input : str, default=`'VALUE'`
+            Property default_input in ('VALUE', 'NORMAL', 'POSITION', 'HANDLE_LEFT', 'HANDLE_RIGHT')
+
+        shape : str, default=`'AUTO'`
+            Property structure_type in ('AUTO', 'SINGLE')
+
+        subtype : str, default=`NONE`
+            Socket sub type in ('NONE', 'PERCENTAGE', 'FACTOR', 'TRANSLATION', 'DIRECTION', 'VELOCITY', 'ACCELERATION', 'EULER', 'XYZ')
+
 
         Returns
         -------
-        - Vector
+        Vector
         """
         from ..treeclass import Tree
 
@@ -2246,25 +2356,51 @@ class Vector(Socket):
 
         New <#Vector> input with subtype 'PERCENTAGE'.
 
-        Aguments
-        --------
-        - value  (object = (0, 0, 0)) : Default value
-        - name  (str = 'Percentage') : Input socket name
-        - min  (float = -3.40282e+38) : Property min_value
-        - max  (float = 3.40282e+38) : Property max_value
-        - tip  (str = '') : Property description
-        - panel (str = "") : Panel name
-        - optional_label  (bool = False) : Property optional_label
-        - hide_value  (bool = False) : Property hide_value
-        - hide_in_modifier  (bool = False) : Property hide_in_modifier
-        - dimensions  (int = 3) : Property dimensions
-        - default_attribute  (str = '') : Property default_attribute_name
-        - default_input  (str = 'VALUE') : Property default_input in ('VALUE', 'NORMAL', 'POSITION', 'HANDLE_LEFT', 'HANDLE_RIGHT')
-        - shape  (str = 'AUTO') : Property structure_type in ('AUTO', 'SINGLE')
+        Parameters
+        ----------
+        value : object, default=`(0, 0, 0)`
+            Default value
+
+        name : str, default=`Percentage`
+            Input socket name
+
+        min : float, default=`-3.40282e+38`
+            Property min_value
+
+        max : float, default=`3.40282e+38`
+            Property max_value
+
+        tip : str, default=`''`
+            Property description
+
+        panel : str, default=``
+            Panel name
+
+        optional_label : bool, default=`False`
+            Property optional_label
+
+        hide_value : bool, default=`False`
+            Property hide_value
+
+        hide_in_modifier : bool, default=`False`
+            Property hide_in_modifier
+
+        dimensions : int, default=`3`
+            Property dimensions
+
+        default_attribute : str, default=`''`
+            Property default_attribute_name
+
+        default_input : str, default=`'VALUE'`
+            Property default_input in ('VALUE', 'NORMAL', 'POSITION', 'HANDLE_LEFT', 'HANDLE_RIGHT')
+
+        shape : str, default=`'AUTO'`
+            Property structure_type in ('AUTO', 'SINGLE')
+
 
         Returns
         -------
-        - Vector
+        Vector
         """
         return cls(value=value, name=name, min=min, max=max, tip=tip, panel=panel,
             optional_label=optional_label, hide_value=hide_value, hide_in_modifier=hide_in_modifier,
@@ -2291,25 +2427,51 @@ class Vector(Socket):
 
         New <#Vector> input with subtype 'FACTOR'.
 
-        Aguments
-        --------
-        - value  (object = (0, 0, 0)) : Default value
-        - name  (str = 'Factor') : Input socket name
-        - min  (float = -3.40282e+38) : Property min_value
-        - max  (float = 3.40282e+38) : Property max_value
-        - tip  (str = '') : Property description
-        - panel (str = "") : Panel name
-        - optional_label  (bool = False) : Property optional_label
-        - hide_value  (bool = False) : Property hide_value
-        - hide_in_modifier  (bool = False) : Property hide_in_modifier
-        - dimensions  (int = 3) : Property dimensions
-        - default_attribute  (str = '') : Property default_attribute_name
-        - default_input  (str = 'VALUE') : Property default_input in ('VALUE', 'NORMAL', 'POSITION', 'HANDLE_LEFT', 'HANDLE_RIGHT')
-        - shape  (str = 'AUTO') : Property structure_type in ('AUTO', 'SINGLE')
+        Parameters
+        ----------
+        value : object, default=`(0, 0, 0)`
+            Default value
+
+        name : str, default=`Factor`
+            Input socket name
+
+        min : float, default=`-3.40282e+38`
+            Property min_value
+
+        max : float, default=`3.40282e+38`
+            Property max_value
+
+        tip : str, default=`''`
+            Property description
+
+        panel : str, default=``
+            Panel name
+
+        optional_label : bool, default=`False`
+            Property optional_label
+
+        hide_value : bool, default=`False`
+            Property hide_value
+
+        hide_in_modifier : bool, default=`False`
+            Property hide_in_modifier
+
+        dimensions : int, default=`3`
+            Property dimensions
+
+        default_attribute : str, default=`''`
+            Property default_attribute_name
+
+        default_input : str, default=`'VALUE'`
+            Property default_input in ('VALUE', 'NORMAL', 'POSITION', 'HANDLE_LEFT', 'HANDLE_RIGHT')
+
+        shape : str, default=`'AUTO'`
+            Property structure_type in ('AUTO', 'SINGLE')
+
 
         Returns
         -------
-        - Vector
+        Vector
         """
         return cls(value=value, name=name, min=min, max=max, tip=tip, panel=panel,
             optional_label=optional_label, hide_value=hide_value, hide_in_modifier=hide_in_modifier,
@@ -2336,25 +2498,51 @@ class Vector(Socket):
 
         New <#Vector> input with subtype 'TRANSLATION'.
 
-        Aguments
-        --------
-        - value  (object = (0, 0, 0)) : Default value
-        - name  (str = 'Translation') : Input socket name
-        - min  (float = -3.40282e+38) : Property min_value
-        - max  (float = 3.40282e+38) : Property max_value
-        - tip  (str = '') : Property description
-        - panel (str = "") : Panel name
-        - optional_label  (bool = False) : Property optional_label
-        - hide_value  (bool = False) : Property hide_value
-        - hide_in_modifier  (bool = False) : Property hide_in_modifier
-        - dimensions  (int = 3) : Property dimensions
-        - default_attribute  (str = '') : Property default_attribute_name
-        - default_input  (str = 'VALUE') : Property default_input in ('VALUE', 'NORMAL', 'POSITION', 'HANDLE_LEFT', 'HANDLE_RIGHT')
-        - shape  (str = 'AUTO') : Property structure_type in ('AUTO', 'SINGLE')
+        Parameters
+        ----------
+        value : object, default=`(0, 0, 0)`
+            Default value
+
+        name : str, default=`Translation`
+            Input socket name
+
+        min : float, default=`-3.40282e+38`
+            Property min_value
+
+        max : float, default=`3.40282e+38`
+            Property max_value
+
+        tip : str, default=`''`
+            Property description
+
+        panel : str, default=``
+            Panel name
+
+        optional_label : bool, default=`False`
+            Property optional_label
+
+        hide_value : bool, default=`False`
+            Property hide_value
+
+        hide_in_modifier : bool, default=`False`
+            Property hide_in_modifier
+
+        dimensions : int, default=`3`
+            Property dimensions
+
+        default_attribute : str, default=`''`
+            Property default_attribute_name
+
+        default_input : str, default=`'VALUE'`
+            Property default_input in ('VALUE', 'NORMAL', 'POSITION', 'HANDLE_LEFT', 'HANDLE_RIGHT')
+
+        shape : str, default=`'AUTO'`
+            Property structure_type in ('AUTO', 'SINGLE')
+
 
         Returns
         -------
-        - Vector
+        Vector
         """
         return cls(value=value, name=name, min=min, max=max, tip=tip, panel=panel,
             optional_label=optional_label, hide_value=hide_value, hide_in_modifier=hide_in_modifier,
@@ -2381,25 +2569,51 @@ class Vector(Socket):
 
         New <#Vector> input with subtype 'DIRECTION'.
 
-        Aguments
-        --------
-        - value  (object = (0, 0, 0)) : Default value
-        - name  (str = 'Direction') : Input socket name
-        - min  (float = -3.40282e+38) : Property min_value
-        - max  (float = 3.40282e+38) : Property max_value
-        - tip  (str = '') : Property description
-        - panel (str = "") : Panel name
-        - optional_label  (bool = False) : Property optional_label
-        - hide_value  (bool = False) : Property hide_value
-        - hide_in_modifier  (bool = False) : Property hide_in_modifier
-        - dimensions  (int = 3) : Property dimensions
-        - default_attribute  (str = '') : Property default_attribute_name
-        - default_input  (str = 'VALUE') : Property default_input in ('VALUE', 'NORMAL', 'POSITION', 'HANDLE_LEFT', 'HANDLE_RIGHT')
-        - shape  (str = 'AUTO') : Property structure_type in ('AUTO', 'SINGLE')
+        Parameters
+        ----------
+        value : object, default=`(0, 0, 0)`
+            Default value
+
+        name : str, default=`Direction`
+            Input socket name
+
+        min : float, default=`-3.40282e+38`
+            Property min_value
+
+        max : float, default=`3.40282e+38`
+            Property max_value
+
+        tip : str, default=`''`
+            Property description
+
+        panel : str, default=``
+            Panel name
+
+        optional_label : bool, default=`False`
+            Property optional_label
+
+        hide_value : bool, default=`False`
+            Property hide_value
+
+        hide_in_modifier : bool, default=`False`
+            Property hide_in_modifier
+
+        dimensions : int, default=`3`
+            Property dimensions
+
+        default_attribute : str, default=`''`
+            Property default_attribute_name
+
+        default_input : str, default=`'VALUE'`
+            Property default_input in ('VALUE', 'NORMAL', 'POSITION', 'HANDLE_LEFT', 'HANDLE_RIGHT')
+
+        shape : str, default=`'AUTO'`
+            Property structure_type in ('AUTO', 'SINGLE')
+
 
         Returns
         -------
-        - Vector
+        Vector
         """
         return cls(value=value, name=name, min=min, max=max, tip=tip, panel=panel,
             optional_label=optional_label, hide_value=hide_value, hide_in_modifier=hide_in_modifier,
@@ -2426,25 +2640,51 @@ class Vector(Socket):
 
         New <#Vector> input with subtype 'VELOCITY'.
 
-        Aguments
-        --------
-        - value  (object = (0, 0, 0)) : Default value
-        - name  (str = 'Velocity') : Input socket name
-        - min  (float = -3.40282e+38) : Property min_value
-        - max  (float = 3.40282e+38) : Property max_value
-        - tip  (str = '') : Property description
-        - panel (str = "") : Panel name
-        - optional_label  (bool = False) : Property optional_label
-        - hide_value  (bool = False) : Property hide_value
-        - hide_in_modifier  (bool = False) : Property hide_in_modifier
-        - dimensions  (int = 3) : Property dimensions
-        - default_attribute  (str = '') : Property default_attribute_name
-        - default_input  (str = 'VALUE') : Property default_input in ('VALUE', 'NORMAL', 'POSITION', 'HANDLE_LEFT', 'HANDLE_RIGHT')
-        - shape  (str = 'AUTO') : Property structure_type in ('AUTO', 'SINGLE')
+        Parameters
+        ----------
+        value : object, default=`(0, 0, 0)`
+            Default value
+
+        name : str, default=`Velocity`
+            Input socket name
+
+        min : float, default=`-3.40282e+38`
+            Property min_value
+
+        max : float, default=`3.40282e+38`
+            Property max_value
+
+        tip : str, default=`''`
+            Property description
+
+        panel : str, default=``
+            Panel name
+
+        optional_label : bool, default=`False`
+            Property optional_label
+
+        hide_value : bool, default=`False`
+            Property hide_value
+
+        hide_in_modifier : bool, default=`False`
+            Property hide_in_modifier
+
+        dimensions : int, default=`3`
+            Property dimensions
+
+        default_attribute : str, default=`''`
+            Property default_attribute_name
+
+        default_input : str, default=`'VALUE'`
+            Property default_input in ('VALUE', 'NORMAL', 'POSITION', 'HANDLE_LEFT', 'HANDLE_RIGHT')
+
+        shape : str, default=`'AUTO'`
+            Property structure_type in ('AUTO', 'SINGLE')
+
 
         Returns
         -------
-        - Vector
+        Vector
         """
         return cls(value=value, name=name, min=min, max=max, tip=tip, panel=panel,
             optional_label=optional_label, hide_value=hide_value, hide_in_modifier=hide_in_modifier,
@@ -2471,25 +2711,51 @@ class Vector(Socket):
 
         New <#Vector> input with subtype 'ACCELERATION'.
 
-        Aguments
-        --------
-        - value  (object = (0, 0, 0)) : Default value
-        - name  (str = 'Acceleration') : Input socket name
-        - min  (float = -3.40282e+38) : Property min_value
-        - max  (float = 3.40282e+38) : Property max_value
-        - tip  (str = '') : Property description
-        - panel (str = "") : Panel name
-        - optional_label  (bool = False) : Property optional_label
-        - hide_value  (bool = False) : Property hide_value
-        - hide_in_modifier  (bool = False) : Property hide_in_modifier
-        - dimensions  (int = 3) : Property dimensions
-        - default_attribute  (str = '') : Property default_attribute_name
-        - default_input  (str = 'VALUE') : Property default_input in ('VALUE', 'NORMAL', 'POSITION', 'HANDLE_LEFT', 'HANDLE_RIGHT')
-        - shape  (str = 'AUTO') : Property structure_type in ('AUTO', 'SINGLE')
+        Parameters
+        ----------
+        value : object, default=`(0, 0, 0)`
+            Default value
+
+        name : str, default=`Acceleration`
+            Input socket name
+
+        min : float, default=`-3.40282e+38`
+            Property min_value
+
+        max : float, default=`3.40282e+38`
+            Property max_value
+
+        tip : str, default=`''`
+            Property description
+
+        panel : str, default=``
+            Panel name
+
+        optional_label : bool, default=`False`
+            Property optional_label
+
+        hide_value : bool, default=`False`
+            Property hide_value
+
+        hide_in_modifier : bool, default=`False`
+            Property hide_in_modifier
+
+        dimensions : int, default=`3`
+            Property dimensions
+
+        default_attribute : str, default=`''`
+            Property default_attribute_name
+
+        default_input : str, default=`'VALUE'`
+            Property default_input in ('VALUE', 'NORMAL', 'POSITION', 'HANDLE_LEFT', 'HANDLE_RIGHT')
+
+        shape : str, default=`'AUTO'`
+            Property structure_type in ('AUTO', 'SINGLE')
+
 
         Returns
         -------
-        - Vector
+        Vector
         """
         return cls(value=value, name=name, min=min, max=max, tip=tip, panel=panel,
             optional_label=optional_label, hide_value=hide_value, hide_in_modifier=hide_in_modifier,
@@ -2516,25 +2782,51 @@ class Vector(Socket):
 
         New <#Vector> input with subtype 'EULER'.
 
-        Aguments
-        --------
-        - value  (object = (0, 0, 0)) : Default value
-        - name  (str = 'Euler') : Input socket name
-        - min  (float = -3.40282e+38) : Property min_value
-        - max  (float = 3.40282e+38) : Property max_value
-        - tip  (str = '') : Property description
-        - panel (str = "") : Panel name
-        - optional_label  (bool = False) : Property optional_label
-        - hide_value  (bool = False) : Property hide_value
-        - hide_in_modifier  (bool = False) : Property hide_in_modifier
-        - dimensions  (int = 3) : Property dimensions
-        - default_attribute  (str = '') : Property default_attribute_name
-        - default_input  (str = 'VALUE') : Property default_input in ('VALUE', 'NORMAL', 'POSITION', 'HANDLE_LEFT', 'HANDLE_RIGHT')
-        - shape  (str = 'AUTO') : Property structure_type in ('AUTO', 'SINGLE')
+        Parameters
+        ----------
+        value : object, default=`(0, 0, 0)`
+            Default value
+
+        name : str, default=`Euler`
+            Input socket name
+
+        min : float, default=`-3.40282e+38`
+            Property min_value
+
+        max : float, default=`3.40282e+38`
+            Property max_value
+
+        tip : str, default=`''`
+            Property description
+
+        panel : str, default=``
+            Panel name
+
+        optional_label : bool, default=`False`
+            Property optional_label
+
+        hide_value : bool, default=`False`
+            Property hide_value
+
+        hide_in_modifier : bool, default=`False`
+            Property hide_in_modifier
+
+        dimensions : int, default=`3`
+            Property dimensions
+
+        default_attribute : str, default=`''`
+            Property default_attribute_name
+
+        default_input : str, default=`'VALUE'`
+            Property default_input in ('VALUE', 'NORMAL', 'POSITION', 'HANDLE_LEFT', 'HANDLE_RIGHT')
+
+        shape : str, default=`'AUTO'`
+            Property structure_type in ('AUTO', 'SINGLE')
+
 
         Returns
         -------
-        - Vector
+        Vector
         """
         return cls(value=value, name=name, min=min, max=max, tip=tip, panel=panel,
             optional_label=optional_label, hide_value=hide_value, hide_in_modifier=hide_in_modifier,
@@ -2561,25 +2853,51 @@ class Vector(Socket):
 
         New <#Vector> input with subtype 'XYZ'.
 
-        Aguments
-        --------
-        - value  (object = (0, 0, 0)) : Default value
-        - name  (str = 'Xyz') : Input socket name
-        - min  (float = -3.40282e+38) : Property min_value
-        - max  (float = 3.40282e+38) : Property max_value
-        - tip  (str = '') : Property description
-        - panel (str = "") : Panel name
-        - optional_label  (bool = False) : Property optional_label
-        - hide_value  (bool = False) : Property hide_value
-        - hide_in_modifier  (bool = False) : Property hide_in_modifier
-        - dimensions  (int = 3) : Property dimensions
-        - default_attribute  (str = '') : Property default_attribute_name
-        - default_input  (str = 'VALUE') : Property default_input in ('VALUE', 'NORMAL', 'POSITION', 'HANDLE_LEFT', 'HANDLE_RIGHT')
-        - shape  (str = 'AUTO') : Property structure_type in ('AUTO', 'SINGLE')
+        Parameters
+        ----------
+        value : object, default=`(0, 0, 0)`
+            Default value
+
+        name : str, default=`Xyz`
+            Input socket name
+
+        min : float, default=`-3.40282e+38`
+            Property min_value
+
+        max : float, default=`3.40282e+38`
+            Property max_value
+
+        tip : str, default=`''`
+            Property description
+
+        panel : str, default=``
+            Panel name
+
+        optional_label : bool, default=`False`
+            Property optional_label
+
+        hide_value : bool, default=`False`
+            Property hide_value
+
+        hide_in_modifier : bool, default=`False`
+            Property hide_in_modifier
+
+        dimensions : int, default=`3`
+            Property dimensions
+
+        default_attribute : str, default=`''`
+            Property default_attribute_name
+
+        default_input : str, default=`'VALUE'`
+            Property default_input in ('VALUE', 'NORMAL', 'POSITION', 'HANDLE_LEFT', 'HANDLE_RIGHT')
+
+        shape : str, default=`'AUTO'`
+            Property structure_type in ('AUTO', 'SINGLE')
+
 
         Returns
         -------
-        - Vector
+        Vector
         """
         return cls(value=value, name=name, min=min, max=max, tip=tip, panel=panel,
             optional_label=optional_label, hide_value=hide_value, hide_in_modifier=hide_in_modifier,

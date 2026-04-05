@@ -1,4 +1,4 @@
-# Generated 2026-04-04 12:37:35
+# Generated 2026-04-04 17:31:31
 
 from __future__ import annotations
 from .. sockettype import SocketType
@@ -74,11 +74,13 @@ class Object(Socket):
         | Socket | Object | `self` |
 
         Parameters
-        ---------
+        ----------
         as_instance : Boolean, optional
             socket 'As Instance' (id: As Instance)
         
-        transform_space (str): parameter 'transform_space' in ('Original', 'Relative')
+        transform_space : Literal['Original', 'Relative']
+            parameter `transform_space`
+        
 
         Returns
         -------
@@ -112,7 +114,7 @@ class Object(Socket):
         | Parameter | `data_type` | `'OBJECT'` |
 
         Parameters
-        ---------
+        ----------
         enable : Boolean, optional
             socket 'Enable' (id: Enable)
         
@@ -136,11 +138,13 @@ class Object(Socket):
         | Socket | Armature | `self` |
 
         Parameters
-        ---------
+        ----------
         bone_name : String, optional
             socket 'Bone Name' (id: Bone Name)
         
-        transform_space (str): parameter 'transform_space' in ('Original', 'Relative')
+        transform_space : Literal['Original', 'Relative']
+            parameter `transform_space`
+        
 
         Returns
         -------
@@ -166,19 +170,33 @@ class Object(Socket):
 
         New <#Object> input with subtype 'NONE'.
 
-        Aguments
-        --------
-        - value  (object = None) : Default value
-        - name  (str = 'Object') : Input socket name
-        - tip  (str = '') : Property description
-        - panel (str = "") : Panel name
-        - optional_label  (bool = False) : Property optional_label
-        - hide_value  (bool = False) : Property hide_value
-        - hide_in_modifier  (bool = False) : Property hide_in_modifier
+        Parameters
+        ----------
+        value : object, default=`None`
+            Default value
+
+        name : str, default=`Object`
+            Input socket name
+
+        tip : str, default=`''`
+            Property description
+
+        panel : str, default=``
+            Panel name
+
+        optional_label : bool, default=`False`
+            Property optional_label
+
+        hide_value : bool, default=`False`
+            Property hide_value
+
+        hide_in_modifier : bool, default=`False`
+            Property hide_in_modifier
+
 
         Returns
         -------
-        - Object
+        Object
         """
         from ..treeclass import Tree
 

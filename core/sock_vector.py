@@ -159,20 +159,10 @@ class Vector(generated.Vector):
         """ > Node <&Node Vector Curves>
 
         A curve is defined by a list of 3-tuples (not list):
-        x : float
-            x position
 
-        y : float
-            y position
-
-        handle_type : str
-            handle type in ('AUTO', 'AUTO_CLAMPED', 'VECTOR')
-
-
-        !!! note
-            handle_type is optional, its default value is 'AUTO'. Valid values are ('AUTO', 'AUTO_CLAMPED', 'VECTOR')
-
-        **Fixed values**
+        - x (float) : x position
+        - y (float) : y position
+        - handle_type (str) : handle type in ('AUTO', 'AUTO_CLAMPED', 'VECTOR'), default='AUTO'
 
         **Fixed values**
 
@@ -302,8 +292,6 @@ class Vector(generated.Vector):
     def out(self, name=None, **props):
         """ > Plug the Vector to the group output
 
-        [!MIX]
-
         !!! note
 
             - <!GeoNodes> : the Vector is plugged as group output
@@ -323,7 +311,7 @@ class Vector(generated.Vector):
     def displacement_out(self, target='ALL'):
         """ > Plug the value to 'Displacement' socket of <&ShaderNode Material Output> node
 
-        [!SHADER]
+        > ShaderNodes only
         """
         self._tree.set_displacement(self, target=target)
 
@@ -332,7 +320,7 @@ class Vector(generated.Vector):
     def Tangent(cls, axis='Z', direction_type='RADIAL', uv_map=''):
         """ > Node <&ShaderNode Tangent>
 
-        [!SHADER]
+        > ShaderNodes only
 
         Parameters
         ----------
@@ -357,7 +345,7 @@ class Vector(generated.Vector):
     def UVMap(cls, uv_map='', from_instancer=False):
         """ > Node <&ShaderNode UV Map>
 
-        [!SHADER]
+        > ShaderNodes only
 
         Parameters
         ----------
@@ -380,7 +368,7 @@ class Vector(generated.Vector):
     def bump(self, strength=None, distance=None, height=None, invert=False):
         """ > Node <&ShaderNode Bump>
 
-        [!SHADER]
+        > ShaderNodes only
 
         !!! note
             Self Vector is plugged to 'Normal' socket
@@ -410,7 +398,7 @@ class Vector(generated.Vector):
     def displacement(self, height=None, midlevel=None, scale=None, space='OBJECT'):
         """ > Node <&ShaderNode Displacement>
 
-        [!SHADER]
+        > ShaderNodes only
 
         !!! note
             Self Vector is plugged to 'Normal' socket
@@ -440,7 +428,7 @@ class Vector(generated.Vector):
     def mapping(self, location=None, rotation=None, scale=None, vector_type='POINT'):
         """ > Node <&ShaderNode Mapping>
 
-        [!SHADER]
+        > ShaderNodes only
 
         Parameters
         ----------
@@ -467,7 +455,7 @@ class Vector(generated.Vector):
     def normal(self):
         """ > Node <&ShaderNode Normal>
 
-        [!SHADER]
+        > ShaderNodes only
 
         Returns
         -------
@@ -482,7 +470,7 @@ class Vector(generated.Vector):
     def NormalMap(cls, strength=None, color=None, space='TANGENT', uv_map=''):
         """ > Constructor node <&ShaderNode Normal Map>
 
-        [!SHADER]
+        > ShaderNodes only
 
         Parameters
         ----------
@@ -509,7 +497,7 @@ class Vector(generated.Vector):
     def vector_displacement(self, midlevel=None, scale=None, space='TANGENT'):
         """ > Node <&ShaderNode Vector Displacement>
 
-        [!SHADER]
+        > ShaderNodes only
 
         Parameters
         ----------
@@ -533,7 +521,7 @@ class Vector(generated.Vector):
     def transform(self, convert_from='WORLD', convert_to='OBJECT', vector_type='NORMAL'):
         """ > Node <&ShaderNode Vector Transform>
 
-        [!SHADER]
+        > ShaderNodes only
 
         Parameters
         ----------

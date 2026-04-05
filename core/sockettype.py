@@ -553,10 +553,10 @@ class SocketType:
             node id
 
         param_name : str, optional
-            parameter name Default: 'data_type'.
+            parameter name default='data_type'.
 
         valids : tuple of strs, optional
-            the valid identifiers Default: None.
+            the valid identifiers default=None.
 
         on_error : str in ('HALT', 'NONE', 'DEFAULT')), default:'HALT'
             halt if the socket type is not accepted

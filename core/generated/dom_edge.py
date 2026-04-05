@@ -1,4 +1,4 @@
-# Generated 2026-04-04 12:37:35
+# Generated 2026-04-04 17:31:31
 
 from __future__ import annotations
 from .. sockettype import SocketType
@@ -42,7 +42,7 @@ class Edge:
         | Parameter | `domain`    | `'EDGE'`          |
 
         Parameters
-        ---------
+        ----------
         value : Float | Integer | Vector | Matrix, optional
             socket 'Value' (id: Value)
         
@@ -73,7 +73,7 @@ class Edge:
         | Parameter | `domain`    | `'EDGE'`              |
 
         Parameters
-        ---------
+        ----------
         attribute : Float | Vector, optional
             socket 'Attribute' (id: Attribute)
         
@@ -102,14 +102,16 @@ class Edge:
         | Parameter | `data_type` | from `value` type |
 
         Parameters
-        ---------
+        ----------
         value : Float | Vector, optional
             socket 'Value' (id: Value)
         
         group_id : Integer, optional
             socket 'Group ID' (id: Group Index)
         
-        domain (str): parameter 'domain' in ('Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer')
+        domain : Literal['Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer']
+            parameter `domain`
+        
 
         Returns
         -------
@@ -136,14 +138,16 @@ class Edge:
         | Parameter | `data_type` | from `value` type |
 
         Parameters
-        ---------
+        ----------
         value : Float | Integer | Vector, optional
             socket 'Value' (id: Value)
         
         group_id : Integer, optional
             socket 'Group ID' (id: Group Index)
         
-        domain (str): parameter 'domain' in ('Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer')
+        domain : Literal['Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer']
+            parameter `domain`
+        
 
         Returns
         -------
@@ -170,14 +174,16 @@ class Edge:
         | Parameter | `data_type` | from `value` type |
 
         Parameters
-        ---------
+        ----------
         value : Float | Vector, optional
             socket 'Value' (id: Value)
         
         group_id : Integer, optional
             socket 'Group ID' (id: Group Index)
         
-        domain (str): parameter 'domain' in ('Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer')
+        domain : Literal['Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer']
+            parameter `domain`
+        
 
         Returns
         -------
@@ -198,7 +204,7 @@ class Edge:
         """ > Node <&Node Corners of Edge>
 
         Parameters
-        ---------
+        ----------
         edge_index : Integer, optional
             socket 'Edge Index' (id: Edge Index)
         
@@ -226,7 +232,7 @@ class Edge:
         """ > Node <&Node Corners of Edge>
 
         Parameters
-        ---------
+        ----------
         edge_index : Integer, optional
             socket 'Edge Index' (id: Edge Index)
         
@@ -252,7 +258,7 @@ class Edge:
         """ > Node <&Node Corners of Edge>
 
         Parameters
-        ---------
+        ----------
         edge_index : Integer, optional
             socket 'Edge Index' (id: Edge Index)
         
@@ -350,8 +356,10 @@ class Edge:
         | Parameter | `domain`  | `'EDGE'`          |
 
         Parameters
-        ---------
-        mode (str): parameter 'mode' in ('All', 'Only Edges & Faces', 'Only Faces')
+        ----------
+        mode : Literal['All', 'Only Edges & Faces', 'Only Faces']
+            parameter `mode`
+        
 
         Returns
         -------
@@ -442,8 +450,10 @@ class Edge:
         | Parameter | `domain`  | `'EDGE'`          |
 
         Parameters
-        ---------
-        mode (str): parameter 'mode' in ('All', 'Only Edges & Faces', 'Only Faces')
+        ----------
+        mode : Literal['All', 'Only Edges & Faces', 'Only Faces']
+            parameter `mode`
+        
 
         Returns
         -------
@@ -468,7 +478,7 @@ class Edge:
         | Parameter | `domain`  | `'EDGE'`          |
 
         Parameters
-        ---------
+        ----------
         amount : Integer, optional
             socket 'Amount' (id: Amount)
         
@@ -493,7 +503,7 @@ class Edge:
         | Socket | Mesh | `self` |
 
         Parameters
-        ---------
+        ----------
         start_vertices : Boolean, optional
             socket 'Start Vertices' (id: Start Vertices)
         
@@ -513,7 +523,7 @@ class Edge:
         """ > Node <&Node Edge Paths to Selection>
 
         Parameters
-        ---------
+        ----------
         start_vertices : Boolean, optional
             socket 'Start Vertices' (id: Start Vertices)
         
@@ -533,7 +543,7 @@ class Edge:
         """ > Node <&Node Edges to Face Groups>
 
         Parameters
-        ---------
+        ----------
         boundary_edges : Boolean, optional
             socket 'Boundary Edges' (id: Boundary Edges)
         
@@ -559,7 +569,7 @@ class Edge:
         | Parameter | `mode`    | `'EDGES'`         |
 
         Parameters
-        ---------
+        ----------
         offset : Vector, optional
             socket 'Offset' (id: Offset)
         
@@ -591,7 +601,7 @@ class Edge:
         | Parameter | `domain`    | `'EDGE'`          |
 
         Parameters
-        ---------
+        ----------
         value : Float | Integer | Boolean | Vector | Color | Rotation | Matrix, optional
             socket 'Value' (id: Value)
         
@@ -620,7 +630,7 @@ class Edge:
         | Parameter | `domain`    | `'EDGE'`          |
 
         Parameters
-        ---------
+        ----------
         value : Float | Integer | Boolean | Vector | Color | Rotation | Matrix, optional
             socket 'Value' (id: Value)
         
@@ -741,7 +751,7 @@ class Edge:
         """ > Node <&Node Shortest Edge Paths>
 
         Parameters
-        ---------
+        ----------
         end_vertex : Boolean, optional
             socket 'End Vertex' (id: End Vertex)
         
@@ -770,7 +780,7 @@ class Edge:
         | Parameter | `mode`    | `'EDGES'`         |
 
         Parameters
-        ---------
+        ----------
         position : Vector, optional
             socket 'Position' (id: Position)
         
@@ -800,14 +810,16 @@ class Edge:
         | Parameter | `domain`    | `'EDGE'`          |
 
         Parameters
-        ---------
+        ----------
         value : Float | Integer | Boolean | Vector | Color | Rotation | Matrix, optional
             socket 'Value' (id: Value)
         
         index : Integer, optional
             socket 'Index' (id: Index)
         
-        clamp (bool): parameter 'clamp'
+        clamp : bool
+            parameter `clamp`
+        
 
         Returns
         -------
@@ -828,7 +840,7 @@ class Edge:
         | Parameter | `domain` | `'EDGE'` |
 
         Parameters
-        ---------
+        ----------
         sample_position : Vector, optional
             socket 'Sample Position' (id: Sample Position)
         
@@ -858,7 +870,7 @@ class Edge:
         | Parameter | `domain`  | `'EDGE'`          |
 
         Parameters
-        ---------
+        ----------
         scale : Float, optional
             socket 'Scale' (id: Scale)
         
@@ -915,7 +927,7 @@ class Edge:
         | Parameter | `domain`  | `'EDGE'`          |
 
         Parameters
-        ---------
+        ----------
         shade_smooth : Boolean, optional
             socket 'Shade Smooth' (id: Shade Smooth)
         
@@ -942,7 +954,7 @@ class Edge:
         | Parameter | `domain`  | `'EDGE'`          |
 
         Parameters
-        ---------
+        ----------
         group_id : Integer, optional
             socket 'Group ID' (id: Group ID)
         
@@ -990,7 +1002,7 @@ class Edge:
         | Parameter | `domain`  | `'EDGE'`          |
 
         Parameters
-        ---------
+        ----------
         group_id : Integer, optional
             socket 'Group ID' (id: Group ID)
         
@@ -1021,7 +1033,7 @@ class Edge:
         | Parameter | `domain`    | `'EDGE'`          |
 
         Parameters
-        ---------
+        ----------
         name : String, optional
             socket 'Name' (id: Name)
         
@@ -1055,7 +1067,7 @@ class Edge:
         | Parameter | `domain`    | `'EDGE'`          |
 
         Parameters
-        ---------
+        ----------
         name : String, optional
             socket 'Name' (id: Name)
         
@@ -1125,8 +1137,15 @@ class Edge:
         | Parameter | `domain` | `'EDGE'` |
 
         Parameters
-        ---------
-        ui_shortcut (int): parameter 'ui_shortcut'
+        ----------
+        named_sockets : dict, default={}
+            Sockets created with string names
+        
+        ui_shortcut : int
+            parameter `ui_shortcut`
+        
+        sockets : dict, default={}
+            Socket created with python name attributes
 
         """
         node = Node('Viewer', named_sockets, domain='EDGE', ui_shortcut=ui_shortcut, **sockets)
@@ -1152,7 +1171,7 @@ class Edge:
         | Socket | Selection | `self[selection]` |
 
         Parameters
-        ---------
+        ----------
         material : Material, optional
             socket 'Material' (id: Material)
         
@@ -1186,7 +1205,7 @@ class Edge:
         | Parameter | `domain`  | `'EDGE'`          |
 
         Parameters
-        ---------
+        ----------
         shade_smooth : Boolean, optional
             socket 'Shade Smooth' (id: Shade Smooth)
         
@@ -1220,7 +1239,7 @@ class Edge:
         | Parameter | `domain`  | `'EDGE'`          |
 
         Parameters
-        ---------
+        ----------
         shade_smooth : Boolean, optional
             socket 'Shade Smooth' (id: Shade Smooth)
         

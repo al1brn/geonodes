@@ -107,7 +107,8 @@ class Shader(ShaderRoot):
     @classmethod
     def Glass(cls, color=None, roughness=None, ior=None, normal=None, distribution='MULTI_GGX'):
         """ Node 'Glass BSDF' (ShaderNodeBsdfGlass)
-        - distribution in ('BECKMANN', 'GGX', 'MULTI_GGX')
+        distribution : {'BECKMANN', 'GGX', 'MULTI_GGX'}
+
         """
 
         node = Node('Glass BSDF', {'Color': color, 'Roughness': roughness, 'IOR': ior, 'Normal': normal}, distribution=distribution)
@@ -116,7 +117,8 @@ class Shader(ShaderRoot):
     @classmethod
     def Glossy(cls, color=None, roughness=None, anisotropy=None, rotation=None, normal=None, tangent=None, distribution='MULTI_GGX'):
         """ Node 'Glossy BSDF' (ShaderNodeBsdfAnisotropic)
-        - distribution in ('BECKMANN', 'GGX', 'ASHIKHMIN_SHIRLEY', 'MULTI_GGX')
+        distribution : {'BECKMANN', 'GGX', 'ASHIKHMIN_SHIRLEY', 'MULTI_GGX'}
+
         """
 
         node = Node('Glossy BSDF', {'Color': color, 'Roughness': roughness, 'Anisotropy': anisotropy, 'Rotation': rotation, 'Normal': normal, 'Tangent': tangent}, distribution=distribution)
@@ -133,8 +135,10 @@ class Shader(ShaderRoot):
     @classmethod
     def Principled(cls, base_color=None, metallic=None, roughness=None, ior=None, alpha=None, normal=None, subsurface_weight=None, subsurface_radius=None, subsurface_scale=None, subsurface_anisotropy=None, specular_ior_level=None, specular_tint=None, anisotropic=None, anisotropic_rotation=None, tangent=None, transmission_weight=None, coat_weight=None, coat_roughness=None, coat_ior=None, coat_tint=None, coat_normal=None, sheen_weight=None, sheen_roughness=None, sheen_tint=None, emission_color=None, emission_strength=None, thin_film_thickness=None, thin_film_ior=None, distribution='MULTI_GGX', subsurface_method='RANDOM_WALK'):
         """ Node 'Principled BSDF' (ShaderNodeBsdfPrincipled)
-        - distribution in ('GGX', 'MULTI_GGX')
-        - subsurface_method in ('BURLEY', 'RANDOM_WALK', 'RANDOM_WALK_SKIN')
+        distribution : {'GGX', 'MULTI_GGX'}
+
+        subsurface_method : {'BURLEY', 'RANDOM_WALK', 'RANDOM_WALK_SKIN'}
+
         """
 
         node = Node('Principled BSDF', {'Base Color': base_color, 'Metallic': metallic, 'Roughness': roughness, 'IOR': ior, 'Alpha': alpha, 'Normal': normal, 'Subsurface Weight': subsurface_weight, 'Subsurface Radius': subsurface_radius, 'Subsurface Scale': subsurface_scale, 'Subsurface Anisotropy': subsurface_anisotropy, 'Specular IOR Level': specular_ior_level, 'Specular Tint': specular_tint, 'Anisotropic': anisotropic, 'Anisotropic Rotation': anisotropic_rotation, 'Tangent': tangent, 'Transmission Weight': transmission_weight, 'Coat Weight': coat_weight, 'Coat Roughness': coat_roughness, 'Coat IOR': coat_ior, 'Coat Tint': coat_tint, 'Coat Normal': coat_normal, 'Sheen Weight': sheen_weight, 'Sheen Roughness': sheen_roughness, 'Sheen Tint': sheen_tint, 'Emission Color': emission_color, 'Emission Strength': emission_strength, 'Thin Film Thickness': thin_film_thickness, 'Thin Film IOR': thin_film_ior}, distribution=distribution, subsurface_method=subsurface_method)
@@ -143,7 +147,8 @@ class Shader(ShaderRoot):
     @classmethod
     def Refraction(cls, color=None, roughness=None, ior=None, normal=None, distribution='BECKMANN'):
         """ Node 'Refraction BSDF' (ShaderNodeBsdfRefraction)
-        - distribution in ('BECKMANN', 'GGX')
+        distribution : {'BECKMANN', 'GGX'}
+
         """
 
         node = Node('Refraction BSDF', {'Color': color, 'Roughness': roughness, 'IOR': ior, 'Normal': normal}, distribution=distribution)
@@ -160,7 +165,8 @@ class Shader(ShaderRoot):
     @classmethod
     def SubsurfaceScattering(cls, color=None, scale=None, radius=None, ior=None, roughness=None, anisotropy=None, normal=None, falloff='RANDOM_WALK'):
         """ Node 'Subsurface Scattering' (ShaderNodeSubsurfaceScattering)
-        - falloff in ('BURLEY', 'RANDOM_WALK', 'RANDOM_WALK_SKIN')
+        falloff : {'BURLEY', 'RANDOM_WALK', 'RANDOM_WALK_SKIN'}
+
         """
 
         node = Node('Subsurface Scattering', {'Color': color, 'Scale': scale, 'Radius': radius, 'IOR': ior, 'Roughness': roughness, 'Anisotropy': anisotropy, 'Normal': normal}, falloff=falloff)

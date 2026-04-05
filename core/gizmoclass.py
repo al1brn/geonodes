@@ -26,9 +26,6 @@ module : gizmoclass
 
 Subclass of Node which implements Gizmos
 
-> [!CAUTION]
-> Deprecated
-
 updates
 -------
 - creation : 2024/07/23

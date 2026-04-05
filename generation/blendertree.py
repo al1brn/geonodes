@@ -54,10 +54,10 @@ def get_tree(name, tree_type='GeometryNodeTree', create=True):
             Tree name
 
         tree_type : str, optional
-            tree type in ('CompositorNodeTree', 'TextureNodeTree', 'GeometryNodeTree', 'ShaderNodeTree') Default: 'GeometryNodeTree'.
+            tree type in ('CompositorNodeTree', 'TextureNodeTree', 'GeometryNodeTree', 'ShaderNodeTree') default='GeometryNodeTree'.
 
         create : bool, optional
-            Create the tree if it doesn't exist Default: False.
+            Create the tree if it doesn't exist default=False.
 
 
     Returns

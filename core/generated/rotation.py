@@ -1,4 +1,4 @@
-# Generated 2026-04-04 12:37:35
+# Generated 2026-04-04 17:31:31
 
 from __future__ import annotations
 from .. sockettype import SocketType
@@ -48,15 +48,19 @@ class Rotation(Socket):
         | Socket | Rotation | ignored |
 
         Parameters
-        ---------
+        ----------
         vector : Vector, optional
             socket 'Vector' (id: Vector)
         
         factor : Float, optional
             socket 'Factor' (id: Factor)
         
-        axis (str): parameter 'axis' in ('X', 'Y', 'Z')
-        pivot_axis (str): parameter 'pivot_axis' in ('Auto', 'X', 'Y', 'Z')
+        axis : Literal['X', 'Y', 'Z']
+            parameter `axis`
+        
+        pivot_axis : Literal['Auto', 'X', 'Y', 'Z']
+            parameter `pivot_axis`
+        
 
         Returns
         -------
@@ -82,14 +86,16 @@ class Rotation(Socket):
         | Parameter | `axis`   | `'X'`   |
 
         Parameters
-        ---------
+        ----------
         vector : Vector, optional
             socket 'Vector' (id: Vector)
         
         factor : Float, optional
             socket 'Factor' (id: Factor)
         
-        pivot_axis (str): parameter 'pivot_axis' in ('Auto', 'X', 'Y', 'Z')
+        pivot_axis : Literal['Auto', 'X', 'Y', 'Z']
+            parameter `pivot_axis`
+        
 
         Returns
         -------
@@ -114,14 +120,16 @@ class Rotation(Socket):
         | Parameter | `axis`   | `'Y'`   |
 
         Parameters
-        ---------
+        ----------
         vector : Vector, optional
             socket 'Vector' (id: Vector)
         
         factor : Float, optional
             socket 'Factor' (id: Factor)
         
-        pivot_axis (str): parameter 'pivot_axis' in ('Auto', 'X', 'Y', 'Z')
+        pivot_axis : Literal['Auto', 'X', 'Y', 'Z']
+            parameter `pivot_axis`
+        
 
         Returns
         -------
@@ -146,14 +154,16 @@ class Rotation(Socket):
         | Parameter | `axis`   | `'Z'`   |
 
         Parameters
-        ---------
+        ----------
         vector : Vector, optional
             socket 'Vector' (id: Vector)
         
         factor : Float, optional
             socket 'Factor' (id: Factor)
         
-        pivot_axis (str): parameter 'pivot_axis' in ('Auto', 'X', 'Y', 'Z')
+        pivot_axis : Literal['Auto', 'X', 'Y', 'Z']
+            parameter `pivot_axis`
+        
 
         Returns
         -------
@@ -177,15 +187,19 @@ class Rotation(Socket):
         | Socket | Rotation | `self` |
 
         Parameters
-        ---------
+        ----------
         vector : Vector, optional
             socket 'Vector' (id: Vector)
         
         factor : Float, optional
             socket 'Factor' (id: Factor)
         
-        axis (str): parameter 'axis' in ('X', 'Y', 'Z')
-        pivot_axis (str): parameter 'pivot_axis' in ('Auto', 'X', 'Y', 'Z')
+        axis : Literal['X', 'Y', 'Z']
+            parameter `axis`
+        
+        pivot_axis : Literal['Auto', 'X', 'Y', 'Z']
+            parameter `pivot_axis`
+        
 
         Returns
         -------
@@ -210,14 +224,16 @@ class Rotation(Socket):
         | Parameter | `axis`   | `'X'`  |
 
         Parameters
-        ---------
+        ----------
         vector : Vector, optional
             socket 'Vector' (id: Vector)
         
         factor : Float, optional
             socket 'Factor' (id: Factor)
         
-        pivot_axis (str): parameter 'pivot_axis' in ('Auto', 'X', 'Y', 'Z')
+        pivot_axis : Literal['Auto', 'X', 'Y', 'Z']
+            parameter `pivot_axis`
+        
 
         Returns
         -------
@@ -241,14 +257,16 @@ class Rotation(Socket):
         | Parameter | `axis`   | `'Y'`  |
 
         Parameters
-        ---------
+        ----------
         vector : Vector, optional
             socket 'Vector' (id: Vector)
         
         factor : Float, optional
             socket 'Factor' (id: Factor)
         
-        pivot_axis (str): parameter 'pivot_axis' in ('Auto', 'X', 'Y', 'Z')
+        pivot_axis : Literal['Auto', 'X', 'Y', 'Z']
+            parameter `pivot_axis`
+        
 
         Returns
         -------
@@ -272,14 +290,16 @@ class Rotation(Socket):
         | Parameter | `axis`   | `'Z'`  |
 
         Parameters
-        ---------
+        ----------
         vector : Vector, optional
             socket 'Vector' (id: Vector)
         
         factor : Float, optional
             socket 'Factor' (id: Factor)
         
-        pivot_axis (str): parameter 'pivot_axis' in ('Auto', 'X', 'Y', 'Z')
+        pivot_axis : Literal['Auto', 'X', 'Y', 'Z']
+            parameter `pivot_axis`
+        
 
         Returns
         -------
@@ -298,15 +318,19 @@ class Rotation(Socket):
         """ > Node <&Node Axes to Rotation>
 
         Parameters
-        ---------
+        ----------
         primary_axis_1 : Vector, optional
             socket 'Primary Axis' (id: Primary Axis)
         
         secondary_axis_1 : Vector, optional
             socket 'Secondary Axis' (id: Secondary Axis)
         
-        primary_axis (str): parameter 'primary_axis' in ('X', 'Y', 'Z')
-        secondary_axis (str): parameter 'secondary_axis' in ('X', 'Y', 'Z')
+        primary_axis : Literal['X', 'Y', 'Z']
+            parameter `primary_axis`
+        
+        secondary_axis : Literal['X', 'Y', 'Z']
+            parameter `secondary_axis`
+        
 
         Returns
         -------
@@ -329,7 +353,7 @@ class Rotation(Socket):
         | Parameter | `secondary_axis` | `'Y'` |
 
         Parameters
-        ---------
+        ----------
         primary_axis : Vector, optional
             socket 'Primary Axis' (id: Primary Axis)
         
@@ -356,7 +380,7 @@ class Rotation(Socket):
         | Parameter | `secondary_axis` | `'X'` |
 
         Parameters
-        ---------
+        ----------
         primary_axis : Vector, optional
             socket 'Primary Axis' (id: Primary Axis)
         
@@ -383,7 +407,7 @@ class Rotation(Socket):
         | Parameter | `secondary_axis` | `'Z'` |
 
         Parameters
-        ---------
+        ----------
         primary_axis : Vector, optional
             socket 'Primary Axis' (id: Primary Axis)
         
@@ -410,7 +434,7 @@ class Rotation(Socket):
         | Parameter | `secondary_axis` | `'X'` |
 
         Parameters
-        ---------
+        ----------
         primary_axis : Vector, optional
             socket 'Primary Axis' (id: Primary Axis)
         
@@ -437,7 +461,7 @@ class Rotation(Socket):
         | Parameter | `secondary_axis` | `'Z'` |
 
         Parameters
-        ---------
+        ----------
         primary_axis : Vector, optional
             socket 'Primary Axis' (id: Primary Axis)
         
@@ -464,7 +488,7 @@ class Rotation(Socket):
         | Parameter | `secondary_axis` | `'Y'` |
 
         Parameters
-        ---------
+        ----------
         primary_axis : Vector, optional
             socket 'Primary Axis' (id: Primary Axis)
         
@@ -484,7 +508,7 @@ class Rotation(Socket):
         """ > Node <&Node Axis Angle to Rotation>
 
         Parameters
-        ---------
+        ----------
         axis : Vector, optional
             socket 'Axis' (id: Axis)
         
@@ -504,7 +528,7 @@ class Rotation(Socket):
         """ > Node <&Node Euler to Rotation>
 
         Parameters
-        ---------
+        ----------
         euler : Vector, optional
             socket 'Euler' (id: Euler)
         
@@ -527,7 +551,7 @@ class Rotation(Socket):
         | Parameter | `data_type` | `'ROTATION'` |
 
         Parameters
-        ---------
+        ----------
         seed : Integer, optional
             socket 'Seed' (id: Seed)
         
@@ -560,7 +584,7 @@ class Rotation(Socket):
         """ > Node <&Node Quaternion to Rotation>
 
         Parameters
-        ---------
+        ----------
         w : Float, optional
             socket 'W' (id: W)
         
@@ -593,11 +617,13 @@ class Rotation(Socket):
         | Socket | Rotation | `self` |
 
         Parameters
-        ---------
+        ----------
         rotate_by : Rotation, optional
             socket 'Rotate By' (id: Rotate By)
         
-        rotation_space (str): parameter 'rotation_space' in ('Global', 'Local')
+        rotation_space : Literal['Global', 'Local']
+            parameter `rotation_space`
+        
 
         Returns
         -------
@@ -618,7 +644,7 @@ class Rotation(Socket):
         | Parameter | `rotation_space` | `'GLOBAL'` |
 
         Parameters
-        ---------
+        ----------
         rotate_by : Rotation, optional
             socket 'Rotate By' (id: Rotate By)
         
@@ -641,7 +667,7 @@ class Rotation(Socket):
         | Parameter | `rotation_space` | `'LOCAL'` |
 
         Parameters
-        ---------
+        ----------
         rotate_by : Rotation, optional
             socket 'Rotate By' (id: Rotate By)
         
@@ -663,7 +689,7 @@ class Rotation(Socket):
         | Socket | Rotation | `self` |
 
         Parameters
-        ---------
+        ----------
         vector : Vector, optional
             socket 'Vector' (id: Vector)
         
@@ -772,7 +798,7 @@ class Rotation(Socket):
         | Parameter | `data_type` | `'QUATERNION'` |
 
         Parameters
-        ---------
+        ----------
         name : String, optional
             socket 'Name' (id: Name)
         
@@ -795,7 +821,7 @@ class Rotation(Socket):
         | Parameter | `data_type` | `'QUATERNION'` |
 
         Parameters
-        ---------
+        ----------
         name : String, optional
             socket 'Name' (id: Name)
         
@@ -821,14 +847,16 @@ class Rotation(Socket):
         | Parameter | `factor_mode`  | `'UNIFORM'`  |
 
         Parameters
-        ---------
+        ----------
         b : Rotation, optional
             socket 'B' (id: B_Rotation)
         
         factor : Float, optional
             socket 'Factor' (id: Factor_Float)
         
-        clamp_factor (bool): parameter 'clamp_factor'
+        clamp_factor : bool
+            parameter `clamp_factor`
+        
 
         Returns
         -------
@@ -848,7 +876,7 @@ class Rotation(Socket):
         | Parameter | `data_type` | `'ROTATION'` |
 
         Parameters
-        ---------
+        ----------
         enable : Boolean, optional
             socket 'Enable' (id: Enable)
         
@@ -876,21 +904,39 @@ class Rotation(Socket):
 
         New <#Rotation> input with subtype 'NONE'.
 
-        Aguments
-        --------
-        - value  (object = (0, 0, 0)) : Default value
-        - name  (str = 'Rotation') : Input socket name
-        - tip  (str = '') : Property description
-        - panel (str = "") : Panel name
-        - optional_label  (bool = False) : Property optional_label
-        - hide_value  (bool = False) : Property hide_value
-        - hide_in_modifier  (bool = False) : Property hide_in_modifier
-        - default_attribute  (str = '') : Property default_attribute_name
-        - shape  (str = 'AUTO') : Property structure_type in ('AUTO', 'DYNAMIC', 'FIELD', 'SINGLE')
+        Parameters
+        ----------
+        value : object, default=`(0, 0, 0)`
+            Default value
+
+        name : str, default=`Rotation`
+            Input socket name
+
+        tip : str, default=`''`
+            Property description
+
+        panel : str, default=``
+            Panel name
+
+        optional_label : bool, default=`False`
+            Property optional_label
+
+        hide_value : bool, default=`False`
+            Property hide_value
+
+        hide_in_modifier : bool, default=`False`
+            Property hide_in_modifier
+
+        default_attribute : str, default=`''`
+            Property default_attribute_name
+
+        shape : str, default=`'AUTO'`
+            Property structure_type in ('AUTO', 'DYNAMIC', 'FIELD', 'SINGLE')
+
 
         Returns
         -------
-        - Rotation
+        Rotation
         """
         from ..treeclass import Tree
 

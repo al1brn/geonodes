@@ -123,8 +123,10 @@ class Color(generated.Color):
 
         Parameters
         ----------
-        - fac (Float)
-        - stops (list of tuple(float, tuple)) : stops made of (float, color as tuple of floats)
+        fac : Float
+
+        stops : list[tuple[float, tuple]]
+            Stops made of (float, color as tuple of floats)
 
         Returns
         -------
@@ -161,7 +163,8 @@ class Color(generated.Color):
 
         Parameters
         ----------
-        - name (str)
+        name : str
+            Name of the attribute
 
         Returns
         -------
@@ -394,7 +397,7 @@ class Color(generated.Color):
             socket
 
         space : str, optional
-            str in ('TANGENT', 'OBJECT', 'WORLD', 'BLENDER_OBJECT', 'BLENDER_WORLD') Default: 'TANGENT'.
+            str in ('TANGENT', 'OBJECT', 'WORLD', 'BLENDER_OBJECT', 'BLENDER_WORLD') default='TANGENT'.
 
 
         Returns
@@ -414,9 +417,6 @@ class Color(generated.Color):
 
         Parameters
         ----------
-        strength : Float
-            socket
-
         midlevel : Float
             socket
 
@@ -424,7 +424,7 @@ class Color(generated.Color):
             socket
 
         space : str, optional
-            str in ('TANGENT', 'OBJECT', 'WORLD') Default: 'TANGENT'.
+            str in ('TANGENT', 'OBJECT', 'WORLD') default='TANGENT'.
 
 
         Returns
@@ -440,18 +440,10 @@ class Color(generated.Color):
         """ > Node <&Node RGB Curves>
 
         A curve is defined by a list of 3-tuples (not list):
-        x : float
-            x position
 
-        y : float
-            y position
-
-        handle_type : str
-            handle type in ('AUTO', 'AUTO_CLAMPED', 'VECTOR')
-
-
-        !!! note
-            handle_type is optional, its default value is 'AUTO'. Valid values are ('AUTO', 'AUTO_CLAMPED', 'VECTOR')
+        - x (float) : x position
+        - y (float) : y position
+        - handle_type (str) : handle type in ('AUTO', 'AUTO_CLAMPED', 'VECTOR'), default='AUTO'
 
         Information
         -----------
@@ -462,7 +454,8 @@ class Color(generated.Color):
         fac : Float
             socket 'Fac' (id: Fac)
 
-        - curves (list of lists of tuples (float, float, str)) : curves points
+        curves : list[list[tuple[float, float, str]]]
+            Curves points
 
         Returns
         -------
