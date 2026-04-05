@@ -89,6 +89,8 @@ nav:
   - Demos:
     - Overview: demos/index.md
     - Arrows: demos/arrows.md
+    - Counters: demos/counters.md
+
 
 markdown_extensions:
   - admonition

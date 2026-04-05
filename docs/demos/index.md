@@ -18,6 +18,7 @@ The modifiers created in the demo can be used.
 The avaiable demos are:
 
 - [arrows](arrows.md) : single arrow and field of arrows
+- [counters](counters.md) : clocks and counters
 
 
 
