@@ -17,7 +17,7 @@ The modifiers created in the demo can be used.
 
 The avaiable demos are:
 
-- [arrows](arrows.md) : arrow or field of arrows
+- [arrows](arrows.md) : single arrow and field of arrows
 
 
 
