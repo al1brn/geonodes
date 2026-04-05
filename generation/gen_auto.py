@@ -103,65 +103,103 @@ def build_manual_cross_ref(cross):
     # ----- Zones
 
     cross['GeometryNodeForeachGeometryElementInput'] = {'Domain': [{
-        'help': "# Used in a 'with' context block, for instance:\n"
-                "with Mesh.Cube().points.for_each(position=nd.position) as feel:\n\n"
-                "    cube = Mesh.Cube(size=.1)\n"
-                "    cube.transform(translation=feel.position)\n"
-                "    feel.generated.geometry = cube\n\n"
-                "feel.generated.geometry.out()\n"
+        'help': """
+with GeoNodes("For Each Element example"):
+    
+    for feel in Mesh.Cube().points.for_each(position=nd.position):
+        cube = Mesh.Cube(size=0.3)
+        cube.transform(translation=feel.position)
+        feel.geometry = cube
+        
+    feel.generated.out()
+"""
     }]}
     cross['GeometryNodeForeachGeometryElementOutput'] = cross['GeometryNodeForeachGeometryElementInput']
 
     # ----- Repeat
 
     cross['GeometryNodeRepeatInput'] = {'Repeat': [{
-        'help': "# Used in a 'with' context block, for instance:\n"
-                "with Repeat(mesh=Mesh.Cube(size=2), z=1., size=1., iterations=7) as rep:\n\n"
-                "    # join a smaller cube on top\n"
-                "    small_cube = Mesh.Cube(size=rep.size).transform(translation=(0, 0, rep.z + rep.size/2))\n"
-                "    rep.mesh += small_cube\n"
-                "    # update loop parameters\n"
-                "    rep.z += rep.size\n"
-                "    rep.size /= 2\n\n"
-                "rep.mesh.out()\n"
+        'help': """
+with GeoNodes("Repeat Example"):
+    
+    geo = Geometry()
+    count = Integer(3, "Count")
+    move = Vector((0, 0, 2), "Move")
+    scale = Float(0.5, "Scale")
+    
+    for rep in repeat(count, geo=Geometry(), move=move, scale=scale):
+        
+        rep.geo += geo.transform(scale=rep.scale, translation=rep.move)
+        
+        rep.move += move*rep.scale
+        rep.scale *= scale
+        
+    rep.geo.out()
+"""
     }]}
     cross['GeometryNodeRepeatOutput'] = cross['GeometryNodeRepeatInput']
 
     # ----- Simulation
 
     cross['GeometryNodeSimulationInput'] = {'Simulation': [{
-        'help': "# Used in a 'with' context block, for instance:\n"
-                "with Simulation(mesh=Mesh.Cube(), speed=Vector.Random(-1, 1, seed=0)) as sim:\n\n"
-                "    speed = sim.mesh.points.capture(sim.speed)\n"
-                "    sim.mesh.position += speed*sim.delta_time\n"
-                "    sim.speed = speed * .95\n\n"
-                "sim.mesh.out()"
+        'help': """
+with GeoNodes("Simulation Example"):
+    
+    for sim in simulation(geo=Geometry(), pos=(0, 0, 0), speed=(1, 0, 10)):
+        
+        delta = sim.speed.scale(sim.delta_time)
+        sim.pos += delta
+        sim.geo.transform(translation=delta) 
+        
+        x, y, z = sim.pos.xyz
+        
+        sim.speed -= (0, 0, 10*sim.delta_time)
+        
+        bounce = z < 0
+        sim.speed.switch(bounce, -sim.speed)
+        sim.pos.switch(bounce, (x, y, -z))
+        
+    sim.geo.out()
+"""
     }]}
     cross['GeometryNodeSimulationOutput'] = cross['GeometryNodeSimulationInput']
 
     # ----- Frame
 
     cross['NodeFrame'] = {'Layout': [{
-        'help': "# Frames are created through a 'with' context block, for instance:\n"
-                "with Layout(\"Nodes will be created in the frame\"):\n"
-                "    a = Float(2)\n"
-                "    b = Float(2)\n"
-                "    c = a + b\n"
+        'help': """
+with GeoNodes("Layout Example"):
+    
+    geo = Geometry()
+    tr = Vector(name="Translaion")
+    
+    with Layout("Group node in a Frame"):
+        geo += Geometry(geo).transform(translation=tr)
+        
+    geo.out()       
+ """
     }]}
 
     # ----- Group
 
     cross['GeometryNodeGroup'] = {'Group': [{
-        'help': '# The first parameter is the name of an existing group:\n'
-                '# Sockets can be set either by a dict or using keyword attributes\n\n'
-                '# Let\'s create a sample group\n'
-                'with GeoNodes("Sample Function"):\n\n'
-                '    v = Float(0, "A Value")\n'
-                '    i = Integer(1, "An Integer")\n'
-                '    (v + i).out()\n\n'
-                '# Let\'s call the function\n'
-                'with GeoNodes("Calling the Function"):\n\n'
-                '    v = Group("Sample Function", {"A Value": 123}, an_integer=99)\n'
+        'help': """
+with GeoNodes("Multiply by Two", is_group=True):
+    
+    a = Float(name="Value")
+    (a + 2).out("Double")
+    
+with GeoNodes("Calling a group example"):
+    
+    v = Float(0, "Your value")
+    dbl = Group("Multiply by Two", value=v).double
+    dbl.out("Double")
+    
+    # Alternaticve way
+    again = G().multiply_by_two(dbl)
+    
+    again.out("Double Double")
+"""
     }]}
     cross['ShaderNodeGroup'] = cross['GeometryNodeGroup']
 

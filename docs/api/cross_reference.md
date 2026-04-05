@@ -3796,14 +3796,15 @@ nd.float_to_integer(cls,
 ### class Domain
 
 ```python
-# Used in a 'with' context block, for instance:
-with Mesh.Cube().points.for_each(position=nd.position) as feel:
 
-    cube = Mesh.Cube(size=.1)
-    cube.transform(translation=feel.position)
-    feel.generated.geometry = cube
-
-feel.generated.geometry.out()
+with GeoNodes("For Each Element example"):
+    
+    for feel in Mesh.Cube().points.for_each(position=nd.position):
+        cube = Mesh.Cube(size=0.3)
+        cube.transform(translation=feel.position)
+        feel.geometry = cube
+        
+    feel.generated.out()
 
 ```
 
@@ -3814,14 +3815,15 @@ feel.generated.geometry.out()
 ### class Domain
 
 ```python
-# Used in a 'with' context block, for instance:
-with Mesh.Cube().points.for_each(position=nd.position) as feel:
 
-    cube = Mesh.Cube(size=.1)
-    cube.transform(translation=feel.position)
-    feel.generated.geometry = cube
-
-feel.generated.geometry.out()
+with GeoNodes("For Each Element example"):
+    
+    for feel in Mesh.Cube().points.for_each(position=nd.position):
+        cube = Mesh.Cube(size=0.3)
+        cube.transform(translation=feel.position)
+        feel.geometry = cube
+        
+    feel.generated.out()
 
 ```
 
@@ -3852,12 +3854,17 @@ nd.format_string(cls, named_sockets: dict = {}, format: String = None, **sockets
 ### class Layout
 
 ```python
-# Frames are created through a 'with' context block, for instance:
-with Layout("Nodes will be created in the frame"):
-    a = Float(2)
-    b = Float(2)
-    c = a + b
 
+with GeoNodes("Layout Example"):
+    
+    geo = Geometry()
+    tr = Vector(name="Translaion")
+    
+    with Layout("Group node in a Frame"):
+        geo += Geometry(geo).transform(translation=tr)
+        
+    geo.out()       
+ 
 ```
 
 ## Fresnel
@@ -4517,20 +4524,22 @@ nd.grid_to_points(cls,
 ### class Group
 
 ```python
-# The first parameter is the name of an existing group:
-# Sockets can be set either by a dict or using keyword attributes
 
-# Let's create a sample group
-with GeoNodes("Sample Function"):
-
-    v = Float(0, "A Value")
-    i = Integer(1, "An Integer")
-    (v + i).out()
-
-# Let's call the function
-with GeoNodes("Calling the Function"):
-
-    v = Group("Sample Function", {"A Value": 123}, an_integer=99)
+with GeoNodes("Multiply by Two", is_group=True):
+    
+    a = Float(name="Value")
+    (a + 2).out("Double")
+    
+with GeoNodes("Calling a group example"):
+    
+    v = Float(0, "Your value")
+    dbl = Group("Multiply by Two", value=v).double
+    dbl.out("Double")
+    
+    # Alternaticve way
+    again = G().multiply_by_two(dbl)
+    
+    again.out("Double Double")
 
 ```
 
@@ -4604,7 +4613,7 @@ nd.hair_bsdf(cls,
 ```python
 Curve.handle_type_selection(cls,
                     handle_type: Literal['FREE', 'AUTO', 'VECTOR', 'ALIGN'] = 'AUTO',
-                    mode = {'RIGHT', 'LEFT'})
+                    mode = {'LEFT', 'RIGHT'})
 ```
 
 ### nd
@@ -4612,7 +4621,7 @@ Curve.handle_type_selection(cls,
 ``` python
 nd.handle_type_selection(cls,
                     handle_type: Literal['FREE', 'AUTO', 'VECTOR', 'ALIGN'] = 'AUTO',
-                    mode = {'RIGHT', 'LEFT'})
+                    mode = {'LEFT', 'RIGHT'})
 ```
 
 ## Hash Value
@@ -8171,17 +8180,22 @@ nd.remove_named_attribute(cls,
 ### class Repeat
 
 ```python
-# Used in a 'with' context block, for instance:
-with Repeat(mesh=Mesh.Cube(size=2), z=1., size=1., iterations=7) as rep:
 
-    # join a smaller cube on top
-    small_cube = Mesh.Cube(size=rep.size).transform(translation=(0, 0, rep.z + rep.size/2))
-    rep.mesh += small_cube
-    # update loop parameters
-    rep.z += rep.size
-    rep.size /= 2
-
-rep.mesh.out()
+with GeoNodes("Repeat Example"):
+    
+    geo = Geometry()
+    count = Integer(3, "Count")
+    move = Vector((0, 0, 2), "Move")
+    scale = Float(0.5, "Scale")
+    
+    for rep in repeat(count, geo=Geometry(), move=move, scale=scale):
+        
+        rep.geo += geo.transform(scale=rep.scale, translation=rep.move)
+        
+        rep.move += move*rep.scale
+        rep.scale *= scale
+        
+    rep.geo.out()
 
 ```
 
@@ -8192,17 +8206,22 @@ rep.mesh.out()
 ### class Repeat
 
 ```python
-# Used in a 'with' context block, for instance:
-with Repeat(mesh=Mesh.Cube(size=2), z=1., size=1., iterations=7) as rep:
 
-    # join a smaller cube on top
-    small_cube = Mesh.Cube(size=rep.size).transform(translation=(0, 0, rep.z + rep.size/2))
-    rep.mesh += small_cube
-    # update loop parameters
-    rep.z += rep.size
-    rep.size /= 2
-
-rep.mesh.out()
+with GeoNodes("Repeat Example"):
+    
+    geo = Geometry()
+    count = Integer(3, "Count")
+    move = Vector((0, 0, 2), "Move")
+    scale = Float(0.5, "Scale")
+    
+    for rep in repeat(count, geo=Geometry(), move=move, scale=scale):
+        
+        rep.geo += geo.transform(scale=rep.scale, translation=rep.move)
+        
+        rep.move += move*rep.scale
+        rep.scale *= scale
+        
+    rep.geo.out()
 
 ```
 
@@ -9632,7 +9651,7 @@ nd.set_handle_positions(cls,
 ```python
 Curve.set_handle_type(self,
                     handle_type: Literal['FREE', 'AUTO', 'VECTOR', 'ALIGN'] = 'AUTO',
-                    mode = {'RIGHT', 'LEFT'})
+                    mode = {'LEFT', 'RIGHT'})
 ```
 
 ```python
@@ -9666,7 +9685,7 @@ nd.set_handle_type(cls,
                     curve: Curve = None,
                     selection: Boolean = None,
                     handle_type: Literal['FREE', 'AUTO', 'VECTOR', 'ALIGN'] = 'AUTO',
-                    mode = {'RIGHT', 'LEFT'})
+                    mode = {'LEFT', 'RIGHT'})
 ```
 
 ## Set ID
@@ -10151,14 +10170,25 @@ nd.shortest_edge_paths(cls, end_vertex: Boolean = None, edge_cost: Float = None)
 ### class Simulation
 
 ```python
-# Used in a 'with' context block, for instance:
-with Simulation(mesh=Mesh.Cube(), speed=Vector.Random(-1, 1, seed=0)) as sim:
 
-    speed = sim.mesh.points.capture(sim.speed)
-    sim.mesh.position += speed*sim.delta_time
-    sim.speed = speed * .95
+with GeoNodes("Simulation Example"):
+    
+    for sim in simulation(geo=Geometry(), pos=(0, 0, 0), speed=(1, 0, 10)):
+        
+        delta = sim.speed.scale(sim.delta_time)
+        sim.pos += delta
+        sim.geo.transform(translation=delta) 
+        
+        x, y, z = sim.pos.xyz
+        
+        sim.speed -= (0, 0, 10*sim.delta_time)
+        
+        bounce = z < 0
+        sim.speed.switch(bounce, -sim.speed)
+        sim.pos.switch(bounce, (x, y, -z))
+        
+    sim.geo.out()
 
-sim.mesh.out()
 ```
 
 ## Simulation Output
@@ -10168,14 +10198,25 @@ sim.mesh.out()
 ### class Simulation
 
 ```python
-# Used in a 'with' context block, for instance:
-with Simulation(mesh=Mesh.Cube(), speed=Vector.Random(-1, 1, seed=0)) as sim:
 
-    speed = sim.mesh.points.capture(sim.speed)
-    sim.mesh.position += speed*sim.delta_time
-    sim.speed = speed * .95
+with GeoNodes("Simulation Example"):
+    
+    for sim in simulation(geo=Geometry(), pos=(0, 0, 0), speed=(1, 0, 10)):
+        
+        delta = sim.speed.scale(sim.delta_time)
+        sim.pos += delta
+        sim.geo.transform(translation=delta) 
+        
+        x, y, z = sim.pos.xyz
+        
+        sim.speed -= (0, 0, 10*sim.delta_time)
+        
+        bounce = z < 0
+        sim.speed.switch(bounce, -sim.speed)
+        sim.pos.switch(bounce, (x, y, -z))
+        
+    sim.geo.out()
 
-sim.mesh.out()
 ```
 
 ## Sky Texture

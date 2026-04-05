@@ -3433,8 +3433,8 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                                   "'AUTO',\n"
                                                                   '                    '
                                                                   'mode = '
-                                                                  "{'RIGHT', "
-                                                                  "'LEFT'})"}],
+                                                                  "{'LEFT', "
+                                                                  "'RIGHT'})"}],
                                           'nd': [{'func_name': 'handle_type_selection',
                                                   'is_classmethod': True,
                                                   'is_get': False,
@@ -3451,8 +3451,8 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                                "'AUTO',\n"
                                                                '                    '
                                                                'mode = '
-                                                               "{'RIGHT', "
-                                                               "'LEFT'})"}]},
+                                                               "{'LEFT', "
+                                                               "'RIGHT'})"}]},
  'GeometryNodeCurveLength': {'Curve': [{'func_name': 'length',
                                         'is_classmethod': False,
                                         'is_get': False,
@@ -3985,8 +3985,8 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                          "'AUTO', 'VECTOR', "
                                                          "'ALIGN'] = 'AUTO',\n"
                                                          '                    '
-                                                         "mode = {'RIGHT', "
-                                                         "'LEFT'})"},
+                                                         "mode = {'LEFT', "
+                                                         "'RIGHT'})"},
                                            {'func_name': 'set_left_handle_type',
                                             'is_classmethod': False,
                                             'is_get': False,
@@ -4049,8 +4049,8 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                       "'VECTOR', 'ALIGN'] = "
                                                       "'AUTO',\n"
                                                       '                    '
-                                                      "mode = {'RIGHT', "
-                                                      "'LEFT'})"}]},
+                                                      "mode = {'LEFT', "
+                                                      "'RIGHT'})"}]},
  'GeometryNodeCurveSpiral': {'Curve': [{'func_name': 'Spiral',
                                         'is_classmethod': True,
                                         'is_get': False,
@@ -6475,42 +6475,47 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                    'returns': 'OUT',
                                    'signature': '(cls, mesh: Mesh = None, '
                                                 'selection: Boolean = None)'}]},
- 'GeometryNodeForeachGeometryElementInput': {'Domain': [{'help': '# Used in a '
-                                                                 "'with' "
-                                                                 'context '
-                                                                 'block, for '
-                                                                 'instance:\n'
+ 'GeometryNodeForeachGeometryElementInput': {'Domain': [{'help': '\n'
                                                                  'with '
-                                                                 'Mesh.Cube().points.for_each(position=nd.position) '
-                                                                 'as feel:\n'
-                                                                 '\n'
-                                                                 '    cube = '
-                                                                 'Mesh.Cube(size=.1)\n'
-                                                                 '    '
+                                                                 'GeoNodes("For '
+                                                                 'Each Element '
+                                                                 'example"):\n'
+                                                                 '    \n'
+                                                                 '    for feel '
+                                                                 'in '
+                                                                 'Mesh.Cube().points.for_each(position=nd.position):\n'
+                                                                 '        cube '
+                                                                 '= '
+                                                                 'Mesh.Cube(size=0.3)\n'
+                                                                 '        '
                                                                  'cube.transform(translation=feel.position)\n'
-                                                                 '    '
-                                                                 'feel.generated.geometry '
+                                                                 '        '
+                                                                 'feel.geometry '
                                                                  '= cube\n'
-                                                                 '\n'
-                                                                 'feel.generated.geometry.out()\n'}]},
- 'GeometryNodeForeachGeometryElementOutput': {'Domain': [{'help': '# Used in a '
-                                                                  "'with' "
-                                                                  'context '
-                                                                  'block, for '
-                                                                  'instance:\n'
+                                                                 '        \n'
+                                                                 '    '
+                                                                 'feel.generated.out()\n'}]},
+ 'GeometryNodeForeachGeometryElementOutput': {'Domain': [{'help': '\n'
                                                                   'with '
-                                                                  'Mesh.Cube().points.for_each(position=nd.position) '
-                                                                  'as feel:\n'
-                                                                  '\n'
-                                                                  '    cube = '
-                                                                  'Mesh.Cube(size=.1)\n'
-                                                                  '    '
+                                                                  'GeoNodes("For '
+                                                                  'Each '
+                                                                  'Element '
+                                                                  'example"):\n'
+                                                                  '    \n'
+                                                                  '    for '
+                                                                  'feel in '
+                                                                  'Mesh.Cube().points.for_each(position=nd.position):\n'
+                                                                  '        '
+                                                                  'cube = '
+                                                                  'Mesh.Cube(size=0.3)\n'
+                                                                  '        '
                                                                   'cube.transform(translation=feel.position)\n'
-                                                                  '    '
-                                                                  'feel.generated.geometry '
+                                                                  '        '
+                                                                  'feel.geometry '
                                                                   '= cube\n'
-                                                                  '\n'
-                                                                  'feel.generated.geometry.out()\n'}]},
+                                                                  '        \n'
+                                                                  '    '
+                                                                  'feel.generated.out()\n'}]},
  'GeometryNodeGeometryToInstance': {'Geometry': [{'func_name': 'to_instance',
                                                   'is_classmethod': False,
                                                   'is_get': False,
@@ -7483,25 +7488,26 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                    "Literal['FLOAT', 'INT', "
                                                    "'BOOLEAN', 'VECTOR'] = "
                                                    "'FLOAT')"}]},
- 'GeometryNodeGroup': {'Group': [{'help': '# The first parameter is the name '
-                                          'of an existing group:\n'
-                                          '# Sockets can be set either by a '
-                                          'dict or using keyword attributes\n'
-                                          '\n'
-                                          "# Let's create a sample group\n"
-                                          'with GeoNodes("Sample Function"):\n'
-                                          '\n'
-                                          '    v = Float(0, "A Value")\n'
-                                          '    i = Integer(1, "An Integer")\n'
-                                          '    (v + i).out()\n'
-                                          '\n'
-                                          "# Let's call the function\n"
-                                          'with GeoNodes("Calling the '
-                                          'Function"):\n'
-                                          '\n'
-                                          '    v = Group("Sample Function", '
-                                          '{"A Value": 123}, '
-                                          'an_integer=99)\n'}]},
+ 'GeometryNodeGroup': {'Group': [{'help': '\n'
+                                          'with GeoNodes("Multiply by Two", '
+                                          'is_group=True):\n'
+                                          '    \n'
+                                          '    a = Float(name="Value")\n'
+                                          '    (a + 2).out("Double")\n'
+                                          '    \n'
+                                          'with GeoNodes("Calling a group '
+                                          'example"):\n'
+                                          '    \n'
+                                          '    v = Float(0, "Your value")\n'
+                                          '    dbl = Group("Multiply by Two", '
+                                          'value=v).double\n'
+                                          '    dbl.out("Double")\n'
+                                          '    \n'
+                                          '    # Alternaticve way\n'
+                                          '    again = '
+                                          'G().multiply_by_two(dbl)\n'
+                                          '    \n'
+                                          '    again.out("Double Double")\n'}]},
  'GeometryNodeImageInfo': {'Image': [{'func_name': 'info',
                                       'is_classmethod': False,
                                       'is_get': False,
@@ -10250,44 +10256,57 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                       "'Wildcard'] = None,\n"
                                                       '                    '
                                                       'name: String = None)'}]},
- 'GeometryNodeRepeatInput': {'Repeat': [{'help': "# Used in a 'with' context "
-                                                 'block, for instance:\n'
-                                                 'with '
-                                                 'Repeat(mesh=Mesh.Cube(size=2), '
-                                                 'z=1., size=1., iterations=7) '
-                                                 'as rep:\n'
-                                                 '\n'
-                                                 '    # join a smaller cube on '
-                                                 'top\n'
-                                                 '    small_cube = '
-                                                 'Mesh.Cube(size=rep.size).transform(translation=(0, '
-                                                 '0, rep.z + rep.size/2))\n'
-                                                 '    rep.mesh += small_cube\n'
-                                                 '    # update loop '
-                                                 'parameters\n'
-                                                 '    rep.z += rep.size\n'
-                                                 '    rep.size /= 2\n'
-                                                 '\n'
-                                                 'rep.mesh.out()\n'}]},
- 'GeometryNodeRepeatOutput': {'Repeat': [{'help': "# Used in a 'with' context "
-                                                  'block, for instance:\n'
-                                                  'with '
-                                                  'Repeat(mesh=Mesh.Cube(size=2), '
-                                                  'z=1., size=1., '
-                                                  'iterations=7) as rep:\n'
-                                                  '\n'
-                                                  '    # join a smaller cube '
-                                                  'on top\n'
-                                                  '    small_cube = '
-                                                  'Mesh.Cube(size=rep.size).transform(translation=(0, '
-                                                  '0, rep.z + rep.size/2))\n'
-                                                  '    rep.mesh += small_cube\n'
-                                                  '    # update loop '
-                                                  'parameters\n'
-                                                  '    rep.z += rep.size\n'
-                                                  '    rep.size /= 2\n'
-                                                  '\n'
-                                                  'rep.mesh.out()\n'}]},
+ 'GeometryNodeRepeatInput': {'Repeat': [{'help': '\n'
+                                                 'with GeoNodes("Repeat '
+                                                 'Example"):\n'
+                                                 '    \n'
+                                                 '    geo = Geometry()\n'
+                                                 '    count = Integer(3, '
+                                                 '"Count")\n'
+                                                 '    move = Vector((0, 0, 2), '
+                                                 '"Move")\n'
+                                                 '    scale = Float(0.5, '
+                                                 '"Scale")\n'
+                                                 '    \n'
+                                                 '    for rep in repeat(count, '
+                                                 'geo=Geometry(), move=move, '
+                                                 'scale=scale):\n'
+                                                 '        \n'
+                                                 '        rep.geo += '
+                                                 'geo.transform(scale=rep.scale, '
+                                                 'translation=rep.move)\n'
+                                                 '        \n'
+                                                 '        rep.move += '
+                                                 'move*rep.scale\n'
+                                                 '        rep.scale *= scale\n'
+                                                 '        \n'
+                                                 '    rep.geo.out()\n'}]},
+ 'GeometryNodeRepeatOutput': {'Repeat': [{'help': '\n'
+                                                  'with GeoNodes("Repeat '
+                                                  'Example"):\n'
+                                                  '    \n'
+                                                  '    geo = Geometry()\n'
+                                                  '    count = Integer(3, '
+                                                  '"Count")\n'
+                                                  '    move = Vector((0, 0, '
+                                                  '2), "Move")\n'
+                                                  '    scale = Float(0.5, '
+                                                  '"Scale")\n'
+                                                  '    \n'
+                                                  '    for rep in '
+                                                  'repeat(count, '
+                                                  'geo=Geometry(), move=move, '
+                                                  'scale=scale):\n'
+                                                  '        \n'
+                                                  '        rep.geo += '
+                                                  'geo.transform(scale=rep.scale, '
+                                                  'translation=rep.move)\n'
+                                                  '        \n'
+                                                  '        rep.move += '
+                                                  'move*rep.scale\n'
+                                                  '        rep.scale *= scale\n'
+                                                  '        \n'
+                                                  '    rep.geo.out()\n'}]},
  'GeometryNodeReplaceMaterial': {'Geometry': [{'func_name': 'replace_material',
                                                'is_classmethod': False,
                                                'is_get': False,
@@ -12318,42 +12337,76 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                           '                    '
                                                           'resolution: Integer '
                                                           '= None)'}]},
- 'GeometryNodeSimulationInput': {'Simulation': [{'help': "# Used in a 'with' "
-                                                         'context block, for '
-                                                         'instance:\n'
+ 'GeometryNodeSimulationInput': {'Simulation': [{'help': '\n'
                                                          'with '
-                                                         'Simulation(mesh=Mesh.Cube(), '
-                                                         'speed=Vector.Random(-1, '
-                                                         '1, seed=0)) as sim:\n'
-                                                         '\n'
-                                                         '    speed = '
-                                                         'sim.mesh.points.capture(sim.speed)\n'
+                                                         'GeoNodes("Simulation '
+                                                         'Example"):\n'
+                                                         '    \n'
+                                                         '    for sim in '
+                                                         'simulation(geo=Geometry(), '
+                                                         'pos=(0, 0, 0), '
+                                                         'speed=(1, 0, 10)):\n'
+                                                         '        \n'
+                                                         '        delta = '
+                                                         'sim.speed.scale(sim.delta_time)\n'
+                                                         '        sim.pos += '
+                                                         'delta\n'
+                                                         '        '
+                                                         'sim.geo.transform(translation=delta) \n'
+                                                         '        \n'
+                                                         '        x, y, z = '
+                                                         'sim.pos.xyz\n'
+                                                         '        \n'
+                                                         '        sim.speed -= '
+                                                         '(0, 0, '
+                                                         '10*sim.delta_time)\n'
+                                                         '        \n'
+                                                         '        bounce = z < '
+                                                         '0\n'
+                                                         '        '
+                                                         'sim.speed.switch(bounce, '
+                                                         '-sim.speed)\n'
+                                                         '        '
+                                                         'sim.pos.switch(bounce, '
+                                                         '(x, y, -z))\n'
+                                                         '        \n'
                                                          '    '
-                                                         'sim.mesh.position += '
-                                                         'speed*sim.delta_time\n'
-                                                         '    sim.speed = '
-                                                         'speed * .95\n'
-                                                         '\n'
-                                                         'sim.mesh.out()'}]},
- 'GeometryNodeSimulationOutput': {'Simulation': [{'help': "# Used in a 'with' "
-                                                          'context block, for '
-                                                          'instance:\n'
+                                                         'sim.geo.out()\n'}]},
+ 'GeometryNodeSimulationOutput': {'Simulation': [{'help': '\n'
                                                           'with '
-                                                          'Simulation(mesh=Mesh.Cube(), '
-                                                          'speed=Vector.Random(-1, '
-                                                          '1, seed=0)) as '
-                                                          'sim:\n'
-                                                          '\n'
-                                                          '    speed = '
-                                                          'sim.mesh.points.capture(sim.speed)\n'
+                                                          'GeoNodes("Simulation '
+                                                          'Example"):\n'
+                                                          '    \n'
+                                                          '    for sim in '
+                                                          'simulation(geo=Geometry(), '
+                                                          'pos=(0, 0, 0), '
+                                                          'speed=(1, 0, 10)):\n'
+                                                          '        \n'
+                                                          '        delta = '
+                                                          'sim.speed.scale(sim.delta_time)\n'
+                                                          '        sim.pos += '
+                                                          'delta\n'
+                                                          '        '
+                                                          'sim.geo.transform(translation=delta) \n'
+                                                          '        \n'
+                                                          '        x, y, z = '
+                                                          'sim.pos.xyz\n'
+                                                          '        \n'
+                                                          '        sim.speed '
+                                                          '-= (0, 0, '
+                                                          '10*sim.delta_time)\n'
+                                                          '        \n'
+                                                          '        bounce = z '
+                                                          '< 0\n'
+                                                          '        '
+                                                          'sim.speed.switch(bounce, '
+                                                          '-sim.speed)\n'
+                                                          '        '
+                                                          'sim.pos.switch(bounce, '
+                                                          '(x, y, -z))\n'
+                                                          '        \n'
                                                           '    '
-                                                          'sim.mesh.position '
-                                                          '+= '
-                                                          'speed*sim.delta_time\n'
-                                                          '    sim.speed = '
-                                                          'speed * .95\n'
-                                                          '\n'
-                                                          'sim.mesh.out()'}]},
+                                                          'sim.geo.out()\n'}]},
  'GeometryNodeSortElements': {'Edge': [{'func_name': 'sort',
                                         'is_classmethod': False,
                                         'is_get': False,
@@ -14224,13 +14277,18 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                'active_output_index = 0,\n'
                                                '                    '
                                                'define_signature = False)'}]},
- 'NodeFrame': {'Layout': [{'help': "# Frames are created through a 'with' "
-                                   'context block, for instance:\n'
-                                   'with Layout("Nodes will be created in the '
-                                   'frame"):\n'
-                                   '    a = Float(2)\n'
-                                   '    b = Float(2)\n'
-                                   '    c = a + b\n'}]},
+ 'NodeFrame': {'Layout': [{'help': '\n'
+                                   'with GeoNodes("Layout Example"):\n'
+                                   '    \n'
+                                   '    geo = Geometry()\n'
+                                   '    tr = Vector(name="Translaion")\n'
+                                   '    \n'
+                                   '    with Layout("Group node in a Frame"):\n'
+                                   '        geo += '
+                                   'Geometry(geo).transform(translation=tr)\n'
+                                   '        \n'
+                                   '    geo.out()       \n'
+                                   ' '}]},
  'NodeGetBundleItem': {'Bundle': [{'func_name': 'get_item',
                                    'is_classmethod': False,
                                    'is_get': False,
@@ -15670,24 +15728,25 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                               'returns': 'OUT',
                               'signature': '(cls, color: Color = None, gamma: '
                                            'Float = None)'}]},
- 'ShaderNodeGroup': {'Group': [{'help': '# The first parameter is the name of '
-                                        'an existing group:\n'
-                                        '# Sockets can be set either by a dict '
-                                        'or using keyword attributes\n'
-                                        '\n'
-                                        "# Let's create a sample group\n"
-                                        'with GeoNodes("Sample Function"):\n'
-                                        '\n'
-                                        '    v = Float(0, "A Value")\n'
-                                        '    i = Integer(1, "An Integer")\n'
-                                        '    (v + i).out()\n'
-                                        '\n'
-                                        "# Let's call the function\n"
-                                        'with GeoNodes("Calling the '
-                                        'Function"):\n'
-                                        '\n'
-                                        '    v = Group("Sample Function", {"A '
-                                        'Value": 123}, an_integer=99)\n'}]},
+ 'ShaderNodeGroup': {'Group': [{'help': '\n'
+                                        'with GeoNodes("Multiply by Two", '
+                                        'is_group=True):\n'
+                                        '    \n'
+                                        '    a = Float(name="Value")\n'
+                                        '    (a + 2).out("Double")\n'
+                                        '    \n'
+                                        'with GeoNodes("Calling a group '
+                                        'example"):\n'
+                                        '    \n'
+                                        '    v = Float(0, "Your value")\n'
+                                        '    dbl = Group("Multiply by Two", '
+                                        'value=v).double\n'
+                                        '    dbl.out("Double")\n'
+                                        '    \n'
+                                        '    # Alternaticve way\n'
+                                        '    again = G().multiply_by_two(dbl)\n'
+                                        '    \n'
+                                        '    again.out("Double Double")\n'}]},
  'ShaderNodeHairInfo': {'snd': [{'func_name': 'curves_info',
                                  'is_classmethod': True,
                                  'is_get': False,
