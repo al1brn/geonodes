@@ -84,6 +84,8 @@ nav:
         - nd module: api/nd.md
         - snd module: api/snd.md
 
+    - Cross Reference: api/cross_reference.md
+
 markdown_extensions:
   - admonition
   - pymdownx.details

@@ -7,7 +7,7 @@
 ### nd
 
 ``` python
-nd._3d_cursor.(cls)
+nd._3d_cursor(cls)
 ```
 
 ## AOV Output
@@ -17,7 +17,7 @@ nd._3d_cursor.(cls)
 ### snd
 
 ``` python
-nd.aov_output.(cls, color: Color = None, value: Float = None, aov_name = '')
+nd.aov_output(cls, color: Color = None, value: Float = None, aov_name = '')
 ```
 
 ### class Color
@@ -33,7 +33,7 @@ Color.aov_output(self, value: Float = None, aov_name = '')
 ### nd
 
 ``` python
-nd.accumulate_field.(cls,
+nd.accumulate_field(cls,
                     value: Float = None,
                     group_id: Integer = None,
                     data_type: Literal['FLOAT', 'INT', 'FLOAT_VECTOR', 'TRANSFORM'] = 'FLOAT',
@@ -73,7 +73,7 @@ Spline.splines.accumulate_field(cls, value: Float | Integer | Vector | Matrix = 
 ### class Instance
 
 ```python
-Instance.accumulate_field(cls, value: Float | Integer | Vector | Matrix = None, group_id: Integer = None)
+Instances.insts.accumulate_field(cls, value: Float | Integer | Vector | Matrix = None, group_id: Integer = None)
 ```
 
 ### class Layer
@@ -89,7 +89,7 @@ GreasePencil.layers.accumulate_field(cls, value: Float | Integer | Vector | Matr
 ### nd
 
 ``` python
-nd.active_camera.(self)
+nd.active_camera(self)
 ```
 
 ### class Object
@@ -105,7 +105,7 @@ Object.ActiveCamera(cls)
 ### nd
 
 ``` python
-nd.active_element.(cls, domain: Literal['POINT', 'EDGE', 'FACE', 'LAYER'] = 'POINT')
+nd.active_element(cls, domain: Literal['POINT', 'EDGE', 'FACE', 'LAYER'] = 'POINT')
 ```
 
 ### class Point
@@ -139,7 +139,7 @@ GreasePencil.layers.active_element(cls)
 ### snd
 
 ``` python
-nd.add_shader.(cls, shader: Shader = None, shader_1: Shader = None)
+nd.add_shader(cls, shader: Shader = None, shader_1: Shader = None)
 ```
 
 ### class Shader
@@ -155,7 +155,7 @@ Shader.add(self, shader: Shader = None)
 ### nd
 
 ``` python
-nd.advect_grid.(cls,
+nd.advect_grid(cls,
                     grid: Float = None,
                     velocity: Vector = None,
                     time_step: Float = None,
@@ -201,7 +201,7 @@ Vector.advect_grid(self,
 ### nd
 
 ``` python
-nd.align_rotation_to_vector.(cls,
+nd.align_rotation_to_vector(cls,
                     rotation: Rotation = None,
                     vector: Vector = None,
                     factor: Float = None,
@@ -276,7 +276,7 @@ Rotation.align_z_to_vector(self,
 ### snd
 
 ``` python
-nd.ambient_occlusion.(cls,
+nd.ambient_occlusion(cls,
                     color: Color = None,
                     distance: Float = None,
                     normal: Vector = None,
@@ -303,7 +303,7 @@ Color.ambient_occlusion(self,
 ### nd
 
 ``` python
-nd.arc.(cls,
+nd.arc(cls,
                     resolution: Integer = None,
                     start: Vector = None,
                     middle: Vector = None,
@@ -358,7 +358,7 @@ Curve.Arc(cls,
 ### snd
 
 ``` python
-nd.attribute.(cls,
+nd.attribute(cls,
                     attribute_name = '',
                     attribute_type: Literal['GEOMETRY', 'OBJECT', 'INSTANCER', 'VIEW_LAYER'] = 'GEOMETRY')
 ```
@@ -370,7 +370,7 @@ nd.attribute.(cls,
 ### nd
 
 ``` python
-nd.attribute_statistic.(cls,
+nd.attribute_statistic(cls,
                     geometry: Geometry = None,
                     selection: Boolean = None,
                     attribute: Float = None,
@@ -411,7 +411,7 @@ Spline.splines.attribute_statistic(self, attribute: Float | Vector = None)
 ### class Instance
 
 ```python
-Instance.attribute_statistic(self, attribute: Float | Vector = None)
+Instances.insts.attribute_statistic(self, attribute: Float | Vector = None)
 ```
 
 ### class Layer
@@ -427,7 +427,7 @@ GreasePencil.layers.attribute_statistic(self, attribute: Float | Vector = None)
 ### nd
 
 ``` python
-nd.axes_to_rotation.(cls,
+nd.axes_to_rotation(cls,
                     primary_axis_1: Vector = None,
                     secondary_axis_1: Vector = None,
                     primary_axis: Literal['X', 'Y', 'Z'] = 'Z',
@@ -475,7 +475,7 @@ Rotation.FromZYAxes(cls, primary_axis: Vector = None, secondary_axis: Vector = N
 ### nd
 
 ``` python
-nd.axis_angle_to_rotation.(cls, axis: Vector = None, angle: Float = None)
+nd.axis_angle_to_rotation(cls, axis: Vector = None, angle: Float = None)
 ```
 
 ### class Rotation
@@ -491,7 +491,7 @@ Rotation.FromAxisAngle(cls, axis: Vector = None, angle: Float = None)
 ### snd
 
 ``` python
-nd.background.(cls, color: Color = None, strength: Float = None, weight: Float = None)
+nd.background(cls, color: Color = None, strength: Float = None, weight: Float = None)
 ```
 
 ### class Color
@@ -507,7 +507,7 @@ Color.background(self, strength: Float = None)
 ### nd
 
 ``` python
-nd.bake.(cls, named_sockets: dict = {}, **sockets)
+nd.bake(cls, named_sockets: dict = {}, **sockets)
 ```
 
 ## Bevel
@@ -517,7 +517,7 @@ nd.bake.(cls, named_sockets: dict = {}, **sockets)
 ### snd
 
 ``` python
-nd.bevel.(cls, radius: Float = None, normal: Vector = None, samples = 4)
+nd.bevel(cls, radius: Float = None, normal: Vector = None, samples = 4)
 ```
 
 ### class Float
@@ -533,7 +533,7 @@ Float.bevel(self, normal: Vector = None, samples = 4)
 ### nd
 
 ``` python
-nd.bit_math.(cls,
+nd.bit_math(cls,
                     a: Integer = None,
                     b: Integer = None,
                     shift: Integer = None,
@@ -599,13 +599,13 @@ gnmath.bw_rotate(a: Integer = None, shift: Integer = None)
 ### nd
 
 ``` python
-nd.blackbody.(cls, temperature: Float = None)
+nd.blackbody(cls, temperature: Float = None)
 ```
 
 ### snd
 
 ``` python
-nd.blackbody.(cls, temperature: Float = None)
+nd.blackbody(cls, temperature: Float = None)
 ```
 
 ### class Color
@@ -621,7 +621,7 @@ Color.Blackbody(cls, temperature: Float = None)
 ### nd
 
 ``` python
-nd.blur_attribute.(cls,
+nd.blur_attribute(cls,
                     value: Float = None,
                     iterations: Integer = None,
                     weight: Float = None,
@@ -659,7 +659,7 @@ Color.blur(self, iterations: Integer = None, weight: Float = None)
 ### nd
 
 ``` python
-nd.bone_info.(cls,
+nd.bone_info(cls,
                     armature: Object = None,
                     bone_name: String = None,
                     transform_space: Literal['ORIGINAL', 'RELATIVE'] = 'ORIGINAL')
@@ -680,7 +680,7 @@ Object.bone_info(self,
 ### nd
 
 ``` python
-nd.boolean.(cls, boolean = False)
+nd.boolean(cls, boolean = False)
 ```
 
 ## Boolean Math
@@ -690,7 +690,7 @@ nd.boolean.(cls, boolean = False)
 ### nd
 
 ``` python
-nd.boolean_math.(cls,
+nd.boolean_math(cls,
                     boolean: Boolean = None,
                     boolean_1: Boolean = None,
                     operation: Literal['AND', 'OR', 'NOT', 'NAND', 'NOR', 'XNOR', 'XOR', 'IMPLY', 'NIMPLY'] = 'AND')
@@ -779,7 +779,7 @@ gnmath.nimply(boolean: Boolean = None, boolean_1: Boolean = None)
 ### nd
 
 ``` python
-nd.bounding_box.(cls, geometry: Geometry = None, use_radius: Boolean = None)
+nd.bounding_box(cls, geometry: Geometry = None, use_radius: Boolean = None)
 ```
 
 ### class Geometry
@@ -795,7 +795,7 @@ Geometry.bounding_box(self, use_radius: Boolean = None)
 ### nd
 
 ``` python
-nd.brick_texture.(cls,
+nd.brick_texture(cls,
                     vector: Vector = None,
                     color1: Color = None,
                     color2: Color = None,
@@ -815,7 +815,7 @@ nd.brick_texture.(cls,
 ### snd
 
 ``` python
-nd.brick_texture.(cls,
+nd.brick_texture(cls,
                     vector: Vector = None,
                     color1: Color = None,
                     color2: Color = None,
@@ -879,7 +879,7 @@ Texture.Brick(cls,
 ### snd
 
 ``` python
-nd.brightness_contrast.(cls, color: Color = None, brightness: Float = None, contrast: Float = None)
+nd.brightness_contrast(cls, color: Color = None, brightness: Float = None, contrast: Float = None)
 ```
 
 ### class Color
@@ -895,7 +895,7 @@ Color.brightness_contrast(self, brightness: Float = None, contrast: Float = None
 ### snd
 
 ``` python
-nd.bump.(cls,
+nd.bump(cls,
                     strength: Float = None,
                     distance: Float = None,
                     filter_width: Float = None,
@@ -922,7 +922,7 @@ Float.bump(self,
 ### nd
 
 ``` python
-nd.bezier_segment.(cls,
+nd.bezier_segment(cls,
                     resolution: Integer = None,
                     start: Vector = None,
                     start_handle: Vector = None,
@@ -968,7 +968,7 @@ Curve.BezierSegment(cls,
 ### snd
 
 ``` python
-nd.camera_data.(cls)
+nd.camera_data(cls)
 ```
 
 ## Camera Info
@@ -978,7 +978,7 @@ nd.camera_data.(cls)
 ### nd
 
 ``` python
-nd.camera_info.(cls, camera: Object = None)
+nd.camera_info(cls, camera: Object = None)
 ```
 
 ### class Object
@@ -1008,7 +1008,7 @@ Domain.capture(attribute=None, **attributes)
 ### nd
 
 ``` python
-nd.checker_texture.(cls,
+nd.checker_texture(cls,
                     vector: Vector = None,
                     color1: Color = None,
                     color2: Color = None,
@@ -1018,7 +1018,7 @@ nd.checker_texture.(cls,
 ### snd
 
 ``` python
-nd.checker_texture.(cls,
+nd.checker_texture(cls,
                     vector: Vector = None,
                     color1: Color = None,
                     color2: Color = None,
@@ -1052,7 +1052,7 @@ Texture.Checker(cls,
 ### nd
 
 ``` python
-nd.clamp.(cls,
+nd.clamp(cls,
                     value: Float = None,
                     min: Float = None,
                     max: Float = None,
@@ -1062,7 +1062,7 @@ nd.clamp.(cls,
 ### snd
 
 ``` python
-nd.clamp.(cls,
+nd.clamp(cls,
                     value: Float = None,
                     min: Float = None,
                     max: Float = None,
@@ -1093,7 +1093,7 @@ Float.clamp_range(self, min: Float = None, max: Float = None)
 ### nd
 
 ``` python
-nd.clip_grid.(cls,
+nd.clip_grid(cls,
                     grid: Float = None,
                     min_x: Integer = None,
                     min_y: Integer = None,
@@ -1159,13 +1159,13 @@ Vector.clip_grid(self,
 ### nd
 
 ``` python
-nd.closure_input.(self)
+nd.closure_input(self)
 ```
 
 ### snd
 
 ``` python
-nd.closure_input.(self)
+nd.closure_input(self)
 ```
 
 ## Closure Output
@@ -1175,13 +1175,13 @@ nd.closure_input.(self)
 ### nd
 
 ``` python
-nd.closure_output.(cls, active_input_index = 0, active_output_index = 0, define_signature = False)
+nd.closure_output(cls, active_input_index = 0, active_output_index = 0, define_signature = False)
 ```
 
 ### snd
 
 ``` python
-nd.closure_output.(cls, active_input_index = 0, active_output_index = 0, define_signature = False)
+nd.closure_output(cls, active_input_index = 0, active_output_index = 0, define_signature = False)
 ```
 
 ## Collection
@@ -1191,7 +1191,7 @@ nd.closure_output.(cls, active_input_index = 0, active_output_index = 0, define_
 ### nd
 
 ``` python
-nd.collection.(cls, collection = None)
+nd.collection(cls, collection = None)
 ```
 
 ## Collection Info
@@ -1201,7 +1201,7 @@ nd.collection.(cls, collection = None)
 ### nd
 
 ``` python
-nd.collection_info.(cls,
+nd.collection_info(cls,
                     collection: Collection = None,
                     separate_children: Boolean = None,
                     reset_children: Boolean = None,
@@ -1224,7 +1224,7 @@ Collection.info(self,
 ### snd
 
 ``` python
-nd.color.(self)
+nd.color(self)
 ```
 
 ## Color Attribute
@@ -1234,7 +1234,7 @@ nd.color.(self)
 ### snd
 
 ``` python
-nd.color_attribute.(cls, layer_name = '')
+nd.color_attribute(cls, layer_name = '')
 ```
 
 ### class Color
@@ -1250,13 +1250,13 @@ Color.ColorAttribute(cls, layer_name = '')
 ### nd
 
 ``` python
-nd.color_ramp.(fac=None, stops=None, interpolation='LINEAR')
+nd.color_ramp(fac=None, stops=None, interpolation='LINEAR')
 ```
 
 ### snd
 
 ``` python
-nd.color_ramp.(fac=None, stops=None, interpolation='LINEAR')
+nd.color_ramp(fac=None, stops=None, interpolation='LINEAR')
 ```
 
 ## Combine Bundle
@@ -1266,13 +1266,13 @@ nd.color_ramp.(fac=None, stops=None, interpolation='LINEAR')
 ### nd
 
 ``` python
-nd.combine_bundle.(cls, named_sockets: dict = {}, define_signature = False, **sockets)
+nd.combine_bundle(cls, named_sockets: dict = {}, define_signature = False, **sockets)
 ```
 
 ### snd
 
 ``` python
-nd.combine_bundle.(cls, named_sockets: dict = {}, define_signature = False, **sockets)
+nd.combine_bundle(cls, named_sockets: dict = {}, define_signature = False, **sockets)
 ```
 
 ### class Bundle
@@ -1288,7 +1288,7 @@ Bundle.Combine(cls, named_sockets: dict = {}, define_signature = False, **socket
 ### snd
 
 ``` python
-nd.combine_color.(cls,
+nd.combine_color(cls,
                     red: Float = None,
                     green: Float = None,
                     blue: Float = None,
@@ -1323,7 +1323,7 @@ Float.combine_color(self,
 ### nd
 
 ``` python
-nd.combine_matrix.(cls,
+nd.combine_matrix(cls,
                     column_1_row_1: Float = None,
                     column_1_row_2: Float = None,
                     column_1_row_3: Float = None,
@@ -1371,7 +1371,7 @@ Matrix.Combine(cls,
 ### nd
 
 ``` python
-nd.combine_transform.(cls,
+nd.combine_transform(cls,
                     translation: Vector = None,
                     rotation: Rotation = None,
                     scale: Vector = None)
@@ -1393,13 +1393,13 @@ Matrix.CombineTransform(cls,
 ### nd
 
 ``` python
-nd.combine_xyz.(cls, x: Float = None, y: Float = None, z: Float = None)
+nd.combine_xyz(cls, x: Float = None, y: Float = None, z: Float = None)
 ```
 
 ### snd
 
 ``` python
-nd.combine_xyz.(cls, x: Float = None, y: Float = None, z: Float = None)
+nd.combine_xyz(cls, x: Float = None, y: Float = None, z: Float = None)
 ```
 
 ### class Vector
@@ -1415,7 +1415,7 @@ Vector.CombineXYZ(cls, x: Float = None, y: Float = None, z: Float = None)
 ### nd
 
 ``` python
-nd.compare.(cls,
+nd.compare(cls,
                     a: Float = None,
                     b: Float = None,
                     a_1: Integer = None,
@@ -1547,7 +1547,7 @@ Color.darker(self, b: Color = None)
 ### nd
 
 ``` python
-nd.cone.(cls,
+nd.cone(cls,
                     vertices: Integer = None,
                     side_segments: Integer = None,
                     fill_segments: Integer = None,
@@ -1577,7 +1577,7 @@ Mesh.Cone(cls,
 ### nd
 
 ``` python
-nd.convex_hull.(cls, geometry: Geometry = None)
+nd.convex_hull(cls, geometry: Geometry = None)
 ```
 
 ### class Geometry
@@ -1593,7 +1593,7 @@ Geometry.convex_hull(self)
 ### nd
 
 ``` python
-nd.corners_of_edge.(cls,
+nd.corners_of_edge(cls,
                     edge_index: Integer = None,
                     weights: Float = None,
                     sort_index: Integer = None)
@@ -1638,7 +1638,7 @@ Mesh.edges.corners_total(cls,
 ### nd
 
 ``` python
-nd.corners_of_face.(cls,
+nd.corners_of_face(cls,
                     face_index: Integer = None,
                     weights: Float = None,
                     sort_index: Integer = None)
@@ -1683,7 +1683,7 @@ Mesh.faces.corners_total(cls,
 ### nd
 
 ``` python
-nd.corners_of_vertex.(cls,
+nd.corners_of_vertex(cls,
                     vertex_index: Integer = None,
                     weights: Float = None,
                     sort_index: Integer = None)
@@ -1728,7 +1728,7 @@ Mesh.points.corners_total(cls,
 ### nd
 
 ``` python
-nd.cube.(cls,
+nd.cube(cls,
                     size: Vector = None,
                     vertices_x: Integer = None,
                     vertices_y: Integer = None,
@@ -1752,7 +1752,7 @@ Mesh.Cube(cls,
 ### nd
 
 ``` python
-nd.cube_grid_topology.(cls,
+nd.cube_grid_topology(cls,
                     bounds_min: Vector = None,
                     bounds_max: Vector = None,
                     resolution_x: Integer = None,
@@ -1784,7 +1784,7 @@ Boolean.CubeGridTopology(cls,
 ### nd
 
 ``` python
-nd.curve_circle.(cls,
+nd.curve_circle(cls,
                     resolution: Integer = None,
                     point_1: Vector = None,
                     point_2: Vector = None,
@@ -1821,7 +1821,7 @@ Curve.Circle(cls,
 ### nd
 
 ``` python
-nd.curve_handle_positions.(cls, relative: Boolean = None)
+nd.curve_handle_positions(cls, relative: Boolean = None)
 ```
 
 ### class Curve
@@ -1853,7 +1853,7 @@ prop = Curve.right_handle_offset
 ### nd
 
 ``` python
-nd.curve_length.(cls, curve: Curve = None)
+nd.curve_length(cls, curve: Curve = None)
 ```
 
 ### class Curve
@@ -1869,7 +1869,7 @@ Curve.length(self)
 ### nd
 
 ``` python
-nd.curve_line.(cls,
+nd.curve_line(cls,
                     start: Vector = None,
                     end: Vector = None,
                     direction: Vector = None,
@@ -1901,7 +1901,7 @@ Curve.Line(cls,
 ### nd
 
 ``` python
-nd.curve_tangent.(self)
+nd.curve_tangent(self)
 ```
 
 ### class Curve
@@ -1917,7 +1917,7 @@ prop = Curve.tangent
 ### nd
 
 ``` python
-nd.curve_tilt.(self)
+nd.curve_tilt(self)
 ```
 
 ### class Curve
@@ -1939,7 +1939,7 @@ prop = Spline.splines.tilt
 ### nd
 
 ``` python
-nd.curve_of_point.(cls, point_index: Integer = None)
+nd.curve_of_point(cls, point_index: Integer = None)
 ```
 
 ### class Curve
@@ -1969,7 +1969,7 @@ Spline.points.index_in_curve(cls, point_index: Integer = None)
 ### nd
 
 ``` python
-nd.curve_to_mesh.(cls,
+nd.curve_to_mesh(cls,
                     curve: Curve = None,
                     profile_curve: Curve = None,
                     scale: Float = None,
@@ -1992,7 +1992,7 @@ Curve.to_mesh(self,
 ### nd
 
 ``` python
-nd.curve_to_points.(cls,
+nd.curve_to_points(cls,
                     curve: Curve = None,
                     count: Integer = None,
                     length: Float = None,
@@ -2046,7 +2046,7 @@ Spline.points.to_points(self,
 ### snd
 
 ``` python
-nd.curves_info.(cls)
+nd.curves_info(cls)
 ```
 
 ## Curves to Grease Pencil
@@ -2056,7 +2056,7 @@ nd.curves_info.(cls)
 ### nd
 
 ``` python
-nd.curves_to_grease_pencil.(cls,
+nd.curves_to_grease_pencil(cls,
                     curves: Curve = None,
                     selection: Boolean = None,
                     instances_as_layers: Boolean = None)
@@ -2075,7 +2075,7 @@ Curve.to_grease_pencil(self, instances_as_layers: Boolean = None)
 ### nd
 
 ``` python
-nd.cylinder.(cls,
+nd.cylinder(cls,
                     vertices: Integer = None,
                     side_segments: Integer = None,
                     fill_segments: Integer = None,
@@ -2103,7 +2103,7 @@ Mesh.Cylinder(cls,
 ### nd
 
 ``` python
-nd.deform_curves_on_surface.(cls, curves: Curve = None)
+nd.deform_curves_on_surface(cls, curves: Curve = None)
 ```
 
 ### class Curve
@@ -2119,7 +2119,7 @@ Curve.deform_on_surface(self)
 ### nd
 
 ``` python
-nd.delete_geometry.(cls,
+nd.delete_geometry(cls,
                     geometry: Geometry = None,
                     selection: Boolean = None,
                     domain: Literal['POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE', 'LAYER'] = 'POINT',
@@ -2265,35 +2265,35 @@ Spline.splines.delete(self, mode: Literal['ALL', 'EDGE_FACE', 'ONLY_FACE'] = 'AL
 ### class Instance
 
 ```python
-Instance.delete_geometry_all(self)
+Instances.insts.delete_geometry_all(self)
 ```
 
 ```python
-Instance.delete_geometry_edge_face(self)
+Instances.insts.delete_geometry_edge_face(self)
 ```
 
 ```python
-Instance.delete_geometry_only_face(self)
+Instances.insts.delete_geometry_only_face(self)
 ```
 
 ```python
-Instance.delete_geometry(self, mode: Literal['ALL', 'EDGE_FACE', 'ONLY_FACE'] = 'ALL')
+Instances.insts.delete_geometry(self, mode: Literal['ALL', 'EDGE_FACE', 'ONLY_FACE'] = 'ALL')
 ```
 
 ```python
-Instance.delete_all(self)
+Instances.insts.delete_all(self)
 ```
 
 ```python
-Instance.delete_edge_face(self)
+Instances.insts.delete_edge_face(self)
 ```
 
 ```python
-Instance.delete_only_face(self)
+Instances.insts.delete_only_face(self)
 ```
 
 ```python
-Instance.delete(self, mode: Literal['ALL', 'EDGE_FACE', 'ONLY_FACE'] = 'ALL')
+Instances.insts.delete(self, mode: Literal['ALL', 'EDGE_FACE', 'ONLY_FACE'] = 'ALL')
 ```
 
 ### class Layer
@@ -2337,7 +2337,7 @@ GreasePencil.layers.delete(self, mode: Literal['ALL', 'EDGE_FACE', 'ONLY_FACE'] 
 ### nd
 
 ``` python
-nd.dial_gizmo.(cls,
+nd.dial_gizmo(cls,
                     *value: Float,
                     position: Vector = None,
                     up: Vector = None,
@@ -2365,7 +2365,7 @@ Float.dial_gizmo(self,
 ### snd
 
 ``` python
-nd.diffuse_bsdf.(cls,
+nd.diffuse_bsdf(cls,
                     color: Color = None,
                     roughness: Float = None,
                     normal: Vector = None,
@@ -2385,7 +2385,7 @@ Shader.Diffuse(cls, color: Color = None, roughness: Float = None, normal: Vector
 ### snd
 
 ``` python
-nd.displacement.(cls,
+nd.displacement(cls,
                     height: Float = None,
                     midlevel: Float = None,
                     scale: Float = None,
@@ -2410,7 +2410,7 @@ Float.displacement(self,
 ### nd
 
 ``` python
-nd.distribute_points_in_grid.(cls,
+nd.distribute_points_in_grid(cls,
                     grid: Float = None,
                     density: Float = None,
                     seed: Integer = None,
@@ -2443,7 +2443,7 @@ Float.distribute_points_in_grid(self,
 ### nd
 
 ``` python
-nd.distribute_points_in_volume.(cls,
+nd.distribute_points_in_volume(cls,
                     volume: Volume = None,
                     mode: Literal['Random', 'Grid'] = None,
                     density: Float = None,
@@ -2470,7 +2470,7 @@ Volume.distribute_points(self,
 ### nd
 
 ``` python
-nd.distribute_points_on_faces.(cls,
+nd.distribute_points_on_faces(cls,
                     mesh: Mesh = None,
                     selection: Boolean = None,
                     distance_min: Float = None,
@@ -2530,7 +2530,7 @@ Mesh.faces.distribute_points_poisson(self,
 ### nd
 
 ``` python
-nd.domain_size.(cls,
+nd.domain_size(cls,
                     geometry: Geometry = None,
                     component: Literal['MESH', 'POINTCLOUD', 'CURVE', 'INSTANCES', 'GREASEPENCIL'] = 'MESH')
 ```
@@ -2572,7 +2572,7 @@ GreasePencil.domain_size(self)
 ### nd
 
 ``` python
-nd.dual_mesh.(cls, mesh: Mesh = None, keep_boundaries: Boolean = None)
+nd.dual_mesh(cls, mesh: Mesh = None, keep_boundaries: Boolean = None)
 ```
 
 ### class Mesh
@@ -2588,7 +2588,7 @@ Mesh.dual(self, keep_boundaries: Boolean = None)
 ### nd
 
 ``` python
-nd.duplicate_elements.(cls,
+nd.duplicate_elements(cls,
                     geometry: Geometry = None,
                     selection: Boolean = None,
                     amount: Integer = None,
@@ -2628,7 +2628,7 @@ GreasePencil.layers.duplicate(self, amount: Integer = None)
 ### class Instance
 
 ```python
-Instance.duplicate(self, amount: Integer = None)
+Instances.insts.duplicate(self, amount: Integer = None)
 ```
 
 ## Edge Angle
@@ -2638,7 +2638,7 @@ Instance.duplicate(self, amount: Integer = None)
 ### nd
 
 ``` python
-nd.edge_angle.(cls)
+nd.edge_angle(cls)
 ```
 
 ### class Mesh
@@ -2676,7 +2676,7 @@ prop = Mesh.edges.signed_angle
 ### nd
 
 ``` python
-nd.edge_neighbors.(self)
+nd.edge_neighbors(self)
 ```
 
 ### class Mesh
@@ -2698,7 +2698,7 @@ prop = Mesh.edges.face_count
 ### nd
 
 ``` python
-nd.edge_paths_to_curves.(cls,
+nd.edge_paths_to_curves(cls,
                     mesh: Mesh = None,
                     start_vertices: Boolean = None,
                     next_vertex_index: Integer = None)
@@ -2723,7 +2723,7 @@ Mesh.edges.paths_to_curves(self, start_vertices: Boolean = None, next_vertex_ind
 ### nd
 
 ``` python
-nd.edge_paths_to_selection.(cls, start_vertices: Boolean = None, next_vertex_index: Integer = None)
+nd.edge_paths_to_selection(cls, start_vertices: Boolean = None, next_vertex_index: Integer = None)
 ```
 
 ### class Mesh
@@ -2745,7 +2745,7 @@ Mesh.edges.paths_to_selection(cls, start_vertices: Boolean = None, next_vertex_i
 ### nd
 
 ``` python
-nd.edge_vertices.(cls)
+nd.edge_vertices(cls)
 ```
 
 ### class Mesh
@@ -2783,7 +2783,7 @@ prop = Mesh.edges.position_2
 ### nd
 
 ``` python
-nd.edges_of_corner.(cls, corner_index: Integer = None)
+nd.edges_of_corner(cls, corner_index: Integer = None)
 ```
 
 ### class Mesh
@@ -2813,7 +2813,7 @@ Mesh.corners.previous_edge_index(cls, corner_index: Integer = None)
 ### nd
 
 ``` python
-nd.edges_of_vertex.(cls,
+nd.edges_of_vertex(cls,
                     vertex_index: Integer = None,
                     weights: Float = None,
                     sort_index: Integer = None)
@@ -2858,7 +2858,7 @@ Mesh.points.edges_total(cls,
 ### nd
 
 ``` python
-nd.edges_to_face_groups.(cls, boundary_edges: Boolean = None)
+nd.edges_to_face_groups(cls, boundary_edges: Boolean = None)
 ```
 
 ### class Mesh
@@ -2880,7 +2880,7 @@ Mesh.edges.to_face_groups(cls, boundary_edges: Boolean = None)
 ### snd
 
 ``` python
-nd.emission.(cls, color: Color = None, strength: Float = None, weight: Float = None)
+nd.emission(cls, color: Color = None, strength: Float = None, weight: Float = None)
 ```
 
 ### class Shader
@@ -2896,7 +2896,7 @@ Shader.Emission(cls, color: Color = None, strength: Float = None)
 ### nd
 
 ``` python
-nd.enable_output.(cls,
+nd.enable_output(cls,
                     enable: Boolean = None,
                     value: Float = None,
                     data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT'] = 'FLOAT')
@@ -3011,7 +3011,7 @@ Font.enable_output(self, enable: Boolean = None)
 ### nd
 
 ``` python
-nd.endpoint_selection.(cls, start_size: Integer = None, end_size: Integer = None)
+nd.endpoint_selection(cls, start_size: Integer = None, end_size: Integer = None)
 ```
 
 ### class Curve
@@ -3027,7 +3027,7 @@ Curve.endpoint_selection(cls, start_size: Integer = None, end_size: Integer = No
 ### snd
 
 ``` python
-nd.environment_texture.(cls,
+nd.environment_texture(cls,
                     vector: Vector = None,
                     image = None,
                     interpolation: Literal['Linear', 'Closest', 'Cubic', 'Smart'] = 'Linear',
@@ -3050,7 +3050,7 @@ Vector.environment_texture(self,
 ### nd
 
 ``` python
-nd.euler_to_rotation.(cls, euler: Vector = None)
+nd.euler_to_rotation(cls, euler: Vector = None)
 ```
 
 ### class Rotation
@@ -3072,7 +3072,7 @@ Vector.to_rotation(self)
 ### nd
 
 ``` python
-nd.evaluate_closure.(cls,
+nd.evaluate_closure(cls,
                     closure: Closure = None,
                     active_input_index = 0,
                     active_output_index = 0,
@@ -3082,7 +3082,7 @@ nd.evaluate_closure.(cls,
 ### snd
 
 ``` python
-nd.evaluate_closure.(cls,
+nd.evaluate_closure(cls,
                     closure: Closure = None,
                     active_input_index = 0,
                     active_output_index = 0,
@@ -3096,7 +3096,7 @@ nd.evaluate_closure.(cls,
 ### nd
 
 ``` python
-nd.evaluate_at_index.(cls,
+nd.evaluate_at_index(cls,
                     value: Float = None,
                     index: Integer = None,
                     data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'QUATERNION', 'FLOAT4X4'] = 'FLOAT',
@@ -3146,7 +3146,7 @@ Spline.splines.evaluate_at_index(cls,
 ### class Instance
 
 ```python
-Instance.evaluate_at_index(cls,
+Instances.insts.evaluate_at_index(cls,
                     value: Float | Integer | Boolean | Vector | Color | Rotation | Matrix = None,
                     index: Integer = None)
 ```
@@ -3166,7 +3166,7 @@ GreasePencil.layers.evaluate_at_index(cls,
 ### nd
 
 ``` python
-nd.evaluate_on_domain.(cls,
+nd.evaluate_on_domain(cls,
                     value: Float = None,
                     data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'QUATERNION', 'FLOAT4X4'] = 'FLOAT',
                     domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'] = 'POINT')
@@ -3210,7 +3210,7 @@ Spline.splines.evaluate_on_domain(cls,
 ### class Instance
 
 ```python
-Instance.evaluate_on_domain(cls,
+Instances.insts.evaluate_on_domain(cls,
                     value: Float | Integer | Boolean | Vector | Color | Rotation | Matrix = None)
 ```
 
@@ -3228,7 +3228,7 @@ GreasePencil.layers.evaluate_on_domain(cls,
 ### nd
 
 ``` python
-nd.extrude_mesh.(cls,
+nd.extrude_mesh(cls,
                     mesh: Mesh = None,
                     selection: Boolean = None,
                     offset: Vector = None,
@@ -3290,7 +3290,7 @@ Mesh.faces.extrude(self,
 ### nd
 
 ``` python
-nd.face_area.(self)
+nd.face_area(self)
 ```
 
 ### class Mesh
@@ -3312,7 +3312,7 @@ prop = Mesh.faces.area
 ### nd
 
 ``` python
-nd.face_group_boundaries.(cls, face_group_id: Integer = None)
+nd.face_group_boundaries(cls, face_group_id: Integer = None)
 ```
 
 ### class Mesh
@@ -3328,7 +3328,7 @@ Mesh.face_group_boundaries(cls, face_group_id: Integer = None)
 ### nd
 
 ``` python
-nd.face_neighbors.(cls)
+nd.face_neighbors(cls)
 ```
 
 ### class Mesh
@@ -3358,7 +3358,7 @@ prop = Mesh.faces.neighbors_face_count
 ### nd
 
 ``` python
-nd.face_set.(cls)
+nd.face_set(cls)
 ```
 
 ## Face of Corner
@@ -3368,7 +3368,7 @@ nd.face_set.(cls)
 ### nd
 
 ``` python
-nd.face_of_corner.(cls, corner_index: Integer = None)
+nd.face_of_corner(cls, corner_index: Integer = None)
 ```
 
 ### class Mesh
@@ -3398,7 +3398,7 @@ Mesh.corners.index_in_face(cls, corner_index: Integer = None)
 ### nd
 
 ``` python
-nd.field_average.(cls,
+nd.field_average(cls,
                     value: Float = None,
                     group_id: Integer = None,
                     data_type: Literal['FLOAT', 'FLOAT_VECTOR'] = 'FLOAT',
@@ -3453,7 +3453,7 @@ Spline.splines.field_average(cls,
 ### class Instance
 
 ```python
-Instance.field_average(cls,
+Instances.insts.field_average(cls,
                     value: Float | Vector = None,
                     group_id: Integer = None,
                     domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'] = 'POINT')
@@ -3475,7 +3475,7 @@ GreasePencil.layers.field_average(cls,
 ### nd
 
 ``` python
-nd.field_min_max.(cls,
+nd.field_min_max(cls,
                     value: Float = None,
                     group_id: Integer = None,
                     data_type: Literal['FLOAT', 'INT', 'FLOAT_VECTOR'] = 'FLOAT',
@@ -3530,7 +3530,7 @@ Spline.splines.field_min_max(cls,
 ### class Instance
 
 ```python
-Instance.field_min_max(cls,
+Instances.insts.field_min_max(cls,
                     value: Float | Integer | Vector = None,
                     group_id: Integer = None,
                     domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'] = 'POINT')
@@ -3552,7 +3552,7 @@ GreasePencil.layers.field_min_max(cls,
 ### nd
 
 ``` python
-nd.field_variance.(cls,
+nd.field_variance(cls,
                     value: Float = None,
                     group_id: Integer = None,
                     data_type: Literal['FLOAT', 'FLOAT_VECTOR'] = 'FLOAT',
@@ -3607,7 +3607,7 @@ Spline.splines.field_variance(cls,
 ### class Instance
 
 ```python
-Instance.field_variance(cls,
+Instances.insts.field_variance(cls,
                     value: Float | Vector = None,
                     group_id: Integer = None,
                     domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'] = 'POINT')
@@ -3629,7 +3629,7 @@ GreasePencil.layers.field_variance(cls,
 ### nd
 
 ``` python
-nd.field_to_grid.(cls,
+nd.field_to_grid(cls,
                     named_sockets: dict = {},
                     topology: Float = None,
                     data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR'] = 'FLOAT',
@@ -3667,7 +3667,7 @@ Vector.field_to_grid(self, named_sockets: dict = {}, **sockets)
 ### nd
 
 ``` python
-nd.field_to_list.(cls, named_sockets: dict = {}, count: Integer = None, **sockets)
+nd.field_to_list(cls, named_sockets: dict = {}, count: Integer = None, **sockets)
 ```
 
 ## Fill Curve
@@ -3677,7 +3677,7 @@ nd.field_to_list.(cls, named_sockets: dict = {}, count: Integer = None, **socket
 ### nd
 
 ``` python
-nd.fill_curve.(cls,
+nd.fill_curve(cls,
                     curve: Curve = None,
                     group_id: Integer = None,
                     mode: Literal['Triangles', 'N-gons'] = None,
@@ -3700,7 +3700,7 @@ Curve.fill(self,
 ### nd
 
 ``` python
-nd.fillet_curve.(cls,
+nd.fillet_curve(cls,
                     curve: Curve = None,
                     radius: Float = None,
                     limit_radius: Boolean = None,
@@ -3725,7 +3725,7 @@ Curve.fillet(self,
 ### nd
 
 ``` python
-nd.find_in_string.(cls, string: String = None, search: String = None)
+nd.find_in_string(cls, string: String = None, search: String = None)
 ```
 
 ### class String
@@ -3745,7 +3745,7 @@ String.find(self, search: String = None)
 ### nd
 
 ``` python
-nd.flip_faces.(cls, mesh: Mesh = None, selection: Boolean = None)
+nd.flip_faces(cls, mesh: Mesh = None, selection: Boolean = None)
 ```
 
 ### class Mesh
@@ -3761,13 +3761,13 @@ Mesh.flip_faces(self)
 ### nd
 
 ``` python
-nd.float_curve.(cls, value: Float = None, factor: Float = None)
+nd.float_curve(cls, value: Float = None, factor: Float = None)
 ```
 
 ### snd
 
 ``` python
-nd.float_curve.(cls, value: Float = None, factor: Float = None)
+nd.float_curve(cls, value: Float = None, factor: Float = None)
 ```
 
 ## Float to Integer
@@ -3777,7 +3777,7 @@ nd.float_curve.(cls, value: Float = None, factor: Float = None)
 ### nd
 
 ``` python
-nd.float_to_integer.(cls,
+nd.float_to_integer(cls,
                     float: Float = None,
                     rounding_mode: Literal['ROUND', 'FLOOR', 'CEILING', 'TRUNCATE'] = 'ROUND')
 ```
@@ -3808,7 +3808,7 @@ Float.to_integer(self,
 ### nd
 
 ``` python
-nd.format_string.(cls, named_sockets: dict = {}, format: String = None, **sockets)
+nd.format_string(cls, named_sockets: dict = {}, format: String = None, **sockets)
 ```
 
 ### class String
@@ -3834,7 +3834,7 @@ String.Format(cls, named_sockets: dict = {}, format: String = None, **sockets)
 ### snd
 
 ``` python
-nd.fresnel.(cls, ior: Float = None, normal: Vector = None)
+nd.fresnel(cls, ior: Float = None, normal: Vector = None)
 ```
 
 ### class Float
@@ -3850,7 +3850,7 @@ Float.fresnel(self, normal: Vector = None)
 ### nd
 
 ``` python
-nd.gabor_texture.(cls,
+nd.gabor_texture(cls,
                     vector: Vector = None,
                     scale: Float = None,
                     frequency: Float = None,
@@ -3863,7 +3863,7 @@ nd.gabor_texture.(cls,
 ### snd
 
 ``` python
-nd.gabor_texture.(cls,
+nd.gabor_texture(cls,
                     vector: Vector = None,
                     scale: Float = None,
                     frequency: Float = None,
@@ -3904,13 +3904,13 @@ Texture.Gabor(cls,
 ### nd
 
 ``` python
-nd.gamma.(cls, color: Color = None, gamma: Float = None)
+nd.gamma(cls, color: Color = None, gamma: Float = None)
 ```
 
 ### snd
 
 ``` python
-nd.gamma.(cls, color: Color = None, gamma: Float = None)
+nd.gamma(cls, color: Color = None, gamma: Float = None)
 ```
 
 ### class Color
@@ -3926,7 +3926,7 @@ Color.gamma(self, gamma: Float = None)
 ### snd
 
 ``` python
-nd.geometry.(cls)
+nd.geometry(cls)
 ```
 
 ## Geometry Proximity
@@ -3936,7 +3936,7 @@ nd.geometry.(cls)
 ### nd
 
 ``` python
-nd.geometry_proximity.(cls,
+nd.geometry_proximity(cls,
                     geometry: Geometry = None,
                     group_id: Integer = None,
                     sample_position: Vector = None,
@@ -3982,7 +3982,7 @@ Geometry.proximity_faces(self,
 ### nd
 
 ``` python
-nd.geometry_to_instance.(cls, *geometry: Geometry)
+nd.geometry_to_instance(cls, *geometry: Geometry)
 ```
 
 ### class Geometry
@@ -4004,7 +4004,7 @@ Instances.FromGeometry(cls, *geometry: Geometry)
 ### nd
 
 ``` python
-nd.get_bundle_item.(cls,
+nd.get_bundle_item(cls,
                     bundle: Bundle = None,
                     path: String = None,
                     remove: Boolean = None,
@@ -4029,7 +4029,7 @@ Bundle.get_item(self,
 ### nd
 
 ``` python
-nd.get_geometry_bundle.(cls, geometry: Geometry = None, remove: Boolean = None)
+nd.get_geometry_bundle(cls, geometry: Geometry = None, remove: Boolean = None)
 ```
 
 ## Get List Item
@@ -4039,7 +4039,7 @@ nd.get_geometry_bundle.(cls, geometry: Geometry = None, remove: Boolean = None)
 ### nd
 
 ``` python
-nd.get_list_item.(cls,
+nd.get_list_item(cls,
                     list: Float = None,
                     index: Integer = None,
                     socket_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT'] = 'FLOAT',
@@ -4053,7 +4053,7 @@ nd.get_list_item.(cls,
 ### nd
 
 ``` python
-nd.get_named_grid.(cls,
+nd.get_named_grid(cls,
                     volume: Volume = None,
                     name: String = None,
                     remove: Boolean = None,
@@ -4076,7 +4076,7 @@ Volume.get_named_grid(self,
 ### snd
 
 ``` python
-nd.glass_bsdf.(cls,
+nd.glass_bsdf(cls,
                     color: Color = None,
                     roughness: Float = None,
                     ior: Float = None,
@@ -4107,7 +4107,7 @@ Shader.Glass(cls,
 ### snd
 
 ``` python
-nd.glossy_bsdf.(cls,
+nd.glossy_bsdf(cls,
                     color: Color = None,
                     roughness: Float = None,
                     anisotropy: Float = None,
@@ -4138,7 +4138,7 @@ Shader.Glossy(cls,
 ### nd
 
 ``` python
-nd.gradient_texture.(cls,
+nd.gradient_texture(cls,
                     vector: Vector = None,
                     gradient_type: Literal['LINEAR', 'QUADRATIC', 'EASING', 'DIAGONAL', 'SPHERICAL', 'QUADRATIC_SPHERE', 'RADIAL'] = 'LINEAR')
 ```
@@ -4146,7 +4146,7 @@ nd.gradient_texture.(cls,
 ### snd
 
 ``` python
-nd.gradient_texture.(cls,
+nd.gradient_texture(cls,
                     vector: Vector = None,
                     gradient_type: Literal['LINEAR', 'QUADRATIC', 'EASING', 'DIAGONAL', 'SPHERICAL', 'QUADRATIC_SPHERE', 'RADIAL'] = 'LINEAR')
 ```
@@ -4174,7 +4174,7 @@ Texture.Gradient(cls,
 ### nd
 
 ``` python
-nd.grease_pencil_to_curves.(cls,
+nd.grease_pencil_to_curves(cls,
                     grease_pencil: GreasePencil = None,
                     selection: Boolean = None,
                     layers_as_instances: Boolean = None)
@@ -4193,7 +4193,7 @@ GreasePencil.to_curves(self, layers_as_instances: Boolean = None)
 ### nd
 
 ``` python
-nd.grid.(cls,
+nd.grid(cls,
                     size_x: Float = None,
                     size_y: Float = None,
                     vertices_x: Integer = None,
@@ -4217,7 +4217,7 @@ Mesh.Grid(cls,
 ### nd
 
 ``` python
-nd.grid_curl.(cls, grid: Vector = None)
+nd.grid_curl(cls, grid: Vector = None)
 ```
 
 ### class Vector
@@ -4233,7 +4233,7 @@ Vector.grid_curl(self)
 ### nd
 
 ``` python
-nd.grid_dilate_erode.(cls,
+nd.grid_dilate_erode(cls,
                     grid: Float = None,
                     connectivity: Literal['Face', 'Edge', 'Vertex'] = None,
                     tiles: Literal['Ignore', 'Expand', 'Preserve'] = None,
@@ -4284,7 +4284,7 @@ Vector.grid_dilate_erode(self,
 ### nd
 
 ``` python
-nd.grid_divergence.(cls, grid: Vector = None)
+nd.grid_divergence(cls, grid: Vector = None)
 ```
 
 ### class Vector
@@ -4300,7 +4300,7 @@ Vector.grid_divergence(self)
 ### nd
 
 ``` python
-nd.grid_gradient.(cls, grid: Float = None)
+nd.grid_gradient(cls, grid: Float = None)
 ```
 
 ### class Float
@@ -4316,7 +4316,7 @@ Float.grid_gradient(self)
 ### nd
 
 ``` python
-nd.grid_info.(cls,
+nd.grid_info(cls,
                     grid: Float = None,
                     data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR'] = 'FLOAT')
 ```
@@ -4352,7 +4352,7 @@ Vector.grid_info(self)
 ### nd
 
 ``` python
-nd.grid_laplacian.(cls, grid: Float = None)
+nd.grid_laplacian(cls, grid: Float = None)
 ```
 
 ### class Float
@@ -4368,7 +4368,7 @@ Float.grid_laplacian(self)
 ### nd
 
 ``` python
-nd.grid_mean.(cls,
+nd.grid_mean(cls,
                     grid: Float = None,
                     width: Integer = None,
                     iterations: Integer = None,
@@ -4400,7 +4400,7 @@ Vector.grid_mean(self, width: Integer = None, iterations: Integer = None)
 ### nd
 
 ``` python
-nd.grid_median.(cls,
+nd.grid_median(cls,
                     grid: Float = None,
                     width: Integer = None,
                     iterations: Integer = None,
@@ -4432,7 +4432,7 @@ Vector.grid_median(self, width: Integer = None, iterations: Integer = None)
 ### nd
 
 ``` python
-nd.grid_to_mesh.(cls, grid: Float = None, threshold: Float = None, adaptivity: Float = None)
+nd.grid_to_mesh(cls, grid: Float = None, threshold: Float = None, adaptivity: Float = None)
 ```
 
 ### class Float
@@ -4448,7 +4448,7 @@ Float.grid_to_mesh(self, threshold: Float = None, adaptivity: Float = None)
 ### nd
 
 ``` python
-nd.grid_to_points.(cls,
+nd.grid_to_points(cls,
                     grid: Float = None,
                     data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR'] = 'FLOAT')
 ```
@@ -4490,13 +4490,13 @@ Vector.grid_to_points(self)
 ### nd
 
 ``` python
-nd.group_input.(self)
+nd.group_input(self)
 ```
 
 ### snd
 
 ``` python
-nd.group_input.(self)
+nd.group_input(self)
 ```
 
 ## Group Output
@@ -4506,13 +4506,13 @@ nd.group_input.(self)
 ### nd
 
 ``` python
-nd.group_output.(cls, is_active_output = True)
+nd.group_output(cls, is_active_output = True)
 ```
 
 ### snd
 
 ``` python
-nd.group_output.(cls, is_active_output = True)
+nd.group_output(cls, is_active_output = True)
 ```
 
 ## Hair BSDF
@@ -4522,7 +4522,7 @@ nd.group_output.(cls, is_active_output = True)
 ### snd
 
 ``` python
-nd.hair_bsdf.(cls,
+nd.hair_bsdf(cls,
                     color: Color = None,
                     offset: Float = None,
                     roughnessu: Float = None,
@@ -4551,7 +4551,7 @@ Shader.Hair(cls,
 ### nd
 
 ``` python
-nd.handle_type_selection.(cls,
+nd.handle_type_selection(cls,
                     handle_type: Literal['FREE', 'AUTO', 'VECTOR', 'ALIGN'] = 'AUTO',
                     mode = {'RIGHT', 'LEFT'})
 ```
@@ -4571,7 +4571,7 @@ Curve.handle_type_selection(cls,
 ### nd
 
 ``` python
-nd.hash_value.(cls,
+nd.hash_value(cls,
                     value: Integer = None,
                     seed: Integer = None,
                     data_type: Literal['FLOAT', 'INT', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING'] = 'INT')
@@ -4626,7 +4626,7 @@ String.hash_value(self, seed: Integer = None)
 ### snd
 
 ``` python
-nd.holdout.(cls, weight: Float = None)
+nd.holdout(cls, weight: Float = None)
 ```
 
 ### class Shader
@@ -4642,7 +4642,7 @@ Shader.Holdout(cls)
 ### snd
 
 ``` python
-nd.hue_saturation_value.(cls,
+nd.hue_saturation_value(cls,
                     hue: Float = None,
                     saturation: Float = None,
                     value: Float = None,
@@ -4677,7 +4677,7 @@ Color.hue_saturation_value(self,
 ### nd
 
 ``` python
-nd.id.(self)
+nd.id(self)
 ```
 
 ### class Geometry
@@ -4693,7 +4693,7 @@ prop = Geometry.id
 ### snd
 
 ``` python
-nd.ies_texture.(cls,
+nd.ies_texture(cls,
                     vector: Vector = None,
                     strength: Float = None,
                     filepath = '',
@@ -4726,7 +4726,7 @@ Vector.ies_texture(self,
 ### nd
 
 ``` python
-nd.ico_sphere.(cls, radius: Float = None, subdivisions: Integer = None)
+nd.ico_sphere(cls, radius: Float = None, subdivisions: Integer = None)
 ```
 
 ### class Mesh
@@ -4742,7 +4742,7 @@ Mesh.IcoSphere(cls, radius: Float = None, subdivisions: Integer = None)
 ### nd
 
 ``` python
-nd.image.(cls, image = None)
+nd.image(cls, image = None)
 ```
 
 ## Image Info
@@ -4752,7 +4752,7 @@ nd.image.(cls, image = None)
 ### nd
 
 ``` python
-nd.image_info.(cls, image: Image = None, frame: Integer = None)
+nd.image_info(cls, image: Image = None, frame: Integer = None)
 ```
 
 ### class Image
@@ -4788,7 +4788,7 @@ Image.fps(self, frame: Integer = None)
 ### snd
 
 ``` python
-nd.image_texture.(cls,
+nd.image_texture(cls,
                     vector: Vector = None,
                     extension: Literal['REPEAT', 'EXTEND', 'CLIP', 'MIRROR'] = 'REPEAT',
                     image = None,
@@ -4815,7 +4815,7 @@ Vector.image_texture(self,
 ### nd
 
 ``` python
-nd.import_csv.(cls, path: String = None, delimiter: String = None)
+nd.import_csv(cls, path: String = None, delimiter: String = None)
 ```
 
 ### class Cloud
@@ -4831,7 +4831,7 @@ Cloud.ImportCSV(cls, path: String = None, delimiter: String = None)
 ### nd
 
 ``` python
-nd.import_obj.(cls, path: String = None)
+nd.import_obj(cls, path: String = None)
 ```
 
 ### class Instances
@@ -4847,7 +4847,7 @@ Instances.ImportOBJ(cls, path: String = None)
 ### nd
 
 ``` python
-nd.import_ply.(cls, path: String = None)
+nd.import_ply(cls, path: String = None)
 ```
 
 ### class Mesh
@@ -4863,7 +4863,7 @@ Mesh.ImportPLY(cls, path: String = None)
 ### nd
 
 ``` python
-nd.import_stl.(cls, path: String = None)
+nd.import_stl(cls, path: String = None)
 ```
 
 ### class Mesh
@@ -4879,7 +4879,7 @@ Mesh.ImportSTL(cls, path: String = None)
 ### nd
 
 ``` python
-nd.import_text.(cls, path: String = None)
+nd.import_text(cls, path: String = None)
 ```
 
 ### class String
@@ -4895,7 +4895,7 @@ String.ImportText(cls, path: String = None)
 ### nd
 
 ``` python
-nd.import_vdb.(cls, path: String = None)
+nd.import_vdb(cls, path: String = None)
 ```
 
 ### class Volume
@@ -4911,7 +4911,7 @@ Volume.ImportVDB(cls, path: String = None)
 ### nd
 
 ``` python
-nd.index.(self)
+nd.index(self)
 ```
 
 ### class Geometry
@@ -4941,7 +4941,7 @@ Socket.index_switch(*values, index=0)
 ### nd
 
 ``` python
-nd.index_of_nearest.(cls, position: Vector = None, group_id: Integer = None)
+nd.index_of_nearest(cls, position: Vector = None, group_id: Integer = None)
 ```
 
 ### class Geometry
@@ -4957,7 +4957,7 @@ Geometry.index_of_nearest(cls, position: Vector = None, group_id: Integer = None
 ### nd
 
 ``` python
-nd.instance_bounds.(cls, use_radius: Boolean = None)
+nd.instance_bounds(cls, use_radius: Boolean = None)
 ```
 
 ## Instance Rotation
@@ -4967,7 +4967,7 @@ nd.instance_bounds.(cls, use_radius: Boolean = None)
 ### nd
 
 ``` python
-nd.instance_rotation.(self)
+nd.instance_rotation(self)
 ```
 
 ### class Instances
@@ -4983,7 +4983,7 @@ prop = Instances.rotation
 ### nd
 
 ``` python
-nd.instance_scale.(self)
+nd.instance_scale(self)
 ```
 
 ### class Instances
@@ -4999,7 +4999,7 @@ prop = Instances.instance_scale
 ### nd
 
 ``` python
-nd.instance_transform.(self)
+nd.instance_transform(self)
 ```
 
 ### class Instances
@@ -5015,7 +5015,7 @@ prop = Instances.transform
 ### nd
 
 ``` python
-nd.instance_on_points.(cls,
+nd.instance_on_points(cls,
                     points: Cloud = None,
                     selection: Boolean = None,
                     instance: Instances = None,
@@ -5065,7 +5065,7 @@ Mesh.points.instance_on(self,
 ### nd
 
 ``` python
-nd.instances_to_points.(cls,
+nd.instances_to_points(cls,
                     instances: Instances = None,
                     selection: Boolean = None,
                     position: Vector = None,
@@ -5085,7 +5085,7 @@ Instances.to_points(self, position: Vector = None, radius: Float = None)
 ### nd
 
 ``` python
-nd.integer.(cls, integer = 0)
+nd.integer(cls, integer = 0)
 ```
 
 ## Integer Math
@@ -5095,7 +5095,7 @@ nd.integer.(cls, integer = 0)
 ### nd
 
 ``` python
-nd.integer_math.(cls,
+nd.integer_math(cls,
                     value: Integer = None,
                     value_1: Integer = None,
                     value_2: Integer = None,
@@ -5257,7 +5257,7 @@ gnmath.lcm(value: Integer = None, value_1: Integer = None)
 ### nd
 
 ``` python
-nd.interpolate_curves.(cls,
+nd.interpolate_curves(cls,
                     guide_curves: Curve = None,
                     guide_up: Vector = None,
                     guide_group_id: Integer = None,
@@ -5309,7 +5309,7 @@ Cloud.interpolate_curves(self,
 ### snd
 
 ``` python
-nd.invert_color.(cls, color: Color = None, factor: Float = None)
+nd.invert_color(cls, color: Color = None, factor: Float = None)
 ```
 
 ### class Color
@@ -5325,7 +5325,7 @@ Color.invert_color(self, factor: Float = None)
 ### nd
 
 ``` python
-nd.invert_matrix.(cls, matrix: Matrix = None)
+nd.invert_matrix(cls, matrix: Matrix = None)
 ```
 
 ### class Matrix
@@ -5341,7 +5341,7 @@ Matrix.invert(self)
 ### nd
 
 ``` python
-nd.invert_rotation.(cls, rotation: Rotation = None)
+nd.invert_rotation(cls, rotation: Rotation = None)
 ```
 
 ### class Rotation
@@ -5357,7 +5357,7 @@ Rotation.invert(self)
 ### nd
 
 ``` python
-nd.is_edge_smooth.(self)
+nd.is_edge_smooth(self)
 ```
 
 ### class Edge
@@ -5377,7 +5377,7 @@ prop = Mesh.edges.smooth
 ### nd
 
 ``` python
-nd.is_face_planar.(cls, threshold: Float = None)
+nd.is_face_planar(cls, threshold: Float = None)
 ```
 
 ### class Mesh
@@ -5399,7 +5399,7 @@ Mesh.faces.is_planar(cls, threshold: Float = None)
 ### nd
 
 ``` python
-nd.is_face_smooth.(self)
+nd.is_face_smooth(self)
 ```
 
 ### class Face
@@ -5419,7 +5419,7 @@ prop = Mesh.faces.smooth
 ### nd
 
 ``` python
-nd.is_spline_cyclic.(self)
+nd.is_spline_cyclic(self)
 ```
 
 ### class Curve
@@ -5441,7 +5441,7 @@ prop = Spline.splines.is_cyclic
 ### nd
 
 ``` python
-nd.is_viewport.(self)
+nd.is_viewport(self)
 ```
 
 ### class Boolean
@@ -5457,13 +5457,13 @@ prop = Boolean.is_viewport
 ### nd
 
 ``` python
-nd.join_bundle.(cls, *bundle: Bundle)
+nd.join_bundle(cls, *bundle: Bundle)
 ```
 
 ### snd
 
 ``` python
-nd.join_bundle.(cls, *bundle: Bundle)
+nd.join_bundle(cls, *bundle: Bundle)
 ```
 
 ### class Bundle
@@ -5483,7 +5483,7 @@ Bundle.join_bundle(self, *bundle: Bundle)
 ### nd
 
 ``` python
-nd.join_geometry.(cls, *geometry: Geometry)
+nd.join_geometry(cls, *geometry: Geometry)
 ```
 
 ### class Geometry
@@ -5503,7 +5503,7 @@ Geometry.Join(cls, *geometry: Geometry)
 ### nd
 
 ``` python
-nd.join_strings.(cls, *strings: String, delimiter: String = None)
+nd.join_strings(cls, *strings: String, delimiter: String = None)
 ```
 
 ### class String
@@ -5523,7 +5523,7 @@ String.Join(cls, *strings: String, delimiter: String = None)
 ### snd
 
 ``` python
-nd.layer_weight.(cls, blend: Float = None, normal: Vector = None)
+nd.layer_weight(cls, blend: Float = None, normal: Vector = None)
 ```
 
 ### class Float
@@ -5539,7 +5539,7 @@ Float.layer_weight(self, normal: Vector = None)
 ### snd
 
 ``` python
-nd.light_falloff.(cls, strength: Float = None, smooth: Float = None)
+nd.light_falloff(cls, strength: Float = None, smooth: Float = None)
 ```
 
 ### class Float
@@ -5555,7 +5555,7 @@ Float.light_falloff(self, smooth: Float = None)
 ### snd
 
 ``` python
-nd.light_output.(cls,
+nd.light_output(cls,
                     surface: Shader = None,
                     is_active_output = True,
                     target: Literal['ALL', 'EEVEE', 'CYCLES'] = 'ALL')
@@ -5576,7 +5576,7 @@ Shader.light_output(self,
 ### snd
 
 ``` python
-nd.light_path.(cls)
+nd.light_path(cls)
 ```
 
 ## Line Style Output
@@ -5586,7 +5586,7 @@ nd.light_path.(cls)
 ### snd
 
 ``` python
-nd.line_style_output.(cls,
+nd.line_style_output(cls,
                     color: Color = None,
                     color_fac: Float = None,
                     alpha: Float = None,
@@ -5619,7 +5619,7 @@ Color.line_style_output(self,
 ### nd
 
 ``` python
-nd.linear_gizmo.(cls,
+nd.linear_gizmo(cls,
                     *value: Float,
                     position: Vector = None,
                     direction: Vector = None,
@@ -5645,7 +5645,7 @@ Float.linear_gizmo(self,
 ### nd
 
 ``` python
-nd.list_length.(cls,
+nd.list_length(cls,
                     list: Float = None,
                     data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT'] = 'FLOAT')
 ```
@@ -5657,7 +5657,7 @@ nd.list_length.(cls,
 ### nd
 
 ``` python
-nd.magic_texture.(cls,
+nd.magic_texture(cls,
                     vector: Vector = None,
                     scale: Float = None,
                     distortion: Float = None,
@@ -5667,7 +5667,7 @@ nd.magic_texture.(cls,
 ### snd
 
 ``` python
-nd.magic_texture.(cls,
+nd.magic_texture(cls,
                     vector: Vector = None,
                     scale: Float = None,
                     distortion: Float = None,
@@ -5701,7 +5701,7 @@ Texture.Magic(cls,
 ### nd
 
 ``` python
-nd.map_range.(cls,
+nd.map_range(cls,
                     value: Float = None,
                     from_min: Float = None,
                     from_max: Float = None,
@@ -5722,7 +5722,7 @@ nd.map_range.(cls,
 ### snd
 
 ``` python
-nd.map_range.(cls,
+nd.map_range(cls,
                     value: Float = None,
                     from_min: Float = None,
                     from_max: Float = None,
@@ -5808,7 +5808,7 @@ Vector.map_range(self,
 ### snd
 
 ``` python
-nd.mapping.(cls,
+nd.mapping(cls,
                     vector: Vector = None,
                     location: Vector = None,
                     rotation: Vector = None,
@@ -5833,7 +5833,7 @@ Vector.mapping(self,
 ### nd
 
 ``` python
-nd.match_string.(cls,
+nd.match_string(cls,
                     string: String = None,
                     operation: Literal['Starts With', 'Ends With', 'Contains'] = None,
                     key: String = None)
@@ -5854,7 +5854,7 @@ String.match_string(self,
 ### nd
 
 ``` python
-nd.material.(cls, material = None)
+nd.material(cls, material = None)
 ```
 
 ## Material Index
@@ -5864,7 +5864,7 @@ nd.material.(cls, material = None)
 ### nd
 
 ``` python
-nd.material_index.(self)
+nd.material_index(self)
 ```
 
 ### class Geometry
@@ -5892,7 +5892,7 @@ prop = Spline.splines.material_index
 ### snd
 
 ``` python
-nd.material_output.(cls,
+nd.material_output(cls,
                     surface: Shader = None,
                     volume: VolumeShader = None,
                     displacement: Vector = None,
@@ -5919,7 +5919,7 @@ Shader.material_output(self,
 ### nd
 
 ``` python
-nd.material_selection.(cls, material: Material = None)
+nd.material_selection(cls, material: Material = None)
 ```
 
 ### class Mesh
@@ -5941,7 +5941,7 @@ Curve.material_selection(cls, material: Material = None)
 ### nd
 
 ``` python
-nd.math.(cls,
+nd.math(cls,
                     value: Float = None,
                     value_1: Float = None,
                     value_2: Float = None,
@@ -5952,7 +5952,7 @@ nd.math.(cls,
 ### snd
 
 ``` python
-nd.math.(cls,
+nd.math(cls,
                     value: Float = None,
                     value_1: Float = None,
                     value_2: Float = None,
@@ -6311,7 +6311,7 @@ gnmath.degrees(radians: Float = None, use_clamp = False)
 ### nd
 
 ``` python
-nd.matrix_determinant.(cls, matrix: Matrix = None)
+nd.matrix_determinant(cls, matrix: Matrix = None)
 ```
 
 ### class Matrix
@@ -6327,7 +6327,7 @@ Matrix.determinant(self)
 ### nd
 
 ``` python
-nd.matrix_svd.(cls, matrix: Matrix = None)
+nd.matrix_svd(cls, matrix: Matrix = None)
 ```
 
 ### class Matrix
@@ -6357,7 +6357,7 @@ Socket.menu_switch(items={'A': None, 'B': None}, menu=0, name='Menu', tip=None, 
 ### nd
 
 ``` python
-nd.merge_layers.(cls,
+nd.merge_layers(cls,
                     grease_pencil: GreasePencil = None,
                     selection: Boolean = None,
                     group_id: Integer = None,
@@ -6385,7 +6385,7 @@ GreasePencil.merge_layers(self, mode: Literal['MERGE_BY_NAME', 'MERGE_BY_ID'] = 
 ### nd
 
 ``` python
-nd.merge_by_distance.(cls,
+nd.merge_by_distance(cls,
                     geometry: Geometry = None,
                     selection: Boolean = None,
                     mode: Literal['All', 'Connected'] = None,
@@ -6409,7 +6409,7 @@ Geometry.merge(self, mode: Literal['All', 'Connected'] = None, distance: Float =
 ### nd
 
 ``` python
-nd.mesh_boolean.(cls,
+nd.mesh_boolean(cls,
                     *mesh_2: Mesh,
                     mesh_1: Mesh = None,
                     self_intersection: Boolean = None,
@@ -6469,7 +6469,7 @@ Mesh.Difference(cls,
 ### nd
 
 ``` python
-nd.mesh_circle.(cls,
+nd.mesh_circle(cls,
                     vertices: Integer = None,
                     radius: Float = None,
                     fill_type: Literal['NONE', 'NGON', 'TRIANGLE_FAN'] = 'NONE')
@@ -6491,7 +6491,7 @@ Mesh.Circle(cls,
 ### nd
 
 ``` python
-nd.mesh_island.(cls)
+nd.mesh_island(cls)
 ```
 
 ### class Mesh
@@ -6515,7 +6515,7 @@ prop = Mesh.island_count
 ### nd
 
 ``` python
-nd.mesh_line.(cls,
+nd.mesh_line(cls,
                     count: Integer = None,
                     resolution: Float = None,
                     start_location: Vector = None,
@@ -6558,7 +6558,7 @@ Mesh.Line(cls,
 ### nd
 
 ``` python
-nd.mesh_to_curve.(cls,
+nd.mesh_to_curve(cls,
                     mesh: Mesh = None,
                     selection: Boolean = None,
                     mode: Literal['EDGES', 'FACES'] = 'EDGES')
@@ -6585,7 +6585,7 @@ Mesh.to_curve(self, mode: Literal['EDGES', 'FACES'] = 'EDGES')
 ### nd
 
 ``` python
-nd.mesh_to_density_grid.(cls,
+nd.mesh_to_density_grid(cls,
                     mesh: Mesh = None,
                     density: Float = None,
                     voxel_size: Float = None,
@@ -6608,7 +6608,7 @@ Mesh.to_density_grid(self,
 ### nd
 
 ``` python
-nd.mesh_to_points.(cls,
+nd.mesh_to_points(cls,
                     mesh: Mesh = None,
                     selection: Boolean = None,
                     position: Vector = None,
@@ -6672,7 +6672,7 @@ Mesh.corners.to_points(self, position: Vector = None, radius: Float = None)
 ### nd
 
 ``` python
-nd.mesh_to_sdf_grid.(cls, mesh: Mesh = None, voxel_size: Float = None, band_width: Integer = None)
+nd.mesh_to_sdf_grid(cls, mesh: Mesh = None, voxel_size: Float = None, band_width: Integer = None)
 ```
 
 ### class Mesh
@@ -6688,7 +6688,7 @@ Mesh.to_sdf_grid(self, voxel_size: Float = None, band_width: Integer = None)
 ### nd
 
 ``` python
-nd.mesh_to_volume.(cls,
+nd.mesh_to_volume(cls,
                     mesh: Mesh = None,
                     density: Float = None,
                     resolution_mode: Literal['Amount', 'Size'] = None,
@@ -6715,7 +6715,7 @@ Mesh.to_volume(self,
 ### snd
 
 ``` python
-nd.metallic_bsdf.(cls,
+nd.metallic_bsdf(cls,
                     base_color: Color = None,
                     edge_tint: Color = None,
                     ior: Vector = None,
@@ -6756,7 +6756,7 @@ Shader.Metallic(cls,
 ### nd
 
 ``` python
-nd.mix.(cls,
+nd.mix(cls,
                     a: Float = None,
                     b: Float = None,
                     a_1: Vector = None,
@@ -6776,7 +6776,7 @@ nd.mix.(cls,
 ### snd
 
 ``` python
-nd.mix.(cls,
+nd.mix(cls,
                     a: Float = None,
                     b: Float = None,
                     a_1: Vector = None,
@@ -6985,7 +6985,7 @@ Color.mix(self,
 ### snd
 
 ``` python
-nd.mix_shader.(cls, shader: Shader = None, shader_1: Shader = None, factor: Float = None)
+nd.mix_shader(cls, shader: Shader = None, shader_1: Shader = None, factor: Float = None)
 ```
 
 ### class Shader
@@ -7001,7 +7001,7 @@ Shader.mix(self, shader: Shader = None, factor: Float = None)
 ### nd
 
 ``` python
-nd.mouse_position.(cls)
+nd.mouse_position(cls)
 ```
 
 ## Multiply Matrices
@@ -7011,7 +7011,7 @@ nd.mouse_position.(cls)
 ### nd
 
 ``` python
-nd.multiply_matrices.(cls, matrix: Matrix = None, matrix_1: Matrix = None)
+nd.multiply_matrices(cls, matrix: Matrix = None, matrix_1: Matrix = None)
 ```
 
 ### class Matrix
@@ -7027,7 +7027,7 @@ Matrix.multiply(self, matrix: Matrix = None)
 ### nd
 
 ``` python
-nd.named_attribute.(cls,
+nd.named_attribute(cls,
                     name: String = None,
                     data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'QUATERNION', 'FLOAT4X4'] = 'FLOAT')
 ```
@@ -7109,7 +7109,7 @@ Matrix.NamedAttribute(cls, name: String = None)
 ### nd
 
 ``` python
-nd.named_layer_selection.(cls, name: String = None)
+nd.named_layer_selection(cls, name: String = None)
 ```
 
 ### class GreasePencil
@@ -7131,7 +7131,7 @@ GreasePencil.layers.named_selection(cls, name: String = None)
 ### nd
 
 ``` python
-nd.noise_texture.(cls,
+nd.noise_texture(cls,
                     vector: Vector = None,
                     w: Float = None,
                     scale: Float = None,
@@ -7149,7 +7149,7 @@ nd.noise_texture.(cls,
 ### snd
 
 ``` python
-nd.noise_texture.(cls,
+nd.noise_texture(cls,
                     vector: Vector = None,
                     w: Float = None,
                     scale: Float = None,
@@ -7201,7 +7201,7 @@ Texture.Noise(cls,
 ### snd
 
 ``` python
-nd.normal.(cls, normal: Vector = None)
+nd.normal(cls, normal: Vector = None)
 ```
 
 ### class Vector
@@ -7217,7 +7217,7 @@ Vector.normal(self)
 ### snd
 
 ``` python
-nd.normal_map.(cls,
+nd.normal_map(cls,
                     strength: Float = None,
                     color: Color = None,
                     base: Literal['ORIGINAL', 'DISPLACED'] = 'DISPLACED',
@@ -7244,7 +7244,7 @@ Float.normal_map(self,
 ### nd
 
 ``` python
-nd.object.(cls, object = None)
+nd.object(cls, object = None)
 ```
 
 ## Object Info
@@ -7254,7 +7254,7 @@ nd.object.(cls, object = None)
 ### snd
 
 ``` python
-nd.object_info.(cls)
+nd.object_info(cls)
 ```
 
 ## Offset Corner in Face
@@ -7264,7 +7264,7 @@ nd.object_info.(cls)
 ### nd
 
 ``` python
-nd.offset_corner_in_face.(cls, corner_index: Integer = None, offset: Integer = None)
+nd.offset_corner_in_face(cls, corner_index: Integer = None, offset: Integer = None)
 ```
 
 ### class Mesh
@@ -7286,7 +7286,7 @@ Mesh.corners.offset_in_face(cls, corner_index: Integer = None, offset: Integer =
 ### nd
 
 ``` python
-nd.offset_point_in_curve.(cls, point_index: Integer = None, offset: Integer = None)
+nd.offset_point_in_curve(cls, point_index: Integer = None, offset: Integer = None)
 ```
 
 ### class Curve
@@ -7308,7 +7308,7 @@ Spline.points.offset_in_curve(cls, point_index: Integer = None, offset: Integer 
 ### nd
 
 ``` python
-nd.pack_uv_islands.(cls,
+nd.pack_uv_islands(cls,
                     uv: Vector = None,
                     selection: Boolean = None,
                     margin: Float = None,
@@ -7348,7 +7348,7 @@ Mesh.corners.pack_uv_islands(cls,
 ### snd
 
 ``` python
-nd.particle_info.(cls)
+nd.particle_info(cls)
 ```
 
 ## Point Info
@@ -7358,7 +7358,7 @@ nd.particle_info.(cls)
 ### snd
 
 ``` python
-nd.point_info.(cls)
+nd.point_info(cls)
 ```
 
 ## Points
@@ -7368,7 +7368,7 @@ nd.point_info.(cls)
 ### nd
 
 ``` python
-nd.points.(cls, count: Integer = None, position: Vector = None, radius: Float = None)
+nd.points(cls, count: Integer = None, position: Vector = None, radius: Float = None)
 ```
 
 ### class Cloud
@@ -7384,7 +7384,7 @@ Cloud.Points(cls, count: Integer = None, position: Vector = None, radius: Float 
 ### nd
 
 ``` python
-nd.points_of_curve.(cls,
+nd.points_of_curve(cls,
                     curve_index: Integer = None,
                     weights: Float = None,
                     sort_index: Integer = None)
@@ -7429,7 +7429,7 @@ Spline.splines.points_total(cls,
 ### nd
 
 ``` python
-nd.points_to_curves.(cls,
+nd.points_to_curves(cls,
                     points: Cloud = None,
                     curve_group_id: Integer = None,
                     weight: Float = None)
@@ -7448,7 +7448,7 @@ Cloud.to_curves(self, curve_group_id: Integer = None, weight: Float = None)
 ### nd
 
 ``` python
-nd.points_to_sdf_grid.(cls, points: Cloud = None, radius: Float = None, voxel_size: Float = None)
+nd.points_to_sdf_grid(cls, points: Cloud = None, radius: Float = None, voxel_size: Float = None)
 ```
 
 ### class Cloud
@@ -7464,7 +7464,7 @@ Cloud.to_sdf_grid(self, radius: Float = None, voxel_size: Float = None)
 ### nd
 
 ``` python
-nd.points_to_vertices.(cls, points: Cloud = None, selection: Boolean = None)
+nd.points_to_vertices(cls, points: Cloud = None, selection: Boolean = None)
 ```
 
 ### class Cloud
@@ -7480,7 +7480,7 @@ Cloud.to_vertices(self)
 ### nd
 
 ``` python
-nd.points_to_volume.(cls,
+nd.points_to_volume(cls,
                     points: Cloud = None,
                     density: Float = None,
                     resolution_mode: Literal['Amount', 'Size'] = None,
@@ -7507,7 +7507,7 @@ Cloud.to_volume(self,
 ### nd
 
 ``` python
-nd.position.(self)
+nd.position(self)
 ```
 
 ### class Geometry
@@ -7529,7 +7529,7 @@ prop = Mesh.points.position
 ### snd
 
 ``` python
-nd.principled_bsdf.(cls,
+nd.principled_bsdf(cls,
                     base_color: Color = None,
                     metallic: Float = None,
                     roughness: Float = None,
@@ -7609,7 +7609,7 @@ Shader.Principled(cls,
 ### snd
 
 ``` python
-nd.principled_hair_bsdf.(cls,
+nd.principled_hair_bsdf(cls,
                     color: Color = None,
                     melanin: Float = None,
                     melanin_redness: Float = None,
@@ -7655,7 +7655,7 @@ Shader.PrincipledHair(cls,
 ### snd
 
 ``` python
-nd.principled_volume.(cls,
+nd.principled_volume(cls,
                     color: Color = None,
                     color_attribute: String = None,
                     density: Float = None,
@@ -7696,7 +7696,7 @@ VolumeShader.Principled(cls,
 ### nd
 
 ``` python
-nd.project_point.(cls, vector: Vector = None, transform: Matrix = None)
+nd.project_point(cls, vector: Vector = None, transform: Matrix = None)
 ```
 
 ### class Matrix
@@ -7712,7 +7712,7 @@ Matrix.project_point(self, vector: Vector = None)
 ### nd
 
 ``` python
-nd.prune_grid.(cls,
+nd.prune_grid(cls,
                     grid: Float = None,
                     mode: Literal['Inactive', 'Threshold', 'SDF'] = None,
                     threshold: Float = None,
@@ -7756,7 +7756,7 @@ Vector.prune_grid(self,
 ### nd
 
 ``` python
-nd.quadratic_bezier.(cls,
+nd.quadratic_bezier(cls,
                     resolution: Integer = None,
                     start: Vector = None,
                     middle: Vector = None,
@@ -7780,7 +7780,7 @@ Curve.QuadraticBezier(cls,
 ### nd
 
 ``` python
-nd.quadrilateral.(cls,
+nd.quadrilateral(cls,
                     width: Float = None,
                     height: Float = None,
                     bottom_width: Float = None,
@@ -7842,7 +7842,7 @@ Curve.Quadrilateral(cls,
 ### nd
 
 ``` python
-nd.quaternion_to_rotation.(cls, w: Float = None, x: Float = None, y: Float = None, z: Float = None)
+nd.quaternion_to_rotation(cls, w: Float = None, x: Float = None, y: Float = None, z: Float = None)
 ```
 
 ### class Rotation
@@ -7858,13 +7858,13 @@ Rotation.FromQuaternion(cls, w: Float = None, x: Float = None, y: Float = None, 
 ### nd
 
 ``` python
-nd.rgb_curves.(cls, color: Color = None, factor: Float = None)
+nd.rgb_curves(cls, color: Color = None, factor: Float = None)
 ```
 
 ### snd
 
 ``` python
-nd.rgb_curves.(cls, color: Color = None, factor: Float = None)
+nd.rgb_curves(cls, color: Color = None, factor: Float = None)
 ```
 
 ## RGB to BW
@@ -7874,7 +7874,7 @@ nd.rgb_curves.(cls, color: Color = None, factor: Float = None)
 ### snd
 
 ``` python
-nd.rgb_to_bw.(cls, color: Color = None)
+nd.rgb_to_bw(cls, color: Color = None)
 ```
 
 ### class Color
@@ -7890,7 +7890,7 @@ Color.rgb_to_bw(self)
 ### nd
 
 ``` python
-nd.radial_tiling.(cls,
+nd.radial_tiling(cls,
                     vector: Vector = None,
                     sides: Float = None,
                     roundness: Float = None,
@@ -7900,7 +7900,7 @@ nd.radial_tiling.(cls,
 ### snd
 
 ``` python
-nd.radial_tiling.(cls,
+nd.radial_tiling(cls,
                     vector: Vector = None,
                     sides: Float = None,
                     roundness: Float = None,
@@ -7920,7 +7920,7 @@ Vector.radial_tiling(self, sides: Float = None, roundness: Float = None, normali
 ### nd
 
 ``` python
-nd.radius.(self)
+nd.radius(self)
 ```
 
 ### class Cloud
@@ -7954,7 +7954,7 @@ prop = Spline.points.radius
 ### nd
 
 ``` python
-nd.random_value.(cls,
+nd.random_value(cls,
                     min: Vector = None,
                     max: Vector = None,
                     min_1: Float = None,
@@ -8010,7 +8010,7 @@ Vector.Random(cls,
 ### snd
 
 ``` python
-nd.ray_portal_bsdf.(cls,
+nd.ray_portal_bsdf(cls,
                     color: Color = None,
                     position: Vector = None,
                     direction: Vector = None,
@@ -8030,7 +8030,7 @@ Shader.RayPortal(cls, color: Color = None, position: Vector = None, direction: V
 ### snd
 
 ``` python
-nd.raycast.(cls,
+nd.raycast(cls,
                     position: Vector = None,
                     direction: Vector = None,
                     length: Float = None,
@@ -8050,7 +8050,7 @@ Vector.raycast(self, direction: Vector = None, length: Float = None, only_local 
 ### nd
 
 ``` python
-nd.realize_instances.(cls,
+nd.realize_instances(cls,
                     geometry: Geometry = None,
                     selection: Boolean = None,
                     realize_all: Boolean = None,
@@ -8074,7 +8074,7 @@ Geometry.realize(self,
 ### snd
 
 ``` python
-nd.refraction_bsdf.(cls,
+nd.refraction_bsdf(cls,
                     color: Color = None,
                     roughness: Float = None,
                     ior: Float = None,
@@ -8101,7 +8101,7 @@ Shader.Refraction(cls,
 ### nd
 
 ``` python
-nd.remove_named_attribute.(cls,
+nd.remove_named_attribute(cls,
                     geometry: Geometry = None,
                     pattern_mode: Literal['Exact', 'Wildcard'] = None,
                     name: String = None)
@@ -8132,7 +8132,7 @@ Geometry.remove_named_attribute(self, pattern_mode: Literal['Exact', 'Wildcard']
 ### nd
 
 ``` python
-nd.replace_material.(cls, geometry: Geometry = None, old: Material = None, new: Material = None)
+nd.replace_material(cls, geometry: Geometry = None, old: Material = None, new: Material = None)
 ```
 
 ### class Geometry
@@ -8148,7 +8148,7 @@ Geometry.replace_material(self, old: Material = None, new: Material = None)
 ### nd
 
 ``` python
-nd.replace_string.(cls, string: String = None, find: String = None, replace: String = None)
+nd.replace_string(cls, string: String = None, find: String = None, replace: String = None)
 ```
 
 ### class String
@@ -8164,13 +8164,13 @@ String.replace(self, find: String = None, replace: String = None)
 ### nd
 
 ``` python
-nd.reroute.(cls, input: Color = None, socket_idname = 'NodeSocketColor')
+nd.reroute(cls, input: Color = None, socket_idname = 'NodeSocketColor')
 ```
 
 ### snd
 
 ``` python
-nd.reroute.(cls, input: Color = None, socket_idname = 'NodeSocketColor')
+nd.reroute(cls, input: Color = None, socket_idname = 'NodeSocketColor')
 ```
 
 ## Resample Curve
@@ -8180,7 +8180,7 @@ nd.reroute.(cls, input: Color = None, socket_idname = 'NodeSocketColor')
 ### nd
 
 ``` python
-nd.resample_curve.(cls,
+nd.resample_curve(cls,
                     curve: Curve = None,
                     selection: Boolean = None,
                     mode: Literal['Evaluated', 'Count', 'Length'] = None,
@@ -8206,7 +8206,7 @@ Curve.resample(self,
 ### nd
 
 ``` python
-nd.reverse_curve.(cls, curve: Curve = None, selection: Boolean = None)
+nd.reverse_curve(cls, curve: Curve = None, selection: Boolean = None)
 ```
 
 ### class Curve
@@ -8222,7 +8222,7 @@ Curve.reverse(self)
 ### nd
 
 ``` python
-nd.rotate_instances.(cls,
+nd.rotate_instances(cls,
                     instances: Instances = None,
                     selection: Boolean = None,
                     rotation: Rotation = None,
@@ -8246,7 +8246,7 @@ Instances.rotate(self,
 ### nd
 
 ``` python
-nd.rotate_rotation.(cls,
+nd.rotate_rotation(cls,
                     rotation: Rotation = None,
                     rotate_by: Rotation = None,
                     rotation_space: Literal['GLOBAL', 'LOCAL'] = 'GLOBAL')
@@ -8275,7 +8275,7 @@ Rotation.rotate_local(self, rotate_by: Rotation = None)
 ### nd
 
 ``` python
-nd.rotate_vector.(cls, vector: Vector = None, rotation: Rotation = None)
+nd.rotate_vector(cls, vector: Vector = None, rotation: Rotation = None)
 ```
 
 ### class Rotation
@@ -8291,7 +8291,7 @@ Rotation.rotate_vector(self, vector: Vector = None)
 ### nd
 
 ``` python
-nd.rotation.(self)
+nd.rotation(self)
 ```
 
 ## Rotation to Axis Angle
@@ -8301,7 +8301,7 @@ nd.rotation.(self)
 ### nd
 
 ``` python
-nd.rotation_to_axis_angle.(cls, rotation: Rotation = None)
+nd.rotation_to_axis_angle(cls, rotation: Rotation = None)
 ```
 
 ### class Rotation
@@ -8321,7 +8321,7 @@ prop = Rotation.axis_angle
 ### nd
 
 ``` python
-nd.rotation_to_euler.(cls, rotation: Rotation = None)
+nd.rotation_to_euler(cls, rotation: Rotation = None)
 ```
 
 ### class Rotation
@@ -8337,7 +8337,7 @@ Rotation.to_euler(self)
 ### nd
 
 ``` python
-nd.rotation_to_quaternion.(cls, rotation: Rotation = None)
+nd.rotation_to_quaternion(cls, rotation: Rotation = None)
 ```
 
 ### class Rotation
@@ -8357,7 +8357,7 @@ prop = Rotation.wxyz
 ### nd
 
 ``` python
-nd.sdf_grid_boolean.(cls,
+nd.sdf_grid_boolean(cls,
                     *grid_2: Float,
                     grid_1: Float = None,
                     operation: Literal['INTERSECT', 'UNION', 'DIFFERENCE'] = 'DIFFERENCE')
@@ -8390,7 +8390,7 @@ Float.sdf_difference(self, *grid_2: Float)
 ### nd
 
 ``` python
-nd.sdf_grid_fillet.(cls, grid: Float = None, iterations: Integer = None)
+nd.sdf_grid_fillet(cls, grid: Float = None, iterations: Integer = None)
 ```
 
 ### class Float
@@ -8406,7 +8406,7 @@ Float.sdf_grid_fillet(self, iterations: Integer = None)
 ### nd
 
 ``` python
-nd.sdf_grid_laplacian.(cls, grid: Float = None, iterations: Integer = None)
+nd.sdf_grid_laplacian(cls, grid: Float = None, iterations: Integer = None)
 ```
 
 ### class Float
@@ -8422,7 +8422,7 @@ Float.sdf_grid_laplacian(self, iterations: Integer = None)
 ### nd
 
 ``` python
-nd.sdf_grid_mean.(cls, grid: Float = None, width: Integer = None, iterations: Integer = None)
+nd.sdf_grid_mean(cls, grid: Float = None, width: Integer = None, iterations: Integer = None)
 ```
 
 ### class Float
@@ -8438,7 +8438,7 @@ Float.sdf_grid_mean(self, width: Integer = None, iterations: Integer = None)
 ### nd
 
 ``` python
-nd.sdf_grid_mean_curvature.(cls, grid: Float = None, iterations: Integer = None)
+nd.sdf_grid_mean_curvature(cls, grid: Float = None, iterations: Integer = None)
 ```
 
 ### class Float
@@ -8454,7 +8454,7 @@ Float.sdf_grid_mean_curvature(self, iterations: Integer = None)
 ### nd
 
 ``` python
-nd.sdf_grid_median.(cls, grid: Float = None, width: Integer = None, iterations: Integer = None)
+nd.sdf_grid_median(cls, grid: Float = None, width: Integer = None, iterations: Integer = None)
 ```
 
 ### class Float
@@ -8470,7 +8470,7 @@ Float.sdf_grid_median(self, width: Integer = None, iterations: Integer = None)
 ### nd
 
 ``` python
-nd.sdf_grid_offset.(cls, grid: Float = None, distance: Float = None)
+nd.sdf_grid_offset(cls, grid: Float = None, distance: Float = None)
 ```
 
 ### class Float
@@ -8486,7 +8486,7 @@ Float.sdf_grid_offset(self, distance: Float = None)
 ### nd
 
 ``` python
-nd.sample_curve.(cls,
+nd.sample_curve(cls,
                     curves: Curve = None,
                     value: Float = None,
                     length: Float = None,
@@ -8531,7 +8531,7 @@ Curve.sample(self,
 ### nd
 
 ``` python
-nd.sample_grid.(cls,
+nd.sample_grid(cls,
                     grid: Float = None,
                     position: Vector = None,
                     interpolation: Literal['Nearest Neighbor', 'Trilinear', 'Triquadratic'] = None,
@@ -8577,7 +8577,7 @@ Vector.sample_grid(self,
 ### nd
 
 ``` python
-nd.sample_grid_index.(cls,
+nd.sample_grid_index(cls,
                     grid: Float = None,
                     x: Integer = None,
                     y: Integer = None,
@@ -8616,7 +8616,7 @@ Vector.sample_grid_index(self, x: Integer = None, y: Integer = None, z: Integer 
 ### nd
 
 ``` python
-nd.sample_index.(cls,
+nd.sample_index(cls,
                     geometry: Geometry = None,
                     value: Float = None,
                     index: Integer = None,
@@ -8673,7 +8673,7 @@ Spline.splines.sample_index(self,
 ### class Instance
 
 ```python
-Instance.sample_index(self,
+Instances.insts.sample_index(self,
                     value: Float | Integer | Boolean | Vector | Color | Rotation | Matrix = None,
                     index: Integer = None,
                     clamp = False)
@@ -8695,7 +8695,7 @@ GreasePencil.layers.sample_index(self,
 ### nd
 
 ``` python
-nd.sample_nearest.(cls,
+nd.sample_nearest(cls,
                     geometry: Geometry = None,
                     sample_position: Vector = None,
                     domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER'] = 'POINT')
@@ -8732,7 +8732,7 @@ Mesh.corners.sample_nearest(self, sample_position: Vector = None)
 ### nd
 
 ``` python
-nd.sample_nearest_surface.(cls,
+nd.sample_nearest_surface(cls,
                     mesh: Mesh = None,
                     value: Float = None,
                     group_id: Integer = None,
@@ -8758,7 +8758,7 @@ Mesh.sample_nearest_surface(self,
 ### nd
 
 ``` python
-nd.sample_uv_surface.(cls,
+nd.sample_uv_surface(cls,
                     mesh: Mesh = None,
                     value: Float = None,
                     uv_map: Vector = None,
@@ -8782,7 +8782,7 @@ Mesh.sample_uv_surface(self,
 ### nd
 
 ``` python
-nd.scale_elements.(cls,
+nd.scale_elements(cls,
                     geometry: Geometry = None,
                     selection: Boolean = None,
                     scale: Float = None,
@@ -8819,7 +8819,7 @@ Mesh.edges.scale(self,
 ### nd
 
 ``` python
-nd.scale_instances.(cls,
+nd.scale_instances(cls,
                     instances: Instances = None,
                     selection: Boolean = None,
                     scale: Vector = None,
@@ -8840,7 +8840,7 @@ Instances.scale(self, scale: Vector = None, center: Vector = None, local_space: 
 ### nd
 
 ``` python
-nd.scene_time.(cls)
+nd.scene_time(cls)
 ```
 
 ### class Float
@@ -8864,7 +8864,7 @@ prop = Float.frame
 ### snd
 
 ``` python
-nd.script.(cls,
+nd.script(cls,
                     bytecode = '',
                     bytecode_hash = '',
                     filepath = '',
@@ -8880,7 +8880,7 @@ nd.script.(cls,
 ### nd
 
 ``` python
-nd.selection.(cls)
+nd.selection(cls)
 ```
 
 ## Self Object
@@ -8890,7 +8890,7 @@ nd.selection.(cls)
 ### nd
 
 ``` python
-nd.self_object.(self)
+nd.self_object(self)
 ```
 
 ### class Object
@@ -8906,7 +8906,7 @@ Object.Self(cls)
 ### nd
 
 ``` python
-nd.separate_bundle.(cls,
+nd.separate_bundle(cls,
                     named_sockets: dict = {},
                     bundle: Bundle = None,
                     define_signature = False,
@@ -8916,7 +8916,7 @@ nd.separate_bundle.(cls,
 ### snd
 
 ``` python
-nd.separate_bundle.(cls,
+nd.separate_bundle(cls,
                     named_sockets: dict = {},
                     bundle: Bundle = None,
                     define_signature = False,
@@ -8936,7 +8936,7 @@ Bundle.separate_bundle(self, named_sockets: dict = {}, define_signature = False,
 ### snd
 
 ``` python
-nd.separate_color.(cls, color: Color = None, mode: Literal['RGB', 'HSV', 'HSL'] = 'RGB')
+nd.separate_color(cls, color: Color = None, mode: Literal['RGB', 'HSV', 'HSL'] = 'RGB')
 ```
 
 ### class Color
@@ -8964,7 +8964,7 @@ Color.separate_col(self, mode: Literal['RGB', 'HSV', 'HSL'] = 'RGB')
 ### nd
 
 ``` python
-nd.separate_components.(cls, geometry: Geometry = None)
+nd.separate_components(cls, geometry: Geometry = None)
 ```
 
 ### class Geometry
@@ -9004,7 +9004,7 @@ prop = Geometry.instances
 ### nd
 
 ``` python
-nd.separate_geometry.(cls,
+nd.separate_geometry(cls,
                     geometry: Geometry = None,
                     selection: Boolean = None,
                     domain: Literal['POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE', 'LAYER'] = 'POINT')
@@ -9037,7 +9037,7 @@ Spline.splines.separate(self)
 ### class Instance
 
 ```python
-Instance.separate(self)
+Instances.insts.separate(self)
 ```
 
 ### class Layer
@@ -9053,7 +9053,7 @@ GreasePencil.layers.separate(self)
 ### nd
 
 ``` python
-nd.separate_matrix.(cls, matrix: Matrix = None)
+nd.separate_matrix(cls, matrix: Matrix = None)
 ```
 
 ### class Matrix
@@ -9141,7 +9141,7 @@ prop = Matrix.column_4_row_4
 ### nd
 
 ``` python
-nd.separate_transform.(cls, transform: Matrix = None)
+nd.separate_transform(cls, transform: Matrix = None)
 ```
 
 ### class Matrix
@@ -9173,13 +9173,13 @@ prop = Matrix.scale
 ### nd
 
 ``` python
-nd.separate_xyz.(cls, vector: Vector = None)
+nd.separate_xyz(cls, vector: Vector = None)
 ```
 
 ### snd
 
 ``` python
-nd.separate_xyz.(cls, vector: Vector = None)
+nd.separate_xyz(cls, vector: Vector = None)
 ```
 
 ### class Vector
@@ -9211,7 +9211,7 @@ prop = Vector.z
 ### nd
 
 ``` python
-nd.set_curve_normal.(cls,
+nd.set_curve_normal(cls,
                     curve: Curve = None,
                     selection: Boolean = None,
                     mode: Literal['Minimum Twist', 'Z Up', 'Free'] = None,
@@ -9243,7 +9243,7 @@ Spline.splines.normal = value
 ### nd
 
 ``` python
-nd.set_curve_radius.(cls, curve: Curve = None, selection: Boolean = None, radius: Float = None)
+nd.set_curve_radius(cls, curve: Curve = None, selection: Boolean = None, radius: Float = None)
 ```
 
 ### class Curve
@@ -9269,7 +9269,7 @@ Spline.points.radius = value
 ### nd
 
 ``` python
-nd.set_curve_tilt.(cls, curve: Curve = None, selection: Boolean = None, tilt: Float = None)
+nd.set_curve_tilt(cls, curve: Curve = None, selection: Boolean = None, tilt: Float = None)
 ```
 
 ### class Curve
@@ -9295,7 +9295,7 @@ Spline.splines.tilt = value
 ### nd
 
 ``` python
-nd.set_face_set.(cls, mesh: Mesh = None, selection: Boolean = None, face_set: Integer = None)
+nd.set_face_set(cls, mesh: Mesh = None, selection: Boolean = None, face_set: Integer = None)
 ```
 
 ### class Mesh
@@ -9311,7 +9311,7 @@ Mesh.set_face_set(self, face_set: Integer = None)
 ### nd
 
 ``` python
-nd.set_geometry_bundle.(cls, geometry: Geometry = None, bundle: Bundle = None)
+nd.set_geometry_bundle(cls, geometry: Geometry = None, bundle: Bundle = None)
 ```
 
 ## Set Geometry Name
@@ -9321,7 +9321,7 @@ nd.set_geometry_bundle.(cls, geometry: Geometry = None, bundle: Bundle = None)
 ### nd
 
 ``` python
-nd.set_geometry_name.(cls, geometry: Geometry = None, name: String = None)
+nd.set_geometry_name(cls, geometry: Geometry = None, name: String = None)
 ```
 
 ### class Geometry
@@ -9341,7 +9341,7 @@ Geometry.name = value
 ### nd
 
 ``` python
-nd.set_grease_pencil_color.(cls,
+nd.set_grease_pencil_color(cls,
                     grease_pencil: GreasePencil = None,
                     selection: Boolean = None,
                     color: Color = None,
@@ -9381,7 +9381,7 @@ GreasePencil.fill_color = value
 ### nd
 
 ``` python
-nd.set_grease_pencil_depth.(cls,
+nd.set_grease_pencil_depth(cls,
                     grease_pencil: GreasePencil = None,
                     depth_order: Literal['2D', '3D'] = '2D')
 ```
@@ -9403,7 +9403,7 @@ GreasePencil.depth = value
 ### nd
 
 ``` python
-nd.set_grease_pencil_softness.(cls,
+nd.set_grease_pencil_softness(cls,
                     grease_pencil: GreasePencil = None,
                     selection: Boolean = None,
                     softness: Float = None)
@@ -9426,7 +9426,7 @@ GreasePencil.softness = value
 ### nd
 
 ``` python
-nd.set_grid_background.(cls,
+nd.set_grid_background(cls,
                     grid: Float = None,
                     background: Float = None,
                     update_inactive: Boolean = None,
@@ -9464,7 +9464,7 @@ Vector.set_grid_background(self, background: Vector = None, update_inactive: Boo
 ### nd
 
 ``` python
-nd.set_grid_transform.(cls,
+nd.set_grid_transform(cls,
                     grid: Float = None,
                     transform: Matrix = None,
                     data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR'] = 'FLOAT')
@@ -9501,7 +9501,7 @@ Vector.set_grid_transform(self, transform: Matrix = None)
 ### nd
 
 ``` python
-nd.set_handle_positions.(cls,
+nd.set_handle_positions(cls,
                     curve: Curve = None,
                     selection: Boolean = None,
                     position: Vector = None,
@@ -9549,7 +9549,7 @@ Curve.right_handle_offset = value
 ### nd
 
 ``` python
-nd.set_handle_type.(cls,
+nd.set_handle_type(cls,
                     curve: Curve = None,
                     selection: Boolean = None,
                     handle_type: Literal['FREE', 'AUTO', 'VECTOR', 'ALIGN'] = 'AUTO',
@@ -9595,7 +9595,7 @@ Curve.right_handle_type = value
 ### nd
 
 ``` python
-nd.set_id.(cls, geometry: Geometry = None, selection: Boolean = None, id: Integer = None)
+nd.set_id(cls, geometry: Geometry = None, selection: Boolean = None, id: Integer = None)
 ```
 
 ### class Geometry
@@ -9615,7 +9615,7 @@ Geometry.id = value
 ### nd
 
 ``` python
-nd.set_instance_transform.(cls,
+nd.set_instance_transform(cls,
                     instances: Instances = None,
                     selection: Boolean = None,
                     transform: Matrix = None)
@@ -9638,7 +9638,7 @@ Instances.transform = value
 ### nd
 
 ``` python
-nd.set_material.(cls,
+nd.set_material(cls,
                     geometry: Geometry = None,
                     selection: Boolean = None,
                     material: Material = None)
@@ -9673,7 +9673,7 @@ Mesh.edges.material = value
 ### nd
 
 ``` python
-nd.set_material_index.(cls,
+nd.set_material_index(cls,
                     geometry: Geometry = None,
                     selection: Boolean = None,
                     material_index: Integer = None)
@@ -9708,7 +9708,7 @@ Spline.splines.material_index = value
 ### nd
 
 ``` python
-nd.set_mesh_normal.(cls,
+nd.set_mesh_normal(cls,
                     mesh: Mesh = None,
                     remove_custom: Boolean = None,
                     edge_sharpness: Boolean = None,
@@ -9777,7 +9777,7 @@ Mesh.corners.normal = value
 ### nd
 
 ``` python
-nd.set_point_radius.(cls, points: Cloud = None, selection: Boolean = None, radius: Float = None)
+nd.set_point_radius(cls, points: Cloud = None, selection: Boolean = None, radius: Float = None)
 ```
 
 ### class Point
@@ -9805,7 +9805,7 @@ Cloud.points.radius = value
 ### nd
 
 ``` python
-nd.set_position.(cls,
+nd.set_position(cls,
                     geometry: Geometry = None,
                     selection: Boolean = None,
                     position: Vector = None,
@@ -9843,7 +9843,7 @@ Mesh.points.offset = value
 ### nd
 
 ``` python
-nd.set_selection.(cls,
+nd.set_selection(cls,
                     geometry: Geometry = None,
                     selection: Boolean = None,
                     domain: Literal['POINT', 'EDGE', 'FACE', 'CURVE'] = 'POINT',
@@ -9881,7 +9881,7 @@ Spline.splines.set_selection(self)
 ### nd
 
 ``` python
-nd.set_shade_smooth.(cls,
+nd.set_shade_smooth(cls,
                     mesh: Mesh = None,
                     selection: Boolean = None,
                     shade_smooth: Boolean = None,
@@ -9923,7 +9923,7 @@ Mesh.faces.smooth = value
 ### nd
 
 ``` python
-nd.set_spline_cyclic.(cls, curve: Curve = None, selection: Boolean = None, cyclic: Boolean = None)
+nd.set_spline_cyclic(cls, curve: Curve = None, selection: Boolean = None, cyclic: Boolean = None)
 ```
 
 ### class Curve
@@ -9949,7 +9949,7 @@ Spline.splines.is_cyclic = value
 ### nd
 
 ``` python
-nd.set_spline_resolution.(cls,
+nd.set_spline_resolution(cls,
                     curve: Curve = None,
                     selection: Boolean = None,
                     resolution: Integer = None)
@@ -9978,7 +9978,7 @@ Spline.splines.resolution = value
 ### nd
 
 ``` python
-nd.set_spline_type.(cls,
+nd.set_spline_type(cls,
                     curve: Curve = None,
                     selection: Boolean = None,
                     spline_type: Literal['CATMULL_ROM', 'POLY', 'BEZIER', 'NURBS'] = 'POLY')
@@ -10007,7 +10007,7 @@ Spline.splines.type = value
 ### snd
 
 ``` python
-nd.shader_to_rgb.(cls, shader: Shader = None)
+nd.shader_to_rgb(cls, shader: Shader = None)
 ```
 
 ### class Shader
@@ -10023,7 +10023,7 @@ Shader.to_rgb(self)
 ### snd
 
 ``` python
-nd.sheen_bsdf.(cls,
+nd.sheen_bsdf(cls,
                     color: Color = None,
                     roughness: Float = None,
                     normal: Vector = None,
@@ -10048,7 +10048,7 @@ Shader.Sheen(cls,
 ### nd
 
 ``` python
-nd.shortest_edge_paths.(cls, end_vertex: Boolean = None, edge_cost: Float = None)
+nd.shortest_edge_paths(cls, end_vertex: Boolean = None, edge_cost: Float = None)
 ```
 
 ### class Mesh
@@ -10082,7 +10082,7 @@ Mesh.edges.shortest_paths(cls, end_vertex: Boolean = None, edge_cost: Float = No
 ### snd
 
 ``` python
-nd.sky_texture.(cls,
+nd.sky_texture(cls,
                     vector: Vector = None,
                     aerosol_density = 1.0,
                     air_density = 1.0,
@@ -10123,7 +10123,7 @@ Color.SkyTexture(cls,
 ### nd
 
 ``` python
-nd.slice_string.(cls, string: String = None, position: Integer = None, length: Integer = None)
+nd.slice_string(cls, string: String = None, position: Integer = None, length: Integer = None)
 ```
 
 ### class String
@@ -10139,7 +10139,7 @@ String.slice(self, position: Integer = None, length: Integer = None)
 ### nd
 
 ``` python
-nd.sort_elements.(cls,
+nd.sort_elements(cls,
                     geometry: Geometry = None,
                     selection: Boolean = None,
                     group_id: Integer = None,
@@ -10174,7 +10174,7 @@ Spline.splines.sort(self, group_id: Integer = None, sort_weight: Float = None)
 ### class Instance
 
 ```python
-Instance.sort(self, group_id: Integer = None, sort_weight: Float = None)
+Instances.insts.sort(self, group_id: Integer = None, sort_weight: Float = None)
 ```
 
 ## Special Characters
@@ -10184,7 +10184,7 @@ Instance.sort(self, group_id: Integer = None, sort_weight: Float = None)
 ### nd
 
 ``` python
-nd.special_characters.(cls)
+nd.special_characters(cls)
 ```
 
 ### class String
@@ -10208,7 +10208,7 @@ prop = String.tab
 ### snd
 
 ``` python
-nd.specular_bsdf.(cls,
+nd.specular_bsdf(cls,
                     base_color: Color = None,
                     specular: Color = None,
                     roughness: Float = None,
@@ -10243,7 +10243,7 @@ Shader.Specular(cls,
 ### nd
 
 ``` python
-nd.spiral.(cls,
+nd.spiral(cls,
                     resolution: Integer = None,
                     rotations: Float = None,
                     start_radius: Float = None,
@@ -10271,7 +10271,7 @@ Curve.Spiral(cls,
 ### nd
 
 ``` python
-nd.spline_length.(cls)
+nd.spline_length(cls)
 ```
 
 ### class Curve
@@ -10301,7 +10301,7 @@ prop = Spline.splines.point_count
 ### nd
 
 ``` python
-nd.spline_parameter.(cls)
+nd.spline_parameter(cls)
 ```
 
 ### class Curve
@@ -10335,7 +10335,7 @@ prop = Spline.splines.parameter_index
 ### nd
 
 ``` python
-nd.spline_resolution.(self)
+nd.spline_resolution(self)
 ```
 
 ### class Curve
@@ -10357,7 +10357,7 @@ prop = Spline.splines.resolution
 ### nd
 
 ``` python
-nd.split_edges.(cls, mesh: Mesh = None, selection: Boolean = None)
+nd.split_edges(cls, mesh: Mesh = None, selection: Boolean = None)
 ```
 
 ### class Mesh
@@ -10379,7 +10379,7 @@ Mesh.edges.split(self)
 ### nd
 
 ``` python
-nd.split_to_instances.(cls,
+nd.split_to_instances(cls,
                     geometry: Geometry = None,
                     selection: Boolean = None,
                     group_id: Integer = None,
@@ -10413,7 +10413,7 @@ Spline.splines.split_to_instances(self, group_id: Integer = None)
 ### class Instance
 
 ```python
-Instance.split_to_instances(self, group_id: Integer = None)
+Instances.insts.split_to_instances(self, group_id: Integer = None)
 ```
 
 ### class Layer
@@ -10429,7 +10429,7 @@ GreasePencil.layers.split_to_instances(self, group_id: Integer = None)
 ### nd
 
 ``` python
-nd.star.(cls,
+nd.star(cls,
                     points: Integer = None,
                     inner_radius: Float = None,
                     outer_radius: Float = None,
@@ -10453,7 +10453,7 @@ Curve.Star(cls,
 ### nd
 
 ``` python
-nd.store_bundle_item.(cls,
+nd.store_bundle_item(cls,
                     bundle: Bundle = None,
                     path: String = None,
                     item: Float = None,
@@ -10484,7 +10484,7 @@ Bundle.store_item(self,
 ### nd
 
 ``` python
-nd.store_named_attribute.(cls,
+nd.store_named_attribute(cls,
                     geometry: Geometry = None,
                     selection: Boolean = None,
                     name: String = None,
@@ -10570,13 +10570,13 @@ Spline.splines.store(self,
 ### class Instance
 
 ```python
-Instance.store_named_attribute(self,
+Instances.insts.store_named_attribute(self,
                     name: String = None,
                     value: Float | Integer | Boolean | Vector | Color | Rotation | Matrix | Integer | Vector | Color = None)
 ```
 
 ```python
-Instance.store(self,
+Instances.insts.store(self,
                     name: String = None,
                     value: Float | Integer | Boolean | Vector | Color | Rotation | Matrix | Integer | Vector | Color = None)
 ```
@@ -10602,7 +10602,7 @@ GreasePencil.layers.store(self,
 ### nd
 
 ``` python
-nd.store_named_grid.(cls,
+nd.store_named_grid(cls,
                     volume: Volume = None,
                     name: String = None,
                     grid: Float = None,
@@ -10622,7 +10622,7 @@ Volume.store_named_grid(self, name: String = None, grid: Boolean | Float | Integ
 ### nd
 
 ``` python
-nd.string.(cls, string = '')
+nd.string(cls, string = '')
 ```
 
 ## String Length
@@ -10632,7 +10632,7 @@ nd.string.(cls, string = '')
 ### nd
 
 ``` python
-nd.string_length.(cls, string: String = None)
+nd.string_length(cls, string: String = None)
 ```
 
 ### class String
@@ -10648,7 +10648,7 @@ String.length(self)
 ### nd
 
 ``` python
-nd.string_to_curves.(cls,
+nd.string_to_curves(cls,
                     string: String = None,
                     size: Float = None,
                     font: Font = None,
@@ -10687,7 +10687,7 @@ String.to_curves(self,
 ### nd
 
 ``` python
-nd.string_to_value.(cls, string: String = None, data_type: Literal['FLOAT', 'INT'] = 'FLOAT')
+nd.string_to_value(cls, string: String = None, data_type: Literal['FLOAT', 'INT'] = 'FLOAT')
 ```
 
 ### class String
@@ -10711,7 +10711,7 @@ String.to_integer(self)
 ### nd
 
 ``` python
-nd.subdivide_curve.(cls, curve: Curve = None, cuts: Integer = None)
+nd.subdivide_curve(cls, curve: Curve = None, cuts: Integer = None)
 ```
 
 ### class Curve
@@ -10727,7 +10727,7 @@ Curve.subdivide(self, cuts: Integer = None)
 ### nd
 
 ``` python
-nd.subdivide_mesh.(cls, mesh: Mesh = None, level: Integer = None)
+nd.subdivide_mesh(cls, mesh: Mesh = None, level: Integer = None)
 ```
 
 ### class Mesh
@@ -10743,7 +10743,7 @@ Mesh.subdivide(self, level: Integer = None)
 ### nd
 
 ``` python
-nd.subdivision_surface.(cls,
+nd.subdivision_surface(cls,
                     mesh: Mesh = None,
                     level: Integer = None,
                     edge_crease: Float = None,
@@ -10772,7 +10772,7 @@ Mesh.subdivision_surface(self,
 ### snd
 
 ``` python
-nd.subsurface_scattering.(cls,
+nd.subsurface_scattering(cls,
                     color: Color = None,
                     scale: Float = None,
                     radius: Vector = None,
@@ -10819,7 +10819,7 @@ Socket.switch(condition=None, true=None)
 ### snd
 
 ``` python
-nd.tangent.(cls,
+nd.tangent(cls,
                     axis: Literal['X', 'Y', 'Z'] = 'Z',
                     direction_type: Literal['RADIAL', 'UV_MAP'] = 'RADIAL',
                     uv_map = '')
@@ -10841,7 +10841,7 @@ Vector.Tangent(cls,
 ### snd
 
 ``` python
-nd.texture_coordinate.(cls, from_instancer = False, object = None)
+nd.texture_coordinate(cls, from_instancer = False, object = None)
 ```
 
 ## Toon BSDF
@@ -10851,7 +10851,7 @@ nd.texture_coordinate.(cls, from_instancer = False, object = None)
 ### snd
 
 ``` python
-nd.toon_bsdf.(cls,
+nd.toon_bsdf(cls,
                     color: Color = None,
                     size: Float = None,
                     smooth: Float = None,
@@ -10878,7 +10878,7 @@ Shader.Toon(cls,
 ### nd
 
 ``` python
-nd.transform_direction.(cls, direction: Vector = None, transform: Matrix = None)
+nd.transform_direction(cls, direction: Vector = None, transform: Matrix = None)
 ```
 
 ### class Matrix
@@ -10894,7 +10894,7 @@ Matrix.transform_direction(self, direction: Vector = None)
 ### nd
 
 ``` python
-nd.transform_geometry.(cls,
+nd.transform_geometry(cls,
                     geometry: Geometry = None,
                     mode: Literal['Components', 'Matrix'] = None,
                     translation: Vector = None,
@@ -10921,7 +10921,7 @@ Geometry.transform(self,
 ### nd
 
 ``` python
-nd.transform_gizmo.(cls,
+nd.transform_gizmo(cls,
                     *value: Matrix,
                     position: Vector = None,
                     rotation: Rotation = None,
@@ -10961,7 +10961,7 @@ Matrix.transform_gizmo(self,
 ### nd
 
 ``` python
-nd.transform_point.(cls, vector: Vector = None, transform: Matrix = None)
+nd.transform_point(cls, vector: Vector = None, transform: Matrix = None)
 ```
 
 ### class Matrix
@@ -10977,7 +10977,7 @@ Matrix.transform_point(self, vector: Vector = None)
 ### nd
 
 ``` python
-nd.translate_instances.(cls,
+nd.translate_instances(cls,
                     instances: Instances = None,
                     selection: Boolean = None,
                     translation: Vector = None,
@@ -10997,7 +10997,7 @@ Instances.translate(self, translation: Vector = None, local_space: Boolean = Non
 ### snd
 
 ``` python
-nd.translucent_bsdf.(cls, color: Color = None, normal: Vector = None, weight: Float = None)
+nd.translucent_bsdf(cls, color: Color = None, normal: Vector = None, weight: Float = None)
 ```
 
 ### class Shader
@@ -11013,7 +11013,7 @@ Shader.Translucent(cls, color: Color = None, normal: Vector = None)
 ### snd
 
 ``` python
-nd.transparent_bsdf.(cls, color: Color = None, weight: Float = None)
+nd.transparent_bsdf(cls, color: Color = None, weight: Float = None)
 ```
 
 ### class Shader
@@ -11029,7 +11029,7 @@ Shader.Transparent(cls, color: Color = None)
 ### nd
 
 ``` python
-nd.transpose_matrix.(cls, matrix: Matrix = None)
+nd.transpose_matrix(cls, matrix: Matrix = None)
 ```
 
 ### class Matrix
@@ -11045,7 +11045,7 @@ Matrix.transpose(self)
 ### nd
 
 ``` python
-nd.triangulate.(cls,
+nd.triangulate(cls,
                     mesh: Mesh = None,
                     selection: Boolean = None,
                     quad_method: Literal['Beauty', 'Fixed', 'Fixed Alternate', 'Shortest Diagonal', 'Longest Diagonal'] = None,
@@ -11067,7 +11067,7 @@ Mesh.triangulate(self,
 ### nd
 
 ``` python
-nd.trim_curve.(cls,
+nd.trim_curve(cls,
                     curve: Curve = None,
                     selection: Boolean = None,
                     start: Float = None,
@@ -11101,7 +11101,7 @@ Curve.trim(self,
 ### snd
 
 ``` python
-nd.uv_along_stroke.(cls, use_tips = False)
+nd.uv_along_stroke(cls, use_tips = False)
 ```
 
 ## UV Map
@@ -11111,7 +11111,7 @@ nd.uv_along_stroke.(cls, use_tips = False)
 ### snd
 
 ``` python
-nd.uv_map.(cls, from_instancer = False, uv_map = '')
+nd.uv_map(cls, from_instancer = False, uv_map = '')
 ```
 
 ### class Vector
@@ -11127,7 +11127,7 @@ Vector.UvMap(cls, from_instancer = False, uv_map = '')
 ### nd
 
 ``` python
-nd.uv_sphere.(cls, segments: Integer = None, rings: Integer = None, radius: Float = None)
+nd.uv_sphere(cls, segments: Integer = None, rings: Integer = None, radius: Float = None)
 ```
 
 ### class Mesh
@@ -11143,7 +11143,7 @@ Mesh.UVSphere(cls, segments: Integer = None, rings: Integer = None, radius: Floa
 ### nd
 
 ``` python
-nd.uv_tangent.(cls, method: Literal['Exact', 'Fast'] = None, uv: Vector = None)
+nd.uv_tangent(cls, method: Literal['Exact', 'Fast'] = None, uv: Vector = None)
 ```
 
 ### class Vector
@@ -11159,7 +11159,7 @@ Vector.uv_tangent(self, method: Literal['Exact', 'Fast'] = None)
 ### nd
 
 ``` python
-nd.uv_unwrap.(cls,
+nd.uv_unwrap(cls,
                     selection: Boolean = None,
                     seam: Boolean = None,
                     margin: Float = None,
@@ -11200,13 +11200,13 @@ Mesh.corners.uv_unwrap(cls,
 ### nd
 
 ``` python
-nd.value.(self)
+nd.value(self)
 ```
 
 ### snd
 
 ``` python
-nd.value.(self)
+nd.value(self)
 ```
 
 ## Value to String
@@ -11216,7 +11216,7 @@ nd.value.(self)
 ### nd
 
 ``` python
-nd.value_to_string.(cls,
+nd.value_to_string(cls,
                     value: Float = None,
                     decimals: Integer = None,
                     data_type: Literal['FLOAT', 'INT'] = 'FLOAT')
@@ -11241,7 +11241,7 @@ Integer.to_string(self)
 ### nd
 
 ``` python
-nd.vector.(self)
+nd.vector(self)
 ```
 
 ## Vector Curves
@@ -11251,13 +11251,13 @@ nd.vector.(self)
 ### nd
 
 ``` python
-nd.vector_curves.(cls, vector: Vector = None, factor: Float = None)
+nd.vector_curves(cls, vector: Vector = None, factor: Float = None)
 ```
 
 ### snd
 
 ``` python
-nd.vector_curves.(cls, vector: Vector = None, factor: Float = None)
+nd.vector_curves(cls, vector: Vector = None, factor: Float = None)
 ```
 
 ## Vector Displacement
@@ -11267,7 +11267,7 @@ nd.vector_curves.(cls, vector: Vector = None, factor: Float = None)
 ### snd
 
 ``` python
-nd.vector_displacement.(cls,
+nd.vector_displacement(cls,
                     vector: Color = None,
                     midlevel: Float = None,
                     scale: Float = None,
@@ -11290,7 +11290,7 @@ Color.vector_displacement(self,
 ### nd
 
 ``` python
-nd.vector_math.(cls,
+nd.vector_math(cls,
                     vector: Vector = None,
                     vector_1: Vector = None,
                     vector_2: Vector = None,
@@ -11301,7 +11301,7 @@ nd.vector_math.(cls,
 ### snd
 
 ``` python
-nd.vector_math.(cls,
+nd.vector_math(cls,
                     vector: Vector = None,
                     vector_1: Vector = None,
                     vector_2: Vector = None,
@@ -11560,7 +11560,7 @@ gnmath.vtan(vector: Vector = None)
 ### nd
 
 ``` python
-nd.vector_rotate.(cls,
+nd.vector_rotate(cls,
                     vector: Vector = None,
                     center: Vector = None,
                     axis: Vector = None,
@@ -11573,7 +11573,7 @@ nd.vector_rotate.(cls,
 ### snd
 
 ``` python
-nd.vector_rotate.(cls,
+nd.vector_rotate(cls,
                     vector: Vector = None,
                     center: Vector = None,
                     axis: Vector = None,
@@ -11625,7 +11625,7 @@ Vector.rotate_euler_xyz(self, center: Vector = None, rotation: Vector = None, in
 ### snd
 
 ``` python
-nd.vector_transform.(cls,
+nd.vector_transform(cls,
                     vector: Vector = None,
                     convert_from: Literal['WORLD', 'OBJECT', 'CAMERA'] = 'WORLD',
                     convert_to: Literal['WORLD', 'OBJECT', 'CAMERA'] = 'OBJECT',
@@ -11648,7 +11648,7 @@ Vector.vector_transform(self,
 ### nd
 
 ``` python
-nd.vertex_neighbors.(cls)
+nd.vertex_neighbors(cls)
 ```
 
 ### class Mesh
@@ -11678,7 +11678,7 @@ prop = Mesh.points.neighbors_face_count
 ### nd
 
 ``` python
-nd.vertex_of_corner.(cls, corner_index: Integer = None)
+nd.vertex_of_corner(cls, corner_index: Integer = None)
 ```
 
 ### class Mesh
@@ -11700,7 +11700,7 @@ Mesh.corners.vertex_index(cls, corner_index: Integer = None)
 ### nd
 
 ``` python
-nd.viewer.(cls,
+nd.viewer(cls,
                     named_sockets: dict = {},
                     domain: Literal['AUTO', 'POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'] = 'AUTO',
                     ui_shortcut = 0,
@@ -11746,7 +11746,7 @@ Spline.splines.viewer(cls, named_sockets: dict = {}, ui_shortcut = 0, **sockets)
 ### class Instance
 
 ```python
-Instance.viewer(cls, named_sockets: dict = {}, ui_shortcut = 0, **sockets)
+Instances.insts.viewer(cls, named_sockets: dict = {}, ui_shortcut = 0, **sockets)
 ```
 
 ### class Layer
@@ -11762,7 +11762,7 @@ GreasePencil.layers.viewer(cls, named_sockets: dict = {}, ui_shortcut = 0, **soc
 ### nd
 
 ``` python
-nd.viewport_transform.(cls)
+nd.viewport_transform(cls)
 ```
 
 ## Volume Absorption
@@ -11772,7 +11772,7 @@ nd.viewport_transform.(cls)
 ### snd
 
 ``` python
-nd.volume_absorption.(cls, color: Color = None, density: Float = None, weight: Float = None)
+nd.volume_absorption(cls, color: Color = None, density: Float = None, weight: Float = None)
 ```
 
 ### class VolumeShader
@@ -11788,7 +11788,7 @@ VolumeShader.Absorption(cls, color: Color = None, density: Float = None)
 ### snd
 
 ``` python
-nd.volume_coefficients.(cls,
+nd.volume_coefficients(cls,
                     weight: Float = None,
                     absorption_coefficients: Vector = None,
                     scatter_coefficients: Vector = None,
@@ -11808,7 +11808,7 @@ nd.volume_coefficients.(cls,
 ### nd
 
 ``` python
-nd.volume_cube.(cls,
+nd.volume_cube(cls,
                     density: Float = None,
                     background: Float = None,
                     min: Vector = None,
@@ -11838,7 +11838,7 @@ Volume.Cube(cls,
 ### snd
 
 ``` python
-nd.volume_info.(cls)
+nd.volume_info(cls)
 ```
 
 ### class VolumeShader
@@ -11854,7 +11854,7 @@ prop = VolumeShader.info
 ### snd
 
 ``` python
-nd.volume_scatter.(cls,
+nd.volume_scatter(cls,
                     color: Color = None,
                     density: Float = None,
                     anisotropy: Float = None,
@@ -11883,7 +11883,7 @@ VolumeShader.Scatter(cls,
 ### nd
 
 ``` python
-nd.volume_to_mesh.(cls,
+nd.volume_to_mesh(cls,
                     volume: Volume = None,
                     resolution_mode: Literal['Grid', 'Amount', 'Size'] = None,
                     voxel_size: Float = None,
@@ -11910,7 +11910,7 @@ Volume.to_mesh(self,
 ### nd
 
 ``` python
-nd.voronoi_texture.(cls,
+nd.voronoi_texture(cls,
                     vector: Vector = None,
                     w: Float = None,
                     scale: Float = None,
@@ -11929,7 +11929,7 @@ nd.voronoi_texture.(cls,
 ### snd
 
 ``` python
-nd.voronoi_texture.(cls,
+nd.voronoi_texture(cls,
                     vector: Vector = None,
                     w: Float = None,
                     scale: Float = None,
@@ -11984,7 +11984,7 @@ Texture.Voronoi(cls,
 ### nd
 
 ``` python
-nd.voxel_index.(cls)
+nd.voxel_index(cls)
 ```
 
 ### class Float
@@ -12018,7 +12018,7 @@ Vector.voxel_index(cls)
 ### nd
 
 ``` python
-nd.voxelize_grid.(cls,
+nd.voxelize_grid(cls,
                     grid: Float = None,
                     data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR'] = 'FLOAT')
 ```
@@ -12054,7 +12054,7 @@ Vector.voxelize_grid(self)
 ### nd
 
 ``` python
-nd.warning.(cls,
+nd.warning(cls,
                     show: Boolean = None,
                     message: String = None,
                     warning_type: Literal['ERROR', 'WARNING', 'INFO'] = 'ERROR')
@@ -12081,7 +12081,7 @@ Boolean.info(self, message: String = None)
 ### nd
 
 ``` python
-nd.wave_texture.(cls,
+nd.wave_texture(cls,
                     vector: Vector = None,
                     scale: Float = None,
                     distortion: Float = None,
@@ -12098,7 +12098,7 @@ nd.wave_texture.(cls,
 ### snd
 
 ``` python
-nd.wave_texture.(cls,
+nd.wave_texture(cls,
                     vector: Vector = None,
                     scale: Float = None,
                     distortion: Float = None,
@@ -12153,7 +12153,7 @@ Texture.Wave(cls,
 ### snd
 
 ``` python
-nd.wavelength.(cls, wavelength: Float = None)
+nd.wavelength(cls, wavelength: Float = None)
 ```
 
 ### class Float
@@ -12169,7 +12169,7 @@ Float.wavelength(self)
 ### nd
 
 ``` python
-nd.white_noise_texture.(cls,
+nd.white_noise_texture(cls,
                     vector: Vector = None,
                     w: Float = None,
                     noise_dimensions: Literal['1D', '2D', '3D', '4D'] = '3D')
@@ -12178,7 +12178,7 @@ nd.white_noise_texture.(cls,
 ### snd
 
 ``` python
-nd.white_noise_texture.(cls,
+nd.white_noise_texture(cls,
                     vector: Vector = None,
                     w: Float = None,
                     noise_dimensions: Literal['1D', '2D', '3D', '4D'] = '3D')
@@ -12207,7 +12207,7 @@ Texture.WhiteNoise(cls,
 ### snd
 
 ``` python
-nd.wireframe.(cls, size: Float = None, use_pixel_size = False)
+nd.wireframe(cls, size: Float = None, use_pixel_size = False)
 ```
 
 ### class Float
@@ -12223,7 +12223,7 @@ Float.wireframe(self, use_pixel_size = False)
 ### snd
 
 ``` python
-nd.world_output.(cls,
+nd.world_output(cls,
                     surface: Shader = None,
                     volume: VolumeShader = None,
                     is_active_output = True,

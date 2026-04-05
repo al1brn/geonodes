@@ -537,6 +537,7 @@ def generate(folder, sub_folder):
             'SplinePoint'   : 'Spline.points',
             'Spline'        : 'Spline.splines',
 
+            'Instance'      : 'Instances.insts',
             'CloudPoint'    : 'Cloud.points',
             'Layer'         : 'GreasePencil.layers',
 
@@ -561,7 +562,7 @@ def generate(folder, sub_folder):
 
                     fname = d['func_name']
                     if True:
-                        file.write(f"``` python\nnd.{fname}.{d['signature']}\n```\n\n")
+                        file.write(f"``` python\nnd.{fname}{d['signature']}\n```\n\n")
                     else:
                         file.write(f"[{nd}]({nd}.md).[{fname}]({nd}.md#{nd_path[nd]}.{fname}){d['signature']}\n\n")
 
