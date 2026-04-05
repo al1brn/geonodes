@@ -1,7 +1,4 @@
-# geonodes
-
-
-![Bandeau](getting_started/images/bandeau.png)
+![geonodes](getting_started/images/bandeau.png)
 
 > Scripting Blender **Geometry Nodes**
 
@@ -20,19 +17,20 @@ It provides a clean, expressive DSL that lets you build node graphs using Python
 ## ✨ Features
 
 - Pythonic API for Geometry Nodes
-- Full node graph construction via code
-- Clean abstraction over Blender sockets and nodes
+
+    - Object oriented API
+
+        - Sockets are classes
+        - Nodes are methodds and propetries
+
+    - Full node tree construction via code
+    - Designed for readability and composability
+
 - Support for:
-  - Geometry, Shader and utility nodes
-  - Domains (Vertex, Face, Edge, …)
-  - Layouts, panels and zones
-- Designed for readability and composability
 
----
-
-## 📦 Installation
-
-```bash
-pip install geonodes
+  - Geometry Nodes and Shaders
+  - Modidiers, Groups and Tools
+  - Panels to build clean user interface
+  - Layouts to group and comment your trees
 
 
