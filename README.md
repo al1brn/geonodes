@@ -15,9 +15,9 @@ You keep the full power of Blender _Geometry Nodes_ but with the elegance of Pyt
 ## Further reading
 
 - [Documentation](https://al1brn.github.io/geonodes/)
-- [Overview](https://al1brn.github.io/geonodes/getting_started/overview.md)
-- [Installation](https://al1brn.github.io/geonodes/getting_started/installation.md)
-- [API reference](https://al1brn.github.io/geonodes/api/index.md)
+- [Overview](https://al1brn.github.io/geonodes/getting_started/overview/)
+- [Installation](https://al1brn.github.io/geonodes/getting_started/installation/)
+- [API reference](https://al1brn.github.io/geonodes/api)
 
 ## Better a demo than long words
 
