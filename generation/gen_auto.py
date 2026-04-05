@@ -1,6 +1,7 @@
 from pathlib import Path
 from datetime import datetime
 import textwrap
+import re
 
 import bpy
 
@@ -515,6 +516,12 @@ def generate(folder, sub_folder):
     # Corss reference md file
     with open("/Users/alain/Documents/blender/scripts/modules/geonodes/docs/api/cross_reference.md", 'w') as file:
 
+        def class_to_page(name: str) -> str:
+            # GreasePencil -> grease_pencil
+            slug = re.sub(r"(?<!^)([A-Z])", r"_\1", name).lower()
+            return f"{slug}.md"
+
+
         nd_path= {
             'nd'  : "geonodes.core.generated.static_nd.ND",
             'snd' : "geonodes.core.generated.static_snd.SND",
@@ -522,13 +529,13 @@ def generate(folder, sub_folder):
 
         file.write("# Cross Reference\n\n")
 
-        for blid in sorted(cross.keys()):
+        names = {gen_config.NODE_INFO[blid]['name']: blid for blid in cross}
+        for node_name in sorted(names.keys()):
 
-            
-
-
+            blid = names[node_name]
             dct = cross[blid]
-            file.write(f"## {blid} ({blid})\n\n")
+
+            file.write(f"## {node_name}\n\n> `bl_idname` : {blid}\n\n")
 
             for nd in ('nd', 'snd'):
                 if nd not in dct:
@@ -540,9 +547,39 @@ def generate(folder, sub_folder):
                     fname = d['func_name']
                     file.write(f"[{nd}]({nd}.md).[{fname}]({nd}.md#{nd_path[nd]}.{fname}){d['signature']}\n\n")
 
+            for class_name in dct:
+                if class_name in ('nd', 'snd'):
+                    continue
 
-        
-        file.write(pformat(cross))
+                page_name = class_to_page(class_name)
+                class_path = f"geonodes.core.{page_name}",
+
+                file.write(f"### class {class_name}\n\n")
+                for d in dct[class_name]:
+
+                    fname = d.get('func_name')
+                    if fname is None:
+                        print(f">>>> no node for {class_name}")
+                        pprint(d)
+                        print()
+                        continue
+
+                    base = f"[{class_name}]({page_name}.md).[{fname}]({page_name}.md#{class_path}.{fname})"
+
+                    file.write("```python\n")
+                    try:
+                        if d.get('is_get', False):
+                            file.write(f"prop = {base}")
+                        elif d.get('is_set', False):
+                            file.write(f"{base} = value")
+                        else:
+                            file.write(f"{base}{d['signature']}")
+
+                    except Exception as e:
+                        pprint(d)
+                        raise e
+                    
+                    file.write("\n```\n\n")
 
 
     print("Done")
