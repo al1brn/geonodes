@@ -1,6 +1,6 @@
 # arrows demo
 
-![arrows](../images/arrows_render_01.png)
+![arrows](images/arrows_render_01.png)
 
 This demo builds two modifiers:
 
@@ -9,11 +9,16 @@ This demo builds two modifiers:
 
 ## arrows modifier
 
-![arrows](../images/arrows_arrows_node.png)
+![arrows](images/arrows_arrows_node.png)
 
 ## arrow modifier
 
-![arrows](../images/arrows_arrow_node.png)
+![arrows](images/arrows_arrow_node.png)
+
+## What to learn
+
+    - using closure to 
+
 
 
 
