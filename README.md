@@ -12,18 +12,18 @@ complex formulas are not easy to build; and debugging can be a headache.<br>
 
 You keep the full power of Blender _Geometry Nodes_ but with the elegance of Python.
 
-## Table of contents
+## Further reading
 
-- [Better a demo than long words](#better-a-demo-than-long-words)
-- [Installation](#installation)
-- [API reference](doc/index.md)
+- [Overview](getting_started/overview.md)
+- [Installation](getting_started/installation.md)
+- [API reference](api/index.md)
 
 ## Better a demo than long words
 
 The following script creates a surface from a grid by computing
 `z = sin(d)/d` where `d=sqrt(x^2 + y^2)` is the vertex distance to the center.
 
-<img src="doc/images/hello_world_black.png" width="600" class="center">
+<img src="docs/getting_started/images/hello_world_black.png" width="600" class="center">
 
 ```python
 from geonodes import *
@@ -57,15 +57,6 @@ with GeoNodes("Hello World"):
 The generated nodes are shown below:
 
 <img src="docs/getting_started/images/hello_world_nodes.png" width="600" class="center">
-
-## Further reading
-
-
-- [Overview](getting_started/overview.md)
-- [Installation](getting_started/installation.md)
-- [API reference](api/index.md)
-
----
 
 ## ✨ Features
 
