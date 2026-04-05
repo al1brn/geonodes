@@ -12,6 +12,25 @@ complex formulas are not easy to build; and debugging can be a headache.<br>
 
 You keep the full power of Blender _Geometry Nodes_ but with the elegance of Python.
 
+## ✨ Features
+
+- Pythonic API for Geometry Nodes
+
+    - Object oriented API
+
+        - Sockets are classes
+        - Nodes are methodds and propetries
+
+    - Full node tree construction via code
+    - Designed for readability and composability
+
+- Support for:
+
+  - Geometry Nodes and Shaders
+  - Modidiers, Groups and Tools
+  - Panels to build clean user interface
+  - Layouts to group and comment your trees
+
 ## Further reading
 
 - [Documentation](https://al1brn.github.io/geonodes/)
@@ -58,23 +77,4 @@ with GeoNodes("Hello World"):
 The generated nodes are shown below:
 
 <img src="docs/getting_started/images/hello_world_nodes.png" width="600" class="center">
-
-## ✨ Features
-
-- Pythonic API for Geometry Nodes
-
-    - Object oriented API
-
-        - Sockets are classes
-        - Nodes are methodds and propetries
-
-    - Full node tree construction via code
-    - Designed for readability and composability
-
-- Support for:
-
-  - Geometry Nodes and Shaders
-  - Modidiers, Groups and Tools
-  - Panels to build clean user interface
-  - Layouts to group and comment your trees
 
