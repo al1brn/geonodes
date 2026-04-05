@@ -127,7 +127,7 @@ with GeoNodes("Repeat Example"):
     move = Vector((0, 0, 2), "Move")
     scale = Float(0.5, "Scale")
     
-    for rep in repeat(count, geo=Geometry(), move=move, scale=scale):
+    for rep in repeat(count, geo=geo, move=move, scale=scale):
         
         rep.geo += geo.transform(scale=rep.scale, translation=rep.move)
         
