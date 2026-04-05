@@ -507,10 +507,40 @@ def generate(folder, sub_folder):
 
     build_manual_cross_ref(cross)
 
-    # Cross reference
+    # Cross reference python file
     with open(path / "cross_reference.py", 'w') as file:
         file.write("CROSS_REF = ")
         file.write(pformat(cross))
+
+    # Corss reference md file
+    with open("/Users/alain/Documents/blender/scripts/modules/geonodes/docs/api/cross_reference.md", 'w') as file:
+
+        file.write("# Cross Reference\n\n")
+
+        for blid in sorted(cross.keys()):
+
+            #print(">>>>", blid)
+            #pprint(cross[blid])
+
+            dct = cross[blid]
+            file.write(f"## {blid} ({blid})\n\n")
+
+            for nd in ('nd', 'snd'):
+                if nd not in dct:
+                    continue
+
+                file.write(f"### {nd}\n\n")
+                for d in dct[nd]:
+
+                    fname = d['func_name']
+                    file.write(f"[{nd}]({nd}.md).[{fname}]({nd}.md#{fname}){d['signature']}\n\n")
+
+
+
+
+        
+        file.write(pformat(cross))
+
 
     print("Done")
 

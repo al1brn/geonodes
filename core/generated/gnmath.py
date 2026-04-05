@@ -1,4 +1,4 @@
-# Generated 2026-04-04 17:31:31
+# Generated 2026-04-05 12:37:59
 
 from __future__ import annotations
 from .. sockettype import SocketType
@@ -200,6 +200,12 @@ def band(boolean: Boolean = None, boolean_1: Boolean = None):
 
 def bor(boolean: Boolean = None, boolean_1: Boolean = None):
     """ > Node <&Node Boolean Math>
+
+    **Fixed values**
+
+    | Kind      | Name        | Value  |
+    | --------- | ----------- | ------ |
+    | Parameter | `operation` | `'OR'` |
 
     Parameters
     ----------
