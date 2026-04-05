@@ -521,11 +521,6 @@ def generate(folder, sub_folder):
             slug = re.sub(r"(?<!^)([A-Z])", r"_\1", name).lower()
             return f"{slug}.md"
 
-
-        nd_path= {
-            'nd'  : "geonodes.core.generated.static_nd.ND",
-            'snd' : "geonodes.core.generated.static_snd.SND",
-        }
         domains = {
             'Point'         : 'Mesh.points',
 
@@ -553,6 +548,38 @@ def generate(folder, sub_folder):
 
             file.write(f"## {node_name}\n\n> `bl_idname` : {blid}\n\n")
 
+            # ----- In classes
+
+            for class_name in dct:
+                if class_name in ('nd', 'snd'):
+                    continue
+
+                file.write(f"### class {class_name}\n\n")
+                for d in dct[class_name]:
+
+                    fname = d.get('func_name')
+                    if fname is None:
+                        file.write("```python\n")
+                        file.write(d['help'])
+                        file.write("\n```\n\n")
+
+                        continue
+
+                    base = f"{domains.get(class_name, class_name)}.{fname}"
+
+                    file.write("```python\n")
+
+                    if d.get('is_get', False):
+                        file.write(f"prop = {base}")
+                    elif d.get('is_set', False):
+                        file.write(f"{base} = value")
+                    else:
+                        file.write(f"{base}{d['signature']}")
+
+                    file.write("\n```\n\n")
+
+            # ----- static
+
             for nd in ('nd', 'snd'):
                 if nd not in dct:
                     continue
@@ -561,55 +588,7 @@ def generate(folder, sub_folder):
                 for d in dct[nd]:
 
                     fname = d['func_name']
-                    if True:
-                        file.write(f"``` python\nnd.{fname}{d['signature']}\n```\n\n")
-                    else:
-                        file.write(f"[{nd}]({nd}.md).[{fname}]({nd}.md#{nd_path[nd]}.{fname}){d['signature']}\n\n")
-
-
-            for class_name in dct:
-                if class_name in ('nd', 'snd'):
-                    continue
-
-                page_name = class_to_page(class_name)
-                class_path = f"geonodes.core.{page_name}",
-
-                file.write(f"### class {class_name}\n\n")
-                for d in dct[class_name]:
-
-                    fname = d.get('func_name')
-                    if fname is None:
-                        print(f">>>> no node for {class_name}")
-                        pprint(d)
-                        print()
-                        continue
-
-                    if True:
-                        base = f"{domains.get(class_name, class_name)}.{fname}"
-
-                        file.write("```python\n")
-
-                        if d.get('is_get', False):
-                            file.write(f"prop = {base}")
-                        elif d.get('is_set', False):
-                            file.write(f"{base} = value")
-                        else:
-                            file.write(f"{base}{d['signature']}")
-
-                        file.write("\n```\n\n")
-                    else:
-                        base = f"[{class_name}]({page_name}.md).[{fname}]({page_name}.md#{class_path}.{fname})"
-                        try:
-                            if d.get('is_get', False):
-                                file.write(f"prop = {base}")
-                            elif d.get('is_set', False):
-                                file.write(f"{base} = value")
-                            else:
-                                file.write(f"{base}{d['signature']}")
-
-                        except Exception as e:
-                            pprint(d)
-                            raise e
+                    file.write(f"``` python\nnd.{fname}{d['signature']}\n```\n\n")
 
 
     print("Done")

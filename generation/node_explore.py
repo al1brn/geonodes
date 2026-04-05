@@ -1110,7 +1110,7 @@ class NodeInfo:
         list of dicts
         """
 
-        DEBUG = True and self.bnode.name == "Menu Switch"
+        DEBUG = False and self.bnode.name == "Menu Switch"
 
         args = []
 
