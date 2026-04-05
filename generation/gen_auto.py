@@ -526,6 +526,21 @@ def generate(folder, sub_folder):
             'nd'  : "geonodes.core.generated.static_nd.ND",
             'snd' : "geonodes.core.generated.static_snd.SND",
         }
+        domains = {
+            'Point'         : 'Mesh.points',
+
+            'Vertex'        : 'Mesh.points',
+            'Edge'          : 'Mesh.edges',
+            'Face'          : 'Mesh.faces',
+            'Corner'        : 'Mesh.corners',
+
+            'SplinePoint'   : 'Spline.points',
+            'Spline'        : 'Spline.splines',
+
+            'CloudPoint'    : 'Cloud.points',
+            'Layer'         : 'GreasePencil.layers',
+
+        }
 
         file.write("# Cross Reference\n\n")
 
@@ -546,7 +561,7 @@ def generate(folder, sub_folder):
 
                     fname = d['func_name']
                     if True:
-                        file.write(f"nd.{fname}.{d['signature']}\n\n")
+                        file.write(f"``` python\nnd.{fname}.{d['signature']}\n```\n\n")
                     else:
                         file.write(f"[{nd}]({nd}.md).[{fname}]({nd}.md#{nd_path[nd]}.{fname}){d['signature']}\n\n")
 
@@ -568,9 +583,8 @@ def generate(folder, sub_folder):
                         print()
                         continue
 
-
                     if True:
-                        base = f"{class_name}.{fname}"
+                        base = f"{domains.get(class_name, class_name)}.{fname}"
 
                         file.write("```python\n")
 
