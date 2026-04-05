@@ -86,6 +86,10 @@ nav:
 
     - Cross Reference: api/cross_reference.md
 
+  - Demos:
+    - Overview: demos/index.md
+    - Arrows: demos/arrows.md
+
 markdown_extensions:
   - admonition
   - pymdownx.details
