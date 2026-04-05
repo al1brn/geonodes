@@ -545,7 +545,11 @@ def generate(folder, sub_folder):
                 for d in dct[nd]:
 
                     fname = d['func_name']
-                    file.write(f"[{nd}]({nd}.md).[{fname}]({nd}.md#{nd_path[nd]}.{fname}){d['signature']}\n\n")
+                    if True:
+                        file.write(f"nd.{fname}.{d['signature']}\n\n")
+                    else:
+                        file.write(f"[{nd}]({nd}.md).[{fname}]({nd}.md#{nd_path[nd]}.{fname}){d['signature']}\n\n")
+
 
             for class_name in dct:
                 if class_name in ('nd', 'snd'):
@@ -564,10 +568,12 @@ def generate(folder, sub_folder):
                         print()
                         continue
 
-                    base = f"[{class_name}]({page_name}.md).[{fname}]({page_name}.md#{class_path}.{fname})"
 
-                    file.write("```python\n")
-                    try:
+                    if True:
+                        base = f"{class_name}.{fname}"
+
+                        file.write("```python\n")
+
                         if d.get('is_get', False):
                             file.write(f"prop = {base}")
                         elif d.get('is_set', False):
@@ -575,11 +581,20 @@ def generate(folder, sub_folder):
                         else:
                             file.write(f"{base}{d['signature']}")
 
-                    except Exception as e:
-                        pprint(d)
-                        raise e
-                    
-                    file.write("\n```\n\n")
+                        file.write("\n```\n\n")
+                    else:
+                        base = f"[{class_name}]({page_name}.md).[{fname}]({page_name}.md#{class_path}.{fname})"
+                        try:
+                            if d.get('is_get', False):
+                                file.write(f"prop = {base}")
+                            elif d.get('is_set', False):
+                                file.write(f"{base} = value")
+                            else:
+                                file.write(f"{base}{d['signature']}")
+
+                        except Exception as e:
+                            pprint(d)
+                            raise e
 
 
     print("Done")
