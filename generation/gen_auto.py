@@ -515,12 +515,17 @@ def generate(folder, sub_folder):
     # Corss reference md file
     with open("/Users/alain/Documents/blender/scripts/modules/geonodes/docs/api/cross_reference.md", 'w') as file:
 
+        nd_path= {
+            'nd'  : "geonodes.core.generated.static_nd.ND",
+            'snd' : "geonodes.core.generated.static_snd.SND",
+        }
+
         file.write("# Cross Reference\n\n")
 
         for blid in sorted(cross.keys()):
 
-            #print(">>>>", blid)
-            #pprint(cross[blid])
+            
+
 
             dct = cross[blid]
             file.write(f"## {blid} ({blid})\n\n")
@@ -533,9 +538,7 @@ def generate(folder, sub_folder):
                 for d in dct[nd]:
 
                     fname = d['func_name']
-                    file.write(f"[{nd}]({nd}.md).[{fname}]({nd}.md#{fname}){d['signature']}\n\n")
-
-
+                    file.write(f"[{nd}]({nd}.md).[{fname}]({nd}.md#{nd_path[nd]}.{fname}){d['signature']}\n\n")
 
 
         

@@ -4,7 +4,7 @@
 
 ### nd
 
-[nd](nd.md).[align_rotation_to_vector](nd.md#align_rotation_to_vector)(cls,
+[nd](nd.md).[align_rotation_to_vector](nd.md#geonodes.core.generated.static_nd.ND.align_rotation_to_vector)(cls,
                     rotation: Rotation = None,
                     vector: Vector = None,
                     factor: Float = None,
@@ -15,7 +15,7 @@
 
 ### nd
 
-[nd](nd.md).[axes_to_rotation](nd.md#axes_to_rotation)(cls,
+[nd](nd.md).[axes_to_rotation](nd.md#geonodes.core.generated.static_nd.ND.axes_to_rotation)(cls,
                     primary_axis_1: Vector = None,
                     secondary_axis_1: Vector = None,
                     primary_axis: Literal['X', 'Y', 'Z'] = 'Z',
@@ -25,13 +25,13 @@
 
 ### nd
 
-[nd](nd.md).[axis_angle_to_rotation](nd.md#axis_angle_to_rotation)(cls, axis: Vector = None, angle: Float = None)
+[nd](nd.md).[axis_angle_to_rotation](nd.md#geonodes.core.generated.static_nd.ND.axis_angle_to_rotation)(cls, axis: Vector = None, angle: Float = None)
 
 ## FunctionNodeBitMath (FunctionNodeBitMath)
 
 ### nd
 
-[nd](nd.md).[bit_math](nd.md#bit_math)(cls,
+[nd](nd.md).[bit_math](nd.md#geonodes.core.generated.static_nd.ND.bit_math)(cls,
                     a: Integer = None,
                     b: Integer = None,
                     shift: Integer = None,
@@ -41,7 +41,7 @@
 
 ### nd
 
-[nd](nd.md).[boolean_math](nd.md#boolean_math)(cls,
+[nd](nd.md).[boolean_math](nd.md#geonodes.core.generated.static_nd.ND.boolean_math)(cls,
                     boolean: Boolean = None,
                     boolean_1: Boolean = None,
                     operation: Literal['AND', 'OR', 'NOT', 'NAND', 'NOR', 'XNOR', 'XOR', 'IMPLY', 'NIMPLY'] = 'AND')
@@ -50,7 +50,7 @@
 
 ### nd
 
-[nd](nd.md).[combine_color](nd.md#combine_color)(cls,
+[nd](nd.md).[combine_color](nd.md#geonodes.core.generated.static_nd.ND.combine_color)(cls,
                     red: Float = None,
                     green: Float = None,
                     blue: Float = None,
@@ -61,7 +61,7 @@
 
 ### nd
 
-[nd](nd.md).[combine_matrix](nd.md#combine_matrix)(cls,
+[nd](nd.md).[combine_matrix](nd.md#geonodes.core.generated.static_nd.ND.combine_matrix)(cls,
                     column_1_row_1: Float = None,
                     column_1_row_2: Float = None,
                     column_1_row_3: Float = None,
@@ -83,7 +83,7 @@
 
 ### nd
 
-[nd](nd.md).[combine_transform](nd.md#combine_transform)(cls,
+[nd](nd.md).[combine_transform](nd.md#geonodes.core.generated.static_nd.ND.combine_transform)(cls,
                     translation: Vector = None,
                     rotation: Rotation = None,
                     scale: Vector = None)
@@ -92,7 +92,7 @@
 
 ### nd
 
-[nd](nd.md).[compare](nd.md#compare)(cls,
+[nd](nd.md).[compare](nd.md#geonodes.core.generated.static_nd.ND.compare)(cls,
                     a: Float = None,
                     b: Float = None,
                     a_1: Integer = None,
@@ -114,19 +114,19 @@
 
 ### nd
 
-[nd](nd.md).[euler_to_rotation](nd.md#euler_to_rotation)(cls, euler: Vector = None)
+[nd](nd.md).[euler_to_rotation](nd.md#geonodes.core.generated.static_nd.ND.euler_to_rotation)(cls, euler: Vector = None)
 
 ## FunctionNodeFindInString (FunctionNodeFindInString)
 
 ### nd
 
-[nd](nd.md).[find_in_string](nd.md#find_in_string)(cls, string: String = None, search: String = None)
+[nd](nd.md).[find_in_string](nd.md#geonodes.core.generated.static_nd.ND.find_in_string)(cls, string: String = None, search: String = None)
 
 ## FunctionNodeFloatToInt (FunctionNodeFloatToInt)
 
 ### nd
 
-[nd](nd.md).[float_to_integer](nd.md#float_to_integer)(cls,
+[nd](nd.md).[float_to_integer](nd.md#geonodes.core.generated.static_nd.ND.float_to_integer)(cls,
                     float: Float = None,
                     rounding_mode: Literal['ROUND', 'FLOOR', 'CEILING', 'TRUNCATE'] = 'ROUND')
 
@@ -134,13 +134,13 @@
 
 ### nd
 
-[nd](nd.md).[format_string](nd.md#format_string)(cls, named_sockets: dict = {}, format: String = None, **sockets)
+[nd](nd.md).[format_string](nd.md#geonodes.core.generated.static_nd.ND.format_string)(cls, named_sockets: dict = {}, format: String = None, **sockets)
 
 ## FunctionNodeHashValue (FunctionNodeHashValue)
 
 ### nd
 
-[nd](nd.md).[hash_value](nd.md#hash_value)(cls,
+[nd](nd.md).[hash_value](nd.md#geonodes.core.generated.static_nd.ND.hash_value)(cls,
                     value: Integer = None,
                     seed: Integer = None,
                     data_type: Literal['FLOAT', 'INT', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING'] = 'INT')
@@ -149,49 +149,49 @@
 
 ### nd
 
-[nd](nd.md).[boolean](nd.md#boolean)(cls, boolean = False)
+[nd](nd.md).[boolean](nd.md#geonodes.core.generated.static_nd.ND.boolean)(cls, boolean = False)
 
 ## FunctionNodeInputColor (FunctionNodeInputColor)
 
 ### nd
 
-[nd](nd.md).[color](nd.md#color)(self)
+[nd](nd.md).[color](nd.md#geonodes.core.generated.static_nd.ND.color)(self)
 
 ## FunctionNodeInputInt (FunctionNodeInputInt)
 
 ### nd
 
-[nd](nd.md).[integer](nd.md#integer)(cls, integer = 0)
+[nd](nd.md).[integer](nd.md#geonodes.core.generated.static_nd.ND.integer)(cls, integer = 0)
 
 ## FunctionNodeInputRotation (FunctionNodeInputRotation)
 
 ### nd
 
-[nd](nd.md).[rotation](nd.md#rotation)(self)
+[nd](nd.md).[rotation](nd.md#geonodes.core.generated.static_nd.ND.rotation)(self)
 
 ## FunctionNodeInputSpecialCharacters (FunctionNodeInputSpecialCharacters)
 
 ### nd
 
-[nd](nd.md).[special_characters](nd.md#special_characters)(cls)
+[nd](nd.md).[special_characters](nd.md#geonodes.core.generated.static_nd.ND.special_characters)(cls)
 
 ## FunctionNodeInputString (FunctionNodeInputString)
 
 ### nd
 
-[nd](nd.md).[string](nd.md#string)(cls, string = '')
+[nd](nd.md).[string](nd.md#geonodes.core.generated.static_nd.ND.string)(cls, string = '')
 
 ## FunctionNodeInputVector (FunctionNodeInputVector)
 
 ### nd
 
-[nd](nd.md).[vector](nd.md#vector)(self)
+[nd](nd.md).[vector](nd.md#geonodes.core.generated.static_nd.ND.vector)(self)
 
 ## FunctionNodeIntegerMath (FunctionNodeIntegerMath)
 
 ### nd
 
-[nd](nd.md).[integer_math](nd.md#integer_math)(cls,
+[nd](nd.md).[integer_math](nd.md#geonodes.core.generated.static_nd.ND.integer_math)(cls,
                     value: Integer = None,
                     value_1: Integer = None,
                     value_2: Integer = None,
@@ -201,19 +201,19 @@
 
 ### nd
 
-[nd](nd.md).[invert_matrix](nd.md#invert_matrix)(cls, matrix: Matrix = None)
+[nd](nd.md).[invert_matrix](nd.md#geonodes.core.generated.static_nd.ND.invert_matrix)(cls, matrix: Matrix = None)
 
 ## FunctionNodeInvertRotation (FunctionNodeInvertRotation)
 
 ### nd
 
-[nd](nd.md).[invert_rotation](nd.md#invert_rotation)(cls, rotation: Rotation = None)
+[nd](nd.md).[invert_rotation](nd.md#geonodes.core.generated.static_nd.ND.invert_rotation)(cls, rotation: Rotation = None)
 
 ## FunctionNodeMatchString (FunctionNodeMatchString)
 
 ### nd
 
-[nd](nd.md).[match_string](nd.md#match_string)(cls,
+[nd](nd.md).[match_string](nd.md#geonodes.core.generated.static_nd.ND.match_string)(cls,
                     string: String = None,
                     operation: Literal['Starts With', 'Ends With', 'Contains'] = None,
                     key: String = None)
@@ -222,37 +222,37 @@
 
 ### nd
 
-[nd](nd.md).[matrix_determinant](nd.md#matrix_determinant)(cls, matrix: Matrix = None)
+[nd](nd.md).[matrix_determinant](nd.md#geonodes.core.generated.static_nd.ND.matrix_determinant)(cls, matrix: Matrix = None)
 
 ## FunctionNodeMatrixMultiply (FunctionNodeMatrixMultiply)
 
 ### nd
 
-[nd](nd.md).[multiply_matrices](nd.md#multiply_matrices)(cls, matrix: Matrix = None, matrix_1: Matrix = None)
+[nd](nd.md).[multiply_matrices](nd.md#geonodes.core.generated.static_nd.ND.multiply_matrices)(cls, matrix: Matrix = None, matrix_1: Matrix = None)
 
 ## FunctionNodeMatrixSVD (FunctionNodeMatrixSVD)
 
 ### nd
 
-[nd](nd.md).[matrix_svd](nd.md#matrix_svd)(cls, matrix: Matrix = None)
+[nd](nd.md).[matrix_svd](nd.md#geonodes.core.generated.static_nd.ND.matrix_svd)(cls, matrix: Matrix = None)
 
 ## FunctionNodeProjectPoint (FunctionNodeProjectPoint)
 
 ### nd
 
-[nd](nd.md).[project_point](nd.md#project_point)(cls, vector: Vector = None, transform: Matrix = None)
+[nd](nd.md).[project_point](nd.md#geonodes.core.generated.static_nd.ND.project_point)(cls, vector: Vector = None, transform: Matrix = None)
 
 ## FunctionNodeQuaternionToRotation (FunctionNodeQuaternionToRotation)
 
 ### nd
 
-[nd](nd.md).[quaternion_to_rotation](nd.md#quaternion_to_rotation)(cls, w: Float = None, x: Float = None, y: Float = None, z: Float = None)
+[nd](nd.md).[quaternion_to_rotation](nd.md#geonodes.core.generated.static_nd.ND.quaternion_to_rotation)(cls, w: Float = None, x: Float = None, y: Float = None, z: Float = None)
 
 ## FunctionNodeRandomValue (FunctionNodeRandomValue)
 
 ### nd
 
-[nd](nd.md).[random_value](nd.md#random_value)(cls,
+[nd](nd.md).[random_value](nd.md#geonodes.core.generated.static_nd.ND.random_value)(cls,
                     min: Vector = None,
                     max: Vector = None,
                     min_1: Float = None,
@@ -268,13 +268,13 @@
 
 ### nd
 
-[nd](nd.md).[replace_string](nd.md#replace_string)(cls, string: String = None, find: String = None, replace: String = None)
+[nd](nd.md).[replace_string](nd.md#geonodes.core.generated.static_nd.ND.replace_string)(cls, string: String = None, find: String = None, replace: String = None)
 
 ## FunctionNodeRotateRotation (FunctionNodeRotateRotation)
 
 ### nd
 
-[nd](nd.md).[rotate_rotation](nd.md#rotate_rotation)(cls,
+[nd](nd.md).[rotate_rotation](nd.md#geonodes.core.generated.static_nd.ND.rotate_rotation)(cls,
                     rotation: Rotation = None,
                     rotate_by: Rotation = None,
                     rotation_space: Literal['GLOBAL', 'LOCAL'] = 'GLOBAL')
@@ -283,85 +283,85 @@
 
 ### nd
 
-[nd](nd.md).[rotate_vector](nd.md#rotate_vector)(cls, vector: Vector = None, rotation: Rotation = None)
+[nd](nd.md).[rotate_vector](nd.md#geonodes.core.generated.static_nd.ND.rotate_vector)(cls, vector: Vector = None, rotation: Rotation = None)
 
 ## FunctionNodeRotationToAxisAngle (FunctionNodeRotationToAxisAngle)
 
 ### nd
 
-[nd](nd.md).[rotation_to_axis_angle](nd.md#rotation_to_axis_angle)(cls, rotation: Rotation = None)
+[nd](nd.md).[rotation_to_axis_angle](nd.md#geonodes.core.generated.static_nd.ND.rotation_to_axis_angle)(cls, rotation: Rotation = None)
 
 ## FunctionNodeRotationToEuler (FunctionNodeRotationToEuler)
 
 ### nd
 
-[nd](nd.md).[rotation_to_euler](nd.md#rotation_to_euler)(cls, rotation: Rotation = None)
+[nd](nd.md).[rotation_to_euler](nd.md#geonodes.core.generated.static_nd.ND.rotation_to_euler)(cls, rotation: Rotation = None)
 
 ## FunctionNodeRotationToQuaternion (FunctionNodeRotationToQuaternion)
 
 ### nd
 
-[nd](nd.md).[rotation_to_quaternion](nd.md#rotation_to_quaternion)(cls, rotation: Rotation = None)
+[nd](nd.md).[rotation_to_quaternion](nd.md#geonodes.core.generated.static_nd.ND.rotation_to_quaternion)(cls, rotation: Rotation = None)
 
 ## FunctionNodeSeparateColor (FunctionNodeSeparateColor)
 
 ### nd
 
-[nd](nd.md).[separate_color](nd.md#separate_color)(cls, color: Color = None, mode: Literal['RGB', 'HSV', 'HSL'] = 'RGB')
+[nd](nd.md).[separate_color](nd.md#geonodes.core.generated.static_nd.ND.separate_color)(cls, color: Color = None, mode: Literal['RGB', 'HSV', 'HSL'] = 'RGB')
 
 ## FunctionNodeSeparateMatrix (FunctionNodeSeparateMatrix)
 
 ### nd
 
-[nd](nd.md).[separate_matrix](nd.md#separate_matrix)(cls, matrix: Matrix = None)
+[nd](nd.md).[separate_matrix](nd.md#geonodes.core.generated.static_nd.ND.separate_matrix)(cls, matrix: Matrix = None)
 
 ## FunctionNodeSeparateTransform (FunctionNodeSeparateTransform)
 
 ### nd
 
-[nd](nd.md).[separate_transform](nd.md#separate_transform)(cls, transform: Matrix = None)
+[nd](nd.md).[separate_transform](nd.md#geonodes.core.generated.static_nd.ND.separate_transform)(cls, transform: Matrix = None)
 
 ## FunctionNodeSliceString (FunctionNodeSliceString)
 
 ### nd
 
-[nd](nd.md).[slice_string](nd.md#slice_string)(cls, string: String = None, position: Integer = None, length: Integer = None)
+[nd](nd.md).[slice_string](nd.md#geonodes.core.generated.static_nd.ND.slice_string)(cls, string: String = None, position: Integer = None, length: Integer = None)
 
 ## FunctionNodeStringLength (FunctionNodeStringLength)
 
 ### nd
 
-[nd](nd.md).[string_length](nd.md#string_length)(cls, string: String = None)
+[nd](nd.md).[string_length](nd.md#geonodes.core.generated.static_nd.ND.string_length)(cls, string: String = None)
 
 ## FunctionNodeStringToValue (FunctionNodeStringToValue)
 
 ### nd
 
-[nd](nd.md).[string_to_value](nd.md#string_to_value)(cls, string: String = None, data_type: Literal['FLOAT', 'INT'] = 'FLOAT')
+[nd](nd.md).[string_to_value](nd.md#geonodes.core.generated.static_nd.ND.string_to_value)(cls, string: String = None, data_type: Literal['FLOAT', 'INT'] = 'FLOAT')
 
 ## FunctionNodeTransformDirection (FunctionNodeTransformDirection)
 
 ### nd
 
-[nd](nd.md).[transform_direction](nd.md#transform_direction)(cls, direction: Vector = None, transform: Matrix = None)
+[nd](nd.md).[transform_direction](nd.md#geonodes.core.generated.static_nd.ND.transform_direction)(cls, direction: Vector = None, transform: Matrix = None)
 
 ## FunctionNodeTransformPoint (FunctionNodeTransformPoint)
 
 ### nd
 
-[nd](nd.md).[transform_point](nd.md#transform_point)(cls, vector: Vector = None, transform: Matrix = None)
+[nd](nd.md).[transform_point](nd.md#geonodes.core.generated.static_nd.ND.transform_point)(cls, vector: Vector = None, transform: Matrix = None)
 
 ## FunctionNodeTransposeMatrix (FunctionNodeTransposeMatrix)
 
 ### nd
 
-[nd](nd.md).[transpose_matrix](nd.md#transpose_matrix)(cls, matrix: Matrix = None)
+[nd](nd.md).[transpose_matrix](nd.md#geonodes.core.generated.static_nd.ND.transpose_matrix)(cls, matrix: Matrix = None)
 
 ## FunctionNodeValueToString (FunctionNodeValueToString)
 
 ### nd
 
-[nd](nd.md).[value_to_string](nd.md#value_to_string)(cls,
+[nd](nd.md).[value_to_string](nd.md#geonodes.core.generated.static_nd.ND.value_to_string)(cls,
                     value: Float = None,
                     decimals: Integer = None,
                     data_type: Literal['FLOAT', 'INT'] = 'FLOAT')
@@ -370,7 +370,7 @@
 
 ### nd
 
-[nd](nd.md).[accumulate_field](nd.md#accumulate_field)(cls,
+[nd](nd.md).[accumulate_field](nd.md#geonodes.core.generated.static_nd.ND.accumulate_field)(cls,
                     value: Float = None,
                     group_id: Integer = None,
                     data_type: Literal['FLOAT', 'INT', 'FLOAT_VECTOR', 'TRANSFORM'] = 'FLOAT',
@@ -380,7 +380,7 @@
 
 ### nd
 
-[nd](nd.md).[domain_size](nd.md#domain_size)(cls,
+[nd](nd.md).[domain_size](nd.md#geonodes.core.generated.static_nd.ND.domain_size)(cls,
                     geometry: Geometry = None,
                     component: Literal['MESH', 'POINTCLOUD', 'CURVE', 'INSTANCES', 'GREASEPENCIL'] = 'MESH')
 
@@ -388,7 +388,7 @@
 
 ### nd
 
-[nd](nd.md).[attribute_statistic](nd.md#attribute_statistic)(cls,
+[nd](nd.md).[attribute_statistic](nd.md#geonodes.core.generated.static_nd.ND.attribute_statistic)(cls,
                     geometry: Geometry = None,
                     selection: Boolean = None,
                     attribute: Float = None,
@@ -399,13 +399,13 @@
 
 ### nd
 
-[nd](nd.md).[bake](nd.md#bake)(cls, named_sockets: dict = {}, **sockets)
+[nd](nd.md).[bake](nd.md#geonodes.core.generated.static_nd.ND.bake)(cls, named_sockets: dict = {}, **sockets)
 
 ## GeometryNodeBlurAttribute (GeometryNodeBlurAttribute)
 
 ### nd
 
-[nd](nd.md).[blur_attribute](nd.md#blur_attribute)(cls,
+[nd](nd.md).[blur_attribute](nd.md#geonodes.core.generated.static_nd.ND.blur_attribute)(cls,
                     value: Float = None,
                     iterations: Integer = None,
                     weight: Float = None,
@@ -415,7 +415,7 @@
 
 ### nd
 
-[nd](nd.md).[bone_info](nd.md#bone_info)(cls,
+[nd](nd.md).[bone_info](nd.md#geonodes.core.generated.static_nd.ND.bone_info)(cls,
                     armature: Object = None,
                     bone_name: String = None,
                     transform_space: Literal['ORIGINAL', 'RELATIVE'] = 'ORIGINAL')
@@ -424,13 +424,13 @@
 
 ### nd
 
-[nd](nd.md).[bounding_box](nd.md#bounding_box)(cls, geometry: Geometry = None, use_radius: Boolean = None)
+[nd](nd.md).[bounding_box](nd.md#geonodes.core.generated.static_nd.ND.bounding_box)(cls, geometry: Geometry = None, use_radius: Boolean = None)
 
 ## GeometryNodeCameraInfo (GeometryNodeCameraInfo)
 
 ### nd
 
-[nd](nd.md).[camera_info](nd.md#camera_info)(cls, camera: Object = None)
+[nd](nd.md).[camera_info](nd.md#geonodes.core.generated.static_nd.ND.camera_info)(cls, camera: Object = None)
 
 ## GeometryNodeCaptureAttribute (GeometryNodeCaptureAttribute)
 
@@ -438,7 +438,7 @@
 
 ### nd
 
-[nd](nd.md).[collection_info](nd.md#collection_info)(cls,
+[nd](nd.md).[collection_info](nd.md#geonodes.core.generated.static_nd.ND.collection_info)(cls,
                     collection: Collection = None,
                     separate_children: Boolean = None,
                     reset_children: Boolean = None,
@@ -448,13 +448,13 @@
 
 ### nd
 
-[nd](nd.md).[convex_hull](nd.md#convex_hull)(cls, geometry: Geometry = None)
+[nd](nd.md).[convex_hull](nd.md#geonodes.core.generated.static_nd.ND.convex_hull)(cls, geometry: Geometry = None)
 
 ## GeometryNodeCornersOfEdge (GeometryNodeCornersOfEdge)
 
 ### nd
 
-[nd](nd.md).[corners_of_edge](nd.md#corners_of_edge)(cls,
+[nd](nd.md).[corners_of_edge](nd.md#geonodes.core.generated.static_nd.ND.corners_of_edge)(cls,
                     edge_index: Integer = None,
                     weights: Float = None,
                     sort_index: Integer = None)
@@ -463,7 +463,7 @@
 
 ### nd
 
-[nd](nd.md).[corners_of_face](nd.md#corners_of_face)(cls,
+[nd](nd.md).[corners_of_face](nd.md#geonodes.core.generated.static_nd.ND.corners_of_face)(cls,
                     face_index: Integer = None,
                     weights: Float = None,
                     sort_index: Integer = None)
@@ -472,7 +472,7 @@
 
 ### nd
 
-[nd](nd.md).[corners_of_vertex](nd.md#corners_of_vertex)(cls,
+[nd](nd.md).[corners_of_vertex](nd.md#geonodes.core.generated.static_nd.ND.corners_of_vertex)(cls,
                     vertex_index: Integer = None,
                     weights: Float = None,
                     sort_index: Integer = None)
@@ -481,7 +481,7 @@
 
 ### nd
 
-[nd](nd.md).[cube_grid_topology](nd.md#cube_grid_topology)(cls,
+[nd](nd.md).[cube_grid_topology](nd.md#geonodes.core.generated.static_nd.ND.cube_grid_topology)(cls,
                     bounds_min: Vector = None,
                     bounds_max: Vector = None,
                     resolution_x: Integer = None,
@@ -495,7 +495,7 @@
 
 ### nd
 
-[nd](nd.md).[arc](nd.md#arc)(cls,
+[nd](nd.md).[arc](nd.md#geonodes.core.generated.static_nd.ND.arc)(cls,
                     resolution: Integer = None,
                     start: Vector = None,
                     middle: Vector = None,
@@ -512,13 +512,13 @@
 
 ### nd
 
-[nd](nd.md).[endpoint_selection](nd.md#endpoint_selection)(cls, start_size: Integer = None, end_size: Integer = None)
+[nd](nd.md).[endpoint_selection](nd.md#geonodes.core.generated.static_nd.ND.endpoint_selection)(cls, start_size: Integer = None, end_size: Integer = None)
 
 ## GeometryNodeCurveHandleTypeSelection (GeometryNodeCurveHandleTypeSelection)
 
 ### nd
 
-[nd](nd.md).[handle_type_selection](nd.md#handle_type_selection)(cls,
+[nd](nd.md).[handle_type_selection](nd.md#geonodes.core.generated.static_nd.ND.handle_type_selection)(cls,
                     handle_type: Literal['FREE', 'AUTO', 'VECTOR', 'ALIGN'] = 'AUTO',
                     mode = {'RIGHT', 'LEFT'})
 
@@ -526,19 +526,19 @@
 
 ### nd
 
-[nd](nd.md).[curve_length](nd.md#curve_length)(cls, curve: Curve = None)
+[nd](nd.md).[curve_length](nd.md#geonodes.core.generated.static_nd.ND.curve_length)(cls, curve: Curve = None)
 
 ## GeometryNodeCurveOfPoint (GeometryNodeCurveOfPoint)
 
 ### nd
 
-[nd](nd.md).[curve_of_point](nd.md#curve_of_point)(cls, point_index: Integer = None)
+[nd](nd.md).[curve_of_point](nd.md#geonodes.core.generated.static_nd.ND.curve_of_point)(cls, point_index: Integer = None)
 
 ## GeometryNodeCurvePrimitiveBezierSegment (GeometryNodeCurvePrimitiveBezierSegment)
 
 ### nd
 
-[nd](nd.md).[bezier_segment](nd.md#bezier_segment)(cls,
+[nd](nd.md).[bezier_segment](nd.md#geonodes.core.generated.static_nd.ND.bezier_segment)(cls,
                     resolution: Integer = None,
                     start: Vector = None,
                     start_handle: Vector = None,
@@ -550,7 +550,7 @@
 
 ### nd
 
-[nd](nd.md).[curve_circle](nd.md#curve_circle)(cls,
+[nd](nd.md).[curve_circle](nd.md#geonodes.core.generated.static_nd.ND.curve_circle)(cls,
                     resolution: Integer = None,
                     point_1: Vector = None,
                     point_2: Vector = None,
@@ -562,7 +562,7 @@
 
 ### nd
 
-[nd](nd.md).[curve_line](nd.md#curve_line)(cls,
+[nd](nd.md).[curve_line](nd.md#geonodes.core.generated.static_nd.ND.curve_line)(cls,
                     start: Vector = None,
                     end: Vector = None,
                     direction: Vector = None,
@@ -573,7 +573,7 @@
 
 ### nd
 
-[nd](nd.md).[quadrilateral](nd.md#quadrilateral)(cls,
+[nd](nd.md).[quadrilateral](nd.md#geonodes.core.generated.static_nd.ND.quadrilateral)(cls,
                     width: Float = None,
                     height: Float = None,
                     bottom_width: Float = None,
@@ -591,7 +591,7 @@
 
 ### nd
 
-[nd](nd.md).[quadratic_bezier](nd.md#quadratic_bezier)(cls,
+[nd](nd.md).[quadratic_bezier](nd.md#geonodes.core.generated.static_nd.ND.quadratic_bezier)(cls,
                     resolution: Integer = None,
                     start: Vector = None,
                     middle: Vector = None,
@@ -601,7 +601,7 @@
 
 ### nd
 
-[nd](nd.md).[set_handle_type](nd.md#set_handle_type)(cls,
+[nd](nd.md).[set_handle_type](nd.md#geonodes.core.generated.static_nd.ND.set_handle_type)(cls,
                     curve: Curve = None,
                     selection: Boolean = None,
                     handle_type: Literal['FREE', 'AUTO', 'VECTOR', 'ALIGN'] = 'AUTO',
@@ -611,7 +611,7 @@
 
 ### nd
 
-[nd](nd.md).[spiral](nd.md#spiral)(cls,
+[nd](nd.md).[spiral](nd.md#geonodes.core.generated.static_nd.ND.spiral)(cls,
                     resolution: Integer = None,
                     rotations: Float = None,
                     start_radius: Float = None,
@@ -623,7 +623,7 @@
 
 ### nd
 
-[nd](nd.md).[set_spline_type](nd.md#set_spline_type)(cls,
+[nd](nd.md).[set_spline_type](nd.md#geonodes.core.generated.static_nd.ND.set_spline_type)(cls,
                     curve: Curve = None,
                     selection: Boolean = None,
                     spline_type: Literal['CATMULL_ROM', 'POLY', 'BEZIER', 'NURBS'] = 'POLY')
@@ -632,7 +632,7 @@
 
 ### nd
 
-[nd](nd.md).[star](nd.md#star)(cls,
+[nd](nd.md).[star](nd.md#geonodes.core.generated.static_nd.ND.star)(cls,
                     points: Integer = None,
                     inner_radius: Float = None,
                     outer_radius: Float = None,
@@ -642,7 +642,7 @@
 
 ### nd
 
-[nd](nd.md).[curve_to_mesh](nd.md#curve_to_mesh)(cls,
+[nd](nd.md).[curve_to_mesh](nd.md#geonodes.core.generated.static_nd.ND.curve_to_mesh)(cls,
                     curve: Curve = None,
                     profile_curve: Curve = None,
                     scale: Float = None,
@@ -652,7 +652,7 @@
 
 ### nd
 
-[nd](nd.md).[curve_to_points](nd.md#curve_to_points)(cls,
+[nd](nd.md).[curve_to_points](nd.md#geonodes.core.generated.static_nd.ND.curve_to_points)(cls,
                     curve: Curve = None,
                     count: Integer = None,
                     length: Float = None,
@@ -662,7 +662,7 @@
 
 ### nd
 
-[nd](nd.md).[curves_to_grease_pencil](nd.md#curves_to_grease_pencil)(cls,
+[nd](nd.md).[curves_to_grease_pencil](nd.md#geonodes.core.generated.static_nd.ND.curves_to_grease_pencil)(cls,
                     curves: Curve = None,
                     selection: Boolean = None,
                     instances_as_layers: Boolean = None)
@@ -671,13 +671,13 @@
 
 ### nd
 
-[nd](nd.md).[deform_curves_on_surface](nd.md#deform_curves_on_surface)(cls, curves: Curve = None)
+[nd](nd.md).[deform_curves_on_surface](nd.md#geonodes.core.generated.static_nd.ND.deform_curves_on_surface)(cls, curves: Curve = None)
 
 ## GeometryNodeDeleteGeometry (GeometryNodeDeleteGeometry)
 
 ### nd
 
-[nd](nd.md).[delete_geometry](nd.md#delete_geometry)(cls,
+[nd](nd.md).[delete_geometry](nd.md#geonodes.core.generated.static_nd.ND.delete_geometry)(cls,
                     geometry: Geometry = None,
                     selection: Boolean = None,
                     domain: Literal['POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE', 'LAYER'] = 'POINT',
@@ -687,7 +687,7 @@
 
 ### nd
 
-[nd](nd.md).[distribute_points_in_grid](nd.md#distribute_points_in_grid)(cls,
+[nd](nd.md).[distribute_points_in_grid](nd.md#geonodes.core.generated.static_nd.ND.distribute_points_in_grid)(cls,
                     grid: Float = None,
                     density: Float = None,
                     seed: Integer = None,
@@ -699,7 +699,7 @@
 
 ### nd
 
-[nd](nd.md).[distribute_points_in_volume](nd.md#distribute_points_in_volume)(cls,
+[nd](nd.md).[distribute_points_in_volume](nd.md#geonodes.core.generated.static_nd.ND.distribute_points_in_volume)(cls,
                     volume: Volume = None,
                     mode: Literal['Random', 'Grid'] = None,
                     density: Float = None,
@@ -711,7 +711,7 @@
 
 ### nd
 
-[nd](nd.md).[distribute_points_on_faces](nd.md#distribute_points_on_faces)(cls,
+[nd](nd.md).[distribute_points_on_faces](nd.md#geonodes.core.generated.static_nd.ND.distribute_points_on_faces)(cls,
                     mesh: Mesh = None,
                     selection: Boolean = None,
                     distance_min: Float = None,
@@ -725,13 +725,13 @@
 
 ### nd
 
-[nd](nd.md).[dual_mesh](nd.md#dual_mesh)(cls, mesh: Mesh = None, keep_boundaries: Boolean = None)
+[nd](nd.md).[dual_mesh](nd.md#geonodes.core.generated.static_nd.ND.dual_mesh)(cls, mesh: Mesh = None, keep_boundaries: Boolean = None)
 
 ## GeometryNodeDuplicateElements (GeometryNodeDuplicateElements)
 
 ### nd
 
-[nd](nd.md).[duplicate_elements](nd.md#duplicate_elements)(cls,
+[nd](nd.md).[duplicate_elements](nd.md#geonodes.core.generated.static_nd.ND.duplicate_elements)(cls,
                     geometry: Geometry = None,
                     selection: Boolean = None,
                     amount: Integer = None,
@@ -741,7 +741,7 @@
 
 ### nd
 
-[nd](nd.md).[edge_paths_to_curves](nd.md#edge_paths_to_curves)(cls,
+[nd](nd.md).[edge_paths_to_curves](nd.md#geonodes.core.generated.static_nd.ND.edge_paths_to_curves)(cls,
                     mesh: Mesh = None,
                     start_vertices: Boolean = None,
                     next_vertex_index: Integer = None)
@@ -750,19 +750,19 @@
 
 ### nd
 
-[nd](nd.md).[edge_paths_to_selection](nd.md#edge_paths_to_selection)(cls, start_vertices: Boolean = None, next_vertex_index: Integer = None)
+[nd](nd.md).[edge_paths_to_selection](nd.md#geonodes.core.generated.static_nd.ND.edge_paths_to_selection)(cls, start_vertices: Boolean = None, next_vertex_index: Integer = None)
 
 ## GeometryNodeEdgesOfCorner (GeometryNodeEdgesOfCorner)
 
 ### nd
 
-[nd](nd.md).[edges_of_corner](nd.md#edges_of_corner)(cls, corner_index: Integer = None)
+[nd](nd.md).[edges_of_corner](nd.md#geonodes.core.generated.static_nd.ND.edges_of_corner)(cls, corner_index: Integer = None)
 
 ## GeometryNodeEdgesOfVertex (GeometryNodeEdgesOfVertex)
 
 ### nd
 
-[nd](nd.md).[edges_of_vertex](nd.md#edges_of_vertex)(cls,
+[nd](nd.md).[edges_of_vertex](nd.md#geonodes.core.generated.static_nd.ND.edges_of_vertex)(cls,
                     vertex_index: Integer = None,
                     weights: Float = None,
                     sort_index: Integer = None)
@@ -771,13 +771,13 @@
 
 ### nd
 
-[nd](nd.md).[edges_to_face_groups](nd.md#edges_to_face_groups)(cls, boundary_edges: Boolean = None)
+[nd](nd.md).[edges_to_face_groups](nd.md#geonodes.core.generated.static_nd.ND.edges_to_face_groups)(cls, boundary_edges: Boolean = None)
 
 ## GeometryNodeExtrudeMesh (GeometryNodeExtrudeMesh)
 
 ### nd
 
-[nd](nd.md).[extrude_mesh](nd.md#extrude_mesh)(cls,
+[nd](nd.md).[extrude_mesh](nd.md#geonodes.core.generated.static_nd.ND.extrude_mesh)(cls,
                     mesh: Mesh = None,
                     selection: Boolean = None,
                     offset: Vector = None,
@@ -789,13 +789,13 @@
 
 ### nd
 
-[nd](nd.md).[face_of_corner](nd.md#face_of_corner)(cls, corner_index: Integer = None)
+[nd](nd.md).[face_of_corner](nd.md#geonodes.core.generated.static_nd.ND.face_of_corner)(cls, corner_index: Integer = None)
 
 ## GeometryNodeFieldAtIndex (GeometryNodeFieldAtIndex)
 
 ### nd
 
-[nd](nd.md).[evaluate_at_index](nd.md#evaluate_at_index)(cls,
+[nd](nd.md).[evaluate_at_index](nd.md#geonodes.core.generated.static_nd.ND.evaluate_at_index)(cls,
                     value: Float = None,
                     index: Integer = None,
                     data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'QUATERNION', 'FLOAT4X4'] = 'FLOAT',
@@ -805,7 +805,7 @@
 
 ### nd
 
-[nd](nd.md).[field_average](nd.md#field_average)(cls,
+[nd](nd.md).[field_average](nd.md#geonodes.core.generated.static_nd.ND.field_average)(cls,
                     value: Float = None,
                     group_id: Integer = None,
                     data_type: Literal['FLOAT', 'FLOAT_VECTOR'] = 'FLOAT',
@@ -815,7 +815,7 @@
 
 ### nd
 
-[nd](nd.md).[field_min_max](nd.md#field_min_max)(cls,
+[nd](nd.md).[field_min_max](nd.md#geonodes.core.generated.static_nd.ND.field_min_max)(cls,
                     value: Float = None,
                     group_id: Integer = None,
                     data_type: Literal['FLOAT', 'INT', 'FLOAT_VECTOR'] = 'FLOAT',
@@ -825,7 +825,7 @@
 
 ### nd
 
-[nd](nd.md).[evaluate_on_domain](nd.md#evaluate_on_domain)(cls,
+[nd](nd.md).[evaluate_on_domain](nd.md#geonodes.core.generated.static_nd.ND.evaluate_on_domain)(cls,
                     value: Float = None,
                     data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'QUATERNION', 'FLOAT4X4'] = 'FLOAT',
                     domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'] = 'POINT')
@@ -834,7 +834,7 @@
 
 ### nd
 
-[nd](nd.md).[field_to_grid](nd.md#field_to_grid)(cls,
+[nd](nd.md).[field_to_grid](nd.md#geonodes.core.generated.static_nd.ND.field_to_grid)(cls,
                     named_sockets: dict = {},
                     topology: Float = None,
                     data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR'] = 'FLOAT',
@@ -844,13 +844,13 @@
 
 ### nd
 
-[nd](nd.md).[field_to_list](nd.md#field_to_list)(cls, named_sockets: dict = {}, count: Integer = None, **sockets)
+[nd](nd.md).[field_to_list](nd.md#geonodes.core.generated.static_nd.ND.field_to_list)(cls, named_sockets: dict = {}, count: Integer = None, **sockets)
 
 ## GeometryNodeFieldVariance (GeometryNodeFieldVariance)
 
 ### nd
 
-[nd](nd.md).[field_variance](nd.md#field_variance)(cls,
+[nd](nd.md).[field_variance](nd.md#geonodes.core.generated.static_nd.ND.field_variance)(cls,
                     value: Float = None,
                     group_id: Integer = None,
                     data_type: Literal['FLOAT', 'FLOAT_VECTOR'] = 'FLOAT',
@@ -860,7 +860,7 @@
 
 ### nd
 
-[nd](nd.md).[fill_curve](nd.md#fill_curve)(cls,
+[nd](nd.md).[fill_curve](nd.md#geonodes.core.generated.static_nd.ND.fill_curve)(cls,
                     curve: Curve = None,
                     group_id: Integer = None,
                     mode: Literal['Triangles', 'N-gons'] = None,
@@ -870,7 +870,7 @@
 
 ### nd
 
-[nd](nd.md).[fillet_curve](nd.md#fillet_curve)(cls,
+[nd](nd.md).[fillet_curve](nd.md#geonodes.core.generated.static_nd.ND.fillet_curve)(cls,
                     curve: Curve = None,
                     radius: Float = None,
                     limit_radius: Boolean = None,
@@ -881,7 +881,7 @@
 
 ### nd
 
-[nd](nd.md).[flip_faces](nd.md#flip_faces)(cls, mesh: Mesh = None, selection: Boolean = None)
+[nd](nd.md).[flip_faces](nd.md#geonodes.core.generated.static_nd.ND.flip_faces)(cls, mesh: Mesh = None, selection: Boolean = None)
 
 ## GeometryNodeForeachGeometryElementInput (GeometryNodeForeachGeometryElementInput)
 
@@ -891,19 +891,19 @@
 
 ### nd
 
-[nd](nd.md).[geometry_to_instance](nd.md#geometry_to_instance)(cls, *geometry: Geometry)
+[nd](nd.md).[geometry_to_instance](nd.md#geonodes.core.generated.static_nd.ND.geometry_to_instance)(cls, *geometry: Geometry)
 
 ## GeometryNodeGetGeometryBundle (GeometryNodeGetGeometryBundle)
 
 ### nd
 
-[nd](nd.md).[get_geometry_bundle](nd.md#get_geometry_bundle)(cls, geometry: Geometry = None, remove: Boolean = None)
+[nd](nd.md).[get_geometry_bundle](nd.md#geonodes.core.generated.static_nd.ND.get_geometry_bundle)(cls, geometry: Geometry = None, remove: Boolean = None)
 
 ## GeometryNodeGetNamedGrid (GeometryNodeGetNamedGrid)
 
 ### nd
 
-[nd](nd.md).[get_named_grid](nd.md#get_named_grid)(cls,
+[nd](nd.md).[get_named_grid](nd.md#geonodes.core.generated.static_nd.ND.get_named_grid)(cls,
                     volume: Volume = None,
                     name: String = None,
                     remove: Boolean = None,
@@ -913,7 +913,7 @@
 
 ### nd
 
-[nd](nd.md).[dial_gizmo](nd.md#dial_gizmo)(cls,
+[nd](nd.md).[dial_gizmo](nd.md#geonodes.core.generated.static_nd.ND.dial_gizmo)(cls,
                     *value: Float,
                     position: Vector = None,
                     up: Vector = None,
@@ -925,7 +925,7 @@
 
 ### nd
 
-[nd](nd.md).[linear_gizmo](nd.md#linear_gizmo)(cls,
+[nd](nd.md).[linear_gizmo](nd.md#geonodes.core.generated.static_nd.ND.linear_gizmo)(cls,
                     *value: Float,
                     position: Vector = None,
                     direction: Vector = None,
@@ -936,7 +936,7 @@
 
 ### nd
 
-[nd](nd.md).[transform_gizmo](nd.md#transform_gizmo)(cls,
+[nd](nd.md).[transform_gizmo](nd.md#geonodes.core.generated.static_nd.ND.transform_gizmo)(cls,
                     *value: Matrix,
                     position: Vector = None,
                     rotation: Rotation = None,
@@ -954,7 +954,7 @@
 
 ### nd
 
-[nd](nd.md).[grease_pencil_to_curves](nd.md#grease_pencil_to_curves)(cls,
+[nd](nd.md).[grease_pencil_to_curves](nd.md#geonodes.core.generated.static_nd.ND.grease_pencil_to_curves)(cls,
                     grease_pencil: GreasePencil = None,
                     selection: Boolean = None,
                     layers_as_instances: Boolean = None)
@@ -963,7 +963,7 @@
 
 ### nd
 
-[nd](nd.md).[advect_grid](nd.md#advect_grid)(cls,
+[nd](nd.md).[advect_grid](nd.md#geonodes.core.generated.static_nd.ND.advect_grid)(cls,
                     grid: Float = None,
                     velocity: Vector = None,
                     time_step: Float = None,
@@ -975,7 +975,7 @@
 
 ### nd
 
-[nd](nd.md).[clip_grid](nd.md#clip_grid)(cls,
+[nd](nd.md).[clip_grid](nd.md#geonodes.core.generated.static_nd.ND.clip_grid)(cls,
                     grid: Float = None,
                     min_x: Integer = None,
                     min_y: Integer = None,
@@ -989,13 +989,13 @@
 
 ### nd
 
-[nd](nd.md).[grid_curl](nd.md#grid_curl)(cls, grid: Vector = None)
+[nd](nd.md).[grid_curl](nd.md#geonodes.core.generated.static_nd.ND.grid_curl)(cls, grid: Vector = None)
 
 ## GeometryNodeGridDilateAndErode (GeometryNodeGridDilateAndErode)
 
 ### nd
 
-[nd](nd.md).[grid_dilate_erode](nd.md#grid_dilate_erode)(cls,
+[nd](nd.md).[grid_dilate_erode](nd.md#geonodes.core.generated.static_nd.ND.grid_dilate_erode)(cls,
                     grid: Float = None,
                     connectivity: Literal['Face', 'Edge', 'Vertex'] = None,
                     tiles: Literal['Ignore', 'Expand', 'Preserve'] = None,
@@ -1006,19 +1006,19 @@
 
 ### nd
 
-[nd](nd.md).[grid_divergence](nd.md#grid_divergence)(cls, grid: Vector = None)
+[nd](nd.md).[grid_divergence](nd.md#geonodes.core.generated.static_nd.ND.grid_divergence)(cls, grid: Vector = None)
 
 ## GeometryNodeGridGradient (GeometryNodeGridGradient)
 
 ### nd
 
-[nd](nd.md).[grid_gradient](nd.md#grid_gradient)(cls, grid: Float = None)
+[nd](nd.md).[grid_gradient](nd.md#geonodes.core.generated.static_nd.ND.grid_gradient)(cls, grid: Float = None)
 
 ## GeometryNodeGridInfo (GeometryNodeGridInfo)
 
 ### nd
 
-[nd](nd.md).[grid_info](nd.md#grid_info)(cls,
+[nd](nd.md).[grid_info](nd.md#geonodes.core.generated.static_nd.ND.grid_info)(cls,
                     grid: Float = None,
                     data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR'] = 'FLOAT')
 
@@ -1026,13 +1026,13 @@
 
 ### nd
 
-[nd](nd.md).[grid_laplacian](nd.md#grid_laplacian)(cls, grid: Float = None)
+[nd](nd.md).[grid_laplacian](nd.md#geonodes.core.generated.static_nd.ND.grid_laplacian)(cls, grid: Float = None)
 
 ## GeometryNodeGridMean (GeometryNodeGridMean)
 
 ### nd
 
-[nd](nd.md).[grid_mean](nd.md#grid_mean)(cls,
+[nd](nd.md).[grid_mean](nd.md#geonodes.core.generated.static_nd.ND.grid_mean)(cls,
                     grid: Float = None,
                     width: Integer = None,
                     iterations: Integer = None,
@@ -1042,7 +1042,7 @@
 
 ### nd
 
-[nd](nd.md).[grid_median](nd.md#grid_median)(cls,
+[nd](nd.md).[grid_median](nd.md#geonodes.core.generated.static_nd.ND.grid_median)(cls,
                     grid: Float = None,
                     width: Integer = None,
                     iterations: Integer = None,
@@ -1052,7 +1052,7 @@
 
 ### nd
 
-[nd](nd.md).[prune_grid](nd.md#prune_grid)(cls,
+[nd](nd.md).[prune_grid](nd.md#geonodes.core.generated.static_nd.ND.prune_grid)(cls,
                     grid: Float = None,
                     mode: Literal['Inactive', 'Threshold', 'SDF'] = None,
                     threshold: Float = None,
@@ -1062,13 +1062,13 @@
 
 ### nd
 
-[nd](nd.md).[grid_to_mesh](nd.md#grid_to_mesh)(cls, grid: Float = None, threshold: Float = None, adaptivity: Float = None)
+[nd](nd.md).[grid_to_mesh](nd.md#geonodes.core.generated.static_nd.ND.grid_to_mesh)(cls, grid: Float = None, threshold: Float = None, adaptivity: Float = None)
 
 ## GeometryNodeGridToPoints (GeometryNodeGridToPoints)
 
 ### nd
 
-[nd](nd.md).[grid_to_points](nd.md#grid_to_points)(cls,
+[nd](nd.md).[grid_to_points](nd.md#geonodes.core.generated.static_nd.ND.grid_to_points)(cls,
                     grid: Float = None,
                     data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR'] = 'FLOAT')
 
@@ -1076,7 +1076,7 @@
 
 ### nd
 
-[nd](nd.md).[voxelize_grid](nd.md#voxelize_grid)(cls,
+[nd](nd.md).[voxelize_grid](nd.md#geonodes.core.generated.static_nd.ND.voxelize_grid)(cls,
                     grid: Float = None,
                     data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR'] = 'FLOAT')
 
@@ -1086,13 +1086,13 @@
 
 ### nd
 
-[nd](nd.md).[image_info](nd.md#image_info)(cls, image: Image = None, frame: Integer = None)
+[nd](nd.md).[image_info](nd.md#geonodes.core.generated.static_nd.ND.image_info)(cls, image: Image = None, frame: Integer = None)
 
 ## GeometryNodeImageTexture (GeometryNodeImageTexture)
 
 ### nd
 
-[nd](nd.md).[image_texture](nd.md#image_texture)(cls,
+[nd](nd.md).[image_texture](nd.md#geonodes.core.generated.static_nd.ND.image_texture)(cls,
                     image: Image = None,
                     vector: Vector = None,
                     frame: Integer = None,
@@ -1103,43 +1103,43 @@
 
 ### nd
 
-[nd](nd.md).[import_csv](nd.md#import_csv)(cls, path: String = None, delimiter: String = None)
+[nd](nd.md).[import_csv](nd.md#geonodes.core.generated.static_nd.ND.import_csv)(cls, path: String = None, delimiter: String = None)
 
 ## GeometryNodeImportOBJ (GeometryNodeImportOBJ)
 
 ### nd
 
-[nd](nd.md).[import_obj](nd.md#import_obj)(cls, path: String = None)
+[nd](nd.md).[import_obj](nd.md#geonodes.core.generated.static_nd.ND.import_obj)(cls, path: String = None)
 
 ## GeometryNodeImportPLY (GeometryNodeImportPLY)
 
 ### nd
 
-[nd](nd.md).[import_ply](nd.md#import_ply)(cls, path: String = None)
+[nd](nd.md).[import_ply](nd.md#geonodes.core.generated.static_nd.ND.import_ply)(cls, path: String = None)
 
 ## GeometryNodeImportSTL (GeometryNodeImportSTL)
 
 ### nd
 
-[nd](nd.md).[import_stl](nd.md#import_stl)(cls, path: String = None)
+[nd](nd.md).[import_stl](nd.md#geonodes.core.generated.static_nd.ND.import_stl)(cls, path: String = None)
 
 ## GeometryNodeImportText (GeometryNodeImportText)
 
 ### nd
 
-[nd](nd.md).[import_text](nd.md#import_text)(cls, path: String = None)
+[nd](nd.md).[import_text](nd.md#geonodes.core.generated.static_nd.ND.import_text)(cls, path: String = None)
 
 ## GeometryNodeImportVDB (GeometryNodeImportVDB)
 
 ### nd
 
-[nd](nd.md).[import_vdb](nd.md#import_vdb)(cls, path: String = None)
+[nd](nd.md).[import_vdb](nd.md#geonodes.core.generated.static_nd.ND.import_vdb)(cls, path: String = None)
 
 ## GeometryNodeIndexOfNearest (GeometryNodeIndexOfNearest)
 
 ### nd
 
-[nd](nd.md).[index_of_nearest](nd.md#index_of_nearest)(cls, position: Vector = None, group_id: Integer = None)
+[nd](nd.md).[index_of_nearest](nd.md#geonodes.core.generated.static_nd.ND.index_of_nearest)(cls, position: Vector = None, group_id: Integer = None)
 
 ## GeometryNodeIndexSwitch (GeometryNodeIndexSwitch)
 
@@ -1147,133 +1147,133 @@
 
 ### nd
 
-[nd](nd.md).[active_camera](nd.md#active_camera)(self)
+[nd](nd.md).[active_camera](nd.md#geonodes.core.generated.static_nd.ND.active_camera)(self)
 
 ## GeometryNodeInputCollection (GeometryNodeInputCollection)
 
 ### nd
 
-[nd](nd.md).[collection](nd.md#collection)(cls, collection = None)
+[nd](nd.md).[collection](nd.md#geonodes.core.generated.static_nd.ND.collection)(cls, collection = None)
 
 ## GeometryNodeInputCurveHandlePositions (GeometryNodeInputCurveHandlePositions)
 
 ### nd
 
-[nd](nd.md).[curve_handle_positions](nd.md#curve_handle_positions)(cls, relative: Boolean = None)
+[nd](nd.md).[curve_handle_positions](nd.md#geonodes.core.generated.static_nd.ND.curve_handle_positions)(cls, relative: Boolean = None)
 
 ## GeometryNodeInputCurveTilt (GeometryNodeInputCurveTilt)
 
 ### nd
 
-[nd](nd.md).[curve_tilt](nd.md#curve_tilt)(self)
+[nd](nd.md).[curve_tilt](nd.md#geonodes.core.generated.static_nd.ND.curve_tilt)(self)
 
 ## GeometryNodeInputEdgeSmooth (GeometryNodeInputEdgeSmooth)
 
 ### nd
 
-[nd](nd.md).[is_edge_smooth](nd.md#is_edge_smooth)(self)
+[nd](nd.md).[is_edge_smooth](nd.md#geonodes.core.generated.static_nd.ND.is_edge_smooth)(self)
 
 ## GeometryNodeInputID (GeometryNodeInputID)
 
 ### nd
 
-[nd](nd.md).[id](nd.md#id)(self)
+[nd](nd.md).[id](nd.md#geonodes.core.generated.static_nd.ND.id)(self)
 
 ## GeometryNodeInputImage (GeometryNodeInputImage)
 
 ### nd
 
-[nd](nd.md).[image](nd.md#image)(cls, image = None)
+[nd](nd.md).[image](nd.md#geonodes.core.generated.static_nd.ND.image)(cls, image = None)
 
 ## GeometryNodeInputIndex (GeometryNodeInputIndex)
 
 ### nd
 
-[nd](nd.md).[index](nd.md#index)(self)
+[nd](nd.md).[index](nd.md#geonodes.core.generated.static_nd.ND.index)(self)
 
 ## GeometryNodeInputInstanceBounds (GeometryNodeInputInstanceBounds)
 
 ### nd
 
-[nd](nd.md).[instance_bounds](nd.md#instance_bounds)(cls, use_radius: Boolean = None)
+[nd](nd.md).[instance_bounds](nd.md#geonodes.core.generated.static_nd.ND.instance_bounds)(cls, use_radius: Boolean = None)
 
 ## GeometryNodeInputInstanceRotation (GeometryNodeInputInstanceRotation)
 
 ### nd
 
-[nd](nd.md).[instance_rotation](nd.md#instance_rotation)(self)
+[nd](nd.md).[instance_rotation](nd.md#geonodes.core.generated.static_nd.ND.instance_rotation)(self)
 
 ## GeometryNodeInputInstanceScale (GeometryNodeInputInstanceScale)
 
 ### nd
 
-[nd](nd.md).[instance_scale](nd.md#instance_scale)(self)
+[nd](nd.md).[instance_scale](nd.md#geonodes.core.generated.static_nd.ND.instance_scale)(self)
 
 ## GeometryNodeInputMaterial (GeometryNodeInputMaterial)
 
 ### nd
 
-[nd](nd.md).[material](nd.md#material)(cls, material = None)
+[nd](nd.md).[material](nd.md#geonodes.core.generated.static_nd.ND.material)(cls, material = None)
 
 ## GeometryNodeInputMaterialIndex (GeometryNodeInputMaterialIndex)
 
 ### nd
 
-[nd](nd.md).[material_index](nd.md#material_index)(self)
+[nd](nd.md).[material_index](nd.md#geonodes.core.generated.static_nd.ND.material_index)(self)
 
 ## GeometryNodeInputMeshEdgeAngle (GeometryNodeInputMeshEdgeAngle)
 
 ### nd
 
-[nd](nd.md).[edge_angle](nd.md#edge_angle)(cls)
+[nd](nd.md).[edge_angle](nd.md#geonodes.core.generated.static_nd.ND.edge_angle)(cls)
 
 ## GeometryNodeInputMeshEdgeNeighbors (GeometryNodeInputMeshEdgeNeighbors)
 
 ### nd
 
-[nd](nd.md).[edge_neighbors](nd.md#edge_neighbors)(self)
+[nd](nd.md).[edge_neighbors](nd.md#geonodes.core.generated.static_nd.ND.edge_neighbors)(self)
 
 ## GeometryNodeInputMeshEdgeVertices (GeometryNodeInputMeshEdgeVertices)
 
 ### nd
 
-[nd](nd.md).[edge_vertices](nd.md#edge_vertices)(cls)
+[nd](nd.md).[edge_vertices](nd.md#geonodes.core.generated.static_nd.ND.edge_vertices)(cls)
 
 ## GeometryNodeInputMeshFaceArea (GeometryNodeInputMeshFaceArea)
 
 ### nd
 
-[nd](nd.md).[face_area](nd.md#face_area)(self)
+[nd](nd.md).[face_area](nd.md#geonodes.core.generated.static_nd.ND.face_area)(self)
 
 ## GeometryNodeInputMeshFaceIsPlanar (GeometryNodeInputMeshFaceIsPlanar)
 
 ### nd
 
-[nd](nd.md).[is_face_planar](nd.md#is_face_planar)(cls, threshold: Float = None)
+[nd](nd.md).[is_face_planar](nd.md#geonodes.core.generated.static_nd.ND.is_face_planar)(cls, threshold: Float = None)
 
 ## GeometryNodeInputMeshFaceNeighbors (GeometryNodeInputMeshFaceNeighbors)
 
 ### nd
 
-[nd](nd.md).[face_neighbors](nd.md#face_neighbors)(cls)
+[nd](nd.md).[face_neighbors](nd.md#geonodes.core.generated.static_nd.ND.face_neighbors)(cls)
 
 ## GeometryNodeInputMeshIsland (GeometryNodeInputMeshIsland)
 
 ### nd
 
-[nd](nd.md).[mesh_island](nd.md#mesh_island)(cls)
+[nd](nd.md).[mesh_island](nd.md#geonodes.core.generated.static_nd.ND.mesh_island)(cls)
 
 ## GeometryNodeInputMeshVertexNeighbors (GeometryNodeInputMeshVertexNeighbors)
 
 ### nd
 
-[nd](nd.md).[vertex_neighbors](nd.md#vertex_neighbors)(cls)
+[nd](nd.md).[vertex_neighbors](nd.md#geonodes.core.generated.static_nd.ND.vertex_neighbors)(cls)
 
 ## GeometryNodeInputNamedAttribute (GeometryNodeInputNamedAttribute)
 
 ### nd
 
-[nd](nd.md).[named_attribute](nd.md#named_attribute)(cls,
+[nd](nd.md).[named_attribute](nd.md#geonodes.core.generated.static_nd.ND.named_attribute)(cls,
                     name: String = None,
                     data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'QUATERNION', 'FLOAT4X4'] = 'FLOAT')
 
@@ -1281,79 +1281,79 @@
 
 ### nd
 
-[nd](nd.md).[named_layer_selection](nd.md#named_layer_selection)(cls, name: String = None)
+[nd](nd.md).[named_layer_selection](nd.md#geonodes.core.generated.static_nd.ND.named_layer_selection)(cls, name: String = None)
 
 ## GeometryNodeInputNormal (GeometryNodeInputNormal)
 
 ### nd
 
-[nd](nd.md).[normal](nd.md#normal)(self)
+[nd](nd.md).[normal](nd.md#geonodes.core.generated.static_nd.ND.normal)(self)
 
 ## GeometryNodeInputObject (GeometryNodeInputObject)
 
 ### nd
 
-[nd](nd.md).[object](nd.md#object)(cls, object = None)
+[nd](nd.md).[object](nd.md#geonodes.core.generated.static_nd.ND.object)(cls, object = None)
 
 ## GeometryNodeInputPosition (GeometryNodeInputPosition)
 
 ### nd
 
-[nd](nd.md).[position](nd.md#position)(self)
+[nd](nd.md).[position](nd.md#geonodes.core.generated.static_nd.ND.position)(self)
 
 ## GeometryNodeInputRadius (GeometryNodeInputRadius)
 
 ### nd
 
-[nd](nd.md).[radius](nd.md#radius)(self)
+[nd](nd.md).[radius](nd.md#geonodes.core.generated.static_nd.ND.radius)(self)
 
 ## GeometryNodeInputSceneTime (GeometryNodeInputSceneTime)
 
 ### nd
 
-[nd](nd.md).[scene_time](nd.md#scene_time)(cls)
+[nd](nd.md).[scene_time](nd.md#geonodes.core.generated.static_nd.ND.scene_time)(cls)
 
 ## GeometryNodeInputShadeSmooth (GeometryNodeInputShadeSmooth)
 
 ### nd
 
-[nd](nd.md).[is_face_smooth](nd.md#is_face_smooth)(self)
+[nd](nd.md).[is_face_smooth](nd.md#geonodes.core.generated.static_nd.ND.is_face_smooth)(self)
 
 ## GeometryNodeInputShortestEdgePaths (GeometryNodeInputShortestEdgePaths)
 
 ### nd
 
-[nd](nd.md).[shortest_edge_paths](nd.md#shortest_edge_paths)(cls, end_vertex: Boolean = None, edge_cost: Float = None)
+[nd](nd.md).[shortest_edge_paths](nd.md#geonodes.core.generated.static_nd.ND.shortest_edge_paths)(cls, end_vertex: Boolean = None, edge_cost: Float = None)
 
 ## GeometryNodeInputSplineCyclic (GeometryNodeInputSplineCyclic)
 
 ### nd
 
-[nd](nd.md).[is_spline_cyclic](nd.md#is_spline_cyclic)(self)
+[nd](nd.md).[is_spline_cyclic](nd.md#geonodes.core.generated.static_nd.ND.is_spline_cyclic)(self)
 
 ## GeometryNodeInputSplineResolution (GeometryNodeInputSplineResolution)
 
 ### nd
 
-[nd](nd.md).[spline_resolution](nd.md#spline_resolution)(self)
+[nd](nd.md).[spline_resolution](nd.md#geonodes.core.generated.static_nd.ND.spline_resolution)(self)
 
 ## GeometryNodeInputTangent (GeometryNodeInputTangent)
 
 ### nd
 
-[nd](nd.md).[curve_tangent](nd.md#curve_tangent)(self)
+[nd](nd.md).[curve_tangent](nd.md#geonodes.core.generated.static_nd.ND.curve_tangent)(self)
 
 ## GeometryNodeInputVoxelIndex (GeometryNodeInputVoxelIndex)
 
 ### nd
 
-[nd](nd.md).[voxel_index](nd.md#voxel_index)(cls)
+[nd](nd.md).[voxel_index](nd.md#geonodes.core.generated.static_nd.ND.voxel_index)(cls)
 
 ## GeometryNodeInstanceOnPoints (GeometryNodeInstanceOnPoints)
 
 ### nd
 
-[nd](nd.md).[instance_on_points](nd.md#instance_on_points)(cls,
+[nd](nd.md).[instance_on_points](nd.md#geonodes.core.generated.static_nd.ND.instance_on_points)(cls,
                     points: Cloud = None,
                     selection: Boolean = None,
                     instance: Instances = None,
@@ -1366,13 +1366,13 @@
 
 ### nd
 
-[nd](nd.md).[instance_transform](nd.md#instance_transform)(self)
+[nd](nd.md).[instance_transform](nd.md#geonodes.core.generated.static_nd.ND.instance_transform)(self)
 
 ## GeometryNodeInstancesToPoints (GeometryNodeInstancesToPoints)
 
 ### nd
 
-[nd](nd.md).[instances_to_points](nd.md#instances_to_points)(cls,
+[nd](nd.md).[instances_to_points](nd.md#geonodes.core.generated.static_nd.ND.instances_to_points)(cls,
                     instances: Instances = None,
                     selection: Boolean = None,
                     position: Vector = None,
@@ -1382,7 +1382,7 @@
 
 ### nd
 
-[nd](nd.md).[interpolate_curves](nd.md#interpolate_curves)(cls,
+[nd](nd.md).[interpolate_curves](nd.md#geonodes.core.generated.static_nd.ND.interpolate_curves)(cls,
                     guide_curves: Curve = None,
                     guide_up: Vector = None,
                     guide_group_id: Integer = None,
@@ -1395,19 +1395,19 @@
 
 ### nd
 
-[nd](nd.md).[is_viewport](nd.md#is_viewport)(self)
+[nd](nd.md).[is_viewport](nd.md#geonodes.core.generated.static_nd.ND.is_viewport)(self)
 
 ## GeometryNodeJoinGeometry (GeometryNodeJoinGeometry)
 
 ### nd
 
-[nd](nd.md).[join_geometry](nd.md#join_geometry)(cls, *geometry: Geometry)
+[nd](nd.md).[join_geometry](nd.md#geonodes.core.generated.static_nd.ND.join_geometry)(cls, *geometry: Geometry)
 
 ## GeometryNodeListGetItem (GeometryNodeListGetItem)
 
 ### nd
 
-[nd](nd.md).[get_list_item](nd.md#get_list_item)(cls,
+[nd](nd.md).[get_list_item](nd.md#geonodes.core.generated.static_nd.ND.get_list_item)(cls,
                     list: Float = None,
                     index: Integer = None,
                     socket_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT'] = 'FLOAT',
@@ -1417,7 +1417,7 @@
 
 ### nd
 
-[nd](nd.md).[list_length](nd.md#list_length)(cls,
+[nd](nd.md).[list_length](nd.md#geonodes.core.generated.static_nd.ND.list_length)(cls,
                     list: Float = None,
                     data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT'] = 'FLOAT')
 
@@ -1425,7 +1425,7 @@
 
 ### nd
 
-[nd](nd.md).[material_selection](nd.md#material_selection)(cls, material: Material = None)
+[nd](nd.md).[material_selection](nd.md#geonodes.core.generated.static_nd.ND.material_selection)(cls, material: Material = None)
 
 ## GeometryNodeMenuSwitch (GeometryNodeMenuSwitch)
 
@@ -1433,7 +1433,7 @@
 
 ### nd
 
-[nd](nd.md).[merge_by_distance](nd.md#merge_by_distance)(cls,
+[nd](nd.md).[merge_by_distance](nd.md#geonodes.core.generated.static_nd.ND.merge_by_distance)(cls,
                     geometry: Geometry = None,
                     selection: Boolean = None,
                     mode: Literal['All', 'Connected'] = None,
@@ -1443,7 +1443,7 @@
 
 ### nd
 
-[nd](nd.md).[merge_layers](nd.md#merge_layers)(cls,
+[nd](nd.md).[merge_layers](nd.md#geonodes.core.generated.static_nd.ND.merge_layers)(cls,
                     grease_pencil: GreasePencil = None,
                     selection: Boolean = None,
                     group_id: Integer = None,
@@ -1453,7 +1453,7 @@
 
 ### nd
 
-[nd](nd.md).[mesh_boolean](nd.md#mesh_boolean)(cls,
+[nd](nd.md).[mesh_boolean](nd.md#geonodes.core.generated.static_nd.ND.mesh_boolean)(cls,
                     *mesh_2: Mesh,
                     mesh_1: Mesh = None,
                     self_intersection: Boolean = None,
@@ -1465,7 +1465,7 @@
 
 ### nd
 
-[nd](nd.md).[mesh_circle](nd.md#mesh_circle)(cls,
+[nd](nd.md).[mesh_circle](nd.md#geonodes.core.generated.static_nd.ND.mesh_circle)(cls,
                     vertices: Integer = None,
                     radius: Float = None,
                     fill_type: Literal['NONE', 'NGON', 'TRIANGLE_FAN'] = 'NONE')
@@ -1474,7 +1474,7 @@
 
 ### nd
 
-[nd](nd.md).[cone](nd.md#cone)(cls,
+[nd](nd.md).[cone](nd.md#geonodes.core.generated.static_nd.ND.cone)(cls,
                     vertices: Integer = None,
                     side_segments: Integer = None,
                     fill_segments: Integer = None,
@@ -1487,7 +1487,7 @@
 
 ### nd
 
-[nd](nd.md).[cube](nd.md#cube)(cls,
+[nd](nd.md).[cube](nd.md#geonodes.core.generated.static_nd.ND.cube)(cls,
                     size: Vector = None,
                     vertices_x: Integer = None,
                     vertices_y: Integer = None,
@@ -1497,7 +1497,7 @@
 
 ### nd
 
-[nd](nd.md).[cylinder](nd.md#cylinder)(cls,
+[nd](nd.md).[cylinder](nd.md#geonodes.core.generated.static_nd.ND.cylinder)(cls,
                     vertices: Integer = None,
                     side_segments: Integer = None,
                     fill_segments: Integer = None,
@@ -1509,13 +1509,13 @@
 
 ### nd
 
-[nd](nd.md).[face_group_boundaries](nd.md#face_group_boundaries)(cls, face_group_id: Integer = None)
+[nd](nd.md).[face_group_boundaries](nd.md#geonodes.core.generated.static_nd.ND.face_group_boundaries)(cls, face_group_id: Integer = None)
 
 ## GeometryNodeMeshGrid (GeometryNodeMeshGrid)
 
 ### nd
 
-[nd](nd.md).[grid](nd.md#grid)(cls,
+[nd](nd.md).[grid](nd.md#geonodes.core.generated.static_nd.ND.grid)(cls,
                     size_x: Float = None,
                     size_y: Float = None,
                     vertices_x: Integer = None,
@@ -1525,13 +1525,13 @@
 
 ### nd
 
-[nd](nd.md).[ico_sphere](nd.md#ico_sphere)(cls, radius: Float = None, subdivisions: Integer = None)
+[nd](nd.md).[ico_sphere](nd.md#geonodes.core.generated.static_nd.ND.ico_sphere)(cls, radius: Float = None, subdivisions: Integer = None)
 
 ## GeometryNodeMeshLine (GeometryNodeMeshLine)
 
 ### nd
 
-[nd](nd.md).[mesh_line](nd.md#mesh_line)(cls,
+[nd](nd.md).[mesh_line](nd.md#geonodes.core.generated.static_nd.ND.mesh_line)(cls,
                     count: Integer = None,
                     resolution: Float = None,
                     start_location: Vector = None,
@@ -1543,7 +1543,7 @@
 
 ### nd
 
-[nd](nd.md).[mesh_to_curve](nd.md#mesh_to_curve)(cls,
+[nd](nd.md).[mesh_to_curve](nd.md#geonodes.core.generated.static_nd.ND.mesh_to_curve)(cls,
                     mesh: Mesh = None,
                     selection: Boolean = None,
                     mode: Literal['EDGES', 'FACES'] = 'EDGES')
@@ -1552,7 +1552,7 @@
 
 ### nd
 
-[nd](nd.md).[mesh_to_density_grid](nd.md#mesh_to_density_grid)(cls,
+[nd](nd.md).[mesh_to_density_grid](nd.md#geonodes.core.generated.static_nd.ND.mesh_to_density_grid)(cls,
                     mesh: Mesh = None,
                     density: Float = None,
                     voxel_size: Float = None,
@@ -1562,7 +1562,7 @@
 
 ### nd
 
-[nd](nd.md).[mesh_to_points](nd.md#mesh_to_points)(cls,
+[nd](nd.md).[mesh_to_points](nd.md#geonodes.core.generated.static_nd.ND.mesh_to_points)(cls,
                     mesh: Mesh = None,
                     selection: Boolean = None,
                     position: Vector = None,
@@ -1573,13 +1573,13 @@
 
 ### nd
 
-[nd](nd.md).[mesh_to_sdf_grid](nd.md#mesh_to_sdf_grid)(cls, mesh: Mesh = None, voxel_size: Float = None, band_width: Integer = None)
+[nd](nd.md).[mesh_to_sdf_grid](nd.md#geonodes.core.generated.static_nd.ND.mesh_to_sdf_grid)(cls, mesh: Mesh = None, voxel_size: Float = None, band_width: Integer = None)
 
 ## GeometryNodeMeshToVolume (GeometryNodeMeshToVolume)
 
 ### nd
 
-[nd](nd.md).[mesh_to_volume](nd.md#mesh_to_volume)(cls,
+[nd](nd.md).[mesh_to_volume](nd.md#geonodes.core.generated.static_nd.ND.mesh_to_volume)(cls,
                     mesh: Mesh = None,
                     density: Float = None,
                     resolution_mode: Literal['Amount', 'Size'] = None,
@@ -1591,13 +1591,13 @@
 
 ### nd
 
-[nd](nd.md).[uv_sphere](nd.md#uv_sphere)(cls, segments: Integer = None, rings: Integer = None, radius: Float = None)
+[nd](nd.md).[uv_sphere](nd.md#geonodes.core.generated.static_nd.ND.uv_sphere)(cls, segments: Integer = None, rings: Integer = None, radius: Float = None)
 
 ## GeometryNodeObjectInfo (GeometryNodeObjectInfo)
 
 ### nd
 
-[nd](nd.md).[object_info](nd.md#object_info)(cls,
+[nd](nd.md).[object_info](nd.md#geonodes.core.generated.static_nd.ND.object_info)(cls,
                     object: Object = None,
                     as_instance: Boolean = None,
                     transform_space: Literal['ORIGINAL', 'RELATIVE'] = 'ORIGINAL')
@@ -1606,25 +1606,25 @@
 
 ### nd
 
-[nd](nd.md).[offset_corner_in_face](nd.md#offset_corner_in_face)(cls, corner_index: Integer = None, offset: Integer = None)
+[nd](nd.md).[offset_corner_in_face](nd.md#geonodes.core.generated.static_nd.ND.offset_corner_in_face)(cls, corner_index: Integer = None, offset: Integer = None)
 
 ## GeometryNodeOffsetPointInCurve (GeometryNodeOffsetPointInCurve)
 
 ### nd
 
-[nd](nd.md).[offset_point_in_curve](nd.md#offset_point_in_curve)(cls, point_index: Integer = None, offset: Integer = None)
+[nd](nd.md).[offset_point_in_curve](nd.md#geonodes.core.generated.static_nd.ND.offset_point_in_curve)(cls, point_index: Integer = None, offset: Integer = None)
 
 ## GeometryNodePoints (GeometryNodePoints)
 
 ### nd
 
-[nd](nd.md).[points](nd.md#points)(cls, count: Integer = None, position: Vector = None, radius: Float = None)
+[nd](nd.md).[points](nd.md#geonodes.core.generated.static_nd.ND.points)(cls, count: Integer = None, position: Vector = None, radius: Float = None)
 
 ## GeometryNodePointsOfCurve (GeometryNodePointsOfCurve)
 
 ### nd
 
-[nd](nd.md).[points_of_curve](nd.md#points_of_curve)(cls,
+[nd](nd.md).[points_of_curve](nd.md#geonodes.core.generated.static_nd.ND.points_of_curve)(cls,
                     curve_index: Integer = None,
                     weights: Float = None,
                     sort_index: Integer = None)
@@ -1633,7 +1633,7 @@
 
 ### nd
 
-[nd](nd.md).[points_to_curves](nd.md#points_to_curves)(cls,
+[nd](nd.md).[points_to_curves](nd.md#geonodes.core.generated.static_nd.ND.points_to_curves)(cls,
                     points: Cloud = None,
                     curve_group_id: Integer = None,
                     weight: Float = None)
@@ -1642,19 +1642,19 @@
 
 ### nd
 
-[nd](nd.md).[points_to_sdf_grid](nd.md#points_to_sdf_grid)(cls, points: Cloud = None, radius: Float = None, voxel_size: Float = None)
+[nd](nd.md).[points_to_sdf_grid](nd.md#geonodes.core.generated.static_nd.ND.points_to_sdf_grid)(cls, points: Cloud = None, radius: Float = None, voxel_size: Float = None)
 
 ## GeometryNodePointsToVertices (GeometryNodePointsToVertices)
 
 ### nd
 
-[nd](nd.md).[points_to_vertices](nd.md#points_to_vertices)(cls, points: Cloud = None, selection: Boolean = None)
+[nd](nd.md).[points_to_vertices](nd.md#geonodes.core.generated.static_nd.ND.points_to_vertices)(cls, points: Cloud = None, selection: Boolean = None)
 
 ## GeometryNodePointsToVolume (GeometryNodePointsToVolume)
 
 ### nd
 
-[nd](nd.md).[points_to_volume](nd.md#points_to_volume)(cls,
+[nd](nd.md).[points_to_volume](nd.md#geonodes.core.generated.static_nd.ND.points_to_volume)(cls,
                     points: Cloud = None,
                     density: Float = None,
                     resolution_mode: Literal['Amount', 'Size'] = None,
@@ -1666,7 +1666,7 @@
 
 ### nd
 
-[nd](nd.md).[geometry_proximity](nd.md#geometry_proximity)(cls,
+[nd](nd.md).[geometry_proximity](nd.md#geonodes.core.generated.static_nd.ND.geometry_proximity)(cls,
                     geometry: Geometry = None,
                     group_id: Integer = None,
                     sample_position: Vector = None,
@@ -1677,7 +1677,7 @@
 
 ### nd
 
-[nd](nd.md).[raycast](nd.md#raycast)(cls,
+[nd](nd.md).[raycast](nd.md#geonodes.core.generated.static_nd.ND.raycast)(cls,
                     target_geometry: Geometry = None,
                     attribute: Float = None,
                     interpolation: Literal['Interpolated', 'Nearest'] = None,
@@ -1690,7 +1690,7 @@
 
 ### nd
 
-[nd](nd.md).[realize_instances](nd.md#realize_instances)(cls,
+[nd](nd.md).[realize_instances](nd.md#geonodes.core.generated.static_nd.ND.realize_instances)(cls,
                     geometry: Geometry = None,
                     selection: Boolean = None,
                     realize_all: Boolean = None,
@@ -1701,7 +1701,7 @@
 
 ### nd
 
-[nd](nd.md).[remove_named_attribute](nd.md#remove_named_attribute)(cls,
+[nd](nd.md).[remove_named_attribute](nd.md#geonodes.core.generated.static_nd.ND.remove_named_attribute)(cls,
                     geometry: Geometry = None,
                     pattern_mode: Literal['Exact', 'Wildcard'] = None,
                     name: String = None)
@@ -1714,13 +1714,13 @@
 
 ### nd
 
-[nd](nd.md).[replace_material](nd.md#replace_material)(cls, geometry: Geometry = None, old: Material = None, new: Material = None)
+[nd](nd.md).[replace_material](nd.md#geonodes.core.generated.static_nd.ND.replace_material)(cls, geometry: Geometry = None, old: Material = None, new: Material = None)
 
 ## GeometryNodeResampleCurve (GeometryNodeResampleCurve)
 
 ### nd
 
-[nd](nd.md).[resample_curve](nd.md#resample_curve)(cls,
+[nd](nd.md).[resample_curve](nd.md#geonodes.core.generated.static_nd.ND.resample_curve)(cls,
                     curve: Curve = None,
                     selection: Boolean = None,
                     mode: Literal['Evaluated', 'Count', 'Length'] = None,
@@ -1732,13 +1732,13 @@
 
 ### nd
 
-[nd](nd.md).[reverse_curve](nd.md#reverse_curve)(cls, curve: Curve = None, selection: Boolean = None)
+[nd](nd.md).[reverse_curve](nd.md#geonodes.core.generated.static_nd.ND.reverse_curve)(cls, curve: Curve = None, selection: Boolean = None)
 
 ## GeometryNodeRotateInstances (GeometryNodeRotateInstances)
 
 ### nd
 
-[nd](nd.md).[rotate_instances](nd.md#rotate_instances)(cls,
+[nd](nd.md).[rotate_instances](nd.md#geonodes.core.generated.static_nd.ND.rotate_instances)(cls,
                     instances: Instances = None,
                     selection: Boolean = None,
                     rotation: Rotation = None,
@@ -1749,7 +1749,7 @@
 
 ### nd
 
-[nd](nd.md).[sdf_grid_boolean](nd.md#sdf_grid_boolean)(cls,
+[nd](nd.md).[sdf_grid_boolean](nd.md#geonodes.core.generated.static_nd.ND.sdf_grid_boolean)(cls,
                     *grid_2: Float,
                     grid_1: Float = None,
                     operation: Literal['INTERSECT', 'UNION', 'DIFFERENCE'] = 'DIFFERENCE')
@@ -1758,43 +1758,43 @@
 
 ### nd
 
-[nd](nd.md).[sdf_grid_fillet](nd.md#sdf_grid_fillet)(cls, grid: Float = None, iterations: Integer = None)
+[nd](nd.md).[sdf_grid_fillet](nd.md#geonodes.core.generated.static_nd.ND.sdf_grid_fillet)(cls, grid: Float = None, iterations: Integer = None)
 
 ## GeometryNodeSDFGridLaplacian (GeometryNodeSDFGridLaplacian)
 
 ### nd
 
-[nd](nd.md).[sdf_grid_laplacian](nd.md#sdf_grid_laplacian)(cls, grid: Float = None, iterations: Integer = None)
+[nd](nd.md).[sdf_grid_laplacian](nd.md#geonodes.core.generated.static_nd.ND.sdf_grid_laplacian)(cls, grid: Float = None, iterations: Integer = None)
 
 ## GeometryNodeSDFGridMean (GeometryNodeSDFGridMean)
 
 ### nd
 
-[nd](nd.md).[sdf_grid_mean](nd.md#sdf_grid_mean)(cls, grid: Float = None, width: Integer = None, iterations: Integer = None)
+[nd](nd.md).[sdf_grid_mean](nd.md#geonodes.core.generated.static_nd.ND.sdf_grid_mean)(cls, grid: Float = None, width: Integer = None, iterations: Integer = None)
 
 ## GeometryNodeSDFGridMeanCurvature (GeometryNodeSDFGridMeanCurvature)
 
 ### nd
 
-[nd](nd.md).[sdf_grid_mean_curvature](nd.md#sdf_grid_mean_curvature)(cls, grid: Float = None, iterations: Integer = None)
+[nd](nd.md).[sdf_grid_mean_curvature](nd.md#geonodes.core.generated.static_nd.ND.sdf_grid_mean_curvature)(cls, grid: Float = None, iterations: Integer = None)
 
 ## GeometryNodeSDFGridMedian (GeometryNodeSDFGridMedian)
 
 ### nd
 
-[nd](nd.md).[sdf_grid_median](nd.md#sdf_grid_median)(cls, grid: Float = None, width: Integer = None, iterations: Integer = None)
+[nd](nd.md).[sdf_grid_median](nd.md#geonodes.core.generated.static_nd.ND.sdf_grid_median)(cls, grid: Float = None, width: Integer = None, iterations: Integer = None)
 
 ## GeometryNodeSDFGridOffset (GeometryNodeSDFGridOffset)
 
 ### nd
 
-[nd](nd.md).[sdf_grid_offset](nd.md#sdf_grid_offset)(cls, grid: Float = None, distance: Float = None)
+[nd](nd.md).[sdf_grid_offset](nd.md#geonodes.core.generated.static_nd.ND.sdf_grid_offset)(cls, grid: Float = None, distance: Float = None)
 
 ## GeometryNodeSampleCurve (GeometryNodeSampleCurve)
 
 ### nd
 
-[nd](nd.md).[sample_curve](nd.md#sample_curve)(cls,
+[nd](nd.md).[sample_curve](nd.md#geonodes.core.generated.static_nd.ND.sample_curve)(cls,
                     curves: Curve = None,
                     value: Float = None,
                     length: Float = None,
@@ -1808,7 +1808,7 @@
 
 ### nd
 
-[nd](nd.md).[sample_grid](nd.md#sample_grid)(cls,
+[nd](nd.md).[sample_grid](nd.md#geonodes.core.generated.static_nd.ND.sample_grid)(cls,
                     grid: Float = None,
                     position: Vector = None,
                     interpolation: Literal['Nearest Neighbor', 'Trilinear', 'Triquadratic'] = None,
@@ -1818,7 +1818,7 @@
 
 ### nd
 
-[nd](nd.md).[sample_grid_index](nd.md#sample_grid_index)(cls,
+[nd](nd.md).[sample_grid_index](nd.md#geonodes.core.generated.static_nd.ND.sample_grid_index)(cls,
                     grid: Float = None,
                     x: Integer = None,
                     y: Integer = None,
@@ -1829,7 +1829,7 @@
 
 ### nd
 
-[nd](nd.md).[sample_index](nd.md#sample_index)(cls,
+[nd](nd.md).[sample_index](nd.md#geonodes.core.generated.static_nd.ND.sample_index)(cls,
                     geometry: Geometry = None,
                     value: Float = None,
                     index: Integer = None,
@@ -1841,7 +1841,7 @@
 
 ### nd
 
-[nd](nd.md).[sample_nearest](nd.md#sample_nearest)(cls,
+[nd](nd.md).[sample_nearest](nd.md#geonodes.core.generated.static_nd.ND.sample_nearest)(cls,
                     geometry: Geometry = None,
                     sample_position: Vector = None,
                     domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER'] = 'POINT')
@@ -1850,7 +1850,7 @@
 
 ### nd
 
-[nd](nd.md).[sample_nearest_surface](nd.md#sample_nearest_surface)(cls,
+[nd](nd.md).[sample_nearest_surface](nd.md#geonodes.core.generated.static_nd.ND.sample_nearest_surface)(cls,
                     mesh: Mesh = None,
                     value: Float = None,
                     group_id: Integer = None,
@@ -1862,7 +1862,7 @@
 
 ### nd
 
-[nd](nd.md).[sample_uv_surface](nd.md#sample_uv_surface)(cls,
+[nd](nd.md).[sample_uv_surface](nd.md#geonodes.core.generated.static_nd.ND.sample_uv_surface)(cls,
                     mesh: Mesh = None,
                     value: Float = None,
                     uv_map: Vector = None,
@@ -1873,7 +1873,7 @@
 
 ### nd
 
-[nd](nd.md).[scale_elements](nd.md#scale_elements)(cls,
+[nd](nd.md).[scale_elements](nd.md#geonodes.core.generated.static_nd.ND.scale_elements)(cls,
                     geometry: Geometry = None,
                     selection: Boolean = None,
                     scale: Float = None,
@@ -1886,7 +1886,7 @@
 
 ### nd
 
-[nd](nd.md).[scale_instances](nd.md#scale_instances)(cls,
+[nd](nd.md).[scale_instances](nd.md#geonodes.core.generated.static_nd.ND.scale_instances)(cls,
                     instances: Instances = None,
                     selection: Boolean = None,
                     scale: Vector = None,
@@ -1897,19 +1897,19 @@
 
 ### nd
 
-[nd](nd.md).[self_object](nd.md#self_object)(self)
+[nd](nd.md).[self_object](nd.md#geonodes.core.generated.static_nd.ND.self_object)(self)
 
 ## GeometryNodeSeparateComponents (GeometryNodeSeparateComponents)
 
 ### nd
 
-[nd](nd.md).[separate_components](nd.md#separate_components)(cls, geometry: Geometry = None)
+[nd](nd.md).[separate_components](nd.md#geonodes.core.generated.static_nd.ND.separate_components)(cls, geometry: Geometry = None)
 
 ## GeometryNodeSeparateGeometry (GeometryNodeSeparateGeometry)
 
 ### nd
 
-[nd](nd.md).[separate_geometry](nd.md#separate_geometry)(cls,
+[nd](nd.md).[separate_geometry](nd.md#geonodes.core.generated.static_nd.ND.separate_geometry)(cls,
                     geometry: Geometry = None,
                     selection: Boolean = None,
                     domain: Literal['POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE', 'LAYER'] = 'POINT')
@@ -1918,7 +1918,7 @@
 
 ### nd
 
-[nd](nd.md).[set_handle_positions](nd.md#set_handle_positions)(cls,
+[nd](nd.md).[set_handle_positions](nd.md#geonodes.core.generated.static_nd.ND.set_handle_positions)(cls,
                     curve: Curve = None,
                     selection: Boolean = None,
                     position: Vector = None,
@@ -1929,7 +1929,7 @@
 
 ### nd
 
-[nd](nd.md).[set_curve_normal](nd.md#set_curve_normal)(cls,
+[nd](nd.md).[set_curve_normal](nd.md#geonodes.core.generated.static_nd.ND.set_curve_normal)(cls,
                     curve: Curve = None,
                     selection: Boolean = None,
                     mode: Literal['Minimum Twist', 'Z Up', 'Free'] = None,
@@ -1939,31 +1939,31 @@
 
 ### nd
 
-[nd](nd.md).[set_curve_radius](nd.md#set_curve_radius)(cls, curve: Curve = None, selection: Boolean = None, radius: Float = None)
+[nd](nd.md).[set_curve_radius](nd.md#geonodes.core.generated.static_nd.ND.set_curve_radius)(cls, curve: Curve = None, selection: Boolean = None, radius: Float = None)
 
 ## GeometryNodeSetCurveTilt (GeometryNodeSetCurveTilt)
 
 ### nd
 
-[nd](nd.md).[set_curve_tilt](nd.md#set_curve_tilt)(cls, curve: Curve = None, selection: Boolean = None, tilt: Float = None)
+[nd](nd.md).[set_curve_tilt](nd.md#geonodes.core.generated.static_nd.ND.set_curve_tilt)(cls, curve: Curve = None, selection: Boolean = None, tilt: Float = None)
 
 ## GeometryNodeSetGeometryBundle (GeometryNodeSetGeometryBundle)
 
 ### nd
 
-[nd](nd.md).[set_geometry_bundle](nd.md#set_geometry_bundle)(cls, geometry: Geometry = None, bundle: Bundle = None)
+[nd](nd.md).[set_geometry_bundle](nd.md#geonodes.core.generated.static_nd.ND.set_geometry_bundle)(cls, geometry: Geometry = None, bundle: Bundle = None)
 
 ## GeometryNodeSetGeometryName (GeometryNodeSetGeometryName)
 
 ### nd
 
-[nd](nd.md).[set_geometry_name](nd.md#set_geometry_name)(cls, geometry: Geometry = None, name: String = None)
+[nd](nd.md).[set_geometry_name](nd.md#geonodes.core.generated.static_nd.ND.set_geometry_name)(cls, geometry: Geometry = None, name: String = None)
 
 ## GeometryNodeSetGreasePencilColor (GeometryNodeSetGreasePencilColor)
 
 ### nd
 
-[nd](nd.md).[set_grease_pencil_color](nd.md#set_grease_pencil_color)(cls,
+[nd](nd.md).[set_grease_pencil_color](nd.md#geonodes.core.generated.static_nd.ND.set_grease_pencil_color)(cls,
                     grease_pencil: GreasePencil = None,
                     selection: Boolean = None,
                     color: Color = None,
@@ -1974,7 +1974,7 @@
 
 ### nd
 
-[nd](nd.md).[set_grease_pencil_depth](nd.md#set_grease_pencil_depth)(cls,
+[nd](nd.md).[set_grease_pencil_depth](nd.md#geonodes.core.generated.static_nd.ND.set_grease_pencil_depth)(cls,
                     grease_pencil: GreasePencil = None,
                     depth_order: Literal['2D', '3D'] = '2D')
 
@@ -1982,7 +1982,7 @@
 
 ### nd
 
-[nd](nd.md).[set_grease_pencil_softness](nd.md#set_grease_pencil_softness)(cls,
+[nd](nd.md).[set_grease_pencil_softness](nd.md#geonodes.core.generated.static_nd.ND.set_grease_pencil_softness)(cls,
                     grease_pencil: GreasePencil = None,
                     selection: Boolean = None,
                     softness: Float = None)
@@ -1991,7 +1991,7 @@
 
 ### nd
 
-[nd](nd.md).[set_grid_background](nd.md#set_grid_background)(cls,
+[nd](nd.md).[set_grid_background](nd.md#geonodes.core.generated.static_nd.ND.set_grid_background)(cls,
                     grid: Float = None,
                     background: Float = None,
                     update_inactive: Boolean = None,
@@ -2001,7 +2001,7 @@
 
 ### nd
 
-[nd](nd.md).[set_grid_transform](nd.md#set_grid_transform)(cls,
+[nd](nd.md).[set_grid_transform](nd.md#geonodes.core.generated.static_nd.ND.set_grid_transform)(cls,
                     grid: Float = None,
                     transform: Matrix = None,
                     data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR'] = 'FLOAT')
@@ -2010,13 +2010,13 @@
 
 ### nd
 
-[nd](nd.md).[set_id](nd.md#set_id)(cls, geometry: Geometry = None, selection: Boolean = None, id: Integer = None)
+[nd](nd.md).[set_id](nd.md#geonodes.core.generated.static_nd.ND.set_id)(cls, geometry: Geometry = None, selection: Boolean = None, id: Integer = None)
 
 ## GeometryNodeSetInstanceTransform (GeometryNodeSetInstanceTransform)
 
 ### nd
 
-[nd](nd.md).[set_instance_transform](nd.md#set_instance_transform)(cls,
+[nd](nd.md).[set_instance_transform](nd.md#geonodes.core.generated.static_nd.ND.set_instance_transform)(cls,
                     instances: Instances = None,
                     selection: Boolean = None,
                     transform: Matrix = None)
@@ -2025,7 +2025,7 @@
 
 ### nd
 
-[nd](nd.md).[set_material](nd.md#set_material)(cls,
+[nd](nd.md).[set_material](nd.md#geonodes.core.generated.static_nd.ND.set_material)(cls,
                     geometry: Geometry = None,
                     selection: Boolean = None,
                     material: Material = None)
@@ -2034,7 +2034,7 @@
 
 ### nd
 
-[nd](nd.md).[set_material_index](nd.md#set_material_index)(cls,
+[nd](nd.md).[set_material_index](nd.md#geonodes.core.generated.static_nd.ND.set_material_index)(cls,
                     geometry: Geometry = None,
                     selection: Boolean = None,
                     material_index: Integer = None)
@@ -2043,7 +2043,7 @@
 
 ### nd
 
-[nd](nd.md).[set_mesh_normal](nd.md#set_mesh_normal)(cls,
+[nd](nd.md).[set_mesh_normal](nd.md#geonodes.core.generated.static_nd.ND.set_mesh_normal)(cls,
                     mesh: Mesh = None,
                     remove_custom: Boolean = None,
                     edge_sharpness: Boolean = None,
@@ -2055,13 +2055,13 @@
 
 ### nd
 
-[nd](nd.md).[set_point_radius](nd.md#set_point_radius)(cls, points: Cloud = None, selection: Boolean = None, radius: Float = None)
+[nd](nd.md).[set_point_radius](nd.md#geonodes.core.generated.static_nd.ND.set_point_radius)(cls, points: Cloud = None, selection: Boolean = None, radius: Float = None)
 
 ## GeometryNodeSetPosition (GeometryNodeSetPosition)
 
 ### nd
 
-[nd](nd.md).[set_position](nd.md#set_position)(cls,
+[nd](nd.md).[set_position](nd.md#geonodes.core.generated.static_nd.ND.set_position)(cls,
                     geometry: Geometry = None,
                     selection: Boolean = None,
                     position: Vector = None,
@@ -2071,7 +2071,7 @@
 
 ### nd
 
-[nd](nd.md).[set_shade_smooth](nd.md#set_shade_smooth)(cls,
+[nd](nd.md).[set_shade_smooth](nd.md#geonodes.core.generated.static_nd.ND.set_shade_smooth)(cls,
                     mesh: Mesh = None,
                     selection: Boolean = None,
                     shade_smooth: Boolean = None,
@@ -2081,13 +2081,13 @@
 
 ### nd
 
-[nd](nd.md).[set_spline_cyclic](nd.md#set_spline_cyclic)(cls, curve: Curve = None, selection: Boolean = None, cyclic: Boolean = None)
+[nd](nd.md).[set_spline_cyclic](nd.md#geonodes.core.generated.static_nd.ND.set_spline_cyclic)(cls, curve: Curve = None, selection: Boolean = None, cyclic: Boolean = None)
 
 ## GeometryNodeSetSplineResolution (GeometryNodeSetSplineResolution)
 
 ### nd
 
-[nd](nd.md).[set_spline_resolution](nd.md#set_spline_resolution)(cls,
+[nd](nd.md).[set_spline_resolution](nd.md#geonodes.core.generated.static_nd.ND.set_spline_resolution)(cls,
                     curve: Curve = None,
                     selection: Boolean = None,
                     resolution: Integer = None)
@@ -2100,7 +2100,7 @@
 
 ### nd
 
-[nd](nd.md).[sort_elements](nd.md#sort_elements)(cls,
+[nd](nd.md).[sort_elements](nd.md#geonodes.core.generated.static_nd.ND.sort_elements)(cls,
                     geometry: Geometry = None,
                     selection: Boolean = None,
                     group_id: Integer = None,
@@ -2111,25 +2111,25 @@
 
 ### nd
 
-[nd](nd.md).[spline_length](nd.md#spline_length)(cls)
+[nd](nd.md).[spline_length](nd.md#geonodes.core.generated.static_nd.ND.spline_length)(cls)
 
 ## GeometryNodeSplineParameter (GeometryNodeSplineParameter)
 
 ### nd
 
-[nd](nd.md).[spline_parameter](nd.md#spline_parameter)(cls)
+[nd](nd.md).[spline_parameter](nd.md#geonodes.core.generated.static_nd.ND.spline_parameter)(cls)
 
 ## GeometryNodeSplitEdges (GeometryNodeSplitEdges)
 
 ### nd
 
-[nd](nd.md).[split_edges](nd.md#split_edges)(cls, mesh: Mesh = None, selection: Boolean = None)
+[nd](nd.md).[split_edges](nd.md#geonodes.core.generated.static_nd.ND.split_edges)(cls, mesh: Mesh = None, selection: Boolean = None)
 
 ## GeometryNodeSplitToInstances (GeometryNodeSplitToInstances)
 
 ### nd
 
-[nd](nd.md).[split_to_instances](nd.md#split_to_instances)(cls,
+[nd](nd.md).[split_to_instances](nd.md#geonodes.core.generated.static_nd.ND.split_to_instances)(cls,
                     geometry: Geometry = None,
                     selection: Boolean = None,
                     group_id: Integer = None,
@@ -2139,7 +2139,7 @@
 
 ### nd
 
-[nd](nd.md).[store_named_attribute](nd.md#store_named_attribute)(cls,
+[nd](nd.md).[store_named_attribute](nd.md#geonodes.core.generated.static_nd.ND.store_named_attribute)(cls,
                     geometry: Geometry = None,
                     selection: Boolean = None,
                     name: String = None,
@@ -2151,7 +2151,7 @@
 
 ### nd
 
-[nd](nd.md).[store_named_grid](nd.md#store_named_grid)(cls,
+[nd](nd.md).[store_named_grid](nd.md#geonodes.core.generated.static_nd.ND.store_named_grid)(cls,
                     volume: Volume = None,
                     name: String = None,
                     grid: Float = None,
@@ -2161,13 +2161,13 @@
 
 ### nd
 
-[nd](nd.md).[join_strings](nd.md#join_strings)(cls, *strings: String, delimiter: String = None)
+[nd](nd.md).[join_strings](nd.md#geonodes.core.generated.static_nd.ND.join_strings)(cls, *strings: String, delimiter: String = None)
 
 ## GeometryNodeStringToCurves (GeometryNodeStringToCurves)
 
 ### nd
 
-[nd](nd.md).[string_to_curves](nd.md#string_to_curves)(cls,
+[nd](nd.md).[string_to_curves](nd.md#geonodes.core.generated.static_nd.ND.string_to_curves)(cls,
                     string: String = None,
                     size: Float = None,
                     font: Font = None,
@@ -2185,19 +2185,19 @@
 
 ### nd
 
-[nd](nd.md).[subdivide_curve](nd.md#subdivide_curve)(cls, curve: Curve = None, cuts: Integer = None)
+[nd](nd.md).[subdivide_curve](nd.md#geonodes.core.generated.static_nd.ND.subdivide_curve)(cls, curve: Curve = None, cuts: Integer = None)
 
 ## GeometryNodeSubdivideMesh (GeometryNodeSubdivideMesh)
 
 ### nd
 
-[nd](nd.md).[subdivide_mesh](nd.md#subdivide_mesh)(cls, mesh: Mesh = None, level: Integer = None)
+[nd](nd.md).[subdivide_mesh](nd.md#geonodes.core.generated.static_nd.ND.subdivide_mesh)(cls, mesh: Mesh = None, level: Integer = None)
 
 ## GeometryNodeSubdivisionSurface (GeometryNodeSubdivisionSurface)
 
 ### nd
 
-[nd](nd.md).[subdivision_surface](nd.md#subdivision_surface)(cls,
+[nd](nd.md).[subdivision_surface](nd.md#geonodes.core.generated.static_nd.ND.subdivision_surface)(cls,
                     mesh: Mesh = None,
                     level: Integer = None,
                     edge_crease: Float = None,
@@ -2212,43 +2212,43 @@
 
 ### nd
 
-[nd](nd.md).[_3d_cursor](nd.md#_3d_cursor)(cls)
+[nd](nd.md).[_3d_cursor](nd.md#geonodes.core.generated.static_nd.ND._3d_cursor)(cls)
 
 ## GeometryNodeToolActiveElement (GeometryNodeToolActiveElement)
 
 ### nd
 
-[nd](nd.md).[active_element](nd.md#active_element)(cls, domain: Literal['POINT', 'EDGE', 'FACE', 'LAYER'] = 'POINT')
+[nd](nd.md).[active_element](nd.md#geonodes.core.generated.static_nd.ND.active_element)(cls, domain: Literal['POINT', 'EDGE', 'FACE', 'LAYER'] = 'POINT')
 
 ## GeometryNodeToolFaceSet (GeometryNodeToolFaceSet)
 
 ### nd
 
-[nd](nd.md).[face_set](nd.md#face_set)(cls)
+[nd](nd.md).[face_set](nd.md#geonodes.core.generated.static_nd.ND.face_set)(cls)
 
 ## GeometryNodeToolMousePosition (GeometryNodeToolMousePosition)
 
 ### nd
 
-[nd](nd.md).[mouse_position](nd.md#mouse_position)(cls)
+[nd](nd.md).[mouse_position](nd.md#geonodes.core.generated.static_nd.ND.mouse_position)(cls)
 
 ## GeometryNodeToolSelection (GeometryNodeToolSelection)
 
 ### nd
 
-[nd](nd.md).[selection](nd.md#selection)(cls)
+[nd](nd.md).[selection](nd.md#geonodes.core.generated.static_nd.ND.selection)(cls)
 
 ## GeometryNodeToolSetFaceSet (GeometryNodeToolSetFaceSet)
 
 ### nd
 
-[nd](nd.md).[set_face_set](nd.md#set_face_set)(cls, mesh: Mesh = None, selection: Boolean = None, face_set: Integer = None)
+[nd](nd.md).[set_face_set](nd.md#geonodes.core.generated.static_nd.ND.set_face_set)(cls, mesh: Mesh = None, selection: Boolean = None, face_set: Integer = None)
 
 ## GeometryNodeToolSetSelection (GeometryNodeToolSetSelection)
 
 ### nd
 
-[nd](nd.md).[set_selection](nd.md#set_selection)(cls,
+[nd](nd.md).[set_selection](nd.md#geonodes.core.generated.static_nd.ND.set_selection)(cls,
                     geometry: Geometry = None,
                     selection: Boolean = None,
                     domain: Literal['POINT', 'EDGE', 'FACE', 'CURVE'] = 'POINT',
@@ -2258,7 +2258,7 @@
 
 ### nd
 
-[nd](nd.md).[transform_geometry](nd.md#transform_geometry)(cls,
+[nd](nd.md).[transform_geometry](nd.md#geonodes.core.generated.static_nd.ND.transform_geometry)(cls,
                     geometry: Geometry = None,
                     mode: Literal['Components', 'Matrix'] = None,
                     translation: Vector = None,
@@ -2270,7 +2270,7 @@
 
 ### nd
 
-[nd](nd.md).[translate_instances](nd.md#translate_instances)(cls,
+[nd](nd.md).[translate_instances](nd.md#geonodes.core.generated.static_nd.ND.translate_instances)(cls,
                     instances: Instances = None,
                     selection: Boolean = None,
                     translation: Vector = None,
@@ -2280,7 +2280,7 @@
 
 ### nd
 
-[nd](nd.md).[triangulate](nd.md#triangulate)(cls,
+[nd](nd.md).[triangulate](nd.md#geonodes.core.generated.static_nd.ND.triangulate)(cls,
                     mesh: Mesh = None,
                     selection: Boolean = None,
                     quad_method: Literal['Beauty', 'Fixed', 'Fixed Alternate', 'Shortest Diagonal', 'Longest Diagonal'] = None,
@@ -2290,7 +2290,7 @@
 
 ### nd
 
-[nd](nd.md).[trim_curve](nd.md#trim_curve)(cls,
+[nd](nd.md).[trim_curve](nd.md#geonodes.core.generated.static_nd.ND.trim_curve)(cls,
                     curve: Curve = None,
                     selection: Boolean = None,
                     start: Float = None,
@@ -2303,7 +2303,7 @@
 
 ### nd
 
-[nd](nd.md).[pack_uv_islands](nd.md#pack_uv_islands)(cls,
+[nd](nd.md).[pack_uv_islands](nd.md#geonodes.core.generated.static_nd.ND.pack_uv_islands)(cls,
                     uv: Vector = None,
                     selection: Boolean = None,
                     margin: Float = None,
@@ -2316,13 +2316,13 @@
 
 ### nd
 
-[nd](nd.md).[uv_tangent](nd.md#uv_tangent)(cls, method: Literal['Exact', 'Fast'] = None, uv: Vector = None)
+[nd](nd.md).[uv_tangent](nd.md#geonodes.core.generated.static_nd.ND.uv_tangent)(cls, method: Literal['Exact', 'Fast'] = None, uv: Vector = None)
 
 ## GeometryNodeUVUnwrap (GeometryNodeUVUnwrap)
 
 ### nd
 
-[nd](nd.md).[uv_unwrap](nd.md#uv_unwrap)(cls,
+[nd](nd.md).[uv_unwrap](nd.md#geonodes.core.generated.static_nd.ND.uv_unwrap)(cls,
                     selection: Boolean = None,
                     seam: Boolean = None,
                     margin: Float = None,
@@ -2335,13 +2335,13 @@
 
 ### nd
 
-[nd](nd.md).[vertex_of_corner](nd.md#vertex_of_corner)(cls, corner_index: Integer = None)
+[nd](nd.md).[vertex_of_corner](nd.md#geonodes.core.generated.static_nd.ND.vertex_of_corner)(cls, corner_index: Integer = None)
 
 ## GeometryNodeViewer (GeometryNodeViewer)
 
 ### nd
 
-[nd](nd.md).[viewer](nd.md#viewer)(cls,
+[nd](nd.md).[viewer](nd.md#geonodes.core.generated.static_nd.ND.viewer)(cls,
                     named_sockets: dict = {},
                     domain: Literal['AUTO', 'POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'] = 'AUTO',
                     ui_shortcut = 0,
@@ -2351,13 +2351,13 @@
 
 ### nd
 
-[nd](nd.md).[viewport_transform](nd.md#viewport_transform)(cls)
+[nd](nd.md).[viewport_transform](nd.md#geonodes.core.generated.static_nd.ND.viewport_transform)(cls)
 
 ## GeometryNodeVolumeCube (GeometryNodeVolumeCube)
 
 ### nd
 
-[nd](nd.md).[volume_cube](nd.md#volume_cube)(cls,
+[nd](nd.md).[volume_cube](nd.md#geonodes.core.generated.static_nd.ND.volume_cube)(cls,
                     density: Float = None,
                     background: Float = None,
                     min: Vector = None,
@@ -2370,7 +2370,7 @@
 
 ### nd
 
-[nd](nd.md).[volume_to_mesh](nd.md#volume_to_mesh)(cls,
+[nd](nd.md).[volume_to_mesh](nd.md#geonodes.core.generated.static_nd.ND.volume_to_mesh)(cls,
                     volume: Volume = None,
                     resolution_mode: Literal['Grid', 'Amount', 'Size'] = None,
                     voxel_size: Float = None,
@@ -2382,7 +2382,7 @@
 
 ### nd
 
-[nd](nd.md).[warning](nd.md#warning)(cls,
+[nd](nd.md).[warning](nd.md#geonodes.core.generated.static_nd.ND.warning)(cls,
                     show: Boolean = None,
                     message: String = None,
                     warning_type: Literal['ERROR', 'WARNING', 'INFO'] = 'ERROR')
@@ -2391,37 +2391,37 @@
 
 ### nd
 
-[nd](nd.md).[closure_input](nd.md#closure_input)(self)
+[nd](nd.md).[closure_input](nd.md#geonodes.core.generated.static_nd.ND.closure_input)(self)
 
 ### snd
 
-[snd](snd.md).[closure_input](snd.md#closure_input)(self)
+[snd](snd.md).[closure_input](snd.md#geonodes.core.generated.static_snd.SND.closure_input)(self)
 
 ## NodeClosureOutput (NodeClosureOutput)
 
 ### nd
 
-[nd](nd.md).[closure_output](nd.md#closure_output)(cls, active_input_index = 0, active_output_index = 0, define_signature = False)
+[nd](nd.md).[closure_output](nd.md#geonodes.core.generated.static_nd.ND.closure_output)(cls, active_input_index = 0, active_output_index = 0, define_signature = False)
 
 ### snd
 
-[snd](snd.md).[closure_output](snd.md#closure_output)(cls, active_input_index = 0, active_output_index = 0, define_signature = False)
+[snd](snd.md).[closure_output](snd.md#geonodes.core.generated.static_snd.SND.closure_output)(cls, active_input_index = 0, active_output_index = 0, define_signature = False)
 
 ## NodeCombineBundle (NodeCombineBundle)
 
 ### nd
 
-[nd](nd.md).[combine_bundle](nd.md#combine_bundle)(cls, named_sockets: dict = {}, define_signature = False, **sockets)
+[nd](nd.md).[combine_bundle](nd.md#geonodes.core.generated.static_nd.ND.combine_bundle)(cls, named_sockets: dict = {}, define_signature = False, **sockets)
 
 ### snd
 
-[snd](snd.md).[combine_bundle](snd.md#combine_bundle)(cls, named_sockets: dict = {}, define_signature = False, **sockets)
+[snd](snd.md).[combine_bundle](snd.md#geonodes.core.generated.static_snd.SND.combine_bundle)(cls, named_sockets: dict = {}, define_signature = False, **sockets)
 
 ## NodeEnableOutput (NodeEnableOutput)
 
 ### nd
 
-[nd](nd.md).[enable_output](nd.md#enable_output)(cls,
+[nd](nd.md).[enable_output](nd.md#geonodes.core.generated.static_nd.ND.enable_output)(cls,
                     enable: Boolean = None,
                     value: Float = None,
                     data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT'] = 'FLOAT')
@@ -2430,7 +2430,7 @@
 
 ### nd
 
-[nd](nd.md).[evaluate_closure](nd.md#evaluate_closure)(cls,
+[nd](nd.md).[evaluate_closure](nd.md#geonodes.core.generated.static_nd.ND.evaluate_closure)(cls,
                     closure: Closure = None,
                     active_input_index = 0,
                     active_output_index = 0,
@@ -2438,7 +2438,7 @@
 
 ### snd
 
-[snd](snd.md).[evaluate_closure](snd.md#evaluate_closure)(cls,
+[snd](snd.md).[evaluate_closure](snd.md#geonodes.core.generated.static_snd.SND.evaluate_closure)(cls,
                     closure: Closure = None,
                     active_input_index = 0,
                     active_output_index = 0,
@@ -2450,7 +2450,7 @@
 
 ### nd
 
-[nd](nd.md).[get_bundle_item](nd.md#get_bundle_item)(cls,
+[nd](nd.md).[get_bundle_item](nd.md#geonodes.core.generated.static_nd.ND.get_bundle_item)(cls,
                     bundle: Bundle = None,
                     path: String = None,
                     remove: Boolean = None,
@@ -2461,47 +2461,47 @@
 
 ### nd
 
-[nd](nd.md).[group_input](nd.md#group_input)(self)
+[nd](nd.md).[group_input](nd.md#geonodes.core.generated.static_nd.ND.group_input)(self)
 
 ### snd
 
-[snd](snd.md).[group_input](snd.md#group_input)(self)
+[snd](snd.md).[group_input](snd.md#geonodes.core.generated.static_snd.SND.group_input)(self)
 
 ## NodeGroupOutput (NodeGroupOutput)
 
 ### nd
 
-[nd](nd.md).[group_output](nd.md#group_output)(cls, is_active_output = True)
+[nd](nd.md).[group_output](nd.md#geonodes.core.generated.static_nd.ND.group_output)(cls, is_active_output = True)
 
 ### snd
 
-[snd](snd.md).[group_output](snd.md#group_output)(cls, is_active_output = True)
+[snd](snd.md).[group_output](snd.md#geonodes.core.generated.static_snd.SND.group_output)(cls, is_active_output = True)
 
 ## NodeJoinBundle (NodeJoinBundle)
 
 ### nd
 
-[nd](nd.md).[join_bundle](nd.md#join_bundle)(cls, *bundle: Bundle)
+[nd](nd.md).[join_bundle](nd.md#geonodes.core.generated.static_nd.ND.join_bundle)(cls, *bundle: Bundle)
 
 ### snd
 
-[snd](snd.md).[join_bundle](snd.md#join_bundle)(cls, *bundle: Bundle)
+[snd](snd.md).[join_bundle](snd.md#geonodes.core.generated.static_snd.SND.join_bundle)(cls, *bundle: Bundle)
 
 ## NodeReroute (NodeReroute)
 
 ### nd
 
-[nd](nd.md).[reroute](nd.md#reroute)(cls, input: Color = None, socket_idname = 'NodeSocketColor')
+[nd](nd.md).[reroute](nd.md#geonodes.core.generated.static_nd.ND.reroute)(cls, input: Color = None, socket_idname = 'NodeSocketColor')
 
 ### snd
 
-[snd](snd.md).[reroute](snd.md#reroute)(cls, input: Color = None, socket_idname = 'NodeSocketColor')
+[snd](snd.md).[reroute](snd.md#geonodes.core.generated.static_snd.SND.reroute)(cls, input: Color = None, socket_idname = 'NodeSocketColor')
 
 ## NodeSeparateBundle (NodeSeparateBundle)
 
 ### nd
 
-[nd](nd.md).[separate_bundle](nd.md#separate_bundle)(cls,
+[nd](nd.md).[separate_bundle](nd.md#geonodes.core.generated.static_nd.ND.separate_bundle)(cls,
                     named_sockets: dict = {},
                     bundle: Bundle = None,
                     define_signature = False,
@@ -2509,7 +2509,7 @@
 
 ### snd
 
-[snd](snd.md).[separate_bundle](snd.md#separate_bundle)(cls,
+[snd](snd.md).[separate_bundle](snd.md#geonodes.core.generated.static_snd.SND.separate_bundle)(cls,
                     named_sockets: dict = {},
                     bundle: Bundle = None,
                     define_signature = False,
@@ -2519,7 +2519,7 @@
 
 ### nd
 
-[nd](nd.md).[store_bundle_item](nd.md#store_bundle_item)(cls,
+[nd](nd.md).[store_bundle_item](nd.md#geonodes.core.generated.static_nd.ND.store_bundle_item)(cls,
                     bundle: Bundle = None,
                     path: String = None,
                     item: Float = None,
@@ -2530,13 +2530,13 @@
 
 ### snd
 
-[snd](snd.md).[add_shader](snd.md#add_shader)(cls, shader: Shader = None, shader_1: Shader = None)
+[snd](snd.md).[add_shader](snd.md#geonodes.core.generated.static_snd.SND.add_shader)(cls, shader: Shader = None, shader_1: Shader = None)
 
 ## ShaderNodeAmbientOcclusion (ShaderNodeAmbientOcclusion)
 
 ### snd
 
-[snd](snd.md).[ambient_occlusion](snd.md#ambient_occlusion)(cls,
+[snd](snd.md).[ambient_occlusion](snd.md#geonodes.core.generated.static_snd.SND.ambient_occlusion)(cls,
                     color: Color = None,
                     distance: Float = None,
                     normal: Vector = None,
@@ -2548,7 +2548,7 @@
 
 ### snd
 
-[snd](snd.md).[attribute](snd.md#attribute)(cls,
+[snd](snd.md).[attribute](snd.md#geonodes.core.generated.static_snd.SND.attribute)(cls,
                     attribute_name = '',
                     attribute_type: Literal['GEOMETRY', 'OBJECT', 'INSTANCER', 'VIEW_LAYER'] = 'GEOMETRY')
 
@@ -2556,35 +2556,35 @@
 
 ### snd
 
-[snd](snd.md).[background](snd.md#background)(cls, color: Color = None, strength: Float = None, weight: Float = None)
+[snd](snd.md).[background](snd.md#geonodes.core.generated.static_snd.SND.background)(cls, color: Color = None, strength: Float = None, weight: Float = None)
 
 ## ShaderNodeBevel (ShaderNodeBevel)
 
 ### snd
 
-[snd](snd.md).[bevel](snd.md#bevel)(cls, radius: Float = None, normal: Vector = None, samples = 4)
+[snd](snd.md).[bevel](snd.md#geonodes.core.generated.static_snd.SND.bevel)(cls, radius: Float = None, normal: Vector = None, samples = 4)
 
 ## ShaderNodeBlackbody (ShaderNodeBlackbody)
 
 ### nd
 
-[nd](nd.md).[blackbody](nd.md#blackbody)(cls, temperature: Float = None)
+[nd](nd.md).[blackbody](nd.md#geonodes.core.generated.static_nd.ND.blackbody)(cls, temperature: Float = None)
 
 ### snd
 
-[snd](snd.md).[blackbody](snd.md#blackbody)(cls, temperature: Float = None)
+[snd](snd.md).[blackbody](snd.md#geonodes.core.generated.static_snd.SND.blackbody)(cls, temperature: Float = None)
 
 ## ShaderNodeBrightContrast (ShaderNodeBrightContrast)
 
 ### snd
 
-[snd](snd.md).[brightness_contrast](snd.md#brightness_contrast)(cls, color: Color = None, brightness: Float = None, contrast: Float = None)
+[snd](snd.md).[brightness_contrast](snd.md#geonodes.core.generated.static_snd.SND.brightness_contrast)(cls, color: Color = None, brightness: Float = None, contrast: Float = None)
 
 ## ShaderNodeBsdfAnisotropic (ShaderNodeBsdfAnisotropic)
 
 ### snd
 
-[snd](snd.md).[glossy_bsdf](snd.md#glossy_bsdf)(cls,
+[snd](snd.md).[glossy_bsdf](snd.md#geonodes.core.generated.static_snd.SND.glossy_bsdf)(cls,
                     color: Color = None,
                     roughness: Float = None,
                     anisotropy: Float = None,
@@ -2598,7 +2598,7 @@
 
 ### snd
 
-[snd](snd.md).[diffuse_bsdf](snd.md#diffuse_bsdf)(cls,
+[snd](snd.md).[diffuse_bsdf](snd.md#geonodes.core.generated.static_snd.SND.diffuse_bsdf)(cls,
                     color: Color = None,
                     roughness: Float = None,
                     normal: Vector = None,
@@ -2608,7 +2608,7 @@
 
 ### snd
 
-[snd](snd.md).[glass_bsdf](snd.md#glass_bsdf)(cls,
+[snd](snd.md).[glass_bsdf](snd.md#geonodes.core.generated.static_snd.SND.glass_bsdf)(cls,
                     color: Color = None,
                     roughness: Float = None,
                     ior: Float = None,
@@ -2622,7 +2622,7 @@
 
 ### snd
 
-[snd](snd.md).[hair_bsdf](snd.md#hair_bsdf)(cls,
+[snd](snd.md).[hair_bsdf](snd.md#geonodes.core.generated.static_snd.SND.hair_bsdf)(cls,
                     color: Color = None,
                     offset: Float = None,
                     roughnessu: Float = None,
@@ -2635,7 +2635,7 @@
 
 ### snd
 
-[snd](snd.md).[principled_hair_bsdf](snd.md#principled_hair_bsdf)(cls,
+[snd](snd.md).[principled_hair_bsdf](snd.md#geonodes.core.generated.static_snd.SND.principled_hair_bsdf)(cls,
                     color: Color = None,
                     melanin: Float = None,
                     melanin_redness: Float = None,
@@ -2661,7 +2661,7 @@
 
 ### snd
 
-[snd](snd.md).[metallic_bsdf](snd.md#metallic_bsdf)(cls,
+[snd](snd.md).[metallic_bsdf](snd.md#geonodes.core.generated.static_snd.SND.metallic_bsdf)(cls,
                     base_color: Color = None,
                     edge_tint: Color = None,
                     ior: Vector = None,
@@ -2681,7 +2681,7 @@
 
 ### snd
 
-[snd](snd.md).[principled_bsdf](snd.md#principled_bsdf)(cls,
+[snd](snd.md).[principled_bsdf](snd.md#geonodes.core.generated.static_snd.SND.principled_bsdf)(cls,
                     base_color: Color = None,
                     metallic: Float = None,
                     roughness: Float = None,
@@ -2720,7 +2720,7 @@
 
 ### snd
 
-[snd](snd.md).[ray_portal_bsdf](snd.md#ray_portal_bsdf)(cls,
+[snd](snd.md).[ray_portal_bsdf](snd.md#geonodes.core.generated.static_snd.SND.ray_portal_bsdf)(cls,
                     color: Color = None,
                     position: Vector = None,
                     direction: Vector = None,
@@ -2730,7 +2730,7 @@
 
 ### snd
 
-[snd](snd.md).[refraction_bsdf](snd.md#refraction_bsdf)(cls,
+[snd](snd.md).[refraction_bsdf](snd.md#geonodes.core.generated.static_snd.SND.refraction_bsdf)(cls,
                     color: Color = None,
                     roughness: Float = None,
                     ior: Float = None,
@@ -2742,7 +2742,7 @@
 
 ### snd
 
-[snd](snd.md).[sheen_bsdf](snd.md#sheen_bsdf)(cls,
+[snd](snd.md).[sheen_bsdf](snd.md#geonodes.core.generated.static_snd.SND.sheen_bsdf)(cls,
                     color: Color = None,
                     roughness: Float = None,
                     normal: Vector = None,
@@ -2753,7 +2753,7 @@
 
 ### snd
 
-[snd](snd.md).[toon_bsdf](snd.md#toon_bsdf)(cls,
+[snd](snd.md).[toon_bsdf](snd.md#geonodes.core.generated.static_snd.SND.toon_bsdf)(cls,
                     color: Color = None,
                     size: Float = None,
                     smooth: Float = None,
@@ -2765,19 +2765,19 @@
 
 ### snd
 
-[snd](snd.md).[translucent_bsdf](snd.md#translucent_bsdf)(cls, color: Color = None, normal: Vector = None, weight: Float = None)
+[snd](snd.md).[translucent_bsdf](snd.md#geonodes.core.generated.static_snd.SND.translucent_bsdf)(cls, color: Color = None, normal: Vector = None, weight: Float = None)
 
 ## ShaderNodeBsdfTransparent (ShaderNodeBsdfTransparent)
 
 ### snd
 
-[snd](snd.md).[transparent_bsdf](snd.md#transparent_bsdf)(cls, color: Color = None, weight: Float = None)
+[snd](snd.md).[transparent_bsdf](snd.md#geonodes.core.generated.static_snd.SND.transparent_bsdf)(cls, color: Color = None, weight: Float = None)
 
 ## ShaderNodeBump (ShaderNodeBump)
 
 ### snd
 
-[snd](snd.md).[bump](snd.md#bump)(cls,
+[snd](snd.md).[bump](snd.md#geonodes.core.generated.static_snd.SND.bump)(cls,
                     strength: Float = None,
                     distance: Float = None,
                     filter_width: Float = None,
@@ -2789,13 +2789,13 @@
 
 ### snd
 
-[snd](snd.md).[camera_data](snd.md#camera_data)(cls)
+[snd](snd.md).[camera_data](snd.md#geonodes.core.generated.static_snd.SND.camera_data)(cls)
 
 ## ShaderNodeClamp (ShaderNodeClamp)
 
 ### nd
 
-[nd](nd.md).[clamp](nd.md#clamp)(cls,
+[nd](nd.md).[clamp](nd.md#geonodes.core.generated.static_nd.ND.clamp)(cls,
                     value: Float = None,
                     min: Float = None,
                     max: Float = None,
@@ -2803,7 +2803,7 @@
 
 ### snd
 
-[snd](snd.md).[clamp](snd.md#clamp)(cls,
+[snd](snd.md).[clamp](snd.md#geonodes.core.generated.static_snd.SND.clamp)(cls,
                     value: Float = None,
                     min: Float = None,
                     max: Float = None,
@@ -2813,7 +2813,7 @@
 
 ### snd
 
-[snd](snd.md).[combine_color](snd.md#combine_color)(cls,
+[snd](snd.md).[combine_color](snd.md#geonodes.core.generated.static_snd.SND.combine_color)(cls,
                     red: Float = None,
                     green: Float = None,
                     blue: Float = None,
@@ -2823,17 +2823,17 @@
 
 ### nd
 
-[nd](nd.md).[combine_xyz](nd.md#combine_xyz)(cls, x: Float = None, y: Float = None, z: Float = None)
+[nd](nd.md).[combine_xyz](nd.md#geonodes.core.generated.static_nd.ND.combine_xyz)(cls, x: Float = None, y: Float = None, z: Float = None)
 
 ### snd
 
-[snd](snd.md).[combine_xyz](snd.md#combine_xyz)(cls, x: Float = None, y: Float = None, z: Float = None)
+[snd](snd.md).[combine_xyz](snd.md#geonodes.core.generated.static_snd.SND.combine_xyz)(cls, x: Float = None, y: Float = None, z: Float = None)
 
 ## ShaderNodeDisplacement (ShaderNodeDisplacement)
 
 ### snd
 
-[snd](snd.md).[displacement](snd.md#displacement)(cls,
+[snd](snd.md).[displacement](snd.md#geonodes.core.generated.static_snd.SND.displacement)(cls,
                     height: Float = None,
                     midlevel: Float = None,
                     scale: Float = None,
@@ -2844,7 +2844,7 @@
 
 ### snd
 
-[snd](snd.md).[specular_bsdf](snd.md#specular_bsdf)(cls,
+[snd](snd.md).[specular_bsdf](snd.md#geonodes.core.generated.static_snd.SND.specular_bsdf)(cls,
                     base_color: Color = None,
                     specular: Color = None,
                     roughness: Float = None,
@@ -2860,33 +2860,33 @@
 
 ### snd
 
-[snd](snd.md).[emission](snd.md#emission)(cls, color: Color = None, strength: Float = None, weight: Float = None)
+[snd](snd.md).[emission](snd.md#geonodes.core.generated.static_snd.SND.emission)(cls, color: Color = None, strength: Float = None, weight: Float = None)
 
 ## ShaderNodeFloatCurve (ShaderNodeFloatCurve)
 
 ### nd
 
-[nd](nd.md).[float_curve](nd.md#float_curve)(cls, value: Float = None, factor: Float = None)
+[nd](nd.md).[float_curve](nd.md#geonodes.core.generated.static_nd.ND.float_curve)(cls, value: Float = None, factor: Float = None)
 
 ### snd
 
-[snd](snd.md).[float_curve](snd.md#float_curve)(cls, value: Float = None, factor: Float = None)
+[snd](snd.md).[float_curve](snd.md#geonodes.core.generated.static_snd.SND.float_curve)(cls, value: Float = None, factor: Float = None)
 
 ## ShaderNodeFresnel (ShaderNodeFresnel)
 
 ### snd
 
-[snd](snd.md).[fresnel](snd.md#fresnel)(cls, ior: Float = None, normal: Vector = None)
+[snd](snd.md).[fresnel](snd.md#geonodes.core.generated.static_snd.SND.fresnel)(cls, ior: Float = None, normal: Vector = None)
 
 ## ShaderNodeGamma (ShaderNodeGamma)
 
 ### nd
 
-[nd](nd.md).[gamma](nd.md#gamma)(cls, color: Color = None, gamma: Float = None)
+[nd](nd.md).[gamma](nd.md#geonodes.core.generated.static_nd.ND.gamma)(cls, color: Color = None, gamma: Float = None)
 
 ### snd
 
-[snd](snd.md).[gamma](snd.md#gamma)(cls, color: Color = None, gamma: Float = None)
+[snd](snd.md).[gamma](snd.md#geonodes.core.generated.static_snd.SND.gamma)(cls, color: Color = None, gamma: Float = None)
 
 ## ShaderNodeGroup (ShaderNodeGroup)
 
@@ -2894,19 +2894,19 @@
 
 ### snd
 
-[snd](snd.md).[curves_info](snd.md#curves_info)(cls)
+[snd](snd.md).[curves_info](snd.md#geonodes.core.generated.static_snd.SND.curves_info)(cls)
 
 ## ShaderNodeHoldout (ShaderNodeHoldout)
 
 ### snd
 
-[snd](snd.md).[holdout](snd.md#holdout)(cls, weight: Float = None)
+[snd](snd.md).[holdout](snd.md#geonodes.core.generated.static_snd.SND.holdout)(cls, weight: Float = None)
 
 ## ShaderNodeHueSaturation (ShaderNodeHueSaturation)
 
 ### snd
 
-[snd](snd.md).[hue_saturation_value](snd.md#hue_saturation_value)(cls,
+[snd](snd.md).[hue_saturation_value](snd.md#geonodes.core.generated.static_snd.SND.hue_saturation_value)(cls,
                     hue: Float = None,
                     saturation: Float = None,
                     value: Float = None,
@@ -2917,31 +2917,31 @@
 
 ### snd
 
-[snd](snd.md).[invert_color](snd.md#invert_color)(cls, color: Color = None, factor: Float = None)
+[snd](snd.md).[invert_color](snd.md#geonodes.core.generated.static_snd.SND.invert_color)(cls, color: Color = None, factor: Float = None)
 
 ## ShaderNodeLayerWeight (ShaderNodeLayerWeight)
 
 ### snd
 
-[snd](snd.md).[layer_weight](snd.md#layer_weight)(cls, blend: Float = None, normal: Vector = None)
+[snd](snd.md).[layer_weight](snd.md#geonodes.core.generated.static_snd.SND.layer_weight)(cls, blend: Float = None, normal: Vector = None)
 
 ## ShaderNodeLightFalloff (ShaderNodeLightFalloff)
 
 ### snd
 
-[snd](snd.md).[light_falloff](snd.md#light_falloff)(cls, strength: Float = None, smooth: Float = None)
+[snd](snd.md).[light_falloff](snd.md#geonodes.core.generated.static_snd.SND.light_falloff)(cls, strength: Float = None, smooth: Float = None)
 
 ## ShaderNodeLightPath (ShaderNodeLightPath)
 
 ### snd
 
-[snd](snd.md).[light_path](snd.md#light_path)(cls)
+[snd](snd.md).[light_path](snd.md#geonodes.core.generated.static_snd.SND.light_path)(cls)
 
 ## ShaderNodeMapRange (ShaderNodeMapRange)
 
 ### nd
 
-[nd](nd.md).[map_range](nd.md#map_range)(cls,
+[nd](nd.md).[map_range](nd.md#geonodes.core.generated.static_nd.ND.map_range)(cls,
                     value: Float = None,
                     from_min: Float = None,
                     from_max: Float = None,
@@ -2960,7 +2960,7 @@
 
 ### snd
 
-[snd](snd.md).[map_range](snd.md#map_range)(cls,
+[snd](snd.md).[map_range](snd.md#geonodes.core.generated.static_snd.SND.map_range)(cls,
                     value: Float = None,
                     from_min: Float = None,
                     from_max: Float = None,
@@ -2981,7 +2981,7 @@
 
 ### snd
 
-[snd](snd.md).[mapping](snd.md#mapping)(cls,
+[snd](snd.md).[mapping](snd.md#geonodes.core.generated.static_snd.SND.mapping)(cls,
                     vector: Vector = None,
                     location: Vector = None,
                     rotation: Vector = None,
@@ -2992,7 +2992,7 @@
 
 ### nd
 
-[nd](nd.md).[math](nd.md#math)(cls,
+[nd](nd.md).[math](nd.md#geonodes.core.generated.static_nd.ND.math)(cls,
                     value: Float = None,
                     value_1: Float = None,
                     value_2: Float = None,
@@ -3001,7 +3001,7 @@
 
 ### snd
 
-[snd](snd.md).[math](snd.md#math)(cls,
+[snd](snd.md).[math](snd.md#geonodes.core.generated.static_snd.SND.math)(cls,
                     value: Float = None,
                     value_1: Float = None,
                     value_2: Float = None,
@@ -3012,7 +3012,7 @@
 
 ### nd
 
-[nd](nd.md).[mix](nd.md#mix)(cls,
+[nd](nd.md).[mix](nd.md#geonodes.core.generated.static_nd.ND.mix)(cls,
                     a: Float = None,
                     b: Float = None,
                     a_1: Vector = None,
@@ -3030,7 +3030,7 @@
 
 ### snd
 
-[snd](snd.md).[mix](snd.md#mix)(cls,
+[snd](snd.md).[mix](snd.md#geonodes.core.generated.static_snd.SND.mix)(cls,
                     a: Float = None,
                     b: Float = None,
                     a_1: Vector = None,
@@ -3050,25 +3050,25 @@
 
 ### snd
 
-[snd](snd.md).[mix_shader](snd.md#mix_shader)(cls, shader: Shader = None, shader_1: Shader = None, factor: Float = None)
+[snd](snd.md).[mix_shader](snd.md#geonodes.core.generated.static_snd.SND.mix_shader)(cls, shader: Shader = None, shader_1: Shader = None, factor: Float = None)
 
 ## ShaderNodeNewGeometry (ShaderNodeNewGeometry)
 
 ### snd
 
-[snd](snd.md).[geometry](snd.md#geometry)(cls)
+[snd](snd.md).[geometry](snd.md#geonodes.core.generated.static_snd.SND.geometry)(cls)
 
 ## ShaderNodeNormal (ShaderNodeNormal)
 
 ### snd
 
-[snd](snd.md).[normal](snd.md#normal)(cls, normal: Vector = None)
+[snd](snd.md).[normal](snd.md#geonodes.core.generated.static_snd.SND.normal)(cls, normal: Vector = None)
 
 ## ShaderNodeNormalMap (ShaderNodeNormalMap)
 
 ### snd
 
-[snd](snd.md).[normal_map](snd.md#normal_map)(cls,
+[snd](snd.md).[normal_map](snd.md#geonodes.core.generated.static_snd.SND.normal_map)(cls,
                     strength: Float = None,
                     color: Color = None,
                     base: Literal['ORIGINAL', 'DISPLACED'] = 'DISPLACED',
@@ -3080,19 +3080,19 @@
 
 ### snd
 
-[snd](snd.md).[object_info](snd.md#object_info)(cls)
+[snd](snd.md).[object_info](snd.md#geonodes.core.generated.static_snd.SND.object_info)(cls)
 
 ## ShaderNodeOutputAOV (ShaderNodeOutputAOV)
 
 ### snd
 
-[snd](snd.md).[aov_output](snd.md#aov_output)(cls, color: Color = None, value: Float = None, aov_name = '')
+[snd](snd.md).[aov_output](snd.md#geonodes.core.generated.static_snd.SND.aov_output)(cls, color: Color = None, value: Float = None, aov_name = '')
 
 ## ShaderNodeOutputLight (ShaderNodeOutputLight)
 
 ### snd
 
-[snd](snd.md).[light_output](snd.md#light_output)(cls,
+[snd](snd.md).[light_output](snd.md#geonodes.core.generated.static_snd.SND.light_output)(cls,
                     surface: Shader = None,
                     is_active_output = True,
                     target: Literal['ALL', 'EEVEE', 'CYCLES'] = 'ALL')
@@ -3101,7 +3101,7 @@
 
 ### snd
 
-[snd](snd.md).[line_style_output](snd.md#line_style_output)(cls,
+[snd](snd.md).[line_style_output](snd.md#geonodes.core.generated.static_snd.SND.line_style_output)(cls,
                     color: Color = None,
                     color_fac: Float = None,
                     alpha: Float = None,
@@ -3116,7 +3116,7 @@
 
 ### snd
 
-[snd](snd.md).[material_output](snd.md#material_output)(cls,
+[snd](snd.md).[material_output](snd.md#geonodes.core.generated.static_snd.SND.material_output)(cls,
                     surface: Shader = None,
                     volume: VolumeShader = None,
                     displacement: Vector = None,
@@ -3128,7 +3128,7 @@
 
 ### snd
 
-[snd](snd.md).[world_output](snd.md#world_output)(cls,
+[snd](snd.md).[world_output](snd.md#geonodes.core.generated.static_snd.SND.world_output)(cls,
                     surface: Shader = None,
                     volume: VolumeShader = None,
                     is_active_output = True,
@@ -3138,41 +3138,41 @@
 
 ### snd
 
-[snd](snd.md).[particle_info](snd.md#particle_info)(cls)
+[snd](snd.md).[particle_info](snd.md#geonodes.core.generated.static_snd.SND.particle_info)(cls)
 
 ## ShaderNodePointInfo (ShaderNodePointInfo)
 
 ### snd
 
-[snd](snd.md).[point_info](snd.md#point_info)(cls)
+[snd](snd.md).[point_info](snd.md#geonodes.core.generated.static_snd.SND.point_info)(cls)
 
 ## ShaderNodeRGB (ShaderNodeRGB)
 
 ### snd
 
-[snd](snd.md).[color](snd.md#color)(self)
+[snd](snd.md).[color](snd.md#geonodes.core.generated.static_snd.SND.color)(self)
 
 ## ShaderNodeRGBCurve (ShaderNodeRGBCurve)
 
 ### nd
 
-[nd](nd.md).[rgb_curves](nd.md#rgb_curves)(cls, color: Color = None, factor: Float = None)
+[nd](nd.md).[rgb_curves](nd.md#geonodes.core.generated.static_nd.ND.rgb_curves)(cls, color: Color = None, factor: Float = None)
 
 ### snd
 
-[snd](snd.md).[rgb_curves](snd.md#rgb_curves)(cls, color: Color = None, factor: Float = None)
+[snd](snd.md).[rgb_curves](snd.md#geonodes.core.generated.static_snd.SND.rgb_curves)(cls, color: Color = None, factor: Float = None)
 
 ## ShaderNodeRGBToBW (ShaderNodeRGBToBW)
 
 ### snd
 
-[snd](snd.md).[rgb_to_bw](snd.md#rgb_to_bw)(cls, color: Color = None)
+[snd](snd.md).[rgb_to_bw](snd.md#geonodes.core.generated.static_snd.SND.rgb_to_bw)(cls, color: Color = None)
 
 ## ShaderNodeRadialTiling (ShaderNodeRadialTiling)
 
 ### nd
 
-[nd](nd.md).[radial_tiling](nd.md#radial_tiling)(cls,
+[nd](nd.md).[radial_tiling](nd.md#geonodes.core.generated.static_nd.ND.radial_tiling)(cls,
                     vector: Vector = None,
                     sides: Float = None,
                     roundness: Float = None,
@@ -3180,7 +3180,7 @@
 
 ### snd
 
-[snd](snd.md).[radial_tiling](snd.md#radial_tiling)(cls,
+[snd](snd.md).[radial_tiling](snd.md#geonodes.core.generated.static_snd.SND.radial_tiling)(cls,
                     vector: Vector = None,
                     sides: Float = None,
                     roundness: Float = None,
@@ -3190,7 +3190,7 @@
 
 ### snd
 
-[snd](snd.md).[raycast](snd.md#raycast)(cls,
+[snd](snd.md).[raycast](snd.md#geonodes.core.generated.static_snd.SND.raycast)(cls,
                     position: Vector = None,
                     direction: Vector = None,
                     length: Float = None,
@@ -3200,7 +3200,7 @@
 
 ### snd
 
-[snd](snd.md).[script](snd.md#script)(cls,
+[snd](snd.md).[script](snd.md#geonodes.core.generated.static_snd.SND.script)(cls,
                     bytecode = '',
                     bytecode_hash = '',
                     filepath = '',
@@ -3212,29 +3212,29 @@
 
 ### snd
 
-[snd](snd.md).[separate_color](snd.md#separate_color)(cls, color: Color = None, mode: Literal['RGB', 'HSV', 'HSL'] = 'RGB')
+[snd](snd.md).[separate_color](snd.md#geonodes.core.generated.static_snd.SND.separate_color)(cls, color: Color = None, mode: Literal['RGB', 'HSV', 'HSL'] = 'RGB')
 
 ## ShaderNodeSeparateXYZ (ShaderNodeSeparateXYZ)
 
 ### nd
 
-[nd](nd.md).[separate_xyz](nd.md#separate_xyz)(cls, vector: Vector = None)
+[nd](nd.md).[separate_xyz](nd.md#geonodes.core.generated.static_nd.ND.separate_xyz)(cls, vector: Vector = None)
 
 ### snd
 
-[snd](snd.md).[separate_xyz](snd.md#separate_xyz)(cls, vector: Vector = None)
+[snd](snd.md).[separate_xyz](snd.md#geonodes.core.generated.static_snd.SND.separate_xyz)(cls, vector: Vector = None)
 
 ## ShaderNodeShaderToRGB (ShaderNodeShaderToRGB)
 
 ### snd
 
-[snd](snd.md).[shader_to_rgb](snd.md#shader_to_rgb)(cls, shader: Shader = None)
+[snd](snd.md).[shader_to_rgb](snd.md#geonodes.core.generated.static_snd.SND.shader_to_rgb)(cls, shader: Shader = None)
 
 ## ShaderNodeSubsurfaceScattering (ShaderNodeSubsurfaceScattering)
 
 ### snd
 
-[snd](snd.md).[subsurface_scattering](snd.md#subsurface_scattering)(cls,
+[snd](snd.md).[subsurface_scattering](snd.md#geonodes.core.generated.static_snd.SND.subsurface_scattering)(cls,
                     color: Color = None,
                     scale: Float = None,
                     radius: Vector = None,
@@ -3249,7 +3249,7 @@
 
 ### snd
 
-[snd](snd.md).[tangent](snd.md#tangent)(cls,
+[snd](snd.md).[tangent](snd.md#geonodes.core.generated.static_snd.SND.tangent)(cls,
                     axis: Literal['X', 'Y', 'Z'] = 'Z',
                     direction_type: Literal['RADIAL', 'UV_MAP'] = 'RADIAL',
                     uv_map = '')
@@ -3258,7 +3258,7 @@
 
 ### nd
 
-[nd](nd.md).[brick_texture](nd.md#brick_texture)(cls,
+[nd](nd.md).[brick_texture](nd.md#geonodes.core.generated.static_nd.ND.brick_texture)(cls,
                     vector: Vector = None,
                     color1: Color = None,
                     color2: Color = None,
@@ -3276,7 +3276,7 @@
 
 ### snd
 
-[snd](snd.md).[brick_texture](snd.md#brick_texture)(cls,
+[snd](snd.md).[brick_texture](snd.md#geonodes.core.generated.static_snd.SND.brick_texture)(cls,
                     vector: Vector = None,
                     color1: Color = None,
                     color2: Color = None,
@@ -3296,7 +3296,7 @@
 
 ### nd
 
-[nd](nd.md).[checker_texture](nd.md#checker_texture)(cls,
+[nd](nd.md).[checker_texture](nd.md#geonodes.core.generated.static_nd.ND.checker_texture)(cls,
                     vector: Vector = None,
                     color1: Color = None,
                     color2: Color = None,
@@ -3304,7 +3304,7 @@
 
 ### snd
 
-[snd](snd.md).[checker_texture](snd.md#checker_texture)(cls,
+[snd](snd.md).[checker_texture](snd.md#geonodes.core.generated.static_snd.SND.checker_texture)(cls,
                     vector: Vector = None,
                     color1: Color = None,
                     color2: Color = None,
@@ -3314,13 +3314,13 @@
 
 ### snd
 
-[snd](snd.md).[texture_coordinate](snd.md#texture_coordinate)(cls, from_instancer = False, object = None)
+[snd](snd.md).[texture_coordinate](snd.md#geonodes.core.generated.static_snd.SND.texture_coordinate)(cls, from_instancer = False, object = None)
 
 ## ShaderNodeTexEnvironment (ShaderNodeTexEnvironment)
 
 ### snd
 
-[snd](snd.md).[environment_texture](snd.md#environment_texture)(cls,
+[snd](snd.md).[environment_texture](snd.md#geonodes.core.generated.static_snd.SND.environment_texture)(cls,
                     vector: Vector = None,
                     image = None,
                     interpolation: Literal['Linear', 'Closest', 'Cubic', 'Smart'] = 'Linear',
@@ -3330,7 +3330,7 @@
 
 ### nd
 
-[nd](nd.md).[gabor_texture](nd.md#gabor_texture)(cls,
+[nd](nd.md).[gabor_texture](nd.md#geonodes.core.generated.static_nd.ND.gabor_texture)(cls,
                     vector: Vector = None,
                     scale: Float = None,
                     frequency: Float = None,
@@ -3341,7 +3341,7 @@
 
 ### snd
 
-[snd](snd.md).[gabor_texture](snd.md#gabor_texture)(cls,
+[snd](snd.md).[gabor_texture](snd.md#geonodes.core.generated.static_snd.SND.gabor_texture)(cls,
                     vector: Vector = None,
                     scale: Float = None,
                     frequency: Float = None,
@@ -3354,13 +3354,13 @@
 
 ### nd
 
-[nd](nd.md).[gradient_texture](nd.md#gradient_texture)(cls,
+[nd](nd.md).[gradient_texture](nd.md#geonodes.core.generated.static_nd.ND.gradient_texture)(cls,
                     vector: Vector = None,
                     gradient_type: Literal['LINEAR', 'QUADRATIC', 'EASING', 'DIAGONAL', 'SPHERICAL', 'QUADRATIC_SPHERE', 'RADIAL'] = 'LINEAR')
 
 ### snd
 
-[snd](snd.md).[gradient_texture](snd.md#gradient_texture)(cls,
+[snd](snd.md).[gradient_texture](snd.md#geonodes.core.generated.static_snd.SND.gradient_texture)(cls,
                     vector: Vector = None,
                     gradient_type: Literal['LINEAR', 'QUADRATIC', 'EASING', 'DIAGONAL', 'SPHERICAL', 'QUADRATIC_SPHERE', 'RADIAL'] = 'LINEAR')
 
@@ -3368,7 +3368,7 @@
 
 ### snd
 
-[snd](snd.md).[ies_texture](snd.md#ies_texture)(cls,
+[snd](snd.md).[ies_texture](snd.md#geonodes.core.generated.static_snd.SND.ies_texture)(cls,
                     vector: Vector = None,
                     strength: Float = None,
                     filepath = '',
@@ -3379,7 +3379,7 @@
 
 ### snd
 
-[snd](snd.md).[image_texture](snd.md#image_texture)(cls,
+[snd](snd.md).[image_texture](snd.md#geonodes.core.generated.static_snd.SND.image_texture)(cls,
                     vector: Vector = None,
                     extension: Literal['REPEAT', 'EXTEND', 'CLIP', 'MIRROR'] = 'REPEAT',
                     image = None,
@@ -3391,7 +3391,7 @@
 
 ### nd
 
-[nd](nd.md).[magic_texture](nd.md#magic_texture)(cls,
+[nd](nd.md).[magic_texture](nd.md#geonodes.core.generated.static_nd.ND.magic_texture)(cls,
                     vector: Vector = None,
                     scale: Float = None,
                     distortion: Float = None,
@@ -3399,7 +3399,7 @@
 
 ### snd
 
-[snd](snd.md).[magic_texture](snd.md#magic_texture)(cls,
+[snd](snd.md).[magic_texture](snd.md#geonodes.core.generated.static_snd.SND.magic_texture)(cls,
                     vector: Vector = None,
                     scale: Float = None,
                     distortion: Float = None,
@@ -3409,7 +3409,7 @@
 
 ### nd
 
-[nd](nd.md).[noise_texture](nd.md#noise_texture)(cls,
+[nd](nd.md).[noise_texture](nd.md#geonodes.core.generated.static_nd.ND.noise_texture)(cls,
                     vector: Vector = None,
                     w: Float = None,
                     scale: Float = None,
@@ -3425,7 +3425,7 @@
 
 ### snd
 
-[snd](snd.md).[noise_texture](snd.md#noise_texture)(cls,
+[snd](snd.md).[noise_texture](snd.md#geonodes.core.generated.static_snd.SND.noise_texture)(cls,
                     vector: Vector = None,
                     w: Float = None,
                     scale: Float = None,
@@ -3443,7 +3443,7 @@
 
 ### snd
 
-[snd](snd.md).[sky_texture](snd.md#sky_texture)(cls,
+[snd](snd.md).[sky_texture](snd.md#geonodes.core.generated.static_snd.SND.sky_texture)(cls,
                     vector: Vector = None,
                     aerosol_density = 1.0,
                     air_density = 1.0,
@@ -3462,7 +3462,7 @@
 
 ### nd
 
-[nd](nd.md).[voronoi_texture](nd.md#voronoi_texture)(cls,
+[nd](nd.md).[voronoi_texture](nd.md#geonodes.core.generated.static_nd.ND.voronoi_texture)(cls,
                     vector: Vector = None,
                     w: Float = None,
                     scale: Float = None,
@@ -3479,7 +3479,7 @@
 
 ### snd
 
-[snd](snd.md).[voronoi_texture](snd.md#voronoi_texture)(cls,
+[snd](snd.md).[voronoi_texture](snd.md#geonodes.core.generated.static_snd.SND.voronoi_texture)(cls,
                     vector: Vector = None,
                     w: Float = None,
                     scale: Float = None,
@@ -3498,7 +3498,7 @@
 
 ### nd
 
-[nd](nd.md).[wave_texture](nd.md#wave_texture)(cls,
+[nd](nd.md).[wave_texture](nd.md#geonodes.core.generated.static_nd.ND.wave_texture)(cls,
                     vector: Vector = None,
                     scale: Float = None,
                     distortion: Float = None,
@@ -3513,7 +3513,7 @@
 
 ### snd
 
-[snd](snd.md).[wave_texture](snd.md#wave_texture)(cls,
+[snd](snd.md).[wave_texture](snd.md#geonodes.core.generated.static_snd.SND.wave_texture)(cls,
                     vector: Vector = None,
                     scale: Float = None,
                     distortion: Float = None,
@@ -3530,14 +3530,14 @@
 
 ### nd
 
-[nd](nd.md).[white_noise_texture](nd.md#white_noise_texture)(cls,
+[nd](nd.md).[white_noise_texture](nd.md#geonodes.core.generated.static_nd.ND.white_noise_texture)(cls,
                     vector: Vector = None,
                     w: Float = None,
                     noise_dimensions: Literal['1D', '2D', '3D', '4D'] = '3D')
 
 ### snd
 
-[snd](snd.md).[white_noise_texture](snd.md#white_noise_texture)(cls,
+[snd](snd.md).[white_noise_texture](snd.md#geonodes.core.generated.static_snd.SND.white_noise_texture)(cls,
                     vector: Vector = None,
                     w: Float = None,
                     noise_dimensions: Literal['1D', '2D', '3D', '4D'] = '3D')
@@ -3546,49 +3546,49 @@
 
 ### snd
 
-[snd](snd.md).[uv_along_stroke](snd.md#uv_along_stroke)(cls, use_tips = False)
+[snd](snd.md).[uv_along_stroke](snd.md#geonodes.core.generated.static_snd.SND.uv_along_stroke)(cls, use_tips = False)
 
 ## ShaderNodeUVMap (ShaderNodeUVMap)
 
 ### snd
 
-[snd](snd.md).[uv_map](snd.md#uv_map)(cls, from_instancer = False, uv_map = '')
+[snd](snd.md).[uv_map](snd.md#geonodes.core.generated.static_snd.SND.uv_map)(cls, from_instancer = False, uv_map = '')
 
 ## ShaderNodeValToRGB (ShaderNodeValToRGB)
 
 ### nd
 
-[nd](nd.md).[color_ramp](nd.md#color_ramp)(fac=None, stops=None, interpolation='LINEAR')
+[nd](nd.md).[color_ramp](nd.md#geonodes.core.generated.static_nd.ND.color_ramp)(fac=None, stops=None, interpolation='LINEAR')
 
 ### snd
 
-[snd](snd.md).[color_ramp](snd.md#color_ramp)(fac=None, stops=None, interpolation='LINEAR')
+[snd](snd.md).[color_ramp](snd.md#geonodes.core.generated.static_snd.SND.color_ramp)(fac=None, stops=None, interpolation='LINEAR')
 
 ## ShaderNodeValue (ShaderNodeValue)
 
 ### nd
 
-[nd](nd.md).[value](nd.md#value)(self)
+[nd](nd.md).[value](nd.md#geonodes.core.generated.static_nd.ND.value)(self)
 
 ### snd
 
-[snd](snd.md).[value](snd.md#value)(self)
+[snd](snd.md).[value](snd.md#geonodes.core.generated.static_snd.SND.value)(self)
 
 ## ShaderNodeVectorCurve (ShaderNodeVectorCurve)
 
 ### nd
 
-[nd](nd.md).[vector_curves](nd.md#vector_curves)(cls, vector: Vector = None, factor: Float = None)
+[nd](nd.md).[vector_curves](nd.md#geonodes.core.generated.static_nd.ND.vector_curves)(cls, vector: Vector = None, factor: Float = None)
 
 ### snd
 
-[snd](snd.md).[vector_curves](snd.md#vector_curves)(cls, vector: Vector = None, factor: Float = None)
+[snd](snd.md).[vector_curves](snd.md#geonodes.core.generated.static_snd.SND.vector_curves)(cls, vector: Vector = None, factor: Float = None)
 
 ## ShaderNodeVectorDisplacement (ShaderNodeVectorDisplacement)
 
 ### snd
 
-[snd](snd.md).[vector_displacement](snd.md#vector_displacement)(cls,
+[snd](snd.md).[vector_displacement](snd.md#geonodes.core.generated.static_snd.SND.vector_displacement)(cls,
                     vector: Color = None,
                     midlevel: Float = None,
                     scale: Float = None,
@@ -3598,7 +3598,7 @@
 
 ### nd
 
-[nd](nd.md).[vector_math](nd.md#vector_math)(cls,
+[nd](nd.md).[vector_math](nd.md#geonodes.core.generated.static_nd.ND.vector_math)(cls,
                     vector: Vector = None,
                     vector_1: Vector = None,
                     vector_2: Vector = None,
@@ -3607,7 +3607,7 @@
 
 ### snd
 
-[snd](snd.md).[vector_math](snd.md#vector_math)(cls,
+[snd](snd.md).[vector_math](snd.md#geonodes.core.generated.static_snd.SND.vector_math)(cls,
                     vector: Vector = None,
                     vector_1: Vector = None,
                     vector_2: Vector = None,
@@ -3618,7 +3618,7 @@
 
 ### nd
 
-[nd](nd.md).[vector_rotate](nd.md#vector_rotate)(cls,
+[nd](nd.md).[vector_rotate](nd.md#geonodes.core.generated.static_nd.ND.vector_rotate)(cls,
                     vector: Vector = None,
                     center: Vector = None,
                     axis: Vector = None,
@@ -3629,7 +3629,7 @@
 
 ### snd
 
-[snd](snd.md).[vector_rotate](snd.md#vector_rotate)(cls,
+[snd](snd.md).[vector_rotate](snd.md#geonodes.core.generated.static_snd.SND.vector_rotate)(cls,
                     vector: Vector = None,
                     center: Vector = None,
                     axis: Vector = None,
@@ -3642,7 +3642,7 @@
 
 ### snd
 
-[snd](snd.md).[vector_transform](snd.md#vector_transform)(cls,
+[snd](snd.md).[vector_transform](snd.md#geonodes.core.generated.static_snd.SND.vector_transform)(cls,
                     vector: Vector = None,
                     convert_from: Literal['WORLD', 'OBJECT', 'CAMERA'] = 'WORLD',
                     convert_to: Literal['WORLD', 'OBJECT', 'CAMERA'] = 'OBJECT',
@@ -3652,19 +3652,19 @@
 
 ### snd
 
-[snd](snd.md).[color_attribute](snd.md#color_attribute)(cls, layer_name = '')
+[snd](snd.md).[color_attribute](snd.md#geonodes.core.generated.static_snd.SND.color_attribute)(cls, layer_name = '')
 
 ## ShaderNodeVolumeAbsorption (ShaderNodeVolumeAbsorption)
 
 ### snd
 
-[snd](snd.md).[volume_absorption](snd.md#volume_absorption)(cls, color: Color = None, density: Float = None, weight: Float = None)
+[snd](snd.md).[volume_absorption](snd.md#geonodes.core.generated.static_snd.SND.volume_absorption)(cls, color: Color = None, density: Float = None, weight: Float = None)
 
 ## ShaderNodeVolumeCoefficients (ShaderNodeVolumeCoefficients)
 
 ### snd
 
-[snd](snd.md).[volume_coefficients](snd.md#volume_coefficients)(cls,
+[snd](snd.md).[volume_coefficients](snd.md#geonodes.core.generated.static_snd.SND.volume_coefficients)(cls,
                     weight: Float = None,
                     absorption_coefficients: Vector = None,
                     scatter_coefficients: Vector = None,
@@ -3680,13 +3680,13 @@
 
 ### snd
 
-[snd](snd.md).[volume_info](snd.md#volume_info)(cls)
+[snd](snd.md).[volume_info](snd.md#geonodes.core.generated.static_snd.SND.volume_info)(cls)
 
 ## ShaderNodeVolumePrincipled (ShaderNodeVolumePrincipled)
 
 ### snd
 
-[snd](snd.md).[principled_volume](snd.md#principled_volume)(cls,
+[snd](snd.md).[principled_volume](snd.md#geonodes.core.generated.static_snd.SND.principled_volume)(cls,
                     color: Color = None,
                     color_attribute: String = None,
                     density: Float = None,
@@ -3705,7 +3705,7 @@
 
 ### snd
 
-[snd](snd.md).[volume_scatter](snd.md#volume_scatter)(cls,
+[snd](snd.md).[volume_scatter](snd.md#geonodes.core.generated.static_snd.SND.volume_scatter)(cls,
                     color: Color = None,
                     density: Float = None,
                     anisotropy: Float = None,
@@ -3720,13 +3720,13 @@
 
 ### snd
 
-[snd](snd.md).[wavelength](snd.md#wavelength)(cls, wavelength: Float = None)
+[snd](snd.md).[wavelength](snd.md#geonodes.core.generated.static_snd.SND.wavelength)(cls, wavelength: Float = None)
 
 ## ShaderNodeWireframe (ShaderNodeWireframe)
 
 ### snd
 
-[snd](snd.md).[wireframe](snd.md#wireframe)(cls, size: Float = None, use_pixel_size = False)
+[snd](snd.md).[wireframe](snd.md#geonodes.core.generated.static_snd.SND.wireframe)(cls, size: Float = None, use_pixel_size = False)
 
 {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'AlignToVector',
                                                      'is_classmethod': True,
