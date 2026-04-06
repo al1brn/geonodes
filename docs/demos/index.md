@@ -17,12 +17,14 @@ The modifiers created in the demo can be used.
 
 The avaiable demos are:
 
+- [shaders][shaders.md] : simple materials
 - [arrows](arrows.md) : single arrow and field of arrows
 - [counters](counters.md) : clocks and counters
 - [curly](curly.md) : playing with curve handles
 - [explosion](explosion.md) : kinematics simulation with gravity and viscosity,
   how to fracture a mesh
 - [topology](topology.md) : displaying domain indices
+
 
 
 
