@@ -34,7 +34,7 @@ $ DOC START
 This demo provides two modifiers:
 - Topology Indices :
   The modifier allows to select a domain in 'Vertices', 'Edges', ...
-  It displays the index of each element iof the selected domain
+  It displays the index of each element of the selected domain
 - Mesh Topology :
   The modifier selects a domain in 'Vertices', 'Edges',... and a index which
   must be valid in the selected domain.
@@ -115,7 +115,6 @@ def demo():
             label.transform(translation=feel.position, rotation=rot)
             label = label.fill()
 
-            #feel.generated.geometry = label
             label.out()
 
         curves = feel.generated
@@ -271,27 +270,15 @@ def demo():
             cl_cloud.points._Value = nd.index
             cl_cloud.points._Color  = COL_POINT
 
-        if True:
-            with Cloud.MenuSwitch(menu=Input("Domain", panel="Domain")) as cloud:
-                pt_cloud.out("Vertices")
-                face_cloud.out("Faces")
-                edge_cloud.out("Edges")
-                crn_cloud.out("Corners")
-                spt_cloud.out("Spline Points")
-                spline_cloud.out("Splines")
-                cl_cloud.out("Cloud Points")
+        with Cloud.MenuSwitch(menu=Input("Domain", panel="Domain")) as cloud:
+            pt_cloud.out("Vertices")
+            face_cloud.out("Faces")
+            edge_cloud.out("Edges")
+            crn_cloud.out("Corners")
+            spt_cloud.out("Spline Points")
+            spline_cloud.out("Splines")
+            cl_cloud.out("Cloud Points")
 
-        else:
-            with Panel("Domain"):
-                cloud = Cloud.MenuSwitch(items={
-                    "Vertices"          : pt_cloud,
-                    "Faces"             : face_cloud,
-                    "Edges"             : edge_cloud,
-                    "Corners"           : crn_cloud,
-                    "Spline Points"     : spt_cloud,
-                    "Splines"           : spline_cloud,
-                    "Cloud Points"      : cl_cloud,
-                }, menu=0, name="Domain")
 
         with Layout("Selection"):
             show = Boolean("Selection") & ((nd.index >= ind0) & (nd.index <= ind1) | (-use_indices))
