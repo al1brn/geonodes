@@ -54,55 +54,227 @@ import numpy as np
 from geonodes import *
 from geonodes import macros
 
-
-# ====================================================================================================
-# Closures
-# ====================================================================================================
-
-def gravity_closure():
-
-    with Closure() as cl:
-        cloud = Cloud()         # Simulation points (with their attributes)
-        t = Float(name="t")     # Time (for forces depending on time)
-        dt = Float(name="dt")   # Simulation delta time
-
-        acc = Vector("Acceleration")
-        acc = acc.switch_false(acc.exists)
-        acc += (0, 0, -9.81)
-        cloud.points.Acceleration = acc
-        cloud.out()
-
-    return cl
-
-def viscosity_closure():
-
-    v_fac = 1.3
-    v_exp = 1.7
-    a_max = 100.0
-
-    with Closure() as cl:
-
-        cloud = Cloud()         # Simulation points (with their attributes)
-        t = Float(name="t")     # Time (for forces depending on time)
-        dt = Float(name="dt")   # Simulation delta time
-
-        speed = Vector("Velocity")
-        mass  = Float("Mass")
-
-        v = speed.length()
-        visc = v_fac*(v**v_exp)/mass
-        visc = gnmath.min(visc, v/dt/2)
-
-        acc = Vector("Acceleration")
-        acc = acc.switch_false(acc.exists)
-        acc += speed.normalize().scale(-visc)
-        cloud.points.Acceleration = acc
-        cloud.out()
-
-    return cl
-
-
 def demo():
+
+    # ====================================================================================================
+    # Fracturing by splitting in two parts
+    # ====================================================================================================
+
+    with GeoNodes("Plane Split"):
+        
+        mesh = Mesh()
+        min_size = Float(.1, "Min Size")
+        seed = Integer(0, "Seed")
+        
+        rot = mesh.points.sample_index(Vector.Random(-pi, pi, seed=seed), index=0)
+        
+        with Layout("Rotation"):
+            mesh.transform(rotation=rot)
+        
+        with Layout("Mesh loc and dims"):
+            dims = mesh.points.attribute_statistic(nd.position)
+            
+            center = ((dims.min_ + dims.max_)/2)._lc("Center")
+            size = (dims.max_ - dims.min_)._lc("Size")
+            
+        with Layout("Mesh size"):
+            sx, sy, sz = size.xyz
+            small = (sx + sy + sz) < min_size
+            small._lc("Small part")
+                
+        with Layout("Split with central plane"):
+            plane = Mesh.Cube(size=(sx + 1, sy + 1, 0.01))
+            offset = plane.points.sample_index(Float.Random(-0.3*sz, 0.3*sz, seed=seed + 1), index=0)
+            plane.transform(translation=center + (0, 0, offset))
+            
+            splitted = mesh.difference(plane)
+            
+        with Layout("Rotate back"):
+            splitted.transform(rotation=Rotation(rot).invert())
+            
+        splitted.switch(small, Mesh())
+        insts = splitted.points.split_to_instances(group_id=nd.mesh_island().island_index)
+        
+        #splitted.out()
+        insts.out()
+    
+    # ====================================================================================================
+    # Iterator
+    # ====================================================================================================
+        
+    with GeoNodes("Break into parts"):
+        
+        mesh = Mesh()
+        count = Integer(5, "Count", 1, 20)
+        min_size = Float(.1, "Min Size")
+        seed = Integer(0, "Seed")
+        
+        cells = mesh.points.split_to_instances()
+        for rep in repeat(count, cells=cells):
+            
+            rep_seed = seed.hash_value(rep.iteration)
+            
+            #parts = rep.mesh.points.split_to_instances(group_id = nd.mesh_island().island_index)
+            
+            for feel in Instances(rep.cells).insts.for_each():
+                
+                part = feel.element.realize()
+                feel.geometry = G().plane_split(
+                    mesh     = part,
+                    min_size = min_size,
+                    seed     = rep_seed.hash_value(feel.index),
+                    )
+                        
+            rep.cells = feel.generated
+            
+        parts_count = Instances(rep.cells).insts.count
+        Boolean(True).info("Cells: " + parts_count.to_string())
+            
+        rep.cells.out()
+        
+
+    # ====================================================================================================
+    # Fracturing with cones
+    # ====================================================================================================
+
+    with GeoNodes("Cone Split"):
+        
+        mesh = Mesh()
+        count = Integer(1, "Count", 0)
+        min_size = Float(.1, "Min Size")
+        seed = Integer(0, "Seed")
+        
+        #rot = mesh.points.sample_index(Vector.Random(-pi, pi, seed=seed), index=0)    
+        #rot = Rotation()
+        
+        #with Layout("Rotation"):
+        #    mesh.transform(rotation=rot)
+        
+        with Layout("Mesh loc and dims"):
+            dims = mesh.points.attribute_statistic(nd.position)
+            
+            center = ((dims.min_ + dims.max_)/2)._lc("Center")
+            sizes = (dims.max_ - dims.min_)._lc("Size")
+            
+        with Layout("Mesh size"):
+            sx, sy, sz = sizes.xyz
+            size = gnmath.max(gnmath.max(sx, sy), sz)
+            small = size < min_size
+            small._lc("Small part")
+            
+            count.switch(small, 0)
+            
+        for rep in repeat(count, mesh=mesh):
+            
+            rep_seed = seed.hash_value(rep.iteration)
+            
+            n = rep.mesh.points.sample_index(Integer.Random(3, 10, seed=rep_seed), index=0)
+            r = rep.mesh.points.sample_index(Float.Random(0.7, 1.3, seed=rep_seed + 1), index=0)
+            
+            with Layout("A random polygon"):
+                cone = Mesh.Cone(
+                    radius_bottom   = 0, 
+                    radius_top      = r, 
+                    vertices        = n, 
+                    depth           = 1.1,
+                    fill_type       = 'N-Gon')
+                    
+                rot = rep.mesh.points.sample_index(Vector.Random(-pi, pi, seed=rep_seed + 2), index=0)
+                cone[nd.index != 0].offset = Vector.Random(-0.4*r, .4*r, seed=rep_seed + 3)*(1, 1, 0)
+                
+                cone.transform(translation=center, scale=size, rotation=rot)
+                
+                a = Mesh(rep.mesh).intersect(cone, solver='Manifold')
+                b = Mesh(rep.mesh).difference(cone, solver='Manifold')
+                
+                rep.mesh = a + b
+                
+        rep.mesh.out()
+
+    # ====================================================================================================
+    # Mesh to located instances
+    # ====================================================================================================
+
+    with GeoNodes("Mesh to Located Instances"):
+        """ 'Split to instances' locates islands at (0, 0, 0)
+
+        This Group locates instances at their center
+        """
+        
+        mesh = Mesh()
+        
+        instances = mesh.points.split_to_instances(group_id=nd.mesh_island().island_index)
+        
+        for rep in instances.insts.for_each():
+            m = Mesh(Instances(rep.element).realize())
+            dims = m.points.attribute_statistic(nd.position)
+            c = (dims.min_ + dims.max_)/2
+            m.offset = -c
+            
+            size = dims.max_ + dims.min_
+            sx, sy, sz = size.xyz
+            vol = sx*sy*sz 
+            
+            cell = m.points.split_to_instances()
+            cell.position = c
+            cell.insts.Volume = vol
+            cell.insts.Size = size
+            
+            rep.geometry = cell
+            
+        rep.generated.out()
+
+    # ====================================================================================================
+    # Gravity
+    # ====================================================================================================
+
+    with GeoNodes("Gravity Closure", is_group=True):
+
+        g = Vector((0, 0, -9.81), "Gravity")
+
+        with Closure() as cl:
+            cloud = Cloud()         # Simulation points (with their attributes)
+            t = Float(name="t")     # Time (for forces depending on time)
+            dt = Float(name="dt")   # Simulation delta time
+
+            acc = Vector("Acceleration")
+            acc = acc.switch_false(acc.exists)
+            acc += g
+            cloud.points.Acceleration = acc
+            cloud.out()
+
+        cl.out()
+
+    # ====================================================================================================
+    # Gravity
+    # ====================================================================================================
+
+    with GeoNodes("Viscosity Closure", is_group=True):
+
+        v_fac = Float(1.3, "Factor")
+        v_exp = Float(1.7, "Power")
+        a_max = Float(100.0, "Max acceleration", 0.0)
+
+        with Closure() as cl:
+
+            cloud = Cloud()         # Simulation points (with their attributes)
+            t = Float(name="t")     # Time (for forces depending on time)
+            dt = Float(name="dt")   # Simulation delta time
+
+            speed = Vector("Velocity")
+            mass  = Float("Mass")
+
+            v = speed.length()
+            visc = v_fac*(v**v_exp)/mass
+            visc = gnmath.min(visc, v/dt/2)
+
+            acc = Vector("Acceleration")
+            acc = acc.switch_false(acc.exists)
+            acc += speed.normalize().scale(-visc)
+            cloud.points.Acceleration = acc
+            cloud.out()
+
+        cl.out()
 
     # ====================================================================================================
     # Kinematics
@@ -111,10 +283,15 @@ def demo():
     with GeoNodes("Kinematics Engine", is_group=True):
 
         # ---------------------------------------------------------------------------
-        # Input Geometry is supposed to be points
+        # Input geometry must be a cloud of points
         # ---------------------------------------------------------------------------
 
         cloud = Cloud()
+        speed = Vector(name="Speed", hide_value=True)
+        rot   = Rotation(name="Rotation", hide_value=True)
+        omega = Float(name="Omega", hide_value=True)
+
+        frame0 = Integer(1, "Start Frame", shape='Single')
 
         # ---------------------------------------------------------------------------
         # Initialize Velocity and Rotation
@@ -122,28 +299,21 @@ def demo():
 
         with Layout("Initialization"):
 
-            seed   = Integer(name="Seed", shape='Single')
+            cloud.points.Speed = speed
 
-            speed = Vector("Velocity")
-            speed = speed.switch_false(speed.exists, Vector.Random(-10, 10, seed=seed))
-            cloud.points.store("Velocity", speed)
+            axis = rot.to_axis_angle()
 
-            rotation = Vector("Rotation")
-            rotation = rotation.switch_false(rotation.exists, Vector.Random(0, tau, seed=seed+1))
-            cloud.points.Rotation = rotation
-
-            mass = Float("Mass")
-            mass = mass.switch_false(mass.exists, Float.Random(min=0.1, max=2.0, seed=seed+2))
-            cloud.points.Mass = mass
-
-            #omega = Vector.Random(0, tau, seed=seed+2)          
-            frame0 = Integer(1, "Start Frame", shape='Single')
+            cloud.points.Axis = axis
+            cloud.points.Angle = 0.0
+            cloud.points.Omega = omega
+            cloud.points.Rotation = Rotation()
 
         # ---------------------------------------------------------------------------
         # Simulation Loop
         # ---------------------------------------------------------------------------
 
         with Panel("Accelerations"):
+
             gravity   = Closure(name="Gravity")
             viscosity = Closure(name="Viscosity")
 
@@ -163,26 +333,66 @@ def demo():
                 cloud = cl.evaluate(cloud=cloud, t=0.0, dt=dt, signature=sig)
 
             # Simulation
-
             acc = Vector("Acceleration")
-            speed = Vector("Velocity")
+            speed = Vector("Speed")
 
+            # New position and speed
             new_speed = speed + acc*dt
             cloud.points.Velocity = new_speed
-
             cloud.offset = (speed + new_speed).scale(dt/2)
+
+            # Rotation            
+            angle = Float("Angle") + Float("Omega")*dt
+            cloud.points.Rotation = Rotation.FromAxisAngle(Vector("Axis"), angle)
+            cloud.points.Angle = angle
+
             cloud.out()
-
-            #with Layout("Rotation"):
-            #    old_rot = Rotation(Vector.Named("Rotation"))
-            #    new_rot = old_rot.rotate(omega*dt)
-            #    cloud.points.Rotation = new_rot
-
-            #cloud.out()
 
         cloud = sim.cloud
 
-        cloud.out()   
+        cloud.out()
+
+    # ====================================================================================================
+    # Instances kinematics
+    # ====================================================================================================
+
+    with GeoNodes("Instances Kinematics"):
+
+        instances = Instances()
+
+        cloud = Cloud.Points(count = instances.insts.count)
+        cloud.position = instances.insts.sample_index(nd.position, index=nd.index)
+
+        cloud = Group("Kinematics Engine", cloud=cloud).link_inputs().cloud
+
+        instances.position = cloud.points.sample_index(nd.position, index=nd.index)
+        instances.rotate(cloud.points.sample_index(Rotation("Rotation"), index=nd.index))
+
+        instances.out()
+
+    # ====================================================================================================
+    # Mesh kinematics
+    # ====================================================================================================
+
+    with GeoNodes("Mesh Kinematics"):
+
+        mesh = Mesh()
+        omega_max = Float.Angle(1, "Max Omega")
+        seed = Integer(0, "Seed")
+
+        instances = G().mesh_to_located_instances(mesh=mesh).instances
+
+        vol = Float("Volume")
+        stats = instances.insts.attribute_statistic(vol)
+        min_vol = gnmath.max(0.01, stats.min_)
+        max_vol = stats.max_
+        omega = vol.map_range(min_vol, max_vol, omega_max, omega_max*0.1)
+
+        delta = 0.2*omega_max
+        omega += Float.Random(-delta, delta, seed=seed)
+        rot = G().random_rotation(seed=seed + 1).rotation
+
+        Group("Instances Kinematics", instances=instances, rotation=rot, omega=omega).link_inputs().out()
 
     # ====================================================================================================
     # Kinematics
@@ -190,239 +400,31 @@ def demo():
 
     with GeoNodes("Kinematics Demo"):
 
-        with Panel("Particles"):
-            density   = Float(50, "Particles density", 0, 100, shape='Single')
-            use_coll  = Boolean(False, "Use collection for particles", shape='Single')
-            particles = Collection(None, "Particles collection")
-            part_size = Float(.1, "Particles size")
-            only_up   = Boolean(False, "Only up faces", tip="Put particles on faces with tangent in the upward direction", shape='Single')
-            seed      = Integer(0, "Seed", shape='Single')
+        mesh = Mesh()
+        solidify = Boolean(True, "Solidify")
 
-        with Panel("Gravity"):
-            max_speed = Float(5, "Maximum Speed", 0, shape='Single')
+        with Layout("Solidify"):
+            solidified = Mesh(mesh).faces.extrude(nd.position*(-0.1), individual=False)
+            solidified[solidified.top].flip_faces()
+            solidified += mesh
+            solidified.merge_by_distance()
 
-        mesh = Mesh.UVSphere(radius=1)
+            mesh.switch(solidify, solidified)
 
-        with Layout("Generate the points on the input mesh"):
-            selection = (nd.normal @ (0, 0, 1)).greater_than(0).switch(-only_up, True)
-            cloud = mesh[selection].distribute_points_on_faces(density=density, seed=seed)
-            normal = cloud.normal_
+        mesh = G().cone_split(mesh=mesh).link_inputs(from_panel="Fracture")
 
-        with Layout("Random speeds, aligned with normal plus some noise"):
-            speed = normal * (max_speed * Float.Random(0, 1, seed=seed + 1))
-            cloud.points.Velocity = speed
+        max_speed = Float(10., "Max Speed")
 
-        with Layout("Rotation aligned with normals"):
-            cloud.points.Rotation = Rotation.AlignToVector(normal)
+        seed = Integer(0, "Seed")
 
-        with Layout("Gravity"):
-            gravity = gravity_closure()
-
-        with Layout("Viscosity"):
-            viscosity = viscosity_closure()
-
-        node = Group("Kinematics Engine",
-            cloud = cloud,
-            gravity = gravity,
-            viscosity = viscosity,
+        anim = G().mesh_kinematics(
+            mesh = mesh,
+            max_omega = Input("Max Omega"),
+            speed = nd.position.scale(Float.Random(0.7*max_speed, max_speed, seed=seed)),
+            seed = seed + 1,
+            gravity = G().gravity_closure().closure,
+            viscosity = G().viscosity_closure().closure,
         )
 
-        node.link_inputs(None, "Engine")
+        anim.out()
 
-        node.out()
-
-        return
-
-
-            
-
-        with Layout("Gravity loop"):
-            simul = Group("Gravity",
-                    {'Points': cloud,
-                     'Seed' : seed.hash_value(119),
-                    })
-            simul.link_inputs(exclude=["Seed"])
-            cloud = Cloud(simul.cloud)
-
-        with Layout("Instances coming from collection"):
-            coll_parts = particles.info(separate_children=True).instances
-
-        with Layout("Randomly generated instances"):
-
-            for i, count in enumerate((4, 3, 2, 1)):
-                verts = i + 3
-                with Layout(f"{count} polys of {verts} vertices"):
-
-                    poly  = Mesh.Circle(radius=part_size, vertices=verts, fill_type='NGON')
-                    polys = Cloud.Points(count=count).instance_on(poly)
-                    polys.insts.scale = Vector.Random(.5, 1.5, seed=200 + i)
-
-                    if i == 0:
-                        rand_parts = polys
-                    else:
-                        rand_parts += polys
-
-            mesh_parts = Mesh(rand_parts.realize())
-            mesh_parts.offset = Vector.Random((-1, -1, 0), (1, 1, 0), seed=1000+seed)*(part_size/1)
-            mesh_parts = macros.solidify(mesh_parts, thickness=part_size/10, individual=True, merge_distance=0)
-
-            rand_parts = mesh_parts.points.split_to_instances(group_id=mesh_parts.island_index)
-
-        parts = rand_parts.switch(use_coll, coll_parts)
-
-        with Layout("Put particles on the points and rotate with Rotation attribute"):
-            insts = cloud.instance_on(instance=parts, pick_instance=True)
-            insts.insts.rotation = cloud.points.sample_index(Vector("Rotation"), nd.index)
-
-        with Layout("Final geometry"):
-            frame0 = Integer.Input("Start Frame")
-            insts.switch(nd.scene_time().frame.less_than(frame0), Mesh()).out('Geometry')
-
-
-
-
-
-
-
-
-
-
-    # ====================================================================================================
-    # Simulate gravity on particles with an initial speed
-    # ====================================================================================================
-
-    with GeoNodes("Gravity"):
-
-        # ----- Input sockets
-
-        with Panel("Gravity"):
-            #gravity   = Vector.Acceleration((0, 0, -9.86), "Gravity", tip="Gravity vector")
-            gravity   = Vector.Acceleration((0, 0, -9.86), "Gravity", tip="Gravity vector", shape='Single')
-            vis_fac   = Float(0, "Viscosity Factor", shape='Single')
-            vis_exp   = Float(2, "Viscosity Exponent", shape='Single')
-            speed_max = Float(10, "Maximum Speed", tip="Used to generate random speed is named attribute 'Speed' is not defined", shape='Single')
-
-        frame0 = Integer(1, "Start Frame", shape='Single')
-        seed   = Integer(name="Seed", shape='Single')
-
-        # ----- Input geometry is supposed to be points
-
-        cloud = Cloud(name="Points", tip="Geometry with points")
-
-        # ----- Initialization
-
-        with Layout("Initial speed and rotation"):
-            speed = Vector.Named("Speed")
-            speed = speed.switch(-speed.exists_, Vector.Random(-speed_max, speed_max, seed=seed))
-            cloud.points.store("Speed", speed)
-
-            rotation = Vector.Named("Rotation")
-            rotation = Vector.Random(0, tau, seed=seed+1).switch(rotation.exists_, rotation)
-            cloud.points.store("Rotation", rotation)
-
-            omega = Vector.Random(0, tau, seed=seed+2)
-
-        #with Simulation(cloud=cloud, speed=speed) as sim:
-        for sim in cloud.simulation(speed=speed):
-
-            sim.skip = nd.scene_time().frame.less_than(frame0)
-
-            dt = sim.delta_time
-
-            with Layout("Speed"):
-                old_speed = cloud.points.capture(sim.speed)
-
-                with Layout("Viscosity"):
-                    speed_norm = old_speed.length()
-                    force = vis_fac*speed_norm**vis_exp
-                    force = gnmath.min(force, speed_norm/dt)
-                    viscosity = old_speed.normalize().scale(-force*dt)
-
-                acc = (gravity + viscosity._lc("Viscostiy"))._lc("Acceleration")
-
-                new_speed = old_speed + acc*dt
-
-                #sim.cloud.offset = (old_speed + new_speed)*dt
-                cloud.offset = (old_speed + new_speed)*dt
-                
-            sim.speed = new_speed
-
-            with Layout("Rotation"):
-                old_rot = Rotation(Vector.Named("Rotation"))
-                new_rot = old_rot.rotate(omega*dt)
-                cloud.points.Rotation = new_rot
-
-            cloud.out()
-
-        cloud.out()
-
-    # ====================================================================================================
-    # Explode particles placed on the input mesh
-    # ====================================================================================================
-
-    with GeoNodes("Explosion"):
-
-        with Panel("Particles"):
-            density   = Float(50, "Particles density", 0, 100, shape='Single')
-            use_coll  = Boolean(False, "Use collection for particles", shape='Single')
-            particles = Collection(None, "Particles collection")
-            part_size = Float(.1, "Particles size")
-            only_up   = Boolean(False, "Only up faces", tip="Put particles on faces with tangent in the upward direction", shape='Single')
-            seed      = Integer(0, "Seed", shape='Single')
-
-        with Panel("Gravity"):
-            max_speed = Float(5, "Maximum Speed", 0, shape='Single')
-
-        with Layout("Generate the points on the input mesh"):
-            selection = (nd.normal @ (0, 0, 1)).greater_than(0).switch(-only_up, True)
-            cloud = Mesh()[selection].distribute_points_on_faces(density=density, seed=seed)
-            normal = cloud.normal_
-
-        with Layout("Random speeds, aligned with normal plus some noise"):
-            speed = normal * (max_speed * Float.Random(0, 1, seed=seed + 1))
-            cloud.points._Speed = speed
-
-        with Layout("Rotation aligned with normals"):
-            cloud.points._Rotation = Rotation.AlignToVector(normal)
-
-        with Layout("Gravity loop"):
-            simul = Group("Gravity",
-                    {'Points': cloud,
-                     'Seed' : seed.hash_value(119),
-                    })
-            simul.link_inputs(exclude=["Seed"])
-            cloud = Cloud(simul.cloud)
-
-        with Layout("Instances coming from collection"):
-            coll_parts = particles.info(separate_children=True).instances
-
-        with Layout("Randomly generated instances"):
-
-            for i, count in enumerate((4, 3, 2, 1)):
-                verts = i + 3
-                with Layout(f"{count} polys of {verts} vertices"):
-
-                    poly  = Mesh.Circle(radius=part_size, vertices=verts, fill_type='NGON')
-                    polys = Cloud.Points(count=count).instance_on(poly)
-                    polys.insts.scale = Vector.Random(.5, 1.5, seed=200 + i)
-
-                    if i == 0:
-                        rand_parts = polys
-                    else:
-                        rand_parts += polys
-
-            mesh_parts = Mesh(rand_parts.realize())
-            mesh_parts.offset = Vector.Random((-1, -1, 0), (1, 1, 0), seed=1000+seed)*(part_size/1)
-            mesh_parts = macros.solidify(mesh_parts, thickness=part_size/10, individual=True, merge_distance=0)
-
-            rand_parts = mesh_parts.points.split_to_instances(group_id=mesh_parts.island_index)
-
-        parts = rand_parts.switch(use_coll, coll_parts)
-
-        with Layout("Put particles on the points and rotate with Rotation attribute"):
-            insts = cloud.instance_on(instance=parts, pick_instance=True)
-            insts.insts.rotation = cloud.points.sample_index(Vector("Rotation"), nd.index)
-
-        with Layout("Final geometry"):
-            frame0 = Integer.Input("Start Frame")
-            insts.switch(nd.scene_time().frame.less_than(frame0), Mesh()).out('Geometry')

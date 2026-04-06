@@ -91,6 +91,7 @@ nav:
     - Arrows: demos/arrows.md
     - Counters: demos/counters.md
     - Curly: demos/curly.md
+    - Explosion: demos/explosion.md
 
 
 markdown_extensions:
