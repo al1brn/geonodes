@@ -39,6 +39,9 @@ The fracture can be done on the volume or on the solidifed skin.
 
 ![render](images/explosion_render_02.png)
 
+![render](images/explosion_render_03.png)
+
+
 
 
 

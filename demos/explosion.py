@@ -423,6 +423,7 @@ def demo():
             mesh = mesh,
             max_omega = Input("Max Omega"),
             speed = nd.position.scale(Float.Random(0.7*max_speed, max_speed, seed=seed)),
+            speed = nd.position.scale(Float.Random(0.7*max_speed, max_speed, seed=seed)),
             seed = seed + 1,
             gravity = G().gravity_closure().closure,
             viscosity = G().viscosity_closure().closure,
