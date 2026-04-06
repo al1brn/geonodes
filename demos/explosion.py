@@ -140,7 +140,7 @@ def demo():
     with GeoNodes("Cone Split"):
         
         mesh = Mesh()
-        count = Integer(1, "Count", 0)
+        count = Integer(10, "Count", 0)
         min_size = Float(.1, "Min Size")
         seed = Integer(0, "Seed")
         
@@ -406,6 +406,8 @@ def demo():
         with Layout("Solidify"):
             solidified = Mesh(mesh).faces.extrude(nd.position*(-0.1), individual=False)
             solidified[solidified.top].flip_faces()
+            mesh.faces.Ext = 1.
+            solidified.faces.Ext = 0.
             solidified += mesh
             solidified.merge_by_distance()
 
@@ -413,7 +415,7 @@ def demo():
 
         mesh = G().cone_split(mesh=mesh).link_inputs(from_panel="Fracture")
 
-        max_speed = Float(10., "Max Speed")
+        max_speed = Float(1., "Max Speed")
 
         seed = Integer(0, "Seed")
 
@@ -424,6 +426,7 @@ def demo():
             seed = seed + 1,
             gravity = G().gravity_closure().closure,
             viscosity = G().viscosity_closure().closure,
+            start_frame = Input("Start Frame"),
         )
 
         anim.out()
