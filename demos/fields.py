@@ -71,8 +71,6 @@ from geonodes.demos import arrows as arrows_module
 from geonodes import *
 
 
-
-
 # =============================================================================================================================
 # MACRO: generate the laplacian computation of a field
 #
