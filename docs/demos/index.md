@@ -22,7 +22,7 @@ The avaiable demos are:
 - [curly](curly.md) : playing with curve handles
 - [explosion](explosion.md) : kinematics simulation with gravity and viscosity,
   how to fracture a mesh
-- [topology][topology.md] : displaying domain indices
+- [topology](topology.md) : displaying domain indices
 
 
 
