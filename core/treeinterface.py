@@ -989,7 +989,7 @@ class TreeInterface:
                         setattr(socket, prop, str(value).upper())
                     else:
                         if len(enums):
-                            s = f", acceptaed values are {enums}"
+                            s = f", accepted values are {enums}"
                         else:
                             s = ""
 

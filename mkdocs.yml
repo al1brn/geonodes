@@ -93,6 +93,7 @@ nav:
     - Curly: demos/curly.md
     - Explosion: demos/explosion.md
     - Topology: demos/topology.md
+    - Random: demos/random.md
     - Shaders: demos/shaders.md
 
 
