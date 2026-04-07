@@ -25,6 +25,7 @@ The avaiable demos are:
 - [explosion](explosion.md) : kinematics simulation with gravity and viscosity,
   how to fracture a mesh
 - [topology](topology.md) : displaying domain indices
+- [cam_culling](cam_culling.md) : remove geometry outside camera field of view
 
 
 

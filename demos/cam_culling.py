@@ -42,9 +42,6 @@ Specific modifiers can be generated using specic functions:
 
 
 ## Modifiers:
-> - Random Normal Value
-> - Random Normal Vector
-> - Random Shake Vectors
 > - Camera Projection
 > - Camera Point Culling
 > - Camrea Edge Culling
@@ -54,162 +51,11 @@ Specific modifiers can be generated using specic functions:
 > - DEMO Multires Faces
 """
 
-import numpy as np
-
 from geonodes import *
-
-# Prefixes
-
-random_   = G("Random")
-camera_   = G("Camera")
-multires_ = G("Multires")
 
 FOCAL_FACTOR = .04939
 
-# ====================================================================================================
-# Demo
-# ====================================================================================================
-
-def demo(clear=False):
-    if clear:
-        GeoNodes.remove_groups()
-
-    random_normal()
-    camera_culling()
-    multires_surface()
-
-# ====================================================================================================
-# Utilities and macros
-# ====================================================================================================
-
-# ----------------------------------------------------------------------------------------------------
-# Random normal
-# ----------------------------------------------------------------------------------------------------
-
-def random_normal():
-
-    # Macro
-    def expand_seed(seed, n):
-
-        MAX_INT = 1 << 31 - 1
-
-        with Layout(f"Expand Seed {n} Times"):
-
-            cloud = Cloud.Points(n)
-            values = cloud.points.capture(Integer.Random(0, MAX_INT, seed=seed))
-
-            seeds = ()
-            for i in range(n):
-                seeds = seeds + (cloud.points.sample_index(values, i)._lc(f"Seed {i}"),)
-
-        return seeds
-    
-    # ----------------------------------------------------------------------------------------------------
-    # Normal value
-    # ----------------------------------------------------------------------------------------------------
-
-    with GeoNodes("Normal Value", is_group=True, prefix=random_):
-
-        value = Float(0,   "Value")
-        scale = Float(1,   "Scale")
-        ID    = Integer(0, "ID")
-        seed  = Integer(0, "Seed")
-
-        seed0, seed1 = expand_seed(seed, 2)
-
-        x1 = Float.Random(0, 1, id=ID, seed=seed0)
-        x2 = Float.Random(0, 1, id=ID, seed=seed1)
-
-        y1 = gnmath.sqrt(-2*gnmath.log(x1, e))*gnmath.cos(2*np.pi*x2)
-
-        y = value + scale*y1
-
-        y.out("Value")
-
-    # ----------------------------------------------------------------------------------------------------
-    # Normal vector
-    # ----------------------------------------------------------------------------------------------------
-
-    with GeoNodes("Normal Vector", is_group=True, prefix=random_):
-
-        length = Float(1,       "Length",   tip="Vector average length")
-        scale  = Float(0,       "Scale",    tip="Length scale")
-        two_d  = Boolean(False, "2D", tip="2D Vectors (Z = 0)")
-        ID     = Integer(0,      "ID")
-        seed   = Integer(0,      "Seed")
-
-        # ===== We need 3 different seeds
-
-        seed0, seed1, seed2 = expand_seed(seed, 3)
-
-        # ===== 2D normalized vectors
-
-        with Layout("Unit 2D vector"):
-            theta    = Float.Random(0, 2*pi, seed=seed0)
-            normal2D = Vector((gnmath.cos(theta), gnmath.sin(theta), 0))
-
-        # ===== 3D normalized vectors
-
-        with Layout("Unit 3D vector"):
-            phi = Float.Random(-pi/2, pi/2, seed=seed1)
-            cphi = gnmath.cos(phi)
-            normal3D = Vector((cphi*gnmath.cos(theta), cphi*gnmath.sin(theta), gnmath.sin(phi)))
-
-        # ===== Length
-
-        with Layout("Random length"):
-            l = random_.normal_value(length, scale, id=ID, seed=seed2)
-
-        normal = normal3D.switch(two_d, normal2D)
-        (normal * l).out("Vector")
-        normal.out("Direction")
-
-    # ----------------------------------------------------------------------------------------------------
-    # Shake vectors
-    # ----------------------------------------------------------------------------------------------------
-
-    with GeoNodes("Shake Vectors", is_group=True, prefix=random_):
-
-        vector   = Vector(None,   "Vector")
-        c_scale  = Float.Angle(0, "Angle Scale",  tip="Angle scale")
-        l_scale  = Float(0,       "Length Scale", tip="Length scale")
-        seed  = Integer(0,        "Seed")
-
-        # ===== We need 3 seeds from in the input seed
-
-        seed0, seed1, seed2 = expand_seed(seed, 3)
-
-        # ===== Change the angle
-
-        with Layout("Change the orientation"):
-            theta = Float.Random(0, 2*pi, seed=seed0)
-            phi   = random_.normal_value(0, c_scale, id=nd.id, seed=seed1)
-
-            rot = Rotation.AlignToVector(vector=vector)
-            shake = Rotation((phi, 0, theta))
-            vector = ((rot.invert() @ shake) @ rot) @ vector
-
-        # ===== Change the length
-
-        with Layout("Change the length"):
-            vector = vector.scale(random_.normal_value(1, l_scale, id=nd.id, seed=seed2))
-
-        # ===== Done
-
-        vector.out()
-
-def iterations_panel(def_iter=3, def_prec=10):
-    with Panel("Iterations"):
-        iterations = Integer(def_iter, "Iterations", min=0, max=20, tip="Maximum number of iterations (use with care)")
-        prec       = Float(def_prec,   "Precision", min=0, tip="Precision in 1000th (use with care)")/1000 * Integer(1).switch(nd.is_viewport, 10)
-
-    return iterations, prec
-
-# ====================================================================================================
-# Camera culling
-# ====================================================================================================
-
-def camera_culling():
+def demo():
     """ Camera culling
 
     Removes geometry which is not visible from the camera.
@@ -325,29 +171,55 @@ def camera_culling():
     DEBUG_GEO = False
 
     # ====================================================================================================
+    # Camera Dat
+    # ====================================================================================================
+
+    with GeoNodes("Camera Data", is_group=True):
+
+        use_active   = Boolean(True, "Use Active Camera", shape="Single")
+        cam_obj      = Object(None,  "Camera")
+        aspect_ratio = Float(16/9,   "Aspect ratio", tip="Render Width/Height : 16/9, 4/3,...", shape="Single")
+
+        cam_obj.switch(use_active, nd.active_camera)
+
+        cam_info = cam_obj.camera_info()
+
+        #sx, sy, _ = cam_info.sensor.xyz
+        #aspect_ratio = sy/sx
+        focal_length = cam_info.focal_length
+        focal_length *= FOCAL_FACTOR
+
+        obj_info = cam_obj.info(transform_space='RELATIVE')
+
+        cam_obj.out("Camera")
+        aspect_ratio.out("Aspect Ratio")
+        focal_length.out("Focal Length")
+        cam_info.projection_matrix.out("Projection Matrix")
+
+        obj_info.location.out("Location")
+        obj_info.rotation.invert().out("Rotation")
+
+
+    # ====================================================================================================
     # Camera Projection
     # ====================================================================================================
 
-    with GeoNodes("Projection", is_group=True, prefix=camera_):
+    with GeoNodes("Camera Projection", is_group=True):
 
-        position     = Vector(0,   "Position", tip="Point position", default_input='POSITION')
-        radius       = Float(0,    "Radius", min=0, tip="Position radius")
-        normal       = Vector(0,   "Normal", tip="Point direction", default_input='NORMAL')
+        position = Vector(0,   "Position", tip="Point position", default_input='POSITION')
+        radius   = Float(0,    "Radius", min=0, tip="Position radius")
+        normal   = Vector(0,   "Normal", tip="Point direction", default_input='NORMAL')
 
-        with Panel("Camera Culling"):
-            ok_cc        = Boolean(True, "Camera Culling")
-            #focal_length = Float(50,   "Focal Length", min=1, tip="Focal length in mm")
-            aspect_ratio = Float(16/9, "Aspect Ratio", tip="Camera aspect ratio, 16/9 for instance")
+        with Panel("Camera Culling", create_layout=True):
 
-        with Layout("Camera info"):
-            focal_length = Object.ActiveCamera().camera_info().focal_length
-            focal_length *= FOCAL_FACTOR
+            ok_cc    = Boolean(True, "Camera Culling", shape="Single")
+            cam_data = G().camera_data().link_inputs()
 
-            cam_info = nd.active_camera.info(transform_space='RELATIVE')
+            aspect_ratio = cam_data.aspect_ratio
+            focal_length = cam_data.focal_length
+            rot          = cam_data.rotation
 
-        with Layout("Projection in Camera Space"):
-            vect     = position - cam_info.location
-            rot      = cam_info.rotation.invert()
+            vect     = position - cam_data.location
             pos      = rot @ vect
             distance = pos.length()
 
@@ -404,6 +276,10 @@ def camera_culling():
 
         pos.out(          "Position")
 
+        cam_data.camera.out("Camera", panel="Camera")
+        cam_data.aspect_ratio.out("Aspect Ratio", panel="Camera")
+        cam_data.focal_length.out("Focal Length", panel="Camera")
+
     # ====================================================================================================
     # Domains culling
     # ====================================================================================================
@@ -412,13 +288,13 @@ def camera_culling():
     # Position Culling
     # ----------------------------------------------------------------------------------------------------
 
-    with GeoNodes("Point Culling", prefix=camera_):
+    with GeoNodes("Camera Point Culling"):
 
         cloud = Cloud(Geometry())
 
         # ===== Projection into the camera space
 
-        node = camera_.projection(radius=nd.radius).node.link_inputs(exclude=['Position', 'Normal'])
+        node = G().camera_projection(radius=nd.radius).node.link_inputs(exclude=['Position', 'Normal'])
 
         cloud.points[node.behind | node.outside].delete()
 
@@ -428,17 +304,17 @@ def camera_culling():
     # Edge Culling
     # ----------------------------------------------------------------------------------------------------
 
-    with GeoNodes("Edge Culling", prefix=camera_) as tree:
+    with GeoNodes("Camera Edge Culling") as tree:
 
         mesh = Mesh()
 
         # ===== Projection
 
-        node = camera_.projection().node.link_inputs(exclude=['Position', 'Normal'])
+        node = G().camera_projection().node.link_inputs(exclude=['Position', 'Normal'])
+        aspect_ratio = node.aspect_ratio
 
         # Get the created input sockets
         radius = Float.Input("Radius")
-        aspect_ratio = Float.Input("Aspect Ratio")
 
         # ===== Both indices are behind
 
@@ -499,7 +375,7 @@ def camera_culling():
     # Face Culling
     # ----------------------------------------------------------------------------------------------------
 
-    with GeoNodes("Face Culling", prefix=camera_) as tree:
+    with GeoNodes("Camera Face Culling"):
 
         mesh = Mesh()
 
@@ -509,14 +385,15 @@ def camera_culling():
 
         dual = Mesh(mesh).dual()
         dual.points.store("Normal", mesh.faces.sample_index(nd.normal, nd.index))
-        node = camera_.projection(position=nd.position, radius=None, normal=Vector.Named("Normal")).node
+        node = G().camera_projection(position=nd.position, radius=None, normal=Vector.Named("Normal")).node.link_inputs()
 
         mesh.faces[dual.points.sample_index(node.outwards, nd.index) > back_faces].delete()
 
         # ===== All the corners behind
 
         # Points projection
-        node = camera_.projection().node.link_inputs(include="Camera Culling")
+        node = G().camera_projection().node.link_inputs()
+        aspect_ratio = node.aspect_ratio
 
         with Layout("Faces with all vertices behind the sensor"):
             mesh.points.store("TEMP Vertex Behind", Float(node.behind))
@@ -531,7 +408,8 @@ def camera_culling():
         projected = Mesh(mesh)
         projected.points.position = node.projection
 
-        half_width  = Float(None, "Aspect Ratio")/2
+        #half_width  = Float(None, "Aspect Ratio")/2
+        half_width  = aspect_ratio/2
         half_height = .5
 
         #with projected.faces.for_each() as feel:
@@ -543,8 +421,6 @@ def camera_culling():
             outside |= bbox.max_.y < -half_height
             outside |= bbox.min_.y >  half_height
 
-            #feel.generated.geometry = feel.element
-            #feel.generated.outside = outside
             feel.element.out()
             outside.out("Outside")
 
@@ -558,30 +434,48 @@ def camera_culling():
     # Camera Debug
     # =============================================================================================================================
 
-    with ShaderNodes("DBG Face"):
+    with ShaderNodes("DBG Face", replace_material=True):
 
         col = snd.attribute(attribute_name="Color").color
+        fac = snd.attribute(attribute_name="Transparent").factor
+        ped = Shader.Principled(base_color=col)
+        transp = Shader.Transparent()
+
+        ped.mix(transp, factor=fac).out()
+
+        #ped.out()
+
+    with ShaderNodes("DBG Point"):
+
+        col = snd.attribute(attribute_name="Point Color").color
         ped = Shader.Principled(base_color=col)
         ped.out()
 
-    with GeoNodes("Debug", prefix=camera_):
+    with GeoNodes("Camera Debug"):
 
-        # oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
-
-        mesh = Mesh(Geometry())
-        prec = Float(10,     "Precision", min=0, tip="Precision in 1000th (use with care)")/1000 * Integer(1).switch(nd.is_viewport, 10)
+        mesh          = Mesh(Geometry())
+        prec          = Float(10,     "Precision", min=0, tip="Precision in 1000th (use with care)")/1000 * Integer(1).switch(nd.is_viewport, 10)
         show_grid     = Boolean(False, "Grid")
-        show_original = Boolean(True, "Show Mesh")
 
-        # oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+        show_points   = Boolean(True, "Show Points")
+        show_faces    = Boolean(True, "Show Faces")
+        transp        = Float.Factor(.5, "Transparent", 0, 1)
+        show_edges    = Boolean(True, "Show Edges")
+        show_proj     = Boolean(True, "Show Projected")
 
         mesh.faces.material = "DBG Face"
-        node = camera_.projection(position=nd.position, radius=None, normal=None).node.link_inputs()
 
-        # ===== Sensor
+        node = G().camera_projection(position=nd.position, radius=None, normal=None).node.link_inputs()
+        cam_obj = node.camera
+        aspect_ratio = node.aspect_ratio
+        focal_length = node.focal_length
+
+        # ---------------------------------------------------------------------------
+        # Sensor
+        # ---------------------------------------------------------------------------
 
         with Layout("Sensor"):
-            sensor = Mesh.Grid(size_x=Float(None, "Aspect Ratio"), size_y=1, vertices_x=2, vertices_y=2)
+            sensor = Mesh.Grid(size_x=aspect_ratio, size_y=1, vertices_x=2, vertices_y=2)
             sensor.faces.delete_only_face()
 
             grid = Mesh.Grid(size_x=10*prec, size_y=10*prec, vertices_x=11, vertices_y=11)
@@ -589,40 +483,57 @@ def camera_culling():
 
             sensor += grid.switch(-show_grid)
 
-        # ===== Projected Mesh
+        # ---------------------------------------------------------------------------
+        # Projected Mesh
+        # ---------------------------------------------------------------------------
 
         with Layout("Projected Mesh"):
 
             proj = Mesh(mesh)
             proj.points.position = node.projection
             proj.faces.delete_only_face()
+            proj.switch_false(show_proj)
 
-        # ==== Points
+        # ---------------------------------------------------------------------------
+        # Points
+        # ---------------------------------------------------------------------------
 
         with Layout("Points"):
 
-            #hidden = Boolean.MenuSwitch({'Behind': node.behind, 'Outside': node.outside, 'All': (node.behind | node.outside)}, name='Hidden Points')
             with Boolean.MenuSwitch(menu=Input("Hidden Points")) as hidden:
                 node.behind.out("Behind")
                 node.outside.out("Outside")
                 (node.behind | node.outside).out("All")
 
             mesh.points.store("Point Color", Color((0, 1, 0)).switch(hidden, (1, 0, 0)))
-            pts = Mesh(mesh.points.instance_on(instance=Mesh.UVSphere(radius=.02)).realize())
-            pts.faces.material = "DBG Face"
-            pts.faces.store("Color", Color((0, 0, 1), "Point Color"))
+            pts = Mesh(mesh.points.instance_on(instance=Mesh.UVSphere(radius=.05)).realize())
+            pts.faces.material = "DBG Point"
 
             geo = sensor + proj
-            cam_info = nd.active_camera.info()
+            cam_info = cam_obj.info()
 
-            geo.transform(translation=(0, 0, Float(None, "Focal Length")*(-FOCAL_FACTOR)))
+            geo.transform(translation=(0, 0, -focal_length))
             geo.transform(translation=cam_info.location, rotation=cam_info.rotation)
 
-        # ===== Faces
+        # ---------------------------------------------------------------------------
+        # Edges
+        # ---------------------------------------------------------------------------
+
+        with Layout("Edges"):
+
+            edges = G().camera_edge_culling(mesh)
+            edges.faces.delete_only_face()
+            curves = edges.to_curve().to_mesh(profile_curve=Curve.Circle(radius=0.01, resolution=6))
+
+            geo += curves.switch_false(show_edges)
+
+        # ---------------------------------------------------------------------------
+        # Faces
+        # ---------------------------------------------------------------------------
 
         with Layout("Faces"):
 
-            node = camera_.projection(position=nd.position, radius=gnmath.sqrt(nd.face_area), normal=nd.normal).node
+            node = G().camera_projection(position=nd.position, radius=gnmath.sqrt(nd.face_area), normal=nd.normal).node
 
             face_behind = node.behind
             face_outside = node.outside
@@ -630,7 +541,6 @@ def camera_culling():
             face_size = node.radius < prec
             face_all = face_behind | face_outside | face_size | face_back
 
-            #hidden = Boolean.MenuSwitch({'All': face_all, 'Behind': face_behind, 'Outside': face_outside, 'Backwards': face_back, 'Radius': face_size}, name='Hidden Surfaces')
             with Boolean.MenuSwitch(menu=Input("Hidden Surfaces")) as hidden:
                 face_all.out("All")
                 face_behind.out("Behind")
@@ -639,19 +549,22 @@ def camera_culling():
                 face_size.out("Radius")
 
             mesh.faces.store("Color", Color((0, 1, 0)).switch(hidden,  (1, 0, 0)))
+            mesh.faces.store("Transparent", transp)
 
-            mesh.switch(-show_original).join(geo, pts).out()
+            mesh.switch_false(show_faces).join(geo, pts.switch_false(show_points)).out()
 
-# ====================================================================================================
-# Multi resolution surface
-# ====================================================================================================
-
-def multires_surface():
-
-    # ----------------------------------------------------------------------------------------------------
+    # ====================================================================================================
     # Multi resolution surface
-    # ----------------------------------------------------------------------------------------------------
+    # ====================================================================================================
+
+    def iterations_panel(def_iter=3, def_prec=10):
+        with Panel("Iterations"):
+            iterations = Integer(def_iter, "Iterations", 1)
+            precision  = Float(def_prec, "Precision", 0)
+
+        return iterations, precision
     
+
     # An UV Map is divided according the dimension of the faces
     #
     # An initial division is performed to compute the face sizes and normals
@@ -660,7 +573,7 @@ def multires_surface():
     # The surface is computed by a group taking (position.x, position.y) as uv map coordinates in space (0, 1), (0, 1)
     # (See DEMO Multires Surface)
 
-    with GeoNodes("Surface", is_group=True, prefix=multires_):
+    with GeoNodes("Multires Surface", is_group=True):
 
         position   = Vector(None,  "Position")
 
@@ -693,7 +606,7 @@ def multires_surface():
             uv.points.store("Normal", surface.faces.sample_index(nd.normal, nd.index))
 
         with Layout("Don't iterate faces pointing outwards"):
-            outwards = camera_.projection(position=position, normal=Vector.Named("Normal")).outwards.link_inputs(exclude=['Radius'])
+            outwards = G().camera_projection(position=position, normal=Vector.Named("Normal")).outwards.link_inputs(exclude=['Radius'])
             uv.points.store("Iterate", outwards < back_faces)
 
         # ===== Division loop
@@ -715,7 +628,7 @@ def multires_surface():
 
             # ===== Camera projection
 
-            node = camera_.projection(position=position, radius=Float.Named("Size")).node.link_inputs(include="Camera Culling")
+            node = G().camera_projection(position=position, radius=Float.Named("Size")).node.link_inputs(include="Camera Culling")
 
             # ===== Stop iteration for hidden points or small apparent size
 
@@ -756,7 +669,7 @@ def multires_surface():
     # Multires plane
     # ----------------------------------------------------------------------------------------------------
 
-    with GeoNodes("Faces", prefix=multires_):
+    with GeoNodes("Multires Faces"):
 
         mesh = Mesh()
 
@@ -788,9 +701,9 @@ def multires_surface():
             radius = 4*gnmath.sqrt(nd.face_area)
             #radius = nd.face_area
             if True:
-                node = camera_.projection(radius=radius, normal=nd.normal).node.link_inputs(include="Camera Culling")
+                node = G().camera_projection(radius=radius, normal=nd.normal).node.link_inputs(include="Camera Culling")
             else:
-                node = camera_.projection(position=nd.position, radius=radius, normal=nd.normal).node
+                node = G().camera_projection(position=nd.position, radius=radius, normal=nd.normal).node
 
             iterate = iterate & -(node.behind | node.outside | (node.radius < prec) | (node.outwards > back_faces))
             #iterate = iterate & -(node.radius < prec)
@@ -846,7 +759,7 @@ def multires_surface():
 
         position = Vector.MenuSwitch({'Plane': plane, 'Sphere': sphere}, menu=Input("Surface"))
 
-        surface = Mesh(multires_.surface(position=position).link_inputs())
+        surface = Mesh(G().multires_surface(position=position).link_inputs())
 
         with Layout("Finalize"):
             surface.faces.smooth = True
@@ -889,470 +802,3 @@ def multires_surface():
 
 
 
-
-
-
-def face_fractals():
-    """ Fractals built by replacing a face by several ones
-    """
-
-    with GeoNodes("Faces Iterator"):
-
-        iterator      = Mesh()
-        iterations    = Integer(5, "Iterations", min=0, max=10)
-        scale         = Float(.5, "Scale Factor")
-
-        cam_culling   = Boolean(True,     "Camera Culling")
-        aspect_ratio  = Float(16/9,       "Aspect Ratio", tip="Camera aspect ratio, 16/9 for instance")
-        #focal_length  = Float.Distance(1, "Focal Length", min=0.01)
-
-
-        iterations = (iterations + 1).switch(nd.is_viewport, iterations)
-
-        # ::::: The mesh to iterate
-
-        iterator.faces.store("Scale", scale)
-
-        fractal = Mesh.Grid(size_x=1, size_y=1, vertices_x=2, vertices_y=2)
-        fractal.faces.store("Scale", 1)
-
-        with Repeat(fractal=fractal, iterations=iterations) as rep:
-
-            fractal = rep.fractal
-            fractal.faces.store("Pos", nd.position)
-            fractal.faces.store("rot", Rotation.AlignToVector(nd.normal))
-
-            cloud = Cloud.Points(rep.fractal.faces.count)
-            cloud.points.position = fractal.faces.sample_index(Vector.Named("Pos"), nd.index)
-            cloud.points.store("rot", fractal.faces.sample_index(Rotation.Named("rot"), nd.index))
-            cloud.points.store("old_scale", fractal.faces.sample_index(Float.Named("Scale"), nd.index))
-
-            step = Mesh(cloud.points.instance_on(instance=iterator, scale=Float.Named("old_scale"), rotation=Rotation.Named("rot")).realize())
-
-            step.faces.store("Scale", Float.Named("old_scale") * Float.Named("Scale"))
-
-            # Camera culling
-
-            culled = Mesh(step).points.store("invisible", Float(culled_position(nd.position, aspect_ratio, focal_length)))
-            culled.faces.store("delete", Float.Named("invisible"))
-            culled.faces[Float.Named("delete").equal(1)].delete_all()
-            step = step.switch(cam_culling, culled)
-
-            rep.fractal = step
-
-        fractal = rep.fractal
-
-        fractal.out()
-
-
-
-
-# =============================================================================================================================
-# Split segments
-
-def split_segments():
-
-    with GeoNodes("Split Segments"):
-
-        sides       = Integer(3, "Sides", min=3, max=10)
-        iterations  = Integer(5, "Iterations", min=0, max=10)
-        external    = Boolean(True, "External")
-        noise_scale = Float(0, "Noise Scale")
-        seed        = Integer(0, "Seed")
-
-        triangle = Mesh.Circle(vertices=sides)
-        angle = Float(pi/3).switch(external, -pi/3)
-
-        with Repeat(triangle=triangle, seed=seed, iterations=iterations) as rep:
-
-            rep.seed = rep.seed.hash_value(rep.iteration)
-
-            node = nd.edge_vertices()
-            with rep.triangle.edges.for_each(p1=node.position_1, p2=node.position_2) as feel:
-
-                new_edges = Mesh.Line(start_location=feel.p1, end_location=feel.p2, count=5)
-                v = (feel.p2 - feel.p1)/3
-
-                ns = noise_scale * v.length()
-                noise_vector = Vector((ns, ns, 0))
-
-                new_edges.points[1].position = feel.p1 + v + Float.Random(-noise_vector, noise_vector, rep.seed)
-                new_edges.points[3].position = feel.p2 - v  + Float.Random(-noise_vector, noise_vector, rep.seed + 1)
-
-                w = Rotation((0, 0, angle)) @ v
-                new_edges.points[2].position = feel.p1 + v + w  + Float.Random(-noise_vector, noise_vector, rep.seed + 2)
-
-                feel.generated.geometry = new_edges
-
-            rep.triangle = feel.generated.geometry
-
-        rep.triangle.out()
-
-# =============================================================================================================================
-# Fern
-
-def fern():
-
-    with GeoNodes("Fern"):
-
-        iterations   = Integer(5, "Iterations", min=0, max=10)
-        angle        = Float.Angle(pi/20, "Grow Angle")
-        grow_factor  = Float.Factor(.9, "Grow Factor", min=.01, max=.99)
-        sub_angle    = Float.Angle(pi/5, "Sub Angle")
-        sub_factor   = Float.Factor(.3, "Sub Factor", min=.01, max=.99)
-        angle_noise  = Float(0, "Angle Noise")
-        factor_noise = Float(0, "Factor Noise")
-        seed         = Integer(0, "Seed")
-
-        leaf = Mesh.Line(start_location=0, end_location=(1, 0, 0), count=2)
-        leaf.edges.store("Use", True)
-
-        with Repeat(leaf=leaf, seed=seed, iterations=iterations) as rep:
-
-            rep.seed = rep.seed.hash_value(rep.iteration)
-
-            node = nd.edge_vertices()
-            with rep.leaf.edges.for_each(p1=node.position_1, p2=node.position_2, seed=rep.seed) as feel:
-
-                hv = rep.seed.hash_value(feel.index)
-
-                v = feel.p2 - feel.p1
-                l = v.length()
-
-                edge = Mesh(feel.element)
-                extrude = edge.edges.sample_index(Boolean.Named("Use"), 0)
-
-                loop_angle  = angle       + Float.Random(-angle*angle_noise, angle*angle_noise, hv)
-                loop_ag     = sub_angle   + Float.Random(-sub_angle*angle_noise, sub_angle*angle_noise, hv + 1)
-                loop_factor = grow_factor + Float.Random(-factor_noise, factor_noise, hv + 2)
-                loop_fac    = sub_factor  + Float.Random(-factor_noise, factor_noise, hv + 3)
-
-                #edge.points[1].extrude(Rotation((0, 0, loop_angle)) @ (v*loop_factor))
-                #edge.points[1].extrude(Rotation((0, 0, -loop_angle - loop_ag)) @ (v*loop_fac))
-                #edge.points[1].extrude(Rotation((0, 0,  loop_angle + loop_ag)) @ (v*loop_fac))
-                edge[1].extrude_vertices(Rotation((0, 0, loop_angle)) @ (v*loop_factor))
-                edge[1].extrude_vertices(Rotation((0, 0, -loop_angle - loop_ag)) @ (v*loop_fac))
-                edge[1].extrude_vertices(Rotation((0, 0,  loop_angle + loop_ag)) @ (v*loop_fac))
-
-                edge.edges.store("Use", True)
-                edge.edges[0].store("Use", False)
-                feel.generated.geometry  = feel.element.switch(extrude, edge)
-
-            leaf = feel.generated
-            rep.leaf = leaf
-
-        rep.leaf.out()
-
-def points_fractal():
-
-    return
-
-    with GeoNodes("Points Fractal"):
-
-        iterations   = Integer(1,  "Iterations", min=0, max=10)
-        radius       = Float(  1,  "Radius", min=.1)
-        ratio        = Float(  3,  "Height Ratio", min=.2)
-        peak         = Float(  3,  "Peak", min=.5)
-        turns        = Float(  5,  "Turns")
-        count        = Integer(10,  "Children Count", min=2)
-        scale        = Float( .8,  "Scale")
-        twist        = Float.Angle(0, "Twist")
-        input_model  = Object(None, "Points to Iterate")
-
-        # ----- Model to iterate
-
-        num_model = 3
-
-        if num_model == 0:
-            model = Curve.Circle(count, radius=radius)
-            model.points.store("Direction", nd.position.normalize())
-            model.points.store("Scale",     1/count)
-            model = model.to_points()
-
-        elif num_model == 1:
-            model = Mesh.UVSphere(segments=3, rings=2, radius=1)
-            model.points[nd.position.z < -.1].delete()
-            model.points.store("Direction", nd.position.normalize())
-            model.points.store("Scale",     1)
-            model = model.points.to_points()
-
-        elif num_model == 2:
-            model = Cloud(input_model.info().geometry)
-
-        elif num_model == 3:
-            model = Cloud(Geometry())
-
-        # ----- Start from one single point
-
-        fractal = Cloud.Points(1)
-        fractal.points.store("Radius", radius)
-        fractal.points.store("Direction", (0, 0, 1))
-        fractal.points.store("Scale", 1)
-        fractal.points.store("Twist", twist)
-
-        # ----- Fractal iteration loop
-
-        with Repeat(fractal=fractal, iterations=iterations) as rep:
-
-            # ----- Loop on the current points
-
-            with rep.fractal.points.for_each(
-                    position  = nd.position,
-                    scale     = Float.Named("Scale"),
-                    direction = Vector.Named("Direction"),
-                    twist     = Float.Named("Twist")) as feel:
-
-                rotation = Rotation.AlignToVector(feel.direction)
-                rotation = Rotation((0, 0, feel.twist)) @ rotation
-
-                replace = Cloud(model).transform(translation=feel.position, scale=feel.scale, rotation=rotation)
-
-                replace.points.store("Direction", rotation @ Vector.Named("Direction"))
-                replace.points.store("Scale", feel.scale * Float.Named("Scale"))
-                replace.points.store("Twist", feel.twist + twist)
-
-                feel.generated.geometry = replace
-
-            rep.fractal = feel.generated.geometry
-
-        # ----- Get the generated fractal
-
-        fractal = Cloud(rep.fractal)
-
-        # ----- Geometry on each point
-
-        #rotation = Rotation.AlignToVector(Vector.Named("Direction"))
-        #fractal = fractal.points.instance_on(instance=leaf_object.info().geometry, rotation=rotation, scale=Float.Named("Scale"))
-
-        fractal.out()
-
-
-def romanesco1():
-
-    with GeoNodes("Romanesco1"):
-
-        iterations   = Integer(1,        "Iterations", min=0, max=4)
-        npoints      = Integer(100,      "Number of points", min=10, max=500)
-        base_radius  = Float(  1,        "Base Radius", min=.1)
-        sub_radius_f = Float.Factor(.2,  "Sub Radius Factor", min=.01, max=.9)
-
-        size_factor  = Float.Factor(.99, "Size Factor", min=.9, max=.999)
-        up_factor    = Float.Factor(.1,  "Up Factor", min=0, max=1)
-        rho_factor   = Float.Factor(.1,  "Radius Factor", min=0, max=1)
-        angle_factor = Float.Factor(1,   "Angle Factor", min=.1, max=10)
-
-        # ----- We build the base model by turning around a cone
-
-        pyramid = Cloud.Points(npoints)
-
-        with Repeat(pyramid=pyramid, rho=base_radius, theta=0., z=0., size=base_radius*sub_radius_f, iterations=npoints) as rep:
-
-            pos = Vector((rep.rho*gnmath.cos(rep.theta), rep.rho*gnmath.sin(rep.theta), rep.z))
-
-            cur_point = nd.index.equal(rep.iteration)
-
-            rep.pyramid.points[cur_point].position = pos
-            rep.pyramid.points[cur_point].store("Size",  rep.size)
-            rep.pyramid.points[cur_point].store("Scale", rep.size)
-
-            dz     = up_factor*rep.size
-            drho   = rho_factor*rep.size
-            dtheta = angle_factor*rep.size/rep.rho
-
-            normal = Rotation((0, 0, rep.theta)) @ Vector((dz, 0, drho))
-            rep.pyramid.points[cur_point].store("Direction", normal.normalize())
-
-            rep.size *= size_factor
-
-            rep.rho -= drho
-            rep.theta += dtheta
-            rep.z += dz
-
-        rep.pyramid.out()
-
-# =============================================================================================================================
-# Logarithmic spiral
-
-def log_spiral():
-
-    with GeoNodes("Logarithmic Spiral"):
-
-        count      = Integer(500, "Count")
-        radius     = Float(1,     "Radius")
-        omega      = Float(.8,    "Omega")
-        rotations  = Float(3,     "Rotations")
-        height     = Float(0,     "Height")
-
-        # ----- Profile curve
-
-        if False:
-            profile_obj = Object(None, "Profile Curve", tip="Curve in (x, z): x -> z")
-
-            def_profile = Curve.Line(start=(0, 0, height), end=(radius, 0, 0))
-            profile = profile_obj.info().geometry.curve
-            profile = profile.switch(profile.points.count < 2, def_profile)
-
-        # ----- Logarithmic spiral
-
-        slope = height/radius
-
-        curve = Curve.Line().resample(count=count)
-
-        theta =  tau*rotations/count*nd.index
-        rho = radius*gnmath.abs(omega)**theta
-        theta *= gnmath.sign(omega)
-
-        curve.points.position = (rho*gnmath.cos(theta), rho*gnmath.sin(theta), height - rho*slope)
-
-        # ----- Normal to the cone
-
-        normal = curve.points.position*(1, 1, 0)
-        normal = Rotation((0, 0, theta)) @ Vector((height, 0, radius)).normalize()
-        curve.points._Normal = normal
-
-        curve.out()
-
-# =============================================================================================================================
-# Romanesco cabbage
-
-def romanesco2():
-
-    with GeoNodes("Romanesco Cabbage"):
-
-        iterations   = Integer(1,        "Iterations", min=0, max=3)
-        nspirals     = Integer(6,        "Number of spirals", min=3, max=12)
-        radius       = Float(1,          "Radius", min=.1)
-        height       = Float(2,          "Height", min=.1)
-        omega        = Float(.7,         "Omega")
-        rotations    = Float(4,          "Rotations")
-        upwards      = Float(4,          "Upwards factor")
-
-        npoints      = Integer(30,       "Number of points", min=3, max=200)
-        q            = Float.Factor(.9,  "Shrink Factor", min=.01, max=.99)
-
-        sub_radius_f = Float.Factor(.2,  "Sub Radius Factor", min=.1, max=3)
-        f            = Float.Factor(.9,  "Shrink Factor", min=.01, max=.99)
-        noise_scale  = Float(0,          "Noise scale")
-        seed         = Integer(0,        "Seed")
-
-
-        iterations = iterations.switch(nd.is_viewport, iterations - 1)
-
-        # ::::: Base Spiral
-
-        with Layout("Base Spiral"):
-
-            spiral = Curve(Group("Logarithmic Spiral", radius=radius, height=height, omega=omega, rotations=rotations).geometry)
-
-            # ::::: Extract points following a geometric series
-
-            # Geometric series:
-            # length = size*(1 - q^n)/(1 - q) => size = length*(1 - q)/(1 - q^n)
-
-            length = spiral.length()
-            size = length*(1 - q)/(1 - q**npoints)
-
-            curve = Curve.Line().resample(count=npoints)
-            l = size*(1 - q**nd.index)/(1 - q)
-
-            curve.points.position = spiral.sample(nd.position, length=l)
-            curve.points.store("Scale",  size*q**nd.index)
-
-            # Orient progressively the normal to z
-            f = (nd.index/(npoints - 1))**upwards
-
-
-            normal = spiral.sample(Vector.Named("Normal"), length=l)
-            normal = normal.mix(f, (0, 0, 1))
-            curve.points.store("Normal", normal)
-
-        #curve.points.store("Normal", spiral.sample(Vector.Named("Normal"), length=l))
-
-        if False:
-            curve = curve.points.instance_on(instance=Curve.Line().transform(scale=.3), rotation=Rotation.AlignToVector(Vector.Named("Normal")))
-            curve.out()
-            return
-
-        # ::::: Duplicate nspirals times
-
-        with Layout("Duplicates"):
-            cloud = Cloud.Points(nspirals, position=0)
-            cloud.points.store("rot", Rotation((0, 0, tau/nspirals*nd.index)))
-
-            spirals = Curve(cloud.points.instance_on(instance=curve, rotation=Rotation.Named("rot")).realize())
-            spirals.points.store("Normal", Rotation.Named("rot") @ Vector.Named("Normal"))
-            spirals.remove_named_attribute(name="rot")
-
-            spirals = spirals.to_points()
-
-        if False:
-            spirals = spirals.points.instance_on(instance=Curve.Line().transform(scale=.3), rotation=Rotation.AlignToVector(Vector.Named("Normal")))
-            spirals.out()
-            return
-
-        # ::::: Iterations
-
-        with Layout("Initial Point"):
-            cabbage = Cloud.Points(1)
-            cabbage.points.store("Normal", (0, 0, 1))
-            cabbage.points.store("Scale", 1.)
-
-        with Repeat(cabbage=cabbage, iterations=iterations) as rep:
-
-            rep_seed = seed.hash_value(rep.iteration)
-
-            cab = rep.cabbage
-
-            rot = Rotation.AlignToVector(Vector.Named("Normal"))
-            cab.points.store("rot", rot)
-            cab.remove_named_attribute(name="Normal")
-
-            cab.points.store("old_scale", Float.Named("Scale"))
-            cab.remove_named_attribute(name="Scale")
-
-            with Layout("Instantiate"):
-                new_cabbage = Cloud(cab.points.instance_on(instance=spirals,
-                    scale     = Float.Named("old_scale"),
-                    rotation  = Rotation.Named("rot")
-                    ).realize())
-
-            with Layout("Update Scale and Normal attributes"):
-                scale = Float.Named("old_scale")*Float.Named("Scale")
-                scale *= val_noise(1, noise_scale/5, rep_seed)
-                new_cabbage.points.store("Scale",  scale)
-
-                normal = Rotation.Named("rot") @ Vector.Named("Normal")
-                normal += vect_noise(0, noise_scale, seed=rep_seed + 1)
-                new_cabbage.points.store("Normal", normal.normalize())
-
-            rep.cabbage = new_cabbage
-
-        # ::::: Finalisation
-
-        cabbage = rep.cabbage
-
-        if False:
-            spirals = cabbage.points.instance_on(instance=Curve.Line().transform(scale=.3), rotation=Rotation.AlignToVector(Vector.Named("Normal")))
-            spirals.out()
-            return
-
-        cabbage.points.radius = Float.Named("Scale")
-
-        # ::::: Cone
-
-        with Layout("Complete with cones"):
-            cone = Mesh.Cone(radius_bottom=radius, depth=height)
-            cone.corners.store("UV Map", cone.uv_map_)
-            cone.corners.store("Z", nd.position.z/height)
-            cone.faces.material = "Romanesco"
-
-            if False:
-                cone.out()
-                return
-
-            rot = Rotation.AlignToVector(Vector.Named("Normal"))
-            cabbage = Mesh(cabbage.points.instance_on(instance=cone, scale=nd.radius*1, rotation=rot).realize())
-
-            cabbage.faces.smooth = True
-
-        cabbage.out()
