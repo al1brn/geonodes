@@ -661,8 +661,8 @@ def demo():
         with Panel("Iterations"):
             init_split = Integer(3, "Initial UV Subdivisions", min=0, max=5)
 
-        #with Panel("Camera Culling"):
-        #    back_faces = Float.Factor(.1, "Back Faces Culling", min=0, max=1, tip="Don't iterate initial backward faces (-1: iterate all).")
+        with Panel("Camera Culling"):
+            back_faces = Float.Factor(.1, "Back Faces Culling", min=0, max=1, tip="Don't iterate initial backward faces (-1: iterate all).")
 
         # ===== Surface clouds
 
