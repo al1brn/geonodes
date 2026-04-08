@@ -1411,6 +1411,7 @@ class TreeInterface:
         for socket in self.iterate(in_out, socket_type=socket_type, panels=False, parent=parent):
 
             names = (ItemPath(socket) - parent_path).get_names(False, True)
+
             if sc_name in names:
                 sockets.append(socket)
                 continue

@@ -955,6 +955,7 @@ class Node:
 
                 # All the interface socket matching the provided name
                 # First With type
+
                 isocks = self._interface.get_socket_by_python_name(
                     intf_in_out, name, socket_type, parent=self._tree.get_panel(), return_all=True)
                 
@@ -1060,7 +1061,6 @@ class Node:
             return socket
         
         # Utltimately : the socket name
-
         return self.socket_by_name(in_out, name, socket_type, enabled_only=enabled_only, free_only=free_only, halt = halt)
     
     # ====================================================================================================
@@ -1866,8 +1866,8 @@ class Node:
 
         Parameters
         ----------
-        panel : str, optional
-            panel to use default="".
+        panel : str, default=""
+            panel to create the output sockets into
 
         """
         self.link_outputs(None, to_panel=panel)
@@ -1918,25 +1918,24 @@ class Node:
         Sockets which has been set at initialization time and sockets already linked are ignored.
 
         If from node is able to create output sockets, they are created, otherwise only the sockets
-        with matchin names and types are linked.
+        with matching names and types are linked.
 
         Parameters
         ----------
-        from_node : Node, optional
-            node to get output sockets from default=None.
+        from_node : Node, default=None
+            node to get output sockets from
 
-        from_panel : str, optional
-            the panel to use in from_node default="".
+        from_panel : str, default=""
+            the panel to use in from_node
 
-        include : list, optional
-            sockets to include default=None.
+        include : list, default=None
+            sockets to include
 
-        exclude : list, optional
-            sockets to exclude default=[].
+        exclude : list, default=[]
+            sockets to exclude
 
-        panel : str, optional
-            panel to select input socket in default="".
-
+        panel : str, default=""
+            panel to select input socket
 
         Returns
         -------
@@ -1984,7 +1983,6 @@ class Node:
 
             if out_socket is not None:
                 self._tree.link(out_socket, in_socket)
-                #links.append((out_socket, in_socket))
 
         return self
     
@@ -2009,20 +2007,20 @@ class Node:
 
         Parameters
         ----------
-        to_node : Node, optional
-            node to plug into default=None.
+        to_node : Node, default=None
+            node to plug into
 
-        to_panel : str, optional
-            the panel to use in to_node default="".
+        to_panel : str, default=""
+            the panel to use in to_node
 
-        include : list, optional
-            sockets to include default=None.
+        include : list, default=None
+            sockets to include
 
-        exclude : list, optional
-            sockets to exclude default=[].
+        exclude : list, default=[]]
+            sockets to exclude
 
-        panel : str, optional
-            panel to select input socket in default="".
+        panel : str, default=""
+            panel to select input socket in
 
         """
 
