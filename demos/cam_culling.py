@@ -203,7 +203,8 @@ def demo():
     with GeoNodes("Camera Point Culling"):
 
         cloud = Cloud(Geometry())
-        min_radius = Float(0, "Min Radius", 0)
+        with Panel("Camera Culling"):
+            min_radius = Float(0, "Min Radius", 0)
 
         # ===== Projection into the camera space
 
@@ -229,8 +230,9 @@ def demo():
     with GeoNodes("Camera Edge Culling") as tree:
 
         mesh       = Mesh()
-        radius     = Float(1, "Vertex radius", 0)
-        min_radius = Float(0, "Min Radius", 0)
+        with Panel("Camera Culling"):
+            radius     = Float(1, "Vertex radius", 0)
+            min_radius = Float(0, "Min Radius", 0)
 
         # ===== Projection
 
@@ -301,8 +303,9 @@ def demo():
 
         mesh = Mesh()
 
-        back_faces = Float.Factor(1, "Back Faces", min=0, max=1, tip="Ignore faces oriented backward (1: keep all).")
-        min_radius = Float(0.0, "Min Radius", 0.0, tip="Min approximated size")
+        with Panel("Camera Culling"):
+            back_faces = Float.Factor(1, "Back Faces", min=0, max=1, tip="Ignore faces oriented backward (1: keep all).")
+            min_radius = Float(0.0, "Min Radius", 0.0, tip="Min approximated size")
 
         # ---------------------------------------------------------------------------
         # Faces facing outwards

@@ -7,7 +7,8 @@ This is feature is implemented in a modifier providing variable subdivision.
 
 ## Modifiers
 
-- **Camera Projection** : computes positions which are visible or not
+- **Camera Demo** : culling demo on the 3 domains : points, edges and faces
+- **Camera Projection** (Group): computes positions which are visible or not
 - **Camera Point Culling** : removes points which are not visible
 - **Camera Edge Culling** : removes edges which are not visible
 - **Camera Face Culling** : removes faces which are not visible
