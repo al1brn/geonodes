@@ -8,6 +8,8 @@
 
 ## Conventions
 - Les méthodes suivent les règles de nommage snake_case/CamelCase documentées dans README
+- Les tests sans Blender vont dans `tests/unit/`
+- Les tests avec Blender headless vont dans `tests/integration/`
 
 ## Ce qu'il ne faut pas toucher
 - Les fichiers générés dans `generation/` sont produits automatiquement
