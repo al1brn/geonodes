@@ -43,7 +43,6 @@ __blender_version__ = "4.3.0"
 import numpy as np
 
 import bpy
-from . import utils
 from .treeclass import Tree
 from .nodeclass import Node
 
@@ -139,9 +138,9 @@ class Gizmo(Node):
         """
         values = list(value) if len(value) else None
 
-        rx, ry, rz = np.resize(use_rotation,    3).astype(bool)
-        sx, sy, sz = np.resize(use_scale,       3).astype(bool)
-        tx, ty, tz = np.resize(use_translation, 3).astype(bool)
+        rx, ry, rz = [bool(v) for v in np.resize(use_rotation,    3)]
+        sx, sy, sz = [bool(v) for v in np.resize(use_scale,       3)]
+        tx, ty, tz = [bool(v) for v in np.resize(use_translation, 3)]
 
         return cls('Transform Gizmo', {'Value': values, 'Position': position, 'Rotation': rotation},
             use_rotation_x   =rx, use_rotation_y   =ry, use_rotation_z   =rz,

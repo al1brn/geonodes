@@ -57,7 +57,7 @@ def demo():
             roughness  = negative.map_range(to_min=.1, to_max=.9),
         )
 
-        shader = ped.mix(transp, Shader.Transparent())
+        shader = ped.mix(shader=Shader.Transparent(), factor=transp)
 
         shader.out()
 

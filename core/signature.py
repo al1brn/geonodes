@@ -228,7 +228,7 @@ class Signature:
                         break
 
                 if not ok:
-                    raise RuntimeError(f"Invalid Signature dict for name '{name}': "
+                    raise RuntimeError(f"Invalid Signature dict for name '{d.get('name', '?')}': "
                         f"There is no key in {list(d.keys())} which is a valid socket type key: {keys}")
             else:
                 d['socket_type'] = SocketType(sid).serialize()
@@ -236,7 +236,8 @@ class Signature:
             if d.get('path') is None:
                 d['path'] = d['name']
 
-            d['key'] = (d['path'], SocketType(d['socket_type']).socket_id)
+            d['socket_id'] = SocketType(d['socket_type']).socket_id
+            d['key'] = (d['path'], d['socket_id'])
 
             res.append(d)
         
@@ -263,7 +264,7 @@ class Signature:
             if with_sockets:
                 bsocket = utils.get_bsocket(value)
                 if bsocket is not None:
-                    d[name]['socket'] = bsocket
+                    d['socket'] = bsocket
             
             a.append(d)
 
@@ -291,7 +292,7 @@ class Signature:
             for d in sig.outputs:
                 if d['key'] in out_keys:
                     continue
-                inputs.append({**d})
+                outputs.append({**d})
                 out_keys.add(d['key'])
 
         return Signature(inputs, outputs)

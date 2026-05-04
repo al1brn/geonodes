@@ -98,6 +98,32 @@ def uv_cylinder():
         final.out()
 
 def demo():
+    # ====================================================================================================
+    # Default Shader for Arrow
+    # ====================================================================================================
+
+    with ShaderNodes("Arrow"):
+
+        pos_color = Color(snd.attribute(attribute_type='GEOMETRY', attribute_name="Color").vector)
+        negative  = snd.attribute(attribute_type='GEOMETRY', attribute_name="Negative").factor
+        transp    = snd.attribute(attribute_type='GEOMETRY', attribute_name="Transparency").factor
+
+        neg_color = pos_color.hue_saturation_value(hue=.5, saturation=.9, value=.9)
+        color = pos_color.mix(negative, neg_color)
+
+        ped = Shader.Principled(
+            base_color = color,
+            roughness  = negative.map_range(to_min=.1, to_max=.9),
+        )
+
+        shader = ped.mix(shader=Shader.Transparent(), factor=transp)
+
+        shader.out()
+
+    # ====================================================================================================
+    # Field of arrows
+    # ====================================================================================================
+
     with GeoNodes("Arrows"):
         
         # ---------------------------------------------------------------------------
@@ -184,7 +210,7 @@ def demo():
         with Panel("Shaft"):
             radius  = Float(.05, "Radius", shape="Single")
             resol   = Integer(12, "Resolution")
-            mat     = Material(None, "Material")
+            mat     = Material("Arrow", "Material")
             
         # ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
         
@@ -228,7 +254,7 @@ def demo():
                     height = head.height
                     has_head = height.greater_than(0)
                 
-                    head.material = Material(None, "Material")
+                    head.material = Material("Arrow", "Material")
                     
                     # Rotate 180° if bottom
                     if ihead == 1:
@@ -312,3 +338,56 @@ def demo():
         arr = Group("Arrows", cloud=cloud, vectors=vec).link_inputs()._out
         
         arr.out()
+
+    # ===========================================================================
+    # Screw
+    # ===========================================================================
+
+    with GeoNodes("Screw"):
+        
+        show = Boolean(True, "Show")
+        
+        pos    = Vector(0,         "Positition")
+        vec    = Vector((0, 0, 1), "Vector")
+        rot    = Float.Angle(0,    "Rotation")
+        
+        with Panel("Shape"):
+            radius = Float(0.1,        "Radius")
+            thread = Float(0.6,        "Thread", 0.01)
+            aspect = Float.Factor(0.5, "Aspect", 0, 1)
+            
+        with Panel("Appearance"):
+            resol  = Integer(30,       "Resolution", 10, 500)
+            mat    = Material("Arrow", "Material")
+            color  = Color("blue",     "Color")
+            transp = Float(0,          "Transparency", 0, 1)
+            
+        with Layout("Base Line"):
+            
+            line = Curve.Line(pos, pos + vec).resample(count = resol)
+            
+            with Layout("Tilt"):
+                line.tilt = (nd.spline_parameter().length/thread)*tau + rot
+                
+            with Layout("Radius"):
+                t = 1.0 - nd.spline_parameter().factor
+                exp = aspect.map_range(to_min=.3, to_max=1)
+                line.radius = (t**exp)*radius
+                
+        with Layout("Profile"):
+            
+            prof = Curve.Circle(resolution=32).transform(scale=(1, .2, 0))
+            
+            
+        with Layout("Screw"):
+            
+            screw = line.to_mesh(profile_curve=prof, scale=nd.radius, fill_caps=True)
+            
+            screw.faces.material = mat
+            screw.faces.Color = color
+            screw.faces.Transparency = transp
+            
+        screw.switch_false(show & (vec.length() > 0.001) & (transp < 0.999)).out()
+        
+            
+                    

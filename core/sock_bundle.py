@@ -37,14 +37,8 @@ __copyright__ = "Copyright (c) 2025, Alain Bernard"
 __license__ = "GNU GPL V3"
 
 
-import numpy as np
-
-import bpy
-from . import utils
 from .signature import Signature
-from .treeclass import Tree
 from .nodeclass import Node
-from .socket_class import Socket
 from . import generated
 
 # ====================================================================================================

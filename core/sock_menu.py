@@ -41,12 +41,6 @@ __license__ = "GNU GPL V3"
 __version__ = "3.0.0"
 __blender_version__ = "4.3.0"
 
-from typing import Literal
-
-from .scripterror import NodeError
-from . import utils
-from .treeclass import Tree
-from .socket_class import Socket
 from . import generated
 
 

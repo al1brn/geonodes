@@ -107,8 +107,8 @@ COLORS = {
     'greenyellow'             : 'adff2f',
     'honeydew'                : 'f0fff0',
     'hotpink'                 : 'ff69b4',
-    'indianred '              : 'cd5c5c',
-    'indigo  '                : '4b0082',
+    'indianred'               : 'cd5c5c',
+    'indigo'                  : '4b0082',
     'ivory'                   : 'fffff0',
     'khaki'                   : 'f0e68c',
     'lavender'                : 'e6e6fa',
@@ -239,11 +239,7 @@ def str_to_color_tuple(name: str) -> tuple:
     if len(hexa) not in [6, 8]:
         return None
     
-    NAIVE = True
-    if NAIVE:
-        col = [int(hexa[2*i:2*i+2], 16)/255 for i in range(len(hexa)//2)]
-    else:
-        col = [linear_rgb(int(hexa[2*i:2*i+2], 16)/255) for i in range(len(hexa)//2)]
+    col = [int(hexa[2*i:2*i+2], 16)/255 for i in range(len(hexa)//2)]
     
     if len(col) == 3:
         col.append(1.)
@@ -303,7 +299,7 @@ def to_color_tuple(value) -> tuple:
 # ====================================================================================================
 
 def to_hexa(color: tuple, with_alpha: bool = True) -> str:
-    r, g, b, a = color
+    r, g, b, a = (max(0.0, min(1.0, c)) for c in color)
     hexa = f"#{int(r*255):02x}{int(g*255):02x}{int(b*255):02x}"
     if with_alpha:
         hexa += f"{int(a*255):02x}"

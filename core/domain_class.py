@@ -42,7 +42,6 @@ __version__ = "3.0.0"
 __blender_version__ = "4.3.0"
 
 
-from inspect import Arguments
 import bpy
 
 from . import utils
@@ -202,30 +201,6 @@ class Domain(Geom, NodeCache):
     # Methods
     # ====================================================================================================
 
-    def data_type_from_value_OLD(self, value, param_name: str = 'data_type', on_error: str = 'DEFAULT'):
-        """ Get the data_type from the value to plug on socket
-
-        Parameters
-        ----------
-        value
-            the value to set on the socket
-
-        param_name : {'data_type', 'input_type'}
-            param name
-
-        on_error : {'HALT', 'NONE', 'DEFAULT'}
-            what to do if not found
-
-
-        Returns
-        -------
-        data_type
-            a valid data type
-
-        """
-        return self._geo.node.data_type_from_value(value, param_name=param_name, on_error=on_error)
-
-
     # ----------------------------------------------------------------------------------------------------
     # Capture attribute
     # ----------------------------------------------------------------------------------------------------
@@ -278,11 +253,6 @@ class Domain(Geom, NodeCache):
         #node._set_items('capture_items', **attrs)
         self._jump(node._out)
         return node.socket_by_index('OUTPUT', 1)
-
-        if len(attrs) == 1:
-            return node.socket_by_index(1)
-        else:
-            return node
 
     # ----------------------------------------------------------------------------------------------------
     # Capture a single attribute
@@ -342,7 +312,6 @@ class Domain(Geom, NodeCache):
 
         # Node Zone
         #node = ZoneNode('For Each Element', self._geo, named_sockets=named_sockets, domain=self.DOMAIN_NAME, **sockets)
-        class_name = type(self._geo).__name__
         node = ZoneNode.ForEach(geometry=self._geo, selection=selection, named_sockets=named_sockets, domain=self.DOMAIN_NAME, **sockets)
 
         return ZoneIterator(self._geo, node)

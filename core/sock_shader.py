@@ -42,12 +42,7 @@ __version__ = "3.0.0"
 __blender_version__ = "4.3.0"
 
 
-import numpy as np
-
-import bpy
 from . import utils
-from .treeclass import Tree
-from .nodeclass import Node
 from .socket_class import Socket
 from .  import generated
 
@@ -86,7 +81,7 @@ class ShaderRoot:
 
     def __mul__ (self, other):
         if isinstance(other, tuple) and len(other) == 2:
-            return self.mix(other[0], fac=other[1])
+            return self.mix(other[0], factor=other[1])
         else:
             return self.mix(other)
 

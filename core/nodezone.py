@@ -596,7 +596,7 @@ class ZoneIterator:
 
             return utils.to_socket(self._output_node._bnode.outputs[n + 2])
         else:
-            raise NodeError(f"Generated attribute is a property of for_each iterator, note {type(self).__name}.")
+            raise NodeError(f"Generated attribute is a property of for_each iterator, not {type(self).__name__}.")
 
     @property
     def Generated(self):
@@ -681,6 +681,7 @@ class ZoneIterator:
     # Class test
     # ====================================================================================================
 
+    @staticmethod
     def _class_test():
 
         from geonodes import nd, GeoNodes, Cloud, Mesh, Curve, Geometry, Float

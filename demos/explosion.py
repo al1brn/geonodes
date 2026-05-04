@@ -257,12 +257,13 @@ def demo():
 
         with Closure() as cl:
 
-            cloud = Cloud()         # Simulation points (with their attributes)
-            t = Float(name="t")     # Time (for forces depending on time)
-            dt = Float(name="dt")   # Simulation delta time
+            cloud = Cloud()          # Simulation points (with their attributes)
+            t     = Float(name="t")  # Time (for forces depending on time)
+            dt    = Float(name="dt") # Simulation delta time
 
-            speed = Vector("Velocity")
+            speed = Vector("Speed")
             mass  = Float("Mass")
+            mass.switch_false(mass.exists_, 1.)
 
             v = speed.length()
             visc = v_fac*(v**v_exp)/mass
@@ -277,6 +278,87 @@ def demo():
         cl.out()
 
     # ====================================================================================================
+    # Interaction between particles
+    # ====================================================================================================
+
+    # ----------------------------------------------------------------------------------------------------
+    # Newton law as interaction law
+    # ----------------------------------------------------------------------------------------------------
+
+    with GeoNodes("Newton Law Interaction", is_group = True):
+
+        G_ = Float(1, "G")
+
+        with Closure() as cl:
+            cloud = Cloud(None, "Cloud")
+            index = Integer(0, "Index")
+
+            mass = Float("Mass")
+            mass.switch_false(mass.exists, 1.)
+
+            cloud.points.V = G_*mass*Vector("V").scale(r**(-3))
+
+            cloud.out()
+
+        cl.out()
+
+    # ----------------------------------------------------------------------------------------------------
+    # Interaction closure : sum of interaction law between particles
+    # ----------------------------------------------------------------------------------------------------
+
+    with GeoNodes("Interaction Closure", is_group = True):
+
+        law = Closure(None, "Law")
+        use_max_acc = Boolean(False, "Bound Acceleration")
+        max_acc = Float(100.0, "Max acceleration", 0.0)
+
+        with Closure() as cl:       
+
+            cloud   = Cloud(name = "Cloud")
+            t       = Float(name = "t")
+            dt      = Float(name = "dt")
+            
+            n = cloud.points.count
+            cloud.points.Acceleration = (0, 0, 0)
+            
+            for rep in repeat(n, cloud=cloud):
+                
+                # Current point position
+                pos = rep.cloud.points.sample_index(nd.position, index=rep.iteration)
+
+                # Vectors in V
+                rep.cloud.points.V = nd.position - pos
+
+                # Basic law: contributions are in V
+                rep.cloud = law(
+                    cloud       = rep.cloud, 
+                    index       = rep.iteration, 
+                    signature   = ({
+                        "Cloud"  : Cloud,
+                        "Index"  : Integer,
+                    }, {
+                        "Cloud" : Cloud,
+                    }))
+
+                # Add contributions
+                sel = nd.index == rep.iteration
+                acc = rep.cloud.points[sel.bnot()].attribute_statistic(Vector("V")).node.sum
+
+                # Max acceleration
+                lacc = gnmath.max(max_acc, acc.length())
+                bounded_acc = acc.scale(max_acc/lacc)
+                acc.switch(use_max_acc, bounded_acc)
+
+                # Set acceleration
+                rep.cloud.points[sel].Acceleration = acc
+                
+            cloud = rep.cloud
+            
+            cloud.out("Cloud")
+
+        cl.out()
+
+    # ====================================================================================================
     # Kinematics
     # ====================================================================================================
 
@@ -287,10 +369,11 @@ def demo():
         # ---------------------------------------------------------------------------
 
         cloud = Cloud()
-        speed = Vector(name="Speed", hide_value=True)
-        rot   = Rotation(name="Rotation", hide_value=True)
-        omega = Float(name="Omega", hide_value=True)
+        speed = Vector(     name = "Speed",     hide_value=True)
+        rot   = Rotation(   name = "Rotation",  hide_value=True)
+        omega = Float(      name = "Omega",     hide_value=True)
 
+        subs   = gnmath.max(1, Integer(1, "Sub Steps", 1))
         frame0 = Integer(1, "Start Frame", shape='Single')
 
         # ---------------------------------------------------------------------------
@@ -314,8 +397,8 @@ def demo():
 
         with Panel("Accelerations"):
 
-            gravity   = Closure(name="Gravity")
-            viscosity = Closure(name="Viscosity")
+            gravity   = Closure(name = "Gravity")
+            viscosity = Closure(name = "Viscosity")
 
             sig = ({'Cloud': 'Cloud', 't': 'Float', 'dt': 'Float'}, {'Cloud': 'Cloud'})
 
@@ -323,30 +406,33 @@ def demo():
 
             sim.skip = nd.scene_time().frame.less_than(frame0)
 
-            dt = sim.delta_time
+            dt = sim.delta_time/subs
 
-            # Reinit acceleration
-            cloud.points.Acceleration = Vector()
+            for rep in repeat(subs, cloud=sim.cloud):
 
-            # Evaluate the forces
-            for cl in [gravity, viscosity]:
-                cloud = cl.evaluate(cloud=cloud, t=0.0, dt=dt, signature=sig)
+                # Reinit acceleration
+                rep.cloud.points.Acceleration = Vector()
 
-            # Simulation
-            acc = Vector("Acceleration")
-            speed = Vector("Speed")
+                # Evaluate the forces
+                for cl in [gravity, viscosity]:
+                    rep.cloud = cl.evaluate(cloud=rep.cloud, t=0.0, dt=dt, signature=sig)
 
-            # New position and speed
-            new_speed = speed + acc*dt
-            cloud.points.Velocity = new_speed
-            cloud.offset = (speed + new_speed).scale(dt/2)
+                # Simulation
+                acc   = Vector("Acceleration")
+                speed = Vector("Speed")
 
-            # Rotation            
-            angle = Float("Angle") + Float("Omega")*dt
-            cloud.points.Rotation = Rotation.FromAxisAngle(Vector("Axis"), angle)
-            cloud.points.Angle = angle
+                # New position and speed
+                new_speed = speed + acc*dt
+                rep.cloud.points.Speed = new_speed
+                rep.cloud.offset = (speed + new_speed).scale(dt/2)
 
-            cloud.out()
+                # Rotation            
+                angle = Float("Angle") + Float("Omega")*dt
+                rep.cloud.points.Rotation = Rotation.FromAxisAngle(Vector("Axis"), angle)
+                rep.cloud.points.Angle = angle
+
+            rep.cloud.out()
+            #cloud.out()
 
         cloud = sim.cloud
 
@@ -423,7 +509,6 @@ def demo():
             mesh = mesh,
             max_omega = Input("Max Omega"),
             speed = nd.position.scale(Float.Random(0.7*max_speed, max_speed, seed=seed)),
-            speed = nd.position.scale(Float.Random(0.7*max_speed, max_speed, seed=seed)),
             seed = seed + 1,
             gravity = G().gravity_closure().closure,
             viscosity = G().viscosity_closure().closure,
@@ -431,4 +516,58 @@ def demo():
         )
 
         anim.out()
+
+    
+    # ====================================================================================================
+    # Solar system demo
+    # ====================================================================================================
+
+    with GeoNodes("Solar System Demo"):
+
+        count = Integer(8, "Planets")
+        G_    = Float(1., "G")/10000
+        seed  = Integer(0, "Seed")
+
+        r = Float.Random(5, 30, seed=seed)
+        theta = Float.Random(0, tau, seed=seed + 1)
+
+        pos = (r*theta.cos(), r*theta.sin(), 0)
+        rth = theta + Float.Random(-1, 1, seed=seed + 2)
+        speed = Vector((-rth.sin(),rth.cos(), 0))*Float.Random(5, 30, seed=seed + 3)
+
+        cloud = Cloud.Points(count+1, position=pos)
+        cloud.points.Speed = speed
+        cloud.points.Mass = Float.Random(1, 3, seed= seed + 4)
+        cloud.points.radius = Float("Mass")*.3
+
+        sun_sel = nd.index == 0
+        cloud.points[sun_sel].position = Vector()
+        cloud.points[sun_sel].Speed = Vector()
+        cloud.points[sun_sel].Mass = 1000.0
+        cloud.points[sun_sel].radius = 3.0
+
+        law = G().newton_law_interaction(g=G_)
+        interaction = G().interaction_closure(
+            law = law,            
+        )
+
+        anim = G().kinematics_engine(
+            cloud = cloud,
+            speed = Vector("Speed"),
+            #seed = seed + 100,
+            sub_steps = Input("Sub Steps"),
+            gravity = interaction,
+            start_frame = Input("Start Frame"),
+        )
+
+        mesh = anim.cloud.instance_on(instance=Mesh.UVSphere(radius=1),scale=nd.radius)
+
+        mesh.out()
+
+
+
+
+
+
+
 

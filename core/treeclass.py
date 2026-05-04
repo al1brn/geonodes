@@ -270,18 +270,6 @@ class Layout:
             self.bnode.use_custom_color = True
             self.bnode.color = color.bcolor
 
-        return
-
-
-        if value is None:
-            self.bnode.use_custom_color = False
-        else:
-            if isinstance(value, str):
-                value = Tree._get_color(value)
-
-            self.bnode.use_custom_color = True
-            self.bnode.color = value
-
     # ====================================================================================================
     # Context
     # ====================================================================================================
@@ -633,9 +621,6 @@ class Tree:
 
                 for mod in self.get_modifiers().values():
 
-                    if False: # True for DEBUG
-                        continue
-
                     cur_val = mod.get(bsock.identifier)
                     if cur_val is not None and (cur_val < 2 or cur_val > len(enums) + 2):
                         mod[bsock.identifier] = enums.index(isock.default_value) + 2
@@ -982,7 +967,7 @@ class Tree:
 
         try:
             bsocket.default_value = value
-        except:
+        except Exception:
             pass
 
         io_socket = self._interface.by_identifier(bsocket.identifier)
@@ -994,8 +979,8 @@ class Tree:
 
         try:
             io_socket.default_value = value
-        except:
-            return    
+        except Exception:
+            return
 
     # ----------------------------------------------------------------------------------------------------
     # Create an input socket
@@ -1043,7 +1028,7 @@ class Tree:
     def get_signature(self, include: list = None, exclude: list = [], enabled_only=True, with_sockets: bool = False):
         """ Build the closure signature of the tree.
 
-        The closure signature is the tuple made of the outpout signature of the input node
+        The closure signature is the tuple made of the output signature of the input node
         and the input signature of the output node
 
         Returns
@@ -1051,15 +1036,13 @@ class Tree:
         Signature
         """
         return Signature(
-            Signature.from_node(
-                self.input_node, 
-                include         = include, 
-                exclude         = exclude, 
-                enabled_only    = enabled_only, 
+            self.input_node.get_signature(
+                include         = include,
+                exclude         = exclude,
+                enabled_only    = enabled_only,
                 with_sockets    = with_sockets).outputs,
-            Signature.from_node(
-                self.output_node, 
-                enabled_only    = enabled_only, 
+            self.output_node.get_signature(
+                enabled_only    = enabled_only,
                 with_sockets    = with_sockets).inputs)
 
     # ====================================================================================================
@@ -1149,7 +1132,8 @@ class Tree:
         if self.is_geonodes():
             return True
         elif self.is_shader():
-            return self._is_group 
+            return self._is_group
+        return False
 
     # ----------------------------------------------------------------------------------------------------
     # Default input node
@@ -1171,13 +1155,6 @@ class Tree:
             return Node('NodeGroupInput')
         else:
             return self._input_node
-
-
-        for node in self._nodes:
-            if node._bnode.bl_idname ==  'NodeGroupInput':
-                return node
-            
-        return Node('NodeGroupInput')
     
     # ----------------------------------------------------------------------------------------------------
     # Default output node
@@ -1199,15 +1176,6 @@ class Tree:
             return Node('NodeGroupOutput')
         else:
             return self._output_node
-
-
-
-
-        for node in self._nodes:
-            if node._bnode.bl_idname ==  'NodeGroupOutput':
-                return node
-            
-        return Node('NodeGroupOutput')
     
     # ----------------------------------------------------------------------------------------------------
     # Using stack

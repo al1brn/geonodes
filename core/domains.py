@@ -42,8 +42,6 @@ __blender_version__ = "4.3.0"
 import bpy
 
 from .scripterror import NodeError
-from . import constants
-from . import utils
 from .nodeclass import Node
 from .domain_class import Domain
 from . import generated
@@ -249,7 +247,7 @@ class Instance(Domain, generated.Instance):
         sockets = {'Instances': self._geo, 'Selection': self.get_selection()}
         if isinstance(value, dict):
             for k, v in value.items():
-                if k not in keys is None:
+                if k not in keys:
                     raise NodeError(f"Node 'Scale Instances' error: invalid key '{k}' to set instance scale.", valid_keys=keys)
                 sockets[k] = v
         else:

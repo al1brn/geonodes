@@ -395,12 +395,6 @@ def is_socket(socket):
 def is_free(socket):
     bsocket = get_bsocket(socket)
     return bsocket.is_multi_input or (not bsocket.is_linked)
-
-    # Strangely is_output seems to bo not always reliable :-()
-    if bsocket.is_output:
-        return True
-    else:
-        return bsocket.is_multi_input or (not bsocket.is_linked)
     
 def get_default_name(socket):
     bsocket = get_bsocket(socket)
@@ -410,10 +404,11 @@ def get_default_name(socket):
         return bsocket.name
 
 def get_socket_name(socket):
-    
-    bsocket = get_bsocket(socket)
-
     if socket is None:
+        return None
+
+    bsocket = get_bsocket(socket)
+    if bsocket is None:
         return None
 
     if bsocket.label in [None, ""]:
@@ -435,8 +430,6 @@ def get_value_socket_type(value, restrict_to=None, default=None):
 
     
     bsocket = get_bsocket(value)
-
-    assert bsocket is None, "Test"
 
     if bsocket is not None:
         socket_type = bsocket.type
@@ -511,35 +504,6 @@ def get_items_socket_type(socket_type):
 # Get data_type
 # ====================================================================================================
 
-def get_input_type_OLD(value, restrict_to=None, default='FLOAT'):
-
-    transco = {
-        'VALUE': 'FLOAT',
-    }
-
-    itype = get_socket_type(value, restrict_to=restrict_to, default=default)
-    return transco.get(itype, itype)
-    
-
-    if value is None:
-        input_type = default
-        socket_type = 'NONE'
-
-    else:
-        socket_type = get_socket_type(value)
-
-        input_type = constants.INPUT_TYPES.get(socket_type)
-        if input_type is not None and restrict_to is not None:
-            if input_type not in restrict_to:
-                input_type = default
-
-        if input_type is None:
-            input_type = default
-
-    if input_type is None:
-        raise NodeError(f"Socket type '{socket_type}' has not a valid input type for the node", valid_types=restrict_to)
-    else:
-        return input_type
 
 
 # ====================================================================================================
@@ -684,7 +648,7 @@ def get_socket_class(socket_type, name=None):
             class_name = 'GreasePencil'
         elif name in ('instance', 'instances', 'curve instances'):
             class_name = 'Instances'
-        elif name in ('volume'):
+        elif name in ('volume',):
             class_name = 'Volume'
         else:
             class_name = 'Geometry'
@@ -987,7 +951,7 @@ def is_matrix_like(value):
     return SocketType(value).type in ['MATRIX']
 
 def is_value_like(value):
-    return SocketType(value).type in ['FLOAT', 'INT', 'BOOLEAN']
+    return SocketType(value).type in ['VALUE', 'INT', 'BOOLEAN']
 
 def is_int_like(value):
     return SocketType(value).type in ['INT', 'BOOLEAN']

@@ -43,7 +43,6 @@ __blender_version__ = "4.3.0"
 from . treeclass import Tree
 from . import constants
 from . scripterror import NodeError
-from . treeinterface import TreeInterface
 
 class GeoNodes(Tree):
     def __init__(self, 
@@ -141,7 +140,7 @@ class GeoNodes(Tree):
 
         geonodes._btree.is_type_mesh        = mesh
         geonodes._btree.is_type_curve       = curve
-        geonodes._btree.is_type_point_cloud = cloud
+        geonodes._btree.is_type_pointcloud = cloud
 
         geonodes._btree.use_wait_for_click = wait_for_click
 

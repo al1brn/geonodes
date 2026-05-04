@@ -41,17 +41,10 @@ __license__ = "GNU GPL V3"
 __version__ = "3.0.0"
 __blender_version__ = "4.3.0"
 
-from typing import Literal
-
-from sys import version
-import numpy as np
-
-import bpy
 from . import utils
 from .sockettype import SocketType
-from .treeclass import Tree
+from .treeclass import Layout
 from .nodeclass import Node
-from .socket_class import Socket
 from . import generated
 
 class Matrix(generated.Matrix):
@@ -120,7 +113,8 @@ class Matrix(generated.Matrix):
         Matrix
         """
         a = utils.value_to_array(array, (16,))
-        return Node('Combine Matrix', list(a))._out
+        names = [f"Column {c} Row {r}" for c in range(1, 5) for r in range(1, 5)]
+        return Node('Combine Matrix', dict(zip(names, a)))._out
 
     # ====================================================================================================
     # Operations
@@ -153,14 +147,14 @@ class Matrix(generated.Matrix):
         return (m[index], m[4+index], m[8+index], m[12 + index])
     
     def set_col(self, index, col):
-        with Layout("Set Column {index}", color='MACRO'):
+        with Layout(f"Set Column {index}", color='MACRO'):
             m = list(self.as_tuple)
             m[index*4:(index+1)*4] = col
             M = Matrix(m)
             return self._jump(M)
 
     def set_row(self, index, row):
-        with Layout("Set Row {index}", color='MACRO'):
+        with Layout(f"Set Row {index}", color='MACRO'):
             m = list(self.as_tuple)
             m[index], m[4+index], m[8+index], m[12 + index] = row    
             M = Matrix(m)

@@ -55,8 +55,8 @@ from . scripterror import NodeError
 
 DELETION = '__deletion marker__'
 
-IN_OUT = Literal['INPUT', 'OUPUT']
-BOTH   = Literal['INPUT', 'OUPUT', 'BOTH']
+IN_OUT = Literal['INPUT', 'OUTPUT']
+BOTH   = Literal['INPUT', 'OUTPUT', 'BOTH']
 ITYPE  = Literal['SOCKET', 'PANEL']
 
 # ====================================================================================================
@@ -131,9 +131,9 @@ class PanelIterator:
 
 class ItemPath:
 
-    def __init__(self, value: str | list | NodeTreeInterfaceItem):
+    __slots__ = ('_path', '_socket_id')
 
-        __slots__ = ('_path', '_socket_id')
+    def __init__(self, value: str | list | NodeTreeInterfaceItem):
 
         """ A panel name wraps the different ways to name a panel.
 
@@ -503,7 +503,7 @@ class ItemPath:
     def __eq__(self, other):
         return self.equal_to(other)
     
-    def __neq__(self, other):
+    def __ne__(self, other):
         return not self.equal_to(other)
     
 # ====================================================================================================
@@ -1015,7 +1015,7 @@ class TreeInterface:
                         # Could fail for menus
                         try:
                             bsock.default_value = socket.default_value
-                        except:
+                        except Exception:
                             pass
                         break
                 break
@@ -1462,13 +1462,8 @@ class TreeInterface:
         #parent = self.get_panel(parent)
         parent_path = ItemPath(parent)
         for panel in self.iterate(sockets=False, parent=parent):
-            if True:
-                if name in (ItemPath(panel) - parent_path).get_names(True):
-                    return panel
-            else:
-                names = self.get_python_names(panel, parent=parent)
-                if name in names:
-                    return panel
+            if name in (ItemPath(panel) - parent_path).get_names(True):
+                return panel
 
         return None
     
@@ -1520,10 +1515,7 @@ class TreeInterface:
 
         """
 
-        if True:
-            CLEAR = []
-        else:
-            CLEAR = ['NodeSocketMenu']
+        CLEAR = []
 
         if use_bin:
             del_panel = self.get_panel(self.BIN_PANEL, create=True)
@@ -1564,34 +1556,6 @@ class TreeInterface:
     # ====================================================================================================
     # Utilities
     # ====================================================================================================
-
-    # ----------------------------------------------------------------------------------------------------
-    # Get the associated node socket
-    # ----------------------------------------------------------------------------------------------------
-
-    def get_node_socket_OLD(self, item):
-
-        if item.in_out == 'INPUT':
-            for node in self.btree.nodes:
-                if node.bl_idname != 'NodeGroupInput':
-                    continue
-                
-                for bsock in node.outputs:
-                    if bsock.identifier == item.identifier:
-                        return bsock
-            return None
-
-        elif item.in_out == 'OUTPUT':
-            for node in self.btree.nodes:
-                if node.bl_idname != 'NodeGroupOutput':
-                    continue
-                
-                for bsock in node.inputs:
-                    if bsock.identifier == item.identifier:
-                        return bsock
-            return None        
-
-        assert False, f"Shouln't happen: {item}"
 
     # ----------------------------------------------------------------------------------------------------
     # Iterator
@@ -1857,10 +1821,6 @@ class TreeInterface:
 
             #sockets = self.get_sockets(in_out, include=include, exclude=exclude, enabled_only=enabled_only, free_only=free_only, parent=parent)
             sockets = self.get_sockets(in_out, include=include, exclude=exclude, enabled_only=enabled_only, parent=parent)
-            sig = []
-            for socket in sockets:
-                d = self
-
             sig = [self.get_socket_dict(socket, with_socket=with_sockets) for socket in sockets]
 
             signature[in_out] = sig

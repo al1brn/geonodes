@@ -40,9 +40,7 @@ __copyright__ = "Copyright (c) 2025, Alain Bernard"
 __license__ = "GNU GPL V3"
 
 from . import generated
-from . import blender
 from .nodeclass import Node
-from typing import Literal
 
 class String(generated.String):
     """ String Socket.
@@ -118,10 +116,7 @@ class String(generated.String):
             return self.join(other)
 
     def __imul__(self, other):
-        if isinstance(other, tuple):
-            return self.join(*other)
-        else:
-            return self.join(other)
+        return self._jump(self.__mul__(other))
         
     # ====================================================================================================
     # Class test    

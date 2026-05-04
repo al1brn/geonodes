@@ -78,10 +78,3 @@ class ClassPropertyMetaClass(type):
         return super(ClassPropertyMetaClass, self).__setattr__(key, value)
     
     
-class Foo:
-    @class_property
-    def bar(cls):
-        return 123
-    
-    
-print(Foo.bar)

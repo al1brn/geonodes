@@ -47,7 +47,6 @@ import bpy
 from . import blender
 from .scripterror import NodeError
 from . import constants
-from . import blender
 from . import utils
 from .colors import SysColor
 from .sockettype import SocketType
@@ -490,8 +489,6 @@ class Node:
         return f"<Node '{sname}'>"
 
     def __repr__(self):
-        sname = self._bnode.label if self._bnode.label != "" else self._bnode.name
-        s = f"<Node '{sname}' {self._bnode.bl_idname}>"
         s = str(self)
         s += "\nInputs\n   - "
         s += "\n   - ".join([bsock.name for bsock in self._bnode.inputs])
@@ -611,8 +608,8 @@ class Node:
                 alt_value = SocketType.get_data_type_for_node(value, self._bnode.bl_idname, param_name, on_error='HALT' if halt else 'DEFAULT')
 
             # Font
-            elif param_name == 'font' and isinstance(param_value, str):
-                param_value = blender.get_font(param_value)
+            elif param_name == 'font' and isinstance(value, str):
+                param_value = blender.get_font(value)
 
             else:
                 param_value = value
@@ -673,56 +670,6 @@ class Node:
 
         for param_name, param_value in parameters.items():
             self.set_parameter(param_name, param_value, halt=True)
-
-        return
-
-
-
-
-        for param_name, param_value in parameters.items():
-
-            if param_value is None:
-                continue
-
-            # data_type argument
-            if param_name == 'data_type':
-                param_value = SocketType(param_value).get_node_data_type(self._tree._btree.bl_idname, self._bnode.bl_idname, default=param_value)
-
-            # Domain can be specified by a domain class for a node without domain parameter
-            if param_name == 'domain' and not hasattr(self._bnode, 'domain'):
-                continue
-
-            # Font
-            if param_name == 'font' and isinstance(param_value, str):
-                param_value = blender.get_font(param_value)
-
-            try:
-                setattr(self._bnode, param_name, param_value)
-
-            except AttributeError as ae:
-                raise NodeError(
-                    f"Invalid parameter value for node {self}.",
-                    attribute   = f"'{param_name}'", 
-                    value       = param_value,
-                    error       = str(ae),
-                )
-
-            except TypeError as type_e:
-                s = str(type_e)
-                mark = "not found in "
-                i = s.find(mark)
-                if i > 0:
-                    raise NodeError(f"Node parameter error: '{param_value}' is not a valid value for {param_name}.",
-                        node = self._bnode.name,
-                        parameter = param_name,
-                        valid_values = s[i + len(mark):],
-                    )
-                else:
-                    raise NodeError(f"Node parameter error: '{param_value}' is not a valid value for {param_name}.",
-                        node = self._bnode.name,
-                        parameter = param_name,
-                        message = str(type_e)
-                    )
                 
     # ====================================================================================================
     # Accessing the sockets by their name, index or identifier
@@ -1270,7 +1217,7 @@ class Node:
 
             isock = self._interface.create_socket(intf_in_out, name, socket_type, parent=self._tree.get_panel(panel), **creation_props)
             if isock is None:
-                raise NodeError(f"Impossible to create the {intf_in_out} socket named in Node {self}", name=name, stype=stype, **creation_props)
+                raise NodeError(f"Impossible to create the {intf_in_out} socket named in Node {self}", name=name, stype=str(socket_type), **creation_props)
             
             socket = self.socket_by_identifier(in_out, isock.identifier)
 
@@ -1452,17 +1399,11 @@ class Node:
                         break
 
                 if not ok:
-                    raise NodeError(f"Impossible to set menu [{socket.node.name}]{socket.name} with value <{value}>. {str(e)}")
+                    raise NodeError(f"Impossible to set menu [{socket.node.name}]{socket.name} with value <{value}>. {str(te)}")
 
             except Exception as e:
                 raise NodeError(f"Impossible to set menu [{socket.node.name}]{socket.name} with value <{value}>. {str(e)}")
             
-            # OLD
-            if False:
-                try:
-                    socket.default_value = str(value)
-                except Exception as e:
-                    raise NodeError(f"Impossible to set menu [{socket.node.name}]{socket.name} with value <{value}>. {str(e)}")
 
         else:
             raise TypeError(f"Impossible to set input socket [{socket.node.name}].{socket.name} with value <{value}>. Unsupported socket type '{socket.type}'.")
@@ -1617,7 +1558,7 @@ class Node:
             # ----- Not found : we should be able to create it
 
             if not (create and self._has_dyn_in):
-                raise NodeError(f"Error when setting an input socket to node {self}: no free input socket found for socket {value} of type: {bsocket.type}.")
+                raise NodeError(f"Error when setting an input socket to node {self}: no free input socket found for socket {value} of type: {value_socket_type.type}.")
             
             name = self.get_socket_default_name('OUTPUT', value)
 
@@ -2083,7 +2024,7 @@ class Node:
         for sock_from, sock_to  in zip(self._bnode.inputs, new_node._bnode.inputs):
             try:
                 sock_to.default_value = sock_from.default_value
-            except:
+            except Exception:
                 pass
 
             for link in sock_from.links:
@@ -2439,7 +2380,7 @@ class MenuNode(Node):
         """
 
         # All the Tree input sockets
-        if self._tree._btree.bl_idname == 'GeometryNodeTree' or self._is_group:
+        if self._tree._btree.bl_idname == 'GeometryNodeTree' or self._tree._is_group:
             inputs = {bsock.identifier: bsock for bsock in self._tree.input_node._bnode.outputs}
         else:
             inputs = {}
@@ -2474,7 +2415,7 @@ class MenuNode(Node):
 
             try:
                 def_index = enums.index(self._default_menu)
-            except:
+            except Exception:
                 def_index = 0
                 self._default_menu = enums[0]
 
@@ -2490,9 +2431,6 @@ class MenuNode(Node):
             # Modifiers
             for name, mod in self._tree.get_modifiers().items():
 
-                if False: # True for DEBUG
-                    continue
-                
                 mod_value = None
                 values = mod_values.get(name)
                 if values is not None:
@@ -2538,9 +2476,6 @@ class MenuNode(Node):
             # Modifiers
             for name, mod in self._tree.get_modifiers().items():
 
-                if False: # True for DEBUG
-                    continue
-                
                 mod_value = None
                 values = mod_values.get(name)
 
@@ -2747,6 +2682,7 @@ class Group(Node):
         if isinstance(group_name, bpy.types.NodeTree):
             btree = group_name
             group_name = btree.name
+            full_name = btree.name
 
         else:
             pref = str(prefix)
@@ -3041,8 +2977,8 @@ class ColorRamp(Node):
         """
         super().__init__('Color Ramp', {'Fac': fac})
         self.color_ramp.interpolation = interpolation
-        #self.interpolation = interpolation
-        self.stops = stops
+        if stops is not None:
+            self.set_stops(*stops)
 
     @property
     def color_ramp(self):
@@ -3078,7 +3014,7 @@ class ColorRamp(Node):
         -------
         list of tuples : (float, color)
         """
-        return utils.color_ramp_get_stops(self.node._bnode, as_str=False)
+        return utils.color_ramp_get_stops(self._bnode, as_str=False)
 
     @stops.setter
     def stops(self, stops):

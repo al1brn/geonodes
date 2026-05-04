@@ -68,7 +68,7 @@ class SocketType:
 
         # List of sockets
         elif isinstance(value, list):
-            ok = False
+            ok = True
             for v in value:
                 if SocketType.get_bsocket(v) is None:
                     ok = False
@@ -161,7 +161,7 @@ class SocketType:
                 else:
                     raise NodeError(
                         f"Error when trying to get the socket type of value {value} (type= {type(value).__name__}).\n"
-                        f"The value seems to be an array of size {1} (shape {np.shape(value)})."
+                        f"The value seems to be an array of size {size} (shape {np.shape(value)})."
                         f"Acceptable sizes are 2, 3, 4 and 16.")
 
             else:
@@ -215,7 +215,7 @@ class SocketType:
         if socket_id in constants.SOCKET_SUBTYPES:
             return True
         if halt:
-            raise RuntimeError("Value '{socket_id}' is not a valid socket id, valids are: {list(constants.SOCKET_SUBTYPES.keys())}")
+            raise RuntimeError(f"Value '{socket_id}' is not a valid socket id, valids are: {list(constants.SOCKET_SUBTYPES.keys())}")
         return False
     
     @staticmethod
@@ -223,7 +223,7 @@ class SocketType:
         if socket_type in constants.SOCKETS:
             return True
         if halt:
-            raise RuntimeError("Value '{socket_type}' is not a valid socket id, valids are: {list(constants.SOCKETS.keys())}")
+            raise RuntimeError(f"Value '{socket_type}' is not a valid socket id, valids are: {list(constants.SOCKETS.keys())}")
         return False
     
     @staticmethod
@@ -242,7 +242,7 @@ class SocketType:
             return True
         
         if halt:
-            raise RuntimeError("Value '{class_name}' is not a valid class name.")
+            raise RuntimeError(f"Value '{class_name}' is not a valid class name.")
 
         return False
     
@@ -322,7 +322,7 @@ class SocketType:
             return 'GreasePencil'
         elif name in ('instance', 'instances', 'curve instances'):
             return 'Instances'
-        elif name in ('volume'):
+        elif name in ('volume',):
             return 'Volume'
 
         return 'Geometry'        
@@ -629,43 +629,6 @@ class SocketType:
             return None
         
     # ====================================================================================================
-    # Data type for node
-    # ====================================================================================================
-
-    def get_node_data_type_OLD(self, tree_type: str, bl_idname: str, *, default=None, halt: bool = True):
-
-        info = constants.NODE_INFO[bl_idname]
-
-        conv = info.get('data_type')
-
-        if conv is None:
-            raise NodeError(f"Node '{bl_idname}' doesn't have a 'data_type' attribute.")
-        
-        if default is not None:
-            if default in conv.values():
-                return default
-            if default in conv.keys():
-                return conv[default]
-            
-            raise NodeError(f"Invalid data_type argument '{default}' for node [{info['name']}], valids are {list(conv.keys())}")
-            
-        # Argument value
-        socket_type = self.type
-
-        # Let's find in the valid type
-        valids = []
-        for stype, node_type in conv.items():
-            if stype == socket_type:                
-                return node_type
-            
-        valids.append(SocketType(stype).class_name)
-
-        if halt:
-            raise NodeError(f"Invalid data_type argument '{self}' for node [{info['name']}], valids are {valids}")
-        else:
-            return None
-    
-    # ====================================================================================================
     # Comparaison
     # ====================================================================================================
 
@@ -694,7 +657,7 @@ class SocketType:
     def __eq__(self, other):
         return self.equal_to(other)
     
-    def __neq__(self, other):
+    def __ne__(self, other):
         return not self.equal_to(other)
     
 

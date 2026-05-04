@@ -42,14 +42,8 @@ __version__ = "3.0.0"
 __blender_version__ = "4.3.0"
 
 
-from typing import Literal
-import numpy as np
-
-import bpy
 from . import utils
-from .treeclass import Tree
 from .nodeclass import Node, ColorRamp, NodeCurves
-from .socket_class import Socket
 from . import generated
 
 # magic methods
@@ -207,13 +201,13 @@ class Float(generated.Float):
     # ----- Addition
 
     def __add__(self, other):
-        from geonodes import Vector
+        from .sock_vector import Vector
         if utils.is_vector_like(other):
             return Vector(self).add(other)
         return self.add(other)
 
     def __radd__(self, other):
-        from geonodes import Vector
+        from .sock_vector import Vector
         if utils.is_vector_like(other):
             return Vector(other).add(self)
         return self.add(other)
@@ -224,13 +218,13 @@ class Float(generated.Float):
     # ----- Subtraction
 
     def __sub__(self, other):
-        from geonodes import Vector
+        from .sock_vector import Vector
         if utils.is_vector_like(other):
             return Vector(self).subtract(other)
         return self.subtract(other)
 
     def __rsub__(self, other):
-        from geonodes import Vector
+        from .sock_vector import Vector
         if utils.is_vector_like(other):
             return Vector(other).subtract(self)
         return Float(other).subtract(self)
@@ -241,13 +235,13 @@ class Float(generated.Float):
     # ----- Multiplication
 
     def __mul__(self, other):
-        from geonodes import Vector
+        from .sock_vector import Vector
         if utils.is_vector_like(other):
             return Vector(other).scale(self)
         return self.multiply(other)
 
     def __rmul__(self, other):
-        from geonodes import Vector
+        from .sock_vector import Vector
         if utils.is_vector_like(other):
             return Vector(other).scale(self)
         return self.multiply(other)
@@ -258,15 +252,15 @@ class Float(generated.Float):
     # ----- Division
 
     def __truediv__(self, other):
-        from geonodes import Vector
+        from .sock_vector import Vector
         if utils.is_vector_like(other):
             return Vector(other).divide(self)
         return self.divide(other)
 
     def __rtruediv__(self, other):
-        from geonodes import Vector
+        from .sock_vector import Vector
         if utils.is_vector_like(other):
-            return Vector(self).divide(other)
+            return Vector(other).divide(self)
         return Float(other).divide(self)
 
     def __itruediv__(self, other):
@@ -275,13 +269,13 @@ class Float(generated.Float):
     # ----- Modulo
 
     def __mod__(self, other):
-        from geonodes import Vector
+        from .sock_vector import Vector
         if utils.is_vector_like(other):
             return Vector(self).modulo(other)
         return self.modulo(other)
 
     def __rmod__(self, other):
-        from geonodes import Vector
+        from .sock_vector import Vector
         if utils.is_vector_like(other):
             return Vector(other).modulo(self)
         return Float(other).modulo(self)

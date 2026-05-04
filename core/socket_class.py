@@ -342,11 +342,11 @@ class Socket(NodeCache):
         
         node = Node('Named Attribute', name=name)
         data_type = SocketType(cls.SOCKET_TYPE).get_node_data_type(
-            tree_type = node._tree._._btree.bl_idname,
+            tree_type = node._tree._btree.bl_idname,
             bl_idname = node._bnode.bl_idname,
             halt = True)
 
-        node._data_type = data_type
+        node.set_parameter('data_type', data_type)
 
         return node._out._ul(name)
     
@@ -737,9 +737,9 @@ class Socket(NodeCache):
         -------
         Interface Socket
         """
-        if self.node.use_interface:
-            return self.node._interface._use_interface(self._bsocket.identifier)
-        
+        if self.node._use_interface:
+            return self.node._interface.by_identifier(self._bsocket.identifier)
+
         return None
 
     # ----------------------------------------------------------------------------------------------------
@@ -933,12 +933,7 @@ class Socket(NodeCache):
         if value is None:
             return
         
-        d = self._bsocket.description
-        if True:
-            self._bsocket.description = "UL " + str(value)
-        else:
-            if not d.startswith("UL "):
-                self._bsocket.description = "UL " + str(value)
+        self._bsocket.description = "UL " + str(value)
 
     # ----------------------------------------------------------------------------------------------------
     # Set user label and returns self for chaining
@@ -993,7 +988,7 @@ class Socket(NodeCache):
         """
 
         if self.node._bnode.bl_idname == 'NodeGroupInput':
-            return
+            return self
 
         self.node_label = label
         self.node_color = color

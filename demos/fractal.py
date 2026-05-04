@@ -7,12 +7,12 @@ from geonodes import *
 # ====================================================================================================
 
 iter_signature = (
-    {'Mesh'             : Mesh,
-     'Model'            : Mesh,
-     'Rotation'         : Float,
-     'Hue Scale'        : Float,
+    {'Mesh'       : Mesh,
+     'Model'      : Mesh,
+     'Rotation'   : Float,
+     'Hue Scale'  : Float,
     },
-    {'Mesh'             : Mesh,
+    {'Mesh'       : Mesh,
     },
 )
 
@@ -312,6 +312,37 @@ def demo():
 
         frac.out()
         cone.out("Model")        
+
+
+    with GeoNodes("Fractal Growth Step"):
+
+        cloud = Cloud()
+        dt    = Float(.1, "Delta Time")
+
+        cloud.points.Time = Float("Time") + dt
+        split = Float("Time") >= Float("Split time")
+
+    with GeoNodes("Fractal Growth"):
+
+        max_depth = Integer(3, "Max Depth", 1)
+        min_size  = Float(0.,  "Min size", 0.0)
+        seed      = Integer(0, "Seed")
+
+
+        cloud = Cloud.Points(count=1)
+        
+        cloud.points.M     = Matrix()
+        cloud.points.Age   = 0.0
+        cloud.points.Depth = 0
+        cloud.points.Uid   = Integer.Random(0, 1_000_000_000, seed=seed)
+        cloud.points.Hue   = Float.Random(0, 1, seed=seed + 1)
+
+        for rep in repeat(max_depth, to_split=cloud, fractal=None):
+            pass
+
+
+
+
 
             
         

@@ -40,12 +40,6 @@ __copyright__ = "Copyright (c) 2025, Alain Bernard"
 __license__ = "GNU GPL V3"
 
 
-import bpy
-from . import constants, utils
-from .treeclass import Tree
-from .nodeclass import Node
-from .socket_class import Socket
-from . import blender
 from . import generated
 
 class Collection(generated.Collection):

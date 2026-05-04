@@ -44,10 +44,6 @@ __blender_version__ = "4.3.0"
 
 from typing import Literal
 
-from . import utils
-from . treeclass import Tree
-from .nodeclass import Node
-from . socket_class import Socket
 from . import generated
 from . scripterror import NodeError
 
@@ -105,7 +101,7 @@ class Boolean(generated.Boolean):
         return self.bor(other)
 
     def __add__(self, other):
-        return self.add(other)
+        return self.bor(other)
 
     def __sub__(self, other):
         return self.nimply(other)
@@ -123,7 +119,7 @@ class Boolean(generated.Boolean):
         return self.band(other)
 
     def __xor__(self, other):
-        return self.xor(self)
+        return self.xor(other)
 
     def __rxor__(self, other):
         return self.xor(other)

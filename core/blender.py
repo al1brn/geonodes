@@ -58,9 +58,12 @@ def create_object(name, type='MESH', collection=None):
         obj = bpy.data.objects.new(name, cloud)
 
     elif type == 'CURVE':
-        curve = bpy.data.curves.new("Curve", type='CURVE')
+        curve = bpy.data.curves.new(name, type='CURVE')
         curve.dimensions = '3D'
-        obj  = bpy.data.objects.new(name, curve)
+        obj = bpy.data.objects.new(name, curve)
+
+    else:
+        raise ValueError(f"create_object: unsupported type {type!r}")
 
     # Link the object to the collection
 
@@ -134,7 +137,7 @@ def get_font(name: str | VectorFont, path: str|None = None) -> VectorFont | None
         try:
             font = bpy.data.fonts.load(str(Path(path) / (name + '.ttf')))
             font.name = name
-        except:
+        except Exception:
             font = bpy.data.fonts.load("<builtin>")
 
     return font
@@ -162,8 +165,6 @@ def find_node_editor(tree=None):
 
             if tree is not None:
                 space.node_tree = tree
-
-            print("Blender Find Editor", window, screen, area, region, space, space.node_tree)
 
             return {
                 "window"    : window,

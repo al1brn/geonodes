@@ -42,15 +42,8 @@ __version__ = "3.0.0"
 __blender_version__ = "4.3.0"
 
 
-from sys import version
-import numpy as np
-from typing import Literal
-
-import bpy
 from . import utils
-from .treeclass import Tree
 from .nodeclass import Node, NodeCurves
-from .socket_class import Socket
 from . import generated
 
 
@@ -195,7 +188,7 @@ class Vector(generated.Vector):
         return self.scale(-1)
 
     def __abs__(self):
-        return self.abs
+        return self.abs()
 
     # ----- Addition
 
@@ -281,10 +274,10 @@ class Vector(generated.Vector):
     # ----- Functions
 
     def __floor__(self):
-        return self.floor
+        return self.floor()
 
     def __ceil__(self):
-        return self.ceil
+        return self.ceil()
 
     # ====================================================================================================
     # Shader
@@ -462,9 +455,7 @@ class Vector(generated.Vector):
         Vector
         """
         node = Node('Normal', {'Normal': self})
-        vect = node._out
-        vect._bsocket.default_value = normal
-        return vect
+        return node._out
 
     @classmethod
     def NormalMap(cls, strength=None, color=None, space='TANGENT', uv_map=''):

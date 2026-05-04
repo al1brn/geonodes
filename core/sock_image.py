@@ -41,13 +41,7 @@ __license__ = "GNU GPL V3"
 __version__ = "3.0.0"
 __blender_version__ = "4.3.0"
 
-import bpy
-from . import constants, utils
-from .treeclass import Tree
-from .nodeclass import Node
-from .socket_class import Socket
 from . import generated
-from . import blender
 
 
 class Image(generated.Image):

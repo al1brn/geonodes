@@ -107,34 +107,6 @@ class Geometry(generated.Geometry, Geom):
     # Geometry out
     # ====================================================================================================
 
-    def out_OLD(self, name: str = None, panel: str = "", **props):
-        """ Plug the value to the Group Output Node.
-
-        ``` python
-        with GeoNodes("Plug to group output"):
-            # Create a cube
-            geo = Mesh.Cube()
-            # To Group Output geometry as socket named "Cube"
-            geo.out("Cube")
-        ```
-
-        The "Do nothing" modifier is simply ``` Geometry().out() ```
-
-        Parameters
-        ----------
-        name : str, optional
-            socket name default=None.
-
-
-        Returns
-        -------
-        None
-        """
-        if name is None:
-            name = type(self).__name__
-
-        super().out(name, panel=panel, **props)
-
     # ====================================================================================================
     # Geometry Operations
     # ====================================================================================================

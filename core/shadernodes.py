@@ -68,16 +68,11 @@ updates
 - update : 2024/09/04
 """
 
-from typing import Callable, Any, Iterable, List, Optional
-
-from . import constants
+from typing import Any, Optional
 
 from .treeclass import Tree
 from .nodeclass import Node
 from .scripterror import NodeError
-from .treeinterface import TreeInterface
-
-from typing import Literal
 
 class ShaderNodes(Tree):
     def __init__(self, 
@@ -133,21 +128,31 @@ class ShaderNodes(Tree):
             
         return Node('ShaderNodeOutputMaterial')
 
+    def get_output_node(self, target: str = 'ALL') -> Node:
+        if self._is_group:
+            return super().get_output_node()
+        for node in self._nodes.values():
+            if node._bnode.bl_idname == 'ShaderNodeOutputMaterial' and node._bnode.target == target:
+                return node
+        node = Node('ShaderNodeOutputMaterial')
+        node._bnode.target = target
+        return node
+
     def set_surface(self, value: Any, target: str ='ALL') -> None:
         node = self.get_output_node(target=target)
-        node.set_input_sockets({'Surface': value})
+        node.set_input_socket('Surface', value)
 
     def set_volume(self, value: Any, target: str ='ALL') -> None:
         node = self.get_output_node(target=target)
-        node.set_input_sockets({'Volume': value})
+        node.set_input_socket('Volume', value)
 
     def set_displacement(self, value: Any, target: str ='ALL') -> None:
         node = self.get_output_node(target=target)
-        node.set_input_sockets({'Displacement': value})
+        node.set_input_socket('Displacement', value)
 
     def set_thickness(self, value: Any, target: str ='ALL') -> None:
         node = self.get_output_node(target=target)
-        node.set_input_sockets({'Thickness': value})
+        node.set_input_socket('Thickness', value)
 
     @property
     def surface(self) -> None:
@@ -184,7 +189,7 @@ class ShaderNodes(Tree):
 
     @property
     def thickness(self) -> None:
-        raise NodeError(f"Material 'displacement' is write only")
+        raise NodeError(f"Material 'thickness' is write only")
 
     @thickness.setter
     def thickness(self, value: Any) -> None:

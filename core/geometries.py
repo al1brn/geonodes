@@ -42,9 +42,7 @@ __version__ = "3.0.0"
 __blender_version__ = "4.3.0"
 
 
-from inspect import Arguments
 import bpy
-#from bpy.types import Property, PythonConstraint, SmoothModifier
 
 from .scripterror import NodeError
 from . import constants
