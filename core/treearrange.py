@@ -46,12 +46,7 @@ __blender_version__ = "4.3.0"
 
 
 import bpy
-from mathutils import Vector
 from .constants import NODE_INFO
-
-from bpy.props import BoolProperty
-
-from typing import Literal, List
 
 X_SEPA = 60
 Y_SEPA = 40
@@ -293,7 +288,6 @@ class Item:
             depth += 1
         return depth
 
-    @property
     def is_child_of(self, item):
         cur = self
         while cur.owner is not None:
@@ -740,6 +734,7 @@ class Node(Item):
         count = len(self.children)
         for child in self.children:
             count += child.counter
+        return count
 
     @property
     def is_group_input(self):

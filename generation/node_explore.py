@@ -24,7 +24,6 @@ updates
 """
 
 from pprint import pprint, pformat
-from pathlib import Path
 import os
 import json
 import inspect
@@ -1170,7 +1169,6 @@ class NodeInfo:
 
                 else:
                     value = parameters[param]
-                    str_value : str
                     if isinstance(value, str):
                         str_value = f"'{value}'"
                     elif str(value)[0] == '<':
@@ -3338,7 +3336,7 @@ def build_data_types_dict():
                 continue
 
             # Get the driven sockets
-            sockets = node_info.get_driven_socket_names(name)
+            sockets = node_info.get_data_type_sockets()
 
             if node_info.bnode.name == "Random Value":
                 print(node_info.bnode.name)

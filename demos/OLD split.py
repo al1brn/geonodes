@@ -59,7 +59,7 @@ def demo():
     with GeoNodes("Split Half"):
 
         mesh  = Mesh()
-        dir   = Integer.MenuSwitch({'X': 0, 'Y': 1, 'Z': 2}, menu='Z', name="Direction")
+        dir   = Integer.MenuSwitch({'X': 0, 'Y': 1, 'Z': 2}, menu=2, name="Direction")
         mat   = Material(None, "Material")
 
         with Layout("Dimensions"):

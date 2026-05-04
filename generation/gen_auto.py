@@ -240,7 +240,9 @@ def generate(folder, sub_folder):
         print("-"*30, "\nGenerate for tree_type", tree_type, "\n")
 
         tree_name = 'GENERATE'
-        tree = bpy.data.node_groups.get(tree_name)
+        existing = bpy.data.node_groups.get(tree_name)
+        if existing is not None:
+            bpy.data.node_groups.remove(existing)
         tree = bpy.data.node_groups.new(tree_name, type=tree_type)
         tree.nodes.clear()
 
@@ -300,7 +302,7 @@ def generate(folder, sub_folder):
             props = d['props']
             class_name = d['class_name']
             ptype, def_val = gen_config.PYTHON_TYPES.get(class_name, (object, None))
-            if isinstance(ptype, object):
+            if ptype is object:
                 ptype = 'object'
 
             # ---------------------------------------------------------------------------

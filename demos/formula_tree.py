@@ -167,7 +167,7 @@ def build_tree(prefix='Tree'):
             node_index, node_exists = macro_id_index(tree, node_id)
             depth = macro_get_attr(tree, node_index, "Depth")
 
-            with Repeat(tree=tree, node_id=node_id, node_index=node_index, iterations=depth + 1) as rep:
+            for rep in repeat(tree=tree, node_id=node_id, node_index=node_index, iterations=depth + 1):
 
                 tree = rep.tree
 
@@ -198,7 +198,7 @@ def build_tree(prefix='Tree'):
     # ====================================================================================================
 
     with ShaderNodes("Dump Mat"):
-        fac = snd.attribute("Selected").fac
+        fac = snd.attribute("Selected").factor
         col = Color((1, 1, 1)).mix((1, 0, 0), fac)
         ped = Shader.Principled(base_color=col)
         ped.out()
@@ -216,7 +216,7 @@ def build_tree(prefix='Tree'):
 
 
         tree.points._Index = nd.index
-        with Repeat(tree=tree, y=0, iterations=tree.points.count) as rep:
+        for rep in repeat(tree=tree, y=0, iterations=tree.points.count):
 
             #info = GTree.explore_info(rep.tree, explore=rep.iteration).node
             sel_node = Cloud(rep.tree).points[Integer("Explore").equal(rep.iteration)].separate()
@@ -232,11 +232,11 @@ def build_tree(prefix='Tree'):
             rep.tree[nd.index.equal(node_index)].position = (x, y, 0)
             rep.y = y
 
-        tree = rep.tree
+        tree = Cloud(rep.tree)
 
         # ----- Labels
 
-        with tree.points.for_each(item_id=Integer("ID"), owner=Integer("Owner"), pos=nd.position, sel=selection) as feel:
+        for feel in tree.points.for_each(item_id=Integer("ID"), owner=Integer("Owner"), pos=nd.position, sel=selection):
 
             s = feel.item_id.to_string() + " [" + feel.owner.to_string() + "]"
             curves = s.to_curves(size=.3).realize()
@@ -502,7 +502,7 @@ def build_tree(prefix='Tree'):
 
         id_info = GTree.id_info(tree, node_id).node
         depth = id_info.depth
-        with Repeat(tree=tree, node_id=node_id, iterations=depth + 1) as rep:
+        for rep in repeat(tree=tree, node_id=node_id, iterations=depth + 1):
 
             rep.tree.points[Integer("ID").equal(rep.node_id)]._Total = Integer("Total") + incr
             rep.node_id = GTree.id_info(rep.tree, rep.node_id).owner_
@@ -908,7 +908,7 @@ def build_tree(prefix='Tree'):
         shift_id = gnmath.imax(tree_max_id, branch_max_id) + 1
         with Layout("Shift IDs when necessary"):
 
-            with Repeat(branch=branch, owner=Integer("Owner"), iterations=branch.points.count) as rep:
+            for rep in repeat(branch=branch, owner=Integer("Owner"), iterations=branch.points.count):
 
                 cur_id    = rep.branch.points.sample_index(Integer("ID"), index=rep.iteration)
                 cur_owner = rep.branch.points.sample_index(Integer("Owner"), index=rep.iteration)
@@ -1223,7 +1223,7 @@ def build_tree(prefix='Tree'):
             new_tree = GTree.new(tree, owner)
             new_id   = new_tree.id_
 
-        with Repeat(tree=new_tree, iterations=to_group.points.count) as rep:
+        for rep in repeat(tree=new_tree, iterations=to_group.points.count):
 
             child_id = to_group.points.sample_index(Integer("ID"), index=rep.iteration)
             rep.tree = GTree.move(rep.tree, id=child_id, to_id=new_id, location=0)
@@ -1269,7 +1269,7 @@ def build_tree(prefix='Tree'):
         # oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
 
         mesh.faces._Selected = False
-        with Repeat(mesh=mesh, tree=tree, iterations=tree.points.count) as rep:
+        for rep in repeat(mesh=mesh, tree=tree, iterations=tree.points.count):
             tree_id = rep.tree.points.sample_index(Integer("ID"), index=rep.iteration)
             sel = rep.tree.points.sample_index(selection, index=rep.iteration)
             rep.mesh.faces[node_id.equal(tree_id)]._Selected = sel

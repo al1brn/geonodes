@@ -41,7 +41,6 @@ __version__ = "3.0.0"
 __blender_version__ = "4.3.0"
 
 
-from pprint import pprint
 import inspect
 from pathlib import Path
 import bpy

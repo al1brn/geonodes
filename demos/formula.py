@@ -180,10 +180,10 @@ def build_shaders():
 
         shader = Shader(name="Shader")
 
-        fade = snd.attribute("Fade").fac
+        fade = snd.attribute("Fade").factor
         transp = Shader.Transparent()
 
-        shader = shader.mix(transp, fac=fade)
+        shader = shader.mix(transp, factor=fade)
         shader.out("Shader")
 
     # ----------------------------------------------------------------------------------------------------
@@ -193,8 +193,8 @@ def build_shaders():
 
         ped = Shader.Principled(
             base_color = snd.attribute("Color").color,
-            roughness  = 1 - snd.attribute("Shiny").fac,
-            alpha      = 1 - snd.attribute("Fade").fac,
+            roughness  = 1 - snd.attribute("Shiny").factor,
+            alpha      = 1 - snd.attribute("Fade").factor,
             )
 
         ped.out()
@@ -555,7 +555,7 @@ def build_groups():
         mesh = Mesh(None, "Mesh")
         term = Mesh(None, "Term")
 
-        with Repeat(term=term, iterations=term.faces.count) as rep:
+        for rep in repeat(term=term, iterations=term.faces.count):
             ref_id = rep.term.faces.sample_index(Integer("Ref ID"), index=rep.iteration)
             ok_del = Mesh(Mesh(mesh).faces[Integer("Ref ID").equal(ref_id)].separate()).points.count.not_equal(0)
             rep.term.faces[nd.index.equal(rep.iteration)]._Delete = ok_del
@@ -1047,7 +1047,7 @@ def build_groups():
 
         children_count = GTree.children_count(tree, id=node_id)
 
-        with Repeat(mesh=mesh, x=0., iterations=children_count) as rep:
+        for rep in repeat(mesh=mesh, x=0., iterations=children_count):
 
             mesh = rep.mesh
 
@@ -2006,7 +2006,7 @@ def build_groups():
         # ----- Let's explore the tree from last to start
 
         count = tree.points.count
-        with Repeat(mesh=None, iterations=count) as rep:
+        for rep in repeat(mesh=None, iterations=count):
 
             with Layout("Last to first Explore index info"):
                 explore    = (count - 1 - rep.iteration)._lc("Explore")
@@ -2162,7 +2162,7 @@ def build_groups():
             tree = GTree.attach(tree, branch=t_tree, id=node_id, location=location)
             new_id = tree.id_
 
-        with Repeat(mesh=t_mesh, iterations=tree.points.count) as rep:
+        for rep in repeat(mesh=t_mesh, iterations=tree.points.count):
             rep_old_id = tree.points.sample_index(Integer('Temp Old'), index=rep.iteration)
             rep_new_id = tree.points.sample_index(Integer('ID'),       index=rep.iteration)
 
