@@ -1,0 +1,328 @@
+# geonodes — API reference for LLMs
+
+Python library for scripting Blender Geometry Nodes and Shader Nodes.
+Runs inside Blender (bpy available). Python 3.13, Blender 5.x.
+GitHub: https://github.com/al1brn/geonodes
+
+---
+
+## Installation / import
+
+```python
+from geonodes import *   # standard usage inside demos or Blender scripts
+```
+
+All public symbols are re-exported from `geonodes/__init__.py`.
+
+---
+
+## Core concepts
+
+A **tree** is created with a `with` context manager. All nodes created inside the
+block belong to that tree. On `__exit__` the tree is finalised and written to
+`bpy.data.node_groups`.
+
+**Sockets** are Python objects that represent a node output wire. Arithmetic
+operators (`+`, `-`, `*`, `/`, `**`, etc.) create the corresponding math nodes
+and return new sockets. Named attributes are accessed with a bare string:
+`Float("MyAttr")`.
+
+**Domains** (`mesh.faces`, `mesh.vertices`, `cloud.points`, …) expose per-element
+operations. A domain selection is written `domain[condition]`.
+
+---
+
+## Top-level exports
+
+### Tree context managers
+
+```python
+GeoNodes(tree_name, fake_user=False, is_group=False, prefix="")
+ShaderNodes(tree_name, *, fake_user=False, is_group=False,
+            prefix=None, replace_material=False)
+```
+
+### Socket / geometry types
+
+| Category | Names |
+|---|---|
+| Scalars | `Boolean`, `Integer`, `Float`, `String` |
+| Spatial | `Vector`, `Rotation`, `Matrix`, `Color` |
+| Resources | `Texture`, `Collection`, `Object`, `Image`, `Material`, `Font`, `Menu` |
+| Geometry | `Geometry`, `Mesh`, `Curve`, `Cloud`, `Instances`, `GreasePencil`, `Volume` |
+| Domains | `Point`, `Vertex`, `Face`, `Edge`, `Corner`, `SplinePoint`, `Spline`, `CloudPoint`, `Instance`, `Layer` |
+| Shader | `Shader`, `VolumeShader` |
+| Misc | `Socket`, `Input`, `Domain`, `Closure`, `Bundle` |
+
+### Tree utilities
+
+```python
+Layout(title="", color='RANDOM')   # visual frame, context manager
+Panel(name, tip="", default_closed=False)  # modifier panel, context manager
+Node, Group, G, ColorRamp
+```
+
+### Static node libraries
+
+```python
+nd   # geometry node helpers: nd.position, nd.index, nd.radius, …
+snd  # shader node helpers:   snd.attribute(…), snd.texture_coordinate(), …
+gnmath  # math functions: gnmath.sin, gnmath.sqrt, …
+```
+
+### Zone functions (lowercase)
+
+```python
+repeat(iterations, named_sockets={}, **sockets)    # → ZoneIterator
+simulation(named_sockets={}, **sockets)             # → ZoneIterator
+domain.for_each(named_sockets={}, selection=None, **sockets)  # → ZoneIterator
+```
+
+### Math constants
+
+`pi`, `tau`, `halfpi`, `d30`, `d45`, `d60`, `d90`, `d180`, `d270`, `d360`, `e`
+
+---
+
+## Zones — for-loop syntax
+
+All three zone types (Repeat, Simulation, For Each Element) use the **iterator
+protocol**: `for var in zone_function(...)`. This is the only supported syntax.
+
+### Repeat
+
+```python
+for rep in repeat(count, mesh=mesh, value=0.):
+    # rep.iteration : Integer (0-based)
+    # rep.mesh, rep.value : current values
+    rep.mesh = rep.mesh + delta
+    rep.value = rep.value + 1
+
+result = rep.mesh   # final value after the zone
+```
+
+### Simulation
+
+```python
+for sim in simulation(cloud=cloud, speed=Vector.Random(-1, 1)):
+    # sim.delta_time : Float
+    # sim.skip       : Boolean
+    sim.cloud.position += sim.speed * sim.delta_time
+    sim.speed += (0, 0, -9.81) * sim.delta_time
+    sim.cloud = sim.cloud   # write back
+
+result = sim.cloud
+```
+
+### For Each Element
+
+```python
+for feel in mesh.faces.for_each(color=nd.position):
+    # feel.element   : current element geometry
+    # feel.generated : accumulated output (read after the loop)
+    # feel.color     : named socket value
+    piece = Mesh(feel.element)
+    piece.transform(translation=feel.color)
+    feel.generated.geometry = piece
+
+result = feel.generated.geometry
+```
+
+Inside the loop: read/write via attribute access on the iterator (`rep.name`).
+After the loop: read final values via the same attributes.
+
+---
+
+## Input sockets (modifier parameters)
+
+```python
+# Typed constructors: Type(default, "Display Name", min, max)
+height   = Float(1.0, "Height", 0, 10)
+count    = Integer(10, "Count", 1, 100)
+active   = Boolean(True, "Active")
+dir      = Vector((0, 0, 1), "Direction")
+mat      = Material(None, "Material")
+
+# Named attribute (reads from geometry attribute, no modifier UI)
+mass     = Float("Mass")          # reads attribute named "Mass"
+velocity = Vector("Velocity")
+
+# Specialised float sub-types
+fac      = Float.Factor(0.5, "Factor", 0, 1)
+dist     = Float.Distance(1.0, "Size")
+angle    = Float.Angle(pi/4, "Angle")
+
+# Menu switch
+axis = Integer.MenuSwitch({'X': 0, 'Y': 1, 'Z': 2}, menu=0, name="Axis")
+```
+
+---
+
+## Output sockets
+
+```python
+mesh.out()             # default "Geometry" output
+value.out("Result")    # named output
+socket.out("Name", panel="Panel Name")  # output in a panel
+```
+
+---
+
+## Geometry operations
+
+```python
+# Boolean mesh ops
+result = mesh_a.union(mesh_b)
+result = mesh_a.intersect(mesh_b)
+result = mesh_a.difference(mesh_b)
+
+# Join
+combined = mesh_a + mesh_b
+combined = mesh_a + (mesh_b, mesh_c, mesh_d)
+
+# Transform
+mesh.transform(translation=v, rotation=r, scale=s)
+mesh.offset = vector        # set position offset
+
+# Domain access
+mesh.vertices[selection]    # masked domain
+mesh.faces.smooth = True    # store attribute
+mesh.points._MyAttr = val   # named attribute (underscore prefix → store)
+
+# Attribute capture
+val = mesh.faces.sample_index(Float("Weight"), index=i)
+stat = mesh.points.attribute_statistic(nd.position).node  # .min .max .mean …
+
+# Instances
+insts = mesh.instance_on(instance=sphere, scale=nd.radius)
+insts.position = center
+```
+
+---
+
+## Groups and reuse
+
+```python
+# Define a group
+with GeoNodes("Smooth Sphere", is_group=True):
+    radius = Float(1., "Radius")
+    Mesh.UVSphere(radius=radius).out()
+
+# Call by name
+node = Group("Smooth Sphere", radius=0.5)
+sphere = node._out
+
+# Call via G() — converts "Smooth Sphere" → smooth_sphere
+sphere = G().smooth_sphere(radius=0.5)
+
+# Prefix namespacing
+with GeoNodes("Smooth Sphere", is_group=True, prefix="Utils"):
+    ...
+
+sphere = G("Utils").smooth_sphere(radius=0.5)
+# or
+node = Group.Prefix("Utils", "Smooth Sphere", radius=0.5)
+```
+
+---
+
+## Panels and Layouts
+
+```python
+with GeoNodes("My Modifier"):
+
+    with Panel("Shape"):
+        radius = Float(1., "Radius")
+        subdiv = Integer(2, "Subdivision", 0, 6)
+
+    with Panel("Appearance"):
+        mat = Material(None, "Material")
+
+    with Layout("Build the mesh"):    # visual frame, no functional effect
+        sphere = Mesh.UVSphere(radius=radius)
+        sphere.faces.smooth = True
+
+    sphere.out()
+```
+
+---
+
+## Shader nodes
+
+```python
+with ShaderNodes("My Material"):
+    ped = Shader.Principled(
+        base_color = Color("#884422"),
+        roughness  = 0.4,
+        metallic   = 0.0,
+    )
+    ped.out()
+
+with ShaderNodes("Fade Shader", is_group=True):
+    shader = Shader(name="Shader")
+    fade   = snd.attribute("Fade").factor    # socket name is 'factor' not 'fac'
+    transp = Shader.Transparent()
+    shader.mix(transp, factor=fade).out("Shader")
+```
+
+---
+
+## Common pitfalls
+
+| Wrong | Correct | Reason |
+|---|---|---|
+| `snd.attribute("X").fac` | `.factor` | Socket renamed in Blender 5.x |
+| `shader.mix(s, fac=f)` | `factor=f` | Same rename |
+| `Repeat(n, x=v)` | `repeat(n, x=v)` | `Repeat` (capital) is removed; use lowercase `repeat` |
+| `Simulation(x=v)` | `simulation(x=v)` | Same |
+| `node.set_input_sockets(…)` | `node.set_input_socket(name, value)` | Singular method only |
+| `Integer.MenuSwitch({…}, menu='Z')` | `menu=2` | `menu` is an int index, not a string |
+| `geo.point_cloud.points` | `Cloud(geo.point_cloud).points` | `point_cloud` returns `Geometry`; cast first |
+| `Group.Prefix(p, n, sockets, **kw)` | positional `named_sockets` arg | Pass the dict as `named_sockets=` explicitly if mixing with **kwargs |
+
+---
+
+## Minimal complete example
+
+```python
+from geonodes import *
+
+with GeoNodes("Wave Grid"):
+    with Panel("Wave"):
+        height = Float(2.0, "Height", 0, 10)
+        omega  = Float(2.0, "Frequency", 0.1, 20)
+
+    grid = Mesh.Grid(vertices_x=100, vertices_y=100, size_x=10, size_y=10)
+
+    with Layout("Compute wave"):
+        r  = gnmath.sqrt(nd.position.x**2 + nd.position.y**2)
+        z  = height * gnmath.sin(r * omega) / (r + 0.001)
+
+    grid.offset = (0, 0, z)
+    grid.faces.smooth = True
+    grid.out()
+```
+
+---
+
+## File structure
+
+```
+geonodes/
+  __init__.py              public API re-exports
+  core/
+    nodeclass.py           Node, Group, G, Layout, Panel, MenuNode, ZoneNode
+    socket_class.py        Socket base + all typed socket classes
+    treeclass.py           Tree, GeoNodes, ShaderNodes
+    nodezone.py            repeat(), simulation(), ZoneIterator, for_each()
+    treearrange.py         auto-layout of nodes
+    scripterror.py         NodeError with Blender-aware tracebacks
+    sockettype.py          SocketType — Blender↔Python type mapping
+    geometries.py          Mesh, Curve, Cloud, Instances, … geometry methods
+    shadernodes.py         ShaderNodes tree class
+    generated/             auto-generated wrappers (do not edit)
+  generation/
+    gen_auto.py            code generator (run inside Blender to regenerate)
+    node_explore.py        NodeInfo — introspects live Blender node catalogue
+  demos/                   working examples
+```

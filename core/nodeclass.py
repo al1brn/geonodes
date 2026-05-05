@@ -55,7 +55,7 @@ from .signature import Signature
 from .treeclass import Tree
 from .treeinterface import ItemPath, TreeInterface
 
-from typing import TYPE_CHECKING, Literal, Any
+from typing import Literal, Any
 
 class Node: ...
 class Socket: ...
@@ -355,7 +355,7 @@ class Node:
 
             found = False
             for in_out, socks in zip(('INPUT', 'OUTPUT'), (self._bnode.inputs, self._bnode.outputs)):
-                for i, sock in enumerate(socks):
+                for sock in socks:
                     if sock.type == 'CUSTOM':
                         found = True
                         self._items[in_out] = items
@@ -648,7 +648,7 @@ class Node:
                     setattr(self._bnode, param_name, alt_value)
                     return param_name
 
-                raise NodeError(f"Value '{param_value}' is not valid for node parameter {[{self._bnode.name}]}.{name}.\n"
+                raise NodeError(f"Value '{param_value}' is not valid for node parameter [{self._bnode.name}].{name}.\n"
                     f"Valid values are {[enum_item.name for enum_item in prop.enum_items]},\n"
                     f"or {[enum_item.identifier for enum_item in prop.enum_items]},"
                     )
@@ -1532,7 +1532,7 @@ class Node:
                     )
 
             # Create / link the output socket
-            out_socket = value.node.create_from_socket('OUTPUT', in_socket, name=value.name, panel=value.panel, **value.props)
+            value.node.create_from_socket('OUTPUT', in_socket, name=value.name, panel=value.panel, **value.props)
 
             return in_socket
 
@@ -2220,7 +2220,7 @@ class Node:
     @classmethod
     def _class_test(cls):
 
-        from geonodes import GeoNodes, Node, Group, Closure, Group, Layout, Bundle, Mesh, Vector, Boolean, Float
+        from geonodes import GeoNodes, Node, Group, Closure, Layout, Bundle, Mesh, Vector, Boolean, Float
         
         group_name = "Group Demo"
 
@@ -2624,7 +2624,7 @@ class Group(Node):
         -------
         Node Group
         """
-        return cls(f"{str(prefix)} {group_name}", named_sockets=sockets, **sockets)
+        return cls(f"{str(prefix)} {group_name}", named_sockets=named_sockets, **sockets)
     
     # ====================================================================================================
     # Add a group as a class method
