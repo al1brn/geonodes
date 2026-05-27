@@ -916,12 +916,20 @@ def demo():
                 cover_curve.reverse()
                 back_source = Curve(sheets)
                 back_curve = Curve(back_source.splines[is_back_sheet].separate())
+
+                cover_len = cover_curve.length()
+                binding_len = binding.length()
+                back_len = back_curve.length()
+                total_len = gnmath.max(cover_len + binding_len + back_len, 0.000001)
+
+                cover_curve.points._Cover_U = 1 - Spline.parameter_factor*cover_len/total_len
+                binding.points._Cover_U = 1 - (cover_len + Spline.parameter_factor*binding_len)/total_len
+                back_curve.points._Cover_U = 1 - (cover_len + binding_len + Spline.parameter_factor*back_len)/total_len
+
                 cover_line = Curve(cover_curve + binding + back_curve)
                 cover_mesh = cover_line.to_mesh().merge_by_distance()
 
             with Layout("Solidify"):
-                cover_mesh.points._Cover_U = 1 - nd.index/gnmath.max(cover_mesh.points.count - 1, 1)
-
                 cover_mesh.edges.extrude(offset=(0, length, 0))
                 cover_mesh.faces.Side = 0.0 # Top faces
 
@@ -974,6 +982,8 @@ def demo():
 
         mesh = Mesh()
 
+        ignore = Boolean(False, "Ignore")
+
         sheet_number = Integer(1, "Sheet Number", 1, 10000)
         sheet_count = Integer(1, "Sheet Count", 1, 10000)
         material_index = Integer(1, "Material Index", 0, 1000)
@@ -983,9 +993,11 @@ def demo():
             selection = (local_index >= 0) & (local_index < sheet_count)
 
         with Layout("Material"):
-            mesh.faces[selection].material_index = material_index + local_index
-
-        mesh.out()
+            new_mesh = Mesh(mesh)
+            new_mesh.faces[selection].material_index = material_index + local_index
+            new_mesh.switch(ignore, mesh)
+            
+        new_mesh.out()
 
     # =============================================================================================================================
     # Book example
@@ -1109,7 +1121,6 @@ def demo():
             ).link_inputs(from_panel="Extrude")
 
         sheets.switch(use_extrude, book).out()        
-
 
 
 
