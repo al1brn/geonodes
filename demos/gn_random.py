@@ -60,6 +60,7 @@ def demo():
         
         value.out("Value")
         single.out("Single")
+        (seed + 1).out("Seed")
 
 
     with GeoNodes("Random Uniform Vector", is_group=True):
@@ -74,6 +75,7 @@ def demo():
         
         vector.out("Vector")
         single.out("Single")
+        (seed + 2).out("Seed")
 
     # ====================================================================================================
     # Random normal
@@ -96,6 +98,7 @@ def demo():
 
         y.out("Value")
         single.out("Single")
+        (seed + 2).out("Seed")
 
     # ----------------------------------------------------------------------------------------------------
     # Normal vector
@@ -138,6 +141,7 @@ def demo():
 
         vector.out("Vector")
         single.out("Single")
+        (seed + 3).out("Seed")
 
     # ----------------------------------------------------------------------------------------------------
     # Random rotation
@@ -158,6 +162,85 @@ def demo():
 
         rotation.out("Rotation")
         single.out("Single")
+        (seed + 2).out("Seed")
+
+    # ----------------------------------------------------------------------------------------------------
+    # Random Noise
+    # ----------------------------------------------------------------------------------------------------
+
+    with GeoNodes("Random Noise", is_group=True):
+
+        pos = Vector(None, "Position", default_input='Position')
+        seed = Integer(0, "Seed")
+
+        offset = G("Random").uniform_vector(-1000, 1000, seed=seed).single
+        seed = offset.seed
+        
+        noise = Texture.Noise(vector=pos + offset).node.link_inputs()
+        
+        v = Vector(noise.color).scale(2) - 1
+        
+        v.out("Position")
+        noise.factor.out("Factor")
+        noise.color.out("Color")
+        seed.out("Seed")
+
+    # ----------------------------------------------------------------------------------------------------
+    # Random Row
+    # ----------------------------------------------------------------------------------------------------
+
+    with GeoNodes("Random Row", is_group=True):
+
+        length    = Float(1., "Length", 0.001)
+        part      = Float(.1, "Part", 0.001)
+        scale     = Float(.01, "Scale", 0)
+        use_count = Boolean(False, "Use Count")
+        count     = Integer(10, "Count", 1)
+        seed      = Integer(0, "Seed")
+
+        n = gnmath.max(1, (length/part).to_integer())
+        count.switch_false(use_count, n)
+        part.switch(use_count, length/n)
+
+        pts = Cloud.Points(count=count)
+        parts = G("Random").normal_value(value=part, scale=scale, seed=seed)
+        seed = parts.seed
+
+        pts.points.Length = parts        
+        total = pts.points.attribute_statistic(Float("Length")).sum_
+        pts.points.Length = Float("Length") * (length/total)
+
+        for rep in repeat(pts.points.count, pts=pts, z=0.0):
+            pts = Cloud(rep.pts)
+            pts.points[nd.index == rep.iteration].position = (0, 0, rep.z)
+            rep.pts = pts
+            rep.z += pts.points.sample_index(Float("Length"))
+
+        pts = rep.pts
+
+        with Layout("Single"):
+            spt = Cloud.Points(1)
+            spt.points.Length = length
+
+        pts.switch(count == 1, spt)
+
+        pts.out()
+        seed.out("Seed")
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
         
 
 

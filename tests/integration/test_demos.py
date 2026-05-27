@@ -287,6 +287,15 @@ class TestDemoFurniture:
         assert_tree("Base Stock")
 
 
+class TestDemoBook:
+
+    def test_runs_and_creates_trees(self, clean_after):
+        from geonodes.demos import book
+        book.demo()
+        assert_tree("Book Snapshot")
+        assert_tree("Book Mesh")
+
+
 class TestDemoObserver:
 
     def test_runs(self, clean_after):
@@ -297,5 +306,4 @@ class TestDemoObserver:
         from geonodes.demos import observer
         observer.demo()
         assert_tree("Hand")
-
 

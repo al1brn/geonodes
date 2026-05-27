@@ -69,7 +69,7 @@ class ZoneNode(Node):
         REPEAT     : 'Repeat',
         FOR_EACH   : 'For Each Geometry Element',
         CLOSURE    : 'Closure', 
-    }
+    } 
 
     def __init__(self,
             zone_id         : Literal["Simulation", "Repeat", "For Each Element", "Closure"],
@@ -138,19 +138,6 @@ class ZoneNode(Node):
 
         elif zone_id == FOR_EACH:
             pass
-
-            """
-            socket_name = None
-            for name in all_sockets.keys():
-                if name.lower() != 'domain':
-                    socket_name = name
-                    break
-
-            if socket_name is None:
-                raise NodeError(f"For Each zone needs at least one argument.")
-
-            socket = all_sockets[socket_name]
-            """
 
         if socket_name is not None:
             all_sockets = {k:v for k, v in all_sockets.items() if k != socket_name}

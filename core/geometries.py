@@ -162,6 +162,7 @@ class Curve(Geometry, generated.Curve):
         self.points  = SplinePoint(self)
         self.splines = Spline(self)
 
+
 # =============================================================================================================================
 # Cloud Geometry
 

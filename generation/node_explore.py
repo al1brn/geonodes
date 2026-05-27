@@ -512,8 +512,25 @@ class NodeInfo:
 
         txt = ""
         for node in nodes:
-            node_info = NodeInfo(btree, node)
-            txt += node_info.dump_node()
+            if node.bl_idname == 'GeometryNodeGroup':
+                s = f"G().{utils.snake_case(node.node_tree.name)}(\n"
+                for socket in node.inputs:
+                    if hasattr(socket, 'default_value'):
+                        v = socket.default_value
+                        if isinstance(v, float):
+                            sv = f"{v:.3f}"
+                        else:
+                            sv = str(v)
+                            
+                        s += f"\t{utils.snake_case(socket.name)} = {sv},\n"
+                    else:
+                        s += f"\t{utils.snake_case(socket.name)} = None,\n"
+                s += ")\n"
+                txt += s
+
+            else:
+                node_info = NodeInfo(btree, node)
+                txt += node_info.dump_node()
 
         if target == 'CONSOLE':
             print(txt)

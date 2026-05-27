@@ -228,7 +228,7 @@ class Socket(NodeCache):
             if (cname in constants.ATTRIBUTE_CLASSES) and (cname != 'Color'):
                 self._bsocket = self.Named(socket)._bsocket
                 return
-            
+
         # ---------------------------------------------------------------------------
         # Let's get the socket
         # ---------------------------------------------------------------------------
@@ -1017,6 +1017,17 @@ class Socket(NodeCache):
         """
         self.node.link_inputs(from_node, from_panel=from_panel, include=include, exclude=exclude, panel=panel)
         return self
+    
+    def link_panel(self, panel: str, from_node : Node = None):
+        """ Link panel input sockets of the node
+
+        Allow to chain input sockets linking.
+        """
+        self.node.link_panel(panel, from_node=from_node)
+        return self
+
+      
+
 
     # =============================================================================================================================
     # Gizmo
