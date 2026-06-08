@@ -239,7 +239,8 @@ def page_shaders(first_index, *page_pairs, selector_name="Image Selector"):
     with ShaderNodes("Cover", replace_material=False):
         uv = snd.texture_coordinate().uv
         img = uv.image_texture()
-        ped = Shader.Principled(
+
+        cover = Shader.Principled(
             base_color = img,
             roughness = 0.7,
             )
@@ -248,16 +249,23 @@ def page_shaders(first_index, *page_pairs, selector_name="Image Selector"):
             base_color = (0.8, 0.8, 0.8),
             roughness = 0.0,
         )
+
+        thick = Shader.Principled(
+            base_color = (0.8, 0.8, 0.8),
+            roughness = 0.0,
+        )
             
         side = snd.attribute("Side").factor
         
-        shader = ped.mix(inside, factor=side.compare(2, epsilon=0.1))
+        shader = cover.mix(inside, factor=side.compare(0, epsilon=0.1))
+        shader = shader.mix(thick, factor=side.compare(2, epsilon=0.1))
             
         shader.out()
-        
 
 
 def demo():
+
+
     """Build all shader-independent node groups and geometry modifiers."""
 
 
@@ -269,9 +277,10 @@ def demo():
 
     with GeoNodes("Binding", is_group=True):
 
+        factor = Float.Factor(0.5, "Factor", 0, 1)
         count = Integer(100, "Sheet Count")
         thickness = Float(1, "Thickness", 0.01, 10)/10000
-        factor = Float.Factor(0.5, "Opening Factor", 0, 1)
+        swiftness = Float.Factor(0.75, "Swiftness", 0, 1)
         bend = Float.Factor(0.5, "Bending", 0, 1)
 
         with Layout("Dims"):
@@ -280,7 +289,7 @@ def demo():
             hl = x*bend.map_range(to_min=0, to_max=0.5)
 
         with Layout("3 phases"):
-            f0 = 0.5
+            f0 = swiftness.map_range(to_min=0.5, to_max=0.1)
             top_ag  = factor.map_range(0.0, f0, 0., pi/2)
             bot_ag  = factor.map_range(1 - f0, 1., 0., pi/2)
 
@@ -302,6 +311,8 @@ def demo():
         curve.splines.Thickness = thickness
 
         curve.out("Binding")
+        bot_pos.out("Bottom")
+        top_pos.out("Top")
 
     # ----------------------------------------------------------------------------------------------------
     # Read the binding parameters
@@ -341,17 +352,21 @@ def demo():
         with Closure() as cl:
 
             factor = Float(0.5, "Factor").clamp(0, 1)
+            opening_factor = factor.map_range(to_min=factor0, to_max=factor1)
             
             binding = G().binding(
                 sheet_count=count,
                 thickness=thickness,
-                opening_factor=factor.map_range(to_min=factor0, to_max=factor1),
+                factor=opening_factor,
                 bending=bending,
             )
 
             binding.out("Bending")
             count.out("Count")
             thickness.out("Thickness")
+
+            # Chaining
+            opening_factor.out("Factor")
 
         binding_signature = cl.get_signature()
         cl.out("Bending")
@@ -368,7 +383,8 @@ def demo():
         "Root Angle" : {'type': 'ANGLE', 'def': 0.0, 'mm': (-pi/2, pi/2)},
         "Tip Angle" : {'type': 'ANGLE', 'def': 0.0, 'mm': (-pi/2, pi/2)},
         "Root Intensity" : {'type': 'FLOAT', 'def': 0.35, 'mm': (0, 2)},
-        "Tip Intensity" : {'type': 'FLOAT', 'def': 0.35, 'mm': (0, 2)},    
+        "Tip Intensity" : {'type': 'FLOAT', 'def': 0.35, 'mm': (0, 2)},
+        "Stick" : {'type': 'FLOAT', 'def': 1.0, 'mm': (0, 1)},
         }
 
     with GeoNodes("Profile Parameters", is_group=True):
@@ -420,6 +436,29 @@ def demo():
         bdl.out("Parameters")
 
     # ====================================================================================================
+    # Profile parameters symmetrize
+    #
+    # Parameters are defined for right sides,, symmetrize make them useable for left side
+    # ====================================================================================================
+
+    with GeoNodes("Profile Parameters Symmetrize", is_group=True):
+
+        old_bdl = Bundle(None, "Parameters")
+
+        params = old_bdl.separate(signature=profile_signature)
+
+        with Bundle() as bdl:
+            (pi - params.opening).out("Opening")
+            (-params.root_angle).out("Root Angle")
+            (-params.tip_angle).out("Tip Angle")
+            params.root_intensity.out("Root Intensity")
+            params.tip_intensity.out("Tip Intensity")
+            params.stick.out("Stick")
+
+        bdl.out("Parameters")
+
+
+    # ====================================================================================================
     # Profile parameters change
     #
     # Combine profile parameters
@@ -441,6 +480,42 @@ def demo():
 
         bdl.out("Parameters")
 
+    # ====================================================================================================
+    # Profile parameters standard
+    #
+    # Default profile parameters
+    # ====================================================================================================
+
+    with GeoNodes("Profile Parameters Standard", is_group=True):
+
+        curvature = Float.Factor(0.5, "Curvature", 0, 1)
+        s_shape = Float.Factor(0.0, "S Shape", 0, 1)
+        stick = Float.Factor(1.0, "Stick", 0, 1)
+        flat_def = Boolean(False, "Flat Deformed")
+
+        root_angle = curvature.map_range(to_min=0.0, to_max=pi/2)
+        tip_angle = s_shape.map_range(to_min=-root_angle/3, to_max=0)
+
+        with Bundle() as params:
+            Float(0.0).out("Opening")
+            root_angle.out("Root Angle")
+            tip_angle.out("Tip Angle")
+            Float(0.35).out("Root Intensity")
+            Float(0.35).out("Tip Intensity")
+            stick.out("Stick")
+
+        def_angle = curvature.map_range(to_max=0.05)
+        with Bundle() as deformed:
+            def_angle.out("Opening")
+            Float(0.0).out("Root Angle")
+            (def_angle*4).out("Tip Angle")
+            Float(0.35).out("Root Intensity")
+            Float(0.35).out("Tip Intensity")
+            Float(0.0).out("Stick")
+
+        params.switch(flat_def, deformed)
+
+        params.out("Parameters")
 
     # ====================================================================================================
     # Sheet Profile
@@ -457,8 +532,8 @@ def demo():
         index = Integer(0, "Index", 0, 1000)
         parameters = Bundle(None, "Parameters")
 
-        sheets_count = get_binding_params(binding)
-        start_position = get_binding_position(binding, sheets_count, index, False)
+        sheet_count = get_binding_params(binding)
+        start_position = get_binding_position(binding, sheet_count, index, False)
 
         with Layout("Base Sheet"):
             params = parameters.separate(profile_signature)
@@ -484,8 +559,125 @@ def demo():
             curve.resample(mode='Count', count=resolution)
             curve.splines.Index = index
 
+        with Layout("Rotation to stick the end on z=0"):
+                end_pos = curve.sample_factor(factor=1).position
+                x, _, z = end_pos.xyz
+                hrz = x - start_position.x
+                ag_max = gnmath.arctangent(z/hrz)
+                ag = params.stick.map_range(to_max=ag_max)
+                curve.offset = -start_position
+                curve.transform(rotation=(0, ag, 0))
+                curve.offset = start_position
+
         curve.out("Sheet")
         binding.out("Binding")
+
+
+
+    # =============================================================================================================================
+    # Sheet Length
+    #
+    # Adjusts a sheet length by moving only its last point.
+    # =============================================================================================================================
+
+    with GeoNodes("Sheet Length", is_group=True):
+
+        sheet = Curve()
+        new_length = Float.Distance(0.14, "New Length")
+
+        with Layout("Parameters"):
+            curve = Curve(sheet)
+            count = curve.points.count
+            current_length = curve.length()
+
+        with Curve.Switch(current_length < new_length) as res:
+            last_index = count - 1
+            prev_pos = curve.points.sample_index(nd.position, index=last_index - 1)
+            last_pos = curve.points.sample_index(nd.position, index=last_index)
+            last_vec = last_pos - prev_pos
+            last_length = last_vec.length()
+            new_last_length = new_length - current_length + last_length
+            curve.points[nd.index == last_index].position = prev_pos + last_vec.normalize().scale(new_last_length)
+            curve.out("True")
+
+        with res:
+            curve = curve.trim_length(end=new_length).resample(count=count)
+            curve.out("False")
+
+
+        res.out("Curve")
+
+    # =============================================================================================================================
+    # Sheet Clearance
+    #
+    # Pushes one sheet outside another one while preserving its length.
+    # =============================================================================================================================
+
+    with GeoNodes("Sheet Clearance", is_group = True):
+
+        # ----------------------------------------------------------------------------------------------------
+        # Resample smooth
+        # ----------------------------------------------------------------------------------------------------
+
+        def smooth_curve(c):
+            with Layout("Resample smooth"):
+                c.splines.type = 'BEZIER'
+                c.handle_type = 'AUTO'
+
+            return c
+        
+        # ----------------------------------------------------------------------------------------------------
+        # Normals to a curve
+        # ----------------------------------------------------------------------------------------------------
+        
+        def calc_normals(curve, sign, d=1.0):
+            """ Normals to a curve
+            """
+            
+            with Layout("Normals"):
+                tg = curve.sample_factor(factor=nd.index/(count - 1)).tangent
+                normal = tg.cross((0, sign, 0)).scale(d)
+                
+            return normal
+        
+        # ----------------------------------------------------------------------------------------------------
+        # Main
+        # ----------------------------------------------------------------------------------------------------
+
+        sheet_below = Curve(name="Sheet Below")
+        sheet_over = Curve(name="Sheet Over")
+        width = Float.Distance(.14, "Width")
+        thickness = Float.Distance(0.0001, "Thickness")
+
+        with Layout("Prepare"):
+            count = sheet_below.points.count._lc("Count")
+            
+            dx = sheet_below.sample_factor(factor=1).position.x - sheet_below.sample_factor(factor=0).position.x
+            sign = Float.Switch(dx < 0, 1, -1)._lc("Sign")
+
+        with Layout("Base curve is longer and shifted upward"):
+            base_curve = G().sheet_length(sheet_below, 1.1*width)
+            base_curve = smooth_curve(base_curve)
+
+            delta = calc_normals(base_curve, sign, d=thickness)
+            base_curve.offset = delta
+            
+            faces = base_curve.to_mesh(profile_curve=Curve.Line((-0.1, 0, 0), (0.1, 0, 0)))
+            
+        with Layout("Raycast"):
+            raycast = nd.raycast(
+                target_geometry = faces,
+                source_position = nd.position,
+                ray_direction = calc_normals(sheet_over, sign),
+            ).node
+            
+            
+            shifted = Curve(smooth_curve(sheet_over))
+            shifted.points[raycast.is_hit & (nd.index != 0)].position = raycast.hit_position
+            shifted = G().sheet_length(shifted, width)
+            shifted = shifted.resample(count=count)
+            
+        shifted.out()
 
     # =============================================================================================================================
     # Create a new sheet on to an existing sheet
@@ -501,12 +693,14 @@ def demo():
         index = Integer(0, "Index", 0, 1000)
         left_side = Boolean(False, "Left Side")
         count = Integer(0, "Count", 0, 1000)
+        width = Float(0, "Width")
 
         with Layout("Book parameters"):
 
             curve = Curve(Curve(sheets).splines[Integer("Index")==index].separate())
+            width.switch(width < 0.1, curve.length())
 
-            sheets_count, thickness = get_binding_params(binding, True)
+            sheet_count, thickness = get_binding_params(binding, True)
             index_fac = Integer.Switch(left_side, -1, 1)
 
             length = curve.length()
@@ -514,20 +708,21 @@ def demo():
 
         for rep in repeat(count, sheets=sheets, curve=curve):
 
-            shifted = Curve(rep.curve).resample(count=resol + 1)
-            source_factor = (nd.index - 1)/(resol - 1)
+            base = Curve(G().sheet_length(rep.curve, new_length=1.1*length))
+            shifted = Curve(base)
+            source_factor = nd.index/(resol - 1)
 
-            tangent = rep.curve.sample_factor(factor=source_factor).tangent
+            tangent = base.sample_factor(factor=source_factor).tangent
             pos = tangent.position_
             tangent = tangent.normalize()
             normal = tangent.cross((0, 1, 0)).normalize()
             normal = normal.scale(Float.Switch(left_side, 1, -1))
 
             new_index = index + index_fac*(rep.iteration + 1)
-            start_position = binding.sample_factor(factor=new_index/(sheets_count-1)).position
+            start_position = binding.sample_factor(factor=new_index/(sheet_count-1)).position
             shifted.points.position = (pos + normal.scale(thickness)).switch(nd.index == 0, start_position)
 
-            shifted = shifted.trim_length(start=0, end=length).resample(count=resol)
+            shifted = Curve(G().sheet_length(shifted, new_length=width))
             shifted.splines.Index = new_index
 
             rep.sheets += shifted
@@ -550,30 +745,30 @@ def demo():
             width = Float.Distance(0.14, "Width", 0.05, 0.8)
             resolution = Integer(32, "Resolution", 2, 128)
 
-            sheets_count = get_binding_params(binding)
+            sheet_count, thickness = get_binding_params(binding, True)
 
             left_count = Integer(30, "Left Sheets", 0, 1000)
-            left_count = gnmath.imin(left_count, sheets_count)
+            left_count = gnmath.imin(left_count, sheet_count)
 
-        with Panel("Left Parameters"):
+        with Panel("Left"):
             left_cover = Bundle(name="Cover")
-            left_bottom = Bundle(name="Bottom Sheet")
+            left_bottom = Bundle(name="Sheet")
             left_back = Bundle(name="Back")
 
-        with Panel("Right Parameters"):
+        with Panel("Right"):
             right_back = Bundle(name="Back")
-            right_bottom = Bundle(name="Bottom Sheet")
+            right_bottom = Bundle(name="Sheet")
             right_cover = Bundle(name="Cover")
 
-        with Layout("Cover and back positions"):
+        with Layout("Covers and back positions"):
             cover_is_left = (left_count > 0)._lc("Cover is Left")
             has_left_bottom = (left_count > 1)._lc("Has left bottom")
-            back_is_left = (left_count == sheets_count)._lc("Back is left")
+            back_is_left = (left_count == sheet_count)._lc("Back is left")
 
             n_lefts = gnmath.imax(0, left_count - 2)
             n_lefts.switch(back_is_left, n_lefts - 1)._lc("Left stack")
 
-            right_count = sheets_count - left_count
+            right_count = sheet_count - left_count
             back_is_right = back_is_left.bnot()._lc("Back is right")
             cover_is_right = cover_is_left.bnot()._lc("Cover is right")
             has_right_bottom = (right_count > 1)._lc("Has right bottom")
@@ -581,10 +776,13 @@ def demo():
             n_rights = gnmath.imax(0, right_count - 2)
             n_rights.switch(cover_is_right, n_rights - 1)._lc("Right stack")
 
-            back_index = sheets_count - 1
-
+            back_index = sheet_count - 1
 
         with Layout("Left Pages"):
+
+            left_cover = G().profile_parameters_symmetrize(left_cover)
+            left_bottom = G().profile_parameters_symmetrize(left_bottom)
+            left_back = G().profile_parameters_symmetrize(left_back)
 
             # Cover on left
             book = G().sheet_profile(
@@ -604,6 +802,8 @@ def demo():
                 index = 1,
                 parameters = left_bottom,
             )
+            curve = G().sheet_clearance(sheet_below=book, sheet_over=curve, width=width, thickness=thickness)
+
             curve.switch_false(has_left_bottom)
             book += curve
 
@@ -614,6 +814,7 @@ def demo():
                 index = 1,
                 left_side = True,
                 count = n_lefts,
+                width = width,
             )
 
             # Back on left
@@ -648,6 +849,8 @@ def demo():
                 index = back_index - 1,
                 parameters = right_bottom,
             )
+            curve = G().sheet_clearance(sheet_below=back, sheet_over=curve, width=width, thickness=thickness)
+
             curve.switch_false(has_right_bottom)
             book += curve
 
@@ -658,6 +861,7 @@ def demo():
                 index = back_index - 1,
                 left_side = False,
                 count = n_rights,
+                width = width,
             )
 
             # Cover on right
@@ -776,12 +980,23 @@ def demo():
 
     with GeoNodes("Book Sheets Animated", is_group=True):
 
+        prev_sheets = Curve(name="Sheets")
+        replace = Boolean(True, "Replace")
         factor = Float.Factor(0.5, "Factor", 0, 1)
 
         with Layout("Binding"):
+            use_binding_curve = Boolean(True, "Use Binding Curve")
             binding_cl = Closure(None, "Binding")
-            cl_node = binding_cl.evaluate(signature=binding_signature)
-            sheets_count = cl_node.count
+            binding = Curve(None, "Binding")
+
+            cl_bld = binding_cl.evaluate(factor=factor, signature=binding_signature)
+            binding.switch_false(use_binding_curve, cl_bld)
+            binding_factor = cl_bld.factor
+
+            sheet_count = get_binding_params(binding, False)
+
+            #cl_node = binding_cl.evaluate(signature=binding_signature)
+            #sheet_count = cl_node.count
 
         with Panel("Sheets"):
             width = Float.Distance(0.14, "Width", 0.05, 0.8)
@@ -792,33 +1007,33 @@ def demo():
             left_count1 = Integer(10, "To Left Sheets")
             duration = Float.Factor(0.25, "Duration", 0.0001, 1.0)
 
-        with Panel("From Configuration"):
+        with Panel("From"):
 
-            with Panel("Left Parameters"):
+            with Panel("Left"):
                 left_cover0 = Bundle(name="Cover")
-                left_bottom0 = Bundle(name="Bottom Sheet")
+                left_bottom0 = Bundle(name="Sheet")
                 left_back0 = Bundle(name="Back")
 
-            with Panel("Right Parameters"):
+            with Panel("Right"):
                 right_back0 = Bundle(name="Back")
-                right_bottom0 = Bundle(name="Bottom Sheet")
+                right_bottom0 = Bundle(name="Sheet")
                 right_cover0 = Bundle(name="Cover")
 
-        with Panel("To Configuration"):
+        with Panel("To"):
 
-            with Panel("Left Parameters"):
+            with Panel("Left"):
                 left_cover1 = Bundle(name="Cover")
-                left_bottom1 = Bundle(name="Bottom Sheet")
+                left_bottom1 = Bundle(name="Sheet")
                 left_back1 = Bundle(name="Back")
 
-            with Panel("Right Parameters"):
+            with Panel("Right"):
                 right_back1 = Bundle(name="Back")
-                right_bottom1 = Bundle(name="Bottom Sheet")
+                right_bottom1 = Bundle(name="Sheet")
                 right_cover1 = Bundle(name="Cover")
 
         with Layout("Animation Parameters"):
-            left_count0 = gnmath.imin(sheets_count - 1, left_count0)
-            left_count1 = gnmath.imin(sheets_count, left_count1)
+            left_count0 = gnmath.imin(sheet_count - 1, left_count0)
+            left_count1 = gnmath.imin(sheet_count, left_count1)
             left_count1 = gnmath.imax(left_count1, left_count0 + 1)
             count = left_count1 - left_count0
             single = count <= 1
@@ -827,27 +1042,35 @@ def demo():
 
         with Layout("Start and end sheets at current factor"):
 
+            left_cover = G().profile_parameters_mix(factor, left_cover0, left_cover1)
+            left_sheet = G().profile_parameters_mix(factor, left_bottom0, left_bottom1)
+            left_back  = G().profile_parameters_mix(factor, left_back0, left_back1)
+            
+            right_back  = G().profile_parameters_mix(factor, right_back0, right_back1)
+            right_sheet = G().profile_parameters_mix(factor, right_bottom0, right_bottom1)
+            right_cover = G().profile_parameters_mix(factor, right_cover0, right_cover1)
+
             from_sheets = G().book_sheets(
-                binding = binding_cl.evaluate(factor=factor, signature=binding_signature),
+                binding = binding,
                 width = width,
                 resolution = resolution,
                 
                 left_sheets = None, #left_count0,
 
-                left_parameters_cover        = G().profile_parameters_mix(factor, left_cover0, left_cover1),
-                left_parameters_bottom_sheet = G().profile_parameters_mix(factor, left_bottom0, left_bottom1),
-                left_parameters_back         = G().profile_parameters_mix(factor, left_back0, left_back1),
+                left_cover = left_cover,
+                left_sheet = left_sheet,
+                left_back  = left_back,
                 
-                right_parameters_cover        = G().profile_parameters_mix(factor, right_cover0, right_cover1),
-                right_parameters_bottom_sheet = G().profile_parameters_mix(factor, right_bottom0, right_bottom1),
-                right_parameters_back         = G().profile_parameters_mix(factor, right_back0, right_back1),      
+                right_back  = right_back,
+                right_sheet = right_sheet,
+                right_cover = right_cover,
             ).node
 
             to_sheets = from_sheets.duplicate_node(True)
             from_sheets.left_sheets = left_count0
             to_sheets.left_sheets = left_count1
 
-        for rep in repeat(sheets_count, sheets=None):
+        for rep in repeat(sheet_count, sheets=None):
             cur_index = rep.iteration
             cur_start = (rep.iteration - left_count0) * spacing
             cur_fac = factor.map_range(from_min=cur_start, from_max=cur_start + duration)
@@ -861,14 +1084,208 @@ def demo():
                 factor = cur_fac,
             )
 
-            #sheet.switch(cur_index < left_count0, sheet0)
-            #sheet.switch(cur_index >= left_count1, sheets_count - left_count1, sheet1)
-
             rep.sheets += sheet
 
-
         sheets = rep.sheets
-        sheets.out("Sheets")
+        prev_sheets.switch(replace, sheets).out("Sheets")
+
+        with Panel("Chaining"):
+            binding_factor.out("Binding Factor")
+
+            left_cover.out("Left Cover")
+            left_sheet.out("Left Sheet")
+            left_back.out("Left Back")
+            
+            right_back.out("Right Back")
+            right_sheet.out("Right Sheet")
+            right_cover.out("Right Cover")
+
+    # =============================================================================================================================
+    # Cover extrude
+    #
+    # Merge cozer, binding and back to make one single mesh
+    # =============================================================================================================================
+
+    with GeoNodes("Cover Extrude"):
+
+        # ----------------------------------------------------------------------------------------------------
+        # Prepare curve
+        # ----------------------------------------------------------------------------------------------------
+        
+        def prep_curve(c):
+            with Layout("Prepare"):
+                count = c.points.count
+                l = c.length()
+
+                c = c.resample(count=count)
+                fac = nd.index/(count - 1)
+
+                c.points.U_Pos = fac
+
+                pos = c.sample_factor(factor=fac).position
+                c.points.Normal = pos.tangent.cross((0, -1, 0))
+
+                return c, l
+
+        # ----------------------------------------------------------------------------------------------------
+        # Shifted curve to give thickness
+        # ----------------------------------------------------------------------------------------------------
+            
+        def give_thickness(c, d):
+            with Layout("Give thickness"):
+                res = Curve(c)
+                res.points.position += Vector("Normal").scale(d)
+                res.reverse()
+                return res
+            
+        # ----------------------------------------------------------------------------------------------------
+        # Merge 3 curves in one mesh line
+        # ----------------------------------------------------------------------------------------------------
+            
+        def merge_curves(curves):
+            
+            with Layout("Merge Curves in one mesh line"):
+
+                with Layout("Prepare Curves"):
+                    lengths = []
+                    total_length = 0.0
+                    npoints = []
+                    total_points = 0
+                    for i in range(3):
+                        curves[i], l = prep_curve(curves[i])
+                        lengths.append(l)
+                        total_length += l
+                        
+                        npoints.append(curves[i].points.count)
+                        total_points += npoints[-1]  
+                        
+                        
+                with Layout("Adjust U pos"):            
+                    ofs = 0.0
+                    for i, (c, l) in enumerate(zip(curves, lengths)):
+                        ul = l/total_length
+                        c.points.U_Pos = ofs + Float("U Pos")*ul
+                        if i < 2:
+                            ofs += ul
+                        
+                with Layout("Transfer to a Mesh Curve"):
+                    line_resol = total_points - 2
+                    line = Mesh.Line(count=line_resol)
+                    first = 0
+                    for i, c in enumerate(curves):
+                        with Layout(f"Curve {i}"):
+                            line_range = nd.index >= first
+                            if i == 1:
+                                curve_idx = nd.index - first + 1
+                                first += npoints[1] - 2
+                            else:
+                                curve_idx = nd.index - first
+                                if i == 0:
+                                    first += npoints[0]
+                                    
+                            line_range._lc("Line Range")
+                            curve_idx._lc("Curve Idx")
+                                
+                            line.points[line_range].position = c.points.sample_index(nd.position, index=curve_idx)
+                            line.points[line_range].Normal = c.points.sample_index(Vector("Normal"), index=curve_idx)
+                            line.points[line_range].U_Pos = c.points.sample_index(Float("U Pos"), index=curve_idx)
+                                
+                return line, curves
+
+        # ----------------------------------------------------------------------------------------------------
+        # Main
+        # ----------------------------------------------------------------------------------------------------
+        
+        B_RESOL = 12
+        
+        sheets = Curve(name="Sheets")
+        binding = Curve(name="Binding")
+        length = Float(0.25, "Length")
+        thickness = Float(.001, "Thickness")
+        mat = Material(None, "Cover")
+        
+        binding = binding.resample(count=B_RESOL)
+        
+        
+        nsplines = sheets.splines.count
+        
+        cover = Curve(Curve(sheets).splines[Integer("Index")==0].separate().selection)
+        cover.reverse()
+        back = Curve(Curve(sheets).splines[Integer("Index")==nsplines - 1].separate().selection)
+        
+        line1, curves = merge_curves([cover, binding, back])
+        cover = curves[0]
+        back = curves[2]
+        
+        with Layout("Thickness Extruded line"):
+            cover2 = give_thickness(cover, thickness).reverse()
+            back2 = give_thickness(back, thickness).reverse()
+            with Layout("Translate the binding"):
+                
+                n = cover.points.count
+                P0 = cover2.points.sample_index(nd.position, index=n-1)
+                P1 = back2.points.sample_index(nd.position, index=0)
+                binding2 = Curve.Line(P0, P1).resample(count=B_RESOL)
+                
+            line2, _ = merge_curves([cover2, binding2, back2])
+
+        with Layout("Thickness Face"):
+            line_resol = line1.points.count
+            line_resol2 = line_resol*2
+            
+            thick_line = Mesh.Circle(vertices=line_resol2, fill_type='N-Gon')
+            
+            with Layout("First Line"):
+                idx = nd.index
+                thick_line.points.position = line1.points.sample_index(nd.position, index=idx)
+                thick_line.points.U_Pos = line1.points.sample_index(Float("U Pos"), index=idx)
+                thick_line.points.VBack = False
+                
+            with Layout("Second Line"):
+                
+                sel = nd.index >= line_resol
+                idx = line_resol2 - 1 - nd.index 
+                
+                pos = line2.points.sample_index(nd.position, index=idx)
+                upos = line2.points.sample_index(Float("U Pos"), index=idx)
+                
+                thick_line.points[sel].position =  pos
+                thick_line.points[sel].U_Pos =  1 - upos
+                thick_line.points[sel].VBack = True
+                
+        with Layout("Extrude Page"):
+
+            thick_line.faces.Side = 2.0
+            thick_line.points.V_Pos = 0.0
+            
+            mesh = Mesh(thick_line).extrude((0, length, 0))
+            top = mesh.top
+            side = mesh.side
+            mesh.points[top].V_Pos = 1.0
+            
+        with Layout("Side"):
+            
+            nfaces = mesh.faces.count
+            mesh.faces[side].Side = 0.0
+            mesh.faces[(nd.index==nfaces-1) | (nd.index==nfaces//2)].Side = 2.0
+            
+            mesh += thick_line.flip_faces()
+            mesh = Mesh(mesh).merge_by_distance(distance=thickness/10)
+            
+            
+            mesh.faces[Float("Side") == 0.0].shade_smooth=True
+            mesh.faces.material = mat
+            mesh.faces[Boolean("VBack")].Side = 1.0
+            
+        with Layout("UV Map"):
+            mesh.corners.store_uv("UV Map", (Float("U Pos"), Float("V Pos"), 0))
+            
+        with Layout("Some Cleaning"):
+            mesh.remove_named_attribute(name="U Pos")
+            mesh.remove_named_attribute(name="V Pos")
+            mesh.remove_named_attribute(name="VBack")
+                    
+        mesh.out()
 
     # =============================================================================================================================
     # Book Mesh
@@ -880,79 +1297,46 @@ def demo():
 
         with Panel("Input"):
             sheets = Curve(name="Sheets")
+            binding = Curve(name="Binding")
 
         with Panel("Dimensions"):
             length = Float.Distance(0.21, "Length", 0.01, 1)
             cover_thickness = Float.Distance(0.002, "Cover Thickness", 0.0001, 0.02)
 
         with Panel("Materials"):
-            sheet_material_offset = Integer(1, "First Sheet Material", 0, 1000)
-            sheet_material_count = Integer(8, "Sheet Materials", 1, 1000)
-            seed = Integer(0, "Seed")
+            sheet_material_offset = Integer(1, "Page First Index", 0, 1000, tip="Materials for sheets are 'Page xxx'")
+            sheet_material_count = Integer(8, "Sheet Materials", 1, 1000, tip="Materials 'Page xxx' count")
+            seed = Integer(0, "Seed", tip="Pick random material in 'Page first_index' and 'Page last_index'")
             cover_mat = Material(None, "Cover")
 
-        with Layout("Split Sheets"):
+        with Layout("Internal Sheets"):
             count = sheets.splines.count
-            sheets.splines.Sheet_Index = nd.index
-            sheets.points._T_u = Spline.parameter_factor
-            is_cover_sheet = Integer("Sheet Index") == 0
-            is_back_sheet = Integer("Sheet Index") == count - 1
-
-        with Layout("Binding Curve"):
-            binding_source = Curve(sheets)
-            binding_points = Curve(binding_source.points[Float("T u").equal(0)].separate()).to_points()
-            binding = binding_points.to_curves(weight=Integer("Sheet Index"))
-
-        with Layout("Sheets Surface"):
+            internal = (Integer("Index") > 0) & (Integer("Index") < count - 1)
             page_source = Curve(sheets)
-            page_curves = Curve(page_source.splines[(is_cover_sheet | is_back_sheet).bnot()].separate())
+            page_curves = Curve(page_source.splines[internal].separate())
+            internal_count = count - 2
+            point_count = page_curves.points.count/internal_count
+            page_curves = page_curves.resample(count=point_count)
+            page_curves.points.Page_U = page_curves.points.index_in_curve(nd.index)/(point_count - 1)
             sheet_mesh = page_curves.to_mesh()
             sheet_mesh.edges.extrude(offset=(0, length, 0))
 
         with Layout("Cover Surface"):
-            with Layout("Merge cover, binding and back"):
-                cover_source = Curve(sheets)
-                cover_curve = Curve(cover_source.splines[is_cover_sheet].separate())
-                cover_curve.reverse()
-                back_source = Curve(sheets)
-                back_curve = Curve(back_source.splines[is_back_sheet].separate())
-
-                cover_len = cover_curve.length()
-                binding_len = binding.length()
-                back_len = back_curve.length()
-                total_len = gnmath.max(cover_len + binding_len + back_len, 0.000001)
-
-                cover_curve.points._Cover_U = 1 - Spline.parameter_factor*cover_len/total_len
-                binding.points._Cover_U = 1 - (cover_len + Spline.parameter_factor*binding_len)/total_len
-                back_curve.points._Cover_U = 1 - (cover_len + binding_len + Spline.parameter_factor*back_len)/total_len
-
-                cover_line = Curve(cover_curve + binding + back_curve)
-                cover_mesh = cover_line.to_mesh().merge_by_distance()
-
-            with Layout("Solidify"):
-                cover_mesh.edges.extrude(offset=(0, length, 0))
-                cover_mesh.faces.Side = 0.0 # Top faces
-
-                cover_base = Mesh(cover_mesh).flip_faces()
-                cover_base.faces.Side = 2.0 # Inner faces
-
-                cover_mesh.faces.extrude(offset=nd.normal.scale(cover_thickness), individual=False)
-                cover_mesh.faces[cover_mesh.side].Side = 1.0 # Side faces
-
-                cover_v = (nd.position.y/length).clamp(0, 1)
-                cover_mesh.corners.store_uv("UV Map", (Float("Cover U"), cover_v, 0))
-                cover_base.corners.store_uv("UV Map", (1 - Float("Cover U"), cover_v, 0))
-                cover_mesh += cover_base
-                cover_mesh.merge_by_distance()
-                cover_mesh.faces.material = cover_mat
+            cover_mesh = G().cover_extrude(
+                sheets = sheets,
+                binding = binding,
+                length = length,
+                thickness = cover_thickness,
+                cover = cover_mat,
+            )
 
         with Layout("UV Map"):
-            u = Float("T u")
+            u = Float("Page U")
             v = (nd.position.y/length).clamp(0, 1)
             sheet_mesh.corners.store_uv("UV Map", (u, v, 0))
 
         with Layout("Sheet Content"):
-            sheet_mesh.faces.Sheet_Num = Integer("Sheet Index") + 1
+            sheet_mesh.faces.Sheet_Num = Integer("Index") + 1
 
         with Layout("Sheet Materials"):
             for i in range(100):
@@ -964,7 +1348,7 @@ def demo():
             material_index = sheet_material_offset + Integer.Random(
                 min=0,
                 max=sheet_material_count - 1,
-                id=Integer("Sheet Index"),
+                id=Integer("Sheet Num"),
                 seed=seed,
             )
             sheet_mesh.faces.material_index = material_index
@@ -1000,6 +1384,153 @@ def demo():
         new_mesh.out()
 
     # =============================================================================================================================
+    # A book
+    # =============================================================================================================================
+
+    with GeoNodes("Book"):
+
+        show = Boolean(True, "Show")
+        sheets_factor = Float.Factor(50, "Factor", 0, 100)
+        duration = Float.Factor(0.2, "Duration", 0, 1)
+        
+        with Panel("Dimensions"):
+            sheet_count = Integer(100, "Sheet Count", 4, 1000)
+            thickness = Float(1, "Thickness",0.01, 10)
+            width = Float.Distance(0.17, "Width", 0.05, .7)
+            length = Float.Distance(0.24, "Length", 0.05, 0.7)
+            resolution = Integer(32, "Resolution", )
+
+        with Panel("Extrusion"):
+            extrude = Boolean(True, "Extrude")
+            cover_thickness = Float.Distance(0.001, "Cover Thickness", 0.000001, 0.005)
+            
+        with Layout("Parameters"):
+            sheet_count = gnmath.max(4, sheet_count)
+            factor = sheets_factor/100
+            left_factor = 1 - factor
+            duration = duration.map_range(to_min=1/(sheet_count+1), to_max=1)
+            
+            
+        binding = G().binding(
+            sheet_count = sheet_count,
+            thickness = thickness,
+            factor = factor,
+            bending = .5,
+            swiftness = 0.75,
+            )
+            
+        cover_max_curv = 0.5
+        sheet_max_curv = 0.9
+        sheet_max_s    = 0.7
+        
+        cover_min_from_stick = 0.7
+            
+        with Layout("From Parameters"):
+            with Layout("Left"):
+                from_left_cover = G().profile_parameters_standard(
+                    curvature = left_factor.map_range_smooth_step(to_max=cover_max_curv),
+                    stick = left_factor.map_range(from_min=cover_min_from_stick),
+                )._lc("Cover")
+                from_left_sheet = G().profile_parameters_standard(
+                    curvature = left_factor.map_range_smooth_step(to_max=sheet_max_curv),                
+                    s_shape = left_factor.map_range_smooth_step(to_max=sheet_max_s),                
+                    stick = left_factor.map_range(from_min=cover_min_from_stick/2),
+                )._lc("Sheet")
+                from_left_back = G().profile_parameters_standard(
+                    curvature = 0.5,
+                    flat_deformed=True,
+                )._lc("Back")
+                
+            with Layout("Right"):
+                from_right_back = G().profile_parameters_standard(
+                    curvature = factor.map_range_smooth_step(to_max=cover_max_curv),
+                    stick = factor.map_range(from_min=cover_min_from_stick),
+                )._lc("Back")
+                from_right_sheet = G().profile_parameters_standard(
+                    curvature = factor.map_range_smooth_step(to_max=sheet_max_curv),                
+                    s_shape = factor.map_range_smooth_step(to_max=sheet_max_s),                
+                    stick = factor.map_range(from_min=cover_min_from_stick/2),
+                )._lc("Sheet")
+                from_right_cover = G().profile_parameters_standard(
+                    curvature = 0.5,
+                    flat_deformed=True,
+                )._lc("Cover")
+                
+        with Layout("Left"):
+            to_left_cover = G().profile_parameters_standard(
+                curvature = left_factor.map_range_smooth_step(to_max=cover_max_curv),
+                stick = left_factor.map_range(from_min=cover_min_from_stick),
+            )._lc("Cover")
+            to_left_sheet = G().profile_parameters_standard(
+                curvature = left_factor.map_range_smooth_step(to_max=sheet_max_curv),                
+                s_shape = left_factor.map_range_smooth_step(to_max=sheet_max_s),                
+                stick = left_factor.map_range(from_min=cover_min_from_stick/2),
+            )._lc("Sheet")
+            to_left_back = G().profile_parameters_standard(
+                curvature = 0.5,
+                flat_deformed=True,
+            )._lc("Back")
+            
+        with Layout("Right"):
+            to_right_back = G().profile_parameters_standard(
+                curvature = factor.map_range_smooth_step(to_max=cover_max_curv),
+                stick = factor.map_range(from_min=cover_min_from_stick),
+            )._lc("Back")
+            to_right_sheet = G().profile_parameters_standard(
+                curvature = factor.map_range_smooth_step(to_max=sheet_max_curv),                
+                s_shape = factor.map_range_smooth_step(to_max=sheet_max_s),                
+                stick = factor.map_range(from_min=cover_min_from_stick/2),
+            )._lc("Sheet")
+            to_right_cover = G().profile_parameters_standard(
+                curvature = 0.5,
+                flat_deformed=True,
+            )._lc("Cover")
+        
+        sheets = G().book_sheets_animated(
+            factor = factor,
+            
+            width = width,
+            resolution = resolution,
+            
+            use_binding_curve = True,
+            binding = binding,
+            
+            from_left_sheets = 0,
+            to_left_sheets = sheet_count,
+            duration = duration,
+            
+            from_left_cover = from_left_cover,
+            from_left_sheet = from_left_sheet,
+            from_left_back = from_left_back,
+            
+            from_right_cover = from_right_cover,
+            from_right_sheet = from_right_sheet,
+            from_right_back = from_right_back,
+            
+            to_left_cover = to_left_cover,
+            to_left_sheet = to_left_sheet,
+            to_left_back = to_left_back,
+            
+            to_right_cover = to_right_cover,
+            to_right_sheet = to_right_sheet,
+            to_right_back = to_right_back,
+            )
+            
+        book = G().book_extrude(
+            sheets = sheets,
+            binding = binding,
+            length = length,
+            cover_thickness = cover_thickness,
+            ).link_panel("Materials")
+            
+        book.switch_false(extrude, sheets)
+            
+        book.switch_false(show).out()
+
+       
+
+
+    # =============================================================================================================================
     # Book example
     # =============================================================================================================================
 
@@ -1028,7 +1559,7 @@ def demo():
                 root_intensity = 0.350,
                 tip_intensity = 0.350,
             )
-            left_bottom0 = G().profile_parameters(
+            left_sheet0 = G().profile_parameters(
                 opening = 3.128,
                 root_angle = -0.792,
                 tip_angle = 0.115,
@@ -1043,7 +1574,7 @@ def demo():
                 root_intensity = 0.350,
                 tip_intensity = 0.350,
             )
-            right_bottom0 = G().profile_parameters(
+            right_sheet0 = G().profile_parameters(
                 opening = 0.003,
                 root_angle = 0.227,
                 tip_angle = 0.000,
@@ -1060,7 +1591,7 @@ def demo():
                 tip_intensity = 0.350,
             )
 
-            left_bottom1 = G().profile_parameters(
+            left_sheet1 = G().profile_parameters(
                 opening = 3.138,
                 root_angle = -0.471,
                 tip_angle = 0.115,
@@ -1076,7 +1607,7 @@ def demo():
                 tip_intensity = 0.350,
             )
 
-            right_bottom1 = G().profile_parameters(
+            right_sheet1 = G().profile_parameters(
                 opening = 0.003,
                 root_angle = 0.796,
                 tip_angle = 0.000,
@@ -1096,15 +1627,15 @@ def demo():
                 to_left_sheets = left_count + count,
                 duration = duration,
 
-                from_configuration_left_parameters_cover = left_cover0,
-                from_configuration_left_parameters_bottom_sheet = left_bottom0,
-                from_configuration_right_parameters_back = right_back0,
-                from_configuration_right_parameters_bottom_sheet = right_bottom0,
+                from_left_cover = left_cover0,
+                from_left_sheet = left_sheet0,
+                from_right_back = right_back0,
+                from_right_sheet = right_sheet0,
 
-                to_configuration_left_parameters_cover = left_cover1,
-                to_configuration_left_parameters_bottom_sheet = left_bottom1,
-                to_configuration_right_parameters_back = right_back1,
-                to_configuration_right_parameters_bottom_sheet = right_bottom1,
+                to_left_cover = left_cover1,
+                to_left_sheet = left_sheet1,
+                to_right_back = right_back1,
+                to_right_sheet = right_sheet1,
             )
 
         with Layout("Extrude animated profiles"):
@@ -1121,7 +1652,3 @@ def demo():
             ).link_inputs(from_panel="Extrude")
 
         sheets.switch(use_extrude, book).out()        
-
-
-
-
