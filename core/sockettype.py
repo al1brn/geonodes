@@ -479,7 +479,8 @@ class SocketType:
         if self.subtype is not None:
             props['subtype'] = self.subtype
         if self.dimensions is not None:
-            props['dimensions'] = self.dimensions
+            if 'dimensions' not in props:
+                props['dimensions'] = self.dimensions
 
         return props
     
@@ -600,7 +601,6 @@ class SocketType:
                 return 'TRANSFORM'
             
         
-        """
         elif stype.type == 'INT':
             if float_int:
                 res = cls.get_data_type_for_node('FLOAT', bl_idname, param_name=param_name, on_error='NONE', float_int=False)
@@ -612,7 +612,6 @@ class SocketType:
                 res = cls.get_data_type_for_node('INT', bl_idname, param_name=param_name, on_error='NONE', float_int=False)
                 if res is not None:
                     return res
-        """
             
         # Not found
         if on_error == 'HALT':

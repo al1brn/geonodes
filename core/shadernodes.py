@@ -82,6 +82,7 @@ class ShaderNodes(Tree):
             is_group         : bool = False, 
             prefix           : Optional[str] = None,
             replace_material : bool = False, 
+            color_tag        : str = 'NONE',
             ):
         """ > ShaderNodes
 
@@ -102,8 +103,18 @@ class ShaderNodes(Tree):
         replace_material : bool, optional
             replace material if already exists default=False.
 
+        color_tag : str, default='NONE'
+            group or modifier color_tag attribute (groups only)
         """
-        super().__init__(tree_name, tree_type='ShaderNodeTree', fake_user=fake_user, is_group=is_group, prefix=prefix, replace_material=replace_material)
+        super().__init__(
+            tree_name, 
+            tree_type='ShaderNodeTree', 
+            fake_user=fake_user, 
+            is_group=is_group, 
+            prefix=prefix, 
+            replace_material=replace_material,
+            color_tag = color_tag,
+            )
 
     # =============================================================================================================================
     # Input Node
@@ -129,8 +140,25 @@ class ShaderNodes(Tree):
         return Node('ShaderNodeOutputMaterial')
 
     def get_output_node(self, target: str = 'ALL') -> Node:
+        """ Output node
+
+        Standard behavior if Group or within a zone
+        """
+
+        # ---------------------------------------------------------------------------
+        # Group or within a zone
+        # ---------------------------------------------------------------------------
+
         if self._is_group:
             return super().get_output_node()
+        
+        if len(self._output_stack):
+            return self._output_stack[-1]
+
+        # ---------------------------------------------------------------------------
+        # Output to shader outpout
+        # ---------------------------------------------------------------------------
+
         for node in self._nodes.values():
             if node._bnode.bl_idname == 'ShaderNodeOutputMaterial' and node._bnode.target == target:
                 return node

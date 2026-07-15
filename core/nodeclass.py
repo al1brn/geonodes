@@ -316,7 +316,7 @@ class Node:
         """
 
         # ----------------------------------------------------------------------------------------------------
-        # Create the node
+        # Initialize
         # ----------------------------------------------------------------------------------------------------
 
         self._stack = None
@@ -326,11 +326,25 @@ class Node:
         btree = self._tree._btree
         tree_type = btree.bl_idname
 
-        bl_idname = utils.get_node_bl_idname(node_name, tree_type)
+        # ----------------------------------------------------------------------------------------------------
+        # Create node / load existing bnode
+        # ----------------------------------------------------------------------------------------------------
 
-        self._bnode = btree.nodes.new(type=bl_idname)
-        self._bnode.select = False
-        self._tree.check_node_validity(self._bnode)
+        create_node = isinstance(node_name, str)
+        if create_node:
+            bl_idname = utils.get_node_bl_idname(node_name, tree_type)
+
+            self._bnode = btree.nodes.new(type=bl_idname)
+            self._bnode.select = False
+            self._tree.check_node_validity(self._bnode)
+
+        else:
+            try:
+                self._bnode = node_name
+            except Exception as e:
+                raise NodeError(f"Impossible to initialize Node with value <{node_name}>.\n" +
+                                f"'node_name' must be either a node name or an existing node.\n. {str(e)}")
+            bl_idname = self._bnode.bl_idname
 
         self._inputs  = Sockets(self._bnode.inputs, node=self)
         self._outputs = Sockets(self._bnode.outputs, node=self)
@@ -475,7 +489,6 @@ class Node:
                     continue
 
                 self.set_input_socket(name, value)
-
 
         # ----------------------------------------------------------------------------------------------------
         # Register the node

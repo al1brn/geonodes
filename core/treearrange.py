@@ -1857,6 +1857,38 @@ class NodeDumpOperator(bpy.types.Operator):
                 print(f"Node Help: help on {len(nodes)} nodes available in '{txt_name}'")
 
         return {'FINISHED'}
+    
+class ExposeInputsOperator(bpy.types.Operator):
+    """Expose Inputs"""
+    bl_idname = "node.expose_inputs"
+    bl_label  = "Expose Node Inputs"
+
+    @classmethod
+    def poll(cls, context):
+        space = context.space_data
+        if space.type != 'NODE_EDITOR' or space.edit_tree is None:
+            return False
+        nodes = [node for node in space.edit_tree.nodes if node.select]
+        return len(nodes) > 0
+
+    def execute(self, context):
+
+        from geonodes.core.treeclass import Tree
+
+        space = context.space_data
+        btree = space.edit_tree
+            
+        tree = Tree(btree, None)
+        
+        nodes = []
+        for node in tree._nodes.values():
+            if node._bnode.bl_idname == 'NodeGroupInput':
+                continue
+            
+            if node._bnode.select:
+                node.link_inputs()
+
+        return {'FINISHED'}    
 
 class LayoutArrangePanel(bpy.types.Panel):
     """Creates a Panel in the node editor context of the properties editor"""
@@ -1876,6 +1908,9 @@ class LayoutArrangePanel(bpy.types.Panel):
         row = layout.row()
         #row.scale_y = 2.0
         row.operator("node.dump_node")
+
+        # Expose inputs
+        layout.operator("node.expose_inputs")
 
         # Reroutes
         layout.prop(scene, "arrange_reroutes")
@@ -1906,6 +1941,7 @@ def register():
         #bpy.utils.register_class(RemoveReroutesOperator)
         bpy.utils.register_class(ArrangeNodesOperator)
         bpy.utils.register_class(NodeDumpOperator)
+        bpy.utils.register_class(ExposeInputsOperator)
 
         bpy.utils.register_class(LayoutArrangePanel)
     except:
@@ -1916,6 +1952,7 @@ def unregister():
         #bpy.utils.unregister_class(RemoveReroutesOperator)
         bpy.utils.unregister_class(ArrangeNodesOperator)
         bpy.utils.unregister_class(NodeDumpOperator)
+        bpy.utils.unregister_class(ExposeInputsOperator)
 
         bpy.utils.unregister_class(LayoutArrangePanel)
 

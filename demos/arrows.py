@@ -60,6 +60,7 @@ arrows.demo()
 
 from geonodes import *
 from geonodes import macros
+from .shaders import arrow_shader
 
 
 # ====================================================================================================
@@ -98,27 +99,40 @@ def uv_cylinder():
         final.out()
 
 def demo():
+
     # ====================================================================================================
     # Default Shader for Arrow
     # ====================================================================================================
 
-    with ShaderNodes("Arrow"):
+    arrow_shader()
 
-        pos_color = Color(snd.attribute(attribute_type='GEOMETRY', attribute_name="Color").vector)
-        negative  = snd.attribute(attribute_type='GEOMETRY', attribute_name="Negative").factor
-        transp    = snd.attribute(attribute_type='GEOMETRY', attribute_name="Transparency").factor
+    # ====================================================================================================
+    # Spherical to arrow
+    # ====================================================================================================
 
-        neg_color = pos_color.hue_saturation_value(hue=.5, saturation=.9, value=.9)
-        color = pos_color.mix(negative, neg_color)
+    with GeoNodes("Vector Input", is_group=True):
 
-        ped = Shader.Principled(
-            base_color = color,
-            roughness  = negative.map_range(to_min=.1, to_max=.9),
-        )
+        xyz = Vector((1, 0, 0), "Vector")
 
-        shader = ped.mix(shader=Shader.Transparent(), factor=transp)
+        r = Float(1.0, "Radius")
+        theta = Float.Angle(0, "Theta")
+        phi = Float.Angle(0, "Phi")
+        z = Float(0.0, "z")
 
-        shader.out()
+        with Vector.MenuSwitch(menu=Input("Type")) as V:
+            xyz.out("XYZ")
+
+        with V:
+            cp, sp = phi.cos(), phi.sin()
+            ct, st = theta.cos(), theta.sin()
+            rp = cp*r
+            Vector((rp*ct, rp*st, r*sp)).out("Spherical")
+
+        with V:
+            Vector((r*ct, r*st, z)).out("Cylindrical")
+
+        V.out()
+
 
     # ====================================================================================================
     # Field of arrows
@@ -135,7 +149,7 @@ def demo():
             # Simple Cone
             
             with Closure() as cone_cl:
-                bot_size = 5
+                bot_size = 3.4
                 height_scale = 20
                 height_min = 2
                 
@@ -206,6 +220,7 @@ def demo():
         cloud = Cloud()
         
         vectors = Vector((0, 0, 1), name="Vectors")
+        col     = Color("Blue", "Color")
         
         with Panel("Shaft"):
             radius  = Float(.05, "Radius", shape="Single")
@@ -298,7 +313,6 @@ def demo():
             
             cyls = cloud.points[lens.greater_than(0.001)].instance_on(
                 instance = cyl,
-                #rotation = rot,
                 scale = Vector.CombineXYZ(1, 1, shaft_len),
             )
             cyls.offset = Vector.CombineXYZ(0, 0, shaft_offset)
@@ -306,6 +320,7 @@ def demo():
             
         with Layout("Finalize"):
             mesh = Mesh(cyls + the_heads)
+            mesh.faces.Color = col
             mesh.faces.shade_smooth = Boolean(True, "Smooth")
             mesh.enable_output(Boolean(True, "Show"))
             
@@ -320,18 +335,21 @@ def demo():
         pos = Vector(name="Position", shape="Single")
         
         with Panel("Vector"):
-        
-            with Vector.MenuSwitch(default_menu="XYZ", menu=Input("Vector")) as vec:
-                
-                Vector((0, 0, 1), "Vector").out("XYZ")
-                
-                v = G().combine_cylindrical()
-                v.node.link_inputs()
-                v.out("Cylindrical")
-                
-                v = G().combine_spherical()
-                v.node.link_inputs()
-                v.out("Spherical")
+
+            if True:
+                vec = G().vector_input().link_inputs()
+            else:
+                with Vector.MenuSwitch(default_menu="XYZ", menu=Input("Vector")) as vec:
+                    
+                    Vector((0, 0, 1), "Vector").out("XYZ")
+                    
+                    v = G().combine_cylindrical()
+                    v.node.link_inputs()
+                    v.out("Cylindrical")
+                    
+                    v = G().combine_spherical()
+                    v.node.link_inputs()
+                    v.out("Spherical")
             
         cloud = Cloud.Points(1, position=pos)
         
@@ -388,6 +406,72 @@ def demo():
             screw.faces.Transparency = transp
             
         screw.switch_false(show & (vec.length() > 0.001) & (transp < 0.999)).out()
+
+
+    # ===========================================================================
+    # 2D arrow
+    # ===========================================================================
+
+    with GeoNodes("2D Arrow"):
+
+        pos = Vector(None, "Position")
+        V = Vector((1, 0, 0), "Vector", dimensions=2)
+        use_arrow = Boolean(True, "Head")
+        size = Float(0.05, "Size")
+        mat = Material("Arrow", "Material")
+        col = Color("Blue", "Color")
+        transp = Float.Factor(0.0, "Transparency")
+
+        with Layout("Preparation"):
+            s2 = (size/2)._lc("Half Size")
+            V *= (1, 1, 0)
+            l = V.length()._lc("Length")
+
+            head_length = gnmath.min(l, size*5)._lc("Head Length")
+            head_width  = (size*3)._lc("Head Width")
+            head_back   = gnmath.min(head_length*0.2)._lc("Head Back")
+
+        with Mesh.Switch(use_arrow) as arrow:
+
+                x0, y0 = 0.0, -s2
+                x2, y2 = l - head_length, -head_width/2
+                x1, y1 = x2 + head_back, y0
+                x3, y3 = l, 0.0
+
+                circle = Mesh.Circle(vertices=7, fill_type="N-Gon")
+                circle[0].position = (x0,  y0, 0)
+                circle[1].position = (x1,  y1, 0)
+                circle[2].position = (x2,  y2, 0)
+                circle[3].position = (x3,  y3, 0)
+                circle[4].position = (x2, -y2, 0)
+                circle[5].position = (x1, -y1, 0)
+                circle[6].position = (x0, -y0, 0)
+
+                circle.out("True")
+
+        with arrow:
+            mesh = Mesh.Grid(size_x=l, size_y=size, vertices_x=2, vertices_y=2)
+            mesh.offset = (l/2, 0, 0)
+            mesh.out("False")
+
+        with Layout("Finalize"):
+            arrow = Mesh(arrow)
+            arrow.faces.material = mat
+            arrow.faces.Color = col
+            arrow.faces.Transparency = transp
+
+            arrow.transform(translation=pos, rotation=Rotation().align_to_vector(vector=V, axis='X'))
+
+        arrow.out()
+
+
+
+
+
+
+
+
+
         
             
                     

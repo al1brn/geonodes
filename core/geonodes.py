@@ -50,6 +50,7 @@ class GeoNodes(Tree):
             fake_user: bool = False, 
             is_group: bool  = False, 
             prefix: str     = "",
+            color_tag: str = "NONE",
             ):
         """ > Geometry Nodes
 
@@ -67,6 +68,8 @@ class GeoNodes(Tree):
         prefix : str, optional
             prefix name default="".
 
+        color_tag : str, default='NONE'
+            group or modifier color_tag attribute
         """
 
         super().__init__(
@@ -75,6 +78,7 @@ class GeoNodes(Tree):
             fake_user   = fake_user, 
             is_group    = is_group, 
             prefix      = prefix,
+            color_tag   = color_tag,
             )
 
         self._btree.is_modifier = not is_group

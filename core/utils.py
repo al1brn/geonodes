@@ -938,6 +938,38 @@ def get_menu_enums(menu):
     assert menu.bl_idname == 'NodeSocketMenu'
     return get_enums(menu, 'default_value')
 
+# ====================================================================================================
+# rna enums
+# ====================================================================================================
+
+def get_rna_enums(obj, attribute):
+    prop = type(obj).bl_rna.properties.get('color_tag')
+    return {item.name: item.identifier for item in prop.enum_items}
+
+def set_rna_attr(obj, attribute, value):
+
+    msg = None
+    
+    try:
+        setattr(obj, attribute, value)
+    except TypeError as te:
+        ident = get_rna_enums(obj, attribute).get(value)
+
+        if ident is None:
+            msg = str(te)
+        else:
+            try:
+                setattr(obj, attribute, ident)
+            except Exception as rare:
+                msg = str(rare)
+    
+    except Exception as e:
+        msg = str(e)
+
+    if msg is not None:
+        raise NodeError(f"Impossible to set value '{value}' to '{str(obj)}.{attribute}'\n"+msg)
+
+
 # =============================================================================================================================
 # Some utilities
 

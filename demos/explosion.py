@@ -57,6 +57,62 @@ from geonodes import macros
 def demo():
 
     # ====================================================================================================
+    # Mesh to located instances
+    #
+    # Overrids Mesh to Instances with:
+    # - capability to solidify instances
+    # - instances are located at parts geometric center
+    # ====================================================================================================
+
+    with GeoNodes("Mesh to Located Instances"):
+        """ 'Split to instances' locates islands at (0, 0, 0)
+
+        This Group locates instances at their center
+        """
+        
+        mesh = Mesh()
+        use_islands = Boolean(True, "Use Islands")
+        gid  = Integer(name="Group ID", hide_value=True)
+        thickness = Float(0, "Thickness")
+        separate = Float.Factor(1.0, "Separate", 1.0, 2.0)
+
+        gid.switch(use_islands, nd.mesh_island().island_index)
+        
+        instances = mesh.faces.split_to_instances(group_id=gid)
+        
+        for rep in instances.insts.for_each():
+
+            m = Mesh(Instances(rep.element).realize())
+
+            with Layout("Solidify"):
+                solidified = Mesh(m).faces.extrude(offset_scale=-thickness, individual=False).flip_faces()
+                solidified += m
+                solidified.merge_by_distance()
+                m.switch(thickness != 0.0, solidified)
+
+            with Layout("Dimensions"):
+                dims = m.points.attribute_statistic(nd.position)
+                c = (dims.min_ + dims.max_)/2
+                m.offset = -c
+                
+                size = dims.max_ + dims.min_
+                sx, sy, sz = size.xyz
+                vol = sx*sy*sz
+
+            with Layout("To Instance"):
+                cell = m.points.split_to_instances()
+                cell.position = c
+                cell.insts.Volume = vol
+                cell.insts.Size = size
+            
+            rep.geometry = cell
+
+        insts = Instances(rep.generated)
+        insts.position = nd.position.scale(separate)
+            
+        insts.out()
+
+    # ====================================================================================================
     # Fracturing by splitting in two parts
     # ====================================================================================================
 
@@ -95,14 +151,13 @@ def demo():
         splitted.switch(small, Mesh())
         insts = splitted.points.split_to_instances(group_id=nd.mesh_island().island_index)
         
-        #splitted.out()
         insts.out()
     
     # ====================================================================================================
     # Iterator
     # ====================================================================================================
         
-    with GeoNodes("Break into parts"):
+    with GeoNodes("Break with Planes Slicings"):
         
         mesh = Mesh()
         count = Integer(5, "Count", 1, 20)
@@ -114,8 +169,6 @@ def demo():
             
             rep_seed = seed.hash_value(rep.iteration)
             
-            #parts = rep.mesh.points.split_to_instances(group_id = nd.mesh_island().island_index)
-            
             for feel in Instances(rep.cells).insts.for_each():
                 
                 part = feel.element.realize()
@@ -126,103 +179,85 @@ def demo():
                     )
                         
             rep.cells = feel.generated
+
+        insts = Instances(rep.cells)
             
-        parts_count = Instances(rep.cells).insts.count
+        parts_count = insts.insts.count
         Boolean(True).info("Cells: " + parts_count.to_string())
-            
-        rep.cells.out()
-        
+        insts.out()
 
     # ====================================================================================================
-    # Fracturing with cones
+    # Cell fracturation
     # ====================================================================================================
 
-    with GeoNodes("Cone Split"):
+    with GeoNodes("Break with Subdivisions"):
         
-        mesh = Mesh()
-        count = Integer(10, "Count", 0)
-        min_size = Float(.1, "Min Size")
-        seed = Integer(0, "Seed")
+        mesh      = Mesh()
+        subd      = Integer(1,        "Divisions", 0, 7)
+        disp      = Float.Factor(1.,  "Displacement", 0, 2)
+        merge     = Float.Factor(0.2, "Merge", 0, 1)
+        thickness = Float(0.0,        "Thickness")
+        seed      = Integer(0,        "Seed")
+
         
-        #rot = mesh.points.sample_index(Vector.Random(-pi, pi, seed=seed), index=0)    
-        #rot = Rotation()
-        
-        #with Layout("Rotation"):
-        #    mesh.transform(rotation=rot)
-        
-        with Layout("Mesh loc and dims"):
-            dims = mesh.points.attribute_statistic(nd.position)
+        with Layout("Dimensions"):
+            node = mesh.points.attribute_statistic(nd.position).node
+            size = node.max - node.min
+            x, y, z = size.xyz
+            min_size = gnmath.min(x, gnmath.min(y, z))
             
-            center = ((dims.min_ + dims.max_)/2)._lc("Center")
-            sizes = (dims.max_ - dims.min_)._lc("Size")
+            max_disp = min_size/2**subd
             
-        with Layout("Mesh size"):
-            sx, sy, sz = sizes.xyz
-            size = gnmath.max(gnmath.max(sx, sy), sz)
-            small = size < min_size
-            small._lc("Small part")
+            disp *= max_disp
             
-            count.switch(small, 0)
+        with Layout("Subdivide and displace"):
+            count = mesh.points.count
+            edges_count = mesh.edges.count
             
-        for rep in repeat(count, mesh=mesh):
+            mesh = mesh.subdivide(subd)
+            v = Vector.Random(-disp, disp, seed=seed)
+            v -= nd.normal.scale(v.dot(nd.normal))
             
-            rep_seed = seed.hash_value(rep.iteration)
+            int_count = count + edges_count*(2**subd - 1)
+                
+            mesh.offset = v.switch(nd.index < int_count)
             
-            n = rep.mesh.points.sample_index(Integer.Random(3, 10, seed=rep_seed), index=0)
-            r = rep.mesh.points.sample_index(Float.Random(0.7, 1.3, seed=rep_seed + 1), index=0)
+        with Layout("Split faces and merge some of them"):
             
-            with Layout("A random polygon"):
-                cone = Mesh.Cone(
-                    radius_bottom   = 0, 
-                    radius_top      = r, 
-                    vertices        = n, 
-                    depth           = 1.1,
-                    fill_type       = 'N-Gon')
+            mesh.faces.Temp_Pos = nd.position
+            mesh.faces.Cell_ID = nd.index
+            
+            for rep in repeat(mesh.edges.count, mesh=mesh, merge=Boolean.Random(merge, seed=seed + 20)):
+                
+                corner0 = nd.corners_of_edge(edge_index=rep.iteration, sort_index=0)
+                corner1 = nd.corners_of_edge(edge_index=rep.iteration, sort_index=1)
+                do_merge = rep.mesh.edges.sample_index(rep.merge, index=rep.iteration)
+                
+                face0 = nd.face_of_corner(corner0)
+                face1 = nd.face_of_corner(corner1)
+                
+                new_index = rep.mesh.faces.sample_index(Integer("Cell ID"), index=face0)
+                mesh = Mesh(rep.mesh)
+                mesh.faces[nd.index == face1].Cell_ID = new_index
                     
-                rot = rep.mesh.points.sample_index(Vector.Random(-pi, pi, seed=rep_seed + 2), index=0)
-                cone[nd.index != 0].offset = Vector.Random(-0.4*r, .4*r, seed=rep_seed + 3)*(1, 1, 0)
+                rep.mesh.switch(do_merge, mesh)
                 
-                cone.transform(translation=center, scale=size, rotation=rot)
+        with Layout("Split to islands"):
                 
-                a = Mesh(rep.mesh).intersect(cone, solver='Manifold')
-                b = Mesh(rep.mesh).difference(cone, solver='Manifold')
-                
-                rep.mesh = a + b
-                
-        rep.mesh.out()
+            mesh = Mesh(rep.mesh)
+            mesh.remove_named_attribute("Wildcard", "Temp*")
 
-    # ====================================================================================================
-    # Mesh to located instances
-    # ====================================================================================================
+            cells = G().mesh_to_located_instances(
+                mesh, 
+                use_islands = False, 
+                group_id    = Integer("Cell ID"),
+                thickness   = thickness,
+                )
+            
+            cells.remove_named_attribute(name="Cell ID")
+            
+        cells.out()
 
-    with GeoNodes("Mesh to Located Instances"):
-        """ 'Split to instances' locates islands at (0, 0, 0)
-
-        This Group locates instances at their center
-        """
-        
-        mesh = Mesh()
-        
-        instances = mesh.points.split_to_instances(group_id=nd.mesh_island().island_index)
-        
-        for rep in instances.insts.for_each():
-            m = Mesh(Instances(rep.element).realize())
-            dims = m.points.attribute_statistic(nd.position)
-            c = (dims.min_ + dims.max_)/2
-            m.offset = -c
-            
-            size = dims.max_ + dims.min_
-            sx, sy, sz = size.xyz
-            vol = sx*sy*sz 
-            
-            cell = m.points.split_to_instances()
-            cell.position = c
-            cell.insts.Volume = vol
-            cell.insts.Size = size
-            
-            rep.geometry = cell
-            
-        rep.generated.out()
 
     # ====================================================================================================
     # Gravity
@@ -296,6 +331,7 @@ def demo():
             mass = Float("Mass")
             mass.switch_false(mass.exists, 1.)
 
+            r = Vector("V").length()
             cloud.points.V = G_*mass*Vector("V").scale(r**(-3))
 
             cloud.out()
@@ -330,7 +366,7 @@ def demo():
                 rep.cloud.points.V = nd.position - pos
 
                 # Basic law: contributions are in V
-                rep.cloud = law(
+                rep.cloud = Cloud(law.evaluate(
                     cloud       = rep.cloud, 
                     index       = rep.iteration, 
                     signature   = ({
@@ -338,7 +374,7 @@ def demo():
                         "Index"  : Integer,
                     }, {
                         "Cloud" : Cloud,
-                    }))
+                    })))
 
                 # Add contributions
                 sel = nd.index == rep.iteration
@@ -369,6 +405,7 @@ def demo():
         # ---------------------------------------------------------------------------
 
         cloud = Cloud()
+        active = Boolean(True, "Active")
         speed = Vector(     name = "Speed",     hide_value=True)
         rot   = Rotation(   name = "Rotation",  hide_value=True)
         omega = Float(      name = "Omega",     hide_value=True)
@@ -382,6 +419,7 @@ def demo():
 
         with Layout("Initialization"):
 
+            #cloud.points.Active = active
             cloud.points.Speed = speed
 
             axis = rot.to_axis_angle()
@@ -415,24 +453,24 @@ def demo():
 
                 # Evaluate the forces
                 for cl in [gravity, viscosity]:
-                    rep.cloud = cl.evaluate(cloud=rep.cloud, t=0.0, dt=dt, signature=sig)
+                    rep.cloud = Cloud(cl.evaluate(cloud=rep.cloud, t=0.0, dt=dt, signature=sig))
 
                 # Simulation
                 acc   = Vector("Acceleration")
                 speed = Vector("Speed")
+                #act   = Boolean("Active")
 
                 # New position and speed
                 new_speed = speed + acc*dt
-                rep.cloud.points.Speed = new_speed
-                rep.cloud.offset = (speed + new_speed).scale(dt/2)
+                rep.cloud.points[active].Speed = new_speed
+                rep.cloud[active].offset = (speed + new_speed).scale(dt/2)
 
                 # Rotation            
                 angle = Float("Angle") + Float("Omega")*dt
-                rep.cloud.points.Rotation = Rotation.FromAxisAngle(Vector("Axis"), angle)
-                rep.cloud.points.Angle = angle
+                rep.cloud.points[active].Rotation = Rotation.FromAxisAngle(Vector("Axis"), angle)
+                rep.cloud.points[active].Angle = angle
 
             rep.cloud.out()
-            #cloud.out()
 
         cloud = sim.cloud
 

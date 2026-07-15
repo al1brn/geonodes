@@ -390,9 +390,11 @@ class Tree:
             tree_type        : str   = 'GeometryNodeTree',
             *,
             fake_user        : bool  = False, 
-            is_group         : bool  = False, 
+            is_group         : bool  = False,
             prefix           : str   = "",
-            replace_material : bool  = False):
+            replace_material : bool  = False,
+            color_tag        : str = 'NONE',
+            ):
         
         """ 
 
@@ -416,8 +418,17 @@ class Tree:
         replace_material : bool, default=False
             replace the existing matertial if True
 
+        color_tag : str, default='NONE'
+            group or modifier color_tag attribute
+
         """
         self._btree = None
+
+        # Loaded vs created
+        self._loaded = False
+
+        # Arrange when finished
+        self._use_arrange = True
 
         # In / out nodes cache
         self._input_node  = None
@@ -453,7 +464,16 @@ class Tree:
 
         self.ignore = False
 
-        if tree_type == 'ShaderNodeTree':
+        if tree_type is None:
+            btree = tree_name
+            if not isinstance(btree, bpy.types.NodeTree):
+                raise NodeError(
+                    f"Tree inititialization error: when 'tree_type' is None, 'tree_name' must be a tree, not <{tree_name}>."
+                    )
+            self._btree = btree
+            self._loaded = True
+
+        elif tree_type == 'ShaderNodeTree':
 
             self._material = None
             if not is_group:
@@ -504,7 +524,15 @@ class Tree:
                 break
 
         # Clear tree
-        self.clear(keep_nodes=False)
+        if not self._loaded:
+            self.clear(keep_nodes=False)
+
+        # ---------------------------------------------------------------------------
+        # Color tag
+        # ---------------------------------------------------------------------------
+
+        if hasattr(self._btree, 'color_tag'):
+            utils.set_rna_attr(self._btree, 'color_tag', color_tag)
 
         # ---------------------------------------------------------------------------
         # Interface
@@ -520,6 +548,11 @@ class Tree:
         # ---------------------------------------------------------------------------
 
         self._rng = np.random.default_rng(0)
+
+        # Load the tree
+        if self._loaded:
+            self.load_btree()
+
 
     # ====================================================================================================
     # Stack of trees
@@ -596,6 +629,9 @@ class Tree:
 
             return
         
+        if self._loaded:
+            return
+        
         # ---------------------------------------------------------------------------
         # Finalize
         # ---------------------------------------------------------------------------
@@ -661,8 +697,6 @@ class Tree:
 
         Tree._total_nodes += len(self._btree.nodes)
         Tree._total_links += len(self._btree.links)      
-        
-
 
     # ----------------------------------------------------------------------------------------------------
     # Context management
@@ -946,7 +980,23 @@ class Tree:
             self._output_node = node
 
         return node
+    
+    # ----------------------------------------------------------------------------------------------------
+    # Load the tree
+    # ----------------------------------------------------------------------------------------------------
 
+    def load_btree(self):
+        from .nodeclass import Node
+
+        self._use_arrange = False
+
+        self.push()
+        for bnode in self._btree.nodes:
+            if bnode.bl_idname in []:
+                pass
+            else:
+                Node(bnode)
+        self.pop()
 
     # ====================================================================================================
     # Sockets creation
@@ -1060,7 +1110,8 @@ class Tree:
         -------
         None
         """
-        treearrange.arrange(self._btree)
+        if self._use_arrange:
+            treearrange.arrange(self._btree)
 
     # ====================================================================================================
     # Node colors
