@@ -1,4 +1,4 @@
-# Generated 2026-04-05 14:24:03
+# Generated 2026-07-20 17:00:26
 
 from __future__ import annotations
 from .. sockettype import SocketType
@@ -1576,6 +1576,75 @@ class Mesh(Socket):
         node = Node('Mesh to Volume', {'Mesh': self, 'Density': density, 'Resolution Mode': resolution_mode, 'Voxel Size': voxel_size, 'Voxel Amount': voxel_amount, 'Interior Band Width': interior_band_width})
         return node._out
 
+    def bevel(self,
+                    affect_kind: Literal['Vertices', 'Edges'] = None,
+                    start_left_offset: Float = None,
+                    start_right_offset: Float = None,
+                    end_left_offset: Float = None,
+                    end_right_offset: Float = None,
+                    offset: Float = None,
+                    miter: Boolean = None,
+                    spread: Float = None,
+                    segments: Integer = None,
+                    shape: Float = None,
+                    profile: Geometry = None):
+        """ > Node <&Node Mesh Bevel>
+
+        > ***Jump*** : Socket refers to node output socket after the call
+
+        **Fixed values**
+
+        | Kind   | Name      | Value             |
+        | ------ | --------- | ----------------- |
+        | Socket | Mesh      | `self`            |
+        | Socket | Selection | `self[selection]` |
+
+        Parameters
+        ----------
+        affect_kind : menu='Edges', optional
+            ('Vertices', 'Edges')
+        
+        start_left_offset : Float, optional
+            socket 'Start Left Offset' (id: Start Left Offset)
+        
+        start_right_offset : Float, optional
+            socket 'Start Right Offset' (id: Start Right Offset)
+        
+        end_left_offset : Float, optional
+            socket 'End Left Offset' (id: End Left Offset)
+        
+        end_right_offset : Float, optional
+            socket 'End Right Offset' (id: End Right Offset)
+        
+        offset : Float, optional
+            socket 'Offset' (id: Offset)
+        
+        miter : Boolean, optional
+            socket 'Miter' (id: Miter)
+        
+        spread : Float, optional
+            socket 'Spread' (id: Spread)
+        
+        segments : Integer, optional
+            socket 'Segments' (id: Segments)
+        
+        shape : Float, optional
+            socket 'Shape' (id: Shape)
+        
+        profile : Geometry, optional
+            socket 'Profile' (id: Profile)
+        
+
+        Returns
+        -------
+        Mesh
+            peer sockets: vertex_face_ (Boolean), edge_face_ (Boolean), outer_edge_ (Boolean), mid_edge_ (Boolean)
+
+        """
+        node = Node('Mesh Bevel', {'Mesh': self, 'Selection': self.get_selection(), 'Affect Kind': affect_kind, 'Start Left Offset': start_left_offset, 'Start Right Offset': start_right_offset, 'End Left Offset': end_left_offset, 'End Right Offset': end_right_offset, 'Offset': offset, 'Miter': miter, 'Spread': spread, 'Segments': segments, 'Shape': shape, 'Profile': profile})
+        self._jump(node._out)
+        return self._domain_to_geometry
+
     @classmethod
     def UVSphere(cls, segments: Integer = None, rings: Integer = None, radius: Float = None):
         """ > Node <&Node UV Sphere>
@@ -1891,6 +1960,7 @@ class Mesh(Socket):
                     edge_crease: Float = None,
                     vertex_crease: Float = None,
                     limit_surface: Boolean = None,
+                    quality: Integer = None,
                     uv_smooth: Literal['None', 'Keep Corners', 'Keep Corners, Junctions', 'Keep Corners, Junctions, Concave', 'Keep Boundaries', 'All'] = None,
                     boundary_smooth: Literal['Keep Corners', 'All'] = None):
         """ > Node <&Node Subdivision Surface>
@@ -1917,6 +1987,9 @@ class Mesh(Socket):
         limit_surface : Boolean, optional
             socket 'Limit Surface' (id: Limit Surface)
         
+        quality : Integer, optional
+            socket 'Quality' (id: Quality)
+        
         uv_smooth : menu='Keep Boundaries', optional
             ('None', 'Keep Corners', 'Keep Corners, Junctions', 'Keep Corners, Junctions, Concave', 'Keep Boundaries', 'All')
         
@@ -1928,7 +2001,7 @@ class Mesh(Socket):
         -------
         Mesh
         """
-        node = Node('Subdivision Surface', {'Mesh': self, 'Level': level, 'Edge Crease': edge_crease, 'Vertex Crease': vertex_crease, 'Limit Surface': limit_surface, 'UV Smooth': uv_smooth, 'Boundary Smooth': boundary_smooth})
+        node = Node('Subdivision Surface', {'Mesh': self, 'Level': level, 'Edge Crease': edge_crease, 'Vertex Crease': vertex_crease, 'Limit Surface': limit_surface, 'Quality': quality, 'UV Smooth': uv_smooth, 'Boundary Smooth': boundary_smooth})
         self._jump(node._out)
         return self._domain_to_geometry
 

@@ -1,4 +1,4 @@
-# Generated 2026-04-05 14:24:03
+# Generated 2026-07-20 17:00:26
 
 from __future__ import annotations
 from .. sockettype import SocketType
@@ -180,14 +180,14 @@ class Integer(Socket):
         Parameters
         ----------
         b : Integer, optional
-            socket 'B' (id: B_INT)
+            socket 'B' (id: B)
         
 
         Returns
         -------
         Boolean
         """
-        node = Node('Compare', {'A_INT': self, 'B_INT': b}, data_type='INT', mode='ELEMENT', operation='LESS_THAN')
+        node = Node('Compare', {'A': self, 'B': b}, data_type='INT', mode='ELEMENT', operation='LESS_THAN')
         return node._out
 
     def less_equal(self, b: Integer = None):
@@ -205,14 +205,14 @@ class Integer(Socket):
         Parameters
         ----------
         b : Integer, optional
-            socket 'B' (id: B_INT)
+            socket 'B' (id: B)
         
 
         Returns
         -------
         Boolean
         """
-        node = Node('Compare', {'A_INT': self, 'B_INT': b}, data_type='INT', mode='ELEMENT', operation='LESS_EQUAL')
+        node = Node('Compare', {'A': self, 'B': b}, data_type='INT', mode='ELEMENT', operation='LESS_EQUAL')
         return node._out
 
     def greater_than(self, b: Integer = None):
@@ -230,14 +230,14 @@ class Integer(Socket):
         Parameters
         ----------
         b : Integer, optional
-            socket 'B' (id: B_INT)
+            socket 'B' (id: B)
         
 
         Returns
         -------
         Boolean
         """
-        node = Node('Compare', {'A_INT': self, 'B_INT': b}, data_type='INT', mode='ELEMENT', operation='GREATER_THAN')
+        node = Node('Compare', {'A': self, 'B': b}, data_type='INT', mode='ELEMENT', operation='GREATER_THAN')
         return node._out
 
     def greater_equal(self, b: Integer = None):
@@ -255,14 +255,14 @@ class Integer(Socket):
         Parameters
         ----------
         b : Integer, optional
-            socket 'B' (id: B_INT)
+            socket 'B' (id: B)
         
 
         Returns
         -------
         Boolean
         """
-        node = Node('Compare', {'A_INT': self, 'B_INT': b}, data_type='INT', mode='ELEMENT', operation='GREATER_EQUAL')
+        node = Node('Compare', {'A': self, 'B': b}, data_type='INT', mode='ELEMENT', operation='GREATER_EQUAL')
         return node._out
 
     def equal(self, b: Integer = None):
@@ -280,14 +280,14 @@ class Integer(Socket):
         Parameters
         ----------
         b : Integer, optional
-            socket 'B' (id: B_INT)
+            socket 'B' (id: B)
         
 
         Returns
         -------
         Boolean
         """
-        node = Node('Compare', {'A_INT': self, 'B_INT': b}, data_type='INT', mode='ELEMENT', operation='EQUAL')
+        node = Node('Compare', {'A': self, 'B': b}, data_type='INT', mode='ELEMENT', operation='EQUAL')
         return node._out
 
     def not_equal(self, b: Integer = None):
@@ -305,14 +305,14 @@ class Integer(Socket):
         Parameters
         ----------
         b : Integer, optional
-            socket 'B' (id: B_INT)
+            socket 'B' (id: B)
         
 
         Returns
         -------
         Boolean
         """
-        node = Node('Compare', {'A_INT': self, 'B_INT': b}, data_type='INT', mode='ELEMENT', operation='NOT_EQUAL')
+        node = Node('Compare', {'A': self, 'B': b}, data_type='INT', mode='ELEMENT', operation='NOT_EQUAL')
         return node._out
 
     def hash_value(self, seed: Integer = None):
@@ -754,10 +754,10 @@ class Integer(Socket):
         Parameters
         ----------
         min : Integer, optional
-            socket 'Min' (id: Min_002)
+            socket 'Min' (id: Min)
         
         max : Integer, optional
-            socket 'Max' (id: Max_002)
+            socket 'Max' (id: Max)
         
         id : Integer, optional
             socket 'ID' (id: ID)
@@ -770,10 +770,10 @@ class Integer(Socket):
         -------
         Integer
         """
-        node = Node('Random Value', {'Min_002': min, 'Max_002': max, 'ID': id, 'Seed': seed}, data_type='INT')
+        node = Node('Random Value', {'Min': min, 'Max': max, 'ID': id, 'Seed': seed}, data_type='INT')
         return cls(node._out)
 
-    def to_string(self):
+    def to_string(self, base: Integer = None, padding: Integer = None):
         """ > Node <&Node Value to String>
 
         **Fixed values**
@@ -783,11 +783,20 @@ class Integer(Socket):
         | Socket    | Value       | `self`  |
         | Parameter | `data_type` | `'INT'` |
 
+        Parameters
+        ----------
+        base : Integer, optional
+            socket 'Base' (id: Base)
+        
+        padding : Integer, optional
+            socket 'Padding' (id: Padding)
+        
+
         Returns
         -------
         String
         """
-        node = Node('Value to String', {'Value': self}, data_type='INT')
+        node = Node('Value to String', {'Value': self, 'Base': base, 'Padding': padding}, data_type='INT')
         return node._out
 
     def blur(self, iterations: Integer = None, weight: Float = None):
@@ -1131,6 +1140,133 @@ class Integer(Socket):
         node = Node('Enable Output', {'Enable': enable, 'Value': self}, data_type='INT')
         return node._out
 
+    def field_to_list(self, named_sockets: dict = {}, **sockets):
+        """ > Node <&Node Field to List>
+
+        **Fixed values**
+
+        | Kind   | Name  | Value  |
+        | ------ | ----- | ------ |
+        | Socket | Count | `self` |
+
+        Parameters
+        ----------
+        named_sockets : dict, default={}
+            Sockets created with string names
+        
+        sockets : dict, default={}
+            Socket created with python name attributes
+
+        Returns
+        -------
+        None
+        """
+        node = Node('Field to List', {'Count': self, **named_sockets}, **sockets)
+        return node._out
+
+    def list_length(self):
+        """ > Node <&Node List Length>
+
+        **Fixed values**
+
+        | Kind      | Name        | Value   |
+        | --------- | ----------- | ------- |
+        | Socket    | List        | `self`  |
+        | Parameter | `data_type` | `'INT'` |
+
+        Returns
+        -------
+        Integer
+        """
+        node = Node('List Length', {'List': self}, data_type='INT')
+        return node._out
+
+    def sort_list(self,
+                    selection: Boolean = None,
+                    group_id: Integer = None,
+                    sort_weight: Float = None):
+        """ > Node <&Node Sort List>
+
+        **Fixed values**
+
+        | Kind      | Name          | Value   |
+        | --------- | ------------- | ------- |
+        | Socket    | List          | `self`  |
+        | Parameter | `socket_type` | `'INT'` |
+
+        Parameters
+        ----------
+        selection : Boolean, optional
+            socket 'Selection' (id: Selection)
+        
+        group_id : Integer, optional
+            socket 'Group ID' (id: Group ID)
+        
+        sort_weight : Float, optional
+            socket 'Sort Weight' (id: Sort Weight)
+        
+
+        Returns
+        -------
+        Integer
+        """
+        node = Node('Sort List', {'List': self, 'Selection': selection, 'Group ID': group_id, 'Sort Weight': sort_weight}, socket_type='INT')
+        return node._out
+
+    def filter_list(self, selection: Boolean = None):
+        """ > Node <&Node Filter List>
+
+        **Fixed values**
+
+        | Kind      | Name          | Value   |
+        | --------- | ------------- | ------- |
+        | Socket    | List          | `self`  |
+        | Parameter | `socket_type` | `'INT'` |
+
+        Parameters
+        ----------
+        selection : Boolean, optional
+            socket 'Selection' (id: Selection)
+        
+
+        Returns
+        -------
+        Integer
+            peer sockets: inverted_ (Integer)
+
+        """
+        node = Node('Filter List', {'List': self, 'Selection': selection}, socket_type='INT')
+        return node._out
+
+    def get_list_item(self,
+                    index: Integer = None,
+                    structure_type: Literal['AUTO', 'DYNAMIC', 'FIELD', 'GRID', 'LIST', 'SINGLE'] = 'AUTO'):
+        """ > Node <&Node Get List Item>
+
+        **Fixed values**
+
+        | Kind      | Name          | Value   |
+        | --------- | ------------- | ------- |
+        | Socket    | List          | `self`  |
+        | Parameter | `socket_type` | `'INT'` |
+
+        Parameters
+        ----------
+        index : Integer, optional
+            socket 'Index' (id: Index)
+        
+        structure_type : Literal['Auto', 'Dynamic', 'Field', 'Grid', 'List', 'Single']
+            parameter `structure_type`
+        
+
+        Returns
+        -------
+        Integer
+        """
+        utils.check_enum_arg('Get List Item', 'structure_type', structure_type, 'get_list_item', ('AUTO', 'DYNAMIC', 'FIELD', 'GRID', 'LIST', 'SINGLE'))
+        node = Node('Get List Item', {'List': self, 'Index': index}, socket_type='INT', structure_type=structure_type)
+        return node._out
+
     def clip_grid(self,
                     min_x: Integer = None,
                     min_y: Integer = None,
@@ -1278,9 +1414,32 @@ class Integer(Socket):
         node = Node('Grid to Points', {'Grid': self}, data_type='INT')
         return node._out
 
+    def implicit_conversion(self, socket_idname = 'NodeSocketColor'):
+        """ > Node <&Node Implicit Conversion>
+
+        **Fixed values**
+
+        | Kind      | Name        | Value   |
+        | --------- | ----------- | ------- |
+        | Socket    | Value       | `self`  |
+        | Parameter | `data_type` | `'INT'` |
+
+        Parameters
+        ----------
+        socket_idname : str
+            parameter `socket_idname`
+        
+
+        Returns
+        -------
+        Integer
+        """
+        node = Node('Implicit Conversion', {'Value': self}, data_type='INT', socket_idname=socket_idname)
+        return node._out
+
     @classmethod
     def _create_input_socket(cls,
-        value: object = 0,
+        value: int = 0,
         name: str = 'Integer',
         min: int = -2147483648,
         max: int = 2147483647,
@@ -1300,7 +1459,7 @@ class Integer(Socket):
 
         Parameters
         ----------
-        value : object, default=`0`
+        value : int, default=`0`
             Default value
 
         name : str, default=`Integer`
@@ -1337,7 +1496,7 @@ class Integer(Socket):
             Property structure_type in ('AUTO', 'SINGLE')
 
         subtype : str, default=`NONE`
-            Socket sub type in ('NONE', 'PERCENTAGE', 'FACTOR')
+            Socket sub type in ('NONE', 'PIXEL', 'PERCENTAGE', 'FACTOR')
 
 
         Returns
@@ -1354,8 +1513,74 @@ class Integer(Socket):
             shape=shape, subtype=subtype)
 
     @classmethod
+    def Pixel(cls,
+        value: int = 0,
+        name: str = 'Pixel',
+        min: int = -2147483648,
+        max: int = 2147483647,
+        tip: str = '',
+        panel: str = "",
+        optional_label: bool = False,
+        hide_value: bool = False,
+        hide_in_modifier: bool = False,
+        default_attribute: str = '',
+        default_input: Literal['VALUE', 'INDEX', 'ID_OR_INDEX'] = 'VALUE',
+        shape: Literal['AUTO', 'SINGLE'] = 'AUTO',
+         ):
+        """ > Pixel Input
+
+        New <#Integer> input with subtype 'PIXEL'.
+
+        Parameters
+        ----------
+        value : int, default=`0`
+            Default value
+
+        name : str, default=`Pixel`
+            Input socket name
+
+        min : int, default=`-2147483648`
+            Property min_value
+
+        max : int, default=`2147483647`
+            Property max_value
+
+        tip : str, default=`''`
+            Property description
+
+        panel : str, default=``
+            Panel name
+
+        optional_label : bool, default=`False`
+            Property optional_label
+
+        hide_value : bool, default=`False`
+            Property hide_value
+
+        hide_in_modifier : bool, default=`False`
+            Property hide_in_modifier
+
+        default_attribute : str, default=`''`
+            Property default_attribute_name
+
+        default_input : str, default=`'VALUE'`
+            Property default_input in ('VALUE', 'INDEX', 'ID_OR_INDEX')
+
+        shape : str, default=`'AUTO'`
+            Property structure_type in ('AUTO', 'SINGLE')
+
+
+        Returns
+        -------
+        Integer
+        """
+        return cls(value=value, name=name, min=min, max=max, tip=tip, panel=panel,
+            optional_label=optional_label, hide_value=hide_value, hide_in_modifier=hide_in_modifier,
+            default_attribute=default_attribute, default_input=default_input, shape=shape, subtype='PIXEL')
+
+    @classmethod
     def Percentage(cls,
-        value: object = 0,
+        value: int = 0,
         name: str = 'Percentage',
         min: int = -2147483648,
         max: int = 2147483647,
@@ -1374,7 +1599,7 @@ class Integer(Socket):
 
         Parameters
         ----------
-        value : object, default=`0`
+        value : int, default=`0`
             Default value
 
         name : str, default=`Percentage`
@@ -1421,7 +1646,7 @@ class Integer(Socket):
 
     @classmethod
     def Factor(cls,
-        value: object = 0,
+        value: int = 0,
         name: str = 'Factor',
         min: int = -2147483648,
         max: int = 2147483647,
@@ -1440,7 +1665,7 @@ class Integer(Socket):
 
         Parameters
         ----------
-        value : object, default=`0`
+        value : int, default=`0`
             Default value
 
         name : str, default=`Factor`

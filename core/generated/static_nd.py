@@ -1,4 +1,4 @@
-# Generated 2026-04-05 14:24:03
+# Generated 2026-07-20 17:00:26
 
 from __future__ import annotations
 from .. sockettype import SocketType
@@ -325,18 +325,8 @@ class ND:
     def compare(cls,
                     a: Float = None,
                     b: Float = None,
-                    a_1: Integer = None,
-                    b_1: Integer = None,
-                    a_2: Vector = None,
-                    b_2: Vector = None,
-                    a_3: Color = None,
-                    b_3: Color = None,
-                    a_4: String = None,
-                    b_4: String = None,
-                    c: Float = None,
-                    angle: Float = None,
                     epsilon: Float = None,
-                    data_type: Literal['FLOAT', 'INT', 'VECTOR', 'RGBA', 'STRING'] = 'FLOAT',
+                    data_type: Literal['FLOAT', 'INT', 'VECTOR', 'RGBA', 'STRING', 'OBJECT', 'IMAGE', 'COLLECTION', 'MATERIAL', 'FONT', 'SOUND'] = 'FLOAT',
                     mode: Literal['ELEMENT', 'LENGTH', 'AVERAGE', 'DOT_PRODUCT', 'DIRECTION'] = 'ELEMENT',
                     operation: Literal['LESS_THAN', 'LESS_EQUAL', 'GREATER_THAN', 'GREATER_EQUAL', 'EQUAL', 'NOT_EQUAL'] = 'GREATER_THAN'):
         """ > Node <&Node Compare>
@@ -349,40 +339,10 @@ class ND:
         b : Float, optional
             socket 'B' (id: B)
         
-        a_1 : Integer, optional
-            socket 'A' (id: A_INT)
-        
-        b_1 : Integer, optional
-            socket 'B' (id: B_INT)
-        
-        a_2 : Vector, optional
-            socket 'A' (id: A_VEC3)
-        
-        b_2 : Vector, optional
-            socket 'B' (id: B_VEC3)
-        
-        a_3 : Color, optional
-            socket 'A' (id: A_COL)
-        
-        b_3 : Color, optional
-            socket 'B' (id: B_COL)
-        
-        a_4 : String, optional
-            socket 'A' (id: A_STR)
-        
-        b_4 : String, optional
-            socket 'B' (id: B_STR)
-        
-        c : Float, optional
-            socket 'C' (id: C)
-        
-        angle : Float, optional
-            socket 'Angle' (id: Angle)
-        
         epsilon : Float, optional
             socket 'Epsilon' (id: Epsilon)
         
-        data_type : Literal['Float', 'Integer', 'Vector', 'Color', 'String']
+        data_type : Literal['Float', 'Integer', 'Vector', 'Color', 'String', 'Object', 'Image', 'Collection', 'Material', 'Font', 'Sound']
             parameter `data_type`
         
         mode : Literal['Element-Wise', 'Length', 'Average', 'Dot Product', 'Direction']
@@ -398,7 +358,7 @@ class ND:
         """
         utils.check_enum_arg('Compare', 'mode', mode, 'compare', ('ELEMENT', 'LENGTH', 'AVERAGE', 'DOT_PRODUCT', 'DIRECTION'))
         utils.check_enum_arg('Compare', 'operation', operation, 'compare', ('LESS_THAN', 'LESS_EQUAL', 'GREATER_THAN', 'GREATER_EQUAL', 'EQUAL', 'NOT_EQUAL'))
-        node = Node('Compare', {'A': a, 'B': b, 'A_INT': a_1, 'B_INT': b_1, 'A_VEC3': a_2, 'B_VEC3': b_2, 'A_COL': a_3, 'B_COL': b_3, 'A_STR': a_4, 'B_STR': b_4, 'C': c, 'Angle': angle, 'Epsilon': epsilon}, data_type=data_type, mode=mode, operation=operation)
+        node = Node('Compare', {'A': a, 'B': b, 'Epsilon': epsilon}, data_type=data_type, mode=mode, operation=operation)
         return node._out
 
     @classmethod
@@ -419,7 +379,10 @@ class ND:
         return node._out
 
     @classmethod
-    def find_in_string(cls, string: String = None, search: String = None):
+    def find_in_string(cls,
+                    string: String = None,
+                    search: String = None,
+                    mode: Literal['From Start', 'From End'] = None):
         """ > Node <&Node Find in String>
 
         Parameters
@@ -430,6 +393,9 @@ class ND:
         search : String, optional
             socket 'Search' (id: Search)
         
+        mode : menu='From Start', optional
+            ('From Start', 'From End')
+        
 
         Returns
         -------
@@ -437,7 +403,7 @@ class ND:
             peer sockets: count_ (Integer)
 
         """
-        node = Node('Find in String', {'String': string, 'Search': search})
+        node = Node('Find in String', {'String': string, 'Search': search, 'Mode': mode})
         return node._out
 
     @classmethod
@@ -556,6 +522,50 @@ class ND:
         node = Node('Integer', integer=integer)
         return node._out
 
+    @classmethod
+    def integer_vector(cls, vector_dimensions = 3):
+        """ > Node <&Node Integer Vector>
+
+        Parameters
+        ----------
+        vector_dimensions : int
+            parameter `vector_dimensions`
+        
+
+        Returns
+        -------
+        IntVector
+        """
+        node = Node('Integer Vector', vector_dimensions=vector_dimensions)
+        return node._out
+
+    @classmethod
+    def menu(cls, menu = None):
+        """ > Node <&Node Menu Switch>
+
+        Parameters
+        ----------
+        named_sockets : dict, optional
+            sockets to create default={}.
+
+        menu : Socket | str, optional
+            socket to plug in default=None.
+
+        default_value : str | int
+            default value
+
+        data_type : str, default=None
+            data type, auto if None
+
+        sockets : dict
+            items
+
+        """
+        if menu is None:
+            return Node('Menu')._out
+        else:
+            return Node('Menu', value=menu)._out
+
     @utils.classproperty
     def rotation(self):
         """ > Node <&Node Rotation>
@@ -597,15 +607,21 @@ class ND:
         node = Node('String', string=string)
         return node._out
 
-    @utils.classproperty
-    def vector(self):
+    @classmethod
+    def vector(cls, vector_dimensions = 3):
         """ > Node <&Node Vector>
+
+        Parameters
+        ----------
+        vector_dimensions : int
+            parameter `vector_dimensions`
+        
 
         Returns
         -------
         Vector
         """
-        node = Node('Vector', )
+        node = Node('Vector', vector_dimensions=vector_dimensions)
         return node._out
 
     @classmethod
@@ -805,13 +821,8 @@ class ND:
 
     @classmethod
     def random_value(cls,
-                    min: Vector = None,
-                    max: Vector = None,
-                    min_1: Float = None,
-                    max_1: Float = None,
-                    min_2: Integer = None,
-                    max_2: Integer = None,
-                    probability: Float = None,
+                    min: Float = None,
+                    max: Float = None,
                     id: Integer = None,
                     seed: Integer = None,
                     data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'FLOAT_VECTOR'] = 'FLOAT'):
@@ -819,26 +830,11 @@ class ND:
 
         Parameters
         ----------
-        min : Vector, optional
+        min : Float, optional
             socket 'Min' (id: Min)
         
-        max : Vector, optional
+        max : Float, optional
             socket 'Max' (id: Max)
-        
-        min_1 : Float, optional
-            socket 'Min' (id: Min_001)
-        
-        max_1 : Float, optional
-            socket 'Max' (id: Max_001)
-        
-        min_2 : Integer, optional
-            socket 'Min' (id: Min_002)
-        
-        max_2 : Integer, optional
-            socket 'Max' (id: Max_002)
-        
-        probability : Float, optional
-            socket 'Probability' (id: Probability)
         
         id : Integer, optional
             socket 'ID' (id: ID)
@@ -854,7 +850,7 @@ class ND:
         -------
         Float
         """
-        node = Node('Random Value', {'Min': min, 'Max': max, 'Min_001': min_1, 'Max_001': max_1, 'Min_002': min_2, 'Max_002': max_2, 'Probability': probability, 'ID': id, 'Seed': seed}, data_type=data_type)
+        node = Node('Random Value', {'Min': min, 'Max': max, 'ID': id, 'Seed': seed}, data_type=data_type)
         return node._out
 
     @classmethod
@@ -878,6 +874,23 @@ class ND:
         String
         """
         node = Node('Replace String', {'String': string, 'Find': find, 'Replace': replace})
+        return node._out
+
+    @classmethod
+    def reverse_string(cls, string: String = None):
+        """ > Node <&Node Reverse String>
+
+        Parameters
+        ----------
+        string : String, optional
+            socket 'String' (id: String)
+        
+
+        Returns
+        -------
+        String
+        """
+        node = Node('Reverse String', {'String': string})
         return node._out
 
     @classmethod
@@ -1044,6 +1057,26 @@ class ND:
         return node
 
     @classmethod
+    def set_string_case(cls, string: String = None, case: Literal['Uppercase', 'Lowercase'] = None):
+        """ > Node <&Node Set String Case>
+
+        Parameters
+        ----------
+        string : String, optional
+            socket 'String' (id: String)
+        
+        case : menu='Uppercase', optional
+            ('Uppercase', 'Lowercase')
+        
+
+        Returns
+        -------
+        String
+        """
+        node = Node('Set String Case', {'String': string, 'Case': case})
+        return node._out
+
+    @classmethod
     def slice_string(cls, string: String = None, position: Integer = None, length: Integer = None):
         """ > Node <&Node Slice String>
 
@@ -1067,6 +1100,26 @@ class ND:
         return node._out
 
     @classmethod
+    def split_string(cls, string: String = None, separator: String = None):
+        """ > Node <&Node Split String>
+
+        Parameters
+        ----------
+        string : String, optional
+            socket 'String' (id: String)
+        
+        separator : String, optional
+            socket 'Separator' (id: Separator)
+        
+
+        Returns
+        -------
+        String
+        """
+        node = Node('Split String', {'String': string, 'Separator': separator})
+        return node._out
+
+    @classmethod
     def string_length(cls, string: String = None):
         """ > Node <&Node String Length>
 
@@ -1084,13 +1137,19 @@ class ND:
         return node._out
 
     @classmethod
-    def string_to_value(cls, string: String = None, data_type: Literal['FLOAT', 'INT'] = 'FLOAT'):
+    def string_to_value(cls,
+                    string: String = None,
+                    base: Integer = None,
+                    data_type: Literal['FLOAT', 'INT'] = 'FLOAT'):
         """ > Node <&Node String to Value>
 
         Parameters
         ----------
         string : String, optional
             socket 'String' (id: String)
+        
+        base : Integer, optional
+            socket 'Base' (id: Base)
         
         data_type : Literal['Float', 'Integer']
             parameter `data_type`
@@ -1102,7 +1161,7 @@ class ND:
             peer sockets: length_ (Integer)
 
         """
-        node = Node('String to Value', {'String': string}, data_type=data_type)
+        node = Node('String to Value', {'String': string, 'Base': base}, data_type=data_type)
         return node._out
 
     @classmethod
@@ -1163,9 +1222,45 @@ class ND:
         return node._out
 
     @classmethod
+    def trim_string(cls,
+                    string: String = None,
+                    characters: String = None,
+                    whitespace: Boolean = None,
+                    start: Boolean = None,
+                    end: Boolean = None):
+        """ > Node <&Node Trim String>
+
+        Parameters
+        ----------
+        string : String, optional
+            socket 'String' (id: String)
+        
+        characters : String, optional
+            socket 'Characters' (id: Characters)
+        
+        whitespace : Boolean, optional
+            socket 'Whitespace' (id: Whitespace)
+        
+        start : Boolean, optional
+            socket 'Start' (id: Start)
+        
+        end : Boolean, optional
+            socket 'End' (id: End)
+        
+
+        Returns
+        -------
+        String
+        """
+        node = Node('Trim String', {'String': string, 'Characters': characters, 'Whitespace': whitespace, 'Start': start, 'End': end})
+        return node._out
+
+    @classmethod
     def value_to_string(cls,
                     value: Float = None,
                     decimals: Integer = None,
+                    base: Integer = None,
+                    padding: Integer = None,
                     data_type: Literal['FLOAT', 'INT'] = 'FLOAT'):
         """ > Node <&Node Value to String>
 
@@ -1177,6 +1272,12 @@ class ND:
         decimals : Integer, optional
             socket 'Decimals' (id: Decimals)
         
+        base : Integer, optional
+            socket 'Base' (id: Base)
+        
+        padding : Integer, optional
+            socket 'Padding' (id: Padding)
+        
         data_type : Literal['Float', 'Integer']
             parameter `data_type`
         
@@ -1185,7 +1286,7 @@ class ND:
         -------
         String
         """
-        node = Node('Value to String', {'Value': value, 'Decimals': decimals}, data_type=data_type)
+        node = Node('Value to String', {'Value': value, 'Decimals': decimals, 'Base': base, 'Padding': padding}, data_type=data_type)
         return node._out
 
     @classmethod
@@ -1354,7 +1455,7 @@ class ND:
         Returns
         -------
         Matrix
-            peer sockets: local_pose_ (Matrix), transform_pose_ (Matrix), rest_pose_ (Matrix), rest_length_ (Float)
+            peer sockets: local_pose_ (Matrix), transform_pose_ (Matrix), rest_pose_ (Matrix), rest_length_ (Float), exists_ (Boolean)
 
         """
         utils.check_enum_arg('Bone Info', 'transform_space', transform_space, 'bone_info', ('ORIGINAL', 'RELATIVE'))
@@ -1406,6 +1507,7 @@ class ND:
     def capture_attribute(cls,
                     named_sockets: dict = {},
                     geometry: Geometry = None,
+                    selection: Boolean = None,
                     domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'] = 'POINT',
                     **sockets):
         """ > Node <&Node Capture Attribute>
@@ -1418,6 +1520,9 @@ class ND:
         geometry : Geometry, optional
             socket 'Geometry' (id: Geometry)
         
+        selection : Boolean, optional
+            socket 'Selection' (id: Selection)
+        
         domain : Literal['Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer']
             parameter `domain`
         
@@ -1427,9 +1532,118 @@ class ND:
         Returns
         -------
         Geometry
+            peer sockets: selection_ (Boolean)
+
         """
         utils.check_enum_arg('Capture Attribute', 'domain', domain, 'capture_attribute', ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'))
-        node = Node('Capture Attribute', {'Geometry': geometry, **named_sockets}, domain=domain, **sockets)
+        node = Node('Capture Attribute', {'Geometry': geometry, 'Selection': selection, **named_sockets}, domain=domain, **sockets)
+        return node._out
+
+    @classmethod
+    def closure_to_list(cls,
+                    named_sockets: dict = {},
+                    count: Integer = None,
+                    closure: Closure = None,
+                    **sockets):
+        """ > Node <&Node Closure to List>
+
+        Parameters
+        ----------
+        named_sockets : dict, default={}
+            Sockets created with string names
+        
+        count : Integer, optional
+            socket 'Count' (id: Count)
+        
+        closure : Closure, optional
+            socket 'Closure' (id: Closure)
+        
+        sockets : dict, default={}
+            Socket created with python name attributes
+
+        Returns
+        -------
+        None
+        """
+        node = Node('Closure to List', {'Count': count, 'Closure': closure, **named_sockets}, **sockets)
+        return node._out
+
+    @classmethod
+    def cluster_by_connected(cls,
+                    selection: Boolean = None,
+                    position: Vector = None,
+                    distance: Float = None):
+        """ > Node <&Node Cluster by Connected>
+
+        Parameters
+        ----------
+        selection : Boolean, optional
+            socket 'Selection' (id: Selection)
+        
+        position : Vector, optional
+            socket 'Position' (id: Position)
+        
+        distance : Float, optional
+            socket 'Distance' (id: Distance)
+        
+
+        Returns
+        -------
+        Integer
+        """
+        node = Node('Cluster by Connected', {'Selection': selection, 'Position': position, 'Distance': distance})
+        return node._out
+
+    @classmethod
+    def cluster_by_distance(cls,
+                    selection: Boolean = None,
+                    group_id: Integer = None,
+                    position: Vector = None,
+                    distance: Float = None):
+        """ > Node <&Node Cluster by Distance>
+
+        Parameters
+        ----------
+        selection : Boolean, optional
+            socket 'Selection' (id: Selection)
+        
+        group_id : Integer, optional
+            socket 'Group ID' (id: Group ID)
+        
+        position : Vector, optional
+            socket 'Position' (id: Position)
+        
+        distance : Float, optional
+            socket 'Distance' (id: Distance)
+        
+
+        Returns
+        -------
+        Integer
+        """
+        node = Node('Cluster by Distance', {'Selection': selection, 'Group ID': group_id, 'Position': position, 'Distance': distance})
+        return node._out
+
+    @classmethod
+    def collection_children(cls, collection: Collection = None, recursive: Boolean = None):
+        """ > Node <&Node Collection Children>
+
+        Parameters
+        ----------
+        collection : Collection, optional
+            socket 'Collection' (id: Collection)
+        
+        recursive : Boolean, optional
+            socket 'Recursive' (id: Recursive)
+        
+
+        Returns
+        -------
+        Collection
+            peer sockets: objects_ (Object)
+
+        """
+        node = Node('Collection Children', {'Collection': collection, 'Recursive': recursive})
         return node._out
 
     @classmethod
@@ -2842,6 +3056,35 @@ class ND:
         return node._out
 
     @classmethod
+    def filter_list(cls,
+                    list: Float = None,
+                    selection: Boolean = None,
+                    socket_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SOUND'] = 'FLOAT'):
+        """ > Node <&Node Filter List>
+
+        Parameters
+        ----------
+        list : Float, optional
+            socket 'List' (id: List)
+        
+        selection : Boolean, optional
+            socket 'Selection' (id: Selection)
+        
+        socket_type : Literal['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Rotation', 'Matrix', 'String', 'Menu', 'Object', 'Image', 'Geometry', 'Collection', 'Material', 'Bundle', 'Closure', 'Font', 'Sound']
+            parameter `socket_type`
+        
+
+        Returns
+        -------
+        Float
+            peer sockets: inverted_ (Float)
+
+        """
+        utils.check_enum_arg('Filter List', 'socket_type', socket_type, 'filter_list', ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SOUND'))
+        node = Node('Filter List', {'List': list, 'Selection': selection}, socket_type=socket_type)
+        return node._out
+
+    @classmethod
     def flip_faces(cls, mesh: Mesh = None, selection: Boolean = None):
         """ > Node <&Node Flip Faces>
 
@@ -2938,6 +3181,40 @@ class ND:
         return node._out
 
     @classmethod
+    def get_attribute_names(cls,
+                    geometry: Geometry = None,
+                    filter_data_type: Boolean = None,
+                    data_type: Literal['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Quaternion', '4x4 Matrix', 'String', '8-Bit Integer', '2D 16-Bit Integer Vector', '2D Integer Vector', '2D Vector', '4D Vector', 'Byte Color'] = None,
+                    filter_domain: Boolean = None,
+                    domain: Literal['Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer'] = None):
+        """ > Node <&Node Get Attribute Names>
+
+        Parameters
+        ----------
+        geometry : Geometry, optional
+            socket 'Geometry' (id: Geometry)
+        
+        filter_data_type : Boolean, optional
+            socket 'Filter Data Type' (id: Filter Data Type)
+        
+        data_type : menu='Float', optional
+            ('Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Quaternion', '4x4 Matrix', 'String', '8-Bit Integer', '2D 16-Bit Integer Vector', '2D Integer Vector', '2D Vector', '4D Vector', 'Byte Color')
+        
+        filter_domain : Boolean, optional
+            socket 'Filter Domain' (id: Filter Domain)
+        
+        domain : menu='Point', optional
+            ('Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer')
+        
+
+        Returns
+        -------
+        String
+        """
+        node = Node('Get Attribute Names', {'Geometry': geometry, 'Filter Data Type': filter_data_type, 'Data Type': data_type, 'Filter Domain': filter_domain, 'Domain': domain})
+        return node._out
+
+    @classmethod
     def get_geometry_bundle(cls, geometry: Geometry = None, remove: Boolean = None):
         """ > Node <&Node Get Geometry Bundle>
 
@@ -2957,6 +3234,34 @@ class ND:
 
         """
         node = Node('Get Geometry Bundle', {'Geometry': geometry, 'Remove': remove})
+        return node._out
+
+    @classmethod
+    def get_geometry_component(cls,
+                    geometry: Geometry = None,
+                    type: Literal['Mesh', 'Point Cloud', 'Curve', 'Instances', 'Grease Pencil', 'Volume'] = None,
+                    remove: Boolean = None):
+        """ > Node <&Node Get Geometry Component>
+
+        Parameters
+        ----------
+        geometry : Geometry, optional
+            socket 'Geometry' (id: Geometry)
+        
+        type : menu='Mesh', optional
+            ('Mesh', 'Point Cloud', 'Curve', 'Instances', 'Grease Pencil', 'Volume')
+        
+        remove : Boolean, optional
+            socket 'Remove' (id: Remove)
+        
+
+        Returns
+        -------
+        Geometry
+            peer sockets: component_ (Geometry), exists_ (Boolean)
+
+        """
+        node = Node('Get Geometry Component', {'Geometry': geometry, 'Type': type, 'Remove': remove})
         return node._out
 
     @classmethod
@@ -3733,7 +4038,7 @@ class ND:
                     index: Integer = None,
                     _0: Float = None,
                     _1: Float = None,
-                    data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT'] = 'FLOAT',
+                    data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SOUND'] = 'FLOAT',
                     **sockets):
         """ > Node <&Node Index Switch>
 
@@ -3751,7 +4056,7 @@ class ND:
         _1 : Float, optional
             socket '1' (id: Item_1)
         
-        data_type : Literal['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Rotation', 'Matrix', 'String', 'Menu', 'Object', 'Image', 'Geometry', 'Collection', 'Material', 'Bundle', 'Closure', 'Font']
+        data_type : Literal['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Rotation', 'Matrix', 'String', 'Menu', 'Object', 'Image', 'Geometry', 'Collection', 'Material', 'Bundle', 'Closure', 'Font', 'Sound']
             parameter `data_type`
         
         sockets : dict, default={}
@@ -3833,6 +4138,23 @@ class ND:
         node = Node('Is Edge Smooth', )
         return node._out
 
+    @classmethod
+    def font(cls, font = None):
+        """ > Node <&Node Font>
+
+        Parameters
+        ----------
+        font : Blender VectorFont | str
+            VectorFont, or name of a valid font in bpy.types.fonts (see `utils.get_font`)
+        
+
+        Returns
+        -------
+        Font
+        """
+        node = Node('Font', font=utils.get_font(font))
+        return node._out
+
     @utils.classproperty
     def id(self):
         """ > Node <&Node ID>
@@ -3889,6 +4211,17 @@ class ND:
 
         """
         node = Node('Instance Bounds', {'Use Radius': use_radius})
+        return node._out
+
+    @utils.classproperty
+    def instance_reference(self):
+        """ > Node <&Node Instance Reference>
+
+        Returns
+        -------
+        Integer
+        """
+        node = Node('Instance Reference', )
         return node._out
 
     @utils.classproperty
@@ -4389,7 +4722,7 @@ class ND:
     def get_list_item(cls,
                     list: Float = None,
                     index: Integer = None,
-                    socket_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT'] = 'FLOAT',
+                    socket_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SOUND'] = 'FLOAT',
                     structure_type: Literal['AUTO', 'DYNAMIC', 'FIELD', 'GRID', 'LIST', 'SINGLE'] = 'AUTO'):
         """ > Node <&Node Get List Item>
 
@@ -4401,7 +4734,7 @@ class ND:
         index : Integer, optional
             socket 'Index' (id: Index)
         
-        socket_type : Literal['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Rotation', 'Matrix', 'String', 'Menu', 'Object', 'Image', 'Geometry', 'Collection', 'Material', 'Bundle', 'Closure', 'Font']
+        socket_type : Literal['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Rotation', 'Matrix', 'String', 'Menu', 'Object', 'Image', 'Geometry', 'Collection', 'Material', 'Bundle', 'Closure', 'Font', 'Sound']
             parameter `socket_type`
         
         structure_type : Literal['Auto', 'Dynamic', 'Field', 'Grid', 'List', 'Single']
@@ -4412,7 +4745,7 @@ class ND:
         -------
         Float
         """
-        utils.check_enum_arg('Get List Item', 'socket_type', socket_type, 'get_list_item', ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT'))
+        utils.check_enum_arg('Get List Item', 'socket_type', socket_type, 'get_list_item', ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SOUND'))
         utils.check_enum_arg('Get List Item', 'structure_type', structure_type, 'get_list_item', ('AUTO', 'DYNAMIC', 'FIELD', 'GRID', 'LIST', 'SINGLE'))
         node = Node('Get List Item', {'List': list, 'Index': index}, socket_type=socket_type, structure_type=structure_type)
         return node._out
@@ -4420,7 +4753,7 @@ class ND:
     @classmethod
     def list_length(cls,
                     list: Float = None,
-                    data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT'] = 'FLOAT'):
+                    data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SOUND'] = 'FLOAT'):
         """ > Node <&Node List Length>
 
         Parameters
@@ -4428,7 +4761,7 @@ class ND:
         list : Float, optional
             socket 'List' (id: List)
         
-        data_type : Literal['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Rotation', 'Matrix', 'String', 'Menu', 'Object', 'Image', 'Geometry', 'Collection', 'Material', 'Bundle', 'Closure', 'Font']
+        data_type : Literal['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Rotation', 'Matrix', 'String', 'Menu', 'Object', 'Image', 'Geometry', 'Collection', 'Material', 'Bundle', 'Closure', 'Font', 'Sound']
             parameter `data_type`
         
 
@@ -4460,7 +4793,7 @@ class ND:
     def menu_switch(cls,
                     named_sockets: dict = {},
                     menu = None,
-                    data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT'] = 'GEOMETRY',
+                    data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SOUND'] = 'GEOMETRY',
                     **sockets):
         """ > Node <&Node Menu Switch>
 
@@ -4472,7 +4805,7 @@ class ND:
         menu : Menu, optional
             Menu selection
         
-        data_type : Literal['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Rotation', 'Matrix', 'String', 'Menu', 'Object', 'Image', 'Geometry', 'Collection', 'Material', 'Bundle', 'Closure', 'Font']
+        data_type : Literal['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Rotation', 'Matrix', 'String', 'Menu', 'Object', 'Image', 'Geometry', 'Collection', 'Material', 'Bundle', 'Closure', 'Font', 'Sound']
             parameter `data_type`
         
         sockets : dict, default={}
@@ -4546,6 +4879,100 @@ class ND:
         """
         utils.check_enum_arg('Merge Layers', 'mode', mode, 'merge_layers', ('MERGE_BY_NAME', 'MERGE_BY_ID'))
         node = Node('Merge Layers', {'Grease Pencil': grease_pencil, 'Selection': selection, 'Group ID': group_id}, mode=mode)
+        return node._out
+
+    @classmethod
+    def merge_points(cls,
+                    geometry: Geometry = None,
+                    selection: Boolean = None,
+                    merge_id: Integer = None):
+        """ > Node <&Node Merge Points>
+
+        Parameters
+        ----------
+        geometry : Geometry, optional
+            socket 'Geometry' (id: Geometry)
+        
+        selection : Boolean, optional
+            socket 'Selection' (id: Selection)
+        
+        merge_id : Integer, optional
+            socket 'Merge ID' (id: Merge ID)
+        
+
+        Returns
+        -------
+        Geometry
+        """
+        node = Node('Merge Points', {'Geometry': geometry, 'Selection': selection, 'Merge ID': merge_id})
+        return node._out
+
+    @classmethod
+    def mesh_bevel(cls,
+                    mesh: Mesh = None,
+                    selection: Boolean = None,
+                    affect_kind: Literal['Vertices', 'Edges'] = None,
+                    start_left_offset: Float = None,
+                    start_right_offset: Float = None,
+                    end_left_offset: Float = None,
+                    end_right_offset: Float = None,
+                    offset: Float = None,
+                    miter: Boolean = None,
+                    spread: Float = None,
+                    segments: Integer = None,
+                    shape: Float = None,
+                    profile: Geometry = None):
+        """ > Node <&Node Mesh Bevel>
+
+        Parameters
+        ----------
+        mesh : Mesh, optional
+            socket 'Mesh' (id: Mesh)
+        
+        selection : Boolean, optional
+            socket 'Selection' (id: Selection)
+        
+        affect_kind : menu='Edges', optional
+            ('Vertices', 'Edges')
+        
+        start_left_offset : Float, optional
+            socket 'Start Left Offset' (id: Start Left Offset)
+        
+        start_right_offset : Float, optional
+            socket 'Start Right Offset' (id: Start Right Offset)
+        
+        end_left_offset : Float, optional
+            socket 'End Left Offset' (id: End Left Offset)
+        
+        end_right_offset : Float, optional
+            socket 'End Right Offset' (id: End Right Offset)
+        
+        offset : Float, optional
+            socket 'Offset' (id: Offset)
+        
+        miter : Boolean, optional
+            socket 'Miter' (id: Miter)
+        
+        spread : Float, optional
+            socket 'Spread' (id: Spread)
+        
+        segments : Integer, optional
+            socket 'Segments' (id: Segments)
+        
+        shape : Float, optional
+            socket 'Shape' (id: Shape)
+        
+        profile : Geometry, optional
+            socket 'Profile' (id: Profile)
+        
+
+        Returns
+        -------
+        Mesh
+            peer sockets: vertex_face_ (Boolean), edge_face_ (Boolean), outer_edge_ (Boolean), mid_edge_ (Boolean)
+
+        """
+        node = Node('Mesh Bevel', {'Mesh': mesh, 'Selection': selection, 'Affect Kind': affect_kind, 'Start Left Offset': start_left_offset, 'Start Right Offset': start_right_offset, 'End Left Offset': end_left_offset, 'End Right Offset': end_right_offset, 'Offset': offset, 'Miter': miter, 'Spread': spread, 'Segments': segments, 'Shape': shape, 'Profile': profile})
         return node._out
 
     @classmethod
@@ -5393,6 +5820,40 @@ class ND:
         return node._out
 
     @classmethod
+    def rename_attribute(cls,
+                    geometry: Geometry = None,
+                    mode: Literal['Single', 'Prefix'] = None,
+                    old: String = None,
+                    new: String = None,
+                    overwrite: Boolean = None):
+        """ > Node <&Node Rename Attribute>
+
+        Parameters
+        ----------
+        geometry : Geometry, optional
+            socket 'Geometry' (id: Geometry)
+        
+        mode : menu='Single', optional
+            ('Single', 'Prefix')
+        
+        old : String, optional
+            socket 'Old' (id: Old)
+        
+        new : String, optional
+            socket 'New' (id: New)
+        
+        overwrite : Boolean, optional
+            socket 'Overwrite' (id: Overwrite)
+        
+
+        Returns
+        -------
+        Geometry
+        """
+        node = Node('Rename Attribute', {'Geometry': geometry, 'Mode': mode, 'Old': old, 'New': new, 'Overwrite': overwrite})
+        return node._out
+
+    @classmethod
     def repeat_input(cls, iterations: Integer = None):
         """ > Node <&Node Repeat Input>
 
@@ -5914,6 +6375,52 @@ class ND:
 
         """
         node = Node('Sample Nearest Surface', {'Mesh': mesh, 'Value': value, 'Group ID': group_id, 'Sample Position': sample_position, 'Sample Group ID': sample_group_id}, data_type=data_type)
+        return node._out
+
+    @classmethod
+    def sample_sound_frequencies(cls,
+                    sound: Sound = None,
+                    time: Float = None,
+                    all_channels: Boolean = None,
+                    channel: Integer = None,
+                    low: Float = None,
+                    high: Float = None,
+                    fft_size: Literal['128', '256', '512', '1024', '2048', '4096', '8192', '16384', '32768'] = None,
+                    window_function: Literal['Hann', 'Hamming', 'Blackman', 'Rectangular'] = None):
+        """ > Node <&Node Sample Sound Frequencies>
+
+        Parameters
+        ----------
+        sound : Sound, optional
+            socket 'Sound' (id: Sound)
+        
+        time : Float, optional
+            socket 'Time' (id: Time)
+        
+        all_channels : Boolean, optional
+            socket 'All Channels' (id: All Channels)
+        
+        channel : Integer, optional
+            socket 'Channel' (id: Channel)
+        
+        low : Float, optional
+            socket 'Low' (id: Low)
+        
+        high : Float, optional
+            socket 'High' (id: High)
+        
+        fft_size : menu='4096', optional
+            ('128', '256', '512', '1024', '2048', '4096', '8192', '16384', '32768')
+        
+        window_function : menu='Hann', optional
+            ('Hann', 'Hamming', 'Blackman', 'Rectangular')
+        
+
+        Returns
+        -------
+        Float
+        """
+        node = Node('Sample Sound Frequencies', {'Sound': sound, 'Time': time, 'All Channels': all_channels, 'Channel': channel, 'Low': low, 'High': high, 'FFT Size': fft_size, 'Window Function': window_function})
         return node._out
 
     @classmethod
@@ -6523,6 +7030,52 @@ class ND:
         return node._out
 
     @classmethod
+    def set_nurbs_order(cls, curves: Curve = None, selection: Boolean = None, order: Integer = None):
+        """ > Node <&Node Set NURBS Order>
+
+        Parameters
+        ----------
+        curves : Curve, optional
+            socket 'Curves' (id: Curves)
+        
+        selection : Boolean, optional
+            socket 'Selection' (id: Selection)
+        
+        order : Integer, optional
+            socket 'Order' (id: Order)
+        
+
+        Returns
+        -------
+        Curve
+        """
+        node = Node('Set NURBS Order', {'Curves': curves, 'Selection': selection, 'Order': order})
+        return node._out
+
+    @classmethod
+    def set_nurbs_weight(cls, curves: Curve = None, selection: Boolean = None, weight: Float = None):
+        """ > Node <&Node Set NURBS Weight>
+
+        Parameters
+        ----------
+        curves : Curve, optional
+            socket 'Curves' (id: Curves)
+        
+        selection : Boolean, optional
+            socket 'Selection' (id: Selection)
+        
+        weight : Float, optional
+            socket 'Weight' (id: Weight)
+        
+
+        Returns
+        -------
+        Curve
+        """
+        node = Node('Set NURBS Weight', {'Curves': curves, 'Selection': selection, 'Weight': weight})
+        return node._out
+
+    @classmethod
     def set_point_radius(cls, points: Cloud = None, selection: Boolean = None, radius: Float = None):
         """ > Node <&Node Set Point Radius>
 
@@ -6722,6 +7275,41 @@ class ND:
         return node._out
 
     @classmethod
+    def sort_list(cls,
+                    list: Float = None,
+                    selection: Boolean = None,
+                    group_id: Integer = None,
+                    sort_weight: Float = None,
+                    socket_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SOUND'] = 'FLOAT'):
+        """ > Node <&Node Sort List>
+
+        Parameters
+        ----------
+        list : Float, optional
+            socket 'List' (id: List)
+        
+        selection : Boolean, optional
+            socket 'Selection' (id: Selection)
+        
+        group_id : Integer, optional
+            socket 'Group ID' (id: Group ID)
+        
+        sort_weight : Float, optional
+            socket 'Sort Weight' (id: Sort Weight)
+        
+        socket_type : Literal['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Rotation', 'Matrix', 'String', 'Menu', 'Object', 'Image', 'Geometry', 'Collection', 'Material', 'Bundle', 'Closure', 'Font', 'Sound']
+            parameter `socket_type`
+        
+
+        Returns
+        -------
+        Float
+        """
+        utils.check_enum_arg('Sort List', 'socket_type', socket_type, 'sort_list', ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SOUND'))
+        node = Node('Sort List', {'List': list, 'Selection': selection, 'Group ID': group_id, 'Sort Weight': sort_weight}, socket_type=socket_type)
+        return node._out
+
+    @classmethod
     def spline_length(cls):
         """ > Node <&Node Spline Length>
 
@@ -6806,7 +7394,7 @@ class ND:
                     selection: Boolean = None,
                     name: String = None,
                     value: Float = None,
-                    data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'QUATERNION', 'FLOAT4X4', 'INT8', 'FLOAT2', 'BYTE_COLOR'] = 'FLOAT',
+                    data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'QUATERNION', 'FLOAT4X4', 'INT8', 'FLOAT2', 'FLOAT4', 'BYTE_COLOR'] = 'FLOAT',
                     domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'] = 'POINT'):
         """ > Node <&Node Store Named Attribute>
 
@@ -6824,7 +7412,7 @@ class ND:
         value : Float, optional
             socket 'Value' (id: Value)
         
-        data_type : Literal['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Quaternion', '4x4 Matrix', '8-Bit Integer', '2D Vector', 'Byte Color']
+        data_type : Literal['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Quaternion', '4x4 Matrix', '8-Bit Integer', '2D Vector', '4D Vector', 'Byte Color']
             parameter `data_type`
         
         domain : Literal['Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer']
@@ -7000,6 +7588,7 @@ class ND:
                     edge_crease: Float = None,
                     vertex_crease: Float = None,
                     limit_surface: Boolean = None,
+                    quality: Integer = None,
                     uv_smooth: Literal['None', 'Keep Corners', 'Keep Corners, Junctions', 'Keep Corners, Junctions, Concave', 'Keep Boundaries', 'All'] = None,
                     boundary_smooth: Literal['Keep Corners', 'All'] = None):
         """ > Node <&Node Subdivision Surface>
@@ -7021,6 +7610,9 @@ class ND:
         limit_surface : Boolean, optional
             socket 'Limit Surface' (id: Limit Surface)
         
+        quality : Integer, optional
+            socket 'Quality' (id: Quality)
+        
         uv_smooth : menu='Keep Boundaries', optional
             ('None', 'Keep Corners', 'Keep Corners, Junctions', 'Keep Corners, Junctions, Concave', 'Keep Boundaries', 'All')
         
@@ -7032,7 +7624,7 @@ class ND:
         -------
         Mesh
         """
-        node = Node('Subdivision Surface', {'Mesh': mesh, 'Level': level, 'Edge Crease': edge_crease, 'Vertex Crease': vertex_crease, 'Limit Surface': limit_surface, 'UV Smooth': uv_smooth, 'Boundary Smooth': boundary_smooth})
+        node = Node('Subdivision Surface', {'Mesh': mesh, 'Level': level, 'Edge Crease': edge_crease, 'Vertex Crease': vertex_crease, 'Limit Surface': limit_surface, 'Quality': quality, 'UV Smooth': uv_smooth, 'Boundary Smooth': boundary_smooth})
         return node._out
 
     @classmethod
@@ -7040,7 +7632,7 @@ class ND:
                     switch: Boolean = None,
                     false: Float = None,
                     true: Float = None,
-                    input_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT'] = 'FLOAT'):
+                    input_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SOUND'] = 'FLOAT'):
         """ > Node <&Node Switch>
 
         Parameters
@@ -7054,7 +7646,7 @@ class ND:
         true : Float, optional
             socket 'True' (id: True)
         
-        input_type : Literal['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Rotation', 'Matrix', 'String', 'Menu', 'Object', 'Image', 'Geometry', 'Collection', 'Material', 'Bundle', 'Closure', 'Font']
+        input_type : Literal['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Rotation', 'Matrix', 'String', 'Menu', 'Object', 'Image', 'Geometry', 'Collection', 'Material', 'Bundle', 'Closure', 'Font', 'Sound']
             parameter `input_type`
         
 
@@ -7062,8 +7654,28 @@ class ND:
         -------
         Float
         """
-        utils.check_enum_arg('Switch', 'input_type', input_type, 'switch', ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT'))
+        utils.check_enum_arg('Switch', 'input_type', input_type, 'switch', ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SOUND'))
         node = Node('Switch', {'Switch': switch, 'False': false, 'True': true}, input_type=input_type)
+        return node._out
+
+    @classmethod
+    def tag_filter(cls, tag_filter: String = None, tags: String = None):
+        """ > Node <&Node Tag Filter>
+
+        Parameters
+        ----------
+        tag_filter : String, optional
+            socket 'Tag Filter' (id: Tag Filter)
+        
+        tags : String, optional
+            socket 'Tags' (id: Tags)
+        
+
+        Returns
+        -------
+        Boolean
+        """
+        node = Node('Tag Filter', {'Tag Filter': tag_filter, 'Tags': tags})
         return node._out
 
     @classmethod
@@ -7191,6 +7803,90 @@ class ND:
         utils.check_enum_arg('Set Selection', 'domain', domain, 'set_selection', ('POINT', 'EDGE', 'FACE', 'CURVE'))
         utils.check_enum_arg('Set Selection', 'selection_type', selection_type, 'set_selection', ('BOOLEAN', 'FLOAT'))
         node = Node('Set Selection', {'Geometry': geometry, 'Selection': selection}, domain=domain, selection_type=selection_type)
+        return node._out
+
+    @classmethod
+    def transfer_attributes(cls,
+                    target: Geometry = None,
+                    target_point_id: Integer = None,
+                    target_edge_id: Integer = None,
+                    target_face_id: Integer = None,
+                    target_corner_id: Integer = None,
+                    target_curve_id: Integer = None,
+                    target_instance_id: Integer = None,
+                    source: Geometry = None,
+                    source_point_id: Integer = None,
+                    source_edge_id: Integer = None,
+                    source_face_id: Integer = None,
+                    source_corner_id: Integer = None,
+                    source_curve_id: Integer = None,
+                    source_instance_id: Integer = None,
+                    pattern_mode: Literal['Exact', 'Wildcard'] = None,
+                    attribute_names: String = None,
+                    exclude_names: Boolean = None):
+        """ > Node <&Node Transfer Attributes>
+
+        Parameters
+        ----------
+        target : Geometry, optional
+            socket 'Target' (id: Target)
+        
+        target_point_id : Integer, optional
+            socket 'Target Point ID' (id: Target Point ID)
+        
+        target_edge_id : Integer, optional
+            socket 'Target Edge ID' (id: Target Edge ID)
+        
+        target_face_id : Integer, optional
+            socket 'Target Face ID' (id: Target Face ID)
+        
+        target_corner_id : Integer, optional
+            socket 'Target Corner ID' (id: Target Corner ID)
+        
+        target_curve_id : Integer, optional
+            socket 'Target Curve ID' (id: Target Curve ID)
+        
+        target_instance_id : Integer, optional
+            socket 'Target Instance ID' (id: Target Instance ID)
+        
+        source : Geometry, optional
+            socket 'Source' (id: Source)
+        
+        source_point_id : Integer, optional
+            socket 'Source Point ID' (id: Source Point ID)
+        
+        source_edge_id : Integer, optional
+            socket 'Source Edge ID' (id: Source Edge ID)
+        
+        source_face_id : Integer, optional
+            socket 'Source Face ID' (id: Source Face ID)
+        
+        source_corner_id : Integer, optional
+            socket 'Source Corner ID' (id: Source Corner ID)
+        
+        source_curve_id : Integer, optional
+            socket 'Source Curve ID' (id: Source Curve ID)
+        
+        source_instance_id : Integer, optional
+            socket 'Source Instance ID' (id: Source Instance ID)
+        
+        pattern_mode : menu='Wildcard', optional
+            ('Exact', 'Wildcard')
+        
+        attribute_names : String, optional
+            socket 'Attribute Names' (id: Attribute Names)
+        
+        exclude_names : Boolean, optional
+            socket 'Exclude Names' (id: Exclude Names)
+        
+
+        Returns
+        -------
+        Geometry
+            peer sockets: transferred_names_ (String)
+
+        """
+        node = Node('Transfer Attributes', {'Target': target, 'Target Point ID': target_point_id, 'Target Edge ID': target_edge_id, 'Target Face ID': target_face_id, 'Target Corner ID': target_corner_id, 'Target Curve ID': target_curve_id, 'Target Instance ID': target_instance_id, 'Source': source, 'Source Point ID': source_point_id, 'Source Edge ID': source_edge_id, 'Source Face ID': source_face_id, 'Source Corner ID': source_corner_id, 'Source Curve ID': source_curve_id, 'Source Instance ID': source_instance_id, 'Pattern Mode': pattern_mode, 'Attribute Names': attribute_names, 'Exclude Names': exclude_names})
         return node._out
 
     @classmethod
@@ -7605,6 +8301,56 @@ class ND:
         node = Node('Warning', {'Show': show, 'Message': message}, warning_type=warning_type)
         return node._out
 
+    @classmethod
+    def xpbd_solver(cls,
+                    world: Bundle = None,
+                    delta_time: Float = None,
+                    filter: String = None,
+                    simulation_to_world: Matrix = None,
+                    substeps: Integer = None,
+                    constraint_iterations: Integer = None,
+                    solver_path: String = None,
+                    begin: Float = None,
+                    end: Float = None):
+        """ > Node <&Node XPBD Solver>
+
+        Parameters
+        ----------
+        world : Bundle, optional
+            socket 'World' (id: World)
+        
+        delta_time : Float, optional
+            socket 'Delta Time' (id: Delta Time)
+        
+        filter : String, optional
+            socket 'Filter' (id: Filter)
+        
+        simulation_to_world : Matrix, optional
+            socket 'Simulation to World' (id: Simulation to World)
+        
+        substeps : Integer, optional
+            socket 'Substeps' (id: Substeps)
+        
+        constraint_iterations : Integer, optional
+            socket 'Constraint Iterations' (id: Constraint Iterations)
+        
+        solver_path : String, optional
+            socket 'Solver Path' (id: Solver Path)
+        
+        begin : Float, optional
+            socket 'Begin' (id: Begin)
+        
+        end : Float, optional
+            socket 'End' (id: End)
+        
+
+        Returns
+        -------
+        Bundle
+        """
+        node = Node('XPBD Solver', {'World': world, 'Delta Time': delta_time, 'Filter': filter, 'Simulation to World': simulation_to_world, 'Substeps': substeps, 'Constraint Iterations': constraint_iterations, 'Solver Path': solver_path, 'Begin': begin, 'End': end})
+        return node._out
+
     @utils.classproperty
     def closure_input(self):
         """ > Node <&Node Closure Input>
@@ -7665,7 +8411,7 @@ class ND:
     def enable_output(cls,
                     enable: Boolean = None,
                     value: Float = None,
-                    data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT'] = 'FLOAT'):
+                    data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SOUND'] = 'FLOAT'):
         """ > Node <&Node Enable Output>
 
         Parameters
@@ -7676,7 +8422,7 @@ class ND:
         value : Float, optional
             socket 'Value' (id: Value)
         
-        data_type : Literal['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Rotation', 'Matrix', 'String', 'Menu', 'Object', 'Image', 'Geometry', 'Collection', 'Material', 'Bundle', 'Closure', 'Font']
+        data_type : Literal['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Rotation', 'Matrix', 'String', 'Menu', 'Object', 'Image', 'Geometry', 'Collection', 'Material', 'Bundle', 'Closure', 'Font', 'Sound']
             parameter `data_type`
         
 
@@ -7745,7 +8491,7 @@ class ND:
                     bundle: Bundle = None,
                     path: String = None,
                     remove: Boolean = None,
-                    socket_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT'] = 'FLOAT',
+                    socket_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SOUND'] = 'FLOAT',
                     structure_type: Literal['AUTO', 'DYNAMIC', 'FIELD', 'GRID', 'LIST', 'SINGLE'] = 'AUTO'):
         """ > Node <&Node Get Bundle Item>
 
@@ -7760,7 +8506,7 @@ class ND:
         remove : Boolean, optional
             socket 'Remove' (id: Remove)
         
-        socket_type : Literal['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Rotation', 'Matrix', 'String', 'Menu', 'Object', 'Image', 'Geometry', 'Collection', 'Material', 'Bundle', 'Closure', 'Font']
+        socket_type : Literal['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Rotation', 'Matrix', 'String', 'Menu', 'Object', 'Image', 'Geometry', 'Collection', 'Material', 'Bundle', 'Closure', 'Font', 'Sound']
             parameter `socket_type`
         
         structure_type : Literal['Auto', 'Dynamic', 'Field', 'Grid', 'List', 'Single']
@@ -7773,9 +8519,43 @@ class ND:
             peer sockets: item_ (Float), exists_ (Boolean)
 
         """
-        utils.check_enum_arg('Get Bundle Item', 'socket_type', socket_type, 'get_bundle_item', ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT'))
+        utils.check_enum_arg('Get Bundle Item', 'socket_type', socket_type, 'get_bundle_item', ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SOUND'))
         utils.check_enum_arg('Get Bundle Item', 'structure_type', structure_type, 'get_bundle_item', ('AUTO', 'DYNAMIC', 'FIELD', 'GRID', 'LIST', 'SINGLE'))
         node = Node('Get Bundle Item', {'Bundle': bundle, 'Path': path, 'Remove': remove}, socket_type=socket_type, structure_type=structure_type)
+        return node._out
+
+    @classmethod
+    def get_nested_bundle_paths(cls,
+                    bundle: Bundle = None,
+                    mode: Literal['All', 'Bundle Type', 'Data Type'] = None,
+                    pattern_mode: Literal['Exact', 'Wildcard'] = None,
+                    bundle_type: String = None,
+                    data_type: Literal['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Rotation', 'Matrix', 'String', 'Menu', 'Object', 'Image', 'Geometry', 'Collection', 'Material', 'Bundle', 'Closure', 'Font', 'Sound'] = None):
+        """ > Node <&Node Get Nested Bundle Paths>
+
+        Parameters
+        ----------
+        bundle : Bundle, optional
+            socket 'Bundle' (id: Bundle)
+        
+        mode : menu='All', optional
+            ('All', 'Bundle Type', 'Data Type')
+        
+        pattern_mode : menu='Exact', optional
+            ('Exact', 'Wildcard')
+        
+        bundle_type : String, optional
+            socket 'Bundle Type' (id: Bundle Type)
+        
+        data_type : menu='Float', optional
+            ('Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Rotation', 'Matrix', 'String', 'Menu', 'Object', 'Image', 'Geometry', 'Collection', 'Material', 'Bundle', 'Closure', 'Font', 'Sound')
+        
+
+        Returns
+        -------
+        String
+        """
+        node = Node('Get Nested Bundle Paths', {'Bundle': bundle, 'Mode': mode, 'Pattern Mode': pattern_mode, 'Bundle Type': bundle_type, 'Data Type': data_type})
         return node._out
 
     @utils.classproperty
@@ -7804,6 +8584,32 @@ class ND:
         None
         """
         node = Node('Group Output', is_active_output=is_active_output)
+        return node._out
+
+    @classmethod
+    def implicit_conversion(cls,
+                    value: Color = None,
+                    data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SOUND'] = 'RGBA',
+                    socket_idname = 'NodeSocketColor'):
+        """ > Node <&Node Implicit Conversion>
+
+        Parameters
+        ----------
+        value : Color, optional
+            socket 'Value' (id: Value)
+        
+        data_type : Literal['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Rotation', 'Matrix', 'String', 'Menu', 'Object', 'Image', 'Geometry', 'Collection', 'Material', 'Bundle', 'Closure', 'Font', 'Sound']
+            parameter `data_type`
+        
+        socket_idname : str
+            parameter `socket_idname`
+        
+
+        Returns
+        -------
+        Color
+        """
+        node = Node('Implicit Conversion', {'Value': value}, data_type=data_type, socket_idname=socket_idname)
         return node._out
 
     @classmethod
@@ -7877,7 +8683,7 @@ class ND:
                     bundle: Bundle = None,
                     path: String = None,
                     item: Float = None,
-                    socket_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT'] = 'FLOAT',
+                    socket_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SOUND'] = 'FLOAT',
                     structure_type: Literal['AUTO', 'DYNAMIC', 'FIELD', 'GRID', 'LIST', 'SINGLE'] = 'AUTO'):
         """ > Node <&Node Store Bundle Item>
 
@@ -7892,7 +8698,7 @@ class ND:
         item : Float, optional
             socket 'Item' (id: Item)
         
-        socket_type : Literal['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Rotation', 'Matrix', 'String', 'Menu', 'Object', 'Image', 'Geometry', 'Collection', 'Material', 'Bundle', 'Closure', 'Font']
+        socket_type : Literal['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Rotation', 'Matrix', 'String', 'Menu', 'Object', 'Image', 'Geometry', 'Collection', 'Material', 'Bundle', 'Closure', 'Font', 'Sound']
             parameter `socket_type`
         
         structure_type : Literal['Auto', 'Dynamic', 'Field', 'Grid', 'List', 'Single']
@@ -7903,7 +8709,7 @@ class ND:
         -------
         Bundle
         """
-        utils.check_enum_arg('Store Bundle Item', 'socket_type', socket_type, 'store_bundle_item', ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT'))
+        utils.check_enum_arg('Store Bundle Item', 'socket_type', socket_type, 'store_bundle_item', ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SOUND'))
         utils.check_enum_arg('Store Bundle Item', 'structure_type', structure_type, 'store_bundle_item', ('AUTO', 'DYNAMIC', 'FIELD', 'GRID', 'LIST', 'SINGLE'))
         node = Node('Store Bundle Item', {'Bundle': bundle, 'Path': path, 'Item': item}, socket_type=socket_type, structure_type=structure_type)
         return node._out

@@ -32,6 +32,7 @@ from .material import Material
 from .bundle import Bundle
 from .closure import Closure
 from .font import Font
+from .sound import Sound
 from .dom_cloudpoint import CloudPoint
 from .static_nd import nd
 from .shader import Shader

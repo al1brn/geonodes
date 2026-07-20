@@ -62,9 +62,50 @@ def arrow_shader():
 
         shader.out()
 
+# ====================================================================================================
+# Default Shader for Atoms
+# ====================================================================================================
+
+def atom_shader():
+
+    with ShaderNodes("Atom"):
+
+        color = Color(snd.attribute(attribute_type='GEOMETRY', attribute_name="Color").vector)
+        transp    = snd.attribute(attribute_type='GEOMETRY', attribute_name="Transparency").factor
+
+        ped = Shader.Principled(
+            base_color = color,
+            roughness  = 0.1,
+        )
+
+        shader = ped.mix(shader=Shader.Transparent(), factor=transp)
+
+        shader.out() 
+
+# ====================================================================================================
+# Default Shader for Formulas
+# ====================================================================================================
+
+def formula_shader():
+
+    with ShaderNodes("Formula"):
+
+        color  = Color(snd.attribute(attribute_type='GEOMETRY', attribute_name="face_color").vector)
+        transp = snd.attribute(attribute_type='GEOMETRY', attribute_name="Transparency").factor
+
+        ped = Shader.Principled(
+            base_color = color,
+            roughness  = 1.0,
+        )
+        shader = ped.mix(shader=Shader.Transparent(), factor=transp)
+
+        shader.out()        
+
+
 def demo():
 
     arrow_shader()
+    atom_shader()
 
 
     # ====================================================================================================

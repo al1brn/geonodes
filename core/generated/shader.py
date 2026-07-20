@@ -1,4 +1,4 @@
-# Generated 2026-04-05 14:24:03
+# Generated 2026-07-20 17:00:26
 
 from __future__ import annotations
 from .. sockettype import SocketType
@@ -326,6 +326,7 @@ class Shader(Socket):
                     roughness: Float = None,
                     ior: Float = None,
                     alpha: Float = None,
+                    thin_wall: Boolean = None,
                     normal: Vector = None,
                     diffuse_roughness: Float = None,
                     subsurface_weight: Float = None,
@@ -351,7 +352,7 @@ class Shader(Socket):
                     thin_film_thickness: Float = None,
                     thin_film_ior: Float = None,
                     distribution: Literal['GGX', 'MULTI_GGX'] = 'MULTI_GGX',
-                    subsurface_method: Literal['BURLEY', 'RANDOM_WALK', 'RANDOM_WALK_SKIN'] = 'RANDOM_WALK'):
+                    subsurface_method: Literal['BURLEY', 'RANDOM_WALK', 'RANDOM_WALK_SKIN', 'RANDOM_WALK_LEGACY'] = 'RANDOM_WALK'):
         """ > Node <&ShaderNode Principled BSDF>
 
         Parameters
@@ -370,6 +371,9 @@ class Shader(Socket):
         
         alpha : Float, optional
             socket 'Alpha' (id: Alpha)
+        
+        thin_wall : Boolean, optional
+            socket 'Thin Wall' (id: Thin Wall)
         
         normal : Vector, optional
             socket 'Normal' (id: Normal)
@@ -446,7 +450,7 @@ class Shader(Socket):
         distribution : Literal['GGX', 'Multiscatter GGX']
             parameter `distribution`
         
-        subsurface_method : Literal['Christensen-Burley', 'Random Walk', 'Random Walk (Skin)']
+        subsurface_method : Literal['Christensen-Burley', 'Random Walk', 'Random Walk (Skin)', 'Random Walk (Legacy)']
             parameter `subsurface_method`
         
 
@@ -455,8 +459,8 @@ class Shader(Socket):
         Shader
         """
         utils.check_enum_arg('Principled BSDF', 'distribution', distribution, 'Principled', ('GGX', 'MULTI_GGX'))
-        utils.check_enum_arg('Principled BSDF', 'subsurface_method', subsurface_method, 'Principled', ('BURLEY', 'RANDOM_WALK', 'RANDOM_WALK_SKIN'))
-        node = Node('Principled BSDF', {'Base Color': base_color, 'Metallic': metallic, 'Roughness': roughness, 'IOR': ior, 'Alpha': alpha, 'Normal': normal, 'Diffuse Roughness': diffuse_roughness, 'Subsurface Weight': subsurface_weight, 'Subsurface Radius': subsurface_radius, 'Subsurface Scale': subsurface_scale, 'Subsurface Anisotropy': subsurface_anisotropy, 'Specular IOR Level': specular_ior_level, 'Specular Tint': specular_tint, 'Anisotropic': anisotropic, 'Anisotropic Rotation': anisotropic_rotation, 'Tangent': tangent, 'Transmission Weight': transmission_weight, 'Coat Weight': coat_weight, 'Coat Roughness': coat_roughness, 'Coat IOR': coat_ior, 'Coat Tint': coat_tint, 'Coat Normal': coat_normal, 'Sheen Weight': sheen_weight, 'Sheen Roughness': sheen_roughness, 'Sheen Tint': sheen_tint, 'Emission Color': emission_color, 'Emission Strength': emission_strength, 'Thin Film Thickness': thin_film_thickness, 'Thin Film IOR': thin_film_ior}, distribution=distribution, subsurface_method=subsurface_method)
+        utils.check_enum_arg('Principled BSDF', 'subsurface_method', subsurface_method, 'Principled', ('BURLEY', 'RANDOM_WALK', 'RANDOM_WALK_SKIN', 'RANDOM_WALK_LEGACY'))
+        node = Node('Principled BSDF', {'Base Color': base_color, 'Metallic': metallic, 'Roughness': roughness, 'IOR': ior, 'Alpha': alpha, 'Thin Wall': thin_wall, 'Normal': normal, 'Diffuse Roughness': diffuse_roughness, 'Subsurface Weight': subsurface_weight, 'Subsurface Radius': subsurface_radius, 'Subsurface Scale': subsurface_scale, 'Subsurface Anisotropy': subsurface_anisotropy, 'Specular IOR Level': specular_ior_level, 'Specular Tint': specular_tint, 'Anisotropic': anisotropic, 'Anisotropic Rotation': anisotropic_rotation, 'Tangent': tangent, 'Transmission Weight': transmission_weight, 'Coat Weight': coat_weight, 'Coat Roughness': coat_roughness, 'Coat IOR': coat_ior, 'Coat Tint': coat_tint, 'Coat Normal': coat_normal, 'Sheen Weight': sheen_weight, 'Sheen Roughness': sheen_roughness, 'Sheen Tint': sheen_tint, 'Emission Color': emission_color, 'Emission Strength': emission_strength, 'Thin Film Thickness': thin_film_thickness, 'Thin Film IOR': thin_film_ior}, distribution=distribution, subsurface_method=subsurface_method)
         return cls(node._out)
 
     @classmethod
@@ -853,7 +857,7 @@ class Shader(Socket):
                     roughness: Float = None,
                     anisotropy: Float = None,
                     normal: Vector = None,
-                    falloff: Literal['BURLEY', 'RANDOM_WALK', 'RANDOM_WALK_SKIN'] = 'RANDOM_WALK'):
+                    falloff: Literal['BURLEY', 'RANDOM_WALK', 'RANDOM_WALK_SKIN', 'RANDOM_WALK_LEGACY'] = 'RANDOM_WALK'):
         """ > Node <&ShaderNode Subsurface Scattering>
 
         Parameters
@@ -879,7 +883,7 @@ class Shader(Socket):
         normal : Vector, optional
             socket 'Normal' (id: Normal)
         
-        falloff : Literal['Christensen-Burley', 'Random Walk', 'Random Walk (Skin)']
+        falloff : Literal['Christensen-Burley', 'Random Walk', 'Random Walk (Skin)', 'Random Walk (Legacy)']
             parameter `falloff`
         
 
@@ -887,7 +891,7 @@ class Shader(Socket):
         -------
         Shader
         """
-        utils.check_enum_arg('Subsurface Scattering', 'falloff', falloff, 'SubsurfaceScattering', ('BURLEY', 'RANDOM_WALK', 'RANDOM_WALK_SKIN'))
+        utils.check_enum_arg('Subsurface Scattering', 'falloff', falloff, 'SubsurfaceScattering', ('BURLEY', 'RANDOM_WALK', 'RANDOM_WALK_SKIN', 'RANDOM_WALK_LEGACY'))
         node = Node('Subsurface Scattering', {'Color': color, 'Scale': scale, 'Radius': radius, 'IOR': ior, 'Roughness': roughness, 'Anisotropy': anisotropy, 'Normal': normal}, falloff=falloff)
         return cls(node._out)
 

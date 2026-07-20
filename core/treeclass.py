@@ -517,8 +517,20 @@ class Tree:
 
                 for name, mod in self.get_modifiers().items():
                     values = {}
+                    mod_inputs = mod.properties.inputs
                     for bsock in bnode.outputs:
-                        values[(bsock.name, bsock.bl_idname)] = mod.get(bsock.identifier)
+
+                        if True: # V5.2
+                            if bsock.identifier in mod_inputs:
+                                prop = getattr(mod_inputs, bsock.identifier)
+                                val = getattr(prop, 'value', None)
+                                if val is not None:
+                                    values[(bsock.name, bsock.bl_idname)] = val
+                                    values[bsock.identifier] = val
+
+                        else:
+                            values[(bsock.name, bsock.bl_idname)] = mod.get(bsock.identifier)
+
                     self._mod_vals[name] = values
 
                 break
@@ -633,34 +645,82 @@ class Tree:
             return
         
         # ---------------------------------------------------------------------------
-        # Finalize
+        # Remove kept nodes
         # ---------------------------------------------------------------------------
 
-        # Remove kept nodes
         for bnode in self._kept_nodes:
             self._btree.nodes.remove(bnode)
 
-        # Adjust menu inputs
-        if self._has_tree and not error:
-            for node in self._nodes.values():
-                if '_default_menu' in node.__slots__:
-                    node._tree_is_completed(self._mod_vals)
+        # ---------------------------------------------------------------------------
+        # Update modifiers inputs
+        # ---------------------------------------------------------------------------
 
-            innode = self.input_node
-            for bsock in innode._bnode.outputs:
-                if bsock.type != 'MENU' or not bsock.is_linked:
-                    continue
+        if self._has_input_node:
+
+            modifiers = self.get_modifiers()
+
+            for bsock in self.input_node._bnode.outputs:
+
                 isock = self._interface.by_identifier(bsock.identifier)
-                enums = list(utils.get_enums(isock, 'default_value'))
-                if not len(enums):
+                if not hasattr(isock, 'default_value'):
                     continue
 
-                for mod in self.get_modifiers().values():
+                # ----------------------------------------
+                # Menu socket
+                # ----------------------------------------
 
-                    cur_val = mod.get(bsock.identifier)
-                    if cur_val is not None and (cur_val < 2 or cur_val > len(enums) + 2):
-                        mod[bsock.identifier] = enums.index(isock.default_value) + 2
+                if bsock.bl_idname == 'NodeSocketMenu':
+                    for mod_name, mod in modifiers.items():
 
+                        current = None
+
+                        mod_vals = self._mod_vals.get(mod_name)
+                        if mod_vals is not None:
+                            current = mod_vals.get(bsock.identifier, None)
+
+                        if current is None:
+                            current = isock.default_value
+
+                        mod_input = getattr(mod.properties.inputs, bsock.identifier)
+
+                        print(f"SETTING MENU: {bsock.identifier=}, {current=}, {isock.default_value=}")
+
+                        try:
+                            mod_input.value = current
+                        except Exception as e:
+                            try:
+                                mod_input.value = isock.default_value
+                            except:
+                                pass
+
+                    continue
+
+                # ----------------------------------------
+                # General
+                # ----------------------------------------
+
+                for mod_name, mod in modifiers.items():
+
+                    mod_vals = self._mod_vals.get(mod_name)
+                    if mod_vals is None:
+                        continue
+
+                    if bsock.identifier not in mod_vals:
+                        continue             
+
+                    mod_input = getattr(mod.properties.inputs, bsock.identifier)
+                    if not hasattr(mod_input, 'value'):
+                        continue
+
+                    # At last
+                    try:
+                        mod_input.value = isock.default_value
+                    except Exception as e:
+                        print(f"CAUTION: error when setting default <{isock.default_value}> value to socket '{bsock.name}'.\n -> error is: {str(e)}")
+
+        # ---------------------------------------------------------------------------
+        # Finalize
+        # ---------------------------------------------------------------------------
 
         # Check dead ends
         warnings = 0
@@ -1185,6 +1245,10 @@ class Tree:
         elif self.is_shader():
             return self._is_group
         return False
+    
+    @property
+    def _has_input_node(self):
+        return self._is_group or self._btree.bl_idname != 'ShaderNodeTree'
 
     # ----------------------------------------------------------------------------------------------------
     # Default input node

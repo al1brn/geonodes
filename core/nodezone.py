@@ -662,6 +662,7 @@ class ZoneIterator:
             else:
                 return getattr(self._input_node, name)
         else:
+            print("DEBUG", name, getattr(self._output_node, name))
             return getattr(self._output_node, name)
         
     # ====================================================================================================
@@ -675,7 +676,7 @@ class ZoneIterator:
 
         with GeoNodes("ZoneIterator class test"):
 
-            for rep in repeat(10, Mesh=Geometry(), A=3.14):
+            for rep in repeat(10, Mesh=Mesh(), A=3.14):
                 b = Float(6.26, "B")
             
             mesh = rep.mesh
@@ -690,6 +691,7 @@ class ZoneIterator:
                 b = Float(6.26, "B")
             
             mesh = sim.mesh
+            print("ZONE DEBUG", mesh)
             
             for sim in mesh.simulation(A=3.14):
                 b = Float(6.26, "B")

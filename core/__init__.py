@@ -21,6 +21,8 @@ if PRODUCTION:
     from .generated import snd
     from .generated import gnmath
 
+    from .attributes import Attribute
+
     from .socket_class import Socket, Input
 
     from .sock_boolean import Boolean

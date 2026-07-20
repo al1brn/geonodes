@@ -360,6 +360,9 @@ def generate(folder, sub_folder):
                     sdef = f"'{prop_val[2]}'"
                     scomm += f" in {prop_val[1]}"
 
+                if stype == 'Literal[]':
+                    stype = 'str'
+
                 args[prop] = (
                     f": {stype} = {sdef}",
                     #f" ({doctype} = {sdef}) : {scomm}",
@@ -453,7 +456,10 @@ def generate(folder, sub_folder):
                 raise RuntimeError(f"The subtype constructor {name} already exists in class {class_name}.")
             
             if class_name != 'Input':
-                gen['source'][class_name][name] = code
+                if class_name in gen['source']:
+                    gen['source'][class_name][name] = code
+                else:
+                    print(f"CAUTION (generate): class name '{class_name}' not in gen['source']. Impossible to create source code for '{name}'")
 
     # ====================================================================================================
     # Loop on the tree types

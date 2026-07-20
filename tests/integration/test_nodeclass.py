@@ -3,7 +3,7 @@ import pytest
 import bpy
 
 from core.treeclass import Tree
-from core.nodeclass import Node, ColorRamp, NodeCurves, MenuNode, Group, G
+from core.nodeclass import Node, ColorRamp, NodeCurves, Group, G
 from core.scripterror import NodeError
 
 

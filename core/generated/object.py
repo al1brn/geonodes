@@ -1,4 +1,4 @@
-# Generated 2026-04-05 14:24:03
+# Generated 2026-07-20 17:00:26
 
 from __future__ import annotations
 from .. sockettype import SocketType
@@ -149,11 +149,137 @@ class Object(Socket):
         Returns
         -------
         Matrix
-            peer sockets: local_pose_ (Matrix), transform_pose_ (Matrix), rest_pose_ (Matrix), rest_length_ (Float)
+            peer sockets: local_pose_ (Matrix), transform_pose_ (Matrix), rest_pose_ (Matrix), rest_length_ (Float), exists_ (Boolean)
 
         """
         utils.check_enum_arg('Bone Info', 'transform_space', transform_space, 'bone_info', ('ORIGINAL', 'RELATIVE'))
         node = Node('Bone Info', {'Armature': self, 'Bone Name': bone_name}, transform_space=transform_space)
+        return node._out
+
+    def list_length(self):
+        """ > Node <&Node List Length>
+
+        **Fixed values**
+
+        | Kind      | Name        | Value      |
+        | --------- | ----------- | ---------- |
+        | Socket    | List        | `self`     |
+        | Parameter | `data_type` | `'OBJECT'` |
+
+        Returns
+        -------
+        Integer
+        """
+        node = Node('List Length', {'List': self}, data_type='OBJECT')
+        return node._out
+
+    def sort_list(self,
+                    selection: Boolean = None,
+                    group_id: Integer = None,
+                    sort_weight: Float = None):
+        """ > Node <&Node Sort List>
+
+        **Fixed values**
+
+        | Kind      | Name          | Value      |
+        | --------- | ------------- | ---------- |
+        | Socket    | List          | `self`     |
+        | Parameter | `socket_type` | `'OBJECT'` |
+
+        Parameters
+        ----------
+        selection : Boolean, optional
+            socket 'Selection' (id: Selection)
+        
+        group_id : Integer, optional
+            socket 'Group ID' (id: Group ID)
+        
+        sort_weight : Float, optional
+            socket 'Sort Weight' (id: Sort Weight)
+        
+
+        Returns
+        -------
+        Object
+        """
+        node = Node('Sort List', {'List': self, 'Selection': selection, 'Group ID': group_id, 'Sort Weight': sort_weight}, socket_type='OBJECT')
+        return node._out
+
+    def filter_list(self, selection: Boolean = None):
+        """ > Node <&Node Filter List>
+
+        **Fixed values**
+
+        | Kind      | Name          | Value      |
+        | --------- | ------------- | ---------- |
+        | Socket    | List          | `self`     |
+        | Parameter | `socket_type` | `'OBJECT'` |
+
+        Parameters
+        ----------
+        selection : Boolean, optional
+            socket 'Selection' (id: Selection)
+        
+
+        Returns
+        -------
+        Object
+            peer sockets: inverted_ (Object)
+
+        """
+        node = Node('Filter List', {'List': self, 'Selection': selection}, socket_type='OBJECT')
+        return node._out
+
+    def get_list_item(self,
+                    index: Integer = None,
+                    structure_type: Literal['AUTO', 'DYNAMIC', 'FIELD', 'GRID', 'LIST', 'SINGLE'] = 'AUTO'):
+        """ > Node <&Node Get List Item>
+
+        **Fixed values**
+
+        | Kind      | Name          | Value      |
+        | --------- | ------------- | ---------- |
+        | Socket    | List          | `self`     |
+        | Parameter | `socket_type` | `'OBJECT'` |
+
+        Parameters
+        ----------
+        index : Integer, optional
+            socket 'Index' (id: Index)
+        
+        structure_type : Literal['Auto', 'Dynamic', 'Field', 'Grid', 'List', 'Single']
+            parameter `structure_type`
+        
+
+        Returns
+        -------
+        Object
+        """
+        utils.check_enum_arg('Get List Item', 'structure_type', structure_type, 'get_list_item', ('AUTO', 'DYNAMIC', 'FIELD', 'GRID', 'LIST', 'SINGLE'))
+        node = Node('Get List Item', {'List': self, 'Index': index}, socket_type='OBJECT', structure_type=structure_type)
+        return node._out
+
+    def implicit_conversion(self, socket_idname = 'NodeSocketColor'):
+        """ > Node <&Node Implicit Conversion>
+
+        **Fixed values**
+
+        | Kind      | Name        | Value      |
+        | --------- | ----------- | ---------- |
+        | Socket    | Value       | `self`     |
+        | Parameter | `data_type` | `'OBJECT'` |
+
+        Parameters
+        ----------
+        socket_idname : str
+            parameter `socket_idname`
+        
+
+        Returns
+        -------
+        Object
+        """
+        node = Node('Implicit Conversion', {'Value': self}, data_type='OBJECT', socket_idname=socket_idname)
         return node._out
 
     @classmethod

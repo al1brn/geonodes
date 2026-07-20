@@ -403,7 +403,7 @@ def get_default_name(socket):
     else:
         return bsocket.name
 
-def get_socket_name(socket):
+def get_socket_name(socket, default=None):
     if socket is None:
         return None
 
@@ -412,7 +412,10 @@ def get_socket_name(socket):
         return None
 
     if bsocket.label in [None, ""]:
-        return bsocket.name
+        if default in[None, ""]:
+            return bsocket.name
+        else:
+            return default
     else:
         return bsocket.label
 

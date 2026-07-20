@@ -1,4 +1,4 @@
-# Generated 2026-04-05 14:24:03
+# Generated 2026-07-20 17:00:26
 
 from __future__ import annotations
 from .. sockettype import SocketType
@@ -35,6 +35,97 @@ class SND:
     a = snd.math(1, 2, operation='ADD')
     ```
     """
+
+    @classmethod
+    def boolean(cls, boolean = False):
+        """ > Node <&ShaderNode Boolean>
+
+        Parameters
+        ----------
+        boolean : bool
+            parameter `boolean`
+        
+
+        Returns
+        -------
+        Boolean
+        """
+        node = Node('Boolean', boolean=boolean)
+        return node._out
+
+    @classmethod
+    def integer(cls, integer = 0):
+        """ > Node <&ShaderNode Integer>
+
+        Parameters
+        ----------
+        integer : int
+            parameter `integer`
+        
+
+        Returns
+        -------
+        Integer
+        """
+        node = Node('Integer', integer=integer)
+        return node._out
+
+    @classmethod
+    def menu(cls, menu = None):
+        """ > Node <&Node Menu Switch>
+
+        Parameters
+        ----------
+        named_sockets : dict, optional
+            sockets to create default={}.
+
+        menu : Socket | str, optional
+            socket to plug in default=None.
+
+        default_value : str | int
+            default value
+
+        data_type : str, default=None
+            data type, auto if None
+
+        sockets : dict
+            items
+
+        """
+        if menu is None:
+            return Node('Menu')._out
+        else:
+            return Node('Menu', value=menu)._out
+
+    @classmethod
+    def vector(cls, vector_dimensions = 3):
+        """ > Node <&ShaderNode Vector>
+
+        Parameters
+        ----------
+        vector_dimensions : int
+            parameter `vector_dimensions`
+        
+
+        Returns
+        -------
+        Vector
+        """
+        node = Node('Vector', vector_dimensions=vector_dimensions)
+        return node._out
+
+    @classmethod
+    def scene_time(cls):
+        """ > Node <&ShaderNode Scene Time>
+
+        Returns
+        -------
+        Float
+            peer sockets: frame_ (Float)
+
+        """
+        node = Node('Scene Time', )
+        return node
 
     @classmethod
     def menu_switch(cls,
@@ -236,6 +327,32 @@ class SND:
         None
         """
         node = Node('Group Output', is_active_output=is_active_output)
+        return node._out
+
+    @classmethod
+    def implicit_conversion(cls,
+                    value: Color = None,
+                    data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'MENU', 'SHADER', 'BUNDLE', 'CLOSURE'] = 'RGBA',
+                    socket_idname = 'NodeSocketColor'):
+        """ > Node <&ShaderNode Implicit Conversion>
+
+        Parameters
+        ----------
+        value : Color, optional
+            socket 'Value' (id: Value)
+        
+        data_type : Literal['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Menu', 'Shader', 'Bundle', 'Closure']
+            parameter `data_type`
+        
+        socket_idname : str
+            parameter `socket_idname`
+        
+
+        Returns
+        -------
+        Color
+        """
+        node = Node('Implicit Conversion', {'Value': value}, data_type=data_type, socket_idname=socket_idname)
         return node._out
 
     @classmethod
@@ -817,6 +934,7 @@ class SND:
                     roughness: Float = None,
                     ior: Float = None,
                     alpha: Float = None,
+                    thin_wall: Boolean = None,
                     normal: Vector = None,
                     weight: Float = None,
                     diffuse_roughness: Float = None,
@@ -844,7 +962,7 @@ class SND:
                     thin_film_thickness: Float = None,
                     thin_film_ior: Float = None,
                     distribution: Literal['GGX', 'MULTI_GGX'] = 'MULTI_GGX',
-                    subsurface_method: Literal['BURLEY', 'RANDOM_WALK', 'RANDOM_WALK_SKIN'] = 'RANDOM_WALK'):
+                    subsurface_method: Literal['BURLEY', 'RANDOM_WALK', 'RANDOM_WALK_SKIN', 'RANDOM_WALK_LEGACY'] = 'RANDOM_WALK'):
         """ > Node <&ShaderNode Principled BSDF>
 
         Parameters
@@ -863,6 +981,9 @@ class SND:
         
         alpha : Float, optional
             socket 'Alpha' (id: Alpha)
+        
+        thin_wall : Boolean, optional
+            socket 'Thin Wall' (id: Thin Wall)
         
         normal : Vector, optional
             socket 'Normal' (id: Normal)
@@ -945,7 +1066,7 @@ class SND:
         distribution : Literal['GGX', 'Multiscatter GGX']
             parameter `distribution`
         
-        subsurface_method : Literal['Christensen-Burley', 'Random Walk', 'Random Walk (Skin)']
+        subsurface_method : Literal['Christensen-Burley', 'Random Walk', 'Random Walk (Skin)', 'Random Walk (Legacy)']
             parameter `subsurface_method`
         
 
@@ -954,8 +1075,8 @@ class SND:
         Shader
         """
         utils.check_enum_arg('Principled BSDF', 'distribution', distribution, 'principled_bsdf', ('GGX', 'MULTI_GGX'))
-        utils.check_enum_arg('Principled BSDF', 'subsurface_method', subsurface_method, 'principled_bsdf', ('BURLEY', 'RANDOM_WALK', 'RANDOM_WALK_SKIN'))
-        node = Node('Principled BSDF', {'Base Color': base_color, 'Metallic': metallic, 'Roughness': roughness, 'IOR': ior, 'Alpha': alpha, 'Normal': normal, 'Weight': weight, 'Diffuse Roughness': diffuse_roughness, 'Subsurface Weight': subsurface_weight, 'Subsurface Radius': subsurface_radius, 'Subsurface Scale': subsurface_scale, 'Subsurface IOR': subsurface_ior, 'Subsurface Anisotropy': subsurface_anisotropy, 'Specular IOR Level': specular_ior_level, 'Specular Tint': specular_tint, 'Anisotropic': anisotropic, 'Anisotropic Rotation': anisotropic_rotation, 'Tangent': tangent, 'Transmission Weight': transmission_weight, 'Coat Weight': coat_weight, 'Coat Roughness': coat_roughness, 'Coat IOR': coat_ior, 'Coat Tint': coat_tint, 'Coat Normal': coat_normal, 'Sheen Weight': sheen_weight, 'Sheen Roughness': sheen_roughness, 'Sheen Tint': sheen_tint, 'Emission Color': emission_color, 'Emission Strength': emission_strength, 'Thin Film Thickness': thin_film_thickness, 'Thin Film IOR': thin_film_ior}, distribution=distribution, subsurface_method=subsurface_method)
+        utils.check_enum_arg('Principled BSDF', 'subsurface_method', subsurface_method, 'principled_bsdf', ('BURLEY', 'RANDOM_WALK', 'RANDOM_WALK_SKIN', 'RANDOM_WALK_LEGACY'))
+        node = Node('Principled BSDF', {'Base Color': base_color, 'Metallic': metallic, 'Roughness': roughness, 'IOR': ior, 'Alpha': alpha, 'Thin Wall': thin_wall, 'Normal': normal, 'Weight': weight, 'Diffuse Roughness': diffuse_roughness, 'Subsurface Weight': subsurface_weight, 'Subsurface Radius': subsurface_radius, 'Subsurface Scale': subsurface_scale, 'Subsurface IOR': subsurface_ior, 'Subsurface Anisotropy': subsurface_anisotropy, 'Specular IOR Level': specular_ior_level, 'Specular Tint': specular_tint, 'Anisotropic': anisotropic, 'Anisotropic Rotation': anisotropic_rotation, 'Tangent': tangent, 'Transmission Weight': transmission_weight, 'Coat Weight': coat_weight, 'Coat Roughness': coat_roughness, 'Coat IOR': coat_ior, 'Coat Tint': coat_tint, 'Coat Normal': coat_normal, 'Sheen Weight': sheen_weight, 'Sheen Roughness': sheen_roughness, 'Sheen Tint': sheen_tint, 'Emission Color': emission_color, 'Emission Strength': emission_strength, 'Thin Film Thickness': thin_film_thickness, 'Thin Film IOR': thin_film_ior}, distribution=distribution, subsurface_method=subsurface_method)
         return node._out
 
     @classmethod
@@ -2216,14 +2337,19 @@ class SND:
 
     @classmethod
     def raycast(cls,
+                    named_sockets: dict = {},
                     position: Vector = None,
                     direction: Vector = None,
                     length: Float = None,
-                    only_local = False):
+                    only_local = False,
+                    **sockets):
         """ > Node <&ShaderNode Raycast>
 
         Parameters
         ----------
+        named_sockets : dict, default={}
+            Sockets created with string names
+        
         position : Vector, optional
             socket 'Position' (id: Position)
         
@@ -2236,6 +2362,8 @@ class SND:
         only_local : bool
             parameter `only_local`
         
+        sockets : dict, default={}
+            Socket created with python name attributes
 
         Returns
         -------
@@ -2243,7 +2371,7 @@ class SND:
             peer sockets: self_hit_ (Float), hit_distance_ (Float), hit_position_ (Vector), hit_normal_ (Vector)
 
         """
-        node = Node('Raycast', {'Position': position, 'Direction': direction, 'Length': length}, only_local=only_local)
+        node = Node('Raycast', {'Position': position, 'Direction': direction, 'Length': length, **named_sockets}, only_local=only_local, **sockets)
         return node._out
 
     @classmethod
@@ -2356,7 +2484,7 @@ class SND:
                     anisotropy: Float = None,
                     normal: Vector = None,
                     weight: Float = None,
-                    falloff: Literal['BURLEY', 'RANDOM_WALK', 'RANDOM_WALK_SKIN'] = 'RANDOM_WALK'):
+                    falloff: Literal['BURLEY', 'RANDOM_WALK', 'RANDOM_WALK_SKIN', 'RANDOM_WALK_LEGACY'] = 'RANDOM_WALK'):
         """ > Node <&ShaderNode Subsurface Scattering>
 
         Parameters
@@ -2385,7 +2513,7 @@ class SND:
         weight : Float, optional
             socket 'Weight' (id: Weight)
         
-        falloff : Literal['Christensen-Burley', 'Random Walk', 'Random Walk (Skin)']
+        falloff : Literal['Christensen-Burley', 'Random Walk', 'Random Walk (Skin)', 'Random Walk (Legacy)']
             parameter `falloff`
         
 
@@ -2393,7 +2521,7 @@ class SND:
         -------
         Shader
         """
-        utils.check_enum_arg('Subsurface Scattering', 'falloff', falloff, 'subsurface_scattering', ('BURLEY', 'RANDOM_WALK', 'RANDOM_WALK_SKIN'))
+        utils.check_enum_arg('Subsurface Scattering', 'falloff', falloff, 'subsurface_scattering', ('BURLEY', 'RANDOM_WALK', 'RANDOM_WALK_SKIN', 'RANDOM_WALK_LEGACY'))
         node = Node('Subsurface Scattering', {'Color': color, 'Scale': scale, 'Radius': radius, 'IOR': ior, 'Roughness': roughness, 'Anisotropy': anisotropy, 'Normal': normal, 'Weight': weight}, falloff=falloff)
         return node._out
 

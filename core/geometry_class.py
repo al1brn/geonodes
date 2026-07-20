@@ -104,8 +104,44 @@ class Geometry(generated.Geometry, Geom):
         super().__init__(value, name=name, tip=tip, panel=panel, **props)
 
     # ====================================================================================================
-    # Geometry out
+    # get item is ambiguous since V5.2
     # ====================================================================================================
+
+    def __getitem__(self, index):
+        if self._is_list:
+            return Socket.__getitem__(self, index)
+        else:
+            return Geom.__getitem__(self, index)
+        
+    # ====================================================================================================
+    # Attributes
+    # ====================================================================================================
+
+    def get(self, name, data_type=None, domain=None, prefix=None):
+        from .attributes import Attribute
+
+        attr = Attribute(name, data_type=data_type, domain=domain, prefix=prefix)
+        attr.geometry = self
+        return attr
+    
+    def get_attribute_names(self, data_type=None, domain=None):
+        from .attributes import Attribute
+
+        _, dn = Attribute._get_geo_domain(domain)
+        dt = Attribute._get_data_type(data_type)
+
+        print("?????", data_type, domain, '->', dt, dn)
+
+        ok_dt = dt is not None
+        ok_dn = dn is not None
+
+        return Node("Get Attribute Names", {
+            "Geometry": self,
+            "Filter Data Type" : ok_dt,
+            "Data Type" : dt,
+            "Filter Domain" : ok_dn,
+            "Domain" : dn
+            })._out
 
     # ====================================================================================================
     # Geometry Operations

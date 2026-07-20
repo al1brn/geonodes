@@ -168,6 +168,18 @@ class Domain(Geom, NodeCache):
     # Named attributes
     # ====================================================================================================
 
+    # ====================================================================================================
+    # Attributes
+    # ====================================================================================================
+
+    def get(self, name, data_type=None, prefix=None):
+        from .attributes import Attribute
+        attr = Attribute(name, data_type=data_type, domain=self, prefix=prefix)
+        return attr
+    
+    def get_attribute_names(self, data_type=None):
+        return self._geo.get_attribute_names(data_type=data_type, domain=self)
+
     def __setattr__(self, name, value):
 
         if name in Domain.__slots__ or name in dir(type(self)):

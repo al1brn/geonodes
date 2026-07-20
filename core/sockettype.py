@@ -53,6 +53,8 @@ class SocketType:
 
     def __init__(self, value):
 
+        from .attributes import Attribute
+
         self._full_socket_id  = None
 
         # ---------------------------------------------------------------------------
@@ -75,6 +77,10 @@ class SocketType:
                     break
             if ok:
                 value = value[0]
+
+        # An attribute
+        elif isinstance(value, Attribute):
+            value = value.get()
 
         bsocket = SocketType.get_bsocket(value)
 

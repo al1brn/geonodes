@@ -46,10 +46,11 @@ ALL = ['blender_version', 'CLASS_NAMES', 'DATA_TYPE_HOMONYMS', 'SOCKETS', 'NODE_
 TREE_TYPES = ('GeometryNodeTree', 'ShaderNodeTree')
 
 TRANSCO = {
-    'RGBA'   : 'Color',
-    'INT'    : 'Integer',
-    'VALUE'  : 'Float',
-    'CUSTOM' : 'Input',
+    'RGBA'       : 'Color',
+    'INT'        : 'Integer',
+    'VALUE'      : 'Float',
+    'CUSTOM'     : 'Input',
+    'INT_VECTOR' : 'IntVector',
     }
     
 BLID_TO_STYPE = {
@@ -69,10 +70,16 @@ BLID_TO_STYPE = {
     'NodeSocketRotation'    : 'ROTATION', 
     'NodeSocketString'      : 'STRING', 
     'NodeSocketVector'      : 'VECTOR',
-    'NodeSocketFont'        : 'FONT',   #Blender 5.1
-    
+    # Blender 5.1
+    'NodeSocketFont'        : 'FONT',
+    # Blender 5.2
+    'NodeSocketIntVector3D' : 'INT_VECTOR',
+    'NodeSocketSound'       : 'SOUND',
+
+    # Shaders
     'NodeSocketShader'      : 'SHADER',
 
+    # Virtual
     'NodSocketVirtual'      : 'CUSTOM',
     }
     
@@ -184,6 +191,23 @@ INPUT_SOCKETS_PROPS = {
         
         'subtype'           : ('subtype',               'str', 'NONE'),
         },
+    'INT_VECTOR': { # New in 5.2 : copy from INT
+        'tip'               : ('description',           'str', ""),
+        'optional_label'    : ('optional_label',        'bool', False),
+        'hide_value'        : ('hide_value',            'bool', False),
+        'hide_in_modifier'  : ('hide_in_modifier',      'bool', False),
+        
+        'default'           : ('default_value',         'int', 0),
+        'default_attribute' : ('default_attribute_name','str', ""),
+        'default_input'     : ('default_input',         ('VALUE', 'INDEX', 'ID_OR_INDEX'), 'VALUE'),
+        'shape'             : ('structure_type',        ('AUTO', 'DYNAMIC', 'FIELD', 'GRID', 'SINGLE'), 'AUTO'),     
+        
+        'min'               : ('min_value',             'int', -2147483648),
+        'max'               : ('max_value',             'int', 2147483647),
+        
+        'subtype'           : ('subtype',               'str', 'NONE'),
+        },
+
     'MATERIAL': {
         'tip'               : ('description',           'str', ""),
         'optional_label'    : ('optional_label',        'bool', False),
@@ -231,6 +255,16 @@ INPUT_SOCKETS_PROPS = {
         'default_attribute' : ('default_attribute_name','str', ""),
         
         'shape'             : ('structure_type',        ('AUTO', 'DYNAMIC', 'FIELD', 'SINGLE'), 'AUTO'),     
+        },
+    'SOUND': { # New in 5.2
+        'tip'               : ('description',           'str', ""),
+        'optional_label'    : ('optional_label',        'bool', False),
+        'hide_value'        : ('hide_value',            'bool', False),
+        'hide_in_modifier'  : ('hide_in_modifier',      'bool', False),
+        
+        'default'           : ('default_value',         'str', ""),
+        
+        #'subtype'           : ('subtype',               'str', ''),
         },
     'STRING': {
         'tip'               : ('description',           'str', ""),

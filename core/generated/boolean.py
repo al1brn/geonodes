@@ -1,4 +1,4 @@
-# Generated 2026-04-05 14:24:03
+# Generated 2026-07-20 17:00:26
 
 from __future__ import annotations
 from .. sockettype import SocketType
@@ -706,6 +706,109 @@ class Boolean(Socket):
         node = Node('Cube Grid Topology', {'Bounds Min': bounds_min, 'Bounds Max': bounds_max, 'Resolution X': resolution_x, 'Resolution Y': resolution_y, 'Resolution Z': resolution_z, 'Min X': min_x, 'Min Y': min_y, 'Min Z': min_z})
         return cls(node._out)
 
+    def list_length(self):
+        """ > Node <&Node List Length>
+
+        **Fixed values**
+
+        | Kind      | Name        | Value       |
+        | --------- | ----------- | ----------- |
+        | Socket    | List        | `self`      |
+        | Parameter | `data_type` | `'BOOLEAN'` |
+
+        Returns
+        -------
+        Integer
+        """
+        node = Node('List Length', {'List': self}, data_type='BOOLEAN')
+        return node._out
+
+    def sort_list(self,
+                    selection: Boolean = None,
+                    group_id: Integer = None,
+                    sort_weight: Float = None):
+        """ > Node <&Node Sort List>
+
+        **Fixed values**
+
+        | Kind      | Name          | Value       |
+        | --------- | ------------- | ----------- |
+        | Socket    | List          | `self`      |
+        | Parameter | `socket_type` | `'BOOLEAN'` |
+
+        Parameters
+        ----------
+        selection : Boolean, optional
+            socket 'Selection' (id: Selection)
+        
+        group_id : Integer, optional
+            socket 'Group ID' (id: Group ID)
+        
+        sort_weight : Float, optional
+            socket 'Sort Weight' (id: Sort Weight)
+        
+
+        Returns
+        -------
+        Boolean
+        """
+        node = Node('Sort List', {'List': self, 'Selection': selection, 'Group ID': group_id, 'Sort Weight': sort_weight}, socket_type='BOOLEAN')
+        return node._out
+
+    def filter_list(self, selection: Boolean = None):
+        """ > Node <&Node Filter List>
+
+        **Fixed values**
+
+        | Kind      | Name          | Value       |
+        | --------- | ------------- | ----------- |
+        | Socket    | List          | `self`      |
+        | Parameter | `socket_type` | `'BOOLEAN'` |
+
+        Parameters
+        ----------
+        selection : Boolean, optional
+            socket 'Selection' (id: Selection)
+        
+
+        Returns
+        -------
+        Boolean
+            peer sockets: inverted_ (Boolean)
+
+        """
+        node = Node('Filter List', {'List': self, 'Selection': selection}, socket_type='BOOLEAN')
+        return node._out
+
+    def get_list_item(self,
+                    index: Integer = None,
+                    structure_type: Literal['AUTO', 'DYNAMIC', 'FIELD', 'GRID', 'LIST', 'SINGLE'] = 'AUTO'):
+        """ > Node <&Node Get List Item>
+
+        **Fixed values**
+
+        | Kind      | Name          | Value       |
+        | --------- | ------------- | ----------- |
+        | Socket    | List          | `self`      |
+        | Parameter | `socket_type` | `'BOOLEAN'` |
+
+        Parameters
+        ----------
+        index : Integer, optional
+            socket 'Index' (id: Index)
+        
+        structure_type : Literal['Auto', 'Dynamic', 'Field', 'Grid', 'List', 'Single']
+            parameter `structure_type`
+        
+
+        Returns
+        -------
+        Boolean
+        """
+        utils.check_enum_arg('Get List Item', 'structure_type', structure_type, 'get_list_item', ('AUTO', 'DYNAMIC', 'FIELD', 'GRID', 'LIST', 'SINGLE'))
+        node = Node('Get List Item', {'List': self, 'Index': index}, socket_type='BOOLEAN', structure_type=structure_type)
+        return node._out
+
     def clip_grid(self,
                     min_x: Integer = None,
                     min_y: Integer = None,
@@ -801,9 +904,32 @@ class Boolean(Socket):
         node = Node('Grid to Points', {'Grid': self}, data_type='BOOLEAN')
         return node._out
 
+    def implicit_conversion(self, socket_idname = 'NodeSocketColor'):
+        """ > Node <&Node Implicit Conversion>
+
+        **Fixed values**
+
+        | Kind      | Name        | Value       |
+        | --------- | ----------- | ----------- |
+        | Socket    | Value       | `self`      |
+        | Parameter | `data_type` | `'BOOLEAN'` |
+
+        Parameters
+        ----------
+        socket_idname : str
+            parameter `socket_idname`
+        
+
+        Returns
+        -------
+        Boolean
+        """
+        node = Node('Implicit Conversion', {'Value': self}, data_type='BOOLEAN', socket_idname=socket_idname)
+        return node._out
+
     @classmethod
     def _create_input_socket(cls,
-        value: object = False,
+        value: bool = False,
         name: str = 'Boolean',
         tip: str = '',
         panel: str = "",
@@ -820,7 +946,7 @@ class Boolean(Socket):
 
         Parameters
         ----------
-        value : object, default=`False`
+        value : bool, default=`False`
             Default value
 
         name : str, default=`Boolean`

@@ -106,6 +106,7 @@ if PRODUCTION:
 
     from .core import Signature
 
+    from .core import Attribute
     from .core import Socket, Input, Boolean, Float, Integer, Vector, Rotation, Matrix, Color, String
     from .core import Texture, Collection, Object, Image, Material, Font
     from .core import Menu

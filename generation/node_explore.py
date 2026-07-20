@@ -232,8 +232,12 @@ class NodeParam:
     def comment(self):
 
         if self.param_type == 'ENUM':
-            return f"{self.name} : Literal{list(self.get_enum_list(user_version=True))}\n    parameter `{self.name}`\n"
-
+            s = f"{self.name} : Literal{list(self.get_enum_list(user_version=True))}\n    parameter `{self.name}`\n"
+            if s == 'Literal[]':
+                return 'str'
+            else:
+                return s
+            
         elif self.param_type == 'FONT':
             return f"{self.name} : Blender VectorFont | str\n    VectorFont, or name of a valid font in bpy.types.fonts (see `utils.get_font`)\n"
 
@@ -349,10 +353,9 @@ class NodeInfo:
 
             self.enum_params[name] = param.enums
 
-            if name in ['domain', 'data_type', 'input_type']:
+            if name in ['domain', 'data_type', 'input_type', 'socket_type']:
                 self.user_params[name] = param.enums
             else:
-                #self.user_params[name] = utils.get_enum_param_users(param.enums, self.bnode.name, name, user_case=True)
                 prop = self.bnode.bl_rna.properties[name]
                 self.user_params[name] = [enum_item.name for enum_item in prop.enum_items]
 
@@ -462,8 +465,11 @@ class NodeInfo:
             return 'GreasePencil'
         elif name in ['Geometry', 'Geometries', 'Transform', 'Target Geometry', 'Selection', 'Inverted', 'Output', '0', '1', 'A', 'B', 'False', 'True', 'Value', 'List']:
             return 'Geometry'        
+        # V5.2
+        elif name in ['Component', 'Profile', 'Target', 'Source', 'Item']:
+            return 'Geometry'
         else:
-            raise Exception(f"Unkown Geometry socket name: '{name}'")
+            raise Exception(f"Unkown Geometry socket name: '{name}'.\nUpdate switch in geometry_class function.")
 
     @classmethod
     def get_socket_class_name(cls, socket):
@@ -765,7 +771,7 @@ class NodeInfo:
         > Return None if the node has not, data_type, input_type or selection_type parameter
 
         The returned dict has the following structure:
-        - param_name : str in ('data_type', 'input_type', 'selection_type')
+        - param_name : str in ('data_type', 'input_type', 'selection_type', 'socket_type')
         - in_sockets : list of driven input sockets
         - out_sockets : list of driven output sockets
         - value_to_type : dict param value -> socket type
@@ -782,7 +788,7 @@ class NodeInfo:
         """
 
         driver_name = None
-        for name in ['data_type', 'input_type', 'selection_type']:
+        for name in ['data_type', 'input_type', 'selection_type', 'socket_type']:
             if name in self.enum_params:
                 driver_name = name
                 break
@@ -1119,7 +1125,7 @@ class NodeInfo:
         ignore_sockets : list
             list of sockets to ignore
 
-        - parameters : forced node parameters
+        - parameters : forced node parameters or sockets
 
         Returns
         -------
@@ -1133,7 +1139,7 @@ class NodeInfo:
         # ====================================================================================================
         # Parameters
 
-        # ----- Set the parameters to the required value
+        # ----- Node parameters
 
         param_values = {param_name: getattr(self.bnode, param_name) for param_name in self.params}
 
@@ -1141,11 +1147,25 @@ class NodeInfo:
             print("PARAM VALUE", self.bnode.name)
             pprint(param_values)
 
+        # ----- Split parameters dict between params / sockets
+
+        new_parameters = {}
+        defined_sockets = {}
+        for param_name, param_value in parameters.items():
+            if param_name in self.params.keys():
+                new_parameters[param_name] = param_value
+            else:
+                defined_sockets[param_name] = param_value
+        parameters = new_parameters
+
+        # ----- Set the parameters to the required values
+
         data_type = None
         func_params = []
+
         for param_name, param_value in parameters.items():
-            if param_name not in self.params.keys():
-                raise Exception(f"Parameter '{param_name}' not found in node '{self.bnode.name}' parameters: {list(self.params.keys())}")
+            #if param_name not in self.params.keys():
+            #    raise Exception(f"Parameter '{param_name}' not found in node '{self.bnode.name}' parameters: {list(self.params.keys())}")
             if param_value == 'DATA_TYPE':
                 data_type = param_name
             elif isinstance(param_value, str) and param_value.startswith('@'):
@@ -1224,7 +1244,8 @@ class NodeInfo:
                     if param not in ['data_type']:
                         d['check'] = f"utils.check_enum_arg('{self.bnode.name}', '{param}', {param}, 'METH_NAME', {param_value.get_enum_list()})"
                     d['typing'] = f"Literal{list(param_value.get_enum_list())}"
-
+                    if d['typing'] == 'Literal[]':
+                        d['typing'] = 'str'
 
             if False: # A REPRENDRE
                 if param == 'object' and self.btree.bl_idname == 'ShaderNodeTree':
@@ -1248,6 +1269,12 @@ class NodeInfo:
 
         in_sockets = self.get_in_sockets(enabled_only)
 
+        # ----- Check defined_sockets names
+        snames = [socket.name if socket.label == ""  else socket.label for socket in in_sockets]
+        for sname in defined_sockets:
+            if sname not in snames:
+                raise Exception(f"Parameter '{param_name}' not found in node '{self.bnode.name}' parameters or sockets:\n-params: {list(self.params.keys())}\n-sockets: {snames}")
+
         # ----- Loop on the sockets
 
         # Socket can have the name of a node parameter
@@ -1255,13 +1282,15 @@ class NodeInfo:
 
         ok_self  = self_socket is None
 
-        for socket in in_sockets:
+        for socket_input_index, socket in enumerate(in_sockets):
 
             if socket.type == 'CUSTOM':
                 continue
 
             socket_name = socket.name if socket.label == ""  else socket.label
             class_name = self.get_socket_class_name(socket)
+
+            # ----- Ignore socket
 
             if (socket_name in ignore_sockets) or (socket.name in ignore_sockets):
                 args.append({
@@ -1273,6 +1302,30 @@ class NodeInfo:
                     'node_value'  : None,
                     'multiple'    : 'NO',
                     'fixed'       : ["Socket", socket_name, "ignored"],
+                    'typing'      : "'IGNORED'",
+                })
+                continue
+
+            # ----- Defined socket
+
+            if socket_name in defined_sockets:
+                value = defined_sockets[socket_name]
+                if isinstance(value, str):
+                    str_value = f"'{value}'"
+                elif str(value)[0] == '<':
+                    str_value = "None"
+                else:
+                    str_value = str(value)
+
+                args.append({
+                    'arg_type'    : 'SOCKET',
+                    'is_argument' : False,
+                    'is_self'     : False,
+                    'identifier'  : socket.identifier,
+                    'class_name'  : class_name,
+                    'node_value'  : str_value,
+                    'multiple'    : 'NO',
+                    'fixed'       : ["Socket", socket_name, str_value],
                     'typing'      : "'IGNORED'",
                 })
                 continue
@@ -1308,7 +1361,13 @@ class NodeInfo:
                     counters[arg_name] = 0
 
                 # Selection socket
-                if socket_name == 'Selection' and not expose_selection:
+                # get_selection is used for Selection socket following a Geometry socket
+                if socket_name == 'Selection':
+                    self_is_geo = False
+                    if socket_input_index > 0 and in_sockets[socket_input_index - 1].type == 'GEOMETRY':
+                        self_is_geo = True
+
+                if socket_name == 'Selection' and (not expose_selection) and self_is_geo:
                     is_argument = False
                     node_value = "self.get_selection()"
                     fixed      = ("Socket", "Selection", "`self[selection]`")
@@ -1325,6 +1384,8 @@ class NodeInfo:
             styping = class_name
             if socket.identifier in self.menu_sockets:
                 styping = f"Literal{list(self.menu_sockets[socket.identifier]['values'])}"
+                if styping == 'Literal[]':
+                    styping = 'str'
             else:
                 # ----- Socket is driven by data_type
                 dts = self.data_type_sockets
@@ -1336,13 +1397,11 @@ class NodeInfo:
 
             if socket.identifier in self.menu_sockets:
                 menu = self.menu_sockets[socket.identifier]
-                #comment = f"{arg_name} (menu='{menu['default']}') : {menu['values']}"
                 comment = f"{arg_name} : Menu, default=`{menu['default']}`\n    {menu['values']}\n"
                 prm_doc_type = f"menu='{menu['default']}'"
                 prm_doc_desc = f"{menu['values']}"
 
             else:
-                #comment = f"{arg_name} ({styping}) : socket '{socket_name}' (id: {socket.identifier})"
                 comment = f"{arg_name} : {styping}\n    socket '{socket_name}' (id: {socket.identifier})"
                 prm_doc_type = styping
                 prm_doc_desc = f"socket '{socket_name}' (id: {socket.identifier})"
@@ -1396,10 +1455,24 @@ class NodeInfo:
                 'fixed'       : None,
             })
 
+            if self_socket == 'ITEM':
+                args.append({
+                    'arg_type'    : 'SELF_TO_ITEM',
+                    'is_argument' : False,
+                    'is_self'     : False,
+                    'multiple'    : 'NO',
+                    'fixed'       : None,
+                })
+
         # ----- Restore the parameters
 
         for param_name, param_value in param_values.items():
-            setattr(self.bnode, param_name, param_value)
+            try:
+                setattr(self.bnode, param_name, param_value)
+            except Exception as e:
+                print(f"Strange : impossible to restore parameter '{param_name}' to '{param_value}' in node {str(self)}")
+                #continue
+                #raise e
 
         # ====================================================================================================
         # Specific cases
@@ -1411,7 +1484,6 @@ class NodeInfo:
                 if arg['arg_name'] in ['a', 'b']:
                     continue
                 if arg['arg_name'] == 'menu':
-                    #arg['comment'] = "Default selection"
                     arg['comment'] = f"menu : Menu, optional\n    Menu selection\n"
                     arg['typing'] = None
                 new_args.append(arg)
@@ -1486,6 +1558,9 @@ class NodeInfo:
                     params.append(f"_items={arg['arg_name']}")
                 else:
                     sockets.append(f"'{arg['identifier']}': {arg['node_value']}")
+
+            elif arg['arg_type'] == 'SELF_TO_ITEM':
+                sockets.append("self._name: self")
                 
             elif arg['arg_type'] == 'PARAM':
                 params.append(f"{arg['arg_name']}={arg['node_value']}")
@@ -1505,12 +1580,8 @@ class NodeInfo:
             else:
                 named_sockets = None
 
-        if True:
-            if named_sockets is not None:
-                params.insert(0, named_sockets)
-        else:
-            s = "{" + ", ".join(sockets) + "}"
-            params.insert(0, s)
+        if named_sockets is not None:
+            params.insert(0, named_sockets)
 
         s = f"('{self.bnode.name}', " + ", ".join(params)
         if self.with_items:
@@ -1789,7 +1860,6 @@ class NodeInfo:
     def menu_switch(cls, 
             named_sockets: dict = {},
             menu = None,
-            #default_value: str | int = None,
             data_type: str = None,
             **sockets):
         """ > Node <&Node Menu Switch>
@@ -1812,8 +1882,35 @@ class NodeInfo:
             items
 
         """
-        #return MenuNode(named_sockets=named_sockets, menu=menu, default_value=default_value, data_type=data_type, **sockets)
         return Node('Menu Switch', named_sockets=named_sockets, Menu=menu, data_type=data_type, **sockets)
+
+    @classmethod
+    def menu(cls, menu = None):
+        """ > Node <&Node Menu Switch>
+
+        Parameters
+        ----------
+        named_sockets : dict, optional
+            sockets to create default={}.
+
+        menu : Socket | str, optional
+            socket to plug in default=None.
+
+        default_value : str | int
+            default value
+
+        data_type : str, default=None
+            data type, auto if None
+
+        sockets : dict
+            items
+
+        """
+        if menu is None:
+            return Node('Menu')._out
+        else:
+            return Node('Menu', value=menu)._out
+
     
     @classmethod
     def index_switch(cls, *values, index=None, data_type=None):
@@ -1902,6 +1999,16 @@ class NodeInfo:
                 code = code.replace('menu_switch', name)
             signature = str(inspect.signature(NodeInfo.menu_switch))
             self.add_func(gen, module, name, code, node_name='Menu Switch', halt=True, is_classmethod=True, returns='OUT', signature=signature)
+            return
+        
+        elif bl_idname == 'FunctionNodeInputMenu':
+            code = inspect.getsource(NodeInfo.menu)
+            if name is None:
+                name = 'menu'
+            else:
+                code = code.replace('menu', name)
+            signature = str(inspect.signature(NodeInfo.menu))
+            self.add_func(gen, module, name, code, node_name='Menu', halt=True, is_classmethod=True, returns='OUT', signature=signature)
             return
         
         # ----------------------------------------------------------------------------------------------------
@@ -2006,13 +2113,6 @@ class NodeInfo:
         s += f"{_2}node = {self.get_node_class(node_name)}{self.node_call(args)}\n"
 
         # ---------------------------------------------------------------------------
-        # Node with items
-        # ---------------------------------------------------------------------------
-
-        #if self.with_items:
-        #    s += f"{_2}node._set_items('{self.node_items}', named_sockets=named_sockets, **kwargs)\n"
-
-        # ---------------------------------------------------------------------------
         # Return
         # ---------------------------------------------------------------------------
 
@@ -2062,9 +2162,12 @@ class NodeInfo:
     # Set user parameters
 
     def set_user_parameters(self, **parameters):
-        mem_params = {param_name: getattr(self.bnode, param_name) for param_name in parameters}
+        mem_params = {param_name: getattr(self.bnode, param_name, None) for param_name in parameters}
         for param_name, param_value in parameters.items():
-            setattr(self.bnode, param_name, param_value)
+            try:
+                setattr(self.bnode, param_name, param_value)
+            except:
+                pass
         return mem_params
 
     # =============================================================================================================================
@@ -2183,7 +2286,7 @@ class NodeInfo:
     def method_code(self, gen, func: str = 'method', func_name: str | None = None,
         class_name: str | None = None, self_: str | None = None, is_class_method: bool = False, jump_method: bool | None = None, enabled_only: bool = True,
         domain_loop: bool = True, domain_param: str | None = None, domain_value : str | None = None,
-        data_type_loop: bool = True, set_in_socket: str | None = None, ret: str | None = 'OUT', cache: bool = False,
+        data_type_loop: bool = True, set_in_socket: str | None = None, ret: str | None = 'OUT', ret_class = None, cache: bool = False,
         check_existing: bool = True,
         **parameters):
         """ Method code
@@ -2224,7 +2327,7 @@ class NodeInfo:
                 gen = self.method_code(gen, func=func, func_name=func_name, class_name=cname,
                                     self_=self_, is_class_method=is_class_method, jump_method=jump_method, enabled_only=enabled_only,
                                     domain_loop=domain_loop, domain_param=domain_param, domain_value=domain_value,
-                                    data_type_loop=data_type_loop, set_in_socket=set_in_socket, ret=ret, cache=cache,
+                                    data_type_loop=data_type_loop, set_in_socket=set_in_socket, ret=ret, ret_class=ret_class, cache=cache,
                                     check_existing=check_existing,
                                     **parameters)
             return gen
@@ -2285,7 +2388,7 @@ class NodeInfo:
                     self.method_code(gen, func=func, func_name=func_name,
                         class_name=class_name, self_=self_, is_class_method=is_class_method, jump_method=jump_method,
                         enabled_only=enabled_only, domain_value=domain_value,
-                        data_type_loop=data_type_loop, domain_param=domain_value, ret=ret, cache=cache,
+                        data_type_loop=data_type_loop, domain_param=domain_value, ret=ret, ret_class=ret_class, cache=cache,
                         **{domain_param: domain_value}, check_existing=check_existing, **parameters)
 
                 self.set_user_parameters(**mem_params)
@@ -2350,7 +2453,7 @@ class NodeInfo:
         # ----------------------------------------------------------------------------------------------------
         # What is the class name ?
         #
-        # If it is not the case, the classe name is deduced from the first enabled input socket type
+        # If it is not the case, the class name is deduced from the first enabled input socket type
         #
         # If the class name is a geometry class, the implementation is performed on the domain with
         # the 'domain_value' key is set in spec.
@@ -2380,7 +2483,9 @@ class NodeInfo:
             # ----- Class name is specified
             # If it doesn't correspond to the class of the self socket
             # it is a class method and there is not self socket
-            if self_ is not None:
+            # note: if self_ == ITEM, self is used in named_sockets
+
+            if self_ is not None and self_ != 'ITEM':
                 self_class_name = self.get_socket_class_name(self.bnode.inputs[self_])
 
                 # ----- Geometry
@@ -2395,7 +2500,6 @@ class NodeInfo:
 
                 if is_class_method:
                     self_ = None
-
 
         # ----------------------------------------------------------------------------------------------------
         # Output nodes
@@ -2438,7 +2542,6 @@ class NodeInfo:
                 elif set_in_socket != socket.name:
                     ignore.append(socket.name)
 
-
         args = self.get_arguments(self_socket=self_, expose_selection=False, enabled_only=enabled_only, ignore_sockets=ignore, **parameters)
 
         # ----------------------------------------------------------------------------------------------------
@@ -2457,7 +2560,7 @@ class NodeInfo:
             elif arg['is_argument']:
                 free_args_count += 1
 
-        if not self_is_used:
+        if not self_is_used and self_ != 'ITEM':
             is_class_method = True
 
         # ----------------------------------------------------------------------------------------------------
@@ -2588,9 +2691,6 @@ class NodeInfo:
         # Node with items
         # ---------------------------------------------------------------------------
 
-        #if self.with_items:
-        #    s += f"{_2}node._set_items('{self.node_items}', named_sockets=named_sockets, **kwargs)\n"
-
         if is_menu_switch:
             s += f"{_2}node.menu = menu\n"
 
@@ -2612,7 +2712,10 @@ class NodeInfo:
             if is_jump:
                 s += f"{_2}return self._domain_to_geometry\n"
             else:
-                s += f"{_2}return node._out\n"
+                if ret_class is None:
+                    s += f"{_2}return node._out\n"
+                else:
+                    s += f"{_2}return node._out._convert_to_class('{ret_class}')\n"
 
         elif ret == 'NODE':
             s += f"{_2}return node\n"
@@ -2622,7 +2725,10 @@ class NodeInfo:
             s += f"{_2}return ({', '.join(a)})\n"
 
         else:
-            s += f"{_2}return node.{ret}\n"
+            if ret_class is None:
+                s += f"{_2}return node.{ret}\n"
+            else:
+                s += f"{_2}return node.{ret}._convert_to_class('{ret_class}')\n"
 
         self.add_func(gen, class_name, func_name, s, halt=check_existing, is_classmethod=is_class_method, is_get=is_get, is_set=func=='set', returns=ret, signature=signature, is_jump=is_jump)
 
@@ -2774,7 +2880,7 @@ class NodeInfo:
         """
 
         # DEBUG
-        DEBUG = False and self.bnode.name in ['Attribute Statistic', 'Field Average']
+        DEBUG = False and self.bnode.name in ['Field to List']
 
         # ----------------------------------------------------------------------------------------------------
         # Extract parameters from kwargs dict
@@ -2791,6 +2897,9 @@ class NodeInfo:
 
         mode_loop_performed = False
         mem_func_name = func_name
+
+        if DEBUG:
+            print(f"DEBUG ({self}): {func=}, {func_name=}")
 
         if mode_loop and (param_loop is None) and ('mode' in self.enum_params) and ('mode' not in parameters):
 
@@ -2868,6 +2977,15 @@ class NodeInfo:
 
             self.method_code(gen, func=func, func_name=func_name, **kwargs, **parameters)
 
+            if DEBUG:
+                print(f"DEBUG Method: {func=}, {func_name=}")
+                print("---> ", kwargs)
+                pprint(kwargs)
+                print("---> ", parameters)
+                pprint(parameters)
+                print()
+
+
         # ----- Operation
 
         elif func in ['op', 'operation']:
@@ -2893,6 +3011,13 @@ class NodeInfo:
                     fname = rename[fname]
 
                 self.global_code(gen, 'gnmath', func_name=fname, **kwargs, **{operation_param: op_value}, **parameters)
+
+        elif func in ['INIT', 'MANUAL', 'PROP', 'STATIC', 'INPUT']:
+            pass
+
+        else:
+            raise Exception(f"Invalid func code: {func}")
+
 
         return gen
 
@@ -3164,7 +3289,7 @@ def build_user_enum_params():
 
         node_name = ni.bnode.name
         for param_name, values in ni.enum_params.items():
-            if param_name in ['data_type', 'domain', 'input_type']:
+            if param_name in ['data_type', 'domain', 'input_type', 'socket_type']:
                 continue
 
             for value in values:
@@ -3215,7 +3340,7 @@ def build_user_enum_params():
         def check(ni):
             node_name = ni.bnode.name
             for param_name, values in ni.enum_params.items():
-                if param_name in ['data_type', 'domain', 'input_type']:
+                if param_name in ['data_type', 'domain', 'input_type', 'socket_type']:
                     continue
 
                 print(f"# {node_name}, {param_name}")
@@ -3349,7 +3474,7 @@ def build_data_types_dict():
 
         for name, values in node_info.enum_params.items():
 
-            if name not in ['data_type', 'input_type', 'selection_type']:
+            if name not in ['data_type', 'input_type', 'selection_type', 'socket_type']:
                 continue
 
             # Get the driven sockets

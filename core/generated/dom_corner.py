@@ -1,4 +1,4 @@
-# Generated 2026-04-05 14:24:03
+# Generated 2026-07-20 17:00:26
 
 from __future__ import annotations
 from .. sockettype import SocketType
@@ -464,7 +464,7 @@ class Corner:
 
     def store_named_attribute(self,
                     name: String = None,
-                    value: Float | Integer | Boolean | Vector | Color | Rotation | Matrix | Integer | Vector | Color = None):
+                    value: Float | Integer | Boolean | Vector | Color | Rotation | Matrix | Integer | Vector | Vector | Color = None):
         """ > Node <&Node Store Named Attribute>
 
         > ***Jump*** : Socket refers to node output socket after the call
@@ -483,7 +483,7 @@ class Corner:
         name : String, optional
             socket 'Name' (id: Name)
         
-        value : Float | Integer | Boolean | Vector | Color | Rotation | Matrix | Integer | Vector | Color, optional
+        value : Float | Integer | Boolean | Vector | Color | Rotation | Matrix | Integer | Vector | Vector | Color, optional
             socket 'Value' (id: Value)
         
 
@@ -498,7 +498,7 @@ class Corner:
 
     def store(self,
                     name: String = None,
-                    value: Float | Integer | Boolean | Vector | Color | Rotation | Matrix | Integer | Vector | Color = None):
+                    value: Float | Integer | Boolean | Vector | Color | Rotation | Matrix | Integer | Vector | Vector | Color = None):
         """ > Node <&Node Store Named Attribute>
 
         > ***Jump*** : Socket refers to node output socket after the call
@@ -517,7 +517,7 @@ class Corner:
         name : String, optional
             socket 'Name' (id: Name)
         
-        value : Float | Integer | Boolean | Vector | Color | Rotation | Matrix | Integer | Vector | Color, optional
+        value : Float | Integer | Boolean | Vector | Color | Rotation | Matrix | Integer | Vector | Vector | Color, optional
             socket 'Value' (id: Value)
         
 
@@ -564,6 +564,7 @@ class Corner:
     @classmethod
     def pack_uv_islands(cls,
                     uv: Vector = None,
+                    selection: Boolean = None,
                     margin: Float = None,
                     rotate: Boolean = None,
                     method: Literal['Bounding Box', 'Convex Hull', 'Exact Shape'] = None,
@@ -571,16 +572,13 @@ class Corner:
                     top_right: Vector = None):
         """ > Node <&Node Pack UV Islands>
 
-        **Fixed values**
-
-        | Kind   | Name      | Value             |
-        | ------ | --------- | ----------------- |
-        | Socket | Selection | `self[selection]` |
-
         Parameters
         ----------
         uv : Vector, optional
             socket 'UV' (id: UV)
+        
+        selection : Boolean, optional
+            socket 'Selection' (id: Selection)
         
         margin : Float, optional
             socket 'Margin' (id: Margin)
@@ -602,11 +600,12 @@ class Corner:
         -------
         Vector
         """
-        node = Node('Pack UV Islands', {'UV': uv, 'Selection': self.get_selection(), 'Margin': margin, 'Rotate': rotate, 'Method': method, 'Bottom Left': bottom_left, 'Top Right': top_right})
+        node = Node('Pack UV Islands', {'UV': uv, 'Selection': selection, 'Margin': margin, 'Rotate': rotate, 'Method': method, 'Bottom Left': bottom_left, 'Top Right': top_right})
         return node._out
 
     @classmethod
     def uv_unwrap(cls,
+                    selection: Boolean = None,
                     seam: Boolean = None,
                     margin: Float = None,
                     fill_holes: Boolean = None,
@@ -615,14 +614,11 @@ class Corner:
                     no_flip: Boolean = None):
         """ > Node <&Node UV Unwrap>
 
-        **Fixed values**
-
-        | Kind   | Name      | Value             |
-        | ------ | --------- | ----------------- |
-        | Socket | Selection | `self[selection]` |
-
         Parameters
         ----------
+        selection : Boolean, optional
+            socket 'Selection' (id: Selection)
+        
         seam : Boolean, optional
             socket 'Seam' (id: Seam)
         
@@ -646,7 +642,7 @@ class Corner:
         -------
         Vector
         """
-        node = Node('UV Unwrap', {'Selection': self.get_selection(), 'Seam': seam, 'Margin': margin, 'Fill Holes': fill_holes, 'Method': method, 'Iterations': iterations, 'No Flip': no_flip})
+        node = Node('UV Unwrap', {'Selection': selection, 'Seam': seam, 'Margin': margin, 'Fill Holes': fill_holes, 'Method': method, 'Iterations': iterations, 'No Flip': no_flip})
         return node._out
 
     @classmethod

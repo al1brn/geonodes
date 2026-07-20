@@ -45,7 +45,8 @@ GLOBAL_DEBUG = False
 # ====================================================================================================
 
 #from .config_5_0_0 import *
-from .config_5_1_0 import *
+#from .config_5_1_0 import *
+from .config_5_2_0_LTS import *
 
 # ====================================================================================================
 # OPTIONS
@@ -97,6 +98,7 @@ NODE_WITH_IN_ITEMS = {
     'GeometryNodeMenuSwitch'        : 'enum_items',
     'NodeClosureOutput'             : 'output_items',
     'FunctionNodeFormatString' 		: 'format_items',
+    
 }
 
 # ====================================================================================================

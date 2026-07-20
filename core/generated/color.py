@@ -1,4 +1,4 @@
-# Generated 2026-04-05 14:24:03
+# Generated 2026-07-20 17:00:26
 
 from __future__ import annotations
 from .. sockettype import SocketType
@@ -191,7 +191,7 @@ class Color(Socket):
         Parameters
         ----------
         b : Color, optional
-            socket 'B' (id: B_COL)
+            socket 'B' (id: B)
         
         epsilon : Float, optional
             socket 'Epsilon' (id: Epsilon)
@@ -201,7 +201,7 @@ class Color(Socket):
         -------
         Boolean
         """
-        node = Node('Compare', {'A_COL': self, 'B_COL': b, 'Epsilon': epsilon}, data_type='RGBA', mode='ELEMENT', operation='EQUAL')
+        node = Node('Compare', {'A': self, 'B': b, 'Epsilon': epsilon}, data_type='RGBA', mode='ELEMENT', operation='EQUAL')
         return node._out
 
     def not_equal(self, b: Color = None, epsilon: Float = None):
@@ -219,7 +219,7 @@ class Color(Socket):
         Parameters
         ----------
         b : Color, optional
-            socket 'B' (id: B_COL)
+            socket 'B' (id: B)
         
         epsilon : Float, optional
             socket 'Epsilon' (id: Epsilon)
@@ -229,7 +229,7 @@ class Color(Socket):
         -------
         Boolean
         """
-        node = Node('Compare', {'A_COL': self, 'B_COL': b, 'Epsilon': epsilon}, data_type='RGBA', mode='ELEMENT', operation='NOT_EQUAL')
+        node = Node('Compare', {'A': self, 'B': b, 'Epsilon': epsilon}, data_type='RGBA', mode='ELEMENT', operation='NOT_EQUAL')
         return node._out
 
     def brighter(self, b: Color = None):
@@ -247,14 +247,14 @@ class Color(Socket):
         Parameters
         ----------
         b : Color, optional
-            socket 'B' (id: B_COL)
+            socket 'B' (id: B)
         
 
         Returns
         -------
         Boolean
         """
-        node = Node('Compare', {'A_COL': self, 'B_COL': b}, data_type='RGBA', mode='ELEMENT', operation='BRIGHTER')
+        node = Node('Compare', {'A': self, 'B': b}, data_type='RGBA', mode='ELEMENT', operation='BRIGHTER')
         return node._out
 
     def darker(self, b: Color = None):
@@ -272,14 +272,14 @@ class Color(Socket):
         Parameters
         ----------
         b : Color, optional
-            socket 'B' (id: B_COL)
+            socket 'B' (id: B)
         
 
         Returns
         -------
         Boolean
         """
-        node = Node('Compare', {'A_COL': self, 'B_COL': b}, data_type='RGBA', mode='ELEMENT', operation='DARKER')
+        node = Node('Compare', {'A': self, 'B': b}, data_type='RGBA', mode='ELEMENT', operation='DARKER')
         return node._out
 
     def hash_value(self, seed: Integer = None):
@@ -1689,6 +1689,132 @@ class Color(Socket):
         node = Node('Gamma', {'Color': self, 'Gamma': gamma})
         return node._out
 
+    def list_length(self):
+        """ > Node <&Node List Length>
+
+        **Fixed values**
+
+        | Kind      | Name        | Value    |
+        | --------- | ----------- | -------- |
+        | Socket    | List        | `self`   |
+        | Parameter | `data_type` | `'RGBA'` |
+
+        Returns
+        -------
+        Integer
+        """
+        node = Node('List Length', {'List': self}, data_type='RGBA')
+        return node._out
+
+    def sort_list(self,
+                    selection: Boolean = None,
+                    group_id: Integer = None,
+                    sort_weight: Float = None):
+        """ > Node <&Node Sort List>
+
+        **Fixed values**
+
+        | Kind      | Name          | Value    |
+        | --------- | ------------- | -------- |
+        | Socket    | List          | `self`   |
+        | Parameter | `socket_type` | `'RGBA'` |
+
+        Parameters
+        ----------
+        selection : Boolean, optional
+            socket 'Selection' (id: Selection)
+        
+        group_id : Integer, optional
+            socket 'Group ID' (id: Group ID)
+        
+        sort_weight : Float, optional
+            socket 'Sort Weight' (id: Sort Weight)
+        
+
+        Returns
+        -------
+        Color
+        """
+        node = Node('Sort List', {'List': self, 'Selection': selection, 'Group ID': group_id, 'Sort Weight': sort_weight}, socket_type='RGBA')
+        return node._out
+
+    def filter_list(self, selection: Boolean = None):
+        """ > Node <&Node Filter List>
+
+        **Fixed values**
+
+        | Kind      | Name          | Value    |
+        | --------- | ------------- | -------- |
+        | Socket    | List          | `self`   |
+        | Parameter | `socket_type` | `'RGBA'` |
+
+        Parameters
+        ----------
+        selection : Boolean, optional
+            socket 'Selection' (id: Selection)
+        
+
+        Returns
+        -------
+        Color
+            peer sockets: inverted_ (Color)
+
+        """
+        node = Node('Filter List', {'List': self, 'Selection': selection}, socket_type='RGBA')
+        return node._out
+
+    def get_list_item(self,
+                    index: Integer = None,
+                    structure_type: Literal['AUTO', 'DYNAMIC', 'FIELD', 'GRID', 'LIST', 'SINGLE'] = 'AUTO'):
+        """ > Node <&Node Get List Item>
+
+        **Fixed values**
+
+        | Kind      | Name          | Value    |
+        | --------- | ------------- | -------- |
+        | Socket    | List          | `self`   |
+        | Parameter | `socket_type` | `'RGBA'` |
+
+        Parameters
+        ----------
+        index : Integer, optional
+            socket 'Index' (id: Index)
+        
+        structure_type : Literal['Auto', 'Dynamic', 'Field', 'Grid', 'List', 'Single']
+            parameter `structure_type`
+        
+
+        Returns
+        -------
+        Color
+        """
+        utils.check_enum_arg('Get List Item', 'structure_type', structure_type, 'get_list_item', ('AUTO', 'DYNAMIC', 'FIELD', 'GRID', 'LIST', 'SINGLE'))
+        node = Node('Get List Item', {'List': self, 'Index': index}, socket_type='RGBA', structure_type=structure_type)
+        return node._out
+
+    def implicit_conversion(self, socket_idname = 'NodeSocketColor'):
+        """ > Node <&Node Implicit Conversion>
+
+        **Fixed values**
+
+        | Kind      | Name        | Value    |
+        | --------- | ----------- | -------- |
+        | Socket    | Value       | `self`   |
+        | Parameter | `data_type` | `'RGBA'` |
+
+        Parameters
+        ----------
+        socket_idname : str
+            parameter `socket_idname`
+        
+
+        Returns
+        -------
+        Color
+        """
+        node = Node('Implicit Conversion', {'Value': self}, data_type='RGBA', socket_idname=socket_idname)
+        return node._out
+
     def ambient_occlusion(self,
                     distance: Float = None,
                     normal: Vector = None,
@@ -2116,7 +2242,7 @@ class Color(Socket):
 
     @classmethod
     def _create_input_socket(cls,
-        value: object = (1, 1, 1),
+        value: tuple = (1, 1, 1),
         name: str = 'Color',
         tip: str = '',
         panel: str = "",
@@ -2132,7 +2258,7 @@ class Color(Socket):
 
         Parameters
         ----------
-        value : object, default=`(1, 1, 1)`
+        value : tuple, default=`(1, 1, 1)`
             Default value
 
         name : str, default=`Color`

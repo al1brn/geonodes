@@ -1007,32 +1007,14 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                               'None,\n'
                                               '                    b: Float = '
                                               'None,\n'
-                                              '                    a_1: '
-                                              'Integer = None,\n'
-                                              '                    b_1: '
-                                              'Integer = None,\n'
-                                              '                    a_2: Vector '
-                                              '= None,\n'
-                                              '                    b_2: Vector '
-                                              '= None,\n'
-                                              '                    a_3: Color '
-                                              '= None,\n'
-                                              '                    b_3: Color '
-                                              '= None,\n'
-                                              '                    a_4: String '
-                                              '= None,\n'
-                                              '                    b_4: String '
-                                              '= None,\n'
-                                              '                    c: Float = '
-                                              'None,\n'
-                                              '                    angle: '
-                                              'Float = None,\n'
                                               '                    epsilon: '
                                               'Float = None,\n'
                                               '                    data_type: '
                                               "Literal['FLOAT', 'INT', "
-                                              "'VECTOR', 'RGBA', 'STRING'] = "
-                                              "'FLOAT',\n"
+                                              "'VECTOR', 'RGBA', 'STRING', "
+                                              "'OBJECT', 'IMAGE', "
+                                              "'COLLECTION', 'MATERIAL', "
+                                              "'FONT', 'SOUND'] = 'FLOAT',\n"
                                               '                    mode: '
                                               "Literal['ELEMENT', 'LENGTH', "
                                               "'AVERAGE', 'DOT_PRODUCT', "
@@ -1073,7 +1055,9 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                           'node_name': 'Find in String',
                                           'returns': 'OUT',
                                           'signature': '(self, search: String '
-                                                       '= None)'},
+                                                       '= None, mode: '
+                                                       "Literal['From Start', "
+                                                       "'From End'] = None)"},
                                          {'func_name': 'find',
                                           'is_classmethod': False,
                                           'is_get': False,
@@ -1082,15 +1066,22 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                           'node_name': 'Find in String',
                                           'returns': 'OUT',
                                           'signature': '(self, search: String '
-                                                       '= None)'}],
+                                                       '= None, mode: '
+                                                       "Literal['From Start', "
+                                                       "'From End'] = None)"}],
                               'nd': [{'func_name': 'find_in_string',
                                       'is_classmethod': True,
                                       'is_get': False,
                                       'node_name': 'Find in String',
                                       'returns': 'OUT',
-                                      'signature': '(cls, string: String = '
-                                                   'None, search: String = '
-                                                   'None)'}]},
+                                      'signature': '(cls,\n'
+                                                   '                    '
+                                                   'string: String = None,\n'
+                                                   '                    '
+                                                   'search: String = None,\n'
+                                                   '                    mode: '
+                                                   "Literal['From Start', "
+                                                   "'From End'] = None)"}]},
  'FunctionNodeFloatToInt': {'Float': [{'func_name': 'to_integer',
                                        'is_classmethod': False,
                                        'is_get': False,
@@ -1226,7 +1217,13 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                    'is_get': False,
                                    'node_name': 'Boolean',
                                    'returns': 'OUT',
-                                   'signature': '(cls, boolean = False)'}]},
+                                   'signature': '(cls, boolean = False)'}],
+                           'snd': [{'func_name': 'boolean',
+                                    'is_classmethod': True,
+                                    'is_get': False,
+                                    'node_name': 'Boolean',
+                                    'returns': 'OUT',
+                                    'signature': '(cls, boolean = False)'}]},
  'FunctionNodeInputColor': {'nd': [{'func_name': 'color',
                                     'is_classmethod': True,
                                     'is_get': True,
@@ -1238,7 +1235,30 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                   'is_get': False,
                                   'node_name': 'Integer',
                                   'returns': 'OUT',
-                                  'signature': '(cls, integer = 0)'}]},
+                                  'signature': '(cls, integer = 0)'}],
+                          'snd': [{'func_name': 'integer',
+                                   'is_classmethod': True,
+                                   'is_get': False,
+                                   'node_name': 'Integer',
+                                   'returns': 'OUT',
+                                   'signature': '(cls, integer = 0)'}]},
+ 'FunctionNodeInputIntVector': {'nd': [{'func_name': 'integer_vector',
+                                        'is_classmethod': True,
+                                        'is_get': False,
+                                        'node_name': 'Integer Vector',
+                                        'returns': 'OUT',
+                                        'signature': '(cls, vector_dimensions '
+                                                     '= 3)'}]},
+ 'FunctionNodeInputMenu': {'nd': [{'func_name': 'menu',
+                                   'is_classmethod': True,
+                                   'node_name': 'Menu',
+                                   'returns': 'OUT',
+                                   'signature': '(menu=None)'}],
+                           'snd': [{'func_name': 'menu',
+                                    'is_classmethod': True,
+                                    'node_name': 'Menu',
+                                    'returns': 'OUT',
+                                    'signature': '(menu=None)'}]},
  'FunctionNodeInputRotation': {'nd': [{'func_name': 'rotation',
                                        'is_classmethod': True,
                                        'is_get': True,
@@ -1287,10 +1307,18 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                      'signature': "(cls, string = '')"}]},
  'FunctionNodeInputVector': {'nd': [{'func_name': 'vector',
                                      'is_classmethod': True,
-                                     'is_get': True,
+                                     'is_get': False,
                                      'node_name': 'Vector',
                                      'returns': 'OUT',
-                                     'signature': '(self)'}]},
+                                     'signature': '(cls, vector_dimensions = '
+                                                  '3)'}],
+                             'snd': [{'func_name': 'vector',
+                                      'is_classmethod': True,
+                                      'is_get': False,
+                                      'node_name': 'Vector',
+                                      'returns': 'OUT',
+                                      'signature': '(cls, vector_dimensions = '
+                                                   '3)'}]},
  'FunctionNodeIntegerMath': {'Integer': [{'func_name': 'add',
                                           'is_classmethod': False,
                                           'is_get': False,
@@ -1791,19 +1819,9 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                      'returns': 'OUT',
                                      'signature': '(cls,\n'
                                                   '                    min: '
-                                                  'Vector = None,\n'
+                                                  'Float = None,\n'
                                                   '                    max: '
-                                                  'Vector = None,\n'
-                                                  '                    min_1: '
                                                   'Float = None,\n'
-                                                  '                    max_1: '
-                                                  'Float = None,\n'
-                                                  '                    min_2: '
-                                                  'Integer = None,\n'
-                                                  '                    max_2: '
-                                                  'Integer = None,\n'
-                                                  '                    '
-                                                  'probability: Float = None,\n'
                                                   '                    id: '
                                                   'Integer = None,\n'
                                                   '                    seed: '
@@ -1831,6 +1849,21 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                        'signature': '(cls, string: String = '
                                                     'None, find: String = '
                                                     'None, replace: String = '
+                                                    'None)'}]},
+ 'FunctionNodeReverseString': {'String': [{'func_name': 'reverse',
+                                           'is_classmethod': False,
+                                           'is_get': False,
+                                           'is_jump': False,
+                                           'is_set': False,
+                                           'node_name': 'Reverse String',
+                                           'returns': 'OUT',
+                                           'signature': '(self)'}],
+                               'nd': [{'func_name': 'reverse_string',
+                                       'is_classmethod': True,
+                                       'is_get': False,
+                                       'node_name': 'Reverse String',
+                                       'returns': 'OUT',
+                                       'signature': '(cls, string: String = '
                                                     'None)'}]},
  'FunctionNodeRotateRotation': {'Rotation': [{'func_name': 'rotate',
                                               'is_classmethod': False,
@@ -2365,6 +2398,41 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                            'returns': 'NODE',
                                            'signature': '(cls, transform: '
                                                         'Matrix = None)'}]},
+ 'FunctionNodeSetStringCase': {'String': [{'func_name': 'set_case',
+                                           'is_classmethod': False,
+                                           'is_get': False,
+                                           'is_jump': False,
+                                           'is_set': False,
+                                           'node_name': 'Set String Case',
+                                           'returns': 'OUT',
+                                           'signature': '(self, case: '
+                                                        "Literal['Uppercase', "
+                                                        "'Lowercase'] = None)"},
+                                          {'func_name': 'lower',
+                                           'is_classmethod': False,
+                                           'is_get': False,
+                                           'is_jump': False,
+                                           'is_set': False,
+                                           'node_name': 'Set String Case',
+                                           'returns': 'OUT',
+                                           'signature': '(self)'},
+                                          {'func_name': 'upper',
+                                           'is_classmethod': False,
+                                           'is_get': False,
+                                           'is_jump': False,
+                                           'is_set': False,
+                                           'node_name': 'Set String Case',
+                                           'returns': 'OUT',
+                                           'signature': '(self)'}],
+                               'nd': [{'func_name': 'set_string_case',
+                                       'is_classmethod': True,
+                                       'is_get': False,
+                                       'node_name': 'Set String Case',
+                                       'returns': 'OUT',
+                                       'signature': '(cls, string: String = '
+                                                    'None, case: '
+                                                    "Literal['Uppercase', "
+                                                    "'Lowercase'] = None)"}]},
  'FunctionNodeSliceString': {'String': [{'func_name': 'slice',
                                          'is_classmethod': False,
                                          'is_get': False,
@@ -2383,6 +2451,23 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                      'signature': '(cls, string: String = '
                                                   'None, position: Integer = '
                                                   'None, length: Integer = '
+                                                  'None)'}]},
+ 'FunctionNodeSplitString': {'String': [{'func_name': 'split',
+                                         'is_classmethod': False,
+                                         'is_get': False,
+                                         'is_jump': False,
+                                         'is_set': False,
+                                         'node_name': 'Split String',
+                                         'returns': 'OUT',
+                                         'signature': '(self, separator: '
+                                                      'String = None)'}],
+                             'nd': [{'func_name': 'split_string',
+                                     'is_classmethod': True,
+                                     'is_get': False,
+                                     'node_name': 'Split String',
+                                     'returns': 'OUT',
+                                     'signature': '(cls, string: String = '
+                                                  'None, separator: String = '
                                                   'None)'}]},
  'FunctionNodeStringLength': {'String': [{'func_name': 'length',
                                           'is_classmethod': False,
@@ -2424,14 +2509,20 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                            'is_set': False,
                                            'node_name': 'String to Value',
                                            'returns': 'OUT',
-                                           'signature': '(self)'}],
+                                           'signature': '(self, base: Integer '
+                                                        '= None)'}],
                                'nd': [{'func_name': 'string_to_value',
                                        'is_classmethod': True,
                                        'is_get': False,
                                        'node_name': 'String to Value',
                                        'returns': 'OUT',
-                                       'signature': '(cls, string: String = '
-                                                    'None, data_type: '
+                                       'signature': '(cls,\n'
+                                                    '                    '
+                                                    'string: String = None,\n'
+                                                    '                    base: '
+                                                    'Integer = None,\n'
+                                                    '                    '
+                                                    'data_type: '
                                                     "Literal['FLOAT', 'INT'] = "
                                                     "'FLOAT')"}]},
  'FunctionNodeTransformDirection': {'Matrix': [{'func_name': 'transform_direction',
@@ -2486,6 +2577,40 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                          'returns': 'OUT',
                                          'signature': '(cls, matrix: Matrix = '
                                                       'None)'}]},
+ 'FunctionNodeTrimString': {'String': [{'func_name': 'trim',
+                                        'is_classmethod': False,
+                                        'is_get': False,
+                                        'is_jump': False,
+                                        'is_set': False,
+                                        'node_name': 'Trim String',
+                                        'returns': 'OUT',
+                                        'signature': '(self,\n'
+                                                     '                    '
+                                                     'characters: String = '
+                                                     'None,\n'
+                                                     '                    '
+                                                     'whitespace: Boolean = '
+                                                     'None,\n'
+                                                     '                    '
+                                                     'start: Boolean = None,\n'
+                                                     '                    end: '
+                                                     'Boolean = None)'}],
+                            'nd': [{'func_name': 'trim_string',
+                                    'is_classmethod': True,
+                                    'is_get': False,
+                                    'node_name': 'Trim String',
+                                    'returns': 'OUT',
+                                    'signature': '(cls,\n'
+                                                 '                    string: '
+                                                 'String = None,\n'
+                                                 '                    '
+                                                 'characters: String = None,\n'
+                                                 '                    '
+                                                 'whitespace: Boolean = None,\n'
+                                                 '                    start: '
+                                                 'Boolean = None,\n'
+                                                 '                    end: '
+                                                 'Boolean = None)'}]},
  'FunctionNodeValueToString': {'Float': [{'func_name': 'to_string',
                                           'is_classmethod': False,
                                           'is_get': False,
@@ -2502,7 +2627,9 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                             'is_set': False,
                                             'node_name': 'Value to String',
                                             'returns': 'OUT',
-                                            'signature': '(self)'}],
+                                            'signature': '(self, base: Integer '
+                                                         '= None, padding: '
+                                                         'Integer = None)'}],
                                'nd': [{'func_name': 'value_to_string',
                                        'is_classmethod': True,
                                        'is_get': False,
@@ -2514,6 +2641,10 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                     '                    '
                                                     'decimals: Integer = '
                                                     'None,\n'
+                                                    '                    base: '
+                                                    'Integer = None,\n'
+                                                    '                    '
+                                                    'padding: Integer = None,\n'
                                                     '                    '
                                                     'data_type: '
                                                     "Literal['FLOAT', 'INT'] = "
@@ -2936,6 +3067,119 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                          'argument)',
                                               'signature': '(attribute=None, '
                                                            '**attributes)'}]},
+ 'GeometryNodeClosureToList': {'nd': [{'func_name': 'closure_to_list',
+                                       'is_classmethod': True,
+                                       'is_get': False,
+                                       'node_name': 'Closure to List',
+                                       'returns': 'OUT',
+                                       'signature': '(cls,\n'
+                                                    '                    '
+                                                    'named_sockets: dict = '
+                                                    '{},\n'
+                                                    '                    '
+                                                    'count: Integer = None,\n'
+                                                    '                    '
+                                                    'closure: Closure = None,\n'
+                                                    '                    '
+                                                    '**sockets)'}]},
+ 'GeometryNodeClusterByConnected': {'Geometry': [{'func_name': 'cluster_by_connected',
+                                                  'is_classmethod': True,
+                                                  'is_get': False,
+                                                  'is_jump': False,
+                                                  'is_set': False,
+                                                  'node_name': 'Cluster by '
+                                                               'Connected',
+                                                  'returns': 'OUT',
+                                                  'signature': '(cls,\n'
+                                                               '                    '
+                                                               'selection: '
+                                                               'Boolean = '
+                                                               'None,\n'
+                                                               '                    '
+                                                               'position: '
+                                                               'Vector = '
+                                                               'None,\n'
+                                                               '                    '
+                                                               'distance: '
+                                                               'Float = '
+                                                               'None)'}],
+                                    'nd': [{'func_name': 'cluster_by_connected',
+                                            'is_classmethod': True,
+                                            'is_get': False,
+                                            'node_name': 'Cluster by Connected',
+                                            'returns': 'OUT',
+                                            'signature': '(cls,\n'
+                                                         '                    '
+                                                         'selection: Boolean = '
+                                                         'None,\n'
+                                                         '                    '
+                                                         'position: Vector = '
+                                                         'None,\n'
+                                                         '                    '
+                                                         'distance: Float = '
+                                                         'None)'}]},
+ 'GeometryNodeClusterByDistance': {'Geometry': [{'func_name': 'cluster_by_distance',
+                                                 'is_classmethod': True,
+                                                 'is_get': False,
+                                                 'is_jump': False,
+                                                 'is_set': False,
+                                                 'node_name': 'Cluster by '
+                                                              'Distance',
+                                                 'returns': 'OUT',
+                                                 'signature': '(cls,\n'
+                                                              '                    '
+                                                              'selection: '
+                                                              'Boolean = '
+                                                              'None,\n'
+                                                              '                    '
+                                                              'group_id: '
+                                                              'Integer = '
+                                                              'None,\n'
+                                                              '                    '
+                                                              'position: '
+                                                              'Vector = None,\n'
+                                                              '                    '
+                                                              'distance: Float '
+                                                              '= None)'}],
+                                   'nd': [{'func_name': 'cluster_by_distance',
+                                           'is_classmethod': True,
+                                           'is_get': False,
+                                           'node_name': 'Cluster by Distance',
+                                           'returns': 'OUT',
+                                           'signature': '(cls,\n'
+                                                        '                    '
+                                                        'selection: Boolean = '
+                                                        'None,\n'
+                                                        '                    '
+                                                        'group_id: Integer = '
+                                                        'None,\n'
+                                                        '                    '
+                                                        'position: Vector = '
+                                                        'None,\n'
+                                                        '                    '
+                                                        'distance: Float = '
+                                                        'None)'}]},
+ 'GeometryNodeCollectionChildren': {'Collection': [{'func_name': 'children',
+                                                    'is_classmethod': False,
+                                                    'is_get': False,
+                                                    'is_jump': False,
+                                                    'is_set': False,
+                                                    'node_name': 'Collection '
+                                                                 'Children',
+                                                    'returns': 'OUT',
+                                                    'signature': '(self, '
+                                                                 'recursive: '
+                                                                 'Boolean = '
+                                                                 'None)'}],
+                                    'nd': [{'func_name': 'collection_children',
+                                            'is_classmethod': True,
+                                            'is_get': False,
+                                            'node_name': 'Collection Children',
+                                            'returns': 'OUT',
+                                            'signature': '(cls, collection: '
+                                                         'Collection = None, '
+                                                         'recursive: Boolean = '
+                                                         'None)'}]},
  'GeometryNodeCollectionInfo': {'Collection': [{'func_name': 'info',
                                                 'is_classmethod': False,
                                                 'is_get': False,
@@ -6213,7 +6457,17 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                   "= 'FLOAT',\n"
                                                   '                    '
                                                   '**sockets)'}]},
- 'GeometryNodeFieldToList': {'nd': [{'func_name': 'field_to_list',
+ 'GeometryNodeFieldToList': {'Integer': [{'func_name': 'field_to_list',
+                                          'is_classmethod': False,
+                                          'is_get': False,
+                                          'is_jump': False,
+                                          'is_set': False,
+                                          'node_name': 'Field to List',
+                                          'returns': 'OUT',
+                                          'signature': '(self, named_sockets: '
+                                                       'dict = {}, '
+                                                       '**sockets)'}],
+                             'nd': [{'func_name': 'field_to_list',
                                      'is_classmethod': True,
                                      'is_get': False,
                                      'node_name': 'Field to List',
@@ -6460,6 +6714,187 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                   'None,\n'
                                                   '                    count: '
                                                   'Integer = None)'}]},
+ 'GeometryNodeFilterList': {'Boolean': [{'func_name': 'filter_list',
+                                         'is_classmethod': False,
+                                         'is_get': False,
+                                         'is_jump': False,
+                                         'is_set': False,
+                                         'node_name': 'Filter List',
+                                         'returns': 'OUT',
+                                         'signature': '(self, selection: '
+                                                      'Boolean = None)'}],
+                            'Bundle': [{'func_name': 'filter_list',
+                                        'is_classmethod': False,
+                                        'is_get': False,
+                                        'is_jump': False,
+                                        'is_set': False,
+                                        'node_name': 'Filter List',
+                                        'returns': 'OUT',
+                                        'signature': '(self, selection: '
+                                                     'Boolean = None)'}],
+                            'Closure': [{'func_name': 'filter_list',
+                                         'is_classmethod': False,
+                                         'is_get': False,
+                                         'is_jump': False,
+                                         'is_set': False,
+                                         'node_name': 'Filter List',
+                                         'returns': 'OUT',
+                                         'signature': '(self, selection: '
+                                                      'Boolean = None)'}],
+                            'Collection': [{'func_name': 'filter_list',
+                                            'is_classmethod': False,
+                                            'is_get': False,
+                                            'is_jump': False,
+                                            'is_set': False,
+                                            'node_name': 'Filter List',
+                                            'returns': 'OUT',
+                                            'signature': '(self, selection: '
+                                                         'Boolean = None)'}],
+                            'Color': [{'func_name': 'filter_list',
+                                       'is_classmethod': False,
+                                       'is_get': False,
+                                       'is_jump': False,
+                                       'is_set': False,
+                                       'node_name': 'Filter List',
+                                       'returns': 'OUT',
+                                       'signature': '(self, selection: Boolean '
+                                                    '= None)'}],
+                            'Float': [{'func_name': 'filter_list',
+                                       'is_classmethod': False,
+                                       'is_get': False,
+                                       'is_jump': False,
+                                       'is_set': False,
+                                       'node_name': 'Filter List',
+                                       'returns': 'OUT',
+                                       'signature': '(self, selection: Boolean '
+                                                    '= None)'}],
+                            'Font': [{'func_name': 'filter_list',
+                                      'is_classmethod': False,
+                                      'is_get': False,
+                                      'is_jump': False,
+                                      'is_set': False,
+                                      'node_name': 'Filter List',
+                                      'returns': 'OUT',
+                                      'signature': '(self, selection: Boolean '
+                                                   '= None)'}],
+                            'Geometry': [{'func_name': 'filter_list',
+                                          'is_classmethod': False,
+                                          'is_get': False,
+                                          'is_jump': True,
+                                          'is_set': False,
+                                          'node_name': 'Filter List',
+                                          'returns': 'OUT',
+                                          'signature': '(self)'}],
+                            'Image': [{'func_name': 'filter_list',
+                                       'is_classmethod': False,
+                                       'is_get': False,
+                                       'is_jump': False,
+                                       'is_set': False,
+                                       'node_name': 'Filter List',
+                                       'returns': 'OUT',
+                                       'signature': '(self, selection: Boolean '
+                                                    '= None)'}],
+                            'Integer': [{'func_name': 'filter_list',
+                                         'is_classmethod': False,
+                                         'is_get': False,
+                                         'is_jump': False,
+                                         'is_set': False,
+                                         'node_name': 'Filter List',
+                                         'returns': 'OUT',
+                                         'signature': '(self, selection: '
+                                                      'Boolean = None)'}],
+                            'Material': [{'func_name': 'filter_list',
+                                          'is_classmethod': False,
+                                          'is_get': False,
+                                          'is_jump': False,
+                                          'is_set': False,
+                                          'node_name': 'Filter List',
+                                          'returns': 'OUT',
+                                          'signature': '(self, selection: '
+                                                       'Boolean = None)'}],
+                            'Matrix': [{'func_name': 'filter_list',
+                                        'is_classmethod': False,
+                                        'is_get': False,
+                                        'is_jump': False,
+                                        'is_set': False,
+                                        'node_name': 'Filter List',
+                                        'returns': 'OUT',
+                                        'signature': '(self, selection: '
+                                                     'Boolean = None)'}],
+                            'Menu': [{'func_name': 'filter_list',
+                                      'is_classmethod': False,
+                                      'is_get': False,
+                                      'is_jump': False,
+                                      'is_set': False,
+                                      'node_name': 'Filter List',
+                                      'returns': 'OUT',
+                                      'signature': '(self, selection: Boolean '
+                                                   '= None)'}],
+                            'Object': [{'func_name': 'filter_list',
+                                        'is_classmethod': False,
+                                        'is_get': False,
+                                        'is_jump': False,
+                                        'is_set': False,
+                                        'node_name': 'Filter List',
+                                        'returns': 'OUT',
+                                        'signature': '(self, selection: '
+                                                     'Boolean = None)'}],
+                            'Rotation': [{'func_name': 'filter_list',
+                                          'is_classmethod': False,
+                                          'is_get': False,
+                                          'is_jump': False,
+                                          'is_set': False,
+                                          'node_name': 'Filter List',
+                                          'returns': 'OUT',
+                                          'signature': '(self, selection: '
+                                                       'Boolean = None)'}],
+                            'Sound': [{'func_name': 'filter_list',
+                                       'is_classmethod': False,
+                                       'is_get': False,
+                                       'is_jump': False,
+                                       'is_set': False,
+                                       'node_name': 'Filter List',
+                                       'returns': 'OUT',
+                                       'signature': '(self, selection: Boolean '
+                                                    '= None)'}],
+                            'String': [{'func_name': 'filter_list',
+                                        'is_classmethod': False,
+                                        'is_get': False,
+                                        'is_jump': False,
+                                        'is_set': False,
+                                        'node_name': 'Filter List',
+                                        'returns': 'OUT',
+                                        'signature': '(self, selection: '
+                                                     'Boolean = None)'}],
+                            'Vector': [{'func_name': 'filter_list',
+                                        'is_classmethod': False,
+                                        'is_get': False,
+                                        'is_jump': False,
+                                        'is_set': False,
+                                        'node_name': 'Filter List',
+                                        'returns': 'OUT',
+                                        'signature': '(self, selection: '
+                                                     'Boolean = None)'}],
+                            'nd': [{'func_name': 'filter_list',
+                                    'is_classmethod': True,
+                                    'is_get': False,
+                                    'node_name': 'Filter List',
+                                    'returns': 'OUT',
+                                    'signature': '(cls,\n'
+                                                 '                    list: '
+                                                 'Float = None,\n'
+                                                 '                    '
+                                                 'selection: Boolean = None,\n'
+                                                 '                    '
+                                                 'socket_type: '
+                                                 "Literal['FLOAT', 'INT', "
+                                                 "'BOOLEAN', 'VECTOR', 'RGBA', "
+                                                 "'ROTATION', 'MATRIX', "
+                                                 "'STRING', 'MENU', 'OBJECT', "
+                                                 "'IMAGE', 'GEOMETRY', "
+                                                 "'COLLECTION', 'MATERIAL', "
+                                                 "'BUNDLE', 'CLOSURE', 'FONT', "
+                                                 "'SOUND'] = 'FLOAT')"}]},
  'GeometryNodeFlipFaces': {'Mesh': [{'func_name': 'flip_faces',
                                      'is_classmethod': False,
                                      'is_get': False,
@@ -6543,7 +6978,53 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                             'returns': 'OUT',
                                             'signature': '(cls, *geometry: '
                                                          'Geometry)'}]},
- 'GeometryNodeGetGeometryBundle': {'nd': [{'func_name': 'get_geometry_bundle',
+ 'GeometryNodeGetAttributeNames': {'nd': [{'func_name': 'get_attribute_names',
+                                           'is_classmethod': True,
+                                           'is_get': False,
+                                           'node_name': 'Get Attribute Names',
+                                           'returns': 'OUT',
+                                           'signature': '(cls,\n'
+                                                        '                    '
+                                                        'geometry: Geometry = '
+                                                        'None,\n'
+                                                        '                    '
+                                                        'filter_data_type: '
+                                                        'Boolean = None,\n'
+                                                        '                    '
+                                                        'data_type: '
+                                                        "Literal['Float', "
+                                                        "'Integer', 'Boolean', "
+                                                        "'Vector', 'Color', "
+                                                        "'Quaternion', '4x4 "
+                                                        "Matrix', 'String', "
+                                                        "'8-Bit Integer', '2D "
+                                                        '16-Bit Integer '
+                                                        "Vector', '2D Integer "
+                                                        "Vector', '2D Vector', "
+                                                        "'4D Vector', 'Byte "
+                                                        "Color'] = None,\n"
+                                                        '                    '
+                                                        'filter_domain: '
+                                                        'Boolean = None,\n'
+                                                        '                    '
+                                                        'domain: '
+                                                        "Literal['Point', "
+                                                        "'Edge', 'Face', 'Face "
+                                                        "Corner', 'Spline', "
+                                                        "'Instance', 'Layer'] "
+                                                        '= None)'}]},
+ 'GeometryNodeGetGeometryBundle': {'Geometry': [{'func_name': 'get_bundle',
+                                                 'is_classmethod': False,
+                                                 'is_get': False,
+                                                 'is_jump': True,
+                                                 'is_set': False,
+                                                 'node_name': 'Get Geometry '
+                                                              'Bundle',
+                                                 'returns': 'bundle',
+                                                 'signature': '(self, remove: '
+                                                              'Boolean = '
+                                                              'None)'}],
+                                   'nd': [{'func_name': 'get_geometry_bundle',
                                            'is_classmethod': True,
                                            'is_get': False,
                                            'node_name': 'Get Geometry Bundle',
@@ -6552,6 +7033,135 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                         'Geometry = None, '
                                                         'remove: Boolean = '
                                                         'None)'}]},
+ 'GeometryNodeGetGeometryComponent': {'Geometry': [{'func_name': 'get_component',
+                                                    'is_classmethod': False,
+                                                    'is_get': False,
+                                                    'is_jump': True,
+                                                    'is_set': False,
+                                                    'node_name': 'Get Geometry '
+                                                                 'Component',
+                                                    'returns': 'OUT',
+                                                    'signature': '(self,\n'
+                                                                 '                    '
+                                                                 'type: '
+                                                                 "Literal['Mesh', "
+                                                                 "'Point "
+                                                                 "Cloud', "
+                                                                 "'Curve', "
+                                                                 "'Instances', "
+                                                                 "'Grease "
+                                                                 "Pencil', "
+                                                                 "'Volume'] = "
+                                                                 'None,\n'
+                                                                 '                    '
+                                                                 'remove: '
+                                                                 'Boolean = '
+                                                                 'None)'},
+                                                   {'func_name': 'get_mesh',
+                                                    'is_classmethod': False,
+                                                    'is_get': False,
+                                                    'is_jump': True,
+                                                    'is_set': False,
+                                                    'node_name': 'Get Geometry '
+                                                                 'Component',
+                                                    'returns': 'Component',
+                                                    'signature': '(self, '
+                                                                 'remove: '
+                                                                 'Boolean = '
+                                                                 'None)'},
+                                                   {'func_name': 'get_cloud',
+                                                    'is_classmethod': False,
+                                                    'is_get': False,
+                                                    'is_jump': True,
+                                                    'is_set': False,
+                                                    'node_name': 'Get Geometry '
+                                                                 'Component',
+                                                    'returns': 'Component',
+                                                    'signature': '(self, '
+                                                                 'remove: '
+                                                                 'Boolean = '
+                                                                 'None)'},
+                                                   {'func_name': 'get_point_cloud',
+                                                    'is_classmethod': False,
+                                                    'is_get': False,
+                                                    'is_jump': True,
+                                                    'is_set': False,
+                                                    'node_name': 'Get Geometry '
+                                                                 'Component',
+                                                    'returns': 'Component',
+                                                    'signature': '(self, '
+                                                                 'remove: '
+                                                                 'Boolean = '
+                                                                 'None)'},
+                                                   {'func_name': 'get_curve',
+                                                    'is_classmethod': False,
+                                                    'is_get': False,
+                                                    'is_jump': True,
+                                                    'is_set': False,
+                                                    'node_name': 'Get Geometry '
+                                                                 'Component',
+                                                    'returns': 'Component',
+                                                    'signature': '(self, '
+                                                                 'remove: '
+                                                                 'Boolean = '
+                                                                 'None)'},
+                                                   {'func_name': 'get_instances',
+                                                    'is_classmethod': False,
+                                                    'is_get': False,
+                                                    'is_jump': True,
+                                                    'is_set': False,
+                                                    'node_name': 'Get Geometry '
+                                                                 'Component',
+                                                    'returns': 'Component',
+                                                    'signature': '(self, '
+                                                                 'remove: '
+                                                                 'Boolean = '
+                                                                 'None)'},
+                                                   {'func_name': 'get_grease_pencil',
+                                                    'is_classmethod': False,
+                                                    'is_get': False,
+                                                    'is_jump': True,
+                                                    'is_set': False,
+                                                    'node_name': 'Get Geometry '
+                                                                 'Component',
+                                                    'returns': 'Component',
+                                                    'signature': '(self, '
+                                                                 'remove: '
+                                                                 'Boolean = '
+                                                                 'None)'},
+                                                   {'func_name': 'get_volume',
+                                                    'is_classmethod': False,
+                                                    'is_get': False,
+                                                    'is_jump': True,
+                                                    'is_set': False,
+                                                    'node_name': 'Get Geometry '
+                                                                 'Component',
+                                                    'returns': 'Component',
+                                                    'signature': '(self, '
+                                                                 'remove: '
+                                                                 'Boolean = '
+                                                                 'None)'}],
+                                      'nd': [{'func_name': 'get_geometry_component',
+                                              'is_classmethod': True,
+                                              'is_get': False,
+                                              'node_name': 'Get Geometry '
+                                                           'Component',
+                                              'returns': 'OUT',
+                                              'signature': '(cls,\n'
+                                                           '                    '
+                                                           'geometry: Geometry '
+                                                           '= None,\n'
+                                                           '                    '
+                                                           'type: '
+                                                           "Literal['Mesh', "
+                                                           "'Point Cloud', "
+                                                           "'Curve', "
+                                                           "'Instances', "
+                                                           "'Grease Pencil', "
+                                                           "'Volume'] = None,\n"
+                                                           '                    '
+                                                           'remove: Boolean = '
+                                                           'None)'}]},
  'GeometryNodeGetNamedGrid': {'Volume': [{'func_name': 'get_named_grid',
                                           'is_classmethod': False,
                                           'is_get': False,
@@ -7816,6 +8426,12 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                          'node_name': 'Is Edge Smooth',
                                          'returns': 'OUT',
                                          'signature': '(self)'}]},
+ 'GeometryNodeInputFont': {'nd': [{'func_name': 'font',
+                                   'is_classmethod': True,
+                                   'is_get': False,
+                                   'node_name': 'Font',
+                                   'returns': 'OUT',
+                                   'signature': '(cls, font = None)'}]},
  'GeometryNodeInputID': {'Geometry': [{'func_name': 'id',
                                        'is_get': True,
                                        'is_set': False,
@@ -7853,6 +8469,31 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                              'returns': 'OUT',
                                              'signature': '(cls, use_radius: '
                                                           'Boolean = None)'}]},
+ 'GeometryNodeInputInstanceReference': {'Instance': [{'func_name': 'reference',
+                                                      'is_classmethod': True,
+                                                      'is_get': True,
+                                                      'is_jump': False,
+                                                      'is_set': False,
+                                                      'node_name': 'Instance '
+                                                                   'Reference',
+                                                      'returns': 'OUT',
+                                                      'signature': '(cls)'}],
+                                        'Instances': [{'func_name': 'reference',
+                                                       'is_classmethod': True,
+                                                       'is_get': True,
+                                                       'is_jump': False,
+                                                       'is_set': False,
+                                                       'node_name': 'Instance '
+                                                                    'Reference',
+                                                       'returns': 'OUT',
+                                                       'signature': '(cls)'}],
+                                        'nd': [{'func_name': 'instance_reference',
+                                                'is_classmethod': True,
+                                                'is_get': True,
+                                                'node_name': 'Instance '
+                                                             'Reference',
+                                                'returns': 'OUT',
+                                                'signature': '(self)'}]},
  'GeometryNodeInputInstanceRotation': {'Instances': [{'func_name': 'rotation',
                                                       'is_classmethod': True,
                                                       'is_get': True,
@@ -8439,7 +9080,13 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                         'is_get': False,
                                         'node_name': 'Scene Time',
                                         'returns': 'NODE',
-                                        'signature': '(cls)'}]},
+                                        'signature': '(cls)'}],
+                                'snd': [{'func_name': 'scene_time',
+                                         'is_classmethod': True,
+                                         'is_get': False,
+                                         'node_name': 'Scene Time',
+                                         'returns': 'NODE',
+                                         'signature': '(cls)'}]},
  'GeometryNodeInputShadeSmooth': {'Face': [{'func_name': 'shade_smooth',
                                             'is_get': True,
                                             'is_set': False,
@@ -8861,7 +9508,303 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                       'returns': 'OUT',
                                       'signature': '(cls, *geometry: '
                                                    'Geometry)'}]},
- 'GeometryNodeListGetItem': {'nd': [{'func_name': 'get_list_item',
+ 'GeometryNodeListGetItem': {'Boolean': [{'func_name': 'get_list_item',
+                                          'is_classmethod': False,
+                                          'is_get': False,
+                                          'is_jump': False,
+                                          'is_set': False,
+                                          'node_name': 'Get List Item',
+                                          'returns': 'OUT',
+                                          'signature': '(self,\n'
+                                                       '                    '
+                                                       'index: Integer = '
+                                                       'None,\n'
+                                                       '                    '
+                                                       'structure_type: '
+                                                       "Literal['AUTO', "
+                                                       "'DYNAMIC', 'FIELD', "
+                                                       "'GRID', 'LIST', "
+                                                       "'SINGLE'] = 'AUTO')"}],
+                             'Bundle': [{'func_name': 'get_list_item',
+                                         'is_classmethod': False,
+                                         'is_get': False,
+                                         'is_jump': False,
+                                         'is_set': False,
+                                         'node_name': 'Get List Item',
+                                         'returns': 'OUT',
+                                         'signature': '(self,\n'
+                                                      '                    '
+                                                      'index: Integer = None,\n'
+                                                      '                    '
+                                                      'structure_type: '
+                                                      "Literal['AUTO', "
+                                                      "'DYNAMIC', 'FIELD', "
+                                                      "'GRID', 'LIST', "
+                                                      "'SINGLE'] = 'AUTO')"}],
+                             'Closure': [{'func_name': 'get_list_item',
+                                          'is_classmethod': False,
+                                          'is_get': False,
+                                          'is_jump': False,
+                                          'is_set': False,
+                                          'node_name': 'Get List Item',
+                                          'returns': 'OUT',
+                                          'signature': '(self,\n'
+                                                       '                    '
+                                                       'index: Integer = '
+                                                       'None,\n'
+                                                       '                    '
+                                                       'structure_type: '
+                                                       "Literal['AUTO', "
+                                                       "'DYNAMIC', 'FIELD', "
+                                                       "'GRID', 'LIST', "
+                                                       "'SINGLE'] = 'AUTO')"}],
+                             'Collection': [{'func_name': 'get_list_item',
+                                             'is_classmethod': False,
+                                             'is_get': False,
+                                             'is_jump': False,
+                                             'is_set': False,
+                                             'node_name': 'Get List Item',
+                                             'returns': 'OUT',
+                                             'signature': '(self,\n'
+                                                          '                    '
+                                                          'index: Integer = '
+                                                          'None,\n'
+                                                          '                    '
+                                                          'structure_type: '
+                                                          "Literal['AUTO', "
+                                                          "'DYNAMIC', 'FIELD', "
+                                                          "'GRID', 'LIST', "
+                                                          "'SINGLE'] = "
+                                                          "'AUTO')"}],
+                             'Color': [{'func_name': 'get_list_item',
+                                        'is_classmethod': False,
+                                        'is_get': False,
+                                        'is_jump': False,
+                                        'is_set': False,
+                                        'node_name': 'Get List Item',
+                                        'returns': 'OUT',
+                                        'signature': '(self,\n'
+                                                     '                    '
+                                                     'index: Integer = None,\n'
+                                                     '                    '
+                                                     'structure_type: '
+                                                     "Literal['AUTO', "
+                                                     "'DYNAMIC', 'FIELD', "
+                                                     "'GRID', 'LIST', "
+                                                     "'SINGLE'] = 'AUTO')"}],
+                             'Float': [{'func_name': 'get_list_item',
+                                        'is_classmethod': False,
+                                        'is_get': False,
+                                        'is_jump': False,
+                                        'is_set': False,
+                                        'node_name': 'Get List Item',
+                                        'returns': 'OUT',
+                                        'signature': '(self,\n'
+                                                     '                    '
+                                                     'index: Integer = None,\n'
+                                                     '                    '
+                                                     'structure_type: '
+                                                     "Literal['AUTO', "
+                                                     "'DYNAMIC', 'FIELD', "
+                                                     "'GRID', 'LIST', "
+                                                     "'SINGLE'] = 'AUTO')"}],
+                             'Font': [{'func_name': 'get_list_item',
+                                       'is_classmethod': False,
+                                       'is_get': False,
+                                       'is_jump': False,
+                                       'is_set': False,
+                                       'node_name': 'Get List Item',
+                                       'returns': 'OUT',
+                                       'signature': '(self,\n'
+                                                    '                    '
+                                                    'index: Integer = None,\n'
+                                                    '                    '
+                                                    'structure_type: '
+                                                    "Literal['AUTO', "
+                                                    "'DYNAMIC', 'FIELD', "
+                                                    "'GRID', 'LIST', 'SINGLE'] "
+                                                    "= 'AUTO')"}],
+                             'Geometry': [{'func_name': 'get_list_item',
+                                           'is_classmethod': False,
+                                           'is_get': False,
+                                           'is_jump': True,
+                                           'is_set': False,
+                                           'node_name': 'Get List Item',
+                                           'returns': 'OUT',
+                                           'signature': '(self,\n'
+                                                        '                    '
+                                                        'index: Integer = '
+                                                        'None,\n'
+                                                        '                    '
+                                                        'structure_type: '
+                                                        "Literal['AUTO', "
+                                                        "'DYNAMIC', 'FIELD', "
+                                                        "'GRID', 'LIST', "
+                                                        "'SINGLE'] = 'AUTO')"}],
+                             'Image': [{'func_name': 'get_list_item',
+                                        'is_classmethod': False,
+                                        'is_get': False,
+                                        'is_jump': False,
+                                        'is_set': False,
+                                        'node_name': 'Get List Item',
+                                        'returns': 'OUT',
+                                        'signature': '(self,\n'
+                                                     '                    '
+                                                     'index: Integer = None,\n'
+                                                     '                    '
+                                                     'structure_type: '
+                                                     "Literal['AUTO', "
+                                                     "'DYNAMIC', 'FIELD', "
+                                                     "'GRID', 'LIST', "
+                                                     "'SINGLE'] = 'AUTO')"}],
+                             'Integer': [{'func_name': 'get_list_item',
+                                          'is_classmethod': False,
+                                          'is_get': False,
+                                          'is_jump': False,
+                                          'is_set': False,
+                                          'node_name': 'Get List Item',
+                                          'returns': 'OUT',
+                                          'signature': '(self,\n'
+                                                       '                    '
+                                                       'index: Integer = '
+                                                       'None,\n'
+                                                       '                    '
+                                                       'structure_type: '
+                                                       "Literal['AUTO', "
+                                                       "'DYNAMIC', 'FIELD', "
+                                                       "'GRID', 'LIST', "
+                                                       "'SINGLE'] = 'AUTO')"}],
+                             'Material': [{'func_name': 'get_list_item',
+                                           'is_classmethod': False,
+                                           'is_get': False,
+                                           'is_jump': False,
+                                           'is_set': False,
+                                           'node_name': 'Get List Item',
+                                           'returns': 'OUT',
+                                           'signature': '(self,\n'
+                                                        '                    '
+                                                        'index: Integer = '
+                                                        'None,\n'
+                                                        '                    '
+                                                        'structure_type: '
+                                                        "Literal['AUTO', "
+                                                        "'DYNAMIC', 'FIELD', "
+                                                        "'GRID', 'LIST', "
+                                                        "'SINGLE'] = 'AUTO')"}],
+                             'Matrix': [{'func_name': 'get_list_item',
+                                         'is_classmethod': False,
+                                         'is_get': False,
+                                         'is_jump': False,
+                                         'is_set': False,
+                                         'node_name': 'Get List Item',
+                                         'returns': 'OUT',
+                                         'signature': '(self,\n'
+                                                      '                    '
+                                                      'index: Integer = None,\n'
+                                                      '                    '
+                                                      'structure_type: '
+                                                      "Literal['AUTO', "
+                                                      "'DYNAMIC', 'FIELD', "
+                                                      "'GRID', 'LIST', "
+                                                      "'SINGLE'] = 'AUTO')"}],
+                             'Menu': [{'func_name': 'get_list_item',
+                                       'is_classmethod': False,
+                                       'is_get': False,
+                                       'is_jump': False,
+                                       'is_set': False,
+                                       'node_name': 'Get List Item',
+                                       'returns': 'OUT',
+                                       'signature': '(self,\n'
+                                                    '                    '
+                                                    'index: Integer = None,\n'
+                                                    '                    '
+                                                    'structure_type: '
+                                                    "Literal['AUTO', "
+                                                    "'DYNAMIC', 'FIELD', "
+                                                    "'GRID', 'LIST', 'SINGLE'] "
+                                                    "= 'AUTO')"}],
+                             'Object': [{'func_name': 'get_list_item',
+                                         'is_classmethod': False,
+                                         'is_get': False,
+                                         'is_jump': False,
+                                         'is_set': False,
+                                         'node_name': 'Get List Item',
+                                         'returns': 'OUT',
+                                         'signature': '(self,\n'
+                                                      '                    '
+                                                      'index: Integer = None,\n'
+                                                      '                    '
+                                                      'structure_type: '
+                                                      "Literal['AUTO', "
+                                                      "'DYNAMIC', 'FIELD', "
+                                                      "'GRID', 'LIST', "
+                                                      "'SINGLE'] = 'AUTO')"}],
+                             'Rotation': [{'func_name': 'get_list_item',
+                                           'is_classmethod': False,
+                                           'is_get': False,
+                                           'is_jump': False,
+                                           'is_set': False,
+                                           'node_name': 'Get List Item',
+                                           'returns': 'OUT',
+                                           'signature': '(self,\n'
+                                                        '                    '
+                                                        'index: Integer = '
+                                                        'None,\n'
+                                                        '                    '
+                                                        'structure_type: '
+                                                        "Literal['AUTO', "
+                                                        "'DYNAMIC', 'FIELD', "
+                                                        "'GRID', 'LIST', "
+                                                        "'SINGLE'] = 'AUTO')"}],
+                             'Sound': [{'func_name': 'get_list_item',
+                                        'is_classmethod': False,
+                                        'is_get': False,
+                                        'is_jump': False,
+                                        'is_set': False,
+                                        'node_name': 'Get List Item',
+                                        'returns': 'OUT',
+                                        'signature': '(self,\n'
+                                                     '                    '
+                                                     'index: Integer = None,\n'
+                                                     '                    '
+                                                     'structure_type: '
+                                                     "Literal['AUTO', "
+                                                     "'DYNAMIC', 'FIELD', "
+                                                     "'GRID', 'LIST', "
+                                                     "'SINGLE'] = 'AUTO')"}],
+                             'String': [{'func_name': 'get_list_item',
+                                         'is_classmethod': False,
+                                         'is_get': False,
+                                         'is_jump': False,
+                                         'is_set': False,
+                                         'node_name': 'Get List Item',
+                                         'returns': 'OUT',
+                                         'signature': '(self,\n'
+                                                      '                    '
+                                                      'index: Integer = None,\n'
+                                                      '                    '
+                                                      'structure_type: '
+                                                      "Literal['AUTO', "
+                                                      "'DYNAMIC', 'FIELD', "
+                                                      "'GRID', 'LIST', "
+                                                      "'SINGLE'] = 'AUTO')"}],
+                             'Vector': [{'func_name': 'get_list_item',
+                                         'is_classmethod': False,
+                                         'is_get': False,
+                                         'is_jump': False,
+                                         'is_set': False,
+                                         'node_name': 'Get List Item',
+                                         'returns': 'OUT',
+                                         'signature': '(self,\n'
+                                                      '                    '
+                                                      'index: Integer = None,\n'
+                                                      '                    '
+                                                      'structure_type: '
+                                                      "Literal['AUTO', "
+                                                      "'DYNAMIC', 'FIELD', "
+                                                      "'GRID', 'LIST', "
+                                                      "'SINGLE'] = 'AUTO')"}],
+                             'nd': [{'func_name': 'get_list_item',
                                      'is_classmethod': True,
                                      'is_get': False,
                                      'node_name': 'Get List Item',
@@ -8880,14 +9823,158 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                   "'OBJECT', 'IMAGE', "
                                                   "'GEOMETRY', 'COLLECTION', "
                                                   "'MATERIAL', 'BUNDLE', "
-                                                  "'CLOSURE', 'FONT'] = "
-                                                  "'FLOAT',\n"
+                                                  "'CLOSURE', 'FONT', 'SOUND'] "
+                                                  "= 'FLOAT',\n"
                                                   '                    '
                                                   'structure_type: '
                                                   "Literal['AUTO', 'DYNAMIC', "
                                                   "'FIELD', 'GRID', 'LIST', "
                                                   "'SINGLE'] = 'AUTO')"}]},
- 'GeometryNodeListLength': {'nd': [{'func_name': 'list_length',
+ 'GeometryNodeListLength': {'Boolean': [{'func_name': 'list_length',
+                                         'is_classmethod': False,
+                                         'is_get': False,
+                                         'is_jump': False,
+                                         'is_set': False,
+                                         'node_name': 'List Length',
+                                         'returns': 'OUT',
+                                         'signature': '(self)'}],
+                            'Bundle': [{'func_name': 'list_length',
+                                        'is_classmethod': False,
+                                        'is_get': False,
+                                        'is_jump': False,
+                                        'is_set': False,
+                                        'node_name': 'List Length',
+                                        'returns': 'OUT',
+                                        'signature': '(self)'}],
+                            'Closure': [{'func_name': 'list_length',
+                                         'is_classmethod': False,
+                                         'is_get': False,
+                                         'is_jump': False,
+                                         'is_set': False,
+                                         'node_name': 'List Length',
+                                         'returns': 'OUT',
+                                         'signature': '(self)'}],
+                            'Collection': [{'func_name': 'list_length',
+                                            'is_classmethod': False,
+                                            'is_get': False,
+                                            'is_jump': False,
+                                            'is_set': False,
+                                            'node_name': 'List Length',
+                                            'returns': 'OUT',
+                                            'signature': '(self)'}],
+                            'Color': [{'func_name': 'list_length',
+                                       'is_classmethod': False,
+                                       'is_get': False,
+                                       'is_jump': False,
+                                       'is_set': False,
+                                       'node_name': 'List Length',
+                                       'returns': 'OUT',
+                                       'signature': '(self)'}],
+                            'Float': [{'func_name': 'list_length',
+                                       'is_classmethod': False,
+                                       'is_get': False,
+                                       'is_jump': False,
+                                       'is_set': False,
+                                       'node_name': 'List Length',
+                                       'returns': 'OUT',
+                                       'signature': '(self)'}],
+                            'Font': [{'func_name': 'list_length',
+                                      'is_classmethod': False,
+                                      'is_get': False,
+                                      'is_jump': False,
+                                      'is_set': False,
+                                      'node_name': 'List Length',
+                                      'returns': 'OUT',
+                                      'signature': '(self)'}],
+                            'Geometry': [{'func_name': 'list_length',
+                                          'is_classmethod': False,
+                                          'is_get': False,
+                                          'is_jump': False,
+                                          'is_set': False,
+                                          'node_name': 'List Length',
+                                          'returns': 'OUT',
+                                          'signature': '(self)'}],
+                            'Image': [{'func_name': 'list_length',
+                                       'is_classmethod': False,
+                                       'is_get': False,
+                                       'is_jump': False,
+                                       'is_set': False,
+                                       'node_name': 'List Length',
+                                       'returns': 'OUT',
+                                       'signature': '(self)'}],
+                            'Integer': [{'func_name': 'list_length',
+                                         'is_classmethod': False,
+                                         'is_get': False,
+                                         'is_jump': False,
+                                         'is_set': False,
+                                         'node_name': 'List Length',
+                                         'returns': 'OUT',
+                                         'signature': '(self)'}],
+                            'Material': [{'func_name': 'list_length',
+                                          'is_classmethod': False,
+                                          'is_get': False,
+                                          'is_jump': False,
+                                          'is_set': False,
+                                          'node_name': 'List Length',
+                                          'returns': 'OUT',
+                                          'signature': '(self)'}],
+                            'Matrix': [{'func_name': 'list_length',
+                                        'is_classmethod': False,
+                                        'is_get': False,
+                                        'is_jump': False,
+                                        'is_set': False,
+                                        'node_name': 'List Length',
+                                        'returns': 'OUT',
+                                        'signature': '(self)'}],
+                            'Menu': [{'func_name': 'list_length',
+                                      'is_classmethod': False,
+                                      'is_get': False,
+                                      'is_jump': False,
+                                      'is_set': False,
+                                      'node_name': 'List Length',
+                                      'returns': 'OUT',
+                                      'signature': '(self)'}],
+                            'Object': [{'func_name': 'list_length',
+                                        'is_classmethod': False,
+                                        'is_get': False,
+                                        'is_jump': False,
+                                        'is_set': False,
+                                        'node_name': 'List Length',
+                                        'returns': 'OUT',
+                                        'signature': '(self)'}],
+                            'Rotation': [{'func_name': 'list_length',
+                                          'is_classmethod': False,
+                                          'is_get': False,
+                                          'is_jump': False,
+                                          'is_set': False,
+                                          'node_name': 'List Length',
+                                          'returns': 'OUT',
+                                          'signature': '(self)'}],
+                            'Sound': [{'func_name': 'list_length',
+                                       'is_classmethod': False,
+                                       'is_get': False,
+                                       'is_jump': False,
+                                       'is_set': False,
+                                       'node_name': 'List Length',
+                                       'returns': 'OUT',
+                                       'signature': '(self)'}],
+                            'String': [{'func_name': 'list_length',
+                                        'is_classmethod': False,
+                                        'is_get': False,
+                                        'is_jump': False,
+                                        'is_set': False,
+                                        'node_name': 'List Length',
+                                        'returns': 'OUT',
+                                        'signature': '(self)'}],
+                            'Vector': [{'func_name': 'list_length',
+                                        'is_classmethod': False,
+                                        'is_get': False,
+                                        'is_jump': False,
+                                        'is_set': False,
+                                        'node_name': 'List Length',
+                                        'returns': 'OUT',
+                                        'signature': '(self)'}],
+                            'nd': [{'func_name': 'list_length',
                                     'is_classmethod': True,
                                     'is_get': False,
                                     'node_name': 'List Length',
@@ -8903,8 +9990,8 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                  "'OBJECT', 'IMAGE', "
                                                  "'GEOMETRY', 'COLLECTION', "
                                                  "'MATERIAL', 'BUNDLE', "
-                                                 "'CLOSURE', 'FONT'] = "
-                                                 "'FLOAT')"}]},
+                                                 "'CLOSURE', 'FONT', 'SOUND'] "
+                                                 "= 'FLOAT')"}]},
  'GeometryNodeMaterialSelection': {'Curve': [{'func_name': 'material_selection',
                                               'is_classmethod': True,
                                               'is_get': False,
@@ -9038,6 +10125,111 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                   "Literal['MERGE_BY_NAME', "
                                                   "'MERGE_BY_ID'] = "
                                                   "'MERGE_BY_NAME')"}]},
+ 'GeometryNodeMergePoints': {'Geometry': [{'func_name': 'merge_points',
+                                           'is_classmethod': False,
+                                           'is_get': False,
+                                           'is_jump': True,
+                                           'is_set': False,
+                                           'node_name': 'Merge Points',
+                                           'returns': 'OUT',
+                                           'signature': '(self, merge_id: '
+                                                        'Integer = None)'}],
+                             'Point': [{'func_name': 'merge',
+                                        'is_classmethod': False,
+                                        'is_get': False,
+                                        'is_jump': True,
+                                        'is_set': False,
+                                        'node_name': 'Merge Points',
+                                        'returns': 'OUT',
+                                        'signature': '(self, merge_id: Integer '
+                                                     '= None)'}],
+                             'nd': [{'func_name': 'merge_points',
+                                     'is_classmethod': True,
+                                     'is_get': False,
+                                     'node_name': 'Merge Points',
+                                     'returns': 'OUT',
+                                     'signature': '(cls,\n'
+                                                  '                    '
+                                                  'geometry: Geometry = None,\n'
+                                                  '                    '
+                                                  'selection: Boolean = None,\n'
+                                                  '                    '
+                                                  'merge_id: Integer = '
+                                                  'None)'}]},
+ 'GeometryNodeMeshBevel': {'Mesh': [{'func_name': 'bevel',
+                                     'is_classmethod': False,
+                                     'is_get': False,
+                                     'is_jump': True,
+                                     'is_set': False,
+                                     'node_name': 'Mesh Bevel',
+                                     'returns': 'OUT',
+                                     'signature': '(self,\n'
+                                                  '                    '
+                                                  'affect_kind: '
+                                                  "Literal['Vertices', "
+                                                  "'Edges'] = None,\n"
+                                                  '                    '
+                                                  'start_left_offset: Float = '
+                                                  'None,\n'
+                                                  '                    '
+                                                  'start_right_offset: Float = '
+                                                  'None,\n'
+                                                  '                    '
+                                                  'end_left_offset: Float = '
+                                                  'None,\n'
+                                                  '                    '
+                                                  'end_right_offset: Float = '
+                                                  'None,\n'
+                                                  '                    offset: '
+                                                  'Float = None,\n'
+                                                  '                    miter: '
+                                                  'Boolean = None,\n'
+                                                  '                    spread: '
+                                                  'Float = None,\n'
+                                                  '                    '
+                                                  'segments: Integer = None,\n'
+                                                  '                    shape: '
+                                                  'Float = None,\n'
+                                                  '                    '
+                                                  'profile: Geometry = None)'}],
+                           'nd': [{'func_name': 'mesh_bevel',
+                                   'is_classmethod': True,
+                                   'is_get': False,
+                                   'node_name': 'Mesh Bevel',
+                                   'returns': 'OUT',
+                                   'signature': '(cls,\n'
+                                                '                    mesh: '
+                                                'Mesh = None,\n'
+                                                '                    '
+                                                'selection: Boolean = None,\n'
+                                                '                    '
+                                                'affect_kind: '
+                                                "Literal['Vertices', 'Edges'] "
+                                                '= None,\n'
+                                                '                    '
+                                                'start_left_offset: Float = '
+                                                'None,\n'
+                                                '                    '
+                                                'start_right_offset: Float = '
+                                                'None,\n'
+                                                '                    '
+                                                'end_left_offset: Float = '
+                                                'None,\n'
+                                                '                    '
+                                                'end_right_offset: Float = '
+                                                'None,\n'
+                                                '                    offset: '
+                                                'Float = None,\n'
+                                                '                    miter: '
+                                                'Boolean = None,\n'
+                                                '                    spread: '
+                                                'Float = None,\n'
+                                                '                    segments: '
+                                                'Integer = None,\n'
+                                                '                    shape: '
+                                                'Float = None,\n'
+                                                '                    profile: '
+                                                'Geometry = None)'}]},
  'GeometryNodeMeshBoolean': {'Mesh': [{'func_name': 'boolean',
                                        'is_classmethod': False,
                                        'is_get': False,
@@ -10256,6 +11448,47 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                       "'Wildcard'] = None,\n"
                                                       '                    '
                                                       'name: String = None)'}]},
+ 'GeometryNodeRenameAttribute': {'Geometry': [{'func_name': 'rename_attribute',
+                                               'is_classmethod': False,
+                                               'is_get': False,
+                                               'is_jump': True,
+                                               'is_set': False,
+                                               'node_name': 'Rename Attribute',
+                                               'returns': 'OUT',
+                                               'signature': '(self,\n'
+                                                            '                    '
+                                                            'mode: '
+                                                            "Literal['Single', "
+                                                            "'Prefix'] = "
+                                                            'None,\n'
+                                                            '                    '
+                                                            'old: String = '
+                                                            'None,\n'
+                                                            '                    '
+                                                            'new: String = '
+                                                            'None,\n'
+                                                            '                    '
+                                                            'overwrite: '
+                                                            'Boolean = None)'}],
+                                 'nd': [{'func_name': 'rename_attribute',
+                                         'is_classmethod': True,
+                                         'is_get': False,
+                                         'node_name': 'Rename Attribute',
+                                         'returns': 'OUT',
+                                         'signature': '(cls,\n'
+                                                      '                    '
+                                                      'geometry: Geometry = '
+                                                      'None,\n'
+                                                      '                    '
+                                                      "mode: Literal['Single', "
+                                                      "'Prefix'] = None,\n"
+                                                      '                    '
+                                                      'old: String = None,\n'
+                                                      '                    '
+                                                      'new: String = None,\n'
+                                                      '                    '
+                                                      'overwrite: Boolean = '
+                                                      'None)'}]},
  'GeometryNodeRepeatInput': {'Repeat': [{'help': '\n'
                                                  'with GeoNodes("Repeat '
                                                  'Example"):\n'
@@ -10269,7 +11502,7 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                  '"Scale")\n'
                                                  '    \n'
                                                  '    for rep in repeat(count, '
-                                                 'geo=Geometry(), move=move, '
+                                                 'geo=geo, move=move, '
                                                  'scale=scale):\n'
                                                  '        \n'
                                                  '        rep.geo += '
@@ -10294,9 +11527,8 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                   '"Scale")\n'
                                                   '    \n'
                                                   '    for rep in '
-                                                  'repeat(count, '
-                                                  'geo=Geometry(), move=move, '
-                                                  'scale=scale):\n'
+                                                  'repeat(count, geo=geo, '
+                                                  'move=move, scale=scale):\n'
                                                   '        \n'
                                                   '        rep.geo += '
                                                   'geo.transform(scale=rep.scale, '
@@ -11092,6 +12324,47 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                            "'QUATERNION', "
                                                            "'FLOAT4X4'] = "
                                                            "'FLOAT')"}]},
+ 'GeometryNodeSampleSoundFrequencies': {'nd': [{'func_name': 'sample_sound_frequencies',
+                                                'is_classmethod': True,
+                                                'is_get': False,
+                                                'node_name': 'Sample Sound '
+                                                             'Frequencies',
+                                                'returns': 'OUT',
+                                                'signature': '(cls,\n'
+                                                             '                    '
+                                                             'sound: Sound = '
+                                                             'None,\n'
+                                                             '                    '
+                                                             'time: Float = '
+                                                             'None,\n'
+                                                             '                    '
+                                                             'all_channels: '
+                                                             'Boolean = None,\n'
+                                                             '                    '
+                                                             'channel: Integer '
+                                                             '= None,\n'
+                                                             '                    '
+                                                             'low: Float = '
+                                                             'None,\n'
+                                                             '                    '
+                                                             'high: Float = '
+                                                             'None,\n'
+                                                             '                    '
+                                                             'fft_size: '
+                                                             "Literal['128', "
+                                                             "'256', '512', "
+                                                             "'1024', '2048', "
+                                                             "'4096', '8192', "
+                                                             "'16384', "
+                                                             "'32768'] = "
+                                                             'None,\n'
+                                                             '                    '
+                                                             'window_function: '
+                                                             "Literal['Hann', "
+                                                             "'Hamming', "
+                                                             "'Blackman', "
+                                                             "'Rectangular'] = "
+                                                             'None)'}]},
  'GeometryNodeSampleUVSurface': {'Mesh': [{'func_name': 'sample_uv_surface',
                                            'is_classmethod': False,
                                            'is_get': False,
@@ -11569,7 +12842,18 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                       'signature': '(cls, curve: Curve = None, '
                                                    'selection: Boolean = None, '
                                                    'tilt: Float = None)'}]},
- 'GeometryNodeSetGeometryBundle': {'nd': [{'func_name': 'set_geometry_bundle',
+ 'GeometryNodeSetGeometryBundle': {'Geometry': [{'func_name': 'set_bundle',
+                                                 'is_classmethod': False,
+                                                 'is_get': False,
+                                                 'is_jump': True,
+                                                 'is_set': False,
+                                                 'node_name': 'Set Geometry '
+                                                              'Bundle',
+                                                 'returns': 'OUT',
+                                                 'signature': '(self, bundle: '
+                                                              'Bundle = '
+                                                              'None)'}],
+                                   'nd': [{'func_name': 'set_geometry_bundle',
                                            'is_classmethod': True,
                                            'is_get': False,
                                            'node_name': 'Set Geometry Bundle',
@@ -12155,6 +13439,42 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                     "Literal['SHARPNESS', "
                                                     "'FREE', 'TANGENT_SPACE'] "
                                                     "= 'SHARPNESS')"}]},
+ 'GeometryNodeSetNURBSOrder': {'Curve': [{'func_name': 'set_nurbs_order',
+                                          'is_classmethod': False,
+                                          'is_get': False,
+                                          'is_jump': True,
+                                          'is_set': False,
+                                          'node_name': 'Set NURBS Order',
+                                          'returns': 'OUT',
+                                          'signature': '(self, order: Integer '
+                                                       '= None)'}],
+                               'nd': [{'func_name': 'set_nurbs_order',
+                                       'is_classmethod': True,
+                                       'is_get': False,
+                                       'node_name': 'Set NURBS Order',
+                                       'returns': 'OUT',
+                                       'signature': '(cls, curves: Curve = '
+                                                    'None, selection: Boolean '
+                                                    '= None, order: Integer = '
+                                                    'None)'}]},
+ 'GeometryNodeSetNURBSWeight': {'Curve': [{'func_name': 'set_nurbs_weight',
+                                           'is_classmethod': False,
+                                           'is_get': False,
+                                           'is_jump': True,
+                                           'is_set': False,
+                                           'node_name': 'Set NURBS Weight',
+                                           'returns': 'OUT',
+                                           'signature': '(self, weight: Float '
+                                                        '= None)'}],
+                                'nd': [{'func_name': 'set_nurbs_weight',
+                                        'is_classmethod': True,
+                                        'is_get': False,
+                                        'node_name': 'Set NURBS Weight',
+                                        'returns': 'OUT',
+                                        'signature': '(cls, curves: Curve = '
+                                                     'None, selection: Boolean '
+                                                     '= None, weight: Float = '
+                                                     'None)'}]},
  'GeometryNodeSetPointRadius': {'Cloud': [{'func_name': 'radius',
                                            'is_get': False,
                                            'is_set': True,
@@ -12481,6 +13801,309 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                    "domain: Literal['POINT', "
                                                    "'EDGE', 'FACE', 'CURVE', "
                                                    "'INSTANCE'] = 'POINT')"}]},
+ 'GeometryNodeSortList': {'Boolean': [{'func_name': 'sort_list',
+                                       'is_classmethod': False,
+                                       'is_get': False,
+                                       'is_jump': False,
+                                       'is_set': False,
+                                       'node_name': 'Sort List',
+                                       'returns': 'OUT',
+                                       'signature': '(self,\n'
+                                                    '                    '
+                                                    'selection: Boolean = '
+                                                    'None,\n'
+                                                    '                    '
+                                                    'group_id: Integer = '
+                                                    'None,\n'
+                                                    '                    '
+                                                    'sort_weight: Float = '
+                                                    'None)'}],
+                          'Bundle': [{'func_name': 'sort_list',
+                                      'is_classmethod': False,
+                                      'is_get': False,
+                                      'is_jump': False,
+                                      'is_set': False,
+                                      'node_name': 'Sort List',
+                                      'returns': 'OUT',
+                                      'signature': '(self,\n'
+                                                   '                    '
+                                                   'selection: Boolean = '
+                                                   'None,\n'
+                                                   '                    '
+                                                   'group_id: Integer = None,\n'
+                                                   '                    '
+                                                   'sort_weight: Float = '
+                                                   'None)'}],
+                          'Closure': [{'func_name': 'sort_list',
+                                       'is_classmethod': False,
+                                       'is_get': False,
+                                       'is_jump': False,
+                                       'is_set': False,
+                                       'node_name': 'Sort List',
+                                       'returns': 'OUT',
+                                       'signature': '(self,\n'
+                                                    '                    '
+                                                    'selection: Boolean = '
+                                                    'None,\n'
+                                                    '                    '
+                                                    'group_id: Integer = '
+                                                    'None,\n'
+                                                    '                    '
+                                                    'sort_weight: Float = '
+                                                    'None)'}],
+                          'Collection': [{'func_name': 'sort_list',
+                                          'is_classmethod': False,
+                                          'is_get': False,
+                                          'is_jump': False,
+                                          'is_set': False,
+                                          'node_name': 'Sort List',
+                                          'returns': 'OUT',
+                                          'signature': '(self,\n'
+                                                       '                    '
+                                                       'selection: Boolean = '
+                                                       'None,\n'
+                                                       '                    '
+                                                       'group_id: Integer = '
+                                                       'None,\n'
+                                                       '                    '
+                                                       'sort_weight: Float = '
+                                                       'None)'}],
+                          'Color': [{'func_name': 'sort_list',
+                                     'is_classmethod': False,
+                                     'is_get': False,
+                                     'is_jump': False,
+                                     'is_set': False,
+                                     'node_name': 'Sort List',
+                                     'returns': 'OUT',
+                                     'signature': '(self,\n'
+                                                  '                    '
+                                                  'selection: Boolean = None,\n'
+                                                  '                    '
+                                                  'group_id: Integer = None,\n'
+                                                  '                    '
+                                                  'sort_weight: Float = '
+                                                  'None)'}],
+                          'Float': [{'func_name': 'sort_list',
+                                     'is_classmethod': False,
+                                     'is_get': False,
+                                     'is_jump': False,
+                                     'is_set': False,
+                                     'node_name': 'Sort List',
+                                     'returns': 'OUT',
+                                     'signature': '(self,\n'
+                                                  '                    '
+                                                  'selection: Boolean = None,\n'
+                                                  '                    '
+                                                  'group_id: Integer = None,\n'
+                                                  '                    '
+                                                  'sort_weight: Float = '
+                                                  'None)'}],
+                          'Font': [{'func_name': 'sort_list',
+                                    'is_classmethod': False,
+                                    'is_get': False,
+                                    'is_jump': False,
+                                    'is_set': False,
+                                    'node_name': 'Sort List',
+                                    'returns': 'OUT',
+                                    'signature': '(self,\n'
+                                                 '                    '
+                                                 'selection: Boolean = None,\n'
+                                                 '                    '
+                                                 'group_id: Integer = None,\n'
+                                                 '                    '
+                                                 'sort_weight: Float = None)'}],
+                          'Geometry': [{'func_name': 'sort_list',
+                                        'is_classmethod': False,
+                                        'is_get': False,
+                                        'is_jump': True,
+                                        'is_set': False,
+                                        'node_name': 'Sort List',
+                                        'returns': 'OUT',
+                                        'signature': '(self, group_id: Integer '
+                                                     '= None, sort_weight: '
+                                                     'Float = None)'}],
+                          'Image': [{'func_name': 'sort_list',
+                                     'is_classmethod': False,
+                                     'is_get': False,
+                                     'is_jump': False,
+                                     'is_set': False,
+                                     'node_name': 'Sort List',
+                                     'returns': 'OUT',
+                                     'signature': '(self,\n'
+                                                  '                    '
+                                                  'selection: Boolean = None,\n'
+                                                  '                    '
+                                                  'group_id: Integer = None,\n'
+                                                  '                    '
+                                                  'sort_weight: Float = '
+                                                  'None)'}],
+                          'Integer': [{'func_name': 'sort_list',
+                                       'is_classmethod': False,
+                                       'is_get': False,
+                                       'is_jump': False,
+                                       'is_set': False,
+                                       'node_name': 'Sort List',
+                                       'returns': 'OUT',
+                                       'signature': '(self,\n'
+                                                    '                    '
+                                                    'selection: Boolean = '
+                                                    'None,\n'
+                                                    '                    '
+                                                    'group_id: Integer = '
+                                                    'None,\n'
+                                                    '                    '
+                                                    'sort_weight: Float = '
+                                                    'None)'}],
+                          'Material': [{'func_name': 'sort_list',
+                                        'is_classmethod': False,
+                                        'is_get': False,
+                                        'is_jump': False,
+                                        'is_set': False,
+                                        'node_name': 'Sort List',
+                                        'returns': 'OUT',
+                                        'signature': '(self,\n'
+                                                     '                    '
+                                                     'selection: Boolean = '
+                                                     'None,\n'
+                                                     '                    '
+                                                     'group_id: Integer = '
+                                                     'None,\n'
+                                                     '                    '
+                                                     'sort_weight: Float = '
+                                                     'None)'}],
+                          'Matrix': [{'func_name': 'sort_list',
+                                      'is_classmethod': False,
+                                      'is_get': False,
+                                      'is_jump': False,
+                                      'is_set': False,
+                                      'node_name': 'Sort List',
+                                      'returns': 'OUT',
+                                      'signature': '(self,\n'
+                                                   '                    '
+                                                   'selection: Boolean = '
+                                                   'None,\n'
+                                                   '                    '
+                                                   'group_id: Integer = None,\n'
+                                                   '                    '
+                                                   'sort_weight: Float = '
+                                                   'None)'}],
+                          'Menu': [{'func_name': 'sort_list',
+                                    'is_classmethod': False,
+                                    'is_get': False,
+                                    'is_jump': False,
+                                    'is_set': False,
+                                    'node_name': 'Sort List',
+                                    'returns': 'OUT',
+                                    'signature': '(self,\n'
+                                                 '                    '
+                                                 'selection: Boolean = None,\n'
+                                                 '                    '
+                                                 'group_id: Integer = None,\n'
+                                                 '                    '
+                                                 'sort_weight: Float = None)'}],
+                          'Object': [{'func_name': 'sort_list',
+                                      'is_classmethod': False,
+                                      'is_get': False,
+                                      'is_jump': False,
+                                      'is_set': False,
+                                      'node_name': 'Sort List',
+                                      'returns': 'OUT',
+                                      'signature': '(self,\n'
+                                                   '                    '
+                                                   'selection: Boolean = '
+                                                   'None,\n'
+                                                   '                    '
+                                                   'group_id: Integer = None,\n'
+                                                   '                    '
+                                                   'sort_weight: Float = '
+                                                   'None)'}],
+                          'Rotation': [{'func_name': 'sort_list',
+                                        'is_classmethod': False,
+                                        'is_get': False,
+                                        'is_jump': False,
+                                        'is_set': False,
+                                        'node_name': 'Sort List',
+                                        'returns': 'OUT',
+                                        'signature': '(self,\n'
+                                                     '                    '
+                                                     'selection: Boolean = '
+                                                     'None,\n'
+                                                     '                    '
+                                                     'group_id: Integer = '
+                                                     'None,\n'
+                                                     '                    '
+                                                     'sort_weight: Float = '
+                                                     'None)'}],
+                          'Sound': [{'func_name': 'sort_list',
+                                     'is_classmethod': False,
+                                     'is_get': False,
+                                     'is_jump': False,
+                                     'is_set': False,
+                                     'node_name': 'Sort List',
+                                     'returns': 'OUT',
+                                     'signature': '(self,\n'
+                                                  '                    '
+                                                  'selection: Boolean = None,\n'
+                                                  '                    '
+                                                  'group_id: Integer = None,\n'
+                                                  '                    '
+                                                  'sort_weight: Float = '
+                                                  'None)'}],
+                          'String': [{'func_name': 'sort_list',
+                                      'is_classmethod': False,
+                                      'is_get': False,
+                                      'is_jump': False,
+                                      'is_set': False,
+                                      'node_name': 'Sort List',
+                                      'returns': 'OUT',
+                                      'signature': '(self,\n'
+                                                   '                    '
+                                                   'selection: Boolean = '
+                                                   'None,\n'
+                                                   '                    '
+                                                   'group_id: Integer = None,\n'
+                                                   '                    '
+                                                   'sort_weight: Float = '
+                                                   'None)'}],
+                          'Vector': [{'func_name': 'sort_list',
+                                      'is_classmethod': False,
+                                      'is_get': False,
+                                      'is_jump': False,
+                                      'is_set': False,
+                                      'node_name': 'Sort List',
+                                      'returns': 'OUT',
+                                      'signature': '(self,\n'
+                                                   '                    '
+                                                   'selection: Boolean = '
+                                                   'None,\n'
+                                                   '                    '
+                                                   'group_id: Integer = None,\n'
+                                                   '                    '
+                                                   'sort_weight: Float = '
+                                                   'None)'}],
+                          'nd': [{'func_name': 'sort_list',
+                                  'is_classmethod': True,
+                                  'is_get': False,
+                                  'node_name': 'Sort List',
+                                  'returns': 'OUT',
+                                  'signature': '(cls,\n'
+                                               '                    list: '
+                                               'Float = None,\n'
+                                               '                    selection: '
+                                               'Boolean = None,\n'
+                                               '                    group_id: '
+                                               'Integer = None,\n'
+                                               '                    '
+                                               'sort_weight: Float = None,\n'
+                                               '                    '
+                                               "socket_type: Literal['FLOAT', "
+                                               "'INT', 'BOOLEAN', 'VECTOR', "
+                                               "'RGBA', 'ROTATION', 'MATRIX', "
+                                               "'STRING', 'MENU', 'OBJECT', "
+                                               "'IMAGE', 'GEOMETRY', "
+                                               "'COLLECTION', 'MATERIAL', "
+                                               "'BUNDLE', 'CLOSURE', 'FONT', "
+                                               "'SOUND'] = 'FLOAT')"}]},
  'GeometryNodeSplineLength': {'Curve': [{'func_name': 'spline_length',
                                          'is_classmethod': True,
                                          'is_get': False,
@@ -12686,8 +14309,9 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                               '| Rotation | '
                                                               'Matrix | '
                                                               'Integer | '
-                                                              'Vector | Color '
-                                                              '= None)'},
+                                                              'Vector | Vector '
+                                                              '| Color = '
+                                                              'None)'},
                                                 {'func_name': 'store',
                                                  'is_classmethod': False,
                                                  'is_get': False,
@@ -12708,8 +14332,9 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                               '| Rotation | '
                                                               'Matrix | '
                                                               'Integer | '
-                                                              'Vector | Color '
-                                                              '= None)'},
+                                                              'Vector | Vector '
+                                                              '| Color = '
+                                                              'None)'},
                                                 {'func_name': 'store_uv',
                                                  'is_classmethod': False,
                                                  'is_get': False,
@@ -12740,8 +14365,8 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                             '| Vector | Color '
                                                             '| Rotation | '
                                                             'Matrix | Integer '
-                                                            '| Vector | Color '
-                                                            '= None)'},
+                                                            '| Vector | Vector '
+                                                            '| Color = None)'},
                                               {'func_name': 'store',
                                                'is_classmethod': False,
                                                'is_get': False,
@@ -12760,8 +14385,8 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                             '| Vector | Color '
                                                             '| Rotation | '
                                                             'Matrix | Integer '
-                                                            '| Vector | Color '
-                                                            '= None)'}],
+                                                            '| Vector | Vector '
+                                                            '| Color = None)'}],
                                      'Face': [{'func_name': 'store_named_attribute',
                                                'is_classmethod': False,
                                                'is_get': False,
@@ -12780,8 +14405,8 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                             '| Vector | Color '
                                                             '| Rotation | '
                                                             'Matrix | Integer '
-                                                            '| Vector | Color '
-                                                            '= None)'},
+                                                            '| Vector | Vector '
+                                                            '| Color = None)'},
                                               {'func_name': 'store',
                                                'is_classmethod': False,
                                                'is_get': False,
@@ -12800,8 +14425,8 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                             '| Vector | Color '
                                                             '| Rotation | '
                                                             'Matrix | Integer '
-                                                            '| Vector | Color '
-                                                            '= None)'}],
+                                                            '| Vector | Vector '
+                                                            '| Color = None)'}],
                                      'Instance': [{'func_name': 'store_named_attribute',
                                                    'is_classmethod': False,
                                                    'is_get': False,
@@ -12823,6 +14448,7 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                                 'Rotation | '
                                                                 'Matrix | '
                                                                 'Integer | '
+                                                                'Vector | '
                                                                 'Vector | '
                                                                 'Color = '
                                                                 'None)'},
@@ -12848,6 +14474,7 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                                 'Matrix | '
                                                                 'Integer | '
                                                                 'Vector | '
+                                                                'Vector | '
                                                                 'Color = '
                                                                 'None)'}],
                                      'Layer': [{'func_name': 'store_named_attribute',
@@ -12869,8 +14496,9 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                              '| Color | '
                                                              'Rotation | '
                                                              'Matrix | Integer '
-                                                             '| Vector | Color '
-                                                             '= None)'},
+                                                             '| Vector | '
+                                                             'Vector | Color = '
+                                                             'None)'},
                                                {'func_name': 'store',
                                                 'is_classmethod': False,
                                                 'is_get': False,
@@ -12890,8 +14518,9 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                              '| Color | '
                                                              'Rotation | '
                                                              'Matrix | Integer '
-                                                             '| Vector | Color '
-                                                             '= None)'}],
+                                                             '| Vector | '
+                                                             'Vector | Color = '
+                                                             'None)'}],
                                      'Point': [{'func_name': 'store_named_attribute',
                                                 'is_classmethod': False,
                                                 'is_get': False,
@@ -12911,8 +14540,9 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                              '| Color | '
                                                              'Rotation | '
                                                              'Matrix | Integer '
-                                                             '| Vector | Color '
-                                                             '= None)'},
+                                                             '| Vector | '
+                                                             'Vector | Color = '
+                                                             'None)'},
                                                {'func_name': 'store',
                                                 'is_classmethod': False,
                                                 'is_get': False,
@@ -12932,8 +14562,9 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                              '| Color | '
                                                              'Rotation | '
                                                              'Matrix | Integer '
-                                                             '| Vector | Color '
-                                                             '= None)'}],
+                                                             '| Vector | '
+                                                             'Vector | Color = '
+                                                             'None)'}],
                                      'Spline': [{'func_name': 'store_named_attribute',
                                                  'is_classmethod': False,
                                                  'is_get': False,
@@ -12954,8 +14585,9 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                               '| Rotation | '
                                                               'Matrix | '
                                                               'Integer | '
-                                                              'Vector | Color '
-                                                              '= None)'},
+                                                              'Vector | Vector '
+                                                              '| Color = '
+                                                              'None)'},
                                                 {'func_name': 'store',
                                                  'is_classmethod': False,
                                                  'is_get': False,
@@ -12976,8 +14608,9 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                               '| Rotation | '
                                                               'Matrix | '
                                                               'Integer | '
-                                                              'Vector | Color '
-                                                              '= None)'}],
+                                                              'Vector | Vector '
+                                                              '| Color = '
+                                                              'None)'}],
                                      'nd': [{'func_name': 'store_named_attribute',
                                              'is_classmethod': True,
                                              'is_get': False,
@@ -13005,7 +14638,7 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                           "'FLOAT_COLOR', "
                                                           "'QUATERNION', "
                                                           "'FLOAT4X4', 'INT8', "
-                                                          "'FLOAT2', "
+                                                          "'FLOAT2', 'FLOAT4', "
                                                           "'BYTE_COLOR'] = "
                                                           "'FLOAT',\n"
                                                           '                    '
@@ -13228,6 +14861,9 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                            'limit_surface: '
                                                            'Boolean = None,\n'
                                                            '                    '
+                                                           'quality: Integer = '
+                                                           'None,\n'
+                                                           '                    '
                                                            'uv_smooth: '
                                                            "Literal['None', "
                                                            "'Keep Corners', "
@@ -13264,6 +14900,9 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                          'limit_surface: '
                                                          'Boolean = None,\n'
                                                          '                    '
+                                                         'quality: Integer = '
+                                                         'None,\n'
+                                                         '                    '
                                                          'uv_smooth: '
                                                          "Literal['None', "
                                                          "'Keep Corners', "
@@ -13289,6 +14928,22 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                     'sample_class': 'Geometry',
                                     'signature': '(condition=None, '
                                                  'true=None)'}]},
+ 'GeometryNodeTagFilter': {'String': [{'func_name': 'tag_filter',
+                                       'is_classmethod': False,
+                                       'is_get': False,
+                                       'is_jump': False,
+                                       'is_set': False,
+                                       'node_name': 'Tag Filter',
+                                       'returns': 'OUT',
+                                       'signature': '(self, tags: String = '
+                                                    'None)'}],
+                           'nd': [{'func_name': 'tag_filter',
+                                   'is_classmethod': True,
+                                   'is_get': False,
+                                   'node_name': 'Tag Filter',
+                                   'returns': 'OUT',
+                                   'signature': '(cls, tag_filter: String = '
+                                                'None, tags: String = None)'}]},
  'GeometryNodeTool3DCursor': {'nd': [{'func_name': '_3d_cursor',
                                       'is_classmethod': True,
                                       'is_get': False,
@@ -13427,6 +15082,138 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                        "Literal['BOOLEAN', "
                                                        "'FLOAT'] = "
                                                        "'BOOLEAN')"}]},
+ 'GeometryNodeTransferAttributes': {'Geometry': [{'func_name': 'transfer_attributes',
+                                                  'is_classmethod': False,
+                                                  'is_get': False,
+                                                  'is_jump': True,
+                                                  'is_set': False,
+                                                  'node_name': 'Transfer '
+                                                               'Attributes',
+                                                  'returns': 'OUT',
+                                                  'signature': '(self,\n'
+                                                               '                    '
+                                                               'target_point_id: '
+                                                               'Integer = '
+                                                               'None,\n'
+                                                               '                    '
+                                                               'target_edge_id: '
+                                                               'Integer = '
+                                                               'None,\n'
+                                                               '                    '
+                                                               'target_face_id: '
+                                                               'Integer = '
+                                                               'None,\n'
+                                                               '                    '
+                                                               'target_corner_id: '
+                                                               'Integer = '
+                                                               'None,\n'
+                                                               '                    '
+                                                               'target_curve_id: '
+                                                               'Integer = '
+                                                               'None,\n'
+                                                               '                    '
+                                                               'target_instance_id: '
+                                                               'Integer = '
+                                                               'None,\n'
+                                                               '                    '
+                                                               'source: '
+                                                               'Geometry = '
+                                                               'None,\n'
+                                                               '                    '
+                                                               'source_point_id: '
+                                                               'Integer = '
+                                                               'None,\n'
+                                                               '                    '
+                                                               'source_edge_id: '
+                                                               'Integer = '
+                                                               'None,\n'
+                                                               '                    '
+                                                               'source_face_id: '
+                                                               'Integer = '
+                                                               'None,\n'
+                                                               '                    '
+                                                               'source_corner_id: '
+                                                               'Integer = '
+                                                               'None,\n'
+                                                               '                    '
+                                                               'source_curve_id: '
+                                                               'Integer = '
+                                                               'None,\n'
+                                                               '                    '
+                                                               'source_instance_id: '
+                                                               'Integer = '
+                                                               'None,\n'
+                                                               '                    '
+                                                               'pattern_mode: '
+                                                               "Literal['Exact', "
+                                                               "'Wildcard'] = "
+                                                               'None,\n'
+                                                               '                    '
+                                                               'attribute_names: '
+                                                               'String = '
+                                                               'None,\n'
+                                                               '                    '
+                                                               'exclude_names: '
+                                                               'Boolean = '
+                                                               'None)'}],
+                                    'nd': [{'func_name': 'transfer_attributes',
+                                            'is_classmethod': True,
+                                            'is_get': False,
+                                            'node_name': 'Transfer Attributes',
+                                            'returns': 'OUT',
+                                            'signature': '(cls,\n'
+                                                         '                    '
+                                                         'target: Geometry = '
+                                                         'None,\n'
+                                                         '                    '
+                                                         'target_point_id: '
+                                                         'Integer = None,\n'
+                                                         '                    '
+                                                         'target_edge_id: '
+                                                         'Integer = None,\n'
+                                                         '                    '
+                                                         'target_face_id: '
+                                                         'Integer = None,\n'
+                                                         '                    '
+                                                         'target_corner_id: '
+                                                         'Integer = None,\n'
+                                                         '                    '
+                                                         'target_curve_id: '
+                                                         'Integer = None,\n'
+                                                         '                    '
+                                                         'target_instance_id: '
+                                                         'Integer = None,\n'
+                                                         '                    '
+                                                         'source: Geometry = '
+                                                         'None,\n'
+                                                         '                    '
+                                                         'source_point_id: '
+                                                         'Integer = None,\n'
+                                                         '                    '
+                                                         'source_edge_id: '
+                                                         'Integer = None,\n'
+                                                         '                    '
+                                                         'source_face_id: '
+                                                         'Integer = None,\n'
+                                                         '                    '
+                                                         'source_corner_id: '
+                                                         'Integer = None,\n'
+                                                         '                    '
+                                                         'source_curve_id: '
+                                                         'Integer = None,\n'
+                                                         '                    '
+                                                         'source_instance_id: '
+                                                         'Integer = None,\n'
+                                                         '                    '
+                                                         'pattern_mode: '
+                                                         "Literal['Exact', "
+                                                         "'Wildcard'] = None,\n"
+                                                         '                    '
+                                                         'attribute_names: '
+                                                         'String = None,\n'
+                                                         '                    '
+                                                         'exclude_names: '
+                                                         'Boolean = None)'}]},
  'GeometryNodeTransform': {'Geometry': [{'func_name': 'transform',
                                          'is_classmethod': False,
                                          'is_get': False,
@@ -13607,6 +15394,9 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                         '                    '
                                                         'uv: Vector = None,\n'
                                                         '                    '
+                                                        'selection: Boolean = '
+                                                        'None,\n'
+                                                        '                    '
                                                         'margin: Float = '
                                                         'None,\n'
                                                         '                    '
@@ -13632,6 +15422,9 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                            'node_name': 'Pack UV Islands',
                                            'returns': 'OUT',
                                            'signature': '(self,\n'
+                                                        '                    '
+                                                        'selection: Boolean = '
+                                                        'None,\n'
                                                         '                    '
                                                         'margin: Float = '
                                                         'None,\n'
@@ -13727,6 +15520,9 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                       'node_name': 'UV Unwrap',
                                       'returns': 'OUT',
                                       'signature': '(cls,\n'
+                                                   '                    '
+                                                   'selection: Boolean = '
+                                                   'None,\n'
                                                    '                    seam: '
                                                    'Boolean = None,\n'
                                                    '                    '
@@ -14028,6 +15824,61 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                               "warning_type: Literal['ERROR', "
                                               "'WARNING', 'INFO'] = "
                                               "'ERROR')"}]},
+ 'GeometryNodeXPBDSolver': {'Bundle': [{'func_name': 'xpbd_solver',
+                                        'is_classmethod': False,
+                                        'is_get': False,
+                                        'is_jump': False,
+                                        'is_set': False,
+                                        'node_name': 'XPBD Solver',
+                                        'returns': 'OUT',
+                                        'signature': '(self,\n'
+                                                     '                    '
+                                                     'delta_time: Float = '
+                                                     'None,\n'
+                                                     '                    '
+                                                     'filter: String = None,\n'
+                                                     '                    '
+                                                     'simulation_to_world: '
+                                                     'Matrix = None,\n'
+                                                     '                    '
+                                                     'substeps: Integer = '
+                                                     'None,\n'
+                                                     '                    '
+                                                     'constraint_iterations: '
+                                                     'Integer = None,\n'
+                                                     '                    '
+                                                     'solver_path: String = '
+                                                     'None,\n'
+                                                     '                    '
+                                                     'begin: Float = None,\n'
+                                                     '                    end: '
+                                                     'Float = None)'}],
+                            'nd': [{'func_name': 'xpbd_solver',
+                                    'is_classmethod': True,
+                                    'is_get': False,
+                                    'node_name': 'XPBD Solver',
+                                    'returns': 'OUT',
+                                    'signature': '(cls,\n'
+                                                 '                    world: '
+                                                 'Bundle = None,\n'
+                                                 '                    '
+                                                 'delta_time: Float = None,\n'
+                                                 '                    filter: '
+                                                 'String = None,\n'
+                                                 '                    '
+                                                 'simulation_to_world: Matrix '
+                                                 '= None,\n'
+                                                 '                    '
+                                                 'substeps: Integer = None,\n'
+                                                 '                    '
+                                                 'constraint_iterations: '
+                                                 'Integer = None,\n'
+                                                 '                    '
+                                                 'solver_path: String = None,\n'
+                                                 '                    begin: '
+                                                 'Float = None,\n'
+                                                 '                    end: '
+                                                 'Float = None)'}]},
  'NodeClosureInput': {'nd': [{'func_name': 'closure_input',
                               'is_classmethod': True,
                               'is_get': True,
@@ -14213,6 +16064,15 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                     'returns': 'OUT',
                                     'signature': '(self, enable: Boolean = '
                                                  'None)'}],
+                      'Sound': [{'func_name': 'enable_output',
+                                 'is_classmethod': False,
+                                 'is_get': False,
+                                 'is_jump': False,
+                                 'is_set': False,
+                                 'node_name': 'Enable Output',
+                                 'returns': 'OUT',
+                                 'signature': '(self, enable: Boolean = '
+                                              'None)'}],
                       'String': [{'func_name': 'enable_output',
                                   'is_classmethod': False,
                                   'is_get': False,
@@ -14247,8 +16107,8 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                            "'MATRIX', 'STRING', 'MENU', "
                                            "'OBJECT', 'IMAGE', 'GEOMETRY', "
                                            "'COLLECTION', 'MATERIAL', "
-                                           "'BUNDLE', 'CLOSURE', 'FONT'] = "
-                                           "'FLOAT')"}]},
+                                           "'BUNDLE', 'CLOSURE', 'FONT', "
+                                           "'SOUND'] = 'FLOAT')"}]},
  'NodeEvaluateClosure': {'nd': [{'func_name': 'evaluate_closure',
                                  'is_classmethod': True,
                                  'is_get': False,
@@ -14308,8 +16168,8 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                 "'STRING', 'MENU', 'OBJECT', "
                                                 "'IMAGE', 'GEOMETRY', "
                                                 "'COLLECTION', 'MATERIAL', "
-                                                "'BUNDLE', 'CLOSURE', 'FONT'] "
-                                                "= 'FLOAT',\n"
+                                                "'BUNDLE', 'CLOSURE', 'FONT', "
+                                                "'SOUND'] = 'FLOAT',\n"
                                                 '                    '
                                                 'structure_type: '
                                                 "Literal['AUTO', 'DYNAMIC', "
@@ -14334,11 +16194,75 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                             "'MENU', 'OBJECT', 'IMAGE', "
                                             "'GEOMETRY', 'COLLECTION', "
                                             "'MATERIAL', 'BUNDLE', 'CLOSURE', "
-                                            "'FONT'] = 'FLOAT',\n"
+                                            "'FONT', 'SOUND'] = 'FLOAT',\n"
                                             '                    '
                                             "structure_type: Literal['AUTO', "
                                             "'DYNAMIC', 'FIELD', 'GRID', "
                                             "'LIST', 'SINGLE'] = 'AUTO')"}]},
+ 'NodeGetNestedBundlePaths': {'Bundle': [{'func_name': 'get_nested_paths',
+                                          'is_classmethod': False,
+                                          'is_get': False,
+                                          'is_jump': False,
+                                          'is_set': False,
+                                          'node_name': 'Get Nested Bundle '
+                                                       'Paths',
+                                          'returns': 'OUT',
+                                          'signature': '(self,\n'
+                                                       '                    '
+                                                       "mode: Literal['All', "
+                                                       "'Bundle Type', 'Data "
+                                                       "Type'] = None,\n"
+                                                       '                    '
+                                                       'pattern_mode: '
+                                                       "Literal['Exact', "
+                                                       "'Wildcard'] = None,\n"
+                                                       '                    '
+                                                       'bundle_type: String = '
+                                                       'None,\n'
+                                                       '                    '
+                                                       'data_type: '
+                                                       "Literal['Float', "
+                                                       "'Integer', 'Boolean', "
+                                                       "'Vector', 'Color', "
+                                                       "'Rotation', 'Matrix', "
+                                                       "'String', 'Menu', "
+                                                       "'Object', 'Image', "
+                                                       "'Geometry', "
+                                                       "'Collection', "
+                                                       "'Material', 'Bundle', "
+                                                       "'Closure', 'Font', "
+                                                       "'Sound'] = None)"}],
+                              'nd': [{'func_name': 'get_nested_bundle_paths',
+                                      'is_classmethod': True,
+                                      'is_get': False,
+                                      'node_name': 'Get Nested Bundle Paths',
+                                      'returns': 'OUT',
+                                      'signature': '(cls,\n'
+                                                   '                    '
+                                                   'bundle: Bundle = None,\n'
+                                                   '                    mode: '
+                                                   "Literal['All', 'Bundle "
+                                                   "Type', 'Data Type'] = "
+                                                   'None,\n'
+                                                   '                    '
+                                                   'pattern_mode: '
+                                                   "Literal['Exact', "
+                                                   "'Wildcard'] = None,\n"
+                                                   '                    '
+                                                   'bundle_type: String = '
+                                                   'None,\n'
+                                                   '                    '
+                                                   'data_type: '
+                                                   "Literal['Float', "
+                                                   "'Integer', 'Boolean', "
+                                                   "'Vector', 'Color', "
+                                                   "'Rotation', 'Matrix', "
+                                                   "'String', 'Menu', "
+                                                   "'Object', 'Image', "
+                                                   "'Geometry', 'Collection', "
+                                                   "'Material', 'Bundle', "
+                                                   "'Closure', 'Font', "
+                                                   "'Sound'] = None)"}]},
  'NodeGroupInput': {'nd': [{'func_name': 'group_input',
                             'is_classmethod': True,
                             'is_get': True,
@@ -14363,6 +16287,207 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                               'node_name': 'Group Output',
                               'returns': 'OUT',
                               'signature': '(cls, is_active_output = True)'}]},
+ 'NodeImplicitConversion': {'Boolean': [{'func_name': 'implicit_conversion',
+                                         'is_classmethod': False,
+                                         'is_get': False,
+                                         'is_jump': False,
+                                         'is_set': False,
+                                         'node_name': 'Implicit Conversion',
+                                         'returns': 'OUT',
+                                         'signature': '(self, socket_idname = '
+                                                      "'NodeSocketColor')"}],
+                            'Bundle': [{'func_name': 'implicit_conversion',
+                                        'is_classmethod': False,
+                                        'is_get': False,
+                                        'is_jump': False,
+                                        'is_set': False,
+                                        'node_name': 'Implicit Conversion',
+                                        'returns': 'OUT',
+                                        'signature': '(self, socket_idname = '
+                                                     "'NodeSocketColor')"}],
+                            'Closure': [{'func_name': 'implicit_conversion',
+                                         'is_classmethod': False,
+                                         'is_get': False,
+                                         'is_jump': False,
+                                         'is_set': False,
+                                         'node_name': 'Implicit Conversion',
+                                         'returns': 'OUT',
+                                         'signature': '(self, socket_idname = '
+                                                      "'NodeSocketColor')"}],
+                            'Collection': [{'func_name': 'implicit_conversion',
+                                            'is_classmethod': False,
+                                            'is_get': False,
+                                            'is_jump': False,
+                                            'is_set': False,
+                                            'node_name': 'Implicit Conversion',
+                                            'returns': 'OUT',
+                                            'signature': '(self, socket_idname '
+                                                         '= '
+                                                         "'NodeSocketColor')"}],
+                            'Color': [{'func_name': 'implicit_conversion',
+                                       'is_classmethod': False,
+                                       'is_get': False,
+                                       'is_jump': False,
+                                       'is_set': False,
+                                       'node_name': 'Implicit Conversion',
+                                       'returns': 'OUT',
+                                       'signature': '(self, socket_idname = '
+                                                    "'NodeSocketColor')"}],
+                            'Float': [{'func_name': 'implicit_conversion',
+                                       'is_classmethod': False,
+                                       'is_get': False,
+                                       'is_jump': False,
+                                       'is_set': False,
+                                       'node_name': 'Implicit Conversion',
+                                       'returns': 'OUT',
+                                       'signature': '(self, socket_idname = '
+                                                    "'NodeSocketColor')"}],
+                            'Font': [{'func_name': 'implicit_conversion',
+                                      'is_classmethod': False,
+                                      'is_get': False,
+                                      'is_jump': False,
+                                      'is_set': False,
+                                      'node_name': 'Implicit Conversion',
+                                      'returns': 'OUT',
+                                      'signature': '(self, socket_idname = '
+                                                   "'NodeSocketColor')"}],
+                            'Geometry': [{'func_name': 'implicit_conversion',
+                                          'is_classmethod': False,
+                                          'is_get': False,
+                                          'is_jump': True,
+                                          'is_set': False,
+                                          'node_name': 'Implicit Conversion',
+                                          'returns': 'OUT',
+                                          'signature': '(self, socket_idname = '
+                                                       "'NodeSocketColor')"}],
+                            'Image': [{'func_name': 'implicit_conversion',
+                                       'is_classmethod': False,
+                                       'is_get': False,
+                                       'is_jump': False,
+                                       'is_set': False,
+                                       'node_name': 'Implicit Conversion',
+                                       'returns': 'OUT',
+                                       'signature': '(self, socket_idname = '
+                                                    "'NodeSocketColor')"}],
+                            'Integer': [{'func_name': 'implicit_conversion',
+                                         'is_classmethod': False,
+                                         'is_get': False,
+                                         'is_jump': False,
+                                         'is_set': False,
+                                         'node_name': 'Implicit Conversion',
+                                         'returns': 'OUT',
+                                         'signature': '(self, socket_idname = '
+                                                      "'NodeSocketColor')"}],
+                            'Material': [{'func_name': 'implicit_conversion',
+                                          'is_classmethod': False,
+                                          'is_get': False,
+                                          'is_jump': False,
+                                          'is_set': False,
+                                          'node_name': 'Implicit Conversion',
+                                          'returns': 'OUT',
+                                          'signature': '(self, socket_idname = '
+                                                       "'NodeSocketColor')"}],
+                            'Matrix': [{'func_name': 'implicit_conversion',
+                                        'is_classmethod': False,
+                                        'is_get': False,
+                                        'is_jump': False,
+                                        'is_set': False,
+                                        'node_name': 'Implicit Conversion',
+                                        'returns': 'OUT',
+                                        'signature': '(self, socket_idname = '
+                                                     "'NodeSocketColor')"}],
+                            'Menu': [{'func_name': 'implicit_conversion',
+                                      'is_classmethod': False,
+                                      'is_get': False,
+                                      'is_jump': False,
+                                      'is_set': False,
+                                      'node_name': 'Implicit Conversion',
+                                      'returns': 'OUT',
+                                      'signature': '(self, socket_idname = '
+                                                   "'NodeSocketColor')"}],
+                            'Object': [{'func_name': 'implicit_conversion',
+                                        'is_classmethod': False,
+                                        'is_get': False,
+                                        'is_jump': False,
+                                        'is_set': False,
+                                        'node_name': 'Implicit Conversion',
+                                        'returns': 'OUT',
+                                        'signature': '(self, socket_idname = '
+                                                     "'NodeSocketColor')"}],
+                            'Rotation': [{'func_name': 'implicit_conversion',
+                                          'is_classmethod': False,
+                                          'is_get': False,
+                                          'is_jump': False,
+                                          'is_set': False,
+                                          'node_name': 'Implicit Conversion',
+                                          'returns': 'OUT',
+                                          'signature': '(self, socket_idname = '
+                                                       "'NodeSocketColor')"}],
+                            'Sound': [{'func_name': 'implicit_conversion',
+                                       'is_classmethod': False,
+                                       'is_get': False,
+                                       'is_jump': False,
+                                       'is_set': False,
+                                       'node_name': 'Implicit Conversion',
+                                       'returns': 'OUT',
+                                       'signature': '(self, socket_idname = '
+                                                    "'NodeSocketColor')"}],
+                            'String': [{'func_name': 'implicit_conversion',
+                                        'is_classmethod': False,
+                                        'is_get': False,
+                                        'is_jump': False,
+                                        'is_set': False,
+                                        'node_name': 'Implicit Conversion',
+                                        'returns': 'OUT',
+                                        'signature': '(self, socket_idname = '
+                                                     "'NodeSocketColor')"}],
+                            'Vector': [{'func_name': 'implicit_conversion',
+                                        'is_classmethod': False,
+                                        'is_get': False,
+                                        'is_jump': False,
+                                        'is_set': False,
+                                        'node_name': 'Implicit Conversion',
+                                        'returns': 'OUT',
+                                        'signature': '(self, socket_idname = '
+                                                     "'NodeSocketColor')"}],
+                            'nd': [{'func_name': 'implicit_conversion',
+                                    'is_classmethod': True,
+                                    'is_get': False,
+                                    'node_name': 'Implicit Conversion',
+                                    'returns': 'OUT',
+                                    'signature': '(cls,\n'
+                                                 '                    value: '
+                                                 'Color = None,\n'
+                                                 '                    '
+                                                 "data_type: Literal['FLOAT', "
+                                                 "'INT', 'BOOLEAN', 'VECTOR', "
+                                                 "'RGBA', 'ROTATION', "
+                                                 "'MATRIX', 'STRING', 'MENU', "
+                                                 "'OBJECT', 'IMAGE', "
+                                                 "'GEOMETRY', 'COLLECTION', "
+                                                 "'MATERIAL', 'BUNDLE', "
+                                                 "'CLOSURE', 'FONT', 'SOUND'] "
+                                                 "= 'RGBA',\n"
+                                                 '                    '
+                                                 'socket_idname = '
+                                                 "'NodeSocketColor')"}],
+                            'snd': [{'func_name': 'implicit_conversion',
+                                     'is_classmethod': True,
+                                     'is_get': False,
+                                     'node_name': 'Implicit Conversion',
+                                     'returns': 'OUT',
+                                     'signature': '(cls,\n'
+                                                  '                    value: '
+                                                  'Color = None,\n'
+                                                  '                    '
+                                                  "data_type: Literal['FLOAT', "
+                                                  "'INT', 'BOOLEAN', 'VECTOR', "
+                                                  "'RGBA', 'MENU', 'SHADER', "
+                                                  "'BUNDLE', 'CLOSURE'] = "
+                                                  "'RGBA',\n"
+                                                  '                    '
+                                                  'socket_idname = '
+                                                  "'NodeSocketColor')"}]},
  'NodeJoinBundle': {'Bundle': [{'func_name': 'join',
                                 'is_classmethod': False,
                                 'is_get': False,
@@ -14495,8 +16620,8 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                               "'STRING', 'MENU', 'OBJECT', "
                                               "'IMAGE', 'GEOMETRY', "
                                               "'COLLECTION', 'MATERIAL', "
-                                              "'BUNDLE', 'CLOSURE', 'FONT'] = "
-                                              "'FLOAT',\n"
+                                              "'BUNDLE', 'CLOSURE', 'FONT', "
+                                              "'SOUND'] = 'FLOAT',\n"
                                               '                    '
                                               "structure_type: Literal['AUTO', "
                                               "'DYNAMIC', 'FIELD', 'GRID', "
@@ -15025,6 +17150,9 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                        '                    '
                                                        'alpha: Float = None,\n'
                                                        '                    '
+                                                       'thin_wall: Boolean = '
+                                                       'None,\n'
+                                                       '                    '
                                                        'normal: Vector = '
                                                        'None,\n'
                                                        '                    '
@@ -15105,8 +17233,9 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                        'subsurface_method: '
                                                        "Literal['BURLEY', "
                                                        "'RANDOM_WALK', "
-                                                       "'RANDOM_WALK_SKIN'] = "
-                                                       "'RANDOM_WALK')"}],
+                                                       "'RANDOM_WALK_SKIN', "
+                                                       "'RANDOM_WALK_LEGACY'] "
+                                                       "= 'RANDOM_WALK')"}],
                               'snd': [{'func_name': 'principled_bsdf',
                                        'is_classmethod': True,
                                        'is_get': False,
@@ -15124,6 +17253,9 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                     'Float = None,\n'
                                                     '                    '
                                                     'alpha: Float = None,\n'
+                                                    '                    '
+                                                    'thin_wall: Boolean = '
+                                                    'None,\n'
                                                     '                    '
                                                     'normal: Vector = None,\n'
                                                     '                    '
@@ -15206,7 +17338,8 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                     'subsurface_method: '
                                                     "Literal['BURLEY', "
                                                     "'RANDOM_WALK', "
-                                                    "'RANDOM_WALK_SKIN'] = "
+                                                    "'RANDOM_WALK_SKIN', "
+                                                    "'RANDOM_WALK_LEGACY'] = "
                                                     "'RANDOM_WALK')"}]},
  'ShaderNodeBsdfRayPortal': {'Shader': [{'func_name': 'RayPortal',
                                          'is_classmethod': True,
@@ -17592,15 +19725,25 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                    'is_set': False,
                                    'node_name': 'Raycast',
                                    'returns': 'OUT',
-                                   'signature': '(self, direction: Vector = '
-                                                'None, length: Float = None, '
-                                                'only_local = False)'}],
+                                   'signature': '(self,\n'
+                                                '                    '
+                                                'named_sockets: dict = {},\n'
+                                                '                    '
+                                                'direction: Vector = None,\n'
+                                                '                    length: '
+                                                'Float = None,\n'
+                                                '                    '
+                                                'only_local = False,\n'
+                                                '                    '
+                                                '**sockets)'}],
                        'snd': [{'func_name': 'raycast',
                                 'is_classmethod': True,
                                 'is_get': False,
                                 'node_name': 'Raycast',
                                 'returns': 'OUT',
                                 'signature': '(cls,\n'
+                                             '                    '
+                                             'named_sockets: dict = {},\n'
                                              '                    position: '
                                              'Vector = None,\n'
                                              '                    direction: '
@@ -17608,7 +19751,9 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                              '                    length: '
                                              'Float = None,\n'
                                              '                    only_local = '
-                                             'False)'}]},
+                                             'False,\n'
+                                             '                    '
+                                             '**sockets)'}]},
  'ShaderNodeScript': {'snd': [{'func_name': 'script',
                                'is_classmethod': True,
                                'is_get': False,
@@ -17771,7 +19916,8 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                              'falloff: '
                                                              "Literal['BURLEY', "
                                                              "'RANDOM_WALK', "
-                                                             "'RANDOM_WALK_SKIN'] "
+                                                             "'RANDOM_WALK_SKIN', "
+                                                             "'RANDOM_WALK_LEGACY'] "
                                                              '= '
                                                              "'RANDOM_WALK')"}],
                                     'snd': [{'func_name': 'subsurface_scattering',
@@ -17808,7 +19954,8 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                           'falloff: '
                                                           "Literal['BURLEY', "
                                                           "'RANDOM_WALK', "
-                                                          "'RANDOM_WALK_SKIN'] "
+                                                          "'RANDOM_WALK_SKIN', "
+                                                          "'RANDOM_WALK_LEGACY'] "
                                                           "= 'RANDOM_WALK')"}]},
  'ShaderNodeTangent': {'Vector': [{'func_name': 'Tangent',
                                    'is_classmethod': True,

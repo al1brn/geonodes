@@ -1,4 +1,4 @@
-# Generated 2026-04-05 14:24:03
+# Generated 2026-07-20 17:00:26
 
 from __future__ import annotations
 from .. sockettype import SocketType
@@ -33,6 +33,220 @@ class Geometry(Socket):
     """"
     $DOC SET hidden
     """
+    def get_component(self,
+                    type: Literal['Mesh', 'Point Cloud', 'Curve', 'Instances', 'Grease Pencil', 'Volume'] = None,
+                    remove: Boolean = None):
+        """ > Node <&Node Get Geometry Component>
+
+        > ***Jump*** : Socket refers to node output socket after the call
+
+        **Fixed values**
+
+        | Kind   | Name     | Value  |
+        | ------ | -------- | ------ |
+        | Socket | Geometry | `self` |
+
+        Parameters
+        ----------
+        type : menu='Mesh', optional
+            ('Mesh', 'Point Cloud', 'Curve', 'Instances', 'Grease Pencil', 'Volume')
+        
+        remove : Boolean, optional
+            socket 'Remove' (id: Remove)
+        
+
+        Returns
+        -------
+        Geometry
+            peer sockets: component_ (Geometry), exists_ (Boolean)
+
+        """
+        node = Node('Get Geometry Component', {'Geometry': self, 'Type': type, 'Remove': remove})
+        self._jump(node._out)
+        return self._domain_to_geometry
+
+    def get_mesh(self, remove: Boolean = None):
+        """ > Node <&Node Get Geometry Component>
+
+        > ***Jump*** : Socket refers to node output socket after the call
+
+        **Fixed values**
+
+        | Kind   | Name     | Value  |
+        | ------ | -------- | ------ |
+        | Socket | Geometry | `self` |
+        | Socket | Type     | 'Mesh' |
+
+        Parameters
+        ----------
+        remove : Boolean, optional
+            socket 'Remove' (id: Remove)
+        
+
+        Returns
+        -------
+        Component
+        """
+        node = Node('Get Geometry Component', {'Geometry': self, 'Type': 'Mesh', 'Remove': remove})
+        self._jump(node._out)
+        return node.Component._convert_to_class('Mesh')
+
+    def get_cloud(self, remove: Boolean = None):
+        """ > Node <&Node Get Geometry Component>
+
+        > ***Jump*** : Socket refers to node output socket after the call
+
+        **Fixed values**
+
+        | Kind   | Name     | Value         |
+        | ------ | -------- | ------------- |
+        | Socket | Geometry | `self`        |
+        | Socket | Type     | 'Point Cloud' |
+
+        Parameters
+        ----------
+        remove : Boolean, optional
+            socket 'Remove' (id: Remove)
+        
+
+        Returns
+        -------
+        Component
+        """
+        node = Node('Get Geometry Component', {'Geometry': self, 'Type': 'Point Cloud', 'Remove': remove})
+        self._jump(node._out)
+        return node.Component._convert_to_class('Cloud')
+
+    def get_point_cloud(self, remove: Boolean = None):
+        """ > Node <&Node Get Geometry Component>
+
+        > ***Jump*** : Socket refers to node output socket after the call
+
+        **Fixed values**
+
+        | Kind   | Name     | Value         |
+        | ------ | -------- | ------------- |
+        | Socket | Geometry | `self`        |
+        | Socket | Type     | 'Point Cloud' |
+
+        Parameters
+        ----------
+        remove : Boolean, optional
+            socket 'Remove' (id: Remove)
+        
+
+        Returns
+        -------
+        Component
+        """
+        node = Node('Get Geometry Component', {'Geometry': self, 'Type': 'Point Cloud', 'Remove': remove})
+        self._jump(node._out)
+        return node.Component._convert_to_class('Cloud')
+
+    def get_curve(self, remove: Boolean = None):
+        """ > Node <&Node Get Geometry Component>
+
+        > ***Jump*** : Socket refers to node output socket after the call
+
+        **Fixed values**
+
+        | Kind   | Name     | Value   |
+        | ------ | -------- | ------- |
+        | Socket | Geometry | `self`  |
+        | Socket | Type     | 'Curve' |
+
+        Parameters
+        ----------
+        remove : Boolean, optional
+            socket 'Remove' (id: Remove)
+        
+
+        Returns
+        -------
+        Component
+        """
+        node = Node('Get Geometry Component', {'Geometry': self, 'Type': 'Curve', 'Remove': remove})
+        self._jump(node._out)
+        return node.Component._convert_to_class('Curve')
+
+    def get_instances(self, remove: Boolean = None):
+        """ > Node <&Node Get Geometry Component>
+
+        > ***Jump*** : Socket refers to node output socket after the call
+
+        **Fixed values**
+
+        | Kind   | Name     | Value       |
+        | ------ | -------- | ----------- |
+        | Socket | Geometry | `self`      |
+        | Socket | Type     | 'Instances' |
+
+        Parameters
+        ----------
+        remove : Boolean, optional
+            socket 'Remove' (id: Remove)
+        
+
+        Returns
+        -------
+        Component
+        """
+        node = Node('Get Geometry Component', {'Geometry': self, 'Type': 'Instances', 'Remove': remove})
+        self._jump(node._out)
+        return node.Component._convert_to_class('Instances')
+
+    def get_grease_pencil(self, remove: Boolean = None):
+        """ > Node <&Node Get Geometry Component>
+
+        > ***Jump*** : Socket refers to node output socket after the call
+
+        **Fixed values**
+
+        | Kind   | Name     | Value           |
+        | ------ | -------- | --------------- |
+        | Socket | Geometry | `self`          |
+        | Socket | Type     | 'Grease Pencil' |
+
+        Parameters
+        ----------
+        remove : Boolean, optional
+            socket 'Remove' (id: Remove)
+        
+
+        Returns
+        -------
+        Component
+        """
+        node = Node('Get Geometry Component', {'Geometry': self, 'Type': 'Grease Pencil', 'Remove': remove})
+        self._jump(node._out)
+        return node.Component._convert_to_class('GreasePencil')
+
+    def get_volume(self, remove: Boolean = None):
+        """ > Node <&Node Get Geometry Component>
+
+        > ***Jump*** : Socket refers to node output socket after the call
+
+        **Fixed values**
+
+        | Kind   | Name     | Value    |
+        | ------ | -------- | -------- |
+        | Socket | Geometry | `self`   |
+        | Socket | Type     | 'Volume' |
+
+        Parameters
+        ----------
+        remove : Boolean, optional
+            socket 'Remove' (id: Remove)
+        
+
+        Returns
+        -------
+        Component
+        """
+        node = Node('Get Geometry Component', {'Geometry': self, 'Type': 'Volume', 'Remove': remove})
+        self._jump(node._out)
+        return node.Component._convert_to_class('Volume')
+
     def bounding_box(self, use_radius: Boolean = None):
         """ > Node <&Node Bounding Box>
 
@@ -253,6 +467,32 @@ class Geometry(Socket):
         Geometry
         """
         node = Node('Merge by Distance', {'Geometry': self, 'Selection': self.get_selection(), 'Mode': mode, 'Distance': distance})
+        self._jump(node._out)
+        return self._domain_to_geometry
+
+    def merge_points(self, merge_id: Integer = None):
+        """ > Node <&Node Merge Points>
+
+        > ***Jump*** : Socket refers to node output socket after the call
+
+        **Fixed values**
+
+        | Kind   | Name      | Value             |
+        | ------ | --------- | ----------------- |
+        | Socket | Geometry  | `self`            |
+        | Socket | Selection | `self[selection]` |
+
+        Parameters
+        ----------
+        merge_id : Integer, optional
+            socket 'Merge ID' (id: Merge ID)
+        
+
+        Returns
+        -------
+        Geometry
+        """
+        node = Node('Merge Points', {'Geometry': self, 'Selection': self.get_selection(), 'Merge ID': merge_id})
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -496,6 +736,44 @@ class Geometry(Socket):
         Geometry
         """
         node = Node('Remove Named Attribute', {'Geometry': self, 'Pattern Mode': pattern_mode, 'Name': name})
+        self._jump(node._out)
+        return self._domain_to_geometry
+
+    def rename_attribute(self,
+                    mode: Literal['Single', 'Prefix'] = None,
+                    old: String = None,
+                    new: String = None,
+                    overwrite: Boolean = None):
+        """ > Node <&Node Rename Attribute>
+
+        > ***Jump*** : Socket refers to node output socket after the call
+
+        **Fixed values**
+
+        | Kind   | Name     | Value  |
+        | ------ | -------- | ------ |
+        | Socket | Geometry | `self` |
+
+        Parameters
+        ----------
+        mode : menu='Single', optional
+            ('Single', 'Prefix')
+        
+        old : String, optional
+            socket 'Old' (id: Old)
+        
+        new : String, optional
+            socket 'New' (id: New)
+        
+        overwrite : Boolean, optional
+            socket 'Overwrite' (id: Overwrite)
+        
+
+        Returns
+        -------
+        Geometry
+        """
+        node = Node('Rename Attribute', {'Geometry': self, 'Mode': mode, 'Old': old, 'New': new, 'Overwrite': overwrite})
         self._jump(node._out)
         return self._domain_to_geometry
 
@@ -869,6 +1147,328 @@ class Geometry(Socket):
         node = Node('Enable Output', {'Enable': enable, 'Value': self}, data_type='GEOMETRY')
         self._jump(node._out)
         return self._domain_to_geometry
+
+    def list_length(self):
+        """ > Node <&Node List Length>
+
+        **Fixed values**
+
+        | Kind      | Name        | Value        |
+        | --------- | ----------- | ------------ |
+        | Socket    | List        | `self`       |
+        | Parameter | `data_type` | `'GEOMETRY'` |
+
+        Returns
+        -------
+        Integer
+        """
+        node = Node('List Length', {'List': self}, data_type='GEOMETRY')
+        return node._out
+
+    def sort_list(self, group_id: Integer = None, sort_weight: Float = None):
+        """ > Node <&Node Sort List>
+
+        > ***Jump*** : Socket refers to node output socket after the call
+
+        **Fixed values**
+
+        | Kind      | Name          | Value             |
+        | --------- | ------------- | ----------------- |
+        | Socket    | List          | `self`            |
+        | Socket    | Selection     | `self[selection]` |
+        | Parameter | `socket_type` | `'GEOMETRY'`      |
+
+        Parameters
+        ----------
+        group_id : Integer, optional
+            socket 'Group ID' (id: Group ID)
+        
+        sort_weight : Float, optional
+            socket 'Sort Weight' (id: Sort Weight)
+        
+
+        Returns
+        -------
+        Geometry
+        """
+        node = Node('Sort List', {'List': self, 'Selection': self.get_selection(), 'Group ID': group_id, 'Sort Weight': sort_weight}, socket_type='GEOMETRY')
+        self._jump(node._out)
+        return self._domain_to_geometry
+
+    def filter_list(self):
+        """ > Node <&Node Filter List>
+
+        > ***Jump*** : Socket refers to node output socket after the call
+
+        **Fixed values**
+
+        | Kind      | Name          | Value             |
+        | --------- | ------------- | ----------------- |
+        | Socket    | List          | `self`            |
+        | Socket    | Selection     | `self[selection]` |
+        | Parameter | `socket_type` | `'GEOMETRY'`      |
+
+        Returns
+        -------
+        Geometry
+            peer sockets: inverted_ (Geometry)
+
+        """
+        node = Node('Filter List', {'List': self, 'Selection': self.get_selection()}, socket_type='GEOMETRY')
+        self._jump(node._out)
+        return self._domain_to_geometry
+
+    def get_list_item(self,
+                    index: Integer = None,
+                    structure_type: Literal['AUTO', 'DYNAMIC', 'FIELD', 'GRID', 'LIST', 'SINGLE'] = 'AUTO'):
+        """ > Node <&Node Get List Item>
+
+        > ***Jump*** : Socket refers to node output socket after the call
+
+        **Fixed values**
+
+        | Kind      | Name          | Value        |
+        | --------- | ------------- | ------------ |
+        | Socket    | List          | `self`       |
+        | Parameter | `socket_type` | `'GEOMETRY'` |
+
+        Parameters
+        ----------
+        index : Integer, optional
+            socket 'Index' (id: Index)
+        
+        structure_type : Literal['Auto', 'Dynamic', 'Field', 'Grid', 'List', 'Single']
+            parameter `structure_type`
+        
+
+        Returns
+        -------
+        Geometry
+        """
+        utils.check_enum_arg('Get List Item', 'structure_type', structure_type, 'get_list_item', ('AUTO', 'DYNAMIC', 'FIELD', 'GRID', 'LIST', 'SINGLE'))
+        node = Node('Get List Item', {'List': self, 'Index': index}, socket_type='GEOMETRY', structure_type=structure_type)
+        self._jump(node._out)
+        return self._domain_to_geometry
+
+    def transfer_attributes(self,
+                    target_point_id: Integer = None,
+                    target_edge_id: Integer = None,
+                    target_face_id: Integer = None,
+                    target_corner_id: Integer = None,
+                    target_curve_id: Integer = None,
+                    target_instance_id: Integer = None,
+                    source: Geometry = None,
+                    source_point_id: Integer = None,
+                    source_edge_id: Integer = None,
+                    source_face_id: Integer = None,
+                    source_corner_id: Integer = None,
+                    source_curve_id: Integer = None,
+                    source_instance_id: Integer = None,
+                    pattern_mode: Literal['Exact', 'Wildcard'] = None,
+                    attribute_names: String = None,
+                    exclude_names: Boolean = None):
+        """ > Node <&Node Transfer Attributes>
+
+        > ***Jump*** : Socket refers to node output socket after the call
+
+        **Fixed values**
+
+        | Kind   | Name   | Value  |
+        | ------ | ------ | ------ |
+        | Socket | Target | `self` |
+
+        Parameters
+        ----------
+        target_point_id : Integer, optional
+            socket 'Target Point ID' (id: Target Point ID)
+        
+        target_edge_id : Integer, optional
+            socket 'Target Edge ID' (id: Target Edge ID)
+        
+        target_face_id : Integer, optional
+            socket 'Target Face ID' (id: Target Face ID)
+        
+        target_corner_id : Integer, optional
+            socket 'Target Corner ID' (id: Target Corner ID)
+        
+        target_curve_id : Integer, optional
+            socket 'Target Curve ID' (id: Target Curve ID)
+        
+        target_instance_id : Integer, optional
+            socket 'Target Instance ID' (id: Target Instance ID)
+        
+        source : Geometry, optional
+            socket 'Source' (id: Source)
+        
+        source_point_id : Integer, optional
+            socket 'Source Point ID' (id: Source Point ID)
+        
+        source_edge_id : Integer, optional
+            socket 'Source Edge ID' (id: Source Edge ID)
+        
+        source_face_id : Integer, optional
+            socket 'Source Face ID' (id: Source Face ID)
+        
+        source_corner_id : Integer, optional
+            socket 'Source Corner ID' (id: Source Corner ID)
+        
+        source_curve_id : Integer, optional
+            socket 'Source Curve ID' (id: Source Curve ID)
+        
+        source_instance_id : Integer, optional
+            socket 'Source Instance ID' (id: Source Instance ID)
+        
+        pattern_mode : menu='Wildcard', optional
+            ('Exact', 'Wildcard')
+        
+        attribute_names : String, optional
+            socket 'Attribute Names' (id: Attribute Names)
+        
+        exclude_names : Boolean, optional
+            socket 'Exclude Names' (id: Exclude Names)
+        
+
+        Returns
+        -------
+        Geometry
+            peer sockets: transferred_names_ (String)
+
+        """
+        node = Node('Transfer Attributes', {'Target': self, 'Target Point ID': target_point_id, 'Target Edge ID': target_edge_id, 'Target Face ID': target_face_id, 'Target Corner ID': target_corner_id, 'Target Curve ID': target_curve_id, 'Target Instance ID': target_instance_id, 'Source': source, 'Source Point ID': source_point_id, 'Source Edge ID': source_edge_id, 'Source Face ID': source_face_id, 'Source Corner ID': source_corner_id, 'Source Curve ID': source_curve_id, 'Source Instance ID': source_instance_id, 'Pattern Mode': pattern_mode, 'Attribute Names': attribute_names, 'Exclude Names': exclude_names})
+        self._jump(node._out)
+        return self._domain_to_geometry
+
+    def get_bundle(self, remove: Boolean = None):
+        """ > Node <&Node Get Geometry Bundle>
+
+        > ***Jump*** : Socket refers to node output socket after the call
+
+        **Fixed values**
+
+        | Kind   | Name     | Value  |
+        | ------ | -------- | ------ |
+        | Socket | Geometry | `self` |
+
+        Parameters
+        ----------
+        remove : Boolean, optional
+            socket 'Remove' (id: Remove)
+        
+
+        Returns
+        -------
+        bundle
+        """
+        node = Node('Get Geometry Bundle', {'Geometry': self, 'Remove': remove})
+        self._jump(node._out)
+        return node.bundle
+
+    def set_bundle(self, bundle: Bundle = None):
+        """ > Node <&Node Set Geometry Bundle>
+
+        > ***Jump*** : Socket refers to node output socket after the call
+
+        **Fixed values**
+
+        | Kind   | Name     | Value  |
+        | ------ | -------- | ------ |
+        | Socket | Geometry | `self` |
+
+        Parameters
+        ----------
+        bundle : Bundle, optional
+            socket 'Bundle' (id: Bundle)
+        
+
+        Returns
+        -------
+        Geometry
+        """
+        node = Node('Set Geometry Bundle', {'Geometry': self, 'Bundle': bundle})
+        self._jump(node._out)
+        return self._domain_to_geometry
+
+    def implicit_conversion(self, socket_idname = 'NodeSocketColor'):
+        """ > Node <&Node Implicit Conversion>
+
+        > ***Jump*** : Socket refers to node output socket after the call
+
+        **Fixed values**
+
+        | Kind      | Name        | Value        |
+        | --------- | ----------- | ------------ |
+        | Socket    | Value       | `self`       |
+        | Parameter | `data_type` | `'GEOMETRY'` |
+
+        Parameters
+        ----------
+        socket_idname : str
+            parameter `socket_idname`
+        
+
+        Returns
+        -------
+        Geometry
+        """
+        node = Node('Implicit Conversion', {'Value': self}, data_type='GEOMETRY', socket_idname=socket_idname)
+        self._jump(node._out)
+        return self._domain_to_geometry
+
+    @classmethod
+    def cluster_by_connected(cls,
+                    selection: Boolean = None,
+                    position: Vector = None,
+                    distance: Float = None):
+        """ > Node <&Node Cluster by Connected>
+
+        Parameters
+        ----------
+        selection : Boolean, optional
+            socket 'Selection' (id: Selection)
+        
+        position : Vector, optional
+            socket 'Position' (id: Position)
+        
+        distance : Float, optional
+            socket 'Distance' (id: Distance)
+        
+
+        Returns
+        -------
+        Integer
+        """
+        node = Node('Cluster by Connected', {'Selection': selection, 'Position': position, 'Distance': distance})
+        return node._out
+
+    @classmethod
+    def cluster_by_distance(cls,
+                    selection: Boolean = None,
+                    group_id: Integer = None,
+                    position: Vector = None,
+                    distance: Float = None):
+        """ > Node <&Node Cluster by Distance>
+
+        Parameters
+        ----------
+        selection : Boolean, optional
+            socket 'Selection' (id: Selection)
+        
+        group_id : Integer, optional
+            socket 'Group ID' (id: Group ID)
+        
+        position : Vector, optional
+            socket 'Position' (id: Position)
+        
+        distance : Float, optional
+            socket 'Distance' (id: Distance)
+        
+
+        Returns
+        -------
+        Integer
+        """
+        node = Node('Cluster by Distance', {'Selection': selection, 'Group ID': group_id, 'Position': position, 'Distance': distance})
+        return node._out
 
     @property
     def position(self):

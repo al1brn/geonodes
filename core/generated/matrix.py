@@ -1,4 +1,4 @@
-# Generated 2026-04-05 14:24:03
+# Generated 2026-07-20 17:00:26
 
 from __future__ import annotations
 from .. sockettype import SocketType
@@ -851,6 +851,132 @@ class Matrix(Socket):
         node = Node('Matrix SVD', {'Matrix': self})
         return node._out
 
+    def list_length(self):
+        """ > Node <&Node List Length>
+
+        **Fixed values**
+
+        | Kind      | Name        | Value      |
+        | --------- | ----------- | ---------- |
+        | Socket    | List        | `self`     |
+        | Parameter | `data_type` | `'MATRIX'` |
+
+        Returns
+        -------
+        Integer
+        """
+        node = Node('List Length', {'List': self}, data_type='MATRIX')
+        return node._out
+
+    def sort_list(self,
+                    selection: Boolean = None,
+                    group_id: Integer = None,
+                    sort_weight: Float = None):
+        """ > Node <&Node Sort List>
+
+        **Fixed values**
+
+        | Kind      | Name          | Value      |
+        | --------- | ------------- | ---------- |
+        | Socket    | List          | `self`     |
+        | Parameter | `socket_type` | `'MATRIX'` |
+
+        Parameters
+        ----------
+        selection : Boolean, optional
+            socket 'Selection' (id: Selection)
+        
+        group_id : Integer, optional
+            socket 'Group ID' (id: Group ID)
+        
+        sort_weight : Float, optional
+            socket 'Sort Weight' (id: Sort Weight)
+        
+
+        Returns
+        -------
+        Matrix
+        """
+        node = Node('Sort List', {'List': self, 'Selection': selection, 'Group ID': group_id, 'Sort Weight': sort_weight}, socket_type='MATRIX')
+        return node._out
+
+    def filter_list(self, selection: Boolean = None):
+        """ > Node <&Node Filter List>
+
+        **Fixed values**
+
+        | Kind      | Name          | Value      |
+        | --------- | ------------- | ---------- |
+        | Socket    | List          | `self`     |
+        | Parameter | `socket_type` | `'MATRIX'` |
+
+        Parameters
+        ----------
+        selection : Boolean, optional
+            socket 'Selection' (id: Selection)
+        
+
+        Returns
+        -------
+        Matrix
+            peer sockets: inverted_ (Matrix)
+
+        """
+        node = Node('Filter List', {'List': self, 'Selection': selection}, socket_type='MATRIX')
+        return node._out
+
+    def get_list_item(self,
+                    index: Integer = None,
+                    structure_type: Literal['AUTO', 'DYNAMIC', 'FIELD', 'GRID', 'LIST', 'SINGLE'] = 'AUTO'):
+        """ > Node <&Node Get List Item>
+
+        **Fixed values**
+
+        | Kind      | Name          | Value      |
+        | --------- | ------------- | ---------- |
+        | Socket    | List          | `self`     |
+        | Parameter | `socket_type` | `'MATRIX'` |
+
+        Parameters
+        ----------
+        index : Integer, optional
+            socket 'Index' (id: Index)
+        
+        structure_type : Literal['Auto', 'Dynamic', 'Field', 'Grid', 'List', 'Single']
+            parameter `structure_type`
+        
+
+        Returns
+        -------
+        Matrix
+        """
+        utils.check_enum_arg('Get List Item', 'structure_type', structure_type, 'get_list_item', ('AUTO', 'DYNAMIC', 'FIELD', 'GRID', 'LIST', 'SINGLE'))
+        node = Node('Get List Item', {'List': self, 'Index': index}, socket_type='MATRIX', structure_type=structure_type)
+        return node._out
+
+    def implicit_conversion(self, socket_idname = 'NodeSocketColor'):
+        """ > Node <&Node Implicit Conversion>
+
+        **Fixed values**
+
+        | Kind      | Name        | Value      |
+        | --------- | ----------- | ---------- |
+        | Socket    | Value       | `self`     |
+        | Parameter | `data_type` | `'MATRIX'` |
+
+        Parameters
+        ----------
+        socket_idname : str
+            parameter `socket_idname`
+        
+
+        Returns
+        -------
+        Matrix
+        """
+        node = Node('Implicit Conversion', {'Value': self}, data_type='MATRIX', socket_idname=socket_idname)
+        return node._out
+
     @classmethod
     def _create_input_socket(cls,
         name: str = 'Matrix',
@@ -861,7 +987,7 @@ class Matrix(Socket):
         hide_in_modifier: bool = False,
         default_attribute: str = '',
         default_input: Literal['VALUE', 'INSTANCE_TRANSFORM'] = 'VALUE',
-        shape: Literal['AUTO', 'DYNAMIC', 'FIELD', 'SINGLE'] = 'AUTO',
+        shape: Literal['AUTO', 'DYNAMIC', 'FIELD', 'LIST', 'SINGLE'] = 'AUTO',
          ):
         """ > Matrix Input
 
@@ -894,7 +1020,7 @@ class Matrix(Socket):
             Property default_input in ('VALUE', 'INSTANCE_TRANSFORM')
 
         shape : str, default=`'AUTO'`
-            Property structure_type in ('AUTO', 'DYNAMIC', 'FIELD', 'SINGLE')
+            Property structure_type in ('AUTO', 'DYNAMIC', 'FIELD', 'LIST', 'SINGLE')
 
 
         Returns

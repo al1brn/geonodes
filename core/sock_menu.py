@@ -50,6 +50,7 @@ class Menu(generated.Menu):
     There are two main ways to create a Menu:
     - In a single instruction using the constructor : `geo = Geometry.MenuSwitch(...)`
     - Item per item using the `with` context : `with Geometry.MenuSwitch() as geo:`
+    - From 5.2 : `Menu(str)` is accepted
 
     One can prefer the second method when the items need a lot of instructions to be built.
     Each context management creates a Layout.

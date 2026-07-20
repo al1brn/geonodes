@@ -61,7 +61,7 @@ from .treeinterface import ItemPath
 from .sockettype import SocketType
 from .treeinterface import TreeInterface
 from .treeclass import Tree
-from .nodeclass import Node, Group, MenuNode
+from .nodeclass import Node, Group
 from .nodezone import ZoneNode,ZoneIterator
 
 # =============================================================================================================================
@@ -293,6 +293,21 @@ class Socket(NodeCache):
     # Constructors
     # ====================================================================================================
 
+    def _convert_to_class(self, class_name):
+        from .utils import SOCKET_CLASSES, GEOMETRY_CLASSES
+
+        classes = {
+            cls.__name__: cls
+            for cls in SOCKET_CLASSES.values()
+        } | GEOMETRY_CLASSES
+
+        try:
+            cls = classes[class_name]
+        except KeyError:
+            raise NodeError(f"Unknown Socket class {class_name!r}") from None
+
+        return cls(self)
+
     # ----------------------------------------------------------------------------------------------------
     # An empty socket
     # ----------------------------------------------------------------------------------------------------
@@ -401,7 +416,6 @@ class Socket(NodeCache):
                 f"Available sockets are : {[bsock[0] for bsock in in_node.get_sockets('OUTPUT')]}.")
         
         return None
-    
 
     # ----------------------------------------------------------------------------------------------------
     # Create a new input socket from the current I/O context
@@ -486,7 +500,6 @@ class Socket(NodeCache):
 
         user_label : str, optional
             socket name (used to rename nodes if not None) default="".
-
         """
 
         # ---------------------------------------------------------------------------
@@ -590,13 +603,21 @@ class Socket(NodeCache):
             return Node('Combine Matrix', named_sockets = {i: a[i] for i in range(16)})._out._ul(user_label)
         
         elif cls.SOCKET_TYPE == 'MENU':
-            return Node('Menu Switch')._out._ul(user_label)
-        
+            if True: # V5.2
+                from .generated.static_nd import ND
+                return ND.menu(value)
+                #return Node('Menu', value=value)._out._ul(user_label)
+            else:
+                return Node('Menu Switch')._out._ul(user_label)
+            
         elif cls.SOCKET_TYPE == 'OBJECT':
             return Node('Object', object=def_val)._out._ul(user_label)
         
         elif cls.SOCKET_TYPE == 'FONT':
-            return cls.NewInput("Font", value)
+            if True: # V5.2
+                return Node('Font', font=def_val)._out._ul(user_label)
+            else:
+                return cls.NewInput("Font", value)
         
         elif cls.SOCKET_TYPE == 'ROTATION':
 
@@ -635,6 +656,48 @@ class Socket(NodeCache):
             
         else:
             assert False, f"Shouldn't happen {socket_type}"
+
+    # ----------------------------------------------------------------------------------------------------
+    # Create a List from a list
+    # ----------------------------------------------------------------------------------------------------
+
+    @classmethod
+    def List(cls, *items, name: str = ""):
+        """ Create a Blender List from items.
+
+        Parameters
+        ----------
+        items : Any, optional
+            Items to put in the list.
+
+        name : str, optional
+            socket name  default="".
+
+        Returns
+        -------
+        - Socket List
+        """
+
+        from .sock_closure import Closure
+        from .sock_integer import Integer
+
+        with Closure() as cl:
+
+            idx = Integer(0, "Index")
+
+            if True:
+                value = cls.IndexSwitch(*items, index=idx)
+            else:
+                with cls.IndexSwitch(index=idx) as value:
+                    for item in items:
+                        cls(item).out()
+
+            if name == "":
+                name = cls.__name__
+            value.out(name)
+
+        return cls(cl.to_list(count=len(items)))
+
 
     # ====================================================================================================
     # Emptyness
@@ -711,9 +774,8 @@ class Socket(NodeCache):
         # Restore user label
         self.user_label = user_label
 
-
         return self
-    
+
     # ----------------------------------------------------------------------------------------------------
     # Geometry from domain
     # ----------------------------------------------------------------------------------------------------
@@ -773,7 +835,12 @@ class Socket(NodeCache):
         """
         if self._is_empty():
             return "<EMPTY SOCKET>"
-        return utils.get_socket_name(self._bsocket)
+        
+        if self.node_label in [None, ""]:
+            return utils.get_socket_name(self._bsocket)
+        else:
+            return self.node_label
+            
 
     # ----------------------------------------------------------------------------------------------------
     # Get the panel name
@@ -876,6 +943,32 @@ class Socket(NodeCache):
         if self._is_empty():
             return False
         return self._bsocket.inferred_structure_type == 'GRID'
+    
+    # ====================================================================================================
+    # List
+    # ====================================================================================================
+
+    @property
+    def _is_list(self):
+        """ bool property
+        
+        Returns True if socket is a list
+        """
+        if self._is_empty():
+            return False
+        return self._bsocket.inferred_structure_type == 'LIST'
+    
+    def __getitem__(self, index):
+        return self.get_list_item(index)
+    
+    @property
+    def len(self):
+        """ Short cut for 'self.list_length()'
+        """
+        return self.list_length()
+    
+    def to_list(self, count=None):
+        return Node('Field to List', named_sockets={self._name: self}, count=count)._out
 
     # ====================================================================================================
     # Owning node
@@ -1254,11 +1347,12 @@ class Socket(NodeCache):
         -------
         Socket
         """
-        node = MenuNode('Menu Switch',
+        node = Node('Menu Switch',
                 named_sockets = named_sockets,
                 data_type = SocketType(cls.SOCKET_TYPE).type,
-                default_menu = default_menu,
+                #default_menu = default_menu,
                 **sockets)
+        node._default_menu = default_menu
         
         return cls(node._out)
     
@@ -1358,12 +1452,11 @@ class Socket(NodeCache):
         -------
         Socket
         """
-        #return IndexSwitchNode(*values, index=index, data_type=cls.input_type())._out
-        return MenuNode('Index Switch', 
+        node = Node('Index Switch', 
                         {str(i): value for i, value in enumerate(values)}, 
                         data_type=cls.SOCKET_TYPE, 
-                        Index=index,
-                        default_menu = default_index)._out
+                        Index=index)
+        return node._out
     
     # ----------------------------------------------------------------------------------------------------
     # Method version
@@ -1803,7 +1896,7 @@ class Socket(NodeCache):
                 "sock_to_dt" : sock_to_dt,
                 "dt_to_sock" : dt_to_sock,
                 }
-                
+            
             # Check that all possible choices are reached
             # Could happen with the node 'Store Named Attribute' for instance
             
@@ -1813,7 +1906,7 @@ class Socket(NodeCache):
                 if len(v) == 0:
                     node_orphans.add(k)
                 elif len(v) > 1:
-                    node_mults.add((k, v))
+                    node_mults.add((k, tuple(v)))
 
             orphans = orphans.union(node_orphans)
             mults = mults.union(node_mults)

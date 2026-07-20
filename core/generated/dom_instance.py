@@ -1,4 +1,4 @@
-# Generated 2026-04-05 14:24:03
+# Generated 2026-07-20 17:00:26
 
 from __future__ import annotations
 from .. sockettype import SocketType
@@ -469,6 +469,17 @@ class Instance:
         node = Node('Evaluate on Domain', {'Value': value}, data_type=data_type, domain='INSTANCE')
         return node._out
 
+    @utils.classproperty
+    def reference(cls):
+        """ > Node <&Node Instance Reference>
+
+        Returns
+        -------
+        Integer
+        """
+        node = Node('Instance Reference', )
+        return node._out
+
     def sample_index(self,
                     value: Float | Integer | Boolean | Vector | Color | Rotation | Matrix = None,
                     index: Integer = None,
@@ -582,7 +593,7 @@ class Instance:
 
     def store_named_attribute(self,
                     name: String = None,
-                    value: Float | Integer | Boolean | Vector | Color | Rotation | Matrix | Integer | Vector | Color = None):
+                    value: Float | Integer | Boolean | Vector | Color | Rotation | Matrix | Integer | Vector | Vector | Color = None):
         """ > Node <&Node Store Named Attribute>
 
         > ***Jump*** : Socket refers to node output socket after the call
@@ -601,7 +612,7 @@ class Instance:
         name : String, optional
             socket 'Name' (id: Name)
         
-        value : Float | Integer | Boolean | Vector | Color | Rotation | Matrix | Integer | Vector | Color, optional
+        value : Float | Integer | Boolean | Vector | Color | Rotation | Matrix | Integer | Vector | Vector | Color, optional
             socket 'Value' (id: Value)
         
 
@@ -616,7 +627,7 @@ class Instance:
 
     def store(self,
                     name: String = None,
-                    value: Float | Integer | Boolean | Vector | Color | Rotation | Matrix | Integer | Vector | Color = None):
+                    value: Float | Integer | Boolean | Vector | Color | Rotation | Matrix | Integer | Vector | Vector | Color = None):
         """ > Node <&Node Store Named Attribute>
 
         > ***Jump*** : Socket refers to node output socket after the call
@@ -635,7 +646,7 @@ class Instance:
         name : String, optional
             socket 'Name' (id: Name)
         
-        value : Float | Integer | Boolean | Vector | Color | Rotation | Matrix | Integer | Vector | Color, optional
+        value : Float | Integer | Boolean | Vector | Color | Rotation | Matrix | Integer | Vector | Vector | Color, optional
             socket 'Value' (id: Value)
         
 

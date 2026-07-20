@@ -1,4 +1,4 @@
-# Generated 2026-04-05 14:24:03
+# Generated 2026-07-20 17:00:26
 
 from __future__ import annotations
 from .. sockettype import SocketType
@@ -1821,6 +1821,58 @@ class Curve(Socket):
         Curve
         """
         node = Node('Set Spline Resolution', {'Geometry': self, 'Selection': self.get_selection(), 'Resolution': resolution})
+        self._jump(node._out)
+        return self._domain_to_geometry
+
+    def set_nurbs_order(self, order: Integer = None):
+        """ > Node <&Node Set NURBS Order>
+
+        > ***Jump*** : Socket refers to node output socket after the call
+
+        **Fixed values**
+
+        | Kind   | Name      | Value             |
+        | ------ | --------- | ----------------- |
+        | Socket | Curves    | `self`            |
+        | Socket | Selection | `self[selection]` |
+
+        Parameters
+        ----------
+        order : Integer, optional
+            socket 'Order' (id: Order)
+        
+
+        Returns
+        -------
+        Curve
+        """
+        node = Node('Set NURBS Order', {'Curves': self, 'Selection': self.get_selection(), 'Order': order})
+        self._jump(node._out)
+        return self._domain_to_geometry
+
+    def set_nurbs_weight(self, weight: Float = None):
+        """ > Node <&Node Set NURBS Weight>
+
+        > ***Jump*** : Socket refers to node output socket after the call
+
+        **Fixed values**
+
+        | Kind   | Name      | Value             |
+        | ------ | --------- | ----------------- |
+        | Socket | Curves    | `self`            |
+        | Socket | Selection | `self[selection]` |
+
+        Parameters
+        ----------
+        weight : Float, optional
+            socket 'Weight' (id: Weight)
+        
+
+        Returns
+        -------
+        Curve
+        """
+        node = Node('Set NURBS Weight', {'Curves': self, 'Selection': self.get_selection(), 'Weight': weight})
         self._jump(node._out)
         return self._domain_to_geometry
 

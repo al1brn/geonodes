@@ -287,9 +287,6 @@ class Node:
         _paired_output_node : Node
             paired output node
 
-        _default_menu : str | int
-            specific to MenuSwitch and IndexSwitch, forward menu value
-
         - _link_ignore : ignore these sockets in link_inputs method (already set)
         - _stack : call stack for warnings
 
@@ -469,6 +466,9 @@ class Node:
 
             if menu_value is not None:
                 self.set_input_socket("Menu", menu_value)
+                if self._default_menu == "":
+                    self._default_menu = menu_value
+        
 
         elif bl_idname == 'GeometryNodeIndexSwitch':
             index_value = None
@@ -537,6 +537,48 @@ class Node:
         self._label = label
         self._color = color
         return self    
+
+    # ====================================================================================================
+    # Specific nodes
+    # ====================================================================================================
+
+    @property
+    def _is_menu_switch(self):
+        return self._bnode.bl_idname == 'GeometryNodeMenuSwitch'
+
+    @property
+    def _is_index_switch(self):
+        return self._bnode.bl_idname == 'GeometryNodeIndexSwitch'
+    
+    @property
+    def _menu_items(self):
+        if self._is_menu_switch:
+            return [item.name for item in self._bnode.enum_items]
+        else:
+            return None
+    
+    @property
+    def _default_menu(self):
+        if self._is_menu_switch:
+            return self._bnode.inputs[0].default_value
+        else:
+            return None
+    
+    @_default_menu.setter
+    def _default_menu(self, value):
+        
+        if (not self._is_menu_switch) or (len(self._bnode.inputs) == 1):
+            return
+        
+        try:
+            self._bnode.inputs[0].default_value = value
+            return
+        except:
+            pass
+
+        items = self._menu_items
+        if len(items):
+            self._bnode.inputs[0].default_value = items[0]
 
     # ====================================================================================================
     # Set the node parameters
@@ -1607,6 +1649,12 @@ class Node:
             socket_type = SocketType(value)
             socket = self.create_socket('INPUT', socket_type, name=name, panel=panel, **props)
 
+            # Menus
+            if self._is_menu_switch:
+                if self._default_menu == "":
+                    self._default_menu = name
+
+
         # ===========================================================================
         # Set a value to the socket
         # ===========================================================================
@@ -1693,6 +1741,7 @@ class Node:
             geo_classes = self._paired_input_node._geo_classes
 
         geo_class = geo_classes.get(bsocket.name) or self._geo_classes.get(bsocket.name)
+        
         if geo_class is not None:
             return geo_class(bsocket)
 
@@ -2426,158 +2475,6 @@ class Node:
             test = test.advanced_translation((1, 1, 1))
 
             test.out()
-
-
-# ====================================================================================================
-# Menu node
-# ====================================================================================================
-
-class MenuNode(Node):
-
-    __slots__ = Node.__slots__ + ('_default_menu',)
-
-    def __init__(self, node_name: str, named_sockets: dict = {}, default_menu: str | int = None, **parameters):
-        self._default_menu = default_menu
-        super().__init__(node_name, named_sockets=named_sockets, **parameters)
-
-    @property
-    def _is_menu_switch(self):
-        return self._bnode.bl_idname == 'GeometryNodeMenuSwitch'
-
-    @property
-    def _is_index_switch(self):
-        return self._bnode.bl_idname == 'GeometryNodeIndexSwitch'
-
-    # ====================================================================================================
-    # Called when the Tree is completed
-    # ====================================================================================================
-
-    def _tree_is_completed(self, mod_values: dict):
-        """ Called when the Tree is completed
-
-        Once the tree is completed, this method ensures:
-        - the default value is properly set
-        - max value of Index Switch connected socket is ok
-        - modifiers values are preserved
-
-        Parameters
-        ----------
-        mod_values : dict
-            modifiers initial values, before clearing the Tree
-
-        """
-
-        # All the Tree input sockets
-        if self._tree._btree.bl_idname == 'GeometryNodeTree' or self._tree._is_group:
-            inputs = {bsock.identifier: bsock for bsock in self._tree.input_node._bnode.outputs}
-        else:
-            inputs = {}
-
-        # Driving input socket
-        insock = self._bnode.inputs[0]
-
-        # Linked output socket
-        if len(inputs) and insock.is_linked:
-            outsock = insock.links[0].from_socket if insock.is_linked else None
-            sock_id = outsock.identifier
-            itfsock = self._tree._interface.by_identifier(sock_id)
-            is_input = outsock.identifier in inputs.keys()
-        else:
-            is_input = False
-
-        # ---------------------------------------------------------------------------
-        # Menu Switch
-        # ---------------------------------------------------------------------------
-
-        if self._is_menu_switch:
-
-            # Current options
-            enums = [item.name for item in self._bnode.enum_items]
-            n = len(enums)
-            if n == 0:
-                return
-            
-            # Default option
-            if self._default_menu is None:
-                self._default_menu = enums[0]
-
-            try:
-                def_index = enums.index(self._default_menu)
-            except Exception:
-                def_index = 0
-                self._default_menu = enums[0]
-
-            # Menu to default
-            self._bnode.inputs[0].default_value = self._default_menu           
-            if not is_input:
-                return
-            
-            # Linked socket
-            outsock.default_value = self._default_menu
-            itfsock.default_value = self._default_menu
-
-            # Modifiers
-            for name, mod in self._tree.get_modifiers().items():
-
-                mod_value = None
-                values = mod_values.get(name)
-                if values is not None:
-                    mod_value = values.get((outsock.name, outsock.bl_idname))
-
-                if mod_value is None:
-                    continue
-
-                if mod_value < 2 or mod_value > n + 1:
-                    mod[sock_id] = def_index + 2
-                else:
-                    mod[sock_id] = mod_value
-
-        # ---------------------------------------------------------------------------
-        # Index Switch
-        # ---------------------------------------------------------------------------
-
-        else:
-            # Number of indices
-            n = len(self._bnode.index_switch_items)
-
-            # Default index
-            if n == 0:
-                return
-            if self._default_menu is None:
-                self._default_menu = 0
-
-            def_index = self._default_menu
-            if def_index >= n:
-                def_index = 0
-                self._default_menu = 0
-
-            # Index to default
-            self._bnode.inputs[0].default_value = self._default_menu           
-            if not is_input:
-                return
-            
-            # Linked socket
-            outsock.default_value = self._default_menu
-            itfsock.default_value = self._default_menu
-            itfsock.max_value = n - 1
-
-            # Modifiers
-            for name, mod in self._tree.get_modifiers().items():
-
-                mod_value = None
-                values = mod_values.get(name)
-
-                if values is not None:
-                    mod_value = values.get((outsock.name, outsock.bl_idname))
-
-                if mod_value is None:
-                    continue
-
-                if mod_value > n:
-                    mod[sock_id] = def_index
-                else:
-                    mod[sock_id] = mod_value
-
 
 # ====================================================================================================
 # Group

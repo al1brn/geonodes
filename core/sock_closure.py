@@ -195,6 +195,26 @@ class Closure(generated.Closure):
                 self.node.get_signature(with_sockets=with_sockets).inputs)
         else:
             raise RuntimeError(f"The Closure socket {self} doesn't come from a Closure pair of nodes. Impossible to get its signature.")
+        
+    def _get_signature_argument(self, named_sockets: dict = {}, signature: Signature = None, **sockets):
+        """ Get the signature from zone, arguments or signature argument
+        """
+
+        already_linked = False
+
+        # Closure has a zone: let's get it
+        if self._has_zone:
+            signature = self.get_signature()
+
+        # Signature is not provided: we use the sockets (hoping they cover the needs)
+        elif signature is None:
+            already_linked = True
+            signature = Signature.from_named_sockets(named_sockets, **sockets)
+
+        else:
+            signature = Signature(signature)
+
+        return signature, already_linked
 
     # ===============================================s=====================================================
     # Evaluate
@@ -268,18 +288,22 @@ class Closure(generated.Closure):
         # Let's ensure a proper signature
         # ----------------------------------------------------------------------------------------------------
 
-        already_linked = False
-        # Closure has a zone: let's get it
-        if self._has_zone:
-            signature = self.get_signature()
-
-        # Signature is not provided: we use the sockets (hoping they cover the needs)
-        elif signature is None:
-            already_linked = True
-            signature = Signature.from_named_sockets(named_sockets, **sockets)
+        if True:
+            signature, already_linked = self._get_signature_argument(named_sockets, signature, **sockets)
 
         else:
-            signature = Signature(signature)
+            already_linked = False
+            # Closure has a zone: let's get it
+            if self._has_zone:
+                signature = self.get_signature()
+
+            # Signature is not provided: we use the sockets (hoping they cover the needs)
+            elif signature is None:
+                already_linked = True
+                signature = Signature.from_named_sockets(named_sockets, **sockets)
+
+            else:
+                signature = Signature(signature)
 
         # ----------------------------------------------------------------------------------------------------
         # Create the node
@@ -306,7 +330,35 @@ class Closure(generated.Closure):
     
     def __call__(self, named_sockets: dict = {}, signature: Signature = None, **sockets):
         return self.evaluate(named_sockets=named_sockets, signature=signature, **sockets)
+    
 
+    # ===============================================s=====================================================
+    # To Lits
+    # ====================================================================================================
+
+    def to_list(self, count = None, signature: Signature = None, **sockets):
+
+        _btree = self._tree._btree
+
+        # ----------------------------------------------------------------------------------------------------
+        # Read the signature form zone
+        # ----------------------------------------------------------------------------------------------------
+
+        if signature is None:
+            signature = self.get_signature()
+
+        # ----------------------------------------------------------------------------------------------------
+        # Create the node
+        # ----------------------------------------------------------------------------------------------------
+
+        # Closure to list node
+        node = Node('GeometryNodeClosureToList', {"Closure": self, "Count": count})
+
+        # Set the signature
+        node.set_signature('OUTPUT', Signature(signature.outputs))
+
+        # We are done :-)
+        return node._out    
     
     # ===============================================s=====================================================
     # Test

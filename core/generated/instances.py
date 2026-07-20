@@ -1,4 +1,4 @@
-# Generated 2026-04-05 14:24:03
+# Generated 2026-07-20 17:00:26
 
 from __future__ import annotations
 from .. sockettype import SocketType
@@ -83,6 +83,17 @@ class Instances(Socket):
         """
         node = Node('Import OBJ', {'Path': path})
         return cls(node._out)
+
+    @utils.classproperty
+    def reference(cls):
+        """ > Node <&Node Instance Reference>
+
+        Returns
+        -------
+        Integer
+        """
+        node = Node('Instance Reference', )
+        return node._out
 
     @utils.classproperty
     def rotation(cls):

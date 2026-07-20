@@ -1,4 +1,4 @@
-# Generated 2026-04-05 14:24:03
+# Generated 2026-07-20 17:00:26
 
 from __future__ import annotations
 from .. sockettype import SocketType
@@ -253,10 +253,10 @@ class Float(Socket):
         Parameters
         ----------
         min : Float, optional
-            socket 'Min' (id: Min_001)
+            socket 'Min' (id: Min)
         
         max : Float, optional
-            socket 'Max' (id: Max_001)
+            socket 'Max' (id: Max)
         
         id : Integer, optional
             socket 'ID' (id: ID)
@@ -269,7 +269,7 @@ class Float(Socket):
         -------
         Float
         """
-        node = Node('Random Value', {'Min_001': min, 'Max_001': max, 'ID': id, 'Seed': seed}, data_type='FLOAT')
+        node = Node('Random Value', {'Min': min, 'Max': max, 'ID': id, 'Seed': seed}, data_type='FLOAT')
         return cls(node._out)
 
     def to_string(self, decimals: Integer = None):
@@ -2641,6 +2641,109 @@ class Float(Socket):
         node = Node('Enable Output', {'Enable': enable, 'Value': self}, data_type='FLOAT')
         return node._out
 
+    def list_length(self):
+        """ > Node <&Node List Length>
+
+        **Fixed values**
+
+        | Kind      | Name        | Value     |
+        | --------- | ----------- | --------- |
+        | Socket    | List        | `self`    |
+        | Parameter | `data_type` | `'FLOAT'` |
+
+        Returns
+        -------
+        Integer
+        """
+        node = Node('List Length', {'List': self}, data_type='FLOAT')
+        return node._out
+
+    def sort_list(self,
+                    selection: Boolean = None,
+                    group_id: Integer = None,
+                    sort_weight: Float = None):
+        """ > Node <&Node Sort List>
+
+        **Fixed values**
+
+        | Kind      | Name          | Value     |
+        | --------- | ------------- | --------- |
+        | Socket    | List          | `self`    |
+        | Parameter | `socket_type` | `'FLOAT'` |
+
+        Parameters
+        ----------
+        selection : Boolean, optional
+            socket 'Selection' (id: Selection)
+        
+        group_id : Integer, optional
+            socket 'Group ID' (id: Group ID)
+        
+        sort_weight : Float, optional
+            socket 'Sort Weight' (id: Sort Weight)
+        
+
+        Returns
+        -------
+        Float
+        """
+        node = Node('Sort List', {'List': self, 'Selection': selection, 'Group ID': group_id, 'Sort Weight': sort_weight}, socket_type='FLOAT')
+        return node._out
+
+    def filter_list(self, selection: Boolean = None):
+        """ > Node <&Node Filter List>
+
+        **Fixed values**
+
+        | Kind      | Name          | Value     |
+        | --------- | ------------- | --------- |
+        | Socket    | List          | `self`    |
+        | Parameter | `socket_type` | `'FLOAT'` |
+
+        Parameters
+        ----------
+        selection : Boolean, optional
+            socket 'Selection' (id: Selection)
+        
+
+        Returns
+        -------
+        Float
+            peer sockets: inverted_ (Float)
+
+        """
+        node = Node('Filter List', {'List': self, 'Selection': selection}, socket_type='FLOAT')
+        return node._out
+
+    def get_list_item(self,
+                    index: Integer = None,
+                    structure_type: Literal['AUTO', 'DYNAMIC', 'FIELD', 'GRID', 'LIST', 'SINGLE'] = 'AUTO'):
+        """ > Node <&Node Get List Item>
+
+        **Fixed values**
+
+        | Kind      | Name          | Value     |
+        | --------- | ------------- | --------- |
+        | Socket    | List          | `self`    |
+        | Parameter | `socket_type` | `'FLOAT'` |
+
+        Parameters
+        ----------
+        index : Integer, optional
+            socket 'Index' (id: Index)
+        
+        structure_type : Literal['Auto', 'Dynamic', 'Field', 'Grid', 'List', 'Single']
+            parameter `structure_type`
+        
+
+        Returns
+        -------
+        Float
+        """
+        utils.check_enum_arg('Get List Item', 'structure_type', structure_type, 'get_list_item', ('AUTO', 'DYNAMIC', 'FIELD', 'GRID', 'LIST', 'SINGLE'))
+        node = Node('Get List Item', {'List': self, 'Index': index}, socket_type='FLOAT', structure_type=structure_type)
+        return node._out
+
     def clip_grid(self,
                     min_x: Integer = None,
                     min_y: Integer = None,
@@ -2786,6 +2889,29 @@ class Float(Socket):
 
         """
         node = Node('Grid to Points', {'Grid': self}, data_type='FLOAT')
+        return node._out
+
+    def implicit_conversion(self, socket_idname = 'NodeSocketColor'):
+        """ > Node <&Node Implicit Conversion>
+
+        **Fixed values**
+
+        | Kind      | Name        | Value     |
+        | --------- | ----------- | --------- |
+        | Socket    | Value       | `self`    |
+        | Parameter | `data_type` | `'FLOAT'` |
+
+        Parameters
+        ----------
+        socket_idname : str
+            parameter `socket_idname`
+        
+
+        Returns
+        -------
+        Float
+        """
+        node = Node('Implicit Conversion', {'Value': self}, data_type='FLOAT', socket_idname=socket_idname)
         return node._out
 
     def bevel(self, normal: Vector = None, samples = 4):
@@ -3185,7 +3311,7 @@ class Float(Socket):
 
     @classmethod
     def _create_input_socket(cls,
-        value: object = 0.0,
+        value: float = 0.0,
         name: str = 'Float',
         min: float = -3.40282e+38,
         max: float = 3.40282e+38,
@@ -3204,7 +3330,7 @@ class Float(Socket):
 
         Parameters
         ----------
-        value : object, default=`0.0`
+        value : float, default=`0.0`
             Default value
 
         name : str, default=`Float`
@@ -3238,7 +3364,7 @@ class Float(Socket):
             Property structure_type in ('AUTO', 'SINGLE')
 
         subtype : str, default=`NONE`
-            Socket sub type in ('NONE', 'PERCENTAGE', 'FACTOR', 'MASS', 'ANGLE', 'TIME', 'TIME_ABSOLUTE', 'DISTANCE', 'WAVELENGTH', 'COLOR_TEMPERATURE', 'FREQUENCY')
+            Socket sub type in ('NONE', 'PIXEL', 'PERCENTAGE', 'FACTOR', 'MASS', 'ANGLE', 'TIME', 'TIME_ABSOLUTE', 'DISTANCE', 'WAVELENGTH', 'COLOR_TEMPERATURE', 'FREQUENCY')
 
 
         Returns
@@ -3255,8 +3381,70 @@ class Float(Socket):
             subtype=subtype)
 
     @classmethod
+    def Pixel(cls,
+        value: float = 0.0,
+        name: str = 'Pixel',
+        min: float = -3.40282e+38,
+        max: float = 3.40282e+38,
+        tip: str = '',
+        panel: str = "",
+        optional_label: bool = False,
+        hide_value: bool = False,
+        hide_in_modifier: bool = False,
+        default_attribute: str = '',
+        shape: Literal['AUTO', 'SINGLE'] = 'AUTO',
+         ):
+        """ > Pixel Input
+
+        New <#Float> input with subtype 'PIXEL'.
+
+        Parameters
+        ----------
+        value : float, default=`0.0`
+            Default value
+
+        name : str, default=`Pixel`
+            Input socket name
+
+        min : float, default=`-3.40282e+38`
+            Property min_value
+
+        max : float, default=`3.40282e+38`
+            Property max_value
+
+        tip : str, default=`''`
+            Property description
+
+        panel : str, default=``
+            Panel name
+
+        optional_label : bool, default=`False`
+            Property optional_label
+
+        hide_value : bool, default=`False`
+            Property hide_value
+
+        hide_in_modifier : bool, default=`False`
+            Property hide_in_modifier
+
+        default_attribute : str, default=`''`
+            Property default_attribute_name
+
+        shape : str, default=`'AUTO'`
+            Property structure_type in ('AUTO', 'SINGLE')
+
+
+        Returns
+        -------
+        Float
+        """
+        return cls(value=value, name=name, min=min, max=max, tip=tip, panel=panel,
+            optional_label=optional_label, hide_value=hide_value, hide_in_modifier=hide_in_modifier,
+            default_attribute=default_attribute, shape=shape, subtype='PIXEL')
+
+    @classmethod
     def Percentage(cls,
-        value: object = 0.0,
+        value: float = 0.0,
         name: str = 'Percentage',
         min: float = -3.40282e+38,
         max: float = 3.40282e+38,
@@ -3274,7 +3462,7 @@ class Float(Socket):
 
         Parameters
         ----------
-        value : object, default=`0.0`
+        value : float, default=`0.0`
             Default value
 
         name : str, default=`Percentage`
@@ -3318,7 +3506,7 @@ class Float(Socket):
 
     @classmethod
     def Factor(cls,
-        value: object = 0.0,
+        value: float = 0.0,
         name: str = 'Factor',
         min: float = -3.40282e+38,
         max: float = 3.40282e+38,
@@ -3336,7 +3524,7 @@ class Float(Socket):
 
         Parameters
         ----------
-        value : object, default=`0.0`
+        value : float, default=`0.0`
             Default value
 
         name : str, default=`Factor`
@@ -3380,7 +3568,7 @@ class Float(Socket):
 
     @classmethod
     def Mass(cls,
-        value: object = 0.0,
+        value: float = 0.0,
         name: str = 'Mass',
         min: float = -3.40282e+38,
         max: float = 3.40282e+38,
@@ -3398,7 +3586,7 @@ class Float(Socket):
 
         Parameters
         ----------
-        value : object, default=`0.0`
+        value : float, default=`0.0`
             Default value
 
         name : str, default=`Mass`
@@ -3442,7 +3630,7 @@ class Float(Socket):
 
     @classmethod
     def Angle(cls,
-        value: object = 0.0,
+        value: float = 0.0,
         name: str = 'Angle',
         min: float = -3.40282e+38,
         max: float = 3.40282e+38,
@@ -3460,7 +3648,7 @@ class Float(Socket):
 
         Parameters
         ----------
-        value : object, default=`0.0`
+        value : float, default=`0.0`
             Default value
 
         name : str, default=`Angle`
@@ -3504,7 +3692,7 @@ class Float(Socket):
 
     @classmethod
     def Time(cls,
-        value: object = 0.0,
+        value: float = 0.0,
         name: str = 'Time',
         min: float = -3.40282e+38,
         max: float = 3.40282e+38,
@@ -3522,7 +3710,7 @@ class Float(Socket):
 
         Parameters
         ----------
-        value : object, default=`0.0`
+        value : float, default=`0.0`
             Default value
 
         name : str, default=`Time`
@@ -3566,7 +3754,7 @@ class Float(Socket):
 
     @classmethod
     def TimeAbsolute(cls,
-        value: object = 0.0,
+        value: float = 0.0,
         name: str = 'TimeAbsolute',
         min: float = -3.40282e+38,
         max: float = 3.40282e+38,
@@ -3584,7 +3772,7 @@ class Float(Socket):
 
         Parameters
         ----------
-        value : object, default=`0.0`
+        value : float, default=`0.0`
             Default value
 
         name : str, default=`TimeAbsolute`
@@ -3628,7 +3816,7 @@ class Float(Socket):
 
     @classmethod
     def Distance(cls,
-        value: object = 0.0,
+        value: float = 0.0,
         name: str = 'Distance',
         min: float = -3.40282e+38,
         max: float = 3.40282e+38,
@@ -3646,7 +3834,7 @@ class Float(Socket):
 
         Parameters
         ----------
-        value : object, default=`0.0`
+        value : float, default=`0.0`
             Default value
 
         name : str, default=`Distance`
@@ -3690,7 +3878,7 @@ class Float(Socket):
 
     @classmethod
     def Wavelength(cls,
-        value: object = 0.0,
+        value: float = 0.0,
         name: str = 'Wavelength',
         min: float = -3.40282e+38,
         max: float = 3.40282e+38,
@@ -3708,7 +3896,7 @@ class Float(Socket):
 
         Parameters
         ----------
-        value : object, default=`0.0`
+        value : float, default=`0.0`
             Default value
 
         name : str, default=`Wavelength`
@@ -3752,7 +3940,7 @@ class Float(Socket):
 
     @classmethod
     def ColorTemperature(cls,
-        value: object = 0.0,
+        value: float = 0.0,
         name: str = 'ColorTemperature',
         min: float = -3.40282e+38,
         max: float = 3.40282e+38,
@@ -3770,7 +3958,7 @@ class Float(Socket):
 
         Parameters
         ----------
-        value : object, default=`0.0`
+        value : float, default=`0.0`
             Default value
 
         name : str, default=`ColorTemperature`
@@ -3814,7 +4002,7 @@ class Float(Socket):
 
     @classmethod
     def Frequency(cls,
-        value: object = 0.0,
+        value: float = 0.0,
         name: str = 'Frequency',
         min: float = -3.40282e+38,
         max: float = 3.40282e+38,
@@ -3832,7 +4020,7 @@ class Float(Socket):
 
         Parameters
         ----------
-        value : object, default=`0.0`
+        value : float, default=`0.0`
             Default value
 
         name : str, default=`Frequency`

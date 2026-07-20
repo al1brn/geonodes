@@ -115,7 +115,7 @@ class Material(generated.Material):
     @classmethod
     def _class_test(cls):
 
-        from geonodes import GeoNodes, Material, nd, Mesh, ShaderNodes, Shader, Input, Menu
+        from geonodes import GeoNodes, Material, nd, Mesh, ShaderNodes, Shader, Input, Node
         
         # ---------------------------------------------------------------------------
         # Building 3 materials

@@ -1,4 +1,4 @@
-# Generated 2026-04-05 14:24:03
+# Generated 2026-07-20 17:00:26
 
 from __future__ import annotations
 from .. sockettype import SocketType
@@ -48,14 +48,14 @@ class Vector(Socket):
         Parameters
         ----------
         b : Vector, optional
-            socket 'B' (id: B_VEC3)
+            socket 'B' (id: B)
         
 
         Returns
         -------
         Boolean
         """
-        node = Node('Compare', {'A_VEC3': self, 'B_VEC3': b}, data_type='VECTOR', mode='ELEMENT', operation='LESS_THAN')
+        node = Node('Compare', {'A': self, 'B': b}, data_type='VECTOR', mode='ELEMENT', operation='LESS_THAN')
         return node._out
 
     def less_equal(self, b: Vector = None):
@@ -73,14 +73,14 @@ class Vector(Socket):
         Parameters
         ----------
         b : Vector, optional
-            socket 'B' (id: B_VEC3)
+            socket 'B' (id: B)
         
 
         Returns
         -------
         Boolean
         """
-        node = Node('Compare', {'A_VEC3': self, 'B_VEC3': b}, data_type='VECTOR', mode='ELEMENT', operation='LESS_EQUAL')
+        node = Node('Compare', {'A': self, 'B': b}, data_type='VECTOR', mode='ELEMENT', operation='LESS_EQUAL')
         return node._out
 
     def greater_than(self, b: Vector = None):
@@ -98,14 +98,14 @@ class Vector(Socket):
         Parameters
         ----------
         b : Vector, optional
-            socket 'B' (id: B_VEC3)
+            socket 'B' (id: B)
         
 
         Returns
         -------
         Boolean
         """
-        node = Node('Compare', {'A_VEC3': self, 'B_VEC3': b}, data_type='VECTOR', mode='ELEMENT', operation='GREATER_THAN')
+        node = Node('Compare', {'A': self, 'B': b}, data_type='VECTOR', mode='ELEMENT', operation='GREATER_THAN')
         return node._out
 
     def greater_equal(self, b: Vector = None):
@@ -123,14 +123,14 @@ class Vector(Socket):
         Parameters
         ----------
         b : Vector, optional
-            socket 'B' (id: B_VEC3)
+            socket 'B' (id: B)
         
 
         Returns
         -------
         Boolean
         """
-        node = Node('Compare', {'A_VEC3': self, 'B_VEC3': b}, data_type='VECTOR', mode='ELEMENT', operation='GREATER_EQUAL')
+        node = Node('Compare', {'A': self, 'B': b}, data_type='VECTOR', mode='ELEMENT', operation='GREATER_EQUAL')
         return node._out
 
     def equal(self, b: Vector = None, epsilon: Float = None):
@@ -148,7 +148,7 @@ class Vector(Socket):
         Parameters
         ----------
         b : Vector, optional
-            socket 'B' (id: B_VEC3)
+            socket 'B' (id: B)
         
         epsilon : Float, optional
             socket 'Epsilon' (id: Epsilon)
@@ -158,7 +158,7 @@ class Vector(Socket):
         -------
         Boolean
         """
-        node = Node('Compare', {'A_VEC3': self, 'B_VEC3': b, 'Epsilon': epsilon}, data_type='VECTOR', mode='ELEMENT', operation='EQUAL')
+        node = Node('Compare', {'A': self, 'B': b, 'Epsilon': epsilon}, data_type='VECTOR', mode='ELEMENT', operation='EQUAL')
         return node._out
 
     def not_equal(self, b: Vector = None, epsilon: Float = None):
@@ -176,7 +176,7 @@ class Vector(Socket):
         Parameters
         ----------
         b : Vector, optional
-            socket 'B' (id: B_VEC3)
+            socket 'B' (id: B)
         
         epsilon : Float, optional
             socket 'Epsilon' (id: Epsilon)
@@ -186,7 +186,7 @@ class Vector(Socket):
         -------
         Boolean
         """
-        node = Node('Compare', {'A_VEC3': self, 'B_VEC3': b, 'Epsilon': epsilon}, data_type='VECTOR', mode='ELEMENT', operation='NOT_EQUAL')
+        node = Node('Compare', {'A': self, 'B': b, 'Epsilon': epsilon}, data_type='VECTOR', mode='ELEMENT', operation='NOT_EQUAL')
         return node._out
 
     def to_rotation(self):
@@ -337,6 +337,7 @@ class Vector(Socket):
         return cls(node._out)
 
     def pack_uv_islands(self,
+                    selection: Boolean = None,
                     margin: Float = None,
                     rotate: Boolean = None,
                     method: Literal['Bounding Box', 'Convex Hull', 'Exact Shape'] = None,
@@ -346,13 +347,15 @@ class Vector(Socket):
 
         **Fixed values**
 
-        | Kind   | Name      | Value             |
-        | ------ | --------- | ----------------- |
-        | Socket | UV        | `self`            |
-        | Socket | Selection | `self[selection]` |
+        | Kind   | Name | Value  |
+        | ------ | ---- | ------ |
+        | Socket | UV   | `self` |
 
         Parameters
         ----------
+        selection : Boolean, optional
+            socket 'Selection' (id: Selection)
+        
         margin : Float, optional
             socket 'Margin' (id: Margin)
         
@@ -373,7 +376,7 @@ class Vector(Socket):
         -------
         Vector
         """
-        node = Node('Pack UV Islands', {'UV': self, 'Selection': self.get_selection(), 'Margin': margin, 'Rotate': rotate, 'Method': method, 'Bottom Left': bottom_left, 'Top Right': top_right})
+        node = Node('Pack UV Islands', {'UV': self, 'Selection': selection, 'Margin': margin, 'Rotate': rotate, 'Method': method, 'Bottom Left': bottom_left, 'Top Right': top_right})
         return node._out
 
     @classmethod
@@ -1773,6 +1776,109 @@ class Vector(Socket):
         node = Node('Radial Tiling', {'Vector': self, 'Sides': sides, 'Roundness': roundness}, normalize=normalize)
         return node._out
 
+    def list_length(self):
+        """ > Node <&Node List Length>
+
+        **Fixed values**
+
+        | Kind      | Name        | Value      |
+        | --------- | ----------- | ---------- |
+        | Socket    | List        | `self`     |
+        | Parameter | `data_type` | `'VECTOR'` |
+
+        Returns
+        -------
+        Integer
+        """
+        node = Node('List Length', {'List': self}, data_type='VECTOR')
+        return node._out
+
+    def sort_list(self,
+                    selection: Boolean = None,
+                    group_id: Integer = None,
+                    sort_weight: Float = None):
+        """ > Node <&Node Sort List>
+
+        **Fixed values**
+
+        | Kind      | Name          | Value      |
+        | --------- | ------------- | ---------- |
+        | Socket    | List          | `self`     |
+        | Parameter | `socket_type` | `'VECTOR'` |
+
+        Parameters
+        ----------
+        selection : Boolean, optional
+            socket 'Selection' (id: Selection)
+        
+        group_id : Integer, optional
+            socket 'Group ID' (id: Group ID)
+        
+        sort_weight : Float, optional
+            socket 'Sort Weight' (id: Sort Weight)
+        
+
+        Returns
+        -------
+        Vector
+        """
+        node = Node('Sort List', {'List': self, 'Selection': selection, 'Group ID': group_id, 'Sort Weight': sort_weight}, socket_type='VECTOR')
+        return node._out
+
+    def filter_list(self, selection: Boolean = None):
+        """ > Node <&Node Filter List>
+
+        **Fixed values**
+
+        | Kind      | Name          | Value      |
+        | --------- | ------------- | ---------- |
+        | Socket    | List          | `self`     |
+        | Parameter | `socket_type` | `'VECTOR'` |
+
+        Parameters
+        ----------
+        selection : Boolean, optional
+            socket 'Selection' (id: Selection)
+        
+
+        Returns
+        -------
+        Vector
+            peer sockets: inverted_ (Vector)
+
+        """
+        node = Node('Filter List', {'List': self, 'Selection': selection}, socket_type='VECTOR')
+        return node._out
+
+    def get_list_item(self,
+                    index: Integer = None,
+                    structure_type: Literal['AUTO', 'DYNAMIC', 'FIELD', 'GRID', 'LIST', 'SINGLE'] = 'AUTO'):
+        """ > Node <&Node Get List Item>
+
+        **Fixed values**
+
+        | Kind      | Name          | Value      |
+        | --------- | ------------- | ---------- |
+        | Socket    | List          | `self`     |
+        | Parameter | `socket_type` | `'VECTOR'` |
+
+        Parameters
+        ----------
+        index : Integer, optional
+            socket 'Index' (id: Index)
+        
+        structure_type : Literal['Auto', 'Dynamic', 'Field', 'Grid', 'List', 'Single']
+            parameter `structure_type`
+        
+
+        Returns
+        -------
+        Vector
+        """
+        utils.check_enum_arg('Get List Item', 'structure_type', structure_type, 'get_list_item', ('AUTO', 'DYNAMIC', 'FIELD', 'GRID', 'LIST', 'SINGLE'))
+        node = Node('Get List Item', {'List': self, 'Index': index}, socket_type='VECTOR', structure_type=structure_type)
+        return node._out
+
     def clip_grid(self,
                     min_x: Integer = None,
                     min_y: Integer = None,
@@ -1918,6 +2024,29 @@ class Vector(Socket):
 
         """
         node = Node('Grid to Points', {'Grid': self}, data_type='VECTOR')
+        return node._out
+
+    def implicit_conversion(self, socket_idname = 'NodeSocketColor'):
+        """ > Node <&Node Implicit Conversion>
+
+        **Fixed values**
+
+        | Kind      | Name        | Value      |
+        | --------- | ----------- | ---------- |
+        | Socket    | Value       | `self`     |
+        | Parameter | `data_type` | `'VECTOR'` |
+
+        Parameters
+        ----------
+        socket_idname : str
+            parameter `socket_idname`
+        
+
+        Returns
+        -------
+        Vector
+        """
+        node = Node('Implicit Conversion', {'Value': self}, data_type='VECTOR', socket_idname=socket_idname)
         return node._out
 
     def mapping(self,
@@ -2227,7 +2356,12 @@ class Vector(Socket):
         node = Node('Vector Transform', {'Vector': self}, convert_from=convert_from, convert_to=convert_to, vector_type=vector_type)
         return node._out
 
-    def raycast(self, direction: Vector = None, length: Float = None, only_local = False):
+    def raycast(self,
+                    named_sockets: dict = {},
+                    direction: Vector = None,
+                    length: Float = None,
+                    only_local = False,
+                    **sockets):
         """ > Node <&ShaderNode Raycast>
 
         **Fixed values**
@@ -2238,6 +2372,9 @@ class Vector(Socket):
 
         Parameters
         ----------
+        named_sockets : dict, default={}
+            Sockets created with string names
+        
         direction : Vector, optional
             socket 'Direction' (id: Direction)
         
@@ -2247,6 +2384,8 @@ class Vector(Socket):
         only_local : bool
             parameter `only_local`
         
+        sockets : dict, default={}
+            Socket created with python name attributes
 
         Returns
         -------
@@ -2254,12 +2393,12 @@ class Vector(Socket):
             peer sockets: self_hit_ (Float), hit_distance_ (Float), hit_position_ (Vector), hit_normal_ (Vector)
 
         """
-        node = Node('Raycast', {'Position': self, 'Direction': direction, 'Length': length}, only_local=only_local)
+        node = Node('Raycast', {'Position': self, 'Direction': direction, 'Length': length, **named_sockets}, only_local=only_local, **sockets)
         return node._out
 
     @classmethod
     def _create_input_socket(cls,
-        value: object = (0, 0, 0),
+        value: tuple = (0, 0, 0),
         name: str = 'Vector',
         min: float = -3.40282e+38,
         max: float = 3.40282e+38,
@@ -2280,7 +2419,7 @@ class Vector(Socket):
 
         Parameters
         ----------
-        value : object, default=`(0, 0, 0)`
+        value : tuple, default=`(0, 0, 0)`
             Default value
 
         name : str, default=`Vector`
@@ -2320,7 +2459,7 @@ class Vector(Socket):
             Property structure_type in ('AUTO', 'SINGLE')
 
         subtype : str, default=`NONE`
-            Socket sub type in ('NONE', 'PERCENTAGE', 'FACTOR', 'TRANSLATION', 'DIRECTION', 'VELOCITY', 'ACCELERATION', 'EULER', 'XYZ')
+            Socket sub type in ('NONE', 'PIXEL', 'PERCENTAGE', 'FACTOR', 'TRANSLATION', 'DIRECTION', 'VELOCITY', 'ACCELERATION', 'EULER', 'XYZ')
 
 
         Returns
@@ -2337,8 +2476,79 @@ class Vector(Socket):
             default_attribute=default_attribute, default_input=default_input, shape=shape, subtype=subtype)
 
     @classmethod
+    def Pixel(cls,
+        value: tuple = (0, 0, 0),
+        name: str = 'Pixel',
+        min: float = -3.40282e+38,
+        max: float = 3.40282e+38,
+        tip: str = '',
+        panel: str = "",
+        optional_label: bool = False,
+        hide_value: bool = False,
+        hide_in_modifier: bool = False,
+        dimensions: int = 3,
+        default_attribute: str = '',
+        default_input: Literal['VALUE', 'NORMAL', 'POSITION', 'HANDLE_LEFT', 'HANDLE_RIGHT'] = 'VALUE',
+        shape: Literal['AUTO', 'SINGLE'] = 'AUTO',
+         ):
+        """ > Pixel Input
+
+        New <#Vector> input with subtype 'PIXEL'.
+
+        Parameters
+        ----------
+        value : tuple, default=`(0, 0, 0)`
+            Default value
+
+        name : str, default=`Pixel`
+            Input socket name
+
+        min : float, default=`-3.40282e+38`
+            Property min_value
+
+        max : float, default=`3.40282e+38`
+            Property max_value
+
+        tip : str, default=`''`
+            Property description
+
+        panel : str, default=``
+            Panel name
+
+        optional_label : bool, default=`False`
+            Property optional_label
+
+        hide_value : bool, default=`False`
+            Property hide_value
+
+        hide_in_modifier : bool, default=`False`
+            Property hide_in_modifier
+
+        dimensions : int, default=`3`
+            Property dimensions
+
+        default_attribute : str, default=`''`
+            Property default_attribute_name
+
+        default_input : str, default=`'VALUE'`
+            Property default_input in ('VALUE', 'NORMAL', 'POSITION', 'HANDLE_LEFT', 'HANDLE_RIGHT')
+
+        shape : str, default=`'AUTO'`
+            Property structure_type in ('AUTO', 'SINGLE')
+
+
+        Returns
+        -------
+        Vector
+        """
+        return cls(value=value, name=name, min=min, max=max, tip=tip, panel=panel,
+            optional_label=optional_label, hide_value=hide_value, hide_in_modifier=hide_in_modifier,
+            dimensions=dimensions, default_attribute=default_attribute, default_input=default_input,
+            shape=shape, subtype='PIXEL')
+
+    @classmethod
     def Percentage(cls,
-        value: object = (0, 0, 0),
+        value: tuple = (0, 0, 0),
         name: str = 'Percentage',
         min: float = -3.40282e+38,
         max: float = 3.40282e+38,
@@ -2358,7 +2568,7 @@ class Vector(Socket):
 
         Parameters
         ----------
-        value : object, default=`(0, 0, 0)`
+        value : tuple, default=`(0, 0, 0)`
             Default value
 
         name : str, default=`Percentage`
@@ -2409,7 +2619,7 @@ class Vector(Socket):
 
     @classmethod
     def Factor(cls,
-        value: object = (0, 0, 0),
+        value: tuple = (0, 0, 0),
         name: str = 'Factor',
         min: float = -3.40282e+38,
         max: float = 3.40282e+38,
@@ -2429,7 +2639,7 @@ class Vector(Socket):
 
         Parameters
         ----------
-        value : object, default=`(0, 0, 0)`
+        value : tuple, default=`(0, 0, 0)`
             Default value
 
         name : str, default=`Factor`
@@ -2480,7 +2690,7 @@ class Vector(Socket):
 
     @classmethod
     def Translation(cls,
-        value: object = (0, 0, 0),
+        value: tuple = (0, 0, 0),
         name: str = 'Translation',
         min: float = -3.40282e+38,
         max: float = 3.40282e+38,
@@ -2500,7 +2710,7 @@ class Vector(Socket):
 
         Parameters
         ----------
-        value : object, default=`(0, 0, 0)`
+        value : tuple, default=`(0, 0, 0)`
             Default value
 
         name : str, default=`Translation`
@@ -2551,7 +2761,7 @@ class Vector(Socket):
 
     @classmethod
     def Direction(cls,
-        value: object = (0, 0, 0),
+        value: tuple = (0, 0, 0),
         name: str = 'Direction',
         min: float = -3.40282e+38,
         max: float = 3.40282e+38,
@@ -2571,7 +2781,7 @@ class Vector(Socket):
 
         Parameters
         ----------
-        value : object, default=`(0, 0, 0)`
+        value : tuple, default=`(0, 0, 0)`
             Default value
 
         name : str, default=`Direction`
@@ -2622,7 +2832,7 @@ class Vector(Socket):
 
     @classmethod
     def Velocity(cls,
-        value: object = (0, 0, 0),
+        value: tuple = (0, 0, 0),
         name: str = 'Velocity',
         min: float = -3.40282e+38,
         max: float = 3.40282e+38,
@@ -2642,7 +2852,7 @@ class Vector(Socket):
 
         Parameters
         ----------
-        value : object, default=`(0, 0, 0)`
+        value : tuple, default=`(0, 0, 0)`
             Default value
 
         name : str, default=`Velocity`
@@ -2693,7 +2903,7 @@ class Vector(Socket):
 
     @classmethod
     def Acceleration(cls,
-        value: object = (0, 0, 0),
+        value: tuple = (0, 0, 0),
         name: str = 'Acceleration',
         min: float = -3.40282e+38,
         max: float = 3.40282e+38,
@@ -2713,7 +2923,7 @@ class Vector(Socket):
 
         Parameters
         ----------
-        value : object, default=`(0, 0, 0)`
+        value : tuple, default=`(0, 0, 0)`
             Default value
 
         name : str, default=`Acceleration`
@@ -2764,7 +2974,7 @@ class Vector(Socket):
 
     @classmethod
     def Euler(cls,
-        value: object = (0, 0, 0),
+        value: tuple = (0, 0, 0),
         name: str = 'Euler',
         min: float = -3.40282e+38,
         max: float = 3.40282e+38,
@@ -2784,7 +2994,7 @@ class Vector(Socket):
 
         Parameters
         ----------
-        value : object, default=`(0, 0, 0)`
+        value : tuple, default=`(0, 0, 0)`
             Default value
 
         name : str, default=`Euler`
@@ -2835,7 +3045,7 @@ class Vector(Socket):
 
     @classmethod
     def Xyz(cls,
-        value: object = (0, 0, 0),
+        value: tuple = (0, 0, 0),
         name: str = 'Xyz',
         min: float = -3.40282e+38,
         max: float = 3.40282e+38,
@@ -2855,7 +3065,7 @@ class Vector(Socket):
 
         Parameters
         ----------
-        value : object, default=`(0, 0, 0)`
+        value : tuple, default=`(0, 0, 0)`
             Default value
 
         name : str, default=`Xyz`
