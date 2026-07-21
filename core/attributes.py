@@ -109,6 +109,7 @@ class Attribute:
 
         # data type
 
+        self._data_type = None
         self.data_type = data_type
 
     # ----------------------------------------------------------------------------------------------------
@@ -116,7 +117,7 @@ class Attribute:
     # ----------------------------------------------------------------------------------------------------
             
     def __str__(self):
-        return f"<Attribute: {self.geometry}.{self.name}, domain: {self.domain}, type: {self.data_type}>"
+        return f"<Attribute: {self.geometry}.{self.name}, domain: {self.domain_name}, type: {self.data_type}>"
 
     # ----------------------------------------------------------------------------------------------------
     # Error if geometry is not defined
@@ -149,6 +150,7 @@ class Attribute:
     def _get_geo_domain(cls, value):
 
         from .geometry_class import Geometry
+        from .domain_class import Domain
 
         geometry = None
         domain_name = None
@@ -156,7 +158,7 @@ class Attribute:
         if value is None:
             return None, None
 
-        elif hasattr(value, 'DOMAIN_NAME'):
+        elif isinstance(value, Domain):
             geometry = value._geo
             domain_name = value.DOMAIN_NAME.title()
 
@@ -199,6 +201,7 @@ class Attribute:
             
     @property
     def domain(self):
+        raise Exception(f"Attribute.domain is write only. {self}")
         return None
         
     @domain.setter
@@ -221,20 +224,24 @@ class Attribute:
 
         if value is None:
             return None
-
-        dt = SocketType.get_data_type_for_node(value, 'GeometryNodeStoreNamedAttribute')
         
+        dt = SocketType.get_data_type_for_node(value, 'GeometryNodeStoreNamedAttribute')
+
         for i, data_type in enumerate(list(Attribute.DT_SET.values())):
             if data_type == dt:
                 return list(Attribute.DT_SET.keys())[i]
         
-        return None    
+        return None
     
     @property
-    def ensure_data_type(self):
-        if self.data_type is None:
-            self.data_type = 'Float'
-        return self.data_type
+    def data_type(self):
+        if self._data_type is None:
+            self._data_type = 'Float'
+        return self._data_type
+    
+    @data_type.setter
+    def data_type(self, value):
+        self._data_type = self._get_data_type(value)
     
     # ====================================================================================================
     # Setting and getting
@@ -251,7 +258,7 @@ class Attribute:
         if self._value is None:
             self._value = Node('Named Attribute', 
             {'Name': self.name}, 
-            data_type = Attribute.DT_SET[self.ensure_data_type],
+            data_type = Attribute.DT_SET[self.data_type],
             )._out._lc(self.name)
             
         return self._value
@@ -283,7 +290,8 @@ class Attribute:
             'Selection': selection,
             'Name': self.name,
             'value': value},
-            data_type = Attribute.DT_SET[self.ensure_data_type],
+            domain = self.domain_name,
+            data_type = Attribute.DT_SET[self.data_type],
             )._out
             
         if self.geometry is not None:
@@ -324,6 +332,7 @@ class Attribute:
             self.geometry.rename_attribute(mode='Prefix', old=self.prefix, new=name, overwrite=overwrite)
             self.prefix = name
         else:
+
             if self.prefix is None:
                 new_name = name
             else:

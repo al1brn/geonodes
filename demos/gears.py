@@ -17,17 +17,12 @@ def demo():
 
         mesh = Mesh()
         thickness = Float.Distance(0.4, "Thickness", 0.0)
-        with Panel("Bevel"):
-            bevel = Float.Distance(0.01, "Size", 0.0)
-            bevel_count = Integer(1, "Lines", 0, 16)
-            bevel_shape = Float.Factor(1, "Shape", -1, 1)   
 
         with Layout("Copy to Cyldinder"):
-            n = mesh.points.count
-            circ_count = 2*(1 + bevel_count)
-            cyl = Mesh.Cylinder(vertices=n, radius=1.0, depth=thickness, side_segments=1 + 2*bevel_count)
 
-            circ_index = nd.index // n
+            n = mesh.points.count
+            cyl = Mesh.Cylinder(vertices=n, radius=1.0, depth=thickness, side_segments=1)
+            circ_index = nd.index // 2
 
             pos = mesh.points.sample_index(nd.position, index=nd.index % n)
             x, y, _ = pos.xyz
@@ -35,48 +30,8 @@ def demo():
 
             cyl.points.position = (x, y, z)
 
-        for rep in repeat(bevel_count + 1, mesh=cyl):
+        #cyl.bevel().link_inputs(from_panel="Bevel")
 
-            radius = nd.position.length()
-
-            ag = pi/2 - rep.iteration/(bevel_count + 1) * pi/2
-            br = bevel*ag.cos()
-            bz = bevel*ag.sin()
-
-            r0 = radius - bevel
-            z0 = thickness/2 - bevel
-
-            r = bevel_shape.map_range(-1, 1, radius - bz, r0 + br)
-            z = bevel_shape.map_range(-1, 1, thickness/2 - br, z0 + bz)
-
-            v = nd.position.normalize().scale(r)
-            v = mesh.points.sample_index(v, index=nd.index % n)
-            x, y, _ = v.xyz
-
-            rep.mesh.points[circ_index.equal(rep.iteration)].position = (x, y, z)
-            rep.mesh.points[circ_index.equal(circ_count - 1 - rep.iteration)].position = (x, y, -z)
-
-        mesh = rep.mesh
-
-        with Layout("Null Thickness"):
-            disk = Mesh.Circle(vertices=n, fill_type="N-Gon")
-            disk.position = mesh.points.sample_index(nd.position, index=nd.index)
-
-        mesh.switch(thickness.equal(0.0), disk)
-        mesh.mesh.out()
-
-    # ====================================================================================================
-    # Cylinder with bevel
-    # ====================================================================================================
-
-    with GeoNodes("Cylinder"):
-
-        radius = Float.Distance(1.0, "Radius", 0.1)
-        vertices = Integer(32, "Vertices", 3)
-        depth = Float.Distance(1.0, "Depth", 0.1)
-
-        circ = Mesh.Circle(radius=radius, vertices=vertices)
-        cyl = G().thicken_flat_xy(circ, thickness=depth).link_inputs()
         cyl.out()
 
     # ====================================================================================================
@@ -85,62 +40,104 @@ def demo():
     # Depth 
     # ====================================================================================================
 
-    with GeoNodes("Cylindrical Hole"):
+    with GeoNodes("Dig Mesh"):
 
         mesh = Mesh()
+        keep = Mesh(mesh)
 
+        shape_index = Integer.MenuSwitch({
+                "None" : 0,
+                "Circle" : 1,
+                "Pies" : 2,
+                }, menu=Input("Shape"))
         use_top = Boolean(True, "Top")
         use_bot = Boolean(True, "Bottom")
+
         radius = Float.Distance(0.5, "Radius")
         vertices = Integer(32, "Vertices", 3)
         depth = Float.Distance(0.5, "Depth", tip="Depth from mesh max z")
+        ncuts = Integer(3, "Cuts", 0, 10)
+        inner_radius = Float.Distance(0.1, "Inner Radius", 0.)
 
-        node = mesh.points.attribute_statistic(nd.position.z).node
-        z0 = node.min
-        z1 = node.max
-        hmesh = z1 - z0
+        with Panel("Bevel"):
+            use_bevel = Boolean(True, "Bevel")
+            bev_offset = Float(0.01, "Offset")
+            bev_segments = Integer(1, "Segments", 1, 10)
 
-        with Layout("Hole through the mesh"):
+        with Layout("Dimensions"):
+            node = mesh.points.attribute_statistic(nd.position.z).node
+            z0 = node.min
+            z1 = node.max
+            hmesh = z1 - z0
+
             depth.switch(use_top & use_bot & (depth > hmesh/2), hmesh + 1.0)
+            hcyl = 1. + depth
 
-        with Layout("Base Cylinders"):
-            hcyl = (1.0 + depth)._lc("H Cylinder")
-            cyl = G().cylinder(radius=radius, vertices=vertices, depth=hcyl, shape=1.0).link_inputs()
+        with Layout("Mark Initial vertices"):
+            init_sel = mesh.points.get("Initial", 'Boolean')
+            init_sel.value = True
 
-            bevel = Float.Input("Bevel > Size")
+        with Mesh.IndexSwitch(index=shape_index - 1) as digger:
 
-            hbevel_cyl = (1.0 + bevel)._lc("H Bevel Cylinder")
-            bevel_cyl = G().cylinder(radius=radius + bevel, vertices=vertices, depth=hbevel_cyl, shape=-1.0).link_inputs()
-        
+            cyl = Mesh.Cylinder(radius=radius, vertices=vertices, depth = 1. + depth)
+            cyl.out()
+
+            cube = Mesh.Cube(size = (radius/(ncuts + 5), 2*radius + 1, 2. + depth))
+            ag = pi/ncuts
+            for rep in repeat(ncuts, cyl=cyl):
+
+                cut = Mesh(cube).transform(rotation=(0, 0, ag*rep.iteration))
+
+                rep.cyl = rep.cyl.difference(cut)
+
+            rep.cyl.out()
+
+        with Layout("Remove inner cylinder"):
+            inner_radius = gnmath.min(inner_radius, 0.9*radius)
+            inner_cyl = Mesh.Cylinder(radius=inner_radius, vertices=vertices, depth = 2. + depth)
+
+            digger = Mesh(digger).difference(inner_cyl)
+
         with Layout("Top Hole"):
 
-            with Layout("Main"):
-                top_cyl = Mesh(cyl)
-                top_cyl.offset = 0.0, 0.0, hcyl/2 + z1 - depth
+            top_dig = Mesh(digger)
+            top_dig.offset = 0.0, 0.0, hcyl/2 + z1 - depth
 
-                diff = Mesh(mesh).difference(top_cyl)
-
-            with Layout("Top Bevel"):
-                top_cyl = Mesh(bevel_cyl)
-                top_cyl.offset = 0.0, 0.0, hbevel_cyl/2 + z1 - bevel
-
-                diff = diff.difference(top_cyl)
+            diff = Mesh(mesh).difference(top_dig)
 
             mesh.switch(use_top, diff)
 
         with Layout("Bot Hole"):
-            with Layout("Main"):
-                cyl.offset = 0.0, 0.0, -hcyl/2 + z0 + depth
+            digger.offset = 0.0, 0.0, -hcyl/2 + z0 + depth
 
-                diff = Mesh(mesh).difference(cyl)
-                use_bot &= (depth < hmesh) | use_top.bnot()
-
-            with Layout("Bot Bevel"):
-                bevel_cyl.offset = 0.0, 0.0, -hbevel_cyl/2 + z0 + bevel
-
-                diff = diff.difference(bevel_cyl)
+            diff = Mesh(mesh).difference(digger)
+            use_bot &= (depth < hmesh) | use_top.bnot()
 
             mesh.switch(use_bot, diff)
+
+        with Layout("Bevel"):
+            beveled = Mesh(mesh)[init_sel.value.bnot()].bevel(
+                affect_kind = 'Edges',
+                start_left_offset = bev_offset,
+                start_right_offset = bev_offset,
+                end_left_offset = bev_offset,
+                end_right_offset = bev_offset,
+                miter = False,
+                spread = 0.01,
+            ).link_inputs(from_panel="Bevel")
+            mesh.switch(use_bevel, beveled)
+
+        with Layout("Internal faces"):
+            z = nd.position.z
+            margin = depth*0.01
+            dig_faces = z.equal(z1 - depth, epsilon=margin)
+            dig_faces |= z.equal(z0 + depth, epsilon=margin)
+
+            dig_faces &= nd.normal.z.abs() > 0.9
+
+            mesh.faces.set('Dig', dig_faces)
+
+        mesh.switch(shape_index.equal(0), keep)
 
         mesh.out()
 
@@ -148,7 +145,28 @@ def demo():
     # Gear
     # ====================================================================================================
 
+    GEAR_SIGNATURE = {
+        "Position"      : 'Vector',
+        "Radius"        : 'Float',
+        "Reverse"       : 'Boolean',
+        "Tooth"         : 'Float',
+        "Rotation"      : 'Float',
+        "Height"        : 'Float',
+        "Tooth width"   : 'Float',
+        "Rounded Inner" : 'Float',
+        "Rounded Outer" : 'Float',
+        "Tooth Arc"     : 'Float',
+        "Thickness"     : 'Float',
+    }
+
     with GeoNodes("Gear"):
+
+        simplified = Boolean(False, "Simplified")
+        with Layout("From Gear"):
+            use_other = Boolean(False, "Couple with Gear")
+            other_obj = Object(None, "Gear Object")
+            share_axis = Boolean(False, "Share Axis")
+            other_angle = Float.Angle(0, name="Direction")
 
         with Panel("Rotation"):
             reverse = Boolean(False, "Reverse")
@@ -156,15 +174,64 @@ def demo():
             tooth_phase = Float(0.0, "Phase")
             rotation = Float.Angle(0.0, "Rotation")
 
-        radius = Float.Distance(1.0, "Radius")
-        count = Integer(16, "Count", 4)
-        height = Float.Distance(0.2, "Height")
-        width_fac = Float.Factor(0.25, "Teeth width", 0.0, 1.0)
-        round_fac0 = Float.Factor(0.1, "Rounded Inner", 0, 1)
-        round_fac1 = Float.Factor(0.1, "Rounded Outer", 0, 1)
+        with Panel("Shape"):
+            radius = Float.Distance(1.0, "Radius")
+            #aaa
+            count = Integer(16, "Count", 4)
+            height = Float.Distance(0.2, "Height")
+            width_fac = Float.Factor(0.25, "Tooth Width", 0.0, 1.0)
+            round_fac0 = Float.Factor(0.1, "Rounded Inner", 0, 1)
+            round_fac1 = Float.Factor(0.1, "Rounded Outer", 0, 1)
 
-        h2 = height/2
-        teeth_scale = (tau*radius)/count
+        with Panel("Object"):
+            gear_pos = Vector(0, "Position")
+            thickness = Float(0.3, "Thickness", 0.3)
+            mat = Material(None, "Material")
+            use_smoooth = Boolean(False, "Shade Smooth")
+
+        with Panel("Bevel"):
+            use_bevel = Boolean(True, "Bevel")
+            bev_offset = Float(0.01, "Offset")
+            bev_segments = Integer(1, "Segments", 1, 10)
+
+        with Layout("Other Gear"):
+            other_bundle = other_obj.info().geometry.get_bundle().separate(signature=GEAR_SIGNATURE)
+
+            is_driven = use_other & share_axis.bnot()
+            is_glued = use_other & share_axis
+
+            other_pos = other_bundle.position
+            other_radius = other_bundle.radius
+
+            dist = other_radius + radius
+            delta = (dist*other_angle.cos(), dist*other_angle.sin(), 0)
+
+            gear_pos.switch(is_driven, other_pos + delta)
+            gear_pos.switch(is_glued, other_pos + (0, 0, other_bundle.thickness + gear_pos.z))
+
+            reverse.switch(is_driven, other_bundle.reverse.bnot())
+            reverse.switch(is_glued, other_bundle.reverse)
+
+            tooth.switch(is_glued, 0.)
+            rotation.switch(is_glued, other_bundle.rotation)
+
+            tooth.switch(is_driven, other_bundle.tooth)
+            rotation.switch(is_driven, 0.0)
+
+            height.switch(is_driven, other_bundle.height)
+            width_fac.switch(is_driven, other_bundle.tooth_width)
+            round_fac0.switch(is_driven, other_bundle.rounded_inner)
+            round_fac1.switch(is_driven, other_bundle.rounded_outer)
+            other_tooth_arc = other_bundle.tooth_arc
+
+            n = ((radius*tau)/other_tooth_arc).to_integer()
+            count.switch(is_driven, n)
+
+            thickness.switch(is_driven, other_bundle.thickness)
+
+        with Layout("Dims"):
+            h2 = height/2
+            teeth_scale = (tau*radius)/count
 
         with Layout("Initial Circle"):
             total = count*4
@@ -192,7 +259,6 @@ def demo():
             nbh_pos = gear.points.sample_index(nd.position, index=neighbour)
             seg_center = (nd.position + nbh_pos)*0.5
             seg_vector = nd.position - nbh_pos
-            #seg_dir = seg_vector.normalize()
 
         with Layout("Inner segments must have the same size"):
             seg_length = seg_vector.length()._lc("Segment Length")
@@ -201,7 +267,7 @@ def demo():
 
             gear[sel_outer].position = seg_center + (nd.position - seg_center).scale(inner_length/outer_length)
 
-        with Layout("Teeth Width"):
+        with Layout("Tooth Width"):
             gear.position = seg_center + (nd.position - seg_center).scale(width_fac*4)
 
         with Layout("Rounding"):
@@ -221,38 +287,66 @@ def demo():
             circ = Mesh.Circle(vertices=n)
             circ.position = gear.resample(count=n).points.sample_index(nd.position, index=nd.index)
 
-            gear = G().thicken_flat_xy(circ).link_inputs()
+            simplified &= nd.is_viewport
+            circ.switch(simplified, Mesh.Circle(radius=radius))
 
-            with Panel("Hole"):
-                gear = G().cylindrical_hole(
-                    gear,
-                    top = Boolean(True, "Top"),
-                    bottom = Boolean(True, "Bottom"),
-                    radius = Float.Factor(1.0, "Radius", 0, 1)*(radius - height),
-                    vertices = Integer(32, "Vertices", 3),
-                    depth = Float.Distance(0.1, "Depth", tip="Depth from mesh max z"),
-                    bevel_size = Float.Input("Bevel > Size"),
-                    bevel_lines = Integer.Input("Bevel > Lines"),
-                    )
-                
+            gear = G().thicken_flat_xy(circ, thickness=thickness).link_inputs()
+
+        with Layout("Bevel"):
+            beveled = Mesh(gear)
+            for i in range(2):
+                sel = nd.position.z > thickness/4 if i == 0 else nd.position.z < -thickness/4
+                beveled[sel].bevel(
+                    affect_kind = 'Edges',
+                    start_left_offset = bev_offset,
+                    start_right_offset = bev_offset,
+                    end_left_offset = bev_offset,
+                    end_right_offset = bev_offset,
+                    miter = False,
+                    spread = 0.01,
+                ).link_inputs(from_panel="Bevel")
+
+            gear.switch(use_bevel & simplified.bnot(), beveled)
+
+        with Layout("Dig"):
+            digged = G().dig_mesh(gear).link_inputs(from_panel="Object > Shape")
+            gear.switch_false(simplified, digged)
+
         with Layout("Rotation"):
             tooth_angle = tau/count
 
             angle = tooth*tooth_angle + rotation
-            #angle.switch(reverse, -angle)
-            gear.transform(rotation=(0, 0, tooth_phase*tooth_angle + Float.Switch(reverse, angle, -angle)))
+            act_rotation = tooth_phase*tooth_angle + Float.Switch(reverse, angle, -angle)
+            gear.transform(translation=gear_pos, rotation=(0, 0, act_rotation))
 
             actual_tooth = angle/tooth_angle
 
         with Layout("Finalize"):
-            gear.faces.shade_smooth = Boolean(False, "Shade Smooth")
-            gear.faces.material = Material(name="Material")
+            gear.faces.shade_smooth = use_smoooth
+            gear.faces.material = mat
+
+        with Bundle() as bdl:
+            gear_pos.out("Position")
+            radius.out("Radius")
+            reverse.out("Reverse")
+            actual_tooth.out("Tooth")
+            angle.out("Rotation")
+
+            height.out("Height")
+            width_fac.out("Tooth width")
+            round_fac0.out("Rounded Inner")
+            round_fac1.out("Rounded Outer")
+
+            (radius*tau/count).out("Tooth Arc")
+            thickness.out("Thickness")
+
+        gear.set_bundle(bdl)
 
         gear.out()
-        actual_tooth.out("Tooth")
-        tooth_angle.out("Tooth Angle")
-        (tau*radius/count).out("Tooth Length")
-        angle.out("Rotation")
+
+
+
+    return
 
     with GeoNodes("Gears Demo"):
 

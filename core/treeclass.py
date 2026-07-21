@@ -675,6 +675,7 @@ class Tree:
                         current = None
 
                         mod_vals = self._mod_vals.get(mod_name)
+                        
                         if mod_vals is not None:
                             current = mod_vals.get(bsock.identifier, None)
 
@@ -682,8 +683,6 @@ class Tree:
                             current = isock.default_value
 
                         mod_input = getattr(mod.properties.inputs, bsock.identifier)
-
-                        print(f"SETTING MENU: {bsock.identifier=}, {current=}, {isock.default_value=}")
 
                         try:
                             mod_input.value = current
@@ -705,14 +704,15 @@ class Tree:
                     if mod_vals is None:
                         continue
 
-                    if bsock.identifier not in mod_vals:
-                        continue             
+                    # Nothing to do if identifier exists
+                    if bsock.identifier in mod_vals:
+                        continue
 
+                    # Nen identifier : let's set the default value
                     mod_input = getattr(mod.properties.inputs, bsock.identifier)
                     if not hasattr(mod_input, 'value'):
                         continue
 
-                    # At last
                     try:
                         mod_input.value = isock.default_value
                     except Exception as e:

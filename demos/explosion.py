@@ -537,7 +537,9 @@ def demo():
 
             mesh.switch(solidify, solidified)
 
-        mesh = G().cone_split(mesh=mesh).link_inputs(from_panel="Fracture")
+        #mesh = G().cone_split(mesh=mesh).link_inputs(from_panel="Fracture")
+        print("CONE SPLIT NOT FOUND")
+        mesh = Mesh.Cone()
 
         max_speed = Float(1., "Max Speed")
 

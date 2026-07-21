@@ -1227,7 +1227,10 @@ class TreeInterface:
 
         """
         for prop in self.socket_props[isocket.socket_type]:
-            setattr(isocket, prop, getattr(from_isocket, prop))
+            try:
+                setattr(isocket, prop, getattr(from_isocket, prop))
+            except Exception as e:
+                print(f"CAUTION: error when copying interface socket '{isocket.name}' property {prop}, ({getattr(from_isocket, prop)})")
     
     # ====================================================================================================
     # Input and output geometry

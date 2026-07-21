@@ -124,13 +124,23 @@ class Geometry(generated.Geometry, Geom):
         attr.geometry = self
         return attr
     
+    def set(self, name, value, domain=None):
+        from .attributes import Attribute
+
+        if isinstance(name, Attribute):
+            attr = Attribute(name.name, value, domain=domain, prefix=name.prefix)
+        else:
+            attr = self.get(name, value, domain=domain)
+            
+        attr.set(value)
+        return attr
+
+    
     def get_attribute_names(self, data_type=None, domain=None):
         from .attributes import Attribute
 
         _, dn = Attribute._get_geo_domain(domain)
         dt = Attribute._get_data_type(data_type)
-
-        print("?????", data_type, domain, '->', dt, dn)
 
         ok_dt = dt is not None
         ok_dn = dn is not None

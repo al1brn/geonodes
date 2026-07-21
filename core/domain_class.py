@@ -174,7 +174,21 @@ class Domain(Geom, NodeCache):
 
     def get(self, name, data_type=None, prefix=None):
         from .attributes import Attribute
+
         attr = Attribute(name, data_type=data_type, domain=self, prefix=prefix)
+
+        return attr
+    
+    def set(self, name, value):
+        from .attributes import Attribute
+
+        if isinstance(name, Attribute):
+            attr = Attribute(name.name, value, domain=self, prefix=name.prefix)
+        else:
+            attr = self.get(name, value)
+
+        attr.set(value)
+
         return attr
     
     def get_attribute_names(self, data_type=None):
@@ -264,7 +278,7 @@ class Domain(Geom, NodeCache):
 
         #node._set_items('capture_items', **attrs)
         self._jump(node._out)
-        return node.socket_by_index('OUTPUT', 1)
+        return node.socket_by_index('OUTPUT', 2)
 
     # ----------------------------------------------------------------------------------------------------
     # Capture a single attribute
