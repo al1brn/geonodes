@@ -35,8 +35,6 @@ __author__ = "Alain Bernard"
 __email__  = "lesideesfroides@gmail.com"
 __copyright__ = "Copyright (c) 2025, Alain Bernard"
 __license__ = "GNU GPL V3"
-__version__ = "5.1.0"
-
 # Set / unset to debug somewhere in the package
 GLOBAL_DEBUG = False
 
@@ -221,5 +219,4 @@ SPEC_ENUM_PARAMS = {
         'Triangles'               : 'TRI',
     },
 }
-
 

@@ -97,7 +97,7 @@ d270   = np.pi*1.5
 d360   = tau
 e      = np.e
 
-from .core import PRODUCTION
+from .core import PRODUCTION, __version__, blender_version
 
 if PRODUCTION:
     
@@ -131,4 +131,7 @@ if PRODUCTION:
     from .core import treearrange
     treearrange.register()
 
-    print(f"geonodes: Geometry nodes with python for Blender version {core.version}")
+    print(
+        f"geonodes {__version__}: Geometry Nodes with Python "
+        f"for Blender version {'.'.join(map(str, blender_version))}"
+    )

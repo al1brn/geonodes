@@ -12,7 +12,12 @@ d270   = np.pi*1.5
 d360   = tau
 e      = np.e
 
-version = "5.1.0"
+__version__ = "5.2.0"
+
+# Backward-compatible alias. The package version is defined only by __version__.
+version = __version__
+
+from .constants import blender_version
 
 PRODUCTION = True
 
@@ -96,6 +101,5 @@ if PRODUCTION:
     GEOMETRY_CLASSES['GreasePencil'] = GreasePencil
     GEOMETRY_CLASSES['Volume']       = Volume
     
-
 
 

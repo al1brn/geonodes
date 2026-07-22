@@ -2,7 +2,7 @@
 
 ![geonodes](docs/getting_started/images/bandeau.png)
 
-> Last supported Blender version : ***Blender V5.1***
+> Last supported Blender version : ***Blender V5.2***
 
 **Geometry Nodes** is a powerful **Blender** feature allowing the creation of amazing 3D models.
 However, nodes trees can rapidly look like a _spaghetti plate_ difficult to understand and to maintain;
@@ -77,4 +77,3 @@ with GeoNodes("Hello World"):
 The generated nodes are shown below:
 
 <img src="docs/getting_started/images/hello_world_nodes.png" width="600" class="center">
-
