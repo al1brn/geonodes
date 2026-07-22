@@ -72,24 +72,12 @@ class SND:
 
     @classmethod
     def menu(cls, menu = None):
-        """ > Node <&Node Menu Switch>
+        """ > Node <&Node Menu>
 
         Parameters
         ----------
-        named_sockets : dict, optional
-            sockets to create default={}.
-
         menu : Socket | str, optional
             socket to plug in default=None.
-
-        default_value : str | int
-            default value
-
-        data_type : str, default=None
-            data type, auto if None
-
-        sockets : dict
-            items
 
         """
         if menu is None:
@@ -3692,4 +3680,3 @@ class SND:
 # Create one single instance to access properties
 
 snd = SND()
-
