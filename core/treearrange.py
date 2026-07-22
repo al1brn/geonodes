@@ -49,6 +49,7 @@ import bpy
 from .constants import NODE_INFO
 
 X_SEPA = 60
+MAX_X_SEPA = 200
 Y_SEPA = 40
 
 ZONE_INPUTS  = ['GeometryNodeRepeatInput',  'GeometryNodeSimulationInput',  'GeometryNodeForeachGeometryElementInput',  'Closure Input']
@@ -487,6 +488,19 @@ class Item:
 
         ncols = len(cols)
 
+        # The rightmost column drives the vertical arrangement, unless it is
+        # only made of reroutes. In that case, use the first real column on
+        # its left as the driver.
+        driver_col = 0
+        while driver_col < ncols:
+            driver_nodes = [node for node in self.children if node.col == driver_col]
+            if any(not node.is_reroute for node in driver_nodes):
+                break
+            driver_col += 1
+
+        if driver_col == ncols:
+            driver_col = 0
+
         # ===========================================================================
         # STEP 2 - Compute the rows
         # ===========================================================================
@@ -513,7 +527,7 @@ class Item:
             # Rows of rightmost column
             # ---------------------------------------------------------------------------
 
-            if i_col == 0:
+            if i_col == driver_col:
                 # Rightmost colum order
                 # First : Output
                 # If reroute
@@ -540,7 +554,7 @@ class Item:
             # Rows of other columns
             # ---------------------------------------------------------------------------
 
-            else:
+            elif i_col > driver_col:
                 def order(node):
                     for i_right, right_node in enumerate(columns[i_col - 1]):
                         rank = right_node.input_rank(node)
@@ -548,8 +562,11 @@ class Item:
                             return i_right*1000 + rank
 
                     return len(columns[i_col - 1])*1000
-                
+
                 column = sorted(column, key=order)
+
+            # Reroute-only columns located on the right of the driver are
+            # presentation columns. Their vertical placement is deferred.
 
             # ---------------------------------------------------------------------------
             # Append the column sorted by its row
@@ -558,10 +575,10 @@ class Item:
             for i_node, node in enumerate(column):
                 node.row = i_node
 
-                if i_col == 0:
+                if i_col == driver_col:
                     node.arrange(right_column = right_column)
 
-                if i_col > 0:
+                if i_col > driver_col:
                     node.arrange(right_column = columns[i_col-1])
 
                     for right_node in columns[i_col - 1]:
@@ -597,7 +614,6 @@ class Item:
                     y = min(y, node.first_right.y)
 
                 node.location = (x - node.width/2, y)
-                #node.location = (x, y)
 
                 y -= node.height/2 + Y_SEPA
 
@@ -608,15 +624,21 @@ class Item:
                 max_width = max(col_width, col_widths[icol+1])
             else:
                 max_width = col_width
-            sepa = round(max(X_SEPA, 0.1*max_width))
+            sepa = round(min(MAX_X_SEPA, max(X_SEPA, 0.1*max_width)))
             x -= sepa
 
         # ---------------------------------------------------------------------------
         # Align vertically to the first left node
         # ---------------------------------------------------------------------------
 
-        for col, prev_col in zip(columns[:-1], columns[1:]):
+        for i_col, (col, prev_col) in enumerate(zip(columns[:-1], columns[1:])):
             for i_node, node in enumerate(col):
+                # Output reroutes, located on the right of the driving
+                # column, are positioned in the final pass below. Input
+                # reroutes on the left keep the general alignment algorithm.
+                if i_col < driver_col and node.is_reroute:
+                    continue
+
                 for prev in prev_col:
                     if prev.name in node.items_in:
                         offset = prev.y - node.y
@@ -626,6 +648,84 @@ class Item:
                                 pass
                         break
 
+        # Arrange output reroutes last, from the final position of the first
+        # real block in the driving column.
+        if driver_col > 0 and len(columns[driver_col]):
+            anchor_y = columns[driver_col][0].y
+            for col in columns[:driver_col]:
+                y = anchor_y
+                for node in col:
+                    node.y = y
+                    y -= node.height/2 + Y_SEPA
+
+        # Bring a small source block closer to its sole target when that
+        # target is in the immediately adjacent column on the right.
+        candidates = []
+        for col in columns:
+            for node in col:
+                if node.is_reroute or len(node.items_out) != 1:
+                    continue
+
+                target = self.get_node(next(iter(node.items_out)))
+                if target.is_reroute:
+                    continue
+                if target.col != node.col - 1:
+                    continue
+                if node.height > target.height:
+                    continue
+
+                node.x = target.x - node.width/2 - X_SEPA
+                candidates.append((node, target))
+
+        def move_towards_target(node, target, upward):
+            """Move node vertically towards target without collisions."""
+
+            new_y = target.y
+            if upward:
+                if new_y <= node.y:
+                    return
+            elif new_y >= node.y:
+                return
+
+            node_left  = node.x
+            node_right = node.x + node.width/2
+
+            obstacles = []
+            for other in self.children:
+                if other in (node, target) or other.is_reroute:
+                    continue
+
+                other_left  = other.x
+                other_right = other.x + other.width/2
+                if node_left >= other_right or node_right <= other_left:
+                    continue
+
+                # Forbidden interval for the top of node, including the
+                # requested vertical margin around the obstacle.
+                lower = other.y - other.height/2 - Y_SEPA
+                upper = other.y + Y_SEPA + node.height/2
+                obstacles.append((lower, upper))
+
+            changed = True
+            while changed:
+                changed = False
+                for lower, upper in obstacles:
+                    if lower < new_y < upper:
+                        new_y = lower if upward else upper
+                        changed = True
+
+            if upward:
+                node.y = max(node.y, new_y)
+            else:
+                node.y = min(node.y, new_y)
+
+        # Bottom-up pass: lower blocks whose sole target is below them.
+        for node, target in sorted(candidates, key=lambda item: item[0].y):
+            move_towards_target(node, target, upward=False)
+
+        # Top-down pass: raise blocks whose sole target is above them.
+        for node, target in sorted(candidates, key=lambda item: item[0].y, reverse=True):
+            move_towards_target(node, target, upward=True)
 
 # ====================================================================================================
 # A Node
@@ -1947,6 +2047,7 @@ def register():
     except:
         pass
 
+
 def unregister():
     try:
         #bpy.utils.unregister_class(RemoveReroutesOperator)
@@ -1960,4 +2061,3 @@ def unregister():
         del bpy.types.Scene.arrange_single_input
     except:
         pass
-

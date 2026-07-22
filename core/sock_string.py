@@ -164,6 +164,49 @@ class String(generated.String):
                 s = "Text with \t and \n"
                 s = String(s).replace(_t, "TAB").replace(_n, "LINE_BREAK")
                 Boolean(True).info(s)
+
+            with Layout("Operators"):
+                s = String("String")
+                Boolean(True).info("Prefix " + s)
+                s += " suffix"
+                Boolean(True).info(s)
+                s *= ("A", "B", "C")
+                Boolean(True).info(s)
+
+            with Layout("Compare and Search"):
+                s = String("Geometry Nodes")
+                s.equal("Geometry Nodes").bnot().warning("Equal strings expected")
+                s.not_equal("Geometry Nodes").warning("Equal strings expected")
+                s.find("Nodes").not_equal(9).warning("'Nodes' expected at position 9")
+                s.find_in_string("o", mode="From End").not_equal(10).warning("Last 'o' expected at position 10")
+                s.hash_value(seed=0).out()
+
+            with Layout("Slice and Length"):
+                s = String("Geometry Nodes")
+                part = s.slice(position=9, length=5)
+                part.not_equal("Nodes").warning("'Nodes' expected")
+                s.length().not_equal(14).warning("String length 14 expected")
+
+            with Layout("String Operations"):
+                s = String("  Geometry Nodes  ")
+                Boolean(True).info(s.trim(whitespace=True, start=True, end=True))
+                Boolean(True).info(s.reverse())
+                Boolean(True).info(s.lower())
+                Boolean(True).info(s.upper())
+                Boolean(True).info(s.set_case("Uppercase"))
+
+                parts = String("one/two/three").split("/")
+                parts.list_length().not_equal(3).warning("Three strings expected")
+
+                String("Geometry Nodes").tag_filter("Geometry").info("Tag filter matched")
+
+            with Layout("Class Format"):
+                s = String.Format(format="Float: {:.2f}, Integer: {}", float=3.14159, integer=123)
+                Boolean(True).info(s)
+
+            with Layout("String to Curves"):
+                _curves = String("Geometry Nodes").to_curves(size=1.)
+                g += _curves
                 
             g.out()
         

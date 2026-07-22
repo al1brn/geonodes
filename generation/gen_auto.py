@@ -100,6 +100,172 @@ def build_manual_cross_ref(cross):
         'signature'         : signature,
         }]
 
+    # ----- Closure to list
+
+    node_info = NodeInfo.Load("Closure to List", tree_type=tree_type)
+    node_cross = cross.setdefault(node_info.bnode.bl_idname, {})
+    node_cross.setdefault('Closure', []).append({
+        'func_name'         : 'to_list',
+        'returns'           : 'OUT',
+        'signature'         : '(self, count=None, signature=None, **sockets)',
+    })
+
+    # ----- Field to list
+
+    node_info = NodeInfo.Load("Field to List", tree_type=tree_type)
+    node_cross = cross.setdefault(node_info.bnode.bl_idname, {})
+    node_cross.setdefault('Socket', []).extend([{
+        'func_name'         : 'field_to_list',
+        'returns'           : 'OUT',
+        'signature'         : '(self, count, **values)',
+    }, {
+        'func_name'         : 'to_list',
+        'returns'           : 'OUT',
+        'signature'         : '(self, count=None)',
+    }])
+
+    # ----- Combine XYZ
+
+    node_info = NodeInfo.Load("Combine XYZ", tree_type=tree_type)
+    node_cross = cross.setdefault(node_info.bnode.bl_idname, {})
+    node_cross.setdefault('Vector', []).append({
+        'func_name'         : 'FromList',
+        'is_classmethod'    : True,
+        'returns'           : 'OUT',
+        'signature'         : '(cls, value)',
+    })
+
+    # ----- Separate XYZ
+
+    node_info = NodeInfo.Load("Separate XYZ", tree_type=tree_type)
+    node_cross = cross.setdefault(node_info.bnode.bl_idname, {})
+    node_cross.setdefault('Vector', []).append({
+        'func_name'         : 'separate_to_list',
+        'returns'           : 'OUT',
+        'signature'         : '(self)',
+    })
+
+    # ----- Combine Matrix
+
+    node_info = NodeInfo.Load("Combine Matrix", tree_type=tree_type)
+    node_cross = cross.setdefault(node_info.bnode.bl_idname, {})
+    node_cross.setdefault('Matrix', []).append({
+        'func_name'         : 'FromList',
+        'is_classmethod'    : True,
+        'returns'           : 'OUT',
+        'signature'         : '(cls, value)',
+    })
+
+    # ----- Separate Matrix
+
+    node_info = NodeInfo.Load("Separate Matrix", tree_type=tree_type)
+    node_cross = cross.setdefault(node_info.bnode.bl_idname, {})
+    node_cross.setdefault('Matrix', []).append({
+        'func_name'         : 'separate_to_list',
+        'returns'           : 'OUT',
+        'signature'         : '(self)',
+    })
+
+    # ----- Combine Color
+
+    node_info = NodeInfo.Load("Combine Color", tree_type=tree_type)
+    node_cross = cross.setdefault(node_info.bnode.bl_idname, {})
+    node_cross.setdefault('Color', []).append({
+        'func_name'         : 'FromList',
+        'is_classmethod'    : True,
+        'returns'           : 'OUT',
+        'signature'         : "(cls, value, mode='RGB')",
+    })
+
+    # ----- Separate Color
+
+    node_info = NodeInfo.Load("Separate Color", tree_type=tree_type)
+    node_cross = cross.setdefault(node_info.bnode.bl_idname, {})
+    node_cross.setdefault('Color', []).append({
+        'func_name'         : 'separate_to_list',
+        'returns'           : 'OUT',
+        'signature'         : "(self, mode='RGB')",
+    })
+
+    # ----- Euler to Rotation
+
+    node_info = NodeInfo.Load("Euler to Rotation", tree_type=tree_type)
+    node_cross = cross.setdefault(node_info.bnode.bl_idname, {})
+    node_cross.setdefault('Rotation', []).append({
+        'func_name'         : 'FromList',
+        'is_classmethod'    : True,
+        'returns'           : 'OUT',
+        'signature'         : '(cls, value)',
+    })
+
+    # ----- Rotation to Euler
+
+    node_info = NodeInfo.Load("Rotation to Euler", tree_type=tree_type)
+    node_cross = cross.setdefault(node_info.bnode.bl_idname, {})
+    node_cross.setdefault('Rotation', []).append({
+        'func_name'         : 'separate_to_list',
+        'returns'           : 'OUT',
+        'signature'         : '(self)',
+    })
+
+    # ----- Attribute helper
+
+    node_info = NodeInfo.Load("Named Attribute", tree_type=tree_type)
+    node_cross = cross.setdefault(node_info.bnode.bl_idname, {})
+    node_cross.setdefault('Attribute', []).extend([{
+        'func_name'         : 'get',
+        'returns'           : 'OUT',
+        'signature'         : '(self)',
+    }, {
+        'func_name'         : 'value',
+        'is_get'            : True,
+        'returns'           : 'OUT',
+        'signature'         : '',
+    }])
+
+    # ----- Store named attribute
+
+    # Domain.set and Geometry.set are implemented manually, so they don't go
+    # through NodeInfo.source_code and must be added to the generated cross
+    # reference explicitly. Keep the automatically generated implementations
+    # (store_named_attribute, store, store_uv, ...).
+    node_info = NodeInfo.Load("Store Named Attribute", tree_type=tree_type)
+    node_cross = cross.setdefault(node_info.bnode.bl_idname, {})
+
+    node_cross.setdefault('Domain', []).append({
+        'func_name'         : 'set',
+        'returns'           : 'Attribute',
+        'signature'         : '(self, name, value)',
+    })
+    node_cross.setdefault('Geometry', []).append({
+        'func_name'         : 'set',
+        'returns'           : 'Attribute',
+        'signature'         : '(self, name, value, domain=None)',
+    })
+    node_cross.setdefault('Attribute', []).extend([{
+        'func_name'         : 'set',
+        'returns'           : 'Attribute',
+        'signature'         : '(self, value=None, domain=None)',
+    }, {
+        'func_name'         : 'value',
+        'is_set'            : True,
+        'signature'         : '',
+    }])
+
+    node_info = NodeInfo.Load("Remove Named Attribute", tree_type=tree_type)
+    node_cross = cross.setdefault(node_info.bnode.bl_idname, {})
+    node_cross.setdefault('Attribute', []).append({
+        'func_name'         : 'remove',
+        'signature'         : '(self, all=False)',
+    })
+
+    node_info = NodeInfo.Load("Rename Attribute", tree_type=tree_type)
+    node_cross = cross.setdefault(node_info.bnode.bl_idname, {})
+    node_cross.setdefault('Attribute', []).append({
+        'func_name'         : 'rename',
+        'signature'         : '(self, name, prefix=False, overwrite=None)',
+    })
+
     # ----- Zones
 
     cross['GeometryNodeForeachGeometryElementInput'] = {'Domain': [{
@@ -726,6 +892,3 @@ def build_implement_dict():
         print(f"{sname:28s}:", "[{}],")
     print("}")
     print()
-
-
-

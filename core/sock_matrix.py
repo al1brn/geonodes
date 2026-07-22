@@ -116,6 +116,57 @@ class Matrix(generated.Matrix):
         names = [f"Column {c} Row {r}" for c in range(1, 5) for r in range(1, 5)]
         return Node('Combine Matrix', dict(zip(names, a)))._out
 
+    @classmethod
+    def FromList(cls, value):
+        """ > Constructor node <&Node Combine Matrix>
+
+        Create a matrix from the first sixteen items of a Float list. Items
+        are connected column by column, with the four rows of each column in
+        succession.
+
+        ``` python
+        components = Float.List(*range(16))
+        matrix = Matrix.FromList(components)
+        ```
+
+        Parameters
+        ----------
+        value : Float
+            List containing the sixteen matrix components.
+
+        Returns
+        -------
+        Matrix
+            Matrix built from the list items.
+        """
+        with Layout("Matrix.FromList"):
+            return value.to_node_inputs(Node("Combine Matrix"))._out
+
+    def separate_to_list(self):
+        """ > Node <&Node Separate Matrix>
+
+        Separate the matrix into its sixteen components and collect them into
+        a Float list. Components are ordered column by column, with the four
+        rows of each column in succession.
+
+        This is a shortcut combining <!Matrix#separate_matrix> with
+        <!Node#_outputs_to_list>.
+
+        ``` python
+        components = matrix.separate_to_list()
+
+        column_1_row_1 = components[0]
+        column_4_row_4 = components[15]
+        ```
+
+        Returns
+        -------
+        Float
+            List containing the sixteen matrix components.
+        """
+        with Layout("Matrix.separate_to_list"):
+            return self.separate_matrix()._outputs_to_list()
+
     # ====================================================================================================
     # Operations
     # ====================================================================================================
@@ -198,4 +249,3 @@ class Matrix(generated.Matrix):
             g.out()
  
                 
-

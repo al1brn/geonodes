@@ -196,7 +196,7 @@ class Sockets:
                 continue
 
             return socket
-        
+
         return None
     
     def __getitem__(self, index) -> Socket:
@@ -447,7 +447,7 @@ class Node:
             self._items['OUTPUT'] = self._bnode.output_items
 
         assert not (self._use_interface and self._has_items), f"Stange Node [{self._bnode.name}] with interface and items."
-        
+
         # ----------------------------------------------------------------------------------------------------
         # Set the sockets
         # ----------------------------------------------------------------------------------------------------
@@ -458,11 +458,12 @@ class Node:
 
         if bl_idname == 'GeometryNodeMenuSwitch':
             menu_value = None
-            for name, value in {**named_sockets, **sockets}.items():
-                if name.lower() == 'menu':
-                    menu_value = value
-                    continue
-                self.set_input_socket(name, value)
+            for socket_values, python_name in ((named_sockets, False), (sockets, True)):
+                for name, value in socket_values.items():
+                    if name.lower() == 'menu':
+                        menu_value = value
+                        continue
+                    self.set_input_socket(name, value, python_name=python_name)
 
             if menu_value is not None:
                 self.set_input_socket("Menu", menu_value)
@@ -472,23 +473,25 @@ class Node:
 
         elif bl_idname == 'GeometryNodeIndexSwitch':
             index_value = None
-            for name, value in {**named_sockets, **sockets}.items():
-                if name.lower() == 'index':
-                    index_value = value
-                    continue
-                self.set_input_socket(name, value)
+            for socket_values, python_name in ((named_sockets, False), (sockets, True)):
+                for name, value in socket_values.items():
+                    if name.lower() == 'index':
+                        index_value = value
+                        continue
+                    self.set_input_socket(name, value, python_name=python_name)
 
             if index_value is not None:
                 self.set_input_socket("Index", index_value)
 
         else:
-            for name, value in {**named_sockets, **sockets}.items():
-                # In specific case the socket must be ignored
-                # example : Alpha socket for Shader Combine Colore
-                if isinstance(name, str) and utils.snake_case(name) in constants.IGNORED_SOCKETS.get(self._bnode.bl_idname, ()):
-                    continue
+            for socket_values, python_name in ((named_sockets, False), (sockets, True)):
+                for name, value in socket_values.items():
+                    # In specific case the socket must be ignored
+                    # example : Alpha socket for Shader Combine Colore
+                    if isinstance(name, str) and utils.snake_case(name) in constants.IGNORED_SOCKETS.get(self._bnode.bl_idname, ()):
+                        continue
 
-                self.set_input_socket(name, value)
+                    self.set_input_socket(name, value, python_name=python_name)
 
         # ----------------------------------------------------------------------------------------------------
         # Register the node
@@ -1479,7 +1482,9 @@ class Node:
             name    : str | int, 
             value   : Any, 
             create  : bool = True, 
-            panel   : str="", **props):
+            panel   : str="",
+            python_name : bool = False,
+            **props):
         """ Set a value to an input socket.
 
         If name is None (for instance when called by Socket.out()):
@@ -1499,6 +1504,10 @@ class Node:
 
         panel : str, optional
             creation panel default="".
+
+        python_name : bool, optional
+            Whether ``name`` comes from a Python keyword. Underscores are
+            replaced by spaces only when a dynamic socket is created.
 
         props : dict
             additional properties (ignored)
@@ -1522,7 +1531,8 @@ class Node:
             sockets = []
             # Reversed for join strings !
             for v in reversed(value):
-                sockets.append(self.set_input_socket(name, v, create=False, panel=panel))
+                sockets.append(self.set_input_socket(
+                    name, v, create=False, panel=panel, python_name=python_name))
             return sockets
         
         # ====================================================================================================
@@ -1642,6 +1652,9 @@ class Node:
         # ---------------------------------------------------------------------------
 
         if socket is None:
+
+            if python_name and isinstance(name, str):
+                name = name.replace('_', ' ')
 
             if utils.get_bsocket(value) is not None and SocketType(value) == SocketType(utils.get_bsocket(value)):
                 return self.create_from_socket('INPUT', value, name=name, panel=panel, **props)
@@ -1773,6 +1786,134 @@ class Node:
                 self._geo_classes[bsocket.name] = Geometry
             else:
                 self._geo_classes[bsocket.name] = type(value)
+
+    # ====================================================================================================
+    # Output sockets to list
+    # ====================================================================================================
+
+    def _outputs_to_list(self, *names, data_type='Float', return_names=False):
+        """Collect node outputs into a list.
+
+        The selected outputs are stored in the order in which they appear on
+        the node. When ``names`` is empty, all outputs matching ``data_type``
+        are collected.
+
+        ``` python
+        separate = Node('Separate XYZ', vector=vector)
+
+        # List containing X, Y and Z
+        components = separate._outputs_to_list(data_type='Float')
+
+        # List containing X and Z, plus their names
+        components, names = separate._outputs_to_list(
+            'X', 'Z',
+            data_type='Float',
+            return_names=True,
+        )
+        ```
+
+        Parameters
+        ----------
+        names : str
+            Optional names of the outputs to collect.
+
+        data_type : str, default='Float'
+            Type of the outputs to collect.
+
+        return_names : bool, default=False
+            Also return a String list containing the selected socket names.
+
+        Returns
+        -------
+        Socket or tuple(Socket, String)
+            List of output values, optionally followed by the list of their
+            names.
+
+        Raises
+        ------
+        NodeError
+            If the node has no output matching both ``names`` and
+            ``data_type``.
+        """
+
+        from .sockettype import SocketType
+        from .sock_string import String
+
+        socket_type = SocketType(data_type).type
+
+        sock_values = []
+        sock_names = []
+        all_socks = []
+        for bsock in self._bnode.outputs:
+
+            all_socks.append(bsock.name)
+
+            if bsock.type != socket_type:
+                continue
+
+            if len(names) and bsock.name not in names:
+                continue
+
+            sock_values.append(self._to_socket(bsock))
+            sock_names.append(bsock.name)
+
+        if not len(sock_values):
+            raise NodeError(f"Impossible to build a list of '{socket_type}' from Node {self} outputs.\n" +
+                            f"- names args : {names}\n" +
+                            f"- sockets : {all_socks}")
+
+        val_list = sock_values[0].List(*sock_values)
+        if return_names:
+            name_list = String.List(*sock_names)
+            return val_list, name_list
+        else:
+            return val_list
+
+    def _list_to_inputs(self, *names, socket_list=None):
+        """Feed node inputs with successive items from a list socket.
+
+        When ``names`` is empty, all inputs whose type matches the list item
+        type are used. Otherwise, only the named inputs are used. Inputs keep
+        their order on the node.
+
+        Parameters
+        ----------
+        names : str
+            Optional names of the inputs to feed.
+
+        socket_list : Socket
+            List whose successive items are connected to the selected inputs.
+
+        Returns
+        -------
+        Node
+            This node.
+        """
+        socket_type = SocketType(socket_list).type
+
+        input_sockets = []
+        all_socks = []
+        for bsock in self._bnode.inputs:
+
+            all_socks.append(bsock.name)
+
+            if bsock.type != socket_type:
+                continue
+
+            if len(names) and bsock.name not in names:
+                continue
+
+            input_sockets.append(bsock)
+
+        if not len(input_sockets):
+            raise NodeError(f"Impossible to feed inputs of type '{socket_type}' on Node {self}.\n" +
+                            f"- names args : {names}\n" +
+                            f"- sockets : {all_socks}")
+
+        for index, bsock in enumerate(input_sockets):
+            self._tree.link(socket_list[index], bsock)
+
+        return self
 
     # ====================================================================================================
     # Signature

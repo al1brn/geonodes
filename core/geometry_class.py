@@ -118,6 +118,37 @@ class Geometry(generated.Geometry, Geom):
     # ====================================================================================================
 
     def get(self, name, data_type=None, domain=None, prefix=None):
+        """Return a helper for a named attribute on this geometry.
+
+        > Node <&Node Named Attribute>
+
+        The returned <!Attribute> stores the geometry, attribute name, data
+        type and domain. No node is created until the attribute is read or
+        written. Reading the attribute creates the node.
+
+        ``` python
+        mesh = Mesh()
+        weight = mesh.get("Weight", Float, domain="Point")
+        field = weight.value
+        ```
+
+        Parameters
+        ----------
+        name : str
+            Name of the attribute.
+        data_type : type | str | value, optional
+            Attribute socket type, for example ``Float``, ``Integer`` or
+            ``Vector``. The default is ``Float``.
+        domain : str | Domain, optional
+            Domain on which the attribute is stored. The default is ``Point``.
+        prefix : str, optional
+            Prefix prepended to the attribute name.
+
+        Returns
+        -------
+        Attribute
+            Named-attribute helper attached to this geometry.
+        """
         from .attributes import Attribute
 
         attr = Attribute(name, data_type=data_type, domain=domain, prefix=prefix)
@@ -125,6 +156,33 @@ class Geometry(generated.Geometry, Geom):
         return attr
     
     def set(self, name, value, domain=None):
+        """Store a named attribute on this geometry.
+
+        > Node <&Node Store Named Attribute>
+
+        This is the direct counterpart of ``get()`` when a helper does not
+        need to be kept. The value determines the attribute data type.
+
+        ``` python
+        mesh = Mesh()
+        attr = mesh.set("Weight", 1.0, domain="Point")
+        mesh.set("Direction", (0, 0, 1), domain="Face")
+        ```
+
+        Parameters
+        ----------
+        name : str
+            Name of the attribute to create or update.
+        value : value | Socket
+            Constant or field stored in the attribute.
+        domain : str | Domain, optional
+            Domain on which to store the attribute. The default is ``Point``.
+
+        Returns
+        -------
+        Attribute
+            Helper representing the stored attribute.
+        """
         from .attributes import Attribute
 
         if isinstance(name, Attribute):
@@ -137,6 +195,33 @@ class Geometry(generated.Geometry, Geom):
 
     
     def get_attribute_names(self, data_type=None, domain=None):
+        """Return the names of attributes available on this geometry.
+
+        > Node <&Node Get Attribute Names>
+
+        Supplying ``data_type`` or ``domain`` enables the corresponding filter
+        on the node. Leaving an argument unset disables that filter.
+
+        ``` python
+        mesh = Mesh()
+
+        names = mesh.get_attribute_names()
+        vector_names = mesh.get_attribute_names(Vector)
+        face_vectors = mesh.get_attribute_names(Vector, domain="Face")
+        ```
+
+        Parameters
+        ----------
+        data_type : type | str | value, optional
+            Restrict the result to this attribute data type.
+        domain : str | Domain, optional
+            Restrict the result to this geometry domain.
+
+        Returns
+        -------
+        String
+            String socket containing the matching attribute names.
+        """
         from .attributes import Attribute
 
         _, dn = Attribute._get_geo_domain(domain)

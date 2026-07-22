@@ -80,6 +80,7 @@ nav:
         - Layer: api/layer.md
 
     - Utilities:
+        - Attribute: api/attribute.md
         - gnmath module: api/gnmath.md
         - nd module: api/nd.md
         - snd module: api/snd.md

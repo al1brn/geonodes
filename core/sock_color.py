@@ -42,6 +42,7 @@ __version__ = "3.0.0"
 __blender_version__ = "4.3.0"
 
 from .nodeclass import Node, ColorRamp, NodeCurves
+from .treeclass import Layout
 from .  import generated
 
 # =============================================================================================================================
@@ -125,6 +126,64 @@ class Color(generated.Color):
         Color
         """
         return ColorRamp(fac=fac, stops=stops)._out
+
+    @classmethod
+    def FromList(cls, value, mode='RGB'):
+        """ > Constructor node <&Node Combine Color>
+
+        Create a color from the items of a Float list, interpreted according
+        to ``mode``. Components are connected in the order exposed by the
+        node, followed by Alpha when that input is available.
+
+        ``` python
+        rgba = Float.List(0.2, 0.4, 0.8, 1.0)
+        color = Color.FromList(rgba)
+
+        hsva = Float.List(0.6, 0.75, 0.8, 1.0)
+        color = Color.FromList(hsva, mode='HSV')
+        ```
+
+        Parameters
+        ----------
+        value : Float
+            List containing the color components.
+
+        mode : {'RGB', 'HSV', 'HSL'}, default='RGB'
+            Color space used to interpret the first three components.
+
+        Returns
+        -------
+        Color
+            Color built from the list items.
+        """
+        with Layout("Color.FromList"):
+            return value.to_node_inputs(Node("Combine Color", mode=mode))._out
+
+    def separate_to_list(self, mode='RGB'):
+        """ > Node <&Node Separate Color>
+
+        Separate the color into components and collect them into a Float list.
+        The first three items follow ``mode``; Alpha is appended when exposed
+        by the node.
+
+        ``` python
+        rgba = color.separate_to_list()
+        hsva = color.separate_to_list(mode='HSV')
+        hsla = color.separate_to_list(mode='HSL')
+        ```
+
+        Parameters
+        ----------
+        mode : {'RGB', 'HSV', 'HSL'}, default='RGB'
+            Color space used for the first three components.
+
+        Returns
+        -------
+        Float
+            List containing the separated color components.
+        """
+        with Layout("Color.separate_to_list"):
+            return self.separate(mode=mode)._outputs_to_list()
 
     # ====================================================================================================
     # Shader
@@ -497,5 +556,3 @@ class Color(generated.Color):
                 g.edges._Textures = c
                 
             g.out()
-
-

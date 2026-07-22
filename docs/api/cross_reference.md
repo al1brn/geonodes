@@ -1194,6 +1194,12 @@ nd.closure_output(cls, active_input_index = 0, active_output_index = 0, define_s
 
 > `bl_idname` : GeometryNodeClosureToList
 
+### class Closure
+
+```python
+Closure.to_list(self, count=None, signature=None, **sockets)
+```
+
 ### nd
 
 ``` python
@@ -1367,6 +1373,12 @@ nd.combine_bundle(cls, named_sockets: dict = {}, define_signature = False, **soc
 
 > `bl_idname` : ShaderNodeCombineColor
 
+### class Color
+
+```python
+Color.FromList(cls, value, mode='RGB')
+```
+
 ### class Float
 
 ```python
@@ -1424,6 +1436,10 @@ Matrix.Combine(cls,
                     column_4_row_4: Float = None)
 ```
 
+```python
+Matrix.FromList(cls, value)
+```
+
 ### nd
 
 ``` python
@@ -1476,6 +1492,10 @@ nd.combine_transform(cls,
 
 ```python
 Vector.CombineXYZ(cls, x: Float = None, y: Float = None, z: Float = None)
+```
+
+```python
+Vector.FromList(cls, value)
 ```
 
 ### nd
@@ -3131,6 +3151,10 @@ nd.environment_texture(cls,
 Rotation.FromEuler(cls, euler: Vector = None)
 ```
 
+```python
+Rotation.FromList(cls, value)
+```
+
 ### class Vector
 
 ```python
@@ -3742,10 +3766,14 @@ nd.field_to_grid(cls,
 
 > `bl_idname` : GeometryNodeFieldToList
 
-### class Integer
+### class Socket
 
 ```python
-Integer.field_to_list(self, named_sockets: dict = {}, **sockets)
+Socket.field_to_list(self, count, **values)
+```
+
+```python
+Socket.to_list(self, count=None)
 ```
 
 ### nd
@@ -5070,7 +5098,7 @@ nd.hair_bsdf(cls,
 ```python
 Curve.handle_type_selection(cls,
                     handle_type: Literal['FREE', 'AUTO', 'VECTOR', 'ALIGN'] = 'AUTO',
-                    mode = {'LEFT', 'RIGHT'})
+                    mode = {'RIGHT', 'LEFT'})
 ```
 
 ### nd
@@ -5078,7 +5106,7 @@ Curve.handle_type_selection(cls,
 ``` python
 nd.handle_type_selection(cls,
                     handle_type: Literal['FREE', 'AUTO', 'VECTOR', 'ALIGN'] = 'AUTO',
-                    mode = {'LEFT', 'RIGHT'})
+                    mode = {'RIGHT', 'LEFT'})
 ```
 
 ## Hash Value
@@ -7968,6 +7996,16 @@ Matrix.Named(cls, name: String = None)
 Matrix.NamedAttribute(cls, name: String = None)
 ```
 
+### class Attribute
+
+```python
+Attribute.get(self)
+```
+
+```python
+prop = Attribute.value
+```
+
 ### nd
 
 ``` python
@@ -8984,6 +9022,12 @@ nd.refraction_bsdf(cls,
 Geometry.remove_named_attribute(self, pattern_mode: Literal['Exact', 'Wildcard'] = None, name: String = None)
 ```
 
+### class Attribute
+
+```python
+Attribute.remove(self, all=False)
+```
+
 ### nd
 
 ``` python
@@ -9005,6 +9049,12 @@ Geometry.rename_attribute(self,
                     old: String = None,
                     new: String = None,
                     overwrite: Boolean = None)
+```
+
+### class Attribute
+
+```python
+Attribute.rename(self, name, prefix=False, overwrite=None)
 ```
 
 ### nd
@@ -9283,6 +9333,10 @@ nd.rotation_to_axis_angle(cls, rotation: Rotation = None)
 
 ```python
 Rotation.to_euler(self)
+```
+
+```python
+Rotation.separate_to_list(self)
 ```
 
 ### nd
@@ -9936,6 +9990,10 @@ Color.separate_col_HSL(self)
 Color.separate_col(self, mode: Literal['RGB', 'HSV', 'HSL'] = 'RGB')
 ```
 
+```python
+Color.separate_to_list(self, mode='RGB')
+```
+
 ### snd
 
 ``` python
@@ -10113,6 +10171,10 @@ prop = Matrix.column_4_row_3
 prop = Matrix.column_4_row_4
 ```
 
+```python
+Matrix.separate_to_list(self)
+```
+
 ### nd
 
 ``` python
@@ -10175,6 +10237,10 @@ prop = Vector.y
 
 ```python
 prop = Vector.z
+```
+
+```python
+Vector.separate_to_list(self)
 ```
 
 ### nd
@@ -10542,7 +10608,7 @@ nd.set_handle_positions(cls,
 ```python
 Curve.set_handle_type(self,
                     handle_type: Literal['FREE', 'AUTO', 'VECTOR', 'ALIGN'] = 'AUTO',
-                    mode = {'LEFT', 'RIGHT'})
+                    mode = {'RIGHT', 'LEFT'})
 ```
 
 ```python
@@ -10576,7 +10642,7 @@ nd.set_handle_type(cls,
                     curve: Curve = None,
                     selection: Boolean = None,
                     handle_type: Literal['FREE', 'AUTO', 'VECTOR', 'ALIGN'] = 'AUTO',
-                    mode = {'LEFT', 'RIGHT'})
+                    mode = {'RIGHT', 'LEFT'})
 ```
 
 ## Set ID
@@ -11862,6 +11928,28 @@ GreasePencil.layers.store_named_attribute(self,
 GreasePencil.layers.store(self,
                     name: String = None,
                     value: Float | Integer | Boolean | Vector | Color | Rotation | Matrix | Integer | Vector | Vector | Color = None)
+```
+
+### class Domain
+
+```python
+Domain.set(self, name, value)
+```
+
+### class Geometry
+
+```python
+Geometry.set(self, name, value, domain=None)
+```
+
+### class Attribute
+
+```python
+Attribute.set(self, value=None, domain=None)
+```
+
+```python
+Attribute.value = value
 ```
 
 ### nd
@@ -13656,4 +13744,3 @@ nd.xpbd_solver(cls,
                     begin: Float = None,
                     end: Float = None)
 ```
-

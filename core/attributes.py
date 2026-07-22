@@ -22,9 +22,9 @@ Scripting Geometry Nodes
 
 module : attributes
 -------------------
-- Attributes
+- Attribute
 
-This class encapsulates geometry attributes methdos
+Helper for reading, transforming and storing named geometry attributes.
 
 updates
 -------
@@ -38,6 +38,92 @@ from .scripterror import NodeError
 # ====================================================================================================
 
 class Attribute:
+    """Helper for a named attribute stored on a geometry.
+
+    ``Attribute`` complements the standard named-attribute methods exposed by
+    geometries and domains. It keeps the attribute name, domain, data type and
+    geometry together, and lets the attribute be used much like a socket in an
+    expression.
+
+    An instance is normally created with ``Domain.get`` or ``Geometry.get``,
+    rather than by calling this constructor directly.
+
+    Typical usage
+    -------------
+    Create a face attribute of type ``Vector`` and store a value:
+
+    ``` python
+        mesh = Mesh()
+        attr = mesh.faces.get("My Vector", Vector)
+        attr.set((0, 0, 1))
+    ```
+
+    The same operation can be written through the ``value`` property. Reading
+    the property creates a Named Attribute node; assigning it creates a Store
+    Named Attribute node:
+
+    ``` python
+        attr = mesh.faces.get("My Vector", Vector)
+
+        vector_field = attr.value
+        attr.value = vector_field.normalize()
+    ```
+
+    Read an existing integer attribute, build an expression and store its
+    cached result:
+
+    ``` python
+        attr = mesh.faces.get("My Integer", Integer)
+        attr = attr ** 2
+        attr = attr + 1
+        attr.set()
+    ```
+
+    Attributes can be combined with sockets, constants, or other attributes.
+    The resulting field remains cached until ``set()`` is called:
+
+    ``` python
+        weight = mesh.points.get("Weight", Float)
+        factor = mesh.points.get("Factor", Float)
+
+        weight = weight * factor + 0.25
+        weight.set()
+    ```
+
+    Non-in-place operators cache their result on the helper. Calling
+    ``set`` without a value stores that cached result. In-place operators
+    write their result to the geometry immediately:
+
+    ``` python
+        attr += 1
+        attr *= 2
+    ```
+
+    Named attributes can also be removed or renamed:
+
+    ``` python
+        attr.rename("My Renamed Integer")
+        attr.remove()
+    ```
+
+    Parameters
+    ----------
+    name : str
+        Name of the attribute.
+    data_type : type | str | value, optional
+        Socket type used to read and store the attribute. For example,
+        ``Float``, ``Integer`` or ``Vector``.
+    domain : str | Domain | Geometry, optional
+        Attribute domain, optionally carrying the geometry on which the
+        attribute is stored. The default domain is ``Point``.
+    prefix : str, optional
+        Prefix prepended to the stored attribute name.
+
+    Notes
+    -----
+    ``Attribute`` represents Geometry Nodes fields; it does not read or modify
+    Blender mesh attribute data directly from Python.
+    """
     
     DOMAINS = {
         'Point'     : 'POINT', 
@@ -76,21 +162,19 @@ class Attribute:
         }
     
     def __init__(self, name, data_type=None, domain=None, prefix=None):
-        """ Geometry Attribute helper
+        """Create a named geometry-attribute helper.
 
         Parameters
         ----------
         name : str
-            attribute name
-
-        data_type : str | value
-            attribute data_type
-
-        domain : str | Domain
-            domain where to store the named attribute
-
-        prefix : name prefix
-            name prefix
+            Name of the attribute.
+        data_type : type | str | value, optional
+            Socket type used to read and store the attribute.
+        domain : str | Domain | Geometry, optional
+            Attribute domain and, when supplied by a domain or geometry
+            instance, the geometry on which the attribute is stored.
+        prefix : str, optional
+            Prefix prepended to the stored attribute name.
         """
 
         self._value = None
@@ -252,6 +336,18 @@ class Attribute:
     # ----------------------------------------------------------------------------------------------------
             
     def get(self):
+        """Return the attribute as a Geometry Nodes field socket.
+
+        > Node <&Node Named Attribute>
+
+        The Named Attribute node is created lazily. Its output is cached until
+        ``set`` writes a value and clears the cache.
+
+        Returns
+        -------
+        Socket
+            Field socket containing the named attribute value.
+        """
 
         from .nodeclass import Node
 
@@ -268,6 +364,27 @@ class Attribute:
     # ----------------------------------------------------------------------------------------------------
         
     def set(self, value=None, domain=None):
+        """Store a value in the named attribute.
+
+        > Node <&Node Store Named Attribute>
+
+        If ``value`` is omitted, the result cached by the latest non-in-place
+        operation is stored. In-place operators such as ``+=`` call this method
+        automatically.
+
+        Parameters
+        ----------
+        value : value | Socket, optional
+            Value or field to store. When omitted, use the cached value.
+        domain : str | Domain | Geometry, optional
+            Override the geometry or domain configured on this helper. Passing
+            a ``Domain`` also applies that domain's selection.
+
+        Returns
+        -------
+        Attribute
+            This helper, with its cached value cleared.
+        """
 
         from .nodeclass import Node
 
@@ -303,6 +420,35 @@ class Attribute:
     
     @property
     def value(self):
+        """Read or store the named attribute value.
+
+        Getter
+        ------
+        > Node <&Node Named Attribute>
+
+        Reading ``value`` calls ``get()``. It creates a Named Attribute node
+        when the field is not already cached, then returns its output socket:
+
+        ``` python
+            field = attr.value
+        ```
+
+        Setter
+        ------
+        > Node <&Node Store Named Attribute>
+
+        Assigning ``value`` calls ``set()``. It creates a Store Named Attribute
+        node and updates the geometry attached to this helper:
+
+        ``` python
+            attr.value = field
+        ```
+
+        Returns
+        -------
+        Socket
+            The Named Attribute field socket when the property is read.
+        """
         return self.get()
     
     @value.setter
@@ -314,6 +460,21 @@ class Attribute:
     # ====================================================================================================
 
     def remove(self, all=False):
+        """Remove the named attribute from the geometry.
+
+        > Node <&Node Remove Named Attribute>
+
+        Parameters
+        ----------
+        all : bool, default=False
+            If true and this helper has a prefix, remove every attribute whose
+            name starts with that prefix. Otherwise remove only this attribute.
+
+        Raises
+        ------
+        NodeError
+            If no geometry is attached to the helper.
+        """
         self._check_geometry(f"Impossible to remove named attribute '{self.name}'")
 
         if all and self.prefix is not None:
@@ -326,6 +487,25 @@ class Attribute:
     # ====================================================================================================
 
     def rename(self, name, prefix=False, overwrite=None):
+        """Rename the attribute on the geometry.
+
+        > Node <&Node Rename Attribute>
+
+        Parameters
+        ----------
+        name : str
+            New attribute name, or new prefix when ``prefix`` is true.
+        prefix : bool, default=False
+            Rename all attributes sharing this helper's prefix instead of only
+            the current attribute.
+        overwrite : bool, optional
+            Value passed to the Rename Attribute node's overwrite input.
+
+        Raises
+        ------
+        NodeError
+            If no geometry is attached to the helper.
+        """
         self._check_geometry(f"Impossible to rename attribute '{self.name}'")
 
         if prefix:
@@ -493,6 +673,58 @@ class Attribute:
 
     def __bool__(self):
         raise NodeError(f"Attribute is not a python bool : {self}")
+
+    # ====================================================================================================
+    # Class test
+    # ====================================================================================================
+
+    @classmethod
+    def _class_test(cls):
+
+        from geonodes import GeoNodes, Mesh, Layout, Float, Integer, Vector
+
+        with GeoNodes("Attribute Test"):
+
+            mesh = Mesh()
+
+            # Create attributes and store explicit values.
+            with Layout("Create and set"):
+                direction = mesh.faces.get("My Vector", Vector)
+                direction.set((0, 0, 1))
+
+                weight = mesh.points.get("Weight", Float)
+                weight.value = 0.5
+
+            # Read an attribute as a field, cache operations, then store the
+            # cached result with set().
+            with Layout("Cached operations"):
+                counter = mesh.faces.get("My Integer", Integer)
+                counter = counter**2
+                counter = counter + 1
+                counter.set()
+
+            # In-place operations store their result immediately.
+            with Layout("In-place operations"):
+                counter += 1
+                counter *= 2
+
+            # Attribute helpers can be created from Geometry as well as Domain.
+            with Layout("Geometry helper"):
+                factor = mesh.get("Factor", Float, domain="Face")
+                factor.set(direction.value.length())
+
+            # Rename and remove attributes from the geometry.
+            with Layout("Rename and remove"):
+                temporary = mesh.points.get("Temporary", Float)
+                temporary.set(1.0)
+                temporary.rename("Renamed")
+                temporary.remove()
+
+            # Get Attribute Names with both domain and data-type filters.
+            names = mesh.faces.get_attribute_names(Vector)
+
+            mesh.out()
+            names.out("Face Vector Attributes")
        
 
     

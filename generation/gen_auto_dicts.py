@@ -594,7 +594,7 @@ GEONODES = {
 'Matrix SVD'         :          [{name: 'svd'}],
 'Bone Info'          :          [{}],
 'Cube Grid Topology' :          [{f:'C'}],
-'Field to List'      :          [{}], #{name: 'to_list', self_: 'ITEM', jump: False, klass: ('Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Rotation', 'Matrix', 'String', 'Menu')},],
+'Field to List'      :          [{f: 'MANUAL'}],
 'List Length'        :          [{}],
 'Sort List'          :          [{}],
 'Filter List'        :          [{}],

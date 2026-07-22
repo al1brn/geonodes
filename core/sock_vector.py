@@ -44,6 +44,7 @@ __blender_version__ = "4.3.0"
 
 from . import utils
 from .nodeclass import Node, NodeCurves
+from .treeclass import Layout
 from . import generated
 
 
@@ -106,6 +107,31 @@ class Vector(generated.Vector):
         """
         from .sock_rotation import Rotation
         return Rotation(rotation).to_euler()
+
+    @classmethod
+    def FromList(cls, value):
+        """ > Constructor node <&Node Combine XYZ>
+
+        Create a vector from the first three items of a Float list. The items
+        are connected respectively to the X, Y and Z inputs of the node.
+
+        ``` python
+        components = Float.List(1, 2, 3)
+        vector = Vector.FromList(components)
+        ```
+
+        Parameters
+        ----------
+        value : Float
+            List containing the vector components.
+
+        Returns
+        -------
+        Vector
+            Vector built from the list items.
+        """
+        with Layout("Vector.FromList"):
+            return value.to_node_inputs(Node("Combine XYZ"))._out
 
     # ====================================================================================================
     # Mix
@@ -178,6 +204,34 @@ class Vector(generated.Vector):
         node = NodeCurves('Vector Curves', named_sockets={'Vector': self, 'Fac': fac})
         node.set_curves(curves)
         return node._out
+
+    # ====================================================================================================
+    # To list
+
+    def separate_to_list(self):
+        """ > Node <&Node Separate XYZ>
+
+        Separate the vector into its X, Y and Z components and collect them
+        into a Float list, in that order.
+
+        This is a shortcut combining <!Vector#separate_xyz> with
+        <!Node#_outputs_to_list>.
+
+        ``` python
+        components = vector.separate_to_list()
+
+        x = components[0]
+        y = components[1]
+        z = components[2]
+        ```
+
+        Returns
+        -------
+        Float
+            List containing the X, Y and Z components.
+        """
+        with Layout("Vector.separate_to_list"):
+            return self.separate_xyz()._outputs_to_list()
 
     # ====================================================================================================
     # Operations

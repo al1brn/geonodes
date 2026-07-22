@@ -1,4 +1,4 @@
-# Generated 2026-07-20 17:00:26
+# Generated 2026-07-22 07:37:34
 
 from __future__ import annotations
 from .. sockettype import SocketType
@@ -1138,30 +1138,6 @@ class Integer(Socket):
         Integer
         """
         node = Node('Enable Output', {'Enable': enable, 'Value': self}, data_type='INT')
-        return node._out
-
-    def field_to_list(self, named_sockets: dict = {}, **sockets):
-        """ > Node <&Node Field to List>
-
-        **Fixed values**
-
-        | Kind   | Name  | Value  |
-        | ------ | ----- | ------ |
-        | Socket | Count | `self` |
-
-        Parameters
-        ----------
-        named_sockets : dict, default={}
-            Sockets created with string names
-        
-        sockets : dict, default={}
-            Socket created with python name attributes
-
-        Returns
-        -------
-        None
-        """
-        node = Node('Field to List', {'Count': self, **named_sockets}, **sockets)
         return node._out
 
     def list_length(self):

@@ -173,6 +173,35 @@ class Domain(Geom, NodeCache):
     # ====================================================================================================
 
     def get(self, name, data_type=None, prefix=None):
+        """Return a helper for a named attribute on this domain.
+
+        > Node <&Node Named Attribute>
+
+        The returned <!Attribute> remembers both the geometry and this domain.
+        No node is created until the attribute is read or written. Reading the
+        attribute creates the node.
+
+        ``` python
+        mesh = Mesh()
+        direction = mesh.faces.get("Direction", Vector)
+        field = direction.value
+        ```
+
+        Parameters
+        ----------
+        name : str
+            Name of the attribute.
+        data_type : type | str | value, optional
+            Attribute socket type, for example ``Float``, ``Integer`` or
+            ``Vector``. The default is ``Float``.
+        prefix : str, optional
+            Prefix prepended to the attribute name.
+
+        Returns
+        -------
+        Attribute
+            Named-attribute helper attached to this domain and its geometry.
+        """
         from .attributes import Attribute
 
         attr = Attribute(name, data_type=data_type, domain=self, prefix=prefix)
@@ -180,6 +209,31 @@ class Domain(Geom, NodeCache):
         return attr
     
     def set(self, name, value):
+        """Store a named attribute on this domain.
+
+        > Node <&Node Store Named Attribute>
+
+        The domain is inferred from ``self`` and the value determines the
+        attribute data type.
+
+        ``` python
+        mesh = Mesh()
+        attr = mesh.faces.set("Material Weight", 1.0)
+        mesh.points.set("Direction", (0, 0, 1))
+        ```
+
+        Parameters
+        ----------
+        name : str
+            Name of the attribute to create or update.
+        value : value | Socket
+            Constant or field stored in the attribute.
+
+        Returns
+        -------
+        Attribute
+            Helper representing the stored attribute.
+        """
         from .attributes import Attribute
 
         if isinstance(name, Attribute):
@@ -192,6 +246,30 @@ class Domain(Geom, NodeCache):
         return attr
     
     def get_attribute_names(self, data_type=None):
+        """Return the attribute names available on this domain.
+
+        > Node <&Node Get Attribute Names>
+
+        This domain is automatically used as the node's domain filter.
+        Supplying ``data_type`` additionally enables the data-type filter.
+
+        ``` python
+        mesh = Mesh()
+
+        face_names = mesh.faces.get_attribute_names()
+        vector_names = mesh.faces.get_attribute_names(Vector)
+        ```
+
+        Parameters
+        ----------
+        data_type : type | str | value, optional
+            Restrict the result to this attribute data type.
+
+        Returns
+        -------
+        String
+            String socket containing the matching attribute names.
+        """
         return self._geo.get_attribute_names(data_type=data_type, domain=self)
 
     def __setattr__(self, name, value):

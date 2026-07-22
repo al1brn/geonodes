@@ -42,6 +42,7 @@ __version__ = "3.0.0"
 __blender_version__ = "4.3.0"
 
 from .sockettype import SocketType
+from .treeclass import Layout
 from . import generated
 
 
@@ -78,6 +79,51 @@ class Rotation(generated.Rotation):
     """
 
     SOCKET_TYPE = 'ROTATION'
+
+    # ====================================================================================================
+    # List conversion
+
+    @classmethod
+    def FromList(cls, value):
+        """ > Constructor node <&Node Euler to Rotation>
+
+        Create a rotation from the three components of a Float list.
+
+        ``` python
+        components = Float.List(0.1, 0.2, 0.3)
+        rotation = Rotation.FromList(components)
+        ```
+
+        Parameters
+        ----------
+        value : Float
+            List containing the three rotation components.
+
+        Returns
+        -------
+        Rotation
+            Rotation built from the list items.
+        """
+        from .sock_vector import Vector
+        with Layout("Rotation.FromList"):
+            return Vector.FromList(value).to_rotation()
+
+    def separate_to_list(self):
+        """ > Node <&Node Rotation to Euler>
+
+        Convert the rotation to three components stored in a Float list.
+
+        ``` python
+        components = rotation.separate_to_list()
+        ```
+
+        Returns
+        -------
+        Float
+            List containing the three rotation components.
+        """
+        with Layout("Rotation.separate_to_list"):
+            return self.to_euler().separate_to_list()
 
     # ====================================================================================================
     # Operations

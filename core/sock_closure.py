@@ -323,7 +323,7 @@ class Closure(generated.Closure):
 
         # We are done :-)
         return node._out
-    
+
     # ----------------------------------------------------------------------------------------------------
     # Function call syntax
     # ----------------------------------------------------------------------------------------------------
@@ -333,10 +333,70 @@ class Closure(generated.Closure):
     
 
     # ===============================================s=====================================================
-    # To Lits
+    # To Lists
     # ====================================================================================================
 
     def to_list(self, count = None, signature: Signature = None, **sockets):
+        """Evaluate the closure repeatedly and collect its outputs into lists.
+
+        > Node <&Node Closure to List>
+
+        The closure is evaluated ``count`` times. Each output declared by the
+        closure signature becomes a list output on the Closure to List node.
+        A closure input named ``Index`` can be used inside the closure to obtain
+        the index of the current evaluation.
+
+        When this socket comes directly from a ``Closure`` zone, its signature
+        is inferred automatically. Otherwise, ``signature`` must describe the
+        closure outputs explicitly.
+
+        Create a list containing the first multiples of two:
+
+        ``` python
+        with Closure() as closure:
+            index = Integer(0, "Index")
+            (index * 2).out("Value")
+
+        values = closure.to_list(count=5)
+        values.out("Values")
+        ```
+
+        An explicit signature can be supplied for a closure received through
+        an input socket:
+
+        ``` python
+        closure = Closure(name="Closure")
+        values = closure.to_list(
+            count=10,
+            signature=Signature(outputs={"Value": Float}),
+        )
+        ```
+
+        Parameters
+        ----------
+        count : Integer | int, optional
+            Number of times the closure is evaluated and therefore the length
+            of each resulting list.
+        signature : Signature, optional
+            Closure signature. It is inferred when ``self`` comes from a
+            ``Closure`` zone; otherwise it must be provided.
+        sockets : dict, optional
+            Reserved for future dynamic-socket support. These keyword arguments
+            are currently not used.
+
+        Returns
+        -------
+        Socket
+            First list output of the Closure to List node. If the closure has
+            several outputs, the remaining list sockets are available on the
+            same node.
+
+        Raises
+        ------
+        RuntimeError
+            If no signature is supplied and the closure does not come from a
+            ``Closure`` zone.
+        """
 
         _btree = self._tree._btree
 
@@ -358,7 +418,7 @@ class Closure(generated.Closure):
         node.set_signature('OUTPUT', Signature(signature.outputs))
 
         # We are done :-)
-        return node._out    
+        return node._out
     
     # ===============================================s=====================================================
     # Test
@@ -429,7 +489,3 @@ class Closure(generated.Closure):
                 (fac*pi).out("Tau")
 
             cl3.evaluate(signature=({'Pi': Float, 'Multiplicator': Integer}, {'Tau': Float})).out("Manual Signature")
-                
-              
-            
-    

@@ -60,7 +60,7 @@ from .utils import Break
 from .treeinterface import ItemPath
 from .sockettype import SocketType
 from .treeinterface import TreeInterface
-from .treeclass import Tree
+from .treeclass import Tree, Layout
 from .nodeclass import Node, Group
 from .nodezone import ZoneNode,ZoneIterator
 
@@ -966,9 +966,314 @@ class Socket(NodeCache):
         """ Short cut for 'self.list_length()'
         """
         return self.list_length()
+
+    def field_to_list(self, count, **values):
+        """ > Node <&Node Field to List>
+
+        Create a list from this field and named lists from additional fields.
+
+        Parameters
+        ----------
+        count : Integer
+            Number of items in each generated list.
+
+        values : dict
+            Named fields to evaluate. Each field creates an output socket with
+            the same name.
+
+        Returns
+        -------
+        Socket
+            First list output. The other outputs are available from its node
+            or as peer sockets.
+        """
+        return Node(
+            'Field to List',
+            named_sockets={self._name: self},
+            count=count,
+            **values,
+        )._out
     
     def to_list(self, count=None):
+        """ > Node <&Node Field to List>
+
+        Shortcut for ``self.field_to_list(count)`` when only this field has
+        to be converted to a list.
+
+        Parameters
+        ----------
+        count : Integer, optional
+            Number of items in the generated list.
+
+        Returns
+        -------
+        Socket
+            List containing the values obtained by evaluating this field.
+        """
         return Node('Field to List', named_sockets={self._name: self}, count=count)._out
+
+    def list_append(self, value):
+        """Append a value or another list to this list.
+
+        If ``value`` is a list socket, all its items are appended. Otherwise,
+        ``value`` is converted to the socket type and appended as one item.
+        The socket is updated in place to point to the resulting list.
+
+        ``` python
+        values = Float.List(1, 2, 3)
+        values.list_append(4)
+
+        other = Float.List(5, 6)
+        values.list_append(other)
+        ```
+
+        Parameters
+        ----------
+        value : Any | Socket
+            Single value or list socket to append.
+
+        Returns
+        -------
+        Socket
+            This socket, updated to point to the concatenated list.
+
+        Raises
+        ------
+        NodeError
+            If this socket does not contain a list.
+        """
+
+        from .sock_closure import Closure
+        from .sock_integer import Integer
+
+        if not self._is_list:
+            raise NodeError(f"Socket.list_append error: {self} is not a list.")
+
+        with Layout("Socket.list_append"):
+
+            # Turn the appended value into a closure indexed from zero.
+            in_cl = None
+            if isinstance(value, Socket) and value._is_list:
+                n = value.list_length()
+                with Closure() as cl:
+                    index = Integer(0, "Index")
+                    value[index].out("Value")
+                in_cl = cl
+            else:
+                n = 1
+                with Closure() as cl:
+                    index = Integer(0, "Index")
+                    type(self)(value).out("Value")
+                    index.out() # To avoid warning
+                in_cl = cl
+
+            cur_length = self.list_length()
+
+            # Keep the current items first, then evaluate the appended value.
+            with Closure() as cl:
+                index = Integer(0, "Index")
+
+                v = type(self).Switch(index.less_than(cur_length), 
+                        in_cl.evaluate(index=index-cur_length).value,
+                        self[index]
+                        )
+                v.out(self._name)
+
+            # Replace the wrapped socket while preserving its Python identity.
+            return self._jump(cl.to_list(cur_length + n))
+
+    def flatten_list(self):
+        """Flatten one level of a rectangular nested list.
+
+        Every nested list must have the same length. This is notably the case
+        for lists created by :meth:`reshape_list`. Items keep their original
+        linear order.
+
+        ``` python
+        values = Float.List(*range(16))
+        values.reshape_list((4, 4))
+        values.flatten_list()
+        ```
+
+        Returns
+        -------
+        Socket
+            This socket, updated to point to the flattened list.
+
+        Raises
+        ------
+        NodeError
+            If this socket does not contain a list.
+        """
+
+        if not self._is_list:
+            raise NodeError(f"Socket.flatten_list error: {self} is not a list.")
+
+        from .sock_closure import Closure
+        from .sock_integer import Integer
+
+        with Layout("Socket.flatten_list"):
+
+            source = self
+            outer_length = source.list_length()
+            inner_length = source[0].list_length()
+
+            with Closure() as cl:
+                index = Integer(0, "Index")
+
+                outer_index = index // inner_length
+                inner_index = index % inner_length
+
+                source[outer_index][inner_index].out(self._name)
+
+            self._jump(cl.to_list(outer_length * inner_length))
+            return self
+
+
+    
+    def reshape_list(self, shape):
+        """Reshape a flat list into nested lists.
+
+        ``shape`` defines the length of each list level. Items keep their
+        original linear order.
+
+        ``` python
+        values = Float.List(*range(16))
+        matrix = values.reshape_list((4, 4))
+
+        first  = matrix[0][0]
+        last   = matrix[3][3]
+        ```
+
+        Shapes with more than two dimensions are supported:
+
+        ``` python
+        values = Float.List(*range(24))
+        blocks = values.reshape_list((2, 3, 4))
+        ```
+
+        Dimensions can also be Integer sockets:
+
+        ``` python
+        rows = Integer(name="Rows")
+        table = values.reshape_list((rows, 4))
+        ```
+
+        A single dimension does not require a tuple:
+
+        ``` python
+        values.reshape_list(16)
+        # Equivalent to values.reshape_list((16,))
+        ```
+
+        A one-dimensional shape flattens one existing level of nested lists.
+        A warning is emitted when the resulting length differs from the
+        requested dimension.
+
+        Parameters
+        ----------
+        shape : int | Integer | tuple[int | Integer]
+            Length of every dimension. A single integer is interpreted as a
+            one-dimensional shape. Dimensions must be strictly positive.
+
+        Returns
+        -------
+        Socket
+            This socket, updated to point to the reshaped list.
+
+        """
+
+        if not hasattr(shape, '__len__'):
+            shape = (shape,)
+
+        shape = tuple(shape)
+
+        ok_shape = True
+        for d in shape:
+            if isinstance(d, Socket):
+                oK_shape = False
+        
+        shape_str = f"({shape})" if ok_shape else ""
+
+        from .sock_closure import Closure
+        from .sock_integer import Integer
+        from .sock_string import String
+
+        with Layout(f"Socket.reshape_list{shape_str}"):
+
+            if len(shape) == 1:
+
+                self.flatten_list()
+
+                res_length = self.list_length()
+
+                message = String.Join(
+                    f"{self._name}.reshape_list(" + Integer(shape[0]).to_string() + ")",
+                    "the resulting list length is",
+                    res_length.to_string(),
+                    delimiter = " ",
+                )
+
+                self.list_length().not_equal(shape[0]).warning(message)
+                return self
+
+            dimensions = [Integer(size) for size in shape]
+
+            # ----- Build nested lists
+
+            def build(level, linear_index=None):
+                with Closure() as closure:
+                    index = Integer(0, "Index")
+
+                    if linear_index is None:
+                        next_index = index
+                    else:
+                        next_index = linear_index * dimensions[level] + index
+
+                    if level == len(dimensions) - 1:
+                        value = self[next_index]
+                    else:
+                        value = build(level + 1, next_index)
+
+                    value.out("Value")
+
+                return closure.to_list(count=dimensions[level])
+
+            self._jump(build(0))
+            return self
+
+    def to_node_inputs(self, node, *names):
+        """Connect successive list items to a node's inputs.
+
+        This is the natural socket-oriented shortcut for
+        ``node._list_to_inputs(*names, socket_list=self)``.
+
+        When ``names`` is empty, all node inputs matching the type of the list
+        items are fed, in their order on the node. Otherwise, only the named
+        inputs are used.
+
+        ``` python
+        separate = Node('Separate XYZ', vector=vector)
+        components = separate._outputs_to_list()
+
+        combine = Node('Combine XYZ')
+        components.to_node_inputs(combine)
+        ```
+
+        Parameters
+        ----------
+        node : Node
+            Node whose inputs are to be connected.
+
+        names : str
+            Optional names of the inputs to feed.
+
+        Returns
+        -------
+        Node
+            The target node.
+        """
+        return node._list_to_inputs(*names, socket_list=self)
 
     # ====================================================================================================
     # Owning node
@@ -1959,6 +2264,9 @@ class Socket(NodeCache):
         from .sock_rotation import Rotation
         from .sock_vector import Vector
         from .sock_matrix import Matrix
+        from .sock_bundle import Bundle
+        from .sock_integer import Integer
+        from .generated import nd
 
         Socket._test_socket_to_data_type()
 
@@ -2016,6 +2324,44 @@ class Socket(NodeCache):
                 Matrix([i for i in range(16)]).out(panel="Matrix")
                 Matrix([Float(i) for i in range(16)]).out(panel="Matrix")
 
+        with GeoNodes("List Tests"):
+
+            geo = Geometry()
+
+            with Bundle() as bundle:
+
+                l = Matrix().separate_to_list()
+                l.reshape_list((4, 4))
+                l.reshape_list(16)
+                m = Matrix.FromList(l)
+                m.out()
+
+                l = Vector().separate_to_list()
+                v = Vector.FromList(l)
+                v.out()
+
+                l = Color().separate_to_list()
+                c = Color.FromList(l)
+                c.out()
+
+                l = Rotation().separate_to_list()
+                r = Rotation.FromList(l)
+                r.out()
+
+                l = (nd.index*2.0).to_list(10)
+                l.list_append(22)
+                ol = (nd.index*10.0).to_list(5)
+                l.list_append(ol)
+                l.list_length().not_equal(16).warning("List length 16 expected")
+                l.out()
+
+                Float(6.28*nd.index).field_to_list(Rounds_Count=nd.index, count=10).node.out()
+                Integer.List(*[2**i for i in range(8)]).out("Powers of 2")
+
+
+            geo.set_bundle(bundle)
+            geo.out()
+
 
                 
 
@@ -2066,6 +2412,3 @@ class Input(Socket):
         self.name  = name
         self.panel = panel
         self.props = {**props}
-
-
-

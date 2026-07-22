@@ -725,6 +725,11 @@ class Tree:
         # Check dead ends
         warnings = 0
         if not error:
+            # Socket structures, notably inside nested closures, may still be
+            # unresolved immediately after a link is created. Validate links
+            # only once Blender has inferred the completed tree.
+            for link in self._btree.links:
+                utils.check_link(link)
             warnings = self.check_warnings()
 
         # Remove from stack
@@ -1229,7 +1234,6 @@ class Tree:
 
         link = self._btree.links.new(out_socket, in_socket, handle_dynamic_sockets=handle_dynamic_sockets)
 
-        utils.check_link(link)
         utils.check_zones(self._btree)
 
         return link
@@ -1479,4 +1483,3 @@ class Tree:
             sockets = ", ".join([f"'{sock.name}': {utils.snake_case(sock.name)}" for sock in node.inputs])
             print(f"Node('{node.name}', " + "{" + sockets + "}")
             print()
-

@@ -713,7 +713,11 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                         '= None,\n'
                                                         '                    '
                                                         'column_4_row_4: Float '
-                                                        '= None)'}],
+                                                        '= None)'},
+                                          {'func_name': 'FromList',
+                                           'is_classmethod': True,
+                                           'returns': 'OUT',
+                                           'signature': '(cls, value)'}],
                                'nd': [{'func_name': 'combine_matrix',
                                        'is_classmethod': True,
                                        'is_get': False,
@@ -1031,7 +1035,11 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                'node_name': 'Euler to Rotation',
                                                'returns': 'OUT',
                                                'signature': '(cls, euler: '
-                                                            'Vector = None)'}],
+                                                            'Vector = None)'},
+                                              {'func_name': 'FromList',
+                                               'is_classmethod': True,
+                                               'returns': 'OUT',
+                                               'signature': '(cls, value)'}],
                                  'Vector': [{'func_name': 'to_rotation',
                                              'is_classmethod': False,
                                              'is_get': False,
@@ -1965,6 +1973,9 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                'is_set': False,
                                                'node_name': 'Rotation to Euler',
                                                'returns': 'OUT',
+                                               'signature': '(self)'},
+                                              {'func_name': 'separate_to_list',
+                                               'returns': 'OUT',
                                                'signature': '(self)'}],
                                  'nd': [{'func_name': 'rotation_to_euler',
                                          'is_classmethod': True,
@@ -2338,6 +2349,9 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                             'is_set': False,
                                             'node_name': 'Separate Matrix',
                                             'returns': 'column_4_row_4',
+                                            'signature': '(self)'},
+                                           {'func_name': 'separate_to_list',
+                                            'returns': 'OUT',
                                             'signature': '(self)'}],
                                 'nd': [{'func_name': 'separate_matrix',
                                         'is_classmethod': True,
@@ -3067,7 +3081,12 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                          'argument)',
                                               'signature': '(attribute=None, '
                                                            '**attributes)'}]},
- 'GeometryNodeClosureToList': {'nd': [{'func_name': 'closure_to_list',
+ 'GeometryNodeClosureToList': {'Closure': [{'func_name': 'to_list',
+                                            'returns': 'OUT',
+                                            'signature': '(self, count=None, '
+                                                         'signature=None, '
+                                                         '**sockets)'}],
+                               'nd': [{'func_name': 'closure_to_list',
                                        'is_classmethod': True,
                                        'is_get': False,
                                        'node_name': 'Closure to List',
@@ -3677,8 +3696,8 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                                   "'AUTO',\n"
                                                                   '                    '
                                                                   'mode = '
-                                                                  "{'LEFT', "
-                                                                  "'RIGHT'})"}],
+                                                                  "{'RIGHT', "
+                                                                  "'LEFT'})"}],
                                           'nd': [{'func_name': 'handle_type_selection',
                                                   'is_classmethod': True,
                                                   'is_get': False,
@@ -3695,8 +3714,8 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                                "'AUTO',\n"
                                                                '                    '
                                                                'mode = '
-                                                               "{'LEFT', "
-                                                               "'RIGHT'})"}]},
+                                                               "{'RIGHT', "
+                                                               "'LEFT'})"}]},
  'GeometryNodeCurveLength': {'Curve': [{'func_name': 'length',
                                         'is_classmethod': False,
                                         'is_get': False,
@@ -4229,8 +4248,8 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                          "'AUTO', 'VECTOR', "
                                                          "'ALIGN'] = 'AUTO',\n"
                                                          '                    '
-                                                         "mode = {'LEFT', "
-                                                         "'RIGHT'})"},
+                                                         "mode = {'RIGHT', "
+                                                         "'LEFT'})"},
                                            {'func_name': 'set_left_handle_type',
                                             'is_classmethod': False,
                                             'is_get': False,
@@ -4293,8 +4312,8 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                       "'VECTOR', 'ALIGN'] = "
                                                       "'AUTO',\n"
                                                       '                    '
-                                                      "mode = {'LEFT', "
-                                                      "'RIGHT'})"}]},
+                                                      "mode = {'RIGHT', "
+                                                      "'LEFT'})"}]},
  'GeometryNodeCurveSpiral': {'Curve': [{'func_name': 'Spiral',
                                         'is_classmethod': True,
                                         'is_get': False,
@@ -6457,16 +6476,13 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                   "= 'FLOAT',\n"
                                                   '                    '
                                                   '**sockets)'}]},
- 'GeometryNodeFieldToList': {'Integer': [{'func_name': 'field_to_list',
-                                          'is_classmethod': False,
-                                          'is_get': False,
-                                          'is_jump': False,
-                                          'is_set': False,
-                                          'node_name': 'Field to List',
-                                          'returns': 'OUT',
-                                          'signature': '(self, named_sockets: '
-                                                       'dict = {}, '
-                                                       '**sockets)'}],
+ 'GeometryNodeFieldToList': {'Socket': [{'func_name': 'field_to_list',
+                                         'returns': 'OUT',
+                                         'signature': '(self, count, '
+                                                      '**values)'},
+                                        {'func_name': 'to_list',
+                                         'returns': 'OUT',
+                                         'signature': '(self, count=None)'}],
                              'nd': [{'func_name': 'field_to_list',
                                      'is_classmethod': True,
                                      'is_get': False,
@@ -8839,7 +8855,14 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                                'Neighbors',
                                                   'returns': 'NODE',
                                                   'signature': '(cls)'}]},
- 'GeometryNodeInputNamedAttribute': {'Boolean': [{'func_name': 'Named',
+ 'GeometryNodeInputNamedAttribute': {'Attribute': [{'func_name': 'get',
+                                                    'returns': 'OUT',
+                                                    'signature': '(self)'},
+                                                   {'func_name': 'value',
+                                                    'is_get': True,
+                                                    'returns': 'OUT',
+                                                    'signature': ''}],
+                                     'Boolean': [{'func_name': 'Named',
                                                   'is_classmethod': True,
                                                   'is_get': False,
                                                   'node_name': 'Named '
@@ -11419,7 +11442,10 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                        '                    '
                                                        'realize_to_point_domain '
                                                        '= False)'}]},
- 'GeometryNodeRemoveAttribute': {'Geometry': [{'func_name': 'remove_named_attribute',
+ 'GeometryNodeRemoveAttribute': {'Attribute': [{'func_name': 'remove',
+                                                'signature': '(self, '
+                                                             'all=False)'}],
+                                 'Geometry': [{'func_name': 'remove_named_attribute',
                                                'is_classmethod': False,
                                                'is_get': False,
                                                'is_jump': True,
@@ -11448,7 +11474,11 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                       "'Wildcard'] = None,\n"
                                                       '                    '
                                                       'name: String = None)'}]},
- 'GeometryNodeRenameAttribute': {'Geometry': [{'func_name': 'rename_attribute',
+ 'GeometryNodeRenameAttribute': {'Attribute': [{'func_name': 'rename',
+                                                'signature': '(self, name, '
+                                                             'prefix=False, '
+                                                             'overwrite=None)'}],
+                                 'Geometry': [{'func_name': 'rename_attribute',
                                                'is_classmethod': False,
                                                'is_get': False,
                                                'is_jump': True,
@@ -14289,7 +14319,15 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                        "'EDGE', 'FACE', "
                                                        "'CURVE', 'INSTANCE', "
                                                        "'LAYER'] = 'POINT')"}]},
- 'GeometryNodeStoreNamedAttribute': {'Corner': [{'func_name': 'store_named_attribute',
+ 'GeometryNodeStoreNamedAttribute': {'Attribute': [{'func_name': 'set',
+                                                    'returns': 'Attribute',
+                                                    'signature': '(self, '
+                                                                 'value=None, '
+                                                                 'domain=None)'},
+                                                   {'func_name': 'value',
+                                                    'is_set': True,
+                                                    'signature': ''}],
+                                     'Corner': [{'func_name': 'store_named_attribute',
                                                  'is_classmethod': False,
                                                  'is_get': False,
                                                  'is_jump': True,
@@ -14347,6 +14385,10 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                               'String = None, '
                                                               'value: Vector = '
                                                               'None)'}],
+                                     'Domain': [{'func_name': 'set',
+                                                 'returns': 'Attribute',
+                                                 'signature': '(self, name, '
+                                                              'value)'}],
                                      'Edge': [{'func_name': 'store_named_attribute',
                                                'is_classmethod': False,
                                                'is_get': False,
@@ -14427,6 +14469,11 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                             'Matrix | Integer '
                                                             '| Vector | Vector '
                                                             '| Color = None)'}],
+                                     'Geometry': [{'func_name': 'set',
+                                                   'returns': 'Attribute',
+                                                   'signature': '(self, name, '
+                                                                'value, '
+                                                                'domain=None)'}],
                                      'Instance': [{'func_name': 'store_named_attribute',
                                                    'is_classmethod': False,
                                                    'is_get': False,
@@ -17614,7 +17661,11 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                            '                    clamp_type: '
                                            "Literal['MINMAX', 'RANGE'] = "
                                            "'MINMAX')"}]},
- 'ShaderNodeCombineColor': {'Float': [{'func_name': 'combine_color_RGB',
+ 'ShaderNodeCombineColor': {'Color': [{'func_name': 'FromList',
+                                       'is_classmethod': True,
+                                       'returns': 'OUT',
+                                       'signature': "(cls, value, mode='RGB')"}],
+                            'Float': [{'func_name': 'combine_color_RGB',
                                        'is_classmethod': False,
                                        'is_get': False,
                                        'is_jump': False,
@@ -17681,7 +17732,11 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                       'returns': 'OUT',
                                       'signature': '(cls, x: Float = None, y: '
                                                    'Float = None, z: Float = '
-                                                   'None)'}],
+                                                   'None)'},
+                                     {'func_name': 'FromList',
+                                      'is_classmethod': True,
+                                      'returns': 'OUT',
+                                      'signature': '(cls, value)'}],
                           'nd': [{'func_name': 'combine_xyz',
                                   'is_classmethod': True,
                                   'is_get': False,
@@ -19806,7 +19861,10 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                         'returns': 'NODE',
                                         'signature': '(self, mode: '
                                                      "Literal['RGB', 'HSV', "
-                                                     "'HSL'] = 'RGB')"}],
+                                                     "'HSL'] = 'RGB')"},
+                                       {'func_name': 'separate_to_list',
+                                        'returns': 'OUT',
+                                        'signature': "(self, mode='RGB')"}],
                              'snd': [{'func_name': 'separate_color',
                                       'is_classmethod': True,
                                       'is_get': False,
@@ -19854,6 +19912,9 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                        'is_set': False,
                                        'node_name': 'Separate XYZ',
                                        'returns': 'z',
+                                       'signature': '(self)'},
+                                      {'func_name': 'separate_to_list',
+                                       'returns': 'OUT',
                                        'signature': '(self)'}],
                            'nd': [{'func_name': 'separate_xyz',
                                    'is_classmethod': True,
