@@ -101,38 +101,17 @@ def uv_cylinder():
 def demo():
 
     # ====================================================================================================
+    # Common groups
+    # ====================================================================================================
+
+    from . import common
+    common.load()
+
+    # ====================================================================================================
     # Default Shader for Arrow
     # ====================================================================================================
 
     arrow_shader()
-
-    # ====================================================================================================
-    # Spherical to arrow
-    # ====================================================================================================
-
-    with GeoNodes("Vector Input", is_group=True):
-
-        xyz = Vector((1, 0, 0), "Vector")
-
-        r = Float(1.0, "Radius")
-        theta = Float.Angle(0, "Theta")
-        phi = Float.Angle(0, "Phi")
-        z = Float(0.0, "z")
-
-        with Vector.MenuSwitch(menu=Input("Type")) as V:
-            xyz.out("XYZ")
-
-        with V:
-            cp, sp = phi.cos(), phi.sin()
-            ct, st = theta.cos(), theta.sin()
-            rp = cp*r
-            Vector((rp*ct, rp*st, r*sp)).out("Spherical")
-
-        with V:
-            Vector((r*ct, r*st, z)).out("Cylindrical")
-
-        V.out()
-
 
     # ====================================================================================================
     # Field of arrows
@@ -337,7 +316,7 @@ def demo():
         with Panel("Vector"):
 
             if True:
-                vec = G().vector_input().link_inputs()
+                vec = G()._vector_input().link_inputs()
             else:
                 with Vector.MenuSwitch(default_menu="XYZ", menu=Input("Vector")) as vec:
                     
@@ -463,6 +442,40 @@ def demo():
             arrow.transform(translation=pos, rotation=Rotation().align_to_vector(vector=V, axis='X'))
 
         arrow.out()
+
+
+    # ====================================================================================================
+    # Vector Visualizer
+    # ====================================================================================================
+
+    with GeoNodes("Vector Visualizer"):
+
+        geo = Geometry()
+
+        show = Float.Factor(1., "Show", 0, 1)
+
+        vector = G()._vector_input(geo).link_inputs()
+
+        color = Color("Green", "Color")
+        scale = Float(1.0, "Scale")
+        section = Float(0.01, "Section")
+
+        position = geo.get_bundle().separate(signature={'Position': Vector}).position
+
+        arrow = G().arrow(
+            position = position,
+            color = color,
+            type = 'XYZ',
+            vector = vector.scale(scale),
+            shaft_radius = section,
+            shaft_material = "Arrow",
+            top_head = 'Cone',
+        )
+
+        geo = G()._join_mesh_with_show(geo, arrow, show)
+
+        geo.out()
+
 
 
 

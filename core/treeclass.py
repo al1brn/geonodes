@@ -1130,7 +1130,14 @@ class Tree:
         def_val = props.get('default_value')
         if def_val is not None:
             try:
-                utils.get_bsocket(socket).default_value = def_val
+                bsocket = utils.get_bsocket(socket)
+                if bsocket.type == 'VECTOR' and isinstance(def_val, tuple):
+                    dimensions = len(bsocket.default_value)
+                    def_val = (
+                        def_val[:dimensions]
+                        + (0,) * max(0, dimensions - len(def_val))
+                    )
+                bsocket.default_value = def_val
             except Exception as e:
                 print(f"WARNING Tree.create_input_socket: {str(e)}")
 

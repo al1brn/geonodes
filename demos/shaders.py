@@ -227,3 +227,141 @@ def demo():
         coord = snd.texture_coordinate().object
 
         G().wood_planks_group(vector=coord).out()
+
+    # ====================================================================================================
+    # Basket Ball
+    # ====================================================================================================
+
+    with ShaderNodes("Basket Ball", replace_material=False):
+        
+        
+        with Layout("UV Map"):
+            uv = snd.uv_map(uv_map="UVMap").uv
+            
+            u, v, _ = uv.xyz
+            lat = gnmath.cos((v - 0.5)*pi)
+            
+        with Layout("Skin"):
+            size = 500
+            
+            fac = gnmath.sin(u*size)*gnmath.sin(v*size)
+            fac = fac.map_range(.1, .9, interpolation_type="Smooth Step")
+            
+            orange1 = Color("#D65F0EFF") #D65F0EFF
+            orange2 = Color("#7B381CFF")
+
+            color = orange2.mix(orange1, factor=fac)
+            
+        with Layout("Black Lines"):
+
+            black_color = Color("Black")
+
+            line_width = 0.003
+            softness = 0.5
+
+            lat_safe = lat.max(0.01)
+            outer_width = line_width / lat_safe
+            inner_width = outer_width * (1 - softness)
+
+            def meridian(center):
+
+                delta = abs(u - center)
+
+                # Distance circulaire dans l'intervalle UV [0, 1].
+                # Par exemple, 0.99 est à une distance 0.01 de 0.
+                distance = delta.min(1.0 - delta)
+
+                return distance.map_range(
+                    from_min=inner_width,
+                    from_max=outer_width,
+                    to_min=1.0,
+                    to_max=0.0,
+                    interpolation_type="SMOOTHSTEP",
+                )
+
+            black = meridian(0.00)
+            black = black.max(meridian(0.25))
+            black = black.max(meridian(0.50))
+            black = black.max(meridian(0.75))
+        
+        with Layout("Ellipses"):
+
+            line_width = 0.003
+            softness = 0.5
+
+            def ellipse(center_u):
+
+                radius = 0.125
+                half_height = 0.40
+                roundness = 3 #2.7
+
+                du = abs(u - center_u)
+                du = du.min(1.0 - du)
+
+                du_normalized = du / radius
+                dv_normalized = abs(v - 0.5) / half_height
+
+                distance = radius * (
+                    du_normalized**roundness
+                    + dv_normalized**roundness
+                ) ** (1.0 / roundness)
+
+                outline_distance = abs(distance - radius)
+
+                inner_width = line_width * (1.0 - softness)
+                outer_width = line_width
+
+                return outline_distance.map_range(
+                    from_min=inner_width,
+                    from_max=outer_width,
+                    to_min=1.0,
+                    to_max=0.0,
+                    interpolation_type="SMOOTHERSTEP",
+                )
+
+            ellipse_1 = ellipse(0.0)
+            ellipse_2 = ellipse(0.5)
+
+            black = black.max(ellipse_1)
+            black = black.max(ellipse_2)
+            
+        with Layout("BSDF"):
+            color = color.mix(
+                black_color,
+                factor=black,
+            ) 
+
+            
+            ped = Shader.Principled(
+                base_color = color,
+            )
+            
+            ped.out()
+            
+
+        with Layout("Displacement"):
+
+            # Relief des points orange
+            skin_height = 0.0015
+
+            # Profondeur des rainures noires
+            groove_depth = 0.01
+
+            # Les points orange ressortent.
+            # (1 - black) évite d’ajouter des bosses dans les rainures.
+            skin_displacement = fac * (1.0 - black) * skin_height
+
+            # Les lignes noires sont creusées.
+            groove_displacement = black * groove_depth
+
+            height = skin_displacement - groove_displacement
+
+            disp = snd.displacement(
+                height=height,
+                midlevel=0.0,
+                scale=1.0,
+            )
+
+            disp.out()        
+            
+            

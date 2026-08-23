@@ -240,6 +240,11 @@ def str_to_color_tuple(name: str) -> tuple:
         return None
     
     col = [int(hexa[2*i:2*i+2], 16)/255 for i in range(len(hexa)//2)]
+
+    # Hexadecimal colors exposed by Blender's color picker are sRGB values,
+    # while color sockets store their RGB components in scene-linear space.
+    # Alpha is linear and must not be converted.
+    col[:3] = [linear_rgb(c) for c in col[:3]]
     
     if len(col) == 3:
         col.append(1.)
@@ -350,7 +355,6 @@ class SysColor:
 
         return Color(self.rgb)
     
-
 
 
 

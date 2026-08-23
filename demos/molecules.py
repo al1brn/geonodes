@@ -143,54 +143,6 @@ def demo():
     formula_shader()
 
     # ====================================================================================================
-    # Display Value
-    # ====================================================================================================
-
-    with GeoNodes("Value Display", is_group=True):
-        
-        show = Float.Factor(1.0, "Show", 0, 1)
-        use_string = Boolean(False, "Use String")
-        value = Float(0.0, "Value")
-        decimals = Integer(2, "Decimals", 0, 5)
-        string_value = String("", "String")
-        size = Float(1.0, "Size")
-        mat = Material("Formula", "Material")
-        color = Color("Black", "Color")
-        
-        s = value.to_string(decimals=decimals)
-        s.switch(use_string, string_value)
-
-        try:
-            curves = G().string_to_curves(
-                s,
-                size = size,
-                align_x = Input("X Align"),
-                align_y = Input("Y Align"),
-            )
-        except AttributeError:
-            curves = s.to_curves(
-                size = size,
-                align_x = Input("X Align"),
-                align_y = Input("Y Align"),
-            )
-
-        text = Curve(curves.realize()).fill()
-            
-        text.faces.material = mat
-        text.faces.store_named_attribute("face_color", color)
-        text.faces.Transparency = 1.0 - show
-
-        rot = Rotation.MenuSwitch({
-                'XY' : (0.0, 0.0, 0.0),
-                'XZ' : (pi/2, 0.0, 0.0),
-                'YZ' : (pi/2, 0.0, pi/2),
-            }, menu=Input("Plane"),
-        )
-        text.transform(rotation=rot)
-        
-        text.out()
-
-    # ====================================================================================================
     # A vibrating atom
     # ====================================================================================================
 
@@ -404,6 +356,42 @@ def demo():
             CH4 += a
             
             CH4.out("CH4")
+
+        # ---------------------------------------------------------------------------
+        # Dual
+        # ---------------------------------------------------------------------------
+        
+        with molecule:
+
+            dual = G().atom(
+                show = show,
+                element = "Free",
+                radius = Float(.1, "Radius 1"),
+                color = Color(None, "Color 1"),
+                scale = scale,
+                vibration = vibration,
+                seed = seed,
+                )
+            seed = dual.seed
+            r1 = dual.radius
+
+            atom = G().atom(
+                show = show,
+                element = "Free",
+                radius = Float(.1, "Radius 2"),
+                color = Color(None, "Color 2"),
+                scale = scale,
+                vibration = vibration,
+                seed = seed,
+                )
+            seed = atom.seed
+            r2 = atom.radius
+
+            atom.offset = Rotation(Vector.Random(-pi, pi, seed=seed, id=0)).rotate_vector((r1*1.05, 0, 0))
+            seed += 1
+            dual += atom
+            
+            dual.out("Free")            
             
         molecule.transform(translation=position, rotation=rotation)
         

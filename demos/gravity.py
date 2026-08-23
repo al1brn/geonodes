@@ -59,6 +59,22 @@ from geonodes import *
 
 def demo():
 
+    # ----------------------------------------------------------------------------------------------------
+    # Load Arrows groups
+    # ----------------------------------------------------------------------------------------------------
+
+    if G.get_tree("Arrow") is None:
+        from . import arrows
+        arrows.demo()
+
+    if G.get_tree("Dynamics Visualizer") is None:
+        from . import common
+        common.demo()
+
+    # ----------------------------------------------------------------------------------------------------
+    # Planet Shader
+    # ----------------------------------------------------------------------------------------------------
+
     with ShaderNodes("Planet"):
 
         ped = Shader.Principled(
@@ -84,7 +100,7 @@ def demo():
             coll_radius   = Float.Distance(.1, "Collision radius", .01)
 
         with Panel("Gravity"):
-            G             = Float(1, "G Constant", .001)
+            G_constant    = Float(1, "G Constant", .001)
             max_mass      = Float(100, "Maximum mass", 1, tip="Mass is randomly generated between 1 and max_mass")
             max_speed     = Float(10, "Maximum velocity")
 
@@ -139,7 +155,7 @@ def demo():
 
                 v = center - nd.position
                 r = gnmath.max(v.length(), .01)
-                acc = v.scale(G*M*r**(-3))
+                acc = v.scale(G_constant*M*r**(-3))
                 rep.planets.points[nd.index.not_equal(rep.iteration)].Acceleration = Vector("Acceleration") + acc
 
             planets = Cloud(rep.planets)
@@ -233,3 +249,457 @@ def demo():
         spheres = planets.instance_on(sphere, scale=nd.radius)
 
         spheres.out()
+
+    # ====================================================================================================
+    # Dual system
+    # ====================================================================================================
+
+    # ----------------------------------------------------------------------------------------------------
+    # Constants
+    # ----------------------------------------------------------------------------------------------------
+
+    with GeoNodes(".Gravity Constants", is_group=True, color_tag='Input'):
+        Float(10.0).out("G")
+        Float(1.0).out("Mass")
+
+    # ----------------------------------------------------------------------------------------------------
+    # Dual Computation
+    # ----------------------------------------------------------------------------------------------------
+
+    with GeoNodes("Dual Computation", is_group=True):
+
+        # Constants
+        G_constant = G()._gravity_constants().G
+        M = G_constant.mass
+        GM = G_constant*M
+
+        # Inputs
+
+        V_depth = Float(0.0, "V Depth", 0.0, tip="Potential energy grid depth")
+        
+        with Panel("System"):
+            m_factor = Float.Factor(0.5, "m", 0.01, 0.99, tip="Planet 1 mass")
+            eccentricity = Float(
+                0.5, "Eccentricity", 0.0, 10.0,
+                tip="< 1: ellipse, > 1: hyperbola",
+            )
+            semi_major_axis = Float.Distance(
+                1.0, "Semi-major Axis", 0.01,
+                tip="Semi-major axis magnitude",
+            )
+            clockwise = Boolean(False, "Clockwise")
+            
+        with Closure() as gravitation:
+            
+            time = Float.Time(0.0, "Time", tip="Physical simulation time")
+            index = Integer(0, "Index")
+            motion = Float(0.5, "Motion")
+            V_scale = Float(0.0, "V Scale")
+
+            with Layout("Adjust Parameters"):
+
+                m1 = m_factor*M
+                m2 = M - m1
+
+                ratio1 = m2 / M
+                ellipse = eccentricity.less_than(1.0)
+                e = Float.Switch(
+                    ellipse,
+                    gnmath.max(eccentricity, 1.01),
+                    gnmath.min(eccentricity, 0.99),
+                )
+                a = semi_major_axis
+                direction = Float.Switch(clockwise, 1.0, -1.0)
+
+            with Layout("Conic Parameters"):
+
+                ellipse_b = a * gnmath.max(1.0 - e**2, 0.0).sqrt()
+                hyperbola_b = a * gnmath.max(e**2 - 1.0, 0.0).sqrt()
+                mean_motion = (GM / a**3).sqrt()
+                period = 2.0 * np.pi / mean_motion
+
+            with Layout("Relative Position"):
+
+                mean_anomaly = mean_motion * time
+
+                # Elliptic Kepler equation
+                eccentric_anomaly = mean_anomaly
+                for _ in range(8):
+                    eccentric_anomaly -= (
+                        eccentric_anomaly
+                        - motion * e * eccentric_anomaly.sin()
+                        - mean_anomaly
+                    ) / (
+                        1.0 - motion * e * eccentric_anomaly.cos()
+                    )
+
+                ellipse_position = Vector((
+                    a * (eccentric_anomaly.cos() - e),
+                    direction * ellipse_b * eccentric_anomaly.sin(),
+                    0.0,
+                ))
+
+                # Hyperbolic Kepler equation, blended with uniform anomaly
+                sinh_guess = mean_anomaly / e
+                physical_guess = gnmath.log(
+                    sinh_guess + (sinh_guess**2 + 1.0).sqrt(),
+                    np.e,
+                )
+                hyperbolic_anomaly = (
+                    (1.0 - motion) * mean_anomaly
+                    + motion * physical_guess
+                )
+                for _ in range(8):
+                    sinh_h = hyperbolic_anomaly.sinh()
+                    cosh_h = hyperbolic_anomaly.cosh()
+                    hyperbolic_anomaly -= (
+                        (1.0 - motion) * hyperbolic_anomaly
+                        + motion * (e * sinh_h - hyperbolic_anomaly)
+                        - mean_anomaly
+                    ) / (
+                        (1.0 - motion)
+                        + motion * (e * cosh_h - 1.0)
+                    )
+
+                hyperbola_position = Vector((
+                    a * (e - hyperbolic_anomaly.cosh()),
+                    direction * hyperbola_b * hyperbolic_anomaly.sinh(),
+                    0.0,
+                ))
+
+                relative_position = Vector.Switch(
+                    ellipse,
+                    hyperbola_position,
+                    ellipse_position,
+                )
+
+            with Layout("Relative Velocity"):
+
+                eccentric_anomaly_dot = mean_motion / (
+                    1.0 - e * eccentric_anomaly.cos()
+                )
+
+                ellipse_velocity = Vector((
+                    -a * eccentric_anomaly.sin() * eccentric_anomaly_dot,
+                    direction * ellipse_b * eccentric_anomaly.cos() * eccentric_anomaly_dot,
+                    0.0,
+                ))
+
+                hyperbolic_anomaly_dot = mean_motion / (
+                    e * hyperbolic_anomaly.cosh() - 1.0
+                )
+
+                hyperbola_velocity = Vector((
+                    -a * hyperbolic_anomaly.sinh() * hyperbolic_anomaly_dot,
+                    direction * hyperbola_b * hyperbolic_anomaly.cosh() * hyperbolic_anomaly_dot,
+                    0.0,
+                ))
+
+                relative_velocity = Vector.Switch(
+                    ellipse,
+                    hyperbola_velocity,
+                    ellipse_velocity,
+                )
+
+                relative_acceleration = (
+                    relative_position
+                    * (-GM / relative_position.length()**3)
+                )
+
+            with Layout("Dynamic"):
+
+                ratio2 = m1 / M
+
+                position1 =  relative_position * ratio1
+                position2 = -relative_position * ratio2
+
+                velocity1 =  relative_velocity * ratio1
+                velocity2 = -relative_velocity * ratio2
+
+                acceleration1 =  relative_acceleration * ratio1
+                acceleration2 = -relative_acceleration * ratio2
+
+            with Layout("Potential Energy"):
+                d = (position2 - position1).length()
+                V = -GM / d
+                specific_energy = Float.Switch(
+                    ellipse,
+                    GM/(2.0*a),
+                    -GM/(2.0*a),
+                )
+                specific_kinetic = relative_velocity.length()**2/2.0
+
+            with Layout("Potential Vizualisation"):
+
+                center1 = V_scale.less_than(0)
+                fac = Float.Switch(center1, V_scale, -V_scale)
+                pos = Vector.Switch(center1, position2, position1)
+                x, y, _ = (-pos).xyz
+
+                delta = Vector((x*fac, y*fac, V*V_depth*fac))
+
+                position1 += delta
+                position2 += delta
+
+            with Layout("Index selection"):
+                second = index.equal(1)
+                pos = Vector.Switch(second, position1, position2)
+                vel = Vector.Switch(second, velocity1, velocity2)
+                acc = Vector.Switch(second, acceleration1, acceleration2)
+                mass = Float.Switch(second, m1, m2)
+
+                specific_kinetic.out("Kinetic")
+                V.out("Potential")
+                specific_energy.out("Total Energy")
+
+            pos.out("Position")
+            vel.out("Velocity")
+            acc.out("Acceleration")
+            mass.out("Mass")
+
+            m1.out("m1")
+            m2.out("m2")
+            e.out("Eccentricity")
+            a.out("Semi-major Axis")
+            period.out("Period")
+            V_depth.out("V Depth")
+            
+        gravitation.out("Gravitation")
+        
+        GRAV_SIG = gravitation.get_signature()
+
+    # ----------------------------------------------------------------------------------------------------
+    # Utility    
+    # ----------------------------------------------------------------------------------------------------
+        
+    def eval_gravity(gravitation, time, index, motion, v_scale):
+        return gravitation.evaluate(
+            time        = time, 
+            index       = index, 
+            motion      = motion,
+            v_scale     = v_scale,
+            signature   = GRAV_SIG).node
+
+    # ----------------------------------------------------------------------------------------------------
+    # Dual System
+    # ----------------------------------------------------------------------------------------------------
+
+    with GeoNodes("Dual System"):
+
+        time = Float.Time(0.0, "Time", tip="Physical simulation time")
+        motion = Float.Factor(
+            1.0, "Motion", 0.0, 1.0,
+            tip="0: uniform eccentric anomaly, 1: physical Kepler motion"
+        )
+        V_scale = Float.Factor(0.0, "V Scale", -1, 1)
+        
+        with Panel("Planet 1"):
+            obj1 = Object(name="Object 1")
+
+        with Panel("Planet 2"):
+            obj2  = Object(name="Object 2")
+            
+        grav = G().dual_computation().link_inputs().gravitation
+            
+        with Layout("Visualization"):
+            
+            node1 = eval_gravity(grav, time, 0, motion, V_scale)
+            geo1 = obj1.info().geometry
+            geo1.offset = node1.position
+            
+            node2 = eval_gravity(grav, time, 1, motion, V_scale)
+            geo2 = obj2.info().geometry
+            geo2.offset = node2.position
+            
+            geo = geo1 + geo2
+            
+        with Bundle() as bundle:
+            
+            time.out("Time")
+            grav.out("Gravitation")
+            motion.out("Motion")
+            V_scale.out("V Scale")
+            
+        SYSTEM_SIG = bundle.get_signature()
+            
+        geo.set_bundle(bundle)
+        geo.out()  
+
+    # ----------------------------------------------------------------------------------------------------
+    # Conics
+    # ----------------------------------------------------------------------------------------------------
+
+    with GeoNodes("Dual Conics"):
+
+        # Constants
+        G_constant = G()._gravity_constants().G
+
+        # Inputs
+        geo = Geometry()
+        
+        show_planets = Boolean(True, "Show Planets")
+        
+        with Panel("Conics"):
+            section = Float(0.05, "Section")
+            mat = Material("Arrow", "Material")
+            count = Integer(100, "Resolution", 10, 2000)
+            hyperbola_extent = Float(
+                1.0, "Hyperbola Extent", 0.01, 10.0,
+                tip="Number of pseudo-periods shown on each side of the periapsis",
+            )
+            pot_fac = Float.Factor(0.0, "Stick to potential", 0, 1)
+            
+            show = []
+            color = []
+            for i in range(2):
+                with Panel(f"Conic {i + 1}"):
+                    show.append(Float.Factor(1.0, "Show", 0, 1))
+                    color.append(Color(name="Color"))
+                    
+        with Panel("Potential Energy"):
+            grid_show = Float.Factor(1.0, "Show", 0, 1)
+            grid_cut = Boolean(False, "Cut")
+            grid_size  = Float(10.0, "Size", 1.0)
+            grid_resol = Integer(10, "Resolution", 10, 2000)
+            grid_scale = Float(1.0, "Scale", 0.0)
+            grid_mat = Material(None, "Material")
+
+        with Panel("Total Energy"):
+            total_show = Float.Factor(1.0, "Show", 0, 1)
+            total_cut = Boolean(False, "Cut")
+            total_size = Float(10.0, "Size", 1.0)
+            total_scale = Float(1.0, "Scale", 0.0)
+            total_mat = Material(None, "Material")
+            
+        with Layout("Getting Bundle & Closure"):
+            bundle = geo.get_bundle(remove=True)
+            bundle_node = bundle.separate(signature=SYSTEM_SIG)
+            grav = bundle_node.gravitation
+            V_scale = bundle_node.v_scale    
+            
+            node = eval_gravity(grav, 0, index=0, motion=0.0, v_scale=1.0)
+            V_depth = node.v_depth
+            
+            GM = (
+                -G_constant
+                * V_depth
+                * (node.m1 + node.m2)
+            )._lc("GM * V Depth")
+
+            d = gnmath.max(nd.position.length(), 0.01)._lc("Distance")
+            V = (grid_scale*GM/d)._lc("Potential")
+
+        with Layout("Potential Energy Grid"):
+            grid = Mesh.Grid(size_x=grid_size, size_y=grid_size, vertices_x=grid_resol, vertices_y=grid_resol)
+
+            grid.points[nd.position.length().less_than(0.01)].delete()
+            
+            grid.offset = (0.0, 0.0, V)
+            
+            grid.faces.Transparency = 1 - grid_show
+            grid.faces.material = grid_mat
+            grid.faces.shade_smooth = True
+            grid.points[grid_cut & nd.position.y.less_than(0.0)].delete()
+            grid.switch(grid_show.equal(0.0))
+
+        with Layout("Total Energy Plane"):
+            total_plane = Mesh.Grid(
+                size_x=total_size,
+                size_y=total_size,
+                vertices_x=2,
+                vertices_y=Integer.Switch(total_cut, 2, 3),
+            )
+
+            total_plane.offset = (
+                0.0,
+                0.0,
+                node.total_energy*V_depth*total_scale,
+            )
+
+            total_plane.faces.Transparency = 1 - total_show
+            total_plane.faces.material = total_mat
+            total_plane.faces.shade_smooth = True
+            total_plane.points[
+                total_cut & nd.position.y.less_than(0.0)
+            ].delete()
+            total_plane.switch(total_show.equal(0.0))
+                    
+        with Layout("Preparation"):
+            circle = Curve.Circle(resolution=count)
+            line = Curve.Line().resample(count=count)
+            mesh_conics = []
+            csec = Curve.Circle(radius=section, resolution=16)
+
+            hyperbola = node.eccentricity.greater_than(1.0)
+            curve_time = Float.Switch(
+                hyperbola,
+                nd.spline_parameter().factor*node.period,
+                (2.0*nd.spline_parameter().factor - 1.0)
+                * hyperbola_extent
+                * node.period,
+            )
+            
+        for i in range(2):
+            with Layout(f"Conic {i + 1}"):
+                conic = Curve(Curve.Switch(hyperbola, circle, line))
+                
+                conic.points.position = eval_gravity(
+                    grav,
+                    curve_time,
+                    index=i,
+                    motion=0.0,
+                    v_scale=V_scale,
+                ).position
+                
+                mesh_conic = conic.to_mesh(profile_curve=csec)
+                mesh_conic.faces.material = mat
+                mesh_conic.faces.set("Color", color[i])
+                mesh_conic.faces.set("Transparency", 1.0 - show[i])
+                mesh_conic.switch(show[i].equal(0))
+                
+                if i == 0:
+                    mesh_conics = mesh_conic
+                else:
+                    mesh_conics += mesh_conic
+                    
+        geo.switch_false(show_planets)
+        geo += mesh_conics, grid, total_plane
+        
+        geo.set_bundle(bundle)
+        
+        geo.out()
+
+    # ----------------------------------------------------------------------------------------------------
+    # Dynamics Visualizer
+    # ----------------------------------------------------------------------------------------------------
+
+    with GeoNodes("Planet Dynamics Visualizer"):
+
+        geo = Geometry()
+
+        index = Integer(0, "Planet Index", 0, 1)
+
+        with Layout("Getting Bundle & Closure"):
+            bundle = geo.get_bundle(remove=True)
+            bundle_node = bundle.separate(signature=SYSTEM_SIG)
+
+            node = eval_gravity(
+                bundle_node.gravitation,
+                bundle_node.time,
+                index,
+                bundle_node.motion,
+                bundle_node.v_scale,
+            )
+
+        visualizer = G().dynamics_visualizer(
+            geo,
+            position=node.position,
+            velocity=node.velocity,
+            acceleration=node.acceleration,
+        )
+        visualizer.node.link_inputs()
+        visualizer.node.link_panel(("Velocity", "Acceleration"))
+        geo = visualizer
+
+        geo.set_bundle(bundle)
+        geo.out()

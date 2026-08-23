@@ -3008,9 +3008,24 @@ class G:
                         f"Signature is:\n\n{source}\n",
                         error_message = se)
 
+    # ====================================================================================================
+    # Get a tree by its name
+    # ====================================================================================================
+
+    @classmethod
+    def get_tree(cls, name, tree_type = 'GeometryNodeTree'):
+
+        for ng in bpy.data.node_groups:
+            if ng.bl_idname != tree_type:
+                continue
+            if ng.name == name:
+                return ng
+
+        return None
 
     # ====================================================================================================
     # Get a tree by its snake case name
+    # ====================================================================================================
 
     def __getattr__(self, name):
 

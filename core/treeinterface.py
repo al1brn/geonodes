@@ -958,7 +958,22 @@ class TreeInterface:
             if 'from_socket' in dir(socket):
                 socket.from_socket(from_socket.node, from_socket)
 
-        for prop, value in props.items():
+        vector_dimensions = props.get('dimensions', socket_type.dimensions)
+
+        # Blender resizes a vector interface socket's default-value storage only
+        # after its dimensions property has been assigned. Set the default value
+        # against the current storage first, then change the dimensions.
+        if socket_type.is_vector and 'dimensions' in props:
+            prop_items = [
+                (prop, value)
+                for prop, value in props.items()
+                if prop != 'dimensions'
+            ]
+            prop_items.append(('dimensions', props['dimensions']))
+        else:
+            prop_items = props.items()
+
+        for prop, value in prop_items:
 
             # Synonyms
             prop = self.get_prop_name(prop)
@@ -977,6 +992,30 @@ class TreeInterface:
             if prop == 'subtype':
                 socket_type.subtype = value
                 value = socket_type.subtype
+
+            # GeoNodes vectors are strictly 3D, whereas Blender interface sockets
+            # can expose 2 or 4 components.
+            if (
+                prop == 'default_value'
+                and socket_type.is_vector
+                and isinstance(value, tuple)
+                and len(value) != vector_dimensions
+            ):
+                print(
+                    f"CAUTION: vector of length {len(value)} "
+                    f"converted to dimensions={vector_dimensions}"
+                )
+
+            if (
+                prop == 'default_value'
+                and socket_type.is_vector
+                and isinstance(value, tuple)
+            ):
+                storage_dimensions = len(socket.default_value)
+                value = (
+                    value[:storage_dimensions]
+                    + (0,) * max(0, storage_dimensions - len(value))
+                )
 
             # Could fail for default_value (Menu for instance)
             if value is not None:

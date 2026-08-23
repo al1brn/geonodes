@@ -59,6 +59,13 @@ class TestStrToColorTuple:
         assert r == pytest.approx(1.0, abs=0.01)
         assert a == pytest.approx(0.502, abs=0.01)
 
+    def test_hex_rgb_is_converted_from_srgb_to_linear(self):
+        r, g, b, a = str_to_color_tuple("#D65F0EFF")
+        assert r == pytest.approx(linear_rgb(0xD6 / 255))
+        assert g == pytest.approx(linear_rgb(0x5F / 255))
+        assert b == pytest.approx(linear_rgb(0x0E / 255))
+        assert a == 1.0
+
     def test_hex_0x_prefix(self):
         result = str_to_color_tuple("0xff0000")
         assert result is not None

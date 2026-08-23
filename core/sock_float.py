@@ -312,6 +312,37 @@ class Float(generated.Float):
     # Comparison
     # __eq__ __ne__ __lt__ __gt__ __le__ __ge__
 
+    def less_than(self, b=None):
+        if self._tree._btree.bl_idname == 'ShaderNodeTree':
+            return Node('Math', {'Value': self, 'Value_001': b}, operation='LESS_THAN')._out
+        return super().less_than(b)
+
+    def greater_than(self, b=None):
+        if self._tree._btree.bl_idname == 'ShaderNodeTree':
+            return Node('Math', {'Value': self, 'Value_001': b}, operation='GREATER_THAN')._out
+        return super().greater_than(b)
+
+    def less_equal(self, b=None):
+        if self._tree._btree.bl_idname == 'ShaderNodeTree':
+            greater = self.greater_than(b)
+            return Node('Math', {'Value': 1., 'Value_001': greater}, operation='SUBTRACT')._out
+        return super().less_equal(b)
+
+    def greater_equal(self, b=None):
+        if self._tree._btree.bl_idname == 'ShaderNodeTree':
+            less = self.less_than(b)
+            return Node('Math', {'Value': 1., 'Value_001': less}, operation='SUBTRACT')._out
+        return super().greater_equal(b)
+
+    def equal(self, b=None, epsilon=None):
+        if self._tree._btree.bl_idname == 'ShaderNodeTree':
+            return Node(
+                'Math',
+                {'Value': self, 'Value_001': b, 'Value_002': epsilon},
+                operation='COMPARE',
+            )._out
+        return super().equal(b, epsilon)
+
     def __ge__(self, other):
         return self.greater_equal(other)
 
@@ -380,4 +411,3 @@ class Float(generated.Float):
                 vol.store_named_grid("Float A", a)
             
             vol.out()
-
