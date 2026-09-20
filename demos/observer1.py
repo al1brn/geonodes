@@ -207,13 +207,16 @@ def demo():
             count = curl.map_range(to_min=6, to_max=12).to_integer()
 
             hair_node = G().generate_hair_curves(
-                    surface         = mesh,
+                    hair_surface    = mesh,
                     hair_length     = length,
                     control_points  = count,
                     density         = density,
                     density_mask    = scalp,
                     viewport_amount = .1,
                     ).node
+
+            # Use the generated mesh rather than an external surface object.
+            hair_node._bnode.inputs['Surface Source'].default_value = 'Input'
 
         with Layout("To Mesh"):
             hair = hair_node.curves

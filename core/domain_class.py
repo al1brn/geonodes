@@ -172,7 +172,7 @@ class Domain(Geom, NodeCache):
     # Attributes
     # ====================================================================================================
 
-    def get(self, name, data_type=None, prefix=None):
+    def get(self, name, data_type=None):
         """Return a helper for a named attribute on this domain.
 
         > Node <&Node Named Attribute>
@@ -194,8 +194,6 @@ class Domain(Geom, NodeCache):
         data_type : type | str | value, optional
             Attribute socket type, for example ``Float``, ``Integer`` or
             ``Vector``. The default is ``Float``.
-        prefix : str, optional
-            Prefix prepended to the attribute name.
 
         Returns
         -------
@@ -204,7 +202,7 @@ class Domain(Geom, NodeCache):
         """
         from .attributes import Attribute
 
-        attr = Attribute(name, data_type=data_type, domain=self, prefix=prefix)
+        attr = Attribute(name, data_type=data_type, domain=self)
 
         return attr
     
@@ -237,7 +235,10 @@ class Domain(Geom, NodeCache):
         from .attributes import Attribute
 
         if isinstance(name, Attribute):
-            attr = Attribute(name.name, value, domain=self, prefix=name.prefix)
+            if name.data_type is None:
+                attr = Attribute(name.name, value, domain=self)
+            else:
+                attr = Attribute(name.name, name.data_type, domain=self)
         else:
             attr = self.get(name, value)
 

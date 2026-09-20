@@ -1266,6 +1266,12 @@ class TreeInterface:
 
         """
         for prop in self.socket_props[isocket.socket_type]:
+            # An unresolved menu has no default identifier. Blender rejects
+            # assigning the empty string to its enum; let the link infer it.
+            if (isocket.socket_type == 'NodeSocketMenu'
+                    and prop == 'default_value'
+                    and from_isocket.default_value == ''):
+                continue
             try:
                 setattr(isocket, prop, getattr(from_isocket, prop))
             except Exception as e:

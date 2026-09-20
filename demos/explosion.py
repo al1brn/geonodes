@@ -99,11 +99,14 @@ def demo():
                 sx, sy, sz = size.xyz
                 vol = sx*sy*sz
 
+                area = m.faces.attribute_statistic(nd.face_area)
+
             with Layout("To Instance"):
                 cell = m.points.split_to_instances()
                 cell.position = c
                 cell.insts.Volume = vol
                 cell.insts.Size = size
+                cell.insts.Area = area
             
             rep.geometry = cell
 

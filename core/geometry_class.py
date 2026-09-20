@@ -117,7 +117,7 @@ class Geometry(generated.Geometry, Geom):
     # Attributes
     # ====================================================================================================
 
-    def get(self, name, data_type=None, domain=None, prefix=None):
+    def get(self, name, data_type=None, domain=None):
         """Return a helper for a named attribute on this geometry.
 
         > Node <&Node Named Attribute>
@@ -141,8 +141,6 @@ class Geometry(generated.Geometry, Geom):
             ``Vector``. The default is ``Float``.
         domain : str | Domain, optional
             Domain on which the attribute is stored. The default is ``Point``.
-        prefix : str, optional
-            Prefix prepended to the attribute name.
 
         Returns
         -------
@@ -151,7 +149,7 @@ class Geometry(generated.Geometry, Geom):
         """
         from .attributes import Attribute
 
-        attr = Attribute(name, data_type=data_type, domain=domain, prefix=prefix)
+        attr = Attribute(name, data_type=data_type, domain=domain)
         attr.geometry = self
         return attr
     
@@ -186,7 +184,11 @@ class Geometry(generated.Geometry, Geom):
         from .attributes import Attribute
 
         if isinstance(name, Attribute):
-            attr = Attribute(name.name, value, domain=domain, prefix=name.prefix)
+            if name.data_type is None:
+                attr = Attribute(name.name, value, domain=domain)
+            else:
+                attr = Attribute(name.name, name.data_type, domain=domain)
+
         else:
             attr = self.get(name, value, domain=domain)
             

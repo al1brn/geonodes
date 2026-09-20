@@ -503,6 +503,55 @@ def demo():
             
 
         sim.pts.out()
+
+    # ====================================================================================================
+    # Rounded Rectangle
+    # ====================================================================================================
+
+    with GeoNodes("Rounded Rectangle"):
+        
+        sx = Float(1, "Size X")/2
+        sy = Float(.5, "Size Y")/2
+        rd_fac = Float.Factor(0.1, "Rounded", 0, 1)
+        
+        rd_size = gnmath.min(sx, sy)    
+        rd = rd_size*rd_fac
+        
+        line = Curve.Line().resample(count=8)
+        
+        line.splines.type = "BEZIER"
+        
+        idx = [nd.index == i for i in range(8)]
+        
+        corners = [
+            Vector((-sx+rd, -sy,    0)),
+            Vector(( sx-rd, -sy,    0)),
+            Vector(( sx,    -sy+rd, 0)),
+            Vector(( sx,     sy-rd, 0)),
+            Vector(( sx-rd,  sy,    0)),
+            Vector((-sx+rd,  sy,    0)),
+            Vector((-sx,     sy-rd, 0)),
+            Vector((-sx,    -sy+rd, 0)),
+        ]
+        
+        for i in range(8):
+            line[idx[i]].position = corners[i]
+        
+        
+        tg=rd*0.552125
+        
+        line[idx[0]].left_handle_position  = corners[0] + (-tg,   0, 0)
+        line[idx[1]].right_handle_position = corners[1] + ( tg,   0, 0)
+        line[idx[2]].left_handle_position  = corners[2] + (  0, -tg, 0)
+        line[idx[3]].right_handle_position = corners[3] + (  0,  tg, 0)
+        line[idx[4]].left_handle_position  = corners[4] + ( tg,   0, 0)
+        line[idx[5]].right_handle_position = corners[5] + (-tg,   0, 0)
+        line[idx[6]].left_handle_position  = corners[6] + (  0,  tg, 0)
+        line[idx[7]].right_handle_position = corners[7] + (  0, -tg, 0)
+        
+        line.is_cyclic = True
+        
+        line.out()
             
             
     

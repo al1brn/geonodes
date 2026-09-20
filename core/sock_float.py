@@ -107,17 +107,22 @@ class Float(generated.Float):
         super().__init__(value, name, min=min, max=max, tip=tip, panel=panel, **props)
 
     # ====================================================================================================
-    # Methods
+    # Constructors
 
-    # ----- Mix
-
-    def mix(self, factor=None, other=None, clamp_factor=None):
+    @classmethod
+    def Mix(cls, a=None, b=None, factor=None, clamp_factor=None):
         """ > Mix
 
         > Node <&Node Mix>
 
         Parameters
         ----------
+        a : Float
+            first Float
+
+        b : Float
+            second Float
+
         factor : Float
             socket 'Factor' (Factor_Float)
 
@@ -131,7 +136,10 @@ class Float(generated.Float):
         -------
         Socket
         """
-        return Float(Node('Mix', {'Factor': factor, 'A': self, 'B': other}, clamp_factor=clamp_factor, data_type='FLOAT')._out)
+        return Node('Mix', {'Factor': factor, 'A': a, 'B': b}, clamp_factor=clamp_factor, data_type='FLOAT')._out
+
+    # ====================================================================================================
+    # Methods
 
     def color_ramp(self, stops=None, interpolation='LINEAR'):
         """ > Color Ramp

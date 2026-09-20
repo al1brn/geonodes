@@ -116,8 +116,6 @@ class Attribute:
     domain : str | Domain | Geometry, optional
         Attribute domain, optionally carrying the geometry on which the
         attribute is stored. The default domain is ``Point``.
-    prefix : str, optional
-        Prefix prepended to the stored attribute name.
 
     Notes
     -----
@@ -161,29 +159,24 @@ class Attribute:
         'Byte Color'    : 'COLOR',          #'BYTE_COLOR',
         }
     
-    def __init__(self, name, data_type=None, domain=None, prefix=None):
+    def __init__(self, name, data_type=None, domain=None):
         """Create a named geometry-attribute helper.
 
         Parameters
         ----------
-        name : str
+        name : str | String
             Name of the attribute.
         data_type : type | str | value, optional
             Socket type used to read and store the attribute.
         domain : str | Domain | Geometry, optional
             Attribute domain and, when supplied by a domain or geometry
             instance, the geometry on which the attribute is stored.
-        prefix : str, optional
-            Prefix prepended to the stored attribute name.
         """
 
         self._value = None
 
-        # Name with prefix
-
-        self.prefix    = prefix
-        self._name     = None
-        self.name      = name
+        # Name
+        self.name = name
 
         # Geometry and domain
         
@@ -201,7 +194,7 @@ class Attribute:
     # ----------------------------------------------------------------------------------------------------
             
     def __str__(self):
-        return f"<Attribute: {self.geometry}.{self.name}, domain: {self.domain_name}, type: {self.data_type}>"
+        return f"<Attribute: {self.geometry}.{str(self.name)}, domain: {self.domain_name}, type: {self.data_type}>"
 
     # ----------------------------------------------------------------------------------------------------
     # Error if geometry is not defined
@@ -210,21 +203,6 @@ class Attribute:
     def _check_geometry(self, message):
         if self.geometry is None:
             raise NodeError(f"Attribute.geometry is None, {message}")
-        
-    # ----------------------------------------------------------------------------------------------------
-    # Name
-    # ----------------------------------------------------------------------------------------------------
-
-    @property
-    def name(self):
-        if self.prefix is None:
-            return self._name
-        else:
-            return f"{self.prefix} {self._name}"
-        
-    @name.setter
-    def name(self, value):
-        self._name = value
 
     # ----------------------------------------------------------------------------------------------------
     # Geometry and domain
@@ -279,14 +257,21 @@ class Attribute:
         
     @domain_name.setter
     def domain_name(self, value):
-
         _, domain_name = self._get_geo_domain(value)
         self._domain_name = domain_name
             
     @property
     def domain(self):
-        raise Exception(f"Attribute.domain is write only. {self}")
-        return None
+        if self.domain_name is None:
+            return None
+
+        prop_name = self.domain_name.lower() + "s"
+        try:
+            return getattr(self.geometry, prop_name)
+        except:
+            pass
+
+        raise AttributeError(f"Attribute error: {self} geometry {self.geometry} doesn't have a domain '{self.domain_name}'")
         
     @domain.setter
     def domain(self, value):
@@ -355,7 +340,7 @@ class Attribute:
             self._value = Node('Named Attribute', 
             {'Name': self.name}, 
             data_type = Attribute.DT_SET[self.data_type],
-            )._out._lc(self.name)
+            )._out
             
         return self._value
 
@@ -388,25 +373,50 @@ class Attribute:
 
         from .nodeclass import Node
 
+        # ---------------------------------------------------------------------------
+        # Value and data_type
+        # ---------------------------------------------------------------------------
+
         if value is None:
             value = self._value
         if self.data_type is None:
             self.data_type = self._get_data_type(value)
 
+        # ---------------------------------------------------------------------------
+        # Domain argument overrides properties
+        # ---------------------------------------------------------------------------
+
         selection = None
 
+        # Geometry and domain name from domain argument
         geo, dn = self._get_geo_domain(domain)
+
+        # Not None, overrides attributes
         if geo is not None:
             self.geometry = geo
-            selection = domain.get_selection()
+            #selection = domain.get_selection()
         if dn is not None:
             self.domain_name = dn
+
+        # ---------------------------------------------------------------------------
+        # Selection
+        # ---------------------------------------------------------------------------
+
+        dom = self.domain
+        if dom is None:
+            selection = self.geometry.get_selection()
+        else:
+            selection = dom.get_selection()
+
+        # ---------------------------------------------------------------------------
+        # Create the node
+        # ---------------------------------------------------------------------------
 
         socket = Node('Store Named Attribute', {
             'Geometry': self.geometry,
             'Selection': selection,
             'Name': self.name,
-            'value': value},
+            'Value': value},
             domain = self.domain_name,
             data_type = Attribute.DT_SET[self.data_type],
             )._out
@@ -459,34 +469,33 @@ class Attribute:
     # Remove
     # ====================================================================================================
 
-    def remove(self, all=False):
+    def remove(self, wildcard=None):
         """Remove the named attribute from the geometry.
 
         > Node <&Node Remove Named Attribute>
 
         Parameters
         ----------
-        all : bool, default=False
-            If true and this helper has a prefix, remove every attribute whose
-            name starts with that prefix. Otherwise remove only this attribute.
+        wildcard : str | String, default=None
+            wild card string
 
         Raises
         ------
         NodeError
             If no geometry is attached to the helper.
         """
-        self._check_geometry(f"Impossible to remove named attribute '{self.name}'")
+        self._check_geometry(f"Impossible to remove named attribute '{str(self.name)}'")
 
-        if all and self.prefix is not None:
-            self.geometry.remove_named_attribute(pattern_mode='WildCard', name=f"{self.prefix} *")
-        else:
+        if wildcard is None:
             self.geometry.remove_named_attribute(pattern_mode='Exact', name=self.name)
+        else:
+            self.geometry.remove_named_attribute(pattern_mode='Wildcard', name=wildcard)
 
     # ====================================================================================================
     # Rename
     # ====================================================================================================
 
-    def rename(self, name, prefix=False, overwrite=None):
+    def rename(self, name, overwrite=None):
         """Rename the attribute on the geometry.
 
         > Node <&Node Rename Attribute>
@@ -494,10 +503,7 @@ class Attribute:
         Parameters
         ----------
         name : str
-            New attribute name, or new prefix when ``prefix`` is true.
-        prefix : bool, default=False
-            Rename all attributes sharing this helper's prefix instead of only
-            the current attribute.
+            New attribute name.
         overwrite : bool, optional
             Value passed to the Rename Attribute node's overwrite input.
 
@@ -506,20 +512,11 @@ class Attribute:
         NodeError
             If no geometry is attached to the helper.
         """
-        self._check_geometry(f"Impossible to rename attribute '{self.name}'")
+        self._check_geometry(f"Impossible to rename attribute '{str(self.name)}'")
 
-        if prefix:
-            self.geometry.rename_attribute(mode='Prefix', old=self.prefix, new=name, overwrite=overwrite)
-            self.prefix = name
-        else:
-
-            if self.prefix is None:
-                new_name = name
-            else:
-                new_name = f"{self.prefix} {name}"
-            self.geometry.rename_attribute(mode='Single', old=self.name, new=new_name, overwrite=overwrite)
-            self.prefix = None
-            self.name = name
+        new_name = name
+        self.geometry.rename_attribute(mode='Single', old=self.name, new=new_name, overwrite=overwrite)
+        self.name = name
     
     # ====================================================================================================
     # Operations

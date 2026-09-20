@@ -2148,6 +2148,7 @@ class Node:
         for name, in_socket in in_sockets:
 
             path = ItemPath(from_panel) + name
+            copy_interface_properties = False
 
             out_socket = from_node.socket_by_name('OUTPUT', path, SocketType(in_socket).type, halt=False)
 
@@ -2157,13 +2158,17 @@ class Node:
 
                     # Copy the properties when both nodes have interface
                     if self._use_interface and from_node._use_interface:
-                        self._interface.copy_properties(
-                            from_node._interface.by_identifier(out_socket._bsocket.identifier),
-                            self._interface.by_identifier(in_socket.identifier)
-                            )
+                        copy_interface_properties = True
 
             if out_socket is not None:
                 self._tree.link(out_socket, in_socket)
+                # Menu items are inferred from the link; their defaults cannot
+                # be assigned until the new interface socket is connected.
+                if copy_interface_properties:
+                    self._interface.copy_properties(
+                        from_node._interface.by_identifier(out_socket._bsocket.identifier),
+                        self._interface.by_identifier(in_socket.identifier)
+                    )
 
         return self
     

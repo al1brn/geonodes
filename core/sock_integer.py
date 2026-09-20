@@ -139,18 +139,18 @@ class Integer(generated.Integer):
 
     # ----- Mix
 
-    def mix(self, factor=None, other=None, clamp_factor=None):
+    def mix(self, b: "Float"=None, factor: "Float"=None, clamp_factor=None):
         """ > Mix
 
         > Node <&Node Mix>
 
         Parameters
         ----------
+        b : Socket
+            socket 'B' (B_Float)
+
         factor : Float
             socket 'Factor' (Factor_Float)
-
-        other : Socket
-            socket 'B' (B_Float)
 
         clamp_factor : bool
             Node.clamp_factor
@@ -160,7 +160,8 @@ class Integer(generated.Integer):
         Socket
         """
         from .sock_float import Float
-        return Float(Node('Mix', {'Factor': factor, 'A': self, 'B': other}, clamp_factor=clamp_factor, data_type='FLOAT')._out)
+        return Float(self).mix(b, factor=factor, clamp_factor=clamp_factor)
+        #return Float(Node('Mix', {'Factor': factor, 'A': self, 'B': b}, clamp_factor=clamp_factor, data_type='FLOAT')._out)
 
     # ====================================================================================================
     # Operations
