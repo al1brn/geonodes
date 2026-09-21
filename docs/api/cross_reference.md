@@ -1373,12 +1373,6 @@ nd.combine_bundle(cls, named_sockets: dict = {}, define_signature = False, **soc
 
 > `bl_idname` : ShaderNodeCombineColor
 
-### class Color
-
-```python
-Color.FromList(cls, value, mode='RGB')
-```
-
 ### class Float
 
 ```python
@@ -9990,10 +9984,6 @@ Color.separate_col_HSL(self)
 Color.separate_col(self, mode: Literal['RGB', 'HSV', 'HSL'] = 'RGB')
 ```
 
-```python
-Color.separate_to_list(self, mode='RGB')
-```
-
 ### snd
 
 ``` python
@@ -10265,6 +10255,18 @@ nd.separate_xyz(cls, vector: Vector = None)
 Curve.set_normal(self,
                     mode: Literal['Minimum Twist', 'Z Up', 'Free'] = None,
                     normal: Vector = None)
+```
+
+```python
+Curve.set_normal_minimum_twist(self, normal: Vector = None)
+```
+
+```python
+Curve.set_normal_z_up(self, normal: Vector = None)
+```
+
+```python
+Curve.set_normal_free(self, normal: Vector = None)
 ```
 
 ```python
@@ -13744,3 +13746,4 @@ nd.xpbd_solver(cls,
                     begin: Float = None,
                     end: Float = None)
 ```
+

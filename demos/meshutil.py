@@ -177,7 +177,7 @@ def demo():
     # Patch a grid between two selections
     # ----------------------------------------------------------------------------------------------------
 
-    with GeoNodes("Patch with a Grid"):
+    with GeoNodes("Patch with a Grid", is_group=True):
 
         mesh = Mesh()
         use_merge = Boolean(True, "Merge")
@@ -727,7 +727,7 @@ def demo():
                 r = bones.points.sample_index(nd.radius, index=idx)
                 
                 rounded[sel].position = pos - tg.scale(r*ag.sin())
-                rounded[sel].normal = nrm
+                rounded[sel].set_normal_free(nrm)
                 rounded[sel].radius = r*ag.cos()
                 
             with Layout("Second addition points position and radius"):
@@ -741,7 +741,7 @@ def demo():
                 r = bones.points.sample_index(nd.radius, index=idx)
 
                 rounded[sel].position = pos + tg.scale(r*ag.sin())
-                rounded[sel].normal = nrm
+                rounded[sel].set_normal_free(nrm)
                 rounded[sel].radius = r*ag.cos()
                 
             with Layout("Switch is caps are required"):
@@ -1039,28 +1039,3 @@ def demo():
         
         cage.out()
 
-        raise Break()        
-
-
-
-
-        
-        cyl = Mesh.Cylinder(side_segments=bone_resol-1, vertices=ring_resol).transform(rotation=Rotation((0, pi, 0)))
-        i_ring = nd.index // ring_resol
-        
-        bones = Curve.Line().resample(count=nsplines)
-        
-        for rep in repeat(bone_resol, cyl=cyl):
-            
-            idx = rep.iteration
-            bones.points.position = curve.points.sample_index(nd.position, index=nd.index*bone_resol + idx)
-            
-            shape = G().surrounding_shape(bones, resolution=ring_resol, width=width, inflate=inflate)
-            
-            rep.cyl.points[i_ring==idx].position = shape.points.sample_index(nd.position, index=nd.index%ring_resol)
-            
-        cage = Mesh(rep.cyl)
-        
-        cage.faces.shade_smooth = False
-        
-        cage.out()

@@ -1685,30 +1685,12 @@ def build_observer():
             finger_bones = Curve(line).points[nd.index < subdiv + 3].delete()
 
         with Layout("Finger Mesh"):
-            if False:
-                finger_mesh = finger_bones.to_mesh(
-                    profile_curve = Curve.Circle(radius=0.15, resolution=8),
-                    fill_caps=False)
-                finger_mesh = meshutil.set_cylinder_topology(finger_mesh, finger_bones.points.count, 8)
-                finger_mesh = G().close_cylinder(
-                    finger_mesh,
-                    rings = 3,
-                    height = 0.15,
-                    bottom =True,
-                    top = True,
-                    flatten_last = False,
-                    append = True,
+            finger_mesh = finger_bones.curve_to_tube(
+                    scale=0.15,
+                    profile_resolution=8,
+                    caps=True,
+                    caps_type='Round',
                     )
-                finger_mesh.flip_faces()
-                finger_mesh.faces.shade_smooth=True
-                
-            else:
-                finger_mesh = finger_bones.curve_to_tube(
-                        scale=0.15,
-                        profile_resolution=8,
-                        caps=True,
-                        caps_type='Round',
-                        )
 
         finger_mesh.out("Mesh")
         palm_bones.out("Palm Bones")
@@ -1760,7 +1742,7 @@ def build_observer():
     # Hand
     # ----------------------------------------------------------------------------------------------------
 
-    with GeoNodes("Obs Mesh Hand", is_group=False):
+    with GeoNodes("Obs Mesh Hand", is_group=True):
 
         DELTA_X = -0.08
         DELTA_Y = 0.3
@@ -1831,7 +1813,6 @@ def build_observer():
             bones4 = Curve(finger4.palm_bones)
             
             n = bones1.points.count
-            fake = Curve.Line().resample(count=n)
             segm = Curve(thumb_bones)
             segm.points[nd.index > 1].delete()
             segm = segm.resample(count = n)
@@ -1913,168 +1894,20 @@ def build_observer():
         hand.switch(use_merge, hand + line)
         hand.out()
 
-
-    # ====================================================================================================
-    # Articulated sausage
-    # ====================================================================================================
-
-    with GeoNodes("Obs Mesh Sausage", is_group=True):
-
-        curve    = Curve()
-        profile  = Curve(None, "Profile")
-        angle    = Float.Angle(.2, "Angle", hide_value=False)
-        twist    = Float.Angle(0, "Twist", -pi, pi)
-        axis     = Integer.MenuSwitch({'X': 0, 'Y': 1, 'Z': 2}, menu=Input("Axis"))
-        use_mesh = Boolean(True, "Mesh")
-
-        with Panel("Joints"):
-            use_joints   = Boolean(True, "Joints")
-            joints_width = Float.Factor(.1, "Joints Width", 0, 1)
-
-        with Panel("Extremities"):
-            start_shape = Float(.4,    "Start Shape", 0, 5)
-            start_resol = Integer(0,   "Start Resolution", 0)
-            end_shape   = Float(.4,    "End Shape", 0, 5)
-            end_resol   = Integer(0,   "End Resolution", 0)
-
-        n  = curve.points.count
-
-        for rep in repeat(n-1, curve=curve):
-            index   = rep.iteration + 1
-            pos     = nd.position
-            center  = rep.curve.points.sample_index(pos, index=index)
-            ag      = rep.curve.points.sample_index(angle, index=index)
-            rot     = Rotation.IndexSwitch((ag, 0, 0), (0, ag, 0), (0, 0, ag), index=axis)
-            p       = center + rot @ (pos - center)
-            rep.curve.points[nd.index > index].position = p
-
-        curve = rep.curve
-
-        with Layout("Joints"):
-
-            # 0------1------2------3------4------5
-            # 0      1 2  3 4 5  6 7 8  9 10     11
-
-            n_joints = n - 3
-            m = n + n_joints*2 # 3n - 6
-            last = m - 1
-
-            with Layout("Joints Selection"):
-                i = nd.index + 2
-                joint_sel   = (i % 3).equal(0)
-                joint_index = i // 3
-
-            with Layout("Left"):
-                i = nd.index + 1
-                left_sel = (i % 3).equal(0) & nd.index.not_equal(last)
-                left0 = i // 3
-                left1 = left0 + 1
-
-            with Layout("Right"):
-                i = nd.index
-                right_sel = (i % 3).equal(0) & i.not_equal(0)
-                right0 = i // 3
-                right1 = right0 + 1
-
-            new_curve = Curve(curve).resample(count=m)
-
-            # ----- Left
-
-            with Layout("Left"):
-
-                jfac = .3*joints_width
-
-                pos0 = curve.points.sample_index(nd.position, index=left0)
-                pos1 = curve.points.sample_index(nd.position, index=left1)
-                new_curve.points[left_sel].position = pos0 + jfac*(pos1 - pos0)
-
-                r0 = curve.points.sample_index(nd.radius, index=left0)
-                r1 = curve.points.sample_index(nd.radius, index=left1)
-                new_curve.points[left_sel].radius = r0 + jfac*(r1 - r0)
-
-            with Layout("Right"):
-
-                jfac = 1 - jfac
-
-                pos0 = curve.points.sample_index(nd.position, index=right0)
-                pos1 = curve.points.sample_index(nd.position, index=right1)
-                new_curve.points[right_sel].position = pos0 + jfac*(pos1 - pos0)
-
-                r0 = curve.points.sample_index(nd.radius, index=right0)
-                r1 = curve.points.sample_index(nd.radius, index=right1)
-                new_curve.points[right_sel].radius = r0 + jfac*(r1 - r0)
-
-            with Layout("Joints"):
-                new_curve.points[joint_sel].position = curve.points.sample_index(nd.position, index=joint_index)
-                new_curve.points[joint_sel].radius   = curve.points.sample_index(nd.radius,   index=joint_index)
-
-            curve = Curve(curve.switch(use_joints, new_curve))
-            n = curve.points.count
-
-        with Layout("Twist"):
-            curve = curve.transform(rotation=(0, 0, twist))
-
-        with Layout("Start Shape"):
-
-            m = n + start_resol
-            start_resol1 = start_resol + 1
-
-            new_curve = Curve(curve).resample(count=m)
-            new_curve.points[nd.index > start_resol].position = curve.points.sample_index(nd.position, index=nd.index - start_resol)
-            new_curve.points[nd.index > start_resol].radius   = curve.points.sample_index(nd.radius,   index=nd.index - start_resol)
-
-            fac = nd.index/start_resol1
-
-            pos0 = curve.points.sample_index(nd.position, index=0)
-            pos1 = curve.points.sample_index(nd.position, index=1)
-
-            new_curve.points[nd.index <= start_resol].position = pos0 + (pos1 - pos0).scale(fac)
-
-            radius = curve.points.sample_index(nd.radius, index=1)
-            new_curve.points[nd.index <= start_resol].radius = radius*fac**start_shape
-
-            curve = new_curve
-            n = curve.points.count
-
-        with Layout("End Shape"):
-
-            m = n + end_resol
-            last = n - 2
-
-            new_curve = Curve(curve).resample(count=m)
-            new_curve.points[nd.index <= last].position = curve.points.sample_index(nd.position, index=nd.index)
-            new_curve.points[nd.index <= last].radius   = curve.points.sample_index(nd.radius,   index=nd.index)
-
-            fac = (nd.index - last)/(end_resol + 1)
-
-            pos0 = curve.points.sample_index(nd.position, index=n-2)
-            pos1 = curve.points.sample_index(nd.position, index=n-1)
-
-            new_curve.points[nd.index > last].position = pos0 + (pos1 - pos0).scale(fac)
-
-            radius = curve.points.sample_index(nd.radius, index=n-2)
-            new_curve.points[nd.index > last].radius = radius*(1-fac)**end_shape
-
-            curve = new_curve
-            #n = curve.points.count
-
-
-        mesh = curve.to_mesh(profile_curve=profile, scale=nd.radius)
-        curve.switch(use_mesh, mesh).out()
-
     # ====================================================================================================
     # Walk control
     # ====================================================================================================
 
     with GeoNodes("Obs Mesh Shoe", is_group=True):
         
-        FOOT_LENGTH = 0.5
-        FOOT_BACK = 0.1
-        FOOT_FRONT = FOOT_LENGTH - FOOT_BACK
         FOOT_HEIGHT = 0.1
-        FOOT_BREAK = 0.15
-        BREAK_POS = FOOT_FRONT - FOOT_BREAK
 
+        FOOT_LENGTH = 0.5
+        FOOT_BACK   = 0.1
+        FOOT_FRONT  = FOOT_LENGTH - FOOT_BACK
+        FOOT_FOLD   = 0.27
+        FOOT_TIP    = FOOT_FRONT - FOOT_FOLD
+        
         resol  = Integer(16,    "Resolution")
         size   = Float(1,       "Size", 0)
         twist  = Float.Angle(0, "Twist")
@@ -2083,71 +1916,89 @@ def build_observer():
         tilt   = Float.Angle(0, "Tilt")
         tiptoe = Float.Angle(0, "Tiptoe")
         on_ground = Boolean(True, "On Ground")
+        material = Material("Obs Shoe", "Material")
         
-        with Layout("Tip toe angle"):
-            z_foot = loc.z
+        with Layout("Base Line"):
+            line = Curve.Line().resample(count=3)
+            sel0 = nd.index == 0
+            sel1 = nd.index == 1
+            sel2 = nd.index == 2
             
-            with Layout("Positive Tilt"):
-                max_tilt = gnmath.atan2(z_foot, BREAK_POS)
-                tilt.switch(on_ground, gnmath.min(max_tilt, tilt))
+            line[sel0].position = (0, -FOOT_BACK,  0)
+            line[sel1].position = (0,  FOOT_FOLD, 0)
+            line[sel2].position = (0,  FOOT_FRONT, 0)
+            
+        with Layout("On Ground"):
+            
+            tilt = -tilt
+            tiptoe = -tiptoe
+            
+            h = loc.z
+            change = on_ground
+            with Layout("Max Tilt"):
+                z_fold = h - FOOT_FOLD*tilt.sin()
+                tilt.switch(change & (z_fold < 0), gnmath.asin(h/FOOT_FOLD))
+            
+            with Layout("Max Tiptoe"):
+                h_fold = (h - FOOT_FOLD*tilt.sin())._lc("h_fold")
+                ag = (tilt + tiptoe)._lc("ag")
+                z_tiptoe = (h_fold - FOOT_TIP*ag.sin())._lc("z_tiptoe")
+                ag.switch(change & (z_tiptoe < 0), gnmath.asin(h_fold/FOOT_TIP))
+                tiptoe = ag - tilt
                 
-                sin_tilt = tilt.sin()
-                z_tip = z_foot - sin_tilt*FOOT_FRONT
-                tiptoe.switch(on_ground & (tilt > 0) & (z_tip < 0), gnmath.atan2(z_tip, FOOT_BREAK))
+            tilt = -tilt
+            tiptoe = -tiptoe
                 
-            with Layout("Negative Tilt"):
-                min_tilt = -gnmath.atan2(z_foot, FOOT_BACK)
-                tilt.switch(on_ground, gnmath.max(min_tilt, tilt))
-
-        with Layout("Curve"):
-
-            ind = [nd.index.equal(i) for i in range(4)]
-
-            curve = Curve.Line(start=(-.2, 0, 0), end=(.8, 0, 0)).resample(count=4)
-            curve.points[ind[1]].position = (0, 0, 0)
-            curve.points[ind[2]].position = (.5, 0, 0)
-
-            curve.points[ind[0]].radius = 0
-            curve.points[ind[1]].radius = 1
-            curve.points[ind[2]].radius = .8
-            curve.points[ind[3]].radius = 0
-
-            curve.points._Angle = 0.
-            curve.points[ind[2]]._Angle = tiptoe
-            curve.transform(scale=size)
-
-        with Layout("Profile"):
-            profile = Curve.Circle(radius=.22).resample(count=2*resol + 2)
-            profile.points[(nd.index > 0) & (nd.index <= resol)].delete()
-            profile.transform(scale=size)
-
-        with Layout("Shoe Shape"):
-
-            shoe = G().obs_mesh_sausage(
-                curve               = curve,
-                profile             = profile,
-                angle               = Float("Angle"),
-                joints              = True,
-                joints_width        = .4,
-                axis                = 'Y',
-                start_shape         = .4,
-                start_resolution    =  4,
-                end_shape           = .4,
-                end_resolution      =  4,
-            )
-        shoe = Mesh(shoe.transform(rotation=(0, 0, pi/2)))
-
+            underground = change & (h <= 0)
+            tilt.switch(underground, 0.0)
+            tiptoe.switch(underground, 0.0)
+            
+            pivot = line.points.sample_index(nd.position, index=1)
+            line[nd.index==2].position = pivot + (0, FOOT_TIP*tiptoe.cos(), FOOT_TIP*tiptoe.sin())
+            line.transform(translation=loc, rotation=(tilt, 0, 0))
+            
+        with Layout("Profile Curve"):
+            n = 12
+            profile = Curve.Circle(resolution=n + 2)
+            
+            dag = (pi/4)/(n-1)
+            ag = dag + (nd.index/(n-1)) * (pi - 2*dag)
+            
+            profile.position = (ag.cos(), ag.sin(), 0)
+            profile[nd.index == n].position = (-0.9, 0.0, 0.0)
+            profile[nd.index == n+1].position = ( 0.9, 0.0, 0.0)
+            
+            profile.transform(rotation=(0, 0, pi))
+            
+        with Layout("To Mesh"):
+            
+            count = 25
+            split_index = 5
+            line.resample(count=count)
+            
+            factor = nd.index/(count - 1)
+            split = split_index/count
+            
+            f = factor.map_range(0, split, 0, 1)
+            line.points[nd.index < split_index].radius = f**0.3 + .05
+            
+            f = factor.map_range(split, 1.0, 1.0, 0.0)
+            line.points[nd.index >= split_index].radius = f**.4 + .05
+            
+            mesh = line.to_mesh(
+                profile_curve = profile,
+                scale = nd.radius*FOOT_HEIGHT,
+                fill_caps=True)
+                
         with Layout("Finalize"):
-            shoe.faces.shade_smooth = True
-            shoe.faces.material = "Obs Shoe"
-
-        shoe.transform(scale=.5)
-
-        with Layout("Orientation in space"):
-            shoe.transform(rotation=(-tilt, 0, 0))
-            shoe.transform(translation=loc, rotation=(0, 0, twist))
-
-        shoe.out()
+                
+            mesh.offset = -loc
+            mesh.transform(translation=loc, rotation=(0, 0, twist)) 
+                
+            mesh.faces.shade_smooth = True
+            mesh.faces.material = material
+                
+        mesh.out()
 
     # ====================================================================================================
     # Observer Head
@@ -2284,7 +2135,7 @@ def build_observer():
     # Observer Body
     # ====================================================================================================
 
-    with GeoNodes("Obs Mesh Body", is_group=False):
+    with GeoNodes("Obs Mesh Body", is_group=True):
 
         geometry = Geometry()
         pose = ObserverBundles(geometry, use_factor=False)
@@ -2438,6 +2289,12 @@ def build_observer():
 
 
 def demo():
-    """Build animation groups, then the Observer mesh modifier."""
+    from . import meshutil
+    import bpy
+
+    btree = bpy.data.node_groups.get("Cross Splines")
+    if btree is None:
+        meshutil.demo()
+
     build_animation()
     build_observer()

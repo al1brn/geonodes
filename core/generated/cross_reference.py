@@ -641,8 +641,12 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                       'alpha: Float = None,\n'
                                                       '                    '
                                                       "mode: Literal['RGB', "
-                                                      "'HSV', 'HSL'] = "
-                                                      "'RGB')"}],
+                                                      "'HSV', 'HSL'] = 'RGB')"},
+                                        {'func_name': 'FromList',
+                                         'is_classmethod': True,
+                                         'returns': 'OUT',
+                                         'signature': '(cls, value, '
+                                                      "mode='RGB')"}],
                               'nd': [{'func_name': 'combine_color',
                                       'is_classmethod': True,
                                       'is_get': False,
@@ -2188,7 +2192,10 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                           'is_set': False,
                                           'node_name': 'Separate Color',
                                           'returns': 'alpha',
-                                          'signature': '(self)'}],
+                                          'signature': '(self)'},
+                                         {'func_name': 'separate_to_list',
+                                          'returns': 'OUT',
+                                          'signature': "(self, mode='RGB')"}],
                                'nd': [{'func_name': 'separate_color',
                                        'is_classmethod': True,
                                        'is_get': False,
@@ -12794,6 +12801,33 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                                         '                    '
                                                         'normal: Vector = '
                                                         'None)'},
+                                          {'func_name': 'set_normal_minimum_twist',
+                                           'is_classmethod': False,
+                                           'is_get': False,
+                                           'is_jump': True,
+                                           'is_set': False,
+                                           'node_name': 'Set Curve Normal',
+                                           'returns': 'OUT',
+                                           'signature': '(self, normal: Vector '
+                                                        '= None)'},
+                                          {'func_name': 'set_normal_z_up',
+                                           'is_classmethod': False,
+                                           'is_get': False,
+                                           'is_jump': True,
+                                           'is_set': False,
+                                           'node_name': 'Set Curve Normal',
+                                           'returns': 'OUT',
+                                           'signature': '(self, normal: Vector '
+                                                        '= None)'},
+                                          {'func_name': 'set_normal_free',
+                                           'is_classmethod': False,
+                                           'is_get': False,
+                                           'is_jump': True,
+                                           'is_set': False,
+                                           'node_name': 'Set Curve Normal',
+                                           'returns': 'OUT',
+                                           'signature': '(self, normal: Vector '
+                                                        '= None)'},
                                           {'func_name': 'normal',
                                            'is_get': False,
                                            'is_set': True,
@@ -17661,11 +17695,7 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                            '                    clamp_type: '
                                            "Literal['MINMAX', 'RANGE'] = "
                                            "'MINMAX')"}]},
- 'ShaderNodeCombineColor': {'Color': [{'func_name': 'FromList',
-                                       'is_classmethod': True,
-                                       'returns': 'OUT',
-                                       'signature': "(cls, value, mode='RGB')"}],
-                            'Float': [{'func_name': 'combine_color_RGB',
+ 'ShaderNodeCombineColor': {'Float': [{'func_name': 'combine_color_RGB',
                                        'is_classmethod': False,
                                        'is_get': False,
                                        'is_jump': False,
@@ -19861,10 +19891,7 @@ CROSS_REF = {'FunctionNodeAlignRotationToVector': {'Rotation': [{'func_name': 'A
                                         'returns': 'NODE',
                                         'signature': '(self, mode: '
                                                      "Literal['RGB', 'HSV', "
-                                                     "'HSL'] = 'RGB')"},
-                                       {'func_name': 'separate_to_list',
-                                        'returns': 'OUT',
-                                        'signature': "(self, mode='RGB')"}],
+                                                     "'HSL'] = 'RGB')"}],
                              'snd': [{'func_name': 'separate_color',
                                       'is_classmethod': True,
                                       'is_get': False,

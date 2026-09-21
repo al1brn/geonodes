@@ -1,4 +1,4 @@
-# Generated 2026-07-22 07:37:34
+# Generated 2026-09-21 12:26:19
 
 from __future__ import annotations
 from .. sockettype import SocketType
@@ -930,7 +930,7 @@ class Spline:
         raise NodeError('Property Spline.normal is write only.')
 
     @normal.setter
-    def normal(self, mode: Literal['Minimum Twist', 'Z Up', 'Free'] = None):
+    def normal(self):
         """ > Node <&Node Set Curve Normal>
 
         > ***Jump*** : Socket refers to node output socket after the call
@@ -941,19 +941,14 @@ class Spline:
         | ------ | --------- | ----------------- |
         | Socket | Curve     | `self`            |
         | Socket | Selection | `self[selection]` |
+        | Socket | Mode      | 'Free'            |
         | Socket | Normal    | ignored           |
-
-        Parameters
-        ----------
-        mode : menu='Minimum Twist', optional
-            ('Minimum Twist', 'Z Up', 'Free')
-        
 
         Returns
         -------
         Curve
         """
-        node = Node('Set Curve Normal', {'Curve': self, 'Selection': self.get_selection(), 'Mode': mode, 'Normal': None})
+        node = Node('Set Curve Normal', {'Curve': self, 'Selection': self.get_selection(), 'Mode': 'Free', 'Normal': None})
         self._jump(node._out)
         return self._domain_to_geometry
 

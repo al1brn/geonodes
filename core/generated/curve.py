@@ -1,4 +1,4 @@
-# Generated 2026-07-22 07:37:34
+# Generated 2026-09-21 12:26:19
 
 from __future__ import annotations
 from .. sockettype import SocketType
@@ -1720,6 +1720,87 @@ class Curve(Socket):
         self._jump(node._out)
         return self._domain_to_geometry
 
+    def set_normal_minimum_twist(self, normal: Vector = None):
+        """ > Node <&Node Set Curve Normal>
+
+        > ***Jump*** : Socket refers to node output socket after the call
+
+        **Fixed values**
+
+        | Kind   | Name      | Value             |
+        | ------ | --------- | ----------------- |
+        | Socket | Curve     | `self`            |
+        | Socket | Selection | `self[selection]` |
+        | Socket | Mode      | 'Minimum Twist'   |
+
+        Parameters
+        ----------
+        normal : Vector, optional
+            socket 'Normal' (id: Normal)
+        
+
+        Returns
+        -------
+        Curve
+        """
+        node = Node('Set Curve Normal', {'Curve': self, 'Selection': self.get_selection(), 'Mode': 'Minimum Twist', 'Normal': normal})
+        self._jump(node._out)
+        return self._domain_to_geometry
+
+    def set_normal_z_up(self, normal: Vector = None):
+        """ > Node <&Node Set Curve Normal>
+
+        > ***Jump*** : Socket refers to node output socket after the call
+
+        **Fixed values**
+
+        | Kind   | Name      | Value             |
+        | ------ | --------- | ----------------- |
+        | Socket | Curve     | `self`            |
+        | Socket | Selection | `self[selection]` |
+        | Socket | Mode      | 'Z up'            |
+
+        Parameters
+        ----------
+        normal : Vector, optional
+            socket 'Normal' (id: Normal)
+        
+
+        Returns
+        -------
+        Curve
+        """
+        node = Node('Set Curve Normal', {'Curve': self, 'Selection': self.get_selection(), 'Mode': 'Z up', 'Normal': normal})
+        self._jump(node._out)
+        return self._domain_to_geometry
+
+    def set_normal_free(self, normal: Vector = None):
+        """ > Node <&Node Set Curve Normal>
+
+        > ***Jump*** : Socket refers to node output socket after the call
+
+        **Fixed values**
+
+        | Kind   | Name      | Value             |
+        | ------ | --------- | ----------------- |
+        | Socket | Curve     | `self`            |
+        | Socket | Selection | `self[selection]` |
+        | Socket | Mode      | 'Free'            |
+
+        Parameters
+        ----------
+        normal : Vector, optional
+            socket 'Normal' (id: Normal)
+        
+
+        Returns
+        -------
+        Curve
+        """
+        node = Node('Set Curve Normal', {'Curve': self, 'Selection': self.get_selection(), 'Mode': 'Free', 'Normal': normal})
+        self._jump(node._out)
+        return self._domain_to_geometry
+
     def set_radius(self, radius: Float = None):
         """ > Node <&Node Set Curve Radius>
 
@@ -2341,7 +2422,7 @@ class Curve(Socket):
         raise NodeError('Property Curve.normal is write only.')
 
     @normal.setter
-    def normal(self, mode: Literal['Minimum Twist', 'Z Up', 'Free'] = None):
+    def normal(self):
         """ > Node <&Node Set Curve Normal>
 
         > ***Jump*** : Socket refers to node output socket after the call
@@ -2352,19 +2433,14 @@ class Curve(Socket):
         | ------ | --------- | ----------------- |
         | Socket | Curve     | `self`            |
         | Socket | Selection | `self[selection]` |
+        | Socket | Mode      | 'Free'            |
         | Socket | Normal    | ignored           |
-
-        Parameters
-        ----------
-        mode : menu='Minimum Twist', optional
-            ('Minimum Twist', 'Z Up', 'Free')
-        
 
         Returns
         -------
         Curve
         """
-        node = Node('Set Curve Normal', {'Curve': self, 'Selection': self.get_selection(), 'Mode': mode, 'Normal': None})
+        node = Node('Set Curve Normal', {'Curve': self, 'Selection': self.get_selection(), 'Mode': 'Free', 'Normal': None})
         self._jump(node._out)
         return self._domain_to_geometry
 

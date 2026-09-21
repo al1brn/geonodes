@@ -1,4 +1,4 @@
-# Generated 2026-07-22 07:37:34
+# Generated 2026-09-21 12:26:19
 
 from __future__ import annotations
 from .. sockettype import SocketType
@@ -3680,3 +3680,4 @@ class SND:
 # Create one single instance to access properties
 
 snd = SND()
+
