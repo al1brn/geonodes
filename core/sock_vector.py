@@ -136,6 +136,44 @@ class Vector(generated.Vector):
     # ====================================================================================================
     # Mix
 
+    @classmethod
+    def Mix(cls, a=None, b=None, factor=None, clamp_factor=True):
+        """ > Method <&Node Mix>
+
+        > [NOTE]
+        > Call mix_uniform or mix_non_uniform depending on the factor type
+
+        Information
+        -----------
+        - Parameter 'blend_type' : 'MIX'
+        - Parameter 'clamp_result' : False
+        - Parameter 'data_type' : 'VECTOR'
+        - Parameter 'factor_mode' : 'UNIFORM' or 'NON_UNIFORM' depending on factor argument
+
+        Parameters
+        ----------
+        a : Vector
+            socket 'B' (id: B_Vector)
+
+        b : Vector
+            socket 'B' (id: B_Vector)
+
+        factor : Float or Vector
+            socket 'Factor'
+
+        clamp_factor : bool
+            parameter 'clamp_factor'
+
+
+        Returns
+        -------
+        Vector
+        """
+        if utils.is_vector_like(factor):
+            return Node('Mix', a=a, b=b, factor=factor, clamp_factor=clamp_factor, data_type='VECTOR', factor_mode='NON_UNIFORM')._out
+        else:
+            return Node('Mix', a=a, b=b, factor=factor, clamp_factor=clamp_factor, data_type='VECTOR', factor_mode='UNIFORM')._out
+
     def mix(self, b=None, factor=None, clamp_factor=True):
         """ > Method <&Node Mix>
 

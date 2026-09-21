@@ -43,33 +43,42 @@ Bernard, under the GNU General Public License version 3, as in this project.
 
 from copy import deepcopy
 import math
+from math import radians
 import bpy
 
 from geonodes import *
 
 CLOSURES_NAME = "Closures"
 
+# ====================================================================================================
+# Body structures
+# ====================================================================================================
+
+# Main Bundle containing body part bundles
+
 OBS_BUNDLE_SIGNATURE = {
-    "Location" : Bundle,
-    "Body" : Bundle,
-    "Head" : Bundle,
-    "Left Arm": Bundle,
-    "Right Arm" : Bundle,
-    "Left Hand": Bundle,
-    "Right Hand" : Bundle,
-    "Left Leg" : Bundle,
-    "Right Leg" : Bundle,
-    "Walk": Bundle,
-    "Cloth": Bundle,
+    "Location"    : Bundle,
+    "Body"        : Bundle,
+    "Head"        : Bundle,
+    "Left Arm"    : Bundle,
+    "Right Arm"   : Bundle,
+    "Left Hand"   : Bundle,
+    "Right Hand"  : Bundle,
+    "Left Leg"    : Bundle,
+    "Right Leg"   : Bundle,
+    "Walk"        : Bundle,
+    "Cloth"       : Bundle,
     CLOSURES_NAME : Bundle,
 }
 
+# Animated location
+
 LOCATION_DEFAULTS = {
-    "Time" : 0.0,                 # Simulated time
-    "Location" : (0.0, 0.0, 0.0), # Simulated location
-    "Distance" : 0.0,             # Simulated distance
-    "Direction" : 0.0,            # Current direction
-    "Phase" : 0.0,                # Current phase
+    "Time"      : 0.0,              # Simulated time
+    "Location"  : (0.0, 0.0, 0.0),  # Simulated location
+    "Distance"  : 0.0,              # Simulated distance
+    "Direction" : 0.0,              # Current direction
+    "Phase"     : 0.0,              # Current phase
 }
 
 BODY_DEFAULTS = {
@@ -77,117 +86,151 @@ BODY_DEFAULTS = {
     "Body Rotation": (0.0, 0.0, 0.0),
 }
 
+# Head default settings
+
 HEAD_DEFAULTS = {
-    "Horizontal": 0.0,
-    "Vertical": 0.0,
-    "Lateral": 0.0,
-    "Eyes Horizontal": 0.0,
-    "Eyes Vertical": 0.0,
-    "Left Eye Horizontal": 0.0,
-    "Left Eye Vertical": 0.0,
-    "Right Eye Horizontal": 0.0,
-    "Right Eye Vertical": 0.0,
-    "Eyelid": 0.25,
-    "Left Eyelid": 0.0,
-    "Right Eyelid": 0.0,
-    "Left Eyelid Tilt": 0.0,
-    "Right Eyelid Tilt": 0.0,
+    "Horizontal"            : 0.0,
+    "Vertical"              : 0.0,
+    "Lateral"               : 0.0,
+    "Eyes Horizontal"       : 0.0, 
+    "Eyes Vertical"         : 0.0,
+    "Left Eye Horizontal"   : 0.0,
+    "Left Eye Vertical"     : 0.0,
+    "Right Eye Horizontal"  : 0.0,
+    "Right Eye Vertical"    : 0.0,
+    "Eyelid"                : 0.25,
+    "Left Eyelid"           : 0.0,
+    "Right Eyelid"          : 0.0,
+    "Left Eyelid Tilt"      : 0.0,
+    "Right Eyelid Tilt"     : 0.0,
 }
 
-# Templates used to generate flat hand attributes, not nested bundles.
-ag10 = math.radians(-10)
-
-FINGER_DEFAULTS = {"Bend": ag10, "Fold": ag10, "Lateral": 0.0}
-THUMB_DEFAULTS = {**FINGER_DEFAULTS, "Pinch": 0.0}
-
-HAND_DEFAULTS = {
-    **{f"Thumb {name}": 0.0 for name in THUMB_DEFAULTS.keys()},
-    **{
-        f"Finger {i} {name}": value
-        for i in range(1, 5)
-        for name, value in FINGER_DEFAULTS.items()
-    },
-}
+# Arm default settings
 
 ARM_DEFAULTS = {
-    "Location": (0.0, 0.0, 0.0),
-    "Lateral": 0.0,
-    "Forward": 0.0,
-    "Elbow": 0.0,
-    "Hand Twist": 0.0,
-
+    "Lateral"       : 0.0,
+    "Forward"       : 0.0,
+    "Elbow"         : 0.0,
+    "Hand Flap"     : 0.0,
+    "Hand Twist"    : 0.0,
 }
+
+# Foot default settings
 
 FOOT_DEFAULTS = {
-    "Location": (0.0, 0.0, 0.0),
-    "Tilt": 0.0,
-    "Twist": 0.0,
-    "Tiptoe": 0.0,
+    "Location"  : (0.0, 0.0, 0.0),
+    "Tilt"      : 0.0,
+    "Twist"     : 0.0,
+    "Tiptoe"    : 0.0,
 }
 
-# The current character exposes only foot controls for its legs.
+# Foot is controlled by legs
+
 LEG_DEFAULTS = {f"Foot {name}": value for name, value in FOOT_DEFAULTS.items()}
 
 # Shared clock: Time is in seconds, Speed in m/s, Walk Distance in meters.
+
 WALK_DEFAULTS = {
-    "Time": 0.0,
-    "Speed": 0.5,
-    "Pace": 0.5,
-    "Left Amplitude": 0.0,
-    "Right Amplitude": 0.0,
-    "Walk Distance": 0.0,
+    "Time"              : 0.0,
+    "Speed"             : 0.5,
+    "Pace"              : 0.5,
+    "Left Amplitude"    : 0.0,
+    "Right Amplitude"   : 0.0,
+    "Walk Distance"     : 0.0,
 }
 
 # Normalized left-side gait. Step Length is the distance per full cycle, in meters.
 # Foot Location includes the left foot's spacing; the animator mirrors X for right.
-PACE_SIGNATURE = (
-    {"Phase": Float, "Step Length": Float, "Step Height": Float},
-    {"Foot Location": Vector, "Foot Tilt": Float,
-     "Body Height": Float, "Body Forward Tilt": Float, "Body Side Tilt": Float,
-     "Arm Forward": Float, "Arm Elbow": Float,},
-)
-
-HAND_POSE_ANGLES = {
-    "Thumb Pinch": Float, "Thumb Bend": Float, "Thumb Fold": Float, "Thumb Lateral": Float,
-}
-for i in range(4):
-    for ag in FINGER_DEFAULTS.keys():
-        HAND_POSE_ANGLES[f"Finger {1 + i} {ag}"] = Float
-
-HAND_POSE_SIGNATURE = ({"Factor": Float}, HAND_POSE_ANGLES)
-
+PACE_SIGNATURE = ({
+        "Phase"             : Float,
+        "Step Length"       : Float,
+        "Step Height"       : Float,
+    },{
+        "Foot Location"     : Vector,
+        "Foot Tilt"         : Float,
+        "Body Height"       : Float, 
+        "Body Forward Tilt" : Float, 
+        "Body Side Tilt"    : Float,
+        "Arm Forward"       : Float, 
+        "Arm Elbow"         : Float,
+    })
 
 CLOTH_DEFAULTS = {
-    "Seed": 0,
-    "Amplitude": 0.0,
-    "Walk Amplitude": 0.0,
-    "Noise Scale": 3.0,
-    "Speed": 1.0,
+    "Seed"              : 0,
+    "Amplitude"         : 0.0,
+    "Walk Amplitude"    : 0.0,
+    "Noise Scale"       : 3.0,
+    "Speed"             : 1.0,
 }
+
+# ----------------------------------------------------------------------------------------------------
+# Hand
+# ----------------------------------------------------------------------------------------------------
+
+FINGER_NAMES = ('Thumb',) + tuple(f"Finger {i}" for i in range(1, 5))
+
+LATERAL = 'Lateral'
+FOLD    = 'Fold'
+
+FINGER_POSE_SIG = {
+    LATERAL : Float,
+    FOLD    : Vector,
+}
+
+HAND_POSE_SIG = {**{f"{name} {i}" : value for name, value in FINGER_POSE_SIG.items() for i in range(5)}}
+
+# Finger : [Lateral, Fold.X, Fold.Y, Fold.Z]
+# Finger i copy last finger available
+# Angles in degrees
+
+HAND_POSE_PRESETS = {
+    'Flat':     [[0, 0, 0, 0],      [0, 0, 0, 0]],
+    'Rest' :    [[-3, 10, 10, 10],  [1, 5, 5, 5]],
+    'Victory':  [[-25, 4, 35, 35],  [15, 0, 0, 0], [-15, 0, 0, 0], [0, 80, 80, 80]],
+    'Point At': [[-25, 0, 30, 45],  [0, 80, 80, 80]],
+    'Fist':     [[3, 35, 55, 48],   [0, 90, 90, 90]],
+    'Handle':   [[23, 47, 43, 44],  [0, 60, 60,60]],
+    'Thumb Up': [[3, 35, 55, 48],   [0, 90, 90, 90]],
+}
+HAND_DEFAULTS = {
+    'Lateral 0': radians(-3), 'Fold 0': (radians(10), radians(10), radians(10)),
+    'Lateral 1': radians(1),  'Fold 1': (radians(5), radians(5), radians(5)),
+    'Lateral 2': radians(1),  'Fold 2': (radians(5), radians(5), radians(5)),
+    'Lateral 3': radians(1),  'Fold 3': (radians(5), radians(5), radians(5)),
+    'Lateral 4': radians(1),  'Fold 4': (radians(5), radians(5), radians(5)),
+}
+
+HAND_POSE_FUNC = ({'Factor': Float}, HAND_POSE_SIG)
+
+# ----------------------------------------------------------------------------------------------------
+# Observer
+# ----------------------------------------------------------------------------------------------------
 
 OBSERVER_BUNDLE_DEFAULTS = {
-    "Cloth": deepcopy(CLOTH_DEFAULTS),
-    "Location" : deepcopy(LOCATION_DEFAULTS),
-    "Walk": deepcopy(WALK_DEFAULTS),
-    "Body": deepcopy(BODY_DEFAULTS),
-    "Head": deepcopy(HEAD_DEFAULTS),
-    "Left Arm": deepcopy(ARM_DEFAULTS),
-    "Right Arm": deepcopy(ARM_DEFAULTS),
-    "Left Hand": deepcopy(HAND_DEFAULTS),
-    "Right Hand": deepcopy(HAND_DEFAULTS),
-    "Left Leg": deepcopy(LEG_DEFAULTS),
-    "Right Leg": deepcopy(LEG_DEFAULTS),
+    "Cloth"         : deepcopy(CLOTH_DEFAULTS),
+    "Location"      : deepcopy(LOCATION_DEFAULTS),
+    "Walk"          : deepcopy(WALK_DEFAULTS),
+    "Body"          : deepcopy(BODY_DEFAULTS),
+    "Head"          : deepcopy(HEAD_DEFAULTS),
+    "Left Arm"      : deepcopy(ARM_DEFAULTS),
+    "Right Arm"     : deepcopy(ARM_DEFAULTS),
+    "Left Hand"     : deepcopy(HAND_DEFAULTS),
+    "Right Hand"    : deepcopy(HAND_DEFAULTS),
+    "Left Leg"      : deepcopy(LEG_DEFAULTS),
+    "Right Leg"     : deepcopy(LEG_DEFAULTS),
 }
 
-OBSERVER_BUNDLE_DEFAULTS["Left Arm"]["Location"] = (-0.375, 0.0, 1.25)
-OBSERVER_BUNDLE_DEFAULTS["Right Arm"]["Location"] = (0.375, 0.0, 1.25)
+#OBSERVER_BUNDLE_DEFAULTS["Left Arm"]["Location"] = (-0.375, 0.0, 1.25)
+#OBSERVER_BUNDLE_DEFAULTS["Right Arm"]["Location"] = (0.375, 0.0, 1.25)
 OBSERVER_BUNDLE_DEFAULTS["Left Leg"]["Foot Location"] = (-1.0 / 6.0, 0.0, 0.0)
 OBSERVER_BUNDLE_DEFAULTS["Right Leg"]["Foot Location"] = (1.0 / 6.0, 0.0, 0.0)
 
 # Retain the original public name for callers using create_pose/new_bundle.
 POSE_DEFAULTS = OBSERVER_BUNDLE_DEFAULTS
 
-# Observers dims
+# ----------------------------------------------------------------------------------------------------
+# Observer dimensions
+# ----------------------------------------------------------------------------------------------------
 
 BODY_HEIGHT = 1.224
 # Local body Z above which the coat stays fixed; influence grows toward the hem.
@@ -204,6 +247,155 @@ HEAD_VRT_MAX = math.radians(40)
 EYES_HRZ_MAX = math.radians(35)
 EYES_VRT_MAX = math.radians(25)
 
+# ====================================================================================================
+# Hand pose utilities
+# ====================================================================================================
+
+# ----------------------------------------------------------------------------------------------------
+# Get a preset pose
+# ----------------------------------------------------------------------------------------------------
+
+def get_preset_hand_pose(preset=None):
+    """ Return a preset hand pose dict
+    """
+    
+    if preset is None:
+        preset = HAND_POSE_PRESETS['Flat']
+    
+    if isinstance(preset, str):
+        preset = HAND_POSE_PRESETS[preset]
+    
+    hand_pose = {}
+    for i in range(5):            
+        if i >= len(preset):
+            p = preset[-1]
+        else:
+            p = preset[i]
+            
+        hand_pose[LATERAL + f" {i}"] = radians(p[0])
+        hand_pose[FOLD + f" {i}"] = (radians(p[1]), radians(p[2]), radians(p[3]))
+                    
+    return hand_pose
+
+# ----------------------------------------------------------------------------------------------------
+# Finger Angle inputs
+# ----------------------------------------------------------------------------------------------------
+
+def create_finger_inputs(i_finger=0):
+    """ Create input sockets for a finger
+    
+    Returns
+    -------
+    - dict : finger pose
+    """
+
+    raw = {LATERAL: LATERAL, FOLD: FOLD}
+    num = {LATERAL: f"{LATERAL} {i_finger}", FOLD: f"{FOLD} {i_finger}"}
+
+    if i_finger is None:
+        keys = raw
+        names = raw
+
+    #elif i_finger == 0:
+    #    keys  = num
+    #    names = raw
+
+    else:
+        keys  = num
+        names = num
+    
+    """
+    keys = {LATERAL: f"{LATERAL} {i_finger}", FOLD: f"{FOLD} {i_finger}"}
+    if i_finger == 0:
+        names = {LATERAL: LATERAL, FOLD: FOLD}
+    else:
+        names = keys
+    """
+        
+    d = {}
+    d[keys[LATERAL]] = Float.Angle(0, names[LATERAL], -pi, pi, shape='Single')
+    d[keys[FOLD]]    = Vector.Euler(0, names[FOLD], shape='Single')
+
+        
+    return d
+
+# ----------------------------------------------------------------------------------------------------
+# Hand pose inputs
+# ----------------------------------------------------------------------------------------------------
+
+def create_hand_pose_inputs():
+    """ Create input sockets for the hand
+    
+    Arguments
+    ---------
+    - is_thumb (bool = False) : thumb or finger
+    - full (bool = False) : ask second fold
+
+    Returns
+    -------
+    - dict : hande pose
+    """
+    
+    params = {}
+    for i in range(5):
+        d = create_finger_inputs(i)
+        params = {**params, **d}
+                
+    return params
+
+# ----------------------------------------------------------------------------------------------------
+# Hand pose closure
+# ----------------------------------------------------------------------------------------------------
+
+def create_hand_pose_func(pose0, pose1):
+    """ Create a hande pose func (i.e. Closure)
+    
+    Arguments
+    ---------
+    - pose0 (dict) : start hand pose
+    - pose1 (dict) : end hand pose
+    """
+    
+    is_str0 = isinstance(pose0, str)
+    is_str1 = isinstance(pose1, str)
+    
+    # ---------------------------------------------------------------------------
+    # Constant function
+    # ---------------------------------------------------------------------------
+    
+    if (is_str0 and is_str1) and (pose0 == pose1):
+        pose = get_preset_hand_pose(pose0)
+        with Closure() as func:
+            factor = Float(1.0, "Factor")
+            
+            for k, v in pose.items():
+                HAND_POSE_SIG[k](v).out(k)
+                
+            # Avoid warning for unusing factor
+            factor.out("Factor")
+                
+        return func
+    
+    # ---------------------------------------------------------------------------
+    # Actual function
+    # ---------------------------------------------------------------------------
+
+    if is_str0:
+        pose0 = get_preset_hand_pose(pose0)
+        
+    if is_str1:
+        pose1 = get_preset_hand_pose(pose1)
+    
+    with Closure() as func:
+        factor = Float(1.0, "Factor")
+        
+        final = {}
+        
+        for k, v in pose0.items():
+            final[k] = HAND_POSE_SIG[k].Mix(v, pose1[k], factor=factor, clamp_factor=True)._lc(k)
+            final[k].out(k)
+        
+    return func
 
 # =============================================================================================================================
 # Bundles management
@@ -234,7 +426,7 @@ def set_bundle_parameters(bundles, name, parameters):
     return bundle
 
 # -----------------------------------------------------------------------------------------------------------------------------
-# Class
+# Bundle management wrapper class
 # -----------------------------------------------------------------------------------------------------------------------------
 
 class BundleParams:
@@ -274,6 +466,11 @@ class BundleParams:
 
         return self._bundle_socket
 
+    @bundle_socket.setter
+    def bundle_socket(self, bundle):
+        self._bundle_socket = bundle
+        self._parameters = None
+
     @property
     def parameters(self):
         if self.is_dynamic:
@@ -309,7 +506,10 @@ class BundleParams:
 
     def get_dynamic(self, name, socket_type):
         return self._bundle_socket.get_item(name, socket_type=socket_type)
-    
+
+# -----------------------------------------------------------------------------------------------------------------------------
+# All bundles management wrapper class
+# -----------------------------------------------------------------------------------------------------------------------------
 
 class ObserverBundles:
     """Read/edit pose bundles, optionally exposing global and per-part influence.
@@ -812,221 +1012,136 @@ def build_animation():
     # ====================================================================================================
 
     # ----------------------------------------------------------------------------------------------------
-    # Get hand pose presets
+    # Group selecting a preset hand pose
     # ----------------------------------------------------------------------------------------------------
-
-    def get_hand_pose_presets():
-        """ Returns a dict with all preset hand preset configurations
-        """
-
-        def full_key(key):
-            full_name = {'p': "Pinch", 'b': "Bend", 'f': "Fold", 'l': "Lateral"}
-
-            key = key.lower()
-            if len(key) == 1:
-                return "Thumb " + full_name[key]
-            else:
-                return f"Finger {key[1]} {full_name[key[0]]}"
-
-        def get_hand_pose(**kwargs):
-            from math import radians
-            hand_pose = deepcopy(HAND_DEFAULTS)
-            for key, value in kwargs.items():
-                hand_pose[full_key(key)] = radians(value)
-            return hand_pose
-
-        return {
-            "Rest"      : get_hand_pose(b1=-10, f1=-10, b2=-10, f2=-10, b3=-10, f3=-10, b4=-10, f4=-10),
-            "Flat"      : get_hand_pose(b1=0, f1=0, b2=0, f2=0, b3=0, f3=0, b4=0, f4=0),
-            "Thumb Up"  : get_hand_pose(b=13, l=-28, b1=-75, f1=-90, b2=-75, f2=-90, b3=-75, f3=-90, b4=-75, f4=-90),
-            "Five"      : get_hand_pose(l1=-20, l2=-10, l3=10, l4=20),
-            "Victory"   : get_hand_pose(l1=-20, l2=20, b3=-75, f3=-90, b4=-75, f4=-90),
-            "Show"      : get_hand_pose(p=-28, b=-122, b2=-75, f2=-90, b3=-75, f3=-90, b4=-75, f4=-90),
-            "Fist"      : get_hand_pose(p=-76, b=-90, f=14, l=-87, b1=-75, f1=-105, b2=-75, f2=-105, b3=-75, f3=-105, b4=-75, f4=-105),
-            "Handle"    : get_hand_pose(p=-76, b=-60, f=14, l=-87, b1=-70, f1=-75, b2=-70, f2=-75, b3=-70, f3=-75, b4=-70, f4=-75),            
-        }        
-
+    
+    with GeoNodes("Obs Hand Get Preset Hand Pose Function", is_group=True):
+        
+        PR_NAMES = list(HAND_POSE_PRESETS.keys())
+        pose_index = Integer.MenuSwitch(
+            named_sockets={
+                **{name: i for i, name in enumerate(PR_NAMES)}},
+             menu=Input("Preset"))
+             
+        funcs = [create_hand_pose_func('Rest', name) for name in PR_NAMES]
+        func = Closure.IndexSwitch(*funcs, index=pose_index)
+        
+        func.out()
+        
+        
     # ----------------------------------------------------------------------------------------------------
-    # Preset hand config
+    # Group selecting a preset hand pose or a stored hand pose
     # ----------------------------------------------------------------------------------------------------
-
-    def get_hand_config(use_presets=True, use_sockets=False):
-        """ Returns a dict with one hand configuration
-        """
-
-        PRESETS = get_hand_pose_presets()
-
-        if use_presets:
-            options = {pose_name:i for i, pose_name in enumerate(PRESETS.keys())}
-            if use_sockets:
-                options["Custom"] = len(options)
-
-            name_index = Integer.MenuSwitch(
-                options,
-                menu=Input("Preset Poses"),
-                default_menu="Rest")
-
-        config = {}
-        for name, def_value in HAND_DEFAULTS.items():
-
-            if use_sockets:
-                in_angle = Float.Angle(def_value, name)
-
-            if use_presets:
-                values = [preset[name] for preset in PRESETS.values()]
-                if use_sockets:
-                    values.append(in_angle)
-
-                config[name] = Float.IndexSwitch(values, index=name_index)
-
-            else:
-                config[name] = in_angle
-
-        return config
-
+    
+    with GeoNodes("Obs Hand Get Hand Pose Function", is_group=True):
+        
+        closures = Bundle(None, "Closures")
+        
+        func = G().obs_hand_get_preset_hand_pose_function().link_inputs()
+        stored_name = String(None, "Stored")
+        
+        with Layout("Preset or stored closure"):
+            stored_func = closures.get_item("Hand Pose " + stored_name, socket_type='CLOSURE')
+            func.switch( (stored_name.length() > 0) & (stored_func.exists), stored_func)
+            
+        func.out()
+        
     # ----------------------------------------------------------------------------------------------------
-    # Preset closures
+    # Group returning a hand pose
     # ----------------------------------------------------------------------------------------------------
-
-    with GeoNodes("Obs Closure Hand Pose Preset", is_group=True):
-        """ Returns a preset closure providing hand configuration
-        """
-
-        presets = get_hand_pose_presets()
-
-        closures = {}
-        for pose_name, angles in presets.items():
-
-            with Closure() as cl:
-                factor = Float(1.0, name="Factor")
-
-                base_name = "Flat" if pose_name == "Rest" else "Rest"
-
-                for name, value in presets[base_name].items():
-                    Float(value).mix(presets[pose_name][name], factor=factor).out(name)
-
-            closures[pose_name] = cl
-
-        with Layout("Counter"):
-            with Closure() as counter:
-                factor = Float(1.0, name="Factor")
-
-                # Five successive intervals: thumb, then fingers 1 through 4.
-                for index, prefix in enumerate(("Thumb", "Finger 1", "Finger 2", "Finger 3", "Finger 4")):
-                    with Layout(prefix):
-                        progress = factor.map_range_smooth_step(
-                            index / 5.0, (index + 1) / 5.0)
-                        target = presets["Thumb Up"] if index == 0 else presets["Flat"]
-                        for name, value in presets["Fist"].items():
-                            if name.startswith(prefix + " "):
-                                target_angle = target[name]
-                                if index != 0 and name.endswith(" Lateral"):
-                                    target_angle = presets["Five"][name]
-                                Float(value).mix(target_angle, factor=progress).out(name)
-
-            closures["Counter"] = counter
-
-        hand_pose = Closure.MenuSwitch(closures, menu=Input("Preset"), default_menu="Rest")
-
-        hand_pose.out("Hand Pose")
-
+    
+    with GeoNodes("Obs Hand Get Pose", is_group=True):
+        
+        closures = Bundle(None, "Closures")
+        
+        func = G().obs_hand_get_hand_pose_function(closures=closures).link_inputs()
+        factor = Float.Factor(1.0, "Factor", 0, 1)
+        
+        with Panel("Changes"):
+            in_params = create_hand_pose_inputs()
+            
+        with Layout("Evaluate Closure"):
+            node = func.evaluate(factor=factor, signature=HAND_POSE_FUNC).node
+            
+            for name, delta in in_params.items():
+                (node[name] + delta).out(name)
+            
     # ----------------------------------------------------------------------------------------------------
-    # Preset hand pos function
+    # Modifier : Store a custom Hand Pose
     # ----------------------------------------------------------------------------------------------------
-
-    def get_hand_pos_func(closures=None):
-        """ Returns a closure for hand configuration
-        """
-        use_stored = closures is not None
-        if use_stored:
-            stored_name = String(name="Stored Name")
-
-            with Layout("Stored Closure"):
-                stored_func = closures.bundle_socket.get_item(stored_name, socket_type='CLOSURE')
-                stored_exists = (stored_name.length() != 0) & stored_func.exists
-
-        preset_func = G().obs_closure_hand_pose_preset().link_inputs()
-
-        if use_stored:
-            preset_func.switch(stored_exists, stored_func)
-
-        return preset_func
-
-    # ----------------------------------------------------------------------------------------------------
-    # Create a hand pose
-    # ----------------------------------------------------------------------------------------------------
-
-    with GeoNodes("Obs Closure Create Hand Pose", is_group=False):
+    
+    with GeoNodes("Obs Hand Store Hand Pose", is_group=False):
 
         geometry = Geometry()
         bundles = ObserverBundles(geometry, use_factor=False)
+        closures = bundles[CLOSURES_NAME].bundle_socket
 
-        hand_pose_name = String("No Name", name="Store Name")
-        relative = Boolean(False, "Relative")
+        store_name = String("No Name", "Name")
+        
+        with Panel("Pose 0"):
+            node0 = G().obs_hand_get_pose(closures=closures).link_inputs().node
+            pose0 = {}
+            for name in HAND_POSE_SIG.keys():
+                pose0[name] = node0[name]
+            
+            
+        with Panel("Pose 1"):
+            node1 = G().obs_hand_get_pose(closures=closures).link_inputs().node
+            pose1 = {}
+            for name in HAND_POSE_SIG.keys():
+                pose1[name] = node1[name]
+        
+        func = create_hand_pose_func(pose0, pose1)
+        closures.set_item('Hand Pose' + store_name, func)
+        bundles[CLOSURES_NAME].bundle_sockets = closures
+        bundles.update().out()
 
-        with Panel("Base Pose"):
-            from_func = get_hand_pos_func(bundles[CLOSURES_NAME])
-
-        with Panel("Pose"):
-            ag1 = get_hand_config(use_presets=False, use_sockets=True)
-
-        with Layout("Base config"):
-            base_node = from_func.evaluate(factor=1.0, signature=HAND_POSE_SIGNATURE).node
-
-        with Closure() as hand_pose:
-            factor = Float(1.0, name="Factor")
-            for name, v1 in ag1.items():
-                with Layout(f"Angle {name}"):
-                    base_value = base_node[name]
-                    v0 = Float(base_value).mix(v1, factor=factor, clamp_factor=True)
-                    v1 = base_value + v1*factor
-                    v0.switch(relative, v1).out(name)
-
-        stored = G().obs_bundle_add_closure(geometry, name=hand_pose_name, closure=hand_pose)
-        geometry.switch(hand_pose_name.length() != 0, stored)
         geometry.out()
-        hand_pose.out("Hand Pose")
 
     # ----------------------------------------------------------------------------------------------------
     # Apply Hand pose
     # ----------------------------------------------------------------------------------------------------
 
-    with GeoNodes("Obs Anim Hand"):
+    with GeoNodes("Obs Anim Hand", is_group=False):
 
         geometry = Geometry()
         bundles = ObserverBundles(geometry)
+
+        closures = bundles[CLOSURES_NAME].bundle_socket
 
         use_left = Boolean(True, "Left Hand")
         use_right = Boolean(True, "Right Hand")
 
         pose_factor = Float(0.0, "Pose Factor", 0, 1)
-        with Panel("From"):
-            pose0 = get_hand_pos_func(bundles[CLOSURES_NAME])
-            fac0 = Float.Factor(1, "Factor", 0, 1)
 
-        with Panel("To"):
-            pose1 = get_hand_pos_func(bundles[CLOSURES_NAME])
-            fac1 = Float.Factor(1, "Factor", 0, 1)
+        with Panel("Pose 0"):
+            node0 = G().obs_hand_get_pose(closures=closures).link_inputs().node
+            pose0 = {}
+            for name in HAND_POSE_SIG.keys():
+                pose0[name] = node0[name]
+            
+        with Panel("Pose 1"):
+            node1 = G().obs_hand_get_pose(closures=closures).link_inputs().node
+            pose1 = {}
+            for name in HAND_POSE_SIG.keys():
+                pose1[name] = node1[name]
 
-        closures = bundles[CLOSURES_NAME].bundle_socket
+        func = create_hand_pose_func(pose0, pose1)
+        node = func.evaluate(factor=pose_factor, signature=HAND_POSE_FUNC).node
 
         left_hand = bundles["Left Hand"]
         right_hand = bundles["Right Hand"]
 
-        node0 = pose0.evaluate(factor=fac0, signature=HAND_POSE_SIGNATURE).node
-        node1 = pose1.evaluate(factor=fac1, signature=HAND_POSE_SIGNATURE).node
-
-        for name in HAND_POSE_ANGLES.keys():
-            value = node0[name].mix(node1[name], factor=pose_factor)
+        for name in HAND_POSE_SIG.keys():
+            value = node[name]
             left_hand[name].switch(use_left, value)
             right_hand[name].switch(use_right, value)
 
         bundles.update().out()
 
-
-    # ----------------------------------------------------------------------------------------------------
+    # ====================================================================================================
     # Arm animation: independent controls for each angle
-    # ----------------------------------------------------------------------------------------------------
+    # ====================================================================================================
 
     with GeoNodes("Obs Anim Arm"):
         geometry = Geometry()
@@ -1518,6 +1633,288 @@ def build_observer():
     # ====================================================================================================
 
     # ====================================================================================================
+    # Building the hand
+    # ====================================================================================================
+
+    # ----------------------------------------------------------------------------------------------------
+    # One Finger
+    # ----------------------------------------------------------------------------------------------------
+
+    with GeoNodes(".Obs Hand Finger", is_group=True):
+        
+        length = Float(1.0, "Size")
+        
+        d = create_finger_inputs(i_finger=None)
+        lateral = d[LATERAL]
+        bend, fold, fold2 = d[FOLD].xyz
+        
+        bend_factor = Float.Factor(0.0, "Bend Factor")
+        subdiv = Integer(5, "Palm Subdivisions", 0, 20)
+        position = Vector(0, "Position")
+        base_offset = Vector(0, "Base Offset")
+
+        with Layout("Full Bones"):
+            # Base Segment
+            line = G().build_poly_line(length=length*1.0, angle=pi/2 + lateral/2, plane='YZ')
+            # Bend 
+            line = G().build_poly_line(line, length=length*0.4, angle=bend, plane='XZ')
+            
+            line = G().build_poly_line(line, length=length*0.3, angle=fold, plane='XZ')
+            line = G().build_poly_line(line, length=length*0.3, angle=fold2, plane='XZ')
+
+            with Layout("Finger Lateral"):
+                pivot = line.points.sample_index(nd.position, index=1)
+                line.points[nd.index > 1].position = pivot + Rotation((lateral/2, 0, 0)) @ (nd.position - pivot)
+                
+            with Layout("Additional Bend"):
+                ag = bend.map_range(0, radians(15), 0, radians(15)*bend_factor, interpolation_type='Smooth Step')
+                line.transform(rotation=(0, ag, 0))
+
+            line = G().round_joints(line, selection=nd.index >= 1, resolution=2, length=0.07)
+
+            line = G().subdivide_segment(line, index=0, subdivisions=subdiv)
+            line.points.radius = 1.0
+            line.points[nd.index < subdiv].radius = 1.2
+            line.points[nd.index == subdiv].radius = 1.1
+            
+            line.points[nd.index == 0].offset = base_offset
+            line.offset = position
+            
+        with Layout("Split Palm / Finger bones"):
+            palm_bones = Curve(line).points[nd.index > subdiv + 3].delete()
+            finger_bones = Curve(line).points[nd.index < subdiv + 3].delete()
+
+        with Layout("Finger Mesh"):
+            if False:
+                finger_mesh = finger_bones.to_mesh(
+                    profile_curve = Curve.Circle(radius=0.15, resolution=8),
+                    fill_caps=False)
+                finger_mesh = meshutil.set_cylinder_topology(finger_mesh, finger_bones.points.count, 8)
+                finger_mesh = G().close_cylinder(
+                    finger_mesh,
+                    rings = 3,
+                    height = 0.15,
+                    bottom =True,
+                    top = True,
+                    flatten_last = False,
+                    append = True,
+                    )
+                finger_mesh.flip_faces()
+                finger_mesh.faces.shade_smooth=True
+                
+            else:
+                finger_mesh = finger_bones.curve_to_tube(
+                        scale=0.15,
+                        profile_resolution=8,
+                        caps=True,
+                        caps_type='Round',
+                        )
+
+        finger_mesh.out("Mesh")
+        palm_bones.out("Palm Bones")
+        finger_bones.out("Finger Bones")
+        line.out("Bones")
+
+    # ----------------------------------------------------------------------------------------------------
+    # Thumb
+    # ----------------------------------------------------------------------------------------------------
+
+    with GeoNodes(".Obs Hand Thumb", is_group=True):
+
+        length = 1.0
+
+        d = create_finger_inputs(i_finger=None)
+        lateral = d[LATERAL]
+        bend, fold, pinch = d[FOLD].xyz
+        position = Vector(None, "Position")
+
+        with Layout("Prepare"):
+            ph = length/3 
+
+        line = G().build_poly_line(length=length*0.5, angle=3*pi/4 + lateral, plane='YZ')
+        line = G().build_poly_line(line, length=ph, angle=-bend, plane='YZ')
+        line = G().build_poly_line(line, length=ph, angle=-fold, plane='YZ')
+
+        #line.transform(rotation=(0, 0, math.radians(35)))
+        #line.transform(rotation=(math.radians(45) + lateral, 0, 0))
+        line.transform(rotation=(0, pinch, pinch))
+        
+        line.offset = position
+        
+        with Layout("Radius"):
+            line.radius = nd.spline_parameter().factor.map_range(0, 0.8, 1.5, 1.1)
+
+        with Layout("Thumb Mesh"):
+            profile = G().round_joints(line, resolution=2, length=0.07)
+            thumb_mesh = profile.curve_to_tube(
+                scale=0.15,
+                profile_resolution=10,
+                caps=True,
+                caps_type='Round',
+            )
+            
+        thumb_mesh.out("Mesh")
+        line.out("Finger Bones")
+
+    # ----------------------------------------------------------------------------------------------------
+    # Hand
+    # ----------------------------------------------------------------------------------------------------
+
+    with GeoNodes("Obs Mesh Hand", is_group=False):
+
+        DELTA_X = -0.08
+        DELTA_Y = 0.3
+        SUBDIV = 7
+        
+        size = Float(1.0, "Size", 0.001)
+        is_right = Boolean(False, "Right Hand")
+        
+        with Layout("Finger bones"):
+
+            with Panel("Fingers"):
+                thumb = G()._obs_hand_thumb(
+                    lateral = Float.Angle(0.0, "Lateral 0"),
+                    fold = Vector.Euler(0.0, "Fold 0"),
+                    position = (0, DELTA_Y*(-1.4), 0.1)
+                ).link_inputs()
+
+                finger1 = G()._obs_hand_finger(
+                    lateral = Float.Angle(0.0, "Lateral 1"),
+                    fold = Vector.Euler(0.0, "Fold 1"),
+                    size=1.0, 
+                    bend_factor=0.1, 
+                    palm_subdivisions=SUBDIV,
+                    position=(0, DELTA_Y*(-1.5), 0),
+                    base_offset=(0, DELTA_Y*.2, 0),
+                    ).link_inputs()
+
+                finger2 = G()._obs_hand_finger(
+                    lateral = Float.Angle(0.0, "Lateral 2"),
+                    fold = Vector.Euler(0.0, "Fold 2"),
+                    size=1.1, 
+                    bend_factor=0.1, 
+                    palm_subdivisions=SUBDIV,
+                    position=(DELTA_X, DELTA_Y*(-0.5), 0),
+                    base_offset=(0, DELTA_Y*.1, 0),
+                    ).link_inputs()
+
+                finger3 = G()._obs_hand_finger(
+                    lateral = Float.Angle(0.0, "Lateral 3"),
+                    fold = Vector.Euler(0.0, "Fold 3"),
+                    size=1.05, 
+                    bend_factor=0.5, 
+                    palm_subdivisions=SUBDIV,
+                    position=(DELTA_X, DELTA_Y*( 0.5), 0),
+                    base_offset=(0, -DELTA_Y*.1, 0),
+                    ).link_inputs()
+
+                finger4 = G()._obs_hand_finger(
+                    lateral = Float.Angle(0.0, "Lateral 4"),
+                    fold = Vector.Euler(0.0, "Fold 4"),
+                    size=0.95, 
+                    bend_factor=1.0, 
+                    palm_subdivisions=SUBDIV,
+                    position=(0, DELTA_Y*( 1.5), 0),
+                    base_offset=(0, -DELTA_Y*.2, 0),
+                    ).link_inputs()
+
+        material = Material("Obs Skin", "Material")
+
+        fingers = [thumb, finger1, finger2, finger3, finger4]
+        
+        with Layout("Palm Mesh"):
+            
+            thumb_bones = thumb.finger_bones
+            bones1 = Curve(finger1.palm_bones)
+            bones2 = Curve(finger2.palm_bones)
+            bones3 = Curve(finger3.palm_bones)
+            bones4 = Curve(finger4.palm_bones)
+            
+            n = bones1.points.count
+            fake = Curve.Line().resample(count=n)
+            segm = Curve(thumb_bones)
+            segm.points[nd.index > 1].delete()
+            segm = segm.resample(count = n)
+            
+            segm[(nd.index < 1) | (nd.index > 5)].position = bones1.points.sample_index(nd.position, index=nd.index)
+            
+            segm.radius = nd.spline_parameter().factor.map_range(0, 0.6, 1.6, 1.0)
+
+            palm_bones = segm + bones2 + bones3 + bones4
+            
+            palm_mesh = G().bones_envelope(
+                palm_bones,
+                cross_splines=True,
+                radius=nd.radius*0.15,
+                caps_height=0.1,
+                caps_top = False,
+                )
+                
+        with Layout("Final Hand"):
+            hand = palm_mesh + tuple(fingers)
+            hand.transform(scale=size)
+
+            right_hand = Mesh(hand).transform(scale=(-1, 1, 1)).flip_faces()
+            hand.switch(is_right, right_hand)
+
+            hand.faces.material = material
+
+        hand.out()
+
+    # ====================================================================================================
+    # Arm Curve
+    # ====================================================================================================
+
+    with GeoNodes("Obs Mesh Arm", is_group=True):
+
+        size = Float(0.7, "Size")
+        is_right = Boolean(True, "Right Arm")
+        location = Vector(0, "Location")
+        lateral = Float.Angle(0, "Lateral")
+        forward = Float.Angle(0, "Forward")
+        elbow = Float.Angle(0, "Elbow")
+        hand_flap = Float.Angle(0, "Hand Flap")
+        hand_twist = Float.Angle(0, "Hand Twist")
+        use_merge = Boolean(False, "Merge")
+
+        hand = Mesh(name="Hand")
+        
+        with Layout("Arm Bones"):
+            line = Curve.Line(end=(0, 0, -1.5)).resample(count=4)
+            line[nd.index==3].offset = (0, 0, 0.3)
+            
+            def rotate(index, rot, title="Rotation"):
+                with Layout(title):
+                    pivot = line.points.sample_index(nd.position, index=index)
+                    line[nd.index > index].position = pivot + Rotation(rot) @ (nd.position - pivot)
+                    
+            rotate(2, (0, hand_flap, 0), "Hand Flap")
+            rotate(1, (elbow, 0, 0), "Elbow")
+            rotate(0, (forward, 0, 0), "Forward")
+            rotate(0, (0, -lateral, 0), "Lateral")
+            
+            side_factor = Float.Switch(is_right, -1, 1)
+            line.position = nd.position * (side_factor*size, size, size)
+            line.offset = location*(side_factor, 1, 1)
+            
+        with Layout("Place Hand"):
+            hand_twist.switch(is_right, -hand_twist)
+            hand_twist = hand_twist
+            #hand_twist -= elbow
+            hand.transform(rotation=(0, 0, hand_twist))
+            
+            p0 = line.points.sample_index(nd.position, index=2)
+            p1 = line.points.sample_index(nd.position, index=3)
+            rot = Rotation().align_z_to_vector(p1 - p0, pivot_axis='X')
+            
+            hand.transform(rotation=rot)
+            hand.offset = p0
+        
+        hand.switch(use_merge, hand + line)
+        hand.out()
+
+
+    # ====================================================================================================
     # Articulated sausage
     # ====================================================================================================
 
@@ -1664,287 +2061,6 @@ def build_observer():
 
         mesh = curve.to_mesh(profile_curve=profile, scale=nd.radius)
         curve.switch(use_mesh, mesh).out()
-
-
-    # ====================================================================================================
-    # Finger
-    # ====================================================================================================
-
-    with GeoNodes("Obs Mesh Finger", is_group=True):
-
-        # oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
-
-        resol        = Integer(4, "Resolution", 1, 8)
-        length       = Float(1, "Length", 0)
-        radius       = Float(.12, "Radius", 0)
-        bend         = Float.Angle(0, "Bend", 0, pi/2, shape='Single')
-        fold         = Float.Angle(0, "Fold", 0, pi/2, shape='Single')
-        lateral      = Float.Angle(0, "Lateral", -pi/8, pi/8, shape='Single')
-
-        # oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
-
-        with Layout("Curve"):
-
-            ind = [nd.index.equal(i) for i in range(6)]
-
-            curve = Curve.Line(start=(0, 0, -.2), end=(0, 0, 1)).resample(count=6)
-            curve.points[ind[1]].position = (0, 0, 0)
-            curve.points[ind[2]].position = (0, 0, .33)
-            curve.points[ind[3]].position = (0, 0, .66)
-            curve.points[ind[4]].position = (0, 0, .92)
-
-            curve.points.radius = 1.
-            curve.points[ind[0]].radius = .3
-            curve.points[ind[5]].radius = 0.
-
-            curve.points._Angle = 0.
-            curve.points[ind[1]]._Angle = bend
-            curve.points[ind[2]]._Angle = fold
-            curve.points[ind[3]]._Angle = fold
-
-            curve.points._Circle_index = Float(nd.index)
-
-
-            curve.transform(scale=length)
-
-        with Layout("Profile"):
-            resolution = resol*4
-            profile = Curve.Circle(radius=radius).resample(count=resolution)
-
-        with Layout("Finger Shape"):
-
-            finger = G().obs_mesh_sausage(
-                curve               = curve,
-                profile             = profile,
-                angle               = Float("Angle"),
-                joints              = True,
-                joints_width        = .4,
-                axis                = 'X',
-                start_shape         =  1,
-                start_resolution    =  0,
-                end_shape           = .4,
-                end_resolution      =  4,
-            )
-        finger = Mesh(finger)
-
-        with Layout("Finalize"):
-            finger.transform(rotation=(0, lateral, 0))
-
-        finger.out()
-
-    # ====================================================================================================
-    # Thumb
-    # ====================================================================================================
-
-    with GeoNodes("Obs Mesh Thumb", is_group=True):
-
-        # oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
-
-        resol        = Integer(4, "Resolution", 1, 8)
-        length       = Float(1, "Length", 0)
-        radius       = Float(.12, "Radius", 0)
-        pinch        = Float.Angle(0, "Pinch", 0, pi/2, shape='Single')
-        bend         = Float.Angle(0, "Bend", 0, pi/2, shape='Single')
-        fold         = Float.Angle(0, "Fold", 0, pi/2, shape='Single')
-        lateral      = Float.Angle(0, "Lateral", -pi/2, pi/2, shape='Single')
-
-        # oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
-
-        with Layout("Curve"):
-
-            ind = [nd.index.equal(i) for i in range(6)]
-
-            curve = Curve.Line(start=(0, 0, -.5), end=(0, 0, 1)).resample(count=6)
-            curve.points[ind[1]].position = (0, 0, 0)
-            curve.points[ind[2]].position = (0, 0, .5)
-            curve.points[ind[3]].position = (0, 0, 1)
-            curve.points[ind[4]].position = (0, 0, 1.2)
-            curve.points[ind[5]].position = (0, 0, 1.5)
-
-
-            curve.points.radius = 1.
-            curve.points[ind[0]].radius = 0
-            curve.points[ind[1]].radius = 1.1
-            curve.points[ind[5]].radius = 0
-
-            curve.points._Angle = 0.
-            curve.points[ind[1]]._Angle = pinch
-            curve.points[ind[2]]._Angle = bend
-            curve.points[ind[3]]._Angle = fold
-
-            curve.transform(scale=length)
-
-        with Layout("Profile"):
-            resolution = resol*4
-            profile = Curve.Circle(radius=radius).resample(count=resolution)
-
-        with Layout("Finger Shape"):
-
-            finger = G().obs_mesh_sausage(
-                curve               = curve,
-                profile             = profile,
-                angle               = Float("Angle"),
-                joints              = True,
-                joints_width        = .4,
-                axis                = 'X',
-                start_shape         =  1,
-                start_resolution    =  0,
-                end_shape           = .3,
-                end_resolution      =  6,
-            )
-        finger = Mesh(finger)
-
-        with Layout("Finalize"):
-            finger.transform(rotation=(0, lateral, 0))
-            finger.transform(translation=(-.3, 0, -.6), rotation=(0, -pi/3, 0))
-
-        finger.out()
-
-    # ====================================================================================================
-    # Hand
-    # ====================================================================================================
-
-    with GeoNodes("Obs Mesh Hand", is_group=True):
-
-        # oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
-
-        resol = Integer(4, "Resolution", 1, 8)
-        right_hand = Boolean(False, "Right")
-
-        bend    = [None]*5
-        fold    = [None]*5
-        lateral = [None]*5
-
-        with Panel("Angles"):
-            for i in range(5):
-                name = "Thumb" if i == 0 else f"Finger {i}"
-                if i == 0:
-                    pinch = Float.Angle(0, "Thumb Pinch")
-                bend[i] = Float.Angle(0, f"{name} Bend")
-                fold[i] = Float.Angle(0, f"{name} Fold")
-                lateral[i] = Float.Angle(0, f"{name} Lateral")
-
-        with Panel("Location"):
-            use_arm = Boolean(True, "Arm")
-            arm_lat = Float.Angle(0, "Arm Lateral", 0, pi)
-            arm_fwd = Float.Angle(0, "Arm Forward", -pi/2, pi)
-
-            elbow   = Float.Angle(0, "Elbow", 0, pi)
-            twist   = Float.Angle(0, "Twist", -pi/2, pi/2)
-
-        def get_angle(i, name):
-            return pinch if name == 'pinch' else {
-                'bend': bend, 'fold': fold, 'lateral': lateral,
-            }[name][i]
-
-        with Layout("Fingers"):
-            hand = None
-            lengths = [.6, .9, 1, .9, .8]
-            radius  = .11
-            room    = .12
-
-            hand = G().obs_mesh_thumb(
-                    resolution   = resol,
-                    length       = lengths[0],
-                    radius       = .17,
-                    pinch        = get_angle(0, 'pinch'),
-                    bend         = get_angle(0, 'bend'),
-                    fold         = get_angle(0, 'fold'),
-                    lateral      = get_angle(0, 'lateral'),
-                )
-
-            x = -room*3
-            for i in range(1, 5):
-
-                finger = G().obs_mesh_finger(
-                    resolution   = resol,
-                    length       = lengths[i],
-                    radius       = radius,
-                    bend         = get_angle(i, 'bend'),
-                    fold         = get_angle(i, 'fold'),
-                    lateral      = get_angle(i, 'lateral'),
-
-                    #bend         = .1 + bend[i],
-                    #fold         = .1 + fold[i],
-                    #lateral      = lateral[i],
-                )
-
-                finger.transform(translation=(x, 0, 0))
-                x += 2*room
-
-                hand += finger
-
-            hand.transform(translation=(0, 0, .97))
-
-        with Layout("Palm"):
-
-            n = resol*4 + 2
-            half = resol*2
-
-            dx = 3*room
-            z = 1
-
-            palm = Mesh.Circle(vertices=n, fill_type='NGON')
-
-            ag = nd.index/half*pi
-            palm.points[nd.index <= half].position = (dx + radius*gnmath.sin(ag), -radius*gnmath.cos(ag), z)
-
-            ag = (nd.index - half - 1)/half*pi
-            palm.points[nd.index > half].position = (-dx  -radius*gnmath.sin(ag), radius*gnmath.cos(ag), z)
-
-            start = Mesh(palm)
-
-            top = True
-            top = palm.faces[top].extrude(offset=(0, 0, -.02), individual=False).top_
-            palm.points[top].position *= (1.0, 1.0, 1)
-
-            top = palm.faces[top].extrude(offset=(0, 0, -.5), individual=False).top_
-            palm.points[top].position *= (1.01, 1.3, 1)
-
-            top = palm.faces[top].extrude(offset=(0, 0, -.2), individual=False).top_
-            palm.points[top].position *= (.9, 1, 1)
-
-
-            dz = -.07
-            f  = .95
-
-            for i in range(4):
-                top = palm.faces[top].extrude(offset=(0, 0, dz), individual=True).top_
-                s = f**(i+1)
-                palm.points[top].position *= (s, 1, 1)
-
-            palm.flip_faces()
-            palm += start
-            palm.merge_by_distance()
-            hand += palm
-
-            hand = Mesh(hand)
-
-            hand.faces.shade_smooth = True
-            hand.faces.material = "Obs Skin"
-
-        with Layout("Left Hand"):
-            side_fac = Integer.Switch(right_hand, -1, 1)
-            hand = hand.switch_false(right_hand, Mesh(hand).transform(scale=(1, -1, 1)).flip_faces())
-
-
-        with Layout("Location"):
-
-            armed = Mesh(hand)
-
-            armed.transform(rotation=(0, pi, -pi/2 + twist*side_fac), scale=.38)
-
-            armed.transform(translation=(0, 0, -.7))
-            armed.transform(rotation=(-elbow, 0, 0))
-
-            armed.transform(translation=(0, 0, -.7))
-            armed.transform(rotation=(0, -arm_lat*side_fac, 0))
-            armed.transform(rotation=(-arm_fwd, 0, 0))
-
-            hand = hand.switch(use_arm, armed)
-
-        hand.transform(scale=.5)
-        hand.out()
 
     # ====================================================================================================
     # Walk control
@@ -2280,16 +2396,30 @@ def build_observer():
 
         with Layout("Arms and Hands"):
             for side in ("Left", "Right"):
-                arm = pose[f"{side} Arm"]
+                arm  = pose[f"{side} Arm"]
                 hand = pose[f"{side} Hand"]
-                node = G().obs_mesh_hand(
-                    resolution=resol, right=side == "Right", arm=True,
-                    arm_lateral=arm["Lateral"], arm_forward=arm["Forward"],
-                    elbow=arm["Elbow"], twist=arm["Hand Twist"],
+
+                is_right = side == 'Right'
+
+                hand_node = G().obs_mesh_hand(
+                    size         = 0.15,
+                    right_hand   = is_right,
                 ).node
                 for name in hand.signature:
-                    node[name] = hand[name]
-                obs += node._out.transform(translation=arm["Location"], rotation=(0, 0, pi))
+                    hand_node[name] = hand[name]    
+
+                arm_node = G().obs_mesh_arm(
+                    location = (0.35, 0.0, 1.1),
+                    right_arm=side == 'Right', 
+                    size=0.6,
+                    hand=hand_node._out,
+                    merge=True,
+                    ).node
+                for name in arm.signature:
+                    arm_node[name] = arm[name]
+
+                #obs += node._out.transform(translation=arm["Location"], rotation=(0, 0, pi))
+                obs += arm_node._out
 
         with Layout("Body Posture"):
             obs.transform(translation=body_params["Body Location"],

@@ -126,15 +126,12 @@ class Float(generated.Float):
         factor : Float
             socket 'Factor' (Factor_Float)
 
-        other : Socket
-            socket 'B' (B_Float)
-
         clamp_factor : bool
             Node.clamp_factor
 
         Returns
         -------
-        Socket
+        Float
         """
         return Node('Mix', {'Factor': factor, 'A': a, 'B': b}, clamp_factor=clamp_factor, data_type='FLOAT')._out
 

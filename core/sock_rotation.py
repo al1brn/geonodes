@@ -43,6 +43,7 @@ __blender_version__ = "4.3.0"
 
 from .sockettype import SocketType
 from .treeclass import Layout
+from .nodeclass import Node
 from . import generated
 
 
@@ -124,6 +125,35 @@ class Rotation(generated.Rotation):
         """
         with Layout("Rotation.separate_to_list"):
             return self.to_euler().separate_to_list()
+
+    # ====================================================================================================
+    # Constructors
+
+    @classmethod
+    def Mix(cls, a=None, b=None, factor=None, clamp_factor=None):
+        """ > Mix
+
+        > Node <&Node Mix>
+
+        Parameters
+        ----------
+        a : Rotation
+            first Rotation
+
+        b : Rotation
+            second Rotation
+
+        factor : Float
+            socket 'Factor' (Factor_Float)
+
+        clamp_factor : bool
+            Node.clamp_factor
+
+        Returns
+        -------
+        Rotation
+        """
+        return Node('Mix', a=a, b=b, factor=factor, clamp_factor=clamp_factor, data_type='ROTATION')._out
 
     # ====================================================================================================
     # Operations
