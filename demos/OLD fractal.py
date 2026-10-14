@@ -103,15 +103,15 @@ FOCAL_FACTOR = .04939
 # =============================================================================================================================
 # Demo
 
-def demo(clear=False):
+def demo(clear=False, *, rebuild=False):
     if clear:
         GeoNodes.remove_groups()
 
-    random_normal()
-    camera_culling()
-    sierpinski()
-    multires_surface()
-    romanesco()
+    random_normal(rebuild=rebuild)
+    camera_culling(rebuild=rebuild)
+    sierpinski(rebuild=rebuild)
+    multires_surface(rebuild=rebuild)
+    romanesco(rebuild=rebuild)
 
 
 # =============================================================================================================================
@@ -120,7 +120,7 @@ def demo(clear=False):
 # -----------------------------------------------------------------------------------------------------------------------------
 # Random normal
 
-def random_normal():
+def random_normal(rebuild=False):
 
     # Macro
     def expand_seed(seed, n):
@@ -138,7 +138,7 @@ def random_normal():
 
         return seeds
 
-    with GeoNodes("Normal Value", is_group=True, prefix=random_):
+    with GeoNodes("Normal Value", is_group=True, prefix=random_, rebuild=rebuild):
 
         value = Float(0,   "Value")
         scale = Float(1,   "Scale")
@@ -156,7 +156,7 @@ def random_normal():
 
         y.out("Value")
 
-    with GeoNodes("Normal Vector", is_group=True, prefix=random_):
+    with GeoNodes("Normal Vector", is_group=True, prefix=random_, rebuild=rebuild):
 
         length = Float(1,       "Length",   tip="Vector average length")
         scale  = Float(0,       "Scale",    tip="Length scale")
@@ -190,7 +190,7 @@ def random_normal():
         (normal * l).out("Vector")
         normal.out("Direction")
 
-    with GeoNodes("Shake Vectors", is_group=True, prefix=random_):
+    with GeoNodes("Shake Vectors", is_group=True, prefix=random_, rebuild=rebuild):
 
         vector   = Vector(None,   "Vector")
         c_scale  = Float.Angle(0, "Angle Scale",  tip="Angle scale")
@@ -230,7 +230,7 @@ def iterations_panel(def_iter=3, def_prec=10):
 # =============================================================================================================================
 # Camera Culling
 
-def camera_culling():
+def camera_culling(rebuild=False):
     """ Camera culling
 
     Removes geometry which is not visible from the camera.
@@ -349,7 +349,7 @@ def camera_culling():
     # Camera Projection
     # =============================================================================================================================
 
-    with GeoNodes("Projection", is_group=True, prefix=camera_):
+    with GeoNodes("Projection", is_group=True, prefix=camera_, rebuild=rebuild):
 
         FOCAL_FACTOR = .04939
 
@@ -438,7 +438,7 @@ def camera_culling():
     # -----------------------------------------------------------------------------------------------------------------------------
     # Position Culling
 
-    with GeoNodes("Point Culling", prefix=camera_):
+    with GeoNodes("Point Culling", prefix=camera_, rebuild=rebuild):
 
         cloud = Cloud(Geometry())
 
@@ -453,7 +453,7 @@ def camera_culling():
     # -----------------------------------------------------------------------------------------------------------------------------
     # Edge Culling
 
-    with GeoNodes("Edge Culling", prefix=camera_) as tree:
+    with GeoNodes("Edge Culling", prefix=camera_, rebuild=rebuild) as tree:
 
         mesh = Mesh()
 
@@ -523,7 +523,7 @@ def camera_culling():
     # -----------------------------------------------------------------------------------------------------------------------------
     # Face Culling
 
-    with GeoNodes("Face Culling", prefix=camera_) as tree:
+    with GeoNodes("Face Culling", prefix=camera_, rebuild=rebuild) as tree:
 
         mesh = Mesh()
 
@@ -588,7 +588,7 @@ def camera_culling():
         ped = Shader.Principled(base_color=col)
         ped.out()
 
-    with GeoNodes("Debug", prefix=camera_):
+    with GeoNodes("Debug", prefix=camera_, rebuild=rebuild):
 
         # oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
 
@@ -671,9 +671,9 @@ def camera_culling():
 # Sierpinski triangle
 # =============================================================================================================================
 
-def sierpinski():
+def sierpinski(rebuild=False):
 
-    with GeoNodes("Sierpinski Triangle", prefix=fractal_):
+    with GeoNodes("Sierpinski Triangle", prefix=fractal_, rebuild=rebuild):
 
         # ===== Macro : build a triangle from points
 
@@ -727,7 +727,7 @@ def sierpinski():
         triangles.faces.material = Material(None, "Material")
         triangles.out()
 
-    with GeoNodes("DEMO Sierpinski"):
+    with GeoNodes("DEMO Sierpinski", rebuild=rebuild):
 
         ico = Mesh.IcoSphere(subdivisions=2, radius=10)
 
@@ -741,7 +741,7 @@ def sierpinski():
 # =============================================================================================================================
 # Multi resolution surface
 
-def multires_surface():
+def multires_surface(rebuild=False):
 
     # -----------------------------------------------------------------------------------------------------------------------------
     # Multi resolution surface
@@ -754,7 +754,7 @@ def multires_surface():
     # The surface is computed by a group taking (position.x, position.y) as uv map coordinates in space (0, 1), (0, 1)
     # (See DEMO Multires Surface)
 
-    with GeoNodes("Surface", is_group=True, prefix=multires_):
+    with GeoNodes("Surface", is_group=True, prefix=multires_, rebuild=rebuild):
 
         position   = Vector(None,  "Position")
 
@@ -849,7 +849,7 @@ def multires_surface():
     # -----------------------------------------------------------------------------------------------------------------------------
     # Multires plane
 
-    with GeoNodes("Faces", prefix=multires_):
+    with GeoNodes("Faces", prefix=multires_, rebuild=rebuild):
 
         mesh = Mesh()
 
@@ -906,7 +906,7 @@ def multires_surface():
     # -----------------------------------------------------------------------------------------------------------------------------
     # Demo on how to use the Multires Surface group
 
-    with GeoNodes("DEMO Multires Surface"):
+    with GeoNodes("DEMO Multires Surface", rebuild=rebuild):
 
         size = Float(100, "Size", min=1)
 
@@ -949,7 +949,7 @@ def multires_surface():
 # =============================================================================================================================
 # Fractals
 
-def romanesco():
+def romanesco(rebuild=False):
     """ Some fractals such as Romanesco Cabbage
 
     These 3D fractals replace a single point by other points.
@@ -982,7 +982,7 @@ def romanesco():
 
     """
 
-    with GeoNodes("Deform Shape", prefix=fractal_):
+    with GeoNodes("Deform Shape", prefix=fractal_, rebuild=rebuild):
 
         cloud = Cloud(Geometry())
 
@@ -1012,7 +1012,7 @@ def romanesco():
     #
     # Replace points by a set of points
 
-    with GeoNodes("Cloud Iterator", prefix=fractal_):
+    with GeoNodes("Cloud Iterator", prefix=fractal_, rebuild=rebuild):
 
         model        = Cloud(Geometry(None,       "Geometry", tip="Geometry with points"))
         normal       = Vector((0, 0, 1),    "Normal",  tip="Normal to the points")
@@ -1229,7 +1229,7 @@ def romanesco():
     # ====================================================================================================
     # Mesh iterator
 
-    with GeoNodes("Mesh Iterator", prefix=fractal_):
+    with GeoNodes("Mesh Iterator", prefix=fractal_, rebuild=rebuild):
 
         mesh         = Mesh()
 
@@ -1256,7 +1256,7 @@ def romanesco():
 
         mesh.out()
 
-    with GeoNodes("Cone Iterator", prefix=fractal_):
+    with GeoNodes("Cone Iterator", prefix=fractal_, rebuild=rebuild):
 
         with Panel("Cone"):
             sides   = Integer(3,  "Sides", min=3, max=20, tip="Number of sides")
@@ -1328,7 +1328,7 @@ def romanesco():
     # ====================================================================================================
     # Logarithmic Spiral
 
-    with GeoNodes("Logarithmic Spiral"):
+    with GeoNodes("Logarithmic Spiral", rebuild=rebuild):
 
         with Panel("Spiral"):
             count      = Integer(500, "Count")
@@ -1373,7 +1373,7 @@ def romanesco():
     # ====================================================================================================
     # Romanesco Cabbage
 
-    with GeoNodes("Romanesco Cabbage", prefix=fractal_):
+    with GeoNodes("Romanesco Cabbage", prefix=fractal_, rebuild=rebuild):
 
         # oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
 

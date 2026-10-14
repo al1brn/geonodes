@@ -57,19 +57,17 @@ from geonodes import *
 # ====================================================================================================
 # Newton's law simulation
 
-def demo():
+def demo(rebuild=False):
 
     # ----------------------------------------------------------------------------------------------------
     # Load Arrows groups
     # ----------------------------------------------------------------------------------------------------
 
-    if G.get_tree("Arrow") is None:
-        from . import arrows
-        arrows.demo()
+    from . import arrows
+    arrows.demo(rebuild=rebuild)
 
-    if G.get_tree("Dynamics Visualizer") is None:
-        from . import common
-        common.demo()
+    from . import common
+    common.demo(rebuild=rebuild)
 
     # ----------------------------------------------------------------------------------------------------
     # Planet Shader
@@ -86,7 +84,7 @@ def demo():
         ped.out()
 
 
-    with GeoNodes("Gravity"):
+    with GeoNodes("Gravity", rebuild=rebuild):
 
         with Panel("Planets"):
             planets_count = Integer(500, "Planets count", 1)
@@ -258,7 +256,7 @@ def demo():
     # Constants
     # ----------------------------------------------------------------------------------------------------
 
-    with GeoNodes(".Gravity Constants", is_group=True, color_tag='Input'):
+    with GeoNodes(".Gravity Constants", is_group=True, color_tag='Input', rebuild=rebuild):
         Float(10.0).out("G")
         Float(1.0).out("Mass")
 
@@ -266,7 +264,7 @@ def demo():
     # Dual Computation
     # ----------------------------------------------------------------------------------------------------
 
-    with GeoNodes("Dual Computation", is_group=True):
+    with GeoNodes("Dual Computation", is_group=True, rebuild=rebuild):
 
         # Constants
         G_constant = G()._gravity_constants().G
@@ -484,7 +482,7 @@ def demo():
     # Dual System
     # ----------------------------------------------------------------------------------------------------
 
-    with GeoNodes("Dual System"):
+    with GeoNodes("Dual System", rebuild=rebuild):
 
         time = Float.Time(0.0, "Time", tip="Physical simulation time")
         motion = Float.Factor(
@@ -529,7 +527,7 @@ def demo():
     # Conics
     # ----------------------------------------------------------------------------------------------------
 
-    with GeoNodes("Dual Conics"):
+    with GeoNodes("Dual Conics", rebuild=rebuild):
 
         # Constants
         G_constant = G()._gravity_constants().G
@@ -541,7 +539,7 @@ def demo():
         
         with Panel("Conics"):
             section = Float(0.05, "Section")
-            mat = Material("Arrow", "Material")
+            mat = Material("Colored Shiny", "Material")
             count = Integer(100, "Resolution", 10, 2000)
             hyperbola_extent = Float(
                 1.0, "Hyperbola Extent", 0.01, 10.0,
@@ -673,7 +671,7 @@ def demo():
     # Dynamics Visualizer
     # ----------------------------------------------------------------------------------------------------
 
-    with GeoNodes("Planet Dynamics Visualizer"):
+    with GeoNodes("Planet Dynamics Visualizer", rebuild=rebuild):
 
         geo = Geometry()
 

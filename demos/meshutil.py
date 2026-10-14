@@ -28,13 +28,16 @@ def get_cylinder_topology(cyl):
 
     return nrings, nsegms
 
-def demo():
+def demo(rebuild=False):
+
+    CBone = G("CBone")
+    OSel = G("OSel")
 
     # ====================================================================================================
     # Curves
     # ====================================================================================================
 
-    with GeoNodes("Cross Splines"):
+    with GeoNodes("Cross Splines", rebuild=rebuild):
         curve = Curve()
         use_resample = Boolean(False, "Resample")
         count = Integer(12, "Resolution")
@@ -88,7 +91,7 @@ def demo():
     # Number selected vertices
     # ----------------------------------------------------------------------------------------------------
 
-    with GeoNodes("Number Selection", is_group=True):
+    with GeoNodes("Number Selection", is_group=True, rebuild=rebuild):
         
         mesh = Mesh()
         selection = Boolean(name="Selection", hide_value=True)
@@ -105,7 +108,7 @@ def demo():
     # Extract selected vertices
     # ----------------------------------------------------------------------------------------------------
         
-    with GeoNodes("Extract Selection", is_group=True):
+    with GeoNodes("Extract Selection", is_group=True, rebuild=rebuild):
         
         mesh = Mesh()
         selection = Boolean(name="Selection", hide_value=True)
@@ -125,7 +128,7 @@ def demo():
     # Weld a selection
     # ----------------------------------------------------------------------------------------------------
         
-    with GeoNodes("Weld Selections", is_group=True):
+    with GeoNodes("Weld Selections", is_group=True, rebuild=rebuild):
         
         use_bridge = Boolean(False, "Bridge")
         use_merge = Boolean(True, "Merge")
@@ -174,10 +177,79 @@ def demo():
             mesh2.out("To Mesh")
 
     # ----------------------------------------------------------------------------------------------------
+    # Join two selections with a grid
+    # join is made with successive extrusions and a final merge
+    # ----------------------------------------------------------------------------------------------------
+
+    with GeoNodes("Join Selections", is_group=True, rebuild=rebuild):
+
+        mesh = Mesh()
+        
+        sel0 = Boolean(name="Selection 1", hide_value=True)
+        sel1 = Boolean(name="Selection 2", hide_value=True)
+        use_reversed = Boolean(False, "Reversed")
+        subdivisions = Integer(0, "Subdivisions", 0,
+                               tip="Number of intermediate rows between the two selections.")
+        use_flip = Boolean(False, "Flip Faces")
+        
+        
+        with Layout("Target positions"):
+            
+            mesh.points.set('Tmp Merge', sel1)
+            mesh.points.set('Tmp Index', nd.index)
+            mesh.points.set('Tmp Sel1', sel1)
+            
+            points1 = Mesh(Mesh(mesh).points[sel1].separate().selection)
+            n = points1.points.count
+            
+        
+        with Layout("Store Target Positions"):
+            
+            mesh.points.set('Tmp Index 0', mesh.points.accumulate_field(Integer(sel0)).trailing)
+            
+            # Sample the position and the merge ID from the same target vertex.
+            target_index = Integer("Tmp Index 0")
+            target_index = Integer.Switch(use_reversed, target_index, n - 1 - target_index)
+            mesh.points.set('Tmp Target', points1.points.sample_index(nd.position, index=target_index))
+            mesh.points.set('Tmp Source', nd.position)
+            mesh.points.set('Tmp Merge Id', points1.points.sample_index(Integer("Tmp Index"), index=target_index))
+
+        for rep in repeat(subdivisions + 1, mesh=mesh, sel=sel0):
+            
+            v = Vector("Tmp Target") - nd.position
+            v = v.scale(1/(subdivisions + 1 - rep.iteration))
+            
+            edge_sel = rep.mesh.points.evaluate_on_domain(rep.sel)
+            m = rep.mesh.edges[edge_sel].extrude(offset=v)
+            
+            top = m.top
+            with Layout("Adjust"):
+                adjust = Vector("Tmp Target") - Vector("Tmp Source")
+                adjust = adjust.scale((rep.iteration + 1)/(subdivisions + 1))
+                
+            m.points[top].position = Vector("Tmp Source") + adjust
+            
+            rep.mesh = m
+            rep.sel = top
+            
+        mesh = rep.mesh
+        
+        with Layout("finalize"):
+            mesh.points[rep.sel].set('Tmp Merge', True)
+            
+            mesh.points[Boolean("Tmp Sel1")].set("Tmp Merge Id", nd.index)
+            mesh[Boolean('Tmp Merge')].merge_points(merge_id=Integer("Tmp Merge Id"))
+            
+            
+            
+        mesh.out()
+              
+
+    # ----------------------------------------------------------------------------------------------------
     # Patch a grid between two selections
     # ----------------------------------------------------------------------------------------------------
 
-    with GeoNodes("Patch with a Grid", is_group=True):
+    with GeoNodes("Patch with a Grid", is_group=True, rebuild=rebuild):
 
         mesh = Mesh()
         use_merge = Boolean(True, "Merge")
@@ -254,7 +326,7 @@ def demo():
     # Weld mesh pieces
     # ----------------------------------------------------------------------------------------------------
 
-    with GeoNodes("Weld Mesh Pieces", is_group=True):
+    with GeoNodes("Weld Mesh Pieces", is_group=True, rebuild=rebuild):
         mesh = Mesh()
         names = mesh.points.get_attribute_names()
         for rep in repeat(names.list_length(), mesh=mesh):
@@ -274,7 +346,7 @@ def demo():
     # Curves
     # ====================================================================================================
 
-    with GeoNodes("Subdivide Segment", is_group=True):
+    with GeoNodes("Subdivide Segment", is_group=True, rebuild=rebuild):
 
         curve = Curve()
         index = Integer(0, "Index", 0)
@@ -305,16 +377,24 @@ def demo():
     # New Cylinder
     # ----------------------------------------------------------------------------------------------------
 
-    with GeoNodes("New Cylinder", is_group=True):
+    with GeoNodes("New Cylinder", is_group=True, rebuild=rebuild):
 
         nrings = Integer(2, "Rings", 2, 100)
         nsegms = Integer(12, "Segments", 3, 128)
+        caps = Boolean(True, "Caps")
+        radius = Float(1.0, "Radius")
+        depth = Float(2.0, "Depth")
             
-        new_cyl = Mesh.Cylinder(side_segments=nrings-1, vertices=nsegms, fill_type="N-Gon")
+        new_cyl = Mesh.Cylinder(radius=radius, depth=depth, side_segments=nrings-1, vertices=nsegms, fill_type="None") 
+        new_cyl.switch(caps,
+                  Mesh.Cylinder(radius=radius, depth=depth, side_segments=nrings-1, vertices=nsegms, fill_type="N-Gon"))
+
         nz = nd.normal.z
         new_cyl.faces.set("Cap", Integer.Switch(nz > 0.9, Integer.Switch(nz < -0.9, 0, -1), 1))
         new_cyl.transform(rotation=(0, pi, 0))
         new_cyl = set_cylinder_topology(new_cyl, nrings, nsegms)
+
+        new_cyl.offset = (0, 0, depth/2)
 
         new_cyl.out()
         nrings.out("Rings Count")
@@ -346,7 +426,7 @@ def demo():
     # Zone selection in a cylinder
     # ----------------------------------------------------------------------------------------------------
 
-    with GeoNodes("Cylinder Selection", is_group=True):
+    with GeoNodes("Cylinder Selection", is_group=True, rebuild=rebuild):
         """ A zone is defined by ring and col indices plus number of rings and cols
         
         This Group is an helper to get position from a cylinder topology or set position
@@ -438,7 +518,7 @@ def demo():
     # Copy position
     # ----------------------------------------------------------------------------------------------------
 
-    with GeoNodes("Cylinder Copy Position", is_group=True):
+    with GeoNodes("Cylinder Copy Position", is_group=True, rebuild=rebuild):
 
         cyl = Mesh()
         
@@ -477,7 +557,7 @@ def demo():
     # View indices
     # ----------------------------------------------------------------------------------------------------
 
-    with GeoNodes("View Cylinder Indices", is_group=True):
+    with GeoNodes("View Cylinder Indices", is_group=True, rebuild=rebuild):
 
         cyl, nrings, nsegms = get_cylinder(use_create=False)
 
@@ -530,7 +610,7 @@ def demo():
     # Add rings
     # ----------------------------------------------------------------------------------------------------
 
-    with GeoNodes("Add Rings to Cylinder", is_group=True):
+    with GeoNodes("Add Rings to Cylinder", is_group=True, rebuild=rebuild):
 
         cyl, nrings, nsegms = get_cylinder(use_create=False)
 
@@ -552,7 +632,7 @@ def demo():
     # Dome Cylinder
     # ----------------------------------------------------------------------------------------------------
 
-    with GeoNodes("Close Cylinder", is_group=True):
+    with GeoNodes("Close Cylinder", is_group=True, rebuild=rebuild):
 
         cyl, nrings, nsegms = get_cylinder(use_create=False)
         count = Integer(3, "Rings", 1)
@@ -621,7 +701,7 @@ def demo():
     # Weld Cylinders
     # ----------------------------------------------------------------------------------------------------
 
-    with GeoNodes("Weld Cylinders", is_group=True):
+    with GeoNodes("Weld Cylinders", is_group=True, rebuild=rebuild):
 
         use_debug = Boolean(False, "Debug")
         use_bridge = Boolean(False, "Bridge")
@@ -664,7 +744,7 @@ def demo():
     # Cylinder enveloppe
     # ----------------------------------------------------------------------------------------------------
 
-    with GeoNodes("Bones Envelope"):
+    with GeoNodes("Bones Envelope", rebuild=rebuild):
         
         curve = Curve()
         radius = Float(0.2, "Radius")
@@ -796,7 +876,7 @@ def demo():
     # Rounded Joint
     # ====================================================================================================
 
-    with GeoNodes("Rounded Joint", is_group=True):
+    with GeoNodes("Rounded Joint", is_group=True, rebuild=rebuild):
         """ Rounded angle in the plane XZ.
         Positive is Z to X
         """
@@ -835,8 +915,12 @@ def demo():
     # Build a Poly Line
     # ====================================================================================================
 
+    # ----------------------------------------------------------------------------------------------------
+    # Bottom up
+    # ----------------------------------------------------------------------------------------------------
+
     # Append a vertex to an open polyline.
-    with GeoNodes("Build Poly Line"):
+    with GeoNodes("Build Poly Line", rebuild=rebuild):
         curve = Curve()
         use_position = Boolean(False, "Use Position")
         position = Vector((0,0,0), "Position")
@@ -880,12 +964,43 @@ def demo():
 
         extended.switch(is_new, new_curve).out()
 
+    # ----------------------------------------------------------------------------------------------------
+    # Inverse kinematics
+    # ----------------------------------------------------------------------------------------------------
+
+    with GeoNodes("Build Bones Curve", rebuild=rebuild):
+
+        curve = Curve()
+        direc = Vector((0, 0, 1), "Direction", shape='Single')
+        rotation = Rotation(0, "Rotation", hide_value=True)
+        length = Float(1.0, "Length")
+        
+        count = curve.points.count
+        
+        # All positions to 0
+        curve.position = 0
+        direc = direc.normalize()
+
+        for rep in repeat(curve.points.count - 1, curve=curve, rotation=rotation, length=length):
+
+            idx = count-2 - rep.iteration
+            sel = nd.index > idx
+
+            rot = rep.curve.points.sample_index(rep.rotation, index=idx)
+            lg = rep.curve.points.sample_index(rep.length, index=idx)
+
+            rep.curve[sel].offset = direc.scale(lg)
+            rep.curve[sel].position = rot @ nd.position
+            
+        rep.curve.out()
+
+
     # ====================================================================================================
     # Rounded angles
     # ====================================================================================================
 
     # Round every interior corner, retaining the ends and the spline structure.
-    with GeoNodes("Round Joints"):
+    with GeoNodes("Round Joints", rebuild=rebuild):
         curve = Curve()
         selection = Boolean(True, "Selection", hide_value=True,
                             tip="Curve points whose corners should be rounded.")
@@ -945,13 +1060,12 @@ def demo():
     # ====================================================================================================
 
     # Surrounding Shape
-    with GeoNodes("Surrounding Shape"):
+    with GeoNodes("Surrounding Shape", rebuild=rebuild):
         
         curve = Curve()
         resol = Integer(32, "Resolution", 12, 128)
         width = Float(1.0, "Width", 0)
         inflate = Float(1.0, "Inflate", 1.0)
-
 
         with Layout("Rounded Bezier"): 
             
@@ -1008,7 +1122,7 @@ def demo():
     # Create a cage surrounding vertical bones
     # ====================================================================================================
 
-    with GeoNodes("Cage Around Bones"):
+    with GeoNodes("Cage Around Bones", rebuild=rebuild):
         
         curve = Curve()
         bone_resol = Integer(6, "Segments Resolution", 2, 128)
@@ -1039,3 +1153,753 @@ def demo():
         
         cage.out()
 
+    # ====================================================================================================
+    # Bones simulation
+    # ====================================================================================================
+    
+    # ----------------------------------------------------------------------------------------------------
+    # Initialize a new Curve Bone from a Curve
+    # ----------------------------------------------------------------------------------------------------
+    
+    with GeoNodes("CBone New", is_group=True, rebuild=rebuild):
+        
+        curve = Curve()
+        
+        curve.points.set("Pos", nd.position)
+        curve.points.set("Transform", Matrix.CombineTransform())
+        
+        with Layout("Normals"):
+            pos0 = nd.position
+            pos1 = curve.points.sample_index(nd.position, index=nd.index+1)
+            segm = pos1 - pos0
+            u = segm.normalize()
+            
+            curve.points.set("u", u)
+            
+            for rep_spline in repeat(curve.splines.count, curve=curve, index_offset=0):
+                
+                spline = Curve(Curve(curve).splines[nd.index == rep_spline.iteration].separate())
+                npoints = spline.points.count
+                
+                with Layout("First Segment"):
+                    
+                    point_index = rep_spline.index_offset
+                    
+                    u = curve.points.sample_index(Vector("u"), index=point_index)
+                    
+                    z = u.dot((0, 0, 1))
+                    is_vert = z.abs() == 1.0
+                    
+                    perp = u.cross((0, 0, 1)).normalize()
+                    
+                    perp.switch(is_vert, Vector.Switch(z < 0, (1, 0, 0), (-1, 0, 0)))
+                    
+                    sel = nd.index == point_index
+                    rep_spline.curve[sel].set("Perp", perp)
+                    
+                with Layout("Other segments"):
+                    for rep in repeat(npoints - 2, curve=rep_spline.curve, prev_u=u, prev_perp=perp):
+                        
+                        point_index = rep_spline.index_offset + rep.iteration + 1
+                        
+                        u = curve.points.sample_index(Vector("u"), index=point_index)
+                        
+                        z = rep.prev_u.dot(u)
+                        is_aligned = z == 1.0
+                        
+                        perp = rep.prev_u.cross(u).normalize()
+                        
+                        perp.switch(is_aligned, rep.prev_perp)
+                        
+                        sel = nd.index == rep_spline.index_offset + rep.iteration + 1
+                        rep.curve[sel].set("Perp", perp)
+                        
+                        rep.prev_u = u
+                        rep.prev_perp = perp
+                        
+                    rep_spline.curve = rep.curve
+                    rep_spline.index_offset += npoints
+                        
+            curve = rep_spline.curve
+        
+        curve.out()        
+        
+    # ----------------------------------------------------------------------------------------------------
+    # Curve Bone rotation
+    # ----------------------------------------------------------------------------------------------------
+
+    with GeoNodes("CBone Rotate", is_group=True, rebuild=rebuild):
+        
+        curve = Curve()
+        curve_index = Integer(0, "Curve Index")
+        index = Integer(0, "Index")
+        rot = Rotation(None, "Rotation")
+        use_local = Boolean(True, "Local")
+        
+        with Layout("Index"):
+            point_index = nd.points_of_curve(curve_index=curve_index, sort_index=index)._lc("Index")
+            total = point_index.total
+            last_index = point_index - index + total - 1
+            
+            sel = (nd.index >= point_index) & (nd.index <= last_index)
+            
+        with Layout("Local Rotation"):
+            pos0 = curve.points.sample_index(nd.position, index=point_index)
+            pos1 = curve.points.sample_index(nd.position, index=point_index + 1)
+            perp = curve.points.sample_index(Vector("Perp"), index=point_index)
+            
+            to_local = nd.axes_to_rotation(
+                primary_axis_1=pos1 - pos0, 
+                secondary_axis_1=perp, 
+                primary_axis='Z',
+                secondary_axis='X')
+
+        with Layout("Apply local rotation"):
+            rot = Rotation.Switch(use_local, rot, to_local.invert() @ (rot @ to_local))
+        
+            transform = Matrix.CombineTransform(translation=-pos0)
+            transform = Matrix.CombineTransform(translation=pos0, rotation=rot) @ transform
+            curve.points[sel].set("Transform", transform @ Matrix("Transform"))
+        
+            curve.offset = -pos0
+            curve[sel].position = rot @ nd.position
+            curve[sel].set("Perp", rot @ Vector("Perp"))
+            curve.offset = pos0
+            
+        curve.out()      
+
+    # ----------------------------------------------------------------------------------------------------
+    # Curve Bone Translation
+    # ----------------------------------------------------------------------------------------------------
+    
+    with GeoNodes("CBone Translate", is_group=True, rebuild=rebuild):
+        
+        curve = Curve()
+        curve_index = Integer(0, "Curve Index", 0)
+        index = Integer(0, "Index")
+        trans = Vector(name="Translation")
+        
+        with Layout("Index"):
+            point_index = nd.points_of_curve(curve_index=curve_index, sort_index=index)._lc("Index")
+            total = point_index.total
+            last_index = point_index - index + total - 1
+            
+            sel = (nd.index >= point_index) & (nd.index <= last_index)
+            
+        with Layout("Compute the transformation"):
+            transform = Matrix.CombineTransform(translation=trans)
+            curve.points[sel].set("Transform", transform @ Matrix("Transform"))
+            
+        with Layout("Transform the Curve"):
+            curve[sel].offset = trans
+        
+        curve.out()
+        
+    # ----------------------------------------------------------------------------------------------------
+    # Curve Bone Influence
+    # ----------------------------------------------------------------------------------------------------
+    
+    with GeoNodes("CBone Distance", is_group=True, rebuild=rebuild):
+        
+        curve = Curve()
+        position = Vector(None, "Position", hide_value=True, default_input='Position')
+        
+        with Layout("Prepare"):
+            pos1 = curve.points.sample_index(nd.position, index=nd.index + 1)
+            segm = pos1 - nd.position
+            segm_len = segm.length()
+            segm = segm.normalize()
+            
+            curve.points.set("Pos0", nd.position)
+            curve.points.set("Segm", segm)
+            curve.points.set("Segm Len", segm_len)
+            
+        count = curve.points.count - 1
+        for rep in repeat(count, curve=curve, edge_index=-1, dist=0.0, proj=0.0):
+            
+            pos0 = curve.points.sample_index(Vector("Pos0"),        index=rep.iteration)
+            segm = curve.points.sample_index(Vector("Segm"),        index=rep.iteration)
+            segm_len = curve.points.sample_index(Float("Segm Len"), index=rep.iteration)
+            
+            v = position - pos0
+            proj = v.dot(segm)
+            ok = (proj >= 0) & (proj <= segm_len)
+            
+            rep.edge_index.switch(ok, rep.iteration)
+            rep.dist.switch(ok, (v - segm.scale(proj)).length())
+            rep.proj.switch(ok, proj/segm_len)
+            
+        (rep.edge_index >= 0).out("Is Valid")
+        rep.edge_index.out("Index")
+        rep.dist.out("Distance")
+        rep.proj.out("Proj")
+        
+    # ----------------------------------------------------------------------------------------------------
+    # Link a curve bones to a Mesh
+    # ----------------------------------------------------------------------------------------------------
+
+    with GeoNodes("CBone Link", rebuild=rebuild):
+        
+        mesh = Mesh()
+        curve = Curve(None, "Curve")
+        distance = Float(1.0, "Distance")
+        fall_off = Float.Factor(0.1, "Fall Off", 0, 1)
+
+        nsplines = curve.splines.count
+        
+        mesh.points.set("Bone Weight", 0.0)
+        
+        for rep in repeat(nsplines, mesh=mesh, total=0):
+
+            spline = Curve(Curve(curve).splines[nd.index==rep.iteration].separate())
+            npoints = spline.points.count
+            
+            sel = (Integer("Bone") == rep.iteration) | (Integer("Bone") < 0)
+        
+            node = G().cbone_distance(spline, nd.position).node
+            d = node.distance
+            weight = d.map_range(distance, distance + fall_off*distance, 1.0, 0.0)
+            weight.switch_false(sel & node.is_valid, 0.0)
+            
+            change = Float("Bone Weight") < weight
+
+            index = node.index
+            is_first = index == 0
+            is_last = index >= spline.points.count-2
+
+            proj = node.proj
+            
+            rep.mesh.points[change].set("Bone Index",   rep.total + index)
+            rep.mesh.points[change].set("Bone Proj",    proj)
+            rep.mesh.points[change].set("Bone Has Prev", is_first.bnot())
+            rep.mesh.points[change].set("Bone Has Next", is_last.bnot())
+            rep.mesh.points[change].set("Bone Weight",  weight)
+
+            rep.total += npoints
+
+        mesh = rep.mesh
+        
+        mesh.out()
+        
+    # ----------------------------------------------------------------------------------------------------
+    # Deform a mesh
+    # ----------------------------------------------------------------------------------------------------
+        
+    with GeoNodes("CBone Deform", rebuild=rebuild):
+        
+        mesh = Mesh()
+        curve = Curve(None, "Curve")
+        blend = Float.Factor(0.5, "Blend", 0, 1)*0.5
+        
+        count = curve.points.count
+        
+        trf = curve.points.sample_index(Matrix("Transform"), index=Integer("Bone Index"))
+        prev_trf = curve.points.sample_index(Matrix("Transform"), index=Integer("Bone Index") - 1)
+        next_trf = curve.points.sample_index(Matrix("Transform"), index=Integer("Bone Index") + 1)
+        
+        proj = Float("Bone Proj")
+        
+        fac1 = proj.map_range(0.0, 1.0, 0.0, 0.5)
+        
+        prev_pos = prev_trf @ nd.position
+        new_pos = trf @ nd.position
+        next_pos = next_trf @ nd.position
+        
+        fac0 = proj.map_range(0.0, blend, 0.5, 0.0)
+        new_pos.switch(Boolean("Bone Has Prev") & (proj < blend), new_pos.mix(prev_pos, factor=fac0))
+        
+        fac1 = proj.map_range(1 - blend, 1.0, 0.0, 0.5)
+        new_pos.switch(Boolean("Bone Has Next") & (proj > 1.0 - blend), new_pos.mix(next_pos, factor=fac1))
+        
+        mesh.points.position = Vector(Float("Bone Weight")).map_range(to_min=nd.position, to_max=new_pos)
+
+        mesh.out()
+
+    # ====================================================================================================
+    # Curve Bone Demo
+    # ====================================================================================================
+
+    with GeoNodes("CBone Demo", rebuild=rebuild):
+
+        rot = Rotation(None, "Initial Rotation")
+        blend = Float.Factor(0.1, "Blend", 0, 1)
+        
+        rots = []
+        for i in range(3):
+            rots.append(Vector.Euler(None, f"Rotation {i}"))
+        
+        use_cubes = Boolean(False, "Show Joints")
+
+        with Layout("Demo Mesh and Curve"):        
+            cyl = G().new_cylinder(segments=16, rings=100, radius=0.1, depth=1, caps=True)
+            cyl.transform(scale=(1, 0.7, 1))
+            
+            bone = Curve.Line((0, 0, -0.1), (0, 0, 1.1)).resample(count=4)
+
+        with Layout("Start with an arbitrary orientation"):     
+            cyl.position = rot @ nd.position
+            bone.position = rot @ nd.position
+
+        with Layout("Link Bone to Mesh and deform"):
+            bone = CBone.new(bone)
+            cyl = CBone.link(cyl, bone, distance=1)
+        
+            for i in range(3):
+                bone = CBone.rotate(bone, index=i, rotation=rots[i])
+            
+            cyl = CBone.deform(cyl, bone, blend=blend)
+
+        with Layout("Debug"):
+            cubes = bone.instance_on_points(instance=Mesh.Cube(size=0.05))
+            cubes.switch_false(use_cubes)
+        
+        (cyl + (bone, cubes)).out()
+
+    # ====================================================================================================
+    # Ordered Selection
+    # ====================================================================================================
+    
+    # ----------------------------------------------------------------------------------------------------
+    # Ordered Selection length
+    # ----------------------------------------------------------------------------------------------------
+
+    with GeoNodes("OSel Count", is_group=True, rebuild=rebuild):
+        
+        mesh = Mesh()
+        sel_name = String("Selection", "Selection Name")
+        
+        count = Mesh(mesh.points[Integer(sel_name) > 0].separate()).points.count
+        
+        count.out("Count")
+    
+    # ----------------------------------------------------------------------------------------------------
+    # Ordered Selection Rename
+    # ----------------------------------------------------------------------------------------------------
+
+    with GeoNodes("OSel Rename", is_group=True, rebuild=rebuild):
+        
+        mesh = Mesh()
+        sel_name = String("Selection", "Name")
+        new_name = String("New Name", "New Name")
+        use_remove = Boolean(True, "Remove")
+        
+        mesh.points.set(new_name, Integer(sel_name))
+        rem = Mesh(mesh)
+        rem.remove_named_attribute(name=sel_name)
+        
+        mesh.switch(use_remove,rem).out()
+    
+    
+    # ----------------------------------------------------------------------------------------------------
+    # Add selection
+    # ----------------------------------------------------------------------------------------------------
+    
+    with GeoNodes("OSel Add Selection", is_group=True, rebuild=rebuild):
+        
+        mesh = Mesh()
+        sel = Boolean(False, "Selection", hide_value=True)
+        use_invert = Boolean(False, "Invert")
+        sel_name = String("Selection", "Name")
+        
+        idx = Integer(sel_name)
+        
+        with Layout("Current Selection"):
+            
+            exists = mesh.points.sample_index(idx.exists, index=0)
+            
+            mesh.points[exists.bnot()].set(sel_name, 0)
+            
+            max_sel = mesh.points.attribute_statistic(Float(idx)).max_.to_integer()
+            
+        with Layout("Selection Order"):
+            n = Mesh(Mesh(mesh).points[sel].separate()).points.count
+            num = mesh.points.accumulate_field(Integer(sel)).leading
+            mesh.points.set("tmp Sel", Integer.Switch(use_invert, num, n + 1 - num))
+            
+            mesh.points[sel].set(sel_name, max_sel + Integer("tmp Sel"))
+            mesh.remove_named_attribute(name="tmp Sel")
+            
+        mesh.out()
+        
+    # ----------------------------------------------------------------------------------------------------
+    # Merge another ordered selection
+    # ----------------------------------------------------------------------------------------------------
+    
+    with GeoNodes("OSel Append", is_group=True, rebuild=rebuild):
+        
+        mesh = Mesh()
+        sel_name = String("Selection", "Name")
+        other_name = String("Other", "Other Name")
+        use_remove = Boolean(True, "Remove")
+        
+        count = OSel.count(mesh, sel_name)
+        
+        other_idx = Integer(other_name)
+        mesh.points[other_idx > 0].set(sel_name, count + other_idx)
+        
+        rem = Mesh(mesh)
+        rem.remove_named_attribute(name=other_name)
+        mesh.switch(use_remove, rem)
+        
+        mesh.out()
+
+    # ----------------------------------------------------------------------------------------------------
+    # Visualization
+    # ----------------------------------------------------------------------------------------------------
+        
+    with GeoNodes("OSel Visualization", rebuild=rebuild):
+        
+        mesh = Mesh()
+        sel_name = String("Selection", "Name")
+        size = Float(1.0, "Size")
+        dist = Float(0.1, "Distance")
+        use_index = Boolean(False, "Index")
+        
+        for feel in mesh.points.for_each_element(pos = nd.position, normal=nd.normal, sel_num = Integer(sel_name)):
+            idx = feel.sel_num.switch(use_index, feel.index)
+            label = idx.to_string().to_curves(size=size).realize()
+            label = Curve(label).fill()
+            label.faces.material = "Colored Mat"
+            label.faces.set('Color', Color("Black"))
+            label.transform(rotation=(pi/2, 0, 0))
+            
+            pos1 =  feel.pos + feel.normal.scale(dist) 
+            
+            label.offset = pos1
+            label += Curve.Line(feel.pos, pos1)
+            
+            label.switch(feel.sel_num == 0)
+            
+            label.out()
+            
+        (mesh + feel.generated).out()
+        
+    # ----------------------------------------------------------------------------------------------------
+    # Shift
+    # ----------------------------------------------------------------------------------------------------
+    
+    with GeoNodes("OSel Shift", rebuild=rebuild):
+        
+        mesh = Mesh()
+        sel_name = String("Selection", "Name")
+        shift = Integer(0, "Shift")
+        
+        idx = Integer(sel_name)
+        sel = idx > 0
+        
+        count = Mesh(Mesh(mesh).points[sel].separate()).points.count
+        
+        mesh.points[sel].set(sel_name, (idx - 1 + shift).floored_modulo(count) + 1)
+        
+        mesh.out()
+        
+    # ----------------------------------------------------------------------------------------------------
+    # Shift
+    # ----------------------------------------------------------------------------------------------------
+    
+    with GeoNodes("OSel Invert", rebuild=rebuild):
+        
+        mesh = Mesh()
+        sel_name = String("Selection", "Name")
+        use_invert = Boolean(True, "Invert")
+        
+        idx = Integer(sel_name)
+        sel = idx > 0
+        
+        count = Mesh(Mesh(mesh).points[sel].separate()).points.count
+        
+        inverted = Mesh(mesh)
+        
+        inverted.points[sel].set(sel_name, count - idx + 1)
+        
+        mesh.switch(use_invert, inverted).out()
+        
+    # ----------------------------------------------------------------------------------------------------
+    # Extract a sub ordered selection
+    # ----------------------------------------------------------------------------------------------------
+    
+    with GeoNodes("OSel Extract", rebuild=rebuild):
+        
+        mesh = Mesh()
+        sel_name = String("Selection", "Name")
+        use_invert = Boolean(False, "Invert")
+        
+        start = Integer(1, "Start", 1)
+        count = Integer(1, "Count")
+        x_name = String("", "Extraction Name")
+        
+        idx = Integer(sel_name)
+        
+        nsel = Mesh(Mesh(mesh).points[idx > 0].separate()).points.count
+        
+        new_idx = (idx - start).floored_modulo(nsel)
+        
+        sel = (idx > 0) & (new_idx < count)
+        
+        named = Mesh(mesh)
+        named.points.set(x_name, new_idx + 1)
+        inverted = Mesh(mesh)
+        inverted.points.set(x_name, count - new_idx)
+        named.switch(use_invert, inverted)
+        
+        named.points[sel.bnot()].set(x_name, 0)
+        
+        mesh.switch(x_name != "", named)
+        
+        mesh.out()
+        sel.out()
+
+    # ----------------------------------------------------------------------------------------------------
+    # Extract Mesh
+    # ----------------------------------------------------------------------------------------------------
+    
+    with GeoNodes("OSel Get Line", is_group=True, rebuild=rebuild):
+        
+        mesh = Mesh()
+        sel_name = String("Selection", "Name")
+        
+        pts = Mesh(mesh.points[Integer(sel_name) > 0].separate())
+        
+        pts.points.sort(sort_weight=Integer(sel_name))
+
+        pts.out()
+        
+    # ----------------------------------------------------------------------------------------------------
+    # Set position
+    # ----------------------------------------------------------------------------------------------------
+    
+    with GeoNodes("OSel Set Position", is_group=True, rebuild=rebuild):
+
+        mesh = Mesh()
+        sel_name = String("Selection", "Name")
+        
+        pts = Cloud(None, "Points")
+        
+        mesh[Integer(sel_name) > 0].position = pts.points.sample_index(nd.position, index=Integer(sel_name) - 1)
+        
+        mesh.out()
+        
+    # ----------------------------------------------------------------------------------------------------
+    # Selection center and normal
+    # ----------------------------------------------------------------------------------------------------
+    
+    with GeoNodes("OSel Get Disk", rebuild=rebuild):
+        
+        mesh = Mesh()
+        sel_name = String("Selection", "Name")
+        
+        sel = Integer(sel_name)>0
+        
+        center = mesh.points[sel].attribute_statistic(nd.position).mean
+        
+        line = OSel.get_line(mesh, sel_name)
+        
+        disk = Mesh.Circle(fill_type="N-Gon", vertices=OSel.count(mesh, sel_name))
+        disk.position = line.points.sample_index(nd.position, index=nd.index)
+        
+        disk.out()
+        center.out("Center")
+        
+        
+    # ----------------------------------------------------------------------------------------------------
+    # To Circle
+    # ----------------------------------------------------------------------------------------------------
+    
+    with GeoNodes("OSel To Circle", is_group=True, rebuild=rebuild):
+        
+        mesh = Mesh()
+        sel_name = String("Selection", "Name")
+        radius = Float(1.0, "Radius", 0)
+        use_center = Boolean(True, "Default Center")
+        center = Vector(0, "Center")
+        
+        def_center = mesh.points[Integer(sel_name) > 0].attribute_statistic(nd.position).mean
+        center.switch(use_center, def_center)
+        
+        mesh[Integer(sel_name)>0].position = center + (nd.position - center).normalize().scale(radius)
+
+        mesh.out()
+        
+    # ----------------------------------------------------------------------------------------------------
+    # Merge two selections
+    # ----------------------------------------------------------------------------------------------------
+    
+    with GeoNodes("OSel Merge", rebuild=rebuild, is_group=True):
+        
+        mesh = Mesh()
+        sel_name = String("Selection", "Name")
+        to_name = String("To", "To Selection")
+        use_remove=Boolean(True, "Remove")
+        
+        line = OSel.get_line(mesh, to_name)
+        
+        mesh = OSel.set_position(mesh, sel_name, points=line)
+        
+        mesh.points.set("tmp Merge", Integer(sel_name))
+        mesh.points[Integer(to_name)>0].set("tmp Merge", Integer(to_name))
+        mesh = mesh.points[Integer("tmp Merge") > 0].merge(merge_id=Integer("tmp Merge"))
+        
+        mesh.remove_named_attribute(name="tmp Merge")
+
+        rem = Mesh(mesh)
+        rem.remove_named_attribute(name=sel_name)
+        rem.remove_named_attribute(name=to_name)
+        
+        mesh.switch(use_remove, rem)
+        
+        mesh.out()
+        
+    # ----------------------------------------------------------------------------------------------------
+    # Bridge between two ordered selection
+    # ----------------------------------------------------------------------------------------------------
+        
+    with GeoNodes("OSel Bridge", rebuild=rebuild, is_group=True):
+        
+        mesh = Mesh()
+        sel_name0 = String("Selection", "Name")
+        sel_name1 = String("To", "To Name")
+        resol = Integer(0, "Resolution", 0)
+        closed = Boolean(False, "Closed")
+        
+        use_flip = Boolean(False, "Flip")
+
+        side_name = String("Side", "Side Name")
+        bridge_name = String("", "Bridge Name")
+        
+        with Layout("Create the bridge"):
+
+            line0 = OSel.get_line(mesh, sel_name0)
+            line1 = OSel.get_line(mesh, sel_name1)
+            
+            nx = (resol + 2)._lc("nx")
+            ny = line0.points.count._lc("ny")
+            
+            ny1 = line1.points.count
+            
+            ko = ny != ny1
+            ko.warning("Selections don't have the same number of vertices: " + ny.to_string() + " and " + ny1.to_string())
+            
+            bridge = Mesh.Grid(vertices_x=nx, vertices_y=ny)
+            line = Mesh.Line(count=nx)
+            cyl = Mesh.Cylinder(vertices=ny, side_segments=nx-1, fill_type='None')
+            
+            bridge.switch(ny==1, line)
+            bridge.switch(closed & (ny > 2), cyl)
+            bridge.set(sel_name0, 0)
+            bridge.set(sel_name1, 0)
+            
+            named = Mesh(bridge)
+            named.points.set(bridge_name, nd.index + 1)
+            bridge.switch(bridge_name.length()>0, named)
+            
+        with Layout("Bridge points position"):
+            
+            i = (nd.index // ny)._lc("i")
+            j = (nd.index % ny)._lc("j")
+            
+            p0 = line0.points.sample_index(nd.position, index=j)
+            p1 = line1.points.sample_index(nd.position, index=j)
+            
+            fac = i/(nx - 1)
+            
+            bridge.position = p0.scale(1 - fac) + p1.scale(fac)
+            flipped = Mesh(bridge)
+            flipped.flip_faces()
+            bridge.switch(use_flip, flipped)
+            
+        with Layout("Weld"):
+            
+            sideA = side_name + " A"
+            sideB = side_name + " B"
+            
+            with Layout("Bridge Sides"):            
+                bridge.points[i==0].set(sel_name0, j+1)
+                bridge.points[i==nx-1].set(sel_name1, j+1)
+                
+                bridge.points[j==0].set(sideA, i+1)
+                bridge.points[j==ny-1].set(sideB, nx - i)
+                
+            with Layout("Side extremities will be merged"):                
+                mesh.points[Integer(sel_name0)==1].set(sideA, 1)
+                mesh.points[Integer(sel_name0)==ny].set(sideB, resol + 2)
+                
+                mesh.points[Integer(sel_name1)==1].set(sideA, resol + 2)
+                mesh.points[Integer(sel_name1)==ny].set(sideB, 1)
+                
+            with Layout("Weld"):                
+                mesh += bridge
+
+                idx = Integer(sel_name0)
+                mesh.points[idx > 0].merge(merge_id=idx)
+                
+                idx = Integer(sel_name1)
+                mesh.points[idx > 0].merge(merge_id=idx)
+                
+                mesh.remove_named_attribute(name=sel_name0)
+                mesh.remove_named_attribute(name=sel_name1)
+            
+        mesh.out()
+
+    # ====================================================================================================
+    # Split Hole
+    # ====================================================================================================
+    
+    with GeoNodes("OSel Split Hole", is_group=True, rebuild=rebuild):
+        
+        mesh = Mesh()
+        
+        sel_name = String("Selection", "Name")
+        
+        count = Integer(1, "Count", 1)
+        index0 = Integer(0, "Index 0", 0)
+        index1 = Integer(0, "Index 1", 0)
+        
+        resol = Integer(0, "Resolution", 0)
+        use_flip = Boolean(False, "Flip")
+        
+        nsel = OSel.count(mesh, sel_name)
+        
+        with Layout("New loop A"):
+            
+            idx = Integer(sel_name) - 1
+            shift = index1 + count - 1
+            
+            idx = (idx - shift).floored_modulo(nsel)
+            idx_max = (index0 - 1 - shift).floored_modulo(nsel)
+            
+            mesh.points[(Integer(sel_name) > 0) & (idx < idx_max)].set("tmp Side A", resol + 3 + idx)
+            
+        with Layout("New loop B"):
+            
+            idx = Integer(sel_name) - 1
+            shift = index0 + count - 1
+            
+            idx = (idx - shift).floored_modulo(nsel)
+            idx_max = (index1 - 1 - shift).floored_modulo(nsel)
+            
+            mesh.points[(Integer(sel_name) > 0) & (idx < idx_max)].set("tmp Side B", resol + 3 + idx)
+            
+        with Layout("Build a bridge"):   
+            mesh = OSel.extract(mesh, sel_name, start=index0, count=count, invert=False, extraction_name="tmp A")
+            mesh = OSel.extract(mesh, sel_name, start=index1, count=count, invert=True,  extraction_name="tmp B")
+            mesh = OSel.bridge(mesh,
+                name="tmp A", 
+                to_name="tmp B", 
+                flip=use_flip.bnot(),
+                resolution=resol,
+                side_name = "tmp Side",
+                )
+                
+        with Layout("Rename Selections"):
+            
+            mesh.points.set(sel_name + " A", Integer("tmp Side A"))
+            mesh.points.set(sel_name + " B", Integer("tmp Side B"))
+            
+            mesh.remove_named_attribute(name="tmp Side A")
+            mesh.remove_named_attribute(name="tmp Side B")
+            mesh.remove_named_attribute(name=sel_name)
+            
+
+        mesh.out()
+        
+        

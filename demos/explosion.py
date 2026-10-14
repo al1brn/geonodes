@@ -54,7 +54,7 @@ import numpy as np
 from geonodes import *
 from geonodes import macros
 
-def demo():
+def demo(rebuild=False):
 
     # ====================================================================================================
     # Mesh to located instances
@@ -64,7 +64,7 @@ def demo():
     # - instances are located at parts geometric center
     # ====================================================================================================
 
-    with GeoNodes("Mesh to Located Instances"):
+    with GeoNodes("Mesh to Located Instances", rebuild=rebuild):
         """ 'Split to instances' locates islands at (0, 0, 0)
 
         This Group locates instances at their center
@@ -119,7 +119,7 @@ def demo():
     # Fracturing by splitting in two parts
     # ====================================================================================================
 
-    with GeoNodes("Plane Split"):
+    with GeoNodes("Plane Split", rebuild=rebuild):
         
         mesh = Mesh()
         min_size = Float(.1, "Min Size")
@@ -160,7 +160,7 @@ def demo():
     # Iterator
     # ====================================================================================================
         
-    with GeoNodes("Break with Planes Slicings"):
+    with GeoNodes("Break with Planes Slicings", rebuild=rebuild):
         
         mesh = Mesh()
         count = Integer(5, "Count", 1, 20)
@@ -193,7 +193,7 @@ def demo():
     # Cell fracturation
     # ====================================================================================================
 
-    with GeoNodes("Break with Subdivisions"):
+    with GeoNodes("Break with Subdivisions", rebuild=rebuild):
         
         mesh      = Mesh()
         subd      = Integer(1,        "Divisions", 0, 7)
@@ -266,7 +266,7 @@ def demo():
     # Gravity
     # ====================================================================================================
 
-    with GeoNodes("Gravity Closure", is_group=True):
+    with GeoNodes("Gravity Closure", is_group=True, rebuild=rebuild):
 
         g = Vector((0, 0, -9.81), "Gravity")
 
@@ -287,7 +287,7 @@ def demo():
     # Gravity
     # ====================================================================================================
 
-    with GeoNodes("Viscosity Closure", is_group=True):
+    with GeoNodes("Viscosity Closure", is_group=True, rebuild=rebuild):
 
         v_fac = Float(1.3, "Factor")
         v_exp = Float(1.7, "Power")
@@ -323,7 +323,7 @@ def demo():
     # Newton law as interaction law
     # ----------------------------------------------------------------------------------------------------
 
-    with GeoNodes("Newton Law Interaction", is_group = True):
+    with GeoNodes("Newton Law Interaction", is_group = True, rebuild=rebuild):
 
         G_ = Float(1, "G")
 
@@ -345,7 +345,7 @@ def demo():
     # Interaction closure : sum of interaction law between particles
     # ----------------------------------------------------------------------------------------------------
 
-    with GeoNodes("Interaction Closure", is_group = True):
+    with GeoNodes("Interaction Closure", is_group = True, rebuild=rebuild):
 
         law = Closure(None, "Law")
         use_max_acc = Boolean(False, "Bound Acceleration")
@@ -401,7 +401,7 @@ def demo():
     # Kinematics
     # ====================================================================================================
 
-    with GeoNodes("Kinematics Engine", is_group=True):
+    with GeoNodes("Kinematics Engine", is_group=True, rebuild=rebuild):
 
         # ---------------------------------------------------------------------------
         # Input geometry must be a cloud of points
@@ -483,7 +483,7 @@ def demo():
     # Instances kinematics
     # ====================================================================================================
 
-    with GeoNodes("Instances Kinematics"):
+    with GeoNodes("Instances Kinematics", rebuild=rebuild):
 
         instances = Instances()
 
@@ -501,7 +501,7 @@ def demo():
     # Mesh kinematics
     # ====================================================================================================
 
-    with GeoNodes("Mesh Kinematics"):
+    with GeoNodes("Mesh Kinematics", rebuild=rebuild):
 
         mesh = Mesh()
         omega_max = Float.Angle(1, "Max Omega")
@@ -525,7 +525,7 @@ def demo():
     # Kinematics
     # ====================================================================================================
 
-    with GeoNodes("Kinematics Demo"):
+    with GeoNodes("Kinematics Demo", rebuild=rebuild):
 
         mesh = Mesh()
         solidify = Boolean(True, "Solidify")
@@ -565,7 +565,7 @@ def demo():
     # Solar system demo
     # ====================================================================================================
 
-    with GeoNodes("Solar System Demo"):
+    with GeoNodes("Solar System Demo", rebuild=rebuild):
 
         count = Integer(8, "Planets")
         G_    = Float(1., "G")/10000

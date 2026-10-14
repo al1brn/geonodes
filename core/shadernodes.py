@@ -81,7 +81,8 @@ class ShaderNodes(Tree):
             fake_user        : bool = False, 
             is_group         : bool = False, 
             prefix           : Optional[str] = None,
-            replace_material : bool = False, 
+            replace_material : bool = False,
+            rebuild          : bool = True,
             color_tag        : str = 'NONE',
             ):
         """ > ShaderNodes
@@ -101,7 +102,10 @@ class ShaderNodes(Tree):
             name prefix default=None.
 
         replace_material : bool, optional
-            replace material if already exists default=False.
+            replace material if already exists (is_group=False), default=False.
+
+        rebuild : bool, default=True
+            rebuild an existing group (is_group=True); new groups are always built.
 
         color_tag : str, default='NONE'
             group or modifier color_tag attribute (groups only)
@@ -112,7 +116,7 @@ class ShaderNodes(Tree):
             fake_user=fake_user, 
             is_group=is_group, 
             prefix=prefix, 
-            replace_material=replace_material,
+            rebuild=rebuild if is_group else replace_material,
             color_tag = color_tag,
             )
 

@@ -263,7 +263,7 @@ def page_shaders(first_index, *page_pairs, selector_name="Image Selector"):
         shader.out()
 
 
-def demo():
+def demo(rebuild=False):
 
 
     """Build all shader-independent node groups and geometry modifiers."""
@@ -275,7 +275,7 @@ def demo():
     # Animated spine curve used to attach sheet profiles.
     # ====================================================================================================
 
-    with GeoNodes("Binding", is_group=True):
+    with GeoNodes("Binding", is_group=True, rebuild=rebuild):
 
         factor = Float.Factor(0.5, "Factor", 0, 1)
         count = Integer(100, "Sheet Count")
@@ -341,7 +341,7 @@ def demo():
     # Dynamic binding with a deformation factor
     # ====================================================================================================
 
-    with GeoNodes("Binding Closure", is_group=True):
+    with GeoNodes("Binding Closure", is_group=True, rebuild=rebuild):
 
         count = Integer(100, "Sheet Count")
         thickness = Float(1, "Thickness", 0.01, 10)
@@ -387,7 +387,7 @@ def demo():
         "Stick" : {'type': 'FLOAT', 'def': 1.0, 'mm': (0, 1)},
         }
 
-    with GeoNodes("Profile Parameters", is_group=True):
+    with GeoNodes("Profile Parameters", is_group=True, rebuild=rebuild):
 
         sockets = {}
         for name, d in PARAMETERS.items():
@@ -412,7 +412,7 @@ def demo():
     # Change profile parameters
     # ====================================================================================================
 
-    with GeoNodes("Profile Parameters Change", is_group=True):
+    with GeoNodes("Profile Parameters Change", is_group=True, rebuild=rebuild):
 
         old_bdl = Bundle(None, "Parameters")
 
@@ -441,7 +441,7 @@ def demo():
     # Parameters are defined for right sides,, symmetrize make them useable for left side
     # ====================================================================================================
 
-    with GeoNodes("Profile Parameters Symmetrize", is_group=True):
+    with GeoNodes("Profile Parameters Symmetrize", is_group=True, rebuild=rebuild):
 
         old_bdl = Bundle(None, "Parameters")
 
@@ -464,7 +464,7 @@ def demo():
     # Combine profile parameters
     # ====================================================================================================
 
-    with GeoNodes("Profile Parameters Mix", is_group=True):
+    with GeoNodes("Profile Parameters Mix", is_group=True, rebuild=rebuild):
 
         factor = Float.Factor(.5, "Factor", 0, 1)
         A_bundle = Bundle(None, "A")
@@ -486,7 +486,7 @@ def demo():
     # Default profile parameters
     # ====================================================================================================
 
-    with GeoNodes("Profile Parameters Standard", is_group=True):
+    with GeoNodes("Profile Parameters Standard", is_group=True, rebuild=rebuild):
 
         curvature = Float.Factor(0.5, "Curvature", 0, 1)
         s_shape = Float.Factor(0.0, "S Shape", 0, 1)
@@ -523,7 +523,7 @@ def demo():
     # Bezier profile of one sheet from binding to free edge.
     # ====================================================================================================
 
-    with GeoNodes("Sheet Profile", is_group=True):
+    with GeoNodes("Sheet Profile", is_group=True, rebuild=rebuild):
 
         binding = Curve(name="Binding")
 
@@ -580,7 +580,7 @@ def demo():
     # Adjusts a sheet length by moving only its last point.
     # =============================================================================================================================
 
-    with GeoNodes("Sheet Length", is_group=True):
+    with GeoNodes("Sheet Length", is_group=True, rebuild=rebuild):
 
         sheet = Curve()
         new_length = Float.Distance(0.14, "New Length")
@@ -613,7 +613,7 @@ def demo():
     # Pushes one sheet outside another one while preserving its length.
     # =============================================================================================================================
 
-    with GeoNodes("Sheet Clearance", is_group = True):
+    with GeoNodes("Sheet Clearance", is_group = True, rebuild=rebuild):
 
         # ----------------------------------------------------------------------------------------------------
         # Resample smooth
@@ -685,7 +685,7 @@ def demo():
     # Creates one sheet profile shifted by a normal offset normal on to the curve.
     # =============================================================================================================================
 
-    with GeoNodes("Sheets On To", is_group=True):
+    with GeoNodes("Sheets On To", is_group=True, rebuild=rebuild):
 
         sheets = Curve(name="Sheets")
         binding = Curve(name="Binding")
@@ -737,7 +737,7 @@ def demo():
     # Create book sheets
     # ====================================================================================================
 
-    with GeoNodes("Book Sheets", is_group=True):
+    with GeoNodes("Book Sheets", is_group=True, rebuild=rebuild):
 
         binding = Curve(name="Binding")
 
@@ -885,7 +885,7 @@ def demo():
     # Stores segment lengths and relative angles on a curve.
     # ====================================================================================================
 
-    with GeoNodes("Curve to Chain", is_group=True):
+    with GeoNodes("Curve to Chain", is_group=True, rebuild=rebuild):
 
         curve = Curve()
 
@@ -922,7 +922,7 @@ def demo():
     # Interpolates two set of sheets while preserving segment lengths.
     # ====================================================================================================
 
-    with GeoNodes("Sheet Interpolate", is_group=True):
+    with GeoNodes("Sheet Interpolate", is_group=True, rebuild=rebuild):
 
         with Panel("Sheets"):
             start_sheet = Curve(name="Start")
@@ -978,7 +978,7 @@ def demo():
     # A book
     # ====================================================================================================
 
-    with GeoNodes("Book Sheets Animated", is_group=True):
+    with GeoNodes("Book Sheets Animated", is_group=True, rebuild=rebuild):
 
         prev_sheets = Curve(name="Sheets")
         replace = Boolean(True, "Replace")
@@ -1106,7 +1106,7 @@ def demo():
     # Merge cozer, binding and back to make one single mesh
     # =============================================================================================================================
 
-    with GeoNodes("Cover Extrude"):
+    with GeoNodes("Cover Extrude", rebuild=rebuild):
 
         # ----------------------------------------------------------------------------------------------------
         # Prepare curve
@@ -1293,7 +1293,7 @@ def demo():
     # Converts sheet and cover curves to renderable meshes.
     # =============================================================================================================================
 
-    with GeoNodes("Book Extrude"):
+    with GeoNodes("Book Extrude", rebuild=rebuild):
 
         with Panel("Input"):
             sheets = Curve(name="Sheets")
@@ -1362,7 +1362,7 @@ def demo():
     # Forces consecutive material slots on a range of sheets.
     # =============================================================================================================================
 
-    with GeoNodes("Set Sheet Material"):
+    with GeoNodes("Set Sheet Material", rebuild=rebuild):
 
         mesh = Mesh()
 
@@ -1387,7 +1387,7 @@ def demo():
     # A book
     # =============================================================================================================================
 
-    with GeoNodes("Book"):
+    with GeoNodes("Book", rebuild=rebuild):
 
         show = Boolean(True, "Show")
         sheets_factor = Float.Factor(50, "Factor", 0, 100)
@@ -1534,7 +1534,7 @@ def demo():
     # Book example
     # =============================================================================================================================
 
-    with GeoNodes("Book Demo"):
+    with GeoNodes("Book Demo", rebuild=rebuild):
 
         factor = Float.Factor(0.5, "Factor", 0, 1)
         left_count = Integer(30, "Sheets Left", 10, 60)

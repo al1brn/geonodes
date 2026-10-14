@@ -64,22 +64,22 @@ op_     = G("4D G")
 # =============================================================================================================================
 # Build the 4D engine
 
-def demo(clear=False):
+def demo(clear=False, *, rebuild=False):
 
     print("-"*100)
     print("Build 4D Engine")
     print()
 
     Tree._reset_counters()
-    build_shaders()
+    build_shaders(rebuild=rebuild)
     print(f"4D shaders built : {Tree._total_nodes} nodes, {Tree._total_links} links")
     print()
 
     Tree._reset_counters()
 
-    Vector4.build_nodes()
-    Matrix4.build_nodes()
-    build_geometry_nodes()
+    Vector4.build_nodes(rebuild=rebuild)
+    Matrix4.build_nodes(rebuild=rebuild)
+    build_geometry_nodes(rebuild=rebuild)
 
     Tree._display_counter("4D Engine built")
     print(f"4D Engine built : {Tree._total_nodes} nodes, {Tree._total_links} links in {Tree._total_time:.1f} s")
@@ -89,13 +89,13 @@ def demo(clear=False):
 # Shaders
 # ====================================================================================================
 
-def build_shaders():
+def build_shaders(rebuild=False):
 
     # ----------------------------------------------------------------------------------------------------
     # Grid shader group
     # ----------------------------------------------------------------------------------------------------
 
-    with ShaderNodes("Grid", is_group=True):
+    with ShaderNodes("Grid", is_group=True, rebuild=rebuild):
 
         USE_GRID = False
 
@@ -150,7 +150,7 @@ def build_shaders():
     # GROUP - Reading 4D Shading Attributes
     # ----------------------------------------------------------------------------------------------------
 
-    with ShaderNodes("4D Attributes", is_group=True):
+    with ShaderNodes("4D Attributes", is_group=True, rebuild=rebuild):
 
         # ---------------------------------------------------------------------------
         # Interior
@@ -724,13 +724,13 @@ class Vector4:
     # ====================================================================================================
 
     @staticmethod
-    def build_nodes():
+    def build_nodes(rebuild=False):
 
         # ----------------------------------------------------------------------------------------------------
         # Combine / Separate
         # ----------------------------------------------------------------------------------------------------
 
-        with GeoNodes("Combine XYZW", is_group=True, prefix=vec_):
+        with GeoNodes("Combine XYZW", is_group=True, prefix=vec_, rebuild=rebuild):
             x = Float(0, "X")
             y = Float(0, "Y")
             z = Float(0, "Z")
@@ -738,7 +738,7 @@ class Vector4:
             Vector((x, y, z)).out("xyz")
             Float("w").out("w")
 
-        with GeoNodes("Separate", is_group=True, prefix=vec_):
+        with GeoNodes("Separate", is_group=True, prefix=vec_, rebuild=rebuild):
             V4 = Vector4.Input()
             x, y, z, w = V4.xyzw
             x.out("X")
@@ -750,7 +750,7 @@ class Vector4:
         # Dump a matrix
         # ----------------------------------------------------------------------------------------------------
 
-        with GeoNodes("Debug Matrix", is_group=True, prefix=mat_):
+        with GeoNodes("Debug Matrix", is_group=True, prefix=mat_, rebuild=rebuild):
             
             M = Matrix(name="Matrix")
             
@@ -773,7 +773,7 @@ class Vector4:
         # Get an axis vector
         # ----------------------------------------------------------------------------------------------------
 
-        with GeoNodes("Axis", is_group=True, prefix=vec_) as tree:
+        with GeoNodes("Axis", is_group=True, prefix=vec_, rebuild=rebuild) as tree:
             """ Get an axis vector by its index in 0 to 3
             """
             
@@ -792,7 +792,7 @@ class Vector4:
         # 4-Vector math
         # ----------------------------------------------------------------------------------------------------
 
-        with GeoNodes("Math", is_group=True, prefix=vec_):
+        with GeoNodes("Math", is_group=True, prefix=vec_, rebuild=rebuild):
         
             ope = Integer.MenuSwitch(
                 named_sockets = {
@@ -857,7 +857,7 @@ class Vector4:
         # Scale
         # ----------------------------------------------------------------------------------------------------
 
-        with GeoNodes("Scale", is_group=True, prefix=vec_):
+        with GeoNodes("Scale", is_group=True, prefix=vec_, rebuild=rebuild):
             V  = Vector4.Input()
             scale = Float(1., "Scale")
 
@@ -867,7 +867,7 @@ class Vector4:
         # Switch with another 4_vector
         # ----------------------------------------------------------------------------------------------------
 
-        with GeoNodes("Switch", is_group=True,prefix=vec_):
+        with GeoNodes("Switch", is_group=True,prefix=vec_, rebuild=rebuild):
             condition = Boolean(False, "Condition")
             false  = Vector4.Input(name = "False")
             true   = Vector4.Input(name = "True")
@@ -878,7 +878,7 @@ class Vector4:
         # Cross between 3 vectors
         # ----------------------------------------------------------------------------------------------------
 
-        with GeoNodes("Cross", is_group = True, prefix=vec_):
+        with GeoNodes("Cross", is_group = True, prefix=vec_, rebuild=rebuild):
             """ Generalized cross product between three 4-vectors
             """
             V0 = Vector4.Input((1, 0, 0), 0, hide_value=True)
@@ -910,7 +910,7 @@ class Vector4:
         # One perpendicular vector
         # ----------------------------------------------------------------------------------------------------
 
-        with GeoNodes("One Perp", is_group=True, prefix=vec_):
+        with GeoNodes("One Perp", is_group=True, prefix=vec_, rebuild=rebuild):
             index = Integer(0, "Index", 0, 2)
             V  = Vector4.Input()
             V.one_perp(index=index).out()
@@ -919,7 +919,7 @@ class Vector4:
         # Project on a plane
         # ----------------------------------------------------------------------------------------------------
 
-        with GeoNodes("Project on Plane", is_group=True, prefix=vec_) as tree:
+        with GeoNodes("Project on Plane", is_group=True, prefix=vec_, rebuild=rebuild) as tree:
 
             V = Vector4.Input()
             A = Vector4.Input(name = "A")
@@ -1008,13 +1008,13 @@ class Matrix4(Matrix):
     # ====================================================================================================
 
     @staticmethod
-    def build_nodes():
+    def build_nodes(rebuild=False):
 
         # ---------------------------------------------------------------------------
         # Get the projection Matrix
         # ---------------------------------------------------------------------------
 
-        with GeoNodes("Projection Matrix", is_group=True, prefix=mat_) as tree:
+        with GeoNodes("Projection Matrix", is_group=True, prefix=mat_, rebuild=rebuild) as tree:
             """ Get the Global projection Matrix from an object named "4D Parameters"
 
             By using a defined object, 4D parameters can be shared between different objects.
@@ -1037,7 +1037,7 @@ class Matrix4(Matrix):
         # Create a Rotation Matrix from 6 angles
         # ---------------------------------------------------------------------------
         
-        with GeoNodes("Rotation Matrix", is_group=True, prefix=mat_) as tree:
+        with GeoNodes("Rotation Matrix", is_group=True, prefix=mat_, rebuild=rebuild) as tree:
             """ Create a rotation Matrix from 6 angles.
             """
             
@@ -1097,7 +1097,7 @@ class Matrix4(Matrix):
         # Rotate a vector
         # ----------------------------------------------------------------------------------------------------
 
-        with GeoNodes("Rotate Vector", is_group=True, prefix=mat_):
+        with GeoNodes("Rotate Vector", is_group=True, prefix=mat_, rebuild=rebuild):
             M = Matrix4(name="Matrix")
             V = Vector4.Input()
 
@@ -1116,7 +1116,7 @@ class Matrix4(Matrix):
         # A Matrix rotating an axis to a target vector
         # ----------------------------------------------------------------------------------------------------
 
-        with GeoNodes("Align Axis to Vector", is_group=True, prefix=mat_) as tree:
+        with GeoNodes("Align Axis to Vector", is_group=True, prefix=mat_, rebuild=rebuild) as tree:
 
             axis = Integer(0, "Axis", 0, 3)
             V    = Vector4.Input()
@@ -1155,7 +1155,7 @@ class Matrix4(Matrix):
         # Perpendicular Planes
         # ----------------------------------------------------------------------------------------------------
 
-        with GeoNodes("Perp Planes", is_group=True, prefix=mat_) as tree:
+        with GeoNodes("Perp Planes", is_group=True, prefix=mat_, rebuild=rebuild) as tree:
             """ Compute a Matrix from two vectors.
 
             This Group returns a normalized Matrix with:
@@ -1206,7 +1206,7 @@ class Matrix4(Matrix):
         # Roll vectors
         # ----------------------------------------------------------------------------------------------------
 
-        with GeoNodes("Roll Columns", is_group=True, prefix=mat_) as tree:
+        with GeoNodes("Roll Columns", is_group=True, prefix=mat_, rebuild=rebuild) as tree:
             matrix = Matrix4(None, "Matrix")
             index  = Integer(0, "Count")
 
@@ -1260,13 +1260,13 @@ class Cloud4(Cloud, G4Interface):
 # Build nodes
 # ====================================================================================================
 
-def build_geometry_nodes():
+def build_geometry_nodes(rebuild=False):
 
     # ====================================================================================================
     # MODIFIER - Plunge a Geometry into 4D
     # ====================================================================================================
 
-    with GeoNodes("Plunge", prefix=main_) as tree:
+    with GeoNodes("Plunge", prefix=main_, rebuild=rebuild) as tree:
         """ Plunge an object into 4D Space.
 
         Do nothing if already plunged
@@ -1365,7 +1365,7 @@ def build_geometry_nodes():
     # MODIFIER - Show Normals
     # ====================================================================================================
 
-    with GeoNodes("Normals", prefix=geo_) as tree:
+    with GeoNodes("Normals", prefix=geo_, rebuild=rebuild) as tree:
 
         # Projected geometry
         geo = Geometry(tip="Projected Geometry")
@@ -1417,7 +1417,7 @@ def build_geometry_nodes():
     # GROUP - Compute faces UV Indices
     # ====================================================================================================
 
-    with GeoNodes("Compute UV Indices", is_group=True, prefix=op_) as tree:
+    with GeoNodes("Compute UV Indices", is_group=True, prefix=op_, rebuild=rebuild) as tree:
         
         mesh = Mesh4.Plunge()
         keep = Mesh(mesh)
@@ -1483,7 +1483,7 @@ def build_geometry_nodes():
     # GROUP - Compute faces UV 4-Vectors
     # ====================================================================================================
 
-    with GeoNodes("Compute UV Vectors", is_group=True, prefix=op_) as tree:
+    with GeoNodes("Compute UV Vectors", is_group=True, prefix=op_, rebuild=rebuild) as tree:
         
         mesh = Mesh4.Plunge().compute_uv_indices()
 
@@ -1556,7 +1556,7 @@ def build_geometry_nodes():
     # MODIFIER - Compute Visible Faces from a point (typically a source of light)
     # ====================================================================================================
 
-    with GeoNodes("Compute Visible Faces", is_group=True, prefix=op_) as tree:
+    with GeoNodes("Compute Visible Faces", is_group=True, prefix=op_, rebuild=rebuild) as tree:
         
         mesh = Mesh4.Plunge()
         O = Vector4.Input()
@@ -1615,7 +1615,7 @@ def build_geometry_nodes():
     # MODIFIER - Light
     # ====================================================================================================
 
-    with GeoNodes("Light", prefix=main_):
+    with GeoNodes("Light", prefix=main_, rebuild=rebuild):
 
         P4 = Vector4.Input()
         intensity = Float(1, "Intensity", 0)
@@ -1640,7 +1640,7 @@ def build_geometry_nodes():
     # MODIFIER - Light on surface
     # ====================================================================================================
 
-    with GeoNodes("Normal Plane Reflection", prefix=mesh_) as tree:
+    with GeoNodes("Normal Plane Reflection", prefix=mesh_, rebuild=rebuild) as tree:
 
         mesh = Mesh4.Plunged()
         coll = Collection("4D Lights", "Lights")
@@ -1741,7 +1741,7 @@ def build_geometry_nodes():
     # MODIFIER - Translation
     # ====================================================================================================
 
-    with GeoNodes("Translation", prefix=geo_) as tree:
+    with GeoNodes("Translation", prefix=geo_, rebuild=rebuild) as tree:
 
         geo = Geometry4.Plunged()
         T = Vector4.Input()
@@ -1758,7 +1758,7 @@ def build_geometry_nodes():
     # MODIFIER - Scale
     # ====================================================================================================
 
-    with GeoNodes("Scale", prefix=geo_) as tree:
+    with GeoNodes("Scale", prefix=geo_, rebuild=rebuild) as tree:
 
         geo = Geometry4.Plunged()
 
@@ -1781,7 +1781,7 @@ def build_geometry_nodes():
     # MODIFIER - Matrix Rotation
     # ====================================================================================================
 
-    with GeoNodes("Matrix Rotation", is_group = True, prefix=op_) as tree:
+    with GeoNodes("Matrix Rotation", is_group = True, prefix=op_, rebuild=rebuild) as tree:
 
         geo = Geometry4.Plunged()
         R = Matrix(None, "Rotation")
@@ -1827,7 +1827,7 @@ def build_geometry_nodes():
     # MODIFIER - Rotation
     # ====================================================================================================
 
-    with GeoNodes("Rotation", prefix=geo_) as tree:
+    with GeoNodes("Rotation", prefix=geo_, rebuild=rebuild) as tree:
 
         geo = Geometry4.Plunged()
 
@@ -1844,7 +1844,7 @@ def build_geometry_nodes():
     # MODIFIER - 4D Parameters
     # ====================================================================================================
 
-    with GeoNodes("Parameters", prefix=main_):
+    with GeoNodes("Parameters", prefix=main_, rebuild=rebuild):
         """ Set an object as the global host for shared 4D parameters
 
         The modifier requires 6 angles to defined the projection Matrix.
@@ -1921,7 +1921,7 @@ def build_geometry_nodes():
     # MODIFIER - Projection
     # ====================================================================================================
         
-    with GeoNodes("Projection", prefix=main_) as tree:
+    with GeoNodes("Projection", prefix=main_, rebuild=rebuild) as tree:
         """ Projection a 4D geometry into 3D
         """
         geo = Geometry4.Plunged()
@@ -2041,7 +2041,7 @@ def build_geometry_nodes():
     # MODIFIER - Mesh Merge Points
     # ====================================================================================================
 
-    with GeoNodes("Merge Points", prefix=mesh_) as tree:
+    with GeoNodes("Merge Points", prefix=mesh_, rebuild=rebuild) as tree:
 
         geo = Mesh4.Plunge()
         comps = geo.separate_components()
@@ -2072,7 +2072,7 @@ def build_geometry_nodes():
     # MODIFIER - Curve Twist
     # ====================================================================================================
 
-    with GeoNodes("Twist", prefix=curve_) as tree:
+    with GeoNodes("Twist", prefix=curve_, rebuild=rebuild) as tree:
 
         curve = Curve4.Plunge()
 
@@ -2122,7 +2122,7 @@ def build_geometry_nodes():
     # PRIMITIVE - Curve Line
     # ====================================================================================================
 
-    with GeoNodes("Line", prefix=curve_) as tree:
+    with GeoNodes("Line", prefix=curve_, rebuild=rebuild) as tree:
         """ Create a 4D Line
         """
         resol = Integer(2, "Count", 2)
@@ -2156,7 +2156,7 @@ def build_geometry_nodes():
     # PRIMITIVE - Curve Circle
     # ====================================================================================================
 
-    with GeoNodes("Circle", prefix=curve_) as tree:
+    with GeoNodes("Circle", prefix=curve_, rebuild=rebuild) as tree:
 
         radius  = Float(1, "Radius", 0.)
         resol   = Integer(32, "Count", 3)
@@ -2217,7 +2217,7 @@ def build_geometry_nodes():
     # PRIMITIVE - Mesh Plane
     # ====================================================================================================
 
-    with GeoNodes("Plane", prefix=mesh_) as tree:
+    with GeoNodes("Plane", prefix=mesh_, rebuild=rebuild) as tree:
         """ Create a 4-Plane
 
         The plane is a XY plane or is defined by two vectors.
@@ -2332,7 +2332,7 @@ def build_geometry_nodes():
     # MODIFIER - Curve to Surface
     # ====================================================================================================
 
-    with GeoNodes("To Surface", prefix=curve_) as tree:
+    with GeoNodes("To Surface", prefix=curve_, rebuild=rebuild) as tree:
 
         bbone = Curve(Geometry4.Plunge(Curve()))
         close_bb = Boolean(False, "Close Backbone")
@@ -2456,7 +2456,7 @@ def build_geometry_nodes():
     # PRIMITVE - Mesh Torus
     # ====================================================================================================
 
-    with GeoNodes("Torus", prefix=mesh_) as tree:
+    with GeoNodes("Torus", prefix=mesh_, rebuild=rebuild) as tree:
 
         curve0 = Curve4.Plunge(curve_.circle(keep_open=True).link_inputs(None, "Curve 0", exclude=["Projection"]))
         curve1 = Curve4.Plunge(curve_.circle(keep_open=True).link_inputs(None, "Curve 1", exclude=["Projection"]))
@@ -2491,7 +2491,7 @@ def build_geometry_nodes():
     # MODIFIER - Slices along a curve
     # ====================================================================================================
 
-    with GeoNodes("Slices", prefix=curve_) as tree:
+    with GeoNodes("Slices", prefix=curve_, rebuild=rebuild) as tree:
 
         bbone = Curve4.Plunge()
 
@@ -2538,7 +2538,7 @@ def build_geometry_nodes():
     # PRIMITIVE - Mesh Hyper Sphere
     # ====================================================================================================
 
-    with GeoNodes("Hyper Sphere", prefix=mesh_) as tree:
+    with GeoNodes("Hyper Sphere", prefix=mesh_, rebuild=rebuild) as tree:
 
         radius = Float(1, "Radius", 0)
         slices = Integer(7, "Slices", 1)
@@ -2570,7 +2570,7 @@ def build_geometry_nodes():
     # MODIFIER - Extrusion
     # ====================================================================================================
 
-    with GeoNodes("Extrude", is_group=True, prefix=mesh_) as tree:
+    with GeoNodes("Extrude", is_group=True, prefix=mesh_, rebuild=rebuild) as tree:
 
         mesh = Mesh4.Plunge()
         Dir = Vector4.Input(0, 1)
@@ -2616,7 +2616,7 @@ def build_geometry_nodes():
     # PRIMITIVE - Hyper Cube
     # ====================================================================================================
 
-    with GeoNodes("Hyper Cube", prefix=mesh_):
+    with GeoNodes("Hyper Cube", prefix=mesh_, rebuild=rebuild):
 
         Size = Vector4.Input((1, 1, 1) , 1, name="Size")
 
@@ -2634,7 +2634,7 @@ def build_geometry_nodes():
     # MODIFIER - From Object
     # ====================================================================================================
 
-    with GeoNodes("4D Object") as tree:
+    with GeoNodes("4D Object", rebuild=rebuild) as tree:
 
         geo = Mesh4()
         mat = Material("4D Surface", "Material")

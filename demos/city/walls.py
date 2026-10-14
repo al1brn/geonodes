@@ -7,7 +7,7 @@ from .constants import *
 # Preview wall
 # ====================================================================================================
 
-def demo():
+def demo(rebuild=False):
 
     def wall_dims():
 
@@ -21,7 +21,7 @@ def demo():
     # Preview
     # ----------------------------------------------------------------------------------------------------
 
-    with GeoNodes("WALL Preview", is_group=IS_GROUP):
+    with GeoNodes("WALL Preview", is_group=IS_GROUP, rebuild=rebuild):
 
         length, height, depth = wall_dims()
 
@@ -36,7 +36,7 @@ def demo():
     # Wall Corner Preview
     # ----------------------------------------------------------------------------------------------------
 
-    with GeoNodes("WALL Corner Preview", is_group=IS_GROUP):
+    with GeoNodes("WALL Corner Preview", is_group=IS_GROUP, rebuild=rebuild):
 
         height = Float.Distance(2.4, "Height", MIN_HEIGHT)
         width  = Float.Distance(0.3, "Width", MIN_SIZE)
@@ -50,7 +50,7 @@ def demo():
     # Stone wall
     # ----------------------------------------------------------------------------------------------------
 
-    with GeoNodes("WALL Stones", is_group=IS_GROUP):
+    with GeoNodes("WALL Stones", is_group=IS_GROUP, rebuild=rebuild):
 
         length, height, depth = wall_dims()
 
@@ -77,7 +77,7 @@ def demo():
     # Corner
     # ----------------------------------------------------------------------------------------------------
 
-    with GeoNodes("WALL Corner", is_group=IS_GROUP):
+    with GeoNodes("WALL Corner", is_group=IS_GROUP, rebuild=rebuild):
 
         wall = G("WALL").corner_preview().link_inputs()
         wall.out()
@@ -86,7 +86,7 @@ def demo():
     # Wall Door
     # ----------------------------------------------------------------------------------------------------
 
-    with GeoNodes("WALL Door", is_group=IS_GROUP):
+    with GeoNodes("WALL Door", is_group=IS_GROUP, rebuild=rebuild):
 
         pos    = Vector.Translation(0, "Position")
         width  = Float.Distance(0.8, "Width", 0.3)
@@ -105,7 +105,7 @@ def demo():
     # Wall Door
     # ----------------------------------------------------------------------------------------------------
 
-    with GeoNodes("WALL Door", is_group=IS_GROUP):
+    with GeoNodes("WALL Door", is_group=IS_GROUP, rebuild=rebuild):
 
         width  = Float.Distance(0.8, "Width", 0.3)
         height = Float.Distance(1.80, "Height", .7)
@@ -123,7 +123,7 @@ def demo():
     # Wall Window
     # ----------------------------------------------------------------------------------------------------
 
-    with GeoNodes("WALL Window", is_group=IS_GROUP):
+    with GeoNodes("WALL Window", is_group=IS_GROUP, rebuild=rebuild):
 
         width  = Float.Distance(1.2, "Width", 0.3)
         height = Float.Distance(0.9, "Height", .4)

@@ -1,6 +1,6 @@
 from geonodes import *
 
-def demo():
+def demo(rebuild=False):
 
     # ====================================================================================================
     # Hello World
@@ -9,7 +9,7 @@ def demo():
 
     # Create the Geometry Nodes named "Hello World"
 
-    with GeoNodes("Doc Hello World"):
+    with GeoNodes("Doc Hello World", rebuild=rebuild):
         
         height = 3
         omega  = 2
@@ -36,7 +36,7 @@ def demo():
     # Socket classes
     # ====================================================================================================
 
-    with GeoNodes("Doc Socket Init"):
+    with GeoNodes("Doc Socket Init", rebuild=rebuild):
 
         # Get the Group Input geometry
         geometry = Geometry()
@@ -84,7 +84,7 @@ def demo():
     # gnmath
     # ====================================================================================================
 
-    with GeoNodes("Doc gnmath"):
+    with GeoNodes("Doc gnmath", rebuild=rebuild):
 
         with Layout("gnmath"):
             a = Float(1)
@@ -139,7 +139,7 @@ def demo():
     # operators
     # ====================================================================================================
 
-    with GeoNodes("Doc Operators"):
+    with GeoNodes("Doc Operators", rebuild=rebuild):
 
         # Float operators
         a = Float(10)
@@ -187,7 +187,7 @@ def demo():
     # Method names
     # ====================================================================================================
 
-    with GeoNodes("Doc Method names"):
+    with GeoNodes("Doc Method names", rebuild=rebuild):
 
         # ----------------------------------------------------------------------------------------------------
         # RULE 2 : Constructor nodes in CamelCase
@@ -246,7 +246,7 @@ def demo():
     # Argument names
     # ====================================================================================================
 
-    with GeoNodes("Doc Argument names"):
+    with GeoNodes("Doc Argument names", rebuild=rebuild):
 
         # ----------------------------------------------------------------------------------------------------
         # RULE A : socket arguments in snake_case
@@ -312,7 +312,7 @@ def demo():
     # Returned values
     # ====================================================================================================
 
-    with GeoNodes("Doc Returned Values"):
+    with GeoNodes("Doc Returned Values", rebuild=rebuild):
 
         # ---------------------------------------------------------------------------
         # Simple example
@@ -403,7 +403,7 @@ def demo():
     # Panels
     # ====================================================================================================
 
-    with GeoNodes("Doc Panels"):
+    with GeoNodes("Doc Panels", rebuild=rebuild):
         
         # Create two options in a panel named Options
         with Panel("Options"):
@@ -432,7 +432,7 @@ def demo():
     # Creating geometries
     # ====================================================================================================
 
-    with GeoNodes("Doc Creating Geometries"):
+    with GeoNodes("Doc Creating Geometries", rebuild=rebuild):
 
         # Geometry group input node is used if it exists,
         # Otherwise a group input node named 'Mesh' is created
@@ -456,7 +456,7 @@ def demo():
     # Input
     # ====================================================================================================
 
-    with GeoNodes("Doc Input"):
+    with GeoNodes("Doc Input", rebuild=rebuild):
 
         # ---------------------------------------------------------------------------
         # Initial creation
@@ -499,7 +499,7 @@ def demo():
     # Menu
     # ====================================================================================================
 
-    with GeoNodes("Doc Menu") as tree:
+    with GeoNodes("Doc Menu", rebuild=rebuild) as tree:
         
         # ----------------------------------------------------------------------------------------------------
         # Geometries are provided as method arguments
@@ -557,7 +557,7 @@ def demo():
     # Closure
     # ====================================================================================================
 
-    with GeoNodes("Doc Closure"):
+    with GeoNodes("Doc Closure", rebuild=rebuild):
 
         # Create a closure adding to two entries 
         with Closure() as cl0:
@@ -596,7 +596,7 @@ def demo():
     # Simulation
     # ====================================================================================================
 
-    with GeoNodes("Doc Simulation"):
+    with GeoNodes("Doc Simulation", rebuild=rebuild):
         
         # Two input parameters
         count  = Integer(10, "Count", 1, 100)
@@ -638,7 +638,7 @@ def demo():
     # Repeat
     # ====================================================================================================
 
-    with GeoNodes("Doc Repeat"):
+    with GeoNodes("Doc Repeat", rebuild=rebuild):
 
         # Parameters
         levels = Integer(5, "Levels", 1, 10)
@@ -658,7 +658,7 @@ def demo():
             
         cube.out()
 
-    with GeoNodes("Doc For Eeach"):
+    with GeoNodes("Doc For Eeach", rebuild=rebuild):
         
         # Let's assume the input geometry is a mesh
         mesh = Mesh()

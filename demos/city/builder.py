@@ -5,7 +5,7 @@ import math
 from geonodes import *
 from .constants import *
 
-def demo():
+def demo(rebuild=False):
 
     # ====================================================================================================
     # Geometrical Primitives
@@ -15,7 +15,7 @@ def demo():
     # Bezier Circle
     # ----------------------------------------------------------------------------------------------------
 
-    with GeoNodes("G Bezier Circle"):
+    with GeoNodes("G Bezier Circle", rebuild=rebuild):
 
         sqrt2 = 1.4142135623730951
         c = Curve.Quadrilateral(width=sqrt2, height=sqrt2)
@@ -44,7 +44,7 @@ def demo():
     # Profile
     # ----------------------------------------------------------------------------------------------------
 
-    with GeoNodes("G Profile", is_group=IS_GROUP):
+    with GeoNodes("G Profile", is_group=IS_GROUP, rebuild=rebuild):
 
         with Panel("Profile"):
             sx     = Float.Distance(.2, "Size X", MIN_SIZE)
@@ -154,7 +154,7 @@ def demo():
     # A Beam
     # ----------------------------------------------------------------------------------------------------
 
-    with GeoNodes("ARCH Beam", is_group=IS_GROUP):
+    with GeoNodes("ARCH Beam", is_group=IS_GROUP, rebuild=rebuild):
 
         length = Float.Distance(1.0, "Length")
 
@@ -178,7 +178,7 @@ def demo():
     # A Stone
     # ----------------------------------------------------------------------------------------------------
 
-    with GeoNodes("ARCH Stone", is_group=IS_GROUP):
+    with GeoNodes("ARCH Stone", is_group=IS_GROUP, rebuild=rebuild):
 
         pos     = Vector.Translation((0, 0, 0), "Position")
         height  = Float.Distance(2.5, "Height", MIN_HEIGHT)
@@ -205,7 +205,7 @@ def demo():
     # Pillar Socle
     # ----------------------------------------------------------------------------------------------------
 
-    with GeoNodes("ARCH Pillar Socle", is_group=IS_GROUP):
+    with GeoNodes("ARCH Pillar Socle", is_group=IS_GROUP, rebuild=rebuild):
 
         pos    = Vector.Translation((0, 0, 0), "Position")
         height = Float.Distance(2.5, "Height", MIN_HEIGHT)
@@ -253,7 +253,7 @@ def demo():
     # A Pillar
     # ----------------------------------------------------------------------------------------------------
 
-    with GeoNodes("ARCH Wood Pillar", is_group=IS_GROUP):
+    with GeoNodes("ARCH Wood Pillar", is_group=IS_GROUP, rebuild=rebuild):
 
         pos          = Vector.Translation((0, 0, 0), "Position")
         height       = Float.Distance(2.5, "Height", MIN_HEIGHT)
@@ -296,7 +296,7 @@ def demo():
     # A Stone Pillar
     # ----------------------------------------------------------------------------------------------------
 
-    with GeoNodes("ARCH Stone Pillar", is_group=IS_GROUP):
+    with GeoNodes("ARCH Stone Pillar", is_group=IS_GROUP, rebuild=rebuild):
 
         pos          = Vector.Translation((0, 0, 0), "Position")
         height       = Float.Distance(2.5, "Height", MIN_HEIGHT)

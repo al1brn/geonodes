@@ -51,12 +51,12 @@ split.demo()
 
 from geonodes import *
 
-def demo():
+def demo(rebuild=False):
 
     # =============================================================================================================================
     # Split in two parts
 
-    with GeoNodes("Split Half"):
+    with GeoNodes("Split Half", rebuild=rebuild):
 
         mesh  = Mesh()
         dir   = Integer.MenuSwitch({'X': 0, 'Y': 1, 'Z': 2}, menu=2, name="Direction")
@@ -93,7 +93,7 @@ def demo():
     # =============================================================================================================================
     # Split in eight parts
 
-    with GeoNodes("Split Eight"):
+    with GeoNodes("Split Eight", rebuild=rebuild):
 
         mesh  = Mesh()
         mat   = Material(None, "Material")
@@ -127,7 +127,7 @@ def demo():
     # =============================================================================================================================
     # Split fractal
 
-    with GeoNodes("Split Fractal"):
+    with GeoNodes("Split Fractal", rebuild=rebuild):
 
         mesh  = Mesh()
         count = Integer(2, "Count", 1, 6)
@@ -152,7 +152,7 @@ def demo():
     # =============================================================================================================================
     # Explode islandes
 
-    with GeoNodes("Explode Islands"):
+    with GeoNodes("Explode Islands", rebuild=rebuild):
 
         mesh = Mesh()
         factor = Float(1, "Factor", 0)

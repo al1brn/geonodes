@@ -111,9 +111,11 @@ ARM_DEFAULTS = {
     "Lateral"       : 0.0,
     "Forward"       : 0.0,
     "Elbow"         : 0.0,
+    "Elbow Twist"   : 0.0,
     "Hand Flap"     : 0.0,
     "Hand Twist"    : 0.0,
 }
+
 
 # Foot default settings
 
@@ -592,13 +594,13 @@ class ObserverBundles:
 # Main
 # =============================================================================================================================
 
-def build_animation():
+def build_animation(rebuild=False):
 
     # ----------------------------------------------------------------------------------------------------
     # Extract the sub-bundles from Geometry bundle
     # ----------------------------------------------------------------------------------------------------
 
-    with GeoNodes("Obs Bundle Parameters", is_group=True):
+    with GeoNodes("Obs Bundle Parameters", is_group=True, rebuild=rebuild):
         geometry = Geometry()
 
         with Layout("Read Observer Bundle"):
@@ -617,7 +619,7 @@ def build_animation():
     # Add a dynamic closure in the bundle of closures
     # ----------------------------------------------------------------------------------------------------
 
-    with GeoNodes("Obs Bundle Add Closure", is_group=True):
+    with GeoNodes("Obs Bundle Add Closure", is_group=True, rebuild=rebuild):
         geometry = Geometry()
         bundles = ObserverBundles(geometry, use_factor=False)
         name = String("", "Name")
@@ -634,7 +636,7 @@ def build_animation():
     # Lab Coat Animation
     # ----------------------------------------------------------------------------------------------------
 
-    with GeoNodes("Obs Anim Lab Coat"):
+    with GeoNodes("Obs Anim Lab Coat", rebuild=rebuild):
         geometry = Geometry()
         bundles = ObserverBundles(geometry, use_factor=False)
         seed = Integer(0, "Seed")
@@ -656,7 +658,7 @@ def build_animation():
     # Body Animation
     # ----------------------------------------------------------------------------------------------------
 
-    with GeoNodes("Obs Anim Body"):
+    with GeoNodes("Obs Anim Body", rebuild=rebuild):
         geometry = Geometry()
         bundles = ObserverBundles(geometry, use_factor=False)
 
@@ -710,7 +712,7 @@ def build_animation():
     # Create a Walk Closure
     # ----------------------------------------------------------------------------------------------------
 
-    with GeoNodes("Obs Closure Create Walk", is_group=True):
+    with GeoNodes("Obs Closure Create Walk", is_group=True, rebuild=rebuild):
         
         with Panel("Duration"):
             step_duration = Float.Factor(.6, "Step Duration", 0.1, 0.95)
@@ -791,7 +793,7 @@ def build_animation():
     # Utility : get a Walk Closure
     # ----------------------------------------------------------------------------------------------------
 
-    with GeoNodes("Obs Closure Get Walk", is_group=True):
+    with GeoNodes("Obs Closure Get Walk", is_group=True, rebuild=rebuild):
 
         geometry = Geometry()
         bundles = ObserverBundles(geometry, use_factor=False)
@@ -848,7 +850,7 @@ def build_animation():
     # Utility : Apply a walk Closure
     # ----------------------------------------------------------------------------------------------------
 
-    with GeoNodes("Obs Closure Apply Walk", is_group=True):
+    with GeoNodes("Obs Closure Apply Walk", is_group=True, rebuild=rebuild):
 
         geometry = Geometry()
         bundles = ObserverBundles(geometry, per_bundle_factors=False)
@@ -902,7 +904,7 @@ def build_animation():
     # Walk driven by direction and speed
     # ----------------------------------------------------------------------------------------------------
 
-    with GeoNodes("Obs Anim Walk"):
+    with GeoNodes("Obs Anim Walk", rebuild=rebuild):
 
         geometry = Geometry()
         anim_factor = Float(1.0, "Factor", 0, 1)
@@ -952,7 +954,7 @@ def build_animation():
     # Walk driven by a Curve
     # ----------------------------------------------------------------------------------------------------
 
-    with GeoNodes("Obs Anim Follow Curve"):
+    with GeoNodes("Obs Anim Follow Curve", rebuild=rebuild):
 
         geometry = Geometry()
         anim_factor = Float(1.0, "Factor", 0, 1)
@@ -1015,7 +1017,7 @@ def build_animation():
     # Group selecting a preset hand pose
     # ----------------------------------------------------------------------------------------------------
     
-    with GeoNodes("Obs Hand Get Preset Hand Pose Function", is_group=True):
+    with GeoNodes("Obs Hand Get Preset Hand Pose Function", is_group=True, rebuild=rebuild):
         
         PR_NAMES = list(HAND_POSE_PRESETS.keys())
         pose_index = Integer.MenuSwitch(
@@ -1033,7 +1035,7 @@ def build_animation():
     # Group selecting a preset hand pose or a stored hand pose
     # ----------------------------------------------------------------------------------------------------
     
-    with GeoNodes("Obs Hand Get Hand Pose Function", is_group=True):
+    with GeoNodes("Obs Hand Get Hand Pose Function", is_group=True, rebuild=rebuild):
         
         closures = Bundle(None, "Closures")
         
@@ -1050,7 +1052,7 @@ def build_animation():
     # Group returning a hand pose
     # ----------------------------------------------------------------------------------------------------
     
-    with GeoNodes("Obs Hand Get Pose", is_group=True):
+    with GeoNodes("Obs Hand Get Pose", is_group=True, rebuild=rebuild):
         
         closures = Bundle(None, "Closures")
         
@@ -1070,7 +1072,7 @@ def build_animation():
     # Modifier : Store a custom Hand Pose
     # ----------------------------------------------------------------------------------------------------
     
-    with GeoNodes("Obs Hand Store Hand Pose", is_group=False):
+    with GeoNodes("Obs Hand Store Hand Pose", is_group=False, rebuild=rebuild):
 
         geometry = Geometry()
         bundles = ObserverBundles(geometry, use_factor=False)
@@ -1102,7 +1104,7 @@ def build_animation():
     # Apply Hand pose
     # ----------------------------------------------------------------------------------------------------
 
-    with GeoNodes("Obs Anim Hand", is_group=False):
+    with GeoNodes("Obs Anim Hand", is_group=False, rebuild=rebuild):
 
         geometry = Geometry()
         bundles = ObserverBundles(geometry)
@@ -1143,14 +1145,14 @@ def build_animation():
     # Arm animation: independent controls for each angle
     # ====================================================================================================
 
-    with GeoNodes("Obs Anim Arm"):
+    with GeoNodes("Obs Anim Arm", rebuild=rebuild):
         geometry = Geometry()
         bundles = ObserverBundles(geometry, use_factor=False)
         use_left = Boolean(True, "Left Arm")
         use_right = Boolean(True, "Right Arm")
 
         controls = {}
-        for name in ("Lateral", "Forward", "Elbow", "Hand Twist"):
+        for name in ("Lateral", "Forward", "Elbow", "Elbow Twist", "Hand Flap", "Hand Twist"):
             with Panel(name):
                 factor = Float.Factor(1.0, "Factor", 0.0, 1.0)
                 relative = Boolean(True, "Relative")
@@ -1189,7 +1191,7 @@ def build_animation():
     # Foot animation: modify the incoming Walk pose
     # ----------------------------------------------------------------------------------------------------
 
-    with GeoNodes("Obs Anim Foot"):
+    with GeoNodes("Obs Anim Foot", rebuild=rebuild):
         geometry = Geometry()
         bundles = ObserverBundles(geometry, use_factor=False)
         use_left = Boolean(True, "Left Foot")
@@ -1252,7 +1254,7 @@ def build_animation():
     # Head Animtion
     # ----------------------------------------------------------------------------------------------------
 
-    with GeoNodes("Obs Anim Head"):
+    with GeoNodes("Obs Anim Head", rebuild=rebuild):
 
         geometry = Geometry()
         bundles = ObserverBundles(geometry, use_factor=False)
@@ -1299,7 +1301,7 @@ def build_animation():
     # Eyelids: shared controls with individual overrides
     # ----------------------------------------------------------------------------------------------------
 
-    with GeoNodes("Obs Anim Lids"):
+    with GeoNodes("Obs Anim Lids", rebuild=rebuild):
         geometry = Geometry()
         bundles = ObserverBundles(geometry, use_factor=False)
 
@@ -1357,7 +1359,7 @@ def build_animation():
     # Eyes: shared controls with individual overrides
     # ----------------------------------------------------------------------------------------------------
 
-    with GeoNodes("Obs Anim Eyes"):
+    with GeoNodes("Obs Anim Eyes", rebuild=rebuild):
         geometry = Geometry()
         bundles = ObserverBundles(geometry, use_factor=False)
 
@@ -1400,7 +1402,7 @@ def build_animation():
     # Look at: orient the incoming head/eye pose toward a target
     # ----------------------------------------------------------------------------------------------------
 
-    with GeoNodes("Obs Anim Look At"):
+    with GeoNodes("Obs Anim Look At", rebuild=rebuild):
         geometry = Geometry()
         pose = ObserverBundles(geometry, use_factor=False)
         look_at_fac = Float.Factor(1.0, "Factor", 0, 1)
@@ -1449,7 +1451,7 @@ def build_animation():
 # =============================================================================================================================
 # =============================================================================================================================
 
-def build_observer():
+def build_observer(rebuild=False):
 
     """Build materials and mesh groups. Run build_animation() first on initial setup."""
     # =============================================================================================================================
@@ -1532,7 +1534,7 @@ def build_observer():
     # Key function
     # ====================================================================================================
 
-    with GeoNodes("Obs Mesh Hair Scalp", is_group=True):
+    with GeoNodes("Obs Mesh Hair Scalp", is_group=True, rebuild=rebuild):
 
         mesh     = Mesh()
         top_z    = Float(.75, "Top")
@@ -1559,7 +1561,7 @@ def build_observer():
     # Moustache scalp
     # ====================================================================================================
 
-    with GeoNodes("Obs Mesh Moustache Scalp", is_group=True):
+    with GeoNodes("Obs Mesh Moustache Scalp", is_group=True, rebuild=rebuild):
 
         mesh     = Mesh()
         top_z    = Float( -.3, "Top")
@@ -1578,7 +1580,7 @@ def build_observer():
     # Hair
     # ====================================================================================================
 
-    with GeoNodes("Obs Mesh Hair", is_group=True):
+    with GeoNodes("Obs Mesh Hair", is_group=True, rebuild=rebuild):
 
         mesh = Mesh()
         scalp = Float.Factor(1, "Scalp", 0, 1)
@@ -1640,7 +1642,7 @@ def build_observer():
     # One Finger
     # ----------------------------------------------------------------------------------------------------
 
-    with GeoNodes(".Obs Hand Finger", is_group=True):
+    with GeoNodes(".Obs Hand Finger", is_group=True, rebuild=rebuild):
         
         length = Float(1.0, "Size")
         
@@ -1701,7 +1703,7 @@ def build_observer():
     # Thumb
     # ----------------------------------------------------------------------------------------------------
 
-    with GeoNodes(".Obs Hand Thumb", is_group=True):
+    with GeoNodes(".Obs Hand Thumb", is_group=True, rebuild=rebuild):
 
         length = 1.0
 
@@ -1742,7 +1744,7 @@ def build_observer():
     # Hand
     # ----------------------------------------------------------------------------------------------------
 
-    with GeoNodes("Obs Mesh Hand", is_group=True):
+    with GeoNodes("Obs Mesh Hand", is_group=True, rebuild=rebuild):
 
         DELTA_X = -0.08
         DELTA_Y = 0.3
@@ -1846,59 +1848,73 @@ def build_observer():
     # Arm Curve
     # ====================================================================================================
 
-    with GeoNodes("Obs Mesh Arm", is_group=True):
+    with GeoNodes("Obs Mesh Arm", is_group=True, rebuild=rebuild):
 
-        size = Float(0.7, "Size")
+        size = Float(0.6, "Size")
         is_right = Boolean(True, "Right Arm")
         location = Vector(0, "Location")
+        
         lateral = Float.Angle(0, "Lateral")
         forward = Float.Angle(0, "Forward")
         elbow = Float.Angle(0, "Elbow")
+        elbow_twist = Float.Angle(0, "Elbow Twist")
         hand_flap = Float.Angle(0, "Hand Flap")
         hand_twist = Float.Angle(0, "Hand Twist")
+        
         use_merge = Boolean(False, "Merge")
 
         hand = Mesh(name="Hand")
-        
+
         with Layout("Arm Bones"):
-            line = Curve.Line(end=(0, 0, -1.5)).resample(count=4)
-            line[nd.index==3].offset = (0, 0, 0.3)
             
-            def rotate(index, rot, title="Rotation"):
-                with Layout(title):
-                    pivot = line.points.sample_index(nd.position, index=index)
-                    line[nd.index > index].position = pivot + Rotation(rot) @ (nd.position - pivot)
-                    
-            rotate(2, (0, hand_flap, 0), "Hand Flap")
-            rotate(1, (elbow, 0, 0), "Elbow")
-            rotate(0, (forward, 0, 0), "Forward")
-            rotate(0, (0, -lateral, 0), "Lateral")
+            # 5 points:
+            # 0-1 : arm
+            # 1-2 : arm
+            # 2-3 : hand
+            # 3-4 : hand orientation
+            
+            bones = Curve().Line().resample(count=5)
+            
+            sel0, sel1, sel2, sel3 = nd.index == 0, nd.index == 1, nd.index == 2, nd.index == 3
+            
+            bones.points[sel0].set('temp rot', Rotation((forward, -lateral, 0)))
+            bones.points[sel1].set('temp rot', Rotation((elbow, 0, elbow_twist)))
+            bones.points[sel2].set('temp rot', Rotation((0, -hand_flap, 0)))
+            bones.points[sel3].set('temp rot', Rotation((0, -pi/2, hand_twist)))
+            
+            bones = G().build_bones_curve(bones, direction=(0, 0, -1), rotation=Rotation('temp rot'), length=0.5)
             
             side_factor = Float.Switch(is_right, -1, 1)
-            line.position = nd.position * (side_factor*size, size, size)
-            line.offset = location*(side_factor, 1, 1)
+            bones.position = nd.position * (side_factor*size, size, size)
+            bones.offset = location*(side_factor, 1, 1)
             
         with Layout("Place Hand"):
-            hand_twist.switch(is_right, -hand_twist)
-            hand_twist = hand_twist
-            #hand_twist -= elbow
-            hand.transform(rotation=(0, 0, hand_twist))
+            p0 = bones.points.sample_index(nd.position, index=2)
+            p1 = bones.points.sample_index(nd.position, index=3)
+            p2 = bones.points.sample_index(nd.position, index=4)
             
-            p0 = line.points.sample_index(nd.position, index=2)
-            p1 = line.points.sample_index(nd.position, index=3)
-            rot = Rotation().align_z_to_vector(p1 - p0, pivot_axis='X')
+            Z = (p1 - p0)._lc("Hand Z")
+            Up = (p2 - p1)._lc("Hand Up")
             
+            rot = nd.axes_to_rotation(
+                primary_axis_1 = Z,
+                secondary_axis_1 = Up,
+                primary_axis = 'Z',
+                secondary_axis = 'X',
+                )
+            
+            hand.switch_false(is_right, Mesh(hand).transform(rotation=(0, 0, pi)))
             hand.transform(rotation=rot)
             hand.offset = p0
-        
-        hand.switch(use_merge, hand + line)
-        hand.out()
+            
+        hand.switch(use_merge, hand + bones)
+        hand.out()    
 
     # ====================================================================================================
     # Walk control
     # ====================================================================================================
 
-    with GeoNodes("Obs Mesh Shoe", is_group=True):
+    with GeoNodes("Obs Mesh Shoe", is_group=True, rebuild=rebuild):
         
         FOOT_HEIGHT = 0.1
 
@@ -2004,7 +2020,7 @@ def build_observer():
     # Observer Head
     # ====================================================================================================
 
-    with GeoNodes("Obs Mesh Head", is_group=True):
+    with GeoNodes("Obs Mesh Head", is_group=True, rebuild=rebuild):
 
         EYE_RADIUS = 0.12*HEAD_HEIGHT
         LID_RADIUS = EYE_RADIUS*1.2
@@ -2135,7 +2151,7 @@ def build_observer():
     # Observer Body
     # ====================================================================================================
 
-    with GeoNodes("Obs Mesh Body", is_group=True):
+    with GeoNodes("Obs Mesh Body", is_group=True, rebuild=rebuild):
 
         geometry = Geometry()
         pose = ObserverBundles(geometry, use_factor=False)
@@ -2208,7 +2224,7 @@ def build_observer():
     # Observer
     # ====================================================================================================
 
-    with GeoNodes("Observer"):
+    with GeoNodes("Observer", rebuild=rebuild):
 
         # ---------------------------------------------------------------------------
         # Params
@@ -2260,9 +2276,9 @@ def build_observer():
                     hand_node[name] = hand[name]    
 
                 arm_node = G().obs_mesh_arm(
-                    location = (0.35, 0.0, 1.1),
+                    location = (0.35, 0.0, 1.2),
                     right_arm=side == 'Right', 
-                    size=0.6,
+                    size=0.7,
                     hand=hand_node._out,
                     merge=True,
                     ).node
@@ -2288,13 +2304,10 @@ def build_observer():
         obs.out()
 
 
-def demo():
+def demo(rebuild=False):
     from . import meshutil
-    import bpy
 
-    btree = bpy.data.node_groups.get("Cross Splines")
-    if btree is None:
-        meshutil.demo()
+    meshutil.demo(rebuild=rebuild)
 
-    build_animation()
-    build_observer()
+    build_animation(rebuild=rebuild)
+    build_observer(rebuild=rebuild)

@@ -30,22 +30,18 @@ updates
 """
 
 from geonodes import *
-from geonodes.demos.shaders import arrow_shader, formula_shader
+from geonodes.demos.shaders import colored_shaders, formula_shader
 
-def load():
-    if G.get_tree(".Vector Input") is None:
-        demo()
+def demo(rebuild=False):
 
-def demo():
-
-    arrow_shader()
+    colored_shaders(rebuild=rebuild)
     formula_shader()
 
     # ====================================================================================================
     # Vector input
     # ====================================================================================================
 
-    with GeoNodes(".Vector Input", is_group=True):
+    with GeoNodes(".Vector Input", is_group=True, rebuild=rebuild):
 
         geo = Geometry()
 
@@ -128,7 +124,7 @@ def demo():
     # Value input
     # ====================================================================================================
 
-    with GeoNodes(".Value Input", is_group=True):
+    with GeoNodes(".Value Input", is_group=True, rebuild=rebuild):
 
         geo = Geometry()
 
@@ -161,7 +157,7 @@ def demo():
     # Add the attribute Transparency = 1 - show on mesh faces before joining
     # ====================================================================================================
 
-    with GeoNodes(".Join Mesh With Show", is_group=True):
+    with GeoNodes(".Join Mesh With Show", is_group=True, rebuild=rebuild):
         geo = Geometry(name="Geometry")
 
         mesh = Mesh(name="Mesh")
@@ -176,19 +172,17 @@ def demo():
     # Encapsulate strings to curves to centralize the font
     # ====================================================================================================
 
-    if G.get_tree(".String to Curves") is None:
+    with GeoNodes(".String to Curves", is_group=True, rebuild=rebuild):
 
-        with GeoNodes(".String to Curves", is_group=True):
+        node = Node("String to Curves", font="BFont Regular").link_inputs()
 
-            node = Node("String to Curves", font="BFont Regular").link_inputs()
-
-            node.out()
+        node.out()
 
     # ====================================================================================================
     # Dynamic Object
     # ====================================================================================================
 
-    with GeoNodes("Dynamic Object"):
+    with GeoNodes("Dynamic Object", rebuild=rebuild):
 
         geo = Geometry()
         show = Float(1.0, "Show", 0, 1)
@@ -202,6 +196,7 @@ def demo():
         free_value = Float(0.0, "Free Value")
 
         color = Color(name="Color")
+        geo = Mesh(geo)
         geo.set('Color', color, domain='Face')
         geo.set('Transparency', 1.0 - show, domain='Face')
 
@@ -277,7 +272,7 @@ def demo():
     # Display a value
     # ====================================================================================================
 
-    with GeoNodes("Value Display"):
+    with GeoNodes("Value Display", rebuild=rebuild):
 
         geo = Geometry()
         
@@ -346,7 +341,7 @@ def demo():
     # Camera Culling
     # ====================================================================================================
 
-    with GeoNodes("Camera Culling"):
+    with GeoNodes("Camera Culling", rebuild=rebuild):
         
         pts = Cloud(Geometry())
         focal = Float(0.05, "Focal", 0.001)
@@ -391,7 +386,7 @@ def demo():
     # Bounce Max
     # ----------------------------------------------------------------------------------------------------
 
-    with GeoNodes(".Bounce Max", is_group=True):
+    with GeoNodes(".Bounce Max", is_group=True, rebuild=rebuild):
         
         x = Float(0, "X")
         v = Float(0, "Speed")
@@ -408,7 +403,7 @@ def demo():
     # Bounce Min Max
     # ----------------------------------------------------------------------------------------------------
         
-    with GeoNodes("Bounce Min Max", is_group=True):
+    with GeoNodes("Bounce Min Max", is_group=True, rebuild=rebuild):
         
         x = Float(0, "X")
         v = Float(0, "Speed")
@@ -434,7 +429,7 @@ def demo():
     # Bounce Box
     # ----------------------------------------------------------------------------------------------------
             
-    with GeoNodes("Bounce Box", is_group=True):
+    with GeoNodes("Bounce Box", is_group=True, rebuild=rebuild):
         
         use_3D = Boolean(True, "3D")
         
@@ -472,7 +467,7 @@ def demo():
     # Particles in a box
     # ----------------------------------------------------------------------------------------------------
 
-    with GeoNodes("Particles in a Box"):
+    with GeoNodes("Particles in a Box", rebuild=rebuild):
 
         count = Integer(100, "Count", 10)
         speed = Float(1, "Speed", 0)
@@ -503,73 +498,3 @@ def demo():
             
 
         sim.pts.out()
-
-    # ====================================================================================================
-    # Rounded Rectangle
-    # ====================================================================================================
-
-    with GeoNodes("Rounded Rectangle"):
-        
-        sx = Float(1, "Size X")/2
-        sy = Float(.5, "Size Y")/2
-        rd_fac = Float.Factor(0.1, "Rounded", 0, 1)
-        
-        rd_size = gnmath.min(sx, sy)    
-        rd = rd_size*rd_fac
-        
-        line = Curve.Line().resample(count=8)
-        
-        line.splines.type = "BEZIER"
-        
-        idx = [nd.index == i for i in range(8)]
-        
-        corners = [
-            Vector((-sx+rd, -sy,    0)),
-            Vector(( sx-rd, -sy,    0)),
-            Vector(( sx,    -sy+rd, 0)),
-            Vector(( sx,     sy-rd, 0)),
-            Vector(( sx-rd,  sy,    0)),
-            Vector((-sx+rd,  sy,    0)),
-            Vector((-sx,     sy-rd, 0)),
-            Vector((-sx,    -sy+rd, 0)),
-        ]
-        
-        for i in range(8):
-            line[idx[i]].position = corners[i]
-        
-        
-        tg=rd*0.552125
-        
-        line[idx[0]].left_handle_position  = corners[0] + (-tg,   0, 0)
-        line[idx[1]].right_handle_position = corners[1] + ( tg,   0, 0)
-        line[idx[2]].left_handle_position  = corners[2] + (  0, -tg, 0)
-        line[idx[3]].right_handle_position = corners[3] + (  0,  tg, 0)
-        line[idx[4]].left_handle_position  = corners[4] + ( tg,   0, 0)
-        line[idx[5]].right_handle_position = corners[5] + (-tg,   0, 0)
-        line[idx[6]].left_handle_position  = corners[6] + (  0,  tg, 0)
-        line[idx[7]].right_handle_position = corners[7] + (  0, -tg, 0)
-        
-        line.is_cyclic = True
-        
-        line.out()
-            
-            
-    
-        
-        
-        
-                
-                
-                
-    
-
-
-
-    
-
-
-
-
-
-    
-

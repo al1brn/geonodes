@@ -47,9 +47,9 @@ gizmo.demo()
 
 from geonodes import *
 
-def demo():
+def demo(rebuild=False):
 
-    with GeoNodes("Gizmo Demo"):
+    with GeoNodes("Gizmo Demo", rebuild=rebuild):
 
         geo = Geometry()
 

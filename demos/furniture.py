@@ -286,7 +286,7 @@ def get_dimension(mesh, name, i_axis, same_value, color=None):
 # Demo modifiers
 # ====================================================================================================
 
-def demo():
+def demo(rebuild=False):
 
     Tree._reset_counters()
 
@@ -306,7 +306,7 @@ def demo():
     # A cote between two points
     # ====================================================================================================
 
-    with GeoNodes("Add Cote Line", is_group=True, prefix=utils):
+    with GeoNodes("Add Cote Line", is_group=True, prefix=utils, rebuild=rebuild):
 
         mesh = Mesh()
 
@@ -447,7 +447,7 @@ def demo():
     # Stock definition
     # ====================================================================================================
 
-    with GeoNodes("Define as Base Stock", is_group=True, prefix=utils):
+    with GeoNodes("Define as Base Stock", is_group=True, prefix=utils, rebuild=rebuild):
         """ Define a mesh as base stock
 
         Make sure named attributes are properly set when defining a base stock.
@@ -512,7 +512,7 @@ def demo():
     # Simple base stock (plank, cleat or panel)
     # ====================================================================================================
 
-    with GeoNodes("Simple Stock Input", is_group=True, prefix=utils):
+    with GeoNodes("Simple Stock Input", is_group=True, prefix=utils, rebuild=rebuild):
         """ Define a simple base stock
 
         This utility can be called:
@@ -580,7 +580,7 @@ def demo():
     # Base Stock
     # ====================================================================================================
 
-    with GeoNodes("Base Stock"):
+    with GeoNodes("Base Stock", rebuild=rebuild):
         """ Define a base stock
 
         The UI Modifier accepts Geometry in addition to the simple stock
@@ -645,7 +645,7 @@ def demo():
     # Cut a component
     # ====================================================================================================
 
-    with GeoNodes("Cut"):
+    with GeoNodes("Cut", rebuild=rebuild):
 
         mesh = Mesh()
         mesh.add_method()
@@ -667,7 +667,7 @@ def demo():
     # Tile a component
     # ====================================================================================================
 
-    with GeoNodes("Create Tiles", is_group=True, prefix=True):
+    with GeoNodes("Create Tiles", is_group=True, prefix=True, rebuild=rebuild):
 
         mesh = Mesh()
 
@@ -766,7 +766,7 @@ def demo():
     # Component Selector
     # ====================================================================================================
 
-    with GeoNodes("Selector", is_group=True, prefix=utils):
+    with GeoNodes("Selector", is_group=True, prefix=utils, rebuild=rebuild):
 
         comp_id  = Integer(0,     "Comp Id", 0)
         count    = Integer(1,     "Comp Count", 1)
@@ -794,7 +794,7 @@ def demo():
     # Plank location and size
     # ====================================================================================================
 
-    with GeoNodes("Get Location and Size", is_group=True, prefix=utils):
+    with GeoNodes("Get Location and Size", is_group=True, prefix=utils, rebuild=rebuild):
 
         mesh = Mesh()
         sel  = Boolean(False, "Selection", hide_value=True)
@@ -818,7 +818,7 @@ def demo():
     # Extract a Plank
     # ====================================================================================================
 
-    with GeoNodes("Extract", is_group=True, prefix=utils):
+    with GeoNodes("Extract", is_group=True, prefix=utils, rebuild=rebuild):
 
         mesh = Mesh()
         sel  = Boolean(False, "Selection", hide_value=True)
@@ -863,7 +863,7 @@ def demo():
     # Stock Input
     # ====================================================================================================
 
-    with GeoNodes("Stock Input", is_group=True, prefix=utils):
+    with GeoNodes("Stock Input", is_group=True, prefix=utils, rebuild=rebuild):
         """ User Input for a stock
 
         Can be a base material from an object or and existing component in the mesh.
@@ -957,7 +957,7 @@ def demo():
     # Count the number of components
     # ====================================================================================================
 
-    with GeoNodes("Components Count", is_group = True, prefix=utils):
+    with GeoNodes("Components Count", is_group = True, prefix=utils, rebuild=rebuild):
 
         mesh = Mesh()
 
@@ -975,7 +975,7 @@ def demo():
     # Identifiers
     # ====================================================================================================
 
-    with GeoNodes("Identifiers"):
+    with GeoNodes("Identifiers", rebuild=rebuild):
         """ Return a cloud of points, one per component
         """
 
@@ -1000,7 +1000,7 @@ def demo():
     # Join a Component
     # ====================================================================================================
 
-    with GeoNodes("Join Component", is_group=True, prefix=utils):
+    with GeoNodes("Join Component", is_group=True, prefix=utils, rebuild=rebuild):
         """ Add the component to the furniture
 
         Named Attributes
@@ -1049,7 +1049,7 @@ def demo():
     # Join a Block
     # ====================================================================================================
 
-    with GeoNodes("Join Block", is_group=True, prefix=utils):
+    with GeoNodes("Join Block", is_group=True, prefix=utils, rebuild=rebuild):
         """ Add a block of components to the furniture
 
         Shift the "Comp Id" and "Owner Id" attributes to avoid duplicates in the resulting furniture.
@@ -1117,7 +1117,7 @@ def demo():
     # Join an accessory
     # ====================================================================================================
 
-    with GeoNodes("Join Accessory"):
+    with GeoNodes("Join Accessory", rebuild=rebuild):
 
         mesh    = Mesh()
         comp_id = Integer(0, "Comp Id")
@@ -1144,7 +1144,7 @@ def demo():
     # Create a component from a model
     # ====================================================================================================
 
-    with GeoNodes("Create From Model", is_group=True, prefix=utils):
+    with GeoNodes("Create From Model", is_group=True, prefix=utils, rebuild=rebuild):
 
         comp   = Mesh()
         pos    = Vector(0,  "Position")
@@ -1235,7 +1235,7 @@ def demo():
     # A Position
     # ====================================================================================================
 
-    with GeoNodes("Get Component Position", is_group=True, prefix=utils):
+    with GeoNodes("Get Component Position", is_group=True, prefix=utils, rebuild=rebuild):
 
         mesh = Mesh()
         sel = Boolean(False, "Selection", hide_value=True)
@@ -1258,7 +1258,7 @@ def demo():
     # Cotes of a Plank
     # ====================================================================================================
 
-    with GeoNodes("View Cotes"):
+    with GeoNodes("View Cotes", rebuild=rebuild):
 
         mesh = Mesh()
         sel  = Boolean(False, "Selection", hide_value=True)
@@ -1308,7 +1308,7 @@ def demo():
     # Locate a component
     # ====================================================================================================
 
-    with GeoNodes("Locate", is_group=True, prefix=utils):
+    with GeoNodes("Locate", is_group=True, prefix=utils, rebuild=rebuild):
 
         mesh = Mesh()
 
@@ -1470,7 +1470,7 @@ def demo():
     # Main modifier : add a component
     # ====================================================================================================
 
-    with GeoNodes("Add Component"):
+    with GeoNodes("Add Component", rebuild=rebuild):
 
         mesh = Mesh()
 
@@ -1632,7 +1632,7 @@ def demo():
     # A cote line
     # ====================================================================================================
 
-    with GeoNodes("Cote"):
+    with GeoNodes("Cote", rebuild=rebuild):
 
         mesh = Mesh()
 
@@ -1661,7 +1661,7 @@ def demo():
     # Duplicate a component
     # ====================================================================================================
 
-    with GeoNodes("Duplicate Component"):
+    with GeoNodes("Duplicate Component", rebuild=rebuild):
 
         mesh     = Mesh()
         comp_sel = utils.selector().link_inputs()
@@ -1754,7 +1754,7 @@ def demo():
     # Rotate a Component
     # ====================================================================================================
 
-    with GeoNodes("Rotate Component"):
+    with GeoNodes("Rotate Component", rebuild=rebuild):
 
         mesh     = Mesh()
         comp_sel = utils.selector().link_inputs()
@@ -1831,7 +1831,7 @@ def demo():
     # Cut a Component
     # ====================================================================================================
 
-    with GeoNodes("Cut Component"):
+    with GeoNodes("Cut Component", rebuild=rebuild):
 
         mesh     = Mesh()
         comp_sel = utils.selector(accessories=False).link_inputs()
@@ -1883,7 +1883,7 @@ def demo():
     # Translate a Plank
     # ====================================================================================================
 
-    with GeoNodes("Translate Component"):
+    with GeoNodes("Translate Component", rebuild=rebuild):
 
         mesh     = Mesh()
         comp_sel = utils.selector().link_inputs()
@@ -1957,7 +1957,7 @@ def demo():
             A_index, B_index = 0, 2
             depth_index = 1
 
-        with GeoNodes(tree_name, is_group=True, prefix=utils):
+        with GeoNodes(tree_name, is_group=True, prefix=utils, rebuild=rebuild):
 
             mesh = Mesh()
             mesh.add_method()
@@ -2159,7 +2159,7 @@ def demo():
     # Shelf
     # ====================================================================================================
 
-    with GeoNodes("Add Shelf"):
+    with GeoNodes("Add Shelf", rebuild=rebuild):
         
         mesh = Mesh()
 
@@ -2218,7 +2218,7 @@ def demo():
     # Plinth
     # ====================================================================================================
 
-    with GeoNodes("Add Plinth"):
+    with GeoNodes("Add Plinth", rebuild=rebuild):
         
         mesh = Mesh()
 
@@ -2286,7 +2286,7 @@ def demo():
     # Hinge
     # ====================================================================================================
 
-    with GeoNodes("Hinge"):
+    with GeoNodes("Hinge", rebuild=rebuild):
 
         mesh = Mesh()
 
@@ -2341,7 +2341,7 @@ def demo():
     # Door
     # ====================================================================================================
 
-    with GeoNodes("Add Door"):
+    with GeoNodes("Add Door", rebuild=rebuild):
         
         mesh = Mesh()
 
@@ -2477,7 +2477,7 @@ def demo():
     # Drawer
     # ====================================================================================================
 
-    with GeoNodes("Add Drawer"):
+    with GeoNodes("Add Drawer", rebuild=rebuild):
 
         mesh = Mesh()
 
@@ -2724,7 +2724,7 @@ def demo():
     # Back panel
     # ====================================================================================================
 
-    with GeoNodes("Add Back Panel"):
+    with GeoNodes("Add Back Panel", rebuild=rebuild):
         
         mesh = Mesh()
 
@@ -2781,7 +2781,7 @@ def demo():
     # Cut sheet
     # ====================================================================================================
 
-    with GeoNodes("Cut Sheet"):
+    with GeoNodes("Cut Sheet", rebuild=rebuild):
         
         mesh = Mesh()
 
@@ -2797,7 +2797,7 @@ def demo():
     # Show ID
     # ====================================================================================================
 
-    with GeoNodes("Finalize"):
+    with GeoNodes("Finalize", rebuild=rebuild):
         
         mesh = Mesh()
 
@@ -2870,7 +2870,7 @@ def demo():
     # Show case
     # ====================================================================================================
 
-    with GeoNodes("Furniture Show Case"):
+    with GeoNodes("Furniture Show Case", rebuild=rebuild):
         
         height   = Float.Distance(1.8, "Height", 1.2, 2.5)
         width    = Float.Distance(0.6, "Width", 0.4, 0.9)

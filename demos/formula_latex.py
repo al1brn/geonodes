@@ -78,8 +78,8 @@ FUNCTIONS = [
     'log', 'ln', 'min', 'max']
 
 
-def demo():
-    FORM.demo()
+def demo(rebuild=False):
+    FORM.demo(rebuild=rebuild)
 
 # =============================================================================================================================
 # LaTeX simple interpreter

@@ -1,14 +1,14 @@
 from geonodes import GeoNodes, Vector, Integer, Float, Mesh, simulation, repeat, nd, gnmath, Closure, Group
 from geonodes import Layout, Curve, ShaderNodes, Material, snd, Shader, Color, Panel, String
 
-def demo():
+def demo(rebuild=False):
 
     with ShaderNodes("Curve Color", replace_material=True):
         col = snd.attribute("Color").color
         ped = Shader.Principled(base_color=col)
         ped.out()
 
-    with GeoNodes("Trajectory", is_group=True):
+    with GeoNodes("Trajectory", is_group=True, rebuild=rebuild):
 
         pos = Vector(0, "Start Location")
         iterations = Integer(10, "Iterations", 1)
@@ -34,7 +34,7 @@ def demo():
 
         sim.mesh.out()
 
-    with GeoNodes("Transformation"):
+    with GeoNodes("Transformation", rebuild=rebuild):
 
         w   = Float(1., "Omega")
         amp = Float(1., "Amplitude")
@@ -62,7 +62,7 @@ def demo():
         mesh.to_curve().out()
 
 
-    with GeoNodes("Add Legends"):
+    with GeoNodes("Add Legends", rebuild=rebuild):
         curves = Curve()
         radius = Float(.05, "Radius")
         mat = Material("Curve Color", "Material")

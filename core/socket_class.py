@@ -197,6 +197,8 @@ class Socket(NodeCache):
         self._layout      = None
         self._use_layout  = True
         self._tree        = Tree.current_tree()
+        if self._tree is not None and not self._tree._rebuild:
+            raise Break()
         self._bsocket     = None
 
         self._reset()
@@ -216,16 +218,16 @@ class Socket(NodeCache):
             return
         
         # ---------------------------------------------------------------------------
-        # Socket is a string
+        # Socket is a string or a String socket
         # ---------------------------------------------------------------------------
 
         socktype = self._socket_type
         cname = socktype.class_name
 
-        if isinstance(socket, str):
-
-            # Named attribute (but colors because the string can be the name of a color)
-            if (cname in constants.ATTRIBUTE_CLASSES) and (cname != 'Color'):
+        if socktype.is_attribute:
+            # Literal color names remain constants; String sockets name attributes.
+            if ((isinstance(socket, str) and cname != 'Color') or
+                    (isinstance(socket, Socket) and socket.SOCKET_TYPE == 'STRING')):
                 self._bsocket = self.Named(socket)._bsocket
                 return
 
@@ -1586,6 +1588,59 @@ class Socket(NodeCache):
 
         out_node = self._tree.get_output_node()
         out_node.set_input_socket(name=name, value=self, create=True, panel=panel, **props)
+
+    @classmethod
+    def Out(cls, value, name: str = None, panel: str = "", **props):
+        """Send a value to the current group or zone output.
+
+        Constants are assigned directly to the output node's input, without
+        creating a constant node. Socket.Out infers the type; subclasses such
+        as Float.Out explicitly select the output type.
+
+        ``` python
+        Socket.Out(3.14, "Pi")
+        Float.Out(1, "Factor")
+        Socket.Out(value, "Result")
+        ```
+
+        Parameters
+        ----------
+        value : Any
+            Constant or socket to output.
+        name : str, optional
+            Output socket name.
+        panel : str, optional
+            Output panel.
+        **props
+            Properties used when creating the output socket.
+
+        Returns
+        -------
+        None
+        """
+        tree = Tree.current_tree()
+        if tree is None:
+            raise NodeError("Socket.Out requires an active tree.")
+
+        if isinstance(value, Socket):
+            value._is_empty(f"Impossible to link an empty socket (name: '{name}').")
+
+        out_node = tree.get_output_node()
+        if cls.SOCKET_TYPE is None:
+            if name is None and utils.get_bsocket(value) is None:
+                name = SocketType(value).class_name
+            out_node.set_input_socket(name=name, value=value, create=True, panel=panel, **props)
+            return
+
+        socket_type = SocketType(cls.SOCKET_TYPE)
+        full_name = None if name is None else (ItemPath(panel) + name).path
+        socket = out_node.get_socket('INPUT', full_name, socket_type,
+                                     free_only=True, halt=False)
+        if socket is None:
+            if name is None:
+                name = socket_type.class_name
+            socket = out_node.create_socket('INPUT', socket_type, name=name, panel=panel, **props)
+        out_node.set_input_socket_value(socket, value)
 
     # ====================================================================================================
     # Context management

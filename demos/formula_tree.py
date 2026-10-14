@@ -69,7 +69,7 @@ LOC_AFTER       = 1 # After the target
 LOC_BEFORE      = 2 # Before the target
 LOC_FIRST_CHILD = 3 # As first child
 
-def build_tree(prefix='Tree'):
+def build_tree(prefix='Tree', *, rebuild=False):
 
     GTree = G(prefix)
 
@@ -203,7 +203,7 @@ def build_tree(prefix='Tree'):
         ped = Shader.Principled(base_color=col)
         ped.out()
 
-    with GeoNodes("Dump", prefix=prefix):
+    with GeoNodes("Dump", prefix=prefix, rebuild=rebuild):
 
         geo = Geometry()
         use_labels = Boolean(True, "Labels")
@@ -265,7 +265,7 @@ def build_tree(prefix='Tree'):
     # ----------------------------------------------------------------------------------------------------
     # Node info : From Index
 
-    with GeoNodes("Index Info", prefix=prefix, is_group=True):
+    with GeoNodes("Index Info", prefix=prefix, is_group=True, rebuild=rebuild):
         """ Get the node information from its index
 
         Parameters
@@ -307,7 +307,7 @@ def build_tree(prefix='Tree'):
     # ----------------------------------------------------------------------------------------------------
     # Node info : From ID
 
-    with GeoNodes("ID Info", prefix=prefix, is_group=True):
+    with GeoNodes("ID Info", prefix=prefix, is_group=True, rebuild=rebuild):
         """ Get the node information from its ID
 
         Parameters
@@ -344,7 +344,7 @@ def build_tree(prefix='Tree'):
     # ----------------------------------------------------------------------------------------------------
     # Node info : From Explore
 
-    with GeoNodes("Explore Info", prefix=prefix, is_group=True):
+    with GeoNodes("Explore Info", prefix=prefix, is_group=True, rebuild=rebuild):
         """ Get the node information from its exploration index
 
         Parameters
@@ -381,7 +381,7 @@ def build_tree(prefix='Tree'):
     # ----------------------------------------------------------------------------------------------------
     # Node info : From Selection
 
-    with GeoNodes("Selection Info", prefix=prefix, is_group=True):
+    with GeoNodes("Selection Info", prefix=prefix, is_group=True, rebuild=rebuild):
         """ Get the node information from selection in the tree
 
         Parameters
@@ -424,7 +424,7 @@ def build_tree(prefix='Tree'):
     # Children
     # ====================================================================================================
 
-    with GeoNodes("Children Count", prefix=prefix, is_group=True):
+    with GeoNodes("Children Count", prefix=prefix, is_group=True, rebuild=rebuild):
         """ Count the number of children
 
         Parameters
@@ -452,7 +452,7 @@ def build_tree(prefix='Tree'):
         count.out("Count")
         count.equal(0).out("Empty")
 
-    with GeoNodes("Get Child", prefix=prefix, is_group=True):
+    with GeoNodes("Get Child", prefix=prefix, is_group=True, rebuild=rebuild):
         """ Get information on a child by its order
 
         !!! note
@@ -492,7 +492,7 @@ def build_tree(prefix='Tree'):
     # Update the Total of the owner starting from a node
     # ====================================================================================================
 
-    with GeoNodes("Update Total", prefix=prefix, is_group=True):
+    with GeoNodes("Update Total", prefix=prefix, is_group=True, rebuild=rebuild):
 
         tree    = Cloud(None, "Tree")
         node_id = Integer(0, "ID")
@@ -515,7 +515,7 @@ def build_tree(prefix='Tree'):
     # Selection
     # ====================================================================================================
 
-    with GeoNodes("Select", prefix=prefix, is_group=True):
+    with GeoNodes("Select", prefix=prefix, is_group=True, rebuild=rebuild):
         """ Compute selection from an ID
 
         The 'Mode' menu socket defines what must be selected:
@@ -576,7 +576,7 @@ def build_tree(prefix='Tree'):
     # Dissolve
     # ----------------------------------------------------------------------------------------------------
 
-    with GeoNodes("Dissolve", prefix=prefix, is_group=True):
+    with GeoNodes("Dissolve", prefix=prefix, is_group=True, rebuild=rebuild):
         """ Rattach the children to the owner of the id, and delete the node
 
         Attributes
@@ -656,7 +656,7 @@ def build_tree(prefix='Tree'):
     # Insert an owner to a node
     # ----------------------------------------------------------------------------------------------------
 
-    with GeoNodes("Insert Owner", prefix=prefix, is_group=True):
+    with GeoNodes("Insert Owner", prefix=prefix, is_group=True, rebuild=rebuild):
         """ Insert an owner to a node
 
         Attributes
@@ -731,7 +731,7 @@ def build_tree(prefix='Tree'):
     # Group the children of a node
     # ----------------------------------------------------------------------------------------------------
 
-    with GeoNodes("Group Children", prefix=prefix, is_group=True):
+    with GeoNodes("Group Children", prefix=prefix, is_group=True, rebuild=rebuild):
         """ Group the children of a node
 
         Similar to "Insert Owner" but this last group doesn't apply to nodes of depth 1.
@@ -819,7 +819,7 @@ def build_tree(prefix='Tree'):
     # Attach a branch
     # ====================================================================================================
 
-    with GeoNodes("Attach", prefix = prefix, is_group=True):
+    with GeoNodes("Attach", prefix = prefix, is_group=True, rebuild=rebuild):
         """
 
         The location can be:
@@ -1026,7 +1026,7 @@ def build_tree(prefix='Tree'):
     # Add a single node
     # ====================================================================================================
 
-    with GeoNodes("New", prefix = prefix, is_group=True):
+    with GeoNodes("New", prefix = prefix, is_group=True, rebuild=rebuild):
         """ Add a single node
 
         Symply "Attach" a Tree made of a single node
@@ -1074,7 +1074,7 @@ def build_tree(prefix='Tree'):
     # Detach
     # ----------------------------------------------------------------------------------------------------
 
-    with GeoNodes("Detach", prefix=prefix, is_group=True):
+    with GeoNodes("Detach", prefix=prefix, is_group=True, rebuild=rebuild):
         """ Detach a node and its children
 
         Parameters
@@ -1133,7 +1133,7 @@ def build_tree(prefix='Tree'):
     # Move
     # ----------------------------------------------------------------------------------------------------
 
-    with GeoNodes("Move", prefix=prefix, is_group=True):
+    with GeoNodes("Move", prefix=prefix, is_group=True, rebuild=rebuild):
         """ Move a branchj to another location
 
         Parameters
@@ -1182,7 +1182,7 @@ def build_tree(prefix='Tree'):
     # Group
     # ----------------------------------------------------------------------------------------------------
 
-    with GeoNodes("Group", prefix=prefix, is_group=True):
+    with GeoNodes("Group", prefix=prefix, is_group=True, rebuild=rebuild):
         """ Group selected nodes
 
         Parameters
@@ -1240,7 +1240,7 @@ def build_tree(prefix='Tree'):
     # ====================================================================================================
     # Select a geometry domain form tree selection
 
-    with GeoNodes("Face Selection", prefix=prefix, is_group=True):
+    with GeoNodes("Face Selection", prefix=prefix, is_group=True, rebuild=rebuild):
         """ Select faces based on Tree selection
 
         Parameters

@@ -57,7 +57,7 @@ topology.demo()
 from geonodes import *
 import numpy as np
 
-def demo():
+def demo(rebuild=False):
 
     COL_UNSELECTED = (.8, .8, .8, 1)
     COL_POINT      = (.8,  0,  0, 1)
@@ -92,7 +92,7 @@ def demo():
     # Link the selected domain to the label with a line
     # Returns: labels and lines (Curve)
 
-    with GeoNodes("Show Labels"):
+    with GeoNodes("Show Labels", rebuild=rebuild):
 
         cloud = Cloud()
         with Panel("Labels"):
@@ -142,7 +142,7 @@ def demo():
     # - faces : change the face color of selected faces
     # - corners : place a cube at each selected corner, slightly displaced toward the center of its face
 
-    with GeoNodes("Mesh Selection", is_group=True):
+    with GeoNodes("Mesh Selection", is_group=True, rebuild=rebuild):
 
         mesh = Mesh()
         size = Float(.1, "Size", 0)
@@ -195,7 +195,7 @@ def demo():
     # ====================================================================================================
     # Indices
 
-    with GeoNodes("Topology Indices"):
+    with GeoNodes("Topology Indices", rebuild=rebuild):
 
         geo = Geometry()
 
@@ -298,7 +298,7 @@ def demo():
     # ====================================================================================================
     # Mesh Topology
 
-    with GeoNodes("Mesh Topology"):
+    with GeoNodes("Mesh Topology", rebuild=rebuild):
 
         mesh = Mesh()
         mesh.material = "Topology"

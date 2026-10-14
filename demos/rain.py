@@ -112,9 +112,9 @@ def single_wave():
 # ====================================================================================================
 # Rain falling on a terrain
 
-def demo():
+def demo(rebuild=False):
 
-    with GeoNodes("Rain"):
+    with GeoNodes("Rain", rebuild=rebuild):
 
         with Panel("Terrain"):
             show_terrain = Boolean(True,  "Show Terrain")

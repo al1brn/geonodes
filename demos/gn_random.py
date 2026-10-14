@@ -42,13 +42,13 @@ This module provides a random data generator for floats, vectors and rotations
 
 from geonodes import *
 
-def demo():
+def demo(rebuild=False):
 
     # ====================================================================================================
     # Random uniform
     # ====================================================================================================
 
-    with GeoNodes("Random Uniform Value", is_group=True):
+    with GeoNodes("Random Uniform Value", is_group=True, rebuild=rebuild):
 
         min_value = Float(0, "Min")
         max_value = Float(1, "Max")
@@ -63,7 +63,7 @@ def demo():
         (seed + 1).out("Seed")
 
 
-    with GeoNodes("Random Uniform Vector", is_group=True):
+    with GeoNodes("Random Uniform Vector", is_group=True, rebuild=rebuild):
 
         min_value = Vector(0, "Min")
         max_value = Vector(1, "Max")
@@ -81,7 +81,7 @@ def demo():
     # Random normal
     # ====================================================================================================
 
-    with GeoNodes("Random Normal Value", is_group=True):
+    with GeoNodes("Random Normal Value", is_group=True, rebuild=rebuild):
 
         value = Float(0,   "Value")
         scale = Float(1,   "Scale")
@@ -104,7 +104,7 @@ def demo():
     # Normal vector
     # ----------------------------------------------------------------------------------------------------
 
-    with GeoNodes("Random Normal Vector", is_group=True):
+    with GeoNodes("Random Normal Vector", is_group=True, rebuild=rebuild):
 
         length = Float(1,       "Length",   tip="Vector average length")
         scale  = Float(0,       "Scale",    tip="Length scale")
@@ -147,7 +147,7 @@ def demo():
     # Random rotation
     # ----------------------------------------------------------------------------------------------------
 
-    with GeoNodes("Random Rotation", is_group=True):
+    with GeoNodes("Random Rotation", is_group=True, rebuild=rebuild):
 
         angle  = Float.Angle(0, "Angle",   tip="Average rotation")
         scale  = Float.Angle(0, "Scale",   tip="Rotation scale")
@@ -168,7 +168,7 @@ def demo():
     # Random Noise
     # ----------------------------------------------------------------------------------------------------
 
-    with GeoNodes("Random Noise", is_group=True):
+    with GeoNodes("Random Noise", is_group=True, rebuild=rebuild):
 
         pos = Vector(None, "Position", default_input='Position')
         seed = Integer(0, "Seed")
@@ -189,7 +189,7 @@ def demo():
     # Random Row
     # ----------------------------------------------------------------------------------------------------
 
-    with GeoNodes("Random Row", is_group=True):
+    with GeoNodes("Random Row", is_group=True, rebuild=rebuild):
 
         length    = Float(1., "Length", 0.001)
         part      = Float(.1, "Part", 0.001)

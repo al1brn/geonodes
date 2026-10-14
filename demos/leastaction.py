@@ -3,7 +3,7 @@ print('-'*100)
 
 from geonodes import *
 
-def demo_maupertuis():
+def demo_maupertuis(rebuild=False):
 
     WEIGHT_SIG = ({'Position': Vector}, {'Weight': Float})
     GEO_SIG = {'Weight Function': Closure, 'Action': Float}
@@ -12,7 +12,7 @@ def demo_maupertuis():
     # Actions
     # ====================================================================================================
 
-    with GeoNodes("Action Select", is_group=True):
+    with GeoNodes("Action Select", is_group=True, rebuild=rebuild):
         
         idx = Integer.MenuSwitch({
                 "Constant"    : 0,
@@ -70,7 +70,7 @@ def demo_maupertuis():
     # Store action
     # ====================================================================================================
 
-    with GeoNodes("Store Action"):
+    with GeoNodes("Store Action", rebuild=rebuild):
         
         geo = Geometry()
         weight_func = G().action_select().link_inputs()
@@ -95,7 +95,7 @@ def demo_maupertuis():
     # Prepare Curve
     # ====================================================================================================
 
-    with GeoNodes("Curve Prepare"):
+    with GeoNodes("Curve Prepare", rebuild=rebuild):
         
         curve = Curve()
         use_resample = Boolean(False, "Resample")
@@ -142,7 +142,7 @@ def demo_maupertuis():
     # Compute displacements
     # ====================================================================================================
 
-    with GeoNodes("Compute Displacements"):
+    with GeoNodes("Compute Displacements", rebuild=rebuild):
         
         curve = Curve()
         delta = Float(0.1, "Delta")
@@ -216,7 +216,7 @@ def demo_maupertuis():
     # Algorithm
     # ====================================================================================================
 
-    with GeoNodes("Least Action"):
+    with GeoNodes("Least Action", rebuild=rebuild):
         
         curve = Curve()
         weight_func = get_weight_func()
@@ -279,7 +279,7 @@ def demo_maupertuis():
     # Show stress
     # ====================================================================================================
         
-    with GeoNodes("Show Stress"):
+    with GeoNodes("Show Stress", rebuild=rebuild):
         
         NX = 10
         
@@ -348,7 +348,7 @@ def demo_maupertuis():
     # Parabole
     # ====================================================================================================
 
-    with GeoNodes("Parabole"):
+    with GeoNodes("Parabole", rebuild=rebuild):
         
         speed = Float(1.0, "Speed", 0.0)
         ag = Float.Angle(pi/4, "Direction")
@@ -367,7 +367,7 @@ def demo_maupertuis():
         
         curve.out()
 
-def demo_lagrange():
+def demo_lagrange(rebuild=False):
 
     LAGRANGIAN_SIG = ({'Start': Vector, 'End': Vector}, {'Lagrangian': Float})
     GEO_SIG = {'Lagrangian Function': Closure, 'Duration': Float, 'Action': Float}
@@ -376,7 +376,7 @@ def demo_lagrange():
     # Actions
     # ====================================================================================================
 
-    with GeoNodes("Lagrangian Function", is_group=True):
+    with GeoNodes("Lagrangian Function", is_group=True, rebuild=rebuild):
         
         idx = Integer.MenuSwitch({
                 "Null"     : 0,
@@ -419,7 +419,7 @@ def demo_lagrange():
     # Store action
     # ====================================================================================================
 
-    with GeoNodes("Lagrangian Store"):
+    with GeoNodes("Lagrangian Store", rebuild=rebuild):
         
         geo = Geometry()
         lagrangian_func = G().lagrangian_function().link_inputs()
@@ -450,7 +450,7 @@ def demo_lagrange():
     # Prepare Curve
     # ====================================================================================================
 
-    with GeoNodes("Lagrangian Prepare"):
+    with GeoNodes("Lagrangian Prepare", rebuild=rebuild):
         
         curve = Curve()
         use_resample = Boolean(False, "Resample")
@@ -495,7 +495,7 @@ def demo_lagrange():
     # Compute displacements
     # ====================================================================================================
 
-    with GeoNodes("Lagrangian Displacements"):
+    with GeoNodes("Lagrangian Displacements", rebuild=rebuild):
         
         curve = Curve()
         delta = Float(0.1, "Delta")
@@ -570,7 +570,7 @@ def demo_lagrange():
     # Algorithm
     # ====================================================================================================
 
-    with GeoNodes("Lagrangian Least Action"):
+    with GeoNodes("Lagrangian Least Action", rebuild=rebuild):
         
         curve = Curve()
         lagrangian_func, duration = get_lagrangian_func()
@@ -652,7 +652,7 @@ def demo_lagrange():
     # Show stress
     # ====================================================================================================
         
-    with GeoNodes("Lagrangian Show Stress"):
+    with GeoNodes("Lagrangian Show Stress", rebuild=rebuild):
         
         NX = 10
         

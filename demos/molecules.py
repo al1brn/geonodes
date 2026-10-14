@@ -132,7 +132,7 @@ def get_vibration(position, scale, seed):
 # Nodes
 # ====================================================================================================
 
-def demo():
+def demo(rebuild=False):
 
     # ====================================================================================================
     # Shaders
@@ -146,7 +146,7 @@ def demo():
     # A vibrating atom
     # ====================================================================================================
 
-    with GeoNodes("Atom"):
+    with GeoNodes("Atom", rebuild=rebuild):
         
         show = Float.Factor(1.0, "Show", 0, 1)
         position = Vector(name="Position")
@@ -192,7 +192,7 @@ def demo():
     # A molecule
     # ====================================================================================================
         
-    with GeoNodes("Molecule"):
+    with GeoNodes("Molecule", rebuild=rebuild):
         
         show = Float.Factor(1.0, "Show", 0, 1)
         molecule = Mesh.MenuSwitch(menu=Input("Molecule"))
@@ -402,7 +402,7 @@ def demo():
     # Add Dynamic
     # ====================================================================================================
 
-    with GeoNodes("Add Dynamic"):
+    with GeoNodes("Add Dynamic", rebuild=rebuild):
         
         geo = Geometry()
         position = Vector(name="At Position")

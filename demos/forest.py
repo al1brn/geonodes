@@ -50,7 +50,7 @@ forest.demo()
 
 from geonodes import *
 
-def demo():
+def demo(rebuild=False):
 
     # ====================================================================================================
     # Shaders
@@ -88,7 +88,7 @@ def demo():
     # ====================================================================================================
     # A single tree
 
-    with GeoNodes("A Tree", is_group=True):
+    with GeoNodes("A Tree", is_group=True, rebuild=rebuild):
 
         # ----- Tree parameters
 
@@ -125,7 +125,7 @@ def demo():
     # ====================================================================================================
     # A collection or randomly generated trees
 
-    with GeoNodes("Trees Collection", is_group=True):
+    with GeoNodes("Trees Collection", is_group=True, rebuild=rebuild):
 
         count = Integer(10, "Count")
 
@@ -158,7 +158,7 @@ def demo():
     # ====================================================================================================
     # A forest
 
-    with GeoNodes("Forest"):
+    with GeoNodes("Forest", rebuild=rebuild):
 
         surface = Mesh()
         density = Float(.3, "Density")*Float(1).switch(nd.is_viewport, .1)
@@ -178,7 +178,7 @@ def demo():
     # ====================================================================================================
     # Demo
 
-    with GeoNodes("Forest Demo"):
+    with GeoNodes("Forest Demo", rebuild=rebuild):
 
         density = Float(1, "Density")
         seed    = Integer(0, "Seed")

@@ -46,7 +46,7 @@ observer.demo()
 
 from geonodes import *
 
-def demo():
+def demo(rebuild=False):
 
     # =============================================================================================================================
     # Shader
@@ -144,7 +144,7 @@ def demo():
     # Hair scalp
     # ====================================================================================================
 
-    with GeoNodes("Hair Scalp", is_group=True):
+    with GeoNodes("Hair Scalp", is_group=True, rebuild=rebuild):
 
         mesh     = Mesh()
         top_z    = Float(.75, "Top")
@@ -171,7 +171,7 @@ def demo():
     # Moustache scalp
     # ====================================================================================================
 
-    with GeoNodes("Moustache Scalp", is_group=True):
+    with GeoNodes("Moustache Scalp", is_group=True, rebuild=rebuild):
 
         mesh     = Mesh()
         top_z    = Float( -.3, "Top")
@@ -190,7 +190,7 @@ def demo():
     # Hair
     # ====================================================================================================
 
-    with GeoNodes("Hair", is_group=True):
+    with GeoNodes("Hair", is_group=True, rebuild=rebuild):
 
         mesh = Mesh()
         scalp = Float.Factor(1, "Scalp", 0, 1)
@@ -248,7 +248,7 @@ def demo():
     # Articulated sausage
     # ====================================================================================================
 
-    with GeoNodes("Sausage", is_group=True):
+    with GeoNodes("Sausage", is_group=True, rebuild=rebuild):
 
         curve    = Curve()
         profile  = Curve(None, "Profile")
@@ -397,7 +397,7 @@ def demo():
     # Finger
     # ====================================================================================================
 
-    with GeoNodes("Finger", is_group=True):
+    with GeoNodes("Finger", is_group=True, rebuild=rebuild):
 
         # oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
 
@@ -463,7 +463,7 @@ def demo():
     # Thumb
     # ====================================================================================================
 
-    with GeoNodes("Thumb", is_group=True):
+    with GeoNodes("Thumb", is_group=True, rebuild=rebuild):
 
         # oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
 
@@ -531,7 +531,7 @@ def demo():
     # Hand
     # ====================================================================================================
 
-    with GeoNodes("Hand", is_group=True):
+    with GeoNodes("Hand", is_group=True, rebuild=rebuild):
 
         # oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
 
@@ -746,7 +746,7 @@ def demo():
     # Walk control
     # ====================================================================================================
 
-    with GeoNodes("Walk", is_group = True):
+    with GeoNodes("Walk", is_group = True, rebuild=rebuild):
 
         time  = Float(0,         "Time")
         speed = Float.Factor(.5, "Speed", 0, 1, tip="Walk speed")
@@ -811,7 +811,7 @@ def demo():
     # Shoe
     # ====================================================================================================
 
-    with GeoNodes("Shoe", is_group=True):
+    with GeoNodes("Shoe", is_group=True, rebuild=rebuild):
 
         resol  = Integer(16,    "Resolution")
         size   = Float(1,       "Size", 0)
@@ -874,7 +874,7 @@ def demo():
     # Observer
     # ====================================================================================================
 
-    with GeoNodes("Observer"):
+    with GeoNodes("Observer", rebuild=rebuild):
 
         # ---------------------------------------------------------------------------
         # Params

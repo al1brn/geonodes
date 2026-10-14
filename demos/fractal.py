@@ -67,11 +67,11 @@ def get_face_base(mesh, face_index=0):
         
         return O, u, v, w
     
-def demo():
+def demo(rebuild=False):
 
-    from geonodes.demos import random, cam_culling
-    random.demo()
-    cam_culling.demo()
+    from geonodes.demos import gn_random as random, cam_culling
+    random.demo(rebuild=rebuild)
+    cam_culling.demo(rebuild=rebuild)
 
     # ====================================================================================================
     # Flat fractal closure
@@ -80,7 +80,7 @@ def demo():
     # The model is a face split into similary sub faces
     # The is preparaed 
 
-    with GeoNodes("Flat Fractal Closure", is_group=True):
+    with GeoNodes("Flat Fractal Closure", is_group=True, rebuild=rebuild):
         
         with Closure() as cl:
             
@@ -133,7 +133,7 @@ def demo():
     # Fractal engine
     # ====================================================================================================
 
-    with GeoNodes("Fractal From Model", is_group=True) as tree:
+    with GeoNodes("Fractal From Model", is_group=True, rebuild=rebuild) as tree:
         
         mesh      = Mesh()
         count     = Integer(2, "Count", 1, 15)
@@ -196,7 +196,7 @@ def demo():
     # Fractal a Mesh with a model object
     # ====================================================================================================
 
-    with GeoNodes("Fractal Mesh"):
+    with GeoNodes("Fractal Mesh", rebuild=rebuild):
         
         mesh = Mesh()
 
@@ -225,7 +225,7 @@ def demo():
     # Sierpinski
     # ====================================================================================================
 
-    with GeoNodes("Sierpinksi"):
+    with GeoNodes("Sierpinksi", rebuild=rebuild):
 
         tri = Mesh.Circle(vertices=3, fill_type='N-Gon').transform(rotation=(0, 0, pi/6))
 
@@ -250,7 +250,7 @@ def demo():
     # Cubes Pyramid
     # ====================================================================================================
 
-    with GeoNodes("Cubes Pyramid"):
+    with GeoNodes("Cubes Pyramid", rebuild=rebuild):
 
         with Layout("Build the model"):
 
@@ -283,7 +283,7 @@ def demo():
     # Pyramid
     # ====================================================================================================
 
-    with GeoNodes("Pyramid"):
+    with GeoNodes("Pyramid", rebuild=rebuild):
 
         import math
 
@@ -314,7 +314,7 @@ def demo():
         cone.out("Model")        
 
 
-    with GeoNodes("Fractal Growth Step"):
+    with GeoNodes("Fractal Growth Step", rebuild=rebuild):
 
         cloud = Cloud()
         dt    = Float(.1, "Delta Time")
@@ -322,7 +322,7 @@ def demo():
         cloud.points.Time = Float("Time") + dt
         split = Float("Time") >= Float("Split time")
 
-    with GeoNodes("Fractal Growth"):
+    with GeoNodes("Fractal Growth", rebuild=rebuild):
 
         max_depth = Integer(3, "Max Depth", 1)
         min_size  = Float(0.,  "Min size", 0.0)

@@ -90,8 +90,11 @@ updates
 """
 
 from geonodes import *
+from geonodes.demos import curveutil
 
-def demo():
+def demo(rebuild=False):
+
+    curveutil.demo(rebuild=rebuild)
 
     # ====================================================================================================
     # Shaders for digits
@@ -153,201 +156,117 @@ def demo():
 
         ped.out()
 
-        # ===========================================================================
-        # A rounded rect
-        # ===========================================================================
+    # ===========================================================================
+    # A rounded box
+    # ===========================================================================
 
-        with GeoNodes("Rounded Rectangle"):
+    with GeoNodes("Rounded Box", rebuild=rebuild):
 
-            """ A rounded rect
+        size   = Vector(1, "Size", min=0.1)
+        hrad   = Vector(.1, "H Radius", min=0)
+        vrad   = Vector(.1, "V Radius", min=0)
+        resol  = Integer(12, "Resolution", 2, 128)
+        col    = Color(1, "Color")
+        mat    = Material("Box", "Material")
+        smooth = Boolean(True, "Smooth")
 
-            Parameters
-            ----------
-            width : Float
-            rectangle total width
+        with Panel("Open"):
+            use_open    = Boolean(True,  "Open")
+            margin      = Float(0.1,     "Margin")
+            depth       = Float(0.1,     "Depth")
+            int_col     = Color(0, "Color")
+            int_mat     = Material("Box", "Material")
 
-            height : Float
-            rectangle total height
+        with Layout("Prepare"):
 
-            radius : Float
-            radius
+            size_x, size_y, size_z = size.scale(.5).xyz
+            vrad = gnmath.min(vrad, gnmath.min(size_z, gnmath.min(size_x, size_y)))
 
-            resol : Integer
-            number of points (min is 2)
+            resol = gnmath.max(resol, 2)
+            total = resol*4
 
-            axis : str, optional
-                perpendicular axis default='Z'.
+            with Layout("Starting Rectangle"):
+                w = 2*(size_x - vrad)
+                h = 2*(size_y - vrad)
+                base = Group("Rounded Rectangle",
+                    size_x      = w,
+                    size_y      = h,
+                    radius      = hrad,
+                    use_radius  = True,
+                    resolution  = resol,
+                    geometry    = 'Mesh',
+                    fill_mesh   = True)._out
 
-            geometry : {'Mesh', 'Curve'}
-                the geometry to build
+                base = Mesh(base)
+                base.offset = (0, 0, -size_z)
 
-            fill_type : str in ('NONE', 'NGON', 'TRIANGLE_FAN'
-            Mesh circle fill type
+            with Layout("Bottom looping"):
 
+                for rep in repeat(resol - 1, base=base, selection=True):
 
-            Returns
-            -------
-            Geometry as requested per geometry argument
-            """
+                    ag = (rep.iteration + 1)/(resol-1)*(pi/2)
+                    dh = gnmath.sin(ag)*vrad
+                    dz = (1 - gnmath.cos(ag))*vrad
 
-            width  = Float(1., "Width", 0)
-            height = Float(1., "Height", 0)
-            radius = Float(0.01, "Radius", 0)
-            resol  = Integer(12, "Resolution", 2, 128)
-            fill   = Boolean(False, "Fill Mesh")
+                    rep.base = Mesh(rep.base).edges[rep.selection].extrude((0, 0, dz))
+                    top = rep.base.top
 
-            with Layout("Prepare"):
-
-                w, h = width/2, height/2
-                l = gnmath.min(w, h)
-                r = gnmath.min(radius, l)
-                resol = gnmath.max(resol, 2)
-                total = resol*4
-                
-                corner = Mesh.Circle(radius=r, vertices=total-4)
-                corner.points[nd.index.greater_than(resol)].delete()
-                
-            with Geometry.MenuSwitch(menu=Input("Geometry"), default_menu='Curve') as geo: 
-                
-                with Mesh.Switch(fill) as circle:         
-                    Mesh.Circle(vertices=total, fill_type='NONE').out("False")
-                    Mesh.Circle(vertices=total, fill_type='NGON').out("True")
-                circle.out("Mesh")
-                
-                Curve.Circle(resolution=total).out("Curve")
-                
-            for i in range(4):
-                
-                with Layout(f"Part {i+1}/4"):
-                    
-                    index = nd.index - i*resol
-                    if i == 0:
-                        geo.position = (w - r, h - r, 0) + corner.points.sample_index(nd.position, index)
-                        corner.transform(rotation=(0, 0, pi/2))
-                    elif i == 1:
-                        sel = nd.index.greater_equal(resol)
-                        geo[sel].position = (r - w, h - r, 0) + corner.points.sample_index(nd.position, index)
-                        corner.transform(rotation=(0, 0, pi/2))
-                    elif i == 2:
-                        sel = nd.index.greater_equal(resol*2)
-                        geo[sel].position = (r - w, r - h, 0) + corner.points.sample_index(nd.position, index)
-                        corner.transform(rotation=(0, 0, pi/2))
-                    else:
-                        sel = nd.index.greater_equal(resol*3)
-                        geo[sel].position = (w - r, r - h, 0) + corner.points.sample_index(nd.position, index)
-                        
-                    
-            geo.out()
-
-        # ===========================================================================
-        # A rounded box
-        # ===========================================================================
-
-        with GeoNodes("Rounded Box"):
-
-            size   = Vector(1, "Size", min=0.1)
-            hrad   = Vector(.1, "H Radius", min=0)
-            vrad   = Vector(.1, "V Radius", min=0)
-            resol  = Integer(12, "Resolution", 2, 128)
-            col    = Color(1, "Color")
-            mat    = Material("Box", "Material")
-            smooth = Boolean(True, "Smooth")
-
-            with Panel("Open"):
-                use_open    = Boolean(True,  "Open")
-                margin      = Float(0.1,     "Margin")
-                depth       = Float(0.1,     "Depth")
-                int_col     = Color(0, "Color")
-                int_mat     = Material("Box", "Material")
-
-            with Layout("Prepare"):
-                
-                size_x, size_y, size_z = size.scale(.5).xyz
-                vrad = gnmath.min(vrad, gnmath.min(size_z, gnmath.min(size_x, size_y)))
-                
-                resol = gnmath.max(resol, 2)
-                total = resol*4
-                
-                with Layout("Starting Rectangle"):
-                    w = 2*(size_x - vrad)
-                    h = 2*(size_y - vrad)
-                    base = Group("Rounded Rectangle", 
-                        width       = w,
-                        height      = h, 
+                    ring = Group("Rounded Rectangle",
+                        size_x      = w + dh*2,
+                        size_y      = h + dh*2,
                         radius      = hrad,
+                        use_radius  = True,
                         resolution  = resol,
-                        geometry    = 'Mesh', 
-                        fill_mesh   = True)._out
-                        
-                    base = Mesh(base)
-                    base.offset = (0, 0, -size_z)
-                    
-                with Layout("Bottom looping"):
+                        geometry    = 'Mesh',
+                        fill_mesh   = False)._out
 
-                    for rep in repeat(resol - 1, base=base, selection=True):
-                        
-                        ag = (rep.iteration + 1)/(resol-1)*(pi/2)
-                        dh = gnmath.sin(ag)*vrad
-                        dz = (1 - gnmath.cos(ag))*vrad
-                        
-                        rep.base = Mesh(rep.base).edges[rep.selection].extrude((0, 0, dz))
-                        top = rep.base.top
-                        
-                        ring = Group("Rounded Rectangle", 
-                            width       = w + dh*2,
-                            height      = h + dh*2, 
-                            radius      = hrad,
-                            resolution  = resol,
-                            geometry    = 'Mesh', 
-                            fill_mesh   = False)._out
-                            
-                        ring = Mesh(ring)
-                        ring.offset = (0, 0, -size_z + dz)
-                            
-                        rep.base[top].position = ring.points.sample_index(nd.position, nd.index - total*(rep.iteration + 1))
-                            
-                        rep.selection = top
-                        
-                bot_mesh = Mesh(rep.base)
-                        
-                with Layout("Vertical Mirror"):
-                    
-                    top_mesh = Mesh(bot_mesh)
-                    top_mesh.transform(rotation=(0, pi, 0))
-                    
-                    bot_mesh.edges[rep.selection].extrude((0, 0, 2*(size_z - vrad)))
-                    
-                    box = Mesh(bot_mesh + top_mesh)
-                    box.merge_by_distance()
+                    ring = Mesh(ring)
+                    ring.offset = (0, 0, -size_z + dz)
 
-                with Layout("Finalize"):
-                    box.faces.shade_smooth = Boolean(True, "Smooth")
-                    box.faces.Box_Color = col
-                    box.faces.material = mat
+                    rep.base[top].position = ring.points.sample_index(nd.position, nd.index - total*(rep.iteration + 1))
 
-                with Layout("Interior"):
+                    rep.selection = top
 
-                    int_size = size - (margin, 0, margin)
+            bot_mesh = Mesh(rep.base)
 
-                    int_box = Mesh.Cube(size = int_size)
-                    int_box = int_box.transform(translation=(0, -2*size_y + depth, 0))
-                    int_box.faces.Box_Color = int_col
-                    int_box.faces.material = int_mat
+            with Layout("Vertical Mirror"):
 
-                    open_box = Mesh(box).difference(int_box)
-                    open_box.transform(translation=(0, size_y - depth, 0))
+                top_mesh = Mesh(bot_mesh)
+                top_mesh.transform(rotation=(0, pi, 0))
 
-                    box = box.switch(use_open, open_box)
+                bot_mesh.edges[rep.selection].extrude((0, 0, 2*(size_z - vrad)))
 
-                    
-                box.out("Mesh")
+                box = Mesh(bot_mesh + top_mesh)
+                box.merge_by_distance()
+
+            with Layout("Finalize"):
+                box.faces.shade_smooth = Boolean(True, "Smooth")
+                box.faces.Box_Color = col
+                box.faces.material = mat
+
+            with Layout("Interior"):
+
+                int_size = size - (margin, 0, margin)
+
+                int_box = Mesh.Cube(size = int_size)
+                int_box = int_box.transform(translation=(0, -2*size_y + depth, 0))
+                int_box.faces.Box_Color = int_col
+                int_box.faces.material = int_mat
+
+                open_box = Mesh(box).difference(int_box)
+                open_box.transform(translation=(0, size_y - depth, 0))
+
+                box = box.switch(use_open, open_box)
+
+
+            box.out("Mesh")
 
 
     # ====================================================================================================
     # A digital digit : each light item is a face
     # ====================================================================================================
 
-    with GeoNodes("G Digit"):
+    with GeoNodes("G Digit", rebuild=rebuild):
 
         size  = Float(1, "Size", 0)
 
@@ -470,7 +389,7 @@ def demo():
     # A digital counter
     # ====================================================================================================
 
-    with GeoNodes("Counter Digital"):
+    with GeoNodes("Counter Digital", rebuild=rebuild):
 
         value    = Integer(12, "Value", tip="Value to display")
         digits   = Integer(3, "Digits", 1, 10, tip="Number of digits")
@@ -538,7 +457,7 @@ def demo():
     # A digital clock
     # ====================================================================================================
 
-    with GeoNodes("Clock Digital"):
+    with GeoNodes("Clock Digital", rebuild=rebuild):
 
         minutes = Integer(132, "Minutes", tip="Time in minutes")
         size    = Float(1, "Size", 0)
@@ -634,7 +553,7 @@ def demo():
     # A Figure
     # ====================================================================================================
 
-    with GeoNodes("G Figure"):
+    with GeoNodes("G Figure", rebuild=rebuild):
 
         figure     = Float(8, "Figure", 0, tip="Figure with frac part")
         continuous = Boolean(False, "Continuous", tip="Move continuously between the figure and the next one using fract part")
@@ -683,7 +602,7 @@ def demo():
     # ====================================================================================================
     # Wheels counter
 
-    with GeoNodes("Counter Wheels"):
+    with GeoNodes("Counter Wheels", rebuild=rebuild):
 
         value      = Float(123, "Value", 0, tip="Counter value")
         count      = Integer(3, "Number of Wheels", 1, 10)
@@ -828,7 +747,7 @@ def demo():
     # Analogic clock
     # ====================================================================================================
 
-    with GeoNodes("Clock Needles"):
+    with GeoNodes("Clock Needles", rebuild=rebuild):
 
         t          = Float(438, "Time", tip="Time in seconds")
 

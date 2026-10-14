@@ -39,12 +39,45 @@ WORK IN PROGRESS
 from geonodes import *
 
 # ====================================================================================================
+# Attribute-based coloration
+# ====================================================================================================
+
+def coloration_group(rebuild=False):
+    """Expose the geometry attributes Color and Transparency."""
+
+    with ShaderNodes("Coloration", is_group=True, rebuild=rebuild):
+        Color(snd.attribute(
+            attribute_type='GEOMETRY', attribute_name="Color",
+        ).vector).out("Color")
+        snd.attribute(
+            attribute_type='GEOMETRY', attribute_name="Transparency",
+        ).factor.out("Transparency")
+
+
+def colored_shaders(rebuild=False):
+    """Create shiny, satin and matte materials using the Coloration group."""
+
+    coloration_group(rebuild=rebuild)
+
+    for name, roughness in (("Colored Shiny", 0.0), ("Colored", 0.5), ("Colored Mat", 1.0)):
+        with ShaderNodes(name, replace_material=rebuild):
+            coloration = G().coloration()
+            shader = Shader.Principled(
+                base_color=coloration,
+                roughness=roughness,
+            )
+            shader.mix(
+                shader=Shader.Transparent(), factor=coloration.transparency_,
+            ).out()
+
+
+# ====================================================================================================
 # Default Shader for Arrow
 # ====================================================================================================
 
-def arrow_shader():
+def arrow_shader(rebuild=False):
 
-    with ShaderNodes("Arrow"):
+    with ShaderNodes("Arrow", replace_material=rebuild):
 
         pos_color = Color(snd.attribute(attribute_type='GEOMETRY', attribute_name="Color").vector)
         negative  = snd.attribute(attribute_type='GEOMETRY', attribute_name="Negative").factor
@@ -66,9 +99,9 @@ def arrow_shader():
 # Default Shader for Atoms
 # ====================================================================================================
 
-def atom_shader():
+def atom_shader(rebuild=False):
 
-    with ShaderNodes("Atom"):
+    with ShaderNodes("Atom", replace_material=rebuild):
 
         color = Color(snd.attribute(attribute_type='GEOMETRY', attribute_name="Color").vector)
         transp    = snd.attribute(attribute_type='GEOMETRY', attribute_name="Transparency").factor
@@ -86,9 +119,9 @@ def atom_shader():
 # Default Shader for Formulas
 # ====================================================================================================
 
-def formula_shader():
+def formula_shader(rebuild=False):
 
-    with ShaderNodes("Formula"):
+    with ShaderNodes("Formula", replace_material=rebuild):
 
         color  = Color(snd.attribute(attribute_type='GEOMETRY', attribute_name="face_color").vector)
         transp = snd.attribute(attribute_type='GEOMETRY', attribute_name="Transparency").factor
@@ -102,16 +135,115 @@ def formula_shader():
         shader.out()        
 
 
-def demo():
+# ====================================================================================================
+# Glass
+# ====================================================================================================
 
-    arrow_shader()
-    atom_shader()
+def glass_shader(color=(1.0, 1.0, 1.0, 1.0), roughness=0.0, ior=1.45,
+                 rebuild=False):
+    """Create Glass using the geometry float attribute 'IOR' for refraction.
+
+    A zero or missing attribute falls back to ior (1.45 by default).
+    """
+
+    with ShaderNodes("Glass", replace_material=rebuild):
+
+        geometry_ior = snd.attribute(
+            attribute_type='GEOMETRY', attribute_name="IOR",
+        ).factor
+        effective_ior = geometry_ior + geometry_ior.equal(0.0, epsilon=0.0) * ior
+
+        transp_fac = snd.attribute(
+            attribute_type='GEOMETRY', attribute_name="Transparency",
+        ).factor
+
+        glass = Shader.Glass(
+            color=color,
+            roughness=roughness,
+            ior=effective_ior,
+        )
+        transp = Shader.Transparent()
+
+        glass.mix(transp, factor=transp_fac).out()
+
+
+# ====================================================================================================
+# Chrome
+# ====================================================================================================
+
+def chrome_shader(color=(0.55, 0.55, 0.55, 1.0), roughness=0.08, rebuild=False):
+    """Create the Chrome material with adjustable tint and roughness."""
+
+    with ShaderNodes("Chrome", replace_material=rebuild):
+
+        Shader.Principled(
+            base_color=color,
+            metallic=1.0,
+            roughness=roughness,
+        ).out()
+
+
+# ====================================================================================================
+# Wood Handle
+# ====================================================================================================
+
+def wood_handle_shader(color1="#301407", color2="#965025", roughness=0.22,
+                       coat_roughness=0.08, rotation=(0, 0, 0), rebuild=False):
+    """Create varnished brown wood with fine grain along the local Z axis.
+
+    Rotation (Euler angles in radians) adjusts the grain direction.
+    Generated coordinates keep the grain independent of object dimensions.
+    """
+
+    with ShaderNodes("Wood Handle", replace_material=rebuild):
+
+        with Layout("Wood Grain"):
+            coord = snd.texture_coordinate().generated
+            coord = snd.mapping(vector=coord, rotation=rotation)
+            coord = snd.mapping(vector=coord, scale=(6, 6, 0.35))
+
+            grain = Texture.Noise(
+                vector=coord, scale=5, detail=3, roughness=0.65,
+                distortion=0.3,
+            )
+            fine_grain = Texture.Noise(
+                vector=coord, scale=35, detail=2, roughness=0.5,
+            )
+            factor = (grain.factor * 0.85 + fine_grain.factor * 0.15)
+            factor = factor.map_range(
+                from_min=0.25, from_max=0.75,
+                interpolation_type="SMOOTHSTEP",
+            )
+            color = Color(color1).mix(Color(color2), factor=factor)
+
+        with Layout("Polished Wood"):
+            normal = snd.bump(
+                strength=0.12, distance=0.015, height=fine_grain.factor,
+            )
+            Shader.Principled(
+                base_color=color,
+                roughness=roughness,
+                normal=normal,
+                coat_weight=1.0,
+                coat_roughness=coat_roughness,
+                coat_ior=1.5,
+            ).out()
+
+
+def demo(rebuild=False):
+
+    colored_shaders(rebuild=rebuild)
+    arrow_shader(rebuild=rebuild)
+    atom_shader(rebuild=rebuild)
+    glass_shader(rebuild=rebuild)
+    chrome_shader(rebuild=rebuild)
+    wood_handle_shader(rebuild=rebuild)
 
 
     # ====================================================================================================
     # Planks
 
-    with ShaderNodes("Planks Splitter", is_group=True):
+    with ShaderNodes("Planks Splitter", is_group=True, rebuild=rebuild):
 
         vector = Vector(None, "Vector")
 
@@ -140,7 +272,7 @@ def demo():
     # ====================================================================================================
     # Wood base
 
-    with ShaderNodes("Wood Group", is_group=True):
+    with ShaderNodes("Wood Group", is_group=True, rebuild=rebuild):
 
         vector = Vector(None, "Vector")
 
@@ -196,7 +328,7 @@ def demo():
     # ====================================================================================================
     # Planks
 
-    with ShaderNodes("Wood Planks Group", is_group=True):
+    with ShaderNodes("Wood Planks Group", is_group=True, rebuild=rebuild):
 
         splitter = G().planks_splitter().link_inputs()
 
@@ -216,23 +348,24 @@ def demo():
     # ====================================================================================================
     # Wood
 
-    with ShaderNodes("Wood"):
+    with ShaderNodes("Wood", replace_material=rebuild):
 
         coord = snd.texture_coordinate().object
 
         G().wood_group(vector=coord).out()
 
-    with ShaderNodes("Wood Planks"):
+    with ShaderNodes("Wood Planks", replace_material=rebuild):
 
         coord = snd.texture_coordinate().object
 
         G().wood_planks_group(vector=coord).out()
 
+
     # ====================================================================================================
     # Basket Ball
     # ====================================================================================================
 
-    with ShaderNodes("Basket Ball", replace_material=False):
+    with ShaderNodes("Basket Ball", replace_material=rebuild):
         
         
         with Layout("UV Map"):

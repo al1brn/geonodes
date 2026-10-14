@@ -92,6 +92,8 @@ class Panel:
         """
 
         self.tree   = Tree.current_tree()
+        if not self.tree._rebuild:
+            raise Break()
         self.name   = name
         self.path   = self.tree.get_panel(name)
         self.bpanel = None
@@ -207,6 +209,8 @@ class Layout:
         """
 
         self.tree  = Tree.current_tree()
+        if not self.tree._rebuild:
+            raise Break()
         self.bnode = self.tree._btree.nodes.new('NodeFrame')
         self.bnode.select = False
         self.transparent = title is None
@@ -392,8 +396,8 @@ class Tree:
             fake_user        : bool  = False, 
             is_group         : bool  = False,
             prefix           : str   = "",
-            replace_material : bool  = False,
-            color_tag        : str = 'NONE',
+            rebuild          : bool  = True,
+            color_tag        : str   = 'NONE',
             ):
         
         """ 
@@ -415,8 +419,8 @@ class Tree:
         prefix : str, default=""
             prefix to add at the begining of the tree name
 
-        replace_material : bool, default=False
-            replace the existing matertial if True
+        rebuild : bool, default=True
+            rebuild an existing tree; new trees are always built
 
         color_tag : str, default='NONE'
             group or modifier color_tag attribute
@@ -424,7 +428,7 @@ class Tree:
         """
         self._btree = None
 
-        # Loaded vs created
+        # Wrap an existing NodeTree without clearing or finalizing it
         self._loaded = False
 
         # Arrange when finished
@@ -459,10 +463,10 @@ class Tree:
         self._prefix = prefix
 
         # ----------------------------------------------------------------------------------------------------
-        # Shader Node tree is a property of the Material
+        # Shader Node tree is a property of Material
         # ----------------------------------------------------------------------------------------------------
 
-        self.ignore = False
+        replace_material = rebuild and not is_group and tree_type == 'ShaderNodeTree'
 
         if tree_type is None:
             btree = tree_name
@@ -472,6 +476,7 @@ class Tree:
                     )
             self._btree = btree
             self._loaded = True
+            rebuild = True
 
         elif tree_type == 'ShaderNodeTree':
 
@@ -481,22 +486,30 @@ class Tree:
 
                 if self._material is None:
                     self._material = bpy.data.materials.new(tree_name)
+                    rebuild = True
                 else:
-                    if not replace_material:
-                        self._material = bpy.data.materials.new("GN TEMP MATERIAL")
-                        self.ignore = True
+                    rebuild = replace_material
 
-                self._material.use_nodes = True
+                if rebuild:
+                    self._material.use_nodes = True
                 self._btree = self._material.node_tree
-                self._material.use_fake_user = fake_user
+                if rebuild:
+                    self._material.use_fake_user = fake_user
 
         # ----------------------------------------------------------------------------------------------------
         # Get the tree nodes from node_groups
         # ----------------------------------------------------------------------------------------------------
 
-        if self._btree is None:
-            self._btree = utils.get_tree(tree_name, tree_type=tree_type, create=True)
-            self._btree.use_fake_user = fake_user
+        if self._btree is None and not (tree_type == 'ShaderNodeTree' and not is_group):
+
+            btree = utils.get_tree(tree_name, tree_type=tree_type, create=False)
+            if btree is None:
+                self._btree = utils.get_tree(tree_name, tree_type=tree_type, create=True)
+                rebuild = True
+            else:
+                self._btree = btree
+            if rebuild:
+                self._btree.use_fake_user = fake_user
 
         self._is_group = is_group
 
@@ -519,31 +532,32 @@ class Tree:
                     values = {}
                     mod_inputs = mod.properties.inputs
                     for bsock in bnode.outputs:
-
-                        if True: # V5.2
-                            if bsock.identifier in mod_inputs:
-                                prop = getattr(mod_inputs, bsock.identifier)
-                                val = getattr(prop, 'value', None)
-                                if val is not None:
-                                    values[(bsock.name, bsock.bl_idname)] = val
-                                    values[bsock.identifier] = val
-
-                        else:
-                            values[(bsock.name, bsock.bl_idname)] = mod.get(bsock.identifier)
+                        if bsock.identifier in mod_inputs:
+                            prop = getattr(mod_inputs, bsock.identifier)
+                            val = getattr(prop, 'value', None)
+                            if val is not None:
+                                values[(bsock.name, bsock.bl_idname)] = val
+                                values[bsock.identifier] = val
 
                     self._mod_vals[name] = values
 
                 break
 
         # Clear tree
-        if not self._loaded:
+        if rebuild and (not self._loaded):
             self.clear(keep_nodes=False)
+
+        # ---------------------------------------------------------------------------
+        # Effective build policy (new trees are always built)
+        # ---------------------------------------------------------------------------
+
+        self._rebuild = rebuild
 
         # ---------------------------------------------------------------------------
         # Color tag
         # ---------------------------------------------------------------------------
 
-        if hasattr(self._btree, 'color_tag'):
+        if self._rebuild and not self._loaded and hasattr(self._btree, 'color_tag'):
             utils.set_rna_attr(self._btree, 'color_tag', color_tag)
 
         # ---------------------------------------------------------------------------
@@ -553,7 +567,8 @@ class Tree:
         self._interface = None
         if self._is_group or tree_type == 'GeometryNodeTree':
             self._interface = TreeInterface(self._btree)
-            self._interface.clear(use_bin=True)
+            if self._rebuild and not self._loaded:
+                self._interface.clear(use_bin=True)
 
         # ---------------------------------------------------------------------------
         # Random generator for random colors
@@ -564,7 +579,6 @@ class Tree:
         # Load the tree
         if self._loaded:
             self.load_btree()
-
 
     # ====================================================================================================
     # Stack of trees
@@ -630,20 +644,13 @@ class Tree:
         # Ignore changes
         # ---------------------------------------------------------------------------
 
-        if self.ignore:
-            print(f"CHANGES IGNORED : Material '{self._btree.name}' already exists. Use 'replace_material=True' to overwite it.")
+        if not Tree.TREE_STACK or Tree.TREE_STACK[-1] is not self:
+            raise RuntimeError("Error in tree stack management")
 
-            assert self._btree.bl_idname == 'ShaderNodeTree'
-            assert self._material is not None
-
-            bpy.data.materials.remove(self._material)
-            self._btree = None
-
+        if not self._rebuild or self._loaded:
+            Tree.TREE_STACK.pop()
             return
-        
-        if self._loaded:
-            return
-        
+
         # ---------------------------------------------------------------------------
         # Remove kept nodes
         # ---------------------------------------------------------------------------

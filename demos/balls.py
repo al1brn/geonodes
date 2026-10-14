@@ -1,7 +1,7 @@
 from geonodes import *
 
 
-def demo():
+def demo(rebuild=False):
 
     with ShaderNodes("Golf Ball", replace_material=False):
 
@@ -98,7 +98,7 @@ def demo():
             shader.out()    
 
 
-    with GeoNodes("Golf Ball"):
+    with GeoNodes("Golf Ball", rebuild=rebuild):
 
         radius = 1.0
 

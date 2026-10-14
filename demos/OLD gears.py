@@ -7,13 +7,13 @@ def stretch(geo, delta, selection=True):
         geo[selection].offset = x*delta, y*delta, 0.0
         return geo
 
-def demo():
+def demo(rebuild=False):
 
     # ====================================================================================================
     # Thicken a flat shape
     # ====================================================================================================
 
-    with GeoNodes("Thicken Flat XY"):
+    with GeoNodes("Thicken Flat XY", rebuild=rebuild):
 
         mesh = Mesh()
         thickness = Float.Distance(0.4, "Thickness", 0.0)
@@ -69,7 +69,7 @@ def demo():
     # Cylinder with bevel
     # ====================================================================================================
 
-    with GeoNodes("Cylinder"):
+    with GeoNodes("Cylinder", rebuild=rebuild):
 
         radius = Float.Distance(1.0, "Radius", 0.1)
         vertices = Integer(32, "Vertices", 3)
@@ -85,7 +85,7 @@ def demo():
     # Depth 
     # ====================================================================================================
 
-    with GeoNodes("Cylindrical Hole"):
+    with GeoNodes("Cylindrical Hole", rebuild=rebuild):
 
         mesh = Mesh()
 
@@ -148,7 +148,7 @@ def demo():
     # Gear
     # ====================================================================================================
 
-    with GeoNodes("Gear"):
+    with GeoNodes("Gear", rebuild=rebuild):
 
         with Panel("Rotation"):
             reverse = Boolean(False, "Reverse")
@@ -254,7 +254,7 @@ def demo():
         (tau*radius/count).out("Tooth Length")
         angle.out("Rotation")
 
-    with GeoNodes("Gears Demo"):
+    with GeoNodes("Gears Demo", rebuild=rebuild):
 
         tooth = Float(0.0, "Tooth")
 

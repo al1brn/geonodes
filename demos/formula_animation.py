@@ -32,18 +32,21 @@ updates
 """
 
 from geonodes import *
+from geonodes.demos.shaders import colored_shaders
 
 # ====================================================================================================
 # Formula utilities
 # ====================================================================================================
 
-def demo():
+def demo(rebuild=False):
+
+    colored_shaders(rebuild=rebuild)
 
     # ----------------------------------------------------------------------------------------------------
     # Constant
     # ----------------------------------------------------------------------------------------------------
 
-    with GeoNodes(".Frm Char Space", is_group=True, color_tag="Input"):
+    with GeoNodes(".Frm Char Space", is_group=True, color_tag="Input", rebuild=rebuild):
         Float(0.02).out("Char Space")
 
     def get_char_space():
@@ -53,7 +56,7 @@ def demo():
     # Char selection
     # ----------------------------------------------------------------------------------------------------
 
-    with GeoNodes("Frm Selection", is_group=True):
+    with GeoNodes("Frm Selection", is_group=True, rebuild=rebuild):
         
         merge = Boolean(False, "Merge", hide=True)
         index = Integer(0, "Char Index")
@@ -80,11 +83,11 @@ def demo():
     # Show indices
     # ----------------------------------------------------------------------------------------------------
         
-    with GeoNodes("Frm Show Indices"):
+    with GeoNodes("Frm Show Indices", rebuild=rebuild):
         mesh = Mesh()
         show = Boolean(True, "Show")
         size = Float(0.1, "Size")
-        mat = Material("Arrow", "Material")
+        mat = Material("Colored Shiny", "Material")
         color = Color("White", "Color")
 
         count = mesh.faces.attribute_statistic(Integer("char_index")).max_.to_integer()+1
@@ -111,7 +114,7 @@ def demo():
     # Group
     # ----------------------------------------------------------------------------------------------------
 
-    with GeoNodes("Frm Group Indices"):
+    with GeoNodes("Frm Group Indices", rebuild=rebuild):
 
         mesh = Mesh()
         index = Integer(0, "Char Index")
@@ -128,7 +131,7 @@ def demo():
     # Dimensions of a selection
     # ----------------------------------------------------------------------------------------------------
         
-    with GeoNodes("Frm Dims", is_group=True):
+    with GeoNodes("Frm Dims", is_group=True, rebuild=rebuild):
         
         mesh = Mesh()
         sel = Boolean(True, "Selection",hide=True)
@@ -155,7 +158,7 @@ def demo():
     # Select chars after a given position
     # ----------------------------------------------------------------------------------------------------
         
-    with GeoNodes("Frm Shift After", is_group=True):
+    with GeoNodes("Frm Shift After", is_group=True, rebuild=rebuild):
         
         mesh = Mesh()
         merge = Boolean(False, "Merge", hide=True)
@@ -188,7 +191,7 @@ def demo():
     # Transform a selection
     # ----------------------------------------------------------------------------------------------------
 
-    with GeoNodes("Frm Transform"):
+    with GeoNodes("Frm Transform", rebuild=rebuild):
         
         mesh = Mesh()
         sel = selection_input("Selection")
@@ -261,7 +264,7 @@ def demo():
     # Replace
     # ----------------------------------------------------------------------------------------------------
 
-    with GeoNodes("Frm Replace", is_group=True):
+    with GeoNodes("Frm Replace", is_group=True, rebuild=rebuild):
         
         mesh = Mesh()
         with Panel("Selection"):
@@ -289,7 +292,7 @@ def demo():
     # Displace
     # ----------------------------------------------------------------------------------------------------
 
-    with GeoNodes("Frm Displace", is_group=True):
+    with GeoNodes("Frm Displace", is_group=True, rebuild=rebuild):
         
         mesh = Mesh()
         with Panel("Selection"):
@@ -335,7 +338,7 @@ def demo():
     # Move
     # ----------------------------------------------------------------------------------------------------
 
-    with GeoNodes("Frm Move", is_group=True):
+    with GeoNodes("Frm Move", is_group=True, rebuild=rebuild):
         
         mesh = Mesh()
         sel  = selection_input()
@@ -367,7 +370,7 @@ def demo():
     # Write animation
     # ----------------------------------------------------------------------------------------------------
 
-    with GeoNodes("Frm Write"):
+    with GeoNodes("Frm Write", rebuild=rebuild):
 
         mesh = Mesh()
         show = Boolean(True, "Show")
@@ -385,5 +388,4 @@ def demo():
             Mesh(mesh).faces[Integer("char_index") > to_index].delete().out("True")
 
         Mesh(start_mesh.switch_false(show)).out()
-
 

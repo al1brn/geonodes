@@ -55,7 +55,7 @@ from geonodes import *
 
 FOCAL_FACTOR = .04939
 
-def demo():
+def demo(rebuild=False):
 
     DEBUG_GEO = False
 
@@ -63,7 +63,7 @@ def demo():
     # Camera Data
     # ====================================================================================================
 
-    with GeoNodes("Camera Data", is_group=True):
+    with GeoNodes("Camera Data", is_group=True, rebuild=rebuild):
 
         with Panel("Camera Culling"):
             ok_cc        = Boolean(True, "Culling", shape="Single")
@@ -94,7 +94,7 @@ def demo():
     # Camera Projection
     # ====================================================================================================
 
-    with GeoNodes("Camera Projection", is_group=True):
+    with GeoNodes("Camera Projection", is_group=True, rebuild=rebuild):
         """ Project points with radius and normal
 
         Arguments
@@ -200,7 +200,7 @@ def demo():
     # Position Culling
     # ----------------------------------------------------------------------------------------------------
 
-    with GeoNodes("Camera Point Culling"):
+    with GeoNodes("Camera Point Culling", rebuild=rebuild):
 
         cloud = Cloud(Geometry())
         with Panel("Camera Culling"):
@@ -227,7 +227,7 @@ def demo():
     # Edge Culling
     # ----------------------------------------------------------------------------------------------------
 
-    with GeoNodes("Camera Edge Culling") as tree:
+    with GeoNodes("Camera Edge Culling", rebuild=rebuild) as tree:
 
         mesh       = Mesh()
         with Panel("Camera Culling"):
@@ -299,7 +299,7 @@ def demo():
     # Face Culling
     # ----------------------------------------------------------------------------------------------------
 
-    with GeoNodes("Camera Face Culling"):
+    with GeoNodes("Camera Face Culling", rebuild=rebuild):
 
         mesh = Mesh()
 
@@ -406,7 +406,7 @@ def demo():
     # Culling demo
     # ====================================================================================================
     
-    with GeoNodes("Camera Demo"):
+    with GeoNodes("Camera Demo", rebuild=rebuild):
 
         mesh = Mesh()
 
@@ -474,7 +474,7 @@ def demo():
     # Debug
     # ====================================================================================================
 
-    with GeoNodes("Camera Debug"):
+    with GeoNodes("Camera Debug", rebuild=rebuild):
 
         mesh          = Mesh(Geometry())
         prec          = Float(10,     "Precision", min=0, tip="Precision in 1000th (use with care)")/1000 * Integer(1).switch(nd.is_viewport, 10)
@@ -590,7 +590,7 @@ def demo():
 
         return iterations, precision
 
-    with GeoNodes("Multires Faces") as tree:
+    with GeoNodes("Multires Faces", rebuild=rebuild) as tree:
 
         mesh = Mesh()
 
@@ -656,7 +656,7 @@ def demo():
     # (See DEMO Multires Surface)
 
 
-    with GeoNodes("Multires Surface", is_group=True) as tree:
+    with GeoNodes("Multires Surface", is_group=True, rebuild=rebuild) as tree:
 
         position   = Vector(None,  "Position")
 
@@ -756,7 +756,7 @@ def demo():
     # Demo on how to use the Multires Surface group
     # ----------------------------------------------------------------------------------------------------
 
-    with GeoNodes("DEMO Multires Surface"):
+    with GeoNodes("DEMO Multires Surface", rebuild=rebuild):
 
         size = Float(100, "Size", min=1)
 

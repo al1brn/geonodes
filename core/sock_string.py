@@ -97,6 +97,12 @@ class String(generated.String):
     # ====================================================================================================
     # Operators
 
+    def __eq__(self, other):
+        return self.equal(other)
+
+    def __ne__(self, other):
+        return self.not_equal(other)
+
     def __add__(self, other):
         if isinstance(other, tuple):
             return Node('Join Strings', {'Strings': [self] + list(other)})._out

@@ -50,7 +50,8 @@ class GeoNodes(Tree):
             fake_user: bool = False, 
             is_group: bool  = False, 
             prefix: str     = "",
-            color_tag: str = "NONE",
+            rebuild: bool   = True,
+            color_tag: str  = "NONE",
             ):
         """ > Geometry Nodes
 
@@ -68,6 +69,9 @@ class GeoNodes(Tree):
         prefix : str, optional
             prefix name default="".
 
+        rebuild : bool, optional
+            rebuild the nodes
+
         color_tag : str, default='NONE'
             group or modifier color_tag attribute
         """
@@ -78,10 +82,12 @@ class GeoNodes(Tree):
             fake_user   = fake_user, 
             is_group    = is_group, 
             prefix      = prefix,
+            rebuild     = rebuild,
             color_tag   = color_tag,
             )
 
-        self._btree.is_modifier = not is_group
+        if self._rebuild:
+            self._btree.is_modifier = not is_group
 
     # ====================================================================================================
     # Tool
@@ -96,13 +102,14 @@ class GeoNodes(Tree):
             mesh            : bool = True, 
             curve           : bool = False, 
             cloud           : bool = False, 
-            wait_for_click  : bool = False):
+            wait_for_click  : bool = False,
+            rebuild         : bool = True):
         """ > Tool Geometry Nodes
 
         Parameters
         ----------
         tree_name : str
-            Geometry Nodes namde
+            Geometry Nodes name
 
         fake_user : bool, optional
             set fake_user flag default=False.
@@ -128,13 +135,18 @@ class GeoNodes(Tree):
         wait_for_click : bool, optional
             wait for click flag default=False.
 
+        rebuild : bool, default=True
+            rebuild an existing tool; new tools are always built.
+
 
         Returns
         -------
         GeoNodes
         """
 
-        geonodes = cls(tree_name, fake_user=fake_user)
+        geonodes = cls(tree_name, fake_user=fake_user, rebuild=rebuild)
+        if not geonodes._rebuild:
+            return geonodes
 
         geonodes._btree.is_tool = True
 
@@ -177,7 +189,9 @@ class GeoNodes(Tree):
     # End of construction
 
     def pop(self, error=False):
-            
+        if not self._rebuild or self._loaded:
+            return super().pop(error)
+
         if self._btree.is_modifier:
             self._interface.set_in_geometry(create = False)
             self._interface.set_out_geometry()

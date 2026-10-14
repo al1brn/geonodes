@@ -98,14 +98,14 @@ def uv_cylinder():
 
         final.out()
 
-def demo():
+def demo(rebuild=False):
 
     # ====================================================================================================
     # Common groups
     # ====================================================================================================
 
     from . import common
-    common.load()
+    common.demo(rebuild=rebuild)
 
     # ====================================================================================================
     # Default Shader for Arrow
@@ -117,7 +117,7 @@ def demo():
     # Field of arrows
     # ====================================================================================================
 
-    with GeoNodes("Arrows"):
+    with GeoNodes("Arrows", rebuild=rebuild):
         
         # ---------------------------------------------------------------------------
         # Different heads
@@ -309,7 +309,7 @@ def demo():
     # Single Arrow
     # ===========================================================================
 
-    with GeoNodes("Arrow"):
+    with GeoNodes("Arrow", rebuild=rebuild):
         
         pos = Vector(name="Position", shape="Single")
         
@@ -340,7 +340,7 @@ def demo():
     # Screw
     # ===========================================================================
 
-    with GeoNodes("Screw"):
+    with GeoNodes("Screw", rebuild=rebuild):
         
         show = Boolean(True, "Show")
         
@@ -355,7 +355,7 @@ def demo():
             
         with Panel("Appearance"):
             resol  = Integer(30,       "Resolution", 10, 500)
-            mat    = Material("Arrow", "Material")
+            mat    = Material("Colored Shiny", "Material")
             color  = Color("blue",     "Color")
             transp = Float(0,          "Transparency", 0, 1)
             
@@ -391,7 +391,7 @@ def demo():
     # 2D arrow
     # ===========================================================================
 
-    with GeoNodes("2D Arrow"):
+    with GeoNodes("2D Arrow", rebuild=rebuild):
 
         pos = Vector(None, "Position")
         V = Vector((1, 0, 0), "Vector", dimensions=2)
@@ -448,7 +448,7 @@ def demo():
     # Vector Visualizer
     # ====================================================================================================
 
-    with GeoNodes("Vector Visualizer"):
+    with GeoNodes("Vector Visualizer", rebuild=rebuild):
 
         geo = Geometry()
 

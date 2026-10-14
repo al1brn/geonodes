@@ -49,9 +49,9 @@ curly.demo()
 
 from geonodes import *
 
-def demo():
+def demo(rebuild=False):
 
-    with GeoNodes("Frise"):
+    with GeoNodes("Frise", rebuild=rebuild):
 
         with Layout("Frise"):
 
@@ -103,7 +103,7 @@ def demo():
 
         straight.switch(use_circle, frise).out()
 
-    with GeoNodes("Abs"):
+    with GeoNodes("Abs", rebuild=rebuild):
 
         x_loc = 0
 

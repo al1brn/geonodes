@@ -319,6 +319,8 @@ class Node:
         self._stack = None
 
         self._tree = Tree.current_tree()
+        if self._tree is not None and not self._tree._rebuild:
+            raise Break()
 
         btree = self._tree._btree
         tree_type = btree.bl_idname

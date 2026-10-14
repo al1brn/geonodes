@@ -162,9 +162,9 @@ class Fonts:
 # =============================================================================================================================
 # =============================================================================================================================
 
-def demo():
-    build_shaders()
-    build_groups()
+def demo(rebuild=False):
+    build_shaders(rebuild=rebuild)
+    build_groups(rebuild=rebuild)
 
 # =============================================================================================================================
 # =============================================================================================================================
@@ -172,11 +172,11 @@ def demo():
 # =============================================================================================================================
 # =============================================================================================================================
 
-def build_shaders():
+def build_shaders(rebuild=False):
     # ----------------------------------------------------------------------------------------------------
     # Fade using Fade attribute
 
-    with ShaderNodes("Fade Shader", is_group=True):
+    with ShaderNodes("Fade Shader", is_group=True, rebuild=rebuild):
 
         shader = Shader(name="Shader")
 
@@ -236,9 +236,9 @@ def capture_curve(name):
 # -----------------------------------------------------------------------------------------------------------------------------
 # This utility build a captured char
 
-def create_curve(name, splines):
+def create_curve(name, splines, *, rebuild=False):
 
-    with GeoNodes(name):
+    with GeoNodes(name, rebuild=rebuild):
 
         curves = None
         as_mesh = Boolean(True, "Fill")
@@ -267,7 +267,7 @@ def create_curve(name, splines):
 # =============================================================================================================================
 # =============================================================================================================================
 
-def build_groups():
+def build_groups(rebuild=False):
 
     REF_OFFSET_Z = False
 
@@ -275,7 +275,7 @@ def build_groups():
 
     # ----- We need tree for organize the formula terms
 
-    formula_tree.build_tree(prefix='Tree')
+    formula_tree.build_tree(prefix='Tree', rebuild=rebuild)
     GTree = G("Tree")
 
     # ----- Formula group prefixes:
@@ -302,9 +302,9 @@ def build_groups():
 
     # ----- Built in symbols
 
-    create_curve("Util Sqrt Char", formula_data.SQRT_CHAR)
-    create_curve("Util Sigma Char", formula_data.SIGMA_CHAR)
-    create_curve("Util Half Integral", formula_data.INTEGRAL_CHAR)
+    create_curve("Util Sqrt Char", formula_data.SQRT_CHAR, rebuild=rebuild)
+    create_curve("Util Sigma Char", formula_data.SIGMA_CHAR, rebuild=rebuild)
+    create_curve("Util Half Integral", formula_data.INTEGRAL_CHAR, rebuild=rebuild)
 
     # ----------------------------------------------------------------------------------------------------
     # Macros
@@ -404,7 +404,7 @@ def build_groups():
     # =============================================================================================================================
     # Integral char
 
-    with GeoNodes("Integral Char", prefix=util_prefix, is_group=True):
+    with GeoNodes("Integral Char", prefix=util_prefix, is_group=True, rebuild=rebuild):
 
         fill   = Boolean(True, "Fill")
         height = Float(1., "Height", 1)
@@ -450,7 +450,7 @@ def build_groups():
     # =============================================================================================================================
     # Dimensions
 
-    with GeoNodes("Dimensions", prefix=util_prefix, is_group=True):
+    with GeoNodes("Dimensions", prefix=util_prefix, is_group=True, rebuild=rebuild):
         """ Compute dimensions of a selection in the mesh
 
         Parameters
@@ -500,7 +500,7 @@ def build_groups():
     # =============================================================================================================================
     # LaTeX codes
 
-    with GeoNodes("LaTeX Codes", prefix=char_prefix, is_group=True):
+    with GeoNodes("LaTeX Codes", prefix=char_prefix, is_group=True, rebuild=rebuild):
         """ Replace LaTeX code '\\key_word' by its unicode value
 
         For instance : \\exists -> '∃'
@@ -530,7 +530,7 @@ def build_groups():
     # Set up reference mesh
     # =============================================================================================================================
 
-    with GeoNodes("Setup Reference Mesh", prefix=util_prefix, is_group=True):
+    with GeoNodes("Setup Reference Mesh", prefix=util_prefix, is_group=True, rebuild=rebuild):
 
         mesh = Mesh(None, "Mesh")
         seed = Integer(0, "Seed")
@@ -550,7 +550,7 @@ def build_groups():
         mesh.out("Mesh")
         ref_id.out("Reference ID")
 
-    with GeoNodes("Append Reference Mesh", prefix=util_prefix, is_group=True):
+    with GeoNodes("Append Reference Mesh", prefix=util_prefix, is_group=True, rebuild=rebuild):
 
         mesh = Mesh(None, "Mesh")
         term = Mesh(None, "Term")
@@ -577,7 +577,7 @@ def build_groups():
     # -----------------------------------------------------------------------------------------------------------------------------
     # Characters
 
-    with GeoNodes("Characters", prefix=char_prefix, is_group=True):
+    with GeoNodes("Characters", prefix=char_prefix, is_group=True, rebuild=rebuild):
         """ Create a reference mesh from a string.
 
         !!! note
@@ -637,7 +637,7 @@ def build_groups():
     # Shape
     # 0: Rect, 1: Circle, 2: Triangle
 
-    with GeoNodes("Shape", prefix=char_prefix, is_group=True):
+    with GeoNodes("Shape", prefix=char_prefix, is_group=True, rebuild=rebuild):
         """ Create a reference mesh from a shape code
 
         Valid shape codes are:
@@ -705,7 +705,7 @@ def build_groups():
     # -----------------------------------------------------------------------------------------------------------------------------
     # Math operators
 
-    with GeoNodes("Symbol", prefix=char_prefix, is_group=True):
+    with GeoNodes("Symbol", prefix=char_prefix, is_group=True, rebuild=rebuild):
         """ Create a reference mesh from an operator code
 
         Valid operator codes are:
@@ -769,7 +769,7 @@ def build_groups():
     # =============================================================================================================================
     # =============================================================================================================================
 
-    with GeoNodes("Index Info", prefix=util_prefix, is_group=True):
+    with GeoNodes("Index Info", prefix=util_prefix, is_group=True, rebuild=rebuild):
         """ Read the node info by index.
 
         Parameters
@@ -828,7 +828,7 @@ def build_groups():
 
     # ----------------------------------------------------------------------------------------------------
 
-    with GeoNodes("Id Info", prefix=util_prefix, is_group=True):
+    with GeoNodes("Id Info", prefix=util_prefix, is_group=True, rebuild=rebuild):
         """ Read the node info by ID.
 
         Parameters
@@ -856,7 +856,7 @@ def build_groups():
 
     # ----------------------------------------------------------------------------------------------------
 
-    with GeoNodes("Explore Info", prefix=util_prefix, is_group=True):
+    with GeoNodes("Explore Info", prefix=util_prefix, is_group=True, rebuild=rebuild):
         """ Read the node info by Explore index.
 
         Parameters
@@ -878,7 +878,7 @@ def build_groups():
 
         GUtil.index_info(formula, index=GTree.explore_info(formula.point_cloud, explore=explore)).node.out()
 
-    with GeoNodes("Selection Info", prefix=util_prefix, is_group=True):
+    with GeoNodes("Selection Info", prefix=util_prefix, is_group=True, rebuild=rebuild):
         """ Read the node info by selection in the tree.
 
         Parameters
@@ -908,7 +908,7 @@ def build_groups():
     # =============================================================================================================================
     # Initialize a node
 
-    with GeoNodes("Initialize Node", prefix=util_prefix, is_group=True):
+    with GeoNodes("Initialize Node", prefix=util_prefix, is_group=True, rebuild=rebuild):
         """ Initialize a node with its default values
 
         Parameters
@@ -958,7 +958,7 @@ def build_groups():
     # =============================================================================================================================
     # Rotation parameter
 
-    with GeoNodes("Transform", prefix=util_prefix, is_group=True):
+    with GeoNodes("Transform", prefix=util_prefix, is_group=True, rebuild=rebuild):
         """ Rotate a term
 
         Parameters
@@ -1009,7 +1009,7 @@ def build_groups():
     # =============================================================================================================================
     # GROUP : Children concatenation
 
-    with GeoNodes("Group", prefix=comp_prefix, is_group=True):
+    with GeoNodes("Group", prefix=comp_prefix, is_group=True, rebuild=rebuild):
         """ Compile a group
 
         Child meshes have be previously compiled, i.e. having ID and Explore attributes.
@@ -1077,7 +1077,7 @@ def build_groups():
     # =============================================================================================================================
     # GEO : Instantiate from reference
 
-    with GeoNodes("Reference", prefix=comp_prefix, is_group=True):
+    with GeoNodes("Reference", prefix=comp_prefix, is_group=True, rebuild=rebuild):
         """ Compile a refrence mesh
 
         The reference mesh is duplicated and aligned left with proper material.
@@ -1134,7 +1134,7 @@ def build_groups():
     # =============================================================================================================================
     # SYMBOL : Instantiate from symbol code
 
-    with GeoNodes("Symbol", prefix=comp_prefix, is_group=True):
+    with GeoNodes("Symbol", prefix=comp_prefix, is_group=True, rebuild=rebuild):
         """ Compile a symbol
 
         Faces are built form symbol code
@@ -1191,7 +1191,7 @@ def build_groups():
     # -----------------------------------------------------------------------------------------------------------------------------
     # Add the created decorator
 
-    with GeoNodes("Add Decorator", prefix=util_prefix, is_group=True):
+    with GeoNodes("Add Decorator", prefix=util_prefix, is_group=True, rebuild=rebuild):
         """ Add a decorator to a mesh
 
         The decorator must have been computed to take place into the formula.
@@ -1266,7 +1266,7 @@ def build_groups():
     # -----------------------------------------------------------------------------------------------------------------------------
     # Compile the decorator
 
-    with GeoNodes("Decorator", prefix=comp_prefix, is_group=True):
+    with GeoNodes("Decorator", prefix=comp_prefix, is_group=True, rebuild=rebuild):
         """ Compile a decorator
 
         The decorator is built on the first child
@@ -1489,7 +1489,7 @@ def build_groups():
     # =============================================================================================================================
     # Fraction
 
-    with GeoNodes("Fraction", prefix=comp_prefix, is_group=True):
+    with GeoNodes("Fraction", prefix=comp_prefix, is_group=True, rebuild=rebuild):
         """ Compile a fraction
 
         The fraction node has two children with roles ROLE_CONTENT ROLE_NUMERATOR
@@ -1565,7 +1565,7 @@ def build_groups():
     # =============================================================================================================================
     # Exponent & Indice
 
-    with GeoNodes("Indice Exponent", prefix=comp_prefix, is_group=True):
+    with GeoNodes("Indice Exponent", prefix=comp_prefix, is_group=True, rebuild=rebuild):
         """ Compile an indice and/or exponent node
 
         This node has 3 children:
@@ -1635,7 +1635,7 @@ def build_groups():
     # =============================================================================================================================
     # Sigma
 
-    with GeoNodes("Sigma", prefix=comp_prefix, is_group=True):
+    with GeoNodes("Sigma", prefix=comp_prefix, is_group=True, rebuild=rebuild):
         """ Compile discreet sum
 
         This node has 3 children:
@@ -1734,7 +1734,7 @@ def build_groups():
     # =============================================================================================================================
     # Integral
 
-    with GeoNodes("Integral", prefix=comp_prefix, is_group=True):
+    with GeoNodes("Integral", prefix=comp_prefix, is_group=True, rebuild=rebuild):
         """ Compile an integral
 
         This node has 3 children:
@@ -1836,7 +1836,7 @@ def build_groups():
     # =============================================================================================================================
     # Compilation test
 
-    with GeoNodes("Test", prefix=comp_prefix, is_group=True):
+    with GeoNodes("Test", prefix=comp_prefix, is_group=True, rebuild=rebuild):
         """ Compilation nodes test
         """
 
@@ -1967,7 +1967,7 @@ def build_groups():
     #
     # All types are implemented in dedicated group for the sake of clarity
 
-    with GeoNodes("Main", prefix=comp_prefix, is_group=True):
+    with GeoNodes("Main", prefix=comp_prefix, is_group=True, rebuild=rebuild):
         """ Compile the formula
 
         The formula compilation performs on the nodes from last explore index to the
@@ -2080,7 +2080,7 @@ def build_groups():
     # Insert Owner
     # =============================================================================================================================
 
-    with GeoNodes("Insert Owner", prefix=util_prefix, is_group=True):
+    with GeoNodes("Insert Owner", prefix=util_prefix, is_group=True, rebuild=rebuild):
         """ Insert an owner on top of the given node
 
         Parameters
@@ -2130,7 +2130,7 @@ def build_groups():
     # Attach another term to a formula
     # =============================================================================================================================
 
-    with GeoNodes("Attach", prefix=util_prefix, is_group=True):
+    with GeoNodes("Attach", prefix=util_prefix, is_group=True, rebuild=rebuild):
         """ Attach a term to a formula
 
         """
@@ -2193,7 +2193,7 @@ def build_groups():
     # Ensure a formula is a group
     # =============================================================================================================================
 
-    with GeoNodes("Ensure Group", prefix=util_prefix, is_group=True):
+    with GeoNodes("Ensure Group", prefix=util_prefix, is_group=True, rebuild=rebuild):
         """ Make sure the tree root is a group
 
         Parameters
@@ -2238,7 +2238,7 @@ def build_groups():
     # Append
     # =============================================================================================================================
 
-    with GeoNodes("Append", prefix=term_prefix, is_group=True):
+    with GeoNodes("Append", prefix=term_prefix, is_group=True, rebuild=rebuild):
         """ Append a term as last child of the formula root
 
         If the formula root node is not a group (Type == TYPE_GROUP), a group is inserted
@@ -2314,7 +2314,7 @@ def build_groups():
     # Characters
     # =============================================================================================================================
 
-    with GeoNodes("Characters", prefix=term_prefix, is_group=True):
+    with GeoNodes("Characters", prefix=term_prefix, is_group=True, rebuild=rebuild):
         """ A term made of characters
 
         Parameters
@@ -2364,7 +2364,7 @@ def build_groups():
     # Symbol
     # =============================================================================================================================
 
-    with GeoNodes("Symbol", prefix=term_prefix, is_group=True):
+    with GeoNodes("Symbol", prefix=term_prefix, is_group=True, rebuild=rebuild):
         """ A symbol
 
         Parameters
@@ -2416,7 +2416,7 @@ def build_groups():
     # Join a content and roles
     # =============================================================================================================================
 
-    with GeoNodes("Join", prefix=term_prefix, is_group=True):
+    with GeoNodes("Join", prefix=term_prefix, is_group=True, rebuild=rebuild):
         """ Append a types group
 
         A type group is a group with children having diffent roles:
@@ -2508,7 +2508,7 @@ def build_groups():
     # =============================================================================================================================
     # =============================================================================================================================
 
-    with GeoNodes("Parameter", fake_user=True, prefix="Formula Set"):
+    with GeoNodes("Parameter", fake_user=True, prefix="Formula Set", rebuild=rebuild):
         """ Set parameter on selection
 
         Parameters
@@ -2599,7 +2599,7 @@ def build_groups():
     # Select faces
     # =============================================================================================================================
 
-    with GeoNodes("Select", fake_user=True, prefix=anim_prefix, is_group=True):
+    with GeoNodes("Select", fake_user=True, prefix=anim_prefix, is_group=True, rebuild=rebuild):
         """ Select faces by their id
         """
 
@@ -2616,7 +2616,7 @@ def build_groups():
     # Transform selection
     # =============================================================================================================================
 
-    with GeoNodes("Transform", fake_user=True, prefix=anim_prefix, is_group=True):
+    with GeoNodes("Transform", fake_user=True, prefix=anim_prefix, is_group=True, rebuild=rebuild):
         """ Transform a selection
         """
 
@@ -2648,7 +2648,7 @@ def build_groups():
     # Write formula
     # =============================================================================================================================
 
-    with GeoNodes("Write", fake_user=True, prefix=anim_prefix, is_group=True):
+    with GeoNodes("Write", fake_user=True, prefix=anim_prefix, is_group=True, rebuild=rebuild):
         """ Write selection
         """
 
@@ -2687,7 +2687,7 @@ def build_groups():
     # Change color
     # =============================================================================================================================
 
-    with GeoNodes("Color", fake_user=True, prefix=anim_prefix, is_group=True):
+    with GeoNodes("Color", fake_user=True, prefix=anim_prefix, is_group=True, rebuild=rebuild):
         """ Change color
         """
 
@@ -2706,7 +2706,7 @@ def build_groups():
     # Change fade
     # =============================================================================================================================
 
-    with GeoNodes("Fade", fake_user=True, prefix=anim_prefix, is_group=True):
+    with GeoNodes("Fade", fake_user=True, prefix=anim_prefix, is_group=True, rebuild=rebuild):
         """ Write selection
         """
 
