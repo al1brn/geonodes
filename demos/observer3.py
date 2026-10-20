@@ -656,6 +656,7 @@ def build_animation(rebuild=False):
         step_length.out("Step Length")
         step_height.out("Step Height")
         foot_spacing.out("Foot Spacing")
+        distance_scale.out("Distance Scale")
 
     # ----------------------------------------------------------------------------------------------------
     # Utility : Apply a walk Closure
@@ -731,6 +732,7 @@ def build_animation(rebuild=False):
             step_length = node.step_length
             step_height = node.step_height
             foot_spacing = node.foot_spacing
+            distance_scale = node.distance_scale
 
         for sim in simulation(geometry=geometry):
             bundles = ObserverBundles(sim.geometry, use_factor=False)
@@ -1732,7 +1734,12 @@ def build_observer(rebuild=False):
                 is_right = side == 'Right'
 
                 arm  = pose[f"{side} Arm"]
-                hand = G().body_hand(geometry, right=is_right, size=0.15)
+                hand = G().body_hand(
+                    geometry, 
+                    factor=0.0, 
+                    right=is_right, 
+                    size=0.15,
+                    material="Obs Skin")
 
                 arm_node = G().obs_mesh_arm(
                     location = (0.35, 0.0, 1.2),
@@ -1741,6 +1748,7 @@ def build_observer(rebuild=False):
                     hand=hand,
                     merge=True,
                     ).node
+                
                 for name in arm.signature:
                     arm_node[name] = arm[name]
 

@@ -101,8 +101,6 @@ def demo(rebuild=False):
 
                 index=input_index)
 
-            
-
         with Layout("From Bundle"):
             bundle = geo.get_bundle().separate(signature={
                 'Vectors': Vector,
@@ -119,6 +117,65 @@ def demo(rebuild=False):
             (use_bundle & error).error("Bundle index " + bundle_index.to_string() + ' > ' + count.to_string())
 
         vec.out()
+
+    # ====================================================================================================
+    # Direction Input
+    # ====================================================================================================
+
+    with GeoNodes(".Direction Input", is_group=True, rebuild=rebuild):
+        location = Vector(0, "Location")
+        #dir_axis = Integer.MenuSwitch({"X": 0, "Y": 1, "Z": 2}, menu=Input("Direction"), default_menu="X")
+        #up_axis  = Integer.MenuSwitch({"X": 0, "Y": 1, "Z": 2}, menu=Input("Up"), default_menu="Z")
+        dir_vector = Vector.MenuSwitch({"X": (1, 0, 0), "Y": (0, 1, 0), "Z": (0, 0, 1)}, menu=Input("Direction"), default_menu="X")
+        up_vector  = Vector.MenuSwitch({"X": (1, 0, 0), "Y": (0, 1, 0), "Z": (0, 0, 1)}, menu=Input("Up"), default_menu="Z")
+
+        dir_mode = Integer.MenuSwitch({
+            "Angles" : 0,
+            "Vector" : 1,
+            "Object Location" : 2,
+            "Object Target" : 3,
+            "Geometry Target" : 4,
+            }, menu=Input("Direction"))
+
+        # --------------------------------------------------
+        # Inputs
+        # --------------------------------------------------
+
+        angles = Vector.Euler(0, "Angles", dimensions=3)
+        vector = Vector((0, 0, 1), "Vector")
+        obj = Object(None, "Object")
+        geo = Geometry(None, "Geometry")
+
+        # --------------------------------------------------
+        # Vector
+        # --------------------------------------------------
+
+        vect_rot = Rotation().align_z_to_vector(
+            vector, 
+        )
+
+        # --------------------------------------------------
+        # Target
+        # --------------------------------------------------
+
+        obj_loc = obj.info().location
+        geo.switch(dir_mode==3, obj_loc.geometry)
+
+        geo_target = geo.get_bundle().get_item("Target", socket_type='VECTOR')
+
+        obj_loc.switch(dir_mode != 2, geo_target)
+
+        v = (obj_loc - location).normalize()
+        target_rot = Rotation().align_z_to_vector(v)
+
+        # --------------------------------------------------
+        # Result
+        # --------------------------------------------------
+        rot = Rotation.IndexSwitch(
+            angles, vect_rot, target_rot, target_rot,target_rot,
+            index=dir_mode
+        ) 
+        rot.out()
 
     # ====================================================================================================
     # Value input

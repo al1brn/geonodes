@@ -191,6 +191,12 @@ class Float(generated.Float):
         return node._out
 
     # ====================================================================================================
+    # Short cuts
+
+    def interpolate(self, to_min=0.0, to_max=1.0, type='Linear'):
+        return self.map_range(to_min=to_min, to_max=to_max, interpolation_type=type)
+
+    # ====================================================================================================
     # Operations
 
     # ----- Neg

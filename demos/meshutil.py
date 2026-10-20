@@ -28,6 +28,23 @@ def get_cylinder_topology(cyl):
 
     return nrings, nsegms
 
+# ----------------------------------------------------------------------------------------------------
+# Fill a selection
+# ----------------------------------------------------------------------------------------------------
+
+def fill_selection(mesh, selection, center=None):
+    with Layout("Fill Selection"):
+        mesh = Mesh(mesh)
+        if center is None:
+            center = mesh.points.attribute_statistic(nd.position).mean
+            
+        mesh.edges[selection].extrude()
+        top = mesh.top
+        mesh.points[top].position = center
+        mesh.points[top].merge(merge_id=1)
+
+        return mesh
+
 def demo(rebuild=False):
 
     CBone = G("CBone")
@@ -82,265 +99,6 @@ def demo(rebuild=False):
         Geometry.Switch(as_mesh, new_curve, grid).out()
         npoints.out("Splines Count")
         nsplines.out("Points Count")
-
-    # ====================================================================================================
-    # Selection utilities
-    # ====================================================================================================
-
-    # ----------------------------------------------------------------------------------------------------
-    # Number selected vertices
-    # ----------------------------------------------------------------------------------------------------
-
-    with GeoNodes("Number Selection", is_group=True, rebuild=rebuild):
-        
-        mesh = Mesh()
-        selection = Boolean(name="Selection", hide_value=True)
-        name = String("Number", name="Name", tip="Weld prefix is added automatically. IDs are 1..N; zero means no weld.")
-        
-        n = mesh.points.accumulate_field(value=Integer(selection)).leading
-        
-        weld_name = String("Weld ") + name
-        mesh.points.set(weld_name, Integer.Switch(selection, 0, n))
-        
-        mesh.out()
-        
-    # ----------------------------------------------------------------------------------------------------
-    # Extract selected vertices
-    # ----------------------------------------------------------------------------------------------------
-        
-    with GeoNodes("Extract Selection", is_group=True, rebuild=rebuild):
-        
-        mesh = Mesh()
-        selection = Boolean(name="Selection", hide_value=True)
-        name = String("Number", name="Name", tip="Weld prefix is added automatically. IDs are 1..N; zero means no weld.")
-        reversed = Boolean(False, "Reversed")
-
-        mesh = G().number_selection(mesh, selection=selection, name=name)
-        xmesh = Mesh(mesh.points[selection].separate())
-        
-        n = xmesh.points.count
-        rev_mesh = Mesh(xmesh)
-        rev_mesh.position = xmesh.points.sample_index(nd.position, index=n-1-nd.index)
-        
-        xmesh.switch(reversed, rev_mesh).out()
-        
-    # ----------------------------------------------------------------------------------------------------
-    # Weld a selection
-    # ----------------------------------------------------------------------------------------------------
-        
-    with GeoNodes("Weld Selections", is_group=True, rebuild=rebuild):
-        
-        use_bridge = Boolean(False, "Bridge")
-        use_merge = Boolean(True, "Merge")
-        name = String("Selection", name="Weld Name", tip="Weld prefix is added automatically. Merge only positive IDs.")
-        weld_name = String("Weld ") + name
-        
-        mesh1 = Mesh(name="Weld")
-        sel1 = Boolean(name="Selection", hide_value=True)
-        mesh2 = Mesh(name="To Mesh")
-        sel2 = Boolean(name="Selection", hide_value=True)
-        use_reversed = Boolean(False, "Reversed")
-        
-        mesh1 = G().number_selection(mesh1, selection=sel1, name=name)
-        mesh2 = G().number_selection(mesh2, selection=sel2, name=name)
-        
-        target = G().extract_selection(mesh2, selection=sel2, name=name, reversed=use_reversed)
-        
-        with Layout("Move Selection 1"):
-            moved = Mesh(mesh1)    
-            moved[sel1].position = target.points.sample_index(nd.position, index=nd.named_attribute(name=weld_name, data_type='INT')-1)
-            
-        with Layout("Bridge"):
-            bridged = Mesh(mesh1)
-            edge_sel = bridged.points.evaluate_on_domain(sel1)
-            bridged = bridged.edges[edge_sel].extrude()
-            top = bridged.top
-            sel1 = bridged.edges.evaluate_on_domain(top)
-            bridged = G().number_selection(bridged, selection=sel1, name=name)
-            bridged[sel1].position = target.points.sample_index(nd.position, index=nd.named_attribute(name=weld_name, data_type='INT')-1)
-            
-        mesh1 = Mesh(Mesh.Switch(use_bridge, moved, bridged))
-
-        with Layout("Match Weld IDs"):
-            # Positions have already been sampled in the requested order.
-            # Match each moved vertex to the original ID on the target mesh.
-            weld_id = nd.named_attribute(name=weld_name, data_type='INT')
-            merge_id = Integer.Switch(use_reversed, weld_id, target.points.count+1-weld_id)
-            mesh1.points[weld_id > 0].set(weld_name, merge_id)
-        
-        with Layout("Optional Merge"):
-            merged = Mesh(mesh1 + mesh2)
-            wid = nd.named_attribute(name=weld_name, data_type='INT')
-            merged.points[wid > 0].merge(merge_id=wid)
-            # The unmerged branch never joins the meshes, preserving indices.
-            mesh1.switch(use_merge, merged).out("Mesh")
-            mesh2.out("To Mesh")
-
-    # ----------------------------------------------------------------------------------------------------
-    # Join two selections with a grid
-    # join is made with successive extrusions and a final merge
-    # ----------------------------------------------------------------------------------------------------
-
-    with GeoNodes("Join Selections", is_group=True, rebuild=rebuild):
-
-        mesh = Mesh()
-        
-        sel0 = Boolean(name="Selection 1", hide_value=True)
-        sel1 = Boolean(name="Selection 2", hide_value=True)
-        use_reversed = Boolean(False, "Reversed")
-        subdivisions = Integer(0, "Subdivisions", 0,
-                               tip="Number of intermediate rows between the two selections.")
-        use_flip = Boolean(False, "Flip Faces")
-        
-        
-        with Layout("Target positions"):
-            
-            mesh.points.set('Tmp Merge', sel1)
-            mesh.points.set('Tmp Index', nd.index)
-            mesh.points.set('Tmp Sel1', sel1)
-            
-            points1 = Mesh(Mesh(mesh).points[sel1].separate().selection)
-            n = points1.points.count
-            
-        
-        with Layout("Store Target Positions"):
-            
-            mesh.points.set('Tmp Index 0', mesh.points.accumulate_field(Integer(sel0)).trailing)
-            
-            # Sample the position and the merge ID from the same target vertex.
-            target_index = Integer("Tmp Index 0")
-            target_index = Integer.Switch(use_reversed, target_index, n - 1 - target_index)
-            mesh.points.set('Tmp Target', points1.points.sample_index(nd.position, index=target_index))
-            mesh.points.set('Tmp Source', nd.position)
-            mesh.points.set('Tmp Merge Id', points1.points.sample_index(Integer("Tmp Index"), index=target_index))
-
-        for rep in repeat(subdivisions + 1, mesh=mesh, sel=sel0):
-            
-            v = Vector("Tmp Target") - nd.position
-            v = v.scale(1/(subdivisions + 1 - rep.iteration))
-            
-            edge_sel = rep.mesh.points.evaluate_on_domain(rep.sel)
-            m = rep.mesh.edges[edge_sel].extrude(offset=v)
-            
-            top = m.top
-            with Layout("Adjust"):
-                adjust = Vector("Tmp Target") - Vector("Tmp Source")
-                adjust = adjust.scale((rep.iteration + 1)/(subdivisions + 1))
-                
-            m.points[top].position = Vector("Tmp Source") + adjust
-            
-            rep.mesh = m
-            rep.sel = top
-            
-        mesh = rep.mesh
-        
-        with Layout("finalize"):
-            mesh.points[rep.sel].set('Tmp Merge', True)
-            
-            mesh.points[Boolean("Tmp Sel1")].set("Tmp Merge Id", nd.index)
-            mesh[Boolean('Tmp Merge')].merge_points(merge_id=Integer("Tmp Merge Id"))
-            
-            
-            
-        mesh.out()
-              
-
-    # ----------------------------------------------------------------------------------------------------
-    # Patch a grid between two selections
-    # ----------------------------------------------------------------------------------------------------
-
-    with GeoNodes("Patch with a Grid", is_group=True, rebuild=rebuild):
-
-        mesh = Mesh()
-        use_merge = Boolean(True, "Merge")
-        name = String("Patch", name="Name",
-                      tip="Names the four Weld <name> Front/Side 1/2 attributes. Zero means no weld; positive values identify border vertices.")
-        sel0 = Boolean(name="Selection 1", hide_value=True)
-        sel1 = Boolean(name="Selection 2", hide_value=True)
-        use_reversed = Boolean(False, "Reversed")
-        subdivisions = Integer(0, "Subdivisions", 0,
-                               tip="Number of intermediate rows between the two selections.")
-        use_flip = Boolean(False, "Flip Faces")
-        original = Mesh(mesh)
-
-        with Layout("Weld Names"):
-            front0 = String("Weld ") + name + " Front 1"
-            front1 = String("Weld ") + name + " Front 2"
-            side0 = String("Weld ") + name + " Side 1"
-            side1 = String("Weld ") + name + " Side 2"
-
-        with Layout("Front IDs"):
-            n0 = mesh.points.accumulate_field(value=Integer(sel0)).leading
-            n1 = mesh.points.accumulate_field(value=Integer(sel1)).leading
-            mesh.points.set(front0, Integer.Switch(sel0, 0, n0))
-            mesh.points.set(front1, Integer.Switch(sel1, 0, n1))
-
-        with Layout("Prepare Selections"):
-            pts0 = Mesh(Mesh(mesh).points[sel0].separate())
-            pts1 = Mesh(Mesh(mesh).points[sel1].separate())
-            count0 = pts0.points.count
-            count1 = pts1.points.count
-            valid = (count0 == count1) & (count0 >= 2)
-            (count0 != count1).warning("Selections must contain the same number of vertices; no patch created.")
-            (count0 < 2).warning("A patch needs at least two vertices on each side; no patch created.")
-            width = Integer(gnmath.max(count0, 2))
-            rows = Integer(gnmath.max(subdivisions, 0)+2)
-
-        with Layout("Source Corners"):
-            # Copy the side IDs onto the matching source corners as well:
-            # otherwise merging a front would average them with zero.
-            f0 = nd.named_attribute(name=front0, data_type='INT')
-            f1 = nd.named_attribute(name=front1, data_type='INT')
-            first1 = Integer.Switch(use_reversed, 1, count1)
-            last1 = Integer.Switch(use_reversed, count1, 1)
-            mesh.points.set(side0, Integer(0).switch(f0 == 1, 1).switch(f1 == first1, rows))
-            mesh.points.set(side1, Integer(0).switch(f0 == count0, 1).switch(f1 == last1, rows))
-
-        with Layout("Grid"):
-            grid = Mesh.Grid(vertices_x=width, vertices_y=rows)
-            # Derive coordinates from the primitive positions, independent of
-            # Blender's internal grid vertex ordering.
-            column = Integer(((nd.position.x + .5)*(width-1)).round())
-            row = Integer(((nd.position.y + .5)*(rows-1)).round())
-            target_index = Integer.Switch(use_reversed, column, count1-1-column)
-            p0 = pts0.points.sample_index(nd.position, index=column)
-            p1 = pts1.points.sample_index(nd.position, index=target_index)
-            grid.points.set(front0, Integer.Switch(row == 0, 0, column+1))
-            grid.points.set(front1, Integer.Switch(row == rows-1, 0, target_index+1))
-            grid.points.set(side0, Integer.Switch(column == 0, 0, row+1))
-            grid.points.set(side1, Integer.Switch(column == width-1, 0, row+1))
-            grid.points.position = p0.mix(p1, factor=Float(row)/(rows-1))
-            grid[use_flip].flip_faces()
-
-        with Layout("Optional Merge and Outputs"):
-            merged = Mesh(mesh + grid)
-            for front in (front0, front1):
-                merge_id = nd.named_attribute(name=front, data_type='INT')
-                merged.points[merge_id > 0].merge(merge_id=merge_id)
-            # Without a merge the input topology and the patch stay separate.
-            mesh.switch(use_merge, merged)
-            original.switch(valid, mesh).out("Mesh")
-            grid.out("Patch")
-
-    # ----------------------------------------------------------------------------------------------------
-    # Weld mesh pieces
-    # ----------------------------------------------------------------------------------------------------
-
-    with GeoNodes("Weld Mesh Pieces", is_group=True, rebuild=rebuild):
-        mesh = Mesh()
-        names = mesh.points.get_attribute_names()
-        for rep in repeat(names.list_length(), mesh=mesh):
-            name = names[rep.iteration]
-            ok = name.match_string(operation='Starts With', key="Weld ")
-
-            wid = Attribute(name, Integer).value
-            welded = Mesh(rep.mesh)[wid > 0].merge_points(merge_id=wid)
-
-            rep.mesh.switch(ok, welded)
-
-        mesh = rep.mesh
-        mesh.remove_named_attribute(pattern_mode='Wildcard', name='Weld *')
-        mesh.out()
 
     # ====================================================================================================
     # Curves
@@ -696,49 +454,6 @@ def demo(rebuild=False):
                 cyl.switch(use_bot if bot_cap else use_top, rep.cyl)
 
         original.switch(valid, cyl).out()
-
-    # ----------------------------------------------------------------------------------------------------
-    # Weld Cylinders
-    # ----------------------------------------------------------------------------------------------------
-
-    with GeoNodes("Weld Cylinders", is_group=True, rebuild=rebuild):
-
-        use_debug = Boolean(False, "Debug")
-        use_bridge = Boolean(False, "Bridge")
-
-        with Panel("Weld"):
-            w_cyl, w_nrings, w_nsegms = get_cylinder(use_create=False, name="Weld")
-            w_index = Integer(0, "Index", 1)
-            unchanged = Curve(w_cyl)
-
-        with Panel("On top"):
-            t_cyl, t_nrings, t_nsegms = get_cylinder(use_create=False, name="To Mesh")
-            t_index = Integer(0, "Index", 1)
-            unchanged += t_cyl
-
-        count = Integer(32, "Count", 0)
-
-        with Layout("Prepare Selections"):
-            count = gnmath.min(count, gnmath.min(w_nsegms, t_nsegms))
-            w_node = G().cylinder_selection(w_cyl, ring_index=0,
-                                      col_index=w_index, col_count=count)
-            t_node = G().cylinder_selection(t_cyl, ring_index=t_nrings-1,
-                                      col_index=t_index, col_count=count)
-            w_selection = w_node.selection & (count > 0)
-            t_selection = t_node.selection & (count > 0)
-
-            # Number Selection follows vertex order. Preserve the requested
-            # cyclic order, including zones crossing the end of a ring.
-            w_cyl.points[w_selection].sort(sort_weight=w_node.ranged)
-            t_cyl.points[t_selection].sort(sort_weight=t_node.ranged)
-
-        with Layout("Weld Selections"):
-            weld = G().weld_selections(bridge=use_bridge, weld=w_cyl, to_mesh=t_cyl).node
-            weld["Selection"] = w_selection
-            weld["Selection_1"] = t_selection
-            result = weld._out
-
-        result.switch(use_debug, unchanged).out()
 
     # ----------------------------------------------------------------------------------------------------
     # Cylinder enveloppe
@@ -1154,6 +869,81 @@ def demo(rebuild=False):
         cage.out()
 
     # ====================================================================================================
+    # Interpolate director offsets with a Gaussian radial basis
+    # ====================================================================================================
+
+    with GeoNodes("Mesh Distort", is_group=True, rebuild=rebuild):
+        mesh = Mesh()
+        selection = Boolean(True, "Selection", hide_value=True)
+        move_selection = Boolean(False, "Move Selection", hide_value=True)
+        offset = Vector(None, "Offset")
+        distance = Float(1.0, "Distance", 0.0,
+                         tip="Gaussian influence radius; weight is exp(-(d/Distance)^2).")
+
+        radius = distance.max(0.000001)
+
+        def influence(delta):
+            return (-(delta.dot(delta) / (radius*radius))).exp()
+
+        with Layout("Directors at rest"):
+            directors = Mesh(mesh)
+            director_offset = directors.points.capture_attribute(offset)
+            directors = Mesh(directors.points[move_selection].separate())
+            count = directors.points.count
+
+        with Layout("Interpolation system"):
+            # Each point stores one matrix entry A[row, column]. The vector
+            # right-hand side is duplicated across the columns of each row.
+            matrix = Cloud.Points(count=count*count)
+            row = nd.index // count.max(1)
+            column = nd.index % count.max(1)
+            p0 = directors.points.sample_index(nd.position, index=row)
+            p1 = directors.points.sample_index(nd.position, index=column)
+            rhs = directors.points.sample_index(director_offset, index=row)
+            matrix.points.set("A", influence(p0-p1))
+            matrix.points.set("B", rhs)
+
+        with Layout("Solve director coefficients"):
+            # Gaussian elimination, followed by elimination above the pivot
+            # (Gauss-Jordan). Distinct directors give a positive definite A.
+            for rep in repeat(count, matrix=matrix):
+                work = Cloud(rep.matrix)
+                pivot_index = rep.iteration*count + rep.iteration
+                pivot = work.points.sample_index(Float("A"), index=pivot_index)
+                pivot_rhs = work.points.sample_index(Vector("B"), index=pivot_index)
+                pivot_row = row == rep.iteration
+                work.points[pivot_row].set("A", Float("A")/pivot)
+                work.points[pivot_row].set("B", pivot_rhs/pivot)
+
+                # Sample from the normalized matrix before changing either
+                # field, so all rows use the same elimination step.
+                multiplier = work.points.sample_index(
+                    Float("A"), index=row*count + rep.iteration)
+                pivot_value = work.points.sample_index(
+                    Float("A"), index=rep.iteration*count + column)
+                pivot_rhs = work.points.sample_index(
+                    Vector("B"), index=rep.iteration*count)
+                work.points[pivot_row.bnot()].set(
+                    "A", Float("A") - multiplier*pivot_value)
+                work.points[pivot_row.bnot()].set(
+                    "B", Vector("B") - pivot_rhs.scale(multiplier))
+                rep.matrix = work
+            matrix = rep.matrix
+
+        with Layout("Interpolate displacement"):
+            for rep in repeat(count, displacement=Vector((0, 0, 0))):
+                center = directors.points.sample_index(nd.position, index=rep.iteration)
+                coefficient = matrix.points.sample_index(
+                    Vector("B"), index=rep.iteration*count)
+                rep.displacement += coefficient.scale(influence(nd.position-center))
+
+            # Enforce the supplied offsets at the directors themselves,
+            # avoiding small residual errors from the floating-point solve.
+            displacement = Vector.Switch(move_selection, rep.displacement, offset)
+            mesh[selection].offset = displacement
+        mesh.out()
+
+    # ====================================================================================================
     # Bones simulation
     # ====================================================================================================
     
@@ -1303,9 +1093,13 @@ def demo(rebuild=False):
         
         curve = Curve()
         position = Vector(None, "Position", hide_value=True, default_input='Position')
+        closed = Boolean(False, "Closed")
         
         with Layout("Prepare"):
-            pos1 = curve.points.sample_index(nd.position, index=nd.index + 1)
+            npoints = curve.points.count
+            next_index = Integer.Switch(closed, nd.index + 1,
+                                        (nd.index + 1).floored_modulo(npoints))
+            pos1 = curve.points.sample_index(nd.position, index=next_index)
             segm = pos1 - nd.position
             segm_len = segm.length()
             segm = segm.normalize()
@@ -1314,7 +1108,7 @@ def demo(rebuild=False):
             curve.points.set("Segm", segm)
             curve.points.set("Segm Len", segm_len)
             
-        count = curve.points.count - 1
+        count = Integer.Switch(closed, curve.points.count - 1, curve.points.count)
         for rep in repeat(count, curve=curve, edge_index=-1, dist=0.0, proj=0.0):
             
             pos0 = curve.points.sample_index(Vector("Pos0"),        index=rep.iteration)
@@ -1341,9 +1135,11 @@ def demo(rebuild=False):
     with GeoNodes("CBone Link", rebuild=rebuild):
         
         mesh = Mesh()
+        selection = Boolean(True, "Selection")
         curve = Curve(None, "Curve")
         distance = Float(1.0, "Distance")
         fall_off = Float.Factor(0.1, "Fall Off", 0, 1)
+        closed = Boolean(False, "Closed")
 
         nsplines = curve.splines.count
         
@@ -1356,7 +1152,7 @@ def demo(rebuild=False):
             
             sel = (Integer("Bone") == rep.iteration) | (Integer("Bone") < 0)
         
-            node = G().cbone_distance(spline, nd.position).node
+            node = G().cbone_distance(spline, nd.position, closed=closed).node
             d = node.distance
             weight = d.map_range(distance, distance + fall_off*distance, 1.0, 0.0)
             weight.switch_false(sel & node.is_valid, 0.0)
@@ -1365,19 +1161,25 @@ def demo(rebuild=False):
 
             index = node.index
             is_first = index == 0
-            is_last = index >= spline.points.count-2
+            is_last = index >= npoints-2
+            prev_index = rep.total + (index - 1).floored_modulo(npoints)
+            next_index = rep.total + (index + 1).floored_modulo(npoints)
 
             proj = node.proj
             
             rep.mesh.points[change].set("Bone Index",   rep.total + index)
             rep.mesh.points[change].set("Bone Proj",    proj)
-            rep.mesh.points[change].set("Bone Has Prev", is_first.bnot())
-            rep.mesh.points[change].set("Bone Has Next", is_last.bnot())
+            rep.mesh.points[change].set("Bone Has Prev", closed | is_first.bnot())
+            rep.mesh.points[change].set("Bone Has Next", closed | is_last.bnot())
+            rep.mesh.points[change].set("Bone Prev Index", prev_index)
+            rep.mesh.points[change].set("Bone Next Index", next_index)
             rep.mesh.points[change].set("Bone Weight",  weight)
 
             rep.total += npoints
 
         mesh = rep.mesh
+
+        mesh.points[selection.bnot()].set("Bone Weight", 0.0)
         
         mesh.out()
         
@@ -1394,8 +1196,8 @@ def demo(rebuild=False):
         count = curve.points.count
         
         trf = curve.points.sample_index(Matrix("Transform"), index=Integer("Bone Index"))
-        prev_trf = curve.points.sample_index(Matrix("Transform"), index=Integer("Bone Index") - 1)
-        next_trf = curve.points.sample_index(Matrix("Transform"), index=Integer("Bone Index") + 1)
+        prev_trf = curve.points.sample_index(Matrix("Transform"), index=Integer("Bone Prev Index"))
+        next_trf = curve.points.sample_index(Matrix("Transform"), index=Integer("Bone Next Index"))
         
         proj = Float("Bone Proj")
         
@@ -1553,6 +1355,8 @@ def demo(rebuild=False):
         sel_name = String("Selection", "Name")
         size = Float(1.0, "Size")
         dist = Float(0.1, "Distance")
+        ofs = Vector(0, "Offset")
+        rot = Float.Angle(0, "Rotation")
         use_index = Boolean(False, "Index")
         
         for feel in mesh.points.for_each_element(pos = nd.position, normal=nd.normal, sel_num = Integer(sel_name)):
@@ -1561,9 +1365,9 @@ def demo(rebuild=False):
             label = Curve(label).fill()
             label.faces.material = "Colored Mat"
             label.faces.set('Color', Color("Black"))
-            label.transform(rotation=(pi/2, 0, 0))
+            label.transform(rotation=(pi/2, 0, rot))
             
-            pos1 =  feel.pos + feel.normal.scale(dist) 
+            pos1 =  feel.pos + feel.normal.scale(dist) + ofs
             
             label.offset = pos1
             label += Curve.Line(feel.pos, pos1)
@@ -1699,8 +1503,7 @@ def demo(rebuild=False):
         
         disk.out()
         center.out("Center")
-        
-        
+
     # ----------------------------------------------------------------------------------------------------
     # To Circle
     # ----------------------------------------------------------------------------------------------------
@@ -1712,11 +1515,13 @@ def demo(rebuild=False):
         radius = Float(1.0, "Radius", 0)
         use_center = Boolean(True, "Default Center")
         center = Vector(0, "Center")
+        factor = Float.Factor(1.0, "Factor", 0, 1)
         
         def_center = mesh.points[Integer(sel_name) > 0].attribute_statistic(nd.position).mean
         center.switch(use_center, def_center)
-        
-        mesh[Integer(sel_name)>0].position = center + (nd.position - center).normalize().scale(radius)
+
+        new_pos = center + (nd.position - center).normalize().scale(radius)
+        mesh[Integer(sel_name)>0].position = Vector(factor).map_range(to_min=nd.position, to_max=new_pos)
 
         mesh.out()
         
@@ -1760,11 +1565,12 @@ def demo(rebuild=False):
         sel_name1 = String("To", "To Name")
         resol = Integer(0, "Resolution", 0)
         closed = Boolean(False, "Closed")
+        remove = Boolean(True, "Remove")
+        bridge_name = String("", "Bridge Name")
+        side_name = String("", "Side Name")
         
         use_flip = Boolean(False, "Flip")
 
-        side_name = String("Side", "Side Name")
-        bridge_name = String("", "Bridge Name")
         
         with Layout("Create the bridge"):
 
@@ -1785,6 +1591,23 @@ def demo(rebuild=False):
             
             bridge.switch(ny==1, line)
             bridge.switch(closed & (ny > 2), cyl)
+
+            with Layout("Preserve integer attributes on boundaries"):
+                names = mesh.points.get_attribute_names(Integer)
+                boundary_row = nd.index // ny
+                boundary_index = nd.index % ny
+                for rep in repeat(names.list_length(), bridge=bridge):
+                    attr_name = names[rep.iteration]
+                    source_value = line0.points.sample_index(
+                        Integer(attr_name), index=boundary_index)
+                    target_value = line1.points.sample_index(
+                        Integer(attr_name), index=boundary_index)
+                    rep.bridge.points.set(attr_name, 0)
+                    rep.bridge.points[boundary_row == 0].set(attr_name, source_value)
+                    rep.bridge.points[boundary_row == nx-1].set(attr_name, target_value)
+                bridge = Mesh(rep.bridge)
+
+            # Bridge-specific attributes override the copied boundary values.
             bridge.set(sel_name0, 0)
             bridge.set(sel_name1, 0)
             
@@ -1809,8 +1632,9 @@ def demo(rebuild=False):
             
         with Layout("Weld"):
             
-            sideA = side_name + " A"
-            sideB = side_name + " B"
+            no_side = side_name.length()==0
+            sideA = (side_name + " A").switch(no_side)
+            sideB = (side_name + " B").switch(no_side)
             
             with Layout("Bridge Sides"):            
                 bridge.points[i==0].set(sel_name0, j+1)
@@ -1825,6 +1649,18 @@ def demo(rebuild=False):
                 
                 mesh.points[Integer(sel_name1)==1].set(sideA, resol + 2)
                 mesh.points[Integer(sel_name1)==ny].set(sideB, 1)
+
+            with Layout("Bridge vertex indices"):
+                # Match both copies of each boundary vertex before welding,
+                # so merging preserves the bridge's 1-based numbering.
+                named_mesh = Mesh(mesh)
+                named_mesh.points.set(bridge_name, 0)
+                source_index = Integer(sel_name0)
+                target_index = Integer(sel_name1)
+                named_mesh.points[source_index > 0].set(bridge_name, source_index)
+                named_mesh.points[target_index > 0].set(
+                    bridge_name, (nx - 1)*ny + target_index)
+                mesh.switch(bridge_name.length() > 0, named_mesh)
                 
             with Layout("Weld"):                
                 mesh += bridge
@@ -1834,9 +1670,12 @@ def demo(rebuild=False):
                 
                 idx = Integer(sel_name1)
                 mesh.points[idx > 0].merge(merge_id=idx)
-                
-                mesh.remove_named_attribute(name=sel_name0)
-                mesh.remove_named_attribute(name=sel_name1)
+
+                rem = Mesh(mesh)
+                rem.remove_named_attribute(name=sel_name0)
+                rem.remove_named_attribute(name=sel_name1)
+
+                mesh.switch(remove, rem)
             
         mesh.out()
 
