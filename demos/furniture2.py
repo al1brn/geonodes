@@ -550,11 +550,11 @@ def demo(rebuild=True):
 
         parent_node = G().get_block_properties(geo, block_name=parent_name).node
 
-        y = Float.Distance(0.0, "Y", 0).clamp(parent_node.y0, parent_node.y1 - 0.1)
-        sy = Float.Distance(1.0, "Width", 0.1).clamp(0.1, parent_node.y1 - y)
+        y = Float.Distance(0.0, "Y", 0).clamp(0, parent_node.size_y - 0.1)
+        sy = Float.Distance(1.0, "Width", 0.1).clamp(0.1, parent_node.size_y - y)
 
-        z = Float.Distance(0.0, "Z", 0).clamp(parent_node.z0, parent_node.z1 - 0.1)
-        sz = Float.Distance(1.0, "Height", 0.1).clamp(0.1, parent_node.z1 - z)
+        z = Float.Distance(0.0, "Z", 0).clamp(0, parent_node.size_z - 0.1)
+        sz = Float.Distance(1.0, "Height", 0.1).clamp(0.1, parent_node.size_z - z)
 
         col_geo = G().define_block(
             geo,
@@ -806,12 +806,12 @@ def demo(rebuild=True):
 
         face_type = Integer.MenuSwitch({
             "Door" : 0,
-            "Double" : 1,
-            "Drawers" : 2 
+            "Drawers" : 1,
         }, menu=Input("Type", optional_label=True, expanded=True))
 
-        count_y = Integer.IndexSwitch(1, 2, 1, index=face_type)
-        count_z = Integer.IndexSwitch(1, 1, Integer(3, "Count", 1), index=face_type)
+        count = Integer(1, "Count", 1).max(1)
+        count_y = Integer.Switch(face_type == 1, count, 1)
+        count_z = Integer.Switch(face_type == 1, 1, count)
 
         block_dims = G().get_block_properties(geo, block_name=block_name).node
 
@@ -1053,7 +1053,7 @@ def demo(rebuild=True):
         }, menu = Input("Component", optional_label=True, expanded=True))
 
         with Panel("Component", create_layout=True):
-            res_name = String("Plank", "Resource")
+            #res_name = String("Plank", "Resource")
 
             geo = G().create_sub_block(
                 geo,
@@ -1066,13 +1066,15 @@ def demo(rebuild=True):
             geo = G().add_box_planks(
                 geo,
                 block_name = new_name,
-                sides_left = 'None',
-                sides_right = 'None',
-                sides_top = 'Int',
-                sides_bot = 'Int',
-                sides_bot_name = res_name,
-                sides_top_name = res_name,
-            )
+                #sides_left = 'None',
+                #sides_right = 'None',
+                #sides_top = 'Int',
+                #sides_bot = 'Int',
+                #sides_left_name = res_name,
+                #sides_right_name = res_name,
+                #sides_bot_name = res_name,
+                #sides_top_name = res_name,
+            ).link_inputs()
 
         with Layout("Shelves"):
             shelves = G().add_shelves(
@@ -1085,7 +1087,6 @@ def demo(rebuild=True):
                 geo,
                 block_name=new_name,
                 type='Door',
-                count=1,
             ).link_inputs()
 
         with Layout("Drawers"):
