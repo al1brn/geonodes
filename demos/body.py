@@ -1,7 +1,8 @@
 from geonodes import *
 
-from geonodes.demos import meshutil
+from geonodes.demos import common, meshutil, shaders
 
+import bpy
 import math
 from math import radians
 
@@ -61,6 +62,57 @@ HEAD_POSE_SIG = {
     "Right Lid": Vector,
     "Mouth"    : Vector,
 }
+
+# ====================================================================================================
+# ====================================================================================================
+# Create Hair curves
+# ====================================================================================================
+# ====================================================================================================
+
+def create_hair_curves(object_name, hair_name="Hair", scalp_name="Scalp"):
+    """Create the Hair object and return the hair generation node.
+
+    The object starts empty; the node belongs to the current Geometry Nodes tree.
+    Reuse an existing CURVES object with the requested name.
+    """
+
+    CAPTURE_NAME = "Capture Scalp"
+
+    capture_scalp_group = bpy.data.node_groups.get(CAPTURE_NAME)
+    if capture_scalp_group is None:
+        demo_hair()
+        capture_scalp_group = bpy.data.node_groups[CAPTURE_NAME]
+    
+    obj = bpy.data.objects.get(object_name)
+    if obj is None:
+        raise AttributeError(f"Object {object_name!r} not found")
+        
+    hair_obj_name = f"{object_name} {hair_name}"
+
+    hair = bpy.data.objects.get(hair_obj_name)
+    if hair is not None and hair.type != 'CURVES':
+        raise ValueError(f"Object {hair_obj_name!r} already exists and is not a CURVES object")
+        
+    if hair is None:
+        curves = bpy.data.hair_curves.new(hair_obj_name)
+        hair = bpy.data.objects.new(hair_obj_name, curves)
+        obj.users_collection[0].objects.link(hair)
+        hair.parent = obj
+        
+    modifier = None
+    for mod in hair.modifiers:
+        if mod.type == 'NODES' and getattr(mod.node_group, "name", None) == CAPTURE_NAME:
+            modifier = mod
+            break
+        
+    if modifier is None:
+        modifier = hair.modifiers.new(name=CAPTURE_NAME, type='NODES')
+        modifier.node_group = capture_scalp_group
+
+    modifier.properties.inputs.Socket_1.value = obj
+    modifier.properties.inputs.Socket_2.value = scalp_name
+    
+
 
 
 # ====================================================================================================
@@ -655,13 +707,359 @@ def demo_hand(rebuild=False):
 
 def demo_hair(rebuild=False):
 
+    shaders.transparent_shader()
+
+    # ====================================================================================================
+    # Capure Scalp from a Mesh
+    # ====================================================================================================
+
+    with GeoNodes("Capture Scalp", rebuild=rebuild):
+        
+        object = Object(name="Object")
+        name = String("Scalp", "Scalp Name")
+        
+        mesh = Mesh(object.info().geometry)
+        bundle = mesh.get_bundle()
+        pear_shape = bundle.get_item("Pear Shape", socket_type="CLOSURE")
+        
+        scalp = Mesh(mesh.faces[Boolean(name)].separate())
+
+        scalp = G().capture_rest_geometry(scalp)
+        scalp.set_bundle(
+            scalp.get_bundle() + Bundle.Combine({"Pear Shape": pear_shape})
+        )
+        
+        scalp.out()
+
+    # ====================================================================================================
+    # Depracated
+    # ====================================================================================================
+
+    if False:
+        with GeoNodes("Body Hair To Mesh"):
+            
+            curves = Curve(name="Curves")
+            lod_factor = Float(1.0, "LoD", 0, 1)
+            
+            with Panel("Profile", create_layout=True):
+                resol = Integer(12, "Resolution", 3)
+                radius = Float(0.01, "Radius", 0)
+                radius = lod_factor.interpolate(radius*5, radius)
+                curves = G().set_hair_curve_profile(curves, replace_radius=True, radius=radius).link_inputs()
+                curves = Curve(curves)
+
+            with Panel("Color", create_layout=True):
+                col0 = Color(None, "Start Color")
+                col1 = Color(None, "End Color")
+                cfac0 = Float(0, "Start Factor", 0, 1)
+                cfac1 = Float(1, "End Factor", 0, 1)
+                
+                prm = nd.spline_parameter().factor
+                curves.points.set("Color", col0.mix(col1, factor=prm.map_range(cfac0, cfac1)))
+                
+            with Layout("To Mesh"):
+                resol = gnmath.max(3, (resol*lod_factor).to_integer())
+                mesh = curves.to_mesh(profile_curve=Curve.Circle(), scale=nd.radius, fill_caps=True)
+                
+                mesh.faces.shade_smooth=True
+                
+            mesh.out()
+
+    with GeoNodes("Body Hair", rebuild=rebuild):
+
+        HAIR_DEBUG = False
+
+        # ----------------------------------------------------------------------------------------------------
+        # Parameters
+        # ----------------------------------------------------------------------------------------------------
+
+        # Global parameters
+
+        scalp = Mesh()
+        pear_shape = scalp.get_bundle().get_item("Pear Shape", socket_type="CLOSURE")
+        hair_resol = Integer(12, "Hair Resolution", 3)
+        lod_factor = Float(1.0, "LoD", 0, 1)
+        hair_length = Float(1.0, "Length", 0)
+        seed = Integer(0, "Seed")
+
+        hair_resol = gnmath.max(3, hair_resol*lod_factor).to_integer()._lc("Hair Resol")
+
+        if HAIR_DEBUG:
+            with Panel("DEBUG", create_layout=True):
+                single_hair = Boolean(False, "Single", shape="Single")
+                to_mesh = Boolean(False, "To Mesh")
+
+                theta = Float.Angle(pi/2, "Theta")
+                phi = Float.Angle(0, "Phi")
+                pos = G().combine_spherical(theta=theta, phi=phi, r=1.0)
+                single_pt = Cloud.Points(position=pos)
+
+                line = Curve.Line().resample(count=hair_resol)
+                single_curve = Curve(single_pt.instance_on_points(instance=line).realize())
+
+        with Panel("Baldness", create_layout=True):
+            bald_angle = Float.Factor(0.5, "Position", 0, 1).interpolate(pi/4, -pi/4)
+            bald_aspect = Float.Factor(0.5, "Aspect", 0, 1)
+            bald_size = Float.Factor(0, "Size", 0, 1).interpolate(0, pi/2)
+            bald_falloff = Float.Factor(0.5, "Falloff", 0, 1)
+
+        with Layout("Baldness Density"):
+            rpos = Rotation((0, bald_angle, 0)) @ nd.position.normalize()
+            spherical = G().separate_spherical(rpos).node
+            bald_max = pi/2 - bald_size
+            cs = spherical.phi.cos()*(bald_aspect + 0.25).pingpong(1.0)*bald_max*2
+            sn = spherical.phi.sin()*(bald_aspect + 0.75).pingpong(1.0)*bald_max*2
+            boundary = gnmath.sqrt(cs**2 + sn**2)
+            fade = bald_size*(1 - bald_falloff)
+            # Remaining density: 0 in the bald area, 1 outside it.
+            bald_density = spherical.theta.map_range(
+                boundary - fade.max(0.000001), boundary, 1.0, 0.0)
+            bald_density.switch(bald_falloff >= 1.0, Float(spherical.theta < boundary))
+
+        # Scalp to put hair onto
+
+        with Panel("Scalp", create_layout=True):
+
+            curves = G().generate_hair_curves(
+                hair_surface=scalp,
+                surface_source='Input',
+                resting_surface=True,
+                attach_to_surface=True,
+                density_mask=bald_density,
+                hair_length=hair_length,
+                control_points=hair_resol,
+                seed=seed.hash_value(72998588),
+                ).link_inputs(exclude=["Surface", "Surface UV Map", "Mask Texture", "Hair Material"]).curves
+
+            if HAIR_DEBUG:
+                curves.switch(single_hair, single_curve)
+
+            blur_size = Float.Factor(0, "Blur", 0, 1).interpolate(0, 0.1)
+
+            point_index  = (nd.index % hair_resol)._lc("Point Index")
+            spline_index  = (nd.index // hair_resol)._lc("Spline Index")
+
+            spline_root_position = curves.points.sample_index(nd.position, index=nd.index*hair_resol)
+
+        with Panel("Hair properties", create_layout=True):
+            stiffness = Float.Factor(0.5, "Stiffness", 0, 1)
+            flatness = Float.Factor(0.5, "Flatness", 0, 1)
+            
+        with Panel("Fringe", create_layout=True):
+            x, y, z = spline_root_position.xyz
+            fringe_min = curves.splines[(x > 0) & (y.abs() <= 0.1)].attribute_statistic(z).min_
+            theta_max = gnmath.asin(fringe_min)
+            fringe_theta = Float(0.5, "Fringe", 0, 1).interpolate(pi/2, theta_max)
+            fringe_width = Float(1.0, "Fringe Width", 0, 1).interpolate(0, pi/2)
+
+        with Panel("Comb", create_layout=True):
+            comb_factor = Float.Factor(0, "Factor", 0, 1)
+            comb_direction = Float.Factor(0, "Direction", 0, 1)
+
+            use_node = Boolean(False, "Node")
+            node_theta = Float.Factor(0.5, "Position", 0, 1).interpolate(pi/2, -0.4*pi)
+            node_phi = Float.Factor(0, "Lateral", 0, 1).interpolate(0, pi/2)
+            node_dist = Float.Factor(0.5, "Distance", 0, 1).interpolate(1.05, 1.5)
+            
+        with Panel("Hair Cut"):
+            use_hair_cut = Boolean(True, "Hair Cut")
+            fringe_z = Float(0.5, "Fringe Cut", 0, 1).interpolate(fringe_min - 0.01, 0)
+            fringe_cut_width = Float.Factor(0.5, "Fringe Width", 0, 1).interpolate(0, pi*0.49)
+            back_z = Float(-1, "Back Cut", -10, 1)
+            back_width = Float.Factor(0.5, "Back Width", 0, 1).interpolate(0, pi*0.49)
+        
+        with Layout("Generate Curves"):
+            pos0 = curves.splines.sample_index(spline_root_position, index=nd.index // hair_resol)
+            
+            node = G().separate_spherical(pos0).node
+            phi0,  theta0, r0 = node.phi, node.theta, node.r
+            
+            tan0 = G().combine_spherical(phi=phi0, theta=theta0 - pi/2, r=r0)._lc("Tangent 0")
+            
+            with Layout("Blur Direction & Boundaries"):
+                # One rotation per hair, shared by its direction and zone
+                # tests. The actual root and surface attachment stay fixed.
+                blur_angles = Vector.Random(-blur_size, blur_size, id=spline_index,
+                                            seed=seed.hash_value(927220))
+                blur_rotation = Rotation(blur_angles)
+                zone_position = blur_rotation @ pos0
+                zone = G().separate_spherical(zone_position).node
+                is_fringe = ((zone_position.x > 0) & (zone.theta < fringe_theta)
+                             & (zone.phi.abs() < fringe_width))
+
+            hair_dist = Float.Random(1.0, flatness.interpolate(1.05, 1.0), id=spline_index, seed=seed.hash_value(86927856))
+        
+        with Layout("Hair Curves"):
+            
+            zdot = pos0.z
+            hrz_dir = (pos0 - Vector((0, 0, zdot))).normalize()
+            
+            direction = Vector(flatness).map_range(to_min=pos0, to_max=tan0)
+            direction = blur_rotation @ direction
+
+            with Layout("Comb Direction & Intensity"):
+                comb_phi = G().separate_spherical(direction).phi
+                side = Float.Switch(comb_phi < 0, 1.0, -1.0)
+                target_phi = side * comb_direction.interpolate(pi/2, pi)
+                # Intensity depends on the root's front/back position,
+                # independently of the selected comb direction.
+                front_weight = phi0.cos().map_range(-1.0, 1.0, 0.0, 1.0)
+                influence = comb_factor * front_weight
+                influence = Float.Switch(is_fringe, influence, 0.0)
+                angle = (target_phi - comb_phi) * influence
+                direction = Rotation((0, 0, angle)) @ direction
+
+            with Layout("Hair Node Target"):
+                node_active = use_node & ~is_fringe
+                root_side = Float.Switch(zone_position.y < 0, 1.0, -1.0)
+                node_r = Float.Switch(node_theta < 0, node_dist,
+                                      node_dist / node_theta.cos().max(0.000001))
+                node_target = Vector(G().combine_spherical(
+                    phi=root_side * (pi - node_phi), theta=node_theta, r=node_r))
+                node_start_distance = (node_target - pos0).length()
+                node_radius = hair_dist.min(node_r)
+
+            with Layout("Hair Node Route"):
+                root_normal = pos0.normalize()
+                route_axis = root_normal.cross(node_target)
+                # Opposite roots have no unique great circle. Choose an
+                # upward route, slightly toward the root's own side.
+                preferred = Vector((0, root_side * 0.25, 1))
+                preferred -= root_normal.scale(preferred.dot(root_normal))
+                preferred.switch(preferred.length() < 0.000001, Vector((0, root_side, 0)))
+                route_axis.switch(route_axis.length() < 0.000001,
+                                  root_normal.cross(preferred))
+                route_axis = route_axis.normalize()
+                initial_tangent = route_axis.cross(root_normal)
+                # Reverse only a route that descends farther in front of
+                # the face. A downward route toward a lateral node is valid.
+                crosses_face = ((pos0.x > 0) & (initial_tangent.z < 0)
+                                & (initial_tangent.x > 0.000001))
+                route_axis = Vector.Switch(crosses_face, route_axis, -route_axis)
+
+            with Layout("Cut z"):
+                
+                node = G().separate_spherical(direction).node
+                dir_phi,  dir_theta = node.phi, node.theta
+                
+                cut_z = dir_phi.abs().map_range(fringe_cut_width, pi-back_width, fringe_z, back_z)
+            
+            dl_fac = 1.0 + 1/(hair_resol-1)
+            dl_sum = (1 - dl_fac**hair_resol)/(1 - dl_fac)
+            dl = hair_length/dl_sum
+            
+            for rep in repeat(hair_resol-1, curves=curves, pos=pos0, direction=direction,
+                              dl=dl, is_cut=False, node_reached=False):
+
+                with Layout("Guide Hair To Node"):
+                    to_node = node_target - rep.pos
+                    node_distance = to_node.length()
+                    direct = to_node.normalize()
+                    normal = rep.pos.normalize()
+
+                    # Test the whole segment to the target, not only its ends.
+                    closest_factor = (-rep.pos.dot(to_node)
+                                      / to_node.dot(to_node).max(0.000001)).clamp(0, 1)
+                    closest = rep.pos + to_node.scale(closest_factor)
+                    direct_clear = closest.length() >= node_radius - 0.000001
+
+                    # The plane and traversal sense are fixed at the root.
+                    tangent = route_axis.cross(normal).normalize()
+                    guide = direct
+
+                    # Slack peaks between root and target and vanishes at
+                    # both ends. Close to the target, guidance takes over.
+                    remaining = (node_distance / node_start_distance.max(0.000001)).clamp(0, 1)
+                    sag = (1 - stiffness) * 2 * remaining * (1 - remaining)
+                    guide += Vector((0, 0, -sag))
+                    # While the skull hides the target, stay on the chosen
+                    # route. Gravity can bend the free span after departure.
+                    guide.switch(~direct_clear, tangent)
+                    guide = guide.normalize()
+                    step_direction = Vector.Switch(node_active, rep.direction, guide)
+                    reached_now = node_active & direct_clear & (node_distance <= rep.dl)
+                
+                delta = step_direction.scale(rep.dl)
+                new_pos = rep.pos + delta
+                
+                d = new_pos.length()
+                new_pos.switch(d < hair_dist, new_pos.normalize().scale(hair_dist))
+                new_pos.switch(reached_now, node_target)
+                new_pos.switch(rep.node_reached, rep.pos)
+                
+                z = new_pos.z
+                prev_z = rep.pos.z
+                to_cut = use_hair_cut & ~node_active & (z < cut_z) & (cut_z <= prev_z)
+                
+                diff = z - prev_z
+                ratio = Float.Switch(diff > -0.0001, (cut_z - prev_z)/diff, 0.0)
+                
+                new_pos.switch(to_cut, rep.pos + (new_pos - rep.pos).scale(ratio))
+                new_pos.switch(rep.is_cut, rep.pos)
+                
+                rep.curves[point_index==rep.iteration+1].position = new_pos
+                
+                new_dir = (rep.direction + (0, 0, stiffness.interpolate(-10/(hair_resol-1), 0))).normalize()
+
+                with Layout("Comb During Growth"):
+                    current_theta = G().separate_spherical(new_pos).theta
+                    comb_fade = current_theta.map_range(
+                        -radians(10), radians(10), 0.0, 1.0,
+                        interpolation_type='SMOOTHSTEP')
+
+                    # Guide along the local scalp tangent, rather than adding
+                    # a horizontal force at every step.
+                    normal = new_pos.normalize()
+                    comb_target = Vector((target_phi.cos(), target_phi.sin(), 0))
+                    comb_target = comb_target - normal.scale(comb_target.dot(normal))
+                    comb_target.switch(comb_target.length() < 0.000001, new_dir)
+                    comb_target = comb_target.normalize()
+
+                    # Scale the blend by segment length, so subdivision does
+                    # not multiply the amount of combing.
+                    comb_rate = influence * comb_fade * (1 - stiffness) * 4
+                    comb_blend = 1 - (-comb_rate * rep.dl/hair_length.max(0.000001)).exp()
+                    guided = new_dir.mix(comb_target, factor=comb_blend)
+                    guided.switch(guided.length() < 0.000001, new_dir)
+                    new_dir = guided.normalize()
+                
+                rep.pos = new_pos
+                rep.direction = new_dir
+                rep.dl *= dl_fac
+                rep.is_cut |= to_cut
+                rep.node_reached |= reached_now
+                
+            curves = rep.curves.resample(count=hair_resol)
+
+            curves.position = pear_shape.evaluate(
+                position=nd.position,
+                signature=({"Position": Vector}, {"Position": Vector}),
+            )
+
+            if HAIR_DEBUG:
+                with Layout("To Mesh"):
+                    curves.points.set("Color", Color("red").mix(Color("blue"), factor=is_fringe))
+                    mesh = curves.to_mesh(profile_curve=Curve.Circle(radius=0.01))
+                    mesh.faces.material = "Colored Mat"
+                    curves.switch(to_mesh, mesh)
+
+        curves.out("Curves")
+        scalp.out("Mesh")
+          
+
     # ====================================================================================================
     # Body Head Scalp
     # ====================================================================================================
 
     with GeoNodes("Body Head Scalp", is_group = True, rebuild=rebuild):
+
+        # Hair convention: front +X, lateral Y, up +Z.
         
-        inv_normals = Boolean(True, "Invert Normals")
+        inv_normals = Boolean(False, "Invert Normals")
+        resolution = Integer(32, "Resolution")
+        lod_factor = Float(1.0, "LoD", 0, 1)
+
+        resolution = gnmath.max(32, (resolution*lod_factor)).to_integer()
         with Panel("Hair Scalp"):
             z_scalp = Float.Factor(0.5, "Forehead", 0, 1, shape="Single").interpolate(0.3, 0.95)
             z_slope = Float.Factor(0.5, "Rear", 0, 1, shape="Single").interpolate(-0.9, 0)
@@ -674,16 +1072,16 @@ def demo_hair(rebuild=False):
         with Layout("Hair Scalp"):
 
             with Layout("Base Sphere"):
-                scalp = Mesh.UVSphere()
+                scalp = Mesh.UVSphere(segments=resolution, rings=resolution//2)
                 uv = scalp.uv_map
                 scalp.corners.store_uv("UV Map", uv)
                 
             cube = Mesh.Cube(size=4.0)
-            cube.offset = (-2, 0, -2.0 + z_scalp)
+            cube.offset = (2, 0, -2.0 + z_scalp)
             
             nx = nd.normal.x
             
-            cube.faces[nx > 0.9].extrude(offset=(2, 0, z_slope*4))
+            cube.faces[nx < -0.9].extrude(offset=(-2, 0, z_slope*4))
             
             scalp -= cube
             
@@ -697,7 +1095,7 @@ def demo_hair(rebuild=False):
         with Layout("Moustache Scalp"):
             
             with Layout("Base Sphere"):
-                moustache = Mesh.UVSphere(segments=128, rings=64)
+                moustache = Mesh.UVSphere(segments=resolution*4, rings=resolution*2)
                 uv = moustache.uv_map
                 moustache.corners.store_uv("UV Map", uv)
             
@@ -712,9 +1110,9 @@ def demo_hair(rebuild=False):
             
             moustache -= bot
             
-            cube.offset = 2 - w_moust, 0, 0
+            cube.offset = -2 + w_moust, 0, 0
             ag = gnmath.atan2(z_moust, 1)
-            cube.transform(rotation=(0, ag, 0))
+            cube.transform(rotation=(0, -ag, 0))
             moustache -= cube
             
             nz = nd.normal.z
@@ -727,280 +1125,14 @@ def demo_hair(rebuild=False):
             
             
             moustache.switch(h_moust<=0.02)
-            
-        scalp.out("Hair Scalp")
-        moustache.out("Moustache Scalp")
 
-    # ====================================================================================================
-    # Pts distribution
-    # ====================================================================================================
-    
-    with GeoNodes("Body Hair Distribution", is_group=True, rebuild=rebuild):
-        
-        mesh = Mesh()
-        
-        dist_min = Float.Distance(0, "Distance Min", 0)
-        density_max = Float(10, "Density Max", 0)
-        density_factor = Float.Factor(1, "Density Factor", 0, 1)        
-        inv_normal = Boolean(False, "Invert Normal")
-        neat_limit = Float.Factor(1.0, "Neat Limit", 0, 1,
-                                  tip="1 keeps sharp zone borders; lower values mix nearby roots.")
-
-        viewport_factor = Float.Factor(1, "Viewport Factor", 0, 1, shape="Single")
-        viewport_factor.switch_false(nd.is_viewport, 1.0)
-        
-        seed = Integer(0, "Seed")
-
-        with Panel("Fringe"):
-            fringe_top = Float.Factor(0.5, "Top", 0, 1,
-                                     tip="Apex angle from the north pole towards +X: 0 to 45 degrees.")
-            fringe_width = Float.Factor(0.5, "Width", 0, 1,
-                                       tip="Triangle opening: 0 is the centerline, 1 is 180 degrees.")
-
-        with Panel("Baldness"):
-            bald_angle = Float.Angle(0.0, "Position", -pi, pi,
-                                    tip="Angle from north pole (+Z): positive towards front (+X), negative towards back.")
-            bald_radius = Float.Distance(0.5, "Distance", 0, pi,
-                                         tip="Surface distance from the center on the unit sphere.")
-            bald_aspect = Float.Factor(0.5, "Aspect", 0, 1,
-                                       tip="0.5 circular; above stretches front-to-back, below sideways.")
-            bald_factor = Float.Factor(0.0, "Factor", 0, 1,
-                                      tip="0 keeps the hair; 1 removes it at the center.")
-            bald_falloff = Float.Factor(0.5, "Falloff", 0, 1,
-                                       tip="Fraction of the radius where density starts recovering.")
-
-        with Layout("Baldness density"):
-            center = Vector((bald_angle.sin(), 0, bald_angle.cos()))
-            direction = nd.position.normalize()
-            surface_distance = direction.dot(center).clamp(-1, 1).acos()
-            # Elliptical geodesic distance in the center's tangent frame.
-            # Reciprocal axis scales preserve the local area as Aspect changes.
-            along = direction.dot(Vector((bald_angle.cos(), 0, -bald_angle.sin())))
-            side = direction.y
-            tangent_length = (along*along + side*side).sqrt()
-            aspect = 4.0 ** (2*bald_aspect - 1)
-            stretch = ((along*along/aspect + side*side*aspect).sqrt()
-                       / tangent_length.max(0.000001))
-            stretch.switch(tangent_length < 0.000001, 1.0)
-            surface_distance *= stretch
-            relative_distance = surface_distance/bald_radius.max(0.000001)
-            recovery = ((relative_distance - bald_falloff)
-                        / (1 - bald_falloff).max(0.000001)).clamp(0, 1)
-            recovery = recovery*recovery*(3 - 2*recovery)
-            recovery.switch(relative_distance >= 1, 1.0)
-            bald_density = 1 - bald_factor*(1 - recovery)
-            bald_density.switch(bald_radius <= 0, 1.0)
-
-        cloud = mesh.faces.distribute_points_poisson(
-            distance_min = dist_min,
-            density_max = density_max,
-            density_factor = density_factor*viewport_factor*bald_density,
-            seed = seed,
-            )
-        seed += 1
-            
-        cloud.points.set("Normal", cloud.normal.scale(Float.Switch(inv_normal, 1, -1)))
-
-        with Layout("Spherical coordinates and hair zones"):
-            coordinates = G().separate_spherical(nd.position).node
-            # Spherical components: X = Phi, Y = Theta, Z = R.
-            cloud.points.set("Spherical", Vector((coordinates.phi, coordinates.theta, coordinates.R)))
-
-            # Spherical triangle opening towards the front from an apex on
-            # the median great circle. Left/Right remain independent zones.
-            apex_angle = fringe_top*(pi/4)
-            forward = Vector((apex_angle.cos(), 0, -apex_angle.sin()))
-            direction = nd.position.normalize()
-            along = direction.dot(forward)
-            opening = gnmath.atan2(direction.y.abs(), along)
-
-            # Independent, seeded jitter in a narrow band around each border.
-            # A five-degree-scale band keeps distant roots in their own zone.
-            border_width = (1-neat_limit)*(pi/36)
-            fringe_noise = Float.Random(-1.0, 1.0, id=nd.index, seed=seed)
-            seed += 1
-            side_noise = Float.Random(-1.0, 1.0, id=nd.index, seed=seed)
-            seed += 1
-            fringe_margin = direction.x.min(along).min(fringe_width*(pi/2)-opening)
-            fringe = fringe_margin + fringe_noise*border_width >= 0
-            left = direction.y + side_noise*border_width >= 0
-            cloud.points.set("Fringe", fringe)
-            cloud.points.set("Left", left)
-            cloud.points.set("Right", left.bnot())
-
-        with Bundle() as bundle:
-            seed.out("Seed")
-            
-        cloud.set_bundle(bundle)
-        
-        cloud.out("Cloud")
-
-    # ====================================================================================================
-    # Bezier Hair
-    # ====================================================================================================
-    
-    with GeoNodes("Body Hair", is_group=True, rebuild=rebuild):
-        
-        cloud = Cloud()
-        bundle = cloud.get_bundle()
-        seed = bundle.get_item("Seed", socket_type='INTEGER')
-        seed.switch_false(seed.exists, 0)
-        
-        resol = Integer(12, "Resolution", 2)
-        
-        with Panel("Start"):
-            direc = Vector(None, "Direction", hide_value=True)
-            dir_var = Float.Factor(0, "Variation", 0, 1)
-            
-        with Panel("End"):
-            use_end = Boolean(False, "To Target Position")
-            target = Vector(None, "Target")
-            trg_var = Float(0, "Target Variation", 0)
-            target_dir = Vector((0, 0, -1), "Target direction")
-            tdir_var = Float.Factor(0, "Direction Variation", 0, 1)
-
-            stiffness = Float.Factor(0.5, "Stiffness", 0, 1)
-            length = Float(1.0, "Length",0)
-            use_z_limit = Boolean(False, "Cut below Z")
-            z_limit = Float(0.0, "Z Cut")
-
-            
-        with Panel("Appearance"):
-            slicking = Float.Factor(0.5, "Slicking", 0, 1,
-                                    tip="0 allows volume; 1 follows the scalp before reaching the target.")
-            slick_var = Float.Factor(0.0, "Slicking Variation", 0, 1).interpolate(1.0, 2.0)
-            
-        with Layout("Randomness"):
-            
-            target_offset = Vector.Random(-trg_var, trg_var, seed=seed)
-            seed += 1
-                
-        with Layout("Place Lines"):
-            line = Curve.Line().resample(count=resol)
-            curves = Curve(cloud.instance_on_points(instance=line).realize())
-            
-            spline_index = nd.index // resol
-            point_index = nd.index % resol
-            
-            t = point_index/(resol-1)
-            
-            trg = curves.splines.sample_index(target, index=spline_index)
-            tip_offset = cloud.points.sample_index(target_offset, index=spline_index)
-            
-            root_phi, root_theta, root_radius = cloud.points.sample_index(
-                Vector("Spherical"), index=spline_index).xyz
-            B = G().separate_spherical(trg).node
-            
-            phi = t.interpolate(root_phi, B.phi, 'Smooth Step')
-            phi.switch(root_phi < 0, t.interpolate(root_phi, -B.phi, 'Smooth Step'))
-            theta = t.interpolate(root_theta, B.theta)
-            
-            # Stay near the scalp longer as slicking increases, then converge
-            # to the target radius. Volume is small and vanishes when slicked.
-            R = t.map_range(0.8*slicking, 1, root_radius, B.R)
-            
-            R += (t*pi).sin()*0.15*(1-slicking)*Float.Random(1, slick_var, seed=seed)
-            seed += 1
-            
-            target_position = G().combine_spherical(phi=phi, theta=theta, r=R)
-            # Keep angular routing independent of target thickness. One offset
-            # per hair fades in smoothly, with the root left unchanged.
-            target_position += tip_offset.scale(t*t*(3 - 2*t))
-            curves.position = target_position
-            target_curves = Curve(curves)
-
-        with Layout("Grow all hairs in parallel"):
-            normal = G().combine_spherical(phi=root_phi, theta=root_theta, r=1.0)
-            root = normal.scale(root_radius.max(1.0))
-            # Give nearly vertical hairs a small initial lean (about 3 degrees).
-            # Keep the root fixed and use one stable azimuth per hair at poles.
-            lean_angle = Float.Random(0.0, tau, id=spline_index, seed=seed)
-            seed += 1
-            horizontal = Vector((normal.x, normal.y, 0))
-            horizontal_direction = Vector.Switch(
-                horizontal.length() < 0.000001,
-                horizontal.normalize(), Vector((lean_angle.cos(), lean_angle.sin(), 0)))
-            initial_direction = (horizontal_direction.scale(horizontal.length().max(0.05))
-                                 + Vector((0, 0, normal.z))).normalize()
-            hair_length = cloud.points.sample_index(length, index=spline_index)
-            hair_stiffness = cloud.points.sample_index(stiffness, index=spline_index)
-            bend_strength = (1-hair_stiffness)*(1 + 4*normal.z*normal.z)
-            step = hair_length/(resol-1)
-            growing = Curve(curves)
-            growing.position = root
-            growing.points.set("tmp Hair Direction", initial_direction)
-
-            for rep in repeat(resol-1, curves=growing):
-                work = Curve(rep.curves)
-                previous_index = spline_index*resol + rep.iteration
-                previous = work.points.sample_index(nd.position, index=previous_index)
-                previous_direction = work.points.sample_index(
-                    Vector("tmp Hair Direction"), index=previous_index)
-
-                # Bend by arc length so resolution does not set the strength.
-                # The first segment follows the slightly tilted initial direction.
-                bent = previous_direction + Vector((0, 0, -1)).scale(
-                    4*bend_strength*step)
-                bent = Vector.Switch(bent.length() < 0.000001,
-                                     bent.normalize(), previous_direction)
-                direction = Vector.Switch(rep.iteration == 0, bent, previous_direction)
-
-                # Keep the entire next segment outside the unit sphere.
-                nearest_t = (-previous.dot(direction)).clamp(0, step)
-                nearest = previous + direction.scale(nearest_t)
-                radial = previous.normalize()
-                outward = direction - radial.scale(direction.dot(radial).min(0))
-                outward = Vector.Switch(outward.length() < 0.000001,
-                                        outward.normalize(), radial)
-                direction = Vector.Switch(nearest.length() < 1.0, direction, outward)
-
-                selected = point_index == rep.iteration + 1
-                work.points[selected].set("tmp Hair Direction", direction)
-                work[selected].position = previous + direction.scale(step)
-                rep.curves = work
-
-            growing = Curve(rep.curves)
-            growing.remove_named_attribute(name="tmp Hair Direction")
-            curves = Curve(Geometry.Switch(use_end, growing, target_curves))
-
-        with Layout("Cut below Z and restore resolution"):
-            cut = Curve(curves)
-            below = nd.position.z < z_limit
-            below_count = cut.points.accumulate_field(
-                Integer(below), group_id=spline_index)
-            first_below = below & (below_count.leading == 1)
-
-            previous_index = (nd.index - 1).max(spline_index*resol)
-            previous = cut.points.sample_index(nd.position, index=previous_index)
-            arc_length = nd.spline_parameter().length
-            previous_length = cut.points.sample_index(arc_length, index=previous_index)
-            fraction = ((previous.z - z_limit)
-                        / (previous.z - nd.position.z).max(0.000001)).clamp(0, 1)
-            intersection_length = previous_length + fraction*(arc_length-previous_length)
-            candidate = Float.Switch(first_below, 0.0, intersection_length)
-            crossing_length = cut.points.accumulate_field(
-                candidate, group_id=spline_index).total
-            full_length = cut.points.sample_index(
-                arc_length, index=spline_index*resol + resol-1)
-            end_length = Float.Switch(below_count.total > 0, full_length, crossing_length)
-
-            # Capture on points first: each spline then receives its own
-            # constant end length when Trim Curve evaluates on that domain.
-            end_length = cut.points.capture_attribute(end_length)
-            root_below = cut.points.sample_index(
-                nd.position.z, index=spline_index*resol) < z_limit
-            root_below = cut.points.capture_attribute(root_below)
-            cut.trim_length(end=end_length)
-            cut.splines[root_below].delete()
-            cut.resample(count=resol)
-            curves = Curve(Geometry.Switch(use_z_limit, curves, cut))
-
-        bundle.set_item("Seed", seed)
-        curves.set_bundle(bundle)
-            
-        curves.out()
-
-  
+        with Layout("Finalize"):
+            scalp.faces.material = "Transparent"
+            moustache.faces.material = "Transparent"
+            scalp.faces.set("Scalp", True)
+            moustache.faces.set("Moustache", True)
+            G().capture_rest_geometry(scalp).out("Hair Scalp")
+            G().capture_rest_geometry(moustache).out("Moustache Scalp")
 
 # ====================================================================================================
 # ====================================================================================================
@@ -1028,7 +1160,8 @@ def demo_head(rebuild=False):
             
             z = phi.sin()
             r = phi.cos()
-            return -r*theta.cos(), r*theta.sin(), z
+            # Front +X; keep the mouth's point and selection order.
+            return r*theta.cos(), -r*theta.sin(), z
             
         def arc(count, theta_ampl, phi_corner, phi_max, rev=False):
             with Layout("Half Circle"):
@@ -1226,7 +1359,7 @@ def demo_head(rebuild=False):
             
             # Stick on the sphere
             _, y, z = nd.position.xyz
-            mouth[Integer("tmp Bridge")>0].position = -gnmath.sqrt(1 - y**2 - z**2), y, z
+            mouth[Integer("tmp Bridge")>0].position = gnmath.sqrt(1 - y**2 - z**2), y, z
             
         mouth.remove_named_attribute("Wildcard", "tmp*")
 
@@ -1330,7 +1463,8 @@ def demo_head(rebuild=False):
             z = phi.sin()
             r = phi.cos()
             
-            head.position = theta.cos()*r, theta.sin()*r, z
+            # The middle segment remains the front of each ring.
+            head.position = -theta.cos()*r, -theta.sin()*r, z
             
             head.points.set("tmp Pole 0", iring==0)
             head.points.set("tmp Pole 1", iring==nrings-1)
@@ -1378,7 +1512,7 @@ def demo_head(rebuild=False):
             hole_z1 = head.points.sample_index(nd.position.z, index=(ring_cut1+1)*segments + 1)
             hole_h = (hole_z1 - hole_z0)/2
             
-            hole_w = 1.5*head.points.sample_index(nd.position.y, index=(ring_cut1+1)*segments - seg_count + 2)
+            hole_w = -1.5*head.points.sample_index(nd.position.y, index=(ring_cut1+1)*segments - seg_count + 2)
             
         with Layout("Mouth expression"):
             
@@ -1520,7 +1654,6 @@ def demo_head(rebuild=False):
         # Inputs
         # ----------------------------------------------------------------------------------------------------
         
-        
         blink_delay = Float.TimeAbsolute(3, "Blink", 0, shape="Single")
         head_height = Float(1.0, "Size", 0.1, 1, shape="Single")
         resol  = Integer(8, "Resolution", 1, 8, shape="Single")
@@ -1530,17 +1663,21 @@ def demo_head(rebuild=False):
             width = Float.Factor(0.6, "Width", 0, 1, shape='Single').interpolate(0.4, 1.3)
             depth = Float.Factor(0.6, "Depth", 0, 1, shape='Single').interpolate(0.4, 1.4)
             pear_shape = Float.Factor(0.0, "Pear Factor", 0, 1, shape='Single').interpolate(-1, 1)
+            shape_signature = ({"Position": Vector}, {"Position": Vector})
+            head_shape = G()._body_pear_shape(
+                width=width, depth=depth, height=1.0, pear_factor=pear_shape)
             
             # ----------------------------------------------------------------------------------------------------
             # Transform location at the head surface
             # ----------------------------------------------------------------------------------------------------
 
-            def y_coord(x, z):
-                return gnmath.sqrt(gnmath.max(1 - x**2 - z**2, 0))
+            # Shared hair/head convention: front +X, lateral Y, up +Z.
+            def x_coord(y, z):
+                return gnmath.sqrt(gnmath.max(1 - y**2 - z**2, 0))
             
-            def transform_head_location(x, y, z, shape=pear_shape):
-                scale_x = 1 - 0.7 * shape * z
-                return x*scale_x*width, y*scale_x*depth, z
+            def transform_head_location(x, y, z):
+                return head_shape.evaluate(
+                    position=(x, y, z), signature=shape_signature).xyz
 
             # ----------------------------------------------------------------------------------------------------
             # Head
@@ -1562,8 +1699,6 @@ def demo_head(rebuild=False):
                     material = mat,
                 )
                 
-                head.transform(rotation=(0, 0, -pi/2)) #, scale=2)
-                
                 nose = Mesh.UVSphere(segments=segments, rings=rings, radius=1.0)
                 nose.faces.material = mat
                 nose.faces.shade_smooth = True
@@ -1575,7 +1710,7 @@ def demo_head(rebuild=False):
                 
                 nose = Mesh(head)
                 
-            head.position = transform_head_location(*nd.position.xyz)
+            head.position = head_shape.evaluate(position=nd.position, signature=shape_signature)
                 
         # ----------------------------------------------------------------------------------------------------
         # Nose
@@ -1587,22 +1722,24 @@ def demo_head(rebuild=False):
             nose_height = Float.Factor(0.5, "Height", 0, 1, shape='Single').interpolate(0.2, 0.7)
             nose_z = Float.Factor(0.5, "Position", 0, 1, shape='Single').interpolate(0.0, 0.5)
             nose_pear = Float.Factor(0.5, "Pear Factor", 0, 1, shape='Single').interpolate(-1, 1)
-            nose_y = Float.Factor(0.5, "Inside", 0, 1, shape='Single').interpolate(-0.1, 0.7)
+            nose_x = Float.Factor(0.5, "Inside", 0, 1, shape='Single').interpolate(-0.1, 0.7)
             
-            nose.position = transform_head_location(*nd.position.xyz, shape=nose_pear)
+            nose_shape = G()._body_pear_shape(
+                width=width, depth=depth, height=1.0, pear_factor=nose_pear)
+            nose.position = nose_shape.evaluate(position=nd.position, signature=shape_signature)
             
             nose_width  *= nose_length
             nose_height *= nose_length
             
-            x, y, z = transform_head_location(0, y_coord(0, nose_z), nose_z)
-            nose.transform(rotation=(pi/2, 0, 0), translation=(x, y + nose_y*nose_length, z), scale=(nose_width, nose_height, nose_length))
+            x, y, z = transform_head_location(x_coord(0, nose_z), 0, nose_z)
+            nose.transform(rotation=(0, -pi/2, 0), translation=(x + nose_x*nose_length, y, z), scale=(nose_height, nose_width, nose_length))
             
             mouth_z_max = nose_z - 2*nose_height
             
-            node = head.points[nd.position.z < mouth_z_max].attribute_statistic(nd.position.x).node
-            x_max = node.max
+            node = head.points[nd.position.z < mouth_z_max].attribute_statistic(nd.position.y).node
+            y_max = node.max
             
-            mouth_x_max = 0.9*x_max
+            mouth_y_max = 0.9*y_max
             
         # ----------------------------------------------------------------------------------------------------
         # Eyes
@@ -1611,26 +1748,26 @@ def demo_head(rebuild=False):
         with Panel("Eyes", create_layout=True):
             eye_radius = Float.Factor(0.1, "Size", 0, 1, shape='Single').interpolate(0.05, 0.3)
             eye_z = Float.Factor(0.5, "Position", 0, 1, shape='Single')#.interpolate(0.0, 0.8)
-            eye_x = Float.Factor(0.6, "Distance", 0, 1, shape='Single').interpolate(0.0, 0.8)
-            eye_y = Float.Factor(0, "Inside", 0, 1, shape='Single').interpolate(-1, 1)
+            eye_y = Float.Factor(0.6, "Distance", 0, 1, shape='Single').interpolate(0.0, 0.8)
+            eye_x = Float.Factor(0, "Inside", 0, 1, shape='Single').interpolate(-1, 1)
             
             eye_z = eye_z.interpolate(nose_z+0.8*nose_height, 0.9)
             
             eye = Mesh.UVSphere(segments=segments//2, rings=rings//2, radius=eye_radius)
             eye.faces.set('White', nd.position.z < .9*eye_radius)
-            eye.transform(rotation=(-pi/2, 0, 0))
+            eye.transform(rotation=(0, pi/2, 0))
             eye.points.set("Head", 1)
 
             eye.faces.shade_smooth = True
             eye.faces.material = "Obs Eye"
             
-            eye_x = eye_x.max(eye_radius+nose_width)
-            eye_x = eye_x.min(y_coord(0, eye_z))
+            eye_y = eye_y.max(eye_radius+nose_width)
+            eye_y = eye_y.min(x_coord(0, eye_z))
             
-            x, y, z = transform_head_location(eye_x, y_coord(eye_x, eye_z), eye_z)
-            y += eye_y*eye_radius
-            left_loc = (-x, y, z)
-            right_loc = (x, y, z)
+            x, y, z = transform_head_location(x_coord(eye_y, eye_z), eye_y, eye_z)
+            x += eye_x*eye_radius
+            left_loc = (x, y, z)
+            right_loc = (x, -y, z)
             
             left_eye = Mesh(eye)
             left_eye.transform(rotation=head_pose.left_eye)
@@ -1671,9 +1808,10 @@ def demo_head(rebuild=False):
                 
                 fx, fy, _ = head_pose.left_lid.xyz
                 fx = fx.min(blink_animation)
-                rx = fx.interpolate(-pi/2, pi/2)
-                ry = fy.interpolate(-0.5*pi/2, 0.5*pi/2)
-                left_eyelid.transform(rotation=(rx, ry, 0))
+                opening_angle = fx.interpolate(-pi/2, pi/2)
+                tilt_angle = fy.interpolate(-0.5*pi/2, 0.5*pi/2)
+                lid_rotation = Rotation((0, -opening_angle, 0)).rotate_local((tilt_angle, 0, 0))
+                left_eyelid.transform(rotation=lid_rotation)
                 
                 left_eyelid.offset = left_loc
                 
@@ -1682,9 +1820,10 @@ def demo_head(rebuild=False):
 
                 fx, fy, _ = head_pose.right_lid.xyz
                 fx = fx.min(blink_animation)
-                rx = fx.interpolate(-pi/2, pi/2)
-                ry = fy.interpolate(-0.5*pi/2, 0.5*pi/2)
-                right_eyelid.transform(rotation=(rx, -ry, 0))
+                opening_angle = fx.interpolate(-pi/2, pi/2)
+                tilt_angle = fy.interpolate(-0.5*pi/2, 0.5*pi/2)
+                lid_rotation = Rotation((0, -opening_angle, 0)).rotate_local((-tilt_angle, 0, 0))
+                right_eyelid.transform(rotation=lid_rotation)
                 
                 right_eyelid.offset = right_loc
             
@@ -1695,22 +1834,93 @@ def demo_head(rebuild=False):
             hair_col  = Color([0.061606, 0.008269, 0.002920, 1.000000], "Hair Color")
             use_moust = Boolean(True,    "Moustache")
             moust_col = Color([0.061606, 0.008269, 0.002920, 1.000000], "Moustache Color")
-            
+
+        # ----------------------------------------------------------------------------------------------------
+        # Hair
+        # ----------------------------------------------------------------------------------------------------
+
+        with Panel("Scalp", create_layout=True):
+            scalp_resol = Integer(32, "Scalp Resolution", 12)
+            scalp_lod = Float(1.0, "Scalp LoD", 0, 1)
+            scalp = Mesh(G().body_head_scalp(
+                invert_normals=False,
+                resolution=scalp_resol,
+                lod=scalp_lod,
+            ).link_inputs(exclude=["Moustache Scalp"]))
+
         # ----------------------------------------------------------------------------------------------------
         # Finalize
         # ----------------------------------------------------------------------------------------------------
         
         with Layout("Finalize"):
-            head += nose, left_eye, right_eye, left_eyelid, right_eyelid         
+            head += nose, left_eye, right_eye, left_eyelid, right_eyelid
             
             head.transform(translation=(0, 0, head_height), scale=head_height)
             head.transform(rotation=head_pose.head)
-            
+
+            # Hair generation uses the scalp in its normalized coordinates.
+            head += scalp
+
+        with Closure() as hair_shape:
+            position = Vector(name="Position")
+            position = head_shape.evaluate(
+                position=position,
+                signature=shape_signature,
+            )
+            position = position.scale(head_height) + Vector((0, 0, head_height))
+            position = Rotation(head_pose.head) @ position
+            position.out("Position")
+
+        hair_shape.out("Pear Shape")
         head.out()
 
           
 
 def demo(rebuild=False):
-    demo_hand(rebuid=rebuild)
+
+    common.demo()
+
+    # ----------------------------------------------------------------------------------------------------
+    # Common
+    # ----------------------------------------------------------------------------------------------------
+
+    with GeoNodes(".Body Pear Shape", is_group=True, rebuild=rebuild):
+        # Front +X (depth), lateral Y (width), up +Z (height).
+        height = Float(1.0, "Height", 0)
+        width = Float(1.0, "Width", 0)
+        depth = Float(1.0, "Depth", 0)
+        pear_factor = Float(0.0, "Pear Factor", -1, 1)
+
+        with Closure() as cl:
+            position = Vector(name="Position")
+
+            x, y, z = position.xyz
+            radial_scale = 1 - 0.7 * pear_factor * z
+            shaped_position = Vector((x * radial_scale * depth,
+                                    y * radial_scale * width,
+                                    z * height))
+            shaped_position.out("Position")
+
+        cl.out("Shape")
+
+    # ----------------------------------------------------------------------------------------------------
+    # Body Parts
+    # ----------------------------------------------------------------------------------------------------
+
+    demo_hand(rebuild=rebuild)
     demo_hair(rebuild=rebuild)
     demo_head(rebuild=rebuild)
+
+    # ----------------------------------------------------------------------------------------------------
+    # Body Test
+    # ----------------------------------------------------------------------------------------------------
+
+    with GeoNodes("Body Test", rebuild=rebuild):
+        geo = Mesh()
+        head = G().body_head(geo).link_inputs()
+        pear_shape = head.node.pear_shape
+        head.set_bundle(Bundle.Combine({"Pear Shape": pear_shape}))
+        head.out()
+
+
+

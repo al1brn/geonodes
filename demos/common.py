@@ -34,7 +34,7 @@ from geonodes.demos.shaders import colored_shaders, formula_shader
 
 def demo(rebuild=False):
 
-    colored_shaders(rebuild=rebuild)
+    colored_shaders()
     formula_shader()
 
     # ====================================================================================================

@@ -4,11 +4,11 @@ from geonodes.demos import curveutil, shaders
 
 def demo(rebuild=False):
 
-    curveutil.demo(rebuild=rebuild)
-    shaders.colored_shaders(rebuild=rebuild)
-    shaders.chrome_shader(rebuild=rebuild)
-    shaders.glass_shader(rebuild=rebuild)
-    shaders.wood_handle_shader(rebuild=rebuild)
+    curveutil.demo()
+    shaders.colored_shaders()
+    shaders.chrome_shader()
+    shaders.glass_shader()
+    shaders.wood_handle_shader()
 
     # ====================================================================================================
     # Magnifying Glass

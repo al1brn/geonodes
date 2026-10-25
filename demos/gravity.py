@@ -64,10 +64,10 @@ def demo(rebuild=False):
     # ----------------------------------------------------------------------------------------------------
 
     from . import arrows
-    arrows.demo(rebuild=rebuild)
+    arrows.demo()
 
     from . import common
-    common.demo(rebuild=rebuild)
+    common.demo()
 
     # ----------------------------------------------------------------------------------------------------
     # Planet Shader

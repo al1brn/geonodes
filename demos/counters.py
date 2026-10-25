@@ -94,7 +94,7 @@ from geonodes.demos import curveutil
 
 def demo(rebuild=False):
 
-    curveutil.demo(rebuild=rebuild)
+    curveutil.demo()
 
     # ====================================================================================================
     # Shaders for digits

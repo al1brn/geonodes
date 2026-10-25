@@ -79,7 +79,7 @@ FUNCTIONS = [
 
 
 def demo(rebuild=False):
-    FORM.demo(rebuild=rebuild)
+    FORM.demo()
 
 # =============================================================================================================================
 # LaTeX simple interpreter

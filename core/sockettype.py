@@ -63,7 +63,8 @@ class SocketType:
 
         # Socket : its type has priority over bsocket
         if getattr(value, 'SOCKET_TYPE', None) is not None:
-            value = value.SOCKET_TYPE
+            self._full_socket_id = type(self).from_type(value.SOCKET_TYPE)._full_socket_id
+            return
 
         elif getattr(value, 'DOMAIN_NAME', None) is not None:
             value = value._geo
@@ -116,13 +117,6 @@ class SocketType:
                 self.subtype = tsock.subtype
             if self.is_vector:
                 self.dimensions = tsock.dimensions
-
-        # ---------------------------------------------------------------------------
-        # From a string
-        # ---------------------------------------------------------------------------
-
-        elif isinstance(value, str):
-            self._full_socket_id = constants.SOCKET_IDS.get(value)
 
         # ====================================================================================================
         # If socket_id is still None, argument is a python value
@@ -184,6 +178,25 @@ class SocketType:
                 )
 
             self._full_socket_id = sid
+
+    @classmethod
+    def from_type(cls, socket_type):
+        """Resolve an explicit socket type, class, socket or type name.
+
+        String names accept socket types (``VALUE``, ``FLOAT``), class names
+        (``Float``) and Blender socket identifiers (``NodeSocketFloat``).
+        Use ``SocketType(value)`` to infer the type of a value instead.
+        """
+        if not isinstance(socket_type, str):
+            return cls(socket_type)
+
+        socket_id = constants.SOCKET_IDS.get(socket_type)
+        if socket_id is None:
+            raise NodeError(f"Unknown socket type: {socket_type!r}.")
+
+        result = cls.__new__(cls)
+        result._full_socket_id = socket_id
+        return result
 
     # ====================================================================================================
     # Str and Repr
@@ -542,45 +555,30 @@ class SocketType:
     # ====================================================================================================
 
     @classmethod
-    def get_data_type_for_node(cls,
-            value,
+    def convert_type_for_node(cls,
+            type_name: str,
             bl_idname: str,
-            param_name: str = 'data_type',            
+            param_name: str = 'data_type',
             on_error: Literal['HALT', 'NONE', 'DEFAULT'] = 'HALT',
             *,
-            float_int: bool = True):
-        """ Get the data_type param
+            float_int: bool = True) -> str | None:
+        """Convert an explicit socket type to a node parameter identifier.
 
-        Parameters
-        ----------
-        value : any
-            the value to get a data_type from
+        ``type_name`` accepts the types supported by ``from_type`` (for
+        example ``VALUE``, ``FLOAT``, ``Float`` or a socket class).
+        ``None`` selects the node parameter default. ``float_int`` allows
+        falling back between Float and Integer when needed.
 
-        bl_idname : str
-            node id
-
-        param_name : str, optional
-            parameter name default='data_type'.
-
-        valids : tuple of strs, optional
-            the valid identifiers default=None.
-
-        on_error : str in ('HALT', 'NONE', 'DEFAULT')), default:'HALT'
-            halt if the socket type is not accepted
-
-        Returns
-        -------
-        str
-            value for the parameter or None if not valid
-
+        ``on_error`` raises (HALT), returns None (NONE), or returns the node
+        parameter default (DEFAULT) when the type is unsupported.
         """
         from .constants import NODE_INFO
 
         params = NODE_INFO[bl_idname]['params'][param_name]
-        if value is None:
+        if type_name is None:
             return params['default']
         
-        stype = cls(value)
+        stype = cls.from_type(type_name)
         T = getattr(bpy.types, bl_idname)
 
         prop = T.bl_rna.properties[param_name]
@@ -609,13 +607,13 @@ class SocketType:
         
         elif stype.type == 'INT':
             if float_int:
-                res = cls.get_data_type_for_node('FLOAT', bl_idname, param_name=param_name, on_error='NONE', float_int=False)
+                res = cls.convert_type_for_node('FLOAT', bl_idname, param_name=param_name, on_error='NONE', float_int=False)
                 if res is not None:
                     return res
             
-        elif stype.type == 'FLOAT':
+        elif stype.type == 'VALUE':
             if float_int:
-                res = cls.get_data_type_for_node('INT', bl_idname, param_name=param_name, on_error='NONE', float_int=False)
+                res = cls.convert_type_for_node('INT', bl_idname, param_name=param_name, on_error='NONE', float_int=False)
                 if res is not None:
                     return res
             
@@ -633,13 +631,30 @@ class SocketType:
         else:
             return None
         
+    @classmethod
+    def get_data_type_for_node(cls,
+            value,
+            bl_idname: str,
+            param_name: str = 'data_type',
+            on_error: Literal['HALT', 'NONE', 'DEFAULT'] = 'HALT',
+            *,
+            float_int: bool = True) -> str | None:
+        """Infer a value's socket type and convert it for a node parameter.
+
+        Strings are values, not type names. Use ``convert_type_for_node``
+        to convert an explicit type instead. ``None`` selects the default.
+        """
+        return cls.convert_type_for_node(
+            None if value is None else cls(value),
+            bl_idname, param_name, on_error=on_error, float_int=float_int)
+
     # ====================================================================================================
     # Comparaison
     # ====================================================================================================
 
     def equal_to(self, other, with_subtype: bool = False):
 
-        other = SocketType(other)
+        other = SocketType.from_type(other)
 
         ok = self.type == other.type
         if not ok:

@@ -195,7 +195,7 @@ class Signature:
                 if isinstance(v, dict):
                     d = {**v}
                 else:
-                    d = {'socket_type': SocketType(v).serialize()}
+                    d = {'socket_type': SocketType.from_type(v).serialize()}
 
                 # Key can be (name, socket_type)
                 if isinstance(k, tuple) and len(k) == 2:
@@ -223,7 +223,7 @@ class Signature:
                 ok = False
                 for n, v in d.items():
                     if n in keys:
-                        d['socket_type'] = SocketType(v).serialize()
+                        d['socket_type'] = SocketType.from_type(v).serialize()
                         ok = True
                         break
 
@@ -231,12 +231,12 @@ class Signature:
                     raise RuntimeError(f"Invalid Signature dict for name '{d.get('name', '?')}': "
                         f"There is no key in {list(d.keys())} which is a valid socket type key: {keys}")
             else:
-                d['socket_type'] = SocketType(sid).serialize()
+                d['socket_type'] = SocketType.from_type(sid).serialize()
 
             if d.get('path') is None:
                 d['path'] = d['name']
 
-            d['socket_id'] = SocketType(d['socket_type']).socket_id
+            d['socket_id'] = SocketType.from_type(d['socket_type']).socket_id
             d['key'] = (d['path'], d['socket_id'])
 
             res.append(d)

@@ -327,7 +327,7 @@ class Socket(NodeCache):
 
         """
         socket = cls(constants.EMPTY_SOCKET)
-        socket._bsocket = SocketType(cls.SOCKET_TYPE).get_default_from_value(value)
+        socket._bsocket = SocketType.from_type(cls.SOCKET_TYPE).get_default_from_value(value)
         return socket
     
     # ----------------------------------------------------------------------------------------------------
@@ -352,13 +352,13 @@ class Socket(NodeCache):
         -------
         Boolean
         """
-        if SocketType(cls.SOCKET_TYPE).class_name not in constants.ATTRIBUTE_CLASSES:
+        if SocketType.from_type(cls.SOCKET_TYPE).class_name not in constants.ATTRIBUTE_CLASSES:
             raise NodeError(
-                f"The class {SocketType(cls.SOCKET_TYPE).class_name} is not an attribute.\n"
+                f"The class {SocketType.from_type(cls.SOCKET_TYPE).class_name} is not an attribute.\n"
                 f"Attribute classes are: {constants.ATTRIBUTE_CLASSES}")
         
         node = Node('Named Attribute', name=name)
-        data_type = SocketType(cls.SOCKET_TYPE).get_node_data_type(
+        data_type = SocketType.from_type(cls.SOCKET_TYPE).get_node_data_type(
             tree_type = node._tree._btree.bl_idname,
             bl_idname = node._bnode.bl_idname,
             halt = True)
@@ -414,7 +414,7 @@ class Socket(NodeCache):
         if halt:
             sname = "" if name is None else f" named '{name}'"
             raise NodeError(
-                f"There is no {SocketType(cls.SOCKET_TYPE).class_name} input socket{sname}.\n"
+                f"There is no {SocketType.from_type(cls.SOCKET_TYPE).class_name} input socket{sname}.\n"
                 f"Available sockets are : {[bsock[0] for bsock in in_node.get_sockets('OUTPUT')]}.")
         
         return None
@@ -463,7 +463,7 @@ class Socket(NodeCache):
         if value is None:
             defval = None
         else:
-            defval = SocketType(cls.SOCKET_TYPE).get_default_from_value(value)
+            defval = SocketType.from_type(cls.SOCKET_TYPE).get_default_from_value(value)
             new_props = {**props}
 
             if 'default' in new_props:
@@ -474,14 +474,14 @@ class Socket(NodeCache):
 
             else:
                 if 'default' not in constants.SOCKETS[cls.SOCKET_TYPE]['props']:
-                    raise NodeError(f"The {SocketType(cls.SOCKET_TYPE).class_name} socket doesn't accept a default value. Value argument <{value}> is invalid.")
+                    raise NodeError(f"The {SocketType.from_type(cls.SOCKET_TYPE).class_name} socket doesn't accept a default value. Value argument <{value}> is invalid.")
                 
                 new_props['default_value'] = defval
 
             props = new_props
 
         return cls(Tree.current_tree().create_input_socket(
-            SocketType(cls.SOCKET_TYPE).socket_id,
+            SocketType.from_type(cls.SOCKET_TYPE).socket_id,
             name         = name,
             tip          = tip,
             panel        = panel,
@@ -518,7 +518,7 @@ class Socket(NodeCache):
                 return tuple(np.resize(r, shapes[0]))
             
             raise NodeError(
-                f"The value <{v}> can't be transformed in a valid initial value for {SocketType(cls.SOCKET_TYPE).class_name}."
+                f"The value <{v}> can't be transformed in a valid initial value for {SocketType.from_type(cls.SOCKET_TYPE).class_name}."
             )
         
         # ---------------------------------------------------------------------------
@@ -535,7 +535,7 @@ class Socket(NodeCache):
         # Default value
         # ---------------------------------------------------------------------------
 
-        socket_type = SocketType(cls.SOCKET_TYPE)
+        socket_type = SocketType.from_type(cls.SOCKET_TYPE)
         if cls.SOCKET_TYPE not in ['RGBA', 'VECTOR', 'ROTATION', 'MATRIX']:
             def_val = socket_type.get_default_from_value(value)
 
@@ -577,7 +577,7 @@ class Socket(NodeCache):
                     return Node('Combine Color', {0: a[0], 1: a[1], 2:a[2]})._out._ul(user_label)
 
             else:
-                def_val = SocketType('COLOR').get_default_from_value(a)
+                def_val = SocketType.from_type('COLOR').get_default_from_value(a)
                 if Tree.is_geonodes():
                     return Node('Color', value=def_val)._out._ul(user_label)
 
@@ -720,7 +720,7 @@ class Socket(NodeCache):
 
     @property
     def _socket_type(self):
-        return SocketType(self.SOCKET_TYPE)
+        return SocketType.from_type(self.SOCKET_TYPE)
 
     def __str__(self):
         if self._is_empty():
@@ -1632,7 +1632,7 @@ class Socket(NodeCache):
             out_node.set_input_socket(name=name, value=value, create=True, panel=panel, **props)
             return
 
-        socket_type = SocketType(cls.SOCKET_TYPE)
+        socket_type = SocketType.from_type(cls.SOCKET_TYPE)
         full_name = None if name is None else (ItemPath(panel) + name).path
         socket = out_node.get_socket('INPUT', full_name, socket_type,
                                      free_only=True, halt=False)
@@ -1709,7 +1709,7 @@ class Socket(NodeCache):
         """
         node = Node('Menu Switch',
                 named_sockets = named_sockets,
-                data_type = SocketType(cls.SOCKET_TYPE).type,
+                data_type = SocketType.from_type(cls.SOCKET_TYPE).type,
                 #default_menu = default_menu,
                 **sockets)
         node._default_menu = default_menu
@@ -1900,7 +1900,7 @@ class Socket(NodeCache):
         -------
         Socket
         """
-        input_type = SocketType(cls.SOCKET_TYPE).items_type
+        input_type = SocketType.from_type(cls.SOCKET_TYPE).items_type
         return Node('Switch', {'Switch': condition, 'False': false, 'True': true}, input_type=input_type)._out
 
     # ----------------------------------------------------------------------------------------------------
@@ -2231,10 +2231,10 @@ class Socket(NodeCache):
             sock_to_dt = {}
             for socket_type in SOCKET_CLASSES:
                 
-                st = SocketType(socket_type)
+                st = SocketType.from_type(socket_type)
                 
                 # The core method to test
-                dt = st.get_data_type_for_node(socket_type, node.bl_idname, param_name, on_error='NONE')
+                dt = st.convert_type_for_node(socket_type, node.bl_idname, param_name, on_error='NONE')
                 
                 # We have a result
                 if dt is not None:

@@ -59,16 +59,35 @@ class TestSocketTypeFromPython:
 
 class TestSocketTypeFromString:
 
+    @pytest.mark.parametrize("name", ["Float", "Input", "VALUE", "Geometry", "NodeSocketFloat"])
+    def test_type_names_are_string_values(self, name):
+        assert SocketType(name).full_socket_id == 'NodeSocketString'
+
+    @pytest.mark.parametrize("name", ["VALUE", "FLOAT", "Float", "NodeSocketFloat"])
+    def test_explicit_float_aliases(self, name):
+        assert SocketType.from_type(name).full_socket_id == 'NodeSocketFloat'
+
+    def test_explicit_socket_class_and_instance(self):
+        from core.sock_float import Float
+        assert SocketType.from_type(Float).type == 'VALUE'
+        assert SocketType(Float).type == 'VALUE'
+        assert SocketType.from_type(SocketType(1.0)).type == 'VALUE'
+
+    def test_unknown_type_raises(self):
+        with pytest.raises(NodeError):
+            SocketType.from_type('NotASocketType')
+
+
     def test_from_type_name_float(self):
-        st = SocketType('VALUE')
+        st = SocketType.from_type('VALUE')
         assert st.type == 'VALUE'
 
     def test_from_type_name_vector(self):
-        st = SocketType('VECTOR')
+        st = SocketType.from_type('VECTOR')
         assert st.type == 'VECTOR'
 
     def test_from_type_name_bool(self):
-        st = SocketType('BOOLEAN')
+        st = SocketType.from_type('BOOLEAN')
         assert st.type == 'BOOLEAN'
 
 
@@ -122,7 +141,7 @@ class TestSocketTypeEquality:
         assert SocketType(1.0) != SocketType(1)
 
     def test_equal_to_string(self):
-        assert SocketType(1.0) == SocketType('VALUE')
+        assert SocketType(1.0) == 'VALUE'
 
 
 # ---------------------------------------------------------------------------
@@ -134,18 +153,18 @@ class TestSocketTypeSubtype:
         assert SocketType(1.0).subtype is None
 
     def test_subtype_set_angle(self):
-        st = SocketType('VALUE')
+        st = SocketType.from_type('VALUE')
         st.subtype = 'ANGLE'
         assert st.subtype == 'ANGLE'
 
     def test_subtype_reset_to_none(self):
-        st = SocketType('VALUE')
+        st = SocketType.from_type('VALUE')
         st.subtype = 'ANGLE'
         st.subtype = None
         assert st.subtype is None
 
     def test_invalid_subtype_raises(self):
-        st = SocketType('VALUE')
+        st = SocketType.from_type('VALUE')
         with pytest.raises(RuntimeError):
             st.subtype = 'INVALID_SUBTYPE_XYZ'
 
@@ -226,3 +245,38 @@ class TestCheckMethods:
     def test_check_class_name_invalid_message_contains_value(self):
         with pytest.raises(RuntimeError, match="BadClass"):
             SocketType.check_class_name('BadClass')
+
+
+class TestNodeTypeConversion:
+
+    @pytest.mark.parametrize('type_name', ['VALUE', 'FLOAT', 'Float', 'NodeSocketFloat'])
+    def test_convert_explicit_float(self, type_name):
+        assert SocketType.convert_type_for_node(type_name, 'ShaderNodeMapRange') == 'FLOAT'
+
+    def test_convert_explicit_vector(self):
+        assert SocketType.convert_type_for_node('Vector', 'ShaderNodeMapRange') == 'FLOAT_VECTOR'
+
+    def test_infer_float_value(self):
+        assert SocketType.get_data_type_for_node(0.5, 'ShaderNodeMapRange') == 'FLOAT'
+
+    def test_infer_integer_with_float_fallback(self):
+        assert SocketType.get_data_type_for_node(1, 'ShaderNodeMapRange') == 'FLOAT'
+        assert SocketType.get_data_type_for_node(
+            1, 'ShaderNodeMapRange', on_error='NONE', float_int=False) is None
+
+    @pytest.mark.parametrize('value', ['FLOAT', 'Float', 'VALUE'])
+    def test_strings_are_not_type_names(self, value):
+        assert SocketType.get_data_type_for_node(
+            value, 'ShaderNodeMapRange', on_error='NONE') is None
+
+    def test_none_uses_default(self):
+        from core import constants
+        default = constants.NODE_INFO['ShaderNodeMapRange']['params']['data_type']['default']
+        assert SocketType.get_data_type_for_node(None, 'ShaderNodeMapRange') == default
+        assert SocketType.convert_type_for_node(None, 'ShaderNodeMapRange') == default
+
+    def test_unsupported_type_error_and_default(self):
+        with pytest.raises(NodeError):
+            SocketType.convert_type_for_node('String', 'ShaderNodeMapRange')
+        assert SocketType.convert_type_for_node(
+            'String', 'ShaderNodeMapRange', on_error='DEFAULT') == 'FLOAT'

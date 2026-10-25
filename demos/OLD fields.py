@@ -144,7 +144,7 @@ def demo(rebuild=False):
 
     print("\nCreate fields Geometry Nodes...")
 
-    arrows_module.demo(rebuild=rebuild)
+    arrows_module.demo()
 
     field_prefix = "Field"
     util_prefix  = "Util"

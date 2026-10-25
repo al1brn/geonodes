@@ -70,8 +70,8 @@ def get_face_base(mesh, face_index=0):
 def demo(rebuild=False):
 
     from geonodes.demos import gn_random as random, cam_culling
-    random.demo(rebuild=rebuild)
-    cam_culling.demo(rebuild=rebuild)
+    random.demo()
+    cam_culling.demo()
 
     # ====================================================================================================
     # Flat fractal closure

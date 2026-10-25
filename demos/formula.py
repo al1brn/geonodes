@@ -275,7 +275,7 @@ def build_groups(rebuild=False):
 
     # ----- We need tree for organize the formula terms
 
-    formula_tree.build_tree(prefix='Tree', rebuild=rebuild)
+    formula_tree.build_tree(prefix='Tree')
     GTree = G("Tree")
 
     # ----- Formula group prefixes:

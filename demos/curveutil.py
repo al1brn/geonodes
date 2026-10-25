@@ -5,7 +5,7 @@ from geonodes.demos import shaders
 
 def demo(rebuild=False):
 
-    shaders.colored_shaders(rebuild=rebuild)
+    shaders.colored_shaders()
 
     # ----------------------------------------------------------------------------------------------------
     # Set a bezier point with relative left and right offsets

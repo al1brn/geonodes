@@ -184,7 +184,7 @@ class Sockets:
     def by_name(self, name) -> Socket:
 
         if isinstance(name, tuple) and len(name) == 2:
-            stype = SocketType(name[1]).type
+            stype = SocketType.from_type(name[1]).type
             name  = name[0]
         else:
             stype = None
@@ -670,7 +670,7 @@ class Node:
 
             if param_name in ['data_type', 'input_type']:
                 param_value = value
-                alt_value = SocketType.get_data_type_for_node(value, self._bnode.bl_idname, param_name, on_error='HALT' if halt else 'DEFAULT')
+                alt_value = SocketType.convert_type_for_node(value, self._bnode.bl_idname, param_name, on_error='HALT' if halt else 'DEFAULT')
 
             # Font
             elif param_name == 'font' and isinstance(value, str):
@@ -1258,7 +1258,7 @@ class Node:
         assert in_out in ('INPUT', 'OUTPUT')
         if socket_type is None:
             assert self._bnode.bl_idname in constants.AUTO_INPUT_TYPE_NODES
-            socket_type = SocketType(self._bnode.data_type)
+            socket_type = SocketType.from_type(self._bnode.data_type)
 
         if (in_out == 'INPUT' and not self._has_dyn_in) or (in_out == 'OUTPUT' and not self._has_dyn_out):            
             raise NodeError(f"Impossible to create a {in_out} socket for node {self} (name '{name}').")
@@ -1267,7 +1267,7 @@ class Node:
         # Socket type and sub type
         # ---------------------------------------------------------------------------
 
-        socket_type = SocketType(socket_type)
+        socket_type = SocketType.from_type(socket_type)
         creation_props = socket_type.set_props({**props})
 
         # ---------------------------------------------------------------------------
@@ -1841,7 +1841,7 @@ class Node:
         from .sockettype import SocketType
         from .sock_string import String
 
-        socket_type = SocketType(data_type).type
+        socket_type = SocketType.from_type(data_type).type
 
         sock_values = []
         sock_names = []
@@ -2354,7 +2354,7 @@ class Node:
         sig = self.get_signature()
         ssocks = []
         for index, d in enumerate(sig.inputs):
-            s = f"{utils.snake_case(d['name']):15s} : {SocketType(d['socket_type']).class_name}"
+            s = f"{utils.snake_case(d['name']):15s} : {SocketType.from_type(d['socket_type']).class_name}"
             if index < len(args):
                 s += " (arg)"
             ssocks.append(s)

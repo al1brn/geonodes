@@ -2307,7 +2307,7 @@ def build_observer(rebuild=False):
 def demo(rebuild=False):
     from . import meshutil
 
-    meshutil.demo(rebuild=rebuild)
+    meshutil.demo()
 
     build_animation(rebuild=rebuild)
     build_observer(rebuild=rebuild)

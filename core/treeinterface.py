@@ -184,7 +184,7 @@ class ItemPath:
         
         elif isinstance(value, tuple) and len(value) == 2:
             self._path      = ItemPath(value[0]).path
-            self._socket_id = None if value[1] is None else SocketType(value[1]).socket_id
+            self._socket_id = None if value[1] is None else SocketType.from_type(value[1]).socket_id
 
         # ---------------------------------------------------------------------------
         # NodeTreeInterfaceItem
@@ -860,7 +860,7 @@ class TreeInterface:
             if item.in_out != in_out:
                 continue
             if socket_type is not None:
-                if SocketType(socket_type) != item.socket_type:
+                if SocketType.from_type(socket_type) != item.socket_type:
                     continue
 
             if item.name == name:
@@ -928,7 +928,7 @@ class TreeInterface:
             
             socket_type = SocketType(from_socket)            
         else:
-            socket_type = SocketType(socket_type)
+            socket_type = SocketType.from_type(socket_type)
 
         # ---------------------------------------------------------------------------
         # Creation / recover from bin
@@ -1033,7 +1033,7 @@ class TreeInterface:
                             s = ""
 
                         raise NodeError(
-                            f"An error occurred when creating the {SocketType(socket_type).class_name} socket '{name}' .\n"
+                            f"An error occurred when creating the {SocketType.from_type(socket_type).class_name} socket '{name}' .\n"
                             f"The property '{prop}' doesn't accept the value '{value}'{s}.\n{str(e)}\n")
 
         # ---------------------------------------------------------------------------
@@ -1652,7 +1652,7 @@ class TreeInterface:
         check_in_out(in_out, both=True)
 
         if socket_type is not None:
-            socket_type = SocketType(socket_type).socket_id
+            socket_type = SocketType.from_type(socket_type).socket_id
         
         items = []
         parent_index = -1 if parent is None else parent.index
@@ -1911,7 +1911,7 @@ class TreeInterface:
             for d in sig:
 
                 socket_path = ItemPath(d.get('path', d['name']))
-                socket_type = SocketType(d.get('socket_type', d.get('socket_id')))
+                socket_type = SocketType.from_type(d.get('socket_type', d.get('socket_id')))
 
                 # Reuse
                 socket = None

@@ -630,7 +630,7 @@ def request_empty(value) -> bool:
 
 def get_socket_class(socket_type, name=None):
 
-    socket_type = SocketType(socket_type)
+    socket_type = SocketType.from_type(socket_type)
     stype = socket_type.type
 
     if stype == 'GEOMETRY':

@@ -97,6 +97,9 @@ class Boolean(generated.Boolean):
     def __neg__(self):
         return self.bnot()
 
+    def __invert__(self):
+        return self.bnot()
+
     def __or__(self, other):
         return self.bor(other)
 
@@ -162,6 +165,5 @@ class Boolean(generated.Boolean):
                 vol.store_named_grid("Bool A", a)
             
             vol.enable_output(d).out()
-
 
 

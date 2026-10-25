@@ -72,6 +72,17 @@ def colored_shaders(rebuild=False):
 
 
 # ====================================================================================================
+# Transparent
+# ====================================================================================================
+
+def transparent_shader(rebuild=False):
+    """Create a fully transparent material named Transparent."""
+
+    with ShaderNodes("Transparent", replace_material=rebuild):
+        Shader.Transparent(color=(1.0, 1.0, 1.0, 1.0)).out()
+
+
+# ====================================================================================================
 # Default Shader for Arrow
 # ====================================================================================================
 
@@ -232,6 +243,7 @@ def wood_handle_shader(color1="#301407", color2="#965025", roughness=0.22,
 
 def demo(rebuild=False):
 
+    transparent_shader(rebuild=rebuild)
     colored_shaders(rebuild=rebuild)
     arrow_shader(rebuild=rebuild)
     atom_shader(rebuild=rebuild)
@@ -338,7 +350,7 @@ def demo(rebuild=False):
 
         mortar = Shader.Principled(
             base_color = m_color,
-            normal = snd.bump(strength=1, height=is_mortar, invert=True),
+            normal = snd.bump(strength=1, height=splitter.mortar_, invert=True),
             )
 
         shader = wood.mix(mortar, factor=splitter)
