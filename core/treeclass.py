@@ -1246,6 +1246,14 @@ class Tree:
         if '_bsocket' in dir(in_socket):
             in_socket = in_socket._bsocket
 
+        for socket in (out_socket, in_socket):
+            if socket.id_data != self._btree:
+                raise NodeError(
+                    f"Socket '{socket.node.name}.{socket.name}' "
+                    f"belongs to tree '{socket.id_data.name}', "
+                    f"but current tree is '{self._btree.name}'"
+                )
+
         link = self._btree.links.new(out_socket, in_socket, handle_dynamic_sockets=handle_dynamic_sockets)
 
         utils.check_zones(self._btree)
