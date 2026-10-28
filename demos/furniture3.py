@@ -10,6 +10,7 @@ ROLE_SHELF = 4
 ROLE_FACE = 5
 ROLE_DRAWER = 6
 ROLE_SEPARATOR = 7
+ROLE_PLINTH = 8
 DEFAULT_FURNITURE_COLOR = "#C49A6CFF"
 
 
@@ -97,15 +98,165 @@ def demo(rebuild=False):
         ).out()
 
     
+    with ShaderNodes("Label", replace_material=rebuild):
+        Shader.Principled(
+            base_color=snd.attribute(attribute_type='GEOMETRY', attribute_name="Color").color,
+            roughness=0.9,
+        ).out()
+
+    # ====================================================================================================
+    # A dimension line
+    # ====================================================================================================
+
+    with GeoNodes("Add Cote Line", is_group=True, rebuild=rebuild):
+
+        mesh = Mesh(Geometry())
+        bundle = mesh.get_bundle()
+
+        show   = Boolean(True,          "Show")
+        pos    = Vector.Translation(0,  "Position")
+        i_axis = Integer(0,             "Axis", 0, 2)
+        value  = Float.Distance(1.0,    "Value", -5.0, 5.0)
+        invert = Boolean(False,         "Invert")
+
+        with Panel("Aspect"):
+            font_size  = Float(0.1,  "Font Size", 0.01)
+            section    = Float(0.01,    "Section", 0)
+        
+        offset_a = Float(0, "Cote Offset A", hide_in_modifier=True)
+        offset_b = Float(0, "Cote Offset B", hide_in_modifier=True)
+        
+        with Layout("Positions"):
+            line_dir = Vector.IndexSwitch((1, 0, 0), (0, 1, 0), (0, 0, 1), index=i_axis)
+            pos.switch(value.less_than(0), pos + line_dir.scale(value))
+            d = abs(value)
+            use_ext = d.less_than(section*10)
+            
+        with Layout("Line"):
+            h   = section*4
+            h2  = section*2
+            
+            cone = Mesh.Cone(radius_bottom=h2, depth=h)
+            
+            with Mesh.Switch(use_ext) as line:
+                d_int = d - h
+                
+                line_int = Curve.Line((0, 0, h), (0, 0, d_int))
+                line_int = line_int.to_mesh(profile_curve=Curve.Circle(radius=section/2))
+                
+                line_int += Mesh(cone).transform(translation=(0, 0, d_int))
+                line_int += Mesh(cone).transform(translation=(0, 0, h), rotation=(0, pi, 0))
+                
+                line_int.out("False")
+                
+            with line:
+                line_ext = Curve.Line((0, 0, 0), (0, 0, d))
+                line_ext = line_ext.to_mesh(profile_curve=Curve.Circle(radius=section/2))
+                
+                h_in = 0.75*h
+                
+                line_ext += Mesh(cone).transform(translation=(0, 0, -h_in))
+                line_ext += Mesh(cone).transform(translation=(0, 0, d + h_in), rotation=(0, pi, 0))
+                
+                line_ext.out("True")
+
+            line.transform(translation=pos, rotation=Rotation().align_z_to_vector(line_dir))
+            
+            line = Mesh(line)
+            
+            line.faces.Color=Color("Black")
+            line.faces.material = "Label"
+            
+        with Layout("Label"):
+            s = (d*100).to_string(decimals=1)
+            label = Curve(s.to_curves(size=font_size).realize())
+            label = label.fill()
+            label.transform(rotation=(pi/2, 0, 0))
+            
+            with Layout("Z Rotation"):
+                z_rot = Float.Switch(invert, 0, pi) + Float.Switch(i_axis.equal(0), pi/2)
+                label.transform(rotation=(0, 0, z_rot))
+                
+            bounds = label.points.attribute_statistic(nd.position).node
+            vmin = bounds.min
+            vmax = bounds.max
+            
+            lx0, ly0, lz0 = vmin.xyz
+            size_x, size_y, size_z = (vmax - vmin).xyz
+            
+            offset = Vector.IndexSwitch(
+                Vector.Switch(use_ext,
+                    Vector((-size_x/2 - lx0, 0, section*3)),
+                    Vector((d/2 + h + font_size/3 - lx0, 0, -size_z/2))
+                    ),
+                Vector.Switch(use_ext,
+                    Vector((0, -size_y/2 - ly0, section*3)),
+                    Vector((0, d/2 + h + font_size/3 - ly0, -size_z/2))
+                    ),
+                Vector((0,  font_size/3 - ly0, -size_z/2)),
+                index=i_axis)
+                
+            label.transform(translation=pos + line_dir.scale(d/2) + offset)
+            
+            with Layout("Finalize"):
+                label.faces.Color = Color.IndexSwitch(
+                    Color((0.05, 0, 0)),
+                    Color((0, 0.05, 0)),
+                    Color((0, 0, 0.05)),
+                    index=i_axis)
+                    
+                label.faces.material = "Label"
+                        
+                line += label
+                
+                line = Mesh(line).faces.set_shade_smooth()
+                
+        with Layout("User Offset"):
+            
+            dir_a = Vector.IndexSwitch(
+                Vector((0, 1, 0)),
+                Vector((0, 0, 1)),
+                Vector((1, 0, 0)),
+                index = i_axis)
+            
+            dir_b = Vector.IndexSwitch(
+                Vector((0, 0, 1)),
+                Vector((1, 0, 0)),
+                Vector((0, 1, 0)),
+                index = i_axis)
+            
+            p = pos + line_dir.scale(d/2) + dir_a.scale(offset_a) + dir_b.scale(offset_b)
+            gizmo_a = offset_a.linear_gizmo(position=p, direction=dir_a, color_id='PRIMARY')
+            gizmo_b = offset_b.linear_gizmo(position=p, direction=dir_b, color_id='SECONDARY')
+            
+            line.transform(translation=dir_a.scale(offset_a) + dir_b.scale(offset_b))
+            
+        line = Mesh(line)
+        line.points.Content = Integer.IndexSwitch(0x0100, 0x0200, 0x0400, index=i_axis)
+        line.points.set("Role", Integer(-1))
+        #line.points.Axis = i_axis
+        
+        line.switch_false(show)
+
+        mesh += line
+
+        mesh.set_bundle(bundle)
+        mesh.out()
+
     RES_SIG = {"Plank Name": String, "ID": Integer, "Width": Float, "Length": Float, "Thickness": Float, "Material": Material, "Color": Color}
     BLOCK_SIG = {
         "ID": Integer,
+        "On Plinth": Boolean,
         "Location": Vector, 
         "Size": Vector,
         "Inner Location": Vector,
         "Inner Size": Vector,
         "Outer Location": Vector,
         "Outer Size": Vector,
+        "Left Thickness": Float,
+        "Right Thickness": Float,
+        "Bottom Thickness": Float,
+        "Top Thickness": Float,
         "Cuts": Bundle,
         }
     CUT_SIG = {
@@ -145,6 +296,7 @@ def demo(rebuild=False):
     SIDE_EXT = 3
     
     SIDE_MENU = {"None": 0, "Int": 1, "Mid": 2, "Ext": 3}
+    BOT_MENU_GROUND = {"N": 0, "I": 1, "M": 2, "E": 3, "Plinth": 4}
     
     ORIENT_MENU = {"Normal": 0, "Transverse": 1} 
 
@@ -294,7 +446,9 @@ def demo(rebuild=False):
     with GeoNodes("Get Resource", is_group=True, rebuild=rebuild):
         
         geo = Geometry()
+        use_id = Boolean(False, "By ID")
         plank_name = String("Plank", "Plank Name")
+        pid = Integer(1, "Plank ID", 1)
 
         with Layout("Default Resources"):
             plank_def = Bundle.Combine({
@@ -317,22 +471,95 @@ def demo(rebuild=False):
             })
         
         bundle = geo.get_bundle()
-        res_bundle = bundle.get_item("Resources/" + plank_name, socket_type="BUNDLE")
 
-        ko = res_bundle.exists.bnot()
+        with Layout("By Name"):
+            by_name = bundle.get_item("Resources/" + plank_name, socket_type="BUNDLE")
+            missing_name = by_name.exists.bnot()
 
-        is_plank = plank_name.equal("Plank")
-        res_bundle.switch(ko & is_plank, plank_def)
-        ko.switch(is_plank)
+            is_plank = plank_name.equal("Plank")
+            by_name.switch(missing_name & is_plank, plank_def)
+            missing_name.switch(is_plank)
 
-        is_shelf = plank_name.equal("Shelf")
-        res_bundle.switch(ko & is_shelf, shelf_def)
-        ko.switch(is_shelf)
+            is_shelf = plank_name.equal("Shelf")
+            by_name.switch(missing_name & is_shelf, shelf_def)
+            missing_name.switch(is_shelf)
 
-        ko.warning("Resource '" + plank_name + "' not found")
+        with Layout("By ID"):
+            resources = bundle.get_item("Resources", socket_type='BUNDLE')
+            resources.switch_false(resources.exists)
+            paths = resources.get_nested_paths(mode="Data Type", data_type="Integer")
+
+            for rep in repeat(paths.list_length(), resource=Bundle(), found=False):
+                path = paths[rep.iteration]
+                resource_id = resources.get_item(path, socket_type='INTEGER')
+                is_id = path.slice(position=path.length() - 3, length=3) == "/ID"
+                match = is_id & (resource_id == pid) & rep.found.bnot()
+                resource_path = path.slice(length=path.length() - 3)
+                candidate = resources.get_item(resource_path, socket_type='BUNDLE')
+                rep.resource.switch(match, candidate)
+                rep.found |= match
+
+            by_id = Bundle(rep.resource)
+            by_id.switch(rep.found.bnot() & (pid == 1), plank_def)
+            by_id.switch(rep.found.bnot() & (pid == 2), shelf_def)
+            missing_id = (rep.found | (pid == 1) | (pid == 2)).bnot()
+
+        res_bundle = Bundle.Switch(use_id, by_name, by_id)
+        missing = Boolean.Switch(use_id, missing_name, missing_id)
+        message = String.Switch(
+            use_id,
+            "Resource '" + plank_name + "' not found",
+            "Resource ID " + pid.to_string() + " not found",
+        )
+        missing.warning(message)
 
         node = res_bundle.separate(signature=RES_SIG)
         node.out()
+
+    # ----------------------------------------------------------------------------------------------------
+    # Define plinth dimensions
+    # ----------------------------------------------------------------------------------------------------
+
+    with GeoNodes("Define Plinth", rebuild=rebuild):
+        geo = Geometry()
+        bundle = geo.get_bundle()
+        plank_name = String("Plank", "Plank Name")
+        resource_id = G().get_resource(geo, plank_name=plank_name).id
+
+        height = Float.Distance(0.1, "Height", 0, shape="Single")
+        recess_x = Float.Distance(0.05, "Recess X", 0, shape="Single")
+        recess_y = Float.Distance(0.05, "Recess Y", 0, shape="Single")
+
+        bundle.set_item("Names/Plinth Resource ID", resource_id)
+        bundle.set_item("Names/Plinth Height", height)
+        bundle.set_item("Names/Plinth Recess X", recess_x)
+        bundle.set_item("Names/Plinth Recess Y", recess_y)
+        geo.set_bundle(bundle)
+        geo.out()
+
+    # ----------------------------------------------------------------------------------------------------
+    # Read plinth dimensions
+    # ----------------------------------------------------------------------------------------------------
+
+    with GeoNodes(".Get Plinth Dimensions", is_group=True, rebuild=rebuild):
+        geo = Geometry()
+        bundle = geo.get_bundle()
+        missing = Boolean(False)
+
+        for name, fallback in (("Height", 0.07), ("Recess X", 0.02), ("Recess Y", 0.02)):
+            value = bundle.get_item("Names/Plinth " + name, socket_type='FLOAT')
+            exists = value.exists
+            missing |= exists.bnot()
+            value.switch_false(exists, fallback)
+            value.out(name)
+
+        resource_id = bundle.get_item("Names/Plinth Resource ID", socket_type='INTEGER')
+        exists = resource_id.exists
+        missing |= exists.bnot()
+        resource_id.switch_false(exists, 1)
+        resource_id.out("Resource ID")
+
+        missing.warning("Use 'Define Plinth' to define plinth dimensions.")
 
     # ----------------------------------------------------------------------------------------------------
     # Capture resources from another object
@@ -393,7 +620,6 @@ def demo(rebuild=False):
         
         with Layout("Create Plank"):
             size = Vector((length, width, res_node.thickness))
-            size.switch(orient, (width, length, res_node.thickness))
             plank = Mesh.Cube(size=size)
             
             plank.corners.store_uv("UV Map", plank.points.evaluate_on_domain(nd.position))
@@ -604,6 +830,7 @@ def demo(rebuild=False):
 
         block_name.switch(nope).out("Block Name")
         block_id.out("ID")
+        node.on_plinth.switch(nope).out("On Plinth")
 
         location.out("Block Location")
         size.out("Block Size")
@@ -612,15 +839,13 @@ def demo(rebuild=False):
         outer_location.out("Outer Location")
         outer_size.out("Outer Size")
 
-        inner_end = inner_location + inner_size
-        outer_end = outer_location + outer_size
         for side, thickness in (
-            ("Left", inner_location.y - outer_location.y),
-            ("Right", outer_end.y - inner_end.y),
-            ("Bottom", inner_location.z - outer_location.z),
-            ("Top", outer_end.z - inner_end.z),
+            ("Left", node.left_thickness),
+            ("Right", node.right_thickness),
+            ("Bottom", node.bottom_thickness),
+            ("Top", node.top_thickness),
         ):
-            thickness = thickness.max(0)
+            thickness = thickness.switch(nope).max(0)
             (thickness > 1e-6).out("Has " + side + " Side")
             thickness.out(side + " Thickness")
         
@@ -661,22 +886,39 @@ def demo(rebuild=False):
 
         node = G().get_block_properties(geo).link_inputs().node
         
-        value = Float.MenuSwitch({
-            "X0": node.x0, "Y0": node.y0, "Z0" : node.z0,
-            "X1": node.x1, "Y1": node.y1, "Z1" : node.z1,
-            "Size X": node.size_x, "Size Y": node.size_y, "Size Z" : node.size_z,
-            "X Center": node.x_center, "Y Center": node.y_center, "Z Center" : node.z_center,
+        axis = Integer.MenuSwitch(
+            {"X": 0, "Y": 1, "Z": 2, "All": 3},
+            menu=Input("Axis", default="All", optional_label=True, expanded=True),
+        )
+        axis_values = []
+        for axis_name, properties in (
+            ("X", {"Back": node.x0, "Front": node.x1, "Center": node.x_center, "Depth": node.size_x}),
+            ("Y", {"Left": node.y0, "Right": node.y1, "Center": node.y_center, "Width": node.size_y}),
+            ("Z", {"Bottom": node.z0, "Top": node.z1, "Center": node.z_center, "Height": node.size_z}),
+        ):
+            axis_values.append(Float.MenuSwitch(properties, menu=Input("Property " + axis_name)))
+
+        all_values = Float.MenuSwitch({
+            "Back": node.x0, "Front": node.x1, "Depth": node.size_x,
+            "Left": node.y0, "Right": node.y1, "Width": node.size_y,
+            "Bottom": node.z0, "Top": node.z1, "Height": node.size_z,
+            "X Center": node.x_center, "Y Center": node.y_center, "Z Center": node.z_center,
         }, menu=Input("Property"))
-        
+        value = Float.IndexSwitch(*axis_values, all_values, index=axis)
+
         value.out("Value")
 
     # ----------------------------------------------------------------------------------------------------
     # Get UI Location input
     # ----------------------------------------------------------------------------------------------------
 
-    def ui_location_value():
+    def ui_location_value(with_plinth=False, return_plinth=False, axis="All"):
+        choices = {"Value": 0, "Block": 1, "Name": 2}
+        if with_plinth:
+            choices["Plinth"] = 3
+
         index = Integer.MenuSwitch(
-            {"Value": 0, "Block": 1, "Name": 2}, 
+            choices, 
             menu=Input("Def", optional_label=True, expanded=True))
             
         block_name = String("Block", "Block Name")
@@ -684,26 +926,35 @@ def demo(rebuild=False):
             geo, 
             block_name=block_name, 
             dims=Input("Dims", optional_label=True, expanded=True), 
-            property=Input("Prop"))
+            axis=axis,
+            **{("property" if axis == "All" else "property_" + axis.lower()): Input("Prop")})
         
         named = G().get_named_dimension(geo, name=Input("Name"))
         offset = Float.Distance(0, "Offset")
 
-        value = Float.IndexSwitch(
-            0,
-            prop,
-            named,
-            index=index,
-        )
-        return value + offset
+        values = [0, prop, named]
+        if with_plinth:
+            values.append(G()._get_plinth_dimensions(geo).height)
+
+        value = Float.IndexSwitch(*values, index=index)
+        if with_plinth:
+            offset = Float.Switch(index == 3, offset, 0)
+        value += offset
+        if return_plinth:
+            return value, index == 3
+        return value
 
     # ----------------------------------------------------------------------------------------------------
     # Get a location input
     # ----------------------------------------------------------------------------------------------------
         
-    def get_location(geo, name):
+    def get_location(geo, name, with_plinth=False, return_plinth=False):
         with Panel(name, create_layout=True):
-            return ui_location_value()
+            return ui_location_value(
+                with_plinth=with_plinth, return_plinth=return_plinth,
+                axis={"X": "X", "Y": "Y", "Z": "Z", "Y Center": "Y", "Z Center": "Z",
+                      "Offset Y": "Y", "Offset Z": "Z"}.get(name, "All"),
+            )
 
     # ----------------------------------------------------------------------------------------------------
     # Get a dimension input
@@ -715,7 +966,7 @@ def demo(rebuild=False):
                 {"Dimension": False, "Target": True}, 
                 menu=Input("Mode", optional_label=True, expanded=True))
 
-            value = ui_location_value()
+            value = ui_location_value(axis={"Size X": "X", "Size Y": "Y", "Size Z": "Z"}.get(name, "All"))
             value.switch(rel_incr, value - base)
 
             return value
@@ -772,7 +1023,7 @@ def demo(rebuild=False):
 
         x = get_location(geo, "X")
         y = get_location(geo, "Y")
-        z = get_location(geo, "Z")
+        z, on_plinth = get_location(geo, "Z", with_plinth=True, return_plinth=True)
 
         sx = get_dimension(geo, "Size X", x)
         sy = get_dimension(geo, "Size Y", y)
@@ -785,13 +1036,18 @@ def demo(rebuild=False):
 
             bundle, block_id = new_block_id(bundle)
             block_bundle = Bundle.Combine({
-                "ID": block_id, 
+                "ID": block_id,
+                "On Plinth": on_plinth, 
                 "Location": location, 
                 "Size": size,
                 "Inner Location": location,
                 "Inner Size": size,
                 "Outer Location": location,
                 "Outer Size": size,
+                "Left Thickness": Float(0),
+                "Right Thickness": Float(0),
+                "Bottom Thickness": Float(0),
+                "Top Thickness": Float(0),
                 "Cuts": Bundle()})
             
         with Layout("Frame"):
@@ -814,7 +1070,7 @@ def demo(rebuild=False):
     # ====================================================================================================
 
     # ----------------------------------------------------------------------------------------------------
-    # Duplicate single block
+    # Duplicate block
     # ----------------------------------------------------------------------------------------------------
 
     with GeoNodes(".Block Duplicate", is_group=False, rebuild=rebuild):
@@ -863,7 +1119,7 @@ def demo(rebuild=False):
         new_id.out("Block ID")
 
     # ----------------------------------------------------------------------------------------------------
-    # Translate single block
+    # Translate block
     # ----------------------------------------------------------------------------------------------------
 
     with GeoNodes(".Block Translate", is_group=False, rebuild=rebuild):
@@ -907,7 +1163,7 @@ def demo(rebuild=False):
         geo.out()
 
     # ----------------------------------------------------------------------------------------------------
-    # Single block symmetry
+    # Block symmetry
     # ----------------------------------------------------------------------------------------------------
 
     with GeoNodes(".Block Symmetry"):
@@ -951,6 +1207,11 @@ def demo(rebuild=False):
                     index=sym_index,
                 )
                 sym_bundle.set_item(name, mirrored)
+
+            sym_bundle.set_item("Left Thickness", Float.Switch(sym_index == 1, props.left_thickness, props.right_thickness))
+            sym_bundle.set_item("Right Thickness", Float.Switch(sym_index == 1, props.right_thickness, props.left_thickness))
+            sym_bundle.set_item("Bottom Thickness", Float.Switch(sym_index == 2, props.bottom_thickness, props.top_thickness))
+            sym_bundle.set_item("Top Thickness", Float.Switch(sym_index == 2, props.top_thickness, props.bottom_thickness))
 
             new_bundle.set_item(path, sym_bundle)
             bundle.switch(source_bundle.exists, new_bundle)
@@ -1203,13 +1464,13 @@ def demo(rebuild=False):
             bottom_shared = Boolean(False, "Bottom Shared")
             top_shared = Boolean(False, "Top Shared")
 
-            left_trim = Float.Switch(left_shared, 0, block_dims.left_thickness / 2)
-            right_trim = Float.Switch(right_shared, 0, block_dims.right_thickness / 2)
-            bottom_trim = Float.Switch(bottom_shared, 0, block_dims.bottom_thickness / 2)
-            top_trim = Float.Switch(top_shared, 0, block_dims.top_thickness / 2)
-            overlay_origin = block_dims.outer_location + Vector((0, left_trim, bottom_trim))
-            overlay_size = block_dims.outer_size - Vector((
-                0, left_trim + right_trim, bottom_trim + top_trim,
+            left_cover = Float.Switch(left_shared, block_dims.left_thickness, block_dims.left_thickness / 2)
+            right_cover = Float.Switch(right_shared, block_dims.right_thickness, block_dims.right_thickness / 2)
+            bottom_cover = Float.Switch(bottom_shared, block_dims.bottom_thickness, block_dims.bottom_thickness / 2)
+            top_cover = Float.Switch(top_shared, block_dims.top_thickness, block_dims.top_thickness / 2)
+            overlay_origin = block_dims.inner_location - Vector((0, left_cover, bottom_cover))
+            overlay_size = block_dims.inner_size + Vector((
+                0, left_cover + right_cover, bottom_cover + top_cover,
             ))
 
             inset = front_side == 2
@@ -1260,27 +1521,39 @@ def demo(rebuild=False):
 
         x, y, z = block_dims.location.xyz
         sx, sy, sz = block_dims.size.xyz
-            
+        on_ground = z == 0
+        plinth = G()._get_plinth_dimensions(geo).node
+        plinth_height = plinth.height
+        force_bot_ext = block_dims.on_plinth & (z == plinth_height)
+
         with Panel("Sides", create_layout=True):
-            left_side = Integer.MenuSwitch(SIDE_MENU, menu=Input("Left", optional_label=True, expanded=True))
+            left_side = Integer.MenuSwitch(SIDE_MENU, menu=Input("Left", expanded=True))
             left_side_name = String("Plank", "Left Name")
-            left_existing = Boolean(False, "Existing Plank")
-            left_plank_node = G().get_resource(geo, left_side_name)
+            left_existing = Boolean(False, "Existing Plank", shape="Single")
+            left_plank_node = G().get_resource(geo, plank_name=left_side_name)
 
-            right_side = Integer.MenuSwitch(SIDE_MENU, menu=Input("Right", optional_label=True, expanded=True))
+            right_side = Integer.MenuSwitch(SIDE_MENU, menu=Input("Right", expanded=True))
             right_side_name = String("Plank", "Right Name")
-            right_existing = Boolean(False, "Existing Plank")
-            right_plank_node = G().get_resource(geo, right_side_name)
+            right_existing = Boolean(False, "Existing Plank", shape="Single")
+            right_plank_node = G().get_resource(geo, plank_name=right_side_name)
             
-            bot_side = Integer.MenuSwitch(SIDE_MENU, menu=Input("Bot", optional_label=True, expanded=True))
-            bot_side_name = String("Plank", "Bot Name")
-            bot_existing = Boolean(False, "Existing Plank")
-            bot_plank_node = G().get_resource(geo, bot_side_name)
-
-            top_side = Integer.MenuSwitch(SIDE_MENU, menu=Input("Top", optional_label=True, expanded=True))
+            top_side = Integer.MenuSwitch(SIDE_MENU, menu=Input("Top", expanded=True))
             top_side_name = String("Plank", "Top Name")
-            top_existing = Boolean(False, "Existing Plank")
-            top_plank_node = G().get_resource(geo, top_side_name)
+            top_existing = Boolean(False, "Existing Plank", shape="Single")
+            top_plank_node = G().get_resource(geo, plank_name=top_side_name)
+
+            bot_side = Integer.MenuSwitch(BOT_MENU_GROUND, menu=Input("Bot", expanded=True))
+            requested_plinth = bot_side == 4
+            (requested_plinth & on_ground.bnot() & force_bot_ext.bnot()).warning(
+                "Bottom Plinth is only available when Z = 0.",
+            )
+            bot_side.switch(requested_plinth & on_ground.bnot(), SIDE_NONE)
+            bot_side.switch(on_ground & ((bot_side == SIDE_MID) | (bot_side == SIDE_EXT)), SIDE_INT)
+            bot_side.switch(force_bot_ext, SIDE_EXT)
+            use_plinth = bot_side == 4
+            bot_side_name = String("Plank", "Bot Name")
+            bot_existing = Boolean(False, "Existing Plank", shape="Single")
+            bot_plank_node = G().get_resource(geo, plank_name=bot_side_name)
 
         with Panel("Corners"):
             join_tl = Integer.MenuSwitch(JOIN_MENU, menu = Input("Top Left", expanded=True))
@@ -1308,10 +1581,17 @@ def demo(rebuild=False):
             right_y1.switch(preserve_right, outer_end.y - y)
 
             bot_thick = Float.Switch(bot_side==0, bot_plank_node.thickness)
-            bot_z0 = Float.IndexSwitch(0, 0, -bot_thick/2, -bot_thick, index=bot_side)
+            bot_z0 = Float.IndexSwitch(
+                0, 0, -bot_thick/2, -bot_thick, plinth_height - z - bot_thick,
+                index=bot_side,
+            )
             bot_z1 = bot_z0 + bot_thick
             preserve_bot = block_dims.has_bottom_side | (bot_side == SIDE_NONE)
-            bot_z0.switch(preserve_bot, block_dims.outer_location.z - z)
+            bot_z0.switch(preserve_bot, Float.Switch(
+                block_dims.has_bottom_side,
+                block_dims.outer_location.z - z,
+                block_dims.inner_location.z - block_dims.bottom_thickness - z,
+            ))
             bot_z1.switch(preserve_bot, block_dims.inner_location.z - z)
 
             top_thick = Float.Switch(top_side==0, top_plank_node.thickness)
@@ -1321,6 +1601,12 @@ def demo(rebuild=False):
             top_z0.switch(preserve_top, inner_end.z - z)
             top_z1.switch(preserve_top, outer_end.z - z)
 
+            raised_bottom = use_plinth | (
+                block_dims.has_bottom_side
+                & (block_dims.inner_location.z - block_dims.bottom_thickness > z)
+            )
+            outer_bot_z = Float.Switch(raised_bottom, z + bot_z0, block_dims.outer_location.z)
+
         # ---------------------------------------------------------------------------
         # Sides
         # ---------------------------------------------------------------------------
@@ -1329,6 +1615,7 @@ def demo(rebuild=False):
             left_z0 = Float.IndexSwitch(bot_z1, bot_z0, bot_z0, index=join_bl) 
             left_z1 = Float.IndexSwitch(top_z0, top_z1, top_z1, index=join_tl)
             left_z0.switch(block_dims.has_bottom_side, bot_z1)
+            left_z0.switch(raised_bottom, 0)
             left_z1.switch(block_dims.has_top_side, top_z0)
             left_width = sx
             left_length = left_z1 - left_z0
@@ -1350,6 +1637,7 @@ def demo(rebuild=False):
             right_z0 = Float.IndexSwitch(bot_z1, bot_z0, bot_z0, index=join_br) 
             right_z1 = Float.IndexSwitch(top_z0, top_z1, top_z1, index=join_tr)
             right_z0.switch(block_dims.has_bottom_side, bot_z1)
+            right_z0.switch(raised_bottom, 0)
             right_z1.switch(block_dims.has_top_side, top_z0)
             right_width = sx
             right_length = right_z1 - right_z0
@@ -1409,6 +1697,50 @@ def demo(rebuild=False):
             plank.offset = top_location
             bundle, planks = add_plank(bundle, block_name, planks, plank, (top_side != SIDE_NONE) & top_existing.bnot() & block_dims.has_top_side.bnot())
 
+        with Layout("Plinth"):
+            resource = G().get_resource(
+                geo, by_id=True, plank_id=plinth.resource_id,
+            ).node
+            has_left = block_dims.has_left_side | (left_side != SIDE_NONE)
+            has_right = block_dims.has_right_side | (right_side != SIDE_NONE)
+            plinth_left = Float.Switch(has_left, plinth.recess_y, left_y1)
+            plinth_right = Float.Switch(has_right, sy - plinth.recess_y, right_y0)
+            plinth_depth = sx - plinth.recess_x
+            plinth_length = plinth_height - z - bot_thick
+            create_plinth = use_plinth & block_dims.has_bottom_side.bnot() & bot_existing.bnot()
+
+            front = Mesh(G().create_plank(
+                geo, plank_name=resource.plank_name,
+                width=plinth_length,
+                length=plinth_right - plinth_left,
+                setup='Door', orientation='Rotate',
+            ))
+            front.offset = (
+                x + plinth_depth - resource.thickness,
+                y + plinth_left,
+                z,
+            )
+            front.points.set("Role", Integer(ROLE_PLINTH))
+            front.points.set("Index", Integer(0))
+            bundle, planks = add_plank(bundle, block_name, planks, front, create_plinth)
+
+            for index, side_y, has_side in (
+                (1, plinth_left, has_left),
+                (2, plinth_right - resource.thickness, has_right),
+            ):
+                side = Mesh(G().create_plank(
+                    geo, plank_name=resource.plank_name,
+                    width=plinth_depth,
+                    length=plinth_length,
+                    setup='Flank',
+                ))
+                side.offset = (x, y + side_y, z)
+                side.points.set("Role", Integer(ROLE_PLINTH))
+                side.points.set("Index", Integer(index))
+                bundle, planks = add_plank(
+                    bundle, block_name, planks, side, create_plinth & has_side.bnot(),
+                )
+
         planks = Mesh(planks)
 
         # ---------------------------------------------------------------------------
@@ -1433,11 +1765,19 @@ def demo(rebuild=False):
                 block_dims.inner_size.x, right_y0 - left_y1, top_z0 - bot_z1,
             )))
             bundle.set_item(path + "Outer Location", Vector((
-                block_dims.outer_location.x, y + left_y0, z + bot_z0,
+                block_dims.outer_location.x, y + left_y0, outer_bot_z,
             )))
             bundle.set_item(path + "Outer Size", Vector((
-                block_dims.outer_size.x, right_y1 - left_y0, top_z1 - bot_z0,
+                block_dims.outer_size.x, right_y1 - left_y0, z + top_z1 - outer_bot_z,
             )))
+
+            for side, requested, previous, preserve in (
+                ("Left", left_thick, block_dims.left_thickness, preserve_left),
+                ("Right", right_thick, block_dims.right_thickness, preserve_right),
+                ("Bottom", bot_thick, block_dims.bottom_thickness, preserve_bot),
+                ("Top", top_thick, block_dims.top_thickness, preserve_top),
+            ):
+                bundle.set_item(path + side + " Thickness", Float.Switch(preserve, requested, previous))
 
             # Join
             geo += planks
@@ -1481,9 +1821,13 @@ def demo(rebuild=False):
 
     with GeoNodes("Select Plank", is_group=True, rebuild=rebuild):
         geo = Geometry()
+        all_blocks = Boolean(False, "All Blocks")
         block_name = String("Block", "Block Name")
-        block = G().get_block_properties(geo, block_name=block_name).node
-        selection = block.exists & (Integer("Block ID") == block.id)
+        block = geo.get_bundle().get_item("Blocks/" + block_name, socket_type='BUNDLE')
+        exists = block.exists
+        block_id = block.get_item("ID", socket_type='INTEGER')
+        (all_blocks.bnot() & exists.bnot()).warning("Block '" + block_name + "' not found.")
+        selection = Boolean.Switch(all_blocks, exists & (Integer("Block ID") == block_id), True)
         role = Integer.MenuSwitch({
             "Left": ROLE_LEFT,
             "Right": ROLE_RIGHT,
@@ -1491,6 +1835,7 @@ def demo(rebuild=False):
             "Top": ROLE_TOP,
             "Shelf": ROLE_SHELF,
             "Separator": ROLE_SEPARATOR,
+            "Plinth": ROLE_PLINTH,
             "Door": ROLE_FACE,
             "Drawer": ROLE_DRAWER,
         }, menu=Input("Role", optional_label=True))
@@ -1504,7 +1849,7 @@ def demo(rebuild=False):
         selection.out("Selection")
 
         block_name.out("Block Name")
-        block.id.switch_false(block.exists, -1).out("Block Id")
+        block_id.switch_false(exists & all_blocks.bnot(), -1).out("Block Id")
 
     # ====================================================================================================
     # Open door
@@ -1611,9 +1956,24 @@ def demo(rebuild=False):
                     Float.Switch(is_vert, psz, sub_size),
                 ))
 
+            thickness = 2 * half_thickness
+            bounds["Left Thickness"] = Float.Switch(
+                is_vert, Float.Switch(first, thickness, props.left_thickness), props.left_thickness,
+            )
+            bounds["Right Thickness"] = Float.Switch(
+                is_vert, Float.Switch(at_end, thickness, props.right_thickness), props.right_thickness,
+            )
+            bounds["Bottom Thickness"] = Float.Switch(
+                is_vert, props.bottom_thickness, Float.Switch(first, thickness, props.bottom_thickness),
+            )
+            bounds["Top Thickness"] = Float.Switch(
+                is_vert, props.top_thickness, Float.Switch(at_end, thickness, props.top_thickness),
+            )
+
             bundle, block_id = new_block_id(rep.geo.get_bundle())
             bundle.set_item("Blocks/" + sub_name, Bundle.Combine({
                 "ID": block_id,
+                "On Plinth": Boolean(False),
                 **bounds,
                 "Cuts": Bundle(),
             }))
@@ -1779,6 +2139,57 @@ def demo(rebuild=False):
 
         geo = remaining + plank.generated
         geo.set_bundle(bundle)
+        geo.out()
+
+    # ====================================================================================================
+    # Delete planks
+    # ====================================================================================================
+
+    with GeoNodes("Delete Plank", rebuild=rebuild):
+        geo = Mesh(Geometry())
+        bundle = geo.get_bundle()
+        selection = G().select_plank(geo).link_inputs()
+        geo.points[selection].delete()
+        geo.set_bundle(bundle)
+        geo.out()
+
+    # ====================================================================================================
+    # Block dimensions and positions
+    # ====================================================================================================
+
+    with GeoNodes("Add Cotes", rebuild=rebuild):
+        geo = Geometry()
+        block = G().get_block_properties(geo).link_inputs().node
+
+        with Panel("Origin"):
+            origin = Vector(tuple(get_location(geo, axis) for axis in "XYZ"))
+
+        with Panel("Aspect"):
+            font_size = Float(0.1, "Font Size", 0.01)
+            section = Float(0.01, "Section", 0)
+
+        for axis, axis_name, dimension_name in ((0, "X", "Depth"), (1, "Y", "Width"), (2, "Z", "Height")):
+            with Panel(axis_name, create_layout=True):
+                show_dimension = Boolean(False, dimension_name)
+                show_location = Boolean(False, "Location " + axis_name)
+                invert = Boolean(False, "Invert")
+
+                geo = G().add_cote_line(
+                    geo, show=show_dimension & block.exists,
+                    position=block.location, axis=axis, value=block.size.xyz[axis],
+                    invert=invert, font_size=font_size, section=section,
+                    cote_offset_a=Float(0, "Dimension Offset A", hide_in_modifier=True),
+                    cote_offset_b=Float(0, "Dimension Offset B", hide_in_modifier=True),
+                )
+                geo = G().add_cote_line(
+                    geo, show=show_location & block.exists,
+                    position=origin, axis=axis,
+                    value=block.location.xyz[axis] - origin.xyz[axis],
+                    invert=invert, font_size=font_size, section=section,
+                    cote_offset_a=Float(0, "Location Offset A", hide_in_modifier=True),
+                    cote_offset_b=Float(0, "Location Offset B", hide_in_modifier=True),
+                )
+
         geo.out()
 
     # ====================================================================================================
