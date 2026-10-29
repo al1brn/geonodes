@@ -1,14 +1,13 @@
 # Furniture
 
-![Exemple de meuble construit avec la démo Furniture](images/demo_furniture.png)
+![Example cabinet built with the Furniture demo](images/demo_furniture.png)
 
-Cette démo construit un meuble en agençant des **blocs**, puis en plaçant des
-planches sur ces blocs. Un bloc décrit un volume de référence : sa position,
-ses dimensions et les limites utiles à la construction. Les ressources, les
-paramètres nommés et les propriétés des blocs sont conservés dans le Bundle de
-la géométrie, tout au long de la pile de modifiers.
+This demo builds furniture by arranging **blocks**, then placing boards on those
+blocks. A block describes a reference volume: its position, dimensions, and
+construction boundaries. Resources, named parameters, and block properties are
+stored in the geometry Bundle throughout the modifier stack.
 
-Pour créer les groupes et modifiers :
+To create the node groups and modifiers:
 
 ```python
 from geonodes.demos import furniture
@@ -16,146 +15,140 @@ from geonodes.demos import furniture
 furniture.demo()
 ```
 
-Après une mise à jour de la démo, utiliser `furniture.demo(rebuild=True)` pour
-reconstruire les groupes existants.
+After updating the demo, use `furniture.demo(rebuild=True)` to rebuild existing
+groups.
 
 ## Conventions
 
-Les coordonnées sont exprimées dans le repère local du meuble :
+Coordinates use the furniture object's local reference frame:
 
-| Axe | Dimension |
+| Axis | Dimension |
 | --- | --- |
-| X | Profondeur |
-| Y | Largeur |
-| Z | Hauteur |
+| X | Depth |
+| Y | Width |
+| Z | Height |
 
-L'origine `(0, 0, 0)` est le coin inférieur gauche du meuble, côté arrière.
-La façade se trouve du côté des X croissants, la droite du côté des Y croissants
-et le haut du côté des Z croissants.
+The origin `(0, 0, 0)` is the lower left corner of the cabinet, at the back.
+The front faces increasing X, the right faces increasing Y, and the top faces
+increasing Z.
 
-## Ressources et paramètres globaux
+## Resources and global parameters
 
-Les premiers modifiers définissent les ressources et les noms utilisés ensuite
-pour construire le meuble.
+The first modifiers define the resources and names used to build the furniture.
 
-**Define Resource** définit un matériau de construction : nom, dimensions,
-épaisseur, matériau Blender et couleur. Les modifiers de construction choisissent
-leurs planches à partir de ces ressources. **Define Plinth** précise la ressource,
-la hauteur et les retraits de la plinthe.
+**Define Resource** defines a board resource: its name, dimensions, thickness,
+Blender material, and color. Construction modifiers select their boards from
+these resources. **Define Plinth** specifies the plinth resource, height, and
+setbacks.
 
-**Capture Resources** récupère les ressources d'un autre objet. On peut ainsi
-centraliser leur définition dans un objet de référence et l'utiliser pour
-plusieurs meubles. Pour créer une variante de matériau ou d'épaisseur, il suffit
-de changer les ressources de référence, sans refaire l'agencement des blocs.
+**Capture Resources** retrieves resources from another object. This lets you
+centralize their definition in a reference object and share them across several
+cabinets. To create a material or thickness variant, change the reference
+resources without rebuilding the block layout.
 
-**Define Named Dimensions** définit des valeurs nommées servant de paramètres
-globaux : largeur d'un module, hauteur du meuble, jeu, etc. Les modifiers suivants
-peuvent utiliser ces noms au lieu de répéter des valeurs numériques.
+**Define Named Dimensions** defines named values used as global parameters:
+module width, cabinet height, clearance, and so on. Later modifiers can refer to
+these names instead of repeating numeric values.
 
-## Agencer les blocs
+## Arranging blocks
 
-**Define Block** crée un bloc vide. Il n'ajoute aucune planche ; `Show Frame`
-permet de visualiser son volume de référence.
+**Define Block** creates an empty block. It adds no boards; enable `Show Frame`
+to display its reference volume.
 
-Pour définir les positions et les dimensions, les champs proposent plusieurs
-sources :
+Position and dimension fields offer several value sources:
 
-- **Value** : une valeur saisie directement dans `Offset`.
-- **Name** : un paramètre global nommé, auquel on peut ajouter un décalage.
-- **Block** : une propriété d'un bloc déjà défini, avec un décalage éventuel.
+- **Value**: a value entered directly in `Offset`.
+- **Name**: a named global parameter, with an optional offset.
+- **Block**: a property of an existing block, with an optional offset.
 
-Une référence à un bloc peut utiliser sa largeur, son sommet, son bord droit,
-son centre, etc. Le choix des limites du bloc permet de travailler avec ses
-dimensions de référence, intérieures ou extérieures. Les dimensions proposent
-aussi les modes `Dimension` et `Target` : donner une taille ou la coordonnée
-à atteindre.
+A block reference can use its width, top, right edge, center, and other
+properties. The boundary selection lets you work with reference, inner, or outer
+dimensions. Dimension fields also offer `Dimension` and `Target` modes: enter
+either a size or the coordinate to reach.
 
-Par exemple, pour placer un module à droite d'un autre, référencer le bord
-`Right` de ce dernier pour la position Y. Pour aligner leurs sommets, utiliser
-sa propriété `Top` comme cible en Z. Le bloc référencé doit apparaître plus tôt
-dans la pile de modifiers.
+For example, to place a module to the right of another, reference the latter's
+`Right` edge for the Y position. To align their tops, use its `Top` property as
+the Z target. The referenced block must be defined earlier in the modifier stack.
 
-## Placer les planches
+## Adding boards
 
-Une fois le bloc défini, les modifiers suivants le désignent par son nom :
+Once a block is defined, the following modifiers select it by name:
 
-| Modifier | Éléments construits |
+| Modifier | Elements built |
 | --- | --- |
-| **Add Box** | Côtés gauche et droit, dessus, dessous et plinthe selon les options |
-| **Add Face** | Portes ou façades de tiroirs, selon le choix `Type` |
-| **Add Shelves** | Étagères horizontales |
-| **Add Separators** | Séparateurs verticaux |
+| **Add Box** | Left and right sides, top, bottom, and plinth, depending on the options |
+| **Add Face** | Doors or drawer fronts, depending on `Type` |
+| **Add Shelves** | Horizontal shelves |
+| **Add Separators** | Vertical dividers |
 
-**Add Block** regroupe ces étapes : il crée le bloc et permet de construire
-directement son caisson, ses étagères, ses séparateurs et sa façade. On peut donc
-choisir entre un bloc vide à compléter et un bloc déjà équipé de planches.
+**Add Block** combines these steps: it creates the block and lets you build its
+carcass, shelves, dividers, and front directly. You can therefore start with an
+empty block or create a block already fitted with boards.
 
-L'orientation du fil agit sur les UV et sur l'ordre largeur/longueur dans le
-débit. Elle ne change pas la géométrie de la planche : `Normal` conserve le sens
-initial et `Rotate` tourne le fil de 90°. Le matériau doit utiliser `UV Map` pour
-visualiser ce choix.
+Grain orientation affects the UV coordinates and the width/length order in the
+cut sheet. It does not change the board geometry: `Normal` keeps the original
+direction, while `Rotate` turns the grain by 90°. The material must use `UV Map`
+to display this choice.
 
-## Diviser et dupliquer
+## Dividing and duplicating
 
-**Divide Block** crée des sous-blocs suivant une division verticale ou horizontale.
-`Count` donne le nombre de parties. Avec `Even`, leurs dimensions intérieures
-sont égales, en tenant compte des planches de séparation ; sinon, les champs
-`Size` définissent les dimensions successives. Le champ `Plank` choisit la
-ressource des séparations ; un nom vide permet de ne pas les construire.
+**Divide Block** creates sub-blocks using a vertical or horizontal division.
+`Count` sets the number of parts. With `Even` enabled, their inner dimensions are
+equal, accounting for the divider boards; otherwise, the `Size` fields specify
+the successive dimensions. The `Plank` field selects the divider resource; leave
+the name empty to skip building the dividers.
 
-**Duplicate Block** crée une copie d'un bloc. L'option `Planks` permet de copier
-également ses planches. La copie peut être placée :
+**Duplicate Block** creates a copy of a block. Enable `Planks` to copy its boards
+as well. Copies can be placed:
 
-- par translation, avec `Offset Y` et `Offset Z` ;
-- par symétrie suivant Y ou Z, autour du centre choisi ;
-- en série, avec `Count`, lorsque `Symmetry` vaut `No`.
+- by translation, using `Offset Y` and `Offset Z`;
+- by symmetry along Y or Z, around the selected center;
+- as an array, using `Count` when `Symmetry` is set to `No`.
 
-Dans une série, chaque copie repart du bloc source. Le décalage vaut une fois
-l'offset pour la première copie, deux fois pour la deuxième, etc. Le bloc source
-reste présent. En mode symétrie, une seule copie est créée.
+In an array, each copy starts from the source block. The displacement is one
+offset for the first copy, two offsets for the second, and so on. The source
+block remains present. Symmetry mode creates a single copy.
 
-### Noms des blocs
+### Block names
 
-**Chaque bloc doit avoir un nom unique**, y compris les blocs produits par une
-division ou une duplication.
+**Every block must have a unique name**, including blocks created by division
+or duplication.
 
-- Une division compose le nom avec le nom du bloc parent, `Name Suffix` et un
-  index commençant à zéro : par exemple `Module Part 0`, `Module Part 1`.
-- Une duplication utilise `New Name`.
-- Une duplication en série ajoute un index en suffixe : avec `New Name = Module`,
-  les copies s'appellent `Module 0`, `Module 1`, etc.
+- Division combines the parent block name, `Name Suffix`, and an index starting
+  at zero: for example, `Module Part 0`, `Module Part 1`.
+- Duplication uses `New Name`.
+- Array duplication appends an index: with `New Name = Module`, copies are named
+  `Module 0`, `Module 1`, and so on.
 
-Le modifier **Cut Sheet** affiche les noms de blocs dans une colonne à droite
-de la liste des ressources. Cette liste permet de retrouver les noms à utiliser
-dans les modifiers suivants.
+The **Cut Sheet** modifier displays block names in a column to the right of the
+resource list. Use this list to find the names to enter in later modifiers.
 
-## Animation des portes et tiroirs
+## Animating doors and drawers
 
-**Open Door** simule l'ouverture d'une porte avec un angle, un axe et un côté
-de pivot. **Open Drawer** déplace une façade de tiroir et ajoute une boîte de
-tiroir simplifiée pour visualiser son ouverture.
+**Open Door** simulates opening a door using an angle, axis, and pivot side.
+**Open Drawer** moves a drawer front and adds a simplified drawer box to
+visualize the opening.
 
-La sélection se fait par bloc, rôle et index. Ces modifiers peuvent servir à
-préparer une vue fixe ou à animer les paramètres d'ouverture dans Blender.
-La boîte de tiroir est une représentation visuelle simplifiée ; ses panneaux
-ne sont pas ajoutés au débit.
+Selection uses the block, role, and index. These modifiers can prepare a still
+view or animate opening parameters in Blender. The drawer box is a simplified
+visual representation; its panels are not added to the cut sheet.
 
-## Cotations et vues dérivées
+## Dimensions and derived views
 
-**Add Cotes** affiche les dimensions et, au choix, les positions d'un bloc sur
-les axes X, Y et Z. Ses options permettent de régler la taille des textes,
-la section des lignes et le placement des cotations.
+**Add Cotes** displays a block's dimensions and, optionally, its positions along
+X, Y, and Z. Its options control text size, line thickness, and dimension
+placement.
 
-**Delete Plank** enlève des planches de la géométrie affichée pour rendre les
-cotations plus lisibles : on peut par exemple enlever les portes pour montrer
-l'intérieur du meuble. Les métadonnées de construction et le débit sont conservés.
+**Delete Plank** removes boards from the displayed geometry to make dimensions
+easier to read: for example, remove doors to show the cabinet interior.
+Construction metadata and cut sheet entries are preserved.
 
-**Capture Furniture** permet de préparer ces vues sur un objet distinct du meuble
-de référence. Le choix `Source` récupère soit un objet avec `Object`, soit une
-géométrie connectée avec `Geometry`. La géométrie et son Bundle sont transmis aux
-modifiers suivants.
+**Capture Furniture** lets you prepare these views on a separate object using
+a reference cabinet. The `Source` selector retrieves either an object with
+`Object` or connected geometry with `Geometry`. Both the geometry and its Bundle
+are passed to subsequent modifiers.
 
-Une pile de présentation peut par exemple être :
+For example, a presentation stack can be:
 
 ```text
 Capture Furniture
@@ -163,20 +156,19 @@ Capture Furniture
 → Add Cotes
 ```
 
-Une autre vue peut utiliser `Capture Furniture`, puis `Open Door` ou `Open Drawer`.
-Ces objets suivent le meuble de référence tout en ayant leurs propres réglages
-de présentation.
+Another view can use `Capture Furniture` followed by `Open Door` or `Open Drawer`.
+These objects follow the reference cabinet while keeping their own presentation
+settings.
 
-## Produire le débit avec Cut Sheet
+## Generating the cut sheet
 
-1. Construire le meuble et définir les ressources de ses planches.
-2. Créer un autre objet destiné au débit et lui ajouter le modifier **Cut Sheet**.
-3. Dans le champ `Furniture`, sélectionner l'objet du meuble de référence.
-4. La géométrie produite affiche les identifiants et noms des ressources, ainsi
-   que les noms des blocs à droite. Elle contient aussi les données de débit
-   sous forme d'un nuage de points.
-5. Dans la console Python de Blender, appeler `get_cut_sheet` avec le nom de
-   **l'objet portant le modifier Cut Sheet** :
+1. Build the furniture and define its board resources.
+2. Create a separate object for the cut sheet and add the **Cut Sheet** modifier.
+3. In the `Furniture` field, select the reference furniture object.
+4. The resulting geometry displays resource IDs and names, with block names on
+   the right. It also contains the cut data as a point cloud.
+5. In Blender's Python console, call `get_cut_sheet` with the name of **the object
+   carrying the Cut Sheet modifier**:
 
 ```python
 from geonodes.demos import furniture
@@ -184,19 +176,19 @@ from geonodes.demos import furniture
 print(furniture.get_cut_sheet("Furniture Cuts"))
 ```
 
-Remplacer `Furniture Cuts` par le nom de cet objet. Le résultat regroupe les
-pièces de même ressource, dimensions et orientation, et additionne leurs quantités.
-Les dimensions sont exprimées en millimètres. Le texte affiche chaque identifiant
-de ressource, puis les lignes `longueur x largeur (orientation) : quantité`.
+Replace `Furniture Cuts` with that object's name. The result groups pieces with
+the same resource, dimensions, and orientation, adding their quantities.
+Dimensions are expressed in millimeters. The text displays each resource ID,
+followed by lines formatted as `length x width (orientation) : quantity`.
 
-Pour récupérer les données en JSON :
+To retrieve the data as JSON:
 
 ```python
 cuts_json = furniture.get_cut_sheet("Furniture Cuts", json=True)
 print(cuts_json)
 ```
 
-Chaque entrée contient `res_id`, `count`, `size` et `orient`. Le champ `size`
-contient la largeur, la longueur et l'épaisseur en millimètres ; `orient` vaut
-`0` pour `Normal` et `1` pour `Rotate`. La largeur et la longueur du débit sont
-déjà permutées lorsque le fil est tourné.
+Each entry contains `res_id`, `count`, `size`, and `orient`. The `size` field
+contains width, length, and thickness in millimeters; `orient` is `0` for `Normal`
+and `1` for `Rotate`. Cut sheet width and length are already swapped when the
+grain is rotated.
