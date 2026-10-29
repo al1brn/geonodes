@@ -622,29 +622,25 @@ def demo(rebuild=False):
             size = Vector((length, width, res_node.thickness))
             plank = Mesh.Cube(size=size)
             
-            plank.corners.store_uv("UV Map", plank.points.evaluate_on_domain(nd.position))
+            # Grain orientation affects texture coordinates, never board dimensions.
+            uv = plank.points.evaluate_on_domain(nd.position)
+            uv = Vector.Switch(orient, uv, Vector((-uv.y, uv.x, uv.z)))
+            plank.corners.store_uv("UV Map", uv)
             
             plank.faces.material = res_node.material
             plank.faces.set("Color", res_node.color)
             plank.points.set("Role", Integer.IndexSwitch(ROLE_SHELF, ROLE_LEFT, ROLE_FACE, index=setup))
             plank.points.set("Index", Integer(0))
 
-        with Layout("Orientation"):
-            
-            rot_index = setup
-            rot_index.switch(orient, setup + 3)
-            
+        with Layout("Setup"):
+
             rot=Rotation.IndexSwitch(
                 (0, 0, pi/2),
                 (0, pi/2, pi/2),
                 (0, pi/2, 0),
-                (0, 0, 0),
-                (pi/2, 0, 0),
-                (0, pi/2, 0),
-                index = rot_index)
+                index = setup)
 
             plank.transform(rotation=rot)
-            plank.switch(rot_index==5, Mesh(plank).transform(rotation=(pi/2, 0, 0)))
                 
             node = plank.points.attribute_statistic(nd.position).node
             size = node.max - node.min
@@ -656,7 +652,11 @@ def demo(rebuild=False):
                 "Plank Name": res_node.plank_name,
                 "Res ID": res_node.id,
                 "Count" : 1,
-                "Size" : Vector((width, length, res_node.thickness)),
+                "Size" : Vector.Switch(
+                    orient,
+                    Vector((width, length, res_node.thickness)),
+                    Vector((length, width, res_node.thickness)),
+                ),
                 "Orient" : Integer.Switch(orient, 0, 1),
             })
             plank.set_bundle(cut_bundle)
@@ -1259,24 +1259,46 @@ def demo(rebuild=False):
         ty = get_location(geo, "Offset Y")
         tz = get_location(geo, "Offset Z")
 
-        with Layout("Duplicate the block"):
+        count = Integer(1, "Count", 1, 10)
+        count.switch(sym_index>0, 1)
+        is_array = (sym_index == 0) & (count > 1)
 
-            geo = G()._block_duplicate(
-                geo,
-                source_name = source_name,
-                target_name = new_name,
-                duplicate_planks = use_dupl_planks,
-            )
-            exists = geo.exists
-            exists.bnot().warning("Block '" + source_name + "' not found")
+        for rep in repeat(count, geo=geo, ty=ty, tz=tz, exists=False):
 
-        with Layout("Translation"):
-            new_geo = G()._block_translate(
-                geo,
-                block_name = new_name,
-                translation = (0, ty, tz),
-            )
-            geo.switch(exists & (sym_index==0), new_geo)
+            with Layout("Duplicate the block"):
+
+                dupl_name = String(new_name)
+                dupl_name.switch(
+                        is_array, 
+                        String.Join(
+                            dupl_name, 
+                            rep.iteration.to_string(), 
+                            delimiter=" "))
+
+                dupl_geo = G()._block_duplicate(
+                    rep.geo,
+                    source_name = source_name,
+                    target_name = dupl_name,
+                    duplicate_planks = use_dupl_planks,
+                )
+                exists = dupl_geo.exists
+                ((rep.iteration==0) & exists.bnot()).warning("Block '" + source_name + "' not found")
+
+            with Layout("Translation"):
+                new_geo = G()._block_translate(
+                    dupl_geo,
+                    block_name = dupl_name,
+                    translation = (0, rep.ty, rep.tz),
+                )
+                dupl_geo.switch(exists & (sym_index==0), new_geo)
+
+            rep.geo = dupl_geo
+            rep.ty += ty
+            rep.tz += tz
+            rep.exists=exists
+
+        geo = rep.geo
+        exists = rep.exists
 
         with Layout("Symmetry Y"):
             new_geo = G()._block_symmetry(
@@ -1295,6 +1317,12 @@ def demo(rebuild=False):
                 z_center = zs,
             )
             geo.switch(exists & (sym_index==2), new_geo)
+
+        with Layout("Total Size"):
+            block_dims = G().get_block_properties(geo, block_name=source_name, dims='Block').node
+            width = ((block_dims.size_y + count*ty)*1000).to_integer()
+            height = ((block_dims.size_z + count*tz)*1000).to_integer()
+            is_array.info(String.Join("Width: ", width.to_string(), ", height: ", height.to_string(), " mm"))
 
         geo.out()
 
@@ -1711,8 +1739,8 @@ def demo(rebuild=False):
 
             front = Mesh(G().create_plank(
                 geo, plank_name=resource.plank_name,
-                width=plinth_length,
-                length=plinth_right - plinth_left,
+                width=plinth_right - plinth_left,
+                length=plinth_length,
                 setup='Door', orientation='Rotate',
             ))
             front.offset = (
@@ -1906,6 +1934,7 @@ def demo(rebuild=False):
             {"Vertical": True, "Horizontal": False},
             menu=Input("Orientation", optional_label=True, expanded=True))
         count = Integer(1, "Count", 0, 10)
+        even = Boolean(True, "Even")
         plank_name = String("Plank", "Plank")
         create_planks = plank_name.length() > 0
         half_thickness = G().get_resource(geo, plank_name=plank_name).thickness / 2
@@ -1926,6 +1955,9 @@ def demo(rebuild=False):
         for rep in repeat(count, geo=geo, pos=0.0, stop=False):
             size = line.points.sample_index(nd.position.x, index=rep.iteration)
             target = (rep.pos + size).min(total)
+            # Offset separator centers so every compartment has the same inner size.
+            even_target = (rep.iteration + 1) * (total + 2 * half_thickness) / count.max(1)
+            target.switch(even, (even_target - half_thickness).clamp(0, total))
             first = rep.iteration == 0
             at_end = target >= total
 
@@ -2238,6 +2270,23 @@ def demo(rebuild=False):
                     rep.labels += label_curve.switch(is_predef)
                     rep.offset += Float.Switch(is_predef, -0.2)
                     
+                labels = Mesh(rep.labels)
+
+            with Layout("Block names"):
+                blocks = bundle.get_item("Blocks", socket_type='BUNDLE')
+                paths = blocks.get_nested_paths(mode="Data Type", data_type="Integer")
+                column_x = labels.points.attribute_statistic(nd.position).node.max.x + 0.3
+
+                # Each block has one ID; ignore integer fields inside its cuts.
+                for rep in repeat(paths.list_length(), labels=labels, offset=0.0):
+                    path = paths[rep.iteration]
+                    is_block = path.slice(position=path.length() - 3) == "/ID"
+                    block_name = path.slice(position=0, length=path.length() - 3)
+                    label_curve = Curve(block_name.to_curves(size=0.1).realize()).fill()
+                    label_curve.offset = column_x, rep.offset, 0
+                    rep.labels += label_curve.switch_false(is_block)
+                    rep.offset -= Float.Switch(is_block, 0, 0.2)
+
                 labels = Mesh(rep.labels)
             
             with Layout("Cuts per resource name"):
