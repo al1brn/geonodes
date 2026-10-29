@@ -1923,8 +1923,9 @@ def demo(rebuild=False):
         x0, y0, z0 = dim_node.min.xyz
         x1, y1, z1 = dim_node.max.xyz
 
-        z_axis = Vector.Switch(right_side, (x1, y1, 0), (x1, y0, 0))
-        rot = Rotation.Switch(right_side, (0, 0, angle), (0, 0, -angle))
+        # Y grows from left to right; both hinge sides open toward +X.
+        z_axis = Vector.Switch(right_side, (x1, y0, 0), (x1, y1, 0))
+        rot = Rotation.Switch(right_side, (0, 0, -angle), (0, 0, angle))
         y_axis = Vector.Switch(top_side, (x1, 0, z0), (x1, 0, z1))
         y_rot = Rotation.Switch(top_side, (0, angle, 0), (0, -angle, 0))
         pivot = Vector.Switch(axis == 1, z_axis, y_axis)
