@@ -15,9 +15,6 @@ from geonodes.demos import furniture
 furniture.demo()
 ```
 
-After updating the demo, use `furniture.demo(rebuild=True)` to rebuild existing
-groups.
-
 ## Conventions
 
 Coordinates use the furniture object's local reference frame:
