@@ -284,7 +284,9 @@ class TestDemoFurniture:
     def test_runs_and_creates_tree(self, clean_after):
         from geonodes.demos import furniture
         furniture.demo()
-        assert_tree("Base Stock")
+        assert_tree("Define Block")
+        assert_tree("Add Block")
+        assert_tree("Capture Furniture")
 
 
 class TestDemoBook:

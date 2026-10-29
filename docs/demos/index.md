@@ -26,6 +26,7 @@ The avaiable demos are:
   how to fracture a mesh
 - [topology](topology.md) : displaying domain indices
 - [cam_culling](cam_culling.md) : remove geometry outside camera field of view
+- [furniture](furniture.md) : construction de meubles par blocs, cotations et débit
 
 
 

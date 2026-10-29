@@ -91,6 +91,7 @@ nav:
     - Overview: demos/index.md
     - Arrows: demos/arrows.md
     - Counters: demos/counters.md
+    - Furniture: demos/furniture.md
     - Curly: demos/curly.md
     - Explosion: demos/explosion.md
     - Topology: demos/topology.md
