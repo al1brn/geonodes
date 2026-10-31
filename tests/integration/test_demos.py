@@ -286,7 +286,7 @@ class TestDemoFurniture:
         furniture.demo()
         assert_tree("Define Block")
         assert_tree("Add Block")
-        assert_tree("Capture Furniture")
+        assert_tree("Add External Block")
 
 
 class TestDemoBook:

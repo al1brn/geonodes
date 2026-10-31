@@ -66,24 +66,14 @@ op_     = G("4D G")
 
 def demo(clear=False, *, rebuild=False):
 
-    print("-"*100)
-    print("Build 4D Engine")
-    print()
-
-    Tree._reset_counters()
+    Tree._init_package('4D Engine')
     build_shaders(rebuild=rebuild)
-    print(f"4D shaders built : {Tree._total_nodes} nodes, {Tree._total_links} links")
-    print()
-
-    Tree._reset_counters()
-
     Vector4.build_nodes(rebuild=rebuild)
     Matrix4.build_nodes(rebuild=rebuild)
     build_geometry_nodes(rebuild=rebuild)
 
-    Tree._display_counter("4D Engine built")
-    print(f"4D Engine built : {Tree._total_nodes} nodes, {Tree._total_links} links in {Tree._total_time:.1f} s")
-    print()
+    Tree._display_counter('4D Engine built')
+
 
 # ====================================================================================================
 # Shaders

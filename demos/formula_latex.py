@@ -79,7 +79,11 @@ FUNCTIONS = [
 
 
 def demo(rebuild=False):
+
+    Tree._init_package('Formula LaTeX')
     FORM.demo()
+
+    Tree._display_counter('Formula LaTeX built')
 
 # =============================================================================================================================
 # LaTeX simple interpreter

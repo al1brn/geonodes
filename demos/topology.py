@@ -59,6 +59,8 @@ import numpy as np
 
 def demo(rebuild=False):
 
+    Tree._init_package('Topology')
+
     COL_UNSELECTED = (.8, .8, .8, 1)
     COL_POINT      = (.8,  0,  0, 1)
     COL_FACE       = (.8,  0, .8, 1)
@@ -529,4 +531,6 @@ def demo(rebuild=False):
             crn_vis.out("Corners")
 
         geo.out()
+
+    Tree._display_counter('Topology built')
 

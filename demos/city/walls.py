@@ -9,6 +9,8 @@ from .constants import *
 
 def demo(rebuild=False):
 
+    Tree._init_package('City Walls')
+
     def wall_dims():
 
         return (
@@ -137,6 +139,8 @@ def demo(rebuild=False):
 
         menel = left_jamb + right_jamb + lintel
         menel.out()
+
+    Tree._display_counter('City Walls built')
 
 
 

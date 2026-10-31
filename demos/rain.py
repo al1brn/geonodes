@@ -114,6 +114,8 @@ def single_wave():
 
 def demo(rebuild=False):
 
+    Tree._init_package('Rain')
+
     with GeoNodes("Rain", rebuild=rebuild):
 
         with Panel("Terrain"):
@@ -274,3 +276,5 @@ def demo(rebuild=False):
             geo += Geometry.Switch(Boolean(False, "Show Points"), None, pts + sim.projs)
 
         geo.out()
+
+    Tree._display_counter('Rain built')

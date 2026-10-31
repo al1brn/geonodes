@@ -9,6 +9,8 @@ def stretch(geo, delta, selection=True):
 
 def demo(rebuild=False):
 
+    Tree._init_package('Old Gears')
+
     # ====================================================================================================
     # Thicken a flat shape
     # ====================================================================================================
@@ -305,6 +307,8 @@ def demo(rebuild=False):
 
         gears = gear0 + (gear1, gear2, gear3)
         gears.out()
+
+    Tree._display_counter('Old Gears built')
 
 
 

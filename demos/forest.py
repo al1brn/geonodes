@@ -52,6 +52,8 @@ from geonodes import *
 
 def demo(rebuild=False):
 
+    Tree._init_package('Forest')
+
     # ====================================================================================================
     # Shaders
 
@@ -190,3 +192,5 @@ def demo(rebuild=False):
         forest = Group("Forest", mesh=plane, density=density, seed=seed + 1)._out
 
         (plane + forest).out()
+
+    Tree._display_counter('Forest built')

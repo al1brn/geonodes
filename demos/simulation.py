@@ -1,7 +1,11 @@
 from geonodes import GeoNodes, Vector, Integer, Float, Mesh, simulation, repeat, nd, gnmath, Closure, Group
 from geonodes import Layout, Curve, ShaderNodes, Material, snd, Shader, Color, Panel, String
 
+from geonodes import Tree
+
 def demo(rebuild=False):
+
+    Tree._init_package('Simulation')
 
     with ShaderNodes("Curve Color", replace_material=True):
         col = snd.attribute("Color").color
@@ -91,6 +95,8 @@ def demo(rebuild=False):
         mesh.faces.shade_smooth = True
 
         mesh.out()
+
+    Tree._display_counter('Simulation built')
 
 
 

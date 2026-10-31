@@ -1816,7 +1816,7 @@ class Socket(NodeCache):
                         {str(i): value for i, value in enumerate(values)}, 
                         data_type=cls.SOCKET_TYPE, 
                         Index=index)
-        return node._out
+        return cls(node._out)
     
     # ----------------------------------------------------------------------------------------------------
     # Method version
@@ -1899,9 +1899,11 @@ class Socket(NodeCache):
         Returns
         -------
         Socket
+            Socket wrapped in the calling class (for example, Mesh.Switch returns Mesh).
         """
         input_type = SocketType.from_type(cls.SOCKET_TYPE).items_type
-        return Node('Switch', {'Switch': condition, 'False': false, 'True': true}, input_type=input_type)._out
+        node = Node('Switch', {'Switch': condition, 'False': false, 'True': true}, input_type=input_type)
+        return cls(node._out)
 
     # ----------------------------------------------------------------------------------------------------
     # Method version

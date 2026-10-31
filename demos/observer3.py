@@ -1776,5 +1776,9 @@ def demo(rebuild=False):
     meshutil.demo()
     body.demo()
 
+    Tree._init_package('Observer 3')
+
     build_animation(rebuild=rebuild)
     build_observer(rebuild=rebuild)
+
+    Tree._display_counter('Observer 3 built')

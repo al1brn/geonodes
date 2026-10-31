@@ -40,6 +40,8 @@ from geonodes.demos.shaders import colored_shaders
 
 def demo(rebuild=False):
 
+    Tree._init_package('Formula Animation')
+
     colored_shaders()
 
     # ----------------------------------------------------------------------------------------------------
@@ -388,4 +390,6 @@ def demo(rebuild=False):
             Mesh(mesh).faces[Integer("char_index") > to_index].delete().out("True")
 
         Mesh(start_mesh.switch_false(show)).out()
+
+    Tree._display_counter('Formula Animation built')
 

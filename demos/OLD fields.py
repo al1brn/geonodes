@@ -142,6 +142,8 @@ def build_field_derivatives(field_name, name=None, socket_out=None):
 
 def demo(rebuild=False):
 
+    Tree._init_package('Old Fields')
+
     print("\nCreate fields Geometry Nodes...")
 
     arrows_module.demo()
@@ -807,3 +809,5 @@ def demo(rebuild=False):
         geo = Geometry.Switch(vis_arrows, None, arrows) + Geometry.Switch(vis_lines, None, lines)
 
         geo.out()
+
+    Tree._display_counter('Old Fields built')

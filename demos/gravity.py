@@ -69,6 +69,8 @@ def demo(rebuild=False):
     from . import common
     common.demo()
 
+    Tree._init_package('Gravity')
+
     # ----------------------------------------------------------------------------------------------------
     # Planet Shader
     # ----------------------------------------------------------------------------------------------------
@@ -701,3 +703,5 @@ def demo(rebuild=False):
 
         geo.set_bundle(bundle)
         geo.out()
+
+    Tree._display_counter('Gravity built')

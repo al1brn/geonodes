@@ -107,6 +107,8 @@ def demo(rebuild=False):
     from . import common
     common.demo()
 
+    Tree._init_package('Arrows')
+
     # ====================================================================================================
     # Default Shader for Arrow
     # ====================================================================================================
@@ -475,6 +477,8 @@ def demo(rebuild=False):
         geo = G()._join_mesh_with_show(geo, arrow, show)
 
         geo.out()
+
+    Tree._display_counter('Arrows built')
 
 
 

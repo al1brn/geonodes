@@ -73,6 +73,8 @@ def demo(rebuild=False):
     random.demo()
     cam_culling.demo()
 
+    Tree._init_package('Fractal')
+
     # ====================================================================================================
     # Flat fractal closure
     # ====================================================================================================
@@ -339,6 +341,8 @@ def demo(rebuild=False):
 
         for rep in repeat(max_depth, to_split=cloud, fractal=None):
             pass
+
+    Tree._display_counter('Fractal built')
 
 
 

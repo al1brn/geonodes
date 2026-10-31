@@ -43,6 +43,7 @@ from .. import GeoNodes, G, Mesh, Curve, Cloud, Layout, Panel, gnmath, nd, pi, B
 from .. import Float, Boolean, Integer, Vector, Rotation, Object, Input, Material, Color, Group, String, Matrix
 from .. import repeat
 
+
 DEBUG_NODES = True # Add debug output sockets
 USE_GIZMO = True
 
@@ -288,7 +289,8 @@ def get_dimension(mesh, name, i_axis, same_value, color=None):
 
 def demo(rebuild=False):
 
-    Tree._reset_counters()
+    Tree._init_package('Furniture (deprecated)')
+
 
     # ====================================================================================================
     # Shader
@@ -3037,12 +3039,12 @@ def demo(rebuild=False):
             
         fur.out()
 
+    Tree._display_counter('Furniture (deprecated) built')
+
     # ====================================================================================================
     # Demo done
     # ====================================================================================================
 
-    print("-"*80)
-    print(f"Furniture built : {Tree._total_nodes} nodes, {Tree._total_links} links")
 
 
 # ====================================================================================================

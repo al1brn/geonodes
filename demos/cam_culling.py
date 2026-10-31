@@ -57,6 +57,8 @@ FOCAL_FACTOR = .04939
 
 def demo(rebuild=False):
 
+    Tree._init_package('Camera Culling')
+
     DEBUG_GEO = False
 
     # ====================================================================================================
@@ -794,6 +796,8 @@ def demo(rebuild=False):
             surface.faces.material = Material(None, "Material")
 
         surface.out()
+
+    Tree._display_counter('Camera Culling built')
 
 
 

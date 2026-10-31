@@ -49,6 +49,8 @@ from geonodes import *
 
 def demo(rebuild=False):
 
+    Tree._init_package('Gizmo')
+
     with GeoNodes("Gizmo Demo", rebuild=rebuild):
 
         geo = Geometry()
@@ -90,3 +92,5 @@ def demo(rebuild=False):
             cube.transform(transform=matrix)
 
         cube.out()
+
+    Tree._display_counter('Gizmo built')

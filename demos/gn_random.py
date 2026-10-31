@@ -44,6 +44,8 @@ from geonodes import *
 
 def demo(rebuild=False):
 
+    Tree._init_package('Random')
+
     # ====================================================================================================
     # Random uniform
     # ====================================================================================================
@@ -226,6 +228,8 @@ def demo(rebuild=False):
 
         pts.out()
         seed.out("Seed")
+
+    Tree._display_counter('Random built')
 
 
 

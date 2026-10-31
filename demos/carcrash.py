@@ -60,6 +60,8 @@ from geonodes import (
     nd, repeat, simulation,
 )
 
+from geonodes import Tree
+
 
 _CENTRE = "_CarCrash Centre"
 _ROTATION = "_CarCrash Rotation"
@@ -394,6 +396,8 @@ def _apply_pose_group(rebuild):
 
 def demo(rebuild=False):
     """Build utilities and the modifier; preserve existing groups by default."""
+
+    Tree._init_package('Carcrash')
     show_parts(rebuild=rebuild)
     transform_part(rebuild=rebuild)
     utilities(rebuild=rebuild)
@@ -498,6 +502,8 @@ def demo(rebuild=False):
         # The approach depends only on live input geometry and X, even with a
         # baked simulation. It never needs the simulation/bake output.
         Mesh.Switch(x > 0, crashed, pose.approach).out()
+
+    Tree._display_counter('Carcrash built')
 
 
 def swerve(rebuild=False):

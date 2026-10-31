@@ -34,6 +34,8 @@ from geonodes.demos.shaders import colored_shaders, formula_shader
 
 def demo(rebuild=False):
 
+    Tree._init_package('Common')
+
     colored_shaders()
     formula_shader()
 
@@ -555,3 +557,5 @@ def demo(rebuild=False):
             
 
         sim.pts.out()
+
+    Tree._display_counter('Common built')

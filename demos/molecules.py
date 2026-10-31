@@ -134,6 +134,8 @@ def get_vibration(position, scale, seed):
 
 def demo(rebuild=False):
 
+    Tree._init_package('Molecules')
+
     # ====================================================================================================
     # Shaders
     # ====================================================================================================
@@ -441,4 +443,6 @@ def demo(rebuild=False):
             
         geo += speed_arrow, acc_arrow, tg_arrow, rad_arrow, T_label
         geo.out()
+
+    Tree._display_counter('Molecules built')
         

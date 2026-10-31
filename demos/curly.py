@@ -51,6 +51,8 @@ from geonodes import *
 
 def demo(rebuild=False):
 
+    Tree._init_package('Curly')
+
     with GeoNodes("Frise", rebuild=rebuild):
 
         with Layout("Frise"):
@@ -167,3 +169,5 @@ def demo(rebuild=False):
 
 
         alphabet.out()
+
+    Tree._display_counter('Curly built')

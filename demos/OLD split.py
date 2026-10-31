@@ -53,6 +53,8 @@ from geonodes import *
 
 def demo(rebuild=False):
 
+    Tree._init_package('Old Split')
+
     # =============================================================================================================================
     # Split in two parts
 
@@ -174,3 +176,5 @@ def demo(rebuild=False):
         insts.position *= factor
 
         insts.out()
+
+    Tree._display_counter('Old Split built')

@@ -243,6 +243,8 @@ def wood_handle_shader(color1="#301407", color2="#965025", roughness=0.22,
 
 def demo(rebuild=False):
 
+    Tree._init_package('Shaders')
+
     transparent_shader(rebuild=rebuild)
     colored_shaders(rebuild=rebuild)
     arrow_shader(rebuild=rebuild)
@@ -508,5 +510,7 @@ def demo(rebuild=False):
             )
 
             disp.out()        
+
+    Tree._display_counter('Shaders built')
             
             

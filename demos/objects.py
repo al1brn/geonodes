@@ -5,6 +5,8 @@ from geonodes.demos import curveutil, shaders
 def demo(rebuild=False):
 
     curveutil.demo()
+
+    Tree._init_package('Objects')
     shaders.colored_shaders()
     shaders.chrome_shader()
     shaders.glass_shader()
@@ -225,3 +227,5 @@ def demo(rebuild=False):
             cyl.transform(translation=(0, 0, (1 + BASE)*radius), rotation=(0, pi/2, -pi/2), scale=radius)
             
         cyl.switch(show==0).out()
+
+    Tree._display_counter('Objects built')

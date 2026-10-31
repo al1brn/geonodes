@@ -265,7 +265,7 @@ class Attribute:
         if self.domain_name is None:
             return None
 
-        prop_name = self.domain_name.lower() + "s"
+        prop_name = "insts" if self.domain_name == 'Instance' else self.domain_name.lower() + "s"
         try:
             return getattr(self.geometry, prop_name)
         except:

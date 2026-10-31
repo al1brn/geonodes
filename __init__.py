@@ -119,6 +119,7 @@ if PRODUCTION:
     from .core import Closure, Bundle
 
     from .core import GeoNodes
+    from .core import Package, geo_group, geo_modifier, shader_group, shader_material
 
     from .core import gnmath, nd
 

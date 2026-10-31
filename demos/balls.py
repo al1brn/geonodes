@@ -3,6 +3,8 @@ from geonodes import *
 
 def demo(rebuild=False):
 
+    Tree._init_package('Balls')
+
     with ShaderNodes("Golf Ball", replace_material=False):
 
         # -------------------------------------------------------------------------
@@ -172,6 +174,8 @@ def demo(rebuild=False):
         ball.faces.smooth = True
         ball.faces.material = "Golf Ball"
         ball.out()
+
+    Tree._display_counter('Balls built')
         
 
 

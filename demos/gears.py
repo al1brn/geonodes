@@ -9,6 +9,8 @@ def stretch(geo, delta, selection=True):
 
 def demo(rebuild=False):
 
+    Tree._init_package('Gears')
+
     # ====================================================================================================
     # Thicken a flat shape
     # ====================================================================================================
@@ -346,6 +348,7 @@ def demo(rebuild=False):
 
 
 
+    Tree._display_counter('Gears built')
     return
 
     with GeoNodes("Gears Demo", rebuild=rebuild):

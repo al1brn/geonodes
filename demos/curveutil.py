@@ -5,6 +5,8 @@ from geonodes.demos import shaders
 
 def demo(rebuild=False):
 
+    Tree._init_package('Curveutil')
+
     shaders.colored_shaders()
 
     # ----------------------------------------------------------------------------------------------------
@@ -209,3 +211,5 @@ def demo(rebuild=False):
             line.out("Curve")
             mesh.out("Mesh")
         geometry.out()
+
+    Tree._display_counter('Curveutil built')

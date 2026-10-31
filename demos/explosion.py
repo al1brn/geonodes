@@ -56,6 +56,8 @@ from geonodes import macros
 
 def demo(rebuild=False):
 
+    Tree._init_package('Explosion')
+
     # ====================================================================================================
     # Mesh to located instances
     #
@@ -606,6 +608,8 @@ def demo(rebuild=False):
         mesh = anim.cloud.instance_on(instance=Mesh.UVSphere(radius=1),scale=nd.radius)
 
         mesh.out()
+
+    Tree._display_counter('Explosion built')
 
 
 

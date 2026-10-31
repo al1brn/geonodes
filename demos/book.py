@@ -268,6 +268,8 @@ def demo(rebuild=False):
 
     """Build all shader-independent node groups and geometry modifiers."""
 
+    Tree._init_package('Book')
+
 
     # ====================================================================================================
     # Binding curve
@@ -1652,3 +1654,5 @@ def demo(rebuild=False):
             ).link_inputs(from_panel="Extrude")
 
         sheets.switch(use_extrude, book).out()        
+
+    Tree._display_counter('Book built')

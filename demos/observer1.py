@@ -48,6 +48,8 @@ from geonodes import *
 
 def demo(rebuild=False):
 
+    Tree._init_package('Observer 1')
+
     # =============================================================================================================================
     # Shader
 
@@ -1107,3 +1109,5 @@ def demo(rebuild=False):
         obs.faces._Transparency = transp
 
         obs.out()
+
+    Tree._display_counter('Observer 1 built')

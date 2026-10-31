@@ -96,6 +96,8 @@ def demo(rebuild=False):
 
     curveutil.demo()
 
+    Tree._init_package('Counters')
+
     # ====================================================================================================
     # Shaders for digits
 
@@ -930,3 +932,5 @@ def demo(rebuild=False):
             clock.transform(scale=radius, rotation=Rotation((pi/2, 0, 0)))
 
         clock.out()
+
+    Tree._display_counter('Counters built')

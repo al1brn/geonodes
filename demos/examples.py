@@ -2,6 +2,8 @@ from geonodes import *
 
 def demo(rebuild=False):
 
+    Tree._init_package('Examples')
+
     # ====================================================================================================
     # Hello World
     # ====================================================================================================
@@ -681,6 +683,8 @@ def demo(rebuild=False):
         mesh += feel.generated
         
         mesh.out()
+
+    Tree._display_counter('Examples built')
 
 
 

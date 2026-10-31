@@ -2947,6 +2947,12 @@ class G:
     # Build a function from a node
     # ====================================================================================================
 
+    @staticmethod
+    def _call_group(group_name, *args, **kwargs):
+        """Shared group invocation for G and decorated Python builders."""
+        node = Group(group_name)
+        return node.method_call(*args, **kwargs)
+
     def build_function(self, btree):
         """ Dynamically create a function to call the tree as Group
 
@@ -2971,8 +2977,7 @@ class G:
         # ---------------------------------------------------------------------------
         
         def f(*args, **kwargs):
-            node = Group(btree.name)
-            return node.method_call(*args, **kwargs)
+            return self._call_group(btree.name, *args, **kwargs)
         
         # ---------------------------------------------------------------------------
         # Adding the function

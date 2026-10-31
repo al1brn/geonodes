@@ -1880,6 +1880,8 @@ def demo(rebuild=False):
 
     common.demo()
 
+    Tree._init_package('Body')
+
     # ----------------------------------------------------------------------------------------------------
     # Common
     # ----------------------------------------------------------------------------------------------------
@@ -1921,6 +1923,8 @@ def demo(rebuild=False):
         pear_shape = head.node.pear_shape
         head.set_bundle(Bundle.Combine({"Pear Shape": pear_shape}))
         head.out()
+
+    Tree._display_counter('Body built')
 
 
 

@@ -104,6 +104,8 @@ FOCAL_FACTOR = .04939
 # Demo
 
 def demo(clear=False, *, rebuild=False):
+
+    Tree._init_package('Old Fractal')
     if clear:
         GeoNodes.remove_groups()
 
@@ -112,6 +114,8 @@ def demo(clear=False, *, rebuild=False):
     sierpinski(rebuild=rebuild)
     multires_surface(rebuild=rebuild)
     romanesco(rebuild=rebuild)
+
+    Tree._display_counter('Old Fractal built')
 
 
 # =============================================================================================================================

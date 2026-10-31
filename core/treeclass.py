@@ -55,7 +55,7 @@ __blender_version__ = "4.3.0"
 
 import numpy as np
 import bpy
-from time import time
+from time import perf_counter
 
 from .scripterror import NodeError
 from .colors import SysColor
@@ -386,6 +386,12 @@ class Tree:
 
     _total_nodes = 0
     _total_links = 0
+    _total_built = 0
+    _total_existing = 0
+    _total_warnings = 0
+    _total_time = 0.0
+    _total_arrange_time = 0.0
+    _counter_started = None
 
     TREE_STACK = []
 
@@ -426,6 +432,10 @@ class Tree:
             group or modifier color_tag attribute
 
         """
+        self._build_started = perf_counter()
+        self._arrange_time = 0.0
+        if Tree._counter_started is None:
+            Tree._counter_started = self._build_started
         self._btree = None
 
         # Wrap an existing NodeTree without clearing or finalizing it
@@ -649,6 +659,7 @@ class Tree:
 
         if not self._rebuild or self._loaded:
             Tree.TREE_STACK.pop()
+            Tree._total_existing += 1
             return
 
         # ---------------------------------------------------------------------------
@@ -732,6 +743,7 @@ class Tree:
         # Check dead ends
         warnings = 0
         if not error:
+            utils.check_zones(self._btree)
             # Socket structures, notably inside nested closures, may still be
             # unresolved immediately after a link is created. Validate links
             # only once Blender has inferred the completed tree.
@@ -765,10 +777,15 @@ class Tree:
         else:
             name = f"Tree '{self._btree.name}'"
         
-        print(f"{name} built: {self._str_stats}, warnings: {warnings}")
+        elapsed = perf_counter() - self._build_started
+        print(f"{name} built: {self._str_stats}, warnings: {warnings}, "
+              f"time: {elapsed:.2f} s (arrange: {self._arrange_time:.2f} s)")
 
         Tree._total_nodes += len(self._btree.nodes)
-        Tree._total_links += len(self._btree.links)      
+        Tree._total_links += len(self._btree.links)
+        Tree._total_built += int(not error)
+        Tree._total_warnings += warnings
+        Tree._total_time = perf_counter() - Tree._counter_started
 
     # ----------------------------------------------------------------------------------------------------
     # Context management
@@ -926,14 +943,36 @@ class Tree:
         return str(self) + "\n" + Tree._btree_repr(self._btree)
 
     @classmethod
+    def _init_package(cls, title):
+        """Print a package heading and start its build statistics session."""
+        print()
+        print('-' * 80)
+        print(title)
+        print()
+        cls._reset_counters()
+
+    @classmethod
     def _reset_counters(cls):
-        cls._total_nodes = 0
-        cls._total_links = 0
-        cls._total_time  = 0.
+        """Start a shared statistics session for successive tree builds."""
+        Tree._total_nodes = 0
+        Tree._total_links = 0
+        Tree._total_built = 0
+        Tree._total_existing = 0
+        Tree._total_warnings = 0
+        Tree._total_time = 0.0
+        Tree._total_arrange_time = 0.0
+        Tree._counter_started = perf_counter()
 
     @classmethod
     def _display_counter(cls, title):
-        print(f"{title}: {Tree._total_nodes} nodes, {Tree._total_links} links in {Tree._total_time:.1f} s")
+        """Print cumulative counts and wall time since the last reset."""
+        if Tree._counter_started is not None:
+            Tree._total_time = perf_counter() - Tree._counter_started
+        print(f"{title}: Built: {Tree._total_built}, Existing: {Tree._total_existing}")
+        print(f"  {Tree._total_nodes} nodes, {Tree._total_links} links, "
+              f"{Tree._total_warnings} warnings in {Tree._total_time:.2f} s "
+              f"(arrange: {Tree._total_arrange_time:.2f} s)")
+        print()
 
     @property
     def _str_stats(self):
@@ -1190,7 +1229,13 @@ class Tree:
         None
         """
         if self._use_arrange:
-            treearrange.arrange(self._btree)
+            started = perf_counter()
+            try:
+                treearrange.arrange(self._btree)
+            finally:
+                elapsed = perf_counter() - started
+                self._arrange_time += elapsed
+                Tree._total_arrange_time += elapsed
 
     # ====================================================================================================
     # Node colors
@@ -1255,8 +1300,6 @@ class Tree:
                 )
 
         link = self._btree.links.new(out_socket, in_socket, handle_dynamic_sockets=handle_dynamic_sockets)
-
-        utils.check_zones(self._btree)
 
         return link
 
