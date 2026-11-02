@@ -1,0 +1,2473 @@
+from ..environment import EnvironmentType
+"""
+This file is part of the geonodes distribution (https://github.com/al1brn/geonodes).
+Copyright (c) 2025 Alain Bernard.
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, version 3.
+
+This program is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program. If not, see <http://www.gnu.org/licenses/>.
+
+$ DOC transparent
+
+-----------------------------------------------------
+Scripting Geometry Nodes
+-----------------------------------------------------
+
+module : socket_class
+---------------------
+- Socket
+
+This class is the base class for all data socket actually used in ***geonodes***.
+
+The primary purpose of a socket is to maintain a reference to the output socket of
+a node.
+
+It implements fundamental mechanisms such as:
+- caching nodes
+- jump
+- access to node
+- node label and color
+- access to interface tree for input socket
+
+updates
+-------
+- creation : 2024/07/23
+- update :   2024/09/04
+- update :   2025/01/12
+"""
+
+__author__ = "Alain Bernard"
+__email__  = "lesideesfroides@gmail.com"
+__copyright__ = "Copyright (c) 2025, Alain Bernard"
+__license__ = "GNU GPL V3"
+
+import bpy
+import numpy as np
+
+from ..common.scripterror import NodeError
+from ..common import utils as utils
+from ..common import blender as blender
+from .. import constants
+from ..common.colors import SysColor
+from ..common.utils import Break
+from ..common.treeinterface import ItemPath
+from ..common.sockettype import SocketType
+from ..common.treeinterface import TreeInterface
+from .tree import Tree, Layout
+from .node import Node, Group
+from .zone import ZoneNode, ZoneIterator
+
+# =============================================================================================================================
+# =============================================================================================================================
+# Node cache interface
+# =============================================================================================================================
+# =============================================================================================================================
+
+class NodeCache:
+
+    __slots__ = ('_cached_nodes',)
+
+    # ====================================================================================================
+    # Cache mechanism
+    # Nodes can be directly created or created through a cache mechanism
+    # - node = Node(...)
+    # - node = self._cache(...)
+    # The cache is erased with _reset
+    # The cache is optionnally erased when a jump occurs
+    # It is up to the true class to call _cache_reset
+
+    def _cache_reset(self):
+        self._cached_nodes = {}
+
+    def _cache(self, name, sockets={}, cache_name=None, **parameters):
+
+        # build a node if not in cache
+
+        if cache_name is None:
+            cache_name = name
+
+        # ----- Is the node already in cache
+        node = self._cached_nodes.get(cache_name)
+        if node is not None:
+            return node
+        
+        label = self.node._label
+        color = self.node._color
+
+        # ----- No : we create it and put is in cache
+        node = Node(name, sockets, **parameters)
+        self._cached_nodes[cache_name] = node
+
+        # ----- Propagate label and color
+        node._label = label
+        node._color = color
+
+        return node
+
+# =============================================================================================================================
+# =============================================================================================================================
+# Data Socket root
+# =============================================================================================================================
+# =============================================================================================================================
+
+class Socket(NodeCache, metaclass=EnvironmentType):
+    """ > The output socket of a <!Node>
+
+    **Socket** is the base class for data classes such as <!Float>, <!Image> or <!Geometry>.
+
+    It refers to an **output** socket of a <!Node>. A socket can be set to the **input** socket
+    of another <!Node> to create a link between the two nodes:
+
+    ``` python
+    # cube is the output socket 'Mesh' of the node 'Cube'
+    cube = Node("Cube").mesh
+
+    # cube is set the to socket 'geometry' of node 'Set Position'
+    node = Node("Set Position")
+    node.geometry = cube
+    ```
+
+    !!! important
+        You can access to the other output sockets of the node in two different ways:
+
+        - using <#node> attribute
+        - using ***peer socket** naming convention where the **snake_case** name of the other sockets is suffixed by '_'
+
+    The example below shows how to access the to 'UV Map' socket of node <*Node Cube>:
+
+    ``` python
+    # cube is the output socket 'Mesh' of the node 'Cube'
+    cube = Mesh.Cube()
+
+    # Getting 'UV Map' through the node
+    uv_map = cube.node.uv_map
+
+    # Or using the 'peer socket' naming convention
+    uv_map = cuve.uv_map_
+    ```
+    """    
+
+    __slots__ = NodeCache.__slots__ + ('_tree', '_bsocket', '_layout', '_use_layout')
+
+    SOCKET_TYPE = None
+
+    # ====================================================================================================
+    # Initialization
+    # ====================================================================================================
+
+    def __init__(self, 
+            socket  = None, 
+            name         : str = None, 
+            tip          : str = "",
+            panel        : str = "",
+            user_label   : str = None,
+            **props):
+        """
+        
+        Parameters
+        ----------
+        socket : NodeSocket, optional
+            the output socket to wrap default=None.
+
+        name : str, optional
+            input name if not None default=None.
+
+        tip : str, optional
+            description default="".
+
+        panel : str, optional
+            panel name default="".
+
+        user_label : str, optional
+            user label default=None.
+
+        """
+
+        # ---------------------------------------------------------------------------
+        # Attributes
+        # ---------------------------------------------------------------------------
+
+        self._layout      = None
+        self._use_layout  = True
+        self._tree        = Tree.current_tree()
+        if self._tree is not None and not self._tree._rebuild:
+            raise Break()
+        self._bsocket     = None
+
+        self._reset()
+
+        # ---------------------------------------------------------------------------
+        # Socket is a Node
+        # ---------------------------------------------------------------------------
+
+        if isinstance(socket, Node):
+            socket = socket._out
+
+        # ---------------------------------------------------------------------------
+        # Empty socket
+        # ---------------------------------------------------------------------------
+
+        if utils.request_empty(socket):
+            return
+        
+        # ---------------------------------------------------------------------------
+        # Socket is a string or a String socket
+        # ---------------------------------------------------------------------------
+
+        socktype = self._socket_type
+        cname = socktype.class_name
+
+        if socktype.is_attribute:
+            # Literal color names remain constants; String sockets name attributes.
+            if ((isinstance(socket, str) and cname != 'Color') or
+                    (isinstance(socket, Socket) and socket.SOCKET_TYPE == 'STRING')):
+                self._bsocket = self.Named(socket)._bsocket
+                return
+
+        # ---------------------------------------------------------------------------
+        # Let's get the socket
+        # ---------------------------------------------------------------------------
+
+        self._bsocket = utils.get_bsocket(socket)
+        if self._bsocket is not None:
+
+            if self._bsocket.type != self.SOCKET_TYPE:
+
+                # "Bundle Get Item" like nodes : we change the data_type
+                node = self.node
+
+                blid = node._bnode.bl_idname
+                if blid == 'NodeGetBundleItem'and self.SOCKET_TYPE in utils.get_node_param_enum(blid, 'socket_type'):
+                    node._bnode.socket_type = self.SOCKET_TYPE
+                    self._bsocket = utils.get_enabled_bsocket(node, 'Item')
+
+            return
+        
+        # ---------------------------------------------------------------------------
+        # No name: we create from a constant Node
+        # The socket argument is the value to set
+        # ---------------------------------------------------------------------------
+
+        if name is None:
+            if socktype == 'GEOMETRY':
+                new_socket = self.Input(None, halt=False)
+                if new_socket is None:
+                    new_socket = self.NewInput(type(self).__name__)
+                self._bsocket = new_socket._bsocket
+            else:
+                self._bsocket = self.Constant(socket, user_label=user_label)._bsocket
+
+        # ---------------------------------------------------------------------------
+        # With a name, we request the creation from current input
+        # ---------------------------------------------------------------------------
+
+        else:
+            # Font : make sure it is a font 
+            if self.SOCKET_TYPE == 'FONT':
+                socket = blender.get_font(socket)
+
+            # Socket can be the default value
+            if socket is not None:
+
+                if 'default' not in constants.SOCKETS[self._socket_type.type]['props']:
+                    raise NodeError(f"The {self._socket_type()} socket doesn't accept default value. <{socket}> is not valid.")
+                
+                # Perhaps it is given in the props
+                def_key = 'default' if 'default' in props else None
+                if def_key is None:
+                    def_key = 'default_value' if 'default_value' in props else None
+
+                if def_key is None:
+                    props = {'value': socket, **props}
+
+            new_socket = self.NewInput(name, tip=tip, panel=panel, **props)
+            self._bsocket = new_socket._bsocket
+            self._use_layout = new_socket._use_layout
+
+    # ====================================================================================================
+    # Constructors
+    # ====================================================================================================
+
+    def _convert_to_class(self, class_name):
+        from ..common.utils import SOCKET_CLASSES, GEOMETRY_CLASSES
+
+        classes = {
+            cls.__name__: cls
+            for cls in SOCKET_CLASSES.values()
+        } | dict(GEOMETRY_CLASSES)
+
+        try:
+            cls = classes[class_name]
+        except KeyError:
+            raise NodeError(f"Unknown Socket class {class_name!r}") from None
+
+        return cls(self)
+
+    # ----------------------------------------------------------------------------------------------------
+    # An empty socket
+    # ----------------------------------------------------------------------------------------------------
+
+    @classmethod
+    def Empty(cls, value = None):
+        """ Create an empty socket.
+        
+        An empty socket is used temporarily as an input for nodes with dynamic sockets:
+
+        Parameters
+        ----------
+        value : Any, optional
+            default value default=None.
+
+        """
+        socket = cls(constants.EMPTY_SOCKET)
+        socket._bsocket = SocketType.from_type(cls.SOCKET_TYPE).get_default_from_value(value)
+        return socket
+    
+    # ----------------------------------------------------------------------------------------------------
+    # Named attribute
+    # ----------------------------------------------------------------------------------------------------
+    
+    @classmethod
+    def Named(cls, name):
+        """ > Node <&Node Named Attribute>
+
+        Information
+        -----------
+        - Parameter 'data_type' : 'BOOLEAN'
+
+        Parameters
+        ----------
+        name : String
+            socket 'Name' (id: Name)
+
+
+        Returns
+        -------
+        Boolean
+        """
+        if SocketType.from_type(cls.SOCKET_TYPE).class_name not in constants.ATTRIBUTE_CLASSES:
+            raise NodeError(
+                f"The class {SocketType.from_type(cls.SOCKET_TYPE).class_name} is not an attribute.\n"
+                f"Attribute classes are: {constants.ATTRIBUTE_CLASSES}")
+        
+        node = Node('Named Attribute', name=name)
+        data_type = SocketType.from_type(cls.SOCKET_TYPE).get_node_data_type(
+            tree_type = node._tree._btree.bl_idname,
+            bl_idname = node._bnode.bl_idname,
+            halt = True)
+
+        node.set_parameter('data_type', data_type)
+
+        return node._out._ul(name)
+    
+    # ----------------------------------------------------------------------------------------------------
+    # An existing group input socket (output socket of input node)
+    # ----------------------------------------------------------------------------------------------------
+
+    @classmethod
+    def Input(cls, name: str, panel: str = "", halt: bool = True):
+        """ Get an exist input socket from its name and panel.
+
+        !!! note
+            The "input" socket here is an "output" socket of the current input node
+
+        To create a input socket use NewInput.
+
+        If the 'name' argument is None, the first socket of the proper type is returned.
+
+        Raises
+        ------
+        - NodeError if socket is not found and halt is requested
+
+        Parameters
+        ----------
+        name : str | None
+            socket name
+
+        panel : str, optional
+            panel name default="".
+
+        halt : bool, optional
+            raises an error if not found default=True.
+
+
+        Returns
+        -------
+        Socket
+        """
+        in_node = Tree.current_tree().get_input_node()
+
+        include = None if name is None else [name]
+        bsockets = in_node.get_sockets('OUTPUT', include=include, panel=panel)
+
+        for _, bsock in bsockets:
+            if SocketType(bsock).type == cls.SOCKET_TYPE: # and utils.snake_case(sock_name) == utils.snake_case(name):
+                return cls(bsock._bsocket)._ul(name)
+        
+        if halt:
+            sname = "" if name is None else f" named '{name}'"
+            raise NodeError(
+                f"There is no {SocketType.from_type(cls.SOCKET_TYPE).class_name} input socket{sname}.\n"
+                f"Available sockets are : {[bsock[0] for bsock in in_node.get_sockets('OUTPUT')]}.")
+        
+        return None
+
+    # ----------------------------------------------------------------------------------------------------
+    # Create a new input socket from the current I/O context
+    # ----------------------------------------------------------------------------------------------------
+
+    @classmethod
+    def NewInput(cls,
+            name: str, 
+            value       = None, 
+            tip: str    = "", 
+            panel: str  = "", 
+            **props):
+        """ Create an new input socket
+
+        !!! note
+            The "input" socket here is an "output" socket of the current input node
+
+        To get an existing input socket use Input.
+
+        Raises
+        ------
+        - NodeError if socket is not found
+
+        Parameters
+        ----------
+        name : str
+            socket name
+
+        value : Any, optional
+            default_value default=None.
+
+        tip : str, optional
+            description default="".
+
+        panel : str: None
+            panel name
+
+
+        Returns
+        -------
+        Socket
+        """
+        if value is None:
+            defval = None
+        else:
+            defval = SocketType.from_type(cls.SOCKET_TYPE).get_default_from_value(value)
+            new_props = {**props}
+
+            if 'default' in new_props:
+                new_props['default'] = defval
+
+            elif 'default_value' in new_props:
+                new_props['default_value'] = defval
+
+            else:
+                if 'default' not in constants.SOCKETS[cls.SOCKET_TYPE]['props']:
+                    raise NodeError(f"The {SocketType.from_type(cls.SOCKET_TYPE).class_name} socket doesn't accept a default value. Value argument <{value}> is invalid.")
+                
+                new_props['default_value'] = defval
+
+            props = new_props
+
+        return cls(Tree.current_tree().create_input_socket(
+            SocketType.from_type(cls.SOCKET_TYPE).socket_id,
+            name         = name,
+            tip          = tip,
+            panel        = panel,
+            **props))
+        
+    # ----------------------------------------------------------------------------------------------------
+    # Create a socket from a constant Node
+    # ----------------------------------------------------------------------------------------------------
+
+    @classmethod
+    def Constant(cls, value: None, user_label: str = ""):
+        """ Create an input socket from a constant Node.
+
+        Parameters
+        ----------
+        value : Any, optional
+            constant default value default=None.
+
+        user_label : str, optional
+            socket name (used to rename nodes if not None) default="".
+        """
+
+        # ---------------------------------------------------------------------------
+        # Ensure array
+        # ---------------------------------------------------------------------------
+
+        def get_shaped(v, *shapes):
+            r = np.ravel(v)
+            shape = np.shape(r)
+            if shape in shapes:
+                return tuple(r)
+            
+            if shape == (1,):
+                return tuple(np.resize(r, shapes[0]))
+            
+            raise NodeError(
+                f"The value <{v}> can't be transformed in a valid initial value for {SocketType.from_type(cls.SOCKET_TYPE).class_name}."
+            )
+        
+        # ---------------------------------------------------------------------------
+        # Does the array contain sockets
+        # ---------------------------------------------------------------------------
+
+        def has_sockets(a):
+            for v in a:
+                if SocketType.get_bsocket(v) is not None:
+                    return True
+            return False
+        
+        # ---------------------------------------------------------------------------
+        # Default value
+        # ---------------------------------------------------------------------------
+
+        socket_type = SocketType.from_type(cls.SOCKET_TYPE)
+        if cls.SOCKET_TYPE not in ['RGBA', 'VECTOR', 'ROTATION', 'MATRIX']:
+            def_val = socket_type.get_default_from_value(value)
+
+        # ---------------------------------------------------------------------------
+        # Depending on the socket type
+        # ---------------------------------------------------------------------------
+
+        if cls.SOCKET_TYPE == 'BOOLEAN':
+            return Node('Boolean', boolean=def_val)._out._ul(user_label)
+
+        elif cls.SOCKET_TYPE == 'BUNDLE':
+            return Node("Combine Bundle")._out._ul(user_label)
+        
+        elif cls.SOCKET_TYPE == 'CLOSURE':
+            socket = ZoneNode.Closure().closure
+            socket._use_layout = False
+            return socket._ul(user_label)
+
+        elif cls.SOCKET_TYPE == 'COLLECTION':
+            return Node('Collection', collection=def_val)._out._ul(user_label)
+        
+        elif cls.SOCKET_TYPE == 'RGBA':
+
+            if value is None:
+                a = (0, 0, 0, 1)
+            elif isinstance(value, str):
+                #a = colors.to_color(value)
+                a = SysColor(value).rgba
+            else:
+                a = get_shaped(value, (4,), (3,))
+
+            if has_sockets(a):
+                if Tree.is_geonodes():
+                    node = Node('Combine Color', {0: a[0], 1: a[1], 2:a[2]})
+                    if len(a) == 4:
+                        node.alpha = a[3]
+                    return node._out._ul(user_label)
+                else:
+                    return Node('Combine Color', {0: a[0], 1: a[1], 2:a[2]})._out._ul(user_label)
+
+            else:
+                def_val = SocketType.from_type('COLOR').get_default_from_value(a)
+                if Tree.is_geonodes():
+                    return Node('Color', value=def_val)._out._ul(user_label)
+
+                else:
+                    socket = Node('Color')._out
+                    socket._bsocket.default_value = def_val
+                    return socket._ul(user_label)
+
+        elif cls.SOCKET_TYPE == 'IMAGE':
+            return Node('Image', image=def_val)._out._ul(user_label)
+        
+        elif cls.SOCKET_TYPE == 'INT':
+            return Node('Integer', integer=def_val)._out._ul(user_label)
+        
+        elif cls.SOCKET_TYPE == 'MATERIAL':
+            return Node('Material', material=def_val)._out._ul(user_label)
+        
+        elif cls.SOCKET_TYPE == 'MATRIX':
+
+            if value is None:
+                a = (1, 0, 0, 0,   0, 1, 0, 0,   0, 0, 1, 0,   0, 0, 0, 1)
+            else:
+                a = get_shaped(value, (16,))
+
+            return Node('Combine Matrix', named_sockets = {i: a[i] for i in range(16)})._out._ul(user_label)
+        
+        elif cls.SOCKET_TYPE == 'MENU':
+            if True: # V5.2
+                from .. import nd
+                return nd.menu(value)
+                #return Node('Menu', value=value)._out._ul(user_label)
+            else:
+                return Node('Menu Switch')._out._ul(user_label)
+            
+        elif cls.SOCKET_TYPE == 'OBJECT':
+            return Node('Object', object=def_val)._out._ul(user_label)
+        
+        elif cls.SOCKET_TYPE == 'FONT':
+            if True: # V5.2
+                return Node('Font', font=def_val)._out._ul(user_label)
+            else:
+                return cls.NewInput("Font", value)
+        
+        elif cls.SOCKET_TYPE == 'ROTATION':
+
+            if value is None:
+                a = (0, 0, 0)
+            else:
+                a = get_shaped(value, (3,))
+
+            if has_sockets(a):
+                return Node('Combine XYZ', x=a[0], y=a[1], z=a[2])._out.to_rotation()._ul(user_label)
+            else:
+                return Node('Rotation', rotation_euler=a)._out._ul(user_label)
+        
+        elif cls.SOCKET_TYPE == 'STRING':
+            return Node('String', string=def_val)._out._ul(user_label)
+        
+        elif cls.SOCKET_TYPE == 'VALUE':
+            node = Node('Value')
+            node._bnode.outputs[0].default_value = def_val
+            return node._out._ul(user_label)
+        
+        elif cls.SOCKET_TYPE == 'VECTOR':
+
+            if value is None:
+                a = (0, 0, 0)
+            else:
+                a = get_shaped(value, (3,))
+
+            if has_sockets(a):
+                return Node('Combine XYZ', x=a[0], y=a[1], z=a[2])._out._ul(user_label)
+            else:
+                return Node('Vector', vector=a)._out._ul(user_label)
+
+        elif cls.SOCKET_TYPE == 'GEOMETRY':
+            raise NodeError(f"There is no node to create a Geometry. Use explicit constructors such as 'Mesh.Cube()', 'Curve.Spiral()' or 'Cloud.Points().")
+            
+        else:
+            assert False, f"Shouldn't happen {socket_type}"
+
+    # ----------------------------------------------------------------------------------------------------
+    # Create a List from a list
+    # ----------------------------------------------------------------------------------------------------
+
+    @classmethod
+    def List(cls, *items, name: str = ""):
+        """ Create a Blender List from items.
+
+        Parameters
+        ----------
+        items : Any, optional
+            Items to put in the list.
+
+        name : str, optional
+            socket name  default="".
+
+        Returns
+        -------
+        - Socket List
+        """
+
+        from .closure import Closure
+        from .integer import Integer
+
+        with Closure() as cl:
+
+            idx = Integer(0, "Index")
+
+            if True:
+                value = cls.IndexSwitch(*items, index=idx)
+            else:
+                with cls.IndexSwitch(index=idx) as value:
+                    for item in items:
+                        cls(item).out()
+
+            if name == "":
+                name = cls.__name__
+            value.out(name)
+
+        return cls(cl.to_list(count=len(items)))
+
+
+    # ====================================================================================================
+    # Emptyness
+    # ====================================================================================================
+
+    def _is_empty(self, halt_message: str = None):
+        if isinstance(self._bsocket, bpy.types.NodeSocket):
+            return False
+        
+        if halt_message is None:
+            return True
+        else:
+            raise NodeError(f"Empty socket error:\n{halt_message}")
+        
+    # ====================================================================================================
+    # Utilities
+    # ====================================================================================================
+
+    @property
+    def _socket_type(self):
+        return SocketType.from_type(self.SOCKET_TYPE)
+
+    def __str__(self):
+        if self._is_empty():
+            return f"<{self._socket_type.class_name}: Empty>"
+        else:
+            bnode = self._bsocket.node
+            index = None
+            for i, bsock in enumerate(bnode.outputs):
+                if bsock == self._bsocket:
+                    index = i
+                    break
+
+            return f"<{type(self).__name__}: [{self.node._bnode.name}][{index}].'{self._bsocket.name}'>"
+    
+    def _reset(self):
+        self._cache_reset()
+
+    # ----------------------------------------------------------------------------------------------------
+    # Jump to another output socket
+    # ----------------------------------------------------------------------------------------------------
+
+    def _jump(self, socket: bpy.types.NodeSocket, reset: bool = True):
+        """ Change the wrapped output socket
+
+        When changing the socket, the description is copied to the new socket.
+        The node color, if any, is also propagated.
+
+        Parameters
+        ----------
+        socket : bpy.types.NodeSocket
+            the new output socket to jump to
+
+        reset : bool, optional
+            reset the cache default=True.
+
+
+        Returns
+        -------
+        self
+        """
+
+        # Keep user label stored in socket description
+        user_label = self.user_label
+
+        bsocket = utils.get_bsocket(socket)
+        if bsocket is None:
+            raise NodeError(f"Socket error: Impossible to jump to socket {socket}")
+        
+        self._bsocket = bsocket
+        if reset:
+            self._reset()
+
+        # Restore user label
+        self.user_label = user_label
+
+        return self
+
+    # ----------------------------------------------------------------------------------------------------
+    # Geometry from domain
+    # ----------------------------------------------------------------------------------------------------
+
+    @property
+    def _domain_to_geometry(self):
+        return self
+
+    # ----------------------------------------------------------------------------------------------------
+    # Get the interface socket (for Group node or tree input / output)
+    # ----------------------------------------------------------------------------------------------------
+
+    @property
+    def _interface_socket(self):
+        """ Return the interface socket if exists
+
+        An interface socket exists when the socket a tree input or output socket or
+        when it is the socket of a group
+
+        Returns
+        -------
+        Interface Socket
+        """
+        if self.node._use_interface:
+            return self.node._interface.by_identifier(self._bsocket.identifier)
+
+        return None
+
+    # ----------------------------------------------------------------------------------------------------
+    # Name or label
+    # ----------------------------------------------------------------------------------------------------
+
+    @property
+    def node(self):
+
+        self._is_empty(f"Impossible to get the node of an empty socket '{type(self).__name__}'.")
+
+        # Not yet initialized
+        if not hasattr(self, '_bsocket'):
+            return None
+        
+        return self._tree._nodes[self._bsocket.node.name]
+
+    # ----------------------------------------------------------------------------------------------------
+    # Name or label
+    # ----------------------------------------------------------------------------------------------------
+
+    @property
+    def _name(self):
+        """ Return the name or the label
+
+        Returns
+        -------
+        str
+            default is ""
+
+        """
+        if self._is_empty():
+            return "<EMPTY SOCKET>"
+        
+        if self.node_label in [None, ""]:
+            return utils.get_socket_name(self._bsocket)
+        else:
+            return self.node_label
+            
+
+    # ----------------------------------------------------------------------------------------------------
+    # Get the panel name
+    # ----------------------------------------------------------------------------------------------------
+
+    @property
+    def _panel_name(self):
+        """ Return the name of the panel
+
+        Returns
+        -------
+        str
+            default is ""
+
+        """
+        i_socket = self._interface_socket
+        if i_socket is None:
+            return ""
+        
+        names = []
+        cur = i_socket
+        while True:
+            if cur.parent.name == "":
+                break
+            names.append(cur.parent.name)
+            cur = cur.parent
+
+        return " > ".join(reversed(names))
+
+    # ====================================================================================================
+    # Default value property
+    # ====================================================================================================
+
+    @property
+    def default_value(self):
+        if not hasattr(self._bsocket, 'default_value'):
+            raise NodeError(f"Socket {self} has not default value.")
+        
+        return self._bsocket.default_value
+    
+    @default_value.setter
+    def default_value(self, value):
+        if not hasattr(self._bsocket, 'default_value'):
+            raise NodeError(f"Socket {self} has not default value.")
+        
+        self._bsocket.default_value = value
+
+        # ----- Interface
+        i_socket = self._interface_socket
+        if i_socket is not None:
+            i_socket.default_value = value
+
+    # ====================================================================================================
+    # Getting the socket from nodes
+    # ====================================================================================================
+    
+    # ----------------------------------------------------------------------------------------------------
+    # Get an existing socket from current input node
+    # Contrarilty to Input, doesn't raise an error
+    # ----------------------------------------------------------------------------------------------------
+        
+    def _get_bsocket_from_input(self, name: str = None) -> bpy.types.NodeSocket:
+        """ Get the availble input socket if any.
+
+        The socket is get a an OUTPUT socket of the current input.
+
+        Parameters
+        ----------
+        name : str, optional
+            name filter default=None.
+
+
+        Returns
+        -------
+        Socket
+            or None if not found
+
+        """
+        in_node = self._tree.get_input_node()
+
+        include = None if name is None else [name]
+
+        bsockets = in_node.get_sockets('OUTPUT', include=include)
+        for _, bsock in bsockets:
+            if SocketType(bsock).type == self.SOCKET_TYPE:
+                return bsock._bsocket
+        else:
+            return None
+
+    # ====================================================================================================
+    # Grid
+    # ====================================================================================================
+
+    @property
+    def is_grid(self):
+        """ bool property
+        
+        Returns True if socket is a grid (inferred_structure_type == 'GRID').
+        """
+        if self._is_empty():
+            return False
+        return self._bsocket.inferred_structure_type == 'GRID'
+    
+    # ====================================================================================================
+    # List
+    # ====================================================================================================
+
+    @property
+    def _is_list(self):
+        """ bool property
+        
+        Returns True if socket is a list
+        """
+        if self._is_empty():
+            return False
+        return self._bsocket.inferred_structure_type == 'LIST'
+    
+    def __getitem__(self, index):
+        return self.get_list_item(index)
+    
+    @property
+    def len(self):
+        """ Short cut for 'self.list_length()'
+        """
+        return self.list_length()
+
+    def field_to_list(self, count, **values):
+        """ > Node <&Node Field to List>
+
+        Create a list from this field and named lists from additional fields.
+
+        Parameters
+        ----------
+        count : Integer
+            Number of items in each generated list.
+
+        values : dict
+            Named fields to evaluate. Each field creates an output socket with
+            the same name.
+
+        Returns
+        -------
+        Socket
+            First list output. The other outputs are available from its node
+            or as peer sockets.
+        """
+        return Node(
+            'Field to List',
+            named_sockets={self._name: self},
+            count=count,
+            **values,
+        )._out
+    
+    def to_list(self, count=None):
+        """ > Node <&Node Field to List>
+
+        Shortcut for ``self.field_to_list(count)`` when only this field has
+        to be converted to a list.
+
+        Parameters
+        ----------
+        count : Integer, optional
+            Number of items in the generated list.
+
+        Returns
+        -------
+        Socket
+            List containing the values obtained by evaluating this field.
+        """
+        return Node('Field to List', named_sockets={self._name: self}, count=count)._out
+
+    def list_append(self, value):
+        """Append a value or another list to this list.
+
+        If ``value`` is a list socket, all its items are appended. Otherwise,
+        ``value`` is converted to the socket type and appended as one item.
+        The socket is updated in place to point to the resulting list.
+
+        ``` python
+        values = Float.List(1, 2, 3)
+        values.list_append(4)
+
+        other = Float.List(5, 6)
+        values.list_append(other)
+        ```
+
+        Parameters
+        ----------
+        value : Any | Socket
+            Single value or list socket to append.
+
+        Returns
+        -------
+        Socket
+            This socket, updated to point to the concatenated list.
+
+        Raises
+        ------
+        NodeError
+            If this socket does not contain a list.
+        """
+
+        from .closure import Closure
+        from .integer import Integer
+
+        if not self._is_list:
+            raise NodeError(f"Socket.list_append error: {self} is not a list.")
+
+        with Layout("Socket.list_append"):
+
+            # Turn the appended value into a closure indexed from zero.
+            in_cl = None
+            if isinstance(value, Socket) and value._is_list:
+                n = value.list_length()
+                with Closure() as cl:
+                    index = Integer(0, "Index")
+                    value[index].out("Value")
+                in_cl = cl
+            else:
+                n = 1
+                with Closure() as cl:
+                    index = Integer(0, "Index")
+                    type(self)(value).out("Value")
+                    index.out() # To avoid warning
+                in_cl = cl
+
+            cur_length = self.list_length()
+
+            # Keep the current items first, then evaluate the appended value.
+            with Closure() as cl:
+                index = Integer(0, "Index")
+
+                v = type(self).Switch(index.less_than(cur_length), 
+                        in_cl.evaluate(index=index-cur_length).value,
+                        self[index]
+                        )
+                v.out(self._name)
+
+            # Replace the wrapped socket while preserving its Python identity.
+            return self._jump(cl.to_list(cur_length + n))
+
+    def flatten_list(self):
+        """Flatten one level of a rectangular nested list.
+
+        Every nested list must have the same length. This is notably the case
+        for lists created by :meth:`reshape_list`. Items keep their original
+        linear order.
+
+        ``` python
+        values = Float.List(*range(16))
+        values.reshape_list((4, 4))
+        values.flatten_list()
+        ```
+
+        Returns
+        -------
+        Socket
+            This socket, updated to point to the flattened list.
+
+        Raises
+        ------
+        NodeError
+            If this socket does not contain a list.
+        """
+
+        if not self._is_list:
+            raise NodeError(f"Socket.flatten_list error: {self} is not a list.")
+
+        from .closure import Closure
+        from .integer import Integer
+
+        with Layout("Socket.flatten_list"):
+
+            source = self
+            outer_length = source.list_length()
+            inner_length = source[0].list_length()
+
+            with Closure() as cl:
+                index = Integer(0, "Index")
+
+                outer_index = index // inner_length
+                inner_index = index % inner_length
+
+                source[outer_index][inner_index].out(self._name)
+
+            self._jump(cl.to_list(outer_length * inner_length))
+            return self
+
+
+    
+    def reshape_list(self, shape):
+        """Reshape a flat list into nested lists.
+
+        ``shape`` defines the length of each list level. Items keep their
+        original linear order.
+
+        ``` python
+        values = Float.List(*range(16))
+        matrix = values.reshape_list((4, 4))
+
+        first  = matrix[0][0]
+        last   = matrix[3][3]
+        ```
+
+        Shapes with more than two dimensions are supported:
+
+        ``` python
+        values = Float.List(*range(24))
+        blocks = values.reshape_list((2, 3, 4))
+        ```
+
+        Dimensions can also be Integer sockets:
+
+        ``` python
+        rows = Integer(name="Rows")
+        table = values.reshape_list((rows, 4))
+        ```
+
+        A single dimension does not require a tuple:
+
+        ``` python
+        values.reshape_list(16)
+        # Equivalent to values.reshape_list((16,))
+        ```
+
+        A one-dimensional shape flattens one existing level of nested lists.
+        A warning is emitted when the resulting length differs from the
+        requested dimension.
+
+        Parameters
+        ----------
+        shape : int | Integer | tuple[int | Integer]
+            Length of every dimension. A single integer is interpreted as a
+            one-dimensional shape. Dimensions must be strictly positive.
+
+        Returns
+        -------
+        Socket
+            This socket, updated to point to the reshaped list.
+
+        """
+
+        if not hasattr(shape, '__len__'):
+            shape = (shape,)
+
+        shape = tuple(shape)
+
+        ok_shape = True
+        for d in shape:
+            if isinstance(d, Socket):
+                oK_shape = False
+        
+        shape_str = f"({shape})" if ok_shape else ""
+
+        from .closure import Closure
+        from .integer import Integer
+        from .string import String
+
+        with Layout(f"Socket.reshape_list{shape_str}"):
+
+            if len(shape) == 1:
+
+                self.flatten_list()
+
+                res_length = self.list_length()
+
+                message = String.Join(
+                    f"{self._name}.reshape_list(" + Integer(shape[0]).to_string() + ")",
+                    "the resulting list length is",
+                    res_length.to_string(),
+                    delimiter = " ",
+                )
+
+                self.list_length().not_equal(shape[0]).warning(message)
+                return self
+
+            dimensions = [Integer(size) for size in shape]
+
+            # ----- Build nested lists
+
+            def build(level, linear_index=None):
+                with Closure() as closure:
+                    index = Integer(0, "Index")
+
+                    if linear_index is None:
+                        next_index = index
+                    else:
+                        next_index = linear_index * dimensions[level] + index
+
+                    if level == len(dimensions) - 1:
+                        value = self[next_index]
+                    else:
+                        value = build(level + 1, next_index)
+
+                    value.out("Value")
+
+                return closure.to_list(count=dimensions[level])
+
+            self._jump(build(0))
+            return self
+
+    def to_node_inputs(self, node, *names):
+        """Connect successive list items to a node's inputs.
+
+        This is the natural socket-oriented shortcut for
+        ``node._list_to_inputs(*names, socket_list=self)``.
+
+        When ``names`` is empty, all node inputs matching the type of the list
+        items are fed, in their order on the node. Otherwise, only the named
+        inputs are used.
+
+        ``` python
+        separate = Node('Separate XYZ', vector=vector)
+        components = separate._outputs_to_list()
+
+        combine = Node('Combine XYZ')
+        components.to_node_inputs(combine)
+        ```
+
+        Parameters
+        ----------
+        node : Node
+            Node whose inputs are to be connected.
+
+        names : str
+            Optional names of the inputs to feed.
+
+        Returns
+        -------
+        Node
+            The target node.
+        """
+        return node._list_to_inputs(*names, socket_list=self)
+
+    # ====================================================================================================
+    # Owning node
+    # ====================================================================================================
+
+    @property
+    def node_color(self):
+        """ Node color
+
+        Returns
+        -------
+        SysColor
+        """
+        return self.node._color
+
+    @node_color.setter
+    def node_color(self, value):
+        self.node._color = value
+
+    @property
+    def node_label(self):
+        """ Node Label
+
+        Returns
+        -------
+        str
+        """
+        return self.node._label
+
+    @node_label.setter
+    def node_label(self, value):
+        self.node._label = value
+
+    # ----------------------------------------------------------------------------------------------------
+    # Socket description is used as user label
+    # treearrange will have access to this description to properly name the reroute nodes
+    # ----------------------------------------------------------------------------------------------------
+
+    @property
+    def user_label(self):
+        if self.node._bnode.bl_idname == 'NodeGroupInput':
+            return self._bsocket.name
+        
+        d = self._bsocket.description
+        if d.startswith("UL "):
+            return d[3:]
+        else:
+            return ""
+    
+    @user_label.setter
+    def user_label(self, value):
+        if self.node._bnode.bl_idname == 'NodeGroupInput':
+            return
+
+        if value is None:
+            return
+        
+        self._bsocket.description = "UL " + str(value)
+
+    # ----------------------------------------------------------------------------------------------------
+    # Set user label and returns self for chaining
+    # ----------------------------------------------------------------------------------------------------
+
+    def _ul(self, label : str):
+        """ Set the user label
+
+        Parameters
+        ----------
+        label : str
+            the label to append
+
+
+        Returns
+        -------
+        self
+        """
+        self.user_label = label
+        return self
+
+    # ----------------------------------------------------------------------------------------------------
+    # Set Node color and label plus socket description 
+    # ----------------------------------------------------------------------------------------------------
+
+    def _lc(self, label: str = None, color: SysColor = None):
+        """ Set node label and color.
+
+        This method returns self to be chained to as socket:
+
+        ``` python
+        with GeoNodes("Node label and color"):
+            Geometry().out()
+
+            a = Float(10)._lc("Var a")
+            b = Float(10)._lc("Var b")
+            c = (a + b)._lc("a + b", (1, 0, 0))
+        ```
+
+        Parameters
+        ----------
+        label : str, optional
+            node label default=None.
+
+        color : SysColor, optional
+            node color default=None.
+
+
+        Returns
+        -------
+        self
+        """
+
+        if self.node._bnode.bl_idname == 'NodeGroupInput':
+            return self
+
+        self.node_label = label
+        self.node_color = color
+        self.user_label = label
+
+        return self
+    
+    def _lcop(self, label=None):
+        return self._lc(label=label, color='OPERATION')
+
+    # =============================================================================================================================
+    # Link node from
+    # =============================================================================================================================
+
+    def link_inputs(self,
+        from_node   : Node = None,
+        from_panel  : str = "",
+        *,
+        include     : list =  None,
+        exclude     : list  = [],
+        panel       : str = "",
+        ):
+        """ Link input sockets of the node
+
+        Allow to chain input sockets linking.
+        """
+        self.node.link_inputs(from_node, from_panel=from_panel, include=include, exclude=exclude, panel=panel)
+        return self
+    
+    def link_panel(self, panel: str, from_node : Node = None):
+        """ Link panel input sockets of the node
+
+        Allow to chain input sockets linking.
+        """
+        self.node.link_panel(panel, from_node=from_node)
+        return self
+
+      
+
+
+    # =============================================================================================================================
+    # Gizmo
+    # =============================================================================================================================
+
+    @property
+    def pin_gizmo(self):
+        self._is_empty("No gizmo is possible.")
+        return self._bsocket.pin_gizmo
+
+    @pin_gizmo.setter
+    def pin_gizmo(self, value):
+        self._is_empty("No gizmo is possible.")
+        self._bsocket.pin_gizmo = value
+
+    # ====================================================================================================
+    # A dynamic attribute can be:
+    # - a peer socket : an output socket of the owning node
+    # - a group method
+    # To avoid names collision, the attribute name can be suffixed by '_' which is ignored
+    # ====================================================================================================
+
+    # ----------------------------------------------------------------------------------------------------
+    # Get attr
+    # ----------------------------------------------------------------------------------------------------
+
+    def __getattr__(self, name):
+
+        if name in {"__dict__", "__weakref__"}:
+            raise AttributeError(name)
+
+        self._is_empty(f"Impossible to get an attribute from an empty socket (name: '{name}')")
+
+        # Ignore the ending '_' char
+        true_name = name
+        if name[-1] == '_':
+            true_name = name[:-1]
+            if true_name == "" or true_name[-1] == '_':
+                raise AttributeError(f"Socket {self} doesn't have peer socket named '{name}'")
+            
+        sc_name = utils.snake_case(true_name)
+            
+        # ---------------------------------------------------------------------------
+        # Another node output socket
+        # ---------------------------------------------------------------------------
+
+        socket = self.node.get_socket('OUTPUT', true_name, None, halt=False)
+        if socket is not None:
+            return socket
+        
+        # ---------------------------------------------------------------------------
+        # A group
+        # ---------------------------------------------------------------------------
+
+        trees = utils.get_available_groups(self.node._tree._btree.bl_idname)
+        node_tree = None
+        for group_name, spec in trees.items():
+            if utils.snake_case(group_name) == sc_name:
+                node_tree = blender.load_node_group(spec)
+                break
+
+        if node_tree is not None:
+
+            def group_call(named_sockets={}, **sockets):
+                
+                all_sockets = {**named_sockets, **sockets}
+
+                new_sockets = {**named_sockets}
+
+                check_selec = 'Selection' not in all_sockets and 'selection' not in all_sockets and self._socket_type == 'GEOMETRY'
+
+                interf = TreeInterface(node_tree)
+                socks = interf.get_sockets('INPUT')
+                for isock, sock in enumerate(socks):
+
+                    # Current socket is the proper type
+                    if SocketType(sock) == self._socket_type:
+                        if sock.name not in all_sockets and utils.snake_case(sock.name) not in all_sockets:
+
+                            # Set value to self
+                            new_sockets[sock.name] = self
+
+                            # Selection following a Geometry 
+                            if check_selec and isock < len(socks) - 1:
+                                next_sock = socks[isock + 1]
+                                if next_sock.name == 'Selection' and SocketType(next_sock) == 'BOOLEAN':
+                                    new_sockets['Selection'] = self.get_selection()
+                            break
+
+                return Group(node_tree.name, named_sockets = new_sockets, **sockets)._out
+            
+            # Returns the function creating the group with the proper arguments
+            return group_call
+        
+        # ---------------------------------------------------------------------------
+        # Error message
+        # ---------------------------------------------------------------------------
+
+        is_node = true_name in dir(self.node)
+
+        node_names = list(set([sock.name for sock in self.node._bnode.outputs]))
+        tree_names = list(trees.keys())
+
+        node_prox = utils.prox_names(true_name, node_names)
+        tree_prox = utils.prox_names(true_name, tree_names)
+
+        if is_node:
+            msg = f"Perhaps you want to call the node method '{true_name}', use syntax: 'socket.node.{true_name}(...)' instead of 'socket.{true_name}'"
+        elif len(node_prox):
+            msg = f"Perhaps you wanted to access the peer socket '{node_prox[0]}' ({utils.snake_case(node_prox[0])})"
+        elif len(tree_prox):
+            msg = f"Perhaps you wanted to call the group '{tree_prox[0]}' ({utils.snake_case(tree_prox[0])})"
+        else:
+            msg = f"If you try to access a peer socket, the node sockets are given below:\n{repr(self.node)}"
+
+        ne = NodeError(f"{type(self).__name__} socket doesn't have an attribute named '{name}'.\n{msg}")
+
+        raise AttributeError(str(ne))
+    
+    # ====================================================================================================
+    # Test a value in a list
+    # ====================================================================================================
+
+    @staticmethod
+    def check_in_list(value, valids, context=""):
+        if value in valids:
+            return True
+        raise NodeError(f"{context} value error: '{value}' is not valid.", valids=valids)
+    
+    # ====================================================================================================
+    # To output
+    # ====================================================================================================
+
+    def out(self, name: str = None, panel: str = "", **props):
+        """ Plug the value to the Group Output Node.
+
+        ``` python
+        with GeoNodes("Plug to group output"):
+            # Create a cube
+            geo = Mesh.Cube()
+            # To Group Output geometry as socket named "Cube"
+            geo.out("Cube")
+        ```
+
+        The "Do nothing" modifier is simply ``` Geometry().out() ```
+
+        Parameters
+        ----------
+        name : str, optional
+            socket name default=None.
+
+
+        Returns
+        -------
+        None
+        """
+        self._is_empty(f"Impossible to link an empty socket (name: '{name}').")
+
+        out_node = self._tree.get_output_node()
+        out_node.set_input_socket(name=name, value=self, create=True, panel=panel, **props)
+
+    @classmethod
+    def Out(cls, value, name: str = None, panel: str = "", **props):
+        """Send a value to the current group or zone output.
+
+        Constants are assigned directly to the output node's input, without
+        creating a constant node. Socket.Out infers the type; subclasses such
+        as Float.Out explicitly select the output type.
+
+        ``` python
+        Socket.Out(3.14, "Pi")
+        Float.Out(1, "Factor")
+        Socket.Out(value, "Result")
+        ```
+
+        Parameters
+        ----------
+        value : Any
+            Constant or socket to output.
+        name : str, optional
+            Output socket name.
+        panel : str, optional
+            Output panel.
+        **props
+            Properties used when creating the output socket.
+
+        Returns
+        -------
+        None
+        """
+        tree = Tree.current_tree()
+        if tree is None:
+            raise NodeError("Socket.Out requires an active tree.")
+
+        if isinstance(value, Socket):
+            value._is_empty(f"Impossible to link an empty socket (name: '{name}').")
+
+        out_node = tree.get_output_node()
+        if cls.SOCKET_TYPE is None:
+            if name is None and utils.get_bsocket(value) is None:
+                name = SocketType(value).class_name
+            out_node.set_input_socket(name=name, value=value, create=True, panel=panel, **props)
+            return
+
+        socket_type = SocketType.from_type(cls.SOCKET_TYPE)
+        full_name = None if name is None else (ItemPath(panel) + name).path
+        socket = out_node.get_socket('INPUT', full_name, socket_type,
+                                     free_only=True, halt=False)
+        if socket is None:
+            if name is None:
+                name = socket_type.class_name
+            socket = out_node.create_socket('INPUT', socket_type, name=name, panel=panel, **props)
+        out_node.set_input_socket_value(socket, value)
+
+    # ====================================================================================================
+    # Context management
+    # ====================================================================================================
+
+    def _push(self):
+
+        from .tree import Layout
+
+        self.node._push()
+
+        # Push a Layout dedicated this context
+        # (will be removed by arrange if no node is created)
+        if self._use_layout:
+            self._layout = Layout()
+            self._layout.push()
+
+    def _pop(self, error: bool = False):
+
+        self.node._pop(error)
+
+        # Pop inout capture and layout
+        if self._use_layout:
+            self._layout.pop()
+
+    def __enter__(self):
+        self._push()
+        return self
+    
+    def __exit__(self, type, exc_value, traceback):
+        ok = exc_value is None or isinstance(exc_value, Break)
+        self._pop(not ok)
+    
+    # ====================================================================================================
+    # Menu Switch
+    # ====================================================================================================
+
+    # ----------------------------------------------------------------------------------------------------
+    # Constructor version
+    # ----------------------------------------------------------------------------------------------------
+
+    @classmethod
+    def MenuSwitch(cls, 
+                   named_sockets    : dict = {},
+                   default_menu     : str = None,
+                   **sockets):
+        """ > Node <&Node Menu Switch>
+
+        The items of the Menu Switch node are provided in the 'items' dict.
+
+        Parameters
+        ----------
+        named_sockets : dict, optional
+            sockets to create default={}.
+
+        default_menu : str, optional
+            default menu value default=None.
+
+        sockets : dict
+            items
+
+
+        Returns
+        -------
+        Socket
+        """
+        node = Node('Menu Switch',
+                named_sockets = named_sockets,
+                data_type = SocketType.from_type(cls.SOCKET_TYPE).type,
+                #default_menu = default_menu,
+                **sockets)
+        node._default_menu = default_menu
+        
+        return cls(node._out)
+    
+    # ----------------------------------------------------------------------------------------------------
+    # Method version
+    # ----------------------------------------------------------------------------------------------------
+
+    def menu_switch(self,
+                self_name       : str = 'Self', 
+                named_sockets   : dict = {},
+                default_menu    : str = None,
+                **sockets):
+        """ > Node <&Node Menu Switch>
+
+        [&NO_JUMP]
+
+        Self is connected to the first menu item with the name provided as argument.
+
+        The items of the Menu Switch node are provided in the 'items' dict.
+        An group input socket named after the 'name' argument is linked to menu selector.
+
+        Parameters
+        ----------
+        named_sockets : dict, optional
+            sockets to create default={}.
+
+        default_menu : str, optional
+            default menu value default=None.
+
+        sockets : dict
+            items
+
+
+        Returns
+        -------
+        Socket
+        """        
+        return self.MenuSwitch(named_sockets = {self_name: self, **named_sockets}, default_menu=default_menu, **sockets)
+    
+    # ====================================================================================================
+    # Setting the menu
+    # ====================================================================================================
+
+    @property
+    def menu(self):
+        raise NodeError(f"Menu Switch error: 'menu' is a write only property.")
+    
+    @menu.setter
+    def menu(self, value):
+        if self.node._bnode.bl_idname != 'GeometryNodeMenuSwitch':
+            raise NodeError(f"Impossible to set the menu, the socket {self} is not the output of a [Menu Switch] node")
+        
+        self.node.set_input_socket("menu", value)
+
+    
+    # ====================================================================================================
+    # Index Switch
+    # ====================================================================================================
+
+    # ----------------------------------------------------------------------------------------------------
+    # Constructor version
+    # ----------------------------------------------------------------------------------------------------
+
+    @classmethod
+    def IndexSwitch(cls, *values, index = None, default_index: int = 0):
+        """ > Node <&Node Index Switch>
+
+        ``` python
+        with GeoNodes("IndexSwitch demo"):
+
+            # Create some geometries
+            geo    = Geometry()
+            cube   = Mesh.Cube()
+            sphere = Mesh.IcoSphere()
+            cone   = Mesh.Cone()
+
+            # Pick in this list
+            pick_geo = Geometry.IndexSwitch(geo, cube, sphere, cone, index=tree.new_input("Geometry index", default_value=2))
+
+            # Plug the result to the output
+            pick_geo.out()
+        ```
+
+        Parameters
+        ----------
+        *values : Any
+            List of Sockets to select into
+
+        index : Integer, optional
+            socket 'Index' (Index) default=None.
+
+        default_index : int, optional
+            default idex default=0.
+
+
+        Returns
+        -------
+        Socket
+        """
+        node = Node('Index Switch', 
+                        {str(i): value for i, value in enumerate(values)}, 
+                        data_type=cls.SOCKET_TYPE, 
+                        Index=index)
+        return cls(node._out)
+    
+    # ----------------------------------------------------------------------------------------------------
+    # Method version
+    # ----------------------------------------------------------------------------------------------------
+
+    def index_switch(self, *values, index = None, default_index: int = 0):
+        """ > Node <&Node Index Switch>
+
+        ``` python
+        with GeoNodes("index_switch demo") as tree:
+
+            # Create some geometries
+            geo    = Geometry()
+            cube   = Mesh.Cube()
+            sphere = Mesh.IcoSphere()
+            cone   = Mesh.Cone()
+
+            # Pick in this list
+            pick_geo = geo.index_switch(cube, sphere, cone, index=tree.new_input("Geometry index", default_value=2))
+
+            # Plug the result to the output
+            pick_geo.out()
+        ```
+
+        Parameters
+        ----------
+        *values : Any
+            List of Sockets to select into
+
+        index : Integer, optional
+            socket 'Index' (Index)
+
+        default_index : int, default=0
+            default idex
+
+        Returns
+        -------
+        Socket
+        """
+        return self.IndexSwitch(self, *values, index=index, default_index=default_index)
+    
+    # ====================================================================================================
+    # Switch
+    # ====================================================================================================
+
+    # ----------------------------------------------------------------------------------------------------
+    # Constructor version
+    # ----------------------------------------------------------------------------------------------------
+
+    @classmethod
+    def Switch(cls, condition=None, false=None, true=None):
+        """ > Node <&Node Switch>
+
+        ``` python
+        with GeoNodes("Switch demo"):
+
+            # Two possible geometries
+            cube   = Mesh.Cube()
+            sphere = Mesh.IcoSphere()
+
+            # Select
+            geo = Geometry.Switch(Boolean(True, "Use Sphere"), cube, sphere)
+
+            # To group output
+            geo.out()
+        ```
+
+        Parameters
+        ----------
+        condition : Boolean
+            socket 'Switch' (Switch)
+
+        false
+            socket 'False' (False)
+
+        true
+            socket 'True' (True)
+
+
+        Returns
+        -------
+        Socket
+            Socket wrapped in the calling class (for example, Mesh.Switch returns Mesh).
+        """
+        input_type = SocketType.from_type(cls.SOCKET_TYPE).items_type
+        node = Node('Switch', {'Switch': condition, 'False': false, 'True': true}, input_type=input_type)
+        return cls(node._out)
+
+    # ----------------------------------------------------------------------------------------------------
+    # Method version
+    # ----------------------------------------------------------------------------------------------------
+
+    def switch(self, condition=None, true=None):
+        """ > Node <&Node Switch>
+
+        Self is connected to 'false' socket.
+
+        !!! note
+            switch returns self if global constant SWITCH_JUMP = True (default)
+            set SWITCH_JUMP = False for legacy behavior
+
+        ``` python
+        with GeoNodes("Switch demo"):
+        
+            from geonodes import core_module
+            constants = core_module.constants
+            # Legacy behavior (default is True)
+            constants.SWITCH_JUMP = False
+
+            choice = Boolean(True, "Use Sphere")
+
+            # Two possible geometries
+            cube   = Mesh.Cube()
+            sphere = Mesh.IcoSphere()
+
+            # Select
+            # Legacy behavior: cube is unchanged otherwise cube
+            geo = cube.switch(choice, sphere)
+
+            # To group output
+            geo.out()
+        ```
+
+        Information
+        -----------
+        - Socket 'False' : self
+
+        Parameters
+        ----------
+        condition : Boolean
+            socket 'Switch' (Switch)
+
+        true
+            socket 'True' (True)
+
+
+        Returns
+        -------
+        Socket (self)
+        """
+        res = self.Switch(condition=condition, false=self, true=true)
+        if constants.SWITCH_JUMP:
+            return self._jump(res)
+        else:
+            return res
+    
+    # ----------------------------------------------------------------------------------------------------
+    # Alternative method version
+    # ----------------------------------------------------------------------------------------------------
+
+    def switch_false(self, condition=None, false=None):
+        """ > Node <&Node Switch>
+
+        [&JUMP]
+
+        Self is connected to 'true' socket.
+
+        !!! important
+            This methods behaves the inverse of <#switch> : self is connected to "True" socket and  the argument to "False", socket
+
+        !!! note
+            This method is mainly provided to cover the case when 'False' socket is None
+
+        ``` python
+        with GeoNodes("Switch demo"):
+
+            geo = Geometry()
+
+            show_geometry = Boolean(False, "Merge with Cube")
+
+            cube = Mesh.Cube()
+
+            geo += cube.switch_false(show_geometry)
+
+            # Is equivalent to
+            geo += Geometry.Switch(show_geometry, None, cube)
+
+            # To group output
+            geo.out()
+        ```
+
+        !!! note
+            This method let self socket unchanged. To set self socket to the result
+
+        Information
+        -----------
+        - Socket 'True' : self
+
+        Parameters
+        ----------
+        condition : Boolean
+            socket 'Switch' (Switch)
+
+        false
+            socket 'False' (False)
+
+
+        Returns
+        -------
+        Socket
+        """
+        res = self.Switch(condition=condition, false=false, true=self)
+        if constants.SWITCH_JUMP:
+            return self._jump(res)
+        else:
+            return res
+    
+    # ====================================================================================================
+    # Loops
+    # ====================================================================================================
+
+    # ----------------------------------------------------------------------------------------------------
+    # Repeat
+    # ----------------------------------------------------------------------------------------------------
+
+    def repeat(self, iterations=1, named_sockets: dict={}, **sockets):
+        """ Repeat zone
+
+        Parameters
+        ----------
+        iterations : Integer, default=1
+            iteration socket
+
+        named_sockets : dict, default={}
+            named sockets
+
+        sockets : dict, optional
+            other sockets
+
+
+        Returns
+        -------
+        ZoneIterator
+        """
+        class_name = type(self).__name__
+        node = ZoneNode("Repeat", named_sockets={class_name: self, **named_sockets}, Iterations=iterations, **sockets)
+        return ZoneIterator(self, node)
+    
+    # ----------------------------------------------------------------------------------------------------
+    # Simulation
+    # ----------------------------------------------------------------------------------------------------
+
+    def simulation(self, named_sockets: dict={}, **sockets):
+        """ Simulation zone
+
+        Parameters
+        ----------
+        named_sockets : dict, default={}
+            named sockets
+
+        sockets : dict, optional
+            other sockets
+
+        Returns
+        -------
+        ZoneIterator
+        """
+        class_name = type(self).__name__
+        node = ZoneNode("Simulation", named_sockets={class_name: self, **named_sockets}, **sockets)
+        return ZoneIterator(self, node)
+    
+    # ====================================================================================================
+    # Add the current tree as Socket method
+    # ====================================================================================================
+    
+    def add_method(self, name: str = None, jump: bool = False, ret_class: type = None, **fixed):
+        """ Add the current tree as a method of the Socket class.
+
+        !!! important
+
+            The socket instance must be an input socket of the Tree. This input plays the role of
+            self argument.
+
+        ``` python
+        with GeoNodes("Translate"):
+            geo = Geometry()
+            v = Vector(0, "Translation)
+            geo.transform(translation=v)
+
+            geo.add_method(jump=True)
+        ```
+
+        Once the modifier completed, it can be called as a method of geometry ```geo.translate(translation=(1, 2, 3))```
+
+        Parameters
+        ----------
+        name : str, optional
+            replace the default name which is the snake case version of the group name default=None.
+
+        ret_class : type, optional
+            transtype the default node output default=None.
+
+        jump : bool, optional
+            the calling socket jumps to the node outpus after the call default=False.
+
+        ret_class : type, optional
+            transtype the result with this class if not None default=None.
+
+        """
+
+        if self.node._bnode.bl_idname != 'NodeGroupInput':
+            raise NodeError(
+                f"'add_method' can be called only from a 'Group Input' socket. "
+                "This socket is used a 'self' argument when calling the method of {type(self).__name__}.")
+
+        tree = Tree.current_tree()
+
+        # ---------------------------------------------------------------------------
+        # Method Body
+        # ---------------------------------------------------------------------------
+
+        socket_rank = self.node._outputs.get_socket_rank(self)
+        socket_name = utils.snake_case(self._bsocket.name)
+
+
+        def call(self_, *args, **kwargs):
+            node = Group(tree._btree.name)
+            if socket_rank >= len(args):
+                new_args = args
+                new_kwargs = {socket_name: self_, **kwargs}
+            else:
+                new_args = args[:socket_rank] + (self_,) + args[socket_rank:]
+                new_kwargs = kwargs
+
+            res = node.method_call(*new_args, ret_class=ret_class, **new_kwargs, **fixed)
+        
+            if jump:
+                return self_._jump(res)
+            else:
+                return res
+        
+        # ---------------------------------------------------------------------------
+        # Add the method to the class
+        # ---------------------------------------------------------------------------
+
+        if name is None:
+            name = tree._btree.name[len(tree._prefix):].strip()
+            name = utils.snake_case(name)
+
+        class_ = type(self)
+        if name in dir(class_):
+            print(f"CAUTION: the method '{name}' (implementing group '{tree._btree.name}') already exists in class {class_}.")
+
+        setattr(class_, name, call)
+
+
+    # ====================================================================================================
+    # Class Test
+    # ====================================================================================================
+
+    @staticmethod
+    def _test_socket_to_data_type():
+
+        from ..common.utils import SOCKET_CLASSES
+        from pprint import pprint
+        
+        # ----------------------------------------------------------------------------------------------------
+        # Create the test tree
+        # ----------------------------------------------------------------------------------------------------
+        
+        tree = bpy.data.node_groups.get("Test")
+        if tree is None:
+            tree = bpy.data.node_groups.new("Test", 'GeometryNodeTree')
+            
+        tree.nodes.clear()
+        
+        # ----------------------------------------------------------------------------------------------------
+        # Loop on nodes
+        # ----------------------------------------------------------------------------------------------------
+        
+        tested_nodes        = {}
+        tests               = {}
+        data_type_to_socket = {}
+        socket_to_data_type = {}
+        orphans             = set()
+        mults               = set()
+            
+        for type_name in dir(bpy.types):
+            
+            # Create the node
+            
+            try:
+                node = tree.nodes.new(type_name)
+            except:
+                continue
+            
+            # data_type and input_type params
+            
+            T = type(node)
+            param_name = None
+            for name in ['data_type', 'input_type']:
+                if name in dir(node):
+                    param_name = name
+                    break
+                
+            if param_name is None:
+                continue
+            
+            # List of valid identifier
+            # dt_to_sock : all socket types giving the data_type
+            
+            dt_to_sock = {enum.identifier: [] for enum in T.bl_rna.properties[param_name].enum_items}
+            
+            # Register
+            tested_nodes[node.name] = {'param_name': param_name, 'enums': tuple(dt_to_sock.keys())}
+            
+            # Test identical lists once
+            key = str(set(dt_to_sock.keys()))
+            if key in tests:
+                tests[key]['nodes'].append(node.name)
+                continue
+            
+            # loop on SOCKET_TYPE
+            
+            sock_to_dt = {}
+            for socket_type in SOCKET_CLASSES:
+                
+                st = SocketType.from_type(socket_type)
+                
+                # The core method to test
+                dt = st.convert_type_for_node(socket_type, node.bl_idname, param_name, on_error='NONE')
+                
+                # We have a result
+                if dt is not None:
+                    sock_to_dt[st.class_name] = dt
+                    dt_to_sock[dt].append(st.class_name)
+                    
+                    l = socket_to_data_type.get(st.class_name, set())
+                    l.add(dt)
+                    socket_to_data_type[st.class_name] = l
+                    
+                    l = data_type_to_socket.get(dt, set())
+                    l.add(st.class_name)
+                    data_type_to_socket[dt] = l
+                    
+                    
+            # Register the result
+            tests[key] = {
+                "nodes"      : [node.name],
+                "sock_to_dt" : sock_to_dt,
+                "dt_to_sock" : dt_to_sock,
+                }
+            
+            # Check that all possible choices are reached
+            # Could happen with the node 'Store Named Attribute' for instance
+            
+            node_orphans = set()
+            node_mults = set()
+            for k, v in dt_to_sock.items():
+                if len(v) == 0:
+                    node_orphans.add(k)
+                elif len(v) > 1:
+                    node_mults.add((k, tuple(v)))
+
+            orphans = orphans.union(node_orphans)
+            mults = mults.union(node_mults)
+            
+        # ----------------------------------------------------------------------------------------------------
+        # Print the results
+        # ----------------------------------------------------------------------------------------------------
+        
+        print('-'*100)
+        print("Test Socket to data_type")
+        print('-'*100)
+        print()
+        print(f"Nodes: {len(tested_nodes)}")
+        for k, v in tested_nodes.items():
+            print(f"- {k:25s} : {v['param_name']}")
+        print()
+        
+        print(f"Enums: {len(tests)}")
+        for k, v in tests.items():
+            print(f"{len(v['nodes'])} :", tuple(v['dt_to_sock'].keys()))        
+        print()
+        
+        print("Socket -> data_type")
+        for k, v in socket_to_data_type.items():
+            print(f"- {k:15s} :", v)
+        print()
+        
+        print("data_type -> Socket")
+        for k, v in data_type_to_socket.items():
+            print(f"- {k:15s} :", v)
+        print()
+        
+        print("Orphans: data_type not coming from a Socket")
+        pprint(orphans)
+        print()
+        
+        print("Mults: sockets giving the same data_type")
+        pprint(mults)
+        print()
+
+    @staticmethod
+    def _class_test():
+
+        from ..common.utils import SOCKET_CLASSES
+        from ..geonodes.geonodes import GeoNodes
+        from .geometry import Geometry
+        from .float import Float
+        from .tree import Layout
+        from .color import Color
+        from .rotation import Rotation
+        from .vector import Vector
+        from .matrix import Matrix
+        from .bundle import Bundle
+        from .integer import Integer
+        from .. import nd
+
+        Socket._test_socket_to_data_type()
+
+        with GeoNodes("Socket Class Test") as tree:
+
+            # Create inputs
+            for stype, klass in SOCKET_CLASSES.items():
+                if stype == 'SHADER':
+                    continue
+                class_name = klass.__name__
+                a = klass(name=class_name)
+
+            # Getting existing inputs
+            for stype, klass in SOCKET_CLASSES.items():
+                if stype in ['SHADER', 'MENU']:
+                    continue
+                class_name = klass.__name__
+                klass.Input(class_name).out(f"Out {class_name}")
+
+            # Constants
+            with Layout("Constants"):
+                for stype, klass in SOCKET_CLASSES.items():
+                    if stype == 'SHADER':
+                        continue
+                    a = klass()
+
+            # Arrays
+            with Layout("Colors"):
+                Color(.8).out(panel="Color")
+                Color((.1, .2, .3)).out(panel="Color")
+                Color((.1, .2, .3, .4)).out(panel="Color")
+                Color(Float(.89)).out(panel="Color")
+                Color((Float(.5), 0, 0)).out(panel="Color")
+                Color((0, Float(.5), 1)).out(panel="Color")
+                Color((Float(.5), Float(.5), Float(.5), Float(.5))).out(panel="Color")
+
+            with Layout("Vector"):
+                Vector(.8).out(panel="Vector")
+                Vector((.1, .2, .3)).out(panel="Vector")
+                Vector(Float(.89)).out(panel="Vector")
+                Vector((Float(.5), 0, 0)).out(panel="Vector")
+                Vector((0, Float(.5), 1)).out(panel="Vector")
+                Vector((Float(.5), Float(.5), Float(.5))).out(panel="Vector")
+
+            with Layout("Rotation"):
+                Rotation(.8).out(panel="Rotation")
+                Rotation((.1, .2, .3)).out(panel="Rotation")
+                Rotation(Float(.89)).out(panel="Rotation")
+                Rotation((Float(.5), 0, 0)).out(panel="Rotation")
+                Rotation((0, Float(.5), 1)).out(panel="Rotation")
+                Rotation((Float(.5), Float(.5), Float(.5))).out(panel="Rotation")
+
+            with Layout("Matrix"):
+                Matrix(.8).out(panel="Matrix")
+                Matrix([i for i in range(16)]).out(panel="Matrix")
+                Matrix([Float(i) for i in range(16)]).out(panel="Matrix")
+
+        with GeoNodes("List Tests"):
+
+            geo = Geometry()
+
+            with Bundle() as bundle:
+
+                l = Matrix().separate_to_list()
+                l.reshape_list((4, 4))
+                l.reshape_list(16)
+                m = Matrix.FromList(l)
+                m.out()
+
+                l = Vector().separate_to_list()
+                v = Vector.FromList(l)
+                v.out()
+
+                l = Color().separate_to_list()
+                c = Color.FromList(l)
+                c.out()
+
+                l = Rotation().separate_to_list()
+                r = Rotation.FromList(l)
+                r.out()
+
+                l = (nd.index*2.0).to_list(10)
+                l.list_append(22)
+                ol = (nd.index*10.0).to_list(5)
+                l.list_append(ol)
+                l.list_length().not_equal(16).warning("List length 16 expected")
+                l.out()
+
+                Float(6.28*nd.index).field_to_list(Rounds_Count=nd.index, count=10).node.out()
+                Integer.List(*[2**i for i in range(8)]).out("Powers of 2")
+
+
+            geo.set_bundle(bundle)
+            geo.out()
+
+
+                
+
+
+
+
+# ====================================================================================================
+# Input socket
+# ====================================================================================================
+
+class Input(Socket):
+
+    __slots__ = Socket.__slots__ + ('name', 'panel', 'props')
+
+    SOCKET_TYPE = 'CUSTOM'
+
+    def __init__(self, name: str = None, panel: str = "", **props):
+        """ Input Socket wrapping an output virtual socket.
+
+        When plugging to the input socket of a Node, a New socket is creaated.
+
+        Parameters
+        ----------
+        name : str, optional
+            the name to give to the output default=None.
+
+        panel : str, optional
+            the panel to create if possible default="".
+
+        props : dict
+            socket properties
+
+        """
+
+        innode = Tree.current_tree().get_input_node()
+
+        bsocket = None
+        for bsock in innode._bnode.outputs:
+            if bsock.type == 'CUSTOM':
+                bsocket = bsock
+                break
+
+        if bsocket is None:
+            raise RuntimeError(f"Impossible to initialize an Input socket: no output virtual socket found in node {innode}.")
+        
+        super().__init__(bsocket)
+
+        self.name  = name
+        self.panel = panel
+        self.props = {**props}

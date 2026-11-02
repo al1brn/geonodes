@@ -22,7 +22,7 @@ $ DOC toc_max_depth = 1
   <*Node Math>, <*Node Vector Math> and <*Node Boolean Math>
 - <!nd> (for _nodes_) : this special class exposes one method or property per node,
   especially useful for input nodes such as <*Node Index> or <*Node Position>
-- <!snd> (for _shader nodes_) : same as <!nd> for shader node
+- <!nd> also selects shader nodes inside a ShaderNodes context
 
 ### Sockets
 
@@ -97,39 +97,105 @@ d270   = np.pi*1.5
 d360   = tau
 e      = np.e
 
-from .core import PRODUCTION, __version__, blender_version
+import bpy
+
+COMPATIBLE_BLENDER_VERSION = (5, 2, 0)
+BLENDER_VERSION = bpy.app.version
+
+if BLENDER_VERSION == COMPATIBLE_BLENDER_VERSION:
+    from . import core as core_module
+else:
+    try:
+        from . import core_new as core_module
+        print("Geonodes info: Working with new core")
+    except:
+        from . import core as core_module
+        print("CAUTION: impossible to load 'core_new' module")
+
+
+PRODUCTION = core_module.PRODUCTION
+__version__ = core_module.__version__
+blender_version = core_module.blender_version
 
 if PRODUCTION:
     
-    from .core import Break
-    from .core import blender
+    Break = core_module.Break
+    blender = core_module.blender
 
-    from .core import Signature
+    Signature = core_module.Signature
 
-    from .core import Attribute
-    from .core import Socket, Input, Boolean, Float, Integer, Vector, Rotation, Matrix, Color, String
-    from .core import Texture, Collection, Object, Image, Material, Font
-    from .core import Menu
-    from .core import Geometry, Domain
-    from .core import Point, Vertex, Face, Edge, Corner, SplinePoint, Spline, CloudPoint, Instance, Layer
-    from .core import Mesh, Curve, Cloud, Instances, GreasePencil, Volume
-    from .core import simulation, repeat
+    Attribute = core_module.Attribute
+    Socket = core_module.Socket
+    Input = core_module.Input
+    Boolean = core_module.Boolean
+    Float = core_module.Float
+    Integer = core_module.Integer
+    Vector = core_module.Vector
+    Rotation = core_module.Rotation
+    Matrix = core_module.Matrix
+    Color = core_module.Color
+    String = core_module.String
+    Texture = core_module.Texture
+    Collection = core_module.Collection
+    Object = core_module.Object
+    Image = core_module.Image
+    Material = core_module.Material
+    Font = core_module.Font
+    Menu = core_module.Menu
+    Geometry = core_module.Geometry
+    Domain = core_module.Domain
+    Point = core_module.Point
+    Vertex = core_module.Vertex
+    Face = core_module.Face
+    Edge = core_module.Edge
+    Corner = core_module.Corner
+    SplinePoint = core_module.SplinePoint
+    Spline = core_module.Spline
+    CloudPoint = core_module.CloudPoint
+    Instance = core_module.Instance
+    Layer = core_module.Layer
+    Mesh = core_module.Mesh
+    Curve = core_module.Curve
+    Cloud = core_module.Cloud
+    Instances = core_module.Instances
+    GreasePencil = core_module.GreasePencil
+    Volume = core_module.Volume
+    simulation = core_module.simulation
+    repeat = core_module.repeat
 
-    from .core import Layout, Panel, Tree, Node, Group, G, ColorRamp
-    from .core import Closure, Bundle
+    Layout = core_module.Layout
+    Panel = core_module.Panel
+    Tree = core_module.Tree
+    Node = core_module.Node
+    Group = core_module.Group
+    G = core_module.G
+    ColorRamp = core_module.ColorRamp
+    Closure = core_module.Closure
+    Bundle = core_module.Bundle
 
-    from .core import GeoNodes
-    from .core import Package, geo_group, geo_modifier, shader_group, shader_material
+    GeoNodes = core_module.GeoNodes
+    Package = core_module.Package
+    geo_group = core_module.geo_group
+    geo_modifier = core_module.geo_modifier
+    shader_group = core_module.shader_group
+    shader_material = core_module.shader_material
 
-    from .core import gnmath, nd
+    gnmath = core_module.gnmath
+    nd = core_module.nd
 
     # Shader
 
-    from .core import snd, Shader, VolumeShader, ShaderNodes
+    if hasattr(core_module, 'snd'):
+        snd = core_module.snd
+    else:
+        globals().pop('snd', None)
+    Shader = core_module.Shader
+    VolumeShader = core_module.VolumeShader
+    ShaderNodes = core_module.ShaderNodes
 
     # Register
 
-    from .core import treearrange
+    treearrange = core_module.treearrange
     treearrange.register()
 
     print(

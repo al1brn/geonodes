@@ -1,0 +1,901 @@
+from pathlib import Path
+from datetime import datetime
+import textwrap
+import re
+
+import bpy
+
+from . node_explore import NodeInfo
+from . import gen_auto_dicts
+from . gen_auto_dicts import GEONODES, GEONODES_PROPS, SHADERNODES
+from . import gen_config
+from . import target_core
+
+from pprint import pprint, pformat
+
+DOMAINS = ['CloudPoint', 'Corner', 'Edge', 'Face', 'GreasePencil', 'Instance', 'Layer', 'Point', 'Spline', 'SplinePoint', 'Vertex', 'Volume']
+
+# =============================================================================================================================
+# Build manual cross references
+
+def build_manual_cross_ref(cross):
+
+    def get_ni(name, tree_type):
+        node_info = NodeInfo.Load(name, tree_type=tree_type)
+        bl_idname = node_info.bnode.bl_idname
+        cross[bl_idname] = {}
+
+        return node_info, cross[bl_idname]
+
+    # ----------------------------------------------------------------------------------------------------
+    # Geometry nodes
+
+    tree_type = 'GeometryNodeTree'
+
+    # ----- Menu Switch
+
+    node_info, node_cross = get_ni("Menu Switch", tree_type)
+    signature = "(items={'A': None, 'B': None}, menu=0, name='Menu', tip=None, panel=None, hide_value=False, hide_in_modifier=False, single_value=False)"
+    node_cross['Socket'] = [
+        {
+        'func_name'         : 'MenuSwitch',
+        'is_classmethod'    : True,
+        'returns'           : 'OUT',
+        'signature'         : signature,
+        'sample_class'      : 'Geometry',
+        }, {
+        'func_name'         : 'menu_switch',
+        'returns'           : 'OUT',
+        'signature'         : signature,
+        'sample_class'      : 'Geometry',
+        }]
+
+    # ----- Index Switch
+
+    node_info, node_cross = get_ni("Index Switch", tree_type)
+    signature = "(*values, index=0)"
+    node_cross['Socket'] = [
+        {
+        'func_name'         : 'IndexSwitch',
+        'is_classmethod'    : True,
+        'returns'           : 'OUT',
+        'signature'         : signature,
+        'sample_class'      : 'Geometry',
+        }, {
+        'func_name'         : 'index_switch',
+        'returns'           : 'OUT',
+        'signature'         : signature,
+        'sample_class'      : 'Geometry',
+        }]
+
+    # ----- Index Switch
+
+    node_info, node_cross = get_ni("Switch", tree_type)
+    node_cross['Socket'] = [
+        {
+        'func_name'         : 'Switch',
+        'is_classmethod'    : True,
+        'returns'           : 'OUT',
+        'signature'         : "(condition=None, false=None, true=None)",
+        'sample_class'      : 'Geometry',
+        }, {
+        'func_name'         : 'switch',
+        'returns'           : 'OUT',
+        'signature'         : "(condition=None, true=None)",
+        'sample_class'      : 'Geometry',
+        }]
+
+    # ----- Capture attribute
+
+    node_info, node_cross = get_ni("Capture Attribute", tree_type)
+    signature = "(attribute=None, **attributes)"
+    returns = "Node (if several arguments) or Socket (if only one argument)"
+    node_cross['Domain'] = [
+        {
+        'func_name'         : 'capture_attribute',
+        'returns'           : returns,
+        'signature'         : signature,
+        }, {
+        'func_name'         : 'capture',
+        'returns'           : returns,
+        'signature'         : signature,
+        }]
+
+    # ----- Closure to list
+
+    node_info = NodeInfo.Load("Closure to List", tree_type=tree_type)
+    node_cross = cross.setdefault(node_info.bnode.bl_idname, {})
+    node_cross.setdefault('Closure', []).append({
+        'func_name'         : 'to_list',
+        'returns'           : 'OUT',
+        'signature'         : '(self, count=None, signature=None, **sockets)',
+    })
+
+    # ----- Field to list
+
+    node_info = NodeInfo.Load("Field to List", tree_type=tree_type)
+    node_cross = cross.setdefault(node_info.bnode.bl_idname, {})
+    node_cross.setdefault('Socket', []).extend([{
+        'func_name'         : 'field_to_list',
+        'returns'           : 'OUT',
+        'signature'         : '(self, count, **values)',
+    }, {
+        'func_name'         : 'to_list',
+        'returns'           : 'OUT',
+        'signature'         : '(self, count=None)',
+    }])
+
+    # ----- Combine XYZ
+
+    node_info = NodeInfo.Load("Combine XYZ", tree_type=tree_type)
+    node_cross = cross.setdefault(node_info.bnode.bl_idname, {})
+    node_cross.setdefault('Vector', []).append({
+        'func_name'         : 'FromList',
+        'is_classmethod'    : True,
+        'returns'           : 'OUT',
+        'signature'         : '(cls, value)',
+    })
+
+    # ----- Separate XYZ
+
+    node_info = NodeInfo.Load("Separate XYZ", tree_type=tree_type)
+    node_cross = cross.setdefault(node_info.bnode.bl_idname, {})
+    node_cross.setdefault('Vector', []).append({
+        'func_name'         : 'separate_to_list',
+        'returns'           : 'OUT',
+        'signature'         : '(self)',
+    })
+
+    # ----- Combine Matrix
+
+    node_info = NodeInfo.Load("Combine Matrix", tree_type=tree_type)
+    node_cross = cross.setdefault(node_info.bnode.bl_idname, {})
+    node_cross.setdefault('Matrix', []).append({
+        'func_name'         : 'FromList',
+        'is_classmethod'    : True,
+        'returns'           : 'OUT',
+        'signature'         : '(cls, value)',
+    })
+
+    # ----- Separate Matrix
+
+    node_info = NodeInfo.Load("Separate Matrix", tree_type=tree_type)
+    node_cross = cross.setdefault(node_info.bnode.bl_idname, {})
+    node_cross.setdefault('Matrix', []).append({
+        'func_name'         : 'separate_to_list',
+        'returns'           : 'OUT',
+        'signature'         : '(self)',
+    })
+
+    # ----- Combine Color
+
+    node_info = NodeInfo.Load("Combine Color", tree_type=tree_type)
+    node_cross = cross.setdefault(node_info.bnode.bl_idname, {})
+    node_cross.setdefault('Color', []).append({
+        'func_name'         : 'FromList',
+        'is_classmethod'    : True,
+        'returns'           : 'OUT',
+        'signature'         : "(cls, value, mode='RGB')",
+    })
+
+    # ----- Separate Color
+
+    node_info = NodeInfo.Load("Separate Color", tree_type=tree_type)
+    node_cross = cross.setdefault(node_info.bnode.bl_idname, {})
+    node_cross.setdefault('Color', []).append({
+        'func_name'         : 'separate_to_list',
+        'returns'           : 'OUT',
+        'signature'         : "(self, mode='RGB')",
+    })
+
+    # ----- Euler to Rotation
+
+    node_info = NodeInfo.Load("Euler to Rotation", tree_type=tree_type)
+    node_cross = cross.setdefault(node_info.bnode.bl_idname, {})
+    node_cross.setdefault('Rotation', []).append({
+        'func_name'         : 'FromList',
+        'is_classmethod'    : True,
+        'returns'           : 'OUT',
+        'signature'         : '(cls, value)',
+    })
+
+    # ----- Rotation to Euler
+
+    node_info = NodeInfo.Load("Rotation to Euler", tree_type=tree_type)
+    node_cross = cross.setdefault(node_info.bnode.bl_idname, {})
+    node_cross.setdefault('Rotation', []).append({
+        'func_name'         : 'separate_to_list',
+        'returns'           : 'OUT',
+        'signature'         : '(self)',
+    })
+
+    # ----- Attribute helper
+
+    node_info = NodeInfo.Load("Named Attribute", tree_type=tree_type)
+    node_cross = cross.setdefault(node_info.bnode.bl_idname, {})
+    node_cross.setdefault('Attribute', []).extend([{
+        'func_name'         : 'get',
+        'returns'           : 'OUT',
+        'signature'         : '(self)',
+    }, {
+        'func_name'         : 'value',
+        'is_get'            : True,
+        'returns'           : 'OUT',
+        'signature'         : '',
+    }])
+
+    # ----- Store named attribute
+
+    # Domain.set and Geometry.set are implemented manually, so they don't go
+    # through NodeInfo.source_code and must be added to the generated cross
+    # reference explicitly. Keep the automatically generated implementations
+    # (store_named_attribute, store, store_uv, ...).
+    node_info = NodeInfo.Load("Store Named Attribute", tree_type=tree_type)
+    node_cross = cross.setdefault(node_info.bnode.bl_idname, {})
+
+    node_cross.setdefault('Domain', []).append({
+        'func_name'         : 'set',
+        'returns'           : 'Attribute',
+        'signature'         : '(self, name, value)',
+    })
+    node_cross.setdefault('Geometry', []).append({
+        'func_name'         : 'set',
+        'returns'           : 'Attribute',
+        'signature'         : '(self, name, value, domain=None)',
+    })
+    node_cross.setdefault('Attribute', []).extend([{
+        'func_name'         : 'set',
+        'returns'           : 'Attribute',
+        'signature'         : '(self, value=None, domain=None)',
+    }, {
+        'func_name'         : 'value',
+        'is_set'            : True,
+        'signature'         : '',
+    }])
+
+    node_info = NodeInfo.Load("Remove Named Attribute", tree_type=tree_type)
+    node_cross = cross.setdefault(node_info.bnode.bl_idname, {})
+    node_cross.setdefault('Attribute', []).append({
+        'func_name'         : 'remove',
+        'signature'         : '(self, all=False)',
+    })
+
+    node_info = NodeInfo.Load("Rename Attribute", tree_type=tree_type)
+    node_cross = cross.setdefault(node_info.bnode.bl_idname, {})
+    node_cross.setdefault('Attribute', []).append({
+        'func_name'         : 'rename',
+        'signature'         : '(self, name, prefix=False, overwrite=None)',
+    })
+
+    # ----- Zones
+
+    cross['GeometryNodeForeachGeometryElementInput'] = {'Domain': [{
+        'help': """
+with GeoNodes("For Each Element example"):
+    
+    for feel in Mesh.Cube().points.for_each(position=nd.position):
+        cube = Mesh.Cube(size=0.3)
+        cube.transform(translation=feel.position)
+        feel.geometry = cube
+        
+    feel.generated.out()
+"""
+    }]}
+    cross['GeometryNodeForeachGeometryElementOutput'] = cross['GeometryNodeForeachGeometryElementInput']
+
+    # ----- Repeat
+
+    cross['GeometryNodeRepeatInput'] = {'Repeat': [{
+        'help': """
+with GeoNodes("Repeat Example"):
+    
+    geo = Geometry()
+    count = Integer(3, "Count")
+    move = Vector((0, 0, 2), "Move")
+    scale = Float(0.5, "Scale")
+    
+    for rep in repeat(count, geo=geo, move=move, scale=scale):
+        
+        rep.geo += geo.transform(scale=rep.scale, translation=rep.move)
+        
+        rep.move += move*rep.scale
+        rep.scale *= scale
+        
+    rep.geo.out()
+"""
+    }]}
+    cross['GeometryNodeRepeatOutput'] = cross['GeometryNodeRepeatInput']
+
+    # ----- Simulation
+
+    cross['GeometryNodeSimulationInput'] = {'Simulation': [{
+        'help': """
+with GeoNodes("Simulation Example"):
+    
+    for sim in simulation(geo=Geometry(), pos=(0, 0, 0), speed=(1, 0, 10)):
+        
+        delta = sim.speed.scale(sim.delta_time)
+        sim.pos += delta
+        sim.geo.transform(translation=delta) 
+        
+        x, y, z = sim.pos.xyz
+        
+        sim.speed -= (0, 0, 10*sim.delta_time)
+        
+        bounce = z < 0
+        sim.speed.switch(bounce, -sim.speed)
+        sim.pos.switch(bounce, (x, y, -z))
+        
+    sim.geo.out()
+"""
+    }]}
+    cross['GeometryNodeSimulationOutput'] = cross['GeometryNodeSimulationInput']
+
+    # ----- Frame
+
+    cross['NodeFrame'] = {'Layout': [{
+        'help': """
+with GeoNodes("Layout Example"):
+    
+    geo = Geometry()
+    tr = Vector(name="Translaion")
+    
+    with Layout("Group node in a Frame"):
+        geo += Geometry(geo).transform(translation=tr)
+        
+    geo.out()       
+ """
+    }]}
+
+    # ----- Group
+
+    cross['GeometryNodeGroup'] = {'Group': [{
+        'help': """
+with GeoNodes("Multiply by Two", is_group=True):
+    
+    a = Float(name="Value")
+    (a + 2).out("Double")
+    
+with GeoNodes("Calling a group example"):
+    
+    v = Float(0, "Your value")
+    dbl = Group("Multiply by Two", value=v).double
+    dbl.out("Double")
+    
+    # Alternaticve way
+    again = G().multiply_by_two(dbl)
+    
+    again.out("Double Double")
+"""
+    }]}
+    cross['ShaderNodeGroup'] = cross['GeometryNodeGroup']
+
+
+# =============================================================================================================================
+# Generate
+
+def generate(folder=None, new_core=True):
+    """Generate config and API in core_new, or core with new_core=False.
+
+    folder is the geonodes module directory (the current module by default).
+    Reading continues to use the core selected by geonodes.core_module.
+    """
+    folder = target_core(folder, new=new_core)
+    path = folder / "generated"
+    path.mkdir(exist_ok=True)
+
+    # ====================================================================================================
+    # Generate the config file
+    # ====================================================================================================
+
+    # config file is named config_xxx where xxx is the blender version
+    # constants.py must manually import * from this config file
+
+    gen_config.write_file(folder, new=new_core)
+
+    # ====================================================================================================
+    # Gen collects generation
+    # ====================================================================================================
+    
+    # gen['source'] : dict[class_name -> dict[function_name -> source_code]]
+    # gen['cross']  : dict[bl_idname -> dict['class_name', 'func_name', 'signature', 'decorators']]
+
+    gen = {'source': {}, 'cross': {}}
+
+    # ====================================================================================================
+    # Loop on the tree types
+    # ====================================================================================================
+
+    # This loop generates method and property code
+
+    for tree_type in ['GeometryNodeTree', 'ShaderNodeTree']:
+
+        print("-"*30, "\nGenerate for tree_type", tree_type, "\n")
+
+        tree_name = 'GENERATE'
+        existing = bpy.data.node_groups.get(tree_name)
+        if existing is not None:
+            bpy.data.node_groups.remove(existing)
+        tree = bpy.data.node_groups.new(tree_name, type=tree_type)
+        tree.nodes.clear()
+
+        if tree_type == 'GeometryNodeTree':
+            tree.is_modifier = True
+
+            nodes  = GEONODES
+            props  = GEONODES_PROPS
+
+        elif tree_type == 'ShaderNodeTree':
+
+            nodes  = SHADERNODES
+            props  = []
+
+        # ===== Nodes as methods
+
+        for node_name, impls in nodes.items():
+
+            tree.nodes.clear()
+            node_info = NodeInfo(tree, node_name)
+
+            for impl in impls:
+                node_info.source_code(gen, **impl)
+
+        # ===== Nodes as properties
+
+        for prop in props:
+            tree.nodes.clear()
+            NodeInfo.property_code(tree, gen, **prop)
+
+        # ===== Nodes as static classes
+
+        NodeInfo.gen_static_nodes(gen, nodes, tree_type=tree_type, verbose=False)
+
+    # ====================================================================================================
+    # Add constructors with subtypes : Float.Angle, Vector.Velocity,...
+    # ====================================================================================================
+
+    _1 = " "*4
+    _2 = _1*2
+    for socket_type, d in gen_config.SOCKETS.items():
+
+        subtypes = d.get('subtypes', ['NONE'])
+        if not len(subtypes):
+            subtypes = ['NONE']
+
+        for subtype in subtypes:
+
+            create_socket = subtype == 'NONE'
+            if create_socket:
+                name  = d['class_name']
+                fname = "_create_input_socket"
+            else:
+                name  = "".join([s.title() for s in subtype.split('_')])
+                fname = name
+
+            props = d['props']
+            class_name = d['class_name']
+            ptype, def_val = gen_config.PYTHON_TYPES.get(class_name, (object, None))
+            if ptype is object:
+                ptype = 'object'
+
+            # ---------------------------------------------------------------------------
+            # Arguments
+            # ---------------------------------------------------------------------------
+
+            has_default = 'default' in props
+
+            args = {}
+
+            # ----- Value, Name
+
+            if has_default:
+                if create_socket:
+                    args['value'] = (
+                        f": {ptype} = {def_val}",
+                        #f" ({ptype} = {def_val}) : Default value",
+                        (ptype, def_val, "Default value"),
+                        'default_value = defval')
+                else:
+                    args['value'] = (
+                        f": {ptype} = {def_val}",
+                        #f" ({ptype} = {def_val}) : Default value",
+                        (ptype, def_val, "Default value"),
+                        'value')
+
+            args['name']  = (
+                f": str = '{name}'", 
+                #f" (str = '{name}') : Input socket name", 
+                ("str", name, "Input socket name"), 
+                'name')
+            
+            # ----- sort properties
+            
+            sorted_props = []
+            if 'min' in props:
+                sorted_props.extend(['min', 'max'])
+            sorted_props.append('tip')
+
+            for prop in props:
+                if prop in sorted_props or prop in ['subtype', 'default']:
+                    continue
+                sorted_props.append(prop)
+
+            for prop in sorted_props:
+                prop_val = props[prop]
+
+                stype = prop_val[1]
+                doctype = stype
+                sdef = f"'{prop_val[2]}'" if stype == 'str' else prop_val[2]
+                scomm = f"Property {prop_val[0]}"
+                if isinstance(stype, tuple):
+                    stype = f"Literal{list(stype)}"
+                    doctype = 'str'
+                    sdef = f"'{prop_val[2]}'"
+                    scomm += f" in {prop_val[1]}"
+
+                if stype == 'Literal[]':
+                    stype = 'str'
+
+                args[prop] = (
+                    f": {stype} = {sdef}",
+                    #f" ({doctype} = {sdef}) : {scomm}",
+                    (doctype, sdef, scomm),
+                    prop,
+                )
+
+                if prop == "tip":
+                    #args["panel"] = (': str = ""', '(str = "") : Panel name', "panel")
+                    args["panel"] = (': str = ""', ("str", "", "Panel name"), "panel")
+
+            if len(d['subtypes']):
+                if create_socket:
+                    args["subtype"] = (
+                        f": str = 'NONE'",
+                        #f"(str = 'NONE') : Socket sub type in {d['subtypes']}",
+                        ("str", 'NONE', f"Socket sub type in {d['subtypes']}"),
+                        "subtype",
+                    )
+                else:
+                    args["subtype"] = (None, None, f"'{subtype}'")
+
+            # ---------------------------------------------------------------------------
+            # Header
+            # ---------------------------------------------------------------------------
+
+            code = f"{_1}@classmethod\n"
+            code += f"{_1}def {fname}(cls,\n"
+            for arg_name, arg_val in args.items():
+                if arg_val[0] is not None:
+                    code += f"{_2}{arg_name}{arg_val[0]},\n"
+            code += f"{_1}     ):\n"
+
+            # ---------------------------------------------------------------------------
+            # Doc
+            # ---------------------------------------------------------------------------
+
+            code += f'{_2}""" > {name} Input\n\n'
+            code += f"{_2}New <#{class_name}> input with subtype '{subtype}'.\n\n"
+
+            code += f"{_2}Parameters\n"
+            code += f"{_2}----------\n"
+            for arg_name, arg_val in args.items():
+                if arg_val[0] is not None:
+                    #code += f"{_2}- {arg_name} {arg_val[1]}\n"
+                    code += f"{_2}{arg_name} : {arg_val[1][0]}, default=`{arg_val[1][1]}`\n{_2}    {arg_val[1][2]}\n\n"
+            code += "\n"
+
+            code += f"{_2}Returns\n"
+            code += f"{_2}-------\n"
+            code += f"{_2}{class_name}\n"
+            code += f'{_2}"""\n'
+
+            # ---------------------------------------------------------------------------
+            # Code
+            # ---------------------------------------------------------------------------
+
+            if create_socket:
+
+                code += f"{_2}from ..treeclass import Tree\n\n"
+
+                if has_default:
+                    code += f"{_2}defval = utils.python_value_for_socket(value, cls.SOCKET_TYPE)\n\n"
+
+                bl_idname = d['ShaderNodeTree'] if d['GeometryNodeTree'] is None else d['GeometryNodeTree'] 
+
+                scall = f"return Tree.current_tree().create_input_socket('{bl_idname}', "
+
+            else:
+                scall = "return cls("
+
+
+            sep = ""
+            for arg_name, arg_val in args.items():
+                if arg_val[2] is None:
+                    continue
+                elif '=' in arg_val[2]:
+                    scall += f"{sep}{arg_val[2]}"
+                else:
+                    scall += f"{sep}{arg_name}={arg_val[2]}"
+                sep = ", "
+
+            scall += ")"
+            tab =""
+            for line in textwrap.wrap(scall, width=100):
+                code += _2 + tab + line + "\n"
+                tab = " "*4
+
+            if class_name in gen['source'] and name in gen['source'][class_name]:
+                print(gen['source'][class_name][name])
+                raise RuntimeError(f"The subtype constructor {name} already exists in class {class_name}.")
+            
+            if class_name != 'Input':
+                if class_name in gen['source']:
+                    gen['source'][class_name][name] = code
+                else:
+                    print(f"CAUTION (generate): class name '{class_name}' not in gen['source']. Impossible to create source code for '{name}'")
+
+    # ====================================================================================================
+    # Loop on the tree types
+    # ====================================================================================================
+    
+    # Create the files
+
+    print('='*100)
+    time_stamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+    imports = []
+    for class_name, funcs in gen['source'].items():
+
+        #print("Create file", class_name)
+        if class_name in ['nd', 'snd']:
+            module = f"static_{class_name}"
+        elif class_name in DOMAINS:
+            module = f"dom_{class_name.lower()}"
+        else:
+            module = class_name.lower()
+
+        with open(path / f"{module}.py", 'w') as file:
+
+            file.write(f"# Generated {time_stamp}\n\n")
+
+            file.write(f"from __future__ import annotations\n")
+            file.write("from .. sockettype import SocketType\n")
+            file.write("from .. socket_class import Socket\n")
+            file.write("from .. nodeclass import Node, ColorRamp, NodeCurves\n")
+            file.write("from .. import utils\n")
+            file.write("from .. scripterror import NodeError\n")
+            file.write("from typing import TYPE_CHECKING, Literal, Union, Sequence\n")
+            file.write("\nif TYPE_CHECKING:\n")
+            for klass in gen_config.GEOMETRY_CLASSES + gen_config.ATTRIBUTE_CLASSES + ['String']:
+                file.write(f"    class {klass}: ...\n")
+            file.write("\n")
+            file.write("\n")
+
+            if class_name == 'gnmath':
+                imports.append(f"from . import gnmath")
+
+            elif class_name in ['nd', 'snd']:
+                file.write(f"class {class_name.upper()}:\n")
+                file.write( '    """" Static class\n\n')
+                file.write( "    Exposes all nodes as static methods:\n\n")
+                file.write( "    ``` python\n")
+                file.write(f"    a = {class_name}.math(1, 2, operation='ADD')\n")
+                file.write( "    ```\n")
+                file.write( '    """\n\n')
+
+                imports.append(f"from .{module} import {class_name}")
+
+            else:
+                from_socket = True
+                super_class = "(Socket)"
+                if class_name in DOMAINS:
+                    from_socket = False
+                    super_class = ""
+
+                file.write(f"class {class_name}{super_class}:\n")
+                if from_socket:
+                    # Top Geometries are interfaces, their __slots__ must be empty
+                    if class_name in ('Mesh', 'Curve', 'Cloud', 'Instances', 'Volume', 'GreasePencil'):
+                        file.write('\n    __slots__ = ()\n\n')
+                    else:
+                        file.write('\n    __slots__ = Socket.__slots__\n\n')
+
+                file.write('    """"\n    $DOC SET hidden\n    """\n')
+
+                if module in DOMAINS:
+                    imports.append(f"from .dom_{module} import {class_name}")
+                else:
+                    imports.append(f"from .{module} import {class_name}")
+
+            for name, code in funcs.items():
+                file.write(code + "\n")
+
+            if class_name in ['nd', 'snd']:
+                file.write("\n"*3)
+                file.write("# Create one single instance to access properties\n\n")
+                file.write(f"{class_name} = {class_name.upper()}()\n\n")
+
+    # Init file
+    with open(path / "__init__.py", 'w') as file:
+        file.write("\n".join(imports))
+
+    # ====================================================================================================
+    # Complete auto reference with manual implementation
+    # ====================================================================================================
+
+    cross = gen['cross']
+
+    build_manual_cross_ref(cross)
+
+    # Cross reference python file
+    with open(path / "cross_reference.py", 'w') as file:
+        file.write("CROSS_REF = ")
+        file.write(pformat(cross))
+
+    # Corss reference md file
+    with open("/Users/alain/Documents/blender/scripts/modules/geonodes/docs/api/cross_reference.md", 'w') as file:
+
+        def class_to_page(name: str) -> str:
+            # GreasePencil -> grease_pencil
+            slug = re.sub(r"(?<!^)([A-Z])", r"_\1", name).lower()
+            return f"{slug}.md"
+
+        domains = {
+            'Point'         : 'Mesh.points',
+
+            'Vertex'        : 'Mesh.points',
+            'Edge'          : 'Mesh.edges',
+            'Face'          : 'Mesh.faces',
+            'Corner'        : 'Mesh.corners',
+
+            'SplinePoint'   : 'Spline.points',
+            'Spline'        : 'Spline.splines',
+
+            'Instance'      : 'Instances.insts',
+            'CloudPoint'    : 'Cloud.points',
+            'Layer'         : 'GreasePencil.layers',
+
+        }
+
+        file.write("# Cross Reference\n\n")
+
+        names = {gen_config.NODE_INFO[blid]['name']: blid for blid in cross}
+        for node_name in sorted(names.keys()):
+
+            blid = names[node_name]
+            dct = cross[blid]
+
+            file.write(f"## {node_name}\n\n> `bl_idname` : {blid}\n\n")
+
+            # ----- In classes
+
+            for class_name in dct:
+                if class_name in ('nd', 'snd'):
+                    continue
+
+                file.write(f"### class {class_name}\n\n")
+                for d in dct[class_name]:
+
+                    fname = d.get('func_name')
+                    if fname is None:
+                        file.write("```python\n")
+                        file.write(d['help'])
+                        file.write("\n```\n\n")
+
+                        continue
+
+                    base = f"{domains.get(class_name, class_name)}.{fname}"
+
+                    file.write("```python\n")
+
+                    if d.get('is_get', False):
+                        file.write(f"prop = {base}")
+                    elif d.get('is_set', False):
+                        file.write(f"{base} = value")
+                    else:
+                        file.write(f"{base}{d['signature']}")
+
+                    file.write("\n```\n\n")
+
+            # ----- static
+
+            for nd in ('nd', 'snd'):
+                if nd not in dct:
+                    continue
+
+                file.write(f"### {nd}\n\n")
+                for d in dct[nd]:
+
+                    fname = d['func_name']
+                    file.write(f"``` python\nnd.{fname}{d['signature']}\n```\n\n")
+
+
+    print("Done")
+
+# =============================================================================================================================
+# Build the dictionnary of node name -> bl_idname
+
+def build_implement_dict():
+    """ Build the implementation dictionaries: node name -> list of dict
+
+    - Copied the first time in gen_auto.py
+    - Used to compare new version
+    """
+
+    def f(node_info, nodes):
+        nodes[node_info.bnode.bl_idname] = node_info.bnode.name
+
+    geo_nodes = {}
+    snodes = {}
+
+    for tree_type, nodes in [('GeometryNodeTree', geo_nodes), ('ShaderNodeTree', snodes)]:
+        NodeInfo.loop(f, nodes, tree_type=tree_type)
+
+    com_nodes = {}
+    shd_nodes = {}
+    for blid, node_name in snodes.items():
+        if blid in geo_nodes:
+            assert(node_name == geo_nodes[blid])
+            com_nodes[blid] = node_name
+        else:
+            shd_nodes[blid] = node_name
+
+    homos = []
+    for blid, name in shd_nodes.items():
+        for b, n in geo_nodes.items():
+            if n == name:
+                homos.append((name, b, blid))
+
+    print(f"Geometry nodes: {len(geo_nodes)} nodes")
+    print(f"Shader nodes  : {len(snodes)} nodes")
+    print(f"Common nodes  : {len(com_nodes)} nodes")
+    print(f"Shader only   : {len(shd_nodes)} nodes")
+    print(f"Homonyms      : {len(homos)} nodes")
+    for a, b, c in homos:
+        print(f"{a:20s}: {b:30s} {c:30s}")
+
+    # ===== Key words dict
+
+    kws = {}
+    for kw in dir(gen_auto_dicts):
+        if kw.startswith('__'):
+            continue
+        s = getattr(gen_auto_dicts, kw)
+        if not isinstance(s, str):
+            continue
+        kws[s] = kw
+
+    def transco(dict_list):
+        transcoded = []
+        for d in dict_list:
+            transcoded.append({kws.get(k, f'{k}'): v for k, v in d.items()})
+        return transcoded
+
+    # ===== Let's output
+
+    print()
+    print("="*80)
+    print("Geometry Nodes and common to Shader")
+    print()
+    print("GEONODES = {")
+    for name in geo_nodes.values():
+        sname = f"'{name}'"
+        print(f"{sname:28s}: ", end='')
+        if False and name in GEONODES:
+            item = transco(GEONODES[name])
+            if True or len(item) == 1:
+                print(str(item) + ',')
+        else:
+            print("[{}],")
+    print("}")
+    print()
+
+    print("="*80)
+    print("Shader Specific Nodes")
+    print()
+    print("SHADERNODES = {")
+    for name in shd_nodes.values():
+        sname = f"'{name}'"
+        print(f"{sname:28s}:", "[{}],")
+    print("}")
+    print()

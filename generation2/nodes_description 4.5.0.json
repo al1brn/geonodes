@@ -1,0 +1,3532 @@
+{
+  "Align Rotation to Vector": {
+    "params": [
+      "axis",
+      "pivot_axis"
+    ],
+    "inputs": [
+      "Rotation",
+      "Factor",
+      "Vector"
+    ],
+    "outputs": [
+      "Rotation"
+    ]
+  },
+  "Axes to Rotation": {
+    "params": [
+      "primary_axis",
+      "secondary_axis"
+    ],
+    "inputs": [
+      "Primary Axis",
+      "Secondary Axis"
+    ],
+    "outputs": [
+      "Rotation"
+    ]
+  },
+  "Axis Angle to Rotation": {
+    "params": [],
+    "inputs": [
+      "Axis",
+      "Angle"
+    ],
+    "outputs": [
+      "Rotation"
+    ]
+  },
+  "Bit Math": {
+    "params": [
+      "operation"
+    ],
+    "inputs": [
+      "A",
+      "B",
+      "Shift"
+    ],
+    "outputs": [
+      "Value"
+    ]
+  },
+  "Boolean Math": {
+    "params": [
+      "operation"
+    ],
+    "inputs": [
+      "Boolean",
+      "Boolean"
+    ],
+    "outputs": [
+      "Boolean"
+    ]
+  },
+  "Combine Color": {
+    "params": [
+      "mode"
+    ],
+    "inputs": [
+      "Red",
+      "Green",
+      "Blue",
+      "Alpha"
+    ],
+    "outputs": [
+      "Color"
+    ]
+  },
+  "Combine Matrix": {
+    "params": [],
+    "inputs": [
+      "Column 1 Row 1",
+      "Column 1 Row 2",
+      "Column 1 Row 3",
+      "Column 1 Row 4",
+      "Column 2 Row 1",
+      "Column 2 Row 2",
+      "Column 2 Row 3",
+      "Column 2 Row 4",
+      "Column 3 Row 1",
+      "Column 3 Row 2",
+      "Column 3 Row 3",
+      "Column 3 Row 4",
+      "Column 4 Row 1",
+      "Column 4 Row 2",
+      "Column 4 Row 3",
+      "Column 4 Row 4"
+    ],
+    "outputs": [
+      "Matrix"
+    ]
+  },
+  "Combine Transform": {
+    "params": [],
+    "inputs": [
+      "Translation",
+      "Rotation",
+      "Scale"
+    ],
+    "outputs": [
+      "Transform"
+    ]
+  },
+  "Compare": {
+    "params": [
+      "data_type",
+      "mode",
+      "operation"
+    ],
+    "inputs": [
+      "A",
+      "B",
+      "A",
+      "B",
+      "A",
+      "B",
+      "A",
+      "B",
+      "A",
+      "B",
+      "C",
+      "Angle",
+      "Epsilon"
+    ],
+    "outputs": [
+      "Result"
+    ]
+  },
+  "Euler to Rotation": {
+    "params": [],
+    "inputs": [
+      "Euler"
+    ],
+    "outputs": [
+      "Rotation"
+    ]
+  },
+  "Find in String": {
+    "params": [],
+    "inputs": [
+      "String",
+      "Search"
+    ],
+    "outputs": [
+      "First Found",
+      "Count"
+    ]
+  },
+  "Float to Integer": {
+    "params": [
+      "rounding_mode"
+    ],
+    "inputs": [
+      "Float"
+    ],
+    "outputs": [
+      "Integer"
+    ]
+  },
+  "Format String": {
+    "params": [],
+    "inputs": [
+      "Format",
+      ""
+    ],
+    "outputs": [
+      "String"
+    ]
+  },
+  "Hash Value": {
+    "params": [
+      "data_type"
+    ],
+    "inputs": [
+      "Value",
+      "Seed"
+    ],
+    "outputs": [
+      "Hash"
+    ]
+  },
+  "Boolean": {
+    "params": [
+      "boolean"
+    ],
+    "inputs": [],
+    "outputs": [
+      "Boolean"
+    ]
+  },
+  "Color": {
+    "params": [],
+    "inputs": [],
+    "outputs": [
+      "Color"
+    ]
+  },
+  "Integer": {
+    "params": [
+      "integer"
+    ],
+    "inputs": [],
+    "outputs": [
+      "Integer"
+    ]
+  },
+  "Rotation": {
+    "params": [],
+    "inputs": [],
+    "outputs": [
+      "Rotation"
+    ]
+  },
+  "Special Characters": {
+    "params": [],
+    "inputs": [],
+    "outputs": [
+      "Line Break",
+      "Tab"
+    ]
+  },
+  "String": {
+    "params": [
+      "string"
+    ],
+    "inputs": [],
+    "outputs": [
+      "String"
+    ]
+  },
+  "Vector": {
+    "params": [],
+    "inputs": [],
+    "outputs": [
+      "Vector"
+    ]
+  },
+  "Integer Math": {
+    "params": [
+      "operation"
+    ],
+    "inputs": [
+      "Value",
+      "Value",
+      "Value"
+    ],
+    "outputs": [
+      "Value"
+    ]
+  },
+  "Invert Matrix": {
+    "params": [],
+    "inputs": [
+      "Matrix"
+    ],
+    "outputs": [
+      "Matrix",
+      "Invertible"
+    ]
+  },
+  "Invert Rotation": {
+    "params": [],
+    "inputs": [
+      "Rotation"
+    ],
+    "outputs": [
+      "Rotation"
+    ]
+  },
+  "Match String": {
+    "params": [
+      "operation"
+    ],
+    "inputs": [
+      "String",
+      "Key"
+    ],
+    "outputs": [
+      "Result"
+    ]
+  },
+  "Matrix Determinant": {
+    "params": [],
+    "inputs": [
+      "Matrix"
+    ],
+    "outputs": [
+      "Determinant"
+    ]
+  },
+  "Multiply Matrices": {
+    "params": [],
+    "inputs": [
+      "Matrix",
+      "Matrix"
+    ],
+    "outputs": [
+      "Matrix"
+    ]
+  },
+  "Project Point": {
+    "params": [],
+    "inputs": [
+      "Vector",
+      "Transform"
+    ],
+    "outputs": [
+      "Vector"
+    ]
+  },
+  "Quaternion to Rotation": {
+    "params": [],
+    "inputs": [
+      "W",
+      "X",
+      "Y",
+      "Z"
+    ],
+    "outputs": [
+      "Rotation"
+    ]
+  },
+  "Random Value": {
+    "params": [
+      "data_type"
+    ],
+    "inputs": [
+      "Min",
+      "Max",
+      "Min",
+      "Max",
+      "Min",
+      "Max",
+      "Probability",
+      "ID",
+      "Seed"
+    ],
+    "outputs": [
+      "Value",
+      "Value",
+      "Value",
+      "Value"
+    ]
+  },
+  "Replace String": {
+    "params": [],
+    "inputs": [
+      "String",
+      "Find",
+      "Replace"
+    ],
+    "outputs": [
+      "String"
+    ]
+  },
+  "Rotate Rotation": {
+    "params": [
+      "rotation_space"
+    ],
+    "inputs": [
+      "Rotation",
+      "Rotate By"
+    ],
+    "outputs": [
+      "Rotation"
+    ]
+  },
+  "Rotate Vector": {
+    "params": [],
+    "inputs": [
+      "Vector",
+      "Rotation"
+    ],
+    "outputs": [
+      "Vector"
+    ]
+  },
+  "Rotation to Axis Angle": {
+    "params": [],
+    "inputs": [
+      "Rotation"
+    ],
+    "outputs": [
+      "Axis",
+      "Angle"
+    ]
+  },
+  "Rotation to Euler": {
+    "params": [],
+    "inputs": [
+      "Rotation"
+    ],
+    "outputs": [
+      "Euler"
+    ]
+  },
+  "Rotation to Quaternion": {
+    "params": [],
+    "inputs": [
+      "Rotation"
+    ],
+    "outputs": [
+      "W",
+      "X",
+      "Y",
+      "Z"
+    ]
+  },
+  "Separate Color": {
+    "params": [
+      "mode"
+    ],
+    "inputs": [
+      "Color"
+    ],
+    "outputs": [
+      "Red",
+      "Green",
+      "Blue",
+      "Alpha"
+    ]
+  },
+  "Separate Matrix": {
+    "params": [],
+    "inputs": [
+      "Matrix"
+    ],
+    "outputs": [
+      "Column 1 Row 1",
+      "Column 1 Row 2",
+      "Column 1 Row 3",
+      "Column 1 Row 4",
+      "Column 2 Row 1",
+      "Column 2 Row 2",
+      "Column 2 Row 3",
+      "Column 2 Row 4",
+      "Column 3 Row 1",
+      "Column 3 Row 2",
+      "Column 3 Row 3",
+      "Column 3 Row 4",
+      "Column 4 Row 1",
+      "Column 4 Row 2",
+      "Column 4 Row 3",
+      "Column 4 Row 4"
+    ]
+  },
+  "Separate Transform": {
+    "params": [],
+    "inputs": [
+      "Transform"
+    ],
+    "outputs": [
+      "Translation",
+      "Rotation",
+      "Scale"
+    ]
+  },
+  "Slice String": {
+    "params": [],
+    "inputs": [
+      "String",
+      "Position",
+      "Length"
+    ],
+    "outputs": [
+      "String"
+    ]
+  },
+  "String Length": {
+    "params": [],
+    "inputs": [
+      "String"
+    ],
+    "outputs": [
+      "Length"
+    ]
+  },
+  "Transform Direction": {
+    "params": [],
+    "inputs": [
+      "Direction",
+      "Transform"
+    ],
+    "outputs": [
+      "Direction"
+    ]
+  },
+  "Transform Point": {
+    "params": [],
+    "inputs": [
+      "Vector",
+      "Transform"
+    ],
+    "outputs": [
+      "Vector"
+    ]
+  },
+  "Transpose Matrix": {
+    "params": [],
+    "inputs": [
+      "Matrix"
+    ],
+    "outputs": [
+      "Matrix"
+    ]
+  },
+  "Value to String": {
+    "params": [
+      "data_type"
+    ],
+    "inputs": [
+      "Value",
+      "Decimals"
+    ],
+    "outputs": [
+      "String"
+    ]
+  },
+  "Accumulate Field": {
+    "params": [
+      "data_type",
+      "domain"
+    ],
+    "inputs": [
+      "Value",
+      "Group ID"
+    ],
+    "outputs": [
+      "Leading",
+      "Trailing",
+      "Total"
+    ]
+  },
+  "Domain Size": {
+    "params": [
+      "component"
+    ],
+    "inputs": [
+      "Geometry"
+    ],
+    "outputs": [
+      "Point Count",
+      "Edge Count",
+      "Face Count",
+      "Face Corner Count",
+      "Spline Count",
+      "Instance Count",
+      "Layer Count"
+    ]
+  },
+  "Attribute Statistic": {
+    "params": [
+      "data_type",
+      "domain"
+    ],
+    "inputs": [
+      "Geometry",
+      "Selection",
+      "Attribute"
+    ],
+    "outputs": [
+      "Mean",
+      "Median",
+      "Sum",
+      "Min",
+      "Max",
+      "Range",
+      "Standard Deviation",
+      "Variance"
+    ]
+  },
+  "Bake": {
+    "params": [],
+    "inputs": [
+      "Geometry",
+      ""
+    ],
+    "outputs": [
+      "Geometry",
+      ""
+    ]
+  },
+  "Blur Attribute": {
+    "params": [
+      "data_type"
+    ],
+    "inputs": [
+      "Value",
+      "Iterations",
+      "Weight"
+    ],
+    "outputs": [
+      "Value"
+    ]
+  },
+  "Bounding Box": {
+    "params": [],
+    "inputs": [
+      "Geometry",
+      "Use Radius"
+    ],
+    "outputs": [
+      "Bounding Box",
+      "Min",
+      "Max"
+    ]
+  },
+  "Camera Info": {
+    "params": [],
+    "inputs": [
+      "Camera"
+    ],
+    "outputs": [
+      "Projection Matrix",
+      "Focal Length",
+      "Sensor",
+      "Shift",
+      "Clip Start",
+      "Clip End",
+      "Focus Distance",
+      "Is Orthographic",
+      "Orthographic Scale"
+    ]
+  },
+  "Capture Attribute": {
+    "params": [
+      "domain"
+    ],
+    "inputs": [
+      "Geometry",
+      ""
+    ],
+    "outputs": [
+      "Geometry",
+      ""
+    ]
+  },
+  "Closure Input": {
+    "params": [],
+    "inputs": [],
+    "outputs": [
+      ""
+    ]
+  },
+  "Closure Output": {
+    "params": [
+      "active_input_index",
+      "active_output_index"
+    ],
+    "inputs": [
+      ""
+    ],
+    "outputs": [
+      "Closure"
+    ]
+  },
+  "Collection Info": {
+    "params": [
+      "transform_space"
+    ],
+    "inputs": [
+      "Collection",
+      "Separate Children",
+      "Reset Children"
+    ],
+    "outputs": [
+      "Instances"
+    ]
+  },
+  "Combine Bundle": {
+    "params": [],
+    "inputs": [
+      ""
+    ],
+    "outputs": [
+      "Bundle"
+    ]
+  },
+  "Convex Hull": {
+    "params": [],
+    "inputs": [
+      "Geometry"
+    ],
+    "outputs": [
+      "Convex Hull"
+    ]
+  },
+  "Corners of Edge": {
+    "params": [],
+    "inputs": [
+      "Edge Index",
+      "Weights",
+      "Sort Index"
+    ],
+    "outputs": [
+      "Corner Index",
+      "Total"
+    ]
+  },
+  "Corners of Face": {
+    "params": [],
+    "inputs": [
+      "Face Index",
+      "Weights",
+      "Sort Index"
+    ],
+    "outputs": [
+      "Corner Index",
+      "Total"
+    ]
+  },
+  "Corners of Vertex": {
+    "params": [],
+    "inputs": [
+      "Vertex Index",
+      "Weights",
+      "Sort Index"
+    ],
+    "outputs": [
+      "Corner Index",
+      "Total"
+    ]
+  },
+  "Arc": {
+    "params": [
+      "mode"
+    ],
+    "inputs": [
+      "Resolution",
+      "Start",
+      "Middle",
+      "End",
+      "Radius",
+      "Start Angle",
+      "Sweep Angle",
+      "Offset Angle",
+      "Connect Center",
+      "Invert Arc"
+    ],
+    "outputs": [
+      "Curve",
+      "Center",
+      "Normal",
+      "Radius"
+    ]
+  },
+  "Endpoint Selection": {
+    "params": [],
+    "inputs": [
+      "Start Size",
+      "End Size"
+    ],
+    "outputs": [
+      "Selection"
+    ]
+  },
+  "Handle Type Selection": {
+    "params": [
+      "handle_type",
+      "mode"
+    ],
+    "inputs": [],
+    "outputs": [
+      "Selection"
+    ]
+  },
+  "Curve Length": {
+    "params": [],
+    "inputs": [
+      "Curve"
+    ],
+    "outputs": [
+      "Length"
+    ]
+  },
+  "Curve of Point": {
+    "params": [],
+    "inputs": [
+      "Point Index"
+    ],
+    "outputs": [
+      "Curve Index",
+      "Index in Curve"
+    ]
+  },
+  "Bézier Segment": {
+    "params": [
+      "mode"
+    ],
+    "inputs": [
+      "Resolution",
+      "Start",
+      "Start Handle",
+      "End Handle",
+      "End"
+    ],
+    "outputs": [
+      "Curve"
+    ]
+  },
+  "Curve Circle": {
+    "params": [
+      "mode"
+    ],
+    "inputs": [
+      "Resolution",
+      "Point 1",
+      "Point 2",
+      "Point 3",
+      "Radius"
+    ],
+    "outputs": [
+      "Curve",
+      "Center"
+    ]
+  },
+  "Curve Line": {
+    "params": [
+      "mode"
+    ],
+    "inputs": [
+      "Start",
+      "End",
+      "Direction",
+      "Length"
+    ],
+    "outputs": [
+      "Curve"
+    ]
+  },
+  "Quadrilateral": {
+    "params": [
+      "mode"
+    ],
+    "inputs": [
+      "Width",
+      "Height",
+      "Bottom Width",
+      "Top Width",
+      "Offset",
+      "Bottom Height",
+      "Top Height",
+      "Point 1",
+      "Point 2",
+      "Point 3",
+      "Point 4"
+    ],
+    "outputs": [
+      "Curve"
+    ]
+  },
+  "Quadratic Bézier": {
+    "params": [],
+    "inputs": [
+      "Resolution",
+      "Start",
+      "Middle",
+      "End"
+    ],
+    "outputs": [
+      "Curve"
+    ]
+  },
+  "Set Handle Type": {
+    "params": [
+      "handle_type",
+      "mode"
+    ],
+    "inputs": [
+      "Curve",
+      "Selection"
+    ],
+    "outputs": [
+      "Curve"
+    ]
+  },
+  "Spiral": {
+    "params": [],
+    "inputs": [
+      "Resolution",
+      "Rotations",
+      "Start Radius",
+      "End Radius",
+      "Height",
+      "Reverse"
+    ],
+    "outputs": [
+      "Curve"
+    ]
+  },
+  "Set Spline Type": {
+    "params": [
+      "spline_type"
+    ],
+    "inputs": [
+      "Curve",
+      "Selection"
+    ],
+    "outputs": [
+      "Curve"
+    ]
+  },
+  "Star": {
+    "params": [],
+    "inputs": [
+      "Points",
+      "Inner Radius",
+      "Outer Radius",
+      "Twist"
+    ],
+    "outputs": [
+      "Curve",
+      "Outer Points"
+    ]
+  },
+  "Curve to Mesh": {
+    "params": [],
+    "inputs": [
+      "Curve",
+      "Profile Curve",
+      "Scale",
+      "Fill Caps"
+    ],
+    "outputs": [
+      "Mesh"
+    ]
+  },
+  "Curve to Points": {
+    "params": [
+      "mode"
+    ],
+    "inputs": [
+      "Curve",
+      "Count",
+      "Length"
+    ],
+    "outputs": [
+      "Points",
+      "Tangent",
+      "Normal",
+      "Rotation"
+    ]
+  },
+  "Curves to Grease Pencil": {
+    "params": [],
+    "inputs": [
+      "Curves",
+      "Selection",
+      "Instances as Layers"
+    ],
+    "outputs": [
+      "Grease Pencil"
+    ]
+  },
+  "Deform Curves on Surface": {
+    "params": [],
+    "inputs": [
+      "Curves"
+    ],
+    "outputs": [
+      "Curves"
+    ]
+  },
+  "Delete Geometry": {
+    "params": [
+      "domain",
+      "mode"
+    ],
+    "inputs": [
+      "Geometry",
+      "Selection"
+    ],
+    "outputs": [
+      "Geometry"
+    ]
+  },
+  "Distribute Points in Grid": {
+    "params": [
+      "mode"
+    ],
+    "inputs": [
+      "Grid",
+      "Density",
+      "Seed",
+      "Spacing",
+      "Threshold"
+    ],
+    "outputs": [
+      "Points"
+    ]
+  },
+  "Distribute Points in Volume": {
+    "params": [
+      "mode"
+    ],
+    "inputs": [
+      "Volume",
+      "Density",
+      "Seed",
+      "Spacing",
+      "Threshold"
+    ],
+    "outputs": [
+      "Points"
+    ]
+  },
+  "Distribute Points on Faces": {
+    "params": [
+      "distribute_method"
+    ],
+    "inputs": [
+      "Mesh",
+      "Selection",
+      "Distance Min",
+      "Density Max",
+      "Density",
+      "Density Factor",
+      "Seed"
+    ],
+    "outputs": [
+      "Points",
+      "Normal",
+      "Rotation"
+    ]
+  },
+  "Dual Mesh": {
+    "params": [],
+    "inputs": [
+      "Mesh",
+      "Keep Boundaries"
+    ],
+    "outputs": [
+      "Dual Mesh"
+    ]
+  },
+  "Duplicate Elements": {
+    "params": [
+      "domain"
+    ],
+    "inputs": [
+      "Geometry",
+      "Selection",
+      "Amount"
+    ],
+    "outputs": [
+      "Geometry",
+      "Duplicate Index"
+    ]
+  },
+  "Edge Paths to Curves": {
+    "params": [],
+    "inputs": [
+      "Mesh",
+      "Start Vertices",
+      "Next Vertex Index"
+    ],
+    "outputs": [
+      "Curves"
+    ]
+  },
+  "Edge Paths to Selection": {
+    "params": [],
+    "inputs": [
+      "Start Vertices",
+      "Next Vertex Index"
+    ],
+    "outputs": [
+      "Selection"
+    ]
+  },
+  "Edges of Corner": {
+    "params": [],
+    "inputs": [
+      "Corner Index"
+    ],
+    "outputs": [
+      "Next Edge Index",
+      "Previous Edge Index"
+    ]
+  },
+  "Edges of Vertex": {
+    "params": [],
+    "inputs": [
+      "Vertex Index",
+      "Weights",
+      "Sort Index"
+    ],
+    "outputs": [
+      "Edge Index",
+      "Total"
+    ]
+  },
+  "Edges to Face Groups": {
+    "params": [],
+    "inputs": [
+      "Boundary Edges"
+    ],
+    "outputs": [
+      "Face Group ID"
+    ]
+  },
+  "Evaluate Closure": {
+    "params": [
+      "active_input_index",
+      "active_output_index"
+    ],
+    "inputs": [
+      "Closure",
+      ""
+    ],
+    "outputs": [
+      ""
+    ]
+  },
+  "Extrude Mesh": {
+    "params": [
+      "mode"
+    ],
+    "inputs": [
+      "Mesh",
+      "Selection",
+      "Offset",
+      "Offset Scale",
+      "Individual"
+    ],
+    "outputs": [
+      "Mesh",
+      "Top",
+      "Side"
+    ]
+  },
+  "Face of Corner": {
+    "params": [],
+    "inputs": [
+      "Corner Index"
+    ],
+    "outputs": [
+      "Face Index",
+      "Index in Face"
+    ]
+  },
+  "Evaluate at Index": {
+    "params": [
+      "data_type",
+      "domain"
+    ],
+    "inputs": [
+      "Value",
+      "Index"
+    ],
+    "outputs": [
+      "Value"
+    ]
+  },
+  "Field Average": {
+    "params": [
+      "data_type",
+      "domain"
+    ],
+    "inputs": [
+      "Value",
+      "Group ID"
+    ],
+    "outputs": [
+      "Mean",
+      "Median"
+    ]
+  },
+  "Field Min & Max": {
+    "params": [
+      "data_type",
+      "domain"
+    ],
+    "inputs": [
+      "Value",
+      "Group ID"
+    ],
+    "outputs": [
+      "Min",
+      "Max"
+    ]
+  },
+  "Evaluate on Domain": {
+    "params": [
+      "data_type",
+      "domain"
+    ],
+    "inputs": [
+      "Value"
+    ],
+    "outputs": [
+      "Value"
+    ]
+  },
+  "Field Variance": {
+    "params": [
+      "data_type",
+      "domain"
+    ],
+    "inputs": [
+      "Value",
+      "Group ID"
+    ],
+    "outputs": [
+      "Standard Deviation",
+      "Variance"
+    ]
+  },
+  "Fill Curve": {
+    "params": [
+      "mode"
+    ],
+    "inputs": [
+      "Curve",
+      "Group ID"
+    ],
+    "outputs": [
+      "Mesh"
+    ]
+  },
+  "Fillet Curve": {
+    "params": [
+      "mode"
+    ],
+    "inputs": [
+      "Curve",
+      "Count",
+      "Radius",
+      "Limit Radius"
+    ],
+    "outputs": [
+      "Curve"
+    ]
+  },
+  "Flip Faces": {
+    "params": [],
+    "inputs": [
+      "Mesh",
+      "Selection"
+    ],
+    "outputs": [
+      "Mesh"
+    ]
+  },
+  "For Each Geometry Element Input": {
+    "params": [],
+    "inputs": [
+      "Geometry",
+      "Selection",
+      ""
+    ],
+    "outputs": [
+      "Index",
+      "Element",
+      ""
+    ]
+  },
+  "For Each Geometry Element Output": {
+    "params": [
+      "active_generation_index",
+      "active_input_index",
+      "active_main_index",
+      "domain",
+      "inspection_index"
+    ],
+    "inputs": [
+      "",
+      "Geometry",
+      ""
+    ],
+    "outputs": [
+      "Geometry",
+      "",
+      "Geometry",
+      ""
+    ]
+  },
+  "Geometry to Instance": {
+    "params": [],
+    "inputs": [
+      "Geometry"
+    ],
+    "outputs": [
+      "Instances"
+    ]
+  },
+  "Get Named Grid": {
+    "params": [
+      "data_type"
+    ],
+    "inputs": [
+      "Volume",
+      "Name",
+      "Remove"
+    ],
+    "outputs": [
+      "Volume",
+      "Grid"
+    ]
+  },
+  "Dial Gizmo": {
+    "params": [
+      "color_id"
+    ],
+    "inputs": [
+      "Value",
+      "Position",
+      "Up",
+      "Screen Space",
+      "Radius"
+    ],
+    "outputs": [
+      "Transform"
+    ]
+  },
+  "Linear Gizmo": {
+    "params": [
+      "color_id",
+      "draw_style"
+    ],
+    "inputs": [
+      "Value",
+      "Position",
+      "Direction"
+    ],
+    "outputs": [
+      "Transform"
+    ]
+  },
+  "Transform Gizmo": {
+    "params": [
+      "use_rotation_x",
+      "use_rotation_y",
+      "use_rotation_z",
+      "use_scale_x",
+      "use_scale_y",
+      "use_scale_z",
+      "use_translation_x",
+      "use_translation_y",
+      "use_translation_z"
+    ],
+    "inputs": [
+      "Value",
+      "Position",
+      "Rotation"
+    ],
+    "outputs": [
+      "Transform"
+    ]
+  },
+  "Grease Pencil to Curves": {
+    "params": [],
+    "inputs": [
+      "Grease Pencil",
+      "Selection",
+      "Layers as Instances"
+    ],
+    "outputs": [
+      "Curves"
+    ]
+  },
+  "Grid Info": {
+    "params": [
+      "data_type"
+    ],
+    "inputs": [
+      "Grid"
+    ],
+    "outputs": [
+      "Transform",
+      "Background Value"
+    ]
+  },
+  "Grid to Mesh": {
+    "params": [],
+    "inputs": [
+      "Grid",
+      "Threshold",
+      "Adaptivity"
+    ],
+    "outputs": [
+      "Mesh"
+    ]
+  },
+  "Group": {
+    "params": [
+      "node_tree"
+    ],
+    "inputs": [],
+    "outputs": []
+  },
+  "Image Info": {
+    "params": [],
+    "inputs": [
+      "Image",
+      "Frame"
+    ],
+    "outputs": [
+      "Width",
+      "Height",
+      "Has Alpha",
+      "Frame Count",
+      "FPS"
+    ]
+  },
+  "Image Texture": {
+    "params": [
+      "extension",
+      "interpolation"
+    ],
+    "inputs": [
+      "Image",
+      "Vector",
+      "Frame"
+    ],
+    "outputs": [
+      "Color",
+      "Alpha"
+    ]
+  },
+  "Import CSV": {
+    "params": [],
+    "inputs": [
+      "Path",
+      "Delimiter"
+    ],
+    "outputs": [
+      "Point Cloud"
+    ]
+  },
+  "Import OBJ": {
+    "params": [],
+    "inputs": [
+      "Path"
+    ],
+    "outputs": [
+      "Instances"
+    ]
+  },
+  "Import PLY": {
+    "params": [],
+    "inputs": [
+      "Path"
+    ],
+    "outputs": [
+      "Mesh"
+    ]
+  },
+  "Import STL": {
+    "params": [],
+    "inputs": [
+      "Path"
+    ],
+    "outputs": [
+      "Mesh"
+    ]
+  },
+  "Import Text": {
+    "params": [],
+    "inputs": [
+      "Path"
+    ],
+    "outputs": [
+      "String"
+    ]
+  },
+  "Import VDB": {
+    "params": [],
+    "inputs": [
+      "Path"
+    ],
+    "outputs": [
+      "Volume"
+    ]
+  },
+  "Index of Nearest": {
+    "params": [],
+    "inputs": [
+      "Position",
+      "Group ID"
+    ],
+    "outputs": [
+      "Index",
+      "Has Neighbor"
+    ]
+  },
+  "Index Switch": {
+    "params": [
+      "data_type"
+    ],
+    "inputs": [
+      "Index",
+      "0",
+      "1",
+      ""
+    ],
+    "outputs": [
+      "Output"
+    ]
+  },
+  "Active Camera": {
+    "params": [],
+    "inputs": [],
+    "outputs": [
+      "Active Camera"
+    ]
+  },
+  "Collection": {
+    "params": [
+      "collection"
+    ],
+    "inputs": [],
+    "outputs": [
+      "Collection"
+    ]
+  },
+  "Curve Handle Positions": {
+    "params": [],
+    "inputs": [
+      "Relative"
+    ],
+    "outputs": [
+      "Left",
+      "Right"
+    ]
+  },
+  "Curve Tilt": {
+    "params": [],
+    "inputs": [],
+    "outputs": [
+      "Tilt"
+    ]
+  },
+  "Is Edge Smooth": {
+    "params": [],
+    "inputs": [],
+    "outputs": [
+      "Smooth"
+    ]
+  },
+  "ID": {
+    "params": [],
+    "inputs": [],
+    "outputs": [
+      "ID"
+    ]
+  },
+  "Image": {
+    "params": [
+      "image"
+    ],
+    "inputs": [],
+    "outputs": [
+      "Image"
+    ]
+  },
+  "Index": {
+    "params": [],
+    "inputs": [],
+    "outputs": [
+      "Index"
+    ]
+  },
+  "Instance Bounds": {
+    "params": [],
+    "inputs": [
+      "Use Radius"
+    ],
+    "outputs": [
+      "Min",
+      "Max"
+    ]
+  },
+  "Instance Rotation": {
+    "params": [],
+    "inputs": [],
+    "outputs": [
+      "Rotation"
+    ]
+  },
+  "Instance Scale": {
+    "params": [],
+    "inputs": [],
+    "outputs": [
+      "Scale"
+    ]
+  },
+  "Material": {
+    "params": [
+      "material"
+    ],
+    "inputs": [],
+    "outputs": [
+      "Material"
+    ]
+  },
+  "Material Index": {
+    "params": [],
+    "inputs": [],
+    "outputs": [
+      "Material Index"
+    ]
+  },
+  "Edge Angle": {
+    "params": [],
+    "inputs": [],
+    "outputs": [
+      "Unsigned Angle",
+      "Signed Angle"
+    ]
+  },
+  "Edge Neighbors": {
+    "params": [],
+    "inputs": [],
+    "outputs": [
+      "Face Count"
+    ]
+  },
+  "Edge Vertices": {
+    "params": [],
+    "inputs": [],
+    "outputs": [
+      "Vertex Index 1",
+      "Vertex Index 2",
+      "Position 1",
+      "Position 2"
+    ]
+  },
+  "Face Area": {
+    "params": [],
+    "inputs": [],
+    "outputs": [
+      "Area"
+    ]
+  },
+  "Is Face Planar": {
+    "params": [],
+    "inputs": [
+      "Threshold"
+    ],
+    "outputs": [
+      "Planar"
+    ]
+  },
+  "Face Neighbors": {
+    "params": [],
+    "inputs": [],
+    "outputs": [
+      "Vertex Count",
+      "Face Count"
+    ]
+  },
+  "Mesh Island": {
+    "params": [],
+    "inputs": [],
+    "outputs": [
+      "Island Index",
+      "Island Count"
+    ]
+  },
+  "Vertex Neighbors": {
+    "params": [],
+    "inputs": [],
+    "outputs": [
+      "Vertex Count",
+      "Face Count"
+    ]
+  },
+  "Named Attribute": {
+    "params": [
+      "data_type"
+    ],
+    "inputs": [
+      "Name"
+    ],
+    "outputs": [
+      "Attribute",
+      "Exists"
+    ]
+  },
+  "Named Layer Selection": {
+    "params": [],
+    "inputs": [
+      "Name"
+    ],
+    "outputs": [
+      "Selection"
+    ]
+  },
+  "Normal": {
+    "params": [],
+    "inputs": [],
+    "outputs": [
+      "Normal",
+      "True Normal"
+    ]
+  },
+  "Object": {
+    "params": [
+      "object"
+    ],
+    "inputs": [],
+    "outputs": [
+      "Object"
+    ]
+  },
+  "Position": {
+    "params": [],
+    "inputs": [],
+    "outputs": [
+      "Position"
+    ]
+  },
+  "Radius": {
+    "params": [],
+    "inputs": [],
+    "outputs": [
+      "Radius"
+    ]
+  },
+  "Scene Time": {
+    "params": [],
+    "inputs": [],
+    "outputs": [
+      "Seconds",
+      "Frame"
+    ]
+  },
+  "Is Face Smooth": {
+    "params": [],
+    "inputs": [],
+    "outputs": [
+      "Smooth"
+    ]
+  },
+  "Shortest Edge Paths": {
+    "params": [],
+    "inputs": [
+      "End Vertex",
+      "Edge Cost"
+    ],
+    "outputs": [
+      "Next Vertex Index",
+      "Total Cost"
+    ]
+  },
+  "Is Spline Cyclic": {
+    "params": [],
+    "inputs": [],
+    "outputs": [
+      "Cyclic"
+    ]
+  },
+  "Spline Resolution": {
+    "params": [],
+    "inputs": [],
+    "outputs": [
+      "Resolution"
+    ]
+  },
+  "Curve Tangent": {
+    "params": [],
+    "inputs": [],
+    "outputs": [
+      "Tangent"
+    ]
+  },
+  "Instance on Points": {
+    "params": [],
+    "inputs": [
+      "Points",
+      "Selection",
+      "Instance",
+      "Pick Instance",
+      "Instance Index",
+      "Rotation",
+      "Scale"
+    ],
+    "outputs": [
+      "Instances"
+    ]
+  },
+  "Instance Transform": {
+    "params": [],
+    "inputs": [],
+    "outputs": [
+      "Transform"
+    ]
+  },
+  "Instances to Points": {
+    "params": [],
+    "inputs": [
+      "Instances",
+      "Selection",
+      "Position",
+      "Radius"
+    ],
+    "outputs": [
+      "Points"
+    ]
+  },
+  "Interpolate Curves": {
+    "params": [],
+    "inputs": [
+      "Guide Curves",
+      "Guide Up",
+      "Guide Group ID",
+      "Points",
+      "Point Up",
+      "Point Group ID",
+      "Max Neighbors"
+    ],
+    "outputs": [
+      "Curves",
+      "Closest Index",
+      "Closest Weight"
+    ]
+  },
+  "Is Viewport": {
+    "params": [],
+    "inputs": [],
+    "outputs": [
+      "Is Viewport"
+    ]
+  },
+  "Join Geometry": {
+    "params": [],
+    "inputs": [
+      "Geometry"
+    ],
+    "outputs": [
+      "Geometry"
+    ]
+  },
+  "Material Selection": {
+    "params": [],
+    "inputs": [
+      "Material"
+    ],
+    "outputs": [
+      "Selection"
+    ]
+  },
+  "Menu Switch": {
+    "params": [
+      "data_type"
+    ],
+    "inputs": [
+      "Menu",
+      "A",
+      "B",
+      ""
+    ],
+    "outputs": [
+      "Output"
+    ]
+  },
+  "Merge by Distance": {
+    "params": [
+      "mode"
+    ],
+    "inputs": [
+      "Geometry",
+      "Selection",
+      "Distance"
+    ],
+    "outputs": [
+      "Geometry"
+    ]
+  },
+  "Merge Layers": {
+    "params": [
+      "mode"
+    ],
+    "inputs": [
+      "Grease Pencil",
+      "Selection",
+      "Group ID"
+    ],
+    "outputs": [
+      "Grease Pencil"
+    ]
+  },
+  "Mesh Boolean": {
+    "params": [
+      "operation",
+      "solver"
+    ],
+    "inputs": [
+      "Mesh 1",
+      "Mesh 2",
+      "Self Intersection",
+      "Hole Tolerant"
+    ],
+    "outputs": [
+      "Mesh",
+      "Intersecting Edges"
+    ]
+  },
+  "Mesh Circle": {
+    "params": [
+      "fill_type"
+    ],
+    "inputs": [
+      "Vertices",
+      "Radius"
+    ],
+    "outputs": [
+      "Mesh"
+    ]
+  },
+  "Cone": {
+    "params": [
+      "fill_type"
+    ],
+    "inputs": [
+      "Vertices",
+      "Side Segments",
+      "Fill Segments",
+      "Radius Top",
+      "Radius Bottom",
+      "Depth"
+    ],
+    "outputs": [
+      "Mesh",
+      "Top",
+      "Bottom",
+      "Side",
+      "UV Map"
+    ]
+  },
+  "Cube": {
+    "params": [],
+    "inputs": [
+      "Size",
+      "Vertices X",
+      "Vertices Y",
+      "Vertices Z"
+    ],
+    "outputs": [
+      "Mesh",
+      "UV Map"
+    ]
+  },
+  "Cylinder": {
+    "params": [
+      "fill_type"
+    ],
+    "inputs": [
+      "Vertices",
+      "Side Segments",
+      "Fill Segments",
+      "Radius",
+      "Depth"
+    ],
+    "outputs": [
+      "Mesh",
+      "Top",
+      "Side",
+      "Bottom",
+      "UV Map"
+    ]
+  },
+  "Face Group Boundaries": {
+    "params": [],
+    "inputs": [
+      "Face Group ID"
+    ],
+    "outputs": [
+      "Boundary Edges"
+    ]
+  },
+  "Grid": {
+    "params": [],
+    "inputs": [
+      "Size X",
+      "Size Y",
+      "Vertices X",
+      "Vertices Y"
+    ],
+    "outputs": [
+      "Mesh",
+      "UV Map"
+    ]
+  },
+  "Ico Sphere": {
+    "params": [],
+    "inputs": [
+      "Radius",
+      "Subdivisions"
+    ],
+    "outputs": [
+      "Mesh",
+      "UV Map"
+    ]
+  },
+  "Mesh Line": {
+    "params": [
+      "count_mode",
+      "mode"
+    ],
+    "inputs": [
+      "Count",
+      "Resolution",
+      "Start Location",
+      "Offset"
+    ],
+    "outputs": [
+      "Mesh"
+    ]
+  },
+  "Mesh to Curve": {
+    "params": [
+      "mode"
+    ],
+    "inputs": [
+      "Mesh",
+      "Selection"
+    ],
+    "outputs": [
+      "Curve"
+    ]
+  },
+  "Mesh to Density Grid": {
+    "params": [],
+    "inputs": [
+      "Mesh",
+      "Density",
+      "Voxel Size",
+      "Gradient Width"
+    ],
+    "outputs": [
+      "Density Grid"
+    ]
+  },
+  "Mesh to Points": {
+    "params": [
+      "mode"
+    ],
+    "inputs": [
+      "Mesh",
+      "Selection",
+      "Position",
+      "Radius"
+    ],
+    "outputs": [
+      "Points"
+    ]
+  },
+  "Mesh to SDF Grid": {
+    "params": [],
+    "inputs": [
+      "Mesh",
+      "Voxel Size",
+      "Band Width"
+    ],
+    "outputs": [
+      "SDF Grid"
+    ]
+  },
+  "Mesh to Volume": {
+    "params": [
+      "resolution_mode"
+    ],
+    "inputs": [
+      "Mesh",
+      "Density",
+      "Voxel Size",
+      "Voxel Amount",
+      "Interior Band Width"
+    ],
+    "outputs": [
+      "Volume"
+    ]
+  },
+  "UV Sphere": {
+    "params": [],
+    "inputs": [
+      "Segments",
+      "Rings",
+      "Radius"
+    ],
+    "outputs": [
+      "Mesh",
+      "UV Map"
+    ]
+  },
+  "Object Info": {
+    "params": [
+      "transform_space"
+    ],
+    "inputs": [
+      "Object",
+      "As Instance"
+    ],
+    "outputs": [
+      "Transform",
+      "Location",
+      "Rotation",
+      "Scale",
+      "Geometry"
+    ]
+  },
+  "Offset Corner in Face": {
+    "params": [],
+    "inputs": [
+      "Corner Index",
+      "Offset"
+    ],
+    "outputs": [
+      "Corner Index"
+    ]
+  },
+  "Offset Point in Curve": {
+    "params": [],
+    "inputs": [
+      "Point Index",
+      "Offset"
+    ],
+    "outputs": [
+      "Is Valid Offset",
+      "Point Index"
+    ]
+  },
+  "Points": {
+    "params": [],
+    "inputs": [
+      "Count",
+      "Position",
+      "Radius"
+    ],
+    "outputs": [
+      "Points"
+    ]
+  },
+  "Points of Curve": {
+    "params": [],
+    "inputs": [
+      "Curve Index",
+      "Weights",
+      "Sort Index"
+    ],
+    "outputs": [
+      "Point Index",
+      "Total"
+    ]
+  },
+  "Points to Curves": {
+    "params": [],
+    "inputs": [
+      "Points",
+      "Curve Group ID",
+      "Weight"
+    ],
+    "outputs": [
+      "Curves"
+    ]
+  },
+  "Points to SDF Grid": {
+    "params": [],
+    "inputs": [
+      "Points",
+      "Radius",
+      "Voxel Size"
+    ],
+    "outputs": [
+      "SDF Grid"
+    ]
+  },
+  "Points to Vertices": {
+    "params": [],
+    "inputs": [
+      "Points",
+      "Selection"
+    ],
+    "outputs": [
+      "Mesh"
+    ]
+  },
+  "Points to Volume": {
+    "params": [
+      "resolution_mode"
+    ],
+    "inputs": [
+      "Points",
+      "Density",
+      "Voxel Size",
+      "Voxel Amount",
+      "Radius"
+    ],
+    "outputs": [
+      "Volume"
+    ]
+  },
+  "Geometry Proximity": {
+    "params": [
+      "target_element"
+    ],
+    "inputs": [
+      "Geometry",
+      "Group ID",
+      "Sample Position",
+      "Sample Group ID"
+    ],
+    "outputs": [
+      "Position",
+      "Distance",
+      "Is Valid"
+    ]
+  },
+  "Raycast": {
+    "params": [
+      "data_type",
+      "mapping"
+    ],
+    "inputs": [
+      "Target Geometry",
+      "Attribute",
+      "Source Position",
+      "Ray Direction",
+      "Ray Length"
+    ],
+    "outputs": [
+      "Is Hit",
+      "Hit Position",
+      "Hit Normal",
+      "Hit Distance",
+      "Attribute"
+    ]
+  },
+  "Realize Instances": {
+    "params": [],
+    "inputs": [
+      "Geometry",
+      "Selection",
+      "Realize All",
+      "Depth"
+    ],
+    "outputs": [
+      "Geometry"
+    ]
+  },
+  "Remove Named Attribute": {
+    "params": [
+      "pattern_mode"
+    ],
+    "inputs": [
+      "Geometry",
+      "Name"
+    ],
+    "outputs": [
+      "Geometry"
+    ]
+  },
+  "Repeat Input": {
+    "params": [],
+    "inputs": [
+      "Iterations",
+      ""
+    ],
+    "outputs": [
+      "Iteration",
+      ""
+    ]
+  },
+  "Repeat Output": {
+    "params": [
+      "inspection_index"
+    ],
+    "inputs": [
+      "Geometry",
+      ""
+    ],
+    "outputs": [
+      "Geometry",
+      ""
+    ]
+  },
+  "Replace Material": {
+    "params": [],
+    "inputs": [
+      "Geometry",
+      "Old",
+      "New"
+    ],
+    "outputs": [
+      "Geometry"
+    ]
+  },
+  "Resample Curve": {
+    "params": [
+      "keep_last_segment",
+      "mode"
+    ],
+    "inputs": [
+      "Curve",
+      "Selection",
+      "Count",
+      "Length"
+    ],
+    "outputs": [
+      "Curve"
+    ]
+  },
+  "Reverse Curve": {
+    "params": [],
+    "inputs": [
+      "Curve",
+      "Selection"
+    ],
+    "outputs": [
+      "Curve"
+    ]
+  },
+  "Rotate Instances": {
+    "params": [],
+    "inputs": [
+      "Instances",
+      "Selection",
+      "Rotation",
+      "Pivot Point",
+      "Local Space"
+    ],
+    "outputs": [
+      "Instances"
+    ]
+  },
+  "SDF Grid Boolean": {
+    "params": [
+      "operation"
+    ],
+    "inputs": [
+      "Grid 1",
+      "Grid 2"
+    ],
+    "outputs": [
+      "Grid"
+    ]
+  },
+  "Sample Curve": {
+    "params": [
+      "data_type",
+      "mode",
+      "use_all_curves"
+    ],
+    "inputs": [
+      "Curves",
+      "Value",
+      "Factor",
+      "Length",
+      "Curve Index"
+    ],
+    "outputs": [
+      "Value",
+      "Position",
+      "Tangent",
+      "Normal"
+    ]
+  },
+  "Sample Grid": {
+    "params": [
+      "data_type",
+      "interpolation_mode"
+    ],
+    "inputs": [
+      "Grid",
+      "Position"
+    ],
+    "outputs": [
+      "Value"
+    ]
+  },
+  "Sample Grid Index": {
+    "params": [
+      "data_type"
+    ],
+    "inputs": [
+      "Grid",
+      "X",
+      "Y",
+      "Z"
+    ],
+    "outputs": [
+      "Value"
+    ]
+  },
+  "Sample Index": {
+    "params": [
+      "clamp",
+      "data_type",
+      "domain"
+    ],
+    "inputs": [
+      "Geometry",
+      "Value",
+      "Index"
+    ],
+    "outputs": [
+      "Value"
+    ]
+  },
+  "Sample Nearest": {
+    "params": [
+      "domain"
+    ],
+    "inputs": [
+      "Geometry",
+      "Sample Position"
+    ],
+    "outputs": [
+      "Index"
+    ]
+  },
+  "Sample Nearest Surface": {
+    "params": [
+      "data_type"
+    ],
+    "inputs": [
+      "Mesh",
+      "Value",
+      "Group ID",
+      "Sample Position",
+      "Sample Group ID"
+    ],
+    "outputs": [
+      "Value",
+      "Is Valid"
+    ]
+  },
+  "Sample UV Surface": {
+    "params": [
+      "data_type"
+    ],
+    "inputs": [
+      "Mesh",
+      "Value",
+      "UV Map",
+      "Sample UV"
+    ],
+    "outputs": [
+      "Value",
+      "Is Valid"
+    ]
+  },
+  "Scale Elements": {
+    "params": [
+      "domain",
+      "scale_mode"
+    ],
+    "inputs": [
+      "Geometry",
+      "Selection",
+      "Scale",
+      "Center",
+      "Axis"
+    ],
+    "outputs": [
+      "Geometry"
+    ]
+  },
+  "Scale Instances": {
+    "params": [],
+    "inputs": [
+      "Instances",
+      "Selection",
+      "Scale",
+      "Center",
+      "Local Space"
+    ],
+    "outputs": [
+      "Instances"
+    ]
+  },
+  "Self Object": {
+    "params": [],
+    "inputs": [],
+    "outputs": [
+      "Self Object"
+    ]
+  },
+  "Separate Bundle": {
+    "params": [],
+    "inputs": [
+      "Bundle"
+    ],
+    "outputs": [
+      ""
+    ]
+  },
+  "Separate Components": {
+    "params": [],
+    "inputs": [
+      "Geometry"
+    ],
+    "outputs": [
+      "Mesh",
+      "Curve",
+      "Grease Pencil",
+      "Point Cloud",
+      "Volume",
+      "Instances"
+    ]
+  },
+  "Separate Geometry": {
+    "params": [
+      "domain"
+    ],
+    "inputs": [
+      "Geometry",
+      "Selection"
+    ],
+    "outputs": [
+      "Selection",
+      "Inverted"
+    ]
+  },
+  "Set Handle Positions": {
+    "params": [
+      "mode"
+    ],
+    "inputs": [
+      "Curve",
+      "Selection",
+      "Position",
+      "Offset"
+    ],
+    "outputs": [
+      "Curve"
+    ]
+  },
+  "Set Curve Normal": {
+    "params": [
+      "mode"
+    ],
+    "inputs": [
+      "Curve",
+      "Selection",
+      "Normal"
+    ],
+    "outputs": [
+      "Curve"
+    ]
+  },
+  "Set Curve Radius": {
+    "params": [],
+    "inputs": [
+      "Curve",
+      "Selection",
+      "Radius"
+    ],
+    "outputs": [
+      "Curve"
+    ]
+  },
+  "Set Curve Tilt": {
+    "params": [],
+    "inputs": [
+      "Curve",
+      "Selection",
+      "Tilt"
+    ],
+    "outputs": [
+      "Curve"
+    ]
+  },
+  "Set Geometry Name": {
+    "params": [],
+    "inputs": [
+      "Geometry",
+      "Name"
+    ],
+    "outputs": [
+      "Geometry"
+    ]
+  },
+  "Set Grease Pencil Color": {
+    "params": [
+      "mode"
+    ],
+    "inputs": [
+      "Grease Pencil",
+      "Selection",
+      "Color",
+      "Opacity"
+    ],
+    "outputs": [
+      "Grease Pencil"
+    ]
+  },
+  "Set Grease Pencil Depth": {
+    "params": [
+      "depth_order"
+    ],
+    "inputs": [
+      "Grease Pencil"
+    ],
+    "outputs": [
+      "Grease Pencil"
+    ]
+  },
+  "Set Grease Pencil Softness": {
+    "params": [],
+    "inputs": [
+      "Grease Pencil",
+      "Selection",
+      "Softness"
+    ],
+    "outputs": [
+      "Grease Pencil"
+    ]
+  },
+  "Set ID": {
+    "params": [],
+    "inputs": [
+      "Geometry",
+      "Selection",
+      "ID"
+    ],
+    "outputs": [
+      "Geometry"
+    ]
+  },
+  "Set Instance Transform": {
+    "params": [],
+    "inputs": [
+      "Instances",
+      "Selection",
+      "Transform"
+    ],
+    "outputs": [
+      "Instances"
+    ]
+  },
+  "Set Material": {
+    "params": [],
+    "inputs": [
+      "Geometry",
+      "Selection",
+      "Material"
+    ],
+    "outputs": [
+      "Geometry"
+    ]
+  },
+  "Set Material Index": {
+    "params": [],
+    "inputs": [
+      "Geometry",
+      "Selection",
+      "Material Index"
+    ],
+    "outputs": [
+      "Geometry"
+    ]
+  },
+  "Set Mesh Normal": {
+    "params": [
+      "domain",
+      "mode"
+    ],
+    "inputs": [
+      "Mesh",
+      "Remove Custom",
+      "Edge Sharpness",
+      "Face Sharpness"
+    ],
+    "outputs": [
+      "Mesh"
+    ]
+  },
+  "Set Point Radius": {
+    "params": [],
+    "inputs": [
+      "Points",
+      "Selection",
+      "Radius"
+    ],
+    "outputs": [
+      "Points"
+    ]
+  },
+  "Set Position": {
+    "params": [],
+    "inputs": [
+      "Geometry",
+      "Selection",
+      "Position",
+      "Offset"
+    ],
+    "outputs": [
+      "Geometry"
+    ]
+  },
+  "Set Shade Smooth": {
+    "params": [
+      "domain"
+    ],
+    "inputs": [
+      "Geometry",
+      "Selection",
+      "Shade Smooth"
+    ],
+    "outputs": [
+      "Geometry"
+    ]
+  },
+  "Set Spline Cyclic": {
+    "params": [],
+    "inputs": [
+      "Geometry",
+      "Selection",
+      "Cyclic"
+    ],
+    "outputs": [
+      "Geometry"
+    ]
+  },
+  "Set Spline Resolution": {
+    "params": [],
+    "inputs": [
+      "Geometry",
+      "Selection",
+      "Resolution"
+    ],
+    "outputs": [
+      "Geometry"
+    ]
+  },
+  "Simulation Input": {
+    "params": [],
+    "inputs": [],
+    "outputs": [
+      "Delta Time"
+    ]
+  },
+  "Simulation Output": {
+    "params": [],
+    "inputs": [
+      "Skip",
+      "Geometry",
+      ""
+    ],
+    "outputs": [
+      "Geometry",
+      ""
+    ]
+  },
+  "Sort Elements": {
+    "params": [
+      "domain"
+    ],
+    "inputs": [
+      "Geometry",
+      "Selection",
+      "Group ID",
+      "Sort Weight"
+    ],
+    "outputs": [
+      "Geometry"
+    ]
+  },
+  "Spline Length": {
+    "params": [],
+    "inputs": [],
+    "outputs": [
+      "Length",
+      "Point Count"
+    ]
+  },
+  "Spline Parameter": {
+    "params": [],
+    "inputs": [],
+    "outputs": [
+      "Factor",
+      "Length",
+      "Index"
+    ]
+  },
+  "Split Edges": {
+    "params": [],
+    "inputs": [
+      "Mesh",
+      "Selection"
+    ],
+    "outputs": [
+      "Mesh"
+    ]
+  },
+  "Split to Instances": {
+    "params": [
+      "domain"
+    ],
+    "inputs": [
+      "Geometry",
+      "Selection",
+      "Group ID"
+    ],
+    "outputs": [
+      "Instances",
+      "Group ID"
+    ]
+  },
+  "Store Named Attribute": {
+    "params": [
+      "data_type",
+      "domain"
+    ],
+    "inputs": [
+      "Geometry",
+      "Selection",
+      "Name",
+      "Value"
+    ],
+    "outputs": [
+      "Geometry"
+    ]
+  },
+  "Store Named Grid": {
+    "params": [
+      "data_type"
+    ],
+    "inputs": [
+      "Volume",
+      "Name",
+      "Grid"
+    ],
+    "outputs": [
+      "Volume"
+    ]
+  },
+  "Join Strings": {
+    "params": [],
+    "inputs": [
+      "Delimiter",
+      "Strings"
+    ],
+    "outputs": [
+      "String"
+    ]
+  },
+  "String to Curves": {
+    "params": [
+      "align_x",
+      "align_y",
+      "font",
+      "overflow",
+      "pivot_mode"
+    ],
+    "inputs": [
+      "String",
+      "Size",
+      "Character Spacing",
+      "Word Spacing",
+      "Line Spacing",
+      "Text Box Width",
+      "Text Box Height"
+    ],
+    "outputs": [
+      "Curve Instances",
+      "Remainder",
+      "Line",
+      "Pivot Point"
+    ]
+  },
+  "Subdivide Curve": {
+    "params": [],
+    "inputs": [
+      "Curve",
+      "Cuts"
+    ],
+    "outputs": [
+      "Curve"
+    ]
+  },
+  "Subdivide Mesh": {
+    "params": [],
+    "inputs": [
+      "Mesh",
+      "Level"
+    ],
+    "outputs": [
+      "Mesh"
+    ]
+  },
+  "Subdivision Surface": {
+    "params": [
+      "boundary_smooth",
+      "uv_smooth"
+    ],
+    "inputs": [
+      "Mesh",
+      "Level",
+      "Edge Crease",
+      "Vertex Crease",
+      "Limit Surface"
+    ],
+    "outputs": [
+      "Mesh"
+    ]
+  },
+  "Switch": {
+    "params": [
+      "input_type"
+    ],
+    "inputs": [
+      "Switch",
+      "False",
+      "True"
+    ],
+    "outputs": [
+      "Output"
+    ]
+  },
+  "3D Cursor": {
+    "params": [],
+    "inputs": [],
+    "outputs": [
+      "Location",
+      "Rotation"
+    ]
+  },
+  "Active Element": {
+    "params": [
+      "domain"
+    ],
+    "inputs": [],
+    "outputs": [
+      "Index",
+      "Exists"
+    ]
+  },
+  "Face Set": {
+    "params": [],
+    "inputs": [],
+    "outputs": [
+      "Face Set",
+      "Exists"
+    ]
+  },
+  "Mouse Position": {
+    "params": [],
+    "inputs": [],
+    "outputs": [
+      "Mouse X",
+      "Mouse Y",
+      "Region Width",
+      "Region Height"
+    ]
+  },
+  "Selection": {
+    "params": [],
+    "inputs": [],
+    "outputs": [
+      "Boolean",
+      "Float"
+    ]
+  },
+  "Set Face Set": {
+    "params": [],
+    "inputs": [
+      "Mesh",
+      "Selection",
+      "Face Set"
+    ],
+    "outputs": [
+      "Mesh"
+    ]
+  },
+  "Set Selection": {
+    "params": [
+      "domain",
+      "selection_type"
+    ],
+    "inputs": [
+      "Geometry",
+      "Selection"
+    ],
+    "outputs": [
+      "Geometry"
+    ]
+  },
+  "Transform Geometry": {
+    "params": [
+      "mode"
+    ],
+    "inputs": [
+      "Geometry",
+      "Translation",
+      "Rotation",
+      "Scale",
+      "Transform"
+    ],
+    "outputs": [
+      "Geometry"
+    ]
+  },
+  "Translate Instances": {
+    "params": [],
+    "inputs": [
+      "Instances",
+      "Selection",
+      "Translation",
+      "Local Space"
+    ],
+    "outputs": [
+      "Instances"
+    ]
+  },
+  "Triangulate": {
+    "params": [
+      "ngon_method",
+      "quad_method"
+    ],
+    "inputs": [
+      "Mesh",
+      "Selection"
+    ],
+    "outputs": [
+      "Mesh"
+    ]
+  },
+  "Trim Curve": {
+    "params": [
+      "mode"
+    ],
+    "inputs": [
+      "Curve",
+      "Selection",
+      "Start",
+      "End",
+      "Start",
+      "End"
+    ],
+    "outputs": [
+      "Curve"
+    ]
+  },
+  "Pack UV Islands": {
+    "params": [],
+    "inputs": [
+      "UV",
+      "Selection",
+      "Margin",
+      "Rotate"
+    ],
+    "outputs": [
+      "UV"
+    ]
+  },
+  "UV Unwrap": {
+    "params": [
+      "method"
+    ],
+    "inputs": [
+      "Selection",
+      "Seam",
+      "Margin",
+      "Fill Holes"
+    ],
+    "outputs": [
+      "UV"
+    ]
+  },
+  "Vertex of Corner": {
+    "params": [],
+    "inputs": [
+      "Corner Index"
+    ],
+    "outputs": [
+      "Vertex Index"
+    ]
+  },
+  "Viewer": {
+    "params": [
+      "data_type",
+      "domain",
+      "ui_shortcut"
+    ],
+    "inputs": [
+      "Geometry",
+      "Value"
+    ],
+    "outputs": []
+  },
+  "Viewport Transform": {
+    "params": [],
+    "inputs": [],
+    "outputs": [
+      "Projection",
+      "View",
+      "Is Orthographic"
+    ]
+  },
+  "Volume Cube": {
+    "params": [],
+    "inputs": [
+      "Density",
+      "Background",
+      "Min",
+      "Max",
+      "Resolution X",
+      "Resolution Y",
+      "Resolution Z"
+    ],
+    "outputs": [
+      "Volume"
+    ]
+  },
+  "Volume to Mesh": {
+    "params": [
+      "resolution_mode"
+    ],
+    "inputs": [
+      "Volume",
+      "Voxel Size",
+      "Voxel Amount",
+      "Threshold",
+      "Adaptivity"
+    ],
+    "outputs": [
+      "Mesh"
+    ]
+  },
+  "Warning": {
+    "params": [
+      "warning_type"
+    ],
+    "inputs": [
+      "Show",
+      "Message"
+    ],
+    "outputs": [
+      "Show"
+    ]
+  },
+  "Frame": {
+    "params": [
+      "label_size",
+      "shrink",
+      "text"
+    ],
+    "inputs": [],
+    "outputs": []
+  },
+  "Group Input": {
+    "params": [],
+    "inputs": [],
+    "outputs": [
+      ""
+    ]
+  },
+  "Group Output": {
+    "params": [
+      "is_active_output"
+    ],
+    "inputs": [
+      ""
+    ],
+    "outputs": []
+  },
+  "Reroute": {
+    "params": [
+      "socket_idname"
+    ],
+    "inputs": [
+      "Input"
+    ],
+    "outputs": [
+      "Output"
+    ]
+  },
+  "Blackbody": {
+    "params": [],
+    "inputs": [
+      "Temperature"
+    ],
+    "outputs": [
+      "Color"
+    ]
+  },
+  "Clamp": {
+    "params": [
+      "clamp_type"
+    ],
+    "inputs": [
+      "Value",
+      "Min",
+      "Max"
+    ],
+    "outputs": [
+      "Result"
+    ]
+  },
+  "Combine XYZ": {
+    "params": [],
+    "inputs": [
+      "X",
+      "Y",
+      "Z"
+    ],
+    "outputs": [
+      "Vector"
+    ]
+  },
+  "Float Curve": {
+    "params": [],
+    "inputs": [
+      "Factor",
+      "Value"
+    ],
+    "outputs": [
+      "Value"
+    ]
+  },
+  "Map Range": {
+    "params": [
+      "clamp",
+      "data_type",
+      "interpolation_type"
+    ],
+    "inputs": [
+      "Value",
+      "From Min",
+      "From Max",
+      "To Min",
+      "To Max",
+      "Steps",
+      "Vector",
+      "From Min",
+      "From Max",
+      "To Min",
+      "To Max",
+      "Steps"
+    ],
+    "outputs": [
+      "Result",
+      "Vector"
+    ]
+  },
+  "Math": {
+    "params": [
+      "operation",
+      "use_clamp"
+    ],
+    "inputs": [
+      "Value",
+      "Value",
+      "Value"
+    ],
+    "outputs": [
+      "Value"
+    ]
+  },
+  "Mix": {
+    "params": [
+      "blend_type",
+      "clamp_factor",
+      "clamp_result",
+      "data_type",
+      "factor_mode"
+    ],
+    "inputs": [
+      "Factor",
+      "Factor",
+      "A",
+      "B",
+      "A",
+      "B",
+      "A",
+      "B",
+      "A",
+      "B"
+    ],
+    "outputs": [
+      "Result",
+      "Result",
+      "Result",
+      "Result"
+    ]
+  },
+  "RGB Curves": {
+    "params": [],
+    "inputs": [
+      "Fac",
+      "Color"
+    ],
+    "outputs": [
+      "Color"
+    ]
+  },
+  "Separate XYZ": {
+    "params": [],
+    "inputs": [
+      "Vector"
+    ],
+    "outputs": [
+      "X",
+      "Y",
+      "Z"
+    ]
+  },
+  "Brick Texture": {
+    "params": [
+      "offset",
+      "offset_frequency",
+      "squash",
+      "squash_frequency"
+    ],
+    "inputs": [
+      "Vector",
+      "Color1",
+      "Color2",
+      "Mortar",
+      "Scale",
+      "Mortar Size",
+      "Mortar Smooth",
+      "Bias",
+      "Brick Width",
+      "Row Height"
+    ],
+    "outputs": [
+      "Color",
+      "Fac"
+    ]
+  },
+  "Checker Texture": {
+    "params": [],
+    "inputs": [
+      "Vector",
+      "Color1",
+      "Color2",
+      "Scale"
+    ],
+    "outputs": [
+      "Color",
+      "Fac"
+    ]
+  },
+  "Gabor Texture": {
+    "params": [
+      "gabor_type"
+    ],
+    "inputs": [
+      "Vector",
+      "Scale",
+      "Frequency",
+      "Anisotropy",
+      "Orientation",
+      "Orientation"
+    ],
+    "outputs": [
+      "Value",
+      "Phase",
+      "Intensity"
+    ]
+  },
+  "Gradient Texture": {
+    "params": [
+      "gradient_type"
+    ],
+    "inputs": [
+      "Vector"
+    ],
+    "outputs": [
+      "Color",
+      "Fac"
+    ]
+  },
+  "Magic Texture": {
+    "params": [
+      "turbulence_depth"
+    ],
+    "inputs": [
+      "Vector",
+      "Scale",
+      "Distortion"
+    ],
+    "outputs": [
+      "Color",
+      "Fac"
+    ]
+  },
+  "Noise Texture": {
+    "params": [
+      "noise_dimensions",
+      "noise_type",
+      "normalize"
+    ],
+    "inputs": [
+      "Vector",
+      "W",
+      "Scale",
+      "Detail",
+      "Roughness",
+      "Lacunarity",
+      "Offset",
+      "Gain",
+      "Distortion"
+    ],
+    "outputs": [
+      "Fac",
+      "Color"
+    ]
+  },
+  "Voronoi Texture": {
+    "params": [
+      "distance",
+      "feature",
+      "normalize",
+      "voronoi_dimensions"
+    ],
+    "inputs": [
+      "Vector",
+      "W",
+      "Scale",
+      "Detail",
+      "Roughness",
+      "Lacunarity",
+      "Smoothness",
+      "Exponent",
+      "Randomness"
+    ],
+    "outputs": [
+      "Distance",
+      "Color",
+      "Position",
+      "W",
+      "Radius"
+    ]
+  },
+  "Wave Texture": {
+    "params": [
+      "bands_direction",
+      "rings_direction",
+      "wave_profile",
+      "wave_type"
+    ],
+    "inputs": [
+      "Vector",
+      "Scale",
+      "Distortion",
+      "Detail",
+      "Detail Scale",
+      "Detail Roughness",
+      "Phase Offset"
+    ],
+    "outputs": [
+      "Color",
+      "Fac"
+    ]
+  },
+  "White Noise Texture": {
+    "params": [
+      "noise_dimensions"
+    ],
+    "inputs": [
+      "Vector",
+      "W"
+    ],
+    "outputs": [
+      "Value",
+      "Color"
+    ]
+  },
+  "Color Ramp": {
+    "params": [],
+    "inputs": [
+      "Fac"
+    ],
+    "outputs": [
+      "Color",
+      "Alpha"
+    ]
+  },
+  "Value": {
+    "params": [],
+    "inputs": [],
+    "outputs": [
+      "Value"
+    ]
+  },
+  "Vector Curves": {
+    "params": [],
+    "inputs": [
+      "Fac",
+      "Vector"
+    ],
+    "outputs": [
+      "Vector"
+    ]
+  },
+  "Vector Math": {
+    "params": [
+      "operation"
+    ],
+    "inputs": [
+      "Vector",
+      "Vector",
+      "Vector",
+      "Scale"
+    ],
+    "outputs": [
+      "Vector",
+      "Value"
+    ]
+  },
+  "Vector Rotate": {
+    "params": [
+      "invert",
+      "rotation_type"
+    ],
+    "inputs": [
+      "Vector",
+      "Center",
+      "Axis",
+      "Angle",
+      "Rotation"
+    ],
+    "outputs": [
+      "Vector"
+    ]
+  }
+}

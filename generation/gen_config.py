@@ -12,6 +12,7 @@ from pathlib import Path
 from pprint import pprint
 
 from .node_dims import NODE_DIMS
+from . import target_core
 
 # ====================================================================================================
 # Hard stuff
@@ -986,6 +987,11 @@ def compare_versions(old_module):
 
     def compare_dicts(old_dict, new_dict, tab=""):
 
+        # Node layout dimensions do not affect version compatibility.
+        if isinstance(old_dict, dict) and isinstance(new_dict, dict):
+            old_dict = {k: v for k, v in old_dict.items() if k != 'dims'}
+            new_dict = {k: v for k, v in new_dict.items() if k != 'dims'}
+
         lines = []
 
         # Lengths are the same ?
@@ -1105,7 +1111,9 @@ def write_header(f, title):
     f.write("# " + title + "\n")
     f.write('#' + '-'*80 + "\n\n")
     
-def write_file(path):
+def write_file(path=None, *, new=True):
+    """Write the current Blender configuration to core_new (or core)."""
+    path = target_core(path, new=new)
 
     time_stamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     cur_ver = bpy.app.version_string.replace('.', '_').replace(" ", "_")
@@ -1241,8 +1249,7 @@ def write_file(path):
         
 
 
-def test():
-    path = Path("/Users/alain/Documents/blender/scripts/modules/geonodes/core")
-    write_file(path)
+def test(*, new=True):
+    write_file(new=new)
 
 

@@ -67,7 +67,7 @@ def is_in_core(file_name):
     parent = p.parent.name
     grandparent = p.parent.parent.name
 
-    return parent == "core" or (parent == "generated" and grandparent == "core")
+    return parent.startswith("core") or (parent == "generated" and grandparent.startswith("core"))
 
 # ====================================================================================================
 # Geonodes specific Exception

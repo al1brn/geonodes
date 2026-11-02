@@ -1,0 +1,234 @@
+"""
+This file is part of the geonodes distribution (https://github.com/al1brn/geonodes).
+Copyright (c) 2025 Alain Bernard.
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, version 3.
+
+This program is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program. If not, see <http://www.gnu.org/licenses/>.
+
+$ DOC transparent
+
+-----------------------------------------------------
+Scripting Geometry Nodes
+-----------------------------------------------------
+
+module : shadernodes
+--------------------
+- ShaderNodes class
+
+Subclass of Tree which is used to create shader trees.
+
+updates
+-------
+- creation : 2024/07/23
+- update :   2024/09/04
+- update :   2025/01/12
+- update :   2025/01/18 : Bug in output_node
+"""
+
+__author__ = "Alain Bernard"
+__email__  = "lesideesfroides@gmail.com"
+__copyright__ = "Copyright (c) 2025, Alain Bernard"
+__license__ = "GNU GPL V3"
+__version__ = "3.0.1"
+__blender_version__ = "4.3.0"
+
+"""
+Created on 2024/07/26
+
+@author: alain
+
+-----------------------------------------------------
+Scripting Shader Nodes
+-----------------------------------------------------
+
+module : shadernodes
+--------------------
+- Implement Shader Nodes tree
+
+classes
+-------
+- ShaderNodes      : Geometry Nodes tree
+- nd               : Overrides static class with addition methods
+
+functions
+---------
+
+updates
+-------
+- creation : 2024/07/23
+- update : 2024/09/04
+"""
+
+from typing import Any, Optional
+
+from ..root.tree import Tree
+from ..root.node import Node
+from ..common.scripterror import NodeError
+
+class ShaderNodes(Tree):
+    def __init__(self, 
+            tree_name        : str,
+            *,
+            fake_user        : bool = False, 
+            is_group         : bool = False, 
+            prefix           : Optional[str] = None,
+            replace_material : bool = False,
+            rebuild          : bool = True,
+            color_tag        : str = 'NONE',
+            ):
+        """ > ShaderNodes
+
+        Parameters
+        ----------
+        tree_name : str
+            Shader Nodes name
+
+        fake_user : bool, optional
+            set fake_user flag default=False.
+
+        is_group : bool, optional
+            tree is a group default=False.
+
+        prefix : str, optional
+            name prefix default=None.
+
+        replace_material : bool, optional
+            replace material if already exists (is_group=False), default=False.
+
+        rebuild : bool, default=True
+            rebuild an existing group (is_group=True); new groups are always built.
+
+        color_tag : str, default='NONE'
+            group or modifier color_tag attribute (groups only)
+        """
+        super().__init__(
+            tree_name, 
+            tree_type='ShaderNodeTree', 
+            fake_user=fake_user, 
+            is_group=is_group, 
+            prefix=prefix, 
+            rebuild=rebuild if is_group else replace_material,
+            color_tag = color_tag,
+            )
+
+    # =============================================================================================================================
+    # Input Node
+
+    @property
+    def input_node(self) -> Node:
+        if not self._is_group:
+            raise NodeError(f"ShaderNodes '{self._material.name}' is not a group, it doesn't have an input node")
+        return super().input_node
+
+    # ====================================================================================================
+    # Tree output
+
+    @property
+    def output_node(self) -> Node:
+        if self._is_group:
+            return super().output_node
+
+        for node in self._nodes.values():
+            if node._bnode.bl_idname ==  'ShaderNodeOutputMaterial':
+                return node
+            
+        return Node('ShaderNodeOutputMaterial')
+
+    def get_output_node(self, target: str = 'ALL') -> Node:
+        """ Output node
+
+        Standard behavior if Group or within a zone
+        """
+
+        # ---------------------------------------------------------------------------
+        # Group or within a zone
+        # ---------------------------------------------------------------------------
+
+        if self._is_group:
+            return super().get_output_node()
+        
+        if len(self._output_stack):
+            return self._output_stack[-1]
+
+        # ---------------------------------------------------------------------------
+        # Output to shader outpout
+        # ---------------------------------------------------------------------------
+
+        for node in self._nodes.values():
+            if node._bnode.bl_idname == 'ShaderNodeOutputMaterial' and node._bnode.target == target:
+                return node
+        node = Node('ShaderNodeOutputMaterial')
+        node._bnode.target = target
+        return node
+
+    def set_surface(self, value: Any, target: str ='ALL') -> None:
+        node = self.get_output_node(target=target)
+        node.set_input_socket('Surface', value)
+
+    def set_volume(self, value: Any, target: str ='ALL') -> None:
+        node = self.get_output_node(target=target)
+        node.set_input_socket('Volume', value)
+
+    def set_displacement(self, value: Any, target: str ='ALL') -> None:
+        node = self.get_output_node(target=target)
+        node.set_input_socket('Displacement', value)
+
+    def set_thickness(self, value: Any, target: str ='ALL') -> None:
+        node = self.get_output_node(target=target)
+        node.set_input_socket('Thickness', value)
+
+    @property
+    def surface(self) -> None:
+        raise NodeError(f"Material 'surface' is write only")
+
+    @surface.setter
+    def surface(self, value: Any) -> None:
+        if isinstance(value, tuple):
+            self.set_surface(value[0], target=value[1])
+        else:
+            self.set_surface(value)
+
+    @property
+    def volume(self) -> None:
+        raise NodeError(f"Material 'volume' is write only")
+
+    @volume.setter
+    def volume(self, value: Any) -> None:
+        if isinstance(value, tuple):
+            self.set_volume(value[0], target=value[1])
+        else:
+            self.set_volume(value)
+
+    @property
+    def displacement(self) -> None:
+        raise NodeError(f"Material 'displacement' is write only")
+
+    @displacement.setter
+    def displacement(self, value: Any) -> None:
+        if isinstance(value, tuple):
+            self.set_displacement(value[0], target=value[1])
+        else:
+            self.set_displacement(value)
+
+    @property
+    def thickness(self) -> None:
+        raise NodeError(f"Material 'thickness' is write only")
+
+    @thickness.setter
+    def thickness(self, value: Any) -> None:
+        if isinstance(value, tuple):
+            self.set_thickness(value[0], target=value[1])
+        else:
+            self.set_thickness(value)
+
+    def aov_output(self, name: Optional[str] =None, color: Optional[Any] =None, value: Optional[Any] =None) -> None:
+        node = Node('AOV Output', {'Color': color, 'Value': value}, aov_name=name)

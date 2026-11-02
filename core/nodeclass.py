@@ -489,7 +489,7 @@ class Node:
             for socket_values, python_name in ((named_sockets, False), (sockets, True)):
                 for name, value in socket_values.items():
                     # In specific case the socket must be ignored
-                    # example : Alpha socket for Shader Combine Colore
+                    # example : Alpha socket for Shader Combine Color
                     if isinstance(name, str) and utils.snake_case(name) in constants.IGNORED_SOCKETS.get(self._bnode.bl_idname, ()):
                         continue
 

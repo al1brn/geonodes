@@ -9,6 +9,7 @@ from . node_explore import NodeInfo
 from . import gen_auto_dicts
 from . gen_auto_dicts import GEONODES, GEONODES_PROPS, SHADERNODES
 from . import gen_config
+from . import target_core
 
 from pprint import pprint, pformat
 
@@ -373,9 +374,15 @@ with GeoNodes("Calling a group example"):
 # =============================================================================================================================
 # Generate
 
-def generate(folder, sub_folder):
+def generate(folder=None, new_core=True):
+    """Generate config and API in core_new, or core with new_core=False.
 
-    path = Path(folder) / sub_folder
+    folder is the geonodes module directory (the current module by default).
+    Reading continues to use the core selected by geonodes.core_module.
+    """
+    folder = target_core(folder, new=new_core)
+    path = folder / "generated"
+    path.mkdir(exist_ok=True)
 
     # ====================================================================================================
     # Generate the config file
@@ -384,7 +391,7 @@ def generate(folder, sub_folder):
     # config file is named config_xxx where xxx is the blender version
     # constants.py must manually import * from this config file
 
-    gen_config.write_file(Path(folder))
+    gen_config.write_file(folder, new=new_core)
 
     # ====================================================================================================
     # Gen collects generation

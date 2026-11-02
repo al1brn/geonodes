@@ -1,0 +1,172 @@
+from .socket import Socket
+"""
+This file is part of the geonodes distribution (https://github.com/al1brn/geonodes).
+Copyright (c) 2025 Alain Bernard.
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, version 3.
+
+This program is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program. If not, see <http://www.gnu.org/licenses/>.
+
+$ DOC transparent
+
+-----------------------------------------------------
+Scripting Geometry Nodes
+-----------------------------------------------------
+
+module : sock_integer
+---------------------
+- Integer socket
+
+Generated environment classes inherit from this shared root: Integer
+the environment supplies the generated node methods.
+
+updates
+-------
+- creation : 2024/07/23
+- update :   2024/09/04
+- update :   2025/01/12
+"""
+
+__author__ = "Alain Bernard"
+__email__  = "lesideesfroides@gmail.com"
+__copyright__ = "Copyright (c) 2025, Alain Bernard"
+__license__ = "GNU GPL V3"
+__version__ = "3.0.0"
+__blender_version__ = "4.3.0"
+
+
+class Material(Socket):
+    """ Material texture
+
+    You can refer to an existing material using its name in `bpy.data.materials`.
+
+    ``` python
+    from geonodes import GeoNodes, Material, nd, Mesh, ShaderNodes, Shader, Input, Menu
+    
+    # ---------------------------------------------------------------------------
+    # Building 3 materials
+    # ---------------------------------------------------------------------------
+    
+    with ShaderNodes("Red"):
+        ped = Shader.Principled(base_color='red')
+        ped.out()
+        
+    with ShaderNodes("Green"):
+        ped = Shader.Principled(base_color='#00FF00FF')
+        ped.out()
+
+    with ShaderNodes("Blue"):
+        ped = Shader.Principled(base_color=(0, 0, 1))
+        ped.out()
+        
+    # ---------------------------------------------------------------------------
+    # Playing with materials
+    # ---------------------------------------------------------------------------
+
+    with GeoNodes("Material Test"):
+        
+        gs = Node('Menu Switch', menu=Input("Pick Geometry"))
+        
+        with gs:            
+            g = Mesh.IcoSphere()
+            mat0 = Material("Red")
+            g.material = mat0
+            g.out("Full Red")
+            
+        with gs:                
+            mat1 = Material("Blue", name="Your Material")
+            g[3:10].material = mat1
+            g.out("Your material in 3:10")
+            
+        with gs:
+            g.replace_material(mat0, "Green")
+            g.out("Replace Red by Green")
+
+        with gs:
+            g.replace_material(mat0, "Green")
+            g.out("Replace Red by Green")
+            
+        with gs:
+            g[nd.material_index.equal(1)].material = "Red"
+            g.out("Replace mat index 1 by Red")
+            
+            
+        gs._out.out()
+    ```
+    """
+
+    SOCKET_TYPE = 'MATERIAL'
+
+
+    # ====================================================================================================
+    # Class test    
+    # ====================================================================================================
+
+    @classmethod
+    def _class_test(cls):
+
+        from geonodes import GeoNodes, Material, nd, Mesh, ShaderNodes, Shader, Input, Node
+        
+        # ---------------------------------------------------------------------------
+        # Building 3 materials
+        # ---------------------------------------------------------------------------
+        
+        with ShaderNodes("Red"):
+            ped = Shader.Principled(base_color='red')
+            ped.out()
+            
+        with ShaderNodes("Green"):
+            ped = Shader.Principled(base_color='#00FF00FF')
+            ped.out()
+
+        with ShaderNodes("Blue"):
+            ped = Shader.Principled(base_color=(0, 0, 1))
+            ped.out()
+            
+        # ---------------------------------------------------------------------------
+        # Playing with materials
+        # ---------------------------------------------------------------------------
+
+        with GeoNodes("Material Test"):
+            
+            gs = Node('Menu Switch', menu=Input("Pick Geometry"))
+            
+            with gs:            
+                g = Mesh.IcoSphere()
+                mat0 = Material("Red")
+                g.material = mat0
+                g.out("Full Red")
+                
+            with gs:                
+                mat1 = Material("Blue", name="Your Material")
+                g[3:10].material = mat1
+                g.out("Your material in 3:10")
+                
+            with gs:
+                g.replace_material(mat0, "Green")
+                g.out("Replace Red by Green")
+
+            with gs:
+                g.replace_material(mat0, "Green")
+                g.out("Replace Red by Green")
+                
+            with gs:
+                g[nd.material_index.equal(1)].material = "Red"
+                g.out("Replace mat index 1 by Red")
+                
+                
+            gs._out.out()
+      
+
+
+
+
+

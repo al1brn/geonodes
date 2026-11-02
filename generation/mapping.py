@@ -1,6 +1,8 @@
 from pprint import pprint
 
-from ..core import utils
+from .. import core_module
+
+utils = core_module.utils
 
 class Mapping:
 

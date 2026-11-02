@@ -3,7 +3,7 @@ from contextlib import contextmanager
 
 import bpy
 
-from geonodes.core.treeclass import Tree
+from geonodes import Tree
 from geonodes.demos import common, counters
 
 

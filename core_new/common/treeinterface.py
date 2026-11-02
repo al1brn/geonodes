@@ -1,0 +1,2156 @@
+"""
+This file is part of the geonodes distribution (https://github.com/al1brn/geonodes).
+Copyright (c) 2025 Alain Bernard.
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, version 3.
+
+This program is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program. If not, see <http://www.gnu.org/licenses/>.
+
+$ DOC transparent
+
+-----------------------------------------------------
+Scripting Geometry Nodes
+-----------------------------------------------------
+
+module : treeinterface
+----------------------
+- TreeInterface class
+
+This module implements the TreeInterface class to
+manage Tree input and output sockets creation and ordering.
+
+updates
+-------
+- creation : 2024/07/23
+- update :   2024/09/04
+- update :   2025/01/12
+- update :   2025/03/26 : panels can be sub panels
+"""
+
+__author__ = "Alain Bernard"
+__email__  = "lesideesfroides@gmail.com"
+__copyright__ = "Copyright (c) 2025, Alain Bernard"
+__license__ = "GNU GPL V3"
+
+
+import bpy
+from . import utils as utils
+from .. import constants
+from .sockettype import SocketType
+from .signature import Signature
+from typing import Literal
+
+from bpy.types import NodeTree, NodeTreeInterfaceSocket, NodeTreeInterfacePanel, NodeTreeInterfaceItem
+
+import numpy as np
+from .scripterror import NodeError
+
+DELETION = '__deletion marker__'
+
+IN_OUT = Literal['INPUT', 'OUTPUT']
+BOTH   = Literal['INPUT', 'OUTPUT', 'BOTH']
+ITYPE  = Literal['SOCKET', 'PANEL']
+
+# ====================================================================================================
+# Utilities
+# ====================================================================================================
+
+def check_in_out(in_out, both=False):
+    if in_out in ('INPUT', 'OUTPUT'):
+        return True
+    elif in_out == 'BOTH' and both:
+        return True
+    
+    raise RuntimeError(f"in_out argument '{in_out}' not in ('INPUT', 'OUTPUT')")
+
+# ====================================================================================================
+# Iterator on NodeTreeInterfacePanel
+# ====================================================================================================
+
+class PanelIterator:
+    def __init__(self, panel: NodeTreeInterfacePanel, sockets=True, panels=False):
+        self.panel   = panel
+        self.panels  = panels
+        self.sockets = sockets
+        
+    def __iter__(self):
+        self.index = 0
+        self.child = None
+        return self
+    
+    def __next__(self):
+
+        # ---------------------------------------------------------------------------
+        # Sub panel in progress
+        # ---------------------------------------------------------------------------
+        
+        if self.child is not None:
+            try:
+                return self.child.__next__()
+            except StopIteration:
+                pass
+            
+            self.child = None
+            
+            return self.__next__()
+        
+        # ---------------------------------------------------------------------------
+        # Next item
+        # ---------------------------------------------------------------------------
+
+        while True:
+
+            if self.index >= len(self.panel.interface_items):
+                raise StopIteration
+                
+            item = self.panel.interface_items[self.index]
+            self.index += 1
+            
+            if item.item_type == 'PANEL':
+                self.child = iter(PanelIterator(item))
+                if self.panels:
+                    return item
+                else:
+                    return self.__next__()
+            else:
+                if self.sockets:
+                    return item
+    
+
+# ====================================================================================================
+# Item Path
+# ====================================================================================================
+
+class ItemPath:
+
+    __slots__ = ('_path', '_socket_id')
+
+    def __init__(self, value: str | list | NodeTreeInterfaceItem):
+
+        """ A panel name wraps the different ways to name a panel.
+
+        A panel can be addressed:
+        - with a path : Top Panel > Panel_1 > Sub Panel
+        - with a list : [('Top Panel', 0), ('Panel', 1), ('Sub Panel', 0)]
+
+        The class can be initialized from a NodeTreeInterfaceItem, from a path or
+        from a list.
+
+        Parameters
+        ----------
+        value : str | list | NodeTreeInterfaceItem
+            the panel to initiaize
+
+        """
+
+        self._path      = ""
+        self._socket_id = None
+
+        if value is None:
+            return
+
+        # ---------------------------------------------------------------------------
+        # str : "top > sub_1 > another sub
+        # ---------------------------------------------------------------------------
+
+        if isinstance(value, str):
+
+            # Make sure path is normalized
+            self._path = ItemPath.stack_to_path(ItemPath.path_to_stack(value))
+
+            # If terminated by _0, it is part of the name
+            if len(value) > 2 and value[-2:] == '_0':
+                self._path += '_0'
+            
+        # ---------------------------------------------------------------------------
+        # ItemPath
+        # ---------------------------------------------------------------------------
+        
+        elif isinstance(value, ItemPath):
+            self._path      = value.path
+            self._socket_id = value.socket_id
+
+        # ---------------------------------------------------------------------------
+        # Couple path, socket_id
+        # ---------------------------------------------------------------------------
+        
+        elif isinstance(value, tuple) and len(value) == 2:
+            self._path      = ItemPath(value[0]).path
+            self._socket_id = None if value[1] is None else SocketType.from_type(value[1]).socket_id
+
+        # ---------------------------------------------------------------------------
+        # NodeTreeInterfaceItem
+        # ---------------------------------------------------------------------------
+
+        elif isinstance(value, NodeTreeInterfaceItem):
+
+            # Up to the top
+            stack = []
+
+            cur_item = value
+            while cur_item.index != -1:
+
+                parent = cur_item.parent
+                rank = 0
+                for item in parent.interface_items:
+                    if item == cur_item:
+                        break
+
+                    if item.name != cur_item.name or item.item_type != cur_item.item_type:
+                        continue
+
+                    if cur_item.item_type == 'SOCKET':
+                        if item.in_out != cur_item.in_out or item.socket_type != cur_item.socket_type:
+                            continue
+
+                    rank += 1
+
+                # Bottom of the list
+                stack.insert(0, (item.name, rank))
+
+                # Next
+                cur_item = parent
+
+            # ----- Get path and socket id
+
+            self._path = ItemPath.stack_to_path(stack)
+            self._socket_id = None if value.item_type != 'SOCKET' else value.socket_type
+
+            # ----- Absolute rank
+
+            for item in PanelIterator(cur_item):
+                if utils.snake_case(item.name) != utils.snake_case(value.name):
+                    continue
+                if value == item:
+                    break
+
+        # ---------------------------------------------------------------------------
+        # Stack of panels
+        # ---------------------------------------------------------------------------
+
+        elif isinstance(value, list):
+            self._path = ItemPath.stack_to_path(value)
+
+        else:
+            raise NodeError(
+                f"The value '{value}' can't be used as socket name.\n"
+                "Make sure to use the right argument when calling the method."
+                )
+        
+    def __str__(self):
+        return self.path
+    
+    @property
+    def path(self):
+        return self._path
+    
+    @property
+    def socket_id(self):
+        return self._socket_id
+    
+    @property
+    def key(self):
+        if self._socket_id is None:
+            return self.path
+        else:
+            return (self.path, self.socket_id)
+
+    # ====================================================================================================
+    # Conversions
+    # ====================================================================================================
+
+    @staticmethod
+    def to_item_path(value):
+        if isinstance(value, ItemPath):
+            return value
+        else:
+            return ItemPath(value)
+
+    # ----------------------------------------------------------------------------------------------------
+    # Path to list of couples
+    # ----------------------------------------------------------------------------------------------------
+
+    @staticmethod
+    def path_to_stack(path: str) -> list:
+        """ Return a list of (name, rank).
+
+        Parameters
+        ----------
+        path : str
+            panel path
+
+
+        Returns
+        -------
+        list of couples (name, rank)
+        """
+
+        stack = []
+        
+        for token in path.split(">"):
+            raw = token.strip()
+            a = raw.split('_')
+            rank = 0
+            if len(a) > 1:
+                n = a[-1]
+                if n.isnumeric():
+                    rank = int(n)
+                    a.pop()
+            
+            name = "_".join(a)
+            stack.append((name, rank))
+
+        return stack
+    
+    # ----------------------------------------------------------------------------------------------------
+    # Stack to path
+    # ----------------------------------------------------------------------------------------------------
+
+    @staticmethod
+    def stack_to_path(stack: list) -> str:
+        """ Convert a stack of couples (name, rank) to path.
+
+        Parameters
+        ----------
+        stack : list
+            stack of (name, rank)
+
+
+        Returns
+        -------
+        str
+            panel path
+
+        """
+        a = []
+        for spec in stack:
+            if isinstance(spec, str):
+                s = spec.strip()
+                if s != "":
+                    a.append(spec.strip())
+
+            elif isinstance(spec, tuple) and len(spec) == 2:
+                name, rank = spec
+                s = name.strip()
+                if s == "":
+                    continue
+
+                if rank == 0:
+                    a.append(s)
+                else:
+                    a.append(f"{s}_{rank}")
+            else:
+                raise RuntimeError(f"ItemPath error: invalid parent <{spec}> in stack {stack}.")
+        
+        return " > ".join(a)
+    
+    # ====================================================================================================
+    # Properties
+    # ====================================================================================================
+    
+    @property
+    def is_root(self):
+        return self.path == ""
+
+    @property
+    def stack(self):
+        return ItemPath.path_to_stack(self.path)
+    
+    @property
+    def long_name(self):
+        """ Return the path as long name (without '>')
+        """
+        return " ".join([name for name, _ in self.stack])
+
+    @property
+    def ranked_long_name(self):
+        """ Return the path as long name (without '>')
+        """
+        s = self.long_name
+        _, rank = self.name_rank
+        if rank > 0:
+            return f"{s}_{rank}"
+        else:
+            return s
+    
+    @property
+    def python_path(self):
+        return utils.snake_case(self.path)
+    
+    @property
+    def parent(self):
+        if self.path == "":
+            return ItemPath(None)
+        else:
+            return ItemPath(self.stack[:-1])
+
+    @property
+    def name_rank(self):
+        if self.path == "":
+            return None, 0
+        else:
+            return self.stack[-1]
+
+    @property
+    def name(self):
+        return self.name_rank[0]
+    
+    def get_names(self, use_name: bool = True, use_python: bool = False):
+        stack = self.stack
+        names = []
+        for i in reversed(range(len(stack))):
+            name = ItemPath(stack[i:]).path
+            if use_name:
+                names.append(name)
+
+            if use_python:
+                names.append(utils.snake_case(name))
+
+        return names
+    
+    # ====================================================================================================
+    # Does the items match this path
+    # ====================================================================================================
+
+    def panel_matches(self, panel):
+        if self.socket_id is not None:
+            return False
+        return self.name in (panel.name, utils.snake_case(panel.name))
+
+    def socket_matches(self, socket):
+        if self.name not in (socket.name, utils.snake_case(socket.name)):
+            return False
+        if self.socket_id is None:
+            return True
+        else:
+            return self.socket_id == socket.socket_type
+
+    # ====================================================================================================
+    # Operations
+    # ====================================================================================================
+    
+    def join(self, other):
+
+        if self.socket_id is not None:
+            raise RuntimeError(f"The path {self.key} is not a panel. Impossible to join with '{other}'.")
+        
+        other = ItemPath.to_item_path(other)
+        if self.is_root:
+            return other
+        
+        elif other.is_root:
+            return self
+        
+        return ItemPath((">".join([self.path, ItemPath(other).path]), other.socket_id))
+    
+    def equal_to(self, other):
+        return self.key == ItemPath.to_item_path(other).key
+    
+    def get_relative_to(self, parent):
+        """ Get the path relative to the given parent.
+        
+        The parent path must be shorter that path and be equal.
+        
+        Parameters
+        ----------
+        parent : ItemPath
+            parent panel
+
+        
+        Returns
+        -------
+        ItemPath
+            path relative to the parent
+
+        """
+        parent_path = ItemPath.to_item_path(parent)
+        if parent.socket_id not in [None, ""]:
+            raise RuntimeError(f"The path {parent_path.key} is not a panel. Impossible to get relative path of '{self}'.")
+
+        if parent_path.is_root:
+            return self
+        
+        if self.path.startswith(parent_path.path):
+            return ItemPath((self.path[len(parent_path.path):], self.socket_id))
+        else:
+            return self
+
+    
+    # ====================================================================================================
+    # Operations
+    # ====================================================================================================
+    
+    def __add__(self, other):
+        return self.join(other)
+    
+    def __radd__(self, other):
+        return ItemPath.to_item_path(other).join(self)
+    
+    def __sub__(self, other):
+        return self.get_relative_to(other)
+    
+    def __rsub__(self, other):
+        return ItemPath.to_item_path(other).get_relative_to(self)
+    
+    def __eq__(self, other):
+        return self.equal_to(other)
+    
+    def __ne__(self, other):
+        return not self.equal_to(other)
+    
+# ====================================================================================================
+# Tree Interface
+# ====================================================================================================
+
+class TreeInterface:
+
+    BIN_PANEL = "SOCKETS_BIN"
+
+    SOCKET_TYPES = {'GeometryNodeTree': [], 'ShaderNodeTree': []}
+    SOCKET_PROPS = {'GeometryNodeTree': {}, 'ShaderNodeTree': {}}
+    SYNOMNYMS = {
+        'default'           : 'default_value',
+        'default_attribute' : 'default_attribute_name',
+        'tip'               : 'description',
+        'min'               : 'min_value',
+        'max'               : 'max_value',
+        'layer_selection'   : 'layer_selection_field',
+        'shape'             : 'structure_type',
+        'expanded'          : 'menu_expanded',
+        'hide'              : 'hide_in_modifier',
+    }
+
+    def __init__(self, btree):
+        """ Encapsulate the Blender NodeTreeInterface class
+
+        This class is used to ease creation and duplication of trees of sockets
+
+        The process of creating a Tree makes use of the following methods:
+        - mark_for_deletion : all panels and sockets will be deleted when the tree will be finished
+        - create input / output sockets : deletion markers are removed
+        - set_in_geometry : make sure the input geometry is first
+        - set_out_geometry : make sure output geometry exists and is first
+        - clear : remove unused input and output sockets
+
+        Tree inputs can be created from another node inputs
+        """
+        self.btree = btree
+        self.items_tree = btree.interface.items_tree
+
+        self._dynamic_init()
+
+    # ====================================================================================================
+    # Dynamic initialization
+    # ====================================================================================================
+
+    def _dynamic_init(self):
+
+        if len(TreeInterface.SOCKET_TYPES[self.btree.bl_idname]):
+            return
+        
+        for d in constants.SOCKETS.values():
+            for tt in ('GeometryNodeTree', 'ShaderNodeTree'):
+                if d[tt] is not None:
+                    TreeInterface.SOCKET_TYPES[tt].append(d[tt])
+                    TreeInterface.SOCKET_PROPS[tt][d[tt]] = [prop[0] for prop in d['props'].values()]
+        
+    @property
+    def socket_types(self):
+        return self.SOCKET_TYPES[self.btree.bl_idname]
+
+    @property
+    def socket_props(self):
+        return self.SOCKET_PROPS[self.btree.bl_idname]
+    
+    @classmethod
+    def get_prop_name(cls, prop):
+        return cls.SYNOMNYMS.get(prop, prop)
+
+    # ====================================================================================================
+    # Dunder methods
+    # ====================================================================================================
+
+    def __str__(self):
+        return f"<TreeInterface for tree '{self.btree.name}'>"
+
+    def __repr__(self):
+        return str(self)
+
+    # ====================================================================================================
+    # Panels
+    # ====================================================================================================
+
+    # ----------------------------------------------------------------------------------------------------
+    # Get / create a panel
+    # ----------------------------------------------------------------------------------------------------
+
+    def get_panel(self, 
+            path    : str | NodeTreeInterfacePanel = "", 
+            default_closed : bool = False,
+            create  : bool = False):
+        """ Get a panel by its name.
+
+        If create is True, the panel is created.
+        !!! note
+            The panel is created only if the parent panels exist
+
+        !!! note
+
+            - If the name is `None`, returns `None'.
+            - If If the name is empty, returns the parent panel.
+
+        Both the name and the parent name use `'>'` char as a separator between parent panel names.
+
+        !!! note
+            When several panels share the same name within a parent, the name can be suffixed by its order
+            starting from 0, for exemple:
+
+              - First : `"Panel"`
+              - Second : `"Panel_1"`
+              - Third : `"Panel_2`"
+
+        ``` python
+        tinf = TreeInterface(...)
+
+        # Create a top panel named "Top"
+        panel = tinf.create_panel("Top")
+
+        # Create an homonym "Top"
+        panel = tinf.create_panel("Top")
+
+        # Create a sub panel named "Sub"
+        sub = tinf.create_panel("Sub", parent="Top")
+
+        # Create a sub panel named "Sub" in the second panel
+        sub = tinf.create_panel("Sub 2", parent="Top_1")
+
+        # Get the top panel named "Top"
+        panel = tinf.get_panel("Top")
+
+        # Get the sub panel Sub within Panel
+        sub_panel = tinf.get_panel("Sub", parent="Top")
+        sub_panel = tinf.get_panel("Sub", parent=panel)
+        sub_panel = tinf.get_panel("Top_1 > Sub")
+        ``` 
+
+        Parameters
+        ----------
+        path : str | NodeTreeInterfacePanel, optional
+            name of the panel default="".
+
+        default_closed : bool, optional
+            default closed fag default=False.
+
+        create : bool, optional
+            create the panel if is doesn't exist default=False.
+
+
+        Returns
+        -------
+        NodeTreeInterfacePanel
+            None if not found or impossible to create
+
+
+        """
+        # ---------------------------------------------------------------------------
+        # Simple cases
+        # ---------------------------------------------------------------------------
+
+        if isinstance(path, NodeTreeInterfacePanel):
+            return path
+
+        panel_path = ItemPath(path)
+        if panel_path.is_root:
+            return None
+
+        # ---------------------------------------------------------------------------
+        # Loop on the stack
+        # ---------------------------------------------------------------------------
+
+        panel_stack = panel_path.stack
+        parent_panel = None
+        items = self.items_tree
+        parent_index = -1
+
+        for name, rank in panel_stack:
+            
+            # ---------------------------------------------------------------------------
+            # Search the rank-th item with the target name
+            # ---------------------------------------------------------------------------
+
+            count = rank
+            found = None
+
+            for item in items:
+                if (item.item_type != 'PANEL') or (item.parent.index != parent_index):
+                    continue
+
+                if item.name == name:
+                    if count == 0:
+                        found = item
+                        break
+                    count -= 1
+
+            # ---------------------------------------------------------------------------
+            # Create if if not found
+            # ---------------------------------------------------------------------------
+
+            if found is None:
+                if not create:
+                    return None
+                
+                for i in range(count + 1):
+                    found = self.btree.interface.new_panel(name, default_closed=default_closed)
+                    self.btree.interface.move_to_parent(found, parent_panel, 9999)
+
+            # ---------------------------------------------------------------------------
+            # Next
+            # ---------------------------------------------------------------------------
+
+            parent_panel = found
+            items = parent_panel.interface_items
+            parent_index = parent_panel.index
+
+        return parent_panel
+    
+    # ----------------------------------------------------------------------------------------------------
+    # Create a panel
+    # ----------------------------------------------------------------------------------------------------
+
+    def create_panel(self, 
+            name    : str, 
+            parent  : str | NodeTreeInterfacePanel = None,
+            tip     : str = "",
+            default_closed : bool = False):
+        """ Create a new panel within a parent panel.
+
+        Parameters
+        ----------
+        name : str
+            name of the panel to create
+
+        parent : str | NodeTreeInterfacePanel, optional
+            the panel wehre to create the panel default=None.
+
+        tip : str, optional
+            panel description default="".
+
+        default_closed : bool, optional
+            default_closed flag default=False.
+
+
+        Returns
+        -------
+        NodeTreeInterfacePanel
+            the created panel
+
+        """
+
+        if ItemPath(name).is_root:
+            raise AttributeError(f"To create a Panel, a name must be provide.")
+
+        panel_path = ItemPath(parent) + ItemPath(name)
+        parent_panel = self.get_panel(panel_path.parent)
+
+        new_panel = self.btree.interface.new_panel(name, default_closed=default_closed)
+        self.btree.interface.move_to_parent(new_panel, parent_panel, 9999)
+        new_panel.description = tip
+
+        return new_panel
+    
+    # ----------------------------------------------------------------------------------------------------
+    # Check if an item belongs to a parent
+    # ----------------------------------------------------------------------------------------------------
+
+    @staticmethod
+    def belongs_to(item: NodeTreeInterfaceItem, parent: NodeTreeInterfacePanel=None):
+        """ Check if an item belongs to a parent panel
+
+        Parameters
+        ----------
+        item : NodeTreeInterfaceItem
+            the item to test
+
+        parent : NodeTreeInterfacePanel, optional
+            the panel to test default=None.
+
+
+        Returns
+        -------
+        True if item is in the panel hierarchy
+        """
+        parent_path = ItemPath(parent)
+        if parent_path.is_root:
+            return True
+
+        return ItemPath(item).path.startswith(parent_path.path)
+    
+    # ====================================================================================================
+    # Sockets
+    # ====================================================================================================
+    
+    # ----------------------------------------------------------------------------------------------------
+    # Get a socket
+    # ----------------------------------------------------------------------------------------------------
+
+    def get_socket(self, 
+            in_out      : IN_OUT,
+            name        : str | NodeTreeInterfaceSocket, 
+            socket_type : str,
+            parent      : str | NodeTreeInterfacePanel = None,
+            ):
+        
+        """ Get a socket by its name.
+
+        Parameters
+        ----------
+        in_out : {'INPUT', 'OUTPUT'}
+            input or output socket
+
+        name : str | NodeTreeInterfaceSocket
+            the socket to retrieve
+
+        socket_type : str
+            socket type
+
+        parent : str | NodeTreeInterfacePanel, optional
+            the parent panel default=None.
+
+        """
+        check_in_out(in_out)
+
+        if ItemPath(name).is_root:
+            raise AttributeError(f"A name must be provided to get a socket.")
+        
+        # ---------------------------------------------------------------------------
+        # Get the parent panel
+        # ---------------------------------------------------------------------------
+        
+        socket_path = ItemPath(parent) + ItemPath(name)
+
+        if len(socket_path.stack) > 1:
+            parent_panel = self.get_panel(socket_path.parent)
+            if parent_panel is None:
+                return None
+            items = parent_panel.interface_items
+            parent_index = parent_panel.index
+        else:
+            items = self.items_tree
+            parent_index = -1
+
+        # ---------------------------------------------------------------------------
+        # Get the socket within parent
+        # ---------------------------------------------------------------------------
+
+        name, rank = socket_path.name_rank
+        count = rank
+        found = None
+        for item in items:
+
+            if (item.item_type != 'SOCKET') or (item.parent.index != parent_index):
+                continue
+            if item.in_out != in_out:
+                continue
+            if socket_type is not None:
+                if SocketType.from_type(socket_type) != item.socket_type:
+                    continue
+
+            if item.name == name:
+                if count == 0:
+                    found = item
+                    break
+                count -= 1
+
+        return found
+
+    # ----------------------------------------------------------------------------------------------------
+    # Create a socket
+    # ----------------------------------------------------------------------------------------------------
+
+    def create_socket(self, 
+            in_out      : IN_OUT,
+            name        : str, 
+            socket_type : str | SocketType,
+            parent      : str | NodeTreeInterfacePanel = None,
+            from_socket : bpy.types.NodeSocket = None,
+            **props):
+        """ Create a new socket.
+
+        Parameters
+        ----------
+        in_out : {'INPUT', 'OUTPUT'}
+            input or output socket
+
+        name : str
+            name of the socket to create
+
+        socket_type : str | SocketType
+            a valid socket type
+
+        parent : str | NodeTreeInterfacePanel, optional
+            the parent panel where to create the socket default=None.
+
+        from_socket : NodeSocket, optional
+            an existing socket to configure the created socket default=None.
+
+        props : dict
+            properties specific to the socket type
+
+
+        Returns
+        -------
+        NodeTreeInterfaceSocket
+            the created sockets
+
+        """
+        check_in_out(in_out)
+
+        NO_MODIFIER_UPDATE = ['NodeSocketMenu']
+
+        # ---------------------------------------------------------------------------
+        # Arguments checks
+        # ---------------------------------------------------------------------------
+
+        if ItemPath(name).is_root:
+            raise AttributeError(f"A name must be provided to get a socket.")
+        
+        if socket_type is None:
+            if from_socket is None:
+                raise NodeError(f"create_socket error: None 'socket_type' requires a  valid 'from_socket' argument.")
+            
+            socket_type = SocketType(from_socket)            
+        else:
+            socket_type = SocketType.from_type(socket_type)
+
+        # ---------------------------------------------------------------------------
+        # Creation / recover from bin
+        # ---------------------------------------------------------------------------
+        
+        socket_path = ItemPath(parent) + ItemPath(name)
+        parent_panel = self.get_panel(socket_path.parent, create=True)
+
+        # Try to recover from bin
+        socket = self.get_socket(in_out, socket_path.name, socket_type=socket_type, parent=TreeInterface.BIN_PANEL)
+        created = False
+
+        # Not found, let's create it
+        if socket is None:
+            socket = self.btree.interface.new_socket(socket_path.name, in_out=in_out, socket_type=socket_type.socket_id, parent=parent_panel)
+            created = True
+
+        # Last position in the parent panel
+        self.btree.interface.move_to_parent(socket, parent_panel, 9999)
+
+        # ---------------------------------------------------------------------------
+        # Properties
+        # ---------------------------------------------------------------------------
+
+        if from_socket is not None:
+            # NodeTreeInterfaceSocketFont has no from_socket method in Blender 5.1
+            if 'from_socket' in dir(socket):
+                socket.from_socket(from_socket.node, from_socket)
+
+        vector_dimensions = props.get('dimensions', socket_type.dimensions)
+
+        # Blender resizes a vector interface socket's default-value storage only
+        # after its dimensions property has been assigned. Set the default value
+        # against the current storage first, then change the dimensions.
+        if socket_type.is_vector and 'dimensions' in props:
+            prop_items = [
+                (prop, value)
+                for prop, value in props.items()
+                if prop != 'dimensions'
+            ]
+            prop_items.append(('dimensions', props['dimensions']))
+        else:
+            prop_items = props.items()
+
+        for prop, value in prop_items:
+
+            # Synonyms
+            prop = self.get_prop_name(prop)
+
+            if value is None:
+                continue
+
+            if prop == 'tip':
+                prop = 'description'
+
+            if prop not in self.socket_props[socket_type.socket_id]:
+                raise NodeError(f"create_socket error ('{name}', {socket_type}) : socket property '{prop}' is invalid.\n"
+                                f"Valid properties are: {self.socket_props[socket_type.socket_id]}.")
+            
+            # Ease the use of subtype
+            if prop == 'subtype':
+                socket_type.subtype = value
+                value = socket_type.subtype
+
+            # GeoNodes vectors are strictly 3D, whereas Blender interface sockets
+            # can expose 2 or 4 components.
+            if (
+                prop == 'default_value'
+                and socket_type.is_vector
+                and isinstance(value, tuple)
+                and len(value) != vector_dimensions
+            ):
+                print(
+                    f"CAUTION: vector of length {len(value)} "
+                    f"converted to dimensions={vector_dimensions}"
+                )
+
+            if (
+                prop == 'default_value'
+                and socket_type.is_vector
+                and isinstance(value, tuple)
+            ):
+                storage_dimensions = len(socket.default_value)
+                value = (
+                    value[:storage_dimensions]
+                    + (0,) * max(0, storage_dimensions - len(value))
+                )
+
+            # Could fail for default_value (Menu for instance)
+            if value is not None:
+                try:
+                    setattr(socket, prop, value)
+
+                except TypeError as e:
+                    enums = utils.get_enum_from_string(str(e))
+                    if str(value).upper() in enums:
+                        setattr(socket, prop, str(value).upper())
+                    else:
+                        if len(enums):
+                            s = f", accepted values are {enums}"
+                        else:
+                            s = ""
+
+                        raise NodeError(
+                            f"An error occurred when creating the {SocketType.from_type(socket_type).class_name} socket '{name}' .\n"
+                            f"The property '{prop}' doesn't accept the value '{value}'{s}.\n{str(e)}\n")
+
+        # ---------------------------------------------------------------------------
+        # Update socket default value
+        # ---------------------------------------------------------------------------
+
+        if hasattr(socket, 'default_value'):
+
+            # ---------------------------------------------------------------------------
+            # Update default value in input node
+            # ---------------------------------------------------------------------------
+
+            for node in self.btree.nodes:
+                if node.bl_idname != 'NodeGroupInput':
+                    continue
+                for bsock in node.outputs:
+                    if bsock.identifier == socket.identifier:
+                        # Could fail for menus
+                        try:
+                            bsock.default_value = socket.default_value
+                        except Exception:
+                            pass
+                        break
+                break
+                            
+        return socket
+    
+    # ----------------------------------------------------------------------------------------------------
+    # Get the sockets
+    # ----------------------------------------------------------------------------------------------------
+
+    def get_sockets(self,
+            in_out: IN_OUT,
+            *,
+            include: list = None,
+            exclude: list = [],
+            enabled_only : bool = True,
+            parent: NodeTreeInterfaceSocket = None, 
+        ):
+        """ Get sockets
+
+        Attributes
+        ----------
+        in_out : {'INPUT', 'OUTPUT'}
+            input or output sockets
+
+        include : list, optional
+            limit sockets to list default=None.
+
+        exclude : list, optional
+            exclude sockets from list default=[].
+
+        enabled_only : bool, optional
+            only enabled sockets default=True.
+
+        parent : NodeTreeInterfacePanel, optional
+            path up to the parent default=None.
+
+
+        Returns
+        -------
+        list of sockets
+        """
+        check_in_out(in_out)
+
+        parent_path = ItemPath(parent)
+
+        # ---------------------------------------------------------------------------
+        # Match an include / exclude condition
+        # ---------------------------------------------------------------------------
+
+        def match(socket, python_name):
+
+            # All python names for socket
+            names = (ItemPath(socket) - parent_path).get_names(False, True)
+
+            # name matches one of the possible name
+            if python_name in names:
+                return True
+            
+            # Recursion on parent if python name is a panel
+            if socket.parent.index == -1:
+                return False
+            
+            return match(socket.parent, python_name)
+            
+            # A panel name
+            #if utils.snake_case(python_name + " " + socket.name) in names:
+            #    return True
+            
+            #return False
+        
+        """
+        # ---------------------------------------------------------------------------
+        # Panel inclusions and exclusions
+        # ---------------------------------------------------------------------------
+
+        # Panels to include
+        incl_panels, incl_sockets = None, None
+
+        if include is not None:
+            
+            incl_panels, incl_sockets = [], []
+
+            for key in include:
+
+                key_path = ItemPath(key)
+
+                if key_path.socket_id is None:
+                    panel = self.get_panel(parent_path + key_path, create=False)
+                    if panel is not None:
+                        incl_panels.append(panel)
+                        continue
+
+                socket = self.get_socket(in_out, parent_path + key_path, None)
+                if socket is not None:
+                    incl_sockets.append(socket.index)
+            
+            if not len(incl_panels):
+                incl_panels = None
+            if not len(incl_sockets):
+                incl_sockets = None
+
+        # Panels to exclude
+        excl_panels, excl_sockets = [], []
+
+        for key in exclude:
+            
+            key_path = ItemPath(key)
+
+            if key_path.socket_id is None:
+                panel = self.get_panel(parent_path + key_path, create=False)
+                if panel is not None:
+                    excl_panels.append(panel)
+                    continue
+
+            socket_path = parent_path + key_path
+            socket = self.get_socket(in_out, socket_path.path, socket_path.socket_id)
+            if socket is not None:
+                excl_sockets.append(socket.index)
+        """
+
+        # ---------------------------------------------------------------------------
+        # Loop on sockets
+        # ---------------------------------------------------------------------------
+
+        sockets = []
+        for socket in self.iterate(in_out, panels=False, parent=parent):
+
+            # All names
+            names = (ItemPath(socket) - parent_path).get_names(False, True)
+            
+            # Match inclusions
+            if include is not None:
+                ok = False
+                for i_name in include:
+                    sc_name = utils.snake_case(i_name)
+                    if match(socket, sc_name):
+                        ok = True
+                        break
+                if not ok:
+                    continue
+
+            # Match exlcusion
+            ok = True
+            for x_name in exclude:
+                sc_name = utils.snake_case(x_name)
+                if match(socket, sc_name):
+                    ok = False
+                    break
+            if not ok:
+                continue
+
+            """
+            # ---------------------------------------------------------------------------
+            # Panel Exclusion / inclusion conditions
+            # ---------------------------------------------------------------------------
+
+            ok = True
+            for panel in excl_panels:
+                if self.belongs_to(socket, panel):
+                    ok = False
+                    break
+
+            if not ok:
+                continue
+
+            if incl_panels is not None:
+                ok = False
+                for panel in incl_panels:
+                    if self.belongs_to(socket, panel):
+                        ok = True
+                        break
+                if not ok:
+                    continue
+
+            # ---------------------------------------------------------------------------
+            # Socket Exclusion / inclusion conditions
+            # ---------------------------------------------------------------------------
+
+            if socket.index in excl_sockets:
+                continue
+
+            if (incl_sockets is not None) and (socket.index not in incl_sockets):
+                continue
+            """
+
+            # ---------------------------------------------------------------------------
+            # We can add it in the list
+            # ---------------------------------------------------------------------------
+
+            sockets.append(socket)
+
+        return sockets
+    
+    # ====================================================================================================
+    # Copy the properties from another interface socket
+    # ====================================================================================================
+
+    def copy_properties(self, isocket, from_isocket):
+        """ Copy the properties from another interface socket.
+
+        Parameters
+        ----------
+        isocket : InterfaceSocket
+            Socket to copy properties to
+
+        from_isocket : InterfaceSocket
+            Socket to copy properties from
+
+        """
+        for prop in self.socket_props[isocket.socket_type]:
+            # An unresolved menu has no default identifier. Blender rejects
+            # assigning the empty string to its enum; let the link infer it.
+            if (isocket.socket_type == 'NodeSocketMenu'
+                    and prop == 'default_value'
+                    and from_isocket.default_value == ''):
+                continue
+            try:
+                setattr(isocket, prop, getattr(from_isocket, prop))
+            except Exception as e:
+                print(f"CAUTION: error when copying interface socket '{isocket.name}' property {prop}, ({getattr(from_isocket, prop)})")
+    
+    # ====================================================================================================
+    # Input and output geometry
+    # ====================================================================================================
+
+    # ----------------------------------------------------------------------------------------------------
+    # Geometry input socket
+    # ----------------------------------------------------------------------------------------------------
+
+    def set_in_geometry(self, name: str | None = None, create: bool = False):
+        """ Ensure that the Geometry input socket is the first
+
+        Parameters
+        ----------
+        name
+            socket name, 'Geometry' if None
+
+        create
+            create the socket if it doesn't exist
+
+
+        Returns
+        -------
+        Geometry socket
+        """
+
+        if name is None:
+            name = "Geometry"
+
+        # ------ Look for an input geometry socket
+        # Put it in first place if exists
+
+        first = True
+        for socket in self.iterate('INPUT', panels=False):
+            if socket.socket_type == 'NodeSocketGeometry':
+                if not first:
+                    self.btree.interface.move_to_parent(socket, None, 0)
+
+                return socket
+
+            first = False
+
+        # ----- Not found, let's create it if required
+
+        if not create:
+            return None
+
+        socket = self.create_socket('INPUT', name, 'NodeSocketGeometry')
+
+        self.btree.interface.move_to_parent(socket, None, 0)
+
+        return socket
+    
+    # ----------------------------------------------------------------------------------------------------
+    # Geometry output socket
+    # ----------------------------------------------------------------------------------------------------
+
+    def set_out_geometry(self, name=None):
+        """ Make sure the tree has an output geometry and that it is the first one
+
+        If the tree has no output Geometry socket, one is created
+
+        Parameters
+        ----------
+        name
+            socket name, 'Geometry' if None
+
+
+        Returns
+        -------
+        Geometry socket
+        """
+
+        if name is None:
+            name = 'Geometry'
+
+        first = True
+        for socket in self.iterate('OUTPUT', panels=False):
+
+            if socket.socket_type == 'NodeSocketGeometry':
+                if not first:
+                    self.btree.interface.move_to_parent(socket, None, 0)
+
+                return socket
+
+            first = False
+
+        socket = self.create_socket('OUTPUT', name, 'NodeSocketGeometry')
+
+        self.btree.interface.move_to_parent(socket, None, 0)
+
+        return socket    
+    
+    # ====================================================================================================
+    # Get by python name
+    # ====================================================================================================
+
+    # ----------------------------------------------------------------------------------------------------
+    # Get the rank of an item within a parent panel
+    # ----------------------------------------------------------------------------------------------------
+
+    def get_item_rank_in_panel(self, item, panel):
+        
+        rank = -1
+        for itm in PanelIterator(panel, panels=True, sockets=True):
+            if itm.item_type != item.item_type:
+                continue
+            if utils.snake_case(item.name) != utils.snake_case(itm.name):
+                continue
+
+            rank += 1
+            if item == itm:
+                break
+
+        assert rank >= 0, f"{panel=}, {item=}"
+
+        return rank
+
+    # ----------------------------------------------------------------------------------------------------
+    # Get the ranks of an item relatively to its parent panels
+    # ----------------------------------------------------------------------------------------------------
+
+    def get_item_ranks(self, item):
+
+        ranks = []
+        itm = item
+        while itm.index != -1:
+            panel = itm.parent
+            ranks.append((self.get_item_rank_in_panel(item, panel), panel))
+            itm = itm.parent
+
+        return ranks
+
+    # ----------------------------------------------------------------------------------------------------
+    # Get a socket by its python name
+    # ----------------------------------------------------------------------------------------------------
+
+    def get_socket_by_python_name(self, 
+            in_out      : IN_OUT, 
+            name        : str, 
+            socket_type : str,
+            *,
+            parent      : (NodeTreeInterfacePanel | str) = None,
+            return_all  : bool = False):
+        """ Get a socket by its python name.
+
+        Parameters
+        ----------
+        in_out : {'INPUT', 'OUTPUT'}
+            input or output socket
+
+        name : str
+            the python name
+
+        socket_type : str
+            socket type
+
+        parent : str | NodeTreeInterfacePanel, optional
+            the parent panel default=None.
+
+        return_all : bool, optional
+            return all candidates default=False.
+
+
+        Returns
+        -------
+        NodeTreeInterfaceSocket
+            None if not found
+
+        - list of NodeTreeInterfaceSocket is return_all is True
+        """
+
+        check_in_out(in_out)
+
+        sc_name = utils.snake_case(str(name))
+
+        sockets = []
+        parent = self.get_panel(parent)
+        parent_path = ItemPath(parent)
+
+        for socket in self.iterate(in_out, socket_type=socket_type, panels=False, parent=parent):
+
+            names = (ItemPath(socket) - parent_path).get_names(False, True)
+
+            if sc_name in names:
+                sockets.append(socket)
+                continue
+
+            # Alternate names within parent
+            for rank, panel in self.get_item_ranks(socket):
+                if rank == 0:
+                    names.append((ItemPath(panel) + socket.name).python_path)
+                else:
+                    names.append((ItemPath(panel) + f"{socket.name}_{rank}").python_path)
+
+            if sc_name in names:
+                sockets.append(socket)
+
+        if return_all:
+            return sockets
+        
+        elif not len(sockets):
+            return None
+        
+        else:
+            return sockets[0]
+    
+    # ----------------------------------------------------------------------------------------------------
+    # Get a panel by its python name
+    # ----------------------------------------------------------------------------------------------------
+
+    def get_panel_by_python_name(self,
+            name: str,
+            parent: (NodeTreeInterfacePanel | str) = None):
+        """ Get a panel by its python name.
+
+        Parameters
+        ----------
+        name : str
+            the python name
+
+        parent : str | NodeTreeInterfacePanel, optional
+            the parent panel default=None.
+
+
+        Returns
+        -------
+        NodeTreeInterfacePanel
+            None if not found
+
+        """
+        #parent = self.get_panel(parent)
+        parent_path = ItemPath(parent)
+        for panel in self.iterate(sockets=False, parent=parent):
+            if name in (ItemPath(panel) - parent_path).get_names(True):
+                return panel
+
+        return None
+    
+    # ----------------------------------------------------------------------------------------------------
+    # By identifier
+    # ----------------------------------------------------------------------------------------------------
+
+    def by_identifier(self, identifier):
+        for item in self.iterate(panels=False):
+            if item.identifier == identifier:
+                return item
+        return None
+
+
+    # ====================================================================================================
+    # Deletion
+    # ====================================================================================================
+
+    # ----------------------------------------------------------------------------------------------------
+    # Clear the interface
+    # ----------------------------------------------------------------------------------------------------
+
+    def clear(self, use_bin=True):
+        """ Clear the interface.
+
+        The sockets are not actually deleted but moved to a bin named "SOCKETS_BIN".
+        When a socket is created, the method first searchs into the bin if there is as socket
+        with the required named and type. In that case, the socket is taken back from the bin.
+
+        To finalize the clearing, call 'clear_deleted` method.
+
+        ``` python
+        tinf = TreeInterface(...)
+
+        # Clear the interface using a bin
+        tinf.clear(use_bin=True)
+        
+        # Socket is either actually created or moved from bin
+        socket = tinf.create_socket(...)
+        
+        # Empty the bin
+        tinf.empty_bin()
+        ````
+
+        Parameters
+        ----------
+        use_bin : bool, default=True
+            move the sockets to a bin if True
+
+        """
+
+        CLEAR = []
+
+        if use_bin:
+            del_panel = self.get_panel(self.BIN_PANEL, create=True)
+            for item in self.iterate("BOTH", panels=False):
+                if item.socket_type in CLEAR:
+                    self.btree.interface.remove(item)
+                else:
+                    self.btree.interface.move_to_parent(item, del_panel, 9999)
+
+            for panel in self.iterate(sockets=False):
+                if panel.name == self.BIN_PANEL:
+                    continue
+                self.btree.interface.remove(panel)
+
+        else:
+            self.btree.interface.clear()
+
+    # ----------------------------------------------------------------------------------------------------
+    # Clear the deleted sockets
+    # ----------------------------------------------------------------------------------------------------
+    
+    def empty_bin(self):
+        """ Empty bin.
+
+        Empty the bin.
+        """
+
+        del_panel = self.get_panel(self.BIN_PANEL)
+        if del_panel is None:
+            return
+        
+        for item in self.iterate("BOTH", panels=False, parent=del_panel, sub_panels=False, ignore_bin=False):
+            self.btree.interface.remove(item)
+
+        self.btree.interface.remove(del_panel)
+
+        
+    # ====================================================================================================
+    # Utilities
+    # ====================================================================================================
+
+    # ----------------------------------------------------------------------------------------------------
+    # Iterator
+    # ----------------------------------------------------------------------------------------------------
+
+    def iterate(self,
+                in_out      : BOTH = 'BOTH',
+                *,
+                sockets     : bool = True,
+                socket_type : str = None,
+                panels      : bool = True, 
+                parent      : NodeTreeInterfacePanel = None,
+                sub_panels  : bool = True,
+                ignore_bin  : bool = True):
+        """ Iterate over sockets and or panels.
+
+        !!! note
+            The methods return the list of items and not a true Iterator
+
+        Parameters
+        ----------
+        in_out : {'INPUT', 'OUTPUT', 'BOTH'}
+            filter on sockets input / output
+
+        sockets : bool, optional
+            iterate of sockets default=True.
+
+        panels : bool, optional
+            iterate of panels default=True.
+
+        parent : NodeTreeInterfacePanel, optional
+            iterate on items within this parent default=None.
+
+        sub_panels : bool, optional
+            iterate in sub panels of the parent default=True.
+
+        ignore_bin : bool, optional
+            ignore sockets in bin default=True.
+
+
+        Returns
+        -------
+        list
+        """
+
+        check_in_out(in_out, both=True)
+
+        if socket_type is not None:
+            socket_type = SocketType.from_type(socket_type).socket_id
+        
+        items = []
+        parent_index = -1 if parent is None else parent.index
+
+        for item in self.items_tree:
+
+            # ---------------------------------------------------------------------------
+            # Socket / Panel filter
+            # ---------------------------------------------------------------------------
+
+            # Panel
+            if item.item_type == 'PANEL':
+                if not panels:
+                    continue
+
+            # Socket
+            else:
+                if not sockets:
+                    continue
+                if in_out not in [item.in_out, 'BOTH']:
+                    continue
+                if socket_type is not None and item.socket_type != socket_type:
+                    continue
+                if ignore_bin and item.parent.name == TreeInterface.BIN_PANEL:
+                    continue
+
+            # ---------------------------------------------------------------------------
+            # Parent filter
+            # ---------------------------------------------------------------------------
+
+            if sub_panels:
+                if not self.belongs_to(item, parent):
+                    continue
+            else:
+                if item.parent.index != parent_index:
+                    continue
+
+            # ---------------------------------------------------------------------------
+            # Got one !
+            # ---------------------------------------------------------------------------
+
+            items.append(item)
+
+        # We've got our list
+        return items
+    
+    # ----------------------------------------------------------------------------------------------------
+    # Get all the names of a socket
+    # ----------------------------------------------------------------------------------------------------
+
+    def get_all_socket_names(self, socket, use_name: bool = True, use_python: bool = False):
+        """ Get all the names of a socket
+
+        Parameters
+        ----------
+        use_name : bool, optional
+            str names default=True.
+
+        use_python : bool, optional
+            python name default=False.
+
+
+        Returns
+        -------
+        list of possible names
+        """
+
+        names = ItemPath(socket).get_names(use_name=use_name, use_python=use_python)
+
+        for rank, panel in self.get_item_ranks(socket):
+            if rank == 0:
+                itpath = ItemPath(panel) + socket.name
+            else:
+                itpath = ItemPath(panel) + f"{socket.name}_{rank}"
+
+            if use_name:
+                names.append(itpath.path)
+            if use_python:
+                names.append(itpath.python_path)
+
+        return names
+
+    # ----------------------------------------------------------------------------------------------------
+    # Get the shortest names
+    # ----------------------------------------------------------------------------------------------------
+
+    def get_shortest_names(self, in_out: IN_OUT):
+        """ Return the sockets index by their shortest name.
+
+        Parameters
+        ----------
+        in_out : {'INPUT', 'OUTPUT', 'BOTH'}
+            filter on sockets input / output
+
+
+        Returns
+        -------
+        dict : shortest name -> socket
+        """
+        check_in_out(in_out)
+
+        items = [item for item in self.iterate(in_out, panels=False)]
+        all_names = [ItemPath(item).get_names(False, True) for item in items]
+
+        sockets = []
+
+        for index, (item, names) in enumerate(zip(items, all_names)):
+            ok = False
+            shortest = names[-1]
+            has_homonym = False
+            for candidate in reversed(names[:-1]):
+                for iother, other in enumerate(all_names):
+                    if iother == index:
+                        continue
+                    if candidate in other:
+                        has_homonym = True
+                        break
+                if not has_homonym:
+                    shortest = candidate
+
+            sockets.append((shortest, item))
+
+        return sockets
+    
+    # ====================================================================================================
+    # Signature
+    # ====================================================================================================
+
+    # ----------------------------------------------------------------------------------------------------
+    # An item to dict
+    # ----------------------------------------------------------------------------------------------------
+
+    def get_socket_dict(self,
+            socket      : NodeTreeInterfaceItem, 
+            parent      : NodeTreeInterfacePanel = None, 
+            with_socket : bool = False):
+        """ Build a dict from item.
+
+        The dict can be used to create sockets with the same setup.
+
+        Parameters
+        ----------
+        item : NodeTreeInterfaceItem
+            the item
+
+        parent : NodeTreeInterfacePanel, optional
+            path up to the parent default=None.
+
+        with_socket : bool, optional
+            include the NodeSocket default=False.
+
+
+        Returns
+        -------
+        dict
+        """
+        path = ItemPath(socket) - ItemPath(parent)
+        name = path.name
+        
+        d = {
+            'name'       : name,
+            'path'       : path.path,
+            'identifier' : socket.identifier,
+            'socket_id'  : socket.socket_type,
+            'props'      : {prop_name: getattr(socket, prop_name) for prop_name in self.socket_props[socket.socket_type]},
+        }
+        if with_socket:
+            d['isocket'] = socket
+            #d['socket']  = self.get_node_socket(socket)
+
+        return d
+   
+    # ----------------------------------------------------------------------------------------------------
+    # Get the interface signature
+    # ----------------------------------------------------------------------------------------------------
+
+    def get_signature(self, 
+            *,
+            include      : list = None,
+            exclude      : list = [],
+            enabled_only : bool = True,
+            #free_only    : bool = False,
+            parent       : NodeTreeInterfaceSocket = None, 
+            with_sockets : bool = False):
+        """ Get the closure signature
+
+        Attributes
+        ----------
+        include : list, optional
+            limit sockets to list default=None.
+
+        exclude : list, optional
+            exclude sockets from list default=[].
+
+        enabled_only : bool, optional
+            only enabled sockets default=True.
+
+        parent : NodeTreeInterfacePanel, optional
+            path up to the parent default=None.
+
+        with_sockets : bool, optional
+            include socket in the dict default=False.
+
+
+        Returns
+        -------
+        Signature
+        """
+
+        parent_path = ItemPath(parent)
+
+        signature = Signature()
+        for in_out in ['INPUT', 'OUTPUT']:
+
+            #sockets = self.get_sockets(in_out, include=include, exclude=exclude, enabled_only=enabled_only, free_only=free_only, parent=parent)
+            sockets = self.get_sockets(in_out, include=include, exclude=exclude, enabled_only=enabled_only, parent=parent)
+            sig = [self.get_socket_dict(socket, with_socket=with_sockets) for socket in sockets]
+
+            signature[in_out] = sig
+
+        return signature
+    
+    # ----------------------------------------------------------------------------------------------------
+    # Set the signature
+    # ----------------------------------------------------------------------------------------------------
+
+    def set_signature(self, signature, reuse: bool = True, parent: NodeTreeInterfacePanel=None):
+        """ Set a signature.
+
+        The returns dict contains two lists keyed by 'INPUT' and 'OUPUT'. The two values
+        are lists of couple (creation dict, created socket).
+
+        Parameters
+        ----------
+        signature : Signature
+            the signature to set
+
+        reuse : bool, optional
+            doesn't create a socket if it already exists default=True.
+
+        parent : NodeTreeInterfacePanel
+            the parent where to create the signature
+
+
+        Returns
+        -------
+        dict of two lists of couples (dict, created sockets)
+        """
+
+        created = {}
+
+        for in_out, sig in zip(['INPUT', 'OUTPUT'], Signature(signature)):
+
+            created[in_out] = []
+ 
+            for d in sig:
+
+                socket_path = ItemPath(d.get('path', d['name']))
+                socket_type = SocketType.from_type(d.get('socket_type', d.get('socket_id')))
+
+                # Reuse
+                socket = None
+                if reuse:
+                    socket = self.get_socket(in_out, socket_path, socket_type, parent=parent)
+
+                # Create
+                if socket is None:
+                    socket = self.create_socket(in_out, socket_path, socket_type, parent=parent, **d.get('props', {}))
+
+                created[in_out].append(socket)
+
+        return created
+    
+    # ----------------------------------------------------------------------------------------------------
+    # Set input signature
+    # ----------------------------------------------------------------------------------------------------
+
+    def set_input_signature(self, signature, reuse: bool = True, parent: NodeTreeInterfacePanel=None):
+        """ Set a signature.
+
+        Parameters
+        ----------
+        signature : Signature
+            the signature to set
+
+        reuse : bool, optional
+            doesn't create a socket if it already exists default=True.
+
+        parent : NodeTreeInterfacePanel
+            the parent where to create the signature
+
+
+        Returns
+        -------
+        list of couples (creation dict, created sockets)
+        """
+        signature = Signature(signature)
+        return self.set_signature(Signature(signature.sockets), reuse=reuse, parent=parent)['INPUT']
+
+    # ----------------------------------------------------------------------------------------------------
+    # Set output signature
+    # ----------------------------------------------------------------------------------------------------
+
+    def set_output_signature(self, signature, reuse: bool = True, parent: NodeTreeInterfacePanel=None):
+        """ Set a signature.
+
+        Parameters
+        ----------
+        signature : Signature
+            the signature to set
+
+        reuse : bool, optional
+            doesn't create a socket if it already exists default=True.
+
+        parent : NodeTreeInterfacePanel
+            the parent where to create the signature
+
+
+        Returns
+        -------
+        list of couples (creation dict, created sockets)
+        """
+        signature = Signature(signature)
+        return self.set_signature(Signature({}, signature.sockets), reuse=reuse, parent=parent)['OUTPUT']
+    
+    # ====================================================================================================
+    # Class test
+    # ====================================================================================================
+
+    @staticmethod
+    def _class_test():
+        
+        tree_name = "Interface Test"
+        tree = bpy.data.node_groups.get(tree_name)
+        if tree is None:
+            tree = bpy.data.node_groups.new(tree_name, type="GeometryNodeTree")
+        tree.nodes.clear()
+        tree.interface.clear()
+        intf = TreeInterface(tree)
+        
+        def check(value, target):
+            ok = ItemPath(value).path == target
+            if ok:            
+                print(f"ok  > '{ItemPath(value)}'")
+            else:
+                print(f"ERR> '{ItemPath(value)}', expected '{target}'")
+                
+        def check_vals(a, b):
+            ok = a == b
+            if ok:            
+                print(f"ok  > {a}")
+            else:
+                print(f"ERR> {a}, expected {b}")
+            
+                
+        # --------------------------------------------------------------------------------
+        # PanelS
+        # --------------------------------------------------------------------------------
+            
+        check(intf.get_panel(""), "")
+        check(intf.get_panel("NO PANEL"), "")
+        check(intf.get_panel("Panel", create=True), "Panel")
+        check(intf.get_panel("Panel", create=False), "Panel")
+        check(intf.get_panel("New Panel>Sub>", create=True), "New Panel > Sub")
+        check(intf.get_panel("New Panel>>Sub", create=False), "New Panel > Sub")
+        check(intf.get_panel("Panel>Sub_2", create=True), "Panel > Sub_2")
+        check(intf.get_panel("Panel>Sub_2", create=False), "Panel > Sub_2")
+        check(intf.get_panel(">>New Panel>>>>Sub_1>Again", create=True), "New Panel > Sub_1 > Again")
+        check(intf.get_panel("New Panel>Sub_1>Again", create=False), "New Panel > Sub_1 > Again")
+        
+        check(intf.create_panel("Again", "New Panel>Sub_1", tip="Second Again"), "New Panel > Sub_1 > Again_1")
+        check(intf.create_panel("Again", "New Panel>Sub_1", tip="Second Again"), "New Panel > Sub_1 > Again_2")
+        
+        # --------------------------------------------------------------------------------
+        # Sockets
+        # --------------------------------------------------------------------------------
+        
+        check(intf.get_socket('INPUT', "Test", "Float"), "")
+        check(intf.create_socket('INPUT', "Float", "Float"), "Float")
+        check(intf.get_socket('INPUT', "Float", "Float"), "Float")
+        check(intf.get_socket('INPUT', "Float", "String"), "")
+        
+        check(intf.create_socket('INPUT', "Float", "Float"), "Float_1")
+        
+        check(intf.get_socket('INPUT', "Test", "Float", parent="Sockets"), "")
+        check(intf.create_socket('INPUT', "Float", "Float", parent="Sockets"), "Sockets > Float")
+        check(intf.get_socket('INPUT', "Float", "Float", parent="Sockets"), "Sockets > Float")
+        check(intf.get_socket('INPUT', "Float", "String", parent="Sockets"), "")
+        
+        check(intf.create_socket('INPUT', "Float", "Float", parent="Sockets"), "Sockets > Float_1")
+
+        # --------------------------------------------------------------------------------
+        # Signature
+        # --------------------------------------------------------------------------------
+        
+        a = tuple(intf.get_signature().input_keys)
+        check_vals(a, (('Float', 'NodeSocketFloat'), ('Float_1', 'NodeSocketFloat'), ('Sockets > Float', 'NodeSocketFloat'), ('Sockets > Float_1', 'NodeSocketFloat')))
+
+        # --------------------------------------------------------------------------------
+        # Naming
+        # --------------------------------------------------------------------------------
+        
+        tree.interface.clear()
+        tree.nodes.new('NodeGroupInput')
+        tree.nodes.new('NodeGroupOutput')
+        
+        print("\nCreating sockets")
+        
+        sock0 = intf.create_socket('INPUT', "Value", "Float")           # value
+        sock1 = intf.create_socket('INPUT', "Value", "String")          # value
+        sock2 = intf.create_socket('INPUT', "Value", "Float", "Panel")  # panel_value
+        sock3 = intf.create_socket('INPUT', "Value", "Float", "Panel")  # panel_value_1
+        sock4 = intf.create_socket('INPUT', "Value", "String", "Panel") # panel_value
+        sock5 = intf.create_socket('INPUT', "Value", "String", "Panel") # panel_value_1
+        sock6 = intf.create_socket('INPUT', "Float", "Float", "Panel")  # float
+        
+        sockets = intf.get_shortest_names('INPUT')
+        a = tuple([name for name, _ in sockets])
+        check_vals(a, ('value',  'value',  'panel_value',  'panel_value_1',  'panel_value',  'panel_value_1',  'float'))
+        
+        a = tuple(intf.get_signature().input_keys)
+        check_vals(a, (
+            ('Value', 'NodeSocketFloat'),
+            ('Value', 'NodeSocketString'), 
+            ('Panel > Value', 'NodeSocketFloat'), 
+            ('Panel > Value_1', 'NodeSocketFloat'), 
+            ('Panel > Value', 'NodeSocketString'), 
+            ('Panel > Value_1', 'NodeSocketString'), 
+            ('Panel > Float', 'NodeSocketFloat')))
+            
+        # --------------------------------------------------------------------------------
+        # Signature
+        # -------------------------------------\n-----------------------------------------
+
+        print("\nSetting signature")
+        
+        tree.interface.clear()
+        intf.create_socket('INPUT', "Geometry", 'Geometry')
+        intf.create_socket('INPUT', "Float", 'Float')
+        intf.create_socket('INPUT', "Integer", 'Integer')
+
+        intf.create_socket('OUTPUT', "Geometry", 'Geometry')
+        
+        sig0 = intf.get_signature(exclude=["Geometry"])
+        a = tuple(sig0.input_keys)
+        check_vals(a, (('Float', 'NodeSocketFloat'), ('Integer', 'NodeSocketInt')))
+
+        intf.set_input_signature(sig0.inputs, reuse=True)
+        sig = intf.get_signature(exclude=["Geometry"])
+        a = tuple(sig.input_keys)
+        check_vals(a,  (('Float', 'NodeSocketFloat'), ('Integer', 'NodeSocketInt')))
+
+        intf.set_input_signature(sig0.inputs, reuse=False)
+        sig = intf.get_signature(exclude=["Geometry"])
+        a = tuple(sig.input_keys)
+        check_vals(a, (
+            ('Float', 'NodeSocketFloat'), ('Integer', 'NodeSocketInt'),
+            ('Float_1', 'NodeSocketFloat'), ('Integer_1', 'NodeSocketInt')))
+        
+        intf.set_input_signature(sig0.inputs, parent="Panel")
+        sig = intf.get_signature(exclude=["Geometry"])
+        a = tuple(sig.input_keys)
+        target = (
+            ('Float', 'NodeSocketFloat'), ('Integer', 'NodeSocketInt'), 
+            ('Float_1', 'NodeSocketFloat'), ('Integer_1', 'NodeSocketInt'), 
+            ('Panel > Float', 'NodeSocketFloat'), ('Panel > Integer', 'NodeSocketInt'))
+        check_vals(a, target)
+        
+        intf.set_output_signature(sig0.inputs)
+        sig = intf.get_signature(exclude=["Geometry"])
+        a = tuple(sig.output_keys)
+        check_vals(a, (('Float', 'NodeSocketFloat'), ('Integer', 'NodeSocketInt')))
+        
+        intf.set_output_signature(sig0.inputs, reuse=True)
+        sig = intf.get_signature(exclude=["Geometry"])
+        a = tuple(sig.output_keys)
+        check_vals(a, (('Float', 'NodeSocketFloat'), ('Integer', 'NodeSocketInt')))
+        
+        intf.set_output_signature(sig0.inputs, parent="Panel")
+        sig = intf.get_signature(exclude=["Geometry"])
+        a = tuple(sig.output_keys)
+        check_vals(a, (
+            ('Float', 'NodeSocketFloat'), ('Integer', 'NodeSocketInt'),
+            ('Panel > Float', 'NodeSocketFloat'), ('Panel > Integer', 'NodeSocketInt')))
+        
+        sig = intf.get_signature(include=["Panel"])
+        a = tuple(sig.output_keys)
+        check_vals(a, (('Panel > Float', 'NodeSocketFloat'), ('Panel > Integer', 'NodeSocketInt')))
+        
+        sig = intf.get_signature(exclude=["Panel", "Geometry"])
+        a = tuple(sig.output_keys)
+        check_vals(a, (('Float', 'NodeSocketFloat'), ('Integer', 'NodeSocketInt')))
+        
+        sig = intf.get_signature(include=["Panel"])
+        a = tuple(sig.output_keys)
+        check_vals(a, (('Panel > Float', 'NodeSocketFloat'), ('Panel > Integer', 'NodeSocketInt')))
+        
+        sig = intf.get_signature(parent="Panel")
+        a = tuple(sig.output_keys)
+        check_vals(a, (('Panel > Float', 'NodeSocketFloat'), ('Panel > Integer', 'NodeSocketInt')))
+        

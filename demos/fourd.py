@@ -45,7 +45,9 @@ fourd.demo()
 import bpy
 
 from geonodes import *
-from geonodes.core import utils
+from geonodes import core_module
+
+utils = core_module.utils
 
 
 ZERO = 0.0001
@@ -2659,9 +2661,9 @@ def create_4d_object(name, points, faces=[]):
     Created object
     """
 
-    from geonodes.core.blender import create_object
+    from geonodes import blender
 
-    obj = create_object(name, type='MESH')
+    obj = blender.create_object(name, type='MESH')
     mesh = obj.data
 
     points = np.asarray(points)

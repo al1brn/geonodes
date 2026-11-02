@@ -1973,7 +1973,7 @@ class ExposeInputsOperator(bpy.types.Operator):
 
     def execute(self, context):
 
-        from geonodes.core.treeclass import Tree
+        from .treeclass import Tree
 
         space = context.space_data
         btree = space.edit_tree

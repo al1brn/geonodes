@@ -49,7 +49,9 @@ from . import formula_data
 from . import formula_tree
 
 from geonodes import *
-from geonodes.core import utils
+from geonodes import core_module
+
+utils = core_module.utils
 
 # =============================================================================================================================
 # =============================================================================================================================

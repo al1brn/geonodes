@@ -1921,7 +1921,8 @@ class Socket(NodeCache):
         ``` python
         with GeoNodes("Switch demo"):
         
-            from geonodes.core import constants
+            from geonodes import core_module
+            constants = core_module.constants
             # Legacy behavior (default is True)
             constants.SWITCH_JUMP = False
 
