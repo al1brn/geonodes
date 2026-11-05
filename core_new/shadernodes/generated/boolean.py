@@ -32,6 +32,9 @@ if TYPE_CHECKING:
     class Menu:
         ...
 
+    class Texture:
+        ...
+
     class String:
         ...
 
@@ -45,7 +48,7 @@ from ...shadernodes.sockets.boolean import Boolean as BaseBoolean
 class Boolean(BaseBoolean):
     __slots__ = ()
 
-    def math(self, boolean_1: Boolean=None, operation: Literal['AND', 'OR', 'NOT', 'NAND', 'NOR', 'XNOR', 'XOR', 'IMPLY', 'NIMPLY']='AND'):
+    def boolean_math(self, boolean_1: Boolean=None, operation: Literal['AND', 'OR', 'NOT', 'NAND', 'NOR', 'XNOR', 'XOR', 'IMPLY', 'NIMPLY']='AND'):
         """ > Node <&ShaderNode Boolean Math>
         
         Jump method: False.
@@ -62,48 +65,43 @@ class Boolean(BaseBoolean):
         
         Returns
         -------
-        Boolean
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'boolean': self, 'boolean_1': boolean_1}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Boolean Math', named_sockets=_named_sockets, operation=operation)
-        return _node._out
+        _configuration = ({'and': 'AND', 'or': 'OR', 'not': 'NOT', 'nand': 'NAND', 'nor': 'NOR', 'xnor': 'XNOR', 'xor': 'XOR', 'imply': 'IMPLY', 'nimply': 'NIMPLY', 'not and': 'NAND', 'equal': 'XNOR', 'not equal': 'XOR', 'subtract': 'NIMPLY'}.get(operation.lower(), operation),)
+        _node_sockets = {('AND',): {'Boolean': self, 'Boolean_1': boolean_1}, ('OR',): {'Boolean': self, 'Boolean_1': boolean_1}, ('NOT',): {'Boolean': self}, ('NAND',): {'Boolean': self, 'Boolean_1': boolean_1}, ('NOR',): {'Boolean': self, 'Boolean_1': boolean_1}, ('XNOR',): {'Boolean': self, 'Boolean_1': boolean_1}, ('XOR',): {'Boolean': self, 'Boolean_1': boolean_1}, ('IMPLY',): {'Boolean': self, 'Boolean_1': boolean_1}, ('NIMPLY',): {'Boolean': self, 'Boolean_1': boolean_1}}[_configuration]
+        _node_args = {('AND',): [], ('OR',): [], ('NOT',): [], ('NAND',): [], ('NOR',): [], ('XNOR',): [], ('XOR',): [], ('IMPLY',): [], ('NIMPLY',): []}[_configuration]
+        node = Node('Boolean Math', *_node_args, named_sockets=_node_sockets, operation=operation)
+        return node._out
 
-    def enable_output(self, enable: Boolean=None):
+    def enable_output(self, value: Socket=None):
         """ > Node <&ShaderNode Enable Output>
         
         Jump method: False.
         
-        self: socket 'Value'.
+        self: socket 'Enable'.
         
-        **Fixed values**
+        **Derived parameters**
         
-        | Parameter | Value |
-        | --- | --- |
-        | `data_type` | `'BOOLEAN'` |
+        - `data_type`: Inferred from socket 'Value' (value).
         
         Parameters
         ----------
-        enable : Boolean, optional
-            socket 'Enable'
+        value : Socket, optional
+            socket 'Value'
         
         Returns
         -------
-        Boolean
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'enable': enable, 'value': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Enable Output', named_sockets=_named_sockets, data_type='BOOLEAN')
-        return _node._out
+        data_type = SocketType.get_data_type_for_node(value, 'NodeEnableOutput', 'data_type')
+        node = Node('Enable Output', named_sockets={'Enable': self, 'Value': value}, data_type=data_type)
+        return node._out
 
-    def implicit_conversion(self, socket_idname='NodeSocketColor'):
+    @classmethod
+    def implicit_conversion(cls, value: Boolean=None, socket_idname: str='NodeSocketColor'):
         """ > Node <&ShaderNode Implicit Conversion>
-        
-        Jump method: False.
-        
-        self: socket 'Value'.
         
         **Fixed values**
         
@@ -113,110 +111,47 @@ class Boolean(BaseBoolean):
         
         Parameters
         ----------
+        value : Boolean, optional
+            socket 'Value'
+        
         socket_idname : str
             parameter `socket_idname`
         
         Returns
         -------
-        Boolean
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'value': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Implicit Conversion', named_sockets=_named_sockets, socket_idname=socket_idname, data_type='BOOLEAN')
-        return _node._out
+        node = Node('Implicit Conversion', named_sockets={'Value': value}, data_type='BOOLEAN', socket_idname=socket_idname)
+        return node._out
 
-    @classmethod
-    def IndexSwitch(cls, named_sockets=None, index: Integer=None, _0: Boolean=None, _1: Boolean=None, **sockets):
-        """ > Node <&ShaderNode Index Switch>
-        
-        **Fixed values**
-        
-        | Parameter | Value |
-        | --- | --- |
-        | `data_type` | `'BOOLEAN'` |
-        
-        Parameters
-        ----------
-        index : Integer, optional
-            socket 'Index'
-        
-        _0 : Boolean, optional
-            socket '0'
-        
-        _1 : Boolean, optional
-            socket '1'
-        
-        Returns
-        -------
-        Boolean
-            socket 'OUT'
-        """
-        _named_sockets = {'index': index, '_0': _0, '_1': _1}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _named_sockets.update({_name: _value for _name, _value in (named_sockets or {}).items() if _value is not None})
-        _node = Node('Index Switch', named_sockets=_named_sockets, data_type='BOOLEAN', **sockets)
-        return _node._out
-
-    @classmethod
-    def MenuSwitch(cls, named_sockets=None, menu: Literal['A', 'B']=None, a: Boolean=None, b: Boolean=None, **sockets):
-        """ > Node <&ShaderNode Menu Switch>
-        
-        **Fixed values**
-        
-        | Parameter | Value |
-        | --- | --- |
-        | `data_type` | `'BOOLEAN'` |
-        
-        Parameters
-        ----------
-        menu : menu='A', optional
-            ('A', 'B')
-        
-        a : Boolean, optional
-            socket 'A'
-        
-        b : Boolean, optional
-            socket 'B'
-        
-        Returns
-        -------
-        Boolean
-            socket 'OUT'
-        """
-        _named_sockets = {'menu': menu, 'a': a, 'b': b}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _named_sockets.update({_name: _value for _name, _value in (named_sockets or {}).items() if _value is not None})
-        _node = Node('Menu Switch', named_sockets=_named_sockets, data_type='BOOLEAN', **sockets)
-        return _node._out
-
-    def switch(self, false: Color | Float | Integer | Boolean | Vector | String | Menu | Shader | Bundle | Closure=None, true: Color | Float | Integer | Boolean | Vector | String | Menu | Shader | Bundle | Closure=None, input_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'SHADER', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'TEXTURE', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SCENE', 'TEXT', 'MASK', 'SOUND', 'INT_VECTOR']='RGBA'):
+    def switch(self, false: Socket=None, true: Socket=None):
         """ > Node <&ShaderNode Switch>
         
         Jump method: False.
         
         self: socket 'Switch'.
         
+        **Derived parameters**
+        
+        - `input_type`: Inferred from socket 'False' (false).
+        
         Parameters
         ----------
-        false : Color | Float | Integer | Boolean | Vector | String | Menu | Shader | Bundle | Closure, optional
+        false : Socket, optional
             socket 'False'
         
-        true : Color | Float | Integer | Boolean | Vector | String | Menu | Shader | Bundle | Closure, optional
+        true : Socket, optional
             socket 'True'
-        
-        input_type : Literal['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'String', 'Menu', 'Shader', 'Bundle', 'Closure']
-            parameter `input_type`
         
         Returns
         -------
-        Color | Float | Integer | Boolean | Vector | String | Menu | Shader | Bundle | Closure
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'switch': self, 'false': false, 'true': true}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Switch', named_sockets=_named_sockets, input_type=input_type)
-        return _node._out
+        input_type = SocketType.get_data_type_for_node(false, 'GeometryNodeSwitch', 'input_type')
+        node = Node('Switch', named_sockets={'Switch': self, 'False': false, 'True': true}, input_type=input_type)
+        return node._out
 
     def warning(self, message: String=None, warning_type: Literal['ERROR', 'WARNING', 'INFO']='ERROR'):
         """ > Node <&ShaderNode Warning>
@@ -235,10 +170,8 @@ class Boolean(BaseBoolean):
         
         Returns
         -------
-        Boolean
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'show': self, 'message': message}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Warning', named_sockets=_named_sockets, warning_type=warning_type)
-        return _node._out
+        node = Node('Warning', named_sockets={'Show': self, 'Message': message}, warning_type=warning_type)
+        return node._out

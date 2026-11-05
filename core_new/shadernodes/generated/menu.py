@@ -32,6 +32,9 @@ if TYPE_CHECKING:
     class Menu:
         ...
 
+    class Texture:
+        ...
+
     class String:
         ...
 
@@ -45,41 +48,10 @@ from ...shadernodes.sockets.menu import Menu as BaseMenu
 class Menu(BaseMenu):
     __slots__ = ()
 
-    def enable_output(self, enable: Boolean=None):
-        """ > Node <&ShaderNode Enable Output>
-        
-        Jump method: False.
-        
-        self: socket 'Value'.
-        
-        **Fixed values**
-        
-        | Parameter | Value |
-        | --- | --- |
-        | `data_type` | `'MENU'` |
-        
-        Parameters
-        ----------
-        enable : Boolean, optional
-            socket 'Enable'
-        
-        Returns
-        -------
-        Menu
-            socket 'OUT'
-        """
-        _named_sockets = {'enable': enable, 'value': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Enable Output', named_sockets=_named_sockets, data_type='MENU')
-        return _node._out
-
-    def implicit_conversion(self, socket_idname='NodeSocketColor'):
+    @classmethod
+    def implicit_conversion(cls, value: Menu=None, socket_idname: str='NodeSocketColor'):
         """ > Node <&ShaderNode Implicit Conversion>
         
-        Jump method: False.
-        
-        self: socket 'Value'.
-        
         **Fixed values**
         
         | Parameter | Value |
@@ -88,79 +60,38 @@ class Menu(BaseMenu):
         
         Parameters
         ----------
+        value : Menu, optional
+            socket 'Value'
+        
         socket_idname : str
             parameter `socket_idname`
         
         Returns
         -------
-        Menu
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'value': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Implicit Conversion', named_sockets=_named_sockets, socket_idname=socket_idname, data_type='MENU')
-        return _node._out
+        node = Node('Implicit Conversion', named_sockets={'Value': value}, data_type='MENU', socket_idname=socket_idname)
+        return node._out
 
-    @classmethod
-    def IndexSwitch(cls, named_sockets=None, index: Integer=None, _0: Menu=None, _1: Menu=None, **sockets):
-        """ > Node <&ShaderNode Index Switch>
-        
-        **Fixed values**
-        
-        | Parameter | Value |
-        | --- | --- |
-        | `data_type` | `'MENU'` |
-        
-        Parameters
-        ----------
-        index : Integer, optional
-            socket 'Index'
-        
-        _0 : Menu, optional
-            socket '0' (id: Item_0)
-        
-        _1 : Menu, optional
-            socket '1' (id: Item_1)
-        
-        Returns
-        -------
-        Menu
-            socket 'OUT'
-        """
-        _named_sockets = {'index': index, '_0': _0, '_1': _1}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _named_sockets.update({_name: _value for _name, _value in (named_sockets or {}).items() if _value is not None})
-        _node = Node('Index Switch', named_sockets=_named_sockets, data_type='MENU', **sockets)
-        return _node._out
-
-    @classmethod
-    def Switch(cls, named_sockets=None, menu: Literal['A', 'B']=None, a: Menu=None, b: Menu=None, **sockets):
+    def menu_switch(self, named_sockets=None, data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'STRING', 'MENU', 'SHADER', 'BUNDLE', 'CLOSURE']='RGBA', **sockets):
         """ > Node <&ShaderNode Menu Switch>
         
-        **Fixed values**
+        Jump method: False.
         
-        | Parameter | Value |
-        | --- | --- |
-        | `data_type` | `'MENU'` |
+        self: socket 'Menu'.
         
         Parameters
         ----------
-        menu : menu='A', optional
-            ('A', 'B')
-        
-        a : Menu, optional
-            socket 'A' (id: Item_0)
-        
-        b : Menu, optional
-            socket 'B' (id: Item_1)
+        data_type : Literal['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'String', 'Menu', 'Shader', 'Bundle', 'Closure']
+            parameter `data_type`
         
         Returns
         -------
-        Menu
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'menu': menu, 'a': a, 'b': b}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _named_sockets.update({_name: _value for _name, _value in (named_sockets or {}).items() if _value is not None})
-        _node = Node('Menu Switch', named_sockets=_named_sockets, data_type='MENU', **sockets)
-        return _node._out
+        _named_sockets = {'Menu': self}
+        _named_sockets.update({name: value for name, value in (named_sockets or {}).items() if value is not None})
+        node = Node('Menu Switch', named_sockets=_named_sockets, data_type=data_type, **sockets)
+        return node._out

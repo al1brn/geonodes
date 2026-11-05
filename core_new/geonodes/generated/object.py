@@ -47,6 +47,9 @@ if TYPE_CHECKING:
     class Geometry:
         ...
 
+    class Texture:
+        ...
+
     class Collection:
         ...
 
@@ -176,6 +179,18 @@ class Object(BaseObject):
     def __ne__(self, other):
         return self.not_equal(other)
 
+    @classmethod
+    def active_camera(cls):
+        """ > Node <&Node Active Camera>
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Active Camera', named_sockets={})
+        return node._out
+
     def bone_info(self, bone_name: String=None, transform_space: Literal['ORIGINAL', 'RELATIVE']='ORIGINAL'):
         """ > Node <&Node Bone Info>
         
@@ -193,13 +208,11 @@ class Object(BaseObject):
         
         Returns
         -------
-        Matrix
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'armature': self, 'bone_name': bone_name}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Bone Info', named_sockets=_named_sockets, transform_space=transform_space)
-        return _node._out
+        node = Node('Bone Info', named_sockets={'Armature': self, 'Bone Name': bone_name}, transform_space=transform_space)
+        return node._out
 
     def camera_info(self):
         """ > Node <&Node Camera Info>
@@ -210,16 +223,14 @@ class Object(BaseObject):
         
         Returns
         -------
-        Matrix
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'camera': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Camera Info', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('Camera Info', named_sockets={'Camera': self})
+        return node._out
 
     @classmethod
-    def CombineList(cls, named_sockets=None, _0: Object=None, **sockets):
+    def combine_list(cls, *values: Socket):
         """ > Node <&Node Combine List>
         
         **Fixed values**
@@ -228,81 +239,17 @@ class Object(BaseObject):
         | --- | --- |
         | `data_type` | `'OBJECT'` |
         
-        Parameters
-        ----------
-        _0 : Object, optional
-            socket '0'
-        
         Returns
         -------
-        Object
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'_0': _0}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _named_sockets.update({_name: _value for _name, _value in (named_sockets or {}).items() if _value is not None})
-        _node = Node('Combine List', named_sockets=_named_sockets, data_type='OBJECT', **sockets)
-        return _node._out
-
-    def enable_output(self, enable: Boolean=None):
-        """ > Node <&Node Enable Output>
-        
-        Jump method: False.
-        
-        self: socket 'Value'.
-        
-        **Fixed values**
-        
-        | Parameter | Value |
-        | --- | --- |
-        | `data_type` | `'OBJECT'` |
-        
-        Parameters
-        ----------
-        enable : Boolean, optional
-            socket 'Enable'
-        
-        Returns
-        -------
-        Object
-            socket 'OUT'
-        """
-        _named_sockets = {'enable': enable, 'value': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Enable Output', named_sockets=_named_sockets, data_type='OBJECT')
-        return _node._out
-
-    def implicit_conversion(self, socket_idname='NodeSocketColor'):
-        """ > Node <&Node Implicit Conversion>
-        
-        Jump method: False.
-        
-        self: socket 'Value'.
-        
-        **Fixed values**
-        
-        | Parameter | Value |
-        | --- | --- |
-        | `data_type` | `'OBJECT'` |
-        
-        Parameters
-        ----------
-        socket_idname : str
-            parameter `socket_idname`
-        
-        Returns
-        -------
-        Object
-            socket 'OUT'
-        """
-        _named_sockets = {'value': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Implicit Conversion', named_sockets=_named_sockets, socket_idname=socket_idname, data_type='OBJECT')
-        return _node._out
+        node = Node('Combine List', *values, named_sockets={}, data_type='OBJECT')
+        return node._out
 
     @classmethod
-    def IndexSwitch(cls, named_sockets=None, index: Integer=None, _0: Object=None, _1: Object=None, **sockets):
-        """ > Node <&Node Index Switch>
+    def compare(cls, a: Object=None, b: Object=None, operation: Literal['LESS_THAN', 'LESS_EQUAL', 'GREATER_THAN', 'GREATER_EQUAL', 'EQUAL', 'NOT_EQUAL']='GREATER_THAN', mode: Literal['ELEMENT', 'LENGTH', 'AVERAGE', 'DOT_PRODUCT', 'DIRECTION']='ELEMENT'):
+        """ > Node <&Node Compare>
         
         **Fixed values**
         
@@ -312,59 +259,128 @@ class Object(BaseObject):
         
         Parameters
         ----------
-        index : Integer, optional
-            socket 'Index'
-        
-        _0 : Object, optional
-            socket '0'
-        
-        _1 : Object, optional
-            socket '1'
-        
-        Returns
-        -------
-        Object
-            socket 'OUT'
-        """
-        _named_sockets = {'index': index, '_0': _0, '_1': _1}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _named_sockets.update({_name: _value for _name, _value in (named_sockets or {}).items() if _value is not None})
-        _node = Node('Index Switch', named_sockets=_named_sockets, data_type='OBJECT', **sockets)
-        return _node._out
-
-    @classmethod
-    def MenuSwitch(cls, named_sockets=None, menu: Literal['A', 'B']=None, a: Object=None, b: Object=None, **sockets):
-        """ > Node <&Node Menu Switch>
-        
-        **Fixed values**
-        
-        | Parameter | Value |
-        | --- | --- |
-        | `data_type` | `'OBJECT'` |
-        
-        Parameters
-        ----------
-        menu : menu='A', optional
-            ('A', 'B')
-        
         a : Object, optional
             socket 'A'
         
         b : Object, optional
             socket 'B'
         
+        operation : Literal['Less Than', 'Less Than or Equal', 'Greater Than', 'Greater Than or Equal', 'Equal', 'Not Equal']
+            parameter `operation`
+        
+        mode : Literal['Element-Wise', 'Length', 'Average', 'Dot Product', 'Direction']
+            parameter `mode`
+        
         Returns
         -------
-        Object
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'menu': menu, 'a': a, 'b': b}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _named_sockets.update({_name: _value for _name, _value in (named_sockets or {}).items() if _value is not None})
-        _node = Node('Menu Switch', named_sockets=_named_sockets, data_type='OBJECT', **sockets)
-        return _node._out
+        node = Node('Compare', named_sockets={'A': a, 'B': b}, data_type='OBJECT', operation=operation, mode=mode)
+        return node._out
 
-    def info(self, as_instance: Boolean=None, transform_space: Literal['ORIGINAL', 'RELATIVE']='ORIGINAL'):
+    @classmethod
+    def filter_list(cls, list: Object=None, selection: Boolean=None):
+        """ > Node <&Node Filter List>
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `socket_type` | `'OBJECT'` |
+        
+        Parameters
+        ----------
+        list : Object, optional
+            socket 'List'
+        
+        selection : Boolean, optional
+            socket 'Selection'
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Filter List', named_sockets={'List': list, 'Selection': selection}, socket_type='OBJECT')
+        return node._out
+
+    @classmethod
+    def get_list_item(cls, list: Object=None, index: Integer=None):
+        """ > Node <&Node Get List Item>
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `socket_type` | `'OBJECT'` |
+        
+        Parameters
+        ----------
+        list : Object, optional
+            socket 'List'
+        
+        index : Integer, optional
+            socket 'Index'
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Get List Item', named_sockets={'List': list, 'Index': index}, socket_type='OBJECT')
+        return node._out
+
+    @classmethod
+    def implicit_conversion(cls, value: Object=None, socket_idname: str='NodeSocketColor'):
+        """ > Node <&Node Implicit Conversion>
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `data_type` | `'OBJECT'` |
+        
+        Parameters
+        ----------
+        value : Object, optional
+            socket 'Value'
+        
+        socket_idname : str
+            parameter `socket_idname`
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Implicit Conversion', named_sockets={'Value': value}, data_type='OBJECT', socket_idname=socket_idname)
+        return node._out
+
+    @classmethod
+    def list_length(cls, list: Object=None):
+        """ > Node <&Node List Length>
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `data_type` | `'OBJECT'` |
+        
+        Parameters
+        ----------
+        list : Object, optional
+            socket 'List'
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('List Length', named_sockets={'List': list}, data_type='OBJECT')
+        return node._out
+
+    def object_info(self, as_instance: Boolean=None, transform_space: Literal['ORIGINAL', 'RELATIVE']='ORIGINAL'):
         """ > Node <&Node Object Info>
         
         Jump method: False.
@@ -381,10 +397,52 @@ class Object(BaseObject):
         
         Returns
         -------
-        Matrix
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'object': self, 'as_instance': as_instance}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Object Info', named_sockets=_named_sockets, transform_space=transform_space)
-        return _node._out
+        node = Node('Object Info', named_sockets={'Object': self, 'As Instance': as_instance}, transform_space=transform_space)
+        return node._out
+
+    @classmethod
+    def self_object(cls):
+        """ > Node <&Node Self Object>
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Self Object', named_sockets={})
+        return node._out
+
+    @classmethod
+    def sort_list(cls, list: Object=None, selection: Boolean=None, group_id: Integer=None, sort_weight: Float=None):
+        """ > Node <&Node Sort List>
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `socket_type` | `'OBJECT'` |
+        
+        Parameters
+        ----------
+        list : Object, optional
+            socket 'List'
+        
+        selection : Boolean, optional
+            socket 'Selection'
+        
+        group_id : Integer, optional
+            socket 'Group ID'
+        
+        sort_weight : Float, optional
+            socket 'Sort Weight'
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Sort List', named_sockets={'List': list, 'Selection': selection, 'Group ID': group_id, 'Sort Weight': sort_weight}, socket_type='OBJECT')
+        return node._out

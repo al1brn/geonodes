@@ -1,0 +1,27 @@
+[
+  {
+    "call": "Vector((1,2,3)).x",
+    "ok": false,
+    "error": "AttributeError: "
+  },
+  {
+    "call": "Geometry.join(other)",
+    "ok": false,
+    "error": "TypeError: too many positional arguments"
+  },
+  {
+    "call": "Float.add(value=1)",
+    "ok": false,
+    "error": "TypeError: got an unexpected keyword argument 'value'"
+  },
+  {
+    "call": "Face.set(name, value)",
+    "ok": false,
+    "error": "TypeError: too many positional arguments"
+  },
+  {
+    "call": "Float.IndexSwitch(1, 2, index=0)",
+    "ok": false,
+    "error": "TypeError: multiple values for argument 'index'"
+  }
+]

@@ -47,6 +47,9 @@ if TYPE_CHECKING:
     class Geometry:
         ...
 
+    class Texture:
+        ...
+
     class Collection:
         ...
 
@@ -177,7 +180,7 @@ class String(BaseString):
         return self.not_equal(other)
 
     @classmethod
-    def CombineList(cls, named_sockets=None, _0: String=None, **sockets):
+    def combine_list(cls, *values: Socket):
         """ > Node <&Node Combine List>
         
         **Fixed values**
@@ -186,28 +189,17 @@ class String(BaseString):
         | --- | --- |
         | `data_type` | `'STRING'` |
         
-        Parameters
-        ----------
-        _0 : String, optional
-            socket '0'
-        
         Returns
         -------
-        String
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'_0': _0}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _named_sockets.update({_name: _value for _name, _value in (named_sockets or {}).items() if _value is not None})
-        _node = Node('Combine List', named_sockets=_named_sockets, data_type='STRING', **sockets)
-        return _node._out
+        node = Node('Combine List', *values, named_sockets={}, data_type='STRING')
+        return node._out
 
-    def enable_output(self, enable: Boolean=None):
-        """ > Node <&Node Enable Output>
-        
-        Jump method: False.
-        
-        self: socket 'Value'.
+    @classmethod
+    def compare(cls, a: String=None, b: String=None, operation: Literal['LESS_THAN', 'LESS_EQUAL', 'GREATER_THAN', 'GREATER_EQUAL', 'EQUAL', 'NOT_EQUAL']='GREATER_THAN', mode: Literal['ELEMENT', 'LENGTH', 'AVERAGE', 'DOT_PRODUCT', 'DIRECTION']='ELEMENT'):
+        """ > Node <&Node Compare>
         
         **Fixed values**
         
@@ -217,20 +209,53 @@ class String(BaseString):
         
         Parameters
         ----------
-        enable : Boolean, optional
-            socket 'Enable'
+        a : String, optional
+            socket 'A'
+        
+        b : String, optional
+            socket 'B'
+        
+        operation : Literal['Less Than', 'Less Than or Equal', 'Greater Than', 'Greater Than or Equal', 'Equal', 'Not Equal']
+            parameter `operation`
+        
+        mode : Literal['Element-Wise', 'Length', 'Average', 'Dot Product', 'Direction']
+            parameter `mode`
         
         Returns
         -------
-        String
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'enable': enable, 'value': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Enable Output', named_sockets=_named_sockets, data_type='STRING')
-        return _node._out
+        node = Node('Compare', named_sockets={'A': a, 'B': b}, data_type='STRING', operation=operation, mode=mode)
+        return node._out
 
-    def find(self, search: String=None, mode: Literal['From Start', 'From End']=None):
+    @classmethod
+    def filter_list(cls, list: String=None, selection: Boolean=None):
+        """ > Node <&Node Filter List>
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `socket_type` | `'STRING'` |
+        
+        Parameters
+        ----------
+        list : String, optional
+            socket 'List'
+        
+        selection : Boolean, optional
+            socket 'Selection'
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Filter List', named_sockets={'List': list, 'Selection': selection}, socket_type='STRING')
+        return node._out
+
+    def find_in_string(self, search: String=None, mode: Menu=None):
         """ > Node <&Node Find in String>
         
         Jump method: False.
@@ -242,20 +267,18 @@ class String(BaseString):
         search : String, optional
             socket 'Search'
         
-        mode : menu='From Start', optional
-            ('From Start', 'From End')
+        mode : Menu, optional
+            socket 'Mode'
         
         Returns
         -------
-        Integer
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'string': self, 'search': search, 'mode': mode}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Find in String', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('Find in String', named_sockets={'String': self, 'Search': search, 'Mode': mode})
+        return node._out
 
-    def format(self, named_sockets=None, **sockets):
+    def format_string(self, named_sockets=None, **sockets):
         """ > Node <&Node Format String>
         
         Jump method: False.
@@ -264,21 +287,43 @@ class String(BaseString):
         
         Returns
         -------
-        String
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'format': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _named_sockets.update({_name: _value for _name, _value in (named_sockets or {}).items() if _value is not None})
-        _node = Node('Format String', named_sockets=_named_sockets, **sockets)
-        return _node._out
+        _named_sockets = {'Format': self}
+        _named_sockets.update({name: value for name, value in (named_sockets or {}).items() if value is not None})
+        node = Node('Format String', named_sockets=_named_sockets, **sockets)
+        return node._out
 
-    def implicit_conversion(self, socket_idname='NodeSocketColor'):
-        """ > Node <&Node Implicit Conversion>
+    @classmethod
+    def get_list_item(cls, list: String=None, index: Integer=None):
+        """ > Node <&Node Get List Item>
         
-        Jump method: False.
+        **Fixed values**
         
-        self: socket 'Value'.
+        | Parameter | Value |
+        | --- | --- |
+        | `socket_type` | `'STRING'` |
+        
+        Parameters
+        ----------
+        list : String, optional
+            socket 'List'
+        
+        index : Integer, optional
+            socket 'Index'
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Get List Item', named_sockets={'List': list, 'Index': index}, socket_type='STRING')
+        return node._out
+
+    @classmethod
+    def hash_value(cls, value: String=None, seed: Integer=None):
+        """ > Node <&Node Hash Value>
         
         **Fixed values**
         
@@ -288,22 +333,89 @@ class String(BaseString):
         
         Parameters
         ----------
+        value : String, optional
+            socket 'Value'
+        
+        seed : Integer, optional
+            socket 'Seed'
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Hash Value', named_sockets={'Value': value, 'Seed': seed}, data_type='STRING')
+        return node._out
+
+    @classmethod
+    def implicit_conversion(cls, value: String=None, socket_idname: str='NodeSocketColor'):
+        """ > Node <&Node Implicit Conversion>
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `data_type` | `'STRING'` |
+        
+        Parameters
+        ----------
+        value : String, optional
+            socket 'Value'
+        
         socket_idname : str
             parameter `socket_idname`
         
         Returns
         -------
-        String
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'value': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Implicit Conversion', named_sockets=_named_sockets, socket_idname=socket_idname, data_type='STRING')
-        return _node._out
+        node = Node('Implicit Conversion', named_sockets={'Value': value}, data_type='STRING', socket_idname=socket_idname)
+        return node._out
 
     @classmethod
-    def IndexSwitch(cls, named_sockets=None, index: Integer=None, _0: String=None, _1: String=None, **sockets):
-        """ > Node <&Node Index Switch>
+    def ImportText(cls, path: String=None):
+        """ > Node <&Node Import Text>
+        
+        Parameters
+        ----------
+        path : String, optional
+            socket 'Path'
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Import Text', named_sockets={'Path': path})
+        return node._out
+
+    def join_strings(self, *strings_1: String, delimiter: String=None):
+        """ > Node <&Node Join Strings>
+        
+        Jump method: False.
+        
+        self: socket 'Strings'.
+        
+        Parameters
+        ----------
+        strings_1 : String, optional
+            socket 'Strings'
+        
+        delimiter : String, optional
+            socket 'Delimiter'
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Join Strings', *[*[self, *strings_1]], named_sockets={'Delimiter': delimiter})
+        return node._out
+
+    @classmethod
+    def list_length(cls, list: String=None):
+        """ > Node <&Node List Length>
         
         **Fixed values**
         
@@ -313,49 +425,18 @@ class String(BaseString):
         
         Parameters
         ----------
-        index : Integer, optional
-            socket 'Index'
-        
-        _0 : String, optional
-            socket '0'
-        
-        _1 : String, optional
-            socket '1'
+        list : String, optional
+            socket 'List'
         
         Returns
         -------
-        String
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'index': index, '_0': _0, '_1': _1}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _named_sockets.update({_name: _value for _name, _value in (named_sockets or {}).items() if _value is not None})
-        _node = Node('Index Switch', named_sockets=_named_sockets, data_type='STRING', **sockets)
-        return _node._out
+        node = Node('List Length', named_sockets={'List': list}, data_type='STRING')
+        return node._out
 
-    def join_strings(self, *strings: String):
-        """ > Node <&Node Join Strings>
-        
-        Jump method: False.
-        
-        self: socket 'Delimiter'.
-        
-        Parameters
-        ----------
-        strings : String, optional
-            socket 'Strings'
-        
-        Returns
-        -------
-        String
-            socket 'OUT'
-        """
-        _named_sockets = {'delimiter': self, 'strings': list(strings)}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Join Strings', named_sockets=_named_sockets)
-        return _node._out
-
-    def match(self, operation: Literal['Starts With', 'Ends With', 'Contains']=None, key: String=None):
+    def match_string(self, operation: Menu=None, key: String=None):
         """ > Node <&Node Match String>
         
         Jump method: False.
@@ -364,55 +445,21 @@ class String(BaseString):
         
         Parameters
         ----------
-        operation : menu='Starts With', optional
-            ('Starts With', 'Ends With', 'Contains')
+        operation : Menu, optional
+            socket 'Operation'
         
         key : String, optional
             socket 'Key'
         
         Returns
         -------
-        Boolean
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'string': self, 'operation': operation, 'key': key}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Match String', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('Match String', named_sockets={'String': self, 'Operation': operation, 'Key': key})
+        return node._out
 
-    @classmethod
-    def MenuSwitch(cls, named_sockets=None, menu: Literal['A', 'B']=None, a: String=None, b: String=None, **sockets):
-        """ > Node <&Node Menu Switch>
-        
-        **Fixed values**
-        
-        | Parameter | Value |
-        | --- | --- |
-        | `data_type` | `'STRING'` |
-        
-        Parameters
-        ----------
-        menu : menu='A', optional
-            ('A', 'B')
-        
-        a : String, optional
-            socket 'A'
-        
-        b : String, optional
-            socket 'B'
-        
-        Returns
-        -------
-        String
-            socket 'OUT'
-        """
-        _named_sockets = {'menu': menu, 'a': a, 'b': b}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _named_sockets.update({_name: _value for _name, _value in (named_sockets or {}).items() if _value is not None})
-        _node = Node('Menu Switch', named_sockets=_named_sockets, data_type='STRING', **sockets)
-        return _node._out
-
-    def replace(self, find: String=None, replace: String=None):
+    def replace_string(self, find: String=None, replace: String=None):
         """ > Node <&Node Replace String>
         
         Jump method: False.
@@ -429,16 +476,13 @@ class String(BaseString):
         
         Returns
         -------
-        String
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'string': self, 'find': find, 'replace': replace}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Replace String', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('Replace String', named_sockets={'String': self, 'Find': find, 'Replace': replace})
+        return node._out
 
-    @property
-    def reverse(self):
+    def reverse_string(self):
         """ > Node <&Node Reverse String>
         
         Jump method: False.
@@ -447,15 +491,13 @@ class String(BaseString):
         
         Returns
         -------
-        String
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'string': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Reverse String', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('Reverse String', named_sockets={'String': self})
+        return node._out
 
-    def set_case(self, case: Literal['Uppercase', 'Lowercase']=None):
+    def set_string_case(self, case: Menu=None):
         """ > Node <&Node Set String Case>
         
         Jump method: False.
@@ -464,20 +506,18 @@ class String(BaseString):
         
         Parameters
         ----------
-        case : menu='Uppercase', optional
-            ('Uppercase', 'Lowercase')
+        case : Menu, optional
+            socket 'Case'
         
         Returns
         -------
-        String
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'string': self, 'case': case}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Set String Case', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('Set String Case', named_sockets={'String': self, 'Case': case})
+        return node._out
 
-    def slice(self, position: Integer=None, length: Integer=None):
+    def slice_string(self, position: Integer=None, length: Integer=None):
         """ > Node <&Node Slice String>
         
         Jump method: False.
@@ -494,15 +534,45 @@ class String(BaseString):
         
         Returns
         -------
-        String
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'string': self, 'position': position, 'length': length}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Slice String', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('Slice String', named_sockets={'String': self, 'Position': position, 'Length': length})
+        return node._out
 
-    def split(self, separator: String=None):
+    @classmethod
+    def sort_list(cls, list: String=None, selection: Boolean=None, group_id: Integer=None, sort_weight: Float=None):
+        """ > Node <&Node Sort List>
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `socket_type` | `'STRING'` |
+        
+        Parameters
+        ----------
+        list : String, optional
+            socket 'List'
+        
+        selection : Boolean, optional
+            socket 'Selection'
+        
+        group_id : Integer, optional
+            socket 'Group ID'
+        
+        sort_weight : Float, optional
+            socket 'Sort Weight'
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Sort List', named_sockets={'List': list, 'Selection': selection, 'Group ID': group_id, 'Sort Weight': sort_weight}, socket_type='STRING')
+        return node._out
+
+    def split_string(self, separator: String=None):
         """ > Node <&Node Split String>
         
         Jump method: False.
@@ -516,16 +586,13 @@ class String(BaseString):
         
         Returns
         -------
-        String
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'string': self, 'separator': separator}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Split String', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('Split String', named_sockets={'String': self, 'Separator': separator})
+        return node._out
 
-    @property
-    def length(self):
+    def string_length(self):
         """ > Node <&Node String Length>
         
         Jump method: False.
@@ -534,13 +601,11 @@ class String(BaseString):
         
         Returns
         -------
-        Integer
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'string': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('String Length', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('String Length', named_sockets={'String': self})
+        return node._out
 
     def to_value(self, base: Integer=None, data_type: Literal['FLOAT', 'INT']='FLOAT'):
         """ > Node <&Node String to Value>
@@ -559,13 +624,14 @@ class String(BaseString):
         
         Returns
         -------
-        Float | Integer
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'string': self, 'base': base}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('String to Value', named_sockets=_named_sockets, data_type=data_type)
-        return _node._out
+        _configuration = ({'float': 'FLOAT', 'int': 'INT', 'integer': 'INT'}.get(data_type.lower(), data_type),)
+        _node_sockets = {('FLOAT',): {'String': self}, ('INT',): {'String': self, 'Base': base}}[_configuration]
+        _node_args = {('FLOAT',): [], ('INT',): []}[_configuration]
+        node = Node('String to Value', *_node_args, named_sockets=_node_sockets, data_type=data_type)
+        return node._out
 
     def tag_filter(self, tags: String=None):
         """ > Node <&Node Tag Filter>
@@ -581,15 +647,13 @@ class String(BaseString):
         
         Returns
         -------
-        Boolean
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'tag_filter': self, 'tags': tags}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Tag Filter', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('Tag Filter', named_sockets={'Tag Filter': self, 'Tags': tags})
+        return node._out
 
-    def trim(self, characters: String=None, whitespace: Boolean=None, start: Boolean=None, end: Boolean=None):
+    def trim_string(self, characters: String=None, whitespace: Boolean=None, start: Boolean=None, end: Boolean=None):
         """ > Node <&Node Trim String>
         
         Jump method: False.
@@ -612,23 +676,21 @@ class String(BaseString):
         
         Returns
         -------
-        String
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'string': self, 'characters': characters, 'whitespace': whitespace, 'start': start, 'end': end}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Trim String', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('Trim String', named_sockets={'String': self, 'Characters': characters, 'Whitespace': whitespace, 'Start': start, 'End': end})
+        return node._out
 
-    @classmethod
-    def FromValue(cls, value: Float | Integer=None, decimals: Integer=None, base: Integer=None, padding: Integer=None, data_type: Literal['FLOAT', 'INT']='FLOAT'):
+    def FromValue(self, decimals: Integer=None, base: Integer=None, padding: Integer=None, data_type: Literal['FLOAT', 'INT']='FLOAT'):
         """ > Node <&Node Value to String>
+        
+        Jump method: False.
+        
+        self: socket 'Value'.
         
         Parameters
         ----------
-        value : Float | Integer, optional
-            socket 'Value'
-        
         decimals : Integer, optional
             socket 'Decimals'
         
@@ -643,10 +705,11 @@ class String(BaseString):
         
         Returns
         -------
-        String
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'value': value, 'decimals': decimals, 'base': base, 'padding': padding}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Value to String', named_sockets=_named_sockets, data_type=data_type)
-        return _node._out
+        _configuration = ({'float': 'FLOAT', 'int': 'INT', 'integer': 'INT'}.get(data_type.lower(), data_type),)
+        _node_sockets = {('FLOAT',): {'Value': self, 'Decimals': decimals}, ('INT',): {'Value': self, 'Base': base, 'Padding': padding}}[_configuration]
+        _node_args = {('FLOAT',): [], ('INT',): []}[_configuration]
+        node = Node('Value to String', *_node_args, named_sockets=_node_sockets, data_type=data_type)
+        return node._out

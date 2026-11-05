@@ -47,6 +47,9 @@ if TYPE_CHECKING:
     class Geometry:
         ...
 
+    class Texture:
+        ...
+
     class Collection:
         ...
 
@@ -176,7 +179,27 @@ class Collection(BaseCollection):
     def __ne__(self, other):
         return self.not_equal(other)
 
-    def info(self, separate_children: Boolean=None, reset_children: Boolean=None, transform_space: Literal['ORIGINAL', 'RELATIVE']='ORIGINAL'):
+    def collection_children(self, recursive: Boolean=None):
+        """ > Node <&Node Collection Children>
+        
+        Jump method: False.
+        
+        self: socket 'Collection'.
+        
+        Parameters
+        ----------
+        recursive : Boolean, optional
+            socket 'Recursive'
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Collection Children', named_sockets={'Collection': self, 'Recursive': recursive})
+        return node._out
+
+    def collection_info(self, separate_children: Boolean=None, reset_children: Boolean=None, transform_space: Literal['ORIGINAL', 'RELATIVE']='ORIGINAL'):
         """ > Node <&Node Collection Info>
         
         Jump method: False.
@@ -196,16 +219,14 @@ class Collection(BaseCollection):
         
         Returns
         -------
-        Instances
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'collection': self, 'separate_children': separate_children, 'reset_children': reset_children}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Collection Info', named_sockets=_named_sockets, transform_space=transform_space)
-        return _node._out
+        node = Node('Collection Info', named_sockets={'Collection': self, 'Separate Children': separate_children, 'Reset Children': reset_children}, transform_space=transform_space)
+        return node._out
 
     @classmethod
-    def CombineList(cls, named_sockets=None, _0: Collection=None, **sockets):
+    def combine_list(cls, *values: Socket):
         """ > Node <&Node Combine List>
         
         **Fixed values**
@@ -214,81 +235,17 @@ class Collection(BaseCollection):
         | --- | --- |
         | `data_type` | `'COLLECTION'` |
         
-        Parameters
-        ----------
-        _0 : Collection, optional
-            socket '0'
-        
         Returns
         -------
-        Collection
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'_0': _0}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _named_sockets.update({_name: _value for _name, _value in (named_sockets or {}).items() if _value is not None})
-        _node = Node('Combine List', named_sockets=_named_sockets, data_type='COLLECTION', **sockets)
-        return _node._out
-
-    def enable_output(self, enable: Boolean=None):
-        """ > Node <&Node Enable Output>
-        
-        Jump method: False.
-        
-        self: socket 'Value'.
-        
-        **Fixed values**
-        
-        | Parameter | Value |
-        | --- | --- |
-        | `data_type` | `'COLLECTION'` |
-        
-        Parameters
-        ----------
-        enable : Boolean, optional
-            socket 'Enable'
-        
-        Returns
-        -------
-        Collection
-            socket 'OUT'
-        """
-        _named_sockets = {'enable': enable, 'value': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Enable Output', named_sockets=_named_sockets, data_type='COLLECTION')
-        return _node._out
-
-    def implicit_conversion(self, socket_idname='NodeSocketColor'):
-        """ > Node <&Node Implicit Conversion>
-        
-        Jump method: False.
-        
-        self: socket 'Value'.
-        
-        **Fixed values**
-        
-        | Parameter | Value |
-        | --- | --- |
-        | `data_type` | `'COLLECTION'` |
-        
-        Parameters
-        ----------
-        socket_idname : str
-            parameter `socket_idname`
-        
-        Returns
-        -------
-        Collection
-            socket 'OUT'
-        """
-        _named_sockets = {'value': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Implicit Conversion', named_sockets=_named_sockets, socket_idname=socket_idname, data_type='COLLECTION')
-        return _node._out
+        node = Node('Combine List', *values, named_sockets={}, data_type='COLLECTION')
+        return node._out
 
     @classmethod
-    def IndexSwitch(cls, named_sockets=None, index: Integer=None, _0: Collection=None, _1: Collection=None, **sockets):
-        """ > Node <&Node Index Switch>
+    def compare(cls, a: Collection=None, b: Collection=None, operation: Literal['LESS_THAN', 'LESS_EQUAL', 'GREATER_THAN', 'GREATER_EQUAL', 'EQUAL', 'NOT_EQUAL']='GREATER_THAN', mode: Literal['ELEMENT', 'LENGTH', 'AVERAGE', 'DOT_PRODUCT', 'DIRECTION']='ELEMENT'):
+        """ > Node <&Node Compare>
         
         **Fixed values**
         
@@ -298,54 +255,155 @@ class Collection(BaseCollection):
         
         Parameters
         ----------
-        index : Integer, optional
-            socket 'Index'
-        
-        _0 : Collection, optional
-            socket '0'
-        
-        _1 : Collection, optional
-            socket '1'
-        
-        Returns
-        -------
-        Collection
-            socket 'OUT'
-        """
-        _named_sockets = {'index': index, '_0': _0, '_1': _1}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _named_sockets.update({_name: _value for _name, _value in (named_sockets or {}).items() if _value is not None})
-        _node = Node('Index Switch', named_sockets=_named_sockets, data_type='COLLECTION', **sockets)
-        return _node._out
-
-    @classmethod
-    def MenuSwitch(cls, named_sockets=None, menu: Literal['A', 'B']=None, a: Collection=None, b: Collection=None, **sockets):
-        """ > Node <&Node Menu Switch>
-        
-        **Fixed values**
-        
-        | Parameter | Value |
-        | --- | --- |
-        | `data_type` | `'COLLECTION'` |
-        
-        Parameters
-        ----------
-        menu : menu='A', optional
-            ('A', 'B')
-        
         a : Collection, optional
             socket 'A'
         
         b : Collection, optional
             socket 'B'
         
+        operation : Literal['Less Than', 'Less Than or Equal', 'Greater Than', 'Greater Than or Equal', 'Equal', 'Not Equal']
+            parameter `operation`
+        
+        mode : Literal['Element-Wise', 'Length', 'Average', 'Dot Product', 'Direction']
+            parameter `mode`
+        
         Returns
         -------
-        Collection
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'menu': menu, 'a': a, 'b': b}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _named_sockets.update({_name: _value for _name, _value in (named_sockets or {}).items() if _value is not None})
-        _node = Node('Menu Switch', named_sockets=_named_sockets, data_type='COLLECTION', **sockets)
-        return _node._out
+        node = Node('Compare', named_sockets={'A': a, 'B': b}, data_type='COLLECTION', operation=operation, mode=mode)
+        return node._out
+
+    @classmethod
+    def filter_list(cls, list: Collection=None, selection: Boolean=None):
+        """ > Node <&Node Filter List>
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `socket_type` | `'COLLECTION'` |
+        
+        Parameters
+        ----------
+        list : Collection, optional
+            socket 'List'
+        
+        selection : Boolean, optional
+            socket 'Selection'
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Filter List', named_sockets={'List': list, 'Selection': selection}, socket_type='COLLECTION')
+        return node._out
+
+    @classmethod
+    def get_list_item(cls, list: Collection=None, index: Integer=None):
+        """ > Node <&Node Get List Item>
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `socket_type` | `'COLLECTION'` |
+        
+        Parameters
+        ----------
+        list : Collection, optional
+            socket 'List'
+        
+        index : Integer, optional
+            socket 'Index'
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Get List Item', named_sockets={'List': list, 'Index': index}, socket_type='COLLECTION')
+        return node._out
+
+    @classmethod
+    def implicit_conversion(cls, value: Collection=None, socket_idname: str='NodeSocketColor'):
+        """ > Node <&Node Implicit Conversion>
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `data_type` | `'COLLECTION'` |
+        
+        Parameters
+        ----------
+        value : Collection, optional
+            socket 'Value'
+        
+        socket_idname : str
+            parameter `socket_idname`
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Implicit Conversion', named_sockets={'Value': value}, data_type='COLLECTION', socket_idname=socket_idname)
+        return node._out
+
+    @classmethod
+    def list_length(cls, list: Collection=None):
+        """ > Node <&Node List Length>
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `data_type` | `'COLLECTION'` |
+        
+        Parameters
+        ----------
+        list : Collection, optional
+            socket 'List'
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('List Length', named_sockets={'List': list}, data_type='COLLECTION')
+        return node._out
+
+    @classmethod
+    def sort_list(cls, list: Collection=None, selection: Boolean=None, group_id: Integer=None, sort_weight: Float=None):
+        """ > Node <&Node Sort List>
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `socket_type` | `'COLLECTION'` |
+        
+        Parameters
+        ----------
+        list : Collection, optional
+            socket 'List'
+        
+        selection : Boolean, optional
+            socket 'Selection'
+        
+        group_id : Integer, optional
+            socket 'Group ID'
+        
+        sort_weight : Float, optional
+            socket 'Sort Weight'
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Sort List', named_sockets={'List': list, 'Selection': selection, 'Group ID': group_id, 'Sort Weight': sort_weight}, socket_type='COLLECTION')
+        return node._out

@@ -47,6 +47,9 @@ if TYPE_CHECKING:
     class Geometry:
         ...
 
+    class Texture:
+        ...
+
     class Collection:
         ...
 
@@ -115,7 +118,7 @@ class Bundle(BaseBundle):
     __slots__ = ()
 
     @classmethod
-    def Combine(cls, named_sockets=None, define_signature=False, **sockets):
+    def Combine(cls, named_sockets=None, define_signature: bool=False, **sockets):
         """ > Node <&Node Combine Bundle>
         
         Parameters
@@ -125,17 +128,16 @@ class Bundle(BaseBundle):
         
         Returns
         -------
-        Bundle
+        Socket
             socket 'OUT'
         """
         _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _named_sockets.update({_name: _value for _name, _value in (named_sockets or {}).items() if _value is not None})
-        _node = Node('Combine Bundle', named_sockets=_named_sockets, define_signature=define_signature, **sockets)
-        return _node._out
+        _named_sockets.update({name: value for name, value in (named_sockets or {}).items() if value is not None})
+        node = Node('Combine Bundle', named_sockets=_named_sockets, define_signature=define_signature, **sockets)
+        return node._out
 
     @classmethod
-    def CombineList(cls, named_sockets=None, _0: Bundle=None, **sockets):
+    def combine_list(cls, *values: Socket):
         """ > Node <&Node Combine List>
         
         **Fixed values**
@@ -144,51 +146,41 @@ class Bundle(BaseBundle):
         | --- | --- |
         | `data_type` | `'BUNDLE'` |
         
-        Parameters
-        ----------
-        _0 : Bundle, optional
-            socket '0'
-        
         Returns
         -------
-        Bundle
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'_0': _0}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _named_sockets.update({_name: _value for _name, _value in (named_sockets or {}).items() if _value is not None})
-        _node = Node('Combine List', named_sockets=_named_sockets, data_type='BUNDLE', **sockets)
-        return _node._out
+        node = Node('Combine List', *values, named_sockets={}, data_type='BUNDLE')
+        return node._out
 
-    def enable_output(self, enable: Boolean=None):
-        """ > Node <&Node Enable Output>
-        
-        Jump method: False.
-        
-        self: socket 'Value'.
+    @classmethod
+    def filter_list(cls, list: Bundle=None, selection: Boolean=None):
+        """ > Node <&Node Filter List>
         
         **Fixed values**
         
         | Parameter | Value |
         | --- | --- |
-        | `data_type` | `'BUNDLE'` |
+        | `socket_type` | `'BUNDLE'` |
         
         Parameters
         ----------
-        enable : Boolean, optional
-            socket 'Enable'
+        list : Bundle, optional
+            socket 'List'
+        
+        selection : Boolean, optional
+            socket 'Selection'
         
         Returns
         -------
-        Bundle
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'enable': enable, 'value': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Enable Output', named_sockets=_named_sockets, data_type='BUNDLE')
-        return _node._out
+        node = Node('Filter List', named_sockets={'List': list, 'Selection': selection}, socket_type='BUNDLE')
+        return node._out
 
-    def get_item(self, path: String=None, remove: Boolean=None, socket_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'SHADER', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'TEXTURE', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SCENE', 'TEXT', 'MASK', 'SOUND', 'INT_VECTOR']='FLOAT', structure_type: Literal['AUTO', 'DYNAMIC', 'FIELD', 'GRID', 'LIST', 'SINGLE']='AUTO'):
+    def get_bundle_item(self, path: String=None, remove: Boolean=None, socket_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SOUND']='FLOAT'):
         """ > Node <&Node Get Bundle Item>
         
         Jump method: False.
@@ -206,20 +198,41 @@ class Bundle(BaseBundle):
         socket_type : Literal['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Rotation', 'Matrix', 'String', 'Menu', 'Object', 'Image', 'Geometry', 'Collection', 'Material', 'Bundle', 'Closure', 'Font', 'Sound']
             parameter `socket_type`
         
-        structure_type : Literal['Auto', 'Dynamic', 'Field', 'Grid', 'List', 'Single']
-            parameter `structure_type`
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Get Bundle Item', named_sockets={'Bundle': self, 'Path': path, 'Remove': remove}, socket_type=socket_type)
+        return node._out
+
+    @classmethod
+    def get_list_item(cls, list: Bundle=None, index: Integer=None):
+        """ > Node <&Node Get List Item>
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `socket_type` | `'BUNDLE'` |
+        
+        Parameters
+        ----------
+        list : Bundle, optional
+            socket 'List'
+        
+        index : Integer, optional
+            socket 'Index'
         
         Returns
         -------
-        Bundle
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'bundle': self, 'path': path, 'remove': remove}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Get Bundle Item', named_sockets=_named_sockets, socket_type=socket_type, structure_type=structure_type)
-        return _node._out
+        node = Node('Get List Item', named_sockets={'List': list, 'Index': index}, socket_type='BUNDLE')
+        return node._out
 
-    def get_nested_paths(self, mode: Literal['All', 'Bundle Type', 'Data Type']=None, pattern_mode: Literal['Exact', 'Wildcard']=None, bundle_type: String=None, data_type: Literal['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Rotation', 'Matrix', 'String', 'Menu', 'Object', 'Image', 'Geometry', 'Collection', 'Material', 'Bundle', 'Closure', 'Font', 'Sound']=None):
+    def get_nested_bundle_paths(self, mode: Menu=None, pattern_mode: Menu=None, bundle_type: String=None, data_type: Menu=None):
         """ > Node <&Node Get Nested Bundle Paths>
         
         Jump method: False.
@@ -228,34 +241,29 @@ class Bundle(BaseBundle):
         
         Parameters
         ----------
-        mode : menu='All', optional
-            ('All', 'Bundle Type', 'Data Type')
+        mode : Menu, optional
+            socket 'Mode'
         
-        pattern_mode : menu='Exact', optional
-            ('Exact', 'Wildcard')
+        pattern_mode : Menu, optional
+            socket 'Pattern Mode'
         
         bundle_type : String, optional
             socket 'Bundle Type'
         
-        data_type : menu='Float', optional
-            ('Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Rotation', 'Matrix', 'String', 'Menu', 'Object', 'Image', 'Geometry', 'Collection', 'Material', 'Bundle', 'Closure', 'Font', 'Sound')
+        data_type : Menu, optional
+            socket 'Data Type'
         
         Returns
         -------
-        String
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'bundle': self, 'mode': mode, 'pattern_mode': pattern_mode, 'bundle_type': bundle_type, 'data_type': data_type}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Get Nested Bundle Paths', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('Get Nested Bundle Paths', named_sockets={'Bundle': self, 'Mode': mode, 'Pattern Mode': pattern_mode, 'Bundle Type': bundle_type, 'Data Type': data_type})
+        return node._out
 
-    def implicit_conversion(self, socket_idname='NodeSocketColor'):
+    @classmethod
+    def implicit_conversion(cls, value: Bundle=None, socket_idname: str='NodeSocketColor'):
         """ > Node <&Node Implicit Conversion>
-        
-        Jump method: False.
-        
-        self: socket 'Value'.
         
         **Fixed values**
         
@@ -265,71 +273,43 @@ class Bundle(BaseBundle):
         
         Parameters
         ----------
+        value : Bundle, optional
+            socket 'Value'
+        
         socket_idname : str
             parameter `socket_idname`
         
         Returns
         -------
-        Bundle
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'value': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Implicit Conversion', named_sockets=_named_sockets, socket_idname=socket_idname, data_type='BUNDLE')
-        return _node._out
+        node = Node('Implicit Conversion', named_sockets={'Value': value}, data_type='BUNDLE', socket_idname=socket_idname)
+        return node._out
 
-    @classmethod
-    def IndexSwitch(cls, named_sockets=None, index: Integer=None, _0: Bundle=None, _1: Bundle=None, **sockets):
-        """ > Node <&Node Index Switch>
-        
-        **Fixed values**
-        
-        | Parameter | Value |
-        | --- | --- |
-        | `data_type` | `'BUNDLE'` |
-        
-        Parameters
-        ----------
-        index : Integer, optional
-            socket 'Index'
-        
-        _0 : Bundle, optional
-            socket '0'
-        
-        _1 : Bundle, optional
-            socket '1'
-        
-        Returns
-        -------
-        Bundle
-            socket 'OUT'
-        """
-        _named_sockets = {'index': index, '_0': _0, '_1': _1}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _named_sockets.update({_name: _value for _name, _value in (named_sockets or {}).items() if _value is not None})
-        _node = Node('Index Switch', named_sockets=_named_sockets, data_type='BUNDLE', **sockets)
-        return _node._out
-
-    def join(self):
+    def join_bundle(self, *bundle_1: Bundle):
         """ > Node <&Node Join Bundle>
         
         Jump method: False.
         
         self: socket 'Bundle'.
         
+        Parameters
+        ----------
+        bundle_1 : Bundle, optional
+            socket 'Bundle'
+        
         Returns
         -------
-        Bundle
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'bundle': [self]}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Join Bundle', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('Join Bundle', *[*[self, *bundle_1]], named_sockets={})
+        return node._out
 
     @classmethod
-    def MenuSwitch(cls, named_sockets=None, menu: Literal['A', 'B']=None, a: Bundle=None, b: Bundle=None, **sockets):
-        """ > Node <&Node Menu Switch>
+    def list_length(cls, list: Bundle=None):
+        """ > Node <&Node List Length>
         
         **Fixed values**
         
@@ -339,56 +319,104 @@ class Bundle(BaseBundle):
         
         Parameters
         ----------
-        menu : menu='A', optional
-            ('A', 'B')
-        
-        a : Bundle, optional
-            socket 'A'
-        
-        b : Bundle, optional
-            socket 'B'
+        list : Bundle, optional
+            socket 'List'
         
         Returns
         -------
-        Bundle
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'menu': menu, 'a': a, 'b': b}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _named_sockets.update({_name: _value for _name, _value in (named_sockets or {}).items() if _value is not None})
-        _node = Node('Menu Switch', named_sockets=_named_sockets, data_type='BUNDLE', **sockets)
-        return _node._out
+        node = Node('List Length', named_sockets={'List': list}, data_type='BUNDLE')
+        return node._out
 
-    def store_item(self, path: String=None, item: Float | Integer | Boolean | Vector | Color | Rotation | Matrix | String | Menu | Object | Image | Geometry | Collection | Material | Bundle | Closure | Font | Sound=None, socket_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'SHADER', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'TEXTURE', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SCENE', 'TEXT', 'MASK', 'SOUND', 'INT_VECTOR']='FLOAT', structure_type: Literal['AUTO', 'DYNAMIC', 'FIELD', 'GRID', 'LIST', 'SINGLE']='AUTO'):
+    @classmethod
+    def sort_list(cls, list: Bundle=None, selection: Boolean=None, group_id: Integer=None, sort_weight: Float=None):
+        """ > Node <&Node Sort List>
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `socket_type` | `'BUNDLE'` |
+        
+        Parameters
+        ----------
+        list : Bundle, optional
+            socket 'List'
+        
+        selection : Boolean, optional
+            socket 'Selection'
+        
+        group_id : Integer, optional
+            socket 'Group ID'
+        
+        sort_weight : Float, optional
+            socket 'Sort Weight'
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Sort List', named_sockets={'List': list, 'Selection': selection, 'Group ID': group_id, 'Sort Weight': sort_weight}, socket_type='BUNDLE')
+        return node._out
+
+    def store_bundle_item(self, path: String=None, item: Socket=None):
         """ > Node <&Node Store Bundle Item>
         
         Jump method: False.
         
         self: socket 'Bundle'.
         
+        **Derived parameters**
+        
+        - `socket_type`: Inferred from socket 'Item' (item).
+        
         Parameters
         ----------
         path : String, optional
             socket 'Path'
         
-        item : Float | Integer | Boolean | Vector | Color | Rotation | Matrix | String | Menu | Object | Image | Geometry | Collection | Material | Bundle | Closure | Font | Sound, optional
+        item : Socket, optional
             socket 'Item'
-        
-        socket_type : Literal['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Rotation', 'Matrix', 'String', 'Menu', 'Object', 'Image', 'Geometry', 'Collection', 'Material', 'Bundle', 'Closure', 'Font', 'Sound']
-            parameter `socket_type`
-        
-        structure_type : Literal['Auto', 'Dynamic', 'Field', 'Grid', 'List', 'Single']
-            parameter `structure_type`
         
         Returns
         -------
-        Bundle
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'bundle': self, 'path': path, 'item': item}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Store Bundle Item', named_sockets=_named_sockets, socket_type=socket_type, structure_type=structure_type)
-        return _node._out
+        socket_type = SocketType.get_data_type_for_node(item, 'NodeStoreBundleItem', 'socket_type')
+        node = Node('Store Bundle Item', named_sockets={'Bundle': self, 'Path': path, 'Item': item}, socket_type=socket_type)
+        return node._out
+
+    def __setitem__(self, path: String=None, item: Socket=None):
+        """ > Node <&Node Store Bundle Item>
+        
+        Jump method: False.
+        
+        self: socket 'Bundle'.
+        
+        **Derived parameters**
+        
+        - `socket_type`: Inferred from socket 'Item' (item).
+        
+        Parameters
+        ----------
+        path : String, optional
+            socket 'Path'
+        
+        item : Socket, optional
+            socket 'Item'
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        socket_type = SocketType.get_data_type_for_node(item, 'NodeStoreBundleItem', 'socket_type')
+        node = Node('Store Bundle Item', named_sockets={'Bundle': self, 'Path': path, 'Item': item}, socket_type=socket_type)
+        return node._out
 
     def xpbd_solver(self, delta_time: Float=None, filter: String=None, simulation_to_world: Matrix=None, substeps: Integer=None, constraint_iterations: Integer=None, solver_path: String=None, begin: Float=None, end: Float=None):
         """ > Node <&Node XPBD Solver>
@@ -425,10 +453,8 @@ class Bundle(BaseBundle):
         
         Returns
         -------
-        Bundle
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'world': self, 'delta_time': delta_time, 'filter': filter, 'simulation_to_world': simulation_to_world, 'substeps': substeps, 'constraint_iterations': constraint_iterations, 'solver_path': solver_path, 'begin': begin, 'end': end}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('XPBD Solver', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('XPBD Solver', named_sockets={'World': self, 'Delta Time': delta_time, 'Filter': filter, 'Simulation to World': simulation_to_world, 'Substeps': substeps, 'Constraint Iterations': constraint_iterations, 'Solver Path': solver_path, 'Begin': begin, 'End': end})
+        return node._out

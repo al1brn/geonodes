@@ -32,6 +32,9 @@ if TYPE_CHECKING:
     class Menu:
         ...
 
+    class Texture:
+        ...
+
     class String:
         ...
 
@@ -41,1976 +44,1834 @@ if TYPE_CHECKING:
     class Closure:
         ...
 
-def add(value: Float=None, value_1: Float=None, use_clamp=False):
+def add(value: Float=None, value_1: Float=None, use_clamp: bool=False):
     """ > Node <&ShaderNode Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'ADD'` |
-
+    
     Parameters
     ----------
     value : Float, optional
         socket 'Value'
-
+    
     value_1 : Float, optional
         socket 'Value'
-
+    
     use_clamp : bool
         parameter `use_clamp`
-
+    
     Returns
     -------
-    Float
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'value': value, 'value_1': value_1}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Math', named_sockets=_named_sockets, operation='ADD', use_clamp=use_clamp)
-    return _node._out
+    node = Node('Math', named_sockets={'Value': value, 'Value_1': value_1}, operation='ADD', use_clamp=use_clamp)
+    return node._out
 
-def subtract(value: Float=None, value_1: Float=None, use_clamp=False):
+def subtract(value: Float=None, value_1: Float=None, use_clamp: bool=False):
     """ > Node <&ShaderNode Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'SUBTRACT'` |
-
+    
     Parameters
     ----------
     value : Float, optional
         socket 'Value'
-
+    
     value_1 : Float, optional
         socket 'Value'
-
+    
     use_clamp : bool
         parameter `use_clamp`
-
+    
     Returns
     -------
-    Float
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'value': value, 'value_1': value_1}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Math', named_sockets=_named_sockets, operation='SUBTRACT', use_clamp=use_clamp)
-    return _node._out
+    node = Node('Math', named_sockets={'Value': value, 'Value_1': value_1}, operation='SUBTRACT', use_clamp=use_clamp)
+    return node._out
 
-def multiply(value: Float=None, value_1: Float=None, use_clamp=False):
+def multiply(value: Float=None, value_1: Float=None, use_clamp: bool=False):
     """ > Node <&ShaderNode Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'MULTIPLY'` |
-
+    
     Parameters
     ----------
     value : Float, optional
         socket 'Value'
-
+    
     value_1 : Float, optional
         socket 'Value'
-
+    
     use_clamp : bool
         parameter `use_clamp`
-
+    
     Returns
     -------
-    Float
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'value': value, 'value_1': value_1}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Math', named_sockets=_named_sockets, operation='MULTIPLY', use_clamp=use_clamp)
-    return _node._out
+    node = Node('Math', named_sockets={'Value': value, 'Value_1': value_1}, operation='MULTIPLY', use_clamp=use_clamp)
+    return node._out
 
-def divide(value: Float=None, value_1: Float=None, use_clamp=False):
+def divide(value: Float=None, value_1: Float=None, use_clamp: bool=False):
     """ > Node <&ShaderNode Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'DIVIDE'` |
-
+    
     Parameters
     ----------
     value : Float, optional
         socket 'Value'
-
+    
     value_1 : Float, optional
         socket 'Value'
-
+    
     use_clamp : bool
         parameter `use_clamp`
-
+    
     Returns
     -------
-    Float
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'value': value, 'value_1': value_1}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Math', named_sockets=_named_sockets, operation='DIVIDE', use_clamp=use_clamp)
-    return _node._out
+    node = Node('Math', named_sockets={'Value': value, 'Value_1': value_1}, operation='DIVIDE', use_clamp=use_clamp)
+    return node._out
 
-def multiply_add(value: Float=None, multiplier: Float=None, addend: Float=None, use_clamp=False):
+def multiply_add(value: Float=None, multiplier: Float=None, addend: Float=None, use_clamp: bool=False):
     """ > Node <&ShaderNode Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'MULTIPLY_ADD'` |
-
+    
     Parameters
     ----------
     value : Float, optional
         socket 'Value'
-
+    
     multiplier : Float, optional
         socket 'Multiplier'
-
+    
     addend : Float, optional
         socket 'Addend'
-
+    
     use_clamp : bool
         parameter `use_clamp`
-
+    
     Returns
     -------
-    Float
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'value': value, 'multiplier': multiplier, 'addend': addend}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Math', named_sockets=_named_sockets, operation='MULTIPLY_ADD', use_clamp=use_clamp)
-    return _node._out
+    node = Node('Math', named_sockets={'Value': value, 'Multiplier': multiplier, 'Addend': addend}, operation='MULTIPLY_ADD', use_clamp=use_clamp)
+    return node._out
 
-def power(base: Float=None, exponent: Float=None, use_clamp=False):
+def power(base: Float=None, exponent: Float=None, use_clamp: bool=False):
     """ > Node <&ShaderNode Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'POWER'` |
-
+    
     Parameters
     ----------
     base : Float, optional
         socket 'Base'
-
+    
     exponent : Float, optional
         socket 'Exponent'
-
+    
     use_clamp : bool
         parameter `use_clamp`
-
+    
     Returns
     -------
-    Float
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'base': base, 'exponent': exponent}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Math', named_sockets=_named_sockets, operation='POWER', use_clamp=use_clamp)
-    return _node._out
+    node = Node('Math', named_sockets={'Base': base, 'Exponent': exponent}, operation='POWER', use_clamp=use_clamp)
+    return node._out
 
-def log(value: Float=None, base: Float=None, use_clamp=False):
+def log(value: Float=None, base: Float=None, use_clamp: bool=False):
     """ > Node <&ShaderNode Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'LOGARITHM'` |
-
+    
     Parameters
     ----------
     value : Float, optional
         socket 'Value'
-
+    
     base : Float, optional
         socket 'Base'
-
+    
     use_clamp : bool
         parameter `use_clamp`
-
+    
     Returns
     -------
-    Float
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'value': value, 'base': base}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Math', named_sockets=_named_sockets, operation='LOGARITHM', use_clamp=use_clamp)
-    return _node._out
+    node = Node('Math', named_sockets={'Value': value, 'Base': base}, operation='LOGARITHM', use_clamp=use_clamp)
+    return node._out
 
-def sqrt(value: Float=None, use_clamp=False):
+def sqrt(value: Float=None, use_clamp: bool=False):
     """ > Node <&ShaderNode Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'SQRT'` |
-
+    
     Parameters
     ----------
     value : Float, optional
         socket 'Value'
-
+    
     use_clamp : bool
         parameter `use_clamp`
-
+    
     Returns
     -------
-    Float
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'value': value}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Math', named_sockets=_named_sockets, operation='SQRT', use_clamp=use_clamp)
-    return _node._out
+    node = Node('Math', named_sockets={'Value': value}, operation='SQRT', use_clamp=use_clamp)
+    return node._out
 
-def inverse_sqrt(value: Float=None, use_clamp=False):
+def inverse_sqrt(value: Float=None, use_clamp: bool=False):
     """ > Node <&ShaderNode Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'INVERSE_SQRT'` |
-
+    
     Parameters
     ----------
     value : Float, optional
         socket 'Value'
-
+    
     use_clamp : bool
         parameter `use_clamp`
-
+    
     Returns
     -------
-    Float
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'value': value}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Math', named_sockets=_named_sockets, operation='INVERSE_SQRT', use_clamp=use_clamp)
-    return _node._out
+    node = Node('Math', named_sockets={'Value': value}, operation='INVERSE_SQRT', use_clamp=use_clamp)
+    return node._out
 
-def abs(value: Float=None, use_clamp=False):
+def abs(value: Float=None, use_clamp: bool=False):
     """ > Node <&ShaderNode Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'ABSOLUTE'` |
-
+    
     Parameters
     ----------
     value : Float, optional
         socket 'Value'
-
+    
     use_clamp : bool
         parameter `use_clamp`
-
+    
     Returns
     -------
-    Float
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'value': value}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Math', named_sockets=_named_sockets, operation='ABSOLUTE', use_clamp=use_clamp)
-    return _node._out
+    node = Node('Math', named_sockets={'Value': value}, operation='ABSOLUTE', use_clamp=use_clamp)
+    return node._out
 
-def exp(value: Float=None, use_clamp=False):
+def exp(value: Float=None, use_clamp: bool=False):
     """ > Node <&ShaderNode Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'EXPONENT'` |
-
+    
     Parameters
     ----------
     value : Float, optional
         socket 'Value'
-
+    
     use_clamp : bool
         parameter `use_clamp`
-
+    
     Returns
     -------
-    Float
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'value': value}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Math', named_sockets=_named_sockets, operation='EXPONENT', use_clamp=use_clamp)
-    return _node._out
+    node = Node('Math', named_sockets={'Value': value}, operation='EXPONENT', use_clamp=use_clamp)
+    return node._out
 
-def min(value: Float=None, value_1: Float=None, use_clamp=False):
+def min(value: Float=None, value_1: Float=None, use_clamp: bool=False):
     """ > Node <&ShaderNode Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'MINIMUM'` |
-
+    
     Parameters
     ----------
     value : Float, optional
         socket 'Value'
-
+    
     value_1 : Float, optional
         socket 'Value'
-
+    
     use_clamp : bool
         parameter `use_clamp`
-
+    
     Returns
     -------
-    Float
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'value': value, 'value_1': value_1}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Math', named_sockets=_named_sockets, operation='MINIMUM', use_clamp=use_clamp)
-    return _node._out
+    node = Node('Math', named_sockets={'Value': value, 'Value_1': value_1}, operation='MINIMUM', use_clamp=use_clamp)
+    return node._out
 
-def max(value: Float=None, value_1: Float=None, use_clamp=False):
+def max(value: Float=None, value_1: Float=None, use_clamp: bool=False):
     """ > Node <&ShaderNode Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'MAXIMUM'` |
-
+    
     Parameters
     ----------
     value : Float, optional
         socket 'Value'
-
+    
     value_1 : Float, optional
         socket 'Value'
-
+    
     use_clamp : bool
         parameter `use_clamp`
-
+    
     Returns
     -------
-    Float
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'value': value, 'value_1': value_1}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Math', named_sockets=_named_sockets, operation='MAXIMUM', use_clamp=use_clamp)
-    return _node._out
+    node = Node('Math', named_sockets={'Value': value, 'Value_1': value_1}, operation='MAXIMUM', use_clamp=use_clamp)
+    return node._out
 
-def mless_than(value: Float=None, threshold: Float=None, use_clamp=False):
+def less_than(value: Float=None, threshold: Float=None, use_clamp: bool=False):
     """ > Node <&ShaderNode Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'LESS_THAN'` |
-
+    
     Parameters
     ----------
     value : Float, optional
         socket 'Value'
-
+    
     threshold : Float, optional
         socket 'Threshold'
-
+    
     use_clamp : bool
         parameter `use_clamp`
-
+    
     Returns
     -------
-    Float
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'value': value, 'threshold': threshold}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Math', named_sockets=_named_sockets, operation='LESS_THAN', use_clamp=use_clamp)
-    return _node._out
+    node = Node('Math', named_sockets={'Value': value, 'Threshold': threshold}, operation='LESS_THAN', use_clamp=use_clamp)
+    return node._out
 
-def mgreater_than(value: Float=None, threshold: Float=None, use_clamp=False):
+def greater_than(value: Float=None, threshold: Float=None, use_clamp: bool=False):
     """ > Node <&ShaderNode Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'GREATER_THAN'` |
-
+    
     Parameters
     ----------
     value : Float, optional
         socket 'Value'
-
+    
     threshold : Float, optional
         socket 'Threshold'
-
+    
     use_clamp : bool
         parameter `use_clamp`
-
+    
     Returns
     -------
-    Float
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'value': value, 'threshold': threshold}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Math', named_sockets=_named_sockets, operation='GREATER_THAN', use_clamp=use_clamp)
-    return _node._out
+    node = Node('Math', named_sockets={'Value': value, 'Threshold': threshold}, operation='GREATER_THAN', use_clamp=use_clamp)
+    return node._out
 
-def sign(value: Float=None, use_clamp=False):
+def sign(value: Float=None, use_clamp: bool=False):
     """ > Node <&ShaderNode Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'SIGN'` |
-
+    
     Parameters
     ----------
     value : Float, optional
         socket 'Value'
-
+    
     use_clamp : bool
         parameter `use_clamp`
-
+    
     Returns
     -------
-    Float
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'value': value}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Math', named_sockets=_named_sockets, operation='SIGN', use_clamp=use_clamp)
-    return _node._out
+    node = Node('Math', named_sockets={'Value': value}, operation='SIGN', use_clamp=use_clamp)
+    return node._out
 
-def compare(value: Float=None, value_1: Float=None, epsilon: Float=None, use_clamp=False):
+def compare(value: Float=None, value_1: Float=None, epsilon: Float=None, use_clamp: bool=False):
     """ > Node <&ShaderNode Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'COMPARE'` |
-
+    
     Parameters
     ----------
     value : Float, optional
         socket 'Value'
-
+    
     value_1 : Float, optional
         socket 'Value'
-
+    
     epsilon : Float, optional
         socket 'Epsilon'
-
+    
     use_clamp : bool
         parameter `use_clamp`
-
+    
     Returns
     -------
-    Float
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'value': value, 'value_1': value_1, 'epsilon': epsilon}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Math', named_sockets=_named_sockets, operation='COMPARE', use_clamp=use_clamp)
-    return _node._out
+    node = Node('Math', named_sockets={'Value': value, 'Value_1': value_1, 'Epsilon': epsilon}, operation='COMPARE', use_clamp=use_clamp)
+    return node._out
 
-def smooth_min(value: Float=None, value_1: Float=None, distance: Float=None, use_clamp=False):
+def smooth_min(value: Float=None, value_1: Float=None, distance: Float=None, use_clamp: bool=False):
     """ > Node <&ShaderNode Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'SMOOTH_MIN'` |
-
+    
     Parameters
     ----------
     value : Float, optional
         socket 'Value'
-
+    
     value_1 : Float, optional
         socket 'Value'
-
+    
     distance : Float, optional
         socket 'Distance'
-
+    
     use_clamp : bool
         parameter `use_clamp`
-
+    
     Returns
     -------
-    Float
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'value': value, 'value_1': value_1, 'distance': distance}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Math', named_sockets=_named_sockets, operation='SMOOTH_MIN', use_clamp=use_clamp)
-    return _node._out
+    node = Node('Math', named_sockets={'Value': value, 'Value_1': value_1, 'Distance': distance}, operation='SMOOTH_MIN', use_clamp=use_clamp)
+    return node._out
 
-def smooth_max(value: Float=None, value_1: Float=None, distance: Float=None, use_clamp=False):
+def smooth_max(value: Float=None, value_1: Float=None, distance: Float=None, use_clamp: bool=False):
     """ > Node <&ShaderNode Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'SMOOTH_MAX'` |
-
+    
     Parameters
     ----------
     value : Float, optional
         socket 'Value'
-
+    
     value_1 : Float, optional
         socket 'Value'
-
+    
     distance : Float, optional
         socket 'Distance'
-
+    
     use_clamp : bool
         parameter `use_clamp`
-
+    
     Returns
     -------
-    Float
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'value': value, 'value_1': value_1, 'distance': distance}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Math', named_sockets=_named_sockets, operation='SMOOTH_MAX', use_clamp=use_clamp)
-    return _node._out
+    node = Node('Math', named_sockets={'Value': value, 'Value_1': value_1, 'Distance': distance}, operation='SMOOTH_MAX', use_clamp=use_clamp)
+    return node._out
 
-def round(value: Float=None, use_clamp=False):
+def round(value: Float=None, use_clamp: bool=False):
     """ > Node <&ShaderNode Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'ROUND'` |
-
+    
     Parameters
     ----------
     value : Float, optional
         socket 'Value'
-
+    
     use_clamp : bool
         parameter `use_clamp`
-
+    
     Returns
     -------
-    Float
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'value': value}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Math', named_sockets=_named_sockets, operation='ROUND', use_clamp=use_clamp)
-    return _node._out
+    node = Node('Math', named_sockets={'Value': value}, operation='ROUND', use_clamp=use_clamp)
+    return node._out
 
-def floor(value: Float=None, use_clamp=False):
+def floor(value: Float=None, use_clamp: bool=False):
     """ > Node <&ShaderNode Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'FLOOR'` |
-
+    
     Parameters
     ----------
     value : Float, optional
         socket 'Value'
-
+    
     use_clamp : bool
         parameter `use_clamp`
-
+    
     Returns
     -------
-    Float
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'value': value}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Math', named_sockets=_named_sockets, operation='FLOOR', use_clamp=use_clamp)
-    return _node._out
+    node = Node('Math', named_sockets={'Value': value}, operation='FLOOR', use_clamp=use_clamp)
+    return node._out
 
-def ceil(value: Float=None, use_clamp=False):
+def ceil(value: Float=None, use_clamp: bool=False):
     """ > Node <&ShaderNode Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'CEIL'` |
-
+    
     Parameters
     ----------
     value : Float, optional
         socket 'Value'
-
+    
     use_clamp : bool
         parameter `use_clamp`
-
+    
     Returns
     -------
-    Float
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'value': value}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Math', named_sockets=_named_sockets, operation='CEIL', use_clamp=use_clamp)
-    return _node._out
+    node = Node('Math', named_sockets={'Value': value}, operation='CEIL', use_clamp=use_clamp)
+    return node._out
 
-def trunc(value: Float=None, use_clamp=False):
+def trunc(value: Float=None, use_clamp: bool=False):
     """ > Node <&ShaderNode Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'TRUNC'` |
-
+    
     Parameters
     ----------
     value : Float, optional
         socket 'Value'
-
+    
     use_clamp : bool
         parameter `use_clamp`
-
+    
     Returns
     -------
-    Float
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'value': value}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Math', named_sockets=_named_sockets, operation='TRUNC', use_clamp=use_clamp)
-    return _node._out
+    node = Node('Math', named_sockets={'Value': value}, operation='TRUNC', use_clamp=use_clamp)
+    return node._out
 
-def fract(value: Float=None, use_clamp=False):
+def fract(value: Float=None, use_clamp: bool=False):
     """ > Node <&ShaderNode Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'FRACT'` |
-
+    
     Parameters
     ----------
     value : Float, optional
         socket 'Value'
-
+    
     use_clamp : bool
         parameter `use_clamp`
-
+    
     Returns
     -------
-    Float
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'value': value}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Math', named_sockets=_named_sockets, operation='FRACT', use_clamp=use_clamp)
-    return _node._out
+    node = Node('Math', named_sockets={'Value': value}, operation='FRACT', use_clamp=use_clamp)
+    return node._out
 
-def modulo(value: Float=None, value_1: Float=None, use_clamp=False):
+def modulo(value: Float=None, value_1: Float=None, use_clamp: bool=False):
     """ > Node <&ShaderNode Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'MODULO'` |
-
+    
     Parameters
     ----------
     value : Float, optional
         socket 'Value'
-
+    
     value_1 : Float, optional
         socket 'Value'
-
+    
     use_clamp : bool
         parameter `use_clamp`
-
+    
     Returns
     -------
-    Float
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'value': value, 'value_1': value_1}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Math', named_sockets=_named_sockets, operation='MODULO', use_clamp=use_clamp)
-    return _node._out
+    node = Node('Math', named_sockets={'Value': value, 'Value_1': value_1}, operation='MODULO', use_clamp=use_clamp)
+    return node._out
 
-def floored_modulo(value: Float=None, value_1: Float=None, use_clamp=False):
+def floored_modulo(value: Float=None, value_1: Float=None, use_clamp: bool=False):
     """ > Node <&ShaderNode Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'FLOORED_MODULO'` |
-
+    
     Parameters
     ----------
     value : Float, optional
         socket 'Value'
-
+    
     value_1 : Float, optional
         socket 'Value'
-
+    
     use_clamp : bool
         parameter `use_clamp`
-
+    
     Returns
     -------
-    Float
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'value': value, 'value_1': value_1}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Math', named_sockets=_named_sockets, operation='FLOORED_MODULO', use_clamp=use_clamp)
-    return _node._out
+    node = Node('Math', named_sockets={'Value': value, 'Value_1': value_1}, operation='FLOORED_MODULO', use_clamp=use_clamp)
+    return node._out
 
-def wrap(value: Float=None, max: Float=None, min: Float=None, use_clamp=False):
+def wrap(value: Float=None, max: Float=None, min: Float=None, use_clamp: bool=False):
     """ > Node <&ShaderNode Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'WRAP'` |
-
+    
     Parameters
     ----------
     value : Float, optional
         socket 'Value'
-
+    
     max : Float, optional
         socket 'Max'
-
+    
     min : Float, optional
         socket 'Min'
-
+    
     use_clamp : bool
         parameter `use_clamp`
-
+    
     Returns
     -------
-    Float
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'value': value, 'max': max, 'min': min}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Math', named_sockets=_named_sockets, operation='WRAP', use_clamp=use_clamp)
-    return _node._out
+    node = Node('Math', named_sockets={'Value': value, 'Max': max, 'Min': min}, operation='WRAP', use_clamp=use_clamp)
+    return node._out
 
-def snap(value: Float=None, increment: Float=None, use_clamp=False):
+def snap(value: Float=None, increment: Float=None, use_clamp: bool=False):
     """ > Node <&ShaderNode Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'SNAP'` |
-
+    
     Parameters
     ----------
     value : Float, optional
         socket 'Value'
-
+    
     increment : Float, optional
         socket 'Increment'
-
+    
     use_clamp : bool
         parameter `use_clamp`
-
+    
     Returns
     -------
-    Float
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'value': value, 'increment': increment}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Math', named_sockets=_named_sockets, operation='SNAP', use_clamp=use_clamp)
-    return _node._out
+    node = Node('Math', named_sockets={'Value': value, 'Increment': increment}, operation='SNAP', use_clamp=use_clamp)
+    return node._out
 
-def pingpong(value: Float=None, scale: Float=None, use_clamp=False):
+def pingpong(value: Float=None, scale: Float=None, use_clamp: bool=False):
     """ > Node <&ShaderNode Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'PINGPONG'` |
-
+    
     Parameters
     ----------
     value : Float, optional
         socket 'Value'
-
+    
     scale : Float, optional
         socket 'Scale'
-
+    
     use_clamp : bool
         parameter `use_clamp`
-
+    
     Returns
     -------
-    Float
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'value': value, 'scale': scale}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Math', named_sockets=_named_sockets, operation='PINGPONG', use_clamp=use_clamp)
-    return _node._out
+    node = Node('Math', named_sockets={'Value': value, 'Scale': scale}, operation='PINGPONG', use_clamp=use_clamp)
+    return node._out
 
-def sin(value: Float=None, use_clamp=False):
+def sin(value: Float=None, use_clamp: bool=False):
     """ > Node <&ShaderNode Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'SINE'` |
-
+    
     Parameters
     ----------
     value : Float, optional
         socket 'Value'
-
+    
     use_clamp : bool
         parameter `use_clamp`
-
+    
     Returns
     -------
-    Float
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'value': value}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Math', named_sockets=_named_sockets, operation='SINE', use_clamp=use_clamp)
-    return _node._out
+    node = Node('Math', named_sockets={'Value': value}, operation='SINE', use_clamp=use_clamp)
+    return node._out
 
-def cos(value: Float=None, use_clamp=False):
+def cos(value: Float=None, use_clamp: bool=False):
     """ > Node <&ShaderNode Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'COSINE'` |
-
+    
     Parameters
     ----------
     value : Float, optional
         socket 'Value'
-
+    
     use_clamp : bool
         parameter `use_clamp`
-
+    
     Returns
     -------
-    Float
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'value': value}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Math', named_sockets=_named_sockets, operation='COSINE', use_clamp=use_clamp)
-    return _node._out
+    node = Node('Math', named_sockets={'Value': value}, operation='COSINE', use_clamp=use_clamp)
+    return node._out
 
-def tan(value: Float=None, use_clamp=False):
+def tan(value: Float=None, use_clamp: bool=False):
     """ > Node <&ShaderNode Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'TANGENT'` |
-
+    
     Parameters
     ----------
     value : Float, optional
         socket 'Value'
-
+    
     use_clamp : bool
         parameter `use_clamp`
-
+    
     Returns
     -------
-    Float
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'value': value}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Math', named_sockets=_named_sockets, operation='TANGENT', use_clamp=use_clamp)
-    return _node._out
+    node = Node('Math', named_sockets={'Value': value}, operation='TANGENT', use_clamp=use_clamp)
+    return node._out
 
-def asin(value: Float=None, use_clamp=False):
+def asin(value: Float=None, use_clamp: bool=False):
     """ > Node <&ShaderNode Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'ARCSINE'` |
-
+    
     Parameters
     ----------
     value : Float, optional
         socket 'Value'
-
+    
     use_clamp : bool
         parameter `use_clamp`
-
+    
     Returns
     -------
-    Float
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'value': value}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Math', named_sockets=_named_sockets, operation='ARCSINE', use_clamp=use_clamp)
-    return _node._out
+    node = Node('Math', named_sockets={'Value': value}, operation='ARCSINE', use_clamp=use_clamp)
+    return node._out
 
-def acos(value: Float=None, use_clamp=False):
+def acos(value: Float=None, use_clamp: bool=False):
     """ > Node <&ShaderNode Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'ARCCOSINE'` |
-
+    
     Parameters
     ----------
     value : Float, optional
         socket 'Value'
-
+    
     use_clamp : bool
         parameter `use_clamp`
-
+    
     Returns
     -------
-    Float
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'value': value}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Math', named_sockets=_named_sockets, operation='ARCCOSINE', use_clamp=use_clamp)
-    return _node._out
+    node = Node('Math', named_sockets={'Value': value}, operation='ARCCOSINE', use_clamp=use_clamp)
+    return node._out
 
-def arctangent(value: Float=None, use_clamp=False):
+def arctangent(value: Float=None, use_clamp: bool=False):
     """ > Node <&ShaderNode Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'ARCTANGENT'` |
-
+    
     Parameters
     ----------
     value : Float, optional
         socket 'Value'
-
+    
     use_clamp : bool
         parameter `use_clamp`
-
+    
     Returns
     -------
-    Float
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'value': value}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Math', named_sockets=_named_sockets, operation='ARCTANGENT', use_clamp=use_clamp)
-    return _node._out
+    node = Node('Math', named_sockets={'Value': value}, operation='ARCTANGENT', use_clamp=use_clamp)
+    return node._out
 
-def atan2(value: Float=None, value_1: Float=None, use_clamp=False):
+def atan2(value: Float=None, value_1: Float=None, use_clamp: bool=False):
     """ > Node <&ShaderNode Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'ARCTAN2'` |
-
+    
     Parameters
     ----------
     value : Float, optional
         socket 'Value'
-
+    
     value_1 : Float, optional
         socket 'Value'
-
+    
     use_clamp : bool
         parameter `use_clamp`
-
+    
     Returns
     -------
-    Float
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'value': value, 'value_1': value_1}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Math', named_sockets=_named_sockets, operation='ARCTAN2', use_clamp=use_clamp)
-    return _node._out
+    node = Node('Math', named_sockets={'Value': value, 'Value_1': value_1}, operation='ARCTAN2', use_clamp=use_clamp)
+    return node._out
 
-def sinh(value: Float=None, use_clamp=False):
+def sinh(value: Float=None, use_clamp: bool=False):
     """ > Node <&ShaderNode Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'SINH'` |
-
+    
     Parameters
     ----------
     value : Float, optional
         socket 'Value'
-
+    
     use_clamp : bool
         parameter `use_clamp`
-
+    
     Returns
     -------
-    Float
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'value': value}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Math', named_sockets=_named_sockets, operation='SINH', use_clamp=use_clamp)
-    return _node._out
+    node = Node('Math', named_sockets={'Value': value}, operation='SINH', use_clamp=use_clamp)
+    return node._out
 
-def cosh(value: Float=None, use_clamp=False):
+def cosh(value: Float=None, use_clamp: bool=False):
     """ > Node <&ShaderNode Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'COSH'` |
-
+    
     Parameters
     ----------
     value : Float, optional
         socket 'Value'
-
+    
     use_clamp : bool
         parameter `use_clamp`
-
+    
     Returns
     -------
-    Float
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'value': value}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Math', named_sockets=_named_sockets, operation='COSH', use_clamp=use_clamp)
-    return _node._out
+    node = Node('Math', named_sockets={'Value': value}, operation='COSH', use_clamp=use_clamp)
+    return node._out
 
-def tanh(value: Float=None, use_clamp=False):
+def tanh(value: Float=None, use_clamp: bool=False):
     """ > Node <&ShaderNode Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'TANH'` |
-
+    
     Parameters
     ----------
     value : Float, optional
         socket 'Value'
-
+    
     use_clamp : bool
         parameter `use_clamp`
-
+    
     Returns
     -------
-    Float
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'value': value}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Math', named_sockets=_named_sockets, operation='TANH', use_clamp=use_clamp)
-    return _node._out
+    node = Node('Math', named_sockets={'Value': value}, operation='TANH', use_clamp=use_clamp)
+    return node._out
 
-def radians(degrees: Float=None, use_clamp=False):
+def radians(degrees: Float=None, use_clamp: bool=False):
     """ > Node <&ShaderNode Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'RADIANS'` |
-
+    
     Parameters
     ----------
     degrees : Float, optional
         socket 'Degrees'
-
+    
     use_clamp : bool
         parameter `use_clamp`
-
+    
     Returns
     -------
-    Float
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'degrees': degrees}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Math', named_sockets=_named_sockets, operation='RADIANS', use_clamp=use_clamp)
-    return _node._out
+    node = Node('Math', named_sockets={'Degrees': degrees}, operation='RADIANS', use_clamp=use_clamp)
+    return node._out
 
-def degrees(radians: Float=None, use_clamp=False):
+def degrees(radians: Float=None, use_clamp: bool=False):
     """ > Node <&ShaderNode Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'DEGREES'` |
-
+    
     Parameters
     ----------
     radians : Float, optional
         socket 'Radians'
-
+    
     use_clamp : bool
         parameter `use_clamp`
-
+    
     Returns
     -------
-    Float
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'radians': radians}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Math', named_sockets=_named_sockets, operation='DEGREES', use_clamp=use_clamp)
-    return _node._out
+    node = Node('Math', named_sockets={'Radians': radians}, operation='DEGREES', use_clamp=use_clamp)
+    return node._out
 
 def vadd(vector: Vector=None, vector_1: Vector=None):
     """ > Node <&ShaderNode Vector Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'ADD'` |
-
+    
     Parameters
     ----------
     vector : Vector, optional
         socket 'Vector'
-
+    
     vector_1 : Vector, optional
         socket 'Vector'
-
+    
     Returns
     -------
-    Vector
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'vector': vector, 'vector_1': vector_1}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Vector Math', named_sockets=_named_sockets, operation='ADD')
-    return _node._out
+    node = Node('Vector Math', named_sockets={'Vector': vector, 'Vector_1': vector_1}, operation='ADD')
+    return node._out
 
 def vsubtract(vector: Vector=None, vector_1: Vector=None):
     """ > Node <&ShaderNode Vector Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'SUBTRACT'` |
-
+    
     Parameters
     ----------
     vector : Vector, optional
         socket 'Vector'
-
+    
     vector_1 : Vector, optional
         socket 'Vector'
-
+    
     Returns
     -------
-    Vector
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'vector': vector, 'vector_1': vector_1}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Vector Math', named_sockets=_named_sockets, operation='SUBTRACT')
-    return _node._out
+    node = Node('Vector Math', named_sockets={'Vector': vector, 'Vector_1': vector_1}, operation='SUBTRACT')
+    return node._out
 
 def vmultiply(vector: Vector=None, vector_1: Vector=None):
     """ > Node <&ShaderNode Vector Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'MULTIPLY'` |
-
+    
     Parameters
     ----------
     vector : Vector, optional
         socket 'Vector'
-
+    
     vector_1 : Vector, optional
         socket 'Vector'
-
+    
     Returns
     -------
-    Vector
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'vector': vector, 'vector_1': vector_1}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Vector Math', named_sockets=_named_sockets, operation='MULTIPLY')
-    return _node._out
+    node = Node('Vector Math', named_sockets={'Vector': vector, 'Vector_1': vector_1}, operation='MULTIPLY')
+    return node._out
 
 def vdivide(vector: Vector=None, vector_1: Vector=None):
     """ > Node <&ShaderNode Vector Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'DIVIDE'` |
-
+    
     Parameters
     ----------
     vector : Vector, optional
         socket 'Vector'
-
+    
     vector_1 : Vector, optional
         socket 'Vector'
-
+    
     Returns
     -------
-    Vector
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'vector': vector, 'vector_1': vector_1}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Vector Math', named_sockets=_named_sockets, operation='DIVIDE')
-    return _node._out
+    node = Node('Vector Math', named_sockets={'Vector': vector, 'Vector_1': vector_1}, operation='DIVIDE')
+    return node._out
 
 def vmultiply_add(vector: Vector=None, multiplier: Vector=None, addend: Vector=None):
     """ > Node <&ShaderNode Vector Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'MULTIPLY_ADD'` |
-
+    
     Parameters
     ----------
     vector : Vector, optional
         socket 'Vector'
-
+    
     multiplier : Vector, optional
         socket 'Multiplier'
-
+    
     addend : Vector, optional
         socket 'Addend'
-
+    
     Returns
     -------
-    Vector
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'vector': vector, 'multiplier': multiplier, 'addend': addend}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Vector Math', named_sockets=_named_sockets, operation='MULTIPLY_ADD')
-    return _node._out
+    node = Node('Vector Math', named_sockets={'Vector': vector, 'Multiplier': multiplier, 'Addend': addend}, operation='MULTIPLY_ADD')
+    return node._out
 
 def cross(vector: Vector=None, vector_1: Vector=None):
     """ > Node <&ShaderNode Vector Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'CROSS_PRODUCT'` |
-
+    
     Parameters
     ----------
     vector : Vector, optional
         socket 'Vector'
-
+    
     vector_1 : Vector, optional
         socket 'Vector'
-
+    
     Returns
     -------
-    Vector
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'vector': vector, 'vector_1': vector_1}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Vector Math', named_sockets=_named_sockets, operation='CROSS_PRODUCT')
-    return _node._out
+    node = Node('Vector Math', named_sockets={'Vector': vector, 'Vector_1': vector_1}, operation='CROSS_PRODUCT')
+    return node._out
 
 def project(vector: Vector=None, vector_1: Vector=None):
     """ > Node <&ShaderNode Vector Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'PROJECT'` |
-
+    
     Parameters
     ----------
     vector : Vector, optional
         socket 'Vector'
-
+    
     vector_1 : Vector, optional
         socket 'Vector'
-
+    
     Returns
     -------
-    Vector
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'vector': vector, 'vector_1': vector_1}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Vector Math', named_sockets=_named_sockets, operation='PROJECT')
-    return _node._out
+    node = Node('Vector Math', named_sockets={'Vector': vector, 'Vector_1': vector_1}, operation='PROJECT')
+    return node._out
 
 def reflect(vector: Vector=None, vector_1: Vector=None):
     """ > Node <&ShaderNode Vector Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'REFLECT'` |
-
+    
     Parameters
     ----------
     vector : Vector, optional
         socket 'Vector'
-
+    
     vector_1 : Vector, optional
         socket 'Vector'
-
+    
     Returns
     -------
-    Vector
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'vector': vector, 'vector_1': vector_1}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Vector Math', named_sockets=_named_sockets, operation='REFLECT')
-    return _node._out
+    node = Node('Vector Math', named_sockets={'Vector': vector, 'Vector_1': vector_1}, operation='REFLECT')
+    return node._out
 
 def refract(vector: Vector=None, vector_1: Vector=None, ior: Float=None):
     """ > Node <&ShaderNode Vector Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'REFRACT'` |
-
+    
     Parameters
     ----------
     vector : Vector, optional
         socket 'Vector'
-
+    
     vector_1 : Vector, optional
         socket 'Vector'
-
+    
     ior : Float, optional
         socket 'IOR'
-
+    
     Returns
     -------
-    Vector
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'vector': vector, 'vector_1': vector_1, 'ior': ior}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Vector Math', named_sockets=_named_sockets, operation='REFRACT')
-    return _node._out
+    node = Node('Vector Math', named_sockets={'Vector': vector, 'Vector_1': vector_1, 'IOR': ior}, operation='REFRACT')
+    return node._out
 
 def faceforward(vector: Vector=None, incident: Vector=None, reference: Vector=None):
     """ > Node <&ShaderNode Vector Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'FACEFORWARD'` |
-
+    
     Parameters
     ----------
     vector : Vector, optional
         socket 'Vector'
-
+    
     incident : Vector, optional
         socket 'Incident'
-
+    
     reference : Vector, optional
         socket 'Reference'
-
+    
     Returns
     -------
-    Vector
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'vector': vector, 'incident': incident, 'reference': reference}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Vector Math', named_sockets=_named_sockets, operation='FACEFORWARD')
-    return _node._out
+    node = Node('Vector Math', named_sockets={'Vector': vector, 'Incident': incident, 'Reference': reference}, operation='FACEFORWARD')
+    return node._out
 
 def dot(vector: Vector=None, vector_1: Vector=None):
     """ > Node <&ShaderNode Vector Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'DOT_PRODUCT'` |
-
+    
     Parameters
     ----------
     vector : Vector, optional
         socket 'Vector'
-
+    
     vector_1 : Vector, optional
         socket 'Vector'
-
+    
     Returns
     -------
-    Float
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'vector': vector, 'vector_1': vector_1}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Vector Math', named_sockets=_named_sockets, operation='DOT_PRODUCT')
-    return _node._out
+    node = Node('Vector Math', named_sockets={'Vector': vector, 'Vector_1': vector_1}, operation='DOT_PRODUCT')
+    return node._out
 
 def distance(vector: Vector=None, vector_1: Vector=None):
     """ > Node <&ShaderNode Vector Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'DISTANCE'` |
-
+    
     Parameters
     ----------
     vector : Vector, optional
         socket 'Vector'
-
+    
     vector_1 : Vector, optional
         socket 'Vector'
-
+    
     Returns
     -------
-    Float
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'vector': vector, 'vector_1': vector_1}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Vector Math', named_sockets=_named_sockets, operation='DISTANCE')
-    return _node._out
+    node = Node('Vector Math', named_sockets={'Vector': vector, 'Vector_1': vector_1}, operation='DISTANCE')
+    return node._out
 
 def length(vector: Vector=None):
     """ > Node <&ShaderNode Vector Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'LENGTH'` |
-
+    
     Parameters
     ----------
     vector : Vector, optional
         socket 'Vector'
-
+    
     Returns
     -------
-    Float
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'vector': vector}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Vector Math', named_sockets=_named_sockets, operation='LENGTH')
-    return _node._out
+    node = Node('Vector Math', named_sockets={'Vector': vector}, operation='LENGTH')
+    return node._out
 
 def scale(vector: Vector=None, scale: Float=None):
     """ > Node <&ShaderNode Vector Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'SCALE'` |
-
+    
     Parameters
     ----------
     vector : Vector, optional
         socket 'Vector'
-
+    
     scale : Float, optional
         socket 'Scale'
-
+    
     Returns
     -------
-    Vector
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'vector': vector, 'scale': scale}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Vector Math', named_sockets=_named_sockets, operation='SCALE')
-    return _node._out
+    node = Node('Vector Math', named_sockets={'Vector': vector, 'Scale': scale}, operation='SCALE')
+    return node._out
 
 def normalize(vector: Vector=None):
     """ > Node <&ShaderNode Vector Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'NORMALIZE'` |
-
+    
     Parameters
     ----------
     vector : Vector, optional
         socket 'Vector'
-
+    
     Returns
     -------
-    Vector
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'vector': vector}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Vector Math', named_sockets=_named_sockets, operation='NORMALIZE')
-    return _node._out
+    node = Node('Vector Math', named_sockets={'Vector': vector}, operation='NORMALIZE')
+    return node._out
 
 def vabs(vector: Vector=None):
     """ > Node <&ShaderNode Vector Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'ABSOLUTE'` |
-
+    
     Parameters
     ----------
     vector : Vector, optional
         socket 'Vector'
-
+    
     Returns
     -------
-    Vector
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'vector': vector}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Vector Math', named_sockets=_named_sockets, operation='ABSOLUTE')
-    return _node._out
+    node = Node('Vector Math', named_sockets={'Vector': vector}, operation='ABSOLUTE')
+    return node._out
 
 def vpower(base: Vector=None, exponent: Vector=None):
     """ > Node <&ShaderNode Vector Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'POWER'` |
-
+    
     Parameters
     ----------
     base : Vector, optional
         socket 'Base'
-
+    
     exponent : Vector, optional
         socket 'Exponent'
-
+    
     Returns
     -------
-    Vector
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'base': base, 'exponent': exponent}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Vector Math', named_sockets=_named_sockets, operation='POWER')
-    return _node._out
+    node = Node('Vector Math', named_sockets={'Base': base, 'Exponent': exponent}, operation='POWER')
+    return node._out
 
 def vsign(vector: Vector=None):
     """ > Node <&ShaderNode Vector Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'SIGN'` |
-
+    
     Parameters
     ----------
     vector : Vector, optional
         socket 'Vector'
-
+    
     Returns
     -------
-    Vector
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'vector': vector}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Vector Math', named_sockets=_named_sockets, operation='SIGN')
-    return _node._out
+    node = Node('Vector Math', named_sockets={'Vector': vector}, operation='SIGN')
+    return node._out
 
 def vmin(vector: Vector=None, vector_1: Vector=None):
     """ > Node <&ShaderNode Vector Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'MINIMUM'` |
-
+    
     Parameters
     ----------
     vector : Vector, optional
         socket 'Vector'
-
+    
     vector_1 : Vector, optional
         socket 'Vector'
-
+    
     Returns
     -------
-    Vector
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'vector': vector, 'vector_1': vector_1}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Vector Math', named_sockets=_named_sockets, operation='MINIMUM')
-    return _node._out
+    node = Node('Vector Math', named_sockets={'Vector': vector, 'Vector_1': vector_1}, operation='MINIMUM')
+    return node._out
 
 def vmax(vector: Vector=None, vector_1: Vector=None):
     """ > Node <&ShaderNode Vector Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'MAXIMUM'` |
-
+    
     Parameters
     ----------
     vector : Vector, optional
         socket 'Vector'
-
+    
     vector_1 : Vector, optional
         socket 'Vector'
-
+    
     Returns
     -------
-    Vector
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'vector': vector, 'vector_1': vector_1}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Vector Math', named_sockets=_named_sockets, operation='MAXIMUM')
-    return _node._out
+    node = Node('Vector Math', named_sockets={'Vector': vector, 'Vector_1': vector_1}, operation='MAXIMUM')
+    return node._out
 
 def vround(vector: Vector=None):
     """ > Node <&ShaderNode Vector Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'ROUND'` |
-
+    
     Parameters
     ----------
     vector : Vector, optional
         socket 'Vector'
-
+    
     Returns
     -------
-    Vector
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'vector': vector}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Vector Math', named_sockets=_named_sockets, operation='ROUND')
-    return _node._out
+    node = Node('Vector Math', named_sockets={'Vector': vector}, operation='ROUND')
+    return node._out
 
 def vfloor(vector: Vector=None):
     """ > Node <&ShaderNode Vector Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'FLOOR'` |
-
+    
     Parameters
     ----------
     vector : Vector, optional
         socket 'Vector'
-
+    
     Returns
     -------
-    Vector
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'vector': vector}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Vector Math', named_sockets=_named_sockets, operation='FLOOR')
-    return _node._out
+    node = Node('Vector Math', named_sockets={'Vector': vector}, operation='FLOOR')
+    return node._out
 
 def vceil(vector: Vector=None):
     """ > Node <&ShaderNode Vector Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'CEIL'` |
-
+    
     Parameters
     ----------
     vector : Vector, optional
         socket 'Vector'
-
+    
     Returns
     -------
-    Vector
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'vector': vector}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Vector Math', named_sockets=_named_sockets, operation='CEIL')
-    return _node._out
+    node = Node('Vector Math', named_sockets={'Vector': vector}, operation='CEIL')
+    return node._out
 
 def vfraction(vector: Vector=None):
     """ > Node <&ShaderNode Vector Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'FRACTION'` |
-
+    
     Parameters
     ----------
     vector : Vector, optional
         socket 'Vector'
-
+    
     Returns
     -------
-    Vector
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'vector': vector}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Vector Math', named_sockets=_named_sockets, operation='FRACTION')
-    return _node._out
+    node = Node('Vector Math', named_sockets={'Vector': vector}, operation='FRACTION')
+    return node._out
 
 def vmodulo(vector: Vector=None, vector_1: Vector=None):
     """ > Node <&ShaderNode Vector Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'MODULO'` |
-
+    
     Parameters
     ----------
     vector : Vector, optional
         socket 'Vector'
-
+    
     vector_1 : Vector, optional
         socket 'Vector'
-
+    
     Returns
     -------
-    Vector
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'vector': vector, 'vector_1': vector_1}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Vector Math', named_sockets=_named_sockets, operation='MODULO')
-    return _node._out
+    node = Node('Vector Math', named_sockets={'Vector': vector, 'Vector_1': vector_1}, operation='MODULO')
+    return node._out
 
 def vwrap(vector: Vector=None, max: Vector=None, min: Vector=None):
     """ > Node <&ShaderNode Vector Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'WRAP'` |
-
+    
     Parameters
     ----------
     vector : Vector, optional
         socket 'Vector'
-
+    
     max : Vector, optional
         socket 'Max'
-
+    
     min : Vector, optional
         socket 'Min'
-
+    
     Returns
     -------
-    Vector
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'vector': vector, 'max': max, 'min': min}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Vector Math', named_sockets=_named_sockets, operation='WRAP')
-    return _node._out
+    node = Node('Vector Math', named_sockets={'Vector': vector, 'Max': max, 'Min': min}, operation='WRAP')
+    return node._out
 
 def vsnap(vector: Vector=None, increment: Vector=None):
     """ > Node <&ShaderNode Vector Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'SNAP'` |
-
+    
     Parameters
     ----------
     vector : Vector, optional
         socket 'Vector'
-
+    
     increment : Vector, optional
         socket 'Increment'
-
+    
     Returns
     -------
-    Vector
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'vector': vector, 'increment': increment}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Vector Math', named_sockets=_named_sockets, operation='SNAP')
-    return _node._out
+    node = Node('Vector Math', named_sockets={'Vector': vector, 'Increment': increment}, operation='SNAP')
+    return node._out
 
 def vsin(vector: Vector=None):
     """ > Node <&ShaderNode Vector Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'SINE'` |
-
+    
     Parameters
     ----------
     vector : Vector, optional
         socket 'Vector'
-
+    
     Returns
     -------
-    Vector
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'vector': vector}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Vector Math', named_sockets=_named_sockets, operation='SINE')
-    return _node._out
+    node = Node('Vector Math', named_sockets={'Vector': vector}, operation='SINE')
+    return node._out
 
 def vcos(vector: Vector=None):
     """ > Node <&ShaderNode Vector Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'COSINE'` |
-
+    
     Parameters
     ----------
     vector : Vector, optional
         socket 'Vector'
-
+    
     Returns
     -------
-    Vector
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'vector': vector}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Vector Math', named_sockets=_named_sockets, operation='COSINE')
-    return _node._out
+    node = Node('Vector Math', named_sockets={'Vector': vector}, operation='COSINE')
+    return node._out
 
 def vtan(vector: Vector=None):
     """ > Node <&ShaderNode Vector Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'TANGENT'` |
-
+    
     Parameters
     ----------
     vector : Vector, optional
         socket 'Vector'
-
+    
     Returns
     -------
-    Vector
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'vector': vector}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Vector Math', named_sockets=_named_sockets, operation='TANGENT')
-    return _node._out
+    node = Node('Vector Math', named_sockets={'Vector': vector}, operation='TANGENT')
+    return node._out
 
 def mix_mix(a: Color=None, b: Color=None, factor: Float=None, clamp_factor=True, clamp_result=False):
     """ > Node <&ShaderNode Mix>
@@ -2734,29 +2595,14 @@ def mix_value(a: Color=None, b: Color=None, factor: Float=None, clamp_factor=Tru
     _node = Node('Mix', named_sockets=_named_sockets, data_type='RGBA', factor_mode='UNIFORM', blend_type='VALUE', clamp_factor=clamp_factor, clamp_result=clamp_result)
     return _node._out
 
-def mless_equal(a=None, b=None):
-    return subtract(1, mgreater_than(a, b))
-
-def mgreater_equal(a=None, b=None):
-    return subtract(1, mless_than(a, b))
-
-def mnot_equal(a=None, b=None, epsilon=None):
-    return subtract(1, compare(a, b, epsilon=epsilon))
-
-def less_than(a=None, b=None):
-    return mless_than(a, b)
-
 def less_equal(a=None, b=None):
-    return mless_equal(a, b)
-
-def greater_than(a=None, b=None):
-    return mgreater_than(a, b)
+    return subtract(1, greater_than(a, b))
 
 def greater_equal(a=None, b=None):
-    return mgreater_equal(a, b)
+    return subtract(1, less_than(a, b))
+
+def not_equal(a=None, b=None, epsilon=None):
+    return subtract(1, compare(a, b, epsilon=epsilon))
 
 def equal(a=None, b=None, epsilon=None):
     return compare(a, b, epsilon=epsilon)
-
-def not_equal(a=None, b=None, epsilon=None):
-    return mnot_equal(a, b, epsilon=epsilon)

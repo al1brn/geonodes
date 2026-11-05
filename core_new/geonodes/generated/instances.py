@@ -47,6 +47,9 @@ if TYPE_CHECKING:
     class Geometry:
         ...
 
+    class Texture:
+        ...
+
     class Collection:
         ...
 
@@ -116,35 +119,7 @@ class Instances(BaseInstances, Geometry):
     __slots__ = ()
 
     @classmethod
-    def CollectionInfo(cls, collection: Collection=None, separate_children: Boolean=None, reset_children: Boolean=None, transform_space: Literal['ORIGINAL', 'RELATIVE']='ORIGINAL'):
-        """ > Node <&Node Collection Info>
-        
-        Parameters
-        ----------
-        collection : Collection, optional
-            socket 'Collection'
-        
-        separate_children : Boolean, optional
-            socket 'Separate Children'
-        
-        reset_children : Boolean, optional
-            socket 'Reset Children'
-        
-        transform_space : Literal['Original', 'Relative']
-            parameter `transform_space`
-        
-        Returns
-        -------
-        Instances
-            socket 'OUT'
-        """
-        _named_sockets = {'collection': collection, 'separate_children': separate_children, 'reset_children': reset_children}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Collection Info', named_sockets=_named_sockets, transform_space=transform_space)
-        return _node._out
-
-    @classmethod
-    def ImportObj(cls, path: String=None):
+    def import_obj(cls, path: String=None):
         """ > Node <&Node Import OBJ>
         
         Parameters
@@ -154,13 +129,11 @@ class Instances(BaseInstances, Geometry):
         
         Returns
         -------
-        Instances
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'path': path}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Import OBJ', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('Import OBJ', named_sockets={'Path': path})
+        return node._out
 
     def to_points(self, position: Vector=None, radius: Float=None):
         """ > Node <&Node Instances to Points>
@@ -179,13 +152,12 @@ class Instances(BaseInstances, Geometry):
         
         Returns
         -------
-        Cloud
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'instances': self, 'selection': self.get_selection(), 'position': position, 'radius': radius}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Instances to Points', named_sockets=_named_sockets)
-        return _node._out
+        selection = self.get_selection()
+        node = Node('Instances to Points', named_sockets={'Instances': self, 'Selection': selection, 'Position': position, 'Radius': radius})
+        return node._out
 
     def rotate(self, rotation: Rotation=None, pivot_point: Vector=None, local_space: Boolean=None):
         """ > Node <&Node Rotate Instances>
@@ -207,14 +179,13 @@ class Instances(BaseInstances, Geometry):
         
         Returns
         -------
-        Instances
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'instances': self, 'selection': self.get_selection(), 'rotation': rotation, 'pivot_point': pivot_point, 'local_space': local_space}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Rotate Instances', named_sockets=_named_sockets)
-        self._jump(_node._out)
-        return self._domain_to_geometry
+        selection = self.get_selection()
+        node = Node('Rotate Instances', named_sockets={'Instances': self, 'Selection': selection, 'Rotation': rotation, 'Pivot Point': pivot_point, 'Local Space': local_space})
+        self._jump(node._out)
+        return node._second_out(self)
 
     def scale(self, scale: Vector=None, center: Vector=None, local_space: Boolean=None):
         """ > Node <&Node Scale Instances>
@@ -236,16 +207,15 @@ class Instances(BaseInstances, Geometry):
         
         Returns
         -------
-        Instances
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'instances': self, 'selection': self.get_selection(), 'scale': scale, 'center': center, 'local_space': local_space}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Scale Instances', named_sockets=_named_sockets)
-        self._jump(_node._out)
-        return self._domain_to_geometry
+        selection = self.get_selection()
+        node = Node('Scale Instances', named_sockets={'Instances': self, 'Selection': selection, 'Scale': scale, 'Center': center, 'Local Space': local_space})
+        self._jump(node._out)
+        return node._second_out(self)
 
-    def set_transform(self, transform: Matrix=None):
+    def set_instance_transform(self, transform: Matrix=None):
         """ > Node <&Node Set Instance Transform>
         
         Jump method: True.
@@ -259,45 +229,16 @@ class Instances(BaseInstances, Geometry):
         
         Returns
         -------
-        Instances
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'instances': self, 'selection': self.get_selection(), 'transform': transform}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Set Instance Transform', named_sockets=_named_sockets)
-        self._jump(_node._out)
-        return self._domain_to_geometry
+        selection = self.get_selection()
+        node = Node('Set Instance Transform', named_sockets={'Instances': self, 'Selection': selection, 'Transform': transform})
+        self._jump(node._out)
+        return node._second_out(self)
 
     @classmethod
-    def FromSplit(cls, geometry: Geometry=None, selection: Boolean=None, group_id: Integer=None, domain: Literal['POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE', 'LAYER']='POINT'):
-        """ > Node <&Node Split to Instances>
-        
-        Parameters
-        ----------
-        geometry : Geometry, optional
-            socket 'Geometry'
-        
-        selection : Boolean, optional
-            socket 'Selection'
-        
-        group_id : Integer, optional
-            socket 'Group ID'
-        
-        domain : Literal['Point', 'Edge', 'Face', 'Spline', 'Instance', 'Layer']
-            parameter `domain`
-        
-        Returns
-        -------
-        Instances
-            socket 'OUT'
-        """
-        _named_sockets = {'geometry': geometry, 'selection': selection, 'group_id': group_id}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Split to Instances', named_sockets=_named_sockets, domain=domain)
-        return _node._out
-
-    @classmethod
-    def StringToCurves(cls, string: String=None, size: Float=None, font: Font=None, align_x: Literal['Left', 'Center', 'Right', 'Justify', 'Flush']=None, align_y: Literal['Top', 'Top Baseline', 'Middle', 'Bottom Baseline', 'Bottom']=None, pivot_point: Literal['Midpoint', 'Top Left', 'Top Center', 'Top Right', 'Bottom Left', 'Bottom Center', 'Bottom Right']=None, character_spacing: Float=None, word_spacing: Float=None, line_spacing: Float=None, overflow: Literal['Overflow', 'Scale To Fit', 'Truncate']=None, text_box_width: Float=None, text_box_height: Float=None):
+    def StringToCurves(cls, string: String=None, size: Float=None, font: Font=None, align_x: Menu=None, align_y: Menu=None, pivot_point: Menu=None, character_spacing: Float=None, word_spacing: Float=None, line_spacing: Float=None, overflow: Menu=None, text_box_width: Float=None, text_box_height: Float=None):
         """ > Node <&Node String to Curves>
         
         Parameters
@@ -311,14 +252,14 @@ class Instances(BaseInstances, Geometry):
         font : Font, optional
             socket 'Font'
         
-        align_x : menu='Left', optional
-            ('Left', 'Center', 'Right', 'Justify', 'Flush')
+        align_x : Menu, optional
+            socket 'Align X'
         
-        align_y : menu='Top Baseline', optional
-            ('Top', 'Top Baseline', 'Middle', 'Bottom Baseline', 'Bottom')
+        align_y : Menu, optional
+            socket 'Align Y'
         
-        pivot_point : menu='Midpoint', optional
-            ('Midpoint', 'Top Left', 'Top Center', 'Top Right', 'Bottom Left', 'Bottom Center', 'Bottom Right')
+        pivot_point : Menu, optional
+            socket 'Pivot Point'
         
         character_spacing : Float, optional
             socket 'Character Spacing'
@@ -329,8 +270,8 @@ class Instances(BaseInstances, Geometry):
         line_spacing : Float, optional
             socket 'Line Spacing'
         
-        overflow : menu='Overflow', optional
-            ('Overflow', 'Scale To Fit', 'Truncate')
+        overflow : Menu, optional
+            socket 'Overflow'
         
         text_box_width : Float, optional
             socket 'Text Box Width'
@@ -340,13 +281,11 @@ class Instances(BaseInstances, Geometry):
         
         Returns
         -------
-        Instances
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'string': string, 'size': size, 'font': font, 'align_x': align_x, 'align_y': align_y, 'pivot_point': pivot_point, 'character_spacing': character_spacing, 'word_spacing': word_spacing, 'line_spacing': line_spacing, 'overflow': overflow, 'text_box_width': text_box_width, 'text_box_height': text_box_height}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('String to Curves', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('String to Curves', named_sockets={'String': string, 'Size': size, 'Font': font, 'Align X': align_x, 'Align Y': align_y, 'Pivot Point': pivot_point, 'Character Spacing': character_spacing, 'Word Spacing': word_spacing, 'Line Spacing': line_spacing, 'Overflow': overflow, 'Text Box Width': text_box_width, 'Text Box Height': text_box_height})
+        return node._out
 
     def translate(self, translation: Vector=None, local_space: Boolean=None):
         """ > Node <&Node Translate Instances>
@@ -365,11 +304,48 @@ class Instances(BaseInstances, Geometry):
         
         Returns
         -------
-        Instances
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'instances': self, 'selection': self.get_selection(), 'translation': translation, 'local_space': local_space}
+        selection = self.get_selection()
+        node = Node('Translate Instances', named_sockets={'Instances': self, 'Selection': selection, 'Translation': translation, 'Local Space': local_space})
+        self._jump(node._out)
+        return node._second_out(self)
+
+    @property
+    def transform(self):
+        """ > Node <&Node Instance Transform>
+        
+        Jump method: False.
+        
+        Returns
+        -------
+        Matrix
+            socket 'OUT'
+        """
+        _named_sockets = {}
         _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Translate Instances', named_sockets=_named_sockets)
+        _node = Node('Instance Transform', named_sockets=_named_sockets)
+        return _node._out
+
+    @transform.setter
+    def transform(self, transform: Matrix):
+        """ > Node <&Node Set Instance Transform>
+        
+        Jump method: True.
+        
+        self: socket 'Instances'.
+        
+        Parameters
+        ----------
+        transform : Matrix, optional
+            socket 'Transform'
+        
+        Returns
+        -------
+        None
+        """
+        _named_sockets = {'instances': self, 'selection': self.get_selection(), 'transform': transform}
+        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
+        _node = Node('Set Instance Transform', named_sockets=_named_sockets)
         self._jump(_node._out)
-        return self._domain_to_geometry

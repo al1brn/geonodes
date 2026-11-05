@@ -47,6 +47,9 @@ if TYPE_CHECKING:
     class Geometry:
         ...
 
+    class Texture:
+        ...
+
     class Collection:
         ...
 
@@ -134,13 +137,11 @@ class Integer(BaseInteger):
         
         Returns
         -------
-        Integer
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'value': self, 'value_1': value_1}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Integer Math', named_sockets=_named_sockets, operation='ADD')
-        return _node._out
+        node = Node('Integer Math', named_sockets={'Value': self, 'Value_1': value_1}, operation='ADD')
+        return node._out
 
     def subtract(self, value_1: Integer=None):
         """ > Node <&Node Integer Math>
@@ -162,13 +163,11 @@ class Integer(BaseInteger):
         
         Returns
         -------
-        Integer
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'value': self, 'value_1': value_1}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Integer Math', named_sockets=_named_sockets, operation='SUBTRACT')
-        return _node._out
+        node = Node('Integer Math', named_sockets={'Value': self, 'Value_1': value_1}, operation='SUBTRACT')
+        return node._out
 
     def multiply(self, value_1: Integer=None):
         """ > Node <&Node Integer Math>
@@ -190,13 +189,11 @@ class Integer(BaseInteger):
         
         Returns
         -------
-        Integer
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'value': self, 'value_1': value_1}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Integer Math', named_sockets=_named_sockets, operation='MULTIPLY')
-        return _node._out
+        node = Node('Integer Math', named_sockets={'Value': self, 'Value_1': value_1}, operation='MULTIPLY')
+        return node._out
 
     def divide(self, value_1: Integer=None):
         """ > Node <&Node Integer Math>
@@ -218,13 +215,11 @@ class Integer(BaseInteger):
         
         Returns
         -------
-        Integer
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'value': self, 'value_1': value_1}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Integer Math', named_sockets=_named_sockets, operation='DIVIDE')
-        return _node._out
+        node = Node('Integer Math', named_sockets={'Value': self, 'Value_1': value_1}, operation='DIVIDE')
+        return node._out
 
     def multiply_add(self, multiplier: Integer=None, addend: Integer=None):
         """ > Node <&Node Integer Math>
@@ -249,13 +244,11 @@ class Integer(BaseInteger):
         
         Returns
         -------
-        Integer
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'value': self, 'multiplier': multiplier, 'addend': addend}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Integer Math', named_sockets=_named_sockets, operation='MULTIPLY_ADD')
-        return _node._out
+        node = Node('Integer Math', named_sockets={'Value': self, 'Multiplier': multiplier, 'Addend': addend}, operation='MULTIPLY_ADD')
+        return node._out
 
     def abs(self):
         """ > Node <&Node Integer Math>
@@ -272,13 +265,11 @@ class Integer(BaseInteger):
         
         Returns
         -------
-        Integer
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'value': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Integer Math', named_sockets=_named_sockets, operation='ABSOLUTE')
-        return _node._out
+        node = Node('Integer Math', named_sockets={'Value': self}, operation='ABSOLUTE')
+        return node._out
 
     def negate(self):
         """ > Node <&Node Integer Math>
@@ -295,20 +286,18 @@ class Integer(BaseInteger):
         
         Returns
         -------
-        Integer
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'value': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Integer Math', named_sockets=_named_sockets, operation='NEGATE')
-        return _node._out
+        node = Node('Integer Math', named_sockets={'Value': self}, operation='NEGATE')
+        return node._out
 
     def power(self, exponent: Integer=None):
         """ > Node <&Node Integer Math>
         
         Jump method: False.
         
-        self: socket 'Value'.
+        self: socket 'Base'.
         
         **Fixed values**
         
@@ -323,13 +312,11 @@ class Integer(BaseInteger):
         
         Returns
         -------
-        Integer
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'base': self, 'exponent': exponent}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Integer Math', named_sockets=_named_sockets, operation='POWER')
-        return _node._out
+        node = Node('Integer Math', named_sockets={'Base': self, 'Exponent': exponent}, operation='POWER')
+        return node._out
 
     def min(self, value_1: Integer=None):
         """ > Node <&Node Integer Math>
@@ -351,13 +338,11 @@ class Integer(BaseInteger):
         
         Returns
         -------
-        Integer
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'value': self, 'value_1': value_1}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Integer Math', named_sockets=_named_sockets, operation='MINIMUM')
-        return _node._out
+        node = Node('Integer Math', named_sockets={'Value': self, 'Value_1': value_1}, operation='MINIMUM')
+        return node._out
 
     def max(self, value_1: Integer=None):
         """ > Node <&Node Integer Math>
@@ -379,13 +364,11 @@ class Integer(BaseInteger):
         
         Returns
         -------
-        Integer
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'value': self, 'value_1': value_1}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Integer Math', named_sockets=_named_sockets, operation='MAXIMUM')
-        return _node._out
+        node = Node('Integer Math', named_sockets={'Value': self, 'Value_1': value_1}, operation='MAXIMUM')
+        return node._out
 
     def sign(self):
         """ > Node <&Node Integer Math>
@@ -402,13 +385,11 @@ class Integer(BaseInteger):
         
         Returns
         -------
-        Integer
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'value': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Integer Math', named_sockets=_named_sockets, operation='SIGN')
-        return _node._out
+        node = Node('Integer Math', named_sockets={'Value': self}, operation='SIGN')
+        return node._out
 
     def divide_round(self, value_1: Integer=None):
         """ > Node <&Node Integer Math>
@@ -430,13 +411,11 @@ class Integer(BaseInteger):
         
         Returns
         -------
-        Integer
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'value': self, 'value_1': value_1}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Integer Math', named_sockets=_named_sockets, operation='DIVIDE_ROUND')
-        return _node._out
+        node = Node('Integer Math', named_sockets={'Value': self, 'Value_1': value_1}, operation='DIVIDE_ROUND')
+        return node._out
 
     def divide_floor(self, value_1: Integer=None):
         """ > Node <&Node Integer Math>
@@ -458,13 +437,11 @@ class Integer(BaseInteger):
         
         Returns
         -------
-        Integer
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'value': self, 'value_1': value_1}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Integer Math', named_sockets=_named_sockets, operation='DIVIDE_FLOOR')
-        return _node._out
+        node = Node('Integer Math', named_sockets={'Value': self, 'Value_1': value_1}, operation='DIVIDE_FLOOR')
+        return node._out
 
     def divide_ceil(self, value_1: Integer=None):
         """ > Node <&Node Integer Math>
@@ -486,13 +463,11 @@ class Integer(BaseInteger):
         
         Returns
         -------
-        Integer
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'value': self, 'value_1': value_1}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Integer Math', named_sockets=_named_sockets, operation='DIVIDE_CEIL')
-        return _node._out
+        node = Node('Integer Math', named_sockets={'Value': self, 'Value_1': value_1}, operation='DIVIDE_CEIL')
+        return node._out
 
     def floored_modulo(self, value_1: Integer=None):
         """ > Node <&Node Integer Math>
@@ -514,13 +489,11 @@ class Integer(BaseInteger):
         
         Returns
         -------
-        Integer
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'value': self, 'value_1': value_1}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Integer Math', named_sockets=_named_sockets, operation='FLOORED_MODULO')
-        return _node._out
+        node = Node('Integer Math', named_sockets={'Value': self, 'Value_1': value_1}, operation='FLOORED_MODULO')
+        return node._out
 
     def modulo(self, value_1: Integer=None):
         """ > Node <&Node Integer Math>
@@ -542,13 +515,11 @@ class Integer(BaseInteger):
         
         Returns
         -------
-        Integer
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'value': self, 'value_1': value_1}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Integer Math', named_sockets=_named_sockets, operation='MODULO')
-        return _node._out
+        node = Node('Integer Math', named_sockets={'Value': self, 'Value_1': value_1}, operation='MODULO')
+        return node._out
 
     def gcd(self, value_1: Integer=None):
         """ > Node <&Node Integer Math>
@@ -570,13 +541,11 @@ class Integer(BaseInteger):
         
         Returns
         -------
-        Integer
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'value': self, 'value_1': value_1}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Integer Math', named_sockets=_named_sockets, operation='GCD')
-        return _node._out
+        node = Node('Integer Math', named_sockets={'Value': self, 'Value_1': value_1}, operation='GCD')
+        return node._out
 
     def lcm(self, value_1: Integer=None):
         """ > Node <&Node Integer Math>
@@ -598,13 +567,11 @@ class Integer(BaseInteger):
         
         Returns
         -------
-        Integer
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'value': self, 'value_1': value_1}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Integer Math', named_sockets=_named_sockets, operation='LCM')
-        return _node._out
+        node = Node('Integer Math', named_sockets={'Value': self, 'Value_1': value_1}, operation='LCM')
+        return node._out
 
     def __iadd__(self, other):
         return self._jump(self.add(other))
@@ -659,13 +626,11 @@ class Integer(BaseInteger):
         
         Returns
         -------
-        Integer
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'a': self, 'b': b}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Bit Math', named_sockets=_named_sockets, operation='AND')
-        return _node._out
+        node = Node('Bit Math', named_sockets={'A': self, 'B': b}, operation='AND')
+        return node._out
 
     def bw_or(self, b: Integer=None):
         """ > Node <&Node Bit Math>
@@ -687,13 +652,11 @@ class Integer(BaseInteger):
         
         Returns
         -------
-        Integer
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'a': self, 'b': b}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Bit Math', named_sockets=_named_sockets, operation='OR')
-        return _node._out
+        node = Node('Bit Math', named_sockets={'A': self, 'B': b}, operation='OR')
+        return node._out
 
     def bw_xor(self, b: Integer=None):
         """ > Node <&Node Bit Math>
@@ -715,13 +678,11 @@ class Integer(BaseInteger):
         
         Returns
         -------
-        Integer
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'a': self, 'b': b}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Bit Math', named_sockets=_named_sockets, operation='XOR')
-        return _node._out
+        node = Node('Bit Math', named_sockets={'A': self, 'B': b}, operation='XOR')
+        return node._out
 
     def bw_not(self):
         """ > Node <&Node Bit Math>
@@ -738,13 +699,11 @@ class Integer(BaseInteger):
         
         Returns
         -------
-        Integer
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'a': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Bit Math', named_sockets=_named_sockets, operation='NOT')
-        return _node._out
+        node = Node('Bit Math', named_sockets={'A': self}, operation='NOT')
+        return node._out
 
     def bw_shift(self, shift: Integer=None):
         """ > Node <&Node Bit Math>
@@ -766,13 +725,11 @@ class Integer(BaseInteger):
         
         Returns
         -------
-        Integer
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'a': self, 'shift': shift}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Bit Math', named_sockets=_named_sockets, operation='SHIFT')
-        return _node._out
+        node = Node('Bit Math', named_sockets={'A': self, 'Shift': shift}, operation='SHIFT')
+        return node._out
 
     def bw_rotate(self, shift: Integer=None):
         """ > Node <&Node Bit Math>
@@ -794,13 +751,11 @@ class Integer(BaseInteger):
         
         Returns
         -------
-        Integer
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'a': self, 'shift': shift}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Bit Math', named_sockets=_named_sockets, operation='ROTATE')
-        return _node._out
+        node = Node('Bit Math', named_sockets={'A': self, 'Shift': shift}, operation='ROTATE')
+        return node._out
 
     def __and__(self, other):
         return self.bw_and(other)
@@ -1036,10 +991,39 @@ class Integer(BaseInteger):
     def __ne__(self, other):
         return self.not_equal(other)
 
-    def advect_grid(self, velocity: Vector=None, time_step: Float=None, integration_scheme: Literal['Semi-Lagrangian', 'Midpoint', 'Runge-Kutta 3', 'Runge-Kutta 4', 'MacCormack', 'BFECC']=None, limiter: Literal['None', 'Clamp', 'Revert']=None):
+    @classmethod
+    def accumulate_field(cls, value: Integer=None, group_id: Integer=None, domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']='POINT'):
+        """ > Node <&Node Accumulate Field>
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `data_type` | `'INT'` |
+        
+        Parameters
+        ----------
+        value : Integer, optional
+            socket 'Value'
+        
+        group_id : Integer, optional
+            socket 'Group ID'
+        
+        domain : Literal['Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer']
+            parameter `domain`
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Accumulate Field', named_sockets={'Value': value, 'Group ID': group_id}, data_type='INT', domain=domain)
+        return node._out
+
+    def advect_grid(self, velocity: Vector=None, time_step: Float=None, integration_scheme: Menu=None, limiter: Menu=None):
         """ > Node <&Node Advect Grid>
         
-        Jump method: False.
+        Jump method: True.
         
         self: socket 'Grid'.
         
@@ -1057,21 +1041,20 @@ class Integer(BaseInteger):
         time_step : Float, optional
             socket 'Time Step'
         
-        integration_scheme : menu='Runge-Kutta 3', optional
-            ('Semi-Lagrangian', 'Midpoint', 'Runge-Kutta 3', 'Runge-Kutta 4', 'MacCormack', 'BFECC')
+        integration_scheme : Menu, optional
+            socket 'Integration Scheme'
         
-        limiter : menu='Clamp', optional
-            ('None', 'Clamp', 'Revert')
+        limiter : Menu, optional
+            socket 'Limiter'
         
         Returns
         -------
-        Integer
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'grid': self, 'velocity': velocity, 'time_step': time_step, 'integration_scheme': integration_scheme, 'limiter': limiter}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Advect Grid', named_sockets=_named_sockets, data_type='INT')
-        return _node._out
+        node = Node('Advect Grid', named_sockets={'Grid': self, 'Velocity': velocity, 'Time Step': time_step, 'Integration Scheme': integration_scheme, 'Limiter': limiter}, data_type='INT')
+        self._jump(node._out)
+        return node._second_out(self)
 
     def bit_math(self, b: Integer=None, shift: Integer=None, operation: Literal['AND', 'OR', 'XOR', 'NOT', 'SHIFT', 'ROTATE']='AND'):
         """ > Node <&Node Bit Math>
@@ -1093,20 +1076,18 @@ class Integer(BaseInteger):
         
         Returns
         -------
-        Integer
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'a': self, 'b': b, 'shift': shift}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Bit Math', named_sockets=_named_sockets, operation=operation)
-        return _node._out
+        _configuration = ({'and': 'AND', 'or': 'OR', 'xor': 'XOR', 'not': 'NOT', 'shift': 'SHIFT', 'rotate': 'ROTATE', 'exclusive or': 'XOR'}.get(operation.lower(), operation),)
+        _node_sockets = {('AND',): {'A': self, 'B': b}, ('OR',): {'A': self, 'B': b}, ('XOR',): {'A': self, 'B': b}, ('NOT',): {'A': self}, ('SHIFT',): {'A': self, 'Shift': shift}, ('ROTATE',): {'A': self, 'Shift': shift}}[_configuration]
+        _node_args = {('AND',): [], ('OR',): [], ('XOR',): [], ('NOT',): [], ('SHIFT',): [], ('ROTATE',): []}[_configuration]
+        node = Node('Bit Math', *_node_args, named_sockets=_node_sockets, operation=operation)
+        return node._out
 
-    def blur_attribute(self, iterations: Integer=None, weight: Float=None):
+    @classmethod
+    def blur_attribute(cls, value: Integer=None, iterations: Integer=None, weight: Float=None):
         """ > Node <&Node Blur Attribute>
-        
-        Jump method: False.
-        
-        self: socket 'Value'.
         
         **Fixed values**
         
@@ -1116,6 +1097,9 @@ class Integer(BaseInteger):
         
         Parameters
         ----------
+        value : Integer, optional
+            socket 'Value'
+        
         iterations : Integer, optional
             socket 'Iterations'
         
@@ -1124,18 +1108,16 @@ class Integer(BaseInteger):
         
         Returns
         -------
-        Integer
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'value': self, 'iterations': iterations, 'weight': weight}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Blur Attribute', named_sockets=_named_sockets, data_type='INT')
-        return _node._out
+        node = Node('Blur Attribute', named_sockets={'Value': value, 'Iterations': iterations, 'Weight': weight}, data_type='INT')
+        return node._out
 
     def clip_grid(self, min_x: Integer=None, min_y: Integer=None, min_z: Integer=None, max_x: Integer=None, max_y: Integer=None, max_z: Integer=None):
         """ > Node <&Node Clip Grid>
         
-        Jump method: False.
+        Jump method: True.
         
         self: socket 'Grid'.
         
@@ -1167,17 +1149,54 @@ class Integer(BaseInteger):
         
         Returns
         -------
-        Integer
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'grid': self, 'min_x': min_x, 'min_y': min_y, 'min_z': min_z, 'max_x': max_x, 'max_y': max_y, 'max_z': max_z}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Clip Grid', named_sockets=_named_sockets, data_type='INT')
-        return _node._out
+        node = Node('Clip Grid', named_sockets={'Grid': self, 'Min X': min_x, 'Min Y': min_y, 'Min Z': min_z, 'Max X': max_x, 'Max Y': max_y, 'Max Z': max_z}, data_type='INT')
+        self._jump(node._out)
+        return node._second_out(self)
+
+    def closure_to_list(self, closure: Closure=None):
+        """ > Node <&Node Closure to List>
+        
+        Jump method: False.
+        
+        self: socket 'Count'.
+        
+        Parameters
+        ----------
+        closure : Closure, optional
+            socket 'Closure'
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Closure to List', named_sockets={'Count': self, 'Closure': closure})
+        return node._out
 
     @classmethod
-    def CombineList(cls, named_sockets=None, _0: Integer=None, **sockets):
+    def combine_list(cls, *values: Socket):
         """ > Node <&Node Combine List>
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `data_type` | `'INT'` |
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Combine List', *values, named_sockets={}, data_type='INT')
+        return node._out
+
+    @classmethod
+    def compare(cls, a: Integer=None, b: Integer=None, operation: Literal['LESS_THAN', 'LESS_EQUAL', 'GREATER_THAN', 'GREATER_EQUAL', 'EQUAL', 'NOT_EQUAL']='GREATER_THAN', mode: Literal['ELEMENT', 'LENGTH', 'AVERAGE', 'DOT_PRODUCT', 'DIRECTION']='ELEMENT'):
+        """ > Node <&Node Compare>
         
         **Fixed values**
         
@@ -1187,24 +1206,30 @@ class Integer(BaseInteger):
         
         Parameters
         ----------
-        _0 : Integer, optional
-            socket '0'
+        a : Integer, optional
+            socket 'A'
+        
+        b : Integer, optional
+            socket 'B'
+        
+        operation : Literal['Less Than', 'Less Than or Equal', 'Greater Than', 'Greater Than or Equal', 'Equal', 'Not Equal']
+            parameter `operation`
+        
+        mode : Literal['Element-Wise', 'Length', 'Average', 'Dot Product', 'Direction']
+            parameter `mode`
         
         Returns
         -------
-        Integer
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'_0': _0}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _named_sockets.update({_name: _value for _name, _value in (named_sockets or {}).items() if _value is not None})
-        _node = Node('Combine List', named_sockets=_named_sockets, data_type='INT', **sockets)
-        return _node._out
+        node = Node('Compare', named_sockets={'A': a, 'B': b}, data_type='INT', operation=operation, mode=mode)
+        return node._out
 
-    def deactivate_voxels(self, selection: Boolean=None):
+    def deactivate_voxels(self):
         """ > Node <&Node Deactivate Voxels>
         
-        Jump method: False.
+        Jump method: True.
         
         self: socket 'Grid'.
         
@@ -1214,27 +1239,19 @@ class Integer(BaseInteger):
         | --- | --- |
         | `data_type` | `'INT'` |
         
-        Parameters
-        ----------
-        selection : Boolean, optional
-            socket 'Selection'
-        
         Returns
         -------
-        Integer
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'grid': self, 'selection': selection}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Deactivate Voxels', named_sockets=_named_sockets, data_type='INT')
-        return _node._out
+        selection = self.get_selection()
+        node = Node('Deactivate Voxels', named_sockets={'Grid': self, 'Selection': selection}, data_type='INT')
+        self._jump(node._out)
+        return node._second_out(self)
 
-    def enable_output(self, enable: Boolean=None):
-        """ > Node <&Node Enable Output>
-        
-        Jump method: False.
-        
-        self: socket 'Value'.
+    @classmethod
+    def evaluate_at_index(cls, value: Integer=None, index: Integer=None, domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']='POINT'):
+        """ > Node <&Node Evaluate at Index>
         
         **Fixed values**
         
@@ -1244,18 +1261,100 @@ class Integer(BaseInteger):
         
         Parameters
         ----------
-        enable : Boolean, optional
-            socket 'Enable'
+        value : Integer, optional
+            socket 'Value'
+        
+        index : Integer, optional
+            socket 'Index'
+        
+        domain : Literal['Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer']
+            parameter `domain`
         
         Returns
         -------
-        Integer
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'enable': enable, 'value': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Enable Output', named_sockets=_named_sockets, data_type='INT')
-        return _node._out
+        node = Node('Evaluate at Index', named_sockets={'Value': value, 'Index': index}, domain=domain, data_type='INT')
+        return node._out
+
+    @classmethod
+    def evaluate_on_domain(cls, value: Integer=None, domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']='POINT'):
+        """ > Node <&Node Evaluate on Domain>
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `data_type` | `'INT'` |
+        
+        Parameters
+        ----------
+        value : Integer, optional
+            socket 'Value'
+        
+        domain : Literal['Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer']
+            parameter `domain`
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Evaluate on Domain', named_sockets={'Value': value}, domain=domain, data_type='INT')
+        return node._out
+
+    @classmethod
+    def field_min_max(cls, value: Integer=None, group_id: Integer=None, domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']='POINT'):
+        """ > Node <&Node Field Min & Max>
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `data_type` | `'INT'` |
+        
+        Parameters
+        ----------
+        value : Integer, optional
+            socket 'Value'
+        
+        group_id : Integer, optional
+            socket 'Group ID'
+        
+        domain : Literal['Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer']
+            parameter `domain`
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Field Min & Max', named_sockets={'Value': value, 'Group ID': group_id}, data_type='INT', domain=domain)
+        return node._out
+
+    def field_to_grid(self, named_sockets=None, **sockets):
+        """ > Node <&Node Field to Grid>
+        
+        Jump method: False.
+        
+        self: socket 'Topology'.
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `data_type` | `'INT'` |
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        _named_sockets = {'Topology': self}
+        _named_sockets.update({name: value for name, value in (named_sockets or {}).items() if value is not None})
+        node = Node('Field to Grid', named_sockets=_named_sockets, data_type='INT', **sockets)
+        return node._out
 
     def field_to_list(self, named_sockets=None, **sockets):
         """ > Node <&Node Field to List>
@@ -1266,18 +1365,70 @@ class Integer(BaseInteger):
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
-        _named_sockets = {'count': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _named_sockets.update({_name: _value for _name, _value in (named_sockets or {}).items() if _value is not None})
-        _node = Node('Field to List', named_sockets=_named_sockets, **sockets)
-        return _node
+        _named_sockets = {'Count': self}
+        _named_sockets.update({name: value for name, value in (named_sockets or {}).items() if value is not None})
+        node = Node('Field to List', named_sockets=_named_sockets, **sockets)
+        return node._out
 
-    def grid_dilate_erode(self, connectivity: Literal['Face', 'Edge', 'Vertex']=None, tiles: Literal['Ignore', 'Expand', 'Preserve']=None, steps: Integer=None):
+    @classmethod
+    def filter_list(cls, list: Integer=None, selection: Boolean=None):
+        """ > Node <&Node Filter List>
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `socket_type` | `'INT'` |
+        
+        Parameters
+        ----------
+        list : Integer, optional
+            socket 'List'
+        
+        selection : Boolean, optional
+            socket 'Selection'
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Filter List', named_sockets={'List': list, 'Selection': selection}, socket_type='INT')
+        return node._out
+
+    @classmethod
+    def get_list_item(cls, list: Integer=None, index: Integer=None):
+        """ > Node <&Node Get List Item>
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `socket_type` | `'INT'` |
+        
+        Parameters
+        ----------
+        list : Integer, optional
+            socket 'List'
+        
+        index : Integer, optional
+            socket 'Index'
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Get List Item', named_sockets={'List': list, 'Index': index}, socket_type='INT')
+        return node._out
+
+    def grid_dilate_erode(self, connectivity: Menu=None, tiles: Menu=None, steps: Integer=None):
         """ > Node <&Node Grid Dilate & Erode>
         
-        Jump method: False.
+        Jump method: True.
         
         self: socket 'Grid'.
         
@@ -1289,54 +1440,28 @@ class Integer(BaseInteger):
         
         Parameters
         ----------
-        connectivity : menu='Face', optional
-            ('Face', 'Edge', 'Vertex')
+        connectivity : Menu, optional
+            socket 'Connectivity'
         
-        tiles : menu='Preserve', optional
-            ('Ignore', 'Expand', 'Preserve')
+        tiles : Menu, optional
+            socket 'Tiles'
         
         steps : Integer, optional
             socket 'Steps'
         
         Returns
         -------
-        Integer
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'grid': self, 'connectivity': connectivity, 'tiles': tiles, 'steps': steps}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Grid Dilate & Erode', named_sockets=_named_sockets, data_type='INT')
-        return _node._out
-
-    @classmethod
-    def GridInfo(cls, grid: Integer=None):
-        """ > Node <&Node Grid Info>
-        
-        **Fixed values**
-        
-        | Parameter | Value |
-        | --- | --- |
-        | `data_type` | `'INT'` |
-        
-        Parameters
-        ----------
-        grid : Integer, optional
-            socket 'Grid'
-        
-        Returns
-        -------
-        Matrix
-            socket 'OUT'
-        """
-        _named_sockets = {'grid': grid}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Grid Info', named_sockets=_named_sockets, data_type='INT')
-        return _node._out
+        node = Node('Grid Dilate & Erode', named_sockets={'Grid': self, 'Connectivity': connectivity, 'Tiles': tiles, 'Steps': steps}, data_type='INT')
+        self._jump(node._out)
+        return node._second_out(self)
 
     def grid_mean(self, width: Integer=None, iterations: Integer=None):
         """ > Node <&Node Grid Mean>
         
-        Jump method: False.
+        Jump method: True.
         
         self: socket 'Grid'.
         
@@ -1356,18 +1481,17 @@ class Integer(BaseInteger):
         
         Returns
         -------
-        Integer
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'grid': self, 'width': width, 'iterations': iterations}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Grid Mean', named_sockets=_named_sockets, data_type='INT')
-        return _node._out
+        node = Node('Grid Mean', named_sockets={'Grid': self, 'Width': width, 'Iterations': iterations}, data_type='INT')
+        self._jump(node._out)
+        return node._second_out(self)
 
     def grid_median(self, width: Integer=None, iterations: Integer=None):
         """ > Node <&Node Grid Median>
         
-        Jump method: False.
+        Jump method: True.
         
         self: socket 'Grid'.
         
@@ -1387,41 +1511,15 @@ class Integer(BaseInteger):
         
         Returns
         -------
-        Integer
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'grid': self, 'width': width, 'iterations': iterations}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Grid Median', named_sockets=_named_sockets, data_type='INT')
-        return _node._out
+        node = Node('Grid Median', named_sockets={'Grid': self, 'Width': width, 'Iterations': iterations}, data_type='INT')
+        self._jump(node._out)
+        return node._second_out(self)
 
     @classmethod
-    def GridToPoints(cls, grid: Integer=None):
-        """ > Node <&Node Grid to Points>
-        
-        **Fixed values**
-        
-        | Parameter | Value |
-        | --- | --- |
-        | `data_type` | `'INT'` |
-        
-        Parameters
-        ----------
-        grid : Integer, optional
-            socket 'Grid'
-        
-        Returns
-        -------
-        Cloud
-            socket 'OUT'
-        """
-        _named_sockets = {'grid': grid}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Grid to Points', named_sockets=_named_sockets, data_type='INT')
-        return _node._out
-
-    @classmethod
-    def GridTopologyBoolean(cls, *grid_2: Integer, operation: Literal['Intersect', 'Union', 'Difference']=None, grid_1: Integer=None):
+    def GridTopologyBoolean(cls, *grid_2: Integer, operation: Menu=None, grid_1: Integer=None):
         """ > Node <&Node Grid Topology Boolean>
         
         **Fixed values**
@@ -1432,56 +1530,26 @@ class Integer(BaseInteger):
         
         Parameters
         ----------
-        operation : menu='Intersect', optional
-            ('Intersect', 'Union', 'Difference')
+        grid_2 : Integer, optional
+            socket 'Grid 2'
+        
+        operation : Menu, optional
+            socket 'Operation'
         
         grid_1 : Integer, optional
             socket 'Grid 1'
         
-        grid_2 : Integer, optional
-            socket 'Grid 2'
-        
         Returns
         -------
-        Integer
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'operation': operation, 'grid_1': grid_1, 'grid_2': list(grid_2)}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Grid Topology Boolean', named_sockets=_named_sockets, data_type='INT')
-        return _node._out
+        node = Node('Grid Topology Boolean', *[*list(grid_2)], named_sockets={'Operation': operation, 'Grid 1': grid_1}, data_type='INT')
+        return node._out
 
-    def hash_value(self, seed: Integer=None, data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'SHADER', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'TEXTURE', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SCENE', 'TEXT', 'MASK', 'SOUND', 'INT_VECTOR']='INT'):
+    @classmethod
+    def hash_value(cls, value: Integer=None, seed: Integer=None):
         """ > Node <&Node Hash Value>
-        
-        Jump method: False.
-        
-        self: socket 'Value'.
-        
-        Parameters
-        ----------
-        seed : Integer, optional
-            socket 'Seed'
-        
-        data_type : Literal['Float', 'Integer', 'Vector', 'Color', 'Rotation', 'Matrix', 'String']
-            parameter `data_type`
-        
-        Returns
-        -------
-        Integer
-            socket 'OUT'
-        """
-        _named_sockets = {'value': self, 'seed': seed}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Hash Value', named_sockets=_named_sockets, data_type=data_type)
-        return _node._out
-
-    def implicit_conversion(self, socket_idname='NodeSocketColor'):
-        """ > Node <&Node Implicit Conversion>
-        
-        Jump method: False.
-        
-        self: socket 'Value'.
         
         **Fixed values**
         
@@ -1491,52 +1559,72 @@ class Integer(BaseInteger):
         
         Parameters
         ----------
+        value : Integer, optional
+            socket 'Value'
+        
+        seed : Integer, optional
+            socket 'Seed'
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Hash Value', named_sockets={'Value': value, 'Seed': seed}, data_type='INT')
+        return node._out
+
+    @classmethod
+    def implicit_conversion(cls, value: Integer=None, socket_idname: str='NodeSocketColor'):
+        """ > Node <&Node Implicit Conversion>
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `data_type` | `'INT'` |
+        
+        Parameters
+        ----------
+        value : Integer, optional
+            socket 'Value'
+        
         socket_idname : str
             parameter `socket_idname`
         
         Returns
         -------
-        Integer
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'value': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Implicit Conversion', named_sockets=_named_sockets, socket_idname=socket_idname, data_type='INT')
-        return _node._out
+        node = Node('Implicit Conversion', named_sockets={'Value': value}, data_type='INT', socket_idname=socket_idname)
+        return node._out
 
-    @classmethod
-    def IndexSwitch(cls, named_sockets=None, index: Integer=None, _0: Integer=None, _1: Integer=None, **sockets):
+    def index_switch(self, *values: Socket, data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SOUND']='FLOAT', default_index: int=0):
         """ > Node <&Node Index Switch>
         
-        **Fixed values**
+        Jump method: False.
         
-        | Parameter | Value |
-        | --- | --- |
-        | `data_type` | `'INT'` |
+        self: socket 'Index'.
         
         Parameters
         ----------
-        index : Integer, optional
-            socket 'Index'
-        
-        _0 : Integer, optional
-            socket '0'
-        
-        _1 : Integer, optional
-            socket '1'
+        data_type : Literal['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Rotation', 'Matrix', 'String', 'Menu', 'Object', 'Image', 'Geometry', 'Collection', 'Material', 'Bundle', 'Closure', 'Font', 'Sound']
+            parameter `data_type`
         
         Returns
         -------
-        Integer
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'index': index, '_0': _0, '_1': _1}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _named_sockets.update({_name: _value for _name, _value in (named_sockets or {}).items() if _value is not None})
-        _node = Node('Index Switch', named_sockets=_named_sockets, data_type='INT', **sockets)
-        return _node._out
+        node = Node('Index Switch', *values, named_sockets={'Index': self}, data_type=data_type)
+        _selector = node._bnode.inputs['Index']
+        _selector.default_value = default_index
+        _interface = node._get_interface_socket(_selector)
+        if _interface is not None:
+            _interface.default_value = default_index
+        return node._out
 
-    def math(self, value_1: Integer=None, multiplier: Integer=None, exponent: Integer=None, addend: Integer=None, operation: Literal['ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'MULTIPLY_ADD', 'ABSOLUTE', 'NEGATE', 'POWER', 'MINIMUM', 'MAXIMUM', 'SIGN', 'DIVIDE_ROUND', 'DIVIDE_FLOOR', 'DIVIDE_CEIL', 'FLOORED_MODULO', 'MODULO', 'GCD', 'LCM']='ADD'):
+    def integer_math(self, value_1: Integer=None, multiplier: Integer=None, exponent: Integer=None, addend: Integer=None, operation: Literal['ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'MULTIPLY_ADD', 'ABSOLUTE', 'NEGATE', 'POWER', 'MINIMUM', 'MAXIMUM', 'SIGN', 'DIVIDE_ROUND', 'DIVIDE_FLOOR', 'DIVIDE_CEIL', 'FLOORED_MODULO', 'MODULO', 'GCD', 'LCM']='ADD'):
         """ > Node <&Node Integer Math>
         
         Jump method: False.
@@ -1562,20 +1650,18 @@ class Integer(BaseInteger):
         
         Returns
         -------
-        Integer
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'value': self, 'base': self, 'value_1': value_1, 'multiplier': multiplier, 'exponent': exponent, 'addend': addend}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _values = {('ADD',): ['value', 'value_1'], ('SUBTRACT',): ['value', 'value_1'], ('MULTIPLY',): ['value', 'value_1'], ('DIVIDE',): ['value', 'value_1'], ('MULTIPLY_ADD',): ['value', 'multiplier', 'addend'], ('ABSOLUTE',): ['value'], ('NEGATE',): ['value'], ('POWER',): ['base', 'exponent'], ('MINIMUM',): ['value', 'value_1'], ('MAXIMUM',): ['value', 'value_1'], ('SIGN',): ['value'], ('DIVIDE_ROUND',): ['value', 'value_1'], ('DIVIDE_FLOOR',): ['value', 'value_1'], ('DIVIDE_CEIL',): ['value', 'value_1'], ('FLOORED_MODULO',): ['value', 'value_1'], ('MODULO',): ['value', 'value_1'], ('GCD',): ['value', 'value_1'], ('LCM',): ['value', 'value_1']}
         _configuration = ({'add': 'ADD', 'subtract': 'SUBTRACT', 'multiply': 'MULTIPLY', 'divide': 'DIVIDE', 'multiply_add': 'MULTIPLY_ADD', 'absolute': 'ABSOLUTE', 'negate': 'NEGATE', 'power': 'POWER', 'minimum': 'MINIMUM', 'maximum': 'MAXIMUM', 'sign': 'SIGN', 'divide_round': 'DIVIDE_ROUND', 'divide_floor': 'DIVIDE_FLOOR', 'divide_ceil': 'DIVIDE_CEIL', 'floored_modulo': 'FLOORED_MODULO', 'modulo': 'MODULO', 'gcd': 'GCD', 'lcm': 'LCM', 'multiply add': 'MULTIPLY_ADD', 'divide round': 'DIVIDE_ROUND', 'divide floor': 'DIVIDE_FLOOR', 'divide ceiling': 'DIVIDE_CEIL', 'floored modulo': 'FLOORED_MODULO', 'greatest common divisor': 'GCD', 'least common multiple': 'LCM'}.get(operation.lower(), operation),)
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _name in _values[_configuration]}
-        _node = Node('Integer Math', named_sockets=_named_sockets, operation=operation)
-        return _node._out
+        _node_sockets = {('ADD',): {'Value': self, 'Value_1': value_1}, ('SUBTRACT',): {'Value': self, 'Value_1': value_1}, ('MULTIPLY',): {'Value': self, 'Value_1': value_1}, ('DIVIDE',): {'Value': self, 'Value_1': value_1}, ('MULTIPLY_ADD',): {'Value': self, 'Multiplier': multiplier, 'Addend': addend}, ('ABSOLUTE',): {'Value': self}, ('NEGATE',): {'Value': self}, ('POWER',): {'Base': self, 'Exponent': exponent}, ('MINIMUM',): {'Value': self, 'Value_1': value_1}, ('MAXIMUM',): {'Value': self, 'Value_1': value_1}, ('SIGN',): {'Value': self}, ('DIVIDE_ROUND',): {'Value': self, 'Value_1': value_1}, ('DIVIDE_FLOOR',): {'Value': self, 'Value_1': value_1}, ('DIVIDE_CEIL',): {'Value': self, 'Value_1': value_1}, ('FLOORED_MODULO',): {'Value': self, 'Value_1': value_1}, ('MODULO',): {'Value': self, 'Value_1': value_1}, ('GCD',): {'Value': self, 'Value_1': value_1}, ('LCM',): {'Value': self, 'Value_1': value_1}}[_configuration]
+        _node_args = {('ADD',): [], ('SUBTRACT',): [], ('MULTIPLY',): [], ('DIVIDE',): [], ('MULTIPLY_ADD',): [], ('ABSOLUTE',): [], ('NEGATE',): [], ('POWER',): [], ('MINIMUM',): [], ('MAXIMUM',): [], ('SIGN',): [], ('DIVIDE_ROUND',): [], ('DIVIDE_FLOOR',): [], ('DIVIDE_CEIL',): [], ('FLOORED_MODULO',): [], ('MODULO',): [], ('GCD',): [], ('LCM',): []}[_configuration]
+        node = Node('Integer Math', *_node_args, named_sockets=_node_sockets, operation=operation)
+        return node._out
 
     @classmethod
-    def MenuSwitch(cls, named_sockets=None, menu: Literal['A', 'B']=None, a: Integer=None, b: Integer=None, **sockets):
-        """ > Node <&Node Menu Switch>
+    def list_length(cls, list: Integer=None):
+        """ > Node <&Node List Length>
         
         **Fixed values**
         
@@ -1585,30 +1671,21 @@ class Integer(BaseInteger):
         
         Parameters
         ----------
-        menu : menu='A', optional
-            ('A', 'B')
-        
-        a : Integer, optional
-            socket 'A'
-        
-        b : Integer, optional
-            socket 'B'
+        list : Integer, optional
+            socket 'List'
         
         Returns
         -------
-        Integer
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'menu': menu, 'a': a, 'b': b}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _named_sockets.update({_name: _value for _name, _value in (named_sockets or {}).items() if _value is not None})
-        _node = Node('Menu Switch', named_sockets=_named_sockets, data_type='INT', **sockets)
-        return _node._out
+        node = Node('List Length', named_sockets={'List': list}, data_type='INT')
+        return node._out
 
-    def prune_grid(self, mode: Literal['Inactive', 'Threshold', 'SDF']=None, threshold: Integer=None):
+    def prune_grid(self, mode: Menu=None, threshold: Integer=None):
         """ > Node <&Node Prune Grid>
         
-        Jump method: False.
+        Jump method: True.
         
         self: socket 'Grid'.
         
@@ -1620,24 +1697,23 @@ class Integer(BaseInteger):
         
         Parameters
         ----------
-        mode : menu='Threshold', optional
-            ('Inactive', 'Threshold', 'SDF')
+        mode : Menu, optional
+            socket 'Mode'
         
         threshold : Integer, optional
             socket 'Threshold'
         
         Returns
         -------
-        Integer
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'grid': self, 'mode': mode, 'threshold': threshold}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Prune Grid', named_sockets=_named_sockets, data_type='INT')
-        return _node._out
+        node = Node('Prune Grid', named_sockets={'Grid': self, 'Mode': mode, 'Threshold': threshold}, data_type='INT')
+        self._jump(node._out)
+        return node._second_out(self)
 
     @classmethod
-    def Random(cls, min: Integer=None, max: Integer=None, id: Integer=None, seed: Integer=None):
+    def random_value(cls, min: Integer=None, max: Integer=None, id: Integer=None, seed: Integer=None):
         """ > Node <&Node Random Value>
         
         **Fixed values**
@@ -1662,15 +1738,13 @@ class Integer(BaseInteger):
         
         Returns
         -------
-        Integer
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'min': min, 'max': max, 'id': id, 'seed': seed}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Random Value', named_sockets=_named_sockets, data_type='INT')
-        return _node._out
+        node = Node('Random Value', named_sockets={'Min': min, 'Max': max, 'ID': id, 'Seed': seed}, data_type='INT')
+        return node._out
 
-    def sample_grid(self, position: Vector=None, interpolation: Literal['Nearest Neighbor', 'Trilinear', 'Triquadratic', 'Tricubic']=None):
+    def sample_grid(self, position: Vector=None, interpolation: Menu=None):
         """ > Node <&Node Sample Grid>
         
         Jump method: False.
@@ -1688,18 +1762,16 @@ class Integer(BaseInteger):
         position : Vector, optional
             socket 'Position'
         
-        interpolation : menu='Trilinear', optional
-            ('Nearest Neighbor', 'Trilinear', 'Triquadratic', 'Tricubic')
+        interpolation : Menu, optional
+            socket 'Interpolation'
         
         Returns
         -------
-        Integer
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'grid': self, 'position': position, 'interpolation': interpolation}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Sample Grid', named_sockets=_named_sockets, data_type='INT')
-        return _node._out
+        node = Node('Sample Grid', named_sockets={'Grid': self, 'Position': position, 'Interpolation': interpolation}, data_type='INT')
+        return node._out
 
     def sample_grid_index(self, x: Integer=None, y: Integer=None, z: Integer=None):
         """ > Node <&Node Sample Grid Index>
@@ -1727,18 +1799,16 @@ class Integer(BaseInteger):
         
         Returns
         -------
-        Integer
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'grid': self, 'x': x, 'y': y, 'z': z}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Sample Grid Index', named_sockets=_named_sockets, data_type='INT')
-        return _node._out
+        node = Node('Sample Grid Index', named_sockets={'Grid': self, 'X': x, 'Y': y, 'Z': z}, data_type='INT')
+        return node._out
 
     def set_grid_background(self, background: Integer=None, update_inactive: Boolean=None):
         """ > Node <&Node Set Grid Background>
         
-        Jump method: False.
+        Jump method: True.
         
         self: socket 'Grid'.
         
@@ -1758,44 +1828,15 @@ class Integer(BaseInteger):
         
         Returns
         -------
-        Integer
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'grid': self, 'background': background, 'update_inactive': update_inactive}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Set Grid Background', named_sockets=_named_sockets, data_type='INT')
-        return _node._out
+        node = Node('Set Grid Background', named_sockets={'Grid': self, 'Background': background, 'Update Inactive': update_inactive}, data_type='INT')
+        self._jump(node._out)
+        return node._second_out(self)
 
-    @classmethod
-    def SetGridTransform(cls, grid: Integer=None, transform: Matrix=None):
+    def set_grid_transform(self, transform: Matrix=None):
         """ > Node <&Node Set Grid Transform>
-        
-        **Fixed values**
-        
-        | Parameter | Value |
-        | --- | --- |
-        | `data_type` | `'INT'` |
-        
-        Parameters
-        ----------
-        grid : Integer, optional
-            socket 'Grid'
-        
-        transform : Matrix, optional
-            socket 'Transform'
-        
-        Returns
-        -------
-        Boolean
-            socket 'OUT'
-        """
-        _named_sockets = {'grid': grid, 'transform': transform}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Set Grid Transform', named_sockets=_named_sockets, data_type='INT')
-        return _node._out
-
-    def voxelize_grid(self):
-        """ > Node <&Node Voxelize Grid>
         
         Jump method: False.
         
@@ -1807,12 +1848,101 @@ class Integer(BaseInteger):
         | --- | --- |
         | `data_type` | `'INT'` |
         
+        Parameters
+        ----------
+        transform : Matrix, optional
+            socket 'Transform'
+        
         Returns
         -------
-        Integer
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'grid': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Voxelize Grid', named_sockets=_named_sockets, data_type='INT')
-        return _node._out
+        node = Node('Set Grid Transform', named_sockets={'Grid': self, 'Transform': transform}, data_type='INT')
+        return node._out
+
+    @classmethod
+    def sort_list(cls, list: Integer=None, selection: Boolean=None, group_id: Integer=None, sort_weight: Float=None):
+        """ > Node <&Node Sort List>
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `socket_type` | `'INT'` |
+        
+        Parameters
+        ----------
+        list : Integer, optional
+            socket 'List'
+        
+        selection : Boolean, optional
+            socket 'Selection'
+        
+        group_id : Integer, optional
+            socket 'Group ID'
+        
+        sort_weight : Float, optional
+            socket 'Sort Weight'
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Sort List', named_sockets={'List': list, 'Selection': selection, 'Group ID': group_id, 'Sort Weight': sort_weight}, socket_type='INT')
+        return node._out
+
+    def to_string(self, decimals: Integer=None, base: Integer=None, padding: Integer=None, data_type: Literal['FLOAT', 'INT']='FLOAT'):
+        """ > Node <&Node Value to String>
+        
+        Jump method: False.
+        
+        self: socket 'Value'.
+        
+        Parameters
+        ----------
+        decimals : Integer, optional
+            socket 'Decimals'
+        
+        base : Integer, optional
+            socket 'Base'
+        
+        padding : Integer, optional
+            socket 'Padding'
+        
+        data_type : Literal['Float', 'Integer']
+            parameter `data_type`
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        _configuration = ({'float': 'FLOAT', 'int': 'INT', 'integer': 'INT'}.get(data_type.lower(), data_type),)
+        _node_sockets = {('FLOAT',): {'Value': self, 'Decimals': decimals}, ('INT',): {'Value': self, 'Base': base, 'Padding': padding}}[_configuration]
+        _node_args = {('FLOAT',): [], ('INT',): []}[_configuration]
+        node = Node('Value to String', *_node_args, named_sockets=_node_sockets, data_type=data_type)
+        return node._out
+
+    def voxelize_grid(self):
+        """ > Node <&Node Voxelize Grid>
+        
+        Jump method: True.
+        
+        self: socket 'Grid'.
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `data_type` | `'INT'` |
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Voxelize Grid', named_sockets={'Grid': self}, data_type='INT')
+        self._jump(node._out)
+        return node._second_out(self)

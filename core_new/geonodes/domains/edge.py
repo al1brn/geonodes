@@ -69,4 +69,4 @@ class Edge(Domain):
         -------
         Integer
         """
-        return Node('Edges to Face Groups', {'Boundary Edges': self.get_selection()})._out
+        return Node('Edges to Face Groups', named_sockets={'Boundary Edges': self.get_selection()})._out

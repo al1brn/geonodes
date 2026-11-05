@@ -32,6 +32,9 @@ if TYPE_CHECKING:
     class Menu:
         ...
 
+    class Texture:
+        ...
+
     class String:
         ...
 
@@ -46,7 +49,7 @@ class Bundle(BaseBundle):
     __slots__ = ()
 
     @classmethod
-    def Combine(cls, named_sockets=None, define_signature=False, **sockets):
+    def Combine(cls, named_sockets=None, define_signature: bool=False, **sockets):
         """ > Node <&ShaderNode Combine Bundle>
         
         Parameters
@@ -56,50 +59,18 @@ class Bundle(BaseBundle):
         
         Returns
         -------
-        Bundle
+        Socket
             socket 'OUT'
         """
         _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _named_sockets.update({_name: _value for _name, _value in (named_sockets or {}).items() if _value is not None})
-        _node = Node('Combine Bundle', named_sockets=_named_sockets, define_signature=define_signature, **sockets)
-        return _node._out
+        _named_sockets.update({name: value for name, value in (named_sockets or {}).items() if value is not None})
+        node = Node('Combine Bundle', named_sockets=_named_sockets, define_signature=define_signature, **sockets)
+        return node._out
 
-    def enable_output(self, enable: Boolean=None):
-        """ > Node <&ShaderNode Enable Output>
-        
-        Jump method: False.
-        
-        self: socket 'Value'.
-        
-        **Fixed values**
-        
-        | Parameter | Value |
-        | --- | --- |
-        | `data_type` | `'BUNDLE'` |
-        
-        Parameters
-        ----------
-        enable : Boolean, optional
-            socket 'Enable'
-        
-        Returns
-        -------
-        Bundle
-            socket 'OUT'
-        """
-        _named_sockets = {'enable': enable, 'value': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Enable Output', named_sockets=_named_sockets, data_type='BUNDLE')
-        return _node._out
-
-    def implicit_conversion(self, socket_idname='NodeSocketColor'):
+    @classmethod
+    def implicit_conversion(cls, value: Bundle=None, socket_idname: str='NodeSocketColor'):
         """ > Node <&ShaderNode Implicit Conversion>
         
-        Jump method: False.
-        
-        self: socket 'Value'.
-        
         **Fixed values**
         
         | Parameter | Value |
@@ -108,96 +79,36 @@ class Bundle(BaseBundle):
         
         Parameters
         ----------
+        value : Bundle, optional
+            socket 'Value'
+        
         socket_idname : str
             parameter `socket_idname`
         
         Returns
         -------
-        Bundle
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'value': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Implicit Conversion', named_sockets=_named_sockets, socket_idname=socket_idname, data_type='BUNDLE')
-        return _node._out
+        node = Node('Implicit Conversion', named_sockets={'Value': value}, data_type='BUNDLE', socket_idname=socket_idname)
+        return node._out
 
-    @classmethod
-    def IndexSwitch(cls, named_sockets=None, index: Integer=None, _0: Bundle=None, _1: Bundle=None, **sockets):
-        """ > Node <&ShaderNode Index Switch>
-        
-        **Fixed values**
-        
-        | Parameter | Value |
-        | --- | --- |
-        | `data_type` | `'BUNDLE'` |
-        
-        Parameters
-        ----------
-        index : Integer, optional
-            socket 'Index'
-        
-        _0 : Bundle, optional
-            socket '0'
-        
-        _1 : Bundle, optional
-            socket '1'
-        
-        Returns
-        -------
-        Bundle
-            socket 'OUT'
-        """
-        _named_sockets = {'index': index, '_0': _0, '_1': _1}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _named_sockets.update({_name: _value for _name, _value in (named_sockets or {}).items() if _value is not None})
-        _node = Node('Index Switch', named_sockets=_named_sockets, data_type='BUNDLE', **sockets)
-        return _node._out
-
-    def join(self):
+    def join_bundle(self, *bundle_1: Bundle):
         """ > Node <&ShaderNode Join Bundle>
         
         Jump method: False.
         
         self: socket 'Bundle'.
         
-        Returns
-        -------
-        Bundle
-            socket 'OUT'
-        """
-        _named_sockets = {'bundle': [self]}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Join Bundle', named_sockets=_named_sockets)
-        return _node._out
-
-    @classmethod
-    def MenuSwitch(cls, named_sockets=None, menu: Literal['A', 'B']=None, a: Bundle=None, b: Bundle=None, **sockets):
-        """ > Node <&ShaderNode Menu Switch>
-        
-        **Fixed values**
-        
-        | Parameter | Value |
-        | --- | --- |
-        | `data_type` | `'BUNDLE'` |
-        
         Parameters
         ----------
-        menu : menu='A', optional
-            ('A', 'B')
-        
-        a : Bundle, optional
-            socket 'A'
-        
-        b : Bundle, optional
-            socket 'B'
+        bundle_1 : Bundle, optional
+            socket 'Bundle'
         
         Returns
         -------
-        Bundle
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'menu': menu, 'a': a, 'b': b}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _named_sockets.update({_name: _value for _name, _value in (named_sockets or {}).items() if _value is not None})
-        _node = Node('Menu Switch', named_sockets=_named_sockets, data_type='BUNDLE', **sockets)
-        return _node._out
+        node = Node('Join Bundle', *[*[self, *bundle_1]], named_sockets={})
+        return node._out

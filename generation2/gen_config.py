@@ -773,7 +773,7 @@ def get_socket_subtypes(nodesockets):
 
         if not tp.startswith(sns) or tp in [sns, 
                         "NodeSocketStandard", "NodeSocketTexture", 
-                        "NodeSocketMask", "NodeSocketScene", "NodeSocketSound", "NodeSocketText"]:
+                        "NodeSocketMask", "NodeSocketScene", "NodeSocketText"]:
             continue
 
         # ------------------------------------------------------------

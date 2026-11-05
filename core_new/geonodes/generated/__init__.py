@@ -11,6 +11,7 @@ from .boolean import Boolean
 from .integer import Integer
 from .menu import Menu
 from .geometry import Geometry
+from .texture import Texture
 from .collection import Collection
 from .string import String
 from .rotation import Rotation

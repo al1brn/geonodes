@@ -106,7 +106,7 @@ class Instance(Domain):
         else:
             sockets['Scale'] = value
 
-        return self._jump(Node('Scale Instances', sockets)._out)
+        return self._jump(Node('Scale Instances', named_sockets=sockets)._out)
 
     # ----- Rotation
 
@@ -144,4 +144,4 @@ class Instance(Domain):
         else:
             sockets['Rotation'] = value
 
-        return self._jump(Node('Rotate Instances', sockets)._out)
+        return self._jump(Node('Rotate Instances', named_sockets=sockets)._out)

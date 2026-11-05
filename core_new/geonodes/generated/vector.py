@@ -47,6 +47,9 @@ if TYPE_CHECKING:
     class Geometry:
         ...
 
+    class Texture:
+        ...
+
     class Collection:
         ...
 
@@ -134,13 +137,11 @@ class Vector(BaseVector):
         
         Returns
         -------
-        Vector
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'vector': self, 'vector_1': vector_1}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Vector Math', named_sockets=_named_sockets, operation='ADD')
-        return _node._out
+        node = Node('Vector Math', named_sockets={'Vector': self, 'Vector_1': vector_1}, operation='ADD')
+        return node._out
 
     def subtract(self, vector_1: Vector=None):
         """ > Node <&Node Vector Math>
@@ -162,13 +163,11 @@ class Vector(BaseVector):
         
         Returns
         -------
-        Vector
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'vector': self, 'vector_1': vector_1}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Vector Math', named_sockets=_named_sockets, operation='SUBTRACT')
-        return _node._out
+        node = Node('Vector Math', named_sockets={'Vector': self, 'Vector_1': vector_1}, operation='SUBTRACT')
+        return node._out
 
     def multiply(self, vector_1: Vector=None):
         """ > Node <&Node Vector Math>
@@ -190,13 +189,11 @@ class Vector(BaseVector):
         
         Returns
         -------
-        Vector
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'vector': self, 'vector_1': vector_1}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Vector Math', named_sockets=_named_sockets, operation='MULTIPLY')
-        return _node._out
+        node = Node('Vector Math', named_sockets={'Vector': self, 'Vector_1': vector_1}, operation='MULTIPLY')
+        return node._out
 
     def divide(self, vector_1: Vector=None):
         """ > Node <&Node Vector Math>
@@ -218,13 +215,11 @@ class Vector(BaseVector):
         
         Returns
         -------
-        Vector
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'vector': self, 'vector_1': vector_1}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Vector Math', named_sockets=_named_sockets, operation='DIVIDE')
-        return _node._out
+        node = Node('Vector Math', named_sockets={'Vector': self, 'Vector_1': vector_1}, operation='DIVIDE')
+        return node._out
 
     def multiply_add(self, multiplier: Vector=None, addend: Vector=None):
         """ > Node <&Node Vector Math>
@@ -249,13 +244,11 @@ class Vector(BaseVector):
         
         Returns
         -------
-        Vector
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'vector': self, 'multiplier': multiplier, 'addend': addend}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Vector Math', named_sockets=_named_sockets, operation='MULTIPLY_ADD')
-        return _node._out
+        node = Node('Vector Math', named_sockets={'Vector': self, 'Multiplier': multiplier, 'Addend': addend}, operation='MULTIPLY_ADD')
+        return node._out
 
     def cross(self, vector_1: Vector=None):
         """ > Node <&Node Vector Math>
@@ -277,13 +270,11 @@ class Vector(BaseVector):
         
         Returns
         -------
-        Vector
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'vector': self, 'vector_1': vector_1}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Vector Math', named_sockets=_named_sockets, operation='CROSS_PRODUCT')
-        return _node._out
+        node = Node('Vector Math', named_sockets={'Vector': self, 'Vector_1': vector_1}, operation='CROSS_PRODUCT')
+        return node._out
 
     def project(self, vector_1: Vector=None):
         """ > Node <&Node Vector Math>
@@ -305,13 +296,11 @@ class Vector(BaseVector):
         
         Returns
         -------
-        Vector
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'vector': self, 'vector_1': vector_1}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Vector Math', named_sockets=_named_sockets, operation='PROJECT')
-        return _node._out
+        node = Node('Vector Math', named_sockets={'Vector': self, 'Vector_1': vector_1}, operation='PROJECT')
+        return node._out
 
     def reflect(self, vector_1: Vector=None):
         """ > Node <&Node Vector Math>
@@ -333,13 +322,11 @@ class Vector(BaseVector):
         
         Returns
         -------
-        Vector
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'vector': self, 'vector_1': vector_1}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Vector Math', named_sockets=_named_sockets, operation='REFLECT')
-        return _node._out
+        node = Node('Vector Math', named_sockets={'Vector': self, 'Vector_1': vector_1}, operation='REFLECT')
+        return node._out
 
     def refract(self, vector_1: Vector=None, ior: Float=None):
         """ > Node <&Node Vector Math>
@@ -364,13 +351,11 @@ class Vector(BaseVector):
         
         Returns
         -------
-        Vector
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'vector': self, 'vector_1': vector_1, 'ior': ior}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Vector Math', named_sockets=_named_sockets, operation='REFRACT')
-        return _node._out
+        node = Node('Vector Math', named_sockets={'Vector': self, 'Vector_1': vector_1, 'IOR': ior}, operation='REFRACT')
+        return node._out
 
     def faceforward(self, incident: Vector=None, reference: Vector=None):
         """ > Node <&Node Vector Math>
@@ -395,13 +380,11 @@ class Vector(BaseVector):
         
         Returns
         -------
-        Vector
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'vector': self, 'incident': incident, 'reference': reference}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Vector Math', named_sockets=_named_sockets, operation='FACEFORWARD')
-        return _node._out
+        node = Node('Vector Math', named_sockets={'Vector': self, 'Incident': incident, 'Reference': reference}, operation='FACEFORWARD')
+        return node._out
 
     def dot(self, vector_1: Vector=None):
         """ > Node <&Node Vector Math>
@@ -423,13 +406,11 @@ class Vector(BaseVector):
         
         Returns
         -------
-        Float
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'vector': self, 'vector_1': vector_1}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Vector Math', named_sockets=_named_sockets, operation='DOT_PRODUCT')
-        return _node._out
+        node = Node('Vector Math', named_sockets={'Vector': self, 'Vector_1': vector_1}, operation='DOT_PRODUCT')
+        return node._out
 
     def distance(self, vector_1: Vector=None):
         """ > Node <&Node Vector Math>
@@ -451,13 +432,11 @@ class Vector(BaseVector):
         
         Returns
         -------
-        Float
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'vector': self, 'vector_1': vector_1}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Vector Math', named_sockets=_named_sockets, operation='DISTANCE')
-        return _node._out
+        node = Node('Vector Math', named_sockets={'Vector': self, 'Vector_1': vector_1}, operation='DISTANCE')
+        return node._out
 
     def length(self):
         """ > Node <&Node Vector Math>
@@ -474,13 +453,11 @@ class Vector(BaseVector):
         
         Returns
         -------
-        Float
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'vector': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Vector Math', named_sockets=_named_sockets, operation='LENGTH')
-        return _node._out
+        node = Node('Vector Math', named_sockets={'Vector': self}, operation='LENGTH')
+        return node._out
 
     def scale(self, scale: Float=None):
         """ > Node <&Node Vector Math>
@@ -502,13 +479,11 @@ class Vector(BaseVector):
         
         Returns
         -------
-        Vector
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'vector': self, 'scale': scale}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Vector Math', named_sockets=_named_sockets, operation='SCALE')
-        return _node._out
+        node = Node('Vector Math', named_sockets={'Vector': self, 'Scale': scale}, operation='SCALE')
+        return node._out
 
     def normalize(self):
         """ > Node <&Node Vector Math>
@@ -525,13 +500,11 @@ class Vector(BaseVector):
         
         Returns
         -------
-        Vector
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'vector': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Vector Math', named_sockets=_named_sockets, operation='NORMALIZE')
-        return _node._out
+        node = Node('Vector Math', named_sockets={'Vector': self}, operation='NORMALIZE')
+        return node._out
 
     def abs(self):
         """ > Node <&Node Vector Math>
@@ -548,20 +521,18 @@ class Vector(BaseVector):
         
         Returns
         -------
-        Vector
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'vector': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Vector Math', named_sockets=_named_sockets, operation='ABSOLUTE')
-        return _node._out
+        node = Node('Vector Math', named_sockets={'Vector': self}, operation='ABSOLUTE')
+        return node._out
 
     def power(self, exponent: Vector=None):
         """ > Node <&Node Vector Math>
         
         Jump method: False.
         
-        self: socket 'Vector'.
+        self: socket 'Base'.
         
         **Fixed values**
         
@@ -576,13 +547,11 @@ class Vector(BaseVector):
         
         Returns
         -------
-        Vector
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'base': self, 'exponent': exponent}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Vector Math', named_sockets=_named_sockets, operation='POWER')
-        return _node._out
+        node = Node('Vector Math', named_sockets={'Base': self, 'Exponent': exponent}, operation='POWER')
+        return node._out
 
     def sign(self):
         """ > Node <&Node Vector Math>
@@ -599,13 +568,11 @@ class Vector(BaseVector):
         
         Returns
         -------
-        Vector
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'vector': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Vector Math', named_sockets=_named_sockets, operation='SIGN')
-        return _node._out
+        node = Node('Vector Math', named_sockets={'Vector': self}, operation='SIGN')
+        return node._out
 
     def min(self, vector_1: Vector=None):
         """ > Node <&Node Vector Math>
@@ -627,13 +594,11 @@ class Vector(BaseVector):
         
         Returns
         -------
-        Vector
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'vector': self, 'vector_1': vector_1}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Vector Math', named_sockets=_named_sockets, operation='MINIMUM')
-        return _node._out
+        node = Node('Vector Math', named_sockets={'Vector': self, 'Vector_1': vector_1}, operation='MINIMUM')
+        return node._out
 
     def max(self, vector_1: Vector=None):
         """ > Node <&Node Vector Math>
@@ -655,13 +620,11 @@ class Vector(BaseVector):
         
         Returns
         -------
-        Vector
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'vector': self, 'vector_1': vector_1}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Vector Math', named_sockets=_named_sockets, operation='MAXIMUM')
-        return _node._out
+        node = Node('Vector Math', named_sockets={'Vector': self, 'Vector_1': vector_1}, operation='MAXIMUM')
+        return node._out
 
     def round(self):
         """ > Node <&Node Vector Math>
@@ -678,13 +641,11 @@ class Vector(BaseVector):
         
         Returns
         -------
-        Vector
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'vector': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Vector Math', named_sockets=_named_sockets, operation='ROUND')
-        return _node._out
+        node = Node('Vector Math', named_sockets={'Vector': self}, operation='ROUND')
+        return node._out
 
     def floor(self):
         """ > Node <&Node Vector Math>
@@ -701,13 +662,11 @@ class Vector(BaseVector):
         
         Returns
         -------
-        Vector
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'vector': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Vector Math', named_sockets=_named_sockets, operation='FLOOR')
-        return _node._out
+        node = Node('Vector Math', named_sockets={'Vector': self}, operation='FLOOR')
+        return node._out
 
     def ceil(self):
         """ > Node <&Node Vector Math>
@@ -724,13 +683,11 @@ class Vector(BaseVector):
         
         Returns
         -------
-        Vector
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'vector': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Vector Math', named_sockets=_named_sockets, operation='CEIL')
-        return _node._out
+        node = Node('Vector Math', named_sockets={'Vector': self}, operation='CEIL')
+        return node._out
 
     def fraction(self):
         """ > Node <&Node Vector Math>
@@ -747,13 +704,11 @@ class Vector(BaseVector):
         
         Returns
         -------
-        Vector
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'vector': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Vector Math', named_sockets=_named_sockets, operation='FRACTION')
-        return _node._out
+        node = Node('Vector Math', named_sockets={'Vector': self}, operation='FRACTION')
+        return node._out
 
     def modulo(self, vector_1: Vector=None):
         """ > Node <&Node Vector Math>
@@ -775,13 +730,11 @@ class Vector(BaseVector):
         
         Returns
         -------
-        Vector
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'vector': self, 'vector_1': vector_1}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Vector Math', named_sockets=_named_sockets, operation='MODULO')
-        return _node._out
+        node = Node('Vector Math', named_sockets={'Vector': self, 'Vector_1': vector_1}, operation='MODULO')
+        return node._out
 
     def wrap(self, max: Vector=None, min: Vector=None):
         """ > Node <&Node Vector Math>
@@ -806,13 +759,11 @@ class Vector(BaseVector):
         
         Returns
         -------
-        Vector
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'vector': self, 'max': max, 'min': min}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Vector Math', named_sockets=_named_sockets, operation='WRAP')
-        return _node._out
+        node = Node('Vector Math', named_sockets={'Vector': self, 'Max': max, 'Min': min}, operation='WRAP')
+        return node._out
 
     def snap(self, increment: Vector=None):
         """ > Node <&Node Vector Math>
@@ -834,13 +785,11 @@ class Vector(BaseVector):
         
         Returns
         -------
-        Vector
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'vector': self, 'increment': increment}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Vector Math', named_sockets=_named_sockets, operation='SNAP')
-        return _node._out
+        node = Node('Vector Math', named_sockets={'Vector': self, 'Increment': increment}, operation='SNAP')
+        return node._out
 
     def sin(self):
         """ > Node <&Node Vector Math>
@@ -857,13 +806,11 @@ class Vector(BaseVector):
         
         Returns
         -------
-        Vector
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'vector': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Vector Math', named_sockets=_named_sockets, operation='SINE')
-        return _node._out
+        node = Node('Vector Math', named_sockets={'Vector': self}, operation='SINE')
+        return node._out
 
     def cos(self):
         """ > Node <&Node Vector Math>
@@ -880,13 +827,11 @@ class Vector(BaseVector):
         
         Returns
         -------
-        Vector
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'vector': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Vector Math', named_sockets=_named_sockets, operation='COSINE')
-        return _node._out
+        node = Node('Vector Math', named_sockets={'Vector': self}, operation='COSINE')
+        return node._out
 
     def tan(self):
         """ > Node <&Node Vector Math>
@@ -903,13 +848,11 @@ class Vector(BaseVector):
         
         Returns
         -------
-        Vector
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'vector': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Vector Math', named_sockets=_named_sockets, operation='TANGENT')
-        return _node._out
+        node = Node('Vector Math', named_sockets={'Vector': self}, operation='TANGENT')
+        return node._out
 
     def __add__(self, other):
         return self.add(other)
@@ -1166,10 +1109,39 @@ class Vector(BaseVector):
     def __ne__(self, other):
         return self.not_equal(other)
 
-    def advect_grid(self, velocity: Vector=None, time_step: Float=None, integration_scheme: Literal['Semi-Lagrangian', 'Midpoint', 'Runge-Kutta 3', 'Runge-Kutta 4', 'MacCormack', 'BFECC']=None, limiter: Literal['None', 'Clamp', 'Revert']=None):
+    @classmethod
+    def accumulate_field(cls, value: Vector=None, group_id: Integer=None, domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']='POINT'):
+        """ > Node <&Node Accumulate Field>
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `data_type` | `'FLOAT_VECTOR'` |
+        
+        Parameters
+        ----------
+        value : Vector, optional
+            socket 'Value'
+        
+        group_id : Integer, optional
+            socket 'Group ID'
+        
+        domain : Literal['Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer']
+            parameter `domain`
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Accumulate Field', named_sockets={'Value': value, 'Group ID': group_id}, data_type='FLOAT_VECTOR', domain=domain)
+        return node._out
+
+    def advect_grid(self, velocity: Vector=None, time_step: Float=None, integration_scheme: Menu=None, limiter: Menu=None):
         """ > Node <&Node Advect Grid>
         
-        Jump method: False.
+        Jump method: True.
         
         self: socket 'Grid'.
         
@@ -1187,28 +1159,53 @@ class Vector(BaseVector):
         time_step : Float, optional
             socket 'Time Step'
         
-        integration_scheme : menu='Runge-Kutta 3', optional
-            ('Semi-Lagrangian', 'Midpoint', 'Runge-Kutta 3', 'Runge-Kutta 4', 'MacCormack', 'BFECC')
+        integration_scheme : Menu, optional
+            socket 'Integration Scheme'
         
-        limiter : menu='Clamp', optional
-            ('None', 'Clamp', 'Revert')
+        limiter : Menu, optional
+            socket 'Limiter'
         
         Returns
         -------
-        Vector
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'grid': self, 'velocity': velocity, 'time_step': time_step, 'integration_scheme': integration_scheme, 'limiter': limiter}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Advect Grid', named_sockets=_named_sockets, data_type='VECTOR')
-        return _node._out
+        node = Node('Advect Grid', named_sockets={'Grid': self, 'Velocity': velocity, 'Time Step': time_step, 'Integration Scheme': integration_scheme, 'Limiter': limiter}, data_type='VECTOR')
+        self._jump(node._out)
+        return node._second_out(self)
 
-    def blur_attribute(self, iterations: Integer=None, weight: Float=None):
+    @classmethod
+    def align_to_vector(cls, rotation: Rotation=None, vector: Vector=None, factor: Float=None, axis: Literal['X', 'Y', 'Z']='Z', pivot_axis: Literal['AUTO', 'X', 'Y', 'Z']='AUTO'):
+        """ > Node <&Node Align Rotation to Vector>
+        
+        Parameters
+        ----------
+        rotation : Rotation, optional
+            socket 'Rotation'
+        
+        vector : Vector, optional
+            socket 'Vector'
+        
+        factor : Float, optional
+            socket 'Factor'
+        
+        axis : Literal['X', 'Y', 'Z']
+            parameter `axis`
+        
+        pivot_axis : Literal['Auto', 'X', 'Y', 'Z']
+            parameter `pivot_axis`
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Align Rotation to Vector', named_sockets={'Rotation': rotation, 'Factor': factor, 'Vector': vector}, axis=axis, pivot_axis=pivot_axis)
+        return node._out
+
+    @classmethod
+    def blur_attribute(cls, value: Vector=None, iterations: Integer=None, weight: Float=None):
         """ > Node <&Node Blur Attribute>
-        
-        Jump method: False.
-        
-        self: socket 'Value'.
         
         **Fixed values**
         
@@ -1218,6 +1215,9 @@ class Vector(BaseVector):
         
         Parameters
         ----------
+        value : Vector, optional
+            socket 'Value'
+        
         iterations : Integer, optional
             socket 'Iterations'
         
@@ -1226,104 +1226,16 @@ class Vector(BaseVector):
         
         Returns
         -------
-        Vector
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'value': self, 'iterations': iterations, 'weight': weight}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Blur Attribute', named_sockets=_named_sockets, data_type='FLOAT_VECTOR')
-        return _node._out
-
-    def brick_texture(self, color1: Color=None, color2: Color=None, mortar: Color=None, scale: Float=None, mortar_size: Float=None, mortar_smooth: Float=None, bias: Float=None, brick_width: Float=None, row_height: Float=None, offset_frequency=2, squash_frequency=2, offset=0.5, squash=1.0):
-        """ > Node <&Node Brick Texture>
-        
-        Jump method: False.
-        
-        self: socket 'Vector'.
-        
-        Parameters
-        ----------
-        color1 : Color, optional
-            socket 'Color1'
-        
-        color2 : Color, optional
-            socket 'Color2'
-        
-        mortar : Color, optional
-            socket 'Mortar'
-        
-        scale : Float, optional
-            socket 'Scale'
-        
-        mortar_size : Float, optional
-            socket 'Mortar Size'
-        
-        mortar_smooth : Float, optional
-            socket 'Mortar Smooth'
-        
-        bias : Float, optional
-            socket 'Bias'
-        
-        brick_width : Float, optional
-            socket 'Brick Width'
-        
-        row_height : Float, optional
-            socket 'Row Height'
-        
-        offset_frequency : int
-            parameter `offset_frequency`
-        
-        squash_frequency : int
-            parameter `squash_frequency`
-        
-        offset : float
-            parameter `offset`
-        
-        squash : float
-            parameter `squash`
-        
-        Returns
-        -------
-        Color
-            socket 'OUT'
-        """
-        _named_sockets = {'vector': self, 'color1': color1, 'color2': color2, 'mortar': mortar, 'scale': scale, 'mortar_size': mortar_size, 'mortar_smooth': mortar_smooth, 'bias': bias, 'brick_width': brick_width, 'row_height': row_height}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Brick Texture', named_sockets=_named_sockets, offset_frequency=offset_frequency, squash_frequency=squash_frequency, offset=offset, squash=squash)
-        return _node._out
-
-    def checker_texture(self, color1: Color=None, color2: Color=None, scale: Float=None):
-        """ > Node <&Node Checker Texture>
-        
-        Jump method: False.
-        
-        self: socket 'Vector'.
-        
-        Parameters
-        ----------
-        color1 : Color, optional
-            socket 'Color1'
-        
-        color2 : Color, optional
-            socket 'Color2'
-        
-        scale : Float, optional
-            socket 'Scale'
-        
-        Returns
-        -------
-        Color
-            socket 'OUT'
-        """
-        _named_sockets = {'vector': self, 'color1': color1, 'color2': color2, 'scale': scale}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Checker Texture', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('Blur Attribute', named_sockets={'Value': value, 'Iterations': iterations, 'Weight': weight}, data_type='FLOAT_VECTOR')
+        return node._out
 
     def clip_grid(self, min_x: Integer=None, min_y: Integer=None, min_z: Integer=None, max_x: Integer=None, max_y: Integer=None, max_z: Integer=None):
         """ > Node <&Node Clip Grid>
         
-        Jump method: False.
+        Jump method: True.
         
         self: socket 'Grid'.
         
@@ -1355,16 +1267,15 @@ class Vector(BaseVector):
         
         Returns
         -------
-        Vector
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'grid': self, 'min_x': min_x, 'min_y': min_y, 'min_z': min_z, 'max_x': max_x, 'max_y': max_y, 'max_z': max_z}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Clip Grid', named_sockets=_named_sockets, data_type='VECTOR')
-        return _node._out
+        node = Node('Clip Grid', named_sockets={'Grid': self, 'Min X': min_x, 'Min Y': min_y, 'Min Z': min_z, 'Max X': max_x, 'Max Y': max_y, 'Max Z': max_z}, data_type='VECTOR')
+        self._jump(node._out)
+        return node._second_out(self)
 
     @classmethod
-    def CombineList(cls, named_sockets=None, _0: Vector=None, **sockets):
+    def combine_list(cls, *values: Socket):
         """ > Node <&Node Combine List>
         
         **Fixed values**
@@ -1373,24 +1284,16 @@ class Vector(BaseVector):
         | --- | --- |
         | `data_type` | `'VECTOR'` |
         
-        Parameters
-        ----------
-        _0 : Vector, optional
-            socket '0'
-        
         Returns
         -------
-        Vector
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'_0': _0}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _named_sockets.update({_name: _value for _name, _value in (named_sockets or {}).items() if _value is not None})
-        _node = Node('Combine List', named_sockets=_named_sockets, data_type='VECTOR', **sockets)
-        return _node._out
+        node = Node('Combine List', *values, named_sockets={}, data_type='VECTOR')
+        return node._out
 
     @classmethod
-    def Combine(cls, x: Float=None, y: Float=None, z: Float=None):
+    def CombineXyz(cls, x: Float=None, y: Float=None, z: Float=None):
         """ > Node <&Node Combine XYZ>
         
         Parameters
@@ -1406,58 +1309,60 @@ class Vector(BaseVector):
         
         Returns
         -------
-        Vector
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'x': x, 'y': y, 'z': z}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Combine XYZ', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('Combine XYZ', named_sockets={'X': x, 'Y': y, 'Z': z})
+        return node._out
 
-    def cube_grid_topology(self, bounds_max: Vector=None, resolution_x: Integer=None, resolution_y: Integer=None, resolution_z: Integer=None, min_x: Integer=None, min_y: Integer=None, min_z: Integer=None):
-        """ > Node <&Node Cube Grid Topology>
+    @classmethod
+    def compare(cls, a: Vector=None, b: Vector=None, epsilon: Float=None, c: Float=None, angle: Float=None, operation: Literal['LESS_THAN', 'LESS_EQUAL', 'GREATER_THAN', 'GREATER_EQUAL', 'EQUAL', 'NOT_EQUAL']='GREATER_THAN', mode: Literal['ELEMENT', 'LENGTH', 'AVERAGE', 'DOT_PRODUCT', 'DIRECTION']='ELEMENT'):
+        """ > Node <&Node Compare>
         
-        Jump method: False.
+        **Fixed values**
         
-        self: socket 'Bounds Min'.
+        | Parameter | Value |
+        | --- | --- |
+        | `data_type` | `'VECTOR'` |
         
         Parameters
         ----------
-        bounds_max : Vector, optional
-            socket 'Bounds Max'
+        a : Vector, optional
+            socket 'A'
         
-        resolution_x : Integer, optional
-            socket 'Resolution X'
+        b : Vector, optional
+            socket 'B'
         
-        resolution_y : Integer, optional
-            socket 'Resolution Y'
+        epsilon : Float, optional
+            socket 'Epsilon'
         
-        resolution_z : Integer, optional
-            socket 'Resolution Z'
+        c : Float, optional
+            socket 'C'
         
-        min_x : Integer, optional
-            socket 'Min X'
+        angle : Float, optional
+            socket 'Angle'
         
-        min_y : Integer, optional
-            socket 'Min Y'
+        operation : Literal['Less Than', 'Less Than or Equal', 'Greater Than', 'Greater Than or Equal', 'Equal', 'Not Equal']
+            parameter `operation`
         
-        min_z : Integer, optional
-            socket 'Min Z'
+        mode : Literal['Element-Wise', 'Length', 'Average', 'Dot Product', 'Direction']
+            parameter `mode`
         
         Returns
         -------
-        Boolean
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'bounds_min': self, 'bounds_max': bounds_max, 'resolution_x': resolution_x, 'resolution_y': resolution_y, 'resolution_z': resolution_z, 'min_x': min_x, 'min_y': min_y, 'min_z': min_z}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Cube Grid Topology', named_sockets=_named_sockets)
-        return _node._out
+        _configuration = ('VECTOR', {'less_than': 'LESS_THAN', 'less_equal': 'LESS_EQUAL', 'greater_than': 'GREATER_THAN', 'greater_equal': 'GREATER_EQUAL', 'equal': 'EQUAL', 'not_equal': 'NOT_EQUAL', 'brighter': 'BRIGHTER', 'darker': 'DARKER', 'less than': 'LESS_THAN', 'less than or equal': 'LESS_EQUAL', 'greater than': 'GREATER_THAN', 'greater than or equal': 'GREATER_EQUAL', 'not equal': 'NOT_EQUAL'}.get(operation.lower(), operation), {'element': 'ELEMENT', 'length': 'LENGTH', 'average': 'AVERAGE', 'dot_product': 'DOT_PRODUCT', 'direction': 'DIRECTION', 'element-wise': 'ELEMENT', 'dot product': 'DOT_PRODUCT'}.get(mode.lower(), mode))
+        _node_sockets = {('VECTOR', 'LESS_THAN', 'ELEMENT'): {'A': a, 'B': b}, ('VECTOR', 'LESS_THAN', 'LENGTH'): {'A': a, 'B': b}, ('VECTOR', 'LESS_THAN', 'AVERAGE'): {'A': a, 'B': b}, ('VECTOR', 'LESS_THAN', 'DOT_PRODUCT'): {'A': a, 'B': b, 'C': c}, ('VECTOR', 'LESS_THAN', 'DIRECTION'): {'A': a, 'B': b, 'Angle': angle}, ('VECTOR', 'LESS_EQUAL', 'ELEMENT'): {'A': a, 'B': b}, ('VECTOR', 'LESS_EQUAL', 'LENGTH'): {'A': a, 'B': b}, ('VECTOR', 'LESS_EQUAL', 'AVERAGE'): {'A': a, 'B': b}, ('VECTOR', 'LESS_EQUAL', 'DOT_PRODUCT'): {'A': a, 'B': b, 'C': c}, ('VECTOR', 'LESS_EQUAL', 'DIRECTION'): {'A': a, 'B': b, 'Angle': angle}, ('VECTOR', 'GREATER_THAN', 'ELEMENT'): {'A': a, 'B': b}, ('VECTOR', 'GREATER_THAN', 'LENGTH'): {'A': a, 'B': b}, ('VECTOR', 'GREATER_THAN', 'AVERAGE'): {'A': a, 'B': b}, ('VECTOR', 'GREATER_THAN', 'DOT_PRODUCT'): {'A': a, 'B': b, 'C': c}, ('VECTOR', 'GREATER_THAN', 'DIRECTION'): {'A': a, 'B': b, 'Angle': angle}, ('VECTOR', 'GREATER_EQUAL', 'ELEMENT'): {'A': a, 'B': b}, ('VECTOR', 'GREATER_EQUAL', 'LENGTH'): {'A': a, 'B': b}, ('VECTOR', 'GREATER_EQUAL', 'AVERAGE'): {'A': a, 'B': b}, ('VECTOR', 'GREATER_EQUAL', 'DOT_PRODUCT'): {'A': a, 'B': b, 'C': c}, ('VECTOR', 'GREATER_EQUAL', 'DIRECTION'): {'A': a, 'B': b, 'Angle': angle}, ('VECTOR', 'EQUAL', 'ELEMENT'): {'A': a, 'B': b, 'Epsilon': epsilon}, ('VECTOR', 'EQUAL', 'LENGTH'): {'A': a, 'B': b, 'Epsilon': epsilon}, ('VECTOR', 'EQUAL', 'AVERAGE'): {'A': a, 'B': b, 'Epsilon': epsilon}, ('VECTOR', 'EQUAL', 'DOT_PRODUCT'): {'A': a, 'B': b, 'C': c, 'Epsilon': epsilon}, ('VECTOR', 'EQUAL', 'DIRECTION'): {'A': a, 'B': b, 'Angle': angle, 'Epsilon': epsilon}, ('VECTOR', 'NOT_EQUAL', 'ELEMENT'): {'A': a, 'B': b, 'Epsilon': epsilon}, ('VECTOR', 'NOT_EQUAL', 'LENGTH'): {'A': a, 'B': b, 'Epsilon': epsilon}, ('VECTOR', 'NOT_EQUAL', 'AVERAGE'): {'A': a, 'B': b, 'Epsilon': epsilon}, ('VECTOR', 'NOT_EQUAL', 'DOT_PRODUCT'): {'A': a, 'B': b, 'C': c, 'Epsilon': epsilon}, ('VECTOR', 'NOT_EQUAL', 'DIRECTION'): {'A': a, 'B': b, 'Angle': angle, 'Epsilon': epsilon}}[_configuration]
+        _node_args = {('VECTOR', 'LESS_THAN', 'ELEMENT'): [], ('VECTOR', 'LESS_THAN', 'LENGTH'): [], ('VECTOR', 'LESS_THAN', 'AVERAGE'): [], ('VECTOR', 'LESS_THAN', 'DOT_PRODUCT'): [], ('VECTOR', 'LESS_THAN', 'DIRECTION'): [], ('VECTOR', 'LESS_EQUAL', 'ELEMENT'): [], ('VECTOR', 'LESS_EQUAL', 'LENGTH'): [], ('VECTOR', 'LESS_EQUAL', 'AVERAGE'): [], ('VECTOR', 'LESS_EQUAL', 'DOT_PRODUCT'): [], ('VECTOR', 'LESS_EQUAL', 'DIRECTION'): [], ('VECTOR', 'GREATER_THAN', 'ELEMENT'): [], ('VECTOR', 'GREATER_THAN', 'LENGTH'): [], ('VECTOR', 'GREATER_THAN', 'AVERAGE'): [], ('VECTOR', 'GREATER_THAN', 'DOT_PRODUCT'): [], ('VECTOR', 'GREATER_THAN', 'DIRECTION'): [], ('VECTOR', 'GREATER_EQUAL', 'ELEMENT'): [], ('VECTOR', 'GREATER_EQUAL', 'LENGTH'): [], ('VECTOR', 'GREATER_EQUAL', 'AVERAGE'): [], ('VECTOR', 'GREATER_EQUAL', 'DOT_PRODUCT'): [], ('VECTOR', 'GREATER_EQUAL', 'DIRECTION'): [], ('VECTOR', 'EQUAL', 'ELEMENT'): [], ('VECTOR', 'EQUAL', 'LENGTH'): [], ('VECTOR', 'EQUAL', 'AVERAGE'): [], ('VECTOR', 'EQUAL', 'DOT_PRODUCT'): [], ('VECTOR', 'EQUAL', 'DIRECTION'): [], ('VECTOR', 'NOT_EQUAL', 'ELEMENT'): [], ('VECTOR', 'NOT_EQUAL', 'LENGTH'): [], ('VECTOR', 'NOT_EQUAL', 'AVERAGE'): [], ('VECTOR', 'NOT_EQUAL', 'DOT_PRODUCT'): [], ('VECTOR', 'NOT_EQUAL', 'DIRECTION'): []}[_configuration]
+        node = Node('Compare', *_node_args, named_sockets=_node_sockets, data_type='VECTOR', operation=operation, mode=mode)
+        return node._out
 
-    def deactivate_voxels(self, selection: Boolean=None):
+    def deactivate_voxels(self):
         """ > Node <&Node Deactivate Voxels>
         
-        Jump method: False.
+        Jump method: True.
         
         self: socket 'Grid'.
         
@@ -1467,48 +1372,15 @@ class Vector(BaseVector):
         | --- | --- |
         | `data_type` | `'VECTOR'` |
         
-        Parameters
-        ----------
-        selection : Boolean, optional
-            socket 'Selection'
-        
         Returns
         -------
-        Vector
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'grid': self, 'selection': selection}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Deactivate Voxels', named_sockets=_named_sockets, data_type='VECTOR')
-        return _node._out
-
-    def enable_output(self, enable: Boolean=None):
-        """ > Node <&Node Enable Output>
-        
-        Jump method: False.
-        
-        self: socket 'Value'.
-        
-        **Fixed values**
-        
-        | Parameter | Value |
-        | --- | --- |
-        | `data_type` | `'VECTOR'` |
-        
-        Parameters
-        ----------
-        enable : Boolean, optional
-            socket 'Enable'
-        
-        Returns
-        -------
-        Vector
-            socket 'OUT'
-        """
-        _named_sockets = {'enable': enable, 'value': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Enable Output', named_sockets=_named_sockets, data_type='VECTOR')
-        return _node._out
+        selection = self.get_selection()
+        node = Node('Deactivate Voxels', named_sockets={'Grid': self, 'Selection': selection}, data_type='VECTOR')
+        self._jump(node._out)
+        return node._second_out(self)
 
     def to_rotation(self):
         """ > Node <&Node Euler to Rotation>
@@ -1519,49 +1391,230 @@ class Vector(BaseVector):
         
         Returns
         -------
-        Rotation
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'euler': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Euler to Rotation', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('Euler to Rotation', named_sockets={'Euler': self})
+        return node._out
 
-    def gabor_texture(self, scale: Float=None, frequency: Float=None, anisotropy: Float=None, orientation: Float | Vector=None, gabor_type: Literal['2D', '3D']='2D'):
-        """ > Node <&Node Gabor Texture>
+    @classmethod
+    def evaluate_at_index(cls, value: Vector=None, index: Integer=None, domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']='POINT'):
+        """ > Node <&Node Evaluate at Index>
         
-        Jump method: False.
+        **Fixed values**
         
-        self: socket 'Vector'.
+        | Parameter | Value |
+        | --- | --- |
+        | `data_type` | `'FLOAT_VECTOR'` |
         
         Parameters
         ----------
-        scale : Float, optional
-            socket 'Scale'
+        value : Vector, optional
+            socket 'Value'
         
-        frequency : Float, optional
-            socket 'Frequency'
+        index : Integer, optional
+            socket 'Index'
         
-        anisotropy : Float, optional
-            socket 'Anisotropy'
-        
-        orientation : Float | Vector, optional
-            socket 'Orientation'
-        
-        gabor_type : Literal['2D', '3D']
-            parameter `gabor_type`
+        domain : Literal['Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer']
+            parameter `domain`
         
         Returns
         -------
-        Float
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'vector': self, 'scale': scale, 'frequency': frequency, 'anisotropy': anisotropy, 'orientation': orientation}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Gabor Texture', named_sockets=_named_sockets, gabor_type=gabor_type)
-        return _node._out
+        node = Node('Evaluate at Index', named_sockets={'Value': value, 'Index': index}, domain=domain, data_type='FLOAT_VECTOR')
+        return node._out
 
-    def get_component(self, index: Integer=None):
+    @classmethod
+    def evaluate_on_domain(cls, value: Vector=None, domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']='POINT'):
+        """ > Node <&Node Evaluate on Domain>
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `data_type` | `'FLOAT_VECTOR'` |
+        
+        Parameters
+        ----------
+        value : Vector, optional
+            socket 'Value'
+        
+        domain : Literal['Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer']
+            parameter `domain`
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Evaluate on Domain', named_sockets={'Value': value}, domain=domain, data_type='FLOAT_VECTOR')
+        return node._out
+
+    @classmethod
+    def field_average(cls, value: Vector=None, group_id: Integer=None, domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']='POINT'):
+        """ > Node <&Node Field Average>
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `data_type` | `'FLOAT_VECTOR'` |
+        
+        Parameters
+        ----------
+        value : Vector, optional
+            socket 'Value'
+        
+        group_id : Integer, optional
+            socket 'Group ID'
+        
+        domain : Literal['Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer']
+            parameter `domain`
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Field Average', named_sockets={'Value': value, 'Group ID': group_id}, data_type='FLOAT_VECTOR', domain=domain)
+        return node._out
+
+    @classmethod
+    def field_min_max(cls, value: Vector=None, group_id: Integer=None, domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']='POINT'):
+        """ > Node <&Node Field Min & Max>
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `data_type` | `'FLOAT_VECTOR'` |
+        
+        Parameters
+        ----------
+        value : Vector, optional
+            socket 'Value'
+        
+        group_id : Integer, optional
+            socket 'Group ID'
+        
+        domain : Literal['Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer']
+            parameter `domain`
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Field Min & Max', named_sockets={'Value': value, 'Group ID': group_id}, data_type='FLOAT_VECTOR', domain=domain)
+        return node._out
+
+    def field_to_grid(self, named_sockets=None, **sockets):
+        """ > Node <&Node Field to Grid>
+        
+        Jump method: False.
+        
+        self: socket 'Topology'.
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `data_type` | `'VECTOR'` |
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        _named_sockets = {'Topology': self}
+        _named_sockets.update({name: value for name, value in (named_sockets or {}).items() if value is not None})
+        node = Node('Field to Grid', named_sockets=_named_sockets, data_type='VECTOR', **sockets)
+        return node._out
+
+    @classmethod
+    def field_variance(cls, value: Vector=None, group_id: Integer=None, domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']='POINT'):
+        """ > Node <&Node Field Variance>
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `data_type` | `'FLOAT_VECTOR'` |
+        
+        Parameters
+        ----------
+        value : Vector, optional
+            socket 'Value'
+        
+        group_id : Integer, optional
+            socket 'Group ID'
+        
+        domain : Literal['Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer']
+            parameter `domain`
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Field Variance', named_sockets={'Value': value, 'Group ID': group_id}, data_type='FLOAT_VECTOR', domain=domain)
+        return node._out
+
+    @classmethod
+    def filter_list(cls, list: Vector=None, selection: Boolean=None):
+        """ > Node <&Node Filter List>
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `socket_type` | `'VECTOR'` |
+        
+        Parameters
+        ----------
+        list : Vector, optional
+            socket 'List'
+        
+        selection : Boolean, optional
+            socket 'Selection'
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Filter List', named_sockets={'List': list, 'Selection': selection}, socket_type='VECTOR')
+        return node._out
+
+    @classmethod
+    def get_list_item(cls, list: Vector=None, index: Integer=None):
+        """ > Node <&Node Get List Item>
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `socket_type` | `'VECTOR'` |
+        
+        Parameters
+        ----------
+        list : Vector, optional
+            socket 'List'
+        
+        index : Integer, optional
+            socket 'Index'
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Get List Item', named_sockets={'List': list, 'Index': index}, socket_type='VECTOR')
+        return node._out
+
+    def get_vector_component(self, index: Integer=None):
         """ > Node <&Node Get Vector Component>
         
         Jump method: False.
@@ -1575,37 +1628,12 @@ class Vector(BaseVector):
         
         Returns
         -------
-        Float
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'vector': self, 'index': index}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Get Vector Component', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('Get Vector Component', named_sockets={'Vector': self, 'Index': index})
+        return node._out
 
-    def gradient_texture(self, gradient_type: Literal['LINEAR', 'QUADRATIC', 'EASING', 'DIAGONAL', 'SPHERICAL', 'QUADRATIC_SPHERE', 'RADIAL']='LINEAR'):
-        """ > Node <&Node Gradient Texture>
-        
-        Jump method: False.
-        
-        self: socket 'Vector'.
-        
-        Parameters
-        ----------
-        gradient_type : Literal['Linear', 'Quadratic', 'Easing', 'Diagonal', 'Spherical', 'Quadratic Sphere', 'Radial']
-            parameter `gradient_type`
-        
-        Returns
-        -------
-        Color
-            socket 'OUT'
-        """
-        _named_sockets = {'vector': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Gradient Texture', named_sockets=_named_sockets, gradient_type=gradient_type)
-        return _node._out
-
-    @property
     def grid_curl(self):
         """ > Node <&Node Grid Curl>
         
@@ -1615,18 +1643,16 @@ class Vector(BaseVector):
         
         Returns
         -------
-        Vector
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'grid': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Grid Curl', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('Grid Curl', named_sockets={'Grid': self})
+        return node._out
 
-    def grid_dilate_erode(self, connectivity: Literal['Face', 'Edge', 'Vertex']=None, tiles: Literal['Ignore', 'Expand', 'Preserve']=None, steps: Integer=None):
+    def grid_dilate_erode(self, connectivity: Menu=None, tiles: Menu=None, steps: Integer=None):
         """ > Node <&Node Grid Dilate & Erode>
         
-        Jump method: False.
+        Jump method: True.
         
         self: socket 'Grid'.
         
@@ -1638,26 +1664,24 @@ class Vector(BaseVector):
         
         Parameters
         ----------
-        connectivity : menu='Face', optional
-            ('Face', 'Edge', 'Vertex')
+        connectivity : Menu, optional
+            socket 'Connectivity'
         
-        tiles : menu='Preserve', optional
-            ('Ignore', 'Expand', 'Preserve')
+        tiles : Menu, optional
+            socket 'Tiles'
         
         steps : Integer, optional
             socket 'Steps'
         
         Returns
         -------
-        Vector
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'grid': self, 'connectivity': connectivity, 'tiles': tiles, 'steps': steps}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Grid Dilate & Erode', named_sockets=_named_sockets, data_type='VECTOR')
-        return _node._out
+        node = Node('Grid Dilate & Erode', named_sockets={'Grid': self, 'Connectivity': connectivity, 'Tiles': tiles, 'Steps': steps}, data_type='VECTOR')
+        self._jump(node._out)
+        return node._second_out(self)
 
-    @property
     def grid_divergence(self):
         """ > Node <&Node Grid Divergence>
         
@@ -1667,43 +1691,16 @@ class Vector(BaseVector):
         
         Returns
         -------
-        Float
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'grid': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Grid Divergence', named_sockets=_named_sockets)
-        return _node._out
-
-    @classmethod
-    def GridInfo(cls, grid: Vector=None):
-        """ > Node <&Node Grid Info>
-        
-        **Fixed values**
-        
-        | Parameter | Value |
-        | --- | --- |
-        | `data_type` | `'VECTOR'` |
-        
-        Parameters
-        ----------
-        grid : Vector, optional
-            socket 'Grid'
-        
-        Returns
-        -------
-        Matrix
-            socket 'OUT'
-        """
-        _named_sockets = {'grid': grid}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Grid Info', named_sockets=_named_sockets, data_type='VECTOR')
-        return _node._out
+        node = Node('Grid Divergence', named_sockets={'Grid': self})
+        return node._out
 
     def grid_mean(self, width: Integer=None, iterations: Integer=None):
         """ > Node <&Node Grid Mean>
         
-        Jump method: False.
+        Jump method: True.
         
         self: socket 'Grid'.
         
@@ -1723,18 +1720,17 @@ class Vector(BaseVector):
         
         Returns
         -------
-        Vector
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'grid': self, 'width': width, 'iterations': iterations}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Grid Mean', named_sockets=_named_sockets, data_type='VECTOR')
-        return _node._out
+        node = Node('Grid Mean', named_sockets={'Grid': self, 'Width': width, 'Iterations': iterations}, data_type='VECTOR')
+        self._jump(node._out)
+        return node._second_out(self)
 
     def grid_median(self, width: Integer=None, iterations: Integer=None):
         """ > Node <&Node Grid Median>
         
-        Jump method: False.
+        Jump method: True.
         
         self: socket 'Grid'.
         
@@ -1754,41 +1750,15 @@ class Vector(BaseVector):
         
         Returns
         -------
-        Vector
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'grid': self, 'width': width, 'iterations': iterations}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Grid Median', named_sockets=_named_sockets, data_type='VECTOR')
-        return _node._out
+        node = Node('Grid Median', named_sockets={'Grid': self, 'Width': width, 'Iterations': iterations}, data_type='VECTOR')
+        self._jump(node._out)
+        return node._second_out(self)
 
     @classmethod
-    def GridToPoints(cls, grid: Vector=None):
-        """ > Node <&Node Grid to Points>
-        
-        **Fixed values**
-        
-        | Parameter | Value |
-        | --- | --- |
-        | `data_type` | `'VECTOR'` |
-        
-        Parameters
-        ----------
-        grid : Vector, optional
-            socket 'Grid'
-        
-        Returns
-        -------
-        Cloud
-            socket 'OUT'
-        """
-        _named_sockets = {'grid': grid}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Grid to Points', named_sockets=_named_sockets, data_type='VECTOR')
-        return _node._out
-
-    @classmethod
-    def GridTopologyBoolean(cls, *grid_2: Vector, operation: Literal['Intersect', 'Union', 'Difference']=None, grid_1: Vector=None):
+    def GridTopologyBoolean(cls, *grid_2: Vector, operation: Menu=None, grid_1: Vector=None):
         """ > Node <&Node Grid Topology Boolean>
         
         **Fixed values**
@@ -1799,31 +1769,26 @@ class Vector(BaseVector):
         
         Parameters
         ----------
-        operation : menu='Intersect', optional
-            ('Intersect', 'Union', 'Difference')
+        grid_2 : Vector, optional
+            socket 'Grid 2'
+        
+        operation : Menu, optional
+            socket 'Operation'
         
         grid_1 : Vector, optional
             socket 'Grid 1'
         
-        grid_2 : Vector, optional
-            socket 'Grid 2'
-        
         Returns
         -------
-        Vector
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'operation': operation, 'grid_1': grid_1, 'grid_2': list(grid_2)}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Grid Topology Boolean', named_sockets=_named_sockets, data_type='VECTOR')
-        return _node._out
+        node = Node('Grid Topology Boolean', *[*list(grid_2)], named_sockets={'Operation': operation, 'Grid 1': grid_1}, data_type='VECTOR')
+        return node._out
 
-    def implicit_conversion(self, socket_idname='NodeSocketColor'):
-        """ > Node <&Node Implicit Conversion>
-        
-        Jump method: False.
-        
-        self: socket 'Value'.
+    @classmethod
+    def hash_value(cls, value: Vector=None, seed: Integer=None):
+        """ > Node <&Node Hash Value>
         
         **Fixed values**
         
@@ -1833,18 +1798,45 @@ class Vector(BaseVector):
         
         Parameters
         ----------
+        value : Vector, optional
+            socket 'Value'
+        
+        seed : Integer, optional
+            socket 'Seed'
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Hash Value', named_sockets={'Value': value, 'Seed': seed}, data_type='VECTOR')
+        return node._out
+
+    @classmethod
+    def implicit_conversion(cls, value: Vector=None, socket_idname: str='NodeSocketColor'):
+        """ > Node <&Node Implicit Conversion>
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `data_type` | `'VECTOR'` |
+        
+        Parameters
+        ----------
+        value : Vector, optional
+            socket 'Value'
+        
         socket_idname : str
             parameter `socket_idname`
         
         Returns
         -------
-        Vector
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'value': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Implicit Conversion', named_sockets=_named_sockets, socket_idname=socket_idname, data_type='VECTOR')
-        return _node._out
+        node = Node('Implicit Conversion', named_sockets={'Value': value}, data_type='VECTOR', socket_idname=socket_idname)
+        return node._out
 
     def index_of_nearest(self, group_id: Integer=None):
         """ > Node <&Node Index of Nearest>
@@ -1860,17 +1852,15 @@ class Vector(BaseVector):
         
         Returns
         -------
-        Integer
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'position': self, 'group_id': group_id}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Index of Nearest', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('Index of Nearest', named_sockets={'Position': self, 'Group ID': group_id})
+        return node._out
 
     @classmethod
-    def IndexSwitch(cls, named_sockets=None, index: Integer=None, _0: Vector=None, _1: Vector=None, **sockets):
-        """ > Node <&Node Index Switch>
+    def list_length(cls, list: Vector=None):
+        """ > Node <&Node List Length>
         
         **Fixed values**
         
@@ -1880,60 +1870,20 @@ class Vector(BaseVector):
         
         Parameters
         ----------
-        index : Integer, optional
-            socket 'Index'
-        
-        _0 : Vector, optional
-            socket '0'
-        
-        _1 : Vector, optional
-            socket '1'
+        list : Vector, optional
+            socket 'List'
         
         Returns
         -------
-        Vector
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'index': index, '_0': _0, '_1': _1}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _named_sockets.update({_name: _value for _name, _value in (named_sockets or {}).items() if _value is not None})
-        _node = Node('Index Switch', named_sockets=_named_sockets, data_type='VECTOR', **sockets)
-        return _node._out
+        node = Node('List Length', named_sockets={'List': list}, data_type='VECTOR')
+        return node._out
 
-    def magic_texture(self, scale: Float=None, distortion: Float=None, turbulence_depth=2):
-        """ > Node <&Node Magic Texture>
-        
-        Jump method: False.
-        
-        self: socket 'Vector'.
-        
-        Parameters
-        ----------
-        scale : Float, optional
-            socket 'Scale'
-        
-        distortion : Float, optional
-            socket 'Distortion'
-        
-        turbulence_depth : int
-            parameter `turbulence_depth`
-        
-        Returns
-        -------
-        Color
-            socket 'OUT'
-        """
-        _named_sockets = {'vector': self, 'scale': scale, 'distortion': distortion}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Magic Texture', named_sockets=_named_sockets, turbulence_depth=turbulence_depth)
-        return _node._out
-
-    def map_range(self, from_min: Vector=None, from_max: Vector=None, to_min: Vector=None, to_max: Vector=None, steps: Vector=None, clamp=True, interpolation_type: Literal['LINEAR', 'STEPPED', 'SMOOTHSTEP', 'SMOOTHERSTEP']='LINEAR'):
+    @classmethod
+    def map_range(cls, vector: Vector=None, from_min: Vector=None, from_max: Vector=None, to_min: Vector=None, to_max: Vector=None, steps: Vector=None, clamp: bool=True, interpolation_type: Literal['LINEAR', 'STEPPED', 'SMOOTHSTEP', 'SMOOTHERSTEP']='LINEAR'):
         """ > Node <&Node Map Range>
-        
-        Jump method: False.
-        
-        self: socket 'Vector'.
         
         **Fixed values**
         
@@ -1943,6 +1893,9 @@ class Vector(BaseVector):
         
         Parameters
         ----------
+        vector : Vector, optional
+            socket 'Vector'
+        
         from_min : Vector, optional
             socket 'From Min'
         
@@ -1966,99 +1919,16 @@ class Vector(BaseVector):
         
         Returns
         -------
-        Vector
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'vector': self, 'from_min': from_min, 'from_max': from_max, 'to_min': to_min, 'to_max': to_max, 'steps': steps}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Map Range', named_sockets=_named_sockets, clamp=clamp, interpolation_type=interpolation_type, data_type='FLOAT_VECTOR')
-        return _node._out
+        _configuration = ({'linear': 'LINEAR', 'stepped': 'STEPPED', 'smoothstep': 'SMOOTHSTEP', 'smootherstep': 'SMOOTHERSTEP', 'stepped linear': 'STEPPED', 'smooth step': 'SMOOTHSTEP', 'smoother step': 'SMOOTHERSTEP'}.get(interpolation_type.lower(), interpolation_type), 'FLOAT_VECTOR')
+        _node_sockets = {('LINEAR', 'FLOAT_VECTOR'): {'Vector': vector, 'From Min': from_min, 'From Max': from_max, 'To Min': to_min, 'To Max': to_max}, ('STEPPED', 'FLOAT_VECTOR'): {'Vector': vector, 'From Min': from_min, 'From Max': from_max, 'To Min': to_min, 'To Max': to_max, 'Steps': steps}, ('SMOOTHSTEP', 'FLOAT_VECTOR'): {'Vector': vector, 'From Min': from_min, 'From Max': from_max, 'To Min': to_min, 'To Max': to_max}, ('SMOOTHERSTEP', 'FLOAT_VECTOR'): {'Vector': vector, 'From Min': from_min, 'From Max': from_max, 'To Min': to_min, 'To Max': to_max}}[_configuration]
+        _node_args = {('LINEAR', 'FLOAT_VECTOR'): [], ('STEPPED', 'FLOAT_VECTOR'): [], ('SMOOTHSTEP', 'FLOAT_VECTOR'): [], ('SMOOTHERSTEP', 'FLOAT_VECTOR'): []}[_configuration]
+        node = Node('Map Range', *_node_args, named_sockets=_node_sockets, interpolation_type=interpolation_type, data_type='FLOAT_VECTOR', clamp=clamp)
+        return node._out
 
-    @classmethod
-    def MenuSwitch(cls, named_sockets=None, menu: Literal['A', 'B']=None, a: Vector=None, b: Vector=None, **sockets):
-        """ > Node <&Node Menu Switch>
-        
-        **Fixed values**
-        
-        | Parameter | Value |
-        | --- | --- |
-        | `data_type` | `'VECTOR'` |
-        
-        Parameters
-        ----------
-        menu : menu='A', optional
-            ('A', 'B')
-        
-        a : Vector, optional
-            socket 'A'
-        
-        b : Vector, optional
-            socket 'B'
-        
-        Returns
-        -------
-        Vector
-            socket 'OUT'
-        """
-        _named_sockets = {'menu': menu, 'a': a, 'b': b}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _named_sockets.update({_name: _value for _name, _value in (named_sockets or {}).items() if _value is not None})
-        _node = Node('Menu Switch', named_sockets=_named_sockets, data_type='VECTOR', **sockets)
-        return _node._out
-
-    def noise_texture(self, w: Float=None, scale: Float=None, detail: Float=None, roughness: Float=None, lacunarity: Float=None, offset: Float=None, gain: Float=None, distortion: Float=None, noise_dimensions: Literal['1D', '2D', '3D', '4D']='3D', noise_type: Literal['MULTIFRACTAL', 'RIDGED_MULTIFRACTAL', 'HYBRID_MULTIFRACTAL', 'FBM', 'HETERO_TERRAIN']='FBM', normalize=True):
-        """ > Node <&Node Noise Texture>
-        
-        Jump method: False.
-        
-        self: socket 'Vector'.
-        
-        Parameters
-        ----------
-        w : Float, optional
-            socket 'W'
-        
-        scale : Float, optional
-            socket 'Scale'
-        
-        detail : Float, optional
-            socket 'Detail'
-        
-        roughness : Float, optional
-            socket 'Roughness'
-        
-        lacunarity : Float, optional
-            socket 'Lacunarity'
-        
-        offset : Float, optional
-            socket 'Offset'
-        
-        gain : Float, optional
-            socket 'Gain'
-        
-        distortion : Float, optional
-            socket 'Distortion'
-        
-        noise_dimensions : Literal['1D', '2D', '3D', '4D']
-            parameter `noise_dimensions`
-        
-        noise_type : Literal['Multifractal', 'Ridged Multifractal', 'Hybrid Multifractal', 'fBM', 'Hetero Terrain']
-            parameter `noise_type`
-        
-        normalize : bool
-            parameter `normalize`
-        
-        Returns
-        -------
-        Float
-            socket 'OUT'
-        """
-        _named_sockets = {'vector': self, 'w': w, 'scale': scale, 'detail': detail, 'roughness': roughness, 'lacunarity': lacunarity, 'offset': offset, 'gain': gain, 'distortion': distortion}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Noise Texture', named_sockets=_named_sockets, noise_dimensions=noise_dimensions, noise_type=noise_type, normalize=normalize)
-        return _node._out
-
-    def pack_uv_islands(self, selection: Boolean=None, margin: Float=None, rotate: Boolean=None, method: Literal['Bounding Box', 'Convex Hull', 'Exact Shape']=None, bottom_left: Vector=None, top_right: Vector=None):
+    def pack_uv_islands(self, margin: Float=None, rotate: Boolean=None, method: Menu=None, bottom_left: Vector=None, top_right: Vector=None):
         """ > Node <&Node Pack UV Islands>
         
         Jump method: False.
@@ -2067,17 +1937,14 @@ class Vector(BaseVector):
         
         Parameters
         ----------
-        selection : Boolean, optional
-            socket 'Selection'
-        
         margin : Float, optional
             socket 'Margin'
         
         rotate : Boolean, optional
             socket 'Rotate'
         
-        method : menu='Bounding Box', optional
-            ('Bounding Box', 'Convex Hull', 'Exact Shape')
+        method : Menu, optional
+            socket 'Method'
         
         bottom_left : Vector, optional
             socket 'Bottom Left'
@@ -2087,13 +1954,12 @@ class Vector(BaseVector):
         
         Returns
         -------
-        Vector
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'uv': self, 'selection': selection, 'margin': margin, 'rotate': rotate, 'method': method, 'bottom_left': bottom_left, 'top_right': top_right}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Pack UV Islands', named_sockets=_named_sockets)
-        return _node._out
+        selection = self.get_selection()
+        node = Node('Pack UV Islands', named_sockets={'UV': self, 'Selection': selection, 'Margin': margin, 'Rotate': rotate, 'Method': method, 'Bottom Left': bottom_left, 'Top Right': top_right})
+        return node._out
 
     def project_point(self, transform: Matrix=None):
         """ > Node <&Node Project Point>
@@ -2109,18 +1975,16 @@ class Vector(BaseVector):
         
         Returns
         -------
-        Vector
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'vector': self, 'transform': transform}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Project Point', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('Project Point', named_sockets={'Vector': self, 'Transform': transform})
+        return node._out
 
-    def prune_grid(self, mode: Literal['Inactive', 'Threshold', 'SDF']=None, threshold: Vector=None):
+    def prune_grid(self, mode: Menu=None, threshold: Vector=None):
         """ > Node <&Node Prune Grid>
         
-        Jump method: False.
+        Jump method: True.
         
         self: socket 'Grid'.
         
@@ -2132,23 +1996,22 @@ class Vector(BaseVector):
         
         Parameters
         ----------
-        mode : menu='Threshold', optional
-            ('Inactive', 'Threshold', 'SDF')
+        mode : Menu, optional
+            socket 'Mode'
         
         threshold : Vector, optional
             socket 'Threshold'
         
         Returns
         -------
-        Vector
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'grid': self, 'mode': mode, 'threshold': threshold}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Prune Grid', named_sockets=_named_sockets, data_type='VECTOR')
-        return _node._out
+        node = Node('Prune Grid', named_sockets={'Grid': self, 'Mode': mode, 'Threshold': threshold}, data_type='VECTOR')
+        self._jump(node._out)
+        return node._second_out(self)
 
-    def radial_tiling(self, sides: Float=None, roundness: Float=None, normalize=False):
+    def radial_tiling(self, sides: Float=None, roundness: Float=None, normalize: bool=False):
         """ > Node <&Node Radial Tiling>
         
         Jump method: False.
@@ -2168,16 +2031,14 @@ class Vector(BaseVector):
         
         Returns
         -------
-        Vector
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'vector': self, 'sides': sides, 'roundness': roundness}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Radial Tiling', named_sockets=_named_sockets, normalize=normalize)
-        return _node._out
+        node = Node('Radial Tiling', named_sockets={'Vector': self, 'Sides': sides, 'Roundness': roundness}, normalize=normalize)
+        return node._out
 
     @classmethod
-    def Random(cls, min: Vector=None, max: Vector=None, id: Integer=None, seed: Integer=None):
+    def random_value(cls, min: Vector=None, max: Vector=None, id: Integer=None, seed: Integer=None):
         """ > Node <&Node Random Value>
         
         **Fixed values**
@@ -2202,15 +2063,50 @@ class Vector(BaseVector):
         
         Returns
         -------
-        Vector
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'min': min, 'max': max, 'id': id, 'seed': seed}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Random Value', named_sockets=_named_sockets, data_type='FLOAT_VECTOR')
-        return _node._out
+        node = Node('Random Value', named_sockets={'Min': min, 'Max': max, 'ID': id, 'Seed': seed}, data_type='FLOAT_VECTOR')
+        return node._out
 
-    def sample_grid(self, position: Vector=None, interpolation: Literal['Nearest Neighbor', 'Trilinear', 'Triquadratic', 'Tricubic']=None):
+    def rotate_vector(self, rotation: Rotation=None):
+        """ > Node <&Node Rotate Vector>
+        
+        Jump method: False.
+        
+        self: socket 'Vector'.
+        
+        Parameters
+        ----------
+        rotation : Rotation, optional
+            socket 'Rotation'
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Rotate Vector', named_sockets={'Vector': self, 'Rotation': rotation})
+        return node._out
+
+    @classmethod
+    def FromRotation(cls, rotation: Rotation=None):
+        """ > Node <&Node Rotation to Euler>
+        
+        Parameters
+        ----------
+        rotation : Rotation, optional
+            socket 'Rotation'
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Rotation to Euler', named_sockets={'Rotation': rotation})
+        return node._out
+
+    def sample_grid(self, position: Vector=None, interpolation: Menu=None):
         """ > Node <&Node Sample Grid>
         
         Jump method: False.
@@ -2228,18 +2124,16 @@ class Vector(BaseVector):
         position : Vector, optional
             socket 'Position'
         
-        interpolation : menu='Trilinear', optional
-            ('Nearest Neighbor', 'Trilinear', 'Triquadratic', 'Tricubic')
+        interpolation : Menu, optional
+            socket 'Interpolation'
         
         Returns
         -------
-        Vector
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'grid': self, 'position': position, 'interpolation': interpolation}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Sample Grid', named_sockets=_named_sockets, data_type='VECTOR')
-        return _node._out
+        node = Node('Sample Grid', named_sockets={'Grid': self, 'Position': position, 'Interpolation': interpolation}, data_type='VECTOR')
+        return node._out
 
     def sample_grid_index(self, x: Integer=None, y: Integer=None, z: Integer=None):
         """ > Node <&Node Sample Grid Index>
@@ -2267,13 +2161,11 @@ class Vector(BaseVector):
         
         Returns
         -------
-        Vector
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'grid': self, 'x': x, 'y': y, 'z': z}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Sample Grid Index', named_sockets=_named_sockets, data_type='VECTOR')
-        return _node._out
+        node = Node('Sample Grid Index', named_sockets={'Grid': self, 'X': x, 'Y': y, 'Z': z}, data_type='VECTOR')
+        return node._out
 
     def separate_xyz(self):
         """ > Node <&Node Separate XYZ>
@@ -2284,17 +2176,16 @@ class Vector(BaseVector):
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
-        _named_sockets = {'vector': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Separate XYZ', named_sockets=_named_sockets)
-        return _node
+        node = Node('Separate XYZ', named_sockets={'Vector': self})
+        return node._out
 
     def set_grid_background(self, background: Vector=None, update_inactive: Boolean=None):
         """ > Node <&Node Set Grid Background>
         
-        Jump method: False.
+        Jump method: True.
         
         self: socket 'Grid'.
         
@@ -2314,17 +2205,19 @@ class Vector(BaseVector):
         
         Returns
         -------
-        Vector
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'grid': self, 'background': background, 'update_inactive': update_inactive}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Set Grid Background', named_sockets=_named_sockets, data_type='VECTOR')
-        return _node._out
+        node = Node('Set Grid Background', named_sockets={'Grid': self, 'Background': background, 'Update Inactive': update_inactive}, data_type='VECTOR')
+        self._jump(node._out)
+        return node._second_out(self)
 
-    @classmethod
-    def SetGridTransform(cls, grid: Vector=None, transform: Matrix=None):
+    def set_grid_transform(self, transform: Matrix=None):
         """ > Node <&Node Set Grid Transform>
+        
+        Jump method: False.
+        
+        self: socket 'Grid'.
         
         **Fixed values**
         
@@ -2334,21 +2227,48 @@ class Vector(BaseVector):
         
         Parameters
         ----------
-        grid : Vector, optional
-            socket 'Grid'
-        
         transform : Matrix, optional
             socket 'Transform'
         
         Returns
         -------
-        Boolean
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'grid': grid, 'transform': transform}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Set Grid Transform', named_sockets=_named_sockets, data_type='VECTOR')
-        return _node._out
+        node = Node('Set Grid Transform', named_sockets={'Grid': self, 'Transform': transform}, data_type='VECTOR')
+        return node._out
+
+    @classmethod
+    def sort_list(cls, list: Vector=None, selection: Boolean=None, group_id: Integer=None, sort_weight: Float=None):
+        """ > Node <&Node Sort List>
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `socket_type` | `'VECTOR'` |
+        
+        Parameters
+        ----------
+        list : Vector, optional
+            socket 'List'
+        
+        selection : Boolean, optional
+            socket 'Selection'
+        
+        group_id : Integer, optional
+            socket 'Group ID'
+        
+        sort_weight : Float, optional
+            socket 'Sort Weight'
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Sort List', named_sockets={'List': list, 'Selection': selection, 'Group ID': group_id, 'Sort Weight': sort_weight}, socket_type='VECTOR')
+        return node._out
 
     def transform_direction(self, transform: Matrix=None):
         """ > Node <&Node Transform Direction>
@@ -2364,13 +2284,11 @@ class Vector(BaseVector):
         
         Returns
         -------
-        Vector
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'direction': self, 'transform': transform}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Transform Direction', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('Transform Direction', named_sockets={'Direction': self, 'Transform': transform})
+        return node._out
 
     def transform_point(self, transform: Matrix=None):
         """ > Node <&Node Transform Point>
@@ -2386,15 +2304,13 @@ class Vector(BaseVector):
         
         Returns
         -------
-        Vector
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'vector': self, 'transform': transform}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Transform Point', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('Transform Point', named_sockets={'Vector': self, 'Transform': transform})
+        return node._out
 
-    def math(self, vector_1: Vector=None, multiplier: Vector=None, incident: Vector=None, exponent: Vector=None, max: Vector=None, increment: Vector=None, addend: Vector=None, reference: Vector=None, min: Vector=None, ior: Float=None, scale: Float=None, operation: Literal['ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'MULTIPLY_ADD', 'CROSS_PRODUCT', 'PROJECT', 'REFLECT', 'REFRACT', 'FACEFORWARD', 'DOT_PRODUCT', 'DISTANCE', 'LENGTH', 'SCALE', 'NORMALIZE', 'ABSOLUTE', 'POWER', 'SIGN', 'MINIMUM', 'MAXIMUM', 'ROUND', 'FLOOR', 'CEIL', 'FRACTION', 'MODULO', 'WRAP', 'SNAP', 'SINE', 'COSINE', 'TANGENT']='ADD'):
+    def vector_math(self, vector_1: Vector=None, multiplier: Vector=None, incident: Vector=None, exponent: Vector=None, max: Vector=None, increment: Vector=None, addend: Vector=None, reference: Vector=None, min: Vector=None, scale: Float=None, ior: Float=None, operation: Literal['ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'MULTIPLY_ADD', 'CROSS_PRODUCT', 'PROJECT', 'REFLECT', 'REFRACT', 'FACEFORWARD', 'DOT_PRODUCT', 'DISTANCE', 'LENGTH', 'SCALE', 'NORMALIZE', 'ABSOLUTE', 'POWER', 'SIGN', 'MINIMUM', 'MAXIMUM', 'ROUND', 'FLOOR', 'CEIL', 'FRACTION', 'MODULO', 'WRAP', 'SNAP', 'SINE', 'COSINE', 'TANGENT']='ADD'):
         """ > Node <&Node Vector Math>
         
         Jump method: False.
@@ -2430,29 +2346,27 @@ class Vector(BaseVector):
         min : Vector, optional
             socket 'Min'
         
-        ior : Float, optional
-            socket 'IOR'
-        
         scale : Float, optional
             socket 'Scale'
+        
+        ior : Float, optional
+            socket 'IOR'
         
         operation : Literal['Add', 'Subtract', 'Multiply', 'Divide', 'Multiply Add', 'Cross Product', 'Project', 'Reflect', 'Refract', 'Faceforward', 'Dot Product', 'Distance', 'Length', 'Scale', 'Normalize', 'Absolute', 'Power', 'Sign', 'Minimum', 'Maximum', 'Round', 'Floor', 'Ceil', 'Fraction', 'Modulo', 'Wrap', 'Snap', 'Sine', 'Cosine', 'Tangent']
             parameter `operation`
         
         Returns
         -------
-        Vector | Float
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'vector': self, 'base': self, 'vector_1': vector_1, 'multiplier': multiplier, 'incident': incident, 'exponent': exponent, 'max': max, 'increment': increment, 'addend': addend, 'reference': reference, 'min': min, 'ior': ior, 'scale': scale}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _values = {('ADD',): ['vector', 'vector_1'], ('SUBTRACT',): ['vector', 'vector_1'], ('MULTIPLY',): ['vector', 'vector_1'], ('DIVIDE',): ['vector', 'vector_1'], ('MULTIPLY_ADD',): ['vector', 'multiplier', 'addend'], ('CROSS_PRODUCT',): ['vector', 'vector_1'], ('PROJECT',): ['vector', 'vector_1'], ('REFLECT',): ['vector', 'vector_1'], ('REFRACT',): ['vector', 'vector_1', 'ior'], ('FACEFORWARD',): ['vector', 'incident', 'reference'], ('DOT_PRODUCT',): ['vector', 'vector_1'], ('DISTANCE',): ['vector', 'vector_1'], ('LENGTH',): ['vector'], ('SCALE',): ['vector', 'scale'], ('NORMALIZE',): ['vector'], ('ABSOLUTE',): ['vector'], ('POWER',): ['base', 'exponent'], ('SIGN',): ['vector'], ('MINIMUM',): ['vector', 'vector_1'], ('MAXIMUM',): ['vector', 'vector_1'], ('ROUND',): ['vector'], ('FLOOR',): ['vector'], ('CEIL',): ['vector'], ('FRACTION',): ['vector'], ('MODULO',): ['vector', 'vector_1'], ('WRAP',): ['vector', 'max', 'min'], ('SNAP',): ['vector', 'increment'], ('SINE',): ['vector'], ('COSINE',): ['vector'], ('TANGENT',): ['vector']}
         _configuration = ({'add': 'ADD', 'subtract': 'SUBTRACT', 'multiply': 'MULTIPLY', 'divide': 'DIVIDE', 'multiply_add': 'MULTIPLY_ADD', 'cross_product': 'CROSS_PRODUCT', 'project': 'PROJECT', 'reflect': 'REFLECT', 'refract': 'REFRACT', 'faceforward': 'FACEFORWARD', 'dot_product': 'DOT_PRODUCT', 'distance': 'DISTANCE', 'length': 'LENGTH', 'scale': 'SCALE', 'normalize': 'NORMALIZE', 'absolute': 'ABSOLUTE', 'power': 'POWER', 'sign': 'SIGN', 'minimum': 'MINIMUM', 'maximum': 'MAXIMUM', 'round': 'ROUND', 'floor': 'FLOOR', 'ceil': 'CEIL', 'fraction': 'FRACTION', 'modulo': 'MODULO', 'wrap': 'WRAP', 'snap': 'SNAP', 'sine': 'SINE', 'cosine': 'COSINE', 'tangent': 'TANGENT', 'multiply add': 'MULTIPLY_ADD', 'cross product': 'CROSS_PRODUCT', 'dot product': 'DOT_PRODUCT'}.get(operation.lower(), operation),)
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _name in _values[_configuration]}
-        _node = Node('Vector Math', named_sockets=_named_sockets, operation=operation)
-        return _node._out
+        _node_sockets = {('ADD',): {'Vector': self, 'Vector_1': vector_1}, ('SUBTRACT',): {'Vector': self, 'Vector_1': vector_1}, ('MULTIPLY',): {'Vector': self, 'Vector_1': vector_1}, ('DIVIDE',): {'Vector': self, 'Vector_1': vector_1}, ('MULTIPLY_ADD',): {'Vector': self, 'Multiplier': multiplier, 'Addend': addend}, ('CROSS_PRODUCT',): {'Vector': self, 'Vector_1': vector_1}, ('PROJECT',): {'Vector': self, 'Vector_1': vector_1}, ('REFLECT',): {'Vector': self, 'Vector_1': vector_1}, ('REFRACT',): {'Vector': self, 'Vector_1': vector_1, 'IOR': ior}, ('FACEFORWARD',): {'Vector': self, 'Incident': incident, 'Reference': reference}, ('DOT_PRODUCT',): {'Vector': self, 'Vector_1': vector_1}, ('DISTANCE',): {'Vector': self, 'Vector_1': vector_1}, ('LENGTH',): {'Vector': self}, ('SCALE',): {'Vector': self, 'Scale': scale}, ('NORMALIZE',): {'Vector': self}, ('ABSOLUTE',): {'Vector': self}, ('POWER',): {'Base': self, 'Exponent': exponent}, ('SIGN',): {'Vector': self}, ('MINIMUM',): {'Vector': self, 'Vector_1': vector_1}, ('MAXIMUM',): {'Vector': self, 'Vector_1': vector_1}, ('ROUND',): {'Vector': self}, ('FLOOR',): {'Vector': self}, ('CEIL',): {'Vector': self}, ('FRACTION',): {'Vector': self}, ('MODULO',): {'Vector': self, 'Vector_1': vector_1}, ('WRAP',): {'Vector': self, 'Max': max, 'Min': min}, ('SNAP',): {'Vector': self, 'Increment': increment}, ('SINE',): {'Vector': self}, ('COSINE',): {'Vector': self}, ('TANGENT',): {'Vector': self}}[_configuration]
+        _node_args = {('ADD',): [], ('SUBTRACT',): [], ('MULTIPLY',): [], ('DIVIDE',): [], ('MULTIPLY_ADD',): [], ('CROSS_PRODUCT',): [], ('PROJECT',): [], ('REFLECT',): [], ('REFRACT',): [], ('FACEFORWARD',): [], ('DOT_PRODUCT',): [], ('DISTANCE',): [], ('LENGTH',): [], ('SCALE',): [], ('NORMALIZE',): [], ('ABSOLUTE',): [], ('POWER',): [], ('SIGN',): [], ('MINIMUM',): [], ('MAXIMUM',): [], ('ROUND',): [], ('FLOOR',): [], ('CEIL',): [], ('FRACTION',): [], ('MODULO',): [], ('WRAP',): [], ('SNAP',): [], ('SINE',): [], ('COSINE',): [], ('TANGENT',): []}[_configuration]
+        node = Node('Vector Math', *_node_args, named_sockets=_node_sockets, operation=operation)
+        return node._out
 
-    def rotate(self, center: Vector=None, axis: Vector=None, angle: Float=None, rotation: Vector=None, rotation_type: Literal['AXIS_ANGLE', 'X_AXIS', 'Y_AXIS', 'Z_AXIS', 'EULER_XYZ']='AXIS_ANGLE', invert=False):
+    def vector_rotate(self, center: Vector=None, axis: Vector=None, angle: Float=None, rotation: Vector=None, rotation_type: Literal['AXIS_ANGLE', 'X_AXIS', 'Y_AXIS', 'Z_AXIS', 'EULER_XYZ']='AXIS_ANGLE', invert: bool=False):
         """ > Node <&Node Vector Rotate>
         
         Jump method: False.
@@ -2481,73 +2395,19 @@ class Vector(BaseVector):
         
         Returns
         -------
-        Vector
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'vector': self, 'center': center, 'axis': axis, 'angle': angle, 'rotation': rotation}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Vector Rotate', named_sockets=_named_sockets, rotation_type=rotation_type, invert=invert)
-        return _node._out
-
-    def voronoi_texture(self, w: Float=None, scale: Float=None, detail: Float=None, roughness: Float=None, lacunarity: Float=None, smoothness: Float=None, exponent: Float=None, randomness: Float=None, voronoi_dimensions: Literal['1D', '2D', '3D', '4D']='3D', distance: Literal['EUCLIDEAN', 'MANHATTAN', 'CHEBYCHEV', 'MINKOWSKI']='EUCLIDEAN', feature: Literal['F1', 'F2', 'SMOOTH_F1', 'DISTANCE_TO_EDGE', 'N_SPHERE_RADIUS']='F1', normalize=False):
-        """ > Node <&Node Voronoi Texture>
-        
-        Jump method: False.
-        
-        self: socket 'Vector'.
-        
-        Parameters
-        ----------
-        w : Float, optional
-            socket 'W'
-        
-        scale : Float, optional
-            socket 'Scale'
-        
-        detail : Float, optional
-            socket 'Detail'
-        
-        roughness : Float, optional
-            socket 'Roughness'
-        
-        lacunarity : Float, optional
-            socket 'Lacunarity'
-        
-        smoothness : Float, optional
-            socket 'Smoothness'
-        
-        exponent : Float, optional
-            socket 'Exponent'
-        
-        randomness : Float, optional
-            socket 'Randomness'
-        
-        voronoi_dimensions : Literal['1D', '2D', '3D', '4D']
-            parameter `voronoi_dimensions`
-        
-        distance : Literal['Euclidean', 'Manhattan', 'Chebychev', 'Minkowski']
-            parameter `distance`
-        
-        feature : Literal['F1', 'F2', 'Smooth F1', 'Distance to Edge', 'N-Sphere Radius']
-            parameter `feature`
-        
-        normalize : bool
-            parameter `normalize`
-        
-        Returns
-        -------
-        Float
-            socket 'OUT'
-        """
-        _named_sockets = {'vector': self, 'w': w, 'scale': scale, 'detail': detail, 'roughness': roughness, 'lacunarity': lacunarity, 'smoothness': smoothness, 'exponent': exponent, 'randomness': randomness}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Voronoi Texture', named_sockets=_named_sockets, voronoi_dimensions=voronoi_dimensions, distance=distance, feature=feature, normalize=normalize)
-        return _node._out
+        _configuration = ({'axis_angle': 'AXIS_ANGLE', 'x_axis': 'X_AXIS', 'y_axis': 'Y_AXIS', 'z_axis': 'Z_AXIS', 'euler_xyz': 'EULER_XYZ', 'axis angle': 'AXIS_ANGLE', 'x axis': 'X_AXIS', 'y axis': 'Y_AXIS', 'z axis': 'Z_AXIS', 'euler': 'EULER_XYZ'}.get(rotation_type.lower(), rotation_type),)
+        _node_sockets = {('AXIS_ANGLE',): {'Vector': self, 'Center': center, 'Axis': axis, 'Angle': angle}, ('X_AXIS',): {'Vector': self, 'Center': center, 'Angle': angle}, ('Y_AXIS',): {'Vector': self, 'Center': center, 'Angle': angle}, ('Z_AXIS',): {'Vector': self, 'Center': center, 'Angle': angle}, ('EULER_XYZ',): {'Vector': self, 'Center': center, 'Rotation': rotation}}[_configuration]
+        _node_args = {('AXIS_ANGLE',): [], ('X_AXIS',): [], ('Y_AXIS',): [], ('Z_AXIS',): [], ('EULER_XYZ',): []}[_configuration]
+        node = Node('Vector Rotate', *_node_args, named_sockets=_node_sockets, rotation_type=rotation_type, invert=invert)
+        return node._out
 
     def voxelize_grid(self):
         """ > Node <&Node Voxelize Grid>
         
-        Jump method: False.
+        Jump method: True.
         
         self: socket 'Grid'.
         
@@ -2559,84 +2419,9 @@ class Vector(BaseVector):
         
         Returns
         -------
-        Vector
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'grid': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Voxelize Grid', named_sockets=_named_sockets, data_type='VECTOR')
-        return _node._out
-
-    def wave_texture(self, scale: Float=None, distortion: Float=None, detail: Float=None, detail_scale: Float=None, detail_roughness: Float=None, phase_offset: Float=None, wave_type: Literal['BANDS', 'RINGS']='BANDS', bands_direction: Literal['X', 'Y', 'Z', 'DIAGONAL']='X', rings_direction: Literal['X', 'Y', 'Z', 'SPHERICAL']='X', wave_profile: Literal['SIN', 'SAW', 'TRI']='SIN'):
-        """ > Node <&Node Wave Texture>
-        
-        Jump method: False.
-        
-        self: socket 'Vector'.
-        
-        Parameters
-        ----------
-        scale : Float, optional
-            socket 'Scale'
-        
-        distortion : Float, optional
-            socket 'Distortion'
-        
-        detail : Float, optional
-            socket 'Detail'
-        
-        detail_scale : Float, optional
-            socket 'Detail Scale'
-        
-        detail_roughness : Float, optional
-            socket 'Detail Roughness'
-        
-        phase_offset : Float, optional
-            socket 'Phase Offset'
-        
-        wave_type : Literal['Bands', 'Rings']
-            parameter `wave_type`
-        
-        bands_direction : Literal['X', 'Y', 'Z', 'Diagonal']
-            parameter `bands_direction`
-        
-        rings_direction : Literal['X', 'Y', 'Z', 'Spherical']
-            parameter `rings_direction`
-        
-        wave_profile : Literal['Sine', 'Saw', 'Triangle']
-            parameter `wave_profile`
-        
-        Returns
-        -------
-        Color
-            socket 'OUT'
-        """
-        _named_sockets = {'vector': self, 'scale': scale, 'distortion': distortion, 'detail': detail, 'detail_scale': detail_scale, 'detail_roughness': detail_roughness, 'phase_offset': phase_offset}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Wave Texture', named_sockets=_named_sockets, wave_type=wave_type, bands_direction=bands_direction, rings_direction=rings_direction, wave_profile=wave_profile)
-        return _node._out
-
-    def white_noise_texture(self, w: Float=None, noise_dimensions: Literal['1D', '2D', '3D', '4D']='3D'):
-        """ > Node <&Node White Noise Texture>
-        
-        Jump method: False.
-        
-        self: socket 'Vector'.
-        
-        Parameters
-        ----------
-        w : Float, optional
-            socket 'W'
-        
-        noise_dimensions : Literal['1D', '2D', '3D', '4D']
-            parameter `noise_dimensions`
-        
-        Returns
-        -------
-        Float
-            socket 'OUT'
-        """
-        _named_sockets = {'vector': self, 'w': w}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('White Noise Texture', named_sockets=_named_sockets, noise_dimensions=noise_dimensions)
-        return _node._out
+        node = Node('Voxelize Grid', named_sockets={'Grid': self}, data_type='VECTOR')
+        self._jump(node._out)
+        return node._second_out(self)

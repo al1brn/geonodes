@@ -47,6 +47,9 @@ if TYPE_CHECKING:
     class Geometry:
         ...
 
+    class Texture:
+        ...
+
     class Collection:
         ...
 
@@ -114,6 +117,63 @@ from ...geonodes.domains.corner import Corner as BaseCorner
 class Corner(BaseCorner):
     __slots__ = ()
 
+    def attribute_statistic(self, attribute: Socket=None):
+        """ > Node <&Node Attribute Statistic>
+        
+        Jump method: False.
+        
+        self: socket 'Geometry'.
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `domain` | `'CORNER'` |
+        
+        **Derived parameters**
+        
+        - `data_type`: Inferred from socket 'Attribute' (attribute).
+        
+        Parameters
+        ----------
+        attribute : Socket, optional
+            socket 'Attribute'
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        data_type = SocketType.get_data_type_for_node(attribute, 'GeometryNodeAttributeStatistic', 'data_type')
+        selection = self.get_selection()
+        node = Node('Attribute Statistic', named_sockets={'Geometry': self, 'Selection': selection, 'Attribute': attribute}, data_type=data_type, domain='CORNER')
+        return node._out
+
+    def capture_attribute(self, named_sockets=None, **sockets):
+        """ > Node <&Node Capture Attribute>
+        
+        Jump method: True.
+        
+        self: socket 'Geometry'.
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `domain` | `'CORNER'` |
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        selection = self.get_selection()
+        _named_sockets = {'Geometry': self, 'Selection': selection}
+        _named_sockets.update({name: value for name, value in (named_sockets or {}).items() if value is not None})
+        node = Node('Capture Attribute', named_sockets=_named_sockets, domain='CORNER', **sockets)
+        self._jump(node._out)
+        return node._second_out(self)
+
     @classmethod
     def edges(cls, corner_index: Integer=None):
         """ > Node <&Node Edges of Corner>
@@ -125,12 +185,11 @@ class Corner(BaseCorner):
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
-        _named_sockets = {'corner_index': corner_index}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Edges of Corner', named_sockets=_named_sockets)
-        return _node
+        node = Node('Edges of Corner', named_sockets={'Corner Index': corner_index})
+        return node._out
 
     @classmethod
     def face(cls, corner_index: Integer=None):
@@ -143,33 +202,14 @@ class Corner(BaseCorner):
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
-        _named_sockets = {'corner_index': corner_index}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Face of Corner', named_sockets=_named_sockets)
-        return _node
+        node = Node('Face of Corner', named_sockets={'Corner Index': corner_index})
+        return node._out
 
-    @classmethod
-    def vertex(cls, corner_index: Integer=None):
-        """ > Node <&Node Vertex of Corner>
-        
-        Parameters
-        ----------
-        corner_index : Integer, optional
-            socket 'Corner Index'
-        
-        Returns
-        -------
-        Node
-        """
-        _named_sockets = {'corner_index': corner_index}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Vertex of Corner', named_sockets=_named_sockets)
-        return _node
-
-    def capture_attribute(self, named_sockets=None, **sockets):
-        """ > Node <&Node Capture Attribute>
+    def sample_index(self, value: Socket=None, index: Integer=None, clamp: bool=False):
+        """ > Node <&Node Sample Index>
         
         Jump method: False.
         
@@ -181,15 +221,29 @@ class Corner(BaseCorner):
         | --- | --- |
         | `domain` | `'CORNER'` |
         
+        **Derived parameters**
+        
+        - `data_type`: Inferred from socket 'Value' (value).
+        
+        Parameters
+        ----------
+        value : Socket, optional
+            socket 'Value'
+        
+        index : Integer, optional
+            socket 'Index'
+        
+        clamp : bool
+            parameter `clamp`
+        
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
-        _named_sockets = {'geometry': self, 'selection': self.get_selection()}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _named_sockets.update({_name: _value for _name, _value in (named_sockets or {}).items() if _value is not None})
-        _node = Node('Capture Attribute', named_sockets=_named_sockets, domain='CORNER', **sockets)
-        return _node
+        data_type = SocketType.get_data_type_for_node(value, 'GeometryNodeSampleIndex', 'data_type')
+        node = Node('Sample Index', named_sockets={'Geometry': self, 'Value': value, 'Index': index}, data_type=data_type, domain='CORNER', clamp=clamp)
+        return node._out
 
     def sample_nearest(self, sample_position: Vector=None):
         """ > Node <&Node Sample Nearest>
@@ -211,13 +265,11 @@ class Corner(BaseCorner):
         
         Returns
         -------
-        Integer
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'geometry': self, 'sample_position': sample_position}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Sample Nearest', named_sockets=_named_sockets, domain='CORNER')
-        return _node._out
+        node = Node('Sample Nearest', named_sockets={'Geometry': self, 'Sample Position': sample_position}, domain='CORNER')
+        return node._out
 
     def set_normal(self, remove_custom: Boolean=None, custom_normal: Vector=None, edge_sharpness: Boolean=None, face_sharpness: Boolean=None, mode: Literal['SHARPNESS', 'FREE', 'TANGENT_SPACE']='SHARPNESS'):
         """ > Node <&Node Set Mesh Normal>
@@ -251,11 +303,99 @@ class Corner(BaseCorner):
         
         Returns
         -------
-        Mesh
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'mesh': self, 'remove_custom': remove_custom, 'custom_normal': custom_normal, 'edge_sharpness': edge_sharpness, 'face_sharpness': face_sharpness}
+        _configuration = ({'sharpness': 'SHARPNESS', 'free': 'FREE', 'tangent_space': 'TANGENT_SPACE', 'tangent space': 'TANGENT_SPACE'}.get(mode.lower(), mode),)
+        _node_sockets = {('SHARPNESS',): {'Mesh': self, 'Remove Custom': remove_custom, 'Edge Sharpness': edge_sharpness, 'Face Sharpness': face_sharpness}, ('FREE',): {'Mesh': self, 'Custom Normal': custom_normal}, ('TANGENT_SPACE',): {'Mesh': self, 'Custom Normal': custom_normal}}[_configuration]
+        _node_args = {('SHARPNESS',): [], ('FREE',): [], ('TANGENT_SPACE',): []}[_configuration]
+        node = Node('Set Mesh Normal', *_node_args, named_sockets=_node_sockets, mode=mode, domain='CORNER')
+        self._jump(node._out)
+        return node._second_out(self)
+
+    def store_named_attribute(self, name: String=None, value: Socket=None):
+        """ > Node <&Node Store Named Attribute>
+        
+        Jump method: True.
+        
+        self: socket 'Geometry'.
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `domain` | `'CORNER'` |
+        
+        **Derived parameters**
+        
+        - `data_type`: Inferred from socket 'Value' (value).
+        
+        Parameters
+        ----------
+        name : String, optional
+            socket 'Name'
+        
+        value : Socket, optional
+            socket 'Value'
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        data_type = SocketType.get_data_type_for_node(value, 'GeometryNodeStoreNamedAttribute', 'data_type')
+        selection = self.get_selection()
+        node = Node('Store Named Attribute', named_sockets={'Geometry': self, 'Selection': selection, 'Name': name, 'Value': value}, data_type=data_type, domain='CORNER')
+        self._jump(node._out)
+        return node._second_out(self)
+
+    @classmethod
+    def vertex(cls, corner_index: Integer=None):
+        """ > Node <&Node Vertex of Corner>
+        
+        Parameters
+        ----------
+        corner_index : Integer, optional
+            socket 'Corner Index'
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Vertex of Corner', named_sockets={'Corner Index': corner_index})
+        return node._out
+
+    @property
+    def normal(self):
+        """Write-only property; setter node: Set Mesh Normal."""
+        raise NodeError('Property Corner.normal is write only.')
+
+    @normal.setter
+    def normal(self, custom_normal: Vector):
+        """ > Node <&Node Set Mesh Normal>
+        
+        Jump method: True.
+        
+        self: socket 'Mesh'.
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `mode` | `'FREE'` |
+        | `domain` | `'CORNER'` |
+        
+        Parameters
+        ----------
+        custom_normal : Vector, optional
+            socket 'Custom Normal'
+        
+        Returns
+        -------
+        None
+        """
+        _named_sockets = {'mesh': self, 'custom_normal': custom_normal}
         _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Set Mesh Normal', named_sockets=_named_sockets, mode=mode, domain='CORNER')
+        _node = Node('Set Mesh Normal', named_sockets=_named_sockets, mode='FREE', domain='CORNER')
         self._jump(_node._out)
-        return self._domain_to_geometry

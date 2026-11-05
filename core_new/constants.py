@@ -60,6 +60,19 @@ SWITCH_JUMP = True
 EMPTY_SOCKET = 'EMPTY_SOCKET'
 
 # ====================================================================================================
+# SOCKET_SHAPES
+# ====================================================================================================
+
+SOCKET_SHAPES = {
+    'Auto'      : 'AUTO',
+    'Dynamic'   : 'DYNAMIC',
+    'Field'     : 'FIELD',
+    'Grid'      : 'GRID',
+    'List'      : 'LIST',
+    'Single'    : 'SINGLE',
+}
+
+# ====================================================================================================
 # Array type combination
 # ====================================================================================================
 
@@ -96,8 +109,7 @@ NODE_WITH_IN_ITEMS = {
     'GeometryNodeIndexSwitch'       : 'index_switch_items',
     'GeometryNodeMenuSwitch'        : 'enum_items',
     'NodeClosureOutput'             : 'output_items',
-    'FunctionNodeFormatString' 		: 'format_items',
-    
+    'FunctionNodeFormatString' 		: 'format_items',    
 }
 
 # ====================================================================================================

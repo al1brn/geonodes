@@ -132,7 +132,7 @@ class Float(Socket):
         -------
         Float
         """
-        return Node('Mix', {'Factor': factor, 'A': a, 'B': b}, clamp_factor=clamp_factor, data_type='FLOAT')._out
+        return Node('Mix', named_sockets={'Factor': factor, 'A': a, 'B': b}, clamp_factor=clamp_factor, data_type='FLOAT')._out
 
     # ====================================================================================================
     # Methods

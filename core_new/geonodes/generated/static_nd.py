@@ -47,6 +47,9 @@ if TYPE_CHECKING:
     class Geometry:
         ...
 
+    class Texture:
+        ...
+
     class Collection:
         ...
 
@@ -120,18 +123,16 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('3D Cursor', named_sockets=_named_sockets)
-        return _node
+        node = Node('3D Cursor', named_sockets={})
+        return node
 
     @classmethod
-    def accumulate_field(cls, value: Float | Integer | Vector | Matrix=None, group_id: Integer=None, data_type: Literal['FLOAT', 'INT', 'FLOAT_VECTOR', 'TRANSFORM']='FLOAT', domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']='POINT'):
+    def accumulate_field(cls, value: Socket=None, group_id: Integer=None, data_type: Literal['FLOAT', 'INT', 'FLOAT_VECTOR', 'TRANSFORM']='FLOAT', domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']='POINT'):
         """ > Node <&Node Accumulate Field>
         
         Parameters
         ----------
-        value : Float | Integer | Vector | Matrix, optional
+        value : Socket, optional
             socket 'Value'
         
         group_id : Integer, optional
@@ -147,10 +148,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'value': value, 'group_id': group_id}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Accumulate Field', named_sockets=_named_sockets, data_type=data_type, domain=domain)
-        return _node
+        node = Node('Accumulate Field', named_sockets={'Value': value, 'Group ID': group_id}, data_type=data_type, domain=domain)
+        return node
 
     @utils.classproperty
     def active_camera(cls):
@@ -158,13 +157,11 @@ class ND:
         
         Returns
         -------
-        Object
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Active Camera', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('Active Camera', named_sockets={})
+        return node._out
 
     @classmethod
     def active_element(cls, domain: Literal['POINT', 'EDGE', 'FACE', 'LAYER']='POINT'):
@@ -179,18 +176,16 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Active Element', named_sockets=_named_sockets, domain=domain)
-        return _node
+        node = Node('Active Element', named_sockets={}, domain=domain)
+        return node
 
     @classmethod
-    def advect_grid(cls, grid: Float | Integer | Vector=None, velocity: Vector=None, time_step: Float=None, integration_scheme: Literal['Semi-Lagrangian', 'Midpoint', 'Runge-Kutta 3', 'Runge-Kutta 4', 'MacCormack', 'BFECC']=None, limiter: Literal['None', 'Clamp', 'Revert']=None, data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'SHADER', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'TEXTURE', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SCENE', 'TEXT', 'MASK', 'SOUND', 'INT_VECTOR']='FLOAT'):
+    def advect_grid(cls, grid: Socket=None, velocity: Vector=None, time_step: Float=None, integration_scheme: Menu=None, limiter: Menu=None, data_type: Literal['FLOAT', 'INT', 'VECTOR']='FLOAT'):
         """ > Node <&Node Advect Grid>
         
         Parameters
         ----------
-        grid : Float | Integer | Vector, optional
+        grid : Socket, optional
             socket 'Grid'
         
         velocity : Vector, optional
@@ -199,11 +194,11 @@ class ND:
         time_step : Float, optional
             socket 'Time Step'
         
-        integration_scheme : menu='Runge-Kutta 3', optional
-            ('Semi-Lagrangian', 'Midpoint', 'Runge-Kutta 3', 'Runge-Kutta 4', 'MacCormack', 'BFECC')
+        integration_scheme : Menu, optional
+            socket 'Integration Scheme'
         
-        limiter : menu='Clamp', optional
-            ('None', 'Clamp', 'Revert')
+        limiter : Menu, optional
+            socket 'Limiter'
         
         data_type : Literal['Float', 'Integer', 'Vector']
             parameter `data_type`
@@ -212,13 +207,11 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'grid': grid, 'velocity': velocity, 'time_step': time_step, 'integration_scheme': integration_scheme, 'limiter': limiter}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Advect Grid', named_sockets=_named_sockets, data_type=data_type)
-        return _node
+        node = Node('Advect Grid', named_sockets={'Grid': grid, 'Velocity': velocity, 'Time Step': time_step, 'Integration Scheme': integration_scheme, 'Limiter': limiter}, data_type=data_type)
+        return node
 
     @classmethod
-    def align_rotation_to_vector(cls, rotation: Rotation=None, factor: Float=None, vector: Vector=None, axis: Literal['X', 'Y', 'Z']='Z', pivot_axis: Literal['AUTO', 'X', 'Y', 'Z']='AUTO'):
+    def align_rotation_to_vector(cls, rotation: Rotation=None, vector: Vector=None, factor: Float=None, axis: Literal['X', 'Y', 'Z']='Z', pivot_axis: Literal['AUTO', 'X', 'Y', 'Z']='AUTO'):
         """ > Node <&Node Align Rotation to Vector>
         
         Parameters
@@ -226,11 +219,11 @@ class ND:
         rotation : Rotation, optional
             socket 'Rotation'
         
-        factor : Float, optional
-            socket 'Factor'
-        
         vector : Vector, optional
             socket 'Vector'
+        
+        factor : Float, optional
+            socket 'Factor'
         
         axis : Literal['X', 'Y', 'Z']
             parameter `axis`
@@ -242,10 +235,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'rotation': rotation, 'factor': factor, 'vector': vector}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Align Rotation to Vector', named_sockets=_named_sockets, axis=axis, pivot_axis=pivot_axis)
-        return _node
+        node = Node('Align Rotation to Vector', named_sockets={'Rotation': rotation, 'Factor': factor, 'Vector': vector}, axis=axis, pivot_axis=pivot_axis)
+        return node
 
     @classmethod
     def arc(cls, resolution: Integer=None, start: Vector=None, middle: Vector=None, end: Vector=None, radius: Float=None, start_angle: Float=None, sweep_angle: Float=None, offset_angle: Float=None, connect_center: Boolean=None, invert_arc: Boolean=None, mode: Literal['POINTS', 'RADIUS']='RADIUS'):
@@ -290,13 +281,14 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'resolution': resolution, 'start': start, 'middle': middle, 'end': end, 'radius': radius, 'start_angle': start_angle, 'sweep_angle': sweep_angle, 'offset_angle': offset_angle, 'connect_center': connect_center, 'invert_arc': invert_arc}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Arc', named_sockets=_named_sockets, mode=mode)
-        return _node
+        _configuration = ({'points': 'POINTS', 'radius': 'RADIUS'}.get(mode.lower(), mode),)
+        _node_sockets = {('POINTS',): {'Resolution': resolution, 'Start': start, 'Middle': middle, 'End': end, 'Offset Angle': offset_angle, 'Connect Center': connect_center, 'Invert Arc': invert_arc}, ('RADIUS',): {'Resolution': resolution, 'Radius': radius, 'Start Angle': start_angle, 'Sweep Angle': sweep_angle, 'Connect Center': connect_center, 'Invert Arc': invert_arc}}[_configuration]
+        _node_args = {('POINTS',): [], ('RADIUS',): []}[_configuration]
+        node = Node('Arc', *_node_args, named_sockets=_node_sockets, mode=mode)
+        return node
 
     @classmethod
-    def attribute_statistic(cls, geometry: Geometry=None, selection: Boolean=None, attribute: Float | Vector=None, data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'QUATERNION', 'FLOAT4X4', 'STRING', 'INT8', 'INT16_2D', 'INT32_2D', 'FLOAT2', 'FLOAT4', 'BYTE_COLOR']='FLOAT', domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']='POINT'):
+    def attribute_statistic(cls, geometry: Geometry=None, selection: Boolean=None, attribute: Socket=None, data_type: Literal['FLOAT', 'FLOAT_VECTOR']='FLOAT', domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']='POINT'):
         """ > Node <&Node Attribute Statistic>
         
         Parameters
@@ -307,7 +299,7 @@ class ND:
         selection : Boolean, optional
             socket 'Selection'
         
-        attribute : Float | Vector, optional
+        attribute : Socket, optional
             socket 'Attribute'
         
         data_type : Literal['Float', 'Vector']
@@ -320,10 +312,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'geometry': geometry, 'selection': selection, 'attribute': attribute}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Attribute Statistic', named_sockets=_named_sockets, data_type=data_type, domain=domain)
-        return _node
+        node = Node('Attribute Statistic', named_sockets={'Geometry': geometry, 'Selection': selection, 'Attribute': attribute}, data_type=data_type, domain=domain)
+        return node
 
     @classmethod
     def axes_to_rotation(cls, primary_axis_1: Vector=None, secondary_axis_1: Vector=None, primary_axis: Literal['X', 'Y', 'Z']='Z', secondary_axis: Literal['X', 'Y', 'Z']='X'):
@@ -347,10 +337,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'primary_axis_1': primary_axis_1, 'secondary_axis_1': secondary_axis_1}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Axes to Rotation', named_sockets=_named_sockets, primary_axis=primary_axis, secondary_axis=secondary_axis)
-        return _node
+        node = Node('Axes to Rotation', named_sockets={'Primary Axis_1': primary_axis_1, 'Secondary Axis_1': secondary_axis_1}, primary_axis=primary_axis, secondary_axis=secondary_axis)
+        return node
 
     @classmethod
     def axis_angle_to_rotation(cls, axis: Vector=None, angle: Float=None):
@@ -368,10 +356,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'axis': axis, 'angle': angle}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Axis Angle to Rotation', named_sockets=_named_sockets)
-        return _node
+        node = Node('Axis Angle to Rotation', named_sockets={'Axis': axis, 'Angle': angle})
+        return node
 
     @classmethod
     def bake(cls, named_sockets=None, **sockets):
@@ -382,10 +368,9 @@ class ND:
         Node
         """
         _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _named_sockets.update({_name: _value for _name, _value in (named_sockets or {}).items() if _value is not None})
-        _node = Node('Bake', named_sockets=_named_sockets, **sockets)
-        return _node
+        _named_sockets.update({name: value for name, value in (named_sockets or {}).items() if value is not None})
+        node = Node('Bake', named_sockets=_named_sockets, **sockets)
+        return node
 
     @classmethod
     def bit_math(cls, a: Integer=None, b: Integer=None, shift: Integer=None, operation: Literal['AND', 'OR', 'XOR', 'NOT', 'SHIFT', 'ROTATE']='AND'):
@@ -409,10 +394,11 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'a': a, 'b': b, 'shift': shift}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Bit Math', named_sockets=_named_sockets, operation=operation)
-        return _node
+        _configuration = ({'and': 'AND', 'or': 'OR', 'xor': 'XOR', 'not': 'NOT', 'shift': 'SHIFT', 'rotate': 'ROTATE', 'exclusive or': 'XOR'}.get(operation.lower(), operation),)
+        _node_sockets = {('AND',): {'A': a, 'B': b}, ('OR',): {'A': a, 'B': b}, ('XOR',): {'A': a, 'B': b}, ('NOT',): {'A': a}, ('SHIFT',): {'A': a, 'Shift': shift}, ('ROTATE',): {'A': a, 'Shift': shift}}[_configuration]
+        _node_args = {('AND',): [], ('OR',): [], ('XOR',): [], ('NOT',): [], ('SHIFT',): [], ('ROTATE',): []}[_configuration]
+        node = Node('Bit Math', *_node_args, named_sockets=_node_sockets, operation=operation)
+        return node
 
     @classmethod
     def blackbody(cls, temperature: Float=None):
@@ -427,18 +413,16 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'temperature': temperature}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Blackbody', named_sockets=_named_sockets)
-        return _node
+        node = Node('Blackbody', named_sockets={'Temperature': temperature})
+        return node
 
     @classmethod
-    def blur_attribute(cls, value: Float | Integer | Vector | Color=None, iterations: Integer=None, weight: Float=None, data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'QUATERNION', 'FLOAT4X4', 'STRING', 'INT8', 'INT16_2D', 'INT32_2D', 'FLOAT2', 'FLOAT4', 'BYTE_COLOR']='FLOAT'):
+    def blur_attribute(cls, value: Socket=None, iterations: Integer=None, weight: Float=None, data_type: Literal['FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR']='FLOAT'):
         """ > Node <&Node Blur Attribute>
         
         Parameters
         ----------
-        value : Float | Integer | Vector | Color, optional
+        value : Socket, optional
             socket 'Value'
         
         iterations : Integer, optional
@@ -454,10 +438,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'value': value, 'iterations': iterations, 'weight': weight}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Blur Attribute', named_sockets=_named_sockets, data_type=data_type)
-        return _node
+        node = Node('Blur Attribute', named_sockets={'Value': value, 'Iterations': iterations, 'Weight': weight}, data_type=data_type)
+        return node
 
     @classmethod
     def bone_info(cls, armature: Object=None, bone_name: String=None, transform_space: Literal['ORIGINAL', 'RELATIVE']='ORIGINAL'):
@@ -478,13 +460,11 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'armature': armature, 'bone_name': bone_name}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Bone Info', named_sockets=_named_sockets, transform_space=transform_space)
-        return _node
+        node = Node('Bone Info', named_sockets={'Armature': armature, 'Bone Name': bone_name}, transform_space=transform_space)
+        return node
 
     @classmethod
-    def boolean(cls, boolean=False):
+    def boolean(cls, boolean: bool=False):
         """ > Node <&Node Boolean>
         
         Parameters
@@ -496,10 +476,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Boolean', named_sockets=_named_sockets, boolean=boolean)
-        return _node
+        node = Node('Boolean', named_sockets={}, boolean=boolean)
+        return node
 
     @classmethod
     def boolean_math(cls, boolean: Boolean=None, boolean_1: Boolean=None, operation: Literal['AND', 'OR', 'NOT', 'NAND', 'NOR', 'XNOR', 'XOR', 'IMPLY', 'NIMPLY']='AND'):
@@ -520,10 +498,11 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'boolean': boolean, 'boolean_1': boolean_1}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Boolean Math', named_sockets=_named_sockets, operation=operation)
-        return _node
+        _configuration = ({'and': 'AND', 'or': 'OR', 'not': 'NOT', 'nand': 'NAND', 'nor': 'NOR', 'xnor': 'XNOR', 'xor': 'XOR', 'imply': 'IMPLY', 'nimply': 'NIMPLY', 'not and': 'NAND', 'equal': 'XNOR', 'not equal': 'XOR', 'subtract': 'NIMPLY'}.get(operation.lower(), operation),)
+        _node_sockets = {('AND',): {'Boolean': boolean, 'Boolean_1': boolean_1}, ('OR',): {'Boolean': boolean, 'Boolean_1': boolean_1}, ('NOT',): {'Boolean': boolean}, ('NAND',): {'Boolean': boolean, 'Boolean_1': boolean_1}, ('NOR',): {'Boolean': boolean, 'Boolean_1': boolean_1}, ('XNOR',): {'Boolean': boolean, 'Boolean_1': boolean_1}, ('XOR',): {'Boolean': boolean, 'Boolean_1': boolean_1}, ('IMPLY',): {'Boolean': boolean, 'Boolean_1': boolean_1}, ('NIMPLY',): {'Boolean': boolean, 'Boolean_1': boolean_1}}[_configuration]
+        _node_args = {('AND',): [], ('OR',): [], ('NOT',): [], ('NAND',): [], ('NOR',): [], ('XNOR',): [], ('XOR',): [], ('IMPLY',): [], ('NIMPLY',): []}[_configuration]
+        node = Node('Boolean Math', *_node_args, named_sockets=_node_sockets, operation=operation)
+        return node
 
     @classmethod
     def bounding_box(cls, geometry: Geometry=None, use_radius: Boolean=None):
@@ -541,13 +520,11 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'geometry': geometry, 'use_radius': use_radius}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Bounding Box', named_sockets=_named_sockets)
-        return _node
+        node = Node('Bounding Box', named_sockets={'Geometry': geometry, 'Use Radius': use_radius})
+        return node
 
     @classmethod
-    def brick_texture(cls, vector: Vector=None, color1: Color=None, color2: Color=None, mortar: Color=None, scale: Float=None, mortar_size: Float=None, mortar_smooth: Float=None, bias: Float=None, brick_width: Float=None, row_height: Float=None, offset_frequency=2, squash_frequency=2, offset=0.5, squash=1.0):
+    def brick_texture(cls, vector: Vector=None, color1: Color=None, color2: Color=None, mortar: Color=None, scale: Float=None, mortar_size: Float=None, mortar_smooth: Float=None, bias: Float=None, brick_width: Float=None, row_height: Float=None, offset_frequency: int=2, squash_frequency: int=2, offset: float=0.5, squash: float=1.0):
         """ > Node <&Node Brick Texture>
         
         Parameters
@@ -598,10 +575,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'vector': vector, 'color1': color1, 'color2': color2, 'mortar': mortar, 'scale': scale, 'mortar_size': mortar_size, 'mortar_smooth': mortar_smooth, 'bias': bias, 'brick_width': brick_width, 'row_height': row_height}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Brick Texture', named_sockets=_named_sockets, offset_frequency=offset_frequency, squash_frequency=squash_frequency, offset=offset, squash=squash)
-        return _node
+        node = Node('Brick Texture', named_sockets={'Vector': vector, 'Color1': color1, 'Color2': color2, 'Mortar': mortar, 'Scale': scale, 'Mortar Size': mortar_size, 'Mortar Smooth': mortar_smooth, 'Bias': bias, 'Brick Width': brick_width, 'Row Height': row_height}, offset_frequency=offset_frequency, squash_frequency=squash_frequency, offset=offset, squash=squash)
+        return node
 
     @classmethod
     def bezier_segment(cls, resolution: Integer=None, start: Vector=None, start_handle: Vector=None, end_handle: Vector=None, end: Vector=None, mode: Literal['POSITION', 'OFFSET']='POSITION'):
@@ -631,10 +606,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'resolution': resolution, 'start': start, 'start_handle': start_handle, 'end_handle': end_handle, 'end': end}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Bézier Segment', named_sockets=_named_sockets, mode=mode)
-        return _node
+        node = Node('Bézier Segment', named_sockets={'Resolution': resolution, 'Start': start, 'Start Handle': start_handle, 'End Handle': end_handle, 'End': end}, mode=mode)
+        return node
 
     @classmethod
     def camera_info(cls, camera: Object=None):
@@ -649,10 +622,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'camera': camera}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Camera Info', named_sockets=_named_sockets)
-        return _node
+        node = Node('Camera Info', named_sockets={'Camera': camera})
+        return node
 
     @classmethod
     def capture_attribute(cls, named_sockets=None, geometry: Geometry=None, selection: Boolean=None, domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']='POINT', **sockets):
@@ -673,11 +644,10 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'geometry': geometry, 'selection': selection}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _named_sockets.update({_name: _value for _name, _value in (named_sockets or {}).items() if _value is not None})
-        _node = Node('Capture Attribute', named_sockets=_named_sockets, domain=domain, **sockets)
-        return _node
+        _named_sockets = {'Geometry': geometry, 'Selection': selection}
+        _named_sockets.update({name: value for name, value in (named_sockets or {}).items() if value is not None})
+        node = Node('Capture Attribute', named_sockets=_named_sockets, domain=domain, **sockets)
+        return node
 
     @classmethod
     def checker_texture(cls, vector: Vector=None, color1: Color=None, color2: Color=None, scale: Float=None):
@@ -701,10 +671,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'vector': vector, 'color1': color1, 'color2': color2, 'scale': scale}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Checker Texture', named_sockets=_named_sockets)
-        return _node
+        node = Node('Checker Texture', named_sockets={'Vector': vector, 'Color1': color1, 'Color2': color2, 'Scale': scale})
+        return node
 
     @classmethod
     def clamp(cls, value: Float=None, min: Float=None, max: Float=None, clamp_type: Literal['MINMAX', 'RANGE']='MINMAX'):
@@ -728,18 +696,16 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'value': value, 'min': min, 'max': max}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Clamp', named_sockets=_named_sockets, clamp_type=clamp_type)
-        return _node
+        node = Node('Clamp', named_sockets={'Value': value, 'Min': min, 'Max': max}, clamp_type=clamp_type)
+        return node
 
     @classmethod
-    def clip_grid(cls, grid: Float | Integer | Boolean | Vector=None, min_x: Integer=None, min_y: Integer=None, min_z: Integer=None, max_x: Integer=None, max_y: Integer=None, max_z: Integer=None, data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'SHADER', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'TEXTURE', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SCENE', 'TEXT', 'MASK', 'SOUND', 'INT_VECTOR']='FLOAT'):
+    def clip_grid(cls, grid: Socket=None, min_x: Integer=None, min_y: Integer=None, min_z: Integer=None, max_x: Integer=None, max_y: Integer=None, max_z: Integer=None, data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR']='FLOAT'):
         """ > Node <&Node Clip Grid>
         
         Parameters
         ----------
-        grid : Float | Integer | Boolean | Vector, optional
+        grid : Socket, optional
             socket 'Grid'
         
         min_x : Integer, optional
@@ -767,10 +733,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'grid': grid, 'min_x': min_x, 'min_y': min_y, 'min_z': min_z, 'max_x': max_x, 'max_y': max_y, 'max_z': max_z}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Clip Grid', named_sockets=_named_sockets, data_type=data_type)
-        return _node
+        node = Node('Clip Grid', named_sockets={'Grid': grid, 'Min X': min_x, 'Min Y': min_y, 'Min Z': min_z, 'Max X': max_x, 'Max Y': max_y, 'Max Z': max_z}, data_type=data_type)
+        return node
 
     @classmethod
     def closure_input(cls):
@@ -780,13 +744,11 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Closure Input', named_sockets=_named_sockets)
-        return _node
+        node = Node('Closure Input', named_sockets={})
+        return node
 
     @classmethod
-    def closure_output(cls, named_sockets=None, define_signature=False, **sockets):
+    def closure_output(cls, named_sockets=None, define_signature: bool=False, **sockets):
         """ > Node <&Node Closure Output>
         
         Parameters
@@ -799,10 +761,9 @@ class ND:
         Node
         """
         _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _named_sockets.update({_name: _value for _name, _value in (named_sockets or {}).items() if _value is not None})
-        _node = Node('Closure Output', named_sockets=_named_sockets, define_signature=define_signature, **sockets)
-        return _node
+        _named_sockets.update({name: value for name, value in (named_sockets or {}).items() if value is not None})
+        node = Node('Closure Output', named_sockets=_named_sockets, define_signature=define_signature, **sockets)
+        return node
 
     @classmethod
     def closure_to_list(cls, count: Integer=None, closure: Closure=None):
@@ -820,10 +781,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'count': count, 'closure': closure}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Closure to List', named_sockets=_named_sockets)
-        return _node
+        node = Node('Closure to List', named_sockets={'Count': count, 'Closure': closure})
+        return node
 
     @classmethod
     def cluster_by_connected(cls, selection: Boolean=None, position: Vector=None, distance: Float=None):
@@ -844,10 +803,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'selection': selection, 'position': position, 'distance': distance}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Cluster by Connected', named_sockets=_named_sockets)
-        return _node
+        node = Node('Cluster by Connected', named_sockets={'Selection': selection, 'Position': position, 'Distance': distance})
+        return node
 
     @classmethod
     def cluster_by_distance(cls, selection: Boolean=None, group_id: Integer=None, position: Vector=None, distance: Float=None):
@@ -871,13 +828,11 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'selection': selection, 'group_id': group_id, 'position': position, 'distance': distance}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Cluster by Distance', named_sockets=_named_sockets)
-        return _node
+        node = Node('Cluster by Distance', named_sockets={'Selection': selection, 'Group ID': group_id, 'Position': position, 'Distance': distance})
+        return node
 
     @classmethod
-    def collection(cls, collection=None):
+    def collection(cls, collection: NoneType=None):
         """ > Node <&Node Collection>
         
         Parameters
@@ -889,10 +844,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Collection', named_sockets=_named_sockets, collection=collection)
-        return _node
+        node = Node('Collection', named_sockets={}, collection=collection)
+        return node
 
     @classmethod
     def collection_children(cls, collection: Collection=None, recursive: Boolean=None):
@@ -910,10 +863,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'collection': collection, 'recursive': recursive}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Collection Children', named_sockets=_named_sockets)
-        return _node
+        node = Node('Collection Children', named_sockets={'Collection': collection, 'Recursive': recursive})
+        return node
 
     @classmethod
     def collection_info(cls, collection: Collection=None, separate_children: Boolean=None, reset_children: Boolean=None, transform_space: Literal['ORIGINAL', 'RELATIVE']='ORIGINAL'):
@@ -937,10 +888,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'collection': collection, 'separate_children': separate_children, 'reset_children': reset_children}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Collection Info', named_sockets=_named_sockets, transform_space=transform_space)
-        return _node
+        node = Node('Collection Info', named_sockets={'Collection': collection, 'Separate Children': separate_children, 'Reset Children': reset_children}, transform_space=transform_space)
+        return node
 
     @utils.classproperty
     def color(cls):
@@ -948,13 +897,11 @@ class ND:
         
         Returns
         -------
-        Color
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Color', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('Color', named_sockets={})
+        return node._out
 
     @classmethod
     def color_ramp(cls, factor: Float=None):
@@ -969,13 +916,11 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'factor': factor}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Color Ramp', named_sockets=_named_sockets)
-        return _node
+        node = Node('Color Ramp', named_sockets={'Factor': factor})
+        return node
 
     @classmethod
-    def combine_bundle(cls, named_sockets=None, define_signature=False, **sockets):
+    def combine_bundle(cls, named_sockets=None, define_signature: bool=False, **sockets):
         """ > Node <&Node Combine Bundle>
         
         Parameters
@@ -988,10 +933,9 @@ class ND:
         Node
         """
         _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _named_sockets.update({_name: _value for _name, _value in (named_sockets or {}).items() if _value is not None})
-        _node = Node('Combine Bundle', named_sockets=_named_sockets, define_signature=define_signature, **sockets)
-        return _node
+        _named_sockets.update({name: value for name, value in (named_sockets or {}).items() if value is not None})
+        node = Node('Combine Bundle', named_sockets=_named_sockets, define_signature=define_signature, **sockets)
+        return node
 
     @classmethod
     def combine_color(cls, red: Float=None, hue: Float=None, green: Float=None, saturation: Float=None, blue: Float=None, value: Float=None, lightness: Float=None, alpha: Float=None, mode: Literal['RGB', 'HSV', 'HSL']='RGB'):
@@ -1030,23 +974,18 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'red': red, 'hue': hue, 'green': green, 'saturation': saturation, 'blue': blue, 'value': value, 'lightness': lightness, 'alpha': alpha}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _values = {('RGB',): ['red', 'green', 'blue', 'alpha'], ('HSV',): ['hue', 'saturation', 'value', 'alpha'], ('HSL',): ['hue', 'saturation', 'lightness', 'alpha']}
         _configuration = ({'rgb': 'RGB', 'hsv': 'HSV', 'hsl': 'HSL'}.get(mode.lower(), mode),)
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _name in _values[_configuration]}
-        _node = Node('Combine Color', named_sockets=_named_sockets, mode=mode)
-        return _node
+        _node_sockets = {('RGB',): {'Red': red, 'Green': green, 'Blue': blue, 'Alpha': alpha}, ('HSV',): {'Hue': hue, 'Saturation': saturation, 'Value': value, 'Alpha': alpha}, ('HSL',): {'Hue': hue, 'Saturation': saturation, 'Lightness': lightness, 'Alpha': alpha}}[_configuration]
+        _node_args = {('RGB',): [], ('HSV',): [], ('HSL',): []}[_configuration]
+        node = Node('Combine Color', *_node_args, named_sockets=_node_sockets, mode=mode)
+        return node
 
     @classmethod
-    def combine_list(cls, named_sockets=None, _0: Float | Integer | Boolean | Vector | Color | Rotation | Matrix | String | Menu | Object | Image | Geometry | Collection | Material | Bundle | Closure | Font | Sound=None, data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'SHADER', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'TEXTURE', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SCENE', 'TEXT', 'MASK', 'SOUND', 'INT_VECTOR']='FLOAT', **sockets):
+    def combine_list(cls, *values: Socket, data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SOUND']='FLOAT'):
         """ > Node <&Node Combine List>
         
         Parameters
         ----------
-        _0 : Float | Integer | Boolean | Vector | Color | Rotation | Matrix | String | Menu | Object | Image | Geometry | Collection | Material | Bundle | Closure | Font | Sound, optional
-            socket '0'
-        
         data_type : Literal['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Rotation', 'Matrix', 'String', 'Menu', 'Object', 'Image', 'Geometry', 'Collection', 'Material', 'Bundle', 'Closure', 'Font', 'Sound']
             parameter `data_type`
         
@@ -1054,11 +993,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'_0': _0}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _named_sockets.update({_name: _value for _name, _value in (named_sockets or {}).items() if _value is not None})
-        _node = Node('Combine List', named_sockets=_named_sockets, data_type=data_type, **sockets)
-        return _node
+        node = Node('Combine List', *values, named_sockets={}, data_type=data_type)
+        return node
 
     @classmethod
     def combine_matrix(cls, column_1_row_1: Float=None, column_1_row_2: Float=None, column_1_row_3: Float=None, column_1_row_4: Float=None, column_2_row_1: Float=None, column_2_row_2: Float=None, column_2_row_3: Float=None, column_2_row_4: Float=None, column_3_row_1: Float=None, column_3_row_2: Float=None, column_3_row_3: Float=None, column_3_row_4: Float=None, column_4_row_1: Float=None, column_4_row_2: Float=None, column_4_row_3: Float=None, column_4_row_4: Float=None):
@@ -1118,10 +1054,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'column_1_row_1': column_1_row_1, 'column_1_row_2': column_1_row_2, 'column_1_row_3': column_1_row_3, 'column_1_row_4': column_1_row_4, 'column_2_row_1': column_2_row_1, 'column_2_row_2': column_2_row_2, 'column_2_row_3': column_2_row_3, 'column_2_row_4': column_2_row_4, 'column_3_row_1': column_3_row_1, 'column_3_row_2': column_3_row_2, 'column_3_row_3': column_3_row_3, 'column_3_row_4': column_3_row_4, 'column_4_row_1': column_4_row_1, 'column_4_row_2': column_4_row_2, 'column_4_row_3': column_4_row_3, 'column_4_row_4': column_4_row_4}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Combine Matrix', named_sockets=_named_sockets)
-        return _node
+        node = Node('Combine Matrix', named_sockets={'Column 1 Row 1': column_1_row_1, 'Column 1 Row 2': column_1_row_2, 'Column 1 Row 3': column_1_row_3, 'Column 1 Row 4': column_1_row_4, 'Column 2 Row 1': column_2_row_1, 'Column 2 Row 2': column_2_row_2, 'Column 2 Row 3': column_2_row_3, 'Column 2 Row 4': column_2_row_4, 'Column 3 Row 1': column_3_row_1, 'Column 3 Row 2': column_3_row_2, 'Column 3 Row 3': column_3_row_3, 'Column 3 Row 4': column_3_row_4, 'Column 4 Row 1': column_4_row_1, 'Column 4 Row 2': column_4_row_2, 'Column 4 Row 3': column_4_row_3, 'Column 4 Row 4': column_4_row_4})
+        return node
 
     @classmethod
     def combine_transform(cls, translation: Vector=None, rotation: Rotation=None, scale: Vector=None):
@@ -1142,10 +1076,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'translation': translation, 'rotation': rotation, 'scale': scale}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Combine Transform', named_sockets=_named_sockets)
-        return _node
+        node = Node('Combine Transform', named_sockets={'Translation': translation, 'Rotation': rotation, 'Scale': scale})
+        return node
 
     @classmethod
     def combine_xyz(cls, x: Float=None, y: Float=None, z: Float=None):
@@ -1166,13 +1098,11 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'x': x, 'y': y, 'z': z}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Combine XYZ', named_sockets=_named_sockets)
-        return _node
+        node = Node('Combine XYZ', named_sockets={'X': x, 'Y': y, 'Z': z})
+        return node
 
     @classmethod
-    def comment(cls, text='## Comment'):
+    def comment(cls, text: str='## Comment'):
         """ > Node <&Node Comment>
         
         Parameters
@@ -1184,21 +1114,19 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Comment', named_sockets=_named_sockets, text=text)
-        return _node
+        node = Node('Comment', named_sockets={}, text=text)
+        return node
 
     @classmethod
-    def compare(cls, a: Float | Integer | Vector | Color | String | Object | Image | Collection | Material | Font | Sound=None, b: Float | Integer | Vector | Color | String | Object | Image | Collection | Material | Font | Sound=None, epsilon: Float=None, c: Float=None, angle: Float=None, operation: Literal['LESS_THAN', 'LESS_EQUAL', 'GREATER_THAN', 'GREATER_EQUAL', 'EQUAL', 'NOT_EQUAL', 'BRIGHTER', 'DARKER']='GREATER_THAN', data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'SHADER', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'TEXTURE', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SCENE', 'TEXT', 'MASK', 'SOUND', 'INT_VECTOR']='FLOAT', mode: Literal['ELEMENT', 'LENGTH', 'AVERAGE', 'DOT_PRODUCT', 'DIRECTION']='ELEMENT'):
+    def compare(cls, a: Socket=None, b: Socket=None, epsilon: Float=None, c: Float=None, angle: Float=None, operation: Literal['LESS_THAN', 'LESS_EQUAL', 'GREATER_THAN', 'GREATER_EQUAL', 'EQUAL', 'NOT_EQUAL']='GREATER_THAN', data_type: Literal['FLOAT', 'INT', 'VECTOR', 'RGBA', 'STRING', 'OBJECT', 'IMAGE', 'COLLECTION', 'MATERIAL', 'FONT', 'SOUND']='FLOAT', mode: Literal['ELEMENT', 'LENGTH', 'AVERAGE', 'DOT_PRODUCT', 'DIRECTION']='ELEMENT'):
         """ > Node <&Node Compare>
         
         Parameters
         ----------
-        a : Float | Integer | Vector | Color | String | Object | Image | Collection | Material | Font | Sound, optional
+        a : Socket, optional
             socket 'A'
         
-        b : Float | Integer | Vector | Color | String | Object | Image | Collection | Material | Font | Sound, optional
+        b : Socket, optional
             socket 'B'
         
         epsilon : Float, optional
@@ -1223,10 +1151,11 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'a': a, 'b': b, 'epsilon': epsilon, 'c': c, 'angle': angle}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Compare', named_sockets=_named_sockets, data_type=data_type, mode=mode, operation=operation)
-        return _node
+        _configuration = ({'float': 'FLOAT', 'int': 'INT', 'boolean': 'BOOLEAN', 'vector': 'VECTOR', 'rgba': 'RGBA', 'rotation': 'ROTATION', 'matrix': 'MATRIX', 'string': 'STRING', 'menu': 'MENU', 'shader': 'SHADER', 'object': 'OBJECT', 'image': 'IMAGE', 'geometry': 'GEOMETRY', 'collection': 'COLLECTION', 'texture': 'TEXTURE', 'material': 'MATERIAL', 'bundle': 'BUNDLE', 'closure': 'CLOSURE', 'font': 'FONT', 'scene': 'SCENE', 'text': 'TEXT', 'mask': 'MASK', 'sound': 'SOUND', 'int_vector': 'INT_VECTOR', 'integer': 'INT', 'color': 'RGBA', 'integer vector': 'INT_VECTOR'}.get(data_type.lower(), data_type), {'less_than': 'LESS_THAN', 'less_equal': 'LESS_EQUAL', 'greater_than': 'GREATER_THAN', 'greater_equal': 'GREATER_EQUAL', 'equal': 'EQUAL', 'not_equal': 'NOT_EQUAL', 'brighter': 'BRIGHTER', 'darker': 'DARKER', 'less than': 'LESS_THAN', 'less than or equal': 'LESS_EQUAL', 'greater than': 'GREATER_THAN', 'greater than or equal': 'GREATER_EQUAL', 'not equal': 'NOT_EQUAL'}.get(operation.lower(), operation), {'element': 'ELEMENT', 'length': 'LENGTH', 'average': 'AVERAGE', 'dot_product': 'DOT_PRODUCT', 'direction': 'DIRECTION', 'element-wise': 'ELEMENT', 'dot product': 'DOT_PRODUCT'}.get(mode.lower(), mode))
+        _node_sockets = {('FLOAT', 'LESS_THAN', 'ELEMENT'): {'A': a, 'B': b}, ('FLOAT', 'LESS_THAN', 'LENGTH'): {'A': a, 'B': b}, ('FLOAT', 'LESS_THAN', 'AVERAGE'): {'A': a, 'B': b}, ('FLOAT', 'LESS_THAN', 'DOT_PRODUCT'): {'A': a, 'B': b}, ('FLOAT', 'LESS_THAN', 'DIRECTION'): {'A': a, 'B': b}, ('FLOAT', 'LESS_EQUAL', 'ELEMENT'): {'A': a, 'B': b}, ('FLOAT', 'LESS_EQUAL', 'LENGTH'): {'A': a, 'B': b}, ('FLOAT', 'LESS_EQUAL', 'AVERAGE'): {'A': a, 'B': b}, ('FLOAT', 'LESS_EQUAL', 'DOT_PRODUCT'): {'A': a, 'B': b}, ('FLOAT', 'LESS_EQUAL', 'DIRECTION'): {'A': a, 'B': b}, ('FLOAT', 'GREATER_THAN', 'ELEMENT'): {'A': a, 'B': b}, ('FLOAT', 'GREATER_THAN', 'LENGTH'): {'A': a, 'B': b}, ('FLOAT', 'GREATER_THAN', 'AVERAGE'): {'A': a, 'B': b}, ('FLOAT', 'GREATER_THAN', 'DOT_PRODUCT'): {'A': a, 'B': b}, ('FLOAT', 'GREATER_THAN', 'DIRECTION'): {'A': a, 'B': b}, ('FLOAT', 'GREATER_EQUAL', 'ELEMENT'): {'A': a, 'B': b}, ('FLOAT', 'GREATER_EQUAL', 'LENGTH'): {'A': a, 'B': b}, ('FLOAT', 'GREATER_EQUAL', 'AVERAGE'): {'A': a, 'B': b}, ('FLOAT', 'GREATER_EQUAL', 'DOT_PRODUCT'): {'A': a, 'B': b}, ('FLOAT', 'GREATER_EQUAL', 'DIRECTION'): {'A': a, 'B': b}, ('FLOAT', 'EQUAL', 'ELEMENT'): {'A': a, 'B': b, 'Epsilon': epsilon}, ('FLOAT', 'EQUAL', 'LENGTH'): {'A': a, 'B': b, 'Epsilon': epsilon}, ('FLOAT', 'EQUAL', 'AVERAGE'): {'A': a, 'B': b, 'Epsilon': epsilon}, ('FLOAT', 'EQUAL', 'DOT_PRODUCT'): {'A': a, 'B': b, 'Epsilon': epsilon}, ('FLOAT', 'EQUAL', 'DIRECTION'): {'A': a, 'B': b, 'Epsilon': epsilon}, ('FLOAT', 'NOT_EQUAL', 'ELEMENT'): {'A': a, 'B': b, 'Epsilon': epsilon}, ('FLOAT', 'NOT_EQUAL', 'LENGTH'): {'A': a, 'B': b, 'Epsilon': epsilon}, ('FLOAT', 'NOT_EQUAL', 'AVERAGE'): {'A': a, 'B': b, 'Epsilon': epsilon}, ('FLOAT', 'NOT_EQUAL', 'DOT_PRODUCT'): {'A': a, 'B': b, 'Epsilon': epsilon}, ('FLOAT', 'NOT_EQUAL', 'DIRECTION'): {'A': a, 'B': b, 'Epsilon': epsilon}, ('INT', 'LESS_THAN', 'ELEMENT'): {'A': a, 'B': b}, ('INT', 'LESS_THAN', 'LENGTH'): {'A': a, 'B': b}, ('INT', 'LESS_THAN', 'AVERAGE'): {'A': a, 'B': b}, ('INT', 'LESS_THAN', 'DOT_PRODUCT'): {'A': a, 'B': b}, ('INT', 'LESS_THAN', 'DIRECTION'): {'A': a, 'B': b}, ('INT', 'LESS_EQUAL', 'ELEMENT'): {'A': a, 'B': b}, ('INT', 'LESS_EQUAL', 'LENGTH'): {'A': a, 'B': b}, ('INT', 'LESS_EQUAL', 'AVERAGE'): {'A': a, 'B': b}, ('INT', 'LESS_EQUAL', 'DOT_PRODUCT'): {'A': a, 'B': b}, ('INT', 'LESS_EQUAL', 'DIRECTION'): {'A': a, 'B': b}, ('INT', 'GREATER_THAN', 'ELEMENT'): {'A': a, 'B': b}, ('INT', 'GREATER_THAN', 'LENGTH'): {'A': a, 'B': b}, ('INT', 'GREATER_THAN', 'AVERAGE'): {'A': a, 'B': b}, ('INT', 'GREATER_THAN', 'DOT_PRODUCT'): {'A': a, 'B': b}, ('INT', 'GREATER_THAN', 'DIRECTION'): {'A': a, 'B': b}, ('INT', 'GREATER_EQUAL', 'ELEMENT'): {'A': a, 'B': b}, ('INT', 'GREATER_EQUAL', 'LENGTH'): {'A': a, 'B': b}, ('INT', 'GREATER_EQUAL', 'AVERAGE'): {'A': a, 'B': b}, ('INT', 'GREATER_EQUAL', 'DOT_PRODUCT'): {'A': a, 'B': b}, ('INT', 'GREATER_EQUAL', 'DIRECTION'): {'A': a, 'B': b}, ('INT', 'EQUAL', 'ELEMENT'): {'A': a, 'B': b}, ('INT', 'EQUAL', 'LENGTH'): {'A': a, 'B': b}, ('INT', 'EQUAL', 'AVERAGE'): {'A': a, 'B': b}, ('INT', 'EQUAL', 'DOT_PRODUCT'): {'A': a, 'B': b}, ('INT', 'EQUAL', 'DIRECTION'): {'A': a, 'B': b}, ('INT', 'NOT_EQUAL', 'ELEMENT'): {'A': a, 'B': b}, ('INT', 'NOT_EQUAL', 'LENGTH'): {'A': a, 'B': b}, ('INT', 'NOT_EQUAL', 'AVERAGE'): {'A': a, 'B': b}, ('INT', 'NOT_EQUAL', 'DOT_PRODUCT'): {'A': a, 'B': b}, ('INT', 'NOT_EQUAL', 'DIRECTION'): {'A': a, 'B': b}, ('VECTOR', 'LESS_THAN', 'ELEMENT'): {'A': a, 'B': b}, ('VECTOR', 'LESS_THAN', 'LENGTH'): {'A': a, 'B': b}, ('VECTOR', 'LESS_THAN', 'AVERAGE'): {'A': a, 'B': b}, ('VECTOR', 'LESS_THAN', 'DOT_PRODUCT'): {'A': a, 'B': b, 'C': c}, ('VECTOR', 'LESS_THAN', 'DIRECTION'): {'A': a, 'B': b, 'Angle': angle}, ('VECTOR', 'LESS_EQUAL', 'ELEMENT'): {'A': a, 'B': b}, ('VECTOR', 'LESS_EQUAL', 'LENGTH'): {'A': a, 'B': b}, ('VECTOR', 'LESS_EQUAL', 'AVERAGE'): {'A': a, 'B': b}, ('VECTOR', 'LESS_EQUAL', 'DOT_PRODUCT'): {'A': a, 'B': b, 'C': c}, ('VECTOR', 'LESS_EQUAL', 'DIRECTION'): {'A': a, 'B': b, 'Angle': angle}, ('VECTOR', 'GREATER_THAN', 'ELEMENT'): {'A': a, 'B': b}, ('VECTOR', 'GREATER_THAN', 'LENGTH'): {'A': a, 'B': b}, ('VECTOR', 'GREATER_THAN', 'AVERAGE'): {'A': a, 'B': b}, ('VECTOR', 'GREATER_THAN', 'DOT_PRODUCT'): {'A': a, 'B': b, 'C': c}, ('VECTOR', 'GREATER_THAN', 'DIRECTION'): {'A': a, 'B': b, 'Angle': angle}, ('VECTOR', 'GREATER_EQUAL', 'ELEMENT'): {'A': a, 'B': b}, ('VECTOR', 'GREATER_EQUAL', 'LENGTH'): {'A': a, 'B': b}, ('VECTOR', 'GREATER_EQUAL', 'AVERAGE'): {'A': a, 'B': b}, ('VECTOR', 'GREATER_EQUAL', 'DOT_PRODUCT'): {'A': a, 'B': b, 'C': c}, ('VECTOR', 'GREATER_EQUAL', 'DIRECTION'): {'A': a, 'B': b, 'Angle': angle}, ('VECTOR', 'EQUAL', 'ELEMENT'): {'A': a, 'B': b, 'Epsilon': epsilon}, ('VECTOR', 'EQUAL', 'LENGTH'): {'A': a, 'B': b, 'Epsilon': epsilon}, ('VECTOR', 'EQUAL', 'AVERAGE'): {'A': a, 'B': b, 'Epsilon': epsilon}, ('VECTOR', 'EQUAL', 'DOT_PRODUCT'): {'A': a, 'B': b, 'C': c, 'Epsilon': epsilon}, ('VECTOR', 'EQUAL', 'DIRECTION'): {'A': a, 'B': b, 'Angle': angle, 'Epsilon': epsilon}, ('VECTOR', 'NOT_EQUAL', 'ELEMENT'): {'A': a, 'B': b, 'Epsilon': epsilon}, ('VECTOR', 'NOT_EQUAL', 'LENGTH'): {'A': a, 'B': b, 'Epsilon': epsilon}, ('VECTOR', 'NOT_EQUAL', 'AVERAGE'): {'A': a, 'B': b, 'Epsilon': epsilon}, ('VECTOR', 'NOT_EQUAL', 'DOT_PRODUCT'): {'A': a, 'B': b, 'C': c, 'Epsilon': epsilon}, ('VECTOR', 'NOT_EQUAL', 'DIRECTION'): {'A': a, 'B': b, 'Angle': angle, 'Epsilon': epsilon}, ('RGBA', 'EQUAL', 'ELEMENT'): {'A': a, 'B': b, 'Epsilon': epsilon}, ('RGBA', 'EQUAL', 'LENGTH'): {'A': a, 'B': b, 'Epsilon': epsilon}, ('RGBA', 'EQUAL', 'AVERAGE'): {'A': a, 'B': b, 'Epsilon': epsilon}, ('RGBA', 'EQUAL', 'DOT_PRODUCT'): {'A': a, 'B': b, 'Epsilon': epsilon}, ('RGBA', 'EQUAL', 'DIRECTION'): {'A': a, 'B': b, 'Epsilon': epsilon}, ('RGBA', 'NOT_EQUAL', 'ELEMENT'): {'A': a, 'B': b, 'Epsilon': epsilon}, ('RGBA', 'NOT_EQUAL', 'LENGTH'): {'A': a, 'B': b, 'Epsilon': epsilon}, ('RGBA', 'NOT_EQUAL', 'AVERAGE'): {'A': a, 'B': b, 'Epsilon': epsilon}, ('RGBA', 'NOT_EQUAL', 'DOT_PRODUCT'): {'A': a, 'B': b, 'Epsilon': epsilon}, ('RGBA', 'NOT_EQUAL', 'DIRECTION'): {'A': a, 'B': b, 'Epsilon': epsilon}, ('RGBA', 'BRIGHTER', 'ELEMENT'): {'A': a, 'B': b}, ('RGBA', 'BRIGHTER', 'LENGTH'): {'A': a, 'B': b}, ('RGBA', 'BRIGHTER', 'AVERAGE'): {'A': a, 'B': b}, ('RGBA', 'BRIGHTER', 'DOT_PRODUCT'): {'A': a, 'B': b}, ('RGBA', 'BRIGHTER', 'DIRECTION'): {'A': a, 'B': b}, ('RGBA', 'DARKER', 'ELEMENT'): {'A': a, 'B': b}, ('RGBA', 'DARKER', 'LENGTH'): {'A': a, 'B': b}, ('RGBA', 'DARKER', 'AVERAGE'): {'A': a, 'B': b}, ('RGBA', 'DARKER', 'DOT_PRODUCT'): {'A': a, 'B': b}, ('RGBA', 'DARKER', 'DIRECTION'): {'A': a, 'B': b}, ('STRING', 'EQUAL', 'ELEMENT'): {'A': a, 'B': b}, ('STRING', 'EQUAL', 'LENGTH'): {'A': a, 'B': b}, ('STRING', 'EQUAL', 'AVERAGE'): {'A': a, 'B': b}, ('STRING', 'EQUAL', 'DOT_PRODUCT'): {'A': a, 'B': b}, ('STRING', 'EQUAL', 'DIRECTION'): {'A': a, 'B': b}, ('STRING', 'NOT_EQUAL', 'ELEMENT'): {'A': a, 'B': b}, ('STRING', 'NOT_EQUAL', 'LENGTH'): {'A': a, 'B': b}, ('STRING', 'NOT_EQUAL', 'AVERAGE'): {'A': a, 'B': b}, ('STRING', 'NOT_EQUAL', 'DOT_PRODUCT'): {'A': a, 'B': b}, ('STRING', 'NOT_EQUAL', 'DIRECTION'): {'A': a, 'B': b}, ('OBJECT', 'EQUAL', 'ELEMENT'): {'A': a, 'B': b}, ('OBJECT', 'EQUAL', 'LENGTH'): {'A': a, 'B': b}, ('OBJECT', 'EQUAL', 'AVERAGE'): {'A': a, 'B': b}, ('OBJECT', 'EQUAL', 'DOT_PRODUCT'): {'A': a, 'B': b}, ('OBJECT', 'EQUAL', 'DIRECTION'): {'A': a, 'B': b}, ('OBJECT', 'NOT_EQUAL', 'ELEMENT'): {'A': a, 'B': b}, ('OBJECT', 'NOT_EQUAL', 'LENGTH'): {'A': a, 'B': b}, ('OBJECT', 'NOT_EQUAL', 'AVERAGE'): {'A': a, 'B': b}, ('OBJECT', 'NOT_EQUAL', 'DOT_PRODUCT'): {'A': a, 'B': b}, ('OBJECT', 'NOT_EQUAL', 'DIRECTION'): {'A': a, 'B': b}, ('IMAGE', 'EQUAL', 'ELEMENT'): {'A': a, 'B': b}, ('IMAGE', 'EQUAL', 'LENGTH'): {'A': a, 'B': b}, ('IMAGE', 'EQUAL', 'AVERAGE'): {'A': a, 'B': b}, ('IMAGE', 'EQUAL', 'DOT_PRODUCT'): {'A': a, 'B': b}, ('IMAGE', 'EQUAL', 'DIRECTION'): {'A': a, 'B': b}, ('IMAGE', 'NOT_EQUAL', 'ELEMENT'): {'A': a, 'B': b}, ('IMAGE', 'NOT_EQUAL', 'LENGTH'): {'A': a, 'B': b}, ('IMAGE', 'NOT_EQUAL', 'AVERAGE'): {'A': a, 'B': b}, ('IMAGE', 'NOT_EQUAL', 'DOT_PRODUCT'): {'A': a, 'B': b}, ('IMAGE', 'NOT_EQUAL', 'DIRECTION'): {'A': a, 'B': b}, ('COLLECTION', 'EQUAL', 'ELEMENT'): {'A': a, 'B': b}, ('COLLECTION', 'EQUAL', 'LENGTH'): {'A': a, 'B': b}, ('COLLECTION', 'EQUAL', 'AVERAGE'): {'A': a, 'B': b}, ('COLLECTION', 'EQUAL', 'DOT_PRODUCT'): {'A': a, 'B': b}, ('COLLECTION', 'EQUAL', 'DIRECTION'): {'A': a, 'B': b}, ('COLLECTION', 'NOT_EQUAL', 'ELEMENT'): {'A': a, 'B': b}, ('COLLECTION', 'NOT_EQUAL', 'LENGTH'): {'A': a, 'B': b}, ('COLLECTION', 'NOT_EQUAL', 'AVERAGE'): {'A': a, 'B': b}, ('COLLECTION', 'NOT_EQUAL', 'DOT_PRODUCT'): {'A': a, 'B': b}, ('COLLECTION', 'NOT_EQUAL', 'DIRECTION'): {'A': a, 'B': b}, ('MATERIAL', 'EQUAL', 'ELEMENT'): {'A': a, 'B': b}, ('MATERIAL', 'EQUAL', 'LENGTH'): {'A': a, 'B': b}, ('MATERIAL', 'EQUAL', 'AVERAGE'): {'A': a, 'B': b}, ('MATERIAL', 'EQUAL', 'DOT_PRODUCT'): {'A': a, 'B': b}, ('MATERIAL', 'EQUAL', 'DIRECTION'): {'A': a, 'B': b}, ('MATERIAL', 'NOT_EQUAL', 'ELEMENT'): {'A': a, 'B': b}, ('MATERIAL', 'NOT_EQUAL', 'LENGTH'): {'A': a, 'B': b}, ('MATERIAL', 'NOT_EQUAL', 'AVERAGE'): {'A': a, 'B': b}, ('MATERIAL', 'NOT_EQUAL', 'DOT_PRODUCT'): {'A': a, 'B': b}, ('MATERIAL', 'NOT_EQUAL', 'DIRECTION'): {'A': a, 'B': b}, ('FONT', 'EQUAL', 'ELEMENT'): {'A': a, 'B': b}, ('FONT', 'EQUAL', 'LENGTH'): {'A': a, 'B': b}, ('FONT', 'EQUAL', 'AVERAGE'): {'A': a, 'B': b}, ('FONT', 'EQUAL', 'DOT_PRODUCT'): {'A': a, 'B': b}, ('FONT', 'EQUAL', 'DIRECTION'): {'A': a, 'B': b}, ('FONT', 'NOT_EQUAL', 'ELEMENT'): {'A': a, 'B': b}, ('FONT', 'NOT_EQUAL', 'LENGTH'): {'A': a, 'B': b}, ('FONT', 'NOT_EQUAL', 'AVERAGE'): {'A': a, 'B': b}, ('FONT', 'NOT_EQUAL', 'DOT_PRODUCT'): {'A': a, 'B': b}, ('FONT', 'NOT_EQUAL', 'DIRECTION'): {'A': a, 'B': b}, ('SOUND', 'EQUAL', 'ELEMENT'): {'A': a, 'B': b}, ('SOUND', 'EQUAL', 'LENGTH'): {'A': a, 'B': b}, ('SOUND', 'EQUAL', 'AVERAGE'): {'A': a, 'B': b}, ('SOUND', 'EQUAL', 'DOT_PRODUCT'): {'A': a, 'B': b}, ('SOUND', 'EQUAL', 'DIRECTION'): {'A': a, 'B': b}, ('SOUND', 'NOT_EQUAL', 'ELEMENT'): {'A': a, 'B': b}, ('SOUND', 'NOT_EQUAL', 'LENGTH'): {'A': a, 'B': b}, ('SOUND', 'NOT_EQUAL', 'AVERAGE'): {'A': a, 'B': b}, ('SOUND', 'NOT_EQUAL', 'DOT_PRODUCT'): {'A': a, 'B': b}, ('SOUND', 'NOT_EQUAL', 'DIRECTION'): {'A': a, 'B': b}}[_configuration]
+        _node_args = {('FLOAT', 'LESS_THAN', 'ELEMENT'): [], ('FLOAT', 'LESS_THAN', 'LENGTH'): [], ('FLOAT', 'LESS_THAN', 'AVERAGE'): [], ('FLOAT', 'LESS_THAN', 'DOT_PRODUCT'): [], ('FLOAT', 'LESS_THAN', 'DIRECTION'): [], ('FLOAT', 'LESS_EQUAL', 'ELEMENT'): [], ('FLOAT', 'LESS_EQUAL', 'LENGTH'): [], ('FLOAT', 'LESS_EQUAL', 'AVERAGE'): [], ('FLOAT', 'LESS_EQUAL', 'DOT_PRODUCT'): [], ('FLOAT', 'LESS_EQUAL', 'DIRECTION'): [], ('FLOAT', 'GREATER_THAN', 'ELEMENT'): [], ('FLOAT', 'GREATER_THAN', 'LENGTH'): [], ('FLOAT', 'GREATER_THAN', 'AVERAGE'): [], ('FLOAT', 'GREATER_THAN', 'DOT_PRODUCT'): [], ('FLOAT', 'GREATER_THAN', 'DIRECTION'): [], ('FLOAT', 'GREATER_EQUAL', 'ELEMENT'): [], ('FLOAT', 'GREATER_EQUAL', 'LENGTH'): [], ('FLOAT', 'GREATER_EQUAL', 'AVERAGE'): [], ('FLOAT', 'GREATER_EQUAL', 'DOT_PRODUCT'): [], ('FLOAT', 'GREATER_EQUAL', 'DIRECTION'): [], ('FLOAT', 'EQUAL', 'ELEMENT'): [], ('FLOAT', 'EQUAL', 'LENGTH'): [], ('FLOAT', 'EQUAL', 'AVERAGE'): [], ('FLOAT', 'EQUAL', 'DOT_PRODUCT'): [], ('FLOAT', 'EQUAL', 'DIRECTION'): [], ('FLOAT', 'NOT_EQUAL', 'ELEMENT'): [], ('FLOAT', 'NOT_EQUAL', 'LENGTH'): [], ('FLOAT', 'NOT_EQUAL', 'AVERAGE'): [], ('FLOAT', 'NOT_EQUAL', 'DOT_PRODUCT'): [], ('FLOAT', 'NOT_EQUAL', 'DIRECTION'): [], ('INT', 'LESS_THAN', 'ELEMENT'): [], ('INT', 'LESS_THAN', 'LENGTH'): [], ('INT', 'LESS_THAN', 'AVERAGE'): [], ('INT', 'LESS_THAN', 'DOT_PRODUCT'): [], ('INT', 'LESS_THAN', 'DIRECTION'): [], ('INT', 'LESS_EQUAL', 'ELEMENT'): [], ('INT', 'LESS_EQUAL', 'LENGTH'): [], ('INT', 'LESS_EQUAL', 'AVERAGE'): [], ('INT', 'LESS_EQUAL', 'DOT_PRODUCT'): [], ('INT', 'LESS_EQUAL', 'DIRECTION'): [], ('INT', 'GREATER_THAN', 'ELEMENT'): [], ('INT', 'GREATER_THAN', 'LENGTH'): [], ('INT', 'GREATER_THAN', 'AVERAGE'): [], ('INT', 'GREATER_THAN', 'DOT_PRODUCT'): [], ('INT', 'GREATER_THAN', 'DIRECTION'): [], ('INT', 'GREATER_EQUAL', 'ELEMENT'): [], ('INT', 'GREATER_EQUAL', 'LENGTH'): [], ('INT', 'GREATER_EQUAL', 'AVERAGE'): [], ('INT', 'GREATER_EQUAL', 'DOT_PRODUCT'): [], ('INT', 'GREATER_EQUAL', 'DIRECTION'): [], ('INT', 'EQUAL', 'ELEMENT'): [], ('INT', 'EQUAL', 'LENGTH'): [], ('INT', 'EQUAL', 'AVERAGE'): [], ('INT', 'EQUAL', 'DOT_PRODUCT'): [], ('INT', 'EQUAL', 'DIRECTION'): [], ('INT', 'NOT_EQUAL', 'ELEMENT'): [], ('INT', 'NOT_EQUAL', 'LENGTH'): [], ('INT', 'NOT_EQUAL', 'AVERAGE'): [], ('INT', 'NOT_EQUAL', 'DOT_PRODUCT'): [], ('INT', 'NOT_EQUAL', 'DIRECTION'): [], ('VECTOR', 'LESS_THAN', 'ELEMENT'): [], ('VECTOR', 'LESS_THAN', 'LENGTH'): [], ('VECTOR', 'LESS_THAN', 'AVERAGE'): [], ('VECTOR', 'LESS_THAN', 'DOT_PRODUCT'): [], ('VECTOR', 'LESS_THAN', 'DIRECTION'): [], ('VECTOR', 'LESS_EQUAL', 'ELEMENT'): [], ('VECTOR', 'LESS_EQUAL', 'LENGTH'): [], ('VECTOR', 'LESS_EQUAL', 'AVERAGE'): [], ('VECTOR', 'LESS_EQUAL', 'DOT_PRODUCT'): [], ('VECTOR', 'LESS_EQUAL', 'DIRECTION'): [], ('VECTOR', 'GREATER_THAN', 'ELEMENT'): [], ('VECTOR', 'GREATER_THAN', 'LENGTH'): [], ('VECTOR', 'GREATER_THAN', 'AVERAGE'): [], ('VECTOR', 'GREATER_THAN', 'DOT_PRODUCT'): [], ('VECTOR', 'GREATER_THAN', 'DIRECTION'): [], ('VECTOR', 'GREATER_EQUAL', 'ELEMENT'): [], ('VECTOR', 'GREATER_EQUAL', 'LENGTH'): [], ('VECTOR', 'GREATER_EQUAL', 'AVERAGE'): [], ('VECTOR', 'GREATER_EQUAL', 'DOT_PRODUCT'): [], ('VECTOR', 'GREATER_EQUAL', 'DIRECTION'): [], ('VECTOR', 'EQUAL', 'ELEMENT'): [], ('VECTOR', 'EQUAL', 'LENGTH'): [], ('VECTOR', 'EQUAL', 'AVERAGE'): [], ('VECTOR', 'EQUAL', 'DOT_PRODUCT'): [], ('VECTOR', 'EQUAL', 'DIRECTION'): [], ('VECTOR', 'NOT_EQUAL', 'ELEMENT'): [], ('VECTOR', 'NOT_EQUAL', 'LENGTH'): [], ('VECTOR', 'NOT_EQUAL', 'AVERAGE'): [], ('VECTOR', 'NOT_EQUAL', 'DOT_PRODUCT'): [], ('VECTOR', 'NOT_EQUAL', 'DIRECTION'): [], ('RGBA', 'EQUAL', 'ELEMENT'): [], ('RGBA', 'EQUAL', 'LENGTH'): [], ('RGBA', 'EQUAL', 'AVERAGE'): [], ('RGBA', 'EQUAL', 'DOT_PRODUCT'): [], ('RGBA', 'EQUAL', 'DIRECTION'): [], ('RGBA', 'NOT_EQUAL', 'ELEMENT'): [], ('RGBA', 'NOT_EQUAL', 'LENGTH'): [], ('RGBA', 'NOT_EQUAL', 'AVERAGE'): [], ('RGBA', 'NOT_EQUAL', 'DOT_PRODUCT'): [], ('RGBA', 'NOT_EQUAL', 'DIRECTION'): [], ('RGBA', 'BRIGHTER', 'ELEMENT'): [], ('RGBA', 'BRIGHTER', 'LENGTH'): [], ('RGBA', 'BRIGHTER', 'AVERAGE'): [], ('RGBA', 'BRIGHTER', 'DOT_PRODUCT'): [], ('RGBA', 'BRIGHTER', 'DIRECTION'): [], ('RGBA', 'DARKER', 'ELEMENT'): [], ('RGBA', 'DARKER', 'LENGTH'): [], ('RGBA', 'DARKER', 'AVERAGE'): [], ('RGBA', 'DARKER', 'DOT_PRODUCT'): [], ('RGBA', 'DARKER', 'DIRECTION'): [], ('STRING', 'EQUAL', 'ELEMENT'): [], ('STRING', 'EQUAL', 'LENGTH'): [], ('STRING', 'EQUAL', 'AVERAGE'): [], ('STRING', 'EQUAL', 'DOT_PRODUCT'): [], ('STRING', 'EQUAL', 'DIRECTION'): [], ('STRING', 'NOT_EQUAL', 'ELEMENT'): [], ('STRING', 'NOT_EQUAL', 'LENGTH'): [], ('STRING', 'NOT_EQUAL', 'AVERAGE'): [], ('STRING', 'NOT_EQUAL', 'DOT_PRODUCT'): [], ('STRING', 'NOT_EQUAL', 'DIRECTION'): [], ('OBJECT', 'EQUAL', 'ELEMENT'): [], ('OBJECT', 'EQUAL', 'LENGTH'): [], ('OBJECT', 'EQUAL', 'AVERAGE'): [], ('OBJECT', 'EQUAL', 'DOT_PRODUCT'): [], ('OBJECT', 'EQUAL', 'DIRECTION'): [], ('OBJECT', 'NOT_EQUAL', 'ELEMENT'): [], ('OBJECT', 'NOT_EQUAL', 'LENGTH'): [], ('OBJECT', 'NOT_EQUAL', 'AVERAGE'): [], ('OBJECT', 'NOT_EQUAL', 'DOT_PRODUCT'): [], ('OBJECT', 'NOT_EQUAL', 'DIRECTION'): [], ('IMAGE', 'EQUAL', 'ELEMENT'): [], ('IMAGE', 'EQUAL', 'LENGTH'): [], ('IMAGE', 'EQUAL', 'AVERAGE'): [], ('IMAGE', 'EQUAL', 'DOT_PRODUCT'): [], ('IMAGE', 'EQUAL', 'DIRECTION'): [], ('IMAGE', 'NOT_EQUAL', 'ELEMENT'): [], ('IMAGE', 'NOT_EQUAL', 'LENGTH'): [], ('IMAGE', 'NOT_EQUAL', 'AVERAGE'): [], ('IMAGE', 'NOT_EQUAL', 'DOT_PRODUCT'): [], ('IMAGE', 'NOT_EQUAL', 'DIRECTION'): [], ('COLLECTION', 'EQUAL', 'ELEMENT'): [], ('COLLECTION', 'EQUAL', 'LENGTH'): [], ('COLLECTION', 'EQUAL', 'AVERAGE'): [], ('COLLECTION', 'EQUAL', 'DOT_PRODUCT'): [], ('COLLECTION', 'EQUAL', 'DIRECTION'): [], ('COLLECTION', 'NOT_EQUAL', 'ELEMENT'): [], ('COLLECTION', 'NOT_EQUAL', 'LENGTH'): [], ('COLLECTION', 'NOT_EQUAL', 'AVERAGE'): [], ('COLLECTION', 'NOT_EQUAL', 'DOT_PRODUCT'): [], ('COLLECTION', 'NOT_EQUAL', 'DIRECTION'): [], ('MATERIAL', 'EQUAL', 'ELEMENT'): [], ('MATERIAL', 'EQUAL', 'LENGTH'): [], ('MATERIAL', 'EQUAL', 'AVERAGE'): [], ('MATERIAL', 'EQUAL', 'DOT_PRODUCT'): [], ('MATERIAL', 'EQUAL', 'DIRECTION'): [], ('MATERIAL', 'NOT_EQUAL', 'ELEMENT'): [], ('MATERIAL', 'NOT_EQUAL', 'LENGTH'): [], ('MATERIAL', 'NOT_EQUAL', 'AVERAGE'): [], ('MATERIAL', 'NOT_EQUAL', 'DOT_PRODUCT'): [], ('MATERIAL', 'NOT_EQUAL', 'DIRECTION'): [], ('FONT', 'EQUAL', 'ELEMENT'): [], ('FONT', 'EQUAL', 'LENGTH'): [], ('FONT', 'EQUAL', 'AVERAGE'): [], ('FONT', 'EQUAL', 'DOT_PRODUCT'): [], ('FONT', 'EQUAL', 'DIRECTION'): [], ('FONT', 'NOT_EQUAL', 'ELEMENT'): [], ('FONT', 'NOT_EQUAL', 'LENGTH'): [], ('FONT', 'NOT_EQUAL', 'AVERAGE'): [], ('FONT', 'NOT_EQUAL', 'DOT_PRODUCT'): [], ('FONT', 'NOT_EQUAL', 'DIRECTION'): [], ('SOUND', 'EQUAL', 'ELEMENT'): [], ('SOUND', 'EQUAL', 'LENGTH'): [], ('SOUND', 'EQUAL', 'AVERAGE'): [], ('SOUND', 'EQUAL', 'DOT_PRODUCT'): [], ('SOUND', 'EQUAL', 'DIRECTION'): [], ('SOUND', 'NOT_EQUAL', 'ELEMENT'): [], ('SOUND', 'NOT_EQUAL', 'LENGTH'): [], ('SOUND', 'NOT_EQUAL', 'AVERAGE'): [], ('SOUND', 'NOT_EQUAL', 'DOT_PRODUCT'): [], ('SOUND', 'NOT_EQUAL', 'DIRECTION'): []}[_configuration]
+        node = Node('Compare', *_node_args, named_sockets=_node_sockets, data_type=data_type, operation=operation, mode=mode)
+        return node
 
     @classmethod
     def cone(cls, vertices: Integer=None, side_segments: Integer=None, fill_segments: Integer=None, radius_top: Float=None, radius_bottom: Float=None, depth: Float=None, fill_type: Literal['NONE', 'NGON', 'TRIANGLE_FAN']='NGON'):
@@ -1259,10 +1188,11 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'vertices': vertices, 'side_segments': side_segments, 'fill_segments': fill_segments, 'radius_top': radius_top, 'radius_bottom': radius_bottom, 'depth': depth}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Cone', named_sockets=_named_sockets, fill_type=fill_type)
-        return _node
+        _configuration = ({'none': 'NONE', 'ngon': 'NGON', 'triangle_fan': 'TRIANGLE_FAN', 'n-gon': 'NGON', 'triangles': 'TRIANGLE_FAN'}.get(fill_type.lower(), fill_type),)
+        _node_sockets = {('NONE',): {'Vertices': vertices, 'Side Segments': side_segments, 'Radius Top': radius_top, 'Radius Bottom': radius_bottom, 'Depth': depth}, ('NGON',): {'Vertices': vertices, 'Side Segments': side_segments, 'Fill Segments': fill_segments, 'Radius Top': radius_top, 'Radius Bottom': radius_bottom, 'Depth': depth}, ('TRIANGLE_FAN',): {'Vertices': vertices, 'Side Segments': side_segments, 'Fill Segments': fill_segments, 'Radius Top': radius_top, 'Radius Bottom': radius_bottom, 'Depth': depth}}[_configuration]
+        _node_args = {('NONE',): [], ('NGON',): [], ('TRIANGLE_FAN',): []}[_configuration]
+        node = Node('Cone', *_node_args, named_sockets=_node_sockets, fill_type=fill_type)
+        return node
 
     @classmethod
     def construct_curves(cls, positions: Vector=None, curve_offsets: Integer=None):
@@ -1280,10 +1210,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'positions': positions, 'curve_offsets': curve_offsets}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Construct Curves', named_sockets=_named_sockets)
-        return _node
+        node = Node('Construct Curves', named_sockets={'Positions': positions, 'Curve Offsets': curve_offsets})
+        return node
 
     @classmethod
     def convex_hull(cls, geometry: Geometry=None):
@@ -1298,10 +1226,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'geometry': geometry}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Convex Hull', named_sockets=_named_sockets)
-        return _node
+        node = Node('Convex Hull', named_sockets={'Geometry': geometry})
+        return node
 
     @classmethod
     def corners_of_edge(cls, edge_index: Integer=None, weights: Float=None, sort_index: Integer=None):
@@ -1322,10 +1248,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'edge_index': edge_index, 'weights': weights, 'sort_index': sort_index}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Corners of Edge', named_sockets=_named_sockets)
-        return _node
+        node = Node('Corners of Edge', named_sockets={'Edge Index': edge_index, 'Weights': weights, 'Sort Index': sort_index})
+        return node
 
     @classmethod
     def corners_of_face(cls, face_index: Integer=None, weights: Float=None, sort_index: Integer=None):
@@ -1346,10 +1270,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'face_index': face_index, 'weights': weights, 'sort_index': sort_index}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Corners of Face', named_sockets=_named_sockets)
-        return _node
+        node = Node('Corners of Face', named_sockets={'Face Index': face_index, 'Weights': weights, 'Sort Index': sort_index})
+        return node
 
     @classmethod
     def corners_of_vertex(cls, vertex_index: Integer=None, weights: Float=None, sort_index: Integer=None):
@@ -1370,10 +1292,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'vertex_index': vertex_index, 'weights': weights, 'sort_index': sort_index}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Corners of Vertex', named_sockets=_named_sockets)
-        return _node
+        node = Node('Corners of Vertex', named_sockets={'Vertex Index': vertex_index, 'Weights': weights, 'Sort Index': sort_index})
+        return node
 
     @classmethod
     def cube(cls, size: Vector=None, vertices_x: Integer=None, vertices_y: Integer=None, vertices_z: Integer=None):
@@ -1397,10 +1317,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'size': size, 'vertices_x': vertices_x, 'vertices_y': vertices_y, 'vertices_z': vertices_z}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Cube', named_sockets=_named_sockets)
-        return _node
+        node = Node('Cube', named_sockets={'Size': size, 'Vertices X': vertices_x, 'Vertices Y': vertices_y, 'Vertices Z': vertices_z})
+        return node
 
     @classmethod
     def cube_grid_topology(cls, bounds_min: Vector=None, bounds_max: Vector=None, resolution_x: Integer=None, resolution_y: Integer=None, resolution_z: Integer=None, min_x: Integer=None, min_y: Integer=None, min_z: Integer=None):
@@ -1436,10 +1354,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'bounds_min': bounds_min, 'bounds_max': bounds_max, 'resolution_x': resolution_x, 'resolution_y': resolution_y, 'resolution_z': resolution_z, 'min_x': min_x, 'min_y': min_y, 'min_z': min_z}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Cube Grid Topology', named_sockets=_named_sockets)
-        return _node
+        node = Node('Cube Grid Topology', named_sockets={'Bounds Min': bounds_min, 'Bounds Max': bounds_max, 'Resolution X': resolution_x, 'Resolution Y': resolution_y, 'Resolution Z': resolution_z, 'Min X': min_x, 'Min Y': min_y, 'Min Z': min_z})
+        return node
 
     @classmethod
     def curve_circle(cls, resolution: Integer=None, point_1: Vector=None, point_2: Vector=None, point_3: Vector=None, radius: Float=None, mode: Literal['POINTS', 'RADIUS']='RADIUS'):
@@ -1469,10 +1385,11 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'resolution': resolution, 'point_1': point_1, 'point_2': point_2, 'point_3': point_3, 'radius': radius}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Curve Circle', named_sockets=_named_sockets, mode=mode)
-        return _node
+        _configuration = ({'points': 'POINTS', 'radius': 'RADIUS'}.get(mode.lower(), mode),)
+        _node_sockets = {('POINTS',): {'Resolution': resolution, 'Point 1': point_1, 'Point 2': point_2, 'Point 3': point_3}, ('RADIUS',): {'Resolution': resolution, 'Radius': radius}}[_configuration]
+        _node_args = {('POINTS',): [], ('RADIUS',): []}[_configuration]
+        node = Node('Curve Circle', *_node_args, named_sockets=_node_sockets, mode=mode)
+        return node
 
     @classmethod
     def curve_handle_positions(cls, relative: Boolean=None):
@@ -1487,10 +1404,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'relative': relative}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Curve Handle Positions', named_sockets=_named_sockets)
-        return _node
+        node = Node('Curve Handle Positions', named_sockets={'Relative': relative})
+        return node
 
     @classmethod
     def curve_length(cls, curve: Curve=None):
@@ -1505,10 +1420,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'curve': curve}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Curve Length', named_sockets=_named_sockets)
-        return _node
+        node = Node('Curve Length', named_sockets={'Curve': curve})
+        return node
 
     @classmethod
     def curve_line(cls, start: Vector=None, end: Vector=None, direction: Vector=None, length: Float=None, mode: Literal['POINTS', 'DIRECTION']='POINTS'):
@@ -1535,10 +1448,11 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'start': start, 'end': end, 'direction': direction, 'length': length}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Curve Line', named_sockets=_named_sockets, mode=mode)
-        return _node
+        _configuration = ({'points': 'POINTS', 'direction': 'DIRECTION'}.get(mode.lower(), mode),)
+        _node_sockets = {('POINTS',): {'Start': start, 'End': end}, ('DIRECTION',): {'Start': start, 'Direction': direction, 'Length': length}}[_configuration]
+        _node_args = {('POINTS',): [], ('DIRECTION',): []}[_configuration]
+        node = Node('Curve Line', *_node_args, named_sockets=_node_sockets, mode=mode)
+        return node
 
     @classmethod
     def curve_of_point(cls, point_index: Integer=None):
@@ -1553,10 +1467,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'point_index': point_index}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Curve of Point', named_sockets=_named_sockets)
-        return _node
+        node = Node('Curve of Point', named_sockets={'Point Index': point_index})
+        return node
 
     @utils.classproperty
     def curve_tangent(cls):
@@ -1564,13 +1476,11 @@ class ND:
         
         Returns
         -------
-        Vector
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Curve Tangent', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('Curve Tangent', named_sockets={})
+        return node._out
 
     @utils.classproperty
     def curve_tilt(cls):
@@ -1578,13 +1488,11 @@ class ND:
         
         Returns
         -------
-        Float
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Curve Tilt', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('Curve Tilt', named_sockets={})
+        return node._out
 
     @classmethod
     def curve_to_mesh(cls, curve: Curve=None, profile_curve: Curve=None, scale: Float=None, fill_caps: Boolean=None, miter_scale: Boolean=None, miter_scale_limit: Float=None):
@@ -1614,10 +1522,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'curve': curve, 'profile_curve': profile_curve, 'scale': scale, 'fill_caps': fill_caps, 'miter_scale': miter_scale, 'miter_scale_limit': miter_scale_limit}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Curve to Mesh', named_sockets=_named_sockets)
-        return _node
+        node = Node('Curve to Mesh', named_sockets={'Curve': curve, 'Profile Curve': profile_curve, 'Scale': scale, 'Fill Caps': fill_caps, 'Miter Scale': miter_scale, 'Miter Scale Limit': miter_scale_limit})
+        return node
 
     @classmethod
     def curve_to_points(cls, curve: Curve=None, count: Integer=None, length: Float=None, mode: Literal['EVALUATED', 'COUNT', 'LENGTH']='COUNT'):
@@ -1641,10 +1547,11 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'curve': curve, 'count': count, 'length': length}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Curve to Points', named_sockets=_named_sockets, mode=mode)
-        return _node
+        _configuration = ({'evaluated': 'EVALUATED', 'count': 'COUNT', 'length': 'LENGTH'}.get(mode.lower(), mode),)
+        _node_sockets = {('EVALUATED',): {'Curve': curve}, ('COUNT',): {'Curve': curve, 'Count': count}, ('LENGTH',): {'Curve': curve, 'Length': length}}[_configuration]
+        _node_args = {('EVALUATED',): [], ('COUNT',): [], ('LENGTH',): []}[_configuration]
+        node = Node('Curve to Points', *_node_args, named_sockets=_node_sockets, mode=mode)
+        return node
 
     @classmethod
     def curves_to_grease_pencil(cls, curves: Curve=None, selection: Boolean=None, instances_as_layers: Boolean=None):
@@ -1665,10 +1572,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'curves': curves, 'selection': selection, 'instances_as_layers': instances_as_layers}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Curves to Grease Pencil', named_sockets=_named_sockets)
-        return _node
+        node = Node('Curves to Grease Pencil', named_sockets={'Curves': curves, 'Selection': selection, 'Instances as Layers': instances_as_layers})
+        return node
 
     @classmethod
     def cylinder(cls, vertices: Integer=None, side_segments: Integer=None, fill_segments: Integer=None, radius: Float=None, depth: Float=None, fill_type: Literal['NONE', 'NGON', 'TRIANGLE_FAN']='NGON'):
@@ -1698,18 +1603,19 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'vertices': vertices, 'side_segments': side_segments, 'fill_segments': fill_segments, 'radius': radius, 'depth': depth}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Cylinder', named_sockets=_named_sockets, fill_type=fill_type)
-        return _node
+        _configuration = ({'none': 'NONE', 'ngon': 'NGON', 'triangle_fan': 'TRIANGLE_FAN', 'n-gon': 'NGON', 'triangles': 'TRIANGLE_FAN'}.get(fill_type.lower(), fill_type),)
+        _node_sockets = {('NONE',): {'Vertices': vertices, 'Side Segments': side_segments, 'Radius': radius, 'Depth': depth}, ('NGON',): {'Vertices': vertices, 'Side Segments': side_segments, 'Fill Segments': fill_segments, 'Radius': radius, 'Depth': depth}, ('TRIANGLE_FAN',): {'Vertices': vertices, 'Side Segments': side_segments, 'Fill Segments': fill_segments, 'Radius': radius, 'Depth': depth}}[_configuration]
+        _node_args = {('NONE',): [], ('NGON',): [], ('TRIANGLE_FAN',): []}[_configuration]
+        node = Node('Cylinder', *_node_args, named_sockets=_node_sockets, fill_type=fill_type)
+        return node
 
     @classmethod
-    def deactivate_voxels(cls, grid: Float | Integer | Boolean | Vector=None, selection: Boolean=None, data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'SHADER', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'TEXTURE', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SCENE', 'TEXT', 'MASK', 'SOUND', 'INT_VECTOR']='FLOAT'):
+    def deactivate_voxels(cls, grid: Socket=None, selection: Boolean=None, data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR']='FLOAT'):
         """ > Node <&Node Deactivate Voxels>
         
         Parameters
         ----------
-        grid : Float | Integer | Boolean | Vector, optional
+        grid : Socket, optional
             socket 'Grid'
         
         selection : Boolean, optional
@@ -1722,10 +1628,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'grid': grid, 'selection': selection}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Deactivate Voxels', named_sockets=_named_sockets, data_type=data_type)
-        return _node
+        node = Node('Deactivate Voxels', named_sockets={'Grid': grid, 'Selection': selection}, data_type=data_type)
+        return node
 
     @classmethod
     def deform_curves_on_surface(cls, curves: Curve=None):
@@ -1740,10 +1644,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'curves': curves}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Deform Curves on Surface', named_sockets=_named_sockets)
-        return _node
+        node = Node('Deform Curves on Surface', named_sockets={'Curves': curves})
+        return node
 
     @classmethod
     def delete_geometry(cls, geometry: Geometry=None, selection: Boolean=None, mode: Literal['ALL', 'EDGE_FACE', 'ONLY_FACE']='ALL', domain: Literal['POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE', 'LAYER']='POINT'):
@@ -1767,10 +1669,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'geometry': geometry, 'selection': selection}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Delete Geometry', named_sockets=_named_sockets, mode=mode, domain=domain)
-        return _node
+        node = Node('Delete Geometry', named_sockets={'Geometry': geometry, 'Selection': selection}, mode=mode, domain=domain)
+        return node
 
     @classmethod
     def dial_gizmo(cls, *value: Float, position: Vector=None, up: Vector=None, screen_space: Boolean=None, radius: Float=None, color_id: Literal['PRIMARY', 'SECONDARY', 'X', 'Y', 'Z']='PRIMARY'):
@@ -1800,10 +1700,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'value': list(value), 'position': position, 'up': up, 'screen_space': screen_space, 'radius': radius}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Dial Gizmo', named_sockets=_named_sockets, color_id=color_id)
-        return _node
+        node = Node('Dial Gizmo', *[*list(value)], named_sockets={'Position': position, 'Up': up, 'Screen Space': screen_space, 'Radius': radius}, color_id=color_id)
+        return node
 
     @classmethod
     def distribute_points_in_grid(cls, grid: Float=None, density: Float=None, seed: Integer=None, spacing: Vector=None, threshold: Float=None, mode: Literal['DENSITY_RANDOM', 'DENSITY_GRID']='DENSITY_RANDOM'):
@@ -1833,13 +1731,14 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'grid': grid, 'density': density, 'seed': seed, 'spacing': spacing, 'threshold': threshold}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Distribute Points in Grid', named_sockets=_named_sockets, mode=mode)
-        return _node
+        _configuration = ({'density_random': 'DENSITY_RANDOM', 'density_grid': 'DENSITY_GRID', 'random': 'DENSITY_RANDOM', 'grid': 'DENSITY_GRID'}.get(mode.lower(), mode),)
+        _node_sockets = {('DENSITY_RANDOM',): {'Grid': grid, 'Density': density, 'Seed': seed}, ('DENSITY_GRID',): {'Grid': grid, 'Spacing': spacing, 'Threshold': threshold}}[_configuration]
+        _node_args = {('DENSITY_RANDOM',): [], ('DENSITY_GRID',): []}[_configuration]
+        node = Node('Distribute Points in Grid', *_node_args, named_sockets=_node_sockets, mode=mode)
+        return node
 
     @classmethod
-    def distribute_points_in_volume(cls, volume: Volume=None, mode: Literal['Random', 'Grid']=None, density: Float=None, seed: Integer=None, spacing: Vector=None, threshold: Float=None):
+    def distribute_points_in_volume(cls, volume: Volume=None, mode: Menu=None, density: Float=None, seed: Integer=None, spacing: Vector=None, threshold: Float=None):
         """ > Node <&Node Distribute Points in Volume>
         
         Parameters
@@ -1847,8 +1746,8 @@ class ND:
         volume : Volume, optional
             socket 'Volume'
         
-        mode : menu='Random', optional
-            ('Random', 'Grid')
+        mode : Menu, optional
+            socket 'Mode'
         
         density : Float, optional
             socket 'Density'
@@ -1866,10 +1765,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'volume': volume, 'mode': mode, 'density': density, 'seed': seed, 'spacing': spacing, 'threshold': threshold}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Distribute Points in Volume', named_sockets=_named_sockets)
-        return _node
+        node = Node('Distribute Points in Volume', named_sockets={'Volume': volume, 'Mode': mode, 'Density': density, 'Seed': seed, 'Spacing': spacing, 'Threshold': threshold})
+        return node
 
     @classmethod
     def distribute_points_on_faces(cls, mesh: Mesh=None, selection: Boolean=None, distance_min: Float=None, density_max: Float=None, density: Float=None, density_factor: Float=None, seed: Integer=None, distribute_method: Literal['RANDOM', 'POISSON']='RANDOM'):
@@ -1905,13 +1802,14 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'mesh': mesh, 'selection': selection, 'distance_min': distance_min, 'density_max': density_max, 'density': density, 'density_factor': density_factor, 'seed': seed}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Distribute Points on Faces', named_sockets=_named_sockets, distribute_method=distribute_method)
-        return _node
+        _configuration = ({'random': 'RANDOM', 'poisson': 'POISSON', 'poisson disk': 'POISSON'}.get(distribute_method.lower(), distribute_method),)
+        _node_sockets = {('RANDOM',): {'Mesh': mesh, 'Selection': selection, 'Density': density, 'Seed': seed}, ('POISSON',): {'Mesh': mesh, 'Selection': selection, 'Distance Min': distance_min, 'Density Max': density_max, 'Density Factor': density_factor, 'Seed': seed}}[_configuration]
+        _node_args = {('RANDOM',): [], ('POISSON',): []}[_configuration]
+        node = Node('Distribute Points on Faces', *_node_args, named_sockets=_node_sockets, distribute_method=distribute_method)
+        return node
 
     @classmethod
-    def domain_size(cls, geometry: Geometry=None, component: Literal['MESH', 'POINTCLOUD', 'CURVE', 'INSTANCES', 'GREASEPENCIL', 'VOLUME']='MESH'):
+    def domain_size(cls, geometry: Geometry=None, component: Literal['MESH', 'POINTCLOUD', 'CURVE', 'INSTANCES', 'GREASEPENCIL']='MESH'):
         """ > Node <&Node Domain Size>
         
         Parameters
@@ -1926,10 +1824,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'geometry': geometry}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Domain Size', named_sockets=_named_sockets, component=component)
-        return _node
+        node = Node('Domain Size', named_sockets={'Geometry': geometry}, component=component)
+        return node
 
     @classmethod
     def dual_mesh(cls, mesh: Mesh=None, keep_boundaries: Boolean=None):
@@ -1947,10 +1843,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'mesh': mesh, 'keep_boundaries': keep_boundaries}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Dual Mesh', named_sockets=_named_sockets)
-        return _node
+        node = Node('Dual Mesh', named_sockets={'Mesh': mesh, 'Keep Boundaries': keep_boundaries})
+        return node
 
     @classmethod
     def duplicate_elements(cls, geometry: Geometry=None, selection: Boolean=None, amount: Integer=None, domain: Literal['POINT', 'EDGE', 'FACE', 'SPLINE', 'LAYER', 'INSTANCE']='POINT'):
@@ -1974,10 +1868,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'geometry': geometry, 'selection': selection, 'amount': amount}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Duplicate Elements', named_sockets=_named_sockets, domain=domain)
-        return _node
+        node = Node('Duplicate Elements', named_sockets={'Geometry': geometry, 'Selection': selection, 'Amount': amount}, domain=domain)
+        return node
 
     @classmethod
     def edge_angle(cls):
@@ -1987,10 +1879,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Edge Angle', named_sockets=_named_sockets)
-        return _node
+        node = Node('Edge Angle', named_sockets={})
+        return node
 
     @utils.classproperty
     def edge_neighbors(cls):
@@ -1998,13 +1888,11 @@ class ND:
         
         Returns
         -------
-        Integer
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Edge Neighbors', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('Edge Neighbors', named_sockets={})
+        return node._out
 
     @classmethod
     def edge_paths_to_curves(cls, mesh: Mesh=None, start_vertices: Boolean=None, next_vertex_index: Integer=None):
@@ -2025,10 +1913,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'mesh': mesh, 'start_vertices': start_vertices, 'next_vertex_index': next_vertex_index}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Edge Paths to Curves', named_sockets=_named_sockets)
-        return _node
+        node = Node('Edge Paths to Curves', named_sockets={'Mesh': mesh, 'Start Vertices': start_vertices, 'Next Vertex Index': next_vertex_index})
+        return node
 
     @classmethod
     def edge_paths_to_selection(cls, start_vertices: Boolean=None, next_vertex_index: Integer=None):
@@ -2046,10 +1932,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'start_vertices': start_vertices, 'next_vertex_index': next_vertex_index}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Edge Paths to Selection', named_sockets=_named_sockets)
-        return _node
+        node = Node('Edge Paths to Selection', named_sockets={'Start Vertices': start_vertices, 'Next Vertex Index': next_vertex_index})
+        return node
 
     @classmethod
     def edge_vertices(cls):
@@ -2059,10 +1943,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Edge Vertices', named_sockets=_named_sockets)
-        return _node
+        node = Node('Edge Vertices', named_sockets={})
+        return node
 
     @classmethod
     def edges_of_corner(cls, corner_index: Integer=None):
@@ -2077,10 +1959,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'corner_index': corner_index}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Edges of Corner', named_sockets=_named_sockets)
-        return _node
+        node = Node('Edges of Corner', named_sockets={'Corner Index': corner_index})
+        return node
 
     @classmethod
     def edges_of_vertex(cls, vertex_index: Integer=None, weights: Float=None, sort_index: Integer=None):
@@ -2101,10 +1981,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'vertex_index': vertex_index, 'weights': weights, 'sort_index': sort_index}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Edges of Vertex', named_sockets=_named_sockets)
-        return _node
+        node = Node('Edges of Vertex', named_sockets={'Vertex Index': vertex_index, 'Weights': weights, 'Sort Index': sort_index})
+        return node
 
     @classmethod
     def edges_to_face_groups(cls, boundary_edges: Boolean=None):
@@ -2119,13 +1997,11 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'boundary_edges': boundary_edges}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Edges to Face Groups', named_sockets=_named_sockets)
-        return _node
+        node = Node('Edges to Face Groups', named_sockets={'Boundary Edges': boundary_edges})
+        return node
 
     @classmethod
-    def enable_output(cls, enable: Boolean=None, value: Float | Integer | Boolean | Vector | Color | Rotation | Matrix | String | Menu | Object | Image | Geometry | Collection | Material | Bundle | Closure | Font | Sound=None, data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'SHADER', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'TEXTURE', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SCENE', 'TEXT', 'MASK', 'SOUND', 'INT_VECTOR']='FLOAT'):
+    def enable_output(cls, enable: Boolean=None, value: Socket=None, data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SOUND']='FLOAT'):
         """ > Node <&Node Enable Output>
         
         Parameters
@@ -2133,7 +2009,7 @@ class ND:
         enable : Boolean, optional
             socket 'Enable'
         
-        value : Float | Integer | Boolean | Vector | Color | Rotation | Matrix | String | Menu | Object | Image | Geometry | Collection | Material | Bundle | Closure | Font | Sound, optional
+        value : Socket, optional
             socket 'Value'
         
         data_type : Literal['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Rotation', 'Matrix', 'String', 'Menu', 'Object', 'Image', 'Geometry', 'Collection', 'Material', 'Bundle', 'Closure', 'Font', 'Sound']
@@ -2143,10 +2019,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'enable': enable, 'value': value}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Enable Output', named_sockets=_named_sockets, data_type=data_type)
-        return _node
+        node = Node('Enable Output', named_sockets={'Enable': enable, 'Value': value}, data_type=data_type)
+        return node
 
     @classmethod
     def endpoint_selection(cls, start_size: Integer=None, end_size: Integer=None):
@@ -2164,10 +2038,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'start_size': start_size, 'end_size': end_size}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Endpoint Selection', named_sockets=_named_sockets)
-        return _node
+        node = Node('Endpoint Selection', named_sockets={'Start Size': start_size, 'End Size': end_size})
+        return node
 
     @classmethod
     def euler_to_rotation(cls, euler: Vector=None):
@@ -2182,18 +2054,16 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'euler': euler}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Euler to Rotation', named_sockets=_named_sockets)
-        return _node
+        node = Node('Euler to Rotation', named_sockets={'Euler': euler})
+        return node
 
     @classmethod
-    def evaluate_at_index(cls, value: Float | Integer | Boolean | Vector | Color | Rotation | Matrix=None, index: Integer=None, domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']='POINT', data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'QUATERNION', 'FLOAT4X4', 'STRING', 'INT8', 'INT16_2D', 'INT32_2D', 'FLOAT2', 'FLOAT4', 'BYTE_COLOR']='FLOAT'):
+    def evaluate_at_index(cls, value: Socket=None, index: Integer=None, domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']='POINT', data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'QUATERNION', 'FLOAT4X4']='FLOAT'):
         """ > Node <&Node Evaluate at Index>
         
         Parameters
         ----------
-        value : Float | Integer | Boolean | Vector | Color | Rotation | Matrix, optional
+        value : Socket, optional
             socket 'Value'
         
         index : Integer, optional
@@ -2209,13 +2079,11 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'value': value, 'index': index}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Evaluate at Index', named_sockets=_named_sockets, domain=domain, data_type=data_type)
-        return _node
+        node = Node('Evaluate at Index', named_sockets={'Value': value, 'Index': index}, domain=domain, data_type=data_type)
+        return node
 
     @classmethod
-    def evaluate_closure(cls, named_sockets=None, closure: Closure=None, define_signature=False, **sockets):
+    def evaluate_closure(cls, named_sockets=None, closure: Closure=None, define_signature: bool=False, **sockets):
         """ > Node <&Node Evaluate Closure>
         
         Parameters
@@ -2230,19 +2098,18 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'closure': closure}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _named_sockets.update({_name: _value for _name, _value in (named_sockets or {}).items() if _value is not None})
-        _node = Node('Evaluate Closure', named_sockets=_named_sockets, define_signature=define_signature, **sockets)
-        return _node
+        _named_sockets = {'Closure': closure}
+        _named_sockets.update({name: value for name, value in (named_sockets or {}).items() if value is not None})
+        node = Node('Evaluate Closure', named_sockets=_named_sockets, define_signature=define_signature, **sockets)
+        return node
 
     @classmethod
-    def evaluate_on_domain(cls, value: Float | Integer | Boolean | Vector | Color | Rotation | Matrix=None, domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']='POINT', data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'QUATERNION', 'FLOAT4X4', 'STRING', 'INT8', 'INT16_2D', 'INT32_2D', 'FLOAT2', 'FLOAT4', 'BYTE_COLOR']='FLOAT'):
+    def evaluate_on_domain(cls, value: Socket=None, domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']='POINT', data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'QUATERNION', 'FLOAT4X4']='FLOAT'):
         """ > Node <&Node Evaluate on Domain>
         
         Parameters
         ----------
-        value : Float | Integer | Boolean | Vector | Color | Rotation | Matrix, optional
+        value : Socket, optional
             socket 'Value'
         
         domain : Literal['Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer']
@@ -2255,10 +2122,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'value': value}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Evaluate on Domain', named_sockets=_named_sockets, domain=domain, data_type=data_type)
-        return _node
+        node = Node('Evaluate on Domain', named_sockets={'Value': value}, domain=domain, data_type=data_type)
+        return node
 
     @classmethod
     def extrude_mesh(cls, mesh: Mesh=None, selection: Boolean=None, offset: Vector=None, offset_scale: Float=None, individual: Boolean=None, mode: Literal['VERTICES', 'EDGES', 'FACES']='FACES'):
@@ -2288,10 +2153,11 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'mesh': mesh, 'selection': selection, 'offset': offset, 'offset_scale': offset_scale, 'individual': individual}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Extrude Mesh', named_sockets=_named_sockets, mode=mode)
-        return _node
+        _configuration = ({'vertices': 'VERTICES', 'edges': 'EDGES', 'faces': 'FACES'}.get(mode.lower(), mode),)
+        _node_sockets = {('VERTICES',): {'Mesh': mesh, 'Selection': selection, 'Offset': offset, 'Offset Scale': offset_scale}, ('EDGES',): {'Mesh': mesh, 'Selection': selection, 'Offset': offset, 'Offset Scale': offset_scale}, ('FACES',): {'Mesh': mesh, 'Selection': selection, 'Offset': offset, 'Offset Scale': offset_scale, 'Individual': individual}}[_configuration]
+        _node_args = {('VERTICES',): [], ('EDGES',): [], ('FACES',): []}[_configuration]
+        node = Node('Extrude Mesh', *_node_args, named_sockets=_node_sockets, mode=mode)
+        return node
 
     @utils.classproperty
     def face_area(cls):
@@ -2299,13 +2165,11 @@ class ND:
         
         Returns
         -------
-        Float
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Face Area', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('Face Area', named_sockets={})
+        return node._out
 
     @classmethod
     def face_group_boundaries(cls, face_group_id: Integer=None):
@@ -2320,10 +2184,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'face_group_id': face_group_id}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Face Group Boundaries', named_sockets=_named_sockets)
-        return _node
+        node = Node('Face Group Boundaries', named_sockets={'Face Group ID': face_group_id})
+        return node
 
     @classmethod
     def face_neighbors(cls):
@@ -2333,10 +2195,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Face Neighbors', named_sockets=_named_sockets)
-        return _node
+        node = Node('Face Neighbors', named_sockets={})
+        return node
 
     @classmethod
     def face_of_corner(cls, corner_index: Integer=None):
@@ -2351,10 +2211,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'corner_index': corner_index}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Face of Corner', named_sockets=_named_sockets)
-        return _node
+        node = Node('Face of Corner', named_sockets={'Corner Index': corner_index})
+        return node
 
     @classmethod
     def face_set(cls):
@@ -2364,18 +2222,16 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Face Set', named_sockets=_named_sockets)
-        return _node
+        node = Node('Face Set', named_sockets={})
+        return node
 
     @classmethod
-    def field_average(cls, value: Float | Vector=None, group_id: Integer=None, data_type: Literal['FLOAT', 'FLOAT_VECTOR']='FLOAT', domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']='POINT'):
+    def field_average(cls, value: Socket=None, group_id: Integer=None, data_type: Literal['FLOAT', 'FLOAT_VECTOR']='FLOAT', domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']='POINT'):
         """ > Node <&Node Field Average>
         
         Parameters
         ----------
-        value : Float | Vector, optional
+        value : Socket, optional
             socket 'Value'
         
         group_id : Integer, optional
@@ -2391,18 +2247,16 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'value': value, 'group_id': group_id}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Field Average', named_sockets=_named_sockets, data_type=data_type, domain=domain)
-        return _node
+        node = Node('Field Average', named_sockets={'Value': value, 'Group ID': group_id}, data_type=data_type, domain=domain)
+        return node
 
     @classmethod
-    def field_min_max(cls, value: Float | Integer | Vector=None, group_id: Integer=None, data_type: Literal['FLOAT', 'INT', 'FLOAT_VECTOR']='FLOAT', domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']='POINT'):
+    def field_min_max(cls, value: Socket=None, group_id: Integer=None, data_type: Literal['FLOAT', 'INT', 'FLOAT_VECTOR']='FLOAT', domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']='POINT'):
         """ > Node <&Node Field Min & Max>
         
         Parameters
         ----------
-        value : Float | Integer | Vector, optional
+        value : Socket, optional
             socket 'Value'
         
         group_id : Integer, optional
@@ -2418,18 +2272,16 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'value': value, 'group_id': group_id}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Field Min & Max', named_sockets=_named_sockets, data_type=data_type, domain=domain)
-        return _node
+        node = Node('Field Min & Max', named_sockets={'Value': value, 'Group ID': group_id}, data_type=data_type, domain=domain)
+        return node
 
     @classmethod
-    def field_to_grid(cls, named_sockets=None, topology: Float | Integer | Boolean | Vector=None, data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'SHADER', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'TEXTURE', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SCENE', 'TEXT', 'MASK', 'SOUND', 'INT_VECTOR']='FLOAT', **sockets):
+    def field_to_grid(cls, named_sockets=None, topology: Socket=None, data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR']='FLOAT', **sockets):
         """ > Node <&Node Field to Grid>
         
         Parameters
         ----------
-        topology : Float | Integer | Boolean | Vector, optional
+        topology : Socket, optional
             socket 'Topology'
         
         data_type : Literal['Float', 'Integer', 'Boolean', 'Vector']
@@ -2439,11 +2291,10 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'topology': topology}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _named_sockets.update({_name: _value for _name, _value in (named_sockets or {}).items() if _value is not None})
-        _node = Node('Field to Grid', named_sockets=_named_sockets, data_type=data_type, **sockets)
-        return _node
+        _named_sockets = {'Topology': topology}
+        _named_sockets.update({name: value for name, value in (named_sockets or {}).items() if value is not None})
+        node = Node('Field to Grid', named_sockets=_named_sockets, data_type=data_type, **sockets)
+        return node
 
     @classmethod
     def field_to_list(cls, named_sockets=None, count: Integer=None, **sockets):
@@ -2458,19 +2309,18 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'count': count}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _named_sockets.update({_name: _value for _name, _value in (named_sockets or {}).items() if _value is not None})
-        _node = Node('Field to List', named_sockets=_named_sockets, **sockets)
-        return _node
+        _named_sockets = {'Count': count}
+        _named_sockets.update({name: value for name, value in (named_sockets or {}).items() if value is not None})
+        node = Node('Field to List', named_sockets=_named_sockets, **sockets)
+        return node
 
     @classmethod
-    def field_variance(cls, value: Float | Vector=None, group_id: Integer=None, data_type: Literal['FLOAT', 'FLOAT_VECTOR']='FLOAT', domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']='POINT'):
+    def field_variance(cls, value: Socket=None, group_id: Integer=None, data_type: Literal['FLOAT', 'FLOAT_VECTOR']='FLOAT', domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']='POINT'):
         """ > Node <&Node Field Variance>
         
         Parameters
         ----------
-        value : Float | Vector, optional
+        value : Socket, optional
             socket 'Value'
         
         group_id : Integer, optional
@@ -2486,13 +2336,11 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'value': value, 'group_id': group_id}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Field Variance', named_sockets=_named_sockets, data_type=data_type, domain=domain)
-        return _node
+        node = Node('Field Variance', named_sockets={'Value': value, 'Group ID': group_id}, data_type=data_type, domain=domain)
+        return node
 
     @classmethod
-    def fill_curve(cls, curve: Curve=None, group_id: Integer=None, mode: Literal['Triangles', 'N-gons']=None, fill_rule: Literal['Even-Odd', 'Non-Zero']=None):
+    def fill_curve(cls, curve: Curve=None, group_id: Integer=None, mode: Menu=None, fill_rule: Menu=None):
         """ > Node <&Node Fill Curve>
         
         Parameters
@@ -2503,23 +2351,21 @@ class ND:
         group_id : Integer, optional
             socket 'Group ID'
         
-        mode : menu='Triangles', optional
-            ('Triangles', 'N-gons')
+        mode : Menu, optional
+            socket 'Mode'
         
-        fill_rule : menu='Even-Odd', optional
-            ('Even-Odd', 'Non-Zero')
+        fill_rule : Menu, optional
+            socket 'Fill Rule'
         
         Returns
         -------
         Node
         """
-        _named_sockets = {'curve': curve, 'group_id': group_id, 'mode': mode, 'fill_rule': fill_rule}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Fill Curve', named_sockets=_named_sockets)
-        return _node
+        node = Node('Fill Curve', named_sockets={'Curve': curve, 'Group ID': group_id, 'Mode': mode, 'Fill Rule': fill_rule})
+        return node
 
     @classmethod
-    def fillet_curve(cls, curve: Curve=None, radius: Float=None, limit_radius: Boolean=None, mode: Literal['Bézier', 'Poly']=None, count: Integer=None):
+    def fillet_curve(cls, curve: Curve=None, radius: Float=None, limit_radius: Boolean=None, mode: Menu=None, count: Integer=None):
         """ > Node <&Node Fillet Curve>
         
         Parameters
@@ -2533,8 +2379,8 @@ class ND:
         limit_radius : Boolean, optional
             socket 'Limit Radius'
         
-        mode : menu='Bézier', optional
-            ('Bézier', 'Poly')
+        mode : Menu, optional
+            socket 'Mode'
         
         count : Integer, optional
             socket 'Count'
@@ -2543,18 +2389,16 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'curve': curve, 'radius': radius, 'limit_radius': limit_radius, 'mode': mode, 'count': count}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Fillet Curve', named_sockets=_named_sockets)
-        return _node
+        node = Node('Fillet Curve', named_sockets={'Curve': curve, 'Radius': radius, 'Limit Radius': limit_radius, 'Mode': mode, 'Count': count})
+        return node
 
     @classmethod
-    def filter_list(cls, list: Float | Integer | Boolean | Vector | Color | Rotation | Matrix | String | Menu | Object | Image | Geometry | Collection | Material | Bundle | Closure | Font | Sound=None, selection: Boolean=None, socket_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'SHADER', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'TEXTURE', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SCENE', 'TEXT', 'MASK', 'SOUND', 'INT_VECTOR']='FLOAT'):
+    def filter_list(cls, list: Socket=None, selection: Boolean=None, socket_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SOUND']='FLOAT'):
         """ > Node <&Node Filter List>
         
         Parameters
         ----------
-        list : Float | Integer | Boolean | Vector | Color | Rotation | Matrix | String | Menu | Object | Image | Geometry | Collection | Material | Bundle | Closure | Font | Sound, optional
+        list : Socket, optional
             socket 'List'
         
         selection : Boolean, optional
@@ -2567,13 +2411,11 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'list': list, 'selection': selection}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Filter List', named_sockets=_named_sockets, socket_type=socket_type)
-        return _node
+        node = Node('Filter List', named_sockets={'List': list, 'Selection': selection}, socket_type=socket_type)
+        return node
 
     @classmethod
-    def find_in_string(cls, string: String=None, search: String=None, mode: Literal['From Start', 'From End']=None):
+    def find_in_string(cls, string: String=None, search: String=None, mode: Menu=None):
         """ > Node <&Node Find in String>
         
         Parameters
@@ -2584,17 +2426,15 @@ class ND:
         search : String, optional
             socket 'Search'
         
-        mode : menu='From Start', optional
-            ('From Start', 'From End')
+        mode : Menu, optional
+            socket 'Mode'
         
         Returns
         -------
         Node
         """
-        _named_sockets = {'string': string, 'search': search, 'mode': mode}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Find in String', named_sockets=_named_sockets)
-        return _node
+        node = Node('Find in String', named_sockets={'String': string, 'Search': search, 'Mode': mode})
+        return node
 
     @classmethod
     def flip_faces(cls, mesh: Mesh=None, selection: Boolean=None):
@@ -2612,31 +2452,27 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'mesh': mesh, 'selection': selection}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Flip Faces', named_sockets=_named_sockets)
-        return _node
+        node = Node('Flip Faces', named_sockets={'Mesh': mesh, 'Selection': selection})
+        return node
 
     @classmethod
-    def float_curve(cls, factor: Float=None, value: Float=None):
+    def float_curve(cls, value: Float=None, factor: Float=None):
         """ > Node <&Node Float Curve>
         
         Parameters
         ----------
-        factor : Float, optional
-            socket 'Factor'
-        
         value : Float, optional
             socket 'Value'
+        
+        factor : Float, optional
+            socket 'Factor'
         
         Returns
         -------
         Node
         """
-        _named_sockets = {'factor': factor, 'value': value}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Float Curve', named_sockets=_named_sockets)
-        return _node
+        node = Node('Float Curve', named_sockets={'Factor': factor, 'Value': value})
+        return node
 
     @classmethod
     def float_to_integer(cls, float: Float=None, rounding_mode: Literal['ROUND', 'FLOOR', 'CEILING', 'TRUNCATE']='ROUND'):
@@ -2654,10 +2490,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'float': float}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Float to Integer', named_sockets=_named_sockets, rounding_mode=rounding_mode)
-        return _node
+        node = Node('Float to Integer', named_sockets={'Float': float}, rounding_mode=rounding_mode)
+        return node
 
     @classmethod
     def font(cls, font=None):
@@ -2672,10 +2506,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Font', named_sockets=_named_sockets, font=utils.get_font(font))
-        return _node
+        node = Node('Font', named_sockets={}, font=utils.get_font(font))
+        return node
 
     @classmethod
     def for_each_geometry_element_input(cls, named_sockets=None, geometry: Geometry=None, selection: Boolean=None, **sockets):
@@ -2693,11 +2525,10 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'geometry': geometry, 'selection': selection}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _named_sockets.update({_name: _value for _name, _value in (named_sockets or {}).items() if _value is not None})
-        _node = Node('For Each Geometry Element Input', named_sockets=_named_sockets, **sockets)
-        return _node
+        _named_sockets = {'Geometry': geometry, 'Selection': selection}
+        _named_sockets.update({name: value for name, value in (named_sockets or {}).items() if value is not None})
+        node = Node('For Each Geometry Element Input', named_sockets=_named_sockets, **sockets)
+        return node
 
     @classmethod
     def for_each_geometry_element_output(cls, named_sockets=None, geometry: Geometry=None, domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']='POINT', **sockets):
@@ -2715,11 +2546,10 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'geometry': geometry}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _named_sockets.update({_name: _value for _name, _value in (named_sockets or {}).items() if _value is not None})
-        _node = Node('For Each Geometry Element Output', named_sockets=_named_sockets, domain=domain, **sockets)
-        return _node
+        _named_sockets = {'Geometry': geometry}
+        _named_sockets.update({name: value for name, value in (named_sockets or {}).items() if value is not None})
+        node = Node('For Each Geometry Element Output', named_sockets=_named_sockets, domain=domain, **sockets)
+        return node
 
     @classmethod
     def format_string(cls, named_sockets=None, format: String=None, **sockets):
@@ -2734,14 +2564,13 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'format': format}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _named_sockets.update({_name: _value for _name, _value in (named_sockets or {}).items() if _value is not None})
-        _node = Node('Format String', named_sockets=_named_sockets, **sockets)
-        return _node
+        _named_sockets = {'Format': format}
+        _named_sockets.update({name: value for name, value in (named_sockets or {}).items() if value is not None})
+        node = Node('Format String', named_sockets=_named_sockets, **sockets)
+        return node
 
     @classmethod
-    def frame(cls, text=None, shrink=True, label_size=20):
+    def frame(cls, text: NoneType=None, shrink: bool=True, label_size: int=20):
         """ > Node <&Node Frame>
         
         Parameters
@@ -2759,13 +2588,11 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Frame', named_sockets=_named_sockets, text=text, shrink=shrink, label_size=label_size)
-        return _node
+        node = Node('Frame', named_sockets={}, text=text, shrink=shrink, label_size=label_size)
+        return node
 
     @classmethod
-    def gabor_texture(cls, vector: Vector=None, scale: Float=None, frequency: Float=None, anisotropy: Float=None, orientation: Float | Vector=None, gabor_type: Literal['2D', '3D']='2D'):
+    def gabor_texture(cls, vector: Vector=None, scale: Float=None, frequency: Float=None, anisotropy: Float=None, orientation: Socket=None, gabor_type: Literal['2D', '3D']='2D'):
         """ > Node <&Node Gabor Texture>
         
         Parameters
@@ -2782,7 +2609,7 @@ class ND:
         anisotropy : Float, optional
             socket 'Anisotropy'
         
-        orientation : Float | Vector, optional
+        orientation : Socket, optional
             socket 'Orientation'
         
         gabor_type : Literal['2D', '3D']
@@ -2792,10 +2619,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'vector': vector, 'scale': scale, 'frequency': frequency, 'anisotropy': anisotropy, 'orientation': orientation}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Gabor Texture', named_sockets=_named_sockets, gabor_type=gabor_type)
-        return _node
+        node = Node('Gabor Texture', named_sockets={'Vector': vector, 'Scale': scale, 'Frequency': frequency, 'Anisotropy': anisotropy, 'Orientation': orientation}, gabor_type=gabor_type)
+        return node
 
     @classmethod
     def gamma(cls, color: Color=None, gamma: Float=None):
@@ -2813,13 +2638,11 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'color': color, 'gamma': gamma}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Gamma', named_sockets=_named_sockets)
-        return _node
+        node = Node('Gamma', named_sockets={'Color': color, 'Gamma': gamma})
+        return node
 
     @classmethod
-    def geometry_materials(cls, geometry: Geometry=None, component_type: Literal['Mesh', 'Point Cloud', 'Curve', 'Grease Pencil']=None):
+    def geometry_materials(cls, geometry: Geometry=None, component_type: Menu=None):
         """ > Node <&Node Geometry Materials>
         
         Parameters
@@ -2827,17 +2650,15 @@ class ND:
         geometry : Geometry, optional
             socket 'Geometry'
         
-        component_type : menu='Mesh', optional
-            ('Mesh', 'Point Cloud', 'Curve', 'Grease Pencil')
+        component_type : Menu, optional
+            socket 'Component Type'
         
         Returns
         -------
         Node
         """
-        _named_sockets = {'geometry': geometry, 'component_type': component_type}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Geometry Materials', named_sockets=_named_sockets)
-        return _node
+        node = Node('Geometry Materials', named_sockets={'Geometry': geometry, 'Component Type': component_type})
+        return node
 
     @classmethod
     def geometry_proximity(cls, geometry: Geometry=None, group_id: Integer=None, sample_position: Vector=None, sample_group_id: Integer=None, target_element: Literal['POINTS', 'EDGES', 'FACES']='FACES'):
@@ -2864,10 +2685,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'geometry': geometry, 'group_id': group_id, 'sample_position': sample_position, 'sample_group_id': sample_group_id}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Geometry Proximity', named_sockets=_named_sockets, target_element=target_element)
-        return _node
+        node = Node('Geometry Proximity', named_sockets={'Geometry': geometry, 'Group ID': group_id, 'Sample Position': sample_position, 'Sample Group ID': sample_group_id}, target_element=target_element)
+        return node
 
     @classmethod
     def geometry_to_instance(cls, *geometry: Geometry):
@@ -2882,13 +2701,11 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'geometry': list(geometry)}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Geometry to Instance', named_sockets=_named_sockets)
-        return _node
+        node = Node('Geometry to Instance', *[*list(geometry)], named_sockets={})
+        return node
 
     @classmethod
-    def get_attribute_names(cls, geometry: Geometry=None, filter_data_type: Boolean=None, data_type: Literal['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Quaternion', '4x4 Matrix', 'String', '8-Bit Integer', '2D 16-Bit Integer Vector', '2D Integer Vector', '2D Vector', '4D Vector', 'Byte Color']=None, filter_domain: Boolean=None, domain: Literal['Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer']=None):
+    def get_attribute_names(cls, geometry: Geometry=None, filter_data_type: Boolean=None, data_type: Menu=None, filter_domain: Boolean=None, domain: Menu=None):
         """ > Node <&Node Get Attribute Names>
         
         Parameters
@@ -2899,26 +2716,24 @@ class ND:
         filter_data_type : Boolean, optional
             socket 'Filter Data Type'
         
-        data_type : menu='Float', optional
-            ('Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Quaternion', '4x4 Matrix', 'String', '8-Bit Integer', '2D 16-Bit Integer Vector', '2D Integer Vector', '2D Vector', '4D Vector', 'Byte Color')
+        data_type : Menu, optional
+            socket 'Data Type'
         
         filter_domain : Boolean, optional
             socket 'Filter Domain'
         
-        domain : menu='Point', optional
-            ('Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer')
+        domain : Menu, optional
+            socket 'Domain'
         
         Returns
         -------
         Node
         """
-        _named_sockets = {'geometry': geometry, 'filter_data_type': filter_data_type, 'data_type': data_type, 'filter_domain': filter_domain, 'domain': domain}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Get Attribute Names', named_sockets=_named_sockets)
-        return _node
+        node = Node('Get Attribute Names', named_sockets={'Geometry': geometry, 'Filter Data Type': filter_data_type, 'Data Type': data_type, 'Filter Domain': filter_domain, 'Domain': domain})
+        return node
 
     @classmethod
-    def get_bundle_item(cls, bundle: Bundle=None, path: String=None, remove: Boolean=None, socket_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'SHADER', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'TEXTURE', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SCENE', 'TEXT', 'MASK', 'SOUND', 'INT_VECTOR']='FLOAT', structure_type: Literal['AUTO', 'DYNAMIC', 'FIELD', 'GRID', 'LIST', 'SINGLE']='AUTO'):
+    def get_bundle_item(cls, bundle: Bundle=None, path: String=None, remove: Boolean=None, socket_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SOUND']='FLOAT'):
         """ > Node <&Node Get Bundle Item>
         
         Parameters
@@ -2935,17 +2750,12 @@ class ND:
         socket_type : Literal['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Rotation', 'Matrix', 'String', 'Menu', 'Object', 'Image', 'Geometry', 'Collection', 'Material', 'Bundle', 'Closure', 'Font', 'Sound']
             parameter `socket_type`
         
-        structure_type : Literal['Auto', 'Dynamic', 'Field', 'Grid', 'List', 'Single']
-            parameter `structure_type`
-        
         Returns
         -------
         Node
         """
-        _named_sockets = {'bundle': bundle, 'path': path, 'remove': remove}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Get Bundle Item', named_sockets=_named_sockets, socket_type=socket_type, structure_type=structure_type)
-        return _node
+        node = Node('Get Bundle Item', named_sockets={'Bundle': bundle, 'Path': path, 'Remove': remove}, socket_type=socket_type)
+        return node
 
     @classmethod
     def get_geometry_bundle(cls, geometry: Geometry=None, remove: Boolean=None):
@@ -2963,13 +2773,11 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'geometry': geometry, 'remove': remove}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Get Geometry Bundle', named_sockets=_named_sockets)
-        return _node
+        node = Node('Get Geometry Bundle', named_sockets={'Geometry': geometry, 'Remove': remove})
+        return node
 
     @classmethod
-    def get_geometry_component(cls, geometry: Geometry=None, type: Literal['Mesh', 'Point Cloud', 'Curve', 'Instances', 'Grease Pencil', 'Volume']=None, remove: Boolean=None):
+    def get_geometry_component(cls, geometry: Geometry=None, type: Menu=None, remove: Boolean=None):
         """ > Node <&Node Get Geometry Component>
         
         Parameters
@@ -2977,8 +2785,8 @@ class ND:
         geometry : Geometry, optional
             socket 'Geometry'
         
-        type : menu='Mesh', optional
-            ('Mesh', 'Point Cloud', 'Curve', 'Instances', 'Grease Pencil', 'Volume')
+        type : Menu, optional
+            socket 'Type'
         
         remove : Boolean, optional
             socket 'Remove'
@@ -2987,10 +2795,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'geometry': geometry, 'type': type, 'remove': remove}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Get Geometry Component', named_sockets=_named_sockets)
-        return _node
+        node = Node('Get Geometry Component', named_sockets={'Geometry': geometry, 'Type': type, 'Remove': remove})
+        return node
 
     @classmethod
     def get_grid_names(cls, volume: Volume=None):
@@ -3005,18 +2811,16 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'volume': volume}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Get Grid Names', named_sockets=_named_sockets)
-        return _node
+        node = Node('Get Grid Names', named_sockets={'Volume': volume})
+        return node
 
     @classmethod
-    def get_list_item(cls, list: Float | Integer | Boolean | Vector | Color | Rotation | Matrix | String | Menu | Object | Image | Geometry | Collection | Material | Bundle | Closure | Font | Sound=None, index: Integer=None, socket_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'SHADER', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'TEXTURE', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SCENE', 'TEXT', 'MASK', 'SOUND', 'INT_VECTOR']='FLOAT', structure_type: Literal['AUTO', 'DYNAMIC', 'FIELD', 'GRID', 'LIST', 'SINGLE']='AUTO'):
+    def get_list_item(cls, list: Socket=None, index: Integer=None, socket_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SOUND']='FLOAT'):
         """ > Node <&Node Get List Item>
         
         Parameters
         ----------
-        list : Float | Integer | Boolean | Vector | Color | Rotation | Matrix | String | Menu | Object | Image | Geometry | Collection | Material | Bundle | Closure | Font | Sound, optional
+        list : Socket, optional
             socket 'List'
         
         index : Integer, optional
@@ -3025,20 +2829,15 @@ class ND:
         socket_type : Literal['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Rotation', 'Matrix', 'String', 'Menu', 'Object', 'Image', 'Geometry', 'Collection', 'Material', 'Bundle', 'Closure', 'Font', 'Sound']
             parameter `socket_type`
         
-        structure_type : Literal['Auto', 'Dynamic', 'Field', 'Grid', 'List', 'Single']
-            parameter `structure_type`
-        
         Returns
         -------
         Node
         """
-        _named_sockets = {'list': list, 'index': index}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Get List Item', named_sockets=_named_sockets, socket_type=socket_type, structure_type=structure_type)
-        return _node
+        node = Node('Get List Item', named_sockets={'List': list, 'Index': index}, socket_type=socket_type)
+        return node
 
     @classmethod
-    def get_named_grid(cls, volume: Volume=None, name: String=None, remove: Boolean=None, data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'SHADER', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'TEXTURE', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SCENE', 'TEXT', 'MASK', 'SOUND', 'INT_VECTOR']='FLOAT'):
+    def get_named_grid(cls, volume: Volume=None, name: String=None, remove: Boolean=None, data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR']='FLOAT'):
         """ > Node <&Node Get Named Grid>
         
         Parameters
@@ -3059,13 +2858,11 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'volume': volume, 'name': name, 'remove': remove}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Get Named Grid', named_sockets=_named_sockets, data_type=data_type)
-        return _node
+        node = Node('Get Named Grid', named_sockets={'Volume': volume, 'Name': name, 'Remove': remove}, data_type=data_type)
+        return node
 
     @classmethod
-    def get_nested_bundle_paths(cls, bundle: Bundle=None, mode: Literal['All', 'Bundle Type', 'Data Type']=None, pattern_mode: Literal['Exact', 'Wildcard']=None, bundle_type: String=None, data_type: Literal['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Rotation', 'Matrix', 'String', 'Menu', 'Object', 'Image', 'Geometry', 'Collection', 'Material', 'Bundle', 'Closure', 'Font', 'Sound']=None):
+    def get_nested_bundle_paths(cls, bundle: Bundle=None, mode: Menu=None, pattern_mode: Menu=None, bundle_type: String=None, data_type: Menu=None):
         """ > Node <&Node Get Nested Bundle Paths>
         
         Parameters
@@ -3073,26 +2870,24 @@ class ND:
         bundle : Bundle, optional
             socket 'Bundle'
         
-        mode : menu='All', optional
-            ('All', 'Bundle Type', 'Data Type')
+        mode : Menu, optional
+            socket 'Mode'
         
-        pattern_mode : menu='Exact', optional
-            ('Exact', 'Wildcard')
+        pattern_mode : Menu, optional
+            socket 'Pattern Mode'
         
         bundle_type : String, optional
             socket 'Bundle Type'
         
-        data_type : menu='Float', optional
-            ('Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Rotation', 'Matrix', 'String', 'Menu', 'Object', 'Image', 'Geometry', 'Collection', 'Material', 'Bundle', 'Closure', 'Font', 'Sound')
+        data_type : Menu, optional
+            socket 'Data Type'
         
         Returns
         -------
         Node
         """
-        _named_sockets = {'bundle': bundle, 'mode': mode, 'pattern_mode': pattern_mode, 'bundle_type': bundle_type, 'data_type': data_type}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Get Nested Bundle Paths', named_sockets=_named_sockets)
-        return _node
+        node = Node('Get Nested Bundle Paths', named_sockets={'Bundle': bundle, 'Mode': mode, 'Pattern Mode': pattern_mode, 'Bundle Type': bundle_type, 'Data Type': data_type})
+        return node
 
     @classmethod
     def get_vector_component(cls, vector: Vector=None, index: Integer=None):
@@ -3110,10 +2905,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'vector': vector, 'index': index}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Get Vector Component', named_sockets=_named_sockets)
-        return _node
+        node = Node('Get Vector Component', named_sockets={'Vector': vector, 'Index': index})
+        return node
 
     @classmethod
     def gradient_texture(cls, vector: Vector=None, gradient_type: Literal['LINEAR', 'QUADRATIC', 'EASING', 'DIAGONAL', 'SPHERICAL', 'QUADRATIC_SPHERE', 'RADIAL']='LINEAR'):
@@ -3131,10 +2924,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'vector': vector}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Gradient Texture', named_sockets=_named_sockets, gradient_type=gradient_type)
-        return _node
+        node = Node('Gradient Texture', named_sockets={'Vector': vector}, gradient_type=gradient_type)
+        return node
 
     @classmethod
     def grease_pencil_color(cls):
@@ -3144,10 +2935,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Grease Pencil Color', named_sockets=_named_sockets)
-        return _node
+        node = Node('Grease Pencil Color', named_sockets={})
+        return node
 
     @classmethod
     def grease_pencil_draw_time(cls):
@@ -3157,10 +2946,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Grease Pencil Draw Time', named_sockets=_named_sockets)
-        return _node
+        node = Node('Grease Pencil Draw Time', named_sockets={})
+        return node
 
     @utils.classproperty
     def grease_pencil_fill_id(cls):
@@ -3168,13 +2955,11 @@ class ND:
         
         Returns
         -------
-        Integer
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Grease Pencil Fill ID', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('Grease Pencil Fill ID', named_sockets={})
+        return node._out
 
     @classmethod
     def grease_pencil_opacity(cls):
@@ -3184,10 +2969,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Grease Pencil Opacity', named_sockets=_named_sockets)
-        return _node
+        node = Node('Grease Pencil Opacity', named_sockets={})
+        return node
 
     @utils.classproperty
     def grease_pencil_stroke_softness(cls):
@@ -3195,13 +2978,11 @@ class ND:
         
         Returns
         -------
-        Float
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Grease Pencil Stroke Softness', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('Grease Pencil Stroke Softness', named_sockets={})
+        return node._out
 
     @utils.classproperty
     def grease_pencil_stroke_visibility(cls):
@@ -3209,13 +2990,11 @@ class ND:
         
         Returns
         -------
-        Boolean
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Grease Pencil Stroke Visibility', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('Grease Pencil Stroke Visibility', named_sockets={})
+        return node._out
 
     @classmethod
     def grease_pencil_to_curves(cls, grease_pencil: GreasePencil=None, selection: Boolean=None, layers_as_instances: Boolean=None):
@@ -3236,10 +3015,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'grease_pencil': grease_pencil, 'selection': selection, 'layers_as_instances': layers_as_instances}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Grease Pencil to Curves', named_sockets=_named_sockets)
-        return _node
+        node = Node('Grease Pencil to Curves', named_sockets={'Grease Pencil': grease_pencil, 'Selection': selection, 'Layers as Instances': layers_as_instances})
+        return node
 
     @classmethod
     def grid(cls, size_x: Float=None, size_y: Float=None, vertices_x: Integer=None, vertices_y: Integer=None):
@@ -3263,10 +3040,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'size_x': size_x, 'size_y': size_y, 'vertices_x': vertices_x, 'vertices_y': vertices_y}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Grid', named_sockets=_named_sockets)
-        return _node
+        node = Node('Grid', named_sockets={'Size X': size_x, 'Size Y': size_y, 'Vertices X': vertices_x, 'Vertices Y': vertices_y})
+        return node
 
     @classmethod
     def grid_curl(cls, grid: Vector=None):
@@ -3281,25 +3056,23 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'grid': grid}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Grid Curl', named_sockets=_named_sockets)
-        return _node
+        node = Node('Grid Curl', named_sockets={'Grid': grid})
+        return node
 
     @classmethod
-    def grid_dilate_erode(cls, grid: Float | Integer | Boolean | Vector=None, connectivity: Literal['Face', 'Edge', 'Vertex']=None, tiles: Literal['Ignore', 'Expand', 'Preserve']=None, steps: Integer=None, data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'SHADER', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'TEXTURE', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SCENE', 'TEXT', 'MASK', 'SOUND', 'INT_VECTOR']='FLOAT'):
+    def grid_dilate_erode(cls, grid: Socket=None, connectivity: Menu=None, tiles: Menu=None, steps: Integer=None, data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR']='FLOAT'):
         """ > Node <&Node Grid Dilate & Erode>
         
         Parameters
         ----------
-        grid : Float | Integer | Boolean | Vector, optional
+        grid : Socket, optional
             socket 'Grid'
         
-        connectivity : menu='Face', optional
-            ('Face', 'Edge', 'Vertex')
+        connectivity : Menu, optional
+            socket 'Connectivity'
         
-        tiles : menu='Preserve', optional
-            ('Ignore', 'Expand', 'Preserve')
+        tiles : Menu, optional
+            socket 'Tiles'
         
         steps : Integer, optional
             socket 'Steps'
@@ -3311,10 +3084,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'grid': grid, 'connectivity': connectivity, 'tiles': tiles, 'steps': steps}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Grid Dilate & Erode', named_sockets=_named_sockets, data_type=data_type)
-        return _node
+        node = Node('Grid Dilate & Erode', named_sockets={'Grid': grid, 'Connectivity': connectivity, 'Tiles': tiles, 'Steps': steps}, data_type=data_type)
+        return node
 
     @classmethod
     def grid_divergence(cls, grid: Vector=None):
@@ -3329,10 +3100,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'grid': grid}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Grid Divergence', named_sockets=_named_sockets)
-        return _node
+        node = Node('Grid Divergence', named_sockets={'Grid': grid})
+        return node
 
     @classmethod
     def grid_gradient(cls, grid: Float=None):
@@ -3347,18 +3116,16 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'grid': grid}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Grid Gradient', named_sockets=_named_sockets)
-        return _node
+        node = Node('Grid Gradient', named_sockets={'Grid': grid})
+        return node
 
     @classmethod
-    def grid_info(cls, grid: Float | Integer | Boolean | Vector=None, data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'SHADER', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'TEXTURE', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SCENE', 'TEXT', 'MASK', 'SOUND', 'INT_VECTOR']='FLOAT'):
+    def grid_info(cls, grid: Socket=None, data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR']='FLOAT'):
         """ > Node <&Node Grid Info>
         
         Parameters
         ----------
-        grid : Float | Integer | Boolean | Vector, optional
+        grid : Socket, optional
             socket 'Grid'
         
         data_type : Literal['Float', 'Integer', 'Boolean', 'Vector']
@@ -3368,10 +3135,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'grid': grid}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Grid Info', named_sockets=_named_sockets, data_type=data_type)
-        return _node
+        node = Node('Grid Info', named_sockets={'Grid': grid}, data_type=data_type)
+        return node
 
     @classmethod
     def grid_laplacian(cls, grid: Float=None):
@@ -3386,18 +3151,16 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'grid': grid}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Grid Laplacian', named_sockets=_named_sockets)
-        return _node
+        node = Node('Grid Laplacian', named_sockets={'Grid': grid})
+        return node
 
     @classmethod
-    def grid_mean(cls, grid: Float | Integer | Vector=None, width: Integer=None, iterations: Integer=None, data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'SHADER', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'TEXTURE', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SCENE', 'TEXT', 'MASK', 'SOUND', 'INT_VECTOR']='FLOAT'):
+    def grid_mean(cls, grid: Socket=None, width: Integer=None, iterations: Integer=None, data_type: Literal['FLOAT', 'INT', 'VECTOR']='FLOAT'):
         """ > Node <&Node Grid Mean>
         
         Parameters
         ----------
-        grid : Float | Integer | Vector, optional
+        grid : Socket, optional
             socket 'Grid'
         
         width : Integer, optional
@@ -3413,18 +3176,16 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'grid': grid, 'width': width, 'iterations': iterations}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Grid Mean', named_sockets=_named_sockets, data_type=data_type)
-        return _node
+        node = Node('Grid Mean', named_sockets={'Grid': grid, 'Width': width, 'Iterations': iterations}, data_type=data_type)
+        return node
 
     @classmethod
-    def grid_median(cls, grid: Float | Integer | Vector=None, width: Integer=None, iterations: Integer=None, data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'SHADER', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'TEXTURE', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SCENE', 'TEXT', 'MASK', 'SOUND', 'INT_VECTOR']='FLOAT'):
+    def grid_median(cls, grid: Socket=None, width: Integer=None, iterations: Integer=None, data_type: Literal['FLOAT', 'INT', 'VECTOR']='FLOAT'):
         """ > Node <&Node Grid Median>
         
         Parameters
         ----------
-        grid : Float | Integer | Vector, optional
+        grid : Socket, optional
             socket 'Grid'
         
         width : Integer, optional
@@ -3440,13 +3201,11 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'grid': grid, 'width': width, 'iterations': iterations}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Grid Median', named_sockets=_named_sockets, data_type=data_type)
-        return _node
+        node = Node('Grid Median', named_sockets={'Grid': grid, 'Width': width, 'Iterations': iterations}, data_type=data_type)
+        return node
 
     @classmethod
-    def grid_solve_poisson(cls, grid: Float=None, max_iterations: Integer=None, error_threshold: Float=None, threshold_mode: Literal['Relative', 'Absolute']=None, boundary: Literal['Fixed', 'Gradient', 'Mixed']=None, boundary_value: Float=None, boundary_gradient: Vector=None, boundary_factor: Float=None):
+    def grid_solve_poisson(cls, grid: Float=None, max_iterations: Integer=None, error_threshold: Float=None, threshold_mode: Menu=None, boundary: Menu=None, boundary_value: Float=None, boundary_gradient: Vector=None, boundary_factor: Float=None):
         """ > Node <&Node Grid Solve Poisson>
         
         Parameters
@@ -3460,11 +3219,11 @@ class ND:
         error_threshold : Float, optional
             socket 'Error Threshold'
         
-        threshold_mode : menu='Relative', optional
-            ('Relative', 'Absolute')
+        threshold_mode : Menu, optional
+            socket 'Threshold Mode'
         
-        boundary : menu='Fixed', optional
-            ('Fixed', 'Gradient', 'Mixed')
+        boundary : Menu, optional
+            socket 'Boundary'
         
         boundary_value : Float, optional
             socket 'Boundary Value'
@@ -3479,10 +3238,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'grid': grid, 'max_iterations': max_iterations, 'error_threshold': error_threshold, 'threshold_mode': threshold_mode, 'boundary': boundary, 'boundary_value': boundary_value, 'boundary_gradient': boundary_gradient, 'boundary_factor': boundary_factor}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Grid Solve Poisson', named_sockets=_named_sockets)
-        return _node
+        node = Node('Grid Solve Poisson', named_sockets={'Grid': grid, 'Max Iterations': max_iterations, 'Error Threshold': error_threshold, 'Threshold Mode': threshold_mode, 'Boundary': boundary, 'Boundary Value': boundary_value, 'Boundary Gradient': boundary_gradient, 'Boundary Factor': boundary_factor})
+        return node
 
     @classmethod
     def grid_to_mesh(cls, grid: Float=None, threshold: Float=None, adaptivity: Float=None):
@@ -3503,18 +3260,16 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'grid': grid, 'threshold': threshold, 'adaptivity': adaptivity}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Grid to Mesh', named_sockets=_named_sockets)
-        return _node
+        node = Node('Grid to Mesh', named_sockets={'Grid': grid, 'Threshold': threshold, 'Adaptivity': adaptivity})
+        return node
 
     @classmethod
-    def grid_to_points(cls, grid: Float | Integer | Boolean | Vector=None, data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'SHADER', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'TEXTURE', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SCENE', 'TEXT', 'MASK', 'SOUND', 'INT_VECTOR']='FLOAT'):
+    def grid_to_points(cls, grid: Socket=None, data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR']='FLOAT'):
         """ > Node <&Node Grid to Points>
         
         Parameters
         ----------
-        grid : Float | Integer | Boolean | Vector, optional
+        grid : Socket, optional
             socket 'Grid'
         
         data_type : Literal['Float', 'Integer', 'Boolean', 'Vector']
@@ -3524,25 +3279,23 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'grid': grid}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Grid to Points', named_sockets=_named_sockets, data_type=data_type)
-        return _node
+        node = Node('Grid to Points', named_sockets={'Grid': grid}, data_type=data_type)
+        return node
 
     @classmethod
-    def grid_topology_boolean(cls, *grid_2: Float | Integer | Boolean | Vector, operation: Literal['Intersect', 'Union', 'Difference']=None, grid_1: Float | Integer | Boolean | Vector=None, data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'SHADER', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'TEXTURE', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SCENE', 'TEXT', 'MASK', 'SOUND', 'INT_VECTOR']='FLOAT'):
+    def grid_topology_boolean(cls, *grid_2: Socket, operation: Menu=None, grid_1: Socket=None, data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR']='FLOAT'):
         """ > Node <&Node Grid Topology Boolean>
         
         Parameters
         ----------
-        operation : menu='Intersect', optional
-            ('Intersect', 'Union', 'Difference')
-        
-        grid_1 : Float | Integer | Boolean | Vector, optional
-            socket 'Grid 1'
-        
-        grid_2 : Float | Integer | Boolean | Vector, optional
+        grid_2 : Socket, optional
             socket 'Grid 2'
+        
+        operation : Menu, optional
+            socket 'Operation'
+        
+        grid_1 : Socket, optional
+            socket 'Grid 1'
         
         data_type : Literal['Float', 'Integer', 'Boolean', 'Vector']
             parameter `data_type`
@@ -3551,13 +3304,11 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'operation': operation, 'grid_1': grid_1, 'grid_2': list(grid_2)}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Grid Topology Boolean', named_sockets=_named_sockets, data_type=data_type)
-        return _node
+        node = Node('Grid Topology Boolean', *[*list(grid_2)], named_sockets={'Operation': operation, 'Grid 1': grid_1}, data_type=data_type)
+        return node
 
     @classmethod
-    def group(cls, node_tree=None):
+    def group(cls, node_tree: NoneType=None):
         """ > Node <&Node Group>
         
         Parameters
@@ -3569,10 +3320,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Group', named_sockets=_named_sockets, node_tree=node_tree)
-        return _node
+        node = Node('Group', named_sockets={}, node_tree=node_tree)
+        return node
 
     @classmethod
     def group_input(cls):
@@ -3582,13 +3331,11 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Group Input', named_sockets=_named_sockets)
-        return _node
+        node = Node('Group Input', named_sockets={})
+        return node
 
     @classmethod
-    def group_output(cls, named_sockets=None, is_active_output=True, **sockets):
+    def group_output(cls, named_sockets=None, is_active_output: bool=True, **sockets):
         """ > Node <&Node Group Output>
         
         Parameters
@@ -3601,10 +3348,9 @@ class ND:
         Node
         """
         _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _named_sockets.update({_name: _value for _name, _value in (named_sockets or {}).items() if _value is not None})
-        _node = Node('Group Output', named_sockets=_named_sockets, is_active_output=is_active_output, **sockets)
-        return _node
+        _named_sockets.update({name: value for name, value in (named_sockets or {}).items() if value is not None})
+        node = Node('Group Output', named_sockets=_named_sockets, is_active_output=is_active_output, **sockets)
+        return node
 
     @classmethod
     def handle_type_selection(cls, handle_type: Literal['FREE', 'AUTO', 'VECTOR', 'ALIGN']='AUTO', mode: set[Literal['LEFT', 'RIGHT']]={'RIGHT', 'LEFT'}):
@@ -3622,18 +3368,16 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Handle Type Selection', named_sockets=_named_sockets, handle_type=handle_type, mode=mode)
-        return _node
+        node = Node('Handle Type Selection', named_sockets={}, handle_type=handle_type, mode=mode)
+        return node
 
     @classmethod
-    def hash_value(cls, value: Integer | Float | Vector | Color | Rotation | Matrix | String=None, seed: Integer=None, data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'SHADER', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'TEXTURE', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SCENE', 'TEXT', 'MASK', 'SOUND', 'INT_VECTOR']='INT'):
+    def hash_value(cls, value: Socket=None, seed: Integer=None, data_type: Literal['FLOAT', 'INT', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING']='INT'):
         """ > Node <&Node Hash Value>
         
         Parameters
         ----------
-        value : Integer | Float | Vector | Color | Rotation | Matrix | String, optional
+        value : Socket, optional
             socket 'Value'
         
         seed : Integer, optional
@@ -3646,10 +3390,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'value': value, 'seed': seed}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Hash Value', named_sockets=_named_sockets, data_type=data_type)
-        return _node
+        node = Node('Hash Value', named_sockets={'Value': value, 'Seed': seed}, data_type=data_type)
+        return node
 
     @classmethod
     def ico_sphere(cls, radius: Float=None, subdivisions: Integer=None):
@@ -3667,10 +3409,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'radius': radius, 'subdivisions': subdivisions}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Ico Sphere', named_sockets=_named_sockets)
-        return _node
+        node = Node('Ico Sphere', named_sockets={'Radius': radius, 'Subdivisions': subdivisions})
+        return node
 
     @utils.classproperty
     def id(cls):
@@ -3678,16 +3418,14 @@ class ND:
         
         Returns
         -------
-        Integer
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('ID', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('ID', named_sockets={})
+        return node._out
 
     @classmethod
-    def image(cls, image=None):
+    def image(cls, image: NoneType=None):
         """ > Node <&Node Image>
         
         Parameters
@@ -3699,10 +3437,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Image', named_sockets=_named_sockets, image=image)
-        return _node
+        node = Node('Image', named_sockets={}, image=image)
+        return node
 
     @classmethod
     def image_info(cls, image: Image=None, frame: Integer=None):
@@ -3720,10 +3456,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'image': image, 'frame': frame}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Image Info', named_sockets=_named_sockets)
-        return _node
+        node = Node('Image Info', named_sockets={'Image': image, 'Frame': frame})
+        return node
 
     @classmethod
     def image_texture(cls, image: Image=None, vector: Vector=None, frame: Integer=None, interpolation: Literal['Linear', 'Closest', 'Cubic']='Linear', extension: Literal['REPEAT', 'EXTEND', 'CLIP', 'MIRROR']='REPEAT'):
@@ -3750,18 +3484,16 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'image': image, 'vector': vector, 'frame': frame}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Image Texture', named_sockets=_named_sockets, interpolation=interpolation, extension=extension)
-        return _node
+        node = Node('Image Texture', named_sockets={'Image': image, 'Vector': vector, 'Frame': frame}, interpolation=interpolation, extension=extension)
+        return node
 
     @classmethod
-    def implicit_conversion(cls, value: Color | Float | Integer | Boolean | Vector | Rotation | Matrix | String | Menu | Object | Image | Geometry | Collection | Material | Bundle | Closure | Font | Sound=None, socket_idname='NodeSocketColor', data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'SHADER', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'TEXTURE', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SCENE', 'TEXT', 'MASK', 'SOUND', 'INT_VECTOR']='RGBA'):
+    def implicit_conversion(cls, value: Socket=None, socket_idname: str='NodeSocketColor', data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SOUND']='RGBA'):
         """ > Node <&Node Implicit Conversion>
         
         Parameters
         ----------
-        value : Color | Float | Integer | Boolean | Vector | Rotation | Matrix | String | Menu | Object | Image | Geometry | Collection | Material | Bundle | Closure | Font | Sound, optional
+        value : Socket, optional
             socket 'Value'
         
         socket_idname : str
@@ -3774,10 +3506,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'value': value}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Implicit Conversion', named_sockets=_named_sockets, socket_idname=socket_idname, data_type=data_type)
-        return _node
+        node = Node('Implicit Conversion', named_sockets={'Value': value}, data_type=data_type, socket_idname=socket_idname)
+        return node
 
     @classmethod
     def import_csv(cls, path: String=None, delimiter: String=None):
@@ -3795,10 +3525,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'path': path, 'delimiter': delimiter}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Import CSV', named_sockets=_named_sockets)
-        return _node
+        node = Node('Import CSV', named_sockets={'Path': path, 'Delimiter': delimiter})
+        return node
 
     @classmethod
     def import_obj(cls, path: String=None):
@@ -3813,10 +3541,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'path': path}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Import OBJ', named_sockets=_named_sockets)
-        return _node
+        node = Node('Import OBJ', named_sockets={'Path': path})
+        return node
 
     @classmethod
     def import_ply(cls, path: String=None):
@@ -3831,10 +3557,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'path': path}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Import PLY', named_sockets=_named_sockets)
-        return _node
+        node = Node('Import PLY', named_sockets={'Path': path})
+        return node
 
     @classmethod
     def import_spz(cls, path: String=None):
@@ -3849,10 +3573,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'path': path}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Import SPZ', named_sockets=_named_sockets)
-        return _node
+        node = Node('Import SPZ', named_sockets={'Path': path})
+        return node
 
     @classmethod
     def import_stl(cls, path: String=None):
@@ -3867,10 +3589,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'path': path}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Import STL', named_sockets=_named_sockets)
-        return _node
+        node = Node('Import STL', named_sockets={'Path': path})
+        return node
 
     @classmethod
     def import_text(cls, path: String=None):
@@ -3885,10 +3605,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'path': path}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Import Text', named_sockets=_named_sockets)
-        return _node
+        node = Node('Import Text', named_sockets={'Path': path})
+        return node
 
     @classmethod
     def import_vdb(cls, path: String=None):
@@ -3903,10 +3621,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'path': path}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Import VDB', named_sockets=_named_sockets)
-        return _node
+        node = Node('Import VDB', named_sockets={'Path': path})
+        return node
 
     @utils.classproperty
     def index(cls):
@@ -3914,13 +3630,11 @@ class ND:
         
         Returns
         -------
-        Integer
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Index', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('Index', named_sockets={})
+        return node._out
 
     @classmethod
     def index_of_nearest(cls, position: Vector=None, group_id: Integer=None):
@@ -3938,25 +3652,17 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'position': position, 'group_id': group_id}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Index of Nearest', named_sockets=_named_sockets)
-        return _node
+        node = Node('Index of Nearest', named_sockets={'Position': position, 'Group ID': group_id})
+        return node
 
     @classmethod
-    def index_switch(cls, named_sockets=None, index: Integer=None, _0: Float | Integer | Boolean | Vector | Color | Rotation | Matrix | String | Menu | Object | Image | Geometry | Collection | Material | Bundle | Closure | Font | Sound=None, _1: Float | Integer | Boolean | Vector | Color | Rotation | Matrix | String | Menu | Object | Image | Geometry | Collection | Material | Bundle | Closure | Font | Sound=None, data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'SHADER', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'TEXTURE', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SCENE', 'TEXT', 'MASK', 'SOUND', 'INT_VECTOR']='FLOAT', **sockets):
+    def index_switch(cls, *values: Socket, index: Integer=None, data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SOUND']='FLOAT', default_index: int=0):
         """ > Node <&Node Index Switch>
         
         Parameters
         ----------
         index : Integer, optional
             socket 'Index'
-        
-        _0 : Float | Integer | Boolean | Vector | Color | Rotation | Matrix | String | Menu | Object | Image | Geometry | Collection | Material | Bundle | Closure | Font | Sound, optional
-            socket '0'
-        
-        _1 : Float | Integer | Boolean | Vector | Color | Rotation | Matrix | String | Menu | Object | Image | Geometry | Collection | Material | Bundle | Closure | Font | Sound, optional
-            socket '1'
         
         data_type : Literal['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Rotation', 'Matrix', 'String', 'Menu', 'Object', 'Image', 'Geometry', 'Collection', 'Material', 'Bundle', 'Closure', 'Font', 'Sound']
             parameter `data_type`
@@ -3965,11 +3671,13 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'index': index, '_0': _0, '_1': _1}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _named_sockets.update({_name: _value for _name, _value in (named_sockets or {}).items() if _value is not None})
-        _node = Node('Index Switch', named_sockets=_named_sockets, data_type=data_type, **sockets)
-        return _node
+        node = Node('Index Switch', *values, named_sockets={'Index': index}, data_type=data_type)
+        _selector = node._bnode.inputs['Index']
+        _selector.default_value = default_index
+        _interface = node._get_interface_socket(_selector)
+        if _interface is not None:
+            _interface.default_value = default_index
+        return node
 
     @classmethod
     def instance_bounds(cls, use_radius: Boolean=None):
@@ -3984,10 +3692,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'use_radius': use_radius}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Instance Bounds', named_sockets=_named_sockets)
-        return _node
+        node = Node('Instance Bounds', named_sockets={'Use Radius': use_radius})
+        return node
 
     @classmethod
     def instance_on_points(cls, points: Cloud=None, selection: Boolean=None, instance: Instances=None, pick_instance: Boolean=None, instance_index: Integer=None, rotation: Rotation=None, scale: Vector=None):
@@ -4020,10 +3726,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'points': points, 'selection': selection, 'instance': instance, 'pick_instance': pick_instance, 'instance_index': instance_index, 'rotation': rotation, 'scale': scale}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Instance on Points', named_sockets=_named_sockets)
-        return _node
+        node = Node('Instance on Points', named_sockets={'Points': points, 'Selection': selection, 'Instance': instance, 'Pick Instance': pick_instance, 'Instance Index': instance_index, 'Rotation': rotation, 'Scale': scale})
+        return node
 
     @utils.classproperty
     def instance_reference(cls):
@@ -4031,13 +3735,11 @@ class ND:
         
         Returns
         -------
-        Integer
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Instance Reference', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('Instance Reference', named_sockets={})
+        return node._out
 
     @utils.classproperty
     def instance_rotation(cls):
@@ -4045,13 +3747,11 @@ class ND:
         
         Returns
         -------
-        Rotation
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Instance Rotation', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('Instance Rotation', named_sockets={})
+        return node._out
 
     @utils.classproperty
     def instance_scale(cls):
@@ -4059,13 +3759,11 @@ class ND:
         
         Returns
         -------
-        Vector
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Instance Scale', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('Instance Scale', named_sockets={})
+        return node._out
 
     @utils.classproperty
     def instance_transform(cls):
@@ -4073,13 +3771,11 @@ class ND:
         
         Returns
         -------
-        Matrix
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Instance Transform', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('Instance Transform', named_sockets={})
+        return node._out
 
     @classmethod
     def instances_to_points(cls, instances: Instances=None, selection: Boolean=None, position: Vector=None, radius: Float=None):
@@ -4103,13 +3799,11 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'instances': instances, 'selection': selection, 'position': position, 'radius': radius}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Instances to Points', named_sockets=_named_sockets)
-        return _node
+        node = Node('Instances to Points', named_sockets={'Instances': instances, 'Selection': selection, 'Position': position, 'Radius': radius})
+        return node
 
     @classmethod
-    def integer(cls, integer=0):
+    def integer(cls, integer: int=0):
         """ > Node <&Node Integer>
         
         Parameters
@@ -4121,10 +3815,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Integer', named_sockets=_named_sockets, integer=integer)
-        return _node
+        node = Node('Integer', named_sockets={}, integer=integer)
+        return node
 
     @classmethod
     def integer_math(cls, value: Integer=None, base: Integer=None, value_1: Integer=None, multiplier: Integer=None, exponent: Integer=None, addend: Integer=None, operation: Literal['ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'MULTIPLY_ADD', 'ABSOLUTE', 'NEGATE', 'POWER', 'MINIMUM', 'MAXIMUM', 'SIGN', 'DIVIDE_ROUND', 'DIVIDE_FLOOR', 'DIVIDE_CEIL', 'FLOORED_MODULO', 'MODULO', 'GCD', 'LCM']='ADD'):
@@ -4157,16 +3849,14 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'value': value, 'base': base, 'value_1': value_1, 'multiplier': multiplier, 'exponent': exponent, 'addend': addend}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _values = {('ADD',): ['value', 'value_1'], ('SUBTRACT',): ['value', 'value_1'], ('MULTIPLY',): ['value', 'value_1'], ('DIVIDE',): ['value', 'value_1'], ('MULTIPLY_ADD',): ['value', 'multiplier', 'addend'], ('ABSOLUTE',): ['value'], ('NEGATE',): ['value'], ('POWER',): ['base', 'exponent'], ('MINIMUM',): ['value', 'value_1'], ('MAXIMUM',): ['value', 'value_1'], ('SIGN',): ['value'], ('DIVIDE_ROUND',): ['value', 'value_1'], ('DIVIDE_FLOOR',): ['value', 'value_1'], ('DIVIDE_CEIL',): ['value', 'value_1'], ('FLOORED_MODULO',): ['value', 'value_1'], ('MODULO',): ['value', 'value_1'], ('GCD',): ['value', 'value_1'], ('LCM',): ['value', 'value_1']}
         _configuration = ({'add': 'ADD', 'subtract': 'SUBTRACT', 'multiply': 'MULTIPLY', 'divide': 'DIVIDE', 'multiply_add': 'MULTIPLY_ADD', 'absolute': 'ABSOLUTE', 'negate': 'NEGATE', 'power': 'POWER', 'minimum': 'MINIMUM', 'maximum': 'MAXIMUM', 'sign': 'SIGN', 'divide_round': 'DIVIDE_ROUND', 'divide_floor': 'DIVIDE_FLOOR', 'divide_ceil': 'DIVIDE_CEIL', 'floored_modulo': 'FLOORED_MODULO', 'modulo': 'MODULO', 'gcd': 'GCD', 'lcm': 'LCM', 'multiply add': 'MULTIPLY_ADD', 'divide round': 'DIVIDE_ROUND', 'divide floor': 'DIVIDE_FLOOR', 'divide ceiling': 'DIVIDE_CEIL', 'floored modulo': 'FLOORED_MODULO', 'greatest common divisor': 'GCD', 'least common multiple': 'LCM'}.get(operation.lower(), operation),)
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _name in _values[_configuration]}
-        _node = Node('Integer Math', named_sockets=_named_sockets, operation=operation)
-        return _node
+        _node_sockets = {('ADD',): {'Value': value, 'Value_1': value_1}, ('SUBTRACT',): {'Value': value, 'Value_1': value_1}, ('MULTIPLY',): {'Value': value, 'Value_1': value_1}, ('DIVIDE',): {'Value': value, 'Value_1': value_1}, ('MULTIPLY_ADD',): {'Value': value, 'Multiplier': multiplier, 'Addend': addend}, ('ABSOLUTE',): {'Value': value}, ('NEGATE',): {'Value': value}, ('POWER',): {'Base': base, 'Exponent': exponent}, ('MINIMUM',): {'Value': value, 'Value_1': value_1}, ('MAXIMUM',): {'Value': value, 'Value_1': value_1}, ('SIGN',): {'Value': value}, ('DIVIDE_ROUND',): {'Value': value, 'Value_1': value_1}, ('DIVIDE_FLOOR',): {'Value': value, 'Value_1': value_1}, ('DIVIDE_CEIL',): {'Value': value, 'Value_1': value_1}, ('FLOORED_MODULO',): {'Value': value, 'Value_1': value_1}, ('MODULO',): {'Value': value, 'Value_1': value_1}, ('GCD',): {'Value': value, 'Value_1': value_1}, ('LCM',): {'Value': value, 'Value_1': value_1}}[_configuration]
+        _node_args = {('ADD',): [], ('SUBTRACT',): [], ('MULTIPLY',): [], ('DIVIDE',): [], ('MULTIPLY_ADD',): [], ('ABSOLUTE',): [], ('NEGATE',): [], ('POWER',): [], ('MINIMUM',): [], ('MAXIMUM',): [], ('SIGN',): [], ('DIVIDE_ROUND',): [], ('DIVIDE_FLOOR',): [], ('DIVIDE_CEIL',): [], ('FLOORED_MODULO',): [], ('MODULO',): [], ('GCD',): [], ('LCM',): []}[_configuration]
+        node = Node('Integer Math', *_node_args, named_sockets=_node_sockets, operation=operation)
+        return node
 
     @classmethod
-    def integer_vector(cls, vector_dimensions=3):
+    def integer_vector(cls, vector_dimensions: int=3):
         """ > Node <&Node Integer Vector>
         
         Parameters
@@ -4178,10 +3868,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Integer Vector', named_sockets=_named_sockets, vector_dimensions=vector_dimensions)
-        return _node
+        node = Node('Integer Vector', named_sockets={}, vector_dimensions=vector_dimensions)
+        return node
 
     @classmethod
     def interpolate_curves(cls, guide_curves: Curve=None, guide_up: Vector=None, guide_group_id: Integer=None, points: Cloud=None, point_up: Vector=None, point_group_id: Integer=None, max_neighbors: Integer=None):
@@ -4214,10 +3902,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'guide_curves': guide_curves, 'guide_up': guide_up, 'guide_group_id': guide_group_id, 'points': points, 'point_up': point_up, 'point_group_id': point_group_id, 'max_neighbors': max_neighbors}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Interpolate Curves', named_sockets=_named_sockets)
-        return _node
+        node = Node('Interpolate Curves', named_sockets={'Guide Curves': guide_curves, 'Guide Up': guide_up, 'Guide Group ID': guide_group_id, 'Points': points, 'Point Up': point_up, 'Point Group ID': point_group_id, 'Max Neighbors': max_neighbors})
+        return node
 
     @classmethod
     def invert_matrix(cls, matrix: Matrix=None):
@@ -4232,10 +3918,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'matrix': matrix}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Invert Matrix', named_sockets=_named_sockets)
-        return _node
+        node = Node('Invert Matrix', named_sockets={'Matrix': matrix})
+        return node
 
     @classmethod
     def invert_rotation(cls, rotation: Rotation=None):
@@ -4250,10 +3934,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'rotation': rotation}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Invert Rotation', named_sockets=_named_sockets)
-        return _node
+        node = Node('Invert Rotation', named_sockets={'Rotation': rotation})
+        return node
 
     @utils.classproperty
     def is_edge_smooth(cls):
@@ -4261,13 +3943,11 @@ class ND:
         
         Returns
         -------
-        Boolean
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Is Edge Smooth', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('Is Edge Smooth', named_sockets={})
+        return node._out
 
     @classmethod
     def is_face_planar(cls, threshold: Float=None):
@@ -4282,10 +3962,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'threshold': threshold}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Is Face Planar', named_sockets=_named_sockets)
-        return _node
+        node = Node('Is Face Planar', named_sockets={'Threshold': threshold})
+        return node
 
     @utils.classproperty
     def is_face_smooth(cls):
@@ -4293,13 +3971,11 @@ class ND:
         
         Returns
         -------
-        Boolean
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Is Face Smooth', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('Is Face Smooth', named_sockets={})
+        return node._out
 
     @utils.classproperty
     def is_spline_cyclic(cls):
@@ -4307,13 +3983,11 @@ class ND:
         
         Returns
         -------
-        Boolean
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Is Spline Cyclic', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('Is Spline Cyclic', named_sockets={})
+        return node._out
 
     @utils.classproperty
     def is_viewport(cls):
@@ -4321,13 +3995,11 @@ class ND:
         
         Returns
         -------
-        Boolean
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Is Viewport', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('Is Viewport', named_sockets={})
+        return node._out
 
     @classmethod
     def join_bundle(cls, *bundle: Bundle):
@@ -4342,10 +4014,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'bundle': list(bundle)}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Join Bundle', named_sockets=_named_sockets)
-        return _node
+        node = Node('Join Bundle', *[*list(bundle)], named_sockets={})
+        return node
 
     @classmethod
     def join_geometry(cls, *geometry: Geometry):
@@ -4360,10 +4030,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'geometry': list(geometry)}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Join Geometry', named_sockets=_named_sockets)
-        return _node
+        node = Node('Join Geometry', *[*list(geometry)], named_sockets={})
+        return node
 
     @classmethod
     def join_strings(cls, *strings: String, delimiter: String=None):
@@ -4371,20 +4039,18 @@ class ND:
         
         Parameters
         ----------
-        delimiter : String, optional
-            socket 'Delimiter'
-        
         strings : String, optional
             socket 'Strings'
+        
+        delimiter : String, optional
+            socket 'Delimiter'
         
         Returns
         -------
         Node
         """
-        _named_sockets = {'delimiter': delimiter, 'strings': list(strings)}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Join Strings', named_sockets=_named_sockets)
-        return _node
+        node = Node('Join Strings', *[*list(strings)], named_sockets={'Delimiter': delimiter})
+        return node
 
     @classmethod
     def linear_gizmo(cls, *value: Float, position: Vector=None, direction: Vector=None, color_id: Literal['PRIMARY', 'SECONDARY', 'X', 'Y', 'Z']='PRIMARY', draw_style: Literal['ARROW', 'CROSS', 'BOX']='ARROW'):
@@ -4411,18 +4077,16 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'value': list(value), 'position': position, 'direction': direction}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Linear Gizmo', named_sockets=_named_sockets, color_id=color_id, draw_style=draw_style)
-        return _node
+        node = Node('Linear Gizmo', *[*list(value)], named_sockets={'Position': position, 'Direction': direction}, color_id=color_id, draw_style=draw_style)
+        return node
 
     @classmethod
-    def list_length(cls, list: Float | Integer | Boolean | Vector | Color | Rotation | Matrix | String | Menu | Object | Image | Geometry | Collection | Material | Bundle | Closure | Font | Sound=None, data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'SHADER', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'TEXTURE', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SCENE', 'TEXT', 'MASK', 'SOUND', 'INT_VECTOR']='FLOAT'):
+    def list_length(cls, list: Socket=None, data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SOUND']='FLOAT'):
         """ > Node <&Node List Length>
         
         Parameters
         ----------
-        list : Float | Integer | Boolean | Vector | Color | Rotation | Matrix | String | Menu | Object | Image | Geometry | Collection | Material | Bundle | Closure | Font | Sound, optional
+        list : Socket, optional
             socket 'List'
         
         data_type : Literal['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Rotation', 'Matrix', 'String', 'Menu', 'Object', 'Image', 'Geometry', 'Collection', 'Material', 'Bundle', 'Closure', 'Font', 'Sound']
@@ -4432,13 +4096,11 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'list': list}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('List Length', named_sockets=_named_sockets, data_type=data_type)
-        return _node
+        node = Node('List Length', named_sockets={'List': list}, data_type=data_type)
+        return node
 
     @classmethod
-    def magic_texture(cls, vector: Vector=None, scale: Float=None, distortion: Float=None, turbulence_depth=2):
+    def magic_texture(cls, vector: Vector=None, scale: Float=None, distortion: Float=None, turbulence_depth: int=2):
         """ > Node <&Node Magic Texture>
         
         Parameters
@@ -4459,13 +4121,11 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'vector': vector, 'scale': scale, 'distortion': distortion}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Magic Texture', named_sockets=_named_sockets, turbulence_depth=turbulence_depth)
-        return _node
+        node = Node('Magic Texture', named_sockets={'Vector': vector, 'Scale': scale, 'Distortion': distortion}, turbulence_depth=turbulence_depth)
+        return node
 
     @classmethod
-    def map_range(cls, value: Float=None, from_min: Float | Vector=None, from_max: Float | Vector=None, to_min: Float | Vector=None, to_max: Float | Vector=None, steps: Float | Vector=None, vector: Vector=None, clamp=True, interpolation_type: Literal['LINEAR', 'STEPPED', 'SMOOTHSTEP', 'SMOOTHERSTEP']='LINEAR', data_type: Literal['FLOAT', 'FLOAT_VECTOR']='FLOAT'):
+    def map_range(cls, value: Float=None, from_min: Socket=None, from_max: Socket=None, to_min: Socket=None, to_max: Socket=None, steps: Socket=None, vector: Vector=None, clamp: bool=True, interpolation_type: Literal['LINEAR', 'STEPPED', 'SMOOTHSTEP', 'SMOOTHERSTEP']='LINEAR', data_type: Literal['FLOAT', 'FLOAT_VECTOR']='FLOAT'):
         """ > Node <&Node Map Range>
         
         Parameters
@@ -4473,19 +4133,19 @@ class ND:
         value : Float, optional
             socket 'Value'
         
-        from_min : Float | Vector, optional
+        from_min : Socket, optional
             socket 'From Min'
         
-        from_max : Float | Vector, optional
+        from_max : Socket, optional
             socket 'From Max'
         
-        to_min : Float | Vector, optional
+        to_min : Socket, optional
             socket 'To Min'
         
-        to_max : Float | Vector, optional
+        to_max : Socket, optional
             socket 'To Max'
         
-        steps : Float | Vector, optional
+        steps : Socket, optional
             socket 'Steps'
         
         vector : Vector, optional
@@ -4504,13 +4164,14 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'value': value, 'from_min': from_min, 'from_max': from_max, 'to_min': to_min, 'to_max': to_max, 'steps': steps, 'vector': vector}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Map Range', named_sockets=_named_sockets, clamp=clamp, interpolation_type=interpolation_type, data_type=data_type)
-        return _node
+        _configuration = ({'linear': 'LINEAR', 'stepped': 'STEPPED', 'smoothstep': 'SMOOTHSTEP', 'smootherstep': 'SMOOTHERSTEP', 'stepped linear': 'STEPPED', 'smooth step': 'SMOOTHSTEP', 'smoother step': 'SMOOTHERSTEP'}.get(interpolation_type.lower(), interpolation_type), {'float': 'FLOAT', 'float_vector': 'FLOAT_VECTOR', 'vector': 'FLOAT_VECTOR'}.get(data_type.lower(), data_type))
+        _node_sockets = {('LINEAR', 'FLOAT'): {'Value': value, 'From Min': from_min, 'From Max': from_max, 'To Min': to_min, 'To Max': to_max}, ('LINEAR', 'FLOAT_VECTOR'): {'Vector': vector, 'From Min': from_min, 'From Max': from_max, 'To Min': to_min, 'To Max': to_max}, ('STEPPED', 'FLOAT'): {'Value': value, 'From Min': from_min, 'From Max': from_max, 'To Min': to_min, 'To Max': to_max, 'Steps': steps}, ('STEPPED', 'FLOAT_VECTOR'): {'Vector': vector, 'From Min': from_min, 'From Max': from_max, 'To Min': to_min, 'To Max': to_max, 'Steps': steps}, ('SMOOTHSTEP', 'FLOAT'): {'Value': value, 'From Min': from_min, 'From Max': from_max, 'To Min': to_min, 'To Max': to_max}, ('SMOOTHSTEP', 'FLOAT_VECTOR'): {'Vector': vector, 'From Min': from_min, 'From Max': from_max, 'To Min': to_min, 'To Max': to_max}, ('SMOOTHERSTEP', 'FLOAT'): {'Value': value, 'From Min': from_min, 'From Max': from_max, 'To Min': to_min, 'To Max': to_max}, ('SMOOTHERSTEP', 'FLOAT_VECTOR'): {'Vector': vector, 'From Min': from_min, 'From Max': from_max, 'To Min': to_min, 'To Max': to_max}}[_configuration]
+        _node_args = {('LINEAR', 'FLOAT'): [], ('LINEAR', 'FLOAT_VECTOR'): [], ('STEPPED', 'FLOAT'): [], ('STEPPED', 'FLOAT_VECTOR'): [], ('SMOOTHSTEP', 'FLOAT'): [], ('SMOOTHSTEP', 'FLOAT_VECTOR'): [], ('SMOOTHERSTEP', 'FLOAT'): [], ('SMOOTHERSTEP', 'FLOAT_VECTOR'): []}[_configuration]
+        node = Node('Map Range', *_node_args, named_sockets=_node_sockets, interpolation_type=interpolation_type, data_type=data_type, clamp=clamp)
+        return node
 
     @classmethod
-    def match_string(cls, string: String=None, operation: Literal['Starts With', 'Ends With', 'Contains']=None, key: String=None):
+    def match_string(cls, string: String=None, operation: Menu=None, key: String=None):
         """ > Node <&Node Match String>
         
         Parameters
@@ -4518,8 +4179,8 @@ class ND:
         string : String, optional
             socket 'String'
         
-        operation : menu='Starts With', optional
-            ('Starts With', 'Ends With', 'Contains')
+        operation : Menu, optional
+            socket 'Operation'
         
         key : String, optional
             socket 'Key'
@@ -4528,13 +4189,11 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'string': string, 'operation': operation, 'key': key}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Match String', named_sockets=_named_sockets)
-        return _node
+        node = Node('Match String', named_sockets={'String': string, 'Operation': operation, 'Key': key})
+        return node
 
     @classmethod
-    def material(cls, material=None):
+    def material(cls, material: NoneType=None):
         """ > Node <&Node Material>
         
         Parameters
@@ -4546,10 +4205,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Material', named_sockets=_named_sockets, material=material)
-        return _node
+        node = Node('Material', named_sockets={}, material=material)
+        return node
 
     @utils.classproperty
     def material_index(cls):
@@ -4557,13 +4214,11 @@ class ND:
         
         Returns
         -------
-        Integer
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Material Index', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('Material Index', named_sockets={})
+        return node._out
 
     @classmethod
     def material_selection(cls, material: Material=None):
@@ -4578,13 +4233,11 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'material': material}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Material Selection', named_sockets=_named_sockets)
-        return _node
+        node = Node('Material Selection', named_sockets={'Material': material})
+        return node
 
     @classmethod
-    def math(cls, value: Float=None, base: Float=None, degrees: Float=None, radians: Float=None, value_1: Float=None, multiplier: Float=None, exponent: Float=None, threshold: Float=None, max: Float=None, increment: Float=None, scale: Float=None, addend: Float=None, epsilon: Float=None, distance: Float=None, min: Float=None, operation: Literal['ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'MULTIPLY_ADD', 'POWER', 'LOGARITHM', 'SQRT', 'INVERSE_SQRT', 'ABSOLUTE', 'EXPONENT', 'MINIMUM', 'MAXIMUM', 'LESS_THAN', 'GREATER_THAN', 'SIGN', 'COMPARE', 'SMOOTH_MIN', 'SMOOTH_MAX', 'ROUND', 'FLOOR', 'CEIL', 'TRUNC', 'FRACT', 'MODULO', 'FLOORED_MODULO', 'WRAP', 'SNAP', 'PINGPONG', 'SINE', 'COSINE', 'TANGENT', 'ARCSINE', 'ARCCOSINE', 'ARCTANGENT', 'ARCTAN2', 'SINH', 'COSH', 'TANH', 'RADIANS', 'DEGREES']='ADD', use_clamp=False):
+    def math(cls, value: Float=None, base: Float=None, degrees: Float=None, radians: Float=None, value_1: Float=None, multiplier: Float=None, exponent: Float=None, base_1: Float=None, threshold: Float=None, max: Float=None, increment: Float=None, scale: Float=None, addend: Float=None, epsilon: Float=None, distance: Float=None, min: Float=None, operation: Literal['ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'MULTIPLY_ADD', 'POWER', 'LOGARITHM', 'SQRT', 'INVERSE_SQRT', 'ABSOLUTE', 'EXPONENT', 'MINIMUM', 'MAXIMUM', 'LESS_THAN', 'GREATER_THAN', 'SIGN', 'COMPARE', 'SMOOTH_MIN', 'SMOOTH_MAX', 'ROUND', 'FLOOR', 'CEIL', 'TRUNC', 'FRACT', 'MODULO', 'FLOORED_MODULO', 'WRAP', 'SNAP', 'PINGPONG', 'SINE', 'COSINE', 'TANGENT', 'ARCSINE', 'ARCCOSINE', 'ARCTANGENT', 'ARCTAN2', 'SINH', 'COSH', 'TANH', 'RADIANS', 'DEGREES']='ADD', use_clamp: bool=False):
         """ > Node <&Node Math>
         
         Parameters
@@ -4609,6 +4262,9 @@ class ND:
         
         exponent : Float, optional
             socket 'Exponent'
+        
+        base_1 : Float, optional
+            socket 'Base'
         
         threshold : Float, optional
             socket 'Threshold'
@@ -4644,13 +4300,11 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'value': value, 'base': base, 'degrees': degrees, 'radians': radians, 'value_1': value_1, 'multiplier': multiplier, 'exponent': exponent, 'threshold': threshold, 'max': max, 'increment': increment, 'scale': scale, 'addend': addend, 'epsilon': epsilon, 'distance': distance, 'min': min}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _values = {('ADD',): ['value', 'value_1'], ('SUBTRACT',): ['value', 'value_1'], ('MULTIPLY',): ['value', 'value_1'], ('DIVIDE',): ['value', 'value_1'], ('MULTIPLY_ADD',): ['value', 'multiplier', 'addend'], ('POWER',): ['base', 'exponent'], ('LOGARITHM',): ['value', 'base'], ('SQRT',): ['value'], ('INVERSE_SQRT',): ['value'], ('ABSOLUTE',): ['value'], ('EXPONENT',): ['value'], ('MINIMUM',): ['value', 'value_1'], ('MAXIMUM',): ['value', 'value_1'], ('LESS_THAN',): ['value', 'threshold'], ('GREATER_THAN',): ['value', 'threshold'], ('SIGN',): ['value'], ('COMPARE',): ['value', 'value_1', 'epsilon'], ('SMOOTH_MIN',): ['value', 'value_1', 'distance'], ('SMOOTH_MAX',): ['value', 'value_1', 'distance'], ('ROUND',): ['value'], ('FLOOR',): ['value'], ('CEIL',): ['value'], ('TRUNC',): ['value'], ('FRACT',): ['value'], ('MODULO',): ['value', 'value_1'], ('FLOORED_MODULO',): ['value', 'value_1'], ('WRAP',): ['value', 'max', 'min'], ('SNAP',): ['value', 'increment'], ('PINGPONG',): ['value', 'scale'], ('SINE',): ['value'], ('COSINE',): ['value'], ('TANGENT',): ['value'], ('ARCSINE',): ['value'], ('ARCCOSINE',): ['value'], ('ARCTANGENT',): ['value'], ('ARCTAN2',): ['value', 'value_1'], ('SINH',): ['value'], ('COSH',): ['value'], ('TANH',): ['value'], ('RADIANS',): ['degrees'], ('DEGREES',): ['radians']}
         _configuration = ({'add': 'ADD', 'subtract': 'SUBTRACT', 'multiply': 'MULTIPLY', 'divide': 'DIVIDE', 'multiply_add': 'MULTIPLY_ADD', 'power': 'POWER', 'logarithm': 'LOGARITHM', 'sqrt': 'SQRT', 'inverse_sqrt': 'INVERSE_SQRT', 'absolute': 'ABSOLUTE', 'exponent': 'EXPONENT', 'minimum': 'MINIMUM', 'maximum': 'MAXIMUM', 'less_than': 'LESS_THAN', 'greater_than': 'GREATER_THAN', 'sign': 'SIGN', 'compare': 'COMPARE', 'smooth_min': 'SMOOTH_MIN', 'smooth_max': 'SMOOTH_MAX', 'round': 'ROUND', 'floor': 'FLOOR', 'ceil': 'CEIL', 'trunc': 'TRUNC', 'fract': 'FRACT', 'modulo': 'MODULO', 'floored_modulo': 'FLOORED_MODULO', 'wrap': 'WRAP', 'snap': 'SNAP', 'pingpong': 'PINGPONG', 'sine': 'SINE', 'cosine': 'COSINE', 'tangent': 'TANGENT', 'arcsine': 'ARCSINE', 'arccosine': 'ARCCOSINE', 'arctangent': 'ARCTANGENT', 'arctan2': 'ARCTAN2', 'sinh': 'SINH', 'cosh': 'COSH', 'tanh': 'TANH', 'radians': 'RADIANS', 'degrees': 'DEGREES', 'multiply add': 'MULTIPLY_ADD', 'square root': 'SQRT', 'inverse square root': 'INVERSE_SQRT', 'less than': 'LESS_THAN', 'greater than': 'GREATER_THAN', 'smooth minimum': 'SMOOTH_MIN', 'smooth maximum': 'SMOOTH_MAX', 'truncate': 'TRUNC', 'fraction': 'FRACT', 'truncated modulo': 'MODULO', 'floored modulo': 'FLOORED_MODULO', 'ping-pong': 'PINGPONG', 'hyperbolic sine': 'SINH', 'hyperbolic cosine': 'COSH', 'hyperbolic tangent': 'TANH', 'to radians': 'RADIANS', 'to degrees': 'DEGREES'}.get(operation.lower(), operation),)
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _name in _values[_configuration]}
-        _node = Node('Math', named_sockets=_named_sockets, operation=operation, use_clamp=use_clamp)
-        return _node
+        _node_sockets = {('ADD',): {'Value': value, 'Value_1': value_1}, ('SUBTRACT',): {'Value': value, 'Value_1': value_1}, ('MULTIPLY',): {'Value': value, 'Value_1': value_1}, ('DIVIDE',): {'Value': value, 'Value_1': value_1}, ('MULTIPLY_ADD',): {'Value': value, 'Multiplier': multiplier, 'Addend': addend}, ('POWER',): {'Base': base, 'Exponent': exponent}, ('LOGARITHM',): {'Value': value, 'Base': base_1}, ('SQRT',): {'Value': value}, ('INVERSE_SQRT',): {'Value': value}, ('ABSOLUTE',): {'Value': value}, ('EXPONENT',): {'Value': value}, ('MINIMUM',): {'Value': value, 'Value_1': value_1}, ('MAXIMUM',): {'Value': value, 'Value_1': value_1}, ('LESS_THAN',): {'Value': value, 'Threshold': threshold}, ('GREATER_THAN',): {'Value': value, 'Threshold': threshold}, ('SIGN',): {'Value': value}, ('COMPARE',): {'Value': value, 'Value_1': value_1, 'Epsilon': epsilon}, ('SMOOTH_MIN',): {'Value': value, 'Value_1': value_1, 'Distance': distance}, ('SMOOTH_MAX',): {'Value': value, 'Value_1': value_1, 'Distance': distance}, ('ROUND',): {'Value': value}, ('FLOOR',): {'Value': value}, ('CEIL',): {'Value': value}, ('TRUNC',): {'Value': value}, ('FRACT',): {'Value': value}, ('MODULO',): {'Value': value, 'Value_1': value_1}, ('FLOORED_MODULO',): {'Value': value, 'Value_1': value_1}, ('WRAP',): {'Value': value, 'Max': max, 'Min': min}, ('SNAP',): {'Value': value, 'Increment': increment}, ('PINGPONG',): {'Value': value, 'Scale': scale}, ('SINE',): {'Value': value}, ('COSINE',): {'Value': value}, ('TANGENT',): {'Value': value}, ('ARCSINE',): {'Value': value}, ('ARCCOSINE',): {'Value': value}, ('ARCTANGENT',): {'Value': value}, ('ARCTAN2',): {'Value': value, 'Value_1': value_1}, ('SINH',): {'Value': value}, ('COSH',): {'Value': value}, ('TANH',): {'Value': value}, ('RADIANS',): {'Degrees': degrees}, ('DEGREES',): {'Radians': radians}}[_configuration]
+        _node_args = {('ADD',): [], ('SUBTRACT',): [], ('MULTIPLY',): [], ('DIVIDE',): [], ('MULTIPLY_ADD',): [], ('POWER',): [], ('LOGARITHM',): [], ('SQRT',): [], ('INVERSE_SQRT',): [], ('ABSOLUTE',): [], ('EXPONENT',): [], ('MINIMUM',): [], ('MAXIMUM',): [], ('LESS_THAN',): [], ('GREATER_THAN',): [], ('SIGN',): [], ('COMPARE',): [], ('SMOOTH_MIN',): [], ('SMOOTH_MAX',): [], ('ROUND',): [], ('FLOOR',): [], ('CEIL',): [], ('TRUNC',): [], ('FRACT',): [], ('MODULO',): [], ('FLOORED_MODULO',): [], ('WRAP',): [], ('SNAP',): [], ('PINGPONG',): [], ('SINE',): [], ('COSINE',): [], ('TANGENT',): [], ('ARCSINE',): [], ('ARCCOSINE',): [], ('ARCTANGENT',): [], ('ARCTAN2',): [], ('SINH',): [], ('COSH',): [], ('TANH',): [], ('RADIANS',): [], ('DEGREES',): []}[_configuration]
+        node = Node('Math', *_node_args, named_sockets=_node_sockets, operation=operation, use_clamp=use_clamp)
+        return node
 
     @classmethod
     def matrix_determinant(cls, matrix: Matrix=None):
@@ -4665,10 +4319,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'matrix': matrix}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Matrix Determinant', named_sockets=_named_sockets)
-        return _node
+        node = Node('Matrix Determinant', named_sockets={'Matrix': matrix})
+        return node
 
     @classmethod
     def matrix_svd(cls, matrix: Matrix=None):
@@ -4683,10 +4335,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'matrix': matrix}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Matrix SVD', named_sockets=_named_sockets)
-        return _node
+        node = Node('Matrix SVD', named_sockets={'Matrix': matrix})
+        return node
 
     @classmethod
     def menu(cls, value: str=''):
@@ -4701,25 +4351,17 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Menu', named_sockets=_named_sockets, value=value)
-        return _node
+        node = Node('Menu', named_sockets={}, value=value)
+        return node
 
     @classmethod
-    def menu_switch(cls, named_sockets=None, menu: Literal['A', 'B']=None, a: Geometry | Float | Integer | Boolean | Vector | Color | Rotation | Matrix | String | Menu | Object | Image | Collection | Material | Bundle | Closure | Font | Sound=None, b: Geometry | Float | Integer | Boolean | Vector | Color | Rotation | Matrix | String | Menu | Object | Image | Collection | Material | Bundle | Closure | Font | Sound=None, data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'SHADER', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'TEXTURE', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SCENE', 'TEXT', 'MASK', 'SOUND', 'INT_VECTOR']='GEOMETRY', **sockets):
+    def menu_switch(cls, named_sockets=None, menu: Menu=None, data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SOUND']='GEOMETRY', **sockets):
         """ > Node <&Node Menu Switch>
         
         Parameters
         ----------
-        menu : menu='A', optional
-            ('A', 'B')
-        
-        a : Geometry | Float | Integer | Boolean | Vector | Color | Rotation | Matrix | String | Menu | Object | Image | Collection | Material | Bundle | Closure | Font | Sound, optional
-            socket 'A'
-        
-        b : Geometry | Float | Integer | Boolean | Vector | Color | Rotation | Matrix | String | Menu | Object | Image | Collection | Material | Bundle | Closure | Font | Sound, optional
-            socket 'B'
+        menu : Menu, optional
+            socket 'Menu'
         
         data_type : Literal['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Rotation', 'Matrix', 'String', 'Menu', 'Object', 'Image', 'Geometry', 'Collection', 'Material', 'Bundle', 'Closure', 'Font', 'Sound']
             parameter `data_type`
@@ -4728,14 +4370,13 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'menu': menu, 'a': a, 'b': b}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _named_sockets.update({_name: _value for _name, _value in (named_sockets or {}).items() if _value is not None})
-        _node = Node('Menu Switch', named_sockets=_named_sockets, data_type=data_type, **sockets)
-        return _node
+        _named_sockets = {'Menu': menu}
+        _named_sockets.update({name: value for name, value in (named_sockets or {}).items() if value is not None})
+        node = Node('Menu Switch', named_sockets=_named_sockets, data_type=data_type, **sockets)
+        return node
 
     @classmethod
-    def merge_by_distance(cls, geometry: Geometry=None, selection: Boolean=None, mode: Literal['All', 'Connected']=None, distance: Float=None):
+    def merge_by_distance(cls, geometry: Geometry=None, selection: Boolean=None, mode: Menu=None, distance: Float=None):
         """ > Node <&Node Merge by Distance>
         
         Parameters
@@ -4746,8 +4387,8 @@ class ND:
         selection : Boolean, optional
             socket 'Selection'
         
-        mode : menu='All', optional
-            ('All', 'Connected')
+        mode : Menu, optional
+            socket 'Mode'
         
         distance : Float, optional
             socket 'Distance'
@@ -4756,13 +4397,11 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'geometry': geometry, 'selection': selection, 'mode': mode, 'distance': distance}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Merge by Distance', named_sockets=_named_sockets)
-        return _node
+        node = Node('Merge by Distance', named_sockets={'Geometry': geometry, 'Selection': selection, 'Mode': mode, 'Distance': distance})
+        return node
 
     @classmethod
-    def merge_layers(cls, grease_pencil: GreasePencil=None, selection: Boolean=None, mode_1: Literal['By Name', 'By Group ID']=None, group_id: Integer=None, mode: Literal['MERGE_BY_NAME', 'MERGE_BY_ID']='MERGE_BY_NAME'):
+    def merge_layers(cls, grease_pencil: GreasePencil=None, selection: Boolean=None, mode_1: Menu=None, group_id: Integer=None, mode: Literal['MERGE_BY_NAME', 'MERGE_BY_ID']='MERGE_BY_NAME'):
         """ > Node <&Node Merge Layers>
         
         Parameters
@@ -4773,8 +4412,8 @@ class ND:
         selection : Boolean, optional
             socket 'Selection'
         
-        mode_1 : menu='By Name', optional
-            ('By Name', 'By Group ID')
+        mode_1 : Menu, optional
+            socket 'Mode'
         
         group_id : Integer, optional
             socket 'Group ID'
@@ -4786,10 +4425,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'grease_pencil': grease_pencil, 'selection': selection, 'mode_1': mode_1, 'group_id': group_id}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Merge Layers', named_sockets=_named_sockets, mode=mode)
-        return _node
+        node = Node('Merge Layers', named_sockets={'Grease Pencil': grease_pencil, 'Selection': selection, 'Mode_1': mode_1, 'Group ID': group_id}, mode=mode)
+        return node
 
     @classmethod
     def merge_points(cls, geometry: Geometry=None, selection: Boolean=None, merge_id: Integer=None):
@@ -4810,13 +4447,11 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'geometry': geometry, 'selection': selection, 'merge_id': merge_id}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Merge Points', named_sockets=_named_sockets)
-        return _node
+        node = Node('Merge Points', named_sockets={'Geometry': geometry, 'Selection': selection, 'Merge ID': merge_id})
+        return node
 
     @classmethod
-    def mesh_bevel(cls, mesh: Mesh=None, selection: Boolean=None, affect_kind: Literal['Vertices', 'Edges']=None, start_left_offset: Float=None, start_right_offset: Float=None, end_left_offset: Float=None, end_right_offset: Float=None, offset: Float=None, miter: Boolean=None, spread: Float=None, segments: Integer=None, shape: Float=None, profile: Geometry=None):
+    def mesh_bevel(cls, mesh: Mesh=None, selection: Boolean=None, affect_kind: Menu=None, start_left_offset: Float=None, start_right_offset: Float=None, end_left_offset: Float=None, end_right_offset: Float=None, offset: Float=None, miter: Boolean=None, spread: Float=None, segments: Integer=None, shape: Float=None, profile: Geometry=None):
         """ > Node <&Node Mesh Bevel>
         
         Parameters
@@ -4827,8 +4462,8 @@ class ND:
         selection : Boolean, optional
             socket 'Selection'
         
-        affect_kind : menu='Edges', optional
-            ('Vertices', 'Edges')
+        affect_kind : Menu, optional
+            socket 'Affect Kind'
         
         start_left_offset : Float, optional
             socket 'Start Left Offset'
@@ -4864,25 +4499,20 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'mesh': mesh, 'selection': selection, 'affect_kind': affect_kind, 'start_left_offset': start_left_offset, 'start_right_offset': start_right_offset, 'end_left_offset': end_left_offset, 'end_right_offset': end_right_offset, 'offset': offset, 'miter': miter, 'spread': spread, 'segments': segments, 'shape': shape, 'profile': profile}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Mesh Bevel', named_sockets=_named_sockets)
-        return _node
+        node = Node('Mesh Bevel', named_sockets={'Mesh': mesh, 'Selection': selection, 'Affect Kind': affect_kind, 'Start Left Offset': start_left_offset, 'Start Right Offset': start_right_offset, 'End Left Offset': end_left_offset, 'End Right Offset': end_right_offset, 'Offset': offset, 'Miter': miter, 'Spread': spread, 'Segments': segments, 'Shape': shape, 'Profile': profile})
+        return node
 
     @classmethod
-    def mesh_boolean(cls, mesh_1: Mesh=None, mesh_2: list[Mesh]=None, mesh: list[Mesh]=None, self_intersection: Boolean=None, hole_tolerant: Boolean=None, operation: Literal['INTERSECT', 'UNION', 'DIFFERENCE']='DIFFERENCE', solver: Literal['EXACT', 'FLOAT', 'MANIFOLD']='FLOAT'):
+    def mesh_boolean(cls, *mesh: Mesh, mesh_1: Mesh=None, self_intersection: Boolean=None, hole_tolerant: Boolean=None, operation: Literal['INTERSECT', 'UNION', 'DIFFERENCE']='DIFFERENCE', solver: Literal['EXACT', 'FLOAT', 'MANIFOLD']='FLOAT'):
         """ > Node <&Node Mesh Boolean>
         
         Parameters
         ----------
+        mesh : Mesh, optional
+            socket 'Mesh'
+        
         mesh_1 : Mesh, optional
             socket 'Mesh 1'
-        
-        mesh_2 : list[Mesh], optional
-            Values for the multi-input socket.
-        
-        mesh : list[Mesh], optional
-            Values for the multi-input socket.
         
         self_intersection : Boolean, optional
             socket 'Self Intersection'
@@ -4900,13 +4530,11 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'mesh_1': mesh_1, 'mesh_2': mesh_2, 'mesh': mesh, 'self_intersection': self_intersection, 'hole_tolerant': hole_tolerant}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _values = {('DIFFERENCE', 'FLOAT'): ['mesh_1', 'mesh_2'], ('INTERSECT', 'FLOAT'): ['mesh'], ('UNION', 'FLOAT'): ['mesh'], ('UNION', 'EXACT'): ['mesh', 'self_intersection', 'hole_tolerant'], ('INTERSECT', 'EXACT'): ['mesh', 'self_intersection', 'hole_tolerant'], ('DIFFERENCE', 'EXACT'): ['mesh_1', 'mesh_2', 'self_intersection', 'hole_tolerant'], ('DIFFERENCE', 'MANIFOLD'): ['mesh_1', 'mesh_2'], ('INTERSECT', 'MANIFOLD'): ['mesh'], ('UNION', 'MANIFOLD'): ['mesh']}
         _configuration = ({'intersect': 'INTERSECT', 'union': 'UNION', 'difference': 'DIFFERENCE'}.get(operation.lower(), operation), {'exact': 'EXACT', 'float': 'FLOAT', 'manifold': 'MANIFOLD'}.get(solver.lower(), solver))
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _name in _values[_configuration]}
-        _node = Node('Mesh Boolean', named_sockets=_named_sockets, operation=operation, solver=solver)
-        return _node
+        _node_sockets = {('INTERSECT', 'EXACT'): {'Self Intersection': self_intersection, 'Hole Tolerant': hole_tolerant}, ('INTERSECT', 'FLOAT'): {}, ('INTERSECT', 'MANIFOLD'): {}, ('UNION', 'EXACT'): {'Self Intersection': self_intersection, 'Hole Tolerant': hole_tolerant}, ('UNION', 'FLOAT'): {}, ('UNION', 'MANIFOLD'): {}, ('DIFFERENCE', 'EXACT'): {'Mesh 1': mesh_1, 'Self Intersection': self_intersection, 'Hole Tolerant': hole_tolerant}, ('DIFFERENCE', 'FLOAT'): {'Mesh 1': mesh_1}, ('DIFFERENCE', 'MANIFOLD'): {'Mesh 1': mesh_1}}[_configuration]
+        _node_args = {('INTERSECT', 'EXACT'): [*list(mesh)], ('INTERSECT', 'FLOAT'): [*list(mesh)], ('INTERSECT', 'MANIFOLD'): [*list(mesh)], ('UNION', 'EXACT'): [*list(mesh)], ('UNION', 'FLOAT'): [*list(mesh)], ('UNION', 'MANIFOLD'): [*list(mesh)], ('DIFFERENCE', 'EXACT'): [*list(mesh)], ('DIFFERENCE', 'FLOAT'): [*list(mesh)], ('DIFFERENCE', 'MANIFOLD'): [*list(mesh)]}[_configuration]
+        node = Node('Mesh Boolean', *_node_args, named_sockets=_node_sockets, operation=operation, solver=solver)
+        return node
 
     @classmethod
     def mesh_circle(cls, vertices: Integer=None, radius: Float=None, fill_type: Literal['NONE', 'NGON', 'TRIANGLE_FAN']='NONE'):
@@ -4927,10 +4555,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'vertices': vertices, 'radius': radius}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Mesh Circle', named_sockets=_named_sockets, fill_type=fill_type)
-        return _node
+        node = Node('Mesh Circle', named_sockets={'Vertices': vertices, 'Radius': radius}, fill_type=fill_type)
+        return node
 
     @classmethod
     def mesh_island(cls):
@@ -4940,10 +4566,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Mesh Island', named_sockets=_named_sockets)
-        return _node
+        node = Node('Mesh Island', named_sockets={})
+        return node
 
     @classmethod
     def mesh_line(cls, count: Integer=None, resolution: Float=None, start_location: Vector=None, offset: Vector=None, end_location: Vector=None, mode: Literal['OFFSET', 'END_POINTS']='OFFSET', count_mode: Literal['TOTAL', 'RESOLUTION']='TOTAL'):
@@ -4976,13 +4600,11 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'count': count, 'resolution': resolution, 'start_location': start_location, 'offset': offset, 'end_location': end_location}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _values = {('OFFSET', 'TOTAL'): ['count', 'start_location', 'offset'], ('END_POINTS', 'TOTAL'): ['count', 'start_location', 'end_location'], ('END_POINTS', 'RESOLUTION'): ['resolution', 'start_location', 'end_location'], ('OFFSET', 'RESOLUTION'): ['count', 'start_location', 'offset']}
         _configuration = ({'offset': 'OFFSET', 'end_points': 'END_POINTS', 'end points': 'END_POINTS'}.get(mode.lower(), mode), {'total': 'TOTAL', 'resolution': 'RESOLUTION', 'count': 'TOTAL'}.get(count_mode.lower(), count_mode))
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _name in _values[_configuration]}
-        _node = Node('Mesh Line', named_sockets=_named_sockets, mode=mode, count_mode=count_mode)
-        return _node
+        _node_sockets = {('OFFSET', 'TOTAL'): {'Count': count, 'Start Location': start_location, 'Offset': offset}, ('OFFSET', 'RESOLUTION'): {'Count': count, 'Start Location': start_location, 'Offset': offset}, ('END_POINTS', 'TOTAL'): {'Count': count, 'Start Location': start_location, 'End Location': end_location}, ('END_POINTS', 'RESOLUTION'): {'Resolution': resolution, 'Start Location': start_location, 'End Location': end_location}}[_configuration]
+        _node_args = {('OFFSET', 'TOTAL'): [], ('OFFSET', 'RESOLUTION'): [], ('END_POINTS', 'TOTAL'): [], ('END_POINTS', 'RESOLUTION'): []}[_configuration]
+        node = Node('Mesh Line', *_node_args, named_sockets=_node_sockets, mode=mode, count_mode=count_mode)
+        return node
 
     @classmethod
     def mesh_to_curve(cls, mesh: Mesh=None, selection: Boolean=None, mode: Literal['EDGES', 'FACES']='EDGES'):
@@ -5003,10 +4625,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'mesh': mesh, 'selection': selection}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Mesh to Curve', named_sockets=_named_sockets, mode=mode)
-        return _node
+        node = Node('Mesh to Curve', named_sockets={'Mesh': mesh, 'Selection': selection}, mode=mode)
+        return node
 
     @classmethod
     def mesh_to_density_grid(cls, mesh: Mesh=None, density: Float=None, voxel_size: Float=None, gradient_width: Float=None):
@@ -5030,10 +4650,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'mesh': mesh, 'density': density, 'voxel_size': voxel_size, 'gradient_width': gradient_width}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Mesh to Density Grid', named_sockets=_named_sockets)
-        return _node
+        node = Node('Mesh to Density Grid', named_sockets={'Mesh': mesh, 'Density': density, 'Voxel Size': voxel_size, 'Gradient Width': gradient_width})
+        return node
 
     @classmethod
     def mesh_to_points(cls, mesh: Mesh=None, selection: Boolean=None, position: Vector=None, radius: Float=None, mode: Literal['VERTICES', 'EDGES', 'FACES', 'CORNERS']='VERTICES'):
@@ -5060,10 +4678,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'mesh': mesh, 'selection': selection, 'position': position, 'radius': radius}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Mesh to Points', named_sockets=_named_sockets, mode=mode)
-        return _node
+        node = Node('Mesh to Points', named_sockets={'Mesh': mesh, 'Selection': selection, 'Position': position, 'Radius': radius}, mode=mode)
+        return node
 
     @classmethod
     def mesh_to_sdf_grid(cls, mesh: Mesh=None, voxel_size: Float=None, band_width: Integer=None):
@@ -5084,13 +4700,11 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'mesh': mesh, 'voxel_size': voxel_size, 'band_width': band_width}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Mesh to SDF Grid', named_sockets=_named_sockets)
-        return _node
+        node = Node('Mesh to SDF Grid', named_sockets={'Mesh': mesh, 'Voxel Size': voxel_size, 'Band Width': band_width})
+        return node
 
     @classmethod
-    def mesh_to_volume(cls, mesh: Mesh=None, density: Float=None, resolution_mode: Literal['Amount', 'Size']=None, voxel_size: Float=None, voxel_amount: Float=None, interior_band_width: Float=None):
+    def mesh_to_volume(cls, mesh: Mesh=None, density: Float=None, resolution_mode: Menu=None, voxel_size: Float=None, voxel_amount: Float=None, interior_band_width: Float=None):
         """ > Node <&Node Mesh to Volume>
         
         Parameters
@@ -5101,8 +4715,8 @@ class ND:
         density : Float, optional
             socket 'Density'
         
-        resolution_mode : menu='Amount', optional
-            ('Amount', 'Size')
+        resolution_mode : Menu, optional
+            socket 'Resolution Mode'
         
         voxel_size : Float, optional
             socket 'Voxel Size'
@@ -5117,25 +4731,23 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'mesh': mesh, 'density': density, 'resolution_mode': resolution_mode, 'voxel_size': voxel_size, 'voxel_amount': voxel_amount, 'interior_band_width': interior_band_width}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Mesh to Volume', named_sockets=_named_sockets)
-        return _node
+        node = Node('Mesh to Volume', named_sockets={'Mesh': mesh, 'Density': density, 'Resolution Mode': resolution_mode, 'Voxel Size': voxel_size, 'Voxel Amount': voxel_amount, 'Interior Band Width': interior_band_width})
+        return node
 
     @classmethod
-    def mix(cls, factor: Float | Vector=None, a: Float | Vector | Color | Rotation=None, b: Float | Vector | Color | Rotation=None, data_type: Literal['FLOAT', 'VECTOR', 'RGBA', 'ROTATION']='FLOAT', factor_mode: Literal['UNIFORM', 'NON_UNIFORM']='UNIFORM', blend_type: Literal['MIX', 'DARKEN', 'MULTIPLY', 'BURN', 'LIGHTEN', 'SCREEN', 'DODGE', 'ADD', 'OVERLAY', 'SOFT_LIGHT', 'LINEAR_LIGHT', 'DIFFERENCE', 'EXCLUSION', 'SUBTRACT', 'DIVIDE', 'HUE', 'SATURATION', 'COLOR', 'VALUE']='MIX', clamp_factor=True, clamp_result=False):
+    def mix(cls, a: Socket=None, b: Socket=None, factor: Socket=None, data_type: Literal['FLOAT', 'VECTOR', 'RGBA', 'ROTATION']='FLOAT', factor_mode: Literal['UNIFORM', 'NON_UNIFORM']='UNIFORM', blend_type: Literal['MIX', 'DARKEN', 'MULTIPLY', 'BURN', 'LIGHTEN', 'SCREEN', 'DODGE', 'ADD', 'OVERLAY', 'SOFT_LIGHT', 'LINEAR_LIGHT', 'DIFFERENCE', 'EXCLUSION', 'SUBTRACT', 'DIVIDE', 'HUE', 'SATURATION', 'COLOR', 'VALUE']='MIX', clamp_factor: bool=True, clamp_result: bool=False):
         """ > Node <&Node Mix>
         
         Parameters
         ----------
-        factor : Float | Vector, optional
-            socket 'Factor'
-        
-        a : Float | Vector | Color | Rotation, optional
+        a : Socket, optional
             socket 'A'
         
-        b : Float | Vector | Color | Rotation, optional
+        b : Socket, optional
             socket 'B'
+        
+        factor : Socket, optional
+            socket 'Factor'
         
         data_type : Literal['Float', 'Vector', 'Color', 'Rotation']
             parameter `data_type`
@@ -5156,25 +4768,23 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'factor': factor, 'a': a, 'b': b}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Mix', named_sockets=_named_sockets, data_type=data_type, factor_mode=factor_mode, blend_type=blend_type, clamp_factor=clamp_factor, clamp_result=clamp_result)
-        return _node
+        node = Node('Mix', named_sockets={'Factor': factor, 'A': a, 'B': b}, data_type=data_type, factor_mode=factor_mode, blend_type=blend_type, clamp_factor=clamp_factor, clamp_result=clamp_result)
+        return node
 
     @classmethod
-    def mix_legacy_(cls, factor: Float=None, color1: Color=None, color2: Color=None, blend_type: Literal['MIX', 'DARKEN', 'MULTIPLY', 'BURN', 'LIGHTEN', 'SCREEN', 'DODGE', 'ADD', 'OVERLAY', 'SOFT_LIGHT', 'LINEAR_LIGHT', 'DIFFERENCE', 'EXCLUSION', 'SUBTRACT', 'DIVIDE', 'HUE', 'SATURATION', 'COLOR', 'VALUE']='MIX', use_alpha=False, use_clamp=False):
+    def mix_legacy_(cls, color1: Color=None, color2: Color=None, factor: Float=None, blend_type: Literal['MIX', 'DARKEN', 'MULTIPLY', 'BURN', 'LIGHTEN', 'SCREEN', 'DODGE', 'ADD', 'OVERLAY', 'SOFT_LIGHT', 'LINEAR_LIGHT', 'DIFFERENCE', 'EXCLUSION', 'SUBTRACT', 'DIVIDE', 'HUE', 'SATURATION', 'COLOR', 'VALUE']='MIX', use_alpha: bool=False, use_clamp: bool=False):
         """ > Node <&Node Mix (Legacy)>
         
         Parameters
         ----------
-        factor : Float, optional
-            socket 'Factor'
-        
         color1 : Color, optional
             socket 'Color1'
         
         color2 : Color, optional
             socket 'Color2'
+        
+        factor : Float, optional
+            socket 'Factor'
         
         blend_type : Literal['Mix', 'Darken', 'Multiply', 'Color Burn', 'Lighten', 'Screen', 'Color Dodge', 'Add', 'Overlay', 'Soft Light', 'Linear Light', 'Difference', 'Exclusion', 'Subtract', 'Divide', 'Hue', 'Saturation', 'Color', 'Value']
             parameter `blend_type`
@@ -5189,10 +4799,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'factor': factor, 'color1': color1, 'color2': color2}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Mix (Legacy)', named_sockets=_named_sockets, blend_type=blend_type, use_alpha=use_alpha, use_clamp=use_clamp)
-        return _node
+        node = Node('Mix (Legacy)', named_sockets={'Factor': factor, 'Color1': color1, 'Color2': color2}, blend_type=blend_type, use_alpha=use_alpha, use_clamp=use_clamp)
+        return node
 
     @classmethod
     def mouse_position(cls):
@@ -5202,10 +4810,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Mouse Position', named_sockets=_named_sockets)
-        return _node
+        node = Node('Mouse Position', named_sockets={})
+        return node
 
     @classmethod
     def multiply_matrices(cls, matrix: Matrix=None, matrix_1: Matrix=None):
@@ -5223,13 +4829,11 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'matrix': matrix, 'matrix_1': matrix_1}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Multiply Matrices', named_sockets=_named_sockets)
-        return _node
+        node = Node('Multiply Matrices', named_sockets={'Matrix': matrix, 'Matrix_1': matrix_1})
+        return node
 
     @classmethod
-    def named_attribute(cls, name: String=None, data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'QUATERNION', 'FLOAT4X4', 'STRING', 'INT8', 'INT16_2D', 'INT32_2D', 'FLOAT2', 'FLOAT4', 'BYTE_COLOR']='FLOAT'):
+    def named_attribute(cls, name: String=None, data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'QUATERNION', 'FLOAT4X4']='FLOAT'):
         """ > Node <&Node Named Attribute>
         
         Parameters
@@ -5244,10 +4848,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'name': name}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Named Attribute', named_sockets=_named_sockets, data_type=data_type)
-        return _node
+        node = Node('Named Attribute', named_sockets={'Name': name}, data_type=data_type)
+        return node
 
     @classmethod
     def named_layer_selection(cls, name: String=None):
@@ -5262,13 +4864,11 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'name': name}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Named Layer Selection', named_sockets=_named_sockets)
-        return _node
+        node = Node('Named Layer Selection', named_sockets={'Name': name})
+        return node
 
     @classmethod
-    def noise_texture(cls, vector: Vector=None, w: Float=None, scale: Float=None, detail: Float=None, roughness: Float=None, lacunarity: Float=None, offset: Float=None, gain: Float=None, distortion: Float=None, noise_dimensions: Literal['1D', '2D', '3D', '4D']='3D', noise_type: Literal['MULTIFRACTAL', 'RIDGED_MULTIFRACTAL', 'HYBRID_MULTIFRACTAL', 'FBM', 'HETERO_TERRAIN']='FBM', normalize=True):
+    def noise_texture(cls, vector: Vector=None, w: Float=None, scale: Float=None, detail: Float=None, roughness: Float=None, lacunarity: Float=None, offset: Float=None, gain: Float=None, distortion: Float=None, noise_dimensions: Literal['1D', '2D', '3D', '4D']='3D', noise_type: Literal['MULTIFRACTAL', 'RIDGED_MULTIFRACTAL', 'HYBRID_MULTIFRACTAL', 'FBM', 'HETERO_TERRAIN']='FBM', normalize: bool=True):
         """ > Node <&Node Noise Texture>
         
         Parameters
@@ -5313,10 +4913,11 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'vector': vector, 'w': w, 'scale': scale, 'detail': detail, 'roughness': roughness, 'lacunarity': lacunarity, 'offset': offset, 'gain': gain, 'distortion': distortion}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Noise Texture', named_sockets=_named_sockets, noise_dimensions=noise_dimensions, noise_type=noise_type, normalize=normalize)
-        return _node
+        _configuration = ({'1d': '1D', '2d': '2D', '3d': '3D', '4d': '4D'}.get(noise_dimensions.lower(), noise_dimensions), {'multifractal': 'MULTIFRACTAL', 'ridged_multifractal': 'RIDGED_MULTIFRACTAL', 'hybrid_multifractal': 'HYBRID_MULTIFRACTAL', 'fbm': 'FBM', 'hetero_terrain': 'HETERO_TERRAIN', 'ridged multifractal': 'RIDGED_MULTIFRACTAL', 'hybrid multifractal': 'HYBRID_MULTIFRACTAL', 'hetero terrain': 'HETERO_TERRAIN'}.get(noise_type.lower(), noise_type))
+        _node_sockets = {('1D', 'MULTIFRACTAL'): {'W': w, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Distortion': distortion}, ('1D', 'RIDGED_MULTIFRACTAL'): {'W': w, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Offset': offset, 'Gain': gain, 'Distortion': distortion}, ('1D', 'HYBRID_MULTIFRACTAL'): {'W': w, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Offset': offset, 'Gain': gain, 'Distortion': distortion}, ('1D', 'FBM'): {'W': w, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Distortion': distortion}, ('1D', 'HETERO_TERRAIN'): {'W': w, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Offset': offset, 'Distortion': distortion}, ('2D', 'MULTIFRACTAL'): {'Vector': vector, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Distortion': distortion}, ('2D', 'RIDGED_MULTIFRACTAL'): {'Vector': vector, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Offset': offset, 'Gain': gain, 'Distortion': distortion}, ('2D', 'HYBRID_MULTIFRACTAL'): {'Vector': vector, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Offset': offset, 'Gain': gain, 'Distortion': distortion}, ('2D', 'FBM'): {'Vector': vector, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Distortion': distortion}, ('2D', 'HETERO_TERRAIN'): {'Vector': vector, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Offset': offset, 'Distortion': distortion}, ('3D', 'MULTIFRACTAL'): {'Vector': vector, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Distortion': distortion}, ('3D', 'RIDGED_MULTIFRACTAL'): {'Vector': vector, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Offset': offset, 'Gain': gain, 'Distortion': distortion}, ('3D', 'HYBRID_MULTIFRACTAL'): {'Vector': vector, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Offset': offset, 'Gain': gain, 'Distortion': distortion}, ('3D', 'FBM'): {'Vector': vector, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Distortion': distortion}, ('3D', 'HETERO_TERRAIN'): {'Vector': vector, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Offset': offset, 'Distortion': distortion}, ('4D', 'MULTIFRACTAL'): {'Vector': vector, 'W': w, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Distortion': distortion}, ('4D', 'RIDGED_MULTIFRACTAL'): {'Vector': vector, 'W': w, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Offset': offset, 'Gain': gain, 'Distortion': distortion}, ('4D', 'HYBRID_MULTIFRACTAL'): {'Vector': vector, 'W': w, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Offset': offset, 'Gain': gain, 'Distortion': distortion}, ('4D', 'FBM'): {'Vector': vector, 'W': w, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Distortion': distortion}, ('4D', 'HETERO_TERRAIN'): {'Vector': vector, 'W': w, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Offset': offset, 'Distortion': distortion}}[_configuration]
+        _node_args = {('1D', 'MULTIFRACTAL'): [], ('1D', 'RIDGED_MULTIFRACTAL'): [], ('1D', 'HYBRID_MULTIFRACTAL'): [], ('1D', 'FBM'): [], ('1D', 'HETERO_TERRAIN'): [], ('2D', 'MULTIFRACTAL'): [], ('2D', 'RIDGED_MULTIFRACTAL'): [], ('2D', 'HYBRID_MULTIFRACTAL'): [], ('2D', 'FBM'): [], ('2D', 'HETERO_TERRAIN'): [], ('3D', 'MULTIFRACTAL'): [], ('3D', 'RIDGED_MULTIFRACTAL'): [], ('3D', 'HYBRID_MULTIFRACTAL'): [], ('3D', 'FBM'): [], ('3D', 'HETERO_TERRAIN'): [], ('4D', 'MULTIFRACTAL'): [], ('4D', 'RIDGED_MULTIFRACTAL'): [], ('4D', 'HYBRID_MULTIFRACTAL'): [], ('4D', 'FBM'): [], ('4D', 'HETERO_TERRAIN'): []}[_configuration]
+        node = Node('Noise Texture', *_node_args, named_sockets=_node_sockets, noise_dimensions=noise_dimensions, noise_type=noise_type, normalize=normalize)
+        return node
 
     @classmethod
     def normal(cls):
@@ -5326,10 +4927,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Normal', named_sockets=_named_sockets)
-        return _node
+        node = Node('Normal', named_sockets={})
+        return node
 
     @utils.classproperty
     def nurbs_order(cls):
@@ -5337,13 +4936,11 @@ class ND:
         
         Returns
         -------
-        Integer
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('NURBS Order', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('NURBS Order', named_sockets={})
+        return node._out
 
     @utils.classproperty
     def nurbs_weight(cls):
@@ -5351,16 +4948,14 @@ class ND:
         
         Returns
         -------
-        Float
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('NURBS Weight', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('NURBS Weight', named_sockets={})
+        return node._out
 
     @classmethod
-    def object(cls, object=None):
+    def object(cls, object: NoneType=None):
         """ > Node <&Node Object>
         
         Parameters
@@ -5372,10 +4967,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Object', named_sockets=_named_sockets, object=object)
-        return _node
+        node = Node('Object', named_sockets={}, object=object)
+        return node
 
     @classmethod
     def object_info(cls, object: Object=None, as_instance: Boolean=None, transform_space: Literal['ORIGINAL', 'RELATIVE']='ORIGINAL'):
@@ -5396,10 +4989,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'object': object, 'as_instance': as_instance}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Object Info', named_sockets=_named_sockets, transform_space=transform_space)
-        return _node
+        node = Node('Object Info', named_sockets={'Object': object, 'As Instance': as_instance}, transform_space=transform_space)
+        return node
 
     @classmethod
     def offset_corner_in_face(cls, corner_index: Integer=None, offset: Integer=None):
@@ -5417,10 +5008,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'corner_index': corner_index, 'offset': offset}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Offset Corner in Face', named_sockets=_named_sockets)
-        return _node
+        node = Node('Offset Corner in Face', named_sockets={'Corner Index': corner_index, 'Offset': offset})
+        return node
 
     @classmethod
     def offset_point_in_curve(cls, point_index: Integer=None, offset: Integer=None):
@@ -5438,13 +5027,11 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'point_index': point_index, 'offset': offset}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Offset Point in Curve', named_sockets=_named_sockets)
-        return _node
+        node = Node('Offset Point in Curve', named_sockets={'Point Index': point_index, 'Offset': offset})
+        return node
 
     @classmethod
-    def pack_uv_islands(cls, uv: Vector=None, selection: Boolean=None, margin: Float=None, rotate: Boolean=None, method: Literal['Bounding Box', 'Convex Hull', 'Exact Shape']=None, bottom_left: Vector=None, top_right: Vector=None):
+    def pack_uv_islands(cls, uv: Vector=None, selection: Boolean=None, margin: Float=None, rotate: Boolean=None, method: Menu=None, bottom_left: Vector=None, top_right: Vector=None):
         """ > Node <&Node Pack UV Islands>
         
         Parameters
@@ -5461,8 +5048,8 @@ class ND:
         rotate : Boolean, optional
             socket 'Rotate'
         
-        method : menu='Bounding Box', optional
-            ('Bounding Box', 'Convex Hull', 'Exact Shape')
+        method : Menu, optional
+            socket 'Method'
         
         bottom_left : Vector, optional
             socket 'Bottom Left'
@@ -5474,10 +5061,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'uv': uv, 'selection': selection, 'margin': margin, 'rotate': rotate, 'method': method, 'bottom_left': bottom_left, 'top_right': top_right}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Pack UV Islands', named_sockets=_named_sockets)
-        return _node
+        node = Node('Pack UV Islands', named_sockets={'UV': uv, 'Selection': selection, 'Margin': margin, 'Rotate': rotate, 'Method': method, 'Bottom Left': bottom_left, 'Top Right': top_right})
+        return node
 
     @classmethod
     def points(cls, count: Integer=None, position: Vector=None, radius: Float=None):
@@ -5498,10 +5083,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'count': count, 'position': position, 'radius': radius}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Points', named_sockets=_named_sockets)
-        return _node
+        node = Node('Points', named_sockets={'Count': count, 'Position': position, 'Radius': radius})
+        return node
 
     @classmethod
     def points_of_curve(cls, curve_index: Integer=None, weights: Float=None, sort_index: Integer=None):
@@ -5522,10 +5105,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'curve_index': curve_index, 'weights': weights, 'sort_index': sort_index}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Points of Curve', named_sockets=_named_sockets)
-        return _node
+        node = Node('Points of Curve', named_sockets={'Curve Index': curve_index, 'Weights': weights, 'Sort Index': sort_index})
+        return node
 
     @classmethod
     def points_to_curves(cls, points: Cloud=None, curve_group_id: Integer=None, weight: Float=None):
@@ -5546,10 +5127,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'points': points, 'curve_group_id': curve_group_id, 'weight': weight}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Points to Curves', named_sockets=_named_sockets)
-        return _node
+        node = Node('Points to Curves', named_sockets={'Points': points, 'Curve Group ID': curve_group_id, 'Weight': weight})
+        return node
 
     @classmethod
     def points_to_sdf_grid(cls, points: Cloud=None, radius: Float=None, voxel_size: Float=None):
@@ -5570,10 +5149,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'points': points, 'radius': radius, 'voxel_size': voxel_size}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Points to SDF Grid', named_sockets=_named_sockets)
-        return _node
+        node = Node('Points to SDF Grid', named_sockets={'Points': points, 'Radius': radius, 'Voxel Size': voxel_size})
+        return node
 
     @classmethod
     def points_to_vertices(cls, points: Cloud=None, selection: Boolean=None):
@@ -5591,13 +5168,11 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'points': points, 'selection': selection}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Points to Vertices', named_sockets=_named_sockets)
-        return _node
+        node = Node('Points to Vertices', named_sockets={'Points': points, 'Selection': selection})
+        return node
 
     @classmethod
-    def points_to_volume(cls, points: Cloud=None, density: Float=None, resolution_mode: Literal['Amount', 'Size']=None, voxel_size: Float=None, voxel_amount: Float=None, radius: Float=None):
+    def points_to_volume(cls, points: Cloud=None, density: Float=None, resolution_mode: Menu=None, voxel_size: Float=None, voxel_amount: Float=None, radius: Float=None):
         """ > Node <&Node Points to Volume>
         
         Parameters
@@ -5608,8 +5183,8 @@ class ND:
         density : Float, optional
             socket 'Density'
         
-        resolution_mode : menu='Amount', optional
-            ('Amount', 'Size')
+        resolution_mode : Menu, optional
+            socket 'Resolution Mode'
         
         voxel_size : Float, optional
             socket 'Voxel Size'
@@ -5624,10 +5199,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'points': points, 'density': density, 'resolution_mode': resolution_mode, 'voxel_size': voxel_size, 'voxel_amount': voxel_amount, 'radius': radius}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Points to Volume', named_sockets=_named_sockets)
-        return _node
+        node = Node('Points to Volume', named_sockets={'Points': points, 'Density': density, 'Resolution Mode': resolution_mode, 'Voxel Size': voxel_size, 'Voxel Amount': voxel_amount, 'Radius': radius})
+        return node
 
     @utils.classproperty
     def position(cls):
@@ -5635,13 +5208,11 @@ class ND:
         
         Returns
         -------
-        Vector
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Position', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('Position', named_sockets={})
+        return node._out
 
     @classmethod
     def project_point(cls, vector: Vector=None, transform: Matrix=None):
@@ -5659,24 +5230,22 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'vector': vector, 'transform': transform}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Project Point', named_sockets=_named_sockets)
-        return _node
+        node = Node('Project Point', named_sockets={'Vector': vector, 'Transform': transform})
+        return node
 
     @classmethod
-    def prune_grid(cls, grid: Float | Integer | Boolean | Vector=None, mode: Literal['Inactive', 'Threshold', 'SDF']=None, threshold: Float | Integer | Vector=None, data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'SHADER', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'TEXTURE', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SCENE', 'TEXT', 'MASK', 'SOUND', 'INT_VECTOR']='FLOAT'):
+    def prune_grid(cls, grid: Socket=None, mode: Menu=None, threshold: Socket=None, data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR']='FLOAT'):
         """ > Node <&Node Prune Grid>
         
         Parameters
         ----------
-        grid : Float | Integer | Boolean | Vector, optional
+        grid : Socket, optional
             socket 'Grid'
         
-        mode : menu='Threshold', optional
-            ('Inactive', 'Threshold', 'SDF')
+        mode : Menu, optional
+            socket 'Mode'
         
-        threshold : Float | Integer | Vector, optional
+        threshold : Socket, optional
             socket 'Threshold'
         
         data_type : Literal['Float', 'Integer', 'Boolean', 'Vector']
@@ -5686,10 +5255,11 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'grid': grid, 'mode': mode, 'threshold': threshold}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Prune Grid', named_sockets=_named_sockets, data_type=data_type)
-        return _node
+        _configuration = ({'float': 'FLOAT', 'int': 'INT', 'boolean': 'BOOLEAN', 'vector': 'VECTOR', 'rgba': 'RGBA', 'rotation': 'ROTATION', 'matrix': 'MATRIX', 'string': 'STRING', 'menu': 'MENU', 'shader': 'SHADER', 'object': 'OBJECT', 'image': 'IMAGE', 'geometry': 'GEOMETRY', 'collection': 'COLLECTION', 'texture': 'TEXTURE', 'material': 'MATERIAL', 'bundle': 'BUNDLE', 'closure': 'CLOSURE', 'font': 'FONT', 'scene': 'SCENE', 'text': 'TEXT', 'mask': 'MASK', 'sound': 'SOUND', 'int_vector': 'INT_VECTOR', 'integer': 'INT', 'color': 'RGBA', 'integer vector': 'INT_VECTOR'}.get(data_type.lower(), data_type),)
+        _node_sockets = {('FLOAT',): {'Grid': grid, 'Mode': mode, 'Threshold': threshold}, ('INT',): {'Grid': grid, 'Mode': mode, 'Threshold': threshold}, ('BOOLEAN',): {'Grid': grid, 'Mode': mode}, ('VECTOR',): {'Grid': grid, 'Mode': mode, 'Threshold': threshold}}[_configuration]
+        _node_args = {('FLOAT',): [], ('INT',): [], ('BOOLEAN',): [], ('VECTOR',): []}[_configuration]
+        node = Node('Prune Grid', *_node_args, named_sockets=_node_sockets, data_type=data_type)
+        return node
 
     @classmethod
     def quadratic_bezier(cls, resolution: Integer=None, start: Vector=None, middle: Vector=None, end: Vector=None):
@@ -5713,10 +5283,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'resolution': resolution, 'start': start, 'middle': middle, 'end': end}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Quadratic Bézier', named_sockets=_named_sockets)
-        return _node
+        node = Node('Quadratic Bézier', named_sockets={'Resolution': resolution, 'Start': start, 'Middle': middle, 'End': end})
+        return node
 
     @classmethod
     def quadrilateral(cls, width: Float=None, height: Float=None, bottom_width: Float=None, top_width: Float=None, offset: Float=None, bottom_height: Float=None, top_height: Float=None, point_1: Vector=None, point_2: Vector=None, point_3: Vector=None, point_4: Vector=None, mode: Literal['RECTANGLE', 'PARALLELOGRAM', 'TRAPEZOID', 'KITE', 'POINTS']='RECTANGLE'):
@@ -5764,10 +5332,11 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'width': width, 'height': height, 'bottom_width': bottom_width, 'top_width': top_width, 'offset': offset, 'bottom_height': bottom_height, 'top_height': top_height, 'point_1': point_1, 'point_2': point_2, 'point_3': point_3, 'point_4': point_4}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Quadrilateral', named_sockets=_named_sockets, mode=mode)
-        return _node
+        _configuration = ({'rectangle': 'RECTANGLE', 'parallelogram': 'PARALLELOGRAM', 'trapezoid': 'TRAPEZOID', 'kite': 'KITE', 'points': 'POINTS'}.get(mode.lower(), mode),)
+        _node_sockets = {('RECTANGLE',): {'Width': width, 'Height': height}, ('PARALLELOGRAM',): {'Width': width, 'Height': height, 'Offset': offset}, ('TRAPEZOID',): {'Height': height, 'Bottom Width': bottom_width, 'Top Width': top_width, 'Offset': offset}, ('KITE',): {'Width': width, 'Bottom Height': bottom_height, 'Top Height': top_height}, ('POINTS',): {'Point 1': point_1, 'Point 2': point_2, 'Point 3': point_3, 'Point 4': point_4}}[_configuration]
+        _node_args = {('RECTANGLE',): [], ('PARALLELOGRAM',): [], ('TRAPEZOID',): [], ('KITE',): [], ('POINTS',): []}[_configuration]
+        node = Node('Quadrilateral', *_node_args, named_sockets=_node_sockets, mode=mode)
+        return node
 
     @classmethod
     def quaternion_to_rotation(cls, w: Float=None, x: Float=None, y: Float=None, z: Float=None):
@@ -5791,13 +5360,11 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'w': w, 'x': x, 'y': y, 'z': z}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Quaternion to Rotation', named_sockets=_named_sockets)
-        return _node
+        node = Node('Quaternion to Rotation', named_sockets={'W': w, 'X': x, 'Y': y, 'Z': z})
+        return node
 
     @classmethod
-    def radial_tiling(cls, vector: Vector=None, sides: Float=None, roundness: Float=None, normalize=False):
+    def radial_tiling(cls, vector: Vector=None, sides: Float=None, roundness: Float=None, normalize: bool=False):
         """ > Node <&Node Radial Tiling>
         
         Parameters
@@ -5818,10 +5385,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'vector': vector, 'sides': sides, 'roundness': roundness}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Radial Tiling', named_sockets=_named_sockets, normalize=normalize)
-        return _node
+        node = Node('Radial Tiling', named_sockets={'Vector': vector, 'Sides': sides, 'Roundness': roundness}, normalize=normalize)
+        return node
 
     @utils.classproperty
     def radius(cls):
@@ -5829,27 +5394,25 @@ class ND:
         
         Returns
         -------
-        Float
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Radius', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('Radius', named_sockets={})
+        return node._out
 
     @classmethod
-    def random_value(cls, min: Float | Integer | Vector=None, probability: Float=None, max: Float | Integer | Vector=None, id: Integer=None, seed: Integer=None, data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'QUATERNION', 'FLOAT4X4', 'STRING', 'INT8', 'INT16_2D', 'INT32_2D', 'FLOAT2', 'FLOAT4', 'BYTE_COLOR']='FLOAT'):
+    def random_value(cls, min: Socket=None, probability: Float=None, max: Socket=None, id: Integer=None, seed: Integer=None, data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'FLOAT_VECTOR']='FLOAT'):
         """ > Node <&Node Random Value>
         
         Parameters
         ----------
-        min : Float | Integer | Vector, optional
+        min : Socket, optional
             socket 'Min'
         
         probability : Float, optional
             socket 'Probability'
         
-        max : Float | Integer | Vector, optional
+        max : Socket, optional
             socket 'Max'
         
         id : Integer, optional
@@ -5865,13 +5428,14 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'min': min, 'probability': probability, 'max': max, 'id': id, 'seed': seed}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Random Value', named_sockets=_named_sockets, data_type=data_type)
-        return _node
+        _configuration = ({'float': 'FLOAT', 'int': 'INT', 'boolean': 'BOOLEAN', 'float_vector': 'FLOAT_VECTOR', 'float_color': 'FLOAT_COLOR', 'quaternion': 'QUATERNION', 'float4x4': 'FLOAT4X4', 'string': 'STRING', 'int8': 'INT8', 'int16_2d': 'INT16_2D', 'int32_2d': 'INT32_2D', 'float2': 'FLOAT2', 'float4': 'FLOAT4', 'byte_color': 'BYTE_COLOR', 'integer': 'INT', 'vector': 'FLOAT_VECTOR', 'color': 'FLOAT_COLOR', '4x4 matrix': 'FLOAT4X4', '8-bit integer': 'INT8', '2d 16-bit integer vector': 'INT16_2D', '2d integer vector': 'INT32_2D', '2d vector': 'FLOAT2', '4d vector': 'FLOAT4', 'byte color': 'BYTE_COLOR'}.get(data_type.lower(), data_type),)
+        _node_sockets = {('FLOAT',): {'Min': min, 'Max': max, 'ID': id, 'Seed': seed}, ('INT',): {'Min': min, 'Max': max, 'ID': id, 'Seed': seed}, ('BOOLEAN',): {'Probability': probability, 'ID': id, 'Seed': seed}, ('FLOAT_VECTOR',): {'Min': min, 'Max': max, 'ID': id, 'Seed': seed}}[_configuration]
+        _node_args = {('FLOAT',): [], ('INT',): [], ('BOOLEAN',): [], ('FLOAT_VECTOR',): []}[_configuration]
+        node = Node('Random Value', *_node_args, named_sockets=_node_sockets, data_type=data_type)
+        return node
 
     @classmethod
-    def rasterize_points(cls, named_sockets=None, points: Cloud=None, grid_transform_mode: Literal['Voxel Size', 'Matrix']=None, voxel_size: Float=None, matrix: Matrix=None, kernel_type: Literal['Constant', 'Linear', 'Quadratic B-Spline', 'Cubic B-Spline']=None, position: Vector=None, **sockets):
+    def rasterize_points(cls, named_sockets=None, points: Cloud=None, grid_transform_mode: Menu=None, voxel_size: Float=None, matrix: Matrix=None, kernel_type: Menu=None, position: Vector=None, **sockets):
         """ > Node <&Node Rasterize Points>
         
         Parameters
@@ -5879,8 +5443,8 @@ class ND:
         points : Cloud, optional
             socket 'Points'
         
-        grid_transform_mode : menu='Voxel Size', optional
-            ('Voxel Size', 'Matrix')
+        grid_transform_mode : Menu, optional
+            socket 'Grid Transform Mode'
         
         voxel_size : Float, optional
             socket 'Voxel Size'
@@ -5888,8 +5452,8 @@ class ND:
         matrix : Matrix, optional
             socket 'Matrix'
         
-        kernel_type : menu='Linear', optional
-            ('Constant', 'Linear', 'Quadratic B-Spline', 'Cubic B-Spline')
+        kernel_type : Menu, optional
+            socket 'Kernel Type'
         
         position : Vector, optional
             socket 'Position'
@@ -5898,14 +5462,13 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'points': points, 'grid_transform_mode': grid_transform_mode, 'voxel_size': voxel_size, 'matrix': matrix, 'kernel_type': kernel_type, 'position': position}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _named_sockets.update({_name: _value for _name, _value in (named_sockets or {}).items() if _value is not None})
-        _node = Node('Rasterize Points', named_sockets=_named_sockets, **sockets)
-        return _node
+        _named_sockets = {'Points': points, 'Grid Transform Mode': grid_transform_mode, 'Voxel Size': voxel_size, 'Matrix': matrix, 'Kernel Type': kernel_type, 'Position': position}
+        _named_sockets.update({name: value for name, value in (named_sockets or {}).items() if value is not None})
+        node = Node('Rasterize Points', named_sockets=_named_sockets, **sockets)
+        return node
 
     @classmethod
-    def raycast(cls, target_geometry: Geometry=None, attribute: Float | Integer | Boolean | Vector | Color | Rotation | Matrix=None, interpolation: Literal['Interpolated', 'Nearest']=None, source_position: Vector=None, ray_direction: Vector=None, ray_length: Float=None, data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'QUATERNION', 'FLOAT4X4', 'STRING', 'INT8', 'INT16_2D', 'INT32_2D', 'FLOAT2', 'FLOAT4', 'BYTE_COLOR']='FLOAT'):
+    def raycast(cls, target_geometry: Geometry=None, attribute: Socket=None, interpolation: Menu=None, source_position: Vector=None, ray_direction: Vector=None, ray_length: Float=None, data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'QUATERNION', 'FLOAT4X4']='FLOAT'):
         """ > Node <&Node Raycast>
         
         Parameters
@@ -5913,11 +5476,11 @@ class ND:
         target_geometry : Geometry, optional
             socket 'Target Geometry'
         
-        attribute : Float | Integer | Boolean | Vector | Color | Rotation | Matrix, optional
+        attribute : Socket, optional
             socket 'Attribute'
         
-        interpolation : menu='Interpolated', optional
-            ('Interpolated', 'Nearest')
+        interpolation : Menu, optional
+            socket 'Interpolation'
         
         source_position : Vector, optional
             socket 'Source Position'
@@ -5935,13 +5498,11 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'target_geometry': target_geometry, 'attribute': attribute, 'interpolation': interpolation, 'source_position': source_position, 'ray_direction': ray_direction, 'ray_length': ray_length}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Raycast', named_sockets=_named_sockets, data_type=data_type)
-        return _node
+        node = Node('Raycast', named_sockets={'Target Geometry': target_geometry, 'Attribute': attribute, 'Interpolation': interpolation, 'Source Position': source_position, 'Ray Direction': ray_direction, 'Ray Length': ray_length}, data_type=data_type)
+        return node
 
     @classmethod
-    def realize_instances(cls, geometry: Geometry=None, selection: Boolean=None, realize_all: Boolean=None, depth: Integer=None, preserve_normals: Boolean=None, realize_to_point_domain=False):
+    def realize_instances(cls, geometry: Geometry=None, selection: Boolean=None, realize_all: Boolean=None, depth: Integer=None, preserve_normals: Boolean=None, realize_to_point_domain: bool=False):
         """ > Node <&Node Realize Instances>
         
         Parameters
@@ -5968,13 +5529,11 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'geometry': geometry, 'selection': selection, 'realize_all': realize_all, 'depth': depth, 'preserve_normals': preserve_normals}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Realize Instances', named_sockets=_named_sockets, realize_to_point_domain=realize_to_point_domain)
-        return _node
+        node = Node('Realize Instances', named_sockets={'Geometry': geometry, 'Selection': selection, 'Realize All': realize_all, 'Depth': depth, 'Preserve Normals': preserve_normals}, realize_to_point_domain=realize_to_point_domain)
+        return node
 
     @classmethod
-    def remove_named_attribute(cls, geometry: Geometry=None, pattern_mode: Literal['Exact', 'Wildcard']=None, name: String=None):
+    def remove_named_attribute(cls, geometry: Geometry=None, pattern_mode: Menu=None, name: String=None):
         """ > Node <&Node Remove Named Attribute>
         
         Parameters
@@ -5982,8 +5541,8 @@ class ND:
         geometry : Geometry, optional
             socket 'Geometry'
         
-        pattern_mode : menu='Exact', optional
-            ('Exact', 'Wildcard')
+        pattern_mode : Menu, optional
+            socket 'Pattern Mode'
         
         name : String, optional
             socket 'Name'
@@ -5992,13 +5551,11 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'geometry': geometry, 'pattern_mode': pattern_mode, 'name': name}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Remove Named Attribute', named_sockets=_named_sockets)
-        return _node
+        node = Node('Remove Named Attribute', named_sockets={'Geometry': geometry, 'Pattern Mode': pattern_mode, 'Name': name})
+        return node
 
     @classmethod
-    def rename_attribute(cls, geometry: Geometry=None, mode: Literal['Single', 'Prefix']=None, old: String=None, new: String=None, overwrite: Boolean=None):
+    def rename_attribute(cls, geometry: Geometry=None, mode: Menu=None, old: String=None, new: String=None, overwrite: Boolean=None):
         """ > Node <&Node Rename Attribute>
         
         Parameters
@@ -6006,8 +5563,8 @@ class ND:
         geometry : Geometry, optional
             socket 'Geometry'
         
-        mode : menu='Single', optional
-            ('Single', 'Prefix')
+        mode : Menu, optional
+            socket 'Mode'
         
         old : String, optional
             socket 'Old'
@@ -6022,10 +5579,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'geometry': geometry, 'mode': mode, 'old': old, 'new': new, 'overwrite': overwrite}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Rename Attribute', named_sockets=_named_sockets)
-        return _node
+        node = Node('Rename Attribute', named_sockets={'Geometry': geometry, 'Mode': mode, 'Old': old, 'New': new, 'Overwrite': overwrite})
+        return node
 
     @classmethod
     def repeat_input(cls, named_sockets=None, iterations: Integer=None, **sockets):
@@ -6040,11 +5595,10 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'iterations': iterations}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _named_sockets.update({_name: _value for _name, _value in (named_sockets or {}).items() if _value is not None})
-        _node = Node('Repeat Input', named_sockets=_named_sockets, **sockets)
-        return _node
+        _named_sockets = {'Iterations': iterations}
+        _named_sockets.update({name: value for name, value in (named_sockets or {}).items() if value is not None})
+        node = Node('Repeat Input', named_sockets=_named_sockets, **sockets)
+        return node
 
     @classmethod
     def repeat_output(cls, named_sockets=None, geometry: Geometry=None, **sockets):
@@ -6059,11 +5613,10 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'geometry': geometry}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _named_sockets.update({_name: _value for _name, _value in (named_sockets or {}).items() if _value is not None})
-        _node = Node('Repeat Output', named_sockets=_named_sockets, **sockets)
-        return _node
+        _named_sockets = {'Geometry': geometry}
+        _named_sockets.update({name: value for name, value in (named_sockets or {}).items() if value is not None})
+        node = Node('Repeat Output', named_sockets=_named_sockets, **sockets)
+        return node
 
     @classmethod
     def replace_material(cls, geometry: Geometry=None, old: Material=None, new: Material=None):
@@ -6084,10 +5637,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'geometry': geometry, 'old': old, 'new': new}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Replace Material', named_sockets=_named_sockets)
-        return _node
+        node = Node('Replace Material', named_sockets={'Geometry': geometry, 'Old': old, 'New': new})
+        return node
 
     @classmethod
     def replace_string(cls, string: String=None, find: String=None, replace: String=None):
@@ -6108,13 +5659,11 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'string': string, 'find': find, 'replace': replace}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Replace String', named_sockets=_named_sockets)
-        return _node
+        node = Node('Replace String', named_sockets={'String': string, 'Find': find, 'Replace': replace})
+        return node
 
     @classmethod
-    def reroute(cls, input: Color=None, socket_idname='NodeSocketColor'):
+    def reroute(cls, input: Color=None, socket_idname: str='NodeSocketColor'):
         """ > Node <&Node Reroute>
         
         Parameters
@@ -6129,13 +5678,11 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'input': input}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Reroute', named_sockets=_named_sockets, socket_idname=socket_idname)
-        return _node
+        node = Node('Reroute', named_sockets={'Input': input}, socket_idname=socket_idname)
+        return node
 
     @classmethod
-    def resample_curve(cls, curve: Curve=None, selection: Boolean=None, mode: Literal['Evaluated', 'Count', 'Length']=None, count: Integer=None, length: Float=None, keep_last_segment=True):
+    def resample_curve(cls, curve: Curve=None, selection: Boolean=None, mode: Menu=None, count: Integer=None, length: Float=None, keep_last_segment: bool=True):
         """ > Node <&Node Resample Curve>
         
         Parameters
@@ -6146,8 +5693,8 @@ class ND:
         selection : Boolean, optional
             socket 'Selection'
         
-        mode : menu='Count', optional
-            ('Evaluated', 'Count', 'Length')
+        mode : Menu, optional
+            socket 'Mode'
         
         count : Integer, optional
             socket 'Count'
@@ -6162,10 +5709,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'curve': curve, 'selection': selection, 'mode': mode, 'count': count, 'length': length}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Resample Curve', named_sockets=_named_sockets, keep_last_segment=keep_last_segment)
-        return _node
+        node = Node('Resample Curve', named_sockets={'Curve': curve, 'Selection': selection, 'Mode': mode, 'Count': count, 'Length': length}, keep_last_segment=keep_last_segment)
+        return node
 
     @classmethod
     def reverse_curve(cls, curve: Curve=None, selection: Boolean=None):
@@ -6183,10 +5728,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'curve': curve, 'selection': selection}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Reverse Curve', named_sockets=_named_sockets)
-        return _node
+        node = Node('Reverse Curve', named_sockets={'Curve': curve, 'Selection': selection})
+        return node
 
     @classmethod
     def reverse_string(cls, string: String=None):
@@ -6201,31 +5744,27 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'string': string}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Reverse String', named_sockets=_named_sockets)
-        return _node
+        node = Node('Reverse String', named_sockets={'String': string})
+        return node
 
     @classmethod
-    def rgb_curves(cls, factor: Float=None, color: Color=None):
+    def rgb_curves(cls, color: Color=None, factor: Float=None):
         """ > Node <&Node RGB Curves>
         
         Parameters
         ----------
-        factor : Float, optional
-            socket 'Factor'
-        
         color : Color, optional
             socket 'Color'
+        
+        factor : Float, optional
+            socket 'Factor'
         
         Returns
         -------
         Node
         """
-        _named_sockets = {'factor': factor, 'color': color}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('RGB Curves', named_sockets=_named_sockets)
-        return _node
+        node = Node('RGB Curves', named_sockets={'Factor': factor, 'Color': color})
+        return node
 
     @classmethod
     def rotate_instances(cls, instances: Instances=None, selection: Boolean=None, rotation: Rotation=None, pivot_point: Vector=None, local_space: Boolean=None):
@@ -6252,10 +5791,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'instances': instances, 'selection': selection, 'rotation': rotation, 'pivot_point': pivot_point, 'local_space': local_space}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Rotate Instances', named_sockets=_named_sockets)
-        return _node
+        node = Node('Rotate Instances', named_sockets={'Instances': instances, 'Selection': selection, 'Rotation': rotation, 'Pivot Point': pivot_point, 'Local Space': local_space})
+        return node
 
     @classmethod
     def rotate_rotation(cls, rotation: Rotation=None, rotate_by: Rotation=None, rotation_space: Literal['GLOBAL', 'LOCAL']='GLOBAL'):
@@ -6276,10 +5813,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'rotation': rotation, 'rotate_by': rotate_by}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Rotate Rotation', named_sockets=_named_sockets, rotation_space=rotation_space)
-        return _node
+        node = Node('Rotate Rotation', named_sockets={'Rotation': rotation, 'Rotate By': rotate_by}, rotation_space=rotation_space)
+        return node
 
     @classmethod
     def rotate_vector(cls, vector: Vector=None, rotation: Rotation=None):
@@ -6297,10 +5832,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'vector': vector, 'rotation': rotation}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Rotate Vector', named_sockets=_named_sockets)
-        return _node
+        node = Node('Rotate Vector', named_sockets={'Vector': vector, 'Rotation': rotation})
+        return node
 
     @utils.classproperty
     def rotation(cls):
@@ -6308,13 +5841,11 @@ class ND:
         
         Returns
         -------
-        Rotation
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Rotation', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('Rotation', named_sockets={})
+        return node._out
 
     @classmethod
     def rotation_to_axis_angle(cls, rotation: Rotation=None):
@@ -6329,10 +5860,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'rotation': rotation}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Rotation to Axis Angle', named_sockets=_named_sockets)
-        return _node
+        node = Node('Rotation to Axis Angle', named_sockets={'Rotation': rotation})
+        return node
 
     @classmethod
     def rotation_to_euler(cls, rotation: Rotation=None):
@@ -6347,10 +5876,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'rotation': rotation}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Rotation to Euler', named_sockets=_named_sockets)
-        return _node
+        node = Node('Rotation to Euler', named_sockets={'Rotation': rotation})
+        return node
 
     @classmethod
     def rotation_to_quaternion(cls, rotation: Rotation=None):
@@ -6365,13 +5892,11 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'rotation': rotation}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Rotation to Quaternion', named_sockets=_named_sockets)
-        return _node
+        node = Node('Rotation to Quaternion', named_sockets={'Rotation': rotation})
+        return node
 
     @classmethod
-    def sample_curve(cls, curves: Curve=None, value: Float | Integer | Boolean | Vector | Color | Rotation | Matrix=None, factor: Float=None, length: Float=None, curve_index: Integer=None, mode: Literal['FACTOR', 'LENGTH']='FACTOR', use_all_curves=False, data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'QUATERNION', 'FLOAT4X4', 'STRING', 'INT8', 'INT16_2D', 'INT32_2D', 'FLOAT2', 'FLOAT4', 'BYTE_COLOR']='FLOAT'):
+    def sample_curve(cls, curves: Curve=None, value: Socket=None, length: Float=None, curve_index: Integer=None, factor: Float=None, mode: Literal['FACTOR', 'LENGTH']='FACTOR', use_all_curves: bool=False, data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'QUATERNION', 'FLOAT4X4']='FLOAT'):
         """ > Node <&Node Sample Curve>
         
         Parameters
@@ -6379,17 +5904,17 @@ class ND:
         curves : Curve, optional
             socket 'Curves'
         
-        value : Float | Integer | Boolean | Vector | Color | Rotation | Matrix, optional
+        value : Socket, optional
             socket 'Value'
-        
-        factor : Float, optional
-            socket 'Factor'
         
         length : Float, optional
             socket 'Length'
         
         curve_index : Integer, optional
             socket 'Curve Index'
+        
+        factor : Float, optional
+            socket 'Factor'
         
         mode : Literal['Factor', 'Length']
             parameter `mode`
@@ -6404,25 +5929,26 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'curves': curves, 'value': value, 'factor': factor, 'length': length, 'curve_index': curve_index}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Sample Curve', named_sockets=_named_sockets, mode=mode, use_all_curves=use_all_curves, data_type=data_type)
-        return _node
+        _configuration = ({'factor': 'FACTOR', 'length': 'LENGTH'}.get(mode.lower(), mode), {'float': 'FLOAT', 'int': 'INT', 'boolean': 'BOOLEAN', 'float_vector': 'FLOAT_VECTOR', 'float_color': 'FLOAT_COLOR', 'quaternion': 'QUATERNION', 'float4x4': 'FLOAT4X4', 'string': 'STRING', 'int8': 'INT8', 'int16_2d': 'INT16_2D', 'int32_2d': 'INT32_2D', 'float2': 'FLOAT2', 'float4': 'FLOAT4', 'byte_color': 'BYTE_COLOR', 'integer': 'INT', 'vector': 'FLOAT_VECTOR', 'color': 'FLOAT_COLOR', '4x4 matrix': 'FLOAT4X4', '8-bit integer': 'INT8', '2d 16-bit integer vector': 'INT16_2D', '2d integer vector': 'INT32_2D', '2d vector': 'FLOAT2', '4d vector': 'FLOAT4', 'byte color': 'BYTE_COLOR'}.get(data_type.lower(), data_type), use_all_curves)
+        _node_sockets = {('FACTOR', 'FLOAT', False): {'Curves': curves, 'Value': value, 'Factor': factor, 'Curve Index': curve_index}, ('FACTOR', 'FLOAT', True): {'Curves': curves, 'Value': value, 'Factor': factor}, ('FACTOR', 'INT', False): {'Curves': curves, 'Value': value, 'Factor': factor, 'Curve Index': curve_index}, ('FACTOR', 'INT', True): {'Curves': curves, 'Value': value, 'Factor': factor}, ('FACTOR', 'BOOLEAN', False): {'Curves': curves, 'Value': value, 'Factor': factor, 'Curve Index': curve_index}, ('FACTOR', 'BOOLEAN', True): {'Curves': curves, 'Value': value, 'Factor': factor}, ('FACTOR', 'FLOAT_VECTOR', False): {'Curves': curves, 'Value': value, 'Factor': factor, 'Curve Index': curve_index}, ('FACTOR', 'FLOAT_VECTOR', True): {'Curves': curves, 'Value': value, 'Factor': factor}, ('FACTOR', 'FLOAT_COLOR', False): {'Curves': curves, 'Value': value, 'Factor': factor, 'Curve Index': curve_index}, ('FACTOR', 'FLOAT_COLOR', True): {'Curves': curves, 'Value': value, 'Factor': factor}, ('FACTOR', 'QUATERNION', False): {'Curves': curves, 'Value': value, 'Factor': factor, 'Curve Index': curve_index}, ('FACTOR', 'QUATERNION', True): {'Curves': curves, 'Value': value, 'Factor': factor}, ('FACTOR', 'FLOAT4X4', False): {'Curves': curves, 'Value': value, 'Factor': factor, 'Curve Index': curve_index}, ('FACTOR', 'FLOAT4X4', True): {'Curves': curves, 'Value': value, 'Factor': factor}, ('LENGTH', 'FLOAT', False): {'Curves': curves, 'Value': value, 'Length': length, 'Curve Index': curve_index}, ('LENGTH', 'FLOAT', True): {'Curves': curves, 'Value': value, 'Length': length}, ('LENGTH', 'INT', False): {'Curves': curves, 'Value': value, 'Length': length, 'Curve Index': curve_index}, ('LENGTH', 'INT', True): {'Curves': curves, 'Value': value, 'Length': length}, ('LENGTH', 'BOOLEAN', False): {'Curves': curves, 'Value': value, 'Length': length, 'Curve Index': curve_index}, ('LENGTH', 'BOOLEAN', True): {'Curves': curves, 'Value': value, 'Length': length}, ('LENGTH', 'FLOAT_VECTOR', False): {'Curves': curves, 'Value': value, 'Length': length, 'Curve Index': curve_index}, ('LENGTH', 'FLOAT_VECTOR', True): {'Curves': curves, 'Value': value, 'Length': length}, ('LENGTH', 'FLOAT_COLOR', False): {'Curves': curves, 'Value': value, 'Length': length, 'Curve Index': curve_index}, ('LENGTH', 'FLOAT_COLOR', True): {'Curves': curves, 'Value': value, 'Length': length}, ('LENGTH', 'QUATERNION', False): {'Curves': curves, 'Value': value, 'Length': length, 'Curve Index': curve_index}, ('LENGTH', 'QUATERNION', True): {'Curves': curves, 'Value': value, 'Length': length}, ('LENGTH', 'FLOAT4X4', False): {'Curves': curves, 'Value': value, 'Length': length, 'Curve Index': curve_index}, ('LENGTH', 'FLOAT4X4', True): {'Curves': curves, 'Value': value, 'Length': length}}[_configuration]
+        _node_args = {('FACTOR', 'FLOAT', False): [], ('FACTOR', 'FLOAT', True): [], ('FACTOR', 'INT', False): [], ('FACTOR', 'INT', True): [], ('FACTOR', 'BOOLEAN', False): [], ('FACTOR', 'BOOLEAN', True): [], ('FACTOR', 'FLOAT_VECTOR', False): [], ('FACTOR', 'FLOAT_VECTOR', True): [], ('FACTOR', 'FLOAT_COLOR', False): [], ('FACTOR', 'FLOAT_COLOR', True): [], ('FACTOR', 'QUATERNION', False): [], ('FACTOR', 'QUATERNION', True): [], ('FACTOR', 'FLOAT4X4', False): [], ('FACTOR', 'FLOAT4X4', True): [], ('LENGTH', 'FLOAT', False): [], ('LENGTH', 'FLOAT', True): [], ('LENGTH', 'INT', False): [], ('LENGTH', 'INT', True): [], ('LENGTH', 'BOOLEAN', False): [], ('LENGTH', 'BOOLEAN', True): [], ('LENGTH', 'FLOAT_VECTOR', False): [], ('LENGTH', 'FLOAT_VECTOR', True): [], ('LENGTH', 'FLOAT_COLOR', False): [], ('LENGTH', 'FLOAT_COLOR', True): [], ('LENGTH', 'QUATERNION', False): [], ('LENGTH', 'QUATERNION', True): [], ('LENGTH', 'FLOAT4X4', False): [], ('LENGTH', 'FLOAT4X4', True): []}[_configuration]
+        node = Node('Sample Curve', *_node_args, named_sockets=_node_sockets, mode=mode, data_type=data_type, use_all_curves=use_all_curves)
+        return node
 
     @classmethod
-    def sample_grid(cls, grid: Float | Integer | Boolean | Vector=None, position: Vector=None, interpolation: Literal['Nearest Neighbor', 'Trilinear', 'Triquadratic', 'Tricubic']=None, data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'SHADER', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'TEXTURE', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SCENE', 'TEXT', 'MASK', 'SOUND', 'INT_VECTOR']='FLOAT'):
+    def sample_grid(cls, grid: Socket=None, position: Vector=None, interpolation: Menu=None, data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR']='FLOAT'):
         """ > Node <&Node Sample Grid>
         
         Parameters
         ----------
-        grid : Float | Integer | Boolean | Vector, optional
+        grid : Socket, optional
             socket 'Grid'
         
         position : Vector, optional
             socket 'Position'
         
-        interpolation : menu='Trilinear', optional
-            ('Nearest Neighbor', 'Trilinear', 'Triquadratic', 'Tricubic')
+        interpolation : Menu, optional
+            socket 'Interpolation'
         
         data_type : Literal['Float', 'Integer', 'Boolean', 'Vector']
             parameter `data_type`
@@ -6431,18 +5957,16 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'grid': grid, 'position': position, 'interpolation': interpolation}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Sample Grid', named_sockets=_named_sockets, data_type=data_type)
-        return _node
+        node = Node('Sample Grid', named_sockets={'Grid': grid, 'Position': position, 'Interpolation': interpolation}, data_type=data_type)
+        return node
 
     @classmethod
-    def sample_grid_index(cls, grid: Float | Integer | Boolean | Vector=None, x: Integer=None, y: Integer=None, z: Integer=None, data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'SHADER', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'TEXTURE', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SCENE', 'TEXT', 'MASK', 'SOUND', 'INT_VECTOR']='FLOAT'):
+    def sample_grid_index(cls, grid: Socket=None, x: Integer=None, y: Integer=None, z: Integer=None, data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR']='FLOAT'):
         """ > Node <&Node Sample Grid Index>
         
         Parameters
         ----------
-        grid : Float | Integer | Boolean | Vector, optional
+        grid : Socket, optional
             socket 'Grid'
         
         x : Integer, optional
@@ -6461,13 +5985,11 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'grid': grid, 'x': x, 'y': y, 'z': z}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Sample Grid Index', named_sockets=_named_sockets, data_type=data_type)
-        return _node
+        node = Node('Sample Grid Index', named_sockets={'Grid': grid, 'X': x, 'Y': y, 'Z': z}, data_type=data_type)
+        return node
 
     @classmethod
-    def sample_index(cls, geometry: Geometry=None, value: Float | Integer | Boolean | Vector | Color | Rotation | Matrix=None, index: Integer=None, data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'QUATERNION', 'FLOAT4X4', 'STRING', 'INT8', 'INT16_2D', 'INT32_2D', 'FLOAT2', 'FLOAT4', 'BYTE_COLOR']='FLOAT', domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']='POINT', clamp=False):
+    def sample_index(cls, geometry: Geometry=None, value: Socket=None, index: Integer=None, data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'QUATERNION', 'FLOAT4X4']='FLOAT', domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']='POINT', clamp: bool=False):
         """ > Node <&Node Sample Index>
         
         Parameters
@@ -6475,7 +5997,7 @@ class ND:
         geometry : Geometry, optional
             socket 'Geometry'
         
-        value : Float | Integer | Boolean | Vector | Color | Rotation | Matrix, optional
+        value : Socket, optional
             socket 'Value'
         
         index : Integer, optional
@@ -6494,10 +6016,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'geometry': geometry, 'value': value, 'index': index}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Sample Index', named_sockets=_named_sockets, data_type=data_type, domain=domain, clamp=clamp)
-        return _node
+        node = Node('Sample Index', named_sockets={'Geometry': geometry, 'Value': value, 'Index': index}, data_type=data_type, domain=domain, clamp=clamp)
+        return node
 
     @classmethod
     def sample_nearest(cls, geometry: Geometry=None, sample_position: Vector=None, domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER']='POINT'):
@@ -6518,13 +6038,11 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'geometry': geometry, 'sample_position': sample_position}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Sample Nearest', named_sockets=_named_sockets, domain=domain)
-        return _node
+        node = Node('Sample Nearest', named_sockets={'Geometry': geometry, 'Sample Position': sample_position}, domain=domain)
+        return node
 
     @classmethod
-    def sample_nearest_surface(cls, mesh: Mesh=None, value: Float | Integer | Boolean | Vector | Color | Rotation | Matrix=None, group_id: Integer=None, sample_position: Vector=None, sample_group_id: Integer=None, data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'QUATERNION', 'FLOAT4X4', 'STRING', 'INT8', 'INT16_2D', 'INT32_2D', 'FLOAT2', 'FLOAT4', 'BYTE_COLOR']='FLOAT'):
+    def sample_nearest_surface(cls, mesh: Mesh=None, value: Socket=None, group_id: Integer=None, sample_position: Vector=None, sample_group_id: Integer=None, data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'QUATERNION', 'FLOAT4X4']='FLOAT'):
         """ > Node <&Node Sample Nearest Surface>
         
         Parameters
@@ -6532,7 +6050,7 @@ class ND:
         mesh : Mesh, optional
             socket 'Mesh'
         
-        value : Float | Integer | Boolean | Vector | Color | Rotation | Matrix, optional
+        value : Socket, optional
             socket 'Value'
         
         group_id : Integer, optional
@@ -6551,13 +6069,11 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'mesh': mesh, 'value': value, 'group_id': group_id, 'sample_position': sample_position, 'sample_group_id': sample_group_id}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Sample Nearest Surface', named_sockets=_named_sockets, data_type=data_type)
-        return _node
+        node = Node('Sample Nearest Surface', named_sockets={'Mesh': mesh, 'Value': value, 'Group ID': group_id, 'Sample Position': sample_position, 'Sample Group ID': sample_group_id}, data_type=data_type)
+        return node
 
     @classmethod
-    def sample_sound_frequencies(cls, sound: Sound=None, time: Float=None, all_channels: Boolean=None, channel: Integer=None, low: Float=None, high: Float=None, fft_size: Literal['128', '256', '512', '1024', '2048', '4096', '8192', '16384', '32768']=None, window_function: Literal['Hann', 'Hamming', 'Blackman', 'Rectangular']=None):
+    def sample_sound_frequencies(cls, sound: Sound=None, time: Float=None, all_channels: Boolean=None, channel: Integer=None, low: Float=None, high: Float=None, fft_size: Menu=None, window_function: Menu=None):
         """ > Node <&Node Sample Sound Frequencies>
         
         Parameters
@@ -6580,23 +6096,21 @@ class ND:
         high : Float, optional
             socket 'High'
         
-        fft_size : menu='4096', optional
-            ('128', '256', '512', '1024', '2048', '4096', '8192', '16384', '32768')
+        fft_size : Menu, optional
+            socket 'FFT Size'
         
-        window_function : menu='Hann', optional
-            ('Hann', 'Hamming', 'Blackman', 'Rectangular')
+        window_function : Menu, optional
+            socket 'Window Function'
         
         Returns
         -------
         Node
         """
-        _named_sockets = {'sound': sound, 'time': time, 'all_channels': all_channels, 'channel': channel, 'low': low, 'high': high, 'fft_size': fft_size, 'window_function': window_function}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Sample Sound Frequencies', named_sockets=_named_sockets)
-        return _node
+        node = Node('Sample Sound Frequencies', named_sockets={'Sound': sound, 'Time': time, 'All Channels': all_channels, 'Channel': channel, 'Low': low, 'High': high, 'FFT Size': fft_size, 'Window Function': window_function})
+        return node
 
     @classmethod
-    def sample_uv_surface(cls, mesh: Mesh=None, value: Float | Integer | Boolean | Vector | Color | Rotation | Matrix=None, uv_map: Vector=None, sample_uv: Vector=None, data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'QUATERNION', 'FLOAT4X4', 'STRING', 'INT8', 'INT16_2D', 'INT32_2D', 'FLOAT2', 'FLOAT4', 'BYTE_COLOR']='FLOAT'):
+    def sample_uv_surface(cls, mesh: Mesh=None, value: Socket=None, uv_map: Vector=None, sample_uv: Vector=None, data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'QUATERNION', 'FLOAT4X4']='FLOAT'):
         """ > Node <&Node Sample UV Surface>
         
         Parameters
@@ -6604,7 +6118,7 @@ class ND:
         mesh : Mesh, optional
             socket 'Mesh'
         
-        value : Float | Integer | Boolean | Vector | Color | Rotation | Matrix, optional
+        value : Socket, optional
             socket 'Value'
         
         uv_map : Vector, optional
@@ -6620,13 +6134,11 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'mesh': mesh, 'value': value, 'uv_map': uv_map, 'sample_uv': sample_uv}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Sample UV Surface', named_sockets=_named_sockets, data_type=data_type)
-        return _node
+        node = Node('Sample UV Surface', named_sockets={'Mesh': mesh, 'Value': value, 'UV Map': uv_map, 'Sample UV': sample_uv}, data_type=data_type)
+        return node
 
     @classmethod
-    def scale_elements(cls, geometry: Geometry=None, selection: Boolean=None, scale: Float=None, center: Vector=None, scale_mode: Literal['Uniform', 'Single Axis']=None, axis: Vector=None, domain: Literal['FACE', 'EDGE']='FACE'):
+    def scale_elements(cls, geometry: Geometry=None, selection: Boolean=None, scale: Float=None, center: Vector=None, scale_mode: Menu=None, axis: Vector=None, domain: Literal['FACE', 'EDGE']='FACE'):
         """ > Node <&Node Scale Elements>
         
         Parameters
@@ -6643,8 +6155,8 @@ class ND:
         center : Vector, optional
             socket 'Center'
         
-        scale_mode : menu='Uniform', optional
-            ('Uniform', 'Single Axis')
+        scale_mode : Menu, optional
+            socket 'Scale Mode'
         
         axis : Vector, optional
             socket 'Axis'
@@ -6656,10 +6168,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'geometry': geometry, 'selection': selection, 'scale': scale, 'center': center, 'scale_mode': scale_mode, 'axis': axis}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Scale Elements', named_sockets=_named_sockets, domain=domain)
-        return _node
+        node = Node('Scale Elements', named_sockets={'Geometry': geometry, 'Selection': selection, 'Scale': scale, 'Center': center, 'Scale Mode': scale_mode, 'Axis': axis}, domain=domain)
+        return node
 
     @classmethod
     def scale_instances(cls, instances: Instances=None, selection: Boolean=None, scale: Vector=None, center: Vector=None, local_space: Boolean=None):
@@ -6686,10 +6196,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'instances': instances, 'selection': selection, 'scale': scale, 'center': center, 'local_space': local_space}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Scale Instances', named_sockets=_named_sockets)
-        return _node
+        node = Node('Scale Instances', named_sockets={'Instances': instances, 'Selection': selection, 'Scale': scale, 'Center': center, 'Local Space': local_space})
+        return node
 
     @classmethod
     def scene_time(cls):
@@ -6699,25 +6207,20 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Scene Time', named_sockets=_named_sockets)
-        return _node
+        node = Node('Scene Time', named_sockets={})
+        return node
 
     @classmethod
-    def sdf_grid_boolean(cls, grid_1: Float=None, grid_2: list[Float]=None, grid: list[Float]=None, operation: Literal['INTERSECT', 'UNION', 'DIFFERENCE']='DIFFERENCE'):
+    def sdf_grid_boolean(cls, *grid: Float, grid_1: Float=None, operation: Literal['INTERSECT', 'UNION', 'DIFFERENCE']='DIFFERENCE'):
         """ > Node <&Node SDF Grid Boolean>
         
         Parameters
         ----------
+        grid : Float, optional
+            socket 'Grid'
+        
         grid_1 : Float, optional
             socket 'Grid 1'
-        
-        grid_2 : list[Float], optional
-            Values for the multi-input socket.
-        
-        grid : list[Float], optional
-            Values for the multi-input socket.
         
         operation : Literal['Intersect', 'Union', 'Difference']
             parameter `operation`
@@ -6726,13 +6229,11 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'grid_1': grid_1, 'grid_2': grid_2, 'grid': grid}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _values = {('DIFFERENCE',): ['grid_1', 'grid_2'], ('INTERSECT',): ['grid'], ('UNION',): ['grid']}
         _configuration = ({'intersect': 'INTERSECT', 'union': 'UNION', 'difference': 'DIFFERENCE'}.get(operation.lower(), operation),)
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _name in _values[_configuration]}
-        _node = Node('SDF Grid Boolean', named_sockets=_named_sockets, operation=operation)
-        return _node
+        _node_sockets = {('INTERSECT',): {}, ('UNION',): {}, ('DIFFERENCE',): {'Grid 1': grid_1}}[_configuration]
+        _node_args = {('INTERSECT',): [*list(grid)], ('UNION',): [*list(grid)], ('DIFFERENCE',): [*list(grid)]}[_configuration]
+        node = Node('SDF Grid Boolean', *_node_args, named_sockets=_node_sockets, operation=operation)
+        return node
 
     @classmethod
     def sdf_grid_fillet(cls, grid: Float=None, iterations: Integer=None):
@@ -6750,10 +6251,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'grid': grid, 'iterations': iterations}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('SDF Grid Fillet', named_sockets=_named_sockets)
-        return _node
+        node = Node('SDF Grid Fillet', named_sockets={'Grid': grid, 'Iterations': iterations})
+        return node
 
     @classmethod
     def sdf_grid_laplacian(cls, grid: Float=None, iterations: Integer=None):
@@ -6771,10 +6270,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'grid': grid, 'iterations': iterations}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('SDF Grid Laplacian', named_sockets=_named_sockets)
-        return _node
+        node = Node('SDF Grid Laplacian', named_sockets={'Grid': grid, 'Iterations': iterations})
+        return node
 
     @classmethod
     def sdf_grid_mean(cls, grid: Float=None, width: Integer=None, iterations: Integer=None):
@@ -6795,10 +6292,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'grid': grid, 'width': width, 'iterations': iterations}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('SDF Grid Mean', named_sockets=_named_sockets)
-        return _node
+        node = Node('SDF Grid Mean', named_sockets={'Grid': grid, 'Width': width, 'Iterations': iterations})
+        return node
 
     @classmethod
     def sdf_grid_mean_curvature(cls, grid: Float=None, iterations: Integer=None):
@@ -6816,10 +6311,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'grid': grid, 'iterations': iterations}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('SDF Grid Mean Curvature', named_sockets=_named_sockets)
-        return _node
+        node = Node('SDF Grid Mean Curvature', named_sockets={'Grid': grid, 'Iterations': iterations})
+        return node
 
     @classmethod
     def sdf_grid_median(cls, grid: Float=None, width: Integer=None, iterations: Integer=None):
@@ -6840,10 +6333,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'grid': grid, 'width': width, 'iterations': iterations}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('SDF Grid Median', named_sockets=_named_sockets)
-        return _node
+        node = Node('SDF Grid Median', named_sockets={'Grid': grid, 'Width': width, 'Iterations': iterations})
+        return node
 
     @classmethod
     def sdf_grid_offset(cls, grid: Float=None, distance: Float=None):
@@ -6861,10 +6352,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'grid': grid, 'distance': distance}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('SDF Grid Offset', named_sockets=_named_sockets)
-        return _node
+        node = Node('SDF Grid Offset', named_sockets={'Grid': grid, 'Distance': distance})
+        return node
 
     @classmethod
     def selection(cls):
@@ -6874,10 +6363,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Selection', named_sockets=_named_sockets)
-        return _node
+        node = Node('Selection', named_sockets={})
+        return node
 
     @utils.classproperty
     def self_object(cls):
@@ -6885,16 +6372,14 @@ class ND:
         
         Returns
         -------
-        Object
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Self Object', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('Self Object', named_sockets={})
+        return node._out
 
     @classmethod
-    def separate_bundle(cls, bundle: Bundle=None, define_signature=False):
+    def separate_bundle(cls, bundle: Bundle=None, define_signature: bool=False):
         """ > Node <&Node Separate Bundle>
         
         Parameters
@@ -6909,10 +6394,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'bundle': bundle}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Separate Bundle', named_sockets=_named_sockets, define_signature=define_signature)
-        return _node
+        node = Node('Separate Bundle', named_sockets={'Bundle': bundle}, define_signature=define_signature)
+        return node
 
     @classmethod
     def separate_color(cls, color: Color=None, mode: Literal['RGB', 'HSV', 'HSL']='RGB'):
@@ -6930,10 +6413,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'color': color}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Separate Color', named_sockets=_named_sockets, mode=mode)
-        return _node
+        node = Node('Separate Color', named_sockets={'Color': color}, mode=mode)
+        return node
 
     @classmethod
     def separate_components(cls, geometry: Geometry=None):
@@ -6948,10 +6429,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'geometry': geometry}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Separate Components', named_sockets=_named_sockets)
-        return _node
+        node = Node('Separate Components', named_sockets={'Geometry': geometry})
+        return node
 
     @classmethod
     def separate_geometry(cls, geometry: Geometry=None, selection: Boolean=None, domain: Literal['POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE', 'LAYER']='POINT'):
@@ -6972,10 +6451,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'geometry': geometry, 'selection': selection}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Separate Geometry', named_sockets=_named_sockets, domain=domain)
-        return _node
+        node = Node('Separate Geometry', named_sockets={'Geometry': geometry, 'Selection': selection}, domain=domain)
+        return node
 
     @classmethod
     def separate_matrix(cls, matrix: Matrix=None):
@@ -6990,10 +6467,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'matrix': matrix}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Separate Matrix', named_sockets=_named_sockets)
-        return _node
+        node = Node('Separate Matrix', named_sockets={'Matrix': matrix})
+        return node
 
     @classmethod
     def separate_transform(cls, transform: Matrix=None):
@@ -7008,10 +6483,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'transform': transform}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Separate Transform', named_sockets=_named_sockets)
-        return _node
+        node = Node('Separate Transform', named_sockets={'Transform': transform})
+        return node
 
     @classmethod
     def separate_xyz(cls, vector: Vector=None):
@@ -7026,13 +6499,11 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'vector': vector}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Separate XYZ', named_sockets=_named_sockets)
-        return _node
+        node = Node('Separate XYZ', named_sockets={'Vector': vector})
+        return node
 
     @classmethod
-    def set_curve_normal(cls, curve: Curve=None, selection: Boolean=None, mode: Literal['Minimum Twist', 'Z Up', 'Free']=None, normal: Vector=None):
+    def set_curve_normal(cls, curve: Curve=None, selection: Boolean=None, mode: Menu=None, normal: Vector=None):
         """ > Node <&Node Set Curve Normal>
         
         Parameters
@@ -7043,8 +6514,8 @@ class ND:
         selection : Boolean, optional
             socket 'Selection'
         
-        mode : menu='Minimum Twist', optional
-            ('Minimum Twist', 'Z Up', 'Free')
+        mode : Menu, optional
+            socket 'Mode'
         
         normal : Vector, optional
             socket 'Normal'
@@ -7053,10 +6524,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'curve': curve, 'selection': selection, 'mode': mode, 'normal': normal}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Set Curve Normal', named_sockets=_named_sockets)
-        return _node
+        node = Node('Set Curve Normal', named_sockets={'Curve': curve, 'Selection': selection, 'Mode': mode, 'Normal': normal})
+        return node
 
     @classmethod
     def set_curve_radius(cls, curve: Curve=None, selection: Boolean=None, radius: Float=None):
@@ -7077,10 +6546,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'curve': curve, 'selection': selection, 'radius': radius}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Set Curve Radius', named_sockets=_named_sockets)
-        return _node
+        node = Node('Set Curve Radius', named_sockets={'Curve': curve, 'Selection': selection, 'Radius': radius})
+        return node
 
     @classmethod
     def set_curve_tilt(cls, curve: Curve=None, selection: Boolean=None, tilt: Float=None):
@@ -7101,10 +6568,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'curve': curve, 'selection': selection, 'tilt': tilt}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Set Curve Tilt', named_sockets=_named_sockets)
-        return _node
+        node = Node('Set Curve Tilt', named_sockets={'Curve': curve, 'Selection': selection, 'Tilt': tilt})
+        return node
 
     @classmethod
     def set_face_set(cls, mesh: Mesh=None, selection: Boolean=None, face_set: Integer=None):
@@ -7125,10 +6590,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'mesh': mesh, 'selection': selection, 'face_set': face_set}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Set Face Set', named_sockets=_named_sockets)
-        return _node
+        node = Node('Set Face Set', named_sockets={'Mesh': mesh, 'Selection': selection, 'Face Set': face_set})
+        return node
 
     @classmethod
     def set_geometry_bundle(cls, geometry: Geometry=None, bundle: Bundle=None):
@@ -7146,10 +6609,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'geometry': geometry, 'bundle': bundle}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Set Geometry Bundle', named_sockets=_named_sockets)
-        return _node
+        node = Node('Set Geometry Bundle', named_sockets={'Geometry': geometry, 'Bundle': bundle})
+        return node
 
     @classmethod
     def set_geometry_name(cls, geometry: Geometry=None, name: String=None):
@@ -7167,13 +6628,11 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'geometry': geometry, 'name': name}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Set Geometry Name', named_sockets=_named_sockets)
-        return _node
+        node = Node('Set Geometry Name', named_sockets={'Geometry': geometry, 'Name': name})
+        return node
 
     @classmethod
-    def set_grease_pencil_color(cls, grease_pencil: GreasePencil=None, selection: Boolean=None, mode_1: Literal['Stroke', 'Fill', 'Both']=None, color: Color=None, opacity: Float=None, mode: Literal['STROKE', 'FILL', 'BOTH']='STROKE'):
+    def set_grease_pencil_color(cls, grease_pencil: GreasePencil=None, selection: Boolean=None, mode_1: Menu=None, color: Color=None, opacity: Float=None, mode: Literal['STROKE', 'FILL', 'BOTH']='STROKE'):
         """ > Node <&Node Set Grease Pencil Color>
         
         Parameters
@@ -7184,8 +6643,8 @@ class ND:
         selection : Boolean, optional
             socket 'Selection'
         
-        mode_1 : menu='Stroke', optional
-            ('Stroke', 'Fill', 'Both')
+        mode_1 : Menu, optional
+            socket 'Mode'
         
         color : Color, optional
             socket 'Color'
@@ -7200,13 +6659,11 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'grease_pencil': grease_pencil, 'selection': selection, 'mode_1': mode_1, 'color': color, 'opacity': opacity}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Set Grease Pencil Color', named_sockets=_named_sockets, mode=mode)
-        return _node
+        node = Node('Set Grease Pencil Color', named_sockets={'Grease Pencil': grease_pencil, 'Selection': selection, 'Mode_1': mode_1, 'Color': color, 'Opacity': opacity}, mode=mode)
+        return node
 
     @classmethod
-    def set_grease_pencil_depth(cls, grease_pencil: GreasePencil=None, depth_order_1: Literal['2D Layers', '3D Location']=None, depth_order: Literal['2D', '3D']='2D'):
+    def set_grease_pencil_depth(cls, grease_pencil: GreasePencil=None, depth_order_1: Menu=None, depth_order: Literal['2D', '3D']='2D'):
         """ > Node <&Node Set Grease Pencil Depth>
         
         Parameters
@@ -7214,8 +6671,8 @@ class ND:
         grease_pencil : GreasePencil, optional
             socket 'Grease Pencil'
         
-        depth_order_1 : menu='2D Layers', optional
-            ('2D Layers', '3D Location')
+        depth_order_1 : Menu, optional
+            socket 'Depth Order'
         
         depth_order : Literal['2D Layers', '3D Location']
             parameter `depth_order`
@@ -7224,10 +6681,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'grease_pencil': grease_pencil, 'depth_order_1': depth_order_1}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Set Grease Pencil Depth', named_sockets=_named_sockets, depth_order=depth_order)
-        return _node
+        node = Node('Set Grease Pencil Depth', named_sockets={'Grease Pencil': grease_pencil, 'Depth Order_1': depth_order_1}, depth_order=depth_order)
+        return node
 
     @classmethod
     def set_grease_pencil_softness(cls, grease_pencil: GreasePencil=None, selection: Boolean=None, softness: Float=None):
@@ -7248,21 +6703,19 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'grease_pencil': grease_pencil, 'selection': selection, 'softness': softness}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Set Grease Pencil Softness', named_sockets=_named_sockets)
-        return _node
+        node = Node('Set Grease Pencil Softness', named_sockets={'Grease Pencil': grease_pencil, 'Selection': selection, 'Softness': softness})
+        return node
 
     @classmethod
-    def set_grid_background(cls, grid: Float | Integer | Boolean | Vector=None, background: Float | Integer | Boolean | Vector=None, update_inactive: Boolean=None, data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'SHADER', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'TEXTURE', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SCENE', 'TEXT', 'MASK', 'SOUND', 'INT_VECTOR']='FLOAT'):
+    def set_grid_background(cls, grid: Socket=None, background: Socket=None, update_inactive: Boolean=None, data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR']='FLOAT'):
         """ > Node <&Node Set Grid Background>
         
         Parameters
         ----------
-        grid : Float | Integer | Boolean | Vector, optional
+        grid : Socket, optional
             socket 'Grid'
         
-        background : Float | Integer | Boolean | Vector, optional
+        background : Socket, optional
             socket 'Background'
         
         update_inactive : Boolean, optional
@@ -7275,18 +6728,16 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'grid': grid, 'background': background, 'update_inactive': update_inactive}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Set Grid Background', named_sockets=_named_sockets, data_type=data_type)
-        return _node
+        node = Node('Set Grid Background', named_sockets={'Grid': grid, 'Background': background, 'Update Inactive': update_inactive}, data_type=data_type)
+        return node
 
     @classmethod
-    def set_grid_transform(cls, grid: Float | Integer | Boolean | Vector=None, transform: Matrix=None, data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'SHADER', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'TEXTURE', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SCENE', 'TEXT', 'MASK', 'SOUND', 'INT_VECTOR']='FLOAT'):
+    def set_grid_transform(cls, grid: Socket=None, transform: Matrix=None, data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR']='FLOAT'):
         """ > Node <&Node Set Grid Transform>
         
         Parameters
         ----------
-        grid : Float | Integer | Boolean | Vector, optional
+        grid : Socket, optional
             socket 'Grid'
         
         transform : Matrix, optional
@@ -7299,10 +6750,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'grid': grid, 'transform': transform}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Set Grid Transform', named_sockets=_named_sockets, data_type=data_type)
-        return _node
+        node = Node('Set Grid Transform', named_sockets={'Grid': grid, 'Transform': transform}, data_type=data_type)
+        return node
 
     @classmethod
     def set_handle_positions(cls, curve: Curve=None, selection: Boolean=None, position: Vector=None, offset: Vector=None, mode: Literal['LEFT', 'RIGHT']='LEFT'):
@@ -7329,10 +6778,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'curve': curve, 'selection': selection, 'position': position, 'offset': offset}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Set Handle Positions', named_sockets=_named_sockets, mode=mode)
-        return _node
+        node = Node('Set Handle Positions', named_sockets={'Curve': curve, 'Selection': selection, 'Position': position, 'Offset': offset}, mode=mode)
+        return node
 
     @classmethod
     def set_handle_type(cls, curve: Curve=None, selection: Boolean=None, handle_type: Literal['FREE', 'AUTO', 'VECTOR', 'ALIGN']='AUTO', mode: set[Literal['LEFT', 'RIGHT']]={'RIGHT', 'LEFT'}):
@@ -7356,10 +6803,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'curve': curve, 'selection': selection}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Set Handle Type', named_sockets=_named_sockets, handle_type=handle_type, mode=mode)
-        return _node
+        node = Node('Set Handle Type', named_sockets={'Curve': curve, 'Selection': selection}, handle_type=handle_type, mode=mode)
+        return node
 
     @classmethod
     def set_id(cls, geometry: Geometry=None, selection: Boolean=None, id: Integer=None):
@@ -7380,10 +6825,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'geometry': geometry, 'selection': selection, 'id': id}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Set ID', named_sockets=_named_sockets)
-        return _node
+        node = Node('Set ID', named_sockets={'Geometry': geometry, 'Selection': selection, 'ID': id})
+        return node
 
     @classmethod
     def set_instance_transform(cls, instances: Instances=None, selection: Boolean=None, transform: Matrix=None):
@@ -7404,10 +6847,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'instances': instances, 'selection': selection, 'transform': transform}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Set Instance Transform', named_sockets=_named_sockets)
-        return _node
+        node = Node('Set Instance Transform', named_sockets={'Instances': instances, 'Selection': selection, 'Transform': transform})
+        return node
 
     @classmethod
     def set_material(cls, geometry: Geometry=None, selection: Boolean=None, material: Material=None):
@@ -7428,10 +6869,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'geometry': geometry, 'selection': selection, 'material': material}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Set Material', named_sockets=_named_sockets)
-        return _node
+        node = Node('Set Material', named_sockets={'Geometry': geometry, 'Selection': selection, 'Material': material})
+        return node
 
     @classmethod
     def set_material_index(cls, geometry: Geometry=None, selection: Boolean=None, material_index: Integer=None):
@@ -7452,10 +6891,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'geometry': geometry, 'selection': selection, 'material_index': material_index}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Set Material Index', named_sockets=_named_sockets)
-        return _node
+        node = Node('Set Material Index', named_sockets={'Geometry': geometry, 'Selection': selection, 'Material Index': material_index})
+        return node
 
     @classmethod
     def set_mesh_normal(cls, mesh: Mesh=None, remove_custom: Boolean=None, custom_normal: Vector=None, edge_sharpness: Boolean=None, face_sharpness: Boolean=None, mode: Literal['SHARPNESS', 'FREE', 'TANGENT_SPACE']='SHARPNESS', domain: Literal['POINT', 'FACE', 'CORNER']='POINT'):
@@ -7488,10 +6925,11 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'mesh': mesh, 'remove_custom': remove_custom, 'custom_normal': custom_normal, 'edge_sharpness': edge_sharpness, 'face_sharpness': face_sharpness}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Set Mesh Normal', named_sockets=_named_sockets, mode=mode, domain=domain)
-        return _node
+        _configuration = ({'sharpness': 'SHARPNESS', 'free': 'FREE', 'tangent_space': 'TANGENT_SPACE', 'tangent space': 'TANGENT_SPACE'}.get(mode.lower(), mode),)
+        _node_sockets = {('SHARPNESS',): {'Mesh': mesh, 'Remove Custom': remove_custom, 'Edge Sharpness': edge_sharpness, 'Face Sharpness': face_sharpness}, ('FREE',): {'Mesh': mesh, 'Custom Normal': custom_normal}, ('TANGENT_SPACE',): {'Mesh': mesh, 'Custom Normal': custom_normal}}[_configuration]
+        _node_args = {('SHARPNESS',): [], ('FREE',): [], ('TANGENT_SPACE',): []}[_configuration]
+        node = Node('Set Mesh Normal', *_node_args, named_sockets=_node_sockets, mode=mode, domain=domain)
+        return node
 
     @classmethod
     def set_nurbs_order(cls, curves: Curve=None, selection: Boolean=None, order: Integer=None):
@@ -7512,10 +6950,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'curves': curves, 'selection': selection, 'order': order}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Set NURBS Order', named_sockets=_named_sockets)
-        return _node
+        node = Node('Set NURBS Order', named_sockets={'Curves': curves, 'Selection': selection, 'Order': order})
+        return node
 
     @classmethod
     def set_nurbs_weight(cls, curves: Curve=None, selection: Boolean=None, weight: Float=None):
@@ -7536,13 +6972,11 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'curves': curves, 'selection': selection, 'weight': weight}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Set NURBS Weight', named_sockets=_named_sockets)
-        return _node
+        node = Node('Set NURBS Weight', named_sockets={'Curves': curves, 'Selection': selection, 'Weight': weight})
+        return node
 
     @classmethod
-    def set_point_cloud_type(cls, points: Cloud=None, type: Literal['Points', '3D Gaussian Splat']=None):
+    def set_point_cloud_type(cls, points: Cloud=None, type: Menu=None):
         """ > Node <&Node Set Point Cloud Type>
         
         Parameters
@@ -7550,17 +6984,15 @@ class ND:
         points : Cloud, optional
             socket 'Points'
         
-        type : menu='Points', optional
-            ('Points', '3D Gaussian Splat')
+        type : Menu, optional
+            socket 'Type'
         
         Returns
         -------
         Node
         """
-        _named_sockets = {'points': points, 'type': type}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Set Point Cloud Type', named_sockets=_named_sockets)
-        return _node
+        node = Node('Set Point Cloud Type', named_sockets={'Points': points, 'Type': type})
+        return node
 
     @classmethod
     def set_point_radius(cls, points: Cloud=None, selection: Boolean=None, radius: Float=None):
@@ -7581,10 +7013,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'points': points, 'selection': selection, 'radius': radius}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Set Point Radius', named_sockets=_named_sockets)
-        return _node
+        node = Node('Set Point Radius', named_sockets={'Points': points, 'Selection': selection, 'Radius': radius})
+        return node
 
     @classmethod
     def set_position(cls, geometry: Geometry=None, selection: Boolean=None, position: Vector=None, offset: Vector=None):
@@ -7608,13 +7038,11 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'geometry': geometry, 'selection': selection, 'position': position, 'offset': offset}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Set Position', named_sockets=_named_sockets)
-        return _node
+        node = Node('Set Position', named_sockets={'Geometry': geometry, 'Selection': selection, 'Position': position, 'Offset': offset})
+        return node
 
     @classmethod
-    def set_selection(cls, geometry: Geometry=None, selection: Boolean | Float=None, domain: Literal['POINT', 'EDGE', 'FACE', 'CURVE']='POINT', selection_type: Literal['BOOLEAN', 'FLOAT']='BOOLEAN'):
+    def set_selection(cls, geometry: Geometry=None, selection: Socket=None, domain: Literal['POINT', 'EDGE', 'FACE', 'CURVE']='POINT', selection_type: Literal['BOOLEAN', 'FLOAT']='BOOLEAN'):
         """ > Node <&Node Set Selection>
         
         Parameters
@@ -7622,7 +7050,7 @@ class ND:
         geometry : Geometry, optional
             socket 'Geometry'
         
-        selection : Boolean | Float, optional
+        selection : Socket, optional
             socket 'Selection'
         
         domain : Literal['Point', 'Edge', 'Face', 'Spline']
@@ -7635,10 +7063,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'geometry': geometry, 'selection': selection}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Set Selection', named_sockets=_named_sockets, domain=domain, selection_type=selection_type)
-        return _node
+        node = Node('Set Selection', named_sockets={'Geometry': geometry, 'Selection': selection}, domain=domain, selection_type=selection_type)
+        return node
 
     @classmethod
     def set_shade_smooth(cls, mesh: Mesh=None, selection: Boolean=None, shade_smooth: Boolean=None, domain: Literal['EDGE', 'FACE']='FACE'):
@@ -7662,10 +7088,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'mesh': mesh, 'selection': selection, 'shade_smooth': shade_smooth}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Set Shade Smooth', named_sockets=_named_sockets, domain=domain)
-        return _node
+        node = Node('Set Shade Smooth', named_sockets={'Mesh': mesh, 'Selection': selection, 'Shade Smooth': shade_smooth}, domain=domain)
+        return node
 
     @classmethod
     def set_spline_cyclic(cls, curve: Curve=None, selection: Boolean=None, cyclic: Boolean=None):
@@ -7686,10 +7110,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'curve': curve, 'selection': selection, 'cyclic': cyclic}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Set Spline Cyclic', named_sockets=_named_sockets)
-        return _node
+        node = Node('Set Spline Cyclic', named_sockets={'Curve': curve, 'Selection': selection, 'Cyclic': cyclic})
+        return node
 
     @classmethod
     def set_spline_resolution(cls, curve: Curve=None, selection: Boolean=None, resolution: Integer=None):
@@ -7710,10 +7132,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'curve': curve, 'selection': selection, 'resolution': resolution}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Set Spline Resolution', named_sockets=_named_sockets)
-        return _node
+        node = Node('Set Spline Resolution', named_sockets={'Curve': curve, 'Selection': selection, 'Resolution': resolution})
+        return node
 
     @classmethod
     def set_spline_type(cls, curve: Curve=None, selection: Boolean=None, spline_type: Literal['CATMULL_ROM', 'POLY', 'BEZIER', 'NURBS']='POLY'):
@@ -7734,13 +7154,11 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'curve': curve, 'selection': selection}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Set Spline Type', named_sockets=_named_sockets, spline_type=spline_type)
-        return _node
+        node = Node('Set Spline Type', named_sockets={'Curve': curve, 'Selection': selection}, spline_type=spline_type)
+        return node
 
     @classmethod
-    def set_string_case(cls, string: String=None, case: Literal['Uppercase', 'Lowercase']=None):
+    def set_string_case(cls, string: String=None, case: Menu=None):
         """ > Node <&Node Set String Case>
         
         Parameters
@@ -7748,17 +7166,15 @@ class ND:
         string : String, optional
             socket 'String'
         
-        case : menu='Uppercase', optional
-            ('Uppercase', 'Lowercase')
+        case : Menu, optional
+            socket 'Case'
         
         Returns
         -------
         Node
         """
-        _named_sockets = {'string': string, 'case': case}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Set String Case', named_sockets=_named_sockets)
-        return _node
+        node = Node('Set String Case', named_sockets={'String': string, 'Case': case})
+        return node
 
     @classmethod
     def shortest_edge_paths(cls, end_vertex: Boolean=None, edge_cost: Float=None):
@@ -7776,10 +7192,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'end_vertex': end_vertex, 'edge_cost': edge_cost}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Shortest Edge Paths', named_sockets=_named_sockets)
-        return _node
+        node = Node('Shortest Edge Paths', named_sockets={'End Vertex': end_vertex, 'Edge Cost': edge_cost})
+        return node
 
     @utils.classproperty
     def simulation_input(cls):
@@ -7787,13 +7201,11 @@ class ND:
         
         Returns
         -------
-        Float
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Simulation Input', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('Simulation Input', named_sockets={})
+        return node._out
 
     @classmethod
     def simulation_output(cls, named_sockets=None, skip: Boolean=None, geometry: Geometry=None, **sockets):
@@ -7811,11 +7223,10 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'skip': skip, 'geometry': geometry}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _named_sockets.update({_name: _value for _name, _value in (named_sockets or {}).items() if _value is not None})
-        _node = Node('Simulation Output', named_sockets=_named_sockets, **sockets)
-        return _node
+        _named_sockets = {'Skip': skip, 'Geometry': geometry}
+        _named_sockets.update({name: value for name, value in (named_sockets or {}).items() if value is not None})
+        node = Node('Simulation Output', named_sockets=_named_sockets, **sockets)
+        return node
 
     @classmethod
     def slice_string(cls, string: String=None, position: Integer=None, length: Integer=None):
@@ -7836,10 +7247,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'string': string, 'position': position, 'length': length}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Slice String', named_sockets=_named_sockets)
-        return _node
+        node = Node('Slice String', named_sockets={'String': string, 'Position': position, 'Length': length})
+        return node
 
     @classmethod
     def sort_elements(cls, geometry: Geometry=None, selection: Boolean=None, group_id: Integer=None, sort_weight: Float=None, domain: Literal['POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE']='POINT'):
@@ -7866,18 +7275,16 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'geometry': geometry, 'selection': selection, 'group_id': group_id, 'sort_weight': sort_weight}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Sort Elements', named_sockets=_named_sockets, domain=domain)
-        return _node
+        node = Node('Sort Elements', named_sockets={'Geometry': geometry, 'Selection': selection, 'Group ID': group_id, 'Sort Weight': sort_weight}, domain=domain)
+        return node
 
     @classmethod
-    def sort_list(cls, list: Float | Integer | Boolean | Vector | Color | Rotation | Matrix | String | Menu | Object | Image | Geometry | Collection | Material | Bundle | Closure | Font | Sound=None, selection: Boolean=None, group_id: Integer=None, sort_weight: Float=None, socket_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'SHADER', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'TEXTURE', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SCENE', 'TEXT', 'MASK', 'SOUND', 'INT_VECTOR']='FLOAT'):
+    def sort_list(cls, list: Socket=None, selection: Boolean=None, group_id: Integer=None, sort_weight: Float=None, socket_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SOUND']='FLOAT'):
         """ > Node <&Node Sort List>
         
         Parameters
         ----------
-        list : Float | Integer | Boolean | Vector | Color | Rotation | Matrix | String | Menu | Object | Image | Geometry | Collection | Material | Bundle | Closure | Font | Sound, optional
+        list : Socket, optional
             socket 'List'
         
         selection : Boolean, optional
@@ -7896,10 +7303,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'list': list, 'selection': selection, 'group_id': group_id, 'sort_weight': sort_weight}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Sort List', named_sockets=_named_sockets, socket_type=socket_type)
-        return _node
+        node = Node('Sort List', named_sockets={'List': list, 'Selection': selection, 'Group ID': group_id, 'Sort Weight': sort_weight}, socket_type=socket_type)
+        return node
 
     @classmethod
     def special_characters(cls):
@@ -7909,10 +7314,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Special Characters', named_sockets=_named_sockets)
-        return _node
+        node = Node('Special Characters', named_sockets={})
+        return node
 
     @classmethod
     def spiral(cls, resolution: Integer=None, rotations: Float=None, start_radius: Float=None, end_radius: Float=None, height: Float=None, reverse: Boolean=None):
@@ -7942,10 +7345,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'resolution': resolution, 'rotations': rotations, 'start_radius': start_radius, 'end_radius': end_radius, 'height': height, 'reverse': reverse}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Spiral', named_sockets=_named_sockets)
-        return _node
+        node = Node('Spiral', named_sockets={'Resolution': resolution, 'Rotations': rotations, 'Start Radius': start_radius, 'End Radius': end_radius, 'Height': height, 'Reverse': reverse})
+        return node
 
     @classmethod
     def spline_length(cls):
@@ -7955,10 +7356,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Spline Length', named_sockets=_named_sockets)
-        return _node
+        node = Node('Spline Length', named_sockets={})
+        return node
 
     @classmethod
     def spline_parameter(cls):
@@ -7968,10 +7367,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Spline Parameter', named_sockets=_named_sockets)
-        return _node
+        node = Node('Spline Parameter', named_sockets={})
+        return node
 
     @utils.classproperty
     def spline_resolution(cls):
@@ -7979,13 +7376,11 @@ class ND:
         
         Returns
         -------
-        Integer
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Spline Resolution', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('Spline Resolution', named_sockets={})
+        return node._out
 
     @classmethod
     def split_edges(cls, mesh: Mesh=None, selection: Boolean=None):
@@ -8003,10 +7398,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'mesh': mesh, 'selection': selection}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Split Edges', named_sockets=_named_sockets)
-        return _node
+        node = Node('Split Edges', named_sockets={'Mesh': mesh, 'Selection': selection})
+        return node
 
     @classmethod
     def split_string(cls, string: String=None, separator: String=None):
@@ -8024,10 +7417,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'string': string, 'separator': separator}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Split String', named_sockets=_named_sockets)
-        return _node
+        node = Node('Split String', named_sockets={'String': string, 'Separator': separator})
+        return node
 
     @classmethod
     def split_to_instances(cls, geometry: Geometry=None, selection: Boolean=None, group_id: Integer=None, domain: Literal['POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE', 'LAYER']='POINT'):
@@ -8051,10 +7442,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'geometry': geometry, 'selection': selection, 'group_id': group_id}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Split to Instances', named_sockets=_named_sockets, domain=domain)
-        return _node
+        node = Node('Split to Instances', named_sockets={'Geometry': geometry, 'Selection': selection, 'Group ID': group_id}, domain=domain)
+        return node
 
     @classmethod
     def star(cls, points: Integer=None, inner_radius: Float=None, outer_radius: Float=None, twist: Float=None):
@@ -8078,13 +7467,11 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'points': points, 'inner_radius': inner_radius, 'outer_radius': outer_radius, 'twist': twist}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Star', named_sockets=_named_sockets)
-        return _node
+        node = Node('Star', named_sockets={'Points': points, 'Inner Radius': inner_radius, 'Outer Radius': outer_radius, 'Twist': twist})
+        return node
 
     @classmethod
-    def store_bundle_item(cls, bundle: Bundle=None, path: String=None, item: Float | Integer | Boolean | Vector | Color | Rotation | Matrix | String | Menu | Object | Image | Geometry | Collection | Material | Bundle | Closure | Font | Sound=None, socket_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'SHADER', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'TEXTURE', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SCENE', 'TEXT', 'MASK', 'SOUND', 'INT_VECTOR']='FLOAT', structure_type: Literal['AUTO', 'DYNAMIC', 'FIELD', 'GRID', 'LIST', 'SINGLE']='AUTO'):
+    def store_bundle_item(cls, bundle: Bundle=None, path: String=None, item: Socket=None, socket_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SOUND']='FLOAT'):
         """ > Node <&Node Store Bundle Item>
         
         Parameters
@@ -8095,26 +7482,21 @@ class ND:
         path : String, optional
             socket 'Path'
         
-        item : Float | Integer | Boolean | Vector | Color | Rotation | Matrix | String | Menu | Object | Image | Geometry | Collection | Material | Bundle | Closure | Font | Sound, optional
+        item : Socket, optional
             socket 'Item'
         
         socket_type : Literal['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Rotation', 'Matrix', 'String', 'Menu', 'Object', 'Image', 'Geometry', 'Collection', 'Material', 'Bundle', 'Closure', 'Font', 'Sound']
             parameter `socket_type`
         
-        structure_type : Literal['Auto', 'Dynamic', 'Field', 'Grid', 'List', 'Single']
-            parameter `structure_type`
-        
         Returns
         -------
         Node
         """
-        _named_sockets = {'bundle': bundle, 'path': path, 'item': item}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Store Bundle Item', named_sockets=_named_sockets, socket_type=socket_type, structure_type=structure_type)
-        return _node
+        node = Node('Store Bundle Item', named_sockets={'Bundle': bundle, 'Path': path, 'Item': item}, socket_type=socket_type)
+        return node
 
     @classmethod
-    def store_named_attribute(cls, geometry: Geometry=None, selection: Boolean=None, name: String=None, value: Float | Integer | Boolean | Vector | Color | Rotation | Matrix=None, data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'QUATERNION', 'FLOAT4X4', 'STRING', 'INT8', 'INT16_2D', 'INT32_2D', 'FLOAT2', 'FLOAT4', 'BYTE_COLOR']='FLOAT', domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']='POINT'):
+    def store_named_attribute(cls, geometry: Geometry=None, selection: Boolean=None, name: String=None, value: Socket=None, data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'QUATERNION', 'FLOAT4X4', 'INT8', 'FLOAT2', 'FLOAT4', 'BYTE_COLOR']='FLOAT', domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']='POINT'):
         """ > Node <&Node Store Named Attribute>
         
         Parameters
@@ -8128,7 +7510,7 @@ class ND:
         name : String, optional
             socket 'Name'
         
-        value : Float | Integer | Boolean | Vector | Color | Rotation | Matrix, optional
+        value : Socket, optional
             socket 'Value'
         
         data_type : Literal['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Quaternion', '4x4 Matrix', '8-Bit Integer', '2D Vector', '4D Vector', 'Byte Color']
@@ -8141,13 +7523,11 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'geometry': geometry, 'selection': selection, 'name': name, 'value': value}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Store Named Attribute', named_sockets=_named_sockets, data_type=data_type, domain=domain)
-        return _node
+        node = Node('Store Named Attribute', named_sockets={'Geometry': geometry, 'Selection': selection, 'Name': name, 'Value': value}, data_type=data_type, domain=domain)
+        return node
 
     @classmethod
-    def store_named_grid(cls, volume: Volume=None, name: String=None, grid: Float | Boolean | Integer | Vector=None, data_type: Literal['BOOLEAN', 'FLOAT', 'DOUBLE', 'INT', 'INT64', 'MASK', 'VECTOR_FLOAT', 'VECTOR_DOUBLE', 'VECTOR_INT', 'POINTS', 'UNKNOWN']='FLOAT'):
+    def store_named_grid(cls, volume: Volume=None, name: String=None, grid: Socket=None, data_type: Literal['BOOLEAN', 'FLOAT', 'INT', 'VECTOR_FLOAT']='FLOAT'):
         """ > Node <&Node Store Named Grid>
         
         Parameters
@@ -8158,7 +7538,7 @@ class ND:
         name : String, optional
             socket 'Name'
         
-        grid : Float | Boolean | Integer | Vector, optional
+        grid : Socket, optional
             socket 'Grid'
         
         data_type : Literal['Boolean', 'Float', 'Integer', 'Vector']
@@ -8168,13 +7548,11 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'volume': volume, 'name': name, 'grid': grid}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Store Named Grid', named_sockets=_named_sockets, data_type=data_type)
-        return _node
+        node = Node('Store Named Grid', named_sockets={'Volume': volume, 'Name': name, 'Grid': grid}, data_type=data_type)
+        return node
 
     @classmethod
-    def string(cls, string=''):
+    def string(cls, string: str=''):
         """ > Node <&Node String>
         
         Parameters
@@ -8186,10 +7564,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('String', named_sockets=_named_sockets, string=string)
-        return _node
+        node = Node('String', named_sockets={}, string=string)
+        return node
 
     @classmethod
     def string_length(cls, string: String=None):
@@ -8204,13 +7580,11 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'string': string}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('String Length', named_sockets=_named_sockets)
-        return _node
+        node = Node('String Length', named_sockets={'String': string})
+        return node
 
     @classmethod
-    def string_to_curves(cls, string: String=None, size: Float=None, font: Font=None, align_x: Literal['Left', 'Center', 'Right', 'Justify', 'Flush']=None, align_y: Literal['Top', 'Top Baseline', 'Middle', 'Bottom Baseline', 'Bottom']=None, pivot_point: Literal['Midpoint', 'Top Left', 'Top Center', 'Top Right', 'Bottom Left', 'Bottom Center', 'Bottom Right']=None, character_spacing: Float=None, word_spacing: Float=None, line_spacing: Float=None, overflow: Literal['Overflow', 'Scale To Fit', 'Truncate']=None, text_box_width: Float=None, text_box_height: Float=None):
+    def string_to_curves(cls, string: String=None, size: Float=None, font: Font=None, align_x: Menu=None, align_y: Menu=None, pivot_point: Menu=None, character_spacing: Float=None, word_spacing: Float=None, line_spacing: Float=None, overflow: Menu=None, text_box_width: Float=None, text_box_height: Float=None):
         """ > Node <&Node String to Curves>
         
         Parameters
@@ -8224,14 +7598,14 @@ class ND:
         font : Font, optional
             socket 'Font'
         
-        align_x : menu='Left', optional
-            ('Left', 'Center', 'Right', 'Justify', 'Flush')
+        align_x : Menu, optional
+            socket 'Align X'
         
-        align_y : menu='Top Baseline', optional
-            ('Top', 'Top Baseline', 'Middle', 'Bottom Baseline', 'Bottom')
+        align_y : Menu, optional
+            socket 'Align Y'
         
-        pivot_point : menu='Midpoint', optional
-            ('Midpoint', 'Top Left', 'Top Center', 'Top Right', 'Bottom Left', 'Bottom Center', 'Bottom Right')
+        pivot_point : Menu, optional
+            socket 'Pivot Point'
         
         character_spacing : Float, optional
             socket 'Character Spacing'
@@ -8242,8 +7616,8 @@ class ND:
         line_spacing : Float, optional
             socket 'Line Spacing'
         
-        overflow : menu='Overflow', optional
-            ('Overflow', 'Scale To Fit', 'Truncate')
+        overflow : Menu, optional
+            socket 'Overflow'
         
         text_box_width : Float, optional
             socket 'Text Box Width'
@@ -8255,10 +7629,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'string': string, 'size': size, 'font': font, 'align_x': align_x, 'align_y': align_y, 'pivot_point': pivot_point, 'character_spacing': character_spacing, 'word_spacing': word_spacing, 'line_spacing': line_spacing, 'overflow': overflow, 'text_box_width': text_box_width, 'text_box_height': text_box_height}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('String to Curves', named_sockets=_named_sockets)
-        return _node
+        node = Node('String to Curves', named_sockets={'String': string, 'Size': size, 'Font': font, 'Align X': align_x, 'Align Y': align_y, 'Pivot Point': pivot_point, 'Character Spacing': character_spacing, 'Word Spacing': word_spacing, 'Line Spacing': line_spacing, 'Overflow': overflow, 'Text Box Width': text_box_width, 'Text Box Height': text_box_height})
+        return node
 
     @classmethod
     def string_to_value(cls, string: String=None, base: Integer=None, data_type: Literal['FLOAT', 'INT']='FLOAT'):
@@ -8279,10 +7651,11 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'string': string, 'base': base}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('String to Value', named_sockets=_named_sockets, data_type=data_type)
-        return _node
+        _configuration = ({'float': 'FLOAT', 'int': 'INT', 'integer': 'INT'}.get(data_type.lower(), data_type),)
+        _node_sockets = {('FLOAT',): {'String': string}, ('INT',): {'String': string, 'Base': base}}[_configuration]
+        _node_args = {('FLOAT',): [], ('INT',): []}[_configuration]
+        node = Node('String to Value', *_node_args, named_sockets=_node_sockets, data_type=data_type)
+        return node
 
     @classmethod
     def subdivide_curve(cls, curve: Curve=None, cuts: Integer=None):
@@ -8300,10 +7673,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'curve': curve, 'cuts': cuts}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Subdivide Curve', named_sockets=_named_sockets)
-        return _node
+        node = Node('Subdivide Curve', named_sockets={'Curve': curve, 'Cuts': cuts})
+        return node
 
     @classmethod
     def subdivide_mesh(cls, mesh: Mesh=None, level: Integer=None):
@@ -8321,13 +7692,11 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'mesh': mesh, 'level': level}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Subdivide Mesh', named_sockets=_named_sockets)
-        return _node
+        node = Node('Subdivide Mesh', named_sockets={'Mesh': mesh, 'Level': level})
+        return node
 
     @classmethod
-    def subdivision_surface(cls, mesh: Mesh=None, level: Integer=None, edge_crease: Float=None, vertex_crease: Float=None, limit_surface: Boolean=None, quality: Integer=None, uv_smooth: Literal['None', 'Keep Corners', 'Keep Corners, Junctions', 'Keep Corners, Junctions, Concave', 'Keep Boundaries', 'All']=None, boundary_smooth: Literal['Keep Corners', 'All']=None):
+    def subdivision_surface(cls, mesh: Mesh=None, level: Integer=None, edge_crease: Float=None, vertex_crease: Float=None, limit_surface: Boolean=None, quality: Integer=None, uv_smooth: Menu=None, boundary_smooth: Menu=None):
         """ > Node <&Node Subdivision Surface>
         
         Parameters
@@ -8350,23 +7719,21 @@ class ND:
         quality : Integer, optional
             socket 'Quality'
         
-        uv_smooth : menu='Keep Boundaries', optional
-            ('None', 'Keep Corners', 'Keep Corners, Junctions', 'Keep Corners, Junctions, Concave', 'Keep Boundaries', 'All')
+        uv_smooth : Menu, optional
+            socket 'UV Smooth'
         
-        boundary_smooth : menu='All', optional
-            ('Keep Corners', 'All')
+        boundary_smooth : Menu, optional
+            socket 'Boundary Smooth'
         
         Returns
         -------
         Node
         """
-        _named_sockets = {'mesh': mesh, 'level': level, 'edge_crease': edge_crease, 'vertex_crease': vertex_crease, 'limit_surface': limit_surface, 'quality': quality, 'uv_smooth': uv_smooth, 'boundary_smooth': boundary_smooth}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Subdivision Surface', named_sockets=_named_sockets)
-        return _node
+        node = Node('Subdivision Surface', named_sockets={'Mesh': mesh, 'Level': level, 'Edge Crease': edge_crease, 'Vertex Crease': vertex_crease, 'Limit Surface': limit_surface, 'Quality': quality, 'UV Smooth': uv_smooth, 'Boundary Smooth': boundary_smooth})
+        return node
 
     @classmethod
-    def switch(cls, switch: Boolean=None, false: Float | Integer | Boolean | Vector | Color | Rotation | Matrix | String | Menu | Object | Image | Geometry | Collection | Material | Bundle | Closure | Font | Sound=None, true: Float | Integer | Boolean | Vector | Color | Rotation | Matrix | String | Menu | Object | Image | Geometry | Collection | Material | Bundle | Closure | Font | Sound=None, input_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'SHADER', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'TEXTURE', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SCENE', 'TEXT', 'MASK', 'SOUND', 'INT_VECTOR']='FLOAT'):
+    def switch(cls, switch: Boolean=None, false: Socket=None, true: Socket=None, input_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SOUND']='FLOAT'):
         """ > Node <&Node Switch>
         
         Parameters
@@ -8374,10 +7741,10 @@ class ND:
         switch : Boolean, optional
             socket 'Switch'
         
-        false : Float | Integer | Boolean | Vector | Color | Rotation | Matrix | String | Menu | Object | Image | Geometry | Collection | Material | Bundle | Closure | Font | Sound, optional
+        false : Socket, optional
             socket 'False'
         
-        true : Float | Integer | Boolean | Vector | Color | Rotation | Matrix | String | Menu | Object | Image | Geometry | Collection | Material | Bundle | Closure | Font | Sound, optional
+        true : Socket, optional
             socket 'True'
         
         input_type : Literal['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Rotation', 'Matrix', 'String', 'Menu', 'Object', 'Image', 'Geometry', 'Collection', 'Material', 'Bundle', 'Closure', 'Font', 'Sound']
@@ -8387,10 +7754,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'switch': switch, 'false': false, 'true': true}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Switch', named_sockets=_named_sockets, input_type=input_type)
-        return _node
+        node = Node('Switch', named_sockets={'Switch': switch, 'False': false, 'True': true}, input_type=input_type)
+        return node
 
     @classmethod
     def tag_filter(cls, tag_filter: String=None, tags: String=None):
@@ -8408,13 +7773,11 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'tag_filter': tag_filter, 'tags': tags}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Tag Filter', named_sockets=_named_sockets)
-        return _node
+        node = Node('Tag Filter', named_sockets={'Tag Filter': tag_filter, 'Tags': tags})
+        return node
 
     @classmethod
-    def transfer_attributes(cls, target: Geometry=None, target_point_id: Integer=None, target_edge_id: Integer=None, target_face_id: Integer=None, target_corner_id: Integer=None, target_curve_id: Integer=None, target_instance_id: Integer=None, source: Geometry=None, source_point_id: Integer=None, source_edge_id: Integer=None, source_face_id: Integer=None, source_corner_id: Integer=None, source_curve_id: Integer=None, source_instance_id: Integer=None, pattern_mode: Literal['Exact', 'Wildcard']=None, attribute_names: String=None, exclude_names: Boolean=None):
+    def transfer_attributes(cls, target: Geometry=None, target_point_id: Integer=None, target_edge_id: Integer=None, target_face_id: Integer=None, target_corner_id: Integer=None, target_curve_id: Integer=None, target_instance_id: Integer=None, source: Geometry=None, source_point_id: Integer=None, source_edge_id: Integer=None, source_face_id: Integer=None, source_corner_id: Integer=None, source_curve_id: Integer=None, source_instance_id: Integer=None, pattern_mode: Menu=None, attribute_names: String=None, exclude_names: Boolean=None):
         """ > Node <&Node Transfer Attributes>
         
         Parameters
@@ -8461,8 +7824,8 @@ class ND:
         source_instance_id : Integer, optional
             socket 'Source Instance ID'
         
-        pattern_mode : menu='Wildcard', optional
-            ('Exact', 'Wildcard')
+        pattern_mode : Menu, optional
+            socket 'Pattern Mode'
         
         attribute_names : String, optional
             socket 'Attribute Names'
@@ -8474,10 +7837,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'target': target, 'target_point_id': target_point_id, 'target_edge_id': target_edge_id, 'target_face_id': target_face_id, 'target_corner_id': target_corner_id, 'target_curve_id': target_curve_id, 'target_instance_id': target_instance_id, 'source': source, 'source_point_id': source_point_id, 'source_edge_id': source_edge_id, 'source_face_id': source_face_id, 'source_corner_id': source_corner_id, 'source_curve_id': source_curve_id, 'source_instance_id': source_instance_id, 'pattern_mode': pattern_mode, 'attribute_names': attribute_names, 'exclude_names': exclude_names}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Transfer Attributes', named_sockets=_named_sockets)
-        return _node
+        node = Node('Transfer Attributes', named_sockets={'Target': target, 'Target Point ID': target_point_id, 'Target Edge ID': target_edge_id, 'Target Face ID': target_face_id, 'Target Corner ID': target_corner_id, 'Target Curve ID': target_curve_id, 'Target Instance ID': target_instance_id, 'Source': source, 'Source Point ID': source_point_id, 'Source Edge ID': source_edge_id, 'Source Face ID': source_face_id, 'Source Corner ID': source_corner_id, 'Source Curve ID': source_curve_id, 'Source Instance ID': source_instance_id, 'Pattern Mode': pattern_mode, 'Attribute Names': attribute_names, 'Exclude Names': exclude_names})
+        return node
 
     @classmethod
     def transform_direction(cls, direction: Vector=None, transform: Matrix=None):
@@ -8495,13 +7856,11 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'direction': direction, 'transform': transform}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Transform Direction', named_sockets=_named_sockets)
-        return _node
+        node = Node('Transform Direction', named_sockets={'Direction': direction, 'Transform': transform})
+        return node
 
     @classmethod
-    def transform_geometry(cls, geometry: Geometry=None, mode: Literal['Components', 'Matrix']=None, translation: Vector=None, rotation: Rotation=None, scale: Vector=None, transform: Matrix=None):
+    def transform_geometry(cls, geometry: Geometry=None, mode: Menu=None, translation: Vector=None, rotation: Rotation=None, scale: Vector=None, transform: Matrix=None):
         """ > Node <&Node Transform Geometry>
         
         Parameters
@@ -8509,8 +7868,8 @@ class ND:
         geometry : Geometry, optional
             socket 'Geometry'
         
-        mode : menu='Components', optional
-            ('Components', 'Matrix')
+        mode : Menu, optional
+            socket 'Mode'
         
         translation : Vector, optional
             socket 'Translation'
@@ -8528,13 +7887,11 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'geometry': geometry, 'mode': mode, 'translation': translation, 'rotation': rotation, 'scale': scale, 'transform': transform}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Transform Geometry', named_sockets=_named_sockets)
-        return _node
+        node = Node('Transform Geometry', named_sockets={'Geometry': geometry, 'Mode': mode, 'Translation': translation, 'Rotation': rotation, 'Scale': scale, 'Transform': transform})
+        return node
 
     @classmethod
-    def transform_gizmo(cls, *value: Matrix, position: Vector=None, rotation: Rotation=None, use_translation_x=True, use_translation_y=True, use_translation_z=True, use_rotation_x=True, use_rotation_y=True, use_rotation_z=True, use_scale_x=True, use_scale_y=True, use_scale_z=True):
+    def transform_gizmo(cls, *value: Matrix, position: Vector=None, rotation: Rotation=None, use_translation_x: bool=True, use_translation_y: bool=True, use_translation_z: bool=True, use_rotation_x: bool=True, use_rotation_y: bool=True, use_rotation_z: bool=True, use_scale_x: bool=True, use_scale_y: bool=True, use_scale_z: bool=True):
         """ > Node <&Node Transform Gizmo>
         
         Parameters
@@ -8579,10 +7936,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'value': list(value), 'position': position, 'rotation': rotation}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Transform Gizmo', named_sockets=_named_sockets, use_translation_x=use_translation_x, use_translation_y=use_translation_y, use_translation_z=use_translation_z, use_rotation_x=use_rotation_x, use_rotation_y=use_rotation_y, use_rotation_z=use_rotation_z, use_scale_x=use_scale_x, use_scale_y=use_scale_y, use_scale_z=use_scale_z)
-        return _node
+        node = Node('Transform Gizmo', *[*list(value)], named_sockets={'Position': position, 'Rotation': rotation}, use_translation_x=use_translation_x, use_translation_y=use_translation_y, use_translation_z=use_translation_z, use_rotation_x=use_rotation_x, use_rotation_y=use_rotation_y, use_rotation_z=use_rotation_z, use_scale_x=use_scale_x, use_scale_y=use_scale_y, use_scale_z=use_scale_z)
+        return node
 
     @classmethod
     def transform_point(cls, vector: Vector=None, transform: Matrix=None):
@@ -8600,10 +7955,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'vector': vector, 'transform': transform}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Transform Point', named_sockets=_named_sockets)
-        return _node
+        node = Node('Transform Point', named_sockets={'Vector': vector, 'Transform': transform})
+        return node
 
     @classmethod
     def translate_instances(cls, instances: Instances=None, selection: Boolean=None, translation: Vector=None, local_space: Boolean=None):
@@ -8627,10 +7980,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'instances': instances, 'selection': selection, 'translation': translation, 'local_space': local_space}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Translate Instances', named_sockets=_named_sockets)
-        return _node
+        node = Node('Translate Instances', named_sockets={'Instances': instances, 'Selection': selection, 'Translation': translation, 'Local Space': local_space})
+        return node
 
     @classmethod
     def transpose_matrix(cls, matrix: Matrix=None):
@@ -8645,13 +7996,11 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'matrix': matrix}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Transpose Matrix', named_sockets=_named_sockets)
-        return _node
+        node = Node('Transpose Matrix', named_sockets={'Matrix': matrix})
+        return node
 
     @classmethod
-    def triangulate(cls, mesh: Mesh=None, selection: Boolean=None, quad_method: Literal['Beauty', 'Fixed', 'Fixed Alternate', 'Shortest Diagonal', 'Longest Diagonal']=None, n_gon_method: Literal['Beauty', 'Clip']=None):
+    def triangulate(cls, mesh: Mesh=None, selection: Boolean=None, quad_method: Menu=None, n_gon_method: Menu=None):
         """ > Node <&Node Triangulate>
         
         Parameters
@@ -8662,23 +8011,21 @@ class ND:
         selection : Boolean, optional
             socket 'Selection'
         
-        quad_method : menu='Shortest Diagonal', optional
-            ('Beauty', 'Fixed', 'Fixed Alternate', 'Shortest Diagonal', 'Longest Diagonal')
+        quad_method : Menu, optional
+            socket 'Quad Method'
         
-        n_gon_method : menu='Beauty', optional
-            ('Beauty', 'Clip')
+        n_gon_method : Menu, optional
+            socket 'N-gon Method'
         
         Returns
         -------
         Node
         """
-        _named_sockets = {'mesh': mesh, 'selection': selection, 'quad_method': quad_method, 'n_gon_method': n_gon_method}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Triangulate', named_sockets=_named_sockets)
-        return _node
+        node = Node('Triangulate', named_sockets={'Mesh': mesh, 'Selection': selection, 'Quad Method': quad_method, 'N-gon Method': n_gon_method})
+        return node
 
     @classmethod
-    def trim_curve(cls, curve: Curve=None, selection: Boolean=None, start: Float=None, end: Float=None, mode: Literal['FACTOR', 'LENGTH']='FACTOR'):
+    def trim_curve(cls, curve: Curve=None, selection: Boolean=None, start: Float=None, end: Float=None, start_1: Float=None, end_1: Float=None, mode: Literal['FACTOR', 'LENGTH']='FACTOR'):
         """ > Node <&Node Trim Curve>
         
         Parameters
@@ -8695,6 +8042,12 @@ class ND:
         end : Float, optional
             socket 'End'
         
+        start_1 : Float, optional
+            socket 'Start'
+        
+        end_1 : Float, optional
+            socket 'End'
+        
         mode : Literal['Factor', 'Length']
             parameter `mode`
         
@@ -8702,10 +8055,11 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'curve': curve, 'selection': selection, 'start': start, 'end': end}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Trim Curve', named_sockets=_named_sockets, mode=mode)
-        return _node
+        _configuration = ({'factor': 'FACTOR', 'length': 'LENGTH'}.get(mode.lower(), mode),)
+        _node_sockets = {('FACTOR',): {'Curve': curve, 'Selection': selection, 'Start': start, 'End': end}, ('LENGTH',): {'Curve': curve, 'Selection': selection, 'Start': start_1, 'End': end_1}}[_configuration]
+        _node_args = {('FACTOR',): [], ('LENGTH',): []}[_configuration]
+        node = Node('Trim Curve', *_node_args, named_sockets=_node_sockets, mode=mode)
+        return node
 
     @classmethod
     def trim_string(cls, string: String=None, characters: String=None, whitespace: Boolean=None, start: Boolean=None, end: Boolean=None):
@@ -8732,10 +8086,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'string': string, 'characters': characters, 'whitespace': whitespace, 'start': start, 'end': end}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Trim String', named_sockets=_named_sockets)
-        return _node
+        node = Node('Trim String', named_sockets={'String': string, 'Characters': characters, 'Whitespace': whitespace, 'Start': start, 'End': end})
+        return node
 
     @classmethod
     def uv_sphere(cls, segments: Integer=None, rings: Integer=None, radius: Float=None):
@@ -8756,19 +8108,17 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'segments': segments, 'rings': rings, 'radius': radius}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('UV Sphere', named_sockets=_named_sockets)
-        return _node
+        node = Node('UV Sphere', named_sockets={'Segments': segments, 'Rings': rings, 'Radius': radius})
+        return node
 
     @classmethod
-    def uv_tangent(cls, method: Literal['Exact', 'Fast']=None, uv: Vector=None):
+    def uv_tangent(cls, method: Menu=None, uv: Vector=None):
         """ > Node <&Node UV Tangent>
         
         Parameters
         ----------
-        method : menu='Exact', optional
-            ('Exact', 'Fast')
+        method : Menu, optional
+            socket 'Method'
         
         uv : Vector, optional
             socket 'UV'
@@ -8777,13 +8127,11 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'method': method, 'uv': uv}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('UV Tangent', named_sockets=_named_sockets)
-        return _node
+        node = Node('UV Tangent', named_sockets={'Method': method, 'UV': uv})
+        return node
 
     @classmethod
-    def uv_unwrap(cls, selection: Boolean=None, seam: Boolean=None, margin: Float=None, fill_holes: Boolean=None, method: Literal['Angle Based', 'Conformal', 'Minimum Stretch']=None, iterations: Integer=None, no_flip: Boolean=None):
+    def uv_unwrap(cls, selection: Boolean=None, seam: Boolean=None, margin: Float=None, fill_holes: Boolean=None, method: Menu=None, iterations: Integer=None, no_flip: Boolean=None):
         """ > Node <&Node UV Unwrap>
         
         Parameters
@@ -8800,8 +8148,8 @@ class ND:
         fill_holes : Boolean, optional
             socket 'Fill Holes'
         
-        method : menu='Angle Based', optional
-            ('Angle Based', 'Conformal', 'Minimum Stretch')
+        method : Menu, optional
+            socket 'Method'
         
         iterations : Integer, optional
             socket 'Iterations'
@@ -8813,10 +8161,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'selection': selection, 'seam': seam, 'margin': margin, 'fill_holes': fill_holes, 'method': method, 'iterations': iterations, 'no_flip': no_flip}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('UV Unwrap', named_sockets=_named_sockets)
-        return _node
+        node = Node('UV Unwrap', named_sockets={'Selection': selection, 'Seam': seam, 'Margin': margin, 'Fill Holes': fill_holes, 'Method': method, 'Iterations': iterations, 'No Flip': no_flip})
+        return node
 
     @utils.classproperty
     def value(cls):
@@ -8824,21 +8170,19 @@ class ND:
         
         Returns
         -------
-        Float
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Value', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('Value', named_sockets={})
+        return node._out
 
     @classmethod
-    def value_to_string(cls, value: Float | Integer=None, decimals: Integer=None, base: Integer=None, padding: Integer=None, data_type: Literal['FLOAT', 'INT']='FLOAT'):
+    def value_to_string(cls, value: Socket=None, decimals: Integer=None, base: Integer=None, padding: Integer=None, data_type: Literal['FLOAT', 'INT']='FLOAT'):
         """ > Node <&Node Value to String>
         
         Parameters
         ----------
-        value : Float | Integer, optional
+        value : Socket, optional
             socket 'Value'
         
         decimals : Integer, optional
@@ -8857,13 +8201,14 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'value': value, 'decimals': decimals, 'base': base, 'padding': padding}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Value to String', named_sockets=_named_sockets, data_type=data_type)
-        return _node
+        _configuration = ({'float': 'FLOAT', 'int': 'INT', 'integer': 'INT'}.get(data_type.lower(), data_type),)
+        _node_sockets = {('FLOAT',): {'Value': value, 'Decimals': decimals}, ('INT',): {'Value': value, 'Base': base, 'Padding': padding}}[_configuration]
+        _node_args = {('FLOAT',): [], ('INT',): []}[_configuration]
+        node = Node('Value to String', *_node_args, named_sockets=_node_sockets, data_type=data_type)
+        return node
 
     @classmethod
-    def vector(cls, vector_dimensions=3):
+    def vector(cls, vector_dimensions: int=3):
         """ > Node <&Node Vector>
         
         Parameters
@@ -8875,34 +8220,30 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Vector', named_sockets=_named_sockets, vector_dimensions=vector_dimensions)
-        return _node
+        node = Node('Vector', named_sockets={}, vector_dimensions=vector_dimensions)
+        return node
 
     @classmethod
-    def vector_curves(cls, factor: Float=None, vector: Vector=None):
+    def vector_curves(cls, vector: Vector=None, factor: Float=None):
         """ > Node <&Node Vector Curves>
         
         Parameters
         ----------
-        factor : Float, optional
-            socket 'Factor'
-        
         vector : Vector, optional
             socket 'Vector'
+        
+        factor : Float, optional
+            socket 'Factor'
         
         Returns
         -------
         Node
         """
-        _named_sockets = {'factor': factor, 'vector': vector}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Vector Curves', named_sockets=_named_sockets)
-        return _node
+        node = Node('Vector Curves', named_sockets={'Factor': factor, 'Vector': vector})
+        return node
 
     @classmethod
-    def vector_math(cls, vector: Vector=None, base: Vector=None, vector_1: Vector=None, multiplier: Vector=None, incident: Vector=None, exponent: Vector=None, max: Vector=None, increment: Vector=None, addend: Vector=None, reference: Vector=None, min: Vector=None, ior: Float=None, scale: Float=None, operation: Literal['ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'MULTIPLY_ADD', 'CROSS_PRODUCT', 'PROJECT', 'REFLECT', 'REFRACT', 'FACEFORWARD', 'DOT_PRODUCT', 'DISTANCE', 'LENGTH', 'SCALE', 'NORMALIZE', 'ABSOLUTE', 'POWER', 'SIGN', 'MINIMUM', 'MAXIMUM', 'ROUND', 'FLOOR', 'CEIL', 'FRACTION', 'MODULO', 'WRAP', 'SNAP', 'SINE', 'COSINE', 'TANGENT']='ADD'):
+    def vector_math(cls, vector: Vector=None, base: Vector=None, vector_1: Vector=None, multiplier: Vector=None, incident: Vector=None, exponent: Vector=None, max: Vector=None, increment: Vector=None, addend: Vector=None, reference: Vector=None, min: Vector=None, scale: Float=None, ior: Float=None, operation: Literal['ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'MULTIPLY_ADD', 'CROSS_PRODUCT', 'PROJECT', 'REFLECT', 'REFRACT', 'FACEFORWARD', 'DOT_PRODUCT', 'DISTANCE', 'LENGTH', 'SCALE', 'NORMALIZE', 'ABSOLUTE', 'POWER', 'SIGN', 'MINIMUM', 'MAXIMUM', 'ROUND', 'FLOOR', 'CEIL', 'FRACTION', 'MODULO', 'WRAP', 'SNAP', 'SINE', 'COSINE', 'TANGENT']='ADD'):
         """ > Node <&Node Vector Math>
         
         Parameters
@@ -8940,11 +8281,11 @@ class ND:
         min : Vector, optional
             socket 'Min'
         
-        ior : Float, optional
-            socket 'IOR'
-        
         scale : Float, optional
             socket 'Scale'
+        
+        ior : Float, optional
+            socket 'IOR'
         
         operation : Literal['Add', 'Subtract', 'Multiply', 'Divide', 'Multiply Add', 'Cross Product', 'Project', 'Reflect', 'Refract', 'Faceforward', 'Dot Product', 'Distance', 'Length', 'Scale', 'Normalize', 'Absolute', 'Power', 'Sign', 'Minimum', 'Maximum', 'Round', 'Floor', 'Ceil', 'Fraction', 'Modulo', 'Wrap', 'Snap', 'Sine', 'Cosine', 'Tangent']
             parameter `operation`
@@ -8953,16 +8294,14 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'vector': vector, 'base': base, 'vector_1': vector_1, 'multiplier': multiplier, 'incident': incident, 'exponent': exponent, 'max': max, 'increment': increment, 'addend': addend, 'reference': reference, 'min': min, 'ior': ior, 'scale': scale}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _values = {('ADD',): ['vector', 'vector_1'], ('SUBTRACT',): ['vector', 'vector_1'], ('MULTIPLY',): ['vector', 'vector_1'], ('DIVIDE',): ['vector', 'vector_1'], ('MULTIPLY_ADD',): ['vector', 'multiplier', 'addend'], ('CROSS_PRODUCT',): ['vector', 'vector_1'], ('PROJECT',): ['vector', 'vector_1'], ('REFLECT',): ['vector', 'vector_1'], ('REFRACT',): ['vector', 'vector_1', 'ior'], ('FACEFORWARD',): ['vector', 'incident', 'reference'], ('DOT_PRODUCT',): ['vector', 'vector_1'], ('DISTANCE',): ['vector', 'vector_1'], ('LENGTH',): ['vector'], ('SCALE',): ['vector', 'scale'], ('NORMALIZE',): ['vector'], ('ABSOLUTE',): ['vector'], ('POWER',): ['base', 'exponent'], ('SIGN',): ['vector'], ('MINIMUM',): ['vector', 'vector_1'], ('MAXIMUM',): ['vector', 'vector_1'], ('ROUND',): ['vector'], ('FLOOR',): ['vector'], ('CEIL',): ['vector'], ('FRACTION',): ['vector'], ('MODULO',): ['vector', 'vector_1'], ('WRAP',): ['vector', 'max', 'min'], ('SNAP',): ['vector', 'increment'], ('SINE',): ['vector'], ('COSINE',): ['vector'], ('TANGENT',): ['vector']}
         _configuration = ({'add': 'ADD', 'subtract': 'SUBTRACT', 'multiply': 'MULTIPLY', 'divide': 'DIVIDE', 'multiply_add': 'MULTIPLY_ADD', 'cross_product': 'CROSS_PRODUCT', 'project': 'PROJECT', 'reflect': 'REFLECT', 'refract': 'REFRACT', 'faceforward': 'FACEFORWARD', 'dot_product': 'DOT_PRODUCT', 'distance': 'DISTANCE', 'length': 'LENGTH', 'scale': 'SCALE', 'normalize': 'NORMALIZE', 'absolute': 'ABSOLUTE', 'power': 'POWER', 'sign': 'SIGN', 'minimum': 'MINIMUM', 'maximum': 'MAXIMUM', 'round': 'ROUND', 'floor': 'FLOOR', 'ceil': 'CEIL', 'fraction': 'FRACTION', 'modulo': 'MODULO', 'wrap': 'WRAP', 'snap': 'SNAP', 'sine': 'SINE', 'cosine': 'COSINE', 'tangent': 'TANGENT', 'multiply add': 'MULTIPLY_ADD', 'cross product': 'CROSS_PRODUCT', 'dot product': 'DOT_PRODUCT'}.get(operation.lower(), operation),)
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _name in _values[_configuration]}
-        _node = Node('Vector Math', named_sockets=_named_sockets, operation=operation)
-        return _node
+        _node_sockets = {('ADD',): {'Vector': vector, 'Vector_1': vector_1}, ('SUBTRACT',): {'Vector': vector, 'Vector_1': vector_1}, ('MULTIPLY',): {'Vector': vector, 'Vector_1': vector_1}, ('DIVIDE',): {'Vector': vector, 'Vector_1': vector_1}, ('MULTIPLY_ADD',): {'Vector': vector, 'Multiplier': multiplier, 'Addend': addend}, ('CROSS_PRODUCT',): {'Vector': vector, 'Vector_1': vector_1}, ('PROJECT',): {'Vector': vector, 'Vector_1': vector_1}, ('REFLECT',): {'Vector': vector, 'Vector_1': vector_1}, ('REFRACT',): {'Vector': vector, 'Vector_1': vector_1, 'IOR': ior}, ('FACEFORWARD',): {'Vector': vector, 'Incident': incident, 'Reference': reference}, ('DOT_PRODUCT',): {'Vector': vector, 'Vector_1': vector_1}, ('DISTANCE',): {'Vector': vector, 'Vector_1': vector_1}, ('LENGTH',): {'Vector': vector}, ('SCALE',): {'Vector': vector, 'Scale': scale}, ('NORMALIZE',): {'Vector': vector}, ('ABSOLUTE',): {'Vector': vector}, ('POWER',): {'Base': base, 'Exponent': exponent}, ('SIGN',): {'Vector': vector}, ('MINIMUM',): {'Vector': vector, 'Vector_1': vector_1}, ('MAXIMUM',): {'Vector': vector, 'Vector_1': vector_1}, ('ROUND',): {'Vector': vector}, ('FLOOR',): {'Vector': vector}, ('CEIL',): {'Vector': vector}, ('FRACTION',): {'Vector': vector}, ('MODULO',): {'Vector': vector, 'Vector_1': vector_1}, ('WRAP',): {'Vector': vector, 'Max': max, 'Min': min}, ('SNAP',): {'Vector': vector, 'Increment': increment}, ('SINE',): {'Vector': vector}, ('COSINE',): {'Vector': vector}, ('TANGENT',): {'Vector': vector}}[_configuration]
+        _node_args = {('ADD',): [], ('SUBTRACT',): [], ('MULTIPLY',): [], ('DIVIDE',): [], ('MULTIPLY_ADD',): [], ('CROSS_PRODUCT',): [], ('PROJECT',): [], ('REFLECT',): [], ('REFRACT',): [], ('FACEFORWARD',): [], ('DOT_PRODUCT',): [], ('DISTANCE',): [], ('LENGTH',): [], ('SCALE',): [], ('NORMALIZE',): [], ('ABSOLUTE',): [], ('POWER',): [], ('SIGN',): [], ('MINIMUM',): [], ('MAXIMUM',): [], ('ROUND',): [], ('FLOOR',): [], ('CEIL',): [], ('FRACTION',): [], ('MODULO',): [], ('WRAP',): [], ('SNAP',): [], ('SINE',): [], ('COSINE',): [], ('TANGENT',): []}[_configuration]
+        node = Node('Vector Math', *_node_args, named_sockets=_node_sockets, operation=operation)
+        return node
 
     @classmethod
-    def vector_rotate(cls, vector: Vector=None, center: Vector=None, axis: Vector=None, angle: Float=None, rotation: Vector=None, rotation_type: Literal['AXIS_ANGLE', 'X_AXIS', 'Y_AXIS', 'Z_AXIS', 'EULER_XYZ']='AXIS_ANGLE', invert=False):
+    def vector_rotate(cls, vector: Vector=None, center: Vector=None, axis: Vector=None, angle: Float=None, rotation: Vector=None, rotation_type: Literal['AXIS_ANGLE', 'X_AXIS', 'Y_AXIS', 'Z_AXIS', 'EULER_XYZ']='AXIS_ANGLE', invert: bool=False):
         """ > Node <&Node Vector Rotate>
         
         Parameters
@@ -8992,10 +8331,11 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'vector': vector, 'center': center, 'axis': axis, 'angle': angle, 'rotation': rotation}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Vector Rotate', named_sockets=_named_sockets, rotation_type=rotation_type, invert=invert)
-        return _node
+        _configuration = ({'axis_angle': 'AXIS_ANGLE', 'x_axis': 'X_AXIS', 'y_axis': 'Y_AXIS', 'z_axis': 'Z_AXIS', 'euler_xyz': 'EULER_XYZ', 'axis angle': 'AXIS_ANGLE', 'x axis': 'X_AXIS', 'y axis': 'Y_AXIS', 'z axis': 'Z_AXIS', 'euler': 'EULER_XYZ'}.get(rotation_type.lower(), rotation_type),)
+        _node_sockets = {('AXIS_ANGLE',): {'Vector': vector, 'Center': center, 'Axis': axis, 'Angle': angle}, ('X_AXIS',): {'Vector': vector, 'Center': center, 'Angle': angle}, ('Y_AXIS',): {'Vector': vector, 'Center': center, 'Angle': angle}, ('Z_AXIS',): {'Vector': vector, 'Center': center, 'Angle': angle}, ('EULER_XYZ',): {'Vector': vector, 'Center': center, 'Rotation': rotation}}[_configuration]
+        _node_args = {('AXIS_ANGLE',): [], ('X_AXIS',): [], ('Y_AXIS',): [], ('Z_AXIS',): [], ('EULER_XYZ',): []}[_configuration]
+        node = Node('Vector Rotate', *_node_args, named_sockets=_node_sockets, rotation_type=rotation_type, invert=invert)
+        return node
 
     @classmethod
     def vertex_neighbors(cls):
@@ -9005,10 +8345,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Vertex Neighbors', named_sockets=_named_sockets)
-        return _node
+        node = Node('Vertex Neighbors', named_sockets={})
+        return node
 
     @classmethod
     def vertex_of_corner(cls, corner_index: Integer=None):
@@ -9023,10 +8361,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'corner_index': corner_index}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Vertex of Corner', named_sockets=_named_sockets)
-        return _node
+        node = Node('Vertex of Corner', named_sockets={'Corner Index': corner_index})
+        return node
 
     @classmethod
     def viewer(cls, named_sockets=None, domain: Literal['AUTO', 'POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']='AUTO', **sockets):
@@ -9042,10 +8378,9 @@ class ND:
         Node
         """
         _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _named_sockets.update({_name: _value for _name, _value in (named_sockets or {}).items() if _value is not None})
-        _node = Node('Viewer', named_sockets=_named_sockets, domain=domain, **sockets)
-        return _node
+        _named_sockets.update({name: value for name, value in (named_sockets or {}).items() if value is not None})
+        node = Node('Viewer', named_sockets=_named_sockets, domain=domain, **sockets)
+        return node
 
     @classmethod
     def viewport_transform(cls):
@@ -9055,10 +8390,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Viewport Transform', named_sockets=_named_sockets)
-        return _node
+        node = Node('Viewport Transform', named_sockets={})
+        return node
 
     @classmethod
     def volume_cube(cls, density: Float=None, background: Float=None, min: Vector=None, max: Vector=None, resolution_x: Integer=None, resolution_y: Integer=None, resolution_z: Integer=None):
@@ -9091,13 +8424,11 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'density': density, 'background': background, 'min': min, 'max': max, 'resolution_x': resolution_x, 'resolution_y': resolution_y, 'resolution_z': resolution_z}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Volume Cube', named_sockets=_named_sockets)
-        return _node
+        node = Node('Volume Cube', named_sockets={'Density': density, 'Background': background, 'Min': min, 'Max': max, 'Resolution X': resolution_x, 'Resolution Y': resolution_y, 'Resolution Z': resolution_z})
+        return node
 
     @classmethod
-    def volume_to_mesh(cls, volume: Volume=None, resolution_mode: Literal['Grid', 'Amount', 'Size']=None, voxel_size: Float=None, voxel_amount: Float=None, threshold: Float=None, adaptivity: Float=None):
+    def volume_to_mesh(cls, volume: Volume=None, resolution_mode: Menu=None, voxel_size: Float=None, voxel_amount: Float=None, threshold: Float=None, adaptivity: Float=None):
         """ > Node <&Node Volume to Mesh>
         
         Parameters
@@ -9105,8 +8436,8 @@ class ND:
         volume : Volume, optional
             socket 'Volume'
         
-        resolution_mode : menu='Grid', optional
-            ('Grid', 'Amount', 'Size')
+        resolution_mode : Menu, optional
+            socket 'Resolution Mode'
         
         voxel_size : Float, optional
             socket 'Voxel Size'
@@ -9124,13 +8455,11 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'volume': volume, 'resolution_mode': resolution_mode, 'voxel_size': voxel_size, 'voxel_amount': voxel_amount, 'threshold': threshold, 'adaptivity': adaptivity}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Volume to Mesh', named_sockets=_named_sockets)
-        return _node
+        node = Node('Volume to Mesh', named_sockets={'Volume': volume, 'Resolution Mode': resolution_mode, 'Voxel Size': voxel_size, 'Voxel Amount': voxel_amount, 'Threshold': threshold, 'Adaptivity': adaptivity})
+        return node
 
     @classmethod
-    def voronoi_texture(cls, vector: Vector=None, w: Float=None, scale: Float=None, detail: Float=None, roughness: Float=None, lacunarity: Float=None, smoothness: Float=None, exponent: Float=None, randomness: Float=None, voronoi_dimensions: Literal['1D', '2D', '3D', '4D']='3D', distance: Literal['EUCLIDEAN', 'MANHATTAN', 'CHEBYCHEV', 'MINKOWSKI']='EUCLIDEAN', feature: Literal['F1', 'F2', 'SMOOTH_F1', 'DISTANCE_TO_EDGE', 'N_SPHERE_RADIUS']='F1', normalize=False):
+    def voronoi_texture(cls, vector: Vector=None, w: Float=None, scale: Float=None, detail: Float=None, roughness: Float=None, lacunarity: Float=None, smoothness: Float=None, exponent: Float=None, randomness: Float=None, voronoi_dimensions: Literal['1D', '2D', '3D', '4D']='3D', distance: Literal['EUCLIDEAN', 'MANHATTAN', 'CHEBYCHEV', 'MINKOWSKI']='EUCLIDEAN', feature: Literal['F1', 'F2', 'SMOOTH_F1', 'DISTANCE_TO_EDGE', 'N_SPHERE_RADIUS']='F1', normalize: bool=False):
         """ > Node <&Node Voronoi Texture>
         
         Parameters
@@ -9178,10 +8507,11 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'vector': vector, 'w': w, 'scale': scale, 'detail': detail, 'roughness': roughness, 'lacunarity': lacunarity, 'smoothness': smoothness, 'exponent': exponent, 'randomness': randomness}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Voronoi Texture', named_sockets=_named_sockets, voronoi_dimensions=voronoi_dimensions, distance=distance, feature=feature, normalize=normalize)
-        return _node
+        _configuration = ({'1d': '1D', '2d': '2D', '3d': '3D', '4d': '4D'}.get(voronoi_dimensions.lower(), voronoi_dimensions), {'euclidean': 'EUCLIDEAN', 'manhattan': 'MANHATTAN', 'chebychev': 'CHEBYCHEV', 'minkowski': 'MINKOWSKI'}.get(distance.lower(), distance), {'f1': 'F1', 'f2': 'F2', 'smooth_f1': 'SMOOTH_F1', 'distance_to_edge': 'DISTANCE_TO_EDGE', 'n_sphere_radius': 'N_SPHERE_RADIUS', 'smooth f1': 'SMOOTH_F1', 'distance to edge': 'DISTANCE_TO_EDGE', 'n-sphere radius': 'N_SPHERE_RADIUS'}.get(feature.lower(), feature))
+        _node_sockets = {('1D', 'EUCLIDEAN', 'F1'): {'W': w, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Randomness': randomness}, ('1D', 'EUCLIDEAN', 'F2'): {'W': w, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Randomness': randomness}, ('1D', 'EUCLIDEAN', 'SMOOTH_F1'): {'W': w, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Smoothness': smoothness, 'Randomness': randomness}, ('1D', 'EUCLIDEAN', 'DISTANCE_TO_EDGE'): {'W': w, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Randomness': randomness}, ('1D', 'EUCLIDEAN', 'N_SPHERE_RADIUS'): {'W': w, 'Scale': scale, 'Randomness': randomness}, ('1D', 'MANHATTAN', 'F1'): {'W': w, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Randomness': randomness}, ('1D', 'MANHATTAN', 'F2'): {'W': w, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Randomness': randomness}, ('1D', 'MANHATTAN', 'SMOOTH_F1'): {'W': w, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Smoothness': smoothness, 'Randomness': randomness}, ('1D', 'MANHATTAN', 'DISTANCE_TO_EDGE'): {'W': w, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Randomness': randomness}, ('1D', 'MANHATTAN', 'N_SPHERE_RADIUS'): {'W': w, 'Scale': scale, 'Randomness': randomness}, ('1D', 'CHEBYCHEV', 'F1'): {'W': w, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Randomness': randomness}, ('1D', 'CHEBYCHEV', 'F2'): {'W': w, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Randomness': randomness}, ('1D', 'CHEBYCHEV', 'SMOOTH_F1'): {'W': w, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Smoothness': smoothness, 'Randomness': randomness}, ('1D', 'CHEBYCHEV', 'DISTANCE_TO_EDGE'): {'W': w, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Randomness': randomness}, ('1D', 'CHEBYCHEV', 'N_SPHERE_RADIUS'): {'W': w, 'Scale': scale, 'Randomness': randomness}, ('1D', 'MINKOWSKI', 'F1'): {'W': w, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Randomness': randomness}, ('1D', 'MINKOWSKI', 'F2'): {'W': w, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Randomness': randomness}, ('1D', 'MINKOWSKI', 'SMOOTH_F1'): {'W': w, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Smoothness': smoothness, 'Randomness': randomness}, ('1D', 'MINKOWSKI', 'DISTANCE_TO_EDGE'): {'W': w, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Randomness': randomness}, ('1D', 'MINKOWSKI', 'N_SPHERE_RADIUS'): {'W': w, 'Scale': scale, 'Randomness': randomness}, ('2D', 'EUCLIDEAN', 'F1'): {'Vector': vector, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Randomness': randomness}, ('2D', 'EUCLIDEAN', 'F2'): {'Vector': vector, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Randomness': randomness}, ('2D', 'EUCLIDEAN', 'SMOOTH_F1'): {'Vector': vector, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Smoothness': smoothness, 'Randomness': randomness}, ('2D', 'EUCLIDEAN', 'DISTANCE_TO_EDGE'): {'Vector': vector, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Randomness': randomness}, ('2D', 'EUCLIDEAN', 'N_SPHERE_RADIUS'): {'Vector': vector, 'Scale': scale, 'Randomness': randomness}, ('2D', 'MANHATTAN', 'F1'): {'Vector': vector, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Randomness': randomness}, ('2D', 'MANHATTAN', 'F2'): {'Vector': vector, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Randomness': randomness}, ('2D', 'MANHATTAN', 'SMOOTH_F1'): {'Vector': vector, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Smoothness': smoothness, 'Randomness': randomness}, ('2D', 'MANHATTAN', 'DISTANCE_TO_EDGE'): {'Vector': vector, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Randomness': randomness}, ('2D', 'MANHATTAN', 'N_SPHERE_RADIUS'): {'Vector': vector, 'Scale': scale, 'Randomness': randomness}, ('2D', 'CHEBYCHEV', 'F1'): {'Vector': vector, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Randomness': randomness}, ('2D', 'CHEBYCHEV', 'F2'): {'Vector': vector, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Randomness': randomness}, ('2D', 'CHEBYCHEV', 'SMOOTH_F1'): {'Vector': vector, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Smoothness': smoothness, 'Randomness': randomness}, ('2D', 'CHEBYCHEV', 'DISTANCE_TO_EDGE'): {'Vector': vector, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Randomness': randomness}, ('2D', 'CHEBYCHEV', 'N_SPHERE_RADIUS'): {'Vector': vector, 'Scale': scale, 'Randomness': randomness}, ('2D', 'MINKOWSKI', 'F1'): {'Vector': vector, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Exponent': exponent, 'Randomness': randomness}, ('2D', 'MINKOWSKI', 'F2'): {'Vector': vector, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Exponent': exponent, 'Randomness': randomness}, ('2D', 'MINKOWSKI', 'SMOOTH_F1'): {'Vector': vector, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Smoothness': smoothness, 'Exponent': exponent, 'Randomness': randomness}, ('2D', 'MINKOWSKI', 'DISTANCE_TO_EDGE'): {'Vector': vector, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Randomness': randomness}, ('2D', 'MINKOWSKI', 'N_SPHERE_RADIUS'): {'Vector': vector, 'Scale': scale, 'Randomness': randomness}, ('3D', 'EUCLIDEAN', 'F1'): {'Vector': vector, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Randomness': randomness}, ('3D', 'EUCLIDEAN', 'F2'): {'Vector': vector, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Randomness': randomness}, ('3D', 'EUCLIDEAN', 'SMOOTH_F1'): {'Vector': vector, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Smoothness': smoothness, 'Randomness': randomness}, ('3D', 'EUCLIDEAN', 'DISTANCE_TO_EDGE'): {'Vector': vector, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Randomness': randomness}, ('3D', 'EUCLIDEAN', 'N_SPHERE_RADIUS'): {'Vector': vector, 'Scale': scale, 'Randomness': randomness}, ('3D', 'MANHATTAN', 'F1'): {'Vector': vector, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Randomness': randomness}, ('3D', 'MANHATTAN', 'F2'): {'Vector': vector, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Randomness': randomness}, ('3D', 'MANHATTAN', 'SMOOTH_F1'): {'Vector': vector, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Smoothness': smoothness, 'Randomness': randomness}, ('3D', 'MANHATTAN', 'DISTANCE_TO_EDGE'): {'Vector': vector, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Randomness': randomness}, ('3D', 'MANHATTAN', 'N_SPHERE_RADIUS'): {'Vector': vector, 'Scale': scale, 'Randomness': randomness}, ('3D', 'CHEBYCHEV', 'F1'): {'Vector': vector, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Randomness': randomness}, ('3D', 'CHEBYCHEV', 'F2'): {'Vector': vector, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Randomness': randomness}, ('3D', 'CHEBYCHEV', 'SMOOTH_F1'): {'Vector': vector, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Smoothness': smoothness, 'Randomness': randomness}, ('3D', 'CHEBYCHEV', 'DISTANCE_TO_EDGE'): {'Vector': vector, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Randomness': randomness}, ('3D', 'CHEBYCHEV', 'N_SPHERE_RADIUS'): {'Vector': vector, 'Scale': scale, 'Randomness': randomness}, ('3D', 'MINKOWSKI', 'F1'): {'Vector': vector, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Exponent': exponent, 'Randomness': randomness}, ('3D', 'MINKOWSKI', 'F2'): {'Vector': vector, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Exponent': exponent, 'Randomness': randomness}, ('3D', 'MINKOWSKI', 'SMOOTH_F1'): {'Vector': vector, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Smoothness': smoothness, 'Exponent': exponent, 'Randomness': randomness}, ('3D', 'MINKOWSKI', 'DISTANCE_TO_EDGE'): {'Vector': vector, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Randomness': randomness}, ('3D', 'MINKOWSKI', 'N_SPHERE_RADIUS'): {'Vector': vector, 'Scale': scale, 'Randomness': randomness}, ('4D', 'EUCLIDEAN', 'F1'): {'Vector': vector, 'W': w, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Randomness': randomness}, ('4D', 'EUCLIDEAN', 'F2'): {'Vector': vector, 'W': w, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Randomness': randomness}, ('4D', 'EUCLIDEAN', 'SMOOTH_F1'): {'Vector': vector, 'W': w, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Smoothness': smoothness, 'Randomness': randomness}, ('4D', 'EUCLIDEAN', 'DISTANCE_TO_EDGE'): {'Vector': vector, 'W': w, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Randomness': randomness}, ('4D', 'EUCLIDEAN', 'N_SPHERE_RADIUS'): {'Vector': vector, 'W': w, 'Scale': scale, 'Randomness': randomness}, ('4D', 'MANHATTAN', 'F1'): {'Vector': vector, 'W': w, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Randomness': randomness}, ('4D', 'MANHATTAN', 'F2'): {'Vector': vector, 'W': w, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Randomness': randomness}, ('4D', 'MANHATTAN', 'SMOOTH_F1'): {'Vector': vector, 'W': w, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Smoothness': smoothness, 'Randomness': randomness}, ('4D', 'MANHATTAN', 'DISTANCE_TO_EDGE'): {'Vector': vector, 'W': w, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Randomness': randomness}, ('4D', 'MANHATTAN', 'N_SPHERE_RADIUS'): {'Vector': vector, 'W': w, 'Scale': scale, 'Randomness': randomness}, ('4D', 'CHEBYCHEV', 'F1'): {'Vector': vector, 'W': w, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Randomness': randomness}, ('4D', 'CHEBYCHEV', 'F2'): {'Vector': vector, 'W': w, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Randomness': randomness}, ('4D', 'CHEBYCHEV', 'SMOOTH_F1'): {'Vector': vector, 'W': w, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Smoothness': smoothness, 'Randomness': randomness}, ('4D', 'CHEBYCHEV', 'DISTANCE_TO_EDGE'): {'Vector': vector, 'W': w, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Randomness': randomness}, ('4D', 'CHEBYCHEV', 'N_SPHERE_RADIUS'): {'Vector': vector, 'W': w, 'Scale': scale, 'Randomness': randomness}, ('4D', 'MINKOWSKI', 'F1'): {'Vector': vector, 'W': w, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Exponent': exponent, 'Randomness': randomness}, ('4D', 'MINKOWSKI', 'F2'): {'Vector': vector, 'W': w, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Exponent': exponent, 'Randomness': randomness}, ('4D', 'MINKOWSKI', 'SMOOTH_F1'): {'Vector': vector, 'W': w, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Smoothness': smoothness, 'Exponent': exponent, 'Randomness': randomness}, ('4D', 'MINKOWSKI', 'DISTANCE_TO_EDGE'): {'Vector': vector, 'W': w, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Randomness': randomness}, ('4D', 'MINKOWSKI', 'N_SPHERE_RADIUS'): {'Vector': vector, 'W': w, 'Scale': scale, 'Randomness': randomness}}[_configuration]
+        _node_args = {('1D', 'EUCLIDEAN', 'F1'): [], ('1D', 'EUCLIDEAN', 'F2'): [], ('1D', 'EUCLIDEAN', 'SMOOTH_F1'): [], ('1D', 'EUCLIDEAN', 'DISTANCE_TO_EDGE'): [], ('1D', 'EUCLIDEAN', 'N_SPHERE_RADIUS'): [], ('1D', 'MANHATTAN', 'F1'): [], ('1D', 'MANHATTAN', 'F2'): [], ('1D', 'MANHATTAN', 'SMOOTH_F1'): [], ('1D', 'MANHATTAN', 'DISTANCE_TO_EDGE'): [], ('1D', 'MANHATTAN', 'N_SPHERE_RADIUS'): [], ('1D', 'CHEBYCHEV', 'F1'): [], ('1D', 'CHEBYCHEV', 'F2'): [], ('1D', 'CHEBYCHEV', 'SMOOTH_F1'): [], ('1D', 'CHEBYCHEV', 'DISTANCE_TO_EDGE'): [], ('1D', 'CHEBYCHEV', 'N_SPHERE_RADIUS'): [], ('1D', 'MINKOWSKI', 'F1'): [], ('1D', 'MINKOWSKI', 'F2'): [], ('1D', 'MINKOWSKI', 'SMOOTH_F1'): [], ('1D', 'MINKOWSKI', 'DISTANCE_TO_EDGE'): [], ('1D', 'MINKOWSKI', 'N_SPHERE_RADIUS'): [], ('2D', 'EUCLIDEAN', 'F1'): [], ('2D', 'EUCLIDEAN', 'F2'): [], ('2D', 'EUCLIDEAN', 'SMOOTH_F1'): [], ('2D', 'EUCLIDEAN', 'DISTANCE_TO_EDGE'): [], ('2D', 'EUCLIDEAN', 'N_SPHERE_RADIUS'): [], ('2D', 'MANHATTAN', 'F1'): [], ('2D', 'MANHATTAN', 'F2'): [], ('2D', 'MANHATTAN', 'SMOOTH_F1'): [], ('2D', 'MANHATTAN', 'DISTANCE_TO_EDGE'): [], ('2D', 'MANHATTAN', 'N_SPHERE_RADIUS'): [], ('2D', 'CHEBYCHEV', 'F1'): [], ('2D', 'CHEBYCHEV', 'F2'): [], ('2D', 'CHEBYCHEV', 'SMOOTH_F1'): [], ('2D', 'CHEBYCHEV', 'DISTANCE_TO_EDGE'): [], ('2D', 'CHEBYCHEV', 'N_SPHERE_RADIUS'): [], ('2D', 'MINKOWSKI', 'F1'): [], ('2D', 'MINKOWSKI', 'F2'): [], ('2D', 'MINKOWSKI', 'SMOOTH_F1'): [], ('2D', 'MINKOWSKI', 'DISTANCE_TO_EDGE'): [], ('2D', 'MINKOWSKI', 'N_SPHERE_RADIUS'): [], ('3D', 'EUCLIDEAN', 'F1'): [], ('3D', 'EUCLIDEAN', 'F2'): [], ('3D', 'EUCLIDEAN', 'SMOOTH_F1'): [], ('3D', 'EUCLIDEAN', 'DISTANCE_TO_EDGE'): [], ('3D', 'EUCLIDEAN', 'N_SPHERE_RADIUS'): [], ('3D', 'MANHATTAN', 'F1'): [], ('3D', 'MANHATTAN', 'F2'): [], ('3D', 'MANHATTAN', 'SMOOTH_F1'): [], ('3D', 'MANHATTAN', 'DISTANCE_TO_EDGE'): [], ('3D', 'MANHATTAN', 'N_SPHERE_RADIUS'): [], ('3D', 'CHEBYCHEV', 'F1'): [], ('3D', 'CHEBYCHEV', 'F2'): [], ('3D', 'CHEBYCHEV', 'SMOOTH_F1'): [], ('3D', 'CHEBYCHEV', 'DISTANCE_TO_EDGE'): [], ('3D', 'CHEBYCHEV', 'N_SPHERE_RADIUS'): [], ('3D', 'MINKOWSKI', 'F1'): [], ('3D', 'MINKOWSKI', 'F2'): [], ('3D', 'MINKOWSKI', 'SMOOTH_F1'): [], ('3D', 'MINKOWSKI', 'DISTANCE_TO_EDGE'): [], ('3D', 'MINKOWSKI', 'N_SPHERE_RADIUS'): [], ('4D', 'EUCLIDEAN', 'F1'): [], ('4D', 'EUCLIDEAN', 'F2'): [], ('4D', 'EUCLIDEAN', 'SMOOTH_F1'): [], ('4D', 'EUCLIDEAN', 'DISTANCE_TO_EDGE'): [], ('4D', 'EUCLIDEAN', 'N_SPHERE_RADIUS'): [], ('4D', 'MANHATTAN', 'F1'): [], ('4D', 'MANHATTAN', 'F2'): [], ('4D', 'MANHATTAN', 'SMOOTH_F1'): [], ('4D', 'MANHATTAN', 'DISTANCE_TO_EDGE'): [], ('4D', 'MANHATTAN', 'N_SPHERE_RADIUS'): [], ('4D', 'CHEBYCHEV', 'F1'): [], ('4D', 'CHEBYCHEV', 'F2'): [], ('4D', 'CHEBYCHEV', 'SMOOTH_F1'): [], ('4D', 'CHEBYCHEV', 'DISTANCE_TO_EDGE'): [], ('4D', 'CHEBYCHEV', 'N_SPHERE_RADIUS'): [], ('4D', 'MINKOWSKI', 'F1'): [], ('4D', 'MINKOWSKI', 'F2'): [], ('4D', 'MINKOWSKI', 'SMOOTH_F1'): [], ('4D', 'MINKOWSKI', 'DISTANCE_TO_EDGE'): [], ('4D', 'MINKOWSKI', 'N_SPHERE_RADIUS'): []}[_configuration]
+        node = Node('Voronoi Texture', *_node_args, named_sockets=_node_sockets, voronoi_dimensions=voronoi_dimensions, distance=distance, feature=feature, normalize=normalize)
+        return node
 
     @classmethod
     def voxel_index(cls):
@@ -9191,18 +8521,16 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Voxel Index', named_sockets=_named_sockets)
-        return _node
+        node = Node('Voxel Index', named_sockets={})
+        return node
 
     @classmethod
-    def voxelize_grid(cls, grid: Float | Integer | Boolean | Vector=None, data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'SHADER', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'TEXTURE', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SCENE', 'TEXT', 'MASK', 'SOUND', 'INT_VECTOR']='FLOAT'):
+    def voxelize_grid(cls, grid: Socket=None, data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR']='FLOAT'):
         """ > Node <&Node Voxelize Grid>
         
         Parameters
         ----------
-        grid : Float | Integer | Boolean | Vector, optional
+        grid : Socket, optional
             socket 'Grid'
         
         data_type : Literal['Float', 'Integer', 'Boolean', 'Vector']
@@ -9212,10 +8540,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'grid': grid}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Voxelize Grid', named_sockets=_named_sockets, data_type=data_type)
-        return _node
+        node = Node('Voxelize Grid', named_sockets={'Grid': grid}, data_type=data_type)
+        return node
 
     @classmethod
     def warning(cls, show: Boolean=None, message: String=None, warning_type: Literal['ERROR', 'WARNING', 'INFO']='ERROR'):
@@ -9236,10 +8562,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'show': show, 'message': message}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Warning', named_sockets=_named_sockets, warning_type=warning_type)
-        return _node
+        node = Node('Warning', named_sockets={'Show': show, 'Message': message}, warning_type=warning_type)
+        return node
 
     @classmethod
     def wave_texture(cls, vector: Vector=None, scale: Float=None, distortion: Float=None, detail: Float=None, detail_scale: Float=None, detail_roughness: Float=None, phase_offset: Float=None, wave_type: Literal['BANDS', 'RINGS']='BANDS', bands_direction: Literal['X', 'Y', 'Z', 'DIAGONAL']='X', rings_direction: Literal['X', 'Y', 'Z', 'SPHERICAL']='X', wave_profile: Literal['SIN', 'SAW', 'TRI']='SIN'):
@@ -9284,10 +8608,8 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'vector': vector, 'scale': scale, 'distortion': distortion, 'detail': detail, 'detail_scale': detail_scale, 'detail_roughness': detail_roughness, 'phase_offset': phase_offset}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Wave Texture', named_sockets=_named_sockets, wave_type=wave_type, bands_direction=bands_direction, rings_direction=rings_direction, wave_profile=wave_profile)
-        return _node
+        node = Node('Wave Texture', named_sockets={'Vector': vector, 'Scale': scale, 'Distortion': distortion, 'Detail': detail, 'Detail Scale': detail_scale, 'Detail Roughness': detail_roughness, 'Phase Offset': phase_offset}, wave_type=wave_type, bands_direction=bands_direction, rings_direction=rings_direction, wave_profile=wave_profile)
+        return node
 
     @classmethod
     def white_noise_texture(cls, vector: Vector=None, w: Float=None, noise_dimensions: Literal['1D', '2D', '3D', '4D']='3D'):
@@ -9308,10 +8630,11 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'vector': vector, 'w': w}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('White Noise Texture', named_sockets=_named_sockets, noise_dimensions=noise_dimensions)
-        return _node
+        _configuration = ({'1d': '1D', '2d': '2D', '3d': '3D', '4d': '4D'}.get(noise_dimensions.lower(), noise_dimensions),)
+        _node_sockets = {('1D',): {'W': w}, ('2D',): {'Vector': vector}, ('3D',): {'Vector': vector}, ('4D',): {'Vector': vector, 'W': w}}[_configuration]
+        _node_args = {('1D',): [], ('2D',): [], ('3D',): [], ('4D',): []}[_configuration]
+        node = Node('White Noise Texture', *_node_args, named_sockets=_node_sockets, noise_dimensions=noise_dimensions)
+        return node
 
     @classmethod
     def xpbd_solver(cls, world: Bundle=None, delta_time: Float=None, filter: String=None, simulation_to_world: Matrix=None, substeps: Integer=None, constraint_iterations: Integer=None, solver_path: String=None, begin: Float=None, end: Float=None):
@@ -9350,8 +8673,6 @@ class ND:
         -------
         Node
         """
-        _named_sockets = {'world': world, 'delta_time': delta_time, 'filter': filter, 'simulation_to_world': simulation_to_world, 'substeps': substeps, 'constraint_iterations': constraint_iterations, 'solver_path': solver_path, 'begin': begin, 'end': end}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('XPBD Solver', named_sockets=_named_sockets)
-        return _node
+        node = Node('XPBD Solver', named_sockets={'World': world, 'Delta Time': delta_time, 'Filter': filter, 'Simulation to World': simulation_to_world, 'Substeps': substeps, 'Constraint Iterations': constraint_iterations, 'Solver Path': solver_path, 'Begin': begin, 'End': end})
+        return node
 nd = ND()

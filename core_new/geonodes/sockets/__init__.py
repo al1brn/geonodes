@@ -18,3 +18,4 @@ from .image import Image
 from .closure import Closure
 from .geometries import Mesh, Curve, Cloud, Instances, GreasePencil, Volume
 from .sound import Sound
+from .texture import Texture

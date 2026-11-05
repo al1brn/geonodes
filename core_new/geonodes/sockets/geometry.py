@@ -233,7 +233,7 @@ class Geometry(RootGeometry, Geom):
         ok_dt = dt is not None
         ok_dn = dn is not None
 
-        return Node("Get Attribute Names", {
+        return Node("Get Attribute Names", named_sockets={
             "Geometry": self,
             "Filter Data Type" : ok_dt,
             "Data Type" : dt,
@@ -244,30 +244,6 @@ class Geometry(RootGeometry, Geom):
     # ====================================================================================================
     # Geometry Operations
     # ====================================================================================================
-
-    # ----------------------------------------------------------------------------------------------------
-    # Bake
-    # ----------------------------------------------------------------------------------------------------
-
-    def bake(self, **kwargs):
-        """ Node <&Node Bake>
-
-        [&JUMP]
-
-        Returns
-        -------
-        Geometry
-            self
-
-        """
-
-        node = Node('Bake', {'Geometry': self})
-
-        items = node._bnode.bake_items
-        for name, value in kwargs.items():
-            items.new(utils.get_value_socket_type(value), name)
-
-        return self._jump(node._out)
 
     # ====================================================================================================
     # Operations

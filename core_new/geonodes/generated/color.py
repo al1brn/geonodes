@@ -47,6 +47,9 @@ if TYPE_CHECKING:
     class Geometry:
         ...
 
+    class Texture:
+        ...
+
     class Collection:
         ...
 
@@ -148,7 +151,7 @@ class Color(BaseColor):
         Color
             socket 'OUT'
         """
-        _named_sockets = {'factor': factor, 'a': self, 'b': b}
+        _named_sockets = {'a': self, 'b': b, 'factor': factor}
         _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
         _node = Node('Mix', named_sockets=_named_sockets, data_type='RGBA', factor_mode='UNIFORM', blend_type='MIX', clamp_factor=clamp_factor, clamp_result=clamp_result)
         return _node._out
@@ -187,7 +190,7 @@ class Color(BaseColor):
         Color
             socket 'OUT'
         """
-        _named_sockets = {'factor': factor, 'a': self, 'b': b}
+        _named_sockets = {'a': self, 'b': b, 'factor': factor}
         _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
         _node = Node('Mix', named_sockets=_named_sockets, data_type='RGBA', factor_mode='UNIFORM', blend_type='DARKEN', clamp_factor=clamp_factor, clamp_result=clamp_result)
         return _node._out
@@ -226,7 +229,7 @@ class Color(BaseColor):
         Color
             socket 'OUT'
         """
-        _named_sockets = {'factor': factor, 'a': self, 'b': b}
+        _named_sockets = {'a': self, 'b': b, 'factor': factor}
         _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
         _node = Node('Mix', named_sockets=_named_sockets, data_type='RGBA', factor_mode='UNIFORM', blend_type='MULTIPLY', clamp_factor=clamp_factor, clamp_result=clamp_result)
         return _node._out
@@ -265,7 +268,7 @@ class Color(BaseColor):
         Color
             socket 'OUT'
         """
-        _named_sockets = {'factor': factor, 'a': self, 'b': b}
+        _named_sockets = {'a': self, 'b': b, 'factor': factor}
         _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
         _node = Node('Mix', named_sockets=_named_sockets, data_type='RGBA', factor_mode='UNIFORM', blend_type='BURN', clamp_factor=clamp_factor, clamp_result=clamp_result)
         return _node._out
@@ -304,7 +307,7 @@ class Color(BaseColor):
         Color
             socket 'OUT'
         """
-        _named_sockets = {'factor': factor, 'a': self, 'b': b}
+        _named_sockets = {'a': self, 'b': b, 'factor': factor}
         _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
         _node = Node('Mix', named_sockets=_named_sockets, data_type='RGBA', factor_mode='UNIFORM', blend_type='LIGHTEN', clamp_factor=clamp_factor, clamp_result=clamp_result)
         return _node._out
@@ -343,7 +346,7 @@ class Color(BaseColor):
         Color
             socket 'OUT'
         """
-        _named_sockets = {'factor': factor, 'a': self, 'b': b}
+        _named_sockets = {'a': self, 'b': b, 'factor': factor}
         _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
         _node = Node('Mix', named_sockets=_named_sockets, data_type='RGBA', factor_mode='UNIFORM', blend_type='SCREEN', clamp_factor=clamp_factor, clamp_result=clamp_result)
         return _node._out
@@ -382,7 +385,7 @@ class Color(BaseColor):
         Color
             socket 'OUT'
         """
-        _named_sockets = {'factor': factor, 'a': self, 'b': b}
+        _named_sockets = {'a': self, 'b': b, 'factor': factor}
         _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
         _node = Node('Mix', named_sockets=_named_sockets, data_type='RGBA', factor_mode='UNIFORM', blend_type='DODGE', clamp_factor=clamp_factor, clamp_result=clamp_result)
         return _node._out
@@ -421,7 +424,7 @@ class Color(BaseColor):
         Color
             socket 'OUT'
         """
-        _named_sockets = {'factor': factor, 'a': self, 'b': b}
+        _named_sockets = {'a': self, 'b': b, 'factor': factor}
         _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
         _node = Node('Mix', named_sockets=_named_sockets, data_type='RGBA', factor_mode='UNIFORM', blend_type='ADD', clamp_factor=clamp_factor, clamp_result=clamp_result)
         return _node._out
@@ -460,7 +463,7 @@ class Color(BaseColor):
         Color
             socket 'OUT'
         """
-        _named_sockets = {'factor': factor, 'a': self, 'b': b}
+        _named_sockets = {'a': self, 'b': b, 'factor': factor}
         _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
         _node = Node('Mix', named_sockets=_named_sockets, data_type='RGBA', factor_mode='UNIFORM', blend_type='OVERLAY', clamp_factor=clamp_factor, clamp_result=clamp_result)
         return _node._out
@@ -499,7 +502,7 @@ class Color(BaseColor):
         Color
             socket 'OUT'
         """
-        _named_sockets = {'factor': factor, 'a': self, 'b': b}
+        _named_sockets = {'a': self, 'b': b, 'factor': factor}
         _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
         _node = Node('Mix', named_sockets=_named_sockets, data_type='RGBA', factor_mode='UNIFORM', blend_type='SOFT_LIGHT', clamp_factor=clamp_factor, clamp_result=clamp_result)
         return _node._out
@@ -538,7 +541,7 @@ class Color(BaseColor):
         Color
             socket 'OUT'
         """
-        _named_sockets = {'factor': factor, 'a': self, 'b': b}
+        _named_sockets = {'a': self, 'b': b, 'factor': factor}
         _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
         _node = Node('Mix', named_sockets=_named_sockets, data_type='RGBA', factor_mode='UNIFORM', blend_type='LINEAR_LIGHT', clamp_factor=clamp_factor, clamp_result=clamp_result)
         return _node._out
@@ -577,7 +580,7 @@ class Color(BaseColor):
         Color
             socket 'OUT'
         """
-        _named_sockets = {'factor': factor, 'a': self, 'b': b}
+        _named_sockets = {'a': self, 'b': b, 'factor': factor}
         _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
         _node = Node('Mix', named_sockets=_named_sockets, data_type='RGBA', factor_mode='UNIFORM', blend_type='DIFFERENCE', clamp_factor=clamp_factor, clamp_result=clamp_result)
         return _node._out
@@ -616,7 +619,7 @@ class Color(BaseColor):
         Color
             socket 'OUT'
         """
-        _named_sockets = {'factor': factor, 'a': self, 'b': b}
+        _named_sockets = {'a': self, 'b': b, 'factor': factor}
         _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
         _node = Node('Mix', named_sockets=_named_sockets, data_type='RGBA', factor_mode='UNIFORM', blend_type='EXCLUSION', clamp_factor=clamp_factor, clamp_result=clamp_result)
         return _node._out
@@ -655,7 +658,7 @@ class Color(BaseColor):
         Color
             socket 'OUT'
         """
-        _named_sockets = {'factor': factor, 'a': self, 'b': b}
+        _named_sockets = {'a': self, 'b': b, 'factor': factor}
         _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
         _node = Node('Mix', named_sockets=_named_sockets, data_type='RGBA', factor_mode='UNIFORM', blend_type='SUBTRACT', clamp_factor=clamp_factor, clamp_result=clamp_result)
         return _node._out
@@ -694,7 +697,7 @@ class Color(BaseColor):
         Color
             socket 'OUT'
         """
-        _named_sockets = {'factor': factor, 'a': self, 'b': b}
+        _named_sockets = {'a': self, 'b': b, 'factor': factor}
         _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
         _node = Node('Mix', named_sockets=_named_sockets, data_type='RGBA', factor_mode='UNIFORM', blend_type='DIVIDE', clamp_factor=clamp_factor, clamp_result=clamp_result)
         return _node._out
@@ -733,7 +736,7 @@ class Color(BaseColor):
         Color
             socket 'OUT'
         """
-        _named_sockets = {'factor': factor, 'a': self, 'b': b}
+        _named_sockets = {'a': self, 'b': b, 'factor': factor}
         _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
         _node = Node('Mix', named_sockets=_named_sockets, data_type='RGBA', factor_mode='UNIFORM', blend_type='HUE', clamp_factor=clamp_factor, clamp_result=clamp_result)
         return _node._out
@@ -772,7 +775,7 @@ class Color(BaseColor):
         Color
             socket 'OUT'
         """
-        _named_sockets = {'factor': factor, 'a': self, 'b': b}
+        _named_sockets = {'a': self, 'b': b, 'factor': factor}
         _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
         _node = Node('Mix', named_sockets=_named_sockets, data_type='RGBA', factor_mode='UNIFORM', blend_type='SATURATION', clamp_factor=clamp_factor, clamp_result=clamp_result)
         return _node._out
@@ -811,7 +814,7 @@ class Color(BaseColor):
         Color
             socket 'OUT'
         """
-        _named_sockets = {'factor': factor, 'a': self, 'b': b}
+        _named_sockets = {'a': self, 'b': b, 'factor': factor}
         _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
         _node = Node('Mix', named_sockets=_named_sockets, data_type='RGBA', factor_mode='UNIFORM', blend_type='COLOR', clamp_factor=clamp_factor, clamp_result=clamp_result)
         return _node._out
@@ -850,7 +853,7 @@ class Color(BaseColor):
         Color
             socket 'OUT'
         """
-        _named_sockets = {'factor': factor, 'a': self, 'b': b}
+        _named_sockets = {'a': self, 'b': b, 'factor': factor}
         _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
         _node = Node('Mix', named_sockets=_named_sockets, data_type='RGBA', factor_mode='UNIFORM', blend_type='VALUE', clamp_factor=clamp_factor, clamp_result=clamp_result)
         return _node._out
@@ -979,12 +982,9 @@ class Color(BaseColor):
         from . import gnmath
         return gnmath.cdarker(self, b)
 
-    def blur_attribute(self, iterations: Integer=None, weight: Float=None):
+    @classmethod
+    def blur_attribute(cls, value: Color=None, iterations: Integer=None, weight: Float=None):
         """ > Node <&Node Blur Attribute>
-        
-        Jump method: False.
-        
-        self: socket 'Value'.
         
         **Fixed values**
         
@@ -994,6 +994,9 @@ class Color(BaseColor):
         
         Parameters
         ----------
+        value : Color, optional
+            socket 'Value'
+        
         iterations : Integer, optional
             socket 'Iterations'
         
@@ -1002,13 +1005,11 @@ class Color(BaseColor):
         
         Returns
         -------
-        Color
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'value': self, 'iterations': iterations, 'weight': weight}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Blur Attribute', named_sockets=_named_sockets, data_type='FLOAT_COLOR')
-        return _node._out
+        node = Node('Blur Attribute', named_sockets={'Value': value, 'Iterations': iterations, 'Weight': weight}, data_type='FLOAT_COLOR')
+        return node._out
 
     @classmethod
     def Combine(cls, red: Float=None, hue: Float=None, green: Float=None, saturation: Float=None, blue: Float=None, value: Float=None, lightness: Float=None, alpha: Float=None, mode: Literal['RGB', 'HSV', 'HSL']='RGB'):
@@ -1045,19 +1046,17 @@ class Color(BaseColor):
         
         Returns
         -------
-        Color
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'red': red, 'hue': hue, 'green': green, 'saturation': saturation, 'blue': blue, 'value': value, 'lightness': lightness, 'alpha': alpha}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _values = {('RGB',): ['red', 'green', 'blue', 'alpha'], ('HSV',): ['hue', 'saturation', 'value', 'alpha'], ('HSL',): ['hue', 'saturation', 'lightness', 'alpha']}
         _configuration = ({'rgb': 'RGB', 'hsv': 'HSV', 'hsl': 'HSL'}.get(mode.lower(), mode),)
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _name in _values[_configuration]}
-        _node = Node('Combine Color', named_sockets=_named_sockets, mode=mode)
-        return _node._out
+        _node_sockets = {('RGB',): {'Red': red, 'Green': green, 'Blue': blue, 'Alpha': alpha}, ('HSV',): {'Hue': hue, 'Saturation': saturation, 'Value': value, 'Alpha': alpha}, ('HSL',): {'Hue': hue, 'Saturation': saturation, 'Lightness': lightness, 'Alpha': alpha}}[_configuration]
+        _node_args = {('RGB',): [], ('HSV',): [], ('HSL',): []}[_configuration]
+        node = Node('Combine Color', *_node_args, named_sockets=_node_sockets, mode=mode)
+        return node._out
 
     @classmethod
-    def CombineList(cls, named_sockets=None, _0: Color=None, **sockets):
+    def combine_list(cls, *values: Socket):
         """ > Node <&Node Combine List>
         
         **Fixed values**
@@ -1066,81 +1065,17 @@ class Color(BaseColor):
         | --- | --- |
         | `data_type` | `'RGBA'` |
         
-        Parameters
-        ----------
-        _0 : Color, optional
-            socket '0'
-        
         Returns
         -------
-        Color
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'_0': _0}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _named_sockets.update({_name: _value for _name, _value in (named_sockets or {}).items() if _value is not None})
-        _node = Node('Combine List', named_sockets=_named_sockets, data_type='RGBA', **sockets)
-        return _node._out
-
-    def enable_output(self, enable: Boolean=None):
-        """ > Node <&Node Enable Output>
-        
-        Jump method: False.
-        
-        self: socket 'Value'.
-        
-        **Fixed values**
-        
-        | Parameter | Value |
-        | --- | --- |
-        | `data_type` | `'RGBA'` |
-        
-        Parameters
-        ----------
-        enable : Boolean, optional
-            socket 'Enable'
-        
-        Returns
-        -------
-        Color
-            socket 'OUT'
-        """
-        _named_sockets = {'enable': enable, 'value': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Enable Output', named_sockets=_named_sockets, data_type='RGBA')
-        return _node._out
-
-    def implicit_conversion(self, socket_idname='NodeSocketColor'):
-        """ > Node <&Node Implicit Conversion>
-        
-        Jump method: False.
-        
-        self: socket 'Value'.
-        
-        **Fixed values**
-        
-        | Parameter | Value |
-        | --- | --- |
-        | `data_type` | `'RGBA'` |
-        
-        Parameters
-        ----------
-        socket_idname : str
-            parameter `socket_idname`
-        
-        Returns
-        -------
-        Color
-            socket 'OUT'
-        """
-        _named_sockets = {'value': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Implicit Conversion', named_sockets=_named_sockets, socket_idname=socket_idname, data_type='RGBA')
-        return _node._out
+        node = Node('Combine List', *values, named_sockets={}, data_type='RGBA')
+        return node._out
 
     @classmethod
-    def IndexSwitch(cls, named_sockets=None, index: Integer=None, _0: Color=None, _1: Color=None, **sockets):
-        """ > Node <&Node Index Switch>
+    def compare(cls, a: Color=None, b: Color=None, epsilon: Float=None, operation: Literal['LESS_THAN', 'LESS_EQUAL', 'GREATER_THAN', 'GREATER_EQUAL', 'EQUAL', 'NOT_EQUAL']='GREATER_THAN', mode: Literal['ELEMENT', 'LENGTH', 'AVERAGE', 'DOT_PRODUCT', 'DIRECTION']='ELEMENT'):
+        """ > Node <&Node Compare>
         
         **Fixed values**
         
@@ -1150,64 +1085,142 @@ class Color(BaseColor):
         
         Parameters
         ----------
-        index : Integer, optional
-            socket 'Index'
-        
-        _0 : Color, optional
-            socket '0'
-        
-        _1 : Color, optional
-            socket '1'
-        
-        Returns
-        -------
-        Color
-            socket 'OUT'
-        """
-        _named_sockets = {'index': index, '_0': _0, '_1': _1}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _named_sockets.update({_name: _value for _name, _value in (named_sockets or {}).items() if _value is not None})
-        _node = Node('Index Switch', named_sockets=_named_sockets, data_type='RGBA', **sockets)
-        return _node._out
-
-    @classmethod
-    def MenuSwitch(cls, named_sockets=None, menu: Literal['A', 'B']=None, a: Color=None, b: Color=None, **sockets):
-        """ > Node <&Node Menu Switch>
-        
-        **Fixed values**
-        
-        | Parameter | Value |
-        | --- | --- |
-        | `data_type` | `'RGBA'` |
-        
-        Parameters
-        ----------
-        menu : menu='A', optional
-            ('A', 'B')
-        
         a : Color, optional
             socket 'A'
         
         b : Color, optional
             socket 'B'
         
+        epsilon : Float, optional
+            socket 'Epsilon'
+        
+        operation : Literal['Less Than', 'Less Than or Equal', 'Greater Than', 'Greater Than or Equal', 'Equal', 'Not Equal']
+            parameter `operation`
+        
+        mode : Literal['Element-Wise', 'Length', 'Average', 'Dot Product', 'Direction']
+            parameter `mode`
+        
         Returns
         -------
-        Color
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'menu': menu, 'a': a, 'b': b}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _named_sockets.update({_name: _value for _name, _value in (named_sockets or {}).items() if _value is not None})
-        _node = Node('Menu Switch', named_sockets=_named_sockets, data_type='RGBA', **sockets)
-        return _node._out
+        _configuration = ('RGBA', {'less_than': 'LESS_THAN', 'less_equal': 'LESS_EQUAL', 'greater_than': 'GREATER_THAN', 'greater_equal': 'GREATER_EQUAL', 'equal': 'EQUAL', 'not_equal': 'NOT_EQUAL', 'brighter': 'BRIGHTER', 'darker': 'DARKER', 'less than': 'LESS_THAN', 'less than or equal': 'LESS_EQUAL', 'greater than': 'GREATER_THAN', 'greater than or equal': 'GREATER_EQUAL', 'not equal': 'NOT_EQUAL'}.get(operation.lower(), operation), {'element': 'ELEMENT', 'length': 'LENGTH', 'average': 'AVERAGE', 'dot_product': 'DOT_PRODUCT', 'direction': 'DIRECTION', 'element-wise': 'ELEMENT', 'dot product': 'DOT_PRODUCT'}.get(mode.lower(), mode))
+        _node_sockets = {('RGBA', 'EQUAL', 'ELEMENT'): {'A': a, 'B': b, 'Epsilon': epsilon}, ('RGBA', 'EQUAL', 'LENGTH'): {'A': a, 'B': b, 'Epsilon': epsilon}, ('RGBA', 'EQUAL', 'AVERAGE'): {'A': a, 'B': b, 'Epsilon': epsilon}, ('RGBA', 'EQUAL', 'DOT_PRODUCT'): {'A': a, 'B': b, 'Epsilon': epsilon}, ('RGBA', 'EQUAL', 'DIRECTION'): {'A': a, 'B': b, 'Epsilon': epsilon}, ('RGBA', 'NOT_EQUAL', 'ELEMENT'): {'A': a, 'B': b, 'Epsilon': epsilon}, ('RGBA', 'NOT_EQUAL', 'LENGTH'): {'A': a, 'B': b, 'Epsilon': epsilon}, ('RGBA', 'NOT_EQUAL', 'AVERAGE'): {'A': a, 'B': b, 'Epsilon': epsilon}, ('RGBA', 'NOT_EQUAL', 'DOT_PRODUCT'): {'A': a, 'B': b, 'Epsilon': epsilon}, ('RGBA', 'NOT_EQUAL', 'DIRECTION'): {'A': a, 'B': b, 'Epsilon': epsilon}, ('RGBA', 'BRIGHTER', 'ELEMENT'): {'A': a, 'B': b}, ('RGBA', 'BRIGHTER', 'LENGTH'): {'A': a, 'B': b}, ('RGBA', 'BRIGHTER', 'AVERAGE'): {'A': a, 'B': b}, ('RGBA', 'BRIGHTER', 'DOT_PRODUCT'): {'A': a, 'B': b}, ('RGBA', 'BRIGHTER', 'DIRECTION'): {'A': a, 'B': b}, ('RGBA', 'DARKER', 'ELEMENT'): {'A': a, 'B': b}, ('RGBA', 'DARKER', 'LENGTH'): {'A': a, 'B': b}, ('RGBA', 'DARKER', 'AVERAGE'): {'A': a, 'B': b}, ('RGBA', 'DARKER', 'DOT_PRODUCT'): {'A': a, 'B': b}, ('RGBA', 'DARKER', 'DIRECTION'): {'A': a, 'B': b}}[_configuration]
+        _node_args = {('RGBA', 'EQUAL', 'ELEMENT'): [], ('RGBA', 'EQUAL', 'LENGTH'): [], ('RGBA', 'EQUAL', 'AVERAGE'): [], ('RGBA', 'EQUAL', 'DOT_PRODUCT'): [], ('RGBA', 'EQUAL', 'DIRECTION'): [], ('RGBA', 'NOT_EQUAL', 'ELEMENT'): [], ('RGBA', 'NOT_EQUAL', 'LENGTH'): [], ('RGBA', 'NOT_EQUAL', 'AVERAGE'): [], ('RGBA', 'NOT_EQUAL', 'DOT_PRODUCT'): [], ('RGBA', 'NOT_EQUAL', 'DIRECTION'): [], ('RGBA', 'BRIGHTER', 'ELEMENT'): [], ('RGBA', 'BRIGHTER', 'LENGTH'): [], ('RGBA', 'BRIGHTER', 'AVERAGE'): [], ('RGBA', 'BRIGHTER', 'DOT_PRODUCT'): [], ('RGBA', 'BRIGHTER', 'DIRECTION'): [], ('RGBA', 'DARKER', 'ELEMENT'): [], ('RGBA', 'DARKER', 'LENGTH'): [], ('RGBA', 'DARKER', 'AVERAGE'): [], ('RGBA', 'DARKER', 'DOT_PRODUCT'): [], ('RGBA', 'DARKER', 'DIRECTION'): []}[_configuration]
+        node = Node('Compare', *_node_args, named_sockets=_node_sockets, data_type='RGBA', operation=operation, mode=mode)
+        return node._out
 
-    def mix(self, factor: Float=None, b: Color=None, factor_mode: Literal['UNIFORM', 'NON_UNIFORM']='UNIFORM', blend_type: Literal['MIX', 'DARKEN', 'MULTIPLY', 'BURN', 'LIGHTEN', 'SCREEN', 'DODGE', 'ADD', 'OVERLAY', 'SOFT_LIGHT', 'LINEAR_LIGHT', 'DIFFERENCE', 'EXCLUSION', 'SUBTRACT', 'DIVIDE', 'HUE', 'SATURATION', 'COLOR', 'VALUE']='MIX', clamp_factor=True, clamp_result=False):
-        """ > Node <&Node Mix>
+    @classmethod
+    def evaluate_at_index(cls, value: Color=None, index: Integer=None, domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']='POINT'):
+        """ > Node <&Node Evaluate at Index>
         
-        Jump method: False.
+        **Fixed values**
         
-        self: socket 'A_Color'.
+        | Parameter | Value |
+        | --- | --- |
+        | `data_type` | `'FLOAT_COLOR'` |
+        
+        Parameters
+        ----------
+        value : Color, optional
+            socket 'Value'
+        
+        index : Integer, optional
+            socket 'Index'
+        
+        domain : Literal['Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer']
+            parameter `domain`
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Evaluate at Index', named_sockets={'Value': value, 'Index': index}, domain=domain, data_type='FLOAT_COLOR')
+        return node._out
+
+    @classmethod
+    def evaluate_on_domain(cls, value: Color=None, domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']='POINT'):
+        """ > Node <&Node Evaluate on Domain>
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `data_type` | `'FLOAT_COLOR'` |
+        
+        Parameters
+        ----------
+        value : Color, optional
+            socket 'Value'
+        
+        domain : Literal['Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer']
+            parameter `domain`
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Evaluate on Domain', named_sockets={'Value': value}, domain=domain, data_type='FLOAT_COLOR')
+        return node._out
+
+    @classmethod
+    def filter_list(cls, list: Color=None, selection: Boolean=None):
+        """ > Node <&Node Filter List>
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `socket_type` | `'RGBA'` |
+        
+        Parameters
+        ----------
+        list : Color, optional
+            socket 'List'
+        
+        selection : Boolean, optional
+            socket 'Selection'
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Filter List', named_sockets={'List': list, 'Selection': selection}, socket_type='RGBA')
+        return node._out
+
+    @classmethod
+    def get_list_item(cls, list: Color=None, index: Integer=None):
+        """ > Node <&Node Get List Item>
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `socket_type` | `'RGBA'` |
+        
+        Parameters
+        ----------
+        list : Color, optional
+            socket 'List'
+        
+        index : Integer, optional
+            socket 'Index'
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Get List Item', named_sockets={'List': list, 'Index': index}, socket_type='RGBA')
+        return node._out
+
+    @classmethod
+    def hash_value(cls, value: Color=None, seed: Integer=None):
+        """ > Node <&Node Hash Value>
         
         **Fixed values**
         
@@ -1217,11 +1230,89 @@ class Color(BaseColor):
         
         Parameters
         ----------
-        factor : Float, optional
-            socket 'Factor'
+        value : Color, optional
+            socket 'Value'
+        
+        seed : Integer, optional
+            socket 'Seed'
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Hash Value', named_sockets={'Value': value, 'Seed': seed}, data_type='RGBA')
+        return node._out
+
+    @classmethod
+    def implicit_conversion(cls, value: Color=None, socket_idname: str='NodeSocketColor'):
+        """ > Node <&Node Implicit Conversion>
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `data_type` | `'RGBA'` |
+        
+        Parameters
+        ----------
+        value : Color, optional
+            socket 'Value'
+        
+        socket_idname : str
+            parameter `socket_idname`
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Implicit Conversion', named_sockets={'Value': value}, data_type='RGBA', socket_idname=socket_idname)
+        return node._out
+
+    @classmethod
+    def list_length(cls, list: Color=None):
+        """ > Node <&Node List Length>
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `data_type` | `'RGBA'` |
+        
+        Parameters
+        ----------
+        list : Color, optional
+            socket 'List'
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('List Length', named_sockets={'List': list}, data_type='RGBA')
+        return node._out
+
+    @classmethod
+    def mix(cls, a: Color=None, b: Color=None, factor: Float=None, factor_mode: Literal['UNIFORM', 'NON_UNIFORM']='UNIFORM', blend_type: Literal['MIX', 'DARKEN', 'MULTIPLY', 'BURN', 'LIGHTEN', 'SCREEN', 'DODGE', 'ADD', 'OVERLAY', 'SOFT_LIGHT', 'LINEAR_LIGHT', 'DIFFERENCE', 'EXCLUSION', 'SUBTRACT', 'DIVIDE', 'HUE', 'SATURATION', 'COLOR', 'VALUE']='MIX', clamp_factor: bool=True, clamp_result: bool=False):
+        """ > Node <&Node Mix>
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `data_type` | `'RGBA'` |
+        
+        Parameters
+        ----------
+        a : Color, optional
+            socket 'A'
         
         b : Color, optional
             socket 'B'
+        
+        factor : Float, optional
+            socket 'Factor'
         
         factor_mode : Literal['Uniform', 'Non-Uniform']
             parameter `factor_mode`
@@ -1237,91 +1328,11 @@ class Color(BaseColor):
         
         Returns
         -------
-        Color
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'factor': factor, 'a': self, 'b': b}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Mix', named_sockets=_named_sockets, data_type='RGBA', factor_mode=factor_mode, blend_type=blend_type, clamp_factor=clamp_factor, clamp_result=clamp_result)
-        return _node._out
-
-    def mix_legacy_(self, factor: Float=None, color2: Color=None, blend_type: Literal['MIX', 'DARKEN', 'MULTIPLY', 'BURN', 'LIGHTEN', 'SCREEN', 'DODGE', 'ADD', 'OVERLAY', 'SOFT_LIGHT', 'LINEAR_LIGHT', 'DIFFERENCE', 'EXCLUSION', 'SUBTRACT', 'DIVIDE', 'HUE', 'SATURATION', 'COLOR', 'VALUE']='MIX', use_alpha=False, use_clamp=False):
-        """ > Node <&Node Mix (Legacy)>
-        
-        Jump method: False.
-        
-        self: socket 'Color1'.
-        
-        Parameters
-        ----------
-        factor : Float, optional
-            socket 'Factor'
-        
-        color2 : Color, optional
-            socket 'Color2'
-        
-        blend_type : Literal['Mix', 'Darken', 'Multiply', 'Color Burn', 'Lighten', 'Screen', 'Color Dodge', 'Add', 'Overlay', 'Soft Light', 'Linear Light', 'Difference', 'Exclusion', 'Subtract', 'Divide', 'Hue', 'Saturation', 'Color', 'Value']
-            parameter `blend_type`
-        
-        use_alpha : bool
-            parameter `use_alpha`
-        
-        use_clamp : bool
-            parameter `use_clamp`
-        
-        Returns
-        -------
-        Color
-            socket 'OUT'
-        """
-        _named_sockets = {'factor': factor, 'color1': self, 'color2': color2}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Mix (Legacy)', named_sockets=_named_sockets, blend_type=blend_type, use_alpha=use_alpha, use_clamp=use_clamp)
-        return _node._out
-
-    def reroute(self, socket_idname='NodeSocketColor'):
-        """ > Node <&Node Reroute>
-        
-        Jump method: False.
-        
-        self: socket 'Input'.
-        
-        Parameters
-        ----------
-        socket_idname : str
-            parameter `socket_idname`
-        
-        Returns
-        -------
-        Color
-            socket 'OUT'
-        """
-        _named_sockets = {'input': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Reroute', named_sockets=_named_sockets, socket_idname=socket_idname)
-        return _node._out
-
-    def rgb_curves(self, factor: Float=None):
-        """ > Node <&Node RGB Curves>
-        
-        Jump method: False.
-        
-        self: socket 'Color'.
-        
-        Parameters
-        ----------
-        factor : Float, optional
-            socket 'Factor'
-        
-        Returns
-        -------
-        Color
-            socket 'OUT'
-        """
-        _named_sockets = {'factor': factor, 'color': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('RGB Curves', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('Mix', named_sockets={'Factor': factor, 'A': a, 'B': b}, data_type='RGBA', factor_mode=factor_mode, blend_type=blend_type, clamp_factor=clamp_factor, clamp_result=clamp_result)
+        return node._out
 
     def separate(self, mode: Literal['RGB', 'HSV', 'HSL']='RGB'):
         """ > Node <&Node Separate Color>
@@ -1337,9 +1348,40 @@ class Color(BaseColor):
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
-        _named_sockets = {'color': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Separate Color', named_sockets=_named_sockets, mode=mode)
-        return _node
+        node = Node('Separate Color', named_sockets={'Color': self}, mode=mode)
+        return node._out
+
+    @classmethod
+    def sort_list(cls, list: Color=None, selection: Boolean=None, group_id: Integer=None, sort_weight: Float=None):
+        """ > Node <&Node Sort List>
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `socket_type` | `'RGBA'` |
+        
+        Parameters
+        ----------
+        list : Color, optional
+            socket 'List'
+        
+        selection : Boolean, optional
+            socket 'Selection'
+        
+        group_id : Integer, optional
+            socket 'Group ID'
+        
+        sort_weight : Float, optional
+            socket 'Sort Weight'
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Sort List', named_sockets={'List': list, 'Selection': selection, 'Group ID': group_id, 'Sort Weight': sort_weight}, socket_type='RGBA')
+        return node._out

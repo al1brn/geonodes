@@ -47,6 +47,9 @@ if TYPE_CHECKING:
     class Geometry:
         ...
 
+    class Texture:
+        ...
+
     class Collection:
         ...
 
@@ -177,7 +180,7 @@ class Image(BaseImage):
         return self.not_equal(other)
 
     @classmethod
-    def CombineList(cls, named_sockets=None, _0: Image=None, **sockets):
+    def combine_list(cls, *values: Socket):
         """ > Node <&Node Combine List>
         
         **Fixed values**
@@ -186,28 +189,17 @@ class Image(BaseImage):
         | --- | --- |
         | `data_type` | `'IMAGE'` |
         
-        Parameters
-        ----------
-        _0 : Image, optional
-            socket '0'
-        
         Returns
         -------
-        Image
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'_0': _0}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _named_sockets.update({_name: _value for _name, _value in (named_sockets or {}).items() if _value is not None})
-        _node = Node('Combine List', named_sockets=_named_sockets, data_type='IMAGE', **sockets)
-        return _node._out
+        node = Node('Combine List', *values, named_sockets={}, data_type='IMAGE')
+        return node._out
 
-    def enable_output(self, enable: Boolean=None):
-        """ > Node <&Node Enable Output>
-        
-        Jump method: False.
-        
-        self: socket 'Value'.
+    @classmethod
+    def compare(cls, a: Image=None, b: Image=None, operation: Literal['LESS_THAN', 'LESS_EQUAL', 'GREATER_THAN', 'GREATER_EQUAL', 'EQUAL', 'NOT_EQUAL']='GREATER_THAN', mode: Literal['ELEMENT', 'LENGTH', 'AVERAGE', 'DOT_PRODUCT', 'DIRECTION']='ELEMENT'):
+        """ > Node <&Node Compare>
         
         **Fixed values**
         
@@ -217,20 +209,79 @@ class Image(BaseImage):
         
         Parameters
         ----------
-        enable : Boolean, optional
-            socket 'Enable'
+        a : Image, optional
+            socket 'A'
+        
+        b : Image, optional
+            socket 'B'
+        
+        operation : Literal['Less Than', 'Less Than or Equal', 'Greater Than', 'Greater Than or Equal', 'Equal', 'Not Equal']
+            parameter `operation`
+        
+        mode : Literal['Element-Wise', 'Length', 'Average', 'Dot Product', 'Direction']
+            parameter `mode`
         
         Returns
         -------
-        Image
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'enable': enable, 'value': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Enable Output', named_sockets=_named_sockets, data_type='IMAGE')
-        return _node._out
+        node = Node('Compare', named_sockets={'A': a, 'B': b}, data_type='IMAGE', operation=operation, mode=mode)
+        return node._out
 
-    def info(self, frame: Integer=None):
+    @classmethod
+    def filter_list(cls, list: Image=None, selection: Boolean=None):
+        """ > Node <&Node Filter List>
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `socket_type` | `'IMAGE'` |
+        
+        Parameters
+        ----------
+        list : Image, optional
+            socket 'List'
+        
+        selection : Boolean, optional
+            socket 'Selection'
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Filter List', named_sockets={'List': list, 'Selection': selection}, socket_type='IMAGE')
+        return node._out
+
+    @classmethod
+    def get_list_item(cls, list: Image=None, index: Integer=None):
+        """ > Node <&Node Get List Item>
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `socket_type` | `'IMAGE'` |
+        
+        Parameters
+        ----------
+        list : Image, optional
+            socket 'List'
+        
+        index : Integer, optional
+            socket 'Index'
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Get List Item', named_sockets={'List': list, 'Index': index}, socket_type='IMAGE')
+        return node._out
+
+    def image_info(self, frame: Integer=None):
         """ > Node <&Node Image Info>
         
         Jump method: False.
@@ -244,51 +295,15 @@ class Image(BaseImage):
         
         Returns
         -------
-        Integer
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'image': self, 'frame': frame}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Image Info', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('Image Info', named_sockets={'Image': self, 'Frame': frame})
+        return node._out
 
-    def texture(self, vector: Vector=None, frame: Integer=None, interpolation: Literal['Linear', 'Closest', 'Cubic']='Linear', extension: Literal['REPEAT', 'EXTEND', 'CLIP', 'MIRROR']='REPEAT'):
-        """ > Node <&Node Image Texture>
-        
-        Jump method: False.
-        
-        self: socket 'Image'.
-        
-        Parameters
-        ----------
-        vector : Vector, optional
-            socket 'Vector'
-        
-        frame : Integer, optional
-            socket 'Frame'
-        
-        interpolation : Literal['Linear', 'Closest', 'Cubic']
-            parameter `interpolation`
-        
-        extension : Literal['Repeat', 'Extend', 'Clip', 'Mirror']
-            parameter `extension`
-        
-        Returns
-        -------
-        Color
-            socket 'OUT'
-        """
-        _named_sockets = {'image': self, 'vector': vector, 'frame': frame}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Image Texture', named_sockets=_named_sockets, interpolation=interpolation, extension=extension)
-        return _node._out
-
-    def implicit_conversion(self, socket_idname='NodeSocketColor'):
+    @classmethod
+    def implicit_conversion(cls, value: Image=None, socket_idname: str='NodeSocketColor'):
         """ > Node <&Node Implicit Conversion>
-        
-        Jump method: False.
-        
-        self: socket 'Value'.
         
         **Fixed values**
         
@@ -298,22 +313,23 @@ class Image(BaseImage):
         
         Parameters
         ----------
+        value : Image, optional
+            socket 'Value'
+        
         socket_idname : str
             parameter `socket_idname`
         
         Returns
         -------
-        Image
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'value': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Implicit Conversion', named_sockets=_named_sockets, socket_idname=socket_idname, data_type='IMAGE')
-        return _node._out
+        node = Node('Implicit Conversion', named_sockets={'Value': value}, data_type='IMAGE', socket_idname=socket_idname)
+        return node._out
 
     @classmethod
-    def IndexSwitch(cls, named_sockets=None, index: Integer=None, _0: Image=None, _1: Image=None, **sockets):
-        """ > Node <&Node Index Switch>
+    def list_length(cls, list: Image=None):
+        """ > Node <&Node List Length>
         
         **Fixed values**
         
@@ -323,54 +339,45 @@ class Image(BaseImage):
         
         Parameters
         ----------
-        index : Integer, optional
-            socket 'Index'
-        
-        _0 : Image, optional
-            socket '0'
-        
-        _1 : Image, optional
-            socket '1'
+        list : Image, optional
+            socket 'List'
         
         Returns
         -------
-        Image
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'index': index, '_0': _0, '_1': _1}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _named_sockets.update({_name: _value for _name, _value in (named_sockets or {}).items() if _value is not None})
-        _node = Node('Index Switch', named_sockets=_named_sockets, data_type='IMAGE', **sockets)
-        return _node._out
+        node = Node('List Length', named_sockets={'List': list}, data_type='IMAGE')
+        return node._out
 
     @classmethod
-    def MenuSwitch(cls, named_sockets=None, menu: Literal['A', 'B']=None, a: Image=None, b: Image=None, **sockets):
-        """ > Node <&Node Menu Switch>
+    def sort_list(cls, list: Image=None, selection: Boolean=None, group_id: Integer=None, sort_weight: Float=None):
+        """ > Node <&Node Sort List>
         
         **Fixed values**
         
         | Parameter | Value |
         | --- | --- |
-        | `data_type` | `'IMAGE'` |
+        | `socket_type` | `'IMAGE'` |
         
         Parameters
         ----------
-        menu : menu='A', optional
-            ('A', 'B')
+        list : Image, optional
+            socket 'List'
         
-        a : Image, optional
-            socket 'A'
+        selection : Boolean, optional
+            socket 'Selection'
         
-        b : Image, optional
-            socket 'B'
+        group_id : Integer, optional
+            socket 'Group ID'
+        
+        sort_weight : Float, optional
+            socket 'Sort Weight'
         
         Returns
         -------
-        Image
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'menu': menu, 'a': a, 'b': b}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _named_sockets.update({_name: _value for _name, _value in (named_sockets or {}).items() if _value is not None})
-        _node = Node('Menu Switch', named_sockets=_named_sockets, data_type='IMAGE', **sockets)
-        return _node._out
+        node = Node('Sort List', named_sockets={'List': list, 'Selection': selection, 'Group ID': group_id, 'Sort Weight': sort_weight}, socket_type='IMAGE')
+        return node._out

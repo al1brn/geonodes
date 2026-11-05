@@ -1,7 +1,33 @@
 """Snapshot of a node socket in its current configuration."""
 
 from ast import literal_eval
+from .. import core_module
 
+CLASS_NAMES = {
+ 'BOOLEAN': 'Boolean',
+ 'BUNDLE': 'Bundle',
+ 'CLOSURE': 'Closure',
+ 'COLLECTION': 'Collection',
+ 'CUSTOM': 'Input',
+ 'FONT': 'Font',
+ 'GEOMETRY': 'Geometry',
+ 'IMAGE': 'Image',
+ 'INT': 'Integer',
+ 'INT_VECTOR': 'IntVector',
+ 'MATERIAL': 'Material',
+ 'MATRIX': 'Matrix',
+ 'MENU': 'Menu',
+ 'OBJECT': 'Object',
+ 'RGBA': 'Color',
+ 'ROTATION': 'Rotation',
+ 'SHADER': 'Shader',
+ 'SOUND': 'Sound',
+ 'STRING': 'String',
+ 'VALUE': 'Float',
+ 'VECTOR': 'Vector',
+}
+
+ATTR_SOCKETS = ['BOOLEAN', 'INT', 'VALUE', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU']
 
 class NodeSocket:
     def __init__(self, bsocket, index=None):
@@ -15,8 +41,16 @@ class NodeSocket:
         self.is_output = bsocket.is_output
         self.is_multi_input = bsocket.is_multi_input
         self.inferred = bsocket.inferred_structure_type
+        self.is_grid = bsocket.display_shape == 'VOLUME_GRID'
         self.dependencies = {}
-
+        self.names = (self.label or self.name,)
+        if self.socket_type not in [None, 'CUSTOM']:
+            from .node_info import NodeInfo
+            self.class_name = NodeInfo.socket_class_name(self.socket_type, self.name)
+        else:
+            self.class_name = ""
+        self.is_attribute = self.socket_type in ATTR_SOCKETS
+ 
         self.default_value = getattr(bsocket, 'default_value', None)
         prop = bsocket.bl_rna.properties.get('default_value')
         if prop is not None and prop.type in {'BOOLEAN', 'INT', 'FLOAT'} and prop.is_array:

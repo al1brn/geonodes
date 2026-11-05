@@ -47,6 +47,9 @@ if TYPE_CHECKING:
     class Geometry:
         ...
 
+    class Texture:
+        ...
+
     class Collection:
         ...
 
@@ -177,7 +180,7 @@ class Sound(BaseSound):
         return self.not_equal(other)
 
     @classmethod
-    def CombineList(cls, named_sockets=None, _0: Sound=None, **sockets):
+    def combine_list(cls, *values: Socket):
         """ > Node <&Node Combine List>
         
         **Fixed values**
@@ -186,81 +189,17 @@ class Sound(BaseSound):
         | --- | --- |
         | `data_type` | `'SOUND'` |
         
-        Parameters
-        ----------
-        _0 : Sound, optional
-            socket '0'
-        
         Returns
         -------
-        Sound
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'_0': _0}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _named_sockets.update({_name: _value for _name, _value in (named_sockets or {}).items() if _value is not None})
-        _node = Node('Combine List', named_sockets=_named_sockets, data_type='SOUND', **sockets)
-        return _node._out
-
-    def enable_output(self, enable: Boolean=None):
-        """ > Node <&Node Enable Output>
-        
-        Jump method: False.
-        
-        self: socket 'Value'.
-        
-        **Fixed values**
-        
-        | Parameter | Value |
-        | --- | --- |
-        | `data_type` | `'SOUND'` |
-        
-        Parameters
-        ----------
-        enable : Boolean, optional
-            socket 'Enable'
-        
-        Returns
-        -------
-        Sound
-            socket 'OUT'
-        """
-        _named_sockets = {'enable': enable, 'value': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Enable Output', named_sockets=_named_sockets, data_type='SOUND')
-        return _node._out
-
-    def implicit_conversion(self, socket_idname='NodeSocketColor'):
-        """ > Node <&Node Implicit Conversion>
-        
-        Jump method: False.
-        
-        self: socket 'Value'.
-        
-        **Fixed values**
-        
-        | Parameter | Value |
-        | --- | --- |
-        | `data_type` | `'SOUND'` |
-        
-        Parameters
-        ----------
-        socket_idname : str
-            parameter `socket_idname`
-        
-        Returns
-        -------
-        Sound
-            socket 'OUT'
-        """
-        _named_sockets = {'value': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Implicit Conversion', named_sockets=_named_sockets, socket_idname=socket_idname, data_type='SOUND')
-        return _node._out
+        node = Node('Combine List', *values, named_sockets={}, data_type='SOUND')
+        return node._out
 
     @classmethod
-    def IndexSwitch(cls, named_sockets=None, index: Integer=None, _0: Sound=None, _1: Sound=None, **sockets):
-        """ > Node <&Node Index Switch>
+    def compare(cls, a: Sound=None, b: Sound=None, operation: Literal['LESS_THAN', 'LESS_EQUAL', 'GREATER_THAN', 'GREATER_EQUAL', 'EQUAL', 'NOT_EQUAL']='GREATER_THAN', mode: Literal['ELEMENT', 'LENGTH', 'AVERAGE', 'DOT_PRODUCT', 'DIRECTION']='ELEMENT'):
+        """ > Node <&Node Compare>
         
         **Fixed values**
         
@@ -270,59 +209,128 @@ class Sound(BaseSound):
         
         Parameters
         ----------
-        index : Integer, optional
-            socket 'Index'
-        
-        _0 : Sound, optional
-            socket '0'
-        
-        _1 : Sound, optional
-            socket '1'
-        
-        Returns
-        -------
-        Sound
-            socket 'OUT'
-        """
-        _named_sockets = {'index': index, '_0': _0, '_1': _1}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _named_sockets.update({_name: _value for _name, _value in (named_sockets or {}).items() if _value is not None})
-        _node = Node('Index Switch', named_sockets=_named_sockets, data_type='SOUND', **sockets)
-        return _node._out
-
-    @classmethod
-    def MenuSwitch(cls, named_sockets=None, menu: Literal['A', 'B']=None, a: Sound=None, b: Sound=None, **sockets):
-        """ > Node <&Node Menu Switch>
-        
-        **Fixed values**
-        
-        | Parameter | Value |
-        | --- | --- |
-        | `data_type` | `'SOUND'` |
-        
-        Parameters
-        ----------
-        menu : menu='A', optional
-            ('A', 'B')
-        
         a : Sound, optional
             socket 'A'
         
         b : Sound, optional
             socket 'B'
         
+        operation : Literal['Less Than', 'Less Than or Equal', 'Greater Than', 'Greater Than or Equal', 'Equal', 'Not Equal']
+            parameter `operation`
+        
+        mode : Literal['Element-Wise', 'Length', 'Average', 'Dot Product', 'Direction']
+            parameter `mode`
+        
         Returns
         -------
-        Sound
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'menu': menu, 'a': a, 'b': b}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _named_sockets.update({_name: _value for _name, _value in (named_sockets or {}).items() if _value is not None})
-        _node = Node('Menu Switch', named_sockets=_named_sockets, data_type='SOUND', **sockets)
-        return _node._out
+        node = Node('Compare', named_sockets={'A': a, 'B': b}, data_type='SOUND', operation=operation, mode=mode)
+        return node._out
 
-    def sample_frequencies(self, time: Float=None, all_channels: Boolean=None, channel: Integer=None, low: Float=None, high: Float=None, fft_size: Literal['128', '256', '512', '1024', '2048', '4096', '8192', '16384', '32768']=None, window_function: Literal['Hann', 'Hamming', 'Blackman', 'Rectangular']=None):
+    @classmethod
+    def filter_list(cls, list: Sound=None, selection: Boolean=None):
+        """ > Node <&Node Filter List>
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `socket_type` | `'SOUND'` |
+        
+        Parameters
+        ----------
+        list : Sound, optional
+            socket 'List'
+        
+        selection : Boolean, optional
+            socket 'Selection'
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Filter List', named_sockets={'List': list, 'Selection': selection}, socket_type='SOUND')
+        return node._out
+
+    @classmethod
+    def get_list_item(cls, list: Sound=None, index: Integer=None):
+        """ > Node <&Node Get List Item>
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `socket_type` | `'SOUND'` |
+        
+        Parameters
+        ----------
+        list : Sound, optional
+            socket 'List'
+        
+        index : Integer, optional
+            socket 'Index'
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Get List Item', named_sockets={'List': list, 'Index': index}, socket_type='SOUND')
+        return node._out
+
+    @classmethod
+    def implicit_conversion(cls, value: Sound=None, socket_idname: str='NodeSocketColor'):
+        """ > Node <&Node Implicit Conversion>
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `data_type` | `'SOUND'` |
+        
+        Parameters
+        ----------
+        value : Sound, optional
+            socket 'Value'
+        
+        socket_idname : str
+            parameter `socket_idname`
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Implicit Conversion', named_sockets={'Value': value}, data_type='SOUND', socket_idname=socket_idname)
+        return node._out
+
+    @classmethod
+    def list_length(cls, list: Sound=None):
+        """ > Node <&Node List Length>
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `data_type` | `'SOUND'` |
+        
+        Parameters
+        ----------
+        list : Sound, optional
+            socket 'List'
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('List Length', named_sockets={'List': list}, data_type='SOUND')
+        return node._out
+
+    def sample_sound_frequencies(self, time: Float=None, all_channels: Boolean=None, channel: Integer=None, low: Float=None, high: Float=None, fft_size: Menu=None, window_function: Menu=None):
         """ > Node <&Node Sample Sound Frequencies>
         
         Jump method: False.
@@ -346,18 +354,48 @@ class Sound(BaseSound):
         high : Float, optional
             socket 'High'
         
-        fft_size : menu='4096', optional
-            ('128', '256', '512', '1024', '2048', '4096', '8192', '16384', '32768')
+        fft_size : Menu, optional
+            socket 'FFT Size'
         
-        window_function : menu='Hann', optional
-            ('Hann', 'Hamming', 'Blackman', 'Rectangular')
+        window_function : Menu, optional
+            socket 'Window Function'
         
         Returns
         -------
-        Float
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'sound': self, 'time': time, 'all_channels': all_channels, 'channel': channel, 'low': low, 'high': high, 'fft_size': fft_size, 'window_function': window_function}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Sample Sound Frequencies', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('Sample Sound Frequencies', named_sockets={'Sound': self, 'Time': time, 'All Channels': all_channels, 'Channel': channel, 'Low': low, 'High': high, 'FFT Size': fft_size, 'Window Function': window_function})
+        return node._out
+
+    @classmethod
+    def sort_list(cls, list: Sound=None, selection: Boolean=None, group_id: Integer=None, sort_weight: Float=None):
+        """ > Node <&Node Sort List>
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `socket_type` | `'SOUND'` |
+        
+        Parameters
+        ----------
+        list : Sound, optional
+            socket 'List'
+        
+        selection : Boolean, optional
+            socket 'Selection'
+        
+        group_id : Integer, optional
+            socket 'Group ID'
+        
+        sort_weight : Float, optional
+            socket 'Sort Weight'
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Sort List', named_sockets={'List': list, 'Selection': selection, 'Group ID': group_id, 'Sort Weight': sort_weight}, socket_type='SOUND')
+        return node._out

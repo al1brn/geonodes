@@ -47,6 +47,9 @@ if TYPE_CHECKING:
     class Geometry:
         ...
 
+    class Texture:
+        ...
+
     class Collection:
         ...
 
@@ -177,7 +180,7 @@ class Material(BaseMaterial):
         return self.not_equal(other)
 
     @classmethod
-    def CombineList(cls, named_sockets=None, _0: Material=None, **sockets):
+    def combine_list(cls, *values: Socket):
         """ > Node <&Node Combine List>
         
         **Fixed values**
@@ -186,28 +189,17 @@ class Material(BaseMaterial):
         | --- | --- |
         | `data_type` | `'MATERIAL'` |
         
-        Parameters
-        ----------
-        _0 : Material, optional
-            socket '0'
-        
         Returns
         -------
-        Material
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'_0': _0}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _named_sockets.update({_name: _value for _name, _value in (named_sockets or {}).items() if _value is not None})
-        _node = Node('Combine List', named_sockets=_named_sockets, data_type='MATERIAL', **sockets)
-        return _node._out
+        node = Node('Combine List', *values, named_sockets={}, data_type='MATERIAL')
+        return node._out
 
-    def enable_output(self, enable: Boolean=None):
-        """ > Node <&Node Enable Output>
-        
-        Jump method: False.
-        
-        self: socket 'Value'.
+    @classmethod
+    def compare(cls, a: Material=None, b: Material=None, operation: Literal['LESS_THAN', 'LESS_EQUAL', 'GREATER_THAN', 'GREATER_EQUAL', 'EQUAL', 'NOT_EQUAL']='GREATER_THAN', mode: Literal['ELEMENT', 'LENGTH', 'AVERAGE', 'DOT_PRODUCT', 'DIRECTION']='ELEMENT'):
+        """ > Node <&Node Compare>
         
         **Fixed values**
         
@@ -217,26 +209,82 @@ class Material(BaseMaterial):
         
         Parameters
         ----------
-        enable : Boolean, optional
-            socket 'Enable'
+        a : Material, optional
+            socket 'A'
+        
+        b : Material, optional
+            socket 'B'
+        
+        operation : Literal['Less Than', 'Less Than or Equal', 'Greater Than', 'Greater Than or Equal', 'Equal', 'Not Equal']
+            parameter `operation`
+        
+        mode : Literal['Element-Wise', 'Length', 'Average', 'Dot Product', 'Direction']
+            parameter `mode`
         
         Returns
         -------
-        Material
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'enable': enable, 'value': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Enable Output', named_sockets=_named_sockets, data_type='MATERIAL')
-        return _node._out
+        node = Node('Compare', named_sockets={'A': a, 'B': b}, data_type='MATERIAL', operation=operation, mode=mode)
+        return node._out
 
-    def implicit_conversion(self, socket_idname='NodeSocketColor'):
+    @classmethod
+    def filter_list(cls, list: Material=None, selection: Boolean=None):
+        """ > Node <&Node Filter List>
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `socket_type` | `'MATERIAL'` |
+        
+        Parameters
+        ----------
+        list : Material, optional
+            socket 'List'
+        
+        selection : Boolean, optional
+            socket 'Selection'
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Filter List', named_sockets={'List': list, 'Selection': selection}, socket_type='MATERIAL')
+        return node._out
+
+    @classmethod
+    def get_list_item(cls, list: Material=None, index: Integer=None):
+        """ > Node <&Node Get List Item>
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `socket_type` | `'MATERIAL'` |
+        
+        Parameters
+        ----------
+        list : Material, optional
+            socket 'List'
+        
+        index : Integer, optional
+            socket 'Index'
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Get List Item', named_sockets={'List': list, 'Index': index}, socket_type='MATERIAL')
+        return node._out
+
+    @classmethod
+    def implicit_conversion(cls, value: Material=None, socket_idname: str='NodeSocketColor'):
         """ > Node <&Node Implicit Conversion>
         
-        Jump method: False.
-        
-        self: socket 'Value'.
-        
         **Fixed values**
         
         | Parameter | Value |
@@ -245,22 +293,23 @@ class Material(BaseMaterial):
         
         Parameters
         ----------
+        value : Material, optional
+            socket 'Value'
+        
         socket_idname : str
             parameter `socket_idname`
         
         Returns
         -------
-        Material
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'value': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Implicit Conversion', named_sockets=_named_sockets, socket_idname=socket_idname, data_type='MATERIAL')
-        return _node._out
+        node = Node('Implicit Conversion', named_sockets={'Value': value}, data_type='MATERIAL', socket_idname=socket_idname)
+        return node._out
 
     @classmethod
-    def IndexSwitch(cls, named_sockets=None, index: Integer=None, _0: Material=None, _1: Material=None, **sockets):
-        """ > Node <&Node Index Switch>
+    def list_length(cls, list: Material=None):
+        """ > Node <&Node List Length>
         
         **Fixed values**
         
@@ -270,28 +319,18 @@ class Material(BaseMaterial):
         
         Parameters
         ----------
-        index : Integer, optional
-            socket 'Index'
-        
-        _0 : Material, optional
-            socket '0'
-        
-        _1 : Material, optional
-            socket '1'
+        list : Material, optional
+            socket 'List'
         
         Returns
         -------
-        Material
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'index': index, '_0': _0, '_1': _1}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _named_sockets.update({_name: _value for _name, _value in (named_sockets or {}).items() if _value is not None})
-        _node = Node('Index Switch', named_sockets=_named_sockets, data_type='MATERIAL', **sockets)
-        return _node._out
+        node = Node('List Length', named_sockets={'List': list}, data_type='MATERIAL')
+        return node._out
 
-    @property
-    def selection(self):
+    def material_selection(self):
         """ > Node <&Node Material Selection>
         
         Jump method: False.
@@ -300,42 +339,40 @@ class Material(BaseMaterial):
         
         Returns
         -------
-        Boolean
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'material': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Material Selection', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('Material Selection', named_sockets={'Material': self})
+        return node._out
 
     @classmethod
-    def MenuSwitch(cls, named_sockets=None, menu: Literal['A', 'B']=None, a: Material=None, b: Material=None, **sockets):
-        """ > Node <&Node Menu Switch>
+    def sort_list(cls, list: Material=None, selection: Boolean=None, group_id: Integer=None, sort_weight: Float=None):
+        """ > Node <&Node Sort List>
         
         **Fixed values**
         
         | Parameter | Value |
         | --- | --- |
-        | `data_type` | `'MATERIAL'` |
+        | `socket_type` | `'MATERIAL'` |
         
         Parameters
         ----------
-        menu : menu='A', optional
-            ('A', 'B')
+        list : Material, optional
+            socket 'List'
         
-        a : Material, optional
-            socket 'A'
+        selection : Boolean, optional
+            socket 'Selection'
         
-        b : Material, optional
-            socket 'B'
+        group_id : Integer, optional
+            socket 'Group ID'
+        
+        sort_weight : Float, optional
+            socket 'Sort Weight'
         
         Returns
         -------
-        Material
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'menu': menu, 'a': a, 'b': b}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _named_sockets.update({_name: _value for _name, _value in (named_sockets or {}).items() if _value is not None})
-        _node = Node('Menu Switch', named_sockets=_named_sockets, data_type='MATERIAL', **sockets)
-        return _node._out
+        node = Node('Sort List', named_sockets={'List': list, 'Selection': selection, 'Group ID': group_id, 'Sort Weight': sort_weight}, socket_type='MATERIAL')
+        return node._out

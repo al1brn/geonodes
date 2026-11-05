@@ -40,12 +40,11 @@ class EnvironmentsTest(unittest.TestCase):
                 self.assertIs(type(a + v), type(v))
                 self.assertIs(type(a * v), type(v))
                 self.assertIs(type((3, 2, 1) - v), type(v))
-                result = a.compare(2, epsilon=.01)
-                self.assertNotIn('compare', type(a).__dict__)
-                self.assertIn(environment.replace('.generated', '.sockets.float'), type(a).compare.__module__)
-                self.assertEqual(result._bsocket.node.bl_idname, compare_node)
-                expected = 'BOOLEAN' if factory is core.GeoNodes else 'VALUE'
-                self.assertEqual(result.SOCKET_TYPE, expected)
+                method_name = 'mcompare' if factory is core.GeoNodes else 'compare'
+                result = getattr(a, method_name)(2, epsilon=.01)
+                self.assertIn(method_name, type(a).__dict__)
+                self.assertEqual(result._bsocket.node.bl_idname, 'ShaderNodeMath')
+                self.assertEqual(result.SOCKET_TYPE, 'VALUE')
                 self.assertIn(environment, type(result).__module__)
                 self.assertIn(environment, core.utils.get_socket_class('VECTOR').__module__)
         self.assertIsNot(classes[0][0], classes[1][0])
@@ -111,14 +110,16 @@ class EnvironmentsTest(unittest.TestCase):
         with core.ShaderNodes('Shader registry test'):
             self.assertNotIn('GEOMETRY', core.utils.SOCKET_CLASSES)
             self.assertEqual(dict(core.utils.GEOMETRY_CLASSES), {})
-            for name in ('Collection', 'Object', 'Image', 'Material', 'Matrix', 'Rotation', 'Font', 'Sound', 'Texture'):
+            self.assertFalse(issubclass(core.shadernodes.generated.Texture, core.Socket))
+            for name in ('Collection', 'Object', 'Image', 'Material', 'Matrix', 'Rotation', 'Font', 'Sound'):
                 self.assertFalse(hasattr(core.shadernodes.generated, name), name)
                 self.assertFalse(hasattr(core.shadernodes.sockets, name), name)
             value = core.Float(1)._convert_to_class('Vector')
             self.assertIsInstance(value, core.Vector)
         with core.GeoNodes('Geometry registry test'):
             self.assertNotIn('SHADER', core.utils.SOCKET_CLASSES)
-            for name in ('Shader', 'VolumeShader', 'Texture'):
+            self.assertFalse(issubclass(core.geonodes.generated.Texture, core.Socket))
+            for name in ('Shader', 'VolumeShader'):
                 self.assertFalse(hasattr(core.geonodes.generated, name), name)
                 self.assertFalse(hasattr(core.geonodes.sockets, name), name)
         self.assertFalse((root / 'shadernodes/domains').exists())
@@ -226,6 +227,206 @@ class EnvironmentsTest(unittest.TestCase):
                 'start' + value
                 self.assertEqual(make_node.call_args.kwargs['named_sockets']['Strings'], ['start', value])
 
+    def test_domain_and_data_type_variants(self):
+        import inspect
+        with core.GeoNodes('Domain and type variants test'):
+            mesh = core.Mesh.Cube()
+            self.assertIn('data_type', inspect.signature(mesh.sample_index).parameters)
+            self.assertIn('domain', inspect.signature(mesh.sample_index).parameters)
+            for domain, expected in ((mesh.faces, 'FACE'), (mesh.edges, 'EDGE'), (mesh.points, 'POINT')):
+                self.assertNotIn('data_type', inspect.signature(domain.sample_index).parameters)
+                self.assertNotIn('domain', inspect.signature(domain.sample_index).parameters)
+                for value, data_type in ((1., 'FLOAT'), (True, 'BOOLEAN'), (core.Vector((1, 2, 3)), 'FLOAT_VECTOR')):
+                    result = domain.sample_index(value=value, index=0)
+                    self.assertEqual(result._bsocket.node.domain, expected)
+                    self.assertEqual(result._bsocket.node.data_type, data_type)
+            result = core.Face.EvaluateAtIndex(value=core.Vector((1, 2, 3)), index=0, data_type='FLOAT_VECTOR')
+            self.assertEqual(result._bsocket.node.domain, 'FACE')
+            self.assertEqual(result._bsocket.node.data_type, 'FLOAT_VECTOR')
+            self.assertIn('data_type', inspect.signature(core.nd.sample_index).parameters)
+            self.assertIn('domain', inspect.signature(core.nd.sample_index).parameters)
+
+    def test_declared_geometry_properties(self):
+        from environment_test_core.common.scripterror import NodeError
+        def input_value(socket):
+            if not socket.is_linked:
+                return socket.default_value
+            source = socket.links[0].from_socket
+            return source.node.vector if hasattr(source.node, 'vector') else source.default_value
+        with core.GeoNodes('Declared properties test') as tree:
+            mesh = core.Mesh.Cube()
+            bundle = core.nd.combine_bundle(value=core.Float(2))._out
+            mesh.bundle = bundle
+            setter = mesh._bsocket.node
+            self.assertEqual(setter.bl_idname, 'GeometryNodeSetGeometryBundle')
+            self.assertEqual(setter.inputs['Bundle'].links[0].from_socket, bundle._bsocket)
+            geometry = mesh._bsocket
+            result = mesh.bundle
+            self.assertIsInstance(result, core.Bundle)
+            self.assertEqual(result._bsocket.name, 'Bundle')
+            self.assertEqual(result._bsocket.node.bl_idname, 'GeometryNodeGetGeometryBundle')
+            self.assertFalse(input_value(result._bsocket.node.inputs['Remove']))
+            self.assertEqual(mesh._bsocket, geometry)
+            self.assertEqual(mesh.points.position._bsocket.node.bl_idname, 'GeometryNodeInputPosition')
+            mesh.points[False].position = (1, 2, 3)
+            node = mesh._bsocket.node
+            self.assertEqual(node.bl_idname, 'GeometryNodeSetPosition')
+            self.assertFalse(input_value(node.inputs['Selection']))
+            self.assertEqual(tuple(input_value(node.inputs['Position'])), (1, 2, 3))
+            mesh.points.offset = (0, 0, 1)
+            self.assertEqual(tuple(input_value(mesh._bsocket.node.inputs['Offset'])), (0, 0, 1))
+            with self.assertRaises(NodeError):
+                mesh.points.offset
+            mesh.faces.shade_smooth = True
+            self.assertEqual(mesh._bsocket.node.domain, 'FACE')
+            self.assertEqual(mesh.faces.shade_smooth._bsocket.node.bl_idname, 'GeometryNodeInputShadeSmooth')
+            curve = core.Curve.Line()
+            curve.type = 'BEZIER'
+            self.assertEqual(curve._bsocket.node.spline_type, 'BEZIER')
+            curve.left_handle_position = (1, 0, 0)
+            self.assertEqual(curve._bsocket.node.mode, 'LEFT')
+            self.assertEqual(curve.left_handle_offset._bsocket.node.bl_idname, 'GeometryNodeInputCurveHandlePositions')
+            self.assertTrue(input_value(curve.left_handle_offset._bsocket.node.inputs['Relative']))
+
+    def test_declared_bundle_item_access(self):
+        for factory in (core.GeoNodes,):
+            with factory('Bundle item operators test'):
+                bundle = core.nd.combine_bundle()._out
+                for value, value_type, identifier in ((1.5, core.Float, 'FLOAT'),
+                                                       (2, core.Integer, 'INT'),
+                                                       ((1, 2, 3), core.Vector, 'VECTOR'),
+                                                       ('hello', core.String, 'STRING')):
+                    previous = bundle._bsocket
+                    bundle['item'] = value
+                    setter = bundle._bsocket.node
+                    self.assertEqual(setter.bl_idname, 'NodeStoreBundleItem')
+                    self.assertEqual(setter.socket_type, identifier)
+                    self.assertEqual(setter.inputs['Bundle'].links[0].from_socket, previous)
+                    stored = bundle._bsocket
+                    item = bundle['item', value_type]
+                    self.assertIsInstance(item, value_type)
+                    self.assertEqual(item._bsocket.node.bl_idname, 'NodeGetBundleItem')
+                    self.assertEqual(item._bsocket.name, 'Item')
+                    self.assertEqual(bundle._bsocket, stored)
+                    self.assertFalse(item._bsocket.node.inputs['Remove'].default_value)
+                with self.assertRaisesRegex(TypeError, 'bundle\\[path, Type\\]'):
+                    bundle['item']
+        with core.ShaderNodes('Unavailable bundle item operators'):
+            bundle = core.nd.combine_bundle()._out
+            self.assertNotIn('__setitem__', type(bundle).__dict__)
+
+    def test_multi_input_instance_methods(self):
+        import inspect
+        with core.GeoNodes('Multi-input instance methods'):
+            a, b, c = core.Mesh.Cube(), core.Mesh.Cube(), core.Mesh.Cube()
+            a.join(b, c)
+            self.assertEqual(len(a._bsocket.node.inputs['Geometry'].links), 3)
+            instances = a.to_instance(b, c)
+            self.assertEqual(len(instances._bsocket.node.inputs['Geometry'].links), 3)
+            bundles = [core.nd.combine_bundle()._out for _ in range(3)]
+            joined = bundles[0].join(*bundles[1:])
+            self.assertEqual(len(joined._bsocket.node.inputs['Bundle'].links), 3)
+            for operation in ('DIFFERENCE', 'UNION', 'INTERSECT'):
+                mesh = core.Mesh.Cube()
+                mesh.boolean(b, c, operation=operation)
+                node = mesh._bsocket.node
+                self.assertEqual(node.operation, operation)
+                links = [len(socket.links) for socket in node.inputs if socket.enabled and socket.type == 'GEOMETRY']
+                self.assertEqual(sum(links), 3)
+            self.assertTrue(any(parameter.kind == inspect.Parameter.VAR_POSITIONAL
+                                for parameter in inspect.signature(core.nd.mesh_boolean).parameters.values()))
+            union = core.nd.mesh_boolean(a, b, operation='UNION')
+            self.assertEqual(len(union._bnode.inputs['Mesh'].links), 2)
+            difference = core.nd.mesh_boolean(b, c, mesh_1=a, operation='DIFFERENCE')
+            self.assertEqual(len(difference._bnode.inputs['Mesh 2'].links), 2)
+
+    def test_vector_generated_methods_and_shader_specialization(self):
+        from environment_test_core.root.vector import Vector as RootVector
+        for name in ('FromRotation', 'mapping', 'normal', 'transform', 'Tangent', 'UVMap',
+                     'NormalMap', 'bump', 'displacement', 'vector_displacement', 'displacement_out'):
+            self.assertNotIn(name, vars(RootVector))
+        with core.GeoNodes('Generated vector conversion'):
+            result = core.Vector.FromRotation(core.Rotation())
+            self.assertEqual(result._bsocket.node.bl_idname, 'FunctionNodeRotationToEuler')
+            vector = core.Vector((1, 2, 3))
+            self.assertNotIn('bump', dir(type(vector)))
+            self.assertNotIn('UVMap', dir(type(vector)))
+        with core.ShaderNodes('Shader vector specialization'):
+            vector = core.Vector((1, 2, 3))
+            self.assertEqual(vector.mapping()._bsocket.node.bl_idname, 'ShaderNodeMapping')
+            self.assertEqual(vector.normal()._bsocket.node.bl_idname, 'ShaderNodeNormal')
+            transformed = vector.transform()
+            self.assertEqual(transformed._bsocket.node.bl_idname, 'ShaderNodeVectorTransform')
+            self.assertEqual(transformed._bsocket.node.vector_type, 'VECTOR')
+            for value, identifier in ((core.Vector.Tangent(), 'ShaderNodeTangent'),
+                                      (core.Vector.UVMap(), 'ShaderNodeUVMap'),
+                                      (core.Vector.NormalMap(), 'ShaderNodeNormalMap'),
+                                      (vector.bump(), 'ShaderNodeBump'),
+                                      (vector.displacement(), 'ShaderNodeDisplacement'),
+                                      (vector.vector_displacement(), 'ShaderNodeVectorDisplacement')):
+                self.assertEqual(value._bsocket.node.bl_idname, identifier)
+
+    def test_generated_index_switch(self):
+        with core.GeoNodes('Handwritten Index Switch'):
+            for constructor, values in ((core.Float, (1., 2., 3.)),
+                                         (core.Vector, ((1, 0, 0), (0, 1, 0), (0, 0, 1))),
+                                         (core.Mesh, (core.Mesh.Cube(), core.Mesh.Cube(), core.Mesh.Cube()))):
+                result = constructor.IndexSwitch(*values, index=2)
+                node = result._bsocket.node
+                self.assertEqual(node.bl_idname, 'GeometryNodeIndexSwitch')
+                self.assertEqual(len(node.index_switch_items), 3)
+                self.assertIn('.generated.', type(result).IndexSwitch.__module__)
+            result = core.Float(1).index_switch(2., 3., index=1)
+            self.assertEqual(len(result._bsocket.node.index_switch_items), 3)
+            node = core.nd.index_switch(1., 2., 3., index=2)
+            self.assertEqual(len(node._bnode.index_switch_items), 3)
+            selector = core.Integer(name='Choice')
+            result = core.Float.IndexSwitch(1., 2., 3., index=selector, default_index=2)
+            self.assertEqual(selector._interface_socket.default_value, 2)
+            self.assertEqual(result._bsocket.node.inputs['Index'].default_value, 2)
+            result = core.Float.IndexSwitch(1., 2., 3., default_index=1)
+            self.assertEqual(result._bsocket.node.inputs['Index'].default_value, 1)
+
+    def test_handwritten_menu_switch(self):
+        for factory in (core.GeoNodes, core.ShaderNodes):
+            with factory('Handwritten Menu Switch'):
+                result = core.Float.MenuSwitch({'First': 1., 'Second': 2., 'Third': 3.}, default_menu='Second')
+                self.assertEqual(result._bsocket.node.bl_idname, 'GeometryNodeMenuSwitch')
+                self.assertEqual([item.name for item in result._bsocket.node.enum_items], ['First', 'Second', 'Third'])
+                self.assertEqual(result.node._default_menu, 'Second')
+                self.assertNotIn('MenuSwitch', vars(type(result)))
+                result = core.Float(1).menu_switch(self_name='Original', Other=2., default_menu='Other')
+                self.assertEqual([item.name for item in result._bsocket.node.enum_items], ['Original', 'Other'])
+                self.assertEqual(result.node._default_menu, 'Other')
+                node = core.nd.menu_switch(named_sockets={'One': 1., 'Two': 2.}, data_type='FLOAT')
+                self.assertEqual([item.name for item in node._bnode.enum_items], ['One', 'Two'])
+
+    def test_node_positional_inputs(self):
+        with core.GeoNodes('Node positional values'):
+            a, b, c = core.Mesh.Cube(), core.Mesh.Cube(), core.Mesh.Cube()
+            joined = core.Node('Join Geometry', a, b, c)
+            self.assertEqual(len(joined._bnode.inputs['Geometry'].links), 3)
+            for operation in ('DIFFERENCE', 'UNION'):
+                named = {'Mesh 1': a} if operation == 'DIFFERENCE' else {}
+                node = core.Node('Mesh Boolean', b, c, operation=operation, named_sockets=named)
+                name = 'Mesh 2' if operation == 'DIFFERENCE' else 'Mesh'
+                self.assertEqual(len(node._bnode.inputs[name].links), 2)
+                self.assertEqual(named, {'Mesh 1': a} if operation == 'DIFFERENCE' else {})
+            switch = core.Node('Index Switch', 1., 2., 3., data_type='FLOAT', Index=2)
+            self.assertEqual(len(switch._bnode.index_switch_items), 3)
+            selector = switch._bnode.inputs['Index']
+            self.assertEqual(selector.links[0].from_node.integer if selector.is_linked else selector.default_value, 2)
+            with self.assertRaisesRegex(TypeError, 'require one active'):
+                core.Node('Math', 1., 2.)
+            joined = core.Node('Join Geometry', a, named_sockets={'Geometry': [b]})
+            self.assertEqual(len(joined._bnode.inputs['Geometry'].links), 2)
+            node = core.Node('Join Strings', 'first', 'second', Delimiter=':')
+            self.assertEqual(len(node._bnode.inputs['Strings'].links), 2)
+        with core.ShaderNodes('Node positional bundles'):
+            a, b = core.Node('Combine Bundle')._out, core.Node('Combine Bundle')._out
+            node = core.Node('Join Bundle', a, b)
+            self.assertEqual(len(node._bnode.inputs['Bundle'].links), 2)
+
     def test_typed_class_methods_and_geometry_type_inference(self):
         import inspect
         for factory in (core.GeoNodes, core.ShaderNodes):
@@ -240,6 +441,13 @@ class EnvironmentsTest(unittest.TestCase):
                     self.assertAlmostEqual(actual, expected)
                 self.assertNotIn('data_type', inspect.signature(core.Vector((0, 0, 0)).map_range).parameters)
                 self.assertEqual(core.Float(.5).interpolate()._bsocket.node.bl_idname, 'ShaderNodeMapRange')
+                mixed = core.Float(1).mix(2, factor=.5)
+                self.assertEqual(mixed._bsocket.node.data_type, 'FLOAT')
+                b = next(socket for socket in mixed._bsocket.node.inputs if socket.enabled and socket.name == 'B')
+                b_value = b.links[0].from_socket.default_value if b.is_linked else b.default_value
+                self.assertEqual(b_value, 2)
+                mixed_vector = core.Vector((1, 2, 3)).mix((4, 5, 6), factor=.5)
+                self.assertEqual(mixed_vector._bsocket.node.data_type, 'VECTOR')
                 enabled = core.Float(1).enable_output(enable=True)
                 self.assertEqual(enabled._bsocket.node.bl_idname, 'NodeEnableOutput')
                 self.assertEqual(enabled._bsocket.node.data_type, 'FLOAT')

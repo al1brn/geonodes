@@ -47,6 +47,9 @@ if TYPE_CHECKING:
     class Geometry:
         ...
 
+    class Texture:
+        ...
+
     class Collection:
         ...
 
@@ -110,2855 +113,2647 @@ if TYPE_CHECKING:
     class Face:
         ...
 
-def add(value: Float=None, value_1: Float=None, use_clamp=False):
+def add(value: Float=None, value_1: Float=None, use_clamp: bool=False):
     """ > Node <&Node Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'ADD'` |
-
+    
     Parameters
     ----------
     value : Float, optional
         socket 'Value'
-
+    
     value_1 : Float, optional
         socket 'Value'
-
+    
     use_clamp : bool
         parameter `use_clamp`
-
+    
     Returns
     -------
-    Float
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'value': value, 'value_1': value_1}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Math', named_sockets=_named_sockets, operation='ADD', use_clamp=use_clamp)
-    return _node._out
+    node = Node('Math', named_sockets={'Value': value, 'Value_1': value_1}, operation='ADD', use_clamp=use_clamp)
+    return node._out
 
-def subtract(value: Float=None, value_1: Float=None, use_clamp=False):
+def subtract(value: Float=None, value_1: Float=None, use_clamp: bool=False):
     """ > Node <&Node Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'SUBTRACT'` |
-
+    
     Parameters
     ----------
     value : Float, optional
         socket 'Value'
-
+    
     value_1 : Float, optional
         socket 'Value'
-
+    
     use_clamp : bool
         parameter `use_clamp`
-
+    
     Returns
     -------
-    Float
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'value': value, 'value_1': value_1}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Math', named_sockets=_named_sockets, operation='SUBTRACT', use_clamp=use_clamp)
-    return _node._out
+    node = Node('Math', named_sockets={'Value': value, 'Value_1': value_1}, operation='SUBTRACT', use_clamp=use_clamp)
+    return node._out
 
-def multiply(value: Float=None, value_1: Float=None, use_clamp=False):
+def multiply(value: Float=None, value_1: Float=None, use_clamp: bool=False):
     """ > Node <&Node Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'MULTIPLY'` |
-
+    
     Parameters
     ----------
     value : Float, optional
         socket 'Value'
-
+    
     value_1 : Float, optional
         socket 'Value'
-
+    
     use_clamp : bool
         parameter `use_clamp`
-
+    
     Returns
     -------
-    Float
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'value': value, 'value_1': value_1}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Math', named_sockets=_named_sockets, operation='MULTIPLY', use_clamp=use_clamp)
-    return _node._out
+    node = Node('Math', named_sockets={'Value': value, 'Value_1': value_1}, operation='MULTIPLY', use_clamp=use_clamp)
+    return node._out
 
-def divide(value: Float=None, value_1: Float=None, use_clamp=False):
+def divide(value: Float=None, value_1: Float=None, use_clamp: bool=False):
     """ > Node <&Node Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'DIVIDE'` |
-
+    
     Parameters
     ----------
     value : Float, optional
         socket 'Value'
-
+    
     value_1 : Float, optional
         socket 'Value'
-
+    
     use_clamp : bool
         parameter `use_clamp`
-
+    
     Returns
     -------
-    Float
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'value': value, 'value_1': value_1}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Math', named_sockets=_named_sockets, operation='DIVIDE', use_clamp=use_clamp)
-    return _node._out
+    node = Node('Math', named_sockets={'Value': value, 'Value_1': value_1}, operation='DIVIDE', use_clamp=use_clamp)
+    return node._out
 
-def multiply_add(value: Float=None, multiplier: Float=None, addend: Float=None, use_clamp=False):
+def multiply_add(value: Float=None, multiplier: Float=None, addend: Float=None, use_clamp: bool=False):
     """ > Node <&Node Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'MULTIPLY_ADD'` |
-
+    
     Parameters
     ----------
     value : Float, optional
         socket 'Value'
-
+    
     multiplier : Float, optional
         socket 'Multiplier'
-
+    
     addend : Float, optional
         socket 'Addend'
-
+    
     use_clamp : bool
         parameter `use_clamp`
-
+    
     Returns
     -------
-    Float
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'value': value, 'multiplier': multiplier, 'addend': addend}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Math', named_sockets=_named_sockets, operation='MULTIPLY_ADD', use_clamp=use_clamp)
-    return _node._out
+    node = Node('Math', named_sockets={'Value': value, 'Multiplier': multiplier, 'Addend': addend}, operation='MULTIPLY_ADD', use_clamp=use_clamp)
+    return node._out
 
-def power(base: Float=None, exponent: Float=None, use_clamp=False):
+def power(base: Float=None, exponent: Float=None, use_clamp: bool=False):
     """ > Node <&Node Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'POWER'` |
-
+    
     Parameters
     ----------
     base : Float, optional
         socket 'Base'
-
+    
     exponent : Float, optional
         socket 'Exponent'
-
+    
     use_clamp : bool
         parameter `use_clamp`
-
+    
     Returns
     -------
-    Float
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'base': base, 'exponent': exponent}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Math', named_sockets=_named_sockets, operation='POWER', use_clamp=use_clamp)
-    return _node._out
+    node = Node('Math', named_sockets={'Base': base, 'Exponent': exponent}, operation='POWER', use_clamp=use_clamp)
+    return node._out
 
-def log(value: Float=None, base: Float=None, use_clamp=False):
+def log(value: Float=None, base: Float=None, use_clamp: bool=False):
     """ > Node <&Node Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'LOGARITHM'` |
-
+    
     Parameters
     ----------
     value : Float, optional
         socket 'Value'
-
+    
     base : Float, optional
         socket 'Base'
-
+    
     use_clamp : bool
         parameter `use_clamp`
-
+    
     Returns
     -------
-    Float
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'value': value, 'base': base}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Math', named_sockets=_named_sockets, operation='LOGARITHM', use_clamp=use_clamp)
-    return _node._out
+    node = Node('Math', named_sockets={'Value': value, 'Base': base}, operation='LOGARITHM', use_clamp=use_clamp)
+    return node._out
 
-def sqrt(value: Float=None, use_clamp=False):
+def sqrt(value: Float=None, use_clamp: bool=False):
     """ > Node <&Node Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'SQRT'` |
-
+    
     Parameters
     ----------
     value : Float, optional
         socket 'Value'
-
+    
     use_clamp : bool
         parameter `use_clamp`
-
+    
     Returns
     -------
-    Float
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'value': value}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Math', named_sockets=_named_sockets, operation='SQRT', use_clamp=use_clamp)
-    return _node._out
+    node = Node('Math', named_sockets={'Value': value}, operation='SQRT', use_clamp=use_clamp)
+    return node._out
 
-def inverse_sqrt(value: Float=None, use_clamp=False):
+def inverse_sqrt(value: Float=None, use_clamp: bool=False):
     """ > Node <&Node Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'INVERSE_SQRT'` |
-
+    
     Parameters
     ----------
     value : Float, optional
         socket 'Value'
-
+    
     use_clamp : bool
         parameter `use_clamp`
-
+    
     Returns
     -------
-    Float
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'value': value}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Math', named_sockets=_named_sockets, operation='INVERSE_SQRT', use_clamp=use_clamp)
-    return _node._out
+    node = Node('Math', named_sockets={'Value': value}, operation='INVERSE_SQRT', use_clamp=use_clamp)
+    return node._out
 
-def abs(value: Float=None, use_clamp=False):
+def abs(value: Float=None, use_clamp: bool=False):
     """ > Node <&Node Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'ABSOLUTE'` |
-
+    
     Parameters
     ----------
     value : Float, optional
         socket 'Value'
-
+    
     use_clamp : bool
         parameter `use_clamp`
-
+    
     Returns
     -------
-    Float
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'value': value}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Math', named_sockets=_named_sockets, operation='ABSOLUTE', use_clamp=use_clamp)
-    return _node._out
+    node = Node('Math', named_sockets={'Value': value}, operation='ABSOLUTE', use_clamp=use_clamp)
+    return node._out
 
-def exp(value: Float=None, use_clamp=False):
+def exp(value: Float=None, use_clamp: bool=False):
     """ > Node <&Node Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'EXPONENT'` |
-
+    
     Parameters
     ----------
     value : Float, optional
         socket 'Value'
-
+    
     use_clamp : bool
         parameter `use_clamp`
-
+    
     Returns
     -------
-    Float
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'value': value}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Math', named_sockets=_named_sockets, operation='EXPONENT', use_clamp=use_clamp)
-    return _node._out
+    node = Node('Math', named_sockets={'Value': value}, operation='EXPONENT', use_clamp=use_clamp)
+    return node._out
 
-def min(value: Float=None, value_1: Float=None, use_clamp=False):
+def min(value: Float=None, value_1: Float=None, use_clamp: bool=False):
     """ > Node <&Node Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'MINIMUM'` |
-
+    
     Parameters
     ----------
     value : Float, optional
         socket 'Value'
-
+    
     value_1 : Float, optional
         socket 'Value'
-
+    
     use_clamp : bool
         parameter `use_clamp`
-
+    
     Returns
     -------
-    Float
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'value': value, 'value_1': value_1}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Math', named_sockets=_named_sockets, operation='MINIMUM', use_clamp=use_clamp)
-    return _node._out
+    node = Node('Math', named_sockets={'Value': value, 'Value_1': value_1}, operation='MINIMUM', use_clamp=use_clamp)
+    return node._out
 
-def max(value: Float=None, value_1: Float=None, use_clamp=False):
+def max(value: Float=None, value_1: Float=None, use_clamp: bool=False):
     """ > Node <&Node Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'MAXIMUM'` |
-
+    
     Parameters
     ----------
     value : Float, optional
         socket 'Value'
-
+    
     value_1 : Float, optional
         socket 'Value'
-
+    
     use_clamp : bool
         parameter `use_clamp`
-
+    
     Returns
     -------
-    Float
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'value': value, 'value_1': value_1}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Math', named_sockets=_named_sockets, operation='MAXIMUM', use_clamp=use_clamp)
-    return _node._out
+    node = Node('Math', named_sockets={'Value': value, 'Value_1': value_1}, operation='MAXIMUM', use_clamp=use_clamp)
+    return node._out
 
-def mless_than(value: Float=None, threshold: Float=None, use_clamp=False):
+def mless_than(value: Float=None, threshold: Float=None, use_clamp: bool=False):
     """ > Node <&Node Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'LESS_THAN'` |
-
+    
     Parameters
     ----------
     value : Float, optional
         socket 'Value'
-
+    
     threshold : Float, optional
         socket 'Threshold'
-
+    
     use_clamp : bool
         parameter `use_clamp`
-
+    
     Returns
     -------
-    Float
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'value': value, 'threshold': threshold}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Math', named_sockets=_named_sockets, operation='LESS_THAN', use_clamp=use_clamp)
-    return _node._out
+    node = Node('Math', named_sockets={'Value': value, 'Threshold': threshold}, operation='LESS_THAN', use_clamp=use_clamp)
+    return node._out
 
-def mgreater_than(value: Float=None, threshold: Float=None, use_clamp=False):
+def mgreater_than(value: Float=None, threshold: Float=None, use_clamp: bool=False):
     """ > Node <&Node Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'GREATER_THAN'` |
-
+    
     Parameters
     ----------
     value : Float, optional
         socket 'Value'
-
+    
     threshold : Float, optional
         socket 'Threshold'
-
+    
     use_clamp : bool
         parameter `use_clamp`
-
+    
     Returns
     -------
-    Float
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'value': value, 'threshold': threshold}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Math', named_sockets=_named_sockets, operation='GREATER_THAN', use_clamp=use_clamp)
-    return _node._out
+    node = Node('Math', named_sockets={'Value': value, 'Threshold': threshold}, operation='GREATER_THAN', use_clamp=use_clamp)
+    return node._out
 
-def sign(value: Float=None, use_clamp=False):
+def sign(value: Float=None, use_clamp: bool=False):
     """ > Node <&Node Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'SIGN'` |
-
+    
     Parameters
     ----------
     value : Float, optional
         socket 'Value'
-
+    
     use_clamp : bool
         parameter `use_clamp`
-
+    
     Returns
     -------
-    Float
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'value': value}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Math', named_sockets=_named_sockets, operation='SIGN', use_clamp=use_clamp)
-    return _node._out
+    node = Node('Math', named_sockets={'Value': value}, operation='SIGN', use_clamp=use_clamp)
+    return node._out
 
-def compare(value: Float=None, value_1: Float=None, epsilon: Float=None, use_clamp=False):
+def mcompare(value: Float=None, value_1: Float=None, epsilon: Float=None, use_clamp: bool=False):
     """ > Node <&Node Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'COMPARE'` |
-
+    
     Parameters
     ----------
     value : Float, optional
         socket 'Value'
-
+    
     value_1 : Float, optional
         socket 'Value'
-
+    
     epsilon : Float, optional
         socket 'Epsilon'
-
+    
     use_clamp : bool
         parameter `use_clamp`
-
+    
     Returns
     -------
-    Float
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'value': value, 'value_1': value_1, 'epsilon': epsilon}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Math', named_sockets=_named_sockets, operation='COMPARE', use_clamp=use_clamp)
-    return _node._out
+    node = Node('Math', named_sockets={'Value': value, 'Value_1': value_1, 'Epsilon': epsilon}, operation='COMPARE', use_clamp=use_clamp)
+    return node._out
 
-def smooth_min(value: Float=None, value_1: Float=None, distance: Float=None, use_clamp=False):
+def smooth_min(value: Float=None, value_1: Float=None, distance: Float=None, use_clamp: bool=False):
     """ > Node <&Node Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'SMOOTH_MIN'` |
-
+    
     Parameters
     ----------
     value : Float, optional
         socket 'Value'
-
+    
     value_1 : Float, optional
         socket 'Value'
-
+    
     distance : Float, optional
         socket 'Distance'
-
+    
     use_clamp : bool
         parameter `use_clamp`
-
+    
     Returns
     -------
-    Float
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'value': value, 'value_1': value_1, 'distance': distance}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Math', named_sockets=_named_sockets, operation='SMOOTH_MIN', use_clamp=use_clamp)
-    return _node._out
+    node = Node('Math', named_sockets={'Value': value, 'Value_1': value_1, 'Distance': distance}, operation='SMOOTH_MIN', use_clamp=use_clamp)
+    return node._out
 
-def smooth_max(value: Float=None, value_1: Float=None, distance: Float=None, use_clamp=False):
+def smooth_max(value: Float=None, value_1: Float=None, distance: Float=None, use_clamp: bool=False):
     """ > Node <&Node Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'SMOOTH_MAX'` |
-
+    
     Parameters
     ----------
     value : Float, optional
         socket 'Value'
-
+    
     value_1 : Float, optional
         socket 'Value'
-
+    
     distance : Float, optional
         socket 'Distance'
-
+    
     use_clamp : bool
         parameter `use_clamp`
-
+    
     Returns
     -------
-    Float
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'value': value, 'value_1': value_1, 'distance': distance}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Math', named_sockets=_named_sockets, operation='SMOOTH_MAX', use_clamp=use_clamp)
-    return _node._out
+    node = Node('Math', named_sockets={'Value': value, 'Value_1': value_1, 'Distance': distance}, operation='SMOOTH_MAX', use_clamp=use_clamp)
+    return node._out
 
-def round(value: Float=None, use_clamp=False):
+def round(value: Float=None, use_clamp: bool=False):
     """ > Node <&Node Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'ROUND'` |
-
+    
     Parameters
     ----------
     value : Float, optional
         socket 'Value'
-
+    
     use_clamp : bool
         parameter `use_clamp`
-
+    
     Returns
     -------
-    Float
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'value': value}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Math', named_sockets=_named_sockets, operation='ROUND', use_clamp=use_clamp)
-    return _node._out
+    node = Node('Math', named_sockets={'Value': value}, operation='ROUND', use_clamp=use_clamp)
+    return node._out
 
-def floor(value: Float=None, use_clamp=False):
+def floor(value: Float=None, use_clamp: bool=False):
     """ > Node <&Node Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'FLOOR'` |
-
+    
     Parameters
     ----------
     value : Float, optional
         socket 'Value'
-
+    
     use_clamp : bool
         parameter `use_clamp`
-
+    
     Returns
     -------
-    Float
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'value': value}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Math', named_sockets=_named_sockets, operation='FLOOR', use_clamp=use_clamp)
-    return _node._out
+    node = Node('Math', named_sockets={'Value': value}, operation='FLOOR', use_clamp=use_clamp)
+    return node._out
 
-def ceil(value: Float=None, use_clamp=False):
+def ceil(value: Float=None, use_clamp: bool=False):
     """ > Node <&Node Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'CEIL'` |
-
+    
     Parameters
     ----------
     value : Float, optional
         socket 'Value'
-
+    
     use_clamp : bool
         parameter `use_clamp`
-
+    
     Returns
     -------
-    Float
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'value': value}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Math', named_sockets=_named_sockets, operation='CEIL', use_clamp=use_clamp)
-    return _node._out
+    node = Node('Math', named_sockets={'Value': value}, operation='CEIL', use_clamp=use_clamp)
+    return node._out
 
-def trunc(value: Float=None, use_clamp=False):
+def trunc(value: Float=None, use_clamp: bool=False):
     """ > Node <&Node Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'TRUNC'` |
-
+    
     Parameters
     ----------
     value : Float, optional
         socket 'Value'
-
+    
     use_clamp : bool
         parameter `use_clamp`
-
+    
     Returns
     -------
-    Float
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'value': value}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Math', named_sockets=_named_sockets, operation='TRUNC', use_clamp=use_clamp)
-    return _node._out
+    node = Node('Math', named_sockets={'Value': value}, operation='TRUNC', use_clamp=use_clamp)
+    return node._out
 
-def fract(value: Float=None, use_clamp=False):
+def fract(value: Float=None, use_clamp: bool=False):
     """ > Node <&Node Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'FRACT'` |
-
+    
     Parameters
     ----------
     value : Float, optional
         socket 'Value'
-
+    
     use_clamp : bool
         parameter `use_clamp`
-
+    
     Returns
     -------
-    Float
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'value': value}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Math', named_sockets=_named_sockets, operation='FRACT', use_clamp=use_clamp)
-    return _node._out
+    node = Node('Math', named_sockets={'Value': value}, operation='FRACT', use_clamp=use_clamp)
+    return node._out
 
-def modulo(value: Float=None, value_1: Float=None, use_clamp=False):
+def modulo(value: Float=None, value_1: Float=None, use_clamp: bool=False):
     """ > Node <&Node Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'MODULO'` |
-
+    
     Parameters
     ----------
     value : Float, optional
         socket 'Value'
-
+    
     value_1 : Float, optional
         socket 'Value'
-
+    
     use_clamp : bool
         parameter `use_clamp`
-
+    
     Returns
     -------
-    Float
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'value': value, 'value_1': value_1}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Math', named_sockets=_named_sockets, operation='MODULO', use_clamp=use_clamp)
-    return _node._out
+    node = Node('Math', named_sockets={'Value': value, 'Value_1': value_1}, operation='MODULO', use_clamp=use_clamp)
+    return node._out
 
-def floored_modulo(value: Float=None, value_1: Float=None, use_clamp=False):
+def floored_modulo(value: Float=None, value_1: Float=None, use_clamp: bool=False):
     """ > Node <&Node Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'FLOORED_MODULO'` |
-
+    
     Parameters
     ----------
     value : Float, optional
         socket 'Value'
-
+    
     value_1 : Float, optional
         socket 'Value'
-
+    
     use_clamp : bool
         parameter `use_clamp`
-
+    
     Returns
     -------
-    Float
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'value': value, 'value_1': value_1}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Math', named_sockets=_named_sockets, operation='FLOORED_MODULO', use_clamp=use_clamp)
-    return _node._out
+    node = Node('Math', named_sockets={'Value': value, 'Value_1': value_1}, operation='FLOORED_MODULO', use_clamp=use_clamp)
+    return node._out
 
-def wrap(value: Float=None, max: Float=None, min: Float=None, use_clamp=False):
+def wrap(value: Float=None, max: Float=None, min: Float=None, use_clamp: bool=False):
     """ > Node <&Node Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'WRAP'` |
-
+    
     Parameters
     ----------
     value : Float, optional
         socket 'Value'
-
+    
     max : Float, optional
         socket 'Max'
-
+    
     min : Float, optional
         socket 'Min'
-
+    
     use_clamp : bool
         parameter `use_clamp`
-
+    
     Returns
     -------
-    Float
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'value': value, 'max': max, 'min': min}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Math', named_sockets=_named_sockets, operation='WRAP', use_clamp=use_clamp)
-    return _node._out
+    node = Node('Math', named_sockets={'Value': value, 'Max': max, 'Min': min}, operation='WRAP', use_clamp=use_clamp)
+    return node._out
 
-def snap(value: Float=None, increment: Float=None, use_clamp=False):
+def snap(value: Float=None, increment: Float=None, use_clamp: bool=False):
     """ > Node <&Node Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'SNAP'` |
-
+    
     Parameters
     ----------
     value : Float, optional
         socket 'Value'
-
+    
     increment : Float, optional
         socket 'Increment'
-
+    
     use_clamp : bool
         parameter `use_clamp`
-
+    
     Returns
     -------
-    Float
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'value': value, 'increment': increment}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Math', named_sockets=_named_sockets, operation='SNAP', use_clamp=use_clamp)
-    return _node._out
+    node = Node('Math', named_sockets={'Value': value, 'Increment': increment}, operation='SNAP', use_clamp=use_clamp)
+    return node._out
 
-def pingpong(value: Float=None, scale: Float=None, use_clamp=False):
+def pingpong(value: Float=None, scale: Float=None, use_clamp: bool=False):
     """ > Node <&Node Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'PINGPONG'` |
-
+    
     Parameters
     ----------
     value : Float, optional
         socket 'Value'
-
+    
     scale : Float, optional
         socket 'Scale'
-
+    
     use_clamp : bool
         parameter `use_clamp`
-
+    
     Returns
     -------
-    Float
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'value': value, 'scale': scale}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Math', named_sockets=_named_sockets, operation='PINGPONG', use_clamp=use_clamp)
-    return _node._out
+    node = Node('Math', named_sockets={'Value': value, 'Scale': scale}, operation='PINGPONG', use_clamp=use_clamp)
+    return node._out
 
-def sin(value: Float=None, use_clamp=False):
+def sin(value: Float=None, use_clamp: bool=False):
     """ > Node <&Node Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'SINE'` |
-
+    
     Parameters
     ----------
     value : Float, optional
         socket 'Value'
-
+    
     use_clamp : bool
         parameter `use_clamp`
-
+    
     Returns
     -------
-    Float
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'value': value}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Math', named_sockets=_named_sockets, operation='SINE', use_clamp=use_clamp)
-    return _node._out
+    node = Node('Math', named_sockets={'Value': value}, operation='SINE', use_clamp=use_clamp)
+    return node._out
 
-def cos(value: Float=None, use_clamp=False):
+def cos(value: Float=None, use_clamp: bool=False):
     """ > Node <&Node Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'COSINE'` |
-
+    
     Parameters
     ----------
     value : Float, optional
         socket 'Value'
-
+    
     use_clamp : bool
         parameter `use_clamp`
-
+    
     Returns
     -------
-    Float
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'value': value}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Math', named_sockets=_named_sockets, operation='COSINE', use_clamp=use_clamp)
-    return _node._out
+    node = Node('Math', named_sockets={'Value': value}, operation='COSINE', use_clamp=use_clamp)
+    return node._out
 
-def tan(value: Float=None, use_clamp=False):
+def tan(value: Float=None, use_clamp: bool=False):
     """ > Node <&Node Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'TANGENT'` |
-
+    
     Parameters
     ----------
     value : Float, optional
         socket 'Value'
-
+    
     use_clamp : bool
         parameter `use_clamp`
-
+    
     Returns
     -------
-    Float
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'value': value}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Math', named_sockets=_named_sockets, operation='TANGENT', use_clamp=use_clamp)
-    return _node._out
+    node = Node('Math', named_sockets={'Value': value}, operation='TANGENT', use_clamp=use_clamp)
+    return node._out
 
-def asin(value: Float=None, use_clamp=False):
+def asin(value: Float=None, use_clamp: bool=False):
     """ > Node <&Node Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'ARCSINE'` |
-
+    
     Parameters
     ----------
     value : Float, optional
         socket 'Value'
-
+    
     use_clamp : bool
         parameter `use_clamp`
-
+    
     Returns
     -------
-    Float
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'value': value}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Math', named_sockets=_named_sockets, operation='ARCSINE', use_clamp=use_clamp)
-    return _node._out
+    node = Node('Math', named_sockets={'Value': value}, operation='ARCSINE', use_clamp=use_clamp)
+    return node._out
 
-def acos(value: Float=None, use_clamp=False):
+def acos(value: Float=None, use_clamp: bool=False):
     """ > Node <&Node Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'ARCCOSINE'` |
-
+    
     Parameters
     ----------
     value : Float, optional
         socket 'Value'
-
+    
     use_clamp : bool
         parameter `use_clamp`
-
+    
     Returns
     -------
-    Float
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'value': value}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Math', named_sockets=_named_sockets, operation='ARCCOSINE', use_clamp=use_clamp)
-    return _node._out
+    node = Node('Math', named_sockets={'Value': value}, operation='ARCCOSINE', use_clamp=use_clamp)
+    return node._out
 
-def arctangent(value: Float=None, use_clamp=False):
+def arctangent(value: Float=None, use_clamp: bool=False):
     """ > Node <&Node Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'ARCTANGENT'` |
-
+    
     Parameters
     ----------
     value : Float, optional
         socket 'Value'
-
+    
     use_clamp : bool
         parameter `use_clamp`
-
+    
     Returns
     -------
-    Float
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'value': value}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Math', named_sockets=_named_sockets, operation='ARCTANGENT', use_clamp=use_clamp)
-    return _node._out
+    node = Node('Math', named_sockets={'Value': value}, operation='ARCTANGENT', use_clamp=use_clamp)
+    return node._out
 
-def atan2(value: Float=None, value_1: Float=None, use_clamp=False):
+def atan2(value: Float=None, value_1: Float=None, use_clamp: bool=False):
     """ > Node <&Node Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'ARCTAN2'` |
-
+    
     Parameters
     ----------
     value : Float, optional
         socket 'Value'
-
+    
     value_1 : Float, optional
         socket 'Value'
-
+    
     use_clamp : bool
         parameter `use_clamp`
-
+    
     Returns
     -------
-    Float
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'value': value, 'value_1': value_1}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Math', named_sockets=_named_sockets, operation='ARCTAN2', use_clamp=use_clamp)
-    return _node._out
+    node = Node('Math', named_sockets={'Value': value, 'Value_1': value_1}, operation='ARCTAN2', use_clamp=use_clamp)
+    return node._out
 
-def sinh(value: Float=None, use_clamp=False):
+def sinh(value: Float=None, use_clamp: bool=False):
     """ > Node <&Node Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'SINH'` |
-
+    
     Parameters
     ----------
     value : Float, optional
         socket 'Value'
-
+    
     use_clamp : bool
         parameter `use_clamp`
-
+    
     Returns
     -------
-    Float
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'value': value}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Math', named_sockets=_named_sockets, operation='SINH', use_clamp=use_clamp)
-    return _node._out
+    node = Node('Math', named_sockets={'Value': value}, operation='SINH', use_clamp=use_clamp)
+    return node._out
 
-def cosh(value: Float=None, use_clamp=False):
+def cosh(value: Float=None, use_clamp: bool=False):
     """ > Node <&Node Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'COSH'` |
-
+    
     Parameters
     ----------
     value : Float, optional
         socket 'Value'
-
+    
     use_clamp : bool
         parameter `use_clamp`
-
+    
     Returns
     -------
-    Float
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'value': value}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Math', named_sockets=_named_sockets, operation='COSH', use_clamp=use_clamp)
-    return _node._out
+    node = Node('Math', named_sockets={'Value': value}, operation='COSH', use_clamp=use_clamp)
+    return node._out
 
-def tanh(value: Float=None, use_clamp=False):
+def tanh(value: Float=None, use_clamp: bool=False):
     """ > Node <&Node Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'TANH'` |
-
+    
     Parameters
     ----------
     value : Float, optional
         socket 'Value'
-
+    
     use_clamp : bool
         parameter `use_clamp`
-
+    
     Returns
     -------
-    Float
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'value': value}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Math', named_sockets=_named_sockets, operation='TANH', use_clamp=use_clamp)
-    return _node._out
+    node = Node('Math', named_sockets={'Value': value}, operation='TANH', use_clamp=use_clamp)
+    return node._out
 
-def radians(degrees: Float=None, use_clamp=False):
+def radians(degrees: Float=None, use_clamp: bool=False):
     """ > Node <&Node Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'RADIANS'` |
-
+    
     Parameters
     ----------
     degrees : Float, optional
         socket 'Degrees'
-
+    
     use_clamp : bool
         parameter `use_clamp`
-
+    
     Returns
     -------
-    Float
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'degrees': degrees}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Math', named_sockets=_named_sockets, operation='RADIANS', use_clamp=use_clamp)
-    return _node._out
+    node = Node('Math', named_sockets={'Degrees': degrees}, operation='RADIANS', use_clamp=use_clamp)
+    return node._out
 
-def degrees(radians: Float=None, use_clamp=False):
+def degrees(radians: Float=None, use_clamp: bool=False):
     """ > Node <&Node Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'DEGREES'` |
-
+    
     Parameters
     ----------
     radians : Float, optional
         socket 'Radians'
-
+    
     use_clamp : bool
         parameter `use_clamp`
-
+    
     Returns
     -------
-    Float
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'radians': radians}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Math', named_sockets=_named_sockets, operation='DEGREES', use_clamp=use_clamp)
-    return _node._out
+    node = Node('Math', named_sockets={'Radians': radians}, operation='DEGREES', use_clamp=use_clamp)
+    return node._out
 
 def iadd(value: Integer=None, value_1: Integer=None):
     """ > Node <&Node Integer Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'ADD'` |
-
+    
     Parameters
     ----------
     value : Integer, optional
         socket 'Value'
-
+    
     value_1 : Integer, optional
         socket 'Value'
-
+    
     Returns
     -------
-    Integer
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'value': value, 'value_1': value_1}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Integer Math', named_sockets=_named_sockets, operation='ADD')
-    return _node._out
+    node = Node('Integer Math', named_sockets={'Value': value, 'Value_1': value_1}, operation='ADD')
+    return node._out
 
 def isubtract(value: Integer=None, value_1: Integer=None):
     """ > Node <&Node Integer Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'SUBTRACT'` |
-
+    
     Parameters
     ----------
     value : Integer, optional
         socket 'Value'
-
+    
     value_1 : Integer, optional
         socket 'Value'
-
+    
     Returns
     -------
-    Integer
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'value': value, 'value_1': value_1}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Integer Math', named_sockets=_named_sockets, operation='SUBTRACT')
-    return _node._out
+    node = Node('Integer Math', named_sockets={'Value': value, 'Value_1': value_1}, operation='SUBTRACT')
+    return node._out
 
 def imultiply(value: Integer=None, value_1: Integer=None):
     """ > Node <&Node Integer Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'MULTIPLY'` |
-
+    
     Parameters
     ----------
     value : Integer, optional
         socket 'Value'
-
+    
     value_1 : Integer, optional
         socket 'Value'
-
+    
     Returns
     -------
-    Integer
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'value': value, 'value_1': value_1}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Integer Math', named_sockets=_named_sockets, operation='MULTIPLY')
-    return _node._out
+    node = Node('Integer Math', named_sockets={'Value': value, 'Value_1': value_1}, operation='MULTIPLY')
+    return node._out
 
 def idivide(value: Integer=None, value_1: Integer=None):
     """ > Node <&Node Integer Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'DIVIDE'` |
-
+    
     Parameters
     ----------
     value : Integer, optional
         socket 'Value'
-
+    
     value_1 : Integer, optional
         socket 'Value'
-
+    
     Returns
     -------
-    Integer
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'value': value, 'value_1': value_1}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Integer Math', named_sockets=_named_sockets, operation='DIVIDE')
-    return _node._out
+    node = Node('Integer Math', named_sockets={'Value': value, 'Value_1': value_1}, operation='DIVIDE')
+    return node._out
 
 def imultiply_add(value: Integer=None, multiplier: Integer=None, addend: Integer=None):
     """ > Node <&Node Integer Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'MULTIPLY_ADD'` |
-
+    
     Parameters
     ----------
     value : Integer, optional
         socket 'Value'
-
+    
     multiplier : Integer, optional
         socket 'Multiplier'
-
+    
     addend : Integer, optional
         socket 'Addend'
-
+    
     Returns
     -------
-    Integer
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'value': value, 'multiplier': multiplier, 'addend': addend}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Integer Math', named_sockets=_named_sockets, operation='MULTIPLY_ADD')
-    return _node._out
+    node = Node('Integer Math', named_sockets={'Value': value, 'Multiplier': multiplier, 'Addend': addend}, operation='MULTIPLY_ADD')
+    return node._out
 
 def iabs(value: Integer=None):
     """ > Node <&Node Integer Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'ABSOLUTE'` |
-
+    
     Parameters
     ----------
     value : Integer, optional
         socket 'Value'
-
+    
     Returns
     -------
-    Integer
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'value': value}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Integer Math', named_sockets=_named_sockets, operation='ABSOLUTE')
-    return _node._out
+    node = Node('Integer Math', named_sockets={'Value': value}, operation='ABSOLUTE')
+    return node._out
 
 def negate(value: Integer=None):
     """ > Node <&Node Integer Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'NEGATE'` |
-
+    
     Parameters
     ----------
     value : Integer, optional
         socket 'Value'
-
+    
     Returns
     -------
-    Integer
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'value': value}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Integer Math', named_sockets=_named_sockets, operation='NEGATE')
-    return _node._out
+    node = Node('Integer Math', named_sockets={'Value': value}, operation='NEGATE')
+    return node._out
 
 def ipower(base: Integer=None, exponent: Integer=None):
     """ > Node <&Node Integer Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'POWER'` |
-
+    
     Parameters
     ----------
     base : Integer, optional
         socket 'Base'
-
+    
     exponent : Integer, optional
         socket 'Exponent'
-
+    
     Returns
     -------
-    Integer
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'base': base, 'exponent': exponent}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Integer Math', named_sockets=_named_sockets, operation='POWER')
-    return _node._out
+    node = Node('Integer Math', named_sockets={'Base': base, 'Exponent': exponent}, operation='POWER')
+    return node._out
 
 def imin(value: Integer=None, value_1: Integer=None):
     """ > Node <&Node Integer Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'MINIMUM'` |
-
+    
     Parameters
     ----------
     value : Integer, optional
         socket 'Value'
-
+    
     value_1 : Integer, optional
         socket 'Value'
-
+    
     Returns
     -------
-    Integer
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'value': value, 'value_1': value_1}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Integer Math', named_sockets=_named_sockets, operation='MINIMUM')
-    return _node._out
+    node = Node('Integer Math', named_sockets={'Value': value, 'Value_1': value_1}, operation='MINIMUM')
+    return node._out
 
 def imax(value: Integer=None, value_1: Integer=None):
     """ > Node <&Node Integer Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'MAXIMUM'` |
-
+    
     Parameters
     ----------
     value : Integer, optional
         socket 'Value'
-
+    
     value_1 : Integer, optional
         socket 'Value'
-
+    
     Returns
     -------
-    Integer
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'value': value, 'value_1': value_1}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Integer Math', named_sockets=_named_sockets, operation='MAXIMUM')
-    return _node._out
+    node = Node('Integer Math', named_sockets={'Value': value, 'Value_1': value_1}, operation='MAXIMUM')
+    return node._out
 
 def isign(value: Integer=None):
     """ > Node <&Node Integer Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'SIGN'` |
-
+    
     Parameters
     ----------
     value : Integer, optional
         socket 'Value'
-
+    
     Returns
     -------
-    Integer
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'value': value}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Integer Math', named_sockets=_named_sockets, operation='SIGN')
-    return _node._out
+    node = Node('Integer Math', named_sockets={'Value': value}, operation='SIGN')
+    return node._out
 
 def divide_round(value: Integer=None, value_1: Integer=None):
     """ > Node <&Node Integer Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'DIVIDE_ROUND'` |
-
+    
     Parameters
     ----------
     value : Integer, optional
         socket 'Value'
-
+    
     value_1 : Integer, optional
         socket 'Value'
-
+    
     Returns
     -------
-    Integer
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'value': value, 'value_1': value_1}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Integer Math', named_sockets=_named_sockets, operation='DIVIDE_ROUND')
-    return _node._out
+    node = Node('Integer Math', named_sockets={'Value': value, 'Value_1': value_1}, operation='DIVIDE_ROUND')
+    return node._out
 
 def divide_floor(value: Integer=None, value_1: Integer=None):
     """ > Node <&Node Integer Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'DIVIDE_FLOOR'` |
-
+    
     Parameters
     ----------
     value : Integer, optional
         socket 'Value'
-
+    
     value_1 : Integer, optional
         socket 'Value'
-
+    
     Returns
     -------
-    Integer
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'value': value, 'value_1': value_1}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Integer Math', named_sockets=_named_sockets, operation='DIVIDE_FLOOR')
-    return _node._out
+    node = Node('Integer Math', named_sockets={'Value': value, 'Value_1': value_1}, operation='DIVIDE_FLOOR')
+    return node._out
 
 def divide_ceil(value: Integer=None, value_1: Integer=None):
     """ > Node <&Node Integer Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'DIVIDE_CEIL'` |
-
+    
     Parameters
     ----------
     value : Integer, optional
         socket 'Value'
-
+    
     value_1 : Integer, optional
         socket 'Value'
-
+    
     Returns
     -------
-    Integer
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'value': value, 'value_1': value_1}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Integer Math', named_sockets=_named_sockets, operation='DIVIDE_CEIL')
-    return _node._out
+    node = Node('Integer Math', named_sockets={'Value': value, 'Value_1': value_1}, operation='DIVIDE_CEIL')
+    return node._out
 
 def ifloored_modulo(value: Integer=None, value_1: Integer=None):
     """ > Node <&Node Integer Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'FLOORED_MODULO'` |
-
+    
     Parameters
     ----------
     value : Integer, optional
         socket 'Value'
-
+    
     value_1 : Integer, optional
         socket 'Value'
-
+    
     Returns
     -------
-    Integer
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'value': value, 'value_1': value_1}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Integer Math', named_sockets=_named_sockets, operation='FLOORED_MODULO')
-    return _node._out
+    node = Node('Integer Math', named_sockets={'Value': value, 'Value_1': value_1}, operation='FLOORED_MODULO')
+    return node._out
 
 def imodulo(value: Integer=None, value_1: Integer=None):
     """ > Node <&Node Integer Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'MODULO'` |
-
+    
     Parameters
     ----------
     value : Integer, optional
         socket 'Value'
-
+    
     value_1 : Integer, optional
         socket 'Value'
-
+    
     Returns
     -------
-    Integer
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'value': value, 'value_1': value_1}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Integer Math', named_sockets=_named_sockets, operation='MODULO')
-    return _node._out
+    node = Node('Integer Math', named_sockets={'Value': value, 'Value_1': value_1}, operation='MODULO')
+    return node._out
 
 def gcd(value: Integer=None, value_1: Integer=None):
     """ > Node <&Node Integer Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'GCD'` |
-
+    
     Parameters
     ----------
     value : Integer, optional
         socket 'Value'
-
+    
     value_1 : Integer, optional
         socket 'Value'
-
+    
     Returns
     -------
-    Integer
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'value': value, 'value_1': value_1}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Integer Math', named_sockets=_named_sockets, operation='GCD')
-    return _node._out
+    node = Node('Integer Math', named_sockets={'Value': value, 'Value_1': value_1}, operation='GCD')
+    return node._out
 
 def lcm(value: Integer=None, value_1: Integer=None):
     """ > Node <&Node Integer Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'LCM'` |
-
+    
     Parameters
     ----------
     value : Integer, optional
         socket 'Value'
-
+    
     value_1 : Integer, optional
         socket 'Value'
-
+    
     Returns
     -------
-    Integer
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'value': value, 'value_1': value_1}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Integer Math', named_sockets=_named_sockets, operation='LCM')
-    return _node._out
+    node = Node('Integer Math', named_sockets={'Value': value, 'Value_1': value_1}, operation='LCM')
+    return node._out
 
 def band(boolean: Boolean=None, boolean_1: Boolean=None):
     """ > Node <&Node Boolean Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'AND'` |
-
+    
     Parameters
     ----------
     boolean : Boolean, optional
         socket 'Boolean'
-
+    
     boolean_1 : Boolean, optional
         socket 'Boolean'
-
+    
     Returns
     -------
-    Boolean
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'boolean': boolean, 'boolean_1': boolean_1}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Boolean Math', named_sockets=_named_sockets, operation='AND')
-    return _node._out
+    node = Node('Boolean Math', named_sockets={'Boolean': boolean, 'Boolean_1': boolean_1}, operation='AND')
+    return node._out
 
 def bor(boolean: Boolean=None, boolean_1: Boolean=None):
     """ > Node <&Node Boolean Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'OR'` |
-
+    
     Parameters
     ----------
     boolean : Boolean, optional
         socket 'Boolean'
-
+    
     boolean_1 : Boolean, optional
         socket 'Boolean'
-
+    
     Returns
     -------
-    Boolean
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'boolean': boolean, 'boolean_1': boolean_1}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Boolean Math', named_sockets=_named_sockets, operation='OR')
-    return _node._out
+    node = Node('Boolean Math', named_sockets={'Boolean': boolean, 'Boolean_1': boolean_1}, operation='OR')
+    return node._out
 
 def bnot(boolean: Boolean=None):
     """ > Node <&Node Boolean Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'NOT'` |
-
+    
     Parameters
     ----------
     boolean : Boolean, optional
         socket 'Boolean'
-
+    
     Returns
     -------
-    Boolean
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'boolean': boolean}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Boolean Math', named_sockets=_named_sockets, operation='NOT')
-    return _node._out
+    node = Node('Boolean Math', named_sockets={'Boolean': boolean}, operation='NOT')
+    return node._out
 
 def not_and(boolean: Boolean=None, boolean_1: Boolean=None):
     """ > Node <&Node Boolean Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'NAND'` |
-
+    
     Parameters
     ----------
     boolean : Boolean, optional
         socket 'Boolean'
-
+    
     boolean_1 : Boolean, optional
         socket 'Boolean'
-
+    
     Returns
     -------
-    Boolean
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'boolean': boolean, 'boolean_1': boolean_1}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Boolean Math', named_sockets=_named_sockets, operation='NAND')
-    return _node._out
+    node = Node('Boolean Math', named_sockets={'Boolean': boolean, 'Boolean_1': boolean_1}, operation='NAND')
+    return node._out
 
 def nor(boolean: Boolean=None, boolean_1: Boolean=None):
     """ > Node <&Node Boolean Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'NOR'` |
-
+    
     Parameters
     ----------
     boolean : Boolean, optional
         socket 'Boolean'
-
+    
     boolean_1 : Boolean, optional
         socket 'Boolean'
-
+    
     Returns
     -------
-    Boolean
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'boolean': boolean, 'boolean_1': boolean_1}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Boolean Math', named_sockets=_named_sockets, operation='NOR')
-    return _node._out
+    node = Node('Boolean Math', named_sockets={'Boolean': boolean, 'Boolean_1': boolean_1}, operation='NOR')
+    return node._out
 
 def xnor(boolean: Boolean=None, boolean_1: Boolean=None):
     """ > Node <&Node Boolean Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'XNOR'` |
-
+    
     Parameters
     ----------
     boolean : Boolean, optional
         socket 'Boolean'
-
+    
     boolean_1 : Boolean, optional
         socket 'Boolean'
-
+    
     Returns
     -------
-    Boolean
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'boolean': boolean, 'boolean_1': boolean_1}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Boolean Math', named_sockets=_named_sockets, operation='XNOR')
-    return _node._out
+    node = Node('Boolean Math', named_sockets={'Boolean': boolean, 'Boolean_1': boolean_1}, operation='XNOR')
+    return node._out
 
 def xor(boolean: Boolean=None, boolean_1: Boolean=None):
     """ > Node <&Node Boolean Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'XOR'` |
-
+    
     Parameters
     ----------
     boolean : Boolean, optional
         socket 'Boolean'
-
+    
     boolean_1 : Boolean, optional
         socket 'Boolean'
-
+    
     Returns
     -------
-    Boolean
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'boolean': boolean, 'boolean_1': boolean_1}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Boolean Math', named_sockets=_named_sockets, operation='XOR')
-    return _node._out
+    node = Node('Boolean Math', named_sockets={'Boolean': boolean, 'Boolean_1': boolean_1}, operation='XOR')
+    return node._out
 
 def imply(boolean: Boolean=None, boolean_1: Boolean=None):
     """ > Node <&Node Boolean Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'IMPLY'` |
-
+    
     Parameters
     ----------
     boolean : Boolean, optional
         socket 'Boolean'
-
+    
     boolean_1 : Boolean, optional
         socket 'Boolean'
-
+    
     Returns
     -------
-    Boolean
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'boolean': boolean, 'boolean_1': boolean_1}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Boolean Math', named_sockets=_named_sockets, operation='IMPLY')
-    return _node._out
+    node = Node('Boolean Math', named_sockets={'Boolean': boolean, 'Boolean_1': boolean_1}, operation='IMPLY')
+    return node._out
 
 def nimply(boolean: Boolean=None, boolean_1: Boolean=None):
     """ > Node <&Node Boolean Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'NIMPLY'` |
-
+    
     Parameters
     ----------
     boolean : Boolean, optional
         socket 'Boolean'
-
+    
     boolean_1 : Boolean, optional
         socket 'Boolean'
-
+    
     Returns
     -------
-    Boolean
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'boolean': boolean, 'boolean_1': boolean_1}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Boolean Math', named_sockets=_named_sockets, operation='NIMPLY')
-    return _node._out
+    node = Node('Boolean Math', named_sockets={'Boolean': boolean, 'Boolean_1': boolean_1}, operation='NIMPLY')
+    return node._out
 
 def vadd(vector: Vector=None, vector_1: Vector=None):
     """ > Node <&Node Vector Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'ADD'` |
-
+    
     Parameters
     ----------
     vector : Vector, optional
         socket 'Vector'
-
+    
     vector_1 : Vector, optional
         socket 'Vector'
-
+    
     Returns
     -------
-    Vector
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'vector': vector, 'vector_1': vector_1}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Vector Math', named_sockets=_named_sockets, operation='ADD')
-    return _node._out
+    node = Node('Vector Math', named_sockets={'Vector': vector, 'Vector_1': vector_1}, operation='ADD')
+    return node._out
 
 def vsubtract(vector: Vector=None, vector_1: Vector=None):
     """ > Node <&Node Vector Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'SUBTRACT'` |
-
+    
     Parameters
     ----------
     vector : Vector, optional
         socket 'Vector'
-
+    
     vector_1 : Vector, optional
         socket 'Vector'
-
+    
     Returns
     -------
-    Vector
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'vector': vector, 'vector_1': vector_1}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Vector Math', named_sockets=_named_sockets, operation='SUBTRACT')
-    return _node._out
+    node = Node('Vector Math', named_sockets={'Vector': vector, 'Vector_1': vector_1}, operation='SUBTRACT')
+    return node._out
 
 def vmultiply(vector: Vector=None, vector_1: Vector=None):
     """ > Node <&Node Vector Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'MULTIPLY'` |
-
+    
     Parameters
     ----------
     vector : Vector, optional
         socket 'Vector'
-
+    
     vector_1 : Vector, optional
         socket 'Vector'
-
+    
     Returns
     -------
-    Vector
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'vector': vector, 'vector_1': vector_1}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Vector Math', named_sockets=_named_sockets, operation='MULTIPLY')
-    return _node._out
+    node = Node('Vector Math', named_sockets={'Vector': vector, 'Vector_1': vector_1}, operation='MULTIPLY')
+    return node._out
 
 def vdivide(vector: Vector=None, vector_1: Vector=None):
     """ > Node <&Node Vector Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'DIVIDE'` |
-
+    
     Parameters
     ----------
     vector : Vector, optional
         socket 'Vector'
-
+    
     vector_1 : Vector, optional
         socket 'Vector'
-
+    
     Returns
     -------
-    Vector
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'vector': vector, 'vector_1': vector_1}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Vector Math', named_sockets=_named_sockets, operation='DIVIDE')
-    return _node._out
+    node = Node('Vector Math', named_sockets={'Vector': vector, 'Vector_1': vector_1}, operation='DIVIDE')
+    return node._out
 
 def vmultiply_add(vector: Vector=None, multiplier: Vector=None, addend: Vector=None):
     """ > Node <&Node Vector Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'MULTIPLY_ADD'` |
-
+    
     Parameters
     ----------
     vector : Vector, optional
         socket 'Vector'
-
+    
     multiplier : Vector, optional
         socket 'Multiplier'
-
+    
     addend : Vector, optional
         socket 'Addend'
-
+    
     Returns
     -------
-    Vector
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'vector': vector, 'multiplier': multiplier, 'addend': addend}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Vector Math', named_sockets=_named_sockets, operation='MULTIPLY_ADD')
-    return _node._out
+    node = Node('Vector Math', named_sockets={'Vector': vector, 'Multiplier': multiplier, 'Addend': addend}, operation='MULTIPLY_ADD')
+    return node._out
 
 def cross(vector: Vector=None, vector_1: Vector=None):
     """ > Node <&Node Vector Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'CROSS_PRODUCT'` |
-
+    
     Parameters
     ----------
     vector : Vector, optional
         socket 'Vector'
-
+    
     vector_1 : Vector, optional
         socket 'Vector'
-
+    
     Returns
     -------
-    Vector
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'vector': vector, 'vector_1': vector_1}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Vector Math', named_sockets=_named_sockets, operation='CROSS_PRODUCT')
-    return _node._out
+    node = Node('Vector Math', named_sockets={'Vector': vector, 'Vector_1': vector_1}, operation='CROSS_PRODUCT')
+    return node._out
 
 def project(vector: Vector=None, vector_1: Vector=None):
     """ > Node <&Node Vector Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'PROJECT'` |
-
+    
     Parameters
     ----------
     vector : Vector, optional
         socket 'Vector'
-
+    
     vector_1 : Vector, optional
         socket 'Vector'
-
+    
     Returns
     -------
-    Vector
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'vector': vector, 'vector_1': vector_1}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Vector Math', named_sockets=_named_sockets, operation='PROJECT')
-    return _node._out
+    node = Node('Vector Math', named_sockets={'Vector': vector, 'Vector_1': vector_1}, operation='PROJECT')
+    return node._out
 
 def reflect(vector: Vector=None, vector_1: Vector=None):
     """ > Node <&Node Vector Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'REFLECT'` |
-
+    
     Parameters
     ----------
     vector : Vector, optional
         socket 'Vector'
-
+    
     vector_1 : Vector, optional
         socket 'Vector'
-
+    
     Returns
     -------
-    Vector
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'vector': vector, 'vector_1': vector_1}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Vector Math', named_sockets=_named_sockets, operation='REFLECT')
-    return _node._out
+    node = Node('Vector Math', named_sockets={'Vector': vector, 'Vector_1': vector_1}, operation='REFLECT')
+    return node._out
 
 def refract(vector: Vector=None, vector_1: Vector=None, ior: Float=None):
     """ > Node <&Node Vector Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'REFRACT'` |
-
+    
     Parameters
     ----------
     vector : Vector, optional
         socket 'Vector'
-
+    
     vector_1 : Vector, optional
         socket 'Vector'
-
+    
     ior : Float, optional
         socket 'IOR'
-
+    
     Returns
     -------
-    Vector
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'vector': vector, 'vector_1': vector_1, 'ior': ior}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Vector Math', named_sockets=_named_sockets, operation='REFRACT')
-    return _node._out
+    node = Node('Vector Math', named_sockets={'Vector': vector, 'Vector_1': vector_1, 'IOR': ior}, operation='REFRACT')
+    return node._out
 
 def faceforward(vector: Vector=None, incident: Vector=None, reference: Vector=None):
     """ > Node <&Node Vector Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'FACEFORWARD'` |
-
+    
     Parameters
     ----------
     vector : Vector, optional
         socket 'Vector'
-
+    
     incident : Vector, optional
         socket 'Incident'
-
+    
     reference : Vector, optional
         socket 'Reference'
-
+    
     Returns
     -------
-    Vector
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'vector': vector, 'incident': incident, 'reference': reference}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Vector Math', named_sockets=_named_sockets, operation='FACEFORWARD')
-    return _node._out
+    node = Node('Vector Math', named_sockets={'Vector': vector, 'Incident': incident, 'Reference': reference}, operation='FACEFORWARD')
+    return node._out
 
 def dot(vector: Vector=None, vector_1: Vector=None):
     """ > Node <&Node Vector Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'DOT_PRODUCT'` |
-
+    
     Parameters
     ----------
     vector : Vector, optional
         socket 'Vector'
-
+    
     vector_1 : Vector, optional
         socket 'Vector'
-
+    
     Returns
     -------
-    Float
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'vector': vector, 'vector_1': vector_1}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Vector Math', named_sockets=_named_sockets, operation='DOT_PRODUCT')
-    return _node._out
+    node = Node('Vector Math', named_sockets={'Vector': vector, 'Vector_1': vector_1}, operation='DOT_PRODUCT')
+    return node._out
 
 def distance(vector: Vector=None, vector_1: Vector=None):
     """ > Node <&Node Vector Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'DISTANCE'` |
-
+    
     Parameters
     ----------
     vector : Vector, optional
         socket 'Vector'
-
+    
     vector_1 : Vector, optional
         socket 'Vector'
-
+    
     Returns
     -------
-    Float
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'vector': vector, 'vector_1': vector_1}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Vector Math', named_sockets=_named_sockets, operation='DISTANCE')
-    return _node._out
+    node = Node('Vector Math', named_sockets={'Vector': vector, 'Vector_1': vector_1}, operation='DISTANCE')
+    return node._out
 
 def length(vector: Vector=None):
     """ > Node <&Node Vector Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'LENGTH'` |
-
+    
     Parameters
     ----------
     vector : Vector, optional
         socket 'Vector'
-
+    
     Returns
     -------
-    Float
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'vector': vector}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Vector Math', named_sockets=_named_sockets, operation='LENGTH')
-    return _node._out
+    node = Node('Vector Math', named_sockets={'Vector': vector}, operation='LENGTH')
+    return node._out
 
 def scale(vector: Vector=None, scale: Float=None):
     """ > Node <&Node Vector Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'SCALE'` |
-
+    
     Parameters
     ----------
     vector : Vector, optional
         socket 'Vector'
-
+    
     scale : Float, optional
         socket 'Scale'
-
+    
     Returns
     -------
-    Vector
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'vector': vector, 'scale': scale}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Vector Math', named_sockets=_named_sockets, operation='SCALE')
-    return _node._out
+    node = Node('Vector Math', named_sockets={'Vector': vector, 'Scale': scale}, operation='SCALE')
+    return node._out
 
 def normalize(vector: Vector=None):
     """ > Node <&Node Vector Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'NORMALIZE'` |
-
+    
     Parameters
     ----------
     vector : Vector, optional
         socket 'Vector'
-
+    
     Returns
     -------
-    Vector
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'vector': vector}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Vector Math', named_sockets=_named_sockets, operation='NORMALIZE')
-    return _node._out
+    node = Node('Vector Math', named_sockets={'Vector': vector}, operation='NORMALIZE')
+    return node._out
 
 def vabs(vector: Vector=None):
     """ > Node <&Node Vector Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'ABSOLUTE'` |
-
+    
     Parameters
     ----------
     vector : Vector, optional
         socket 'Vector'
-
+    
     Returns
     -------
-    Vector
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'vector': vector}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Vector Math', named_sockets=_named_sockets, operation='ABSOLUTE')
-    return _node._out
+    node = Node('Vector Math', named_sockets={'Vector': vector}, operation='ABSOLUTE')
+    return node._out
 
 def vpower(base: Vector=None, exponent: Vector=None):
     """ > Node <&Node Vector Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'POWER'` |
-
+    
     Parameters
     ----------
     base : Vector, optional
         socket 'Base'
-
+    
     exponent : Vector, optional
         socket 'Exponent'
-
+    
     Returns
     -------
-    Vector
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'base': base, 'exponent': exponent}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Vector Math', named_sockets=_named_sockets, operation='POWER')
-    return _node._out
+    node = Node('Vector Math', named_sockets={'Base': base, 'Exponent': exponent}, operation='POWER')
+    return node._out
 
 def vsign(vector: Vector=None):
     """ > Node <&Node Vector Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'SIGN'` |
-
+    
     Parameters
     ----------
     vector : Vector, optional
         socket 'Vector'
-
+    
     Returns
     -------
-    Vector
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'vector': vector}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Vector Math', named_sockets=_named_sockets, operation='SIGN')
-    return _node._out
+    node = Node('Vector Math', named_sockets={'Vector': vector}, operation='SIGN')
+    return node._out
 
 def vmin(vector: Vector=None, vector_1: Vector=None):
     """ > Node <&Node Vector Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'MINIMUM'` |
-
+    
     Parameters
     ----------
     vector : Vector, optional
         socket 'Vector'
-
+    
     vector_1 : Vector, optional
         socket 'Vector'
-
+    
     Returns
     -------
-    Vector
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'vector': vector, 'vector_1': vector_1}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Vector Math', named_sockets=_named_sockets, operation='MINIMUM')
-    return _node._out
+    node = Node('Vector Math', named_sockets={'Vector': vector, 'Vector_1': vector_1}, operation='MINIMUM')
+    return node._out
 
 def vmax(vector: Vector=None, vector_1: Vector=None):
     """ > Node <&Node Vector Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'MAXIMUM'` |
-
+    
     Parameters
     ----------
     vector : Vector, optional
         socket 'Vector'
-
+    
     vector_1 : Vector, optional
         socket 'Vector'
-
+    
     Returns
     -------
-    Vector
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'vector': vector, 'vector_1': vector_1}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Vector Math', named_sockets=_named_sockets, operation='MAXIMUM')
-    return _node._out
+    node = Node('Vector Math', named_sockets={'Vector': vector, 'Vector_1': vector_1}, operation='MAXIMUM')
+    return node._out
 
 def vround(vector: Vector=None):
     """ > Node <&Node Vector Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'ROUND'` |
-
+    
     Parameters
     ----------
     vector : Vector, optional
         socket 'Vector'
-
+    
     Returns
     -------
-    Vector
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'vector': vector}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Vector Math', named_sockets=_named_sockets, operation='ROUND')
-    return _node._out
+    node = Node('Vector Math', named_sockets={'Vector': vector}, operation='ROUND')
+    return node._out
 
 def vfloor(vector: Vector=None):
     """ > Node <&Node Vector Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'FLOOR'` |
-
+    
     Parameters
     ----------
     vector : Vector, optional
         socket 'Vector'
-
+    
     Returns
     -------
-    Vector
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'vector': vector}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Vector Math', named_sockets=_named_sockets, operation='FLOOR')
-    return _node._out
+    node = Node('Vector Math', named_sockets={'Vector': vector}, operation='FLOOR')
+    return node._out
 
 def vceil(vector: Vector=None):
     """ > Node <&Node Vector Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'CEIL'` |
-
+    
     Parameters
     ----------
     vector : Vector, optional
         socket 'Vector'
-
+    
     Returns
     -------
-    Vector
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'vector': vector}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Vector Math', named_sockets=_named_sockets, operation='CEIL')
-    return _node._out
+    node = Node('Vector Math', named_sockets={'Vector': vector}, operation='CEIL')
+    return node._out
 
 def vfraction(vector: Vector=None):
     """ > Node <&Node Vector Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'FRACTION'` |
-
+    
     Parameters
     ----------
     vector : Vector, optional
         socket 'Vector'
-
+    
     Returns
     -------
-    Vector
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'vector': vector}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Vector Math', named_sockets=_named_sockets, operation='FRACTION')
-    return _node._out
+    node = Node('Vector Math', named_sockets={'Vector': vector}, operation='FRACTION')
+    return node._out
 
 def vmodulo(vector: Vector=None, vector_1: Vector=None):
     """ > Node <&Node Vector Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'MODULO'` |
-
+    
     Parameters
     ----------
     vector : Vector, optional
         socket 'Vector'
-
+    
     vector_1 : Vector, optional
         socket 'Vector'
-
+    
     Returns
     -------
-    Vector
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'vector': vector, 'vector_1': vector_1}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Vector Math', named_sockets=_named_sockets, operation='MODULO')
-    return _node._out
+    node = Node('Vector Math', named_sockets={'Vector': vector, 'Vector_1': vector_1}, operation='MODULO')
+    return node._out
 
 def vwrap(vector: Vector=None, max: Vector=None, min: Vector=None):
     """ > Node <&Node Vector Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'WRAP'` |
-
+    
     Parameters
     ----------
     vector : Vector, optional
         socket 'Vector'
-
+    
     max : Vector, optional
         socket 'Max'
-
+    
     min : Vector, optional
         socket 'Min'
-
+    
     Returns
     -------
-    Vector
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'vector': vector, 'max': max, 'min': min}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Vector Math', named_sockets=_named_sockets, operation='WRAP')
-    return _node._out
+    node = Node('Vector Math', named_sockets={'Vector': vector, 'Max': max, 'Min': min}, operation='WRAP')
+    return node._out
 
 def vsnap(vector: Vector=None, increment: Vector=None):
     """ > Node <&Node Vector Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'SNAP'` |
-
+    
     Parameters
     ----------
     vector : Vector, optional
         socket 'Vector'
-
+    
     increment : Vector, optional
         socket 'Increment'
-
+    
     Returns
     -------
-    Vector
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'vector': vector, 'increment': increment}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Vector Math', named_sockets=_named_sockets, operation='SNAP')
-    return _node._out
+    node = Node('Vector Math', named_sockets={'Vector': vector, 'Increment': increment}, operation='SNAP')
+    return node._out
 
 def vsin(vector: Vector=None):
     """ > Node <&Node Vector Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'SINE'` |
-
+    
     Parameters
     ----------
     vector : Vector, optional
         socket 'Vector'
-
+    
     Returns
     -------
-    Vector
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'vector': vector}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Vector Math', named_sockets=_named_sockets, operation='SINE')
-    return _node._out
+    node = Node('Vector Math', named_sockets={'Vector': vector}, operation='SINE')
+    return node._out
 
 def vcos(vector: Vector=None):
     """ > Node <&Node Vector Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'COSINE'` |
-
+    
     Parameters
     ----------
     vector : Vector, optional
         socket 'Vector'
-
+    
     Returns
     -------
-    Vector
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'vector': vector}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Vector Math', named_sockets=_named_sockets, operation='COSINE')
-    return _node._out
+    node = Node('Vector Math', named_sockets={'Vector': vector}, operation='COSINE')
+    return node._out
 
 def vtan(vector: Vector=None):
     """ > Node <&Node Vector Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'TANGENT'` |
-
+    
     Parameters
     ----------
     vector : Vector, optional
         socket 'Vector'
-
+    
     Returns
     -------
-    Vector
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'vector': vector}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Vector Math', named_sockets=_named_sockets, operation='TANGENT')
-    return _node._out
+    node = Node('Vector Math', named_sockets={'Vector': vector}, operation='TANGENT')
+    return node._out
 
 def bw_and(a: Integer=None, b: Integer=None):
     """ > Node <&Node Bit Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'AND'` |
-
+    
     Parameters
     ----------
     a : Integer, optional
         socket 'A'
-
+    
     b : Integer, optional
         socket 'B'
-
+    
     Returns
     -------
-    Integer
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'a': a, 'b': b}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Bit Math', named_sockets=_named_sockets, operation='AND')
-    return _node._out
+    node = Node('Bit Math', named_sockets={'A': a, 'B': b}, operation='AND')
+    return node._out
 
 def bw_or(a: Integer=None, b: Integer=None):
     """ > Node <&Node Bit Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'OR'` |
-
+    
     Parameters
     ----------
     a : Integer, optional
         socket 'A'
-
+    
     b : Integer, optional
         socket 'B'
-
+    
     Returns
     -------
-    Integer
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'a': a, 'b': b}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Bit Math', named_sockets=_named_sockets, operation='OR')
-    return _node._out
+    node = Node('Bit Math', named_sockets={'A': a, 'B': b}, operation='OR')
+    return node._out
 
 def bw_xor(a: Integer=None, b: Integer=None):
     """ > Node <&Node Bit Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'XOR'` |
-
+    
     Parameters
     ----------
     a : Integer, optional
         socket 'A'
-
+    
     b : Integer, optional
         socket 'B'
-
+    
     Returns
     -------
-    Integer
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'a': a, 'b': b}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Bit Math', named_sockets=_named_sockets, operation='XOR')
-    return _node._out
+    node = Node('Bit Math', named_sockets={'A': a, 'B': b}, operation='XOR')
+    return node._out
 
 def bw_not(a: Integer=None):
     """ > Node <&Node Bit Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'NOT'` |
-
+    
     Parameters
     ----------
     a : Integer, optional
         socket 'A'
-
+    
     Returns
     -------
-    Integer
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'a': a}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Bit Math', named_sockets=_named_sockets, operation='NOT')
-    return _node._out
+    node = Node('Bit Math', named_sockets={'A': a}, operation='NOT')
+    return node._out
 
 def bw_shift(a: Integer=None, shift: Integer=None):
     """ > Node <&Node Bit Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'SHIFT'` |
-
+    
     Parameters
     ----------
     a : Integer, optional
         socket 'A'
-
+    
     shift : Integer, optional
         socket 'Shift'
-
+    
     Returns
     -------
-    Integer
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'a': a, 'shift': shift}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Bit Math', named_sockets=_named_sockets, operation='SHIFT')
-    return _node._out
+    node = Node('Bit Math', named_sockets={'A': a, 'Shift': shift}, operation='SHIFT')
+    return node._out
 
 def bw_rotate(a: Integer=None, shift: Integer=None):
     """ > Node <&Node Bit Math>
-
+    
     **Fixed values**
-
+    
     | Parameter | Value |
     | --- | --- |
     | `operation` | `'ROTATE'` |
-
+    
     Parameters
     ----------
     a : Integer, optional
         socket 'A'
-
+    
     shift : Integer, optional
         socket 'Shift'
-
+    
     Returns
     -------
-    Integer
+    Socket
         socket 'OUT'
     """
-    _named_sockets = {'a': a, 'shift': shift}
-    _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Bit Math', named_sockets=_named_sockets, operation='ROTATE')
-    return _node._out
+    node = Node('Bit Math', named_sockets={'A': a, 'Shift': shift}, operation='ROTATE')
+    return node._out
 
 def mix_mix(a: Color=None, b: Color=None, factor: Float=None, clamp_factor=True, clamp_result=False):
     """ > Node <&Node Mix>
@@ -3758,7 +3553,7 @@ def mnot_equal(a: Float=None, b: Float=None, epsilon: Float=None):
     Float
         socket 'OUT'
     """
-    return subtract(1, compare(a, b, epsilon=epsilon))
+    return subtract(1, mcompare(a, b, epsilon=epsilon))
 
 def less_than(a: Float=None, b: Float=None):
     """ > Node <&Node Compare>
@@ -3786,7 +3581,7 @@ def less_than(a: Float=None, b: Float=None):
     """
     _named_sockets = {'a': a, 'b': b}
     _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Compare', named_sockets=_named_sockets, data_type='FLOAT', mode='ELEMENT', operation='LESS_THAN')
+    _node = Node('Compare', named_sockets=_named_sockets, data_type='FLOAT', operation='LESS_THAN', mode='ELEMENT')
     return _node._out
 
 def less_equal(a: Float=None, b: Float=None):
@@ -3815,7 +3610,7 @@ def less_equal(a: Float=None, b: Float=None):
     """
     _named_sockets = {'a': a, 'b': b}
     _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Compare', named_sockets=_named_sockets, data_type='FLOAT', mode='ELEMENT', operation='LESS_EQUAL')
+    _node = Node('Compare', named_sockets=_named_sockets, data_type='FLOAT', operation='LESS_EQUAL', mode='ELEMENT')
     return _node._out
 
 def greater_than(a: Float=None, b: Float=None):
@@ -3844,7 +3639,7 @@ def greater_than(a: Float=None, b: Float=None):
     """
     _named_sockets = {'a': a, 'b': b}
     _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Compare', named_sockets=_named_sockets, data_type='FLOAT', mode='ELEMENT', operation='GREATER_THAN')
+    _node = Node('Compare', named_sockets=_named_sockets, data_type='FLOAT', operation='GREATER_THAN', mode='ELEMENT')
     return _node._out
 
 def greater_equal(a: Float=None, b: Float=None):
@@ -3873,7 +3668,7 @@ def greater_equal(a: Float=None, b: Float=None):
     """
     _named_sockets = {'a': a, 'b': b}
     _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Compare', named_sockets=_named_sockets, data_type='FLOAT', mode='ELEMENT', operation='GREATER_EQUAL')
+    _node = Node('Compare', named_sockets=_named_sockets, data_type='FLOAT', operation='GREATER_EQUAL', mode='ELEMENT')
     return _node._out
 
 def equal(a: Float=None, b: Float=None, epsilon: Float=None):
@@ -3905,7 +3700,7 @@ def equal(a: Float=None, b: Float=None, epsilon: Float=None):
     """
     _named_sockets = {'a': a, 'b': b, 'epsilon': epsilon}
     _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Compare', named_sockets=_named_sockets, data_type='FLOAT', mode='ELEMENT', operation='EQUAL')
+    _node = Node('Compare', named_sockets=_named_sockets, data_type='FLOAT', operation='EQUAL', mode='ELEMENT')
     return _node._out
 
 def not_equal(a: Float=None, b: Float=None, epsilon: Float=None):
@@ -3937,7 +3732,7 @@ def not_equal(a: Float=None, b: Float=None, epsilon: Float=None):
     """
     _named_sockets = {'a': a, 'b': b, 'epsilon': epsilon}
     _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Compare', named_sockets=_named_sockets, data_type='FLOAT', mode='ELEMENT', operation='NOT_EQUAL')
+    _node = Node('Compare', named_sockets=_named_sockets, data_type='FLOAT', operation='NOT_EQUAL', mode='ELEMENT')
     return _node._out
 
 def iless_than(a: Integer=None, b: Integer=None):
@@ -3966,7 +3761,7 @@ def iless_than(a: Integer=None, b: Integer=None):
     """
     _named_sockets = {'a': a, 'b': b}
     _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Compare', named_sockets=_named_sockets, data_type='INT', mode='ELEMENT', operation='LESS_THAN')
+    _node = Node('Compare', named_sockets=_named_sockets, data_type='INT', operation='LESS_THAN', mode='ELEMENT')
     return _node._out
 
 def iless_equal(a: Integer=None, b: Integer=None):
@@ -3995,7 +3790,7 @@ def iless_equal(a: Integer=None, b: Integer=None):
     """
     _named_sockets = {'a': a, 'b': b}
     _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Compare', named_sockets=_named_sockets, data_type='INT', mode='ELEMENT', operation='LESS_EQUAL')
+    _node = Node('Compare', named_sockets=_named_sockets, data_type='INT', operation='LESS_EQUAL', mode='ELEMENT')
     return _node._out
 
 def igreater_than(a: Integer=None, b: Integer=None):
@@ -4024,7 +3819,7 @@ def igreater_than(a: Integer=None, b: Integer=None):
     """
     _named_sockets = {'a': a, 'b': b}
     _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Compare', named_sockets=_named_sockets, data_type='INT', mode='ELEMENT', operation='GREATER_THAN')
+    _node = Node('Compare', named_sockets=_named_sockets, data_type='INT', operation='GREATER_THAN', mode='ELEMENT')
     return _node._out
 
 def igreater_equal(a: Integer=None, b: Integer=None):
@@ -4053,7 +3848,7 @@ def igreater_equal(a: Integer=None, b: Integer=None):
     """
     _named_sockets = {'a': a, 'b': b}
     _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Compare', named_sockets=_named_sockets, data_type='INT', mode='ELEMENT', operation='GREATER_EQUAL')
+    _node = Node('Compare', named_sockets=_named_sockets, data_type='INT', operation='GREATER_EQUAL', mode='ELEMENT')
     return _node._out
 
 def iequal(a: Integer=None, b: Integer=None):
@@ -4082,7 +3877,7 @@ def iequal(a: Integer=None, b: Integer=None):
     """
     _named_sockets = {'a': a, 'b': b}
     _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Compare', named_sockets=_named_sockets, data_type='INT', mode='ELEMENT', operation='EQUAL')
+    _node = Node('Compare', named_sockets=_named_sockets, data_type='INT', operation='EQUAL', mode='ELEMENT')
     return _node._out
 
 def inot_equal(a: Integer=None, b: Integer=None):
@@ -4111,7 +3906,7 @@ def inot_equal(a: Integer=None, b: Integer=None):
     """
     _named_sockets = {'a': a, 'b': b}
     _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Compare', named_sockets=_named_sockets, data_type='INT', mode='ELEMENT', operation='NOT_EQUAL')
+    _node = Node('Compare', named_sockets=_named_sockets, data_type='INT', operation='NOT_EQUAL', mode='ELEMENT')
     return _node._out
 
 def vless_than(a: Vector=None, b: Vector=None):
@@ -4140,7 +3935,7 @@ def vless_than(a: Vector=None, b: Vector=None):
     """
     _named_sockets = {'a': a, 'b': b}
     _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Compare', named_sockets=_named_sockets, data_type='VECTOR', mode='ELEMENT', operation='LESS_THAN')
+    _node = Node('Compare', named_sockets=_named_sockets, data_type='VECTOR', operation='LESS_THAN', mode='ELEMENT')
     return _node._out
 
 def vless_equal(a: Vector=None, b: Vector=None):
@@ -4169,7 +3964,7 @@ def vless_equal(a: Vector=None, b: Vector=None):
     """
     _named_sockets = {'a': a, 'b': b}
     _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Compare', named_sockets=_named_sockets, data_type='VECTOR', mode='ELEMENT', operation='LESS_EQUAL')
+    _node = Node('Compare', named_sockets=_named_sockets, data_type='VECTOR', operation='LESS_EQUAL', mode='ELEMENT')
     return _node._out
 
 def vgreater_than(a: Vector=None, b: Vector=None):
@@ -4198,7 +3993,7 @@ def vgreater_than(a: Vector=None, b: Vector=None):
     """
     _named_sockets = {'a': a, 'b': b}
     _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Compare', named_sockets=_named_sockets, data_type='VECTOR', mode='ELEMENT', operation='GREATER_THAN')
+    _node = Node('Compare', named_sockets=_named_sockets, data_type='VECTOR', operation='GREATER_THAN', mode='ELEMENT')
     return _node._out
 
 def vgreater_equal(a: Vector=None, b: Vector=None):
@@ -4227,7 +4022,7 @@ def vgreater_equal(a: Vector=None, b: Vector=None):
     """
     _named_sockets = {'a': a, 'b': b}
     _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Compare', named_sockets=_named_sockets, data_type='VECTOR', mode='ELEMENT', operation='GREATER_EQUAL')
+    _node = Node('Compare', named_sockets=_named_sockets, data_type='VECTOR', operation='GREATER_EQUAL', mode='ELEMENT')
     return _node._out
 
 def vequal(a: Vector=None, b: Vector=None, epsilon: Float=None):
@@ -4259,7 +4054,7 @@ def vequal(a: Vector=None, b: Vector=None, epsilon: Float=None):
     """
     _named_sockets = {'a': a, 'b': b, 'epsilon': epsilon}
     _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Compare', named_sockets=_named_sockets, data_type='VECTOR', mode='ELEMENT', operation='EQUAL')
+    _node = Node('Compare', named_sockets=_named_sockets, data_type='VECTOR', operation='EQUAL', mode='ELEMENT')
     return _node._out
 
 def vnot_equal(a: Vector=None, b: Vector=None, epsilon: Float=None):
@@ -4291,7 +4086,7 @@ def vnot_equal(a: Vector=None, b: Vector=None, epsilon: Float=None):
     """
     _named_sockets = {'a': a, 'b': b, 'epsilon': epsilon}
     _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Compare', named_sockets=_named_sockets, data_type='VECTOR', mode='ELEMENT', operation='NOT_EQUAL')
+    _node = Node('Compare', named_sockets=_named_sockets, data_type='VECTOR', operation='NOT_EQUAL', mode='ELEMENT')
     return _node._out
 
 def cequal(a: Color=None, b: Color=None, epsilon: Float=None):
@@ -4323,7 +4118,7 @@ def cequal(a: Color=None, b: Color=None, epsilon: Float=None):
     """
     _named_sockets = {'a': a, 'b': b, 'epsilon': epsilon}
     _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Compare', named_sockets=_named_sockets, data_type='RGBA', mode='ELEMENT', operation='EQUAL')
+    _node = Node('Compare', named_sockets=_named_sockets, data_type='RGBA', operation='EQUAL', mode='ELEMENT')
     return _node._out
 
 def cnot_equal(a: Color=None, b: Color=None, epsilon: Float=None):
@@ -4355,7 +4150,7 @@ def cnot_equal(a: Color=None, b: Color=None, epsilon: Float=None):
     """
     _named_sockets = {'a': a, 'b': b, 'epsilon': epsilon}
     _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Compare', named_sockets=_named_sockets, data_type='RGBA', mode='ELEMENT', operation='NOT_EQUAL')
+    _node = Node('Compare', named_sockets=_named_sockets, data_type='RGBA', operation='NOT_EQUAL', mode='ELEMENT')
     return _node._out
 
 def cbrighter(a: Color=None, b: Color=None):
@@ -4384,7 +4179,7 @@ def cbrighter(a: Color=None, b: Color=None):
     """
     _named_sockets = {'a': a, 'b': b}
     _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Compare', named_sockets=_named_sockets, data_type='RGBA', mode='ELEMENT', operation='BRIGHTER')
+    _node = Node('Compare', named_sockets=_named_sockets, data_type='RGBA', operation='BRIGHTER', mode='ELEMENT')
     return _node._out
 
 def cdarker(a: Color=None, b: Color=None):
@@ -4413,7 +4208,7 @@ def cdarker(a: Color=None, b: Color=None):
     """
     _named_sockets = {'a': a, 'b': b}
     _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Compare', named_sockets=_named_sockets, data_type='RGBA', mode='ELEMENT', operation='DARKER')
+    _node = Node('Compare', named_sockets=_named_sockets, data_type='RGBA', operation='DARKER', mode='ELEMENT')
     return _node._out
 
 def sequal(a: String=None, b: String=None):
@@ -4442,7 +4237,7 @@ def sequal(a: String=None, b: String=None):
     """
     _named_sockets = {'a': a, 'b': b}
     _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Compare', named_sockets=_named_sockets, data_type='STRING', mode='ELEMENT', operation='EQUAL')
+    _node = Node('Compare', named_sockets=_named_sockets, data_type='STRING', operation='EQUAL', mode='ELEMENT')
     return _node._out
 
 def snot_equal(a: String=None, b: String=None):
@@ -4471,7 +4266,7 @@ def snot_equal(a: String=None, b: String=None):
     """
     _named_sockets = {'a': a, 'b': b}
     _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Compare', named_sockets=_named_sockets, data_type='STRING', mode='ELEMENT', operation='NOT_EQUAL')
+    _node = Node('Compare', named_sockets=_named_sockets, data_type='STRING', operation='NOT_EQUAL', mode='ELEMENT')
     return _node._out
 
 def object_equal(a: Object=None, b: Object=None):
@@ -4500,7 +4295,7 @@ def object_equal(a: Object=None, b: Object=None):
     """
     _named_sockets = {'a': a, 'b': b}
     _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Compare', named_sockets=_named_sockets, data_type='OBJECT', mode='ELEMENT', operation='EQUAL')
+    _node = Node('Compare', named_sockets=_named_sockets, data_type='OBJECT', operation='EQUAL', mode='ELEMENT')
     return _node._out
 
 def object_not_equal(a: Object=None, b: Object=None):
@@ -4529,7 +4324,7 @@ def object_not_equal(a: Object=None, b: Object=None):
     """
     _named_sockets = {'a': a, 'b': b}
     _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Compare', named_sockets=_named_sockets, data_type='OBJECT', mode='ELEMENT', operation='NOT_EQUAL')
+    _node = Node('Compare', named_sockets=_named_sockets, data_type='OBJECT', operation='NOT_EQUAL', mode='ELEMENT')
     return _node._out
 
 def image_equal(a: Image=None, b: Image=None):
@@ -4558,7 +4353,7 @@ def image_equal(a: Image=None, b: Image=None):
     """
     _named_sockets = {'a': a, 'b': b}
     _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Compare', named_sockets=_named_sockets, data_type='IMAGE', mode='ELEMENT', operation='EQUAL')
+    _node = Node('Compare', named_sockets=_named_sockets, data_type='IMAGE', operation='EQUAL', mode='ELEMENT')
     return _node._out
 
 def image_not_equal(a: Image=None, b: Image=None):
@@ -4587,7 +4382,7 @@ def image_not_equal(a: Image=None, b: Image=None):
     """
     _named_sockets = {'a': a, 'b': b}
     _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Compare', named_sockets=_named_sockets, data_type='IMAGE', mode='ELEMENT', operation='NOT_EQUAL')
+    _node = Node('Compare', named_sockets=_named_sockets, data_type='IMAGE', operation='NOT_EQUAL', mode='ELEMENT')
     return _node._out
 
 def collection_equal(a: Collection=None, b: Collection=None):
@@ -4616,7 +4411,7 @@ def collection_equal(a: Collection=None, b: Collection=None):
     """
     _named_sockets = {'a': a, 'b': b}
     _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Compare', named_sockets=_named_sockets, data_type='COLLECTION', mode='ELEMENT', operation='EQUAL')
+    _node = Node('Compare', named_sockets=_named_sockets, data_type='COLLECTION', operation='EQUAL', mode='ELEMENT')
     return _node._out
 
 def collection_not_equal(a: Collection=None, b: Collection=None):
@@ -4645,7 +4440,7 @@ def collection_not_equal(a: Collection=None, b: Collection=None):
     """
     _named_sockets = {'a': a, 'b': b}
     _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Compare', named_sockets=_named_sockets, data_type='COLLECTION', mode='ELEMENT', operation='NOT_EQUAL')
+    _node = Node('Compare', named_sockets=_named_sockets, data_type='COLLECTION', operation='NOT_EQUAL', mode='ELEMENT')
     return _node._out
 
 def material_equal(a: Material=None, b: Material=None):
@@ -4674,7 +4469,7 @@ def material_equal(a: Material=None, b: Material=None):
     """
     _named_sockets = {'a': a, 'b': b}
     _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Compare', named_sockets=_named_sockets, data_type='MATERIAL', mode='ELEMENT', operation='EQUAL')
+    _node = Node('Compare', named_sockets=_named_sockets, data_type='MATERIAL', operation='EQUAL', mode='ELEMENT')
     return _node._out
 
 def material_not_equal(a: Material=None, b: Material=None):
@@ -4703,7 +4498,7 @@ def material_not_equal(a: Material=None, b: Material=None):
     """
     _named_sockets = {'a': a, 'b': b}
     _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Compare', named_sockets=_named_sockets, data_type='MATERIAL', mode='ELEMENT', operation='NOT_EQUAL')
+    _node = Node('Compare', named_sockets=_named_sockets, data_type='MATERIAL', operation='NOT_EQUAL', mode='ELEMENT')
     return _node._out
 
 def font_equal(a: Font=None, b: Font=None):
@@ -4732,7 +4527,7 @@ def font_equal(a: Font=None, b: Font=None):
     """
     _named_sockets = {'a': a, 'b': b}
     _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Compare', named_sockets=_named_sockets, data_type='FONT', mode='ELEMENT', operation='EQUAL')
+    _node = Node('Compare', named_sockets=_named_sockets, data_type='FONT', operation='EQUAL', mode='ELEMENT')
     return _node._out
 
 def font_not_equal(a: Font=None, b: Font=None):
@@ -4761,7 +4556,7 @@ def font_not_equal(a: Font=None, b: Font=None):
     """
     _named_sockets = {'a': a, 'b': b}
     _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Compare', named_sockets=_named_sockets, data_type='FONT', mode='ELEMENT', operation='NOT_EQUAL')
+    _node = Node('Compare', named_sockets=_named_sockets, data_type='FONT', operation='NOT_EQUAL', mode='ELEMENT')
     return _node._out
 
 def sound_equal(a: Sound=None, b: Sound=None):
@@ -4790,7 +4585,7 @@ def sound_equal(a: Sound=None, b: Sound=None):
     """
     _named_sockets = {'a': a, 'b': b}
     _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Compare', named_sockets=_named_sockets, data_type='SOUND', mode='ELEMENT', operation='EQUAL')
+    _node = Node('Compare', named_sockets=_named_sockets, data_type='SOUND', operation='EQUAL', mode='ELEMENT')
     return _node._out
 
 def sound_not_equal(a: Sound=None, b: Sound=None):
@@ -4819,5 +4614,5 @@ def sound_not_equal(a: Sound=None, b: Sound=None):
     """
     _named_sockets = {'a': a, 'b': b}
     _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-    _node = Node('Compare', named_sockets=_named_sockets, data_type='SOUND', mode='ELEMENT', operation='NOT_EQUAL')
+    _node = Node('Compare', named_sockets=_named_sockets, data_type='SOUND', operation='NOT_EQUAL', mode='ELEMENT')
     return _node._out

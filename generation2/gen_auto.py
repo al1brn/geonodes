@@ -226,7 +226,7 @@ def build_manual_cross_ref(cross):
 
     # ----- Store named attribute
 
-    # Domain.set and Geometry.set are implemented manually, so they don't go
+    # Domain.store and Geometry.set are implemented manually, so they don't go
     # through NodeInfo.source_code and must be added to the generated cross
     # reference explicitly. Keep the automatically generated implementations
     # (store_named_attribute, store, store_uv, ...).
@@ -234,7 +234,7 @@ def build_manual_cross_ref(cross):
     node_cross = cross.setdefault(node_info.bnode.bl_idname, {})
 
     node_cross.setdefault('Domain', []).append({
-        'func_name'         : 'set',
+        'func_name'         : 'store',
         'returns'           : 'Attribute',
         'signature'         : '(self, name, value)',
     })

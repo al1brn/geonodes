@@ -340,7 +340,7 @@ class Attribute:
 
         if self._value is None:
             self._value = Node('Named Attribute', 
-            {'Name': self.name}, 
+            named_sockets={'Name': self.name},
             data_type = Attribute.DT_SET[self.data_type],
             )._out
             
@@ -414,7 +414,7 @@ class Attribute:
         # Create the node
         # ---------------------------------------------------------------------------
 
-        socket = Node('Store Named Attribute', {
+        socket = Node('Store Named Attribute', named_sockets={
             'Geometry': self.geometry,
             'Selection': selection,
             'Name': self.name,

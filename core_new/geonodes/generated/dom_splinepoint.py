@@ -47,6 +47,9 @@ if TYPE_CHECKING:
     class Geometry:
         ...
 
+    class Texture:
+        ...
+
     class Collection:
         ...
 
@@ -114,4 +117,61 @@ from .dom_point import Point
 
 class SplinePoint(BaseSplinePoint, Point):
     __slots__ = ()
-    pass
+
+    @classmethod
+    def handle_type_selection(cls, handle_type: Literal['FREE', 'AUTO', 'VECTOR', 'ALIGN']='AUTO', mode: set[Literal['LEFT', 'RIGHT']]={'RIGHT', 'LEFT'}):
+        """ > Node <&Node Handle Type Selection>
+        
+        Parameters
+        ----------
+        handle_type : Literal['Free', 'Auto', 'Vector', 'Align']
+            parameter `handle_type`
+        
+        mode : set[Literal['Left', 'Right']]
+            parameter `mode`
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Handle Type Selection', named_sockets={}, handle_type=handle_type, mode=mode)
+        return node._out
+
+    @property
+    def radius(self):
+        """ > Node <&Node Radius>
+        
+        Jump method: False.
+        
+        Returns
+        -------
+        Float
+            socket 'OUT'
+        """
+        _named_sockets = {}
+        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
+        _node = Node('Radius', named_sockets=_named_sockets)
+        return _node._out
+
+    @radius.setter
+    def radius(self, radius: Float):
+        """ > Node <&Node Set Curve Radius>
+        
+        Jump method: True.
+        
+        self: socket 'Curve'.
+        
+        Parameters
+        ----------
+        radius : Float, optional
+            socket 'Radius'
+        
+        Returns
+        -------
+        None
+        """
+        _named_sockets = {'curve': self, 'selection': self.get_selection(), 'radius': radius}
+        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
+        _node = Node('Set Curve Radius', named_sockets=_named_sockets)
+        self._jump(_node._out)

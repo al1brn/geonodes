@@ -47,6 +47,9 @@ if TYPE_CHECKING:
     class Geometry:
         ...
 
+    class Texture:
+        ...
+
     class Collection:
         ...
 
@@ -114,163 +117,8 @@ from ...geonodes.domains.spline import Spline as BaseSpline
 class Spline(BaseSpline):
     __slots__ = ()
 
-    @classmethod
-    def is_cyclic(cls):
-        """ > Node <&Node Is Spline Cyclic>
-        
-        Returns
-        -------
-        Node
-        """
-        _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Is Spline Cyclic', named_sockets=_named_sockets)
-        return _node
-
-    @utils.classproperty
-    def cyclic(cls):
-        """ > Node <&Node Is Spline Cyclic>
-        
-        Returns
-        -------
-        Boolean
-            socket 'Cyclic'
-        """
-        _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Is Spline Cyclic', named_sockets=_named_sockets)
-        return _node['Cyclic']
-
-    @classmethod
-    def offset_point(cls, point_index: Integer=None, offset: Integer=None):
-        """ > Node <&Node Offset Point in Curve>
-        
-        Parameters
-        ----------
-        point_index : Integer, optional
-            socket 'Point Index'
-        
-        offset : Integer, optional
-            socket 'Offset'
-        
-        Returns
-        -------
-        Node
-        """
-        _named_sockets = {'point_index': point_index, 'offset': offset}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Offset Point in Curve', named_sockets=_named_sockets)
-        return _node
-
-    @classmethod
-    def points(cls, curve_index: Integer=None, weights: Float=None, sort_index: Integer=None):
-        """ > Node <&Node Points of Curve>
-        
-        Parameters
-        ----------
-        curve_index : Integer, optional
-            socket 'Curve Index'
-        
-        weights : Float, optional
-            socket 'Weights'
-        
-        sort_index : Integer, optional
-            socket 'Sort Index'
-        
-        Returns
-        -------
-        Node
-        """
-        _named_sockets = {'curve_index': curve_index, 'weights': weights, 'sort_index': sort_index}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Points of Curve', named_sockets=_named_sockets)
-        return _node
-
-    @utils.classproperty
-    def length(cls):
-        """ > Node <&Node Spline Length>
-        
-        Returns
-        -------
-        Float
-            socket 'Length'
-        """
-        _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Spline Length', named_sockets=_named_sockets)
-        return _node['Length']
-
-    @utils.classproperty
-    def point_count(cls):
-        """ > Node <&Node Spline Length>
-        
-        Returns
-        -------
-        Integer
-            socket 'Point Count'
-        """
-        _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Spline Length', named_sockets=_named_sockets)
-        return _node['Point Count']
-
-    @classmethod
-    def parameter(cls):
-        """ > Node <&Node Spline Parameter>
-        
-        Returns
-        -------
-        Node
-        """
-        _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Spline Parameter', named_sockets=_named_sockets)
-        return _node
-
-    @utils.classproperty
-    def factor(cls):
-        """ > Node <&Node Spline Parameter>
-        
-        Returns
-        -------
-        Float
-            socket 'Factor'
-        """
-        _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Spline Parameter', named_sockets=_named_sockets)
-        return _node['Factor']
-
-    @utils.classproperty
-    def index(cls):
-        """ > Node <&Node Spline Parameter>
-        
-        Returns
-        -------
-        Integer
-            socket 'Index'
-        """
-        _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Spline Parameter', named_sockets=_named_sockets)
-        return _node['Index']
-
-    @utils.classproperty
-    def resolution(cls):
-        """ > Node <&Node Spline Resolution>
-        
-        Returns
-        -------
-        Integer
-            socket 'Resolution'
-        """
-        _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Spline Resolution', named_sockets=_named_sockets)
-        return _node['Resolution']
-
-    def capture_attribute(self, named_sockets=None, **sockets):
-        """ > Node <&Node Capture Attribute>
+    def attribute_statistic(self, attribute: Socket=None):
+        """ > Node <&Node Attribute Statistic>
         
         Jump method: False.
         
@@ -282,15 +130,49 @@ class Spline(BaseSpline):
         | --- | --- |
         | `domain` | `'CURVE'` |
         
+        **Derived parameters**
+        
+        - `data_type`: Inferred from socket 'Attribute' (attribute).
+        
+        Parameters
+        ----------
+        attribute : Socket, optional
+            socket 'Attribute'
+        
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
-        _named_sockets = {'geometry': self, 'selection': self.get_selection()}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _named_sockets.update({_name: _value for _name, _value in (named_sockets or {}).items() if _value is not None})
-        _node = Node('Capture Attribute', named_sockets=_named_sockets, domain='CURVE', **sockets)
-        return _node
+        data_type = SocketType.get_data_type_for_node(attribute, 'GeometryNodeAttributeStatistic', 'data_type')
+        selection = self.get_selection()
+        node = Node('Attribute Statistic', named_sockets={'Geometry': self, 'Selection': selection, 'Attribute': attribute}, data_type=data_type, domain='CURVE')
+        return node._out
+
+    def capture_attribute(self, named_sockets=None, **sockets):
+        """ > Node <&Node Capture Attribute>
+        
+        Jump method: True.
+        
+        self: socket 'Geometry'.
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `domain` | `'CURVE'` |
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        selection = self.get_selection()
+        _named_sockets = {'Geometry': self, 'Selection': selection}
+        _named_sockets.update({name: value for name, value in (named_sockets or {}).items() if value is not None})
+        node = Node('Capture Attribute', named_sockets=_named_sockets, domain='CURVE', **sockets)
+        self._jump(node._out)
+        return node._second_out(self)
 
     def delete(self, mode: Literal['ALL', 'EDGE_FACE', 'ONLY_FACE']='ALL'):
         """ > Node <&Node Delete Geometry>
@@ -312,14 +194,13 @@ class Spline(BaseSpline):
         
         Returns
         -------
-        Geometry
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'geometry': self, 'selection': self.get_selection()}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Delete Geometry', named_sockets=_named_sockets, mode=mode, domain='CURVE')
-        self._jump(_node._out)
-        return self._domain_to_geometry
+        selection = self.get_selection()
+        node = Node('Delete Geometry', named_sockets={'Geometry': self, 'Selection': selection}, mode=mode, domain='CURVE')
+        self._jump(node._out)
+        return node._second_out(self)
 
     def duplicate_elements(self, amount: Integer=None):
         """ > Node <&Node Duplicate Elements>
@@ -341,14 +222,82 @@ class Spline(BaseSpline):
         
         Returns
         -------
-        Geometry
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'geometry': self, 'selection': self.get_selection(), 'amount': amount}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Duplicate Elements', named_sockets=_named_sockets, domain='SPLINE')
-        self._jump(_node._out)
-        return self._domain_to_geometry
+        selection = self.get_selection()
+        node = Node('Duplicate Elements', named_sockets={'Geometry': self, 'Selection': selection, 'Amount': amount}, domain='SPLINE')
+        self._jump(node._out)
+        return node._second_out(self)
+
+    @classmethod
+    def cyclic(cls):
+        """ > Node <&Node Is Spline Cyclic>
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Is Spline Cyclic', named_sockets={})
+        return node._out
+
+    @classmethod
+    def offset_point(cls, point_index: Integer=None, offset: Integer=None):
+        """ > Node <&Node Offset Point in Curve>
+        
+        Parameters
+        ----------
+        point_index : Integer, optional
+            socket 'Point Index'
+        
+        offset : Integer, optional
+            socket 'Offset'
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Offset Point in Curve', named_sockets={'Point Index': point_index, 'Offset': offset})
+        return node._out
+
+    def sample_index(self, value: Socket=None, index: Integer=None, clamp: bool=False):
+        """ > Node <&Node Sample Index>
+        
+        Jump method: False.
+        
+        self: socket 'Geometry'.
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `domain` | `'CURVE'` |
+        
+        **Derived parameters**
+        
+        - `data_type`: Inferred from socket 'Value' (value).
+        
+        Parameters
+        ----------
+        value : Socket, optional
+            socket 'Value'
+        
+        index : Integer, optional
+            socket 'Index'
+        
+        clamp : bool
+            parameter `clamp`
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        data_type = SocketType.get_data_type_for_node(value, 'GeometryNodeSampleIndex', 'data_type')
+        node = Node('Sample Index', named_sockets={'Geometry': self, 'Value': value, 'Index': index}, data_type=data_type, domain='CURVE', clamp=clamp)
+        return node._out
 
     def separate(self):
         """ > Node <&Node Separate Geometry>
@@ -365,12 +314,12 @@ class Spline(BaseSpline):
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
-        _named_sockets = {'geometry': self, 'selection': self.get_selection()}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Separate Geometry', named_sockets=_named_sockets, domain='CURVE')
-        return _node
+        selection = self.get_selection()
+        node = Node('Separate Geometry', named_sockets={'Geometry': self, 'Selection': selection}, domain='CURVE')
+        return node._out
 
     def set_selection(self, selection_type: Literal['BOOLEAN', 'FLOAT']='BOOLEAN'):
         """ > Node <&Node Set Selection>
@@ -392,14 +341,13 @@ class Spline(BaseSpline):
         
         Returns
         -------
-        Geometry
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'geometry': self, 'selection': self.get_selection()}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Set Selection', named_sockets=_named_sockets, domain='CURVE', selection_type=selection_type)
-        self._jump(_node._out)
-        return self._domain_to_geometry
+        selection = self.get_selection()
+        node = Node('Set Selection', named_sockets={'Geometry': self, 'Selection': selection}, domain='CURVE', selection_type=selection_type)
+        self._jump(node._out)
+        return node._second_out(self)
 
     def sort_elements(self, group_id: Integer=None, sort_weight: Float=None):
         """ > Node <&Node Sort Elements>
@@ -424,18 +372,44 @@ class Spline(BaseSpline):
         
         Returns
         -------
-        Geometry
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'geometry': self, 'selection': self.get_selection(), 'group_id': group_id, 'sort_weight': sort_weight}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Sort Elements', named_sockets=_named_sockets, domain='CURVE')
-        self._jump(_node._out)
-        return self._domain_to_geometry
+        selection = self.get_selection()
+        node = Node('Sort Elements', named_sockets={'Geometry': self, 'Selection': selection, 'Group ID': group_id, 'Sort Weight': sort_weight}, domain='CURVE')
+        self._jump(node._out)
+        return node._second_out(self)
 
     @classmethod
-    def FromSplit(cls, geometry: Geometry=None, selection: Boolean=None, group_id: Integer=None):
+    def length(cls):
+        """ > Node <&Node Spline Length>
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Spline Length', named_sockets={})
+        return node._out
+
+    @classmethod
+    def parameter(cls):
+        """ > Node <&Node Spline Parameter>
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Spline Parameter', named_sockets={})
+        return node._out
+
+    def to_instances(self, group_id: Integer=None):
         """ > Node <&Node Split to Instances>
+        
+        Jump method: False.
+        
+        self: socket 'Geometry'.
         
         **Fixed values**
         
@@ -445,21 +419,256 @@ class Spline(BaseSpline):
         
         Parameters
         ----------
-        geometry : Geometry, optional
-            socket 'Geometry'
-        
-        selection : Boolean, optional
-            socket 'Selection'
-        
         group_id : Integer, optional
             socket 'Group ID'
         
         Returns
         -------
-        Instances
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'geometry': geometry, 'selection': selection, 'group_id': group_id}
+        selection = self.get_selection()
+        node = Node('Split to Instances', named_sockets={'Geometry': self, 'Selection': selection, 'Group ID': group_id}, domain='CURVE')
+        return node._out
+
+    def store_named_attribute(self, name: String=None, value: Socket=None):
+        """ > Node <&Node Store Named Attribute>
+        
+        Jump method: True.
+        
+        self: socket 'Geometry'.
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `domain` | `'CURVE'` |
+        
+        **Derived parameters**
+        
+        - `data_type`: Inferred from socket 'Value' (value).
+        
+        Parameters
+        ----------
+        name : String, optional
+            socket 'Name'
+        
+        value : Socket, optional
+            socket 'Value'
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        data_type = SocketType.get_data_type_for_node(value, 'GeometryNodeStoreNamedAttribute', 'data_type')
+        selection = self.get_selection()
+        node = Node('Store Named Attribute', named_sockets={'Geometry': self, 'Selection': selection, 'Name': name, 'Value': value}, data_type=data_type, domain='CURVE')
+        self._jump(node._out)
+        return node._second_out(self)
+
+    @property
+    def material_index(self):
+        """ > Node <&Node Material Index>
+        
+        Jump method: False.
+        
+        Returns
+        -------
+        Integer
+            socket 'OUT'
+        """
+        _named_sockets = {}
         _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Split to Instances', named_sockets=_named_sockets, domain='CURVE')
+        _node = Node('Material Index', named_sockets=_named_sockets)
         return _node._out
+
+    @material_index.setter
+    def material_index(self, material_index: Integer):
+        """ > Node <&Node Set Material Index>
+        
+        Jump method: True.
+        
+        self: socket 'Geometry'.
+        
+        Parameters
+        ----------
+        material_index : Integer, optional
+            socket 'Material Index'
+        
+        Returns
+        -------
+        None
+        """
+        _named_sockets = {'geometry': self, 'selection': self.get_selection(), 'material_index': material_index}
+        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
+        _node = Node('Set Material Index', named_sockets=_named_sockets)
+        self._jump(_node._out)
+
+    @property
+    def tilt(self):
+        """ > Node <&Node Curve Tilt>
+        
+        Jump method: False.
+        
+        Returns
+        -------
+        Float
+            socket 'OUT'
+        """
+        _named_sockets = {}
+        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
+        _node = Node('Curve Tilt', named_sockets=_named_sockets)
+        return _node._out
+
+    @tilt.setter
+    def tilt(self, tilt: Float):
+        """ > Node <&Node Set Curve Tilt>
+        
+        Jump method: True.
+        
+        self: socket 'Curve'.
+        
+        Parameters
+        ----------
+        tilt : Float, optional
+            socket 'Tilt'
+        
+        Returns
+        -------
+        None
+        """
+        _named_sockets = {'curve': self, 'selection': self.get_selection(), 'tilt': tilt}
+        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
+        _node = Node('Set Curve Tilt', named_sockets=_named_sockets)
+        self._jump(_node._out)
+
+    @property
+    def normal(self):
+        """Write-only property; setter node: Set Curve Normal."""
+        raise NodeError('Property Spline.normal is write only.')
+
+    @normal.setter
+    def normal(self, normal: Vector):
+        """ > Node <&Node Set Curve Normal>
+        
+        Jump method: True.
+        
+        self: socket 'Curve'.
+        
+        Parameters
+        ----------
+        normal : Vector, optional
+            socket 'Normal'
+        
+        Returns
+        -------
+        None
+        """
+        _named_sockets = {'curve': self, 'selection': self.get_selection(), 'mode': 'Free', 'normal': normal}
+        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
+        _node = Node('Set Curve Normal', named_sockets=_named_sockets)
+        self._jump(_node._out)
+
+    @property
+    def is_cyclic(self):
+        """ > Node <&Node Is Spline Cyclic>
+        
+        Jump method: False.
+        
+        Returns
+        -------
+        Boolean
+            socket 'OUT'
+        """
+        _named_sockets = {}
+        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
+        _node = Node('Is Spline Cyclic', named_sockets=_named_sockets)
+        return _node._out
+
+    @is_cyclic.setter
+    def is_cyclic(self, cyclic: Boolean):
+        """ > Node <&Node Set Spline Cyclic>
+        
+        Jump method: True.
+        
+        self: socket 'Curve'.
+        
+        Parameters
+        ----------
+        cyclic : Boolean, optional
+            socket 'Cyclic'
+        
+        Returns
+        -------
+        None
+        """
+        _named_sockets = {'curve': self, 'selection': self.get_selection(), 'cyclic': cyclic}
+        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
+        _node = Node('Set Spline Cyclic', named_sockets=_named_sockets)
+        self._jump(_node._out)
+
+    @property
+    def resolution(self):
+        """ > Node <&Node Spline Resolution>
+        
+        Jump method: False.
+        
+        Returns
+        -------
+        Integer
+            socket 'OUT'
+        """
+        _named_sockets = {}
+        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
+        _node = Node('Spline Resolution', named_sockets=_named_sockets)
+        return _node._out
+
+    @resolution.setter
+    def resolution(self, resolution: Integer):
+        """ > Node <&Node Set Spline Resolution>
+        
+        Jump method: True.
+        
+        self: socket 'Curve'.
+        
+        Parameters
+        ----------
+        resolution : Integer, optional
+            socket 'Resolution'
+        
+        Returns
+        -------
+        None
+        """
+        _named_sockets = {'curve': self, 'selection': self.get_selection(), 'resolution': resolution}
+        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
+        _node = Node('Set Spline Resolution', named_sockets=_named_sockets)
+        self._jump(_node._out)
+
+    @property
+    def type(self):
+        """Write-only property; setter node: Set Spline Type."""
+        raise NodeError('Property Spline.type is write only.')
+
+    @type.setter
+    def type(self, spline_type: Literal['CATMULL_ROM', 'POLY', 'BEZIER', 'NURBS']):
+        """ > Node <&Node Set Spline Type>
+        
+        Jump method: True.
+        
+        self: socket 'Curve'.
+        
+        Parameters
+        ----------
+        spline_type : Literal['Catmull Rom', 'Poly', 'Bézier', 'NURBS']
+            parameter `spline_type`
+        
+        Returns
+        -------
+        None
+        """
+        _named_sockets = {'curve': self, 'selection': self.get_selection()}
+        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
+        _node = Node('Set Spline Type', named_sockets=_named_sockets, spline_type=spline_type)
+        self._jump(_node._out)

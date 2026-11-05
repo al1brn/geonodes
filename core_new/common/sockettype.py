@@ -49,10 +49,9 @@ from typing import Literal
 
 class SocketType:
 
-    __slots__ = ('_full_socket_id',)
+    __slots__ = ('_full_socket_id', '_shape')
 
     def __init__(self, value):
-
 
         self._full_socket_id  = None
 
@@ -178,6 +177,10 @@ class SocketType:
 
             self._full_socket_id = sid
 
+    # ====================================================================================================
+    # From string type
+    # ====================================================================================================
+
     @classmethod
     def from_type(cls, socket_type):
         """Resolve an explicit socket type, class, socket or type name.
@@ -186,8 +189,13 @@ class SocketType:
         (``Float``) and Blender socket identifiers (``NodeSocketFloat``).
         Use ``SocketType(value)`` to infer the type of a value instead.
         """
+
+        # ----- Socket type is not a string
+
         if not isinstance(socket_type, str):
             return cls(socket_type)
+
+        # ----- Compute from string
 
         socket_id = constants.SOCKET_IDS.get(socket_type)
         if socket_id is None:
@@ -196,6 +204,28 @@ class SocketType:
         result = cls.__new__(cls)
         result._full_socket_id = socket_id
         return result
+
+    # ====================================================================================================
+    # Socket type and shape
+    # ====================================================================================================
+
+    @classmethod
+    def socket_type_and_shape(cls, socket_type):
+
+        if isinstance(socket_type, tuple) & len(socket_type) == 2:
+
+            stype = cls.from_type(socket_type[0])
+            
+            if socket_type[1] in constants.SOCKET_SHAPES:
+                shape = constants.SOCKET_SHAPES[socket_type[1]]
+            elif socket_type[1] in constants.SOCKET_SHAPES.values():
+                shape = socket_type[1]
+            else:
+                raise NodeError(f"Invalid couple (socket_type, shape): {socket_type}. Shape is not in {list(constants.SOCKET_SHAPES.kesy())}")
+
+            return stype, shape
+
+        return cls.from_type(socket_type), 'AUTO'
 
     # ====================================================================================================
     # Str and Repr

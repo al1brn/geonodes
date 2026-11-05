@@ -10,12 +10,15 @@ Revisit this exclusion after investigating the Blender RNA behavior.
 import bpy
 import re
 from itertools import combinations
-from time import perf_counter
 
 from .. import core_module
 from . import config, utils
 from .node_param import NodeParam
 from .node_socket import NodeSocket
+
+ENUM_PARAMS_ORDERS = {
+    'Compare' : ('data_type', 'operation', 'mode'),
+}
 
 
 class NodeInfo:
@@ -23,21 +26,86 @@ class NodeInfo:
     def __init__(self, btree, bnode):
         self.btree = btree
         self.bnode = bnode
-        self.inputs = {}
-        self.outputs = {}
+
+        self._inputs = None
+        self._outputs = None
         self.max_inputs = []
         self.max_outputs = []
-        self.param_dependencies = {}
-        self.enum_parameters = ()
-        self.driving_parameters = ()
-        self.configurations = ()
-        self.default_implementation_time = 0.0
+
+        self.has_structure_type = False
+        self._param_dependencies = None
+        self._enum_parameters = None
+        self._driving_parameters = None
+        self._configurations = None
 
         self.get_std_attrs()
 
-        #print("DEBUG", self.bnode.name)
+        self._enum_params_order = ENUM_PARAMS_ORDERS.get(self.name, None)
+        self.has_params_order = self._enum_params_order is not None
 
-        self.get_param_dependencies()
+        # dynamic sockets
+        self.items_name = core_module.constants.NODE_WITH_IN_ITEMS.get(self.bl_idname)
+        self.has_items = self.items_name is not None
+        # Clear items to avoid fake inputs
+        if self.has_items:
+            getattr(self.bnode, self.items_name).clear()
+
+    @property
+    def enum_params_order(self):
+
+        if self._enum_params_order is None:
+            params = [NodeParam.Parameter(self.bnode, name)
+                      for name, info in self.snapshot_params().items()
+                      if info['type'] == 'ENUM']
+            params = [param for param in params
+                      if param is not None and param.param_type == 'ENUM']
+
+            for index, param1 in enumerate(params[:-1]):
+                for param2 in params[index + 1:]:
+                    dep = param1.dependance_with(param2)
+                    if dep:
+                        raise RuntimeError(
+                            f"Node {self.name!r}: enum parameter {dep['slave']!r} "
+                            f"depends on {dep['master']!r}. "
+                            "Declare the parameter order in ENUM_PARAMS_ORDERS "
+                            f"for {self.name!r}. "
+                            f"ENUM parameters: {[param.name for param in params]!r}."
+                        )
+
+            self._enum_params_order = tuple(param.name for param in params)
+            
+        return self._enum_params_order
+
+    @property
+    def param_dependencies(self):
+        if self._param_dependencies is None:
+            self.get_param_dependencies()
+        return self._param_dependencies
+
+    @property
+    def inputs(self):
+        _ = self.param_dependencies
+        return self._inputs
+
+    @property
+    def outputs(self):
+        _ = self.param_dependencies
+        return self._outputs
+
+    @property
+    def enum_parameters(self):
+        _ = self.param_dependencies
+        return self._enum_parameters
+
+    @property
+    def driving_parameters(self):
+        _ = self.param_dependencies
+        return self._driving_parameters
+
+    @property
+    def configurations(self):
+        _ = self.param_dependencies
+        return self._configurations
 
     @classmethod
     def get_std_attrs(cls):
@@ -76,6 +144,13 @@ class NodeInfo:
                     'value': param.value,
                     'enums': param.enums,
                 }
+
+        # structure_type params is not directly exposed
+        # it can be set with (socket_type, shape) to set socket_type
+        if 'structure_type' in params:
+            self.has_structure_type = True
+            params.pop('structure_type')
+
         return params
 
     def get_param_dependencies(self):
@@ -83,23 +158,34 @@ class NodeInfo:
 
         Each socket's dependencies maps a tuple of parameter values to
         exists, enabled, UI name and socket_type. Tuple positions follow
-        self.driving_parameters after reduction. Exploration includes enum
-        flags and booleans as well as ordinary enums.
+        self.driving_parameters after reduction. Enum axes follow the declared
+        order, with choices read after their masters are set. Exploration also
+        includes enum flags and booleans; no parameter dependency graph is inferred.
         The initial node configuration is restored after exploration.
         """
         self.__dict__.pop('_data_type_changes', None)
         initial = self.snapshot_params()
-        self.enum_parameters = tuple(
+        self._enum_parameters = tuple(
             name for name, param in initial.items()
             if param['type'] in {'ENUM', 'ENUM_FLAG'} or isinstance(param['value'], bool)
         )
-        self.configurations = ()
-        self.driving_parameters = ()
-        self.param_dependencies = {}
-        visited = set()
+
+        self._configurations = ()
+        self._driving_parameters = ()
+        self._param_dependencies = {}
+        enum_order = self.enum_params_order
+        self._enum_parameters = enum_order + tuple(
+            name for name in self._enum_parameters if name not in enum_order
+        )
+        # Compatibility: these are declared precedence constraints, not inferred edges.
+        if self.has_params_order:
+            self._param_dependencies = {
+                name: set(enum_order[:index])
+                for index, name in enumerate(enum_order) if index
+            }
         sockets = self.all_sockets()
-        self.inputs = dict(sockets['inputs'])
-        self.outputs = dict(sockets['outputs'])
+        self._inputs = dict(sockets['inputs'])
+        self._outputs = dict(sockets['outputs'])
         observations = {}
 
         def possible_values(param):
@@ -113,54 +199,47 @@ class NodeInfo:
             elif isinstance(param['value'], bool):
                 yield from (False, True)
 
-        def explore(before, before_sockets):
-            values = {name: param['value'] for name, param in before.items()}
-            restore_values = {}
-            for name, param in before.items():
-                value = param['value']
-                choices = param['enums']
-                if choices is not None:
-                    if param['type'] == 'ENUM_FLAG':
-                        if not value.issubset(choices):
-                            continue
-                    elif value not in choices:
-                        continue
-                restore_values[name] = value
-            key = tuple(frozenset(values[name]) if isinstance(values[name], set) else values[name]
-                        for name in self.enum_parameters)
-            if key in visited:
+        def explore(index):
+            if index < len(self._enum_parameters):
+                name = self._enum_parameters[index]
+                # Read choices after the preceding (master) parameters were set.
+                param = self.snapshot_params()[name]
+                if param['type'] == 'ENUM' and not param['enums']:
+                    explore(index + 1)
+                    return
+                for value in possible_values(param):
+                    self.set_params(**{name: value})
+                    explore(index + 1)
                 return
-            visited.add(key)
-            observations[key] = before_sockets
-            for direction, current_sockets in before_sockets.items():
-                for identifier, socket in current_sockets.items():
-                    getattr(self, direction).setdefault(identifier, socket)
 
-            for driver in self.enum_parameters:
-                for value in possible_values(before[driver]):
-                    if value == values[driver]:
+            values = self.snapshot_params()
+            key = tuple(
+                frozenset(values[name]['value'])
+                if isinstance(values[name]['value'], set) else values[name]['value']
+                for name in self._enum_parameters
+            )
+            current_sockets = self.all_sockets()
+            observations[key] = current_sockets
+            for direction, captured in current_sockets.items():
+                target = self._inputs if direction == 'inputs' else self._outputs
+                for identifier, socket in captured.items():
+                    target.setdefault(identifier, socket)
+
+        explore(0)
+        # Restore masters before their dependent parameters. Invalid initial enum
+        # values (possible on inactive RNA properties) cannot be assigned back.
+        for name in self._enum_parameters:
+            param = initial[name]
+            value = param['value']
+            choices = self.snapshot_params()[name]['enums']
+            if choices is not None:
+                if param['type'] == 'ENUM_FLAG':
+                    if not value.issubset(choices):
                         continue
-                    try:
-                        self.set_params(**{driver: value})
-                        after = self.snapshot_params()
-                        after_sockets = self.all_sockets()
-                        for name, previous in before.items():
-                            if name == driver:
-                                continue
-                            previous_enums = previous['enums']
-                            current_enums = after[name]['enums']
-                            previous_choices = None if previous_enums is None else set(previous_enums)
-                            current_choices = None if current_enums is None else set(current_enums)
-                            if previous_choices != current_choices:
-                                self.param_dependencies.setdefault(name, set()).add(driver)
-                        explore(after, after_sockets)
-                    finally:
-                        if driver in restore_values:
-                            self.set_params(**{driver: restore_values[driver]})
-                        self.set_params(**restore_values)
-
-        explore(initial, sockets)
-        self.configurations = tuple(observations)
+                elif value not in choices:
+                    continue
+            self.set_params(**{name: value})
+        self._configurations = tuple(observations)
         for direction in ('inputs', 'outputs'):
             for identifier, socket in getattr(self, direction).items():
                 for key, observed_sockets in observations.items():
@@ -174,7 +253,7 @@ class NodeInfo:
                     }
         self._reduce_socket_configurations()
         self.build_max_sockets()
-        return self.param_dependencies
+        return self._param_dependencies
 
     def _reduce_socket_configurations(self):
         """Remove parameter axes that do not distinguish socket configurations."""
@@ -186,7 +265,7 @@ class NodeInfo:
                 }
                 for direction in ('inputs', 'outputs')
             }
-            for key in self.configurations
+            for key in self._configurations
         }
         indices = list(range(len(self.enum_parameters)))
         for index in range(len(self.enum_parameters)):
@@ -200,7 +279,7 @@ class NodeInfo:
             else:
                 indices = candidate
 
-        self.driving_parameters = tuple(self.enum_parameters[i] for i in indices)
+        self._driving_parameters = tuple(self.enum_parameters[i] for i in indices)
         reduced = {}
         for key, state in states.items():
             reduced_key = tuple(key[i] for i in indices)
@@ -208,7 +287,7 @@ class NodeInfo:
                 raise ValueError(f"Different socket states for reduced configuration {reduced_key!r}")
             reduced[reduced_key] = state
 
-        self.configurations = tuple(reduced)
+        self._configurations = tuple(reduced)
         for direction in ('inputs', 'outputs'):
             for identifier, socket in getattr(self, direction).items():
                 socket.dependencies = {
@@ -217,38 +296,39 @@ class NodeInfo:
                 }
 
     def build_max_sockets(self):
-        """Build logical socket lists from the reduced configurations.
+        """Build one logical entry per possible UI name.
 
-        Physical variants may share one logical socket when they share an
-        enabled UI name and are never enabled simultaneously. Other sockets,
-        including simultaneous homonyms, keep separate list entries.
-
-        enabled lists the configurations that disable the logical socket;
-        an empty list means always enabled. Other fields are constants when
-        possible, otherwise dictionaries keyed by reduced configuration.
+        Physical sockets keep all their names in NodeSocket.names. Variants
+        sharing a name are merged only if never enabled simultaneously.
+        Each logical entry has a constant name and its own activation states.
         """
         def build(sockets):
             groups = []
             for socket in sockets.values():
-                active = {key for key, state in socket.dependencies.items()
-                          if state['exists'] and state['enabled']}
-                names = {socket.dependencies[key]['name'] for key in active}
-                for group in groups:
-                    if (names & group['names'] and not active & group['active']
-                            and socket.is_multi_input == group['sockets'][0].is_multi_input):
-                        group['sockets'].append(socket)
-                        group['names'].update(names)
-                        group['active'].update(active)
-                        break
-                else:
-                    groups.append({'sockets': [socket], 'names': names, 'active': active})
+                socket.names = tuple(dict.fromkeys(
+                    state['name'] for state in socket.dependencies.values()
+                    if state['exists']
+                ))
+                for name in socket.names:
+                    active = {key for key, state in socket.dependencies.items()
+                              if state['exists'] and state['enabled'] and state['name'] == name}
+                    for group in groups:
+                        if (group['name'] == name and not active & group['active']
+                                and socket.socket_type not in {item.socket_type for item in group['sockets']}
+                                and socket.is_multi_input == group['sockets'][0].is_multi_input):
+                            group['sockets'].append(socket)
+                            group['active'].update(active)
+                            break
+                    else:
+                        groups.append({'name': name, 'sockets': [socket], 'active': active})
 
             result = []
             for group in groups:
                 states = {}
                 for key in self.configurations:
                     present = [socket for socket in group['sockets']
-                               if socket.dependencies[key]['exists']]
+                               if socket.dependencies[key]['exists']
+                               and socket.dependencies[key]['name'] == group['name']]
                     active = [socket for socket in present if socket.dependencies[key]['enabled']]
                     selected = (active or present)[0] if present else None
                     state = selected.dependencies[key] if selected is not None else None
@@ -256,16 +336,16 @@ class NodeInfo:
                         'exists': bool(present),
                         'enabled': bool(active),
                         'identifier': selected.identifier if selected is not None else None,
-                        'name': state['name'] if state is not None else None,
                         'socket_type': state['socket_type'] if state is not None else None,
                         'index': state['index'] if state is not None else None,
                     }
 
                 descriptor = {
+                    'name': group['name'],
+                    'physical_identifiers': tuple(socket.identifier for socket in group['sockets']),
                     'enabled': [key for key, state in states.items() if not state['enabled']],
                 }
-                for prop in ('exists', 'identifier', 'name', 'socket_type', 'index'):
-                    # Missing sockets have no identifier, UI name or type.
+                for prop in ('exists', 'identifier', 'socket_type', 'index'):
                     values = {state[prop] for state in states.values()
                               if prop == 'exists' or state['exists']}
                     descriptor[prop] = (next(iter(values)) if len(values) == 1 else
@@ -631,21 +711,17 @@ class NodeInfo:
         and their signatures follow the main signature, separated by ' / '.
         Collection Info -> Instances.CollectionInfo plus Collection.info.
         """
-        started = perf_counter()
-        try:
-            node_id = self.bnode.bl_idname
-            replacement = {**self.data_type_implementation(),
-                           **config.REPLACE_DEFAULT_IMPLEMENTATIONS.get(node_id, {})}
-            result = self._default_implementation(replacement, **parameters)
-            additions = config.ADDITIONAL_IMPLEMENTATIONS.get(node_id, [])
-            if additions:
-                implementations = [self._default_implementation(addition, **parameters) for addition in additions]
-                result['additional_implementations'] = implementations
-                signatures = [result['signature'], *(impl['signature'] for impl in implementations)]
-                result['signature'] = ' / '.join(signature for signature in signatures if signature) or None
-            return result
-        finally:
-            self.default_implementation_time += perf_counter() - started
+        node_id = self.bnode.bl_idname
+        replacement = {**self.data_type_implementation(),
+                       **config.REPLACE_DEFAULT_IMPLEMENTATIONS.get(node_id, {})}
+        result = self._default_implementation(replacement, **parameters)
+        additions = config.ADDITIONAL_IMPLEMENTATIONS.get(node_id, [])
+        if additions:
+            implementations = [self._default_implementation(addition, **parameters) for addition in additions]
+            result['additional_implementations'] = implementations
+            signatures = [result['signature'], *(impl['signature'] for impl in implementations)]
+            result['signature'] = ' / '.join(signature for signature in signatures if signature) or None
+        return result
 
     def _default_implementation(self, replacement, **parameters):
         """Compute one proposal (or enum loop), without collecting additions."""
@@ -858,6 +934,16 @@ class NodeInfo:
         }
 
     @property
+    def name(self):
+        """Return the Blender node's name."""
+        return self.bnode.name
+
+    @property
+    def bl_idname(self):
+        """Return the Blender node's bl_idname."""
+        return self.bnode.bl_idname
+
+    @property
     def color_tag(self):
         """Return the Blender node's color category."""
         return self.bnode.color_tag
@@ -911,18 +997,89 @@ class NodeInfo:
         """Whether parameters influence the socket configuration."""
         return bool(self.driving_parameters)
 
+    def get_sockets(self, inout):
+        if inout=='INPUT':
+            return self.inputs.values()
+        else:
+            return self.outputs.values()
+
+    def get_input_socket(self, name_or_index):
+        if isinstance(name_or_index, int):
+            return list(self.inputs.values())[name_or_index]
+        else:
+            return self.inputs[name_or_index]
+
+    def get_output_socket(self, name_or_index):
+        if isinstance(name_or_index, int):
+            return list(self.outputs.values())[name_or_index]
+        else:
+            return self.outputs[name_or_index]
+
+    @property
+    def is_grid_input(self):
+        if not self.has_input_sockets:
+            return False
+        return self.get_input_socket(0).is_grid
+
+    @property
+    def is_grid_output(self):
+        if not self.has_output_sockets:
+            return False
+        return self.get_output_socket(0).is_grid
+
+    # ====================================================================================================
+    # Data type
+    # ====================================================================================================
+
+    @property
+    def data_type_parameter(self):
+        """ data_type, socket_type or input_type parameter
+        """
+        parameters = self.snapshot_params()
+        for name in ('data_type', 'input_type', 'socket_type'):
+            if name in parameters:
+                return NodeParam.Parameter(self.bnode, name)
+        return None
+
     @property
     def has_data_type_parameter(self):
-        """Whether the node exposes data_type or input_type."""
-        return bool({'data_type', 'input_type'} & self.snapshot_params().keys())
+        return self.data_type_parameter is not None
+
+    @property
+    def data_type_drives_inputs(self):
+        if self.has_data_type_parameter:
+            return len(self.data_type_socket_changes['inputs']) > 0
+        return False
+
+    @property
+    def data_type_drives_outputs(self):
+        if self.has_data_type_parameter:
+            return len(self.data_type_socket_changes['outputs']) > 0
+        return False
+
+    @property
+    def data_type_drives_first_input(self):
+        if self.data_type_drives_inputs:
+            data_type_inputs = self.data_type_socket_changes['inputs']
+            return data_type_inputs[0] == 0
+        return False
+
+    # ----------------------------------------------------------------------------------------------------
+    # What are the sockets changing with data_type parameter
+    # ----------------------------------------------------------------------------------------------------
 
     @property
     def data_type_socket_changes(self):
         """Logical input/output indices whose types depend on the type enum."""
+        
+        # Cache
         if hasattr(self, '_data_type_changes'):
             return self._data_type_changes
+
+        # Main
         parameter = self.data_type_parameter
         result = {'inputs': (), 'outputs': ()}
+        
         if parameter is not None and parameter.name in self.driving_parameters:
             axis = self.driving_parameters.index(parameter.name)
             for direction in result:
@@ -948,14 +1105,19 @@ class NodeInfo:
                     if len({socket_type for _, socket_type in values}) > 1:
                         changed.update(index for index, _ in values)
                 result[direction] = tuple(sorted(changed))
+
         self._data_type_changes = result
         return result
 
     @property
-    def inferred_data_type_socket(self):
+    def inferred_data_type_socket_DEPRECATED(self):
         """Non-first typed argument for an automatically inferred instance method."""
         if self.has_domain_parameter:
             return None
+        return self._inferred_data_type_socket()
+
+    def _inferred_data_type_socket_DEPRECATED(self):
+        """Shared inference rule, also used by fixed-domain instance methods."""
         changes = self.data_type_socket_changes
         if not changes['inputs']:
             return None
@@ -969,7 +1131,7 @@ class NodeInfo:
                 return None
         return self.socket_argument_names('inputs')[changes['inputs'][0]]
 
-    def data_type_implementation(self):
+    def data_type_implementation_DEPRECATED(self):
         """Describe the default policy for nodes changing both input and output."""
         if self.has_domain_parameter:
             return {}
@@ -1006,19 +1168,18 @@ class NodeInfo:
             policy.setdefault('self_socket', first.label or first.name)
         return policy
 
-    @property
-    def data_type_parameter(self):
-        """Return the data_type or input_type NodeParam, or None."""
-        parameters = self.snapshot_params()
-        for name in ('data_type', 'input_type'):
-            if name in parameters:
-                return NodeParam.Parameter(self.bnode, name)
-        return None
+    # ====================================================================================================
+    # Domain parameter
+    # ====================================================================================================
 
     @property
     def has_domain_parameter(self):
         """Whether the node exposes a domain parameter."""
         return 'domain' in self.snapshot_params()
+
+    # ====================================================================================================
+    # Selection socket
+    # ====================================================================================================
 
     @property
     def has_selection(self):
@@ -1076,31 +1237,13 @@ class NodeInfo:
         The tree is removed when the loop finishes, including on callback errors.
         config.DEPRECATED_NODES are skipped before creating their NodeInfo wrapper.
         """
-        construction_time = signature_time = callback_time = 0.0
-
         def process(bnode):
-            nonlocal construction_time, signature_time, callback_time
             if bnode.bl_idname in config.DEPRECATED_NODES:
                 return
             # TEMP HACK documented at the top of this module.
             if bnode.bl_idname == 'ShaderNodeOutputLineStyle':
                 return
-            started = perf_counter()
-            try:
-                node = cls(bnode.id_data, bnode)
-            finally:
-                construction_time += perf_counter() - started
-            started = perf_counter()
-            before_signature = node.default_implementation_time
-            try:
-                func(node)
-            finally:
-                callback_time += perf_counter() - started
-                signature_time += node.default_implementation_time - before_signature
+            node = cls(bnode.id_data, bnode)
+            func(node)
 
-        try:
-            utils.loop_on_nodes(process, tree_type=tree_type)
-        finally:
-            print(f"NodeInfo ({tree_type}): construction={construction_time:.3f}s, "
-                  f"default_implementation={signature_time:.3f}s, "
-                  f"callback remainder (print, etc.)={callback_time - signature_time:.3f}s")
+        utils.loop_on_nodes(process, tree_type=tree_type)

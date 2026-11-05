@@ -32,6 +32,9 @@ if TYPE_CHECKING:
     class Menu:
         ...
 
+    class Texture:
+        ...
+
     class String:
         ...
 
@@ -47,81 +50,50 @@ class Integer(BaseInteger):
 
     def less_than(self, b=None):
         from . import gnmath
-        return gnmath.mless_than(self, b)
-
-    def __lt__(self, other):
-        return self.less_than(other)
+        return gnmath.less_than(self, b)
 
     def less_equal(self, b=None):
         from . import gnmath
-        return gnmath.mless_equal(self, b)
-
-    def __le__(self, other):
-        return self.less_equal(other)
+        return gnmath.less_equal(self, b)
 
     def greater_than(self, b=None):
         from . import gnmath
-        return gnmath.mgreater_than(self, b)
-
-    def __gt__(self, other):
-        return self.greater_than(other)
+        return gnmath.greater_than(self, b)
 
     def greater_equal(self, b=None):
         from . import gnmath
-        return gnmath.mgreater_equal(self, b)
-
-    def __ge__(self, other):
-        return self.greater_equal(other)
+        return gnmath.greater_equal(self, b)
 
     def equal(self, b=None, epsilon=None):
         from . import gnmath
         return gnmath.compare(self, b, epsilon=epsilon)
 
-    def __eq__(self, other):
-        return self.equal(other)
-
     def not_equal(self, b=None, epsilon=None):
         from . import gnmath
-        return gnmath.mnot_equal(self, b, epsilon=epsilon)
+        return gnmath.not_equal(self, b, epsilon=epsilon)
+
+    def __lt__(self, other):
+        return self.less_than(other)
+
+    def __le__(self, other):
+        return self.less_equal(other)
+
+    def __gt__(self, other):
+        return self.greater_than(other)
+
+    def __ge__(self, other):
+        return self.greater_equal(other)
+
+    def __eq__(self, other):
+        return self.equal(other)
 
     def __ne__(self, other):
         return self.not_equal(other)
 
-    def enable_output(self, enable: Boolean=None):
-        """ > Node <&ShaderNode Enable Output>
-        
-        Jump method: False.
-        
-        self: socket 'Value'.
-        
-        **Fixed values**
-        
-        | Parameter | Value |
-        | --- | --- |
-        | `data_type` | `'INT'` |
-        
-        Parameters
-        ----------
-        enable : Boolean, optional
-            socket 'Enable'
-        
-        Returns
-        -------
-        Integer
-            socket 'OUT'
-        """
-        _named_sockets = {'enable': enable, 'value': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Enable Output', named_sockets=_named_sockets, data_type='INT')
-        return _node._out
-
-    def implicit_conversion(self, socket_idname='NodeSocketColor'):
+    @classmethod
+    def implicit_conversion(cls, value: Integer=None, socket_idname: str='NodeSocketColor'):
         """ > Node <&ShaderNode Implicit Conversion>
         
-        Jump method: False.
-        
-        self: socket 'Value'.
-        
         **Fixed values**
         
         | Parameter | Value |
@@ -130,52 +102,46 @@ class Integer(BaseInteger):
         
         Parameters
         ----------
+        value : Integer, optional
+            socket 'Value'
+        
         socket_idname : str
             parameter `socket_idname`
         
         Returns
         -------
-        Integer
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'value': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Implicit Conversion', named_sockets=_named_sockets, socket_idname=socket_idname, data_type='INT')
-        return _node._out
+        node = Node('Implicit Conversion', named_sockets={'Value': value}, data_type='INT', socket_idname=socket_idname)
+        return node._out
 
-    @classmethod
-    def IndexSwitch(cls, named_sockets=None, index: Integer=None, _0: Integer=None, _1: Integer=None, **sockets):
+    def index_switch(self, *values: Socket, data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'STRING', 'MENU', 'SHADER', 'BUNDLE', 'CLOSURE']='RGBA', default_index: int=0):
         """ > Node <&ShaderNode Index Switch>
         
-        **Fixed values**
+        Jump method: False.
         
-        | Parameter | Value |
-        | --- | --- |
-        | `data_type` | `'INT'` |
+        self: socket 'Index'.
         
         Parameters
         ----------
-        index : Integer, optional
-            socket 'Index'
-        
-        _0 : Integer, optional
-            socket '0'
-        
-        _1 : Integer, optional
-            socket '1'
+        data_type : Literal['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'String', 'Menu', 'Shader', 'Bundle', 'Closure']
+            parameter `data_type`
         
         Returns
         -------
-        Integer
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'index': index, '_0': _0, '_1': _1}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _named_sockets.update({_name: _value for _name, _value in (named_sockets or {}).items() if _value is not None})
-        _node = Node('Index Switch', named_sockets=_named_sockets, data_type='INT', **sockets)
-        return _node._out
+        node = Node('Index Switch', *values, named_sockets={'Index': self}, data_type=data_type)
+        _selector = node._bnode.inputs['Index']
+        _selector.default_value = default_index
+        _interface = node._get_interface_socket(_selector)
+        if _interface is not None:
+            _interface.default_value = default_index
+        return node._out
 
-    def math(self, value_1: Integer=None, multiplier: Integer=None, exponent: Integer=None, addend: Integer=None, operation: Literal['ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'MULTIPLY_ADD', 'ABSOLUTE', 'NEGATE', 'POWER', 'MINIMUM', 'MAXIMUM', 'SIGN', 'DIVIDE_ROUND', 'DIVIDE_FLOOR', 'DIVIDE_CEIL', 'FLOORED_MODULO', 'MODULO', 'GCD', 'LCM']='ADD'):
+    def integer_math(self, value_1: Integer=None, multiplier: Integer=None, exponent: Integer=None, addend: Integer=None, operation: Literal['ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'MULTIPLY_ADD', 'ABSOLUTE', 'NEGATE', 'POWER', 'MINIMUM', 'MAXIMUM', 'SIGN', 'DIVIDE_ROUND', 'DIVIDE_FLOOR', 'DIVIDE_CEIL', 'FLOORED_MODULO', 'MODULO', 'GCD', 'LCM']='ADD'):
         """ > Node <&ShaderNode Integer Math>
         
         Jump method: False.
@@ -201,59 +167,55 @@ class Integer(BaseInteger):
         
         Returns
         -------
-        Integer
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'value': self, 'base': self, 'value_1': value_1, 'multiplier': multiplier, 'exponent': exponent, 'addend': addend}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _values = {('ADD',): ['value', 'value_1'], ('SUBTRACT',): ['value', 'value_1'], ('MULTIPLY',): ['value', 'value_1'], ('DIVIDE',): ['value', 'value_1'], ('MULTIPLY_ADD',): ['value', 'multiplier', 'addend'], ('ABSOLUTE',): ['value'], ('NEGATE',): ['value'], ('POWER',): ['base', 'exponent'], ('MINIMUM',): ['value', 'value_1'], ('MAXIMUM',): ['value', 'value_1'], ('SIGN',): ['value'], ('DIVIDE_ROUND',): ['value', 'value_1'], ('DIVIDE_FLOOR',): ['value', 'value_1'], ('DIVIDE_CEIL',): ['value', 'value_1'], ('FLOORED_MODULO',): ['value', 'value_1'], ('MODULO',): ['value', 'value_1'], ('GCD',): ['value', 'value_1'], ('LCM',): ['value', 'value_1']}
         _configuration = ({'add': 'ADD', 'subtract': 'SUBTRACT', 'multiply': 'MULTIPLY', 'divide': 'DIVIDE', 'multiply_add': 'MULTIPLY_ADD', 'absolute': 'ABSOLUTE', 'negate': 'NEGATE', 'power': 'POWER', 'minimum': 'MINIMUM', 'maximum': 'MAXIMUM', 'sign': 'SIGN', 'divide_round': 'DIVIDE_ROUND', 'divide_floor': 'DIVIDE_FLOOR', 'divide_ceil': 'DIVIDE_CEIL', 'floored_modulo': 'FLOORED_MODULO', 'modulo': 'MODULO', 'gcd': 'GCD', 'lcm': 'LCM', 'multiply add': 'MULTIPLY_ADD', 'divide round': 'DIVIDE_ROUND', 'divide floor': 'DIVIDE_FLOOR', 'divide ceiling': 'DIVIDE_CEIL', 'floored modulo': 'FLOORED_MODULO', 'greatest common divisor': 'GCD', 'least common multiple': 'LCM'}.get(operation.lower(), operation),)
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _name in _values[_configuration]}
-        _node = Node('Integer Math', named_sockets=_named_sockets, operation=operation)
-        return _node._out
+        _node_sockets = {('ADD',): {'Value': self, 'Value_1': value_1}, ('SUBTRACT',): {'Value': self, 'Value_1': value_1}, ('MULTIPLY',): {'Value': self, 'Value_1': value_1}, ('DIVIDE',): {'Value': self, 'Value_1': value_1}, ('MULTIPLY_ADD',): {'Value': self, 'Multiplier': multiplier, 'Addend': addend}, ('ABSOLUTE',): {'Value': self}, ('NEGATE',): {'Value': self}, ('POWER',): {'Base': self, 'Exponent': exponent}, ('MINIMUM',): {'Value': self, 'Value_1': value_1}, ('MAXIMUM',): {'Value': self, 'Value_1': value_1}, ('SIGN',): {'Value': self}, ('DIVIDE_ROUND',): {'Value': self, 'Value_1': value_1}, ('DIVIDE_FLOOR',): {'Value': self, 'Value_1': value_1}, ('DIVIDE_CEIL',): {'Value': self, 'Value_1': value_1}, ('FLOORED_MODULO',): {'Value': self, 'Value_1': value_1}, ('MODULO',): {'Value': self, 'Value_1': value_1}, ('GCD',): {'Value': self, 'Value_1': value_1}, ('LCM',): {'Value': self, 'Value_1': value_1}}[_configuration]
+        _node_args = {('ADD',): [], ('SUBTRACT',): [], ('MULTIPLY',): [], ('DIVIDE',): [], ('MULTIPLY_ADD',): [], ('ABSOLUTE',): [], ('NEGATE',): [], ('POWER',): [], ('MINIMUM',): [], ('MAXIMUM',): [], ('SIGN',): [], ('DIVIDE_ROUND',): [], ('DIVIDE_FLOOR',): [], ('DIVIDE_CEIL',): [], ('FLOORED_MODULO',): [], ('MODULO',): [], ('GCD',): [], ('LCM',): []}[_configuration]
+        node = Node('Integer Math', *_node_args, named_sockets=_node_sockets, operation=operation)
+        return node._out
 
-    @utils.classproperty
-    def light_iter_internal_input(cls):
+    @classmethod
+    def LightIterInternalInput(cls):
         """ > Node <&ShaderNode Light Iter Internal Input>
         
         Returns
         -------
-        Integer
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Light Iter Internal Input', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('Light Iter Internal Input', named_sockets={})
+        return node._out
 
-    @classmethod
-    def MenuSwitch(cls, named_sockets=None, menu: Literal['A', 'B']=None, a: Integer=None, b: Integer=None, **sockets):
-        """ > Node <&ShaderNode Menu Switch>
+    def to_string(self, decimals: Integer=None, base: Integer=None, padding: Integer=None, data_type: Literal['FLOAT', 'INT']='FLOAT'):
+        """ > Node <&ShaderNode Value to String>
         
-        **Fixed values**
+        Jump method: False.
         
-        | Parameter | Value |
-        | --- | --- |
-        | `data_type` | `'INT'` |
+        self: socket 'Value'.
         
         Parameters
         ----------
-        menu : menu='A', optional
-            ('A', 'B')
+        decimals : Integer, optional
+            socket 'Decimals'
         
-        a : Integer, optional
-            socket 'A'
+        base : Integer, optional
+            socket 'Base'
         
-        b : Integer, optional
-            socket 'B'
+        padding : Integer, optional
+            socket 'Padding'
+        
+        data_type : Literal['Float', 'Integer']
+            parameter `data_type`
         
         Returns
         -------
-        Integer
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'menu': menu, 'a': a, 'b': b}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _named_sockets.update({_name: _value for _name, _value in (named_sockets or {}).items() if _value is not None})
-        _node = Node('Menu Switch', named_sockets=_named_sockets, data_type='INT', **sockets)
-        return _node._out
+        _configuration = ({'float': 'FLOAT', 'int': 'INT', 'integer': 'INT'}.get(data_type.lower(), data_type),)
+        _node_sockets = {('FLOAT',): {'Value': self, 'Decimals': decimals}, ('INT',): {'Value': self, 'Base': base, 'Padding': padding}}[_configuration]
+        _node_args = {('FLOAT',): [], ('INT',): []}[_configuration]
+        node = Node('Value to String', *_node_args, named_sockets=_node_sockets, data_type=data_type)
+        return node._out

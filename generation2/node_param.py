@@ -62,6 +62,14 @@ class NodeParam:
 
         return param
 
+    @property
+    def current_value(self):
+        return getattr(self.bnode, self.name)
+
+    @current_value.setter
+    def current_value(self, value):
+        setattr(self.bnode, self.name, value)
+
     # ====================================================================================================
     # Get the valid values of an enum params
 
@@ -108,6 +116,42 @@ class NodeParam:
                 return vals
 
         return None
+
+    # ====================================================================================================
+    # Depends upon another parameter
+
+    def dependance_with(self, other):
+
+        assert other.param_type == 'ENUM' and self.param_type == 'ENUM'
+
+
+        for first, second in [(self, other), (other, self)]:
+
+            first_value = first.current_value
+            second_value = second.current_value
+
+            var_enums = {}
+            ref = None
+            all_same = True
+            for value in first.get_enum_list():
+                first.current_value = value
+                var_enums[value] = second.get_enum_list()
+                if ref is None:
+                    ref = var_enums[value]
+                else:
+                    all_same = all_same and (ref == var_enums[value])
+
+            first.current_value = first_value
+            second.current_value = second_value
+
+            if not all_same:
+                return {
+                    "master": first.name,
+                    "slave": second.name,
+                    "var_enums": var_enums,
+                }
+
+        return {}
 
     # ====================================================================================================
     # Argument information

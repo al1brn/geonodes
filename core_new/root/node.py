@@ -247,12 +247,17 @@ class Node:
         '_link_ignore', '_stack',
     )
     
-    def __init__(self, node_name: str, named_sockets: dict = {}, **parameters):
+    def __init__(self, node_name: str, *args, named_sockets: dict | None = None, **parameters):
         """ Node wrapper.
 
         A node can have dynamic sockets in two ways:
         - _has_items : with an items collection
         - _use_interface : with a NodeTree
+
+        Positional values populate the single active multi-input socket, or
+        an items collection whose creation method has no name argument.
+        Configure node parameters first, then positional values, then names.
+        Named socket values must be passed with named_sockets= or keywords.
 
         Attributes
         ----------
@@ -311,8 +316,11 @@ class Node:
         node_name : str
             Node name
 
+        *args : value | Socket
+            Values for the active multi-input socket or numbered items.
+
         named_sockets : dict, optional
-            initialization values for the node input sockets default={}.
+            Initialization values for named input sockets; default=None.
 
         **parameters : dict
             node parameters and sockets
@@ -462,6 +470,47 @@ class Node:
 
         self._link_ignore = []
 
+        named_sockets = named_sockets if named_sockets is not None else {}
+
+        # unnamed sockets in args
+
+        if len(args):
+
+            # ----- Look for a multi input socket
+
+            targets = [socket for socket in self._bnode.inputs
+                       if socket.enabled and socket.is_multi_input]
+            items = self._items['INPUT']
+            if len(targets) > 1:
+                raise TypeError(f"Node {self._bnode.name!r}: positional values are ambiguous "
+                                f"between {len(targets)} multi-input sockets")
+
+            # ----- There is a multi input socket
+
+            if targets:
+                target = targets[0]
+                self._link_ignore.append(target.name)
+                for value in reversed(args):
+                    self.set_input_socket_value(target, value)
+
+            # ----- No multi input, must be dynamic items such as in Index Switch
+
+            elif items is not None and 'name' not in {
+                    param.identifier for param in items.bl_rna.functions['new'].parameters
+                    if not param.is_output}:
+                for value in args:
+                    items.new()
+                    socket = self._bnode.inputs[-2]
+                    self._socket_created(socket, value=value)
+                    self._link_ignore.append(socket.name)
+                    self.set_input_socket_value(socket, value)
+
+            # ----- No reason to accept *args
+
+            else:
+                raise TypeError(f"Node {self._bnode.name!r}: positional values require one active "
+                                "multi-input socket or anonymous items")
+
         # Menus need to set the socket before the selector
 
         if bl_idname == 'GeometryNodeMenuSwitch':
@@ -477,20 +526,6 @@ class Node:
                 self.set_input_socket("Menu", menu_value)
                 if self._default_menu == "":
                     self._default_menu = menu_value
-        
-
-        elif bl_idname == 'GeometryNodeIndexSwitch':
-            index_value = None
-            for socket_values, python_name in ((named_sockets, False), (sockets, True)):
-                for name, value in socket_values.items():
-                    if name.lower() == 'index':
-                        index_value = value
-                        continue
-                    self.set_input_socket(name, value, python_name=python_name)
-
-            if index_value is not None:
-                self.set_input_socket("Index", index_value)
-
         else:
             for socket_values, python_name in ((named_sockets, False), (sockets, True)):
                 for name, value in socket_values.items():
@@ -1517,8 +1552,11 @@ class Node:
         # Multi input socket set with a list of value
         # ====================================================================================================
 
-        is_multi = name in self._inputs._multi_names
-        if is_multi and isinstance(value, list):
+        # Parameters can rename sockets after Sockets was initialized (Mesh
+        # Boolean: Mesh 2 -> Mesh). Resolve the current socket for list values.
+        multi_socket = (self._bnode.inputs[name] if isinstance(name, int) else
+                        self._inputs.by_name(name)) if isinstance(value, list) else None
+        if multi_socket is not None and multi_socket.is_multi_input:
             sockets = []
             # Reversed for join strings !
             for v in reversed(value):
@@ -1710,6 +1748,16 @@ class Node:
             if bsock.enabled and bsock.is_icon_visible and bsock.type != 'CUSTOM':
                 return self._to_socket(bsock)
         return None
+
+    def _second_out(self, default) -> Socket:
+        """Return the second available output, or default if there is none."""
+        first = None
+        for bsock in self._bnode.outputs:
+            if bsock.enabled and bsock.is_icon_visible and bsock.type != 'CUSTOM':
+                if first is not None:
+                    return self._to_socket(bsock)
+                first = bsock
+        return default
     
     # ====================================================================================================
     # Update
@@ -3112,7 +3160,7 @@ class ColorRamp(Node):
         interpolation : {'EASE', 'CARDINAL', 'LINEAR', 'B_SPLINE', 'CONSTANT'}
 
         """
-        super().__init__('Color Ramp', {'Fac': fac})
+        super().__init__('Color Ramp', named_sockets={'Fac': fac})
         self.color_ramp.interpolation = interpolation
         if stops is not None:
             self.set_stops(*stops)

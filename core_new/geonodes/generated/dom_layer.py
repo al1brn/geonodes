@@ -47,6 +47,9 @@ if TYPE_CHECKING:
     class Geometry:
         ...
 
+    class Texture:
+        ...
+
     class Collection:
         ...
 
@@ -114,28 +117,8 @@ from ...geonodes.domains.layer import Layer as BaseLayer
 class Layer(BaseLayer):
     __slots__ = ()
 
-    @classmethod
-    def ActiveElement(cls):
-        """ > Node <&Node Active Element>
-        
-        **Fixed values**
-        
-        | Parameter | Value |
-        | --- | --- |
-        | `domain` | `'LAYER'` |
-        
-        Returns
-        -------
-        Integer
-            socket 'OUT'
-        """
-        _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Active Element', named_sockets=_named_sockets, domain='LAYER')
-        return _node._out
-
-    def capture_attribute(self, named_sockets=None, **sockets):
-        """ > Node <&Node Capture Attribute>
+    def attribute_statistic(self, attribute: Socket=None):
+        """ > Node <&Node Attribute Statistic>
         
         Jump method: False.
         
@@ -147,15 +130,49 @@ class Layer(BaseLayer):
         | --- | --- |
         | `domain` | `'LAYER'` |
         
+        **Derived parameters**
+        
+        - `data_type`: Inferred from socket 'Attribute' (attribute).
+        
+        Parameters
+        ----------
+        attribute : Socket, optional
+            socket 'Attribute'
+        
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
-        _named_sockets = {'geometry': self, 'selection': self.get_selection()}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _named_sockets.update({_name: _value for _name, _value in (named_sockets or {}).items() if _value is not None})
-        _node = Node('Capture Attribute', named_sockets=_named_sockets, domain='LAYER', **sockets)
-        return _node
+        data_type = SocketType.get_data_type_for_node(attribute, 'GeometryNodeAttributeStatistic', 'data_type')
+        selection = self.get_selection()
+        node = Node('Attribute Statistic', named_sockets={'Geometry': self, 'Selection': selection, 'Attribute': attribute}, data_type=data_type, domain='LAYER')
+        return node._out
+
+    def capture_attribute(self, named_sockets=None, **sockets):
+        """ > Node <&Node Capture Attribute>
+        
+        Jump method: True.
+        
+        self: socket 'Geometry'.
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `domain` | `'LAYER'` |
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        selection = self.get_selection()
+        _named_sockets = {'Geometry': self, 'Selection': selection}
+        _named_sockets.update({name: value for name, value in (named_sockets or {}).items() if value is not None})
+        node = Node('Capture Attribute', named_sockets=_named_sockets, domain='LAYER', **sockets)
+        self._jump(node._out)
+        return node._second_out(self)
 
     def delete(self, mode: Literal['ALL', 'EDGE_FACE', 'ONLY_FACE']='ALL'):
         """ > Node <&Node Delete Geometry>
@@ -177,14 +194,13 @@ class Layer(BaseLayer):
         
         Returns
         -------
-        Geometry
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'geometry': self, 'selection': self.get_selection()}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Delete Geometry', named_sockets=_named_sockets, mode=mode, domain='LAYER')
-        self._jump(_node._out)
-        return self._domain_to_geometry
+        selection = self.get_selection()
+        node = Node('Delete Geometry', named_sockets={'Geometry': self, 'Selection': selection}, mode=mode, domain='LAYER')
+        self._jump(node._out)
+        return node._second_out(self)
 
     def duplicate_elements(self, amount: Integer=None):
         """ > Node <&Node Duplicate Elements>
@@ -206,14 +222,67 @@ class Layer(BaseLayer):
         
         Returns
         -------
-        Geometry
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'geometry': self, 'selection': self.get_selection(), 'amount': amount}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Duplicate Elements', named_sockets=_named_sockets, domain='LAYER')
-        self._jump(_node._out)
-        return self._domain_to_geometry
+        selection = self.get_selection()
+        node = Node('Duplicate Elements', named_sockets={'Geometry': self, 'Selection': selection, 'Amount': amount}, domain='LAYER')
+        self._jump(node._out)
+        return node._second_out(self)
+
+    @classmethod
+    def named_selection(cls, name: String=None):
+        """ > Node <&Node Named Layer Selection>
+        
+        Parameters
+        ----------
+        name : String, optional
+            socket 'Name'
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Named Layer Selection', named_sockets={'Name': name})
+        return node._out
+
+    def sample_index(self, value: Socket=None, index: Integer=None, clamp: bool=False):
+        """ > Node <&Node Sample Index>
+        
+        Jump method: False.
+        
+        self: socket 'Geometry'.
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `domain` | `'LAYER'` |
+        
+        **Derived parameters**
+        
+        - `data_type`: Inferred from socket 'Value' (value).
+        
+        Parameters
+        ----------
+        value : Socket, optional
+            socket 'Value'
+        
+        index : Integer, optional
+            socket 'Index'
+        
+        clamp : bool
+            parameter `clamp`
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        data_type = SocketType.get_data_type_for_node(value, 'GeometryNodeSampleIndex', 'data_type')
+        node = Node('Sample Index', named_sockets={'Geometry': self, 'Value': value, 'Index': index}, data_type=data_type, domain='LAYER', clamp=clamp)
+        return node._out
 
     def separate(self):
         """ > Node <&Node Separate Geometry>
@@ -230,16 +299,19 @@ class Layer(BaseLayer):
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
-        _named_sockets = {'geometry': self, 'selection': self.get_selection()}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Separate Geometry', named_sockets=_named_sockets, domain='LAYER')
-        return _node
+        selection = self.get_selection()
+        node = Node('Separate Geometry', named_sockets={'Geometry': self, 'Selection': selection}, domain='LAYER')
+        return node._out
 
-    @classmethod
-    def FromSplit(cls, geometry: Geometry=None, selection: Boolean=None, group_id: Integer=None):
+    def to_instances(self, group_id: Integer=None):
         """ > Node <&Node Split to Instances>
+        
+        Jump method: False.
+        
+        self: socket 'Geometry'.
         
         **Fixed values**
         
@@ -249,21 +321,50 @@ class Layer(BaseLayer):
         
         Parameters
         ----------
-        geometry : Geometry, optional
-            socket 'Geometry'
-        
-        selection : Boolean, optional
-            socket 'Selection'
-        
         group_id : Integer, optional
             socket 'Group ID'
         
         Returns
         -------
-        Instances
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'geometry': geometry, 'selection': selection, 'group_id': group_id}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Split to Instances', named_sockets=_named_sockets, domain='LAYER')
-        return _node._out
+        selection = self.get_selection()
+        node = Node('Split to Instances', named_sockets={'Geometry': self, 'Selection': selection, 'Group ID': group_id}, domain='LAYER')
+        return node._out
+
+    def store_named_attribute(self, name: String=None, value: Socket=None):
+        """ > Node <&Node Store Named Attribute>
+        
+        Jump method: True.
+        
+        self: socket 'Geometry'.
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `domain` | `'LAYER'` |
+        
+        **Derived parameters**
+        
+        - `data_type`: Inferred from socket 'Value' (value).
+        
+        Parameters
+        ----------
+        name : String, optional
+            socket 'Name'
+        
+        value : Socket, optional
+            socket 'Value'
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        data_type = SocketType.get_data_type_for_node(value, 'GeometryNodeStoreNamedAttribute', 'data_type')
+        selection = self.get_selection()
+        node = Node('Store Named Attribute', named_sockets={'Geometry': self, 'Selection': selection, 'Name': name, 'Value': value}, data_type=data_type, domain='LAYER')
+        self._jump(node._out)
+        return node._second_out(self)

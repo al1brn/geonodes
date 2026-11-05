@@ -47,6 +47,9 @@ if TYPE_CHECKING:
     class Geometry:
         ...
 
+    class Texture:
+        ...
+
     class Collection:
         ...
 
@@ -114,6 +117,63 @@ from ...geonodes.domains.face import Face as BaseFace
 class Face(BaseFace):
     __slots__ = ()
 
+    def attribute_statistic(self, attribute: Socket=None):
+        """ > Node <&Node Attribute Statistic>
+        
+        Jump method: False.
+        
+        self: socket 'Geometry'.
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `domain` | `'FACE'` |
+        
+        **Derived parameters**
+        
+        - `data_type`: Inferred from socket 'Attribute' (attribute).
+        
+        Parameters
+        ----------
+        attribute : Socket, optional
+            socket 'Attribute'
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        data_type = SocketType.get_data_type_for_node(attribute, 'GeometryNodeAttributeStatistic', 'data_type')
+        selection = self.get_selection()
+        node = Node('Attribute Statistic', named_sockets={'Geometry': self, 'Selection': selection, 'Attribute': attribute}, data_type=data_type, domain='FACE')
+        return node._out
+
+    def capture_attribute(self, named_sockets=None, **sockets):
+        """ > Node <&Node Capture Attribute>
+        
+        Jump method: True.
+        
+        self: socket 'Geometry'.
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `domain` | `'FACE'` |
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        selection = self.get_selection()
+        _named_sockets = {'Geometry': self, 'Selection': selection}
+        _named_sockets.update({name: value for name, value in (named_sockets or {}).items() if value is not None})
+        node = Node('Capture Attribute', named_sockets=_named_sockets, domain='FACE', **sockets)
+        self._jump(node._out)
+        return node._second_out(self)
+
     @classmethod
     def corners(cls, face_index: Integer=None, weights: Float=None, sort_index: Integer=None):
         """ > Node <&Node Corners of Face>
@@ -131,235 +191,11 @@ class Face(BaseFace):
         
         Returns
         -------
-        Node
-        """
-        _named_sockets = {'face_index': face_index, 'weights': weights, 'sort_index': sort_index}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Corners of Face', named_sockets=_named_sockets)
-        return _node
-
-    @utils.classproperty
-    def area(cls):
-        """ > Node <&Node Face Area>
-        
-        Returns
-        -------
-        Float
-            socket 'Area'
-        """
-        _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Face Area', named_sockets=_named_sockets)
-        return _node['Area']
-
-    @classmethod
-    def group_boundaries(cls, face_group_id: Integer=None):
-        """ > Node <&Node Face Group Boundaries>
-        
-        Parameters
-        ----------
-        face_group_id : Integer, optional
-            socket 'Face Group ID'
-        
-        Returns
-        -------
-        Node
-        """
-        _named_sockets = {'face_group_id': face_group_id}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Face Group Boundaries', named_sockets=_named_sockets)
-        return _node
-
-    @classmethod
-    def neighbors(cls):
-        """ > Node <&Node Face Neighbors>
-        
-        Returns
-        -------
-        Node
-        """
-        _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Face Neighbors', named_sockets=_named_sockets)
-        return _node
-
-    @utils.classproperty
-    def vertex_count(cls):
-        """ > Node <&Node Face Neighbors>
-        
-        Returns
-        -------
-        Integer
-            socket 'Vertex Count'
-        """
-        _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Face Neighbors', named_sockets=_named_sockets)
-        return _node['Vertex Count']
-
-    @utils.classproperty
-    def face_count(cls):
-        """ > Node <&Node Face Neighbors>
-        
-        Returns
-        -------
-        Integer
-            socket 'Face Count'
-        """
-        _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Face Neighbors', named_sockets=_named_sockets)
-        return _node['Face Count']
-
-    @classmethod
-    def set(cls):
-        """ > Node <&Node Face Set>
-        
-        Returns
-        -------
-        Node
-        """
-        _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Face Set', named_sockets=_named_sockets)
-        return _node
-
-    @utils.classproperty
-    def face_set(cls):
-        """ > Node <&Node Face Set>
-        
-        Returns
-        -------
-        Integer
-            socket 'Face Set'
-        """
-        _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Face Set', named_sockets=_named_sockets)
-        return _node['Face Set']
-
-    @utils.classproperty
-    def exists(cls):
-        """ > Node <&Node Face Set>
-        
-        Returns
-        -------
-        Boolean
-            socket 'Exists'
-        """
-        _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Face Set', named_sockets=_named_sockets)
-        return _node['Exists']
-
-    @classmethod
-    def is_planar(cls, threshold: Float=None):
-        """ > Node <&Node Is Face Planar>
-        
-        Parameters
-        ----------
-        threshold : Float, optional
-            socket 'Threshold'
-        
-        Returns
-        -------
-        Node
-        """
-        _named_sockets = {'threshold': threshold}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Is Face Planar', named_sockets=_named_sockets)
-        return _node
-
-    @classmethod
-    def is_smooth(cls):
-        """ > Node <&Node Is Face Smooth>
-        
-        Returns
-        -------
-        Node
-        """
-        _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Is Face Smooth', named_sockets=_named_sockets)
-        return _node
-
-    @utils.classproperty
-    def smooth(cls):
-        """ > Node <&Node Is Face Smooth>
-        
-        Returns
-        -------
-        Boolean
-            socket 'Smooth'
-        """
-        _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Is Face Smooth', named_sockets=_named_sockets)
-        return _node['Smooth']
-
-    @classmethod
-    def offset_corner(cls, corner_index: Integer=None, offset: Integer=None):
-        """ > Node <&Node Offset Corner in Face>
-        
-        Parameters
-        ----------
-        corner_index : Integer, optional
-            socket 'Corner Index'
-        
-        offset : Integer, optional
-            socket 'Offset'
-        
-        Returns
-        -------
-        Node
-        """
-        _named_sockets = {'corner_index': corner_index, 'offset': offset}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Offset Corner in Face', named_sockets=_named_sockets)
-        return _node
-
-    @classmethod
-    def ActiveElement(cls):
-        """ > Node <&Node Active Element>
-        
-        **Fixed values**
-        
-        | Parameter | Value |
-        | --- | --- |
-        | `domain` | `'FACE'` |
-        
-        Returns
-        -------
-        Integer
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Active Element', named_sockets=_named_sockets, domain='FACE')
-        return _node._out
-
-    def capture_attribute(self, named_sockets=None, **sockets):
-        """ > Node <&Node Capture Attribute>
-        
-        Jump method: False.
-        
-        self: socket 'Geometry'.
-        
-        **Fixed values**
-        
-        | Parameter | Value |
-        | --- | --- |
-        | `domain` | `'FACE'` |
-        
-        Returns
-        -------
-        Node
-        """
-        _named_sockets = {'geometry': self, 'selection': self.get_selection()}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _named_sockets.update({_name: _value for _name, _value in (named_sockets or {}).items() if _value is not None})
-        _node = Node('Capture Attribute', named_sockets=_named_sockets, domain='FACE', **sockets)
-        return _node
+        node = Node('Corners of Face', named_sockets={'Face Index': face_index, 'Weights': weights, 'Sort Index': sort_index})
+        return node._out
 
     def delete(self, mode: Literal['ALL', 'EDGE_FACE', 'ONLY_FACE']='ALL'):
         """ > Node <&Node Delete Geometry>
@@ -381,14 +217,13 @@ class Face(BaseFace):
         
         Returns
         -------
-        Geometry
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'geometry': self, 'selection': self.get_selection()}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Delete Geometry', named_sockets=_named_sockets, mode=mode, domain='FACE')
-        self._jump(_node._out)
-        return self._domain_to_geometry
+        selection = self.get_selection()
+        node = Node('Delete Geometry', named_sockets={'Geometry': self, 'Selection': selection}, mode=mode, domain='FACE')
+        self._jump(node._out)
+        return node._second_out(self)
 
     def duplicate_elements(self, amount: Integer=None):
         """ > Node <&Node Duplicate Elements>
@@ -410,14 +245,140 @@ class Face(BaseFace):
         
         Returns
         -------
-        Geometry
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'geometry': self, 'selection': self.get_selection(), 'amount': amount}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Duplicate Elements', named_sockets=_named_sockets, domain='FACE')
-        self._jump(_node._out)
-        return self._domain_to_geometry
+        selection = self.get_selection()
+        node = Node('Duplicate Elements', named_sockets={'Geometry': self, 'Selection': selection, 'Amount': amount}, domain='FACE')
+        self._jump(node._out)
+        return node._second_out(self)
+
+    @classmethod
+    def area(cls):
+        """ > Node <&Node Face Area>
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Face Area', named_sockets={})
+        return node._out
+
+    @classmethod
+    def group_boundaries(cls, face_group_id: Integer=None):
+        """ > Node <&Node Face Group Boundaries>
+        
+        Parameters
+        ----------
+        face_group_id : Integer, optional
+            socket 'Face Group ID'
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Face Group Boundaries', named_sockets={'Face Group ID': face_group_id})
+        return node._out
+
+    @classmethod
+    def neighbors(cls):
+        """ > Node <&Node Face Neighbors>
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Face Neighbors', named_sockets={})
+        return node._out
+
+    @classmethod
+    def set(cls):
+        """ > Node <&Node Face Set>
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Face Set', named_sockets={})
+        return node._out
+
+    @classmethod
+    def planar(cls, threshold: Float=None):
+        """ > Node <&Node Is Face Planar>
+        
+        Parameters
+        ----------
+        threshold : Float, optional
+            socket 'Threshold'
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Is Face Planar', named_sockets={'Threshold': threshold})
+        return node._out
+
+    @classmethod
+    def offset_corner(cls, corner_index: Integer=None, offset: Integer=None):
+        """ > Node <&Node Offset Corner in Face>
+        
+        Parameters
+        ----------
+        corner_index : Integer, optional
+            socket 'Corner Index'
+        
+        offset : Integer, optional
+            socket 'Offset'
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Offset Corner in Face', named_sockets={'Corner Index': corner_index, 'Offset': offset})
+        return node._out
+
+    def sample_index(self, value: Socket=None, index: Integer=None, clamp: bool=False):
+        """ > Node <&Node Sample Index>
+        
+        Jump method: False.
+        
+        self: socket 'Geometry'.
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `domain` | `'FACE'` |
+        
+        **Derived parameters**
+        
+        - `data_type`: Inferred from socket 'Value' (value).
+        
+        Parameters
+        ----------
+        value : Socket, optional
+            socket 'Value'
+        
+        index : Integer, optional
+            socket 'Index'
+        
+        clamp : bool
+            parameter `clamp`
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        data_type = SocketType.get_data_type_for_node(value, 'GeometryNodeSampleIndex', 'data_type')
+        node = Node('Sample Index', named_sockets={'Geometry': self, 'Value': value, 'Index': index}, data_type=data_type, domain='FACE', clamp=clamp)
+        return node._out
 
     def sample_nearest(self, sample_position: Vector=None):
         """ > Node <&Node Sample Nearest>
@@ -439,15 +400,13 @@ class Face(BaseFace):
         
         Returns
         -------
-        Integer
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'geometry': self, 'sample_position': sample_position}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Sample Nearest', named_sockets=_named_sockets, domain='FACE')
-        return _node._out
+        node = Node('Sample Nearest', named_sockets={'Geometry': self, 'Sample Position': sample_position}, domain='FACE')
+        return node._out
 
-    def scale_elements(self, scale: Float=None, center: Vector=None, scale_mode: Literal['Uniform', 'Single Axis']=None, axis: Vector=None):
+    def scale_elements(self, scale: Float=None, center: Vector=None, scale_mode: Menu=None, axis: Vector=None):
         """ > Node <&Node Scale Elements>
         
         Jump method: True.
@@ -468,22 +427,21 @@ class Face(BaseFace):
         center : Vector, optional
             socket 'Center'
         
-        scale_mode : menu='Uniform', optional
-            ('Uniform', 'Single Axis')
+        scale_mode : Menu, optional
+            socket 'Scale Mode'
         
         axis : Vector, optional
             socket 'Axis'
         
         Returns
         -------
-        Geometry
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'geometry': self, 'selection': self.get_selection(), 'scale': scale, 'center': center, 'scale_mode': scale_mode, 'axis': axis}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Scale Elements', named_sockets=_named_sockets, domain='FACE')
-        self._jump(_node._out)
-        return self._domain_to_geometry
+        selection = self.get_selection()
+        node = Node('Scale Elements', named_sockets={'Geometry': self, 'Selection': selection, 'Scale': scale, 'Center': center, 'Scale Mode': scale_mode, 'Axis': axis}, domain='FACE')
+        self._jump(node._out)
+        return node._second_out(self)
 
     def separate(self):
         """ > Node <&Node Separate Geometry>
@@ -500,12 +458,12 @@ class Face(BaseFace):
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
-        _named_sockets = {'geometry': self, 'selection': self.get_selection()}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Separate Geometry', named_sockets=_named_sockets, domain='FACE')
-        return _node
+        selection = self.get_selection()
+        node = Node('Separate Geometry', named_sockets={'Geometry': self, 'Selection': selection}, domain='FACE')
+        return node._out
 
     def set_normal(self, remove_custom: Boolean=None, custom_normal: Vector=None, edge_sharpness: Boolean=None, face_sharpness: Boolean=None, mode: Literal['SHARPNESS', 'FREE', 'TANGENT_SPACE']='SHARPNESS'):
         """ > Node <&Node Set Mesh Normal>
@@ -539,14 +497,15 @@ class Face(BaseFace):
         
         Returns
         -------
-        Mesh
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'mesh': self, 'remove_custom': remove_custom, 'custom_normal': custom_normal, 'edge_sharpness': edge_sharpness, 'face_sharpness': face_sharpness}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Set Mesh Normal', named_sockets=_named_sockets, mode=mode, domain='FACE')
-        self._jump(_node._out)
-        return self._domain_to_geometry
+        _configuration = ({'sharpness': 'SHARPNESS', 'free': 'FREE', 'tangent_space': 'TANGENT_SPACE', 'tangent space': 'TANGENT_SPACE'}.get(mode.lower(), mode),)
+        _node_sockets = {('SHARPNESS',): {'Mesh': self, 'Remove Custom': remove_custom, 'Edge Sharpness': edge_sharpness, 'Face Sharpness': face_sharpness}, ('FREE',): {'Mesh': self, 'Custom Normal': custom_normal}, ('TANGENT_SPACE',): {'Mesh': self, 'Custom Normal': custom_normal}}[_configuration]
+        _node_args = {('SHARPNESS',): [], ('FREE',): [], ('TANGENT_SPACE',): []}[_configuration]
+        node = Node('Set Mesh Normal', *_node_args, named_sockets=_node_sockets, mode=mode, domain='FACE')
+        self._jump(node._out)
+        return node._second_out(self)
 
     def set_selection(self, selection_type: Literal['BOOLEAN', 'FLOAT']='BOOLEAN'):
         """ > Node <&Node Set Selection>
@@ -568,21 +527,20 @@ class Face(BaseFace):
         
         Returns
         -------
-        Geometry
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'geometry': self, 'selection': self.get_selection()}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Set Selection', named_sockets=_named_sockets, domain='FACE', selection_type=selection_type)
-        self._jump(_node._out)
-        return self._domain_to_geometry
+        selection = self.get_selection()
+        node = Node('Set Selection', named_sockets={'Geometry': self, 'Selection': selection}, domain='FACE', selection_type=selection_type)
+        self._jump(node._out)
+        return node._second_out(self)
 
     def set_shade_smooth(self, shade_smooth: Boolean=None):
         """ > Node <&Node Set Shade Smooth>
         
         Jump method: True.
         
-        self: socket 'Geometry'.
+        self: socket 'Mesh'.
         
         **Fixed values**
         
@@ -597,14 +555,13 @@ class Face(BaseFace):
         
         Returns
         -------
-        Mesh
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'mesh': self, 'selection': self.get_selection(), 'shade_smooth': shade_smooth}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Set Shade Smooth', named_sockets=_named_sockets, domain='FACE')
-        self._jump(_node._out)
-        return self._domain_to_geometry
+        selection = self.get_selection()
+        node = Node('Set Shade Smooth', named_sockets={'Mesh': self, 'Selection': selection, 'Shade Smooth': shade_smooth}, domain='FACE')
+        self._jump(node._out)
+        return node._second_out(self)
 
     def sort_elements(self, group_id: Integer=None, sort_weight: Float=None):
         """ > Node <&Node Sort Elements>
@@ -629,18 +586,20 @@ class Face(BaseFace):
         
         Returns
         -------
-        Geometry
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'geometry': self, 'selection': self.get_selection(), 'group_id': group_id, 'sort_weight': sort_weight}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Sort Elements', named_sockets=_named_sockets, domain='FACE')
-        self._jump(_node._out)
-        return self._domain_to_geometry
+        selection = self.get_selection()
+        node = Node('Sort Elements', named_sockets={'Geometry': self, 'Selection': selection, 'Group ID': group_id, 'Sort Weight': sort_weight}, domain='FACE')
+        self._jump(node._out)
+        return node._second_out(self)
 
-    @classmethod
-    def FromSplit(cls, geometry: Geometry=None, selection: Boolean=None, group_id: Integer=None):
+    def to_instances(self, group_id: Integer=None):
         """ > Node <&Node Split to Instances>
+        
+        Jump method: False.
+        
+        self: socket 'Geometry'.
         
         **Fixed values**
         
@@ -650,21 +609,237 @@ class Face(BaseFace):
         
         Parameters
         ----------
-        geometry : Geometry, optional
-            socket 'Geometry'
-        
-        selection : Boolean, optional
-            socket 'Selection'
-        
         group_id : Integer, optional
             socket 'Group ID'
         
         Returns
         -------
-        Instances
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'geometry': geometry, 'selection': selection, 'group_id': group_id}
+        selection = self.get_selection()
+        node = Node('Split to Instances', named_sockets={'Geometry': self, 'Selection': selection, 'Group ID': group_id}, domain='FACE')
+        return node._out
+
+    def store_named_attribute(self, name: String=None, value: Socket=None):
+        """ > Node <&Node Store Named Attribute>
+        
+        Jump method: True.
+        
+        self: socket 'Geometry'.
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `domain` | `'FACE'` |
+        
+        **Derived parameters**
+        
+        - `data_type`: Inferred from socket 'Value' (value).
+        
+        Parameters
+        ----------
+        name : String, optional
+            socket 'Name'
+        
+        value : Socket, optional
+            socket 'Value'
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        data_type = SocketType.get_data_type_for_node(value, 'GeometryNodeStoreNamedAttribute', 'data_type')
+        selection = self.get_selection()
+        node = Node('Store Named Attribute', named_sockets={'Geometry': self, 'Selection': selection, 'Name': name, 'Value': value}, data_type=data_type, domain='FACE')
+        self._jump(node._out)
+        return node._second_out(self)
+
+    @property
+    def material(self):
+        """Write-only property; setter node: Set Material."""
+        raise NodeError('Property Face.material is write only.')
+
+    @material.setter
+    def material(self, material: Material):
+        """ > Node <&Node Set Material>
+        
+        Jump method: True.
+        
+        self: socket 'Geometry'.
+        
+        Parameters
+        ----------
+        material : Material, optional
+            socket 'Material'
+        
+        Returns
+        -------
+        None
+        """
+        _named_sockets = {'geometry': self, 'selection': self.get_selection(), 'material': material}
         _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Split to Instances', named_sockets=_named_sockets, domain='FACE')
+        _node = Node('Set Material', named_sockets=_named_sockets)
+        self._jump(_node._out)
+
+    @property
+    def material_index(self):
+        """ > Node <&Node Material Index>
+        
+        Jump method: False.
+        
+        Returns
+        -------
+        Integer
+            socket 'OUT'
+        """
+        _named_sockets = {}
+        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
+        _node = Node('Material Index', named_sockets=_named_sockets)
         return _node._out
+
+    @material_index.setter
+    def material_index(self, material_index: Integer):
+        """ > Node <&Node Set Material Index>
+        
+        Jump method: True.
+        
+        self: socket 'Geometry'.
+        
+        Parameters
+        ----------
+        material_index : Integer, optional
+            socket 'Material Index'
+        
+        Returns
+        -------
+        None
+        """
+        _named_sockets = {'geometry': self, 'selection': self.get_selection(), 'material_index': material_index}
+        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
+        _node = Node('Set Material Index', named_sockets=_named_sockets)
+        self._jump(_node._out)
+
+    @property
+    def shade_smooth(self):
+        """ > Node <&Node Is Face Smooth>
+        
+        Jump method: False.
+        
+        Returns
+        -------
+        Boolean
+            socket 'OUT'
+        """
+        _named_sockets = {}
+        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
+        _node = Node('Is Face Smooth', named_sockets=_named_sockets)
+        return _node._out
+
+    @shade_smooth.setter
+    def shade_smooth(self, shade_smooth: Boolean):
+        """ > Node <&Node Set Shade Smooth>
+        
+        Jump method: True.
+        
+        self: socket 'Mesh'.
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `domain` | `'FACE'` |
+        
+        Parameters
+        ----------
+        shade_smooth : Boolean, optional
+            socket 'Shade Smooth'
+        
+        Returns
+        -------
+        None
+        """
+        _named_sockets = {'mesh': self, 'selection': self.get_selection(), 'shade_smooth': shade_smooth}
+        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
+        _node = Node('Set Shade Smooth', named_sockets=_named_sockets, domain='FACE')
+        self._jump(_node._out)
+
+    @property
+    def smooth(self):
+        """ > Node <&Node Is Face Smooth>
+        
+        Jump method: False.
+        
+        Returns
+        -------
+        Boolean
+            socket 'OUT'
+        """
+        _named_sockets = {}
+        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
+        _node = Node('Is Face Smooth', named_sockets=_named_sockets)
+        return _node._out
+
+    @smooth.setter
+    def smooth(self, shade_smooth: Boolean):
+        """ > Node <&Node Set Shade Smooth>
+        
+        Jump method: True.
+        
+        self: socket 'Mesh'.
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `domain` | `'FACE'` |
+        
+        Parameters
+        ----------
+        shade_smooth : Boolean, optional
+            socket 'Shade Smooth'
+        
+        Returns
+        -------
+        None
+        """
+        _named_sockets = {'mesh': self, 'selection': self.get_selection(), 'shade_smooth': shade_smooth}
+        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
+        _node = Node('Set Shade Smooth', named_sockets=_named_sockets, domain='FACE')
+        self._jump(_node._out)
+
+    @property
+    def normal(self):
+        """Write-only property; setter node: Set Mesh Normal."""
+        raise NodeError('Property Face.normal is write only.')
+
+    @normal.setter
+    def normal(self, custom_normal: Vector):
+        """ > Node <&Node Set Mesh Normal>
+        
+        Jump method: True.
+        
+        self: socket 'Mesh'.
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `mode` | `'FREE'` |
+        | `domain` | `'FACE'` |
+        
+        Parameters
+        ----------
+        custom_normal : Vector, optional
+            socket 'Custom Normal'
+        
+        Returns
+        -------
+        None
+        """
+        _named_sockets = {'mesh': self, 'custom_normal': custom_normal}
+        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
+        _node = Node('Set Mesh Normal', named_sockets=_named_sockets, mode='FREE', domain='FACE')
+        self._jump(_node._out)

@@ -1364,7 +1364,7 @@ class NodeInfo:
         # Loop on the args
         # - sockets will be put in named_sockets
         # - params will be placed after
-        # => Node('Node Name', {name: value}, name=value)
+        # => Node('Node Name', named_sockets={name: value}, name=value)
 
         for arg in args:
             if arg.get('dynamic_items'):
@@ -1397,7 +1397,7 @@ class NodeInfo:
                 named_sockets = None
 
         if named_sockets is not None:
-            params.insert(0, named_sockets)
+            params.insert(0, f"named_sockets={named_sockets}")
 
         s = f"('{self.bnode.name}', " + ", ".join(params)
         if any(arg.get('arg_name') == 'named_sockets' for arg in args):
@@ -2895,7 +2895,7 @@ class NodeInfo:
                 get_code += _2 + '"""' + f" Property get node <Node {set_node.bnode.name}>\n"
                 get_code += _2 + '"""\n'
                 get_code += f"{_2}return Node('{getter_node_name}'"
-                get_code += f", {getter_sockets}"
+                get_code += f", named_sockets={getter_sockets}"
                 for k, v in getter_params.items():
                     get_code += f", {k}={v}"
                 get_code += ")."

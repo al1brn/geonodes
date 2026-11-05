@@ -47,6 +47,9 @@ if TYPE_CHECKING:
     class Geometry:
         ...
 
+    class Texture:
+        ...
+
     class Collection:
         ...
 
@@ -132,12 +135,11 @@ class Vertex(BaseVertex, Point):
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
-        _named_sockets = {'vertex_index': vertex_index, 'weights': weights, 'sort_index': sort_index}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Corners of Vertex', named_sockets=_named_sockets)
-        return _node
+        node = Node('Corners of Vertex', named_sockets={'Vertex Index': vertex_index, 'Weights': weights, 'Sort Index': sort_index})
+        return node._out
 
     @classmethod
     def edges(cls, vertex_index: Integer=None, weights: Float=None, sort_index: Integer=None):
@@ -156,12 +158,11 @@ class Vertex(BaseVertex, Point):
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
-        _named_sockets = {'vertex_index': vertex_index, 'weights': weights, 'sort_index': sort_index}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Edges of Vertex', named_sockets=_named_sockets)
-        return _node
+        node = Node('Edges of Vertex', named_sockets={'Vertex Index': vertex_index, 'Weights': weights, 'Sort Index': sort_index})
+        return node._out
 
     @classmethod
     def neighbors(cls):
@@ -169,37 +170,8 @@ class Vertex(BaseVertex, Point):
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
-        _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Vertex Neighbors', named_sockets=_named_sockets)
-        return _node
-
-    @utils.classproperty
-    def vertex_count(cls):
-        """ > Node <&Node Vertex Neighbors>
-        
-        Returns
-        -------
-        Integer
-            socket 'Vertex Count'
-        """
-        _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Vertex Neighbors', named_sockets=_named_sockets)
-        return _node['Vertex Count']
-
-    @utils.classproperty
-    def face_count(cls):
-        """ > Node <&Node Vertex Neighbors>
-        
-        Returns
-        -------
-        Integer
-            socket 'Face Count'
-        """
-        _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Vertex Neighbors', named_sockets=_named_sockets)
-        return _node['Face Count']
+        node = Node('Vertex Neighbors', named_sockets={})
+        return node._out

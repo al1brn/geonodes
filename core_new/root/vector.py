@@ -95,16 +95,51 @@ class Vector(Socket):
 
     SOCKET_TYPE = 'VECTOR'
 
-    @classmethod
-    def FromRotation(cls, rotation=None):
-        """ > Constructor node <&Rotation to Euler>
+    # ====================================================================================================
+    # short cuts
+    # ====================================================================================================
 
-        Returns
+    @property
+    def xyz(self):
+        """ Shortcut for separate_xyz
+
+        returns
         -------
-        Vector
+        - python triplet (x, y, z)
+
+        @node Separate XYZ
         """
-        from .rotation import Rotation
-        return Rotation(rotation).to_euler()
+        node = self.separate_xyz()
+        return (node.x, node.y, node.z)
+
+    @property
+    def x(self):
+        """ Get the x component
+
+        @node Separate XYZ
+        @output X
+        """
+        return self.separate_xyz().x
+
+    @property
+    def y(self):
+        """ Get the y component
+
+        @node Separate XYZ
+        @output Y
+        """
+        return self.separate_xyz().x
+
+    @property
+    def z(self):
+        """ Get the z component
+
+        @node Separate XYZ
+        @output 2
+        """
+        return self.separate_xyz().x
+
+
 
     @classmethod
     def FromList(cls, value):
@@ -139,7 +174,7 @@ class Vector(Socket):
         """ > Method <&Node Mix>
 
         > [NOTE]
-        > Call mix_uniform or mix_non_uniform depending on the factor type
+        > Selects uniform or component-wise mixing from the factor type
 
         Information
         -----------
@@ -176,7 +211,7 @@ class Vector(Socket):
         """ > Method <&Node Mix>
 
         > [NOTE]
-        > Call mix_uniform or mix_non_uniform depending on the factor type
+        > Selects uniform or component-wise mixing from the factor type
 
         Information
         -----------
@@ -277,243 +312,6 @@ class Vector(Socket):
 
     def __imul__(self, other):
         return self._jump(self * other)
-
-    # ====================================================================================================
-    # Shader
-
-
-    def displacement_out(self, target='ALL'):
-        """ > Plug the value to 'Displacement' socket of <&ShaderNode Material Output> node
-
-        > ShaderNodes only
-        """
-        self._tree.set_displacement(self, target=target)
-
-
-    @classmethod
-    def Tangent(cls, axis='Z', direction_type='RADIAL', uv_map=''):
-        """ > Node <&ShaderNode Tangent>
-
-        > ShaderNodes only
-
-        Parameters
-        ----------
-        axis : str
-            Node.axis in ('X', 'Y', 'Z')
-
-        direction_type : str
-            Node.direction_type in ('RADIAL', 'UV_MAP')
-
-        uv_map : str
-            Node.uv_map
-
-
-        Returns
-        -------
-        Vector
-        """
-        node = Node('Tangent', axis=axis, direction_type=direction_type, uv_map=uv_map)
-        return node._out
-
-    @classmethod
-    def UVMap(cls, uv_map='', from_instancer=False):
-        """ > Node <&ShaderNode UV Map>
-
-        > ShaderNodes only
-
-        Parameters
-        ----------
-        uv_map : str
-            Node.uv_map
-
-        from_instancer : bool
-            Node.from_instancer
-
-
-        Returns
-        -------
-        Vector
-        """
-        node = Node('UV Map', from_instancer=from_instancer, uv_map=uv_map)
-        return node._out
-
-    # ----- Vector
-
-    def bump(self, strength=None, distance=None, height=None, invert=False):
-        """ > Node <&ShaderNode Bump>
-
-        > ShaderNodes only
-
-        !!! note
-            Self Vector is plugged to 'Normal' socket
-
-        Parameters
-        ----------
-        strength : Float
-            socket 'Strength' (Strength)
-
-        distance : Float
-            socket 'Distance' (Distance)
-
-        height : Float
-            socket 'Height' (Height)
-
-        invert : bool
-            Node.invert
-
-
-        Returns
-        -------
-        Vector
-        """
-        node = Node('Bump', {'Strength': strength, 'Distance': distance, 'Height': height, 'Normal': self}, invert=invert)
-        return node._out
-
-    def displacement(self, height=None, midlevel=None, scale=None, space='OBJECT'):
-        """ > Node <&ShaderNode Displacement>
-
-        > ShaderNodes only
-
-        !!! note
-            Self Vector is plugged to 'Normal' socket
-
-        Parameters
-        ----------
-        height : Float
-            socket 'Height' (Height)
-
-        midlevel : Float
-            socket 'Midlevel' (Midlevel)
-
-        scale : Float
-            socket 'Scale' (Scale)
-
-        space : str
-            Node.space in ('OBJECT', 'WORLD')
-
-
-        Returns
-        -------
-        Vector
-        """
-        node = Node('Displacement', {'Height': height, 'Midlevel': midlevel, 'Scale': scale, 'Normal': self}, space=space)
-        return node._out
-
-    def mapping(self, location=None, rotation=None, scale=None, vector_type='POINT'):
-        """ > Node <&ShaderNode Mapping>
-
-        > ShaderNodes only
-
-        Parameters
-        ----------
-        location : Vector
-            socket 'Location' (Location)
-
-        rotation : Vector
-            socket 'Rotation' (Rotation)
-
-        scale : Vector
-            socket 'Scale' (Scale)
-
-        vector_type : str
-            Node.vector_type in ('POINT', 'TEXTURE', 'VECTOR', 'NORMAL')
-
-
-        Returns
-        -------
-        Vector
-        """
-        node = Node('Mapping', {'Vector': self, 'Location': location, 'Rotation': rotation, 'Scale': scale}, vector_type=vector_type)
-        return node._out
-
-    def normal(self):
-        """ > Node <&ShaderNode Normal>
-
-        > ShaderNodes only
-
-        Returns
-        -------
-        Vector
-        """
-        node = Node('Normal', {'Normal': self})
-        return node._out
-
-    @classmethod
-    def NormalMap(cls, strength=None, color=None, space='TANGENT', uv_map=''):
-        """ > Constructor node <&ShaderNode Normal Map>
-
-        > ShaderNodes only
-
-        Parameters
-        ----------
-        strength : Float
-            socket 'Strength' (Strength)
-
-        color : Color
-            socket 'Color' (Color)
-
-        space : str
-            Node.space in ('TANGENT', 'OBJECT', 'WORLD', 'BLENDER_OBJECT', 'BLENDER_WORLD')
-
-        uv_map : str
-            Node.uv_map
-
-
-        Returns
-        -------
-        Vector
-        """
-        node = Node('Normal Map', {'Strength': strength, 'Color': color}, space=space, uv_map=uv_map)
-        return node._out
-
-    def vector_displacement(self, midlevel=None, scale=None, space='TANGENT'):
-        """ > Node <&ShaderNode Vector Displacement>
-
-        > ShaderNodes only
-
-        Parameters
-        ----------
-        midlevel : Float
-            socket 'Midlevel' (Midlevel)
-
-        scale : Float
-            socket 'Scale' (Scale)
-
-        space : str
-            Node.space in ('TANGENT', 'OBJECT', 'WORLD')
-
-
-        Returns
-        -------
-        Vector
-        """
-        node = Node('Vector Displacement', {'Vector': self, 'Midlevel': midlevel, 'Scale': scale}, space=space)
-        return node._out
-
-    def transform(self, convert_from='WORLD', convert_to='OBJECT', vector_type='NORMAL'):
-        """ > Node <&ShaderNode Vector Transform>
-
-        > ShaderNodes only
-
-        Parameters
-        ----------
-        convert_from : str
-            Node.convert_from in ('WORLD', 'OBJECT', 'CAMERA')
-
-        convert_to : str
-            Node.convert_to in ('WORLD', 'OBJECT', 'CAMERA')
-
-        vector_type : str
-            Node.vector_type in ('POINT', 'VECTOR', 'NORMAL')
-
-
-        Returns
-        -------
-        Vector
-        """
-        node = Node('Vector Transform', {'Vector': self}, convert_from=convert_from, convert_to=convert_to, vector_type=vector_type)
-        return node._out
-
 
     # ====================================================================================================
     # Class test    

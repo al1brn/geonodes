@@ -103,7 +103,7 @@ class NodeCache:
         color = self.node._color
 
         # ----- No : we create it and put is in cache
-        node = Node(name, sockets, **parameters)
+        node = Node(name, named_sockets=sockets, **parameters)
         self._cached_nodes[cache_name] = node
 
         # ----- Propagate label and color
@@ -570,12 +570,12 @@ class Socket(NodeCache, metaclass=EnvironmentType):
 
             if has_sockets(a):
                 if Tree.is_geonodes():
-                    node = Node('Combine Color', {0: a[0], 1: a[1], 2:a[2]})
+                    node = Node('Combine Color', named_sockets={0: a[0], 1: a[1], 2:a[2]})
                     if len(a) == 4:
                         node.alpha = a[3]
                     return node._out._ul(user_label)
                 else:
-                    return Node('Combine Color', {0: a[0], 1: a[1], 2:a[2]})._out._ul(user_label)
+                    return Node('Combine Color', named_sockets={0: a[0], 1: a[1], 2:a[2]})._out._ul(user_label)
 
             else:
                 def_val = SocketType.from_type('COLOR').get_default_from_value(a)
@@ -941,11 +941,11 @@ class Socket(NodeCache, metaclass=EnvironmentType):
     def is_grid(self):
         """ bool property
         
-        Returns True if socket is a grid (inferred_structure_type == 'GRID').
+        Returns True if the socket has the VOLUME_GRID display shape.
         """
         if self._is_empty():
             return False
-        return self._bsocket.inferred_structure_type == 'GRID'
+        return self._bsocket.display_shape == 'VOLUME_GRID'
     
     # ====================================================================================================
     # List
@@ -1131,8 +1131,6 @@ class Socket(NodeCache, metaclass=EnvironmentType):
 
             self._jump(cl.to_list(outer_length * inner_length))
             return self
-
-
     
     def reshape_list(self, shape):
         """Reshape a flat list into nested lists.
@@ -1277,6 +1275,39 @@ class Socket(NodeCache, metaclass=EnvironmentType):
             The target node.
         """
         return node._list_to_inputs(*names, socket_list=self)
+
+    # ====================================================================================================
+    # Bake / Viewer
+    # ====================================================================================================
+    
+    def bake(self, *sockets, **kwargs):
+        """ Create the bake node
+
+        @node Bake
+        """
+
+        named_sockets = {}
+        for i, socket in enumerate((self, *sockets)):
+            key = "Value" if i == 0 else f"Value.{i:03d}"
+            named_sockets[key] = socket
+
+        node = Node("Bake", named_sockets=named_sockets, **kwargs)
+        return self._jump(node._out)
+
+    def viewer(self, *sockets, **kwargs):
+        """ Create a viewer
+
+        @node Viewer
+        """
+
+        named_sockets = {}
+        for i, socket in enumerate((self, *sockets)):
+            key = "Value" if i == 0 else f"Value.{i:03d}"
+            named_sockets[key] = socket
+
+        node = Node("Viewer", named_sockets=named_sockets, **kwargs)
+        return self
+    
 
     # ====================================================================================================
     # Owning node
@@ -1774,52 +1805,6 @@ class Socket(NodeCache, metaclass=EnvironmentType):
     # ====================================================================================================
 
     # ----------------------------------------------------------------------------------------------------
-    # Constructor version
-    # ----------------------------------------------------------------------------------------------------
-
-    @classmethod
-    def IndexSwitch(cls, *values, index = None, default_index: int = 0):
-        """ > Node <&Node Index Switch>
-
-        ``` python
-        with GeoNodes("IndexSwitch demo"):
-
-            # Create some geometries
-            geo    = Geometry()
-            cube   = Mesh.Cube()
-            sphere = Mesh.IcoSphere()
-            cone   = Mesh.Cone()
-
-            # Pick in this list
-            pick_geo = Geometry.IndexSwitch(geo, cube, sphere, cone, index=tree.new_input("Geometry index", default_value=2))
-
-            # Plug the result to the output
-            pick_geo.out()
-        ```
-
-        Parameters
-        ----------
-        *values : Any
-            List of Sockets to select into
-
-        index : Integer, optional
-            socket 'Index' (Index) default=None.
-
-        default_index : int, optional
-            default idex default=0.
-
-
-        Returns
-        -------
-        Socket
-        """
-        node = Node('Index Switch', 
-                        {str(i): value for i, value in enumerate(values)}, 
-                        data_type=cls.SOCKET_TYPE, 
-                        Index=index)
-        return cls(node._out)
-    
-    # ----------------------------------------------------------------------------------------------------
     # Method version
     # ----------------------------------------------------------------------------------------------------
 
@@ -1903,7 +1888,7 @@ class Socket(NodeCache, metaclass=EnvironmentType):
             Socket wrapped in the calling class (for example, Mesh.Switch returns Mesh).
         """
         input_type = SocketType.from_type(cls.SOCKET_TYPE).items_type
-        node = Node('Switch', {'Switch': condition, 'False': false, 'True': true}, input_type=input_type)
+        node = Node('Switch', named_sockets={'Switch': condition, 'False': false, 'True': true}, input_type=input_type)
         return cls(node._out)
 
     # ----------------------------------------------------------------------------------------------------

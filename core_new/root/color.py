@@ -242,7 +242,7 @@ class Color(Socket):
 
 
         """
-        return Node('Ambient Occlusion', {'Color': self, 'Distance': distance, 'Normal': normal}, inside=inside, only_local=only_local, samples=samples)._out
+        return Node('Ambient Occlusion', named_sockets={'Color': self, 'Distance': distance, 'Normal': normal}, inside=inside, only_local=only_local, samples=samples)._out
 
     # ----- Converter
 
@@ -265,7 +265,7 @@ class Color(Socket):
             'Color' socket
 
         """
-        return Node('Blackbody', {'Temperature': temperature})._out
+        return Node('Blackbody', named_sockets={'Temperature': temperature})._out
 
     @classmethod
     def FromShader(cls, shader):
@@ -286,7 +286,7 @@ class Color(Socket):
             'Color' socket, [alpha_]
 
         """
-        return Node('Shader to RGB', {'Shader': shader})._out
+        return Node('Shader to RGB', named_sockets={'Shader': shader})._out
 
     @classmethod
     def Wavelength(cls, wavelength=None):
@@ -307,7 +307,7 @@ class Color(Socket):
             'Color' socket
 
         """
-        return Node('Wavelength', {'Wavelength': wavelength})._out
+        return Node('Wavelength', named_sockets={'Wavelength': wavelength})._out
 
     @property
     def to_bw(self):
@@ -322,7 +322,7 @@ class Color(Socket):
             'Val' socket
 
         """
-        return Node('RGB to BW', {'Color': self})._out
+        return Node('RGB to BW', named_sockets={'Color': self})._out
 
     # ----- Color
 
@@ -347,7 +347,7 @@ class Color(Socket):
             'Color' socket
 
         """
-        return Node('Brightness/Contrast', {'Color': self, 'Bright': bright, 'Contrast': contrast})._out
+        return Node('Brightness/Contrast', named_sockets={'Color': self, 'Bright': bright, 'Contrast': contrast})._out
 
     def gamma(self, gamma=None):
         """ Gamma.
@@ -367,7 +367,7 @@ class Color(Socket):
             'Gamma' socket
 
         """
-        node = Node('Gamma', {'Color': self, 'Gamma': gamma})
+        node = Node('Gamma', named_sockets={'Color': self, 'Gamma': gamma})
         return node._out
 
     def hue_saturation_value(self, hue=None, saturation=None, value=None, fac=None):
@@ -397,7 +397,7 @@ class Color(Socket):
             'Color' socket
 
         """
-        node = Node('Hue/Saturation/Value', {'Hue': hue, 'Saturation': saturation, 'Value': value, 'Fac': fac, 'Color': self})
+        node = Node('Hue/Saturation/Value', named_sockets={'Hue': hue, 'Saturation': saturation, 'Value': value, 'Fac': fac, 'Color': self})
         return node._out
 
     def invert(self, fac=None):
@@ -418,7 +418,7 @@ class Color(Socket):
             'Color' socket
 
         """
-        node = Node('Invert Color', {'Fac': fac, 'Color': self})
+        node = Node('Invert Color', named_sockets={'Fac': fac, 'Color': self})
         return node._out
 
     def normal_map(self, strength=None, space='TANGENT', uv_map=''):
@@ -442,7 +442,7 @@ class Color(Socket):
             'Color' socket
 
         """
-        node = Node('Normal Map', {'Strength': strength, 'Color': self}, space=space, uv_map=uv_map)
+        node = Node('Normal Map', named_sockets={'Strength': strength, 'Color': self}, space=space, uv_map=uv_map)
         return node._out
 
     def vector_displacement(self, midlevel=None, scale=None, space='TANGENT'):
@@ -469,7 +469,7 @@ class Color(Socket):
             'Displacement' socket
 
         """
-        node = Node('Vector Displacement', {'Vector': self, 'Midlevel': midlevel, 'Scale': scale}, space=space)
+        node = Node('Vector Displacement', named_sockets={'Vector': self, 'Midlevel': midlevel, 'Scale': scale}, space=space)
         return node._out
 
     def curves(self, fac=None, curves=None):

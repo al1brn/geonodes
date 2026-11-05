@@ -1,5 +1,7 @@
 # Environnements de nœuds
 
+Règles de traitement des nœuds : [GENERATION_RULES.md](../generation2/GENERATION_RULES.md).
+
 ```text
 core_new/
     common/                 utilitaires et mécanismes partagés
@@ -39,6 +41,10 @@ root.Float
 Chaque socket partagé dispose d'une classe manuscrite dans chacun des deux
 environnements, même lorsqu'elle est vide. Elle peut définir un `__init__`
 spécifique et appeler `super().__init__()`. Ces fichiers ne sont pas régénérés.
+Les extensions Vector propres aux shaders (Tangent, UVMap, NormalMap, bump,
+displacement, vector_displacement et displacement_out) sont dans
+`shadernodes/sockets/vector.py`. FromRotation, mapping, normal et transform
+sont fournis par la génération dans les environnements qui les acceptent.
 Les géométries Mesh, Curve, etc. possèdent leurs extensions manuscrites dans
 `geonodes/sockets/geometries.py`. Les classes générées correspondantes héritent
 aussi de la classe Geometry générée pour conserver ses méthodes.
@@ -75,10 +81,11 @@ indexés par type d'arbre. Les doublons sont vérifiés dans chaque environnemen
 Les modules de toutes les cibles sélectionnées sont validés avant l'écriture.
 Les fichiers manuscrits de `root`, `sockets` et `domains` restent préservés.
 
-`gen_domain_implementations()` ajoute les variantes des nœuds qui ont `domain`
-sans paramètre de type. Chaque valeur autorisée est fixée et le code par défaut
-est émis directement dans la classe du domaine, avec documentation et référence
-croisée. Les zones et Viewer restent exclus.
+`gen_nodes()` utilise la description de `get_node_implementation()`. Avec
+`domain_loop`, il génère dans la classe indiquée avec domaine libre, puis dans
+chaque classe de domaine avec sa valeur fixée. Avec `data_type_loop`, il génère
+dans chaque classe correspondant aux valeurs du paramètre de type. Les anciens
+générateurs par défaut et par domaine ont été supprimés.
 
 Pour les nœuds sans domaine dont le type modifie entrées et sorties, une
 première entrée géométrique produit une méthode d’instance avec type déduit

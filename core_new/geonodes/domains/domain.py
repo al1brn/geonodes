@@ -207,7 +207,7 @@ class Domain(Geom, NodeCache, metaclass=EnvironmentType):
 
         return attr
     
-    def set(self, name, value):
+    def store(self, name, value):
         """Store a named attribute on this domain.
 
         > Node <&Node Store Named Attribute>
@@ -217,8 +217,8 @@ class Domain(Geom, NodeCache, metaclass=EnvironmentType):
 
         ``` python
         mesh = Mesh()
-        attr = mesh.faces.set("Material Weight", 1.0)
-        mesh.points.set("Direction", (0, 0, 1))
+        attr = mesh.faces.store("Material Weight", 1.0)
+        mesh.points.store("Direction", (0, 0, 1))
         ```
 
         Parameters
@@ -354,7 +354,7 @@ class Domain(Geom, NodeCache, metaclass=EnvironmentType):
             else:
                 attrs = {'attribute': attribute, **attributes}
 
-        node = Node('Capture Attribute', {'Geometry': self._geo, **attrs})
+        node = Node('Capture Attribute', named_sockets={'Geometry': self._geo, **attrs})
 
         #node._set_items('capture_items', **attrs)
         self._jump(node._out)

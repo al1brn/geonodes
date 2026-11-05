@@ -47,6 +47,9 @@ if TYPE_CHECKING:
     class Geometry:
         ...
 
+    class Texture:
+        ...
+
     class Collection:
         ...
 
@@ -134,13 +137,11 @@ class Boolean(BaseBoolean):
         
         Returns
         -------
-        Boolean
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'boolean': self, 'boolean_1': boolean_1}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Boolean Math', named_sockets=_named_sockets, operation='AND')
-        return _node._out
+        node = Node('Boolean Math', named_sockets={'Boolean': self, 'Boolean_1': boolean_1}, operation='AND')
+        return node._out
 
     def bor(self, boolean_1: Boolean=None):
         """ > Node <&Node Boolean Math>
@@ -162,13 +163,11 @@ class Boolean(BaseBoolean):
         
         Returns
         -------
-        Boolean
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'boolean': self, 'boolean_1': boolean_1}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Boolean Math', named_sockets=_named_sockets, operation='OR')
-        return _node._out
+        node = Node('Boolean Math', named_sockets={'Boolean': self, 'Boolean_1': boolean_1}, operation='OR')
+        return node._out
 
     def bnot(self):
         """ > Node <&Node Boolean Math>
@@ -185,13 +184,11 @@ class Boolean(BaseBoolean):
         
         Returns
         -------
-        Boolean
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'boolean': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Boolean Math', named_sockets=_named_sockets, operation='NOT')
-        return _node._out
+        node = Node('Boolean Math', named_sockets={'Boolean': self}, operation='NOT')
+        return node._out
 
     def not_and(self, boolean_1: Boolean=None):
         """ > Node <&Node Boolean Math>
@@ -213,13 +210,11 @@ class Boolean(BaseBoolean):
         
         Returns
         -------
-        Boolean
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'boolean': self, 'boolean_1': boolean_1}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Boolean Math', named_sockets=_named_sockets, operation='NAND')
-        return _node._out
+        node = Node('Boolean Math', named_sockets={'Boolean': self, 'Boolean_1': boolean_1}, operation='NAND')
+        return node._out
 
     def nor(self, boolean_1: Boolean=None):
         """ > Node <&Node Boolean Math>
@@ -241,13 +236,11 @@ class Boolean(BaseBoolean):
         
         Returns
         -------
-        Boolean
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'boolean': self, 'boolean_1': boolean_1}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Boolean Math', named_sockets=_named_sockets, operation='NOR')
-        return _node._out
+        node = Node('Boolean Math', named_sockets={'Boolean': self, 'Boolean_1': boolean_1}, operation='NOR')
+        return node._out
 
     def xnor(self, boolean_1: Boolean=None):
         """ > Node <&Node Boolean Math>
@@ -269,13 +262,11 @@ class Boolean(BaseBoolean):
         
         Returns
         -------
-        Boolean
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'boolean': self, 'boolean_1': boolean_1}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Boolean Math', named_sockets=_named_sockets, operation='XNOR')
-        return _node._out
+        node = Node('Boolean Math', named_sockets={'Boolean': self, 'Boolean_1': boolean_1}, operation='XNOR')
+        return node._out
 
     def xor(self, boolean_1: Boolean=None):
         """ > Node <&Node Boolean Math>
@@ -297,13 +288,11 @@ class Boolean(BaseBoolean):
         
         Returns
         -------
-        Boolean
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'boolean': self, 'boolean_1': boolean_1}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Boolean Math', named_sockets=_named_sockets, operation='XOR')
-        return _node._out
+        node = Node('Boolean Math', named_sockets={'Boolean': self, 'Boolean_1': boolean_1}, operation='XOR')
+        return node._out
 
     def imply(self, boolean_1: Boolean=None):
         """ > Node <&Node Boolean Math>
@@ -325,13 +314,11 @@ class Boolean(BaseBoolean):
         
         Returns
         -------
-        Boolean
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'boolean': self, 'boolean_1': boolean_1}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Boolean Math', named_sockets=_named_sockets, operation='IMPLY')
-        return _node._out
+        node = Node('Boolean Math', named_sockets={'Boolean': self, 'Boolean_1': boolean_1}, operation='IMPLY')
+        return node._out
 
     def nimply(self, boolean_1: Boolean=None):
         """ > Node <&Node Boolean Math>
@@ -353,13 +340,11 @@ class Boolean(BaseBoolean):
         
         Returns
         -------
-        Boolean
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'boolean': self, 'boolean_1': boolean_1}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Boolean Math', named_sockets=_named_sockets, operation='NIMPLY')
-        return _node._out
+        node = Node('Boolean Math', named_sockets={'Boolean': self, 'Boolean_1': boolean_1}, operation='NIMPLY')
+        return node._out
 
     def __and__(self, other):
         return self.band(other)
@@ -424,7 +409,7 @@ class Boolean(BaseBoolean):
     def __bool__(self):
         raise NodeError("Boolean Socket is not a python bool. Use 'switch' method or operators & | ")
 
-    def math(self, boolean_1: Boolean=None, operation: Literal['AND', 'OR', 'NOT', 'NAND', 'NOR', 'XNOR', 'XOR', 'IMPLY', 'NIMPLY']='AND'):
+    def boolean_math(self, boolean_1: Boolean=None, operation: Literal['AND', 'OR', 'NOT', 'NAND', 'NOR', 'XNOR', 'XOR', 'IMPLY', 'NIMPLY']='AND'):
         """ > Node <&Node Boolean Math>
         
         Jump method: False.
@@ -441,18 +426,19 @@ class Boolean(BaseBoolean):
         
         Returns
         -------
-        Boolean
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'boolean': self, 'boolean_1': boolean_1}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Boolean Math', named_sockets=_named_sockets, operation=operation)
-        return _node._out
+        _configuration = ({'and': 'AND', 'or': 'OR', 'not': 'NOT', 'nand': 'NAND', 'nor': 'NOR', 'xnor': 'XNOR', 'xor': 'XOR', 'imply': 'IMPLY', 'nimply': 'NIMPLY', 'not and': 'NAND', 'equal': 'XNOR', 'not equal': 'XOR', 'subtract': 'NIMPLY'}.get(operation.lower(), operation),)
+        _node_sockets = {('AND',): {'Boolean': self, 'Boolean_1': boolean_1}, ('OR',): {'Boolean': self, 'Boolean_1': boolean_1}, ('NOT',): {'Boolean': self}, ('NAND',): {'Boolean': self, 'Boolean_1': boolean_1}, ('NOR',): {'Boolean': self, 'Boolean_1': boolean_1}, ('XNOR',): {'Boolean': self, 'Boolean_1': boolean_1}, ('XOR',): {'Boolean': self, 'Boolean_1': boolean_1}, ('IMPLY',): {'Boolean': self, 'Boolean_1': boolean_1}, ('NIMPLY',): {'Boolean': self, 'Boolean_1': boolean_1}}[_configuration]
+        _node_args = {('AND',): [], ('OR',): [], ('NOT',): [], ('NAND',): [], ('NOR',): [], ('XNOR',): [], ('XOR',): [], ('IMPLY',): [], ('NIMPLY',): []}[_configuration]
+        node = Node('Boolean Math', *_node_args, named_sockets=_node_sockets, operation=operation)
+        return node._out
 
     def clip_grid(self, min_x: Integer=None, min_y: Integer=None, min_z: Integer=None, max_x: Integer=None, max_y: Integer=None, max_z: Integer=None):
         """ > Node <&Node Clip Grid>
         
-        Jump method: False.
+        Jump method: True.
         
         self: socket 'Grid'.
         
@@ -484,13 +470,12 @@ class Boolean(BaseBoolean):
         
         Returns
         -------
-        Boolean
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'grid': self, 'min_x': min_x, 'min_y': min_y, 'min_z': min_z, 'max_x': max_x, 'max_y': max_y, 'max_z': max_z}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Clip Grid', named_sockets=_named_sockets, data_type='BOOLEAN')
-        return _node._out
+        node = Node('Clip Grid', named_sockets={'Grid': self, 'Min X': min_x, 'Min Y': min_y, 'Min Z': min_z, 'Max X': max_x, 'Max Y': max_y, 'Max Z': max_z}, data_type='BOOLEAN')
+        self._jump(node._out)
+        return node._second_out(self)
 
     def cluster_by_connected(self, position: Vector=None, distance: Float=None):
         """ > Node <&Node Cluster by Connected>
@@ -509,13 +494,11 @@ class Boolean(BaseBoolean):
         
         Returns
         -------
-        Integer
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'selection': self, 'position': position, 'distance': distance}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Cluster by Connected', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('Cluster by Connected', named_sockets={'Selection': self, 'Position': position, 'Distance': distance})
+        return node._out
 
     def cluster_by_distance(self, group_id: Integer=None, position: Vector=None, distance: Float=None):
         """ > Node <&Node Cluster by Distance>
@@ -537,16 +520,14 @@ class Boolean(BaseBoolean):
         
         Returns
         -------
-        Integer
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'selection': self, 'group_id': group_id, 'position': position, 'distance': distance}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Cluster by Distance', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('Cluster by Distance', named_sockets={'Selection': self, 'Group ID': group_id, 'Position': position, 'Distance': distance})
+        return node._out
 
     @classmethod
-    def CombineList(cls, named_sockets=None, _0: Boolean=None, **sockets):
+    def combine_list(cls, *values: Socket):
         """ > Node <&Node Combine List>
         
         **Fixed values**
@@ -555,26 +536,56 @@ class Boolean(BaseBoolean):
         | --- | --- |
         | `data_type` | `'BOOLEAN'` |
         
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Combine List', *values, named_sockets={}, data_type='BOOLEAN')
+        return node._out
+
+    @classmethod
+    def CubeGridTopology(cls, bounds_min: Vector=None, bounds_max: Vector=None, resolution_x: Integer=None, resolution_y: Integer=None, resolution_z: Integer=None, min_x: Integer=None, min_y: Integer=None, min_z: Integer=None):
+        """ > Node <&Node Cube Grid Topology>
+        
         Parameters
         ----------
-        _0 : Boolean, optional
-            socket '0'
+        bounds_min : Vector, optional
+            socket 'Bounds Min'
+        
+        bounds_max : Vector, optional
+            socket 'Bounds Max'
+        
+        resolution_x : Integer, optional
+            socket 'Resolution X'
+        
+        resolution_y : Integer, optional
+            socket 'Resolution Y'
+        
+        resolution_z : Integer, optional
+            socket 'Resolution Z'
+        
+        min_x : Integer, optional
+            socket 'Min X'
+        
+        min_y : Integer, optional
+            socket 'Min Y'
+        
+        min_z : Integer, optional
+            socket 'Min Z'
         
         Returns
         -------
-        Boolean
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'_0': _0}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _named_sockets.update({_name: _value for _name, _value in (named_sockets or {}).items() if _value is not None})
-        _node = Node('Combine List', named_sockets=_named_sockets, data_type='BOOLEAN', **sockets)
-        return _node._out
+        node = Node('Cube Grid Topology', named_sockets={'Bounds Min': bounds_min, 'Bounds Max': bounds_max, 'Resolution X': resolution_x, 'Resolution Y': resolution_y, 'Resolution Z': resolution_z, 'Min X': min_x, 'Min Y': min_y, 'Min Z': min_z})
+        return node._out
 
-    def deactivate_voxels(self, selection: Boolean=None):
+    def deactivate_voxels(self):
         """ > Node <&Node Deactivate Voxels>
         
-        Jump method: False.
+        Jump method: True.
         
         self: socket 'Grid'.
         
@@ -584,53 +595,175 @@ class Boolean(BaseBoolean):
         | --- | --- |
         | `data_type` | `'BOOLEAN'` |
         
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        selection = self.get_selection()
+        node = Node('Deactivate Voxels', named_sockets={'Grid': self, 'Selection': selection}, data_type='BOOLEAN')
+        self._jump(node._out)
+        return node._second_out(self)
+
+    def enable_output(self, value: Socket=None):
+        """ > Node <&Node Enable Output>
+        
+        Jump method: False.
+        
+        self: socket 'Enable'.
+        
+        **Derived parameters**
+        
+        - `data_type`: Inferred from socket 'Value' (value).
+        
         Parameters
         ----------
+        value : Socket, optional
+            socket 'Value'
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        data_type = SocketType.get_data_type_for_node(value, 'NodeEnableOutput', 'data_type')
+        node = Node('Enable Output', named_sockets={'Enable': self, 'Value': value}, data_type=data_type)
+        return node._out
+
+    @classmethod
+    def evaluate_at_index(cls, value: Boolean=None, index: Integer=None, domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']='POINT'):
+        """ > Node <&Node Evaluate at Index>
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `data_type` | `'BOOLEAN'` |
+        
+        Parameters
+        ----------
+        value : Boolean, optional
+            socket 'Value'
+        
+        index : Integer, optional
+            socket 'Index'
+        
+        domain : Literal['Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer']
+            parameter `domain`
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Evaluate at Index', named_sockets={'Value': value, 'Index': index}, domain=domain, data_type='BOOLEAN')
+        return node._out
+
+    @classmethod
+    def evaluate_on_domain(cls, value: Boolean=None, domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']='POINT'):
+        """ > Node <&Node Evaluate on Domain>
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `data_type` | `'BOOLEAN'` |
+        
+        Parameters
+        ----------
+        value : Boolean, optional
+            socket 'Value'
+        
+        domain : Literal['Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer']
+            parameter `domain`
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Evaluate on Domain', named_sockets={'Value': value}, domain=domain, data_type='BOOLEAN')
+        return node._out
+
+    def field_to_grid(self, named_sockets=None, **sockets):
+        """ > Node <&Node Field to Grid>
+        
+        Jump method: False.
+        
+        self: socket 'Topology'.
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `data_type` | `'BOOLEAN'` |
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        _named_sockets = {'Topology': self}
+        _named_sockets.update({name: value for name, value in (named_sockets or {}).items() if value is not None})
+        node = Node('Field to Grid', named_sockets=_named_sockets, data_type='BOOLEAN', **sockets)
+        return node._out
+
+    @classmethod
+    def filter_list(cls, list: Boolean=None, selection: Boolean=None):
+        """ > Node <&Node Filter List>
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `socket_type` | `'BOOLEAN'` |
+        
+        Parameters
+        ----------
+        list : Boolean, optional
+            socket 'List'
+        
         selection : Boolean, optional
             socket 'Selection'
         
         Returns
         -------
-        Boolean
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'grid': self, 'selection': selection}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Deactivate Voxels', named_sockets=_named_sockets, data_type='BOOLEAN')
-        return _node._out
+        node = Node('Filter List', named_sockets={'List': list, 'Selection': selection}, socket_type='BOOLEAN')
+        return node._out
 
-    def enable_output(self, enable: Boolean=None):
-        """ > Node <&Node Enable Output>
-        
-        Jump method: False.
-        
-        self: socket 'Value'.
+    @classmethod
+    def get_list_item(cls, list: Boolean=None, index: Integer=None):
+        """ > Node <&Node Get List Item>
         
         **Fixed values**
         
         | Parameter | Value |
         | --- | --- |
-        | `data_type` | `'BOOLEAN'` |
+        | `socket_type` | `'BOOLEAN'` |
         
         Parameters
         ----------
-        enable : Boolean, optional
-            socket 'Enable'
+        list : Boolean, optional
+            socket 'List'
+        
+        index : Integer, optional
+            socket 'Index'
         
         Returns
         -------
-        Boolean
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'enable': enable, 'value': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Enable Output', named_sockets=_named_sockets, data_type='BOOLEAN')
-        return _node._out
+        node = Node('Get List Item', named_sockets={'List': list, 'Index': index}, socket_type='BOOLEAN')
+        return node._out
 
-    def grid_dilate_erode(self, connectivity: Literal['Face', 'Edge', 'Vertex']=None, tiles: Literal['Ignore', 'Expand', 'Preserve']=None, steps: Integer=None):
+    def grid_dilate_erode(self, connectivity: Menu=None, tiles: Menu=None, steps: Integer=None):
         """ > Node <&Node Grid Dilate & Erode>
         
-        Jump method: False.
+        Jump method: True.
         
         self: socket 'Grid'.
         
@@ -642,77 +775,26 @@ class Boolean(BaseBoolean):
         
         Parameters
         ----------
-        connectivity : menu='Face', optional
-            ('Face', 'Edge', 'Vertex')
+        connectivity : Menu, optional
+            socket 'Connectivity'
         
-        tiles : menu='Preserve', optional
-            ('Ignore', 'Expand', 'Preserve')
+        tiles : Menu, optional
+            socket 'Tiles'
         
         steps : Integer, optional
             socket 'Steps'
         
         Returns
         -------
-        Boolean
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'grid': self, 'connectivity': connectivity, 'tiles': tiles, 'steps': steps}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Grid Dilate & Erode', named_sockets=_named_sockets, data_type='BOOLEAN')
-        return _node._out
+        node = Node('Grid Dilate & Erode', named_sockets={'Grid': self, 'Connectivity': connectivity, 'Tiles': tiles, 'Steps': steps}, data_type='BOOLEAN')
+        self._jump(node._out)
+        return node._second_out(self)
 
     @classmethod
-    def GridInfo(cls, grid: Boolean=None):
-        """ > Node <&Node Grid Info>
-        
-        **Fixed values**
-        
-        | Parameter | Value |
-        | --- | --- |
-        | `data_type` | `'BOOLEAN'` |
-        
-        Parameters
-        ----------
-        grid : Boolean, optional
-            socket 'Grid'
-        
-        Returns
-        -------
-        Matrix
-            socket 'OUT'
-        """
-        _named_sockets = {'grid': grid}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Grid Info', named_sockets=_named_sockets, data_type='BOOLEAN')
-        return _node._out
-
-    @classmethod
-    def GridToPoints(cls, grid: Boolean=None):
-        """ > Node <&Node Grid to Points>
-        
-        **Fixed values**
-        
-        | Parameter | Value |
-        | --- | --- |
-        | `data_type` | `'BOOLEAN'` |
-        
-        Parameters
-        ----------
-        grid : Boolean, optional
-            socket 'Grid'
-        
-        Returns
-        -------
-        Cloud
-            socket 'OUT'
-        """
-        _named_sockets = {'grid': grid}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Grid to Points', named_sockets=_named_sockets, data_type='BOOLEAN')
-        return _node._out
-
-    @classmethod
-    def GridTopology(cls, *grid_2: Boolean, operation: Literal['Intersect', 'Union', 'Difference']=None, grid_1: Boolean=None):
+    def GridTopologyBoolean(cls, *grid_2: Boolean, operation: Menu=None, grid_1: Boolean=None):
         """ > Node <&Node Grid Topology Boolean>
         
         **Fixed values**
@@ -723,31 +805,26 @@ class Boolean(BaseBoolean):
         
         Parameters
         ----------
-        operation : menu='Intersect', optional
-            ('Intersect', 'Union', 'Difference')
+        grid_2 : Boolean, optional
+            socket 'Grid 2'
+        
+        operation : Menu, optional
+            socket 'Operation'
         
         grid_1 : Boolean, optional
             socket 'Grid 1'
         
-        grid_2 : Boolean, optional
-            socket 'Grid 2'
-        
         Returns
         -------
-        Boolean
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'operation': operation, 'grid_1': grid_1, 'grid_2': list(grid_2)}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Grid Topology Boolean', named_sockets=_named_sockets, data_type='BOOLEAN')
-        return _node._out
+        node = Node('Grid Topology Boolean', *[*list(grid_2)], named_sockets={'Operation': operation, 'Grid 1': grid_1}, data_type='BOOLEAN')
+        return node._out
 
-    def implicit_conversion(self, socket_idname='NodeSocketColor'):
+    @classmethod
+    def implicit_conversion(cls, value: Boolean=None, socket_idname: str='NodeSocketColor'):
         """ > Node <&Node Implicit Conversion>
-        
-        Jump method: False.
-        
-        self: socket 'Value'.
         
         **Fixed values**
         
@@ -757,22 +834,23 @@ class Boolean(BaseBoolean):
         
         Parameters
         ----------
+        value : Boolean, optional
+            socket 'Value'
+        
         socket_idname : str
             parameter `socket_idname`
         
         Returns
         -------
-        Boolean
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'value': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Implicit Conversion', named_sockets=_named_sockets, socket_idname=socket_idname, data_type='BOOLEAN')
-        return _node._out
+        node = Node('Implicit Conversion', named_sockets={'Value': value}, data_type='BOOLEAN', socket_idname=socket_idname)
+        return node._out
 
     @classmethod
-    def IndexSwitch(cls, named_sockets=None, index: Integer=None, _0: Boolean=None, _1: Boolean=None, **sockets):
-        """ > Node <&Node Index Switch>
+    def list_length(cls, list: Boolean=None):
+        """ > Node <&Node List Length>
         
         **Fixed values**
         
@@ -782,62 +860,21 @@ class Boolean(BaseBoolean):
         
         Parameters
         ----------
-        index : Integer, optional
-            socket 'Index'
-        
-        _0 : Boolean, optional
-            socket '0'
-        
-        _1 : Boolean, optional
-            socket '1'
+        list : Boolean, optional
+            socket 'List'
         
         Returns
         -------
-        Boolean
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'index': index, '_0': _0, '_1': _1}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _named_sockets.update({_name: _value for _name, _value in (named_sockets or {}).items() if _value is not None})
-        _node = Node('Index Switch', named_sockets=_named_sockets, data_type='BOOLEAN', **sockets)
-        return _node._out
+        node = Node('List Length', named_sockets={'List': list}, data_type='BOOLEAN')
+        return node._out
 
-    @classmethod
-    def MenuSwitch(cls, named_sockets=None, menu: Literal['A', 'B']=None, a: Boolean=None, b: Boolean=None, **sockets):
-        """ > Node <&Node Menu Switch>
-        
-        **Fixed values**
-        
-        | Parameter | Value |
-        | --- | --- |
-        | `data_type` | `'BOOLEAN'` |
-        
-        Parameters
-        ----------
-        menu : menu='A', optional
-            ('A', 'B')
-        
-        a : Boolean, optional
-            socket 'A'
-        
-        b : Boolean, optional
-            socket 'B'
-        
-        Returns
-        -------
-        Boolean
-            socket 'OUT'
-        """
-        _named_sockets = {'menu': menu, 'a': a, 'b': b}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _named_sockets.update({_name: _value for _name, _value in (named_sockets or {}).items() if _value is not None})
-        _node = Node('Menu Switch', named_sockets=_named_sockets, data_type='BOOLEAN', **sockets)
-        return _node._out
-
-    def prune_grid(self, mode: Literal['Inactive', 'Threshold', 'SDF']=None):
+    def prune_grid(self, mode: Menu=None):
         """ > Node <&Node Prune Grid>
         
-        Jump method: False.
+        Jump method: True.
         
         self: socket 'Grid'.
         
@@ -849,21 +886,20 @@ class Boolean(BaseBoolean):
         
         Parameters
         ----------
-        mode : menu='Threshold', optional
-            ('Inactive', 'Threshold', 'SDF')
+        mode : Menu, optional
+            socket 'Mode'
         
         Returns
         -------
-        Boolean
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'grid': self, 'mode': mode}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Prune Grid', named_sockets=_named_sockets, data_type='BOOLEAN')
-        return _node._out
+        node = Node('Prune Grid', named_sockets={'Grid': self, 'Mode': mode}, data_type='BOOLEAN')
+        self._jump(node._out)
+        return node._second_out(self)
 
     @classmethod
-    def Random(cls, probability: Float=None, id: Integer=None, seed: Integer=None):
+    def random_value(cls, probability: Float=None, id: Integer=None, seed: Integer=None):
         """ > Node <&Node Random Value>
         
         **Fixed values**
@@ -885,15 +921,13 @@ class Boolean(BaseBoolean):
         
         Returns
         -------
-        Boolean
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'probability': probability, 'id': id, 'seed': seed}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Random Value', named_sockets=_named_sockets, data_type='BOOLEAN')
-        return _node._out
+        node = Node('Random Value', named_sockets={'Probability': probability, 'ID': id, 'Seed': seed}, data_type='BOOLEAN')
+        return node._out
 
-    def sample_grid(self, position: Vector=None, interpolation: Literal['Nearest Neighbor', 'Trilinear', 'Triquadratic', 'Tricubic']=None):
+    def sample_grid(self, position: Vector=None, interpolation: Menu=None):
         """ > Node <&Node Sample Grid>
         
         Jump method: False.
@@ -911,18 +945,16 @@ class Boolean(BaseBoolean):
         position : Vector, optional
             socket 'Position'
         
-        interpolation : menu='Trilinear', optional
-            ('Nearest Neighbor', 'Trilinear', 'Triquadratic', 'Tricubic')
+        interpolation : Menu, optional
+            socket 'Interpolation'
         
         Returns
         -------
-        Boolean
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'grid': self, 'position': position, 'interpolation': interpolation}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Sample Grid', named_sockets=_named_sockets, data_type='BOOLEAN')
-        return _node._out
+        node = Node('Sample Grid', named_sockets={'Grid': self, 'Position': position, 'Interpolation': interpolation}, data_type='BOOLEAN')
+        return node._out
 
     def sample_grid_index(self, x: Integer=None, y: Integer=None, z: Integer=None):
         """ > Node <&Node Sample Grid Index>
@@ -950,18 +982,16 @@ class Boolean(BaseBoolean):
         
         Returns
         -------
-        Boolean
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'grid': self, 'x': x, 'y': y, 'z': z}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Sample Grid Index', named_sockets=_named_sockets, data_type='BOOLEAN')
-        return _node._out
+        node = Node('Sample Grid Index', named_sockets={'Grid': self, 'X': x, 'Y': y, 'Z': z}, data_type='BOOLEAN')
+        return node._out
 
     def set_grid_background(self, background: Boolean=None, update_inactive: Boolean=None):
         """ > Node <&Node Set Grid Background>
         
-        Jump method: False.
+        Jump method: True.
         
         self: socket 'Grid'.
         
@@ -981,17 +1011,19 @@ class Boolean(BaseBoolean):
         
         Returns
         -------
-        Boolean
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'grid': self, 'background': background, 'update_inactive': update_inactive}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Set Grid Background', named_sockets=_named_sockets, data_type='BOOLEAN')
-        return _node._out
+        node = Node('Set Grid Background', named_sockets={'Grid': self, 'Background': background, 'Update Inactive': update_inactive}, data_type='BOOLEAN')
+        self._jump(node._out)
+        return node._second_out(self)
 
-    @classmethod
-    def SetGridTransform(cls, grid: Boolean=None, transform: Matrix=None):
+    def set_grid_transform(self, transform: Matrix=None):
         """ > Node <&Node Set Grid Transform>
+        
+        Jump method: False.
+        
+        self: socket 'Grid'.
         
         **Fixed values**
         
@@ -1001,51 +1033,78 @@ class Boolean(BaseBoolean):
         
         Parameters
         ----------
-        grid : Boolean, optional
-            socket 'Grid'
-        
         transform : Matrix, optional
             socket 'Transform'
         
         Returns
         -------
-        Boolean
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'grid': grid, 'transform': transform}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Set Grid Transform', named_sockets=_named_sockets, data_type='BOOLEAN')
-        return _node._out
+        node = Node('Set Grid Transform', named_sockets={'Grid': self, 'Transform': transform}, data_type='BOOLEAN')
+        return node._out
 
-    def switch(self, false: Float | Integer | Boolean | Vector | Color | Rotation | Matrix | String | Menu | Object | Image | Geometry | Collection | Material | Bundle | Closure | Font | Sound=None, true: Float | Integer | Boolean | Vector | Color | Rotation | Matrix | String | Menu | Object | Image | Geometry | Collection | Material | Bundle | Closure | Font | Sound=None, input_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'SHADER', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'TEXTURE', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SCENE', 'TEXT', 'MASK', 'SOUND', 'INT_VECTOR']='FLOAT'):
+    @classmethod
+    def sort_list(cls, list: Boolean=None, selection: Boolean=None, group_id: Integer=None, sort_weight: Float=None):
+        """ > Node <&Node Sort List>
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `socket_type` | `'BOOLEAN'` |
+        
+        Parameters
+        ----------
+        list : Boolean, optional
+            socket 'List'
+        
+        selection : Boolean, optional
+            socket 'Selection'
+        
+        group_id : Integer, optional
+            socket 'Group ID'
+        
+        sort_weight : Float, optional
+            socket 'Sort Weight'
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Sort List', named_sockets={'List': list, 'Selection': selection, 'Group ID': group_id, 'Sort Weight': sort_weight}, socket_type='BOOLEAN')
+        return node._out
+
+    def switch(self, false: Socket=None, true: Socket=None):
         """ > Node <&Node Switch>
         
         Jump method: False.
         
         self: socket 'Switch'.
         
+        **Derived parameters**
+        
+        - `input_type`: Inferred from socket 'False' (false).
+        
         Parameters
         ----------
-        false : Float | Integer | Boolean | Vector | Color | Rotation | Matrix | String | Menu | Object | Image | Geometry | Collection | Material | Bundle | Closure | Font | Sound, optional
+        false : Socket, optional
             socket 'False'
         
-        true : Float | Integer | Boolean | Vector | Color | Rotation | Matrix | String | Menu | Object | Image | Geometry | Collection | Material | Bundle | Closure | Font | Sound, optional
+        true : Socket, optional
             socket 'True'
-        
-        input_type : Literal['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Rotation', 'Matrix', 'String', 'Menu', 'Object', 'Image', 'Geometry', 'Collection', 'Material', 'Bundle', 'Closure', 'Font', 'Sound']
-            parameter `input_type`
         
         Returns
         -------
-        Float | Integer | Boolean | Vector | Color | Rotation | Matrix | String | Menu | Object | Image | Geometry | Collection | Material | Bundle | Closure | Font | Sound
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'switch': self, 'false': false, 'true': true}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Switch', named_sockets=_named_sockets, input_type=input_type)
-        return _node._out
+        input_type = SocketType.get_data_type_for_node(false, 'GeometryNodeSwitch', 'input_type')
+        node = Node('Switch', named_sockets={'Switch': self, 'False': false, 'True': true}, input_type=input_type)
+        return node._out
 
-    def uv_unwrap(self, seam: Boolean=None, margin: Float=None, fill_holes: Boolean=None, method: Literal['Angle Based', 'Conformal', 'Minimum Stretch']=None, iterations: Integer=None, no_flip: Boolean=None):
+    def uv_unwrap(self, seam: Boolean=None, margin: Float=None, fill_holes: Boolean=None, method: Menu=None, iterations: Integer=None, no_flip: Boolean=None):
         """ > Node <&Node UV Unwrap>
         
         Jump method: False.
@@ -1063,8 +1122,8 @@ class Boolean(BaseBoolean):
         fill_holes : Boolean, optional
             socket 'Fill Holes'
         
-        method : menu='Angle Based', optional
-            ('Angle Based', 'Conformal', 'Minimum Stretch')
+        method : Menu, optional
+            socket 'Method'
         
         iterations : Integer, optional
             socket 'Iterations'
@@ -1074,18 +1133,16 @@ class Boolean(BaseBoolean):
         
         Returns
         -------
-        Vector
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'selection': self, 'seam': seam, 'margin': margin, 'fill_holes': fill_holes, 'method': method, 'iterations': iterations, 'no_flip': no_flip}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('UV Unwrap', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('UV Unwrap', named_sockets={'Selection': self, 'Seam': seam, 'Margin': margin, 'Fill Holes': fill_holes, 'Method': method, 'Iterations': iterations, 'No Flip': no_flip})
+        return node._out
 
     def voxelize_grid(self):
         """ > Node <&Node Voxelize Grid>
         
-        Jump method: False.
+        Jump method: True.
         
         self: socket 'Grid'.
         
@@ -1097,13 +1154,12 @@ class Boolean(BaseBoolean):
         
         Returns
         -------
-        Boolean
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'grid': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Voxelize Grid', named_sockets=_named_sockets, data_type='BOOLEAN')
-        return _node._out
+        node = Node('Voxelize Grid', named_sockets={'Grid': self}, data_type='BOOLEAN')
+        self._jump(node._out)
+        return node._second_out(self)
 
     def warning(self, message: String=None, warning_type: Literal['ERROR', 'WARNING', 'INFO']='ERROR'):
         """ > Node <&Node Warning>
@@ -1122,10 +1178,8 @@ class Boolean(BaseBoolean):
         
         Returns
         -------
-        Boolean
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'show': self, 'message': message}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Warning', named_sockets=_named_sockets, warning_type=warning_type)
-        return _node._out
+        node = Node('Warning', named_sockets={'Show': self, 'Message': message}, warning_type=warning_type)
+        return node._out

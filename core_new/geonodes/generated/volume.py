@@ -47,6 +47,9 @@ if TYPE_CHECKING:
     class Geometry:
         ...
 
+    class Texture:
+        ...
+
     class Collection:
         ...
 
@@ -115,7 +118,7 @@ from .geometry import Geometry
 class Volume(BaseVolume, Geometry):
     __slots__ = ()
 
-    def distribute_points_in(self, mode: Literal['Random', 'Grid']=None, density: Float=None, seed: Integer=None, spacing: Vector=None, threshold: Float=None):
+    def distribute_points_in(self, mode: Menu=None, density: Float=None, seed: Integer=None, spacing: Vector=None, threshold: Float=None):
         """ > Node <&Node Distribute Points in Volume>
         
         Jump method: False.
@@ -124,8 +127,8 @@ class Volume(BaseVolume, Geometry):
         
         Parameters
         ----------
-        mode : menu='Random', optional
-            ('Random', 'Grid')
+        mode : Menu, optional
+            socket 'Mode'
         
         density : Float, optional
             socket 'Density'
@@ -141,15 +144,12 @@ class Volume(BaseVolume, Geometry):
         
         Returns
         -------
-        Cloud
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'volume': self, 'mode': mode, 'density': density, 'seed': seed, 'spacing': spacing, 'threshold': threshold}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Distribute Points in Volume', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('Distribute Points in Volume', named_sockets={'Volume': self, 'Mode': mode, 'Density': density, 'Seed': seed, 'Spacing': spacing, 'Threshold': threshold})
+        return node._out
 
-    @property
     def get_grid_names(self):
         """ > Node <&Node Get Grid Names>
         
@@ -159,15 +159,13 @@ class Volume(BaseVolume, Geometry):
         
         Returns
         -------
-        String
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'volume': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Get Grid Names', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('Get Grid Names', named_sockets={'Volume': self})
+        return node._out
 
-    def get_named_grid(self, name: String=None, remove: Boolean=None, data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'SHADER', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'TEXTURE', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SCENE', 'TEXT', 'MASK', 'SOUND', 'INT_VECTOR']='FLOAT'):
+    def get_named_grid(self, name: String=None, remove: Boolean=None, data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR']='FLOAT'):
         """ > Node <&Node Get Named Grid>
         
         Jump method: True.
@@ -187,17 +185,15 @@ class Volume(BaseVolume, Geometry):
         
         Returns
         -------
-        Volume
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'volume': self, 'name': name, 'remove': remove}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Get Named Grid', named_sockets=_named_sockets, data_type=data_type)
-        self._jump(_node._out)
-        return self._domain_to_geometry
+        node = Node('Get Named Grid', named_sockets={'Volume': self, 'Name': name, 'Remove': remove}, data_type=data_type)
+        self._jump(node._out)
+        return node._second_out(self)
 
     @classmethod
-    def ImportVdb(cls, path: String=None):
+    def import_vdb(cls, path: String=None):
         """ > Node <&Node Import VDB>
         
         Parameters
@@ -207,83 +203,13 @@ class Volume(BaseVolume, Geometry):
         
         Returns
         -------
-        Volume
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'path': path}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Import VDB', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('Import VDB', named_sockets={'Path': path})
+        return node._out
 
-    @classmethod
-    def FromMesh(cls, mesh: Mesh=None, density: Float=None, resolution_mode: Literal['Amount', 'Size']=None, voxel_size: Float=None, voxel_amount: Float=None, interior_band_width: Float=None):
-        """ > Node <&Node Mesh to Volume>
-        
-        Parameters
-        ----------
-        mesh : Mesh, optional
-            socket 'Mesh'
-        
-        density : Float, optional
-            socket 'Density'
-        
-        resolution_mode : menu='Amount', optional
-            ('Amount', 'Size')
-        
-        voxel_size : Float, optional
-            socket 'Voxel Size'
-        
-        voxel_amount : Float, optional
-            socket 'Voxel Amount'
-        
-        interior_band_width : Float, optional
-            socket 'Interior Band Width'
-        
-        Returns
-        -------
-        Volume
-            socket 'OUT'
-        """
-        _named_sockets = {'mesh': mesh, 'density': density, 'resolution_mode': resolution_mode, 'voxel_size': voxel_size, 'voxel_amount': voxel_amount, 'interior_band_width': interior_band_width}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Mesh to Volume', named_sockets=_named_sockets)
-        return _node._out
-
-    @classmethod
-    def FromPoints(cls, points: Cloud=None, density: Float=None, resolution_mode: Literal['Amount', 'Size']=None, voxel_size: Float=None, voxel_amount: Float=None, radius: Float=None):
-        """ > Node <&Node Points to Volume>
-        
-        Parameters
-        ----------
-        points : Cloud, optional
-            socket 'Points'
-        
-        density : Float, optional
-            socket 'Density'
-        
-        resolution_mode : menu='Amount', optional
-            ('Amount', 'Size')
-        
-        voxel_size : Float, optional
-            socket 'Voxel Size'
-        
-        voxel_amount : Float, optional
-            socket 'Voxel Amount'
-        
-        radius : Float, optional
-            socket 'Radius'
-        
-        Returns
-        -------
-        Volume
-            socket 'OUT'
-        """
-        _named_sockets = {'points': points, 'density': density, 'resolution_mode': resolution_mode, 'voxel_size': voxel_size, 'voxel_amount': voxel_amount, 'radius': radius}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Points to Volume', named_sockets=_named_sockets)
-        return _node._out
-
-    def store_named_grid(self, name: String=None, grid: Float | Boolean | Integer | Vector=None):
+    def store_named_grid(self, name: String=None, grid: Socket=None):
         """ > Node <&Node Store Named Grid>
         
         Jump method: True.
@@ -292,27 +218,25 @@ class Volume(BaseVolume, Geometry):
         
         **Derived parameters**
         
-        - `data_type`: Inferred from grid.
+        - `data_type`: Inferred from socket 'Grid' (grid).
         
         Parameters
         ----------
         name : String, optional
             socket 'Name'
         
-        grid : Float | Boolean | Integer | Vector, optional
+        grid : Socket, optional
             socket 'Grid'
         
         Returns
         -------
-        Volume
+        Socket
             socket 'OUT'
         """
         data_type = SocketType.get_data_type_for_node(grid, 'GeometryNodeStoreNamedGrid', 'data_type')
-        _named_sockets = {'volume': self, 'name': name, 'grid': grid}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Store Named Grid', named_sockets=_named_sockets, data_type=data_type)
-        self._jump(_node._out)
-        return self._domain_to_geometry
+        node = Node('Store Named Grid', named_sockets={'Volume': self, 'Name': name, 'Grid': grid}, data_type=data_type)
+        self._jump(node._out)
+        return node._second_out(self)
 
     @classmethod
     def Cube(cls, density: Float=None, background: Float=None, min: Vector=None, max: Vector=None, resolution_x: Integer=None, resolution_y: Integer=None, resolution_z: Integer=None):
@@ -343,15 +267,13 @@ class Volume(BaseVolume, Geometry):
         
         Returns
         -------
-        Volume
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'density': density, 'background': background, 'min': min, 'max': max, 'resolution_x': resolution_x, 'resolution_y': resolution_y, 'resolution_z': resolution_z}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Volume Cube', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('Volume Cube', named_sockets={'Density': density, 'Background': background, 'Min': min, 'Max': max, 'Resolution X': resolution_x, 'Resolution Y': resolution_y, 'Resolution Z': resolution_z})
+        return node._out
 
-    def to_mesh(self, resolution_mode: Literal['Grid', 'Amount', 'Size']=None, voxel_size: Float=None, voxel_amount: Float=None, threshold: Float=None, adaptivity: Float=None):
+    def to_mesh(self, resolution_mode: Menu=None, voxel_size: Float=None, voxel_amount: Float=None, threshold: Float=None, adaptivity: Float=None):
         """ > Node <&Node Volume to Mesh>
         
         Jump method: False.
@@ -360,8 +282,8 @@ class Volume(BaseVolume, Geometry):
         
         Parameters
         ----------
-        resolution_mode : menu='Grid', optional
-            ('Grid', 'Amount', 'Size')
+        resolution_mode : Menu, optional
+            socket 'Resolution Mode'
         
         voxel_size : Float, optional
             socket 'Voxel Size'
@@ -377,10 +299,8 @@ class Volume(BaseVolume, Geometry):
         
         Returns
         -------
-        Mesh
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'volume': self, 'resolution_mode': resolution_mode, 'voxel_size': voxel_size, 'voxel_amount': voxel_amount, 'threshold': threshold, 'adaptivity': adaptivity}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Volume to Mesh', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('Volume to Mesh', named_sockets={'Volume': self, 'Resolution Mode': resolution_mode, 'Voxel Size': voxel_size, 'Voxel Amount': voxel_amount, 'Threshold': threshold, 'Adaptivity': adaptivity})
+        return node._out

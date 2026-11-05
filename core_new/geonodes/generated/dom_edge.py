@@ -47,6 +47,9 @@ if TYPE_CHECKING:
     class Geometry:
         ...
 
+    class Texture:
+        ...
+
     class Collection:
         ...
 
@@ -114,6 +117,63 @@ from ...geonodes.domains.edge import Edge as BaseEdge
 class Edge(BaseEdge):
     __slots__ = ()
 
+    def attribute_statistic(self, attribute: Socket=None):
+        """ > Node <&Node Attribute Statistic>
+        
+        Jump method: False.
+        
+        self: socket 'Geometry'.
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `domain` | `'EDGE'` |
+        
+        **Derived parameters**
+        
+        - `data_type`: Inferred from socket 'Attribute' (attribute).
+        
+        Parameters
+        ----------
+        attribute : Socket, optional
+            socket 'Attribute'
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        data_type = SocketType.get_data_type_for_node(attribute, 'GeometryNodeAttributeStatistic', 'data_type')
+        selection = self.get_selection()
+        node = Node('Attribute Statistic', named_sockets={'Geometry': self, 'Selection': selection, 'Attribute': attribute}, data_type=data_type, domain='EDGE')
+        return node._out
+
+    def capture_attribute(self, named_sockets=None, **sockets):
+        """ > Node <&Node Capture Attribute>
+        
+        Jump method: True.
+        
+        self: socket 'Geometry'.
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `domain` | `'EDGE'` |
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        selection = self.get_selection()
+        _named_sockets = {'Geometry': self, 'Selection': selection}
+        _named_sockets.update({name: value for name, value in (named_sockets or {}).items() if value is not None})
+        node = Node('Capture Attribute', named_sockets=_named_sockets, domain='EDGE', **sockets)
+        self._jump(node._out)
+        return node._second_out(self)
+
     @classmethod
     def corners(cls, edge_index: Integer=None, weights: Float=None, sort_index: Integer=None):
         """ > Node <&Node Corners of Edge>
@@ -131,240 +191,11 @@ class Edge(BaseEdge):
         
         Returns
         -------
-        Node
-        """
-        _named_sockets = {'edge_index': edge_index, 'weights': weights, 'sort_index': sort_index}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Corners of Edge', named_sockets=_named_sockets)
-        return _node
-
-    @classmethod
-    def angle(cls):
-        """ > Node <&Node Edge Angle>
-        
-        Returns
-        -------
-        Node
-        """
-        _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Edge Angle', named_sockets=_named_sockets)
-        return _node
-
-    @utils.classproperty
-    def unsigned_angle(cls):
-        """ > Node <&Node Edge Angle>
-        
-        Returns
-        -------
-        Float
-            socket 'Unsigned Angle'
-        """
-        _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Edge Angle', named_sockets=_named_sockets)
-        return _node['Unsigned Angle']
-
-    @utils.classproperty
-    def signed_angle(cls):
-        """ > Node <&Node Edge Angle>
-        
-        Returns
-        -------
-        Float
-            socket 'Signed Angle'
-        """
-        _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Edge Angle', named_sockets=_named_sockets)
-        return _node['Signed Angle']
-
-    @classmethod
-    def neighbors(cls):
-        """ > Node <&Node Edge Neighbors>
-        
-        Returns
-        -------
-        Node
-        """
-        _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Edge Neighbors', named_sockets=_named_sockets)
-        return _node
-
-    @utils.classproperty
-    def face_count(cls):
-        """ > Node <&Node Edge Neighbors>
-        
-        Returns
-        -------
-        Integer
-            socket 'Face Count'
-        """
-        _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Edge Neighbors', named_sockets=_named_sockets)
-        return _node['Face Count']
-
-    @classmethod
-    def paths_to_selection(cls, start_vertices: Boolean=None, next_vertex_index: Integer=None):
-        """ > Node <&Node Edge Paths to Selection>
-        
-        Parameters
-        ----------
-        start_vertices : Boolean, optional
-            socket 'Start Vertices'
-        
-        next_vertex_index : Integer, optional
-            socket 'Next Vertex Index'
-        
-        Returns
-        -------
-        Node
-        """
-        _named_sockets = {'start_vertices': start_vertices, 'next_vertex_index': next_vertex_index}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Edge Paths to Selection', named_sockets=_named_sockets)
-        return _node
-
-    @classmethod
-    def vertices(cls):
-        """ > Node <&Node Edge Vertices>
-        
-        Returns
-        -------
-        Node
-        """
-        _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Edge Vertices', named_sockets=_named_sockets)
-        return _node
-
-    @utils.classproperty
-    def vertex_index_1(cls):
-        """ > Node <&Node Edge Vertices>
-        
-        Returns
-        -------
-        Integer
-            socket 'Vertex Index 1'
-        """
-        _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Edge Vertices', named_sockets=_named_sockets)
-        return _node['Vertex Index 1']
-
-    @utils.classproperty
-    def vertex_index_2(cls):
-        """ > Node <&Node Edge Vertices>
-        
-        Returns
-        -------
-        Integer
-            socket 'Vertex Index 2'
-        """
-        _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Edge Vertices', named_sockets=_named_sockets)
-        return _node['Vertex Index 2']
-
-    @utils.classproperty
-    def position_1(cls):
-        """ > Node <&Node Edge Vertices>
-        
-        Returns
-        -------
-        Vector
-            socket 'Position 1'
-        """
-        _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Edge Vertices', named_sockets=_named_sockets)
-        return _node['Position 1']
-
-    @utils.classproperty
-    def position_2(cls):
-        """ > Node <&Node Edge Vertices>
-        
-        Returns
-        -------
-        Vector
-            socket 'Position 2'
-        """
-        _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Edge Vertices', named_sockets=_named_sockets)
-        return _node['Position 2']
-
-    @classmethod
-    def is_smooth(cls):
-        """ > Node <&Node Is Edge Smooth>
-        
-        Returns
-        -------
-        Node
-        """
-        _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Is Edge Smooth', named_sockets=_named_sockets)
-        return _node
-
-    @utils.classproperty
-    def smooth(cls):
-        """ > Node <&Node Is Edge Smooth>
-        
-        Returns
-        -------
-        Boolean
-            socket 'Smooth'
-        """
-        _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Is Edge Smooth', named_sockets=_named_sockets)
-        return _node['Smooth']
-
-    @classmethod
-    def ActiveElement(cls):
-        """ > Node <&Node Active Element>
-        
-        **Fixed values**
-        
-        | Parameter | Value |
-        | --- | --- |
-        | `domain` | `'EDGE'` |
-        
-        Returns
-        -------
-        Integer
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Active Element', named_sockets=_named_sockets, domain='EDGE')
-        return _node._out
-
-    def capture_attribute(self, named_sockets=None, **sockets):
-        """ > Node <&Node Capture Attribute>
-        
-        Jump method: False.
-        
-        self: socket 'Geometry'.
-        
-        **Fixed values**
-        
-        | Parameter | Value |
-        | --- | --- |
-        | `domain` | `'EDGE'` |
-        
-        Returns
-        -------
-        Node
-        """
-        _named_sockets = {'geometry': self, 'selection': self.get_selection()}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _named_sockets.update({_name: _value for _name, _value in (named_sockets or {}).items() if _value is not None})
-        _node = Node('Capture Attribute', named_sockets=_named_sockets, domain='EDGE', **sockets)
-        return _node
+        node = Node('Corners of Edge', named_sockets={'Edge Index': edge_index, 'Weights': weights, 'Sort Index': sort_index})
+        return node._out
 
     def delete(self, mode: Literal['ALL', 'EDGE_FACE', 'ONLY_FACE']='ALL'):
         """ > Node <&Node Delete Geometry>
@@ -386,14 +217,13 @@ class Edge(BaseEdge):
         
         Returns
         -------
-        Geometry
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'geometry': self, 'selection': self.get_selection()}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Delete Geometry', named_sockets=_named_sockets, mode=mode, domain='EDGE')
-        self._jump(_node._out)
-        return self._domain_to_geometry
+        selection = self.get_selection()
+        node = Node('Delete Geometry', named_sockets={'Geometry': self, 'Selection': selection}, mode=mode, domain='EDGE')
+        self._jump(node._out)
+        return node._second_out(self)
 
     def duplicate_elements(self, amount: Integer=None):
         """ > Node <&Node Duplicate Elements>
@@ -415,14 +245,106 @@ class Edge(BaseEdge):
         
         Returns
         -------
-        Geometry
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'geometry': self, 'selection': self.get_selection(), 'amount': amount}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Duplicate Elements', named_sockets=_named_sockets, domain='EDGE')
-        self._jump(_node._out)
-        return self._domain_to_geometry
+        selection = self.get_selection()
+        node = Node('Duplicate Elements', named_sockets={'Geometry': self, 'Selection': selection, 'Amount': amount}, domain='EDGE')
+        self._jump(node._out)
+        return node._second_out(self)
+
+    @classmethod
+    def angle(cls):
+        """ > Node <&Node Edge Angle>
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Edge Angle', named_sockets={})
+        return node._out
+
+    @classmethod
+    def neighbors(cls):
+        """ > Node <&Node Edge Neighbors>
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Edge Neighbors', named_sockets={})
+        return node._out
+
+    @classmethod
+    def paths_to_selection(cls, start_vertices: Boolean=None, next_vertex_index: Integer=None):
+        """ > Node <&Node Edge Paths to Selection>
+        
+        Parameters
+        ----------
+        start_vertices : Boolean, optional
+            socket 'Start Vertices'
+        
+        next_vertex_index : Integer, optional
+            socket 'Next Vertex Index'
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Edge Paths to Selection', named_sockets={'Start Vertices': start_vertices, 'Next Vertex Index': next_vertex_index})
+        return node._out
+
+    @classmethod
+    def vertices(cls):
+        """ > Node <&Node Edge Vertices>
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Edge Vertices', named_sockets={})
+        return node._out
+
+    def sample_index(self, value: Socket=None, index: Integer=None, clamp: bool=False):
+        """ > Node <&Node Sample Index>
+        
+        Jump method: False.
+        
+        self: socket 'Geometry'.
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `domain` | `'EDGE'` |
+        
+        **Derived parameters**
+        
+        - `data_type`: Inferred from socket 'Value' (value).
+        
+        Parameters
+        ----------
+        value : Socket, optional
+            socket 'Value'
+        
+        index : Integer, optional
+            socket 'Index'
+        
+        clamp : bool
+            parameter `clamp`
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        data_type = SocketType.get_data_type_for_node(value, 'GeometryNodeSampleIndex', 'data_type')
+        node = Node('Sample Index', named_sockets={'Geometry': self, 'Value': value, 'Index': index}, data_type=data_type, domain='EDGE', clamp=clamp)
+        return node._out
 
     def sample_nearest(self, sample_position: Vector=None):
         """ > Node <&Node Sample Nearest>
@@ -444,15 +366,13 @@ class Edge(BaseEdge):
         
         Returns
         -------
-        Integer
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'geometry': self, 'sample_position': sample_position}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Sample Nearest', named_sockets=_named_sockets, domain='EDGE')
-        return _node._out
+        node = Node('Sample Nearest', named_sockets={'Geometry': self, 'Sample Position': sample_position}, domain='EDGE')
+        return node._out
 
-    def scale_elements(self, scale: Float=None, center: Vector=None, scale_mode: Literal['Uniform', 'Single Axis']=None, axis: Vector=None):
+    def scale_elements(self, scale: Float=None, center: Vector=None, scale_mode: Menu=None, axis: Vector=None):
         """ > Node <&Node Scale Elements>
         
         Jump method: True.
@@ -473,22 +393,21 @@ class Edge(BaseEdge):
         center : Vector, optional
             socket 'Center'
         
-        scale_mode : menu='Uniform', optional
-            ('Uniform', 'Single Axis')
+        scale_mode : Menu, optional
+            socket 'Scale Mode'
         
         axis : Vector, optional
             socket 'Axis'
         
         Returns
         -------
-        Geometry
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'geometry': self, 'selection': self.get_selection(), 'scale': scale, 'center': center, 'scale_mode': scale_mode, 'axis': axis}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Scale Elements', named_sockets=_named_sockets, domain='EDGE')
-        self._jump(_node._out)
-        return self._domain_to_geometry
+        selection = self.get_selection()
+        node = Node('Scale Elements', named_sockets={'Geometry': self, 'Selection': selection, 'Scale': scale, 'Center': center, 'Scale Mode': scale_mode, 'Axis': axis}, domain='EDGE')
+        self._jump(node._out)
+        return node._second_out(self)
 
     def separate(self):
         """ > Node <&Node Separate Geometry>
@@ -505,12 +424,12 @@ class Edge(BaseEdge):
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
-        _named_sockets = {'geometry': self, 'selection': self.get_selection()}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Separate Geometry', named_sockets=_named_sockets, domain='EDGE')
-        return _node
+        selection = self.get_selection()
+        node = Node('Separate Geometry', named_sockets={'Geometry': self, 'Selection': selection}, domain='EDGE')
+        return node._out
 
     def set_selection(self, selection_type: Literal['BOOLEAN', 'FLOAT']='BOOLEAN'):
         """ > Node <&Node Set Selection>
@@ -532,21 +451,20 @@ class Edge(BaseEdge):
         
         Returns
         -------
-        Geometry
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'geometry': self, 'selection': self.get_selection()}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Set Selection', named_sockets=_named_sockets, domain='EDGE', selection_type=selection_type)
-        self._jump(_node._out)
-        return self._domain_to_geometry
+        selection = self.get_selection()
+        node = Node('Set Selection', named_sockets={'Geometry': self, 'Selection': selection}, domain='EDGE', selection_type=selection_type)
+        self._jump(node._out)
+        return node._second_out(self)
 
     def set_shade_smooth(self, shade_smooth: Boolean=None):
         """ > Node <&Node Set Shade Smooth>
         
         Jump method: True.
         
-        self: socket 'Geometry'.
+        self: socket 'Mesh'.
         
         **Fixed values**
         
@@ -561,14 +479,33 @@ class Edge(BaseEdge):
         
         Returns
         -------
-        Mesh
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'mesh': self, 'selection': self.get_selection(), 'shade_smooth': shade_smooth}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Set Shade Smooth', named_sockets=_named_sockets, domain='EDGE')
-        self._jump(_node._out)
-        return self._domain_to_geometry
+        selection = self.get_selection()
+        node = Node('Set Shade Smooth', named_sockets={'Mesh': self, 'Selection': selection, 'Shade Smooth': shade_smooth}, domain='EDGE')
+        self._jump(node._out)
+        return node._second_out(self)
+
+    @classmethod
+    def shortest_paths(cls, end_vertex: Boolean=None, edge_cost: Float=None):
+        """ > Node <&Node Shortest Edge Paths>
+        
+        Parameters
+        ----------
+        end_vertex : Boolean, optional
+            socket 'End Vertex'
+        
+        edge_cost : Float, optional
+            socket 'Edge Cost'
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Shortest Edge Paths', named_sockets={'End Vertex': end_vertex, 'Edge Cost': edge_cost})
+        return node._out
 
     def sort_elements(self, group_id: Integer=None, sort_weight: Float=None):
         """ > Node <&Node Sort Elements>
@@ -593,18 +530,20 @@ class Edge(BaseEdge):
         
         Returns
         -------
-        Geometry
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'geometry': self, 'selection': self.get_selection(), 'group_id': group_id, 'sort_weight': sort_weight}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Sort Elements', named_sockets=_named_sockets, domain='EDGE')
-        self._jump(_node._out)
-        return self._domain_to_geometry
+        selection = self.get_selection()
+        node = Node('Sort Elements', named_sockets={'Geometry': self, 'Selection': selection, 'Group ID': group_id, 'Sort Weight': sort_weight}, domain='EDGE')
+        self._jump(node._out)
+        return node._second_out(self)
 
-    @classmethod
-    def FromSplit(cls, geometry: Geometry=None, selection: Boolean=None, group_id: Integer=None):
+    def to_instances(self, group_id: Integer=None):
         """ > Node <&Node Split to Instances>
+        
+        Jump method: False.
+        
+        self: socket 'Geometry'.
         
         **Fixed values**
         
@@ -614,21 +553,165 @@ class Edge(BaseEdge):
         
         Parameters
         ----------
-        geometry : Geometry, optional
-            socket 'Geometry'
-        
-        selection : Boolean, optional
-            socket 'Selection'
-        
         group_id : Integer, optional
             socket 'Group ID'
         
         Returns
         -------
-        Instances
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'geometry': geometry, 'selection': selection, 'group_id': group_id}
+        selection = self.get_selection()
+        node = Node('Split to Instances', named_sockets={'Geometry': self, 'Selection': selection, 'Group ID': group_id}, domain='EDGE')
+        return node._out
+
+    def store_named_attribute(self, name: String=None, value: Socket=None):
+        """ > Node <&Node Store Named Attribute>
+        
+        Jump method: True.
+        
+        self: socket 'Geometry'.
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `domain` | `'EDGE'` |
+        
+        **Derived parameters**
+        
+        - `data_type`: Inferred from socket 'Value' (value).
+        
+        Parameters
+        ----------
+        name : String, optional
+            socket 'Name'
+        
+        value : Socket, optional
+            socket 'Value'
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        data_type = SocketType.get_data_type_for_node(value, 'GeometryNodeStoreNamedAttribute', 'data_type')
+        selection = self.get_selection()
+        node = Node('Store Named Attribute', named_sockets={'Geometry': self, 'Selection': selection, 'Name': name, 'Value': value}, data_type=data_type, domain='EDGE')
+        self._jump(node._out)
+        return node._second_out(self)
+
+    @property
+    def material(self):
+        """Write-only property; setter node: Set Material."""
+        raise NodeError('Property Edge.material is write only.')
+
+    @material.setter
+    def material(self, material: Material):
+        """ > Node <&Node Set Material>
+        
+        Jump method: True.
+        
+        self: socket 'Geometry'.
+        
+        Parameters
+        ----------
+        material : Material, optional
+            socket 'Material'
+        
+        Returns
+        -------
+        None
+        """
+        _named_sockets = {'geometry': self, 'selection': self.get_selection(), 'material': material}
         _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Split to Instances', named_sockets=_named_sockets, domain='EDGE')
+        _node = Node('Set Material', named_sockets=_named_sockets)
+        self._jump(_node._out)
+
+    @property
+    def shade_smooth(self):
+        """ > Node <&Node Is Edge Smooth>
+        
+        Jump method: False.
+        
+        Returns
+        -------
+        Boolean
+            socket 'OUT'
+        """
+        _named_sockets = {}
+        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
+        _node = Node('Is Edge Smooth', named_sockets=_named_sockets)
         return _node._out
+
+    @shade_smooth.setter
+    def shade_smooth(self, shade_smooth: Boolean):
+        """ > Node <&Node Set Shade Smooth>
+        
+        Jump method: True.
+        
+        self: socket 'Mesh'.
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `domain` | `'EDGE'` |
+        
+        Parameters
+        ----------
+        shade_smooth : Boolean, optional
+            socket 'Shade Smooth'
+        
+        Returns
+        -------
+        None
+        """
+        _named_sockets = {'mesh': self, 'selection': self.get_selection(), 'shade_smooth': shade_smooth}
+        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
+        _node = Node('Set Shade Smooth', named_sockets=_named_sockets, domain='EDGE')
+        self._jump(_node._out)
+
+    @property
+    def smooth(self):
+        """ > Node <&Node Is Edge Smooth>
+        
+        Jump method: False.
+        
+        Returns
+        -------
+        Boolean
+            socket 'OUT'
+        """
+        _named_sockets = {}
+        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
+        _node = Node('Is Edge Smooth', named_sockets=_named_sockets)
+        return _node._out
+
+    @smooth.setter
+    def smooth(self, shade_smooth: Boolean):
+        """ > Node <&Node Set Shade Smooth>
+        
+        Jump method: True.
+        
+        self: socket 'Mesh'.
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `domain` | `'EDGE'` |
+        
+        Parameters
+        ----------
+        shade_smooth : Boolean, optional
+            socket 'Shade Smooth'
+        
+        Returns
+        -------
+        None
+        """
+        _named_sockets = {'mesh': self, 'selection': self.get_selection(), 'shade_smooth': shade_smooth}
+        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
+        _node = Node('Set Shade Smooth', named_sockets=_named_sockets, domain='EDGE')
+        self._jump(_node._out)

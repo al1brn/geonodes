@@ -143,7 +143,7 @@ class Bundle(Socket):
         # Create the node
         # ----------------------------------------------------------------------------------------------------
 
-        node = Node('Separate Bundle', {'Bundle': self})
+        node = Node('Separate Bundle', named_sockets={'Bundle': self})
 
         # ----------------------------------------------------------------------------------------------------
         # Applies the signature

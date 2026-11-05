@@ -55,8 +55,20 @@ def render_modules(core_path, tree_type, sources, cross_refs=None):
     static_name, static_class = 'static_nd.py', 'ND'
     targets[static_name] = (static_class, None)
     unknown = sources.keys() - targets.keys() - {'gnmath.py'}
+
     if unknown:
+        from pprint import pprint
+        print("DEBUG sources:", list(sources.keys()))
+
+        for key in unknown:
+            print('*'*100)
+            print("DEBUG key")
+            pprint(sources[key])
+            print()
+        
+
         raise ValueError(f'Unknown destinations in {environment}: {sorted(unknown)}')
+    
     header = (f'# Generated {datetime.now():%Y-%m-%d %H:%M:%S}\n'
               'from __future__ import annotations\n'
               'from ...common.sockettype import SocketType\n'

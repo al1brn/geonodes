@@ -309,7 +309,7 @@ class Closure(Socket):
         # ----------------------------------------------------------------------------------------------------
 
         # Closure evaluation node
-        node = Node('NodeEvaluateClosure', {"Closure": self})
+        node = Node('NodeEvaluateClosure', named_sockets={"Closure": self})
 
         # Set the signature
         node.set_signature('INPUT', Signature(signature.inputs))
@@ -411,7 +411,7 @@ class Closure(Socket):
         # ----------------------------------------------------------------------------------------------------
 
         # Closure to list node
-        node = Node('GeometryNodeClosureToList', {"Closure": self, "Count": count})
+        node = Node('GeometryNodeClosureToList', named_sockets={"Closure": self, "Count": count})
 
         # Set the signature
         node.set_signature('OUTPUT', Signature(signature.outputs))

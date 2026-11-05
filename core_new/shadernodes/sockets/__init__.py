@@ -10,3 +10,4 @@ from .integer import Integer
 from .menu import Menu
 from .string import String
 from .closure import Closure
+from .texture import Texture

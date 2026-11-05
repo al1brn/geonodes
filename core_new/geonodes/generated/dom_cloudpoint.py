@@ -47,6 +47,9 @@ if TYPE_CHECKING:
     class Geometry:
         ...
 
+    class Texture:
+        ...
+
     class Collection:
         ...
 
@@ -114,4 +117,41 @@ from .dom_point import Point
 
 class CloudPoint(BaseCloudPoint, Point):
     __slots__ = ()
-    pass
+
+    @property
+    def radius(self):
+        """ > Node <&Node Radius>
+        
+        Jump method: False.
+        
+        Returns
+        -------
+        Float
+            socket 'OUT'
+        """
+        _named_sockets = {}
+        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
+        _node = Node('Radius', named_sockets=_named_sockets)
+        return _node._out
+
+    @radius.setter
+    def radius(self, radius: Float):
+        """ > Node <&Node Set Point Radius>
+        
+        Jump method: True.
+        
+        self: socket 'Points'.
+        
+        Parameters
+        ----------
+        radius : Float, optional
+            socket 'Radius'
+        
+        Returns
+        -------
+        None
+        """
+        _named_sockets = {'points': self, 'selection': self.get_selection(), 'radius': radius}
+        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
+        _node = Node('Set Point Radius', named_sockets=_named_sockets)
+        self._jump(_node._out)

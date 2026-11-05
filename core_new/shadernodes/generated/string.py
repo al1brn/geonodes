@@ -32,6 +32,9 @@ if TYPE_CHECKING:
     class Menu:
         ...
 
+    class Texture:
+        ...
+
     class String:
         ...
 
@@ -45,35 +48,7 @@ from ...shadernodes.sockets.string import String as BaseString
 class String(BaseString):
     __slots__ = ()
 
-    def enable_output(self, enable: Boolean=None):
-        """ > Node <&ShaderNode Enable Output>
-        
-        Jump method: False.
-        
-        self: socket 'Value'.
-        
-        **Fixed values**
-        
-        | Parameter | Value |
-        | --- | --- |
-        | `data_type` | `'STRING'` |
-        
-        Parameters
-        ----------
-        enable : Boolean, optional
-            socket 'Enable'
-        
-        Returns
-        -------
-        String
-            socket 'OUT'
-        """
-        _named_sockets = {'enable': enable, 'value': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Enable Output', named_sockets=_named_sockets, data_type='STRING')
-        return _node._out
-
-    def find(self, search: String=None, mode: Literal['From Start', 'From End']=None):
+    def find_in_string(self, search: String=None, mode: Menu=None):
         """ > Node <&ShaderNode Find in String>
         
         Jump method: False.
@@ -85,20 +60,18 @@ class String(BaseString):
         search : String, optional
             socket 'Search'
         
-        mode : menu='From Start', optional
-            ('From Start', 'From End')
+        mode : Menu, optional
+            socket 'Mode'
         
         Returns
         -------
-        Integer
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'string': self, 'search': search, 'mode': mode}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Find in String', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('Find in String', named_sockets={'String': self, 'Search': search, 'Mode': mode})
+        return node._out
 
-    def format(self, named_sockets=None, **sockets):
+    def format_string(self, named_sockets=None, **sockets):
         """ > Node <&ShaderNode Format String>
         
         Jump method: False.
@@ -107,21 +80,17 @@ class String(BaseString):
         
         Returns
         -------
-        String
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'format': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _named_sockets.update({_name: _value for _name, _value in (named_sockets or {}).items() if _value is not None})
-        _node = Node('Format String', named_sockets=_named_sockets, **sockets)
-        return _node._out
+        _named_sockets = {'Format': self}
+        _named_sockets.update({name: value for name, value in (named_sockets or {}).items() if value is not None})
+        node = Node('Format String', named_sockets=_named_sockets, **sockets)
+        return node._out
 
-    def implicit_conversion(self, socket_idname='NodeSocketColor'):
+    @classmethod
+    def implicit_conversion(cls, value: String=None, socket_idname: str='NodeSocketColor'):
         """ > Node <&ShaderNode Implicit Conversion>
-        
-        Jump method: False.
-        
-        self: socket 'Value'.
         
         **Fixed values**
         
@@ -131,52 +100,21 @@ class String(BaseString):
         
         Parameters
         ----------
+        value : String, optional
+            socket 'Value'
+        
         socket_idname : str
             parameter `socket_idname`
         
         Returns
         -------
-        String
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'value': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Implicit Conversion', named_sockets=_named_sockets, socket_idname=socket_idname, data_type='STRING')
-        return _node._out
+        node = Node('Implicit Conversion', named_sockets={'Value': value}, data_type='STRING', socket_idname=socket_idname)
+        return node._out
 
-    @classmethod
-    def IndexSwitch(cls, named_sockets=None, index: Integer=None, _0: String=None, _1: String=None, **sockets):
-        """ > Node <&ShaderNode Index Switch>
-        
-        **Fixed values**
-        
-        | Parameter | Value |
-        | --- | --- |
-        | `data_type` | `'STRING'` |
-        
-        Parameters
-        ----------
-        index : Integer, optional
-            socket 'Index'
-        
-        _0 : String, optional
-            socket '0'
-        
-        _1 : String, optional
-            socket '1'
-        
-        Returns
-        -------
-        String
-            socket 'OUT'
-        """
-        _named_sockets = {'index': index, '_0': _0, '_1': _1}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _named_sockets.update({_name: _value for _name, _value in (named_sockets or {}).items() if _value is not None})
-        _node = Node('Index Switch', named_sockets=_named_sockets, data_type='STRING', **sockets)
-        return _node._out
-
-    def match(self, operation: Literal['Starts With', 'Ends With', 'Contains']=None, key: String=None):
+    def match_string(self, operation: Menu=None, key: String=None):
         """ > Node <&ShaderNode Match String>
         
         Jump method: False.
@@ -185,55 +123,21 @@ class String(BaseString):
         
         Parameters
         ----------
-        operation : menu='Starts With', optional
-            ('Starts With', 'Ends With', 'Contains')
+        operation : Menu, optional
+            socket 'Operation'
         
         key : String, optional
             socket 'Key'
         
         Returns
         -------
-        Boolean
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'string': self, 'operation': operation, 'key': key}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Match String', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('Match String', named_sockets={'String': self, 'Operation': operation, 'Key': key})
+        return node._out
 
-    @classmethod
-    def MenuSwitch(cls, named_sockets=None, menu: Literal['A', 'B']=None, a: String=None, b: String=None, **sockets):
-        """ > Node <&ShaderNode Menu Switch>
-        
-        **Fixed values**
-        
-        | Parameter | Value |
-        | --- | --- |
-        | `data_type` | `'STRING'` |
-        
-        Parameters
-        ----------
-        menu : menu='A', optional
-            ('A', 'B')
-        
-        a : String, optional
-            socket 'A'
-        
-        b : String, optional
-            socket 'B'
-        
-        Returns
-        -------
-        String
-            socket 'OUT'
-        """
-        _named_sockets = {'menu': menu, 'a': a, 'b': b}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _named_sockets.update({_name: _value for _name, _value in (named_sockets or {}).items() if _value is not None})
-        _node = Node('Menu Switch', named_sockets=_named_sockets, data_type='STRING', **sockets)
-        return _node._out
-
-    def replace(self, find: String=None, replace: String=None):
+    def replace_string(self, find: String=None, replace: String=None):
         """ > Node <&ShaderNode Replace String>
         
         Jump method: False.
@@ -250,16 +154,13 @@ class String(BaseString):
         
         Returns
         -------
-        String
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'string': self, 'find': find, 'replace': replace}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Replace String', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('Replace String', named_sockets={'String': self, 'Find': find, 'Replace': replace})
+        return node._out
 
-    @property
-    def reverse(self):
+    def reverse_string(self):
         """ > Node <&ShaderNode Reverse String>
         
         Jump method: False.
@@ -268,15 +169,13 @@ class String(BaseString):
         
         Returns
         -------
-        String
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'string': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Reverse String', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('Reverse String', named_sockets={'String': self})
+        return node._out
 
-    def set_case(self, case: Literal['Uppercase', 'Lowercase']=None):
+    def set_string_case(self, case: Menu=None):
         """ > Node <&ShaderNode Set String Case>
         
         Jump method: False.
@@ -285,20 +184,18 @@ class String(BaseString):
         
         Parameters
         ----------
-        case : menu='Uppercase', optional
-            ('Uppercase', 'Lowercase')
+        case : Menu, optional
+            socket 'Case'
         
         Returns
         -------
-        String
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'string': self, 'case': case}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Set String Case', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('Set String Case', named_sockets={'String': self, 'Case': case})
+        return node._out
 
-    def slice(self, position: Integer=None, length: Integer=None):
+    def slice_string(self, position: Integer=None, length: Integer=None):
         """ > Node <&ShaderNode Slice String>
         
         Jump method: False.
@@ -315,16 +212,13 @@ class String(BaseString):
         
         Returns
         -------
-        String
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'string': self, 'position': position, 'length': length}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Slice String', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('Slice String', named_sockets={'String': self, 'Position': position, 'Length': length})
+        return node._out
 
-    @property
-    def length(self):
+    def string_length(self):
         """ > Node <&ShaderNode String Length>
         
         Jump method: False.
@@ -333,13 +227,11 @@ class String(BaseString):
         
         Returns
         -------
-        Integer
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'string': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('String Length', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('String Length', named_sockets={'String': self})
+        return node._out
 
     def to_value(self, base: Integer=None, data_type: Literal['FLOAT', 'INT']='FLOAT'):
         """ > Node <&ShaderNode String to Value>
@@ -358,15 +250,16 @@ class String(BaseString):
         
         Returns
         -------
-        Float | Integer
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'string': self, 'base': base}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('String to Value', named_sockets=_named_sockets, data_type=data_type)
-        return _node._out
+        _configuration = ({'float': 'FLOAT', 'int': 'INT', 'integer': 'INT'}.get(data_type.lower(), data_type),)
+        _node_sockets = {('FLOAT',): {'String': self}, ('INT',): {'String': self, 'Base': base}}[_configuration]
+        _node_args = {('FLOAT',): [], ('INT',): []}[_configuration]
+        node = Node('String to Value', *_node_args, named_sockets=_node_sockets, data_type=data_type)
+        return node._out
 
-    def trim(self, characters: String=None, whitespace: Boolean=None, start: Boolean=None, end: Boolean=None):
+    def trim_string(self, characters: String=None, whitespace: Boolean=None, start: Boolean=None, end: Boolean=None):
         """ > Node <&ShaderNode Trim String>
         
         Jump method: False.
@@ -389,23 +282,21 @@ class String(BaseString):
         
         Returns
         -------
-        String
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'string': self, 'characters': characters, 'whitespace': whitespace, 'start': start, 'end': end}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Trim String', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('Trim String', named_sockets={'String': self, 'Characters': characters, 'Whitespace': whitespace, 'Start': start, 'End': end})
+        return node._out
 
-    @classmethod
-    def FromValue(cls, value: Float | Integer=None, decimals: Integer=None, base: Integer=None, padding: Integer=None, data_type: Literal['FLOAT', 'INT']='FLOAT'):
+    def FromValue(self, decimals: Integer=None, base: Integer=None, padding: Integer=None, data_type: Literal['FLOAT', 'INT']='FLOAT'):
         """ > Node <&ShaderNode Value to String>
+        
+        Jump method: False.
+        
+        self: socket 'Value'.
         
         Parameters
         ----------
-        value : Float | Integer, optional
-            socket 'Value'
-        
         decimals : Integer, optional
             socket 'Decimals'
         
@@ -420,10 +311,11 @@ class String(BaseString):
         
         Returns
         -------
-        String
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'value': value, 'decimals': decimals, 'base': base, 'padding': padding}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Value to String', named_sockets=_named_sockets, data_type=data_type)
-        return _node._out
+        _configuration = ({'float': 'FLOAT', 'int': 'INT', 'integer': 'INT'}.get(data_type.lower(), data_type),)
+        _node_sockets = {('FLOAT',): {'Value': self, 'Decimals': decimals}, ('INT',): {'Value': self, 'Base': base, 'Padding': padding}}[_configuration]
+        _node_args = {('FLOAT',): [], ('INT',): []}[_configuration]
+        node = Node('Value to String', *_node_args, named_sockets=_node_sockets, data_type=data_type)
+        return node._out

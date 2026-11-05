@@ -47,6 +47,9 @@ if TYPE_CHECKING:
     class Geometry:
         ...
 
+    class Texture:
+        ...
+
     class Collection:
         ...
 
@@ -114,37 +117,6 @@ from ...geonodes.sockets.rotation import Rotation as BaseRotation
 class Rotation(BaseRotation):
     __slots__ = ()
 
-    def align_to_vector(self, factor: Float=None, vector: Vector=None, axis: Literal['X', 'Y', 'Z']='Z', pivot_axis: Literal['AUTO', 'X', 'Y', 'Z']='AUTO'):
-        """ > Node <&Node Align Rotation to Vector>
-        
-        Jump method: False.
-        
-        self: socket 'Rotation'.
-        
-        Parameters
-        ----------
-        factor : Float, optional
-            socket 'Factor'
-        
-        vector : Vector, optional
-            socket 'Vector'
-        
-        axis : Literal['X', 'Y', 'Z']
-            parameter `axis`
-        
-        pivot_axis : Literal['Auto', 'X', 'Y', 'Z']
-            parameter `pivot_axis`
-        
-        Returns
-        -------
-        Rotation
-            socket 'OUT'
-        """
-        _named_sockets = {'rotation': self, 'factor': factor, 'vector': vector}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Align Rotation to Vector', named_sockets=_named_sockets, axis=axis, pivot_axis=pivot_axis)
-        return _node._out
-
     @classmethod
     def FromAxes(cls, primary_axis_1: Vector=None, secondary_axis_1: Vector=None, primary_axis: Literal['X', 'Y', 'Z']='Z', secondary_axis: Literal['X', 'Y', 'Z']='X'):
         """ > Node <&Node Axes to Rotation>
@@ -165,13 +137,11 @@ class Rotation(BaseRotation):
         
         Returns
         -------
-        Rotation
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'primary_axis_1': primary_axis_1, 'secondary_axis_1': secondary_axis_1}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Axes to Rotation', named_sockets=_named_sockets, primary_axis=primary_axis, secondary_axis=secondary_axis)
-        return _node._out
+        node = Node('Axes to Rotation', named_sockets={'Primary Axis_1': primary_axis_1, 'Secondary Axis_1': secondary_axis_1}, primary_axis=primary_axis, secondary_axis=secondary_axis)
+        return node._out
 
     @classmethod
     def FromAxisAngle(cls, axis: Vector=None, angle: Float=None):
@@ -187,16 +157,14 @@ class Rotation(BaseRotation):
         
         Returns
         -------
-        Rotation
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'axis': axis, 'angle': angle}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Axis Angle to Rotation', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('Axis Angle to Rotation', named_sockets={'Axis': axis, 'Angle': angle})
+        return node._out
 
     @classmethod
-    def CombineList(cls, named_sockets=None, _0: Rotation=None, **sockets):
+    def combine_list(cls, *values: Socket):
         """ > Node <&Node Combine List>
         
         **Fixed values**
@@ -205,49 +173,13 @@ class Rotation(BaseRotation):
         | --- | --- |
         | `data_type` | `'ROTATION'` |
         
-        Parameters
-        ----------
-        _0 : Rotation, optional
-            socket '0'
-        
         Returns
         -------
-        Rotation
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'_0': _0}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _named_sockets.update({_name: _value for _name, _value in (named_sockets or {}).items() if _value is not None})
-        _node = Node('Combine List', named_sockets=_named_sockets, data_type='ROTATION', **sockets)
-        return _node._out
-
-    def enable_output(self, enable: Boolean=None):
-        """ > Node <&Node Enable Output>
-        
-        Jump method: False.
-        
-        self: socket 'Value'.
-        
-        **Fixed values**
-        
-        | Parameter | Value |
-        | --- | --- |
-        | `data_type` | `'ROTATION'` |
-        
-        Parameters
-        ----------
-        enable : Boolean, optional
-            socket 'Enable'
-        
-        Returns
-        -------
-        Rotation
-            socket 'OUT'
-        """
-        _named_sockets = {'enable': enable, 'value': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Enable Output', named_sockets=_named_sockets, data_type='ROTATION')
-        return _node._out
+        node = Node('Combine List', *values, named_sockets={}, data_type='ROTATION')
+        return node._out
 
     @classmethod
     def FromEuler(cls, euler: Vector=None):
@@ -260,20 +192,122 @@ class Rotation(BaseRotation):
         
         Returns
         -------
-        Rotation
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'euler': euler}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Euler to Rotation', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('Euler to Rotation', named_sockets={'Euler': euler})
+        return node._out
 
-    def implicit_conversion(self, socket_idname='NodeSocketColor'):
-        """ > Node <&Node Implicit Conversion>
+    @classmethod
+    def evaluate_at_index(cls, value: Rotation=None, index: Integer=None, domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']='POINT'):
+        """ > Node <&Node Evaluate at Index>
         
-        Jump method: False.
+        **Fixed values**
         
-        self: socket 'Value'.
+        | Parameter | Value |
+        | --- | --- |
+        | `data_type` | `'QUATERNION'` |
+        
+        Parameters
+        ----------
+        value : Rotation, optional
+            socket 'Value'
+        
+        index : Integer, optional
+            socket 'Index'
+        
+        domain : Literal['Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer']
+            parameter `domain`
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Evaluate at Index', named_sockets={'Value': value, 'Index': index}, domain=domain, data_type='QUATERNION')
+        return node._out
+
+    @classmethod
+    def evaluate_on_domain(cls, value: Rotation=None, domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']='POINT'):
+        """ > Node <&Node Evaluate on Domain>
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `data_type` | `'QUATERNION'` |
+        
+        Parameters
+        ----------
+        value : Rotation, optional
+            socket 'Value'
+        
+        domain : Literal['Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer']
+            parameter `domain`
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Evaluate on Domain', named_sockets={'Value': value}, domain=domain, data_type='QUATERNION')
+        return node._out
+
+    @classmethod
+    def filter_list(cls, list: Rotation=None, selection: Boolean=None):
+        """ > Node <&Node Filter List>
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `socket_type` | `'ROTATION'` |
+        
+        Parameters
+        ----------
+        list : Rotation, optional
+            socket 'List'
+        
+        selection : Boolean, optional
+            socket 'Selection'
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Filter List', named_sockets={'List': list, 'Selection': selection}, socket_type='ROTATION')
+        return node._out
+
+    @classmethod
+    def get_list_item(cls, list: Rotation=None, index: Integer=None):
+        """ > Node <&Node Get List Item>
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `socket_type` | `'ROTATION'` |
+        
+        Parameters
+        ----------
+        list : Rotation, optional
+            socket 'List'
+        
+        index : Integer, optional
+            socket 'Index'
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Get List Item', named_sockets={'List': list, 'Index': index}, socket_type='ROTATION')
+        return node._out
+
+    @classmethod
+    def hash_value(cls, value: Rotation=None, seed: Integer=None):
+        """ > Node <&Node Hash Value>
         
         **Fixed values**
         
@@ -283,53 +317,47 @@ class Rotation(BaseRotation):
         
         Parameters
         ----------
+        value : Rotation, optional
+            socket 'Value'
+        
+        seed : Integer, optional
+            socket 'Seed'
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Hash Value', named_sockets={'Value': value, 'Seed': seed}, data_type='ROTATION')
+        return node._out
+
+    @classmethod
+    def implicit_conversion(cls, value: Rotation=None, socket_idname: str='NodeSocketColor'):
+        """ > Node <&Node Implicit Conversion>
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `data_type` | `'ROTATION'` |
+        
+        Parameters
+        ----------
+        value : Rotation, optional
+            socket 'Value'
+        
         socket_idname : str
             parameter `socket_idname`
         
         Returns
         -------
-        Rotation
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'value': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Implicit Conversion', named_sockets=_named_sockets, socket_idname=socket_idname, data_type='ROTATION')
-        return _node._out
+        node = Node('Implicit Conversion', named_sockets={'Value': value}, data_type='ROTATION', socket_idname=socket_idname)
+        return node._out
 
-    @classmethod
-    def IndexSwitch(cls, named_sockets=None, index: Integer=None, _0: Rotation=None, _1: Rotation=None, **sockets):
-        """ > Node <&Node Index Switch>
-        
-        **Fixed values**
-        
-        | Parameter | Value |
-        | --- | --- |
-        | `data_type` | `'ROTATION'` |
-        
-        Parameters
-        ----------
-        index : Integer, optional
-            socket 'Index'
-        
-        _0 : Rotation, optional
-            socket '0'
-        
-        _1 : Rotation, optional
-            socket '1'
-        
-        Returns
-        -------
-        Rotation
-            socket 'OUT'
-        """
-        _named_sockets = {'index': index, '_0': _0, '_1': _1}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _named_sockets.update({_name: _value for _name, _value in (named_sockets or {}).items() if _value is not None})
-        _node = Node('Index Switch', named_sockets=_named_sockets, data_type='ROTATION', **sockets)
-        return _node._out
-
-    @property
-    def invert(self):
+    def invert_rotation(self):
         """ > Node <&Node Invert Rotation>
         
         Jump method: False.
@@ -338,17 +366,15 @@ class Rotation(BaseRotation):
         
         Returns
         -------
-        Rotation
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'rotation': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Invert Rotation', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('Invert Rotation', named_sockets={'Rotation': self})
+        return node._out
 
     @classmethod
-    def MenuSwitch(cls, named_sockets=None, menu: Literal['A', 'B']=None, a: Rotation=None, b: Rotation=None, **sockets):
-        """ > Node <&Node Menu Switch>
+    def list_length(cls, list: Rotation=None):
+        """ > Node <&Node List Length>
         
         **Fixed values**
         
@@ -358,46 +384,37 @@ class Rotation(BaseRotation):
         
         Parameters
         ----------
-        menu : menu='A', optional
-            ('A', 'B')
+        list : Rotation, optional
+            socket 'List'
         
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('List Length', named_sockets={'List': list}, data_type='ROTATION')
+        return node._out
+
+    @classmethod
+    def mix(cls, a: Rotation=None, b: Rotation=None, factor: Float=None, factor_mode: Literal['UNIFORM', 'NON_UNIFORM']='UNIFORM', blend_type: Literal['MIX', 'DARKEN', 'MULTIPLY', 'BURN', 'LIGHTEN', 'SCREEN', 'DODGE', 'ADD', 'OVERLAY', 'SOFT_LIGHT', 'LINEAR_LIGHT', 'DIFFERENCE', 'EXCLUSION', 'SUBTRACT', 'DIVIDE', 'HUE', 'SATURATION', 'COLOR', 'VALUE']='MIX', clamp_factor: bool=True, clamp_result: bool=False):
+        """ > Node <&Node Mix>
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `data_type` | `'ROTATION'` |
+        
+        Parameters
+        ----------
         a : Rotation, optional
             socket 'A'
         
         b : Rotation, optional
             socket 'B'
         
-        Returns
-        -------
-        Rotation
-            socket 'OUT'
-        """
-        _named_sockets = {'menu': menu, 'a': a, 'b': b}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _named_sockets.update({_name: _value for _name, _value in (named_sockets or {}).items() if _value is not None})
-        _node = Node('Menu Switch', named_sockets=_named_sockets, data_type='ROTATION', **sockets)
-        return _node._out
-
-    def mix(self, factor: Float=None, b: Rotation=None, factor_mode: Literal['UNIFORM', 'NON_UNIFORM']='UNIFORM', blend_type: Literal['MIX', 'DARKEN', 'MULTIPLY', 'BURN', 'LIGHTEN', 'SCREEN', 'DODGE', 'ADD', 'OVERLAY', 'SOFT_LIGHT', 'LINEAR_LIGHT', 'DIFFERENCE', 'EXCLUSION', 'SUBTRACT', 'DIVIDE', 'HUE', 'SATURATION', 'COLOR', 'VALUE']='MIX', clamp_factor=True, clamp_result=False):
-        """ > Node <&Node Mix>
-        
-        Jump method: False.
-        
-        self: socket 'A_Rotation'.
-        
-        **Fixed values**
-        
-        | Parameter | Value |
-        | --- | --- |
-        | `data_type` | `'ROTATION'` |
-        
-        Parameters
-        ----------
         factor : Float, optional
             socket 'Factor'
-        
-        b : Rotation, optional
-            socket 'B'
         
         factor_mode : Literal['Uniform', 'Non-Uniform']
             parameter `factor_mode`
@@ -413,13 +430,11 @@ class Rotation(BaseRotation):
         
         Returns
         -------
-        Rotation
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'factor': factor, 'a': self, 'b': b}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Mix', named_sockets=_named_sockets, data_type='ROTATION', factor_mode=factor_mode, blend_type=blend_type, clamp_factor=clamp_factor, clamp_result=clamp_result)
-        return _node._out
+        node = Node('Mix', named_sockets={'Factor': factor, 'A': a, 'B': b}, data_type='ROTATION', factor_mode=factor_mode, blend_type=blend_type, clamp_factor=clamp_factor, clamp_result=clamp_result)
+        return node._out
 
     @classmethod
     def FromQuaternion(cls, w: Float=None, x: Float=None, y: Float=None, z: Float=None):
@@ -441,15 +456,13 @@ class Rotation(BaseRotation):
         
         Returns
         -------
-        Rotation
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'w': w, 'x': x, 'y': y, 'z': z}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Quaternion to Rotation', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('Quaternion to Rotation', named_sockets={'W': w, 'X': x, 'Y': y, 'Z': z})
+        return node._out
 
-    def rotate(self, rotate_by: Rotation=None, rotation_space: Literal['GLOBAL', 'LOCAL']='GLOBAL'):
+    def rotate_rotation(self, rotate_by: Rotation=None, rotation_space: Literal['GLOBAL', 'LOCAL']='GLOBAL'):
         """ > Node <&Node Rotate Rotation>
         
         Jump method: False.
@@ -466,35 +479,11 @@ class Rotation(BaseRotation):
         
         Returns
         -------
-        Rotation
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'rotation': self, 'rotate_by': rotate_by}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Rotate Rotation', named_sockets=_named_sockets, rotation_space=rotation_space)
-        return _node._out
-
-    def rotate_vector(self, vector: Vector=None):
-        """ > Node <&Node Rotate Vector>
-        
-        Jump method: False.
-        
-        self: socket 'Rotation'.
-        
-        Parameters
-        ----------
-        vector : Vector, optional
-            socket 'Vector'
-        
-        Returns
-        -------
-        Vector
-            socket 'OUT'
-        """
-        _named_sockets = {'vector': vector, 'rotation': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Rotate Vector', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('Rotate Rotation', named_sockets={'Rotation': self, 'Rotate By': rotate_by}, rotation_space=rotation_space)
+        return node._out
 
     def to_axis_angle(self):
         """ > Node <&Node Rotation to Axis Angle>
@@ -505,13 +494,11 @@ class Rotation(BaseRotation):
         
         Returns
         -------
-        Vector
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'rotation': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Rotation to Axis Angle', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('Rotation to Axis Angle', named_sockets={'Rotation': self})
+        return node._out
 
     def to_euler(self):
         """ > Node <&Node Rotation to Euler>
@@ -522,13 +509,11 @@ class Rotation(BaseRotation):
         
         Returns
         -------
-        Vector
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'rotation': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Rotation to Euler', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('Rotation to Euler', named_sockets={'Rotation': self})
+        return node._out
 
     def to_quaternion(self):
         """ > Node <&Node Rotation to Quaternion>
@@ -539,10 +524,40 @@ class Rotation(BaseRotation):
         
         Returns
         -------
-        Float
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'rotation': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Rotation to Quaternion', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('Rotation to Quaternion', named_sockets={'Rotation': self})
+        return node._out
+
+    @classmethod
+    def sort_list(cls, list: Rotation=None, selection: Boolean=None, group_id: Integer=None, sort_weight: Float=None):
+        """ > Node <&Node Sort List>
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `socket_type` | `'ROTATION'` |
+        
+        Parameters
+        ----------
+        list : Rotation, optional
+            socket 'List'
+        
+        selection : Boolean, optional
+            socket 'Selection'
+        
+        group_id : Integer, optional
+            socket 'Group ID'
+        
+        sort_weight : Float, optional
+            socket 'Sort Weight'
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Sort List', named_sockets={'List': list, 'Selection': selection, 'Group ID': group_id, 'Sort Weight': sort_weight}, socket_type='ROTATION')
+        return node._out

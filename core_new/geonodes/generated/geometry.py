@@ -47,6 +47,9 @@ if TYPE_CHECKING:
     class Geometry:
         ...
 
+    class Texture:
+        ...
+
     class Collection:
         ...
 
@@ -114,33 +117,34 @@ from ...geonodes.sockets.geometry import Geometry as BaseGeometry
 class Geometry(BaseGeometry):
     __slots__ = ()
 
-    def attribute_statistic(self, attribute: Float | Vector=None, data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'QUATERNION', 'FLOAT4X4', 'STRING', 'INT8', 'INT16_2D', 'INT32_2D', 'FLOAT2', 'FLOAT4', 'BYTE_COLOR']='FLOAT', domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']='POINT'):
+    def attribute_statistic(self, attribute: Socket=None, domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']='POINT'):
         """ > Node <&Node Attribute Statistic>
         
         Jump method: False.
         
         self: socket 'Geometry'.
         
+        **Derived parameters**
+        
+        - `data_type`: Inferred from socket 'Attribute' (attribute).
+        
         Parameters
         ----------
-        attribute : Float | Vector, optional
+        attribute : Socket, optional
             socket 'Attribute'
-        
-        data_type : Literal['Float', 'Vector']
-            parameter `data_type`
         
         domain : Literal['Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer']
             parameter `domain`
         
         Returns
         -------
-        Float | Vector
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'geometry': self, 'selection': self.get_selection(), 'attribute': attribute}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Attribute Statistic', named_sockets=_named_sockets, data_type=data_type, domain=domain)
-        return _node._out
+        data_type = SocketType.get_data_type_for_node(attribute, 'GeometryNodeAttributeStatistic', 'data_type')
+        selection = self.get_selection()
+        node = Node('Attribute Statistic', named_sockets={'Geometry': self, 'Selection': selection, 'Attribute': attribute}, data_type=data_type, domain=domain)
+        return node._out
 
     def bounding_box(self, use_radius: Boolean=None):
         """ > Node <&Node Bounding Box>
@@ -156,18 +160,16 @@ class Geometry(BaseGeometry):
         
         Returns
         -------
-        Mesh
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'geometry': self, 'use_radius': use_radius}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Bounding Box', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('Bounding Box', named_sockets={'Geometry': self, 'Use Radius': use_radius})
+        return node._out
 
     def capture_attribute(self, named_sockets=None, domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']='POINT', **sockets):
         """ > Node <&Node Capture Attribute>
         
-        Jump method: False.
+        Jump method: True.
         
         self: socket 'Geometry'.
         
@@ -178,16 +180,18 @@ class Geometry(BaseGeometry):
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
-        _named_sockets = {'geometry': self, 'selection': self.get_selection()}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _named_sockets.update({_name: _value for _name, _value in (named_sockets or {}).items() if _value is not None})
-        _node = Node('Capture Attribute', named_sockets=_named_sockets, domain=domain, **sockets)
-        return _node
+        selection = self.get_selection()
+        _named_sockets = {'Geometry': self, 'Selection': selection}
+        _named_sockets.update({name: value for name, value in (named_sockets or {}).items() if value is not None})
+        node = Node('Capture Attribute', named_sockets=_named_sockets, domain=domain, **sockets)
+        self._jump(node._out)
+        return node._second_out(self)
 
     @classmethod
-    def CombineList(cls, named_sockets=None, _0: Geometry=None, **sockets):
+    def combine_list(cls, *values: Socket):
         """ > Node <&Node Combine List>
         
         **Fixed values**
@@ -196,23 +200,14 @@ class Geometry(BaseGeometry):
         | --- | --- |
         | `data_type` | `'GEOMETRY'` |
         
-        Parameters
-        ----------
-        _0 : Geometry, optional
-            socket '0'
-        
         Returns
         -------
-        Geometry
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'_0': _0}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _named_sockets.update({_name: _value for _name, _value in (named_sockets or {}).items() if _value is not None})
-        _node = Node('Combine List', named_sockets=_named_sockets, data_type='GEOMETRY', **sockets)
-        return _node._out
+        node = Node('Combine List', *values, named_sockets={}, data_type='GEOMETRY')
+        return node._out
 
-    @property
     def convex_hull(self):
         """ > Node <&Node Convex Hull>
         
@@ -222,13 +217,11 @@ class Geometry(BaseGeometry):
         
         Returns
         -------
-        Mesh
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'geometry': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Convex Hull', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('Convex Hull', named_sockets={'Geometry': self})
+        return node._out
 
     def delete(self, mode: Literal['ALL', 'EDGE_FACE', 'ONLY_FACE']='ALL', domain: Literal['POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE', 'LAYER']='POINT'):
         """ > Node <&Node Delete Geometry>
@@ -247,14 +240,13 @@ class Geometry(BaseGeometry):
         
         Returns
         -------
-        Geometry
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'geometry': self, 'selection': self.get_selection()}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Delete Geometry', named_sockets=_named_sockets, mode=mode, domain=domain)
-        self._jump(_node._out)
-        return self._domain_to_geometry
+        selection = self.get_selection()
+        node = Node('Delete Geometry', named_sockets={'Geometry': self, 'Selection': selection}, mode=mode, domain=domain)
+        self._jump(node._out)
+        return node._second_out(self)
 
     @classmethod
     def DialGizmo(cls, *value: Float, position: Vector=None, up: Vector=None, screen_space: Boolean=None, radius: Float=None, color_id: Literal['PRIMARY', 'SECONDARY', 'X', 'Y', 'Z']='PRIMARY'):
@@ -282,15 +274,13 @@ class Geometry(BaseGeometry):
         
         Returns
         -------
-        Geometry
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'value': list(value), 'position': position, 'up': up, 'screen_space': screen_space, 'radius': radius}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Dial Gizmo', named_sockets=_named_sockets, color_id=color_id)
-        return _node._out
+        node = Node('Dial Gizmo', *[*list(value)], named_sockets={'Position': position, 'Up': up, 'Screen Space': screen_space, 'Radius': radius}, color_id=color_id)
+        return node._out
 
-    def domain_size(self, component: Literal['MESH', 'POINTCLOUD', 'CURVE', 'INSTANCES', 'GREASEPENCIL', 'VOLUME']='MESH'):
+    def domain_size(self, component: Literal['MESH', 'POINTCLOUD', 'CURVE', 'INSTANCES', 'GREASEPENCIL']='MESH'):
         """ > Node <&Node Domain Size>
         
         Jump method: False.
@@ -304,13 +294,11 @@ class Geometry(BaseGeometry):
         
         Returns
         -------
-        Integer
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'geometry': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Domain Size', named_sockets=_named_sockets, component=component)
-        return _node._out
+        node = Node('Domain Size', named_sockets={'Geometry': self}, component=component)
+        return node._out
 
     def duplicate_elements(self, amount: Integer=None, domain: Literal['POINT', 'EDGE', 'FACE', 'SPLINE', 'LAYER', 'INSTANCE']='POINT'):
         """ > Node <&Node Duplicate Elements>
@@ -329,45 +317,41 @@ class Geometry(BaseGeometry):
         
         Returns
         -------
-        Geometry
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'geometry': self, 'selection': self.get_selection(), 'amount': amount}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Duplicate Elements', named_sockets=_named_sockets, domain=domain)
-        self._jump(_node._out)
-        return self._domain_to_geometry
+        selection = self.get_selection()
+        node = Node('Duplicate Elements', named_sockets={'Geometry': self, 'Selection': selection, 'Amount': amount}, domain=domain)
+        self._jump(node._out)
+        return node._second_out(self)
 
-    def enable_output(self, enable: Boolean=None):
-        """ > Node <&Node Enable Output>
-        
-        Jump method: True.
-        
-        self: socket 'Value'.
+    @classmethod
+    def filter_list(cls, list: Geometry=None, selection: Boolean=None):
+        """ > Node <&Node Filter List>
         
         **Fixed values**
         
         | Parameter | Value |
         | --- | --- |
-        | `data_type` | `'GEOMETRY'` |
+        | `socket_type` | `'GEOMETRY'` |
         
         Parameters
         ----------
-        enable : Boolean, optional
-            socket 'Enable'
+        list : Geometry, optional
+            socket 'List'
+        
+        selection : Boolean, optional
+            socket 'Selection'
         
         Returns
         -------
-        Geometry
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'enable': enable, 'value': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Enable Output', named_sockets=_named_sockets, data_type='GEOMETRY')
-        self._jump(_node._out)
-        return self._domain_to_geometry
+        node = Node('Filter List', named_sockets={'List': list, 'Selection': selection}, socket_type='GEOMETRY')
+        return node._out
 
-    def materials(self, component_type: Literal['Mesh', 'Point Cloud', 'Curve', 'Grease Pencil']=None):
+    def materials(self, component_type: Menu=None):
         """ > Node <&Node Geometry Materials>
         
         Jump method: False.
@@ -376,25 +360,23 @@ class Geometry(BaseGeometry):
         
         Parameters
         ----------
-        component_type : menu='Mesh', optional
-            ('Mesh', 'Point Cloud', 'Curve', 'Grease Pencil')
+        component_type : Menu, optional
+            socket 'Component Type'
         
         Returns
         -------
-        Material
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'geometry': self, 'component_type': component_type}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Geometry Materials', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('Geometry Materials', named_sockets={'Geometry': self, 'Component Type': component_type})
+        return node._out
 
     def proximity(self, group_id: Integer=None, sample_position: Vector=None, sample_group_id: Integer=None, target_element: Literal['POINTS', 'EDGES', 'FACES']='FACES'):
         """ > Node <&Node Geometry Proximity>
         
         Jump method: False.
         
-        self: socket 'Target'.
+        self: socket 'Geometry'.
         
         Parameters
         ----------
@@ -412,30 +394,31 @@ class Geometry(BaseGeometry):
         
         Returns
         -------
-        Vector
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'geometry': self, 'group_id': group_id, 'sample_position': sample_position, 'sample_group_id': sample_group_id}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Geometry Proximity', named_sockets=_named_sockets, target_element=target_element)
-        return _node._out
+        node = Node('Geometry Proximity', named_sockets={'Geometry': self, 'Group ID': group_id, 'Sample Position': sample_position, 'Sample Group ID': sample_group_id}, target_element=target_element)
+        return node._out
 
-    def to_instance(self):
+    def to_instance(self, *geometry_1: Geometry):
         """ > Node <&Node Geometry to Instance>
         
         Jump method: False.
         
         self: socket 'Geometry'.
         
+        Parameters
+        ----------
+        geometry_1 : Geometry, optional
+            socket 'Geometry'
+        
         Returns
         -------
-        Instances
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'geometry': [self]}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Geometry to Instance', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('Geometry to Instance', *[*[self, *geometry_1]], named_sockets={})
+        return node._out
 
     def get_bundle(self, remove: Boolean=None):
         """ > Node <&Node Get Geometry Bundle>
@@ -451,16 +434,14 @@ class Geometry(BaseGeometry):
         
         Returns
         -------
-        Geometry
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'geometry': self, 'remove': remove}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Get Geometry Bundle', named_sockets=_named_sockets)
-        self._jump(_node._out)
-        return self._domain_to_geometry
+        node = Node('Get Geometry Bundle', named_sockets={'Geometry': self, 'Remove': remove})
+        self._jump(node._out)
+        return node._second_out(self)
 
-    def get_component(self, type: Literal['Mesh', 'Point Cloud', 'Curve', 'Instances', 'Grease Pencil', 'Volume']=None, remove: Boolean=None):
+    def get_component(self, type: Menu=None, remove: Boolean=None):
         """ > Node <&Node Get Geometry Component>
         
         Jump method: True.
@@ -469,29 +450,50 @@ class Geometry(BaseGeometry):
         
         Parameters
         ----------
-        type : menu='Mesh', optional
-            ('Mesh', 'Point Cloud', 'Curve', 'Instances', 'Grease Pencil', 'Volume')
+        type : Menu, optional
+            socket 'Type'
         
         remove : Boolean, optional
             socket 'Remove'
         
         Returns
         -------
-        Geometry
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'geometry': self, 'type': type, 'remove': remove}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Get Geometry Component', named_sockets=_named_sockets)
-        self._jump(_node._out)
-        return self._domain_to_geometry
+        node = Node('Get Geometry Component', named_sockets={'Geometry': self, 'Type': type, 'Remove': remove})
+        self._jump(node._out)
+        return node._second_out(self)
 
-    def implicit_conversion(self, socket_idname='NodeSocketColor'):
+    @classmethod
+    def get_list_item(cls, list: Geometry=None, index: Integer=None):
+        """ > Node <&Node Get List Item>
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `socket_type` | `'GEOMETRY'` |
+        
+        Parameters
+        ----------
+        list : Geometry, optional
+            socket 'List'
+        
+        index : Integer, optional
+            socket 'Index'
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Get List Item', named_sockets={'List': list, 'Index': index}, socket_type='GEOMETRY')
+        return node._out
+
+    @classmethod
+    def implicit_conversion(cls, value: Geometry=None, socket_idname: str='NodeSocketColor'):
         """ > Node <&Node Implicit Conversion>
-        
-        Jump method: True.
-        
-        self: socket 'Value'.
         
         **Fixed values**
         
@@ -501,22 +503,22 @@ class Geometry(BaseGeometry):
         
         Parameters
         ----------
+        value : Geometry, optional
+            socket 'Value'
+        
         socket_idname : str
             parameter `socket_idname`
         
         Returns
         -------
-        Geometry
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'value': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Implicit Conversion', named_sockets=_named_sockets, socket_idname=socket_idname, data_type='GEOMETRY')
-        self._jump(_node._out)
-        return self._domain_to_geometry
+        node = Node('Implicit Conversion', named_sockets={'Value': value}, data_type='GEOMETRY', socket_idname=socket_idname)
+        return node._out
 
     @classmethod
-    def ImportPly(cls, path: String=None):
+    def import_ply(cls, path: String=None):
         """ > Node <&Node Import PLY>
         
         Parameters
@@ -526,63 +528,32 @@ class Geometry(BaseGeometry):
         
         Returns
         -------
-        Geometry
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'path': path}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Import PLY', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('Import PLY', named_sockets={'Path': path})
+        return node._out
 
-    @classmethod
-    def IndexSwitch(cls, named_sockets=None, index: Integer=None, _0: Geometry=None, _1: Geometry=None, **sockets):
-        """ > Node <&Node Index Switch>
-        
-        **Fixed values**
-        
-        | Parameter | Value |
-        | --- | --- |
-        | `data_type` | `'GEOMETRY'` |
-        
-        Parameters
-        ----------
-        index : Integer, optional
-            socket 'Index'
-        
-        _0 : Geometry, optional
-            socket '0'
-        
-        _1 : Geometry, optional
-            socket '1'
-        
-        Returns
-        -------
-        Geometry
-            socket 'OUT'
-        """
-        _named_sockets = {'index': index, '_0': _0, '_1': _1}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _named_sockets.update({_name: _value for _name, _value in (named_sockets or {}).items() if _value is not None})
-        _node = Node('Index Switch', named_sockets=_named_sockets, data_type='GEOMETRY', **sockets)
-        return _node._out
-
-    def join(self):
+    def join(self, *geometry_1: Geometry):
         """ > Node <&Node Join Geometry>
         
         Jump method: True.
         
         self: socket 'Geometry'.
         
+        Parameters
+        ----------
+        geometry_1 : Geometry, optional
+            socket 'Geometry'
+        
         Returns
         -------
-        Geometry
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'geometry': [self]}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Join Geometry', named_sockets=_named_sockets)
-        self._jump(_node._out)
-        return self._domain_to_geometry
+        node = Node('Join Geometry', *[*[self, *geometry_1]], named_sockets={})
+        self._jump(node._out)
+        return node._second_out(self)
 
     @classmethod
     def LinearGizmo(cls, *value: Float, position: Vector=None, direction: Vector=None, color_id: Literal['PRIMARY', 'SECONDARY', 'X', 'Y', 'Z']='PRIMARY', draw_style: Literal['ARROW', 'CROSS', 'BOX']='ARROW'):
@@ -607,17 +578,15 @@ class Geometry(BaseGeometry):
         
         Returns
         -------
-        Geometry
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'value': list(value), 'position': position, 'direction': direction}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Linear Gizmo', named_sockets=_named_sockets, color_id=color_id, draw_style=draw_style)
-        return _node._out
+        node = Node('Linear Gizmo', *[*list(value)], named_sockets={'Position': position, 'Direction': direction}, color_id=color_id, draw_style=draw_style)
+        return node._out
 
     @classmethod
-    def MenuSwitch(cls, named_sockets=None, menu: Literal['A', 'B']=None, a: Geometry=None, b: Geometry=None, **sockets):
-        """ > Node <&Node Menu Switch>
+    def list_length(cls, list: Geometry=None):
+        """ > Node <&Node List Length>
         
         **Fixed values**
         
@@ -627,27 +596,40 @@ class Geometry(BaseGeometry):
         
         Parameters
         ----------
-        menu : menu='A', optional
-            ('A', 'B')
-        
-        a : Geometry, optional
-            socket 'A'
-        
-        b : Geometry, optional
-            socket 'B'
+        list : Geometry, optional
+            socket 'List'
         
         Returns
         -------
-        Geometry
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'menu': menu, 'a': a, 'b': b}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _named_sockets.update({_name: _value for _name, _value in (named_sockets or {}).items() if _value is not None})
-        _node = Node('Menu Switch', named_sockets=_named_sockets, data_type='GEOMETRY', **sockets)
-        return _node._out
+        node = Node('List Length', named_sockets={'List': list}, data_type='GEOMETRY')
+        return node._out
 
-    def merge_by_distance(self, mode: Literal['All', 'Connected']=None, distance: Float=None):
+    @classmethod
+    def MenuSwitch(cls, named_sockets=None, menu: Menu=None, data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SOUND']='GEOMETRY', **sockets):
+        """ > Node <&Node Menu Switch>
+        
+        Parameters
+        ----------
+        menu : Menu, optional
+            socket 'Menu'
+        
+        data_type : Literal['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Rotation', 'Matrix', 'String', 'Menu', 'Object', 'Image', 'Geometry', 'Collection', 'Material', 'Bundle', 'Closure', 'Font', 'Sound']
+            parameter `data_type`
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        _named_sockets = {'Menu': menu}
+        _named_sockets.update({name: value for name, value in (named_sockets or {}).items() if value is not None})
+        node = Node('Menu Switch', named_sockets=_named_sockets, data_type=data_type, **sockets)
+        return node._out
+
+    def merge_by_distance(self, mode: Menu=None, distance: Float=None):
         """ > Node <&Node Merge by Distance>
         
         Jump method: True.
@@ -656,22 +638,21 @@ class Geometry(BaseGeometry):
         
         Parameters
         ----------
-        mode : menu='All', optional
-            ('All', 'Connected')
+        mode : Menu, optional
+            socket 'Mode'
         
         distance : Float, optional
             socket 'Distance'
         
         Returns
         -------
-        Geometry
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'geometry': self, 'selection': self.get_selection(), 'mode': mode, 'distance': distance}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Merge by Distance', named_sockets=_named_sockets)
-        self._jump(_node._out)
-        return self._domain_to_geometry
+        selection = self.get_selection()
+        node = Node('Merge by Distance', named_sockets={'Geometry': self, 'Selection': selection, 'Mode': mode, 'Distance': distance})
+        self._jump(node._out)
+        return node._second_out(self)
 
     def merge_points(self, merge_id: Integer=None):
         """ > Node <&Node Merge Points>
@@ -687,16 +668,15 @@ class Geometry(BaseGeometry):
         
         Returns
         -------
-        Geometry
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'geometry': self, 'selection': self.get_selection(), 'merge_id': merge_id}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Merge Points', named_sockets=_named_sockets)
-        self._jump(_node._out)
-        return self._domain_to_geometry
+        selection = self.get_selection()
+        node = Node('Merge Points', named_sockets={'Geometry': self, 'Selection': selection, 'Merge ID': merge_id})
+        self._jump(node._out)
+        return node._second_out(self)
 
-    def raycast(self, attribute: Float | Integer | Boolean | Vector | Color | Rotation | Matrix=None, interpolation: Literal['Interpolated', 'Nearest']=None, source_position: Vector=None, ray_direction: Vector=None, ray_length: Float=None):
+    def raycast(self, attribute: Socket=None, interpolation: Menu=None, source_position: Vector=None, ray_direction: Vector=None, ray_length: Float=None):
         """ > Node <&Node Raycast>
         
         Jump method: False.
@@ -705,15 +685,15 @@ class Geometry(BaseGeometry):
         
         **Derived parameters**
         
-        - `data_type`: Inferred from attribute.
+        - `data_type`: Inferred from socket 'Attribute' (attribute).
         
         Parameters
         ----------
-        attribute : Float | Integer | Boolean | Vector | Color | Rotation | Matrix, optional
+        attribute : Socket, optional
             socket 'Attribute'
         
-        interpolation : menu='Interpolated', optional
-            ('Interpolated', 'Nearest')
+        interpolation : Menu, optional
+            socket 'Interpolation'
         
         source_position : Vector, optional
             socket 'Source Position'
@@ -726,16 +706,14 @@ class Geometry(BaseGeometry):
         
         Returns
         -------
-        Boolean
+        Socket
             socket 'OUT'
         """
         data_type = SocketType.get_data_type_for_node(attribute, 'GeometryNodeRaycast', 'data_type')
-        _named_sockets = {'target_geometry': self, 'attribute': attribute, 'interpolation': interpolation, 'source_position': source_position, 'ray_direction': ray_direction, 'ray_length': ray_length}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Raycast', named_sockets=_named_sockets, data_type=data_type)
-        return _node._out
+        node = Node('Raycast', named_sockets={'Target Geometry': self, 'Attribute': attribute, 'Interpolation': interpolation, 'Source Position': source_position, 'Ray Direction': ray_direction, 'Ray Length': ray_length}, data_type=data_type)
+        return node._out
 
-    def realize_instances(self, realize_all: Boolean=None, depth: Integer=None, preserve_normals: Boolean=None, realize_to_point_domain=False):
+    def realize_instances(self, realize_all: Boolean=None, depth: Integer=None, preserve_normals: Boolean=None, realize_to_point_domain: bool=False):
         """ > Node <&Node Realize Instances>
         
         Jump method: True.
@@ -758,16 +736,15 @@ class Geometry(BaseGeometry):
         
         Returns
         -------
-        Geometry
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'geometry': self, 'selection': self.get_selection(), 'realize_all': realize_all, 'depth': depth, 'preserve_normals': preserve_normals}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Realize Instances', named_sockets=_named_sockets, realize_to_point_domain=realize_to_point_domain)
-        self._jump(_node._out)
-        return self._domain_to_geometry
+        selection = self.get_selection()
+        node = Node('Realize Instances', named_sockets={'Geometry': self, 'Selection': selection, 'Realize All': realize_all, 'Depth': depth, 'Preserve Normals': preserve_normals}, realize_to_point_domain=realize_to_point_domain)
+        self._jump(node._out)
+        return node._second_out(self)
 
-    def remove_named_attribute(self, pattern_mode: Literal['Exact', 'Wildcard']=None, name: String=None):
+    def remove_named_attribute(self, pattern_mode: Menu=None, name: String=None):
         """ > Node <&Node Remove Named Attribute>
         
         Jump method: True.
@@ -776,24 +753,22 @@ class Geometry(BaseGeometry):
         
         Parameters
         ----------
-        pattern_mode : menu='Exact', optional
-            ('Exact', 'Wildcard')
+        pattern_mode : Menu, optional
+            socket 'Pattern Mode'
         
         name : String, optional
             socket 'Name'
         
         Returns
         -------
-        Geometry
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'geometry': self, 'pattern_mode': pattern_mode, 'name': name}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Remove Named Attribute', named_sockets=_named_sockets)
-        self._jump(_node._out)
-        return self._domain_to_geometry
+        node = Node('Remove Named Attribute', named_sockets={'Geometry': self, 'Pattern Mode': pattern_mode, 'Name': name})
+        self._jump(node._out)
+        return node._second_out(self)
 
-    def rename_attribute(self, mode: Literal['Single', 'Prefix']=None, old: String=None, new: String=None, overwrite: Boolean=None):
+    def rename_attribute(self, mode: Menu=None, old: String=None, new: String=None, overwrite: Boolean=None):
         """ > Node <&Node Rename Attribute>
         
         Jump method: True.
@@ -802,8 +777,8 @@ class Geometry(BaseGeometry):
         
         Parameters
         ----------
-        mode : menu='Single', optional
-            ('Single', 'Prefix')
+        mode : Menu, optional
+            socket 'Mode'
         
         old : String, optional
             socket 'Old'
@@ -816,14 +791,12 @@ class Geometry(BaseGeometry):
         
         Returns
         -------
-        Geometry
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'geometry': self, 'mode': mode, 'old': old, 'new': new, 'overwrite': overwrite}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Rename Attribute', named_sockets=_named_sockets)
-        self._jump(_node._out)
-        return self._domain_to_geometry
+        node = Node('Rename Attribute', named_sockets={'Geometry': self, 'Mode': mode, 'Old': old, 'New': new, 'Overwrite': overwrite})
+        self._jump(node._out)
+        return node._second_out(self)
 
     def replace_material(self, old: Material=None, new: Material=None):
         """ > Node <&Node Replace Material>
@@ -842,32 +815,31 @@ class Geometry(BaseGeometry):
         
         Returns
         -------
-        Geometry
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'geometry': self, 'old': old, 'new': new}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Replace Material', named_sockets=_named_sockets)
-        self._jump(_node._out)
-        return self._domain_to_geometry
+        node = Node('Replace Material', named_sockets={'Geometry': self, 'Old': old, 'New': new})
+        self._jump(node._out)
+        return node._second_out(self)
 
-    def sample_index(self, value: Float | Integer | Boolean | Vector | Color | Rotation | Matrix=None, index: Integer=None, data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'QUATERNION', 'FLOAT4X4', 'STRING', 'INT8', 'INT16_2D', 'INT32_2D', 'FLOAT2', 'FLOAT4', 'BYTE_COLOR']='FLOAT', domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']='POINT', clamp=False):
+    def sample_index(self, value: Socket=None, index: Integer=None, domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']='POINT', clamp: bool=False):
         """ > Node <&Node Sample Index>
         
         Jump method: False.
         
         self: socket 'Geometry'.
         
+        **Derived parameters**
+        
+        - `data_type`: Inferred from socket 'Value' (value).
+        
         Parameters
         ----------
-        value : Float | Integer | Boolean | Vector | Color | Rotation | Matrix, optional
+        value : Socket, optional
             socket 'Value'
         
         index : Integer, optional
             socket 'Index'
-        
-        data_type : Literal['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Quaternion', '4x4 Matrix']
-            parameter `data_type`
         
         domain : Literal['Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer']
             parameter `domain`
@@ -877,13 +849,12 @@ class Geometry(BaseGeometry):
         
         Returns
         -------
-        Float | Integer | Boolean | Vector | Color | Rotation | Matrix
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'geometry': self, 'value': value, 'index': index}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Sample Index', named_sockets=_named_sockets, data_type=data_type, domain=domain, clamp=clamp)
-        return _node._out
+        data_type = SocketType.get_data_type_for_node(value, 'GeometryNodeSampleIndex', 'data_type')
+        node = Node('Sample Index', named_sockets={'Geometry': self, 'Value': value, 'Index': index}, data_type=data_type, domain=domain, clamp=clamp)
+        return node._out
 
     def sample_nearest(self, sample_position: Vector=None, domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER']='POINT'):
         """ > Node <&Node Sample Nearest>
@@ -902,15 +873,13 @@ class Geometry(BaseGeometry):
         
         Returns
         -------
-        Integer
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'geometry': self, 'sample_position': sample_position}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Sample Nearest', named_sockets=_named_sockets, domain=domain)
-        return _node._out
+        node = Node('Sample Nearest', named_sockets={'Geometry': self, 'Sample Position': sample_position}, domain=domain)
+        return node._out
 
-    def scale_elements(self, scale: Float=None, center: Vector=None, scale_mode: Literal['Uniform', 'Single Axis']=None, axis: Vector=None, domain: Literal['FACE', 'EDGE']='FACE'):
+    def scale_elements(self, scale: Float=None, center: Vector=None, scale_mode: Menu=None, axis: Vector=None, domain: Literal['FACE', 'EDGE']='FACE'):
         """ > Node <&Node Scale Elements>
         
         Jump method: True.
@@ -925,8 +894,8 @@ class Geometry(BaseGeometry):
         center : Vector, optional
             socket 'Center'
         
-        scale_mode : menu='Uniform', optional
-            ('Uniform', 'Single Axis')
+        scale_mode : Menu, optional
+            socket 'Scale Mode'
         
         axis : Vector, optional
             socket 'Axis'
@@ -936,14 +905,13 @@ class Geometry(BaseGeometry):
         
         Returns
         -------
-        Geometry
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'geometry': self, 'selection': self.get_selection(), 'scale': scale, 'center': center, 'scale_mode': scale_mode, 'axis': axis}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Scale Elements', named_sockets=_named_sockets, domain=domain)
-        self._jump(_node._out)
-        return self._domain_to_geometry
+        selection = self.get_selection()
+        node = Node('Scale Elements', named_sockets={'Geometry': self, 'Selection': selection, 'Scale': scale, 'Center': center, 'Scale Mode': scale_mode, 'Axis': axis}, domain=domain)
+        self._jump(node._out)
+        return node._second_out(self)
 
     def separate_components(self):
         """ > Node <&Node Separate Components>
@@ -954,12 +922,11 @@ class Geometry(BaseGeometry):
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
-        _named_sockets = {'geometry': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Separate Components', named_sockets=_named_sockets)
-        return _node
+        node = Node('Separate Components', named_sockets={'Geometry': self})
+        return node._out
 
     def separate(self, domain: Literal['POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE', 'LAYER']='POINT'):
         """ > Node <&Node Separate Geometry>
@@ -975,12 +942,12 @@ class Geometry(BaseGeometry):
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
-        _named_sockets = {'geometry': self, 'selection': self.get_selection()}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Separate Geometry', named_sockets=_named_sockets, domain=domain)
-        return _node
+        selection = self.get_selection()
+        node = Node('Separate Geometry', named_sockets={'Geometry': self, 'Selection': selection}, domain=domain)
+        return node._out
 
     def set_bundle(self, bundle: Bundle=None):
         """ > Node <&Node Set Geometry Bundle>
@@ -996,14 +963,12 @@ class Geometry(BaseGeometry):
         
         Returns
         -------
-        Geometry
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'geometry': self, 'bundle': bundle}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Set Geometry Bundle', named_sockets=_named_sockets)
-        self._jump(_node._out)
-        return self._domain_to_geometry
+        node = Node('Set Geometry Bundle', named_sockets={'Geometry': self, 'Bundle': bundle})
+        self._jump(node._out)
+        return node._second_out(self)
 
     def set_name(self, name: String=None):
         """ > Node <&Node Set Geometry Name>
@@ -1019,14 +984,12 @@ class Geometry(BaseGeometry):
         
         Returns
         -------
-        Geometry
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'geometry': self, 'name': name}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Set Geometry Name', named_sockets=_named_sockets)
-        self._jump(_node._out)
-        return self._domain_to_geometry
+        node = Node('Set Geometry Name', named_sockets={'Geometry': self, 'Name': name})
+        self._jump(node._out)
+        return node._second_out(self)
 
     def set_id(self, id: Integer=None):
         """ > Node <&Node Set ID>
@@ -1042,14 +1005,13 @@ class Geometry(BaseGeometry):
         
         Returns
         -------
-        Geometry
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'geometry': self, 'selection': self.get_selection(), 'id': id}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Set ID', named_sockets=_named_sockets)
-        self._jump(_node._out)
-        return self._domain_to_geometry
+        selection = self.get_selection()
+        node = Node('Set ID', named_sockets={'Geometry': self, 'Selection': selection, 'ID': id})
+        self._jump(node._out)
+        return node._second_out(self)
 
     def set_material(self, material: Material=None):
         """ > Node <&Node Set Material>
@@ -1065,14 +1027,13 @@ class Geometry(BaseGeometry):
         
         Returns
         -------
-        Geometry
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'geometry': self, 'selection': self.get_selection(), 'material': material}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Set Material', named_sockets=_named_sockets)
-        self._jump(_node._out)
-        return self._domain_to_geometry
+        selection = self.get_selection()
+        node = Node('Set Material', named_sockets={'Geometry': self, 'Selection': selection, 'Material': material})
+        self._jump(node._out)
+        return node._second_out(self)
 
     def set_material_index(self, material_index: Integer=None):
         """ > Node <&Node Set Material Index>
@@ -1088,14 +1049,13 @@ class Geometry(BaseGeometry):
         
         Returns
         -------
-        Geometry
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'geometry': self, 'selection': self.get_selection(), 'material_index': material_index}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Set Material Index', named_sockets=_named_sockets)
-        self._jump(_node._out)
-        return self._domain_to_geometry
+        selection = self.get_selection()
+        node = Node('Set Material Index', named_sockets={'Geometry': self, 'Selection': selection, 'Material Index': material_index})
+        self._jump(node._out)
+        return node._second_out(self)
 
     def set_position(self, position: Vector=None, offset: Vector=None):
         """ > Node <&Node Set Position>
@@ -1114,14 +1074,13 @@ class Geometry(BaseGeometry):
         
         Returns
         -------
-        Geometry
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'geometry': self, 'selection': self.get_selection(), 'position': position, 'offset': offset}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Set Position', named_sockets=_named_sockets)
-        self._jump(_node._out)
-        return self._domain_to_geometry
+        selection = self.get_selection()
+        node = Node('Set Position', named_sockets={'Geometry': self, 'Selection': selection, 'Position': position, 'Offset': offset})
+        self._jump(node._out)
+        return node._second_out(self)
 
     def set_selection(self, domain: Literal['POINT', 'EDGE', 'FACE', 'CURVE']='POINT', selection_type: Literal['BOOLEAN', 'FLOAT']='BOOLEAN'):
         """ > Node <&Node Set Selection>
@@ -1140,14 +1099,13 @@ class Geometry(BaseGeometry):
         
         Returns
         -------
-        Geometry
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'geometry': self, 'selection': self.get_selection()}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Set Selection', named_sockets=_named_sockets, domain=domain, selection_type=selection_type)
-        self._jump(_node._out)
-        return self._domain_to_geometry
+        selection = self.get_selection()
+        node = Node('Set Selection', named_sockets={'Geometry': self, 'Selection': selection}, domain=domain, selection_type=selection_type)
+        self._jump(node._out)
+        return node._second_out(self)
 
     def sort_elements(self, group_id: Integer=None, sort_weight: Float=None, domain: Literal['POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE']='POINT'):
         """ > Node <&Node Sort Elements>
@@ -1169,48 +1127,104 @@ class Geometry(BaseGeometry):
         
         Returns
         -------
-        Geometry
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'geometry': self, 'selection': self.get_selection(), 'group_id': group_id, 'sort_weight': sort_weight}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Sort Elements', named_sockets=_named_sockets, domain=domain)
-        self._jump(_node._out)
-        return self._domain_to_geometry
+        selection = self.get_selection()
+        node = Node('Sort Elements', named_sockets={'Geometry': self, 'Selection': selection, 'Group ID': group_id, 'Sort Weight': sort_weight}, domain=domain)
+        self._jump(node._out)
+        return node._second_out(self)
 
-    def store_named_attribute(self, name: String=None, value: Float | Integer | Boolean | Vector | Color | Rotation | Matrix=None, data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'QUATERNION', 'FLOAT4X4', 'STRING', 'INT8', 'INT16_2D', 'INT32_2D', 'FLOAT2', 'FLOAT4', 'BYTE_COLOR']='FLOAT', domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']='POINT'):
+    @classmethod
+    def sort_list(cls, list: Geometry=None, selection: Boolean=None, group_id: Integer=None, sort_weight: Float=None):
+        """ > Node <&Node Sort List>
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `socket_type` | `'GEOMETRY'` |
+        
+        Parameters
+        ----------
+        list : Geometry, optional
+            socket 'List'
+        
+        selection : Boolean, optional
+            socket 'Selection'
+        
+        group_id : Integer, optional
+            socket 'Group ID'
+        
+        sort_weight : Float, optional
+            socket 'Sort Weight'
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Sort List', named_sockets={'List': list, 'Selection': selection, 'Group ID': group_id, 'Sort Weight': sort_weight}, socket_type='GEOMETRY')
+        return node._out
+
+    def to_instances(self, group_id: Integer=None, domain: Literal['POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE', 'LAYER']='POINT'):
+        """ > Node <&Node Split to Instances>
+        
+        Jump method: False.
+        
+        self: socket 'Geometry'.
+        
+        Parameters
+        ----------
+        group_id : Integer, optional
+            socket 'Group ID'
+        
+        domain : Literal['Point', 'Edge', 'Face', 'Spline', 'Instance', 'Layer']
+            parameter `domain`
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        selection = self.get_selection()
+        node = Node('Split to Instances', named_sockets={'Geometry': self, 'Selection': selection, 'Group ID': group_id}, domain=domain)
+        return node._out
+
+    def store_named_attribute(self, name: String=None, value: Socket=None, domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']='POINT'):
         """ > Node <&Node Store Named Attribute>
         
         Jump method: True.
         
         self: socket 'Geometry'.
         
+        **Derived parameters**
+        
+        - `data_type`: Inferred from socket 'Value' (value).
+        
         Parameters
         ----------
         name : String, optional
             socket 'Name'
         
-        value : Float | Integer | Boolean | Vector | Color | Rotation | Matrix, optional
+        value : Socket, optional
             socket 'Value'
-        
-        data_type : Literal['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Quaternion', '4x4 Matrix', '8-Bit Integer', '2D Vector', '4D Vector', 'Byte Color']
-            parameter `data_type`
         
         domain : Literal['Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer']
             parameter `domain`
         
         Returns
         -------
-        Geometry
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'geometry': self, 'selection': self.get_selection(), 'name': name, 'value': value}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Store Named Attribute', named_sockets=_named_sockets, data_type=data_type, domain=domain)
-        self._jump(_node._out)
-        return self._domain_to_geometry
+        data_type = SocketType.get_data_type_for_node(value, 'GeometryNodeStoreNamedAttribute', 'data_type')
+        selection = self.get_selection()
+        node = Node('Store Named Attribute', named_sockets={'Geometry': self, 'Selection': selection, 'Name': name, 'Value': value}, data_type=data_type, domain=domain)
+        self._jump(node._out)
+        return node._second_out(self)
 
-    def transfer_attributes(self, target_point_id: Integer=None, target_edge_id: Integer=None, target_face_id: Integer=None, target_corner_id: Integer=None, target_curve_id: Integer=None, target_instance_id: Integer=None, source: Geometry=None, source_point_id: Integer=None, source_edge_id: Integer=None, source_face_id: Integer=None, source_corner_id: Integer=None, source_curve_id: Integer=None, source_instance_id: Integer=None, pattern_mode: Literal['Exact', 'Wildcard']=None, attribute_names: String=None, exclude_names: Boolean=None):
+    def transfer_attributes(self, target_point_id: Integer=None, target_edge_id: Integer=None, target_face_id: Integer=None, target_corner_id: Integer=None, target_curve_id: Integer=None, target_instance_id: Integer=None, source: Geometry=None, source_point_id: Integer=None, source_edge_id: Integer=None, source_face_id: Integer=None, source_corner_id: Integer=None, source_curve_id: Integer=None, source_instance_id: Integer=None, pattern_mode: Menu=None, attribute_names: String=None, exclude_names: Boolean=None):
         """ > Node <&Node Transfer Attributes>
         
         Jump method: True.
@@ -1258,8 +1272,8 @@ class Geometry(BaseGeometry):
         source_instance_id : Integer, optional
             socket 'Source Instance ID'
         
-        pattern_mode : menu='Wildcard', optional
-            ('Exact', 'Wildcard')
+        pattern_mode : Menu, optional
+            socket 'Pattern Mode'
         
         attribute_names : String, optional
             socket 'Attribute Names'
@@ -1269,16 +1283,14 @@ class Geometry(BaseGeometry):
         
         Returns
         -------
-        Geometry
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'target': self, 'target_point_id': target_point_id, 'target_edge_id': target_edge_id, 'target_face_id': target_face_id, 'target_corner_id': target_corner_id, 'target_curve_id': target_curve_id, 'target_instance_id': target_instance_id, 'source': source, 'source_point_id': source_point_id, 'source_edge_id': source_edge_id, 'source_face_id': source_face_id, 'source_corner_id': source_corner_id, 'source_curve_id': source_curve_id, 'source_instance_id': source_instance_id, 'pattern_mode': pattern_mode, 'attribute_names': attribute_names, 'exclude_names': exclude_names}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Transfer Attributes', named_sockets=_named_sockets)
-        self._jump(_node._out)
-        return self._domain_to_geometry
+        node = Node('Transfer Attributes', named_sockets={'Target': self, 'Target Point ID': target_point_id, 'Target Edge ID': target_edge_id, 'Target Face ID': target_face_id, 'Target Corner ID': target_corner_id, 'Target Curve ID': target_curve_id, 'Target Instance ID': target_instance_id, 'Source': source, 'Source Point ID': source_point_id, 'Source Edge ID': source_edge_id, 'Source Face ID': source_face_id, 'Source Corner ID': source_corner_id, 'Source Curve ID': source_curve_id, 'Source Instance ID': source_instance_id, 'Pattern Mode': pattern_mode, 'Attribute Names': attribute_names, 'Exclude Names': exclude_names})
+        self._jump(node._out)
+        return node._second_out(self)
 
-    def transform(self, mode: Literal['Components', 'Matrix']=None, translation: Vector=None, rotation: Rotation=None, scale: Vector=None, transform: Matrix=None):
+    def transform(self, mode: Menu=None, translation: Vector=None, rotation: Rotation=None, scale: Vector=None, transform: Matrix=None):
         """ > Node <&Node Transform Geometry>
         
         Jump method: True.
@@ -1287,8 +1299,8 @@ class Geometry(BaseGeometry):
         
         Parameters
         ----------
-        mode : menu='Components', optional
-            ('Components', 'Matrix')
+        mode : Menu, optional
+            socket 'Mode'
         
         translation : Vector, optional
             socket 'Translation'
@@ -1304,17 +1316,15 @@ class Geometry(BaseGeometry):
         
         Returns
         -------
-        Geometry
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'geometry': self, 'mode': mode, 'translation': translation, 'rotation': rotation, 'scale': scale, 'transform': transform}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Transform Geometry', named_sockets=_named_sockets)
-        self._jump(_node._out)
-        return self._domain_to_geometry
+        node = Node('Transform Geometry', named_sockets={'Geometry': self, 'Mode': mode, 'Translation': translation, 'Rotation': rotation, 'Scale': scale, 'Transform': transform})
+        self._jump(node._out)
+        return node._second_out(self)
 
     @classmethod
-    def TransformGizmo(cls, *value: Matrix, position: Vector=None, rotation: Rotation=None, use_translation_x=True, use_translation_y=True, use_translation_z=True, use_rotation_x=True, use_rotation_y=True, use_rotation_z=True, use_scale_x=True, use_scale_y=True, use_scale_z=True):
+    def TransformGizmo(cls, *value: Matrix, position: Vector=None, rotation: Rotation=None, use_translation_x: bool=True, use_translation_y: bool=True, use_translation_z: bool=True, use_rotation_x: bool=True, use_rotation_y: bool=True, use_rotation_z: bool=True, use_scale_x: bool=True, use_scale_y: bool=True, use_scale_z: bool=True):
         """ > Node <&Node Transform Gizmo>
         
         Parameters
@@ -1357,10 +1367,205 @@ class Geometry(BaseGeometry):
         
         Returns
         -------
-        Geometry
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'value': list(value), 'position': position, 'rotation': rotation}
+        node = Node('Transform Gizmo', *[*list(value)], named_sockets={'Position': position, 'Rotation': rotation}, use_translation_x=use_translation_x, use_translation_y=use_translation_y, use_translation_z=use_translation_z, use_rotation_x=use_rotation_x, use_rotation_y=use_rotation_y, use_rotation_z=use_rotation_z, use_scale_x=use_scale_x, use_scale_y=use_scale_y, use_scale_z=use_scale_z)
+        return node._out
+
+    @property
+    def position(self):
+        """ > Node <&Node Position>
+        
+        Jump method: False.
+        
+        Returns
+        -------
+        Vector
+            socket 'OUT'
+        """
+        _named_sockets = {}
         _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Transform Gizmo', named_sockets=_named_sockets, use_translation_x=use_translation_x, use_translation_y=use_translation_y, use_translation_z=use_translation_z, use_rotation_x=use_rotation_x, use_rotation_y=use_rotation_y, use_rotation_z=use_rotation_z, use_scale_x=use_scale_x, use_scale_y=use_scale_y, use_scale_z=use_scale_z)
+        _node = Node('Position', named_sockets=_named_sockets)
         return _node._out
+
+    @position.setter
+    def position(self, position: Vector):
+        """ > Node <&Node Set Position>
+        
+        Jump method: True.
+        
+        self: socket 'Geometry'.
+        
+        Parameters
+        ----------
+        position : Vector, optional
+            socket 'Position'
+        
+        Returns
+        -------
+        None
+        """
+        _named_sockets = {'geometry': self, 'selection': self.get_selection(), 'position': position, 'offset': None}
+        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
+        _node = Node('Set Position', named_sockets=_named_sockets)
+        self._jump(_node._out)
+
+    @property
+    def bundle(self):
+        """ > Node <&Node Get Geometry Bundle>
+        
+        Jump method: False.
+        
+        self: socket 'Geometry'.
+        
+        Returns
+        -------
+        Bundle
+            socket 'Bundle'
+        """
+        _named_sockets = {'geometry': self, 'remove': False}
+        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
+        _node = Node('Get Geometry Bundle', named_sockets=_named_sockets)
+        return _node['Bundle']
+
+    @bundle.setter
+    def bundle(self, bundle: Bundle):
+        """ > Node <&Node Set Geometry Bundle>
+        
+        Jump method: True.
+        
+        self: socket 'Geometry'.
+        
+        Parameters
+        ----------
+        bundle : Bundle, optional
+            socket 'Bundle'
+        
+        Returns
+        -------
+        None
+        """
+        _named_sockets = {'geometry': self, 'bundle': bundle}
+        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
+        _node = Node('Set Geometry Bundle', named_sockets=_named_sockets)
+        self._jump(_node._out)
+
+    @property
+    def offset(self):
+        """Write-only property; setter node: Set Position."""
+        raise NodeError('Property Geometry.offset is write only.')
+
+    @offset.setter
+    def offset(self, offset: Vector):
+        """ > Node <&Node Set Position>
+        
+        Jump method: True.
+        
+        self: socket 'Geometry'.
+        
+        Parameters
+        ----------
+        offset : Vector, optional
+            socket 'Offset'
+        
+        Returns
+        -------
+        None
+        """
+        _named_sockets = {'geometry': self, 'selection': self.get_selection(), 'position': None, 'offset': offset}
+        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
+        _node = Node('Set Position', named_sockets=_named_sockets)
+        self._jump(_node._out)
+
+    @property
+    def id(self):
+        """ > Node <&Node ID>
+        
+        Jump method: False.
+        
+        Returns
+        -------
+        Integer
+            socket 'OUT'
+        """
+        _named_sockets = {}
+        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
+        _node = Node('ID', named_sockets=_named_sockets)
+        return _node._out
+
+    @id.setter
+    def id(self, id: Integer):
+        """ > Node <&Node Set ID>
+        
+        Jump method: True.
+        
+        self: socket 'Geometry'.
+        
+        Parameters
+        ----------
+        id : Integer, optional
+            socket 'ID'
+        
+        Returns
+        -------
+        None
+        """
+        _named_sockets = {'geometry': self, 'selection': self.get_selection(), 'id': id}
+        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
+        _node = Node('Set ID', named_sockets=_named_sockets)
+        self._jump(_node._out)
+
+    @property
+    def material(self):
+        """Write-only property; setter node: Set Material."""
+        raise NodeError('Property Geometry.material is write only.')
+
+    @material.setter
+    def material(self, material: Material):
+        """ > Node <&Node Set Material>
+        
+        Jump method: True.
+        
+        self: socket 'Geometry'.
+        
+        Parameters
+        ----------
+        material : Material, optional
+            socket 'Material'
+        
+        Returns
+        -------
+        None
+        """
+        _named_sockets = {'geometry': self, 'selection': self.get_selection(), 'material': material}
+        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
+        _node = Node('Set Material', named_sockets=_named_sockets)
+        self._jump(_node._out)
+
+    @property
+    def name(self):
+        """Write-only property; setter node: Set Geometry Name."""
+        raise NodeError('Property Geometry.name is write only.')
+
+    @name.setter
+    def name(self, name: String):
+        """ > Node <&Node Set Geometry Name>
+        
+        Jump method: True.
+        
+        self: socket 'Geometry'.
+        
+        Parameters
+        ----------
+        name : String, optional
+            socket 'Name'
+        
+        Returns
+        -------
+        None
+        """
+        _named_sockets = {'geometry': self, 'name': name}
+        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
+        _node = Node('Set Geometry Name', named_sockets=_named_sockets)
+        self._jump(_node._out)

@@ -47,6 +47,9 @@ if TYPE_CHECKING:
     class Geometry:
         ...
 
+    class Texture:
+        ...
+
     class Collection:
         ...
 
@@ -115,7 +118,36 @@ class Matrix(BaseMatrix):
     __slots__ = ()
 
     @classmethod
-    def CombineList(cls, named_sockets=None, _0: Matrix=None, **sockets):
+    def accumulate_field(cls, value: Matrix=None, group_id: Integer=None, domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']='POINT'):
+        """ > Node <&Node Accumulate Field>
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `data_type` | `'TRANSFORM'` |
+        
+        Parameters
+        ----------
+        value : Matrix, optional
+            socket 'Value'
+        
+        group_id : Integer, optional
+            socket 'Group ID'
+        
+        domain : Literal['Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer']
+            parameter `domain`
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Accumulate Field', named_sockets={'Value': value, 'Group ID': group_id}, data_type='TRANSFORM', domain=domain)
+        return node._out
+
+    @classmethod
+    def combine_list(cls, *values: Socket):
         """ > Node <&Node Combine List>
         
         **Fixed values**
@@ -124,21 +156,13 @@ class Matrix(BaseMatrix):
         | --- | --- |
         | `data_type` | `'MATRIX'` |
         
-        Parameters
-        ----------
-        _0 : Matrix, optional
-            socket '0'
-        
         Returns
         -------
-        Matrix
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'_0': _0}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _named_sockets.update({_name: _value for _name, _value in (named_sockets or {}).items() if _value is not None})
-        _node = Node('Combine List', named_sockets=_named_sockets, data_type='MATRIX', **sockets)
-        return _node._out
+        node = Node('Combine List', *values, named_sockets={}, data_type='MATRIX')
+        return node._out
 
     @classmethod
     def Combine(cls, column_1_row_1: Float=None, column_1_row_2: Float=None, column_1_row_3: Float=None, column_1_row_4: Float=None, column_2_row_1: Float=None, column_2_row_2: Float=None, column_2_row_3: Float=None, column_2_row_4: Float=None, column_3_row_1: Float=None, column_3_row_2: Float=None, column_3_row_3: Float=None, column_3_row_4: Float=None, column_4_row_1: Float=None, column_4_row_2: Float=None, column_4_row_3: Float=None, column_4_row_4: Float=None):
@@ -196,13 +220,11 @@ class Matrix(BaseMatrix):
         
         Returns
         -------
-        Matrix
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'column_1_row_1': column_1_row_1, 'column_1_row_2': column_1_row_2, 'column_1_row_3': column_1_row_3, 'column_1_row_4': column_1_row_4, 'column_2_row_1': column_2_row_1, 'column_2_row_2': column_2_row_2, 'column_2_row_3': column_2_row_3, 'column_2_row_4': column_2_row_4, 'column_3_row_1': column_3_row_1, 'column_3_row_2': column_3_row_2, 'column_3_row_3': column_3_row_3, 'column_3_row_4': column_3_row_4, 'column_4_row_1': column_4_row_1, 'column_4_row_2': column_4_row_2, 'column_4_row_3': column_4_row_3, 'column_4_row_4': column_4_row_4}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Combine Matrix', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('Combine Matrix', named_sockets={'Column 1 Row 1': column_1_row_1, 'Column 1 Row 2': column_1_row_2, 'Column 1 Row 3': column_1_row_3, 'Column 1 Row 4': column_1_row_4, 'Column 2 Row 1': column_2_row_1, 'Column 2 Row 2': column_2_row_2, 'Column 2 Row 3': column_2_row_3, 'Column 2 Row 4': column_2_row_4, 'Column 3 Row 1': column_3_row_1, 'Column 3 Row 2': column_3_row_2, 'Column 3 Row 3': column_3_row_3, 'Column 3 Row 4': column_3_row_4, 'Column 4 Row 1': column_4_row_1, 'Column 4 Row 2': column_4_row_2, 'Column 4 Row 3': column_4_row_3, 'Column 4 Row 4': column_4_row_4})
+        return node._out
 
     @classmethod
     def CombineTransform(cls, translation: Vector=None, rotation: Rotation=None, scale: Vector=None):
@@ -221,48 +243,122 @@ class Matrix(BaseMatrix):
         
         Returns
         -------
-        Matrix
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'translation': translation, 'rotation': rotation, 'scale': scale}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Combine Transform', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('Combine Transform', named_sockets={'Translation': translation, 'Rotation': rotation, 'Scale': scale})
+        return node._out
 
-    def enable_output(self, enable: Boolean=None):
-        """ > Node <&Node Enable Output>
-        
-        Jump method: False.
-        
-        self: socket 'Value'.
+    @classmethod
+    def evaluate_at_index(cls, value: Matrix=None, index: Integer=None, domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']='POINT'):
+        """ > Node <&Node Evaluate at Index>
         
         **Fixed values**
         
         | Parameter | Value |
         | --- | --- |
-        | `data_type` | `'MATRIX'` |
+        | `data_type` | `'FLOAT4X4'` |
         
         Parameters
         ----------
-        enable : Boolean, optional
-            socket 'Enable'
+        value : Matrix, optional
+            socket 'Value'
+        
+        index : Integer, optional
+            socket 'Index'
+        
+        domain : Literal['Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer']
+            parameter `domain`
         
         Returns
         -------
-        Matrix
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'enable': enable, 'value': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Enable Output', named_sockets=_named_sockets, data_type='MATRIX')
-        return _node._out
+        node = Node('Evaluate at Index', named_sockets={'Value': value, 'Index': index}, domain=domain, data_type='FLOAT4X4')
+        return node._out
 
-    def implicit_conversion(self, socket_idname='NodeSocketColor'):
-        """ > Node <&Node Implicit Conversion>
+    @classmethod
+    def evaluate_on_domain(cls, value: Matrix=None, domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']='POINT'):
+        """ > Node <&Node Evaluate on Domain>
         
-        Jump method: False.
+        **Fixed values**
         
-        self: socket 'Value'.
+        | Parameter | Value |
+        | --- | --- |
+        | `data_type` | `'FLOAT4X4'` |
+        
+        Parameters
+        ----------
+        value : Matrix, optional
+            socket 'Value'
+        
+        domain : Literal['Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer']
+            parameter `domain`
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Evaluate on Domain', named_sockets={'Value': value}, domain=domain, data_type='FLOAT4X4')
+        return node._out
+
+    @classmethod
+    def filter_list(cls, list: Matrix=None, selection: Boolean=None):
+        """ > Node <&Node Filter List>
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `socket_type` | `'MATRIX'` |
+        
+        Parameters
+        ----------
+        list : Matrix, optional
+            socket 'List'
+        
+        selection : Boolean, optional
+            socket 'Selection'
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Filter List', named_sockets={'List': list, 'Selection': selection}, socket_type='MATRIX')
+        return node._out
+
+    @classmethod
+    def get_list_item(cls, list: Matrix=None, index: Integer=None):
+        """ > Node <&Node Get List Item>
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `socket_type` | `'MATRIX'` |
+        
+        Parameters
+        ----------
+        list : Matrix, optional
+            socket 'List'
+        
+        index : Integer, optional
+            socket 'Index'
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Get List Item', named_sockets={'List': list, 'Index': index}, socket_type='MATRIX')
+        return node._out
+
+    @classmethod
+    def hash_value(cls, value: Matrix=None, seed: Integer=None):
+        """ > Node <&Node Hash Value>
         
         **Fixed values**
         
@@ -272,52 +368,47 @@ class Matrix(BaseMatrix):
         
         Parameters
         ----------
+        value : Matrix, optional
+            socket 'Value'
+        
+        seed : Integer, optional
+            socket 'Seed'
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Hash Value', named_sockets={'Value': value, 'Seed': seed}, data_type='MATRIX')
+        return node._out
+
+    @classmethod
+    def implicit_conversion(cls, value: Matrix=None, socket_idname: str='NodeSocketColor'):
+        """ > Node <&Node Implicit Conversion>
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `data_type` | `'MATRIX'` |
+        
+        Parameters
+        ----------
+        value : Matrix, optional
+            socket 'Value'
+        
         socket_idname : str
             parameter `socket_idname`
         
         Returns
         -------
-        Matrix
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'value': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Implicit Conversion', named_sockets=_named_sockets, socket_idname=socket_idname, data_type='MATRIX')
-        return _node._out
+        node = Node('Implicit Conversion', named_sockets={'Value': value}, data_type='MATRIX', socket_idname=socket_idname)
+        return node._out
 
-    @classmethod
-    def IndexSwitch(cls, named_sockets=None, index: Integer=None, _0: Matrix=None, _1: Matrix=None, **sockets):
-        """ > Node <&Node Index Switch>
-        
-        **Fixed values**
-        
-        | Parameter | Value |
-        | --- | --- |
-        | `data_type` | `'MATRIX'` |
-        
-        Parameters
-        ----------
-        index : Integer, optional
-            socket 'Index'
-        
-        _0 : Matrix, optional
-            socket '0'
-        
-        _1 : Matrix, optional
-            socket '1'
-        
-        Returns
-        -------
-        Matrix
-            socket 'OUT'
-        """
-        _named_sockets = {'index': index, '_0': _0, '_1': _1}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _named_sockets.update({_name: _value for _name, _value in (named_sockets or {}).items() if _value is not None})
-        _node = Node('Index Switch', named_sockets=_named_sockets, data_type='MATRIX', **sockets)
-        return _node._out
-
-    def invert(self):
+    def invert_matrix(self):
         """ > Node <&Node Invert Matrix>
         
         Jump method: False.
@@ -326,52 +417,15 @@ class Matrix(BaseMatrix):
         
         Returns
         -------
-        Matrix
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'matrix': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Invert Matrix', named_sockets=_named_sockets)
-        return _node._out
-
-    @property
-    def determinant(self):
-        """ > Node <&Node Matrix Determinant>
-        
-        Jump method: False.
-        
-        self: socket 'Matrix'.
-        
-        Returns
-        -------
-        Float
-            socket 'OUT'
-        """
-        _named_sockets = {'matrix': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Matrix Determinant', named_sockets=_named_sockets)
-        return _node._out
-
-    def svd(self):
-        """ > Node <&Node Matrix SVD>
-        
-        Jump method: False.
-        
-        self: socket 'Matrix'.
-        
-        Returns
-        -------
-        Matrix
-            socket 'OUT'
-        """
-        _named_sockets = {'matrix': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Matrix SVD', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('Invert Matrix', named_sockets={'Matrix': self})
+        return node._out
 
     @classmethod
-    def MenuSwitch(cls, named_sockets=None, menu: Literal['A', 'B']=None, a: Matrix=None, b: Matrix=None, **sockets):
-        """ > Node <&Node Menu Switch>
+    def list_length(cls, list: Matrix=None):
+        """ > Node <&Node List Length>
         
         **Fixed values**
         
@@ -381,27 +435,48 @@ class Matrix(BaseMatrix):
         
         Parameters
         ----------
-        menu : menu='A', optional
-            ('A', 'B')
-        
-        a : Matrix, optional
-            socket 'A'
-        
-        b : Matrix, optional
-            socket 'B'
+        list : Matrix, optional
+            socket 'List'
         
         Returns
         -------
-        Matrix
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'menu': menu, 'a': a, 'b': b}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _named_sockets.update({_name: _value for _name, _value in (named_sockets or {}).items() if _value is not None})
-        _node = Node('Menu Switch', named_sockets=_named_sockets, data_type='MATRIX', **sockets)
-        return _node._out
+        node = Node('List Length', named_sockets={'List': list}, data_type='MATRIX')
+        return node._out
 
-    def multiply(self, matrix_1: Matrix=None):
+    def matrix_determinant(self):
+        """ > Node <&Node Matrix Determinant>
+        
+        Jump method: False.
+        
+        self: socket 'Matrix'.
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Matrix Determinant', named_sockets={'Matrix': self})
+        return node._out
+
+    def matrix_svd(self):
+        """ > Node <&Node Matrix SVD>
+        
+        Jump method: False.
+        
+        self: socket 'Matrix'.
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Matrix SVD', named_sockets={'Matrix': self})
+        return node._out
+
+    def multiply_matrices(self, matrix_1: Matrix=None):
         """ > Node <&Node Multiply Matrices>
         
         Jump method: False.
@@ -415,13 +490,11 @@ class Matrix(BaseMatrix):
         
         Returns
         -------
-        Matrix
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'matrix': self, 'matrix_1': matrix_1}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Multiply Matrices', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('Multiply Matrices', named_sockets={'Matrix': self, 'Matrix_1': matrix_1})
+        return node._out
 
     def separate(self):
         """ > Node <&Node Separate Matrix>
@@ -432,12 +505,11 @@ class Matrix(BaseMatrix):
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
-        _named_sockets = {'matrix': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Separate Matrix', named_sockets=_named_sockets)
-        return _node
+        node = Node('Separate Matrix', named_sockets={'Matrix': self})
+        return node._out
 
     def separate_transform(self):
         """ > Node <&Node Separate Transform>
@@ -448,15 +520,45 @@ class Matrix(BaseMatrix):
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
-        _named_sockets = {'transform': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Separate Transform', named_sockets=_named_sockets)
-        return _node
+        node = Node('Separate Transform', named_sockets={'Transform': self})
+        return node._out
 
-    @property
-    def transpose(self):
+    @classmethod
+    def sort_list(cls, list: Matrix=None, selection: Boolean=None, group_id: Integer=None, sort_weight: Float=None):
+        """ > Node <&Node Sort List>
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `socket_type` | `'MATRIX'` |
+        
+        Parameters
+        ----------
+        list : Matrix, optional
+            socket 'List'
+        
+        selection : Boolean, optional
+            socket 'Selection'
+        
+        group_id : Integer, optional
+            socket 'Group ID'
+        
+        sort_weight : Float, optional
+            socket 'Sort Weight'
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Sort List', named_sockets={'List': list, 'Selection': selection, 'Group ID': group_id, 'Sort Weight': sort_weight}, socket_type='MATRIX')
+        return node._out
+
+    def transpose_matrix(self):
         """ > Node <&Node Transpose Matrix>
         
         Jump method: False.
@@ -465,10 +567,8 @@ class Matrix(BaseMatrix):
         
         Returns
         -------
-        Matrix
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'matrix': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Transpose Matrix', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('Transpose Matrix', named_sockets={'Matrix': self})
+        return node._out

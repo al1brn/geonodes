@@ -231,4 +231,4 @@ class ShaderNodes(Tree):
             self.set_thickness(value)
 
     def aov_output(self, name: Optional[str] =None, color: Optional[Any] =None, value: Optional[Any] =None) -> None:
-        node = Node('AOV Output', {'Color': color, 'Value': value}, aov_name=name)
+        node = Node('AOV Output', named_sockets={'Color': color, 'Value': value}, aov_name=name)

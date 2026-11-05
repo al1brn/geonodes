@@ -32,6 +32,9 @@ if TYPE_CHECKING:
     class Menu:
         ...
 
+    class Texture:
+        ...
+
     class String:
         ...
 
@@ -65,13 +68,11 @@ class Vector(BaseVector):
         
         Returns
         -------
-        Vector
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'vector': self, 'vector_1': vector_1}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Vector Math', named_sockets=_named_sockets, operation='ADD')
-        return _node._out
+        node = Node('Vector Math', named_sockets={'Vector': self, 'Vector_1': vector_1}, operation='ADD')
+        return node._out
 
     def subtract(self, vector_1: Vector=None):
         """ > Node <&ShaderNode Vector Math>
@@ -93,13 +94,11 @@ class Vector(BaseVector):
         
         Returns
         -------
-        Vector
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'vector': self, 'vector_1': vector_1}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Vector Math', named_sockets=_named_sockets, operation='SUBTRACT')
-        return _node._out
+        node = Node('Vector Math', named_sockets={'Vector': self, 'Vector_1': vector_1}, operation='SUBTRACT')
+        return node._out
 
     def multiply(self, vector_1: Vector=None):
         """ > Node <&ShaderNode Vector Math>
@@ -121,13 +120,11 @@ class Vector(BaseVector):
         
         Returns
         -------
-        Vector
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'vector': self, 'vector_1': vector_1}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Vector Math', named_sockets=_named_sockets, operation='MULTIPLY')
-        return _node._out
+        node = Node('Vector Math', named_sockets={'Vector': self, 'Vector_1': vector_1}, operation='MULTIPLY')
+        return node._out
 
     def divide(self, vector_1: Vector=None):
         """ > Node <&ShaderNode Vector Math>
@@ -149,13 +146,11 @@ class Vector(BaseVector):
         
         Returns
         -------
-        Vector
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'vector': self, 'vector_1': vector_1}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Vector Math', named_sockets=_named_sockets, operation='DIVIDE')
-        return _node._out
+        node = Node('Vector Math', named_sockets={'Vector': self, 'Vector_1': vector_1}, operation='DIVIDE')
+        return node._out
 
     def multiply_add(self, multiplier: Vector=None, addend: Vector=None):
         """ > Node <&ShaderNode Vector Math>
@@ -180,13 +175,11 @@ class Vector(BaseVector):
         
         Returns
         -------
-        Vector
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'vector': self, 'multiplier': multiplier, 'addend': addend}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Vector Math', named_sockets=_named_sockets, operation='MULTIPLY_ADD')
-        return _node._out
+        node = Node('Vector Math', named_sockets={'Vector': self, 'Multiplier': multiplier, 'Addend': addend}, operation='MULTIPLY_ADD')
+        return node._out
 
     def cross(self, vector_1: Vector=None):
         """ > Node <&ShaderNode Vector Math>
@@ -208,13 +201,11 @@ class Vector(BaseVector):
         
         Returns
         -------
-        Vector
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'vector': self, 'vector_1': vector_1}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Vector Math', named_sockets=_named_sockets, operation='CROSS_PRODUCT')
-        return _node._out
+        node = Node('Vector Math', named_sockets={'Vector': self, 'Vector_1': vector_1}, operation='CROSS_PRODUCT')
+        return node._out
 
     def project(self, vector_1: Vector=None):
         """ > Node <&ShaderNode Vector Math>
@@ -236,13 +227,11 @@ class Vector(BaseVector):
         
         Returns
         -------
-        Vector
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'vector': self, 'vector_1': vector_1}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Vector Math', named_sockets=_named_sockets, operation='PROJECT')
-        return _node._out
+        node = Node('Vector Math', named_sockets={'Vector': self, 'Vector_1': vector_1}, operation='PROJECT')
+        return node._out
 
     def reflect(self, vector_1: Vector=None):
         """ > Node <&ShaderNode Vector Math>
@@ -264,13 +253,11 @@ class Vector(BaseVector):
         
         Returns
         -------
-        Vector
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'vector': self, 'vector_1': vector_1}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Vector Math', named_sockets=_named_sockets, operation='REFLECT')
-        return _node._out
+        node = Node('Vector Math', named_sockets={'Vector': self, 'Vector_1': vector_1}, operation='REFLECT')
+        return node._out
 
     def refract(self, vector_1: Vector=None, ior: Float=None):
         """ > Node <&ShaderNode Vector Math>
@@ -295,13 +282,11 @@ class Vector(BaseVector):
         
         Returns
         -------
-        Vector
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'vector': self, 'vector_1': vector_1, 'ior': ior}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Vector Math', named_sockets=_named_sockets, operation='REFRACT')
-        return _node._out
+        node = Node('Vector Math', named_sockets={'Vector': self, 'Vector_1': vector_1, 'IOR': ior}, operation='REFRACT')
+        return node._out
 
     def faceforward(self, incident: Vector=None, reference: Vector=None):
         """ > Node <&ShaderNode Vector Math>
@@ -326,13 +311,11 @@ class Vector(BaseVector):
         
         Returns
         -------
-        Vector
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'vector': self, 'incident': incident, 'reference': reference}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Vector Math', named_sockets=_named_sockets, operation='FACEFORWARD')
-        return _node._out
+        node = Node('Vector Math', named_sockets={'Vector': self, 'Incident': incident, 'Reference': reference}, operation='FACEFORWARD')
+        return node._out
 
     def dot(self, vector_1: Vector=None):
         """ > Node <&ShaderNode Vector Math>
@@ -354,13 +337,11 @@ class Vector(BaseVector):
         
         Returns
         -------
-        Float
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'vector': self, 'vector_1': vector_1}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Vector Math', named_sockets=_named_sockets, operation='DOT_PRODUCT')
-        return _node._out
+        node = Node('Vector Math', named_sockets={'Vector': self, 'Vector_1': vector_1}, operation='DOT_PRODUCT')
+        return node._out
 
     def distance(self, vector_1: Vector=None):
         """ > Node <&ShaderNode Vector Math>
@@ -382,13 +363,11 @@ class Vector(BaseVector):
         
         Returns
         -------
-        Float
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'vector': self, 'vector_1': vector_1}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Vector Math', named_sockets=_named_sockets, operation='DISTANCE')
-        return _node._out
+        node = Node('Vector Math', named_sockets={'Vector': self, 'Vector_1': vector_1}, operation='DISTANCE')
+        return node._out
 
     def length(self):
         """ > Node <&ShaderNode Vector Math>
@@ -405,13 +384,11 @@ class Vector(BaseVector):
         
         Returns
         -------
-        Float
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'vector': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Vector Math', named_sockets=_named_sockets, operation='LENGTH')
-        return _node._out
+        node = Node('Vector Math', named_sockets={'Vector': self}, operation='LENGTH')
+        return node._out
 
     def scale(self, scale: Float=None):
         """ > Node <&ShaderNode Vector Math>
@@ -433,13 +410,11 @@ class Vector(BaseVector):
         
         Returns
         -------
-        Vector
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'vector': self, 'scale': scale}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Vector Math', named_sockets=_named_sockets, operation='SCALE')
-        return _node._out
+        node = Node('Vector Math', named_sockets={'Vector': self, 'Scale': scale}, operation='SCALE')
+        return node._out
 
     def normalize(self):
         """ > Node <&ShaderNode Vector Math>
@@ -456,13 +431,11 @@ class Vector(BaseVector):
         
         Returns
         -------
-        Vector
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'vector': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Vector Math', named_sockets=_named_sockets, operation='NORMALIZE')
-        return _node._out
+        node = Node('Vector Math', named_sockets={'Vector': self}, operation='NORMALIZE')
+        return node._out
 
     def abs(self):
         """ > Node <&ShaderNode Vector Math>
@@ -479,20 +452,18 @@ class Vector(BaseVector):
         
         Returns
         -------
-        Vector
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'vector': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Vector Math', named_sockets=_named_sockets, operation='ABSOLUTE')
-        return _node._out
+        node = Node('Vector Math', named_sockets={'Vector': self}, operation='ABSOLUTE')
+        return node._out
 
     def power(self, exponent: Vector=None):
         """ > Node <&ShaderNode Vector Math>
         
         Jump method: False.
         
-        self: socket 'Vector'.
+        self: socket 'Base'.
         
         **Fixed values**
         
@@ -507,13 +478,11 @@ class Vector(BaseVector):
         
         Returns
         -------
-        Vector
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'base': self, 'exponent': exponent}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Vector Math', named_sockets=_named_sockets, operation='POWER')
-        return _node._out
+        node = Node('Vector Math', named_sockets={'Base': self, 'Exponent': exponent}, operation='POWER')
+        return node._out
 
     def sign(self):
         """ > Node <&ShaderNode Vector Math>
@@ -530,13 +499,11 @@ class Vector(BaseVector):
         
         Returns
         -------
-        Vector
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'vector': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Vector Math', named_sockets=_named_sockets, operation='SIGN')
-        return _node._out
+        node = Node('Vector Math', named_sockets={'Vector': self}, operation='SIGN')
+        return node._out
 
     def min(self, vector_1: Vector=None):
         """ > Node <&ShaderNode Vector Math>
@@ -558,13 +525,11 @@ class Vector(BaseVector):
         
         Returns
         -------
-        Vector
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'vector': self, 'vector_1': vector_1}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Vector Math', named_sockets=_named_sockets, operation='MINIMUM')
-        return _node._out
+        node = Node('Vector Math', named_sockets={'Vector': self, 'Vector_1': vector_1}, operation='MINIMUM')
+        return node._out
 
     def max(self, vector_1: Vector=None):
         """ > Node <&ShaderNode Vector Math>
@@ -586,13 +551,11 @@ class Vector(BaseVector):
         
         Returns
         -------
-        Vector
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'vector': self, 'vector_1': vector_1}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Vector Math', named_sockets=_named_sockets, operation='MAXIMUM')
-        return _node._out
+        node = Node('Vector Math', named_sockets={'Vector': self, 'Vector_1': vector_1}, operation='MAXIMUM')
+        return node._out
 
     def round(self):
         """ > Node <&ShaderNode Vector Math>
@@ -609,13 +572,11 @@ class Vector(BaseVector):
         
         Returns
         -------
-        Vector
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'vector': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Vector Math', named_sockets=_named_sockets, operation='ROUND')
-        return _node._out
+        node = Node('Vector Math', named_sockets={'Vector': self}, operation='ROUND')
+        return node._out
 
     def floor(self):
         """ > Node <&ShaderNode Vector Math>
@@ -632,13 +593,11 @@ class Vector(BaseVector):
         
         Returns
         -------
-        Vector
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'vector': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Vector Math', named_sockets=_named_sockets, operation='FLOOR')
-        return _node._out
+        node = Node('Vector Math', named_sockets={'Vector': self}, operation='FLOOR')
+        return node._out
 
     def ceil(self):
         """ > Node <&ShaderNode Vector Math>
@@ -655,13 +614,11 @@ class Vector(BaseVector):
         
         Returns
         -------
-        Vector
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'vector': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Vector Math', named_sockets=_named_sockets, operation='CEIL')
-        return _node._out
+        node = Node('Vector Math', named_sockets={'Vector': self}, operation='CEIL')
+        return node._out
 
     def fraction(self):
         """ > Node <&ShaderNode Vector Math>
@@ -678,13 +635,11 @@ class Vector(BaseVector):
         
         Returns
         -------
-        Vector
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'vector': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Vector Math', named_sockets=_named_sockets, operation='FRACTION')
-        return _node._out
+        node = Node('Vector Math', named_sockets={'Vector': self}, operation='FRACTION')
+        return node._out
 
     def modulo(self, vector_1: Vector=None):
         """ > Node <&ShaderNode Vector Math>
@@ -706,13 +661,11 @@ class Vector(BaseVector):
         
         Returns
         -------
-        Vector
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'vector': self, 'vector_1': vector_1}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Vector Math', named_sockets=_named_sockets, operation='MODULO')
-        return _node._out
+        node = Node('Vector Math', named_sockets={'Vector': self, 'Vector_1': vector_1}, operation='MODULO')
+        return node._out
 
     def wrap(self, max: Vector=None, min: Vector=None):
         """ > Node <&ShaderNode Vector Math>
@@ -737,13 +690,11 @@ class Vector(BaseVector):
         
         Returns
         -------
-        Vector
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'vector': self, 'max': max, 'min': min}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Vector Math', named_sockets=_named_sockets, operation='WRAP')
-        return _node._out
+        node = Node('Vector Math', named_sockets={'Vector': self, 'Max': max, 'Min': min}, operation='WRAP')
+        return node._out
 
     def snap(self, increment: Vector=None):
         """ > Node <&ShaderNode Vector Math>
@@ -765,13 +716,11 @@ class Vector(BaseVector):
         
         Returns
         -------
-        Vector
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'vector': self, 'increment': increment}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Vector Math', named_sockets=_named_sockets, operation='SNAP')
-        return _node._out
+        node = Node('Vector Math', named_sockets={'Vector': self, 'Increment': increment}, operation='SNAP')
+        return node._out
 
     def sin(self):
         """ > Node <&ShaderNode Vector Math>
@@ -788,13 +737,11 @@ class Vector(BaseVector):
         
         Returns
         -------
-        Vector
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'vector': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Vector Math', named_sockets=_named_sockets, operation='SINE')
-        return _node._out
+        node = Node('Vector Math', named_sockets={'Vector': self}, operation='SINE')
+        return node._out
 
     def cos(self):
         """ > Node <&ShaderNode Vector Math>
@@ -811,13 +758,11 @@ class Vector(BaseVector):
         
         Returns
         -------
-        Vector
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'vector': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Vector Math', named_sockets=_named_sockets, operation='COSINE')
-        return _node._out
+        node = Node('Vector Math', named_sockets={'Vector': self}, operation='COSINE')
+        return node._out
 
     def tan(self):
         """ > Node <&ShaderNode Vector Math>
@@ -834,13 +779,11 @@ class Vector(BaseVector):
         
         Returns
         -------
-        Vector
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'vector': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Vector Math', named_sockets=_named_sockets, operation='TANGENT')
-        return _node._out
+        node = Node('Vector Math', named_sockets={'Vector': self}, operation='TANGENT')
+        return node._out
 
     def __add__(self, other):
         return self.add(other)
@@ -905,94 +848,8 @@ class Vector(BaseVector):
     def __matmul__(self, other):
         return self.dot(other)
 
-    def brick_texture(self, color1: Color=None, color2: Color=None, mortar: Color=None, scale: Float=None, mortar_size: Float=None, mortar_smooth: Float=None, bias: Float=None, brick_width: Float=None, row_height: Float=None, offset_frequency=2, squash_frequency=2, offset=0.5, squash=1.0):
-        """ > Node <&ShaderNode Brick Texture>
-        
-        Jump method: False.
-        
-        self: socket 'Vector'.
-        
-        Parameters
-        ----------
-        color1 : Color, optional
-            socket 'Color1'
-        
-        color2 : Color, optional
-            socket 'Color2'
-        
-        mortar : Color, optional
-            socket 'Mortar'
-        
-        scale : Float, optional
-            socket 'Scale'
-        
-        mortar_size : Float, optional
-            socket 'Mortar Size'
-        
-        mortar_smooth : Float, optional
-            socket 'Mortar Smooth'
-        
-        bias : Float, optional
-            socket 'Bias'
-        
-        brick_width : Float, optional
-            socket 'Brick Width'
-        
-        row_height : Float, optional
-            socket 'Row Height'
-        
-        offset_frequency : int
-            parameter `offset_frequency`
-        
-        squash_frequency : int
-            parameter `squash_frequency`
-        
-        offset : float
-            parameter `offset`
-        
-        squash : float
-            parameter `squash`
-        
-        Returns
-        -------
-        Color
-            socket 'OUT'
-        """
-        _named_sockets = {'vector': self, 'color1': color1, 'color2': color2, 'mortar': mortar, 'scale': scale, 'mortar_size': mortar_size, 'mortar_smooth': mortar_smooth, 'bias': bias, 'brick_width': brick_width, 'row_height': row_height}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Brick Texture', named_sockets=_named_sockets, offset_frequency=offset_frequency, squash_frequency=squash_frequency, offset=offset, squash=squash)
-        return _node._out
-
-    def checker_texture(self, color1: Color=None, color2: Color=None, scale: Float=None):
-        """ > Node <&ShaderNode Checker Texture>
-        
-        Jump method: False.
-        
-        self: socket 'Vector'.
-        
-        Parameters
-        ----------
-        color1 : Color, optional
-            socket 'Color1'
-        
-        color2 : Color, optional
-            socket 'Color2'
-        
-        scale : Float, optional
-            socket 'Scale'
-        
-        Returns
-        -------
-        Color
-            socket 'OUT'
-        """
-        _named_sockets = {'vector': self, 'color1': color1, 'color2': color2, 'scale': scale}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Checker Texture', named_sockets=_named_sockets)
-        return _node._out
-
     @classmethod
-    def Combine(cls, x: Float=None, y: Float=None, z: Float=None):
+    def CombineXyz(cls, x: Float=None, y: Float=None, z: Float=None):
         """ > Node <&ShaderNode Combine XYZ>
         
         Parameters
@@ -1008,105 +865,13 @@ class Vector(BaseVector):
         
         Returns
         -------
-        Vector
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'x': x, 'y': y, 'z': z}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Combine XYZ', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('Combine XYZ', named_sockets={'X': x, 'Y': y, 'Z': z})
+        return node._out
 
-    def enable_output(self, enable: Boolean=None):
-        """ > Node <&ShaderNode Enable Output>
-        
-        Jump method: False.
-        
-        self: socket 'Value'.
-        
-        **Fixed values**
-        
-        | Parameter | Value |
-        | --- | --- |
-        | `data_type` | `'VECTOR'` |
-        
-        Parameters
-        ----------
-        enable : Boolean, optional
-            socket 'Enable'
-        
-        Returns
-        -------
-        Vector
-            socket 'OUT'
-        """
-        _named_sockets = {'enable': enable, 'value': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Enable Output', named_sockets=_named_sockets, data_type='VECTOR')
-        return _node._out
-
-    def environment_texture(self, image=None, projection: Literal['EQUIRECTANGULAR', 'MIRROR_BALL']='EQUIRECTANGULAR', interpolation: Literal['Linear', 'Closest', 'Cubic', 'Smart']='Linear'):
-        """ > Node <&ShaderNode Environment Texture>
-        
-        Jump method: False.
-        
-        self: socket 'Vector'.
-        
-        Parameters
-        ----------
-        image : NoneType
-            parameter `image`
-        
-        projection : Literal['Equirectangular', 'Mirror Ball']
-            parameter `projection`
-        
-        interpolation : Literal['Linear', 'Closest', 'Cubic', 'Smart']
-            parameter `interpolation`
-        
-        Returns
-        -------
-        Color
-            socket 'OUT'
-        """
-        _named_sockets = {'vector': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Environment Texture', named_sockets=_named_sockets, image=image, projection=projection, interpolation=interpolation)
-        return _node._out
-
-    def gabor_texture(self, scale: Float=None, frequency: Float=None, anisotropy: Float=None, orientation: Float | Vector=None, gabor_type: Literal['2D', '3D']='2D'):
-        """ > Node <&ShaderNode Gabor Texture>
-        
-        Jump method: False.
-        
-        self: socket 'Vector'.
-        
-        Parameters
-        ----------
-        scale : Float, optional
-            socket 'Scale'
-        
-        frequency : Float, optional
-            socket 'Frequency'
-        
-        anisotropy : Float, optional
-            socket 'Anisotropy'
-        
-        orientation : Float | Vector, optional
-            socket 'Orientation'
-        
-        gabor_type : Literal['2D', '3D']
-            parameter `gabor_type`
-        
-        Returns
-        -------
-        Float
-            socket 'OUT'
-        """
-        _named_sockets = {'vector': self, 'scale': scale, 'frequency': frequency, 'anisotropy': anisotropy, 'orientation': orientation}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Gabor Texture', named_sockets=_named_sockets, gabor_type=gabor_type)
-        return _node._out
-
-    def get_component(self, index: Integer=None):
+    def get_vector_component(self, index: Integer=None):
         """ > Node <&ShaderNode Get Vector Component>
         
         Jump method: False.
@@ -1120,107 +885,15 @@ class Vector(BaseVector):
         
         Returns
         -------
-        Float
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'vector': self, 'index': index}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Get Vector Component', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('Get Vector Component', named_sockets={'Vector': self, 'Index': index})
+        return node._out
 
-    def gradient_texture(self, gradient_type: Literal['LINEAR', 'QUADRATIC', 'EASING', 'DIAGONAL', 'SPHERICAL', 'QUADRATIC_SPHERE', 'RADIAL']='LINEAR'):
-        """ > Node <&ShaderNode Gradient Texture>
-        
-        Jump method: False.
-        
-        self: socket 'Vector'.
-        
-        Parameters
-        ----------
-        gradient_type : Literal['Linear', 'Quadratic', 'Easing', 'Diagonal', 'Spherical', 'Quadratic Sphere', 'Radial']
-            parameter `gradient_type`
-        
-        Returns
-        -------
-        Color
-            socket 'OUT'
-        """
-        _named_sockets = {'vector': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Gradient Texture', named_sockets=_named_sockets, gradient_type=gradient_type)
-        return _node._out
-
-    def ies_texture(self, strength: Float=None, ies=None, filepath='', mode: Literal['INTERNAL', 'EXTERNAL']='INTERNAL'):
-        """ > Node <&ShaderNode IES Texture>
-        
-        Jump method: False.
-        
-        self: socket 'Vector'.
-        
-        Parameters
-        ----------
-        strength : Float, optional
-            socket 'Strength'
-        
-        ies : NoneType
-            parameter `ies`
-        
-        filepath : str
-            parameter `filepath`
-        
-        mode : Literal['Internal', 'External']
-            parameter `mode`
-        
-        Returns
-        -------
-        Float
-            socket 'OUT'
-        """
-        _named_sockets = {'vector': self, 'strength': strength}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('IES Texture', named_sockets=_named_sockets, ies=ies, filepath=filepath, mode=mode)
-        return _node._out
-
-    def image_texture(self, image=None, projection: Literal['FLAT', 'BOX', 'SPHERE', 'TUBE']='FLAT', interpolation: Literal['Linear', 'Closest', 'Cubic', 'Smart']='Linear', projection_blend=0.0, extension: Literal['REPEAT', 'EXTEND', 'CLIP', 'MIRROR']='REPEAT'):
-        """ > Node <&ShaderNode Image Texture>
-        
-        Jump method: False.
-        
-        self: socket 'Vector'.
-        
-        Parameters
-        ----------
-        image : NoneType
-            parameter `image`
-        
-        projection : Literal['Flat', 'Box', 'Sphere', 'Tube']
-            parameter `projection`
-        
-        interpolation : Literal['Linear', 'Closest', 'Cubic', 'Smart']
-            parameter `interpolation`
-        
-        projection_blend : float
-            parameter `projection_blend`
-        
-        extension : Literal['Repeat', 'Extend', 'Clip', 'Mirror']
-            parameter `extension`
-        
-        Returns
-        -------
-        Color
-            socket 'OUT'
-        """
-        _named_sockets = {'vector': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Image Texture', named_sockets=_named_sockets, image=image, projection=projection, interpolation=interpolation, projection_blend=projection_blend, extension=extension)
-        return _node._out
-
-    def implicit_conversion(self, socket_idname='NodeSocketColor'):
+    @classmethod
+    def implicit_conversion(cls, value: Vector=None, socket_idname: str='NodeSocketColor'):
         """ > Node <&ShaderNode Implicit Conversion>
-        
-        Jump method: False.
-        
-        self: socket 'Value'.
         
         **Fixed values**
         
@@ -1230,85 +903,23 @@ class Vector(BaseVector):
         
         Parameters
         ----------
+        value : Vector, optional
+            socket 'Value'
+        
         socket_idname : str
             parameter `socket_idname`
         
         Returns
         -------
-        Vector
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'value': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Implicit Conversion', named_sockets=_named_sockets, socket_idname=socket_idname, data_type='VECTOR')
-        return _node._out
+        node = Node('Implicit Conversion', named_sockets={'Value': value}, data_type='VECTOR', socket_idname=socket_idname)
+        return node._out
 
     @classmethod
-    def IndexSwitch(cls, named_sockets=None, index: Integer=None, _0: Vector=None, _1: Vector=None, **sockets):
-        """ > Node <&ShaderNode Index Switch>
-        
-        **Fixed values**
-        
-        | Parameter | Value |
-        | --- | --- |
-        | `data_type` | `'VECTOR'` |
-        
-        Parameters
-        ----------
-        index : Integer, optional
-            socket 'Index'
-        
-        _0 : Vector, optional
-            socket '0'
-        
-        _1 : Vector, optional
-            socket '1'
-        
-        Returns
-        -------
-        Vector
-            socket 'OUT'
-        """
-        _named_sockets = {'index': index, '_0': _0, '_1': _1}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _named_sockets.update({_name: _value for _name, _value in (named_sockets or {}).items() if _value is not None})
-        _node = Node('Index Switch', named_sockets=_named_sockets, data_type='VECTOR', **sockets)
-        return _node._out
-
-    def magic_texture(self, scale: Float=None, distortion: Float=None, turbulence_depth=2):
-        """ > Node <&ShaderNode Magic Texture>
-        
-        Jump method: False.
-        
-        self: socket 'Vector'.
-        
-        Parameters
-        ----------
-        scale : Float, optional
-            socket 'Scale'
-        
-        distortion : Float, optional
-            socket 'Distortion'
-        
-        turbulence_depth : int
-            parameter `turbulence_depth`
-        
-        Returns
-        -------
-        Color
-            socket 'OUT'
-        """
-        _named_sockets = {'vector': self, 'scale': scale, 'distortion': distortion}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Magic Texture', named_sockets=_named_sockets, turbulence_depth=turbulence_depth)
-        return _node._out
-
-    def map_range(self, from_min: Vector=None, from_max: Vector=None, to_min: Vector=None, to_max: Vector=None, steps: Vector=None, clamp=True, interpolation_type: Literal['LINEAR', 'STEPPED', 'SMOOTHSTEP', 'SMOOTHERSTEP']='LINEAR'):
+    def map_range(cls, vector: Vector=None, from_min: Vector=None, from_max: Vector=None, to_min: Vector=None, to_max: Vector=None, steps: Vector=None, clamp: bool=True, interpolation_type: Literal['LINEAR', 'STEPPED', 'SMOOTHSTEP', 'SMOOTHERSTEP']='LINEAR'):
         """ > Node <&ShaderNode Map Range>
-        
-        Jump method: False.
-        
-        self: socket 'Vector'.
         
         **Fixed values**
         
@@ -1318,6 +929,9 @@ class Vector(BaseVector):
         
         Parameters
         ----------
+        vector : Vector, optional
+            socket 'Vector'
+        
         from_min : Vector, optional
             socket 'From Min'
         
@@ -1341,48 +955,17 @@ class Vector(BaseVector):
         
         Returns
         -------
-        Vector
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'vector': self, 'from_min': from_min, 'from_max': from_max, 'to_min': to_min, 'to_max': to_max, 'steps': steps}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Map Range', named_sockets=_named_sockets, clamp=clamp, interpolation_type=interpolation_type, data_type='FLOAT_VECTOR')
-        return _node._out
+        _configuration = ({'linear': 'LINEAR', 'stepped': 'STEPPED', 'smoothstep': 'SMOOTHSTEP', 'smootherstep': 'SMOOTHERSTEP', 'stepped linear': 'STEPPED', 'smooth step': 'SMOOTHSTEP', 'smoother step': 'SMOOTHERSTEP'}.get(interpolation_type.lower(), interpolation_type), 'FLOAT_VECTOR')
+        _node_sockets = {('LINEAR', 'FLOAT_VECTOR'): {'Vector': vector, 'From Min': from_min, 'From Max': from_max, 'To Min': to_min, 'To Max': to_max}, ('STEPPED', 'FLOAT_VECTOR'): {'Vector': vector, 'From Min': from_min, 'From Max': from_max, 'To Min': to_min, 'To Max': to_max, 'Steps': steps}, ('SMOOTHSTEP', 'FLOAT_VECTOR'): {'Vector': vector, 'From Min': from_min, 'From Max': from_max, 'To Min': to_min, 'To Max': to_max}, ('SMOOTHERSTEP', 'FLOAT_VECTOR'): {'Vector': vector, 'From Min': from_min, 'From Max': from_max, 'To Min': to_min, 'To Max': to_max}}[_configuration]
+        _node_args = {('LINEAR', 'FLOAT_VECTOR'): [], ('STEPPED', 'FLOAT_VECTOR'): [], ('SMOOTHSTEP', 'FLOAT_VECTOR'): [], ('SMOOTHERSTEP', 'FLOAT_VECTOR'): []}[_configuration]
+        node = Node('Map Range', *_node_args, named_sockets=_node_sockets, interpolation_type=interpolation_type, data_type='FLOAT_VECTOR', clamp=clamp)
+        return node._out
 
-    @classmethod
-    def MenuSwitch(cls, named_sockets=None, menu: Literal['A', 'B']=None, a: Vector=None, b: Vector=None, **sockets):
-        """ > Node <&ShaderNode Menu Switch>
-        
-        **Fixed values**
-        
-        | Parameter | Value |
-        | --- | --- |
-        | `data_type` | `'VECTOR'` |
-        
-        Parameters
-        ----------
-        menu : menu='A', optional
-            ('A', 'B')
-        
-        a : Vector, optional
-            socket 'A'
-        
-        b : Vector, optional
-            socket 'B'
-        
-        Returns
-        -------
-        Vector
-            socket 'OUT'
-        """
-        _named_sockets = {'menu': menu, 'a': a, 'b': b}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _named_sockets.update({_name: _value for _name, _value in (named_sockets or {}).items() if _value is not None})
-        _node = Node('Menu Switch', named_sockets=_named_sockets, data_type='VECTOR', **sockets)
-        return _node._out
-
-    def noise_texture(self, w: Float=None, scale: Float=None, detail: Float=None, roughness: Float=None, lacunarity: Float=None, offset: Float=None, gain: Float=None, distortion: Float=None, noise_dimensions: Literal['1D', '2D', '3D', '4D']='3D', noise_type: Literal['MULTIFRACTAL', 'RIDGED_MULTIFRACTAL', 'HYBRID_MULTIFRACTAL', 'FBM', 'HETERO_TERRAIN']='FBM', normalize=True):
-        """ > Node <&ShaderNode Noise Texture>
+    def mapping(self, location: Vector=None, rotation: Vector=None, scale: Vector=None, vector_type: Literal['POINT', 'TEXTURE', 'VECTOR', 'NORMAL']='POINT'):
+        """ > Node <&ShaderNode Mapping>
         
         Jump method: False.
         
@@ -1390,50 +973,45 @@ class Vector(BaseVector):
         
         Parameters
         ----------
-        w : Float, optional
-            socket 'W'
+        location : Vector, optional
+            socket 'Location'
         
-        scale : Float, optional
+        rotation : Vector, optional
+            socket 'Rotation'
+        
+        scale : Vector, optional
             socket 'Scale'
         
-        detail : Float, optional
-            socket 'Detail'
-        
-        roughness : Float, optional
-            socket 'Roughness'
-        
-        lacunarity : Float, optional
-            socket 'Lacunarity'
-        
-        offset : Float, optional
-            socket 'Offset'
-        
-        gain : Float, optional
-            socket 'Gain'
-        
-        distortion : Float, optional
-            socket 'Distortion'
-        
-        noise_dimensions : Literal['1D', '2D', '3D', '4D']
-            parameter `noise_dimensions`
-        
-        noise_type : Literal['Multifractal', 'Ridged Multifractal', 'Hybrid Multifractal', 'fBM', 'Hetero Terrain']
-            parameter `noise_type`
-        
-        normalize : bool
-            parameter `normalize`
+        vector_type : Literal['Point', 'Texture', 'Vector', 'Normal']
+            parameter `vector_type`
         
         Returns
         -------
-        Float
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'vector': self, 'w': w, 'scale': scale, 'detail': detail, 'roughness': roughness, 'lacunarity': lacunarity, 'offset': offset, 'gain': gain, 'distortion': distortion}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Noise Texture', named_sockets=_named_sockets, noise_dimensions=noise_dimensions, noise_type=noise_type, normalize=normalize)
-        return _node._out
+        _configuration = ({'point': 'POINT', 'texture': 'TEXTURE', 'vector': 'VECTOR', 'normal': 'NORMAL'}.get(vector_type.lower(), vector_type),)
+        _node_sockets = {('POINT',): {'Vector': self, 'Location': location, 'Rotation': rotation, 'Scale': scale}, ('TEXTURE',): {'Vector': self, 'Location': location, 'Rotation': rotation, 'Scale': scale}, ('VECTOR',): {'Vector': self, 'Rotation': rotation, 'Scale': scale}, ('NORMAL',): {'Vector': self, 'Rotation': rotation, 'Scale': scale}}[_configuration]
+        _node_args = {('POINT',): [], ('TEXTURE',): [], ('VECTOR',): [], ('NORMAL',): []}[_configuration]
+        node = Node('Mapping', *_node_args, named_sockets=_node_sockets, vector_type=vector_type)
+        return node._out
 
-    def radial_tiling(self, sides: Float=None, roundness: Float=None, normalize=False):
+    def normal(self):
+        """ > Node <&ShaderNode Normal>
+        
+        Jump method: False.
+        
+        self: socket 'Normal'.
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Normal', named_sockets={'Normal': self})
+        return node._out
+
+    def radial_tiling(self, sides: Float=None, roundness: Float=None, normalize: bool=False):
         """ > Node <&ShaderNode Radial Tiling>
         
         Jump method: False.
@@ -1453,13 +1031,11 @@ class Vector(BaseVector):
         
         Returns
         -------
-        Vector
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'vector': self, 'sides': sides, 'roundness': roundness}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Radial Tiling', named_sockets=_named_sockets, normalize=normalize)
-        return _node._out
+        node = Node('Radial Tiling', named_sockets={'Vector': self, 'Sides': sides, 'Roundness': roundness}, normalize=normalize)
+        return node._out
 
     def separate_xyz(self):
         """ > Node <&ShaderNode Separate XYZ>
@@ -1470,14 +1046,13 @@ class Vector(BaseVector):
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
-        _named_sockets = {'vector': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Separate XYZ', named_sockets=_named_sockets)
-        return _node
+        node = Node('Separate XYZ', named_sockets={'Vector': self})
+        return node._out
 
-    def math(self, vector_1: Vector=None, multiplier: Vector=None, incident: Vector=None, exponent: Vector=None, max: Vector=None, increment: Vector=None, addend: Vector=None, reference: Vector=None, min: Vector=None, ior: Float=None, scale: Float=None, operation: Literal['ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'MULTIPLY_ADD', 'CROSS_PRODUCT', 'PROJECT', 'REFLECT', 'REFRACT', 'FACEFORWARD', 'DOT_PRODUCT', 'DISTANCE', 'LENGTH', 'SCALE', 'NORMALIZE', 'ABSOLUTE', 'POWER', 'SIGN', 'MINIMUM', 'MAXIMUM', 'ROUND', 'FLOOR', 'CEIL', 'FRACTION', 'MODULO', 'WRAP', 'SNAP', 'SINE', 'COSINE', 'TANGENT']='ADD'):
+    def vector_math(self, vector_1: Vector=None, multiplier: Vector=None, incident: Vector=None, exponent: Vector=None, max: Vector=None, increment: Vector=None, addend: Vector=None, reference: Vector=None, min: Vector=None, scale: Float=None, ior: Float=None, operation: Literal['ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'MULTIPLY_ADD', 'CROSS_PRODUCT', 'PROJECT', 'REFLECT', 'REFRACT', 'FACEFORWARD', 'DOT_PRODUCT', 'DISTANCE', 'LENGTH', 'SCALE', 'NORMALIZE', 'ABSOLUTE', 'POWER', 'SIGN', 'MINIMUM', 'MAXIMUM', 'ROUND', 'FLOOR', 'CEIL', 'FRACTION', 'MODULO', 'WRAP', 'SNAP', 'SINE', 'COSINE', 'TANGENT']='ADD'):
         """ > Node <&ShaderNode Vector Math>
         
         Jump method: False.
@@ -1513,29 +1088,27 @@ class Vector(BaseVector):
         min : Vector, optional
             socket 'Min'
         
-        ior : Float, optional
-            socket 'IOR'
-        
         scale : Float, optional
             socket 'Scale'
+        
+        ior : Float, optional
+            socket 'IOR'
         
         operation : Literal['Add', 'Subtract', 'Multiply', 'Divide', 'Multiply Add', 'Cross Product', 'Project', 'Reflect', 'Refract', 'Faceforward', 'Dot Product', 'Distance', 'Length', 'Scale', 'Normalize', 'Absolute', 'Power', 'Sign', 'Minimum', 'Maximum', 'Round', 'Floor', 'Ceil', 'Fraction', 'Modulo', 'Wrap', 'Snap', 'Sine', 'Cosine', 'Tangent']
             parameter `operation`
         
         Returns
         -------
-        Vector | Float
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'vector': self, 'base': self, 'vector_1': vector_1, 'multiplier': multiplier, 'incident': incident, 'exponent': exponent, 'max': max, 'increment': increment, 'addend': addend, 'reference': reference, 'min': min, 'ior': ior, 'scale': scale}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _values = {('ADD',): ['vector', 'vector_1'], ('SUBTRACT',): ['vector', 'vector_1'], ('MULTIPLY',): ['vector', 'vector_1'], ('DIVIDE',): ['vector', 'vector_1'], ('MULTIPLY_ADD',): ['vector', 'multiplier', 'addend'], ('CROSS_PRODUCT',): ['vector', 'vector_1'], ('PROJECT',): ['vector', 'vector_1'], ('REFLECT',): ['vector', 'vector_1'], ('REFRACT',): ['vector', 'vector_1', 'ior'], ('FACEFORWARD',): ['vector', 'incident', 'reference'], ('DOT_PRODUCT',): ['vector', 'vector_1'], ('DISTANCE',): ['vector', 'vector_1'], ('LENGTH',): ['vector'], ('SCALE',): ['vector', 'scale'], ('NORMALIZE',): ['vector'], ('ABSOLUTE',): ['vector'], ('POWER',): ['base', 'exponent'], ('SIGN',): ['vector'], ('MINIMUM',): ['vector', 'vector_1'], ('MAXIMUM',): ['vector', 'vector_1'], ('ROUND',): ['vector'], ('FLOOR',): ['vector'], ('CEIL',): ['vector'], ('FRACTION',): ['vector'], ('MODULO',): ['vector', 'vector_1'], ('WRAP',): ['vector', 'max', 'min'], ('SNAP',): ['vector', 'increment'], ('SINE',): ['vector'], ('COSINE',): ['vector'], ('TANGENT',): ['vector']}
         _configuration = ({'add': 'ADD', 'subtract': 'SUBTRACT', 'multiply': 'MULTIPLY', 'divide': 'DIVIDE', 'multiply_add': 'MULTIPLY_ADD', 'cross_product': 'CROSS_PRODUCT', 'project': 'PROJECT', 'reflect': 'REFLECT', 'refract': 'REFRACT', 'faceforward': 'FACEFORWARD', 'dot_product': 'DOT_PRODUCT', 'distance': 'DISTANCE', 'length': 'LENGTH', 'scale': 'SCALE', 'normalize': 'NORMALIZE', 'absolute': 'ABSOLUTE', 'power': 'POWER', 'sign': 'SIGN', 'minimum': 'MINIMUM', 'maximum': 'MAXIMUM', 'round': 'ROUND', 'floor': 'FLOOR', 'ceil': 'CEIL', 'fraction': 'FRACTION', 'modulo': 'MODULO', 'wrap': 'WRAP', 'snap': 'SNAP', 'sine': 'SINE', 'cosine': 'COSINE', 'tangent': 'TANGENT', 'multiply add': 'MULTIPLY_ADD', 'cross product': 'CROSS_PRODUCT', 'dot product': 'DOT_PRODUCT'}.get(operation.lower(), operation),)
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _name in _values[_configuration]}
-        _node = Node('Vector Math', named_sockets=_named_sockets, operation=operation)
-        return _node._out
+        _node_sockets = {('ADD',): {'Vector': self, 'Vector_1': vector_1}, ('SUBTRACT',): {'Vector': self, 'Vector_1': vector_1}, ('MULTIPLY',): {'Vector': self, 'Vector_1': vector_1}, ('DIVIDE',): {'Vector': self, 'Vector_1': vector_1}, ('MULTIPLY_ADD',): {'Vector': self, 'Multiplier': multiplier, 'Addend': addend}, ('CROSS_PRODUCT',): {'Vector': self, 'Vector_1': vector_1}, ('PROJECT',): {'Vector': self, 'Vector_1': vector_1}, ('REFLECT',): {'Vector': self, 'Vector_1': vector_1}, ('REFRACT',): {'Vector': self, 'Vector_1': vector_1, 'IOR': ior}, ('FACEFORWARD',): {'Vector': self, 'Incident': incident, 'Reference': reference}, ('DOT_PRODUCT',): {'Vector': self, 'Vector_1': vector_1}, ('DISTANCE',): {'Vector': self, 'Vector_1': vector_1}, ('LENGTH',): {'Vector': self}, ('SCALE',): {'Vector': self, 'Scale': scale}, ('NORMALIZE',): {'Vector': self}, ('ABSOLUTE',): {'Vector': self}, ('POWER',): {'Base': self, 'Exponent': exponent}, ('SIGN',): {'Vector': self}, ('MINIMUM',): {'Vector': self, 'Vector_1': vector_1}, ('MAXIMUM',): {'Vector': self, 'Vector_1': vector_1}, ('ROUND',): {'Vector': self}, ('FLOOR',): {'Vector': self}, ('CEIL',): {'Vector': self}, ('FRACTION',): {'Vector': self}, ('MODULO',): {'Vector': self, 'Vector_1': vector_1}, ('WRAP',): {'Vector': self, 'Max': max, 'Min': min}, ('SNAP',): {'Vector': self, 'Increment': increment}, ('SINE',): {'Vector': self}, ('COSINE',): {'Vector': self}, ('TANGENT',): {'Vector': self}}[_configuration]
+        _node_args = {('ADD',): [], ('SUBTRACT',): [], ('MULTIPLY',): [], ('DIVIDE',): [], ('MULTIPLY_ADD',): [], ('CROSS_PRODUCT',): [], ('PROJECT',): [], ('REFLECT',): [], ('REFRACT',): [], ('FACEFORWARD',): [], ('DOT_PRODUCT',): [], ('DISTANCE',): [], ('LENGTH',): [], ('SCALE',): [], ('NORMALIZE',): [], ('ABSOLUTE',): [], ('POWER',): [], ('SIGN',): [], ('MINIMUM',): [], ('MAXIMUM',): [], ('ROUND',): [], ('FLOOR',): [], ('CEIL',): [], ('FRACTION',): [], ('MODULO',): [], ('WRAP',): [], ('SNAP',): [], ('SINE',): [], ('COSINE',): [], ('TANGENT',): []}[_configuration]
+        node = Node('Vector Math', *_node_args, named_sockets=_node_sockets, operation=operation)
+        return node._out
 
-    def rotate(self, center: Vector=None, axis: Vector=None, angle: Float=None, rotation: Vector=None, rotation_type: Literal['AXIS_ANGLE', 'X_AXIS', 'Y_AXIS', 'Z_AXIS', 'EULER_XYZ']='AXIS_ANGLE', invert=False):
+    def vector_rotate(self, center: Vector=None, axis: Vector=None, angle: Float=None, rotation: Vector=None, rotation_type: Literal['AXIS_ANGLE', 'X_AXIS', 'Y_AXIS', 'Z_AXIS', 'EULER_XYZ']='AXIS_ANGLE', invert: bool=False):
         """ > Node <&ShaderNode Vector Rotate>
         
         Jump method: False.
@@ -1564,13 +1137,40 @@ class Vector(BaseVector):
         
         Returns
         -------
-        Vector
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'vector': self, 'center': center, 'axis': axis, 'angle': angle, 'rotation': rotation}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Vector Rotate', named_sockets=_named_sockets, rotation_type=rotation_type, invert=invert)
-        return _node._out
+        _configuration = ({'axis_angle': 'AXIS_ANGLE', 'x_axis': 'X_AXIS', 'y_axis': 'Y_AXIS', 'z_axis': 'Z_AXIS', 'euler_xyz': 'EULER_XYZ', 'axis angle': 'AXIS_ANGLE', 'x axis': 'X_AXIS', 'y axis': 'Y_AXIS', 'z axis': 'Z_AXIS', 'euler': 'EULER_XYZ'}.get(rotation_type.lower(), rotation_type),)
+        _node_sockets = {('AXIS_ANGLE',): {'Vector': self, 'Center': center, 'Axis': axis, 'Angle': angle}, ('X_AXIS',): {'Vector': self, 'Center': center, 'Angle': angle}, ('Y_AXIS',): {'Vector': self, 'Center': center, 'Angle': angle}, ('Z_AXIS',): {'Vector': self, 'Center': center, 'Angle': angle}, ('EULER_XYZ',): {'Vector': self, 'Center': center, 'Rotation': rotation}}[_configuration]
+        _node_args = {('AXIS_ANGLE',): [], ('X_AXIS',): [], ('Y_AXIS',): [], ('Z_AXIS',): [], ('EULER_XYZ',): []}[_configuration]
+        node = Node('Vector Rotate', *_node_args, named_sockets=_node_sockets, rotation_type=rotation_type, invert=invert)
+        return node._out
+
+    def vector_transform(self, vector_type: Literal['POINT', 'VECTOR', 'NORMAL']='VECTOR', convert_from: Literal['WORLD', 'OBJECT', 'CAMERA', 'LIGHT']='WORLD', convert_to: Literal['WORLD', 'OBJECT', 'CAMERA', 'LIGHT']='OBJECT'):
+        """ > Node <&ShaderNode Vector Transform>
+        
+        Jump method: False.
+        
+        self: socket 'Vector'.
+        
+        Parameters
+        ----------
+        vector_type : Literal['Point', 'Vector', 'Normal']
+            parameter `vector_type`
+        
+        convert_from : Literal['World', 'Object', 'Camera', 'Light']
+            parameter `convert_from`
+        
+        convert_to : Literal['World', 'Object', 'Camera', 'Light']
+            parameter `convert_to`
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Vector Transform', named_sockets={'Vector': self}, vector_type=vector_type, convert_from=convert_from, convert_to=convert_to)
+        return node._out
 
     def volume_coefficients(self, scatter_coefficients: Vector=None, anisotropy: Float=None, ior: Float=None, backscatter: Float=None, alpha: Float=None, diameter: Float=None, emission_coefficients: Vector=None, phase: Literal['HENYEY_GREENSTEIN', 'FOURNIER_FORAND', 'DRAINE', 'RAYLEIGH', 'MIE']='HENYEY_GREENSTEIN'):
         """ > Node <&ShaderNode Volume Coefficients>
@@ -1607,139 +1207,11 @@ class Vector(BaseVector):
         
         Returns
         -------
-        VolumeShader
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'absorption_coefficients': self, 'scatter_coefficients': scatter_coefficients, 'anisotropy': anisotropy, 'ior': ior, 'backscatter': backscatter, 'alpha': alpha, 'diameter': diameter, 'emission_coefficients': emission_coefficients}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Volume Coefficients', named_sockets=_named_sockets, phase=phase)
-        return _node._out
-
-    def voronoi_texture(self, w: Float=None, scale: Float=None, detail: Float=None, roughness: Float=None, lacunarity: Float=None, smoothness: Float=None, exponent: Float=None, randomness: Float=None, voronoi_dimensions: Literal['1D', '2D', '3D', '4D']='3D', distance: Literal['EUCLIDEAN', 'MANHATTAN', 'CHEBYCHEV', 'MINKOWSKI']='EUCLIDEAN', feature: Literal['F1', 'F2', 'SMOOTH_F1', 'DISTANCE_TO_EDGE', 'N_SPHERE_RADIUS']='F1', normalize=False):
-        """ > Node <&ShaderNode Voronoi Texture>
-        
-        Jump method: False.
-        
-        self: socket 'Vector'.
-        
-        Parameters
-        ----------
-        w : Float, optional
-            socket 'W'
-        
-        scale : Float, optional
-            socket 'Scale'
-        
-        detail : Float, optional
-            socket 'Detail'
-        
-        roughness : Float, optional
-            socket 'Roughness'
-        
-        lacunarity : Float, optional
-            socket 'Lacunarity'
-        
-        smoothness : Float, optional
-            socket 'Smoothness'
-        
-        exponent : Float, optional
-            socket 'Exponent'
-        
-        randomness : Float, optional
-            socket 'Randomness'
-        
-        voronoi_dimensions : Literal['1D', '2D', '3D', '4D']
-            parameter `voronoi_dimensions`
-        
-        distance : Literal['Euclidean', 'Manhattan', 'Chebychev', 'Minkowski']
-            parameter `distance`
-        
-        feature : Literal['F1', 'F2', 'Smooth F1', 'Distance to Edge', 'N-Sphere Radius']
-            parameter `feature`
-        
-        normalize : bool
-            parameter `normalize`
-        
-        Returns
-        -------
-        Float
-            socket 'OUT'
-        """
-        _named_sockets = {'vector': self, 'w': w, 'scale': scale, 'detail': detail, 'roughness': roughness, 'lacunarity': lacunarity, 'smoothness': smoothness, 'exponent': exponent, 'randomness': randomness}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Voronoi Texture', named_sockets=_named_sockets, voronoi_dimensions=voronoi_dimensions, distance=distance, feature=feature, normalize=normalize)
-        return _node._out
-
-    def wave_texture(self, scale: Float=None, distortion: Float=None, detail: Float=None, detail_scale: Float=None, detail_roughness: Float=None, phase_offset: Float=None, wave_type: Literal['BANDS', 'RINGS']='BANDS', bands_direction: Literal['X', 'Y', 'Z', 'DIAGONAL']='X', rings_direction: Literal['X', 'Y', 'Z', 'SPHERICAL']='X', wave_profile: Literal['SIN', 'SAW', 'TRI']='SIN'):
-        """ > Node <&ShaderNode Wave Texture>
-        
-        Jump method: False.
-        
-        self: socket 'Vector'.
-        
-        Parameters
-        ----------
-        scale : Float, optional
-            socket 'Scale'
-        
-        distortion : Float, optional
-            socket 'Distortion'
-        
-        detail : Float, optional
-            socket 'Detail'
-        
-        detail_scale : Float, optional
-            socket 'Detail Scale'
-        
-        detail_roughness : Float, optional
-            socket 'Detail Roughness'
-        
-        phase_offset : Float, optional
-            socket 'Phase Offset'
-        
-        wave_type : Literal['Bands', 'Rings']
-            parameter `wave_type`
-        
-        bands_direction : Literal['X', 'Y', 'Z', 'Diagonal']
-            parameter `bands_direction`
-        
-        rings_direction : Literal['X', 'Y', 'Z', 'Spherical']
-            parameter `rings_direction`
-        
-        wave_profile : Literal['Sine', 'Saw', 'Triangle']
-            parameter `wave_profile`
-        
-        Returns
-        -------
-        Color
-            socket 'OUT'
-        """
-        _named_sockets = {'vector': self, 'scale': scale, 'distortion': distortion, 'detail': detail, 'detail_scale': detail_scale, 'detail_roughness': detail_roughness, 'phase_offset': phase_offset}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Wave Texture', named_sockets=_named_sockets, wave_type=wave_type, bands_direction=bands_direction, rings_direction=rings_direction, wave_profile=wave_profile)
-        return _node._out
-
-    def white_noise_texture(self, w: Float=None, noise_dimensions: Literal['1D', '2D', '3D', '4D']='3D'):
-        """ > Node <&ShaderNode White Noise Texture>
-        
-        Jump method: False.
-        
-        self: socket 'Vector'.
-        
-        Parameters
-        ----------
-        w : Float, optional
-            socket 'W'
-        
-        noise_dimensions : Literal['1D', '2D', '3D', '4D']
-            parameter `noise_dimensions`
-        
-        Returns
-        -------
-        Float
-            socket 'OUT'
-        """
-        _named_sockets = {'vector': self, 'w': w}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('White Noise Texture', named_sockets=_named_sockets, noise_dimensions=noise_dimensions)
-        return _node._out
+        _configuration = ({'henyey_greenstein': 'HENYEY_GREENSTEIN', 'fournier_forand': 'FOURNIER_FORAND', 'draine': 'DRAINE', 'rayleigh': 'RAYLEIGH', 'mie': 'MIE', 'henyey-greenstein': 'HENYEY_GREENSTEIN', 'fournier-forand': 'FOURNIER_FORAND'}.get(phase.lower(), phase),)
+        _node_sockets = {('HENYEY_GREENSTEIN',): {'Absorption Coefficients': self, 'Scatter Coefficients': scatter_coefficients, 'Anisotropy': anisotropy, 'Emission Coefficients': emission_coefficients}, ('FOURNIER_FORAND',): {'Absorption Coefficients': self, 'Scatter Coefficients': scatter_coefficients, 'IOR': ior, 'Backscatter': backscatter, 'Emission Coefficients': emission_coefficients}, ('DRAINE',): {'Absorption Coefficients': self, 'Scatter Coefficients': scatter_coefficients, 'Anisotropy': anisotropy, 'Alpha': alpha, 'Emission Coefficients': emission_coefficients}, ('RAYLEIGH',): {'Absorption Coefficients': self, 'Scatter Coefficients': scatter_coefficients, 'Emission Coefficients': emission_coefficients}, ('MIE',): {'Absorption Coefficients': self, 'Scatter Coefficients': scatter_coefficients, 'Diameter': diameter, 'Emission Coefficients': emission_coefficients}}[_configuration]
+        _node_args = {('HENYEY_GREENSTEIN',): [], ('FOURNIER_FORAND',): [], ('DRAINE',): [], ('RAYLEIGH',): [], ('MIE',): []}[_configuration]
+        node = Node('Volume Coefficients', *_node_args, named_sockets=_node_sockets, phase=phase)
+        return node._out

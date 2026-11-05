@@ -113,7 +113,7 @@ class Matrix(Socket):
         """
         a = utils.value_to_array(array, (16,))
         names = [f"Column {c} Row {r}" for c in range(1, 5) for r in range(1, 5)]
-        return Node('Combine Matrix', dict(zip(names, a)))._out
+        return Node('Combine Matrix', named_sockets=dict(zip(names, a)))._out
 
     @classmethod
     def FromList(cls, value):

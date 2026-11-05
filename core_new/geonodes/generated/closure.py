@@ -47,6 +47,9 @@ if TYPE_CHECKING:
     class Geometry:
         ...
 
+    class Texture:
+        ...
+
     class Collection:
         ...
 
@@ -115,7 +118,7 @@ class Closure(BaseClosure):
     __slots__ = ()
 
     @classmethod
-    def CombineList(cls, named_sockets=None, _0: Closure=None, **sockets):
+    def combine_list(cls, *values: Socket):
         """ > Node <&Node Combine List>
         
         **Fixed values**
@@ -124,57 +127,92 @@ class Closure(BaseClosure):
         | --- | --- |
         | `data_type` | `'CLOSURE'` |
         
-        Parameters
-        ----------
-        _0 : Closure, optional
-            socket '0'
-        
         Returns
         -------
-        Closure
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'_0': _0}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _named_sockets.update({_name: _value for _name, _value in (named_sockets or {}).items() if _value is not None})
-        _node = Node('Combine List', named_sockets=_named_sockets, data_type='CLOSURE', **sockets)
-        return _node._out
+        node = Node('Combine List', *values, named_sockets={}, data_type='CLOSURE')
+        return node._out
 
-    def enable_output(self, enable: Boolean=None):
-        """ > Node <&Node Enable Output>
+    def evaluate_closure(self, named_sockets=None, define_signature: bool=False, **sockets):
+        """ > Node <&Node Evaluate Closure>
         
         Jump method: False.
         
-        self: socket 'Value'.
+        self: socket 'Closure'.
+        
+        Parameters
+        ----------
+        define_signature : bool
+            parameter `define_signature`
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        _named_sockets = {'Closure': self}
+        _named_sockets.update({name: value for name, value in (named_sockets or {}).items() if value is not None})
+        node = Node('Evaluate Closure', named_sockets=_named_sockets, define_signature=define_signature, **sockets)
+        return node._out
+
+    @classmethod
+    def filter_list(cls, list: Closure=None, selection: Boolean=None):
+        """ > Node <&Node Filter List>
         
         **Fixed values**
         
         | Parameter | Value |
         | --- | --- |
-        | `data_type` | `'CLOSURE'` |
+        | `socket_type` | `'CLOSURE'` |
         
         Parameters
         ----------
-        enable : Boolean, optional
-            socket 'Enable'
+        list : Closure, optional
+            socket 'List'
+        
+        selection : Boolean, optional
+            socket 'Selection'
         
         Returns
         -------
-        Closure
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'enable': enable, 'value': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Enable Output', named_sockets=_named_sockets, data_type='CLOSURE')
-        return _node._out
+        node = Node('Filter List', named_sockets={'List': list, 'Selection': selection}, socket_type='CLOSURE')
+        return node._out
 
-    def implicit_conversion(self, socket_idname='NodeSocketColor'):
+    @classmethod
+    def get_list_item(cls, list: Closure=None, index: Integer=None):
+        """ > Node <&Node Get List Item>
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `socket_type` | `'CLOSURE'` |
+        
+        Parameters
+        ----------
+        list : Closure, optional
+            socket 'List'
+        
+        index : Integer, optional
+            socket 'Index'
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Get List Item', named_sockets={'List': list, 'Index': index}, socket_type='CLOSURE')
+        return node._out
+
+    @classmethod
+    def implicit_conversion(cls, value: Closure=None, socket_idname: str='NodeSocketColor'):
         """ > Node <&Node Implicit Conversion>
         
-        Jump method: False.
-        
-        self: socket 'Value'.
-        
         **Fixed values**
         
         | Parameter | Value |
@@ -183,22 +221,23 @@ class Closure(BaseClosure):
         
         Parameters
         ----------
+        value : Closure, optional
+            socket 'Value'
+        
         socket_idname : str
             parameter `socket_idname`
         
         Returns
         -------
-        Closure
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'value': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Implicit Conversion', named_sockets=_named_sockets, socket_idname=socket_idname, data_type='CLOSURE')
-        return _node._out
+        node = Node('Implicit Conversion', named_sockets={'Value': value}, data_type='CLOSURE', socket_idname=socket_idname)
+        return node._out
 
     @classmethod
-    def IndexSwitch(cls, named_sockets=None, index: Integer=None, _0: Closure=None, _1: Closure=None, **sockets):
-        """ > Node <&Node Index Switch>
+    def list_length(cls, list: Closure=None):
+        """ > Node <&Node List Length>
         
         **Fixed values**
         
@@ -208,54 +247,45 @@ class Closure(BaseClosure):
         
         Parameters
         ----------
-        index : Integer, optional
-            socket 'Index'
-        
-        _0 : Closure, optional
-            socket '0'
-        
-        _1 : Closure, optional
-            socket '1'
+        list : Closure, optional
+            socket 'List'
         
         Returns
         -------
-        Closure
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'index': index, '_0': _0, '_1': _1}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _named_sockets.update({_name: _value for _name, _value in (named_sockets or {}).items() if _value is not None})
-        _node = Node('Index Switch', named_sockets=_named_sockets, data_type='CLOSURE', **sockets)
-        return _node._out
+        node = Node('List Length', named_sockets={'List': list}, data_type='CLOSURE')
+        return node._out
 
     @classmethod
-    def MenuSwitch(cls, named_sockets=None, menu: Literal['A', 'B']=None, a: Closure=None, b: Closure=None, **sockets):
-        """ > Node <&Node Menu Switch>
+    def sort_list(cls, list: Closure=None, selection: Boolean=None, group_id: Integer=None, sort_weight: Float=None):
+        """ > Node <&Node Sort List>
         
         **Fixed values**
         
         | Parameter | Value |
         | --- | --- |
-        | `data_type` | `'CLOSURE'` |
+        | `socket_type` | `'CLOSURE'` |
         
         Parameters
         ----------
-        menu : menu='A', optional
-            ('A', 'B')
+        list : Closure, optional
+            socket 'List'
         
-        a : Closure, optional
-            socket 'A'
+        selection : Boolean, optional
+            socket 'Selection'
         
-        b : Closure, optional
-            socket 'B'
+        group_id : Integer, optional
+            socket 'Group ID'
+        
+        sort_weight : Float, optional
+            socket 'Sort Weight'
         
         Returns
         -------
-        Closure
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'menu': menu, 'a': a, 'b': b}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _named_sockets.update({_name: _value for _name, _value in (named_sockets or {}).items() if _value is not None})
-        _node = Node('Menu Switch', named_sockets=_named_sockets, data_type='CLOSURE', **sockets)
-        return _node._out
+        node = Node('Sort List', named_sockets={'List': list, 'Selection': selection, 'Group ID': group_id, 'Sort Weight': sort_weight}, socket_type='CLOSURE')
+        return node._out

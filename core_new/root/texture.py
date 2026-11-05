@@ -1,4 +1,4 @@
-from .socket import Socket
+from ..environment import EnvironmentType
 """
 This file is part of the geonodes distribution (https://github.com/al1brn/geonodes).
 Copyright (c) 2025 Alain Bernard.
@@ -23,10 +23,10 @@ Scripting Geometry Nodes
 
 module : sock_texture
 ---------------------
-- Texture socket
+- Texture catalogue
 
-Generated environment classes inherit from this shared root: Texture
-the environment supplies the generated node methods.
+Generated environment classes inherit from this shared root.
+Texture is a catalogue of class methods, not a socket.
 
 updates
 -------
@@ -43,10 +43,10 @@ __version__ = "3.0.0"
 __blender_version__ = "4.3.0"
 
 
-class Texture(Socket):
+class Texture(metaclass=EnvironmentType):
     """ Texture class
 
-    The Texture class only exposed texture creation class methods.
+    The Texture class only exposes generated texture creation class methods.
     """
     pass
 

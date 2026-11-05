@@ -652,7 +652,7 @@ def get_socket_class(socket_type, name=None):
         
         if name in ('mesh', 'convex hull', 'bounding box', 'dual mesh') or name.startswith('Mesh'):
             class_name = 'Mesh'
-        elif name in ('curve', 'curves', 'profile curve', 'guide curve'):
+        elif name in ('curve', 'curves', 'profile curve', 'guide curve', 'guide curves'):
             class_name = 'Curve'
         elif name in ('points', 'point cloud', 'cloud'):
             class_name = 'Cloud'

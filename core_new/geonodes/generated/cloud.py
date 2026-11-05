@@ -47,6 +47,9 @@ if TYPE_CHECKING:
     class Geometry:
         ...
 
+    class Texture:
+        ...
+
     class Collection:
         ...
 
@@ -116,34 +119,6 @@ class Cloud(BaseCloud, Geometry):
     __slots__ = ()
 
     @classmethod
-    def FromCurve(cls, curve: Curve=None, count: Integer=None, length: Float=None, mode: Literal['EVALUATED', 'COUNT', 'LENGTH']='COUNT'):
-        """ > Node <&Node Curve to Points>
-        
-        Parameters
-        ----------
-        curve : Curve, optional
-            socket 'Curve'
-        
-        count : Integer, optional
-            socket 'Count'
-        
-        length : Float, optional
-            socket 'Length'
-        
-        mode : Literal['Evaluated', 'Count', 'Length']
-            parameter `mode`
-        
-        Returns
-        -------
-        Cloud
-            socket 'OUT'
-        """
-        _named_sockets = {'curve': curve, 'count': count, 'length': length}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Curve to Points', named_sockets=_named_sockets, mode=mode)
-        return _node._out
-
-    @classmethod
     def DistributePointsInGrid(cls, grid: Float=None, density: Float=None, seed: Integer=None, spacing: Vector=None, threshold: Float=None, mode: Literal['DENSITY_RANDOM', 'DENSITY_GRID']='DENSITY_RANDOM'):
         """ > Node <&Node Distribute Points in Grid>
         
@@ -169,16 +144,37 @@ class Cloud(BaseCloud, Geometry):
         
         Returns
         -------
-        Cloud
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'grid': grid, 'density': density, 'seed': seed, 'spacing': spacing, 'threshold': threshold}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Distribute Points in Grid', named_sockets=_named_sockets, mode=mode)
-        return _node._out
+        _configuration = ({'density_random': 'DENSITY_RANDOM', 'density_grid': 'DENSITY_GRID', 'random': 'DENSITY_RANDOM', 'grid': 'DENSITY_GRID'}.get(mode.lower(), mode),)
+        _node_sockets = {('DENSITY_RANDOM',): {'Grid': grid, 'Density': density, 'Seed': seed}, ('DENSITY_GRID',): {'Grid': grid, 'Spacing': spacing, 'Threshold': threshold}}[_configuration]
+        _node_args = {('DENSITY_RANDOM',): [], ('DENSITY_GRID',): []}[_configuration]
+        node = Node('Distribute Points in Grid', *_node_args, named_sockets=_node_sockets, mode=mode)
+        return node._out
 
     @classmethod
-    def ImportCsv(cls, path: String=None, delimiter: String=None):
+    def FromGrid(cls, grid: Socket=None, data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR']='FLOAT'):
+        """ > Node <&Node Grid to Points>
+        
+        Parameters
+        ----------
+        grid : Socket, optional
+            socket 'Grid'
+        
+        data_type : Literal['Float', 'Integer', 'Boolean', 'Vector']
+            parameter `data_type`
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Grid to Points', named_sockets={'Grid': grid}, data_type=data_type)
+        return node._out
+
+    @classmethod
+    def import_csv(cls, path: String=None, delimiter: String=None):
         """ > Node <&Node Import CSV>
         
         Parameters
@@ -191,16 +187,14 @@ class Cloud(BaseCloud, Geometry):
         
         Returns
         -------
-        Cloud
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'path': path, 'delimiter': delimiter}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Import CSV', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('Import CSV', named_sockets={'Path': path, 'Delimiter': delimiter})
+        return node._out
 
     @classmethod
-    def ImportSpz(cls, path: String=None):
+    def import_spz(cls, path: String=None):
         """ > Node <&Node Import SPZ>
         
         Parameters
@@ -210,13 +204,11 @@ class Cloud(BaseCloud, Geometry):
         
         Returns
         -------
-        Cloud
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'path': path}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Import SPZ', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('Import SPZ', named_sockets={'Path': path})
+        return node._out
 
     def instance_on_points(self, instance: Instances=None, pick_instance: Boolean=None, instance_index: Integer=None, rotation: Rotation=None, scale: Vector=None):
         """ > Node <&Node Instance on Points>
@@ -244,72 +236,12 @@ class Cloud(BaseCloud, Geometry):
         
         Returns
         -------
-        Instances
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'points': self, 'selection': self.get_selection(), 'instance': instance, 'pick_instance': pick_instance, 'instance_index': instance_index, 'rotation': rotation, 'scale': scale}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Instance on Points', named_sockets=_named_sockets)
-        return _node._out
-
-    @classmethod
-    def FromInstances(cls, instances: Instances=None, selection: Boolean=None, position: Vector=None, radius: Float=None):
-        """ > Node <&Node Instances to Points>
-        
-        Parameters
-        ----------
-        instances : Instances, optional
-            socket 'Instances'
-        
-        selection : Boolean, optional
-            socket 'Selection'
-        
-        position : Vector, optional
-            socket 'Position'
-        
-        radius : Float, optional
-            socket 'Radius'
-        
-        Returns
-        -------
-        Cloud
-            socket 'OUT'
-        """
-        _named_sockets = {'instances': instances, 'selection': selection, 'position': position, 'radius': radius}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Instances to Points', named_sockets=_named_sockets)
-        return _node._out
-
-    @classmethod
-    def FromMesh(cls, mesh: Mesh=None, selection: Boolean=None, position: Vector=None, radius: Float=None, mode: Literal['VERTICES', 'EDGES', 'FACES', 'CORNERS']='VERTICES'):
-        """ > Node <&Node Mesh to Points>
-        
-        Parameters
-        ----------
-        mesh : Mesh, optional
-            socket 'Mesh'
-        
-        selection : Boolean, optional
-            socket 'Selection'
-        
-        position : Vector, optional
-            socket 'Position'
-        
-        radius : Float, optional
-            socket 'Radius'
-        
-        mode : Literal['Vertices', 'Edges', 'Faces', 'Corners']
-            parameter `mode`
-        
-        Returns
-        -------
-        Cloud
-            socket 'OUT'
-        """
-        _named_sockets = {'mesh': mesh, 'selection': selection, 'position': position, 'radius': radius}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Mesh to Points', named_sockets=_named_sockets, mode=mode)
-        return _node._out
+        selection = self.get_selection()
+        node = Node('Instance on Points', named_sockets={'Points': self, 'Selection': selection, 'Instance': instance, 'Pick Instance': pick_instance, 'Instance Index': instance_index, 'Rotation': rotation, 'Scale': scale})
+        return node._out
 
     @classmethod
     def Points(cls, count: Integer=None, position: Vector=None, radius: Float=None):
@@ -328,13 +260,11 @@ class Cloud(BaseCloud, Geometry):
         
         Returns
         -------
-        Cloud
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'count': count, 'position': position, 'radius': radius}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Points', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('Points', named_sockets={'Count': count, 'Position': position, 'Radius': radius})
+        return node._out
 
     def to_curves(self, curve_group_id: Integer=None, weight: Float=None):
         """ > Node <&Node Points to Curves>
@@ -353,15 +283,13 @@ class Cloud(BaseCloud, Geometry):
         
         Returns
         -------
-        Curve
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'points': self, 'curve_group_id': curve_group_id, 'weight': weight}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Points to Curves', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('Points to Curves', named_sockets={'Points': self, 'Curve Group ID': curve_group_id, 'Weight': weight})
+        return node._out
 
-    def points_to_sdf_grid(self, radius: Float=None, voxel_size: Float=None):
+    def to_sdf_grid(self, radius: Float=None, voxel_size: Float=None):
         """ > Node <&Node Points to SDF Grid>
         
         Jump method: False.
@@ -378,16 +306,13 @@ class Cloud(BaseCloud, Geometry):
         
         Returns
         -------
-        Float
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'points': self, 'radius': radius, 'voxel_size': voxel_size}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Points to SDF Grid', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('Points to SDF Grid', named_sockets={'Points': self, 'Radius': radius, 'Voxel Size': voxel_size})
+        return node._out
 
-    @property
-    def points_to_vertices(self):
+    def to_vertices(self):
         """ > Node <&Node Points to Vertices>
         
         Jump method: False.
@@ -396,15 +321,14 @@ class Cloud(BaseCloud, Geometry):
         
         Returns
         -------
-        Mesh
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'points': self, 'selection': self.get_selection()}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Points to Vertices', named_sockets=_named_sockets)
-        return _node._out
+        selection = self.get_selection()
+        node = Node('Points to Vertices', named_sockets={'Points': self, 'Selection': selection})
+        return node._out
 
-    def to_volume(self, density: Float=None, resolution_mode: Literal['Amount', 'Size']=None, voxel_size: Float=None, voxel_amount: Float=None, radius: Float=None):
+    def to_volume(self, density: Float=None, resolution_mode: Menu=None, voxel_size: Float=None, voxel_amount: Float=None, radius: Float=None):
         """ > Node <&Node Points to Volume>
         
         Jump method: False.
@@ -416,8 +340,8 @@ class Cloud(BaseCloud, Geometry):
         density : Float, optional
             socket 'Density'
         
-        resolution_mode : menu='Amount', optional
-            ('Amount', 'Size')
+        resolution_mode : Menu, optional
+            socket 'Resolution Mode'
         
         voxel_size : Float, optional
             socket 'Voxel Size'
@@ -430,15 +354,13 @@ class Cloud(BaseCloud, Geometry):
         
         Returns
         -------
-        Volume
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'points': self, 'density': density, 'resolution_mode': resolution_mode, 'voxel_size': voxel_size, 'voxel_amount': voxel_amount, 'radius': radius}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Points to Volume', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('Points to Volume', named_sockets={'Points': self, 'Density': density, 'Resolution Mode': resolution_mode, 'Voxel Size': voxel_size, 'Voxel Amount': voxel_amount, 'Radius': radius})
+        return node._out
 
-    def rasterize_points(self, named_sockets=None, grid_transform_mode: Literal['Voxel Size', 'Matrix']=None, voxel_size: Float=None, matrix: Matrix=None, kernel_type: Literal['Constant', 'Linear', 'Quadratic B-Spline', 'Cubic B-Spline']=None, position: Vector=None, **sockets):
+    def rasterize_points(self, named_sockets=None, grid_transform_mode: Menu=None, voxel_size: Float=None, matrix: Matrix=None, kernel_type: Menu=None, position: Vector=None, **sockets):
         """ > Node <&Node Rasterize Points>
         
         Jump method: False.
@@ -447,8 +369,8 @@ class Cloud(BaseCloud, Geometry):
         
         Parameters
         ----------
-        grid_transform_mode : menu='Voxel Size', optional
-            ('Voxel Size', 'Matrix')
+        grid_transform_mode : Menu, optional
+            socket 'Grid Transform Mode'
         
         voxel_size : Float, optional
             socket 'Voxel Size'
@@ -456,23 +378,23 @@ class Cloud(BaseCloud, Geometry):
         matrix : Matrix, optional
             socket 'Matrix'
         
-        kernel_type : menu='Linear', optional
-            ('Constant', 'Linear', 'Quadratic B-Spline', 'Cubic B-Spline')
+        kernel_type : Menu, optional
+            socket 'Kernel Type'
         
         position : Vector, optional
             socket 'Position'
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
-        _named_sockets = {'points': self, 'grid_transform_mode': grid_transform_mode, 'voxel_size': voxel_size, 'matrix': matrix, 'kernel_type': kernel_type, 'position': position}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _named_sockets.update({_name: _value for _name, _value in (named_sockets or {}).items() if _value is not None})
-        _node = Node('Rasterize Points', named_sockets=_named_sockets, **sockets)
-        return _node
+        _named_sockets = {'Points': self, 'Grid Transform Mode': grid_transform_mode, 'Voxel Size': voxel_size, 'Matrix': matrix, 'Kernel Type': kernel_type, 'Position': position}
+        _named_sockets.update({name: value for name, value in (named_sockets or {}).items() if value is not None})
+        node = Node('Rasterize Points', named_sockets=_named_sockets, **sockets)
+        return node._out
 
-    def set_type(self, type: Literal['Points', '3D Gaussian Splat']=None):
+    def set_point_type(self, type: Menu=None):
         """ > Node <&Node Set Point Cloud Type>
         
         Jump method: True.
@@ -481,19 +403,17 @@ class Cloud(BaseCloud, Geometry):
         
         Parameters
         ----------
-        type : menu='Points', optional
-            ('Points', '3D Gaussian Splat')
+        type : Menu, optional
+            socket 'Type'
         
         Returns
         -------
-        Cloud
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'points': self, 'type': type}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Set Point Cloud Type', named_sockets=_named_sockets)
-        self._jump(_node._out)
-        return self._domain_to_geometry
+        node = Node('Set Point Cloud Type', named_sockets={'Points': self, 'Type': type})
+        self._jump(node._out)
+        return node._second_out(self)
 
     def set_point_radius(self, radius: Float=None):
         """ > Node <&Node Set Point Radius>
@@ -509,11 +429,48 @@ class Cloud(BaseCloud, Geometry):
         
         Returns
         -------
-        Cloud
+        Socket
             socket 'OUT'
+        """
+        selection = self.get_selection()
+        node = Node('Set Point Radius', named_sockets={'Points': self, 'Selection': selection, 'Radius': radius})
+        self._jump(node._out)
+        return node._second_out(self)
+
+    @property
+    def radius(self):
+        """ > Node <&Node Radius>
+        
+        Jump method: False.
+        
+        Returns
+        -------
+        Float
+            socket 'OUT'
+        """
+        _named_sockets = {}
+        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
+        _node = Node('Radius', named_sockets=_named_sockets)
+        return _node._out
+
+    @radius.setter
+    def radius(self, radius: Float):
+        """ > Node <&Node Set Point Radius>
+        
+        Jump method: True.
+        
+        self: socket 'Points'.
+        
+        Parameters
+        ----------
+        radius : Float, optional
+            socket 'Radius'
+        
+        Returns
+        -------
+        None
         """
         _named_sockets = {'points': self, 'selection': self.get_selection(), 'radius': radius}
         _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
         _node = Node('Set Point Radius', named_sockets=_named_sockets)
         self._jump(_node._out)
-        return self._domain_to_geometry

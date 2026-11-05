@@ -1,7 +1,6 @@
 """Utilities shared by the generation tools."""
 
 import bpy
-from time import perf_counter
 
 
 NODE_NAMES = {}
@@ -47,8 +46,6 @@ def loop_on_nodes(func, tree_type="GeometryNodeTree"):
     Create and clear nodes individually to avoid updating a tree containing
     every supported node. Always remove the temporary tree, even on errors.
     """
-    started = perf_counter()
-    hook_time = 0.0
     tree = None
     try:
         nodes = get_node_names(tree_type)
@@ -56,21 +53,12 @@ def loop_on_nodes(func, tree_type="GeometryNodeTree"):
         for identifier in nodes:
             node = tree.nodes.new(type=identifier)
             try:
-                hook_started = perf_counter()
-                try:
-                    func(node)
-                finally:
-                    hook_time += perf_counter() - hook_started
+                func(node)
             finally:
                 tree.nodes.clear()
     finally:
-        try:
-            if tree is not None:
-                bpy.data.node_groups.remove(tree)
-        finally:
-            total_time = perf_counter() - started
-            print(f"loop_on_nodes ({tree_type}): total={total_time:.3f}s, "
-                  f"hooks={hook_time:.3f}s, outside hooks={total_time - hook_time:.3f}s")
+        if tree is not None:
+            bpy.data.node_groups.remove(tree)
 
 
 def to_mk_table(headers, lines, prefix=''):

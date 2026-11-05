@@ -160,7 +160,7 @@ class Integer(Socket):
         """
         from .float import Float
         return Float(self).mix(b, factor=factor, clamp_factor=clamp_factor)
-        #return Float(Node('Mix', {'Factor': factor, 'A': self, 'B': b}, clamp_factor=clamp_factor, data_type='FLOAT')._out)
+        #return Float(Node('Mix', named_sockets={'Factor': factor, 'A': self, 'B': b}, clamp_factor=clamp_factor, data_type='FLOAT')._out)
 
     # ====================================================================================================
     # Mixed-type operations; other operators are inherited from generated.Integer

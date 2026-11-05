@@ -47,6 +47,9 @@ if TYPE_CHECKING:
     class Geometry:
         ...
 
+    class Texture:
+        ...
+
     class Collection:
         ...
 
@@ -114,7 +117,7 @@ from ...geonodes.sockets.float import Float as BaseFloat
 class Float(BaseFloat):
     __slots__ = ()
 
-    def add(self, value_1: Float=None, use_clamp=False):
+    def add(self, value_1: Float=None, use_clamp: bool=False):
         """ > Node <&Node Math>
         
         Jump method: False.
@@ -137,15 +140,13 @@ class Float(BaseFloat):
         
         Returns
         -------
-        Float
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'value': self, 'value_1': value_1}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Math', named_sockets=_named_sockets, operation='ADD', use_clamp=use_clamp)
-        return _node._out
+        node = Node('Math', named_sockets={'Value': self, 'Value_1': value_1}, operation='ADD', use_clamp=use_clamp)
+        return node._out
 
-    def subtract(self, value_1: Float=None, use_clamp=False):
+    def subtract(self, value_1: Float=None, use_clamp: bool=False):
         """ > Node <&Node Math>
         
         Jump method: False.
@@ -168,15 +169,13 @@ class Float(BaseFloat):
         
         Returns
         -------
-        Float
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'value': self, 'value_1': value_1}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Math', named_sockets=_named_sockets, operation='SUBTRACT', use_clamp=use_clamp)
-        return _node._out
+        node = Node('Math', named_sockets={'Value': self, 'Value_1': value_1}, operation='SUBTRACT', use_clamp=use_clamp)
+        return node._out
 
-    def multiply(self, value_1: Float=None, use_clamp=False):
+    def multiply(self, value_1: Float=None, use_clamp: bool=False):
         """ > Node <&Node Math>
         
         Jump method: False.
@@ -199,15 +198,13 @@ class Float(BaseFloat):
         
         Returns
         -------
-        Float
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'value': self, 'value_1': value_1}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Math', named_sockets=_named_sockets, operation='MULTIPLY', use_clamp=use_clamp)
-        return _node._out
+        node = Node('Math', named_sockets={'Value': self, 'Value_1': value_1}, operation='MULTIPLY', use_clamp=use_clamp)
+        return node._out
 
-    def divide(self, value_1: Float=None, use_clamp=False):
+    def divide(self, value_1: Float=None, use_clamp: bool=False):
         """ > Node <&Node Math>
         
         Jump method: False.
@@ -230,15 +227,13 @@ class Float(BaseFloat):
         
         Returns
         -------
-        Float
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'value': self, 'value_1': value_1}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Math', named_sockets=_named_sockets, operation='DIVIDE', use_clamp=use_clamp)
-        return _node._out
+        node = Node('Math', named_sockets={'Value': self, 'Value_1': value_1}, operation='DIVIDE', use_clamp=use_clamp)
+        return node._out
 
-    def multiply_add(self, multiplier: Float=None, addend: Float=None, use_clamp=False):
+    def multiply_add(self, multiplier: Float=None, addend: Float=None, use_clamp: bool=False):
         """ > Node <&Node Math>
         
         Jump method: False.
@@ -264,20 +259,18 @@ class Float(BaseFloat):
         
         Returns
         -------
-        Float
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'value': self, 'multiplier': multiplier, 'addend': addend}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Math', named_sockets=_named_sockets, operation='MULTIPLY_ADD', use_clamp=use_clamp)
-        return _node._out
+        node = Node('Math', named_sockets={'Value': self, 'Multiplier': multiplier, 'Addend': addend}, operation='MULTIPLY_ADD', use_clamp=use_clamp)
+        return node._out
 
-    def power(self, exponent: Float=None, use_clamp=False):
+    def power(self, exponent: Float=None, use_clamp: bool=False):
         """ > Node <&Node Math>
         
         Jump method: False.
         
-        self: socket 'Value'.
+        self: socket 'Base'.
         
         **Fixed values**
         
@@ -295,15 +288,13 @@ class Float(BaseFloat):
         
         Returns
         -------
-        Float
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'base': self, 'exponent': exponent}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Math', named_sockets=_named_sockets, operation='POWER', use_clamp=use_clamp)
-        return _node._out
+        node = Node('Math', named_sockets={'Base': self, 'Exponent': exponent}, operation='POWER', use_clamp=use_clamp)
+        return node._out
 
-    def log(self, base: Float=None, use_clamp=False):
+    def log(self, base: Float=None, use_clamp: bool=False):
         """ > Node <&Node Math>
         
         Jump method: False.
@@ -326,15 +317,13 @@ class Float(BaseFloat):
         
         Returns
         -------
-        Float
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'value': self, 'base': base}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Math', named_sockets=_named_sockets, operation='LOGARITHM', use_clamp=use_clamp)
-        return _node._out
+        node = Node('Math', named_sockets={'Value': self, 'Base': base}, operation='LOGARITHM', use_clamp=use_clamp)
+        return node._out
 
-    def sqrt(self, use_clamp=False):
+    def sqrt(self, use_clamp: bool=False):
         """ > Node <&Node Math>
         
         Jump method: False.
@@ -354,15 +343,13 @@ class Float(BaseFloat):
         
         Returns
         -------
-        Float
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'value': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Math', named_sockets=_named_sockets, operation='SQRT', use_clamp=use_clamp)
-        return _node._out
+        node = Node('Math', named_sockets={'Value': self}, operation='SQRT', use_clamp=use_clamp)
+        return node._out
 
-    def inverse_sqrt(self, use_clamp=False):
+    def inverse_sqrt(self, use_clamp: bool=False):
         """ > Node <&Node Math>
         
         Jump method: False.
@@ -382,15 +369,13 @@ class Float(BaseFloat):
         
         Returns
         -------
-        Float
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'value': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Math', named_sockets=_named_sockets, operation='INVERSE_SQRT', use_clamp=use_clamp)
-        return _node._out
+        node = Node('Math', named_sockets={'Value': self}, operation='INVERSE_SQRT', use_clamp=use_clamp)
+        return node._out
 
-    def abs(self, use_clamp=False):
+    def abs(self, use_clamp: bool=False):
         """ > Node <&Node Math>
         
         Jump method: False.
@@ -410,15 +395,13 @@ class Float(BaseFloat):
         
         Returns
         -------
-        Float
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'value': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Math', named_sockets=_named_sockets, operation='ABSOLUTE', use_clamp=use_clamp)
-        return _node._out
+        node = Node('Math', named_sockets={'Value': self}, operation='ABSOLUTE', use_clamp=use_clamp)
+        return node._out
 
-    def exp(self, use_clamp=False):
+    def exp(self, use_clamp: bool=False):
         """ > Node <&Node Math>
         
         Jump method: False.
@@ -438,15 +421,13 @@ class Float(BaseFloat):
         
         Returns
         -------
-        Float
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'value': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Math', named_sockets=_named_sockets, operation='EXPONENT', use_clamp=use_clamp)
-        return _node._out
+        node = Node('Math', named_sockets={'Value': self}, operation='EXPONENT', use_clamp=use_clamp)
+        return node._out
 
-    def min(self, value_1: Float=None, use_clamp=False):
+    def min(self, value_1: Float=None, use_clamp: bool=False):
         """ > Node <&Node Math>
         
         Jump method: False.
@@ -469,15 +450,13 @@ class Float(BaseFloat):
         
         Returns
         -------
-        Float
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'value': self, 'value_1': value_1}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Math', named_sockets=_named_sockets, operation='MINIMUM', use_clamp=use_clamp)
-        return _node._out
+        node = Node('Math', named_sockets={'Value': self, 'Value_1': value_1}, operation='MINIMUM', use_clamp=use_clamp)
+        return node._out
 
-    def max(self, value_1: Float=None, use_clamp=False):
+    def max(self, value_1: Float=None, use_clamp: bool=False):
         """ > Node <&Node Math>
         
         Jump method: False.
@@ -500,15 +479,13 @@ class Float(BaseFloat):
         
         Returns
         -------
-        Float
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'value': self, 'value_1': value_1}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Math', named_sockets=_named_sockets, operation='MAXIMUM', use_clamp=use_clamp)
-        return _node._out
+        node = Node('Math', named_sockets={'Value': self, 'Value_1': value_1}, operation='MAXIMUM', use_clamp=use_clamp)
+        return node._out
 
-    def mless_than(self, threshold: Float=None, use_clamp=False):
+    def mless_than(self, threshold: Float=None, use_clamp: bool=False):
         """ > Node <&Node Math>
         
         Jump method: False.
@@ -531,15 +508,13 @@ class Float(BaseFloat):
         
         Returns
         -------
-        Float
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'value': self, 'threshold': threshold}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Math', named_sockets=_named_sockets, operation='LESS_THAN', use_clamp=use_clamp)
-        return _node._out
+        node = Node('Math', named_sockets={'Value': self, 'Threshold': threshold}, operation='LESS_THAN', use_clamp=use_clamp)
+        return node._out
 
-    def mgreater_than(self, threshold: Float=None, use_clamp=False):
+    def mgreater_than(self, threshold: Float=None, use_clamp: bool=False):
         """ > Node <&Node Math>
         
         Jump method: False.
@@ -562,15 +537,13 @@ class Float(BaseFloat):
         
         Returns
         -------
-        Float
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'value': self, 'threshold': threshold}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Math', named_sockets=_named_sockets, operation='GREATER_THAN', use_clamp=use_clamp)
-        return _node._out
+        node = Node('Math', named_sockets={'Value': self, 'Threshold': threshold}, operation='GREATER_THAN', use_clamp=use_clamp)
+        return node._out
 
-    def sign(self, use_clamp=False):
+    def sign(self, use_clamp: bool=False):
         """ > Node <&Node Math>
         
         Jump method: False.
@@ -590,15 +563,45 @@ class Float(BaseFloat):
         
         Returns
         -------
-        Float
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'value': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Math', named_sockets=_named_sockets, operation='SIGN', use_clamp=use_clamp)
-        return _node._out
+        node = Node('Math', named_sockets={'Value': self}, operation='SIGN', use_clamp=use_clamp)
+        return node._out
 
-    def smooth_min(self, value_1: Float=None, distance: Float=None, use_clamp=False):
+    def mcompare(self, value_1: Float=None, epsilon: Float=None, use_clamp: bool=False):
+        """ > Node <&Node Math>
+        
+        Jump method: False.
+        
+        self: socket 'Value'.
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `operation` | `'COMPARE'` |
+        
+        Parameters
+        ----------
+        value_1 : Float, optional
+            socket 'Value'
+        
+        epsilon : Float, optional
+            socket 'Epsilon'
+        
+        use_clamp : bool
+            parameter `use_clamp`
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Math', named_sockets={'Value': self, 'Value_1': value_1, 'Epsilon': epsilon}, operation='COMPARE', use_clamp=use_clamp)
+        return node._out
+
+    def smooth_min(self, value_1: Float=None, distance: Float=None, use_clamp: bool=False):
         """ > Node <&Node Math>
         
         Jump method: False.
@@ -624,15 +627,13 @@ class Float(BaseFloat):
         
         Returns
         -------
-        Float
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'value': self, 'value_1': value_1, 'distance': distance}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Math', named_sockets=_named_sockets, operation='SMOOTH_MIN', use_clamp=use_clamp)
-        return _node._out
+        node = Node('Math', named_sockets={'Value': self, 'Value_1': value_1, 'Distance': distance}, operation='SMOOTH_MIN', use_clamp=use_clamp)
+        return node._out
 
-    def smooth_max(self, value_1: Float=None, distance: Float=None, use_clamp=False):
+    def smooth_max(self, value_1: Float=None, distance: Float=None, use_clamp: bool=False):
         """ > Node <&Node Math>
         
         Jump method: False.
@@ -658,15 +659,13 @@ class Float(BaseFloat):
         
         Returns
         -------
-        Float
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'value': self, 'value_1': value_1, 'distance': distance}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Math', named_sockets=_named_sockets, operation='SMOOTH_MAX', use_clamp=use_clamp)
-        return _node._out
+        node = Node('Math', named_sockets={'Value': self, 'Value_1': value_1, 'Distance': distance}, operation='SMOOTH_MAX', use_clamp=use_clamp)
+        return node._out
 
-    def round(self, use_clamp=False):
+    def round(self, use_clamp: bool=False):
         """ > Node <&Node Math>
         
         Jump method: False.
@@ -686,15 +685,13 @@ class Float(BaseFloat):
         
         Returns
         -------
-        Float
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'value': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Math', named_sockets=_named_sockets, operation='ROUND', use_clamp=use_clamp)
-        return _node._out
+        node = Node('Math', named_sockets={'Value': self}, operation='ROUND', use_clamp=use_clamp)
+        return node._out
 
-    def floor(self, use_clamp=False):
+    def floor(self, use_clamp: bool=False):
         """ > Node <&Node Math>
         
         Jump method: False.
@@ -714,15 +711,13 @@ class Float(BaseFloat):
         
         Returns
         -------
-        Float
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'value': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Math', named_sockets=_named_sockets, operation='FLOOR', use_clamp=use_clamp)
-        return _node._out
+        node = Node('Math', named_sockets={'Value': self}, operation='FLOOR', use_clamp=use_clamp)
+        return node._out
 
-    def ceil(self, use_clamp=False):
+    def ceil(self, use_clamp: bool=False):
         """ > Node <&Node Math>
         
         Jump method: False.
@@ -742,15 +737,13 @@ class Float(BaseFloat):
         
         Returns
         -------
-        Float
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'value': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Math', named_sockets=_named_sockets, operation='CEIL', use_clamp=use_clamp)
-        return _node._out
+        node = Node('Math', named_sockets={'Value': self}, operation='CEIL', use_clamp=use_clamp)
+        return node._out
 
-    def trunc(self, use_clamp=False):
+    def trunc(self, use_clamp: bool=False):
         """ > Node <&Node Math>
         
         Jump method: False.
@@ -770,15 +763,13 @@ class Float(BaseFloat):
         
         Returns
         -------
-        Float
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'value': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Math', named_sockets=_named_sockets, operation='TRUNC', use_clamp=use_clamp)
-        return _node._out
+        node = Node('Math', named_sockets={'Value': self}, operation='TRUNC', use_clamp=use_clamp)
+        return node._out
 
-    def fract(self, use_clamp=False):
+    def fract(self, use_clamp: bool=False):
         """ > Node <&Node Math>
         
         Jump method: False.
@@ -798,15 +789,13 @@ class Float(BaseFloat):
         
         Returns
         -------
-        Float
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'value': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Math', named_sockets=_named_sockets, operation='FRACT', use_clamp=use_clamp)
-        return _node._out
+        node = Node('Math', named_sockets={'Value': self}, operation='FRACT', use_clamp=use_clamp)
+        return node._out
 
-    def modulo(self, value_1: Float=None, use_clamp=False):
+    def modulo(self, value_1: Float=None, use_clamp: bool=False):
         """ > Node <&Node Math>
         
         Jump method: False.
@@ -829,15 +818,13 @@ class Float(BaseFloat):
         
         Returns
         -------
-        Float
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'value': self, 'value_1': value_1}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Math', named_sockets=_named_sockets, operation='MODULO', use_clamp=use_clamp)
-        return _node._out
+        node = Node('Math', named_sockets={'Value': self, 'Value_1': value_1}, operation='MODULO', use_clamp=use_clamp)
+        return node._out
 
-    def floored_modulo(self, value_1: Float=None, use_clamp=False):
+    def floored_modulo(self, value_1: Float=None, use_clamp: bool=False):
         """ > Node <&Node Math>
         
         Jump method: False.
@@ -860,15 +847,13 @@ class Float(BaseFloat):
         
         Returns
         -------
-        Float
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'value': self, 'value_1': value_1}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Math', named_sockets=_named_sockets, operation='FLOORED_MODULO', use_clamp=use_clamp)
-        return _node._out
+        node = Node('Math', named_sockets={'Value': self, 'Value_1': value_1}, operation='FLOORED_MODULO', use_clamp=use_clamp)
+        return node._out
 
-    def wrap(self, max: Float=None, min: Float=None, use_clamp=False):
+    def wrap(self, max: Float=None, min: Float=None, use_clamp: bool=False):
         """ > Node <&Node Math>
         
         Jump method: False.
@@ -894,15 +879,13 @@ class Float(BaseFloat):
         
         Returns
         -------
-        Float
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'value': self, 'max': max, 'min': min}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Math', named_sockets=_named_sockets, operation='WRAP', use_clamp=use_clamp)
-        return _node._out
+        node = Node('Math', named_sockets={'Value': self, 'Max': max, 'Min': min}, operation='WRAP', use_clamp=use_clamp)
+        return node._out
 
-    def snap(self, increment: Float=None, use_clamp=False):
+    def snap(self, increment: Float=None, use_clamp: bool=False):
         """ > Node <&Node Math>
         
         Jump method: False.
@@ -925,15 +908,13 @@ class Float(BaseFloat):
         
         Returns
         -------
-        Float
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'value': self, 'increment': increment}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Math', named_sockets=_named_sockets, operation='SNAP', use_clamp=use_clamp)
-        return _node._out
+        node = Node('Math', named_sockets={'Value': self, 'Increment': increment}, operation='SNAP', use_clamp=use_clamp)
+        return node._out
 
-    def pingpong(self, scale: Float=None, use_clamp=False):
+    def pingpong(self, scale: Float=None, use_clamp: bool=False):
         """ > Node <&Node Math>
         
         Jump method: False.
@@ -956,15 +937,13 @@ class Float(BaseFloat):
         
         Returns
         -------
-        Float
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'value': self, 'scale': scale}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Math', named_sockets=_named_sockets, operation='PINGPONG', use_clamp=use_clamp)
-        return _node._out
+        node = Node('Math', named_sockets={'Value': self, 'Scale': scale}, operation='PINGPONG', use_clamp=use_clamp)
+        return node._out
 
-    def sin(self, use_clamp=False):
+    def sin(self, use_clamp: bool=False):
         """ > Node <&Node Math>
         
         Jump method: False.
@@ -984,15 +963,13 @@ class Float(BaseFloat):
         
         Returns
         -------
-        Float
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'value': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Math', named_sockets=_named_sockets, operation='SINE', use_clamp=use_clamp)
-        return _node._out
+        node = Node('Math', named_sockets={'Value': self}, operation='SINE', use_clamp=use_clamp)
+        return node._out
 
-    def cos(self, use_clamp=False):
+    def cos(self, use_clamp: bool=False):
         """ > Node <&Node Math>
         
         Jump method: False.
@@ -1012,15 +989,13 @@ class Float(BaseFloat):
         
         Returns
         -------
-        Float
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'value': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Math', named_sockets=_named_sockets, operation='COSINE', use_clamp=use_clamp)
-        return _node._out
+        node = Node('Math', named_sockets={'Value': self}, operation='COSINE', use_clamp=use_clamp)
+        return node._out
 
-    def tan(self, use_clamp=False):
+    def tan(self, use_clamp: bool=False):
         """ > Node <&Node Math>
         
         Jump method: False.
@@ -1040,15 +1015,13 @@ class Float(BaseFloat):
         
         Returns
         -------
-        Float
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'value': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Math', named_sockets=_named_sockets, operation='TANGENT', use_clamp=use_clamp)
-        return _node._out
+        node = Node('Math', named_sockets={'Value': self}, operation='TANGENT', use_clamp=use_clamp)
+        return node._out
 
-    def asin(self, use_clamp=False):
+    def asin(self, use_clamp: bool=False):
         """ > Node <&Node Math>
         
         Jump method: False.
@@ -1068,15 +1041,13 @@ class Float(BaseFloat):
         
         Returns
         -------
-        Float
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'value': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Math', named_sockets=_named_sockets, operation='ARCSINE', use_clamp=use_clamp)
-        return _node._out
+        node = Node('Math', named_sockets={'Value': self}, operation='ARCSINE', use_clamp=use_clamp)
+        return node._out
 
-    def acos(self, use_clamp=False):
+    def acos(self, use_clamp: bool=False):
         """ > Node <&Node Math>
         
         Jump method: False.
@@ -1096,15 +1067,13 @@ class Float(BaseFloat):
         
         Returns
         -------
-        Float
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'value': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Math', named_sockets=_named_sockets, operation='ARCCOSINE', use_clamp=use_clamp)
-        return _node._out
+        node = Node('Math', named_sockets={'Value': self}, operation='ARCCOSINE', use_clamp=use_clamp)
+        return node._out
 
-    def arctangent(self, use_clamp=False):
+    def arctangent(self, use_clamp: bool=False):
         """ > Node <&Node Math>
         
         Jump method: False.
@@ -1124,15 +1093,13 @@ class Float(BaseFloat):
         
         Returns
         -------
-        Float
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'value': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Math', named_sockets=_named_sockets, operation='ARCTANGENT', use_clamp=use_clamp)
-        return _node._out
+        node = Node('Math', named_sockets={'Value': self}, operation='ARCTANGENT', use_clamp=use_clamp)
+        return node._out
 
-    def atan2(self, value_1: Float=None, use_clamp=False):
+    def atan2(self, value_1: Float=None, use_clamp: bool=False):
         """ > Node <&Node Math>
         
         Jump method: False.
@@ -1155,15 +1122,13 @@ class Float(BaseFloat):
         
         Returns
         -------
-        Float
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'value': self, 'value_1': value_1}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Math', named_sockets=_named_sockets, operation='ARCTAN2', use_clamp=use_clamp)
-        return _node._out
+        node = Node('Math', named_sockets={'Value': self, 'Value_1': value_1}, operation='ARCTAN2', use_clamp=use_clamp)
+        return node._out
 
-    def sinh(self, use_clamp=False):
+    def sinh(self, use_clamp: bool=False):
         """ > Node <&Node Math>
         
         Jump method: False.
@@ -1183,15 +1148,13 @@ class Float(BaseFloat):
         
         Returns
         -------
-        Float
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'value': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Math', named_sockets=_named_sockets, operation='SINH', use_clamp=use_clamp)
-        return _node._out
+        node = Node('Math', named_sockets={'Value': self}, operation='SINH', use_clamp=use_clamp)
+        return node._out
 
-    def cosh(self, use_clamp=False):
+    def cosh(self, use_clamp: bool=False):
         """ > Node <&Node Math>
         
         Jump method: False.
@@ -1211,15 +1174,13 @@ class Float(BaseFloat):
         
         Returns
         -------
-        Float
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'value': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Math', named_sockets=_named_sockets, operation='COSH', use_clamp=use_clamp)
-        return _node._out
+        node = Node('Math', named_sockets={'Value': self}, operation='COSH', use_clamp=use_clamp)
+        return node._out
 
-    def tanh(self, use_clamp=False):
+    def tanh(self, use_clamp: bool=False):
         """ > Node <&Node Math>
         
         Jump method: False.
@@ -1239,20 +1200,18 @@ class Float(BaseFloat):
         
         Returns
         -------
-        Float
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'value': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Math', named_sockets=_named_sockets, operation='TANH', use_clamp=use_clamp)
-        return _node._out
+        node = Node('Math', named_sockets={'Value': self}, operation='TANH', use_clamp=use_clamp)
+        return node._out
 
-    def radians(self, use_clamp=False):
+    def radians(self, use_clamp: bool=False):
         """ > Node <&Node Math>
         
         Jump method: False.
         
-        self: socket 'Value'.
+        self: socket 'Degrees'.
         
         **Fixed values**
         
@@ -1267,20 +1226,18 @@ class Float(BaseFloat):
         
         Returns
         -------
-        Float
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'degrees': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Math', named_sockets=_named_sockets, operation='RADIANS', use_clamp=use_clamp)
-        return _node._out
+        node = Node('Math', named_sockets={'Degrees': self}, operation='RADIANS', use_clamp=use_clamp)
+        return node._out
 
-    def degrees(self, use_clamp=False):
+    def degrees(self, use_clamp: bool=False):
         """ > Node <&Node Math>
         
         Jump method: False.
         
-        self: socket 'Value'.
+        self: socket 'Radians'.
         
         **Fixed values**
         
@@ -1295,13 +1252,11 @@ class Float(BaseFloat):
         
         Returns
         -------
-        Float
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'radians': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Math', named_sockets=_named_sockets, operation='DEGREES', use_clamp=use_clamp)
-        return _node._out
+        node = Node('Math', named_sockets={'Radians': self}, operation='DEGREES', use_clamp=use_clamp)
+        return node._out
 
     def __iadd__(self, other):
         return self._jump(self.add(other))
@@ -1534,38 +1489,39 @@ class Float(BaseFloat):
     def __ne__(self, other):
         return self.not_equal(other)
 
-    def accumulate_field(self, group_id: Integer=None, data_type: Literal['FLOAT', 'INT', 'FLOAT_VECTOR', 'TRANSFORM']='FLOAT', domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']='POINT'):
+    @classmethod
+    def accumulate_field(cls, value: Float=None, group_id: Integer=None, domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']='POINT'):
         """ > Node <&Node Accumulate Field>
         
-        Jump method: False.
+        **Fixed values**
         
-        self: socket 'Value'.
+        | Parameter | Value |
+        | --- | --- |
+        | `data_type` | `'FLOAT'` |
         
         Parameters
         ----------
+        value : Float, optional
+            socket 'Value'
+        
         group_id : Integer, optional
             socket 'Group ID'
-        
-        data_type : Literal['Float', 'Integer', 'Vector', 'Transform']
-            parameter `data_type`
         
         domain : Literal['Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer']
             parameter `domain`
         
         Returns
         -------
-        Float | Integer | Vector | Matrix
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'value': self, 'group_id': group_id}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Accumulate Field', named_sockets=_named_sockets, data_type=data_type, domain=domain)
-        return _node._out
+        node = Node('Accumulate Field', named_sockets={'Value': value, 'Group ID': group_id}, data_type='FLOAT', domain=domain)
+        return node._out
 
-    def advect_grid(self, velocity: Vector=None, time_step: Float=None, integration_scheme: Literal['Semi-Lagrangian', 'Midpoint', 'Runge-Kutta 3', 'Runge-Kutta 4', 'MacCormack', 'BFECC']=None, limiter: Literal['None', 'Clamp', 'Revert']=None):
+    def advect_grid(self, velocity: Vector=None, time_step: Float=None, integration_scheme: Menu=None, limiter: Menu=None):
         """ > Node <&Node Advect Grid>
         
-        Jump method: False.
+        Jump method: True.
         
         self: socket 'Grid'.
         
@@ -1583,46 +1539,24 @@ class Float(BaseFloat):
         time_step : Float, optional
             socket 'Time Step'
         
-        integration_scheme : menu='Runge-Kutta 3', optional
-            ('Semi-Lagrangian', 'Midpoint', 'Runge-Kutta 3', 'Runge-Kutta 4', 'MacCormack', 'BFECC')
+        integration_scheme : Menu, optional
+            socket 'Integration Scheme'
         
-        limiter : menu='Clamp', optional
-            ('None', 'Clamp', 'Revert')
-        
-        Returns
-        -------
-        Float
-            socket 'OUT'
-        """
-        _named_sockets = {'grid': self, 'velocity': velocity, 'time_step': time_step, 'integration_scheme': integration_scheme, 'limiter': limiter}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Advect Grid', named_sockets=_named_sockets, data_type='FLOAT')
-        return _node._out
-
-    @property
-    def blackbody(self):
-        """ > Node <&Node Blackbody>
-        
-        Jump method: False.
-        
-        self: socket 'Temperature'.
+        limiter : Menu, optional
+            socket 'Limiter'
         
         Returns
         -------
-        Color
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'temperature': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Blackbody', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('Advect Grid', named_sockets={'Grid': self, 'Velocity': velocity, 'Time Step': time_step, 'Integration Scheme': integration_scheme, 'Limiter': limiter}, data_type='FLOAT')
+        self._jump(node._out)
+        return node._second_out(self)
 
-    def blur_attribute(self, iterations: Integer=None, weight: Float=None):
+    @classmethod
+    def blur_attribute(cls, value: Float=None, iterations: Integer=None, weight: Float=None):
         """ > Node <&Node Blur Attribute>
-        
-        Jump method: False.
-        
-        self: socket 'Value'.
         
         **Fixed values**
         
@@ -1632,6 +1566,9 @@ class Float(BaseFloat):
         
         Parameters
         ----------
+        value : Float, optional
+            socket 'Value'
+        
         iterations : Integer, optional
             socket 'Iterations'
         
@@ -1640,13 +1577,11 @@ class Float(BaseFloat):
         
         Returns
         -------
-        Float
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'value': self, 'iterations': iterations, 'weight': weight}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Blur Attribute', named_sockets=_named_sockets, data_type='FLOAT')
-        return _node._out
+        node = Node('Blur Attribute', named_sockets={'Value': value, 'Iterations': iterations, 'Weight': weight}, data_type='FLOAT')
+        return node._out
 
     def clamp(self, min: Float=None, max: Float=None, clamp_type: Literal['MINMAX', 'RANGE']='MINMAX'):
         """ > Node <&Node Clamp>
@@ -1668,18 +1603,16 @@ class Float(BaseFloat):
         
         Returns
         -------
-        Float
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'value': self, 'min': min, 'max': max}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Clamp', named_sockets=_named_sockets, clamp_type=clamp_type)
-        return _node._out
+        node = Node('Clamp', named_sockets={'Value': self, 'Min': min, 'Max': max}, clamp_type=clamp_type)
+        return node._out
 
     def clip_grid(self, min_x: Integer=None, min_y: Integer=None, min_z: Integer=None, max_x: Integer=None, max_y: Integer=None, max_z: Integer=None):
         """ > Node <&Node Clip Grid>
         
-        Jump method: False.
+        Jump method: True.
         
         self: socket 'Grid'.
         
@@ -1711,17 +1644,34 @@ class Float(BaseFloat):
         
         Returns
         -------
-        Float
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'grid': self, 'min_x': min_x, 'min_y': min_y, 'min_z': min_z, 'max_x': max_x, 'max_y': max_y, 'max_z': max_z}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Clip Grid', named_sockets=_named_sockets, data_type='FLOAT')
-        return _node._out
+        node = Node('Clip Grid', named_sockets={'Grid': self, 'Min X': min_x, 'Min Y': min_y, 'Min Z': min_z, 'Max X': max_x, 'Max Y': max_y, 'Max Z': max_z}, data_type='FLOAT')
+        self._jump(node._out)
+        return node._second_out(self)
 
     @classmethod
-    def CombineList(cls, named_sockets=None, _0: Float=None, **sockets):
+    def combine_list(cls, *values: Socket):
         """ > Node <&Node Combine List>
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `data_type` | `'FLOAT'` |
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Combine List', *values, named_sockets={}, data_type='FLOAT')
+        return node._out
+
+    @classmethod
+    def compare(cls, a: Float=None, b: Float=None, epsilon: Float=None, operation: Literal['LESS_THAN', 'LESS_EQUAL', 'GREATER_THAN', 'GREATER_EQUAL', 'EQUAL', 'NOT_EQUAL']='GREATER_THAN', mode: Literal['ELEMENT', 'LENGTH', 'AVERAGE', 'DOT_PRODUCT', 'DIRECTION']='ELEMENT'):
+        """ > Node <&Node Compare>
         
         **Fixed values**
         
@@ -1731,24 +1681,36 @@ class Float(BaseFloat):
         
         Parameters
         ----------
-        _0 : Float, optional
-            socket '0'
+        a : Float, optional
+            socket 'A'
+        
+        b : Float, optional
+            socket 'B'
+        
+        epsilon : Float, optional
+            socket 'Epsilon'
+        
+        operation : Literal['Less Than', 'Less Than or Equal', 'Greater Than', 'Greater Than or Equal', 'Equal', 'Not Equal']
+            parameter `operation`
+        
+        mode : Literal['Element-Wise', 'Length', 'Average', 'Dot Product', 'Direction']
+            parameter `mode`
         
         Returns
         -------
-        Float
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'_0': _0}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _named_sockets.update({_name: _value for _name, _value in (named_sockets or {}).items() if _value is not None})
-        _node = Node('Combine List', named_sockets=_named_sockets, data_type='FLOAT', **sockets)
-        return _node._out
+        _configuration = ('FLOAT', {'less_than': 'LESS_THAN', 'less_equal': 'LESS_EQUAL', 'greater_than': 'GREATER_THAN', 'greater_equal': 'GREATER_EQUAL', 'equal': 'EQUAL', 'not_equal': 'NOT_EQUAL', 'brighter': 'BRIGHTER', 'darker': 'DARKER', 'less than': 'LESS_THAN', 'less than or equal': 'LESS_EQUAL', 'greater than': 'GREATER_THAN', 'greater than or equal': 'GREATER_EQUAL', 'not equal': 'NOT_EQUAL'}.get(operation.lower(), operation), {'element': 'ELEMENT', 'length': 'LENGTH', 'average': 'AVERAGE', 'dot_product': 'DOT_PRODUCT', 'direction': 'DIRECTION', 'element-wise': 'ELEMENT', 'dot product': 'DOT_PRODUCT'}.get(mode.lower(), mode))
+        _node_sockets = {('FLOAT', 'LESS_THAN', 'ELEMENT'): {'A': a, 'B': b}, ('FLOAT', 'LESS_THAN', 'LENGTH'): {'A': a, 'B': b}, ('FLOAT', 'LESS_THAN', 'AVERAGE'): {'A': a, 'B': b}, ('FLOAT', 'LESS_THAN', 'DOT_PRODUCT'): {'A': a, 'B': b}, ('FLOAT', 'LESS_THAN', 'DIRECTION'): {'A': a, 'B': b}, ('FLOAT', 'LESS_EQUAL', 'ELEMENT'): {'A': a, 'B': b}, ('FLOAT', 'LESS_EQUAL', 'LENGTH'): {'A': a, 'B': b}, ('FLOAT', 'LESS_EQUAL', 'AVERAGE'): {'A': a, 'B': b}, ('FLOAT', 'LESS_EQUAL', 'DOT_PRODUCT'): {'A': a, 'B': b}, ('FLOAT', 'LESS_EQUAL', 'DIRECTION'): {'A': a, 'B': b}, ('FLOAT', 'GREATER_THAN', 'ELEMENT'): {'A': a, 'B': b}, ('FLOAT', 'GREATER_THAN', 'LENGTH'): {'A': a, 'B': b}, ('FLOAT', 'GREATER_THAN', 'AVERAGE'): {'A': a, 'B': b}, ('FLOAT', 'GREATER_THAN', 'DOT_PRODUCT'): {'A': a, 'B': b}, ('FLOAT', 'GREATER_THAN', 'DIRECTION'): {'A': a, 'B': b}, ('FLOAT', 'GREATER_EQUAL', 'ELEMENT'): {'A': a, 'B': b}, ('FLOAT', 'GREATER_EQUAL', 'LENGTH'): {'A': a, 'B': b}, ('FLOAT', 'GREATER_EQUAL', 'AVERAGE'): {'A': a, 'B': b}, ('FLOAT', 'GREATER_EQUAL', 'DOT_PRODUCT'): {'A': a, 'B': b}, ('FLOAT', 'GREATER_EQUAL', 'DIRECTION'): {'A': a, 'B': b}, ('FLOAT', 'EQUAL', 'ELEMENT'): {'A': a, 'B': b, 'Epsilon': epsilon}, ('FLOAT', 'EQUAL', 'LENGTH'): {'A': a, 'B': b, 'Epsilon': epsilon}, ('FLOAT', 'EQUAL', 'AVERAGE'): {'A': a, 'B': b, 'Epsilon': epsilon}, ('FLOAT', 'EQUAL', 'DOT_PRODUCT'): {'A': a, 'B': b, 'Epsilon': epsilon}, ('FLOAT', 'EQUAL', 'DIRECTION'): {'A': a, 'B': b, 'Epsilon': epsilon}, ('FLOAT', 'NOT_EQUAL', 'ELEMENT'): {'A': a, 'B': b, 'Epsilon': epsilon}, ('FLOAT', 'NOT_EQUAL', 'LENGTH'): {'A': a, 'B': b, 'Epsilon': epsilon}, ('FLOAT', 'NOT_EQUAL', 'AVERAGE'): {'A': a, 'B': b, 'Epsilon': epsilon}, ('FLOAT', 'NOT_EQUAL', 'DOT_PRODUCT'): {'A': a, 'B': b, 'Epsilon': epsilon}, ('FLOAT', 'NOT_EQUAL', 'DIRECTION'): {'A': a, 'B': b, 'Epsilon': epsilon}}[_configuration]
+        _node_args = {('FLOAT', 'LESS_THAN', 'ELEMENT'): [], ('FLOAT', 'LESS_THAN', 'LENGTH'): [], ('FLOAT', 'LESS_THAN', 'AVERAGE'): [], ('FLOAT', 'LESS_THAN', 'DOT_PRODUCT'): [], ('FLOAT', 'LESS_THAN', 'DIRECTION'): [], ('FLOAT', 'LESS_EQUAL', 'ELEMENT'): [], ('FLOAT', 'LESS_EQUAL', 'LENGTH'): [], ('FLOAT', 'LESS_EQUAL', 'AVERAGE'): [], ('FLOAT', 'LESS_EQUAL', 'DOT_PRODUCT'): [], ('FLOAT', 'LESS_EQUAL', 'DIRECTION'): [], ('FLOAT', 'GREATER_THAN', 'ELEMENT'): [], ('FLOAT', 'GREATER_THAN', 'LENGTH'): [], ('FLOAT', 'GREATER_THAN', 'AVERAGE'): [], ('FLOAT', 'GREATER_THAN', 'DOT_PRODUCT'): [], ('FLOAT', 'GREATER_THAN', 'DIRECTION'): [], ('FLOAT', 'GREATER_EQUAL', 'ELEMENT'): [], ('FLOAT', 'GREATER_EQUAL', 'LENGTH'): [], ('FLOAT', 'GREATER_EQUAL', 'AVERAGE'): [], ('FLOAT', 'GREATER_EQUAL', 'DOT_PRODUCT'): [], ('FLOAT', 'GREATER_EQUAL', 'DIRECTION'): [], ('FLOAT', 'EQUAL', 'ELEMENT'): [], ('FLOAT', 'EQUAL', 'LENGTH'): [], ('FLOAT', 'EQUAL', 'AVERAGE'): [], ('FLOAT', 'EQUAL', 'DOT_PRODUCT'): [], ('FLOAT', 'EQUAL', 'DIRECTION'): [], ('FLOAT', 'NOT_EQUAL', 'ELEMENT'): [], ('FLOAT', 'NOT_EQUAL', 'LENGTH'): [], ('FLOAT', 'NOT_EQUAL', 'AVERAGE'): [], ('FLOAT', 'NOT_EQUAL', 'DOT_PRODUCT'): [], ('FLOAT', 'NOT_EQUAL', 'DIRECTION'): []}[_configuration]
+        node = Node('Compare', *_node_args, named_sockets=_node_sockets, data_type='FLOAT', operation=operation, mode=mode)
+        return node._out
 
-    def deactivate_voxels(self, selection: Boolean=None):
+    def deactivate_voxels(self):
         """ > Node <&Node Deactivate Voxels>
         
-        Jump method: False.
+        Jump method: True.
         
         self: socket 'Grid'.
         
@@ -1758,27 +1720,19 @@ class Float(BaseFloat):
         | --- | --- |
         | `data_type` | `'FLOAT'` |
         
-        Parameters
-        ----------
-        selection : Boolean, optional
-            socket 'Selection'
-        
         Returns
         -------
-        Float
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'grid': self, 'selection': selection}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Deactivate Voxels', named_sockets=_named_sockets, data_type='FLOAT')
-        return _node._out
+        selection = self.get_selection()
+        node = Node('Deactivate Voxels', named_sockets={'Grid': self, 'Selection': selection}, data_type='FLOAT')
+        self._jump(node._out)
+        return node._second_out(self)
 
-    def enable_output(self, enable: Boolean=None):
-        """ > Node <&Node Enable Output>
-        
-        Jump method: False.
-        
-        self: socket 'Value'.
+    @classmethod
+    def evaluate_at_index(cls, value: Float=None, index: Integer=None, domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']='POINT'):
+        """ > Node <&Node Evaluate at Index>
         
         **Fixed values**
         
@@ -1788,152 +1742,187 @@ class Float(BaseFloat):
         
         Parameters
         ----------
-        enable : Boolean, optional
-            socket 'Enable'
+        value : Float, optional
+            socket 'Value'
         
-        Returns
-        -------
-        Float
-            socket 'OUT'
-        """
-        _named_sockets = {'enable': enable, 'value': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Enable Output', named_sockets=_named_sockets, data_type='FLOAT')
-        return _node._out
-
-    def evaluate_at_index(self, index: Integer=None, domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']='POINT', data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'QUATERNION', 'FLOAT4X4', 'STRING', 'INT8', 'INT16_2D', 'INT32_2D', 'FLOAT2', 'FLOAT4', 'BYTE_COLOR']='FLOAT'):
-        """ > Node <&Node Evaluate at Index>
-        
-        Jump method: False.
-        
-        self: socket 'Value'.
-        
-        Parameters
-        ----------
         index : Integer, optional
             socket 'Index'
         
         domain : Literal['Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer']
             parameter `domain`
         
-        data_type : Literal['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Quaternion', '4x4 Matrix']
-            parameter `data_type`
-        
         Returns
         -------
-        Float | Integer | Boolean | Vector | Color | Rotation | Matrix
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'value': self, 'index': index}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Evaluate at Index', named_sockets=_named_sockets, domain=domain, data_type=data_type)
-        return _node._out
+        node = Node('Evaluate at Index', named_sockets={'Value': value, 'Index': index}, domain=domain, data_type='FLOAT')
+        return node._out
 
-    def evaluate_on_domain(self, domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']='POINT', data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'QUATERNION', 'FLOAT4X4', 'STRING', 'INT8', 'INT16_2D', 'INT32_2D', 'FLOAT2', 'FLOAT4', 'BYTE_COLOR']='FLOAT'):
+    @classmethod
+    def evaluate_on_domain(cls, value: Float=None, domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']='POINT'):
         """ > Node <&Node Evaluate on Domain>
         
-        Jump method: False.
+        **Fixed values**
         
-        self: socket 'Value'.
+        | Parameter | Value |
+        | --- | --- |
+        | `data_type` | `'FLOAT'` |
         
         Parameters
         ----------
+        value : Float, optional
+            socket 'Value'
+        
         domain : Literal['Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer']
             parameter `domain`
         
-        data_type : Literal['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Quaternion', '4x4 Matrix']
-            parameter `data_type`
-        
         Returns
         -------
-        Float | Integer | Boolean | Vector | Color | Rotation | Matrix
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'value': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Evaluate on Domain', named_sockets=_named_sockets, domain=domain, data_type=data_type)
-        return _node._out
+        node = Node('Evaluate on Domain', named_sockets={'Value': value}, domain=domain, data_type='FLOAT')
+        return node._out
 
-    def field_average(self, group_id: Integer=None, data_type: Literal['FLOAT', 'FLOAT_VECTOR']='FLOAT', domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']='POINT'):
+    @classmethod
+    def field_average(cls, value: Float=None, group_id: Integer=None, domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']='POINT'):
         """ > Node <&Node Field Average>
         
-        Jump method: False.
+        **Fixed values**
         
-        self: socket 'Value'.
+        | Parameter | Value |
+        | --- | --- |
+        | `data_type` | `'FLOAT'` |
         
         Parameters
         ----------
+        value : Float, optional
+            socket 'Value'
+        
         group_id : Integer, optional
             socket 'Group ID'
-        
-        data_type : Literal['Float', 'Vector']
-            parameter `data_type`
         
         domain : Literal['Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer']
             parameter `domain`
         
         Returns
         -------
-        Float | Vector
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'value': self, 'group_id': group_id}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Field Average', named_sockets=_named_sockets, data_type=data_type, domain=domain)
-        return _node._out
+        node = Node('Field Average', named_sockets={'Value': value, 'Group ID': group_id}, data_type='FLOAT', domain=domain)
+        return node._out
 
-    def field_min_max(self, group_id: Integer=None, data_type: Literal['FLOAT', 'INT', 'FLOAT_VECTOR']='FLOAT', domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']='POINT'):
+    @classmethod
+    def field_min_max(cls, value: Float=None, group_id: Integer=None, domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']='POINT'):
         """ > Node <&Node Field Min & Max>
         
-        Jump method: False.
+        **Fixed values**
         
-        self: socket 'Value'.
+        | Parameter | Value |
+        | --- | --- |
+        | `data_type` | `'FLOAT'` |
         
         Parameters
         ----------
+        value : Float, optional
+            socket 'Value'
+        
         group_id : Integer, optional
             socket 'Group ID'
-        
-        data_type : Literal['Float', 'Integer', 'Vector']
-            parameter `data_type`
         
         domain : Literal['Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer']
             parameter `domain`
         
         Returns
         -------
-        Float | Integer | Vector
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'value': self, 'group_id': group_id}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Field Min & Max', named_sockets=_named_sockets, data_type=data_type, domain=domain)
-        return _node._out
+        node = Node('Field Min & Max', named_sockets={'Value': value, 'Group ID': group_id}, data_type='FLOAT', domain=domain)
+        return node._out
 
-    def field_to_grid(self, named_sockets=None, data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'SHADER', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'TEXTURE', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SCENE', 'TEXT', 'MASK', 'SOUND', 'INT_VECTOR']='FLOAT', **sockets):
+    def field_to_grid(self, named_sockets=None, **sockets):
         """ > Node <&Node Field to Grid>
         
         Jump method: False.
         
         self: socket 'Topology'.
         
-        Parameters
-        ----------
-        data_type : Literal['Float', 'Integer', 'Boolean', 'Vector']
-            parameter `data_type`
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `data_type` | `'FLOAT'` |
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
-        _named_sockets = {'topology': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _named_sockets.update({_name: _value for _name, _value in (named_sockets or {}).items() if _value is not None})
-        _node = Node('Field to Grid', named_sockets=_named_sockets, data_type=data_type, **sockets)
-        return _node
+        _named_sockets = {'Topology': self}
+        _named_sockets.update({name: value for name, value in (named_sockets or {}).items() if value is not None})
+        node = Node('Field to Grid', named_sockets=_named_sockets, data_type='FLOAT', **sockets)
+        return node._out
 
-    def field_variance(self, group_id: Integer=None, data_type: Literal['FLOAT', 'FLOAT_VECTOR']='FLOAT', domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']='POINT'):
+    @classmethod
+    def field_variance(cls, value: Float=None, group_id: Integer=None, domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']='POINT'):
         """ > Node <&Node Field Variance>
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `data_type` | `'FLOAT'` |
+        
+        Parameters
+        ----------
+        value : Float, optional
+            socket 'Value'
+        
+        group_id : Integer, optional
+            socket 'Group ID'
+        
+        domain : Literal['Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer']
+            parameter `domain`
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Field Variance', named_sockets={'Value': value, 'Group ID': group_id}, data_type='FLOAT', domain=domain)
+        return node._out
+
+    @classmethod
+    def filter_list(cls, list: Float=None, selection: Boolean=None):
+        """ > Node <&Node Filter List>
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `socket_type` | `'FLOAT'` |
+        
+        Parameters
+        ----------
+        list : Float, optional
+            socket 'List'
+        
+        selection : Boolean, optional
+            socket 'Selection'
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Filter List', named_sockets={'List': list, 'Selection': selection}, socket_type='FLOAT')
+        return node._out
+
+    def float_curve(self, factor: Float=None):
+        """ > Node <&Node Float Curve>
         
         Jump method: False.
         
@@ -1941,49 +1930,16 @@ class Float(BaseFloat):
         
         Parameters
         ----------
-        group_id : Integer, optional
-            socket 'Group ID'
-        
-        data_type : Literal['Float', 'Vector']
-            parameter `data_type`
-        
-        domain : Literal['Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer']
-            parameter `domain`
+        factor : Float, optional
+            socket 'Factor'
         
         Returns
         -------
-        Float | Vector
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'value': self, 'group_id': group_id}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Field Variance', named_sockets=_named_sockets, data_type=data_type, domain=domain)
-        return _node._out
-
-    def filter_list(self, selection: Boolean=None, socket_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'SHADER', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'TEXTURE', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SCENE', 'TEXT', 'MASK', 'SOUND', 'INT_VECTOR']='FLOAT'):
-        """ > Node <&Node Filter List>
-        
-        Jump method: False.
-        
-        self: socket 'List'.
-        
-        Parameters
-        ----------
-        selection : Boolean, optional
-            socket 'Selection'
-        
-        socket_type : Literal['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Rotation', 'Matrix', 'String', 'Menu', 'Object', 'Image', 'Geometry', 'Collection', 'Material', 'Bundle', 'Closure', 'Font', 'Sound']
-            parameter `socket_type`
-        
-        Returns
-        -------
-        Float | Integer | Boolean | Vector | Color | Rotation | Matrix | String | Menu | Object | Image | Geometry | Collection | Material | Bundle | Closure | Font | Sound
-            socket 'OUT'
-        """
-        _named_sockets = {'list': self, 'selection': selection}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Filter List', named_sockets=_named_sockets, socket_type=socket_type)
-        return _node._out
+        node = Node('Float Curve', named_sockets={'Factor': factor, 'Value': self})
+        return node._out
 
     def to_integer(self, rounding_mode: Literal['ROUND', 'FLOOR', 'CEILING', 'TRUNCATE']='ROUND'):
         """ > Node <&Node Float to Integer>
@@ -1999,46 +1955,42 @@ class Float(BaseFloat):
         
         Returns
         -------
-        Integer
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'float': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Float to Integer', named_sockets=_named_sockets, rounding_mode=rounding_mode)
-        return _node._out
+        node = Node('Float to Integer', named_sockets={'Float': self}, rounding_mode=rounding_mode)
+        return node._out
 
-    def get_list_item(self, index: Integer=None, socket_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'SHADER', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'TEXTURE', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SCENE', 'TEXT', 'MASK', 'SOUND', 'INT_VECTOR']='FLOAT', structure_type: Literal['AUTO', 'DYNAMIC', 'FIELD', 'GRID', 'LIST', 'SINGLE']='AUTO'):
+    @classmethod
+    def get_list_item(cls, list: Float=None, index: Integer=None):
         """ > Node <&Node Get List Item>
         
-        Jump method: False.
+        **Fixed values**
         
-        self: socket 'List'.
+        | Parameter | Value |
+        | --- | --- |
+        | `socket_type` | `'FLOAT'` |
         
         Parameters
         ----------
+        list : Float, optional
+            socket 'List'
+        
         index : Integer, optional
             socket 'Index'
         
-        socket_type : Literal['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Rotation', 'Matrix', 'String', 'Menu', 'Object', 'Image', 'Geometry', 'Collection', 'Material', 'Bundle', 'Closure', 'Font', 'Sound']
-            parameter `socket_type`
-        
-        structure_type : Literal['Auto', 'Dynamic', 'Field', 'Grid', 'List', 'Single']
-            parameter `structure_type`
-        
         Returns
         -------
-        Float | Integer | Boolean | Vector | Color | Rotation | Matrix | String | Menu | Object | Image | Geometry | Collection | Material | Bundle | Closure | Font | Sound
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'list': self, 'index': index}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Get List Item', named_sockets=_named_sockets, socket_type=socket_type, structure_type=structure_type)
-        return _node._out
+        node = Node('Get List Item', named_sockets={'List': list, 'Index': index}, socket_type='FLOAT')
+        return node._out
 
-    def grid_dilate_erode(self, connectivity: Literal['Face', 'Edge', 'Vertex']=None, tiles: Literal['Ignore', 'Expand', 'Preserve']=None, steps: Integer=None):
+    def grid_dilate_erode(self, connectivity: Menu=None, tiles: Menu=None, steps: Integer=None):
         """ > Node <&Node Grid Dilate & Erode>
         
-        Jump method: False.
+        Jump method: True.
         
         self: socket 'Grid'.
         
@@ -2050,26 +2002,24 @@ class Float(BaseFloat):
         
         Parameters
         ----------
-        connectivity : menu='Face', optional
-            ('Face', 'Edge', 'Vertex')
+        connectivity : Menu, optional
+            socket 'Connectivity'
         
-        tiles : menu='Preserve', optional
-            ('Ignore', 'Expand', 'Preserve')
+        tiles : Menu, optional
+            socket 'Tiles'
         
         steps : Integer, optional
             socket 'Steps'
         
         Returns
         -------
-        Float
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'grid': self, 'connectivity': connectivity, 'tiles': tiles, 'steps': steps}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Grid Dilate & Erode', named_sockets=_named_sockets, data_type='FLOAT')
-        return _node._out
+        node = Node('Grid Dilate & Erode', named_sockets={'Grid': self, 'Connectivity': connectivity, 'Tiles': tiles, 'Steps': steps}, data_type='FLOAT')
+        self._jump(node._out)
+        return node._second_out(self)
 
-    @property
     def grid_gradient(self):
         """ > Node <&Node Grid Gradient>
         
@@ -2079,40 +2029,12 @@ class Float(BaseFloat):
         
         Returns
         -------
-        Vector
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'grid': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Grid Gradient', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('Grid Gradient', named_sockets={'Grid': self})
+        return node._out
 
-    @classmethod
-    def GridInfo(cls, grid: Float=None):
-        """ > Node <&Node Grid Info>
-        
-        **Fixed values**
-        
-        | Parameter | Value |
-        | --- | --- |
-        | `data_type` | `'FLOAT'` |
-        
-        Parameters
-        ----------
-        grid : Float, optional
-            socket 'Grid'
-        
-        Returns
-        -------
-        Matrix
-            socket 'OUT'
-        """
-        _named_sockets = {'grid': grid}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Grid Info', named_sockets=_named_sockets, data_type='FLOAT')
-        return _node._out
-
-    @property
     def grid_laplacian(self):
         """ > Node <&Node Grid Laplacian>
         
@@ -2122,18 +2044,16 @@ class Float(BaseFloat):
         
         Returns
         -------
-        Float
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'grid': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Grid Laplacian', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('Grid Laplacian', named_sockets={'Grid': self})
+        return node._out
 
     def grid_mean(self, width: Integer=None, iterations: Integer=None):
         """ > Node <&Node Grid Mean>
         
-        Jump method: False.
+        Jump method: True.
         
         self: socket 'Grid'.
         
@@ -2153,18 +2073,17 @@ class Float(BaseFloat):
         
         Returns
         -------
-        Float
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'grid': self, 'width': width, 'iterations': iterations}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Grid Mean', named_sockets=_named_sockets, data_type='FLOAT')
-        return _node._out
+        node = Node('Grid Mean', named_sockets={'Grid': self, 'Width': width, 'Iterations': iterations}, data_type='FLOAT')
+        self._jump(node._out)
+        return node._second_out(self)
 
     def grid_median(self, width: Integer=None, iterations: Integer=None):
         """ > Node <&Node Grid Median>
         
-        Jump method: False.
+        Jump method: True.
         
         self: socket 'Grid'.
         
@@ -2184,15 +2103,14 @@ class Float(BaseFloat):
         
         Returns
         -------
-        Float
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'grid': self, 'width': width, 'iterations': iterations}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Grid Median', named_sockets=_named_sockets, data_type='FLOAT')
-        return _node._out
+        node = Node('Grid Median', named_sockets={'Grid': self, 'Width': width, 'Iterations': iterations}, data_type='FLOAT')
+        self._jump(node._out)
+        return node._second_out(self)
 
-    def grid_solve_poisson(self, max_iterations: Integer=None, error_threshold: Float=None, threshold_mode: Literal['Relative', 'Absolute']=None, boundary: Literal['Fixed', 'Gradient', 'Mixed']=None, boundary_value: Float=None, boundary_gradient: Vector=None, boundary_factor: Float=None):
+    def grid_solve_poisson(self, max_iterations: Integer=None, error_threshold: Float=None, threshold_mode: Menu=None, boundary: Menu=None, boundary_value: Float=None, boundary_gradient: Vector=None, boundary_factor: Float=None):
         """ > Node <&Node Grid Solve Poisson>
         
         Jump method: False.
@@ -2207,11 +2125,11 @@ class Float(BaseFloat):
         error_threshold : Float, optional
             socket 'Error Threshold'
         
-        threshold_mode : menu='Relative', optional
-            ('Relative', 'Absolute')
+        threshold_mode : Menu, optional
+            socket 'Threshold Mode'
         
-        boundary : menu='Fixed', optional
-            ('Fixed', 'Gradient', 'Mixed')
+        boundary : Menu, optional
+            socket 'Boundary'
         
         boundary_value : Float, optional
             socket 'Boundary Value'
@@ -2224,41 +2142,14 @@ class Float(BaseFloat):
         
         Returns
         -------
-        Float
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'grid': self, 'max_iterations': max_iterations, 'error_threshold': error_threshold, 'threshold_mode': threshold_mode, 'boundary': boundary, 'boundary_value': boundary_value, 'boundary_gradient': boundary_gradient, 'boundary_factor': boundary_factor}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Grid Solve Poisson', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('Grid Solve Poisson', named_sockets={'Grid': self, 'Max Iterations': max_iterations, 'Error Threshold': error_threshold, 'Threshold Mode': threshold_mode, 'Boundary': boundary, 'Boundary Value': boundary_value, 'Boundary Gradient': boundary_gradient, 'Boundary Factor': boundary_factor})
+        return node._out
 
     @classmethod
-    def GridToPoints(cls, grid: Float=None):
-        """ > Node <&Node Grid to Points>
-        
-        **Fixed values**
-        
-        | Parameter | Value |
-        | --- | --- |
-        | `data_type` | `'FLOAT'` |
-        
-        Parameters
-        ----------
-        grid : Float, optional
-            socket 'Grid'
-        
-        Returns
-        -------
-        Cloud
-            socket 'OUT'
-        """
-        _named_sockets = {'grid': grid}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Grid to Points', named_sockets=_named_sockets, data_type='FLOAT')
-        return _node._out
-
-    @classmethod
-    def GridTopologyBoolean(cls, *grid_2: Float, operation: Literal['Intersect', 'Union', 'Difference']=None, grid_1: Float=None):
+    def GridTopologyBoolean(cls, *grid_2: Float, operation: Menu=None, grid_1: Float=None):
         """ > Node <&Node Grid Topology Boolean>
         
         **Fixed values**
@@ -2269,31 +2160,26 @@ class Float(BaseFloat):
         
         Parameters
         ----------
-        operation : menu='Intersect', optional
-            ('Intersect', 'Union', 'Difference')
+        grid_2 : Float, optional
+            socket 'Grid 2'
+        
+        operation : Menu, optional
+            socket 'Operation'
         
         grid_1 : Float, optional
             socket 'Grid 1'
         
-        grid_2 : Float, optional
-            socket 'Grid 2'
-        
         Returns
         -------
-        Float
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'operation': operation, 'grid_1': grid_1, 'grid_2': list(grid_2)}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Grid Topology Boolean', named_sockets=_named_sockets, data_type='FLOAT')
-        return _node._out
+        node = Node('Grid Topology Boolean', *[*list(grid_2)], named_sockets={'Operation': operation, 'Grid 1': grid_1}, data_type='FLOAT')
+        return node._out
 
-    def implicit_conversion(self, socket_idname='NodeSocketColor'):
-        """ > Node <&Node Implicit Conversion>
-        
-        Jump method: False.
-        
-        self: socket 'Value'.
+    @classmethod
+    def hash_value(cls, value: Float=None, seed: Integer=None):
+        """ > Node <&Node Hash Value>
         
         **Fixed values**
         
@@ -2303,79 +2189,72 @@ class Float(BaseFloat):
         
         Parameters
         ----------
+        value : Float, optional
+            socket 'Value'
+        
+        seed : Integer, optional
+            socket 'Seed'
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Hash Value', named_sockets={'Value': value, 'Seed': seed}, data_type='FLOAT')
+        return node._out
+
+    @classmethod
+    def implicit_conversion(cls, value: Float=None, socket_idname: str='NodeSocketColor'):
+        """ > Node <&Node Implicit Conversion>
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `data_type` | `'FLOAT'` |
+        
+        Parameters
+        ----------
+        value : Float, optional
+            socket 'Value'
+        
         socket_idname : str
             parameter `socket_idname`
         
         Returns
         -------
-        Float
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'value': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Implicit Conversion', named_sockets=_named_sockets, socket_idname=socket_idname, data_type='FLOAT')
-        return _node._out
+        node = Node('Implicit Conversion', named_sockets={'Value': value}, data_type='FLOAT', socket_idname=socket_idname)
+        return node._out
 
     @classmethod
-    def IndexSwitch(cls, named_sockets=None, index: Integer=None, _0: Float=None, _1: Float=None, **sockets):
-        """ > Node <&Node Index Switch>
-        
-        **Fixed values**
-        
-        | Parameter | Value |
-        | --- | --- |
-        | `data_type` | `'FLOAT'` |
-        
-        Parameters
-        ----------
-        index : Integer, optional
-            socket 'Index'
-        
-        _0 : Float, optional
-            socket '0'
-        
-        _1 : Float, optional
-            socket '1'
-        
-        Returns
-        -------
-        Float
-            socket 'OUT'
-        """
-        _named_sockets = {'index': index, '_0': _0, '_1': _1}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _named_sockets.update({_name: _value for _name, _value in (named_sockets or {}).items() if _value is not None})
-        _node = Node('Index Switch', named_sockets=_named_sockets, data_type='FLOAT', **sockets)
-        return _node._out
-
-    def list_length(self, data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'SHADER', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'TEXTURE', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SCENE', 'TEXT', 'MASK', 'SOUND', 'INT_VECTOR']='FLOAT'):
+    def list_length(cls, list: Float=None):
         """ > Node <&Node List Length>
         
-        Jump method: False.
+        **Fixed values**
         
-        self: socket 'List'.
+        | Parameter | Value |
+        | --- | --- |
+        | `data_type` | `'FLOAT'` |
         
         Parameters
         ----------
-        data_type : Literal['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Rotation', 'Matrix', 'String', 'Menu', 'Object', 'Image', 'Geometry', 'Collection', 'Material', 'Bundle', 'Closure', 'Font', 'Sound']
-            parameter `data_type`
+        list : Float, optional
+            socket 'List'
         
         Returns
         -------
-        Integer
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'list': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('List Length', named_sockets=_named_sockets, data_type=data_type)
-        return _node._out
+        node = Node('List Length', named_sockets={'List': list}, data_type='FLOAT')
+        return node._out
 
-    def map_range(self, from_min: Float=None, from_max: Float=None, to_min: Float=None, to_max: Float=None, steps: Float=None, clamp=True, interpolation_type: Literal['LINEAR', 'STEPPED', 'SMOOTHSTEP', 'SMOOTHERSTEP']='LINEAR'):
+    @classmethod
+    def map_range(cls, value: Float=None, from_min: Float=None, from_max: Float=None, to_min: Float=None, to_max: Float=None, steps: Float=None, clamp: bool=True, interpolation_type: Literal['LINEAR', 'STEPPED', 'SMOOTHSTEP', 'SMOOTHERSTEP']='LINEAR'):
         """ > Node <&Node Map Range>
-        
-        Jump method: False.
-        
-        self: socket 'Value'.
         
         **Fixed values**
         
@@ -2385,6 +2264,9 @@ class Float(BaseFloat):
         
         Parameters
         ----------
+        value : Float, optional
+            socket 'Value'
+        
         from_min : Float, optional
             socket 'From Min'
         
@@ -2408,15 +2290,16 @@ class Float(BaseFloat):
         
         Returns
         -------
-        Float
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'value': self, 'from_min': from_min, 'from_max': from_max, 'to_min': to_min, 'to_max': to_max, 'steps': steps}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Map Range', named_sockets=_named_sockets, clamp=clamp, interpolation_type=interpolation_type, data_type='FLOAT')
-        return _node._out
+        _configuration = ({'linear': 'LINEAR', 'stepped': 'STEPPED', 'smoothstep': 'SMOOTHSTEP', 'smootherstep': 'SMOOTHERSTEP', 'stepped linear': 'STEPPED', 'smooth step': 'SMOOTHSTEP', 'smoother step': 'SMOOTHERSTEP'}.get(interpolation_type.lower(), interpolation_type), 'FLOAT')
+        _node_sockets = {('LINEAR', 'FLOAT'): {'Value': value, 'From Min': from_min, 'From Max': from_max, 'To Min': to_min, 'To Max': to_max}, ('STEPPED', 'FLOAT'): {'Value': value, 'From Min': from_min, 'From Max': from_max, 'To Min': to_min, 'To Max': to_max, 'Steps': steps}, ('SMOOTHSTEP', 'FLOAT'): {'Value': value, 'From Min': from_min, 'From Max': from_max, 'To Min': to_min, 'To Max': to_max}, ('SMOOTHERSTEP', 'FLOAT'): {'Value': value, 'From Min': from_min, 'From Max': from_max, 'To Min': to_min, 'To Max': to_max}}[_configuration]
+        _node_args = {('LINEAR', 'FLOAT'): [], ('STEPPED', 'FLOAT'): [], ('SMOOTHSTEP', 'FLOAT'): [], ('SMOOTHERSTEP', 'FLOAT'): []}[_configuration]
+        node = Node('Map Range', *_node_args, named_sockets=_node_sockets, interpolation_type=interpolation_type, data_type='FLOAT', clamp=clamp)
+        return node._out
 
-    def math(self, value_1: Float=None, multiplier: Float=None, exponent: Float=None, threshold: Float=None, max: Float=None, increment: Float=None, scale: Float=None, addend: Float=None, epsilon: Float=None, distance: Float=None, min: Float=None, operation: Literal['ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'MULTIPLY_ADD', 'POWER', 'LOGARITHM', 'SQRT', 'INVERSE_SQRT', 'ABSOLUTE', 'EXPONENT', 'MINIMUM', 'MAXIMUM', 'LESS_THAN', 'GREATER_THAN', 'SIGN', 'COMPARE', 'SMOOTH_MIN', 'SMOOTH_MAX', 'ROUND', 'FLOOR', 'CEIL', 'TRUNC', 'FRACT', 'MODULO', 'FLOORED_MODULO', 'WRAP', 'SNAP', 'PINGPONG', 'SINE', 'COSINE', 'TANGENT', 'ARCSINE', 'ARCCOSINE', 'ARCTANGENT', 'ARCTAN2', 'SINH', 'COSH', 'TANH', 'RADIANS', 'DEGREES']='ADD', use_clamp=False):
+    def math(self, value_1: Float=None, multiplier: Float=None, exponent: Float=None, base: Float=None, threshold: Float=None, max: Float=None, increment: Float=None, scale: Float=None, addend: Float=None, epsilon: Float=None, distance: Float=None, min: Float=None, operation: Literal['ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'MULTIPLY_ADD', 'POWER', 'LOGARITHM', 'SQRT', 'INVERSE_SQRT', 'ABSOLUTE', 'EXPONENT', 'MINIMUM', 'MAXIMUM', 'LESS_THAN', 'GREATER_THAN', 'SIGN', 'COMPARE', 'SMOOTH_MIN', 'SMOOTH_MAX', 'ROUND', 'FLOOR', 'CEIL', 'TRUNC', 'FRACT', 'MODULO', 'FLOORED_MODULO', 'WRAP', 'SNAP', 'PINGPONG', 'SINE', 'COSINE', 'TANGENT', 'ARCSINE', 'ARCCOSINE', 'ARCTANGENT', 'ARCTAN2', 'SINH', 'COSH', 'TANH', 'RADIANS', 'DEGREES']='ADD', use_clamp: bool=False):
         """ > Node <&Node Math>
         
         Jump method: False.
@@ -2433,6 +2316,9 @@ class Float(BaseFloat):
         
         exponent : Float, optional
             socket 'Exponent'
+        
+        base : Float, optional
+            socket 'Base'
         
         threshold : Float, optional
             socket 'Threshold'
@@ -2466,20 +2352,18 @@ class Float(BaseFloat):
         
         Returns
         -------
-        Float
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'value': self, 'base': self, 'degrees': self, 'radians': self, 'value_1': value_1, 'multiplier': multiplier, 'exponent': exponent, 'threshold': threshold, 'max': max, 'increment': increment, 'scale': scale, 'addend': addend, 'epsilon': epsilon, 'distance': distance, 'min': min}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _values = {('ADD',): ['value', 'value_1'], ('SUBTRACT',): ['value', 'value_1'], ('MULTIPLY',): ['value', 'value_1'], ('DIVIDE',): ['value', 'value_1'], ('MULTIPLY_ADD',): ['value', 'multiplier', 'addend'], ('POWER',): ['base', 'exponent'], ('LOGARITHM',): ['value', 'base'], ('SQRT',): ['value'], ('INVERSE_SQRT',): ['value'], ('ABSOLUTE',): ['value'], ('EXPONENT',): ['value'], ('MINIMUM',): ['value', 'value_1'], ('MAXIMUM',): ['value', 'value_1'], ('LESS_THAN',): ['value', 'threshold'], ('GREATER_THAN',): ['value', 'threshold'], ('SIGN',): ['value'], ('COMPARE',): ['value', 'value_1', 'epsilon'], ('SMOOTH_MIN',): ['value', 'value_1', 'distance'], ('SMOOTH_MAX',): ['value', 'value_1', 'distance'], ('ROUND',): ['value'], ('FLOOR',): ['value'], ('CEIL',): ['value'], ('TRUNC',): ['value'], ('FRACT',): ['value'], ('MODULO',): ['value', 'value_1'], ('FLOORED_MODULO',): ['value', 'value_1'], ('WRAP',): ['value', 'max', 'min'], ('SNAP',): ['value', 'increment'], ('PINGPONG',): ['value', 'scale'], ('SINE',): ['value'], ('COSINE',): ['value'], ('TANGENT',): ['value'], ('ARCSINE',): ['value'], ('ARCCOSINE',): ['value'], ('ARCTANGENT',): ['value'], ('ARCTAN2',): ['value', 'value_1'], ('SINH',): ['value'], ('COSH',): ['value'], ('TANH',): ['value'], ('RADIANS',): ['degrees'], ('DEGREES',): ['radians']}
         _configuration = ({'add': 'ADD', 'subtract': 'SUBTRACT', 'multiply': 'MULTIPLY', 'divide': 'DIVIDE', 'multiply_add': 'MULTIPLY_ADD', 'power': 'POWER', 'logarithm': 'LOGARITHM', 'sqrt': 'SQRT', 'inverse_sqrt': 'INVERSE_SQRT', 'absolute': 'ABSOLUTE', 'exponent': 'EXPONENT', 'minimum': 'MINIMUM', 'maximum': 'MAXIMUM', 'less_than': 'LESS_THAN', 'greater_than': 'GREATER_THAN', 'sign': 'SIGN', 'compare': 'COMPARE', 'smooth_min': 'SMOOTH_MIN', 'smooth_max': 'SMOOTH_MAX', 'round': 'ROUND', 'floor': 'FLOOR', 'ceil': 'CEIL', 'trunc': 'TRUNC', 'fract': 'FRACT', 'modulo': 'MODULO', 'floored_modulo': 'FLOORED_MODULO', 'wrap': 'WRAP', 'snap': 'SNAP', 'pingpong': 'PINGPONG', 'sine': 'SINE', 'cosine': 'COSINE', 'tangent': 'TANGENT', 'arcsine': 'ARCSINE', 'arccosine': 'ARCCOSINE', 'arctangent': 'ARCTANGENT', 'arctan2': 'ARCTAN2', 'sinh': 'SINH', 'cosh': 'COSH', 'tanh': 'TANH', 'radians': 'RADIANS', 'degrees': 'DEGREES', 'multiply add': 'MULTIPLY_ADD', 'square root': 'SQRT', 'inverse square root': 'INVERSE_SQRT', 'less than': 'LESS_THAN', 'greater than': 'GREATER_THAN', 'smooth minimum': 'SMOOTH_MIN', 'smooth maximum': 'SMOOTH_MAX', 'truncate': 'TRUNC', 'fraction': 'FRACT', 'truncated modulo': 'MODULO', 'floored modulo': 'FLOORED_MODULO', 'ping-pong': 'PINGPONG', 'hyperbolic sine': 'SINH', 'hyperbolic cosine': 'COSH', 'hyperbolic tangent': 'TANH', 'to radians': 'RADIANS', 'to degrees': 'DEGREES'}.get(operation.lower(), operation),)
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _name in _values[_configuration]}
-        _node = Node('Math', named_sockets=_named_sockets, operation=operation, use_clamp=use_clamp)
-        return _node._out
+        _node_sockets = {('ADD',): {'Value': self, 'Value_1': value_1}, ('SUBTRACT',): {'Value': self, 'Value_1': value_1}, ('MULTIPLY',): {'Value': self, 'Value_1': value_1}, ('DIVIDE',): {'Value': self, 'Value_1': value_1}, ('MULTIPLY_ADD',): {'Value': self, 'Multiplier': multiplier, 'Addend': addend}, ('POWER',): {'Base': self, 'Exponent': exponent}, ('LOGARITHM',): {'Value': self, 'Base': base}, ('SQRT',): {'Value': self}, ('INVERSE_SQRT',): {'Value': self}, ('ABSOLUTE',): {'Value': self}, ('EXPONENT',): {'Value': self}, ('MINIMUM',): {'Value': self, 'Value_1': value_1}, ('MAXIMUM',): {'Value': self, 'Value_1': value_1}, ('LESS_THAN',): {'Value': self, 'Threshold': threshold}, ('GREATER_THAN',): {'Value': self, 'Threshold': threshold}, ('SIGN',): {'Value': self}, ('COMPARE',): {'Value': self, 'Value_1': value_1, 'Epsilon': epsilon}, ('SMOOTH_MIN',): {'Value': self, 'Value_1': value_1, 'Distance': distance}, ('SMOOTH_MAX',): {'Value': self, 'Value_1': value_1, 'Distance': distance}, ('ROUND',): {'Value': self}, ('FLOOR',): {'Value': self}, ('CEIL',): {'Value': self}, ('TRUNC',): {'Value': self}, ('FRACT',): {'Value': self}, ('MODULO',): {'Value': self, 'Value_1': value_1}, ('FLOORED_MODULO',): {'Value': self, 'Value_1': value_1}, ('WRAP',): {'Value': self, 'Max': max, 'Min': min}, ('SNAP',): {'Value': self, 'Increment': increment}, ('PINGPONG',): {'Value': self, 'Scale': scale}, ('SINE',): {'Value': self}, ('COSINE',): {'Value': self}, ('TANGENT',): {'Value': self}, ('ARCSINE',): {'Value': self}, ('ARCCOSINE',): {'Value': self}, ('ARCTANGENT',): {'Value': self}, ('ARCTAN2',): {'Value': self, 'Value_1': value_1}, ('SINH',): {'Value': self}, ('COSH',): {'Value': self}, ('TANH',): {'Value': self}, ('RADIANS',): {'Degrees': self}, ('DEGREES',): {'Radians': self}}[_configuration]
+        _node_args = {('ADD',): [], ('SUBTRACT',): [], ('MULTIPLY',): [], ('DIVIDE',): [], ('MULTIPLY_ADD',): [], ('POWER',): [], ('LOGARITHM',): [], ('SQRT',): [], ('INVERSE_SQRT',): [], ('ABSOLUTE',): [], ('EXPONENT',): [], ('MINIMUM',): [], ('MAXIMUM',): [], ('LESS_THAN',): [], ('GREATER_THAN',): [], ('SIGN',): [], ('COMPARE',): [], ('SMOOTH_MIN',): [], ('SMOOTH_MAX',): [], ('ROUND',): [], ('FLOOR',): [], ('CEIL',): [], ('TRUNC',): [], ('FRACT',): [], ('MODULO',): [], ('FLOORED_MODULO',): [], ('WRAP',): [], ('SNAP',): [], ('PINGPONG',): [], ('SINE',): [], ('COSINE',): [], ('TANGENT',): [], ('ARCSINE',): [], ('ARCCOSINE',): [], ('ARCTANGENT',): [], ('ARCTAN2',): [], ('SINH',): [], ('COSH',): [], ('TANH',): [], ('RADIANS',): [], ('DEGREES',): []}[_configuration]
+        node = Node('Math', *_node_args, named_sockets=_node_sockets, operation=operation, use_clamp=use_clamp)
+        return node._out
 
     @classmethod
-    def MenuSwitch(cls, named_sockets=None, menu: Literal['A', 'B']=None, a: Float=None, b: Float=None, **sockets):
-        """ > Node <&Node Menu Switch>
+    def mix(cls, a: Float=None, b: Float=None, factor: Float=None, factor_mode: Literal['UNIFORM', 'NON_UNIFORM']='UNIFORM', blend_type: Literal['MIX', 'DARKEN', 'MULTIPLY', 'BURN', 'LIGHTEN', 'SCREEN', 'DODGE', 'ADD', 'OVERLAY', 'SOFT_LIGHT', 'LINEAR_LIGHT', 'DIFFERENCE', 'EXCLUSION', 'SUBTRACT', 'DIVIDE', 'HUE', 'SATURATION', 'COLOR', 'VALUE']='MIX', clamp_factor: bool=True, clamp_result: bool=False):
+        """ > Node <&Node Mix>
         
         **Fixed values**
         
@@ -2489,46 +2373,14 @@ class Float(BaseFloat):
         
         Parameters
         ----------
-        menu : menu='A', optional
-            ('A', 'B')
-        
         a : Float, optional
             socket 'A'
         
         b : Float, optional
             socket 'B'
         
-        Returns
-        -------
-        Float
-            socket 'OUT'
-        """
-        _named_sockets = {'menu': menu, 'a': a, 'b': b}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _named_sockets.update({_name: _value for _name, _value in (named_sockets or {}).items() if _value is not None})
-        _node = Node('Menu Switch', named_sockets=_named_sockets, data_type='FLOAT', **sockets)
-        return _node._out
-
-    def mix(self, factor: Float=None, b: Float=None, factor_mode: Literal['UNIFORM', 'NON_UNIFORM']='UNIFORM', blend_type: Literal['MIX', 'DARKEN', 'MULTIPLY', 'BURN', 'LIGHTEN', 'SCREEN', 'DODGE', 'ADD', 'OVERLAY', 'SOFT_LIGHT', 'LINEAR_LIGHT', 'DIFFERENCE', 'EXCLUSION', 'SUBTRACT', 'DIVIDE', 'HUE', 'SATURATION', 'COLOR', 'VALUE']='MIX', clamp_factor=True, clamp_result=False):
-        """ > Node <&Node Mix>
-        
-        Jump method: False.
-        
-        self: socket 'A_Float'.
-        
-        **Fixed values**
-        
-        | Parameter | Value |
-        | --- | --- |
-        | `data_type` | `'FLOAT'` |
-        
-        Parameters
-        ----------
         factor : Float, optional
             socket 'Factor'
-        
-        b : Float, optional
-            socket 'B'
         
         factor_mode : Literal['Uniform', 'Non-Uniform']
             parameter `factor_mode`
@@ -2544,18 +2396,48 @@ class Float(BaseFloat):
         
         Returns
         -------
-        Float
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'factor': factor, 'a': self, 'b': b}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Mix', named_sockets=_named_sockets, data_type='FLOAT', factor_mode=factor_mode, blend_type=blend_type, clamp_factor=clamp_factor, clamp_result=clamp_result)
-        return _node._out
+        node = Node('Mix', named_sockets={'Factor': factor, 'A': a, 'B': b}, data_type='FLOAT', factor_mode=factor_mode, blend_type=blend_type, clamp_factor=clamp_factor, clamp_result=clamp_result)
+        return node._out
 
-    def prune_grid(self, mode: Literal['Inactive', 'Threshold', 'SDF']=None, threshold: Float=None):
-        """ > Node <&Node Prune Grid>
+    def mix_legacy_(self, color2: Color=None, factor: Float=None, blend_type: Literal['MIX', 'DARKEN', 'MULTIPLY', 'BURN', 'LIGHTEN', 'SCREEN', 'DODGE', 'ADD', 'OVERLAY', 'SOFT_LIGHT', 'LINEAR_LIGHT', 'DIFFERENCE', 'EXCLUSION', 'SUBTRACT', 'DIVIDE', 'HUE', 'SATURATION', 'COLOR', 'VALUE']='MIX', use_alpha: bool=False, use_clamp: bool=False):
+        """ > Node <&Node Mix (Legacy)>
         
         Jump method: False.
+        
+        self: socket 'Color1'.
+        
+        Parameters
+        ----------
+        color2 : Color, optional
+            socket 'Color2'
+        
+        factor : Float, optional
+            socket 'Factor'
+        
+        blend_type : Literal['Mix', 'Darken', 'Multiply', 'Color Burn', 'Lighten', 'Screen', 'Color Dodge', 'Add', 'Overlay', 'Soft Light', 'Linear Light', 'Difference', 'Exclusion', 'Subtract', 'Divide', 'Hue', 'Saturation', 'Color', 'Value']
+            parameter `blend_type`
+        
+        use_alpha : bool
+            parameter `use_alpha`
+        
+        use_clamp : bool
+            parameter `use_clamp`
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Mix (Legacy)', named_sockets={'Factor': factor, 'Color1': self, 'Color2': color2}, blend_type=blend_type, use_alpha=use_alpha, use_clamp=use_clamp)
+        return node._out
+
+    def prune_grid(self, mode: Menu=None, threshold: Float=None):
+        """ > Node <&Node Prune Grid>
+        
+        Jump method: True.
         
         self: socket 'Grid'.
         
@@ -2567,24 +2449,23 @@ class Float(BaseFloat):
         
         Parameters
         ----------
-        mode : menu='Threshold', optional
-            ('Inactive', 'Threshold', 'SDF')
+        mode : Menu, optional
+            socket 'Mode'
         
         threshold : Float, optional
             socket 'Threshold'
         
         Returns
         -------
-        Float
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'grid': self, 'mode': mode, 'threshold': threshold}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Prune Grid', named_sockets=_named_sockets, data_type='FLOAT')
-        return _node._out
+        node = Node('Prune Grid', named_sockets={'Grid': self, 'Mode': mode, 'Threshold': threshold}, data_type='FLOAT')
+        self._jump(node._out)
+        return node._second_out(self)
 
     @classmethod
-    def Random(cls, min: Float=None, max: Float=None, id: Integer=None, seed: Integer=None):
+    def random_value(cls, min: Float=None, max: Float=None, id: Integer=None, seed: Integer=None):
         """ > Node <&Node Random Value>
         
         **Fixed values**
@@ -2609,15 +2490,33 @@ class Float(BaseFloat):
         
         Returns
         -------
-        Float
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'min': min, 'max': max, 'id': id, 'seed': seed}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Random Value', named_sockets=_named_sockets, data_type='FLOAT')
-        return _node._out
+        node = Node('Random Value', named_sockets={'Min': min, 'Max': max, 'ID': id, 'Seed': seed}, data_type='FLOAT')
+        return node._out
 
-    def sample_grid(self, position: Vector=None, interpolation: Literal['Nearest Neighbor', 'Trilinear', 'Triquadratic', 'Tricubic']=None):
+    def rgb_curves(self, factor: Float=None):
+        """ > Node <&Node RGB Curves>
+        
+        Jump method: False.
+        
+        self: socket 'Color'.
+        
+        Parameters
+        ----------
+        factor : Float, optional
+            socket 'Factor'
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('RGB Curves', named_sockets={'Factor': factor, 'Color': self})
+        return node._out
+
+    def sample_grid(self, position: Vector=None, interpolation: Menu=None):
         """ > Node <&Node Sample Grid>
         
         Jump method: False.
@@ -2635,18 +2534,16 @@ class Float(BaseFloat):
         position : Vector, optional
             socket 'Position'
         
-        interpolation : menu='Trilinear', optional
-            ('Nearest Neighbor', 'Trilinear', 'Triquadratic', 'Tricubic')
+        interpolation : Menu, optional
+            socket 'Interpolation'
         
         Returns
         -------
-        Float
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'grid': self, 'position': position, 'interpolation': interpolation}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Sample Grid', named_sockets=_named_sockets, data_type='FLOAT')
-        return _node._out
+        node = Node('Sample Grid', named_sockets={'Grid': self, 'Position': position, 'Interpolation': interpolation}, data_type='FLOAT')
+        return node._out
 
     def sample_grid_index(self, x: Integer=None, y: Integer=None, z: Integer=None):
         """ > Node <&Node Sample Grid Index>
@@ -2674,44 +2571,40 @@ class Float(BaseFloat):
         
         Returns
         -------
-        Float
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'grid': self, 'x': x, 'y': y, 'z': z}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Sample Grid Index', named_sockets=_named_sockets, data_type='FLOAT')
-        return _node._out
+        node = Node('Sample Grid Index', named_sockets={'Grid': self, 'X': x, 'Y': y, 'Z': z}, data_type='FLOAT')
+        return node._out
 
-    def sdf_grid_boolean(self, grid_2: list[Float]=None, grid: list[Float]=None, operation: Literal['INTERSECT', 'UNION', 'DIFFERENCE']='DIFFERENCE'):
+    def sdf_grid_boolean(self, *grid_1: Float, grid_1_1: Float=None, operation: Literal['INTERSECT', 'UNION', 'DIFFERENCE']='DIFFERENCE'):
         """ > Node <&Node SDF Grid Boolean>
         
         Jump method: False.
         
-        self: socket 'Grid 1'.
+        self: socket 'Grid'.
         
         Parameters
         ----------
-        grid_2 : list[Float], optional
-            Values for the multi-input socket.
+        grid_1 : Float, optional
+            socket 'Grid'
         
-        grid : list[Float], optional
-            Values for the multi-input socket.
+        grid_1_1 : Float, optional
+            socket 'Grid 1'
         
         operation : Literal['Intersect', 'Union', 'Difference']
             parameter `operation`
         
         Returns
         -------
-        Float
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'grid_1': self, 'grid_2': grid_2, 'grid': grid}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _values = {('DIFFERENCE',): ['grid_1', 'grid_2'], ('INTERSECT',): ['grid'], ('UNION',): ['grid']}
         _configuration = ({'intersect': 'INTERSECT', 'union': 'UNION', 'difference': 'DIFFERENCE'}.get(operation.lower(), operation),)
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _name in _values[_configuration]}
-        _node = Node('SDF Grid Boolean', named_sockets=_named_sockets, operation=operation)
-        return _node._out
+        _node_sockets = {('INTERSECT',): {}, ('UNION',): {}, ('DIFFERENCE',): {'Grid 1': grid_1_1}}[_configuration]
+        _node_args = {('INTERSECT',): [*[self, *grid_1]], ('UNION',): [*[self, *grid_1]], ('DIFFERENCE',): [*[self, *grid_1]]}[_configuration]
+        node = Node('SDF Grid Boolean', *_node_args, named_sockets=_node_sockets, operation=operation)
+        return node._out
 
     def sdf_grid_fillet(self, iterations: Integer=None):
         """ > Node <&Node SDF Grid Fillet>
@@ -2727,13 +2620,11 @@ class Float(BaseFloat):
         
         Returns
         -------
-        Float
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'grid': self, 'iterations': iterations}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('SDF Grid Fillet', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('SDF Grid Fillet', named_sockets={'Grid': self, 'Iterations': iterations})
+        return node._out
 
     def sdf_grid_laplacian(self, iterations: Integer=None):
         """ > Node <&Node SDF Grid Laplacian>
@@ -2749,13 +2640,11 @@ class Float(BaseFloat):
         
         Returns
         -------
-        Float
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'grid': self, 'iterations': iterations}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('SDF Grid Laplacian', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('SDF Grid Laplacian', named_sockets={'Grid': self, 'Iterations': iterations})
+        return node._out
 
     def sdf_grid_mean(self, width: Integer=None, iterations: Integer=None):
         """ > Node <&Node SDF Grid Mean>
@@ -2774,13 +2663,11 @@ class Float(BaseFloat):
         
         Returns
         -------
-        Float
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'grid': self, 'width': width, 'iterations': iterations}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('SDF Grid Mean', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('SDF Grid Mean', named_sockets={'Grid': self, 'Width': width, 'Iterations': iterations})
+        return node._out
 
     def sdf_grid_mean_curvature(self, iterations: Integer=None):
         """ > Node <&Node SDF Grid Mean Curvature>
@@ -2796,13 +2683,11 @@ class Float(BaseFloat):
         
         Returns
         -------
-        Float
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'grid': self, 'iterations': iterations}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('SDF Grid Mean Curvature', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('SDF Grid Mean Curvature', named_sockets={'Grid': self, 'Iterations': iterations})
+        return node._out
 
     def sdf_grid_median(self, width: Integer=None, iterations: Integer=None):
         """ > Node <&Node SDF Grid Median>
@@ -2821,13 +2706,11 @@ class Float(BaseFloat):
         
         Returns
         -------
-        Float
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'grid': self, 'width': width, 'iterations': iterations}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('SDF Grid Median', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('SDF Grid Median', named_sockets={'Grid': self, 'Width': width, 'Iterations': iterations})
+        return node._out
 
     def sdf_grid_offset(self, distance: Float=None):
         """ > Node <&Node SDF Grid Offset>
@@ -2843,18 +2726,16 @@ class Float(BaseFloat):
         
         Returns
         -------
-        Float
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'grid': self, 'distance': distance}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('SDF Grid Offset', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('SDF Grid Offset', named_sockets={'Grid': self, 'Distance': distance})
+        return node._out
 
     def set_grid_background(self, background: Float=None, update_inactive: Boolean=None):
         """ > Node <&Node Set Grid Background>
         
-        Jump method: False.
+        Jump method: True.
         
         self: socket 'Grid'.
         
@@ -2874,17 +2755,19 @@ class Float(BaseFloat):
         
         Returns
         -------
-        Float
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'grid': self, 'background': background, 'update_inactive': update_inactive}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Set Grid Background', named_sockets=_named_sockets, data_type='FLOAT')
-        return _node._out
+        node = Node('Set Grid Background', named_sockets={'Grid': self, 'Background': background, 'Update Inactive': update_inactive}, data_type='FLOAT')
+        self._jump(node._out)
+        return node._second_out(self)
 
-    @classmethod
-    def SetGridTransform(cls, grid: Float=None, transform: Matrix=None):
+    def set_grid_transform(self, transform: Matrix=None):
         """ > Node <&Node Set Grid Transform>
+        
+        Jump method: False.
+        
+        self: socket 'Grid'.
         
         **Fixed values**
         
@@ -2894,31 +2777,32 @@ class Float(BaseFloat):
         
         Parameters
         ----------
-        grid : Float, optional
-            socket 'Grid'
-        
         transform : Matrix, optional
             socket 'Transform'
         
         Returns
         -------
-        Boolean
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'grid': grid, 'transform': transform}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Set Grid Transform', named_sockets=_named_sockets, data_type='FLOAT')
-        return _node._out
+        node = Node('Set Grid Transform', named_sockets={'Grid': self, 'Transform': transform}, data_type='FLOAT')
+        return node._out
 
-    def sort_list(self, selection: Boolean=None, group_id: Integer=None, sort_weight: Float=None, socket_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'SHADER', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'TEXTURE', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SCENE', 'TEXT', 'MASK', 'SOUND', 'INT_VECTOR']='FLOAT'):
+    @classmethod
+    def sort_list(cls, list: Float=None, selection: Boolean=None, group_id: Integer=None, sort_weight: Float=None):
         """ > Node <&Node Sort List>
         
-        Jump method: False.
+        **Fixed values**
         
-        self: socket 'List'.
+        | Parameter | Value |
+        | --- | --- |
+        | `socket_type` | `'FLOAT'` |
         
         Parameters
         ----------
+        list : Float, optional
+            socket 'List'
+        
         selection : Boolean, optional
             socket 'Selection'
         
@@ -2928,18 +2812,39 @@ class Float(BaseFloat):
         sort_weight : Float, optional
             socket 'Sort Weight'
         
-        socket_type : Literal['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Rotation', 'Matrix', 'String', 'Menu', 'Object', 'Image', 'Geometry', 'Collection', 'Material', 'Bundle', 'Closure', 'Font', 'Sound']
-            parameter `socket_type`
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Sort List', named_sockets={'List': list, 'Selection': selection, 'Group ID': group_id, 'Sort Weight': sort_weight}, socket_type='FLOAT')
+        return node._out
+
+    @classmethod
+    def FromString(cls, string: String=None, base: Integer=None, data_type: Literal['FLOAT', 'INT']='FLOAT'):
+        """ > Node <&Node String to Value>
+        
+        Parameters
+        ----------
+        string : String, optional
+            socket 'String'
+        
+        base : Integer, optional
+            socket 'Base'
+        
+        data_type : Literal['Float', 'Integer']
+            parameter `data_type`
         
         Returns
         -------
-        Float | Integer | Boolean | Vector | Color | Rotation | Matrix | String | Menu | Object | Image | Geometry | Collection | Material | Bundle | Closure | Font | Sound
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'list': self, 'selection': selection, 'group_id': group_id, 'sort_weight': sort_weight}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Sort List', named_sockets=_named_sockets, socket_type=socket_type)
-        return _node._out
+        _configuration = ({'float': 'FLOAT', 'int': 'INT', 'integer': 'INT'}.get(data_type.lower(), data_type),)
+        _node_sockets = {('FLOAT',): {'String': string}, ('INT',): {'String': string, 'Base': base}}[_configuration]
+        _node_args = {('FLOAT',): [], ('INT',): []}[_configuration]
+        node = Node('String to Value', *_node_args, named_sockets=_node_sockets, data_type=data_type)
+        return node._out
 
     def to_string(self, decimals: Integer=None, base: Integer=None, padding: Integer=None, data_type: Literal['FLOAT', 'INT']='FLOAT'):
         """ > Node <&Node Value to String>
@@ -2964,18 +2869,39 @@ class Float(BaseFloat):
         
         Returns
         -------
-        String
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'value': self, 'decimals': decimals, 'base': base, 'padding': padding}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Value to String', named_sockets=_named_sockets, data_type=data_type)
-        return _node._out
+        _configuration = ({'float': 'FLOAT', 'int': 'INT', 'integer': 'INT'}.get(data_type.lower(), data_type),)
+        _node_sockets = {('FLOAT',): {'Value': self, 'Decimals': decimals}, ('INT',): {'Value': self, 'Base': base, 'Padding': padding}}[_configuration]
+        _node_args = {('FLOAT',): [], ('INT',): []}[_configuration]
+        node = Node('Value to String', *_node_args, named_sockets=_node_sockets, data_type=data_type)
+        return node._out
+
+    def vector_curves(self, factor: Float=None):
+        """ > Node <&Node Vector Curves>
+        
+        Jump method: False.
+        
+        self: socket 'Vector'.
+        
+        Parameters
+        ----------
+        factor : Float, optional
+            socket 'Factor'
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Vector Curves', named_sockets={'Factor': factor, 'Vector': self})
+        return node._out
 
     def voxelize_grid(self):
         """ > Node <&Node Voxelize Grid>
         
-        Jump method: False.
+        Jump method: True.
         
         self: socket 'Grid'.
         
@@ -2987,10 +2913,9 @@ class Float(BaseFloat):
         
         Returns
         -------
-        Float
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'grid': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Voxelize Grid', named_sockets=_named_sockets, data_type='FLOAT')
-        return _node._out
+        node = Node('Voxelize Grid', named_sockets={'Grid': self}, data_type='FLOAT')
+        self._jump(node._out)
+        return node._second_out(self)

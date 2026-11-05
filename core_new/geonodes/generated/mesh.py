@@ -47,6 +47,9 @@ if TYPE_CHECKING:
     class Geometry:
         ...
 
+    class Texture:
+        ...
+
     class Collection:
         ...
 
@@ -144,13 +147,14 @@ class Mesh(BaseMesh, Geometry):
         
         Returns
         -------
-        Mesh
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'vertices': vertices, 'side_segments': side_segments, 'fill_segments': fill_segments, 'radius_top': radius_top, 'radius_bottom': radius_bottom, 'depth': depth}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Cone', named_sockets=_named_sockets, fill_type=fill_type)
-        return _node._out
+        _configuration = ({'none': 'NONE', 'ngon': 'NGON', 'triangle_fan': 'TRIANGLE_FAN', 'n-gon': 'NGON', 'triangles': 'TRIANGLE_FAN'}.get(fill_type.lower(), fill_type),)
+        _node_sockets = {('NONE',): {'Vertices': vertices, 'Side Segments': side_segments, 'Radius Top': radius_top, 'Radius Bottom': radius_bottom, 'Depth': depth}, ('NGON',): {'Vertices': vertices, 'Side Segments': side_segments, 'Fill Segments': fill_segments, 'Radius Top': radius_top, 'Radius Bottom': radius_bottom, 'Depth': depth}, ('TRIANGLE_FAN',): {'Vertices': vertices, 'Side Segments': side_segments, 'Fill Segments': fill_segments, 'Radius Top': radius_top, 'Radius Bottom': radius_bottom, 'Depth': depth}}[_configuration]
+        _node_args = {('NONE',): [], ('NGON',): [], ('TRIANGLE_FAN',): []}[_configuration]
+        node = Node('Cone', *_node_args, named_sockets=_node_sockets, fill_type=fill_type)
+        return node._out
 
     @classmethod
     def Cube(cls, size: Vector=None, vertices_x: Integer=None, vertices_y: Integer=None, vertices_z: Integer=None):
@@ -172,47 +176,11 @@ class Mesh(BaseMesh, Geometry):
         
         Returns
         -------
-        Mesh
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'size': size, 'vertices_x': vertices_x, 'vertices_y': vertices_y, 'vertices_z': vertices_z}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Cube', named_sockets=_named_sockets)
-        return _node._out
-
-    @classmethod
-    def FromCurve(cls, curve: Curve=None, profile_curve: Curve=None, scale: Float=None, fill_caps: Boolean=None, miter_scale: Boolean=None, miter_scale_limit: Float=None):
-        """ > Node <&Node Curve to Mesh>
-        
-        Parameters
-        ----------
-        curve : Curve, optional
-            socket 'Curve'
-        
-        profile_curve : Curve, optional
-            socket 'Profile Curve'
-        
-        scale : Float, optional
-            socket 'Scale'
-        
-        fill_caps : Boolean, optional
-            socket 'Fill Caps'
-        
-        miter_scale : Boolean, optional
-            socket 'Miter Scale'
-        
-        miter_scale_limit : Float, optional
-            socket 'Miter Scale Limit'
-        
-        Returns
-        -------
-        Mesh
-            socket 'OUT'
-        """
-        _named_sockets = {'curve': curve, 'profile_curve': profile_curve, 'scale': scale, 'fill_caps': fill_caps, 'miter_scale': miter_scale, 'miter_scale_limit': miter_scale_limit}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Curve to Mesh', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('Cube', named_sockets={'Size': size, 'Vertices X': vertices_x, 'Vertices Y': vertices_y, 'Vertices Z': vertices_z})
+        return node._out
 
     @classmethod
     def Cylinder(cls, vertices: Integer=None, side_segments: Integer=None, fill_segments: Integer=None, radius: Float=None, depth: Float=None, fill_type: Literal['NONE', 'NGON', 'TRIANGLE_FAN']='NGON'):
@@ -240,15 +208,16 @@ class Mesh(BaseMesh, Geometry):
         
         Returns
         -------
-        Mesh
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'vertices': vertices, 'side_segments': side_segments, 'fill_segments': fill_segments, 'radius': radius, 'depth': depth}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Cylinder', named_sockets=_named_sockets, fill_type=fill_type)
-        return _node._out
+        _configuration = ({'none': 'NONE', 'ngon': 'NGON', 'triangle_fan': 'TRIANGLE_FAN', 'n-gon': 'NGON', 'triangles': 'TRIANGLE_FAN'}.get(fill_type.lower(), fill_type),)
+        _node_sockets = {('NONE',): {'Vertices': vertices, 'Side Segments': side_segments, 'Radius': radius, 'Depth': depth}, ('NGON',): {'Vertices': vertices, 'Side Segments': side_segments, 'Fill Segments': fill_segments, 'Radius': radius, 'Depth': depth}, ('TRIANGLE_FAN',): {'Vertices': vertices, 'Side Segments': side_segments, 'Fill Segments': fill_segments, 'Radius': radius, 'Depth': depth}}[_configuration]
+        _node_args = {('NONE',): [], ('NGON',): [], ('TRIANGLE_FAN',): []}[_configuration]
+        node = Node('Cylinder', *_node_args, named_sockets=_node_sockets, fill_type=fill_type)
+        return node._out
 
-    def distribute_points_on_faces(self, distance_min: Float=None, density_max: Float=None, density: Float=None, density_factor: Float=None, seed: Integer=None, distribute_method: Literal['RANDOM', 'POISSON']='RANDOM'):
+    def distribute_points(self, distance_min: Float=None, density_max: Float=None, density: Float=None, density_factor: Float=None, seed: Integer=None, distribute_method: Literal['RANDOM', 'POISSON']='RANDOM'):
         """ > Node <&Node Distribute Points on Faces>
         
         Jump method: False.
@@ -277,13 +246,15 @@ class Mesh(BaseMesh, Geometry):
         
         Returns
         -------
-        Cloud
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'mesh': self, 'selection': self.get_selection(), 'distance_min': distance_min, 'density_max': density_max, 'density': density, 'density_factor': density_factor, 'seed': seed}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Distribute Points on Faces', named_sockets=_named_sockets, distribute_method=distribute_method)
-        return _node._out
+        selection = self.get_selection()
+        _configuration = ({'random': 'RANDOM', 'poisson': 'POISSON', 'poisson disk': 'POISSON'}.get(distribute_method.lower(), distribute_method),)
+        _node_sockets = {('RANDOM',): {'Mesh': self, 'Selection': selection, 'Density': density, 'Seed': seed}, ('POISSON',): {'Mesh': self, 'Selection': selection, 'Distance Min': distance_min, 'Density Max': density_max, 'Density Factor': density_factor, 'Seed': seed}}[_configuration]
+        _node_args = {('RANDOM',): [], ('POISSON',): []}[_configuration]
+        node = Node('Distribute Points on Faces', *_node_args, named_sockets=_node_sockets, distribute_method=distribute_method)
+        return node._out
 
     def dual(self, keep_boundaries: Boolean=None):
         """ > Node <&Node Dual Mesh>
@@ -299,14 +270,35 @@ class Mesh(BaseMesh, Geometry):
         
         Returns
         -------
-        Mesh
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'mesh': self, 'keep_boundaries': keep_boundaries}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Dual Mesh', named_sockets=_named_sockets)
-        self._jump(_node._out)
-        return self._domain_to_geometry
+        node = Node('Dual Mesh', named_sockets={'Mesh': self, 'Keep Boundaries': keep_boundaries})
+        self._jump(node._out)
+        return node._second_out(self)
+
+    def to_curves(self, start_vertices: Boolean=None, next_vertex_index: Integer=None):
+        """ > Node <&Node Edge Paths to Curves>
+        
+        Jump method: False.
+        
+        self: socket 'Mesh'.
+        
+        Parameters
+        ----------
+        start_vertices : Boolean, optional
+            socket 'Start Vertices'
+        
+        next_vertex_index : Integer, optional
+            socket 'Next Vertex Index'
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Edge Paths to Curves', named_sockets={'Mesh': self, 'Start Vertices': start_vertices, 'Next Vertex Index': next_vertex_index})
+        return node._out
 
     def extrude(self, offset: Vector=None, offset_scale: Float=None, individual: Boolean=None, mode: Literal['VERTICES', 'EDGES', 'FACES']='FACES'):
         """ > Node <&Node Extrude Mesh>
@@ -331,16 +323,17 @@ class Mesh(BaseMesh, Geometry):
         
         Returns
         -------
-        Mesh
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'mesh': self, 'selection': self.get_selection(), 'offset': offset, 'offset_scale': offset_scale, 'individual': individual}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Extrude Mesh', named_sockets=_named_sockets, mode=mode)
-        self._jump(_node._out)
-        return self._domain_to_geometry
+        selection = self.get_selection()
+        _configuration = ({'vertices': 'VERTICES', 'edges': 'EDGES', 'faces': 'FACES'}.get(mode.lower(), mode),)
+        _node_sockets = {('VERTICES',): {'Mesh': self, 'Selection': selection, 'Offset': offset, 'Offset Scale': offset_scale}, ('EDGES',): {'Mesh': self, 'Selection': selection, 'Offset': offset, 'Offset Scale': offset_scale}, ('FACES',): {'Mesh': self, 'Selection': selection, 'Offset': offset, 'Offset Scale': offset_scale, 'Individual': individual}}[_configuration]
+        _node_args = {('VERTICES',): [], ('EDGES',): [], ('FACES',): []}[_configuration]
+        node = Node('Extrude Mesh', *_node_args, named_sockets=_node_sockets, mode=mode)
+        self._jump(node._out)
+        return node._second_out(self)
 
-    @property
     def flip_faces(self):
         """ > Node <&Node Flip Faces>
         
@@ -350,14 +343,13 @@ class Mesh(BaseMesh, Geometry):
         
         Returns
         -------
-        Mesh
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'mesh': self, 'selection': self.get_selection()}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Flip Faces', named_sockets=_named_sockets)
-        self._jump(_node._out)
-        return self._domain_to_geometry
+        selection = self.get_selection()
+        node = Node('Flip Faces', named_sockets={'Mesh': self, 'Selection': selection})
+        self._jump(node._out)
+        return node._second_out(self)
 
     @classmethod
     def Grid(cls, size_x: Float=None, size_y: Float=None, vertices_x: Integer=None, vertices_y: Integer=None):
@@ -379,13 +371,11 @@ class Mesh(BaseMesh, Geometry):
         
         Returns
         -------
-        Mesh
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'size_x': size_x, 'size_y': size_y, 'vertices_x': vertices_x, 'vertices_y': vertices_y}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Grid', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('Grid', named_sockets={'Size X': size_x, 'Size Y': size_y, 'Vertices X': vertices_x, 'Vertices Y': vertices_y})
+        return node._out
 
     @classmethod
     def FromGrid(cls, grid: Float=None, threshold: Float=None, adaptivity: Float=None):
@@ -404,13 +394,11 @@ class Mesh(BaseMesh, Geometry):
         
         Returns
         -------
-        Mesh
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'grid': grid, 'threshold': threshold, 'adaptivity': adaptivity}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Grid to Mesh', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('Grid to Mesh', named_sockets={'Grid': grid, 'Threshold': threshold, 'Adaptivity': adaptivity})
+        return node._out
 
     @classmethod
     def IcoSphere(cls, radius: Float=None, subdivisions: Integer=None):
@@ -426,16 +414,14 @@ class Mesh(BaseMesh, Geometry):
         
         Returns
         -------
-        Mesh
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'radius': radius, 'subdivisions': subdivisions}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Ico Sphere', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('Ico Sphere', named_sockets={'Radius': radius, 'Subdivisions': subdivisions})
+        return node._out
 
     @classmethod
-    def ImportStl(cls, path: String=None):
+    def import_stl(cls, path: String=None):
         """ > Node <&Node Import STL>
         
         Parameters
@@ -445,15 +431,13 @@ class Mesh(BaseMesh, Geometry):
         
         Returns
         -------
-        Mesh
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'path': path}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Import STL', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('Import STL', named_sockets={'Path': path})
+        return node._out
 
-    def bevel(self, affect_kind: Literal['Vertices', 'Edges']=None, start_left_offset: Float=None, start_right_offset: Float=None, end_left_offset: Float=None, end_right_offset: Float=None, offset: Float=None, miter: Boolean=None, spread: Float=None, segments: Integer=None, shape: Float=None, profile: Geometry=None):
+    def bevel(self, affect_kind: Menu=None, start_left_offset: Float=None, start_right_offset: Float=None, end_left_offset: Float=None, end_right_offset: Float=None, offset: Float=None, miter: Boolean=None, spread: Float=None, segments: Integer=None, shape: Float=None, profile: Geometry=None):
         """ > Node <&Node Mesh Bevel>
         
         Jump method: True.
@@ -462,8 +446,8 @@ class Mesh(BaseMesh, Geometry):
         
         Parameters
         ----------
-        affect_kind : menu='Edges', optional
-            ('Vertices', 'Edges')
+        affect_kind : Menu, optional
+            socket 'Affect Kind'
         
         start_left_offset : Float, optional
             socket 'Start Left Offset'
@@ -497,29 +481,28 @@ class Mesh(BaseMesh, Geometry):
         
         Returns
         -------
-        Mesh
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'mesh': self, 'selection': self.get_selection(), 'affect_kind': affect_kind, 'start_left_offset': start_left_offset, 'start_right_offset': start_right_offset, 'end_left_offset': end_left_offset, 'end_right_offset': end_right_offset, 'offset': offset, 'miter': miter, 'spread': spread, 'segments': segments, 'shape': shape, 'profile': profile}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Mesh Bevel', named_sockets=_named_sockets)
-        self._jump(_node._out)
-        return self._domain_to_geometry
+        selection = self.get_selection()
+        node = Node('Mesh Bevel', named_sockets={'Mesh': self, 'Selection': selection, 'Affect Kind': affect_kind, 'Start Left Offset': start_left_offset, 'Start Right Offset': start_right_offset, 'End Left Offset': end_left_offset, 'End Right Offset': end_right_offset, 'Offset': offset, 'Miter': miter, 'Spread': spread, 'Segments': segments, 'Shape': shape, 'Profile': profile})
+        self._jump(node._out)
+        return node._second_out(self)
 
-    def boolean(self, mesh_2: list[Mesh]=None, mesh: list[Mesh]=None, self_intersection: Boolean=None, hole_tolerant: Boolean=None, operation: Literal['INTERSECT', 'UNION', 'DIFFERENCE']='DIFFERENCE', solver: Literal['EXACT', 'FLOAT', 'MANIFOLD']='FLOAT'):
+    def Boolean(self, *mesh_1: Mesh, mesh_1_1: Mesh=None, self_intersection: Boolean=None, hole_tolerant: Boolean=None, operation: Literal['INTERSECT', 'UNION', 'DIFFERENCE']='DIFFERENCE', solver: Literal['EXACT', 'FLOAT', 'MANIFOLD']='FLOAT'):
         """ > Node <&Node Mesh Boolean>
         
         Jump method: True.
         
-        self: socket 'Mesh 1'.
+        self: socket 'Mesh'.
         
         Parameters
         ----------
-        mesh_2 : list[Mesh], optional
-            Values for the multi-input socket.
+        mesh_1 : Mesh, optional
+            socket 'Mesh'
         
-        mesh : list[Mesh], optional
-            Values for the multi-input socket.
+        mesh_1_1 : Mesh, optional
+            socket 'Mesh 1'
         
         self_intersection : Boolean, optional
             socket 'Self Intersection'
@@ -535,17 +518,15 @@ class Mesh(BaseMesh, Geometry):
         
         Returns
         -------
-        Mesh
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'mesh_1': self, 'mesh_2': mesh_2, 'mesh': mesh, 'self_intersection': self_intersection, 'hole_tolerant': hole_tolerant}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _values = {('DIFFERENCE', 'FLOAT'): ['mesh_1', 'mesh_2'], ('INTERSECT', 'FLOAT'): ['mesh'], ('UNION', 'FLOAT'): ['mesh'], ('UNION', 'EXACT'): ['mesh', 'self_intersection', 'hole_tolerant'], ('INTERSECT', 'EXACT'): ['mesh', 'self_intersection', 'hole_tolerant'], ('DIFFERENCE', 'EXACT'): ['mesh_1', 'mesh_2', 'self_intersection', 'hole_tolerant'], ('DIFFERENCE', 'MANIFOLD'): ['mesh_1', 'mesh_2'], ('INTERSECT', 'MANIFOLD'): ['mesh'], ('UNION', 'MANIFOLD'): ['mesh']}
         _configuration = ({'intersect': 'INTERSECT', 'union': 'UNION', 'difference': 'DIFFERENCE'}.get(operation.lower(), operation), {'exact': 'EXACT', 'float': 'FLOAT', 'manifold': 'MANIFOLD'}.get(solver.lower(), solver))
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _name in _values[_configuration]}
-        _node = Node('Mesh Boolean', named_sockets=_named_sockets, operation=operation, solver=solver)
-        self._jump(_node._out)
-        return self._domain_to_geometry
+        _node_sockets = {('INTERSECT', 'EXACT'): {'Self Intersection': self_intersection, 'Hole Tolerant': hole_tolerant}, ('INTERSECT', 'FLOAT'): {}, ('INTERSECT', 'MANIFOLD'): {}, ('UNION', 'EXACT'): {'Self Intersection': self_intersection, 'Hole Tolerant': hole_tolerant}, ('UNION', 'FLOAT'): {}, ('UNION', 'MANIFOLD'): {}, ('DIFFERENCE', 'EXACT'): {'Mesh 1': mesh_1_1, 'Self Intersection': self_intersection, 'Hole Tolerant': hole_tolerant}, ('DIFFERENCE', 'FLOAT'): {'Mesh 1': mesh_1_1}, ('DIFFERENCE', 'MANIFOLD'): {'Mesh 1': mesh_1_1}}[_configuration]
+        _node_args = {('INTERSECT', 'EXACT'): [*[self, *mesh_1]], ('INTERSECT', 'FLOAT'): [*[self, *mesh_1]], ('INTERSECT', 'MANIFOLD'): [*[self, *mesh_1]], ('UNION', 'EXACT'): [*[self, *mesh_1]], ('UNION', 'FLOAT'): [*[self, *mesh_1]], ('UNION', 'MANIFOLD'): [*[self, *mesh_1]], ('DIFFERENCE', 'EXACT'): [*[self, *mesh_1]], ('DIFFERENCE', 'FLOAT'): [*[self, *mesh_1]], ('DIFFERENCE', 'MANIFOLD'): [*[self, *mesh_1]]}[_configuration]
+        node = Node('Mesh Boolean', *_node_args, named_sockets=_node_sockets, operation=operation, solver=solver)
+        self._jump(node._out)
+        return node._second_out(self)
 
     @classmethod
     def Circle(cls, vertices: Integer=None, radius: Float=None, fill_type: Literal['NONE', 'NGON', 'TRIANGLE_FAN']='NONE'):
@@ -564,13 +545,23 @@ class Mesh(BaseMesh, Geometry):
         
         Returns
         -------
-        Mesh
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'vertices': vertices, 'radius': radius}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Mesh Circle', named_sockets=_named_sockets, fill_type=fill_type)
-        return _node._out
+        node = Node('Mesh Circle', named_sockets={'Vertices': vertices, 'Radius': radius}, fill_type=fill_type)
+        return node._out
+
+    @classmethod
+    def island(cls):
+        """ > Node <&Node Mesh Island>
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Mesh Island', named_sockets={})
+        return node._out
 
     @classmethod
     def Line(cls, count: Integer=None, resolution: Float=None, start_location: Vector=None, offset: Vector=None, end_location: Vector=None, mode: Literal['OFFSET', 'END_POINTS']='OFFSET', count_mode: Literal['TOTAL', 'RESOLUTION']='TOTAL'):
@@ -601,16 +592,14 @@ class Mesh(BaseMesh, Geometry):
         
         Returns
         -------
-        Mesh
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'count': count, 'resolution': resolution, 'start_location': start_location, 'offset': offset, 'end_location': end_location}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _values = {('OFFSET', 'TOTAL'): ['count', 'start_location', 'offset'], ('END_POINTS', 'TOTAL'): ['count', 'start_location', 'end_location'], ('END_POINTS', 'RESOLUTION'): ['resolution', 'start_location', 'end_location'], ('OFFSET', 'RESOLUTION'): ['count', 'start_location', 'offset']}
         _configuration = ({'offset': 'OFFSET', 'end_points': 'END_POINTS', 'end points': 'END_POINTS'}.get(mode.lower(), mode), {'total': 'TOTAL', 'resolution': 'RESOLUTION', 'count': 'TOTAL'}.get(count_mode.lower(), count_mode))
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _name in _values[_configuration]}
-        _node = Node('Mesh Line', named_sockets=_named_sockets, mode=mode, count_mode=count_mode)
-        return _node._out
+        _node_sockets = {('OFFSET', 'TOTAL'): {'Count': count, 'Start Location': start_location, 'Offset': offset}, ('OFFSET', 'RESOLUTION'): {'Count': count, 'Start Location': start_location, 'Offset': offset}, ('END_POINTS', 'TOTAL'): {'Count': count, 'Start Location': start_location, 'End Location': end_location}, ('END_POINTS', 'RESOLUTION'): {'Resolution': resolution, 'Start Location': start_location, 'End Location': end_location}}[_configuration]
+        _node_args = {('OFFSET', 'TOTAL'): [], ('OFFSET', 'RESOLUTION'): [], ('END_POINTS', 'TOTAL'): [], ('END_POINTS', 'RESOLUTION'): []}[_configuration]
+        node = Node('Mesh Line', *_node_args, named_sockets=_node_sockets, mode=mode, count_mode=count_mode)
+        return node._out
 
     def to_curve(self, mode: Literal['EDGES', 'FACES']='EDGES'):
         """ > Node <&Node Mesh to Curve>
@@ -626,13 +615,12 @@ class Mesh(BaseMesh, Geometry):
         
         Returns
         -------
-        Curve
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'mesh': self, 'selection': self.get_selection()}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Mesh to Curve', named_sockets=_named_sockets, mode=mode)
-        return _node._out
+        selection = self.get_selection()
+        node = Node('Mesh to Curve', named_sockets={'Mesh': self, 'Selection': selection}, mode=mode)
+        return node._out
 
     def to_density_grid(self, density: Float=None, voxel_size: Float=None, gradient_width: Float=None):
         """ > Node <&Node Mesh to Density Grid>
@@ -654,13 +642,11 @@ class Mesh(BaseMesh, Geometry):
         
         Returns
         -------
-        Float
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'mesh': self, 'density': density, 'voxel_size': voxel_size, 'gradient_width': gradient_width}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Mesh to Density Grid', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('Mesh to Density Grid', named_sockets={'Mesh': self, 'Density': density, 'Voxel Size': voxel_size, 'Gradient Width': gradient_width})
+        return node._out
 
     def to_points(self, position: Vector=None, radius: Float=None, mode: Literal['VERTICES', 'EDGES', 'FACES', 'CORNERS']='VERTICES'):
         """ > Node <&Node Mesh to Points>
@@ -682,13 +668,12 @@ class Mesh(BaseMesh, Geometry):
         
         Returns
         -------
-        Cloud
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'mesh': self, 'selection': self.get_selection(), 'position': position, 'radius': radius}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Mesh to Points', named_sockets=_named_sockets, mode=mode)
-        return _node._out
+        selection = self.get_selection()
+        node = Node('Mesh to Points', named_sockets={'Mesh': self, 'Selection': selection, 'Position': position, 'Radius': radius}, mode=mode)
+        return node._out
 
     def to_sdf_grid(self, voxel_size: Float=None, band_width: Integer=None):
         """ > Node <&Node Mesh to SDF Grid>
@@ -707,15 +692,13 @@ class Mesh(BaseMesh, Geometry):
         
         Returns
         -------
-        Float
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'mesh': self, 'voxel_size': voxel_size, 'band_width': band_width}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Mesh to SDF Grid', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('Mesh to SDF Grid', named_sockets={'Mesh': self, 'Voxel Size': voxel_size, 'Band Width': band_width})
+        return node._out
 
-    def to_volume(self, density: Float=None, resolution_mode: Literal['Amount', 'Size']=None, voxel_size: Float=None, voxel_amount: Float=None, interior_band_width: Float=None):
+    def to_volume(self, density: Float=None, resolution_mode: Menu=None, voxel_size: Float=None, voxel_amount: Float=None, interior_band_width: Float=None):
         """ > Node <&Node Mesh to Volume>
         
         Jump method: False.
@@ -727,8 +710,8 @@ class Mesh(BaseMesh, Geometry):
         density : Float, optional
             socket 'Density'
         
-        resolution_mode : menu='Amount', optional
-            ('Amount', 'Size')
+        resolution_mode : Menu, optional
+            socket 'Resolution Mode'
         
         voxel_size : Float, optional
             socket 'Voxel Size'
@@ -741,15 +724,13 @@ class Mesh(BaseMesh, Geometry):
         
         Returns
         -------
-        Volume
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'mesh': self, 'density': density, 'resolution_mode': resolution_mode, 'voxel_size': voxel_size, 'voxel_amount': voxel_amount, 'interior_band_width': interior_band_width}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Mesh to Volume', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('Mesh to Volume', named_sockets={'Mesh': self, 'Density': density, 'Resolution Mode': resolution_mode, 'Voxel Size': voxel_size, 'Voxel Amount': voxel_amount, 'Interior Band Width': interior_band_width})
+        return node._out
 
-    def sample_nearest_surface(self, value: Float | Integer | Boolean | Vector | Color | Rotation | Matrix=None, group_id: Integer=None, sample_position: Vector=None, sample_group_id: Integer=None):
+    def sample_nearest_surface(self, value: Socket=None, group_id: Integer=None, sample_position: Vector=None, sample_group_id: Integer=None):
         """ > Node <&Node Sample Nearest Surface>
         
         Jump method: False.
@@ -758,11 +739,11 @@ class Mesh(BaseMesh, Geometry):
         
         **Derived parameters**
         
-        - `data_type`: Inferred from value.
+        - `data_type`: Inferred from socket 'Value' (value).
         
         Parameters
         ----------
-        value : Float | Integer | Boolean | Vector | Color | Rotation | Matrix, optional
+        value : Socket, optional
             socket 'Value'
         
         group_id : Integer, optional
@@ -776,16 +757,14 @@ class Mesh(BaseMesh, Geometry):
         
         Returns
         -------
-        Float | Integer | Boolean | Vector | Color | Rotation | Matrix
+        Socket
             socket 'OUT'
         """
         data_type = SocketType.get_data_type_for_node(value, 'GeometryNodeSampleNearestSurface', 'data_type')
-        _named_sockets = {'mesh': self, 'value': value, 'group_id': group_id, 'sample_position': sample_position, 'sample_group_id': sample_group_id}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Sample Nearest Surface', named_sockets=_named_sockets, data_type=data_type)
-        return _node._out
+        node = Node('Sample Nearest Surface', named_sockets={'Mesh': self, 'Value': value, 'Group ID': group_id, 'Sample Position': sample_position, 'Sample Group ID': sample_group_id}, data_type=data_type)
+        return node._out
 
-    def sample_uv_surface(self, value: Float | Integer | Boolean | Vector | Color | Rotation | Matrix=None, uv_map: Vector=None, sample_uv: Vector=None):
+    def sample_uv_surface(self, value: Socket=None, uv_map: Vector=None, sample_uv: Vector=None):
         """ > Node <&Node Sample UV Surface>
         
         Jump method: False.
@@ -794,11 +773,11 @@ class Mesh(BaseMesh, Geometry):
         
         **Derived parameters**
         
-        - `data_type`: Inferred from value.
+        - `data_type`: Inferred from socket 'Value' (value).
         
         Parameters
         ----------
-        value : Float | Integer | Boolean | Vector | Color | Rotation | Matrix, optional
+        value : Socket, optional
             socket 'Value'
         
         uv_map : Vector, optional
@@ -809,14 +788,12 @@ class Mesh(BaseMesh, Geometry):
         
         Returns
         -------
-        Float | Integer | Boolean | Vector | Color | Rotation | Matrix
+        Socket
             socket 'OUT'
         """
         data_type = SocketType.get_data_type_for_node(value, 'GeometryNodeSampleUVSurface', 'data_type')
-        _named_sockets = {'mesh': self, 'value': value, 'uv_map': uv_map, 'sample_uv': sample_uv}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Sample UV Surface', named_sockets=_named_sockets, data_type=data_type)
-        return _node._out
+        node = Node('Sample UV Surface', named_sockets={'Mesh': self, 'Value': value, 'UV Map': uv_map, 'Sample UV': sample_uv}, data_type=data_type)
+        return node._out
 
     def set_face_set(self, face_set: Integer=None):
         """ > Node <&Node Set Face Set>
@@ -832,14 +809,13 @@ class Mesh(BaseMesh, Geometry):
         
         Returns
         -------
-        Mesh
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'mesh': self, 'selection': self.get_selection(), 'face_set': face_set}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Set Face Set', named_sockets=_named_sockets)
-        self._jump(_node._out)
-        return self._domain_to_geometry
+        selection = self.get_selection()
+        node = Node('Set Face Set', named_sockets={'Mesh': self, 'Selection': selection, 'Face Set': face_set})
+        self._jump(node._out)
+        return node._second_out(self)
 
     def set_normal(self, remove_custom: Boolean=None, custom_normal: Vector=None, edge_sharpness: Boolean=None, face_sharpness: Boolean=None, mode: Literal['SHARPNESS', 'FREE', 'TANGENT_SPACE']='SHARPNESS', domain: Literal['POINT', 'FACE', 'CORNER']='POINT'):
         """ > Node <&Node Set Mesh Normal>
@@ -870,21 +846,22 @@ class Mesh(BaseMesh, Geometry):
         
         Returns
         -------
-        Mesh
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'mesh': self, 'remove_custom': remove_custom, 'custom_normal': custom_normal, 'edge_sharpness': edge_sharpness, 'face_sharpness': face_sharpness}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Set Mesh Normal', named_sockets=_named_sockets, mode=mode, domain=domain)
-        self._jump(_node._out)
-        return self._domain_to_geometry
+        _configuration = ({'sharpness': 'SHARPNESS', 'free': 'FREE', 'tangent_space': 'TANGENT_SPACE', 'tangent space': 'TANGENT_SPACE'}.get(mode.lower(), mode),)
+        _node_sockets = {('SHARPNESS',): {'Mesh': self, 'Remove Custom': remove_custom, 'Edge Sharpness': edge_sharpness, 'Face Sharpness': face_sharpness}, ('FREE',): {'Mesh': self, 'Custom Normal': custom_normal}, ('TANGENT_SPACE',): {'Mesh': self, 'Custom Normal': custom_normal}}[_configuration]
+        _node_args = {('SHARPNESS',): [], ('FREE',): [], ('TANGENT_SPACE',): []}[_configuration]
+        node = Node('Set Mesh Normal', *_node_args, named_sockets=_node_sockets, mode=mode, domain=domain)
+        self._jump(node._out)
+        return node._second_out(self)
 
     def set_shade_smooth(self, shade_smooth: Boolean=None, domain: Literal['EDGE', 'FACE']='FACE'):
         """ > Node <&Node Set Shade Smooth>
         
         Jump method: True.
         
-        self: socket 'Geometry'.
+        self: socket 'Mesh'.
         
         Parameters
         ----------
@@ -896,16 +873,14 @@ class Mesh(BaseMesh, Geometry):
         
         Returns
         -------
-        Mesh
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'mesh': self, 'selection': self.get_selection(), 'shade_smooth': shade_smooth}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Set Shade Smooth', named_sockets=_named_sockets, domain=domain)
-        self._jump(_node._out)
-        return self._domain_to_geometry
+        selection = self.get_selection()
+        node = Node('Set Shade Smooth', named_sockets={'Mesh': self, 'Selection': selection, 'Shade Smooth': shade_smooth}, domain=domain)
+        self._jump(node._out)
+        return node._second_out(self)
 
-    @property
     def split_edges(self):
         """ > Node <&Node Split Edges>
         
@@ -915,14 +890,13 @@ class Mesh(BaseMesh, Geometry):
         
         Returns
         -------
-        Mesh
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'mesh': self, 'selection': self.get_selection()}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Split Edges', named_sockets=_named_sockets)
-        self._jump(_node._out)
-        return self._domain_to_geometry
+        selection = self.get_selection()
+        node = Node('Split Edges', named_sockets={'Mesh': self, 'Selection': selection})
+        self._jump(node._out)
+        return node._second_out(self)
 
     def subdivide(self, level: Integer=None):
         """ > Node <&Node Subdivide Mesh>
@@ -938,16 +912,14 @@ class Mesh(BaseMesh, Geometry):
         
         Returns
         -------
-        Mesh
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'mesh': self, 'level': level}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Subdivide Mesh', named_sockets=_named_sockets)
-        self._jump(_node._out)
-        return self._domain_to_geometry
+        node = Node('Subdivide Mesh', named_sockets={'Mesh': self, 'Level': level})
+        self._jump(node._out)
+        return node._second_out(self)
 
-    def subdivision_surface(self, level: Integer=None, edge_crease: Float=None, vertex_crease: Float=None, limit_surface: Boolean=None, quality: Integer=None, uv_smooth: Literal['None', 'Keep Corners', 'Keep Corners, Junctions', 'Keep Corners, Junctions, Concave', 'Keep Boundaries', 'All']=None, boundary_smooth: Literal['Keep Corners', 'All']=None):
+    def subdivision_surface(self, level: Integer=None, edge_crease: Float=None, vertex_crease: Float=None, limit_surface: Boolean=None, quality: Integer=None, uv_smooth: Menu=None, boundary_smooth: Menu=None):
         """ > Node <&Node Subdivision Surface>
         
         Jump method: True.
@@ -971,24 +943,22 @@ class Mesh(BaseMesh, Geometry):
         quality : Integer, optional
             socket 'Quality'
         
-        uv_smooth : menu='Keep Boundaries', optional
-            ('None', 'Keep Corners', 'Keep Corners, Junctions', 'Keep Corners, Junctions, Concave', 'Keep Boundaries', 'All')
+        uv_smooth : Menu, optional
+            socket 'UV Smooth'
         
-        boundary_smooth : menu='All', optional
-            ('Keep Corners', 'All')
+        boundary_smooth : Menu, optional
+            socket 'Boundary Smooth'
         
         Returns
         -------
-        Mesh
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'mesh': self, 'level': level, 'edge_crease': edge_crease, 'vertex_crease': vertex_crease, 'limit_surface': limit_surface, 'quality': quality, 'uv_smooth': uv_smooth, 'boundary_smooth': boundary_smooth}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Subdivision Surface', named_sockets=_named_sockets)
-        self._jump(_node._out)
-        return self._domain_to_geometry
+        node = Node('Subdivision Surface', named_sockets={'Mesh': self, 'Level': level, 'Edge Crease': edge_crease, 'Vertex Crease': vertex_crease, 'Limit Surface': limit_surface, 'Quality': quality, 'UV Smooth': uv_smooth, 'Boundary Smooth': boundary_smooth})
+        self._jump(node._out)
+        return node._second_out(self)
 
-    def triangulate(self, quad_method: Literal['Beauty', 'Fixed', 'Fixed Alternate', 'Shortest Diagonal', 'Longest Diagonal']=None, n_gon_method: Literal['Beauty', 'Clip']=None):
+    def triangulate(self, quad_method: Menu=None, n_gon_method: Menu=None):
         """ > Node <&Node Triangulate>
         
         Jump method: True.
@@ -997,22 +967,21 @@ class Mesh(BaseMesh, Geometry):
         
         Parameters
         ----------
-        quad_method : menu='Shortest Diagonal', optional
-            ('Beauty', 'Fixed', 'Fixed Alternate', 'Shortest Diagonal', 'Longest Diagonal')
+        quad_method : Menu, optional
+            socket 'Quad Method'
         
-        n_gon_method : menu='Beauty', optional
-            ('Beauty', 'Clip')
+        n_gon_method : Menu, optional
+            socket 'N-gon Method'
         
         Returns
         -------
-        Mesh
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'mesh': self, 'selection': self.get_selection(), 'quad_method': quad_method, 'n_gon_method': n_gon_method}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Triangulate', named_sockets=_named_sockets)
-        self._jump(_node._out)
-        return self._domain_to_geometry
+        selection = self.get_selection()
+        node = Node('Triangulate', named_sockets={'Mesh': self, 'Selection': selection, 'Quad Method': quad_method, 'N-gon Method': n_gon_method})
+        self._jump(node._out)
+        return node._second_out(self)
 
     @classmethod
     def UvSphere(cls, segments: Integer=None, rings: Integer=None, radius: Float=None):
@@ -1031,44 +1000,80 @@ class Mesh(BaseMesh, Geometry):
         
         Returns
         -------
-        Mesh
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'segments': segments, 'rings': rings, 'radius': radius}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('UV Sphere', named_sockets=_named_sockets)
-        return _node._out
+        node = Node('UV Sphere', named_sockets={'Segments': segments, 'Rings': rings, 'Radius': radius})
+        return node._out
 
-    @classmethod
-    def FromVolume(cls, volume: Volume=None, resolution_mode: Literal['Grid', 'Amount', 'Size']=None, voxel_size: Float=None, voxel_amount: Float=None, threshold: Float=None, adaptivity: Float=None):
-        """ > Node <&Node Volume to Mesh>
+    @property
+    def material_index(self):
+        """ > Node <&Node Material Index>
         
-        Parameters
-        ----------
-        volume : Volume, optional
-            socket 'Volume'
-        
-        resolution_mode : menu='Grid', optional
-            ('Grid', 'Amount', 'Size')
-        
-        voxel_size : Float, optional
-            socket 'Voxel Size'
-        
-        voxel_amount : Float, optional
-            socket 'Voxel Amount'
-        
-        threshold : Float, optional
-            socket 'Threshold'
-        
-        adaptivity : Float, optional
-            socket 'Adaptivity'
+        Jump method: False.
         
         Returns
         -------
-        Mesh
+        Integer
             socket 'OUT'
         """
-        _named_sockets = {'volume': volume, 'resolution_mode': resolution_mode, 'voxel_size': voxel_size, 'voxel_amount': voxel_amount, 'threshold': threshold, 'adaptivity': adaptivity}
+        _named_sockets = {}
         _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Volume to Mesh', named_sockets=_named_sockets)
+        _node = Node('Material Index', named_sockets=_named_sockets)
         return _node._out
+
+    @material_index.setter
+    def material_index(self, material_index: Integer):
+        """ > Node <&Node Set Material Index>
+        
+        Jump method: True.
+        
+        self: socket 'Geometry'.
+        
+        Parameters
+        ----------
+        material_index : Integer, optional
+            socket 'Material Index'
+        
+        Returns
+        -------
+        None
+        """
+        _named_sockets = {'geometry': self, 'selection': self.get_selection(), 'material_index': material_index}
+        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
+        _node = Node('Set Material Index', named_sockets=_named_sockets)
+        self._jump(_node._out)
+
+    @property
+    def normal(self):
+        """Write-only property; setter node: Set Mesh Normal."""
+        raise NodeError('Property Mesh.normal is write only.')
+
+    @normal.setter
+    def normal(self, custom_normal: Vector):
+        """ > Node <&Node Set Mesh Normal>
+        
+        Jump method: True.
+        
+        self: socket 'Mesh'.
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `mode` | `'FREE'` |
+        | `domain` | `'POINT'` |
+        
+        Parameters
+        ----------
+        custom_normal : Vector, optional
+            socket 'Custom Normal'
+        
+        Returns
+        -------
+        None
+        """
+        _named_sockets = {'mesh': self, 'custom_normal': custom_normal}
+        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
+        _node = Node('Set Mesh Normal', named_sockets=_named_sockets, mode='FREE', domain='POINT')
+        self._jump(_node._out)

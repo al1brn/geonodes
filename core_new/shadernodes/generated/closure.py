@@ -32,6 +32,9 @@ if TYPE_CHECKING:
     class Menu:
         ...
 
+    class Texture:
+        ...
+
     class String:
         ...
 
@@ -45,40 +48,31 @@ from ...shadernodes.sockets.closure import Closure as BaseClosure
 class Closure(BaseClosure):
     __slots__ = ()
 
-    def enable_output(self, enable: Boolean=None):
-        """ > Node <&ShaderNode Enable Output>
+    def evaluate_closure(self, named_sockets=None, define_signature: bool=False, **sockets):
+        """ > Node <&ShaderNode Evaluate Closure>
         
         Jump method: False.
         
-        self: socket 'Value'.
-        
-        **Fixed values**
-        
-        | Parameter | Value |
-        | --- | --- |
-        | `data_type` | `'CLOSURE'` |
+        self: socket 'Closure'.
         
         Parameters
         ----------
-        enable : Boolean, optional
-            socket 'Enable'
+        define_signature : bool
+            parameter `define_signature`
         
         Returns
         -------
-        Closure
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'enable': enable, 'value': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Enable Output', named_sockets=_named_sockets, data_type='CLOSURE')
-        return _node._out
+        _named_sockets = {'Closure': self}
+        _named_sockets.update({name: value for name, value in (named_sockets or {}).items() if value is not None})
+        node = Node('Evaluate Closure', named_sockets=_named_sockets, define_signature=define_signature, **sockets)
+        return node._out
 
-    def implicit_conversion(self, socket_idname='NodeSocketColor'):
+    @classmethod
+    def implicit_conversion(cls, value: Closure=None, socket_idname: str='NodeSocketColor'):
         """ > Node <&ShaderNode Implicit Conversion>
-        
-        Jump method: False.
-        
-        self: socket 'Value'.
         
         **Fixed values**
         
@@ -88,79 +82,16 @@ class Closure(BaseClosure):
         
         Parameters
         ----------
+        value : Closure, optional
+            socket 'Value'
+        
         socket_idname : str
             parameter `socket_idname`
         
         Returns
         -------
-        Closure
+        Socket
             socket 'OUT'
         """
-        _named_sockets = {'value': self}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _node = Node('Implicit Conversion', named_sockets=_named_sockets, socket_idname=socket_idname, data_type='CLOSURE')
-        return _node._out
-
-    @classmethod
-    def IndexSwitch(cls, named_sockets=None, index: Integer=None, _0: Closure=None, _1: Closure=None, **sockets):
-        """ > Node <&ShaderNode Index Switch>
-        
-        **Fixed values**
-        
-        | Parameter | Value |
-        | --- | --- |
-        | `data_type` | `'CLOSURE'` |
-        
-        Parameters
-        ----------
-        index : Integer, optional
-            socket 'Index'
-        
-        _0 : Closure, optional
-            socket '0'
-        
-        _1 : Closure, optional
-            socket '1'
-        
-        Returns
-        -------
-        Closure
-            socket 'OUT'
-        """
-        _named_sockets = {'index': index, '_0': _0, '_1': _1}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _named_sockets.update({_name: _value for _name, _value in (named_sockets or {}).items() if _value is not None})
-        _node = Node('Index Switch', named_sockets=_named_sockets, data_type='CLOSURE', **sockets)
-        return _node._out
-
-    @classmethod
-    def MenuSwitch(cls, named_sockets=None, menu: Literal['A', 'B']=None, a: Closure=None, b: Closure=None, **sockets):
-        """ > Node <&ShaderNode Menu Switch>
-        
-        **Fixed values**
-        
-        | Parameter | Value |
-        | --- | --- |
-        | `data_type` | `'CLOSURE'` |
-        
-        Parameters
-        ----------
-        menu : menu='A', optional
-            ('A', 'B')
-        
-        a : Closure, optional
-            socket 'A'
-        
-        b : Closure, optional
-            socket 'B'
-        
-        Returns
-        -------
-        Closure
-            socket 'OUT'
-        """
-        _named_sockets = {'menu': menu, 'a': a, 'b': b}
-        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
-        _named_sockets.update({_name: _value for _name, _value in (named_sockets or {}).items() if _value is not None})
-        _node = Node('Menu Switch', named_sockets=_named_sockets, data_type='CLOSURE', **sockets)
-        return _node._out
+        node = Node('Implicit Conversion', named_sockets={'Value': value}, data_type='CLOSURE', socket_idname=socket_idname)
+        return node._out
