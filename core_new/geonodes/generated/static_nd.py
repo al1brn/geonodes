@@ -44,7 +44,13 @@ if TYPE_CHECKING:
     class Menu:
         ...
 
+    class Input:
+        ...
+
     class Geometry:
+        ...
+
+    class IntVector:
         ...
 
     class Texture:
@@ -121,10 +127,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('3D Cursor', named_sockets={})
-        return node
+        return node._out
 
     @classmethod
     def accumulate_field(cls, value: Socket=None, group_id: Integer=None, data_type: Literal['FLOAT', 'INT', 'FLOAT_VECTOR', 'TRANSFORM']='FLOAT', domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']='POINT'):
@@ -146,10 +153,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Accumulate Field', named_sockets={'Value': value, 'Group ID': group_id}, data_type=data_type, domain=domain)
-        return node
+        return node._out
 
     @utils.classproperty
     def active_camera(cls):
@@ -174,10 +182,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Active Element', named_sockets={}, domain=domain)
-        return node
+        return node._out
 
     @classmethod
     def advect_grid(cls, grid: Socket=None, velocity: Vector=None, time_step: Float=None, integration_scheme: Menu=None, limiter: Menu=None, data_type: Literal['FLOAT', 'INT', 'VECTOR']='FLOAT'):
@@ -205,10 +214,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Advect Grid', named_sockets={'Grid': grid, 'Velocity': velocity, 'Time Step': time_step, 'Integration Scheme': integration_scheme, 'Limiter': limiter}, data_type=data_type)
-        return node
+        return node._out
 
     @classmethod
     def align_rotation_to_vector(cls, rotation: Rotation=None, vector: Vector=None, factor: Float=None, axis: Literal['X', 'Y', 'Z']='Z', pivot_axis: Literal['AUTO', 'X', 'Y', 'Z']='AUTO'):
@@ -233,10 +243,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Align Rotation to Vector', named_sockets={'Rotation': rotation, 'Factor': factor, 'Vector': vector}, axis=axis, pivot_axis=pivot_axis)
-        return node
+        return node._out
 
     @classmethod
     def arc(cls, resolution: Integer=None, start: Vector=None, middle: Vector=None, end: Vector=None, radius: Float=None, start_angle: Float=None, sweep_angle: Float=None, offset_angle: Float=None, connect_center: Boolean=None, invert_arc: Boolean=None, mode: Literal['POINTS', 'RADIUS']='RADIUS'):
@@ -279,13 +290,14 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         _configuration = ({'points': 'POINTS', 'radius': 'RADIUS'}.get(mode.lower(), mode),)
         _node_sockets = {('POINTS',): {'Resolution': resolution, 'Start': start, 'Middle': middle, 'End': end, 'Offset Angle': offset_angle, 'Connect Center': connect_center, 'Invert Arc': invert_arc}, ('RADIUS',): {'Resolution': resolution, 'Radius': radius, 'Start Angle': start_angle, 'Sweep Angle': sweep_angle, 'Connect Center': connect_center, 'Invert Arc': invert_arc}}[_configuration]
         _node_args = {('POINTS',): [], ('RADIUS',): []}[_configuration]
         node = Node('Arc', *_node_args, named_sockets=_node_sockets, mode=mode)
-        return node
+        return node._out
 
     @classmethod
     def attribute_statistic(cls, geometry: Geometry=None, selection: Boolean=None, attribute: Socket=None, data_type: Literal['FLOAT', 'FLOAT_VECTOR']='FLOAT', domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']='POINT'):
@@ -310,10 +322,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Attribute Statistic', named_sockets={'Geometry': geometry, 'Selection': selection, 'Attribute': attribute}, data_type=data_type, domain=domain)
-        return node
+        return node._out
 
     @classmethod
     def axes_to_rotation(cls, primary_axis_1: Vector=None, secondary_axis_1: Vector=None, primary_axis: Literal['X', 'Y', 'Z']='Z', secondary_axis: Literal['X', 'Y', 'Z']='X'):
@@ -335,10 +348,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Axes to Rotation', named_sockets={'Primary Axis_1': primary_axis_1, 'Secondary Axis_1': secondary_axis_1}, primary_axis=primary_axis, secondary_axis=secondary_axis)
-        return node
+        return node._out
 
     @classmethod
     def axis_angle_to_rotation(cls, axis: Vector=None, angle: Float=None):
@@ -354,10 +368,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Axis Angle to Rotation', named_sockets={'Axis': axis, 'Angle': angle})
-        return node
+        return node._out
 
     @classmethod
     def bake(cls, named_sockets=None, **sockets):
@@ -365,12 +380,13 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         _named_sockets = {}
         _named_sockets.update({name: value for name, value in (named_sockets or {}).items() if value is not None})
         node = Node('Bake', named_sockets=_named_sockets, **sockets)
-        return node
+        return node._out
 
     @classmethod
     def bit_math(cls, a: Integer=None, b: Integer=None, shift: Integer=None, operation: Literal['AND', 'OR', 'XOR', 'NOT', 'SHIFT', 'ROTATE']='AND'):
@@ -392,13 +408,14 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         _configuration = ({'and': 'AND', 'or': 'OR', 'xor': 'XOR', 'not': 'NOT', 'shift': 'SHIFT', 'rotate': 'ROTATE', 'exclusive or': 'XOR'}.get(operation.lower(), operation),)
         _node_sockets = {('AND',): {'A': a, 'B': b}, ('OR',): {'A': a, 'B': b}, ('XOR',): {'A': a, 'B': b}, ('NOT',): {'A': a}, ('SHIFT',): {'A': a, 'Shift': shift}, ('ROTATE',): {'A': a, 'Shift': shift}}[_configuration]
         _node_args = {('AND',): [], ('OR',): [], ('XOR',): [], ('NOT',): [], ('SHIFT',): [], ('ROTATE',): []}[_configuration]
         node = Node('Bit Math', *_node_args, named_sockets=_node_sockets, operation=operation)
-        return node
+        return node._out
 
     @classmethod
     def blackbody(cls, temperature: Float=None):
@@ -411,10 +428,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Blackbody', named_sockets={'Temperature': temperature})
-        return node
+        return node._out
 
     @classmethod
     def blur_attribute(cls, value: Socket=None, iterations: Integer=None, weight: Float=None, data_type: Literal['FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR']='FLOAT'):
@@ -436,10 +454,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Blur Attribute', named_sockets={'Value': value, 'Iterations': iterations, 'Weight': weight}, data_type=data_type)
-        return node
+        return node._out
 
     @classmethod
     def bone_info(cls, armature: Object=None, bone_name: String=None, transform_space: Literal['ORIGINAL', 'RELATIVE']='ORIGINAL'):
@@ -458,10 +477,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Bone Info', named_sockets={'Armature': armature, 'Bone Name': bone_name}, transform_space=transform_space)
-        return node
+        return node._out
 
     @classmethod
     def boolean(cls, boolean: bool=False):
@@ -474,10 +494,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Boolean', named_sockets={}, boolean=boolean)
-        return node
+        return node._out
 
     @classmethod
     def boolean_math(cls, boolean: Boolean=None, boolean_1: Boolean=None, operation: Literal['AND', 'OR', 'NOT', 'NAND', 'NOR', 'XNOR', 'XOR', 'IMPLY', 'NIMPLY']='AND'):
@@ -496,13 +517,14 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         _configuration = ({'and': 'AND', 'or': 'OR', 'not': 'NOT', 'nand': 'NAND', 'nor': 'NOR', 'xnor': 'XNOR', 'xor': 'XOR', 'imply': 'IMPLY', 'nimply': 'NIMPLY', 'not and': 'NAND', 'equal': 'XNOR', 'not equal': 'XOR', 'subtract': 'NIMPLY'}.get(operation.lower(), operation),)
         _node_sockets = {('AND',): {'Boolean': boolean, 'Boolean_1': boolean_1}, ('OR',): {'Boolean': boolean, 'Boolean_1': boolean_1}, ('NOT',): {'Boolean': boolean}, ('NAND',): {'Boolean': boolean, 'Boolean_1': boolean_1}, ('NOR',): {'Boolean': boolean, 'Boolean_1': boolean_1}, ('XNOR',): {'Boolean': boolean, 'Boolean_1': boolean_1}, ('XOR',): {'Boolean': boolean, 'Boolean_1': boolean_1}, ('IMPLY',): {'Boolean': boolean, 'Boolean_1': boolean_1}, ('NIMPLY',): {'Boolean': boolean, 'Boolean_1': boolean_1}}[_configuration]
         _node_args = {('AND',): [], ('OR',): [], ('NOT',): [], ('NAND',): [], ('NOR',): [], ('XNOR',): [], ('XOR',): [], ('IMPLY',): [], ('NIMPLY',): []}[_configuration]
         node = Node('Boolean Math', *_node_args, named_sockets=_node_sockets, operation=operation)
-        return node
+        return node._out
 
     @classmethod
     def bounding_box(cls, geometry: Geometry=None, use_radius: Boolean=None):
@@ -518,10 +540,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Bounding Box', named_sockets={'Geometry': geometry, 'Use Radius': use_radius})
-        return node
+        return node._out
 
     @classmethod
     def brick_texture(cls, vector: Vector=None, color1: Color=None, color2: Color=None, mortar: Color=None, scale: Float=None, mortar_size: Float=None, mortar_smooth: Float=None, bias: Float=None, brick_width: Float=None, row_height: Float=None, offset_frequency: int=2, squash_frequency: int=2, offset: float=0.5, squash: float=1.0):
@@ -573,10 +596,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Brick Texture', named_sockets={'Vector': vector, 'Color1': color1, 'Color2': color2, 'Mortar': mortar, 'Scale': scale, 'Mortar Size': mortar_size, 'Mortar Smooth': mortar_smooth, 'Bias': bias, 'Brick Width': brick_width, 'Row Height': row_height}, offset_frequency=offset_frequency, squash_frequency=squash_frequency, offset=offset, squash=squash)
-        return node
+        return node._out
 
     @classmethod
     def bezier_segment(cls, resolution: Integer=None, start: Vector=None, start_handle: Vector=None, end_handle: Vector=None, end: Vector=None, mode: Literal['POSITION', 'OFFSET']='POSITION'):
@@ -604,10 +628,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Bézier Segment', named_sockets={'Resolution': resolution, 'Start': start, 'Start Handle': start_handle, 'End Handle': end_handle, 'End': end}, mode=mode)
-        return node
+        return node._out
 
     @classmethod
     def camera_info(cls, camera: Object=None):
@@ -620,10 +645,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Camera Info', named_sockets={'Camera': camera})
-        return node
+        return node._out
 
     @classmethod
     def capture_attribute(cls, named_sockets=None, geometry: Geometry=None, selection: Boolean=None, domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']='POINT', **sockets):
@@ -642,12 +668,13 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         _named_sockets = {'Geometry': geometry, 'Selection': selection}
         _named_sockets.update({name: value for name, value in (named_sockets or {}).items() if value is not None})
         node = Node('Capture Attribute', named_sockets=_named_sockets, domain=domain, **sockets)
-        return node
+        return node._out
 
     @classmethod
     def checker_texture(cls, vector: Vector=None, color1: Color=None, color2: Color=None, scale: Float=None):
@@ -669,10 +696,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Checker Texture', named_sockets={'Vector': vector, 'Color1': color1, 'Color2': color2, 'Scale': scale})
-        return node
+        return node._out
 
     @classmethod
     def clamp(cls, value: Float=None, min: Float=None, max: Float=None, clamp_type: Literal['MINMAX', 'RANGE']='MINMAX'):
@@ -694,10 +722,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Clamp', named_sockets={'Value': value, 'Min': min, 'Max': max}, clamp_type=clamp_type)
-        return node
+        return node._out
 
     @classmethod
     def clip_grid(cls, grid: Socket=None, min_x: Integer=None, min_y: Integer=None, min_z: Integer=None, max_x: Integer=None, max_y: Integer=None, max_z: Integer=None, data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR']='FLOAT'):
@@ -731,10 +760,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Clip Grid', named_sockets={'Grid': grid, 'Min X': min_x, 'Min Y': min_y, 'Min Z': min_z, 'Max X': max_x, 'Max Y': max_y, 'Max Z': max_z}, data_type=data_type)
-        return node
+        return node._out
 
     @classmethod
     def closure_input(cls):
@@ -742,10 +772,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Closure Input', named_sockets={})
-        return node
+        return node._out
 
     @classmethod
     def closure_output(cls, named_sockets=None, define_signature: bool=False, **sockets):
@@ -758,12 +789,13 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         _named_sockets = {}
         _named_sockets.update({name: value for name, value in (named_sockets or {}).items() if value is not None})
         node = Node('Closure Output', named_sockets=_named_sockets, define_signature=define_signature, **sockets)
-        return node
+        return node._out
 
     @classmethod
     def closure_to_list(cls, count: Integer=None, closure: Closure=None):
@@ -779,10 +811,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Closure to List', named_sockets={'Count': count, 'Closure': closure})
-        return node
+        return node._out
 
     @classmethod
     def cluster_by_connected(cls, selection: Boolean=None, position: Vector=None, distance: Float=None):
@@ -801,10 +834,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Cluster by Connected', named_sockets={'Selection': selection, 'Position': position, 'Distance': distance})
-        return node
+        return node._out
 
     @classmethod
     def cluster_by_distance(cls, selection: Boolean=None, group_id: Integer=None, position: Vector=None, distance: Float=None):
@@ -826,10 +860,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Cluster by Distance', named_sockets={'Selection': selection, 'Group ID': group_id, 'Position': position, 'Distance': distance})
-        return node
+        return node._out
 
     @classmethod
     def collection(cls, collection: NoneType=None):
@@ -842,10 +877,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Collection', named_sockets={}, collection=collection)
-        return node
+        return node._out
 
     @classmethod
     def collection_children(cls, collection: Collection=None, recursive: Boolean=None):
@@ -861,10 +897,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Collection Children', named_sockets={'Collection': collection, 'Recursive': recursive})
-        return node
+        return node._out
 
     @classmethod
     def collection_info(cls, collection: Collection=None, separate_children: Boolean=None, reset_children: Boolean=None, transform_space: Literal['ORIGINAL', 'RELATIVE']='ORIGINAL'):
@@ -886,10 +923,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Collection Info', named_sockets={'Collection': collection, 'Separate Children': separate_children, 'Reset Children': reset_children}, transform_space=transform_space)
-        return node
+        return node._out
 
     @utils.classproperty
     def color(cls):
@@ -914,10 +952,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Color Ramp', named_sockets={'Factor': factor})
-        return node
+        return node._out
 
     @classmethod
     def combine_bundle(cls, named_sockets=None, define_signature: bool=False, **sockets):
@@ -930,12 +969,13 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         _named_sockets = {}
         _named_sockets.update({name: value for name, value in (named_sockets or {}).items() if value is not None})
         node = Node('Combine Bundle', named_sockets=_named_sockets, define_signature=define_signature, **sockets)
-        return node
+        return node._out
 
     @classmethod
     def combine_color(cls, red: Float=None, hue: Float=None, green: Float=None, saturation: Float=None, blue: Float=None, value: Float=None, lightness: Float=None, alpha: Float=None, mode: Literal['RGB', 'HSV', 'HSL']='RGB'):
@@ -972,13 +1012,14 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         _configuration = ({'rgb': 'RGB', 'hsv': 'HSV', 'hsl': 'HSL'}.get(mode.lower(), mode),)
         _node_sockets = {('RGB',): {'Red': red, 'Green': green, 'Blue': blue, 'Alpha': alpha}, ('HSV',): {'Hue': hue, 'Saturation': saturation, 'Value': value, 'Alpha': alpha}, ('HSL',): {'Hue': hue, 'Saturation': saturation, 'Lightness': lightness, 'Alpha': alpha}}[_configuration]
         _node_args = {('RGB',): [], ('HSV',): [], ('HSL',): []}[_configuration]
         node = Node('Combine Color', *_node_args, named_sockets=_node_sockets, mode=mode)
-        return node
+        return node._out
 
     @classmethod
     def combine_list(cls, *values: Socket, data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SOUND']='FLOAT'):
@@ -991,10 +1032,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Combine List', *values, named_sockets={}, data_type=data_type)
-        return node
+        return node._out
 
     @classmethod
     def combine_matrix(cls, column_1_row_1: Float=None, column_1_row_2: Float=None, column_1_row_3: Float=None, column_1_row_4: Float=None, column_2_row_1: Float=None, column_2_row_2: Float=None, column_2_row_3: Float=None, column_2_row_4: Float=None, column_3_row_1: Float=None, column_3_row_2: Float=None, column_3_row_3: Float=None, column_3_row_4: Float=None, column_4_row_1: Float=None, column_4_row_2: Float=None, column_4_row_3: Float=None, column_4_row_4: Float=None):
@@ -1052,10 +1094,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Combine Matrix', named_sockets={'Column 1 Row 1': column_1_row_1, 'Column 1 Row 2': column_1_row_2, 'Column 1 Row 3': column_1_row_3, 'Column 1 Row 4': column_1_row_4, 'Column 2 Row 1': column_2_row_1, 'Column 2 Row 2': column_2_row_2, 'Column 2 Row 3': column_2_row_3, 'Column 2 Row 4': column_2_row_4, 'Column 3 Row 1': column_3_row_1, 'Column 3 Row 2': column_3_row_2, 'Column 3 Row 3': column_3_row_3, 'Column 3 Row 4': column_3_row_4, 'Column 4 Row 1': column_4_row_1, 'Column 4 Row 2': column_4_row_2, 'Column 4 Row 3': column_4_row_3, 'Column 4 Row 4': column_4_row_4})
-        return node
+        return node._out
 
     @classmethod
     def combine_transform(cls, translation: Vector=None, rotation: Rotation=None, scale: Vector=None):
@@ -1074,10 +1117,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Combine Transform', named_sockets={'Translation': translation, 'Rotation': rotation, 'Scale': scale})
-        return node
+        return node._out
 
     @classmethod
     def combine_xyz(cls, x: Float=None, y: Float=None, z: Float=None):
@@ -1096,10 +1140,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Combine XYZ', named_sockets={'X': x, 'Y': y, 'Z': z})
-        return node
+        return node._out
 
     @classmethod
     def comment(cls, text: str='## Comment'):
@@ -1112,10 +1157,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Comment', named_sockets={}, text=text)
-        return node
+        return node._out
 
     @classmethod
     def compare(cls, a: Socket=None, b: Socket=None, epsilon: Float=None, c: Float=None, angle: Float=None, operation: Literal['LESS_THAN', 'LESS_EQUAL', 'GREATER_THAN', 'GREATER_EQUAL', 'EQUAL', 'NOT_EQUAL']='GREATER_THAN', data_type: Literal['FLOAT', 'INT', 'VECTOR', 'RGBA', 'STRING', 'OBJECT', 'IMAGE', 'COLLECTION', 'MATERIAL', 'FONT', 'SOUND']='FLOAT', mode: Literal['ELEMENT', 'LENGTH', 'AVERAGE', 'DOT_PRODUCT', 'DIRECTION']='ELEMENT'):
@@ -1149,13 +1195,14 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         _configuration = ({'float': 'FLOAT', 'int': 'INT', 'boolean': 'BOOLEAN', 'vector': 'VECTOR', 'rgba': 'RGBA', 'rotation': 'ROTATION', 'matrix': 'MATRIX', 'string': 'STRING', 'menu': 'MENU', 'shader': 'SHADER', 'object': 'OBJECT', 'image': 'IMAGE', 'geometry': 'GEOMETRY', 'collection': 'COLLECTION', 'texture': 'TEXTURE', 'material': 'MATERIAL', 'bundle': 'BUNDLE', 'closure': 'CLOSURE', 'font': 'FONT', 'scene': 'SCENE', 'text': 'TEXT', 'mask': 'MASK', 'sound': 'SOUND', 'int_vector': 'INT_VECTOR', 'integer': 'INT', 'color': 'RGBA', 'integer vector': 'INT_VECTOR'}.get(data_type.lower(), data_type), {'less_than': 'LESS_THAN', 'less_equal': 'LESS_EQUAL', 'greater_than': 'GREATER_THAN', 'greater_equal': 'GREATER_EQUAL', 'equal': 'EQUAL', 'not_equal': 'NOT_EQUAL', 'brighter': 'BRIGHTER', 'darker': 'DARKER', 'less than': 'LESS_THAN', 'less than or equal': 'LESS_EQUAL', 'greater than': 'GREATER_THAN', 'greater than or equal': 'GREATER_EQUAL', 'not equal': 'NOT_EQUAL'}.get(operation.lower(), operation), {'element': 'ELEMENT', 'length': 'LENGTH', 'average': 'AVERAGE', 'dot_product': 'DOT_PRODUCT', 'direction': 'DIRECTION', 'element-wise': 'ELEMENT', 'dot product': 'DOT_PRODUCT'}.get(mode.lower(), mode))
         _node_sockets = {('FLOAT', 'LESS_THAN', 'ELEMENT'): {'A': a, 'B': b}, ('FLOAT', 'LESS_THAN', 'LENGTH'): {'A': a, 'B': b}, ('FLOAT', 'LESS_THAN', 'AVERAGE'): {'A': a, 'B': b}, ('FLOAT', 'LESS_THAN', 'DOT_PRODUCT'): {'A': a, 'B': b}, ('FLOAT', 'LESS_THAN', 'DIRECTION'): {'A': a, 'B': b}, ('FLOAT', 'LESS_EQUAL', 'ELEMENT'): {'A': a, 'B': b}, ('FLOAT', 'LESS_EQUAL', 'LENGTH'): {'A': a, 'B': b}, ('FLOAT', 'LESS_EQUAL', 'AVERAGE'): {'A': a, 'B': b}, ('FLOAT', 'LESS_EQUAL', 'DOT_PRODUCT'): {'A': a, 'B': b}, ('FLOAT', 'LESS_EQUAL', 'DIRECTION'): {'A': a, 'B': b}, ('FLOAT', 'GREATER_THAN', 'ELEMENT'): {'A': a, 'B': b}, ('FLOAT', 'GREATER_THAN', 'LENGTH'): {'A': a, 'B': b}, ('FLOAT', 'GREATER_THAN', 'AVERAGE'): {'A': a, 'B': b}, ('FLOAT', 'GREATER_THAN', 'DOT_PRODUCT'): {'A': a, 'B': b}, ('FLOAT', 'GREATER_THAN', 'DIRECTION'): {'A': a, 'B': b}, ('FLOAT', 'GREATER_EQUAL', 'ELEMENT'): {'A': a, 'B': b}, ('FLOAT', 'GREATER_EQUAL', 'LENGTH'): {'A': a, 'B': b}, ('FLOAT', 'GREATER_EQUAL', 'AVERAGE'): {'A': a, 'B': b}, ('FLOAT', 'GREATER_EQUAL', 'DOT_PRODUCT'): {'A': a, 'B': b}, ('FLOAT', 'GREATER_EQUAL', 'DIRECTION'): {'A': a, 'B': b}, ('FLOAT', 'EQUAL', 'ELEMENT'): {'A': a, 'B': b, 'Epsilon': epsilon}, ('FLOAT', 'EQUAL', 'LENGTH'): {'A': a, 'B': b, 'Epsilon': epsilon}, ('FLOAT', 'EQUAL', 'AVERAGE'): {'A': a, 'B': b, 'Epsilon': epsilon}, ('FLOAT', 'EQUAL', 'DOT_PRODUCT'): {'A': a, 'B': b, 'Epsilon': epsilon}, ('FLOAT', 'EQUAL', 'DIRECTION'): {'A': a, 'B': b, 'Epsilon': epsilon}, ('FLOAT', 'NOT_EQUAL', 'ELEMENT'): {'A': a, 'B': b, 'Epsilon': epsilon}, ('FLOAT', 'NOT_EQUAL', 'LENGTH'): {'A': a, 'B': b, 'Epsilon': epsilon}, ('FLOAT', 'NOT_EQUAL', 'AVERAGE'): {'A': a, 'B': b, 'Epsilon': epsilon}, ('FLOAT', 'NOT_EQUAL', 'DOT_PRODUCT'): {'A': a, 'B': b, 'Epsilon': epsilon}, ('FLOAT', 'NOT_EQUAL', 'DIRECTION'): {'A': a, 'B': b, 'Epsilon': epsilon}, ('INT', 'LESS_THAN', 'ELEMENT'): {'A': a, 'B': b}, ('INT', 'LESS_THAN', 'LENGTH'): {'A': a, 'B': b}, ('INT', 'LESS_THAN', 'AVERAGE'): {'A': a, 'B': b}, ('INT', 'LESS_THAN', 'DOT_PRODUCT'): {'A': a, 'B': b}, ('INT', 'LESS_THAN', 'DIRECTION'): {'A': a, 'B': b}, ('INT', 'LESS_EQUAL', 'ELEMENT'): {'A': a, 'B': b}, ('INT', 'LESS_EQUAL', 'LENGTH'): {'A': a, 'B': b}, ('INT', 'LESS_EQUAL', 'AVERAGE'): {'A': a, 'B': b}, ('INT', 'LESS_EQUAL', 'DOT_PRODUCT'): {'A': a, 'B': b}, ('INT', 'LESS_EQUAL', 'DIRECTION'): {'A': a, 'B': b}, ('INT', 'GREATER_THAN', 'ELEMENT'): {'A': a, 'B': b}, ('INT', 'GREATER_THAN', 'LENGTH'): {'A': a, 'B': b}, ('INT', 'GREATER_THAN', 'AVERAGE'): {'A': a, 'B': b}, ('INT', 'GREATER_THAN', 'DOT_PRODUCT'): {'A': a, 'B': b}, ('INT', 'GREATER_THAN', 'DIRECTION'): {'A': a, 'B': b}, ('INT', 'GREATER_EQUAL', 'ELEMENT'): {'A': a, 'B': b}, ('INT', 'GREATER_EQUAL', 'LENGTH'): {'A': a, 'B': b}, ('INT', 'GREATER_EQUAL', 'AVERAGE'): {'A': a, 'B': b}, ('INT', 'GREATER_EQUAL', 'DOT_PRODUCT'): {'A': a, 'B': b}, ('INT', 'GREATER_EQUAL', 'DIRECTION'): {'A': a, 'B': b}, ('INT', 'EQUAL', 'ELEMENT'): {'A': a, 'B': b}, ('INT', 'EQUAL', 'LENGTH'): {'A': a, 'B': b}, ('INT', 'EQUAL', 'AVERAGE'): {'A': a, 'B': b}, ('INT', 'EQUAL', 'DOT_PRODUCT'): {'A': a, 'B': b}, ('INT', 'EQUAL', 'DIRECTION'): {'A': a, 'B': b}, ('INT', 'NOT_EQUAL', 'ELEMENT'): {'A': a, 'B': b}, ('INT', 'NOT_EQUAL', 'LENGTH'): {'A': a, 'B': b}, ('INT', 'NOT_EQUAL', 'AVERAGE'): {'A': a, 'B': b}, ('INT', 'NOT_EQUAL', 'DOT_PRODUCT'): {'A': a, 'B': b}, ('INT', 'NOT_EQUAL', 'DIRECTION'): {'A': a, 'B': b}, ('VECTOR', 'LESS_THAN', 'ELEMENT'): {'A': a, 'B': b}, ('VECTOR', 'LESS_THAN', 'LENGTH'): {'A': a, 'B': b}, ('VECTOR', 'LESS_THAN', 'AVERAGE'): {'A': a, 'B': b}, ('VECTOR', 'LESS_THAN', 'DOT_PRODUCT'): {'A': a, 'B': b, 'C': c}, ('VECTOR', 'LESS_THAN', 'DIRECTION'): {'A': a, 'B': b, 'Angle': angle}, ('VECTOR', 'LESS_EQUAL', 'ELEMENT'): {'A': a, 'B': b}, ('VECTOR', 'LESS_EQUAL', 'LENGTH'): {'A': a, 'B': b}, ('VECTOR', 'LESS_EQUAL', 'AVERAGE'): {'A': a, 'B': b}, ('VECTOR', 'LESS_EQUAL', 'DOT_PRODUCT'): {'A': a, 'B': b, 'C': c}, ('VECTOR', 'LESS_EQUAL', 'DIRECTION'): {'A': a, 'B': b, 'Angle': angle}, ('VECTOR', 'GREATER_THAN', 'ELEMENT'): {'A': a, 'B': b}, ('VECTOR', 'GREATER_THAN', 'LENGTH'): {'A': a, 'B': b}, ('VECTOR', 'GREATER_THAN', 'AVERAGE'): {'A': a, 'B': b}, ('VECTOR', 'GREATER_THAN', 'DOT_PRODUCT'): {'A': a, 'B': b, 'C': c}, ('VECTOR', 'GREATER_THAN', 'DIRECTION'): {'A': a, 'B': b, 'Angle': angle}, ('VECTOR', 'GREATER_EQUAL', 'ELEMENT'): {'A': a, 'B': b}, ('VECTOR', 'GREATER_EQUAL', 'LENGTH'): {'A': a, 'B': b}, ('VECTOR', 'GREATER_EQUAL', 'AVERAGE'): {'A': a, 'B': b}, ('VECTOR', 'GREATER_EQUAL', 'DOT_PRODUCT'): {'A': a, 'B': b, 'C': c}, ('VECTOR', 'GREATER_EQUAL', 'DIRECTION'): {'A': a, 'B': b, 'Angle': angle}, ('VECTOR', 'EQUAL', 'ELEMENT'): {'A': a, 'B': b, 'Epsilon': epsilon}, ('VECTOR', 'EQUAL', 'LENGTH'): {'A': a, 'B': b, 'Epsilon': epsilon}, ('VECTOR', 'EQUAL', 'AVERAGE'): {'A': a, 'B': b, 'Epsilon': epsilon}, ('VECTOR', 'EQUAL', 'DOT_PRODUCT'): {'A': a, 'B': b, 'C': c, 'Epsilon': epsilon}, ('VECTOR', 'EQUAL', 'DIRECTION'): {'A': a, 'B': b, 'Angle': angle, 'Epsilon': epsilon}, ('VECTOR', 'NOT_EQUAL', 'ELEMENT'): {'A': a, 'B': b, 'Epsilon': epsilon}, ('VECTOR', 'NOT_EQUAL', 'LENGTH'): {'A': a, 'B': b, 'Epsilon': epsilon}, ('VECTOR', 'NOT_EQUAL', 'AVERAGE'): {'A': a, 'B': b, 'Epsilon': epsilon}, ('VECTOR', 'NOT_EQUAL', 'DOT_PRODUCT'): {'A': a, 'B': b, 'C': c, 'Epsilon': epsilon}, ('VECTOR', 'NOT_EQUAL', 'DIRECTION'): {'A': a, 'B': b, 'Angle': angle, 'Epsilon': epsilon}, ('RGBA', 'EQUAL', 'ELEMENT'): {'A': a, 'B': b, 'Epsilon': epsilon}, ('RGBA', 'EQUAL', 'LENGTH'): {'A': a, 'B': b, 'Epsilon': epsilon}, ('RGBA', 'EQUAL', 'AVERAGE'): {'A': a, 'B': b, 'Epsilon': epsilon}, ('RGBA', 'EQUAL', 'DOT_PRODUCT'): {'A': a, 'B': b, 'Epsilon': epsilon}, ('RGBA', 'EQUAL', 'DIRECTION'): {'A': a, 'B': b, 'Epsilon': epsilon}, ('RGBA', 'NOT_EQUAL', 'ELEMENT'): {'A': a, 'B': b, 'Epsilon': epsilon}, ('RGBA', 'NOT_EQUAL', 'LENGTH'): {'A': a, 'B': b, 'Epsilon': epsilon}, ('RGBA', 'NOT_EQUAL', 'AVERAGE'): {'A': a, 'B': b, 'Epsilon': epsilon}, ('RGBA', 'NOT_EQUAL', 'DOT_PRODUCT'): {'A': a, 'B': b, 'Epsilon': epsilon}, ('RGBA', 'NOT_EQUAL', 'DIRECTION'): {'A': a, 'B': b, 'Epsilon': epsilon}, ('RGBA', 'BRIGHTER', 'ELEMENT'): {'A': a, 'B': b}, ('RGBA', 'BRIGHTER', 'LENGTH'): {'A': a, 'B': b}, ('RGBA', 'BRIGHTER', 'AVERAGE'): {'A': a, 'B': b}, ('RGBA', 'BRIGHTER', 'DOT_PRODUCT'): {'A': a, 'B': b}, ('RGBA', 'BRIGHTER', 'DIRECTION'): {'A': a, 'B': b}, ('RGBA', 'DARKER', 'ELEMENT'): {'A': a, 'B': b}, ('RGBA', 'DARKER', 'LENGTH'): {'A': a, 'B': b}, ('RGBA', 'DARKER', 'AVERAGE'): {'A': a, 'B': b}, ('RGBA', 'DARKER', 'DOT_PRODUCT'): {'A': a, 'B': b}, ('RGBA', 'DARKER', 'DIRECTION'): {'A': a, 'B': b}, ('STRING', 'EQUAL', 'ELEMENT'): {'A': a, 'B': b}, ('STRING', 'EQUAL', 'LENGTH'): {'A': a, 'B': b}, ('STRING', 'EQUAL', 'AVERAGE'): {'A': a, 'B': b}, ('STRING', 'EQUAL', 'DOT_PRODUCT'): {'A': a, 'B': b}, ('STRING', 'EQUAL', 'DIRECTION'): {'A': a, 'B': b}, ('STRING', 'NOT_EQUAL', 'ELEMENT'): {'A': a, 'B': b}, ('STRING', 'NOT_EQUAL', 'LENGTH'): {'A': a, 'B': b}, ('STRING', 'NOT_EQUAL', 'AVERAGE'): {'A': a, 'B': b}, ('STRING', 'NOT_EQUAL', 'DOT_PRODUCT'): {'A': a, 'B': b}, ('STRING', 'NOT_EQUAL', 'DIRECTION'): {'A': a, 'B': b}, ('OBJECT', 'EQUAL', 'ELEMENT'): {'A': a, 'B': b}, ('OBJECT', 'EQUAL', 'LENGTH'): {'A': a, 'B': b}, ('OBJECT', 'EQUAL', 'AVERAGE'): {'A': a, 'B': b}, ('OBJECT', 'EQUAL', 'DOT_PRODUCT'): {'A': a, 'B': b}, ('OBJECT', 'EQUAL', 'DIRECTION'): {'A': a, 'B': b}, ('OBJECT', 'NOT_EQUAL', 'ELEMENT'): {'A': a, 'B': b}, ('OBJECT', 'NOT_EQUAL', 'LENGTH'): {'A': a, 'B': b}, ('OBJECT', 'NOT_EQUAL', 'AVERAGE'): {'A': a, 'B': b}, ('OBJECT', 'NOT_EQUAL', 'DOT_PRODUCT'): {'A': a, 'B': b}, ('OBJECT', 'NOT_EQUAL', 'DIRECTION'): {'A': a, 'B': b}, ('IMAGE', 'EQUAL', 'ELEMENT'): {'A': a, 'B': b}, ('IMAGE', 'EQUAL', 'LENGTH'): {'A': a, 'B': b}, ('IMAGE', 'EQUAL', 'AVERAGE'): {'A': a, 'B': b}, ('IMAGE', 'EQUAL', 'DOT_PRODUCT'): {'A': a, 'B': b}, ('IMAGE', 'EQUAL', 'DIRECTION'): {'A': a, 'B': b}, ('IMAGE', 'NOT_EQUAL', 'ELEMENT'): {'A': a, 'B': b}, ('IMAGE', 'NOT_EQUAL', 'LENGTH'): {'A': a, 'B': b}, ('IMAGE', 'NOT_EQUAL', 'AVERAGE'): {'A': a, 'B': b}, ('IMAGE', 'NOT_EQUAL', 'DOT_PRODUCT'): {'A': a, 'B': b}, ('IMAGE', 'NOT_EQUAL', 'DIRECTION'): {'A': a, 'B': b}, ('COLLECTION', 'EQUAL', 'ELEMENT'): {'A': a, 'B': b}, ('COLLECTION', 'EQUAL', 'LENGTH'): {'A': a, 'B': b}, ('COLLECTION', 'EQUAL', 'AVERAGE'): {'A': a, 'B': b}, ('COLLECTION', 'EQUAL', 'DOT_PRODUCT'): {'A': a, 'B': b}, ('COLLECTION', 'EQUAL', 'DIRECTION'): {'A': a, 'B': b}, ('COLLECTION', 'NOT_EQUAL', 'ELEMENT'): {'A': a, 'B': b}, ('COLLECTION', 'NOT_EQUAL', 'LENGTH'): {'A': a, 'B': b}, ('COLLECTION', 'NOT_EQUAL', 'AVERAGE'): {'A': a, 'B': b}, ('COLLECTION', 'NOT_EQUAL', 'DOT_PRODUCT'): {'A': a, 'B': b}, ('COLLECTION', 'NOT_EQUAL', 'DIRECTION'): {'A': a, 'B': b}, ('MATERIAL', 'EQUAL', 'ELEMENT'): {'A': a, 'B': b}, ('MATERIAL', 'EQUAL', 'LENGTH'): {'A': a, 'B': b}, ('MATERIAL', 'EQUAL', 'AVERAGE'): {'A': a, 'B': b}, ('MATERIAL', 'EQUAL', 'DOT_PRODUCT'): {'A': a, 'B': b}, ('MATERIAL', 'EQUAL', 'DIRECTION'): {'A': a, 'B': b}, ('MATERIAL', 'NOT_EQUAL', 'ELEMENT'): {'A': a, 'B': b}, ('MATERIAL', 'NOT_EQUAL', 'LENGTH'): {'A': a, 'B': b}, ('MATERIAL', 'NOT_EQUAL', 'AVERAGE'): {'A': a, 'B': b}, ('MATERIAL', 'NOT_EQUAL', 'DOT_PRODUCT'): {'A': a, 'B': b}, ('MATERIAL', 'NOT_EQUAL', 'DIRECTION'): {'A': a, 'B': b}, ('FONT', 'EQUAL', 'ELEMENT'): {'A': a, 'B': b}, ('FONT', 'EQUAL', 'LENGTH'): {'A': a, 'B': b}, ('FONT', 'EQUAL', 'AVERAGE'): {'A': a, 'B': b}, ('FONT', 'EQUAL', 'DOT_PRODUCT'): {'A': a, 'B': b}, ('FONT', 'EQUAL', 'DIRECTION'): {'A': a, 'B': b}, ('FONT', 'NOT_EQUAL', 'ELEMENT'): {'A': a, 'B': b}, ('FONT', 'NOT_EQUAL', 'LENGTH'): {'A': a, 'B': b}, ('FONT', 'NOT_EQUAL', 'AVERAGE'): {'A': a, 'B': b}, ('FONT', 'NOT_EQUAL', 'DOT_PRODUCT'): {'A': a, 'B': b}, ('FONT', 'NOT_EQUAL', 'DIRECTION'): {'A': a, 'B': b}, ('SOUND', 'EQUAL', 'ELEMENT'): {'A': a, 'B': b}, ('SOUND', 'EQUAL', 'LENGTH'): {'A': a, 'B': b}, ('SOUND', 'EQUAL', 'AVERAGE'): {'A': a, 'B': b}, ('SOUND', 'EQUAL', 'DOT_PRODUCT'): {'A': a, 'B': b}, ('SOUND', 'EQUAL', 'DIRECTION'): {'A': a, 'B': b}, ('SOUND', 'NOT_EQUAL', 'ELEMENT'): {'A': a, 'B': b}, ('SOUND', 'NOT_EQUAL', 'LENGTH'): {'A': a, 'B': b}, ('SOUND', 'NOT_EQUAL', 'AVERAGE'): {'A': a, 'B': b}, ('SOUND', 'NOT_EQUAL', 'DOT_PRODUCT'): {'A': a, 'B': b}, ('SOUND', 'NOT_EQUAL', 'DIRECTION'): {'A': a, 'B': b}}[_configuration]
         _node_args = {('FLOAT', 'LESS_THAN', 'ELEMENT'): [], ('FLOAT', 'LESS_THAN', 'LENGTH'): [], ('FLOAT', 'LESS_THAN', 'AVERAGE'): [], ('FLOAT', 'LESS_THAN', 'DOT_PRODUCT'): [], ('FLOAT', 'LESS_THAN', 'DIRECTION'): [], ('FLOAT', 'LESS_EQUAL', 'ELEMENT'): [], ('FLOAT', 'LESS_EQUAL', 'LENGTH'): [], ('FLOAT', 'LESS_EQUAL', 'AVERAGE'): [], ('FLOAT', 'LESS_EQUAL', 'DOT_PRODUCT'): [], ('FLOAT', 'LESS_EQUAL', 'DIRECTION'): [], ('FLOAT', 'GREATER_THAN', 'ELEMENT'): [], ('FLOAT', 'GREATER_THAN', 'LENGTH'): [], ('FLOAT', 'GREATER_THAN', 'AVERAGE'): [], ('FLOAT', 'GREATER_THAN', 'DOT_PRODUCT'): [], ('FLOAT', 'GREATER_THAN', 'DIRECTION'): [], ('FLOAT', 'GREATER_EQUAL', 'ELEMENT'): [], ('FLOAT', 'GREATER_EQUAL', 'LENGTH'): [], ('FLOAT', 'GREATER_EQUAL', 'AVERAGE'): [], ('FLOAT', 'GREATER_EQUAL', 'DOT_PRODUCT'): [], ('FLOAT', 'GREATER_EQUAL', 'DIRECTION'): [], ('FLOAT', 'EQUAL', 'ELEMENT'): [], ('FLOAT', 'EQUAL', 'LENGTH'): [], ('FLOAT', 'EQUAL', 'AVERAGE'): [], ('FLOAT', 'EQUAL', 'DOT_PRODUCT'): [], ('FLOAT', 'EQUAL', 'DIRECTION'): [], ('FLOAT', 'NOT_EQUAL', 'ELEMENT'): [], ('FLOAT', 'NOT_EQUAL', 'LENGTH'): [], ('FLOAT', 'NOT_EQUAL', 'AVERAGE'): [], ('FLOAT', 'NOT_EQUAL', 'DOT_PRODUCT'): [], ('FLOAT', 'NOT_EQUAL', 'DIRECTION'): [], ('INT', 'LESS_THAN', 'ELEMENT'): [], ('INT', 'LESS_THAN', 'LENGTH'): [], ('INT', 'LESS_THAN', 'AVERAGE'): [], ('INT', 'LESS_THAN', 'DOT_PRODUCT'): [], ('INT', 'LESS_THAN', 'DIRECTION'): [], ('INT', 'LESS_EQUAL', 'ELEMENT'): [], ('INT', 'LESS_EQUAL', 'LENGTH'): [], ('INT', 'LESS_EQUAL', 'AVERAGE'): [], ('INT', 'LESS_EQUAL', 'DOT_PRODUCT'): [], ('INT', 'LESS_EQUAL', 'DIRECTION'): [], ('INT', 'GREATER_THAN', 'ELEMENT'): [], ('INT', 'GREATER_THAN', 'LENGTH'): [], ('INT', 'GREATER_THAN', 'AVERAGE'): [], ('INT', 'GREATER_THAN', 'DOT_PRODUCT'): [], ('INT', 'GREATER_THAN', 'DIRECTION'): [], ('INT', 'GREATER_EQUAL', 'ELEMENT'): [], ('INT', 'GREATER_EQUAL', 'LENGTH'): [], ('INT', 'GREATER_EQUAL', 'AVERAGE'): [], ('INT', 'GREATER_EQUAL', 'DOT_PRODUCT'): [], ('INT', 'GREATER_EQUAL', 'DIRECTION'): [], ('INT', 'EQUAL', 'ELEMENT'): [], ('INT', 'EQUAL', 'LENGTH'): [], ('INT', 'EQUAL', 'AVERAGE'): [], ('INT', 'EQUAL', 'DOT_PRODUCT'): [], ('INT', 'EQUAL', 'DIRECTION'): [], ('INT', 'NOT_EQUAL', 'ELEMENT'): [], ('INT', 'NOT_EQUAL', 'LENGTH'): [], ('INT', 'NOT_EQUAL', 'AVERAGE'): [], ('INT', 'NOT_EQUAL', 'DOT_PRODUCT'): [], ('INT', 'NOT_EQUAL', 'DIRECTION'): [], ('VECTOR', 'LESS_THAN', 'ELEMENT'): [], ('VECTOR', 'LESS_THAN', 'LENGTH'): [], ('VECTOR', 'LESS_THAN', 'AVERAGE'): [], ('VECTOR', 'LESS_THAN', 'DOT_PRODUCT'): [], ('VECTOR', 'LESS_THAN', 'DIRECTION'): [], ('VECTOR', 'LESS_EQUAL', 'ELEMENT'): [], ('VECTOR', 'LESS_EQUAL', 'LENGTH'): [], ('VECTOR', 'LESS_EQUAL', 'AVERAGE'): [], ('VECTOR', 'LESS_EQUAL', 'DOT_PRODUCT'): [], ('VECTOR', 'LESS_EQUAL', 'DIRECTION'): [], ('VECTOR', 'GREATER_THAN', 'ELEMENT'): [], ('VECTOR', 'GREATER_THAN', 'LENGTH'): [], ('VECTOR', 'GREATER_THAN', 'AVERAGE'): [], ('VECTOR', 'GREATER_THAN', 'DOT_PRODUCT'): [], ('VECTOR', 'GREATER_THAN', 'DIRECTION'): [], ('VECTOR', 'GREATER_EQUAL', 'ELEMENT'): [], ('VECTOR', 'GREATER_EQUAL', 'LENGTH'): [], ('VECTOR', 'GREATER_EQUAL', 'AVERAGE'): [], ('VECTOR', 'GREATER_EQUAL', 'DOT_PRODUCT'): [], ('VECTOR', 'GREATER_EQUAL', 'DIRECTION'): [], ('VECTOR', 'EQUAL', 'ELEMENT'): [], ('VECTOR', 'EQUAL', 'LENGTH'): [], ('VECTOR', 'EQUAL', 'AVERAGE'): [], ('VECTOR', 'EQUAL', 'DOT_PRODUCT'): [], ('VECTOR', 'EQUAL', 'DIRECTION'): [], ('VECTOR', 'NOT_EQUAL', 'ELEMENT'): [], ('VECTOR', 'NOT_EQUAL', 'LENGTH'): [], ('VECTOR', 'NOT_EQUAL', 'AVERAGE'): [], ('VECTOR', 'NOT_EQUAL', 'DOT_PRODUCT'): [], ('VECTOR', 'NOT_EQUAL', 'DIRECTION'): [], ('RGBA', 'EQUAL', 'ELEMENT'): [], ('RGBA', 'EQUAL', 'LENGTH'): [], ('RGBA', 'EQUAL', 'AVERAGE'): [], ('RGBA', 'EQUAL', 'DOT_PRODUCT'): [], ('RGBA', 'EQUAL', 'DIRECTION'): [], ('RGBA', 'NOT_EQUAL', 'ELEMENT'): [], ('RGBA', 'NOT_EQUAL', 'LENGTH'): [], ('RGBA', 'NOT_EQUAL', 'AVERAGE'): [], ('RGBA', 'NOT_EQUAL', 'DOT_PRODUCT'): [], ('RGBA', 'NOT_EQUAL', 'DIRECTION'): [], ('RGBA', 'BRIGHTER', 'ELEMENT'): [], ('RGBA', 'BRIGHTER', 'LENGTH'): [], ('RGBA', 'BRIGHTER', 'AVERAGE'): [], ('RGBA', 'BRIGHTER', 'DOT_PRODUCT'): [], ('RGBA', 'BRIGHTER', 'DIRECTION'): [], ('RGBA', 'DARKER', 'ELEMENT'): [], ('RGBA', 'DARKER', 'LENGTH'): [], ('RGBA', 'DARKER', 'AVERAGE'): [], ('RGBA', 'DARKER', 'DOT_PRODUCT'): [], ('RGBA', 'DARKER', 'DIRECTION'): [], ('STRING', 'EQUAL', 'ELEMENT'): [], ('STRING', 'EQUAL', 'LENGTH'): [], ('STRING', 'EQUAL', 'AVERAGE'): [], ('STRING', 'EQUAL', 'DOT_PRODUCT'): [], ('STRING', 'EQUAL', 'DIRECTION'): [], ('STRING', 'NOT_EQUAL', 'ELEMENT'): [], ('STRING', 'NOT_EQUAL', 'LENGTH'): [], ('STRING', 'NOT_EQUAL', 'AVERAGE'): [], ('STRING', 'NOT_EQUAL', 'DOT_PRODUCT'): [], ('STRING', 'NOT_EQUAL', 'DIRECTION'): [], ('OBJECT', 'EQUAL', 'ELEMENT'): [], ('OBJECT', 'EQUAL', 'LENGTH'): [], ('OBJECT', 'EQUAL', 'AVERAGE'): [], ('OBJECT', 'EQUAL', 'DOT_PRODUCT'): [], ('OBJECT', 'EQUAL', 'DIRECTION'): [], ('OBJECT', 'NOT_EQUAL', 'ELEMENT'): [], ('OBJECT', 'NOT_EQUAL', 'LENGTH'): [], ('OBJECT', 'NOT_EQUAL', 'AVERAGE'): [], ('OBJECT', 'NOT_EQUAL', 'DOT_PRODUCT'): [], ('OBJECT', 'NOT_EQUAL', 'DIRECTION'): [], ('IMAGE', 'EQUAL', 'ELEMENT'): [], ('IMAGE', 'EQUAL', 'LENGTH'): [], ('IMAGE', 'EQUAL', 'AVERAGE'): [], ('IMAGE', 'EQUAL', 'DOT_PRODUCT'): [], ('IMAGE', 'EQUAL', 'DIRECTION'): [], ('IMAGE', 'NOT_EQUAL', 'ELEMENT'): [], ('IMAGE', 'NOT_EQUAL', 'LENGTH'): [], ('IMAGE', 'NOT_EQUAL', 'AVERAGE'): [], ('IMAGE', 'NOT_EQUAL', 'DOT_PRODUCT'): [], ('IMAGE', 'NOT_EQUAL', 'DIRECTION'): [], ('COLLECTION', 'EQUAL', 'ELEMENT'): [], ('COLLECTION', 'EQUAL', 'LENGTH'): [], ('COLLECTION', 'EQUAL', 'AVERAGE'): [], ('COLLECTION', 'EQUAL', 'DOT_PRODUCT'): [], ('COLLECTION', 'EQUAL', 'DIRECTION'): [], ('COLLECTION', 'NOT_EQUAL', 'ELEMENT'): [], ('COLLECTION', 'NOT_EQUAL', 'LENGTH'): [], ('COLLECTION', 'NOT_EQUAL', 'AVERAGE'): [], ('COLLECTION', 'NOT_EQUAL', 'DOT_PRODUCT'): [], ('COLLECTION', 'NOT_EQUAL', 'DIRECTION'): [], ('MATERIAL', 'EQUAL', 'ELEMENT'): [], ('MATERIAL', 'EQUAL', 'LENGTH'): [], ('MATERIAL', 'EQUAL', 'AVERAGE'): [], ('MATERIAL', 'EQUAL', 'DOT_PRODUCT'): [], ('MATERIAL', 'EQUAL', 'DIRECTION'): [], ('MATERIAL', 'NOT_EQUAL', 'ELEMENT'): [], ('MATERIAL', 'NOT_EQUAL', 'LENGTH'): [], ('MATERIAL', 'NOT_EQUAL', 'AVERAGE'): [], ('MATERIAL', 'NOT_EQUAL', 'DOT_PRODUCT'): [], ('MATERIAL', 'NOT_EQUAL', 'DIRECTION'): [], ('FONT', 'EQUAL', 'ELEMENT'): [], ('FONT', 'EQUAL', 'LENGTH'): [], ('FONT', 'EQUAL', 'AVERAGE'): [], ('FONT', 'EQUAL', 'DOT_PRODUCT'): [], ('FONT', 'EQUAL', 'DIRECTION'): [], ('FONT', 'NOT_EQUAL', 'ELEMENT'): [], ('FONT', 'NOT_EQUAL', 'LENGTH'): [], ('FONT', 'NOT_EQUAL', 'AVERAGE'): [], ('FONT', 'NOT_EQUAL', 'DOT_PRODUCT'): [], ('FONT', 'NOT_EQUAL', 'DIRECTION'): [], ('SOUND', 'EQUAL', 'ELEMENT'): [], ('SOUND', 'EQUAL', 'LENGTH'): [], ('SOUND', 'EQUAL', 'AVERAGE'): [], ('SOUND', 'EQUAL', 'DOT_PRODUCT'): [], ('SOUND', 'EQUAL', 'DIRECTION'): [], ('SOUND', 'NOT_EQUAL', 'ELEMENT'): [], ('SOUND', 'NOT_EQUAL', 'LENGTH'): [], ('SOUND', 'NOT_EQUAL', 'AVERAGE'): [], ('SOUND', 'NOT_EQUAL', 'DOT_PRODUCT'): [], ('SOUND', 'NOT_EQUAL', 'DIRECTION'): []}[_configuration]
         node = Node('Compare', *_node_args, named_sockets=_node_sockets, data_type=data_type, operation=operation, mode=mode)
-        return node
+        return node._out
 
     @classmethod
     def cone(cls, vertices: Integer=None, side_segments: Integer=None, fill_segments: Integer=None, radius_top: Float=None, radius_bottom: Float=None, depth: Float=None, fill_type: Literal['NONE', 'NGON', 'TRIANGLE_FAN']='NGON'):
@@ -1186,13 +1233,14 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         _configuration = ({'none': 'NONE', 'ngon': 'NGON', 'triangle_fan': 'TRIANGLE_FAN', 'n-gon': 'NGON', 'triangles': 'TRIANGLE_FAN'}.get(fill_type.lower(), fill_type),)
         _node_sockets = {('NONE',): {'Vertices': vertices, 'Side Segments': side_segments, 'Radius Top': radius_top, 'Radius Bottom': radius_bottom, 'Depth': depth}, ('NGON',): {'Vertices': vertices, 'Side Segments': side_segments, 'Fill Segments': fill_segments, 'Radius Top': radius_top, 'Radius Bottom': radius_bottom, 'Depth': depth}, ('TRIANGLE_FAN',): {'Vertices': vertices, 'Side Segments': side_segments, 'Fill Segments': fill_segments, 'Radius Top': radius_top, 'Radius Bottom': radius_bottom, 'Depth': depth}}[_configuration]
         _node_args = {('NONE',): [], ('NGON',): [], ('TRIANGLE_FAN',): []}[_configuration]
         node = Node('Cone', *_node_args, named_sockets=_node_sockets, fill_type=fill_type)
-        return node
+        return node._out
 
     @classmethod
     def construct_curves(cls, positions: Vector=None, curve_offsets: Integer=None):
@@ -1208,10 +1256,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Construct Curves', named_sockets={'Positions': positions, 'Curve Offsets': curve_offsets})
-        return node
+        return node._out
 
     @classmethod
     def convex_hull(cls, geometry: Geometry=None):
@@ -1224,10 +1273,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Convex Hull', named_sockets={'Geometry': geometry})
-        return node
+        return node._out
 
     @classmethod
     def corners_of_edge(cls, edge_index: Integer=None, weights: Float=None, sort_index: Integer=None):
@@ -1246,10 +1296,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Corners of Edge', named_sockets={'Edge Index': edge_index, 'Weights': weights, 'Sort Index': sort_index})
-        return node
+        return node._out
 
     @classmethod
     def corners_of_face(cls, face_index: Integer=None, weights: Float=None, sort_index: Integer=None):
@@ -1268,10 +1319,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Corners of Face', named_sockets={'Face Index': face_index, 'Weights': weights, 'Sort Index': sort_index})
-        return node
+        return node._out
 
     @classmethod
     def corners_of_vertex(cls, vertex_index: Integer=None, weights: Float=None, sort_index: Integer=None):
@@ -1290,10 +1342,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Corners of Vertex', named_sockets={'Vertex Index': vertex_index, 'Weights': weights, 'Sort Index': sort_index})
-        return node
+        return node._out
 
     @classmethod
     def cube(cls, size: Vector=None, vertices_x: Integer=None, vertices_y: Integer=None, vertices_z: Integer=None):
@@ -1315,10 +1368,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Cube', named_sockets={'Size': size, 'Vertices X': vertices_x, 'Vertices Y': vertices_y, 'Vertices Z': vertices_z})
-        return node
+        return node._out
 
     @classmethod
     def cube_grid_topology(cls, bounds_min: Vector=None, bounds_max: Vector=None, resolution_x: Integer=None, resolution_y: Integer=None, resolution_z: Integer=None, min_x: Integer=None, min_y: Integer=None, min_z: Integer=None):
@@ -1352,10 +1406,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Cube Grid Topology', named_sockets={'Bounds Min': bounds_min, 'Bounds Max': bounds_max, 'Resolution X': resolution_x, 'Resolution Y': resolution_y, 'Resolution Z': resolution_z, 'Min X': min_x, 'Min Y': min_y, 'Min Z': min_z})
-        return node
+        return node._out
 
     @classmethod
     def curve_circle(cls, resolution: Integer=None, point_1: Vector=None, point_2: Vector=None, point_3: Vector=None, radius: Float=None, mode: Literal['POINTS', 'RADIUS']='RADIUS'):
@@ -1383,13 +1438,14 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         _configuration = ({'points': 'POINTS', 'radius': 'RADIUS'}.get(mode.lower(), mode),)
         _node_sockets = {('POINTS',): {'Resolution': resolution, 'Point 1': point_1, 'Point 2': point_2, 'Point 3': point_3}, ('RADIUS',): {'Resolution': resolution, 'Radius': radius}}[_configuration]
         _node_args = {('POINTS',): [], ('RADIUS',): []}[_configuration]
         node = Node('Curve Circle', *_node_args, named_sockets=_node_sockets, mode=mode)
-        return node
+        return node._out
 
     @classmethod
     def curve_handle_positions(cls, relative: Boolean=None):
@@ -1402,10 +1458,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Curve Handle Positions', named_sockets={'Relative': relative})
-        return node
+        return node._out
 
     @classmethod
     def curve_length(cls, curve: Curve=None):
@@ -1418,10 +1475,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Curve Length', named_sockets={'Curve': curve})
-        return node
+        return node._out
 
     @classmethod
     def curve_line(cls, start: Vector=None, end: Vector=None, direction: Vector=None, length: Float=None, mode: Literal['POINTS', 'DIRECTION']='POINTS'):
@@ -1446,13 +1504,14 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         _configuration = ({'points': 'POINTS', 'direction': 'DIRECTION'}.get(mode.lower(), mode),)
         _node_sockets = {('POINTS',): {'Start': start, 'End': end}, ('DIRECTION',): {'Start': start, 'Direction': direction, 'Length': length}}[_configuration]
         _node_args = {('POINTS',): [], ('DIRECTION',): []}[_configuration]
         node = Node('Curve Line', *_node_args, named_sockets=_node_sockets, mode=mode)
-        return node
+        return node._out
 
     @classmethod
     def curve_of_point(cls, point_index: Integer=None):
@@ -1465,10 +1524,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Curve of Point', named_sockets={'Point Index': point_index})
-        return node
+        return node._out
 
     @utils.classproperty
     def curve_tangent(cls):
@@ -1520,10 +1580,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Curve to Mesh', named_sockets={'Curve': curve, 'Profile Curve': profile_curve, 'Scale': scale, 'Fill Caps': fill_caps, 'Miter Scale': miter_scale, 'Miter Scale Limit': miter_scale_limit})
-        return node
+        return node._out
 
     @classmethod
     def curve_to_points(cls, curve: Curve=None, count: Integer=None, length: Float=None, mode: Literal['EVALUATED', 'COUNT', 'LENGTH']='COUNT'):
@@ -1545,13 +1606,14 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         _configuration = ({'evaluated': 'EVALUATED', 'count': 'COUNT', 'length': 'LENGTH'}.get(mode.lower(), mode),)
         _node_sockets = {('EVALUATED',): {'Curve': curve}, ('COUNT',): {'Curve': curve, 'Count': count}, ('LENGTH',): {'Curve': curve, 'Length': length}}[_configuration]
         _node_args = {('EVALUATED',): [], ('COUNT',): [], ('LENGTH',): []}[_configuration]
         node = Node('Curve to Points', *_node_args, named_sockets=_node_sockets, mode=mode)
-        return node
+        return node._out
 
     @classmethod
     def curves_to_grease_pencil(cls, curves: Curve=None, selection: Boolean=None, instances_as_layers: Boolean=None):
@@ -1570,10 +1632,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Curves to Grease Pencil', named_sockets={'Curves': curves, 'Selection': selection, 'Instances as Layers': instances_as_layers})
-        return node
+        return node._out
 
     @classmethod
     def cylinder(cls, vertices: Integer=None, side_segments: Integer=None, fill_segments: Integer=None, radius: Float=None, depth: Float=None, fill_type: Literal['NONE', 'NGON', 'TRIANGLE_FAN']='NGON'):
@@ -1601,13 +1664,14 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         _configuration = ({'none': 'NONE', 'ngon': 'NGON', 'triangle_fan': 'TRIANGLE_FAN', 'n-gon': 'NGON', 'triangles': 'TRIANGLE_FAN'}.get(fill_type.lower(), fill_type),)
         _node_sockets = {('NONE',): {'Vertices': vertices, 'Side Segments': side_segments, 'Radius': radius, 'Depth': depth}, ('NGON',): {'Vertices': vertices, 'Side Segments': side_segments, 'Fill Segments': fill_segments, 'Radius': radius, 'Depth': depth}, ('TRIANGLE_FAN',): {'Vertices': vertices, 'Side Segments': side_segments, 'Fill Segments': fill_segments, 'Radius': radius, 'Depth': depth}}[_configuration]
         _node_args = {('NONE',): [], ('NGON',): [], ('TRIANGLE_FAN',): []}[_configuration]
         node = Node('Cylinder', *_node_args, named_sockets=_node_sockets, fill_type=fill_type)
-        return node
+        return node._out
 
     @classmethod
     def deactivate_voxels(cls, grid: Socket=None, selection: Boolean=None, data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR']='FLOAT'):
@@ -1626,10 +1690,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Deactivate Voxels', named_sockets={'Grid': grid, 'Selection': selection}, data_type=data_type)
-        return node
+        return node._out
 
     @classmethod
     def deform_curves_on_surface(cls, curves: Curve=None):
@@ -1642,10 +1707,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Deform Curves on Surface', named_sockets={'Curves': curves})
-        return node
+        return node._out
 
     @classmethod
     def delete_geometry(cls, geometry: Geometry=None, selection: Boolean=None, mode: Literal['ALL', 'EDGE_FACE', 'ONLY_FACE']='ALL', domain: Literal['POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE', 'LAYER']='POINT'):
@@ -1667,10 +1733,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Delete Geometry', named_sockets={'Geometry': geometry, 'Selection': selection}, mode=mode, domain=domain)
-        return node
+        return node._out
 
     @classmethod
     def dial_gizmo(cls, *value: Float, position: Vector=None, up: Vector=None, screen_space: Boolean=None, radius: Float=None, color_id: Literal['PRIMARY', 'SECONDARY', 'X', 'Y', 'Z']='PRIMARY'):
@@ -1698,10 +1765,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Dial Gizmo', *[*list(value)], named_sockets={'Position': position, 'Up': up, 'Screen Space': screen_space, 'Radius': radius}, color_id=color_id)
-        return node
+        return node._out
 
     @classmethod
     def distribute_points_in_grid(cls, grid: Float=None, density: Float=None, seed: Integer=None, spacing: Vector=None, threshold: Float=None, mode: Literal['DENSITY_RANDOM', 'DENSITY_GRID']='DENSITY_RANDOM'):
@@ -1729,13 +1797,14 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         _configuration = ({'density_random': 'DENSITY_RANDOM', 'density_grid': 'DENSITY_GRID', 'random': 'DENSITY_RANDOM', 'grid': 'DENSITY_GRID'}.get(mode.lower(), mode),)
         _node_sockets = {('DENSITY_RANDOM',): {'Grid': grid, 'Density': density, 'Seed': seed}, ('DENSITY_GRID',): {'Grid': grid, 'Spacing': spacing, 'Threshold': threshold}}[_configuration]
         _node_args = {('DENSITY_RANDOM',): [], ('DENSITY_GRID',): []}[_configuration]
         node = Node('Distribute Points in Grid', *_node_args, named_sockets=_node_sockets, mode=mode)
-        return node
+        return node._out
 
     @classmethod
     def distribute_points_in_volume(cls, volume: Volume=None, mode: Menu=None, density: Float=None, seed: Integer=None, spacing: Vector=None, threshold: Float=None):
@@ -1763,10 +1832,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Distribute Points in Volume', named_sockets={'Volume': volume, 'Mode': mode, 'Density': density, 'Seed': seed, 'Spacing': spacing, 'Threshold': threshold})
-        return node
+        return node._out
 
     @classmethod
     def distribute_points_on_faces(cls, mesh: Mesh=None, selection: Boolean=None, distance_min: Float=None, density_max: Float=None, density: Float=None, density_factor: Float=None, seed: Integer=None, distribute_method: Literal['RANDOM', 'POISSON']='RANDOM'):
@@ -1800,13 +1870,14 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         _configuration = ({'random': 'RANDOM', 'poisson': 'POISSON', 'poisson disk': 'POISSON'}.get(distribute_method.lower(), distribute_method),)
         _node_sockets = {('RANDOM',): {'Mesh': mesh, 'Selection': selection, 'Density': density, 'Seed': seed}, ('POISSON',): {'Mesh': mesh, 'Selection': selection, 'Distance Min': distance_min, 'Density Max': density_max, 'Density Factor': density_factor, 'Seed': seed}}[_configuration]
         _node_args = {('RANDOM',): [], ('POISSON',): []}[_configuration]
         node = Node('Distribute Points on Faces', *_node_args, named_sockets=_node_sockets, distribute_method=distribute_method)
-        return node
+        return node._out
 
     @classmethod
     def domain_size(cls, geometry: Geometry=None, component: Literal['MESH', 'POINTCLOUD', 'CURVE', 'INSTANCES', 'GREASEPENCIL']='MESH'):
@@ -1822,10 +1893,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Domain Size', named_sockets={'Geometry': geometry}, component=component)
-        return node
+        return node._out
 
     @classmethod
     def dual_mesh(cls, mesh: Mesh=None, keep_boundaries: Boolean=None):
@@ -1841,10 +1913,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Dual Mesh', named_sockets={'Mesh': mesh, 'Keep Boundaries': keep_boundaries})
-        return node
+        return node._out
 
     @classmethod
     def duplicate_elements(cls, geometry: Geometry=None, selection: Boolean=None, amount: Integer=None, domain: Literal['POINT', 'EDGE', 'FACE', 'SPLINE', 'LAYER', 'INSTANCE']='POINT'):
@@ -1866,10 +1939,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Duplicate Elements', named_sockets={'Geometry': geometry, 'Selection': selection, 'Amount': amount}, domain=domain)
-        return node
+        return node._out
 
     @classmethod
     def edge_angle(cls):
@@ -1877,10 +1951,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Edge Angle', named_sockets={})
-        return node
+        return node._out
 
     @utils.classproperty
     def edge_neighbors(cls):
@@ -1911,10 +1986,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Edge Paths to Curves', named_sockets={'Mesh': mesh, 'Start Vertices': start_vertices, 'Next Vertex Index': next_vertex_index})
-        return node
+        return node._out
 
     @classmethod
     def edge_paths_to_selection(cls, start_vertices: Boolean=None, next_vertex_index: Integer=None):
@@ -1930,10 +2006,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Edge Paths to Selection', named_sockets={'Start Vertices': start_vertices, 'Next Vertex Index': next_vertex_index})
-        return node
+        return node._out
 
     @classmethod
     def edge_vertices(cls):
@@ -1941,10 +2018,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Edge Vertices', named_sockets={})
-        return node
+        return node._out
 
     @classmethod
     def edges_of_corner(cls, corner_index: Integer=None):
@@ -1957,10 +2035,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Edges of Corner', named_sockets={'Corner Index': corner_index})
-        return node
+        return node._out
 
     @classmethod
     def edges_of_vertex(cls, vertex_index: Integer=None, weights: Float=None, sort_index: Integer=None):
@@ -1979,10 +2058,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Edges of Vertex', named_sockets={'Vertex Index': vertex_index, 'Weights': weights, 'Sort Index': sort_index})
-        return node
+        return node._out
 
     @classmethod
     def edges_to_face_groups(cls, boundary_edges: Boolean=None):
@@ -1995,10 +2075,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Edges to Face Groups', named_sockets={'Boundary Edges': boundary_edges})
-        return node
+        return node._out
 
     @classmethod
     def enable_output(cls, enable: Boolean=None, value: Socket=None, data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SOUND']='FLOAT'):
@@ -2017,10 +2098,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Enable Output', named_sockets={'Enable': enable, 'Value': value}, data_type=data_type)
-        return node
+        return node._out
 
     @classmethod
     def endpoint_selection(cls, start_size: Integer=None, end_size: Integer=None):
@@ -2036,10 +2118,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Endpoint Selection', named_sockets={'Start Size': start_size, 'End Size': end_size})
-        return node
+        return node._out
 
     @classmethod
     def euler_to_rotation(cls, euler: Vector=None):
@@ -2052,10 +2135,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Euler to Rotation', named_sockets={'Euler': euler})
-        return node
+        return node._out
 
     @classmethod
     def evaluate_at_index(cls, value: Socket=None, index: Integer=None, domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']='POINT', data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'QUATERNION', 'FLOAT4X4']='FLOAT'):
@@ -2077,10 +2161,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Evaluate at Index', named_sockets={'Value': value, 'Index': index}, domain=domain, data_type=data_type)
-        return node
+        return node._out
 
     @classmethod
     def evaluate_closure(cls, named_sockets=None, closure: Closure=None, define_signature: bool=False, **sockets):
@@ -2096,12 +2181,13 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         _named_sockets = {'Closure': closure}
         _named_sockets.update({name: value for name, value in (named_sockets or {}).items() if value is not None})
         node = Node('Evaluate Closure', named_sockets=_named_sockets, define_signature=define_signature, **sockets)
-        return node
+        return node._out
 
     @classmethod
     def evaluate_on_domain(cls, value: Socket=None, domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']='POINT', data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'QUATERNION', 'FLOAT4X4']='FLOAT'):
@@ -2120,10 +2206,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Evaluate on Domain', named_sockets={'Value': value}, domain=domain, data_type=data_type)
-        return node
+        return node._out
 
     @classmethod
     def extrude_mesh(cls, mesh: Mesh=None, selection: Boolean=None, offset: Vector=None, offset_scale: Float=None, individual: Boolean=None, mode: Literal['VERTICES', 'EDGES', 'FACES']='FACES'):
@@ -2151,13 +2238,14 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         _configuration = ({'vertices': 'VERTICES', 'edges': 'EDGES', 'faces': 'FACES'}.get(mode.lower(), mode),)
         _node_sockets = {('VERTICES',): {'Mesh': mesh, 'Selection': selection, 'Offset': offset, 'Offset Scale': offset_scale}, ('EDGES',): {'Mesh': mesh, 'Selection': selection, 'Offset': offset, 'Offset Scale': offset_scale}, ('FACES',): {'Mesh': mesh, 'Selection': selection, 'Offset': offset, 'Offset Scale': offset_scale, 'Individual': individual}}[_configuration]
         _node_args = {('VERTICES',): [], ('EDGES',): [], ('FACES',): []}[_configuration]
         node = Node('Extrude Mesh', *_node_args, named_sockets=_node_sockets, mode=mode)
-        return node
+        return node._out
 
     @utils.classproperty
     def face_area(cls):
@@ -2182,10 +2270,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Face Group Boundaries', named_sockets={'Face Group ID': face_group_id})
-        return node
+        return node._out
 
     @classmethod
     def face_neighbors(cls):
@@ -2193,10 +2282,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Face Neighbors', named_sockets={})
-        return node
+        return node._out
 
     @classmethod
     def face_of_corner(cls, corner_index: Integer=None):
@@ -2209,10 +2299,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Face of Corner', named_sockets={'Corner Index': corner_index})
-        return node
+        return node._out
 
     @classmethod
     def face_set(cls):
@@ -2220,10 +2311,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Face Set', named_sockets={})
-        return node
+        return node._out
 
     @classmethod
     def field_average(cls, value: Socket=None, group_id: Integer=None, data_type: Literal['FLOAT', 'FLOAT_VECTOR']='FLOAT', domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']='POINT'):
@@ -2245,10 +2337,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Field Average', named_sockets={'Value': value, 'Group ID': group_id}, data_type=data_type, domain=domain)
-        return node
+        return node._out
 
     @classmethod
     def field_min_max(cls, value: Socket=None, group_id: Integer=None, data_type: Literal['FLOAT', 'INT', 'FLOAT_VECTOR']='FLOAT', domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']='POINT'):
@@ -2270,10 +2363,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Field Min & Max', named_sockets={'Value': value, 'Group ID': group_id}, data_type=data_type, domain=domain)
-        return node
+        return node._out
 
     @classmethod
     def field_to_grid(cls, named_sockets=None, topology: Socket=None, data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR']='FLOAT', **sockets):
@@ -2289,12 +2383,13 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         _named_sockets = {'Topology': topology}
         _named_sockets.update({name: value for name, value in (named_sockets or {}).items() if value is not None})
         node = Node('Field to Grid', named_sockets=_named_sockets, data_type=data_type, **sockets)
-        return node
+        return node._out
 
     @classmethod
     def field_to_list(cls, named_sockets=None, count: Integer=None, **sockets):
@@ -2307,12 +2402,13 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         _named_sockets = {'Count': count}
         _named_sockets.update({name: value for name, value in (named_sockets or {}).items() if value is not None})
         node = Node('Field to List', named_sockets=_named_sockets, **sockets)
-        return node
+        return node._out
 
     @classmethod
     def field_variance(cls, value: Socket=None, group_id: Integer=None, data_type: Literal['FLOAT', 'FLOAT_VECTOR']='FLOAT', domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']='POINT'):
@@ -2334,10 +2430,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Field Variance', named_sockets={'Value': value, 'Group ID': group_id}, data_type=data_type, domain=domain)
-        return node
+        return node._out
 
     @classmethod
     def fill_curve(cls, curve: Curve=None, group_id: Integer=None, mode: Menu=None, fill_rule: Menu=None):
@@ -2359,10 +2456,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Fill Curve', named_sockets={'Curve': curve, 'Group ID': group_id, 'Mode': mode, 'Fill Rule': fill_rule})
-        return node
+        return node._out
 
     @classmethod
     def fillet_curve(cls, curve: Curve=None, radius: Float=None, limit_radius: Boolean=None, mode: Menu=None, count: Integer=None):
@@ -2387,10 +2485,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Fillet Curve', named_sockets={'Curve': curve, 'Radius': radius, 'Limit Radius': limit_radius, 'Mode': mode, 'Count': count})
-        return node
+        return node._out
 
     @classmethod
     def filter_list(cls, list: Socket=None, selection: Boolean=None, socket_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SOUND']='FLOAT'):
@@ -2409,10 +2508,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Filter List', named_sockets={'List': list, 'Selection': selection}, socket_type=socket_type)
-        return node
+        return node._out
 
     @classmethod
     def find_in_string(cls, string: String=None, search: String=None, mode: Menu=None):
@@ -2431,10 +2531,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Find in String', named_sockets={'String': string, 'Search': search, 'Mode': mode})
-        return node
+        return node._out
 
     @classmethod
     def flip_faces(cls, mesh: Mesh=None, selection: Boolean=None):
@@ -2450,10 +2551,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Flip Faces', named_sockets={'Mesh': mesh, 'Selection': selection})
-        return node
+        return node._out
 
     @classmethod
     def float_curve(cls, value: Float=None, factor: Float=None):
@@ -2469,10 +2571,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Float Curve', named_sockets={'Factor': factor, 'Value': value})
-        return node
+        return node._out
 
     @classmethod
     def float_to_integer(cls, float: Float=None, rounding_mode: Literal['ROUND', 'FLOOR', 'CEILING', 'TRUNCATE']='ROUND'):
@@ -2488,10 +2591,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Float to Integer', named_sockets={'Float': float}, rounding_mode=rounding_mode)
-        return node
+        return node._out
 
     @classmethod
     def font(cls, font=None):
@@ -2504,10 +2608,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Font', named_sockets={}, font=utils.get_font(font))
-        return node
+        return node._out
 
     @classmethod
     def for_each_geometry_element_input(cls, named_sockets=None, geometry: Geometry=None, selection: Boolean=None, **sockets):
@@ -2523,12 +2628,13 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         _named_sockets = {'Geometry': geometry, 'Selection': selection}
         _named_sockets.update({name: value for name, value in (named_sockets or {}).items() if value is not None})
         node = Node('For Each Geometry Element Input', named_sockets=_named_sockets, **sockets)
-        return node
+        return node._out
 
     @classmethod
     def for_each_geometry_element_output(cls, named_sockets=None, geometry: Geometry=None, domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']='POINT', **sockets):
@@ -2544,12 +2650,13 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         _named_sockets = {'Geometry': geometry}
         _named_sockets.update({name: value for name, value in (named_sockets or {}).items() if value is not None})
         node = Node('For Each Geometry Element Output', named_sockets=_named_sockets, domain=domain, **sockets)
-        return node
+        return node._out
 
     @classmethod
     def format_string(cls, named_sockets=None, format: String=None, **sockets):
@@ -2562,12 +2669,13 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         _named_sockets = {'Format': format}
         _named_sockets.update({name: value for name, value in (named_sockets or {}).items() if value is not None})
         node = Node('Format String', named_sockets=_named_sockets, **sockets)
-        return node
+        return node._out
 
     @classmethod
     def frame(cls, text: NoneType=None, shrink: bool=True, label_size: int=20):
@@ -2586,10 +2694,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Frame', named_sockets={}, text=text, shrink=shrink, label_size=label_size)
-        return node
+        return node._out
 
     @classmethod
     def gabor_texture(cls, vector: Vector=None, scale: Float=None, frequency: Float=None, anisotropy: Float=None, orientation: Socket=None, gabor_type: Literal['2D', '3D']='2D'):
@@ -2617,10 +2726,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Gabor Texture', named_sockets={'Vector': vector, 'Scale': scale, 'Frequency': frequency, 'Anisotropy': anisotropy, 'Orientation': orientation}, gabor_type=gabor_type)
-        return node
+        return node._out
 
     @classmethod
     def gamma(cls, color: Color=None, gamma: Float=None):
@@ -2636,10 +2746,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Gamma', named_sockets={'Color': color, 'Gamma': gamma})
-        return node
+        return node._out
 
     @classmethod
     def geometry_materials(cls, geometry: Geometry=None, component_type: Menu=None):
@@ -2655,10 +2766,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Geometry Materials', named_sockets={'Geometry': geometry, 'Component Type': component_type})
-        return node
+        return node._out
 
     @classmethod
     def geometry_proximity(cls, geometry: Geometry=None, group_id: Integer=None, sample_position: Vector=None, sample_group_id: Integer=None, target_element: Literal['POINTS', 'EDGES', 'FACES']='FACES'):
@@ -2683,10 +2795,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Geometry Proximity', named_sockets={'Geometry': geometry, 'Group ID': group_id, 'Sample Position': sample_position, 'Sample Group ID': sample_group_id}, target_element=target_element)
-        return node
+        return node._out
 
     @classmethod
     def geometry_to_instance(cls, *geometry: Geometry):
@@ -2699,10 +2812,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Geometry to Instance', *[*list(geometry)], named_sockets={})
-        return node
+        return node._out
 
     @classmethod
     def get_attribute_names(cls, geometry: Geometry=None, filter_data_type: Boolean=None, data_type: Menu=None, filter_domain: Boolean=None, domain: Menu=None):
@@ -2727,10 +2841,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Get Attribute Names', named_sockets={'Geometry': geometry, 'Filter Data Type': filter_data_type, 'Data Type': data_type, 'Filter Domain': filter_domain, 'Domain': domain})
-        return node
+        return node._out
 
     @classmethod
     def get_bundle_item(cls, bundle: Bundle=None, path: String=None, remove: Boolean=None, socket_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SOUND']='FLOAT'):
@@ -2752,10 +2867,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Get Bundle Item', named_sockets={'Bundle': bundle, 'Path': path, 'Remove': remove}, socket_type=socket_type)
-        return node
+        return node._out
 
     @classmethod
     def get_geometry_bundle(cls, geometry: Geometry=None, remove: Boolean=None):
@@ -2771,10 +2887,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Get Geometry Bundle', named_sockets={'Geometry': geometry, 'Remove': remove})
-        return node
+        return node._out
 
     @classmethod
     def get_geometry_component(cls, geometry: Geometry=None, type: Menu=None, remove: Boolean=None):
@@ -2793,10 +2910,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Get Geometry Component', named_sockets={'Geometry': geometry, 'Type': type, 'Remove': remove})
-        return node
+        return node._out
 
     @classmethod
     def get_grid_names(cls, volume: Volume=None):
@@ -2809,10 +2927,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Get Grid Names', named_sockets={'Volume': volume})
-        return node
+        return node._out
 
     @classmethod
     def get_list_item(cls, list: Socket=None, index: Integer=None, socket_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SOUND']='FLOAT'):
@@ -2831,10 +2950,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Get List Item', named_sockets={'List': list, 'Index': index}, socket_type=socket_type)
-        return node
+        return node._out
 
     @classmethod
     def get_named_grid(cls, volume: Volume=None, name: String=None, remove: Boolean=None, data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR']='FLOAT'):
@@ -2856,10 +2976,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Get Named Grid', named_sockets={'Volume': volume, 'Name': name, 'Remove': remove}, data_type=data_type)
-        return node
+        return node._out
 
     @classmethod
     def get_nested_bundle_paths(cls, bundle: Bundle=None, mode: Menu=None, pattern_mode: Menu=None, bundle_type: String=None, data_type: Menu=None):
@@ -2884,10 +3005,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Get Nested Bundle Paths', named_sockets={'Bundle': bundle, 'Mode': mode, 'Pattern Mode': pattern_mode, 'Bundle Type': bundle_type, 'Data Type': data_type})
-        return node
+        return node._out
 
     @classmethod
     def get_vector_component(cls, vector: Vector=None, index: Integer=None):
@@ -2903,10 +3025,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Get Vector Component', named_sockets={'Vector': vector, 'Index': index})
-        return node
+        return node._out
 
     @classmethod
     def gradient_texture(cls, vector: Vector=None, gradient_type: Literal['LINEAR', 'QUADRATIC', 'EASING', 'DIAGONAL', 'SPHERICAL', 'QUADRATIC_SPHERE', 'RADIAL']='LINEAR'):
@@ -2922,10 +3045,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Gradient Texture', named_sockets={'Vector': vector}, gradient_type=gradient_type)
-        return node
+        return node._out
 
     @classmethod
     def grease_pencil_color(cls):
@@ -2933,10 +3057,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Grease Pencil Color', named_sockets={})
-        return node
+        return node._out
 
     @classmethod
     def grease_pencil_draw_time(cls):
@@ -2944,10 +3069,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Grease Pencil Draw Time', named_sockets={})
-        return node
+        return node._out
 
     @utils.classproperty
     def grease_pencil_fill_id(cls):
@@ -2967,10 +3093,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Grease Pencil Opacity', named_sockets={})
-        return node
+        return node._out
 
     @utils.classproperty
     def grease_pencil_stroke_softness(cls):
@@ -3013,10 +3140,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Grease Pencil to Curves', named_sockets={'Grease Pencil': grease_pencil, 'Selection': selection, 'Layers as Instances': layers_as_instances})
-        return node
+        return node._out
 
     @classmethod
     def grid(cls, size_x: Float=None, size_y: Float=None, vertices_x: Integer=None, vertices_y: Integer=None):
@@ -3038,10 +3166,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Grid', named_sockets={'Size X': size_x, 'Size Y': size_y, 'Vertices X': vertices_x, 'Vertices Y': vertices_y})
-        return node
+        return node._out
 
     @classmethod
     def grid_curl(cls, grid: Vector=None):
@@ -3054,10 +3183,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Grid Curl', named_sockets={'Grid': grid})
-        return node
+        return node._out
 
     @classmethod
     def grid_dilate_erode(cls, grid: Socket=None, connectivity: Menu=None, tiles: Menu=None, steps: Integer=None, data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR']='FLOAT'):
@@ -3082,10 +3212,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Grid Dilate & Erode', named_sockets={'Grid': grid, 'Connectivity': connectivity, 'Tiles': tiles, 'Steps': steps}, data_type=data_type)
-        return node
+        return node._out
 
     @classmethod
     def grid_divergence(cls, grid: Vector=None):
@@ -3098,10 +3229,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Grid Divergence', named_sockets={'Grid': grid})
-        return node
+        return node._out
 
     @classmethod
     def grid_gradient(cls, grid: Float=None):
@@ -3114,10 +3246,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Grid Gradient', named_sockets={'Grid': grid})
-        return node
+        return node._out
 
     @classmethod
     def grid_info(cls, grid: Socket=None, data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR']='FLOAT'):
@@ -3133,10 +3266,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Grid Info', named_sockets={'Grid': grid}, data_type=data_type)
-        return node
+        return node._out
 
     @classmethod
     def grid_laplacian(cls, grid: Float=None):
@@ -3149,10 +3283,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Grid Laplacian', named_sockets={'Grid': grid})
-        return node
+        return node._out
 
     @classmethod
     def grid_mean(cls, grid: Socket=None, width: Integer=None, iterations: Integer=None, data_type: Literal['FLOAT', 'INT', 'VECTOR']='FLOAT'):
@@ -3174,10 +3309,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Grid Mean', named_sockets={'Grid': grid, 'Width': width, 'Iterations': iterations}, data_type=data_type)
-        return node
+        return node._out
 
     @classmethod
     def grid_median(cls, grid: Socket=None, width: Integer=None, iterations: Integer=None, data_type: Literal['FLOAT', 'INT', 'VECTOR']='FLOAT'):
@@ -3199,10 +3335,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Grid Median', named_sockets={'Grid': grid, 'Width': width, 'Iterations': iterations}, data_type=data_type)
-        return node
+        return node._out
 
     @classmethod
     def grid_solve_poisson(cls, grid: Float=None, max_iterations: Integer=None, error_threshold: Float=None, threshold_mode: Menu=None, boundary: Menu=None, boundary_value: Float=None, boundary_gradient: Vector=None, boundary_factor: Float=None):
@@ -3236,10 +3373,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Grid Solve Poisson', named_sockets={'Grid': grid, 'Max Iterations': max_iterations, 'Error Threshold': error_threshold, 'Threshold Mode': threshold_mode, 'Boundary': boundary, 'Boundary Value': boundary_value, 'Boundary Gradient': boundary_gradient, 'Boundary Factor': boundary_factor})
-        return node
+        return node._out
 
     @classmethod
     def grid_to_mesh(cls, grid: Float=None, threshold: Float=None, adaptivity: Float=None):
@@ -3258,10 +3396,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Grid to Mesh', named_sockets={'Grid': grid, 'Threshold': threshold, 'Adaptivity': adaptivity})
-        return node
+        return node._out
 
     @classmethod
     def grid_to_points(cls, grid: Socket=None, data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR']='FLOAT'):
@@ -3277,10 +3416,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Grid to Points', named_sockets={'Grid': grid}, data_type=data_type)
-        return node
+        return node._out
 
     @classmethod
     def grid_topology_boolean(cls, *grid_2: Socket, operation: Menu=None, grid_1: Socket=None, data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR']='FLOAT'):
@@ -3302,10 +3442,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Grid Topology Boolean', *[*list(grid_2)], named_sockets={'Operation': operation, 'Grid 1': grid_1}, data_type=data_type)
-        return node
+        return node._out
 
     @classmethod
     def group(cls, node_tree: NoneType=None):
@@ -3318,10 +3459,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Group', named_sockets={}, node_tree=node_tree)
-        return node
+        return node._out
 
     @classmethod
     def group_input(cls):
@@ -3329,10 +3471,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Group Input', named_sockets={})
-        return node
+        return node._out
 
     @classmethod
     def group_output(cls, named_sockets=None, is_active_output: bool=True, **sockets):
@@ -3345,12 +3488,13 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         _named_sockets = {}
         _named_sockets.update({name: value for name, value in (named_sockets or {}).items() if value is not None})
         node = Node('Group Output', named_sockets=_named_sockets, is_active_output=is_active_output, **sockets)
-        return node
+        return node._out
 
     @classmethod
     def handle_type_selection(cls, handle_type: Literal['FREE', 'AUTO', 'VECTOR', 'ALIGN']='AUTO', mode: set[Literal['LEFT', 'RIGHT']]={'RIGHT', 'LEFT'}):
@@ -3366,10 +3510,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Handle Type Selection', named_sockets={}, handle_type=handle_type, mode=mode)
-        return node
+        return node._out
 
     @classmethod
     def hash_value(cls, value: Socket=None, seed: Integer=None, data_type: Literal['FLOAT', 'INT', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING']='INT'):
@@ -3388,10 +3533,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Hash Value', named_sockets={'Value': value, 'Seed': seed}, data_type=data_type)
-        return node
+        return node._out
 
     @classmethod
     def ico_sphere(cls, radius: Float=None, subdivisions: Integer=None):
@@ -3407,10 +3553,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Ico Sphere', named_sockets={'Radius': radius, 'Subdivisions': subdivisions})
-        return node
+        return node._out
 
     @utils.classproperty
     def id(cls):
@@ -3435,10 +3582,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Image', named_sockets={}, image=image)
-        return node
+        return node._out
 
     @classmethod
     def image_info(cls, image: Image=None, frame: Integer=None):
@@ -3454,10 +3602,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Image Info', named_sockets={'Image': image, 'Frame': frame})
-        return node
+        return node._out
 
     @classmethod
     def image_texture(cls, image: Image=None, vector: Vector=None, frame: Integer=None, interpolation: Literal['Linear', 'Closest', 'Cubic']='Linear', extension: Literal['REPEAT', 'EXTEND', 'CLIP', 'MIRROR']='REPEAT'):
@@ -3482,10 +3631,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Image Texture', named_sockets={'Image': image, 'Vector': vector, 'Frame': frame}, interpolation=interpolation, extension=extension)
-        return node
+        return node._out
 
     @classmethod
     def implicit_conversion(cls, value: Socket=None, socket_idname: str='NodeSocketColor', data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SOUND']='RGBA'):
@@ -3504,10 +3654,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Implicit Conversion', named_sockets={'Value': value}, data_type=data_type, socket_idname=socket_idname)
-        return node
+        return node._out
 
     @classmethod
     def import_csv(cls, path: String=None, delimiter: String=None):
@@ -3523,10 +3674,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Import CSV', named_sockets={'Path': path, 'Delimiter': delimiter})
-        return node
+        return node._out
 
     @classmethod
     def import_obj(cls, path: String=None):
@@ -3539,10 +3691,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Import OBJ', named_sockets={'Path': path})
-        return node
+        return node._out
 
     @classmethod
     def import_ply(cls, path: String=None):
@@ -3555,10 +3708,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Import PLY', named_sockets={'Path': path})
-        return node
+        return node._out
 
     @classmethod
     def import_spz(cls, path: String=None):
@@ -3571,10 +3725,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Import SPZ', named_sockets={'Path': path})
-        return node
+        return node._out
 
     @classmethod
     def import_stl(cls, path: String=None):
@@ -3587,10 +3742,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Import STL', named_sockets={'Path': path})
-        return node
+        return node._out
 
     @classmethod
     def import_text(cls, path: String=None):
@@ -3603,10 +3759,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Import Text', named_sockets={'Path': path})
-        return node
+        return node._out
 
     @classmethod
     def import_vdb(cls, path: String=None):
@@ -3619,10 +3776,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Import VDB', named_sockets={'Path': path})
-        return node
+        return node._out
 
     @utils.classproperty
     def index(cls):
@@ -3650,10 +3808,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Index of Nearest', named_sockets={'Position': position, 'Group ID': group_id})
-        return node
+        return node._out
 
     @classmethod
     def index_switch(cls, *values: Socket, index: Integer=None, data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SOUND']='FLOAT', default_index: int=0):
@@ -3669,7 +3828,8 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Index Switch', *values, named_sockets={'Index': index}, data_type=data_type)
         _selector = node._bnode.inputs['Index']
@@ -3677,7 +3837,7 @@ class ND:
         _interface = node._get_interface_socket(_selector)
         if _interface is not None:
             _interface.default_value = default_index
-        return node
+        return node._out
 
     @classmethod
     def instance_bounds(cls, use_radius: Boolean=None):
@@ -3690,10 +3850,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Instance Bounds', named_sockets={'Use Radius': use_radius})
-        return node
+        return node._out
 
     @classmethod
     def instance_on_points(cls, points: Cloud=None, selection: Boolean=None, instance: Instances=None, pick_instance: Boolean=None, instance_index: Integer=None, rotation: Rotation=None, scale: Vector=None):
@@ -3724,10 +3885,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Instance on Points', named_sockets={'Points': points, 'Selection': selection, 'Instance': instance, 'Pick Instance': pick_instance, 'Instance Index': instance_index, 'Rotation': rotation, 'Scale': scale})
-        return node
+        return node._out
 
     @utils.classproperty
     def instance_reference(cls):
@@ -3797,10 +3959,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Instances to Points', named_sockets={'Instances': instances, 'Selection': selection, 'Position': position, 'Radius': radius})
-        return node
+        return node._out
 
     @classmethod
     def integer(cls, integer: int=0):
@@ -3813,10 +3976,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Integer', named_sockets={}, integer=integer)
-        return node
+        return node._out
 
     @classmethod
     def integer_math(cls, value: Integer=None, base: Integer=None, value_1: Integer=None, multiplier: Integer=None, exponent: Integer=None, addend: Integer=None, operation: Literal['ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'MULTIPLY_ADD', 'ABSOLUTE', 'NEGATE', 'POWER', 'MINIMUM', 'MAXIMUM', 'SIGN', 'DIVIDE_ROUND', 'DIVIDE_FLOOR', 'DIVIDE_CEIL', 'FLOORED_MODULO', 'MODULO', 'GCD', 'LCM']='ADD'):
@@ -3847,13 +4011,14 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         _configuration = ({'add': 'ADD', 'subtract': 'SUBTRACT', 'multiply': 'MULTIPLY', 'divide': 'DIVIDE', 'multiply_add': 'MULTIPLY_ADD', 'absolute': 'ABSOLUTE', 'negate': 'NEGATE', 'power': 'POWER', 'minimum': 'MINIMUM', 'maximum': 'MAXIMUM', 'sign': 'SIGN', 'divide_round': 'DIVIDE_ROUND', 'divide_floor': 'DIVIDE_FLOOR', 'divide_ceil': 'DIVIDE_CEIL', 'floored_modulo': 'FLOORED_MODULO', 'modulo': 'MODULO', 'gcd': 'GCD', 'lcm': 'LCM', 'multiply add': 'MULTIPLY_ADD', 'divide round': 'DIVIDE_ROUND', 'divide floor': 'DIVIDE_FLOOR', 'divide ceiling': 'DIVIDE_CEIL', 'floored modulo': 'FLOORED_MODULO', 'greatest common divisor': 'GCD', 'least common multiple': 'LCM'}.get(operation.lower(), operation),)
         _node_sockets = {('ADD',): {'Value': value, 'Value_1': value_1}, ('SUBTRACT',): {'Value': value, 'Value_1': value_1}, ('MULTIPLY',): {'Value': value, 'Value_1': value_1}, ('DIVIDE',): {'Value': value, 'Value_1': value_1}, ('MULTIPLY_ADD',): {'Value': value, 'Multiplier': multiplier, 'Addend': addend}, ('ABSOLUTE',): {'Value': value}, ('NEGATE',): {'Value': value}, ('POWER',): {'Base': base, 'Exponent': exponent}, ('MINIMUM',): {'Value': value, 'Value_1': value_1}, ('MAXIMUM',): {'Value': value, 'Value_1': value_1}, ('SIGN',): {'Value': value}, ('DIVIDE_ROUND',): {'Value': value, 'Value_1': value_1}, ('DIVIDE_FLOOR',): {'Value': value, 'Value_1': value_1}, ('DIVIDE_CEIL',): {'Value': value, 'Value_1': value_1}, ('FLOORED_MODULO',): {'Value': value, 'Value_1': value_1}, ('MODULO',): {'Value': value, 'Value_1': value_1}, ('GCD',): {'Value': value, 'Value_1': value_1}, ('LCM',): {'Value': value, 'Value_1': value_1}}[_configuration]
         _node_args = {('ADD',): [], ('SUBTRACT',): [], ('MULTIPLY',): [], ('DIVIDE',): [], ('MULTIPLY_ADD',): [], ('ABSOLUTE',): [], ('NEGATE',): [], ('POWER',): [], ('MINIMUM',): [], ('MAXIMUM',): [], ('SIGN',): [], ('DIVIDE_ROUND',): [], ('DIVIDE_FLOOR',): [], ('DIVIDE_CEIL',): [], ('FLOORED_MODULO',): [], ('MODULO',): [], ('GCD',): [], ('LCM',): []}[_configuration]
         node = Node('Integer Math', *_node_args, named_sockets=_node_sockets, operation=operation)
-        return node
+        return node._out
 
     @classmethod
     def integer_vector(cls, vector_dimensions: int=3):
@@ -3866,10 +4031,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Integer Vector', named_sockets={}, vector_dimensions=vector_dimensions)
-        return node
+        return node._out
 
     @classmethod
     def interpolate_curves(cls, guide_curves: Curve=None, guide_up: Vector=None, guide_group_id: Integer=None, points: Cloud=None, point_up: Vector=None, point_group_id: Integer=None, max_neighbors: Integer=None):
@@ -3900,10 +4066,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Interpolate Curves', named_sockets={'Guide Curves': guide_curves, 'Guide Up': guide_up, 'Guide Group ID': guide_group_id, 'Points': points, 'Point Up': point_up, 'Point Group ID': point_group_id, 'Max Neighbors': max_neighbors})
-        return node
+        return node._out
 
     @classmethod
     def invert_matrix(cls, matrix: Matrix=None):
@@ -3916,10 +4083,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Invert Matrix', named_sockets={'Matrix': matrix})
-        return node
+        return node._out
 
     @classmethod
     def invert_rotation(cls, rotation: Rotation=None):
@@ -3932,10 +4100,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Invert Rotation', named_sockets={'Rotation': rotation})
-        return node
+        return node._out
 
     @utils.classproperty
     def is_edge_smooth(cls):
@@ -3960,10 +4129,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Is Face Planar', named_sockets={'Threshold': threshold})
-        return node
+        return node._out
 
     @utils.classproperty
     def is_face_smooth(cls):
@@ -4012,10 +4182,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Join Bundle', *[*list(bundle)], named_sockets={})
-        return node
+        return node._out
 
     @classmethod
     def join_geometry(cls, *geometry: Geometry):
@@ -4028,10 +4199,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Join Geometry', *[*list(geometry)], named_sockets={})
-        return node
+        return node._out
 
     @classmethod
     def join_strings(cls, *strings: String, delimiter: String=None):
@@ -4047,10 +4219,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Join Strings', *[*list(strings)], named_sockets={'Delimiter': delimiter})
-        return node
+        return node._out
 
     @classmethod
     def linear_gizmo(cls, *value: Float, position: Vector=None, direction: Vector=None, color_id: Literal['PRIMARY', 'SECONDARY', 'X', 'Y', 'Z']='PRIMARY', draw_style: Literal['ARROW', 'CROSS', 'BOX']='ARROW'):
@@ -4075,10 +4248,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Linear Gizmo', *[*list(value)], named_sockets={'Position': position, 'Direction': direction}, color_id=color_id, draw_style=draw_style)
-        return node
+        return node._out
 
     @classmethod
     def list_length(cls, list: Socket=None, data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SOUND']='FLOAT'):
@@ -4094,10 +4268,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('List Length', named_sockets={'List': list}, data_type=data_type)
-        return node
+        return node._out
 
     @classmethod
     def magic_texture(cls, vector: Vector=None, scale: Float=None, distortion: Float=None, turbulence_depth: int=2):
@@ -4119,10 +4294,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Magic Texture', named_sockets={'Vector': vector, 'Scale': scale, 'Distortion': distortion}, turbulence_depth=turbulence_depth)
-        return node
+        return node._out
 
     @classmethod
     def map_range(cls, value: Float=None, from_min: Socket=None, from_max: Socket=None, to_min: Socket=None, to_max: Socket=None, steps: Socket=None, vector: Vector=None, clamp: bool=True, interpolation_type: Literal['LINEAR', 'STEPPED', 'SMOOTHSTEP', 'SMOOTHERSTEP']='LINEAR', data_type: Literal['FLOAT', 'FLOAT_VECTOR']='FLOAT'):
@@ -4162,13 +4338,14 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         _configuration = ({'linear': 'LINEAR', 'stepped': 'STEPPED', 'smoothstep': 'SMOOTHSTEP', 'smootherstep': 'SMOOTHERSTEP', 'stepped linear': 'STEPPED', 'smooth step': 'SMOOTHSTEP', 'smoother step': 'SMOOTHERSTEP'}.get(interpolation_type.lower(), interpolation_type), {'float': 'FLOAT', 'float_vector': 'FLOAT_VECTOR', 'vector': 'FLOAT_VECTOR'}.get(data_type.lower(), data_type))
         _node_sockets = {('LINEAR', 'FLOAT'): {'Value': value, 'From Min': from_min, 'From Max': from_max, 'To Min': to_min, 'To Max': to_max}, ('LINEAR', 'FLOAT_VECTOR'): {'Vector': vector, 'From Min': from_min, 'From Max': from_max, 'To Min': to_min, 'To Max': to_max}, ('STEPPED', 'FLOAT'): {'Value': value, 'From Min': from_min, 'From Max': from_max, 'To Min': to_min, 'To Max': to_max, 'Steps': steps}, ('STEPPED', 'FLOAT_VECTOR'): {'Vector': vector, 'From Min': from_min, 'From Max': from_max, 'To Min': to_min, 'To Max': to_max, 'Steps': steps}, ('SMOOTHSTEP', 'FLOAT'): {'Value': value, 'From Min': from_min, 'From Max': from_max, 'To Min': to_min, 'To Max': to_max}, ('SMOOTHSTEP', 'FLOAT_VECTOR'): {'Vector': vector, 'From Min': from_min, 'From Max': from_max, 'To Min': to_min, 'To Max': to_max}, ('SMOOTHERSTEP', 'FLOAT'): {'Value': value, 'From Min': from_min, 'From Max': from_max, 'To Min': to_min, 'To Max': to_max}, ('SMOOTHERSTEP', 'FLOAT_VECTOR'): {'Vector': vector, 'From Min': from_min, 'From Max': from_max, 'To Min': to_min, 'To Max': to_max}}[_configuration]
         _node_args = {('LINEAR', 'FLOAT'): [], ('LINEAR', 'FLOAT_VECTOR'): [], ('STEPPED', 'FLOAT'): [], ('STEPPED', 'FLOAT_VECTOR'): [], ('SMOOTHSTEP', 'FLOAT'): [], ('SMOOTHSTEP', 'FLOAT_VECTOR'): [], ('SMOOTHERSTEP', 'FLOAT'): [], ('SMOOTHERSTEP', 'FLOAT_VECTOR'): []}[_configuration]
         node = Node('Map Range', *_node_args, named_sockets=_node_sockets, interpolation_type=interpolation_type, data_type=data_type, clamp=clamp)
-        return node
+        return node._out
 
     @classmethod
     def match_string(cls, string: String=None, operation: Menu=None, key: String=None):
@@ -4187,10 +4364,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Match String', named_sockets={'String': string, 'Operation': operation, 'Key': key})
-        return node
+        return node._out
 
     @classmethod
     def material(cls, material: NoneType=None):
@@ -4203,10 +4381,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Material', named_sockets={}, material=material)
-        return node
+        return node._out
 
     @utils.classproperty
     def material_index(cls):
@@ -4231,10 +4410,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Material Selection', named_sockets={'Material': material})
-        return node
+        return node._out
 
     @classmethod
     def math(cls, value: Float=None, base: Float=None, degrees: Float=None, radians: Float=None, value_1: Float=None, multiplier: Float=None, exponent: Float=None, base_1: Float=None, threshold: Float=None, max: Float=None, increment: Float=None, scale: Float=None, addend: Float=None, epsilon: Float=None, distance: Float=None, min: Float=None, operation: Literal['ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'MULTIPLY_ADD', 'POWER', 'LOGARITHM', 'SQRT', 'INVERSE_SQRT', 'ABSOLUTE', 'EXPONENT', 'MINIMUM', 'MAXIMUM', 'LESS_THAN', 'GREATER_THAN', 'SIGN', 'COMPARE', 'SMOOTH_MIN', 'SMOOTH_MAX', 'ROUND', 'FLOOR', 'CEIL', 'TRUNC', 'FRACT', 'MODULO', 'FLOORED_MODULO', 'WRAP', 'SNAP', 'PINGPONG', 'SINE', 'COSINE', 'TANGENT', 'ARCSINE', 'ARCCOSINE', 'ARCTANGENT', 'ARCTAN2', 'SINH', 'COSH', 'TANH', 'RADIANS', 'DEGREES']='ADD', use_clamp: bool=False):
@@ -4298,13 +4478,14 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         _configuration = ({'add': 'ADD', 'subtract': 'SUBTRACT', 'multiply': 'MULTIPLY', 'divide': 'DIVIDE', 'multiply_add': 'MULTIPLY_ADD', 'power': 'POWER', 'logarithm': 'LOGARITHM', 'sqrt': 'SQRT', 'inverse_sqrt': 'INVERSE_SQRT', 'absolute': 'ABSOLUTE', 'exponent': 'EXPONENT', 'minimum': 'MINIMUM', 'maximum': 'MAXIMUM', 'less_than': 'LESS_THAN', 'greater_than': 'GREATER_THAN', 'sign': 'SIGN', 'compare': 'COMPARE', 'smooth_min': 'SMOOTH_MIN', 'smooth_max': 'SMOOTH_MAX', 'round': 'ROUND', 'floor': 'FLOOR', 'ceil': 'CEIL', 'trunc': 'TRUNC', 'fract': 'FRACT', 'modulo': 'MODULO', 'floored_modulo': 'FLOORED_MODULO', 'wrap': 'WRAP', 'snap': 'SNAP', 'pingpong': 'PINGPONG', 'sine': 'SINE', 'cosine': 'COSINE', 'tangent': 'TANGENT', 'arcsine': 'ARCSINE', 'arccosine': 'ARCCOSINE', 'arctangent': 'ARCTANGENT', 'arctan2': 'ARCTAN2', 'sinh': 'SINH', 'cosh': 'COSH', 'tanh': 'TANH', 'radians': 'RADIANS', 'degrees': 'DEGREES', 'multiply add': 'MULTIPLY_ADD', 'square root': 'SQRT', 'inverse square root': 'INVERSE_SQRT', 'less than': 'LESS_THAN', 'greater than': 'GREATER_THAN', 'smooth minimum': 'SMOOTH_MIN', 'smooth maximum': 'SMOOTH_MAX', 'truncate': 'TRUNC', 'fraction': 'FRACT', 'truncated modulo': 'MODULO', 'floored modulo': 'FLOORED_MODULO', 'ping-pong': 'PINGPONG', 'hyperbolic sine': 'SINH', 'hyperbolic cosine': 'COSH', 'hyperbolic tangent': 'TANH', 'to radians': 'RADIANS', 'to degrees': 'DEGREES'}.get(operation.lower(), operation),)
         _node_sockets = {('ADD',): {'Value': value, 'Value_1': value_1}, ('SUBTRACT',): {'Value': value, 'Value_1': value_1}, ('MULTIPLY',): {'Value': value, 'Value_1': value_1}, ('DIVIDE',): {'Value': value, 'Value_1': value_1}, ('MULTIPLY_ADD',): {'Value': value, 'Multiplier': multiplier, 'Addend': addend}, ('POWER',): {'Base': base, 'Exponent': exponent}, ('LOGARITHM',): {'Value': value, 'Base': base_1}, ('SQRT',): {'Value': value}, ('INVERSE_SQRT',): {'Value': value}, ('ABSOLUTE',): {'Value': value}, ('EXPONENT',): {'Value': value}, ('MINIMUM',): {'Value': value, 'Value_1': value_1}, ('MAXIMUM',): {'Value': value, 'Value_1': value_1}, ('LESS_THAN',): {'Value': value, 'Threshold': threshold}, ('GREATER_THAN',): {'Value': value, 'Threshold': threshold}, ('SIGN',): {'Value': value}, ('COMPARE',): {'Value': value, 'Value_1': value_1, 'Epsilon': epsilon}, ('SMOOTH_MIN',): {'Value': value, 'Value_1': value_1, 'Distance': distance}, ('SMOOTH_MAX',): {'Value': value, 'Value_1': value_1, 'Distance': distance}, ('ROUND',): {'Value': value}, ('FLOOR',): {'Value': value}, ('CEIL',): {'Value': value}, ('TRUNC',): {'Value': value}, ('FRACT',): {'Value': value}, ('MODULO',): {'Value': value, 'Value_1': value_1}, ('FLOORED_MODULO',): {'Value': value, 'Value_1': value_1}, ('WRAP',): {'Value': value, 'Max': max, 'Min': min}, ('SNAP',): {'Value': value, 'Increment': increment}, ('PINGPONG',): {'Value': value, 'Scale': scale}, ('SINE',): {'Value': value}, ('COSINE',): {'Value': value}, ('TANGENT',): {'Value': value}, ('ARCSINE',): {'Value': value}, ('ARCCOSINE',): {'Value': value}, ('ARCTANGENT',): {'Value': value}, ('ARCTAN2',): {'Value': value, 'Value_1': value_1}, ('SINH',): {'Value': value}, ('COSH',): {'Value': value}, ('TANH',): {'Value': value}, ('RADIANS',): {'Degrees': degrees}, ('DEGREES',): {'Radians': radians}}[_configuration]
         _node_args = {('ADD',): [], ('SUBTRACT',): [], ('MULTIPLY',): [], ('DIVIDE',): [], ('MULTIPLY_ADD',): [], ('POWER',): [], ('LOGARITHM',): [], ('SQRT',): [], ('INVERSE_SQRT',): [], ('ABSOLUTE',): [], ('EXPONENT',): [], ('MINIMUM',): [], ('MAXIMUM',): [], ('LESS_THAN',): [], ('GREATER_THAN',): [], ('SIGN',): [], ('COMPARE',): [], ('SMOOTH_MIN',): [], ('SMOOTH_MAX',): [], ('ROUND',): [], ('FLOOR',): [], ('CEIL',): [], ('TRUNC',): [], ('FRACT',): [], ('MODULO',): [], ('FLOORED_MODULO',): [], ('WRAP',): [], ('SNAP',): [], ('PINGPONG',): [], ('SINE',): [], ('COSINE',): [], ('TANGENT',): [], ('ARCSINE',): [], ('ARCCOSINE',): [], ('ARCTANGENT',): [], ('ARCTAN2',): [], ('SINH',): [], ('COSH',): [], ('TANH',): [], ('RADIANS',): [], ('DEGREES',): []}[_configuration]
         node = Node('Math', *_node_args, named_sockets=_node_sockets, operation=operation, use_clamp=use_clamp)
-        return node
+        return node._out
 
     @classmethod
     def matrix_determinant(cls, matrix: Matrix=None):
@@ -4317,10 +4498,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Matrix Determinant', named_sockets={'Matrix': matrix})
-        return node
+        return node._out
 
     @classmethod
     def matrix_svd(cls, matrix: Matrix=None):
@@ -4333,10 +4515,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Matrix SVD', named_sockets={'Matrix': matrix})
-        return node
+        return node._out
 
     @classmethod
     def menu(cls, value: str=''):
@@ -4349,10 +4532,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Menu', named_sockets={}, value=value)
-        return node
+        return node._out
 
     @classmethod
     def menu_switch(cls, named_sockets=None, menu: Menu=None, data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SOUND']='GEOMETRY', **sockets):
@@ -4368,12 +4552,13 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         _named_sockets = {'Menu': menu}
         _named_sockets.update({name: value for name, value in (named_sockets or {}).items() if value is not None})
         node = Node('Menu Switch', named_sockets=_named_sockets, data_type=data_type, **sockets)
-        return node
+        return node._out
 
     @classmethod
     def merge_by_distance(cls, geometry: Geometry=None, selection: Boolean=None, mode: Menu=None, distance: Float=None):
@@ -4395,10 +4580,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Merge by Distance', named_sockets={'Geometry': geometry, 'Selection': selection, 'Mode': mode, 'Distance': distance})
-        return node
+        return node._out
 
     @classmethod
     def merge_layers(cls, grease_pencil: GreasePencil=None, selection: Boolean=None, mode_1: Menu=None, group_id: Integer=None, mode: Literal['MERGE_BY_NAME', 'MERGE_BY_ID']='MERGE_BY_NAME'):
@@ -4423,10 +4609,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Merge Layers', named_sockets={'Grease Pencil': grease_pencil, 'Selection': selection, 'Mode_1': mode_1, 'Group ID': group_id}, mode=mode)
-        return node
+        return node._out
 
     @classmethod
     def merge_points(cls, geometry: Geometry=None, selection: Boolean=None, merge_id: Integer=None):
@@ -4445,10 +4632,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Merge Points', named_sockets={'Geometry': geometry, 'Selection': selection, 'Merge ID': merge_id})
-        return node
+        return node._out
 
     @classmethod
     def mesh_bevel(cls, mesh: Mesh=None, selection: Boolean=None, affect_kind: Menu=None, start_left_offset: Float=None, start_right_offset: Float=None, end_left_offset: Float=None, end_right_offset: Float=None, offset: Float=None, miter: Boolean=None, spread: Float=None, segments: Integer=None, shape: Float=None, profile: Geometry=None):
@@ -4497,10 +4685,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Mesh Bevel', named_sockets={'Mesh': mesh, 'Selection': selection, 'Affect Kind': affect_kind, 'Start Left Offset': start_left_offset, 'Start Right Offset': start_right_offset, 'End Left Offset': end_left_offset, 'End Right Offset': end_right_offset, 'Offset': offset, 'Miter': miter, 'Spread': spread, 'Segments': segments, 'Shape': shape, 'Profile': profile})
-        return node
+        return node._out
 
     @classmethod
     def mesh_boolean(cls, *mesh: Mesh, mesh_1: Mesh=None, self_intersection: Boolean=None, hole_tolerant: Boolean=None, operation: Literal['INTERSECT', 'UNION', 'DIFFERENCE']='DIFFERENCE', solver: Literal['EXACT', 'FLOAT', 'MANIFOLD']='FLOAT'):
@@ -4528,13 +4717,14 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         _configuration = ({'intersect': 'INTERSECT', 'union': 'UNION', 'difference': 'DIFFERENCE'}.get(operation.lower(), operation), {'exact': 'EXACT', 'float': 'FLOAT', 'manifold': 'MANIFOLD'}.get(solver.lower(), solver))
         _node_sockets = {('INTERSECT', 'EXACT'): {'Self Intersection': self_intersection, 'Hole Tolerant': hole_tolerant}, ('INTERSECT', 'FLOAT'): {}, ('INTERSECT', 'MANIFOLD'): {}, ('UNION', 'EXACT'): {'Self Intersection': self_intersection, 'Hole Tolerant': hole_tolerant}, ('UNION', 'FLOAT'): {}, ('UNION', 'MANIFOLD'): {}, ('DIFFERENCE', 'EXACT'): {'Mesh 1': mesh_1, 'Self Intersection': self_intersection, 'Hole Tolerant': hole_tolerant}, ('DIFFERENCE', 'FLOAT'): {'Mesh 1': mesh_1}, ('DIFFERENCE', 'MANIFOLD'): {'Mesh 1': mesh_1}}[_configuration]
         _node_args = {('INTERSECT', 'EXACT'): [*list(mesh)], ('INTERSECT', 'FLOAT'): [*list(mesh)], ('INTERSECT', 'MANIFOLD'): [*list(mesh)], ('UNION', 'EXACT'): [*list(mesh)], ('UNION', 'FLOAT'): [*list(mesh)], ('UNION', 'MANIFOLD'): [*list(mesh)], ('DIFFERENCE', 'EXACT'): [*list(mesh)], ('DIFFERENCE', 'FLOAT'): [*list(mesh)], ('DIFFERENCE', 'MANIFOLD'): [*list(mesh)]}[_configuration]
         node = Node('Mesh Boolean', *_node_args, named_sockets=_node_sockets, operation=operation, solver=solver)
-        return node
+        return node._out
 
     @classmethod
     def mesh_circle(cls, vertices: Integer=None, radius: Float=None, fill_type: Literal['NONE', 'NGON', 'TRIANGLE_FAN']='NONE'):
@@ -4553,10 +4743,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Mesh Circle', named_sockets={'Vertices': vertices, 'Radius': radius}, fill_type=fill_type)
-        return node
+        return node._out
 
     @classmethod
     def mesh_island(cls):
@@ -4564,10 +4755,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Mesh Island', named_sockets={})
-        return node
+        return node._out
 
     @classmethod
     def mesh_line(cls, count: Integer=None, resolution: Float=None, start_location: Vector=None, offset: Vector=None, end_location: Vector=None, mode: Literal['OFFSET', 'END_POINTS']='OFFSET', count_mode: Literal['TOTAL', 'RESOLUTION']='TOTAL'):
@@ -4598,13 +4790,14 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         _configuration = ({'offset': 'OFFSET', 'end_points': 'END_POINTS', 'end points': 'END_POINTS'}.get(mode.lower(), mode), {'total': 'TOTAL', 'resolution': 'RESOLUTION', 'count': 'TOTAL'}.get(count_mode.lower(), count_mode))
         _node_sockets = {('OFFSET', 'TOTAL'): {'Count': count, 'Start Location': start_location, 'Offset': offset}, ('OFFSET', 'RESOLUTION'): {'Count': count, 'Start Location': start_location, 'Offset': offset}, ('END_POINTS', 'TOTAL'): {'Count': count, 'Start Location': start_location, 'End Location': end_location}, ('END_POINTS', 'RESOLUTION'): {'Resolution': resolution, 'Start Location': start_location, 'End Location': end_location}}[_configuration]
         _node_args = {('OFFSET', 'TOTAL'): [], ('OFFSET', 'RESOLUTION'): [], ('END_POINTS', 'TOTAL'): [], ('END_POINTS', 'RESOLUTION'): []}[_configuration]
         node = Node('Mesh Line', *_node_args, named_sockets=_node_sockets, mode=mode, count_mode=count_mode)
-        return node
+        return node._out
 
     @classmethod
     def mesh_to_curve(cls, mesh: Mesh=None, selection: Boolean=None, mode: Literal['EDGES', 'FACES']='EDGES'):
@@ -4623,10 +4816,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Mesh to Curve', named_sockets={'Mesh': mesh, 'Selection': selection}, mode=mode)
-        return node
+        return node._out
 
     @classmethod
     def mesh_to_density_grid(cls, mesh: Mesh=None, density: Float=None, voxel_size: Float=None, gradient_width: Float=None):
@@ -4648,10 +4842,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Mesh to Density Grid', named_sockets={'Mesh': mesh, 'Density': density, 'Voxel Size': voxel_size, 'Gradient Width': gradient_width})
-        return node
+        return node._out
 
     @classmethod
     def mesh_to_points(cls, mesh: Mesh=None, selection: Boolean=None, position: Vector=None, radius: Float=None, mode: Literal['VERTICES', 'EDGES', 'FACES', 'CORNERS']='VERTICES'):
@@ -4676,10 +4871,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Mesh to Points', named_sockets={'Mesh': mesh, 'Selection': selection, 'Position': position, 'Radius': radius}, mode=mode)
-        return node
+        return node._out
 
     @classmethod
     def mesh_to_sdf_grid(cls, mesh: Mesh=None, voxel_size: Float=None, band_width: Integer=None):
@@ -4698,10 +4894,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Mesh to SDF Grid', named_sockets={'Mesh': mesh, 'Voxel Size': voxel_size, 'Band Width': band_width})
-        return node
+        return node._out
 
     @classmethod
     def mesh_to_volume(cls, mesh: Mesh=None, density: Float=None, resolution_mode: Menu=None, voxel_size: Float=None, voxel_amount: Float=None, interior_band_width: Float=None):
@@ -4729,10 +4926,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Mesh to Volume', named_sockets={'Mesh': mesh, 'Density': density, 'Resolution Mode': resolution_mode, 'Voxel Size': voxel_size, 'Voxel Amount': voxel_amount, 'Interior Band Width': interior_band_width})
-        return node
+        return node._out
 
     @classmethod
     def mix(cls, a: Socket=None, b: Socket=None, factor: Socket=None, data_type: Literal['FLOAT', 'VECTOR', 'RGBA', 'ROTATION']='FLOAT', factor_mode: Literal['UNIFORM', 'NON_UNIFORM']='UNIFORM', blend_type: Literal['MIX', 'DARKEN', 'MULTIPLY', 'BURN', 'LIGHTEN', 'SCREEN', 'DODGE', 'ADD', 'OVERLAY', 'SOFT_LIGHT', 'LINEAR_LIGHT', 'DIFFERENCE', 'EXCLUSION', 'SUBTRACT', 'DIVIDE', 'HUE', 'SATURATION', 'COLOR', 'VALUE']='MIX', clamp_factor: bool=True, clamp_result: bool=False):
@@ -4766,10 +4964,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Mix', named_sockets={'Factor': factor, 'A': a, 'B': b}, data_type=data_type, factor_mode=factor_mode, blend_type=blend_type, clamp_factor=clamp_factor, clamp_result=clamp_result)
-        return node
+        return node._out
 
     @classmethod
     def mix_legacy_(cls, color1: Color=None, color2: Color=None, factor: Float=None, blend_type: Literal['MIX', 'DARKEN', 'MULTIPLY', 'BURN', 'LIGHTEN', 'SCREEN', 'DODGE', 'ADD', 'OVERLAY', 'SOFT_LIGHT', 'LINEAR_LIGHT', 'DIFFERENCE', 'EXCLUSION', 'SUBTRACT', 'DIVIDE', 'HUE', 'SATURATION', 'COLOR', 'VALUE']='MIX', use_alpha: bool=False, use_clamp: bool=False):
@@ -4797,10 +4996,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Mix (Legacy)', named_sockets={'Factor': factor, 'Color1': color1, 'Color2': color2}, blend_type=blend_type, use_alpha=use_alpha, use_clamp=use_clamp)
-        return node
+        return node._out
 
     @classmethod
     def mouse_position(cls):
@@ -4808,10 +5008,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Mouse Position', named_sockets={})
-        return node
+        return node._out
 
     @classmethod
     def multiply_matrices(cls, matrix: Matrix=None, matrix_1: Matrix=None):
@@ -4827,10 +5028,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Multiply Matrices', named_sockets={'Matrix': matrix, 'Matrix_1': matrix_1})
-        return node
+        return node._out
 
     @classmethod
     def named_attribute(cls, name: String=None, data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'QUATERNION', 'FLOAT4X4']='FLOAT'):
@@ -4846,10 +5048,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Named Attribute', named_sockets={'Name': name}, data_type=data_type)
-        return node
+        return node._out
 
     @classmethod
     def named_layer_selection(cls, name: String=None):
@@ -4862,10 +5065,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Named Layer Selection', named_sockets={'Name': name})
-        return node
+        return node._out
 
     @classmethod
     def noise_texture(cls, vector: Vector=None, w: Float=None, scale: Float=None, detail: Float=None, roughness: Float=None, lacunarity: Float=None, offset: Float=None, gain: Float=None, distortion: Float=None, noise_dimensions: Literal['1D', '2D', '3D', '4D']='3D', noise_type: Literal['MULTIFRACTAL', 'RIDGED_MULTIFRACTAL', 'HYBRID_MULTIFRACTAL', 'FBM', 'HETERO_TERRAIN']='FBM', normalize: bool=True):
@@ -4911,13 +5115,14 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         _configuration = ({'1d': '1D', '2d': '2D', '3d': '3D', '4d': '4D'}.get(noise_dimensions.lower(), noise_dimensions), {'multifractal': 'MULTIFRACTAL', 'ridged_multifractal': 'RIDGED_MULTIFRACTAL', 'hybrid_multifractal': 'HYBRID_MULTIFRACTAL', 'fbm': 'FBM', 'hetero_terrain': 'HETERO_TERRAIN', 'ridged multifractal': 'RIDGED_MULTIFRACTAL', 'hybrid multifractal': 'HYBRID_MULTIFRACTAL', 'hetero terrain': 'HETERO_TERRAIN'}.get(noise_type.lower(), noise_type))
         _node_sockets = {('1D', 'MULTIFRACTAL'): {'W': w, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Distortion': distortion}, ('1D', 'RIDGED_MULTIFRACTAL'): {'W': w, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Offset': offset, 'Gain': gain, 'Distortion': distortion}, ('1D', 'HYBRID_MULTIFRACTAL'): {'W': w, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Offset': offset, 'Gain': gain, 'Distortion': distortion}, ('1D', 'FBM'): {'W': w, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Distortion': distortion}, ('1D', 'HETERO_TERRAIN'): {'W': w, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Offset': offset, 'Distortion': distortion}, ('2D', 'MULTIFRACTAL'): {'Vector': vector, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Distortion': distortion}, ('2D', 'RIDGED_MULTIFRACTAL'): {'Vector': vector, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Offset': offset, 'Gain': gain, 'Distortion': distortion}, ('2D', 'HYBRID_MULTIFRACTAL'): {'Vector': vector, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Offset': offset, 'Gain': gain, 'Distortion': distortion}, ('2D', 'FBM'): {'Vector': vector, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Distortion': distortion}, ('2D', 'HETERO_TERRAIN'): {'Vector': vector, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Offset': offset, 'Distortion': distortion}, ('3D', 'MULTIFRACTAL'): {'Vector': vector, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Distortion': distortion}, ('3D', 'RIDGED_MULTIFRACTAL'): {'Vector': vector, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Offset': offset, 'Gain': gain, 'Distortion': distortion}, ('3D', 'HYBRID_MULTIFRACTAL'): {'Vector': vector, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Offset': offset, 'Gain': gain, 'Distortion': distortion}, ('3D', 'FBM'): {'Vector': vector, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Distortion': distortion}, ('3D', 'HETERO_TERRAIN'): {'Vector': vector, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Offset': offset, 'Distortion': distortion}, ('4D', 'MULTIFRACTAL'): {'Vector': vector, 'W': w, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Distortion': distortion}, ('4D', 'RIDGED_MULTIFRACTAL'): {'Vector': vector, 'W': w, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Offset': offset, 'Gain': gain, 'Distortion': distortion}, ('4D', 'HYBRID_MULTIFRACTAL'): {'Vector': vector, 'W': w, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Offset': offset, 'Gain': gain, 'Distortion': distortion}, ('4D', 'FBM'): {'Vector': vector, 'W': w, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Distortion': distortion}, ('4D', 'HETERO_TERRAIN'): {'Vector': vector, 'W': w, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Offset': offset, 'Distortion': distortion}}[_configuration]
         _node_args = {('1D', 'MULTIFRACTAL'): [], ('1D', 'RIDGED_MULTIFRACTAL'): [], ('1D', 'HYBRID_MULTIFRACTAL'): [], ('1D', 'FBM'): [], ('1D', 'HETERO_TERRAIN'): [], ('2D', 'MULTIFRACTAL'): [], ('2D', 'RIDGED_MULTIFRACTAL'): [], ('2D', 'HYBRID_MULTIFRACTAL'): [], ('2D', 'FBM'): [], ('2D', 'HETERO_TERRAIN'): [], ('3D', 'MULTIFRACTAL'): [], ('3D', 'RIDGED_MULTIFRACTAL'): [], ('3D', 'HYBRID_MULTIFRACTAL'): [], ('3D', 'FBM'): [], ('3D', 'HETERO_TERRAIN'): [], ('4D', 'MULTIFRACTAL'): [], ('4D', 'RIDGED_MULTIFRACTAL'): [], ('4D', 'HYBRID_MULTIFRACTAL'): [], ('4D', 'FBM'): [], ('4D', 'HETERO_TERRAIN'): []}[_configuration]
         node = Node('Noise Texture', *_node_args, named_sockets=_node_sockets, noise_dimensions=noise_dimensions, noise_type=noise_type, normalize=normalize)
-        return node
+        return node._out
 
     @classmethod
     def normal(cls):
@@ -4925,10 +5130,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Normal', named_sockets={})
-        return node
+        return node._out
 
     @utils.classproperty
     def nurbs_order(cls):
@@ -4965,10 +5171,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Object', named_sockets={}, object=object)
-        return node
+        return node._out
 
     @classmethod
     def object_info(cls, object: Object=None, as_instance: Boolean=None, transform_space: Literal['ORIGINAL', 'RELATIVE']='ORIGINAL'):
@@ -4987,10 +5194,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Object Info', named_sockets={'Object': object, 'As Instance': as_instance}, transform_space=transform_space)
-        return node
+        return node._out
 
     @classmethod
     def offset_corner_in_face(cls, corner_index: Integer=None, offset: Integer=None):
@@ -5006,10 +5214,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Offset Corner in Face', named_sockets={'Corner Index': corner_index, 'Offset': offset})
-        return node
+        return node._out
 
     @classmethod
     def offset_point_in_curve(cls, point_index: Integer=None, offset: Integer=None):
@@ -5025,10 +5234,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Offset Point in Curve', named_sockets={'Point Index': point_index, 'Offset': offset})
-        return node
+        return node._out
 
     @classmethod
     def pack_uv_islands(cls, uv: Vector=None, selection: Boolean=None, margin: Float=None, rotate: Boolean=None, method: Menu=None, bottom_left: Vector=None, top_right: Vector=None):
@@ -5059,10 +5269,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Pack UV Islands', named_sockets={'UV': uv, 'Selection': selection, 'Margin': margin, 'Rotate': rotate, 'Method': method, 'Bottom Left': bottom_left, 'Top Right': top_right})
-        return node
+        return node._out
 
     @classmethod
     def points(cls, count: Integer=None, position: Vector=None, radius: Float=None):
@@ -5081,10 +5292,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Points', named_sockets={'Count': count, 'Position': position, 'Radius': radius})
-        return node
+        return node._out
 
     @classmethod
     def points_of_curve(cls, curve_index: Integer=None, weights: Float=None, sort_index: Integer=None):
@@ -5103,10 +5315,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Points of Curve', named_sockets={'Curve Index': curve_index, 'Weights': weights, 'Sort Index': sort_index})
-        return node
+        return node._out
 
     @classmethod
     def points_to_curves(cls, points: Cloud=None, curve_group_id: Integer=None, weight: Float=None):
@@ -5125,10 +5338,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Points to Curves', named_sockets={'Points': points, 'Curve Group ID': curve_group_id, 'Weight': weight})
-        return node
+        return node._out
 
     @classmethod
     def points_to_sdf_grid(cls, points: Cloud=None, radius: Float=None, voxel_size: Float=None):
@@ -5147,10 +5361,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Points to SDF Grid', named_sockets={'Points': points, 'Radius': radius, 'Voxel Size': voxel_size})
-        return node
+        return node._out
 
     @classmethod
     def points_to_vertices(cls, points: Cloud=None, selection: Boolean=None):
@@ -5166,10 +5381,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Points to Vertices', named_sockets={'Points': points, 'Selection': selection})
-        return node
+        return node._out
 
     @classmethod
     def points_to_volume(cls, points: Cloud=None, density: Float=None, resolution_mode: Menu=None, voxel_size: Float=None, voxel_amount: Float=None, radius: Float=None):
@@ -5197,10 +5413,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Points to Volume', named_sockets={'Points': points, 'Density': density, 'Resolution Mode': resolution_mode, 'Voxel Size': voxel_size, 'Voxel Amount': voxel_amount, 'Radius': radius})
-        return node
+        return node._out
 
     @utils.classproperty
     def position(cls):
@@ -5228,10 +5445,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Project Point', named_sockets={'Vector': vector, 'Transform': transform})
-        return node
+        return node._out
 
     @classmethod
     def prune_grid(cls, grid: Socket=None, mode: Menu=None, threshold: Socket=None, data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR']='FLOAT'):
@@ -5253,13 +5471,14 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         _configuration = ({'float': 'FLOAT', 'int': 'INT', 'boolean': 'BOOLEAN', 'vector': 'VECTOR', 'rgba': 'RGBA', 'rotation': 'ROTATION', 'matrix': 'MATRIX', 'string': 'STRING', 'menu': 'MENU', 'shader': 'SHADER', 'object': 'OBJECT', 'image': 'IMAGE', 'geometry': 'GEOMETRY', 'collection': 'COLLECTION', 'texture': 'TEXTURE', 'material': 'MATERIAL', 'bundle': 'BUNDLE', 'closure': 'CLOSURE', 'font': 'FONT', 'scene': 'SCENE', 'text': 'TEXT', 'mask': 'MASK', 'sound': 'SOUND', 'int_vector': 'INT_VECTOR', 'integer': 'INT', 'color': 'RGBA', 'integer vector': 'INT_VECTOR'}.get(data_type.lower(), data_type),)
         _node_sockets = {('FLOAT',): {'Grid': grid, 'Mode': mode, 'Threshold': threshold}, ('INT',): {'Grid': grid, 'Mode': mode, 'Threshold': threshold}, ('BOOLEAN',): {'Grid': grid, 'Mode': mode}, ('VECTOR',): {'Grid': grid, 'Mode': mode, 'Threshold': threshold}}[_configuration]
         _node_args = {('FLOAT',): [], ('INT',): [], ('BOOLEAN',): [], ('VECTOR',): []}[_configuration]
         node = Node('Prune Grid', *_node_args, named_sockets=_node_sockets, data_type=data_type)
-        return node
+        return node._out
 
     @classmethod
     def quadratic_bezier(cls, resolution: Integer=None, start: Vector=None, middle: Vector=None, end: Vector=None):
@@ -5281,10 +5500,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Quadratic Bézier', named_sockets={'Resolution': resolution, 'Start': start, 'Middle': middle, 'End': end})
-        return node
+        return node._out
 
     @classmethod
     def quadrilateral(cls, width: Float=None, height: Float=None, bottom_width: Float=None, top_width: Float=None, offset: Float=None, bottom_height: Float=None, top_height: Float=None, point_1: Vector=None, point_2: Vector=None, point_3: Vector=None, point_4: Vector=None, mode: Literal['RECTANGLE', 'PARALLELOGRAM', 'TRAPEZOID', 'KITE', 'POINTS']='RECTANGLE'):
@@ -5330,13 +5550,14 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         _configuration = ({'rectangle': 'RECTANGLE', 'parallelogram': 'PARALLELOGRAM', 'trapezoid': 'TRAPEZOID', 'kite': 'KITE', 'points': 'POINTS'}.get(mode.lower(), mode),)
         _node_sockets = {('RECTANGLE',): {'Width': width, 'Height': height}, ('PARALLELOGRAM',): {'Width': width, 'Height': height, 'Offset': offset}, ('TRAPEZOID',): {'Height': height, 'Bottom Width': bottom_width, 'Top Width': top_width, 'Offset': offset}, ('KITE',): {'Width': width, 'Bottom Height': bottom_height, 'Top Height': top_height}, ('POINTS',): {'Point 1': point_1, 'Point 2': point_2, 'Point 3': point_3, 'Point 4': point_4}}[_configuration]
         _node_args = {('RECTANGLE',): [], ('PARALLELOGRAM',): [], ('TRAPEZOID',): [], ('KITE',): [], ('POINTS',): []}[_configuration]
         node = Node('Quadrilateral', *_node_args, named_sockets=_node_sockets, mode=mode)
-        return node
+        return node._out
 
     @classmethod
     def quaternion_to_rotation(cls, w: Float=None, x: Float=None, y: Float=None, z: Float=None):
@@ -5358,10 +5579,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Quaternion to Rotation', named_sockets={'W': w, 'X': x, 'Y': y, 'Z': z})
-        return node
+        return node._out
 
     @classmethod
     def radial_tiling(cls, vector: Vector=None, sides: Float=None, roundness: Float=None, normalize: bool=False):
@@ -5383,10 +5605,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Radial Tiling', named_sockets={'Vector': vector, 'Sides': sides, 'Roundness': roundness}, normalize=normalize)
-        return node
+        return node._out
 
     @utils.classproperty
     def radius(cls):
@@ -5426,13 +5649,14 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         _configuration = ({'float': 'FLOAT', 'int': 'INT', 'boolean': 'BOOLEAN', 'float_vector': 'FLOAT_VECTOR', 'float_color': 'FLOAT_COLOR', 'quaternion': 'QUATERNION', 'float4x4': 'FLOAT4X4', 'string': 'STRING', 'int8': 'INT8', 'int16_2d': 'INT16_2D', 'int32_2d': 'INT32_2D', 'float2': 'FLOAT2', 'float4': 'FLOAT4', 'byte_color': 'BYTE_COLOR', 'integer': 'INT', 'vector': 'FLOAT_VECTOR', 'color': 'FLOAT_COLOR', '4x4 matrix': 'FLOAT4X4', '8-bit integer': 'INT8', '2d 16-bit integer vector': 'INT16_2D', '2d integer vector': 'INT32_2D', '2d vector': 'FLOAT2', '4d vector': 'FLOAT4', 'byte color': 'BYTE_COLOR'}.get(data_type.lower(), data_type),)
         _node_sockets = {('FLOAT',): {'Min': min, 'Max': max, 'ID': id, 'Seed': seed}, ('INT',): {'Min': min, 'Max': max, 'ID': id, 'Seed': seed}, ('BOOLEAN',): {'Probability': probability, 'ID': id, 'Seed': seed}, ('FLOAT_VECTOR',): {'Min': min, 'Max': max, 'ID': id, 'Seed': seed}}[_configuration]
         _node_args = {('FLOAT',): [], ('INT',): [], ('BOOLEAN',): [], ('FLOAT_VECTOR',): []}[_configuration]
         node = Node('Random Value', *_node_args, named_sockets=_node_sockets, data_type=data_type)
-        return node
+        return node._out
 
     @classmethod
     def rasterize_points(cls, named_sockets=None, points: Cloud=None, grid_transform_mode: Menu=None, voxel_size: Float=None, matrix: Matrix=None, kernel_type: Menu=None, position: Vector=None, **sockets):
@@ -5460,12 +5684,13 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         _named_sockets = {'Points': points, 'Grid Transform Mode': grid_transform_mode, 'Voxel Size': voxel_size, 'Matrix': matrix, 'Kernel Type': kernel_type, 'Position': position}
         _named_sockets.update({name: value for name, value in (named_sockets or {}).items() if value is not None})
         node = Node('Rasterize Points', named_sockets=_named_sockets, **sockets)
-        return node
+        return node._out
 
     @classmethod
     def raycast(cls, target_geometry: Geometry=None, attribute: Socket=None, interpolation: Menu=None, source_position: Vector=None, ray_direction: Vector=None, ray_length: Float=None, data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'QUATERNION', 'FLOAT4X4']='FLOAT'):
@@ -5496,10 +5721,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Raycast', named_sockets={'Target Geometry': target_geometry, 'Attribute': attribute, 'Interpolation': interpolation, 'Source Position': source_position, 'Ray Direction': ray_direction, 'Ray Length': ray_length}, data_type=data_type)
-        return node
+        return node._out
 
     @classmethod
     def realize_instances(cls, geometry: Geometry=None, selection: Boolean=None, realize_all: Boolean=None, depth: Integer=None, preserve_normals: Boolean=None, realize_to_point_domain: bool=False):
@@ -5527,10 +5753,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Realize Instances', named_sockets={'Geometry': geometry, 'Selection': selection, 'Realize All': realize_all, 'Depth': depth, 'Preserve Normals': preserve_normals}, realize_to_point_domain=realize_to_point_domain)
-        return node
+        return node._out
 
     @classmethod
     def remove_named_attribute(cls, geometry: Geometry=None, pattern_mode: Menu=None, name: String=None):
@@ -5549,10 +5776,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Remove Named Attribute', named_sockets={'Geometry': geometry, 'Pattern Mode': pattern_mode, 'Name': name})
-        return node
+        return node._out
 
     @classmethod
     def rename_attribute(cls, geometry: Geometry=None, mode: Menu=None, old: String=None, new: String=None, overwrite: Boolean=None):
@@ -5577,10 +5805,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Rename Attribute', named_sockets={'Geometry': geometry, 'Mode': mode, 'Old': old, 'New': new, 'Overwrite': overwrite})
-        return node
+        return node._out
 
     @classmethod
     def repeat_input(cls, named_sockets=None, iterations: Integer=None, **sockets):
@@ -5593,12 +5822,13 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         _named_sockets = {'Iterations': iterations}
         _named_sockets.update({name: value for name, value in (named_sockets or {}).items() if value is not None})
         node = Node('Repeat Input', named_sockets=_named_sockets, **sockets)
-        return node
+        return node._out
 
     @classmethod
     def repeat_output(cls, named_sockets=None, geometry: Geometry=None, **sockets):
@@ -5611,12 +5841,13 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         _named_sockets = {'Geometry': geometry}
         _named_sockets.update({name: value for name, value in (named_sockets or {}).items() if value is not None})
         node = Node('Repeat Output', named_sockets=_named_sockets, **sockets)
-        return node
+        return node._out
 
     @classmethod
     def replace_material(cls, geometry: Geometry=None, old: Material=None, new: Material=None):
@@ -5635,10 +5866,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Replace Material', named_sockets={'Geometry': geometry, 'Old': old, 'New': new})
-        return node
+        return node._out
 
     @classmethod
     def replace_string(cls, string: String=None, find: String=None, replace: String=None):
@@ -5657,10 +5889,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Replace String', named_sockets={'String': string, 'Find': find, 'Replace': replace})
-        return node
+        return node._out
 
     @classmethod
     def reroute(cls, input: Color=None, socket_idname: str='NodeSocketColor'):
@@ -5676,10 +5909,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Reroute', named_sockets={'Input': input}, socket_idname=socket_idname)
-        return node
+        return node._out
 
     @classmethod
     def resample_curve(cls, curve: Curve=None, selection: Boolean=None, mode: Menu=None, count: Integer=None, length: Float=None, keep_last_segment: bool=True):
@@ -5707,10 +5941,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Resample Curve', named_sockets={'Curve': curve, 'Selection': selection, 'Mode': mode, 'Count': count, 'Length': length}, keep_last_segment=keep_last_segment)
-        return node
+        return node._out
 
     @classmethod
     def reverse_curve(cls, curve: Curve=None, selection: Boolean=None):
@@ -5726,10 +5961,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Reverse Curve', named_sockets={'Curve': curve, 'Selection': selection})
-        return node
+        return node._out
 
     @classmethod
     def reverse_string(cls, string: String=None):
@@ -5742,10 +5978,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Reverse String', named_sockets={'String': string})
-        return node
+        return node._out
 
     @classmethod
     def rgb_curves(cls, color: Color=None, factor: Float=None):
@@ -5761,10 +5998,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('RGB Curves', named_sockets={'Factor': factor, 'Color': color})
-        return node
+        return node._out
 
     @classmethod
     def rotate_instances(cls, instances: Instances=None, selection: Boolean=None, rotation: Rotation=None, pivot_point: Vector=None, local_space: Boolean=None):
@@ -5789,10 +6027,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Rotate Instances', named_sockets={'Instances': instances, 'Selection': selection, 'Rotation': rotation, 'Pivot Point': pivot_point, 'Local Space': local_space})
-        return node
+        return node._out
 
     @classmethod
     def rotate_rotation(cls, rotation: Rotation=None, rotate_by: Rotation=None, rotation_space: Literal['GLOBAL', 'LOCAL']='GLOBAL'):
@@ -5811,10 +6050,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Rotate Rotation', named_sockets={'Rotation': rotation, 'Rotate By': rotate_by}, rotation_space=rotation_space)
-        return node
+        return node._out
 
     @classmethod
     def rotate_vector(cls, vector: Vector=None, rotation: Rotation=None):
@@ -5830,10 +6070,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Rotate Vector', named_sockets={'Vector': vector, 'Rotation': rotation})
-        return node
+        return node._out
 
     @utils.classproperty
     def rotation(cls):
@@ -5858,10 +6099,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Rotation to Axis Angle', named_sockets={'Rotation': rotation})
-        return node
+        return node._out
 
     @classmethod
     def rotation_to_euler(cls, rotation: Rotation=None):
@@ -5874,10 +6116,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Rotation to Euler', named_sockets={'Rotation': rotation})
-        return node
+        return node._out
 
     @classmethod
     def rotation_to_quaternion(cls, rotation: Rotation=None):
@@ -5890,10 +6133,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Rotation to Quaternion', named_sockets={'Rotation': rotation})
-        return node
+        return node._out
 
     @classmethod
     def sample_curve(cls, curves: Curve=None, value: Socket=None, length: Float=None, curve_index: Integer=None, factor: Float=None, mode: Literal['FACTOR', 'LENGTH']='FACTOR', use_all_curves: bool=False, data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'QUATERNION', 'FLOAT4X4']='FLOAT'):
@@ -5927,13 +6171,14 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
-        _configuration = ({'factor': 'FACTOR', 'length': 'LENGTH'}.get(mode.lower(), mode), {'float': 'FLOAT', 'int': 'INT', 'boolean': 'BOOLEAN', 'float_vector': 'FLOAT_VECTOR', 'float_color': 'FLOAT_COLOR', 'quaternion': 'QUATERNION', 'float4x4': 'FLOAT4X4', 'string': 'STRING', 'int8': 'INT8', 'int16_2d': 'INT16_2D', 'int32_2d': 'INT32_2D', 'float2': 'FLOAT2', 'float4': 'FLOAT4', 'byte_color': 'BYTE_COLOR', 'integer': 'INT', 'vector': 'FLOAT_VECTOR', 'color': 'FLOAT_COLOR', '4x4 matrix': 'FLOAT4X4', '8-bit integer': 'INT8', '2d 16-bit integer vector': 'INT16_2D', '2d integer vector': 'INT32_2D', '2d vector': 'FLOAT2', '4d vector': 'FLOAT4', 'byte color': 'BYTE_COLOR'}.get(data_type.lower(), data_type), use_all_curves)
-        _node_sockets = {('FACTOR', 'FLOAT', False): {'Curves': curves, 'Value': value, 'Factor': factor, 'Curve Index': curve_index}, ('FACTOR', 'FLOAT', True): {'Curves': curves, 'Value': value, 'Factor': factor}, ('FACTOR', 'INT', False): {'Curves': curves, 'Value': value, 'Factor': factor, 'Curve Index': curve_index}, ('FACTOR', 'INT', True): {'Curves': curves, 'Value': value, 'Factor': factor}, ('FACTOR', 'BOOLEAN', False): {'Curves': curves, 'Value': value, 'Factor': factor, 'Curve Index': curve_index}, ('FACTOR', 'BOOLEAN', True): {'Curves': curves, 'Value': value, 'Factor': factor}, ('FACTOR', 'FLOAT_VECTOR', False): {'Curves': curves, 'Value': value, 'Factor': factor, 'Curve Index': curve_index}, ('FACTOR', 'FLOAT_VECTOR', True): {'Curves': curves, 'Value': value, 'Factor': factor}, ('FACTOR', 'FLOAT_COLOR', False): {'Curves': curves, 'Value': value, 'Factor': factor, 'Curve Index': curve_index}, ('FACTOR', 'FLOAT_COLOR', True): {'Curves': curves, 'Value': value, 'Factor': factor}, ('FACTOR', 'QUATERNION', False): {'Curves': curves, 'Value': value, 'Factor': factor, 'Curve Index': curve_index}, ('FACTOR', 'QUATERNION', True): {'Curves': curves, 'Value': value, 'Factor': factor}, ('FACTOR', 'FLOAT4X4', False): {'Curves': curves, 'Value': value, 'Factor': factor, 'Curve Index': curve_index}, ('FACTOR', 'FLOAT4X4', True): {'Curves': curves, 'Value': value, 'Factor': factor}, ('LENGTH', 'FLOAT', False): {'Curves': curves, 'Value': value, 'Length': length, 'Curve Index': curve_index}, ('LENGTH', 'FLOAT', True): {'Curves': curves, 'Value': value, 'Length': length}, ('LENGTH', 'INT', False): {'Curves': curves, 'Value': value, 'Length': length, 'Curve Index': curve_index}, ('LENGTH', 'INT', True): {'Curves': curves, 'Value': value, 'Length': length}, ('LENGTH', 'BOOLEAN', False): {'Curves': curves, 'Value': value, 'Length': length, 'Curve Index': curve_index}, ('LENGTH', 'BOOLEAN', True): {'Curves': curves, 'Value': value, 'Length': length}, ('LENGTH', 'FLOAT_VECTOR', False): {'Curves': curves, 'Value': value, 'Length': length, 'Curve Index': curve_index}, ('LENGTH', 'FLOAT_VECTOR', True): {'Curves': curves, 'Value': value, 'Length': length}, ('LENGTH', 'FLOAT_COLOR', False): {'Curves': curves, 'Value': value, 'Length': length, 'Curve Index': curve_index}, ('LENGTH', 'FLOAT_COLOR', True): {'Curves': curves, 'Value': value, 'Length': length}, ('LENGTH', 'QUATERNION', False): {'Curves': curves, 'Value': value, 'Length': length, 'Curve Index': curve_index}, ('LENGTH', 'QUATERNION', True): {'Curves': curves, 'Value': value, 'Length': length}, ('LENGTH', 'FLOAT4X4', False): {'Curves': curves, 'Value': value, 'Length': length, 'Curve Index': curve_index}, ('LENGTH', 'FLOAT4X4', True): {'Curves': curves, 'Value': value, 'Length': length}}[_configuration]
-        _node_args = {('FACTOR', 'FLOAT', False): [], ('FACTOR', 'FLOAT', True): [], ('FACTOR', 'INT', False): [], ('FACTOR', 'INT', True): [], ('FACTOR', 'BOOLEAN', False): [], ('FACTOR', 'BOOLEAN', True): [], ('FACTOR', 'FLOAT_VECTOR', False): [], ('FACTOR', 'FLOAT_VECTOR', True): [], ('FACTOR', 'FLOAT_COLOR', False): [], ('FACTOR', 'FLOAT_COLOR', True): [], ('FACTOR', 'QUATERNION', False): [], ('FACTOR', 'QUATERNION', True): [], ('FACTOR', 'FLOAT4X4', False): [], ('FACTOR', 'FLOAT4X4', True): [], ('LENGTH', 'FLOAT', False): [], ('LENGTH', 'FLOAT', True): [], ('LENGTH', 'INT', False): [], ('LENGTH', 'INT', True): [], ('LENGTH', 'BOOLEAN', False): [], ('LENGTH', 'BOOLEAN', True): [], ('LENGTH', 'FLOAT_VECTOR', False): [], ('LENGTH', 'FLOAT_VECTOR', True): [], ('LENGTH', 'FLOAT_COLOR', False): [], ('LENGTH', 'FLOAT_COLOR', True): [], ('LENGTH', 'QUATERNION', False): [], ('LENGTH', 'QUATERNION', True): [], ('LENGTH', 'FLOAT4X4', False): [], ('LENGTH', 'FLOAT4X4', True): []}[_configuration]
+        _configuration = ({'factor': 'FACTOR', 'length': 'LENGTH'}.get(mode.lower(), mode), {'float': 'FLOAT', 'int': 'INT', 'boolean': 'BOOLEAN', 'float_vector': 'FLOAT_VECTOR', 'float_color': 'FLOAT_COLOR', 'quaternion': 'QUATERNION', 'float4x4': 'FLOAT4X4', 'string': 'STRING', 'int8': 'INT8', 'int16_2d': 'INT16_2D', 'int32_2d': 'INT32_2D', 'float2': 'FLOAT2', 'float4': 'FLOAT4', 'byte_color': 'BYTE_COLOR', 'integer': 'INT', 'vector': 'FLOAT_VECTOR', 'color': 'FLOAT_COLOR', '4x4 matrix': 'FLOAT4X4', '8-bit integer': 'INT8', '2d 16-bit integer vector': 'INT16_2D', '2d integer vector': 'INT32_2D', '2d vector': 'FLOAT2', '4d vector': 'FLOAT4', 'byte color': 'BYTE_COLOR'}.get(data_type.lower(), data_type))
+        _node_sockets = {('FACTOR', 'FLOAT'): {'Curves': curves, 'Value': value, 'Factor': factor, 'Curve Index': curve_index}, ('FACTOR', 'INT'): {'Curves': curves, 'Value': value, 'Factor': factor, 'Curve Index': curve_index}, ('FACTOR', 'BOOLEAN'): {'Curves': curves, 'Value': value, 'Factor': factor, 'Curve Index': curve_index}, ('FACTOR', 'FLOAT_VECTOR'): {'Curves': curves, 'Value': value, 'Factor': factor, 'Curve Index': curve_index}, ('FACTOR', 'FLOAT_COLOR'): {'Curves': curves, 'Value': value, 'Factor': factor, 'Curve Index': curve_index}, ('FACTOR', 'QUATERNION'): {'Curves': curves, 'Value': value, 'Factor': factor, 'Curve Index': curve_index}, ('FACTOR', 'FLOAT4X4'): {'Curves': curves, 'Value': value, 'Factor': factor, 'Curve Index': curve_index}, ('LENGTH', 'FLOAT'): {'Curves': curves, 'Value': value, 'Length': length, 'Curve Index': curve_index}, ('LENGTH', 'INT'): {'Curves': curves, 'Value': value, 'Length': length, 'Curve Index': curve_index}, ('LENGTH', 'BOOLEAN'): {'Curves': curves, 'Value': value, 'Length': length, 'Curve Index': curve_index}, ('LENGTH', 'FLOAT_VECTOR'): {'Curves': curves, 'Value': value, 'Length': length, 'Curve Index': curve_index}, ('LENGTH', 'FLOAT_COLOR'): {'Curves': curves, 'Value': value, 'Length': length, 'Curve Index': curve_index}, ('LENGTH', 'QUATERNION'): {'Curves': curves, 'Value': value, 'Length': length, 'Curve Index': curve_index}, ('LENGTH', 'FLOAT4X4'): {'Curves': curves, 'Value': value, 'Length': length, 'Curve Index': curve_index}}[_configuration]
+        _node_args = {('FACTOR', 'FLOAT'): [], ('FACTOR', 'INT'): [], ('FACTOR', 'BOOLEAN'): [], ('FACTOR', 'FLOAT_VECTOR'): [], ('FACTOR', 'FLOAT_COLOR'): [], ('FACTOR', 'QUATERNION'): [], ('FACTOR', 'FLOAT4X4'): [], ('LENGTH', 'FLOAT'): [], ('LENGTH', 'INT'): [], ('LENGTH', 'BOOLEAN'): [], ('LENGTH', 'FLOAT_VECTOR'): [], ('LENGTH', 'FLOAT_COLOR'): [], ('LENGTH', 'QUATERNION'): [], ('LENGTH', 'FLOAT4X4'): []}[_configuration]
         node = Node('Sample Curve', *_node_args, named_sockets=_node_sockets, mode=mode, data_type=data_type, use_all_curves=use_all_curves)
-        return node
+        return node._out
 
     @classmethod
     def sample_grid(cls, grid: Socket=None, position: Vector=None, interpolation: Menu=None, data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR']='FLOAT'):
@@ -5955,10 +6200,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Sample Grid', named_sockets={'Grid': grid, 'Position': position, 'Interpolation': interpolation}, data_type=data_type)
-        return node
+        return node._out
 
     @classmethod
     def sample_grid_index(cls, grid: Socket=None, x: Integer=None, y: Integer=None, z: Integer=None, data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR']='FLOAT'):
@@ -5983,10 +6229,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Sample Grid Index', named_sockets={'Grid': grid, 'X': x, 'Y': y, 'Z': z}, data_type=data_type)
-        return node
+        return node._out
 
     @classmethod
     def sample_index(cls, geometry: Geometry=None, value: Socket=None, index: Integer=None, data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'QUATERNION', 'FLOAT4X4']='FLOAT', domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']='POINT', clamp: bool=False):
@@ -6014,10 +6261,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Sample Index', named_sockets={'Geometry': geometry, 'Value': value, 'Index': index}, data_type=data_type, domain=domain, clamp=clamp)
-        return node
+        return node._out
 
     @classmethod
     def sample_nearest(cls, geometry: Geometry=None, sample_position: Vector=None, domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER']='POINT'):
@@ -6036,10 +6284,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Sample Nearest', named_sockets={'Geometry': geometry, 'Sample Position': sample_position}, domain=domain)
-        return node
+        return node._out
 
     @classmethod
     def sample_nearest_surface(cls, mesh: Mesh=None, value: Socket=None, group_id: Integer=None, sample_position: Vector=None, sample_group_id: Integer=None, data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'QUATERNION', 'FLOAT4X4']='FLOAT'):
@@ -6067,10 +6316,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Sample Nearest Surface', named_sockets={'Mesh': mesh, 'Value': value, 'Group ID': group_id, 'Sample Position': sample_position, 'Sample Group ID': sample_group_id}, data_type=data_type)
-        return node
+        return node._out
 
     @classmethod
     def sample_sound_frequencies(cls, sound: Sound=None, time: Float=None, all_channels: Boolean=None, channel: Integer=None, low: Float=None, high: Float=None, fft_size: Menu=None, window_function: Menu=None):
@@ -6104,10 +6354,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Sample Sound Frequencies', named_sockets={'Sound': sound, 'Time': time, 'All Channels': all_channels, 'Channel': channel, 'Low': low, 'High': high, 'FFT Size': fft_size, 'Window Function': window_function})
-        return node
+        return node._out
 
     @classmethod
     def sample_uv_surface(cls, mesh: Mesh=None, value: Socket=None, uv_map: Vector=None, sample_uv: Vector=None, data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'QUATERNION', 'FLOAT4X4']='FLOAT'):
@@ -6132,10 +6383,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Sample UV Surface', named_sockets={'Mesh': mesh, 'Value': value, 'UV Map': uv_map, 'Sample UV': sample_uv}, data_type=data_type)
-        return node
+        return node._out
 
     @classmethod
     def scale_elements(cls, geometry: Geometry=None, selection: Boolean=None, scale: Float=None, center: Vector=None, scale_mode: Menu=None, axis: Vector=None, domain: Literal['FACE', 'EDGE']='FACE'):
@@ -6166,10 +6418,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Scale Elements', named_sockets={'Geometry': geometry, 'Selection': selection, 'Scale': scale, 'Center': center, 'Scale Mode': scale_mode, 'Axis': axis}, domain=domain)
-        return node
+        return node._out
 
     @classmethod
     def scale_instances(cls, instances: Instances=None, selection: Boolean=None, scale: Vector=None, center: Vector=None, local_space: Boolean=None):
@@ -6194,10 +6447,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Scale Instances', named_sockets={'Instances': instances, 'Selection': selection, 'Scale': scale, 'Center': center, 'Local Space': local_space})
-        return node
+        return node._out
 
     @classmethod
     def scene_time(cls):
@@ -6205,10 +6459,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Scene Time', named_sockets={})
-        return node
+        return node._out
 
     @classmethod
     def sdf_grid_boolean(cls, *grid: Float, grid_1: Float=None, operation: Literal['INTERSECT', 'UNION', 'DIFFERENCE']='DIFFERENCE'):
@@ -6227,13 +6482,14 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         _configuration = ({'intersect': 'INTERSECT', 'union': 'UNION', 'difference': 'DIFFERENCE'}.get(operation.lower(), operation),)
         _node_sockets = {('INTERSECT',): {}, ('UNION',): {}, ('DIFFERENCE',): {'Grid 1': grid_1}}[_configuration]
         _node_args = {('INTERSECT',): [*list(grid)], ('UNION',): [*list(grid)], ('DIFFERENCE',): [*list(grid)]}[_configuration]
         node = Node('SDF Grid Boolean', *_node_args, named_sockets=_node_sockets, operation=operation)
-        return node
+        return node._out
 
     @classmethod
     def sdf_grid_fillet(cls, grid: Float=None, iterations: Integer=None):
@@ -6249,10 +6505,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('SDF Grid Fillet', named_sockets={'Grid': grid, 'Iterations': iterations})
-        return node
+        return node._out
 
     @classmethod
     def sdf_grid_laplacian(cls, grid: Float=None, iterations: Integer=None):
@@ -6268,10 +6525,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('SDF Grid Laplacian', named_sockets={'Grid': grid, 'Iterations': iterations})
-        return node
+        return node._out
 
     @classmethod
     def sdf_grid_mean(cls, grid: Float=None, width: Integer=None, iterations: Integer=None):
@@ -6290,10 +6548,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('SDF Grid Mean', named_sockets={'Grid': grid, 'Width': width, 'Iterations': iterations})
-        return node
+        return node._out
 
     @classmethod
     def sdf_grid_mean_curvature(cls, grid: Float=None, iterations: Integer=None):
@@ -6309,10 +6568,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('SDF Grid Mean Curvature', named_sockets={'Grid': grid, 'Iterations': iterations})
-        return node
+        return node._out
 
     @classmethod
     def sdf_grid_median(cls, grid: Float=None, width: Integer=None, iterations: Integer=None):
@@ -6331,10 +6591,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('SDF Grid Median', named_sockets={'Grid': grid, 'Width': width, 'Iterations': iterations})
-        return node
+        return node._out
 
     @classmethod
     def sdf_grid_offset(cls, grid: Float=None, distance: Float=None):
@@ -6350,10 +6611,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('SDF Grid Offset', named_sockets={'Grid': grid, 'Distance': distance})
-        return node
+        return node._out
 
     @classmethod
     def selection(cls):
@@ -6361,10 +6623,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Selection', named_sockets={})
-        return node
+        return node._out
 
     @utils.classproperty
     def self_object(cls):
@@ -6392,10 +6655,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Separate Bundle', named_sockets={'Bundle': bundle}, define_signature=define_signature)
-        return node
+        return node._out
 
     @classmethod
     def separate_color(cls, color: Color=None, mode: Literal['RGB', 'HSV', 'HSL']='RGB'):
@@ -6411,10 +6675,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Separate Color', named_sockets={'Color': color}, mode=mode)
-        return node
+        return node._out
 
     @classmethod
     def separate_components(cls, geometry: Geometry=None):
@@ -6427,10 +6692,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Separate Components', named_sockets={'Geometry': geometry})
-        return node
+        return node._out
 
     @classmethod
     def separate_geometry(cls, geometry: Geometry=None, selection: Boolean=None, domain: Literal['POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE', 'LAYER']='POINT'):
@@ -6449,10 +6715,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Separate Geometry', named_sockets={'Geometry': geometry, 'Selection': selection}, domain=domain)
-        return node
+        return node._out
 
     @classmethod
     def separate_matrix(cls, matrix: Matrix=None):
@@ -6465,10 +6732,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Separate Matrix', named_sockets={'Matrix': matrix})
-        return node
+        return node._out
 
     @classmethod
     def separate_transform(cls, transform: Matrix=None):
@@ -6481,10 +6749,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Separate Transform', named_sockets={'Transform': transform})
-        return node
+        return node._out
 
     @classmethod
     def separate_xyz(cls, vector: Vector=None):
@@ -6497,10 +6766,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Separate XYZ', named_sockets={'Vector': vector})
-        return node
+        return node._out
 
     @classmethod
     def set_curve_normal(cls, curve: Curve=None, selection: Boolean=None, mode: Menu=None, normal: Vector=None):
@@ -6522,10 +6792,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Set Curve Normal', named_sockets={'Curve': curve, 'Selection': selection, 'Mode': mode, 'Normal': normal})
-        return node
+        return node._out
 
     @classmethod
     def set_curve_radius(cls, curve: Curve=None, selection: Boolean=None, radius: Float=None):
@@ -6544,10 +6815,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Set Curve Radius', named_sockets={'Curve': curve, 'Selection': selection, 'Radius': radius})
-        return node
+        return node._out
 
     @classmethod
     def set_curve_tilt(cls, curve: Curve=None, selection: Boolean=None, tilt: Float=None):
@@ -6566,10 +6838,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Set Curve Tilt', named_sockets={'Curve': curve, 'Selection': selection, 'Tilt': tilt})
-        return node
+        return node._out
 
     @classmethod
     def set_face_set(cls, mesh: Mesh=None, selection: Boolean=None, face_set: Integer=None):
@@ -6588,10 +6861,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Set Face Set', named_sockets={'Mesh': mesh, 'Selection': selection, 'Face Set': face_set})
-        return node
+        return node._out
 
     @classmethod
     def set_geometry_bundle(cls, geometry: Geometry=None, bundle: Bundle=None):
@@ -6607,10 +6881,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Set Geometry Bundle', named_sockets={'Geometry': geometry, 'Bundle': bundle})
-        return node
+        return node._out
 
     @classmethod
     def set_geometry_name(cls, geometry: Geometry=None, name: String=None):
@@ -6626,10 +6901,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Set Geometry Name', named_sockets={'Geometry': geometry, 'Name': name})
-        return node
+        return node._out
 
     @classmethod
     def set_grease_pencil_color(cls, grease_pencil: GreasePencil=None, selection: Boolean=None, mode_1: Menu=None, color: Color=None, opacity: Float=None, mode: Literal['STROKE', 'FILL', 'BOTH']='STROKE'):
@@ -6657,10 +6933,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Set Grease Pencil Color', named_sockets={'Grease Pencil': grease_pencil, 'Selection': selection, 'Mode_1': mode_1, 'Color': color, 'Opacity': opacity}, mode=mode)
-        return node
+        return node._out
 
     @classmethod
     def set_grease_pencil_depth(cls, grease_pencil: GreasePencil=None, depth_order_1: Menu=None, depth_order: Literal['2D', '3D']='2D'):
@@ -6679,10 +6956,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Set Grease Pencil Depth', named_sockets={'Grease Pencil': grease_pencil, 'Depth Order_1': depth_order_1}, depth_order=depth_order)
-        return node
+        return node._out
 
     @classmethod
     def set_grease_pencil_softness(cls, grease_pencil: GreasePencil=None, selection: Boolean=None, softness: Float=None):
@@ -6701,10 +6979,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Set Grease Pencil Softness', named_sockets={'Grease Pencil': grease_pencil, 'Selection': selection, 'Softness': softness})
-        return node
+        return node._out
 
     @classmethod
     def set_grid_background(cls, grid: Socket=None, background: Socket=None, update_inactive: Boolean=None, data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR']='FLOAT'):
@@ -6726,10 +7005,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Set Grid Background', named_sockets={'Grid': grid, 'Background': background, 'Update Inactive': update_inactive}, data_type=data_type)
-        return node
+        return node._out
 
     @classmethod
     def set_grid_transform(cls, grid: Socket=None, transform: Matrix=None, data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR']='FLOAT'):
@@ -6748,10 +7028,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Set Grid Transform', named_sockets={'Grid': grid, 'Transform': transform}, data_type=data_type)
-        return node
+        return node._out
 
     @classmethod
     def set_handle_positions(cls, curve: Curve=None, selection: Boolean=None, position: Vector=None, offset: Vector=None, mode: Literal['LEFT', 'RIGHT']='LEFT'):
@@ -6776,10 +7057,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Set Handle Positions', named_sockets={'Curve': curve, 'Selection': selection, 'Position': position, 'Offset': offset}, mode=mode)
-        return node
+        return node._out
 
     @classmethod
     def set_handle_type(cls, curve: Curve=None, selection: Boolean=None, handle_type: Literal['FREE', 'AUTO', 'VECTOR', 'ALIGN']='AUTO', mode: set[Literal['LEFT', 'RIGHT']]={'RIGHT', 'LEFT'}):
@@ -6801,10 +7083,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Set Handle Type', named_sockets={'Curve': curve, 'Selection': selection}, handle_type=handle_type, mode=mode)
-        return node
+        return node._out
 
     @classmethod
     def set_id(cls, geometry: Geometry=None, selection: Boolean=None, id: Integer=None):
@@ -6823,10 +7106,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Set ID', named_sockets={'Geometry': geometry, 'Selection': selection, 'ID': id})
-        return node
+        return node._out
 
     @classmethod
     def set_instance_transform(cls, instances: Instances=None, selection: Boolean=None, transform: Matrix=None):
@@ -6845,10 +7129,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Set Instance Transform', named_sockets={'Instances': instances, 'Selection': selection, 'Transform': transform})
-        return node
+        return node._out
 
     @classmethod
     def set_material(cls, geometry: Geometry=None, selection: Boolean=None, material: Material=None):
@@ -6867,10 +7152,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Set Material', named_sockets={'Geometry': geometry, 'Selection': selection, 'Material': material})
-        return node
+        return node._out
 
     @classmethod
     def set_material_index(cls, geometry: Geometry=None, selection: Boolean=None, material_index: Integer=None):
@@ -6889,10 +7175,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Set Material Index', named_sockets={'Geometry': geometry, 'Selection': selection, 'Material Index': material_index})
-        return node
+        return node._out
 
     @classmethod
     def set_mesh_normal(cls, mesh: Mesh=None, remove_custom: Boolean=None, custom_normal: Vector=None, edge_sharpness: Boolean=None, face_sharpness: Boolean=None, mode: Literal['SHARPNESS', 'FREE', 'TANGENT_SPACE']='SHARPNESS', domain: Literal['POINT', 'FACE', 'CORNER']='POINT'):
@@ -6923,13 +7210,14 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         _configuration = ({'sharpness': 'SHARPNESS', 'free': 'FREE', 'tangent_space': 'TANGENT_SPACE', 'tangent space': 'TANGENT_SPACE'}.get(mode.lower(), mode),)
         _node_sockets = {('SHARPNESS',): {'Mesh': mesh, 'Remove Custom': remove_custom, 'Edge Sharpness': edge_sharpness, 'Face Sharpness': face_sharpness}, ('FREE',): {'Mesh': mesh, 'Custom Normal': custom_normal}, ('TANGENT_SPACE',): {'Mesh': mesh, 'Custom Normal': custom_normal}}[_configuration]
         _node_args = {('SHARPNESS',): [], ('FREE',): [], ('TANGENT_SPACE',): []}[_configuration]
         node = Node('Set Mesh Normal', *_node_args, named_sockets=_node_sockets, mode=mode, domain=domain)
-        return node
+        return node._out
 
     @classmethod
     def set_nurbs_order(cls, curves: Curve=None, selection: Boolean=None, order: Integer=None):
@@ -6948,10 +7236,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Set NURBS Order', named_sockets={'Curves': curves, 'Selection': selection, 'Order': order})
-        return node
+        return node._out
 
     @classmethod
     def set_nurbs_weight(cls, curves: Curve=None, selection: Boolean=None, weight: Float=None):
@@ -6970,10 +7259,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Set NURBS Weight', named_sockets={'Curves': curves, 'Selection': selection, 'Weight': weight})
-        return node
+        return node._out
 
     @classmethod
     def set_point_cloud_type(cls, points: Cloud=None, type: Menu=None):
@@ -6989,10 +7279,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Set Point Cloud Type', named_sockets={'Points': points, 'Type': type})
-        return node
+        return node._out
 
     @classmethod
     def set_point_radius(cls, points: Cloud=None, selection: Boolean=None, radius: Float=None):
@@ -7011,10 +7302,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Set Point Radius', named_sockets={'Points': points, 'Selection': selection, 'Radius': radius})
-        return node
+        return node._out
 
     @classmethod
     def set_position(cls, geometry: Geometry=None, selection: Boolean=None, position: Vector=None, offset: Vector=None):
@@ -7036,10 +7328,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Set Position', named_sockets={'Geometry': geometry, 'Selection': selection, 'Position': position, 'Offset': offset})
-        return node
+        return node._out
 
     @classmethod
     def set_selection(cls, geometry: Geometry=None, selection: Socket=None, domain: Literal['POINT', 'EDGE', 'FACE', 'CURVE']='POINT', selection_type: Literal['BOOLEAN', 'FLOAT']='BOOLEAN'):
@@ -7061,10 +7354,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Set Selection', named_sockets={'Geometry': geometry, 'Selection': selection}, domain=domain, selection_type=selection_type)
-        return node
+        return node._out
 
     @classmethod
     def set_shade_smooth(cls, mesh: Mesh=None, selection: Boolean=None, shade_smooth: Boolean=None, domain: Literal['EDGE', 'FACE']='FACE'):
@@ -7086,10 +7380,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Set Shade Smooth', named_sockets={'Mesh': mesh, 'Selection': selection, 'Shade Smooth': shade_smooth}, domain=domain)
-        return node
+        return node._out
 
     @classmethod
     def set_spline_cyclic(cls, curve: Curve=None, selection: Boolean=None, cyclic: Boolean=None):
@@ -7108,10 +7403,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Set Spline Cyclic', named_sockets={'Curve': curve, 'Selection': selection, 'Cyclic': cyclic})
-        return node
+        return node._out
 
     @classmethod
     def set_spline_resolution(cls, curve: Curve=None, selection: Boolean=None, resolution: Integer=None):
@@ -7130,10 +7426,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Set Spline Resolution', named_sockets={'Curve': curve, 'Selection': selection, 'Resolution': resolution})
-        return node
+        return node._out
 
     @classmethod
     def set_spline_type(cls, curve: Curve=None, selection: Boolean=None, spline_type: Literal['CATMULL_ROM', 'POLY', 'BEZIER', 'NURBS']='POLY'):
@@ -7152,10 +7449,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Set Spline Type', named_sockets={'Curve': curve, 'Selection': selection}, spline_type=spline_type)
-        return node
+        return node._out
 
     @classmethod
     def set_string_case(cls, string: String=None, case: Menu=None):
@@ -7171,10 +7469,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Set String Case', named_sockets={'String': string, 'Case': case})
-        return node
+        return node._out
 
     @classmethod
     def shortest_edge_paths(cls, end_vertex: Boolean=None, edge_cost: Float=None):
@@ -7190,10 +7489,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Shortest Edge Paths', named_sockets={'End Vertex': end_vertex, 'Edge Cost': edge_cost})
-        return node
+        return node._out
 
     @utils.classproperty
     def simulation_input(cls):
@@ -7221,12 +7521,13 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         _named_sockets = {'Skip': skip, 'Geometry': geometry}
         _named_sockets.update({name: value for name, value in (named_sockets or {}).items() if value is not None})
         node = Node('Simulation Output', named_sockets=_named_sockets, **sockets)
-        return node
+        return node._out
 
     @classmethod
     def slice_string(cls, string: String=None, position: Integer=None, length: Integer=None):
@@ -7245,10 +7546,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Slice String', named_sockets={'String': string, 'Position': position, 'Length': length})
-        return node
+        return node._out
 
     @classmethod
     def sort_elements(cls, geometry: Geometry=None, selection: Boolean=None, group_id: Integer=None, sort_weight: Float=None, domain: Literal['POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE']='POINT'):
@@ -7273,10 +7575,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Sort Elements', named_sockets={'Geometry': geometry, 'Selection': selection, 'Group ID': group_id, 'Sort Weight': sort_weight}, domain=domain)
-        return node
+        return node._out
 
     @classmethod
     def sort_list(cls, list: Socket=None, selection: Boolean=None, group_id: Integer=None, sort_weight: Float=None, socket_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SOUND']='FLOAT'):
@@ -7301,10 +7604,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Sort List', named_sockets={'List': list, 'Selection': selection, 'Group ID': group_id, 'Sort Weight': sort_weight}, socket_type=socket_type)
-        return node
+        return node._out
 
     @classmethod
     def special_characters(cls):
@@ -7312,10 +7616,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Special Characters', named_sockets={})
-        return node
+        return node._out
 
     @classmethod
     def spiral(cls, resolution: Integer=None, rotations: Float=None, start_radius: Float=None, end_radius: Float=None, height: Float=None, reverse: Boolean=None):
@@ -7343,10 +7648,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Spiral', named_sockets={'Resolution': resolution, 'Rotations': rotations, 'Start Radius': start_radius, 'End Radius': end_radius, 'Height': height, 'Reverse': reverse})
-        return node
+        return node._out
 
     @classmethod
     def spline_length(cls):
@@ -7354,10 +7660,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Spline Length', named_sockets={})
-        return node
+        return node._out
 
     @classmethod
     def spline_parameter(cls):
@@ -7365,10 +7672,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Spline Parameter', named_sockets={})
-        return node
+        return node._out
 
     @utils.classproperty
     def spline_resolution(cls):
@@ -7396,10 +7704,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Split Edges', named_sockets={'Mesh': mesh, 'Selection': selection})
-        return node
+        return node._out
 
     @classmethod
     def split_string(cls, string: String=None, separator: String=None):
@@ -7415,10 +7724,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Split String', named_sockets={'String': string, 'Separator': separator})
-        return node
+        return node._out
 
     @classmethod
     def split_to_instances(cls, geometry: Geometry=None, selection: Boolean=None, group_id: Integer=None, domain: Literal['POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE', 'LAYER']='POINT'):
@@ -7440,10 +7750,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Split to Instances', named_sockets={'Geometry': geometry, 'Selection': selection, 'Group ID': group_id}, domain=domain)
-        return node
+        return node._out
 
     @classmethod
     def star(cls, points: Integer=None, inner_radius: Float=None, outer_radius: Float=None, twist: Float=None):
@@ -7465,10 +7776,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Star', named_sockets={'Points': points, 'Inner Radius': inner_radius, 'Outer Radius': outer_radius, 'Twist': twist})
-        return node
+        return node._out
 
     @classmethod
     def store_bundle_item(cls, bundle: Bundle=None, path: String=None, item: Socket=None, socket_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SOUND']='FLOAT'):
@@ -7490,10 +7802,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Store Bundle Item', named_sockets={'Bundle': bundle, 'Path': path, 'Item': item}, socket_type=socket_type)
-        return node
+        return node._out
 
     @classmethod
     def store_named_attribute(cls, geometry: Geometry=None, selection: Boolean=None, name: String=None, value: Socket=None, data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'QUATERNION', 'FLOAT4X4', 'INT8', 'FLOAT2', 'FLOAT4', 'BYTE_COLOR']='FLOAT', domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']='POINT'):
@@ -7521,10 +7834,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Store Named Attribute', named_sockets={'Geometry': geometry, 'Selection': selection, 'Name': name, 'Value': value}, data_type=data_type, domain=domain)
-        return node
+        return node._out
 
     @classmethod
     def store_named_grid(cls, volume: Volume=None, name: String=None, grid: Socket=None, data_type: Literal['BOOLEAN', 'FLOAT', 'INT', 'VECTOR_FLOAT']='FLOAT'):
@@ -7546,10 +7860,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Store Named Grid', named_sockets={'Volume': volume, 'Name': name, 'Grid': grid}, data_type=data_type)
-        return node
+        return node._out
 
     @classmethod
     def string(cls, string: str=''):
@@ -7562,10 +7877,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('String', named_sockets={}, string=string)
-        return node
+        return node._out
 
     @classmethod
     def string_length(cls, string: String=None):
@@ -7578,10 +7894,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('String Length', named_sockets={'String': string})
-        return node
+        return node._out
 
     @classmethod
     def string_to_curves(cls, string: String=None, size: Float=None, font: Font=None, align_x: Menu=None, align_y: Menu=None, pivot_point: Menu=None, character_spacing: Float=None, word_spacing: Float=None, line_spacing: Float=None, overflow: Menu=None, text_box_width: Float=None, text_box_height: Float=None):
@@ -7627,10 +7944,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('String to Curves', named_sockets={'String': string, 'Size': size, 'Font': font, 'Align X': align_x, 'Align Y': align_y, 'Pivot Point': pivot_point, 'Character Spacing': character_spacing, 'Word Spacing': word_spacing, 'Line Spacing': line_spacing, 'Overflow': overflow, 'Text Box Width': text_box_width, 'Text Box Height': text_box_height})
-        return node
+        return node._out
 
     @classmethod
     def string_to_value(cls, string: String=None, base: Integer=None, data_type: Literal['FLOAT', 'INT']='FLOAT'):
@@ -7649,13 +7967,14 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         _configuration = ({'float': 'FLOAT', 'int': 'INT', 'integer': 'INT'}.get(data_type.lower(), data_type),)
         _node_sockets = {('FLOAT',): {'String': string}, ('INT',): {'String': string, 'Base': base}}[_configuration]
         _node_args = {('FLOAT',): [], ('INT',): []}[_configuration]
         node = Node('String to Value', *_node_args, named_sockets=_node_sockets, data_type=data_type)
-        return node
+        return node._out
 
     @classmethod
     def subdivide_curve(cls, curve: Curve=None, cuts: Integer=None):
@@ -7671,10 +7990,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Subdivide Curve', named_sockets={'Curve': curve, 'Cuts': cuts})
-        return node
+        return node._out
 
     @classmethod
     def subdivide_mesh(cls, mesh: Mesh=None, level: Integer=None):
@@ -7690,10 +8010,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Subdivide Mesh', named_sockets={'Mesh': mesh, 'Level': level})
-        return node
+        return node._out
 
     @classmethod
     def subdivision_surface(cls, mesh: Mesh=None, level: Integer=None, edge_crease: Float=None, vertex_crease: Float=None, limit_surface: Boolean=None, quality: Integer=None, uv_smooth: Menu=None, boundary_smooth: Menu=None):
@@ -7727,10 +8048,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Subdivision Surface', named_sockets={'Mesh': mesh, 'Level': level, 'Edge Crease': edge_crease, 'Vertex Crease': vertex_crease, 'Limit Surface': limit_surface, 'Quality': quality, 'UV Smooth': uv_smooth, 'Boundary Smooth': boundary_smooth})
-        return node
+        return node._out
 
     @classmethod
     def switch(cls, switch: Boolean=None, false: Socket=None, true: Socket=None, input_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SOUND']='FLOAT'):
@@ -7752,10 +8074,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Switch', named_sockets={'Switch': switch, 'False': false, 'True': true}, input_type=input_type)
-        return node
+        return node._out
 
     @classmethod
     def tag_filter(cls, tag_filter: String=None, tags: String=None):
@@ -7771,10 +8094,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Tag Filter', named_sockets={'Tag Filter': tag_filter, 'Tags': tags})
-        return node
+        return node._out
 
     @classmethod
     def transfer_attributes(cls, target: Geometry=None, target_point_id: Integer=None, target_edge_id: Integer=None, target_face_id: Integer=None, target_corner_id: Integer=None, target_curve_id: Integer=None, target_instance_id: Integer=None, source: Geometry=None, source_point_id: Integer=None, source_edge_id: Integer=None, source_face_id: Integer=None, source_corner_id: Integer=None, source_curve_id: Integer=None, source_instance_id: Integer=None, pattern_mode: Menu=None, attribute_names: String=None, exclude_names: Boolean=None):
@@ -7835,10 +8159,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Transfer Attributes', named_sockets={'Target': target, 'Target Point ID': target_point_id, 'Target Edge ID': target_edge_id, 'Target Face ID': target_face_id, 'Target Corner ID': target_corner_id, 'Target Curve ID': target_curve_id, 'Target Instance ID': target_instance_id, 'Source': source, 'Source Point ID': source_point_id, 'Source Edge ID': source_edge_id, 'Source Face ID': source_face_id, 'Source Corner ID': source_corner_id, 'Source Curve ID': source_curve_id, 'Source Instance ID': source_instance_id, 'Pattern Mode': pattern_mode, 'Attribute Names': attribute_names, 'Exclude Names': exclude_names})
-        return node
+        return node._out
 
     @classmethod
     def transform_direction(cls, direction: Vector=None, transform: Matrix=None):
@@ -7854,10 +8179,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Transform Direction', named_sockets={'Direction': direction, 'Transform': transform})
-        return node
+        return node._out
 
     @classmethod
     def transform_geometry(cls, geometry: Geometry=None, mode: Menu=None, translation: Vector=None, rotation: Rotation=None, scale: Vector=None, transform: Matrix=None):
@@ -7885,10 +8211,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Transform Geometry', named_sockets={'Geometry': geometry, 'Mode': mode, 'Translation': translation, 'Rotation': rotation, 'Scale': scale, 'Transform': transform})
-        return node
+        return node._out
 
     @classmethod
     def transform_gizmo(cls, *value: Matrix, position: Vector=None, rotation: Rotation=None, use_translation_x: bool=True, use_translation_y: bool=True, use_translation_z: bool=True, use_rotation_x: bool=True, use_rotation_y: bool=True, use_rotation_z: bool=True, use_scale_x: bool=True, use_scale_y: bool=True, use_scale_z: bool=True):
@@ -7934,10 +8261,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Transform Gizmo', *[*list(value)], named_sockets={'Position': position, 'Rotation': rotation}, use_translation_x=use_translation_x, use_translation_y=use_translation_y, use_translation_z=use_translation_z, use_rotation_x=use_rotation_x, use_rotation_y=use_rotation_y, use_rotation_z=use_rotation_z, use_scale_x=use_scale_x, use_scale_y=use_scale_y, use_scale_z=use_scale_z)
-        return node
+        return node._out
 
     @classmethod
     def transform_point(cls, vector: Vector=None, transform: Matrix=None):
@@ -7953,10 +8281,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Transform Point', named_sockets={'Vector': vector, 'Transform': transform})
-        return node
+        return node._out
 
     @classmethod
     def translate_instances(cls, instances: Instances=None, selection: Boolean=None, translation: Vector=None, local_space: Boolean=None):
@@ -7978,10 +8307,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Translate Instances', named_sockets={'Instances': instances, 'Selection': selection, 'Translation': translation, 'Local Space': local_space})
-        return node
+        return node._out
 
     @classmethod
     def transpose_matrix(cls, matrix: Matrix=None):
@@ -7994,10 +8324,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Transpose Matrix', named_sockets={'Matrix': matrix})
-        return node
+        return node._out
 
     @classmethod
     def triangulate(cls, mesh: Mesh=None, selection: Boolean=None, quad_method: Menu=None, n_gon_method: Menu=None):
@@ -8019,10 +8350,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Triangulate', named_sockets={'Mesh': mesh, 'Selection': selection, 'Quad Method': quad_method, 'N-gon Method': n_gon_method})
-        return node
+        return node._out
 
     @classmethod
     def trim_curve(cls, curve: Curve=None, selection: Boolean=None, start: Float=None, end: Float=None, start_1: Float=None, end_1: Float=None, mode: Literal['FACTOR', 'LENGTH']='FACTOR'):
@@ -8053,13 +8385,14 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         _configuration = ({'factor': 'FACTOR', 'length': 'LENGTH'}.get(mode.lower(), mode),)
         _node_sockets = {('FACTOR',): {'Curve': curve, 'Selection': selection, 'Start': start, 'End': end}, ('LENGTH',): {'Curve': curve, 'Selection': selection, 'Start': start_1, 'End': end_1}}[_configuration]
         _node_args = {('FACTOR',): [], ('LENGTH',): []}[_configuration]
         node = Node('Trim Curve', *_node_args, named_sockets=_node_sockets, mode=mode)
-        return node
+        return node._out
 
     @classmethod
     def trim_string(cls, string: String=None, characters: String=None, whitespace: Boolean=None, start: Boolean=None, end: Boolean=None):
@@ -8084,10 +8417,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Trim String', named_sockets={'String': string, 'Characters': characters, 'Whitespace': whitespace, 'Start': start, 'End': end})
-        return node
+        return node._out
 
     @classmethod
     def uv_sphere(cls, segments: Integer=None, rings: Integer=None, radius: Float=None):
@@ -8106,10 +8440,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('UV Sphere', named_sockets={'Segments': segments, 'Rings': rings, 'Radius': radius})
-        return node
+        return node._out
 
     @classmethod
     def uv_tangent(cls, method: Menu=None, uv: Vector=None):
@@ -8125,10 +8460,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('UV Tangent', named_sockets={'Method': method, 'UV': uv})
-        return node
+        return node._out
 
     @classmethod
     def uv_unwrap(cls, selection: Boolean=None, seam: Boolean=None, margin: Float=None, fill_holes: Boolean=None, method: Menu=None, iterations: Integer=None, no_flip: Boolean=None):
@@ -8159,10 +8495,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('UV Unwrap', named_sockets={'Selection': selection, 'Seam': seam, 'Margin': margin, 'Fill Holes': fill_holes, 'Method': method, 'Iterations': iterations, 'No Flip': no_flip})
-        return node
+        return node._out
 
     @utils.classproperty
     def value(cls):
@@ -8199,13 +8536,14 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         _configuration = ({'float': 'FLOAT', 'int': 'INT', 'integer': 'INT'}.get(data_type.lower(), data_type),)
         _node_sockets = {('FLOAT',): {'Value': value, 'Decimals': decimals}, ('INT',): {'Value': value, 'Base': base, 'Padding': padding}}[_configuration]
         _node_args = {('FLOAT',): [], ('INT',): []}[_configuration]
         node = Node('Value to String', *_node_args, named_sockets=_node_sockets, data_type=data_type)
-        return node
+        return node._out
 
     @classmethod
     def vector(cls, vector_dimensions: int=3):
@@ -8218,10 +8556,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Vector', named_sockets={}, vector_dimensions=vector_dimensions)
-        return node
+        return node._out
 
     @classmethod
     def vector_curves(cls, vector: Vector=None, factor: Float=None):
@@ -8237,10 +8576,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Vector Curves', named_sockets={'Factor': factor, 'Vector': vector})
-        return node
+        return node._out
 
     @classmethod
     def vector_math(cls, vector: Vector=None, base: Vector=None, vector_1: Vector=None, multiplier: Vector=None, incident: Vector=None, exponent: Vector=None, max: Vector=None, increment: Vector=None, addend: Vector=None, reference: Vector=None, min: Vector=None, scale: Float=None, ior: Float=None, operation: Literal['ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'MULTIPLY_ADD', 'CROSS_PRODUCT', 'PROJECT', 'REFLECT', 'REFRACT', 'FACEFORWARD', 'DOT_PRODUCT', 'DISTANCE', 'LENGTH', 'SCALE', 'NORMALIZE', 'ABSOLUTE', 'POWER', 'SIGN', 'MINIMUM', 'MAXIMUM', 'ROUND', 'FLOOR', 'CEIL', 'FRACTION', 'MODULO', 'WRAP', 'SNAP', 'SINE', 'COSINE', 'TANGENT']='ADD'):
@@ -8292,13 +8632,14 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         _configuration = ({'add': 'ADD', 'subtract': 'SUBTRACT', 'multiply': 'MULTIPLY', 'divide': 'DIVIDE', 'multiply_add': 'MULTIPLY_ADD', 'cross_product': 'CROSS_PRODUCT', 'project': 'PROJECT', 'reflect': 'REFLECT', 'refract': 'REFRACT', 'faceforward': 'FACEFORWARD', 'dot_product': 'DOT_PRODUCT', 'distance': 'DISTANCE', 'length': 'LENGTH', 'scale': 'SCALE', 'normalize': 'NORMALIZE', 'absolute': 'ABSOLUTE', 'power': 'POWER', 'sign': 'SIGN', 'minimum': 'MINIMUM', 'maximum': 'MAXIMUM', 'round': 'ROUND', 'floor': 'FLOOR', 'ceil': 'CEIL', 'fraction': 'FRACTION', 'modulo': 'MODULO', 'wrap': 'WRAP', 'snap': 'SNAP', 'sine': 'SINE', 'cosine': 'COSINE', 'tangent': 'TANGENT', 'multiply add': 'MULTIPLY_ADD', 'cross product': 'CROSS_PRODUCT', 'dot product': 'DOT_PRODUCT'}.get(operation.lower(), operation),)
         _node_sockets = {('ADD',): {'Vector': vector, 'Vector_1': vector_1}, ('SUBTRACT',): {'Vector': vector, 'Vector_1': vector_1}, ('MULTIPLY',): {'Vector': vector, 'Vector_1': vector_1}, ('DIVIDE',): {'Vector': vector, 'Vector_1': vector_1}, ('MULTIPLY_ADD',): {'Vector': vector, 'Multiplier': multiplier, 'Addend': addend}, ('CROSS_PRODUCT',): {'Vector': vector, 'Vector_1': vector_1}, ('PROJECT',): {'Vector': vector, 'Vector_1': vector_1}, ('REFLECT',): {'Vector': vector, 'Vector_1': vector_1}, ('REFRACT',): {'Vector': vector, 'Vector_1': vector_1, 'IOR': ior}, ('FACEFORWARD',): {'Vector': vector, 'Incident': incident, 'Reference': reference}, ('DOT_PRODUCT',): {'Vector': vector, 'Vector_1': vector_1}, ('DISTANCE',): {'Vector': vector, 'Vector_1': vector_1}, ('LENGTH',): {'Vector': vector}, ('SCALE',): {'Vector': vector, 'Scale': scale}, ('NORMALIZE',): {'Vector': vector}, ('ABSOLUTE',): {'Vector': vector}, ('POWER',): {'Base': base, 'Exponent': exponent}, ('SIGN',): {'Vector': vector}, ('MINIMUM',): {'Vector': vector, 'Vector_1': vector_1}, ('MAXIMUM',): {'Vector': vector, 'Vector_1': vector_1}, ('ROUND',): {'Vector': vector}, ('FLOOR',): {'Vector': vector}, ('CEIL',): {'Vector': vector}, ('FRACTION',): {'Vector': vector}, ('MODULO',): {'Vector': vector, 'Vector_1': vector_1}, ('WRAP',): {'Vector': vector, 'Max': max, 'Min': min}, ('SNAP',): {'Vector': vector, 'Increment': increment}, ('SINE',): {'Vector': vector}, ('COSINE',): {'Vector': vector}, ('TANGENT',): {'Vector': vector}}[_configuration]
         _node_args = {('ADD',): [], ('SUBTRACT',): [], ('MULTIPLY',): [], ('DIVIDE',): [], ('MULTIPLY_ADD',): [], ('CROSS_PRODUCT',): [], ('PROJECT',): [], ('REFLECT',): [], ('REFRACT',): [], ('FACEFORWARD',): [], ('DOT_PRODUCT',): [], ('DISTANCE',): [], ('LENGTH',): [], ('SCALE',): [], ('NORMALIZE',): [], ('ABSOLUTE',): [], ('POWER',): [], ('SIGN',): [], ('MINIMUM',): [], ('MAXIMUM',): [], ('ROUND',): [], ('FLOOR',): [], ('CEIL',): [], ('FRACTION',): [], ('MODULO',): [], ('WRAP',): [], ('SNAP',): [], ('SINE',): [], ('COSINE',): [], ('TANGENT',): []}[_configuration]
         node = Node('Vector Math', *_node_args, named_sockets=_node_sockets, operation=operation)
-        return node
+        return node._out
 
     @classmethod
     def vector_rotate(cls, vector: Vector=None, center: Vector=None, axis: Vector=None, angle: Float=None, rotation: Vector=None, rotation_type: Literal['AXIS_ANGLE', 'X_AXIS', 'Y_AXIS', 'Z_AXIS', 'EULER_XYZ']='AXIS_ANGLE', invert: bool=False):
@@ -8329,13 +8670,14 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         _configuration = ({'axis_angle': 'AXIS_ANGLE', 'x_axis': 'X_AXIS', 'y_axis': 'Y_AXIS', 'z_axis': 'Z_AXIS', 'euler_xyz': 'EULER_XYZ', 'axis angle': 'AXIS_ANGLE', 'x axis': 'X_AXIS', 'y axis': 'Y_AXIS', 'z axis': 'Z_AXIS', 'euler': 'EULER_XYZ'}.get(rotation_type.lower(), rotation_type),)
         _node_sockets = {('AXIS_ANGLE',): {'Vector': vector, 'Center': center, 'Axis': axis, 'Angle': angle}, ('X_AXIS',): {'Vector': vector, 'Center': center, 'Angle': angle}, ('Y_AXIS',): {'Vector': vector, 'Center': center, 'Angle': angle}, ('Z_AXIS',): {'Vector': vector, 'Center': center, 'Angle': angle}, ('EULER_XYZ',): {'Vector': vector, 'Center': center, 'Rotation': rotation}}[_configuration]
         _node_args = {('AXIS_ANGLE',): [], ('X_AXIS',): [], ('Y_AXIS',): [], ('Z_AXIS',): [], ('EULER_XYZ',): []}[_configuration]
         node = Node('Vector Rotate', *_node_args, named_sockets=_node_sockets, rotation_type=rotation_type, invert=invert)
-        return node
+        return node._out
 
     @classmethod
     def vertex_neighbors(cls):
@@ -8343,10 +8685,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Vertex Neighbors', named_sockets={})
-        return node
+        return node._out
 
     @classmethod
     def vertex_of_corner(cls, corner_index: Integer=None):
@@ -8359,10 +8702,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Vertex of Corner', named_sockets={'Corner Index': corner_index})
-        return node
+        return node._out
 
     @classmethod
     def viewer(cls, named_sockets=None, domain: Literal['AUTO', 'POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']='AUTO', **sockets):
@@ -8375,12 +8719,13 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         _named_sockets = {}
         _named_sockets.update({name: value for name, value in (named_sockets or {}).items() if value is not None})
         node = Node('Viewer', named_sockets=_named_sockets, domain=domain, **sockets)
-        return node
+        return node._out
 
     @classmethod
     def viewport_transform(cls):
@@ -8388,10 +8733,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Viewport Transform', named_sockets={})
-        return node
+        return node._out
 
     @classmethod
     def volume_cube(cls, density: Float=None, background: Float=None, min: Vector=None, max: Vector=None, resolution_x: Integer=None, resolution_y: Integer=None, resolution_z: Integer=None):
@@ -8422,10 +8768,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Volume Cube', named_sockets={'Density': density, 'Background': background, 'Min': min, 'Max': max, 'Resolution X': resolution_x, 'Resolution Y': resolution_y, 'Resolution Z': resolution_z})
-        return node
+        return node._out
 
     @classmethod
     def volume_to_mesh(cls, volume: Volume=None, resolution_mode: Menu=None, voxel_size: Float=None, voxel_amount: Float=None, threshold: Float=None, adaptivity: Float=None):
@@ -8453,10 +8800,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Volume to Mesh', named_sockets={'Volume': volume, 'Resolution Mode': resolution_mode, 'Voxel Size': voxel_size, 'Voxel Amount': voxel_amount, 'Threshold': threshold, 'Adaptivity': adaptivity})
-        return node
+        return node._out
 
     @classmethod
     def voronoi_texture(cls, vector: Vector=None, w: Float=None, scale: Float=None, detail: Float=None, roughness: Float=None, lacunarity: Float=None, smoothness: Float=None, exponent: Float=None, randomness: Float=None, voronoi_dimensions: Literal['1D', '2D', '3D', '4D']='3D', distance: Literal['EUCLIDEAN', 'MANHATTAN', 'CHEBYCHEV', 'MINKOWSKI']='EUCLIDEAN', feature: Literal['F1', 'F2', 'SMOOTH_F1', 'DISTANCE_TO_EDGE', 'N_SPHERE_RADIUS']='F1', normalize: bool=False):
@@ -8505,13 +8853,14 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         _configuration = ({'1d': '1D', '2d': '2D', '3d': '3D', '4d': '4D'}.get(voronoi_dimensions.lower(), voronoi_dimensions), {'euclidean': 'EUCLIDEAN', 'manhattan': 'MANHATTAN', 'chebychev': 'CHEBYCHEV', 'minkowski': 'MINKOWSKI'}.get(distance.lower(), distance), {'f1': 'F1', 'f2': 'F2', 'smooth_f1': 'SMOOTH_F1', 'distance_to_edge': 'DISTANCE_TO_EDGE', 'n_sphere_radius': 'N_SPHERE_RADIUS', 'smooth f1': 'SMOOTH_F1', 'distance to edge': 'DISTANCE_TO_EDGE', 'n-sphere radius': 'N_SPHERE_RADIUS'}.get(feature.lower(), feature))
         _node_sockets = {('1D', 'EUCLIDEAN', 'F1'): {'W': w, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Randomness': randomness}, ('1D', 'EUCLIDEAN', 'F2'): {'W': w, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Randomness': randomness}, ('1D', 'EUCLIDEAN', 'SMOOTH_F1'): {'W': w, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Smoothness': smoothness, 'Randomness': randomness}, ('1D', 'EUCLIDEAN', 'DISTANCE_TO_EDGE'): {'W': w, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Randomness': randomness}, ('1D', 'EUCLIDEAN', 'N_SPHERE_RADIUS'): {'W': w, 'Scale': scale, 'Randomness': randomness}, ('1D', 'MANHATTAN', 'F1'): {'W': w, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Randomness': randomness}, ('1D', 'MANHATTAN', 'F2'): {'W': w, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Randomness': randomness}, ('1D', 'MANHATTAN', 'SMOOTH_F1'): {'W': w, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Smoothness': smoothness, 'Randomness': randomness}, ('1D', 'MANHATTAN', 'DISTANCE_TO_EDGE'): {'W': w, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Randomness': randomness}, ('1D', 'MANHATTAN', 'N_SPHERE_RADIUS'): {'W': w, 'Scale': scale, 'Randomness': randomness}, ('1D', 'CHEBYCHEV', 'F1'): {'W': w, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Randomness': randomness}, ('1D', 'CHEBYCHEV', 'F2'): {'W': w, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Randomness': randomness}, ('1D', 'CHEBYCHEV', 'SMOOTH_F1'): {'W': w, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Smoothness': smoothness, 'Randomness': randomness}, ('1D', 'CHEBYCHEV', 'DISTANCE_TO_EDGE'): {'W': w, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Randomness': randomness}, ('1D', 'CHEBYCHEV', 'N_SPHERE_RADIUS'): {'W': w, 'Scale': scale, 'Randomness': randomness}, ('1D', 'MINKOWSKI', 'F1'): {'W': w, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Randomness': randomness}, ('1D', 'MINKOWSKI', 'F2'): {'W': w, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Randomness': randomness}, ('1D', 'MINKOWSKI', 'SMOOTH_F1'): {'W': w, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Smoothness': smoothness, 'Randomness': randomness}, ('1D', 'MINKOWSKI', 'DISTANCE_TO_EDGE'): {'W': w, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Randomness': randomness}, ('1D', 'MINKOWSKI', 'N_SPHERE_RADIUS'): {'W': w, 'Scale': scale, 'Randomness': randomness}, ('2D', 'EUCLIDEAN', 'F1'): {'Vector': vector, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Randomness': randomness}, ('2D', 'EUCLIDEAN', 'F2'): {'Vector': vector, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Randomness': randomness}, ('2D', 'EUCLIDEAN', 'SMOOTH_F1'): {'Vector': vector, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Smoothness': smoothness, 'Randomness': randomness}, ('2D', 'EUCLIDEAN', 'DISTANCE_TO_EDGE'): {'Vector': vector, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Randomness': randomness}, ('2D', 'EUCLIDEAN', 'N_SPHERE_RADIUS'): {'Vector': vector, 'Scale': scale, 'Randomness': randomness}, ('2D', 'MANHATTAN', 'F1'): {'Vector': vector, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Randomness': randomness}, ('2D', 'MANHATTAN', 'F2'): {'Vector': vector, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Randomness': randomness}, ('2D', 'MANHATTAN', 'SMOOTH_F1'): {'Vector': vector, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Smoothness': smoothness, 'Randomness': randomness}, ('2D', 'MANHATTAN', 'DISTANCE_TO_EDGE'): {'Vector': vector, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Randomness': randomness}, ('2D', 'MANHATTAN', 'N_SPHERE_RADIUS'): {'Vector': vector, 'Scale': scale, 'Randomness': randomness}, ('2D', 'CHEBYCHEV', 'F1'): {'Vector': vector, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Randomness': randomness}, ('2D', 'CHEBYCHEV', 'F2'): {'Vector': vector, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Randomness': randomness}, ('2D', 'CHEBYCHEV', 'SMOOTH_F1'): {'Vector': vector, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Smoothness': smoothness, 'Randomness': randomness}, ('2D', 'CHEBYCHEV', 'DISTANCE_TO_EDGE'): {'Vector': vector, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Randomness': randomness}, ('2D', 'CHEBYCHEV', 'N_SPHERE_RADIUS'): {'Vector': vector, 'Scale': scale, 'Randomness': randomness}, ('2D', 'MINKOWSKI', 'F1'): {'Vector': vector, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Exponent': exponent, 'Randomness': randomness}, ('2D', 'MINKOWSKI', 'F2'): {'Vector': vector, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Exponent': exponent, 'Randomness': randomness}, ('2D', 'MINKOWSKI', 'SMOOTH_F1'): {'Vector': vector, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Smoothness': smoothness, 'Exponent': exponent, 'Randomness': randomness}, ('2D', 'MINKOWSKI', 'DISTANCE_TO_EDGE'): {'Vector': vector, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Randomness': randomness}, ('2D', 'MINKOWSKI', 'N_SPHERE_RADIUS'): {'Vector': vector, 'Scale': scale, 'Randomness': randomness}, ('3D', 'EUCLIDEAN', 'F1'): {'Vector': vector, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Randomness': randomness}, ('3D', 'EUCLIDEAN', 'F2'): {'Vector': vector, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Randomness': randomness}, ('3D', 'EUCLIDEAN', 'SMOOTH_F1'): {'Vector': vector, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Smoothness': smoothness, 'Randomness': randomness}, ('3D', 'EUCLIDEAN', 'DISTANCE_TO_EDGE'): {'Vector': vector, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Randomness': randomness}, ('3D', 'EUCLIDEAN', 'N_SPHERE_RADIUS'): {'Vector': vector, 'Scale': scale, 'Randomness': randomness}, ('3D', 'MANHATTAN', 'F1'): {'Vector': vector, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Randomness': randomness}, ('3D', 'MANHATTAN', 'F2'): {'Vector': vector, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Randomness': randomness}, ('3D', 'MANHATTAN', 'SMOOTH_F1'): {'Vector': vector, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Smoothness': smoothness, 'Randomness': randomness}, ('3D', 'MANHATTAN', 'DISTANCE_TO_EDGE'): {'Vector': vector, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Randomness': randomness}, ('3D', 'MANHATTAN', 'N_SPHERE_RADIUS'): {'Vector': vector, 'Scale': scale, 'Randomness': randomness}, ('3D', 'CHEBYCHEV', 'F1'): {'Vector': vector, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Randomness': randomness}, ('3D', 'CHEBYCHEV', 'F2'): {'Vector': vector, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Randomness': randomness}, ('3D', 'CHEBYCHEV', 'SMOOTH_F1'): {'Vector': vector, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Smoothness': smoothness, 'Randomness': randomness}, ('3D', 'CHEBYCHEV', 'DISTANCE_TO_EDGE'): {'Vector': vector, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Randomness': randomness}, ('3D', 'CHEBYCHEV', 'N_SPHERE_RADIUS'): {'Vector': vector, 'Scale': scale, 'Randomness': randomness}, ('3D', 'MINKOWSKI', 'F1'): {'Vector': vector, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Exponent': exponent, 'Randomness': randomness}, ('3D', 'MINKOWSKI', 'F2'): {'Vector': vector, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Exponent': exponent, 'Randomness': randomness}, ('3D', 'MINKOWSKI', 'SMOOTH_F1'): {'Vector': vector, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Smoothness': smoothness, 'Exponent': exponent, 'Randomness': randomness}, ('3D', 'MINKOWSKI', 'DISTANCE_TO_EDGE'): {'Vector': vector, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Randomness': randomness}, ('3D', 'MINKOWSKI', 'N_SPHERE_RADIUS'): {'Vector': vector, 'Scale': scale, 'Randomness': randomness}, ('4D', 'EUCLIDEAN', 'F1'): {'Vector': vector, 'W': w, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Randomness': randomness}, ('4D', 'EUCLIDEAN', 'F2'): {'Vector': vector, 'W': w, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Randomness': randomness}, ('4D', 'EUCLIDEAN', 'SMOOTH_F1'): {'Vector': vector, 'W': w, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Smoothness': smoothness, 'Randomness': randomness}, ('4D', 'EUCLIDEAN', 'DISTANCE_TO_EDGE'): {'Vector': vector, 'W': w, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Randomness': randomness}, ('4D', 'EUCLIDEAN', 'N_SPHERE_RADIUS'): {'Vector': vector, 'W': w, 'Scale': scale, 'Randomness': randomness}, ('4D', 'MANHATTAN', 'F1'): {'Vector': vector, 'W': w, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Randomness': randomness}, ('4D', 'MANHATTAN', 'F2'): {'Vector': vector, 'W': w, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Randomness': randomness}, ('4D', 'MANHATTAN', 'SMOOTH_F1'): {'Vector': vector, 'W': w, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Smoothness': smoothness, 'Randomness': randomness}, ('4D', 'MANHATTAN', 'DISTANCE_TO_EDGE'): {'Vector': vector, 'W': w, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Randomness': randomness}, ('4D', 'MANHATTAN', 'N_SPHERE_RADIUS'): {'Vector': vector, 'W': w, 'Scale': scale, 'Randomness': randomness}, ('4D', 'CHEBYCHEV', 'F1'): {'Vector': vector, 'W': w, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Randomness': randomness}, ('4D', 'CHEBYCHEV', 'F2'): {'Vector': vector, 'W': w, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Randomness': randomness}, ('4D', 'CHEBYCHEV', 'SMOOTH_F1'): {'Vector': vector, 'W': w, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Smoothness': smoothness, 'Randomness': randomness}, ('4D', 'CHEBYCHEV', 'DISTANCE_TO_EDGE'): {'Vector': vector, 'W': w, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Randomness': randomness}, ('4D', 'CHEBYCHEV', 'N_SPHERE_RADIUS'): {'Vector': vector, 'W': w, 'Scale': scale, 'Randomness': randomness}, ('4D', 'MINKOWSKI', 'F1'): {'Vector': vector, 'W': w, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Exponent': exponent, 'Randomness': randomness}, ('4D', 'MINKOWSKI', 'F2'): {'Vector': vector, 'W': w, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Exponent': exponent, 'Randomness': randomness}, ('4D', 'MINKOWSKI', 'SMOOTH_F1'): {'Vector': vector, 'W': w, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Smoothness': smoothness, 'Exponent': exponent, 'Randomness': randomness}, ('4D', 'MINKOWSKI', 'DISTANCE_TO_EDGE'): {'Vector': vector, 'W': w, 'Scale': scale, 'Detail': detail, 'Roughness': roughness, 'Lacunarity': lacunarity, 'Randomness': randomness}, ('4D', 'MINKOWSKI', 'N_SPHERE_RADIUS'): {'Vector': vector, 'W': w, 'Scale': scale, 'Randomness': randomness}}[_configuration]
         _node_args = {('1D', 'EUCLIDEAN', 'F1'): [], ('1D', 'EUCLIDEAN', 'F2'): [], ('1D', 'EUCLIDEAN', 'SMOOTH_F1'): [], ('1D', 'EUCLIDEAN', 'DISTANCE_TO_EDGE'): [], ('1D', 'EUCLIDEAN', 'N_SPHERE_RADIUS'): [], ('1D', 'MANHATTAN', 'F1'): [], ('1D', 'MANHATTAN', 'F2'): [], ('1D', 'MANHATTAN', 'SMOOTH_F1'): [], ('1D', 'MANHATTAN', 'DISTANCE_TO_EDGE'): [], ('1D', 'MANHATTAN', 'N_SPHERE_RADIUS'): [], ('1D', 'CHEBYCHEV', 'F1'): [], ('1D', 'CHEBYCHEV', 'F2'): [], ('1D', 'CHEBYCHEV', 'SMOOTH_F1'): [], ('1D', 'CHEBYCHEV', 'DISTANCE_TO_EDGE'): [], ('1D', 'CHEBYCHEV', 'N_SPHERE_RADIUS'): [], ('1D', 'MINKOWSKI', 'F1'): [], ('1D', 'MINKOWSKI', 'F2'): [], ('1D', 'MINKOWSKI', 'SMOOTH_F1'): [], ('1D', 'MINKOWSKI', 'DISTANCE_TO_EDGE'): [], ('1D', 'MINKOWSKI', 'N_SPHERE_RADIUS'): [], ('2D', 'EUCLIDEAN', 'F1'): [], ('2D', 'EUCLIDEAN', 'F2'): [], ('2D', 'EUCLIDEAN', 'SMOOTH_F1'): [], ('2D', 'EUCLIDEAN', 'DISTANCE_TO_EDGE'): [], ('2D', 'EUCLIDEAN', 'N_SPHERE_RADIUS'): [], ('2D', 'MANHATTAN', 'F1'): [], ('2D', 'MANHATTAN', 'F2'): [], ('2D', 'MANHATTAN', 'SMOOTH_F1'): [], ('2D', 'MANHATTAN', 'DISTANCE_TO_EDGE'): [], ('2D', 'MANHATTAN', 'N_SPHERE_RADIUS'): [], ('2D', 'CHEBYCHEV', 'F1'): [], ('2D', 'CHEBYCHEV', 'F2'): [], ('2D', 'CHEBYCHEV', 'SMOOTH_F1'): [], ('2D', 'CHEBYCHEV', 'DISTANCE_TO_EDGE'): [], ('2D', 'CHEBYCHEV', 'N_SPHERE_RADIUS'): [], ('2D', 'MINKOWSKI', 'F1'): [], ('2D', 'MINKOWSKI', 'F2'): [], ('2D', 'MINKOWSKI', 'SMOOTH_F1'): [], ('2D', 'MINKOWSKI', 'DISTANCE_TO_EDGE'): [], ('2D', 'MINKOWSKI', 'N_SPHERE_RADIUS'): [], ('3D', 'EUCLIDEAN', 'F1'): [], ('3D', 'EUCLIDEAN', 'F2'): [], ('3D', 'EUCLIDEAN', 'SMOOTH_F1'): [], ('3D', 'EUCLIDEAN', 'DISTANCE_TO_EDGE'): [], ('3D', 'EUCLIDEAN', 'N_SPHERE_RADIUS'): [], ('3D', 'MANHATTAN', 'F1'): [], ('3D', 'MANHATTAN', 'F2'): [], ('3D', 'MANHATTAN', 'SMOOTH_F1'): [], ('3D', 'MANHATTAN', 'DISTANCE_TO_EDGE'): [], ('3D', 'MANHATTAN', 'N_SPHERE_RADIUS'): [], ('3D', 'CHEBYCHEV', 'F1'): [], ('3D', 'CHEBYCHEV', 'F2'): [], ('3D', 'CHEBYCHEV', 'SMOOTH_F1'): [], ('3D', 'CHEBYCHEV', 'DISTANCE_TO_EDGE'): [], ('3D', 'CHEBYCHEV', 'N_SPHERE_RADIUS'): [], ('3D', 'MINKOWSKI', 'F1'): [], ('3D', 'MINKOWSKI', 'F2'): [], ('3D', 'MINKOWSKI', 'SMOOTH_F1'): [], ('3D', 'MINKOWSKI', 'DISTANCE_TO_EDGE'): [], ('3D', 'MINKOWSKI', 'N_SPHERE_RADIUS'): [], ('4D', 'EUCLIDEAN', 'F1'): [], ('4D', 'EUCLIDEAN', 'F2'): [], ('4D', 'EUCLIDEAN', 'SMOOTH_F1'): [], ('4D', 'EUCLIDEAN', 'DISTANCE_TO_EDGE'): [], ('4D', 'EUCLIDEAN', 'N_SPHERE_RADIUS'): [], ('4D', 'MANHATTAN', 'F1'): [], ('4D', 'MANHATTAN', 'F2'): [], ('4D', 'MANHATTAN', 'SMOOTH_F1'): [], ('4D', 'MANHATTAN', 'DISTANCE_TO_EDGE'): [], ('4D', 'MANHATTAN', 'N_SPHERE_RADIUS'): [], ('4D', 'CHEBYCHEV', 'F1'): [], ('4D', 'CHEBYCHEV', 'F2'): [], ('4D', 'CHEBYCHEV', 'SMOOTH_F1'): [], ('4D', 'CHEBYCHEV', 'DISTANCE_TO_EDGE'): [], ('4D', 'CHEBYCHEV', 'N_SPHERE_RADIUS'): [], ('4D', 'MINKOWSKI', 'F1'): [], ('4D', 'MINKOWSKI', 'F2'): [], ('4D', 'MINKOWSKI', 'SMOOTH_F1'): [], ('4D', 'MINKOWSKI', 'DISTANCE_TO_EDGE'): [], ('4D', 'MINKOWSKI', 'N_SPHERE_RADIUS'): []}[_configuration]
         node = Node('Voronoi Texture', *_node_args, named_sockets=_node_sockets, voronoi_dimensions=voronoi_dimensions, distance=distance, feature=feature, normalize=normalize)
-        return node
+        return node._out
 
     @classmethod
     def voxel_index(cls):
@@ -8519,10 +8868,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Voxel Index', named_sockets={})
-        return node
+        return node._out
 
     @classmethod
     def voxelize_grid(cls, grid: Socket=None, data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR']='FLOAT'):
@@ -8538,10 +8888,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Voxelize Grid', named_sockets={'Grid': grid}, data_type=data_type)
-        return node
+        return node._out
 
     @classmethod
     def warning(cls, show: Boolean=None, message: String=None, warning_type: Literal['ERROR', 'WARNING', 'INFO']='ERROR'):
@@ -8560,10 +8911,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Warning', named_sockets={'Show': show, 'Message': message}, warning_type=warning_type)
-        return node
+        return node._out
 
     @classmethod
     def wave_texture(cls, vector: Vector=None, scale: Float=None, distortion: Float=None, detail: Float=None, detail_scale: Float=None, detail_roughness: Float=None, phase_offset: Float=None, wave_type: Literal['BANDS', 'RINGS']='BANDS', bands_direction: Literal['X', 'Y', 'Z', 'DIAGONAL']='X', rings_direction: Literal['X', 'Y', 'Z', 'SPHERICAL']='X', wave_profile: Literal['SIN', 'SAW', 'TRI']='SIN'):
@@ -8606,10 +8958,11 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('Wave Texture', named_sockets={'Vector': vector, 'Scale': scale, 'Distortion': distortion, 'Detail': detail, 'Detail Scale': detail_scale, 'Detail Roughness': detail_roughness, 'Phase Offset': phase_offset}, wave_type=wave_type, bands_direction=bands_direction, rings_direction=rings_direction, wave_profile=wave_profile)
-        return node
+        return node._out
 
     @classmethod
     def white_noise_texture(cls, vector: Vector=None, w: Float=None, noise_dimensions: Literal['1D', '2D', '3D', '4D']='3D'):
@@ -8628,13 +8981,14 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         _configuration = ({'1d': '1D', '2d': '2D', '3d': '3D', '4d': '4D'}.get(noise_dimensions.lower(), noise_dimensions),)
         _node_sockets = {('1D',): {'W': w}, ('2D',): {'Vector': vector}, ('3D',): {'Vector': vector}, ('4D',): {'Vector': vector, 'W': w}}[_configuration]
         _node_args = {('1D',): [], ('2D',): [], ('3D',): [], ('4D',): []}[_configuration]
         node = Node('White Noise Texture', *_node_args, named_sockets=_node_sockets, noise_dimensions=noise_dimensions)
-        return node
+        return node._out
 
     @classmethod
     def xpbd_solver(cls, world: Bundle=None, delta_time: Float=None, filter: String=None, simulation_to_world: Matrix=None, substeps: Integer=None, constraint_iterations: Integer=None, solver_path: String=None, begin: Float=None, end: Float=None):
@@ -8671,8 +9025,9 @@ class ND:
         
         Returns
         -------
-        Node
+        Socket
+            socket 'OUT'
         """
         node = Node('XPBD Solver', named_sockets={'World': world, 'Delta Time': delta_time, 'Filter': filter, 'Simulation to World': simulation_to_world, 'Substeps': substeps, 'Constraint Iterations': constraint_iterations, 'Solver Path': solver_path, 'Begin': begin, 'End': end})
-        return node
+        return node._out
 nd = ND()

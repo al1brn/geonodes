@@ -44,7 +44,13 @@ if TYPE_CHECKING:
     class Menu:
         ...
 
+    class Input:
+        ...
+
     class Geometry:
+        ...
+
+    class IntVector:
         ...
 
     class Texture:
@@ -991,9 +997,12 @@ class Integer(BaseInteger):
     def __ne__(self, other):
         return self.not_equal(other)
 
-    @classmethod
-    def accumulate_field(cls, value: Integer=None, group_id: Integer=None, domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']='POINT'):
+    def accumulate_field(self, group_id: Integer=None, domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']='POINT'):
         """ > Node <&Node Accumulate Field>
+        
+        Jump method: False.
+        
+        self: socket 'Value'.
         
         **Fixed values**
         
@@ -1003,9 +1012,6 @@ class Integer(BaseInteger):
         
         Parameters
         ----------
-        value : Integer, optional
-            socket 'Value'
-        
         group_id : Integer, optional
             socket 'Group ID'
         
@@ -1017,13 +1023,13 @@ class Integer(BaseInteger):
         Socket
             socket 'OUT'
         """
-        node = Node('Accumulate Field', named_sockets={'Value': value, 'Group ID': group_id}, data_type='INT', domain=domain)
+        node = Node('Accumulate Field', named_sockets={'Value': self, 'Group ID': group_id}, data_type='INT', domain=domain)
         return node._out
 
     def advect_grid(self, velocity: Vector=None, time_step: Float=None, integration_scheme: Menu=None, limiter: Menu=None):
         """ > Node <&Node Advect Grid>
         
-        Jump method: True.
+        Jump method: False.
         
         self: socket 'Grid'.
         
@@ -1053,8 +1059,7 @@ class Integer(BaseInteger):
             socket 'OUT'
         """
         node = Node('Advect Grid', named_sockets={'Grid': self, 'Velocity': velocity, 'Time Step': time_step, 'Integration Scheme': integration_scheme, 'Limiter': limiter}, data_type='INT')
-        self._jump(node._out)
-        return node._second_out(self)
+        return node._out
 
     def bit_math(self, b: Integer=None, shift: Integer=None, operation: Literal['AND', 'OR', 'XOR', 'NOT', 'SHIFT', 'ROTATE']='AND'):
         """ > Node <&Node Bit Math>
@@ -1085,9 +1090,12 @@ class Integer(BaseInteger):
         node = Node('Bit Math', *_node_args, named_sockets=_node_sockets, operation=operation)
         return node._out
 
-    @classmethod
-    def blur_attribute(cls, value: Integer=None, iterations: Integer=None, weight: Float=None):
+    def blur_attribute(self, iterations: Integer=None, weight: Float=None):
         """ > Node <&Node Blur Attribute>
+        
+        Jump method: False.
+        
+        self: socket 'Value'.
         
         **Fixed values**
         
@@ -1097,9 +1105,6 @@ class Integer(BaseInteger):
         
         Parameters
         ----------
-        value : Integer, optional
-            socket 'Value'
-        
         iterations : Integer, optional
             socket 'Iterations'
         
@@ -1111,13 +1116,13 @@ class Integer(BaseInteger):
         Socket
             socket 'OUT'
         """
-        node = Node('Blur Attribute', named_sockets={'Value': value, 'Iterations': iterations, 'Weight': weight}, data_type='INT')
+        node = Node('Blur Attribute', named_sockets={'Value': self, 'Iterations': iterations, 'Weight': weight}, data_type='INT')
         return node._out
 
     def clip_grid(self, min_x: Integer=None, min_y: Integer=None, min_z: Integer=None, max_x: Integer=None, max_y: Integer=None, max_z: Integer=None):
         """ > Node <&Node Clip Grid>
         
-        Jump method: True.
+        Jump method: False.
         
         self: socket 'Grid'.
         
@@ -1153,8 +1158,7 @@ class Integer(BaseInteger):
             socket 'OUT'
         """
         node = Node('Clip Grid', named_sockets={'Grid': self, 'Min X': min_x, 'Min Y': min_y, 'Min Z': min_z, 'Max X': max_x, 'Max Y': max_y, 'Max Z': max_z}, data_type='INT')
-        self._jump(node._out)
-        return node._second_out(self)
+        return node._out
 
     def closure_to_list(self, closure: Closure=None):
         """ > Node <&Node Closure to List>
@@ -1176,9 +1180,10 @@ class Integer(BaseInteger):
         node = Node('Closure to List', named_sockets={'Count': self, 'Closure': closure})
         return node._out
 
-    @classmethod
-    def combine_list(cls, *values: Socket):
+    def combine_list(self, *values: Socket):
         """ > Node <&Node Combine List>
+        
+        Jump method: False.
         
         **Fixed values**
         
@@ -1195,7 +1200,7 @@ class Integer(BaseInteger):
         return node._out
 
     @classmethod
-    def compare(cls, a: Integer=None, b: Integer=None, operation: Literal['LESS_THAN', 'LESS_EQUAL', 'GREATER_THAN', 'GREATER_EQUAL', 'EQUAL', 'NOT_EQUAL']='GREATER_THAN', mode: Literal['ELEMENT', 'LENGTH', 'AVERAGE', 'DOT_PRODUCT', 'DIRECTION']='ELEMENT'):
+    def Compare(cls, a: Integer=None, b: Integer=None, operation: Literal['LESS_THAN', 'LESS_EQUAL', 'GREATER_THAN', 'GREATER_EQUAL', 'EQUAL', 'NOT_EQUAL']='GREATER_THAN', mode: Literal['ELEMENT', 'LENGTH', 'AVERAGE', 'DOT_PRODUCT', 'DIRECTION']='ELEMENT'):
         """ > Node <&Node Compare>
         
         **Fixed values**
@@ -1229,7 +1234,7 @@ class Integer(BaseInteger):
     def deactivate_voxels(self):
         """ > Node <&Node Deactivate Voxels>
         
-        Jump method: True.
+        Jump method: False.
         
         self: socket 'Grid'.
         
@@ -1246,12 +1251,14 @@ class Integer(BaseInteger):
         """
         selection = self.get_selection()
         node = Node('Deactivate Voxels', named_sockets={'Grid': self, 'Selection': selection}, data_type='INT')
-        self._jump(node._out)
-        return node._second_out(self)
+        return node._out
 
-    @classmethod
-    def evaluate_at_index(cls, value: Integer=None, index: Integer=None, domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']='POINT'):
-        """ > Node <&Node Evaluate at Index>
+    def enable_output(self, value: Integer=None):
+        """ > Node <&Node Enable Output>
+        
+        Jump method: False.
+        
+        self: socket 'Enable'.
         
         **Fixed values**
         
@@ -1264,6 +1271,29 @@ class Integer(BaseInteger):
         value : Integer, optional
             socket 'Value'
         
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Enable Output', named_sockets={'Enable': self, 'Value': value}, data_type='INT')
+        return node._out
+
+    def evaluate_at_index(self, index: Integer=None, domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']='POINT'):
+        """ > Node <&Node Evaluate at Index>
+        
+        Jump method: False.
+        
+        self: socket 'Value'.
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `data_type` | `'INT'` |
+        
+        Parameters
+        ----------
         index : Integer, optional
             socket 'Index'
         
@@ -1275,12 +1305,15 @@ class Integer(BaseInteger):
         Socket
             socket 'OUT'
         """
-        node = Node('Evaluate at Index', named_sockets={'Value': value, 'Index': index}, domain=domain, data_type='INT')
+        node = Node('Evaluate at Index', named_sockets={'Value': self, 'Index': index}, domain=domain, data_type='INT')
         return node._out
 
-    @classmethod
-    def evaluate_on_domain(cls, value: Integer=None, domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']='POINT'):
+    def evaluate_on_domain(self, domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']='POINT'):
         """ > Node <&Node Evaluate on Domain>
+        
+        Jump method: False.
+        
+        self: socket 'Value'.
         
         **Fixed values**
         
@@ -1290,9 +1323,6 @@ class Integer(BaseInteger):
         
         Parameters
         ----------
-        value : Integer, optional
-            socket 'Value'
-        
         domain : Literal['Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer']
             parameter `domain`
         
@@ -1301,12 +1331,15 @@ class Integer(BaseInteger):
         Socket
             socket 'OUT'
         """
-        node = Node('Evaluate on Domain', named_sockets={'Value': value}, domain=domain, data_type='INT')
+        node = Node('Evaluate on Domain', named_sockets={'Value': self}, domain=domain, data_type='INT')
         return node._out
 
-    @classmethod
-    def field_min_max(cls, value: Integer=None, group_id: Integer=None, domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']='POINT'):
+    def field_min_max(self, group_id: Integer=None, domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']='POINT'):
         """ > Node <&Node Field Min & Max>
+        
+        Jump method: False.
+        
+        self: socket 'Value'.
         
         **Fixed values**
         
@@ -1316,9 +1349,6 @@ class Integer(BaseInteger):
         
         Parameters
         ----------
-        value : Integer, optional
-            socket 'Value'
-        
         group_id : Integer, optional
             socket 'Group ID'
         
@@ -1330,7 +1360,7 @@ class Integer(BaseInteger):
         Socket
             socket 'OUT'
         """
-        node = Node('Field Min & Max', named_sockets={'Value': value, 'Group ID': group_id}, data_type='INT', domain=domain)
+        node = Node('Field Min & Max', named_sockets={'Value': self, 'Group ID': group_id}, data_type='INT', domain=domain)
         return node._out
 
     def field_to_grid(self, named_sockets=None, **sockets):
@@ -1373,35 +1403,34 @@ class Integer(BaseInteger):
         node = Node('Field to List', named_sockets=_named_sockets, **sockets)
         return node._out
 
-    @classmethod
-    def filter_list(cls, list: Integer=None, selection: Boolean=None):
+    def filter_list(self):
         """ > Node <&Node Filter List>
+        
+        Jump method: False.
+        
+        self: socket 'List'.
         
         **Fixed values**
         
         | Parameter | Value |
         | --- | --- |
         | `socket_type` | `'INT'` |
-        
-        Parameters
-        ----------
-        list : Integer, optional
-            socket 'List'
-        
-        selection : Boolean, optional
-            socket 'Selection'
         
         Returns
         -------
         Socket
             socket 'OUT'
         """
-        node = Node('Filter List', named_sockets={'List': list, 'Selection': selection}, socket_type='INT')
+        selection = self.get_selection()
+        node = Node('Filter List', named_sockets={'List': self, 'Selection': selection}, socket_type='INT')
         return node._out
 
-    @classmethod
-    def get_list_item(cls, list: Integer=None, index: Integer=None):
+    def get_list_item(self, index: Integer=None):
         """ > Node <&Node Get List Item>
+        
+        Jump method: False.
+        
+        self: socket 'List'.
         
         **Fixed values**
         
@@ -1411,9 +1440,6 @@ class Integer(BaseInteger):
         
         Parameters
         ----------
-        list : Integer, optional
-            socket 'List'
-        
         index : Integer, optional
             socket 'Index'
         
@@ -1422,13 +1448,13 @@ class Integer(BaseInteger):
         Socket
             socket 'OUT'
         """
-        node = Node('Get List Item', named_sockets={'List': list, 'Index': index}, socket_type='INT')
+        node = Node('Get List Item', named_sockets={'List': self, 'Index': index}, socket_type='INT')
         return node._out
 
     def grid_dilate_erode(self, connectivity: Menu=None, tiles: Menu=None, steps: Integer=None):
         """ > Node <&Node Grid Dilate & Erode>
         
-        Jump method: True.
+        Jump method: False.
         
         self: socket 'Grid'.
         
@@ -1455,13 +1481,33 @@ class Integer(BaseInteger):
             socket 'OUT'
         """
         node = Node('Grid Dilate & Erode', named_sockets={'Grid': self, 'Connectivity': connectivity, 'Tiles': tiles, 'Steps': steps}, data_type='INT')
-        self._jump(node._out)
-        return node._second_out(self)
+        return node._out
+
+    def grid_info(self):
+        """ > Node <&Node Grid Info>
+        
+        Jump method: False.
+        
+        self: socket 'Grid'.
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `data_type` | `'INT'` |
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Grid Info', named_sockets={'Grid': self}, data_type='INT')
+        return node._out
 
     def grid_mean(self, width: Integer=None, iterations: Integer=None):
         """ > Node <&Node Grid Mean>
         
-        Jump method: True.
+        Jump method: False.
         
         self: socket 'Grid'.
         
@@ -1485,13 +1531,12 @@ class Integer(BaseInteger):
             socket 'OUT'
         """
         node = Node('Grid Mean', named_sockets={'Grid': self, 'Width': width, 'Iterations': iterations}, data_type='INT')
-        self._jump(node._out)
-        return node._second_out(self)
+        return node._out
 
     def grid_median(self, width: Integer=None, iterations: Integer=None):
         """ > Node <&Node Grid Median>
         
-        Jump method: True.
+        Jump method: False.
         
         self: socket 'Grid'.
         
@@ -1515,12 +1560,35 @@ class Integer(BaseInteger):
             socket 'OUT'
         """
         node = Node('Grid Median', named_sockets={'Grid': self, 'Width': width, 'Iterations': iterations}, data_type='INT')
-        self._jump(node._out)
-        return node._second_out(self)
+        return node._out
 
-    @classmethod
-    def GridTopologyBoolean(cls, *grid_2: Integer, operation: Menu=None, grid_1: Integer=None):
+    def FromGrid(self):
+        """ > Node <&Node Grid to Points>
+        
+        Jump method: False.
+        
+        self: socket 'Grid'.
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `data_type` | `'INT'` |
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Grid to Points', named_sockets={'Grid': self}, data_type='INT')
+        return node._out
+
+    def grid_topology_boolean(self, *grid_2_1: Integer, operation: Menu=None, grid_1: Integer=None):
         """ > Node <&Node Grid Topology Boolean>
+        
+        Jump method: False.
+        
+        self: socket 'Grid 2'.
         
         **Fixed values**
         
@@ -1530,7 +1598,7 @@ class Integer(BaseInteger):
         
         Parameters
         ----------
-        grid_2 : Integer, optional
+        grid_2_1 : Integer, optional
             socket 'Grid 2'
         
         operation : Menu, optional
@@ -1544,11 +1612,11 @@ class Integer(BaseInteger):
         Socket
             socket 'OUT'
         """
-        node = Node('Grid Topology Boolean', *[*list(grid_2)], named_sockets={'Operation': operation, 'Grid 1': grid_1}, data_type='INT')
+        node = Node('Grid Topology Boolean', *[*[self, *grid_2_1]], named_sockets={'Operation': operation, 'Grid 1': grid_1}, data_type='INT')
         return node._out
 
     @classmethod
-    def hash_value(cls, value: Integer=None, seed: Integer=None):
+    def HashValue(cls, value: Integer=None, seed: Integer=None):
         """ > Node <&Node Hash Value>
         
         **Fixed values**
@@ -1573,9 +1641,12 @@ class Integer(BaseInteger):
         node = Node('Hash Value', named_sockets={'Value': value, 'Seed': seed}, data_type='INT')
         return node._out
 
-    @classmethod
-    def implicit_conversion(cls, value: Integer=None, socket_idname: str='NodeSocketColor'):
+    def implicit_conversion(self, socket_idname: str='NodeSocketColor'):
         """ > Node <&Node Implicit Conversion>
+        
+        Jump method: False.
+        
+        self: socket 'Value'.
         
         **Fixed values**
         
@@ -1585,9 +1656,6 @@ class Integer(BaseInteger):
         
         Parameters
         ----------
-        value : Integer, optional
-            socket 'Value'
-        
         socket_idname : str
             parameter `socket_idname`
         
@@ -1596,7 +1664,7 @@ class Integer(BaseInteger):
         Socket
             socket 'OUT'
         """
-        node = Node('Implicit Conversion', named_sockets={'Value': value}, data_type='INT', socket_idname=socket_idname)
+        node = Node('Implicit Conversion', named_sockets={'Value': self}, data_type='INT', socket_idname=socket_idname)
         return node._out
 
     def index_switch(self, *values: Socket, data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SOUND']='FLOAT', default_index: int=0):
@@ -1660,7 +1728,7 @@ class Integer(BaseInteger):
         return node._out
 
     @classmethod
-    def list_length(cls, list: Integer=None):
+    def ListLength(cls, list: Integer=None):
         """ > Node <&Node List Length>
         
         **Fixed values**
@@ -1685,7 +1753,7 @@ class Integer(BaseInteger):
     def prune_grid(self, mode: Menu=None, threshold: Integer=None):
         """ > Node <&Node Prune Grid>
         
-        Jump method: True.
+        Jump method: False.
         
         self: socket 'Grid'.
         
@@ -1709,12 +1777,14 @@ class Integer(BaseInteger):
             socket 'OUT'
         """
         node = Node('Prune Grid', named_sockets={'Grid': self, 'Mode': mode, 'Threshold': threshold}, data_type='INT')
-        self._jump(node._out)
-        return node._second_out(self)
+        return node._out
 
-    @classmethod
-    def random_value(cls, min: Integer=None, max: Integer=None, id: Integer=None, seed: Integer=None):
+    def random_value(self, max: Integer=None, id: Integer=None, seed: Integer=None):
         """ > Node <&Node Random Value>
+        
+        Jump method: False.
+        
+        self: socket 'Min'.
         
         **Fixed values**
         
@@ -1724,9 +1794,6 @@ class Integer(BaseInteger):
         
         Parameters
         ----------
-        min : Integer, optional
-            socket 'Min'
-        
         max : Integer, optional
             socket 'Max'
         
@@ -1741,7 +1808,89 @@ class Integer(BaseInteger):
         Socket
             socket 'OUT'
         """
-        node = Node('Random Value', named_sockets={'Min': min, 'Max': max, 'ID': id, 'Seed': seed}, data_type='INT')
+        node = Node('Random Value', named_sockets={'Min': self, 'Max': max, 'ID': id, 'Seed': seed}, data_type='INT')
+        return node._out
+
+    def raycast(self, attribute: Integer=None, interpolation: Menu=None, source_position: Vector=None, ray_direction: Vector=None, ray_length: Float=None):
+        """ > Node <&Node Raycast>
+        
+        Jump method: False.
+        
+        self: socket 'Target Geometry'.
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `data_type` | `'INT'` |
+        
+        Parameters
+        ----------
+        attribute : Integer, optional
+            socket 'Attribute'
+        
+        interpolation : Menu, optional
+            socket 'Interpolation'
+        
+        source_position : Vector, optional
+            socket 'Source Position'
+        
+        ray_direction : Vector, optional
+            socket 'Ray Direction'
+        
+        ray_length : Float, optional
+            socket 'Ray Length'
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Raycast', named_sockets={'Target Geometry': self, 'Attribute': attribute, 'Interpolation': interpolation, 'Source Position': source_position, 'Ray Direction': ray_direction, 'Ray Length': ray_length}, data_type='INT')
+        return node._out
+
+    def sample_curve(self, value: Integer=None, length: Float=None, curve_index: Integer=None, factor: Float=None, mode: Literal['FACTOR', 'LENGTH']='FACTOR', use_all_curves: bool=False):
+        """ > Node <&Node Sample Curve>
+        
+        Jump method: False.
+        
+        self: socket 'Curves'.
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `data_type` | `'INT'` |
+        
+        Parameters
+        ----------
+        value : Integer, optional
+            socket 'Value'
+        
+        length : Float, optional
+            socket 'Length'
+        
+        curve_index : Integer, optional
+            socket 'Curve Index'
+        
+        factor : Float, optional
+            socket 'Factor'
+        
+        mode : Literal['Factor', 'Length']
+            parameter `mode`
+        
+        use_all_curves : bool
+            parameter `use_all_curves`
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        _configuration = ({'factor': 'FACTOR', 'length': 'LENGTH'}.get(mode.lower(), mode), 'INT')
+        _node_sockets = {('FACTOR', 'INT'): {'Curves': self, 'Value': value, 'Factor': factor, 'Curve Index': curve_index}, ('LENGTH', 'INT'): {'Curves': self, 'Value': value, 'Length': length, 'Curve Index': curve_index}}[_configuration]
+        _node_args = {('FACTOR', 'INT'): [], ('LENGTH', 'INT'): []}[_configuration]
+        node = Node('Sample Curve', *_node_args, named_sockets=_node_sockets, mode=mode, data_type='INT', use_all_curves=use_all_curves)
         return node._out
 
     def sample_grid(self, position: Vector=None, interpolation: Menu=None):
@@ -1805,10 +1954,112 @@ class Integer(BaseInteger):
         node = Node('Sample Grid Index', named_sockets={'Grid': self, 'X': x, 'Y': y, 'Z': z}, data_type='INT')
         return node._out
 
+    def sample_index(self, value: Integer=None, index: Integer=None, domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']='POINT', clamp: bool=False):
+        """ > Node <&Node Sample Index>
+        
+        Jump method: False.
+        
+        self: socket 'Geometry'.
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `data_type` | `'INT'` |
+        
+        Parameters
+        ----------
+        value : Integer, optional
+            socket 'Value'
+        
+        index : Integer, optional
+            socket 'Index'
+        
+        domain : Literal['Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer']
+            parameter `domain`
+        
+        clamp : bool
+            parameter `clamp`
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Sample Index', named_sockets={'Geometry': self, 'Value': value, 'Index': index}, data_type='INT', domain=domain, clamp=clamp)
+        return node._out
+
+    def sample_nearest_surface(self, value: Integer=None, group_id: Integer=None, sample_position: Vector=None, sample_group_id: Integer=None):
+        """ > Node <&Node Sample Nearest Surface>
+        
+        Jump method: False.
+        
+        self: socket 'Mesh'.
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `data_type` | `'INT'` |
+        
+        Parameters
+        ----------
+        value : Integer, optional
+            socket 'Value'
+        
+        group_id : Integer, optional
+            socket 'Group ID'
+        
+        sample_position : Vector, optional
+            socket 'Sample Position'
+        
+        sample_group_id : Integer, optional
+            socket 'Sample Group ID'
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Sample Nearest Surface', named_sockets={'Mesh': self, 'Value': value, 'Group ID': group_id, 'Sample Position': sample_position, 'Sample Group ID': sample_group_id}, data_type='INT')
+        return node._out
+
+    def sample_uv_surface(self, value: Integer=None, uv_map: Vector=None, sample_uv: Vector=None):
+        """ > Node <&Node Sample UV Surface>
+        
+        Jump method: False.
+        
+        self: socket 'Mesh'.
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `data_type` | `'INT'` |
+        
+        Parameters
+        ----------
+        value : Integer, optional
+            socket 'Value'
+        
+        uv_map : Vector, optional
+            socket 'UV Map'
+        
+        sample_uv : Vector, optional
+            socket 'Sample UV'
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Sample UV Surface', named_sockets={'Mesh': self, 'Value': value, 'UV Map': uv_map, 'Sample UV': sample_uv}, data_type='INT')
+        return node._out
+
     def set_grid_background(self, background: Integer=None, update_inactive: Boolean=None):
         """ > Node <&Node Set Grid Background>
         
-        Jump method: True.
+        Jump method: False.
         
         self: socket 'Grid'.
         
@@ -1832,8 +2083,7 @@ class Integer(BaseInteger):
             socket 'OUT'
         """
         node = Node('Set Grid Background', named_sockets={'Grid': self, 'Background': background, 'Update Inactive': update_inactive}, data_type='INT')
-        self._jump(node._out)
-        return node._second_out(self)
+        return node._out
 
     def set_grid_transform(self, transform: Matrix=None):
         """ > Node <&Node Set Grid Transform>
@@ -1861,9 +2111,12 @@ class Integer(BaseInteger):
         node = Node('Set Grid Transform', named_sockets={'Grid': self, 'Transform': transform}, data_type='INT')
         return node._out
 
-    @classmethod
-    def sort_list(cls, list: Integer=None, selection: Boolean=None, group_id: Integer=None, sort_weight: Float=None):
+    def sort_list(self, group_id: Integer=None, sort_weight: Float=None):
         """ > Node <&Node Sort List>
+        
+        Jump method: False.
+        
+        self: socket 'List'.
         
         **Fixed values**
         
@@ -1873,12 +2126,6 @@ class Integer(BaseInteger):
         
         Parameters
         ----------
-        list : Integer, optional
-            socket 'List'
-        
-        selection : Boolean, optional
-            socket 'Selection'
-        
         group_id : Integer, optional
             socket 'Group ID'
         
@@ -1890,7 +2137,37 @@ class Integer(BaseInteger):
         Socket
             socket 'OUT'
         """
-        node = Node('Sort List', named_sockets={'List': list, 'Selection': selection, 'Group ID': group_id, 'Sort Weight': sort_weight}, socket_type='INT')
+        selection = self.get_selection()
+        node = Node('Sort List', named_sockets={'List': self, 'Selection': selection, 'Group ID': group_id, 'Sort Weight': sort_weight}, socket_type='INT')
+        return node._out
+
+    def switch(self, false: Integer=None, true: Integer=None):
+        """ > Node <&Node Switch>
+        
+        Jump method: False.
+        
+        self: socket 'Switch'.
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `input_type` | `'INT'` |
+        
+        Parameters
+        ----------
+        false : Integer, optional
+            socket 'False'
+        
+        true : Integer, optional
+            socket 'True'
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Switch', named_sockets={'Switch': self, 'False': false, 'True': true}, input_type='INT')
         return node._out
 
     def to_string(self, decimals: Integer=None, base: Integer=None, padding: Integer=None, data_type: Literal['FLOAT', 'INT']='FLOAT'):
@@ -1928,7 +2205,7 @@ class Integer(BaseInteger):
     def voxelize_grid(self):
         """ > Node <&Node Voxelize Grid>
         
-        Jump method: True.
+        Jump method: False.
         
         self: socket 'Grid'.
         
@@ -1944,5 +2221,448 @@ class Integer(BaseInteger):
             socket 'OUT'
         """
         node = Node('Voxelize Grid', named_sockets={'Grid': self}, data_type='INT')
-        self._jump(node._out)
-        return node._second_out(self)
+        return node._out
+
+    @classmethod
+    def _create_input_socket(cls, value: int=0, name: str='Integer', min: int=-2147483648, max: int=2147483647, tip: str='', panel: str='', optional_label: bool=False, hide_value: bool=False, hide_in_modifier: bool=False, default_attribute: str='', default_input: Literal['VALUE', 'INDEX', 'ID_OR_INDEX']='VALUE', shape: Literal['AUTO', 'SINGLE']='AUTO', subtype: str='NONE'):
+        """ > Integer Input
+
+        New <#Integer> input with subtype 'NONE'.
+
+        Parameters
+        ----------
+        value : int, default=`0`
+            Default value
+
+        name : str, default=`Integer`
+            Input socket name
+
+        min : int, default=`-2147483648`
+            Property min_value
+
+        max : int, default=`2147483647`
+            Property max_value
+
+        tip : str, default=`''`
+            Property description
+
+        panel : str, default=``
+            Panel name
+
+        optional_label : bool, default=`False`
+            Property optional_label
+
+        hide_value : bool, default=`False`
+            Property hide_value
+
+        hide_in_modifier : bool, default=`False`
+            Property hide_in_modifier
+
+        default_attribute : str, default=`''`
+            Property default_attribute_name
+
+        default_input : str, default=`'VALUE'`
+            Property default_input in ('VALUE', 'INDEX', 'ID_OR_INDEX')
+
+        shape : str, default=`'AUTO'`
+            Property structure_type in ('AUTO', 'SINGLE')
+
+        subtype : str, default=`NONE`
+            Socket sub type in ('NONE', 'PIXEL', 'PERCENTAGE', 'FACTOR')
+
+
+        Returns
+        -------
+        Integer
+        """
+        from ..treeclass import Tree
+        defval = utils.python_value_for_socket(value, cls.SOCKET_TYPE)
+        return Tree.current_tree().create_input_socket('NodeSocketInt', default_value=defval, name=name, min=min, max=max, tip=tip, panel=panel, optional_label=optional_label, hide_value=hide_value, hide_in_modifier=hide_in_modifier, default_attribute=default_attribute, default_input=default_input, shape=shape, subtype=subtype)
+
+    @classmethod
+    def Pixel(cls, value: int=0, name: str='Pixel', min: int=-2147483648, max: int=2147483647, tip: str='', panel: str='', optional_label: bool=False, hide_value: bool=False, hide_in_modifier: bool=False, default_attribute: str='', default_input: Literal['VALUE', 'INDEX', 'ID_OR_INDEX']='VALUE', shape: Literal['AUTO', 'SINGLE']='AUTO'):
+        """ > Pixel Input
+
+        New <#Integer> input with subtype 'PIXEL'.
+
+        Parameters
+        ----------
+        value : int, default=`0`
+            Default value
+
+        name : str, default=`Pixel`
+            Input socket name
+
+        min : int, default=`-2147483648`
+            Property min_value
+
+        max : int, default=`2147483647`
+            Property max_value
+
+        tip : str, default=`''`
+            Property description
+
+        panel : str, default=``
+            Panel name
+
+        optional_label : bool, default=`False`
+            Property optional_label
+
+        hide_value : bool, default=`False`
+            Property hide_value
+
+        hide_in_modifier : bool, default=`False`
+            Property hide_in_modifier
+
+        default_attribute : str, default=`''`
+            Property default_attribute_name
+
+        default_input : str, default=`'VALUE'`
+            Property default_input in ('VALUE', 'INDEX', 'ID_OR_INDEX')
+
+        shape : str, default=`'AUTO'`
+            Property structure_type in ('AUTO', 'SINGLE')
+
+
+        Returns
+        -------
+        Integer
+        """
+        return cls(value=value, name=name, min=min, max=max, tip=tip, panel=panel, optional_label=optional_label, hide_value=hide_value, hide_in_modifier=hide_in_modifier, default_attribute=default_attribute, default_input=default_input, shape=shape, subtype='PIXEL')
+
+    @classmethod
+    def Percentage(cls, value: int=0, name: str='Percentage', min: int=-2147483648, max: int=2147483647, tip: str='', panel: str='', optional_label: bool=False, hide_value: bool=False, hide_in_modifier: bool=False, default_attribute: str='', default_input: Literal['VALUE', 'INDEX', 'ID_OR_INDEX']='VALUE', shape: Literal['AUTO', 'SINGLE']='AUTO'):
+        """ > Percentage Input
+
+        New <#Integer> input with subtype 'PERCENTAGE'.
+
+        Parameters
+        ----------
+        value : int, default=`0`
+            Default value
+
+        name : str, default=`Percentage`
+            Input socket name
+
+        min : int, default=`-2147483648`
+            Property min_value
+
+        max : int, default=`2147483647`
+            Property max_value
+
+        tip : str, default=`''`
+            Property description
+
+        panel : str, default=``
+            Panel name
+
+        optional_label : bool, default=`False`
+            Property optional_label
+
+        hide_value : bool, default=`False`
+            Property hide_value
+
+        hide_in_modifier : bool, default=`False`
+            Property hide_in_modifier
+
+        default_attribute : str, default=`''`
+            Property default_attribute_name
+
+        default_input : str, default=`'VALUE'`
+            Property default_input in ('VALUE', 'INDEX', 'ID_OR_INDEX')
+
+        shape : str, default=`'AUTO'`
+            Property structure_type in ('AUTO', 'SINGLE')
+
+
+        Returns
+        -------
+        Integer
+        """
+        return cls(value=value, name=name, min=min, max=max, tip=tip, panel=panel, optional_label=optional_label, hide_value=hide_value, hide_in_modifier=hide_in_modifier, default_attribute=default_attribute, default_input=default_input, shape=shape, subtype='PERCENTAGE')
+
+    @classmethod
+    def Factor(cls, value: int=0, name: str='Factor', min: int=-2147483648, max: int=2147483647, tip: str='', panel: str='', optional_label: bool=False, hide_value: bool=False, hide_in_modifier: bool=False, default_attribute: str='', default_input: Literal['VALUE', 'INDEX', 'ID_OR_INDEX']='VALUE', shape: Literal['AUTO', 'SINGLE']='AUTO'):
+        """ > Factor Input
+
+        New <#Integer> input with subtype 'FACTOR'.
+
+        Parameters
+        ----------
+        value : int, default=`0`
+            Default value
+
+        name : str, default=`Factor`
+            Input socket name
+
+        min : int, default=`-2147483648`
+            Property min_value
+
+        max : int, default=`2147483647`
+            Property max_value
+
+        tip : str, default=`''`
+            Property description
+
+        panel : str, default=``
+            Panel name
+
+        optional_label : bool, default=`False`
+            Property optional_label
+
+        hide_value : bool, default=`False`
+            Property hide_value
+
+        hide_in_modifier : bool, default=`False`
+            Property hide_in_modifier
+
+        default_attribute : str, default=`''`
+            Property default_attribute_name
+
+        default_input : str, default=`'VALUE'`
+            Property default_input in ('VALUE', 'INDEX', 'ID_OR_INDEX')
+
+        shape : str, default=`'AUTO'`
+            Property structure_type in ('AUTO', 'SINGLE')
+
+
+        Returns
+        -------
+        Integer
+        """
+        return cls(value=value, name=name, min=min, max=max, tip=tip, panel=panel, optional_label=optional_label, hide_value=hide_value, hide_in_modifier=hide_in_modifier, default_attribute=default_attribute, default_input=default_input, shape=shape, subtype='FACTOR')
+
+    def switch_false(self, switch: Boolean=None, false: Socket=None, input_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SOUND']='FLOAT'):
+        """ > Node <&Node Switch>
+        
+        Jump method: False.
+        
+        self: socket 'True'.
+        
+        Parameters
+        ----------
+        switch : Boolean, optional
+            socket 'Switch'
+        
+        false : Socket, optional
+            socket 'False'
+        
+        input_type : Literal['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Rotation', 'Matrix', 'String', 'Menu', 'Object', 'Image', 'Geometry', 'Collection', 'Material', 'Bundle', 'Closure', 'Font', 'Sound']
+            parameter `input_type`
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Switch', named_sockets={'Switch': switch, 'False': false, 'True': self}, input_type=input_type)
+        return node._out
+
+    @classmethod
+    def _create_input_socket(cls, value: int=0, name: str='Integer', min: int=-2147483648, max: int=2147483647, tip: str='', panel: str='', optional_label: bool=False, hide_value: bool=False, hide_in_modifier: bool=False, default_attribute: str='', default_input: Literal['VALUE', 'INDEX', 'ID_OR_INDEX']='VALUE', shape: Literal['AUTO', 'SINGLE']='AUTO', subtype: str='NONE'):
+        """ > Integer Input
+
+        New <#Integer> input with subtype 'NONE'.
+
+        Parameters
+        ----------
+        value : int, default=`0`
+            Default value
+
+        name : str, default=`Integer`
+            Input socket name
+
+        min : int, default=`-2147483648`
+            Property min_value
+
+        max : int, default=`2147483647`
+            Property max_value
+
+        tip : str, default=`''`
+            Property description
+
+        panel : str, default=``
+            Panel name
+
+        optional_label : bool, default=`False`
+            Property optional_label
+
+        hide_value : bool, default=`False`
+            Property hide_value
+
+        hide_in_modifier : bool, default=`False`
+            Property hide_in_modifier
+
+        default_attribute : str, default=`''`
+            Property default_attribute_name
+
+        default_input : str, default=`'VALUE'`
+            Property default_input in ('VALUE', 'INDEX', 'ID_OR_INDEX')
+
+        shape : str, default=`'AUTO'`
+            Property structure_type in ('AUTO', 'SINGLE')
+
+        subtype : str, default=`NONE`
+            Socket sub type in ('NONE', 'PIXEL', 'PERCENTAGE', 'FACTOR')
+
+
+        Returns
+        -------
+        Integer
+        """
+        from ..treeclass import Tree
+        defval = utils.python_value_for_socket(value, cls.SOCKET_TYPE)
+        return Tree.current_tree().create_input_socket('NodeSocketInt', default_value=defval, name=name, min=min, max=max, tip=tip, panel=panel, optional_label=optional_label, hide_value=hide_value, hide_in_modifier=hide_in_modifier, default_attribute=default_attribute, default_input=default_input, shape=shape, subtype=subtype)
+
+    @classmethod
+    def Pixel(cls, value: int=0, name: str='Pixel', min: int=-2147483648, max: int=2147483647, tip: str='', panel: str='', optional_label: bool=False, hide_value: bool=False, hide_in_modifier: bool=False, default_attribute: str='', default_input: Literal['VALUE', 'INDEX', 'ID_OR_INDEX']='VALUE', shape: Literal['AUTO', 'SINGLE']='AUTO'):
+        """ > Pixel Input
+
+        New <#Integer> input with subtype 'PIXEL'.
+
+        Parameters
+        ----------
+        value : int, default=`0`
+            Default value
+
+        name : str, default=`Pixel`
+            Input socket name
+
+        min : int, default=`-2147483648`
+            Property min_value
+
+        max : int, default=`2147483647`
+            Property max_value
+
+        tip : str, default=`''`
+            Property description
+
+        panel : str, default=``
+            Panel name
+
+        optional_label : bool, default=`False`
+            Property optional_label
+
+        hide_value : bool, default=`False`
+            Property hide_value
+
+        hide_in_modifier : bool, default=`False`
+            Property hide_in_modifier
+
+        default_attribute : str, default=`''`
+            Property default_attribute_name
+
+        default_input : str, default=`'VALUE'`
+            Property default_input in ('VALUE', 'INDEX', 'ID_OR_INDEX')
+
+        shape : str, default=`'AUTO'`
+            Property structure_type in ('AUTO', 'SINGLE')
+
+
+        Returns
+        -------
+        Integer
+        """
+        return cls(value=value, name=name, min=min, max=max, tip=tip, panel=panel, optional_label=optional_label, hide_value=hide_value, hide_in_modifier=hide_in_modifier, default_attribute=default_attribute, default_input=default_input, shape=shape, subtype='PIXEL')
+
+    @classmethod
+    def Percentage(cls, value: int=0, name: str='Percentage', min: int=-2147483648, max: int=2147483647, tip: str='', panel: str='', optional_label: bool=False, hide_value: bool=False, hide_in_modifier: bool=False, default_attribute: str='', default_input: Literal['VALUE', 'INDEX', 'ID_OR_INDEX']='VALUE', shape: Literal['AUTO', 'SINGLE']='AUTO'):
+        """ > Percentage Input
+
+        New <#Integer> input with subtype 'PERCENTAGE'.
+
+        Parameters
+        ----------
+        value : int, default=`0`
+            Default value
+
+        name : str, default=`Percentage`
+            Input socket name
+
+        min : int, default=`-2147483648`
+            Property min_value
+
+        max : int, default=`2147483647`
+            Property max_value
+
+        tip : str, default=`''`
+            Property description
+
+        panel : str, default=``
+            Panel name
+
+        optional_label : bool, default=`False`
+            Property optional_label
+
+        hide_value : bool, default=`False`
+            Property hide_value
+
+        hide_in_modifier : bool, default=`False`
+            Property hide_in_modifier
+
+        default_attribute : str, default=`''`
+            Property default_attribute_name
+
+        default_input : str, default=`'VALUE'`
+            Property default_input in ('VALUE', 'INDEX', 'ID_OR_INDEX')
+
+        shape : str, default=`'AUTO'`
+            Property structure_type in ('AUTO', 'SINGLE')
+
+
+        Returns
+        -------
+        Integer
+        """
+        return cls(value=value, name=name, min=min, max=max, tip=tip, panel=panel, optional_label=optional_label, hide_value=hide_value, hide_in_modifier=hide_in_modifier, default_attribute=default_attribute, default_input=default_input, shape=shape, subtype='PERCENTAGE')
+
+    @classmethod
+    def Factor(cls, value: int=0, name: str='Factor', min: int=-2147483648, max: int=2147483647, tip: str='', panel: str='', optional_label: bool=False, hide_value: bool=False, hide_in_modifier: bool=False, default_attribute: str='', default_input: Literal['VALUE', 'INDEX', 'ID_OR_INDEX']='VALUE', shape: Literal['AUTO', 'SINGLE']='AUTO'):
+        """ > Factor Input
+
+        New <#Integer> input with subtype 'FACTOR'.
+
+        Parameters
+        ----------
+        value : int, default=`0`
+            Default value
+
+        name : str, default=`Factor`
+            Input socket name
+
+        min : int, default=`-2147483648`
+            Property min_value
+
+        max : int, default=`2147483647`
+            Property max_value
+
+        tip : str, default=`''`
+            Property description
+
+        panel : str, default=``
+            Panel name
+
+        optional_label : bool, default=`False`
+            Property optional_label
+
+        hide_value : bool, default=`False`
+            Property hide_value
+
+        hide_in_modifier : bool, default=`False`
+            Property hide_in_modifier
+
+        default_attribute : str, default=`''`
+            Property default_attribute_name
+
+        default_input : str, default=`'VALUE'`
+            Property default_input in ('VALUE', 'INDEX', 'ID_OR_INDEX')
+
+        shape : str, default=`'AUTO'`
+            Property structure_type in ('AUTO', 'SINGLE')
+
+
+        Returns
+        -------
+        Integer
+        """
+        return cls(value=value, name=name, min=min, max=max, tip=tip, panel=panel, optional_label=optional_label, hide_value=hide_value, hide_in_modifier=hide_in_modifier, default_attribute=default_attribute, default_input=default_input, shape=shape, subtype='FACTOR')

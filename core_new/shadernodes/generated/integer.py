@@ -32,6 +32,9 @@ if TYPE_CHECKING:
     class Menu:
         ...
 
+    class Input:
+        ...
+
     class Texture:
         ...
 
@@ -90,9 +93,12 @@ class Integer(BaseInteger):
     def __ne__(self, other):
         return self.not_equal(other)
 
-    @classmethod
-    def implicit_conversion(cls, value: Integer=None, socket_idname: str='NodeSocketColor'):
-        """ > Node <&ShaderNode Implicit Conversion>
+    def enable_output(self, value: Integer=None):
+        """ > Node <&ShaderNode Enable Output>
+        
+        Jump method: False.
+        
+        self: socket 'Enable'.
         
         **Fixed values**
         
@@ -105,6 +111,29 @@ class Integer(BaseInteger):
         value : Integer, optional
             socket 'Value'
         
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Enable Output', named_sockets={'Enable': self, 'Value': value}, data_type='INT')
+        return node._out
+
+    def implicit_conversion(self, socket_idname: str='NodeSocketColor'):
+        """ > Node <&ShaderNode Implicit Conversion>
+        
+        Jump method: False.
+        
+        self: socket 'Value'.
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `data_type` | `'INT'` |
+        
+        Parameters
+        ----------
         socket_idname : str
             parameter `socket_idname`
         
@@ -113,7 +142,7 @@ class Integer(BaseInteger):
         Socket
             socket 'OUT'
         """
-        node = Node('Implicit Conversion', named_sockets={'Value': value}, data_type='INT', socket_idname=socket_idname)
+        node = Node('Implicit Conversion', named_sockets={'Value': self}, data_type='INT', socket_idname=socket_idname)
         return node._out
 
     def index_switch(self, *values: Socket, data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'STRING', 'MENU', 'SHADER', 'BUNDLE', 'CLOSURE']='RGBA', default_index: int=0):
@@ -188,6 +217,35 @@ class Integer(BaseInteger):
         node = Node('Light Iter Internal Input', named_sockets={})
         return node._out
 
+    def switch(self, false: Integer=None, true: Integer=None):
+        """ > Node <&ShaderNode Switch>
+        
+        Jump method: False.
+        
+        self: socket 'Switch'.
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `input_type` | `'INT'` |
+        
+        Parameters
+        ----------
+        false : Integer, optional
+            socket 'False'
+        
+        true : Integer, optional
+            socket 'True'
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Switch', named_sockets={'Switch': self, 'False': false, 'True': true}, input_type='INT')
+        return node._out
+
     def to_string(self, decimals: Integer=None, base: Integer=None, padding: Integer=None, data_type: Literal['FLOAT', 'INT']='FLOAT'):
         """ > Node <&ShaderNode Value to String>
         
@@ -218,4 +276,239 @@ class Integer(BaseInteger):
         _node_sockets = {('FLOAT',): {'Value': self, 'Decimals': decimals}, ('INT',): {'Value': self, 'Base': base, 'Padding': padding}}[_configuration]
         _node_args = {('FLOAT',): [], ('INT',): []}[_configuration]
         node = Node('Value to String', *_node_args, named_sockets=_node_sockets, data_type=data_type)
+        return node._out
+
+    @classmethod
+    def _create_input_socket(cls, value: int=0, name: str='Integer', min: int=-2147483648, max: int=2147483647, tip: str='', panel: str='', optional_label: bool=False, hide_value: bool=False, hide_in_modifier: bool=False, default_attribute: str='', default_input: Literal['VALUE', 'INDEX', 'ID_OR_INDEX']='VALUE', shape: Literal['AUTO', 'SINGLE']='AUTO', subtype: str='NONE'):
+        """ > Integer Input
+
+        New <#Integer> input with subtype 'NONE'.
+
+        Parameters
+        ----------
+        value : int, default=`0`
+            Default value
+
+        name : str, default=`Integer`
+            Input socket name
+
+        min : int, default=`-2147483648`
+            Property min_value
+
+        max : int, default=`2147483647`
+            Property max_value
+
+        tip : str, default=`''`
+            Property description
+
+        panel : str, default=``
+            Panel name
+
+        optional_label : bool, default=`False`
+            Property optional_label
+
+        hide_value : bool, default=`False`
+            Property hide_value
+
+        hide_in_modifier : bool, default=`False`
+            Property hide_in_modifier
+
+        default_attribute : str, default=`''`
+            Property default_attribute_name
+
+        default_input : str, default=`'VALUE'`
+            Property default_input in ('VALUE', 'INDEX', 'ID_OR_INDEX')
+
+        shape : str, default=`'AUTO'`
+            Property structure_type in ('AUTO', 'SINGLE')
+
+        subtype : str, default=`NONE`
+            Socket sub type in ('NONE', 'PIXEL', 'PERCENTAGE', 'FACTOR')
+
+
+        Returns
+        -------
+        Integer
+        """
+        from ..treeclass import Tree
+        defval = utils.python_value_for_socket(value, cls.SOCKET_TYPE)
+        return Tree.current_tree().create_input_socket('NodeSocketInt', default_value=defval, name=name, min=min, max=max, tip=tip, panel=panel, optional_label=optional_label, hide_value=hide_value, hide_in_modifier=hide_in_modifier, default_attribute=default_attribute, default_input=default_input, shape=shape, subtype=subtype)
+
+    @classmethod
+    def Pixel(cls, value: int=0, name: str='Pixel', min: int=-2147483648, max: int=2147483647, tip: str='', panel: str='', optional_label: bool=False, hide_value: bool=False, hide_in_modifier: bool=False, default_attribute: str='', default_input: Literal['VALUE', 'INDEX', 'ID_OR_INDEX']='VALUE', shape: Literal['AUTO', 'SINGLE']='AUTO'):
+        """ > Pixel Input
+
+        New <#Integer> input with subtype 'PIXEL'.
+
+        Parameters
+        ----------
+        value : int, default=`0`
+            Default value
+
+        name : str, default=`Pixel`
+            Input socket name
+
+        min : int, default=`-2147483648`
+            Property min_value
+
+        max : int, default=`2147483647`
+            Property max_value
+
+        tip : str, default=`''`
+            Property description
+
+        panel : str, default=``
+            Panel name
+
+        optional_label : bool, default=`False`
+            Property optional_label
+
+        hide_value : bool, default=`False`
+            Property hide_value
+
+        hide_in_modifier : bool, default=`False`
+            Property hide_in_modifier
+
+        default_attribute : str, default=`''`
+            Property default_attribute_name
+
+        default_input : str, default=`'VALUE'`
+            Property default_input in ('VALUE', 'INDEX', 'ID_OR_INDEX')
+
+        shape : str, default=`'AUTO'`
+            Property structure_type in ('AUTO', 'SINGLE')
+
+
+        Returns
+        -------
+        Integer
+        """
+        return cls(value=value, name=name, min=min, max=max, tip=tip, panel=panel, optional_label=optional_label, hide_value=hide_value, hide_in_modifier=hide_in_modifier, default_attribute=default_attribute, default_input=default_input, shape=shape, subtype='PIXEL')
+
+    @classmethod
+    def Percentage(cls, value: int=0, name: str='Percentage', min: int=-2147483648, max: int=2147483647, tip: str='', panel: str='', optional_label: bool=False, hide_value: bool=False, hide_in_modifier: bool=False, default_attribute: str='', default_input: Literal['VALUE', 'INDEX', 'ID_OR_INDEX']='VALUE', shape: Literal['AUTO', 'SINGLE']='AUTO'):
+        """ > Percentage Input
+
+        New <#Integer> input with subtype 'PERCENTAGE'.
+
+        Parameters
+        ----------
+        value : int, default=`0`
+            Default value
+
+        name : str, default=`Percentage`
+            Input socket name
+
+        min : int, default=`-2147483648`
+            Property min_value
+
+        max : int, default=`2147483647`
+            Property max_value
+
+        tip : str, default=`''`
+            Property description
+
+        panel : str, default=``
+            Panel name
+
+        optional_label : bool, default=`False`
+            Property optional_label
+
+        hide_value : bool, default=`False`
+            Property hide_value
+
+        hide_in_modifier : bool, default=`False`
+            Property hide_in_modifier
+
+        default_attribute : str, default=`''`
+            Property default_attribute_name
+
+        default_input : str, default=`'VALUE'`
+            Property default_input in ('VALUE', 'INDEX', 'ID_OR_INDEX')
+
+        shape : str, default=`'AUTO'`
+            Property structure_type in ('AUTO', 'SINGLE')
+
+
+        Returns
+        -------
+        Integer
+        """
+        return cls(value=value, name=name, min=min, max=max, tip=tip, panel=panel, optional_label=optional_label, hide_value=hide_value, hide_in_modifier=hide_in_modifier, default_attribute=default_attribute, default_input=default_input, shape=shape, subtype='PERCENTAGE')
+
+    @classmethod
+    def Factor(cls, value: int=0, name: str='Factor', min: int=-2147483648, max: int=2147483647, tip: str='', panel: str='', optional_label: bool=False, hide_value: bool=False, hide_in_modifier: bool=False, default_attribute: str='', default_input: Literal['VALUE', 'INDEX', 'ID_OR_INDEX']='VALUE', shape: Literal['AUTO', 'SINGLE']='AUTO'):
+        """ > Factor Input
+
+        New <#Integer> input with subtype 'FACTOR'.
+
+        Parameters
+        ----------
+        value : int, default=`0`
+            Default value
+
+        name : str, default=`Factor`
+            Input socket name
+
+        min : int, default=`-2147483648`
+            Property min_value
+
+        max : int, default=`2147483647`
+            Property max_value
+
+        tip : str, default=`''`
+            Property description
+
+        panel : str, default=``
+            Panel name
+
+        optional_label : bool, default=`False`
+            Property optional_label
+
+        hide_value : bool, default=`False`
+            Property hide_value
+
+        hide_in_modifier : bool, default=`False`
+            Property hide_in_modifier
+
+        default_attribute : str, default=`''`
+            Property default_attribute_name
+
+        default_input : str, default=`'VALUE'`
+            Property default_input in ('VALUE', 'INDEX', 'ID_OR_INDEX')
+
+        shape : str, default=`'AUTO'`
+            Property structure_type in ('AUTO', 'SINGLE')
+
+
+        Returns
+        -------
+        Integer
+        """
+        return cls(value=value, name=name, min=min, max=max, tip=tip, panel=panel, optional_label=optional_label, hide_value=hide_value, hide_in_modifier=hide_in_modifier, default_attribute=default_attribute, default_input=default_input, shape=shape, subtype='FACTOR')
+
+    def switch_false(self, switch: Boolean=None, false: Socket=None, input_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'STRING', 'MENU', 'SHADER', 'BUNDLE', 'CLOSURE']='RGBA'):
+        """ > Node <&ShaderNode Switch>
+        
+        Jump method: False.
+        
+        self: socket 'True'.
+        
+        Parameters
+        ----------
+        switch : Boolean, optional
+            socket 'Switch'
+        
+        false : Socket, optional
+            socket 'False'
+        
+        input_type : Literal['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'String', 'Menu', 'Shader', 'Bundle', 'Closure']
+            parameter `input_type`
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Switch', named_sockets={'Switch': switch, 'False': false, 'True': self}, input_type=input_type)
         return node._out

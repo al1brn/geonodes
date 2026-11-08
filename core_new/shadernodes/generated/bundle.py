@@ -32,6 +32,9 @@ if TYPE_CHECKING:
     class Menu:
         ...
 
+    class Input:
+        ...
+
     class Texture:
         ...
 
@@ -67,9 +70,12 @@ class Bundle(BaseBundle):
         node = Node('Combine Bundle', named_sockets=_named_sockets, define_signature=define_signature, **sockets)
         return node._out
 
-    @classmethod
-    def implicit_conversion(cls, value: Bundle=None, socket_idname: str='NodeSocketColor'):
-        """ > Node <&ShaderNode Implicit Conversion>
+    def enable_output(self, value: Bundle=None):
+        """ > Node <&ShaderNode Enable Output>
+        
+        Jump method: False.
+        
+        self: socket 'Enable'.
         
         **Fixed values**
         
@@ -82,6 +88,29 @@ class Bundle(BaseBundle):
         value : Bundle, optional
             socket 'Value'
         
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Enable Output', named_sockets={'Enable': self, 'Value': value}, data_type='BUNDLE')
+        return node._out
+
+    def implicit_conversion(self, socket_idname: str='NodeSocketColor'):
+        """ > Node <&ShaderNode Implicit Conversion>
+        
+        Jump method: False.
+        
+        self: socket 'Value'.
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `data_type` | `'BUNDLE'` |
+        
+        Parameters
+        ----------
         socket_idname : str
             parameter `socket_idname`
         
@@ -90,7 +119,7 @@ class Bundle(BaseBundle):
         Socket
             socket 'OUT'
         """
-        node = Node('Implicit Conversion', named_sockets={'Value': value}, data_type='BUNDLE', socket_idname=socket_idname)
+        node = Node('Implicit Conversion', named_sockets={'Value': self}, data_type='BUNDLE', socket_idname=socket_idname)
         return node._out
 
     def join_bundle(self, *bundle_1: Bundle):
@@ -111,4 +140,93 @@ class Bundle(BaseBundle):
             socket 'OUT'
         """
         node = Node('Join Bundle', *[*[self, *bundle_1]], named_sockets={})
+        return node._out
+
+    def switch(self, false: Bundle=None, true: Bundle=None):
+        """ > Node <&ShaderNode Switch>
+        
+        Jump method: False.
+        
+        self: socket 'Switch'.
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `input_type` | `'BUNDLE'` |
+        
+        Parameters
+        ----------
+        false : Bundle, optional
+            socket 'False'
+        
+        true : Bundle, optional
+            socket 'True'
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Switch', named_sockets={'Switch': self, 'False': false, 'True': true}, input_type='BUNDLE')
+        return node._out
+
+    @classmethod
+    def _create_input_socket(cls, name: str='Bundle', tip: str='', panel: str='', optional_label: bool=False, hide_value: bool=False, hide_in_modifier: bool=False):
+        """ > Bundle Input
+
+        New <#Bundle> input with subtype 'NONE'.
+
+        Parameters
+        ----------
+        name : str, default=`Bundle`
+            Input socket name
+
+        tip : str, default=`''`
+            Property description
+
+        panel : str, default=``
+            Panel name
+
+        optional_label : bool, default=`False`
+            Property optional_label
+
+        hide_value : bool, default=`False`
+            Property hide_value
+
+        hide_in_modifier : bool, default=`False`
+            Property hide_in_modifier
+
+
+        Returns
+        -------
+        Bundle
+        """
+        from ..treeclass import Tree
+        return Tree.current_tree().create_input_socket('NodeSocketBundle', name=name, tip=tip, panel=panel, optional_label=optional_label, hide_value=hide_value, hide_in_modifier=hide_in_modifier)
+
+    def switch_false(self, switch: Boolean=None, false: Socket=None, input_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'STRING', 'MENU', 'SHADER', 'BUNDLE', 'CLOSURE']='RGBA'):
+        """ > Node <&ShaderNode Switch>
+        
+        Jump method: False.
+        
+        self: socket 'True'.
+        
+        Parameters
+        ----------
+        switch : Boolean, optional
+            socket 'Switch'
+        
+        false : Socket, optional
+            socket 'False'
+        
+        input_type : Literal['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'String', 'Menu', 'Shader', 'Bundle', 'Closure']
+            parameter `input_type`
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Switch', named_sockets={'Switch': switch, 'False': false, 'True': self}, input_type=input_type)
         return node._out

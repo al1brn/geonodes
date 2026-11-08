@@ -44,7 +44,13 @@ if TYPE_CHECKING:
     class Menu:
         ...
 
+    class Input:
+        ...
+
     class Geometry:
+        ...
+
+    class IntVector:
         ...
 
     class Texture:
@@ -116,38 +122,6 @@ from ...geonodes.domains.spline import Spline as BaseSpline
 
 class Spline(BaseSpline):
     __slots__ = ()
-
-    def attribute_statistic(self, attribute: Socket=None):
-        """ > Node <&Node Attribute Statistic>
-        
-        Jump method: False.
-        
-        self: socket 'Geometry'.
-        
-        **Fixed values**
-        
-        | Parameter | Value |
-        | --- | --- |
-        | `domain` | `'CURVE'` |
-        
-        **Derived parameters**
-        
-        - `data_type`: Inferred from socket 'Attribute' (attribute).
-        
-        Parameters
-        ----------
-        attribute : Socket, optional
-            socket 'Attribute'
-        
-        Returns
-        -------
-        Socket
-            socket 'OUT'
-        """
-        data_type = SocketType.get_data_type_for_node(attribute, 'GeometryNodeAttributeStatistic', 'data_type')
-        selection = self.get_selection()
-        node = Node('Attribute Statistic', named_sockets={'Geometry': self, 'Selection': selection, 'Attribute': attribute}, data_type=data_type, domain='CURVE')
-        return node._out
 
     def capture_attribute(self, named_sockets=None, **sockets):
         """ > Node <&Node Capture Attribute>
@@ -260,43 +234,6 @@ class Spline(BaseSpline):
             socket 'OUT'
         """
         node = Node('Offset Point in Curve', named_sockets={'Point Index': point_index, 'Offset': offset})
-        return node._out
-
-    def sample_index(self, value: Socket=None, index: Integer=None, clamp: bool=False):
-        """ > Node <&Node Sample Index>
-        
-        Jump method: False.
-        
-        self: socket 'Geometry'.
-        
-        **Fixed values**
-        
-        | Parameter | Value |
-        | --- | --- |
-        | `domain` | `'CURVE'` |
-        
-        **Derived parameters**
-        
-        - `data_type`: Inferred from socket 'Value' (value).
-        
-        Parameters
-        ----------
-        value : Socket, optional
-            socket 'Value'
-        
-        index : Integer, optional
-            socket 'Index'
-        
-        clamp : bool
-            parameter `clamp`
-        
-        Returns
-        -------
-        Socket
-            socket 'OUT'
-        """
-        data_type = SocketType.get_data_type_for_node(value, 'GeometryNodeSampleIndex', 'data_type')
-        node = Node('Sample Index', named_sockets={'Geometry': self, 'Value': value, 'Index': index}, data_type=data_type, domain='CURVE', clamp=clamp)
         return node._out
 
     def separate(self):

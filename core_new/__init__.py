@@ -29,7 +29,8 @@ if PRODUCTION:
 
     from .geonodes.domains.attribute import Attribute
 
-    from .root.socket import Socket, Input
+    from .root.socket import Socket
+    from .root.input import Input
 
     from .root.boolean import Boolean
     from .root.float import Float

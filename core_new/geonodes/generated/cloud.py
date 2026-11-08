@@ -44,7 +44,13 @@ if TYPE_CHECKING:
     class Menu:
         ...
 
+    class Input:
+        ...
+
     class Geometry:
+        ...
+
+    class IntVector:
         ...
 
     class Texture:
@@ -151,26 +157,6 @@ class Cloud(BaseCloud, Geometry):
         _node_sockets = {('DENSITY_RANDOM',): {'Grid': grid, 'Density': density, 'Seed': seed}, ('DENSITY_GRID',): {'Grid': grid, 'Spacing': spacing, 'Threshold': threshold}}[_configuration]
         _node_args = {('DENSITY_RANDOM',): [], ('DENSITY_GRID',): []}[_configuration]
         node = Node('Distribute Points in Grid', *_node_args, named_sockets=_node_sockets, mode=mode)
-        return node._out
-
-    @classmethod
-    def FromGrid(cls, grid: Socket=None, data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR']='FLOAT'):
-        """ > Node <&Node Grid to Points>
-        
-        Parameters
-        ----------
-        grid : Socket, optional
-            socket 'Grid'
-        
-        data_type : Literal['Float', 'Integer', 'Boolean', 'Vector']
-            parameter `data_type`
-        
-        Returns
-        -------
-        Socket
-            socket 'OUT'
-        """
-        node = Node('Grid to Points', named_sockets={'Grid': grid}, data_type=data_type)
         return node._out
 
     @classmethod

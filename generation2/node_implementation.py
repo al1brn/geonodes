@@ -9,12 +9,73 @@ from pathlib import Path
 import bpy
 
 from .. import core_module
+from . import gen_config
 from . import config, utils, source_code
+from .tree import Tree
 from .output import ENVIRONMENTS, render_modules
 from .argument import Argument
 from .node_info import NodeInfo
 from .node_param import NodeParam
 
+SocketType = core_module.common.sockettype.SocketType
+
+TAB = "    "
+
+# ====================================================================================================
+# Format function header
+# ====================================================================================================
+
+def format_header(func_name, *args, margin=TAB, max_len=100):
+
+    header = f"{margin}def {func_name}("
+    args_str = ", ".join(args)
+
+    if len(args_str) > max_len:
+        sep = f"\n{margin}{TAB}"
+        header += sep
+        sep = "," + sep
+        args_str = sep.join(args)
+
+    return header + args_str + "):"
+
+def format_node_call(margin, node_name, args=None, named_sockets=None, parameters=None, max_len=100):
+
+    s = f"{margin}node = Node('{node_name}'"
+    if args is not None:
+        s += f", {args}"
+
+    multi = False
+    if named_sockets is None:
+        s += ", named_sockets={}"
+
+    else:
+        s += ", named_sockets={"
+
+        line = ", ".join(named_sockets)
+        if len(s + line) < max_len:
+            s += line
+        else:
+            sep = f"\n{margin}{TAB}{TAB}{TAB}"
+            s += sep + f",{sep}".join(named_sockets)
+            multi = True
+
+        s += "}"
+
+    if parameters is not None:
+        line = ", ".join([""] + parameters)
+        if multi or len(s + line) > max_len:
+            sep = f",\n{margin}{TAB}{TAB}"
+            s += sep.join([""] + parameters)
+        else:
+            s += line
+
+    s += ")"
+
+    return s
+
+# ====================================================================================================
+# Node Implementation
+# ====================================================================================================
 
 class NodeImplementation:
     """Describe a node implementation and generate its Python source code."""
@@ -22,6 +83,31 @@ class NodeImplementation:
     files = {}
     cross_refs = {}
     tree_type = 'GeometryNodeTree'
+
+    # ====================================================================================================
+    # Node Implementation instance wraps a node_info 
+    # ====================================================================================================
+
+    def __init__(self, node):
+        self.node = node
+        self.parameters = dict.fromkeys(node.snapshot_params())
+
+    def __getitem__(self, name):
+        return self.parameters[name]
+
+    def __setitem__(self, name, value):
+        if name not in self.parameters:
+            raise KeyError(name)
+        self.parameters[name] = value
+
+    def __len__(self):
+        return len(self.parameters)
+
+    def copy(self):
+        """Copy the parameter configuration, keeping the same NodeInfo."""
+        result = type(self)(self.node)
+        result.parameters = self.parameters.copy()
+        return result
 
     # ====================================================================================================
     # Write Files
@@ -51,8 +137,16 @@ class NodeImplementation:
     # ----------------------------------------------------------------------------------------------------
 
     @classmethod
-    def register_source(cls, node, filename, destination, source, returns='OUT', *, write_source=True, rules=[]):
+    def register_source(cls, node, filename, destination, source, returns='OUT', *, tree_type=None, write_source=True, rules=[]):
         """Register source and its cross reference, rejecting duplicate names."""
+
+        if tree_type is None:
+            tree_type = node.btree.bl_idname
+
+        if True:
+            print("DEBUG SOURCE", node.name)
+            print(source)
+            print()
 
         try:
             function = ast.parse(textwrap.dedent(source)).body[0]
@@ -66,8 +160,8 @@ class NodeImplementation:
         name = function.name
         reference = {
             'func_name': name,
-            'node_name': node.bnode.name,
-            'tree_type': node.btree.bl_idname,
+            'node_name': None if node is None else node.bnode.name,
+            'tree_type': tree_type,
             'is_classmethod': any((isinstance(d, ast.Name) and d.id == 'classmethod') or
                                   (isinstance(d, ast.Attribute) and d.attr == 'classproperty')
                                   for d in function.decorator_list),
@@ -79,9 +173,9 @@ class NodeImplementation:
             'returns': returns,
             'signature': f'({ast.unparse(function.args)})',
         }
-        tree_type = node.btree.bl_idname
         files = cls.files.setdefault(tree_type, {})
         cross_refs = cls.cross_refs.setdefault(tree_type, {})
+
         for node_id, destinations in cross_refs.items():
             for previous in destinations.get(destination, []):
                 if previous['func_name'] != name:
@@ -103,9 +197,12 @@ class NodeImplementation:
                     f'  Conflicting proposal: {describe(node.bnode.bl_idname, reference)}\n'
                     'Resolve the naming conflict in generation2/config.py.'
                 )
+            
         if write_source:
             files.setdefault(filename, []).append(source)
-        cross_refs.setdefault(node.bnode.bl_idname, {}).setdefault(destination, []).append(reference)
+
+        if node is not None:
+            cross_refs.setdefault(node.bnode.bl_idname, {}).setdefault(destination, []).append(reference)
 
     # ----------------------------------------------------------------------------------------------------
     # Takes hand written source code references
@@ -160,6 +257,9 @@ class NodeImplementation:
                 cls.gen_gnmath()
                 cls.gen_nodes()
                 cls.gen_properties()
+                cls.gen_typed_constructors()
+                cls.gen_additional()
+
         finally:
             cls.tree_type = previous_type
         if write:
@@ -546,6 +646,20 @@ class NodeImplementation:
         tree = bpy.data.node_groups.new(name='Color Mix functions', type=cls.tree_type)
         try:
             node = NodeInfo(tree, tree.nodes.new(type='ShaderNodeMix'))
+
+            # def mix(..., operation=None)
+            node.set_params(data_type='RGBA')
+            cls.register_source(
+                    node,
+                    'color.py',
+                    'Color',
+                    cls(node).gen_source(
+                        kind='METHOD', 
+                        name='mix', 
+                        self_socket='a',
+                        return_socket='OUT', last_sockets=('Factor',)))
+
+            # def mix_xxx(...)
             node.set_params(data_type='RGBA', factor_mode='UNIFORM')
             cls._check_operations(node, operations, param_name='blend_type')
             base = cls(node)
@@ -759,34 +873,9 @@ class NodeImplementation:
         finally:
             bpy.data.node_groups.remove(tree)
 
-    @classmethod
-    def gen_source_code(cls):
-        """Collect explicitly assigned methods from source_code containers.
-
-        Each entry associates a Blender node, a destination class and a source
-        class. Copy its methods through gen_source, keeping collision checks.
-        """
-        additions = ()
-        if not additions:
-            return
-        tree = bpy.data.node_groups.new(name='Specific implementations', type=cls.tree_type)
-        try:
-            available = utils.get_node_names(cls.tree_type)
-            for node_id, class_name, code_class in additions:
-                if node_id not in available:
-                    continue
-                try:
-                    node = NodeInfo(tree, tree.nodes.new(type=node_id))
-                    implementation = cls(node)
-                    for method in vars(code_class).values():
-                        if not inspect.isfunction(method):
-                            continue
-                        source = implementation.gen_source(kind='METHOD', copy_code=method)
-                        cls.register_source(node, class_name.lower() + '.py', class_name, source)
-                finally:
-                    tree.nodes.clear()
-        finally:
-            bpy.data.node_groups.remove(tree)
+    # ====================================================================================================
+    # Generate nd module
+    # ====================================================================================================
 
     @classmethod
     def gen_static_code(cls):
@@ -794,12 +883,20 @@ class NodeImplementation:
         def generate(node):
             name = core_module.utils.snake_case(node.bnode.name)
             source = '\n'.join(cls(node)._gen_source(
-                name, method_type='CLASS_PROPERTY' if node.is_class_property else 'CLASS_METHOD',
-                return_kind='OUT' if node.is_class_property else 'NODE'))
+                name, 
+                method_type='CLASS_PROPERTY' if node.is_class_property else 'CLASS_METHOD',
+                return_kind='OUT',
+                #return_kind='OUT' if node.is_class_property else 'NODE'))
+                )
+            )
             cls.register_source(node, 'static_nd.py', 'nd', source,
                                 returns='OUT' if node.is_class_property else 'NODE')
 
         NodeInfo.loop_on_nodes(generate, tree_type=cls.tree_type)
+
+    # ====================================================================================================
+    # All nodes
+    # ====================================================================================================
 
     @classmethod
     def gen_nodes(cls):
@@ -911,26 +1008,253 @@ class NodeImplementation:
 
         NodeInfo.loop_on_nodes(generate, tree_type=cls.tree_type)
 
-    def __init__(self, node):
-        self.node = node
-        self.parameters = dict.fromkeys(node.snapshot_params())
+    # ====================================================================================================
+    # Manual code insertion
+    # ====================================================================================================
 
-    def __getitem__(self, name):
-        return self.parameters[name]
+    @classmethod
+    def gen_source_code(cls):
+        """Collect explicitly assigned methods from source_code containers.
 
-    def __setitem__(self, name, value):
-        if name not in self.parameters:
-            raise KeyError(name)
-        self.parameters[name] = value
+        Each entry associates a Blender node, a destination class and a source
+        class. Copy its methods through gen_source, keeping collision checks.
+        """
+        additions = ()
+        if not additions:
+            return
+        tree = bpy.data.node_groups.new(name='Specific implementations', type=cls.tree_type)
+        try:
+            available = utils.get_node_names(cls.tree_type)
+            for node_id, class_name, code_class in additions:
+                if node_id not in available:
+                    continue
+                try:
+                    node = NodeInfo(tree, tree.nodes.new(type=node_id))
+                    implementation = cls(node)
+                    for method in vars(code_class).values():
+                        if not inspect.isfunction(method):
+                            continue
+                        source = implementation.gen_source(kind='METHOD', copy_code=method)
+                        cls.register_source(node, class_name.lower() + '.py', class_name, source)
+                finally:
+                    tree.nodes.clear()
+        finally:
+            bpy.data.node_groups.remove(tree)
 
-    def __len__(self):
-        return len(self.parameters)
+    # ====================================================================================================
+    # Add constructors with subtypes : Float.Angle, Vector.Velocity,...
+    # ====================================================================================================
 
-    def copy(self):
-        """Copy the parameter configuration, keeping the same NodeInfo."""
-        result = type(self)(self.node)
-        result.parameters = self.parameters.copy()
-        return result
+    @classmethod
+    def gen_typed_constructors(cls):
+
+        for tree_type in ('GeometryNodeTree', 'ShaderNodeTree'):
+
+            with Tree(tree_type) as tree:
+                valids = []
+                for socket_name in tree.valid_input_sockets:
+                    if socket_name == 'NodeSocketSound':
+                        continue
+                    sock = tree.btree.interface.new_socket(socket_type=socket_name, name=socket_name)
+                    stype = SocketType(sock)
+                    valids.append(stype.type)
+
+            for socket_type in valids:
+
+                if socket_type == 'NodeSocketSound':
+                    continue
+
+                d = gen_config.SOCKETS[socket_type]
+
+                if d[tree_type] is None:
+                    continue
+
+                if tree_type == 'ShaderNodeTree':
+                    print("GENERATING Constructor for", socket_type, d[tree_type])
+
+                # Class subtypes
+                subtypes = d.get('subtypes', ['NONE'])
+                if not len(subtypes):
+                    subtypes = ['NONE']
+
+                for subtype in subtypes:
+
+                    create_socket = subtype == 'NONE'
+                    if create_socket:
+                        name  = d['class_name']
+                        fname = "_create_input_socket"
+                    else:
+                        name  = "".join([s.title() for s in subtype.split('_')])
+                        fname = name
+
+                    props = d['props']
+                    class_name = d['class_name']
+                    ptype, def_val = gen_config.PYTHON_TYPES.get(class_name, (object, None))
+                    if ptype is object:
+                        ptype = 'object'
+
+                    # ---------------------------------------------------------------------------
+                    # Arguments
+                    # ---------------------------------------------------------------------------
+
+                    has_default = 'default' in props
+
+                    args = {}
+
+                    # ----- Value, Name
+
+                    if has_default:
+                        if create_socket:
+                            args['value'] = (
+                                f": {ptype} = {def_val}",
+                                (ptype, def_val, "Default value"),
+                                'default_value = defval')
+                        else:
+                            args['value'] = (
+                                f": {ptype} = {def_val}",
+                                (ptype, def_val, "Default value"),
+                                'value')
+
+                    args['name']  = (
+                        f": str = '{name}'", 
+                        ("str", name, "Input socket name"), 
+                        'name')
+                    
+                    # ----- sort properties
+                    
+                    sorted_props = []
+                    if 'min' in props:
+                        sorted_props.extend(['min', 'max'])
+                    sorted_props.append('tip')
+
+                    for prop in props:
+                        if prop in sorted_props or prop in ['subtype', 'default']:
+                            continue
+                        sorted_props.append(prop)
+
+                    for prop in sorted_props:
+                        prop_val = props[prop]
+
+                        stype = prop_val[1]
+                        doctype = stype
+                        sdef = f"'{prop_val[2]}'" if stype == 'str' else prop_val[2]
+                        scomm = f"Property {prop_val[0]}"
+                        if isinstance(stype, tuple):
+                            stype = f"Literal{list(stype)}"
+                            doctype = 'str'
+                            sdef = f"'{prop_val[2]}'"
+                            scomm += f" in {prop_val[1]}"
+
+                        if stype == 'Literal[]':
+                            stype = 'str'
+
+                        args[prop] = (
+                            f": {stype} = {sdef}",
+                            (doctype, sdef, scomm),
+                            prop,
+                        )
+
+                        if prop == "tip":
+                            args["panel"] = (': str = ""', ("str", "", "Panel name"), "panel")
+
+                    if len(d['subtypes']):
+                        if create_socket:
+                            args["subtype"] = (
+                                f": str = 'NONE'",
+                                ("str", 'NONE', f"Socket sub type in {d['subtypes']}"),
+                                "subtype",
+                            )
+                        else:
+                            args["subtype"] = (None, None, f"'{subtype}'")
+
+                    # ---------------------------------------------------------------------------
+                    # Header
+                    # ---------------------------------------------------------------------------
+
+                    margin = TAB
+
+                    code = f"{margin}@classmethod\n"
+                    arguments = ['cls']
+                    for arg_name, arg_val in args.items():
+                        if arg_val[0] is not None:
+                            arguments.append(f"{arg_name}{arg_val[0]}")
+
+                    code += format_header(fname, *arguments, margin=margin) + "\n"
+                    margin += TAB
+
+                    # ---------------------------------------------------------------------------
+                    # Doc
+                    # ---------------------------------------------------------------------------
+
+                    code += f'{margin}""" > {name} Input\n\n'
+                    code += f"{margin}New <#{class_name}> input with subtype '{subtype}'.\n\n"
+
+                    code += f"{margin}Parameters\n"
+                    code += f"{margin}----------\n"
+                    for arg_name, arg_val in args.items():
+                        if arg_val[0] is not None:
+                            code += f"{margin}{arg_name} : {arg_val[1][0]}, default=`{arg_val[1][1]}`\n{margin}    {arg_val[1][2]}\n\n"
+                    code += "\n"
+
+                    code += f"{margin}Returns\n"
+                    code += f"{margin}-------\n"
+                    code += f"{margin}{class_name}\n"
+                    code += f'{margin}"""\n'
+
+                    # ---------------------------------------------------------------------------
+                    # Code
+                    # ---------------------------------------------------------------------------
+
+                    if create_socket:
+
+                        code += f"{margin}from ..treeclass import Tree\n\n"
+
+                        if has_default:
+                            code += f"{margin}defval = utils.python_value_for_socket(value, cls.SOCKET_TYPE)\n\n"
+
+                        bl_idname = d['ShaderNodeTree'] if d['GeometryNodeTree'] is None else d['GeometryNodeTree'] 
+
+                        scall = f"return Tree.current_tree().create_input_socket('{bl_idname}', "
+
+                    else:
+                        scall = "return cls("
+
+
+                    sep = ""
+                    for arg_name, arg_val in args.items():
+                        if arg_val[2] is None:
+                            continue
+                        elif '=' in arg_val[2]:
+                            scall += f"{sep}{arg_val[2]}"
+                        else:
+                            scall += f"{sep}{arg_name}={arg_val[2]}"
+                        sep = ", "
+
+                    scall += ")"
+                    tab =""
+                    for line in textwrap.wrap(scall, width=100):
+                        code += margin + tab + line + "\n"
+                        tab = TAB
+
+                    cls.register_source(
+                        None, 
+                        d['class_name'].lower() + '.py', 
+                        d['class_name'], 
+                        code,
+                        tree_type = tree_type,
+                        rules=[])
+
+                    """
+                    if class_name in gen['source'] and name in gen['source'][class_name]:
+                        print(gen['source'][class_name][name])
+                        raise RuntimeError(f"The subtype constructor {name} already exists in class {class_name}.")
+                    
+                    if class_name != 'Input':
+                        if class_name in gen['source']:
+                            gen['source'][class_name][name] = code
+                        else:
+                            print(f"CAUTION (generate): class name '{class_name}' not in gen['source']. Impossible to create source code for '{name}'")
+                    """
 
     # ====================================================================================================
     # Get the standard node implementation
@@ -938,11 +1262,14 @@ class NodeImplementation:
 
     def get_node_implementation(self):
         """Describe the node implementation, including requested parameter loops."""
+
         node = self.node
         inputs = [socket for socket in node.inputs.values() if socket.enabled and socket.socket_type != 'CUSTOM']
         outputs = [socket for socket in node.outputs.values() if socket.enabled and socket.socket_type != 'CUSTOM']
         first_input = inputs[0] if inputs else None
         first_output = outputs[0] if outputs else None
+
+        name_tokens = [token.strip() for token in node.name.split(" ")]
 
         # ---------------------------------------------------------------------------
         # Hacks
@@ -1005,7 +1332,6 @@ class NodeImplementation:
             rules += ["Texture Node"]
 
             repl = config.SPECIAL_NODES.get(node.name, {})
-
             return {
                 'category': "Texture",
                 'class_name': repl.get('class_name', "Texture"),
@@ -1015,6 +1341,43 @@ class NodeImplementation:
             }
 
         rules += ["Not a texture node"]
+
+        # ---------------------------------------------------------------------------
+        # Shader BSDF
+        # ---------------------------------------------------------------------------
+
+        if node.is_shader:
+            tokens = [token.strip() for token in node.name.split(" ")]
+            if tokens[-1] == 'BSDF':
+                method_name = core_module.utils.CamelCase(' '.join(tokens[:-1]))
+
+                repl = config.SPECIAL_NODES.get(node.name, {})
+                return {
+                    'category': "Shader",
+                    'class_name': repl.get('class_name', "Shader"),
+                    'method_name': repl.get('method_name', method_name),
+                    'is_class_method': repl.get('is_class_method', True),
+                    'rules': rules + [f"Ends with BSDF -> Shader constructor"],
+                }
+
+        # ---------------------------------------------------------------------------
+        # data_type drives both input and output sockets
+        # ---------------------------------------------------------------------------
+
+        if node.has_data_type_parameter:
+            in_count = len(node.data_type_socket_changes['inputs'])
+            out_count = len(node.data_type_socket_changes['outputs'])
+            if in_count > 0 and out_count > 0:
+                rules += ["Data type drives input and output sockets"]
+
+                repl = config.SPECIAL_NODES.get(node.name, {})
+                return {
+                    'category' : 'Method',
+                    'class_name': None,
+                    'method_name': repl.get('method_name', core_module.utils.snake_case(node.name)),
+                    'data_type_loop': True,
+                    'rules': rules,
+                    }
 
         # ---------------------------------------------------------------------------
         # data_type input
@@ -1041,72 +1404,84 @@ class NodeImplementation:
 
             category = "Input Node"
             rules += ["Input Node"]
-        
-            # First input socket can be None, attr or socket
-            if bool(inputs):
-                socket = first_input
-                in_is_attr = socket.is_attribute
-                in_class_name = None if in_is_attr else socket.class_name
-            else:
-                in_is_attr = True
-            
-            # Same for output socket
-            if bool(outputs):
-                socket = first_output
-                out_is_attr = socket.is_attribute
-                out_class_name = None if out_is_attr else socket.class_name
-            else:
-                out_is_attr = True
-            
-            # if first input is not an attr, this is instance method
-            if not in_is_attr:
-                class_name = in_class_name
-                rules += ["Non attribute input"]
-            
-            # if first output is not an attr, this is class constructor
-            elif not out_is_attr:
-                class_name = out_class_name
-                is_class_method = True
-                rules += ["Non Attribute output"]
-            
-            else:
-                rules += ["Attribute Output"]
-                is_class_method = True
-            
-                tokens = [token.strip() for token in node.name.split(" ")]
-            
-                if len(tokens) > 2 and tokens[-2] == "of":
-                    target = tokens[-1]
-                    for dom in config.DOMAINS:
-                        if target in [dom, dom + 's']:
-                            class_name = config.DOMAIN_NAME.get(dom, dom)
-                            method_name = core_module.utils.snake_case(' '.join(tokens[:-2])) 
-                            rules += [f"'Domain 1 of Domain 0' name -> {class_name=}, {method_name=}"]
-                            break
-                    
-                elif len(tokens) > 2 and tokens[0] == "Is":
-                    target = tokens[1]
-                    for dom in config.DOMAINS:
-                        if target in [dom, dom + 's']:
-                            class_name = config.DOMAIN_NAME.get(dom, dom)
-                            method_name = core_module.utils.snake_case(' '.join(tokens[2:]))
-                            rules += [f"'Domain is xxx' name -> {class_name=}, {method_name=}"]
-                            break
-                        
+
+            # Info node
+            if (len(name_tokens) > 1) and (name_tokens[-1] == 'Info') and first_input is not None:
+                rules += ["Info node"]
+                class_name = first_input.class_name
+                if class_name == name_tokens[0] and len(name_tokens) == 2:
+                    method_name = 'info'
                 else:
-                    target = tokens[0]
-                    for dom in ["Grease"] + config.DOMAINS:
-                        if target in [dom, dom + 's']:
-                            if dom == 'Grease':
-                                class_name = "GreasePencil"
-                                method_name = core_module.utils.snake_case(' '.join(tokens[2:]))
-                            else:
+                    method_name = core_module.utils.snake_case(node.name)
+
+
+            else:
+                rules += ["Not Info node"]
+
+                # First input socket can be None, attr or socket
+                if bool(inputs):
+                    socket = first_input
+                    in_is_attr = socket.is_attribute
+                    in_class_name = None if in_is_attr else socket.class_name
+                else:
+                    in_is_attr = True
+                
+                # Same for output socket
+                if bool(outputs):
+                    socket = first_output
+                    out_is_attr = socket.is_attribute
+                    out_class_name = None if out_is_attr else socket.class_name
+                else:
+                    out_is_attr = True
+                
+                # if first input is not an attr, this is instance method
+                if not in_is_attr:
+                    class_name = in_class_name
+                    rules += ["Non attribute input"]
+                
+                # if first output is not an attr, this is class constructor
+                elif not out_is_attr:
+                    class_name = out_class_name
+                    is_class_method = True
+                    rules += ["Non Attribute output"]
+                
+                else:
+                    rules += ["Attribute Output"]
+                    is_class_method = True
+                
+                    tokens = [token.strip() for token in node.name.split(" ")]
+                
+                    if len(tokens) > 2 and tokens[-2] == "of":
+                        target = tokens[-1]
+                        for dom in config.DOMAINS:
+                            if target in [dom, dom + 's']:
                                 class_name = config.DOMAIN_NAME.get(dom, dom)
-                                method_name = core_module.utils.snake_case(' '.join(tokens[1:]))
-                            break
+                                method_name = core_module.utils.snake_case(' '.join(tokens[:-2])) 
+                                rules += [f"'Domain 1 of Domain 0' name -> {class_name=}, {method_name=}"]
+                                break
+                        
+                    elif len(tokens) > 2 and tokens[0] == "Is":
+                        target = tokens[1]
+                        for dom in config.DOMAINS:
+                            if target in [dom, dom + 's']:
+                                class_name = config.DOMAIN_NAME.get(dom, dom)
+                                method_name = core_module.utils.snake_case(' '.join(tokens[2:]))
+                                rules += [f"'Domain is xxx' name -> {class_name=}, {method_name=}"]
+                                break
+                            
+                    else:
+                        target = tokens[0]
+                        for dom in ["Grease"] + config.DOMAINS:
+                            if target in [dom, dom + 's']:
+                                if dom == 'Grease':
+                                    class_name = "GreasePencil"
+                                    method_name = core_module.utils.snake_case(' '.join(tokens[2:]))
+                                else:
+                                    class_name = config.DOMAIN_NAME.get(dom, dom)
+                                    method_name = core_module.utils.snake_case(' '.join(tokens[1:]))
+                                break
                     
             repl = config.SPECIAL_NODES.get(node.name, {})
-                        
             return {
                 'category' : category,
                 'class_name': repl.get('class_name', class_name),
@@ -1294,7 +1669,7 @@ class NodeImplementation:
 
         if node.data_type_drives_first_input:
             repl = config.SPECIAL_NODES.get(node.name, {})
-            method_name = core_module.utils.snake_case(node.name)
+            method_name = core_module.utils.CamelCase(node.name)
             return {
                 'category': 'Data type driven',
                 'class_name': repl.get('class_name', None),
@@ -1412,6 +1787,101 @@ class NodeImplementation:
             'rules': rules,
         }
 
+    # ====================================================================================================
+    # Additional implementations
+    # ====================================================================================================
+
+    @classmethod
+    def gen_from_spec(cls, node_name, spec):
+
+        with Tree(cls.tree_type) as tree:
+
+            node_info = NodeInfo(tree.btree, tree.create_node(node_name))
+            implementation = cls(node_info)
+
+            for name, value in spec.get('parameters', {}).items():
+                implementation[name] = value
+
+            source = "\n".join(implementation._gen_source(
+                method_name = spec['method_name'],
+                method_type = spec.get('kind', 'METHOD'),
+                self_socket = spec.get('self_socket', None),
+                is_jump = spec.get('is_jump', False),
+                return_kind = spec.get('returns', 'OUT'),
+                auto_data_type = spec.get('auto_data_type', None),
+                fixed_sockets = spec.get('fixed_sockets', None),
+            ))
+
+            class_name = spec['class_name']
+            cls.register_source(
+                node_info,
+                class_name.lower() + '.py', 
+                class_name,
+                source,
+                rules=["Additional implementation"],
+            )
+
+    @classmethod
+    def gen_additional(cls):
+
+        for additions in (config.ADDITIONAL_IMPLEMENTATIONS['common'], config.ADDITIONAL_IMPLEMENTATIONS[cls.tree_type]):
+            for node_name, addition in additions.items():
+
+                if isinstance(addition, dict):
+                    addition = [addition,]
+
+                for spec in addition:
+
+                    # --------------------------------------------------
+                    # class name is LOOP param_name
+                    # --------------------------------------------------
+
+                    tag = "LOOP "
+                    class_name = spec['class_name']
+                    if class_name.startswith(tag):
+                        driving_param = class_name[len(tag):]
+
+                        with Tree(cls.tree_type) as tree:
+                            
+                            node_info = NodeInfo(tree.btree, tree.create_node(node_name))
+                            node_params = node_info.snapshot_params()
+
+                            try:
+                                values = node_params[driving_param]['enums']
+                            except Exception as e:
+                                from pprint import pprint
+                                print(f"node '{node_name}' parameters")
+                                pprint(node_params)
+                                raise AttributeError(f"Addtional '{node_name}': impossible to loop on parameter '{driving_param}' with class_name '{class_name}'.\n{str(e)}")
+
+                        for value in values:
+                            stype = SocketType.from_type(value).type
+                            class_name = gen_config.SOCKETS[stype]['class_name']
+
+                            class_spec = spec.copy()
+                            class_spec['class_name'] = class_name
+                            params = class_spec.get('parameters', {})
+                            params[driving_param] = value
+
+                            cls.gen_from_spec(node_name, class_spec)
+
+                        continue
+
+                    # --------------------------------------------------
+                    # Single implementation
+                    # --------------------------------------------------
+
+                    cls.gen_from_spec(node_name, spec)
+
+
+    # ====================================================================================================
+    # Generate source code
+    # ====================================================================================================
+
+    # ----------------------------------------------------------------------------------------------------
+    # Doc string
+    # ----------------------------------------------------------------------------------------------------
+
     def gen_docstring(self, arguments, *, is_jump=None, self_socket=None,
                       returns='Node', return_socket=None, derived_parameters=None,
                       indent=8):
@@ -1454,6 +1924,10 @@ class NodeImplementation:
         text = '\n'.join(lines).replace('\\', '\\\\').replace('"""', '\\"\\"\\"')
         return padding + '""" ' + ('\n' + padding).join(text.split('\n')) + '\n' + padding + '"""\n'
 
+    # ----------------------------------------------------------------------------------------------------
+    # Fixed parameters
+    # ----------------------------------------------------------------------------------------------------
+
     def _fixed_parameters(self):
         """Resolve fixed enum identifiers and UI labels using RNA."""
         values = {}
@@ -1468,6 +1942,10 @@ class NodeImplementation:
                          names[value.lower()])
             values[name] = value
         return values
+
+    # ----------------------------------------------------------------------------------------------------
+    # Loop on parameters
+    # ----------------------------------------------------------------------------------------------------
 
     def loop_on_parameter(self, param_name, func_name, *, kind='STATIC_METHOD',
                           self_socket=None, return_socket=None, is_jump=False,
@@ -1497,6 +1975,10 @@ class NodeImplementation:
             yield implementation.gen_source(kind=kind, name=func_name(value),
                                             self_socket=self_socket, return_socket=return_socket,
                                             is_jump=is_jump, last_sockets=last_sockets)
+
+    # ----------------------------------------------------------------------------------------------------
+    # Source Code
+    # ----------------------------------------------------------------------------------------------------
 
     def gen_source(self, kind='STATIC_METHOD', name=None, self_socket=None,
                    return_socket=None, is_jump=False, last_sockets=(), copy_code=None,
@@ -1863,9 +2345,9 @@ class NodeImplementation:
             source += f'        return {result}\n'
         return textwrap.dedent(source) if kind == 'FUNCTION' else source
 
-    # ====================================================================================================
-    # Standard source generator
-    # ====================================================================================================
+    # ----------------------------------------------------------------------------------------------------
+    # Source code generator
+    # ----------------------------------------------------------------------------------------------------
 
     def _gen_source(
             self,
@@ -1873,11 +2355,13 @@ class NodeImplementation:
             *,
             method_type="METHOD",       # METHOD, FUNCTION, CLASS_METHOD, CLASS_PROPERTY, SETTER, GETTER
             self_socket=None,           # Name of the self socket
-            is_jump=False,
+            is_jump=False,              # Jump
             use_geo_selection=True,     # if selection exists, use geometry selection rather than argument
             return_kind='OUT',          # "NODE", class_name
             return_socket=None,         # explicit output identifier or name
             auto_data_type=None,        # socket name for auto data_type
+            fixed_sockets=None,         # Predefined sockets
+            last_sockets=(),            # Sockets to move to end (factor in Mix for instance)
         ):
 
         # ---------------------------------------------------------------------------
@@ -1895,15 +2379,16 @@ class NodeImplementation:
             assert not is_jump, f"is_jump can't be True in '{self.name}' for {method_type=}"
             assert self_socket is None, f"No self_socket for {method_type=}"
 
+        # Fixed sockets
+        if fixed_sockets is None:
+            fixed_sockets = {}
+
         # ---------------------------------------------------------------------------
         # Parameters
         # ---------------------------------------------------------------------------
 
-        # None in the implementation configuration means a free parameter.
         param_args = []
-        # Parameters the value of which is defined in the current NodeImplementation config
         fixed_params = {}
-        # Free parameters will be included in the arguments
         free_params = []
 
         parameters = self.node.snapshot_params()
@@ -1928,66 +2413,28 @@ class NodeImplementation:
         # Sockets arguments
         # ---------------------------------------------------------------------------
 
-        configurations = self.node.param_filter(**{
-            name: value for name, value in self._fixed_parameters().items()
-            if name in self.node.enum_parameters
-        })
-        if not configurations:
-            raise ValueError(f"No socket configuration for {self.node.name!r}: {fixed_params!r}")
+        possible_sockets = self.node.get_possible_sockets(**fixed_params)
 
-        items_name = core_module.constants.ONE_ITEMS_NODES.get(self.node.bl_idname)
-        items = getattr(self.node.bnode, items_name) if items_name else None
-        anonymous_items = items is not None and 'name' not in {
-            param.identifier for param in items.bl_rna.functions['new'].parameters if not param.is_output}
-        items_start = len(self.node.bnode.inputs) - len(items) - 1 if anonymous_items else None
-        dynamic = False
-        selected_sockets = []
-        for socket in self.node.max_inputs:
-            active = tuple(key for key in configurations if key not in socket['enabled'])
-            if active:
-                socket_types = socket['socket_type']
-                if any((socket_types[key] if isinstance(socket_types, dict) else socket_types) == 'CUSTOM'
-                       for key in active):
-                    dynamic = not anonymous_items
-                    continue
-                if anonymous_items:
-                    indices = socket['index']
-                    if all((indices[key] if isinstance(indices, dict) else indices) >= items_start
-                           for key in active):
-                        continue
-                selected = socket.copy()
-                selected['configurations'] = active
-                selected_sockets.append(selected)
+        # Remove disabled and fixed sockets
+        selected_sockets = [sock for sock in possible_sockets
+                            if sock.enabled and (sock.name not in fixed_sockets)]
 
-        selected_sockets.sort(key=lambda socket: (
-            socket['name'] in ('Factor', 'Fac'),
-            min(socket['index'][key] if isinstance(socket['index'], dict) else socket['index']
-                for key in socket['configurations'])))
+        # Prepare socket default use and correspondance betwenn argument and sockets
+        for sock in selected_sockets:
+            sock.ignore         = False # Ignore in argument list
+            sock.is_self        = False # This socket is used as self argument
+            sock.is_selection   = False # This is the selection socket
+            sock.arg_names      = []    # Unique argument names pointing to this socket
 
         # ---------------------------------------------------------------------------
         # Multi_input socket
         # ---------------------------------------------------------------------------
 
         has_multi_input_socket = False
-        multi_input_index = -1
-        for i_sock, sock in enumerate(selected_sockets):
-            identifier = sock['identifier']
-            if isinstance(identifier, dict):
-                identifier = next(identifier[configuration] for configuration in configurations
-                                    if configuration not in sock['enabled']
-                                    and identifier[configuration] is not None)
-            node_socket = self.node.inputs[identifier]
-            if node_socket.is_multi_input:
+        for idx, sock in enumerate(selected_sockets):
+            if sock.is_multi_input:
                 has_multi_input_socket = True
-                multi_input_index = i_sock
-                selected_sockets[i_sock]['is_multi'] = True
-                break
-
-        if has_multi_input_socket:
-            identifiers = set(selected_sockets[multi_input_index]['physical_identifiers'])
-            for sock in selected_sockets:
-                if identifiers.intersection(sock['physical_identifiers']):
-                    sock['is_multi'] = True
+                multi_input_index = idx
 
         # ---------------------------------------------------------------------------
         # Self socket
@@ -2004,98 +2451,126 @@ class NodeImplementation:
                     self_socket_index = multi_input_index
                 else:
                     self_socket_index = 0
-                selected_sockets[self_socket_index]['ignore'] = True
+                selected_sockets[self_socket_index].is_self = True
+                selected_sockets[self_socket_index].ignore = True
             else:
                 names = []
                 for i_sock, sock in enumerate(selected_sockets):
-                    names.append(sock['name'])
-                    if sock['name'] == self_socket:
-                        sock['ignore'] = True
+                    names.append(sock.socket_name)
+                    if sock.socket_name == self_socket:
+                        sock.is_self = True
+                        sock.ignore = True
                         self_socket_index = i_sock
                         break
 
                 if self_socket_index < 0:
                     raise AttributeError(f"{self_socket=} not found in {names}")
 
-        if has_self_socket:
-            receiver = selected_sockets[self_socket_index]
-            identifier = receiver['identifier']
-            if isinstance(identifier, dict):
-                identifier = next(identifier[key] for key in receiver['configurations']
-                                  if identifier[key] is not None)
-            identifiers = {identifier}
-            for sock in selected_sockets:
-                if identifiers.intersection(sock['physical_identifiers']):
-                    sock['is_self'] = True
-                    sock['ignore'] = True
-
         # ---------------------------------------------------------------------------
         # Selection socket
         # ---------------------------------------------------------------------------
 
         if is_instance and use_geo_selection and len(selected_sockets) >= 2:
-            if selected_sockets[1]['name'] == 'Selection':
-                selected_sockets[1]['is_selection'] = True
-                selected_sockets[1]['ignore'] = True
+            if selected_sockets[1].socket_name == 'Selection':
+                selected_sockets[1].is_selection = True
+                selected_sockets[1].ignore = True
             else:
                 use_geo_selection = False
 
-        # ---------------------------------------------------------------------------
+        # ===========================================================================
         # Build argument list
-        # ---------------------------------------------------------------------------
-
-        for sock in selected_sockets:
-            classes = set()
-            for configuration in configurations:
-                if configuration in sock['enabled']:
-                    continue
-                exists = sock['exists']
-                if not (exists[configuration] if isinstance(exists, dict) else exists):
-                    continue
-                socket_type = sock['socket_type']
-                socket_type = socket_type[configuration] if isinstance(socket_type, dict) else socket_type
-                name = sock['name']
-                name = name[configuration] if isinstance(name, dict) else name
-                classes.add(self.node.socket_class_name(socket_type, name))
-            sock['typing'] = next(iter(classes)) if len(classes) == 1 else 'Socket'
+        # ===========================================================================
 
         arguments = []
-        for sock in selected_sockets:
-            if sock.get('is_self', False):
-                arguments.append({
-                    'kind': 'SOCKET',
-                    'is_self': True,
-                    'socket_name': sock['name'],
-                    'arg_name': (core_module.utils.snake_case(sock['name'])
-                                 if not arguments else None),
-                    'socket_index': selected_sockets.index(sock),
-                })
+
+        # --------------------------------------------------
+        # self socket
+        # --------------------------------------------------
+
+        if has_self_socket:
+            sock = selected_sockets[self_socket_index]
+            arguments.append({
+                'kind': 'SOCKET',
+                'is_self': True,
+                'socket_name': sock.socket_name,
+                'arg_name': (core_module.utils.snake_case(sock.socket_name)
+                            if not arguments else None),
+                'socket_index': self_socket_index,
+                'identifier': sock.identifier,
+            })
+
+        # --------------------------------------------------
+        # Multi input socket
+        # --------------------------------------------------
 
         if has_multi_input_socket:
-            name = selected_sockets[multi_input_index]['name']
+            sock = selected_sockets[multi_input_index]
             arguments.append({
                 'kind': 'SOCKET',
                 'is_multi': True,
-                'socket_name': name,
-                'arg_name': core_module.utils.snake_case(name),
-                'typing': selected_sockets[multi_input_index]['typing'],
+                'socket_name': sock.socket_name,
+                'arg_name': core_module.utils.snake_case(sock.socket_name),
+                'typing': sock.class_name,
                 'socket_index': multi_input_index,
+                'identifier': sock.identifier,
             })
 
-        for socket_index, sock in enumerate(selected_sockets):
-            if sock.get('ignore', False) or sock.get('is_multi', False):
-                continue
-            name = sock['name']
+        # --------------------------------------------------
+        # Anonymous items
+        # --------------------------------------------------
+
+        if self.node.has_items and (not self.node.items_with_name) and (not has_multi_input_socket):
             arguments.append({
-                'kind': 'SOCKET',
-                'socket_name': name,
-                'arg_name': core_module.utils.snake_case(name),
-                'typing': sock['typing'],
-                'socket_index': socket_index,
+                'kind': 'ITEMS',
+                'is_multi': True,
+                'arg_name': 'items',
+                'typing': None,
             })
+
+        # --------------------------------------------------
+        # Other sockets
+        # --------------------------------------------------
+
+        optional_ids = []
+        last_args = []
+        for i_sock, sock in enumerate(selected_sockets):
+            if sock.ignore or sock.is_multi:
+                continue
+
+            # Have sockets changing their name
+            if len(sock.names) > 1:
+                optional_ids.append(sock.identifier)
+
+            # One argument per possible name
+            for sock_name in sock.names:
+                a = last_args if sock_name in last_sockets else arguments
+                a.append({
+                    'kind': 'SOCKET',
+                    'socket_name': sock_name,
+                    'arg_name': core_module.utils.snake_case(sock_name),
+                    'typing': sock.class_name,
+                    'socket_index': i_sock,
+                    'identifier': sock.identifier,
+                })
+        arguments.extend(last_args)
+
+        # --------------------------------------------------
+        # Named items
+        # --------------------------------------------------
+
+        if self.node.has_items and self.node.items_with_name:
+            arguments.append({
+                'kind': 'ITEMS',
+                'is_multi': False,
+                'arg_name': 'items',
+                'typing': None,
+            })
+
+        # --------------------------------------------------
+        # Parameters
+        # --------------------------------------------------
 
         used_argument_names = set()
-
         for param in free_params:
             name = param.arg_name
             arg_name = core_module.utils.snake_case(name)
@@ -2108,13 +2583,16 @@ class NodeImplementation:
             })
             used_argument_names.add(arg_name)
 
-        # ---------------------------------------------------------------------------
-        # Unique argument names
-        # ---------------------------------------------------------------------------
+        # --------------------------------------------------
+        # Make sure argument names are unique
+        # --------------------------------------------------
 
         for arg in arguments:
             if arg['kind'] == 'PARAMETER':
                 break
+
+            if arg.get('is_self', False):
+                continue
 
             arg_name = arg.get('arg_name', None)
             if arg_name is None:
@@ -2125,8 +2603,17 @@ class NodeImplementation:
             while arg_name in used_argument_names:
                 suffix += 1
                 arg_name = f'{base}_{suffix}'
+                
             arg['arg_name'] = arg_name
             used_argument_names.add(arg_name)
+
+        # --------------------------------------------------
+        # Group unique argument names by id
+        # --------------------------------------------------
+
+        synonyms = {}
+        for sid in optional_ids:
+            synonyms[sid] = [arg['arg_name'] for arg in arguments if arg['kind']=='SOCKET' and arg['identifier']==sid]
 
         # ---------------------------------------------------------------------------
         # Automatic data type
@@ -2154,32 +2641,63 @@ class NodeImplementation:
                 free_params = [arg for arg in free_params if arg.arg_name != computed_data_type]
 
         # ---------------------------------------------------------------------------
-        # Sockets passed to the node (separate from method arguments)
+        # Node creation arguments
         # ---------------------------------------------------------------------------
 
+        node_args = None
         node_sockets = []
-        for index, sock in enumerate(selected_sockets):
-            is_self = sock.get('is_self', False)
-            if sock.get('is_selection', False):
-                value = 'selection'
-            elif sock.get('is_multi', False):
-                argument = next(arg for arg in arguments
-                                if arg.get('is_multi', False))
-                name = argument['arg_name']
-                value = f'[self, *{name}]' if is_self else f'list({name})'
-            elif is_self:
-                value = 'self'
-            else:
+        node_params = []
+
+        if self.node.has_items and (not self.node.items_with_name):
+            node_args = "*items"
+
+        for i_sock, sock in enumerate(selected_sockets):
+
+            # Node(self, *args) or Node(*args)
+            if sock.is_multi:
+                assert node_args is None, f"{self.node.name}: Strange case !!!!"
+                argument = next(arg for arg in arguments if arg.get('is_multi', False))
+                arg_name = argument['arg_name']
+                if sock.is_self:
+                    node_args = f"*{arg_name}"
+                else:
+                    node_args = f"*[self, *{arg_name}]"
+
+            # named_sockets = {'Socket': self}
+            elif sock.is_self:
+                node_sockets.append(f"'ID_{sock.identifier}': self")
+
+            # named_sockets = {'Selection': selection}
+            elif sock.is_selection:
+                node_sockets.append(f"'{sock.socket_name}': selection")
+
+            # named_sockets = {'Socket': argument}
+            elif len(sock.names) == 1:
                 argument = next(arg for arg in arguments
                                 if arg['kind'] == 'SOCKET'
-                                and arg.get('socket_index') == index)
-                value = argument['arg_name']
-            node_sockets.append({
-                'socket_name': sock['name'],
-                'arg_value': value,
-                'configurations': sock['configurations'],
-                'is_multi': sock.get('is_multi', False),
-            })
+                                and arg.get('socket_index') == i_sock)
+                if sock.group_name is None:
+                    node_sockets.append(f"'ID_{sock.identifier}': {argument['arg_name']}")
+                else:
+                    node_sockets.append(f"'{sock.group_name}': {argument['arg_name']}")
+
+            # named_sockets = {'ID_Identifier': synonyms['Identifier']}
+            else:
+                assert len(sock.names) > 1, "Algo error"
+                node_sockets.append(f"'ID_{sock.identifier}': synonyms['{sock.identifier}']")
+
+        # Fixed sockets
+        for k, v in fixed_sockets:
+            node_sockets.append(f"'{k}': {v!r}")
+
+        # Parameters
+        for arg in arguments:
+            if arg['kind'] != 'PARAMETER':
+                continue
+            node_params.append(f"{arg['arg_name']} = {arg['arg_name']}")
+
+        for p_name, p_value in fixed_params.items():
+            node_params.append(f"{p_name} = {p_value!r}")
 
         # ---------------------------------------------------------------------------
         # Source code generation
@@ -2197,45 +2715,52 @@ class NodeImplementation:
             yield f"    @{method_name}.setter"
 
         # -------------------------
-        # Signature
+        # Header
         # -------------------------
 
-        s = f"{margin}def {method_name}("
-        sep = ", "
-
         if method_type in ('CLASS_METHOD', 'CLASS_PROPERTY'):
-            s += 'cls'
+            header = ['cls']
         elif method_type != 'FUNCTION':
-            s += 'self'
+            header = ['self']
         else:
-            sep = ""
-
-        if anonymous_items:
-            s += sep + '*values: Socket'
-            sep = ', '
-        if dynamic:
-            s += sep + 'named_sockets=None'
-            sep = ', '
+            header = []
 
         for arg in arguments:
             if arg.get('is_self', False):
                 continue
+
             if arg.get('is_multi'):
-                s += sep + f"*{arg['arg_name']}: {arg['typing']}"
+                if arg['kind'] == 'SOCKET':
+                    header.append(f"*{arg['arg_name']}: {arg['typing']}")
+                elif arg['kind'] == 'ITEMS':
+                    header.append("*items")
+                else:
+                    assert False, "Unknown cse"
+
+
+            elif arg['kind'] == 'ITEMS':
+                assert not arg['is_multi'], "Algo error"
+                header.append("items = {}")
+
             elif arg['kind'] == 'PARAMETER':
                 annotation = f": {arg['typing']}" if arg['typing'] else ''
-                s += sep + f"{arg['arg_name']}{annotation} = {arg['arg_value']}"
+                header.append(f"{arg['arg_name']}{annotation} = {arg['arg_value']}")
+
             else:
-                s += sep + f"{arg['arg_name']}: {arg['typing']} = None"
+                header.append(f"{arg['arg_name']}: {arg['typing']} = None")
 
-            sep = ", "
+        if self.node.has_items and self.node.items_with_name:
+            header.append("**named_items")
 
+        """
         if anonymous_items and self.node.bl_idname == 'GeometryNodeIndexSwitch':
-            s += sep + 'default_index: int = 0'
+            header.append('default_index: int = 0')
+
         if dynamic:
-            s += sep + '**sockets'
-        s += "):"
-        yield s
+            header.append('**sockets')
+        """
+
+        yield format_header(method_name, *header, margin=margin, max_len=100)
 
         # -------------------------
         # Docstring
@@ -2248,6 +2773,8 @@ class NodeImplementation:
             if arg['kind'] == 'PARAMETER':
                 doc_args.append(next(param for param in free_params
                                      if param.arg_name == arg['param_name']))
+            elif arg['kind'] == 'ITEMS':
+                pass
             else:
                 doc_args.append(Argument(
                     arg_type='SOCKET', arg_name=arg['arg_name'],
@@ -2262,7 +2789,7 @@ class NodeImplementation:
             }
         docstring = self.gen_docstring(
             doc_args, is_jump=is_jump if is_instance else None,
-            self_socket=selected_sockets[self_socket_index]['name'] if has_self_socket else None,
+            self_socket=selected_sockets[self_socket_index].socket_name if has_self_socket else None,
             returns={'OUT': 'Socket', 'NODE': 'Node', 'cls': 'cls'}.get(return_kind, return_kind),
             return_socket='OUT' if return_kind != 'NODE' else None,
             derived_parameters=derived_parameters, indent=0,
@@ -2283,82 +2810,61 @@ class NodeImplementation:
         # Selection socket
         # -------------------------
 
-        if any(sock.get('is_selection', False) for sock in selected_sockets):
+        if any(sock.is_selection for sock in selected_sockets):
             yield f"{margin}selection = self.get_selection()"
+
+        # -------------------------
+        # Filter synonyms
+        # -------------------------
+
+        if len(synonyms):
+            yield margin + "synonyms = {}"
+            for sid, arg_names in synonyms.items():
+                yield ""
+                yield f"{margin}synonyms['{sid}'] = None"
+                for arg_name in arg_names:
+                    yield f"{margin}if {arg_name} is not None: synonyms['{sid}'] = {arg_name}"
+            yield ""
+
+        # -------------------------
+        # items
+        # -------------------------
+
+        if self.node.has_items and self.node.items_with_name:
+            node_sockets.append("**items")
+            node_params.append("**named_items")
 
         # -------------------------
         # Node creation
         # -------------------------
 
-        parameter_values = {arg.arg_name: arg.node_value for arg in param_args}
-        fixed_values = self._fixed_parameters()
-        parameter_values.update({name: repr(value) for name, value in fixed_values.items()})
-        if computed_data_type is not None:
-            parameter_values[computed_data_type] = computed_data_type
+        yield format_node_call(
+            margin, 
+            self.node.name, 
+            args            = node_args, 
+            named_sockets   = node_sockets, 
+            parameters      = node_params, 
+            max_len         = 100,
+            )
 
-        # Prepare the actual socket names and values for each retained configuration.
-        named_values = {}
-        positional_values = {}
-        for configuration in configurations:
-            active = [(sock, value) for sock, value in zip(selected_sockets, node_sockets)
-                      if configuration in value['configurations']]
-            active.sort(key=lambda pair: pair[0]['index'][configuration]
-                        if isinstance(pair[0]['index'], dict) else pair[0]['index'])
-            used_names = set(self.parameters)
-            named = []
-            positional = []
-            for sock, value in active:
-                base = sock['name']
-                name = base
-                suffix = 0
-                while core_module.utils.snake_case(name) in used_names:
-                    suffix += 1
-                    name = f'{base}_{suffix}'
-                used_names.add(core_module.utils.snake_case(name))
-                if value['is_multi']:
-                    positional.append(f"*{value['arg_value']}")
-                else:
-                    named.append(f"{name!r}: {value['arg_value']}")
-            named_values[configuration] = '{' + ', '.join(named) + '}'
-            positional_values[configuration] = '[' + ', '.join(positional) + ']'
-
-        variable_sockets = (len(set(named_values.values())) > 1
-                            or len(set(positional_values.values())) > 1)
-        if variable_sockets:
-            configuration_values = []
-            for name in self.node.driving_parameters:
-                expression = parameter_values[name]
-                prop = self.node.bnode.bl_rna.properties[name]
-                if prop.type == 'ENUM' and name not in fixed_values:
-                    names = {item.identifier.lower(): item.identifier for item in prop.enum_items}
-                    names.update({item.name.lower(): item.identifier for item in prop.enum_items})
-                    if prop.is_enum_flag:
-                        expression = f"frozenset({names!r}.get(_value.lower(), _value) for _value in {expression})"
-                    else:
-                        expression = f"{names!r}.get({expression}.lower(), {expression})"
-                elif prop.type == 'ENUM' and prop.is_enum_flag:
-                    expression = repr(frozenset(fixed_values[name]))
-                configuration_values.append(expression)
-            yield f"{margin}_configuration = (" + ', '.join(configuration_values) + ',)'
-            named_table = ', '.join(f'{key!r}: {value}' for key, value in named_values.items())
-            positional_table = ', '.join(f'{key!r}: {value}' for key, value in positional_values.items())
-            yield f"{margin}_node_sockets = {{{named_table}}}[_configuration]"
-            yield f"{margin}_node_args = {{{positional_table}}}[_configuration]"
-            node_args = [repr(self.node.name), '*_node_args', 'named_sockets=_node_sockets']
-        else:
-            node_args = [repr(self.node.name)]
-            positional = next(iter(positional_values.values()))
-            if positional != '[]':
-                node_args.append('*' + positional)
-            node_args.append('named_sockets=' + next(iter(named_values.values())))
-
+        """
         if anonymous_items:
             node_args.insert(1, '*values')
+
         if dynamic:
             socket_expression = node_args.pop()
             yield f"{margin}_named_sockets = {socket_expression.removeprefix('named_sockets=')}"
             yield f"{margin}_named_sockets.update({{name: value for name, value in (named_sockets or {{}}).items() if value is not None}})"
+            
             node_args.append('named_sockets=_named_sockets')
+        """
+
+        """
+
+        # Finalize named_sockets
+
+        for f_name, f_value in fixed_sockets.items():
+            yield f"{margin}named_sockets['{f_name}'] = {f_value!r}"
 
         parameter_order = self.node.enum_params_order + tuple(
             name for name in parameter_values if name not in self.node.enum_params_order
@@ -2373,6 +2879,7 @@ class NodeImplementation:
             yield f"{margin}_interface = node._get_interface_socket(_selector)"
             yield f"{margin}if _interface is not None:"
             yield f"{margin}    _interface.default_value = default_index"
+        """
 
         # -------------------------
         # Return
@@ -2397,32 +2904,3 @@ class NodeImplementation:
 
             else:
                 yield f"{margin}return {return_kind}(node._out)"
-
-        
-
-
-
-        
-
-
-
-
-
-
-        
-
-
-        
-
-
-
-
-
-
-
-
-
-
-
-
-        

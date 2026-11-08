@@ -44,7 +44,13 @@ if TYPE_CHECKING:
     class Menu:
         ...
 
+    class Input:
+        ...
+
     class Geometry:
+        ...
+
+    class IntVector:
         ...
 
     class Texture:
@@ -714,49 +720,6 @@ class Curve(BaseCurve, Geometry):
         node = Node('Reverse Curve', named_sockets={'Curve': self, 'Selection': selection})
         self._jump(node._out)
         return node._second_out(self)
-
-    def sample(self, value: Socket=None, length: Float=None, curve_index: Integer=None, factor: Float=None, mode: Literal['FACTOR', 'LENGTH']='FACTOR', use_all_curves: bool=False):
-        """ > Node <&Node Sample Curve>
-        
-        Jump method: False.
-        
-        self: socket 'Curves'.
-        
-        **Derived parameters**
-        
-        - `data_type`: Inferred from socket 'Value' (value).
-        
-        Parameters
-        ----------
-        value : Socket, optional
-            socket 'Value'
-        
-        length : Float, optional
-            socket 'Length'
-        
-        curve_index : Integer, optional
-            socket 'Curve Index'
-        
-        factor : Float, optional
-            socket 'Factor'
-        
-        mode : Literal['Factor', 'Length']
-            parameter `mode`
-        
-        use_all_curves : bool
-            parameter `use_all_curves`
-        
-        Returns
-        -------
-        Socket
-            socket 'OUT'
-        """
-        data_type = SocketType.get_data_type_for_node(value, 'GeometryNodeSampleCurve', 'data_type')
-        _configuration = ({'factor': 'FACTOR', 'length': 'LENGTH'}.get(mode.lower(), mode), {'float': 'FLOAT', 'int': 'INT', 'boolean': 'BOOLEAN', 'float_vector': 'FLOAT_VECTOR', 'float_color': 'FLOAT_COLOR', 'quaternion': 'QUATERNION', 'float4x4': 'FLOAT4X4', 'string': 'STRING', 'int8': 'INT8', 'int16_2d': 'INT16_2D', 'int32_2d': 'INT32_2D', 'float2': 'FLOAT2', 'float4': 'FLOAT4', 'byte_color': 'BYTE_COLOR', 'integer': 'INT', 'vector': 'FLOAT_VECTOR', 'color': 'FLOAT_COLOR', '4x4 matrix': 'FLOAT4X4', '8-bit integer': 'INT8', '2d 16-bit integer vector': 'INT16_2D', '2d integer vector': 'INT32_2D', '2d vector': 'FLOAT2', '4d vector': 'FLOAT4', 'byte color': 'BYTE_COLOR'}.get(data_type.lower(), data_type), use_all_curves)
-        _node_sockets = {('FACTOR', 'FLOAT', False): {'Curves': self, 'Value': value, 'Factor': factor, 'Curve Index': curve_index}, ('FACTOR', 'FLOAT', True): {'Curves': self, 'Value': value, 'Factor': factor}, ('FACTOR', 'INT', False): {'Curves': self, 'Value': value, 'Factor': factor, 'Curve Index': curve_index}, ('FACTOR', 'INT', True): {'Curves': self, 'Value': value, 'Factor': factor}, ('FACTOR', 'BOOLEAN', False): {'Curves': self, 'Value': value, 'Factor': factor, 'Curve Index': curve_index}, ('FACTOR', 'BOOLEAN', True): {'Curves': self, 'Value': value, 'Factor': factor}, ('FACTOR', 'FLOAT_VECTOR', False): {'Curves': self, 'Value': value, 'Factor': factor, 'Curve Index': curve_index}, ('FACTOR', 'FLOAT_VECTOR', True): {'Curves': self, 'Value': value, 'Factor': factor}, ('FACTOR', 'FLOAT_COLOR', False): {'Curves': self, 'Value': value, 'Factor': factor, 'Curve Index': curve_index}, ('FACTOR', 'FLOAT_COLOR', True): {'Curves': self, 'Value': value, 'Factor': factor}, ('FACTOR', 'QUATERNION', False): {'Curves': self, 'Value': value, 'Factor': factor, 'Curve Index': curve_index}, ('FACTOR', 'QUATERNION', True): {'Curves': self, 'Value': value, 'Factor': factor}, ('FACTOR', 'FLOAT4X4', False): {'Curves': self, 'Value': value, 'Factor': factor, 'Curve Index': curve_index}, ('FACTOR', 'FLOAT4X4', True): {'Curves': self, 'Value': value, 'Factor': factor}, ('LENGTH', 'FLOAT', False): {'Curves': self, 'Value': value, 'Length': length, 'Curve Index': curve_index}, ('LENGTH', 'FLOAT', True): {'Curves': self, 'Value': value, 'Length': length}, ('LENGTH', 'INT', False): {'Curves': self, 'Value': value, 'Length': length, 'Curve Index': curve_index}, ('LENGTH', 'INT', True): {'Curves': self, 'Value': value, 'Length': length}, ('LENGTH', 'BOOLEAN', False): {'Curves': self, 'Value': value, 'Length': length, 'Curve Index': curve_index}, ('LENGTH', 'BOOLEAN', True): {'Curves': self, 'Value': value, 'Length': length}, ('LENGTH', 'FLOAT_VECTOR', False): {'Curves': self, 'Value': value, 'Length': length, 'Curve Index': curve_index}, ('LENGTH', 'FLOAT_VECTOR', True): {'Curves': self, 'Value': value, 'Length': length}, ('LENGTH', 'FLOAT_COLOR', False): {'Curves': self, 'Value': value, 'Length': length, 'Curve Index': curve_index}, ('LENGTH', 'FLOAT_COLOR', True): {'Curves': self, 'Value': value, 'Length': length}, ('LENGTH', 'QUATERNION', False): {'Curves': self, 'Value': value, 'Length': length, 'Curve Index': curve_index}, ('LENGTH', 'QUATERNION', True): {'Curves': self, 'Value': value, 'Length': length}, ('LENGTH', 'FLOAT4X4', False): {'Curves': self, 'Value': value, 'Length': length, 'Curve Index': curve_index}, ('LENGTH', 'FLOAT4X4', True): {'Curves': self, 'Value': value, 'Length': length}}[_configuration]
-        _node_args = {('FACTOR', 'FLOAT', False): [], ('FACTOR', 'FLOAT', True): [], ('FACTOR', 'INT', False): [], ('FACTOR', 'INT', True): [], ('FACTOR', 'BOOLEAN', False): [], ('FACTOR', 'BOOLEAN', True): [], ('FACTOR', 'FLOAT_VECTOR', False): [], ('FACTOR', 'FLOAT_VECTOR', True): [], ('FACTOR', 'FLOAT_COLOR', False): [], ('FACTOR', 'FLOAT_COLOR', True): [], ('FACTOR', 'QUATERNION', False): [], ('FACTOR', 'QUATERNION', True): [], ('FACTOR', 'FLOAT4X4', False): [], ('FACTOR', 'FLOAT4X4', True): [], ('LENGTH', 'FLOAT', False): [], ('LENGTH', 'FLOAT', True): [], ('LENGTH', 'INT', False): [], ('LENGTH', 'INT', True): [], ('LENGTH', 'BOOLEAN', False): [], ('LENGTH', 'BOOLEAN', True): [], ('LENGTH', 'FLOAT_VECTOR', False): [], ('LENGTH', 'FLOAT_VECTOR', True): [], ('LENGTH', 'FLOAT_COLOR', False): [], ('LENGTH', 'FLOAT_COLOR', True): [], ('LENGTH', 'QUATERNION', False): [], ('LENGTH', 'QUATERNION', True): [], ('LENGTH', 'FLOAT4X4', False): [], ('LENGTH', 'FLOAT4X4', True): []}[_configuration]
-        node = Node('Sample Curve', *_node_args, named_sockets=_node_sockets, mode=mode, data_type=data_type, use_all_curves=use_all_curves)
-        return node._out
 
     def set_normal(self, mode: Menu=None, normal: Vector=None):
         """ > Node <&Node Set Curve Normal>

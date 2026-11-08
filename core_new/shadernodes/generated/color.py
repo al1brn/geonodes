@@ -32,6 +32,9 @@ if TYPE_CHECKING:
     class Menu:
         ...
 
+    class Input:
+        ...
+
     class Texture:
         ...
 
@@ -47,6 +50,46 @@ from ...shadernodes.sockets.color import Color as BaseColor
 
 class Color(BaseColor):
     __slots__ = ()
+
+    def mix(self, b: Float | Vector | Color=None, factor: Float | Vector=None, data_type: Literal['FLOAT', 'VECTOR', 'RGBA', 'ROTATION']='RGBA', factor_mode: Literal['UNIFORM', 'NON_UNIFORM']='UNIFORM', blend_type: Literal['MIX', 'DARKEN', 'MULTIPLY', 'BURN', 'LIGHTEN', 'SCREEN', 'DODGE', 'ADD', 'OVERLAY', 'SOFT_LIGHT', 'LINEAR_LIGHT', 'DIFFERENCE', 'EXCLUSION', 'SUBTRACT', 'DIVIDE', 'HUE', 'SATURATION', 'COLOR', 'VALUE']='MIX', clamp_factor=True, clamp_result=False):
+        """ > Node <&ShaderNode Mix>
+        
+        Jump method: False.
+        
+        self: socket 'a'.
+        
+        Parameters
+        ----------
+        b : Float | Vector | Color, optional
+            socket 'B'
+        
+        factor : Float | Vector, optional
+            socket 'Factor'
+        
+        data_type : Literal['Float', 'Vector', 'Color']
+            parameter `data_type`
+        
+        factor_mode : Literal['Uniform', 'Non-Uniform']
+            parameter `factor_mode`
+        
+        blend_type : Literal['Mix', 'Darken', 'Multiply', 'Color Burn', 'Lighten', 'Screen', 'Color Dodge', 'Add', 'Overlay', 'Soft Light', 'Linear Light', 'Difference', 'Exclusion', 'Subtract', 'Divide', 'Hue', 'Saturation', 'Color', 'Value']
+            parameter `blend_type`
+        
+        clamp_factor : bool
+            parameter `clamp_factor`
+        
+        clamp_result : bool
+            parameter `clamp_result`
+        
+        Returns
+        -------
+        Float | Vector | Color
+            socket 'OUT'
+        """
+        _named_sockets = {'a': self, 'b': b, 'factor': factor}
+        _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
+        _node = Node('Mix', named_sockets=_named_sockets, data_type=data_type, factor_mode=factor_mode, blend_type=blend_type, clamp_factor=clamp_factor, clamp_result=clamp_result)
+        return _node._out
 
     def mix_mix(self, b: Color=None, factor: Float=None, clamp_factor=True, clamp_result=False):
         """ > Node <&ShaderNode Mix>
@@ -873,29 +916,6 @@ class Color(BaseColor):
         node = Node('Combine Color', *_node_args, named_sockets=_node_sockets, mode=mode)
         return node._out
 
-    def diffuse_bsdf(self, roughness: Float=None, normal: Vector=None):
-        """ > Node <&ShaderNode Diffuse BSDF>
-        
-        Jump method: False.
-        
-        self: socket 'Color'.
-        
-        Parameters
-        ----------
-        roughness : Float, optional
-            socket 'Roughness'
-        
-        normal : Vector, optional
-            socket 'Normal'
-        
-        Returns
-        -------
-        Socket
-            socket 'OUT'
-        """
-        node = Node('Diffuse BSDF', named_sockets={'Color': self, 'Roughness': roughness, 'Normal': normal})
-        return node._out
-
     def emission(self, strength: Float=None):
         """ > Node <&ShaderNode Emission>
         
@@ -916,120 +936,12 @@ class Color(BaseColor):
         node = Node('Emission', named_sockets={'Color': self, 'Strength': strength})
         return node._out
 
-    def glass_bsdf(self, roughness: Float=None, anisotropy: Float=None, rotation: Float=None, ior: Float=None, normal: Vector=None, tangent: Vector=None, thin_film_thickness: Float=None, thin_film_ior: Float=None, distribution: Literal['BECKMANN', 'GGX', 'MULTI_GGX']='MULTI_GGX'):
-        """ > Node <&ShaderNode Glass BSDF>
+    def enable_output(self, value: Color=None):
+        """ > Node <&ShaderNode Enable Output>
         
         Jump method: False.
         
-        self: socket 'Color'.
-        
-        Parameters
-        ----------
-        roughness : Float, optional
-            socket 'Roughness'
-        
-        anisotropy : Float, optional
-            socket 'Anisotropy'
-        
-        rotation : Float, optional
-            socket 'Rotation'
-        
-        ior : Float, optional
-            socket 'IOR'
-        
-        normal : Vector, optional
-            socket 'Normal'
-        
-        tangent : Vector, optional
-            socket 'Tangent'
-        
-        thin_film_thickness : Float, optional
-            socket 'Thin Film Thickness'
-        
-        thin_film_ior : Float, optional
-            socket 'Thin Film IOR'
-        
-        distribution : Literal['Beckmann', 'GGX', 'Multiscatter GGX']
-            parameter `distribution`
-        
-        Returns
-        -------
-        Socket
-            socket 'OUT'
-        """
-        node = Node('Glass BSDF', named_sockets={'Color': self, 'Roughness': roughness, 'Anisotropy': anisotropy, 'Rotation': rotation, 'IOR': ior, 'Normal': normal, 'Tangent': tangent, 'Thin Film Thickness': thin_film_thickness, 'Thin Film IOR': thin_film_ior}, distribution=distribution)
-        return node._out
-
-    def glossy_bsdf(self, roughness: Float=None, anisotropy: Float=None, rotation: Float=None, normal: Vector=None, tangent: Vector=None, distribution: Literal['BECKMANN', 'GGX', 'ASHIKHMIN_SHIRLEY', 'MULTI_GGX']='MULTI_GGX'):
-        """ > Node <&ShaderNode Glossy BSDF>
-        
-        Jump method: False.
-        
-        self: socket 'Color'.
-        
-        Parameters
-        ----------
-        roughness : Float, optional
-            socket 'Roughness'
-        
-        anisotropy : Float, optional
-            socket 'Anisotropy'
-        
-        rotation : Float, optional
-            socket 'Rotation'
-        
-        normal : Vector, optional
-            socket 'Normal'
-        
-        tangent : Vector, optional
-            socket 'Tangent'
-        
-        distribution : Literal['Beckmann', 'GGX', 'Ashikhmin-Shirley', 'Multiscatter GGX']
-            parameter `distribution`
-        
-        Returns
-        -------
-        Socket
-            socket 'OUT'
-        """
-        node = Node('Glossy BSDF', named_sockets={'Color': self, 'Roughness': roughness, 'Anisotropy': anisotropy, 'Rotation': rotation, 'Normal': normal, 'Tangent': tangent}, distribution=distribution)
-        return node._out
-
-    def hair_bsdf(self, offset: Float=None, roughnessu: Float=None, roughnessv: Float=None, tangent: Vector=None, component: Literal['Reflection', 'Transmission']='Reflection'):
-        """ > Node <&ShaderNode Hair BSDF>
-        
-        Jump method: False.
-        
-        self: socket 'Color'.
-        
-        Parameters
-        ----------
-        offset : Float, optional
-            socket 'Offset'
-        
-        roughnessu : Float, optional
-            socket 'RoughnessU'
-        
-        roughnessv : Float, optional
-            socket 'RoughnessV'
-        
-        tangent : Vector, optional
-            socket 'Tangent'
-        
-        component : Literal['Reflection', 'Transmission']
-            parameter `component`
-        
-        Returns
-        -------
-        Socket
-            socket 'OUT'
-        """
-        node = Node('Hair BSDF', named_sockets={'Color': self, 'Offset': offset, 'RoughnessU': roughnessu, 'RoughnessV': roughnessv, 'Tangent': tangent}, component=component)
-        return node._out
-
-    @classmethod
-    def implicit_conversion(cls, value: Color=None, socket_idname: str='NodeSocketColor'):
-        """ > Node <&ShaderNode Implicit Conversion>
+        self: socket 'Enable'.
         
         **Fixed values**
         
@@ -1042,6 +954,29 @@ class Color(BaseColor):
         value : Color, optional
             socket 'Value'
         
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Enable Output', named_sockets={'Enable': self, 'Value': value}, data_type='RGBA')
+        return node._out
+
+    def implicit_conversion(self, socket_idname: str='NodeSocketColor'):
+        """ > Node <&ShaderNode Implicit Conversion>
+        
+        Jump method: False.
+        
+        self: socket 'Value'.
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `data_type` | `'RGBA'` |
+        
+        Parameters
+        ----------
         socket_idname : str
             parameter `socket_idname`
         
@@ -1050,7 +985,7 @@ class Color(BaseColor):
         Socket
             socket 'OUT'
         """
-        node = Node('Implicit Conversion', named_sockets={'Value': value}, data_type='RGBA', socket_idname=socket_idname)
+        node = Node('Implicit Conversion', named_sockets={'Value': self}, data_type='RGBA', socket_idname=socket_idname)
         return node._out
 
     def light_accumulation(self, diffuse_color: Color=None, glossy_light: Color=None, glossy_color: Color=None, transmission_light: Color=None, transmission_color: Color=None):
@@ -1083,299 +1018,6 @@ class Color(BaseColor):
             socket 'OUT'
         """
         node = Node('Light Accumulation', named_sockets={'Diffuse Light': self, 'Diffuse Color': diffuse_color, 'Glossy Light': glossy_light, 'Glossy Color': glossy_color, 'Transmission Light': transmission_light, 'Transmission Color': transmission_color})
-        return node._out
-
-    def metallic_bsdf(self, edge_tint: Color=None, ior: Vector=None, extinction: Vector=None, roughness: Float=None, anisotropy: Float=None, rotation: Float=None, normal: Vector=None, tangent: Vector=None, thin_film_thickness: Float=None, thin_film_ior: Float=None, distribution: Literal['BECKMANN', 'GGX', 'MULTI_GGX']='MULTI_GGX', fresnel_type: Literal['PHYSICAL_CONDUCTOR', 'F82']='F82'):
-        """ > Node <&ShaderNode Metallic BSDF>
-        
-        Jump method: False.
-        
-        self: socket 'Base Color'.
-        
-        Parameters
-        ----------
-        edge_tint : Color, optional
-            socket 'Edge Tint'
-        
-        ior : Vector, optional
-            socket 'IOR'
-        
-        extinction : Vector, optional
-            socket 'Extinction'
-        
-        roughness : Float, optional
-            socket 'Roughness'
-        
-        anisotropy : Float, optional
-            socket 'Anisotropy'
-        
-        rotation : Float, optional
-            socket 'Rotation'
-        
-        normal : Vector, optional
-            socket 'Normal'
-        
-        tangent : Vector, optional
-            socket 'Tangent'
-        
-        thin_film_thickness : Float, optional
-            socket 'Thin Film Thickness'
-        
-        thin_film_ior : Float, optional
-            socket 'Thin Film IOR'
-        
-        distribution : Literal['Beckmann', 'GGX', 'Multiscatter GGX']
-            parameter `distribution`
-        
-        fresnel_type : Literal['Physical Conductor', 'F82 Tint']
-            parameter `fresnel_type`
-        
-        Returns
-        -------
-        Socket
-            socket 'OUT'
-        """
-        _configuration = ({'physical_conductor': 'PHYSICAL_CONDUCTOR', 'f82': 'F82', 'physical conductor': 'PHYSICAL_CONDUCTOR', 'f82 tint': 'F82'}.get(fresnel_type.lower(), fresnel_type),)
-        _node_sockets = {('PHYSICAL_CONDUCTOR',): {'IOR': ior, 'Extinction': extinction, 'Roughness': roughness, 'Anisotropy': anisotropy, 'Rotation': rotation, 'Normal': normal, 'Tangent': tangent, 'Thin Film Thickness': thin_film_thickness, 'Thin Film IOR': thin_film_ior}, ('F82',): {'Base Color': self, 'Edge Tint': edge_tint, 'Roughness': roughness, 'Anisotropy': anisotropy, 'Rotation': rotation, 'Normal': normal, 'Tangent': tangent, 'Thin Film Thickness': thin_film_thickness, 'Thin Film IOR': thin_film_ior}}[_configuration]
-        _node_args = {('PHYSICAL_CONDUCTOR',): [], ('F82',): []}[_configuration]
-        node = Node('Metallic BSDF', *_node_args, named_sockets=_node_sockets, distribution=distribution, fresnel_type=fresnel_type)
-        return node._out
-
-    @classmethod
-    def mix(cls, a: Color=None, b: Color=None, factor: Float=None, factor_mode: Literal['UNIFORM', 'NON_UNIFORM']='UNIFORM', blend_type: Literal['MIX', 'DARKEN', 'MULTIPLY', 'BURN', 'LIGHTEN', 'SCREEN', 'DODGE', 'ADD', 'OVERLAY', 'SOFT_LIGHT', 'LINEAR_LIGHT', 'DIFFERENCE', 'EXCLUSION', 'SUBTRACT', 'DIVIDE', 'HUE', 'SATURATION', 'COLOR', 'VALUE']='MIX', clamp_factor: bool=True, clamp_result: bool=False):
-        """ > Node <&ShaderNode Mix>
-        
-        **Fixed values**
-        
-        | Parameter | Value |
-        | --- | --- |
-        | `data_type` | `'RGBA'` |
-        
-        Parameters
-        ----------
-        a : Color, optional
-            socket 'A'
-        
-        b : Color, optional
-            socket 'B'
-        
-        factor : Float, optional
-            socket 'Factor'
-        
-        factor_mode : Literal['Uniform', 'Non-Uniform']
-            parameter `factor_mode`
-        
-        blend_type : Literal['Mix', 'Darken', 'Multiply', 'Color Burn', 'Lighten', 'Screen', 'Color Dodge', 'Add', 'Overlay', 'Soft Light', 'Linear Light', 'Difference', 'Exclusion', 'Subtract', 'Divide', 'Hue', 'Saturation', 'Color', 'Value']
-            parameter `blend_type`
-        
-        clamp_factor : bool
-            parameter `clamp_factor`
-        
-        clamp_result : bool
-            parameter `clamp_result`
-        
-        Returns
-        -------
-        Socket
-            socket 'OUT'
-        """
-        node = Node('Mix', named_sockets={'Factor': factor, 'A': a, 'B': b}, data_type='RGBA', factor_mode=factor_mode, blend_type=blend_type, clamp_factor=clamp_factor, clamp_result=clamp_result)
-        return node._out
-
-    def principled_bsdf(self, metallic: Float=None, roughness: Float=None, ior: Float=None, alpha: Float=None, thin_wall: Boolean=None, normal: Vector=None, diffuse_roughness: Float=None, subsurface_weight: Float=None, subsurface_radius: Vector=None, subsurface_scale: Float=None, subsurface_ior: Float=None, subsurface_anisotropy: Float=None, specular_ior_level: Float=None, specular_tint: Color=None, anisotropic: Float=None, anisotropic_rotation: Float=None, tangent: Vector=None, transmission_weight: Float=None, transmission_dispersion_scale: Float=None, transmission_dispersion_abbe_number: Float=None, coat_weight: Float=None, coat_roughness: Float=None, coat_ior: Float=None, coat_tint: Color=None, coat_normal: Vector=None, sheen_weight: Float=None, sheen_roughness: Float=None, sheen_tint: Color=None, emission_color: Color=None, emission_strength: Float=None, thin_film_thickness: Float=None, thin_film_ior: Float=None, distribution: Literal['GGX', 'MULTI_GGX']='MULTI_GGX', subsurface_method: Literal['BURLEY', 'RANDOM_WALK', 'RANDOM_WALK_SKIN', 'RANDOM_WALK_LEGACY']='RANDOM_WALK'):
-        """ > Node <&ShaderNode Principled BSDF>
-        
-        Jump method: False.
-        
-        self: socket 'Base Color'.
-        
-        Parameters
-        ----------
-        metallic : Float, optional
-            socket 'Metallic'
-        
-        roughness : Float, optional
-            socket 'Roughness'
-        
-        ior : Float, optional
-            socket 'IOR'
-        
-        alpha : Float, optional
-            socket 'Alpha'
-        
-        thin_wall : Boolean, optional
-            socket 'Thin Wall'
-        
-        normal : Vector, optional
-            socket 'Normal'
-        
-        diffuse_roughness : Float, optional
-            socket 'Diffuse Roughness'
-        
-        subsurface_weight : Float, optional
-            socket 'Subsurface Weight'
-        
-        subsurface_radius : Vector, optional
-            socket 'Subsurface Radius'
-        
-        subsurface_scale : Float, optional
-            socket 'Subsurface Scale'
-        
-        subsurface_ior : Float, optional
-            socket 'Subsurface IOR'
-        
-        subsurface_anisotropy : Float, optional
-            socket 'Subsurface Anisotropy'
-        
-        specular_ior_level : Float, optional
-            socket 'Specular IOR Level'
-        
-        specular_tint : Color, optional
-            socket 'Specular Tint'
-        
-        anisotropic : Float, optional
-            socket 'Anisotropic'
-        
-        anisotropic_rotation : Float, optional
-            socket 'Anisotropic Rotation'
-        
-        tangent : Vector, optional
-            socket 'Tangent'
-        
-        transmission_weight : Float, optional
-            socket 'Transmission Weight'
-        
-        transmission_dispersion_scale : Float, optional
-            socket 'Transmission Dispersion Scale'
-        
-        transmission_dispersion_abbe_number : Float, optional
-            socket 'Transmission Dispersion Abbe Number'
-        
-        coat_weight : Float, optional
-            socket 'Coat Weight'
-        
-        coat_roughness : Float, optional
-            socket 'Coat Roughness'
-        
-        coat_ior : Float, optional
-            socket 'Coat IOR'
-        
-        coat_tint : Color, optional
-            socket 'Coat Tint'
-        
-        coat_normal : Vector, optional
-            socket 'Coat Normal'
-        
-        sheen_weight : Float, optional
-            socket 'Sheen Weight'
-        
-        sheen_roughness : Float, optional
-            socket 'Sheen Roughness'
-        
-        sheen_tint : Color, optional
-            socket 'Sheen Tint'
-        
-        emission_color : Color, optional
-            socket 'Emission Color'
-        
-        emission_strength : Float, optional
-            socket 'Emission Strength'
-        
-        thin_film_thickness : Float, optional
-            socket 'Thin Film Thickness'
-        
-        thin_film_ior : Float, optional
-            socket 'Thin Film IOR'
-        
-        distribution : Literal['GGX', 'Multiscatter GGX']
-            parameter `distribution`
-        
-        subsurface_method : Literal['Christensen-Burley', 'Random Walk', 'Random Walk (Skin)', 'Random Walk (Legacy)']
-            parameter `subsurface_method`
-        
-        Returns
-        -------
-        Socket
-            socket 'OUT'
-        """
-        _configuration = ({'burley': 'BURLEY', 'random_walk': 'RANDOM_WALK', 'random_walk_skin': 'RANDOM_WALK_SKIN', 'random_walk_legacy': 'RANDOM_WALK_LEGACY', 'christensen-burley': 'BURLEY', 'random walk': 'RANDOM_WALK', 'random walk (skin)': 'RANDOM_WALK_SKIN', 'random walk (legacy)': 'RANDOM_WALK_LEGACY'}.get(subsurface_method.lower(), subsurface_method),)
-        _node_sockets = {('BURLEY',): {'Base Color': self, 'Metallic': metallic, 'Roughness': roughness, 'IOR': ior, 'Alpha': alpha, 'Thin Wall': thin_wall, 'Normal': normal, 'Diffuse Roughness': diffuse_roughness, 'Subsurface Weight': subsurface_weight, 'Subsurface Radius': subsurface_radius, 'Subsurface Scale': subsurface_scale, 'Subsurface Anisotropy': subsurface_anisotropy, 'Specular IOR Level': specular_ior_level, 'Specular Tint': specular_tint, 'Anisotropic': anisotropic, 'Anisotropic Rotation': anisotropic_rotation, 'Tangent': tangent, 'Transmission Weight': transmission_weight, 'Transmission Dispersion Scale': transmission_dispersion_scale, 'Transmission Dispersion Abbe Number': transmission_dispersion_abbe_number, 'Coat Weight': coat_weight, 'Coat Roughness': coat_roughness, 'Coat IOR': coat_ior, 'Coat Tint': coat_tint, 'Coat Normal': coat_normal, 'Sheen Weight': sheen_weight, 'Sheen Roughness': sheen_roughness, 'Sheen Tint': sheen_tint, 'Emission Color': emission_color, 'Emission Strength': emission_strength, 'Thin Film Thickness': thin_film_thickness, 'Thin Film IOR': thin_film_ior}, ('RANDOM_WALK',): {'Base Color': self, 'Metallic': metallic, 'Roughness': roughness, 'IOR': ior, 'Alpha': alpha, 'Thin Wall': thin_wall, 'Normal': normal, 'Diffuse Roughness': diffuse_roughness, 'Subsurface Weight': subsurface_weight, 'Subsurface Radius': subsurface_radius, 'Subsurface Scale': subsurface_scale, 'Subsurface Anisotropy': subsurface_anisotropy, 'Specular IOR Level': specular_ior_level, 'Specular Tint': specular_tint, 'Anisotropic': anisotropic, 'Anisotropic Rotation': anisotropic_rotation, 'Tangent': tangent, 'Transmission Weight': transmission_weight, 'Transmission Dispersion Scale': transmission_dispersion_scale, 'Transmission Dispersion Abbe Number': transmission_dispersion_abbe_number, 'Coat Weight': coat_weight, 'Coat Roughness': coat_roughness, 'Coat IOR': coat_ior, 'Coat Tint': coat_tint, 'Coat Normal': coat_normal, 'Sheen Weight': sheen_weight, 'Sheen Roughness': sheen_roughness, 'Sheen Tint': sheen_tint, 'Emission Color': emission_color, 'Emission Strength': emission_strength, 'Thin Film Thickness': thin_film_thickness, 'Thin Film IOR': thin_film_ior}, ('RANDOM_WALK_SKIN',): {'Base Color': self, 'Metallic': metallic, 'Roughness': roughness, 'IOR': ior, 'Alpha': alpha, 'Thin Wall': thin_wall, 'Normal': normal, 'Diffuse Roughness': diffuse_roughness, 'Subsurface Weight': subsurface_weight, 'Subsurface Radius': subsurface_radius, 'Subsurface Scale': subsurface_scale, 'Subsurface IOR': subsurface_ior, 'Subsurface Anisotropy': subsurface_anisotropy, 'Specular IOR Level': specular_ior_level, 'Specular Tint': specular_tint, 'Anisotropic': anisotropic, 'Anisotropic Rotation': anisotropic_rotation, 'Tangent': tangent, 'Transmission Weight': transmission_weight, 'Transmission Dispersion Scale': transmission_dispersion_scale, 'Transmission Dispersion Abbe Number': transmission_dispersion_abbe_number, 'Coat Weight': coat_weight, 'Coat Roughness': coat_roughness, 'Coat IOR': coat_ior, 'Coat Tint': coat_tint, 'Coat Normal': coat_normal, 'Sheen Weight': sheen_weight, 'Sheen Roughness': sheen_roughness, 'Sheen Tint': sheen_tint, 'Emission Color': emission_color, 'Emission Strength': emission_strength, 'Thin Film Thickness': thin_film_thickness, 'Thin Film IOR': thin_film_ior}, ('RANDOM_WALK_LEGACY',): {'Base Color': self, 'Metallic': metallic, 'Roughness': roughness, 'IOR': ior, 'Alpha': alpha, 'Thin Wall': thin_wall, 'Normal': normal, 'Diffuse Roughness': diffuse_roughness, 'Subsurface Weight': subsurface_weight, 'Subsurface Radius': subsurface_radius, 'Subsurface Scale': subsurface_scale, 'Subsurface Anisotropy': subsurface_anisotropy, 'Specular IOR Level': specular_ior_level, 'Specular Tint': specular_tint, 'Anisotropic': anisotropic, 'Anisotropic Rotation': anisotropic_rotation, 'Tangent': tangent, 'Transmission Weight': transmission_weight, 'Transmission Dispersion Scale': transmission_dispersion_scale, 'Transmission Dispersion Abbe Number': transmission_dispersion_abbe_number, 'Coat Weight': coat_weight, 'Coat Roughness': coat_roughness, 'Coat IOR': coat_ior, 'Coat Tint': coat_tint, 'Coat Normal': coat_normal, 'Sheen Weight': sheen_weight, 'Sheen Roughness': sheen_roughness, 'Sheen Tint': sheen_tint, 'Emission Color': emission_color, 'Emission Strength': emission_strength, 'Thin Film Thickness': thin_film_thickness, 'Thin Film IOR': thin_film_ior}}[_configuration]
-        _node_args = {('BURLEY',): [], ('RANDOM_WALK',): [], ('RANDOM_WALK_SKIN',): [], ('RANDOM_WALK_LEGACY',): []}[_configuration]
-        node = Node('Principled BSDF', *_node_args, named_sockets=_node_sockets, distribution=distribution, subsurface_method=subsurface_method)
-        return node._out
-
-    def principled_hair_bsdf(self, melanin: Float=None, melanin_redness: Float=None, tint: Color=None, absorption_coefficient: Vector=None, aspect_ratio: Float=None, roughness: Float=None, radial_roughness: Float=None, coat: Float=None, ior: Float=None, offset: Float=None, random_color: Float=None, random_roughness: Float=None, random: Float=None, reflection: Float=None, transmission: Float=None, secondary_reflection: Float=None, model: Literal['CHIANG', 'HUANG']='CHIANG', parametrization: Literal['ABSORPTION', 'MELANIN', 'COLOR']='COLOR'):
-        """ > Node <&ShaderNode Principled Hair BSDF>
-        
-        Jump method: False.
-        
-        self: socket 'Color'.
-        
-        Parameters
-        ----------
-        melanin : Float, optional
-            socket 'Melanin'
-        
-        melanin_redness : Float, optional
-            socket 'Melanin Redness'
-        
-        tint : Color, optional
-            socket 'Tint'
-        
-        absorption_coefficient : Vector, optional
-            socket 'Absorption Coefficient'
-        
-        aspect_ratio : Float, optional
-            socket 'Aspect Ratio'
-        
-        roughness : Float, optional
-            socket 'Roughness'
-        
-        radial_roughness : Float, optional
-            socket 'Radial Roughness'
-        
-        coat : Float, optional
-            socket 'Coat'
-        
-        ior : Float, optional
-            socket 'IOR'
-        
-        offset : Float, optional
-            socket 'Offset'
-        
-        random_color : Float, optional
-            socket 'Random Color'
-        
-        random_roughness : Float, optional
-            socket 'Random Roughness'
-        
-        random : Float, optional
-            socket 'Random'
-        
-        reflection : Float, optional
-            socket 'Reflection'
-        
-        transmission : Float, optional
-            socket 'Transmission'
-        
-        secondary_reflection : Float, optional
-            socket 'Secondary Reflection'
-        
-        model : Literal['Chiang', 'Huang']
-            parameter `model`
-        
-        parametrization : Literal['Absorption Coefficient', 'Melanin Concentration', 'Direct Coloring']
-            parameter `parametrization`
-        
-        Returns
-        -------
-        Socket
-            socket 'OUT'
-        """
-        _configuration = ({'chiang': 'CHIANG', 'huang': 'HUANG'}.get(model.lower(), model), {'absorption': 'ABSORPTION', 'melanin': 'MELANIN', 'color': 'COLOR', 'absorption coefficient': 'ABSORPTION', 'melanin concentration': 'MELANIN', 'direct coloring': 'COLOR'}.get(parametrization.lower(), parametrization))
-        _node_sockets = {('CHIANG', 'ABSORPTION'): {'Absorption Coefficient': absorption_coefficient, 'Roughness': roughness, 'Radial Roughness': radial_roughness, 'Coat': coat, 'IOR': ior, 'Offset': offset, 'Random Roughness': random_roughness, 'Random': random}, ('CHIANG', 'MELANIN'): {'Melanin': melanin, 'Melanin Redness': melanin_redness, 'Tint': tint, 'Roughness': roughness, 'Radial Roughness': radial_roughness, 'Coat': coat, 'IOR': ior, 'Offset': offset, 'Random Color': random_color, 'Random Roughness': random_roughness, 'Random': random}, ('CHIANG', 'COLOR'): {'Color': self, 'Roughness': roughness, 'Radial Roughness': radial_roughness, 'Coat': coat, 'IOR': ior, 'Offset': offset, 'Random Roughness': random_roughness, 'Random': random}, ('HUANG', 'ABSORPTION'): {'Absorption Coefficient': absorption_coefficient, 'Aspect Ratio': aspect_ratio, 'Roughness': roughness, 'IOR': ior, 'Offset': offset, 'Random Roughness': random_roughness, 'Random': random, 'Reflection': reflection, 'Transmission': transmission, 'Secondary Reflection': secondary_reflection}, ('HUANG', 'MELANIN'): {'Melanin': melanin, 'Melanin Redness': melanin_redness, 'Tint': tint, 'Aspect Ratio': aspect_ratio, 'Roughness': roughness, 'IOR': ior, 'Offset': offset, 'Random Color': random_color, 'Random Roughness': random_roughness, 'Random': random, 'Reflection': reflection, 'Transmission': transmission, 'Secondary Reflection': secondary_reflection}, ('HUANG', 'COLOR'): {'Color': self, 'Aspect Ratio': aspect_ratio, 'Roughness': roughness, 'IOR': ior, 'Offset': offset, 'Random Roughness': random_roughness, 'Random': random, 'Reflection': reflection, 'Transmission': transmission, 'Secondary Reflection': secondary_reflection}}[_configuration]
-        _node_args = {('CHIANG', 'ABSORPTION'): [], ('CHIANG', 'MELANIN'): [], ('CHIANG', 'COLOR'): [], ('HUANG', 'ABSORPTION'): [], ('HUANG', 'MELANIN'): [], ('HUANG', 'COLOR'): []}[_configuration]
-        node = Node('Principled Hair BSDF', *_node_args, named_sockets=_node_sockets, model=model, parametrization=parametrization)
         return node._out
 
     def principled_volume(self, color_attribute: String=None, density: Float=None, density_attribute: String=None, anisotropy: Float=None, absorption_color: Color=None, emission_strength: Float=None, emission_color: Color=None, blackbody_intensity: Float=None, blackbody_tint: Color=None, temperature: Float=None, temperature_attribute: String=None):
@@ -1428,58 +1070,6 @@ class Color(BaseColor):
         node = Node('Principled Volume', named_sockets={'Color': self, 'Color Attribute': color_attribute, 'Density': density, 'Density Attribute': density_attribute, 'Anisotropy': anisotropy, 'Absorption Color': absorption_color, 'Emission Strength': emission_strength, 'Emission Color': emission_color, 'Blackbody Intensity': blackbody_intensity, 'Blackbody Tint': blackbody_tint, 'Temperature': temperature, 'Temperature Attribute': temperature_attribute})
         return node._out
 
-    def ray_portal_bsdf(self, position: Vector=None, direction: Vector=None):
-        """ > Node <&ShaderNode Ray Portal BSDF>
-        
-        Jump method: False.
-        
-        self: socket 'Color'.
-        
-        Parameters
-        ----------
-        position : Vector, optional
-            socket 'Position'
-        
-        direction : Vector, optional
-            socket 'Direction'
-        
-        Returns
-        -------
-        Socket
-            socket 'OUT'
-        """
-        node = Node('Ray Portal BSDF', named_sockets={'Color': self, 'Position': position, 'Direction': direction})
-        return node._out
-
-    def refraction_bsdf(self, roughness: Float=None, ior: Float=None, normal: Vector=None, distribution: Literal['BECKMANN', 'GGX']='BECKMANN'):
-        """ > Node <&ShaderNode Refraction BSDF>
-        
-        Jump method: False.
-        
-        self: socket 'Color'.
-        
-        Parameters
-        ----------
-        roughness : Float, optional
-            socket 'Roughness'
-        
-        ior : Float, optional
-            socket 'IOR'
-        
-        normal : Vector, optional
-            socket 'Normal'
-        
-        distribution : Literal['Beckmann', 'GGX']
-            parameter `distribution`
-        
-        Returns
-        -------
-        Socket
-            socket 'OUT'
-        """
-        node = Node('Refraction BSDF', named_sockets={'Color': self, 'Roughness': roughness, 'IOR': ior, 'Normal': normal}, distribution=distribution)
-        return node._out
-
     def rgb_to_bw(self):
         """ > Node <&ShaderNode RGB to BW>
         
@@ -1513,73 +1103,6 @@ class Color(BaseColor):
             socket 'OUT'
         """
         node = Node('Separate Color', named_sockets={'Color': self}, mode=mode)
-        return node._out
-
-    def sheen_bsdf(self, roughness: Float=None, normal: Vector=None, distribution: Literal['ASHIKHMIN', 'MICROFIBER']='MICROFIBER'):
-        """ > Node <&ShaderNode Sheen BSDF>
-        
-        Jump method: False.
-        
-        self: socket 'Color'.
-        
-        Parameters
-        ----------
-        roughness : Float, optional
-            socket 'Roughness'
-        
-        normal : Vector, optional
-            socket 'Normal'
-        
-        distribution : Literal['Ashikhmin', 'Microfiber']
-            parameter `distribution`
-        
-        Returns
-        -------
-        Socket
-            socket 'OUT'
-        """
-        node = Node('Sheen BSDF', named_sockets={'Color': self, 'Roughness': roughness, 'Normal': normal}, distribution=distribution)
-        return node._out
-
-    def specular_bsdf(self, specular: Color=None, roughness: Float=None, emissive_color: Color=None, transparency: Float=None, normal: Vector=None, clear_coat: Float=None, clear_coat_roughness: Float=None, clear_coat_normal: Vector=None):
-        """ > Node <&ShaderNode Specular BSDF>
-        
-        Jump method: False.
-        
-        self: socket 'Base Color'.
-        
-        Parameters
-        ----------
-        specular : Color, optional
-            socket 'Specular'
-        
-        roughness : Float, optional
-            socket 'Roughness'
-        
-        emissive_color : Color, optional
-            socket 'Emissive Color'
-        
-        transparency : Float, optional
-            socket 'Transparency'
-        
-        normal : Vector, optional
-            socket 'Normal'
-        
-        clear_coat : Float, optional
-            socket 'Clear Coat'
-        
-        clear_coat_roughness : Float, optional
-            socket 'Clear Coat Roughness'
-        
-        clear_coat_normal : Vector, optional
-            socket 'Clear Coat Normal'
-        
-        Returns
-        -------
-        Socket
-            socket 'OUT'
-        """
-        node = Node('Specular BSDF', named_sockets={'Base Color': self, 'Specular': specular, 'Roughness': roughness, 'Emissive Color': emissive_color, 'Transparency': transparency, 'Normal': normal, 'Clear Coat': clear_coat, 'Clear Coat Roughness': clear_coat_roughness, 'Clear Coat Normal': clear_coat_normal})
         return node._out
 
     def subsurface_scattering(self, scale: Float=None, radius: Vector=None, ior: Float=None, roughness: Float=None, anisotropy: Float=None, normal: Vector=None, falloff: Literal['BURLEY', 'RANDOM_WALK', 'RANDOM_WALK_SKIN', 'RANDOM_WALK_LEGACY']='RANDOM_WALK'):
@@ -1623,68 +1146,33 @@ class Color(BaseColor):
         node = Node('Subsurface Scattering', *_node_args, named_sockets=_node_sockets, falloff=falloff)
         return node._out
 
-    def toon_bsdf(self, size: Float=None, smooth: Float=None, normal: Vector=None, component: Literal['DIFFUSE', 'GLOSSY']='DIFFUSE'):
-        """ > Node <&ShaderNode Toon BSDF>
+    def switch(self, false: Color=None, true: Color=None):
+        """ > Node <&ShaderNode Switch>
         
         Jump method: False.
         
-        self: socket 'Color'.
+        self: socket 'Switch'.
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `input_type` | `'RGBA'` |
         
         Parameters
         ----------
-        size : Float, optional
-            socket 'Size'
+        false : Color, optional
+            socket 'False'
         
-        smooth : Float, optional
-            socket 'Smooth'
-        
-        normal : Vector, optional
-            socket 'Normal'
-        
-        component : Literal['Diffuse', 'Glossy']
-            parameter `component`
+        true : Color, optional
+            socket 'True'
         
         Returns
         -------
         Socket
             socket 'OUT'
         """
-        node = Node('Toon BSDF', named_sockets={'Color': self, 'Size': size, 'Smooth': smooth, 'Normal': normal}, component=component)
-        return node._out
-
-    def translucent_bsdf(self, normal: Vector=None):
-        """ > Node <&ShaderNode Translucent BSDF>
-        
-        Jump method: False.
-        
-        self: socket 'Color'.
-        
-        Parameters
-        ----------
-        normal : Vector, optional
-            socket 'Normal'
-        
-        Returns
-        -------
-        Socket
-            socket 'OUT'
-        """
-        node = Node('Translucent BSDF', named_sockets={'Color': self, 'Normal': normal})
-        return node._out
-
-    def transparent_bsdf(self):
-        """ > Node <&ShaderNode Transparent BSDF>
-        
-        Jump method: False.
-        
-        self: socket 'Color'.
-        
-        Returns
-        -------
-        Socket
-            socket 'OUT'
-        """
-        node = Node('Transparent BSDF', named_sockets={'Color': self})
+        node = Node('Switch', named_sockets={'Switch': self, 'False': false, 'True': true}, input_type='RGBA')
         return node._out
 
     def volume_absorption(self, density: Float=None):
@@ -1746,4 +1234,74 @@ class Color(BaseColor):
         _node_sockets = {('HENYEY_GREENSTEIN',): {'Color': self, 'Density': density, 'Anisotropy': anisotropy}, ('FOURNIER_FORAND',): {'Color': self, 'Density': density, 'IOR': ior, 'Backscatter': backscatter}, ('DRAINE',): {'Color': self, 'Density': density, 'Anisotropy': anisotropy, 'Alpha': alpha}, ('RAYLEIGH',): {'Color': self, 'Density': density}, ('MIE',): {'Color': self, 'Density': density, 'Diameter': diameter}}[_configuration]
         _node_args = {('HENYEY_GREENSTEIN',): [], ('FOURNIER_FORAND',): [], ('DRAINE',): [], ('RAYLEIGH',): [], ('MIE',): []}[_configuration]
         node = Node('Volume Scatter', *_node_args, named_sockets=_node_sockets, phase=phase)
+        return node._out
+
+    @classmethod
+    def _create_input_socket(cls, value: tuple=(1, 1, 1), name: str='Color', tip: str='', panel: str='', optional_label: bool=False, hide_value: bool=False, hide_in_modifier: bool=False, default_attribute: str='', shape: Literal['AUTO', 'SINGLE']='AUTO'):
+        """ > Color Input
+
+        New <#Color> input with subtype 'NONE'.
+
+        Parameters
+        ----------
+        value : tuple, default=`(1, 1, 1)`
+            Default value
+
+        name : str, default=`Color`
+            Input socket name
+
+        tip : str, default=`''`
+            Property description
+
+        panel : str, default=``
+            Panel name
+
+        optional_label : bool, default=`False`
+            Property optional_label
+
+        hide_value : bool, default=`False`
+            Property hide_value
+
+        hide_in_modifier : bool, default=`False`
+            Property hide_in_modifier
+
+        default_attribute : str, default=`''`
+            Property default_attribute_name
+
+        shape : str, default=`'AUTO'`
+            Property structure_type in ('AUTO', 'SINGLE')
+
+
+        Returns
+        -------
+        Color
+        """
+        from ..treeclass import Tree
+        defval = utils.python_value_for_socket(value, cls.SOCKET_TYPE)
+        return Tree.current_tree().create_input_socket('NodeSocketColor', default_value=defval, name=name, tip=tip, panel=panel, optional_label=optional_label, hide_value=hide_value, hide_in_modifier=hide_in_modifier, default_attribute=default_attribute, shape=shape)
+
+    def switch_false(self, switch: Boolean=None, false: Socket=None, input_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'STRING', 'MENU', 'SHADER', 'BUNDLE', 'CLOSURE']='RGBA'):
+        """ > Node <&ShaderNode Switch>
+        
+        Jump method: False.
+        
+        self: socket 'True'.
+        
+        Parameters
+        ----------
+        switch : Boolean, optional
+            socket 'Switch'
+        
+        false : Socket, optional
+            socket 'False'
+        
+        input_type : Literal['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'String', 'Menu', 'Shader', 'Bundle', 'Closure']
+            parameter `input_type`
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Switch', named_sockets={'Switch': switch, 'False': false, 'True': self}, input_type=input_type)
         return node._out

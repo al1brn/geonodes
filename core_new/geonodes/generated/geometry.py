@@ -44,7 +44,13 @@ if TYPE_CHECKING:
     class Menu:
         ...
 
+    class Input:
+        ...
+
     class Geometry:
+        ...
+
+    class IntVector:
         ...
 
     class Texture:
@@ -117,35 +123,6 @@ from ...geonodes.sockets.geometry import Geometry as BaseGeometry
 class Geometry(BaseGeometry):
     __slots__ = ()
 
-    def attribute_statistic(self, attribute: Socket=None, domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']='POINT'):
-        """ > Node <&Node Attribute Statistic>
-        
-        Jump method: False.
-        
-        self: socket 'Geometry'.
-        
-        **Derived parameters**
-        
-        - `data_type`: Inferred from socket 'Attribute' (attribute).
-        
-        Parameters
-        ----------
-        attribute : Socket, optional
-            socket 'Attribute'
-        
-        domain : Literal['Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer']
-            parameter `domain`
-        
-        Returns
-        -------
-        Socket
-            socket 'OUT'
-        """
-        data_type = SocketType.get_data_type_for_node(attribute, 'GeometryNodeAttributeStatistic', 'data_type')
-        selection = self.get_selection()
-        node = Node('Attribute Statistic', named_sockets={'Geometry': self, 'Selection': selection, 'Attribute': attribute}, data_type=data_type, domain=domain)
-        return node._out
-
     def bounding_box(self, use_radius: Boolean=None):
         """ > Node <&Node Bounding Box>
         
@@ -190,9 +167,10 @@ class Geometry(BaseGeometry):
         self._jump(node._out)
         return node._second_out(self)
 
-    @classmethod
-    def combine_list(cls, *values: Socket):
+    def combine_list(self, *values: Socket):
         """ > Node <&Node Combine List>
+        
+        Jump method: False.
         
         **Fixed values**
         
@@ -325,9 +303,38 @@ class Geometry(BaseGeometry):
         self._jump(node._out)
         return node._second_out(self)
 
-    @classmethod
-    def filter_list(cls, list: Geometry=None, selection: Boolean=None):
+    def enable_output(self, value: Geometry=None):
+        """ > Node <&Node Enable Output>
+        
+        Jump method: False.
+        
+        self: socket 'Enable'.
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `data_type` | `'GEOMETRY'` |
+        
+        Parameters
+        ----------
+        value : Geometry, optional
+            socket 'Value'
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Enable Output', named_sockets={'Enable': self, 'Value': value}, data_type='GEOMETRY')
+        return node._out
+
+    def filter_list(self):
         """ > Node <&Node Filter List>
+        
+        Jump method: False.
+        
+        self: socket 'List'.
         
         **Fixed values**
         
@@ -335,20 +342,13 @@ class Geometry(BaseGeometry):
         | --- | --- |
         | `socket_type` | `'GEOMETRY'` |
         
-        Parameters
-        ----------
-        list : Geometry, optional
-            socket 'List'
-        
-        selection : Boolean, optional
-            socket 'Selection'
-        
         Returns
         -------
         Socket
             socket 'OUT'
         """
-        node = Node('Filter List', named_sockets={'List': list, 'Selection': selection}, socket_type='GEOMETRY')
+        selection = self.get_selection()
+        node = Node('Filter List', named_sockets={'List': self, 'Selection': selection}, socket_type='GEOMETRY')
         return node._out
 
     def materials(self, component_type: Menu=None):
@@ -465,9 +465,12 @@ class Geometry(BaseGeometry):
         self._jump(node._out)
         return node._second_out(self)
 
-    @classmethod
-    def get_list_item(cls, list: Geometry=None, index: Integer=None):
+    def get_list_item(self, index: Integer=None):
         """ > Node <&Node Get List Item>
+        
+        Jump method: False.
+        
+        self: socket 'List'.
         
         **Fixed values**
         
@@ -477,9 +480,6 @@ class Geometry(BaseGeometry):
         
         Parameters
         ----------
-        list : Geometry, optional
-            socket 'List'
-        
         index : Integer, optional
             socket 'Index'
         
@@ -488,12 +488,15 @@ class Geometry(BaseGeometry):
         Socket
             socket 'OUT'
         """
-        node = Node('Get List Item', named_sockets={'List': list, 'Index': index}, socket_type='GEOMETRY')
+        node = Node('Get List Item', named_sockets={'List': self, 'Index': index}, socket_type='GEOMETRY')
         return node._out
 
-    @classmethod
-    def implicit_conversion(cls, value: Geometry=None, socket_idname: str='NodeSocketColor'):
+    def implicit_conversion(self, socket_idname: str='NodeSocketColor'):
         """ > Node <&Node Implicit Conversion>
+        
+        Jump method: False.
+        
+        self: socket 'Value'.
         
         **Fixed values**
         
@@ -503,9 +506,6 @@ class Geometry(BaseGeometry):
         
         Parameters
         ----------
-        value : Geometry, optional
-            socket 'Value'
-        
         socket_idname : str
             parameter `socket_idname`
         
@@ -514,7 +514,7 @@ class Geometry(BaseGeometry):
         Socket
             socket 'OUT'
         """
-        node = Node('Implicit Conversion', named_sockets={'Value': value}, data_type='GEOMETRY', socket_idname=socket_idname)
+        node = Node('Implicit Conversion', named_sockets={'Value': self}, data_type='GEOMETRY', socket_idname=socket_idname)
         return node._out
 
     @classmethod
@@ -585,7 +585,7 @@ class Geometry(BaseGeometry):
         return node._out
 
     @classmethod
-    def list_length(cls, list: Geometry=None):
+    def ListLength(cls, list: Geometry=None):
         """ > Node <&Node List Length>
         
         **Fixed values**
@@ -675,43 +675,6 @@ class Geometry(BaseGeometry):
         node = Node('Merge Points', named_sockets={'Geometry': self, 'Selection': selection, 'Merge ID': merge_id})
         self._jump(node._out)
         return node._second_out(self)
-
-    def raycast(self, attribute: Socket=None, interpolation: Menu=None, source_position: Vector=None, ray_direction: Vector=None, ray_length: Float=None):
-        """ > Node <&Node Raycast>
-        
-        Jump method: False.
-        
-        self: socket 'Target Geometry'.
-        
-        **Derived parameters**
-        
-        - `data_type`: Inferred from socket 'Attribute' (attribute).
-        
-        Parameters
-        ----------
-        attribute : Socket, optional
-            socket 'Attribute'
-        
-        interpolation : Menu, optional
-            socket 'Interpolation'
-        
-        source_position : Vector, optional
-            socket 'Source Position'
-        
-        ray_direction : Vector, optional
-            socket 'Ray Direction'
-        
-        ray_length : Float, optional
-            socket 'Ray Length'
-        
-        Returns
-        -------
-        Socket
-            socket 'OUT'
-        """
-        data_type = SocketType.get_data_type_for_node(attribute, 'GeometryNodeRaycast', 'data_type')
-        node = Node('Raycast', named_sockets={'Target Geometry': self, 'Attribute': attribute, 'Interpolation': interpolation, 'Source Position': source_position, 'Ray Direction': ray_direction, 'Ray Length': ray_length}, data_type=data_type)
-        return node._out
 
     def realize_instances(self, realize_all: Boolean=None, depth: Integer=None, preserve_normals: Boolean=None, realize_to_point_domain: bool=False):
         """ > Node <&Node Realize Instances>
@@ -821,40 +784,6 @@ class Geometry(BaseGeometry):
         node = Node('Replace Material', named_sockets={'Geometry': self, 'Old': old, 'New': new})
         self._jump(node._out)
         return node._second_out(self)
-
-    def sample_index(self, value: Socket=None, index: Integer=None, domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']='POINT', clamp: bool=False):
-        """ > Node <&Node Sample Index>
-        
-        Jump method: False.
-        
-        self: socket 'Geometry'.
-        
-        **Derived parameters**
-        
-        - `data_type`: Inferred from socket 'Value' (value).
-        
-        Parameters
-        ----------
-        value : Socket, optional
-            socket 'Value'
-        
-        index : Integer, optional
-            socket 'Index'
-        
-        domain : Literal['Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer']
-            parameter `domain`
-        
-        clamp : bool
-            parameter `clamp`
-        
-        Returns
-        -------
-        Socket
-            socket 'OUT'
-        """
-        data_type = SocketType.get_data_type_for_node(value, 'GeometryNodeSampleIndex', 'data_type')
-        node = Node('Sample Index', named_sockets={'Geometry': self, 'Value': value, 'Index': index}, data_type=data_type, domain=domain, clamp=clamp)
-        return node._out
 
     def sample_nearest(self, sample_position: Vector=None, domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER']='POINT'):
         """ > Node <&Node Sample Nearest>
@@ -1135,9 +1064,12 @@ class Geometry(BaseGeometry):
         self._jump(node._out)
         return node._second_out(self)
 
-    @classmethod
-    def sort_list(cls, list: Geometry=None, selection: Boolean=None, group_id: Integer=None, sort_weight: Float=None):
+    def sort_list(self, group_id: Integer=None, sort_weight: Float=None):
         """ > Node <&Node Sort List>
+        
+        Jump method: False.
+        
+        self: socket 'List'.
         
         **Fixed values**
         
@@ -1147,12 +1079,6 @@ class Geometry(BaseGeometry):
         
         Parameters
         ----------
-        list : Geometry, optional
-            socket 'List'
-        
-        selection : Boolean, optional
-            socket 'Selection'
-        
         group_id : Integer, optional
             socket 'Group ID'
         
@@ -1164,7 +1090,8 @@ class Geometry(BaseGeometry):
         Socket
             socket 'OUT'
         """
-        node = Node('Sort List', named_sockets={'List': list, 'Selection': selection, 'Group ID': group_id, 'Sort Weight': sort_weight}, socket_type='GEOMETRY')
+        selection = self.get_selection()
+        node = Node('Sort List', named_sockets={'List': self, 'Selection': selection, 'Group ID': group_id, 'Sort Weight': sort_weight}, socket_type='GEOMETRY')
         return node._out
 
     def to_instances(self, group_id: Integer=None, domain: Literal['POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE', 'LAYER']='POINT'):
@@ -1223,6 +1150,35 @@ class Geometry(BaseGeometry):
         node = Node('Store Named Attribute', named_sockets={'Geometry': self, 'Selection': selection, 'Name': name, 'Value': value}, data_type=data_type, domain=domain)
         self._jump(node._out)
         return node._second_out(self)
+
+    def switch(self, false: Geometry=None, true: Geometry=None):
+        """ > Node <&Node Switch>
+        
+        Jump method: False.
+        
+        self: socket 'Switch'.
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `input_type` | `'GEOMETRY'` |
+        
+        Parameters
+        ----------
+        false : Geometry, optional
+            socket 'False'
+        
+        true : Geometry, optional
+            socket 'True'
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Switch', named_sockets={'Switch': self, 'False': false, 'True': true}, input_type='GEOMETRY')
+        return node._out
 
     def transfer_attributes(self, target_point_id: Integer=None, target_edge_id: Integer=None, target_face_id: Integer=None, target_corner_id: Integer=None, target_curve_id: Integer=None, target_instance_id: Integer=None, source: Geometry=None, source_point_id: Integer=None, source_edge_id: Integer=None, source_face_id: Integer=None, source_corner_id: Integer=None, source_curve_id: Integer=None, source_instance_id: Integer=None, pattern_mode: Menu=None, attribute_names: String=None, exclude_names: Boolean=None):
         """ > Node <&Node Transfer Attributes>
@@ -1569,3 +1525,97 @@ class Geometry(BaseGeometry):
         _named_sockets = {_name: _value for _name, _value in _named_sockets.items() if _value is not None}
         _node = Node('Set Geometry Name', named_sockets=_named_sockets)
         self._jump(_node._out)
+
+    @classmethod
+    def _create_input_socket(cls, name: str='Geometry', tip: str='', panel: str='', optional_label: bool=False, hide_value: bool=False, hide_in_modifier: bool=False):
+        """ > Geometry Input
+
+        New <#Geometry> input with subtype 'NONE'.
+
+        Parameters
+        ----------
+        name : str, default=`Geometry`
+            Input socket name
+
+        tip : str, default=`''`
+            Property description
+
+        panel : str, default=``
+            Panel name
+
+        optional_label : bool, default=`False`
+            Property optional_label
+
+        hide_value : bool, default=`False`
+            Property hide_value
+
+        hide_in_modifier : bool, default=`False`
+            Property hide_in_modifier
+
+
+        Returns
+        -------
+        Geometry
+        """
+        from ..treeclass import Tree
+        return Tree.current_tree().create_input_socket('NodeSocketGeometry', name=name, tip=tip, panel=panel, optional_label=optional_label, hide_value=hide_value, hide_in_modifier=hide_in_modifier)
+
+    def switch_false(self, switch: Boolean=None, false: Socket=None, input_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SOUND']='FLOAT'):
+        """ > Node <&Node Switch>
+        
+        Jump method: False.
+        
+        self: socket 'True'.
+        
+        Parameters
+        ----------
+        switch : Boolean, optional
+            socket 'Switch'
+        
+        false : Socket, optional
+            socket 'False'
+        
+        input_type : Literal['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Rotation', 'Matrix', 'String', 'Menu', 'Object', 'Image', 'Geometry', 'Collection', 'Material', 'Bundle', 'Closure', 'Font', 'Sound']
+            parameter `input_type`
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Switch', named_sockets={'Switch': switch, 'False': false, 'True': self}, input_type=input_type)
+        return node._out
+
+    @classmethod
+    def _create_input_socket(cls, name: str='Geometry', tip: str='', panel: str='', optional_label: bool=False, hide_value: bool=False, hide_in_modifier: bool=False):
+        """ > Geometry Input
+
+        New <#Geometry> input with subtype 'NONE'.
+
+        Parameters
+        ----------
+        name : str, default=`Geometry`
+            Input socket name
+
+        tip : str, default=`''`
+            Property description
+
+        panel : str, default=``
+            Panel name
+
+        optional_label : bool, default=`False`
+            Property optional_label
+
+        hide_value : bool, default=`False`
+            Property hide_value
+
+        hide_in_modifier : bool, default=`False`
+            Property hide_in_modifier
+
+
+        Returns
+        -------
+        Geometry
+        """
+        from ..treeclass import Tree
+        return Tree.current_tree().create_input_socket('NodeSocketGeometry', name=name, tip=tip, panel=panel, optional_label=optional_label, hide_value=hide_value, hide_in_modifier=hide_in_modifier)

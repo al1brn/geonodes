@@ -195,6 +195,9 @@ class Sockets:
         else:
             stype = None
 
+        if name.startswith('ID_'):
+            return self.by_identifier(name["3:"])
+
         for unique, socket in self:
             if name not in [unique, utils.snake_case(unique)]:
                 continue
@@ -418,6 +421,18 @@ class Node:
         self.set_parameters(**params)
 
         # ----------------------------------------------------------------------------------------------------
+        # Eliminate optional sockets
+        # ----------------------------------------------------------------------------------------------------
+
+        """
+        if (named_sockets is not None) and ('_OPTIONAL_SOCKETS' in named_sockets):
+            opts = named_sockets.pop('_OPTIONAL_SOCKETS')
+            for sock_name, sock_value in named_sockets.copy().items():
+                if sock_value is None:
+                    named_sockets.pop(sock_name)
+        """
+
+        # ----------------------------------------------------------------------------------------------------
         # Dynamic sockets with NodeTree
         # ----------------------------------------------------------------------------------------------------
 
@@ -534,7 +549,9 @@ class Node:
                     if isinstance(name, str) and utils.snake_case(name) in constants.IGNORED_SOCKETS.get(self._bnode.bl_idname, ()):
                         continue
 
-                    self.set_input_socket(name, value, python_name=python_name)
+                    # CAUTION NOT SURE: None could be default for a geometry
+                    if value is not None:
+                        self.set_input_socket(name, value, python_name=python_name)
 
         # ----------------------------------------------------------------------------------------------------
         # Register the node
@@ -1547,7 +1564,6 @@ class Node:
         -------
         The input socket
         """
-
         # ====================================================================================================
         # Multi input socket set with a list of value
         # ====================================================================================================

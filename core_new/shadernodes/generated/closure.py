@@ -32,6 +32,9 @@ if TYPE_CHECKING:
     class Menu:
         ...
 
+    class Input:
+        ...
+
     class Texture:
         ...
 
@@ -47,6 +50,32 @@ from ...shadernodes.sockets.closure import Closure as BaseClosure
 
 class Closure(BaseClosure):
     __slots__ = ()
+
+    def enable_output(self, value: Closure=None):
+        """ > Node <&ShaderNode Enable Output>
+        
+        Jump method: False.
+        
+        self: socket 'Enable'.
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `data_type` | `'CLOSURE'` |
+        
+        Parameters
+        ----------
+        value : Closure, optional
+            socket 'Value'
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Enable Output', named_sockets={'Enable': self, 'Value': value}, data_type='CLOSURE')
+        return node._out
 
     def evaluate_closure(self, named_sockets=None, define_signature: bool=False, **sockets):
         """ > Node <&ShaderNode Evaluate Closure>
@@ -70,9 +99,12 @@ class Closure(BaseClosure):
         node = Node('Evaluate Closure', named_sockets=_named_sockets, define_signature=define_signature, **sockets)
         return node._out
 
-    @classmethod
-    def implicit_conversion(cls, value: Closure=None, socket_idname: str='NodeSocketColor'):
+    def implicit_conversion(self, socket_idname: str='NodeSocketColor'):
         """ > Node <&ShaderNode Implicit Conversion>
+        
+        Jump method: False.
+        
+        self: socket 'Value'.
         
         **Fixed values**
         
@@ -82,9 +114,6 @@ class Closure(BaseClosure):
         
         Parameters
         ----------
-        value : Closure, optional
-            socket 'Value'
-        
         socket_idname : str
             parameter `socket_idname`
         
@@ -93,5 +122,94 @@ class Closure(BaseClosure):
         Socket
             socket 'OUT'
         """
-        node = Node('Implicit Conversion', named_sockets={'Value': value}, data_type='CLOSURE', socket_idname=socket_idname)
+        node = Node('Implicit Conversion', named_sockets={'Value': self}, data_type='CLOSURE', socket_idname=socket_idname)
+        return node._out
+
+    def switch(self, false: Closure=None, true: Closure=None):
+        """ > Node <&ShaderNode Switch>
+        
+        Jump method: False.
+        
+        self: socket 'Switch'.
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `input_type` | `'CLOSURE'` |
+        
+        Parameters
+        ----------
+        false : Closure, optional
+            socket 'False'
+        
+        true : Closure, optional
+            socket 'True'
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Switch', named_sockets={'Switch': self, 'False': false, 'True': true}, input_type='CLOSURE')
+        return node._out
+
+    @classmethod
+    def _create_input_socket(cls, name: str='Closure', tip: str='', panel: str='', optional_label: bool=False, hide_value: bool=False, hide_in_modifier: bool=False):
+        """ > Closure Input
+
+        New <#Closure> input with subtype 'NONE'.
+
+        Parameters
+        ----------
+        name : str, default=`Closure`
+            Input socket name
+
+        tip : str, default=`''`
+            Property description
+
+        panel : str, default=``
+            Panel name
+
+        optional_label : bool, default=`False`
+            Property optional_label
+
+        hide_value : bool, default=`False`
+            Property hide_value
+
+        hide_in_modifier : bool, default=`False`
+            Property hide_in_modifier
+
+
+        Returns
+        -------
+        Closure
+        """
+        from ..treeclass import Tree
+        return Tree.current_tree().create_input_socket('NodeSocketClosure', name=name, tip=tip, panel=panel, optional_label=optional_label, hide_value=hide_value, hide_in_modifier=hide_in_modifier)
+
+    def switch_false(self, switch: Boolean=None, false: Socket=None, input_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'STRING', 'MENU', 'SHADER', 'BUNDLE', 'CLOSURE']='RGBA'):
+        """ > Node <&ShaderNode Switch>
+        
+        Jump method: False.
+        
+        self: socket 'True'.
+        
+        Parameters
+        ----------
+        switch : Boolean, optional
+            socket 'Switch'
+        
+        false : Socket, optional
+            socket 'False'
+        
+        input_type : Literal['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'String', 'Menu', 'Shader', 'Bundle', 'Closure']
+            parameter `input_type`
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Switch', named_sockets={'Switch': switch, 'False': false, 'True': self}, input_type=input_type)
         return node._out

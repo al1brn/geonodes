@@ -44,7 +44,13 @@ if TYPE_CHECKING:
     class Menu:
         ...
 
+    class Input:
+        ...
+
     class Geometry:
+        ...
+
+    class IntVector:
         ...
 
     class Texture:
@@ -117,9 +123,12 @@ from ...geonodes.sockets.matrix import Matrix as BaseMatrix
 class Matrix(BaseMatrix):
     __slots__ = ()
 
-    @classmethod
-    def accumulate_field(cls, value: Matrix=None, group_id: Integer=None, domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']='POINT'):
+    def accumulate_field(self, group_id: Integer=None, domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']='POINT'):
         """ > Node <&Node Accumulate Field>
+        
+        Jump method: False.
+        
+        self: socket 'Value'.
         
         **Fixed values**
         
@@ -129,9 +138,6 @@ class Matrix(BaseMatrix):
         
         Parameters
         ----------
-        value : Matrix, optional
-            socket 'Value'
-        
         group_id : Integer, optional
             socket 'Group ID'
         
@@ -143,12 +149,13 @@ class Matrix(BaseMatrix):
         Socket
             socket 'OUT'
         """
-        node = Node('Accumulate Field', named_sockets={'Value': value, 'Group ID': group_id}, data_type='TRANSFORM', domain=domain)
+        node = Node('Accumulate Field', named_sockets={'Value': self, 'Group ID': group_id}, data_type='TRANSFORM', domain=domain)
         return node._out
 
-    @classmethod
-    def combine_list(cls, *values: Socket):
+    def combine_list(self, *values: Socket):
         """ > Node <&Node Combine List>
+        
+        Jump method: False.
         
         **Fixed values**
         
@@ -249,10 +256,39 @@ class Matrix(BaseMatrix):
         node = Node('Combine Transform', named_sockets={'Translation': translation, 'Rotation': rotation, 'Scale': scale})
         return node._out
 
-    @classmethod
-    def evaluate_at_index(cls, value: Matrix=None, index: Integer=None, domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']='POINT'):
+    def enable_output(self, value: Matrix=None):
+        """ > Node <&Node Enable Output>
+        
+        Jump method: False.
+        
+        self: socket 'Enable'.
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `data_type` | `'MATRIX'` |
+        
+        Parameters
+        ----------
+        value : Matrix, optional
+            socket 'Value'
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Enable Output', named_sockets={'Enable': self, 'Value': value}, data_type='MATRIX')
+        return node._out
+
+    def evaluate_at_index(self, index: Integer=None, domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']='POINT'):
         """ > Node <&Node Evaluate at Index>
         
+        Jump method: False.
+        
+        self: socket 'Value'.
+        
         **Fixed values**
         
         | Parameter | Value |
@@ -261,9 +297,6 @@ class Matrix(BaseMatrix):
         
         Parameters
         ----------
-        value : Matrix, optional
-            socket 'Value'
-        
         index : Integer, optional
             socket 'Index'
         
@@ -275,13 +308,16 @@ class Matrix(BaseMatrix):
         Socket
             socket 'OUT'
         """
-        node = Node('Evaluate at Index', named_sockets={'Value': value, 'Index': index}, domain=domain, data_type='FLOAT4X4')
+        node = Node('Evaluate at Index', named_sockets={'Value': self, 'Index': index}, domain=domain, data_type='FLOAT4X4')
         return node._out
 
-    @classmethod
-    def evaluate_on_domain(cls, value: Matrix=None, domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']='POINT'):
+    def evaluate_on_domain(self, domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']='POINT'):
         """ > Node <&Node Evaluate on Domain>
         
+        Jump method: False.
+        
+        self: socket 'Value'.
+        
         **Fixed values**
         
         | Parameter | Value |
@@ -290,9 +326,6 @@ class Matrix(BaseMatrix):
         
         Parameters
         ----------
-        value : Matrix, optional
-            socket 'Value'
-        
         domain : Literal['Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer']
             parameter `domain`
         
@@ -301,38 +334,37 @@ class Matrix(BaseMatrix):
         Socket
             socket 'OUT'
         """
-        node = Node('Evaluate on Domain', named_sockets={'Value': value}, domain=domain, data_type='FLOAT4X4')
+        node = Node('Evaluate on Domain', named_sockets={'Value': self}, domain=domain, data_type='FLOAT4X4')
         return node._out
 
-    @classmethod
-    def filter_list(cls, list: Matrix=None, selection: Boolean=None):
+    def filter_list(self):
         """ > Node <&Node Filter List>
+        
+        Jump method: False.
+        
+        self: socket 'List'.
         
         **Fixed values**
         
         | Parameter | Value |
         | --- | --- |
         | `socket_type` | `'MATRIX'` |
-        
-        Parameters
-        ----------
-        list : Matrix, optional
-            socket 'List'
-        
-        selection : Boolean, optional
-            socket 'Selection'
         
         Returns
         -------
         Socket
             socket 'OUT'
         """
-        node = Node('Filter List', named_sockets={'List': list, 'Selection': selection}, socket_type='MATRIX')
+        selection = self.get_selection()
+        node = Node('Filter List', named_sockets={'List': self, 'Selection': selection}, socket_type='MATRIX')
         return node._out
 
-    @classmethod
-    def get_list_item(cls, list: Matrix=None, index: Integer=None):
+    def get_list_item(self, index: Integer=None):
         """ > Node <&Node Get List Item>
+        
+        Jump method: False.
+        
+        self: socket 'List'.
         
         **Fixed values**
         
@@ -342,9 +374,6 @@ class Matrix(BaseMatrix):
         
         Parameters
         ----------
-        list : Matrix, optional
-            socket 'List'
-        
         index : Integer, optional
             socket 'Index'
         
@@ -353,11 +382,11 @@ class Matrix(BaseMatrix):
         Socket
             socket 'OUT'
         """
-        node = Node('Get List Item', named_sockets={'List': list, 'Index': index}, socket_type='MATRIX')
+        node = Node('Get List Item', named_sockets={'List': self, 'Index': index}, socket_type='MATRIX')
         return node._out
 
     @classmethod
-    def hash_value(cls, value: Matrix=None, seed: Integer=None):
+    def HashValue(cls, value: Matrix=None, seed: Integer=None):
         """ > Node <&Node Hash Value>
         
         **Fixed values**
@@ -382,9 +411,12 @@ class Matrix(BaseMatrix):
         node = Node('Hash Value', named_sockets={'Value': value, 'Seed': seed}, data_type='MATRIX')
         return node._out
 
-    @classmethod
-    def implicit_conversion(cls, value: Matrix=None, socket_idname: str='NodeSocketColor'):
+    def implicit_conversion(self, socket_idname: str='NodeSocketColor'):
         """ > Node <&Node Implicit Conversion>
+        
+        Jump method: False.
+        
+        self: socket 'Value'.
         
         **Fixed values**
         
@@ -394,9 +426,6 @@ class Matrix(BaseMatrix):
         
         Parameters
         ----------
-        value : Matrix, optional
-            socket 'Value'
-        
         socket_idname : str
             parameter `socket_idname`
         
@@ -405,7 +434,7 @@ class Matrix(BaseMatrix):
         Socket
             socket 'OUT'
         """
-        node = Node('Implicit Conversion', named_sockets={'Value': value}, data_type='MATRIX', socket_idname=socket_idname)
+        node = Node('Implicit Conversion', named_sockets={'Value': self}, data_type='MATRIX', socket_idname=socket_idname)
         return node._out
 
     def invert_matrix(self):
@@ -424,7 +453,7 @@ class Matrix(BaseMatrix):
         return node._out
 
     @classmethod
-    def list_length(cls, list: Matrix=None):
+    def ListLength(cls, list: Matrix=None):
         """ > Node <&Node List Length>
         
         **Fixed values**
@@ -496,6 +525,190 @@ class Matrix(BaseMatrix):
         node = Node('Multiply Matrices', named_sockets={'Matrix': self, 'Matrix_1': matrix_1})
         return node._out
 
+    def raycast(self, attribute: Matrix=None, interpolation: Menu=None, source_position: Vector=None, ray_direction: Vector=None, ray_length: Float=None):
+        """ > Node <&Node Raycast>
+        
+        Jump method: False.
+        
+        self: socket 'Target Geometry'.
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `data_type` | `'FLOAT4X4'` |
+        
+        Parameters
+        ----------
+        attribute : Matrix, optional
+            socket 'Attribute'
+        
+        interpolation : Menu, optional
+            socket 'Interpolation'
+        
+        source_position : Vector, optional
+            socket 'Source Position'
+        
+        ray_direction : Vector, optional
+            socket 'Ray Direction'
+        
+        ray_length : Float, optional
+            socket 'Ray Length'
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Raycast', named_sockets={'Target Geometry': self, 'Attribute': attribute, 'Interpolation': interpolation, 'Source Position': source_position, 'Ray Direction': ray_direction, 'Ray Length': ray_length}, data_type='FLOAT4X4')
+        return node._out
+
+    def sample_curve(self, value: Matrix=None, length: Float=None, curve_index: Integer=None, factor: Float=None, mode: Literal['FACTOR', 'LENGTH']='FACTOR', use_all_curves: bool=False):
+        """ > Node <&Node Sample Curve>
+        
+        Jump method: False.
+        
+        self: socket 'Curves'.
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `data_type` | `'FLOAT4X4'` |
+        
+        Parameters
+        ----------
+        value : Matrix, optional
+            socket 'Value'
+        
+        length : Float, optional
+            socket 'Length'
+        
+        curve_index : Integer, optional
+            socket 'Curve Index'
+        
+        factor : Float, optional
+            socket 'Factor'
+        
+        mode : Literal['Factor', 'Length']
+            parameter `mode`
+        
+        use_all_curves : bool
+            parameter `use_all_curves`
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        _configuration = ({'factor': 'FACTOR', 'length': 'LENGTH'}.get(mode.lower(), mode), 'FLOAT4X4')
+        _node_sockets = {('FACTOR', 'FLOAT4X4'): {'Curves': self, 'Value': value, 'Factor': factor, 'Curve Index': curve_index}, ('LENGTH', 'FLOAT4X4'): {'Curves': self, 'Value': value, 'Length': length, 'Curve Index': curve_index}}[_configuration]
+        _node_args = {('FACTOR', 'FLOAT4X4'): [], ('LENGTH', 'FLOAT4X4'): []}[_configuration]
+        node = Node('Sample Curve', *_node_args, named_sockets=_node_sockets, mode=mode, data_type='FLOAT4X4', use_all_curves=use_all_curves)
+        return node._out
+
+    def sample_index(self, value: Matrix=None, index: Integer=None, domain: Literal['POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER']='POINT', clamp: bool=False):
+        """ > Node <&Node Sample Index>
+        
+        Jump method: False.
+        
+        self: socket 'Geometry'.
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `data_type` | `'FLOAT4X4'` |
+        
+        Parameters
+        ----------
+        value : Matrix, optional
+            socket 'Value'
+        
+        index : Integer, optional
+            socket 'Index'
+        
+        domain : Literal['Point', 'Edge', 'Face', 'Face Corner', 'Spline', 'Instance', 'Layer']
+            parameter `domain`
+        
+        clamp : bool
+            parameter `clamp`
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Sample Index', named_sockets={'Geometry': self, 'Value': value, 'Index': index}, data_type='FLOAT4X4', domain=domain, clamp=clamp)
+        return node._out
+
+    def sample_nearest_surface(self, value: Matrix=None, group_id: Integer=None, sample_position: Vector=None, sample_group_id: Integer=None):
+        """ > Node <&Node Sample Nearest Surface>
+        
+        Jump method: False.
+        
+        self: socket 'Mesh'.
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `data_type` | `'FLOAT4X4'` |
+        
+        Parameters
+        ----------
+        value : Matrix, optional
+            socket 'Value'
+        
+        group_id : Integer, optional
+            socket 'Group ID'
+        
+        sample_position : Vector, optional
+            socket 'Sample Position'
+        
+        sample_group_id : Integer, optional
+            socket 'Sample Group ID'
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Sample Nearest Surface', named_sockets={'Mesh': self, 'Value': value, 'Group ID': group_id, 'Sample Position': sample_position, 'Sample Group ID': sample_group_id}, data_type='FLOAT4X4')
+        return node._out
+
+    def sample_uv_surface(self, value: Matrix=None, uv_map: Vector=None, sample_uv: Vector=None):
+        """ > Node <&Node Sample UV Surface>
+        
+        Jump method: False.
+        
+        self: socket 'Mesh'.
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `data_type` | `'FLOAT4X4'` |
+        
+        Parameters
+        ----------
+        value : Matrix, optional
+            socket 'Value'
+        
+        uv_map : Vector, optional
+            socket 'UV Map'
+        
+        sample_uv : Vector, optional
+            socket 'Sample UV'
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Sample UV Surface', named_sockets={'Mesh': self, 'Value': value, 'UV Map': uv_map, 'Sample UV': sample_uv}, data_type='FLOAT4X4')
+        return node._out
+
     def separate(self):
         """ > Node <&Node Separate Matrix>
         
@@ -526,9 +739,12 @@ class Matrix(BaseMatrix):
         node = Node('Separate Transform', named_sockets={'Transform': self})
         return node._out
 
-    @classmethod
-    def sort_list(cls, list: Matrix=None, selection: Boolean=None, group_id: Integer=None, sort_weight: Float=None):
+    def sort_list(self, group_id: Integer=None, sort_weight: Float=None):
         """ > Node <&Node Sort List>
+        
+        Jump method: False.
+        
+        self: socket 'List'.
         
         **Fixed values**
         
@@ -538,12 +754,6 @@ class Matrix(BaseMatrix):
         
         Parameters
         ----------
-        list : Matrix, optional
-            socket 'List'
-        
-        selection : Boolean, optional
-            socket 'Selection'
-        
         group_id : Integer, optional
             socket 'Group ID'
         
@@ -555,7 +765,37 @@ class Matrix(BaseMatrix):
         Socket
             socket 'OUT'
         """
-        node = Node('Sort List', named_sockets={'List': list, 'Selection': selection, 'Group ID': group_id, 'Sort Weight': sort_weight}, socket_type='MATRIX')
+        selection = self.get_selection()
+        node = Node('Sort List', named_sockets={'List': self, 'Selection': selection, 'Group ID': group_id, 'Sort Weight': sort_weight}, socket_type='MATRIX')
+        return node._out
+
+    def switch(self, false: Matrix=None, true: Matrix=None):
+        """ > Node <&Node Switch>
+        
+        Jump method: False.
+        
+        self: socket 'Switch'.
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `input_type` | `'MATRIX'` |
+        
+        Parameters
+        ----------
+        false : Matrix, optional
+            socket 'False'
+        
+        true : Matrix, optional
+            socket 'True'
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Switch', named_sockets={'Switch': self, 'False': false, 'True': true}, input_type='MATRIX')
         return node._out
 
     def transpose_matrix(self):
@@ -572,3 +812,115 @@ class Matrix(BaseMatrix):
         """
         node = Node('Transpose Matrix', named_sockets={'Matrix': self})
         return node._out
+
+    @classmethod
+    def _create_input_socket(cls, name: str='Matrix', tip: str='', panel: str='', optional_label: bool=False, hide_value: bool=False, hide_in_modifier: bool=False, default_attribute: str='', default_input: Literal['VALUE', 'INSTANCE_TRANSFORM']='VALUE', shape: Literal['AUTO', 'DYNAMIC', 'FIELD', 'LIST', 'SINGLE']='AUTO'):
+        """ > Matrix Input
+
+        New <#Matrix> input with subtype 'NONE'.
+
+        Parameters
+        ----------
+        name : str, default=`Matrix`
+            Input socket name
+
+        tip : str, default=`''`
+            Property description
+
+        panel : str, default=``
+            Panel name
+
+        optional_label : bool, default=`False`
+            Property optional_label
+
+        hide_value : bool, default=`False`
+            Property hide_value
+
+        hide_in_modifier : bool, default=`False`
+            Property hide_in_modifier
+
+        default_attribute : str, default=`''`
+            Property default_attribute_name
+
+        default_input : str, default=`'VALUE'`
+            Property default_input in ('VALUE', 'INSTANCE_TRANSFORM')
+
+        shape : str, default=`'AUTO'`
+            Property structure_type in ('AUTO', 'DYNAMIC', 'FIELD', 'LIST', 'SINGLE')
+
+
+        Returns
+        -------
+        Matrix
+        """
+        from ..treeclass import Tree
+        return Tree.current_tree().create_input_socket('NodeSocketMatrix', name=name, tip=tip, panel=panel, optional_label=optional_label, hide_value=hide_value, hide_in_modifier=hide_in_modifier, default_attribute=default_attribute, default_input=default_input, shape=shape)
+
+    def switch_false(self, switch: Boolean=None, false: Socket=None, input_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SOUND']='FLOAT'):
+        """ > Node <&Node Switch>
+        
+        Jump method: False.
+        
+        self: socket 'True'.
+        
+        Parameters
+        ----------
+        switch : Boolean, optional
+            socket 'Switch'
+        
+        false : Socket, optional
+            socket 'False'
+        
+        input_type : Literal['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Rotation', 'Matrix', 'String', 'Menu', 'Object', 'Image', 'Geometry', 'Collection', 'Material', 'Bundle', 'Closure', 'Font', 'Sound']
+            parameter `input_type`
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Switch', named_sockets={'Switch': switch, 'False': false, 'True': self}, input_type=input_type)
+        return node._out
+
+    @classmethod
+    def _create_input_socket(cls, name: str='Matrix', tip: str='', panel: str='', optional_label: bool=False, hide_value: bool=False, hide_in_modifier: bool=False, default_attribute: str='', default_input: Literal['VALUE', 'INSTANCE_TRANSFORM']='VALUE', shape: Literal['AUTO', 'DYNAMIC', 'FIELD', 'LIST', 'SINGLE']='AUTO'):
+        """ > Matrix Input
+
+        New <#Matrix> input with subtype 'NONE'.
+
+        Parameters
+        ----------
+        name : str, default=`Matrix`
+            Input socket name
+
+        tip : str, default=`''`
+            Property description
+
+        panel : str, default=``
+            Panel name
+
+        optional_label : bool, default=`False`
+            Property optional_label
+
+        hide_value : bool, default=`False`
+            Property hide_value
+
+        hide_in_modifier : bool, default=`False`
+            Property hide_in_modifier
+
+        default_attribute : str, default=`''`
+            Property default_attribute_name
+
+        default_input : str, default=`'VALUE'`
+            Property default_input in ('VALUE', 'INSTANCE_TRANSFORM')
+
+        shape : str, default=`'AUTO'`
+            Property structure_type in ('AUTO', 'DYNAMIC', 'FIELD', 'LIST', 'SINGLE')
+
+
+        Returns
+        -------
+        Matrix
+        """
+        from ..treeclass import Tree
+        return Tree.current_tree().create_input_socket('NodeSocketMatrix', name=name, tip=tip, panel=panel, optional_label=optional_label, hide_value=hide_value, hide_in_modifier=hide_in_modifier, default_attribute=default_attribute, default_input=default_input, shape=shape)

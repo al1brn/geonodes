@@ -44,7 +44,13 @@ if TYPE_CHECKING:
     class Menu:
         ...
 
+    class Input:
+        ...
+
     class Geometry:
+        ...
+
+    class IntVector:
         ...
 
     class Texture:
@@ -179,9 +185,10 @@ class Material(BaseMaterial):
     def __ne__(self, other):
         return self.not_equal(other)
 
-    @classmethod
-    def combine_list(cls, *values: Socket):
+    def combine_list(self, *values: Socket):
         """ > Node <&Node Combine List>
+        
+        Jump method: False.
         
         **Fixed values**
         
@@ -198,7 +205,7 @@ class Material(BaseMaterial):
         return node._out
 
     @classmethod
-    def compare(cls, a: Material=None, b: Material=None, operation: Literal['LESS_THAN', 'LESS_EQUAL', 'GREATER_THAN', 'GREATER_EQUAL', 'EQUAL', 'NOT_EQUAL']='GREATER_THAN', mode: Literal['ELEMENT', 'LENGTH', 'AVERAGE', 'DOT_PRODUCT', 'DIRECTION']='ELEMENT'):
+    def Compare(cls, a: Material=None, b: Material=None, operation: Literal['LESS_THAN', 'LESS_EQUAL', 'GREATER_THAN', 'GREATER_EQUAL', 'EQUAL', 'NOT_EQUAL']='GREATER_THAN', mode: Literal['ELEMENT', 'LENGTH', 'AVERAGE', 'DOT_PRODUCT', 'DIRECTION']='ELEMENT'):
         """ > Node <&Node Compare>
         
         **Fixed values**
@@ -229,61 +236,12 @@ class Material(BaseMaterial):
         node = Node('Compare', named_sockets={'A': a, 'B': b}, data_type='MATERIAL', operation=operation, mode=mode)
         return node._out
 
-    @classmethod
-    def filter_list(cls, list: Material=None, selection: Boolean=None):
-        """ > Node <&Node Filter List>
+    def enable_output(self, value: Material=None):
+        """ > Node <&Node Enable Output>
         
-        **Fixed values**
+        Jump method: False.
         
-        | Parameter | Value |
-        | --- | --- |
-        | `socket_type` | `'MATERIAL'` |
-        
-        Parameters
-        ----------
-        list : Material, optional
-            socket 'List'
-        
-        selection : Boolean, optional
-            socket 'Selection'
-        
-        Returns
-        -------
-        Socket
-            socket 'OUT'
-        """
-        node = Node('Filter List', named_sockets={'List': list, 'Selection': selection}, socket_type='MATERIAL')
-        return node._out
-
-    @classmethod
-    def get_list_item(cls, list: Material=None, index: Integer=None):
-        """ > Node <&Node Get List Item>
-        
-        **Fixed values**
-        
-        | Parameter | Value |
-        | --- | --- |
-        | `socket_type` | `'MATERIAL'` |
-        
-        Parameters
-        ----------
-        list : Material, optional
-            socket 'List'
-        
-        index : Integer, optional
-            socket 'Index'
-        
-        Returns
-        -------
-        Socket
-            socket 'OUT'
-        """
-        node = Node('Get List Item', named_sockets={'List': list, 'Index': index}, socket_type='MATERIAL')
-        return node._out
-
-    @classmethod
-    def implicit_conversion(cls, value: Material=None, socket_idname: str='NodeSocketColor'):
-        """ > Node <&Node Implicit Conversion>
+        self: socket 'Enable'.
         
         **Fixed values**
         
@@ -296,6 +254,77 @@ class Material(BaseMaterial):
         value : Material, optional
             socket 'Value'
         
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Enable Output', named_sockets={'Enable': self, 'Value': value}, data_type='MATERIAL')
+        return node._out
+
+    def filter_list(self):
+        """ > Node <&Node Filter List>
+        
+        Jump method: False.
+        
+        self: socket 'List'.
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `socket_type` | `'MATERIAL'` |
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        selection = self.get_selection()
+        node = Node('Filter List', named_sockets={'List': self, 'Selection': selection}, socket_type='MATERIAL')
+        return node._out
+
+    def get_list_item(self, index: Integer=None):
+        """ > Node <&Node Get List Item>
+        
+        Jump method: False.
+        
+        self: socket 'List'.
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `socket_type` | `'MATERIAL'` |
+        
+        Parameters
+        ----------
+        index : Integer, optional
+            socket 'Index'
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Get List Item', named_sockets={'List': self, 'Index': index}, socket_type='MATERIAL')
+        return node._out
+
+    def implicit_conversion(self, socket_idname: str='NodeSocketColor'):
+        """ > Node <&Node Implicit Conversion>
+        
+        Jump method: False.
+        
+        self: socket 'Value'.
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `data_type` | `'MATERIAL'` |
+        
+        Parameters
+        ----------
         socket_idname : str
             parameter `socket_idname`
         
@@ -304,11 +333,11 @@ class Material(BaseMaterial):
         Socket
             socket 'OUT'
         """
-        node = Node('Implicit Conversion', named_sockets={'Value': value}, data_type='MATERIAL', socket_idname=socket_idname)
+        node = Node('Implicit Conversion', named_sockets={'Value': self}, data_type='MATERIAL', socket_idname=socket_idname)
         return node._out
 
     @classmethod
-    def list_length(cls, list: Material=None):
+    def ListLength(cls, list: Material=None):
         """ > Node <&Node List Length>
         
         **Fixed values**
@@ -345,9 +374,12 @@ class Material(BaseMaterial):
         node = Node('Material Selection', named_sockets={'Material': self})
         return node._out
 
-    @classmethod
-    def sort_list(cls, list: Material=None, selection: Boolean=None, group_id: Integer=None, sort_weight: Float=None):
+    def sort_list(self, group_id: Integer=None, sort_weight: Float=None):
         """ > Node <&Node Sort List>
+        
+        Jump method: False.
+        
+        self: socket 'List'.
         
         **Fixed values**
         
@@ -357,12 +389,6 @@ class Material(BaseMaterial):
         
         Parameters
         ----------
-        list : Material, optional
-            socket 'List'
-        
-        selection : Boolean, optional
-            socket 'Selection'
-        
         group_id : Integer, optional
             socket 'Group ID'
         
@@ -374,5 +400,137 @@ class Material(BaseMaterial):
         Socket
             socket 'OUT'
         """
-        node = Node('Sort List', named_sockets={'List': list, 'Selection': selection, 'Group ID': group_id, 'Sort Weight': sort_weight}, socket_type='MATERIAL')
+        selection = self.get_selection()
+        node = Node('Sort List', named_sockets={'List': self, 'Selection': selection, 'Group ID': group_id, 'Sort Weight': sort_weight}, socket_type='MATERIAL')
         return node._out
+
+    def switch(self, false: Material=None, true: Material=None):
+        """ > Node <&Node Switch>
+        
+        Jump method: False.
+        
+        self: socket 'Switch'.
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `input_type` | `'MATERIAL'` |
+        
+        Parameters
+        ----------
+        false : Material, optional
+            socket 'False'
+        
+        true : Material, optional
+            socket 'True'
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Switch', named_sockets={'Switch': self, 'False': false, 'True': true}, input_type='MATERIAL')
+        return node._out
+
+    @classmethod
+    def _create_input_socket(cls, value: object=None, name: str='Material', tip: str='', panel: str='', optional_label: bool=False, hide_value: bool=False, hide_in_modifier: bool=False):
+        """ > Material Input
+
+        New <#Material> input with subtype 'NONE'.
+
+        Parameters
+        ----------
+        value : object, default=`None`
+            Default value
+
+        name : str, default=`Material`
+            Input socket name
+
+        tip : str, default=`''`
+            Property description
+
+        panel : str, default=``
+            Panel name
+
+        optional_label : bool, default=`False`
+            Property optional_label
+
+        hide_value : bool, default=`False`
+            Property hide_value
+
+        hide_in_modifier : bool, default=`False`
+            Property hide_in_modifier
+
+
+        Returns
+        -------
+        Material
+        """
+        from ..treeclass import Tree
+        defval = utils.python_value_for_socket(value, cls.SOCKET_TYPE)
+        return Tree.current_tree().create_input_socket('NodeSocketMaterial', default_value=defval, name=name, tip=tip, panel=panel, optional_label=optional_label, hide_value=hide_value, hide_in_modifier=hide_in_modifier)
+
+    def switch_false(self, switch: Boolean=None, false: Socket=None, input_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SOUND']='FLOAT'):
+        """ > Node <&Node Switch>
+        
+        Jump method: False.
+        
+        self: socket 'True'.
+        
+        Parameters
+        ----------
+        switch : Boolean, optional
+            socket 'Switch'
+        
+        false : Socket, optional
+            socket 'False'
+        
+        input_type : Literal['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Rotation', 'Matrix', 'String', 'Menu', 'Object', 'Image', 'Geometry', 'Collection', 'Material', 'Bundle', 'Closure', 'Font', 'Sound']
+            parameter `input_type`
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Switch', named_sockets={'Switch': switch, 'False': false, 'True': self}, input_type=input_type)
+        return node._out
+
+    @classmethod
+    def _create_input_socket(cls, value: object=None, name: str='Material', tip: str='', panel: str='', optional_label: bool=False, hide_value: bool=False, hide_in_modifier: bool=False):
+        """ > Material Input
+
+        New <#Material> input with subtype 'NONE'.
+
+        Parameters
+        ----------
+        value : object, default=`None`
+            Default value
+
+        name : str, default=`Material`
+            Input socket name
+
+        tip : str, default=`''`
+            Property description
+
+        panel : str, default=``
+            Panel name
+
+        optional_label : bool, default=`False`
+            Property optional_label
+
+        hide_value : bool, default=`False`
+            Property hide_value
+
+        hide_in_modifier : bool, default=`False`
+            Property hide_in_modifier
+
+
+        Returns
+        -------
+        Material
+        """
+        from ..treeclass import Tree
+        defval = utils.python_value_for_socket(value, cls.SOCKET_TYPE)
+        return Tree.current_tree().create_input_socket('NodeSocketMaterial', default_value=defval, name=name, tip=tip, panel=panel, optional_label=optional_label, hide_value=hide_value, hide_in_modifier=hide_in_modifier)

@@ -6,6 +6,7 @@ from .float import Float
 from .boolean import Boolean
 from .integer import Integer
 from .menu import Menu
+from .input import Input
 from .texture import Texture
 from .string import String
 from .volumeshader import VolumeShader

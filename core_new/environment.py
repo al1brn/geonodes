@@ -72,10 +72,10 @@ class ClassRegistry(MutableMapping):
 
 class ModuleFacade:
     def __init__(self, module, attribute=None):
-        self.module = module
-        self.attribute = attribute
+        self._MODULE = module
+        self._ATTRIBUTE = attribute
 
     def __getattr__(self, name):
-        module = import_module('.' + current_environment() + '.generated.' + self.module, __package__)
-        target = getattr(module, self.attribute) if self.attribute else module
+        module = import_module('.' + current_environment() + '.generated.' + self._MODULE, __package__)
+        target = getattr(module, self._ATTRIBUTE) if self._ATTRIBUTE else module
         return getattr(target, name)

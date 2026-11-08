@@ -32,6 +32,9 @@ if TYPE_CHECKING:
     class Menu:
         ...
 
+    class Input:
+        ...
+
     class Texture:
         ...
 
@@ -48,9 +51,12 @@ from ...shadernodes.sockets.menu import Menu as BaseMenu
 class Menu(BaseMenu):
     __slots__ = ()
 
-    @classmethod
-    def implicit_conversion(cls, value: Menu=None, socket_idname: str='NodeSocketColor'):
-        """ > Node <&ShaderNode Implicit Conversion>
+    def enable_output(self, value: Menu=None):
+        """ > Node <&ShaderNode Enable Output>
+        
+        Jump method: False.
+        
+        self: socket 'Enable'.
         
         **Fixed values**
         
@@ -63,6 +69,29 @@ class Menu(BaseMenu):
         value : Menu, optional
             socket 'Value'
         
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Enable Output', named_sockets={'Enable': self, 'Value': value}, data_type='MENU')
+        return node._out
+
+    def implicit_conversion(self, socket_idname: str='NodeSocketColor'):
+        """ > Node <&ShaderNode Implicit Conversion>
+        
+        Jump method: False.
+        
+        self: socket 'Value'.
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `data_type` | `'MENU'` |
+        
+        Parameters
+        ----------
         socket_idname : str
             parameter `socket_idname`
         
@@ -71,7 +100,7 @@ class Menu(BaseMenu):
         Socket
             socket 'OUT'
         """
-        node = Node('Implicit Conversion', named_sockets={'Value': value}, data_type='MENU', socket_idname=socket_idname)
+        node = Node('Implicit Conversion', named_sockets={'Value': self}, data_type='MENU', socket_idname=socket_idname)
         return node._out
 
     def menu_switch(self, named_sockets=None, data_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'STRING', 'MENU', 'SHADER', 'BUNDLE', 'CLOSURE']='RGBA', **sockets):
@@ -94,4 +123,103 @@ class Menu(BaseMenu):
         _named_sockets = {'Menu': self}
         _named_sockets.update({name: value for name, value in (named_sockets or {}).items() if value is not None})
         node = Node('Menu Switch', named_sockets=_named_sockets, data_type=data_type, **sockets)
+        return node._out
+
+    def switch(self, false: Menu=None, true: Menu=None):
+        """ > Node <&ShaderNode Switch>
+        
+        Jump method: False.
+        
+        self: socket 'Switch'.
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `input_type` | `'MENU'` |
+        
+        Parameters
+        ----------
+        false : Menu, optional
+            socket 'False'
+        
+        true : Menu, optional
+            socket 'True'
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Switch', named_sockets={'Switch': self, 'False': false, 'True': true}, input_type='MENU')
+        return node._out
+
+    @classmethod
+    def _create_input_socket(cls, value: object=None, name: str='Menu', tip: str='', panel: str='', optional_label: bool=False, hide_value: bool=False, hide_in_modifier: bool=False, expanded: bool=False, shape: Literal['AUTO', 'SINGLE']='AUTO'):
+        """ > Menu Input
+
+        New <#Menu> input with subtype 'NONE'.
+
+        Parameters
+        ----------
+        value : object, default=`None`
+            Default value
+
+        name : str, default=`Menu`
+            Input socket name
+
+        tip : str, default=`''`
+            Property description
+
+        panel : str, default=``
+            Panel name
+
+        optional_label : bool, default=`False`
+            Property optional_label
+
+        hide_value : bool, default=`False`
+            Property hide_value
+
+        hide_in_modifier : bool, default=`False`
+            Property hide_in_modifier
+
+        expanded : bool, default=`False`
+            Property menu_expanded
+
+        shape : str, default=`'AUTO'`
+            Property structure_type in ('AUTO', 'SINGLE')
+
+
+        Returns
+        -------
+        Menu
+        """
+        from ..treeclass import Tree
+        defval = utils.python_value_for_socket(value, cls.SOCKET_TYPE)
+        return Tree.current_tree().create_input_socket('NodeSocketMenu', default_value=defval, name=name, tip=tip, panel=panel, optional_label=optional_label, hide_value=hide_value, hide_in_modifier=hide_in_modifier, expanded=expanded, shape=shape)
+
+    def switch_false(self, switch: Boolean=None, false: Socket=None, input_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'STRING', 'MENU', 'SHADER', 'BUNDLE', 'CLOSURE']='RGBA'):
+        """ > Node <&ShaderNode Switch>
+        
+        Jump method: False.
+        
+        self: socket 'True'.
+        
+        Parameters
+        ----------
+        switch : Boolean, optional
+            socket 'Switch'
+        
+        false : Socket, optional
+            socket 'False'
+        
+        input_type : Literal['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'String', 'Menu', 'Shader', 'Bundle', 'Closure']
+            parameter `input_type`
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Switch', named_sockets={'Switch': switch, 'False': false, 'True': self}, input_type=input_type)
         return node._out

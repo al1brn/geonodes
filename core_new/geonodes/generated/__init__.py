@@ -10,7 +10,9 @@ from .font import Font
 from .boolean import Boolean
 from .integer import Integer
 from .menu import Menu
+from .input import Input
 from .geometry import Geometry
+from .intvector import IntVector
 from .texture import Texture
 from .collection import Collection
 from .string import String

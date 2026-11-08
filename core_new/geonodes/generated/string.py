@@ -44,7 +44,13 @@ if TYPE_CHECKING:
     class Menu:
         ...
 
+    class Input:
+        ...
+
     class Geometry:
+        ...
+
+    class IntVector:
         ...
 
     class Texture:
@@ -179,9 +185,10 @@ class String(BaseString):
     def __ne__(self, other):
         return self.not_equal(other)
 
-    @classmethod
-    def combine_list(cls, *values: Socket):
+    def combine_list(self, *values: Socket):
         """ > Node <&Node Combine List>
+        
+        Jump method: False.
         
         **Fixed values**
         
@@ -198,7 +205,7 @@ class String(BaseString):
         return node._out
 
     @classmethod
-    def compare(cls, a: String=None, b: String=None, operation: Literal['LESS_THAN', 'LESS_EQUAL', 'GREATER_THAN', 'GREATER_EQUAL', 'EQUAL', 'NOT_EQUAL']='GREATER_THAN', mode: Literal['ELEMENT', 'LENGTH', 'AVERAGE', 'DOT_PRODUCT', 'DIRECTION']='ELEMENT'):
+    def Compare(cls, a: String=None, b: String=None, operation: Literal['LESS_THAN', 'LESS_EQUAL', 'GREATER_THAN', 'GREATER_EQUAL', 'EQUAL', 'NOT_EQUAL']='GREATER_THAN', mode: Literal['ELEMENT', 'LENGTH', 'AVERAGE', 'DOT_PRODUCT', 'DIRECTION']='ELEMENT'):
         """ > Node <&Node Compare>
         
         **Fixed values**
@@ -229,9 +236,38 @@ class String(BaseString):
         node = Node('Compare', named_sockets={'A': a, 'B': b}, data_type='STRING', operation=operation, mode=mode)
         return node._out
 
-    @classmethod
-    def filter_list(cls, list: String=None, selection: Boolean=None):
+    def enable_output(self, value: String=None):
+        """ > Node <&Node Enable Output>
+        
+        Jump method: False.
+        
+        self: socket 'Enable'.
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `data_type` | `'STRING'` |
+        
+        Parameters
+        ----------
+        value : String, optional
+            socket 'Value'
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Enable Output', named_sockets={'Enable': self, 'Value': value}, data_type='STRING')
+        return node._out
+
+    def filter_list(self):
         """ > Node <&Node Filter List>
+        
+        Jump method: False.
+        
+        self: socket 'List'.
         
         **Fixed values**
         
@@ -239,20 +275,13 @@ class String(BaseString):
         | --- | --- |
         | `socket_type` | `'STRING'` |
         
-        Parameters
-        ----------
-        list : String, optional
-            socket 'List'
-        
-        selection : Boolean, optional
-            socket 'Selection'
-        
         Returns
         -------
         Socket
             socket 'OUT'
         """
-        node = Node('Filter List', named_sockets={'List': list, 'Selection': selection}, socket_type='STRING')
+        selection = self.get_selection()
+        node = Node('Filter List', named_sockets={'List': self, 'Selection': selection}, socket_type='STRING')
         return node._out
 
     def find_in_string(self, search: String=None, mode: Menu=None):
@@ -295,9 +324,12 @@ class String(BaseString):
         node = Node('Format String', named_sockets=_named_sockets, **sockets)
         return node._out
 
-    @classmethod
-    def get_list_item(cls, list: String=None, index: Integer=None):
+    def get_list_item(self, index: Integer=None):
         """ > Node <&Node Get List Item>
+        
+        Jump method: False.
+        
+        self: socket 'List'.
         
         **Fixed values**
         
@@ -307,9 +339,6 @@ class String(BaseString):
         
         Parameters
         ----------
-        list : String, optional
-            socket 'List'
-        
         index : Integer, optional
             socket 'Index'
         
@@ -318,11 +347,11 @@ class String(BaseString):
         Socket
             socket 'OUT'
         """
-        node = Node('Get List Item', named_sockets={'List': list, 'Index': index}, socket_type='STRING')
+        node = Node('Get List Item', named_sockets={'List': self, 'Index': index}, socket_type='STRING')
         return node._out
 
     @classmethod
-    def hash_value(cls, value: String=None, seed: Integer=None):
+    def HashValue(cls, value: String=None, seed: Integer=None):
         """ > Node <&Node Hash Value>
         
         **Fixed values**
@@ -347,9 +376,12 @@ class String(BaseString):
         node = Node('Hash Value', named_sockets={'Value': value, 'Seed': seed}, data_type='STRING')
         return node._out
 
-    @classmethod
-    def implicit_conversion(cls, value: String=None, socket_idname: str='NodeSocketColor'):
+    def implicit_conversion(self, socket_idname: str='NodeSocketColor'):
         """ > Node <&Node Implicit Conversion>
+        
+        Jump method: False.
+        
+        self: socket 'Value'.
         
         **Fixed values**
         
@@ -359,9 +391,6 @@ class String(BaseString):
         
         Parameters
         ----------
-        value : String, optional
-            socket 'Value'
-        
         socket_idname : str
             parameter `socket_idname`
         
@@ -370,7 +399,7 @@ class String(BaseString):
         Socket
             socket 'OUT'
         """
-        node = Node('Implicit Conversion', named_sockets={'Value': value}, data_type='STRING', socket_idname=socket_idname)
+        node = Node('Implicit Conversion', named_sockets={'Value': self}, data_type='STRING', socket_idname=socket_idname)
         return node._out
 
     @classmethod
@@ -414,7 +443,7 @@ class String(BaseString):
         return node._out
 
     @classmethod
-    def list_length(cls, list: String=None):
+    def ListLength(cls, list: String=None):
         """ > Node <&Node List Length>
         
         **Fixed values**
@@ -540,9 +569,12 @@ class String(BaseString):
         node = Node('Slice String', named_sockets={'String': self, 'Position': position, 'Length': length})
         return node._out
 
-    @classmethod
-    def sort_list(cls, list: String=None, selection: Boolean=None, group_id: Integer=None, sort_weight: Float=None):
+    def sort_list(self, group_id: Integer=None, sort_weight: Float=None):
         """ > Node <&Node Sort List>
+        
+        Jump method: False.
+        
+        self: socket 'List'.
         
         **Fixed values**
         
@@ -552,12 +584,6 @@ class String(BaseString):
         
         Parameters
         ----------
-        list : String, optional
-            socket 'List'
-        
-        selection : Boolean, optional
-            socket 'Selection'
-        
         group_id : Integer, optional
             socket 'Group ID'
         
@@ -569,7 +595,8 @@ class String(BaseString):
         Socket
             socket 'OUT'
         """
-        node = Node('Sort List', named_sockets={'List': list, 'Selection': selection, 'Group ID': group_id, 'Sort Weight': sort_weight}, socket_type='STRING')
+        selection = self.get_selection()
+        node = Node('Sort List', named_sockets={'List': self, 'Selection': selection, 'Group ID': group_id, 'Sort Weight': sort_weight}, socket_type='STRING')
         return node._out
 
     def split_string(self, separator: String=None):
@@ -631,6 +658,35 @@ class String(BaseString):
         _node_sockets = {('FLOAT',): {'String': self}, ('INT',): {'String': self, 'Base': base}}[_configuration]
         _node_args = {('FLOAT',): [], ('INT',): []}[_configuration]
         node = Node('String to Value', *_node_args, named_sockets=_node_sockets, data_type=data_type)
+        return node._out
+
+    def switch(self, false: String=None, true: String=None):
+        """ > Node <&Node Switch>
+        
+        Jump method: False.
+        
+        self: socket 'Switch'.
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `input_type` | `'STRING'` |
+        
+        Parameters
+        ----------
+        false : String, optional
+            socket 'False'
+        
+        true : String, optional
+            socket 'True'
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Switch', named_sockets={'Switch': self, 'False': false, 'True': true}, input_type='STRING')
         return node._out
 
     def tag_filter(self, tags: String=None):
@@ -713,3 +769,183 @@ class String(BaseString):
         _node_args = {('FLOAT',): [], ('INT',): []}[_configuration]
         node = Node('Value to String', *_node_args, named_sockets=_node_sockets, data_type=data_type)
         return node._out
+
+    @classmethod
+    def _create_input_socket(cls, value: str='', name: str='String', tip: str='', panel: str='', optional_label: bool=False, hide_value: bool=False, hide_in_modifier: bool=False, subtype: str='NONE'):
+        """ > String Input
+
+        New <#String> input with subtype 'NONE'.
+
+        Parameters
+        ----------
+        value : str, default=`""`
+            Default value
+
+        name : str, default=`String`
+            Input socket name
+
+        tip : str, default=`''`
+            Property description
+
+        panel : str, default=``
+            Panel name
+
+        optional_label : bool, default=`False`
+            Property optional_label
+
+        hide_value : bool, default=`False`
+            Property hide_value
+
+        hide_in_modifier : bool, default=`False`
+            Property hide_in_modifier
+
+        subtype : str, default=`NONE`
+            Socket sub type in ('NONE', 'FILE_PATH')
+
+
+        Returns
+        -------
+        String
+        """
+        from ..treeclass import Tree
+        defval = utils.python_value_for_socket(value, cls.SOCKET_TYPE)
+        return Tree.current_tree().create_input_socket('NodeSocketString', default_value=defval, name=name, tip=tip, panel=panel, optional_label=optional_label, hide_value=hide_value, hide_in_modifier=hide_in_modifier, subtype=subtype)
+
+    @classmethod
+    def FilePath(cls, value: str='', name: str='FilePath', tip: str='', panel: str='', optional_label: bool=False, hide_value: bool=False, hide_in_modifier: bool=False):
+        """ > FilePath Input
+
+        New <#String> input with subtype 'FILE_PATH'.
+
+        Parameters
+        ----------
+        value : str, default=`""`
+            Default value
+
+        name : str, default=`FilePath`
+            Input socket name
+
+        tip : str, default=`''`
+            Property description
+
+        panel : str, default=``
+            Panel name
+
+        optional_label : bool, default=`False`
+            Property optional_label
+
+        hide_value : bool, default=`False`
+            Property hide_value
+
+        hide_in_modifier : bool, default=`False`
+            Property hide_in_modifier
+
+
+        Returns
+        -------
+        String
+        """
+        return cls(value=value, name=name, tip=tip, panel=panel, optional_label=optional_label, hide_value=hide_value, hide_in_modifier=hide_in_modifier, subtype='FILE_PATH')
+
+    def switch_false(self, switch: Boolean=None, false: Socket=None, input_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SOUND']='FLOAT'):
+        """ > Node <&Node Switch>
+        
+        Jump method: False.
+        
+        self: socket 'True'.
+        
+        Parameters
+        ----------
+        switch : Boolean, optional
+            socket 'Switch'
+        
+        false : Socket, optional
+            socket 'False'
+        
+        input_type : Literal['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Rotation', 'Matrix', 'String', 'Menu', 'Object', 'Image', 'Geometry', 'Collection', 'Material', 'Bundle', 'Closure', 'Font', 'Sound']
+            parameter `input_type`
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Switch', named_sockets={'Switch': switch, 'False': false, 'True': self}, input_type=input_type)
+        return node._out
+
+    @classmethod
+    def _create_input_socket(cls, value: str='', name: str='String', tip: str='', panel: str='', optional_label: bool=False, hide_value: bool=False, hide_in_modifier: bool=False, subtype: str='NONE'):
+        """ > String Input
+
+        New <#String> input with subtype 'NONE'.
+
+        Parameters
+        ----------
+        value : str, default=`""`
+            Default value
+
+        name : str, default=`String`
+            Input socket name
+
+        tip : str, default=`''`
+            Property description
+
+        panel : str, default=``
+            Panel name
+
+        optional_label : bool, default=`False`
+            Property optional_label
+
+        hide_value : bool, default=`False`
+            Property hide_value
+
+        hide_in_modifier : bool, default=`False`
+            Property hide_in_modifier
+
+        subtype : str, default=`NONE`
+            Socket sub type in ('NONE', 'FILE_PATH')
+
+
+        Returns
+        -------
+        String
+        """
+        from ..treeclass import Tree
+        defval = utils.python_value_for_socket(value, cls.SOCKET_TYPE)
+        return Tree.current_tree().create_input_socket('NodeSocketString', default_value=defval, name=name, tip=tip, panel=panel, optional_label=optional_label, hide_value=hide_value, hide_in_modifier=hide_in_modifier, subtype=subtype)
+
+    @classmethod
+    def FilePath(cls, value: str='', name: str='FilePath', tip: str='', panel: str='', optional_label: bool=False, hide_value: bool=False, hide_in_modifier: bool=False):
+        """ > FilePath Input
+
+        New <#String> input with subtype 'FILE_PATH'.
+
+        Parameters
+        ----------
+        value : str, default=`""`
+            Default value
+
+        name : str, default=`FilePath`
+            Input socket name
+
+        tip : str, default=`''`
+            Property description
+
+        panel : str, default=``
+            Panel name
+
+        optional_label : bool, default=`False`
+            Property optional_label
+
+        hide_value : bool, default=`False`
+            Property hide_value
+
+        hide_in_modifier : bool, default=`False`
+            Property hide_in_modifier
+
+
+        Returns
+        -------
+        String
+        """
+        return cls(value=value, name=name, tip=tip, panel=panel, optional_label=optional_label, hide_value=hide_value, hide_in_modifier=hide_in_modifier, subtype='FILE_PATH')

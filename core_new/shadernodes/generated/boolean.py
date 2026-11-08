@@ -32,6 +32,9 @@ if TYPE_CHECKING:
     class Menu:
         ...
 
+    class Input:
+        ...
+
     class Texture:
         ...
 
@@ -74,34 +77,12 @@ class Boolean(BaseBoolean):
         node = Node('Boolean Math', *_node_args, named_sockets=_node_sockets, operation=operation)
         return node._out
 
-    def enable_output(self, value: Socket=None):
+    def enable_output(self, value: Boolean=None):
         """ > Node <&ShaderNode Enable Output>
         
         Jump method: False.
         
         self: socket 'Enable'.
-        
-        **Derived parameters**
-        
-        - `data_type`: Inferred from socket 'Value' (value).
-        
-        Parameters
-        ----------
-        value : Socket, optional
-            socket 'Value'
-        
-        Returns
-        -------
-        Socket
-            socket 'OUT'
-        """
-        data_type = SocketType.get_data_type_for_node(value, 'NodeEnableOutput', 'data_type')
-        node = Node('Enable Output', named_sockets={'Enable': self, 'Value': value}, data_type=data_type)
-        return node._out
-
-    @classmethod
-    def implicit_conversion(cls, value: Boolean=None, socket_idname: str='NodeSocketColor'):
-        """ > Node <&ShaderNode Implicit Conversion>
         
         **Fixed values**
         
@@ -114,6 +95,29 @@ class Boolean(BaseBoolean):
         value : Boolean, optional
             socket 'Value'
         
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Enable Output', named_sockets={'Enable': self, 'Value': value}, data_type='BOOLEAN')
+        return node._out
+
+    def implicit_conversion(self, socket_idname: str='NodeSocketColor'):
+        """ > Node <&ShaderNode Implicit Conversion>
+        
+        Jump method: False.
+        
+        self: socket 'Value'.
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `data_type` | `'BOOLEAN'` |
+        
+        Parameters
+        ----------
         socket_idname : str
             parameter `socket_idname`
         
@@ -122,26 +126,28 @@ class Boolean(BaseBoolean):
         Socket
             socket 'OUT'
         """
-        node = Node('Implicit Conversion', named_sockets={'Value': value}, data_type='BOOLEAN', socket_idname=socket_idname)
+        node = Node('Implicit Conversion', named_sockets={'Value': self}, data_type='BOOLEAN', socket_idname=socket_idname)
         return node._out
 
-    def switch(self, false: Socket=None, true: Socket=None):
+    def switch(self, false: Boolean=None, true: Boolean=None):
         """ > Node <&ShaderNode Switch>
         
         Jump method: False.
         
         self: socket 'Switch'.
         
-        **Derived parameters**
+        **Fixed values**
         
-        - `input_type`: Inferred from socket 'False' (false).
+        | Parameter | Value |
+        | --- | --- |
+        | `input_type` | `'BOOLEAN'` |
         
         Parameters
         ----------
-        false : Socket, optional
+        false : Boolean, optional
             socket 'False'
         
-        true : Socket, optional
+        true : Boolean, optional
             socket 'True'
         
         Returns
@@ -149,8 +155,7 @@ class Boolean(BaseBoolean):
         Socket
             socket 'OUT'
         """
-        input_type = SocketType.get_data_type_for_node(false, 'GeometryNodeSwitch', 'input_type')
-        node = Node('Switch', named_sockets={'Switch': self, 'False': false, 'True': true}, input_type=input_type)
+        node = Node('Switch', named_sockets={'Switch': self, 'False': false, 'True': true}, input_type='BOOLEAN')
         return node._out
 
     def warning(self, message: String=None, warning_type: Literal['ERROR', 'WARNING', 'INFO']='ERROR'):
@@ -174,4 +179,77 @@ class Boolean(BaseBoolean):
             socket 'OUT'
         """
         node = Node('Warning', named_sockets={'Show': self, 'Message': message}, warning_type=warning_type)
+        return node._out
+
+    @classmethod
+    def _create_input_socket(cls, value: bool=False, name: str='Boolean', tip: str='', panel: str='', optional_label: bool=False, hide_value: bool=False, hide_in_modifier: bool=False, default_attribute: str='', layer_selection: bool=False, shape: Literal['AUTO', 'SINGLE']='AUTO'):
+        """ > Boolean Input
+
+        New <#Boolean> input with subtype 'NONE'.
+
+        Parameters
+        ----------
+        value : bool, default=`False`
+            Default value
+
+        name : str, default=`Boolean`
+            Input socket name
+
+        tip : str, default=`''`
+            Property description
+
+        panel : str, default=``
+            Panel name
+
+        optional_label : bool, default=`False`
+            Property optional_label
+
+        hide_value : bool, default=`False`
+            Property hide_value
+
+        hide_in_modifier : bool, default=`False`
+            Property hide_in_modifier
+
+        default_attribute : str, default=`''`
+            Property default_attribute_name
+
+        layer_selection : bool, default=`False`
+            Property layer_selection_field
+
+        shape : str, default=`'AUTO'`
+            Property structure_type in ('AUTO', 'SINGLE')
+
+
+        Returns
+        -------
+        Boolean
+        """
+        from ..treeclass import Tree
+        defval = utils.python_value_for_socket(value, cls.SOCKET_TYPE)
+        return Tree.current_tree().create_input_socket('NodeSocketBool', default_value=defval, name=name, tip=tip, panel=panel, optional_label=optional_label, hide_value=hide_value, hide_in_modifier=hide_in_modifier, default_attribute=default_attribute, layer_selection=layer_selection, shape=shape)
+
+    def switch_false(self, switch: Boolean=None, false: Socket=None, input_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'STRING', 'MENU', 'SHADER', 'BUNDLE', 'CLOSURE']='RGBA'):
+        """ > Node <&ShaderNode Switch>
+        
+        Jump method: False.
+        
+        self: socket 'True'.
+        
+        Parameters
+        ----------
+        switch : Boolean, optional
+            socket 'Switch'
+        
+        false : Socket, optional
+            socket 'False'
+        
+        input_type : Literal['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'String', 'Menu', 'Shader', 'Bundle', 'Closure']
+            parameter `input_type`
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Switch', named_sockets={'Switch': switch, 'False': false, 'True': self}, input_type=input_type)
         return node._out

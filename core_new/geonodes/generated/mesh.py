@@ -44,7 +44,13 @@ if TYPE_CHECKING:
     class Menu:
         ...
 
+    class Input:
+        ...
+
     class Geometry:
+        ...
+
+    class IntVector:
         ...
 
     class Texture:
@@ -728,71 +734,6 @@ class Mesh(BaseMesh, Geometry):
             socket 'OUT'
         """
         node = Node('Mesh to Volume', named_sockets={'Mesh': self, 'Density': density, 'Resolution Mode': resolution_mode, 'Voxel Size': voxel_size, 'Voxel Amount': voxel_amount, 'Interior Band Width': interior_band_width})
-        return node._out
-
-    def sample_nearest_surface(self, value: Socket=None, group_id: Integer=None, sample_position: Vector=None, sample_group_id: Integer=None):
-        """ > Node <&Node Sample Nearest Surface>
-        
-        Jump method: False.
-        
-        self: socket 'Mesh'.
-        
-        **Derived parameters**
-        
-        - `data_type`: Inferred from socket 'Value' (value).
-        
-        Parameters
-        ----------
-        value : Socket, optional
-            socket 'Value'
-        
-        group_id : Integer, optional
-            socket 'Group ID'
-        
-        sample_position : Vector, optional
-            socket 'Sample Position'
-        
-        sample_group_id : Integer, optional
-            socket 'Sample Group ID'
-        
-        Returns
-        -------
-        Socket
-            socket 'OUT'
-        """
-        data_type = SocketType.get_data_type_for_node(value, 'GeometryNodeSampleNearestSurface', 'data_type')
-        node = Node('Sample Nearest Surface', named_sockets={'Mesh': self, 'Value': value, 'Group ID': group_id, 'Sample Position': sample_position, 'Sample Group ID': sample_group_id}, data_type=data_type)
-        return node._out
-
-    def sample_uv_surface(self, value: Socket=None, uv_map: Vector=None, sample_uv: Vector=None):
-        """ > Node <&Node Sample UV Surface>
-        
-        Jump method: False.
-        
-        self: socket 'Mesh'.
-        
-        **Derived parameters**
-        
-        - `data_type`: Inferred from socket 'Value' (value).
-        
-        Parameters
-        ----------
-        value : Socket, optional
-            socket 'Value'
-        
-        uv_map : Vector, optional
-            socket 'UV Map'
-        
-        sample_uv : Vector, optional
-            socket 'Sample UV'
-        
-        Returns
-        -------
-        Socket
-            socket 'OUT'
-        """
-        data_type = SocketType.get_data_type_for_node(value, 'GeometryNodeSampleUVSurface', 'data_type')
-        node = Node('Sample UV Surface', named_sockets={'Mesh': self, 'Value': value, 'UV Map': uv_map, 'Sample UV': sample_uv}, data_type=data_type)
         return node._out
 
     def set_face_set(self, face_set: Integer=None):

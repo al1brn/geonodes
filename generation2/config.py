@@ -8,6 +8,8 @@ here. Deprecated nodes are excluded before introspection; nodes without a
 default implementation remain available for introspection and nd access.
 """
 
+TREE_TYPES = ('GeometryNodeTree', 'ShaderNodeTree')
+
 
 DEPRECATED_NODES = {
     'FunctionNodeAlignEulerToVector': 'Use Align Rotation to Vector',  # Align Euler to Vector
@@ -98,17 +100,36 @@ DATA_TYPE_IMPLEMENTATIONS = {
 # Extra proposals, without replacing the inferred/default implementation.
 # Each node may have several additions, using the same keys as replacements.
 ADDITIONAL_IMPLEMENTATIONS = {
-    # Collection Info
-    'GeometryNodeCollectionInfo': [  
-        {
-            'kind': 'METHOD',
-            'name': 'info',
-            'self_socket': 'Collection',
+    'common': {
+        'Map Range': {
+                'class_name': 'LOOP data_type',
+                'method_name' : 'interpolate',
+                'fixed_sockets': {'From Min': 0.0, 'From Max': 1.0},
+            },
+        'Switch': {
+                'class_name': 'LOOP input_type',
+                'method_name': 'switch_false',
+                'self_socket': 'True',
         },
-    ],
+    },
+    'ShaderNodeTree': {
+    },
+    'GeometryNodeTree': {
+    }
 }
 
+"""
+        'Map Range OLD': [{
+                'class_name': 'Float',
+                'method_name' : 'map_range',
+                'parameters': {'data_type': 'FLOAT'},
+            }, {
+                'class_name': 'Vector',
+                'method_name' : 'map_range',
+                'parameters': {'data_type': 'VECTOR'},
+            }],
 
+"""
 # Overrides/additions to NodeInfo.input_implementation's domain/name rules.
 # Unmatched INPUTs need an explicit class_name. name=None disables the Node
 # method; otherwise name creates a class
@@ -326,6 +347,10 @@ STATIC_IMPLEMENTATION_ONLY = [
 
     'ShaderNodeHairInfo',
     'ShaderNodePointInfo',
+
+    # Special
+
+    'ShaderNodeMix',
 
     ]
 

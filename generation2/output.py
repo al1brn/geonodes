@@ -29,45 +29,61 @@ class SpecializeContext(ast.NodeTransformer):
 
 def specialize_source(source, tree_type):
     """Resolve context switches before emitting code for one environment."""
-    tree = SpecializeContext(tree_type).visit(ast.parse(source))
+    try:
+        tree = SpecializeContext(tree_type).visit(ast.parse(source))
+    except Exception as e:
+        print('-'*100)
+        print(source)
+        print('-'*100)
+        raise e
     return ast.unparse(ast.fix_missing_locations(tree)) + '\n'
 
 
 def render_modules(core_path, tree_type, sources, cross_refs=None):
     """Return destination path -> source, validating the complete environment."""
+
     environment = ENVIRONMENTS[tree_type]
     targets = {}
     handwritten = {}
     folders = [core_path / 'root', core_path / environment / 'sockets']
     if environment == 'geonodes':
         folders.append(core_path / environment / 'domains')
+
+    # Loop on folders
     for folder in folders:
+        # Loop on python files in the folder, not in sub folders
         for path in folder.glob('*.py'):
+            # Parse the content
             for node in ast.parse(path.read_text()).body:
+                # Interested only in ClassDef
                 if not isinstance(node, ast.ClassDef):
                     continue
+
+                # Stores the existing methods into handwritten dict
                 handwritten.setdefault(node.name, set()).update(
                     method.name for method in node.body if isinstance(method, ast.FunctionDef))
+
+                # Stores (class_name, module path)
                 if folder.name == 'sockets':
                     targets[node.name.lower() + '.py'] = (node.name, f'{environment}.sockets.{path.stem}')
                 elif folder.name == 'domains' and path.stem not in ('domain', 'attribute'):
                     targets['dom_' + node.name.lower() + '.py'] = (node.name, f'geonodes.domains.{path.stem}')
+
     static_name, static_class = 'static_nd.py', 'ND'
     targets[static_name] = (static_class, None)
     unknown = sources.keys() - targets.keys() - {'gnmath.py'}
 
     if unknown:
         from pprint import pprint
-        print("DEBUG sources:", list(sources.keys()))
+        print("sources.keys():")
+        print(list(sources.keys()))
+        #pprint(sources)
+        print()
+        print("targets:")
+        pprint(targets)
+        print()
 
-        for key in unknown:
-            print('*'*100)
-            print("DEBUG key")
-            pprint(sources[key])
-            print()
-        
-
-        raise ValueError(f'Unknown destinations in {environment}: {sorted(unknown)}')
+        raise ValueError(f"The following destination files don't exist for '{environment}'. Make sure to create them in  '{environment}/sockets' folder: {sorted(unknown)}")
     
     header = (f'# Generated {datetime.now():%Y-%m-%d %H:%M:%S}\n'
               'from __future__ import annotations\n'

@@ -44,7 +44,13 @@ if TYPE_CHECKING:
     class Menu:
         ...
 
+    class Input:
+        ...
+
     class Geometry:
+        ...
+
+    class IntVector:
         ...
 
     class Texture:
@@ -117,9 +123,10 @@ from ...geonodes.sockets.closure import Closure as BaseClosure
 class Closure(BaseClosure):
     __slots__ = ()
 
-    @classmethod
-    def combine_list(cls, *values: Socket):
+    def combine_list(self, *values: Socket):
         """ > Node <&Node Combine List>
+        
+        Jump method: False.
         
         **Fixed values**
         
@@ -133,6 +140,32 @@ class Closure(BaseClosure):
             socket 'OUT'
         """
         node = Node('Combine List', *values, named_sockets={}, data_type='CLOSURE')
+        return node._out
+
+    def enable_output(self, value: Closure=None):
+        """ > Node <&Node Enable Output>
+        
+        Jump method: False.
+        
+        self: socket 'Enable'.
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `data_type` | `'CLOSURE'` |
+        
+        Parameters
+        ----------
+        value : Closure, optional
+            socket 'Value'
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Enable Output', named_sockets={'Enable': self, 'Value': value}, data_type='CLOSURE')
         return node._out
 
     def evaluate_closure(self, named_sockets=None, define_signature: bool=False, **sockets):
@@ -157,35 +190,34 @@ class Closure(BaseClosure):
         node = Node('Evaluate Closure', named_sockets=_named_sockets, define_signature=define_signature, **sockets)
         return node._out
 
-    @classmethod
-    def filter_list(cls, list: Closure=None, selection: Boolean=None):
+    def filter_list(self):
         """ > Node <&Node Filter List>
+        
+        Jump method: False.
+        
+        self: socket 'List'.
         
         **Fixed values**
         
         | Parameter | Value |
         | --- | --- |
         | `socket_type` | `'CLOSURE'` |
-        
-        Parameters
-        ----------
-        list : Closure, optional
-            socket 'List'
-        
-        selection : Boolean, optional
-            socket 'Selection'
         
         Returns
         -------
         Socket
             socket 'OUT'
         """
-        node = Node('Filter List', named_sockets={'List': list, 'Selection': selection}, socket_type='CLOSURE')
+        selection = self.get_selection()
+        node = Node('Filter List', named_sockets={'List': self, 'Selection': selection}, socket_type='CLOSURE')
         return node._out
 
-    @classmethod
-    def get_list_item(cls, list: Closure=None, index: Integer=None):
+    def get_list_item(self, index: Integer=None):
         """ > Node <&Node Get List Item>
+        
+        Jump method: False.
+        
+        self: socket 'List'.
         
         **Fixed values**
         
@@ -195,9 +227,6 @@ class Closure(BaseClosure):
         
         Parameters
         ----------
-        list : Closure, optional
-            socket 'List'
-        
         index : Integer, optional
             socket 'Index'
         
@@ -206,12 +235,15 @@ class Closure(BaseClosure):
         Socket
             socket 'OUT'
         """
-        node = Node('Get List Item', named_sockets={'List': list, 'Index': index}, socket_type='CLOSURE')
+        node = Node('Get List Item', named_sockets={'List': self, 'Index': index}, socket_type='CLOSURE')
         return node._out
 
-    @classmethod
-    def implicit_conversion(cls, value: Closure=None, socket_idname: str='NodeSocketColor'):
+    def implicit_conversion(self, socket_idname: str='NodeSocketColor'):
         """ > Node <&Node Implicit Conversion>
+        
+        Jump method: False.
+        
+        self: socket 'Value'.
         
         **Fixed values**
         
@@ -221,9 +253,6 @@ class Closure(BaseClosure):
         
         Parameters
         ----------
-        value : Closure, optional
-            socket 'Value'
-        
         socket_idname : str
             parameter `socket_idname`
         
@@ -232,11 +261,11 @@ class Closure(BaseClosure):
         Socket
             socket 'OUT'
         """
-        node = Node('Implicit Conversion', named_sockets={'Value': value}, data_type='CLOSURE', socket_idname=socket_idname)
+        node = Node('Implicit Conversion', named_sockets={'Value': self}, data_type='CLOSURE', socket_idname=socket_idname)
         return node._out
 
     @classmethod
-    def list_length(cls, list: Closure=None):
+    def ListLength(cls, list: Closure=None):
         """ > Node <&Node List Length>
         
         **Fixed values**
@@ -258,9 +287,12 @@ class Closure(BaseClosure):
         node = Node('List Length', named_sockets={'List': list}, data_type='CLOSURE')
         return node._out
 
-    @classmethod
-    def sort_list(cls, list: Closure=None, selection: Boolean=None, group_id: Integer=None, sort_weight: Float=None):
+    def sort_list(self, group_id: Integer=None, sort_weight: Float=None):
         """ > Node <&Node Sort List>
+        
+        Jump method: False.
+        
+        self: socket 'List'.
         
         **Fixed values**
         
@@ -270,12 +302,6 @@ class Closure(BaseClosure):
         
         Parameters
         ----------
-        list : Closure, optional
-            socket 'List'
-        
-        selection : Boolean, optional
-            socket 'Selection'
-        
         group_id : Integer, optional
             socket 'Group ID'
         
@@ -287,5 +313,129 @@ class Closure(BaseClosure):
         Socket
             socket 'OUT'
         """
-        node = Node('Sort List', named_sockets={'List': list, 'Selection': selection, 'Group ID': group_id, 'Sort Weight': sort_weight}, socket_type='CLOSURE')
+        selection = self.get_selection()
+        node = Node('Sort List', named_sockets={'List': self, 'Selection': selection, 'Group ID': group_id, 'Sort Weight': sort_weight}, socket_type='CLOSURE')
         return node._out
+
+    def switch(self, false: Closure=None, true: Closure=None):
+        """ > Node <&Node Switch>
+        
+        Jump method: False.
+        
+        self: socket 'Switch'.
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `input_type` | `'CLOSURE'` |
+        
+        Parameters
+        ----------
+        false : Closure, optional
+            socket 'False'
+        
+        true : Closure, optional
+            socket 'True'
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Switch', named_sockets={'Switch': self, 'False': false, 'True': true}, input_type='CLOSURE')
+        return node._out
+
+    @classmethod
+    def _create_input_socket(cls, name: str='Closure', tip: str='', panel: str='', optional_label: bool=False, hide_value: bool=False, hide_in_modifier: bool=False):
+        """ > Closure Input
+
+        New <#Closure> input with subtype 'NONE'.
+
+        Parameters
+        ----------
+        name : str, default=`Closure`
+            Input socket name
+
+        tip : str, default=`''`
+            Property description
+
+        panel : str, default=``
+            Panel name
+
+        optional_label : bool, default=`False`
+            Property optional_label
+
+        hide_value : bool, default=`False`
+            Property hide_value
+
+        hide_in_modifier : bool, default=`False`
+            Property hide_in_modifier
+
+
+        Returns
+        -------
+        Closure
+        """
+        from ..treeclass import Tree
+        return Tree.current_tree().create_input_socket('NodeSocketClosure', name=name, tip=tip, panel=panel, optional_label=optional_label, hide_value=hide_value, hide_in_modifier=hide_in_modifier)
+
+    def switch_false(self, switch: Boolean=None, false: Socket=None, input_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SOUND']='FLOAT'):
+        """ > Node <&Node Switch>
+        
+        Jump method: False.
+        
+        self: socket 'True'.
+        
+        Parameters
+        ----------
+        switch : Boolean, optional
+            socket 'Switch'
+        
+        false : Socket, optional
+            socket 'False'
+        
+        input_type : Literal['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Rotation', 'Matrix', 'String', 'Menu', 'Object', 'Image', 'Geometry', 'Collection', 'Material', 'Bundle', 'Closure', 'Font', 'Sound']
+            parameter `input_type`
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Switch', named_sockets={'Switch': switch, 'False': false, 'True': self}, input_type=input_type)
+        return node._out
+
+    @classmethod
+    def _create_input_socket(cls, name: str='Closure', tip: str='', panel: str='', optional_label: bool=False, hide_value: bool=False, hide_in_modifier: bool=False):
+        """ > Closure Input
+
+        New <#Closure> input with subtype 'NONE'.
+
+        Parameters
+        ----------
+        name : str, default=`Closure`
+            Input socket name
+
+        tip : str, default=`''`
+            Property description
+
+        panel : str, default=``
+            Panel name
+
+        optional_label : bool, default=`False`
+            Property optional_label
+
+        hide_value : bool, default=`False`
+            Property hide_value
+
+        hide_in_modifier : bool, default=`False`
+            Property hide_in_modifier
+
+
+        Returns
+        -------
+        Closure
+        """
+        from ..treeclass import Tree
+        return Tree.current_tree().create_input_socket('NodeSocketClosure', name=name, tip=tip, panel=panel, optional_label=optional_label, hide_value=hide_value, hide_in_modifier=hide_in_modifier)

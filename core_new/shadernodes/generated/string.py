@@ -32,6 +32,9 @@ if TYPE_CHECKING:
     class Menu:
         ...
 
+    class Input:
+        ...
+
     class Texture:
         ...
 
@@ -47,6 +50,32 @@ from ...shadernodes.sockets.string import String as BaseString
 
 class String(BaseString):
     __slots__ = ()
+
+    def enable_output(self, value: String=None):
+        """ > Node <&ShaderNode Enable Output>
+        
+        Jump method: False.
+        
+        self: socket 'Enable'.
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `data_type` | `'STRING'` |
+        
+        Parameters
+        ----------
+        value : String, optional
+            socket 'Value'
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Enable Output', named_sockets={'Enable': self, 'Value': value}, data_type='STRING')
+        return node._out
 
     def find_in_string(self, search: String=None, mode: Menu=None):
         """ > Node <&ShaderNode Find in String>
@@ -88,9 +117,12 @@ class String(BaseString):
         node = Node('Format String', named_sockets=_named_sockets, **sockets)
         return node._out
 
-    @classmethod
-    def implicit_conversion(cls, value: String=None, socket_idname: str='NodeSocketColor'):
+    def implicit_conversion(self, socket_idname: str='NodeSocketColor'):
         """ > Node <&ShaderNode Implicit Conversion>
+        
+        Jump method: False.
+        
+        self: socket 'Value'.
         
         **Fixed values**
         
@@ -100,9 +132,6 @@ class String(BaseString):
         
         Parameters
         ----------
-        value : String, optional
-            socket 'Value'
-        
         socket_idname : str
             parameter `socket_idname`
         
@@ -111,7 +140,7 @@ class String(BaseString):
         Socket
             socket 'OUT'
         """
-        node = Node('Implicit Conversion', named_sockets={'Value': value}, data_type='STRING', socket_idname=socket_idname)
+        node = Node('Implicit Conversion', named_sockets={'Value': self}, data_type='STRING', socket_idname=socket_idname)
         return node._out
 
     def match_string(self, operation: Menu=None, key: String=None):
@@ -259,6 +288,35 @@ class String(BaseString):
         node = Node('String to Value', *_node_args, named_sockets=_node_sockets, data_type=data_type)
         return node._out
 
+    def switch(self, false: String=None, true: String=None):
+        """ > Node <&ShaderNode Switch>
+        
+        Jump method: False.
+        
+        self: socket 'Switch'.
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `input_type` | `'STRING'` |
+        
+        Parameters
+        ----------
+        false : String, optional
+            socket 'False'
+        
+        true : String, optional
+            socket 'True'
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Switch', named_sockets={'Switch': self, 'False': false, 'True': true}, input_type='STRING')
+        return node._out
+
     def trim_string(self, characters: String=None, whitespace: Boolean=None, start: Boolean=None, end: Boolean=None):
         """ > Node <&ShaderNode Trim String>
         
@@ -318,4 +376,107 @@ class String(BaseString):
         _node_sockets = {('FLOAT',): {'Value': self, 'Decimals': decimals}, ('INT',): {'Value': self, 'Base': base, 'Padding': padding}}[_configuration]
         _node_args = {('FLOAT',): [], ('INT',): []}[_configuration]
         node = Node('Value to String', *_node_args, named_sockets=_node_sockets, data_type=data_type)
+        return node._out
+
+    @classmethod
+    def _create_input_socket(cls, value: str='', name: str='String', tip: str='', panel: str='', optional_label: bool=False, hide_value: bool=False, hide_in_modifier: bool=False, subtype: str='NONE'):
+        """ > String Input
+
+        New <#String> input with subtype 'NONE'.
+
+        Parameters
+        ----------
+        value : str, default=`""`
+            Default value
+
+        name : str, default=`String`
+            Input socket name
+
+        tip : str, default=`''`
+            Property description
+
+        panel : str, default=``
+            Panel name
+
+        optional_label : bool, default=`False`
+            Property optional_label
+
+        hide_value : bool, default=`False`
+            Property hide_value
+
+        hide_in_modifier : bool, default=`False`
+            Property hide_in_modifier
+
+        subtype : str, default=`NONE`
+            Socket sub type in ('NONE', 'FILE_PATH')
+
+
+        Returns
+        -------
+        String
+        """
+        from ..treeclass import Tree
+        defval = utils.python_value_for_socket(value, cls.SOCKET_TYPE)
+        return Tree.current_tree().create_input_socket('NodeSocketString', default_value=defval, name=name, tip=tip, panel=panel, optional_label=optional_label, hide_value=hide_value, hide_in_modifier=hide_in_modifier, subtype=subtype)
+
+    @classmethod
+    def FilePath(cls, value: str='', name: str='FilePath', tip: str='', panel: str='', optional_label: bool=False, hide_value: bool=False, hide_in_modifier: bool=False):
+        """ > FilePath Input
+
+        New <#String> input with subtype 'FILE_PATH'.
+
+        Parameters
+        ----------
+        value : str, default=`""`
+            Default value
+
+        name : str, default=`FilePath`
+            Input socket name
+
+        tip : str, default=`''`
+            Property description
+
+        panel : str, default=``
+            Panel name
+
+        optional_label : bool, default=`False`
+            Property optional_label
+
+        hide_value : bool, default=`False`
+            Property hide_value
+
+        hide_in_modifier : bool, default=`False`
+            Property hide_in_modifier
+
+
+        Returns
+        -------
+        String
+        """
+        return cls(value=value, name=name, tip=tip, panel=panel, optional_label=optional_label, hide_value=hide_value, hide_in_modifier=hide_in_modifier, subtype='FILE_PATH')
+
+    def switch_false(self, switch: Boolean=None, false: Socket=None, input_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'STRING', 'MENU', 'SHADER', 'BUNDLE', 'CLOSURE']='RGBA'):
+        """ > Node <&ShaderNode Switch>
+        
+        Jump method: False.
+        
+        self: socket 'True'.
+        
+        Parameters
+        ----------
+        switch : Boolean, optional
+            socket 'Switch'
+        
+        false : Socket, optional
+            socket 'False'
+        
+        input_type : Literal['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'String', 'Menu', 'Shader', 'Bundle', 'Closure']
+            parameter `input_type`
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Switch', named_sockets={'Switch': switch, 'False': false, 'True': self}, input_type=input_type)
         return node._out

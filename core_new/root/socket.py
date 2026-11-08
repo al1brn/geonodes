@@ -2414,9 +2414,10 @@ class Socket(NodeCache, metaclass=EnvironmentType):
 
 # ====================================================================================================
 # Input socket
+# Deprecated : now in dedicated file
 # ====================================================================================================
 
-class Input(Socket):
+class Input_DEPR(Socket):
 
     __slots__ = Socket.__slots__ + ('name', 'panel', 'props')
 

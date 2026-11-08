@@ -32,6 +32,9 @@ if TYPE_CHECKING:
     class Menu:
         ...
 
+    class Input:
+        ...
+
     class Texture:
         ...
 
@@ -398,9 +401,9 @@ class Texture(BaseTexture):
         Socket
             socket 'OUT'
         """
-        _configuration = ({'single_scattering': 'SINGLE_SCATTERING', 'multiple_scattering': 'MULTIPLE_SCATTERING', 'preetham': 'PREETHAM', 'hosek_wilkie': 'HOSEK_WILKIE', 'single scattering': 'SINGLE_SCATTERING', 'multiple scattering': 'MULTIPLE_SCATTERING', 'hosek / wilkie': 'HOSEK_WILKIE'}.get(sky_type.lower(), sky_type), sun_disc)
-        _node_sockets = {('SINGLE_SCATTERING', False): {'Vector': vector}, ('SINGLE_SCATTERING', True): {}, ('MULTIPLE_SCATTERING', False): {'Vector': vector}, ('MULTIPLE_SCATTERING', True): {}, ('PREETHAM', False): {'Vector': vector}, ('PREETHAM', True): {'Vector': vector}, ('HOSEK_WILKIE', False): {'Vector': vector}, ('HOSEK_WILKIE', True): {'Vector': vector}}[_configuration]
-        _node_args = {('SINGLE_SCATTERING', False): [], ('SINGLE_SCATTERING', True): [], ('MULTIPLE_SCATTERING', False): [], ('MULTIPLE_SCATTERING', True): [], ('PREETHAM', False): [], ('PREETHAM', True): [], ('HOSEK_WILKIE', False): [], ('HOSEK_WILKIE', True): []}[_configuration]
+        _configuration = ({'single_scattering': 'SINGLE_SCATTERING', 'multiple_scattering': 'MULTIPLE_SCATTERING', 'preetham': 'PREETHAM', 'hosek_wilkie': 'HOSEK_WILKIE', 'single scattering': 'SINGLE_SCATTERING', 'multiple scattering': 'MULTIPLE_SCATTERING', 'hosek / wilkie': 'HOSEK_WILKIE'}.get(sky_type.lower(), sky_type),)
+        _node_sockets = {('SINGLE_SCATTERING',): {}, ('MULTIPLE_SCATTERING',): {}, ('PREETHAM',): {'Vector': vector}, ('HOSEK_WILKIE',): {'Vector': vector}}[_configuration]
+        _node_args = {('SINGLE_SCATTERING',): [], ('MULTIPLE_SCATTERING',): [], ('PREETHAM',): [], ('HOSEK_WILKIE',): []}[_configuration]
         node = Node('Sky Texture', *_node_args, named_sockets=_node_sockets, sky_type=sky_type, sun_disc=sun_disc, sun_size=sun_size, sun_intensity=sun_intensity, sun_elevation=sun_elevation, sun_rotation=sun_rotation, altitude=altitude, air_density=air_density, aerosol_density=aerosol_density, ozone_density=ozone_density, turbidity=turbidity, ground_albedo=ground_albedo)
         return node._out
 

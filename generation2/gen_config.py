@@ -552,7 +552,7 @@ def get_sockets():
                 continue
             
             for socket in [sock for sock in node.inputs] + [sock for sock in node.outputs]:
-                
+
                 stype = socket.type
 
                 if stype not in SOCKETS:

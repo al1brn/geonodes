@@ -32,6 +32,9 @@ if TYPE_CHECKING:
     class Menu:
         ...
 
+    class Input:
+        ...
+
     class Texture:
         ...
 
@@ -1349,6 +1352,32 @@ class Float(BaseFloat):
         node = Node('Displacement', named_sockets={'Height': self, 'Midlevel': midlevel, 'Scale': scale, 'Normal': normal}, space=space)
         return node._out
 
+    def enable_output(self, value: Float=None):
+        """ > Node <&ShaderNode Enable Output>
+        
+        Jump method: False.
+        
+        self: socket 'Enable'.
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `data_type` | `'FLOAT'` |
+        
+        Parameters
+        ----------
+        value : Float, optional
+            socket 'Value'
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Enable Output', named_sockets={'Enable': self, 'Value': value}, data_type='FLOAT')
+        return node._out
+
     def float_curve(self, factor: Float=None):
         """ > Node <&ShaderNode Float Curve>
         
@@ -1398,9 +1427,12 @@ class Float(BaseFloat):
         node = Node('Hue/Saturation/Value', named_sockets={'Hue': self, 'Saturation': saturation, 'Value': value, 'Factor': factor, 'Color': color})
         return node._out
 
-    @classmethod
-    def implicit_conversion(cls, value: Float=None, socket_idname: str='NodeSocketColor'):
+    def implicit_conversion(self, socket_idname: str='NodeSocketColor'):
         """ > Node <&ShaderNode Implicit Conversion>
+        
+        Jump method: False.
+        
+        self: socket 'Value'.
         
         **Fixed values**
         
@@ -1410,9 +1442,6 @@ class Float(BaseFloat):
         
         Parameters
         ----------
-        value : Float, optional
-            socket 'Value'
-        
         socket_idname : str
             parameter `socket_idname`
         
@@ -1421,7 +1450,7 @@ class Float(BaseFloat):
         Socket
             socket 'OUT'
         """
-        node = Node('Implicit Conversion', named_sockets={'Value': value}, data_type='FLOAT', socket_idname=socket_idname)
+        node = Node('Implicit Conversion', named_sockets={'Value': self}, data_type='FLOAT', socket_idname=socket_idname)
         return node._out
 
     def invert_color(self, factor: Float=None):
@@ -1464,9 +1493,12 @@ class Float(BaseFloat):
         node = Node('Light Falloff', named_sockets={'Strength': self, 'Smooth': smooth})
         return node._out
 
-    @classmethod
-    def map_range(cls, value: Float=None, from_min: Float=None, from_max: Float=None, to_min: Float=None, to_max: Float=None, steps: Float=None, clamp: bool=True, interpolation_type: Literal['LINEAR', 'STEPPED', 'SMOOTHSTEP', 'SMOOTHERSTEP']='LINEAR'):
+    def map_range(self, from_min: Float=None, from_max: Float=None, to_min: Float=None, to_max: Float=None, steps: Float=None, clamp: bool=True, interpolation_type: Literal['LINEAR', 'STEPPED', 'SMOOTHSTEP', 'SMOOTHERSTEP']='LINEAR'):
         """ > Node <&ShaderNode Map Range>
+        
+        Jump method: False.
+        
+        self: socket 'Value'.
         
         **Fixed values**
         
@@ -1476,9 +1508,6 @@ class Float(BaseFloat):
         
         Parameters
         ----------
-        value : Float, optional
-            socket 'Value'
-        
         from_min : Float, optional
             socket 'From Min'
         
@@ -1506,7 +1535,7 @@ class Float(BaseFloat):
             socket 'OUT'
         """
         _configuration = ({'linear': 'LINEAR', 'stepped': 'STEPPED', 'smoothstep': 'SMOOTHSTEP', 'smootherstep': 'SMOOTHERSTEP', 'stepped linear': 'STEPPED', 'smooth step': 'SMOOTHSTEP', 'smoother step': 'SMOOTHERSTEP'}.get(interpolation_type.lower(), interpolation_type), 'FLOAT')
-        _node_sockets = {('LINEAR', 'FLOAT'): {'Value': value, 'From Min': from_min, 'From Max': from_max, 'To Min': to_min, 'To Max': to_max}, ('STEPPED', 'FLOAT'): {'Value': value, 'From Min': from_min, 'From Max': from_max, 'To Min': to_min, 'To Max': to_max, 'Steps': steps}, ('SMOOTHSTEP', 'FLOAT'): {'Value': value, 'From Min': from_min, 'From Max': from_max, 'To Min': to_min, 'To Max': to_max}, ('SMOOTHERSTEP', 'FLOAT'): {'Value': value, 'From Min': from_min, 'From Max': from_max, 'To Min': to_min, 'To Max': to_max}}[_configuration]
+        _node_sockets = {('LINEAR', 'FLOAT'): {'Value': self, 'From Min': from_min, 'From Max': from_max, 'To Min': to_min, 'To Max': to_max}, ('STEPPED', 'FLOAT'): {'Value': self, 'From Min': from_min, 'From Max': from_max, 'To Min': to_min, 'To Max': to_max, 'Steps': steps}, ('SMOOTHSTEP', 'FLOAT'): {'Value': self, 'From Min': from_min, 'From Max': from_max, 'To Min': to_min, 'To Max': to_max}, ('SMOOTHERSTEP', 'FLOAT'): {'Value': self, 'From Min': from_min, 'From Max': from_max, 'To Min': to_min, 'To Max': to_max}}[_configuration]
         _node_args = {('LINEAR', 'FLOAT'): [], ('STEPPED', 'FLOAT'): [], ('SMOOTHSTEP', 'FLOAT'): [], ('SMOOTHERSTEP', 'FLOAT'): []}[_configuration]
         node = Node('Map Range', *_node_args, named_sockets=_node_sockets, interpolation_type=interpolation_type, data_type='FLOAT', clamp=clamp)
         return node._out
@@ -1571,47 +1600,6 @@ class Float(BaseFloat):
         _node_sockets = {('ADD',): {'Value': self, 'Value_1': value_1}, ('SUBTRACT',): {'Value': self, 'Value_1': value_1}, ('MULTIPLY',): {'Value': self, 'Value_1': value_1}, ('DIVIDE',): {'Value': self, 'Value_1': value_1}, ('MULTIPLY_ADD',): {'Value': self, 'Multiplier': multiplier, 'Addend': addend}, ('POWER',): {'Base': self, 'Exponent': exponent}, ('LOGARITHM',): {'Value': self, 'Base': base}, ('SQRT',): {'Value': self}, ('INVERSE_SQRT',): {'Value': self}, ('ABSOLUTE',): {'Value': self}, ('EXPONENT',): {'Value': self}, ('MINIMUM',): {'Value': self, 'Value_1': value_1}, ('MAXIMUM',): {'Value': self, 'Value_1': value_1}, ('LESS_THAN',): {'Value': self, 'Threshold': threshold}, ('GREATER_THAN',): {'Value': self, 'Threshold': threshold}, ('SIGN',): {'Value': self}, ('COMPARE',): {'Value': self, 'Value_1': value_1, 'Epsilon': epsilon}, ('SMOOTH_MIN',): {'Value': self, 'Value_1': value_1, 'Distance': distance}, ('SMOOTH_MAX',): {'Value': self, 'Value_1': value_1, 'Distance': distance}, ('ROUND',): {'Value': self}, ('FLOOR',): {'Value': self}, ('CEIL',): {'Value': self}, ('TRUNC',): {'Value': self}, ('FRACT',): {'Value': self}, ('MODULO',): {'Value': self, 'Value_1': value_1}, ('FLOORED_MODULO',): {'Value': self, 'Value_1': value_1}, ('WRAP',): {'Value': self, 'Max': max, 'Min': min}, ('SNAP',): {'Value': self, 'Increment': increment}, ('PINGPONG',): {'Value': self, 'Scale': scale}, ('SINE',): {'Value': self}, ('COSINE',): {'Value': self}, ('TANGENT',): {'Value': self}, ('ARCSINE',): {'Value': self}, ('ARCCOSINE',): {'Value': self}, ('ARCTANGENT',): {'Value': self}, ('ARCTAN2',): {'Value': self, 'Value_1': value_1}, ('SINH',): {'Value': self}, ('COSH',): {'Value': self}, ('TANH',): {'Value': self}, ('RADIANS',): {'Degrees': self}, ('DEGREES',): {'Radians': self}}[_configuration]
         _node_args = {('ADD',): [], ('SUBTRACT',): [], ('MULTIPLY',): [], ('DIVIDE',): [], ('MULTIPLY_ADD',): [], ('POWER',): [], ('LOGARITHM',): [], ('SQRT',): [], ('INVERSE_SQRT',): [], ('ABSOLUTE',): [], ('EXPONENT',): [], ('MINIMUM',): [], ('MAXIMUM',): [], ('LESS_THAN',): [], ('GREATER_THAN',): [], ('SIGN',): [], ('COMPARE',): [], ('SMOOTH_MIN',): [], ('SMOOTH_MAX',): [], ('ROUND',): [], ('FLOOR',): [], ('CEIL',): [], ('TRUNC',): [], ('FRACT',): [], ('MODULO',): [], ('FLOORED_MODULO',): [], ('WRAP',): [], ('SNAP',): [], ('PINGPONG',): [], ('SINE',): [], ('COSINE',): [], ('TANGENT',): [], ('ARCSINE',): [], ('ARCCOSINE',): [], ('ARCTANGENT',): [], ('ARCTAN2',): [], ('SINH',): [], ('COSH',): [], ('TANH',): [], ('RADIANS',): [], ('DEGREES',): []}[_configuration]
         node = Node('Math', *_node_args, named_sockets=_node_sockets, operation=operation, use_clamp=use_clamp)
-        return node._out
-
-    @classmethod
-    def mix(cls, a: Float=None, b: Float=None, factor: Float=None, factor_mode: Literal['UNIFORM', 'NON_UNIFORM']='UNIFORM', blend_type: Literal['MIX', 'DARKEN', 'MULTIPLY', 'BURN', 'LIGHTEN', 'SCREEN', 'DODGE', 'ADD', 'OVERLAY', 'SOFT_LIGHT', 'LINEAR_LIGHT', 'DIFFERENCE', 'EXCLUSION', 'SUBTRACT', 'DIVIDE', 'HUE', 'SATURATION', 'COLOR', 'VALUE']='MIX', clamp_factor: bool=True, clamp_result: bool=False):
-        """ > Node <&ShaderNode Mix>
-        
-        **Fixed values**
-        
-        | Parameter | Value |
-        | --- | --- |
-        | `data_type` | `'FLOAT'` |
-        
-        Parameters
-        ----------
-        a : Float, optional
-            socket 'A'
-        
-        b : Float, optional
-            socket 'B'
-        
-        factor : Float, optional
-            socket 'Factor'
-        
-        factor_mode : Literal['Uniform', 'Non-Uniform']
-            parameter `factor_mode`
-        
-        blend_type : Literal['Mix', 'Darken', 'Multiply', 'Color Burn', 'Lighten', 'Screen', 'Color Dodge', 'Add', 'Overlay', 'Soft Light', 'Linear Light', 'Difference', 'Exclusion', 'Subtract', 'Divide', 'Hue', 'Saturation', 'Color', 'Value']
-            parameter `blend_type`
-        
-        clamp_factor : bool
-            parameter `clamp_factor`
-        
-        clamp_result : bool
-            parameter `clamp_result`
-        
-        Returns
-        -------
-        Socket
-            socket 'OUT'
-        """
-        node = Node('Mix', named_sockets={'Factor': factor, 'A': a, 'B': b}, data_type='FLOAT', factor_mode=factor_mode, blend_type=blend_type, clamp_factor=clamp_factor, clamp_result=clamp_result)
         return node._out
 
     def mix_legacy_(self, color2: Color=None, factor: Float=None, blend_type: Literal['MIX', 'DARKEN', 'MULTIPLY', 'BURN', 'LIGHTEN', 'SCREEN', 'DODGE', 'ADD', 'OVERLAY', 'SOFT_LIGHT', 'LINEAR_LIGHT', 'DIFFERENCE', 'EXCLUSION', 'SUBTRACT', 'DIVIDE', 'HUE', 'SATURATION', 'COLOR', 'VALUE']='MIX', use_alpha: bool=False, use_clamp: bool=False):
@@ -1770,6 +1758,35 @@ class Float(BaseFloat):
         node = Node('String to Value', *_node_args, named_sockets=_node_sockets, data_type=data_type)
         return node._out
 
+    def switch(self, false: Float=None, true: Float=None):
+        """ > Node <&ShaderNode Switch>
+        
+        Jump method: False.
+        
+        self: socket 'Switch'.
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `input_type` | `'FLOAT'` |
+        
+        Parameters
+        ----------
+        false : Float, optional
+            socket 'False'
+        
+        true : Float, optional
+            socket 'True'
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Switch', named_sockets={'Switch': self, 'False': false, 'True': true}, input_type='FLOAT')
+        return node._out
+
     def to_string(self, decimals: Integer=None, base: Integer=None, padding: Integer=None, data_type: Literal['FLOAT', 'INT']='FLOAT'):
         """ > Node <&ShaderNode Value to String>
         
@@ -1835,4 +1852,611 @@ class Float(BaseFloat):
             socket 'OUT'
         """
         node = Node('Wavelength', named_sockets={'Wavelength': self})
+        return node._out
+
+    @classmethod
+    def _create_input_socket(cls, value: float=0.0, name: str='Float', min: float=-3.40282e+38, max: float=3.40282e+38, tip: str='', panel: str='', optional_label: bool=False, hide_value: bool=False, hide_in_modifier: bool=False, default_attribute: str='', shape: Literal['AUTO', 'SINGLE']='AUTO', subtype: str='NONE'):
+        """ > Float Input
+
+        New <#Float> input with subtype 'NONE'.
+
+        Parameters
+        ----------
+        value : float, default=`0.0`
+            Default value
+
+        name : str, default=`Float`
+            Input socket name
+
+        min : float, default=`-3.40282e+38`
+            Property min_value
+
+        max : float, default=`3.40282e+38`
+            Property max_value
+
+        tip : str, default=`''`
+            Property description
+
+        panel : str, default=``
+            Panel name
+
+        optional_label : bool, default=`False`
+            Property optional_label
+
+        hide_value : bool, default=`False`
+            Property hide_value
+
+        hide_in_modifier : bool, default=`False`
+            Property hide_in_modifier
+
+        default_attribute : str, default=`''`
+            Property default_attribute_name
+
+        shape : str, default=`'AUTO'`
+            Property structure_type in ('AUTO', 'SINGLE')
+
+        subtype : str, default=`NONE`
+            Socket sub type in ('NONE', 'PIXEL', 'PERCENTAGE', 'FACTOR', 'MASS', 'ANGLE', 'TIME', 'TIME_ABSOLUTE', 'DISTANCE', 'WAVELENGTH', 'COLOR_TEMPERATURE', 'FREQUENCY')
+
+
+        Returns
+        -------
+        Float
+        """
+        from ..treeclass import Tree
+        defval = utils.python_value_for_socket(value, cls.SOCKET_TYPE)
+        return Tree.current_tree().create_input_socket('NodeSocketFloat', default_value=defval, name=name, min=min, max=max, tip=tip, panel=panel, optional_label=optional_label, hide_value=hide_value, hide_in_modifier=hide_in_modifier, default_attribute=default_attribute, shape=shape, subtype=subtype)
+
+    @classmethod
+    def Pixel(cls, value: float=0.0, name: str='Pixel', min: float=-3.40282e+38, max: float=3.40282e+38, tip: str='', panel: str='', optional_label: bool=False, hide_value: bool=False, hide_in_modifier: bool=False, default_attribute: str='', shape: Literal['AUTO', 'SINGLE']='AUTO'):
+        """ > Pixel Input
+
+        New <#Float> input with subtype 'PIXEL'.
+
+        Parameters
+        ----------
+        value : float, default=`0.0`
+            Default value
+
+        name : str, default=`Pixel`
+            Input socket name
+
+        min : float, default=`-3.40282e+38`
+            Property min_value
+
+        max : float, default=`3.40282e+38`
+            Property max_value
+
+        tip : str, default=`''`
+            Property description
+
+        panel : str, default=``
+            Panel name
+
+        optional_label : bool, default=`False`
+            Property optional_label
+
+        hide_value : bool, default=`False`
+            Property hide_value
+
+        hide_in_modifier : bool, default=`False`
+            Property hide_in_modifier
+
+        default_attribute : str, default=`''`
+            Property default_attribute_name
+
+        shape : str, default=`'AUTO'`
+            Property structure_type in ('AUTO', 'SINGLE')
+
+
+        Returns
+        -------
+        Float
+        """
+        return cls(value=value, name=name, min=min, max=max, tip=tip, panel=panel, optional_label=optional_label, hide_value=hide_value, hide_in_modifier=hide_in_modifier, default_attribute=default_attribute, shape=shape, subtype='PIXEL')
+
+    @classmethod
+    def Percentage(cls, value: float=0.0, name: str='Percentage', min: float=-3.40282e+38, max: float=3.40282e+38, tip: str='', panel: str='', optional_label: bool=False, hide_value: bool=False, hide_in_modifier: bool=False, default_attribute: str='', shape: Literal['AUTO', 'SINGLE']='AUTO'):
+        """ > Percentage Input
+
+        New <#Float> input with subtype 'PERCENTAGE'.
+
+        Parameters
+        ----------
+        value : float, default=`0.0`
+            Default value
+
+        name : str, default=`Percentage`
+            Input socket name
+
+        min : float, default=`-3.40282e+38`
+            Property min_value
+
+        max : float, default=`3.40282e+38`
+            Property max_value
+
+        tip : str, default=`''`
+            Property description
+
+        panel : str, default=``
+            Panel name
+
+        optional_label : bool, default=`False`
+            Property optional_label
+
+        hide_value : bool, default=`False`
+            Property hide_value
+
+        hide_in_modifier : bool, default=`False`
+            Property hide_in_modifier
+
+        default_attribute : str, default=`''`
+            Property default_attribute_name
+
+        shape : str, default=`'AUTO'`
+            Property structure_type in ('AUTO', 'SINGLE')
+
+
+        Returns
+        -------
+        Float
+        """
+        return cls(value=value, name=name, min=min, max=max, tip=tip, panel=panel, optional_label=optional_label, hide_value=hide_value, hide_in_modifier=hide_in_modifier, default_attribute=default_attribute, shape=shape, subtype='PERCENTAGE')
+
+    @classmethod
+    def Factor(cls, value: float=0.0, name: str='Factor', min: float=-3.40282e+38, max: float=3.40282e+38, tip: str='', panel: str='', optional_label: bool=False, hide_value: bool=False, hide_in_modifier: bool=False, default_attribute: str='', shape: Literal['AUTO', 'SINGLE']='AUTO'):
+        """ > Factor Input
+
+        New <#Float> input with subtype 'FACTOR'.
+
+        Parameters
+        ----------
+        value : float, default=`0.0`
+            Default value
+
+        name : str, default=`Factor`
+            Input socket name
+
+        min : float, default=`-3.40282e+38`
+            Property min_value
+
+        max : float, default=`3.40282e+38`
+            Property max_value
+
+        tip : str, default=`''`
+            Property description
+
+        panel : str, default=``
+            Panel name
+
+        optional_label : bool, default=`False`
+            Property optional_label
+
+        hide_value : bool, default=`False`
+            Property hide_value
+
+        hide_in_modifier : bool, default=`False`
+            Property hide_in_modifier
+
+        default_attribute : str, default=`''`
+            Property default_attribute_name
+
+        shape : str, default=`'AUTO'`
+            Property structure_type in ('AUTO', 'SINGLE')
+
+
+        Returns
+        -------
+        Float
+        """
+        return cls(value=value, name=name, min=min, max=max, tip=tip, panel=panel, optional_label=optional_label, hide_value=hide_value, hide_in_modifier=hide_in_modifier, default_attribute=default_attribute, shape=shape, subtype='FACTOR')
+
+    @classmethod
+    def Mass(cls, value: float=0.0, name: str='Mass', min: float=-3.40282e+38, max: float=3.40282e+38, tip: str='', panel: str='', optional_label: bool=False, hide_value: bool=False, hide_in_modifier: bool=False, default_attribute: str='', shape: Literal['AUTO', 'SINGLE']='AUTO'):
+        """ > Mass Input
+
+        New <#Float> input with subtype 'MASS'.
+
+        Parameters
+        ----------
+        value : float, default=`0.0`
+            Default value
+
+        name : str, default=`Mass`
+            Input socket name
+
+        min : float, default=`-3.40282e+38`
+            Property min_value
+
+        max : float, default=`3.40282e+38`
+            Property max_value
+
+        tip : str, default=`''`
+            Property description
+
+        panel : str, default=``
+            Panel name
+
+        optional_label : bool, default=`False`
+            Property optional_label
+
+        hide_value : bool, default=`False`
+            Property hide_value
+
+        hide_in_modifier : bool, default=`False`
+            Property hide_in_modifier
+
+        default_attribute : str, default=`''`
+            Property default_attribute_name
+
+        shape : str, default=`'AUTO'`
+            Property structure_type in ('AUTO', 'SINGLE')
+
+
+        Returns
+        -------
+        Float
+        """
+        return cls(value=value, name=name, min=min, max=max, tip=tip, panel=panel, optional_label=optional_label, hide_value=hide_value, hide_in_modifier=hide_in_modifier, default_attribute=default_attribute, shape=shape, subtype='MASS')
+
+    @classmethod
+    def Angle(cls, value: float=0.0, name: str='Angle', min: float=-3.40282e+38, max: float=3.40282e+38, tip: str='', panel: str='', optional_label: bool=False, hide_value: bool=False, hide_in_modifier: bool=False, default_attribute: str='', shape: Literal['AUTO', 'SINGLE']='AUTO'):
+        """ > Angle Input
+
+        New <#Float> input with subtype 'ANGLE'.
+
+        Parameters
+        ----------
+        value : float, default=`0.0`
+            Default value
+
+        name : str, default=`Angle`
+            Input socket name
+
+        min : float, default=`-3.40282e+38`
+            Property min_value
+
+        max : float, default=`3.40282e+38`
+            Property max_value
+
+        tip : str, default=`''`
+            Property description
+
+        panel : str, default=``
+            Panel name
+
+        optional_label : bool, default=`False`
+            Property optional_label
+
+        hide_value : bool, default=`False`
+            Property hide_value
+
+        hide_in_modifier : bool, default=`False`
+            Property hide_in_modifier
+
+        default_attribute : str, default=`''`
+            Property default_attribute_name
+
+        shape : str, default=`'AUTO'`
+            Property structure_type in ('AUTO', 'SINGLE')
+
+
+        Returns
+        -------
+        Float
+        """
+        return cls(value=value, name=name, min=min, max=max, tip=tip, panel=panel, optional_label=optional_label, hide_value=hide_value, hide_in_modifier=hide_in_modifier, default_attribute=default_attribute, shape=shape, subtype='ANGLE')
+
+    @classmethod
+    def Time(cls, value: float=0.0, name: str='Time', min: float=-3.40282e+38, max: float=3.40282e+38, tip: str='', panel: str='', optional_label: bool=False, hide_value: bool=False, hide_in_modifier: bool=False, default_attribute: str='', shape: Literal['AUTO', 'SINGLE']='AUTO'):
+        """ > Time Input
+
+        New <#Float> input with subtype 'TIME'.
+
+        Parameters
+        ----------
+        value : float, default=`0.0`
+            Default value
+
+        name : str, default=`Time`
+            Input socket name
+
+        min : float, default=`-3.40282e+38`
+            Property min_value
+
+        max : float, default=`3.40282e+38`
+            Property max_value
+
+        tip : str, default=`''`
+            Property description
+
+        panel : str, default=``
+            Panel name
+
+        optional_label : bool, default=`False`
+            Property optional_label
+
+        hide_value : bool, default=`False`
+            Property hide_value
+
+        hide_in_modifier : bool, default=`False`
+            Property hide_in_modifier
+
+        default_attribute : str, default=`''`
+            Property default_attribute_name
+
+        shape : str, default=`'AUTO'`
+            Property structure_type in ('AUTO', 'SINGLE')
+
+
+        Returns
+        -------
+        Float
+        """
+        return cls(value=value, name=name, min=min, max=max, tip=tip, panel=panel, optional_label=optional_label, hide_value=hide_value, hide_in_modifier=hide_in_modifier, default_attribute=default_attribute, shape=shape, subtype='TIME')
+
+    @classmethod
+    def TimeAbsolute(cls, value: float=0.0, name: str='TimeAbsolute', min: float=-3.40282e+38, max: float=3.40282e+38, tip: str='', panel: str='', optional_label: bool=False, hide_value: bool=False, hide_in_modifier: bool=False, default_attribute: str='', shape: Literal['AUTO', 'SINGLE']='AUTO'):
+        """ > TimeAbsolute Input
+
+        New <#Float> input with subtype 'TIME_ABSOLUTE'.
+
+        Parameters
+        ----------
+        value : float, default=`0.0`
+            Default value
+
+        name : str, default=`TimeAbsolute`
+            Input socket name
+
+        min : float, default=`-3.40282e+38`
+            Property min_value
+
+        max : float, default=`3.40282e+38`
+            Property max_value
+
+        tip : str, default=`''`
+            Property description
+
+        panel : str, default=``
+            Panel name
+
+        optional_label : bool, default=`False`
+            Property optional_label
+
+        hide_value : bool, default=`False`
+            Property hide_value
+
+        hide_in_modifier : bool, default=`False`
+            Property hide_in_modifier
+
+        default_attribute : str, default=`''`
+            Property default_attribute_name
+
+        shape : str, default=`'AUTO'`
+            Property structure_type in ('AUTO', 'SINGLE')
+
+
+        Returns
+        -------
+        Float
+        """
+        return cls(value=value, name=name, min=min, max=max, tip=tip, panel=panel, optional_label=optional_label, hide_value=hide_value, hide_in_modifier=hide_in_modifier, default_attribute=default_attribute, shape=shape, subtype='TIME_ABSOLUTE')
+
+    @classmethod
+    def Distance(cls, value: float=0.0, name: str='Distance', min: float=-3.40282e+38, max: float=3.40282e+38, tip: str='', panel: str='', optional_label: bool=False, hide_value: bool=False, hide_in_modifier: bool=False, default_attribute: str='', shape: Literal['AUTO', 'SINGLE']='AUTO'):
+        """ > Distance Input
+
+        New <#Float> input with subtype 'DISTANCE'.
+
+        Parameters
+        ----------
+        value : float, default=`0.0`
+            Default value
+
+        name : str, default=`Distance`
+            Input socket name
+
+        min : float, default=`-3.40282e+38`
+            Property min_value
+
+        max : float, default=`3.40282e+38`
+            Property max_value
+
+        tip : str, default=`''`
+            Property description
+
+        panel : str, default=``
+            Panel name
+
+        optional_label : bool, default=`False`
+            Property optional_label
+
+        hide_value : bool, default=`False`
+            Property hide_value
+
+        hide_in_modifier : bool, default=`False`
+            Property hide_in_modifier
+
+        default_attribute : str, default=`''`
+            Property default_attribute_name
+
+        shape : str, default=`'AUTO'`
+            Property structure_type in ('AUTO', 'SINGLE')
+
+
+        Returns
+        -------
+        Float
+        """
+        return cls(value=value, name=name, min=min, max=max, tip=tip, panel=panel, optional_label=optional_label, hide_value=hide_value, hide_in_modifier=hide_in_modifier, default_attribute=default_attribute, shape=shape, subtype='DISTANCE')
+
+    @classmethod
+    def Wavelength(cls, value: float=0.0, name: str='Wavelength', min: float=-3.40282e+38, max: float=3.40282e+38, tip: str='', panel: str='', optional_label: bool=False, hide_value: bool=False, hide_in_modifier: bool=False, default_attribute: str='', shape: Literal['AUTO', 'SINGLE']='AUTO'):
+        """ > Wavelength Input
+
+        New <#Float> input with subtype 'WAVELENGTH'.
+
+        Parameters
+        ----------
+        value : float, default=`0.0`
+            Default value
+
+        name : str, default=`Wavelength`
+            Input socket name
+
+        min : float, default=`-3.40282e+38`
+            Property min_value
+
+        max : float, default=`3.40282e+38`
+            Property max_value
+
+        tip : str, default=`''`
+            Property description
+
+        panel : str, default=``
+            Panel name
+
+        optional_label : bool, default=`False`
+            Property optional_label
+
+        hide_value : bool, default=`False`
+            Property hide_value
+
+        hide_in_modifier : bool, default=`False`
+            Property hide_in_modifier
+
+        default_attribute : str, default=`''`
+            Property default_attribute_name
+
+        shape : str, default=`'AUTO'`
+            Property structure_type in ('AUTO', 'SINGLE')
+
+
+        Returns
+        -------
+        Float
+        """
+        return cls(value=value, name=name, min=min, max=max, tip=tip, panel=panel, optional_label=optional_label, hide_value=hide_value, hide_in_modifier=hide_in_modifier, default_attribute=default_attribute, shape=shape, subtype='WAVELENGTH')
+
+    @classmethod
+    def ColorTemperature(cls, value: float=0.0, name: str='ColorTemperature', min: float=-3.40282e+38, max: float=3.40282e+38, tip: str='', panel: str='', optional_label: bool=False, hide_value: bool=False, hide_in_modifier: bool=False, default_attribute: str='', shape: Literal['AUTO', 'SINGLE']='AUTO'):
+        """ > ColorTemperature Input
+
+        New <#Float> input with subtype 'COLOR_TEMPERATURE'.
+
+        Parameters
+        ----------
+        value : float, default=`0.0`
+            Default value
+
+        name : str, default=`ColorTemperature`
+            Input socket name
+
+        min : float, default=`-3.40282e+38`
+            Property min_value
+
+        max : float, default=`3.40282e+38`
+            Property max_value
+
+        tip : str, default=`''`
+            Property description
+
+        panel : str, default=``
+            Panel name
+
+        optional_label : bool, default=`False`
+            Property optional_label
+
+        hide_value : bool, default=`False`
+            Property hide_value
+
+        hide_in_modifier : bool, default=`False`
+            Property hide_in_modifier
+
+        default_attribute : str, default=`''`
+            Property default_attribute_name
+
+        shape : str, default=`'AUTO'`
+            Property structure_type in ('AUTO', 'SINGLE')
+
+
+        Returns
+        -------
+        Float
+        """
+        return cls(value=value, name=name, min=min, max=max, tip=tip, panel=panel, optional_label=optional_label, hide_value=hide_value, hide_in_modifier=hide_in_modifier, default_attribute=default_attribute, shape=shape, subtype='COLOR_TEMPERATURE')
+
+    @classmethod
+    def Frequency(cls, value: float=0.0, name: str='Frequency', min: float=-3.40282e+38, max: float=3.40282e+38, tip: str='', panel: str='', optional_label: bool=False, hide_value: bool=False, hide_in_modifier: bool=False, default_attribute: str='', shape: Literal['AUTO', 'SINGLE']='AUTO'):
+        """ > Frequency Input
+
+        New <#Float> input with subtype 'FREQUENCY'.
+
+        Parameters
+        ----------
+        value : float, default=`0.0`
+            Default value
+
+        name : str, default=`Frequency`
+            Input socket name
+
+        min : float, default=`-3.40282e+38`
+            Property min_value
+
+        max : float, default=`3.40282e+38`
+            Property max_value
+
+        tip : str, default=`''`
+            Property description
+
+        panel : str, default=``
+            Panel name
+
+        optional_label : bool, default=`False`
+            Property optional_label
+
+        hide_value : bool, default=`False`
+            Property hide_value
+
+        hide_in_modifier : bool, default=`False`
+            Property hide_in_modifier
+
+        default_attribute : str, default=`''`
+            Property default_attribute_name
+
+        shape : str, default=`'AUTO'`
+            Property structure_type in ('AUTO', 'SINGLE')
+
+
+        Returns
+        -------
+        Float
+        """
+        return cls(value=value, name=name, min=min, max=max, tip=tip, panel=panel, optional_label=optional_label, hide_value=hide_value, hide_in_modifier=hide_in_modifier, default_attribute=default_attribute, shape=shape, subtype='FREQUENCY')
+
+    def switch_false(self, switch: Boolean=None, false: Socket=None, input_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'STRING', 'MENU', 'SHADER', 'BUNDLE', 'CLOSURE']='RGBA'):
+        """ > Node <&ShaderNode Switch>
+        
+        Jump method: False.
+        
+        self: socket 'True'.
+        
+        Parameters
+        ----------
+        switch : Boolean, optional
+            socket 'Switch'
+        
+        false : Socket, optional
+            socket 'False'
+        
+        input_type : Literal['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'String', 'Menu', 'Shader', 'Bundle', 'Closure']
+            parameter `input_type`
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Switch', named_sockets={'Switch': switch, 'False': false, 'True': self}, input_type=input_type)
         return node._out

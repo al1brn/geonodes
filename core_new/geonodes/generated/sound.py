@@ -44,7 +44,13 @@ if TYPE_CHECKING:
     class Menu:
         ...
 
+    class Input:
+        ...
+
     class Geometry:
+        ...
+
+    class IntVector:
         ...
 
     class Texture:
@@ -179,9 +185,10 @@ class Sound(BaseSound):
     def __ne__(self, other):
         return self.not_equal(other)
 
-    @classmethod
-    def combine_list(cls, *values: Socket):
+    def combine_list(self, *values: Socket):
         """ > Node <&Node Combine List>
+        
+        Jump method: False.
         
         **Fixed values**
         
@@ -198,7 +205,7 @@ class Sound(BaseSound):
         return node._out
 
     @classmethod
-    def compare(cls, a: Sound=None, b: Sound=None, operation: Literal['LESS_THAN', 'LESS_EQUAL', 'GREATER_THAN', 'GREATER_EQUAL', 'EQUAL', 'NOT_EQUAL']='GREATER_THAN', mode: Literal['ELEMENT', 'LENGTH', 'AVERAGE', 'DOT_PRODUCT', 'DIRECTION']='ELEMENT'):
+    def Compare(cls, a: Sound=None, b: Sound=None, operation: Literal['LESS_THAN', 'LESS_EQUAL', 'GREATER_THAN', 'GREATER_EQUAL', 'EQUAL', 'NOT_EQUAL']='GREATER_THAN', mode: Literal['ELEMENT', 'LENGTH', 'AVERAGE', 'DOT_PRODUCT', 'DIRECTION']='ELEMENT'):
         """ > Node <&Node Compare>
         
         **Fixed values**
@@ -229,61 +236,12 @@ class Sound(BaseSound):
         node = Node('Compare', named_sockets={'A': a, 'B': b}, data_type='SOUND', operation=operation, mode=mode)
         return node._out
 
-    @classmethod
-    def filter_list(cls, list: Sound=None, selection: Boolean=None):
-        """ > Node <&Node Filter List>
+    def enable_output(self, value: Sound=None):
+        """ > Node <&Node Enable Output>
         
-        **Fixed values**
+        Jump method: False.
         
-        | Parameter | Value |
-        | --- | --- |
-        | `socket_type` | `'SOUND'` |
-        
-        Parameters
-        ----------
-        list : Sound, optional
-            socket 'List'
-        
-        selection : Boolean, optional
-            socket 'Selection'
-        
-        Returns
-        -------
-        Socket
-            socket 'OUT'
-        """
-        node = Node('Filter List', named_sockets={'List': list, 'Selection': selection}, socket_type='SOUND')
-        return node._out
-
-    @classmethod
-    def get_list_item(cls, list: Sound=None, index: Integer=None):
-        """ > Node <&Node Get List Item>
-        
-        **Fixed values**
-        
-        | Parameter | Value |
-        | --- | --- |
-        | `socket_type` | `'SOUND'` |
-        
-        Parameters
-        ----------
-        list : Sound, optional
-            socket 'List'
-        
-        index : Integer, optional
-            socket 'Index'
-        
-        Returns
-        -------
-        Socket
-            socket 'OUT'
-        """
-        node = Node('Get List Item', named_sockets={'List': list, 'Index': index}, socket_type='SOUND')
-        return node._out
-
-    @classmethod
-    def implicit_conversion(cls, value: Sound=None, socket_idname: str='NodeSocketColor'):
-        """ > Node <&Node Implicit Conversion>
+        self: socket 'Enable'.
         
         **Fixed values**
         
@@ -296,6 +254,77 @@ class Sound(BaseSound):
         value : Sound, optional
             socket 'Value'
         
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Enable Output', named_sockets={'Enable': self, 'Value': value}, data_type='SOUND')
+        return node._out
+
+    def filter_list(self):
+        """ > Node <&Node Filter List>
+        
+        Jump method: False.
+        
+        self: socket 'List'.
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `socket_type` | `'SOUND'` |
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        selection = self.get_selection()
+        node = Node('Filter List', named_sockets={'List': self, 'Selection': selection}, socket_type='SOUND')
+        return node._out
+
+    def get_list_item(self, index: Integer=None):
+        """ > Node <&Node Get List Item>
+        
+        Jump method: False.
+        
+        self: socket 'List'.
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `socket_type` | `'SOUND'` |
+        
+        Parameters
+        ----------
+        index : Integer, optional
+            socket 'Index'
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Get List Item', named_sockets={'List': self, 'Index': index}, socket_type='SOUND')
+        return node._out
+
+    def implicit_conversion(self, socket_idname: str='NodeSocketColor'):
+        """ > Node <&Node Implicit Conversion>
+        
+        Jump method: False.
+        
+        self: socket 'Value'.
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `data_type` | `'SOUND'` |
+        
+        Parameters
+        ----------
         socket_idname : str
             parameter `socket_idname`
         
@@ -304,11 +333,11 @@ class Sound(BaseSound):
         Socket
             socket 'OUT'
         """
-        node = Node('Implicit Conversion', named_sockets={'Value': value}, data_type='SOUND', socket_idname=socket_idname)
+        node = Node('Implicit Conversion', named_sockets={'Value': self}, data_type='SOUND', socket_idname=socket_idname)
         return node._out
 
     @classmethod
-    def list_length(cls, list: Sound=None):
+    def ListLength(cls, list: Sound=None):
         """ > Node <&Node List Length>
         
         **Fixed values**
@@ -368,9 +397,12 @@ class Sound(BaseSound):
         node = Node('Sample Sound Frequencies', named_sockets={'Sound': self, 'Time': time, 'All Channels': all_channels, 'Channel': channel, 'Low': low, 'High': high, 'FFT Size': fft_size, 'Window Function': window_function})
         return node._out
 
-    @classmethod
-    def sort_list(cls, list: Sound=None, selection: Boolean=None, group_id: Integer=None, sort_weight: Float=None):
+    def sort_list(self, group_id: Integer=None, sort_weight: Float=None):
         """ > Node <&Node Sort List>
+        
+        Jump method: False.
+        
+        self: socket 'List'.
         
         **Fixed values**
         
@@ -380,12 +412,6 @@ class Sound(BaseSound):
         
         Parameters
         ----------
-        list : Sound, optional
-            socket 'List'
-        
-        selection : Boolean, optional
-            socket 'Selection'
-        
         group_id : Integer, optional
             socket 'Group ID'
         
@@ -397,5 +423,61 @@ class Sound(BaseSound):
         Socket
             socket 'OUT'
         """
-        node = Node('Sort List', named_sockets={'List': list, 'Selection': selection, 'Group ID': group_id, 'Sort Weight': sort_weight}, socket_type='SOUND')
+        selection = self.get_selection()
+        node = Node('Sort List', named_sockets={'List': self, 'Selection': selection, 'Group ID': group_id, 'Sort Weight': sort_weight}, socket_type='SOUND')
+        return node._out
+
+    def switch(self, false: Sound=None, true: Sound=None):
+        """ > Node <&Node Switch>
+        
+        Jump method: False.
+        
+        self: socket 'Switch'.
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `input_type` | `'SOUND'` |
+        
+        Parameters
+        ----------
+        false : Sound, optional
+            socket 'False'
+        
+        true : Sound, optional
+            socket 'True'
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Switch', named_sockets={'Switch': self, 'False': false, 'True': true}, input_type='SOUND')
+        return node._out
+
+    def switch_false(self, switch: Boolean=None, false: Socket=None, input_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SOUND']='FLOAT'):
+        """ > Node <&Node Switch>
+        
+        Jump method: False.
+        
+        self: socket 'True'.
+        
+        Parameters
+        ----------
+        switch : Boolean, optional
+            socket 'Switch'
+        
+        false : Socket, optional
+            socket 'False'
+        
+        input_type : Literal['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'Rotation', 'Matrix', 'String', 'Menu', 'Object', 'Image', 'Geometry', 'Collection', 'Material', 'Bundle', 'Closure', 'Font', 'Sound']
+            parameter `input_type`
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Switch', named_sockets={'Switch': switch, 'False': false, 'True': self}, input_type=input_type)
         return node._out

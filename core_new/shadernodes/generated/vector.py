@@ -32,6 +32,9 @@ if TYPE_CHECKING:
     class Menu:
         ...
 
+    class Input:
+        ...
+
     class Texture:
         ...
 
@@ -871,6 +874,32 @@ class Vector(BaseVector):
         node = Node('Combine XYZ', named_sockets={'X': x, 'Y': y, 'Z': z})
         return node._out
 
+    def enable_output(self, value: Vector=None):
+        """ > Node <&ShaderNode Enable Output>
+        
+        Jump method: False.
+        
+        self: socket 'Enable'.
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `data_type` | `'VECTOR'` |
+        
+        Parameters
+        ----------
+        value : Vector, optional
+            socket 'Value'
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Enable Output', named_sockets={'Enable': self, 'Value': value}, data_type='VECTOR')
+        return node._out
+
     def get_vector_component(self, index: Integer=None):
         """ > Node <&ShaderNode Get Vector Component>
         
@@ -891,9 +920,12 @@ class Vector(BaseVector):
         node = Node('Get Vector Component', named_sockets={'Vector': self, 'Index': index})
         return node._out
 
-    @classmethod
-    def implicit_conversion(cls, value: Vector=None, socket_idname: str='NodeSocketColor'):
+    def implicit_conversion(self, socket_idname: str='NodeSocketColor'):
         """ > Node <&ShaderNode Implicit Conversion>
+        
+        Jump method: False.
+        
+        self: socket 'Value'.
         
         **Fixed values**
         
@@ -903,9 +935,6 @@ class Vector(BaseVector):
         
         Parameters
         ----------
-        value : Vector, optional
-            socket 'Value'
-        
         socket_idname : str
             parameter `socket_idname`
         
@@ -914,12 +943,15 @@ class Vector(BaseVector):
         Socket
             socket 'OUT'
         """
-        node = Node('Implicit Conversion', named_sockets={'Value': value}, data_type='VECTOR', socket_idname=socket_idname)
+        node = Node('Implicit Conversion', named_sockets={'Value': self}, data_type='VECTOR', socket_idname=socket_idname)
         return node._out
 
-    @classmethod
-    def map_range(cls, vector: Vector=None, from_min: Vector=None, from_max: Vector=None, to_min: Vector=None, to_max: Vector=None, steps: Vector=None, clamp: bool=True, interpolation_type: Literal['LINEAR', 'STEPPED', 'SMOOTHSTEP', 'SMOOTHERSTEP']='LINEAR'):
+    def map_range(self, from_min: Vector=None, from_max: Vector=None, to_min: Vector=None, to_max: Vector=None, steps: Vector=None, clamp: bool=True, interpolation_type: Literal['LINEAR', 'STEPPED', 'SMOOTHSTEP', 'SMOOTHERSTEP']='LINEAR'):
         """ > Node <&ShaderNode Map Range>
+        
+        Jump method: False.
+        
+        self: socket 'Vector'.
         
         **Fixed values**
         
@@ -929,9 +961,6 @@ class Vector(BaseVector):
         
         Parameters
         ----------
-        vector : Vector, optional
-            socket 'Vector'
-        
         from_min : Vector, optional
             socket 'From Min'
         
@@ -959,7 +988,7 @@ class Vector(BaseVector):
             socket 'OUT'
         """
         _configuration = ({'linear': 'LINEAR', 'stepped': 'STEPPED', 'smoothstep': 'SMOOTHSTEP', 'smootherstep': 'SMOOTHERSTEP', 'stepped linear': 'STEPPED', 'smooth step': 'SMOOTHSTEP', 'smoother step': 'SMOOTHERSTEP'}.get(interpolation_type.lower(), interpolation_type), 'FLOAT_VECTOR')
-        _node_sockets = {('LINEAR', 'FLOAT_VECTOR'): {'Vector': vector, 'From Min': from_min, 'From Max': from_max, 'To Min': to_min, 'To Max': to_max}, ('STEPPED', 'FLOAT_VECTOR'): {'Vector': vector, 'From Min': from_min, 'From Max': from_max, 'To Min': to_min, 'To Max': to_max, 'Steps': steps}, ('SMOOTHSTEP', 'FLOAT_VECTOR'): {'Vector': vector, 'From Min': from_min, 'From Max': from_max, 'To Min': to_min, 'To Max': to_max}, ('SMOOTHERSTEP', 'FLOAT_VECTOR'): {'Vector': vector, 'From Min': from_min, 'From Max': from_max, 'To Min': to_min, 'To Max': to_max}}[_configuration]
+        _node_sockets = {('LINEAR', 'FLOAT_VECTOR'): {'Vector': self, 'From Min': from_min, 'From Max': from_max, 'To Min': to_min, 'To Max': to_max}, ('STEPPED', 'FLOAT_VECTOR'): {'Vector': self, 'From Min': from_min, 'From Max': from_max, 'To Min': to_min, 'To Max': to_max, 'Steps': steps}, ('SMOOTHSTEP', 'FLOAT_VECTOR'): {'Vector': self, 'From Min': from_min, 'From Max': from_max, 'To Min': to_min, 'To Max': to_max}, ('SMOOTHERSTEP', 'FLOAT_VECTOR'): {'Vector': self, 'From Min': from_min, 'From Max': from_max, 'To Min': to_min, 'To Max': to_max}}[_configuration]
         _node_args = {('LINEAR', 'FLOAT_VECTOR'): [], ('STEPPED', 'FLOAT_VECTOR'): [], ('SMOOTHSTEP', 'FLOAT_VECTOR'): [], ('SMOOTHERSTEP', 'FLOAT_VECTOR'): []}[_configuration]
         node = Node('Map Range', *_node_args, named_sockets=_node_sockets, interpolation_type=interpolation_type, data_type='FLOAT_VECTOR', clamp=clamp)
         return node._out
@@ -1050,6 +1079,35 @@ class Vector(BaseVector):
             socket 'OUT'
         """
         node = Node('Separate XYZ', named_sockets={'Vector': self})
+        return node._out
+
+    def switch(self, false: Vector=None, true: Vector=None):
+        """ > Node <&ShaderNode Switch>
+        
+        Jump method: False.
+        
+        self: socket 'Switch'.
+        
+        **Fixed values**
+        
+        | Parameter | Value |
+        | --- | --- |
+        | `input_type` | `'VECTOR'` |
+        
+        Parameters
+        ----------
+        false : Vector, optional
+            socket 'False'
+        
+        true : Vector, optional
+            socket 'True'
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Switch', named_sockets={'Switch': self, 'False': false, 'True': true}, input_type='VECTOR')
         return node._out
 
     def vector_math(self, vector_1: Vector=None, multiplier: Vector=None, incident: Vector=None, exponent: Vector=None, max: Vector=None, increment: Vector=None, addend: Vector=None, reference: Vector=None, min: Vector=None, scale: Float=None, ior: Float=None, operation: Literal['ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'MULTIPLY_ADD', 'CROSS_PRODUCT', 'PROJECT', 'REFLECT', 'REFRACT', 'FACEFORWARD', 'DOT_PRODUCT', 'DISTANCE', 'LENGTH', 'SCALE', 'NORMALIZE', 'ABSOLUTE', 'POWER', 'SIGN', 'MINIMUM', 'MAXIMUM', 'ROUND', 'FLOOR', 'CEIL', 'FRACTION', 'MODULO', 'WRAP', 'SNAP', 'SINE', 'COSINE', 'TANGENT']='ADD'):
@@ -1214,4 +1272,618 @@ class Vector(BaseVector):
         _node_sockets = {('HENYEY_GREENSTEIN',): {'Absorption Coefficients': self, 'Scatter Coefficients': scatter_coefficients, 'Anisotropy': anisotropy, 'Emission Coefficients': emission_coefficients}, ('FOURNIER_FORAND',): {'Absorption Coefficients': self, 'Scatter Coefficients': scatter_coefficients, 'IOR': ior, 'Backscatter': backscatter, 'Emission Coefficients': emission_coefficients}, ('DRAINE',): {'Absorption Coefficients': self, 'Scatter Coefficients': scatter_coefficients, 'Anisotropy': anisotropy, 'Alpha': alpha, 'Emission Coefficients': emission_coefficients}, ('RAYLEIGH',): {'Absorption Coefficients': self, 'Scatter Coefficients': scatter_coefficients, 'Emission Coefficients': emission_coefficients}, ('MIE',): {'Absorption Coefficients': self, 'Scatter Coefficients': scatter_coefficients, 'Diameter': diameter, 'Emission Coefficients': emission_coefficients}}[_configuration]
         _node_args = {('HENYEY_GREENSTEIN',): [], ('FOURNIER_FORAND',): [], ('DRAINE',): [], ('RAYLEIGH',): [], ('MIE',): []}[_configuration]
         node = Node('Volume Coefficients', *_node_args, named_sockets=_node_sockets, phase=phase)
+        return node._out
+
+    @classmethod
+    def _create_input_socket(cls, value: tuple=(0, 0, 0), name: str='Vector', min: float=-3.40282e+38, max: float=3.40282e+38, tip: str='', panel: str='', optional_label: bool=False, hide_value: bool=False, hide_in_modifier: bool=False, dimensions: int=3, default_attribute: str='', default_input: Literal['VALUE', 'NORMAL', 'POSITION', 'HANDLE_LEFT', 'HANDLE_RIGHT']='VALUE', shape: Literal['AUTO', 'SINGLE']='AUTO', subtype: str='NONE'):
+        """ > Vector Input
+
+        New <#Vector> input with subtype 'NONE'.
+
+        Parameters
+        ----------
+        value : tuple, default=`(0, 0, 0)`
+            Default value
+
+        name : str, default=`Vector`
+            Input socket name
+
+        min : float, default=`-3.40282e+38`
+            Property min_value
+
+        max : float, default=`3.40282e+38`
+            Property max_value
+
+        tip : str, default=`''`
+            Property description
+
+        panel : str, default=``
+            Panel name
+
+        optional_label : bool, default=`False`
+            Property optional_label
+
+        hide_value : bool, default=`False`
+            Property hide_value
+
+        hide_in_modifier : bool, default=`False`
+            Property hide_in_modifier
+
+        dimensions : int, default=`3`
+            Property dimensions
+
+        default_attribute : str, default=`''`
+            Property default_attribute_name
+
+        default_input : str, default=`'VALUE'`
+            Property default_input in ('VALUE', 'NORMAL', 'POSITION', 'HANDLE_LEFT', 'HANDLE_RIGHT')
+
+        shape : str, default=`'AUTO'`
+            Property structure_type in ('AUTO', 'SINGLE')
+
+        subtype : str, default=`NONE`
+            Socket sub type in ('NONE', 'PIXEL', 'PERCENTAGE', 'FACTOR', 'TRANSLATION', 'DIRECTION', 'VELOCITY', 'ACCELERATION', 'EULER', 'XYZ')
+
+
+        Returns
+        -------
+        Vector
+        """
+        from ..treeclass import Tree
+        defval = utils.python_value_for_socket(value, cls.SOCKET_TYPE)
+        return Tree.current_tree().create_input_socket('NodeSocketVector', default_value=defval, name=name, min=min, max=max, tip=tip, panel=panel, optional_label=optional_label, hide_value=hide_value, hide_in_modifier=hide_in_modifier, dimensions=dimensions, default_attribute=default_attribute, default_input=default_input, shape=shape, subtype=subtype)
+
+    @classmethod
+    def Pixel(cls, value: tuple=(0, 0, 0), name: str='Pixel', min: float=-3.40282e+38, max: float=3.40282e+38, tip: str='', panel: str='', optional_label: bool=False, hide_value: bool=False, hide_in_modifier: bool=False, dimensions: int=3, default_attribute: str='', default_input: Literal['VALUE', 'NORMAL', 'POSITION', 'HANDLE_LEFT', 'HANDLE_RIGHT']='VALUE', shape: Literal['AUTO', 'SINGLE']='AUTO'):
+        """ > Pixel Input
+
+        New <#Vector> input with subtype 'PIXEL'.
+
+        Parameters
+        ----------
+        value : tuple, default=`(0, 0, 0)`
+            Default value
+
+        name : str, default=`Pixel`
+            Input socket name
+
+        min : float, default=`-3.40282e+38`
+            Property min_value
+
+        max : float, default=`3.40282e+38`
+            Property max_value
+
+        tip : str, default=`''`
+            Property description
+
+        panel : str, default=``
+            Panel name
+
+        optional_label : bool, default=`False`
+            Property optional_label
+
+        hide_value : bool, default=`False`
+            Property hide_value
+
+        hide_in_modifier : bool, default=`False`
+            Property hide_in_modifier
+
+        dimensions : int, default=`3`
+            Property dimensions
+
+        default_attribute : str, default=`''`
+            Property default_attribute_name
+
+        default_input : str, default=`'VALUE'`
+            Property default_input in ('VALUE', 'NORMAL', 'POSITION', 'HANDLE_LEFT', 'HANDLE_RIGHT')
+
+        shape : str, default=`'AUTO'`
+            Property structure_type in ('AUTO', 'SINGLE')
+
+
+        Returns
+        -------
+        Vector
+        """
+        return cls(value=value, name=name, min=min, max=max, tip=tip, panel=panel, optional_label=optional_label, hide_value=hide_value, hide_in_modifier=hide_in_modifier, dimensions=dimensions, default_attribute=default_attribute, default_input=default_input, shape=shape, subtype='PIXEL')
+
+    @classmethod
+    def Percentage(cls, value: tuple=(0, 0, 0), name: str='Percentage', min: float=-3.40282e+38, max: float=3.40282e+38, tip: str='', panel: str='', optional_label: bool=False, hide_value: bool=False, hide_in_modifier: bool=False, dimensions: int=3, default_attribute: str='', default_input: Literal['VALUE', 'NORMAL', 'POSITION', 'HANDLE_LEFT', 'HANDLE_RIGHT']='VALUE', shape: Literal['AUTO', 'SINGLE']='AUTO'):
+        """ > Percentage Input
+
+        New <#Vector> input with subtype 'PERCENTAGE'.
+
+        Parameters
+        ----------
+        value : tuple, default=`(0, 0, 0)`
+            Default value
+
+        name : str, default=`Percentage`
+            Input socket name
+
+        min : float, default=`-3.40282e+38`
+            Property min_value
+
+        max : float, default=`3.40282e+38`
+            Property max_value
+
+        tip : str, default=`''`
+            Property description
+
+        panel : str, default=``
+            Panel name
+
+        optional_label : bool, default=`False`
+            Property optional_label
+
+        hide_value : bool, default=`False`
+            Property hide_value
+
+        hide_in_modifier : bool, default=`False`
+            Property hide_in_modifier
+
+        dimensions : int, default=`3`
+            Property dimensions
+
+        default_attribute : str, default=`''`
+            Property default_attribute_name
+
+        default_input : str, default=`'VALUE'`
+            Property default_input in ('VALUE', 'NORMAL', 'POSITION', 'HANDLE_LEFT', 'HANDLE_RIGHT')
+
+        shape : str, default=`'AUTO'`
+            Property structure_type in ('AUTO', 'SINGLE')
+
+
+        Returns
+        -------
+        Vector
+        """
+        return cls(value=value, name=name, min=min, max=max, tip=tip, panel=panel, optional_label=optional_label, hide_value=hide_value, hide_in_modifier=hide_in_modifier, dimensions=dimensions, default_attribute=default_attribute, default_input=default_input, shape=shape, subtype='PERCENTAGE')
+
+    @classmethod
+    def Factor(cls, value: tuple=(0, 0, 0), name: str='Factor', min: float=-3.40282e+38, max: float=3.40282e+38, tip: str='', panel: str='', optional_label: bool=False, hide_value: bool=False, hide_in_modifier: bool=False, dimensions: int=3, default_attribute: str='', default_input: Literal['VALUE', 'NORMAL', 'POSITION', 'HANDLE_LEFT', 'HANDLE_RIGHT']='VALUE', shape: Literal['AUTO', 'SINGLE']='AUTO'):
+        """ > Factor Input
+
+        New <#Vector> input with subtype 'FACTOR'.
+
+        Parameters
+        ----------
+        value : tuple, default=`(0, 0, 0)`
+            Default value
+
+        name : str, default=`Factor`
+            Input socket name
+
+        min : float, default=`-3.40282e+38`
+            Property min_value
+
+        max : float, default=`3.40282e+38`
+            Property max_value
+
+        tip : str, default=`''`
+            Property description
+
+        panel : str, default=``
+            Panel name
+
+        optional_label : bool, default=`False`
+            Property optional_label
+
+        hide_value : bool, default=`False`
+            Property hide_value
+
+        hide_in_modifier : bool, default=`False`
+            Property hide_in_modifier
+
+        dimensions : int, default=`3`
+            Property dimensions
+
+        default_attribute : str, default=`''`
+            Property default_attribute_name
+
+        default_input : str, default=`'VALUE'`
+            Property default_input in ('VALUE', 'NORMAL', 'POSITION', 'HANDLE_LEFT', 'HANDLE_RIGHT')
+
+        shape : str, default=`'AUTO'`
+            Property structure_type in ('AUTO', 'SINGLE')
+
+
+        Returns
+        -------
+        Vector
+        """
+        return cls(value=value, name=name, min=min, max=max, tip=tip, panel=panel, optional_label=optional_label, hide_value=hide_value, hide_in_modifier=hide_in_modifier, dimensions=dimensions, default_attribute=default_attribute, default_input=default_input, shape=shape, subtype='FACTOR')
+
+    @classmethod
+    def Translation(cls, value: tuple=(0, 0, 0), name: str='Translation', min: float=-3.40282e+38, max: float=3.40282e+38, tip: str='', panel: str='', optional_label: bool=False, hide_value: bool=False, hide_in_modifier: bool=False, dimensions: int=3, default_attribute: str='', default_input: Literal['VALUE', 'NORMAL', 'POSITION', 'HANDLE_LEFT', 'HANDLE_RIGHT']='VALUE', shape: Literal['AUTO', 'SINGLE']='AUTO'):
+        """ > Translation Input
+
+        New <#Vector> input with subtype 'TRANSLATION'.
+
+        Parameters
+        ----------
+        value : tuple, default=`(0, 0, 0)`
+            Default value
+
+        name : str, default=`Translation`
+            Input socket name
+
+        min : float, default=`-3.40282e+38`
+            Property min_value
+
+        max : float, default=`3.40282e+38`
+            Property max_value
+
+        tip : str, default=`''`
+            Property description
+
+        panel : str, default=``
+            Panel name
+
+        optional_label : bool, default=`False`
+            Property optional_label
+
+        hide_value : bool, default=`False`
+            Property hide_value
+
+        hide_in_modifier : bool, default=`False`
+            Property hide_in_modifier
+
+        dimensions : int, default=`3`
+            Property dimensions
+
+        default_attribute : str, default=`''`
+            Property default_attribute_name
+
+        default_input : str, default=`'VALUE'`
+            Property default_input in ('VALUE', 'NORMAL', 'POSITION', 'HANDLE_LEFT', 'HANDLE_RIGHT')
+
+        shape : str, default=`'AUTO'`
+            Property structure_type in ('AUTO', 'SINGLE')
+
+
+        Returns
+        -------
+        Vector
+        """
+        return cls(value=value, name=name, min=min, max=max, tip=tip, panel=panel, optional_label=optional_label, hide_value=hide_value, hide_in_modifier=hide_in_modifier, dimensions=dimensions, default_attribute=default_attribute, default_input=default_input, shape=shape, subtype='TRANSLATION')
+
+    @classmethod
+    def Direction(cls, value: tuple=(0, 0, 0), name: str='Direction', min: float=-3.40282e+38, max: float=3.40282e+38, tip: str='', panel: str='', optional_label: bool=False, hide_value: bool=False, hide_in_modifier: bool=False, dimensions: int=3, default_attribute: str='', default_input: Literal['VALUE', 'NORMAL', 'POSITION', 'HANDLE_LEFT', 'HANDLE_RIGHT']='VALUE', shape: Literal['AUTO', 'SINGLE']='AUTO'):
+        """ > Direction Input
+
+        New <#Vector> input with subtype 'DIRECTION'.
+
+        Parameters
+        ----------
+        value : tuple, default=`(0, 0, 0)`
+            Default value
+
+        name : str, default=`Direction`
+            Input socket name
+
+        min : float, default=`-3.40282e+38`
+            Property min_value
+
+        max : float, default=`3.40282e+38`
+            Property max_value
+
+        tip : str, default=`''`
+            Property description
+
+        panel : str, default=``
+            Panel name
+
+        optional_label : bool, default=`False`
+            Property optional_label
+
+        hide_value : bool, default=`False`
+            Property hide_value
+
+        hide_in_modifier : bool, default=`False`
+            Property hide_in_modifier
+
+        dimensions : int, default=`3`
+            Property dimensions
+
+        default_attribute : str, default=`''`
+            Property default_attribute_name
+
+        default_input : str, default=`'VALUE'`
+            Property default_input in ('VALUE', 'NORMAL', 'POSITION', 'HANDLE_LEFT', 'HANDLE_RIGHT')
+
+        shape : str, default=`'AUTO'`
+            Property structure_type in ('AUTO', 'SINGLE')
+
+
+        Returns
+        -------
+        Vector
+        """
+        return cls(value=value, name=name, min=min, max=max, tip=tip, panel=panel, optional_label=optional_label, hide_value=hide_value, hide_in_modifier=hide_in_modifier, dimensions=dimensions, default_attribute=default_attribute, default_input=default_input, shape=shape, subtype='DIRECTION')
+
+    @classmethod
+    def Velocity(cls, value: tuple=(0, 0, 0), name: str='Velocity', min: float=-3.40282e+38, max: float=3.40282e+38, tip: str='', panel: str='', optional_label: bool=False, hide_value: bool=False, hide_in_modifier: bool=False, dimensions: int=3, default_attribute: str='', default_input: Literal['VALUE', 'NORMAL', 'POSITION', 'HANDLE_LEFT', 'HANDLE_RIGHT']='VALUE', shape: Literal['AUTO', 'SINGLE']='AUTO'):
+        """ > Velocity Input
+
+        New <#Vector> input with subtype 'VELOCITY'.
+
+        Parameters
+        ----------
+        value : tuple, default=`(0, 0, 0)`
+            Default value
+
+        name : str, default=`Velocity`
+            Input socket name
+
+        min : float, default=`-3.40282e+38`
+            Property min_value
+
+        max : float, default=`3.40282e+38`
+            Property max_value
+
+        tip : str, default=`''`
+            Property description
+
+        panel : str, default=``
+            Panel name
+
+        optional_label : bool, default=`False`
+            Property optional_label
+
+        hide_value : bool, default=`False`
+            Property hide_value
+
+        hide_in_modifier : bool, default=`False`
+            Property hide_in_modifier
+
+        dimensions : int, default=`3`
+            Property dimensions
+
+        default_attribute : str, default=`''`
+            Property default_attribute_name
+
+        default_input : str, default=`'VALUE'`
+            Property default_input in ('VALUE', 'NORMAL', 'POSITION', 'HANDLE_LEFT', 'HANDLE_RIGHT')
+
+        shape : str, default=`'AUTO'`
+            Property structure_type in ('AUTO', 'SINGLE')
+
+
+        Returns
+        -------
+        Vector
+        """
+        return cls(value=value, name=name, min=min, max=max, tip=tip, panel=panel, optional_label=optional_label, hide_value=hide_value, hide_in_modifier=hide_in_modifier, dimensions=dimensions, default_attribute=default_attribute, default_input=default_input, shape=shape, subtype='VELOCITY')
+
+    @classmethod
+    def Acceleration(cls, value: tuple=(0, 0, 0), name: str='Acceleration', min: float=-3.40282e+38, max: float=3.40282e+38, tip: str='', panel: str='', optional_label: bool=False, hide_value: bool=False, hide_in_modifier: bool=False, dimensions: int=3, default_attribute: str='', default_input: Literal['VALUE', 'NORMAL', 'POSITION', 'HANDLE_LEFT', 'HANDLE_RIGHT']='VALUE', shape: Literal['AUTO', 'SINGLE']='AUTO'):
+        """ > Acceleration Input
+
+        New <#Vector> input with subtype 'ACCELERATION'.
+
+        Parameters
+        ----------
+        value : tuple, default=`(0, 0, 0)`
+            Default value
+
+        name : str, default=`Acceleration`
+            Input socket name
+
+        min : float, default=`-3.40282e+38`
+            Property min_value
+
+        max : float, default=`3.40282e+38`
+            Property max_value
+
+        tip : str, default=`''`
+            Property description
+
+        panel : str, default=``
+            Panel name
+
+        optional_label : bool, default=`False`
+            Property optional_label
+
+        hide_value : bool, default=`False`
+            Property hide_value
+
+        hide_in_modifier : bool, default=`False`
+            Property hide_in_modifier
+
+        dimensions : int, default=`3`
+            Property dimensions
+
+        default_attribute : str, default=`''`
+            Property default_attribute_name
+
+        default_input : str, default=`'VALUE'`
+            Property default_input in ('VALUE', 'NORMAL', 'POSITION', 'HANDLE_LEFT', 'HANDLE_RIGHT')
+
+        shape : str, default=`'AUTO'`
+            Property structure_type in ('AUTO', 'SINGLE')
+
+
+        Returns
+        -------
+        Vector
+        """
+        return cls(value=value, name=name, min=min, max=max, tip=tip, panel=panel, optional_label=optional_label, hide_value=hide_value, hide_in_modifier=hide_in_modifier, dimensions=dimensions, default_attribute=default_attribute, default_input=default_input, shape=shape, subtype='ACCELERATION')
+
+    @classmethod
+    def Euler(cls, value: tuple=(0, 0, 0), name: str='Euler', min: float=-3.40282e+38, max: float=3.40282e+38, tip: str='', panel: str='', optional_label: bool=False, hide_value: bool=False, hide_in_modifier: bool=False, dimensions: int=3, default_attribute: str='', default_input: Literal['VALUE', 'NORMAL', 'POSITION', 'HANDLE_LEFT', 'HANDLE_RIGHT']='VALUE', shape: Literal['AUTO', 'SINGLE']='AUTO'):
+        """ > Euler Input
+
+        New <#Vector> input with subtype 'EULER'.
+
+        Parameters
+        ----------
+        value : tuple, default=`(0, 0, 0)`
+            Default value
+
+        name : str, default=`Euler`
+            Input socket name
+
+        min : float, default=`-3.40282e+38`
+            Property min_value
+
+        max : float, default=`3.40282e+38`
+            Property max_value
+
+        tip : str, default=`''`
+            Property description
+
+        panel : str, default=``
+            Panel name
+
+        optional_label : bool, default=`False`
+            Property optional_label
+
+        hide_value : bool, default=`False`
+            Property hide_value
+
+        hide_in_modifier : bool, default=`False`
+            Property hide_in_modifier
+
+        dimensions : int, default=`3`
+            Property dimensions
+
+        default_attribute : str, default=`''`
+            Property default_attribute_name
+
+        default_input : str, default=`'VALUE'`
+            Property default_input in ('VALUE', 'NORMAL', 'POSITION', 'HANDLE_LEFT', 'HANDLE_RIGHT')
+
+        shape : str, default=`'AUTO'`
+            Property structure_type in ('AUTO', 'SINGLE')
+
+
+        Returns
+        -------
+        Vector
+        """
+        return cls(value=value, name=name, min=min, max=max, tip=tip, panel=panel, optional_label=optional_label, hide_value=hide_value, hide_in_modifier=hide_in_modifier, dimensions=dimensions, default_attribute=default_attribute, default_input=default_input, shape=shape, subtype='EULER')
+
+    @classmethod
+    def Xyz(cls, value: tuple=(0, 0, 0), name: str='Xyz', min: float=-3.40282e+38, max: float=3.40282e+38, tip: str='', panel: str='', optional_label: bool=False, hide_value: bool=False, hide_in_modifier: bool=False, dimensions: int=3, default_attribute: str='', default_input: Literal['VALUE', 'NORMAL', 'POSITION', 'HANDLE_LEFT', 'HANDLE_RIGHT']='VALUE', shape: Literal['AUTO', 'SINGLE']='AUTO'):
+        """ > Xyz Input
+
+        New <#Vector> input with subtype 'XYZ'.
+
+        Parameters
+        ----------
+        value : tuple, default=`(0, 0, 0)`
+            Default value
+
+        name : str, default=`Xyz`
+            Input socket name
+
+        min : float, default=`-3.40282e+38`
+            Property min_value
+
+        max : float, default=`3.40282e+38`
+            Property max_value
+
+        tip : str, default=`''`
+            Property description
+
+        panel : str, default=``
+            Panel name
+
+        optional_label : bool, default=`False`
+            Property optional_label
+
+        hide_value : bool, default=`False`
+            Property hide_value
+
+        hide_in_modifier : bool, default=`False`
+            Property hide_in_modifier
+
+        dimensions : int, default=`3`
+            Property dimensions
+
+        default_attribute : str, default=`''`
+            Property default_attribute_name
+
+        default_input : str, default=`'VALUE'`
+            Property default_input in ('VALUE', 'NORMAL', 'POSITION', 'HANDLE_LEFT', 'HANDLE_RIGHT')
+
+        shape : str, default=`'AUTO'`
+            Property structure_type in ('AUTO', 'SINGLE')
+
+
+        Returns
+        -------
+        Vector
+        """
+        return cls(value=value, name=name, min=min, max=max, tip=tip, panel=panel, optional_label=optional_label, hide_value=hide_value, hide_in_modifier=hide_in_modifier, dimensions=dimensions, default_attribute=default_attribute, default_input=default_input, shape=shape, subtype='XYZ')
+
+    def interpolate(self, to_min: Socket=None, to_max: Socket=None, steps: Socket=None, vector: Vector=None, clamp: bool=True, interpolation_type: Literal['LINEAR', 'STEPPED', 'SMOOTHSTEP', 'SMOOTHERSTEP']='LINEAR', data_type: Literal['FLOAT', 'FLOAT_VECTOR']='FLOAT'):
+        """ > Node <&ShaderNode Map Range>
+        
+        Jump method: False.
+        
+        self: socket 'Value'.
+        
+        Parameters
+        ----------
+        to_min : Socket, optional
+            socket 'To Min'
+        
+        to_max : Socket, optional
+            socket 'To Max'
+        
+        steps : Socket, optional
+            socket 'Steps'
+        
+        vector : Vector, optional
+            socket 'Vector'
+        
+        clamp : bool
+            parameter `clamp`
+        
+        interpolation_type : Literal['Linear', 'Stepped Linear', 'Smooth Step', 'Smoother Step']
+            parameter `interpolation_type`
+        
+        data_type : Literal['Float', 'Vector']
+            parameter `data_type`
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        _configuration = ({'linear': 'LINEAR', 'stepped': 'STEPPED', 'smoothstep': 'SMOOTHSTEP', 'smootherstep': 'SMOOTHERSTEP', 'stepped linear': 'STEPPED', 'smooth step': 'SMOOTHSTEP', 'smoother step': 'SMOOTHERSTEP'}.get(interpolation_type.lower(), interpolation_type), {'float': 'FLOAT', 'float_vector': 'FLOAT_VECTOR', 'vector': 'FLOAT_VECTOR'}.get(data_type.lower(), data_type))
+        _node_sockets = {('LINEAR', 'FLOAT'): {'Value': self, 'To Min': to_min, 'To Max': to_max}, ('LINEAR', 'FLOAT_VECTOR'): {'Vector': vector, 'To Min': to_min, 'To Max': to_max}, ('STEPPED', 'FLOAT'): {'Value': self, 'To Min': to_min, 'To Max': to_max, 'Steps': steps}, ('STEPPED', 'FLOAT_VECTOR'): {'Vector': vector, 'To Min': to_min, 'To Max': to_max, 'Steps': steps}, ('SMOOTHSTEP', 'FLOAT'): {'Value': self, 'To Min': to_min, 'To Max': to_max}, ('SMOOTHSTEP', 'FLOAT_VECTOR'): {'Vector': vector, 'To Min': to_min, 'To Max': to_max}, ('SMOOTHERSTEP', 'FLOAT'): {'Value': self, 'To Min': to_min, 'To Max': to_max}, ('SMOOTHERSTEP', 'FLOAT_VECTOR'): {'Vector': vector, 'To Min': to_min, 'To Max': to_max}}[_configuration]
+        _node_args = {('LINEAR', 'FLOAT'): [], ('LINEAR', 'FLOAT_VECTOR'): [], ('STEPPED', 'FLOAT'): [], ('STEPPED', 'FLOAT_VECTOR'): [], ('SMOOTHSTEP', 'FLOAT'): [], ('SMOOTHSTEP', 'FLOAT_VECTOR'): [], ('SMOOTHERSTEP', 'FLOAT'): [], ('SMOOTHERSTEP', 'FLOAT_VECTOR'): []}[_configuration]
+        named_sockets['From Min'] = 0.0
+        named_sockets['From Max'] = 1.0
+        node = Node('Map Range', *_node_args, named_sockets=_node_sockets, interpolation_type=interpolation_type, data_type=data_type, clamp=clamp)
+        return node._out
+
+    def switch_false(self, switch: Boolean=None, false: Socket=None, input_type: Literal['FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'STRING', 'MENU', 'SHADER', 'BUNDLE', 'CLOSURE']='RGBA'):
+        """ > Node <&ShaderNode Switch>
+        
+        Jump method: False.
+        
+        self: socket 'True'.
+        
+        Parameters
+        ----------
+        switch : Boolean, optional
+            socket 'Switch'
+        
+        false : Socket, optional
+            socket 'False'
+        
+        input_type : Literal['Float', 'Integer', 'Boolean', 'Vector', 'Color', 'String', 'Menu', 'Shader', 'Bundle', 'Closure']
+            parameter `input_type`
+        
+        Returns
+        -------
+        Socket
+            socket 'OUT'
+        """
+        node = Node('Switch', named_sockets={'Switch': switch, 'False': false, 'True': self}, input_type=input_type)
         return node._out

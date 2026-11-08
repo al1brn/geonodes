@@ -104,12 +104,13 @@ MODIFIER_ONLY = (
 # ====================================================================================================
 
 NODE_WITH_IN_ITEMS = {
-    'NodeCombineBundle' 			: 'bundle_items',
-    'GeometryNodeCaptureAttribute' 	: 'capture_items',
-    'GeometryNodeIndexSwitch'       : 'index_switch_items',
-    'GeometryNodeMenuSwitch'        : 'enum_items',
-    'NodeClosureOutput'             : 'output_items',
-    'FunctionNodeFormatString' 		: 'format_items',    
+    'NodeCombineBundle' 			: {'items': 'bundle_items',         'item_name': True},
+    'GeometryNodeCaptureAttribute' 	: {'items': 'capture_items',        'item_name': True},
+    'GeometryNodeIndexSwitch'       : {'items': 'index_switch_items',   'item_name': False},
+    'GeometryNodeMenuSwitch'        : {'items': 'enum_items',           'item_name': True},
+    'NodeClosureOutput'             : {'items': 'output_items',         'item_name': True},
+    'FunctionNodeFormatString' 		: {'items': 'format_items',         'item_name': True},
+    'GeometryNodeBake'              : {'items': 'bake_items',           'item_name': True},
 }
 
 # ====================================================================================================
