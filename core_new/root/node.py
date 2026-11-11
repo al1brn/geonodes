@@ -196,7 +196,7 @@ class Sockets:
             stype = None
 
         if name.startswith('ID_'):
-            return self.by_identifier(name["3:"])
+            return self.by_identifier(name[3:])
 
         for unique, socket in self:
             if name not in [unique, utils.snake_case(unique)]:
@@ -1065,7 +1065,8 @@ class Node:
         # No tree interface
         # ====================================================================================================
 
-        path = ItemPath(name).ranked_long_name
+        path = (name if isinstance(name, str) and name.startswith('ID_')
+                else ItemPath(name).ranked_long_name)
 
         socks = self._inputs if in_out == 'INPUT' else self._outputs
         socket = socks.by_name(path)
@@ -1616,10 +1617,7 @@ class Node:
             auto = self._bnode.bl_idname in constants.AUTO_INPUT_TYPE_NODES
             halt = name is not None and not auto
 
-            if name is None:
-                full_name = None
-            else:
-                full_name = (ItemPath(panel) + name).path
+            full_name = ItemPath.get_full_name(name, panel)
 
             # The socket must exist
             if found_socket is None:
@@ -1682,7 +1680,7 @@ class Node:
 
         create_socket = create and self._has_dyn_in
         if found_socket is None:
-            full_name = (ItemPath(panel) + name).path
+            full_name = ItemPath.get_full_name(name, panel)
             socket = self.get_socket('INPUT', full_name, value_socket_type, free_only=True, halt=not create_socket)
         else:
             socket = found_socket

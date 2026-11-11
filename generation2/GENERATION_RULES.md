@@ -5,7 +5,9 @@ Référence de maintenance : décrire ici les règles effectivement appliquées 
 **Principe prioritaire : utiliser le générateur standard de `NodeImplementation` à partir des descriptions d'implémentation. Ne pas ajouter de générateur dédié par famille. Signaler tout besoin de hack à l'utilisateur avant de le mettre en œuvre.**
 
 - **Pipeline actif simplifié**
-  - `generate` appelle `gen_static_code`, `gen_gnmath`, puis `gen_nodes` pour chaque environnement.
+  - `generate` appelle `gen_static_code`, `gen_math`, `gen_compare`, `gen_mix`, `gen_nodes`, `gen_properties`, `gen_typed_constructors`, puis `gen_additional` pour chaque environnement.
+  - Nettoyage : les anciens générateurs mathématiques (`gen_*_functions` et variantes `_DEPR`), leur helper `_check_operations`, `gen_source_code` et `loop_on_parameter` ont été supprimés. `gen_source`, `_fixed_parameters` et `gen_docstring` restent utilisés par les propriétés ; `gen_handwritten_references` reste disponible, sans appel depuis `generate`.
+  - Alias de types : `generate` crée un registre `TypeAliases` neuf pour chaque environnement, partagé par les implémentations, leurs copies et leurs `SourceWriter`. Les paramètres enum libres de `_gen_source` fournissent leurs valeurs au registre ; les annotations simples restent des noms de types Python. Le source du registre est conservé dans `files` sous `type_aliases.py`, même avec `write=False`. Le rendu crée ce module, importe ses alias dans les modules générés et le valide avec les autres fichiers avant écriture. Le registre ne connaît pas `tree_type`.
   - `gen_nodes` demande une seule fois `get_node_implementation()` par nœud. Cette méthode contient directement les règles issues de `new_implementation` ; il n'y a plus de couche `_describe_node_implementation` ou d'application des anciens dictionnaires.
   - `domain_loop` : générer dans `class_name` si elle est précisée, avec `domain` libre, puis générer une variante par domaine dans sa classe de domaine, avec le domaine fixé.
   - `data_type_loop` : générer une variante pour chaque valeur possible du paramètre de type, dans la classe correspondant à cette valeur, avec ce paramètre fixé.
@@ -253,3 +255,117 @@ Référence de maintenance : décrire ici les règles effectivement appliquées 
 - [output.py](output.py) : héritage, filtre des méthodes manuscrites, rendu et validation des modules.
 - [tests/test_contexts.py](tests/test_contexts.py) : tests des règles de génération.
 - [../core_new/tests/test_environments.py](../core_new/tests/test_environments.py) : tests du comportement produit dans Blender.
+
+- **Prototype `gen_node_call` — hors pipeline actif**
+  - Prépare une liste `inputs` commune aux arguments et à l'appel, avec une source `ARGUMENT`, `FIXED` ou `COMPUTED`.
+  - Produit directement la signature et l'appel ; utilise uniquement l'écriture indentée de `SourceWriter`.
+  - Premiers cas vérifiés sans Blender : récepteur explicite ou implicite, paramètres libres ou fixés, sockets fixées, sélection avec désactivation possible, alias et récepteur multi-input.
+  - Reste à compléter notamment : documentation et items dynamiques. Ne remplace pas encore `_gen_source`.
+  - `gen_node_call` calcule aussi `data_type` / `input_type` avec `SocketType.get_data_type_for_node`, sans restriction sur le type de fonction. La source est `self` ou le nom final dédoublonné de l'argument ; le paramètre calculé est retiré de la signature. Un type fixé reste prioritaire ; une socket source inconnue ou un paramètre de type absent provoque une erreur explicite.
+
+- **Découpage de `SourceWriter`**
+  - Les marqueurs `R0`, `R1`, `R2` valent `§^`, `§%`, `§&`, sans retour à la ligne. Ils sont remplacés par des espaces ou des coupures selon la longueur rendue, indentation comprise. Les retours à la ligne ordinaires utilisent simplement `split("\n")`.
+  - Les appels à `write` avec plusieurs lignes n'ajoutent pas de ligne vide supplémentaire. La démonstration du module ne s'exécute plus à l'import.
+
+- **Typing des paramètres enum flags**
+  - `NodeParam.__init__` reçoit `enums=None` et construit directement `set[Literal['A', 'B']]` après découverte des choix, sans enregistrement dans `TypeAliases`. Sans choix, utilise `set[str]`.
+  - Les enums simples conservent une liste de valeurs pour la capture par `TypeAliases`. Les choix sont découverts avant construction ; `get_enum_list` conserve son interface via un helper statique partagé.
+
+- **Typing des paramètres de `gen_node_call`**
+  - Reconstruit les `NodeParam` depuis les snapshots par défaut, sans nouvelle introspection, et utilise leur `typing`.
+  - Les listes de choix des enums simples sont enregistrées dans `TypeAliases` au rendu de la signature ; sans registre, un `Literal[...]` direct est émis. Les enum flags gardent leur chaîne `set[Literal[...]]`, sans capture. Un typing absent ne produit pas d'annotation.
+  - Les paramètres calculés ou fixés ne sont pas enregistrés dans les alias. Le typing des sockets reste inchangé.
+
+- **Typing des sockets de `gen_node_call`**
+  - Utilise `class_name` et, si cette valeur est `None` ou vide, `Socket`, pour les arguments ordinaires comme multi-input.
+
+- **Documentation des arguments sockets de `gen_node_call`**
+  - Utilise les noms finaux après dédoublonnage, le type, le nom de socket et son identifiant en cas d'alias. Les arguments ordinaires indiquent le défaut `None` ; les multi-inputs indiquent plusieurs valeurs.
+
+- **Documentation du retour de `gen_node_call`**
+  - Suit la priorité du code émis : sortie explicite, `OUT` (jump : deuxième sortie ou `self`, après mise à jour depuis la première), enveloppe `cls`, nœud, puis enveloppe de classe explicite. Pas de section Returns pour les setters.
+
+- `gen_node_call` utilise `sock.group_name` comme clé des sockets arguments regroupées lorsqu’il est renseigné, y compris pour le récepteur ; sinon conserve la clé habituelle.
+
+- `gen_node_call` transmet les sockets issues des arguments avec la clé `ID_identifier` par défaut. `group_name` reste prioritaire ; les alias restent résolus par identifiant physique. Les sockets fixées et la sélection calculée conservent leurs clés nommées.
+
+- `NodeParam` teste les valeurs booléennes avant les entiers : annotation `bool` pour `True` / `False`, `int` pour les entiers.
+
+- La doc des paramètres libres de `gen_node_call` indique le nom d'argument, le type, le défaut et tous les choix enum disponibles, indépendamment de l'alias utilisé dans la signature. Les flags affichent `set[{...}]`.
+
+- `NodeInfo.data_type_input` retourne le nom de la première entrée pilotée par le paramètre de type, depuis `max_inputs`, ou `None` si aucune entrée n'est concernée. `get_node_implementation` l'utilise pour le récepteur de la boucle typée et la source de déduction du type.
+
+- Les descriptions Grid converties en `NodeCall` utilisent la première entrée comme récepteur pour les méthodes d'instance ; elles conservent la boucle typée et le jump existants, sans déduction automatique du type.
+
+- **Migration des descriptions vers `NodeCall`**
+  - `get_node_implementation` retourne désormais des `NodeCall`, ou un tuple pour plusieurs implémentations. Les méthodes d'instance renseignent leur récepteur ; les remplacements partiels `SPECIAL_NODES` sont appliqués avec `replace` sur les branches ordinaires.
+  - Les conversions de classe à classe produisent deux descriptions distinctes, méthode d'instance et méthode de classe. Les cas sans implémentation utilisent `implement=False`.
+  - Les clés de `SPECIAL_NODES` suivent les attributs d'`NodeCall`, notamment `is_jump` et `method_type`.
+  - Le raccordement de `gen_nodes`, qui attend encore des dictionnaires, reste à migrer avant de pouvoir lancer le pipeline avec ces descriptions.
+
+- **Interface de `gen_node_call`**
+  - Reçoit une `NodeCall` résolue au lieu d'arguments nommés séparés ; utilise sa propriété `decorator`. Les descriptions intermédiaires des sockets/paramètres restent des dictionnaires internes distincts.
+  - Fusionne les paramètres de l'implémentation avec `spec.parameters` (ces derniers prioritaires), sans mutation ; les valeurs fixées filtrent les configurations et sont transmises au nœud.
+  - L'expansion des boucles et l'adaptation de `gen_nodes` restent hors de cette migration d'interface.
+
+- **Types de fonction dans `NodeCall`**
+  - Centralise les décorateurs et le premier argument ; `first_arg` est une propriété calculée et `has_self` est une propriété indiquant une instance.
+  - Valide le type de fonction, le récepteur obligatoire pour les instances et l'absence de récepteur/jump hors instance. Les descriptions `implement=False` sont dispensées des contrôles de récepteur/jump.
+  - `replace` valide l'ensemble des changements avant de modifier l'objet. `gen_node_call` conserve uniquement les contrôles dépendant du nœud réel, notamment l'existence des sockets.
+
+- **Migration de `gen_static_code`**
+  - Les accès `nd` utilisent `NodeCall.class_property` ou `NodeCall.class_method`, puis `gen_node_call` ; plus d'appel à `_gen_source` dans cette étape.
+  - Le retour effectif reste `OUT`. L'enregistrement des références utilise désormais la même valeur, corrigeant l'ancienne métadonnée `NODE` des méthodes de classe qui contredisait leur source.
+  - Vérification sans Blender des deux décorateurs et du retour/enregistrement ; les autres étapes de génération restent à migrer.
+
+- **Docstrings NumPy de `gen_node_call`**
+  - Résumé en texte standard, sans marqueur de lien personnalisé. Les entrées fixées utilisent un titre Markdown et une liste, pas une section NumPy non standard.
+  - La section Returns sépare le type (`Socket`, `Node`, `Self` ou classe explicite) de la description indentée. Les arguments dynamiques indiquent un type et une description distincts ; un paramètre de type inconnu est documenté comme `object`.
+  - Vérification du texte produit et de sa syntaxe Python sans Blender ; le rendu complet mkdocstrings reste à vérifier avec ses dépendances installées.
+
+- **Préservation de la mise en forme au rendu**
+  - `specialize_source` utilise l'AST pour repérer les branches de contexte, puis remplace uniquement les plages de texte concernées. N'utilise plus `ast.unparse` sur le module complet.
+  - Sans branche à spécialiser, le texte est retourné à l'identique. Les branches conservées sont désindentées en préservant les valeurs des chaînes multilignes ; une branche supprimée sans alternative laisse `pass` pour préserver les suites Python valides.
+  - Les coupures émises par `SourceWriter` et les commentaires hors branches supprimées sont conservés jusqu'aux fichiers produits. La validation finale par compilation reste active.
+
+- **Migration de `gen_math`**
+  - Les fonctions `gnmath` et les méthodes typées utilisent `NodeCall.function` / `NodeCall.method` et `gen_node_call`, avec l'opération fixée dans `parameters` et le récepteur choisi parmi les entrées actives de cette opération.
+  - Les opérations communes et propres au contexte sont concaténées par famille au lieu de remplacer la famille Math commune par les seules comparaisons. Les familles absentes du catalogue du contexte sont ignorées.
+  - Les déclarations trunc/floor/ceil séparent correctement noms de fonction et d'opérateur. Les opérateurs à code explicite utilisent leur nom complet sans reprendre un préfixe de boucle précédent.
+  - Validation Blender 5.3 des deux environnements (104 fonctions Geometry, 98 Shader), des appels fonctions/méthodes, des opérateurs et de la compilation du rendu final. Test dédié : `tests/test_gen_math.py`.
+
+- **Résolution des clés de socket `ID_`**
+  - `ItemPath.get_full_name(name, panel)` laisse `None` et les clés `ID_...` intacts, et compose les autres noms avec leur panneau. Les recherches de `Node.set_input_socket` et `Socket.Out` utilisent cette méthode.
+  - `Node.socket_by_name` évite aussi la normalisation par `ItemPath` pour les clés `ID_...`, afin de préserver notamment les suffixes `_001` des identifiants Blender.
+  - Vérification Blender des 202 fonctions `gnmath` et tests dédiés des identifiants exacts dans les deux environnements (`core_new/tests/test_socket_identifiers.py`).
+
+- **Séparation `NodeCall` / `NodeCalls`**
+  - `NodeCall` décrit une fonction unique : nom de méthode scalaire et destination `class_name` scalaire ou `None`. La destination est transmise à l’orchestrateur ; `gen_node_call` ne l’utilise pas. Les constructeurs des accès `nd` et des maths ne transmettent plus de destination à `NodeCall`.
+  - `NodeCalls.overrides(base, [{...}, ...])` accepte des dictionnaires de remplacement hétérogènes ; `NodeCalls.attributes(base, champ=[...], autre=...)` construit la même liste depuis des colonnes alignées, avec répétition des scalaires ou listes d'un élément.
+  - Une base peut être une `NodeCall` ou une `NodeCalls`. `loop()` (également accessible par itération) produit directement des `NodeCall` portant leur destination ; l'imbrication forme un produit cartésien et les remplacements extérieurs ont priorité. `class_name` est remplacé comme les autres attributs par `NodeCall.replace`.
+  - Le constructeur `NodeCalls(base)` transmet les descriptions à l’identique, sans copie ; une liste explicite vide en produit zéro. Les listes de longueurs incompatibles et les clés inconnues sont rejetées.
+  - `NodeCalls.replace(**variations)` ajoute une couche extérieure. Les descriptions de `get_node_implementation` utilisent désormais des boucles pour porter leurs destinations, avec des listes de destinations dans `SPECIAL_NODES`. Le raccordement de `gen_nodes` à ces objets reste à migrer.
+
+- Les deux modes de construction de `NodeCalls` sont explicites : `overrides` pour les dictionnaires et `attributes` pour les listes par attribut. Le constructeur ordinaire accepte uniquement la base. Les appels des descriptions ont été adaptés ; le déroulement imbriqué conserve les mêmes règles de priorité.
+
+- **Enregistrement depuis `NodeCall`**
+  - `register_source(node, node_call, source)` déduit la destination depuis `class_name`, le fichier (`static_nd.py`, `gnmath.py`, module de classe ou `dom_...`), le retour et les règles. Une destination absente est une erreur explicite.
+  - Les accès `nd`, maths, opérateurs associés, comparaisons, Mix et les appels d'enregistrement de `gen_nodes` utilisent cette interface.
+  - L'ancien enregistrement est conservé en privé dans `_register_source` pour les chemins historiques et les références manuscrites qui ne disposent pas encore de `NodeCall`. Il conserve les contrôles de collision et la lecture de la signature réelle du source.
+  - Les setters sont documentés sans retour ; un `return_socket` explicite est prioritaire sur `return_kind` dans les références.
+
+- **Construction des appels par domaine**
+  - `NodeImplementation.get_domain_loop_calls(node_call)` retourne un `NodeCalls` : variante générale si `class_name` est renseigné, puis une variante par valeur de l'enum `domain` du nœud.
+  - Chaque variante de domaine conserve les attributs de l'appel et ses paramètres fixés, puis remplace `domain` et la classe de destination. `domain_loop` est désactivé dans les résultats ; l'appel de départ reste inchangé.
+  - Méthode ajoutée indépendamment de son futur raccordement dans `get_node_implementation` et `gen_nodes`. Vérifiée sur Store Named Attribute dans Blender.
+
+- `data_type_drives_outputs` consulte les identifiants de sortie. `data_type_input` parcourt les entrées Blender dans leur ordre physique et teste leur identifiant, sans indexation par nom. Les critères restrictifs de détection des types et de présence restent inchangés.
+
+- **Snapshots des sockets pilotées par le type**
+  - `NodeInfo.data_type_driven_sockets` remplace `data_type_driven_ids`. Pour chaque valeur du paramètre de type, les listes `inputs` / `outputs` contiennent des snapshots `NodeSocket` ordonnés, avec identifiant, nom et type de cette variante.
+  - Les critères de détection et le filtre par type restent inchangés. `data_type_input` et `data_type_drives_first_input` lisent ces objets et acceptent une liste d'entrées vide pour le type courant.
+  - Les snapshots restent inchangés après la réinitialisation du nœud Blender. Le choix du récepteur par variante dans le générateur n'est pas modifié à cette étape.
+
+- **Validation des descriptions résolues**
+  - `NodeCall` n'appelle plus `_check` à la construction. Les copies et les résultats intermédiaires de `NodeCalls` peuvent être incomplets.
+  - `gen_node_call` appelle `_check` avant toute analyse du nœud : la description finale est validée après application de toutes les boucles et de tous les remplacements.

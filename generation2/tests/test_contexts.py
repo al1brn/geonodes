@@ -111,11 +111,11 @@ class ContextGenerationTest(unittest.TestCase):
     def test_same_method_in_two_contexts_is_not_a_collision(self):
         for tree_type in ('GeometryNodeTree', 'ShaderNodeTree'):
             node = NS(btree=NS(bl_idname=tree_type), bnode=NS(bl_idname='ShaderNodeMath', name='Math'))
-            Implementation.register_source(node, 'float.py', 'Float', '    def test(self):\n        return self\n')
+            Implementation._register_source(node, 'float.py', 'Float', '    def test(self):\n        return self\n')
         self.assertEqual(set(Implementation.files), {'GeometryNodeTree', 'ShaderNodeTree'})
         with patch('geonodes.generation2.node_implementation.utils.get_node_names', return_value={'ShaderNodeMath': 'Math'}):
             with self.assertRaisesRegex(ValueError, 'Duplicate implementation: Float.test'):
-                Implementation.register_source(node, 'float.py', 'Float', '    def test(self):\n        return self\n')
+                Implementation._register_source(node, 'float.py', 'Float', '    def test(self):\n        return self\n')
 
     def test_render_targets_and_intermediate_bases(self):
         for tree_type, environment in [('GeometryNodeTree', 'geonodes'), ('ShaderNodeTree', 'shadernodes')]:
@@ -492,7 +492,7 @@ class ContextGenerationTest(unittest.TestCase):
         node = NS(btree=NS(bl_idname='GeometryNodeTree'),
                   bnode=NS(bl_idname='GeometryNodeSetPosition', name='Set Position'))
         with self.assertRaisesRegex(ValueError, 'Duplicate implementation'):
-            Implementation.register_source(node, 'dom_point.py', 'Point', sources[1])
+            Implementation._register_source(node, 'dom_point.py', 'Point', sources[1])
 
     def test_both_type_policy_uses_geometry_or_typed_class_methods(self):
         import bpy

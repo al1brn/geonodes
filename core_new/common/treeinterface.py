@@ -268,6 +268,15 @@ class ItemPath:
     # ====================================================================================================
 
     @staticmethod
+    def get_full_name(name, panel=""):
+        """Combine panel and socket name, preserving exact ID_ identifiers."""
+        if name is None:
+            return None
+        if isinstance(name, str) and name.startswith('ID_'):
+            return name
+        return (ItemPath(panel) + name).path
+
+    @staticmethod
     def to_item_path(value):
         if isinstance(value, ItemPath):
             return value

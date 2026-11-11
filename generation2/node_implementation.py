@@ -5,12 +5,17 @@ import keyword
 import inspect
 import textwrap
 from pathlib import Path
+from typing import get_args
+from dataclasses import replace
 
 import bpy
 
 from .. import core_module
 from . import gen_config
-from . import config, utils, source_code
+from . import config, utils
+from .node_call import NodeCall, NodeCalls
+from .sourcewriter import SourceWriter, FUNC_TYPE
+from .typealiases import TypeAliases
 from .tree import Tree
 from .output import ENVIRONMENTS, render_modules
 from .argument import Argument
@@ -22,58 +27,6 @@ SocketType = core_module.common.sockettype.SocketType
 TAB = "    "
 
 # ====================================================================================================
-# Format function header
-# ====================================================================================================
-
-def format_header(func_name, *args, margin=TAB, max_len=100):
-
-    header = f"{margin}def {func_name}("
-    args_str = ", ".join(args)
-
-    if len(args_str) > max_len:
-        sep = f"\n{margin}{TAB}"
-        header += sep
-        sep = "," + sep
-        args_str = sep.join(args)
-
-    return header + args_str + "):"
-
-def format_node_call(margin, node_name, args=None, named_sockets=None, parameters=None, max_len=100):
-
-    s = f"{margin}node = Node('{node_name}'"
-    if args is not None:
-        s += f", {args}"
-
-    multi = False
-    if named_sockets is None:
-        s += ", named_sockets={}"
-
-    else:
-        s += ", named_sockets={"
-
-        line = ", ".join(named_sockets)
-        if len(s + line) < max_len:
-            s += line
-        else:
-            sep = f"\n{margin}{TAB}{TAB}{TAB}"
-            s += sep + f",{sep}".join(named_sockets)
-            multi = True
-
-        s += "}"
-
-    if parameters is not None:
-        line = ", ".join([""] + parameters)
-        if multi or len(s + line) > max_len:
-            sep = f",\n{margin}{TAB}{TAB}"
-            s += sep.join([""] + parameters)
-        else:
-            s += line
-
-    s += ")"
-
-    return s
-
-# ====================================================================================================
 # Node Implementation
 # ====================================================================================================
 
@@ -83,6 +36,7 @@ class NodeImplementation:
     files = {}
     cross_refs = {}
     tree_type = 'GeometryNodeTree'
+    type_aliases = None
 
     # ====================================================================================================
     # Node Implementation instance wraps a node_info 
@@ -90,7 +44,8 @@ class NodeImplementation:
 
     def __init__(self, node):
         self.node = node
-        self.parameters = dict.fromkeys(node.snapshot_params())
+        self.type_aliases = type(self).type_aliases
+        self.parameters = dict.fromkeys(self.node.snapshot_params())
 
     def __getitem__(self, name):
         return self.parameters[name]
@@ -107,7 +62,22 @@ class NodeImplementation:
         """Copy the parameter configuration, keeping the same NodeInfo."""
         result = type(self)(self.node)
         result.parameters = self.parameters.copy()
+        result.type_aliases = self.type_aliases
         return result
+
+    def set_parameters(self, **parameters):
+        for name, value in parameters.items():
+            self[name] = value
+
+    def clear_parameters(self):
+        for name in self.parameters:
+            self.parameters[name] = None
+
+
+    @property
+    def fixed_enums(self):
+        return {name: value for name, value in self.parameters.items() if (name in self.node.config) and (value is not None)}
+
 
     # ====================================================================================================
     # Write Files
@@ -137,13 +107,38 @@ class NodeImplementation:
     # ----------------------------------------------------------------------------------------------------
 
     @classmethod
-    def register_source(cls, node, filename, destination, source, returns='OUT', *, tree_type=None, write_source=True, rules=[]):
+    def register_source(cls, node, node_call: NodeCall, source, *, tree_type=None, write_source=True):
+        """Enregistrer source avec la destination et le retour de node_call.
+
+        node_call.class_name désigne la classe cible, 'nd' ou 'gnmath'.
+        Le fichier cible et les règles sont déduits de cette description.
+        tree_type est nécessaire si node vaut None.
+        write_source=False enregistre seulement la référence documentaire.
+        """
+        destination = node_call.class_name
+        if destination is None:
+            raise ValueError(f"Missing class_name for {node_call.method_name!r}")
+        if destination in ('nd', 'ND'):
+            filename, destination = 'static_nd.py', 'nd'
+        elif destination == 'gnmath':
+            filename = 'gnmath.py'
+        else:
+            prefix = 'dom_' if destination in core_module.constants.DOMAIN_CLASSES else ''
+            filename = prefix + destination.lower() + '.py'
+        returns = (None if node_call.method_type == 'SETTER' else
+                   node_call.return_socket if node_call.return_socket is not None else
+                   node_call.return_kind)
+        cls._register_source(node, filename, destination, source, returns=returns,
+                             tree_type=tree_type, write_source=write_source, rules=node_call.rules)
+
+    @classmethod
+    def _register_source(cls, node, filename, destination, source, returns='OUT', *, tree_type=None, write_source=True, rules=[]):
         """Register source and its cross reference, rejecting duplicate names."""
 
         if tree_type is None:
             tree_type = node.btree.bl_idname
 
-        if True:
+        if False:
             print("DEBUG SOURCE", node.name)
             print(source)
             print()
@@ -151,6 +146,12 @@ class NodeImplementation:
         try:
             function = ast.parse(textwrap.dedent(source)).body[0]
         except Exception as e:
+
+            print('-'*80)
+            print(source)
+            print('-'*80)
+
+
             print(f"Compilation error in '{node.name}'")
             if len(rules):
                 print("\n".join(rules))
@@ -224,7 +225,7 @@ class NodeImplementation:
                         function = inspect.getattr_static(owner, name)
                         if isinstance(function, (classmethod, staticmethod)):
                             function = function.__func__
-                        cls.register_source(node, None, destination, inspect.getsource(function),
+                        cls._register_source(node, None, destination, inspect.getsource(function),
                                             write_source=False)
         finally:
             bpy.data.node_groups.remove(tree)    
@@ -247,21 +248,27 @@ class NodeImplementation:
         cls.files.clear()
         cls.cross_refs.clear()
         previous_type = cls.tree_type
+        previous_aliases = cls.type_aliases
         try:
             for selected_type in selected:
                 cls.tree_type = selected_type
                 cls.files[selected_type] = {}
                 cls.cross_refs[selected_type] = {}
+                cls.type_aliases = TypeAliases()
 
                 cls.gen_static_code()
-                cls.gen_gnmath()
+                cls.gen_math()
+                cls.gen_compare()
+                cls.gen_mix()
                 cls.gen_nodes()
-                cls.gen_properties()
-                cls.gen_typed_constructors()
-                cls.gen_additional()
+                #cls.gen_properties()
+                #cls.gen_typed_constructors()
+                #cls.gen_additional()
+                cls.files[selected_type]['type_aliases.py'] = [cls.type_aliases.source]
 
         finally:
             cls.tree_type = previous_type
+            cls.type_aliases = previous_aliases
         if write:
             cls.write_files(use_core_new=use_core_new)
         environments = ', '.join(ENVIRONMENTS[selected_type] for selected_type in selected)
@@ -269,547 +276,391 @@ class NodeImplementation:
         print(f'\n{action}: {environments}.')
 
     # ====================================================================================================
-    # Generate math module
+    # Generate nd module
+    # ====================================================================================================
+
+    @classmethod
+    def gen_static_code(cls):
+        """Collect nd accessors and cross references for the current environment."""
+        def generate(node):
+            name = core_module.utils.snake_case(node.bnode.name)
+            constructor = NodeCall.class_property if node.is_class_property else NodeCall.class_method
+            node_call = constructor(name, class_name='nd', return_kind='OUT')
+            source = cls(node).gen_node_call(node_call)
+            cls.register_source(node, node_call, source)
+
+        NodeInfo.loop_on_nodes(generate, tree_type=cls.tree_type)
+
+    # ====================================================================================================
+    # Operations
     # ====================================================================================================
 
     # ----------------------------------------------------------------------------------------------------
-    # Main : call the various sources of math functions
+    # Math
     # ----------------------------------------------------------------------------------------------------
 
     @classmethod
-    def gen_gnmath(cls):
-        """Collect all math families and Color Mix operations."""
-        cls.gen_math_functions()
-        if cls.tree_type == 'GeometryNodeTree':
-            cls.gen_integer_math_functions()
-            cls.gen_boolean_math_functions()
-        cls.gen_vector_math_functions()
-        if cls.tree_type == 'GeometryNodeTree':
-            cls.gen_bit_math_functions()
-        cls.gen_mix_color_functions()
-        cls.gen_compare_functions()
+    def gen_math(cls):
 
-    # ----------------------------------------------------------------------------------------------------
-    # Check operations
-    # ----------------------------------------------------------------------------------------------------
+        # 0 : operation name
+        # 1 : method name
+        # 2 : function name
+        # 3 : operator name
 
-    @staticmethod
-    def _check_operations(node, operations, param_name='operation'):
-        """Refuse to generate when an enum operation is not accounted for."""
-        available = set(NodeParam.Parameter(node.bnode, param_name).enums)
-        handled = set(operations)
-        missing = available - handled
-        obsolete = handled - available
-        if missing or obsolete:
-            details = []
-            if missing:
-                details.append(f'unhandled operations: {sorted(missing)}')
-            if obsolete:
-                details.append(f'operations unavailable in Blender: {sorted(obsolete)}')
-            raise ValueError(f"{node.bnode.name}.{param_name}: " + '; '.join(details))
+        # Operator name can be
+        # - a single str -> name of the operator
+        # - a couple (operator name, source code)
+        # - a list of above
 
-    # ----------------------------------------------------------------------------------------------------
-    # Math Node
-    # ----------------------------------------------------------------------------------------------------
+        MATH = {
+            # ==================================================
+            # Common
+            # ==================================================
 
-    @classmethod
-    def gen_math_functions(cls):
-        """Collect Math functions, Float methods and scalar Float operators.
+            'common': {
 
-        Names and operator mappings are explicit here, independently of the
-        legacy generation dictionaries. The public Float subclass retains its
-        hand-written operators, including vector dispatch and comparisons.
-        No generated files are written by this method.
-        """
-        operations = (
-            ('ADD', 'add'), ('SUBTRACT', 'subtract'), ('MULTIPLY', 'multiply'),
-            ('DIVIDE', 'divide'), ('MULTIPLY_ADD', 'multiply_add'),
-            ('POWER', 'power'), ('LOGARITHM', 'log'), ('SQRT', 'sqrt'),
-            ('INVERSE_SQRT', 'inverse_sqrt'), ('ABSOLUTE', 'abs'), ('EXPONENT', 'exp'),
-            ('MINIMUM', 'min'), ('MAXIMUM', 'max'), ('LESS_THAN', 'less_than'),
-            ('GREATER_THAN', 'greater_than'), ('SIGN', 'sign'), ('COMPARE', 'compare'),
+            # --------------------------------------------------
+            # Math Node
+            # --------------------------------------------------
+                'Math': [
+
+            # Methods with binary operator
+            ('ADD', 'add', 'add',                   'add'),
+            ('SUBTRACT', 'subtract', 'subtract',    'sub'),
+            ('MULTIPLY', 'multiply', 'multiply',    ['mul', ('neg', 'self.multiply(-1)')]),
+            ('DIVIDE', 'divide', 'divide',          'truediv'), 
+            ('POWER', 'power', 'power',             'pow'), 
+            ('MODULO', 'modulo', 'modulo',          'modulo'), 
+
+            # Methods with unary operator
+            ('ABSOLUTE', 'abs', 'abs',              'abs'), 
+            ('ROUND', 'round', 'round',             'round'), 
+            ('TRUNC', 'trunc', 'trunc',             'trunc'), 
+            ('FLOOR', 'floor', 'floor',             'floor'), 
+            ('CEIL', 'ceil', 'ceil',                'ceil'), 
+            
+            # Other methods
+            ('MULTIPLY_ADD', 'multiply_add'), ('LOGARITHM', 'log'), ('SQRT', 'sqrt'),
+            ('INVERSE_SQRT', 'inverse_sqrt'), ('EXPONENT', 'exp'),
+            ('MINIMUM', 'min'), ('MAXIMUM', 'max'), 
+            ('SIGN', 'sign'), 
             ('SMOOTH_MIN', 'smooth_min'), ('SMOOTH_MAX', 'smooth_max'),
-            ('ROUND', 'round'), ('FLOOR', 'floor'), ('CEIL', 'ceil'), ('TRUNC', 'trunc'),
-            ('FRACT', 'fract'), ('MODULO', 'modulo'), ('FLOORED_MODULO', 'floored_modulo'),
+            ('FRACT', 'fract'), ('FLOORED_MODULO', 'floored_modulo'),
             ('WRAP', 'wrap'), ('SNAP', 'snap'), ('PINGPONG', 'pingpong'),
             ('SINE', 'sin'), ('COSINE', 'cos'), ('TANGENT', 'tan'),
             ('ARCSINE', 'asin'), ('ARCCOSINE', 'acos'), ('ARCTANGENT', 'arctangent'),
             ('ARCTAN2', 'atan2'), ('SINH', 'sinh'), ('COSH', 'cosh'), ('TANH', 'tanh'),
             ('RADIANS', 'radians'), ('DEGREES', 'degrees'),
-        )
-        binary_operators = (
-            ('add', 'add', True, None),
-            ('sub', 'subtract', False, None),
-            ('mul', 'multiply', True, None),
-            ('truediv', 'divide', False, None),
-            ('mod', 'modulo', False, None),
-            ('pow', 'power', False, None),
-        )
-        unary_operators = (
-            ('__neg__', 'self.multiply(-1)'), ('__abs__', 'self.abs()'),
-            ('__round__', 'self.round()'), ('__trunc__', 'self.trunc()'),
-            ('__floor__', 'self.floor()'), ('__ceil__', 'self.ceil()'),
-        )
-        tree = bpy.data.node_groups.new(name='Math functions', type=cls.tree_type)
-        try:
-            node = NodeInfo(tree, tree.nodes.new(type='ShaderNodeMath'))
-            cls._check_operations(node, (op[0] for op in operations))
-            base = cls(node)
-            for operation, name in operations:
-                if cls.tree_type == 'GeometryNodeTree' and operation in ('LESS_THAN', 'GREATER_THAN', 'COMPARE'):
-                    name = 'm' + name
-                implementation = base.copy()
-                implementation['operation'] = operation
-                cls.register_source(node, 'gnmath.py', 'gnmath',
-                                    '\n'.join(implementation._gen_source(name, method_type='FUNCTION', return_kind='OUT')))
-                cls.register_source(node, 'float.py', 'Float',
-                                    '\n'.join(implementation._gen_source(name, method_type='METHOD', return_kind='OUT')))
+                ], 
 
-            for operator, method, commutative, code_class in binary_operators:
-                call = f'self.{method}(other)'
-                reverse = call if commutative else f'type(self)(other).{method}(self)'
-                for name, expression in (
-                    (f'__{operator}__', call),
-                    (f'__r{operator}__', reverse),
-                    (f'__i{operator}__', f'self._jump({call})'),
-                ):
-                    copy_code = getattr(code_class, name, None)
-                    source = (base.gen_source(kind='METHOD', copy_code=copy_code) if copy_code is not None else
-                              f'    def {name}(self, other):\n        return {expression}\n')
-                    cls.register_source(node, 'float.py', 'Float', source)
+            # --------------------------------------------------
+            # Vector Math Node
+            # --------------------------------------------------
 
-            for name, expression in unary_operators:
-                source = f'    def {name}(self):\n        return {expression}\n'
-                cls.register_source(node, 'float.py', 'Float', source)
-        finally:
-            bpy.data.node_groups.remove(tree)
+                'Vector Math': [
 
-    # ----------------------------------------------------------------------------------------------------
-    # Integer Math Node
-    # ----------------------------------------------------------------------------------------------------
+            # Methods with binary operator
+            ('ADD', 'add', 'vadd',                  'add'),
+            ('SUBTRACT', 'subtract', 'vsubtract',   'sub'),
+            ('MULTIPLY', 'multiply', 'vmultiply',   'mul'),
+            ('DIVIDE', 'divide', 'vdivide',         'truediv'), 
+            ('POWER', 'power', 'vpower',            'pow'), 
+            ('MODULO', 'modulo', 'vmodulo',         'modulo'), 
 
-    @classmethod
-    def gen_integer_math_functions(cls):
-        """Collect Integer Math functions, Integer methods and integer operators.
+            # Methods with unary operator
+            ('ABSOLUTE', 'abs', 'vabs',             'abs'), 
+            ('ROUND', 'round', 'vround',            'round'), 
+            ('FLOOR', 'floor', 'vfloor',            'floor'), 
+            ('CEIL', 'ceil', 'vceil',               'ceil'), 
+            ('SCALE', 'scale', 'scale',              ('neg', 'self.scale(-1)')), 
 
-        Global function names retain the existing gnmath convention. Dunder
-        methods delegate to ordinary methods without docstrings. Division uses
-        divide_floor for //; true division and mixed-type dispatch remain in
-        the hand-written Integer subclass.
-        """
-        operations = (
-            ('ADD', 'add', 'iadd'), ('SUBTRACT', 'subtract', 'isubtract'),
-            ('MULTIPLY', 'multiply', 'imultiply'), ('DIVIDE', 'divide', 'idivide'),
-            ('MULTIPLY_ADD', 'multiply_add', 'imultiply_add'),
-            ('ABSOLUTE', 'abs', 'iabs'), ('NEGATE', 'negate', 'negate'),
-            ('POWER', 'power', 'ipower'), ('MINIMUM', 'min', 'imin'),
-            ('MAXIMUM', 'max', 'imax'), ('SIGN', 'sign', 'isign'),
-            ('DIVIDE_ROUND', 'divide_round', 'divide_round'),
-            ('DIVIDE_FLOOR', 'divide_floor', 'divide_floor'),
-            ('DIVIDE_CEIL', 'divide_ceil', 'divide_ceil'),
-            ('FLOORED_MODULO', 'floored_modulo', 'ifloored_modulo'),
-            ('MODULO', 'modulo', 'imodulo'), ('GCD', 'gcd', 'gcd'), ('LCM', 'lcm', 'lcm'),
-        )
-        binary_operators = (
-            ('add', 'add', True, None),
-            ('sub', 'subtract', False, None),
-            ('mul', 'multiply', True, None),
-            ('floordiv', 'divide_floor', False, None),
-            ('mod', 'modulo', False, None),
-            ('pow', 'power', False, None),
-        )
-        tree = bpy.data.node_groups.new(name='Integer Math functions', type=cls.tree_type)
-        try:
-            node = NodeInfo(tree, tree.nodes.new(type='FunctionNodeIntegerMath'))
-            cls._check_operations(node, (op[0] for op in operations))
-            base = cls(node)
-            for operation, method_name, function_name in operations:
-                implementation = base.copy()
-                implementation['operation'] = operation
-                cls.register_source(node, 'gnmath.py', 'gnmath',
-                                    '\n'.join(implementation._gen_source(function_name, method_type='FUNCTION', return_kind='OUT')))
-                cls.register_source(node, 'integer.py', 'Integer',
-                                    '\n'.join(implementation._gen_source(method_name, method_type='METHOD', return_kind='OUT')))
-
-            for operator, method, commutative, code_class in binary_operators:
-                call = f'self.{method}(other)'
-                reverse = call if commutative else f'type(self)(other).{method}(self)'
-                for name, expression in (
-                    (f'__{operator}__', call),
-                    (f'__r{operator}__', reverse),
-                    (f'__i{operator}__', f'self._jump({call})'),
-                ):
-                    copy_code = getattr(code_class, name, None)
-                    source = (base.gen_source(kind='METHOD', copy_code=copy_code) if copy_code is not None else
-                              f'    def {name}(self, other):\n        return {expression}\n')
-                    cls.register_source(node, 'integer.py', 'Integer', source)
-
-            for name, method in (('__neg__', 'negate'), ('__abs__', 'abs')):
-                source = f'    def {name}(self):\n        return self.{method}()\n'
-                cls.register_source(node, 'integer.py', 'Integer', source)
-        finally:
-            bpy.data.node_groups.remove(tree)
-
-    # ----------------------------------------------------------------------------------------------------
-    # Boolean Math Node
-    # ----------------------------------------------------------------------------------------------------
-
-    @classmethod
-    def gen_boolean_math_functions(cls):
-        """Collect Boolean Math functions, Boolean methods and operators.
-
-        Keep the existing names, arithmetic aliases and rejection of Python
-        truth testing. Operators delegate to ordinary methods, without docs.
-        """
-        operations = (
-            ('AND', 'band'), ('OR', 'bor'), ('NOT', 'bnot'), ('NAND', 'not_and'),
-            ('NOR', 'nor'), ('XNOR', 'xnor'), ('XOR', 'xor'),
-            ('IMPLY', 'imply'), ('NIMPLY', 'nimply'),
-        )
-        binary_operators = (
-            ('and', 'band', True), ('or', 'bor', True), ('xor', 'xor', True),
-            ('add', 'bor', True), ('mul', 'band', True), ('sub', 'nimply', False),
-        )
-        tree = bpy.data.node_groups.new(name='Boolean Math functions', type=cls.tree_type)
-        try:
-            node = NodeInfo(tree, tree.nodes.new(type='FunctionNodeBooleanMath'))
-            cls._check_operations(node, (op[0] for op in operations))
-            base = cls(node)
-            for operation, name in operations:
-                implementation = base.copy()
-                implementation['operation'] = operation
-                cls.register_source(node, 'gnmath.py', 'gnmath',
-                                    '\n'.join(implementation._gen_source(name, method_type='FUNCTION', return_kind='OUT')))
-                cls.register_source(node, 'boolean.py', 'Boolean',
-                                    '\n'.join(implementation._gen_source(name, method_type='METHOD', return_kind='OUT')))
-
-            for operator, method, commutative in binary_operators:
-                call = f'self.{method}(other)'
-                reverse = call if commutative else f'type(self)(other).{method}(self)'
-                for name, expression in (
-                    (f'__{operator}__', call),
-                    (f'__r{operator}__', reverse),
-                    (f'__i{operator}__', f'self._jump({call})'),
-                ):
-                    source = f'    def {name}(self, other):\n        return {expression}\n'
-                    cls.register_source(node, 'boolean.py', 'Boolean', source)
-            for name in ('__neg__', '__invert__'):
-                source = f'    def {name}(self):\n        return self.bnot()\n'
-                cls.register_source(node, 'boolean.py', 'Boolean', source)
-            message = "Boolean Socket is not a python bool. Use 'switch' method or operators & | "
-            source = f'    def __bool__(self):\n        raise NodeError({message!r})\n'
-            cls.register_source(node, 'boolean.py', 'Boolean', source, returns=None)
-        finally:
-            bpy.data.node_groups.remove(tree)
-
-    # ----------------------------------------------------------------------------------------------------
-    # Vector Math Node
-    # ----------------------------------------------------------------------------------------------------
-
-    @classmethod
-    def gen_vector_math_functions(cls):
-        """Collect Vector Math functions, Vector methods and operators.
-
-        Scalar outputs are selected by _gen_source for each operation.
-        Multiplication/division by scalars use scale; @ is the dot product.
-        """
-        operations = (
-            ('ADD', 'add', 'vadd'), ('SUBTRACT', 'subtract', 'vsubtract'),
-            ('MULTIPLY', 'multiply', 'vmultiply'), ('DIVIDE', 'divide', 'vdivide'),
+            # Other methods            
             ('MULTIPLY_ADD', 'multiply_add', 'vmultiply_add'),
             ('CROSS_PRODUCT', 'cross', 'cross'), ('PROJECT', 'project', 'project'),
             ('REFLECT', 'reflect', 'reflect'), ('REFRACT', 'refract', 'refract'),
             ('FACEFORWARD', 'faceforward', 'faceforward'), ('DOT_PRODUCT', 'dot', 'dot'),
             ('DISTANCE', 'distance', 'distance'), ('LENGTH', 'length', 'length'),
-            ('SCALE', 'scale', 'scale'), ('NORMALIZE', 'normalize', 'normalize'),
-            ('ABSOLUTE', 'abs', 'vabs'), ('POWER', 'power', 'vpower'),
+            ('NORMALIZE', 'normalize', 'normalize'),
             ('SIGN', 'sign', 'vsign'), ('MINIMUM', 'min', 'vmin'),
-            ('MAXIMUM', 'max', 'vmax'), ('ROUND', 'round', 'vround'),
-            ('FLOOR', 'floor', 'vfloor'), ('CEIL', 'ceil', 'vceil'),
-            ('FRACTION', 'fraction', 'vfraction'), ('MODULO', 'modulo', 'vmodulo'),
+            ('MAXIMUM', 'max', 'vmax'), 
+            ('FRACTION', 'fraction', 'vfraction'), 
             ('WRAP', 'wrap', 'vwrap'), ('SNAP', 'snap', 'vsnap'),
             ('SINE', 'sin', 'vsin'), ('COSINE', 'cos', 'vcos'), ('TANGENT', 'tan', 'vtan'),
-        )
-        binary_operators = (
-            ('add', 'self.add(other)', 'self.add(other)', None),
-            ('sub', 'self.subtract(other)', 'type(self)(other).subtract(self)', None),
-            ('mul', 'self.scale(other) if utils.is_value_like(other) else self.multiply(other)', 'self.scale(other) if utils.is_value_like(other) else self.multiply(other)', None),
-            ('truediv', 'self.scale(1 / other) if utils.is_value_like(other) else self.divide(other)', 'type(self)(other).divide(self)', None),
-            ('mod', 'self.modulo(other)', 'type(self)(other).modulo(self)', None),
-            ('pow', 'self.power(other)', 'type(self)(other).power(self)', None),
-        )
-        unary_operators = (
-            ('__neg__', 'self.scale(-1)'), ('__abs__', 'self.abs()'),
-            ('__floor__', 'self.floor()'), ('__ceil__', 'self.ceil()'),
-        )
-        tree = bpy.data.node_groups.new(name='Vector Math functions', type=cls.tree_type)
-        try:
-            node = NodeInfo(tree, tree.nodes.new(type='ShaderNodeVectorMath'))
-            cls._check_operations(node, (op[0] for op in operations))
-            base = cls(node)
-            for operation, method_name, function_name in operations:
-                implementation = base.copy()
-                implementation['operation'] = operation
-                cls.register_source(node, 'gnmath.py', 'gnmath',
-                                    '\n'.join(implementation._gen_source(function_name, method_type='FUNCTION', return_kind='OUT')))
-                cls.register_source(node, 'vector.py', 'Vector',
-                                    '\n'.join(implementation._gen_source(method_name, method_type='METHOD', return_kind='OUT')))
+                ],
 
-            for operator, call, reverse, code_class in binary_operators:
-                for name, expression in (
-                    (f'__{operator}__', call),
-                    (f'__r{operator}__', reverse),
-                    (f'__i{operator}__', f'self._jump({call})'),
-                ):
-                    copy_code = getattr(code_class, name, None)
-                    source = (base.gen_source(kind='METHOD', copy_code=copy_code) if copy_code is not None else
-                              f'    def {name}(self, other):\n        return {expression}\n')
-                    cls.register_source(node, 'vector.py', 'Vector', source)
-            for name, expression in unary_operators:
-                source = f'    def {name}(self):\n        return {expression}\n'
-                cls.register_source(node, 'vector.py', 'Vector', source)
-            source = '    def __matmul__(self, other):\n        return self.dot(other)\n'
-            cls.register_source(node, 'vector.py', 'Vector', source)
-        finally:
-            bpy.data.node_groups.remove(tree)
+            # --------------------------------------------------
+            # Integer Math Node
+            # --------------------------------------------------
 
-    # ----------------------------------------------------------------------------------------------------
-    # Bit Math Node
-    # ----------------------------------------------------------------------------------------------------
+                'Integer Math': [
 
-    @classmethod
-    def gen_bit_math_functions(cls):
-        """Collect Bit Math functions, Integer methods and bitwise operators.
+            # Methods with binary operator
+            ('ADD', 'add', 'iadd',                   'add'),
+            ('SUBTRACT', 'subtract', 'isubtract',    'sub'),
+            ('MULTIPLY', 'multiply', 'imultiply',    'mul'),
+            ('DIVIDE', 'divide', 'idivide',          'floordiv'), 
+            ('POWER', 'power', 'ipower',             'pow'), 
+            ('MODULO', 'modulo', 'imodulo',          'modulo'), 
 
-        Names retain the bw_ prefix. A negative shift implements right shift.
-        Dunder methods delegate to the ordinary methods without docstrings.
-        """
-        operations = (
-            ('AND', 'bw_and'), ('OR', 'bw_or'), ('XOR', 'bw_xor'),
-            ('NOT', 'bw_not'), ('SHIFT', 'bw_shift'), ('ROTATE', 'bw_rotate'),
-        )
-        tree = bpy.data.node_groups.new(name='Bit Math functions', type=cls.tree_type)
-        try:
-            node = NodeInfo(tree, tree.nodes.new(type='FunctionNodeBitMath'))
-            cls._check_operations(node, (op[0] for op in operations))
-            base = cls(node)
-            for operation, name in operations:
-                implementation = base.copy()
-                implementation['operation'] = operation
-                cls.register_source(node, 'gnmath.py', 'gnmath',
-                                    '\n'.join(implementation._gen_source(name, method_type='FUNCTION', return_kind='OUT')))
-                cls.register_source(node, 'integer.py', 'Integer',
-                                    '\n'.join(implementation._gen_source(name, method_type='METHOD', return_kind='OUT')))
+            # Methods with unary operator
+            ('ABSOLUTE', 'abs', 'iabs',             'abs'), 
+            ('NEGATE', 'negate', 'negate',          'neg'),
+            
+            # Other methods
+            ('MULTIPLY_ADD', 'multiply_add', 'imultiply_add'), ('SIGN', 'sign', 'isign'),
+            ('MINIMUM', 'min', 'imin'), ('MAXIMUM', 'max', 'imax'), 
+            ('DIVIDE_ROUND', 'divide_round', 'divide_round'),
+            ('DIVIDE_FLOOR', 'divide_floor', 'divide_floor'),
+            ('DIVIDE_CEIL', 'divide_ceil', 'divide_ceil'),
+            ('FLOORED_MODULO', 'floored_modulo', 'ifloored_modulo'),
+            ('GCD', 'gcd', 'gcd'), ('LCM', 'lcm', 'lcm'),
+                ],
 
-            for operator, method in (('and', 'bw_and'), ('or', 'bw_or'), ('xor', 'bw_xor')):
-                call = f'self.{method}(other)'
-                for name, expression in (
-                    (f'__{operator}__', call),
-                    (f'__r{operator}__', call),
-                    (f'__i{operator}__', f'self._jump({call})'),
-                ):
-                    source = f'    def {name}(self, other):\n        return {expression}\n'
-                    cls.register_source(node, 'integer.py', 'Integer', source)
+            # --------------------------------------------------
+            # Boolean Math Node
+            # --------------------------------------------------
 
-            for operator, shift, reverse_shift in (
-                ('lshift', 'other', 'self'), ('rshift', '-other', '-self'),
-            ):
-                call = f'self.bw_shift({shift})'
-                for name, expression in (
-                    (f'__{operator}__', call),
-                    (f'__r{operator}__', f'type(self)(other).bw_shift({reverse_shift})'),
-                    (f'__i{operator}__', f'self._jump({call})'),
-                ):
-                    source = f'    def {name}(self, other):\n        return {expression}\n'
-                    cls.register_source(node, 'integer.py', 'Integer', source)
-            source = '    def __invert__(self):\n        return self.bw_not()\n'
-            cls.register_source(node, 'integer.py', 'Integer', source)
-        finally:
-            bpy.data.node_groups.remove(tree)
+                'Boolean Math': [
 
-    # ----------------------------------------------------------------------------------------------------
-    # Color Mix Node
-    # ----------------------------------------------------------------------------------------------------
+            # Methods with binary operator
+            ('AND', 'band', 'band', ['and', 'mul']),
+            ('OR', 'bor', 'bor',   ['or', 'add']),
+            ('XOR', 'xor', 'xor',   ['xor', 'sub']),
 
-    @classmethod
-    def gen_mix_color_functions(cls):
-        """Collect Color Mix operations as global functions and Color methods.
+            # Methods width unary operator
+            ('NOT', 'bnot', 'bnot', 'neg'),
 
-        Fix RGBA and the blend mode; expose factor after a/b and keep the
-        clamp options free. No dunder methods are generated.
-        """
-        operations = (
-            'MIX', 'DARKEN', 'MULTIPLY', 'BURN', 'LIGHTEN', 'SCREEN', 'DODGE',
-            'ADD', 'OVERLAY', 'SOFT_LIGHT', 'LINEAR_LIGHT', 'DIFFERENCE',
-            'EXCLUSION', 'SUBTRACT', 'DIVIDE', 'HUE', 'SATURATION', 'COLOR', 'VALUE',
-        )
-        tree = bpy.data.node_groups.new(name='Color Mix functions', type=cls.tree_type)
-        try:
-            node = NodeInfo(tree, tree.nodes.new(type='ShaderNodeMix'))
+            # Other methods
+            ('NAND', 'not_and'), ('NOR', 'nor'), ('XNOR', 'xnor'),
+            ('IMPLY', 'imply'), ('NIMPLY', 'nimply'),
+                ],
+            },
 
-            # def mix(..., operation=None)
-            node.set_params(data_type='RGBA')
-            cls.register_source(
-                    node,
-                    'color.py',
-                    'Color',
-                    cls(node).gen_source(
-                        kind='METHOD', 
-                        name='mix', 
-                        self_socket='a',
-                        return_socket='OUT', last_sockets=('Factor',)))
+            # ==================================================
+            # Geometry nodes
+            # ==================================================
 
-            # def mix_xxx(...)
-            node.set_params(data_type='RGBA', factor_mode='UNIFORM')
-            cls._check_operations(node, operations, param_name='blend_type')
-            base = cls(node)
-            base['data_type'] = 'RGBA'
-            base['factor_mode'] = 'UNIFORM'
-            for operation in operations:
-                implementation = base.copy()
-                implementation['blend_type'] = operation
-                name = 'mix_' + operation.lower()
-                cls.register_source(node, 'gnmath.py', 'gnmath',
-                                    implementation.gen_source(kind='FUNCTION', name=name,
-                                                              return_socket='OUT', last_sockets=('Factor',)))
-                cls.register_source(node, 'color.py', 'Color',
-                                    implementation.gen_source(kind='METHOD', name=name, self_socket='a',
-                                                              return_socket='OUT', last_sockets=('Factor',)))
-        finally:
-            bpy.data.node_groups.remove(tree)
+            'GeometryNodeTree': {
+                'Math': [
+                    ('LESS_THAN', 'math_less_than'),
+                    ('GREATER_THAN', 'math_greater_than'), 
+                    ('COMPARE', 'math_compare'),
+                ],
 
-    # ----------------------------------------------------------------------------------------------------
-    # Compare Node
-    # ----------------------------------------------------------------------------------------------------
+            # --------------------------------------------------
+            # Bit Math Node
+            # --------------------------------------------------
 
-    @classmethod
-    def gen_compare_functions(cls):
-        """Collect comparisons for this environment's available node types.
+                'Bit Math': [
+            # Methods with binary operator
+            ('AND', 'bw_and', 'bw_and',         'and'), 
+            ('OR', 'bw_or', 'bw_or',            'or'), 
+            ('XOR', 'bw_xor', 'bw_xor',         'xor'),
+            ('SHIFT', 'bw_shift', 'bw_shift',   ['lshift', ('rshift', 'self.bw_shift(-other)'), ('rrshift', 'type(self)(other).bw_shift(-self)'), ('irshift', 'self._jump(self << -other)')]), 
 
-        Geometry comparisons use Compare; scalar shader comparisons use Math.
-        Vector comparisons in Geometry Nodes use ELEMENT mode.
-        """
-        if cls.tree_type == 'ShaderNodeTree':
-            cls._gen_shader_compare_functions()
-            return
-        numeric = ('LESS_THAN', 'LESS_EQUAL', 'GREATER_THAN', 'GREATER_EQUAL', 'EQUAL', 'NOT_EQUAL')
-        equality = ('EQUAL', 'NOT_EQUAL')
-        types = (
-            ('FLOAT', 'Float', '', numeric), ('INT', 'Integer', 'i', numeric),
-            ('VECTOR', 'Vector', 'v', numeric), ('RGBA', 'Color', 'c', (*equality, 'BRIGHTER', 'DARKER')),
-            ('STRING', 'String', 's', equality), ('OBJECT', 'Object', 'object_', equality),
-            ('IMAGE', 'Image', 'image_', equality), ('COLLECTION', 'Collection', 'collection_', equality),
-            ('MATERIAL', 'Material', 'material_', equality), ('FONT', 'Font', 'font_', equality),
-            ('SOUND', 'Sound', 'sound_', equality),
-        )
-        dunders = {'LESS_THAN': '__lt__', 'LESS_EQUAL': '__le__', 'GREATER_THAN': '__gt__',
-                   'GREATER_EQUAL': '__ge__', 'EQUAL': '__eq__', 'NOT_EQUAL': '__ne__'}
+            # Methods width unary operator
+            ('NOT', 'bw_not', 'bw_not',         'invert'), 
 
-        def argument(name, class_name, socket_name):
-            return Argument(arg_type='SOCKET', arg_name=name, typing=class_name,
-                            arg_value='None', node_value=name,
-                            comment=f"{name} : {class_name}, optional\n    socket '{socket_name}'")
+            # Other methods
+            ('ROTATE', 'bw_rotate'),
+                ],
+            },
 
-        tree = bpy.data.node_groups.new(name='Compare functions', type=cls.tree_type)
-        try:
-            node = NodeInfo(tree, tree.nodes.new(type='FunctionNodeCompare'))
-            cls._check_operations(node, (row[0] for row in types), param_name='data_type')
+            # ==================================================
+            # Shader nodes
+            # ==================================================
 
-            # Compound Shader comparisons reuse the Math functions in gnmath.
-            math_node = NodeInfo(tree, tree.nodes.new(type='ShaderNodeMath'))
-            for name, expression, has_epsilon in (
-                ('mless_equal', 'subtract(1, mgreater_than(a, b))', False),
-                ('mgreater_equal', 'subtract(1, mless_than(a, b))', False),
-                ('mnot_equal', 'subtract(1, mcompare(a, b, epsilon=epsilon))', True),
-            ):
-                implementation = cls(math_node)
-                implementation['operation'] = 'SUBTRACT'
-                implementation['use_clamp'] = False
-                arguments = [argument('a', 'Float', 'Value'), argument('b', 'Float', 'Value')]
-                if has_epsilon:
-                    arguments.append(argument('epsilon', 'Float', 'Epsilon'))
-                header = ', '.join(f'{a.arg_name}: {a.typing} = None' for a in arguments)
-                source = f'def {name}({header}):\n'
-                source += implementation.gen_docstring(arguments, returns='Float', return_socket='OUT', indent=4)
-                source += f'    return {expression}\n'
-                cls.register_source(math_node, 'gnmath.py', 'gnmath', source)
+            'ShaderNodeTree': {
+                'Math': [
+                    ('LESS_THAN', 'less_than'),
+                    ('GREATER_THAN', 'greater_than'), 
+                    ('COMPARE', 'compare'),
+                ],
+            },
+        }
 
-            for data_type, class_name, prefix, operations in types:
-                node.set_params(data_type=data_type, mode='ELEMENT', operation=operations[0])
-                cls._check_operations(node, operations)
-                base = cls(node)
-                base['data_type'] = data_type
-                base['mode'] = 'ELEMENT'
-                for operation in operations:
-                    implementation = base.copy()
+        CLASS_NAMES = {
+            'Math'          : "Float",
+            'Vector Math'   : "Vector",
+            'Integer Math'  : "Integer",
+            'Boolean Math'  : "Boolean",
+            'Bit Math'      : "Integer",
+        }
+
+        node_specs = {name: list(specs) for name, specs in MATH['common'].items()}
+        for name, specs in MATH[cls.tree_type].items():
+            node_specs.setdefault(name, []).extend(specs)
+
+        with Tree(cls.tree_type) as tree:
+            for node_name, specs in node_specs.items():
+                if node_name not in tree.nodes:
+                    continue
+
+                node = tree.create_node(node_name)
+                class_name = CLASS_NAMES[node_name]
+
+                node_info = NodeInfo(tree.btree, node)
+                impl_base = cls(node_info)
+
+                for spec in specs:
+                    operation = spec[0]
+                    method_name = spec[1]
+                    func_name = spec[2] if len(spec) > 2 else method_name
+
+                    implementation = impl_base.copy()
                     implementation['operation'] = operation
-                    method_name = operation.lower()
-                    function_name = prefix + method_name
-                    source = implementation.gen_source(kind='FUNCTION', name=function_name, return_socket='OUT')
-                    cls.register_source(node, 'gnmath.py', 'gnmath', source)
 
-                    has_epsilon = data_type in {'FLOAT', 'VECTOR', 'RGBA'} and operation in equality
-                    arguments = [argument('b', class_name, 'B')]
-                    if has_epsilon:
-                        arguments.append(argument('epsilon', 'Float', 'Epsilon'))
-                    header = ', '.join(f'{a.arg_name}: {a.typing} = None' for a in arguments)
-                    source = f'    def {method_name}(self, {header}):\n'
-                    source += implementation.gen_docstring(arguments, is_jump=False, self_socket='A',
-                                                           returns='Boolean', return_socket='OUT')
-                    source += '        from . import gnmath\n'
-                    extra = ', epsilon=epsilon' if has_epsilon else ''
-                    source += f'        return gnmath.{function_name}(self, b{extra})\n'
-                    filename = class_name.lower() + '.py'
-                    cls.register_source(node, filename, class_name, source)
-                    if operation in dunders:
-                        source = f'    def {dunders[operation]}(self, other):\n        return self.{method_name}(other)\n'
-                        cls.register_source(node, filename, class_name, source)
-        finally:
-            bpy.data.node_groups.remove(tree)
+                    function_spec = NodeCall.function(
+                        func_name,
+                        class_name='gnmath',
+                        parameters={'operation': operation},
+                    )
+                    cls.register_source(node_info, function_spec,
+                                        implementation.gen_node_call(function_spec))
+                    
+                    self_socket = next(socket.socket_name for socket in
+                                       node_info.get_possible_sockets(operation=operation)
+                                       if socket.enabled and socket.socket_type != 'CUSTOM')
+                    method_spec = NodeCall.method(
+                        method_name,
+                        class_name=class_name,
+                        self_socket=self_socket,
+                        parameters={'operation': operation},
+                    )
+                    cls.register_source(node_info, method_spec,
+                                        implementation.gen_node_call(method_spec))
+
+                    if len(spec) < 4:
+                        continue
+
+                    # -------------------------
+                    # Operators
+                    # -------------------------
+
+                    op_specs = spec[3]
+                    if not isinstance(op_specs, list):
+                        op_specs = [op_specs]
+
+                    for op_spec in op_specs:
+                        op_code = None
+                        if isinstance(op_spec, tuple):
+                            op_name = op_spec[0]
+                            op_code = op_spec[1]
+                        else:
+                            op_name = op_spec
+                            if utils.is_unary_operator(op_name):
+                                op_code = f"self.{method_name}()"
+
+                        if utils.is_unary_operator(op_name):
+                            source = f"{TAB}def __{op_name}__(self):\n"
+                            source += f"{TAB*2}return {op_code}\n"
+
+                            cls.register_source(node_info,
+                                                method_spec.replace(method_name=f'__{op_name}__'), source)
+
+                        elif op_code is not None:
+                            source = f"{TAB}def __{op_name}__(self, other):\n"
+                            source += f"{TAB*2}return {op_code}\n"
+
+                            cls.register_source(node_info,
+                                                method_spec.replace(method_name=f'__{op_name}__'), source)
+                        
+                        else:
+                            for prefix in ["", "r", "i"]:
+
+                                source = f"{TAB}def __{prefix}{op_name}__(self, other):\n"
+
+                                if prefix in ("", "i"):
+                                    source += f"{TAB*2}value = self.{method_name}(other)\n"
+                                else:
+                                    source += f"{TAB*2}value = type(self)(other).{method_name}(self)\n"
+                                
+                                if prefix == "i":
+                                    source += f"{TAB*2}self._jump(value)\n"
+                                    source += f"{TAB*2}return self\n"
+                                else:
+                                    source += f"{TAB*2}return value\n"
+
+                                cls.register_source(node_info,
+                                                    method_spec.replace(method_name=f'__{prefix}{op_name}__'), source)
 
     # ----------------------------------------------------------------------------------------------------
-    # Shader specific comparizons
+    # Compare
     # ----------------------------------------------------------------------------------------------------
 
     @classmethod
-    def _gen_shader_compare_functions(cls):
-        """Complete shader comparisons from the ordinary Math functions."""
-        comparisons = (
-            ('less_than', 'less_than', '__lt__', False),
-            ('less_equal', 'less_equal', '__le__', False),
-            ('greater_than', 'greater_than', '__gt__', False),
-            ('greater_equal', 'greater_equal', '__ge__', False),
-            ('equal', 'compare', '__eq__', True),
-            ('not_equal', 'not_equal', '__ne__', True),
-        )
-        tree = bpy.data.node_groups.new(name='Shader comparisons', type='ShaderNodeTree')
-        try:
-            node = NodeInfo(tree, tree.nodes.new(type='ShaderNodeMath'))
-            for name, expression, epsilon in (
-                ('less_equal', 'subtract(1, greater_than(a, b))', False),
-                ('greater_equal', 'subtract(1, less_than(a, b))', False),
-                ('not_equal', 'subtract(1, compare(a, b, epsilon=epsilon))', True),
-                ('equal', 'compare(a, b, epsilon=epsilon)', True),
-            ):
-                header = 'a=None, b=None' + (', epsilon=None' if epsilon else '')
-                cls.register_source(node, 'gnmath.py', 'gnmath',
-                                    f'def {name}({header}):\n    return {expression}\n')
-            for class_name in ('Float', 'Integer'):
-                # Direct Float methods already come from gen_math_functions.
-                methods = comparisons if class_name == 'Integer' else tuple(
-                    row for row in comparisons if row[0] not in ('less_than', 'greater_than'))
-                for name, function, _, epsilon in methods:
-                    extra = ', epsilon=None' if epsilon else ''
-                    forward = ', epsilon=epsilon' if epsilon else ''
-                    source = (f'    def {name}(self, b=None{extra}):\n'
-                              f'        from . import gnmath\n'
-                              f'        return gnmath.{function}(self, b{forward})\n')
-                    cls.register_source(node, class_name.lower() + '.py', class_name, source)
-                for name, _, dunder, _ in comparisons:
-                    cls.register_source(node, class_name.lower() + '.py', class_name,
-                                        f'    def {dunder}(self, other):\n        return self.{name}(other)\n')
-        finally:
-            bpy.data.node_groups.remove(tree)
+    def gen_compare(cls):
+
+        operators = {'LESS_THAN': 'lt', 'GREATER_THAN': 'gt', 'LESS_EQUAL': 'le', 'GREATER_EQUAL': 'ge',
+                     'EQUAL': 'eq', 'NOT_EQUAL': 'ne', 'BRIGHTER': 'gt', 'DARKER': 'lt'}
+
+        if cls.tree_type != 'GeometryNodeTree':
+            return
+
+        with Tree(cls.tree_type) as tree:
+
+            node_info = NodeInfo(tree.btree, tree.create_node('Compare'))
+
+            for data_type in node_info.config['data_type']['enums']:
+
+                class_name = core_module.utils.SocketType.from_type(data_type).class_name
+
+                node_info.set_params(data_type=data_type)
+                params = node_info.snapshot_params()
+
+                operations = params['operation']['enums']
+                for operation in operations:
+                    method_name = core_module.utils.snake_case(operation)
+                    implementation = NodeImplementation(node_info)
+                    implementation["data_type"] = data_type
+                    implementation["operation"] = operation
+
+                    ispec = NodeCall.method(
+                        class_name = class_name,
+                        method_name = method_name,
+                        self_socket = "A",
+                    )
+
+                    cls.register_source(node_info, ispec, implementation.gen_node_call(ispec))
+
+                    op_name = operators[operation]
+                    source = f"{TAB}def __{op_name}__(self, other):\n"
+                    source += f"{TAB*2}return self.{method_name}(other)\n"
+
+                    cls.register_source(node_info, ispec.replace(method_name=f'__{op_name}__'), source)
+
+    # ----------------------------------------------------------------------------------------------------
+    # Compare
+    # ----------------------------------------------------------------------------------------------------
+
+    @classmethod
+    def gen_mix(cls):
+
+        with Tree(cls.tree_type) as tree:
+
+            node_info = NodeInfo(tree.btree, tree.create_node('Mix'))
+
+            for data_type in node_info.config['data_type']['enums']:
+                class_name = core_module.utils.SocketType.from_type(data_type).class_name
+
+                implementation = NodeImplementation(node_info)
+                implementation["data_type"] = data_type
+
+                ispec = NodeCall.class_method(
+                    class_name = class_name,
+                    method_name = "Mix",
+                    last_sockets=('Factor',),
+                )
+                cls.register_source(node_info, ispec, implementation.gen_node_call(ispec))
+
+
+                ispec = NodeCall.method(
+                    class_name = class_name,
+                    method_name = "mix",
+                    self_socket="A",
+                    last_sockets=('Factor',),
+                )
+                cls.register_source(node_info, ispec, implementation.gen_node_call(ispec))
 
     # ====================================================================================================
     # Properties
@@ -825,7 +676,6 @@ class NodeImplementation:
             if name not in nodes:
                 identifiers = utils.get_node_names(cls.tree_type)
                 identifier = next((key for key, value in identifiers.items() if value == name), name)
-                print("DEBUG", cls.tree_type, name, identifier)
                 nodes[name] = NodeInfo(tree, tree.nodes.new(type=identifier))
             return nodes[name]
 
@@ -868,31 +718,10 @@ class NodeImplementation:
                             references.remove(previous)
                             sources = cls.files[cls.tree_type][filename]
                             sources[:] = [code for code in sources if ast.parse(textwrap.dedent(code)).body[0].name != name]
-                    cls.register_source(getter_node, filename, destination, source, returns=getter.get('output', 'OUT') if getter else None)
-                    cls.register_source(setter_node, filename, destination, setter, returns=None)
+                    cls._register_source(getter_node, filename, destination, source, returns=getter.get('output', 'OUT') if getter else None)
+                    cls._register_source(setter_node, filename, destination, setter, returns=None)
         finally:
             bpy.data.node_groups.remove(tree)
-
-    # ====================================================================================================
-    # Generate nd module
-    # ====================================================================================================
-
-    @classmethod
-    def gen_static_code(cls):
-        """Collect nd accessors and cross references for the current environment."""
-        def generate(node):
-            name = core_module.utils.snake_case(node.bnode.name)
-            source = '\n'.join(cls(node)._gen_source(
-                name, 
-                method_type='CLASS_PROPERTY' if node.is_class_property else 'CLASS_METHOD',
-                return_kind='OUT',
-                #return_kind='OUT' if node.is_class_property else 'NODE'))
-                )
-            )
-            cls.register_source(node, 'static_nd.py', 'nd', source,
-                                returns='OUT' if node.is_class_property else 'NODE')
-
-        NodeInfo.loop_on_nodes(generate, tree_type=cls.tree_type)
 
     # ====================================================================================================
     # All nodes
@@ -901,6 +730,7 @@ class NodeImplementation:
     @classmethod
     def gen_nodes(cls):
         """Generate the supplied descriptions, expanding domain and type loops."""
+
         domains = {'POINT': 'Point', 'EDGE': 'Edge', 'FACE': 'Face', 'CORNER': 'Corner',
                    'CURVE': 'Spline', 'SPLINE': 'Spline', 'INSTANCE': 'Instance', 'LAYER': 'Layer',
                    'AUTO': 'Geometry'}
@@ -909,86 +739,41 @@ class NodeImplementation:
         # Generate from a single spec dict
         # ---------------------------------------------------------------------------
 
-        def generate_from_spec(node, spec):
-            implementation = cls(node)
-            if not spec.get('implement', True):
+        def generate_from_spec(node, node_call):
+
+            if isinstance(node_call, NodeCalls):
+                for nc in node_call:
+                    generate_from_spec(node, nc)
                 return
 
-            def emit(class_name, **parameters):
+            #print("DEBUG", type(node_call), repr(node_call))
 
-                if class_name is None:
-                    return
-                variant = implementation.copy()
-                variant.parameters.update(spec.get('parameters', {}))
-                for parameter, value in parameters.items():
-                    variant[parameter] = value
+            if not node_call.implement or node_call.class_name is None:
+                return
 
-                # classes can be a single class or a tuple of classes
-                classes = class_name if isinstance(class_name, tuple) else (class_name,)
+            node_impl = cls(node)
+            node_impl.parameters.update(node_call.parameters)
 
-                # same for method names
-                names = spec['method_name']
-                names = names if isinstance(names, tuple) else (names,) * len(classes)
-                methods = spec.get('is_class_method', False)
-                methods = methods if isinstance(methods, tuple) else (methods,) * len(classes)
+            source = node_impl.gen_node_call(node_call)
 
-                if len(names) != len(classes) or len(methods) != len(classes):
-                    raise ValueError(f"Inconsistent implementation description for {node.name!r}: {spec!r}")
+            cls.register_source(node, node_call, source)
 
-                for destination, name, class_method in zip(classes, names, methods, strict=True):
+            # __getitem__ / __setitem__
 
-                    # Core implementation
+            as_item = config.ITEM_IMPLEMENTATION.get(node.name, None)
+            if (as_item is not None) and (node_call.method_type=='METHOD'):
 
-                    source = '\n'.join(variant._gen_source(
-                        name, 
-                        method_type='CLASS_METHOD' if class_method else 'METHOD',
-                        self_socket=spec.get('self_socket'), 
-                        is_jump=spec.get('jump', False),
-                        auto_data_type=spec.get('data_type_input') if spec.get('auto_data_type') else None,
-                        return_kind=spec.get('return_kind', 'OUT')))
+                ispec = node_call.replace(
+                    method_type = 'METHOD',
+                    method_name = '__getitem__' if as_item['kind']=='get' else '__setitem__',
+                )
+                ret_kind = as_item.get('OUT', ispec.return_kind)
+                if ret_kind is not None:
+                    ispec.return_kind = ret_kind
 
-                    prefix = 'dom_' if destination in core_module.constants.DOMAIN_CLASSES else ''
-                    cls.register_source(
-                        node, 
-                        prefix + destination.lower() + '.py', 
-                        destination,
-                        source, 
-                        returns=spec.get('return_kind', 'OUT'),
-                        rules=spec['rules'])
+                source = node_impl.gen_node_call(ispec)
 
-                    # __getitem__ / __setitem__
-
-                    as_item = config.ITEM_IMPLEMENTATION.get(node.name, None)
-                    if (as_item is not None) and (not class_method):
-
-                        return_kind = spec.get('return_kind', 'OUT')
-                        return_kind = as_item.get('OUT', return_kind)
-
-                        source = '\n'.join(variant._gen_source(
-                            '__getitem__' if as_item['kind']=='get' else '__setitem__', 
-                            method_type='METHOD',
-                            self_socket=spec.get('self_socket'), 
-                            is_jump=spec.get('jump', False),
-                            auto_data_type=spec.get('data_type_input') if spec.get('auto_data_type') else None,
-                            return_kind=return_kind))
-
-                        cls.register_source(node, prefix + destination.lower() + '.py', destination,
-                                            source, returns=return_kind)
-
-            if spec.get('domain_loop'):
-                class_name = spec.get('class_name')
-                if class_name is not None:
-                    emit(class_name)
-                for domain in NodeParam.Parameter(node.bnode, 'domain').enums:
-                    emit(domains[domain], domain=domain)
-            elif not spec.get('data_type_loop'):
-                emit(spec.get('class_name'))
-
-            if spec.get('data_type_loop'):
-                parameter = node.data_type_parameter
-                for value in parameter.enums:
-                    socket_type = core_module.constants.DATA_TYPE_HOMONYMS.get(value, value)
-                    emit(core_module.constants.CLASS_NAMES[socket_type], **{parameter.name: value})    
+                cls.register_source(node, ispec, source)
 
         # ---------------------------------------------------------------------------
         # Spec coming from get_node_implementation can be multiple
@@ -996,50 +781,17 @@ class NodeImplementation:
 
         def generate(node):
             implementation = cls(node)
-            specs = implementation.get_node_implementation()
-            if not isinstance(specs, (tuple, list)):
-                specs = (specs,)
-            for spec in specs:
-                generate_from_spec(node, spec)
+            node_calls = implementation.get_node_implementation()
+
+            print(f"DEBUG {node.name}: {type(node_calls)}")
+
+            generate_from_spec(node, node_calls)
 
         # ---------------------------------------------------------------------------
         # Main is a loop on nodes
         # ---------------------------------------------------------------------------
 
         NodeInfo.loop_on_nodes(generate, tree_type=cls.tree_type)
-
-    # ====================================================================================================
-    # Manual code insertion
-    # ====================================================================================================
-
-    @classmethod
-    def gen_source_code(cls):
-        """Collect explicitly assigned methods from source_code containers.
-
-        Each entry associates a Blender node, a destination class and a source
-        class. Copy its methods through gen_source, keeping collision checks.
-        """
-        additions = ()
-        if not additions:
-            return
-        tree = bpy.data.node_groups.new(name='Specific implementations', type=cls.tree_type)
-        try:
-            available = utils.get_node_names(cls.tree_type)
-            for node_id, class_name, code_class in additions:
-                if node_id not in available:
-                    continue
-                try:
-                    node = NodeInfo(tree, tree.nodes.new(type=node_id))
-                    implementation = cls(node)
-                    for method in vars(code_class).values():
-                        if not inspect.isfunction(method):
-                            continue
-                        source = implementation.gen_source(kind='METHOD', copy_code=method)
-                        cls.register_source(node, class_name.lower() + '.py', class_name, source)
-                finally:
-                    tree.nodes.clear()
-        finally:
-            bpy.data.node_groups.remove(tree)
 
     # ====================================================================================================
     # Add constructors with subtypes : Float.Angle, Vector.Velocity,...
@@ -1236,7 +988,7 @@ class NodeImplementation:
                         code += margin + tab + line + "\n"
                         tab = TAB
 
-                    cls.register_source(
+                    cls._register_source(
                         None, 
                         d['class_name'].lower() + '.py', 
                         d['class_name'], 
@@ -1260,6 +1012,61 @@ class NodeImplementation:
     # Get the standard node implementation
     # ====================================================================================================
 
+    def get_domain_calls(self, node_call: NodeCall) -> NodeCalls:
+        """Construire les variantes d'un appel pour les domaines du nœud.
+
+        Parameters
+        ----------
+        node_call : NodeCall
+            Appel de départ. Sa variante générale est conservée si class_name
+            est renseigné. Chaque variante de domaine conserve ses attributs
+            et ses paramètres fixés, en remplaçant domain et la classe cible.
+
+        Returns
+        -------
+        NodeCalls
+            Appel général éventuel, puis un appel par domaine autorisé.
+        """
+        domains = {'POINT': 'Point', 'EDGE': 'Edge', 'FACE': 'Face', 'CORNER': 'Corner',
+                   'CURVE': 'Spline', 'SPLINE': 'Spline', 'INSTANCE': 'Instance', 'LAYER': 'Layer',
+                   'AUTO': 'Geometry'}
+        parameter = NodeParam.Parameter(self.node.bnode, 'domain')
+        if parameter is None or parameter.enums is None:
+            raise ValueError(f"{self.node.name}: no domain enum parameter")
+
+        overrides = []
+        if node_call.class_name is not None:
+            overrides.append({})
+
+        for domain in parameter.enums:
+            overrides.append({
+                'class_name': domains[domain],
+                'parameters': {**node_call.parameters, 'domain': domain},
+            })
+        return NodeCalls.overrides(node_call, overrides)
+
+    def get_data_type_calls(self, node_call: NodeCall) -> NodeCalls:
+
+        parameter = self.node.data_type_parameter
+        if parameter is None:
+            raise ValueError(f"{self.node.name}: no data_type parameter")
+
+        overrides = []
+        for data_type in parameter.enums:
+            overrides.append({
+                'class_name': SocketType.from_type(data_type).class_name,
+                'auto_data_type': None,
+                'parameters': {**node_call.parameters, parameter.name: data_type},
+            })
+            if self.node.data_type_drives_inputs and node_call.has_self:
+                overrides[-1]['self_socket'] = self.node.data_type_input(data_type)
+
+        return NodeCalls.overrides(node_call, overrides)
+
+    # ====================================================================================================
+    # Build default node implementation
+    # ====================================================================================================
+
     def get_node_implementation(self):
         """Describe the node implementation, including requested parameter loops."""
 
@@ -1270,6 +1077,8 @@ class NodeImplementation:
         first_output = outputs[0] if outputs else None
 
         name_tokens = [token.strip() for token in node.name.split(" ")]
+        method_name = core_module.utils.snake_case(' '.join(name_tokens))        
+        MethodName = core_module.utils.CamelCase(' '.join(name_tokens))        
 
         # ---------------------------------------------------------------------------
         # Hacks
@@ -1282,37 +1091,43 @@ class NodeImplementation:
         if node.name == 'Value to String':
             category = "Hack"
             rules = ["'Value to String' hack"]
-            return ({
-                'category': category,
-                'class_name': 'Float',
-                'method_name' : 'to_string',
-                'data_type': 'FLOAT',
-                'rules': rules,
-                }, {
-                'category': category,
-                'class_name': 'Integer',
-                'method_name' : 'to_string',
-                'data_type': 'INT',
-                'rules': rules,
-                }, {
-                'category': category,
-                'class_name': 'String',
-                'method_name' : 'FromValue',
-                'auto_data_type': 'Value',
-                'rules': rules,
-                },
+
+            return NodeCalls(
+                NodeCalls.attributes(NodeCall.method(
+                    category = category,
+                    method_name = "to_string",
+                    self_socket = "Value",
+                    parameters = {'data_type': "FLOAT"},
+                    rules = rules
+                ), class_name="Float"),
+                NodeCalls.attributes(NodeCall.method(
+                    category = category,
+                    method_name = "to_string",
+                    self_socket = "Value",
+                    parameters = {'data_type': "INT"},
+                    rules = rules
+                ), class_name="Integer"),
+                NodeCalls.attributes(NodeCall.class_method(
+                    category = category,
+                    method_name = "FromValue",
+                    auto_data_type = "Value",
+                    rules = rules
+                ), class_name="String"),
             )
-    
+
         # ---------------------------------------------------------------------------
         # Static only : no implementation
         # ---------------------------------------------------------------------------
 
         if node.bl_idname in config.STATIC_IMPLEMENTATION_ONLY:
-            return {
-                'category': "Static Only",
-                'implement': False,
-                'rules': ["Static only node"],
-            }
+            return NodeCall(
+                method_type = 'FUNCTION',
+                category = "Static Only",
+                method_name = "no_name",
+                implement = False,
+                rules = ["Static only node"],
+            )
+        
         rules = [f"{node.has_domain_parameter=}",
                  f"{node.has_data_type_parameter=}",
                  f"{node.data_type_drives_inputs=}",
@@ -1320,6 +1135,7 @@ class NodeImplementation:
                  f"{node.data_type_drives_first_input=}",
                  f"{node.has_items=}",
                  ]
+        over_spec = config.SPECIAL_NODES.get(node.name, {})
 
         # ---------------------------------------------------------------------------
         # Texture nodes
@@ -1331,14 +1147,12 @@ class NodeImplementation:
             method_name = core_module.utils.CamelCase(' '.join(tokens))
             rules += ["Texture Node"]
 
-            repl = config.SPECIAL_NODES.get(node.name, {})
-            return {
-                'category': "Texture",
-                'class_name': repl.get('class_name', "Texture"),
-                'method_name': repl.get('method_name', method_name),
-                'is_class_method': repl.get('is_class_method', True),
-                'rules': rules,
-            }
+            return NodeCalls.attributes(NodeCall.class_method(
+                category = "Texture",
+                method_name = method_name,
+                rules = rules,
+            ), class_name="Texture").replace(**over_spec)
+
 
         rules += ["Not a texture node"]
 
@@ -1347,18 +1161,14 @@ class NodeImplementation:
         # ---------------------------------------------------------------------------
 
         if node.is_shader:
-            tokens = [token.strip() for token in node.name.split(" ")]
-            if tokens[-1] == 'BSDF':
-                method_name = core_module.utils.CamelCase(' '.join(tokens[:-1]))
+            if name_tokens[-1] == 'BSDF':
+                method_name = core_module.utils.CamelCase(' '.join(name_tokens[:-1]))
 
-                repl = config.SPECIAL_NODES.get(node.name, {})
-                return {
-                    'category': "Shader",
-                    'class_name': repl.get('class_name', "Shader"),
-                    'method_name': repl.get('method_name', method_name),
-                    'is_class_method': repl.get('is_class_method', True),
-                    'rules': rules + [f"Ends with BSDF -> Shader constructor"],
-                }
+                return NodeCalls.attributes(NodeCall.class_method(
+                    category = "Shader",
+                    method_name = method_name,
+                    rules = rules + [f"Ends with BSDF -> Shader constructor"],
+                ), class_name="Shader").replace(**over_spec)
 
         # ---------------------------------------------------------------------------
         # data_type drives both input and output sockets
@@ -1370,26 +1180,19 @@ class NodeImplementation:
             if in_count > 0 and out_count > 0:
                 rules += ["Data type drives input and output sockets"]
 
-                repl = config.SPECIAL_NODES.get(node.name, {})
-                return {
-                    'category' : 'Method',
-                    'class_name': None,
-                    'method_name': repl.get('method_name', core_module.utils.snake_case(node.name)),
-                    'data_type_loop': True,
-                    'rules': rules,
-                    }
+                node_call = NodeCall.method(
+                    category = 'Method',
+                    method_name = method_name,
+                    rules = rules,
+                ).replace(**over_spec)
+                return self.get_data_type_calls(node_call)
 
         # ---------------------------------------------------------------------------
         # data_type input
         # used for data_type_loop
         # ---------------------------------------------------------------------------
 
-        if node.has_data_type_parameter:
-            data_type_inputs = node.data_type_socket_changes['inputs']
-            data_type_input = (node.max_inputs[data_type_inputs[0]]['name']
-                                if data_type_inputs else None)
-        else:
-            data_type_input = None
+        data_type_input = node.data_type_input()
 
         # ---------------------------------------------------------------------------
         # Input nodes
@@ -1480,16 +1283,21 @@ class NodeImplementation:
                                     class_name = config.DOMAIN_NAME.get(dom, dom)
                                     method_name = core_module.utils.snake_case(' '.join(tokens[1:]))
                                 break
+
+            if is_class_method:
+                return NodeCalls.attributes(NodeCall.class_method(
+                    category = category,
+                    method_name = method_name,
+                    rules = rules,
+                ), class_name=class_name).replace(**over_spec)
+            else:
+                return NodeCalls.attributes(NodeCall.method(
+                    category = category,
+                    method_name = method_name,
+                    self_socket = first_input.socket_name,
+                    rules = rules,
+                ), class_name=class_name).replace(**over_spec)
                     
-            repl = config.SPECIAL_NODES.get(node.name, {})
-            return {
-                'category' : category,
-                'class_name': repl.get('class_name', class_name),
-                'method_name': repl.get('method_name', method_name),
-                'is_class_method': repl.get('is_class_method', is_class_method),
-                'rules': rules,
-                }
-            
         rules += ["Not an input node"]
                 
         # ---------------------------------------------------------------------------
@@ -1569,21 +1377,37 @@ class NodeImplementation:
                 
                 else:
                     method_name = core_module.utils.snake_case(node.name)
-                
-                
-            repl = config.SPECIAL_NODES.get(node.name, {})
-        
-            return {
-                'category': category,
-                'class_name': repl.get('class_name', class_name),
-                'method_name': repl.get('method_name', method_name),
-                'jump': repl.get('jump', jump),
-                'data_type_input': repl.get('data_type_input', data_type_input),
-                'auto_data_type': repl.get('auto_data_type', data_type_input is not None),
-                'data_type_loop': repl.get('data_type_loop', data_type_loop),
-                'domain_loop': repl.get('domain_loop', domain_loop),
-                'rules': rules,
-            }
+
+            if True:
+                node_calls = NodeCall.method(
+                    category = category,
+                    method_name = method_name,
+                    class_name = class_name,
+                    self_socket = geo_socket.socket_name,
+                    is_jump = jump,
+                    auto_data_type = data_type_input,
+                    rules = rules,
+                ).replace(**over_spec)
+
+                if data_type_loop:
+                    node_calls = self.get_data_type_calls(node_calls)
+                if domain_loop:
+                    node_calls = self.get_domain_calls(node_calls)
+
+                return node_calls
+
+            else:
+
+                return NodeCalls.attributes(NodeCall.method(
+                    category = category,
+                    method_name = method_name,
+                    self_socket=geo_socket.socket_name,
+                    is_jump = jump,
+                    auto_data_type = data_type_input,
+                    data_type_loop = data_type_loop,
+                    domain_loop = domain_loop,
+                    rules = rules,
+                ), class_name=class_name).replace(**over_spec)
         
         rules += ["First input socket is not geometry"]
     
@@ -1604,16 +1428,13 @@ class NodeImplementation:
             if class_name in tokens:
                 tokens.remove(class_name)
             method_name = core_module.utils.CamelCase(' '.join(tokens))
-        
-            repl = config.SPECIAL_NODES.get(node.name, {})
-        
-            return {
-                'category': category,
-                'class_name': repl.get('class_name', class_name),
-                'method_name': repl.get('method_name', method_name),
-                'is_class_method': repl.get('is_class_method', True),
-                'rules': rules,
-            }
+
+            return NodeCalls.attributes(NodeCall.class_method(
+                category = category,
+                method_name = method_name,
+                rules = rules,
+            ), class_name=class_name).replace(**over_spec)
+
         rules += ["First output socket is not Geometry"]
 
         # ---------------------------------------------------------------------------
@@ -1626,7 +1447,6 @@ class NodeImplementation:
             rules += [f"Grid node {node.is_grid_input=}, {node.is_grid_output=}"]
 
             data_type_loop = False
-            auto_data_type = False
             jump = False
 
             if node.is_grid_input:
@@ -1648,19 +1468,44 @@ class NodeImplementation:
                 jump = node.is_grid_input and node.is_grid_output
                 rules += [f"Node has data_type parameter"]
 
-            repl = config.SPECIAL_NODES.get(node.name, {})
-            return {
-                'category': category,
-                'class_name': repl.get('class_name', class_name),
-                'method_name': repl.get('method_name', method_name),
-                'is_class_method': repl.get('is_class_method', is_class_method),
-                'auto_data_type': repl.get('auto_data_type', auto_data_type),
-                'data_type_input': repl.get('data_type_input', data_type_input),
-                'data_type_loop': repl.get('data_type_loop', data_type_loop),
-                'jump': repl.get('jump', jump),
-                'rules': rules,
-            }
-        
+            if True:
+                if is_class_method:
+                    node_calls = NodeCall.class_method(
+                        category = category,
+                        method_name = method_name,
+                        rules = rules,
+                    ).replace(**over_spec)
+                else:
+                    node_calls = NodeCall.method(
+                        category = category,
+                        method_name = method_name,
+                        self_socket = first_input.socket_name,
+                        is_jump = jump,
+                        rules = rules,
+                    ).replace(**over_spec)
+                if data_type_loop:
+                    node_calls = self.get_data_type_calls(node_calls)
+
+                return node_calls
+                
+            else:
+                if is_class_method:
+                    return NodeCalls.attributes(NodeCall.class_method(
+                        category = category,
+                        method_name = method_name,
+                        data_type_loop = data_type_loop,
+                        rules = rules,
+                    ), class_name=class_name).replace(**over_spec)
+                else:
+                    return NodeCalls.attributes(NodeCall.method(
+                        category = category,
+                        method_name = method_name,
+                        self_socket = first_input.socket_name,
+                        data_type_loop = data_type_loop,
+                        is_jump = jump,
+                        rules = rules,
+                    ), class_name=class_name).replace(**over_spec)
+
         rules += ["Node is not grid"]
 
         # ---------------------------------------------------------------------------
@@ -1668,16 +1513,21 @@ class NodeImplementation:
         # ---------------------------------------------------------------------------
 
         if node.data_type_drives_first_input:
-            repl = config.SPECIAL_NODES.get(node.name, {})
             method_name = core_module.utils.CamelCase(node.name)
-            return {
-                'category': 'Data type driven',
-                'class_name': repl.get('class_name', None),
-                'method_name': repl.get('method_name', method_name),
-                'is_class_method': repl.get('is_class_method', True),
-                'data_type_loop': repl.get('data_type_loop', True),
-                'rules': rules + ["'data_type' parameter drives first input"],
-            }
+            if True:
+                node_call = NodeCall.class_method(
+                    category = 'Data type driven',
+                    method_name = method_name,
+                    rules = rules + ["'data_type' parameter drives first input"],
+                ).replace(**over_spec)
+                return self.get_data_type_calls(node_call)
+            else:
+                return NodeCalls.attributes(NodeCall.class_method(
+                    category = 'Data type driven',
+                    method_name = method_name,
+                    data_type_loop = True,
+                    rules = rules + ["'data_type' parameter drives first input"],
+                ), class_name=None).replace(**over_spec)
 
         rules += ["No 'data_type' driving first input"]
         tokens = [token.strip() for token in node.name.split(" ")]
@@ -1765,9 +1615,13 @@ class NodeImplementation:
             rules += ["No more rule..."]
             if first_input is None:
                 if first_output is None:
-                    return {
-                        'category': 'Manual', 'implement': False, 'rules': rules,
-                    }
+                    return NodeCall(
+                        method_type = 'FUNCTION',
+                        category = 'Manual',
+                        method_name = 'no_name',
+                        implement = False,
+                        rules = rules,
+                    ).replace(**over_spec)
                 class_name = first_output.class_name
                 is_class_method = True
                 method_name = core_module.utils.CamelCase(node.name)
@@ -1775,17 +1629,45 @@ class NodeImplementation:
                 class_name = first_input.class_name
                 method_name = core_module.utils.snake_case(node.name)
 
-        repl = config.SPECIAL_NODES.get(node.name, {})
+        # Conversion nodes can expose an instance method and a constructor.
+        if isinstance(is_class_method, tuple):
+            specs = []
+            for target, name, class_method in zip(class_name, method_name, is_class_method, strict=True):
+                if class_method:
+                    spec = NodeCall.class_method(
+                        category = category,
+                        method_name = name,
+                        class_name = target,
+                        auto_data_type = data_type_input,
+                        rules = rules,
+                    )
+                else:
+                    spec = NodeCall.method(
+                        category = category,
+                        method_name = name,
+                        class_name = target,
+                        self_socket = first_input.socket_name,
+                        auto_data_type = data_type_input,
+                        rules = rules,
+                    )
+                specs.append(spec.replace(**over_spec))
+            return NodeCalls(*specs)
 
-        return {
-            'category': category,
-            'class_name': repl.get('class_name', class_name),
-            'method_name': repl.get('method_name', method_name),
-            'is_class_method': repl.get('is_class_method', is_class_method),
-            'data_type_input': repl.get('data_type_input', data_type_input),
-            'auto_data_type': repl.get('auto_data_type', data_type_input is not None),
-            'rules': rules,
-        }
+        if is_class_method:
+            return NodeCalls.attributes(NodeCall.class_method(
+                category = category,
+                method_name = method_name,
+                auto_data_type = data_type_input,
+                rules = rules,
+            ), class_name=class_name).replace(**over_spec)
+
+        return NodeCalls.attributes(NodeCall.method(
+            category = category,
+            method_name = method_name,
+            self_socket = first_input.socket_name,
+            auto_data_type = data_type_input,
+            rules = rules,
+        ), class_name=class_name).replace(**over_spec)
 
     # ====================================================================================================
     # Additional implementations
@@ -1802,7 +1684,7 @@ class NodeImplementation:
             for name, value in spec.get('parameters', {}).items():
                 implementation[name] = value
 
-            source = "\n".join(implementation._gen_source(
+            source = implementation._gen_source(
                 method_name = spec['method_name'],
                 method_type = spec.get('kind', 'METHOD'),
                 self_socket = spec.get('self_socket', None),
@@ -1810,10 +1692,10 @@ class NodeImplementation:
                 return_kind = spec.get('returns', 'OUT'),
                 auto_data_type = spec.get('auto_data_type', None),
                 fixed_sockets = spec.get('fixed_sockets', None),
-            ))
+            )
 
             class_name = spec['class_name']
-            cls.register_source(
+            cls._register_source(
                 node_info,
                 class_name.lower() + '.py', 
                 class_name,
@@ -1862,6 +1744,7 @@ class NodeImplementation:
                             class_spec['class_name'] = class_name
                             params = class_spec.get('parameters', {})
                             params[driving_param] = value
+                            class_spec['parameters'] = params
 
                             cls.gen_from_spec(node_name, class_spec)
 
@@ -1942,39 +1825,6 @@ class NodeImplementation:
                          names[value.lower()])
             values[name] = value
         return values
-
-    # ----------------------------------------------------------------------------------------------------
-    # Loop on parameters
-    # ----------------------------------------------------------------------------------------------------
-
-    def loop_on_parameter(self, param_name, func_name, *, kind='STATIC_METHOD',
-                          self_socket=None, return_socket=None, is_jump=False,
-                          last_sockets=(), **parameters):
-        """Yield implementation source for each enum value in this configuration.
-
-        func_name receives the enum identifier and returns the Python method name.
-        Each implementation has its own copy of the parameter configuration.
-        """
-        base = self.copy()
-        for name, value in parameters.items():
-            base[name] = value
-        base[param_name] = None
-        fixed = base._fixed_parameters()
-        initial = self.node.snapshot_params()
-        try:
-            self.node.set_params(**fixed)
-            param = NodeParam.Parameter(self.node.bnode, param_name)
-            if param is None or param.param_type != 'ENUM':
-                raise ValueError(f"Parameter {param_name!r} must be an enum")
-            values = param.enums
-        finally:
-            self.node.set_params(**{name: snapshot['value'] for name, snapshot in initial.items()})
-        for value in values:
-            implementation = base.copy()
-            implementation[param_name] = value
-            yield implementation.gen_source(kind=kind, name=func_name(value),
-                                            self_socket=self_socket, return_socket=return_socket,
-                                            is_jump=is_jump, last_sockets=last_sockets)
 
     # ----------------------------------------------------------------------------------------------------
     # Source Code
@@ -2143,10 +1993,10 @@ class NodeImplementation:
 
         param_args = []
         for param_name, snapshot in parameters.items():
-            param = NodeParam(self.node.bnode, param_name, snapshot['value'], snapshot['type'])
             prop = self.node.bnode.bl_rna.properties[param_name]
-            param.enums = (tuple(item.identifier for item in prop.enum_items)
-                           if snapshot['type'] in {'ENUM', 'ENUM_FLAG'} else None)
+            enums = (tuple(item.identifier for item in prop.enum_items)
+                     if snapshot['type'] in {'ENUM', 'ENUM_FLAG'} else None)
+            param = NodeParam(self.node.bnode, param_name, snapshot['value'], snapshot['type'], enums=enums)
             argument = (Argument.from_param(param, value=fixed[param_name]) if param_name in fixed else
                         Argument.from_param(param))
             # repr preserves quotes and newlines in string defaults.
@@ -2368,9 +2218,8 @@ class NodeImplementation:
         # Preparation
         # ---------------------------------------------------------------------------
 
-        margin = "" if method_type == 'FUNCTION' else "    "
-        if method_type not in ('METHOD', 'SETTER', 'GETTER', 'CLASS_METHOD', 'CLASS_PROPERTY', 'FUNCTION'):
-            raise ValueError(f"Unknown implementation kind: {method_type!r}")
+        if method_type not in get_args(FUNC_TYPE):
+            raise ValueError(f"Unknown implementation type: {method_type!r}")
 
         is_instance = method_type in ('METHOD', 'SETTER', 'GETTER')
 
@@ -2383,31 +2232,18 @@ class NodeImplementation:
         if fixed_sockets is None:
             fixed_sockets = {}
 
+        source = SourceWriter(method_name, method_type, type_aliases=self.type_aliases)
+
         # ---------------------------------------------------------------------------
         # Parameters
         # ---------------------------------------------------------------------------
 
-        param_args = []
-        fixed_params = {}
+        fixed_params = self.fixed_enums
         free_params = []
 
-        parameters = self.node.snapshot_params()
-        for param_name, value in self.parameters.items():
-            snapshot = parameters[param_name]
-            param = NodeParam(self.node.bnode, param_name, snapshot['value'], snapshot['type'])
-            param.enums = snapshot['enums']
-
-            if value is None:
-                argument = Argument.from_param(param)
-                argument.arg_value = repr(param.value)
-                if param.param_type == 'VALUE':
-                    argument.typing = type(param.value).__name__
-                free_params.append(argument)
-            else:
-                argument = Argument.from_param(param, value=value)
-                fixed_params[param_name] = value
-
-            param_args.append(argument)
+        for param_name in self.node.config_order:
+            if param_name not in fixed_params:
+                free_params.append(param_name)
 
         # ---------------------------------------------------------------------------
         # Sockets arguments
@@ -2419,7 +2255,7 @@ class NodeImplementation:
         selected_sockets = [sock for sock in possible_sockets
                             if sock.enabled and (sock.name not in fixed_sockets)]
 
-        # Prepare socket default use and correspondance betwenn argument and sockets
+        # Prepare socket default use and correspondance between argument and sockets
         for sock in selected_sockets:
             sock.ignore         = False # Ignore in argument list
             sock.is_self        = False # This socket is used as self argument
@@ -2571,15 +2407,20 @@ class NodeImplementation:
         # --------------------------------------------------
 
         used_argument_names = set()
-        for param in free_params:
-            name = param.arg_name
+        for name in free_params:
+            param = self.node.default_params[name]
             arg_name = core_module.utils.snake_case(name)
+            typing = None
+            if param['type'] == 'ENUM' and param['enums']:
+                typing = list(param['enums'])
+            elif type(param['value']) in (bool, int, float, str):
+                typing = type(param['value']).__name__
             arguments.append({
                 'kind': 'PARAMETER',
                 'param_name': name,
                 'arg_name': arg_name,
-                'typing': param.typing,
-                'arg_value': param.arg_value,
+                'typing': typing,
+                'arg_value': f"{param['value']!r}",
             })
             used_argument_names.add(arg_name)
 
@@ -2623,6 +2464,7 @@ class NodeImplementation:
         if auto_data_type is not None:
             if method_type != 'METHOD':
                 raise ValueError('auto_data_type requires an instance method')
+            
             type_param = self.node.data_type_parameter
             if type_param is None:
                 raise ValueError(f"No data_type or input_type parameter in {self.node.name!r}")
@@ -2638,30 +2480,28 @@ class NodeImplementation:
                 computed_data_type = type_param.name
                 arguments = [arg for arg in arguments
                              if arg.get('param_name') != computed_data_type]
-                free_params = [arg for arg in free_params if arg.arg_name != computed_data_type]
 
         # ---------------------------------------------------------------------------
         # Node creation arguments
         # ---------------------------------------------------------------------------
 
-        node_args = None
+        node_args = []
         node_sockets = []
         node_params = []
 
         if self.node.has_items and (not self.node.items_with_name):
-            node_args = "*items"
+            node_args.append("*items")
 
         for i_sock, sock in enumerate(selected_sockets):
 
             # Node(self, *args) or Node(*args)
             if sock.is_multi:
-                assert node_args is None, f"{self.node.name}: Strange case !!!!"
+                #assert node_args is None, f"{self.node.name}: Strange case !!!!"
                 argument = next(arg for arg in arguments if arg.get('is_multi', False))
                 arg_name = argument['arg_name']
                 if sock.is_self:
-                    node_args = f"*{arg_name}"
-                else:
-                    node_args = f"*[self, *{arg_name}]"
+                    node_args.append("self")
+                node_args.append(f"*{arg_name}")
 
             # named_sockets = {'Socket': self}
             elif sock.is_self:
@@ -2687,7 +2527,7 @@ class NodeImplementation:
                 node_sockets.append(f"'ID_{sock.identifier}': synonyms['{sock.identifier}']")
 
         # Fixed sockets
-        for k, v in fixed_sockets:
+        for k, v in fixed_sockets.items():
             node_sockets.append(f"'{k}': {v!r}")
 
         # Parameters
@@ -2699,31 +2539,18 @@ class NodeImplementation:
         for p_name, p_value in fixed_params.items():
             node_params.append(f"{p_name} = {p_value!r}")
 
-        # ---------------------------------------------------------------------------
+        if computed_data_type is not None:
+            node_params.append(
+                f"{computed_data_type} = {computed_data_type}"
+            )            
+
+        # ===========================================================================        
         # Source code generation
+        # ===========================================================================        
+
         # ---------------------------------------------------------------------------
-
-        yield f"{margin}# Node {self.node.name}"
-
-        if method_type == 'CLASS_METHOD':
-            yield "    @classmethod"
-        elif method_type == 'CLASS_PROPERTY':
-            yield "    @utils.classproperty"
-        elif method_type == 'GETTER':
-            yield "    @property"
-        elif method_type == 'SETTER':
-            yield f"    @{method_name}.setter"
-
-        # -------------------------
-        # Header
-        # -------------------------
-
-        if method_type in ('CLASS_METHOD', 'CLASS_PROPERTY'):
-            header = ['cls']
-        elif method_type != 'FUNCTION':
-            header = ['self']
-        else:
-            header = []
+        # Functon arguments
+        # ---------------------------------------------------------------------------
 
         for arg in arguments:
             if arg.get('is_self', False):
@@ -2731,176 +2558,615 @@ class NodeImplementation:
 
             if arg.get('is_multi'):
                 if arg['kind'] == 'SOCKET':
-                    header.append(f"*{arg['arg_name']}: {arg['typing']}")
-                elif arg['kind'] == 'ITEMS':
-                    header.append("*items")
-                else:
-                    assert False, "Unknown cse"
+                    source.positional_argument(
+                        f"*{arg['arg_name']}",
+                        typing = arg['typing'],
+                        comment = None,
+                        )
 
+                elif arg['kind'] == 'ITEMS':
+                    source.positional_argument("*items")
+
+                else:
+                    assert False, "Unknown case"
 
             elif arg['kind'] == 'ITEMS':
                 assert not arg['is_multi'], "Algo error"
-                header.append("items = {}")
+                source.keyword_argument(
+                        "items",
+                        "{}",
+                        typing=None, 
+                        comment="Dynamic items")
 
             elif arg['kind'] == 'PARAMETER':
-                annotation = f": {arg['typing']}" if arg['typing'] else ''
-                header.append(f"{arg['arg_name']}{annotation} = {arg['arg_value']}")
+                source.keyword_argument(
+                        arg['arg_name'],
+                        arg['arg_value'],
+                        typing=arg['typing'], 
+                        comment="Node parameter")
 
             else:
-                header.append(f"{arg['arg_name']}: {arg['typing']} = None")
+                source.keyword_argument(
+                        arg['arg_name'],
+                        "None",
+                        typing=arg['typing'], 
+                        comment="Node Socket")
 
         if self.node.has_items and self.node.items_with_name:
-            header.append("**named_items")
+            source.kwargs_argument("named_items")
 
-        """
-        if anonymous_items and self.node.bl_idname == 'GeometryNodeIndexSwitch':
-            header.append('default_index: int = 0')
+        # ---------------------------------------------------------------------------
+        # Doc string
+        # ---------------------------------------------------------------------------
 
-        if dynamic:
-            header.append('**sockets')
-        """
+        source.add_doc(
+        f"""Node <&{self.node.name}>
 
-        yield format_header(method_name, *header, margin=margin, max_len=100)
+        Jump method: {is_jump}
 
-        # -------------------------
-        # Docstring
-        # -------------------------
+        """)
+        source.returns = "OUT"
 
-        doc_args = []
-        for arg in arguments:
-            if arg.get('is_self', False):
-                continue
-            if arg['kind'] == 'PARAMETER':
-                doc_args.append(next(param for param in free_params
-                                     if param.arg_name == arg['param_name']))
-            elif arg['kind'] == 'ITEMS':
-                pass
-            else:
-                doc_args.append(Argument(
-                    arg_type='SOCKET', arg_name=arg['arg_name'],
-                    comment=(f"{arg['arg_name']} : {arg['typing']}, optional\n"
-                             f"    socket '{arg['socket_name']}'\n"),
-                ))
+        # ---------------------------------------------------------------------------
+        # Write source
+        # ---------------------------------------------------------------------------
 
-        derived_parameters = None
-        if computed_data_type is not None:
-            derived_parameters = {
-                computed_data_type: f"Inferred from socket '{auto_data_type}' ({data_type_value})."
-            }
-        docstring = self.gen_docstring(
-            doc_args, is_jump=is_jump if is_instance else None,
-            self_socket=selected_sockets[self_socket_index].socket_name if has_self_socket else None,
-            returns={'OUT': 'Socket', 'NODE': 'Node', 'cls': 'cls'}.get(return_kind, return_kind),
-            return_socket='OUT' if return_kind != 'NODE' else None,
-            derived_parameters=derived_parameters, indent=0,
-        )
-        for line in docstring.splitlines():
-            yield f"{margin}    {line}"
+        source.write(f"# Node {self.node.name}")
+        source.write_header()
+        source.write_doc_string()
 
-        # -------------------------
+        # ---------------------------------------------------------------------------
+        # Node call
+        # ---------------------------------------------------------------------------
+
         # Auto data_type
-        # -------------------------
-
-        margin += "    "
         if computed_data_type is not None:
-            yield (f"{margin}{computed_data_type} = SocketType.get_data_type_for_node("
-                   f"{data_type_value}, {self.node.bl_idname!r}, {computed_data_type!r})")
+            source.write(f"{computed_data_type} = SocketType.get_data_type_for_node("
+                   f"{data_type_value}, {self.node.bl_idname!r}, {computed_data_type!r})",
+                   indent=1)
 
-        # -------------------------
         # Selection socket
-        # -------------------------
-
         if any(sock.is_selection for sock in selected_sockets):
-            yield f"{margin}selection = self.get_selection()"
+            source.write(f"selection = self.get_selection()", indent=1)
 
-        # -------------------------
         # Filter synonyms
-        # -------------------------
-
         if len(synonyms):
-            yield margin + "synonyms = {}"
+            source.write("synonyms = {}", indent=1)
+            
             for sid, arg_names in synonyms.items():
-                yield ""
-                yield f"{margin}synonyms['{sid}'] = None"
+                source.write()
+                source.write(f"synonyms['{sid}'] = None", indent=1)
                 for arg_name in arg_names:
-                    yield f"{margin}if {arg_name} is not None: synonyms['{sid}'] = {arg_name}"
-            yield ""
+                    source.write(
+                        f"if {arg_name} is not None: synonyms['{sid}'] = {arg_name}",
+                        indent=1)
+            source.write()
 
-        # -------------------------
         # items
-        # -------------------------
-
         if self.node.has_items and self.node.items_with_name:
             node_sockets.append("**items")
             node_params.append("**named_items")
 
-        # -------------------------
         # Node creation
-        # -------------------------
-
-        yield format_node_call(
-            margin, 
+        source.write_node_call(
             self.node.name, 
             args            = node_args, 
             named_sockets   = node_sockets, 
             parameters      = node_params, 
-            max_len         = 100,
             )
 
-        """
-        if anonymous_items:
-            node_args.insert(1, '*values')
-
-        if dynamic:
-            socket_expression = node_args.pop()
-            yield f"{margin}_named_sockets = {socket_expression.removeprefix('named_sockets=')}"
-            yield f"{margin}_named_sockets.update({{name: value for name, value in (named_sockets or {{}}).items() if value is not None}})"
-            
-            node_args.append('named_sockets=_named_sockets')
-        """
-
-        """
-
-        # Finalize named_sockets
-
-        for f_name, f_value in fixed_sockets.items():
-            yield f"{margin}named_sockets['{f_name}'] = {f_value!r}"
-
-        parameter_order = self.node.enum_params_order + tuple(
-            name for name in parameter_values if name not in self.node.enum_params_order
-        )
-        node_args.extend(f"{name}={parameter_values[name]}" for name in parameter_order)
-        if dynamic:
-            node_args.append('**sockets')
-        yield f"{margin}node = Node({', '.join(node_args)})"
-        if anonymous_items and self.node.bl_idname == 'GeometryNodeIndexSwitch':
-            yield f"{margin}_selector = node._bnode.inputs['Index']"
-            yield f"{margin}_selector.default_value = default_index"
-            yield f"{margin}_interface = node._get_interface_socket(_selector)"
-            yield f"{margin}if _interface is not None:"
-            yield f"{margin}    _interface.default_value = default_index"
-        """
-
-        # -------------------------
+        # ---------------------------------------------------------------------------
         # Return
-        # -------------------------
+        # ---------------------------------------------------------------------------
 
         if method_type != 'SETTER':
             if return_socket is not None:
-                yield f"{margin}return node[{return_socket!r}]"
+                source.write(f"return node[{return_socket!r}]", indent=1)
 
             elif return_kind == 'OUT':
                 if is_jump:
-                    yield f"{margin}self._jump(node._out)"
-                    yield f"{margin}return node._second_out(self)"
+                    source.write(f"self._jump(node._out)", indent=1)
+                    source.write(f"return node._second_out(self)", indent=1)
                 else:
-                    yield f"{margin}return node._out"
+                    source.write(f"return node._out", indent=1)
 
             elif return_kind == 'cls':
-                yield f"{margin}return cls(node._out)"
+                source.write(f"return cls(node._out)", indent=1)
 
             elif return_kind == 'NODE':
-                yield f"{margin}return node"
+                source.write(f"return node", indent=1)
 
             else:
-                yield f"{margin}return {return_kind}(node._out)"
+                source.write(f"return {return_kind}(node._out)", indent=1)
+
+        return source.source
+
+    # ====================================================================================================
+    # Source code generator
+    # ====================================================================================================
+
+    def gen_node_call(self, node_call: NodeCall):
+        """Generate one function from a resolved implementation description."""
+        node_call._check()
+
+        from .sourcewriter import R0
+        
+        # ---------------------------------------------------------------------------
+        # Node analysis
+        # - what are the free +/ fixed parameters
+        # - what are the sockets to feed
+        # ---------------------------------------------------------------------------
+
+        # Parameters
+        fixed_params = {name: value for name, value in (self.parameters | node_call.parameters).items()
+                        if value is not None}
+        free_params = []                # list of free param to inclu
+
+        for param_name in self.node.config_order:
+            if param_name not in fixed_params:
+                free_params.append(param_name)
+
+        # Sockets
+        possible_sockets = self.node.get_possible_sockets(**fixed_params)
+
+        # Remove disabled sockets
+        free_sockets = [sock for sock in possible_sockets if sock.enabled]
+
+        # ---------------------------------------------------------------------------
+        # Correspondance between signature arguments and node initialisation
+        #
+        # node = Node('Node Name', *args, named_sockets={'Socket Name': None}, **parameters)
+        #
+        # for each socket/parameter:
+        # - source: fixed / argument / computed
+        # - argument name if argument
+        # - value if fixed
+        # - comment for doc string
+        # ---------------------------------------------------------------------------
+
+        # --------------------------------------------------
+        # Feed inputs with sockets
+        # --------------------------------------------------
+
+        inputs = []
+        inputs_last = []
+        sock_err_names = [] # For error message
+
+        remaining_fixed_sockets = dict(node_call.fixed_sockets or {})
+
+        for i_sock, sock in enumerate(free_sockets):
+            
+            sock_err_names.extend(list(sock.names))
+
+            synonym_id = sock.identifier if len(sock.names) > 1 else None
+
+            sock_inputs = []
+            sock_inputs_last = []
+            sock_names = sock.names
+            # Impossible to handle two names for multi sockets
+            # see 'Mesh Boolean'
+            if sock.is_multi:
+                sock_names = (sock.socket_name,)
+
+            for name in sock_names:
+                spec = {
+                    'type'      : 'SOCKET',
+                    'name'      : name,
+                    'source'    : 'ARGUMENT',
+
+                    'socket'    : sock,
+                    'synonym_id': synonym_id,
+                    'arg_name'  : core_module.utils.snake_case(name),
+                    'typing'    : sock.class_name or 'Socket',
+                    'doc'       : (f"Socket '{name}'" if synonym_id is None else
+                                   f"Socket '{name}', identifier '{sock.identifier}'"),
+                }
+
+                # Selection socket
+                if (node_call.has_self and node_call.use_geo_selection and i_sock == 1
+                        and name == 'Selection' and sock.socket_type == 'BOOLEAN'):
+                    spec['source']  = 'COMPUTED'
+                    spec['computation'] = "selection = self.get_selection()"
+                    spec['value']   = "selection"
+                    spec['doc']     = "Selection from Geometry[selection]"
+
+                # Fixed socket
+                if name in remaining_fixed_sockets:
+                    spec['source']      = 'FIXED'
+                    spec['value']       = remaining_fixed_sockets[name]
+                    spec['synonym_id']  = None
+                    spec['doc']         = f"Socket '{name}' set to {remaining_fixed_sockets[name]}"
+
+                    remaining_fixed_sockets.pop(name)
+                    sock_inputs = [spec]
+                    sock_inputs_last = []
+                    break
+
+                if name in node_call.last_sockets:
+                    sock_inputs_last.append(spec)
+                else:
+                    sock_inputs.append(spec)
+
+            inputs.extend(sock_inputs)
+            inputs_last.extend(sock_inputs_last)
+
+        inputs.extend(inputs_last)
+
+        if len(remaining_fixed_sockets):
+            raise AttributeError(f"{self.node.name}: unknown socket(s): {remaining_fixed_sockets} in {[spec['name'] for spec in inputs]}")
+
+        # Self socket
+        if node_call.has_self:
+
+            self_socket = node_call.self_socket
+            if self_socket.startswith('NODE.'):
+                self_socket = getattr(self.node, self_socket[5:])
+
+            self_socket_index = -1
+            for i_spec, spec in enumerate(inputs):
+                if (spec['type'] != 'SOCKET') or (spec['source'] != 'ARGUMENT'):
+                    continue
+
+                if self_socket == spec['name']:
+                    spec['is_self'] = True
+                    if spec['socket'].is_multi:
+                        spec['doc']     = f"self on multi socket '{spec['name']}'"
+                    else:
+                        spec['doc']     = f"self on socket '{spec['name']}'"
+                    self_socket_index = i_spec
+                    break
+
+            if self_socket_index < 0:
+                raise AttributeError(f"{self.node.name}: impossible to find socket input for {self_socket=}, {sock_err_names}")
+
+            if self_socket_index > 0:
+                spec = inputs.pop(self_socket_index)
+                inputs.insert(0, spec)
+
+        # --------------------------------------------------
+        # Feed inputs with parameters
+        # --------------------------------------------------
+
+        data_type_name = None
+        data_type_param_spec = None
+        if node_call.auto_data_type is not None:
+            type_param = self.node.data_type_parameter
+            if type_param is None:
+                raise ValueError(f"No data_type or input_type parameter in {self.node.name!r}")
+
+            # An explicitly fixed type takes precedence over inference.
+            if type_param.name not in fixed_params:
+                data_type_name = type_param.name
+                data_type_socket_spec = next(
+                    (spec for spec in inputs
+                     if spec['source'] == 'ARGUMENT' and spec['type'] == 'SOCKET'
+                     and spec['name'] == node_call.auto_data_type), None)
+                if data_type_socket_spec is None:
+                    raise AttributeError(
+                        f"{self.node.name}: Socket {node_call.auto_data_type!r} not found in "
+                        f"{[spec['name'] for spec in inputs]}")
+
+        # Free parameters
+        for name in free_params:
+            snapshot = self.node.default_params[name]
+            param = NodeParam(self.node.bnode, name, snapshot['value'],
+                              snapshot['type'], enums=snapshot['enums'])
+            arg_name = core_module.utils.snake_case(name)
+            doc_typing = param.typing
+            if param.enums:
+                doc_typing = '{' + ', '.join(repr(value) for value in param.enums) + '}'
+                if param.param_type == 'ENUM_FLAG':
+                    doc_typing = f"set[{doc_typing}]"
+            doc_type = f"{doc_typing or 'object'}, "
+            spec = {
+                'type'      : 'PARAMETER',
+                'name'      : name,
+                'source'    : 'ARGUMENT',
+
+                'arg_name'  : arg_name,
+                'typing'    : param.typing,
+                'value'     : repr(param.value),
+                'doc'       : (f"{arg_name} : {doc_type}optional\n"
+                               f"    Node parameter '{name}' (default: {param.value!r})"),
+            }
+            if name == data_type_name:
+                spec['source'] = 'COMPUTED'
+                spec['value'] = 'data_type'
+                data_type_param_spec = spec
+
+            inputs.append(spec)
+
+        # Fixed parameters
+        for name, value in fixed_params.items():
+            sval = f"{value!r}"
+            inputs.append({
+                'type'      : 'PARAMETER',
+                'name'      : name,
+                'source'    : 'FIXED',
+
+                'value'     : sval,
+                'doc'       : f"parameter '{name}' = {sval}",
+            })
+
+        # -------------------------
+        # Make argument names unique
+        # -------------------------
+
+        existing_names = {spec['arg_name'] for spec in inputs
+                          if spec['type'] == 'PARAMETER' and spec['source'] == 'ARGUMENT'}
+        synonyms = {}
+        for spec in inputs:
+            if (spec['type'] != 'SOCKET') or (spec['source'] != 'ARGUMENT'):
+                continue
+
+            arg_name = spec['arg_name']
+            if arg_name in existing_names:
+                num = 1
+                while f"{arg_name}_{num}" in existing_names:
+                    num += 1
+
+                arg_name = f"{arg_name}_{num}"
+                spec['arg_name'] = arg_name
+
+            existing_names.add(spec['arg_name'])
+
+            if spec.get('is_self', False) or spec['socket'].is_multi:
+                continue
+
+            sid = spec['synonym_id']
+            if sid is None:
+                continue
+
+            names = synonyms.setdefault(sid, [])
+            names.append(arg_name)
+
+        # -------------------------
+        # Auto data type
+        # -------------------------
+
+        if data_type_name is not None:
+            arg_name = ('self' if data_type_socket_spec.get('is_self', False)
+                        else data_type_socket_spec['arg_name'])
+            data_type_param_spec['computation'] = (
+                f"data_type = SocketType.get_data_type_for_node("
+                f"{arg_name}, {self.node.bl_idname!r}, {data_type_name!r})")
+
+        # ---------------------------------------------------------------------------
+        # We can now build the 3 sets of arrays:
+        # - function arguments
+        # - doc string
+        # - node call
+        # ---------------------------------------------------------------------------
+
+        func_args = []
+        func_params = []
+
+        doc_fixed = []
+        doc_args = []
+
+        node_args = []
+        named_sockets = []
+        node_params = []
+
+        for spec in inputs:
+
+            # --------------------------------------------------
+            # Sourcing from arguments
+            # --------------------------------------------------
+
+            if spec['source'] == 'ARGUMENT':
+
+                arg_name = spec['arg_name']
+
+                if spec['type'] == 'SOCKET':
+                    if spec['socket'].is_multi:
+                        func_args.append(f"*{arg_name}: {spec['typing']}")
+                        doc_args.append(
+                            f"{arg_name} : {spec['typing']}\n"
+                            f"    {spec['doc']} (multiple values)")
+
+                    elif spec.get('is_self', False):
+                        doc_fixed.append(spec['doc'])
+
+                    else:
+                        func_args.append(f"{arg_name}: {spec['typing']}=None")
+                        doc_args.append(
+                            f"{arg_name} : {spec['typing']}, optional\n"
+                            f"    {spec['doc']} (default: None)")
+
+                else:
+                    typing = spec['typing']
+                    if isinstance(typing, list):
+                        typing = (self.type_aliases.literal(typing, prefix=f"T_{arg_name.upper()}")
+                                  if self.type_aliases is not None else
+                                  "Literal[" + ', '.join(repr(value) for value in typing) + "]")
+                    annotation = f": {typing}" if typing else ''
+                    func_params.append(f"{arg_name}{annotation}={spec['value']}")
+                    doc_args.append(spec['doc'])
+
+            # --------------------------------------------------
+            # Consuming to build node
+            # --------------------------------------------------
+
+            if spec['type'] == 'SOCKET':
+                if spec['source'] == 'ARGUMENT':
+
+                    arg_name = spec['arg_name']
+                    sock     = spec['socket']
+                    is_self  = spec.get('is_self', False)
+                    sock_id  = f"ID_{sock.identifier}"
+                    if sock.group_name is not None:
+                        sock_id = sock.group_name
+
+                    if sock.is_multi:
+                        if is_self:
+                            node_args.extend(["self", f"*{arg_name}"])
+                        else:
+                            node_args.append(f"*{arg_name}")
+
+                    elif is_self:
+                        named_sockets.append(f"'{sock_id}': self")
+
+                    elif spec['synonym_id'] is not None:
+                        # will be computed dynamically
+                        pass
+
+                    else:
+                        named_sockets.append(f"'{sock_id}': {spec['arg_name']}")
+
+                elif spec['source'] == 'FIXED':
+                    named_sockets.append(f"{spec['name']!r}: {spec['value']!r}")
+
+                elif spec['source'] == 'COMPUTED':
+                    named_sockets.append(f"'{spec['name']}': {spec['value']}")
+
+                else:
+                    assert False, spec['source']
+
+            else:
+                value = spec['arg_name'] if spec['source'] == 'ARGUMENT' else spec['value']
+                node_params.append(f"{spec['name']}={value}")
+
+
+        # ---------------------------------------------------------------------------
+        # Node with items
+        # ---------------------------------------------------------------------------
+
+        add_named_items = False
+        if self.node.has_items:
+            if self.node.items_with_name:
+                add_named_items = True
+                # def f(...items={'name': value, ...}, ... **named_items)
+                # Node(..., named_sockets={..., **items}, ... **named_items)
+                func_args.append("items={}")
+                func_params.append("**named_items")
+                node_params.append("**named_items")
+                doc_args.append(f"items : dict, optional\n{TAB}dynamic sockets")
+                doc_args.append(f"**named_items : Socket\n{TAB}Dynamic sockets supplied by keyword.")
+            else:
+                # def f(...*dyn_sockets)
+                # Node(..., *dyn_sockets, ...)
+                func_args.append("*dyn_sockets")
+                node_args.append("*dyn_sockets")
+                doc_args.append(f"*dyn_sockets : Socket\n{TAB}Values for anonymous dynamic sockets.")
+
+        # ---------------------------------------------------------------------------
+        # We can build the source code
+        # ---------------------------------------------------------------------------
+
+        source = SourceWriter(node_call.method_name, func_type=node_call.method_type, type_aliases=self.type_aliases)
+
+        source.write(f"#Node {self.node.name}")
+
+        # decorator
+        if node_call.decorator is not None:
+            source.write(node_call.decorator)
+
+        # Header
+        all_args = ([arg for arg in func_args if arg.startswith('*')]
+                    + [arg for arg in func_args if not arg.startswith('*')] + func_params)
+        if node_call.first_arg is not None:
+            all_args.insert(0, node_call.first_arg)
+
+        #source.write(f"def {node_call.method_name}({', '.join(all_args)}):")
+        sep = f",{R0}"
+        source.write(f"def {node_call.method_name}({R0}{sep.join(all_args)}):")
+
+        # Doc String
+        source.write(f'"""Node {self.node.name}.\n', indent=1)
+        source.write(f"Jump: {node_call.is_jump}", indent=1)
+
+        if len(doc_fixed):
+            source.write()
+            source.write("**Fixed inputs**", indent=1)
+            source.write()
+            for description in doc_fixed:
+                source.write(f"- {description}", indent=1)
+
+        if len(doc_args):
+            source.write()
+            source.write("Parameters", indent=1)
+            source.write("----------", indent=1)
+            source.write(*doc_args, indent=1)
+
+        if node_call.method_type != 'SETTER':
+            source.write()
+            source.write("Returns", indent=1)
+            source.write("-------", indent=1)
+
+            if node_call.return_socket is not None:
+                source.write("Socket", indent=1)
+                source.write(f"    Socket '{node_call.return_socket}'.", indent=1)
+
+            elif node_call.return_kind == 'OUT':
+                if node_call.is_jump:
+                    source.write("Socket", indent=1)
+                    source.write("    Second output socket, or self if there is no second output.", indent=1)
+                    source.write("    Updates self from the default output socket.", indent=1)
+                else:
+                    source.write("Socket", indent=1)
+                    source.write("    Default output socket.", indent=1)
+
+            elif node_call.return_kind == 'cls':
+                source.write("Self", indent=1)
+                source.write("    Default output socket wrapped in the calling class.", indent=1)
+
+            elif node_call.return_kind == 'NODE':
+                source.write(f"Node", indent=1)
+
+            else:
+                source.write(node_call.return_kind, indent=1)
+                source.write(f"    Default output socket wrapped in {node_call.return_kind}.", indent=1)
+            
+        source.write('"""', indent=1)
+
+        # Pre computations
+        for spec in inputs:
+            if spec['source'] == 'COMPUTED':
+                source.write(spec['computation'], indent=1)
+
+        # Build named sockets before resolving aliases.
+        #source.write("named_sockets = {" + ", ".join(named_sockets) + "}", indent=1)
+        source.write("named_sockets = " + source.splittable(named_sockets, set), indent=1)
+        for sid, synos in synonyms.items():
+            source.write(f"named_sockets['ID_{sid}'] = None", indent=1)
+            for name in synos:
+                source.write(
+                    f"if {name} is not None: named_sockets['ID_{sid}'] = {name}",
+                    indent=1)
+
+        # Add dynamic sockets
+        if add_named_items:
+            source.write("named_sockets = {**named_sockets, **items}", indent=1)
+
+        node_args.append("named_sockets=named_sockets")
+        node_args.extend(node_params)
+        source.write()
+
+        sep = f",{R0}"
+        source.write(f"node = Node({R0}" + sep.join([f"{self.node.name!r}"] + node_args) + ")", indent=1)
+        #source.write(f"node = Node({self.node.name!r}, {', '.join(node_args)})", indent=1)
+
+        # return
+
+        if node_call.method_type != 'SETTER':
+            if node_call.return_socket is not None:
+                source.write(f"return node[{node_call.return_socket!r}]", indent=1)
+
+            elif node_call.return_kind == 'OUT':
+                if node_call.is_jump:
+                    source.write(f"self._jump(node._out)", indent=1)
+                    source.write(f"return node._second_out(self)", indent=1)
+                else:
+                    source.write(f"return node._out", indent=1)
+
+            elif node_call.return_kind == 'cls':
+                source.write(f"return cls(node._out)", indent=1)
+
+            elif node_call.return_kind == 'NODE':
+                source.write(f"return node", indent=1)
+
+            else:
+                source.write(f"return {node_call.return_kind}(node._out)", indent=1)
+
+        return source.source

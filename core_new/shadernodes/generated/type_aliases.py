@@ -1,0 +1,195 @@
+# Generated file. Do not edit.
+from typing import Literal
+
+T_ATTRIBUTE_TYPE_1 = Literal['GEOMETRY', 'OBJECT', 'INSTANCER', 'VIEW_LAYER', 'LIGHT']
+T_OPERATION_1 = Literal['AND', 'OR', 'NOT', 'NAND', 'NOR', 'XNOR', 'XOR', 'IMPLY', 'NIMPLY']
+T_CLAMP_TYPE_1 = Literal['MINMAX', 'RANGE']
+T_MODE_1 = Literal['RGB', 'HSV', 'HSL']
+T_SPACE_1 = Literal['OBJECT', 'WORLD']
+T_DATA_TYPE_1 = Literal[
+    'FLOAT',
+    'INT',
+    'BOOLEAN',
+    'VECTOR',
+    'RGBA',
+    'STRING',
+    'MENU',
+    'SHADER',
+    'BUNDLE',
+    'CLOSURE',
+]
+T_PROJECTION_1 = Literal['EQUIRECTANGULAR', 'MIRROR_BALL']
+T_INTERPOLATION_1 = Literal['Linear', 'Closest', 'Cubic', 'Smart']
+T_GABOR_TYPE_1 = Literal['2D', '3D']
+T_DISTRIBUTION_1 = Literal['BECKMANN', 'GGX', 'MULTI_GGX']
+T_DISTRIBUTION_2 = Literal['BECKMANN', 'GGX', 'ASHIKHMIN_SHIRLEY', 'MULTI_GGX']
+T_GRADIENT_TYPE_1 = Literal[
+    'LINEAR',
+    'QUADRATIC',
+    'EASING',
+    'DIAGONAL',
+    'SPHERICAL',
+    'QUADRATIC_SPHERE',
+    'RADIAL',
+]
+T_COMPONENT_1 = Literal['Reflection', 'Transmission']
+T_MODE_2 = Literal['INTERNAL', 'EXTERNAL']
+T_PROJECTION_2 = Literal['FLAT', 'BOX', 'SPHERE', 'TUBE']
+T_EXTENSION_1 = Literal['REPEAT', 'EXTEND', 'CLIP', 'MIRROR']
+T_OPERATION_2 = Literal[
+    'ADD',
+    'SUBTRACT',
+    'MULTIPLY',
+    'DIVIDE',
+    'MULTIPLY_ADD',
+    'ABSOLUTE',
+    'NEGATE',
+    'POWER',
+    'MINIMUM',
+    'MAXIMUM',
+    'SIGN',
+    'DIVIDE_ROUND',
+    'DIVIDE_FLOOR',
+    'DIVIDE_CEIL',
+    'FLOORED_MODULO',
+    'MODULO',
+    'GCD',
+    'LCM',
+]
+T_MODE_3 = Literal['DIFFUSE', 'GLOSSY']
+T_TARGET_1 = Literal['ALL', 'EEVEE', 'CYCLES']
+T_INTERPOLATION_TYPE_1 = Literal['LINEAR', 'STEPPED', 'SMOOTHSTEP', 'SMOOTHERSTEP']
+T_DATA_TYPE_2 = Literal['FLOAT', 'FLOAT_VECTOR']
+T_VECTOR_TYPE_1 = Literal['POINT', 'TEXTURE', 'VECTOR', 'NORMAL']
+T_OPERATION_3 = Literal[
+    'ADD',
+    'SUBTRACT',
+    'MULTIPLY',
+    'DIVIDE',
+    'MULTIPLY_ADD',
+    'POWER',
+    'LOGARITHM',
+    'SQRT',
+    'INVERSE_SQRT',
+    'ABSOLUTE',
+    'EXPONENT',
+    'MINIMUM',
+    'MAXIMUM',
+    'LESS_THAN',
+    'GREATER_THAN',
+    'SIGN',
+    'COMPARE',
+    'SMOOTH_MIN',
+    'SMOOTH_MAX',
+    'ROUND',
+    'FLOOR',
+    'CEIL',
+    'TRUNC',
+    'FRACT',
+    'MODULO',
+    'FLOORED_MODULO',
+    'WRAP',
+    'SNAP',
+    'PINGPONG',
+    'SINE',
+    'COSINE',
+    'TANGENT',
+    'ARCSINE',
+    'ARCCOSINE',
+    'ARCTANGENT',
+    'ARCTAN2',
+    'SINH',
+    'COSH',
+    'TANH',
+    'RADIANS',
+    'DEGREES',
+]
+T_FRESNEL_TYPE_1 = Literal['PHYSICAL_CONDUCTOR', 'F82']
+T_DATA_TYPE_3 = Literal['FLOAT', 'VECTOR', 'RGBA']
+T_FACTOR_MODE_1 = Literal['UNIFORM', 'NON_UNIFORM']
+T_BLEND_TYPE_1 = Literal[
+    'MIX',
+    'DARKEN',
+    'MULTIPLY',
+    'BURN',
+    'LIGHTEN',
+    'SCREEN',
+    'DODGE',
+    'ADD',
+    'OVERLAY',
+    'SOFT_LIGHT',
+    'LINEAR_LIGHT',
+    'DIFFERENCE',
+    'EXCLUSION',
+    'SUBTRACT',
+    'DIVIDE',
+    'HUE',
+    'SATURATION',
+    'COLOR',
+    'VALUE',
+]
+T_NOISE_DIMENSIONS_1 = Literal['1D', '2D', '3D', '4D']
+T_NOISE_TYPE_1 = Literal[
+    'MULTIFRACTAL',
+    'RIDGED_MULTIFRACTAL',
+    'HYBRID_MULTIFRACTAL',
+    'FBM',
+    'HETERO_TERRAIN',
+]
+T_SPACE_2 = Literal['TANGENT', 'OBJECT', 'WORLD', 'BLENDER_OBJECT', 'BLENDER_WORLD']
+T_CONVENTION_1 = Literal['OPENGL', 'DIRECTX']
+T_BASE_1 = Literal['ORIGINAL', 'DISPLACED']
+T_DISTRIBUTION_3 = Literal['GGX', 'MULTI_GGX']
+T_SUBSURFACE_METHOD_1 = Literal['BURLEY', 'RANDOM_WALK', 'RANDOM_WALK_SKIN', 'RANDOM_WALK_LEGACY']
+T_MODEL_1 = Literal['CHIANG', 'HUANG']
+T_PARAMETRIZATION_1 = Literal['ABSORPTION', 'MELANIN', 'COLOR']
+T_DISTRIBUTION_4 = Literal['BECKMANN', 'GGX']
+T_DISTRIBUTION_5 = Literal['ASHIKHMIN', 'MICROFIBER']
+T_SKY_TYPE_1 = Literal['SINGLE_SCATTERING', 'MULTIPLE_SCATTERING', 'PREETHAM', 'HOSEK_WILKIE']
+T_DATA_TYPE_4 = Literal['FLOAT', 'INT']
+T_DIRECTION_TYPE_1 = Literal['RADIAL', 'UV_MAP']
+T_AXIS_1 = Literal['X', 'Y', 'Z']
+T_SPACE_3 = Literal['TANGENT', 'OBJECT', 'WORLD']
+T_OPERATION_4 = Literal[
+    'ADD',
+    'SUBTRACT',
+    'MULTIPLY',
+    'DIVIDE',
+    'MULTIPLY_ADD',
+    'CROSS_PRODUCT',
+    'PROJECT',
+    'REFLECT',
+    'REFRACT',
+    'FACEFORWARD',
+    'DOT_PRODUCT',
+    'DISTANCE',
+    'LENGTH',
+    'SCALE',
+    'NORMALIZE',
+    'ABSOLUTE',
+    'POWER',
+    'SIGN',
+    'MINIMUM',
+    'MAXIMUM',
+    'ROUND',
+    'FLOOR',
+    'CEIL',
+    'FRACTION',
+    'MODULO',
+    'WRAP',
+    'SNAP',
+    'SINE',
+    'COSINE',
+    'TANGENT',
+]
+T_ROTATION_TYPE_1 = Literal['AXIS_ANGLE', 'X_AXIS', 'Y_AXIS', 'Z_AXIS', 'EULER_XYZ']
+T_VECTOR_TYPE_2 = Literal['POINT', 'VECTOR', 'NORMAL']
+T_CONVERT_FROM_1 = Literal['WORLD', 'OBJECT', 'CAMERA', 'LIGHT']
+T_PHASE_1 = Literal['HENYEY_GREENSTEIN', 'FOURNIER_FORAND', 'DRAINE', 'RAYLEIGH', 'MIE']
+T_DISTANCE_1 = Literal['EUCLIDEAN', 'MANHATTAN', 'CHEBYCHEV', 'MINKOWSKI']
+T_FEATURE_1 = Literal['F1', 'F2', 'SMOOTH_F1', 'DISTANCE_TO_EDGE', 'N_SPHERE_RADIUS']
+T_WARNING_TYPE_1 = Literal['ERROR', 'WARNING', 'INFO']
+T_WAVE_TYPE_1 = Literal['BANDS', 'RINGS']
+T_BANDS_DIRECTION_1 = Literal['X', 'Y', 'Z', 'DIAGONAL']
+T_RINGS_DIRECTION_1 = Literal['X', 'Y', 'Z', 'SPHERICAL']
+T_WAVE_PROFILE_1 = Literal['SIN', 'SAW', 'TRI']

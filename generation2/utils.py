@@ -5,6 +5,22 @@ import bpy
 
 NODE_NAMES = {}
 
+def is_unary_operator(name):
+
+    unaries = ("neg", "abs", "round", "trunc", "floor", "ceil", "invert")
+    binaries = ("add", "sub", "mul", "truediv", "mod", "pow", "modulo", "floordiv",
+                "and", "or", "xor", "lshift", "rshift", "eq", "ne")
+
+    if name in unaries:
+        return True
+
+    if name in binaries:
+        return False
+
+    if name[1:] in binaries:
+        return False
+
+    raise AttributeError(f"Unkwnon operator: __{name}__")
 
 def get_node_names(tree_type="GeometryNodeTree"):
     """Return cached bl_idname -> UI name entries for this tree type.

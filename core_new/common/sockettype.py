@@ -197,6 +197,7 @@ class SocketType:
 
         # ----- Compute from string
 
+        socket_type = constants.DATA_TYPE_HOMONYMS.get(socket_type, socket_type)
         socket_id = constants.SOCKET_IDS.get(socket_type)
         if socket_id is None:
             raise NodeError(f"Unknown socket type: {socket_type!r}.")

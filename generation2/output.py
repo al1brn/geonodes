@@ -1,5 +1,7 @@
 """Render an environment directly against its handwritten socket classes."""
 import ast
+import io
+import tokenize
 import textwrap
 from datetime import datetime
 
@@ -8,35 +10,70 @@ GEOMETRIES = {'Mesh', 'Curve', 'Cloud', 'Instances', 'GreasePencil', 'Volume'}
 POINT_DOMAINS = {'Vertex', 'SplinePoint', 'CloudPoint'}
 
 
-class SpecializeContext(ast.NodeTransformer):
-    def __init__(self, tree_type):
-        self.tree_type = tree_type
-
-    def visit_If(self, node):
-        self.generic_visit(node)
-        test = node.test
-        if (isinstance(test, ast.Compare) and len(test.ops) == 1
-                and isinstance(test.ops[0], (ast.Eq, ast.NotEq))
-                and isinstance(test.left, ast.Attribute) and test.left.attr == 'bl_idname'
-                and isinstance(test.comparators[0], ast.Constant)
-                and test.comparators[0].value in ENVIRONMENTS):
-            match = self.tree_type == test.comparators[0].value
-            if isinstance(test.ops[0], ast.NotEq):
-                match = not match
-            return node.body if match else node.orelse
-        return node
-
-
 def specialize_source(source, tree_type):
-    """Resolve context switches before emitting code for one environment."""
-    try:
-        tree = SpecializeContext(tree_type).visit(ast.parse(source))
-    except Exception as e:
-        print('-'*100)
-        print(source)
-        print('-'*100)
-        raise e
-    return ast.unparse(ast.fix_missing_locations(tree)) + '\n'
+    """Resolve environment branches by editing their source spans only."""
+    while True:
+        tree = ast.parse(source)
+        branch = None
+        for node in ast.walk(tree):
+            if not isinstance(node, ast.If):
+                continue
+            test = node.test
+            if (isinstance(test, ast.Compare) and len(test.ops) == 1
+                    and isinstance(test.ops[0], (ast.Eq, ast.NotEq))
+                    and isinstance(test.left, ast.Attribute) and test.left.attr == 'bl_idname'
+                    and isinstance(test.comparators[0], ast.Constant)
+                    and test.comparators[0].value in ENVIRONMENTS):
+                branch = node
+                match = tree_type == test.comparators[0].value
+                if isinstance(test.ops[0], ast.NotEq):
+                    match = not match
+                break
+        if branch is None:
+            return source
+
+        lines = source.splitlines(keepends=True)
+        tokens = list(tokenize.generate_tokens(io.StringIO(source).readline))
+        # Locate an else/elif at this branch's indentation, ignoring nested ones.
+        alternative = next((token for token in tokens
+                            if token.type == tokenize.NAME and token.string in ('else', 'elif')
+                            and token.start[1] == branch.col_offset
+                            and branch.body[-1].end_lineno < token.start[0] <= branch.end_lineno), None)
+        selected = branch.body if match else branch.orelse
+        prefix = ' ' * branch.col_offset
+        if not selected:
+            replacement = prefix + 'pass\n'
+        elif not match and alternative.string == 'elif':
+            # Keep the remaining conditional, including its original formatting.
+            replacement = ''.join(lines[alternative.start[0] - 1:branch.end_lineno])
+            replacement = replacement.replace(prefix + 'elif', prefix + 'if', 1)
+        else:
+            header = branch.lineno if match else alternative.start[0]
+            first = selected[0]
+            end = alternative.start[0] - 1 if match and alternative else branch.end_lineno
+            if first.lineno == header:
+                # A one-line suite: keep its statements and trailing comment.
+                replacement = prefix + lines[header - 1][first.col_offset:]
+            else:
+                header_end = next(token.end[0] for token in tokens
+                                  if token.type == tokenize.NEWLINE and token.start[0] >= header)
+                # Do not change indentation inside multiline string values.
+                string_lines = {row for token in tokens if token.type == tokenize.STRING
+                                for row in range(token.start[0] + 1, token.end[0] + 1)}
+                shift = first.col_offset - branch.col_offset
+                replacement = ''.join(
+                    line if row in string_lines or not line.strip() else line[shift:]
+                    for row, line in enumerate(lines[header_end:end], header_end + 1))
+        # An elif belonging to an outer, unrelated if must remain an elif.
+        if lines[branch.lineno - 1].lstrip().startswith('elif '):
+            replacement_tokens = tokenize.generate_tokens(io.StringIO(replacement).readline)
+            string_lines = {row for token in replacement_tokens if token.type == tokenize.STRING
+                            for row in range(token.start[0] + 1, token.end[0] + 1)}
+            replacement = prefix + 'else:\n' + ''.join(
+                '    ' + line if line.strip() and row not in string_lines else line
+                for row, line in enumerate(replacement.splitlines(keepends=True), 1))
+        lines[branch.lineno - 1:branch.end_lineno] = [replacement]
+        source = ''.join(lines)
 
 
 def render_modules(core_path, tree_type, sources, cross_refs=None):
@@ -71,7 +108,7 @@ def render_modules(core_path, tree_type, sources, cross_refs=None):
 
     static_name, static_class = 'static_nd.py', 'ND'
     targets[static_name] = (static_class, None)
-    unknown = sources.keys() - targets.keys() - {'gnmath.py'}
+    unknown = sources.keys() - targets.keys() - {'gnmath.py', 'type_aliases.py'}
 
     if unknown:
         from pprint import pprint
@@ -85,9 +122,15 @@ def render_modules(core_path, tree_type, sources, cross_refs=None):
 
         raise ValueError(f"The following destination files don't exist for '{environment}'. Make sure to create them in  '{environment}/sockets' folder: {sorted(unknown)}")
     
+    alias_source = '\n'.join(sources.get('type_aliases.py', ['from typing import Literal\n']))
+    alias_names = [node.targets[0].id for node in ast.parse(alias_source).body
+                   if isinstance(node, ast.Assign)]
+    alias_imports = ''.join(f'from .type_aliases import {name}\n' for name in alias_names)
+
     header = (f'# Generated {datetime.now():%Y-%m-%d %H:%M:%S}\n'
-              'from __future__ import annotations\n'
-              'from ...common.sockettype import SocketType\n'
+              'from __future__ import annotations\n')
+    header += alias_imports
+    header += ('from ...common.sockettype import SocketType\n'
               'from ...root.socket import Socket\n'
               'from ...root.node import Node, ColorRamp, NodeCurves\n'
               'from ...common import utils\n'
@@ -95,7 +138,7 @@ def render_modules(core_path, tree_type, sources, cross_refs=None):
               'from typing import TYPE_CHECKING, Literal, Union, Sequence\n\n'
               'if TYPE_CHECKING:\n')
     header += ''.join(f'    class {name}: ...\n' for name, base in targets.values() if base)
-    modules = {}
+    modules = {'type_aliases.py': alias_source}
     exports = []
     for filename in [*targets, 'gnmath.py']:
         code = header + '\n'

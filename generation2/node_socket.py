@@ -64,21 +64,27 @@ class NodeSocket:
     # Add a possible socket
     # ====================================================================================================
 
-    def add_possible_socket(self, node_socket):
+    def add_possible_socket(self, node_sockets):
         """ Combine with another socket configuration
 
         node_socket is computed on the same socket in a different configuration
         """
-        assert self.identifier == node_socket.identifier, "Algo error"
 
-        if node_socket.enabled:
-            self.enabled = True
-            self.names = self.names.union((node_socket.socket_name,))
+        for node_socket in node_sockets:
+            if node_socket.identifier == self.identifier:
+                if node_socket.enabled:
+                    self.enabled = True
+                    self.names = self.names.union((node_socket.socket_name,))
 
-            if node_socket.socket_type != self.socket_type:
-                #assert False, "Shouldn't exist ?"
-                self.socket_type = 'SOCKET'
-                self.class_name = 'Socket'
+                    if node_socket.socket_type != self.socket_type:
+                        #assert False, "Shouldn't exist ?"
+                        self.socket_type = 'SOCKET'
+                        self.class_name = 'Socket'
+
+                    break
+
+        #assert self.identifier == node_socket.identifier, f"Algo error: {self.names=}, {self.identifier=}, {node_socket.socket_name=}, {node_socket.identifier=}"
+
 
 
     # ====================================================================================================

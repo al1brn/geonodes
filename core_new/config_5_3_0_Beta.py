@@ -62,7 +62,11 @@ DATA_TYPE_HOMONYMS = {'BYTE_COLOR': 'RGBA',
  'INTEGER': 'INT',
  'QUATERNION': 'ROTATION',
  'TRANSFORM': 'MATRIX',
- 'VECTOR_FLOAT': 'VECTOR'}
+ 'VECTOR_FLOAT': 'VECTOR',
+ 
+ # Manual
+ 'FLOAT4': 'VECTOR',
+ }
 
 
 #--------------------------------------------------------------------------------

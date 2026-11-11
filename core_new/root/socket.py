@@ -1665,7 +1665,7 @@ class Socket(NodeCache, metaclass=EnvironmentType):
             return
 
         socket_type = SocketType.from_type(cls.SOCKET_TYPE)
-        full_name = None if name is None else (ItemPath(panel) + name).path
+        full_name = ItemPath.get_full_name(name, panel)
         socket = out_node.get_socket('INPUT', full_name, socket_type,
                                      free_only=True, halt=False)
         if socket is None:

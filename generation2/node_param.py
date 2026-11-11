@@ -9,12 +9,28 @@ IGNORE_PARAMS = ['color_ramp', 'paired_output']
 # ====================================================================================================
 
 class NodeParam:
-    def __init__(self, bnode, name, value, param_type):
+    def __init__(self, bnode, name, value, param_type, enums=None):
         self.bnode      = bnode
         self.name       = name
         self.value      = value
         self.param_type = param_type
-        self.enums      = None
+        self.enums      = enums
+        if isinstance(value, str):
+            self.typing = 'str'
+        elif isinstance(value, bool):
+            self.typing = 'bool'
+        elif isinstance(value, int):
+            self.typing = 'int'
+        elif isinstance(value, float):
+            self.typing = 'float'
+        else:
+            self.typing = None
+
+        if self.param_type == 'ENUM':
+            self.typing = list(enums) if enums else 'str'
+        elif self.param_type == 'ENUM_FLAG':
+            values = ', '.join(repr(item) for item in enums) if enums else ''
+            self.typing = f"set[Literal[{values}]]" if enums else 'set[str]'
 
     def __str__(self):
         enums = f" {self.enums}" if self.enums is not None else ""
@@ -43,24 +59,23 @@ class NodeParam:
             if param_type is None:
                 return None
 
-        # ----- Let's initialize the param
-
-        if param_type is None:
-            param_type = 'VALUE'
-        param = cls(bnode, name, value, param_type)
-
-        # ----- It could be an enum list
-
+        # Discover enums before constructing the fully initialized parameter.
+        enums = None
         if isinstance(value, (str, set)):
-            enums = param.get_enum_list()
+            enums = cls._get_enum_list(bnode, name, value)
             if enums is not None:
                 prop = bnode.bl_rna.properties[name]
-                param.param_type = 'ENUM_FLAG' if prop.is_enum_flag else 'ENUM'
-                param.enums      = enums
+                param_type = 'ENUM_FLAG' if prop.is_enum_flag else 'ENUM'
 
-        # ----- Done
+        return cls(bnode, name, value, param_type or 'VALUE', enums=enums)
 
-        return param
+    @property
+    def is_enum(self):
+        return (self.param_type == 'ENUM') and (self.enums is not None)
+        
+    # ----------------------------------------------------------------------------------------------------
+    # Get / set from the node
+    # ----------------------------------------------------------------------------------------------------
 
     @property
     def current_value(self):
@@ -86,16 +101,20 @@ class NodeParam:
         -------
         tuple of valid values or None if the parameter is not a enum parameter
         """
-        if not isinstance(self.value, (str, set)):
+        return self._get_enum_list(self.bnode, self.name, self.value, user_version)
+
+    @staticmethod
+    def _get_enum_list(bnode, name, value, user_version=False):
+        if not isinstance(value, (str, set)):
             return None
         
-        prop = self.bnode.bl_rna.properties[self.name]
+        prop = bnode.bl_rna.properties[name]
         if prop.type != 'ENUM':
             return None
         
         # Invalid enum values raise TypeError or ValueError depending on the property.
         try:
-            setattr(self.bnode, self.name, {'GERR'} if prop.is_enum_flag else 'GERR')
+            setattr(bnode, name, {'GERR'} if prop.is_enum_flag else 'GERR')
 
         except (TypeError, ValueError) as e:
             msg = str(e)

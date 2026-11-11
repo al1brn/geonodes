@@ -15,6 +15,7 @@ from .. import core_module
 from . import config, utils
 from .node_param import NodeParam
 from .node_socket import NodeSocket
+SocketType = core_module.common.sockettype.SocketType
 
 ENUM_PARAMS_ORDERS = {
     'Compare' : ('data_type', 'operation', 'mode'),
@@ -44,14 +45,6 @@ class NodeInfo:
         self.has_params_order = self._enum_params_order is not None
 
         # -------------------------
-        # Default config
-        # -------------------------
-
-        self.analyse_config()
-
-        self.default_params = self.snapshot_params()
-
-        # -------------------------
         # dynamic sockets
         # -------------------------
 
@@ -63,6 +56,14 @@ class NodeInfo:
 
             # Clear items to avoid fake inputs
             getattr(self.bnode, self.items_name).clear()
+
+        # -------------------------
+        # Default config
+        # -------------------------
+
+        self.analyze_config()
+
+        self.default_params = self.snapshot_params()
 
     # ====================================================================================================
     # Wrapping
@@ -196,10 +197,6 @@ class NodeInfo:
     def reset_params(self):
         for param_name in self.config_order:
             setattr(self.bnode, param_name, self.config[param_name]['default'])
-        return
-
-        for param_name in self.enum_params_order:
-            setattr(self.bnode, param_name, self.default_params[param_name]['value'])
 
     @property
     def enum_params_order(self):
@@ -250,9 +247,9 @@ class NodeInfo:
 
     def set_params(self, **params):
         """Set the supplied parameters, leaving other parameters unchanged."""
-        for name, value in params.items():
-            if getattr(self.bnode, name) != value:
-                setattr(self.bnode, name, value)
+        for param_name in self.config_order:
+            if param_name in params:
+                setattr(self.bnode, param_name, params[param_name])
 
     def snapshot_params(self):
         """Return parameter values and enum choices in the node's current state."""
@@ -280,6 +277,11 @@ class NodeInfo:
             params.pop('structure_type')
 
         return params
+
+    @property
+    def snapshot_config(self):
+        params = self.snapshot_params()
+        return [params[name]['value'] for name in self.config_order]
 
     def param_filter(self, **kwargs):
         """Return configuration keys matching the supplied parameter values.
@@ -386,7 +388,7 @@ class NodeInfo:
     # Initialize parameters description
     # ----------------------------------------------------------------------------------------------------
 
-    def analyse_config(self):
+    def analyze_config(self):
         """ Identifies the enum parameters and their order
 
         The value of a parameter can change the possible values of another one.
@@ -492,6 +494,112 @@ class NodeInfo:
 
         self.reset_params()
 
+        # ---------------------------------------------------------------------------
+        # data type param
+        # ---------------------------------------------------------------------------
+
+        # data_type exists or not
+        self.data_type_name = None
+        self.data_type_config_index = None
+        for i, name in enumerate(self.config_order):
+            if name in ('data_type', 'input_type', 'socket_type'):
+                self.data_type_name = name
+                self.data_type_config_index = i 
+                break
+
+        self.data_type_drives_inputs = False
+        self.data_type_drives_outputs = False
+        self.data_type_driven_sockets = {}
+
+        # If exists, looks for driven sockets
+        if self.data_type_name is not None:
+
+            # sockets which are enabled at least once for a given data_type value
+            def dt_loop(value):
+
+                enabled_ids = {'inputs': [], 'outputs': []}
+
+                def f(bnode, data_type=None, **params):
+                    for direction in ('inputs', 'outputs'):
+                        for sock in self.snapshot_sockets()[direction].values():
+                            if sock.enabled and (sock.identifier not in enabled_ids[direction]):
+                                enabled_ids[direction].append(sock.identifier)
+
+                self.loop_on_configurations(f, **{self.data_type_name: value})
+
+                return enabled_ids
+
+            # Enabled sockets counters
+            counters = {'inputs': {}, 'outputs': {}}
+
+            # Sockets changing types
+            types = {'inputs': {}, 'outputs': {}}
+
+            # Data type possible values
+            data_type_values = params[self.data_type_name]['enums']
+
+            # Enabled sockets per data_type
+            #dt_sockect_ids = {}
+
+            for value in data_type_values:
+
+                # Enabling
+                enabled_ids = dt_loop(value)
+                #dt_sockect_ids[value] = enabled_ids
+                
+                for direction in ('inputs', 'outputs'):
+                    for sid in enabled_ids[direction]:
+                        if sid in counters[direction]:
+                            counters[direction][sid] += 1
+                        else:
+                            counters[direction][sid] = 1
+
+                # Types
+                self.set_params(**{self.data_type_name: value})
+                for direction in ('inputs', 'outputs'):
+                    for sock in self.snapshot_sockets()[direction].values():
+                        if sock.enabled:
+                            if sock.identifier in types[direction]:
+                                types[direction][sock.identifier].add(sock.socket_type)
+                            else:
+                                types[direction][sock.identifier] = {sock.socket_type}
+
+            driven_ids = {'inputs': [], 'outputs': []}
+            for direction in ('inputs', 'outputs'):
+                # Add the sockets changing their type each type data_type changes
+                for sid, stypes in types[direction].items():
+                    if len(stypes) == len(data_type_values):
+                        driven_ids[direction].append(sid)
+
+                # Add the sockets enabled only for one value of data_type
+                for sid, counter in counters[direction].items():
+                    if counter==1:
+                        driven_ids[direction].append(sid)
+
+            # HACK : 'Store Named Attribute' has more data_types than socket types
+            if self.name == "Store Named Attribute":                
+                driven_ids['inputs'] = ["Value"]
+                driven_ids['outputs'] = []
+
+            self.data_type_drives_inputs = len(driven_ids['inputs']) > 0
+            self.data_type_drives_outputs = len(driven_ids['outputs']) > 0
+
+            if not (self.data_type_drives_inputs or self.data_type_drives_outputs):
+                assert False, f"Alo error '{self.name}': no driven socket ids for {self.data_type_name}"
+
+            # Conserver les snapshots des sockets, dans leur ordre physique.
+            for value in data_type_values:
+                self.data_type_driven_sockets[value] = {}
+                self.set_params(**{self.data_type_name: value})
+                sockets = self.snapshot_sockets()
+                for direction in ('inputs', 'outputs'):
+                    self.data_type_driven_sockets[value][direction] = [
+                        socket for socket in sockets[direction].values()
+                        if socket.socket_type == SocketType.from_type(value).type
+                        and socket.identifier in driven_ids[direction]]
+
+        self.reset_params()
+
     # ----------------------------------------------------------------------------------------------------
     # Get the possible sockets for a configuration
     # ----------------------------------------------------------------------------------------------------
@@ -510,10 +618,17 @@ class NodeInfo:
 
         def f(node, **kwargs):
             new_sockets = list(node.all_sockets()['inputs'].values())
-            for sock, new_sock in zip(sockets, new_sockets):
-                sock.add_possible_socket(new_sock)
+            for sock in sockets:
+                sock.add_possible_socket(new_sockets)
 
         self.loop_on_configurations(f, **parameters)
+
+        if False:
+            if 'data_type' in parameters:
+                print("DEBUG get_possible_sockets", parameters)
+                for sock in sockets:
+                    print(f"- {sock.socket_name}: {sock.enabled}")
+                print()
 
         # --------------------------------------------------
         # Group sockets by their name
@@ -794,25 +909,26 @@ class NodeInfo:
 
     @property
     def has_data_type_parameter(self):
-        return self.data_type_parameter is not None
+        return self.data_type_name is not None
 
-    @property
-    def data_type_drives_inputs(self):
-        if self.has_data_type_parameter:
-            return len(self.data_type_socket_changes['inputs']) > 0
-        return False
-
-    @property
-    def data_type_drives_outputs(self):
-        if self.has_data_type_parameter:
-            return len(self.data_type_socket_changes['outputs']) > 0
-        return False
+    def data_type_input(self, data_type=None):
+        """Name of the first input driven by the type parameter, or None."""
+        if self.data_type_drives_inputs:
+            if data_type is None:
+                data_type = getattr(self.bnode, self.data_type_name)
+            sockets = self.data_type_driven_sockets[data_type]['inputs']
+            return sockets[0].socket_name if sockets else None
+        return None
 
     @property
     def data_type_drives_first_input(self):
         if self.data_type_drives_inputs:
-            data_type_inputs = self.data_type_socket_changes['inputs']
-            return data_type_inputs[0] == 0
+            data_type = getattr(self.bnode, self.data_type_name)
+            sockets = self.data_type_driven_sockets[data_type]['inputs']
+            if sockets:
+                for bsock in self.bnode.inputs:
+                    if bsock.enabled:
+                        return bsock.identifier == sockets[0].identifier
         return False
 
     # ----------------------------------------------------------------------------------------------------
