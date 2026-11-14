@@ -565,9 +565,12 @@ class TreeInterface:
         if len(TreeInterface.SOCKET_TYPES[self.btree.bl_idname]):
             return
         
+        # Loop on socket types
         for d in constants.SOCKETS.values():
+            # Loop on tree types
             for tt in ('GeometryNodeTree', 'ShaderNodeTree'):
-                if d[tt] is not None:
+                # Copy dict and props
+                if d.get(tt) is not None:
                     TreeInterface.SOCKET_TYPES[tt].append(d[tt])
                     TreeInterface.SOCKET_PROPS[tt][d[tt]] = [prop[0] for prop in d['props'].values()]
         

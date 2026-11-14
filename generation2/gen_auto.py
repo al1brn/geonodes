@@ -8,7 +8,7 @@ import bpy
 from . node_explore import NodeInfo
 from . import gen_auto_dicts
 from . gen_auto_dicts import GEONODES, GEONODES_PROPS, SHADERNODES
-from . import gen_config
+from . import gen_config, config
 from . import target_core
 
 from pprint import pprint, pformat
@@ -378,7 +378,6 @@ def generate(folder=None, new_core=True):
     """Generate config and API in core_new, or core with new_core=False.
 
     folder is the geonodes module directory (the current module by default).
-    Reading continues to use the core selected by geonodes.core_module.
     """
     folder = target_core(folder, new=new_core)
     path = folder / "generated"
@@ -474,7 +473,7 @@ def generate(folder=None, new_core=True):
 
             props = d['props']
             class_name = d['class_name']
-            ptype, def_val = gen_config.PYTHON_TYPES.get(class_name, (object, None))
+            ptype, def_val = config.PYTHON_TYPES.get(class_name, (object, None))
             if ptype is object:
                 ptype = 'object'
 
@@ -666,7 +665,7 @@ def generate(folder=None, new_core=True):
             file.write("from .. scripterror import NodeError\n")
             file.write("from typing import TYPE_CHECKING, Literal, Union, Sequence\n")
             file.write("\nif TYPE_CHECKING:\n")
-            for klass in gen_config.GEOMETRY_CLASSES + gen_config.ATTRIBUTE_CLASSES + ['String']:
+            for klass in config.GEOMETRY_CLASSES + config.ATTRIBUTE_CLASSES + ['String']:
                 file.write(f"    class {klass}: ...\n")
             file.write("\n")
             file.write("\n")

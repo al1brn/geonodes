@@ -21,13 +21,13 @@ class DrivenSocketsTest(unittest.TestCase):
             self.assertEqual((vector[0].identifier, vector[0].socket_name, vector[0].socket_type),
                              ('Vector', 'Vector', 'VECTOR'))
             node.set_params(data_type='FLOAT_VECTOR')
-            self.assertEqual(node.data_type_input, 'Vector')
+            self.assertEqual(node.data_type_input(), 'Vector')
             self.assertTrue(node.data_type_drives_first_input)
             node.get_possible_sockets(data_type='FLOAT_VECTOR')
             self.assertEqual(node.bnode.data_type, 'FLOAT')
             self.assertEqual(vector[0].socket_name, 'Vector')
             self.assertEqual(vector[0].socket_type, 'VECTOR')
-            self.assertEqual(node.data_type_input, 'Value')
+            self.assertEqual(node.data_type_input(), 'Value')
 
     def test_empty_input_lists_and_no_type_parameter(self):
         with Tree('GeometryNodeTree') as tree:
@@ -37,11 +37,11 @@ class DrivenSocketsTest(unittest.TestCase):
                 self.assertNotIn('Seed', [socket.identifier for socket in sockets['inputs']])
                 node.set_params(data_type=value)
                 if not sockets['inputs']:
-                    self.assertIsNone(node.data_type_input)
+                    self.assertIsNone(node.data_type_input())
                     self.assertFalse(node.data_type_drives_first_input)
             node = NodeInfo(tree.btree, tree.create_node('Math'))
             self.assertEqual(node.data_type_driven_sockets, {})
-            self.assertIsNone(node.data_type_input)
+            self.assertIsNone(node.data_type_input())
             self.assertFalse(node.data_type_drives_first_input)
 
 

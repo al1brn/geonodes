@@ -1,7 +1,6 @@
 """Snapshot of a node socket in its current configuration."""
 
 from ast import literal_eval
-from .. import core_module
 
 ATTR_SOCKETS = ['BOOLEAN', 'INT', 'VALUE', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU']
 
@@ -13,7 +12,6 @@ class NodeSocket:
     def __init__(self, bsocket, index=None):
 
         self.index = index
-        self.dependencies = {}
 
         self.identifier     = bsocket.identifier
         self.name           = bsocket.name 
@@ -58,7 +56,7 @@ class NodeSocket:
 
     def __str__(self):
         enums = f" {self.enums}" if self.enums is not None else ""
-        return f"<Socket '{self.identifier}' '{self.name}' {self.names} {enums=} {self.dependencies=}>"
+        return f"<Socket '{self.identifier}' '{self.name}' {self.names} {enums=}>"
 
     # ====================================================================================================
     # Add a possible socket

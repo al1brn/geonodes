@@ -1,8 +1,6 @@
 from pprint import pprint
 
-from .. import core_module
-
-utils = core_module.utils
+from ..kernel import snake_case
 
 class Mapping:
 
@@ -21,7 +19,7 @@ class Mapping:
             impls[target] = tgt
 
         if fname is None:
-            fname = utils.snake_case(node_name)
+            fname = snake_case(node_name)
 
         tgt.append({'impl': impl, 'fname': fname, 'is_static': is_static, 'is_class': is_class})
 

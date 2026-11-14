@@ -8,19 +8,14 @@ Revisit this exclusion after investigating the Blender RNA behavior.
 """
 
 import bpy
-import re
-from itertools import combinations
 
-from .. import core_module
+from ..kernel import snake_case, get_socket_type, get_class_name
+
 from . import config, utils
 from .node_param import NodeParam
 from .node_socket import NodeSocket
-SocketType = core_module.common.sockettype.SocketType
-
-ENUM_PARAMS_ORDERS = {
-    'Compare' : ('data_type', 'operation', 'mode'),
-}
-
+from .node_argument import NodeArgument
+from .node_dims import NODE_DIMS
 
 class NodeInfo:
     STD_ATTRS = None
@@ -30,32 +25,63 @@ class NodeInfo:
 
         self._inputs = None
         self._outputs = None
-        self.max_inputs = []
-        self.max_outputs = []
 
         self.has_structure_type = False
-        self._param_dependencies = None
-        self._enum_parameters = None
-        self._driving_parameters = None
-        self._configurations = None
 
         self.get_std_attrs()
-
-        self._enum_params_order = ENUM_PARAMS_ORDERS.get(self.name, None)
-        self.has_params_order = self._enum_params_order is not None
 
         # -------------------------
         # dynamic sockets
         # -------------------------
 
-        items_spec = core_module.constants.NODE_WITH_IN_ITEMS.get(self.bl_idname)
-        self.has_items = items_spec is not None
-        if self.has_items:
-            self.items_name = items_spec['items']
-            self.items_with_name = items_spec['item_name']
+        self.items = {}
+        for attr_name in dir(self.bnode):
+            if attr_name[-6:] == '_items':
 
-            # Clear items to avoid fake inputs
+                meth = getattr(self.bnode, attr_name).new
+                sig_type = 'EMPTY'
+
+                try:
+                    meth()
+                    sig_type = 'EMPTY'
+
+                except TypeError as e:
+                    if str(e).endswith('required parameter "socket_type" not specified'):
+                        sig_type = 'TYPE'
+                    elif str(e).endswith('required parameter "name" not specified'):
+                        sig_type = 'NAME'
+                    else:
+                        raise e
+
+                if sig_type == 'TYPE':
+                    try:
+                        meth(socket_type='ERR')
+                    except Exception as e:
+                        token = "not found in "
+                        p = str(e).find(token)
+                        assert p>=0, f"Algo error: {str(e)}"
+                        types = eval(str(e)[p + len(token):]) 
+
+                    try:
+                        meth(name="Fake", socket_type=[types[0]])
+                        assert False, "Till 5.3: not an existing case"
+                        sig_type = 'NAME_TYPE'
+                    except:
+                        pass
+
+                elif sig_type == 'NAME':
+                    meth(name="Fake")
+
+                self.items[attr_name]= sig_type
+
+        self.has_items = len(self.items) > 0
+
+
+        # Clear items to avoid fake inputs
+        try:
             getattr(self.bnode, self.items_name).clear()
+        except:
+            pass
 
         # -------------------------
         # Default config
@@ -72,6 +98,10 @@ class NodeInfo:
     # ---------------------------------------------------------------------------
     # Tree
     # ---------------------------------------------------------------------------
+
+    @property
+    def tree_type(self):
+        return self.btree.bl_idname
 
     @property
     def is_shader(self):
@@ -109,11 +139,6 @@ class NodeInfo:
         """Whether the node exposes any parameters."""
         return bool(self.snapshot_params())
 
-    @property
-    def has_driving_parameters(self):
-        """Whether parameters influence the socket configuration."""
-        return bool(self.driving_parameters)
-
     # ---------------------------------------------------------------------------
     # Sockets
     # ---------------------------------------------------------------------------
@@ -133,9 +158,7 @@ class NodeInfo:
         """Whether the node is a parameterless input with a single output."""
         if self.has_input_sockets or self.has_parameters or len(self.outputs) != 1:
             return False
-        socket = next(iter(self.outputs.values()))
-        return all(state['socket_type'] != 'CUSTOM'
-                   for state in socket.dependencies.values() if state['exists'])
+        return next(iter(self.outputs.values())).socket_type != 'CUSTOM'
 
     @property
     def has_multi_input(self):
@@ -198,52 +221,6 @@ class NodeInfo:
         for param_name in self.config_order:
             setattr(self.bnode, param_name, self.config[param_name]['default'])
 
-    @property
-    def enum_params_order(self):
-
-        if self._enum_params_order is None:
-            params = [NodeParam.Parameter(self.bnode, name)
-                      for name, info in self.snapshot_params().items()
-                      if info['type'] == 'ENUM']
-            params = [param for param in params
-                      if param is not None and param.param_type == 'ENUM']
-
-            for index, param1 in enumerate(params[:-1]):
-                for param2 in params[index + 1:]:
-                    dep = param1.dependance_with(param2)
-                    if dep:
-                        raise RuntimeError(
-                            f"Node {self.name!r}: enum parameter {dep['slave']!r} "
-                            f"depends on {dep['master']!r}. "
-                            "Declare the parameter order in ENUM_PARAMS_ORDERS "
-                            f"for {self.name!r}. "
-                            f"ENUM parameters: {[param.name for param in params]!r}."
-                        )
-
-            self._enum_params_order = tuple(param.name for param in params)
-            
-        return self._enum_params_order
-
-    @property
-    def param_dependencies(self):
-        if self._param_dependencies is None:
-            self.get_param_dependencies()
-        return self._param_dependencies
-    
-    @property
-    def enum_parameters(self):
-        _ = self.param_dependencies
-        return self._enum_parameters
-
-    @property
-    def driving_parameters(self):
-        _ = self.param_dependencies
-        return self._driving_parameters
-
-    @property
-    def configurations(self):
-        _ = self.param_dependencies
-        return self._configurations
 
     def set_params(self, **params):
         """Set the supplied parameters, leaving other parameters unchanged."""
@@ -278,29 +255,6 @@ class NodeInfo:
 
         return params
 
-    @property
-    def snapshot_config(self):
-        params = self.snapshot_params()
-        return [params[name]['value'] for name in self.config_order]
-
-    def param_filter(self, **kwargs):
-        """Return configuration keys matching the supplied parameter values.
-
-        Keys follow driving_parameters. Omitted parameters remain free;
-        neutral enum parameters are accepted but do not filter socket states.
-        Use the keys to read socket dependencies without modifying the node.
-        """
-        unknown = kwargs.keys() - set(self.enum_parameters)
-        if unknown:
-            raise ValueError(f"Unknown enum parameters: {', '.join(sorted(unknown))}")
-        filters = {
-            self.driving_parameters.index(name): frozenset(value) if isinstance(value, set) else value
-            for name, value in kwargs.items()
-            if name in self.driving_parameters
-        }
-        return tuple(key for key in self.configurations
-                     if all(key[index] == value for index, value in filters.items()))
-
     # ----------------------------------------------------------------------------------------------------
     # Loop on configurations
     # ----------------------------------------------------------------------------------------------------
@@ -326,10 +280,10 @@ class NodeInfo:
             else:
                 func(self, **params)
 
-        set_parameters(**parameters)
-
-        self.reset_params()
-
+        try:
+            set_parameters(**parameters)
+        finally:
+            self.reset_params()
 
     # ====================================================================================================
     # Sockets
@@ -337,12 +291,16 @@ class NodeInfo:
 
     @property
     def inputs(self):
-        _ = self.param_dependencies
+        if self._inputs is None:
+            self._inputs = {socket.identifier: socket for socket in
+                            self.get_possible_sockets(group=False)}
         return self._inputs
 
     @property
     def outputs(self):
-        _ = self.param_dependencies
+        if self._outputs is None:
+            self._outputs = {socket.identifier: socket for socket in
+                             self.get_possible_sockets(inout='OUTPUT', group=False)}
         return self._outputs
 
     def get_sockets(self, inout):
@@ -517,15 +475,11 @@ class NodeInfo:
             # sockets which are enabled at least once for a given data_type value
             def dt_loop(value):
 
-                enabled_ids = {'inputs': [], 'outputs': []}
-
-                def f(bnode, data_type=None, **params):
-                    for direction in ('inputs', 'outputs'):
-                        for sock in self.snapshot_sockets()[direction].values():
-                            if sock.enabled and (sock.identifier not in enabled_ids[direction]):
-                                enabled_ids[direction].append(sock.identifier)
-
-                self.loop_on_configurations(f, **{self.data_type_name: value})
+                enabled_ids = {}
+                for inout, direction in (('INPUT', 'inputs'), ('OUTPUT', 'outputs')):
+                    enabled_ids[direction] = [socket.identifier for socket in
+                        self.get_possible_sockets(inout=inout, group=False,
+                                                  **{self.data_type_name: value})]
 
                 return enabled_ids
 
@@ -566,26 +520,15 @@ class NodeInfo:
 
             driven_ids = {'inputs': [], 'outputs': []}
             for direction in ('inputs', 'outputs'):
-                # Add the sockets changing their type each type data_type changes
+                # Include sockets whose type changes with data_type.
                 for sid, stypes in types[direction].items():
-                    if len(stypes) == len(data_type_values):
+                    if len(stypes) > 1:
                         driven_ids[direction].append(sid)
 
-                # Add the sockets enabled only for one value of data_type
+                # Include sockets absent from some data_type variants.
                 for sid, counter in counters[direction].items():
-                    if counter==1:
+                    if counter < len(data_type_values):
                         driven_ids[direction].append(sid)
-
-            # HACK : 'Store Named Attribute' has more data_types than socket types
-            if self.name == "Store Named Attribute":                
-                driven_ids['inputs'] = ["Value"]
-                driven_ids['outputs'] = []
-
-            self.data_type_drives_inputs = len(driven_ids['inputs']) > 0
-            self.data_type_drives_outputs = len(driven_ids['outputs']) > 0
-
-            if not (self.data_type_drives_inputs or self.data_type_drives_outputs):
-                assert False, f"Alo error '{self.name}': no driven socket ids for {self.data_type_name}"
 
             # Conserver les snapshots des sockets, dans leur ordre physique.
             for value in data_type_values:
@@ -595,8 +538,13 @@ class NodeInfo:
                 for direction in ('inputs', 'outputs'):
                     self.data_type_driven_sockets[value][direction] = [
                         socket for socket in sockets[direction].values()
-                        if socket.socket_type == SocketType.from_type(value).type
+                        if socket.socket_type == get_socket_type(value)
                         and socket.identifier in driven_ids[direction]]
+
+            self.data_type_drives_inputs = any(
+                sockets['inputs'] for sockets in self.data_type_driven_sockets.values())
+            self.data_type_drives_outputs = any(
+                sockets['outputs'] for sockets in self.data_type_driven_sockets.values())
 
         self.reset_params()
 
@@ -604,31 +552,33 @@ class NodeInfo:
     # Get the possible sockets for a configuration
     # ----------------------------------------------------------------------------------------------------
 
-    def get_possible_sockets(self, **parameters):
+    def get_possible_sockets(self, *, inout="INPUT", group=True, **parameters):
 
-        # Set the configuration
-        self.set_params(**parameters)
+        """Merge sockets across configurations compatible with fixed parameters.
 
-        # Initial list of sockets
-        sockets = list(self.all_sockets()['inputs'].values())
+        INPUT remains the default. OUTPUT uses the same exploration. group=False
+        preserves physical identifiers for introspection; the default groups
+        mutually exclusive homonyms for generated signatures.
+        """
+        if inout not in ('INPUT', 'OUTPUT'):
+            raise ValueError(f'Unknown socket direction: {inout!r}')
+        direction = 'inputs' if inout == 'INPUT' else 'outputs'
+        sockets_by_id = {}
 
-        # --------------------------------------------------
-        # Loop on possible configurations
-        # --------------------------------------------------
+        def collect(node, **kwargs):
+            for socket in node.all_sockets()[direction].values():
+                if not socket.enabled:
+                    continue
+                previous = sockets_by_id.get(socket.identifier)
+                if previous is None:
+                    sockets_by_id[socket.identifier] = socket
+                else:
+                    previous.add_possible_socket([socket])
 
-        def f(node, **kwargs):
-            new_sockets = list(node.all_sockets()['inputs'].values())
-            for sock in sockets:
-                sock.add_possible_socket(new_sockets)
-
-        self.loop_on_configurations(f, **parameters)
-
-        if False:
-            if 'data_type' in parameters:
-                print("DEBUG get_possible_sockets", parameters)
-                for sock in sockets:
-                    print(f"- {sock.socket_name}: {sock.enabled}")
-                print()
+        self.loop_on_configurations(collect, **parameters)
+        sockets = sorted(sockets_by_id.values(), key=lambda socket: socket.index)
+        if not group:
+            return sockets
 
         # --------------------------------------------------
         # Group sockets by their name
@@ -685,217 +635,137 @@ class NodeInfo:
 
         return merged
 
-    # ----------------------------------------------------------------------------------------------------
-    # Parameters dependencies
-    # ----------------------------------------------------------------------------------------------------
+    def get_node_arguments(self, *, self_socket=None, fixed_sockets=None,
+                           last_sockets=(), use_geo_selection=False,
+                           auto_data_type=None, **parameters) -> list[NodeArgument]:
+        """Prepare independent contextual wrappers, without changing this node.
 
-    def get_param_dependencies(self):
-        """Explore parameter configurations and store exact socket states.
-
-        Each socket's dependencies maps a tuple of parameter values to
-        exists, enabled, UI name and socket_type. Tuple positions follow
-        self.driving_parameters after reduction. Enum axes follow the declared
-        order, with choices read after their masters are set. Exploration also
-        includes enum flags and booleans; no parameter dependency graph is inferred.
-        The initial node configuration is restored after exploration.
+        All supplied parameters are fixed, including non-enums and None. Only
+        enum parameters select socket configurations in get_possible_sockets;
+        other fixed values are also applied during exploration. Unspecified
+        parameters remain exposed, in config_order followed by snapshot order.
+        The receiver is selected before last_sockets reorders whole wrappers.
+        Explicitly fixed sockets take precedence over automatic selection.
         """
-        self.__dict__.pop('_data_type_changes', None)
         initial = self.snapshot_params()
-        self._enum_parameters = tuple(
-            name for name, param in initial.items()
-            #if param['type'] in {'ENUM', 'ENUM_FLAG'} or isinstance(param['value'], bool)
-            if param['type'] in {'ENUM'}
-        )
+        unknown = parameters.keys() - initial.keys()
+        if unknown:
+            raise ValueError(f'{self.name}: unknown parameters: {sorted(unknown)}')
 
-        self._configurations = ()
-        self._driving_parameters = ()
-        self._param_dependencies = {}
-        enum_order = self.enum_params_order
-        self._enum_parameters = enum_order + tuple(
-            name for name in self._enum_parameters if name not in enum_order
-        )
-        # Compatibility: these are declared precedence constraints, not inferred edges.
-        if self.has_params_order:
-            self._param_dependencies = {
-                name: set(enum_order[:index])
-                for index, name in enumerate(enum_order) if index
-            }
-        sockets = self.all_sockets()
-        self._inputs = dict(sockets['inputs'])
-        self._outputs = dict(sockets['outputs'])
-        observations = {}
+        try:
+            self.set_params(**parameters)
+            for name, value in parameters.items():
+                if name not in self.config_order:
+                    setattr(self.bnode, name, value)
+            snapshots = self.snapshot_params()
+            sockets = self.get_possible_sockets(**parameters)
+        finally:
+            # Restore enum masters first, then the remaining parameter values.
+            self.set_params(**{name: info['value'] for name, info in initial.items()})
+            for name, info in initial.items():
+                if name not in self.config_order and name in parameters:
+                    setattr(self.bnode, name, info['value'])
 
-        def possible_values(param):
-            if param['type'] == 'ENUM':
-                yield from param['enums']
-            elif param['type'] == 'ENUM_FLAG':
-                enums = param['enums']
-                for size in range(len(enums) + 1):
-                    for group in combinations(enums, size):
-                        yield set(group)
-            elif isinstance(param['value'], bool):
-                yield from (False, True)
+        used_names = {'self', 'cls', 'node', 'named_sockets'}
 
-        def explore(index):
-            if index < len(self._enum_parameters):
-                name = self._enum_parameters[index]
-                # Read choices after the preceding (master) parameters were set.
-                param = self.snapshot_params()[name]
-                if param['type'] == 'ENUM' and not param['enums']:
-                    explore(index + 1)
-                    return
-                for value in possible_values(param):
-                    self.set_params(**{name: value})
-                    explore(index + 1)
-                return
+        def unique_name(name):
+            base = snake_case(name) or 'value'
+            candidate = base
+            index = 0
+            while candidate in used_names:
+                index += 1
+                candidate = f'{base}_{index}'
+            used_names.add(candidate)
+            return candidate
 
-            values = self.snapshot_params()
-            key = tuple(
-                frozenset(values[name]['value'])
-                if isinstance(values[name]['value'], set) else values[name]['value']
-                for name in self._enum_parameters
-            )
-            current_sockets = self.all_sockets()
-            observations[key] = current_sockets
-            for direction, captured in current_sockets.items():
-                target = self._inputs if direction == 'inputs' else self._outputs
-                for identifier, socket in captured.items():
-                    target.setdefault(identifier, socket)
-
-        explore(0)
-        # Restore masters before their dependent parameters. Invalid initial enum
-        # values (possible on inactive RNA properties) cannot be assigned back.
-        for name in self._enum_parameters:
-            param = initial[name]
-            value = param['value']
-            choices = self.snapshot_params()[name]['enums']
-            if choices is not None:
-                if param['type'] == 'ENUM_FLAG':
-                    if not value.issubset(choices):
-                        continue
-                elif value not in choices:
-                    continue
-            self.set_params(**{name: value})
-        self._configurations = tuple(observations)
-        for direction in ('inputs', 'outputs'):
-            for identifier, socket in getattr(self, direction).items():
-                for key, observed_sockets in observations.items():
-                    observed = observed_sockets[direction].get(identifier)
-                    socket.dependencies[key] = {
-                        'exists': observed is not None,
-                        'enabled': observed.enabled if observed is not None else False,
-                        'name': (observed.label or observed.name) if observed is not None else None,
-                        'socket_type': observed.socket_type if observed is not None else None,
-                        'index': observed.index if observed is not None else None,
-                    }
-        self._reduce_socket_configurations()
-        self.build_max_sockets()
-        return self._param_dependencies
-
-    def _reduce_socket_configurations(self):
-        """Remove parameter axes that do not distinguish socket configurations."""
-        states = {
-            key: {
-                direction: {
-                    identifier: socket.dependencies[key]
-                    for identifier, socket in getattr(self, direction).items()
-                }
-                for direction in ('inputs', 'outputs')
-            }
-            for key in self._configurations
-        }
-        indices = list(range(len(self.enum_parameters)))
-        for index in range(len(self.enum_parameters)):
-            candidate = [i for i in indices if i != index]
-            grouped = {}
-            for key, state in states.items():
-                reduced_key = tuple(key[i] for i in candidate)
-                if reduced_key in grouped and grouped[reduced_key] != state:
-                    break
-                grouped[reduced_key] = state
+        # Dynamic items reserve their names before ordinary arguments.
+        items_argument = None
+        if self.has_items:
+            if list(self.items.values())[0] == 'EMPTY': # dict {items name: TYPE | EMPTY} 
+                items_argument = NodeArgument(None, unique_name('dyn_sockets'), role='ANONYMOUS_ITEMS')
             else:
-                indices = candidate
+                items_argument = NodeArgument(None, unique_name('items'), role='NAMED_ITEMS',
+                                              kwargs_name=unique_name('named_items'))
 
-        self._driving_parameters = tuple(self.enum_parameters[i] for i in indices)
-        reduced = {}
-        for key, state in states.items():
-            reduced_key = tuple(key[i] for i in indices)
-            if reduced_key in reduced and reduced[reduced_key] != state:
-                raise ValueError(f"Different socket states for reduced configuration {reduced_key!r}")
-            reduced[reduced_key] = state
+        # Parameters reserve their Python names before the socket arguments.
+        param_arguments = []
+        param_names = list(self.config_order) + [name for name in snapshots if name not in self.config_order]
+        for name in param_names:
+            info = snapshots[name]
+            default = initial[name]['value'] if name in parameters else info['value']
+            parameter = NodeParam(self.bnode, name, default, info['type'], enums=info['enums'])
+            context = dict(role='FIXED', value=parameters[name]) if name in parameters else {}
+            param_arguments.append(NodeArgument(parameter, unique_name(name), **context))
 
-        self._configurations = tuple(reduced)
-        for direction in ('inputs', 'outputs'):
-            for identifier, socket in getattr(self, direction).items():
-                socket.dependencies = {
-                    key: state[direction][identifier]
-                    for key, state in reduced.items()
-                }
+        def matches(socket, name):
+            return (name in socket.names or name == socket.identifier
+                    or name == f'ID_{socket.identifier}' or name == socket.group_name)
 
-    def build_max_sockets(self):
-        """Build one logical entry per possible UI name.
+        receiver = None
+        if self_socket is not None:
+            receiver = next((socket for socket in sockets if matches(socket, self_socket)), None)
+            if receiver is None:
+                raise ValueError(f'{self.name}: unknown receiver socket: {self_socket!r}')
 
-        Physical sockets keep all their names in NodeSocket.names. Variants
-        sharing a name are merged only if never enabled simultaneously.
-        Each logical entry has a constant name and its own activation states.
-        """
-        def build(sockets):
-            groups = []
-            for socket in sockets.values():
-                socket.names = tuple(dict.fromkeys(
-                    state['name'] for state in socket.dependencies.values()
-                    if state['exists']
-                ))
-                for name in socket.names:
-                    active = {key for key, state in socket.dependencies.items()
-                              if state['exists'] and state['enabled'] and state['name'] == name}
-                    for group in groups:
-                        if (group['name'] == name and not active & group['active']
-                                and socket.socket_type not in {item.socket_type for item in group['sockets']}
-                                and socket.is_multi_input == group['sockets'][0].is_multi_input):
-                            group['sockets'].append(socket)
-                            group['active'].update(active)
-                            break
-                    else:
-                        groups.append({'name': name, 'sockets': [socket], 'active': active})
+        remaining_fixed = dict(fixed_sockets or {})
+        arguments = []
+        for index, socket in enumerate(sockets):
+            names = [socket.socket_name] + sorted(socket.names - {socket.socket_name})
+            fixed_names = [name for name in remaining_fixed if matches(socket, name)]
+            if len(fixed_names) > 1:
+                raise ValueError(f'{self.name}: multiple fixed values for socket {socket.identifier!r}')
+            ui_name = self_socket if socket is receiver and self_socket in socket.names else names[0]
+            context = {}
+            if fixed_names:
+                if socket is receiver:
+                    raise ValueError(f'{self.name}: receiver socket cannot also be fixed')
+                fixed_name = fixed_names[0]
+                if fixed_name in socket.names:
+                    ui_name = fixed_name
+                context = dict(role='FIXED', value=remaining_fixed.pop(fixed_name))
+            elif socket is receiver:
+                context = dict(role='SELF')
+            elif (use_geo_selection and index == 1 and receiver is sockets[0]
+                  and sockets[0].socket_type == 'GEOMETRY'
+                  and socket.socket_type == 'BOOLEAN' and 'Selection' in socket.names):
+                ui_name = 'Selection'
+                selection = unique_name('selection')
+                context = dict(role='COMPUTED', value=selection,
+                               computation=f'{selection} = self.get_selection()')
 
-            result = []
-            for group in groups:
-                states = {}
-                for key in self.configurations:
-                    present = [socket for socket in group['sockets']
-                               if socket.dependencies[key]['exists']
-                               and socket.dependencies[key]['name'] == group['name']]
-                    active = [socket for socket in present if socket.dependencies[key]['enabled']]
-                    selected = (active or present)[0] if present else None
-                    state = selected.dependencies[key] if selected is not None else None
-                    states[key] = {
-                        'exists': bool(present),
-                        'enabled': bool(active),
-                        'identifier': selected.identifier if selected is not None else None,
-                        'socket_type': state['socket_type'] if state is not None else None,
-                        'index': state['index'] if state is not None else None,
-                    }
+            name = unique_name(ui_name)
+            aliases = ()
+            if not context and len(names) > 1 and not socket.is_multi:
+                aliases = tuple((ui, name if ui == ui_name else unique_name(ui)) for ui in names)
+            arguments.append(NodeArgument(socket, name, aliases=aliases, socket_name=ui_name, **context))
 
-                descriptor = {
-                    'name': group['name'],
-                    'physical_identifiers': tuple(socket.identifier for socket in group['sockets']),
-                    'enabled': [key for key, state in states.items() if not state['enabled']],
-                }
-                for prop in ('exists', 'identifier', 'socket_type', 'index'):
-                    values = {state[prop] for state in states.values()
-                              if prop == 'exists' or state['exists']}
-                    descriptor[prop] = (next(iter(values)) if len(values) == 1 else
-                                        {key: state[prop] for key, state in states.items()})
-                result.append(descriptor)
-            return result
+        if remaining_fixed:
+            raise ValueError(f'{self.name}: unknown fixed sockets: {sorted(remaining_fixed)}')
 
-        self.max_inputs = build(self.inputs)
-        self.max_outputs = build(self.outputs)
+        # Resolve inference against final names, including deduplicated aliases.
+        if auto_data_type is not None:
+            type_parameter = self.data_type_parameter
+            if type_parameter is None:
+                raise ValueError(f'{self.name}: no type parameter for automatic inference')
+            if type_parameter.name not in parameters:
+                target = next((arg for arg in arguments
+                               if arg.role in ('ARGUMENT', 'SELF') and matches(arg.source, auto_data_type)), None)
+                if target is None:
+                    raise ValueError(f'{self.name}: unknown type inference socket: {auto_data_type!r}')
+                expression = 'self' if target.role == 'SELF' else dict(target.aliases).get(auto_data_type, target.name)
+                parameter = next(arg for arg in param_arguments if arg.source.name == type_parameter.name)
+                parameter.role = 'COMPUTED'
+                parameter.value = parameter.name
+                parameter.computation = (
+                    f'{parameter.name} = SocketType.get_data_type_for_node('
+                    f'{expression}, {self.bl_idname!r}, {type_parameter.name!r})')
 
-    # ====================================================================================================
-    # Data type
-    # ====================================================================================================
+        # Ordering affects exposition only; physical order was used above.
+        first = [arg for arg in arguments if arg.role == 'SELF']
+        rest = [arg for arg in arguments if arg.role != 'SELF']
+        last = [arg for arg in rest if any(matches(arg.source, name) for name in last_sockets)]
+        return (first + [arg for arg in rest if not any(arg is item for item in last)]
+                + last + param_arguments + ([items_argument] if items_argument is not None else []))
 
     @property
     def data_type_parameter(self):
@@ -931,51 +801,6 @@ class NodeInfo:
                         return bsock.identifier == sockets[0].identifier
         return False
 
-    # ----------------------------------------------------------------------------------------------------
-    # What are the sockets changing with data_type parameter
-    # ----------------------------------------------------------------------------------------------------
-
-    @property
-    def data_type_socket_changes(self):
-        """Logical input/output indices whose types depend on the type enum."""
-        
-        # Cache
-        if hasattr(self, '_data_type_changes'):
-            return self._data_type_changes
-
-        # Main
-        parameter = self.data_type_parameter
-        result = {'inputs': (), 'outputs': ()}
-        
-        if parameter is not None and parameter.name in self.driving_parameters:
-            axis = self.driving_parameters.index(parameter.name)
-            for direction in result:
-                sockets = getattr(self, 'max_' + direction)
-                groups = {}
-                ranks = {}
-                for key in self.configurations:
-                    other = key[:axis] + key[axis + 1:]
-                    rank = 0
-                    for index, socket in enumerate(sockets):
-                        exists = socket['exists']
-                        if not (exists[key] if isinstance(exists, dict) else exists) or key in socket['enabled']:
-                            continue
-                        types = socket['socket_type']
-                        socket_type = types[key] if isinstance(types, dict) else types
-                        groups.setdefault((other, index), set()).add(socket_type)
-                        ranks.setdefault((other, rank), []).append((index, socket_type))
-                        rank += 1
-                changed = {index for (_, index), types in groups.items() if len(types) > 1}
-                # Some types replace a socket with one bearing another UI name,
-                # such as Map Range's Result/Vector outputs.
-                for values in ranks.values():
-                    if len({socket_type for _, socket_type in values}) > 1:
-                        changed.update(index for index, _ in values)
-                result[direction] = tuple(sorted(changed))
-
-        self._data_type_changes = result
-        return result
-
     # ====================================================================================================
     # Utilities
     # ====================================================================================================
@@ -1005,7 +830,8 @@ class NodeInfo:
                 return 'Geometry'
         if socket_type == 'SHADER' and name == 'Volume':
             return 'VolumeShader'
-        return core_module.constants.CLASS_NAMES[socket_type]
+        
+        return get_class_name(socket_type)
 
     @classmethod
     def geometry_class(cls, name):
@@ -1028,14 +854,6 @@ class NodeInfo:
             return 'Geometry'
         raise ValueError(f"Unknown Geometry socket name: {name!r}. Update NodeInfo.geometry_class.")
 
-    def snapshot(self):
-        """Return parameter and socket snapshots in the current configuration."""
-        sockets = self.snapshot_sockets()
-        return {
-            'params': self.snapshot_params(),
-            'inputs': sockets['inputs'],
-            'outputs': sockets['outputs'],
-        }
 
     @classmethod
     def loop_on_nodes(cls, func, tree_type="GeometryNodeTree"):
@@ -1058,592 +876,55 @@ class NodeInfo:
 
         utils.loop_on_nodes(process, tree_type=tree_type)
 
-
-
-class DEPRECATED:
-    @property
-    def convert_to_classes_DEPRECATED(self):
-        """Return (source, destination class), or None for a non-conversion.
-
-        The source may be a description such as 'Axis Angle'. Only the
-        destination must name a socket class. Match full 'to' words, allowing
-        UI spaces in class names such as 'Grease Pencil'.
-
-        Normalize Curves -> Curve, Points -> Cloud, Euler -> Vector and
-        Value -> Float on either side:
-        'Curves to Grease Pencil' -> ('Curve', 'GreasePencil'),
-        'Mesh to Points' -> ('Mesh', 'Cloud'). In every explored configuration,
-        the first output must have the destination class, and the first input
-        must have a different class. Geometry names refine the generic socket
-        type, so Curve -> Mesh is a conversion despite both using GEOMETRY.
-        Remaining semantic exceptions are corrected explicitly by the caller,
-        not excluded here with node-specific tests.
-        """
-        parts = re.split(r'\s+to\s+', self.bnode.name.strip(), flags=re.IGNORECASE)
-        if len(parts) != 2 or not all(part.strip() for part in parts):
-            return None
-        classes = set(core_module.constants.CLASS_NAMES.values()) | set(core_module.constants.GEOMETRY_CLASSES)
-        classes.discard('Input')
-        names = {name.lower(): name for name in classes}
-        names.update({'curves': 'Curve', 'points': 'Cloud', 'euler': 'Vector', 'value': 'Float'})
-
-        def resolve(name):
-            return names.get(re.sub(r'\s+', '', name).lower())
-
-        source, target = (part.strip() for part in parts)
-        target_class = resolve(target)
-        if target_class is None:
-            return None
-
-        def first_class(direction, config):
-            for socket in getattr(self, 'max_' + direction):
-                def value(name):
-                    item = socket[name]
-                    return item[config] if isinstance(item, dict) else item
-
-                if config in socket['enabled'] or not value('exists'):
-                    continue
-                socket_type, name = value('socket_type'), value('name')
-                if socket_type == 'CUSTOM':
-                    continue
-                if socket_type == 'GEOMETRY':
-                    return self.geometry_class(name)
-                if socket_type == 'SHADER' and name == 'Volume':
-                    return 'VolumeShader'
-                return core_module.constants.CLASS_NAMES[socket_type]
-            return None
-
-        if not self.configurations:
-            return None
-        for config in self.configurations:
-            if (first_class('outputs', config) != target_class
-                    or first_class('inputs', config) == target_class):
-                return None
-        return resolve(source) or source, target_class
+    # ====================================================================================================
+    # Build the NODE_INFO entry
+    # ====================================================================================================
 
     @property
-    def is_convert_to_DEPRECATED(self):
-        """Whether the node name describes a conversion to a socket class."""
-        return self.convert_to_classes is not None
+    def node_info_entry(self):
 
-    def input_implementation_DEPRECATED(self):
-        """Propose a domain implementation for an INPUT node, or return None.
-
-        Apply these name rules in order, matching whole words and accepting
-        singular/plural domain names:
-
-        1. '<subject> of <domain>' targets the domain at the end:
-           Corners of Edge -> Edge.corners; Edges of Vertex -> Vertex.edges;
-           Face of Corner -> Corner.face; Points of Curve -> Spline.points.
-        2. '<subject> in <domain>' uses the same trailing-domain rule:
-           Offset Corner in Face -> Face.offset_corner;
-           Offset Point in Curve -> Spline.offset_point.
-        3. '[Is] <domain> <subject>' targets the leading domain and retains Is:
-           Edge Angle -> Edge.angle; Face Area -> Face.area;
-           Spline Length -> Spline.length; Instance Bounds -> Instance.bounds;
-           Is Edge Smooth -> Edge.is_smooth; Is Face Planar -> Face.is_planar;
-           Is Spline Cyclic -> Spline.is_cyclic.
-
-        Domains: Edge, Face, Vertex, Corner, Spline, Instance and Point. Curve
-        as a trailing container means Spline (the curve/spline domain), not
-        the geometry class Curve. A leading Curve is intentionally ambiguous:
-        Curve Tangent and Curve Tilt need explicit choices, like Position,
-        Normal, Radius and Selection. Unmatched names have no proposal here.
-
-        INPUT_IMPLEMENTATIONS overrides inferred fields and can also supply a
-        class for unmatched names. It may set name=None to omit the Node method.
-        The generator creates class methods returning the Node; eligible
-        class properties come from output names, not from these name rules.
-        No node state, configuration or generated source is modified here.
-        """
-        if self.color_tag != 'INPUT':
-            return None
-        domains = {
-            'edge': 'Edge', 'edges': 'Edge', 'face': 'Face', 'faces': 'Face',
-            'vertex': 'Vertex', 'vertices': 'Vertex', 'corner': 'Corner', 'corners': 'Corner',
-            'spline': 'Spline', 'splines': 'Spline', 'instance': 'Instance', 'instances': 'Instance',
-            'point': 'Point', 'points': 'Point', 'curve': 'Spline', 'curves': 'Spline',
-        }
-        alternatives = '|'.join(sorted(domains, key=len, reverse=True))
-        name = self.bnode.name
-        match = re.fullmatch(r'(.+?)\s+(?:of|in)\s+(' + alternatives + r')', name, flags=re.IGNORECASE)
-        inferred = {}
-        if match:
-            subject, domain = match.groups()
-            inferred = {'class_name': domains[domain.lower()],
-                        'name': core_module.utils.snake_case(subject)}
-        else:
-            leading = '|'.join(word for word in domains if word not in ('curve', 'curves'))
-            match = re.fullmatch(r'(Is\s+)?(' + leading + r')\s+(.+)', name, flags=re.IGNORECASE)
-            if match:
-                state, domain, subject = match.groups()
-                inferred = {'class_name': domains[domain.lower()],
-                            'name': core_module.utils.snake_case(('Is ' if state else '') + subject)}
-        explicit = config.INPUT_IMPLEMENTATIONS.get(self.bnode.bl_idname, {})
-        if not inferred and not explicit:
-            return None
-        specification = {**inferred, **explicit}
-        if 'class_name' not in specification:
-            raise ValueError(f"No target class for INPUT implementation: {name}")
-        return specification
-
-    def default_name_DEPRECATED(self, class_name, kind='METHOD', allow_conversion=True):
-        """Name an implementation, omitting redundant class words.
-
-        Constructors use CamelCase, other implementations use snake_case.
-        Conversion names use the node's UI words on both sides of 'to'; class
-        synonyms determine the target classes, not the FromXxx/to_xxx names.
-        This does not rename the low-level nd/snd accessors.
-        """
-        if kind == 'NONE':
-            return None
-        replacement = config.REPLACE_DEFAULT_IMPLEMENTATIONS.get(self.bnode.bl_idname, {})
-        if 'name' in replacement:
-            return replacement['name']
-        conversion = self.convert_to_classes if allow_conversion else None
-        if conversion is not None:
-            source, target = conversion
-            if kind == 'CONSTRUCTOR':
-                source_label = re.split(r'\s+to\s+', self.bnode.name.strip(), flags=re.IGNORECASE)[0].strip()
-                return 'From' + core_module.utils.CamelCase(source_label)
-            if class_name == source:
-                # Class aliases affect lookup, not the familiar to_points name.
-                target = re.split(r'\s+to\s+', self.bnode.name.strip(), flags=re.IGNORECASE)[1].strip()
-                target = re.sub(r'(?<=[a-z0-9])(?=[A-Z])', ' ', target)
-                return 'to_' + core_module.utils.snake_case(target)
-        original = self.bnode.name
-        name = original
-        aliases = {
-            'Geometry': ('Geometry', 'Geometries'), 'Mesh': ('Mesh', 'Meshes'),
-            'Curve': ('Curve', 'Curves'), 'Instances': ('Instance', 'Instances'),
-            'Matrix': ('Matrix', 'Matrices'),
-            'Cloud': ('Point Cloud', 'Cloud'),
-            'GreasePencil': ('Grease Pencil',), 'VolumeShader': ('Volume Shader',),
-        }
-        words = aliases.get(class_name, (class_name,) if class_name else ())
-        for word in sorted(words, key=len, reverse=True):
-            name = re.sub(r'\b' + re.escape(word) + r'\b', '', name, flags=re.IGNORECASE)
-        if kind == 'CONSTRUCTOR':
-            if self.btree.bl_idname == 'ShaderNodeTree' and name.rstrip().endswith('BSDF'):
-                name = name.rstrip()[:-4]
-            if class_name == 'Vector' and original == 'Combine XYZ':
-                name = 'Combine'
-        elif kind in ('GETTER', 'SETTER'):
-            name = re.sub(r'^\s*Set\s+', '', name)
-        name = ' '.join(name.split()) or original
-        return (core_module.utils.CamelCase(name) if kind == 'CONSTRUCTOR' else
-                core_module.utils.snake_case(name))
-
-    def default_implementation_DEPRECATED(self, **parameters):
-        """Describe the recommended implementation without generating source.
-
-        Rules for the default proposal (explicit implementations may override
-        it). These rules describe the class API, independently of nd/snd:
-
-        Specific nodes listed in config.NO_DEFAULT_IMPLEMENTATION have no
-        default implementation (kind NONE, signature None): Group Input,
-        Group Output, Bake, Viewer and zone boundaries (Repeat, Simulation,
-        For Each Geometry Element, Closure). The dictionary documents each
-        exclusion. Their introspection and low-level access are unaffected.
-
-        INPUT color-tag nodes have no default class implementation, except:
-        - Names starting with Import and returning Geometry construct the
-          refined output class: Import STL -> Mesh.ImportStl.
-        - Names ending in Info are methods bound to the first input:
-          Object Info -> Object.info, Camera Info -> Object.camera_info.
-        Explicit replacements take precedence (Collection Info keeps its
-        Instances constructor and adds Collection.info separately).
-        Corners of Edge stays available via nd.corners_of_edge. nd/snd class
-        properties such as nd.position are independent of this restriction.
-
-        1. Configuration: supplied non-None parameters are fixed; others stay
-           arguments. Enum identifiers and UI labels are accepted. Select the
-           compatible explored state closest to the current driving values.
-           The Blender node itself is never modified.
-        2. Constructors:
-           - A name starting with Combine constructs the first output class:
-             Combine Color -> Color.Combine, Combine XYZ -> Vector.Combine.
-           - A first Geometry output with no Geometry input constructs its
-             refined geometry class: Ico Sphere -> Mesh.IcoSphere,
-             Mesh Line -> Mesh.Line.
-           - Shader BSDF nodes construct Shader: Diffuse BSDF -> Shader.Diffuse.
-        3. Conversions: a single ' to ' separator and a recognized destination
-           class propose Target.FromSource. A recognized source class with a
-           matching input also proposes Source.to_target:
-           Curve to Mesh -> Mesh.FromCurve / Curve.to_mesh;
-           Axis Angle to Rotation -> Rotation.FromAxisAngle only;
-           Curves to Grease Pencil -> GreasePencil.FromCurves /
-           Curve.to_grease_pencil; Mesh to Points -> Cloud.FromMesh /
-           Mesh.to_points; Points to Volume -> Volume.FromPoints /
-           Cloud.to_volume; Euler to Rotation -> Rotation.FromEuler /
-           Vector.to_rotation; Value to String -> String.FromValue /
-           Float.to_string. Curves, Points, Euler and Value normalize to Curve,
-           Cloud, Vector and Float for class lookup only. FromXxx and to_xxx retain
-           the source and target UI words, respectively.
-           The first output must match the destination class and differ from
-           the first input in every explored state. Align Rotation to Vector
-           is therefore a method, not a conversion (Rotation -> Rotation).
-           Remaining false positives such as Split to Instances are left for
-           explicit overrides; no node-specific exclusions are applied.
-        4. Methods: otherwise bind the first enabled non-virtual input to self.
-           Move Fac/Factor last before choosing self: Mix binds A, not Factor.
-           The input type, refined by geometry_class for Geometry sockets,
-           determines the target class. A fixed domain selects its domain
-           class: Extrude Mesh(domain='FACE') targets Face. If its first input
-           is not Geometry, the domain implementation is a class method.
-        5. Implicit arguments: Selection following a Geometry input is omitted
-           for an instance implementation. Fixed parameters are omitted too.
-           Virtual sockets count as dynamic arguments, not as an empty input.
-           A multi-input bound to self still accepts additional values.
-        6. Properties: for eligible nodes, no free arguments and a single
-           output permit GETTER: Curve Length -> Curve.length. With no self
-           input this is a class property. Other nodes without inputs have kind NONE and
-           signature None: Edge Angle remains accessible via nd.edge_angle().
-           Constructor rules take precedence over properties.
-        7. Return: use the first output, except Separate nodes and nodes with
-           virtual outputs, which return the Node to expose all outputs.
-           Matching Geometry input/output classes imply a jump:
-           Subdivide Mesh -> Mesh.subdivide, updating the wrapped Mesh.
-        8. Names: constructors use CamelCase, methods/properties snake_case.
-           Omit redundant class words: Fill Curve -> Curve.fill,
-           Mesh Line -> Mesh.Line. Conversion names follow rule 3.
-
-        The result contains kind, name, class_name, self_socket (identifier),
-        return_socket ('OUT' or None for the Node), is_jump, is_convert_to and
-        signature. The signature is a display-only preview: the receiver is
-        the UI socket name (cls for class implementations), ... means remaining
-        arguments, and the return is the actual class or the word jump.
-        Example: 'def subdivide(Mesh, ...) -> jump'. Conversion alternatives
-        are separated by ' / '. No source is generated by this method.
-
-        config.REPLACE_DEFAULT_IMPLEMENTATIONS may force a CONSTRUCTOR or
-        METHOD and its name. self_socket selects the instance input by Blender
-        identifier or UI name: Closure to List binds Closure, leaving Count as
-        an argument, and proposes Closure.to_list. A missing or ambiguous
-        selection is an error. param_loop requests one proposal per enum value:
-        Random Value -> Float.Random, Integer.Random, Vector.Random and
-        Boolean.Random. The result then includes param_loop and implementations
-        (each with its fixed parameters); signature joins their previews.
-        class_name is None on the aggregate because it targets several classes.
-        Passing data_type='INT' explicitly returns just Integer.Random.
-
-        config.ADDITIONAL_IMPLEMENTATIONS appends explicit proposals without
-        replacing the main one. They are returned in additional_implementations
-        and their signatures follow the main signature, separated by ' / '.
-        Collection Info -> Instances.CollectionInfo plus Collection.info.
-        """
-        node_id = self.bnode.bl_idname
-        replacement = {**self.data_type_implementation(),
-                       **config.REPLACE_DEFAULT_IMPLEMENTATIONS.get(node_id, {})}
-        result = self._default_implementation(replacement, **parameters)
-        additions = config.ADDITIONAL_IMPLEMENTATIONS.get(node_id, [])
-        if additions:
-            implementations = [self._default_implementation(addition, **parameters) for addition in additions]
-            result['additional_implementations'] = implementations
-            signatures = [result['signature'], *(impl['signature'] for impl in implementations)]
-            result['signature'] = ' / '.join(signature for signature in signatures if signature) or None
-        return result
-
-    def _default_implementation_DEPRECATED(self, replacement, **parameters):
-        """Compute one proposal (or enum loop), without collecting additions."""
-        if self.bnode.bl_idname in config.NO_DEFAULT_IMPLEMENTATION:
-            return {
-                'kind': 'NONE',
-                'name': None,
-                'class_name': None,
-                'self_socket': None,
-                'return_socket': None,
-                'is_jump': False,
-                'is_convert_to': False,
-                'signature': None,
+        params = {}
+        for name, param in self.default_params.items():
+            params[name] = {
+                'default'   : param['value'],
+                'type'      : param['type'],
+                'enum'      : param['enums'],
             }
-        snapshot = self.snapshot_params()
-        requested_kind = replacement.get('kind')
-        if requested_kind not in (None, 'CONSTRUCTOR', 'METHOD'):
-            raise ValueError(f"Unsupported default implementation override: {requested_kind!r}")
-        unknown = parameters.keys() - snapshot.keys()
-        if unknown:
-            raise ValueError(f"Unknown parameters: {', '.join(sorted(unknown))}")
-        fixed = {}
-        for name, value in parameters.items():
-            if value is None:
-                continue
-            prop = self.bnode.bl_rna.properties[name]
-            if prop.type == 'ENUM':
-                names = {item.identifier.lower(): item.identifier for item in prop.enum_items}
-                names.update({item.name.lower(): item.identifier for item in prop.enum_items})
-                value = ({names[v.lower()] for v in value} if prop.is_enum_flag else names[value.lower()])
-            fixed[name] = value
-        configurations = self.param_filter(**{n: v for n, v in fixed.items() if n in self.enum_parameters})
-        if not configurations:
-            raise ValueError(f"No socket configuration for {self.bnode.name!r}: {fixed!r}")
-        param_loop = replacement.get('param_loop')
-        if param_loop is not None and param_loop not in fixed:
-            if param_loop not in snapshot or snapshot[param_loop]['type'] != 'ENUM':
-                raise ValueError(f"param_loop must name an enum parameter: {param_loop!r}")
-            if param_loop in self.driving_parameters:
-                index = self.driving_parameters.index(param_loop)
-                values = tuple(dict.fromkeys(key[index] for key in configurations))
-            else:
-                values = snapshot[param_loop]['enums']
-            if not values:
-                raise ValueError(f"No valid values for {self.bnode.name}.{param_loop}")
-            implementations = []
-            for value in values:
-                implementation = self._default_implementation(replacement, **{**parameters, param_loop: value})
-                implementation['parameters'] = {**fixed, param_loop: value}
-                implementations.append(implementation)
-            result = implementations[0].copy()
-            result.update(class_name=None, param_loop=param_loop, implementations=implementations,
-                          signature=' / '.join(impl['signature'] for impl in implementations))
-            result.pop('parameters')
-            return result
-        defaults = tuple(frozenset(snapshot[n]['value']) if isinstance(snapshot[n]['value'], set)
-                         else snapshot[n]['value'] for n in self.driving_parameters)
-        configuration = max(configurations, key=lambda key: sum(a == b for a, b in zip(key, defaults)))
 
-        def sockets(direction):
-            result = []
-            for descriptor in getattr(self, 'max_' + direction):
-                state = {name: value[configuration] if isinstance(value, dict) else value
-                         for name, value in descriptor.items() if name != 'enabled'}
-                if state['exists'] and configuration not in descriptor['enabled']:
-                    result.append(state)
-            return sorted(result, key=lambda socket: socket['index'])
+        inputs, outputs, menus = {}, {}, {}
+        for inout, target in (('INPUT', inputs), ('OUTPUT', outputs)):
+            
+            sockets = self.get_possible_sockets(inout=inout)
 
-        def socket_class(socket):
-            socket_type, name = socket['socket_type'], socket['name']
-            if socket_type == 'GEOMETRY':
-                return self.geometry_class(name)
-            if socket_type == 'SHADER' and name == 'Volume':
-                return 'VolumeShader'
-            return core_module.constants.CLASS_NAMES[socket_type]
+            for sock in sockets:
+                target[sock.socket_name] = {
+                    'bl_idname'     : sock.bl_idname,
+                    'label'         : sock.label,
+                    'name'          : sock.name,
+                    'socket_type'   : sock.socket_type,
+                    'aliases'       : sock.names,
+                }
+                if (inout == 'INPUT') and (sock.socket_type == 'MENU'):
+                    menus[sock.identifier] = {
+                        'default': sock.default_value, 
+                        'values': sock.enums
+                        }
 
-        inputs, outputs = sockets('inputs'), sockets('outputs')
-        dynamic = any(s['socket_type'] == 'CUSTOM' for s in inputs + outputs)
-        inputs = [s for s in inputs if s['socket_type'] != 'CUSTOM']
-        outputs = [s for s in outputs if s['socket_type'] != 'CUSTOM']
-        # Like get_in_sockets: A.mix(B, factor), not factor.mix(A, B).
-        inputs.sort(key=lambda s: s['name'] in ('Factor', 'Fac'))
-        self_input = inputs[0] if inputs else None
-        if 'self_socket' in replacement:
-            requested_socket = replacement['self_socket']
-            matches = [s for s in inputs if s['identifier'] == requested_socket]
-            if not matches:
-                matches = [s for s in inputs if s['name'] == requested_socket]
-            if len(matches) != 1:
-                raise ValueError(f"Unknown or ambiguous self socket for {self.bnode.name}: {requested_socket!r}")
-            self_input = matches[0]
-        class_name = socket_class(self_input) if self_input else socket_class(outputs[0]) if outputs else None
-        constructor = self_input is None
-        conversion = None if replacement.get('typed_class_method') else self.convert_to_classes
+        dims = NODE_DIMS[self.tree_type].get(self.bl_idname, None)
+        if dims is None:
+            print(f"CAUTION: node without dimensions in node_dims module: '{self.name}'")
 
-        geometry_constructor = (bool(outputs) and outputs[0]['socket_type'] == 'GEOMETRY'
-                                and not any(s['socket_type'] == 'GEOMETRY' for s in inputs))
-        input_tag = self.color_tag == 'INPUT'
-        import_constructor = (input_tag and self.bnode.name.startswith('Import')
-                              and bool(outputs) and outputs[0]['socket_type'] == 'GEOMETRY')
-        info_method = input_tag and self.bnode.name.endswith('Info') and self_input is not None
-        combine_constructor = self.bnode.name.startswith('Combine')
-        bsdf_constructor = self.btree.bl_idname == 'ShaderNodeTree' and self.bnode.name.endswith('BSDF')
-        if requested_kind == 'METHOD' or (info_method and requested_kind is None):
-            if self_input is None:
-                raise ValueError(f"No instance input for method {self.bnode.name!r}")
-            constructor = False
-        elif requested_kind == 'CONSTRUCTOR':
-            if not outputs:
-                raise ValueError(f"No output class for constructor {self.bnode.name!r}")
-            self_input, class_name, constructor = None, socket_class(outputs[0]), True
-        elif import_constructor:
-            self_input, class_name, constructor = None, socket_class(outputs[0]), True
-        elif combine_constructor:
-            if not outputs:
-                raise ValueError(f"No output class for constructor {self.bnode.name!r}")
-            self_input, class_name, constructor = None, socket_class(outputs[0]), True
-        elif conversion is not None:
-            self_input, class_name, constructor = None, conversion[1], True
-        elif geometry_constructor:
-            self_input, class_name, constructor = None, socket_class(outputs[0]), True
-        elif bsdf_constructor:
-            self_input, class_name, constructor = None, 'Shader', True
-        if replacement.get('typed_class_method'):
-            direction = 'inputs' if replacement.get('class_from') == 'INPUT' else 'outputs'
-            for index in self.data_type_socket_changes[direction]:
-                descriptor = getattr(self, 'max_' + direction)[index]
-                state = {key: value[configuration] if isinstance(value, dict) else value
-                         for key, value in descriptor.items() if key != 'enabled'}
-                if state['exists'] and configuration not in descriptor['enabled']:
-                    class_name = socket_class(state)
-                    break
-            else:
-                raise ValueError(f'No typed {direction} for {self.bnode.name}: {fixed!r}')
-        if 'domain' in fixed:
-            domains = {'POINT': 'Point', 'FACE': 'Face', 'EDGE': 'Edge', 'CORNER': 'Corner',
-                       'CURVE': 'Spline', 'SPLINE': 'Spline', 'INSTANCE': 'Instance',
-                       'LAYER': 'Layer', 'AUTO': 'Geometry'}
-            class_name = domains[fixed['domain']]
-            if self_input is None or self_input['socket_type'] != 'GEOMETRY':
-                self_input, constructor = None, True
-
-        free_inputs = [s for s in inputs if s is not self_input]
-        # Selection is implicit only when it follows a Geometry input.
-        ordered = sockets('inputs')
-        implicit_selection = {s['identifier'] for previous, s in zip(ordered, ordered[1:])
-                              if s['name'] == 'Selection' and previous['socket_type'] == 'GEOMETRY'}
-        if self_input is not None:
-            free_inputs = [s for s in free_inputs if s['identifier'] not in implicit_selection]
-        free_count = len(free_inputs) + len(snapshot.keys() - fixed.keys()) + int(dynamic)
-        if self_input is not None and self.inputs[self_input['identifier']].is_multi_input:
-            # The variadic input also accepts values in addition to self.
-            free_count += 1
-        return_socket = 'OUT' if outputs else None
-        if self.bnode.name.startswith('Separate') or any(s['socket_type'] == 'CUSTOM' for s in sockets('outputs')):
-            return_socket = None
-        getter = free_count == 0 and len(outputs) == 1 and return_socket is not None
-        forced_constructor = (requested_kind == 'CONSTRUCTOR' or import_constructor or combine_constructor
-                              or geometry_constructor or bsdf_constructor or conversion is not None)
-        kind = requested_kind or ('METHOD' if info_method else 'CONSTRUCTOR' if forced_constructor else 'GETTER' if getter else
-                                  'CONSTRUCTOR' if constructor else 'METHOD')
-        input_without_default = input_tag and not import_constructor and not info_method and not replacement and 'domain' not in fixed
-        if input_without_default or (not ordered and not getter and not forced_constructor and 'domain' not in fixed):
-            return {
-                'kind': 'NONE',
-                'name': None,
-                'class_name': None,
-                'self_socket': None,
-                'return_socket': None,
-                'is_jump': False,
-                'is_convert_to': False,
-                'signature': None,
-            }
-        is_jump = (self_input is not None and self_input['socket_type'] == 'GEOMETRY'
-                   and bool(outputs) and outputs[0]['socket_type'] == 'GEOMETRY'
-                   and socket_class(self_input) == socket_class(outputs[0])
-                   and return_socket is not None)
-
-        receiver = 'cls' if constructor else self_input['name']
-        header = receiver + (', ...' if free_count else '')
-        naming_class = (socket_class(self_input) if self_input is not None
-                        and self_input['socket_type'] == 'GEOMETRY' else class_name)
-        name = replacement['name'] if 'name' in replacement else self.default_name(naming_class, kind=kind, allow_conversion=not replacement.get('typed_class_method'))
-        returns = 'jump' if is_jump else class_name if kind == 'CONSTRUCTOR' and not replacement.get('typed_class_method') else (
-            socket_class(outputs[0]) if return_socket == 'OUT' else 'Node')
-        signature = f'def {name}({header}) -> {returns}'
-        if conversion is not None:
-            source_class, target_class = conversion
-            # A descriptor such as Axis Angle has no class method counterpart.
-            classes = set(core_module.constants.CLASS_NAMES.values()) | set(core_module.constants.GEOMETRY_CLASSES)
-            if source_class in classes:
-                source_input = next((s for s in inputs if socket_class(s) == source_class), None)
-                if source_input is not None:
-                    method_count = free_count - 1
-                    method_count -= sum(s['identifier'] in implicit_selection for s in inputs if s is not source_input)
-                    if self.inputs[source_input['identifier']].is_multi_input:
-                        method_count += 1
-                    method_header = source_input['name'] + (', ...' if method_count else '')
-                    method_name = self.default_name(source_class, kind='METHOD')
-                    signature += f' / def {method_name}({method_header}) -> {target_class}'
-        return {
-            'kind': kind,
-            'name': name,
-            'class_name': class_name,
-            'self_socket': self_input['identifier'] if self_input is not None else None,
-            'return_socket': return_socket,
-            'is_jump': is_jump,
-            'is_convert_to': conversion is not None,
-            'signature': signature,
+        node_info = {
+            'name'          : self.name,
+            'params'        : params,
+            'items'         : [self.items] if self.has_items else {}, 
+            'menu_sockets'  : menus,
+            'inputs'        : inputs, 
+            'outputs'       : outputs, 
+            'has_custom_in' : self.has_dynamic_inputs,
+            'has_custom_out': self.has_dynamic_outputs,
+            'dims'          : dims,
         }
 
-    @property
-    def inferred_data_type_socket_DEPRECATED(self):
-        """Non-first typed argument for an automatically inferred instance method."""
-        if self.has_domain_parameter:
-            return None
-        return self._inferred_data_type_socket()
-
-    def _inferred_data_type_socket_DEPRECATED(self):
-        """Shared inference rule, also used by fixed-domain instance methods."""
-        changes = self.data_type_socket_changes
-        if not changes['inputs']:
-            return None
-        active = [index for index, socket in enumerate(self.max_inputs)
-                  if any(key not in socket['enabled'] for key in self.configurations)]
-        if changes['inputs'][0] == active[0]:
-            return None
-        if changes['outputs']:
-            first = next((socket for socket in self.bnode.inputs if socket.enabled and socket.type != 'CUSTOM'), None)
-            if first is None or first.type != 'GEOMETRY':
-                return None
-        return self.socket_argument_names('inputs')[changes['inputs'][0]]
-
-    def data_type_implementation_DEPRECATED(self):
-        """Describe the default policy for nodes changing both input and output."""
-        if self.has_domain_parameter:
-            return {}
-        changes = self.data_type_socket_changes
-        if not changes['inputs'] or not changes['outputs']:
-            return {}
-        exception = config.DATA_TYPE_IMPLEMENTATIONS.get(self.bnode.bl_idname, {})
-        if exception.get('kind') == 'DEFAULT':
-            return {}
-        inputs = [socket for socket in self.bnode.inputs if socket.enabled and socket.type != 'CUSTOM']
-        inputs.sort(key=lambda socket: (socket.label or socket.name) in ('Factor', 'Fac'))
-        first = inputs[0] if inputs else None
-        output = next((socket for socket in self.bnode.outputs if socket.enabled and socket.type != 'CUSTOM'), None)
-
-        def controlled(socket, direction):
-            if socket is None:
-                return False
-            for index in changes[direction]:
-                identifiers = getattr(self, 'max_' + direction)[index]['identifier']
-                if socket.identifier in (identifiers.values() if isinstance(identifiers, dict) else (identifiers,)):
-                    return True
-            return False
-
-        typed_receiver = controlled(first, 'inputs') and controlled(output, 'outputs')
-        geometry_receiver = first is not None and first.type == 'GEOMETRY'
-        kind = 'METHOD' if geometry_receiver or typed_receiver else 'CONSTRUCTOR'
-        policy = {'kind': kind}
-        if typed_receiver and not geometry_receiver:
-            policy['param_loop'] = self.data_type_parameter.name
-        policy.update(exception)
-        if policy['kind'] == 'CONSTRUCTOR':
-            policy.update(param_loop=self.data_type_parameter.name, typed_class_method=True)
-        elif 'param_loop' not in policy:
-            policy.setdefault('self_socket', first.label or first.name)
-        return policy
-
-    def socket_argument_names_DEPRECATED(self, direction='inputs'):
-        """Return unique Python names aligned with the maximum logical sockets.
-
-        Virtual sockets have no argument name. The implementation generator
-        uses this naming rule.
-        """
-        used = set(self.snapshot_params()) | {
-            'cls', '_node', '_configuration', 'named_sockets', 'sockets', '_identifier', '_value',
-        }
-        names = []
-        for descriptor in getattr(self, f'max_{direction}'):
-            types = descriptor['socket_type']
-            types = types.values() if isinstance(types, dict) else (types,)
-            if not any(t not in (None, 'CUSTOM') for t in types):
-                names.append(None)
-                continue
-            ui_name = descriptor['name']
-            if isinstance(ui_name, dict):
-                identifiers = descriptor['identifier']
-                identifier = (next(v for v in identifiers.values() if v is not None)
-                              if isinstance(identifiers, dict) else identifiers)
-                reference = getattr(self, direction)[identifier]
-                ui_name = reference.label or reference.name
-            base = core_module.utils.snake_case(ui_name) or 'value'
-            name = base
-            index = 0
-            while name in used:
-                index += 1
-                name = f'{base}_{index}'
-            used.add(name)
-            names.append(name)
-        return names
-    
+        return node_info
 

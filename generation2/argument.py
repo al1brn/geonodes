@@ -2,7 +2,7 @@
 
 from dataclasses import dataclass
 
-from .. import core_module
+from ..kernel import snake_case
 
 
 _UNSET = object()
@@ -67,7 +67,7 @@ class Argument:
         fixes the input instead. Name collisions are resolved by the caller.
         """
         socket_name = socket.label or socket.name
-        name = core_module.utils.snake_case(socket_name) if arg_name is None else arg_name
+        name = snake_case(socket_name) if arg_name is None else arg_name
         if class_name is None:
             from .node_info import NodeInfo
             class_name = NodeInfo.socket_class_name(socket.socket_type, socket_name)

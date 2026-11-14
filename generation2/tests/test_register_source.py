@@ -8,16 +8,19 @@ import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
 NodeCall = runpy.run_path(str(ROOT / 'node_call.py'))['NodeCall']
-tree = ast.parse((ROOT / 'node_implementation.py').read_text())
-owner = next(node for node in tree.body if isinstance(node, ast.ClassDef) and node.name == 'NodeImplementation')
+tree = ast.parse((ROOT / 'tree_class.py').read_text())
+owner = next(node for node in tree.body if isinstance(node, ast.ClassDef) and node.name == 'TreeClass')
 methods = [node for node in owner.body if isinstance(node, ast.FunctionDef)
-           and node.name in ('register_source', '_register_source')]
+           and node.name in ('register_source', 'gen_properties')]
 cls = ast.ClassDef(name='Registry', bases=[], keywords=[], body=methods, decorator_list=[])
 namespace = dict(NodeCall=NodeCall, ast=ast, textwrap=textwrap,
+                 SourceWriter=runpy.run_path(str(ROOT / 'sourcewriter.py'))['SourceWriter'],
+                 config=NS(DOMAIN_CLASSES={'Point', 'Edge'}, PROPERTIES={'common': {'Float': {'value': {}}},
+                                       'GeometryNodeTree': {}, 'ShaderNodeTree': {}}),
                  core_module=NS(constants=NS(DOMAIN_CLASSES={'Point', 'Edge'})),
                  utils=NS(get_node_names=lambda tree_type: {'TestNode': 'Test'}))
 exec(compile(ast.fix_missing_locations(ast.Module(body=[cls], type_ignores=[])), '<registry>', 'exec'), namespace)
-Registry = namespace['Registry']
+Registry = namespace['Registry']()
 
 
 class RegisterSourceTest(unittest.TestCase):
@@ -62,6 +65,23 @@ class RegisterSourceTest(unittest.TestCase):
             Registry.register_source(self.node, call, source)
         Registry.register_source(None, call, source, tree_type='ShaderNodeTree')
         self.assertIn('gnmath.py', Registry.files['ShaderNodeTree'])
+
+    def test_missing_environment_is_rejected_before_registration(self):
+        call = NodeCall.function('example', class_name='gnmath')
+        with self.assertRaisesRegex(ValueError, 'tree_type'):
+            Registry.register_source(None, call, 'def example():\n    pass\n')
+        self.assertEqual(Registry.files, {})
+        self.assertEqual(Registry.cross_refs, {})
+
+    def test_write_only_getters_use_each_environment(self):
+        for tree_type in ('GeometryNodeTree', 'ShaderNodeTree'):
+            Registry.tree_type = tree_type
+            Registry.gen_properties()
+            source, = Registry.files[tree_type]['float.py']
+            self.assertIn('def value(self):', source)
+            self.assertIn('raise NodeError(', source)
+            compile(textwrap.dedent(source), '<write-only getter>', 'exec')
+        self.assertEqual(set(Registry.files), {'GeometryNodeTree', 'ShaderNodeTree'})
 
 
 if __name__ == '__main__':

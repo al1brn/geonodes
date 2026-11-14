@@ -25,7 +25,7 @@ PYTHON_TYPES = {'Boolean': ('bool', False),
  'Vector': ('tuple', (0, 0, 0))}
 
 #--------------------------------------------------------------------------------
-# Socket type to class name
+# Socket type to class name 
 #--------------------------------------------------------------------------------
 
 CLASS_NAMES = {'BOOLEAN': 'Boolean',

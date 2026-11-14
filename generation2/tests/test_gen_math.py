@@ -10,16 +10,17 @@ from unittest.mock import patch
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT.parent))
 from geonodes.generation2.node_implementation import NodeImplementation
+from geonodes.generation2.tree_class import TreeClass
 from geonodes.generation2.output import render_modules
 from geonodes.generation2.typealiases import TypeAliases
 
 
 class MathGenerationTest(unittest.TestCase):
     def test_math_uses_specs_and_generates_both_environments(self):
-        implementation = NodeImplementation
+        implementation = TreeClass('GeometryNodeTree')
         saved = (implementation.files, implementation.cross_refs,
                  implementation.tree_type, implementation.type_aliases)
-        original = implementation.gen_node_call
+        original = NodeImplementation.gen_node_call
         try:
             for tree_type in ('GeometryNodeTree', 'ShaderNodeTree'):
                 with self.subTest(tree_type=tree_type):
@@ -31,9 +32,8 @@ class MathGenerationTest(unittest.TestCase):
                     def generate(obj, spec):
                         specs.append(spec)
                         return original(obj, spec)
-                    with patch.object(implementation, '_gen_source', side_effect=AssertionError('legacy generator')):
-                        with patch.object(implementation, 'gen_node_call', generate):
-                            implementation.gen_math()
+                    with patch.object(NodeImplementation, 'gen_node_call', generate):
+                        implementation.gen_math()
                     sources = implementation.files[tree_type]
                     functions = {ast.parse(textwrap.dedent(source)).body[0].name: source
                                  for source in sources['gnmath.py']}

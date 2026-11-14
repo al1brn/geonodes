@@ -10,6 +10,7 @@ from pprint import pprint
 
 import bpy
 from .node_explore import NodeInfo
+from . import config
 from .. import core_module
 
 constants = core_module.constants
@@ -106,7 +107,7 @@ def get_static_method(tree_type, name):
     from importlib import import_module
 
     if hasattr(core_module, 'environment'):
-        environment = core_module.environment.ENVIRONMENTS[tree_type]
+        environment = config.TREE_MODULES[tree_type]
         module = import_module(f'{core_module.__name__}.{environment}.generated.static_nd').nd
     else:
         module = getattr(core_module, 'nd' if tree_type == 'GeometryNodeTree' else 'snd')

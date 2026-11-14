@@ -99,34 +99,6 @@ MODIFIER_ONLY = (
     'Viewer',
 )
 
-# ====================================================================================================
-# Nodes with dynamic input items
-# ====================================================================================================
-
-NODE_WITH_IN_ITEMS = {
-    'NodeCombineBundle' 			: {'items': 'bundle_items',         'item_name': True},
-    'GeometryNodeCaptureAttribute' 	: {'items': 'capture_items',        'item_name': True},
-    'GeometryNodeIndexSwitch'       : {'items': 'index_switch_items',   'item_name': False},
-    'GeometryNodeMenuSwitch'        : {'items': 'enum_items',           'item_name': True},
-    'NodeClosureOutput'             : {'items': 'output_items',         'item_name': True},
-    'FunctionNodeFormatString' 		: {'items': 'format_items',         'item_name': True},
-    'GeometryNodeBake'              : {'items': 'bake_items',           'item_name': True},
-}
-
-# ====================================================================================================
-# Nodes with dynamic inputs accepting dynamic inputs
-# ====================================================================================================
-
-AUTO_INPUT_TYPE_NODES = [
-    'GeometryNodeMenuSwitch',
-    'GeometryNodeIndexSwitch',
-    'GeometryNodeSwitch',    
-]
-
-# ====================================================================================================
-# Paired nodes
-# ====================================================================================================
-
 PAIRED_NODES = {
     'GeometryNodeRepeatOutput'                  : 'GeometryNodeRepeatInput',
     'GeometryNodeSimulationOutput'              : 'GeometryNodeSimulationInput',
@@ -138,99 +110,9 @@ PAIRED_NODES = {
 # Ignored Sockets
 # ====================================================================================================
 
-# Some sockets are anot available for all tree
+# Some sockets are not available for all tree
 
 IGNORED_SOCKETS = {
     'ShaderNodeCombineColor' : ('alpha',), # Shader combinaison doesn't support Alpha
-}
-
-# ====================================================================================================
-# Nodes enum params transco
-# Blender version: (4, 3, 0)
-
-# ----------------------------------------------------------------------------------------------------
-# Node specific transco
-
-SPEC_ENUM_PARAMS = {
-    'Boolean Math': {
-        'Equal'                   : 'XNOR',
-        'Not Equal'               : 'XOR',
-        'Subtract'                : 'NIMPLY',
-    },
-    'Compare': {
-        'Less Equal'              : 'LESS_EQUAL',
-        'Greater Equal'           : 'GREATER_EQUAL',
-    },
-    ('Math', 'Vector Math', 'Integer Math'): {
-        'Add'                     : 'ADD',
-        'Sub'                     : 'SUBTRACT',
-        'Mult'                    : 'MULTIPLY',
-        'Div'                     : 'DIVIDE',
-        'Abs'                     : 'ABSOLUTE',
-        'Min'                     : 'MINIMUM',
-        'Max'                     : 'MAXIMUM',
-        'Sign'                    : 'SIGN',
-        'Mod'                     : 'MODULO',
-        'GCD'                     : 'GCD',
-        'LCM'                     : 'LCM',
-
-        'Log'                     : 'LOGARITHM',
-        'Exp'                     : 'EXPONENT',
-        'Smooth Min'              : 'SMOOTH_MIN',             # ['Math']
-        'Smooth Max'              : 'SMOOTH_MAX',             # ['Math']
-         #'Trunc'                   : 'TRUNC',                  # ['Math'] # Homonym with 'Float to Integer' and 'String to Curve''
-        'Fract'                   : 'FRACT',                  # ['Math']
-        'Sin'                     : 'SINE',                   # ['Math', 'Vector Math']
-        'Cos'                     : 'COSINE',                 # ['Math', 'Vector Math']
-        'Tan'                     : 'TANGENT',                # ['Math', 'Vector Math']
-        'Asin'                    : 'ARCSINE',                # ['Math']
-        'Acos'                    : 'ARCCOSINE',              # ['Math']
-        'Atan'                    : 'ARCTANGENT',             # ['Math']
-        'Atan2'                   : 'ARCTAN2',                # ['Math']
-        'Sinh'                    : 'SINH',                   # ['Math']
-        'Cosh'                    : 'COSH',                   # ['Math']
-        'Tanh'                    : 'TANH',                   # ['Math']
-        'Radians'                 : 'RADIANS',                # ['Math']
-        'Degrees'                 : 'DEGREES',                # ['Math']
-
-        'Cross'                   : 'CROSS_PRODUCT',          # ['Vector Math']
-        'Dot'                     : 'DOT_PRODUCT',            # ['Vector Math']
-
-    },
-    'Delete Geometry': {
-        'Only Edges and Faces'    : 'EDGE_FACE',
-        'Only Faces'              : 'ONLY_FACE',
-    },
-    'Distribute Points in Volume': {
-        'Random'                  : 'DENSITY_RANDOM',
-        'Grid'                    : 'DENSITY_GRID',
-    },
-    'Distribute Points in Grid' : {
-        'Random'                  : 'DENSITY_RANDOM',
-        'Grid'                    : 'DENSITY_GRID',
-    },
-    'Distribute Points on Faces' : {
-        'Poisson Disk'            : 'POISSON',
-    },
-    ('Mesh Circle', 'Cone', 'Cylinder'): {
-        'Triangles'               : 'TRIANGLE_FAN',
-    },
-    ('Mesh to Volume', 'Points to Volume', 'Volume to Mesh'): {
-        'Amount'                  : 'VOXEL_AMOUNT',
-        'Size'                    : 'VOXEL_SIZE',
-    },
-    'Subdivision Surface': {
-        'All'                     : 'SMOOTH_ALL',
-    },
-    'Map Range': {
-        'Stepped Linear'          : 'STEPPED',
-    },
-    'Image Texture': {
-        'Linear'                  : 'Linear',
-    },
-    'Wave Texture': {
-        'Sine'                    : 'SIN',
-        'Triangles'               : 'TRI',
-    },
 }
 

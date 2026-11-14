@@ -3,7 +3,8 @@ from pathlib import Path
 import runpy
 import unittest
 
-specialize = runpy.run_path(str(Path(__file__).resolve().parents[1] / 'output.py'))['specialize_source']
+load_output = runpy.run_path(str(Path(__file__).resolve().parent / 'output_fixtures.py'))['load_output']
+specialize = load_output()['specialize_source']
 
 
 class OutputFormattingTest(unittest.TestCase):
@@ -83,7 +84,7 @@ value = build()
 
     def test_render_modules_keeps_generated_layout(self):
         root = Path(__file__).resolve().parents[2]
-        render = runpy.run_path(str(root / 'generation2/output.py'))['render_modules']
+        render = load_output()['render_modules']
         method = "    @classmethod\n    def example(\n        cls,\n        value = None,\n    ):\n        # Preserve this comment\n        return value\n"
         modules = render(root / 'core_new', 'GeometryNodeTree', {'static_nd.py': [method]})
         source = modules[root / 'core_new/geonodes/generated/static_nd.py']

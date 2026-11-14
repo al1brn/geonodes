@@ -3,7 +3,7 @@ import ast
 import inspect
 from pathlib import Path
 import runpy
-from types import SimpleNamespace
+from types import MethodType, SimpleNamespace
 import unittest
 from typing import Literal
 
@@ -19,6 +19,7 @@ param_namespace = {}
 exec(compile(param_tree, '<node_param>', 'exec'), param_namespace)
 NodeCall = runpy.run_path(str(ROOT / 'node_call.py'))['NodeCall']
 TypeAliases = runpy.run_path(str(ROOT / 'typealiases.py'))['TypeAliases']
+attach_arguments = runpy.run_path(str(ROOT / 'tests/argument_fixtures.py'))['attach_arguments']
 namespace = dict(
     NodeCall=NodeCall,
     TAB="    ",
@@ -31,8 +32,8 @@ exec(compile(ast.Module(body=[method], type_ignores=[]), '<generator>', 'exec'),
 
 
 def socket(name, identifier=None, names=None, multi=False):
-    return SimpleNamespace(names=names or [name], identifier=identifier or name,
-                           enabled=True, class_name='object', socket_type='BOOLEAN' if name == 'Selection' else 'VALUE',
+    return SimpleNamespace(names=set(names or [name]), identifier=identifier or name,
+                           enabled=True, class_name='object', socket_type='BOOLEAN' if name == 'Selection' else 'GEOMETRY' if name == 'Geometry' else 'VALUE',
                            is_multi=multi, socket_name=name, group_name=None)
 
 
@@ -56,8 +57,9 @@ class GenNodeCallTest(unittest.TestCase):
         if snapshots:
             node.default_params.update(snapshots)
             node.config_order = list(node.default_params)
+        attach_arguments(node)
         implementation = SimpleNamespace(node=node, parameters={'mode': None} | parameters,
-                                         fixed_enums=parameters, type_aliases=aliases)
+                                         type_aliases=aliases)
         source = namespace['gen_node_call'](implementation, NodeCall(method_type=options.get('method_type', 'METHOD'),
             method_name='build', **{key: value for key, value in options.items() if key != 'method_type'}))
         calls = []
@@ -140,9 +142,9 @@ class GenNodeCallTest(unittest.TestCase):
                 self.assertEqual(calls[0][1]['data_type'], (7, 'TestNode', 'data_type'))
 
     def test_invalid_auto_type_configuration(self):
-        with self.assertRaisesRegex(ValueError, 'No data_type or input_type'):
+        with self.assertRaisesRegex(ValueError, 'no type parameter'):
             self.generate([socket('Value')], auto_data_type='Value', self_socket='Value')
-        with self.assertRaisesRegex(AttributeError, 'Missing'):
+        with self.assertRaisesRegex(ValueError, 'Missing'):
             self.generate([socket('Value')], type_parameter='data_type', auto_data_type='Missing', self_socket='Value')
 
     def test_socket_typing_falls_back_to_socket(self):
@@ -190,7 +192,7 @@ class GenNodeCallTest(unittest.TestCase):
         self.assertIn("mode_1 : object, optional\n    Socket 'Mode' (default: None)", doc)
         self.assertIn("b : object, optional\n    Socket 'B', identifier 'physical'", doc)
         fn, _, _ = self.generate([socket('Values', multi=True)], self_socket='Values')
-        self.assertIn("values : object\n    self on multi socket 'Values' (multiple values)",
+        self.assertIn("values : object\n    Socket 'Values' (multiple values)",
                       inspect.getdoc(fn))
 
 
@@ -253,8 +255,9 @@ class GenNodeCallTest(unittest.TestCase):
     def test_spec_fixed_parameters_without_mutation(self):
         # Also exercise the new interface directly with fixed values on the spec.
         seen = []
-        node = SimpleNamespace(name='Test', config_order=['mode'], default_params={}, has_items=False,
+        node = SimpleNamespace(name='Test', config_order=['mode'], default_params={'mode': {'value': 'A', 'type': 'ENUM', 'enums': ('A', 'B')}}, has_items=False,
                                get_possible_sockets=lambda **kw: seen.append(kw) or [])
+        attach_arguments(node)
         impl = SimpleNamespace(node=node, parameters={'mode': None}, type_aliases=None)
         spec = NodeCall.function('build', parameters={'mode': 'B'})
         source = namespace['gen_node_call'](impl, spec)
@@ -267,7 +270,9 @@ class GenNodeCallTest(unittest.TestCase):
 
 
     def test_static_accessors_use_impl_spec(self):
-        static_method = next(n for n in cls.body
+        registry_tree = ast.parse((ROOT / 'tree_class.py').read_text())
+        registry = next(n for n in registry_tree.body if isinstance(n, ast.ClassDef) and n.name == 'TreeClass')
+        static_method = next(n for n in registry.body
                              if isinstance(n, ast.FunctionDef) and n.name == 'gen_static_code')
         accessor_class = ast.ClassDef(name='Accessors', bases=[], keywords=[],
                                      body=[static_method], decorator_list=[])
@@ -275,22 +280,23 @@ class GenNodeCallTest(unittest.TestCase):
         nodes = [SimpleNamespace(name='Example', bnode=SimpleNamespace(name='Example'),
                     is_class_property=prop, config_order=[], default_params={}, has_items=False,
                     get_possible_sockets=lambda **kw: []) for prop in (True, False)]
+        for node in nodes:
+            attach_arguments(node)
         namespace['NodeInfo'] = SimpleNamespace(loop_on_nodes=lambda callback, **kw:
                                                [callback(node) for node in nodes])
         exec(compile(module, '<accessors>', 'exec'), namespace)
         records = []
         class Accessors(namespace['Accessors']):
             tree_type = 'GeometryNodeTree'
-            def __init__(self, node):
-                self.node = node
-                self.parameters = {}
-                self.type_aliases = None
-            gen_node_call = namespace['gen_node_call']
+            def implementation(self, node):
+                obj = SimpleNamespace(node=node, parameters={}, type_aliases=None)
+                obj.gen_node_call = MethodType(namespace['gen_node_call'], obj)
+                return obj
             @classmethod
             def register_source(cls, node, node_call, source, **metadata):
                 records.append((node_call, source))
         try:
-            Accessors.gen_static_code()
+            Accessors().gen_static_code()
         finally:
             namespace.pop('NodeInfo')
         self.assertEqual(len(records), 2)
@@ -317,6 +323,27 @@ class GenNodeCallTest(unittest.TestCase):
     def test_generator_checks_the_final_call_before_node_access(self):
         with self.assertRaisesRegex(ValueError, 'self_socket'):
             namespace['gen_node_call'](object(), NodeCall.method('sample'))
+
+    def test_named_items_merge_sockets_and_expand_keywords(self):
+        fn, calls, _ = self.generate([], method_type='FUNCTION', items_named=True)
+        fn(items={'A': 1}, B=2)
+        self.assertEqual(calls[0][1], {'named_sockets': {'A': 1}, 'mode': 'DEFAULT', 'B': 2})
+
+    def test_anonymous_items_expand_positionally(self):
+        fn, calls, _ = self.generate([], method_type='FUNCTION', items_named=False)
+        fn(1, 2, mode='A')
+        self.assertEqual(calls[0], (("Test's Node", 1, 2), {'named_sockets': {}, 'mode': 'A'}))
+
+    def test_explicit_none_on_node_call_is_fixed(self):
+        node = attach_arguments(SimpleNamespace(name='Test', config_order=[],
+            default_params={'font': {'value': 'default', 'type': 'FONT', 'enums': None}},
+            has_items=False, get_possible_sockets=lambda **kw: []))
+        impl = SimpleNamespace(node=node, parameters={'font': None}, type_aliases=None)
+        source = namespace['gen_node_call'](impl, NodeCall.function('build', parameters={'font': None}))
+        env = {'Node': lambda *a, **kw: SimpleNamespace(_out=kw)}
+        exec(source, env)
+        self.assertNotIn('font', inspect.signature(env['build']).parameters)
+        self.assertIsNone(env['build']()['font'])
 
 
 if __name__ == '__main__':

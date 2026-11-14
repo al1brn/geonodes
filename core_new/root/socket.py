@@ -278,7 +278,7 @@ class Socket(NodeCache, metaclass=EnvironmentType):
             if socket is not None:
 
                 if 'default' not in constants.SOCKETS[self._socket_type.type]['props']:
-                    raise NodeError(f"The {self._socket_type()} socket doesn't accept default value. <{socket}> is not valid.")
+                    raise NodeError(f"The {self._socket_type} socket doesn't accept default value. <{socket}> is not valid.")
                 
                 # Perhaps it is given in the props
                 def_key = 'default' if 'default' in props else None

@@ -86,20 +86,6 @@ MODIFIER_ONLY = (
 )
 
 # ====================================================================================================
-# Nodes with dynamic input items
-# ====================================================================================================
-
-NODE_WITH_IN_ITEMS = {
-    'NodeCombineBundle' 			: 'bundle_items',
-    'GeometryNodeCaptureAttribute' 	: 'capture_items',
-    'GeometryNodeIndexSwitch'       : 'index_switch_items',
-    'GeometryNodeMenuSwitch'        : 'enum_items',
-    'NodeClosureOutput'             : 'output_items',
-    'FunctionNodeFormatString' 		: 'format_items',
-    
-}
-
-# ====================================================================================================
 # Nodes with dynamic inputs accepting dynamic inputs
 # ====================================================================================================
 

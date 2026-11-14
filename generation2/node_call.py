@@ -34,10 +34,11 @@ class NodeCall:
     last_sockets        : tuple[str, ...] = ()
     parameters          : dict[str, Any] = field(default_factory=dict)
 
+    # inline code
+    in_line             : str | None = None
+
     # Meta
     implement           : bool = True
-    #domain_loop         : bool = False
-    #data_type_loop      : bool = False
 
     # Debug
     category            : str | None = None
@@ -80,6 +81,10 @@ class NodeCall:
         return self.method_type in self._METHOD_TYPES
 
     @property
+    def is_function(self):
+        return self.method_type == 'FUNCTION'
+
+    @property
     def decorator(self) -> str | None:
         """Decorator source for this implementation."""
         if self.method_type == 'SETTER':
@@ -112,7 +117,7 @@ class NodeCall:
             dump()
             raise ValueError(f"Unknown implementation type: {self.method_type!r}")
         
-        if not self.implement:
+        if (not self.implement) or (self.in_line is not None):
             return self
         
         if self.has_self:
@@ -138,50 +143,57 @@ class NodeCall:
     def function(
             cls, 
             method_name: str,
+            in_line: str | None = None,
             **kwargs) -> "NodeCall":
-        return cls('FUNCTION', method_name, **kwargs)
+        return cls('FUNCTION', method_name, in_line=in_line, **kwargs)
 
     @classmethod
     def static_method(
-            cls, 
+            cls,
             method_name: str,
+            in_line: str | None = None,
             **kwargs) -> "NodeCall":
-        return cls('STATIC_METHOD', method_name, **kwargs)
+        return cls('STATIC_METHOD', method_name, in_line=in_line, **kwargs)
 
     @classmethod
     def class_method(
             cls, 
             method_name: str,
+            in_line: str | None = None,
             **kwargs) -> "NodeCall":
-        return cls('CLASS_METHOD', method_name, **kwargs)
+        return cls('CLASS_METHOD', method_name, in_line=in_line, **kwargs)
 
     @classmethod
     def class_property(
             cls, 
             method_name: str,
+            in_line: str | None = None,
             **kwargs) -> "NodeCall":
-        return cls('CLASS_PROPERTY', method_name, **kwargs)
+        return cls('CLASS_PROPERTY', method_name, in_line=in_line, **kwargs)
 
     @classmethod
     def method(
             cls, 
             method_name: str,
+            in_line: str | None = None,
             **kwargs) -> "NodeCall":
-        return cls('METHOD', method_name, **kwargs)
+        return cls('METHOD', method_name, in_line=in_line, **kwargs)
 
     @classmethod
     def getter(
             cls, 
             method_name: str,
+            in_line: str | None = None,
             **kwargs) -> "NodeCall":
-        return cls('GETTER', method_name, **kwargs)
+        return cls('GETTER', method_name, in_line=in_line, **kwargs)
 
     @classmethod
     def setter(
             cls, 
             method_name: str,
+            in_line: str | None = None,
             **kwargs) -> "NodeCall":
-        return cls('SETTER', method_name, **kwargs)
+        return cls('SETTER', method_name, in_line=in_line, **kwargs)
 
     # ===========================================================================
     # Copy

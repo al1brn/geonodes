@@ -1,4 +1,4 @@
-"""Explicit exceptions to the generation rules.
+"""Shared manual configuration and exceptions to the generation rules.
 
 All dictionaries use Blender bl_idname keys so homonymous UI node names stay
 distinct. Each key line includes the UI name as a comment for manual editing.
@@ -8,48 +8,101 @@ here. Deprecated nodes are excluded before introspection; nodes without a
 default implementation remain available for introspection and nd access.
 """
 
-TREE_TYPES = ('GeometryNodeTree', 'ShaderNodeTree')
+from ..kernel import DATA_TYPE_HOMONYMS, CLASS_NAMES
 
+
+# ====================================================================================================
+# Hard coded lists and dicts
+# ====================================================================================================
+
+# Tree types and module names
+
+TREE_TYPES = ('GeometryNodeTree', 'ShaderNodeTree')
+TREE_MODULES = {'GeometryNodeTree': 'geonodes', 'ShaderNodeTree': 'shadernodes'}
+
+# Socket class names
+CLASS_NAMES_DEPR = {
+ 'BOOLEAN'      : 'Boolean',
+ 'BUNDLE'       : 'Bundle',
+ 'CLOSURE'      : 'Closure',
+ 'COLLECTION'   : 'Collection',
+ 'CUSTOM'       : 'Input',
+ 'FONT'         : 'Font',
+ 'GEOMETRY'     : 'Geometry',
+ 'IMAGE'        : 'Image',
+ 'INT'          : 'Integer',
+ #'INT_VECTOR'   : 'IntVector',
+ 'MATERIAL'     : 'Material',
+ 'MATRIX'       : 'Matrix',
+ 'MENU'         : 'Menu',
+ 'OBJECT'       : 'Object',
+ 'RGBA'         : 'Color',
+ 'ROTATION'     : 'Rotation',
+ 'SHADER'       : 'Shader',
+ 'SOUND'        : 'Sound',
+ 'STRING'       : 'String',
+ 'VALUE'        : 'Float',
+ 'VECTOR'       : 'Vector'
+}
+
+# Geometry and domain classes
+
+GEOMETRY_CLASSES  = ['Geometry', 'Mesh', 'Curve', 'Cloud', 'Instances', 'Volume', 'GreasePencil']
+DOMAIN_CLASSES = ['Domain', 'Point', 'Vertex', 'CloudPoint', 'SplinePoint', 'Face', 'Edge', 'Corner', 'Spline', 'Layer', 'Instance']
+POINT_DOMAIN_CLASSES = ('Vertex', 'SplinePoint', 'CloudPoint')
+
+# Attribute classes
+ATTRIBUTE_CLASSES = ['Boolean', 'Integer', 'Float', 'Vector', 'Color', 'Matrix', 'Rotation']
+
+# Correspondance between blender type and python type plus default value
+PYTHON_TYPES = {
+    'Boolean'  : ('bool', False),
+    'Integer'  : ('int', 0),
+    'Float'    : ('float', 0.),
+    'Vector'   : ('tuple', (0, 0, 0)),
+    'Color'    : ('tuple', (1, 1, 1)),
+    'Matrix'   : ('tuple', ((1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1))),
+    'Rotation' : ('tuple', (0, 0, 0)),
+    'String'   : ('str', '""'),
+}
+
+DATA_TYPE_HOMONYMS_DEPR = {
+    'INT8'          : 'INT',
+    'INTEGER'       : 'INT',
+    'FLOAT2'        : 'VECTOR',
+    'FLOAT_VECTOR'  : 'VECTOR',
+    'VECTOR_FLOAT'  : 'VECTOR',
+    'TRANSFORM'     : 'MATRIX',
+    'FLOAT4X4'      : 'MATRIX',
+    'BYTE_COLOR'    : 'RGBA',
+    'FLOAT_COLOR'   : 'RGBA',
+    'COLOR'         : 'RGBA',
+    'FLOAT'         : 'VALUE',
+    'QUATERNION'    : 'ROTATION',
+    'FLOAT4'        : 'VECTOR',
+}
+
+SOCKET_SHAPES = {
+    'Auto'      : 'AUTO',
+    'Dynamic'   : 'DYNAMIC',
+    'Field'     : 'FIELD',
+    'Grid'      : 'GRID',
+    'List'      : 'LIST',
+    'Single'    : 'SINGLE',
+}
+
+# Nodes with dynamic inputs accepting dynamic inputs
+AUTO_INPUT_TYPE_NODES = [
+    'GeometryNodeMenuSwitch',
+    'GeometryNodeIndexSwitch',
+    'GeometryNodeSwitch',    
+]
 
 DEPRECATED_NODES = {
     'FunctionNodeAlignEulerToVector': 'Use Align Rotation to Vector',  # Align Euler to Vector
     'FunctionNodeRotateEuler': 'Use Rotate Rotation',  # Rotate Euler
+    'FunctionNodeInputIntVector': 'Integer Vector', # Future versions ???
 }
-
-
-NO_DEFAULT_IMPLEMENTATION_DEPRECATED = {
-    'GeometryNodeMenuSwitch': 'Use the handwritten Socket.MenuSwitch and menu_switch methods',  # Menu Switch
-    'FunctionNodeCompare': 'Typed comparisons and environment-specific Float.compare provide the implementations',  # Compare
-    'NodeGroupInput': 'Group interface input',  # Group Input
-    'NodeGroupOutput': 'Group interface output',  # Group Output
-    'GeometryNodeBake': 'Bake with dynamic items; requires a dedicated implementation',  # Bake
-    'GeometryNodeViewer': 'Viewer with dynamic items; requires a dedicated implementation',  # Viewer
-    'GeometryNodeRepeatInput': 'Repeat zone input',  # Repeat Input
-    'GeometryNodeRepeatOutput': 'Repeat zone output',  # Repeat Output
-    'GeometryNodeSimulationInput': 'Simulation zone input',  # Simulation Input
-    'GeometryNodeSimulationOutput': 'Simulation zone output',  # Simulation Output
-    'GeometryNodeForeachGeometryElementInput': 'For Each Geometry Element zone input',  # For Each Geometry Element Input
-    'GeometryNodeForeachGeometryElementOutput': 'For Each Geometry Element zone output',  # For Each Geometry Element Output
-    'NodeClosureInput': 'Closure zone input',  # Closure Input
-    'NodeClosureOutput': 'Closure zone output',  # Closure Output
-}
-
-# ---------------------------------------------------------------------------
-# Partial overrides for nd accessors generated by gen_static_code.
-# Keys are node UI names (node.name); values contain only the NodeCall fields
-# to override, applied with impl_spec.replace(**overrides). Unspecified fields
-# keep their inferred values. Fixed node parameters belong in 'parameters'.
-# This dictionary is separate from SPECIAL_NODES, which describes class APIs.
-# Wiring these overrides into gen_static_code remains to be implemented.
-# ---------------------------------------------------------------------------
-
-STATIC_IMPLEMENTATIONS = {
-    
-}
-
-
-
-
 
 # Handwritten APIs registered for documentation without emitting their source.
 HANDWRITTEN_IMPLEMENTATIONS = {
@@ -118,11 +171,13 @@ DATA_TYPE_IMPLEMENTATIONS = {
 ADDITIONAL_IMPLEMENTATIONS = {
     'common': {
         'Map Range': {
+                'method_type': 'METHOD',
                 'class_name': 'LOOP data_type',
                 'method_name' : 'interpolate_NEW',
                 'fixed_sockets': {'From Min': 0.0, 'From Max': 1.0},
             },
         'Switch': {
+                'method_type': 'METHOD',
                 'class_name': 'LOOP input_type',
                 'method_name': 'switch_false',
                 'self_socket': 'True',
@@ -179,6 +234,8 @@ ITEM_IMPLEMENTATION = {
 # Instance properties: target class -> property name -> getter/setter node descriptions.
 # Missing getter means write-only. Each part accepts parameters and fixed sockets.
 PROPERTIES = {
+    'common': {},
+    
     'ShaderNodeTree': {},
     
     'GeometryNodeTree': {
@@ -314,8 +371,6 @@ PROPERTIES = {
                                     'socket': 'Custom Normal',
                                     'parameters': {'mode': 'FREE', 'domain': 'CORNER'}}}}}
 }
-
-
 
 # ---------------------------------------------------------------------------
 # The following nodes are ignored by get_node_implementation

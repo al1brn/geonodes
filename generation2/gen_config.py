@@ -1,9 +1,10 @@
 """
 Generate config dicts from current Blender version
 """
-print('-'*100)
 
 import bpy
+import ast
+from copy import deepcopy
 from datetime import datetime
 import textwrap
 import inspect
@@ -12,321 +13,78 @@ from pathlib import Path
 from pprint import pprint
 
 from .node_dims import NODE_DIMS
-from . import target_core
+from .node_info import NodeInfo
+from .tree import Tree
+from . import target_core, config
+
+ALL = ['blender_version',
+       # Hard coded
+       'TREE_TYPES',
+       'CLASS_NAMES', 'GEOMETRY_CLASSES', 'DOMAIN_CLASSES', 'ATTRIBUTE_CLASSES',
+       'DATA_TYPE_HOMONYMS', 'AUTO_INPUT_TYPE_NODES', 'SOCKET_SHAPES',
+
+       # Generated
+       'SOCKETS', 'SOCKET_SUBTYPES', 'SOCKET_IDS',
+       'NODE_INFO', 'NODE_NAMES', 'ONE_ITEMS_NODES', 
+       'BUILTIN_GROUPS',
+       ]
+
+# Hard coded global
+from .config import TREE_TYPES
+from .config import CLASS_NAMES, GEOMETRY_CLASSES, DOMAIN_CLASSES, ATTRIBUTE_CLASSES
+from .config import DATA_TYPE_HOMONYMS, AUTO_INPUT_TYPE_NODES, SOCKET_SHAPES
+
+# Will be generated
+SOCKETS             = {} # create_sockets_dicts
+SOCKET_SUBTYPES     = {} # create_sockets_dicts
+SOCKET_IDS          = {} # create_sockets_dicts
+NODE_INFO           = {} # create_nodes_dicts
+NODE_NAMES          = {} # create_nodes_dicts
+ONE_ITEMS_NODES     = {} # create_nodes_dicts
+BUILTIN_GROUPS      = {} # create_builtin_groups
 
 # ====================================================================================================
-# Hard stuff
+# Module level globals
 # ====================================================================================================
 
-# These are simply copied to config
-# This allow to expose these file to gen_auto
+# Interface socket attributes
+# These attributes are optional attribute used in socket constructors
 
-GEOMETRY_CLASSES  = ['Geometry', 'Mesh', 'Curve', 'Cloud', 'Instances', 'Volume', 'GreasePencil']
-DOMAIN_CLASSES    = ['Domain', 'Point', 'Vertex', 'CloudPoint', 'SplinePoint', 'Face', 'Edge', 'Corner', 'Spline', 'Layer', 'Instance']
-ATTRIBUTE_CLASSES = ['Boolean', 'Integer', 'Float', 'Vector', 'Color', 'Matrix', 'Rotation']
-PYTHON_TYPES = {
-    'Boolean'  : ('bool', False),
-    'Integer'  : ('int', 0),
-    'Float'    : ('float', 0.),
-    'Vector'   : ('tuple', (0, 0, 0)),
-    'Color'    : ('tuple', (1, 1, 1)),
-    'Matrix'   : ('tuple', ((1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1))),
-    'Rotation' : ('tuple', (0, 0, 0)),
-    'String'   : ('str', '""'),
+_TREE_INTERFACE_SOCKET_PROPS = {
+
+    # First ones
+    'default_value'             : "default",
+    'min_value'                 : "min",
+    'max_value'                 : "max",
+    'description'               : "tip",
+
+    # Keyword arguments
+    'default_input'             : "default_input",
+    'force_non_field'           : "force_non_field",
+    'hide_in_modifier'          : "hide_in_modifier",
+    'hide_value'                : "hide_value",
+    'is_panel_toggle'           : "is_panel_toggle",
+    'layer_selection_field'     : "layer_selection",
+    'menu_expanded'             : "menu_expanded",
+    'optional_label'            : "optional_label",
+    'structure_type'            : "shape",
+
+    # Directly managed
+    #'name',
+
+    # Unexposed 
+    #'attribute_domain',
+    #'default_attribute_name',
 }
 
-# constants.__all__
-ALL = ['blender_version', 'CLASS_NAMES', 'DATA_TYPE_HOMONYMS', 'SOCKETS', 'NODE_INFO', 'NODE_NAMES', 'SOCKET_SUBTYPES', 
-       'GEOMETRY_CLASSES', 'DOMAIN_CLASSES', 'ATTRIBUTE_CLASSES', 'PYTHON_TYPES', 'INPUT_SOCKETS_PROPS',
-       'BUILTIN_GROUPS', 'ONE_ITEMS_NODES', 'SEVERAL_ITEMS_NODES', 'SOCKET_IDS']
+# A working copy receives Blender's discovered subtype/shape choices.
+#INPUT_SOCKETS_PROPS = deepcopy(config.INPUT_SOCKETS_PROPS)
 
-# ====================================================================================================
-# Internal vars
-# ====================================================================================================
-
-TREE_TYPES = ('GeometryNodeTree', 'ShaderNodeTree')
-
-TRANSCO = {
-    'RGBA'       : 'Color',
-    'INT'        : 'Integer',
-    'VALUE'      : 'Float',
-    'CUSTOM'     : 'Input',
-    'INT_VECTOR' : 'IntVector',
-    }
-    
-BLID_TO_STYPE = {
-    'NodeSocketBool'        : 'BOOLEAN', 
-    'NodeSocketBundle'      : 'BUNDLE', 
-    'NodeSocketClosure'     : 'CLOSURE', 
-    'NodeSocketCollection'  : 'COLLECTION', 
-    'NodeSocketColor'       : 'RGBA', 
-    'NodeSocketFloat'       : 'VALUE', 
-    'NodeSocketGeometry'    : 'GEOMETRY', 
-    'NodeSocketImage'       : 'IMAGE', 
-    'NodeSocketInt'         : 'INT', 
-    'NodeSocketMaterial'    : 'MATERIAL', 
-    'NodeSocketMatrix'      : 'MATRIX', 
-    'NodeSocketMenu'        : 'MENU', 
-    'NodeSocketObject'      : 'OBJECT', 
-    'NodeSocketRotation'    : 'ROTATION', 
-    'NodeSocketString'      : 'STRING', 
-    'NodeSocketVector'      : 'VECTOR',
-    # Blender 5.1
-    'NodeSocketFont'        : 'FONT',
-    # Blender 5.2
-    'NodeSocketIntVector3D' : 'INT_VECTOR',
-    'NodeSocketSound'       : 'SOUND',
-
-    # Shaders
-    'NodeSocketShader'      : 'SHADER',
-
-    # Virtual
-    'NodSocketVirtual'      : 'CUSTOM',
-    }
-    
-DATA_TYPE_HOMONYMS = {
-    'INT8'          : 'INT',
-    'INTEGER'       : 'INT',
-    'FLOAT2'        : 'VECTOR',
-    'FLOAT_VECTOR'  : 'VECTOR',
-    'VECTOR_FLOAT'  : 'VECTOR',
-    'TRANSFORM'     : 'MATRIX',
-    'FLOAT4X4'      : 'MATRIX',
-    'BYTE_COLOR'    : 'RGBA',
-    'FLOAT_COLOR'   : 'RGBA',
-    'COLOR'         : 'RGBA',
-    'FLOAT'         : 'VALUE',
-    'QUATERNION'    : 'ROTATION', 
+# Blend files containing embedded groups
+_BLEND_FILES = {
+    'GeometryNodeTree' : ["geometry_nodes_essentials.blend", "procedural_hair_node_assets.blend"],
+    'ShaderNodeTree' : ["shading_nodes_essentials.blend"],
 }
-
-# ====================================================================================================
-# Tedious to manually build : all the input socket props
-# subtype entry is automatically completed with update_input_sockets_props
-# ====================================================================================================
-
-INPUT_SOCKETS_PROPS = {
-    'BOOLEAN': {
-        'tip'               : ('description',           'str', ""),
-        'optional_label'    : ('optional_label',        'bool', False),
-        'hide_value'        : ('hide_value',            'bool', False),
-        'hide_in_modifier'  : ('hide_in_modifier',      'bool', False),
-
-        'default'           : ('default_value',         'bool', False),
-        'default_attribute' : ('default_attribute_name','str', ""),
-
-        'layer_selection'   : ('layer_selection_field', 'bool', False),
-        'shape'             : ('structure_type',        ('AUTO', 'DYNAMIC', 'FIELD', 'GRID', 'SINGLE'), 'AUTO'),        
-        },
-    'BUNDLE': {
-        'tip'               : ('description',           'str', ""),
-        'optional_label'    : ('optional_label',        'bool', False),
-        'hide_value'        : ('hide_value',            'bool', False),
-        'hide_in_modifier'  : ('hide_in_modifier',      'bool', False),
-        },
-    'CLOSURE': {
-        'tip'               : ('description',           'str', ""),
-        'optional_label'    : ('optional_label',        'bool', False),
-        'hide_value'        : ('hide_value',            'bool', False),
-        'hide_in_modifier'  : ('hide_in_modifier',      'bool', False),
-        },
-    'COLLECTION': {
-        'tip'               : ('description',           'str', ""),
-        'optional_label'    : ('optional_label',        'bool', False),
-        'hide_value'        : ('hide_value',            'bool', False),
-        'hide_in_modifier'  : ('hide_in_modifier',      'bool', False),
-        
-        'default'           : ('default_value',         'object', None),
-        },
-    'RGBA': {
-        'tip'               : ('description',           'str', ""),
-        'optional_label'    : ('optional_label',        'bool', False),
-        'hide_value'        : ('hide_value',            'bool', False),
-        'hide_in_modifier'  : ('hide_in_modifier',      'bool', False),
-        
-        'default'           : ('default_value',         'tuple', (0., 0., 0., 1.)),
-        'default_attribute' : ('default_attribute_name','str', ""),
-        'shape'             : ('structure_type',        ('AUTO', 'DYNAMIC', 'FIELD', 'SINGLE'), 'AUTO'),     
-        },
-    'VALUE': {
-        'tip'               : ('description',           'str', ""),
-        'optional_label'    : ('optional_label',        'bool', False),
-        'hide_value'        : ('hide_value',            'bool', False),
-        'hide_in_modifier'  : ('hide_in_modifier',      'bool', False),
-        
-        'default'           : ('default_value',         'float', 0.),
-        'default_attribute' : ('default_attribute_name','str', ""),
-        'shape'             : ('structure_type',        ('AUTO', 'DYNAMIC', 'FIELD', 'GRID', 'SINGLE'), 'AUTO'),     
-        
-        'min'               : ('min_value',             'float', -3.40282e+38),
-        'max'               : ('max_value',             'float', 3.40282e+38),
-        
-        'subtype'           : ('subtype',               'str', 'NONE'),
-        },
-    'GEOMETRY': {
-        'tip'               : ('description',           'str', ""),
-        'optional_label'    : ('optional_label',        'bool', False),
-        'hide_value'        : ('hide_value',            'bool', False),
-        'hide_in_modifier'  : ('hide_in_modifier',      'bool', False),
-        },
-    'IMAGE': {
-        'tip'               : ('description',           'str', ""),
-        'optional_label'    : ('optional_label',        'bool', False),
-        'hide_value'        : ('hide_value',            'bool', False),
-        'hide_in_modifier'  : ('hide_in_modifier',      'bool', False),
-        
-        'default'           : ('default_value',         'object', None),
-        },
-    'INT': {
-        'tip'               : ('description',           'str', ""),
-        'optional_label'    : ('optional_label',        'bool', False),
-        'hide_value'        : ('hide_value',            'bool', False),
-        'hide_in_modifier'  : ('hide_in_modifier',      'bool', False),
-        
-        'default'           : ('default_value',         'int', 0),
-        'default_attribute' : ('default_attribute_name','str', ""),
-        'default_input'     : ('default_input',         ('VALUE', 'INDEX', 'ID_OR_INDEX'), 'VALUE'),
-        'shape'             : ('structure_type',        ('AUTO', 'DYNAMIC', 'FIELD', 'GRID', 'SINGLE'), 'AUTO'),     
-        
-        'min'               : ('min_value',             'int', -2147483648),
-        'max'               : ('max_value',             'int', 2147483647),
-        
-        'subtype'           : ('subtype',               'str', 'NONE'),
-        },
-    'INT_VECTOR': { # New in 5.2 : copy from INT
-        'tip'               : ('description',           'str', ""),
-        'optional_label'    : ('optional_label',        'bool', False),
-        'hide_value'        : ('hide_value',            'bool', False),
-        'hide_in_modifier'  : ('hide_in_modifier',      'bool', False),
-        
-        'default'           : ('default_value',         'int', 0),
-        'default_attribute' : ('default_attribute_name','str', ""),
-        'default_input'     : ('default_input',         ('VALUE', 'INDEX', 'ID_OR_INDEX'), 'VALUE'),
-        'shape'             : ('structure_type',        ('AUTO', 'DYNAMIC', 'FIELD', 'GRID', 'SINGLE'), 'AUTO'),     
-        
-        'min'               : ('min_value',             'int', -2147483648),
-        'max'               : ('max_value',             'int', 2147483647),
-        
-        'subtype'           : ('subtype',               'str', 'NONE'),
-        },
-
-    'MATERIAL': {
-        'tip'               : ('description',           'str', ""),
-        'optional_label'    : ('optional_label',        'bool', False),
-        'hide_value'        : ('hide_value',            'bool', False),
-        'hide_in_modifier'  : ('hide_in_modifier',      'bool', False),
-        
-        'default'           : ('default_value',         'object', None),
-        },
-    'MATRIX': {
-        'tip'               : ('description',           'str', ""),
-        'optional_label'    : ('optional_label',        'bool', False),
-        'hide_value'        : ('hide_value',            'bool', False),
-        'hide_in_modifier'  : ('hide_in_modifier',      'bool', False),
-        
-        'default_attribute' : ('default_attribute_name','str', ""),
-        'default_input'     : ('default_input',         ('VALUE', 'INSTANCE_TRANSFORM'), 'VALUE'),
-        'shape'             : ('structure_type',        ('AUTO', 'DYNAMIC', 'FIELD', 'SINGLE'), 'AUTO'),     
-        },  
-    'MENU': {
-        'tip'               : ('description',           'str', ""),
-        'optional_label'    : ('optional_label',        'bool', False),
-        'hide_value'        : ('hide_value',            'bool', False),
-        'hide_in_modifier'  : ('hide_in_modifier',      'bool', False),
-        
-        'default'           : ('default_value',         'str', ""),
-        'expanded'          : ('menu_expanded',         'bool', False),
-        
-        'shape'             : ('structure_type',        ('AUTO', 'DYNAMIC', 'FIELD', 'SINGLE'), 'AUTO'),     
-        },
-    'OBJECT': {
-        'tip'               : ('description',           'str', ""),
-        'optional_label'    : ('optional_label',        'bool', False),
-        'hide_value'        : ('hide_value',            'bool', False),
-        'hide_in_modifier'  : ('hide_in_modifier',      'bool', False),
-        
-        'default'           : ('default_value',         'object', None),
-        },
-    'ROTATION': {
-        'tip'               : ('description',           'str', ""),
-        'optional_label'    : ('optional_label',        'bool', False),
-        'hide_value'        : ('hide_value',            'bool', False),
-        'hide_in_modifier'  : ('hide_in_modifier',      'bool', False),
-        
-        'default'           : ('default_value',         'tuple', (0., 0., 0.)),
-        'default_attribute' : ('default_attribute_name','str', ""),
-        
-        'shape'             : ('structure_type',        ('AUTO', 'DYNAMIC', 'FIELD', 'SINGLE'), 'AUTO'),     
-        },
-    'SOUND': { # New in 5.2
-        'tip'               : ('description',           'str', ""),
-        'optional_label'    : ('optional_label',        'bool', False),
-        'hide_value'        : ('hide_value',            'bool', False),
-        'hide_in_modifier'  : ('hide_in_modifier',      'bool', False),
-        
-        'default'           : ('default_value',         'str', ""),
-        
-        #'subtype'           : ('subtype',               'str', ''),
-        },
-    'STRING': {
-        'tip'               : ('description',           'str', ""),
-        'optional_label'    : ('optional_label',        'bool', False),
-        'hide_value'        : ('hide_value',            'bool', False),
-        'hide_in_modifier'  : ('hide_in_modifier',      'bool', False),
-        
-        'default'           : ('default_value',         'str', ""),
-        
-        'subtype'           : ('subtype',               'str', 'NONE'),
-        },
-    'VECTOR': {
-        'tip'               : ('description',           'str', ""),
-        'optional_label'    : ('optional_label',        'bool', False),
-        'hide_value'        : ('hide_value',            'bool', False),
-        'hide_in_modifier'  : ('hide_in_modifier',      'bool', False),
-        
-        'dimensions'        : ('dimensions',            'int', 3),
-        
-        'default'           : ('default_value',         'tuple', (0., 0., 0.)),
-        'min'               : ('min_value',             'float', -3.40282e+38),
-        'max'               : ('max_value',             'float', 3.40282e+38),        
-        'default_attribute' : ('default_attribute_name','str', ""),
-        'default_input'     : ('default_input',         ('VALUE', 'NORMAL', 'POSITION', 'HANDLE_LEFT', 'HANDLE_RIGHT'), 'VALUE'),
-        
-        'shape'             : ('structure_type',         ('AUTO', 'DYNAMIC', 'FIELD', 'GRID', 'SINGLE'), 'AUTO'),     
-
-        'subtype'           : ('subtype',               'str', 'NONE'),
-        },
-
-    'FONT': {
-        'tip'               : ('description',           'str', ""),
-        'optional_label'    : ('optional_label',        'bool', True),
-        'hide_value'        : ('hide_value',            'bool', False),
-        'hide_in_modifier'  : ('hide_in_modifier',      'bool', False),
-        
-        'default'           : ('default_value',         'VectorFont', None),
-        },
-
-
-    'SHADER': {
-        'tip'               : ('description',           'str', ""),
-        'optional_label'    : ('optional_label',        'bool', False),
-        'hide_value'        : ('hide_value',            'bool', False),
-        'hide_in_modifier'  : ('hide_in_modifier',      'bool', False),
-        },
-
-    'CUSTOM': {
-        'tip'               : ('description',           'str', ""),
-        'optional_label'    : ('optional_label',        'bool', False),
-        'hide_value'        : ('hide_value',            'bool', False),
-        'hide_in_modifier'  : ('hide_in_modifier',      'bool', False),
-        },
-
-    }
-
-# ----------------------------------------------------------------------------------------------------
-# Node default attributes
-# ----------------------------------------------------------------------------------------------------
-
-NODE_DEF_ATTRIBUTES = []
 
 # ====================================================================================================
 # Utilities
@@ -338,138 +96,240 @@ NODE_DEF_ATTRIBUTES = []
 
 def get_enum(obj, attr):
     token = "not found in "
+    s = "Not enum"
     try:
         setattr(obj, attr, "OUPS")
     except TypeError as e:
         s = str(e)
-        p = s.find(token)
-        return eval(s[p + len(token):])
+
+    p = s.find(token)
+    if p < 0:
+        raise RuntimeError(f"{obj!r}.{attr} is not an enum")
     
-    return None
+    return eval(s[p + len(token):])
 
 # ----------------------------------------------------------------------------------------------------
-# Get un working tree
+# Get type and default
 # ----------------------------------------------------------------------------------------------------
 
-def get_tree(tree_type):
+def get_type_default(obj, attr):
 
-    name = f"Temp {tree_type}"
-    tree = None
-
-    if tree_type == 'ShaderNodeTree':
-        
-        material = bpy.data.materials.new(name)
-        #material.use_nodes = True
-        tree = material.node_tree
-    
-    elif tree_type == 'GeometryNodeTree':
-        
-        tree = bpy.data.node_groups.get(name)
-        if tree is not None:
-            bpy.data.node_groups.remove(tree)
-            
-        tree = bpy.data.node_groups.new(name=name, type=tree_type)
-        
-    else:
-        assert False, f"Shouldn't happen '{tree_type}'"
-
-
-    # ----- Initialize NODE_DEF_ATTRIBUTES
-
-    if not len(NODE_DEF_ATTRIBUTES):
-        ref_node = tree.nodes.new(type='ShaderNodeValue')
-        for name in dir(ref_node):
-            NODE_DEF_ATTRIBUTES.append(name)
-
-        NODE_DEF_ATTRIBUTES.append('active_item')
-        NODE_DEF_ATTRIBUTES.append('active_index')
-
-    # ----- Done
-        
-    tree.interface.clear()
-    tree.nodes.clear()
-    
-    return tree
-
-# ----------------------------------------------------------------------------------------------------
-# All input sockets
-# Used to check INPUT_SOCKETS_PROPS dict
-# ----------------------------------------------------------------------------------------------------
-
-def create_all_input_sockets(tree_name):
-
-    tree = get_tree('GeometryNodeTree')
-    intf = tree.interface
-    intf.clear()
-
-    for tp in dir(bpy.types):
-        try:
-            intf.new_socket(tp, in_out='INPUT', socket_type=tp)
-        except:
-            pass
-
-# ----------------------------------------------------------------------------------------------------
-# Conversion socket.bl_idname <-> socket.type
-# ----------------------------------------------------------------------------------------------------
-
-def to_blid(stype):
-    for k, v in BLID_TO_STYPE.items():
-        if v == stype:
-            return k
-    assert False, f"Bad stype: {stype}"
-
-def to_stype(blid):
-    return BLID_TO_STYPE[blid]
-
-# ----------------------------------------------------------------------------------------------------
-# Get the valid node socket types
-# ----------------------------------------------------------------------------------------------------
-    
-def get_interface_socket_blids(tree):
-    
-    interface = tree.interface
-    serr = "ERROR"
+    val = getattr(obj, attr)
     try:
-        item = interface.new_socket("Nope", in_out='INPUT', socket_type=serr)
-    except TypeError as e:
-        s = str(e)
-        p = s.find(serr)
-        nodesockets = eval(s[p + 20:])
-    
-    return nodesockets
+        return get_enum(obj, attr), val
+    except:
+        return type(val).__name__, val
+
+# ====================================================================================================
+# Sockets
+# ====================================================================================================
 
 # ----------------------------------------------------------------------------------------------------
-# Get the interface sockets specific properties
+# Create sockets from Interface
 # ----------------------------------------------------------------------------------------------------
 
-def update_input_sockets_props(tree):
+def create_sockets(tree_type):
+    """ Build three dicts
+
+    The 3 dicts are then actually built by create_sockets_dicts
     
-    nodesockets = get_interface_socket_blids(tree)
-    tree.interface.clear()
+    SOCKETS : {
+        socket_type : {
+            nodesocket : socket bl_idname
+            subtypes: tuple(subtyps)
+            props : (
+                name : (internal name, type, default),
+            class_name : class name
+
+    SOCKET_SUBTYPES : {
+        typed socket bl_idname: {
+            nodesocket  : main socket bl_idname
+            socket_type : socket type
+            subtype     : sub type
+'           dimensions  : int | None
+
+    SOCKET_IDS : {
+        typed socket bl_idname : main socket bl_idname
+    """
+
+    with Tree(tree_type) as tree:
+
+        # Initialization
+        input_node = tree.btree.nodes.new(type='NodeGroupInput')
+        
+        # Get list of socket bl_idnames
+        try:
+            tree.btree.interface.new_socket(name="Toto", socket_type='ERR')
+        except Exception as e:
+            s = str(e)
+            
+        token = 'enum "ERR" not found in '
+        p = s.find(token)
+        blids = eval(s[p+len(token):])
+        
+        sockets = {}
+        socket_subtypes = {}
+        socket_ids = {}
+        
+        # Possible subtypes
+        for blid in blids:
+            
+            # Interface socket
+            sock = tree.btree.interface.new_socket(name=blid, socket_type=blid)
+            
+            # Corresponding Input socket
+            in_sock = input_node.outputs[blid]
+
+            # Properties
+            props = {}
+            for prop_name in dir(sock):
+                if prop_name in _TREE_INTERFACE_SOCKET_PROPS:
+                    ui_name = _TREE_INTERFACE_SOCKET_PROPS[prop_name]
+                    props[ui_name] = (prop_name,) + get_type_default(sock, prop_name)
+
+            # New entries in the dicts
+            sockets[in_sock.type] = {
+                'nodesocket'    : blid,
+                'subtypes'      : (),
+                'props'         : props,
+                'class_name'    : config.CLASS_NAMES[in_sock.type],
+            }
+
+            socket_ids[blid] = blid
+            socket_ids[config.CLASS_NAMES[in_sock.type]] = blid
+            socket_ids[in_sock.type] = blid
+
+            socket_subtypes[blid] = {
+                'nodesocket'    : blid,
+                'socket_type'   : in_sock.type,
+                'subtype'       : getattr(sock, 'subtype', None),
+                'dimensions'    : getattr(sock, 'dimensions', None),
+            }
+
+            # types socket bl_idnames
+            if hasattr(sock, "subtype"):
+                subtypes = get_enum(sock, 'subtype')
+
+                sockets[in_sock.type]['subtypes'] = subtypes
+
+                for subtype in subtypes:
+                    sock.subtype = subtype
+                    detailed_id = in_sock.bl_idname
+                    
+                    socket_ids[detailed_id] = blid
+                    
+                    socket_subtypes[in_sock.bl_idname] = {
+                        'nodesocket'    : blid,
+                        'socket_type'   : in_sock.type,
+                        'subtype'       : subtype,
+                        'dimensions'    : getattr(sock, 'dimensions', None),
+                    }
+
+        # We need to complete with virtual socket
+        sockets['CUSTOM'] = {
+            'nodesocket'    : 'NodeSocketVirtual',
+            'subtypes'      : (),
+            'props'         : {},
+            'class_name'    : 'Input',
+        }
+
+        socket_ids['NodeSocketVirtual'] = 'NodeSocketVirtual'
+        socket_ids['CUSTOM'] = 'NodeSocketVirtual'
+        socket_ids['Input'] = 'NodeSocketVirtual'
+
+        socket_subtypes['NodeSocketVirtual'] = {
+            'nodesocket'  : 'NodeSocketVirtual',
+            'socket_type' : 'CUSTOM',
+            'subtype'     : None,
+            'dimensions'  : None,
+        }
+                    
+    return {
+        'SOCKETS'         : sockets,
+        'SOCKET_SUBTYPES' : socket_subtypes,
+        'SOCKET_IDS'      : socket_ids,
+    }
+
+# ----------------------------------------------------------------------------------------------------
+# Get sockets exposed by nodes which are not identified by create_sockets (create_sockets uses interface)
+# ----------------------------------------------------------------------------------------------------
+
+def get_unregistered_sockets(sockets, verbose=False):
     
-    for blid in nodesockets:
+    unregistered = set()
+
+    def f(node):
+        for bsock in list(node.bnode.inputs) + list(node.bnode.outputs):
+            blid = bsock.bl_idname
+            if blid in sockets:
+                continue
+
+            # hidden type not yet exposed
+            if bsock.type not in config.CLASS_NAMES:
+                continue
+
+            unregistered.add((blid, bsock.type))
+
+            if verbose:
+                print(f"UNREGISTERED {tree_type} {blid:25s} : {node.name}.{bsock.name}")
+
+    for tree_type in config.TREE_TYPES:
+        NodeInfo.loop_on_nodes(f, tree_type=tree_type)
+
+    return unregistered
+
+# ----------------------------------------------------------------------------------------------------
+# Create global sockets dicts
+# ----------------------------------------------------------------------------------------------------
+
+def create_sockets_dicts():
+    """ Build the 3 dicts for all tree_types
+    """
+
+    for tree_type in TREE_TYPES:
         
-        stype = to_stype(blid)
-        item = tree.interface.new_socket(stype, in_out='INPUT', socket_type=blid)
+        dicts = create_sockets(tree_type)
 
-        if stype not in INPUT_SOCKETS_PROPS:
-            raise RuntimeError(f"The dict INPUT_SOCKETS_PROPS doesn't contain entry for node socket {blid} (socket_type: {stype}).")
-        
-        props = INPUT_SOCKETS_PROPS[stype]
+        for k, v in dicts['SOCKETS'].items():
+            if k not in SOCKETS:
+                SOCKETS[k] = v
+            SOCKETS[k][tree_type] = SOCKETS[k]['nodesocket']
 
-        # Check that the properties exist
-        for p in props.values():
-            assert p[0] in dir(item), f"Oups: {item.socket_type} {p}"
+        for k, v in dicts['SOCKET_SUBTYPES'].items():
+            if k not in SOCKET_SUBTYPES:
+                SOCKET_SUBTYPES[k] = v
 
-        # Get the subtypes
-        if 'subtype' in props:
-            vals = get_enum(item, 'subtype')
-            props['subtype'] = ('subtype', vals, props['subtype'][2])
+        SOCKET_IDS.update(dicts['SOCKET_IDS'])
 
-        # Get the subtypes
-        if 'shape' in props:
-            vals = get_enum(item, 'structure_type')
-            props['shape'] = ('structure_type', vals, props['shape'][2])
+        # complete SOCKET_IDS
+        for cn in GEOMETRY_CLASSES + DOMAIN_CLASSES:
+            SOCKET_IDS[cn] = 'NodeSocketGeometry'
+
+        for name, stype in DATA_TYPE_HOMONYMS.items():
+            SOCKET_IDS[name] = SOCKET_IDS[stype]
+
+    # Unregistered sockets
+    for blid, socket_type in get_unregistered_sockets(SOCKET_IDS, verbose=False):
+
+        SOCKET_IDS[blid] = SOCKET_IDS[socket_type]
+
+        if blid.endswith('2D'):
+            dims=2
+        elif blid.endswith('3D'):
+            dims = 3
+        else:
+            dims = None
+
+        SOCKET_SUBTYPES[blid] = {
+            'nodesocket'  : SOCKET_IDS[socket_type],
+            'socket_type' : socket_type,
+            'subtype'     : None,
+            'dimensions'  : dims,
+        }
+
+# ====================================================================================================
+# Nodes
+# ====================================================================================================
 
 # ----------------------------------------------------------------------------------------------------
 # Print the input and output sockets names for getting the right Geometry class
@@ -477,376 +337,68 @@ def update_input_sockets_props(tree):
 
 def print_geometry_names():
 
-    tree = get_tree('GeometryNodeTree')
-    in_names = set()
-    out_names = set()
+    with Tree('GeometryNodeTree') as tree_context:
+        tree = tree_context.btree
+        in_names = set()
+        out_names = set()
 
-    for tp in dir(bpy.types):
-        try:
-            node = tree.nodes.new(type=tp)
-        except:
-            continue
+        for tp in tree_context.nodes.values():
+            node = tree_context.create_node(tp)
         
-        for sock in node.inputs:
-            if sock.type == 'GEOMETRY':
-                in_names.add(sock.name)
+            for sock in node.inputs:
+                if sock.type == 'GEOMETRY':
+                    in_names.add(sock.name)
                 
-        for sock in node.outputs:
-            if sock.type == 'GEOMETRY':
-                out_names.add(sock.name)
+            for sock in node.outputs:
+                if sock.type == 'GEOMETRY':
+                    out_names.add(sock.name)
                 
-        tree.nodes.remove(node)
+            tree.nodes.remove(node)
 
-    print('-'*100)
-    print("Sockets names for Geometry sockets classes\n")
+            print("Sockets names for Geometry sockets classes\n")
                 
-    print("Input sockets:", in_names)
-    print("Output sockets:", out_names)
-    print()
+        print("Input sockets:", in_names)
+        print("Output sockets:", out_names)
+        print()
 
-# ====================================================================================================
-# NODE NAMES
-# ====================================================================================================
-
-def get_node_names():
-
-    NODE_NAMES  = {}
-
-    for tree_type in TREE_TYPES:
-
-        tree = get_tree(tree_type)
-        
-        NODE_NAMES[tree_type] = {}
-        for tp in dir(bpy.types):
-            try:
-                node = tree.nodes.new(type=tp)
-            except:
-                continue
-            
-            NODE_NAMES[tree_type][node.name] = node.bl_idname
-            
-        tree.nodes.clear()
-        
-    return NODE_NAMES
-
-# ====================================================================================================
-# CLASS NAMES
-# ====================================================================================================
-
-def get_sockets():
-    
-    SOCKETS = {}
-    
-    for tree_type in TREE_TYPES:
-        
-        tree = get_tree(tree_type)
-        
-        # ---------------------------------------------------------------------------
-        # From sockets in the nodes
-        # ---------------------------------------------------------------------------
-
-        for tp in dir(bpy.types):
-            try:
-                node = tree.nodes.new(type=tp)
-            except:
-                continue
-            
-            for socket in [sock for sock in node.inputs] + [sock for sock in node.outputs]:
-
-                stype = socket.type
-
-                if stype not in SOCKETS:
-                    SOCKETS[stype] = {
-                        'class_name': TRANSCO.get(stype, stype.title()),
-                    }
-                    for tt in TREE_TYPES:
-                        SOCKETS[stype][tt] = None
-                        
-                SOCKETS[stype][tree_type] = socket.bl_idname
-                SOCKETS[stype]['nodesocket'] = socket.bl_idname
-            
-        # ---------------------------------------------------------------------------
-        # From interface
-        # ---------------------------------------------------------------------------
-        
-        update_input_sockets_props(tree)
-        
-        for k in INPUT_SOCKETS_PROPS.keys():
-            if k not in SOCKETS.keys():
-                print(f"CAUTION> {tree_type}: Socket type {k} in INPUT_SOCKETS_PROPS is not in SOCKETS")
-        for k in SOCKETS.keys():
-            if k not in INPUT_SOCKETS_PROPS.keys():
-                print(f"CAUTION> {tree_type}: Socket type {k} in SOCKETS is not in INPUT_SOCKETS_PROPS")
-                
-        for stype, d in SOCKETS.items():
-            prop = INPUT_SOCKETS_PROPS.get(stype)
-            if prop is None:
-                continue
-            d['props'] = prop
-            d['subtypes'] = prop.get('subtype', (None, (), None))[1]
-            d[tree_type] = to_blid(stype)
-        
-    return SOCKETS
-
-# ====================================================================================================
+# ----------------------------------------------------------------------------------------------------
 # Get info on nodes
-# ====================================================================================================
+# ----------------------------------------------------------------------------------------------------
 
-def get_node_info(sockets):
-    
-    NODE_INFO = {}
-    for tree_type in TREE_TYPES:
-        
-        tree = get_tree(tree_type)
+def create_nodes_dicts():
+    """ Build NODE_NAMES, NODE_INFO, ONE_ITEMS_NODES dicts
+    """
 
-        for tp in dir(bpy.types):
+    def f(node: NodeInfo):
 
-            if tp in NODE_INFO:
-                continue
+        if node.bl_idname in config.DEPRECATED_NODES:
+            return
 
-            try:
-                node = tree.nodes.new(type=tp)
-            except:
-                continue
+        # NODE_NAMES
+        NODE_NAMES[node.tree_type][node.name] = node.bl_idname
 
-            node_info = {
-                'name'          : node.name,
-                'params'        : {},
-                'items'         : [], 
-                'menu_sockets'  : {},
-                'inputs'        : {}, 
-                'outputs'       : {}, 
-                'has_custom_in' : False,
-                'has_custom_out': False,
-                'dims'          : NODE_DIMS[tree_type].get(tp, None),
-            }
+        # NODE_INFO
+        if node.bl_idname not in NODE_INFO:
+            NODE_INFO[node.bl_idname] = node.node_info_entry
 
-            # ----------------------------------------------------------------------------------------------------
-            # Input sockets
-            # ----------------------------------------------------------------------------------------------------
+        # ONE_ITEMS_NODES
+        if len(NODE_INFO[node.bl_idname]['items']) == 1:
+            ONE_ITEMS_NODES[node.bl_idname] = NODE_INFO[node.bl_idname]['items'][0]
 
-            for socket in node.inputs:
-
-                # Virtual socket
-                if socket.type == 'CUSTOM':
-                    node_info['has_custom_in'] = True
-                    continue
-
-                # Register the socket
-                node_info['inputs'][socket.identifier] = {
-                    'name'          : socket.name,
-                    'label'         : socket.label,
-                    'bl_idname'     : socket.bl_idname,
-                    'socket_type'   : socket.type,
-                    #'default'       : getattr(socket, 'default_value', None),
-                }
-
-                # Menu socket
-                if socket.type == 'MENU':
-
-                    enums = None
-                    token = "not found in "
-                    try:
-                        socket.default_value = "NOT A VALUE FOR SURE"
-                    except TypeError as e:
-                        s = str(e)
-                        p = s.find(token)
-                        enums = eval(s[p + len(token):])
-
-                    node_info['menu_sockets'][socket.identifier] = {'default': socket.default_value, 'values': enums}
-
-            # ----------------------------------------------------------------------------------------------------
-            # Output sockets
-            # ----------------------------------------------------------------------------------------------------
-
-            for socket in node.outputs:
-
-                # Virtual socket
-                if socket.type == 'CUSTOM':
-                    node_info['has_custom_out'] = True
-                    continue
-
-                # Register the socket
-                node_info['outputs'][socket.identifier] = {
-                    'name'          : socket.name,
-                    'label'         : socket.label,
-                    'bl_idname'     : socket.bl_idname,
-                    'socket_type'   : socket.type,
-                    #'default'       : str(getattr(socket, 'default_value', None)),
-                }
-
-            # ----------------------------------------------------------------------------------------------------
-            # Parameters
-            # ----------------------------------------------------------------------------------------------------
-
-            for name in dir(node):
-                if name in NODE_DEF_ATTRIBUTES:
-                    continue
-
-                if name[-6:] == '_items':
-                    node_info['items'].append(name)
-                    continue
-
-                # Specific ignored
-                if name in ['legacy_corner_normals', 'use_legacy_normal']:
-                    continue
-
-                # Must be settable
-                try:
-                    setattr(node, name, getattr(node, name))
-                except:
-                    continue
-
-                # Param type
-                param_type = type(getattr(node, name)).__name__
-
-                # Min info
-                node_info['params'][name] = {
-                    'default': getattr(node, name) if param_type in ('bool', 'int', 'float', 'str', 'tuple') else None,
-                    'type' : param_type,
-                    'enum' : None
-                }
-
-                # Enums
-                if param_type == 'str':
-                    node_info['params'][name]['enum'] = get_enum(node, name)            
-
-            # ---------------------------------------------------------------------------
-            # data_type parameter
-            # ---------------------------------------------------------------------------
-            
-            if 'data_type' in node_info['params']:
-
-                if tp == 'GeometryNodeStoreNamedAttribute': # Missiong: INT8, FLOAT2, QUATERNION, BYTE_COLOR
-                    # ('FLOAT', 'INT', 'BOOLEAN', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'QUATERNION', 'FLOAT4X4', 'INT8', 'FLOAT2', 'BYTE_COLOR')
-                    convert = {
-                        'VALUE'      : 'FLOAT',
-                        'INT'        : 'INT',
-                        'BOOLEAN'    : 'BOOLEAN',
-                        'VECTOR'     : 'FLOAT_VECTOR',
-                        'MATRIX'     : 'FLOAT4X4',
-                        'RGBA'       : 'FLOAT_COLOR',
-                        'ROTATION'   : 'QUATERNION',
-                        'INT8'       : 'INT8',
-                        'FLOAT2'     : 'FLOAT2',
-                        'BYTE_COLOR' : 'BYTE_COLOR',
-                    }
-                else:
-                    convert = {}
-                    for dt in node_info['params']['data_type']['enum']:
-                        if dt in sockets.keys():
-                            key = dt
-                            #convert[dt] = dt
-                        elif dt in DATA_TYPE_HOMONYMS:
-                            key = DATA_TYPE_HOMONYMS[dt]
-                            #convert[DATA_TYPE_HOMONYMS[dt]] = dt
-                        else:
-                            raise RuntimeError(f"Unknown data type '{dt}' in node [{node.name}]. Enums: {node_info['params']['data_type']['enum']}.")
-                        
-                        if key in convert:
-                            print(f"bl_idname", tp, ", convert\n", node_info['params']['data_type']['enum'])
-                            assert False, "Must be done manually"
-                        convert[key] = dt
-
-                node_info['data_type'] = convert
-
-            NODE_INFO[node.bl_idname] = node_info
-        
-    return NODE_INFO
-
-# ====================================================================================================
-# Socket sub types
-# ====================================================================================================
-
-def get_socket_subtypes(nodesockets):
-    
-    special = {
-        'TimeAbsolute'      : 'TIME_ABSOLUTE',
-        'ColoreTemperature' : 'COLOR_TEMPERATURE',
-        'FilePath'          : 'FILE_PATH',
-    }
-    
-    sns = "NodeSocket"
-    
-    SOCKET_SUBTYPES = {}
-    for tp in dir(bpy.types):
-
-        if not tp.startswith(sns) or tp in [sns, 
-                        "NodeSocketStandard", "NodeSocketTexture", 
-                        "NodeSocketMask", "NodeSocketScene", "NodeSocketText"]:
-            continue
-
-        # ------------------------------------------------------------
-        # Virtual socket
-        # ------------------------------------------------------------
-
-        if tp == 'NodeSocketVirtual':
-            SOCKET_SUBTYPES[tp] = {
-                'nodesocket' : tp,
-                'subtype'    : None,
-                'dimensions' : None,
-                'socket_type': None,
-                }
-            continue
-        
-        # ------------------------------------------------------------
-        # Non virtual
-        # ------------------------------------------------------------
-        
-        base = None
-        for nodesocket in nodesockets:
-            if tp.startswith(nodesocket):
-                base = nodesocket
-                break
-    
-        if base is None:
-            raise RuntimeError(f"Impossible to get the base socket of '{tp}'")
-            
-        if tp == base:
-            subtype = None
-            ndims   = None
-            
-        else:            
-            subtype = tp[len(base):]
-            ndims = None
-            if subtype[-1] == 'D':
-                ndims   = int(subtype[-2])
-                subtype = subtype[:-2]
-                
-            subtype = special.get(subtype, subtype.upper())
-
-        socket_type = base[len('NodeSocket'):].upper()
-        socket_type = {
-            'BOOL': 'BOOLEAN',
-            'COLOR': 'RGBA',
-            'FLOAT': 'VALUE',
-        }.get(socket_type, socket_type)
-                
-        SOCKET_SUBTYPES[tp] = {
-            'nodesocket' : base,
-            'subtype'    : subtype,
-            'dimensions' : ndims,
-            'socket_type': socket_type,
-            }
-        
-    return SOCKET_SUBTYPES
+    for tree_type in config.TREE_TYPES:
+        NODE_NAMES[tree_type] = {}
+        NodeInfo.loop_on_nodes(f, tree_type=tree_type)
 
 # ====================================================================================================
 # Builtin groups
 # ====================================================================================================
 
-def get_builtin_groups():
-
-    BLEND_FILES = {
-        'GeometryNodeTree' : ["geometry_nodes_essentials.blend", "procedural_hair_node_assets.blend"],
-        'ShaderNodeTree' : ["shading_nodes_essentials.blend"],
-    }
+def create_builtin_groups():
 
     root = Path(bpy.utils.system_resource('DATAFILES')) / "assets/nodes"
     assert root.is_dir(), f"DATAFILES {str(root)} doesn't exist."
 
-    BUILTIN_GROUPS = {}
-    for tree_type, blend_files in BLEND_FILES.items():
+    for tree_type, blend_files in _BLEND_FILES.items():
         groups = {}
         for file_name in blend_files:
             with bpy.data.libraries.load(str(root / file_name)) as (data_from, data_to):
@@ -855,125 +407,16 @@ def get_builtin_groups():
 
         BUILTIN_GROUPS[tree_type] = groups
 
-    return BUILTIN_GROUPS
-
 # ====================================================================================================
-# Check new sockets
-#
-# Will raise an error if a socket is not in BLID_TO_STYPE
+# Build
 # ====================================================================================================
 
-UNREGISTERED = {}
-for tree_type in TREE_TYPES:
-    
-    tree = get_tree(tree_type)
+def build():
 
-    for tp in dir(bpy.types):
-        
-        try:
-            node = tree.nodes.new(type=tp)
-        except:
-            continue
-        
-        for socket in [sock for sock in node.inputs] + [sock for sock in node.outputs]:
+    create_sockets_dicts()
+    create_nodes_dicts()
+    create_builtin_groups()
 
-            if socket.type not in BLID_TO_STYPE.values():
-                UNREGISTERED[socket.bl_idname] = socket.type
-
-if len(UNREGISTERED):
-    pprint(UNREGISTERED)
-    raise RuntimeError(f"Unregistered sockets: " + " ".join(list(UNREGISTERED.keys())))
-
-# ====================================================================================================
-# Global vars
-# ====================================================================================================
-
-SOCKETS = get_sockets()
-NODE_NAMES = get_node_names()
-NODE_INFO = get_node_info(SOCKETS)
-
-# List of base nodesockets
-NODESOCKETS = []
-for socket in SOCKETS.values():
-    nodesocket = socket['GeometryNodeTree']
-    if nodesocket is None:
-        nodesocket = socket['ShaderNodeTree']
-    NODESOCKETS.append(nodesocket)
-
-SOCKET_SUBTYPES = get_socket_subtypes(NODESOCKETS)
-BUILTIN_GROUPS = get_builtin_groups()
-
-# ----------------------------------------------------------------------------------------------------
-# Derived lists
-# ----------------------------------------------------------------------------------------------------
-
-ONE_ITEMS_NODES = {}
-SEVERAL_ITEMS_NODES = {}
-
-for blid, info in NODE_INFO.items():
-    # Ignore paired nodes
-    if blid in ['GeometryNodeRepeatOutput', 'GeometryNodeSimulationOutput']:
-        continue
-
-    if len(info['items']) == 1:
-        ONE_ITEMS_NODES[blid] = info['items'][0]
-
-    if len(info['items']) > 1:
-        SEVERAL_ITEMS_NODES[blid] = info['items']
-
-
-CLASS_NAMES = {}
-for stype, d in SOCKETS.items():
-    CLASS_NAMES[stype] = d['class_name']
-
-# ----------------------------------------------------------------------------------------------------
-# Socket Types (derived from global)
-# ----------------------------------------------------------------------------------------------------
-
-def get_socket_ids():
-
-    SOCKET_IDS = {}
-
-    # ---------------------------------------------------------------------------
-    # Full socket ids
-    # ---------------------------------------------------------------------------
-
-    for full_socket_id, full_spec in SOCKET_SUBTYPES.items():
-        SOCKET_IDS[full_socket_id] = full_socket_id
-
-    # ---------------------------------------------------------------------------
-    # Socket types
-    # ---------------------------------------------------------------------------
-
-    for stype, spec in SOCKETS.items():
-        SOCKET_IDS[stype] = spec['nodesocket']
-
-    # ---------------------------------------------------------------------------
-    # Class Names
-    # ---------------------------------------------------------------------------
-
-    for sid, class_name in CLASS_NAMES.items():
-        SOCKET_IDS[class_name] = SOCKET_IDS[sid]
-
-    for class_name in GEOMETRY_CLASSES:
-        SOCKET_IDS[class_name] = 'NodeSocketGeometry'
-
-    for class_name in DOMAIN_CLASSES:
-        SOCKET_IDS[class_name] = 'NodeSocketGeometry'
-
-    # ---------------------------------------------------------------------------
-    # Complementary
-    # ---------------------------------------------------------------------------
-
-    for homo, stype in DATA_TYPE_HOMONYMS.items():
-        SOCKET_IDS[homo] = SOCKET_IDS[stype]    
-
-    #SOCKET_IDS['CUSTOM'] = 'NodeSocketVirtual'
-    #SOCKET_IDS['NodeSocketVirtual'] = 'NodeSocketVirtual'
-
-    return SOCKET_IDS
-
-SOCKET_IDS = get_socket_ids()
 
 # ====================================================================================================
 # Compare versions
@@ -1065,13 +508,13 @@ def compare_versions(old_module):
     print("="*100)
     print()
 
-    compare_global("GEOMETRY_CLASSES",      old_module.GEOMETRY_CLASSES,    GEOMETRY_CLASSES)
-    compare_global("DOMAIN_CLASSES",        old_module.DOMAIN_CLASSES,      DOMAIN_CLASSES)
-    compare_global("ATTRIBUTE_CLASSES",     old_module.ATTRIBUTE_CLASSES,   ATTRIBUTE_CLASSES)
-    compare_global("ATTRIBUTE_CLASSES",     old_module.ATTRIBUTE_CLASSES,   ATTRIBUTE_CLASSES)
+    compare_global("GEOMETRY_CLASSES",      old_module.config.GEOMETRY_CLASSES,    config.GEOMETRY_CLASSES)
+    compare_global("DOMAIN_CLASSES",        old_module.config.DOMAIN_CLASSES,      config.DOMAIN_CLASSES)
+    compare_global("ATTRIBUTE_CLASSES",     old_module.config.ATTRIBUTE_CLASSES,   config.ATTRIBUTE_CLASSES)
+    compare_global("ATTRIBUTE_CLASSES",     old_module.config.ATTRIBUTE_CLASSES,   config.ATTRIBUTE_CLASSES)
 
     compare_global("CLASS_NAMES",           old_module.CLASS_NAMES,         CLASS_NAMES)
-    compare_global("DATA_TYPE_HOMONYMS",    old_module.DATA_TYPE_HOMONYMS,  DATA_TYPE_HOMONYMS)
+    compare_global("DATA_TYPE_HOMONYMS",    old_module.config.DATA_TYPE_HOMONYMS,  config.DATA_TYPE_HOMONYMS)
 
     compare_global("SOCKET_IDS",            old_module.SOCKET_IDS,          SOCKET_IDS)
     compare_global("SOCKETS",               old_module.SOCKETS,             SOCKETS)
@@ -1101,7 +544,6 @@ def compare_versions(old_module):
     print()
     print("Done")
 
-
 # ====================================================================================================
 # Write the config file
 # ====================================================================================================
@@ -1110,9 +552,45 @@ def write_header(f, title):
     f.write('#' + '-'*80 + "\n")
     f.write("# " + title + "\n")
     f.write('#' + '-'*80 + "\n\n")
+
+def write_simple_dict(f, name, d):
+    l = max([len(k) for k in d]) + 2
+    f.write(f"{name} = {{\n")
+    for k, v in d.items():
+        f.write(f"   {k!r:{l}s} : {v!r},\n")
+    f.write("}\n\n")
+
+def write_dict(f, name, main_dict):
+
+    tab = "    "
+
+    def w(indent, d):
+        if len(d) == 0:
+            f.write("\n")
+            return
+        
+        l = max([len(k) for k in d]) + 2
+        for k, v in d.items():
+            f.write(tab*indent + f"{k!r:{l}s} : ")
+            if isinstance(v, dict):
+                if not len(v):
+                    f.write("{},\n")
+                else:
+                    f.write("{\n")
+                    w(indent + 1, v)
+                    f.write(tab*indent + "},\n")
+            else:
+                f.write(f"{v!r},\n")
+
+    f.write(f"{name} = {{\n")
+    w(1, main_dict)
+    f.write("}\n\n")
+
     
 def write_file(path=None, *, new=True):
     """Write the current Blender configuration to core_new (or core)."""
+    if not SOCKETS:
+        build()
     path = target_core(path, new=new)
 
     time_stamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
@@ -1132,58 +610,50 @@ def write_file(path=None, *, new=True):
         f.write(f"__all__ = {ALL}\n\n")
 
         # ----------------------------------------------------------------------------------------------------
-        # Hard stuff
+        # Tree
+        # ----------------------------------------------------------------------------------------------------
+
+        write_header(f, f"Trees")
+        f.write(f"TREE_TYPES = {TREE_TYPES}\n")
+        f.write("\n")
+
+        # ----------------------------------------------------------------------------------------------------
+        # Classes
         # ----------------------------------------------------------------------------------------------------
 
         write_header(f, f"Classes lists")
+        write_simple_dict(f, 'CLASS_NAMES', CLASS_NAMES)
+        f.write("\n\n")
+
+
         f.write(f"GEOMETRY_CLASSES = {GEOMETRY_CLASSES}\n")
         f.write(f"DOMAIN_CLASSES = {DOMAIN_CLASSES}\n")
         f.write(f"ATTRIBUTE_CLASSES = {ATTRIBUTE_CLASSES}\n")
-
-        f.write("\n")
-        f.write(f"PYTHON_TYPES = ")
-        pprint(PYTHON_TYPES, stream=f)
         f.write("\n")
 
         # ----------------------------------------------------------------------------------------------------
-        # Class names
+        # Sockets
         # ----------------------------------------------------------------------------------------------------
-        
-        write_header(f, "Socket type to class name")
-        f.write("CLASS_NAMES = ")
-        pprint(CLASS_NAMES, stream=f)
-        f.write("\n\n")
 
-        f.write("DATA_TYPE_HOMONYMS = ")
-        pprint(DATA_TYPE_HOMONYMS, stream=f)
-        f.write("\n\n")
+        f.write(f"SOCKET_SHAPES = {SOCKET_SHAPES}\n\n")
 
-        # ----------------------------------------------------------------------------------------------------
-        # Socket ids
-        # ----------------------------------------------------------------------------------------------------
-        
-        write_header(f, "Sockets ids for SocketType class")
-        f.write("SOCKET_IDS = ")
-        pprint(SOCKET_IDS, stream=f)
-        f.write("\n\n")
-        
+        write_header(f, "Sockets")
+        write_simple_dict(f, "DATA_TYPE_HOMONYMS", DATA_TYPE_HOMONYMS)
+        write_simple_dict(f, "SOCKET_IDS", SOCKET_IDS)
+
         # ----------------------------------------------------------------------------------------------------
         # Sockets
         # ----------------------------------------------------------------------------------------------------
         
         write_header(f, "Sockets details")
-        f.write("SOCKETS = ")
-        pprint(SOCKETS, stream=f)
-        f.write("\n\n")
+        write_dict(f, "SOCKETS", SOCKETS)
         
         # ----------------------------------------------------------------------------------------------------
         # Socket sub types
         # ----------------------------------------------------------------------------------------------------
         
         write_header(f, "Get base socket bl_idname and subtype from full node socket")
-        f.write("SOCKET_SUBTYPES = ")
-        pprint(SOCKET_SUBTYPES, stream=f)
-        f.write("\n\n")
+        write_dict(f, "SOCKET_SUBTYPES", SOCKET_SUBTYPES)
 
         # ----------------------------------------------------------------------------------------------------
         # Builtin groups
@@ -1199,23 +669,12 @@ def write_file(path=None, *, new=True):
         # ----------------------------------------------------------------------------------------------------
 
         write_header(f, "Nodes with items")
-        f.write("ONE_ITEMS_NODES = ")
-        pprint(ONE_ITEMS_NODES, stream=f)
-        f.write("\n\n")
-
-        f.write("SEVERAL_ITEMS_NODES = ")
-        pprint(SEVERAL_ITEMS_NODES, stream=f)
-        f.write("\n\n")
-
-        # ----------------------------------------------------------------------------------------------------
-        # Input sockets properties
-        # ----------------------------------------------------------------------------------------------------
-
-        write_header(f, "Input sockets properties")
-        f.write("INPUT_SOCKETS_PROPS = ")
-        pprint(INPUT_SOCKETS_PROPS, stream=f)
-        f.write("\n\n")
+        write_dict(f, "ONE_ITEMS_NODES", ONE_ITEMS_NODES)
         
+        f.write("AUTO_INPUT_TYPE_NODES = ")
+        pprint(AUTO_INPUT_TYPE_NODES, stream=f)
+        f.write("\n\n")
+
         # ----------------------------------------------------------------------------------------------------
         # Node names
         # ----------------------------------------------------------------------------------------------------
@@ -1225,29 +684,15 @@ def write_file(path=None, *, new=True):
         for tree_type, nodes in NODE_NAMES.items():
             f.write(f"# {tree_type:16s} : {len(nodes)} nodes\n")
         f.write("\n")
-        
-        f.write("NODE_NAMES = {\n")
-        for tree_type, nodes in NODE_NAMES.items():
-            
-            f.write(f"    '{tree_type}' : "+ "{\n")
-        
-            for name, blid in nodes.items():
-                sname = f"'{name}'"
-                f.write(f"        {sname:30s} : '{blid}',\n")
-                
-            f.write("    },\n\n")
-            
-        f.write("}\n\n")
+
+        write_dict(f, "NODE_NAMES", NODE_NAMES)
 
         # ----------------------------------------------------------------------------------------------------
         # Info on nodes
         # ----------------------------------------------------------------------------------------------------
-        
-        f.write("NODE_INFO = ")
-        pprint(NODE_INFO, stream=f)
-        f.write("\n\n")
-        
 
+        write_header(f, "Node info")        
+        write_dict(f, "NODE_INFO", NODE_INFO)
 
 def test(*, new=True):
     write_file(new=new)
