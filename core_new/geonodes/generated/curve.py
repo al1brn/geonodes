@@ -701,7 +701,7 @@ class Curve(BaseCurve, Geometry):
 
     #Node Points of Curve
     @classmethod
-    def points( cls, curve_index: Integer=None, weights: Float=None, sort_index: Integer=None):
+    def points_of_curve( cls, curve_index: Integer=None, weights: Float=None, sort_index: Integer=None):
         """Node Points of Curve.
         
         Jump: False
