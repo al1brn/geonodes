@@ -445,6 +445,10 @@ SPECIAL_NODES = {
         'class_name': ["Curve", "Spline"],
         'method_name': "offset_point",
         },
+    'Points of Curve' : {
+        'class_name': "Curve",
+        'method_name': "points_of_curve",   # 'points' clashes with the Curve.points domain
+        },
     'Shortest Edge Paths' : {
         'class_name': "Edge",
         'method_name': "shortest_paths",
