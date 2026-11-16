@@ -1,5 +1,6 @@
 """Script exécuté dans Blender pour lancer pytest."""
 import sys
+import bpy  # noqa: F401  (makes mathutils importable when run as a plain Python module)
 import os
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
