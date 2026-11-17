@@ -1,0 +1,101 @@
+'''
+Animated face. One face template; the eyes and mouth are small drawings stamped on its points,
+and `shift` / `rotate` / `scale` move the parts of each frame.
+'''
+
+## ---------------------------------------------------------------- eye: white outline (0..3) + pupil (10)
+## the pupil is a point at the center; look with shift={10:(dx, dy)}, blink with scale={0:(1, 0.1), 10:0}
+def eye(fill={0:white, 10:black}, sizes={10:2}, smooth=0.9):
+    0        1
+
+        10
+
+    3        2
+
+## ---------------------------------------------------------------- mouths: rest, then the vowels
+def mouth_rest(stroke=black):
+    0         1
+
+def mouth_a(fill=maroon, smooth=1.0):
+         0
+    3         1
+         2
+
+def mouth_e(fill=maroon, smooth=0.8):
+    0           1
+    3           2
+
+def mouth_i(fill=maroon, smooth=0.4):
+    0               1
+    3               2
+
+def mouth_o(fill=maroon, smooth=1.0):
+       0
+    3     1
+       2
+
+def mouth_u(fill=maroon, smooth=1.0):
+    0   1
+    3   2
+
+## open curves (a trailing ~ ends the run without closing it): smile and frown
+def mouth_smile(stroke=black, width=0.3, smooth=0.9):
+    0             2~
+
+          1
+
+def mouth_frown(stroke=black, width=0.3, smooth=0.9):
+          1
+
+    0             2~
+
+## ---------------------------------------------------------------- the face
+colors = {0:yellow, 70:pink, 80:pink, 50:orange}
+sizes  = {50:small, 70:(3, 2), 80:(3, 2)}
+
+def face(fill=colors, sizes=sizes):
+                        0
+    
+           7                         1
+    
+    
+             10    11       20    21
+    
+    
+                30             40
+      6                                   2
+    
+                       50
+         70                           80
+    
+                       60
+    
+           5                         3
+    
+                        4
+
+## ---------------------------------------------------------------- poses (plain python)
+def pose(look=(0, 0), blink=0, mouth=mouth_rest(), brows=0, tilt=0):
+    s = 1 - blink                                  ## 1 = open, 0 = closed
+    closed = blink > 0.95
+    left   = eye(shift={10: look}, scale={0: (1, max(0.1, s)), 10: 0 if closed else 1})
+    right  = eye(shift={10: look}, scale={0: (1, max(0.1, s)), 10: 0 if closed else 1})
+    return face({30: left, 40: right, 60: mouth},
+                shift={10: (0, -brows), 11: (0, -brows), 20: (0, -brows), 21: (0, -brows)},
+                rotate={10: -tilt, 20: tilt})
+
+## ---------------------------------------------------------------- animations
+vowels = [mouth_rest(), mouth_a(), mouth_e(), mouth_i(), mouth_o(), mouth_u()]
+
+talk  = [ pose(mouth=m) for m in vowels ]
+blink = [ pose(blink=b) for b in [0, 0.5, 1, 0.5, 0] ]
+look  = [ pose(look=(x, y)) for x, y in [(0, 0), (-1.5, 0), (-1.5, -0.5), (0, 0), (1.5, 0), (1.5, 0.5)] ]
+mood  = [ pose(brows=0.5, mouth=mouth_a()), pose(brows=-0.5, tilt=18, mouth=mouth_i()),
+          pose(brows=0.5, tilt=-18, mouth=mouth_u()), pose() ]
+
+## ---------------------------------------------------------------- emotions
+happy    = pose(blink=0.55, brows=0.4, mouth=mouth_smile())
+sad      = pose(look=(0, 1), brows=0.2, tilt=18, mouth=mouth_frown())
+surprise = pose(brows=1.2, mouth=mouth_o())
+angry    = pose(brows=-0.6, tilt=-20, mouth=mouth_frown())
+emotes   = [pose(), happy, pose(), sad, pose(), surprise, pose(), angry]
