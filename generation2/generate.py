@@ -22,15 +22,13 @@ The default class name is the "title" version of socket `type` (BOOLEAN -> Boole
 If a new type of socket is introduced in the new Blender version,
 
 
-
-
-
-
 """
 
 from pathlib import Path
 
-from . import gen_config, config
+from ..kernel import TREE_TYPES, TREE_MODULES
+
+from . import gen_config
 
 
 def write_files(trees, *, use_core_new=True):
@@ -55,9 +53,9 @@ def generate(*, tree_type=None, use_core_new=True, write=True):
     Return a tree_type -> TreeClass mapping, including sources and cross refs.
     write=False collects sources without writing generated files.
     """
-    selected = config.TREE_TYPES if tree_type is None else (tree_type,)
+    selected = TREE_TYPES if tree_type is None else (tree_type,)
     for selected_type in selected:
-        if selected_type not in config.TREE_TYPES:
+        if selected_type not in TREE_TYPES:
             raise ValueError(f'Unsupported tree type: {selected_type!r}')
     if write and not use_core_new:
         raise ValueError('Environment generation targets core_new only; core is unchanged.')
@@ -66,7 +64,7 @@ def generate(*, tree_type=None, use_core_new=True, write=True):
     trees = {selected_type: TreeClass(selected_type).generate() for selected_type in selected}
     if write:
         write_files(trees, use_core_new=use_core_new)
-    environments = ', '.join(config.TREE_MODULES[selected_type] for selected_type in selected)
+    environments = ', '.join(TREE_MODULES[selected_type] for selected_type in selected)
     action = 'Generation completed' if write else 'Source collection completed (no files written)'
     print(f'\n{action}: {environments}.')
     return trees

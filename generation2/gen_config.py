@@ -12,10 +12,13 @@ import inspect
 from pathlib import Path
 from pprint import pprint
 
+from ..kernel import TREE_TYPES, CLASS_NAMES
+from .config import DEPRECATED_NODES
+
 from .node_dims import NODE_DIMS
 from .node_info import NodeInfo
 from .tree import Tree
-from . import target_core, config
+from . import target_core
 
 ALL = ['blender_version',
        # Hard coded
@@ -30,9 +33,9 @@ ALL = ['blender_version',
        ]
 
 # Hard coded global
-from .config import TREE_TYPES
-from .config import CLASS_NAMES, GEOMETRY_CLASSES, DOMAIN_CLASSES, ATTRIBUTE_CLASSES
-from .config import DATA_TYPE_HOMONYMS, AUTO_INPUT_TYPE_NODES, SOCKET_SHAPES
+from ..kernel import TREE_TYPES, DATA_TYPE_HOMONYMS, CLASS_NAMES
+from ..kernel import GEOMETRY_CLASSES, DOMAIN_CLASSES, ATTRIBUTE_CLASSES, SOCKET_SHAPES
+from .config import AUTO_INPUT_TYPE_NODES
 
 # Will be generated
 SOCKETS             = {} # create_sockets_dicts
@@ -68,6 +71,8 @@ _TREE_INTERFACE_SOCKET_PROPS = {
     'menu_expanded'             : "menu_expanded",
     'optional_label'            : "optional_label",
     'structure_type'            : "shape",
+    'dimensions'                : "dimensions",
+    'subtype'                   : "subtype",
 
     # Directly managed
     #'name',
@@ -76,9 +81,6 @@ _TREE_INTERFACE_SOCKET_PROPS = {
     #'attribute_domain',
     #'default_attribute_name',
 }
-
-# A working copy receives Blender's discovered subtype/shape choices.
-#INPUT_SOCKETS_PROPS = deepcopy(config.INPUT_SOCKETS_PROPS)
 
 # Blend files containing embedded groups
 _BLEND_FILES = {
@@ -118,7 +120,23 @@ def get_type_default(obj, attr):
     try:
         return get_enum(obj, attr), val
     except:
-        return type(val).__name__, val
+        type_name = type(val).__name__
+        if type_name in ('bool', 'str', 'float', 'int'):
+            def_val = val
+        elif type_name == 'bpy_prop_array':
+            type_name = 'tuple'
+            def_val = (0,)*len(val)
+        elif type_name == 'Euler':
+            type_name = 'tuple'
+            def_val = (0,)*len(val)
+        elif type_name == 'NoneType':
+            type_name = None
+            def_val = None
+
+        else:
+            assert type(val).__name__ in ('bool', 'str', 'float', 'int'), f"Unsupported '{attr}' type: {type(val).__name__}: {dir(val)}"
+
+        return type_name, def_val
 
 # ====================================================================================================
 # Sockets
@@ -192,11 +210,11 @@ def create_sockets(tree_type):
                 'nodesocket'    : blid,
                 'subtypes'      : (),
                 'props'         : props,
-                'class_name'    : config.CLASS_NAMES[in_sock.type],
+                'class_name'    : CLASS_NAMES[in_sock.type],
             }
 
             socket_ids[blid] = blid
-            socket_ids[config.CLASS_NAMES[in_sock.type]] = blid
+            socket_ids[CLASS_NAMES[in_sock.type]] = blid
             socket_ids[in_sock.type] = blid
 
             socket_subtypes[blid] = {
@@ -265,7 +283,7 @@ def get_unregistered_sockets(sockets, verbose=False):
                 continue
 
             # hidden type not yet exposed
-            if bsock.type not in config.CLASS_NAMES:
+            if bsock.type not in CLASS_NAMES:
                 continue
 
             unregistered.add((blid, bsock.type))
@@ -273,7 +291,7 @@ def get_unregistered_sockets(sockets, verbose=False):
             if verbose:
                 print(f"UNREGISTERED {tree_type} {blid:25s} : {node.name}.{bsock.name}")
 
-    for tree_type in config.TREE_TYPES:
+    for tree_type in TREE_TYPES:
         NodeInfo.loop_on_nodes(f, tree_type=tree_type)
 
     return unregistered
@@ -371,7 +389,7 @@ def create_nodes_dicts():
 
     def f(node: NodeInfo):
 
-        if node.bl_idname in config.DEPRECATED_NODES:
+        if node.bl_idname in DEPRECATED_NODES:
             return
 
         # NODE_NAMES
@@ -385,7 +403,7 @@ def create_nodes_dicts():
         if len(NODE_INFO[node.bl_idname]['items']) == 1:
             ONE_ITEMS_NODES[node.bl_idname] = NODE_INFO[node.bl_idname]['items'][0]
 
-    for tree_type in config.TREE_TYPES:
+    for tree_type in TREE_TYPES:
         NODE_NAMES[tree_type] = {}
         NodeInfo.loop_on_nodes(f, tree_type=tree_type)
 
@@ -562,6 +580,12 @@ def write_simple_dict(f, name, d):
 
 def write_dict(f, name, main_dict):
 
+    if False:
+        f.write(f"{name} = ")
+        pprint(main_dict, stream=f)
+        f.write("\n\n")
+        return
+
     tab = "    "
 
     def w(indent, d):
@@ -585,7 +609,6 @@ def write_dict(f, name, main_dict):
     f.write(f"{name} = {{\n")
     w(1, main_dict)
     f.write("}\n\n")
-
     
 def write_file(path=None, *, new=True):
     """Write the current Blender configuration to core_new (or core)."""

@@ -23,7 +23,7 @@ class AdditionalTest(unittest.TestCase):
         saved = (Implementation.files, Implementation.cross_refs,
                  Implementation.tree_type, Implementation.type_aliases)
         configured = deepcopy(config.ADDITIONAL_IMPLEMENTATIONS)
-        original = NodeImplementation.gen_node_call
+        original = NodeImplementation.gen_source_code
         try:
             for tree_type in ('GeometryNodeTree', 'ShaderNodeTree'):
                 Implementation.files, Implementation.cross_refs = {}, {}
@@ -33,7 +33,7 @@ class AdditionalTest(unittest.TestCase):
                 def generate(obj, call):
                     calls.append(call)
                     return original(obj, call)
-                with patch.object(NodeImplementation, 'gen_node_call', generate):
+                with patch.object(NodeImplementation, 'gen_source_code', generate):
                     Implementation.gen_additional()
                 maps = [call for call in calls if call.method_name == 'interpolate_NEW']
                 self.assertEqual({call.class_name: call.self_socket for call in maps},

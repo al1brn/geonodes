@@ -2,8 +2,32 @@
 
 import bpy
 
+from ..kernel import snake_case, CamelCase
+from .config import REPLACE
 
 NODE_NAMES = {}
+
+def replace_token(name, value, token=REPLACE):
+
+    if name is None:
+        return None
+
+    # snake / camel case
+    if value != "":
+        base = name.replace(token, "")
+        if base.lower() == base:
+            value = snake_case(value)
+        else:
+            value = CamelCase(value)
+
+    # Replace
+    if value == "":
+        if name.startswith(token):
+            return name.replace(f"{token}_", value).replace(token, value)
+        else:
+            return name.replace(f"_{token}", value).replace(token, value)
+    else:
+        return name.replace(token, value)
 
 def is_unary_operator(name):
 

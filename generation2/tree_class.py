@@ -6,9 +6,12 @@ import textwrap
 
 import bpy
 
+from ..kernel import TREE_TYPES, DOMAIN_CLASSES, PYTHON_TYPES
+from .config import PROPERTIES, HANDWRITTEN_IMPLEMENTATIONS, ITEM_IMPLEMENTATION, ADDITIONAL_IMPLEMENTATIONS, STATIC_IMPLEMENTATION_ONLY
+
 from ..kernel import snake_case, get_socket_type, get_class_name
 from . import gen_config
-from . import config, utils
+from . import utils
 from .node_call import NodeCall, NodeCalls
 from .sourcewriter import SourceWriter
 from .typealiases import TypeAliases
@@ -23,7 +26,7 @@ class TreeClass:
     """Own generation state for exactly one tree type."""
 
     def __init__(self, tree_type):
-        if tree_type not in config.TREE_TYPES:
+        if tree_type not in TREE_TYPES:
             raise ValueError(f'Unsupported tree type: {tree_type!r}')
         if not gen_config.SOCKETS:
             gen_config.build()
@@ -47,7 +50,7 @@ class TreeClass:
         self.gen_nodes()
         self.gen_properties()
         self.gen_typed_constructors()
-        self.gen_additional()
+        #TBDself.gen_additional()
         self.files[self.tree_type]['type_aliases.py'] = [self.type_aliases.source]
         return self
 
@@ -60,7 +63,7 @@ class TreeClass:
     def get_class_properties(self, class_name):
         properties = []
         for key in ('common', self.tree_type):
-            for name, props in config.PROPERTIES[key].items():
+            for name, props in PROPERTIES[key].items():
                 if name == class_name:
                     properties.extend(list(props.keys()))
         return properties
@@ -76,8 +79,16 @@ class TreeClass:
         """
         destination = node_call.class_name
 
+        if destination == 'Socket':
+            print(source)
+            print(node_call.rules)
+            assert False, "Algo error"
+
         if destination is None:
-            raise ValueError(f"Missing class_name for {node_call.method_name!r}")
+            print(f"CAUTION: no class name for method '{node_call.method_name}'. Implementation ignored : '{node.bl_idname}', # {node.name}")
+            #print(repr(node_call))
+            #raise ValueError(f"Missing class_name for {node_call.method_name!r}")
+            return
         
         if destination in ('nd', 'ND'):
             filename, destination = 'static_nd.py', 'nd'
@@ -94,7 +105,7 @@ class TreeClass:
                 print(f"INFO {destination}.{node_call.method_name} static property ignored since instance property exists.")
                 return
 
-            prefix = 'dom_' if destination in config.DOMAIN_CLASSES else ''
+            prefix = 'dom_' if destination in DOMAIN_CLASSES else ''
             filename = prefix + destination.lower() + '.py'
         returns = (None if node_call.method_type == 'SETTER' else
                    node_call.return_socket if node_call.return_socket is not None else
@@ -115,13 +126,14 @@ class TreeClass:
             function = ast.parse(textwrap.dedent(source)).body[0]
         except Exception as e:
 
+            print(repr(node_call))
+
             print('-'*80)
             print(source)
             print('-'*80)
 
             print(f"Compilation error in '{None if node is None else node.name}'")
-            if len(rules):
-                print("\n".join(rules))
+            print(rules)
             print()
             raise e
 
@@ -178,7 +190,7 @@ class TreeClass:
         tree = bpy.data.node_groups.new('Handwritten references', self.tree_type)
         available = utils.get_node_names(self.tree_type)
         try:
-            for identifier, destinations in config.HANDWRITTEN_IMPLEMENTATIONS.items():
+            for identifier, destinations in HANDWRITTEN_IMPLEMENTATIONS.items():
                 if identifier not in available:
                     continue
                 node = NodeInfo(tree, tree.nodes.new(identifier))
@@ -205,8 +217,7 @@ class TreeClass:
             name = snake_case(node.bnode.name)
             constructor = NodeCall.class_property if node.is_class_property else NodeCall.class_method
             node_call = constructor(name, class_name='nd', return_kind='OUT')
-            source = self.implementation(node).gen_node_call(node_call)
-            self.register_source(node, node_call, source)
+            source = self.implementation(node).gen_source_code(node_call, self.register_source)
 
         NodeInfo.loop_on_nodes(generate, tree_type=self.tree_type)
 
@@ -426,8 +437,7 @@ class TreeClass:
                         class_name='gnmath',
                         parameters={'operation': operation},
                     )
-                    self.register_source(node_info, function_spec,
-                                        implementation.gen_node_call(function_spec))
+                    implementation.gen_source_code(function_spec, self.register_source)
                     
                     self_socket = next(socket.socket_name for socket in
                                        node_info.get_possible_sockets(operation=operation)
@@ -438,8 +448,7 @@ class TreeClass:
                         self_socket=self_socket,
                         parameters={'operation': operation},
                     )
-                    self.register_source(node_info, method_spec,
-                                        implementation.gen_node_call(method_spec))
+                    implementation.gen_source_code(method_spec, self.register_source)
 
                     if len(spec) < 4:
                         continue
@@ -528,7 +537,7 @@ class TreeClass:
                         self_socket = "A",
                     )
 
-                    self.register_source(node_info, ispec, implementation.gen_node_call(ispec))
+                    implementation.gen_source_code(ispec, self.register_source)
 
                     op_name = operators[operation]
                     source = f"{TAB}def __{op_name}__(self, other):\n"
@@ -554,8 +563,7 @@ class TreeClass:
                     method_name = "Mix",
                     last_sockets=('Factor',),
                 )
-                self.register_source(node_info, ispec, implementation.gen_node_call(ispec))
-
+                implementation.gen_source_code(ispec, self.register_source)
 
                 ispec = NodeCall.method(
                     class_name = class_name,
@@ -563,12 +571,12 @@ class TreeClass:
                     self_socket="A",
                     last_sockets=('Factor',),
                 )
-                self.register_source(node_info, ispec, implementation.gen_node_call(ispec))
+                implementation.gen_source_code(ispec, self.register_source)
 
 
     def gen_properties(self):
 
-        for class_name, properties in {**config.PROPERTIES['common'], **config.PROPERTIES[self.tree_type]}.items():
+        for class_name, properties in {**PROPERTIES['common'], **PROPERTIES[self.tree_type]}.items():
             for prop_name, set_get in properties.items():
                 for sg in ('getter', 'setter'):
                     spec = set_get.get(sg)
@@ -643,27 +651,20 @@ class TreeClass:
                         # We gen the source
                         node_impl = self.implementation(node_info)
                         node_impl.parameters.update(node_call.parameters)
-                        source = node_impl.gen_node_call(node_call)
-
-                        self.register_source(node_info, node_call, source)
-
+                        node_impl.gen_source_code(node_call, self.register_source)
 
     def gen_nodes(self):
         """Generate the supplied descriptions, expanding domain and type loops."""
-
-        domains = {'POINT': 'Point', 'EDGE': 'Edge', 'FACE': 'Face', 'CORNER': 'Corner',
-                   'CURVE': 'Spline', 'SPLINE': 'Spline', 'INSTANCE': 'Instance', 'LAYER': 'Layer',
-                   'AUTO': 'Geometry'}
 
         # ---------------------------------------------------------------------------
         # Generate from a single spec dict
         # ---------------------------------------------------------------------------
 
-        def generate_from_spec(node, node_call):
+        def generate_from_node_calls_TBD(node, node_call):
 
             if isinstance(node_call, NodeCalls):
                 for nc in node_call:
-                    generate_from_spec(node, nc)
+                    generate_from_node_calls(node, nc)
                 return
 
             if not node_call.implement or node_call.class_name is None:
@@ -672,13 +673,18 @@ class TreeClass:
             node_impl = self.implementation(node)
             node_impl.parameters.update(node_call.parameters)
 
-            source = node_impl.gen_node_call(node_call)
+            source = node_impl.gen_source_code(node_call)
+
+            if False and node.name == 'Menu Switch':
+                print("DEBUG", node_call.class_name)
+                print(source)
+                
 
             self.register_source(node, node_call, source)
 
             # __getitem__ / __setitem__
 
-            as_item = config.ITEM_IMPLEMENTATION.get(node.name, None)
+            as_item = ITEM_IMPLEMENTATION.get(node.name, None)
             if (as_item is not None) and (node_call.method_type=='METHOD'):
 
                 ispec = node_call.replace(
@@ -689,18 +695,28 @@ class TreeClass:
                 if ret_kind is not None:
                     ispec.return_kind = ret_kind
 
-                source = node_impl.gen_node_call(ispec)
+                source = node_impl.gen_source_code(ispec)
 
                 self.register_source(node, ispec, source)
 
         # ---------------------------------------------------------------------------
-        # Spec coming from get_node_implementation can be multiple
+        # Spec coming from get_default_node_calls can be multiple
         # ---------------------------------------------------------------------------
 
         def generate(node):
+            if node.bl_idname in STATIC_IMPLEMENTATION_ONLY:
+                return
+
+
             implementation = self.implementation(node)
-            node_calls = implementation.get_node_implementation()
-            generate_from_spec(node, node_calls)
+            node_calls = implementation.get_default_node_calls()
+
+            # Debug option
+            if False and node.name in ('Combine List',):
+                print(f"DEBUG generate '{node.name}' ({node.bl_idname})")
+                print(repr(node_calls))
+
+            implementation.gen_source_code(node_calls, self.register_source)
 
         # ---------------------------------------------------------------------------
         # Main is a loop on nodes
@@ -720,7 +736,7 @@ class TreeClass:
                 if socket_name == 'NodeSocketSound':
                     continue
                 sock = tree.btree.interface.new_socket(socket_type=socket_name, name=socket_name)
-                socket_type = get_socket_type(sock)
+                socket_type = get_socket_type(sock.socket_type)
                 if socket_type not in valids:
                     valids.append(socket_type)
 
@@ -734,7 +750,7 @@ class TreeClass:
 
             # Read the class name and props
             class_name = socket_descr['class_name']
-            ptype, def_val = config.PYTHON_TYPES.get(class_name, ('object', None))
+            ptype, def_val = PYTHON_TYPES.get(class_name, ('object', None))
             props = socket_descr['props']
             if ptype == 'str' and 'default' in props:
                 def_val = props['default'][2]
@@ -744,6 +760,7 @@ class TreeClass:
             sorted_props.append('panel')
             sorted_props += [name for name in props
                              if name not in ('min', 'max', 'tip', 'panel', 'default', 'subtype')]
+            has_subtypes = bool(len(socket_descr.get('subtypes', ())))
             subtypes = ['NONE'] + [subtype for subtype in socket_descr.get('subtypes', ())
                                    if subtype != 'NONE']
 
@@ -778,7 +795,7 @@ class TreeClass:
                                       f'{arg_name}={arg_name}'))
 
                 # subtype
-                if create_socket and 'subtype' in props:
+                if create_socket and has_subtypes: #'subtype' in props:
                     arguments.append(('subtype', 'str', 'NONE', 'Socket subtype.', 'subtype=subtype'))
 
                 # ::::: Write the source
@@ -824,7 +841,7 @@ class TreeClass:
 
     def gen_additional(self):
         """Generate additional descriptions through NodeCall and the standard generator."""
-        for additions in (config.ADDITIONAL_IMPLEMENTATIONS['common'], config.ADDITIONAL_IMPLEMENTATIONS[self.tree_type]):
+        for additions in (ADDITIONAL_IMPLEMENTATIONS['common'], ADDITIONAL_IMPLEMENTATIONS[self.tree_type]):
             for node_name, addition in additions.items():
 
                 if isinstance(addition, dict):
@@ -835,7 +852,8 @@ class TreeClass:
                     implementation = self.implementation(node_info)
 
                     for spec in addition:
-                        node_call = NodeCall(**{'rules': ['Additional implementation'], **spec})
+
+                        node_call = NodeCall(**{'rules': "Additional implementation", **spec})
 
                         # --------------------------------------------------
                         # class name is LOOP param_name
@@ -868,5 +886,5 @@ class TreeClass:
                         for call in calls:
                             if not call.implement:
                                 continue
-                            source = implementation.gen_node_call(call)
-                            self.register_source(node_info, call, source)
+
+                            implementation.gen_source_code(call, self.register_source)

@@ -1,62 +1,94 @@
-"""Snapshot of a node socket in its current configuration."""
+from dataclasses import dataclass, field, fields, replace as dataclass_replace, KW_ONLY
+from typing import Any, ClassVar
 
 from ast import literal_eval
 
 ATTR_SOCKETS = ['BOOLEAN', 'INT', 'VALUE', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU']
 
-# ====================================================================================================
-# Node Socket
-# ====================================================================================================
 
+from dataclasses import dataclass, field
+from typing import Any
+
+from dataclasses import dataclass, field
+from typing import Any
+
+@dataclass
 class NodeSocket:
-    def __init__(self, bsocket, index=None):
+    index           : int | None = None
+    identifier      : str = ""
+    name            : str = ""
+    label           : str = ""
+    socket_name     : str = ""
+    group_name      : str | None = None
+    group_sockets   : Any = None
+    bl_idname       : str = ""
+    socket_type     : str | None = None
+    enabled         : bool = True
+    is_output       : bool = False
+    is_multi_input  : bool = False
+    is_multi        : bool = False
+    inferred        : str | None = None
+    is_grid         : bool = False
+    default_value   : Any = None
+    is_menu         : bool = False
+    enums           : Any = None
+    names           : set[str] = field(default_factory=set)
+    class_name      : str = ""
+    is_attribute    : bool = False
 
-        self.index = index
+    @classmethod
+    def from_socket(cls, bsocket, index=None) -> "NodeSocket":
 
-        self.identifier     = bsocket.identifier
-        self.name           = bsocket.name 
-        self.label          = bsocket.label
-        self.socket_name    = self.label if bool(self.label) else self.name
-        self.group_name     = None
-        self.group_sockets  = None
-        self.bl_idname      = bsocket.bl_idname
-        self.socket_type    = bsocket.type
-        self.enabled        = bsocket.enabled
-        self.is_output      = bsocket.is_output
-        self.is_multi_input = bsocket.is_multi_input
-        self.is_multi       = self.is_multi_input
-        self.inferred       = bsocket.inferred_structure_type
-        self.is_grid        = bsocket.display_shape == 'VOLUME_GRID'
-        self.default_value  = getattr(bsocket, 'default_value', None)
+        socket_type = bsocket.type
+        name        = bsocket.name
+        label       = bsocket.label
+        socket_name = label or name
 
         prop = bsocket.bl_rna.properties.get('default_value')
-        self.is_menu = self.socket_type == 'MENU' and not self.is_output and prop is not None
-        if self.is_menu:
-            self.enums = self.get_enum_list(bsocket)
-        else:
-            self.enums = None
+        is_menu = (
+            socket_type == 'MENU'
+            and not bsocket.is_output
+            and prop is not None
+        )
 
-        self.names = set((self.socket_name,))
-        
-        if self.socket_type not in [None, 'CUSTOM']:
+        if socket_type is None:
+            class_name == ""
+        elif socket_type == 'CUSTOM':
+            class_name = ""
+            name = "NAMED"
+        else:
             from .node_info import NodeInfo
-            self.class_name = NodeInfo.socket_class_name(self.socket_type, self.name)
-        else:
-            self.class_name = ""
+            class_name = NodeInfo.socket_class_name(socket_type, name)
 
-        self.is_attribute = self.socket_type in ATTR_SOCKETS
- 
-        """
-        self.default_value = getattr(bsocket, 'default_value', None)
-        prop = bsocket.bl_rna.properties.get('default_value')
-        if prop is not None and prop.type in {'BOOLEAN', 'INT', 'FLOAT'} and prop.is_array:
-            value = self.default_value
-            self.default_value = value.copy() if hasattr(value, 'copy') else tuple(value)
-        """
+        return cls(
+            index           = index,
+            identifier      = bsocket.identifier,
+            name            = name,
+            label           = label,
+            socket_name     = socket_name,
+            bl_idname       = bsocket.bl_idname,
+            socket_type     = socket_type,
+            enabled         = bsocket.enabled,
+            is_output       = bsocket.is_output,
+            is_multi_input  = bsocket.is_multi_input,
+            is_multi        = bsocket.is_multi_input,
+            inferred        = bsocket.inferred_structure_type,
+            is_grid         = bsocket.display_shape == 'VOLUME_GRID',
+            default_value   = getattr(bsocket, 'default_value', None),
+            is_menu         = is_menu,
+            enums           = cls.get_enum_list(bsocket) if is_menu else None,
+            names           = {socket_name},
+            class_name      = class_name,
+            is_attribute    = socket_type in ATTR_SOCKETS,
+        )
 
     def __str__(self):
         enums = f" {self.enums}" if self.enums is not None else ""
         return f"<Socket '{self.identifier}' '{self.name}' {self.names} {enums=}>"
+
+    @property
+    def is_virtual(self):
+        return self.socket_type == 'CUSTOM'
 
     # ====================================================================================================
     # Add a possible socket

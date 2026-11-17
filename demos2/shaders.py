@@ -164,7 +164,7 @@ def glass_shader(color=(1.0, 1.0, 1.0, 1.0), roughness=0.0, ior=1.45,
         geometry_ior = nd.attribute(
             attribute_type='GEOMETRY', attribute_name="IOR",
         ).factor
-        effective_ior = geometry_ior + geometry_ior.equal(0.0, epsilon=0.0) * ior
+        effective_ior = geometry_ior + geometry_ior.compare(0.0, epsilon=0.0) * ior
 
         transp_fac = nd.attribute(
             attribute_type='GEOMETRY', attribute_name="Transparency",

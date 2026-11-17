@@ -11,7 +11,7 @@ ROOT = Path(__file__).resolve().parents[1]
 # Load only the generator under test; the full module imports Blender.
 tree = ast.parse((ROOT / 'node_implementation.py').read_text())
 cls = next(n for n in tree.body if isinstance(n, ast.ClassDef) and n.name == 'NodeImplementation')
-method = next(n for n in cls.body if isinstance(n, ast.FunctionDef) and n.name == 'gen_node_call')
+method = next(n for n in cls.body if isinstance(n, ast.FunctionDef) and n.name == 'gen_source_code')
 method.body = [node for node in method.body if not isinstance(node, ast.ImportFrom)]
 param_tree = ast.parse((ROOT / 'node_param.py').read_text())
 param_tree.body = [node for node in param_tree.body if not isinstance(node, ast.Import)]
@@ -60,7 +60,7 @@ class GenNodeCallTest(unittest.TestCase):
         attach_arguments(node)
         implementation = SimpleNamespace(node=node, parameters={'mode': None} | parameters,
                                          type_aliases=aliases)
-        source = namespace['gen_node_call'](implementation, NodeCall(method_type=options.get('method_type', 'METHOD'),
+        source = namespace['gen_source_code'](implementation, NodeCall(method_type=options.get('method_type', 'METHOD'),
             method_name='build', **{key: value for key, value in options.items() if key != 'method_type'}))
         calls = []
         def Node(*args, **kwargs):
@@ -94,7 +94,7 @@ class GenNodeCallTest(unittest.TestCase):
     def test_selection_and_opt_out(self):
         receiver = SimpleNamespace(get_selection=lambda: 'selected')
         for enabled in (True, False):
-            fn, calls, _ = self.generate([socket('Geometry'), socket('Selection')], use_geo_selection=enabled, self_socket='Geometry')
+            fn, calls, _ = self.generate([socket('Geometry'), socket('Selection')], geo_selection=enabled, self_socket='Geometry')
             fn(receiver, **({} if enabled else {'selection': False}))
             self.assertEqual(calls[0][1]['named_sockets']['Selection' if enabled else 'ID_Selection'], 'selected' if enabled else False)
 
@@ -260,7 +260,7 @@ class GenNodeCallTest(unittest.TestCase):
         attach_arguments(node)
         impl = SimpleNamespace(node=node, parameters={'mode': None}, type_aliases=None)
         spec = NodeCall.function('build', parameters={'mode': 'B'})
-        source = namespace['gen_node_call'](impl, spec)
+        source = namespace['gen_source_code'](impl, spec)
         env = {'Node': lambda *a, **kw: SimpleNamespace(_out=kw)}
         exec(source, env)
         self.assertEqual(env['build']()['mode'], 'B')
@@ -290,7 +290,7 @@ class GenNodeCallTest(unittest.TestCase):
             tree_type = 'GeometryNodeTree'
             def implementation(self, node):
                 obj = SimpleNamespace(node=node, parameters={}, type_aliases=None)
-                obj.gen_node_call = MethodType(namespace['gen_node_call'], obj)
+                obj.gen_source_code = MethodType(namespace['gen_source_code'], obj)
                 return obj
             @classmethod
             def register_source(cls, node, node_call, source, **metadata):
@@ -322,7 +322,7 @@ class GenNodeCallTest(unittest.TestCase):
 
     def test_generator_checks_the_final_call_before_node_access(self):
         with self.assertRaisesRegex(ValueError, 'self_socket'):
-            namespace['gen_node_call'](object(), NodeCall.method('sample'))
+            namespace['gen_source_code'](object(), NodeCall.method('sample'))
 
     def test_named_items_merge_sockets_and_expand_keywords(self):
         fn, calls, _ = self.generate([], method_type='FUNCTION', items_named=True)
@@ -339,7 +339,7 @@ class GenNodeCallTest(unittest.TestCase):
             default_params={'font': {'value': 'default', 'type': 'FONT', 'enums': None}},
             has_items=False, get_possible_sockets=lambda **kw: []))
         impl = SimpleNamespace(node=node, parameters={'font': None}, type_aliases=None)
-        source = namespace['gen_node_call'](impl, NodeCall.function('build', parameters={'font': None}))
+        source = namespace['gen_source_code'](impl, NodeCall.function('build', parameters={'font': None}))
         env = {'Node': lambda *a, **kw: SimpleNamespace(_out=kw)}
         exec(source, env)
         self.assertNotIn('font', inspect.signature(env['build']).parameters)

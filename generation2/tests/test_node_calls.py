@@ -83,7 +83,7 @@ class NodeCallsTest(unittest.TestCase):
         owner = next(node for node in tree.body if isinstance(node, ast.ClassDef)
                      and node.name == 'NodeImplementation')
         method = next(node for node in owner.body if isinstance(node, ast.FunctionDef)
-                      and node.name == 'get_node_implementation')
+                      and node.name == 'get_default_node_calls')
         config = runpy.run_path(str(root / 'config.py'))
         namespace = dict(NodeCall=NodeCall, NodeCalls=NodeCalls,
             config=SimpleNamespace(**config),
@@ -98,7 +98,7 @@ class NodeCallsTest(unittest.TestCase):
             has_domain_parameter=False, has_data_type_parameter=False,
             data_type_drives_inputs=False, data_type_drives_outputs=False,
             data_type_drives_first_input=False, has_items=False, data_type_input=lambda: None)
-        loop = namespace['get_node_implementation'](SimpleNamespace(node=node))
+        loop = namespace['get_default_node_calls'](SimpleNamespace(node=node))
         self.assertIsInstance(loop, NodeCalls)
         self.assertEqual([(spec.class_name, spec.method_name, spec.self_socket) for spec in loop],
                          [('Curve', 'offset_point', 'Curve'), ('Spline', 'offset_point', 'Curve')])

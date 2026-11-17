@@ -1,21 +1,130 @@
-"""Node introspection.
-
-TEMPORARY HACK: ShaderNodeOutputLineStyle (Line Style Output) IS NOT PROCESSED.
-Its target enum becomes invalid during parameter exploration and floods the
-console with RNA warnings. NodeInfo.loop_on_nodes skips it before creating
-the wrapper. This exclusion applies to all NodeInfo-based exploration.
-Revisit this exclusion after investigating the Blender RNA behavior.
-"""
-
 import bpy
+from ast import literal_eval
 
 from ..kernel import snake_case, get_socket_type, get_class_name
 
 from . import config, utils
 from .node_param import NodeParam
 from .node_socket import NodeSocket
-from .node_argument import NodeArgument
+from .node_argument import NodeArguments
 from .node_dims import NODE_DIMS
+
+# ====================================================================================================
+# Node items
+# ====================================================================================================
+
+class NodeItems:
+    
+    def __init__(self, node_info, items):
+        """ Node items wrapper
+        
+        Dynamic sockets are create in items collection
+        - case 1 (Bake, Capture Attribute): sockets are defined by name and type, no data_type parameter
+          capture_attribute(named_items={'First': value1}, second=value2)
+        - case 2 (Menu Switch) : sockets are defined by name only, data_type defines type
+          menu_switch({'First': value1}, second=value2, data_type='FLOAT')
+        - case 3 (Index Switch, Combine List) : no named needed, data_type defines type
+          index_switch(value1, value2, index=..., data_type='FLOAT')
+          
+        """
+
+        self.node_info = node_info
+        self.items = items
+        
+        # signature analyzis will create a least one item
+        items_count = len(self.items)
+        in_count = len(node_info.bnode.inputs)
+        out_count = len(node_info.bnode.outputs)
+        
+        # signature of 'new'
+        self.analyze_signature()
+        assert len(self.items) > items_count, "Algo error"
+        
+        # Do we have new sockets ?
+        self.create_inputs = len(node_info.bnode.inputs) > in_count
+        self.create_outputs = len(node_info.bnode.outputs) > out_count
+        
+        # Let's clear the collection
+        self.items.clear()
+        
+        # Virtual sockets now that items is cleared
+        self.virtual_input_socket = None
+        for i_sock, sock in enumerate(node_info.bnode.inputs):
+            if sock.type == 'CUSTOM':
+                self.virtual_input_socket = NodeSocket.from_socket(sock, i_sock)
+                break
+
+        self.virtual_output_socket = None
+        for i_sock, sock in enumerate(node_info.bnode.outputs):
+            if sock.type == 'CUSTOM':
+                self.virtual_output_socket = NodeSocket.from_socket(sock, i_sock)
+                break
+
+        # Do data_type drives the items type
+        self.anonymous_items = False
+        self.single_type = False
+        
+        if self.create_inputs:
+            assert self.virtual_input_socket is not None, f"Algo error: {node_info.name}"
+            self.anonymous_items = self.signature == 'EMPTY'
+            self.single_type = self.signature in ('EMPTY', 'NAME')
+            
+        #if self.create_outputs:
+        #    assert self.signature not in ('EMPTY', 'TYPE')
+        #    self.virtual_output_socket.name = 'VARIABLE'
+    
+    # ---------------------------------------------------------------------------
+    # Analyze the signature of 'new' method
+    # ---------------------------------------------------------------------------
+    
+    def analyze_signature(self):
+        """ Get the signature between name, socket_type, none or both
+
+        CAUTION: create at least one item
+        """
+        
+        self.signature = None
+        self.socket_types = None
+        
+        try:
+            self.items.new()
+            self.signature = 'EMPTY'
+            return
+
+        except TypeError as e:
+            if str(e).endswith('required parameter "socket_type" not specified'):
+                pass
+            elif str(e).endswith('required parameter "name" not specified'):
+                self.items.new(name="Fake")
+                self.signature = "NAME"
+                return
+            else:
+                raise
+                
+        try:
+            self.items.new(socket_type='ERR')
+        except Exception as e:
+            token = "not found in "
+            p = str(e).find(token)
+            assert p>=0, f"Algo error: {str(e)}"
+            self.socket_types = literal_eval(str(e)[p + len(token):])
+            
+            
+        try:
+            self.items.new(socket_type=self.socket_types[0])
+            self.signature = "TYPE"
+            return
+        
+        except TypeError as e:
+            if not str(e).endswith('required parameter "name" not specified'):
+                raise
+            
+        self.items.new(name="Fake", socket_type=self.socket_types[0])
+        self.signature = "NAME_TYPE"
+
+# ====================================================================================================
+# Class NodeInfo
+# ====================================================================================================
 
 class NodeInfo:
     STD_ATTRS = None
@@ -30,65 +139,10 @@ class NodeInfo:
 
         self.get_std_attrs()
 
-        # -------------------------
-        # dynamic sockets
-        # -------------------------
-
-        self.items = {}
-        for attr_name in dir(self.bnode):
-            if attr_name[-6:] == '_items':
-
-                meth = getattr(self.bnode, attr_name).new
-                sig_type = 'EMPTY'
-
-                try:
-                    meth()
-                    sig_type = 'EMPTY'
-
-                except TypeError as e:
-                    if str(e).endswith('required parameter "socket_type" not specified'):
-                        sig_type = 'TYPE'
-                    elif str(e).endswith('required parameter "name" not specified'):
-                        sig_type = 'NAME'
-                    else:
-                        raise e
-
-                if sig_type == 'TYPE':
-                    try:
-                        meth(socket_type='ERR')
-                    except Exception as e:
-                        token = "not found in "
-                        p = str(e).find(token)
-                        assert p>=0, f"Algo error: {str(e)}"
-                        types = eval(str(e)[p + len(token):]) 
-
-                    try:
-                        meth(name="Fake", socket_type=[types[0]])
-                        assert False, "Till 5.3: not an existing case"
-                        sig_type = 'NAME_TYPE'
-                    except:
-                        pass
-
-                elif sig_type == 'NAME':
-                    meth(name="Fake")
-
-                self.items[attr_name]= sig_type
-
-        self.has_items = len(self.items) > 0
-
-
-        # Clear items to avoid fake inputs
-        try:
-            getattr(self.bnode, self.items_name).clear()
-        except:
-            pass
-
-        # -------------------------
-        # Default config
-        # -------------------------
-
+        # Analyze config
         self.analyze_config()
 
+        # Default params
         self.default_params = self.snapshot_params()
 
     # ====================================================================================================
@@ -171,14 +225,19 @@ class NodeInfo:
         return next((socket for socket in self.inputs.values() if socket.is_multi_input), None)
 
     @property
+    def virtual_socket(self):
+        if self.creation_items is not None:
+            return self.creation_items.virtual_input_socket
+
+    """
+    @property
     def has_dynamic_inputs(self):
-        """Whether any explored input socket is virtual."""
         return any(socket.socket_type == 'CUSTOM' for socket in self.inputs.values())
 
     @property
     def has_dynamic_outputs(self):
-        """Whether any explored output socket is virtual."""
         return any(socket.socket_type == 'CUSTOM' for socket in self.outputs.values())
+    """
 
     @property
     def is_grid_input(self):
@@ -211,6 +270,46 @@ class NodeInfo:
             if (socket.label or socket.name) == 'Selection' and previous == 'GEOMETRY':
                 return True
             previous = socket.type
+        return False
+
+    @property
+    def data_type_parameter(self):
+        """ data_type, socket_type or input_type parameter
+        """
+        parameters = self.snapshot_params()
+        for name in ('data_type', 'input_type', 'socket_type'):
+            if name in parameters:
+                return NodeParam.Parameter(self.bnode, name)
+        return None
+
+    @property
+    def has_data_type_parameter(self):
+        return self.data_type_name is not None
+
+    def data_type_input(self, data_type=None):
+        """Name of the first input driven by the type parameter, or None."""
+        if self.data_type_drives_inputs:
+            if data_type is None:
+                data_type = getattr(self.bnode, self.data_type_name)
+            sockets = self.data_type_driven_sockets[data_type]['inputs']
+            return sockets[0].socket_name if sockets else None
+        
+        return None
+
+    @property
+    def data_type_drives_first_input(self):
+        if self.data_type_drives_inputs:
+
+            if self.data_type_drives_items:
+                if self.virtual_socket is not None:
+                    return self.virtual_socket.index == 0
+                
+            data_type = getattr(self.bnode, self.data_type_name)
+            sockets = self.data_type_driven_sockets[data_type]['inputs']
+            if sockets:
+                for bsock in self.bnode.inputs:
+                    if bsock.enabled:
+                        return bsock.identifier == sockets[0].identifier
         return False
 
     # ====================================================================================================
@@ -323,16 +422,22 @@ class NodeInfo:
 
     def all_sockets(self):
         """Capture every input/output socket, including disabled sockets."""
-        return {
+        sockets = {
             'inputs': {
-                socket.identifier: NodeSocket(socket, index)
-                for index, socket in enumerate(self.bnode.inputs) if socket.type != 'CUSTOM'
+                socket.identifier: NodeSocket.from_socket(socket, index)
+                for index, socket in enumerate(self.bnode.inputs)
             },
             'outputs': {
-                socket.identifier: NodeSocket(socket, index)
-                for index, socket in enumerate(self.bnode.outputs) if socket.type != 'CUSTOM'
+                socket.identifier: NodeSocket.from_socket(socket, index)
+                for index, socket in enumerate(self.bnode.outputs)
             },
         }
+        if self.virtual_socket is not None:
+            for nsock in sockets['inputs'].values():
+                if nsock.socket_type == 'CUSTOM':
+                    nsock.name = self.virtual_socket.name
+            
+        return sockets
 
     def snapshot_sockets(self):
         """Return only enabled sockets, indexed by identifier."""
@@ -406,6 +511,24 @@ class NodeInfo:
         # Main
         # ---------------------------------------------------------------------------
 
+        # ::::: Items
+
+        # This first analyze will clear dynamic sockets if any
+
+        self.items = []
+        for attr_name in dir(self.bnode):
+            if attr_name[-6:] == '_items':
+                self.items.append(NodeItems(self, getattr(self.bnode, attr_name)))
+
+        # Get the items which create input sockets
+        self.creation_items = None
+        for items in self.items:
+            if items.create_inputs:
+                self.creation_items = items
+                break
+
+        # ::::: Parameters
+
         params = self.snapshot_params()
         enum_params = [param_name for param_name, param in params.items() 
                        if (param['type'] == 'ENUM') and len(param['enums'])]
@@ -452,9 +575,7 @@ class NodeInfo:
 
         self.reset_params()
 
-        # ---------------------------------------------------------------------------
-        # data type param
-        # ---------------------------------------------------------------------------
+        # ::::: data type param
 
         # data_type exists or not
         self.data_type_name = None
@@ -493,13 +614,10 @@ class NodeInfo:
             data_type_values = params[self.data_type_name]['enums']
 
             # Enabled sockets per data_type
-            #dt_sockect_ids = {}
-
             for value in data_type_values:
 
                 # Enabling
                 enabled_ids = dt_loop(value)
-                #dt_sockect_ids[value] = enabled_ids
                 
                 for direction in ('inputs', 'outputs'):
                     for sid in enabled_ids[direction]:
@@ -530,7 +648,18 @@ class NodeInfo:
                     if counter < len(data_type_values):
                         driven_ids[direction].append(sid)
 
-            # Conserver les snapshots des sockets, dans leur ordre physique.
+            # Dynamic sockets whose type is driven by data_type
+            virtual_socket = {'inputs': None, 'outputs': None}
+            if self.creation_items is not None:
+                if self.creation_items.single_type:
+                    if self.creation_items.anonymous_items:
+                        self.creation_items.virtual_input_socket.name = 'ANONYMOUS'
+                    virtual_socket['inputs'] = self.creation_items.virtual_input_socket
+                if self.creation_items.create_outputs:
+                    virtual_socket['outputs'] = self.creation_items.virtual_output_socket
+
+
+            # Keep sockets snapshots in their primitive order
             for value in data_type_values:
                 self.data_type_driven_sockets[value] = {}
                 self.set_params(**{self.data_type_name: value})
@@ -540,6 +669,10 @@ class NodeInfo:
                         socket for socket in sockets[direction].values()
                         if socket.socket_type == get_socket_type(value)
                         and socket.identifier in driven_ids[direction]]
+
+                    # Append virtual socket
+                    if virtual_socket[direction] is not None:
+                        self.data_type_driven_sockets[value][direction].append(virtual_socket[direction])
 
             self.data_type_drives_inputs = any(
                 sockets['inputs'] for sockets in self.data_type_driven_sockets.values())
@@ -635,9 +768,143 @@ class NodeInfo:
 
         return merged
 
-    def get_node_arguments(self, *, self_socket=None, fixed_sockets=None,
-                           last_sockets=(), use_geo_selection=False,
-                           auto_data_type=None, **parameters) -> list[NodeArgument]:
+    # ====================================================================================================
+    # Build the node arguments for the passes configuration
+    # ====================================================================================================
+
+    def get_node_arguments(
+            self, *, 
+            self_socket     = None, 
+            fixed_sockets   = None,
+            last_sockets    = (), 
+            geo_selection   = False,
+            auto_data_type  = None, 
+            **parameters) -> NodeArguments:
+
+        if fixed_sockets is None:
+            fixed_sockets = {}
+
+        data_type_compution_is_expected = False            
+
+        # ---------------------------------------------------------------------------
+        # Node configuration
+        # ---------------------------------------------------------------------------
+
+        initial = self.snapshot_params()
+        unknown = parameters.keys() - initial.keys()       
+        if unknown:
+            raise ValueError(f'{self.name}: unknown parameters: {sorted(unknown)}')
+
+        try:
+            self.set_params(**parameters)
+            for name, value in parameters.items():
+                if name not in self.config_order:
+                    setattr(self.bnode, name, value)
+            snapshots = self.snapshot_params()
+            sockets = self.get_possible_sockets(**parameters)
+        finally:
+            # Restore enum masters first, then the remaining parameter values.
+            self.set_params(**{name: info['value'] for name, info in initial.items()})
+            for name, info in initial.items():
+                if name not in self.config_order and name in parameters:
+                    setattr(self.bnode, name, info['value'])
+
+        # ---------------------------------------------------------------------------
+        # Error
+        # ---------------------------------------------------------------------------
+
+        arguments = NodeArguments()
+
+        def raise_error(msg):
+            arguments.make_arg_names_unique(reserved={'self', 'cls', 'node'})
+
+            print('-'*60)
+            print(arguments.get_source_code(as_method=True, doc_string=False))
+            print('-'*60)
+
+            raise RuntimeError(f"'{self.name}' : {msg}")
+
+        # ---------------------------------------------------------------------------
+        # Add the parameter arguments
+        # ---------------------------------------------------------------------------
+
+        param_names = list(self.config_order) + [name for name in snapshots if name not in self.config_order]
+        for name in param_names:
+
+            info = snapshots[name]
+            default = initial[name]['value'] if name in parameters else info['value']
+            node_param = NodeParam(self.bnode, name, default, info['type'], enums=info['enums'])
+
+            if name in parameters:
+                arguments.add_fixed_parameter(node_param, parameters[name])
+            elif auto_data_type is not None and name == self.data_type_name:
+                # data_type will be computed later
+                arguments.add_fixed_parameter(node_param, 'computed_type')
+                data_type_compution_is_expected = True
+            else:
+                arguments.add_parameter(node_param)
+
+        # ---------------------------------------------------------------------------
+        # Loop on sockets
+        # ---------------------------------------------------------------------------
+
+        geo_selection = geo_selection and self.has_selection
+        last_sockets = set(last_sockets or ())
+
+        for first in (True, False):
+            for index, socket in enumerate(sockets):
+
+                if first == (socket.socket_name in last_sockets):
+                    continue
+
+                # Fixed socket
+                if socket.socket_name in fixed_sockets:
+                    arguments.add_fixed_socket(socket, fixed_sockets[socket.socket_name])
+                    continue
+
+                # Selection socket
+                if index == 1 and geo_selection:
+                    arguments.add_computed_socket(socket, "selection", "selection = self.get_selection()")
+                    continue
+
+                # General case
+                arg_name = arguments.add_socket(socket, is_self=self_socket == socket.socket_name)
+
+                # Auto data_type
+                if auto_data_type == socket.socket_name:
+                    if arg_name is None:
+                        raise_error(f"Impossible to use auto_data_type with socket {auto_data_type}. No arg_name is available.")
+
+                    computation = f"computed_type = SocketType.get_data_type_for_node({arg_name}, {self.bl_idname!r}, {self.data_type_name!r})"
+                    arguments.computations.append(computation)
+                    data_type_compution_is_expected = False
+
+
+        # ---------------------------------------------------------------------------
+        # Finalize
+        # ---------------------------------------------------------------------------
+
+        arguments.make_arg_names_unique(reserved={'self', 'cls', 'node'})
+
+        if data_type_compution_is_expected:
+            raise_error(f"Impossible to find the socket to compute data_type with {auto_data_type=}.")
+
+
+        return arguments
+
+
+
+
+        
+
+
+
+
+    
+
+    def get_node_arguments_DEPR(self, *, self_socket=None, fixed_sockets=None,
+                           last_sockets=(), geo_selection=False,
+                           auto_data_type=None, **parameters) -> list[NodeArguments]:
         """Prepare independent contextual wrappers, without changing this node.
 
         All supplied parameters are fixed, including non-enums and None. Only
@@ -679,6 +946,7 @@ class NodeInfo:
             return candidate
 
         # Dynamic items reserve their names before ordinary arguments.
+        """
         items_argument = None
         if self.has_items:
             if list(self.items.values())[0] == 'EMPTY': # dict {items name: TYPE | EMPTY} 
@@ -686,6 +954,7 @@ class NodeInfo:
             else:
                 items_argument = NodeArgument(None, unique_name('items'), role='NAMED_ITEMS',
                                               kwargs_name=unique_name('named_items'))
+        """
 
         # Parameters reserve their Python names before the socket arguments.
         param_arguments = []
@@ -695,7 +964,7 @@ class NodeInfo:
             default = initial[name]['value'] if name in parameters else info['value']
             parameter = NodeParam(self.bnode, name, default, info['type'], enums=info['enums'])
             context = dict(role='FIXED', value=parameters[name]) if name in parameters else {}
-            param_arguments.append(NodeArgument(parameter, unique_name(name), **context))
+            param_arguments.append(NodeArguments(parameter, unique_name(name), **context))
 
         def matches(socket, name):
             return (name in socket.names or name == socket.identifier
@@ -710,6 +979,16 @@ class NodeInfo:
         remaining_fixed = dict(fixed_sockets or {})
         arguments = []
         for index, socket in enumerate(sockets):
+
+            """
+            # Virtual socket
+            if socket.is_virtual:
+                if self_socket == 'ITEMS':
+                    assert self.virtual_socket is not None, "Algo error"
+                    arguments.append(NodeArgument(self.virtual_socket, 'VIRTUAL', role='SELF'))
+                continue
+            """
+
             names = [socket.socket_name] + sorted(socket.names - {socket.socket_name})
             fixed_names = [name for name in remaining_fixed if matches(socket, name)]
             if len(fixed_names) > 1:
@@ -725,7 +1004,7 @@ class NodeInfo:
                 context = dict(role='FIXED', value=remaining_fixed.pop(fixed_name))
             elif socket is receiver:
                 context = dict(role='SELF')
-            elif (use_geo_selection and index == 1 and receiver is sockets[0]
+            elif (geo_selection and index == 1 and receiver is sockets[0]
                   and sockets[0].socket_type == 'GEOMETRY'
                   and socket.socket_type == 'BOOLEAN' and 'Selection' in socket.names):
                 ui_name = 'Selection'
@@ -737,7 +1016,7 @@ class NodeInfo:
             aliases = ()
             if not context and len(names) > 1 and not socket.is_multi:
                 aliases = tuple((ui, name if ui == ui_name else unique_name(ui)) for ui in names)
-            arguments.append(NodeArgument(socket, name, aliases=aliases, socket_name=ui_name, **context))
+            arguments.append(NodeArguments(socket, name, aliases=aliases, socket_name=ui_name, **context))
 
         if remaining_fixed:
             raise ValueError(f'{self.name}: unknown fixed sockets: {sorted(remaining_fixed)}')
@@ -747,12 +1026,18 @@ class NodeInfo:
             type_parameter = self.data_type_parameter
             if type_parameter is None:
                 raise ValueError(f'{self.name}: no type parameter for automatic inference')
+            
             if type_parameter.name not in parameters:
-                target = next((arg for arg in arguments
-                               if arg.role in ('ARGUMENT', 'SELF') and matches(arg.source, auto_data_type)), None)
-                if target is None:
-                    raise ValueError(f'{self.name}: unknown type inference socket: {auto_data_type!r}')
-                expression = 'self' if target.role == 'SELF' else dict(target.aliases).get(auto_data_type, target.name)
+
+                if auto_data_type == 'ITEMS':
+                    expression = "self"
+                else:
+                    target = next((arg for arg in arguments
+                                if arg.role in ('ARGUMENT', 'SELF') and matches(arg.source, auto_data_type)), None)
+                    if target is None:
+                        raise ValueError(f'{self.name}: unknown type inference socket: {auto_data_type!r}')
+                    expression = 'self' if target.role == 'SELF' else dict(target.aliases).get(auto_data_type, target.name)
+
                 parameter = next(arg for arg in param_arguments if arg.source.name == type_parameter.name)
                 parameter.role = 'COMPUTED'
                 parameter.value = parameter.name
@@ -765,41 +1050,8 @@ class NodeInfo:
         rest = [arg for arg in arguments if arg.role != 'SELF']
         last = [arg for arg in rest if any(matches(arg.source, name) for name in last_sockets)]
         return (first + [arg for arg in rest if not any(arg is item for item in last)]
-                + last + param_arguments + ([items_argument] if items_argument is not None else []))
+                + last + param_arguments )#+ ([items_argument] if items_argument is not None else []))
 
-    @property
-    def data_type_parameter(self):
-        """ data_type, socket_type or input_type parameter
-        """
-        parameters = self.snapshot_params()
-        for name in ('data_type', 'input_type', 'socket_type'):
-            if name in parameters:
-                return NodeParam.Parameter(self.bnode, name)
-        return None
-
-    @property
-    def has_data_type_parameter(self):
-        return self.data_type_name is not None
-
-    def data_type_input(self, data_type=None):
-        """Name of the first input driven by the type parameter, or None."""
-        if self.data_type_drives_inputs:
-            if data_type is None:
-                data_type = getattr(self.bnode, self.data_type_name)
-            sockets = self.data_type_driven_sockets[data_type]['inputs']
-            return sockets[0].socket_name if sockets else None
-        return None
-
-    @property
-    def data_type_drives_first_input(self):
-        if self.data_type_drives_inputs:
-            data_type = getattr(self.bnode, self.data_type_name)
-            sockets = self.data_type_driven_sockets[data_type]['inputs']
-            if sockets:
-                for bsock in self.bnode.inputs:
-                    if bsock.enabled:
-                        return bsock.identifier == sockets[0].identifier
-        return False
 
     # ====================================================================================================
     # Utilities

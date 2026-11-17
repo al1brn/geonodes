@@ -5,7 +5,7 @@ import tokenize
 import textwrap
 from datetime import datetime
 
-from . import config
+from ..kernel import TREE_TYPES, TREE_MODULES, GEOMETRY_CLASSES, POINT_DOMAIN_CLASSES
 
 
 def specialize_source(source, tree_type):
@@ -27,7 +27,7 @@ def specialize_source(source, tree_type):
                     and isinstance(test.ops[0], (ast.Eq, ast.NotEq))
                     and isinstance(test.left, ast.Attribute) and test.left.attr == 'bl_idname'
                     and isinstance(test.comparators[0], ast.Constant)
-                    and test.comparators[0].value in config.TREE_TYPES):
+                    and test.comparators[0].value in TREE_TYPES):
                 branch = node
                 match = tree_type == test.comparators[0].value
                 if isinstance(test.ops[0], ast.NotEq):
@@ -83,7 +83,7 @@ def specialize_source(source, tree_type):
 def render_modules(core_path, tree_type, sources, cross_refs=None):
     """Return destination path -> source, validating the complete environment."""
 
-    environment = config.TREE_MODULES[tree_type]
+    environment = TREE_MODULES[tree_type]
     targets = {}
     handwritten = {}
     folders = [core_path / 'root', core_path / environment / 'sockets']
@@ -154,10 +154,10 @@ def render_modules(core_path, tree_type, sources, cross_refs=None):
             if base:
                 code += f'from ...{base} import {class_name} as Base{class_name}\n'
                 bases = 'Base' + class_name
-                if class_name in config.GEOMETRY_CLASSES and class_name != 'Geometry' and not filename.startswith('dom_'):
+                if class_name in GEOMETRY_CLASSES and class_name != 'Geometry' and not filename.startswith('dom_'):
                     code += 'from .geometry import Geometry\n'
                     bases += ', Geometry'
-                elif class_name in config.POINT_DOMAIN_CLASSES and filename.startswith('dom_'):
+                elif class_name in POINT_DOMAIN_CLASSES and filename.startswith('dom_'):
                     code += 'from .dom_point import Point\n'
                     bases += ', Point'
                 code += f'\nclass {class_name}({bases}):\n    __slots__ = ()\n\n'

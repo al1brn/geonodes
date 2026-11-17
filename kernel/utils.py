@@ -41,8 +41,10 @@ __license__ = "GNU GPL V3"
 __version__ = "3.0.0"
 __blender_version__ = "4.3.0"
 
+import bpy
 from .constants import DATA_TYPE_HOMONYMS, CLASS_NAMES
 
+SOCKETS = {}
 
 # ====================================================================================================
 # Litteral to python name
@@ -135,13 +137,59 @@ def snake_case(s: str, test_keyword=True) -> str:
     return sc
 
 # ====================================================================================================
+# Create / delete tree
+# ====================================================================================================
+
+def create_tree(name, tree_type='GeometryNodeTree'):
+    tree = bpy.data.node_groups.new(name=name, type=tree_type)
+    tree.description = 'GEONODES'
+    return tree
+
+def delete_tree(tree):
+    if isinstance(tree, str):
+        tree = bpy.data.node_groups.get(tree)
+
+    if tree is not None and tree.description=='GEONODES':
+        bpy.data.node_groups.remove(tree)
+
+def loop_on_nodes(f, tree_type):
+    tree = create_tree("Kernel Loop on Nodes", tree_type=tree_type)
+    try:
+        for type_name in dir(bpy.types):
+            try:
+                node = tree.nodes.new(type=type_name)
+            except (RuntimeError, TypeError):
+                continue
+            f(node)
+    finally:
+        delete_tree(tree)
+
+def ensure_sockets_dict():
+    if len(SOCKETS):
+        return
+
+    def f(node):
+        for sock in list(node.inputs) + list(node.outputs):
+            if sock.bl_idname not in SOCKETS:
+                SOCKETS[sock.bl_idname] = sock.type
+
+    for tree_type in ('GeometryNodeTree', 'ShaderNodeTree'):
+        loop_on_nodes(f, tree_type)
+
+# ====================================================================================================
 # Get socket type from a type
 # ====================================================================================================
 
 def get_socket_type(socket_type: str) -> str:
 
+    ensure_sockets_dict()
+
     name = DATA_TYPE_HOMONYMS.get(socket_type, socket_type)
+
     if name not in CLASS_NAMES:
+        name = SOCKETS.get(name)
+
+    if name is None:
         raise AttributeError(f"Unknown socket type: {socket_type}")
 
     return name

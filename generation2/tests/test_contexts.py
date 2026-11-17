@@ -181,7 +181,7 @@ class ContextGenerationTest(unittest.TestCase):
             nodes = [NodeInfo(tree, tree.nodes.new(identifier)) for identifier in
                      ('NodeGetBundleItem', 'NodeStoreBundleItem')]
             for node, operation in zip(nodes, ('get', 'set')):
-                spec = NodeImplementation(node).get_node_implementation()
+                spec = NodeImplementation(node).get_default_node_calls()
                 self.assertIn(operation, spec['item_implementation'])
             self.registry.tree_type = 'GeometryNodeTree'
             with patch.object(NodeInfo, 'loop_on_nodes', side_effect=lambda function, **kwargs: [function(node) for node in nodes]):
@@ -215,7 +215,7 @@ class ContextGenerationTest(unittest.TestCase):
             self.registry.tree_type = 'GeometryNodeTree'
             spec = {'class_name': None, 'method_name': 'store', 'data_type_loop': True,
                     'item_implementation': {'set': {}}}
-            with patch.object(NodeImplementation, 'get_node_implementation', return_value=spec), \
+            with patch.object(NodeImplementation, 'get_default_node_calls', return_value=spec), \
                  patch.object(NodeInfo, 'loop_on_nodes', side_effect=lambda function, **kwargs: function(node)), \
                  patch.object(NodeInfo, 'data_type_parameter', new_callable=PropertyMock,
                               return_value=NS(name='data_type', enums=('FLOAT', 'FLOAT_VECTOR'))):
@@ -250,7 +250,7 @@ class ContextGenerationTest(unittest.TestCase):
                     self.registry.tree_type = 'GeometryNodeTree'
                     spec = {'class_name': 'Bundle', 'method_name': 'read',
                             'is_class_method': class_method, 'item_implementation': items}
-                    with patch.object(NodeImplementation, 'get_node_implementation', return_value=spec), \
+                    with patch.object(NodeImplementation, 'get_default_node_calls', return_value=spec), \
                          patch.object(NodeInfo, 'loop_on_nodes', side_effect=lambda function, **kwargs: function(node)):
                         with self.assertRaises(error):
                             self.registry.gen_nodes()

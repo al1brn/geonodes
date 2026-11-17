@@ -6,8 +6,13 @@ introspection source. ``NodeParameter`` is currently named ``NodeParam``.
 """
 from __future__ import annotations
 
-from dataclasses import dataclass, field
-from typing import TYPE_CHECKING, Any, Literal
+import re
+
+from dataclasses import dataclass, field, fields
+from typing import TYPE_CHECKING, Any, Literal, get_type_hints
+
+from ..kernel import snake_case
+from .sourcewriter import SourceWriter, TAB, R0
 
 if TYPE_CHECKING:
     from .node_socket import NodeSocket
@@ -15,192 +20,421 @@ if TYPE_CHECKING:
     from .typealiases import TypeAliases
 
 _UNSET = object()
+_NO_DEFAULT = "NOPE!"
 
+
+SOURCES   = ('POSITIONAL', 'KEYWORD', 'KWARGS', 'FIXED', 'COMPUTED')
+IN_HEADER = ('POSITIONAL', 'KEYWORD', 'KWARGS')
+TARGETS   = ('ARG', 'NAMED_SOCKETS', 'PARAMETERS', 'KWARGS')
+
+# ====================================================================================================
+# List of argument names to make them unique
+# ====================================================================================================
+
+class NameSolver:
+    PATTERN = re.compile(r"__ARG_\d+__")    
+
+    def __init__(self):
+        self.names = {}
+
+    def clear(self):
+        self.names.clear()
+
+    def token(self, name):
+        key = f"__ARG_{len(self.names):03d}__"
+        self.names[key] = name
+        return key
+
+    def __call__(self, name):
+        return self.token(name)
+
+    def get_key(self, name, strict=True):
+        keys = [key for key, value in self.names.items() if value == name]
+
+        if strict:
+            if len(keys) != 1:
+                raise ValueError(
+                    f"Argument name {name} is ambiguous : declared more than once: found {len(keys)}"
+                )
+            return keys[0]
+
+        return keys[0] if len(keys) == 1 else keys    
+
+    def solve(self, text):
+        return self.PATTERN.sub(
+            lambda m: self.names[m.group(0)],
+            text
+        )
+    
+    def make_unique(self, reserved=None):
+        reserved = set(reserved or ())
+        used = set(reserved)
+
+        for key, name in self.names.items():
+            unique = name
+            i = 1
+
+            while unique in used:
+                unique = f"{name}_{i}"
+                i += 1
+
+            self.names[key] = unique
+            used.add(unique)    
+
+# ====================================================================================================
+# Node Arguments
+# ====================================================================================================
 
 @dataclass
-class NodeCallArguments:
-    """Python expressions to assemble into one Node call.
+class NodeArguments:
 
-    Dictionary values are source expressions, not runtime values. Socket keys
-    and parameter names remain ordinary strings so the assembler handles their
-    serialization only once. Expansion lists contain bare expressions: the
-    assembler adds ** inside named_sockets or among the node's keywords.
-    """
+    # Header
+    header_positionals  : list[str] = field(default_factory=list)
+    socket_keywords     : list[str] = field(default_factory=list)
+    param_keywords      : list[str] = field(default_factory=list)
+    header_kwargs       : list[str] = field(default_factory=list)
 
-    positional: list[str] = field(default_factory=list)
-    named_sockets: dict[str, str] = field(default_factory=dict)
-    parameters: dict[str, str] = field(default_factory=dict)
-    named_socket_expansions: list[str] = field(default_factory=list)
-    parameter_expansions: list[str] = field(default_factory=list)
+    arg_names           : NameSolver = field(default_factory=NameSolver)
 
+    # Doc
+    fixed_doc           : list[str] = field(default_factory=list)
+    args_doc            : list[str] = field(default_factory=list)
 
-@dataclass
-class NodeArgument:
-    """One socket or parameter as used by a particular generated function.
+    # Computation
+    computations        : list[str] = field(default_factory=list)
 
-    ``name`` is the final Python name, already deduplicated by the caller.
-    ``aliases`` contains (socket UI name, final Python name) pairs, in resolution
-    order; the last non-None argument wins, as in gen_node_call.
-    FIXED accepts Python values, including None. COMPUTED accepts a Python
-    expression in ``value`` and optional preparation statements in ``computation``.
-    A multi-input SELF still exposes *name for additional values.
-    NAMED_ITEMS and ANONYMOUS_ITEMS have source=None: they describe a dynamic
-    collection rather than an introspected socket/parameter. Named items expose
-    name={} and **kwargs_name; anonymous items expose *name.
-    """
+    # Node creation
+    node_args           : list[str] = field(default_factory=list)
+    node_named_sockets  : list[str] = field(default_factory=list)
+    node_parameters     : list[str] = field(default_factory=list)
+    node_kwargs         : list[str] = field(default_factory=list)
 
-    source: NodeSocket | NodeParam | None
-    name: str
-    role: Literal['ARGUMENT', 'SELF', 'FIXED', 'COMPUTED', 'NAMED_ITEMS', 'ANONYMOUS_ITEMS'] = 'ARGUMENT'
-    value: Any = _UNSET
-    computation: str = ''
-    aliases: tuple[tuple[str, str], ...] = ()
-    socket_name: str | None = None
-    kwargs_name: str = 'named_items'
-    _is_socket: bool = field(init=False, repr=False)
+    # control
+    has_multi_socket    : bool = False
+    reserved_names      : set[str] = field(default_factory=set)
 
-    def __post_init__(self):
-        self._is_socket = hasattr(self.source, 'identifier')
-        if self.role in ('NAMED_ITEMS', 'ANONYMOUS_ITEMS'):
-            if self.source is not None or self.aliases or self.value is not _UNSET or self.computation:
-                raise ValueError('Items roles do not wrap a socket/parameter or carry a value/computation')
-            return
-        if self._is_socket and self.socket_name is None:
-            self.socket_name = self.source.socket_name
-        if not self._is_socket and not hasattr(self.source, 'param_type'):
-            raise TypeError('source must describe a NodeSocket or NodeParam')
-        if self.role not in ('ARGUMENT', 'SELF', 'FIXED', 'COMPUTED'):
-            raise ValueError(f'Unknown argument role: {self.role!r}')
-        if self.role == 'SELF' and not self._is_socket:
-            raise ValueError('Only a socket can be the receiver')
-        if self.role in ('FIXED', 'COMPUTED') and self.value is _UNSET:
-            raise ValueError(f'{self.role} requires a value')
-        if self.role == 'COMPUTED' and not isinstance(self.value, str):
-            raise TypeError('A computed value must be a Python source expression')
-        if self.aliases and (not self._is_socket or self.source.is_multi or self.role != 'ARGUMENT'):
-            raise ValueError('Aliases require an ordinary, non-multi socket argument')
+    # ====================================================================================================
+    # Feeding the header lists
+    # ====================================================================================================
 
-    def get_typing(self, type_aliases: TypeAliases | None = None) -> str | None:
-        """Render intrinsic typing, optionally registering enum type aliases."""
-        if self.role in ('NAMED_ITEMS', 'ANONYMOUS_ITEMS'):
-            return 'Socket'
-        typing = (self.source.class_name or 'Socket') if self._is_socket else self.source.typing
-        if isinstance(typing, list):
-            if type_aliases is not None:
-                return type_aliases.literal(typing, prefix=f'T_{self.name.upper()}')
-            return 'Literal[' + ', '.join(repr(value) for value in typing) + ']'
-        return typing
+    def set_positional(self, name, typing=""):
+        if name != 'self':
+            self.header_positionals.append(f"*{name}{typing}")
+        return
 
-    def _exposed_names(self):
-        if self.aliases:
-            return self.aliases
-        return ((self.socket_name, self.name),) if self._is_socket else ((self.source.name, self.name),)
+        count = 0
+        for s in self.header_positionals:
+            if s[0] == '*':
+                count += 1
+        if count > 1:
+            raise ValueError(f"More than one positional argument for the header: {self.header_positionals}")
 
-    def get_header(self, type_aliases: TypeAliases | None = None) -> list[str]:
-        """Return argument fragments; the assembler supplies self/cls separately."""
-        if self.role == 'NAMED_ITEMS':
-            return [f'{self.name}={{}}', f'**{self.kwargs_name}']
-        if self.role == 'ANONYMOUS_ITEMS':
-            return [f'*{self.name}']
-        if self.role in ('FIXED', 'COMPUTED'):
-            return []
-        typing = self.get_typing(type_aliases)
-        annotation = f': {typing}' if typing else ''
-        if self._is_socket:
-            if self.source.is_multi:
-                return [f'*{self.name}{annotation}']
-            if self.role == 'SELF':
-                return []
-            return [f'{name}{annotation}=None' for _, name in self._exposed_names()]
-        return [f'{self.name}{annotation}={self.source.value!r}']
+    def set_socket_keyword(self, name, typing="", default='None'):
+        self.socket_keywords.append(f"{name}{typing} = {default}")
 
-    def get_arg_doc(self) -> list[str]:
-        """Return NumPy-style documentation blocks for exposed arguments."""
-        if self.role == 'NAMED_ITEMS':
-            return [f'{self.name} : dict, optional\n    Dynamic sockets supplied by name.',
-                    f'**{self.kwargs_name} : Socket\n    Dynamic sockets supplied by keyword.']
-        if self.role == 'ANONYMOUS_ITEMS':
-            return [f'*{self.name} : Socket\n    Values for anonymous dynamic sockets.']
-        if not self.get_header():
-            return []
-        typing = self.get_typing() or 'object'
-        if self._is_socket:
-            multiple = self.source.is_multi
-            suffix = ' (multiple values)' if multiple else ' (default: None)'
-            optional = '' if multiple else ', optional'
-            identifier = f', identifier {self.source.identifier!r}' if self.aliases else ''
-            return [f'{name} : {typing}{optional}\n'
-                    f'    Socket {ui_name!r}{identifier}{suffix}'
-                    for ui_name, name in self._exposed_names()]
-        if self.source.enums:
-            typing = '{' + ', '.join(repr(value) for value in self.source.enums) + '}'
-            if self.source.param_type == 'ENUM_FLAG':
-                typing = f'set[{typing}]'
-        return [f'{self.name} : {typing}, optional\n'
-                f'    Node parameter {self.source.name!r} (default: {self.source.value!r})']
+    def set_param_keyword(self, name, typing="", default='None'):
+        self.param_keywords.append(f"{name}{typing} = {default}")
 
-    def get_fixed_doc(self) -> list[str]:
-        """Return fixed-value/receiver descriptions, without section headings."""
-        if self.role == 'SELF':
-            multi = 'multi ' if self.source.is_multi else ''
-            return [f'self on {multi}socket {self.socket_name!r}']
-        if self.role != 'FIXED':
-            return []
-        if self._is_socket:
-            return [f'Socket {self.socket_name!r} set to {self.value!r}']
-        return [f'parameter {self.source.name!r} = {self.value!r}']
+    def set_kwargs(self, name):
+        self.header_kwargs.append(f"**{name}")
+        return
+    
+        if len(self.header_kwargs) > 1:
+            raise ValueError(f"More than one kwargs argument for the header: {self.header_kwargs}")
 
-    def get_computed_doc(self) -> list[str]:
-        """Describe computed expressions separately from fixed Python values."""
-        if self.role != 'COMPUTED':
-            return []
-        name = self.socket_name if self._is_socket else self.source.name
-        return [f'{name!r} computed as {self.value}' +
-                (f' ({self.computation})' if self.computation else '')]
+    # ====================================================================================================
+    # Feeding the node call lists
+    # ====================================================================================================
 
-    def get_code(self, *, socket_mapping: str = 'named_sockets') -> list[str]:
-        """Return preparation statements before Node creation.
+    def set_node_arg(self, name):
+        if name == "self":
+            self.node_args.append("self")
+        else:            
+            self.node_args.append(f"*{name}")
 
-        Alias resolution runs after the assembler initializes socket_mapping
-        with the contributions from get_node_call. Other computations can run
-        before that initialization.
-        """
-        if self.role == 'COMPUTED':
-            return self.computation.splitlines()
-        if not self.aliases:
-            return []
-        target = f'{socket_mapping}[{self._socket_key()!r}]'
-        return [f'{target} = None'] + [
-            f'if {name} is not None: {target} = {name}' for _, name in self.aliases]
+    def set_named_socket(self, name, value):
+        self.node_named_sockets.append(f"'{name}': {value}")
 
-    def _socket_key(self):
-        return self.source.group_name or f'ID_{self.source.identifier}'
+    def set_dict_to_named_sockets(self, name):
+        self.node_named_sockets.append(f"**{name}")
 
-    def get_node_call(self) -> NodeCallArguments:
-        """Return structured contributions, preserving the existing call rules."""
-        result = NodeCallArguments()
-        if self.role == 'NAMED_ITEMS':
-            result.named_socket_expansions.append(self.name)
-            result.parameter_expansions.append(self.kwargs_name)
-            return result
-        if self.role == 'ANONYMOUS_ITEMS':
-            result.positional.append(f'*{self.name}')
-            return result
-        if self.role == 'FIXED':
-            value = repr(self.value)
-        elif self.role == 'COMPUTED':
-            value = self.value
-        elif self.role == 'SELF':
-            value = 'self'
+    def set_node_parameter(self, name, value):
+        self.node_parameters.append(f"{name}={value}")
+
+    def set_node_kwargs(self, name):
+        self.node_kwargs.append(f"**{name}")
+
+    # ====================================================================================================
+    # Feeding the doc
+    # ====================================================================================================
+
+    def set_fixed_doc(self, name, value, description):
+        self.fixed_doc.append(
+            f"- {description} '{name}' = {value!r}"
+        )        
+
+    def set_args_doc(self, name, value_type, default, description):
+        self.args_doc.append(
+            f"{name} : {value_type}, optional\n"
+            f"    {description} (default: {default!r})"
+            )        
+
+    def set_args_doc(self, name, value_type, default, description):
+        has_default = default != _NO_DEFAULT
+
+        doc = f"{name} : {value_type}"
+        if has_default:
+            doc += ", optional"
+
+        doc += f"\n    {description}"
+
+        if has_default:
+            doc += f" (default: {default!r})"
+
+        self.args_doc.append(doc)
+
+    # ====================================================================================================
+    # Triage
+    # ====================================================================================================
+
+    def add_parameter(self, node_param: NodeParam):
+        name = node_param.name
+        self.set_param_keyword(name, "", f"{node_param.value!r}")
+        self.set_node_parameter(name, name)
+        self.reserved_names.add(name)
+
+        if node_param.param_type in ('ENUM', 'ENUM_FLAG'):
+            value_type = '{' + ', '.join(repr(v) for v in node_param.enum_names) + '}'
         else:
-            value = self.name
+            value_type = node_param.param_type
 
-        if not self._is_socket:
-            result.parameters[self.source.name] = value
-        elif self.role in ('ARGUMENT', 'SELF') and self.source.is_multi:
-            result.positional = (['self'] if self.role == 'SELF' else []) + [f'*{self.name}']
-        elif self.role in ('FIXED', 'COMPUTED'):
-            result.named_sockets[self.socket_name] = value
+        self.set_args_doc(name, value_type, node_param.value, f"Node parameter '{node_param.name}'")
+
+        return name
+
+    def add_fixed_parameter(self, node_param: NodeParam, value: Any):
+        self.set_node_parameter(node_param.name, value)
+
+        self.set_fixed_doc(node_param.name, value, "Node parameter")
+
+    def add_computed_parameter(self, node_param: NodeParam, computation: str, value_name: str | None = None):
+        name = node_param.name
+        self.computations.append(computation)
+        value = name if value_name is None else value_name
+        self.set_node_parameter(name, value)
+
+        self.set_fixed_doc(name, value, "Computed node parameter")             
+
+    def add_socket(self, node_socket: NodeSocket, is_self=False):
+
+        # Virtual sockets : items
+        if node_socket.is_virtual:
+            if node_socket.name == 'NAMED':
+
+                self.set_socket_keyword("named_sockets", ": dict", "{}")
+                if is_self:
+                    self.computations.append("all_sockets = {'Self': self, **named_sockets}")
+                    self.set_dict_to_named_sockets("all_sockets")
+                    self.set_args_doc("self", "Socket", _NO_DEFAULT, f"Dynamic socket created with 'Self' name")
+                else:
+                    self.set_dict_to_named_sockets("named_sockets")
+
+                self.set_args_doc("named_sockets", "dict[str, Any]", {}, f"Dynamic sockets to create")
+
+                self.set_kwargs("sockets")
+                self.set_node_kwargs("sockets")
+
+                self.set_args_doc("sockets", "dict[str, Any]", _NO_DEFAULT, f"Dynamic sockets to create passed as keyword arguments")
+
+
+            elif node_socket.name == 'ANONYMOUS':
+                self.set_positional("items")
+                if is_self:
+                    self.set_node_arg("self")
+                    self.set_args_doc("self", "Socket", _NO_DEFAULT, f"First created socket")
+
+                self.set_node_arg("items")
+                self.set_args_doc("items", "Socket", _NO_DEFAULT, f"Dynamic sockets to create")
+
+            else:
+                assert False, f"Algo error {node_socket}"
+
+            if is_self:
+                return "self"
+            else:
+                return
+
+        socket_id = f"ID_{node_socket.identifier}"
+
+        # Multi input socket
+        if node_socket.is_multi_input:
+            if self.has_multi_socket:
+                return
+            self.has_multi_socket = True
+            name = self.arg_names(snake_case(node_socket.socket_name))
+            self.set_positional(name, f": {node_socket.class_name}")
+            if is_self:
+                self.set_named_socket(socket_id, f"[self, *{name}]")
+                self.set_args_doc("self", node_socket.class_name, _NO_DEFAULT, f"Self feeds the multi input socket '{node_socket.socket_name}'")
+                ret_name = "self"
+            else:
+                self.set_named_socket(socket_id, name)
+                ret_name = name
+
+            self.set_args_doc(name, node_socket.class_name, _NO_DEFAULT, f"Multi input socket '{node_socket.socket_name}'")
+            return ret_name
+
+        # General case : self
+        if is_self:
+            self.set_named_socket(socket_id, "self")
+            return "self"
+
+        # General case
+        if len(node_socket.names) > 1:
+            names = node_socket.names
         else:
-            result.named_sockets[self._socket_key()] = 'None' if self.aliases else value
-        return result
+            names = (node_socket.socket_name,)
+
+        has_aliases = len(names) > 1
+        aliases = []
+        for name in names:
+            name = self.arg_names(snake_case(name))
+            self.set_socket_keyword(name, f": {node_socket.class_name}", 'None')
+
+            if has_aliases:
+                aliases.append(name)
+                self.set_args_doc(name, node_socket.class_name, None, f"Alias of socket identifier: '{node_socket.identifier}'")
+            else:
+                self.set_named_socket(socket_id, name)
+                self.set_args_doc(name, node_socket.class_name, None, f"Socket '{node_socket.socket_name}'")
+
+        if has_aliases:
+            self.set_named_socket(socket_id, f"next((v for v in ({', '.join(aliases)}) if v is not None), None)")
+            return None
+        else:            
+            return name
+
+    def add_fixed_socket(self, node_socket: NodeSocket, value: Any):
+        socket_id = f"ID_{node_socket.identifier}" 
+        self.set_named_socket(socket_id, value)
+
+        self.set_fixed_doc(node_socket.socket_name, value, "Socket")
+
+
+    def add_computed_socket(self, node_socket: NodeSocket, value_name: str, computation: str):
+        socket_id = f"ID_{node_socket.identifier}" 
+        self.set_named_socket(socket_id, value_name)
+        self.computations.append(computation)
+
+        self.set_fixed_doc(node_socket.socket_name, value_name, "Computed Socket")
+
+
+    # ====================================================================================================
+    # Consolidation
+    # ====================================================================================================
+
+    def make_arg_names_unique(self, reserved=None):
+        reserved = set(reserved or ())
+        reserved.update(self.reserved_names)
+        self.arg_names.make_unique(reserved=reserved)
+
+        hints = get_type_hints(type(self))
+
+        for f in fields(self):
+            if hints[f.name] == list[str]:
+                a = getattr(self, f.name)
+                for i, line in enumerate(a):
+                    a[i] = self.arg_names.solve(line)
+
+        self.arg_names.clear()
+
+    def get_header(self):
+        return self.header_positionals + self.socket_keywords + self.param_keywords + self.header_kwargs
+
+    def get_node_call(self):
+
+        node_call = list(self.node_args)
+
+        if len(self.node_named_sockets):
+            node_call.append("named_socket={" + ", ".join(self.node_named_sockets) + "}")
+
+        node_call.extend(self.node_parameters)
+        node_call.extend(self.node_kwargs)
+
+        return node_call
+
+    # ====================================================================================================
+    # Source code
+    # ====================================================================================================
+
+    def get_header_source(self, with_R0=True):
+        header = self.get_header()
+        if len(header):
+            if with_R0:
+                return R0 + f",{R0}".join(header)
+            else:
+                return ", ".join(header)
+        else:
+            return ""
+
+    def get_doc_source(self):
+        source = ""
+        if len(self.fixed_doc):
+            source += "\n**Fixed inputs**\n"
+            source += "\n".join(self.fixed_doc) + "\n"
+        
+        if len(self.args_doc):
+            source += f"\nParameters\n"
+            source += f"----------\n"
+            source += "\n".join(self.args_doc) + "\n"
+
+        return source
+
+    def get_code_source(self, node_name):
+
+        source = ""
+        # Code
+        if len(self.computations):
+            source += "\n".join(self.computations) + "\n"
+
+        # Node creation
+        call = self.get_node_call()
+
+        source += f"node = Node('{node_name}'"
+        if len(call):
+            source +=", " + ", ".join(call)
+
+        source += ")\n"
+
+        return source
+
+    def get_mockup(self, as_method=True, doc=True):
+
+        sw = SourceWriter(indent=0)
+
+        # Header
+        if len(self.get_header()):
+            sw.write("def method(", new_line=False)
+            if as_method:
+                sw.write(f"{R0}self,", new_line=False)
+            sw.write(self.get_header_source(), new_line=False)
+            sw.write("):")
+        else:
+            if as_method:
+                sw.write("def method(self):")
+            else:
+                sw.write("def method():")
+        sw.indent += 1
+
+        # Doc
+        if doc:
+            sw.write('"""')
+            sw.write(self.get_doc_source())
+            sw.write('"""')
+        
+        # Code
+
+        sw.write(self.get_code_source("Node Name"))
+
+        return sw.source
+

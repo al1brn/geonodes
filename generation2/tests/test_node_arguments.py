@@ -31,19 +31,19 @@ class NodeArgumentsTest(unittest.TestCase):
     def test_selection_receiver_and_fixed_precedence(self):
         with Tree() as tree:
             info = NodeInfo(tree.btree, tree.create_node('Set Position'))
-            args = info.get_node_arguments(self_socket='Geometry', use_geo_selection=True,
+            args = info.get_node_arguments(self_socket='Geometry', geo_selection=True,
                                           last_sockets=('Position',))
             selected = next(arg for arg in args if arg.socket_name == 'Selection')
             self.assertEqual(selected.role, 'COMPUTED')
             self.assertIn('self.get_selection()', selected.computation)
             self.assertEqual(selected.get_header(), [])
             self.assertEqual([arg.socket_name for arg in args if arg._is_socket][-1], 'Position')
-            fixed = info.get_node_arguments(self_socket='Geometry', use_geo_selection=True,
+            fixed = info.get_node_arguments(self_socket='Geometry', geo_selection=True,
                                            fixed_sockets={'Selection': None})
             selected = next(arg for arg in fixed if arg.socket_name == 'Selection')
             self.assertEqual(selected.role, 'FIXED')
             self.assertEqual(selected.get_node_call().named_sockets, {'Selection': 'None'})
-            other = info.get_node_arguments(self_socket='Position', use_geo_selection=True)
+            other = info.get_node_arguments(self_socket='Position', geo_selection=True)
             self.assertEqual(next(arg for arg in other if arg.socket_name == 'Selection').role, 'ARGUMENT')
 
     def test_aliases_are_deduplicated_and_fixed_alias_keeps_ui_name(self):

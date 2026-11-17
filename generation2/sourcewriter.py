@@ -28,7 +28,11 @@ class SourceWriter:
         self.source = ""
 
         self.max_len = max_len
-        self.margin = indent*TAB
+        self.indent = indent
+
+    @property
+    def margin(self):
+        return self.indent*TAB
 
     def check_syntax(self):
         """Compile without executing; return True or raise SyntaxError.

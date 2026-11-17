@@ -1,95 +1,16 @@
-"""Shared manual configuration and exceptions to the generation rules.
+# Key words with space to avoid match with a true parrameter value
+ADD_LOOP = 'ADD LOOP'       # sample(..., mode=...), sample_factor(...), sample_length(...) for instance
+LOOP_ONLY = 'LOOP ONLY'     # sample_factor(...), sample_length(...) 
+REPLACE = 'REPLACE'         # "sample_REPLACE"
 
-All dictionaries use Blender bl_idname keys so homonymous UI node names stay
-distinct. Each key line includes the UI name as a comment for manual editing.
-Shared nodes are declared only once, without branches by tree type.
-Keep general inference rules in NodeInfo and document individual exceptions
-here. Deprecated nodes are excluded before introspection; nodes without a
-default implementation remain available for introspection and nd access.
-"""
+# Generation configuration
 
-from ..kernel import DATA_TYPE_HOMONYMS, CLASS_NAMES
-
-
-# ====================================================================================================
-# Hard coded lists and dicts
-# ====================================================================================================
-
-# Tree types and module names
-
-TREE_TYPES = ('GeometryNodeTree', 'ShaderNodeTree')
-TREE_MODULES = {'GeometryNodeTree': 'geonodes', 'ShaderNodeTree': 'shadernodes'}
-
-# Socket class names
-CLASS_NAMES_DEPR = {
- 'BOOLEAN'      : 'Boolean',
- 'BUNDLE'       : 'Bundle',
- 'CLOSURE'      : 'Closure',
- 'COLLECTION'   : 'Collection',
- 'CUSTOM'       : 'Input',
- 'FONT'         : 'Font',
- 'GEOMETRY'     : 'Geometry',
- 'IMAGE'        : 'Image',
- 'INT'          : 'Integer',
- #'INT_VECTOR'   : 'IntVector',
- 'MATERIAL'     : 'Material',
- 'MATRIX'       : 'Matrix',
- 'MENU'         : 'Menu',
- 'OBJECT'       : 'Object',
- 'RGBA'         : 'Color',
- 'ROTATION'     : 'Rotation',
- 'SHADER'       : 'Shader',
- 'SOUND'        : 'Sound',
- 'STRING'       : 'String',
- 'VALUE'        : 'Float',
- 'VECTOR'       : 'Vector'
+DOMAINS = ['Point', 'Edge', 'Corner', 'Face', 'Curve', 'Vertex', 'Vertices', 'Instance', 'Spline']
+DOMAIN_NAME = {
+    'Vertex': 'Vertex',
+    'Vertices': 'Vertex',
 }
 
-# Geometry and domain classes
-
-GEOMETRY_CLASSES  = ['Geometry', 'Mesh', 'Curve', 'Cloud', 'Instances', 'Volume', 'GreasePencil']
-DOMAIN_CLASSES = ['Domain', 'Point', 'Vertex', 'CloudPoint', 'SplinePoint', 'Face', 'Edge', 'Corner', 'Spline', 'Layer', 'Instance']
-POINT_DOMAIN_CLASSES = ('Vertex', 'SplinePoint', 'CloudPoint')
-
-# Attribute classes
-ATTRIBUTE_CLASSES = ['Boolean', 'Integer', 'Float', 'Vector', 'Color', 'Matrix', 'Rotation']
-
-# Correspondance between blender type and python type plus default value
-PYTHON_TYPES = {
-    'Boolean'  : ('bool', False),
-    'Integer'  : ('int', 0),
-    'Float'    : ('float', 0.),
-    'Vector'   : ('tuple', (0, 0, 0)),
-    'Color'    : ('tuple', (1, 1, 1)),
-    'Matrix'   : ('tuple', ((1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1))),
-    'Rotation' : ('tuple', (0, 0, 0)),
-    'String'   : ('str', '""'),
-}
-
-DATA_TYPE_HOMONYMS_DEPR = {
-    'INT8'          : 'INT',
-    'INTEGER'       : 'INT',
-    'FLOAT2'        : 'VECTOR',
-    'FLOAT_VECTOR'  : 'VECTOR',
-    'VECTOR_FLOAT'  : 'VECTOR',
-    'TRANSFORM'     : 'MATRIX',
-    'FLOAT4X4'      : 'MATRIX',
-    'BYTE_COLOR'    : 'RGBA',
-    'FLOAT_COLOR'   : 'RGBA',
-    'COLOR'         : 'RGBA',
-    'FLOAT'         : 'VALUE',
-    'QUATERNION'    : 'ROTATION',
-    'FLOAT4'        : 'VECTOR',
-}
-
-SOCKET_SHAPES = {
-    'Auto'      : 'AUTO',
-    'Dynamic'   : 'DYNAMIC',
-    'Field'     : 'FIELD',
-    'Grid'      : 'GRID',
-    'List'      : 'LIST',
-    'Single'    : 'SINGLE',
-}
 
 # Nodes with dynamic inputs accepting dynamic inputs
 AUTO_INPUT_TYPE_NODES = [
@@ -111,13 +32,11 @@ HANDWRITTEN_IMPLEMENTATIONS = {
 }
 
 
-# Per-node replacements for default-implementation descriptors. Individual
-# cases will be specified here rather than hard-coded in the inference rules.
-# param_loop expands a proposal for each valid enum value. The constructor's
-# class is inferred from the first output in that configuration.
-# self_socket chooses an input by identifier or UI name instead of the first
-# input; a METHOD override keeps the proposal as a method even without free args.
-REPLACE_DEFAULT_IMPLEMENTATIONS = {
+# ====================================================================================================
+# Adjustments for algorithm operated by NodeImplementation.get_default_implementation
+# ====================================================================================================
+
+REPLACE_DEFAULT_IMPLEMENTATIONS_DEPR = {
     # Rotate Vector: the Rotation is the receiver, leaving Vector.rotate to Vector Rotate.
     'FunctionNodeRotateVector': {
         'kind': 'METHOD',
@@ -145,6 +64,107 @@ REPLACE_DEFAULT_IMPLEMENTATIONS = {
         'kind': 'CONSTRUCTOR',
     },
 }
+
+# ====================================================================================================
+# Adjustments for algorithm operated by NodeImplementation.get_default_implementation
+# ====================================================================================================
+
+DEFAULT_IMPLEMENTATION = {
+
+    # Input Nodes
+    
+    'Offset Corner in Face' : {
+        'class_name': "Face",
+        'method_name' : "offset_corner"
+        },
+    'Offset Point in Curve' : {
+        'class_name': ["Curve", "Spline"],
+        'method_name': "offset_point",
+        },
+    'Shortest Edge Paths' : {
+        'class_name': "Edge",
+        'method_name': "shortest_paths",
+        },
+    'NURBS Order' : {
+        'class_name': "Curve",
+        'method_name': "nurbs_order",
+        },
+    'NURBS Weight' : {
+        'class_name': "Curve",
+        'method_name': "nurbs_weight",
+        },
+    'Named Layer Selection' : {
+        'class_name': ["GreasePencil", "Layer"],
+        'method_name': "named_selection",
+        },
+    'Mesh Island' : {
+        'class_name': "Mesh",
+        'method_name': "island",
+        },
+    'Import Text': {
+        'class_name': "String",
+        'method_name': "ImportText",
+        },
+    'Handle Type Selection' : {
+        'class_name': "SplinePoint",
+        'method_name': "handle_type_selection",
+        },
+        
+    # Geometry nodes
+
+    'Separate Geometry': {
+        'is_jump': False,
+        },
+    'Distribute Points on Faces': {
+        'method_name': 'distribute_points',
+        },
+    'Mesh Boolean': {
+        'class_name': 'Mesh',
+        'method_name': 'Boolean',
+        },
+    'Sample Curve': {
+        'parameters': {'mode': ADD_LOOP},
+        'method_name': f"sample_{REPLACE}",
+    },
+        
+    # Geometry output nodes
+    
+    'Grid to Mesh': {
+        'method_name': 'FromGrid',
+        },
+    'Grid to Points': {
+        'method_name': 'FromGrid',
+        },
+
+    # Grid
+
+    'Align Rotation to Vector': {
+        'method_name': 'align_to_vector',
+    },
+    'Blackbody': {
+        'class_name': 'Color',
+        'method_name': 'Blackbody',
+        'method_type': 'CLASS_METHOD',
+    },
+
+    # Random Value
+    'Random Value': {
+        'method_type' : 'CLASS_METHOD',
+        'self_socket' : None,
+        'is_jump'     : False,
+    },
+
+    # Combine List
+    #'Combine List': {
+    #    'parameters' : LOOP_ONLY,
+    #},
+
+    #'Menu Switch': {
+    #    'last_sockets': ('Menu',),
+    #}
+
+}
+
 
 
 # Exceptions to the input/output data-type rule. Ordinary nodes use their
@@ -186,6 +206,23 @@ ADDITIONAL_IMPLEMENTATIONS = {
     'ShaderNodeTree': {
     },
     'GeometryNodeTree': {
+        'Sample Curve' : [{
+            'class_name'  : 'Curve',
+            'method_type' : 'METHOD',
+            'method_name' : 'sample_factor',
+            'self_socket' : 'Curves',
+            'is_jump'     : True,
+            'parameters'  : {'mode' : 'FACTOR'},
+            'auto_data_type'  : 'Value',
+        }, {
+            'class_name'  : 'Curve',
+            'method_type' : 'METHOD',
+            'method_name' : 'sample_length',
+            'self_socket' : 'Curves',
+            'is_jump'     : True,
+            'parameters'  : {'mode' : 'LENGTH'},
+            'auto_data_type'  : 'Value',
+        }],
     }
 }
 
@@ -373,7 +410,7 @@ PROPERTIES = {
 }
 
 # ---------------------------------------------------------------------------
-# The following nodes are ignored by get_node_implementation
+# The following nodes are ignored by get_default_node_calls
 # ---------------------------------------------------------------------------
 
 STATIC_IMPLEMENTATION_ONLY = [
@@ -414,6 +451,27 @@ STATIC_IMPLEMENTATION_ONLY = [
     'ShaderNodeValue',
     'FunctionNodeInputVector',
 
+    # Only static
+    'GeometryNodeTool3DCursor',             # 3D Cursor
+    'GeometryNodeToolActiveElement',        # Active Element
+    'GeometryNodeCubeGridTopology',         # Cube Grid Topology
+    'GeometryNodeCurveEndpointSelection',   # Endpoint Selection
+    'GeometryNodeInputID',                  # ID
+    'GeometryNodeInputIndex',               # Index
+    'GeometryNodeIsViewport',               # Is Viewport
+    'GeometryNodeInputMaterialIndex',       # Material Index
+    'GeometryNodeToolMousePosition',        # Mouse Position
+    'GeometryNodeInputNamedAttribute',      # Named Attribute
+    'GeometryNodeInputNormal',              # Normal
+    'GeometryNodeInputPosition',            # Position
+    'GeometryNodeInputRadius',              # Radius
+    'GeometryNodeInputSceneTime',           # Scene Time
+    'GeometryNodeToolSelection',            # Selection
+    'FunctionNodeInputSpecialCharacters',   # Special Characters
+    'GeometryNodeUVTangent',                # UV Tangent
+    'GeometryNodeViewportTransform',        # Viewport Transform
+    'GeometryNodeInputVoxelIndex',          # Voxel Index
+
     # Shader nodes that are interpreted as class properties
 
     'ShaderNodeHairInfo',
@@ -425,92 +483,3 @@ STATIC_IMPLEMENTATION_ONLY = [
 
     ]
 
-
-DOMAINS = ['Point', 'Edge', 'Corner', 'Face', 'Curve', 'Vertex', 'Vertices', 'Instance', 'Spline']
-
-DOMAIN_NAME = {
-    'Vertex': 'Vertex',
-    'Vertices': 'Vertex',
-}
-
-SPECIAL_NODES = {
-
-    # Input Nodes
-    
-    'Offset Corner in Face' : {
-        'class_name': "Face",
-        'method_name' : "offset_corner"
-        },
-    'Offset Point in Curve' : {
-        'class_name': ["Curve", "Spline"],
-        'method_name': "offset_point",
-        },
-    'Shortest Edge Paths' : {
-        'class_name': "Edge",
-        'method_name': "shortest_paths",
-        },
-    'NURBS Order' : {
-        'class_name': "Curve",
-        'method_name': "nurbs_order",
-        },
-    'NURBS Weight' : {
-        'class_name': "Curve",
-        'method_name': "nurbs_weight",
-        },
-    'Named Layer Selection' : {
-        'class_name': ["GreasePencil", "Layer"],
-        'method_name': "named_selection",
-        },
-    'Mesh Island' : {
-        'class_name': "Mesh",
-        'method_name': "island",
-        },
-    'Import Text': {
-        'class_name': "String",
-        'method_name': "ImportText",
-        },
-    'Handle Type Selection' : {
-        'class_name': "SplinePoint",
-        'method_name': "handle_type_selection",
-        },
-        
-    # Geometry nodes
-
-    'Separate Geometry': {
-        'is_jump': False,
-        },
-    'Distribute Points on Faces': {
-        'method_name': 'distribute_points',
-        },
-    'Mesh Boolean': {
-        'class_name': 'Mesh',
-        'method_name': 'Boolean',
-        },
-        
-    # Geometry output nodes
-    
-    'Grid to Mesh': {
-        'method_name': 'FromGrid',
-        },
-    'Grid to Points': {
-        'method_name': 'FromGrid',
-        },
-
-    # Grid
-
-    'Align Rotation to Vector': {
-        'method_name': 'align_to_vector',
-    },
-    'Blackbody': {
-        'class_name': 'Color',
-        'method_name': 'Blackbody',
-        'method_type': 'CLASS_METHOD',
-    },
-
-    # Random Value
-    'Random Value': {
-        'method_type' : 'CLASS_METHOD',
-        'self_socket' : None,
-        'is_jump'     : False,
-    },
-}

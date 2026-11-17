@@ -85,6 +85,18 @@ class NodeParam:
     def current_value(self, value):
         setattr(self.bnode, self.name, value)
 
+    @property
+    def enum_names(self):
+        if self.param_type not in ('ENUM', 'ENUM_FLAG'):
+            return {}
+
+        prop = self.bnode.bl_rna.properties[self.name]
+
+        return {
+            item.identifier: item.name
+            for item in prop.enum_items
+        }        
+
     # ====================================================================================================
     # Get the valid values of an enum params
 

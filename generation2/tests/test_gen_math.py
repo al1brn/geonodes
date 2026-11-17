@@ -20,7 +20,7 @@ class MathGenerationTest(unittest.TestCase):
         implementation = TreeClass('GeometryNodeTree')
         saved = (implementation.files, implementation.cross_refs,
                  implementation.tree_type, implementation.type_aliases)
-        original = NodeImplementation.gen_node_call
+        original = NodeImplementation.gen_source_code
         try:
             for tree_type in ('GeometryNodeTree', 'ShaderNodeTree'):
                 with self.subTest(tree_type=tree_type):
@@ -32,7 +32,7 @@ class MathGenerationTest(unittest.TestCase):
                     def generate(obj, spec):
                         specs.append(spec)
                         return original(obj, spec)
-                    with patch.object(NodeImplementation, 'gen_node_call', generate):
+                    with patch.object(NodeImplementation, 'gen_source_code', generate):
                         implementation.gen_math()
                     sources = implementation.files[tree_type]
                     functions = {ast.parse(textwrap.dedent(source)).body[0].name: source

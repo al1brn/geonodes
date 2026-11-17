@@ -36,7 +36,7 @@ class AliasGenerationTest(unittest.TestCase):
         implementation = tree.implementation(make_node(values))
         copied = implementation.copy()
         self.assertIs(copied.type_aliases, tree.type_aliases)
-        sources = [obj.gen_node_call(namespace['NodeCall'].function(name))
+        sources = [obj.gen_source_code(namespace['NodeCall'].function(name))
                    for obj, name in ((implementation, 'example'), (copied, 'other'))]
         tree.files[tree.tree_type]['gnmath.py'] = sources
         self.assertEqual(len(tree.type_aliases), 1)

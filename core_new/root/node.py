@@ -387,7 +387,9 @@ class Node:
         self._is_paired_input  = False
 
         if self._has_items:
-            items = getattr(self._bnode, constants.ONE_ITEMS_NODES[bl_idname])
+            items_dict = constants.ONE_ITEMS_NODES[bl_idname]
+            items_name = list(items_dict.keys())[0]
+            items = getattr(self._bnode, items_name)
             items.clear()
 
             found = False

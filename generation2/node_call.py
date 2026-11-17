@@ -1,10 +1,8 @@
-"""Data describing one node implementation and its generation variants."""
-
 from dataclasses import dataclass, field, fields, replace as dataclass_replace, KW_ONLY
 from typing import Any, ClassVar
 
 # ====================================================================================================
-# Implementation specifications for gen_node_call
+# Implementation specifications for gen_source_code
 # ====================================================================================================
 
 @dataclass
@@ -16,13 +14,13 @@ class NodeCall:
 
     _: KW_ONLY
 
-    # Destination transmise à l’orchestrateur, non utilisée par gen_node_call.
+    # Destination transmise à l’orchestrateur, non utilisée par gen_source_code.
     class_name          : str | None = None
 
     # Instance specific
     self_socket         : str | None = None  
     is_jump             : bool = False
-    use_geo_selection   : bool = True
+    geo_selection   : bool = True
 
     # Returns
     return_kind         : str = 'OUT'
@@ -42,7 +40,7 @@ class NodeCall:
 
     # Debug
     category            : str | None = None
-    rules               : list[str] = field(default_factory=list)
+    rules               : str = ""
 
     _FUNC_TYPES: ClassVar[dict[str, tuple[str | None, str | None]]] = {
         'FUNCTION'          : (None, None),
@@ -55,10 +53,30 @@ class NodeCall:
     }
     _METHOD_TYPES = ('METHOD', 'GETTER', 'SETTER')
     _CLASS_TYPES = ('CLASS_METHOD', 'CLASS_PROPERTY')
-    _METHOD_FIELDS = (('self_socket', None), ('is_jump', False), ('use_geo_selection', False))
 
     def __str__(self):
         return f"<NodeCall {self.method_name} {self.method_type}>"
+
+    def __repr__(self):
+        lines = ["NodeCall"]
+        for f in fields(self):
+            if f.name not in ["rules"]:
+                lines.append(f"{f.name:15}: {getattr(self, f.name)!r}")
+
+        s = "\n- ".join(lines)
+
+        return s + "\n> ".join([" "] + self.rules.split("\n")) + "\n"
+
+    # ===========================================================================
+    # Make sure method fields are compatible with non methodtypes
+    # ===========================================================================
+
+    def __post_init__(self):
+        if self.method_type not in self._METHOD_TYPES:
+            self.self_socket = None
+            self.is_jump = False
+            self.geo_selection = False    
+
 
     # ===========================================================================
     # Properties
@@ -99,17 +117,19 @@ class NodeCall:
 
         def dump():
             print("Node call error")
+            print('-'*30)
+            print(">", "\n> ".join(self.rules.split("\n")))
+            print()
             print(f"- {self.class_name=}")
             print(f"- {self.method_type=}")
             print(f"- {self.method_name=}")
-            for r in self.rules:
-                print(r)
+            
             print()
 
 
         if self.class_name is not None and not isinstance(self.class_name, str):
             dump()
-            raise TypeError('class_name must describe one destination or be None')
+            raise TypeError(f'class_name must describe one destination or be None, not {self.class_name!r}')
         if not isinstance(self.method_name, str):
             dump()
             raise TypeError("method_name must describe one function, not multiple variants")
@@ -196,139 +216,195 @@ class NodeCall:
         return cls('SETTER', method_name, in_line=in_line, **kwargs)
 
     # ===========================================================================
-    # Copy
+    # Replace
     # ===========================================================================
 
-    def replace(self, method_type=None, **kwargs) -> "NodeCall":
-        if method_type is not None:
-            kwargs['method_type'] = method_type
-            if method_type not in self._METHOD_TYPES:
-                for name, value in self._METHOD_FIELDS:
-                    kwargs[name] = value
+    def replace(self, **kwargs) -> "NodeCall":
 
-        return dataclass_replace(self, **kwargs)
+        updates = {}
 
-    # ===========================================================================
-    # Loop
-    # ===========================================================================
+        for name, value in kwargs.items():
+            current = getattr(self, name)
 
-    def loop(self):
-        """Simule NodeCalls.loop
-        """
-        yield self.replace()
+            if name in ('fixed_sockets', 'parameters'):
+                updates[name] = current | value
 
-    def __iter__(self):
-        return self.loop()
+            elif name == 'last_sockets':
+                updates[name] = current + tuple(value)
+
+            else:
+                updates[name] = value
+
+        return dataclass_replace(self, **updates)
     
-
+    
 # ====================================================================================================
 # Implementation loop
 # ====================================================================================================
 
-class NodeCalls:
-    """Produire des variantes d'une NodeCall, éventuellement depuis une boucle."""
+class NodeCalls(list):
 
-    def __init__(self, node_call: "NodeCall | NodeCalls", *other):
-        """Encapsuler node_call sans modifier les descriptions qu'elle produit."""
-        if not isinstance(node_call, (NodeCall, NodeCalls)):
-            raise TypeError('NodeCalls requires an NodeCall or another NodeCalls')
-        self.node_call = node_call
-        self._overrides = None
-        if len(other):
-            self._list = [self.node_call, *other]
-            self.count = len(self._list)
-        else: 
-            self._list = None
-            self.count = 1
+    def __init__(self, *node_calls):
+        
+        super().__init__()
+
+        for node_call in node_calls:
+            if isinstance(node_call, NodeCall):
+                self.append(node_call)
+            elif isinstance(node_call, NodeCalls):
+                self.extend(node_call)
+            else:
+                raise ValueError(f"{node_call} is not in (NodeCall, NodeCalls)")
 
     def __str__(self):
-        if self._list is not None:
-            return f"<NodeCalls list of {len(self._bunch)} NodeCalls>"
-        else:
-            return f"<NodeCalls {self.count} NodeCalls>"
+        return f"<List of {len(self)} NodeCall>"
 
     def __repr__(self):
         return f"{str(self)}:" + "\n    - ".join([""] + [repr(nc) for nc in self])
 
-    @classmethod
-    def overrides(cls, node_call: "NodeCall | NodeCalls", overrides) -> "NodeCalls":
-        """Construire une boucle depuis une liste de dictionnaires.
+    # ===========================================================================
+    # A field can be a single value or a list of values
+    # ===========================================================================
 
-        Parameters
-        ----------
-        node_call : NodeCall | NodeCalls
-            Description ou boucle de départ.
-        overrides : list[dict]
-            Un dictionnaire de remplacements par variante, transmis à
-            NodeCall.replace(). Les clés peuvent différer entre dictionnaires.
-            class_name désigne la classe de destination portée par NodeCall.
-        """
-        loop = cls(node_call)
-        loop._overrides = [dict(values) for values in overrides]
-        allowed = {item.name for item in fields(NodeCall)}
-        for values in loop._overrides:
-            unknown = values.keys() - allowed
-            if unknown:
-                raise TypeError(f"Unknown NodeCalls fields: {', '.join(sorted(unknown))}")
-        loop.count = len(loop._overrides)
-        return loop
+    @staticmethod
+    def expand_dict(**kwargs) -> list[dict]:
 
-    @classmethod
-    def attributes(cls, node_call: "NodeCall | NodeCalls", **parameters) -> "NodeCalls":
-        """Construire une boucle depuis les valeurs de chaque attribut.
+        lengths = [len(v) for v in kwargs.values() if isinstance(v, list)]
+        count = max(lengths, default=1)
 
-        Parameters
-        ----------
-        node_call : NodeCall | NodeCalls
-            Description ou boucle de départ.
-        **parameters
-            Une liste par attribut, par exemple method_name=['foo', 'bar'].
-            Les listes sont parcourues ensemble et ont la même longueur.
-            Une valeur seule ou une liste d'un élément est répétée.
-            class_name précise la destination de chaque variante.
-        """
-        count = max((len(values) if isinstance(values, list) else 1
-                     for values in parameters.values()), default=1)
-        columns = {}
-        for name, values in parameters.items():
-            if not isinstance(values, list):
-                values = [values]
-            if len(values) not in (1, count):
-                raise ValueError(
-                    f"NodeCalls: {name!r} has {len(values)} values; expected 1 or {count}")
-            columns[name] = values * count if len(values) == 1 else list(values)
-        return cls.overrides(node_call, [
-            {name: values[i] for name, values in columns.items()} for i in range(count)])
+        assert all(n in (1, count) for n in lengths), \
+            f"Incompatible list lengths: {lengths}"
+
+        return [
+            {
+                key: value[i if len(value) > 1 else 0]
+                    if isinstance(value, list) else value
+                for key, value in kwargs.items()
+            }
+            for i in range(count)
+        ]    
+
+    # ===========================================================================
+    # Constructors
+    # ===========================================================================
+
+    # ---------------------------------------------------------------------------
+    # Central constructor
+    # ---------------------------------------------------------------------------
 
     @classmethod
-    def bunch(cls, *node_calls):
-        return cls(*node_calls)
-        
+    def from_dict(cls, **kwargs):
+        return cls(*(NodeCall(**values) for values in cls.expand_dict(**kwargs)))    
 
-    def replace(self, **parameters) -> "NodeCalls":
-        """Appliquer les variations par attribut aux résultats de cette boucle."""
-        return type(self).attributes(self, **parameters)
+    # ---------------------------------------------------------------------------
+    # Specialized constructors
+    # ---------------------------------------------------------------------------
 
-    def loop(self):
-        """Produire les NodeCall, chacune portant sa class_name.
+    @classmethod
+    def function(cls, method_name, in_line=None, **kwargs):
+        return cls.from_dict(
+            method_type='FUNCTION',
+            method_name=method_name,
+            in_line=in_line,
+            **kwargs,
+        )
 
-        Sans remplacements, transmettre les descriptions de départ à l'identique.
-        Sinon, produire une copie par dictionnaire, pour chaque description
-        de départ. Les remplacements de cette boucle ont priorité.
-        """
-        if self._list is not None:
-            yield from self._list
-            return
+    @classmethod
+    def static_method(cls, method_name, in_line=None, **kwargs):
+        return cls.from_dict(
+            method_type='STATIC_METHOD',
+            method_name=method_name,
+            in_line=in_line,
+            **kwargs,
+        )
 
-        bases = (self.node_call.loop() if isinstance(self.node_call, NodeCalls)
-                 else [self.node_call])
-        if self._overrides is None:
-            yield from bases
-            return
-        
-        for node_call in bases:
-            for overrides in self._overrides:
-                yield node_call.replace(**overrides)
+    @classmethod
+    def class_method(cls, method_name, in_line=None, **kwargs):
+        return cls.from_dict(
+            method_type='CLASS_METHOD',
+            method_name=method_name,
+            in_line=in_line,
+            **kwargs,
+        )
 
-    def __iter__(self):
-        return self.loop()
+    @classmethod
+    def class_property(cls, method_name, in_line=None, **kwargs):
+        return cls.from_dict(
+            method_type='CLASS_PROPERTY',
+            method_name=method_name,
+            in_line=in_line,
+            **kwargs,
+        )
+
+    @classmethod
+    def method(cls, method_name, in_line=None, **kwargs):
+        return cls.from_dict(
+            method_type='METHOD',
+            method_name=method_name,
+            in_line=in_line,
+            **kwargs,
+        )
+
+    @classmethod
+    def getter(cls, method_name, in_line=None, **kwargs):
+        return cls.from_dict(
+            method_type='GETTER',
+            method_name=method_name,
+            in_line=in_line,
+            **kwargs,
+        )
+
+    @classmethod
+    def setter(cls, method_name, in_line=None, **kwargs):
+        return cls.from_dict(
+            method_type='SETTER',
+            method_name=method_name,
+            in_line=in_line,
+            **kwargs,
+        )
+
+    # ===========================================================================
+    # Replace / overrides : one dict or more to replace some field
+    # ===========================================================================
+
+    def replace(self, **kwargs) -> "NodeCalls":
+        node_calls = type(self)()
+
+        for values in type(self).expand_dict(**kwargs):
+            node_calls.extend(
+                node_call.replace(**values)
+                for node_call in self
+            )
+
+        return node_calls
+
+    def overrides(self, overrides: dict[str, Any] | list[dict]) -> "NodeCalls":
+
+        if isinstance(overrides, dict):
+            overrides = [overrides]
+
+        node_calls = type(self)()
+        for override in overrides:
+            node_calls.extend(self.replace(**override))
+
+        return node_calls 
+
+    # ===========================================================================
+    # Loop on a field
+    # ===========================================================================
+
+    def loop_on_field(self,
+            field_name, 
+            field_values, 
+            call_back = lambda field, **kw: kw, 
+            **kwargs):
+
+        assert field_name not in kwargs, f"But why ???? {field_name} in {tuple(kwargs.keys())}"
+
+        node_calls = NodeCalls()
+        for field_value in field_values:
+            for node_call in self:
+                node_calls.append(node_call.replace(**{field_name: field_value, **call_back(field_value, **kwargs)}))
+
+        return node_calls
+
