@@ -44,8 +44,8 @@ GLOBAL_DEBUG = False
 
 #from .config_5_0_0 import *
 #from .config_5_1_0 import *
-#from .config_5_2_0_LTS import *
-from .config_5_3_0_Beta import *
+from .config_5_2_0_LTS import *
+#from .config_5_3_0_Beta import *  # truncated in repo (stops mid-dict)
 
 # ====================================================================================================
 # OPTIONS
