@@ -14,7 +14,7 @@ BPY_VER ?= 5.2.4
 T       ?= tests/
 BLENDER ?=
 
-.PHONY: setup test face drawing nodes clean-venv bpy-version
+.PHONY: setup test face drawing nodes kaomoji kaomoji-svg clean-venv bpy-version
 
 setup:
 	uv venv --python 3.13 .venv
@@ -33,6 +33,15 @@ endif
 
 nodes:
 	$(MAKE) test T=tests/integration/test_drawing_nodes.py
+
+kaomoji:
+	$(MAKE) test T="tests/unit/test_kaomojilang.py tests/integration/test_kaomojilang_grease.py"
+
+# make kaomoji-svg [KL=kaomojilang/examples/example.kmj] [OUT=out/kaomoji]
+KL  ?= kaomojilang/examples/example.kmj
+OUT ?= out/kaomoji
+kaomoji-svg:
+	cd .. && geonodes/$(PY) -m geonodes.kaomojilang geonodes/$(KL) --svg geonodes/$(OUT)
 
 drawing:
 	$(MAKE) test T="tests/unit tests/integration/test_drawing_grease.py tests/integration/test_drawing_nodes.py"
