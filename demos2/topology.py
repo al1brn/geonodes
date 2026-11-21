@@ -127,7 +127,7 @@ def demo(rebuild=False):
 
         with Layout("Lines"):
             line = Curve.Line()
-            lines = cloud[show].instance_on(instance=line, scale=dist, rotation=Rotation.AlignZToVector(direction))
+            lines = cloud[show].instance_on_points(instance=line, scale=dist, rotation=Rotation(DEFAULT).align_z_to_vector(direction))
             lines = Curve(lines.realize())
             lines = lines.to_mesh(profile_curve=Curve.Circle(resolution=12, radius=.01))
 
@@ -155,7 +155,7 @@ def demo(rebuild=False):
         with Layout("Selected Vertices"):
 
             cloud = mesh.points[Boolean("Select V")].to_points()
-            v_vis = Mesh(cloud.instance_on(instance=Mesh.UVSphere(radius=size)).realize())
+            v_vis = Mesh(cloud.instance_on_points(instance=Mesh.UVSphere(radius=size)).realize())
             v_vis.faces.material = "Topology"
             v_vis.faces.smooth = True
             v_vis.faces._Color = COL_POINT
@@ -186,7 +186,7 @@ def demo(rebuild=False):
 
             cloud = Cloud(feel.generated)
 
-            c_vis = Mesh(cloud.instance_on(instance=Mesh.Cube(size=cube_size)).realize())
+            c_vis = Mesh(cloud.instance_on_points(instance=Mesh.Cube(size=cube_size)).realize())
             c_vis.faces.material = "Topology"
             c_vis.faces.smooth = False
             c_vis.faces._Color = COL_CORNER
@@ -204,9 +204,11 @@ def demo(rebuild=False):
         with Panel("Options"):
             merge = Boolean(True, "Merge input Geometry")
 
-        mesh  = geo.mesh
-        curve = geo.curve
-        cloud = geo.point_cloud
+        sep = geo.separate_components()
+
+        mesh  = sep.mesh
+        curve = sep.curve
+        cloud = sep.point_cloud
 
         with Panel("Domain"):
             selection   = Boolean(True,  "Selection")

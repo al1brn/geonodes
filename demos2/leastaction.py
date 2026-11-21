@@ -115,7 +115,7 @@ def demo_maupertuis(rebuild=False):
             segm = pos1 - nd.position
             length_attr = curve.points.get('Length', Float)
             length_attr.set(segm.length())
-            curve.points[nd.index == last_index].set('Length', 0.0)
+            curve.points[nd.index == last_index]['Length'] = 0.0
             
         with Layout("Weights"):
             pt_weight = get_weight(weight_func, nd.position)
@@ -129,8 +129,9 @@ def demo_maupertuis(rebuild=False):
         with Layout("Perp"):
             tg = pos1 - pos0
             x, y, _ = tg.xyz
-            a = curve.points.set('Perp', (-y, x, 0))
-            curve.points[ext_sel].set(a, (0.0, 0.0, 0.0))
+            curve.points['Perp'] = (-y, x, 0)
+            a = curve.points.get('Perp', Vector)
+            curve.points[ext_sel][a.name] = (0.0, 0.0, 0.0)
             
         with Layout("Action"):
             action = curve.points.attribute_statistic(length_attr.value*segw_attr.value).sum
@@ -188,27 +189,30 @@ def demo_maupertuis(rebuild=False):
                 action_delta = new_action - old_action
                 
                 if first:
-                    adelta0 = curve.points.set("Action Delta 0", action_delta)
-                    curve.points.set("Pos 0", new_pos)
+                    curve.points["Action Delta 0"] = action_delta
+                    adelta0 = curve.points.get("Action Delta 0", Float)
+                    curve.points["Pos 0"] = new_pos
                 else:
-                    adelta1 = curve.points.set("Action Delta 1", action_delta)
-                    curve.points.set("Pos 1", new_pos)
+                    curve.points["Action Delta 1"] = action_delta
+                    adelta1 = curve.points.get("Action Delta 1", Float)
+                    curve.points["Pos 1"] = new_pos
                 
         with Layout("Finalize"):
             is_fix = (nd.index == 0) | (nd.index == last_index)
-            curve.points[is_fix].set(adelta0, 0.0)
-            curve.points[is_fix].set(adelta1, 0.0)
+            curve.points[is_fix][adelta0.name] = 0.0
+            curve.points[is_fix][adelta1.name] = 0.0
             
             move = (adelta0.value*adelta1.value) < 0.0
             
-            a = curve.points.set('Move', move)
-            curve.points[is_fix].set(a, False)
+            curve.points['Move'] = move
+            a = curve.points.get('Move', Boolean)
+            curve.points[is_fix][a.name] = False
             
             pos0 = curve.points.get('Pos 0', Vector).value
             pos1 = curve.points.get('Pos 1', Vector).value
             
             move_to = pos0.switch(adelta0.value > 0.0, pos1)
-            curve.points.set('Move To', move_to)
+            curve.points['Move To'] = move_to
                 
         curve.out()
         
@@ -326,8 +330,8 @@ def demo_maupertuis(rebuild=False):
             rep.grid.points[sel0].offset = tr0 + (0, 0, ad0*scale_vrt)
             rep.grid.points[sel1].offset = tr1 + (0, 0, ad1*scale_vrt)
             
-            rep.grid.points[sel0].set('Color', Color.Switch(ok & (ad0 < 0.0), "White", "Red"))
-            rep.grid.points[sel1].set('Color', Color.Switch(ok & (ad1 < 0.0), "White", "Red"))
+            rep.grid.points[sel0]['Color'] = Color.Switch(ok & (ad0 < 0.0), "White", "Red")
+            rep.grid.points[sel1]['Color'] = Color.Switch(ok & (ad1 < 0.0), "White", "Red")
             
             
         grid = Mesh(rep.grid)
@@ -338,7 +342,7 @@ def demo_maupertuis(rebuild=False):
             mesh_curve = curve.to_mesh(profile_curve=Curve.Circle(radius=delta*scale_hrz/100, resolution=12))
             mesh_curve.faces.shade_smooth = True
             mesh_curve.faces.material = "Gradient"
-            mesh_curve.faces.set('Color', Color("Black"))
+            mesh_curve.faces['Color'] = Color("Black")
             
             #grid += mesh_curve
             
@@ -471,16 +475,18 @@ def demo_lagrange(rebuild=False):
         with Layout("Segment Weights"):
             end = curve.points.sample_index(nd.position, index=nd.index + 1)._lc("After")
             w = get_lagrangian(lagrangian_func, nd.position, end)
-            weight_attr = curve.points.set('Weight', w)
-            curve.points[nd.index == last_index].set(weight_attr, 0.0)
+            curve.points['Weight'] = w
+            weight_attr = curve.points.get('Weight', Float)
+            curve.points[nd.index == last_index][weight_attr.name] = 0.0
             
         with Layout("Perp"):
             P0 = curve.points.sample_index(nd.position, index=nd.index - 1)
             P1 = curve.points.sample_index(nd.position, index=nd.index + 1)
             tg = P1 - P0
             x, y, _ = tg.xyz
-            a = curve.points.set('Perp', (-y, x, 0))
-            curve.points[ext_sel].set(a, (0.0, 0.0, 0.0))
+            curve.points['Perp'] = (-y, x, 0)
+            a = curve.points.get('Perp', Vector)
+            curve.points[ext_sel][a.name] = (0.0, 0.0, 0.0)
             
         with Layout("Action"):
             action = curve.points.attribute_statistic(weight_attr.value).sum
@@ -534,16 +540,18 @@ def demo_lagrange(rebuild=False):
                 action_delta = weight0 + weight1 - old_weight
                 
                 if first:
-                    adelta0 = curve.points.set("Action Delta 0", action_delta)
-                    curve.points.set("Pos 0", new_pos)
+                    curve.points["Action Delta 0"] = action_delta
+                    adelta0 = curve.points.get("Action Delta 0", Float)
+                    curve.points["Pos 0"] = new_pos
                 else:
-                    adelta1 = curve.points.set("Action Delta 1", action_delta)
-                    curve.points.set("Pos 1", new_pos)
+                    curve.points["Action Delta 1"] = action_delta
+                    adelta1 = curve.points.get("Action Delta 1", Float)
+                    curve.points["Pos 1"] = new_pos
                 
         with Layout("Finalize"):
             is_fix = (nd.index == 0) | (nd.index == last_index)
-            curve.points[is_fix].set(adelta0, 0.0)
-            curve.points[is_fix].set(adelta1, 0.0)
+            curve.points[is_fix][adelta0.name] = 0.0
+            curve.points[is_fix][adelta1.name] = 0.0
 
             MIN_ALGO = True
             if MIN_ALGO:
@@ -551,8 +559,9 @@ def demo_lagrange(rebuild=False):
             else:
                 move = (adelta0.value*adelta1.value) < 0.0
             
-            a = curve.points.set('Move', move)
-            curve.points[is_fix].set(a, False)
+            curve.points['Move'] = move
+            a = curve.points.get('Move', Boolean)
+            curve.points[is_fix][a.name] = False
             
             pos0 = curve.points.get('Pos 0', Vector).value
             pos1 = curve.points.get('Pos 1', Vector).value
@@ -562,7 +571,7 @@ def demo_lagrange(rebuild=False):
             else:
                 move_to = pos0.switch(adelta0.value > 0.0, pos1)
                 
-            curve.points.set('Move To', move_to)
+            curve.points['Move To'] = move_to
                 
         curve.out()
         
@@ -699,8 +708,8 @@ def demo_lagrange(rebuild=False):
             rep.grid.points[sel0].offset = tr0 + (0, 0, ad0*scale_vrt)
             rep.grid.points[sel1].offset = tr1 + (0, 0, ad1*scale_vrt)
             
-            rep.grid.points[sel0].set('Color', Color.Switch(ok & (ad0 < 0.0), "White", "Red"))
-            rep.grid.points[sel1].set('Color', Color.Switch(ok & (ad1 < 0.0), "White", "Red"))
+            rep.grid.points[sel0]['Color'] = Color.Switch(ok & (ad0 < 0.0), "White", "Red")
+            rep.grid.points[sel1]['Color'] = Color.Switch(ok & (ad1 < 0.0), "White", "Red")
             
             
         grid = Mesh(rep.grid)
@@ -711,7 +720,7 @@ def demo_lagrange(rebuild=False):
             mesh_curve = curve.to_mesh(profile_curve=Curve.Circle(radius=delta*scale_hrz/100, resolution=12))
             mesh_curve.faces.shade_smooth = True
             mesh_curve.faces.material = "Gradient"
-            mesh_curve.faces.set('Color', Color("Black"))
+            mesh_curve.faces['Color'] = Color("Black")
             
             #grid += mesh_curve
             

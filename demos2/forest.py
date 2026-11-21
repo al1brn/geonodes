@@ -169,7 +169,7 @@ def demo(rebuild=False):
         cloud = surface.faces.distribute_points_poisson(distance_min=1, density_factor=density, seed=seed)
 
         trees = Group("Trees Collection", count=10, seed=seed + 1)._out
-        forest = cloud.points.instance_on(
+        forest = cloud.instance_on_points(
             instance=trees, pick_instance=True,
             scale=Float.Random(.5, 1.5, seed=seed + 2),
             rotation=(0, 0, Float.Random(0, tau, seed=seed + 3)),

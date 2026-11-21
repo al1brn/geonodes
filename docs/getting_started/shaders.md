@@ -9,11 +9,15 @@ Creating _Shader Nodes_ is the same as creating _Geometry Nodes_, with the follo
 - Use **snd** (for _Shader Nodes_) rather than **nd**
 - **out** method takes the class type to select the proper socket between _Surface_, _Volume_, _Displacement_ and _Thickness_
 
-!!! warning
-    Creating shader nodes can overwrite an existing material. By default, this behavior is blocked. If the material doesn't
-    exist, it will be created at first launch. Further modifications will be ignored since the material exists from now on.
-    
-    You must explicitly ask to overwrite a material using the `replace_material` argument when initiating a new **ShaderNodes**.
+API materials store their requested root name in the custom property
+`geonodes_api`. Existing marked materials are rebuilt by default. Unmarked
+materials are preserved: Blender gives the new API material a suffix such as
+`.001`. Later builds find it by its root-name marker, even after renaming.
+
+Remove the custom property to take ownership of a material. The next build
+creates a separate marked material. Material names used by the API resolve to
+the marked material; pass a Blender `Material` object to select an exact material.
+Use `rebuild=False` to preserve an existing API material without rebuilding it.
 
 
 ## Shader
@@ -21,9 +25,9 @@ Creating _Shader Nodes_ is the same as creating _Geometry Nodes_, with the follo
 ``` python
 from geonodes import *
 
-# Dev mode : replace_material will repalce existing shader
+# Rebuild the API-owned shader; preserve unmarked user materials
 
-with ShaderNodes("Surface Shader", replace_material=True):
+with ShaderNodes("Surface Shader", rebuild=True):
 
     # ----- Principled BSDF
 

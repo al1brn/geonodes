@@ -71,7 +71,7 @@ furniture = Package("Furniture")
 # Shaders
 # ====================================================================================================
 
-@furniture.shader_material('Furniture')
+@furniture.shader('Furniture')
 def furniture_material():
     color = snd.attribute(
         attribute_type='GEOMETRY', attribute_name="Color",
@@ -82,7 +82,7 @@ def furniture_material():
         metallic=0.0,
     ).out()
 
-@furniture.shader_material('Debug Block')
+@furniture.shader('Debug Block')
 def debug_block_material():
     debug_color = snd.attribute(
         attribute_type='GEOMETRY', attribute_name="Debug Block Color",
@@ -93,7 +93,7 @@ def debug_block_material():
     shader = Shader.Principled(base_color=debug_color, roughness=0.5)
     shader.mix(shader=Shader.Transparent(), factor=1 - debug_opacity).out()
 
-@furniture.shader_material('Drawer')
+@furniture.shader('Drawer')
 def drawer_material():
     Shader.Principled(
         base_color="#F2F2F2FF",
@@ -102,7 +102,7 @@ def drawer_material():
     ).out()
 
 
-@furniture.shader_material('Label')
+@furniture.shader('Label')
 def label_material():
     Shader.Principled(
         base_color=snd.attribute(attribute_type='GEOMETRY', attribute_name="Color").color,
@@ -113,7 +113,7 @@ def label_material():
 # A dimension line
 # ====================================================================================================
 
-@furniture.geo_group('Add Cote Line')
+@furniture.group('Add Cote Line')
 def add_cote_line():
 
     mesh = Mesh(Geometry())
@@ -353,7 +353,7 @@ def get_blocks(bundle):
     blocks.switch(blocks.list_length() == 0, root_list)
     return blocks
 
-@furniture.geo_group('.Block Index')
+@furniture.group('.Block Index')
 def _block_index():
     bundle = Bundle(name="Bundle")
     name = String("Block", "Name")
@@ -417,7 +417,7 @@ def default_resource():
         "Color": Color(DEFAULT_FURNITURE_COLOR),
     })
 
-@furniture.geo_group('.Resource Index')
+@furniture.group('.Resource Index')
 def _resource_index():
     bundle = Bundle(name="Bundle")
     name = String("Default", "Name")
@@ -438,7 +438,7 @@ def resource_index(bundle, name):
 # Define 5 named dimensions
 # ----------------------------------------------------------------------------------------------------
 
-@furniture.geo_modifier('Define Named Dimensions')
+@furniture.modifier('Define Named Dimensions')
 def define_named_dimensions():
     
     geo = Geometry()
@@ -455,7 +455,7 @@ def define_named_dimensions():
 # Get a named dimension
 # ----------------------------------------------------------------------------------------------------
     
-@furniture.geo_group('Get Named Dimension')
+@furniture.group('Get Named Dimension')
 def get_named_dimension():
     
     geo = Geometry()
@@ -476,7 +476,7 @@ def get_named_dimension():
 # Resource Definition
 # ----------------------------------------------------------------------------------------------------
 
-@furniture.geo_modifier('Define Resource')
+@furniture.modifier('Define Resource')
 def define_resource():
     
     geo = Geometry()
@@ -516,7 +516,7 @@ def define_resource():
 # Get resource
 # ----------------------------------------------------------------------------------------------------
 
-@furniture.geo_group('Get Resource')
+@furniture.group('Get Resource')
 def get_resource():
     geo = Geometry()
     use_id = Boolean(False, "By ID")
@@ -550,7 +550,7 @@ def get_resource():
 # Define plinth dimensions
 # ----------------------------------------------------------------------------------------------------
 
-@furniture.geo_modifier('Define Plinth')
+@furniture.modifier('Define Plinth')
 def define_plinth():
     geo = Geometry()
     bundle = geo.get_bundle()
@@ -572,7 +572,7 @@ def define_plinth():
 # Read plinth dimensions
 # ----------------------------------------------------------------------------------------------------
 
-@furniture.geo_group('.Get Plinth Dimensions')
+@furniture.group('.Get Plinth Dimensions')
 def _get_plinth_dimensions():
     geo = Geometry()
     bundle = geo.get_bundle()
@@ -626,7 +626,7 @@ def existing_resources_input():
         menu=Input("Existing", default="Keep", optional_label=True, expanded=True),
     )
 
-@furniture.geo_modifier('Capture Resources')
+@furniture.modifier('Capture Resources')
 def capture_resources():
     geo = Geometry()
     source = Object(name="Object")
@@ -662,7 +662,7 @@ def add_cut_sheet(bundle, block_name, cut_bundle):
 # Create a Single Plank
 # ----------------------------------------------------------------------------------------------------
 
-@furniture.geo_group('Create Plank')
+@furniture.group('Create Plank')
 def create_plank():
     
     geo = Geometry()
@@ -728,7 +728,7 @@ def create_plank():
 # Create an array of planks
 # ----------------------------------------------------------------------------------------------------
 
-@furniture.geo_group('Create Faces')
+@furniture.group('Create Faces')
 def create_faces():
     
     geo = Geometry()
@@ -767,7 +767,7 @@ def create_faces():
 # Create an array of shelves
 # ----------------------------------------------------------------------------------------------------
 
-@furniture.geo_group('Create Shelves')
+@furniture.group('Create Shelves')
 def create_shelves():
     
     geo = Geometry()
@@ -810,7 +810,7 @@ def create_shelves():
 # Create vertical separators
 # ----------------------------------------------------------------------------------------------------
 
-@furniture.geo_group('Create Separators')
+@furniture.group('Create Separators')
 def create_separators():
     
     geo = Geometry()
@@ -862,7 +862,7 @@ def block_exists(geo, block_name):
 # All properties
 # ----------------------------------------------------------------------------------------------------
 
-@furniture.geo_group('Get Block Properties')
+@furniture.group('Get Block Properties')
 def get_block_properties():
     
     geo = Geometry()
@@ -949,7 +949,7 @@ def get_block_properties():
 # Single Property
 # ----------------------------------------------------------------------------------------------------
 
-@furniture.geo_group('Get Block Property')
+@furniture.group('Get Block Property')
 def get_block_property():
     
     geo = Geometry()
@@ -1046,7 +1046,7 @@ def get_dimension(geo, name, base):
 # Add an external furniture module
 # ====================================================================================================
 
-@furniture.geo_modifier('Add External Block')
+@furniture.modifier('Add External Block')
 def add_external_block():
     geo = Geometry()
     use_geometry = Boolean.MenuSwitch(
@@ -1169,7 +1169,7 @@ def add_external_block():
 # Debug
 # ----------------------------------------------------------------------------------------------------
 
-@furniture.geo_modifier('Debug Block')
+@furniture.modifier('Debug Block')
 def debug_block():
 
     geo = Geometry()
@@ -1217,7 +1217,7 @@ def decoration_inputs():
             for name in ("Bottom Deco", "Shelf Deco", "Top Deco")
         }
 
-@furniture.geo_modifier('Define Block')
+@furniture.modifier('Define Block')
 def define_block():
     
     geo = Geometry()
@@ -1281,7 +1281,7 @@ def define_block():
 # Duplicate block
 # ----------------------------------------------------------------------------------------------------
 
-@furniture.geo_modifier('.Block Duplicate')
+@furniture.modifier('.Block Duplicate')
 def _block_duplicate():
 
     geo = Geometry()
@@ -1343,7 +1343,7 @@ def _block_duplicate():
 # Translate block
 # ----------------------------------------------------------------------------------------------------
 
-@furniture.geo_modifier('.Block Translate')
+@furniture.modifier('.Block Translate')
 def _block_translate():
 
     geo = Geometry()
@@ -1393,7 +1393,7 @@ def _block_translate():
 # Block symmetry
 # ----------------------------------------------------------------------------------------------------
 
-@furniture.geo_modifier('.Block Symmetry')
+@furniture.modifier('.Block Symmetry')
 def _block_symmetry():
 
     geo = Geometry()
@@ -1478,7 +1478,7 @@ def _block_symmetry():
 # Sub block
 # ----------------------------------------------------------------------------------------------------
 
-@furniture.geo_modifier('Duplicate Block')
+@furniture.modifier('Duplicate Block')
 def duplicate_block():
 
     geo = Geometry()
@@ -1573,7 +1573,7 @@ def duplicate_block():
 # Adding a plank to planks
 # ---------------------------------------------------------------------------
     
-@furniture.geo_group('.Add Plank')
+@furniture.group('.Add Plank')
 def _add_plank():
     existing_geometry = Geometry(name="Existing Geometry")
     bundle = Bundle(name="Bundle")
@@ -1610,7 +1610,7 @@ def add_plank(existing_geometry, bundle, block_name, planks, plank, ok):
 # Shelves
 # ----------------------------------------------------------------------------------------------------
 
-@furniture.geo_modifier('Add Shelves')
+@furniture.modifier('Add Shelves')
 def add_shelves():
     
     geo = Geometry()
@@ -1697,7 +1697,7 @@ def add_shelves():
 # Separators
 # ----------------------------------------------------------------------------------------------------
 
-@furniture.geo_modifier('Add Separators')
+@furniture.modifier('Add Separators')
 def add_separators():
     
     geo = Geometry()
@@ -1814,7 +1814,7 @@ def add_separators():
 # Front Face
 # ----------------------------------------------------------------------------------------------------
 
-@furniture.geo_modifier('Add Face')
+@furniture.modifier('Add Face')
 def add_face():
 
     geo = Geometry()
@@ -1891,7 +1891,7 @@ def add_face():
 # Box
 # ----------------------------------------------------------------------------------------------------
 
-@furniture.geo_modifier('Add Box')
+@furniture.modifier('Add Box')
 def add_box():
     
     geo = Geometry()
@@ -2184,7 +2184,7 @@ def add_box():
 # Define decoration independently, including after duplication
 # ====================================================================================================
 
-@furniture.geo_modifier('Define Decoration')
+@furniture.modifier('Define Decoration')
 def define_decoration():
     geo = Geometry()
     block_name = String("Block", "Block Name")
@@ -2206,7 +2206,7 @@ def define_decoration():
 # Add a complete block
 # ====================================================================================================
 
-@furniture.geo_modifier('Add Block')
+@furniture.modifier('Add Block')
 def add_block():
     geo = Geometry()
     new_name = String("Block", "New Name")
@@ -2237,7 +2237,7 @@ def add_block():
 # Select a plank
 # ====================================================================================================
 
-@furniture.geo_group('Select Plank')
+@furniture.group('Select Plank')
 def select_plank():
     geo = Geometry()
     all_blocks = Boolean(False, "All Blocks")
@@ -2273,7 +2273,7 @@ def select_plank():
 # Open door
 # ====================================================================================================
 
-@furniture.geo_modifier('Open Door')
+@furniture.modifier('Open Door')
 def open_door():
     geo = Geometry()
     selection = select_plank(
@@ -2316,7 +2316,7 @@ def open_door():
 # Subdivide a block
 # ====================================================================================================
 
-@furniture.geo_modifier('Divide Block')
+@furniture.modifier('Divide Block')
 def divide_block():
 
     geo = Geometry()
@@ -2464,7 +2464,7 @@ def divide_block():
 # A Drawer
 # ====================================================================================================
 
-@furniture.geo_group('Create Drawer Box')
+@furniture.group('Create Drawer Box')
 def create_drawer_box():
 
     SIDE_MARGIN = 0.02
@@ -2496,7 +2496,7 @@ def create_drawer_box():
 # Open a Drawer
 # ====================================================================================================
 
-@furniture.geo_modifier('Open Drawer')
+@furniture.modifier('Open Drawer')
 def open_drawer():
 
     geo = Mesh(Geometry())
@@ -2528,7 +2528,7 @@ def open_drawer():
 # Change plank material
 # ====================================================================================================
 
-@furniture.geo_modifier('Change Plank Material')
+@furniture.modifier('Change Plank Material')
 def change_plank_material():
     geo = Mesh(Geometry())
     selection = select_plank(geo).link_inputs()
@@ -2543,7 +2543,7 @@ def change_plank_material():
 # Replace planks
 # ====================================================================================================
 
-@furniture.geo_modifier('Replace Plank')
+@furniture.modifier('Replace Plank')
 def replace_plank():
     geo = Geometry()
     bundle = geo.get_bundle()
@@ -2590,7 +2590,7 @@ def replace_plank():
 # Delete planks
 # ====================================================================================================
 
-@furniture.geo_modifier('Delete Plank')
+@furniture.modifier('Delete Plank')
 def delete_plank():
     geo = Mesh(Geometry())
     bundle = geo.get_bundle()
@@ -2603,7 +2603,7 @@ def delete_plank():
 # Block dimensions and positions
 # ====================================================================================================
 
-@furniture.geo_modifier('Add Cotes')
+@furniture.modifier('Add Cotes')
 def add_cotes():
     geo = Geometry()
     block = get_block_properties(geo).link_inputs().node
@@ -2643,7 +2643,7 @@ def add_cotes():
 # Cut Sheet
 # ====================================================================================================
 
-@furniture.geo_modifier('Cut Sheet')
+@furniture.modifier('Cut Sheet')
 def cut_sheet():
 
     obj = Object(None, "Furniture")
@@ -2705,7 +2705,7 @@ def block_by_id(geo, block_id):
 # Show Deco id
 # ----------------------------------------------------------------------------------------------------
 
-@furniture.geo_modifier('Show Decoration IDs')
+@furniture.modifier('Show Decoration IDs')
 def show_decoration_ids():
 
     geo = Geometry()
@@ -2745,7 +2745,7 @@ def show_decoration_ids():
 # Extract a composition
 # ----------------------------------------------------------------------------------------------------
 
-@furniture.geo_group('.Extract Composition')
+@furniture.group('.Extract Composition')
 def _extract_composition():
 
     geo = Geometry()
@@ -2839,7 +2839,7 @@ def _extract_composition():
         item_mesh.switch_false(fits).out("Mesh")
 
 
-@furniture.geo_group('.Extract Items')
+@furniture.group('.Extract Items')
 def _extract_items():
     geo = Geometry()
     block_id = Integer(0, "Block ID")
@@ -2896,7 +2896,7 @@ def _extract_items():
     Mesh(placed.realize()).out("Mesh")
 
 
-@furniture.geo_modifier('Furniture Decoration')
+@furniture.modifier('Furniture Decoration')
 def furniture_decoration():
 
     use_geometry = Boolean.MenuSwitch(

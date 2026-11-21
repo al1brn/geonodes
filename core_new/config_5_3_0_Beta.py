@@ -1,6 +1,6 @@
 # GeoNodes configuration
 # Blender (5, 3, 0)
-# Generated 2026-11-15 18:13:05
+# Generated 2026-11-21 06:58:38
 
 
 blender_version = (5, 3, 0)
@@ -183,9 +183,9 @@ SOCKET_IDS = {
    'NodeSocketShader'                : 'NodeSocketShader',
    'Shader'                          : 'NodeSocketShader',
    'SHADER'                          : 'NodeSocketShader',
-   'NodeSocketVectorXYZ2D'           : 'NodeSocketVector',
    'NodeSocketVector2D'              : 'NodeSocketVector',
    'NodeSocketIntUnsigned'           : 'NodeSocketInt',
+   'NodeSocketVectorXYZ2D'           : 'NodeSocketVector',
 }
 
 #--------------------------------------------------------------------------------
@@ -848,12 +848,6 @@ SOCKET_SUBTYPES = {
         'subtype'     : None,
         'dimensions'  : None,
     },
-    'NodeSocketVectorXYZ2D'           : {
-        'nodesocket'  : 'NodeSocketVector',
-        'socket_type' : 'VECTOR',
-        'subtype'     : None,
-        'dimensions'  : 2,
-    },
     'NodeSocketVector2D'              : {
         'nodesocket'  : 'NodeSocketVector',
         'socket_type' : 'VECTOR',
@@ -865,6 +859,12 @@ SOCKET_SUBTYPES = {
         'socket_type' : 'INT',
         'subtype'     : None,
         'dimensions'  : None,
+    },
+    'NodeSocketVectorXYZ2D'           : {
+        'nodesocket'  : 'NodeSocketVector',
+        'socket_type' : 'VECTOR',
+        'subtype'     : None,
+        'dimensions'  : 2,
     },
 }
 
@@ -948,67 +948,22 @@ BUILTIN_GROUPS = {'GeometryNodeTree': {'.UV_sphere_corrected': 'geometry_nodes_e
 #--------------------------------------------------------------------------------
 
 ONE_ITEMS_NODES = {
-    'GeometryNodeBake'                         : {
-        'bake_items' : 'NAME_TYPE',
-    },
-    'GeometryNodeCaptureAttribute'             : {
-        'capture_items' : 'NAME_TYPE',
-    },
-    'NodeClosureOutput'                        : {
-        'input_items'  : 'NAME_TYPE',
-        'output_items' : 'NAME_TYPE',
-    },
-    'GeometryNodeClosureToList'                : {
-        'list_items' : 'NAME_TYPE',
-    },
-    'NodeCombineBundle'                        : {
-        'bundle_items' : 'NAME_TYPE',
-    },
-    'GeometryNodeCombineList'                  : {
-        'combine_list_items' : 'EMPTY',
-    },
-    'NodeEvaluateClosure'                      : {
-        'input_items'  : 'NAME_TYPE',
-        'output_items' : 'NAME_TYPE',
-    },
-    'GeometryNodeFieldToGrid'                  : {
-        'grid_items' : 'NAME_TYPE',
-    },
-    'GeometryNodeFieldToList'                  : {
-        'list_items' : 'NAME_TYPE',
-    },
-    'GeometryNodeForeachGeometryElementOutput' : {
-        'generation_items' : 'NAME_TYPE',
-        'input_items'      : 'NAME_TYPE',
-        'main_items'       : 'NAME_TYPE',
-    },
-    'FunctionNodeFormatString'                 : {
-        'format_items' : 'NAME_TYPE',
-    },
-    'GeometryNodeIndexSwitch'                  : {
-        'index_switch_items' : 'EMPTY',
-    },
-    'GeometryNodeMenuSwitch'                   : {
-        'enum_items' : 'NAME',
-    },
-    'GeometryNodeRasterizePoints'              : {
-        'rasterize_items' : 'NAME',
-    },
-    'GeometryNodeRepeatOutput'                 : {
-        'repeat_items' : 'NAME_TYPE',
-    },
-    'NodeSeparateBundle'                       : {
-        'bundle_items' : 'NAME_TYPE',
-    },
-    'GeometryNodeSimulationOutput'             : {
-        'state_items' : 'NAME_TYPE',
-    },
-    'GeometryNodeViewer'                       : {
-        'viewer_items' : 'NAME_TYPE',
-    },
-    'ShaderNodeRaycast'                        : {
-        'sample_attribute_items' : 'NAME_TYPE',
-    },
+    'GeometryNodeBake'             : 'bake_items',
+    'GeometryNodeCaptureAttribute' : 'capture_items',
+    'GeometryNodeClosureToList'    : 'list_items',
+    'NodeCombineBundle'            : 'bundle_items',
+    'GeometryNodeCombineList'      : 'combine_list_items',
+    'GeometryNodeFieldToGrid'      : 'grid_items',
+    'GeometryNodeFieldToList'      : 'list_items',
+    'FunctionNodeFormatString'     : 'format_items',
+    'GeometryNodeIndexSwitch'      : 'index_switch_items',
+    'GeometryNodeMenuSwitch'       : 'enum_items',
+    'GeometryNodeRasterizePoints'  : 'rasterize_items',
+    'GeometryNodeRepeatOutput'     : 'repeat_items',
+    'NodeSeparateBundle'           : 'bundle_items',
+    'GeometryNodeSimulationOutput' : 'state_items',
+    'GeometryNodeViewer'           : 'viewer_items',
+    'ShaderNodeRaycast'            : 'sample_attribute_items',
 }
 
 AUTO_INPUT_TYPE_NODES = ['GeometryNodeMenuSwitch', 'GeometryNodeIndexSwitch', 'GeometryNodeSwitch']
@@ -1557,7 +1512,7 @@ NODE_INFO = {
     'GeometryNodeTool3DCursor'                 : {
         'name'           : '3D Cursor',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {},
         'outputs'        : {
@@ -1594,7 +1549,7 @@ NODE_INFO = {
                 'enum'    : ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Value'    : {
@@ -1642,7 +1597,7 @@ NODE_INFO = {
     'GeometryNodeInputActiveCamera'            : {
         'name'           : 'Active Camera',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {},
         'outputs'        : {
@@ -1667,7 +1622,7 @@ NODE_INFO = {
                 'enum'    : ('POINT', 'EDGE', 'FACE', 'LAYER'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {},
         'outputs'        : {
@@ -1699,7 +1654,7 @@ NODE_INFO = {
                 'enum'    : ('FLOAT', 'INT', 'VECTOR'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {
             'Integration Scheme' : {
                 'default' : 'Runge-Kutta 3',
@@ -1774,7 +1729,7 @@ NODE_INFO = {
                 'enum'    : ('AUTO', 'X', 'Y', 'Z'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Rotation' : {
@@ -1821,7 +1776,7 @@ NODE_INFO = {
                 'enum'    : ('POINTS', 'RADIUS'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Resolution'     : {
@@ -1943,7 +1898,7 @@ NODE_INFO = {
                 'enum'    : ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Geometry'  : {
@@ -2044,7 +1999,7 @@ NODE_INFO = {
                 'enum'    : ('X', 'Y', 'Z'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Primary Axis'   : {
@@ -2078,7 +2033,7 @@ NODE_INFO = {
     'FunctionNodeAxisAngleToRotation'          : {
         'name'           : 'Axis Angle to Rotation',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Axis'  : {
@@ -2112,13 +2067,13 @@ NODE_INFO = {
     'GeometryNodeBake'                         : {
         'name'           : 'Bake',
         'params'         : {},
-        'items'          : [{'bake_items': 'NAME_TYPE'}],
+        'items'          : ['bake_items'],
         'menu_sockets'   : {},
         'inputs'         : {
             '' : {
                 'bl_idname'   : 'NodeSocketVirtual',
                 'label'       : '',
-                'name'        : '',
+                'name'        : 'NAMED',
                 'socket_type' : 'CUSTOM',
                 'aliases'     : {''},
             },
@@ -2127,7 +2082,7 @@ NODE_INFO = {
             '' : {
                 'bl_idname'   : 'NodeSocketVirtual',
                 'label'       : '',
-                'name'        : '',
+                'name'        : 'NAMED',
                 'socket_type' : 'CUSTOM',
                 'aliases'     : {''},
             },
@@ -2145,7 +2100,7 @@ NODE_INFO = {
                 'enum'    : ('AND', 'OR', 'XOR', 'NOT', 'SHIFT', 'ROTATE'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'A'     : {
@@ -2186,7 +2141,7 @@ NODE_INFO = {
     'ShaderNodeBlackbody'                      : {
         'name'           : 'Blackbody',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Temperature' : {
@@ -2219,7 +2174,7 @@ NODE_INFO = {
                 'enum'    : ('FLOAT', 'INT', 'FLOAT_VECTOR', 'FLOAT_COLOR'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Value'      : {
@@ -2266,7 +2221,7 @@ NODE_INFO = {
                 'enum'    : ('ORIGINAL', 'RELATIVE'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Armature'  : {
@@ -2362,7 +2317,7 @@ NODE_INFO = {
                 'enum'    : None,
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {},
         'outputs'        : {
@@ -2387,7 +2342,7 @@ NODE_INFO = {
                 'enum'    : ('AND', 'OR', 'NOT', 'NAND', 'NOR', 'XNOR', 'XOR', 'IMPLY', 'NIMPLY'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Boolean' : {
@@ -2414,7 +2369,7 @@ NODE_INFO = {
     'GeometryNodeBoundBox'                     : {
         'name'           : 'Bounding Box',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Geometry'   : {
@@ -2483,7 +2438,7 @@ NODE_INFO = {
                 'enum'    : None,
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Vector'        : {
@@ -2586,7 +2541,7 @@ NODE_INFO = {
                 'enum'    : ('POSITION', 'OFFSET'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Resolution'   : {
@@ -2641,7 +2596,7 @@ NODE_INFO = {
     'GeometryNodeCameraInfo'                   : {
         'name'           : 'Camera Info',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Camera' : {
@@ -2730,7 +2685,7 @@ NODE_INFO = {
                 'enum'    : ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'),
             },
         },
-        'items'          : [{'capture_items': 'NAME_TYPE'}],
+        'items'          : ['capture_items'],
         'menu_sockets'   : {},
         'inputs'         : {
             'Geometry'  : {
@@ -2750,7 +2705,7 @@ NODE_INFO = {
             ''          : {
                 'bl_idname'   : 'NodeSocketVirtual',
                 'label'       : '',
-                'name'        : '',
+                'name'        : 'NAMED',
                 'socket_type' : 'CUSTOM',
                 'aliases'     : {''},
             },
@@ -2773,7 +2728,7 @@ NODE_INFO = {
             ''          : {
                 'bl_idname'   : 'NodeSocketVirtual',
                 'label'       : '',
-                'name'        : '',
+                'name'        : 'NAMED',
                 'socket_type' : 'CUSTOM',
                 'aliases'     : {''},
             },
@@ -2785,7 +2740,7 @@ NODE_INFO = {
     'ShaderNodeTexChecker'                     : {
         'name'           : 'Checker Texture',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Vector' : {
@@ -2846,7 +2801,7 @@ NODE_INFO = {
                 'enum'    : ('MINMAX', 'RANGE'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Value' : {
@@ -2893,7 +2848,7 @@ NODE_INFO = {
                 'enum'    : ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Grid'  : {
@@ -2962,14 +2917,14 @@ NODE_INFO = {
     'NodeClosureInput'                         : {
         'name'           : 'Closure Input',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {},
         'outputs'        : {
             '' : {
                 'bl_idname'   : 'NodeSocketVirtual',
                 'label'       : '',
-                'name'        : '',
+                'name'        : 'NAMED',
                 'socket_type' : 'CUSTOM',
                 'aliases'     : {''},
             },
@@ -2987,13 +2942,13 @@ NODE_INFO = {
                 'enum'    : None,
             },
         },
-        'items'          : [{'input_items': 'NAME_TYPE', 'output_items': 'NAME_TYPE'}],
+        'items'          : ['input_items', 'output_items'],
         'menu_sockets'   : {},
         'inputs'         : {
             '' : {
                 'bl_idname'   : 'NodeSocketVirtual',
                 'label'       : '',
-                'name'        : '',
+                'name'        : 'NAMED',
                 'socket_type' : 'CUSTOM',
                 'aliases'     : {''},
             },
@@ -3014,7 +2969,7 @@ NODE_INFO = {
     'GeometryNodeClosureToList'                : {
         'name'           : 'Closure to List',
         'params'         : {},
-        'items'          : [{'list_items': 'NAME_TYPE'}],
+        'items'          : ['list_items'],
         'menu_sockets'   : {},
         'inputs'         : {
             'Count'   : {
@@ -3036,7 +2991,7 @@ NODE_INFO = {
             '' : {
                 'bl_idname'   : 'NodeSocketVirtual',
                 'label'       : '',
-                'name'        : '',
+                'name'        : 'NAMED',
                 'socket_type' : 'CUSTOM',
                 'aliases'     : {''},
             },
@@ -3048,7 +3003,7 @@ NODE_INFO = {
     'GeometryNodeClusterByConnected'           : {
         'name'           : 'Cluster by Connected',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Selection' : {
@@ -3089,7 +3044,7 @@ NODE_INFO = {
     'GeometryNodeClusterByDistance'            : {
         'name'           : 'Cluster by Distance',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Selection' : {
@@ -3143,7 +3098,7 @@ NODE_INFO = {
                 'enum'    : None,
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {},
         'outputs'        : {
@@ -3162,7 +3117,7 @@ NODE_INFO = {
     'GeometryNodeCollectionChildren'           : {
         'name'           : 'Collection Children',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Collection' : {
@@ -3209,7 +3164,7 @@ NODE_INFO = {
                 'enum'    : ('ORIGINAL', 'RELATIVE'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Collection'        : {
@@ -3249,8 +3204,14 @@ NODE_INFO = {
     },
     'FunctionNodeInputColor'                   : {
         'name'           : 'Color',
-        'params'         : {},
-        'items'          : {},
+        'params'         : {
+            'value' : {
+                'default' : (0.5, 0.5, 0.5, 1.0),
+                'type'    : 'Color',
+                'enum'    : None,
+            },
+        },
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {},
         'outputs'        : {
@@ -3269,7 +3230,7 @@ NODE_INFO = {
     'ShaderNodeValToRGB'                       : {
         'name'           : 'Color Ramp',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Factor' : {
@@ -3309,13 +3270,13 @@ NODE_INFO = {
                 'enum'    : None,
             },
         },
-        'items'          : [{'bundle_items': 'NAME_TYPE'}],
+        'items'          : ['bundle_items'],
         'menu_sockets'   : {},
         'inputs'         : {
             '' : {
                 'bl_idname'   : 'NodeSocketVirtual',
                 'label'       : '',
-                'name'        : '',
+                'name'        : 'NAMED',
                 'socket_type' : 'CUSTOM',
                 'aliases'     : {''},
             },
@@ -3342,7 +3303,7 @@ NODE_INFO = {
                 'enum'    : ('RGB', 'HSV', 'HSL'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Red'   : {
@@ -3350,21 +3311,21 @@ NODE_INFO = {
                 'label'       : 'Red',
                 'name'        : 'Red',
                 'socket_type' : 'VALUE',
-                'aliases'     : {'Red', 'Hue'},
+                'aliases'     : {'Hue', 'Red'},
             },
             'Green' : {
                 'bl_idname'   : 'NodeSocketFloatFactor',
                 'label'       : 'Green',
                 'name'        : 'Green',
                 'socket_type' : 'VALUE',
-                'aliases'     : {'Saturation', 'Green'},
+                'aliases'     : {'Green', 'Saturation'},
             },
             'Blue'  : {
                 'bl_idname'   : 'NodeSocketFloatFactor',
                 'label'       : 'Blue',
                 'name'        : 'Blue',
                 'socket_type' : 'VALUE',
-                'aliases'     : {'Blue', 'Value', 'Lightness'},
+                'aliases'     : {'Value', 'Lightness', 'Blue'},
             },
             'Alpha' : {
                 'bl_idname'   : 'NodeSocketFloatFactor',
@@ -3396,13 +3357,13 @@ NODE_INFO = {
                 'enum'    : ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SOUND'),
             },
         },
-        'items'          : [{'combine_list_items': 'EMPTY'}],
+        'items'          : ['combine_list_items'],
         'menu_sockets'   : {},
         'inputs'         : {
             '' : {
                 'bl_idname'   : 'NodeSocketVirtual',
                 'label'       : '',
-                'name'        : '',
+                'name'        : 'ANONYMOUS',
                 'socket_type' : 'CUSTOM',
                 'aliases'     : {''},
             },
@@ -3423,7 +3384,7 @@ NODE_INFO = {
     'FunctionNodeCombineMatrix'                : {
         'name'           : 'Combine Matrix',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Column 1 Row 1' : {
@@ -3555,7 +3516,7 @@ NODE_INFO = {
     'FunctionNodeCombineTransform'             : {
         'name'           : 'Combine Transform',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Translation' : {
@@ -3596,7 +3557,7 @@ NODE_INFO = {
     'ShaderNodeCombineXYZ'                     : {
         'name'           : 'Combine XYZ',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'X' : {
@@ -3643,7 +3604,7 @@ NODE_INFO = {
                 'enum'    : None,
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {},
         'outputs'        : {},
@@ -3670,7 +3631,7 @@ NODE_INFO = {
                 'enum'    : ('ELEMENT', 'LENGTH', 'AVERAGE', 'DOT_PRODUCT', 'DIRECTION'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'A'       : {
@@ -3731,7 +3692,7 @@ NODE_INFO = {
                 'enum'    : ('NONE', 'NGON', 'TRIANGLE_FAN'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Vertices'      : {
@@ -3821,7 +3782,7 @@ NODE_INFO = {
     'GeometryNodeConstructCurves'              : {
         'name'           : 'Construct Curves',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Positions'     : {
@@ -3855,7 +3816,7 @@ NODE_INFO = {
     'GeometryNodeConvexHull'                   : {
         'name'           : 'Convex Hull',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Geometry' : {
@@ -3882,7 +3843,7 @@ NODE_INFO = {
     'GeometryNodeCornersOfEdge'                : {
         'name'           : 'Corners of Edge',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Edge Index' : {
@@ -3930,7 +3891,7 @@ NODE_INFO = {
     'GeometryNodeCornersOfFace'                : {
         'name'           : 'Corners of Face',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Face Index' : {
@@ -3978,7 +3939,7 @@ NODE_INFO = {
     'GeometryNodeCornersOfVertex'              : {
         'name'           : 'Corners of Vertex',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Vertex Index' : {
@@ -4026,7 +3987,7 @@ NODE_INFO = {
     'GeometryNodeMeshCube'                     : {
         'name'           : 'Cube',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Size'       : {
@@ -4081,7 +4042,7 @@ NODE_INFO = {
     'GeometryNodeCubeGridTopology'             : {
         'name'           : 'Cube Grid Topology',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Bounds Min'   : {
@@ -4163,7 +4124,7 @@ NODE_INFO = {
                 'enum'    : ('POINTS', 'RADIUS'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Resolution' : {
@@ -4225,7 +4186,7 @@ NODE_INFO = {
     'GeometryNodeInputCurveHandlePositions'    : {
         'name'           : 'Curve Handle Positions',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Relative' : {
@@ -4259,7 +4220,7 @@ NODE_INFO = {
     'GeometryNodeCurveLength'                  : {
         'name'           : 'Curve Length',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Curve' : {
@@ -4292,7 +4253,7 @@ NODE_INFO = {
                 'enum'    : ('POINTS', 'DIRECTION'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Start'     : {
@@ -4340,7 +4301,7 @@ NODE_INFO = {
     'GeometryNodeCurveOfPoint'                 : {
         'name'           : 'Curve of Point',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Point Index' : {
@@ -4374,7 +4335,7 @@ NODE_INFO = {
     'GeometryNodeInputTangent'                 : {
         'name'           : 'Curve Tangent',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {},
         'outputs'        : {
@@ -4393,7 +4354,7 @@ NODE_INFO = {
     'GeometryNodeInputCurveTilt'               : {
         'name'           : 'Curve Tilt',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {},
         'outputs'        : {
@@ -4412,7 +4373,7 @@ NODE_INFO = {
     'GeometryNodeCurveToMesh'                  : {
         'name'           : 'Curve to Mesh',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Curve'             : {
@@ -4480,7 +4441,7 @@ NODE_INFO = {
                 'enum'    : ('EVALUATED', 'COUNT', 'LENGTH'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Curve'  : {
@@ -4542,7 +4503,7 @@ NODE_INFO = {
     'GeometryNodeCurvesToGreasePencil'         : {
         'name'           : 'Curves to Grease Pencil',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Curves'              : {
@@ -4589,7 +4550,7 @@ NODE_INFO = {
                 'enum'    : ('NONE', 'NGON', 'TRIANGLE_FAN'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Vertices'      : {
@@ -4678,7 +4639,7 @@ NODE_INFO = {
                 'enum'    : ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Grid'      : {
@@ -4712,7 +4673,7 @@ NODE_INFO = {
     'GeometryNodeDeformCurvesOnSurface'        : {
         'name'           : 'Deform Curves on Surface',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Curves' : {
@@ -4750,7 +4711,7 @@ NODE_INFO = {
                 'enum'    : ('POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE', 'LAYER'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Geometry'  : {
@@ -4790,7 +4751,7 @@ NODE_INFO = {
                 'enum'    : ('PRIMARY', 'SECONDARY', 'X', 'Y', 'Z'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Value'        : {
@@ -4851,7 +4812,7 @@ NODE_INFO = {
                 'enum'    : ('DENSITY_RANDOM', 'DENSITY_GRID'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Grid'      : {
@@ -4906,7 +4867,7 @@ NODE_INFO = {
     'GeometryNodeDistributePointsInVolume'     : {
         'name'           : 'Distribute Points in Volume',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {
             'Mode' : {
                 'default' : 'Random',
@@ -4979,7 +4940,7 @@ NODE_INFO = {
                 'enum'    : ('RANDOM', 'POISSON'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Mesh'           : {
@@ -5068,7 +5029,7 @@ NODE_INFO = {
                 'enum'    : ('MESH', 'POINTCLOUD', 'CURVE', 'INSTANCES', 'GREASEPENCIL'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Geometry' : {
@@ -5137,7 +5098,7 @@ NODE_INFO = {
     'GeometryNodeDualMesh'                     : {
         'name'           : 'Dual Mesh',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Mesh'            : {
@@ -5177,7 +5138,7 @@ NODE_INFO = {
                 'enum'    : ('POINT', 'EDGE', 'FACE', 'SPLINE', 'LAYER', 'INSTANCE'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Geometry'  : {
@@ -5225,7 +5186,7 @@ NODE_INFO = {
     'GeometryNodeInputMeshEdgeAngle'           : {
         'name'           : 'Edge Angle',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {},
         'outputs'        : {
@@ -5251,7 +5212,7 @@ NODE_INFO = {
     'GeometryNodeInputMeshEdgeNeighbors'       : {
         'name'           : 'Edge Neighbors',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {},
         'outputs'        : {
@@ -5270,7 +5231,7 @@ NODE_INFO = {
     'GeometryNodeEdgePathsToCurves'            : {
         'name'           : 'Edge Paths to Curves',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Mesh'              : {
@@ -5311,7 +5272,7 @@ NODE_INFO = {
     'GeometryNodeEdgePathsToSelection'         : {
         'name'           : 'Edge Paths to Selection',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Start Vertices'    : {
@@ -5345,7 +5306,7 @@ NODE_INFO = {
     'GeometryNodeInputMeshEdgeVertices'        : {
         'name'           : 'Edge Vertices',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {},
         'outputs'        : {
@@ -5385,7 +5346,7 @@ NODE_INFO = {
     'GeometryNodeEdgesOfCorner'                : {
         'name'           : 'Edges of Corner',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Corner Index' : {
@@ -5419,7 +5380,7 @@ NODE_INFO = {
     'GeometryNodeEdgesOfVertex'                : {
         'name'           : 'Edges of Vertex',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Vertex Index' : {
@@ -5467,7 +5428,7 @@ NODE_INFO = {
     'GeometryNodeEdgesToFaceGroups'            : {
         'name'           : 'Edges to Face Groups',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Boundary Edges' : {
@@ -5500,7 +5461,7 @@ NODE_INFO = {
                 'enum'    : ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SOUND'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Enable' : {
@@ -5534,7 +5495,7 @@ NODE_INFO = {
     'GeometryNodeCurveEndpointSelection'       : {
         'name'           : 'Endpoint Selection',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Start Size' : {
@@ -5568,7 +5529,7 @@ NODE_INFO = {
     'FunctionNodeEulerToRotation'              : {
         'name'           : 'Euler to Rotation',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Euler' : {
@@ -5606,7 +5567,7 @@ NODE_INFO = {
                 'enum'    : ('FLOAT', 'INT', 'BOOLEAN', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'QUATERNION', 'FLOAT4X4'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Value' : {
@@ -5646,7 +5607,7 @@ NODE_INFO = {
                 'enum'    : None,
             },
         },
-        'items'          : [{'input_items': 'NAME_TYPE', 'output_items': 'NAME_TYPE'}],
+        'items'          : ['input_items', 'output_items'],
         'menu_sockets'   : {},
         'inputs'         : {
             'Closure' : {
@@ -5659,7 +5620,7 @@ NODE_INFO = {
             ''        : {
                 'bl_idname'   : 'NodeSocketVirtual',
                 'label'       : '',
-                'name'        : '',
+                'name'        : 'NAMED',
                 'socket_type' : 'CUSTOM',
                 'aliases'     : {''},
             },
@@ -5668,7 +5629,7 @@ NODE_INFO = {
             '' : {
                 'bl_idname'   : 'NodeSocketVirtual',
                 'label'       : '',
-                'name'        : '',
+                'name'        : 'NAMED',
                 'socket_type' : 'CUSTOM',
                 'aliases'     : {''},
             },
@@ -5691,7 +5652,7 @@ NODE_INFO = {
                 'enum'    : ('FLOAT', 'INT', 'BOOLEAN', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'QUATERNION', 'FLOAT4X4'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Value' : {
@@ -5724,7 +5685,7 @@ NODE_INFO = {
                 'enum'    : ('VERTICES', 'EDGES', 'FACES'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Mesh'         : {
@@ -5793,7 +5754,7 @@ NODE_INFO = {
     'GeometryNodeInputMeshFaceArea'            : {
         'name'           : 'Face Area',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {},
         'outputs'        : {
@@ -5812,7 +5773,7 @@ NODE_INFO = {
     'GeometryNodeMeshFaceSetBoundaries'        : {
         'name'           : 'Face Group Boundaries',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Face Group ID' : {
@@ -5839,7 +5800,7 @@ NODE_INFO = {
     'GeometryNodeInputMeshFaceNeighbors'       : {
         'name'           : 'Face Neighbors',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {},
         'outputs'        : {
@@ -5865,7 +5826,7 @@ NODE_INFO = {
     'GeometryNodeFaceOfCorner'                 : {
         'name'           : 'Face of Corner',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Corner Index' : {
@@ -5899,7 +5860,7 @@ NODE_INFO = {
     'GeometryNodeToolFaceSet'                  : {
         'name'           : 'Face Set',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {},
         'outputs'        : {
@@ -5936,7 +5897,7 @@ NODE_INFO = {
                 'enum'    : ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Value'    : {
@@ -5988,7 +5949,7 @@ NODE_INFO = {
                 'enum'    : ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Value'    : {
@@ -6035,7 +5996,7 @@ NODE_INFO = {
                 'enum'    : ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR'),
             },
         },
-        'items'          : [{'grid_items': 'NAME_TYPE'}],
+        'items'          : ['grid_items'],
         'menu_sockets'   : {},
         'inputs'         : {
             'Topology' : {
@@ -6048,7 +6009,7 @@ NODE_INFO = {
             ''         : {
                 'bl_idname'   : 'NodeSocketVirtual',
                 'label'       : '',
-                'name'        : '',
+                'name'        : 'NAMED',
                 'socket_type' : 'CUSTOM',
                 'aliases'     : {''},
             },
@@ -6057,7 +6018,7 @@ NODE_INFO = {
             '' : {
                 'bl_idname'   : 'NodeSocketVirtual',
                 'label'       : '',
-                'name'        : '',
+                'name'        : 'NAMED',
                 'socket_type' : 'CUSTOM',
                 'aliases'     : {''},
             },
@@ -6069,7 +6030,7 @@ NODE_INFO = {
     'GeometryNodeFieldToList'                  : {
         'name'           : 'Field to List',
         'params'         : {},
-        'items'          : [{'list_items': 'NAME_TYPE'}],
+        'items'          : ['list_items'],
         'menu_sockets'   : {},
         'inputs'         : {
             'Count' : {
@@ -6082,7 +6043,7 @@ NODE_INFO = {
             ''      : {
                 'bl_idname'   : 'NodeSocketVirtual',
                 'label'       : '',
-                'name'        : '',
+                'name'        : 'NAMED',
                 'socket_type' : 'CUSTOM',
                 'aliases'     : {''},
             },
@@ -6091,7 +6052,7 @@ NODE_INFO = {
             '' : {
                 'bl_idname'   : 'NodeSocketVirtual',
                 'label'       : '',
-                'name'        : '',
+                'name'        : 'NAMED',
                 'socket_type' : 'CUSTOM',
                 'aliases'     : {''},
             },
@@ -6114,7 +6075,7 @@ NODE_INFO = {
                 'enum'    : ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Value'    : {
@@ -6155,7 +6116,7 @@ NODE_INFO = {
     'GeometryNodeFillCurve'                    : {
         'name'           : 'Fill Curve',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {
             'Mode'      : {
                 'default' : 'Triangles',
@@ -6212,7 +6173,7 @@ NODE_INFO = {
     'GeometryNodeFilletCurve'                  : {
         'name'           : 'Fillet Curve',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {
             'Mode' : {
                 'default' : 'Bézier',
@@ -6278,7 +6239,7 @@ NODE_INFO = {
                 'enum'    : ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SOUND'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'List'      : {
@@ -6319,7 +6280,7 @@ NODE_INFO = {
     'FunctionNodeFindInString'                 : {
         'name'           : 'Find in String',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {
             'Mode' : {
                 'default' : 'From Start',
@@ -6372,7 +6333,7 @@ NODE_INFO = {
     'GeometryNodeFlipFaces'                    : {
         'name'           : 'Flip Faces',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Mesh'      : {
@@ -6406,7 +6367,7 @@ NODE_INFO = {
     'ShaderNodeFloatCurve'                     : {
         'name'           : 'Float Curve',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Factor' : {
@@ -6446,7 +6407,7 @@ NODE_INFO = {
                 'enum'    : ('ROUND', 'FLOOR', 'CEILING', 'TRUNCATE'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Float' : {
@@ -6479,7 +6440,7 @@ NODE_INFO = {
                 'enum'    : None,
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {},
         'outputs'        : {
@@ -6498,7 +6459,7 @@ NODE_INFO = {
     'GeometryNodeForeachGeometryElementInput'  : {
         'name'           : 'For Each Geometry Element Input',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Geometry'  : {
@@ -6518,7 +6479,7 @@ NODE_INFO = {
             ''          : {
                 'bl_idname'   : 'NodeSocketVirtual',
                 'label'       : '',
-                'name'        : '',
+                'name'        : 'NAMED',
                 'socket_type' : 'CUSTOM',
                 'aliases'     : {''},
             },
@@ -6534,7 +6495,7 @@ NODE_INFO = {
             ''      : {
                 'bl_idname'   : 'NodeSocketVirtual',
                 'label'       : '',
-                'name'        : '',
+                'name'        : 'NAMED',
                 'socket_type' : 'CUSTOM',
                 'aliases'     : {''},
             },
@@ -6552,13 +6513,13 @@ NODE_INFO = {
                 'enum'    : ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'),
             },
         },
-        'items'          : [{'generation_items': 'NAME_TYPE', 'input_items': 'NAME_TYPE', 'main_items': 'NAME_TYPE'}],
+        'items'          : ['generation_items', 'input_items', 'main_items'],
         'menu_sockets'   : {},
         'inputs'         : {
             '' : {
                 'bl_idname'   : 'NodeSocketVirtual',
                 'label'       : '',
-                'name'        : '',
+                'name'        : 'NAMED',
                 'socket_type' : 'CUSTOM',
                 'aliases'     : {''},
             },
@@ -6574,7 +6535,7 @@ NODE_INFO = {
             ''         : {
                 'bl_idname'   : 'NodeSocketVirtual',
                 'label'       : '',
-                'name'        : '',
+                'name'        : 'NAMED',
                 'socket_type' : 'CUSTOM',
                 'aliases'     : {''},
             },
@@ -6586,7 +6547,7 @@ NODE_INFO = {
     'FunctionNodeFormatString'                 : {
         'name'           : 'Format String',
         'params'         : {},
-        'items'          : [{'format_items': 'NAME_TYPE'}],
+        'items'          : ['format_items'],
         'menu_sockets'   : {},
         'inputs'         : {
             'Format' : {
@@ -6599,7 +6560,7 @@ NODE_INFO = {
             ''       : {
                 'bl_idname'   : 'NodeSocketVirtual',
                 'label'       : '',
-                'name'        : '',
+                'name'        : 'NAMED',
                 'socket_type' : 'CUSTOM',
                 'aliases'     : {''},
             },
@@ -6636,7 +6597,7 @@ NODE_INFO = {
                 'enum'    : None,
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {},
         'outputs'        : {},
@@ -6653,7 +6614,7 @@ NODE_INFO = {
                 'enum'    : ('2D', '3D'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Vector'      : {
@@ -6722,7 +6683,7 @@ NODE_INFO = {
     'ShaderNodeGamma'                          : {
         'name'           : 'Gamma',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Color' : {
@@ -6756,7 +6717,7 @@ NODE_INFO = {
     'GeometryNodeGeometryMaterials'            : {
         'name'           : 'Geometry Materials',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {
             'Component Type' : {
                 'default' : 'Mesh',
@@ -6801,7 +6762,7 @@ NODE_INFO = {
                 'enum'    : ('POINTS', 'EDGES', 'FACES'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Geometry'        : {
@@ -6863,7 +6824,7 @@ NODE_INFO = {
     'GeometryNodeGeometryToInstance'           : {
         'name'           : 'Geometry to Instance',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Geometry' : {
@@ -6890,7 +6851,7 @@ NODE_INFO = {
     'GeometryNodeGetAttributeNames'            : {
         'name'           : 'Get Attribute Names',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {
             'Data Type' : {
                 'default' : 'Float',
@@ -6960,7 +6921,7 @@ NODE_INFO = {
                 'enum'    : ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SOUND'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Bundle' : {
@@ -7015,7 +6976,7 @@ NODE_INFO = {
     'GeometryNodeGetGeometryBundle'            : {
         'name'           : 'Get Geometry Bundle',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Geometry' : {
@@ -7056,7 +7017,7 @@ NODE_INFO = {
     'GeometryNodeGetGeometryComponent'         : {
         'name'           : 'Get Geometry Component',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {
             'Type' : {
                 'default' : 'Mesh',
@@ -7116,7 +7077,7 @@ NODE_INFO = {
     'GeometryNodeGetGridNames'                 : {
         'name'           : 'Get Grid Names',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Volume' : {
@@ -7149,7 +7110,7 @@ NODE_INFO = {
                 'enum'    : ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SOUND'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'List'  : {
@@ -7189,7 +7150,7 @@ NODE_INFO = {
                 'enum'    : ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Volume' : {
@@ -7237,7 +7198,7 @@ NODE_INFO = {
     'NodeGetNestedBundlePaths'                 : {
         'name'           : 'Get Nested Bundle Paths',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {
             'Mode'         : {
                 'default' : 'All',
@@ -7305,7 +7266,7 @@ NODE_INFO = {
     'FunctionNodeGetVectorComponent'           : {
         'name'           : 'Get Vector Component',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Vector' : {
@@ -7345,7 +7306,7 @@ NODE_INFO = {
                 'enum'    : ('LINEAR', 'QUADRATIC', 'EASING', 'DIAGONAL', 'SPHERICAL', 'QUADRATIC_SPHERE', 'RADIAL'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Vector' : {
@@ -7379,7 +7340,7 @@ NODE_INFO = {
     'GeometryNodeGreasePencilColor'            : {
         'name'           : 'Grease Pencil Color',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {},
         'outputs'        : {
@@ -7405,7 +7366,7 @@ NODE_INFO = {
     'GeometryNodeGreasePencilDrawTime'         : {
         'name'           : 'Grease Pencil Draw Time',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {},
         'outputs'        : {
@@ -7431,7 +7392,7 @@ NODE_INFO = {
     'GeometryNodeGreasePencilFillID'           : {
         'name'           : 'Grease Pencil Fill ID',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {},
         'outputs'        : {
@@ -7450,7 +7411,7 @@ NODE_INFO = {
     'GeometryNodeGreasePencilOpacity'          : {
         'name'           : 'Grease Pencil Opacity',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {},
         'outputs'        : {
@@ -7476,7 +7437,7 @@ NODE_INFO = {
     'GeometryNodeGreasePencilStrokeSoftness'   : {
         'name'           : 'Grease Pencil Stroke Softness',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {},
         'outputs'        : {
@@ -7495,7 +7456,7 @@ NODE_INFO = {
     'GeometryNodeGreasePencilStrokeVisibility' : {
         'name'           : 'Grease Pencil Stroke Visibility',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {},
         'outputs'        : {
@@ -7514,7 +7475,7 @@ NODE_INFO = {
     'GeometryNodeGreasePencilToCurves'         : {
         'name'           : 'Grease Pencil to Curves',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Grease Pencil'       : {
@@ -7555,7 +7516,7 @@ NODE_INFO = {
     'GeometryNodeMeshGrid'                     : {
         'name'           : 'Grid',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Size X'     : {
@@ -7610,7 +7571,7 @@ NODE_INFO = {
     'GeometryNodeGridCurl'                     : {
         'name'           : 'Grid Curl',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Grid' : {
@@ -7643,7 +7604,7 @@ NODE_INFO = {
                 'enum'    : ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {
             'Connectivity' : {
                 'default' : 'Face',
@@ -7700,7 +7661,7 @@ NODE_INFO = {
     'GeometryNodeGridDivergence'               : {
         'name'           : 'Grid Divergence',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Grid' : {
@@ -7727,7 +7688,7 @@ NODE_INFO = {
     'GeometryNodeGridGradient'                 : {
         'name'           : 'Grid Gradient',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Grid' : {
@@ -7760,7 +7721,7 @@ NODE_INFO = {
                 'enum'    : ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Grid' : {
@@ -7794,7 +7755,7 @@ NODE_INFO = {
     'GeometryNodeGridLaplacian'                : {
         'name'           : 'Grid Laplacian',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Grid' : {
@@ -7827,7 +7788,7 @@ NODE_INFO = {
                 'enum'    : ('FLOAT', 'INT', 'VECTOR'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Grid'       : {
@@ -7874,7 +7835,7 @@ NODE_INFO = {
                 'enum'    : ('FLOAT', 'INT', 'VECTOR'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Grid'       : {
@@ -7915,7 +7876,7 @@ NODE_INFO = {
     'GeometryNodeGridSolvePoisson'             : {
         'name'           : 'Grid Solve Poisson',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {
             'Threshold Mode' : {
                 'default' : 'Relative',
@@ -8049,7 +8010,7 @@ NODE_INFO = {
     'GeometryNodeGridToMesh'                   : {
         'name'           : 'Grid to Mesh',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Grid'       : {
@@ -8096,7 +8057,7 @@ NODE_INFO = {
                 'enum'    : ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Grid' : {
@@ -8171,7 +8132,7 @@ NODE_INFO = {
                 'enum'    : ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {
             'Operation' : {
                 'default' : 'Intersect',
@@ -8223,7 +8184,7 @@ NODE_INFO = {
                 'enum'    : None,
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {},
         'outputs'        : {},
@@ -8234,14 +8195,14 @@ NODE_INFO = {
     'NodeGroupInput'                           : {
         'name'           : 'Group Input',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {},
         'outputs'        : {
             '' : {
                 'bl_idname'   : 'NodeSocketVirtual',
                 'label'       : '',
-                'name'        : '',
+                'name'        : 'NAMED',
                 'socket_type' : 'CUSTOM',
                 'aliases'     : {''},
             },
@@ -8259,13 +8220,13 @@ NODE_INFO = {
                 'enum'    : None,
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             '' : {
                 'bl_idname'   : 'NodeSocketVirtual',
                 'label'       : '',
-                'name'        : '',
+                'name'        : 'NAMED',
                 'socket_type' : 'CUSTOM',
                 'aliases'     : {''},
             },
@@ -8284,12 +8245,12 @@ NODE_INFO = {
                 'enum'    : ('FREE', 'AUTO', 'VECTOR', 'ALIGN'),
             },
             'mode'        : {
-                'default' : {'RIGHT', 'LEFT'},
+                'default' : {'LEFT', 'RIGHT'},
                 'type'    : 'ENUM_FLAG',
                 'enum'    : ('LEFT', 'RIGHT'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {},
         'outputs'        : {
@@ -8314,7 +8275,7 @@ NODE_INFO = {
                 'enum'    : ('FLOAT', 'INT', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Value' : {
@@ -8348,7 +8309,7 @@ NODE_INFO = {
     'GeometryNodeMeshIcoSphere'                : {
         'name'           : 'Ico Sphere',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Radius'       : {
@@ -8389,7 +8350,7 @@ NODE_INFO = {
     'GeometryNodeInputID'                      : {
         'name'           : 'ID',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {},
         'outputs'        : {
@@ -8414,7 +8375,7 @@ NODE_INFO = {
                 'enum'    : None,
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {},
         'outputs'        : {
@@ -8433,7 +8394,7 @@ NODE_INFO = {
     'GeometryNodeImageInfo'                    : {
         'name'           : 'Image Info',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Image' : {
@@ -8506,7 +8467,7 @@ NODE_INFO = {
                 'enum'    : ('REPEAT', 'EXTEND', 'CLIP', 'MIRROR'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Image'  : {
@@ -8565,7 +8526,7 @@ NODE_INFO = {
                 'enum'    : ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SOUND'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Value' : {
@@ -8592,7 +8553,7 @@ NODE_INFO = {
     'GeometryNodeImportCSV'                    : {
         'name'           : 'Import CSV',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Path'      : {
@@ -8626,7 +8587,7 @@ NODE_INFO = {
     'GeometryNodeImportOBJ'                    : {
         'name'           : 'Import OBJ',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Path' : {
@@ -8653,7 +8614,7 @@ NODE_INFO = {
     'GeometryNodeImportPLY'                    : {
         'name'           : 'Import PLY',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Path' : {
@@ -8680,7 +8641,7 @@ NODE_INFO = {
     'GeometryNodeImportSPZ'                    : {
         'name'           : 'Import SPZ',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Path' : {
@@ -8707,7 +8668,7 @@ NODE_INFO = {
     'GeometryNodeImportSTL'                    : {
         'name'           : 'Import STL',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Path' : {
@@ -8734,7 +8695,7 @@ NODE_INFO = {
     'GeometryNodeImportText'                   : {
         'name'           : 'Import Text',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Path' : {
@@ -8761,7 +8722,7 @@ NODE_INFO = {
     'GeometryNodeImportVDB'                    : {
         'name'           : 'Import VDB',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Path' : {
@@ -8788,7 +8749,7 @@ NODE_INFO = {
     'GeometryNodeInputIndex'                   : {
         'name'           : 'Index',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {},
         'outputs'        : {
@@ -8807,7 +8768,7 @@ NODE_INFO = {
     'GeometryNodeIndexOfNearest'               : {
         'name'           : 'Index of Nearest',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Position' : {
@@ -8854,7 +8815,7 @@ NODE_INFO = {
                 'enum'    : ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SOUND'),
             },
         },
-        'items'          : [{'index_switch_items': 'EMPTY'}],
+        'items'          : ['index_switch_items'],
         'menu_sockets'   : {},
         'inputs'         : {
             'Index' : {
@@ -8867,7 +8828,7 @@ NODE_INFO = {
             ''      : {
                 'bl_idname'   : 'NodeSocketVirtual',
                 'label'       : '',
-                'name'        : '',
+                'name'        : 'ANONYMOUS',
                 'socket_type' : 'CUSTOM',
                 'aliases'     : {''},
             },
@@ -8888,7 +8849,7 @@ NODE_INFO = {
     'GeometryNodeInputInstanceBounds'          : {
         'name'           : 'Instance Bounds',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Use Radius' : {
@@ -8922,7 +8883,7 @@ NODE_INFO = {
     'GeometryNodeInstanceOnPoints'             : {
         'name'           : 'Instance on Points',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Points'         : {
@@ -8991,7 +8952,7 @@ NODE_INFO = {
     'GeometryNodeInputInstanceReference'       : {
         'name'           : 'Instance Reference',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {},
         'outputs'        : {
@@ -9010,7 +8971,7 @@ NODE_INFO = {
     'GeometryNodeInputInstanceRotation'        : {
         'name'           : 'Instance Rotation',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {},
         'outputs'        : {
@@ -9029,7 +8990,7 @@ NODE_INFO = {
     'GeometryNodeInputInstanceScale'           : {
         'name'           : 'Instance Scale',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {},
         'outputs'        : {
@@ -9048,7 +9009,7 @@ NODE_INFO = {
     'GeometryNodeInstanceTransform'            : {
         'name'           : 'Instance Transform',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {},
         'outputs'        : {
@@ -9067,7 +9028,7 @@ NODE_INFO = {
     'GeometryNodeInstancesToPoints'            : {
         'name'           : 'Instances to Points',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Instances' : {
@@ -9121,7 +9082,7 @@ NODE_INFO = {
                 'enum'    : None,
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {},
         'outputs'        : {
@@ -9146,7 +9107,7 @@ NODE_INFO = {
                 'enum'    : ('ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'MULTIPLY_ADD', 'ABSOLUTE', 'NEGATE', 'POWER', 'MINIMUM', 'MAXIMUM', 'SIGN', 'DIVIDE_ROUND', 'DIVIDE_FLOOR', 'DIVIDE_CEIL', 'FLOORED_MODULO', 'MODULO', 'GCD', 'LCM'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Value'  : {
@@ -9154,7 +9115,7 @@ NODE_INFO = {
                 'label'       : 'Value',
                 'name'        : 'Value',
                 'socket_type' : 'INT',
-                'aliases'     : {'Exponent', 'Multiplier', 'Value'},
+                'aliases'     : {'Value', 'Multiplier', 'Exponent'},
             },
             'Addend' : {
                 'bl_idname'   : 'NodeSocketInt',
@@ -9180,7 +9141,7 @@ NODE_INFO = {
     'GeometryNodeInterpolateCurves'            : {
         'name'           : 'Interpolate Curves',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Guide Curves'   : {
@@ -9263,7 +9224,7 @@ NODE_INFO = {
     'FunctionNodeInvertMatrix'                 : {
         'name'           : 'Invert Matrix',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Matrix' : {
@@ -9297,7 +9258,7 @@ NODE_INFO = {
     'FunctionNodeInvertRotation'               : {
         'name'           : 'Invert Rotation',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Rotation' : {
@@ -9324,7 +9285,7 @@ NODE_INFO = {
     'GeometryNodeInputEdgeSmooth'              : {
         'name'           : 'Is Edge Smooth',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {},
         'outputs'        : {
@@ -9343,7 +9304,7 @@ NODE_INFO = {
     'GeometryNodeInputMeshFaceIsPlanar'        : {
         'name'           : 'Is Face Planar',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Threshold' : {
@@ -9370,7 +9331,7 @@ NODE_INFO = {
     'GeometryNodeInputShadeSmooth'             : {
         'name'           : 'Is Face Smooth',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {},
         'outputs'        : {
@@ -9389,7 +9350,7 @@ NODE_INFO = {
     'GeometryNodeInputSplineCyclic'            : {
         'name'           : 'Is Spline Cyclic',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {},
         'outputs'        : {
@@ -9408,7 +9369,7 @@ NODE_INFO = {
     'GeometryNodeIsViewport'                   : {
         'name'           : 'Is Viewport',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {},
         'outputs'        : {
@@ -9427,7 +9388,7 @@ NODE_INFO = {
     'NodeJoinBundle'                           : {
         'name'           : 'Join Bundle',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Bundle' : {
@@ -9454,7 +9415,7 @@ NODE_INFO = {
     'GeometryNodeJoinGeometry'                 : {
         'name'           : 'Join Geometry',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Geometry' : {
@@ -9481,7 +9442,7 @@ NODE_INFO = {
     'GeometryNodeStringJoin'                   : {
         'name'           : 'Join Strings',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Delimiter' : {
@@ -9526,7 +9487,7 @@ NODE_INFO = {
                 'enum'    : ('ARROW', 'CROSS', 'BOX'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Value'     : {
@@ -9573,7 +9534,7 @@ NODE_INFO = {
                 'enum'    : ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SOUND'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'List' : {
@@ -9606,7 +9567,7 @@ NODE_INFO = {
                 'enum'    : None,
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Vector'     : {
@@ -9670,7 +9631,7 @@ NODE_INFO = {
                 'enum'    : ('FLOAT', 'FLOAT_VECTOR'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Value'    : {
@@ -9746,7 +9707,7 @@ NODE_INFO = {
     'FunctionNodeMatchString'                  : {
         'name'           : 'Match String',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {
             'Operation' : {
                 'default' : 'Starts With',
@@ -9798,7 +9759,7 @@ NODE_INFO = {
                 'enum'    : None,
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {},
         'outputs'        : {
@@ -9817,7 +9778,7 @@ NODE_INFO = {
     'GeometryNodeInputMaterialIndex'           : {
         'name'           : 'Material Index',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {},
         'outputs'        : {
@@ -9836,7 +9797,7 @@ NODE_INFO = {
     'GeometryNodeMaterialSelection'            : {
         'name'           : 'Material Selection',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Material' : {
@@ -9874,7 +9835,7 @@ NODE_INFO = {
                 'enum'    : None,
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Value'  : {
@@ -9882,7 +9843,7 @@ NODE_INFO = {
                 'label'       : 'Value',
                 'name'        : 'Value',
                 'socket_type' : 'VALUE',
-                'aliases'     : {'Max', 'Increment', 'Multiplier', 'Threshold', 'Base', 'Exponent', 'Value', 'Scale'},
+                'aliases'     : {'Multiplier', 'Exponent', 'Value', 'Scale', 'Base', 'Max', 'Threshold', 'Increment'},
             },
             'Addend' : {
                 'bl_idname'   : 'NodeSocketFloat',
@@ -9908,7 +9869,7 @@ NODE_INFO = {
     'FunctionNodeMatrixDeterminant'            : {
         'name'           : 'Matrix Determinant',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Matrix' : {
@@ -9935,7 +9896,7 @@ NODE_INFO = {
     'FunctionNodeMatrixSVD'                    : {
         'name'           : 'Matrix SVD',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Matrix' : {
@@ -9982,7 +9943,7 @@ NODE_INFO = {
                 'enum'    : (),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {},
         'outputs'        : {
@@ -10007,7 +9968,7 @@ NODE_INFO = {
                 'enum'    : ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SOUND'),
             },
         },
-        'items'          : [{'enum_items': 'NAME'}],
+        'items'          : ['enum_items'],
         'menu_sockets'   : {
             'Menu' : {
                 'default' : '',
@@ -10025,7 +9986,7 @@ NODE_INFO = {
             ''     : {
                 'bl_idname'   : 'NodeSocketVirtual',
                 'label'       : '',
-                'name'        : '',
+                'name'        : 'NAMED',
                 'socket_type' : 'CUSTOM',
                 'aliases'     : {''},
             },
@@ -10046,7 +10007,7 @@ NODE_INFO = {
     'GeometryNodeMergeByDistance'              : {
         'name'           : 'Merge by Distance',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {
             'Mode' : {
                 'default' : 'All',
@@ -10105,7 +10066,7 @@ NODE_INFO = {
                 'enum'    : ('MERGE_BY_NAME', 'MERGE_BY_ID'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {
             'Mode' : {
                 'default' : 'By Name',
@@ -10158,7 +10119,7 @@ NODE_INFO = {
     'GeometryNodeMergePoints'                  : {
         'name'           : 'Merge Points',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Geometry'  : {
@@ -10199,7 +10160,7 @@ NODE_INFO = {
     'GeometryNodeMeshBevel'                    : {
         'name'           : 'Mesh Bevel',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {
             'Affect Kind' : {
                 'default' : 'Edges',
@@ -10354,7 +10315,7 @@ NODE_INFO = {
                 'enum'    : ('EXACT', 'FLOAT', 'MANIFOLD'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Mesh 1'            : {
@@ -10415,7 +10376,7 @@ NODE_INFO = {
                 'enum'    : ('NONE', 'NGON', 'TRIANGLE_FAN'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Vertices' : {
@@ -10449,7 +10410,7 @@ NODE_INFO = {
     'GeometryNodeInputMeshIsland'              : {
         'name'           : 'Mesh Island',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {},
         'outputs'        : {
@@ -10486,7 +10447,7 @@ NODE_INFO = {
                 'enum'    : ('TOTAL', 'RESOLUTION'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Count'          : {
@@ -10515,7 +10476,7 @@ NODE_INFO = {
                 'label'       : 'Offset',
                 'name'        : 'Offset',
                 'socket_type' : 'VECTOR',
-                'aliases'     : {'Offset', 'End Location'},
+                'aliases'     : {'End Location', 'Offset'},
             },
         },
         'outputs'        : {
@@ -10540,7 +10501,7 @@ NODE_INFO = {
                 'enum'    : ('EDGES', 'FACES'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Mesh'      : {
@@ -10574,7 +10535,7 @@ NODE_INFO = {
     'GeometryNodeMeshToDensityGrid'            : {
         'name'           : 'Mesh to Density Grid',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Mesh'           : {
@@ -10628,7 +10589,7 @@ NODE_INFO = {
                 'enum'    : ('VERTICES', 'EDGES', 'FACES', 'CORNERS'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Mesh'      : {
@@ -10676,7 +10637,7 @@ NODE_INFO = {
     'GeometryNodeMeshToSDFGrid'                : {
         'name'           : 'Mesh to SDF Grid',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Mesh'       : {
@@ -10717,7 +10678,7 @@ NODE_INFO = {
     'GeometryNodeMeshToVolume'                 : {
         'name'           : 'Mesh to Volume',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {
             'Resolution Mode' : {
                 'default' : 'Amount',
@@ -10810,7 +10771,7 @@ NODE_INFO = {
                 'enum'    : None,
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Factor' : {
@@ -10867,7 +10828,7 @@ NODE_INFO = {
                 'enum'    : None,
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Factor' : {
@@ -10908,7 +10869,7 @@ NODE_INFO = {
     'GeometryNodeToolMousePosition'            : {
         'name'           : 'Mouse Position',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {},
         'outputs'        : {
@@ -10948,7 +10909,7 @@ NODE_INFO = {
     'FunctionNodeMatrixMultiply'               : {
         'name'           : 'Multiply Matrices',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Matrix' : {
@@ -10981,7 +10942,7 @@ NODE_INFO = {
                 'enum'    : ('FLOAT', 'INT', 'BOOLEAN', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'QUATERNION', 'FLOAT4X4'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Name' : {
@@ -11015,7 +10976,7 @@ NODE_INFO = {
     'GeometryNodeInputNamedLayerSelection'     : {
         'name'           : 'Named Layer Selection',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Name' : {
@@ -11058,7 +11019,7 @@ NODE_INFO = {
                 'enum'    : None,
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Vector'     : {
@@ -11148,7 +11109,7 @@ NODE_INFO = {
     'GeometryNodeInputNormal'                  : {
         'name'           : 'Normal',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {},
         'outputs'        : {
@@ -11174,7 +11135,7 @@ NODE_INFO = {
     'GeometryNodeNURBSOrder'                   : {
         'name'           : 'NURBS Order',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {},
         'outputs'        : {
@@ -11193,7 +11154,7 @@ NODE_INFO = {
     'GeometryNodeNURBSWeight'                  : {
         'name'           : 'NURBS Weight',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {},
         'outputs'        : {
@@ -11218,7 +11179,7 @@ NODE_INFO = {
                 'enum'    : None,
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {},
         'outputs'        : {
@@ -11243,7 +11204,7 @@ NODE_INFO = {
                 'enum'    : ('ORIGINAL', 'RELATIVE'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Object'      : {
@@ -11305,7 +11266,7 @@ NODE_INFO = {
     'GeometryNodeOffsetCornerInFace'           : {
         'name'           : 'Offset Corner in Face',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Corner Index' : {
@@ -11339,7 +11300,7 @@ NODE_INFO = {
     'GeometryNodeOffsetPointInCurve'           : {
         'name'           : 'Offset Point in Curve',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Point Index' : {
@@ -11380,7 +11341,7 @@ NODE_INFO = {
     'GeometryNodeUVPackIslands'                : {
         'name'           : 'Pack UV Islands',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {
             'Method' : {
                 'default' : 'Bounding Box',
@@ -11454,7 +11415,7 @@ NODE_INFO = {
     'GeometryNodePoints'                       : {
         'name'           : 'Points',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Count'    : {
@@ -11495,7 +11456,7 @@ NODE_INFO = {
     'GeometryNodePointsOfCurve'                : {
         'name'           : 'Points of Curve',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Curve Index' : {
@@ -11543,7 +11504,7 @@ NODE_INFO = {
     'GeometryNodePointsToCurves'               : {
         'name'           : 'Points to Curves',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Points'         : {
@@ -11584,7 +11545,7 @@ NODE_INFO = {
     'GeometryNodePointsToSDFGrid'              : {
         'name'           : 'Points to SDF Grid',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Points'     : {
@@ -11625,7 +11586,7 @@ NODE_INFO = {
     'GeometryNodePointsToVertices'             : {
         'name'           : 'Points to Vertices',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Points'    : {
@@ -11659,7 +11620,7 @@ NODE_INFO = {
     'GeometryNodePointsToVolume'               : {
         'name'           : 'Points to Volume',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {
             'Resolution Mode' : {
                 'default' : 'Amount',
@@ -11726,7 +11687,7 @@ NODE_INFO = {
     'GeometryNodeInputPosition'                : {
         'name'           : 'Position',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {},
         'outputs'        : {
@@ -11745,7 +11706,7 @@ NODE_INFO = {
     'FunctionNodeProjectPoint'                 : {
         'name'           : 'Project Point',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Vector'    : {
@@ -11785,7 +11746,7 @@ NODE_INFO = {
                 'enum'    : ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {
             'Mode' : {
                 'default' : 'Threshold',
@@ -11831,7 +11792,7 @@ NODE_INFO = {
     'GeometryNodeCurveQuadraticBezier'         : {
         'name'           : 'Quadratic Bézier',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Resolution' : {
@@ -11885,7 +11846,7 @@ NODE_INFO = {
                 'enum'    : ('RECTANGLE', 'PARALLELOGRAM', 'TRAPEZOID', 'KITE', 'POINTS'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Width'         : {
@@ -11982,7 +11943,7 @@ NODE_INFO = {
     'FunctionNodeQuaternionToRotation'         : {
         'name'           : 'Quaternion to Rotation',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'W' : {
@@ -12036,7 +11997,7 @@ NODE_INFO = {
                 'enum'    : None,
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Vector'    : {
@@ -12098,7 +12059,7 @@ NODE_INFO = {
     'GeometryNodeInputRadius'                  : {
         'name'           : 'Radius',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {},
         'outputs'        : {
@@ -12123,7 +12084,7 @@ NODE_INFO = {
                 'enum'    : ('FLOAT', 'INT', 'BOOLEAN', 'FLOAT_VECTOR'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Min'         : {
@@ -12178,7 +12139,7 @@ NODE_INFO = {
     'GeometryNodeRasterizePoints'              : {
         'name'           : 'Rasterize Points',
         'params'         : {},
-        'items'          : [{'rasterize_items': 'NAME'}],
+        'items'          : ['rasterize_items'],
         'menu_sockets'   : {
             'Grid Transform Mode' : {
                 'default' : 'Voxel Size',
@@ -12235,7 +12196,7 @@ NODE_INFO = {
             ''                    : {
                 'bl_idname'   : 'NodeSocketVirtual',
                 'label'       : '',
-                'name'        : '',
+                'name'        : 'NAMED',
                 'socket_type' : 'CUSTOM',
                 'aliases'     : {''},
             },
@@ -12244,7 +12205,7 @@ NODE_INFO = {
             '' : {
                 'bl_idname'   : 'NodeSocketVirtual',
                 'label'       : '',
-                'name'        : '',
+                'name'        : 'NAMED',
                 'socket_type' : 'CUSTOM',
                 'aliases'     : {''},
             },
@@ -12262,7 +12223,7 @@ NODE_INFO = {
                 'enum'    : ('FLOAT', 'INT', 'BOOLEAN', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'QUATERNION', 'FLOAT4X4'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {
             'Interpolation' : {
                 'default' : 'Interpolated',
@@ -12363,7 +12324,7 @@ NODE_INFO = {
                 'enum'    : None,
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Geometry'         : {
@@ -12418,7 +12379,7 @@ NODE_INFO = {
     'GeometryNodeRemoveAttribute'              : {
         'name'           : 'Remove Named Attribute',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {
             'Pattern Mode' : {
                 'default' : 'Exact',
@@ -12464,7 +12425,7 @@ NODE_INFO = {
     'GeometryNodeRenameAttribute'              : {
         'name'           : 'Rename Attribute',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {
             'Mode' : {
                 'default' : 'Single',
@@ -12524,7 +12485,7 @@ NODE_INFO = {
     'GeometryNodeRepeatInput'                  : {
         'name'           : 'Repeat Input',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Iterations' : {
@@ -12537,7 +12498,7 @@ NODE_INFO = {
             ''           : {
                 'bl_idname'   : 'NodeSocketVirtual',
                 'label'       : '',
-                'name'        : '',
+                'name'        : 'NAMED',
                 'socket_type' : 'CUSTOM',
                 'aliases'     : {''},
             },
@@ -12553,7 +12514,7 @@ NODE_INFO = {
             ''          : {
                 'bl_idname'   : 'NodeSocketVirtual',
                 'label'       : '',
-                'name'        : '',
+                'name'        : 'NAMED',
                 'socket_type' : 'CUSTOM',
                 'aliases'     : {''},
             },
@@ -12565,13 +12526,13 @@ NODE_INFO = {
     'GeometryNodeRepeatOutput'                 : {
         'name'           : 'Repeat Output',
         'params'         : {},
-        'items'          : [{'repeat_items': 'NAME_TYPE'}],
+        'items'          : ['repeat_items'],
         'menu_sockets'   : {},
         'inputs'         : {
             '' : {
                 'bl_idname'   : 'NodeSocketVirtual',
                 'label'       : '',
-                'name'        : '',
+                'name'        : 'NAMED',
                 'socket_type' : 'CUSTOM',
                 'aliases'     : {''},
             },
@@ -12580,7 +12541,7 @@ NODE_INFO = {
             '' : {
                 'bl_idname'   : 'NodeSocketVirtual',
                 'label'       : '',
-                'name'        : '',
+                'name'        : 'NAMED',
                 'socket_type' : 'CUSTOM',
                 'aliases'     : {''},
             },
@@ -12592,7 +12553,7 @@ NODE_INFO = {
     'GeometryNodeReplaceMaterial'              : {
         'name'           : 'Replace Material',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Geometry' : {
@@ -12633,7 +12594,7 @@ NODE_INFO = {
     'FunctionNodeReplaceString'                : {
         'name'           : 'Replace String',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'String'  : {
@@ -12680,7 +12641,7 @@ NODE_INFO = {
                 'enum'    : None,
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Input' : {
@@ -12713,7 +12674,7 @@ NODE_INFO = {
                 'enum'    : None,
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {
             'Mode' : {
                 'default' : 'Count',
@@ -12773,7 +12734,7 @@ NODE_INFO = {
     'GeometryNodeReverseCurve'                 : {
         'name'           : 'Reverse Curve',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Curve'     : {
@@ -12807,7 +12768,7 @@ NODE_INFO = {
     'FunctionNodeReverseString'                : {
         'name'           : 'Reverse String',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'String' : {
@@ -12834,7 +12795,7 @@ NODE_INFO = {
     'ShaderNodeRGBCurve'                       : {
         'name'           : 'RGB Curves',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Factor' : {
@@ -12868,7 +12829,7 @@ NODE_INFO = {
     'GeometryNodeRotateInstances'              : {
         'name'           : 'Rotate Instances',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Instances'   : {
@@ -12929,7 +12890,7 @@ NODE_INFO = {
                 'enum'    : ('GLOBAL', 'LOCAL'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Rotation'  : {
@@ -12963,7 +12924,7 @@ NODE_INFO = {
     'FunctionNodeRotateVector'                 : {
         'name'           : 'Rotate Vector',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Vector'   : {
@@ -12996,8 +12957,14 @@ NODE_INFO = {
     },
     'FunctionNodeInputRotation'                : {
         'name'           : 'Rotation',
-        'params'         : {},
-        'items'          : {},
+        'params'         : {
+            'rotation_euler' : {
+                'default' : None,
+                'type'    : 'Euler',
+                'enum'    : None,
+            },
+        },
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {},
         'outputs'        : {
@@ -13016,7 +12983,7 @@ NODE_INFO = {
     'FunctionNodeRotationToAxisAngle'          : {
         'name'           : 'Rotation to Axis Angle',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Rotation' : {
@@ -13050,7 +13017,7 @@ NODE_INFO = {
     'FunctionNodeRotationToEuler'              : {
         'name'           : 'Rotation to Euler',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Rotation' : {
@@ -13077,7 +13044,7 @@ NODE_INFO = {
     'FunctionNodeRotationToQuaternion'         : {
         'name'           : 'Rotation to Quaternion',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Rotation' : {
@@ -13141,7 +13108,7 @@ NODE_INFO = {
                 'enum'    : ('FLOAT', 'INT', 'BOOLEAN', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'QUATERNION', 'FLOAT4X4'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Curves'      : {
@@ -13223,7 +13190,7 @@ NODE_INFO = {
                 'enum'    : ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {
             'Interpolation' : {
                 'default' : 'Trilinear',
@@ -13275,7 +13242,7 @@ NODE_INFO = {
                 'enum'    : ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Grid' : {
@@ -13339,7 +13306,7 @@ NODE_INFO = {
                 'enum'    : None,
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Geometry' : {
@@ -13386,7 +13353,7 @@ NODE_INFO = {
                 'enum'    : ('POINT', 'EDGE', 'FACE', 'CORNER'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Geometry'        : {
@@ -13426,7 +13393,7 @@ NODE_INFO = {
                 'enum'    : ('FLOAT', 'INT', 'BOOLEAN', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'QUATERNION', 'FLOAT4X4'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Mesh'            : {
@@ -13488,7 +13455,7 @@ NODE_INFO = {
     'GeometryNodeSampleSoundFrequencies'       : {
         'name'           : 'Sample Sound Frequencies',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {
             'FFT Size'        : {
                 'default' : '4096',
@@ -13579,7 +13546,7 @@ NODE_INFO = {
                 'enum'    : ('FLOAT', 'INT', 'BOOLEAN', 'FLOAT_VECTOR', 'FLOAT_COLOR', 'QUATERNION', 'FLOAT4X4'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Mesh'      : {
@@ -13640,7 +13607,7 @@ NODE_INFO = {
                 'enum'    : ('FACE', 'EDGE'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {
             'Scale Mode' : {
                 'default' : 'Uniform',
@@ -13707,7 +13674,7 @@ NODE_INFO = {
     'GeometryNodeScaleInstances'               : {
         'name'           : 'Scale Instances',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Instances'   : {
@@ -13762,7 +13729,7 @@ NODE_INFO = {
     'GeometryNodeInputSceneTime'               : {
         'name'           : 'Scene Time',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {},
         'outputs'        : {
@@ -13794,7 +13761,7 @@ NODE_INFO = {
                 'enum'    : ('INTERSECT', 'UNION', 'DIFFERENCE'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Grid 1' : {
@@ -13809,7 +13776,7 @@ NODE_INFO = {
                 'label'       : 'Grid',
                 'name'        : 'Grid',
                 'socket_type' : 'VALUE',
-                'aliases'     : {'Grid 2', 'Grid'},
+                'aliases'     : {'Grid', 'Grid 2'},
             },
         },
         'outputs'        : {
@@ -13828,7 +13795,7 @@ NODE_INFO = {
     'GeometryNodeSDFGridFillet'                : {
         'name'           : 'SDF Grid Fillet',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Grid'       : {
@@ -13862,7 +13829,7 @@ NODE_INFO = {
     'GeometryNodeSDFGridLaplacian'             : {
         'name'           : 'SDF Grid Laplacian',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Grid'       : {
@@ -13896,7 +13863,7 @@ NODE_INFO = {
     'GeometryNodeSDFGridMean'                  : {
         'name'           : 'SDF Grid Mean',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Grid'       : {
@@ -13937,7 +13904,7 @@ NODE_INFO = {
     'GeometryNodeSDFGridMeanCurvature'         : {
         'name'           : 'SDF Grid Mean Curvature',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Grid'       : {
@@ -13971,7 +13938,7 @@ NODE_INFO = {
     'GeometryNodeSDFGridMedian'                : {
         'name'           : 'SDF Grid Median',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Grid'       : {
@@ -14012,7 +13979,7 @@ NODE_INFO = {
     'GeometryNodeSDFGridOffset'                : {
         'name'           : 'SDF Grid Offset',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Grid'     : {
@@ -14046,7 +14013,7 @@ NODE_INFO = {
     'GeometryNodeToolSelection'                : {
         'name'           : 'Selection',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {},
         'outputs'        : {
@@ -14072,7 +14039,7 @@ NODE_INFO = {
     'GeometryNodeSelfObject'                   : {
         'name'           : 'Self Object',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {},
         'outputs'        : {
@@ -14097,7 +14064,7 @@ NODE_INFO = {
                 'enum'    : None,
             },
         },
-        'items'          : [{'bundle_items': 'NAME_TYPE'}],
+        'items'          : ['bundle_items'],
         'menu_sockets'   : {},
         'inputs'         : {
             'Bundle' : {
@@ -14112,7 +14079,7 @@ NODE_INFO = {
             '' : {
                 'bl_idname'   : 'NodeSocketVirtual',
                 'label'       : '',
-                'name'        : '',
+                'name'        : 'NAMED',
                 'socket_type' : 'CUSTOM',
                 'aliases'     : {''},
             },
@@ -14130,7 +14097,7 @@ NODE_INFO = {
                 'enum'    : ('RGB', 'HSV', 'HSL'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Color' : {
@@ -14147,21 +14114,21 @@ NODE_INFO = {
                 'label'       : 'Red',
                 'name'        : 'Red',
                 'socket_type' : 'VALUE',
-                'aliases'     : {'Red', 'Hue'},
+                'aliases'     : {'Hue', 'Red'},
             },
             'Green' : {
                 'bl_idname'   : 'NodeSocketFloat',
                 'label'       : 'Green',
                 'name'        : 'Green',
                 'socket_type' : 'VALUE',
-                'aliases'     : {'Saturation', 'Green'},
+                'aliases'     : {'Green', 'Saturation'},
             },
             'Blue'  : {
                 'bl_idname'   : 'NodeSocketFloat',
                 'label'       : 'Blue',
                 'name'        : 'Blue',
                 'socket_type' : 'VALUE',
-                'aliases'     : {'Blue', 'Value', 'Lightness'},
+                'aliases'     : {'Value', 'Lightness', 'Blue'},
             },
             'Alpha' : {
                 'bl_idname'   : 'NodeSocketFloat',
@@ -14178,7 +14145,7 @@ NODE_INFO = {
     'GeometryNodeSeparateComponents'           : {
         'name'           : 'Separate Components',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Geometry' : {
@@ -14246,7 +14213,7 @@ NODE_INFO = {
                 'enum'    : ('POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE', 'LAYER'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Geometry'  : {
@@ -14287,7 +14254,7 @@ NODE_INFO = {
     'FunctionNodeSeparateMatrix'               : {
         'name'           : 'Separate Matrix',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Matrix' : {
@@ -14419,7 +14386,7 @@ NODE_INFO = {
     'FunctionNodeSeparateTransform'            : {
         'name'           : 'Separate Transform',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Transform' : {
@@ -14460,7 +14427,7 @@ NODE_INFO = {
     'ShaderNodeSeparateXYZ'                    : {
         'name'           : 'Separate XYZ',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Vector' : {
@@ -14501,7 +14468,7 @@ NODE_INFO = {
     'GeometryNodeSetCurveNormal'               : {
         'name'           : 'Set Curve Normal',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {
             'Mode' : {
                 'default' : 'Minimum Twist',
@@ -14554,7 +14521,7 @@ NODE_INFO = {
     'GeometryNodeSetCurveRadius'               : {
         'name'           : 'Set Curve Radius',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Curve'     : {
@@ -14595,7 +14562,7 @@ NODE_INFO = {
     'GeometryNodeSetCurveTilt'                 : {
         'name'           : 'Set Curve Tilt',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Curve'     : {
@@ -14636,7 +14603,7 @@ NODE_INFO = {
     'GeometryNodeToolSetFaceSet'               : {
         'name'           : 'Set Face Set',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Mesh'      : {
@@ -14677,7 +14644,7 @@ NODE_INFO = {
     'GeometryNodeSetGeometryBundle'            : {
         'name'           : 'Set Geometry Bundle',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Geometry' : {
@@ -14711,7 +14678,7 @@ NODE_INFO = {
     'GeometryNodeSetGeometryName'              : {
         'name'           : 'Set Geometry Name',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Geometry' : {
@@ -14751,7 +14718,7 @@ NODE_INFO = {
                 'enum'    : ('STROKE', 'FILL', 'BOTH'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {
             'Mode' : {
                 'default' : 'Stroke',
@@ -14817,7 +14784,7 @@ NODE_INFO = {
                 'enum'    : ('2D', '3D'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {
             'Depth Order' : {
                 'default' : '2D Layers',
@@ -14856,7 +14823,7 @@ NODE_INFO = {
     'GeometryNodeSetGreasePencilSoftness'      : {
         'name'           : 'Set Grease Pencil Softness',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Grease Pencil' : {
@@ -14903,7 +14870,7 @@ NODE_INFO = {
                 'enum'    : ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Grid'            : {
@@ -14950,7 +14917,7 @@ NODE_INFO = {
                 'enum'    : ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Grid'      : {
@@ -14997,7 +14964,7 @@ NODE_INFO = {
                 'enum'    : ('LEFT', 'RIGHT'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Curve'     : {
@@ -15051,12 +15018,12 @@ NODE_INFO = {
                 'enum'    : ('FREE', 'AUTO', 'VECTOR', 'ALIGN'),
             },
             'mode'        : {
-                'default' : {'RIGHT', 'LEFT'},
+                'default' : {'LEFT', 'RIGHT'},
                 'type'    : 'ENUM_FLAG',
                 'enum'    : ('LEFT', 'RIGHT'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Curve'     : {
@@ -15090,7 +15057,7 @@ NODE_INFO = {
     'GeometryNodeSetID'                        : {
         'name'           : 'Set ID',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Geometry'  : {
@@ -15131,7 +15098,7 @@ NODE_INFO = {
     'GeometryNodeSetInstanceTransform'         : {
         'name'           : 'Set Instance Transform',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Instances' : {
@@ -15172,7 +15139,7 @@ NODE_INFO = {
     'GeometryNodeSetMaterial'                  : {
         'name'           : 'Set Material',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Geometry'  : {
@@ -15213,7 +15180,7 @@ NODE_INFO = {
     'GeometryNodeSetMaterialIndex'             : {
         'name'           : 'Set Material Index',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Geometry'       : {
@@ -15265,7 +15232,7 @@ NODE_INFO = {
                 'enum'    : ('POINT', 'FACE', 'CORNER'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Mesh'           : {
@@ -15320,7 +15287,7 @@ NODE_INFO = {
     'GeometryNodeSetNURBSOrder'                : {
         'name'           : 'Set NURBS Order',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Curves'    : {
@@ -15361,7 +15328,7 @@ NODE_INFO = {
     'GeometryNodeSetNURBSWeight'               : {
         'name'           : 'Set NURBS Weight',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Curves'    : {
@@ -15402,7 +15369,7 @@ NODE_INFO = {
     'GeometryNodePointsSetType'                : {
         'name'           : 'Set Point Cloud Type',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {
             'Type' : {
                 'default' : 'Points',
@@ -15441,7 +15408,7 @@ NODE_INFO = {
     'GeometryNodeSetPointRadius'               : {
         'name'           : 'Set Point Radius',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Points'    : {
@@ -15482,7 +15449,7 @@ NODE_INFO = {
     'GeometryNodeSetPosition'                  : {
         'name'           : 'Set Position',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Geometry'  : {
@@ -15541,7 +15508,7 @@ NODE_INFO = {
                 'enum'    : ('BOOLEAN', 'FLOAT'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Geometry'  : {
@@ -15581,7 +15548,7 @@ NODE_INFO = {
                 'enum'    : ('EDGE', 'FACE'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Mesh'         : {
@@ -15622,7 +15589,7 @@ NODE_INFO = {
     'GeometryNodeSetSplineCyclic'              : {
         'name'           : 'Set Spline Cyclic',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Curve'     : {
@@ -15663,7 +15630,7 @@ NODE_INFO = {
     'GeometryNodeSetSplineResolution'          : {
         'name'           : 'Set Spline Resolution',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Curve'      : {
@@ -15710,7 +15677,7 @@ NODE_INFO = {
                 'enum'    : ('CATMULL_ROM', 'POLY', 'BEZIER', 'NURBS'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Curve'     : {
@@ -15744,7 +15711,7 @@ NODE_INFO = {
     'FunctionNodeSetStringCase'                : {
         'name'           : 'Set String Case',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {
             'Case' : {
                 'default' : 'Uppercase',
@@ -15783,7 +15750,7 @@ NODE_INFO = {
     'GeometryNodeInputShortestEdgePaths'       : {
         'name'           : 'Shortest Edge Paths',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'End Vertex' : {
@@ -15824,7 +15791,7 @@ NODE_INFO = {
     'GeometryNodeSimulationInput'              : {
         'name'           : 'Simulation Input',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {},
         'outputs'        : {
@@ -15843,7 +15810,7 @@ NODE_INFO = {
     'GeometryNodeSimulationOutput'             : {
         'name'           : 'Simulation Output',
         'params'         : {},
-        'items'          : [{'state_items': 'NAME_TYPE'}],
+        'items'          : ['state_items'],
         'menu_sockets'   : {},
         'inputs'         : {
             'Skip' : {
@@ -15856,7 +15823,7 @@ NODE_INFO = {
             ''     : {
                 'bl_idname'   : 'NodeSocketVirtual',
                 'label'       : '',
-                'name'        : '',
+                'name'        : 'NAMED',
                 'socket_type' : 'CUSTOM',
                 'aliases'     : {''},
             },
@@ -15865,7 +15832,7 @@ NODE_INFO = {
             '' : {
                 'bl_idname'   : 'NodeSocketVirtual',
                 'label'       : '',
-                'name'        : '',
+                'name'        : 'NAMED',
                 'socket_type' : 'CUSTOM',
                 'aliases'     : {''},
             },
@@ -15877,7 +15844,7 @@ NODE_INFO = {
     'FunctionNodeSliceString'                  : {
         'name'           : 'Slice String',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'String'   : {
@@ -15924,7 +15891,7 @@ NODE_INFO = {
                 'enum'    : ('POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Geometry'    : {
@@ -15978,7 +15945,7 @@ NODE_INFO = {
                 'enum'    : ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SOUND'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'List'        : {
@@ -16026,7 +15993,7 @@ NODE_INFO = {
     'FunctionNodeInputSpecialCharacters'       : {
         'name'           : 'Special Characters',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {},
         'outputs'        : {
@@ -16052,7 +16019,7 @@ NODE_INFO = {
     'GeometryNodeCurveSpiral'                  : {
         'name'           : 'Spiral',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Resolution'   : {
@@ -16114,7 +16081,7 @@ NODE_INFO = {
     'GeometryNodeSplineLength'                 : {
         'name'           : 'Spline Length',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {},
         'outputs'        : {
@@ -16140,7 +16107,7 @@ NODE_INFO = {
     'GeometryNodeSplineParameter'              : {
         'name'           : 'Spline Parameter',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {},
         'outputs'        : {
@@ -16173,7 +16140,7 @@ NODE_INFO = {
     'GeometryNodeInputSplineResolution'        : {
         'name'           : 'Spline Resolution',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {},
         'outputs'        : {
@@ -16192,7 +16159,7 @@ NODE_INFO = {
     'GeometryNodeSplitEdges'                   : {
         'name'           : 'Split Edges',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Mesh'      : {
@@ -16226,7 +16193,7 @@ NODE_INFO = {
     'FunctionNodeSplitString'                  : {
         'name'           : 'Split String',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'String'    : {
@@ -16266,7 +16233,7 @@ NODE_INFO = {
                 'enum'    : ('POINT', 'EDGE', 'FACE', 'CURVE', 'INSTANCE', 'LAYER'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Geometry'  : {
@@ -16314,7 +16281,7 @@ NODE_INFO = {
     'GeometryNodeCurveStar'                    : {
         'name'           : 'Star',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Points'       : {
@@ -16375,7 +16342,7 @@ NODE_INFO = {
                 'enum'    : ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SOUND'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Bundle' : {
@@ -16427,7 +16394,7 @@ NODE_INFO = {
                 'enum'    : ('POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Geometry'  : {
@@ -16481,7 +16448,7 @@ NODE_INFO = {
                 'enum'    : ('BOOLEAN', 'FLOAT', 'INT', 'VECTOR_FLOAT'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Volume' : {
@@ -16528,7 +16495,7 @@ NODE_INFO = {
                 'enum'    : None,
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {},
         'outputs'        : {
@@ -16547,7 +16514,7 @@ NODE_INFO = {
     'FunctionNodeStringLength'                 : {
         'name'           : 'String Length',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'String' : {
@@ -16574,7 +16541,7 @@ NODE_INFO = {
     'GeometryNodeStringToCurves'               : {
         'name'           : 'String to Curves',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {
             'Align X'     : {
                 'default' : 'Left',
@@ -16729,7 +16696,7 @@ NODE_INFO = {
                 'enum'    : ('FLOAT', 'INT'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'String' : {
@@ -16770,7 +16737,7 @@ NODE_INFO = {
     'GeometryNodeSubdivideCurve'               : {
         'name'           : 'Subdivide Curve',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Curve' : {
@@ -16804,7 +16771,7 @@ NODE_INFO = {
     'GeometryNodeSubdivideMesh'                : {
         'name'           : 'Subdivide Mesh',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Mesh'  : {
@@ -16838,7 +16805,7 @@ NODE_INFO = {
     'GeometryNodeSubdivisionSurface'           : {
         'name'           : 'Subdivision Surface',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {
             'UV Smooth'       : {
                 'default' : 'Keep Boundaries',
@@ -16929,7 +16896,7 @@ NODE_INFO = {
                 'enum'    : ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR', 'RGBA', 'ROTATION', 'MATRIX', 'STRING', 'MENU', 'OBJECT', 'IMAGE', 'GEOMETRY', 'COLLECTION', 'MATERIAL', 'BUNDLE', 'CLOSURE', 'FONT', 'SOUND'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Switch' : {
@@ -16970,7 +16937,7 @@ NODE_INFO = {
     'GeometryNodeTagFilter'                    : {
         'name'           : 'Tag Filter',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Tag Filter' : {
@@ -17004,7 +16971,7 @@ NODE_INFO = {
     'GeometryNodeTransferAttributes'           : {
         'name'           : 'Transfer Attributes',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {
             'Pattern Mode' : {
                 'default' : 'Wildcard',
@@ -17155,7 +17122,7 @@ NODE_INFO = {
     'FunctionNodeTransformDirection'           : {
         'name'           : 'Transform Direction',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Direction' : {
@@ -17189,7 +17156,7 @@ NODE_INFO = {
     'GeometryNodeTransform'                    : {
         'name'           : 'Transform Geometry',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {
             'Mode' : {
                 'default' : 'Components',
@@ -17302,7 +17269,7 @@ NODE_INFO = {
                 'enum'    : None,
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Value'    : {
@@ -17343,7 +17310,7 @@ NODE_INFO = {
     'FunctionNodeTransformPoint'               : {
         'name'           : 'Transform Point',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Vector'    : {
@@ -17377,7 +17344,7 @@ NODE_INFO = {
     'GeometryNodeTranslateInstances'           : {
         'name'           : 'Translate Instances',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Instances'   : {
@@ -17425,7 +17392,7 @@ NODE_INFO = {
     'FunctionNodeTransposeMatrix'              : {
         'name'           : 'Transpose Matrix',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Matrix' : {
@@ -17452,7 +17419,7 @@ NODE_INFO = {
     'GeometryNodeTriangulate'                  : {
         'name'           : 'Triangulate',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {
             'Quad Method'  : {
                 'default' : 'Shortest Diagonal',
@@ -17515,7 +17482,7 @@ NODE_INFO = {
                 'enum'    : ('FACTOR', 'LENGTH'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Curve'     : {
@@ -17563,7 +17530,7 @@ NODE_INFO = {
     'FunctionNodeTrimString'                   : {
         'name'           : 'Trim String',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'String'     : {
@@ -17618,7 +17585,7 @@ NODE_INFO = {
     'GeometryNodeMeshUVSphere'                 : {
         'name'           : 'UV Sphere',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Segments' : {
@@ -17666,7 +17633,7 @@ NODE_INFO = {
     'GeometryNodeUVTangent'                    : {
         'name'           : 'UV Tangent',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {
             'Method' : {
                 'default' : 'Exact',
@@ -17705,7 +17672,7 @@ NODE_INFO = {
     'GeometryNodeUVUnwrap'                     : {
         'name'           : 'UV Unwrap',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {
             'Method' : {
                 'default' : 'Angle Based',
@@ -17779,7 +17746,7 @@ NODE_INFO = {
     'ShaderNodeValue'                          : {
         'name'           : 'Value',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {},
         'outputs'        : {
@@ -17804,7 +17771,7 @@ NODE_INFO = {
                 'enum'    : ('FLOAT', 'INT'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Value'    : {
@@ -17858,7 +17825,7 @@ NODE_INFO = {
                 'enum'    : None,
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {},
         'outputs'        : {
@@ -17877,7 +17844,7 @@ NODE_INFO = {
     'ShaderNodeVectorCurve'                    : {
         'name'           : 'Vector Curves',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Factor' : {
@@ -17917,7 +17884,7 @@ NODE_INFO = {
                 'enum'    : ('ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'MULTIPLY_ADD', 'CROSS_PRODUCT', 'PROJECT', 'REFLECT', 'REFRACT', 'FACEFORWARD', 'DOT_PRODUCT', 'DISTANCE', 'LENGTH', 'SCALE', 'NORMALIZE', 'ABSOLUTE', 'POWER', 'SIGN', 'MINIMUM', 'MAXIMUM', 'ROUND', 'FLOOR', 'CEIL', 'FRACTION', 'MODULO', 'WRAP', 'SNAP', 'SINE', 'COSINE', 'TANGENT'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Vector' : {
@@ -17925,14 +17892,14 @@ NODE_INFO = {
                 'label'       : 'Vector',
                 'name'        : 'Vector',
                 'socket_type' : 'VECTOR',
-                'aliases'     : {'Max', 'Incident', 'Increment', 'Multiplier', 'Exponent', 'Vector'},
+                'aliases'     : {'Max', 'Vector', 'Multiplier', 'Exponent', 'Incident', 'Increment'},
             },
             'Addend' : {
                 'bl_idname'   : 'NodeSocketVector',
                 'label'       : 'Addend',
                 'name'        : 'Vector',
                 'socket_type' : 'VECTOR',
-                'aliases'     : {'Addend', 'Min', 'Reference'},
+                'aliases'     : {'Min', 'Reference', 'Addend'},
             },
             'IOR'    : {
                 'bl_idname'   : 'NodeSocketFloat',
@@ -17976,7 +17943,7 @@ NODE_INFO = {
                 'enum'    : None,
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Vector'   : {
@@ -18031,7 +17998,7 @@ NODE_INFO = {
     'GeometryNodeInputMeshVertexNeighbors'     : {
         'name'           : 'Vertex Neighbors',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {},
         'outputs'        : {
@@ -18057,7 +18024,7 @@ NODE_INFO = {
     'GeometryNodeVertexOfCorner'               : {
         'name'           : 'Vertex of Corner',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Corner Index' : {
@@ -18090,13 +18057,13 @@ NODE_INFO = {
                 'enum'    : ('AUTO', 'POINT', 'EDGE', 'FACE', 'CORNER', 'CURVE', 'INSTANCE', 'LAYER'),
             },
         },
-        'items'          : [{'viewer_items': 'NAME_TYPE'}],
+        'items'          : ['viewer_items'],
         'menu_sockets'   : {},
         'inputs'         : {
             '' : {
                 'bl_idname'   : 'NodeSocketVirtual',
                 'label'       : '',
-                'name'        : '',
+                'name'        : 'NAMED',
                 'socket_type' : 'CUSTOM',
                 'aliases'     : {''},
             },
@@ -18109,7 +18076,7 @@ NODE_INFO = {
     'GeometryNodeViewportTransform'            : {
         'name'           : 'Viewport Transform',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {},
         'outputs'        : {
@@ -18142,7 +18109,7 @@ NODE_INFO = {
     'GeometryNodeVolumeCube'                   : {
         'name'           : 'Volume Cube',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Density'      : {
@@ -18211,7 +18178,7 @@ NODE_INFO = {
     'GeometryNodeVolumeToMesh'                 : {
         'name'           : 'Volume to Mesh',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {
             'Resolution Mode' : {
                 'default' : 'Grid',
@@ -18299,7 +18266,7 @@ NODE_INFO = {
                 'enum'    : None,
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Vector'     : {
@@ -18410,7 +18377,7 @@ NODE_INFO = {
     'GeometryNodeInputVoxelIndex'              : {
         'name'           : 'Voxel Index',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {},
         'outputs'        : {
@@ -18477,7 +18444,7 @@ NODE_INFO = {
                 'enum'    : ('FLOAT', 'INT', 'BOOLEAN', 'VECTOR'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Grid' : {
@@ -18510,7 +18477,7 @@ NODE_INFO = {
                 'enum'    : ('ERROR', 'WARNING', 'INFO'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Show'    : {
@@ -18565,7 +18532,7 @@ NODE_INFO = {
                 'enum'    : ('SIN', 'SAW', 'TRI'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Vector'           : {
@@ -18647,7 +18614,7 @@ NODE_INFO = {
                 'enum'    : ('1D', '2D', '3D', '4D'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Vector' : {
@@ -18688,7 +18655,7 @@ NODE_INFO = {
     'GeometryNodeXPBDSolver'                   : {
         'name'           : 'XPBD Solver',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'World'                 : {
@@ -18771,7 +18738,7 @@ NODE_INFO = {
     'ShaderNodeAddShader'                      : {
         'name'           : 'Add Shader',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Shader' : {
@@ -18814,7 +18781,7 @@ NODE_INFO = {
                 'enum'    : None,
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Color'    : {
@@ -18868,7 +18835,7 @@ NODE_INFO = {
                 'enum'    : None,
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Color' : {
@@ -18905,7 +18872,7 @@ NODE_INFO = {
                 'enum'    : None,
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {},
         'outputs'        : {
@@ -18945,7 +18912,7 @@ NODE_INFO = {
     'ShaderNodeBackground'                     : {
         'name'           : 'Background',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Color'    : {
@@ -18985,7 +18952,7 @@ NODE_INFO = {
                 'enum'    : None,
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Radius' : {
@@ -19019,7 +18986,7 @@ NODE_INFO = {
     'ShaderNodeBrightContrast'                 : {
         'name'           : 'Brightness/Contrast',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Color'      : {
@@ -19066,7 +19033,7 @@ NODE_INFO = {
                 'enum'    : None,
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Strength'     : {
@@ -19121,7 +19088,7 @@ NODE_INFO = {
     'ShaderNodeCameraData'                     : {
         'name'           : 'Camera Data',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {},
         'outputs'        : {
@@ -19154,7 +19121,7 @@ NODE_INFO = {
     'ShaderNodeRGB'                            : {
         'name'           : 'Color',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {},
         'outputs'        : {
@@ -19179,7 +19146,7 @@ NODE_INFO = {
                 'enum'    : None,
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {},
         'outputs'        : {
@@ -19211,7 +19178,7 @@ NODE_INFO = {
                 'enum'    : ('RGB', 'HSV', 'HSL'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Red'   : {
@@ -19219,21 +19186,21 @@ NODE_INFO = {
                 'label'       : 'Red',
                 'name'        : 'Red',
                 'socket_type' : 'VALUE',
-                'aliases'     : {'Red', 'Hue'},
+                'aliases'     : {'Hue', 'Red'},
             },
             'Green' : {
                 'bl_idname'   : 'NodeSocketFloatFactor',
                 'label'       : 'Green',
                 'name'        : 'Green',
                 'socket_type' : 'VALUE',
-                'aliases'     : {'Saturation', 'Green'},
+                'aliases'     : {'Green', 'Saturation'},
             },
             'Blue'  : {
                 'bl_idname'   : 'NodeSocketFloatFactor',
                 'label'       : 'Blue',
                 'name'        : 'Blue',
                 'socket_type' : 'VALUE',
-                'aliases'     : {'Blue', 'Value', 'Lightness'},
+                'aliases'     : {'Value', 'Lightness', 'Blue'},
             },
         },
         'outputs'        : {
@@ -19252,7 +19219,7 @@ NODE_INFO = {
     'ShaderNodeHairInfo'                       : {
         'name'           : 'Curves Info',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {},
         'outputs'        : {
@@ -19306,7 +19273,7 @@ NODE_INFO = {
     'ShaderNodeBsdfDiffuse'                    : {
         'name'           : 'Diffuse BSDF',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Color'     : {
@@ -19353,7 +19320,7 @@ NODE_INFO = {
                 'enum'    : ('OBJECT', 'WORLD'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Height'   : {
@@ -19401,7 +19368,7 @@ NODE_INFO = {
     'ShaderNodeEmission'                       : {
         'name'           : 'Emission',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Color'    : {
@@ -19451,7 +19418,7 @@ NODE_INFO = {
                 'enum'    : ('Linear', 'Closest', 'Cubic', 'Smart'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Vector' : {
@@ -19478,7 +19445,7 @@ NODE_INFO = {
     'ShaderNodeFresnel'                        : {
         'name'           : 'Fresnel',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'IOR'    : {
@@ -19512,7 +19479,7 @@ NODE_INFO = {
     'ShaderNodeNewGeometry'                    : {
         'name'           : 'Geometry',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {},
         'outputs'        : {
@@ -19593,7 +19560,7 @@ NODE_INFO = {
                 'enum'    : ('BECKMANN', 'GGX', 'MULTI_GGX'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Color'               : {
@@ -19682,7 +19649,7 @@ NODE_INFO = {
                 'enum'    : ('BECKMANN', 'GGX', 'ASHIKHMIN_SHIRLEY', 'MULTI_GGX'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Color'      : {
@@ -19750,7 +19717,7 @@ NODE_INFO = {
                 'enum'    : None,
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {},
         'outputs'        : {},
@@ -19767,7 +19734,7 @@ NODE_INFO = {
                 'enum'    : ('Reflection', 'Transmission'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Color'      : {
@@ -19822,7 +19789,7 @@ NODE_INFO = {
     'ShaderNodeHoldout'                        : {
         'name'           : 'Holdout',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {},
         'outputs'        : {
@@ -19841,7 +19808,7 @@ NODE_INFO = {
     'ShaderNodeHueSaturation'                  : {
         'name'           : 'Hue/Saturation/Value',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Hue'        : {
@@ -19912,7 +19879,7 @@ NODE_INFO = {
                 'enum'    : ('INTERNAL', 'EXTERNAL'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Vector'   : {
@@ -19972,7 +19939,7 @@ NODE_INFO = {
                 'enum'    : ('REPEAT', 'EXTEND', 'CLIP', 'MIRROR'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Vector' : {
@@ -20006,7 +19973,7 @@ NODE_INFO = {
     'ShaderNodeInvert'                         : {
         'name'           : 'Invert Color',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Factor' : {
@@ -20040,7 +20007,7 @@ NODE_INFO = {
     'ShaderNodeLayerWeight'                    : {
         'name'           : 'Layer Weight',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Blend'  : {
@@ -20081,7 +20048,7 @@ NODE_INFO = {
     'ShaderNodeLightAccumulation'              : {
         'name'           : 'Light Accumulation',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Diffuse Light'      : {
@@ -20149,7 +20116,7 @@ NODE_INFO = {
                 'enum'    : ('DIFFUSE', 'GLOSSY'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Position'  : {
@@ -20211,7 +20178,7 @@ NODE_INFO = {
     'ShaderNodeLightFalloff'                   : {
         'name'           : 'Light Falloff',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Strength' : {
@@ -20259,7 +20226,7 @@ NODE_INFO = {
     'ShaderNodeLightInfo'                      : {
         'name'           : 'Light Info',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {},
         'outputs'        : {
@@ -20292,7 +20259,7 @@ NODE_INFO = {
     'ShaderNodeLightIterInternalInput'         : {
         'name'           : 'Light Iter Internal Input',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {},
         'outputs'        : {
@@ -20311,7 +20278,7 @@ NODE_INFO = {
     'ShaderNodeLightIterInternalOutput'        : {
         'name'           : 'Light Iter Internal Output',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {},
         'outputs'        : {},
@@ -20333,7 +20300,7 @@ NODE_INFO = {
                 'enum'    : ('ALL', 'EEVEE', 'CYCLES'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Surface' : {
@@ -20352,7 +20319,7 @@ NODE_INFO = {
     'ShaderNodeLightPath'                      : {
         'name'           : 'Light Path',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {},
         'outputs'        : {
@@ -20475,7 +20442,7 @@ NODE_INFO = {
                 'enum'    : ('POINT', 'TEXTURE', 'VECTOR', 'NORMAL'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Vector'   : {
@@ -20534,7 +20501,7 @@ NODE_INFO = {
                 'enum'    : ('ALL', 'EEVEE', 'CYCLES'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Surface'      : {
@@ -20585,7 +20552,7 @@ NODE_INFO = {
                 'enum'    : ('PHYSICAL_CONDUCTOR', 'F82'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Base Color'          : {
@@ -20682,7 +20649,7 @@ NODE_INFO = {
     'ShaderNodeMixShader'                      : {
         'name'           : 'Mix Shader',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Factor' : {
@@ -20716,7 +20683,7 @@ NODE_INFO = {
     'ShaderNodeNormal'                         : {
         'name'           : 'Normal',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Normal' : {
@@ -20771,7 +20738,7 @@ NODE_INFO = {
                 'enum'    : ('ORIGINAL', 'DISPLACED'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Strength' : {
@@ -20805,7 +20772,7 @@ NODE_INFO = {
     'ShaderNodeObjectInfo'                     : {
         'name'           : 'Object Info',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {},
         'outputs'        : {
@@ -20859,7 +20826,7 @@ NODE_INFO = {
     'ShaderNodeParticleInfo'                   : {
         'name'           : 'Particle Info',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {},
         'outputs'        : {
@@ -20927,7 +20894,7 @@ NODE_INFO = {
     'ShaderNodePointInfo'                      : {
         'name'           : 'Point Info',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {},
         'outputs'        : {
@@ -20971,7 +20938,7 @@ NODE_INFO = {
                 'enum'    : ('BURLEY', 'RANDOM_WALK', 'RANDOM_WALK_SKIN', 'RANDOM_WALK_LEGACY'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Base Color'                          : {
@@ -21233,7 +21200,7 @@ NODE_INFO = {
                 'enum'    : ('ABSORPTION', 'MELANIN', 'COLOR'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Color'                  : {
@@ -21372,7 +21339,7 @@ NODE_INFO = {
     'ShaderNodeVolumePrincipled'               : {
         'name'           : 'Principled Volume',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Color'                 : {
@@ -21476,7 +21443,7 @@ NODE_INFO = {
     'ShaderNodeBsdfRayPortal'                  : {
         'name'           : 'Ray Portal BSDF',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Color'     : {
@@ -21523,7 +21490,7 @@ NODE_INFO = {
                 'enum'    : None,
             },
         },
-        'items'          : [{'sample_attribute_items': 'NAME_TYPE'}],
+        'items'          : ['sample_attribute_items'],
         'menu_sockets'   : {},
         'inputs'         : {
             'Position'  : {
@@ -21550,7 +21517,7 @@ NODE_INFO = {
             ''          : {
                 'bl_idname'   : 'NodeSocketVirtual',
                 'label'       : '',
-                'name'        : '',
+                'name'        : 'NAMED',
                 'socket_type' : 'CUSTOM',
                 'aliases'     : {''},
             },
@@ -21594,7 +21561,7 @@ NODE_INFO = {
             ''             : {
                 'bl_idname'   : 'NodeSocketVirtual',
                 'label'       : '',
-                'name'        : '',
+                'name'        : 'NAMED',
                 'socket_type' : 'CUSTOM',
                 'aliases'     : {''},
             },
@@ -21612,7 +21579,7 @@ NODE_INFO = {
                 'enum'    : ('BECKMANN', 'GGX'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Color'     : {
@@ -21660,7 +21627,7 @@ NODE_INFO = {
     'ShaderNodeRGBToBW'                        : {
         'name'           : 'RGB to BW',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Color' : {
@@ -21718,7 +21685,7 @@ NODE_INFO = {
                 'enum'    : None,
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {},
         'outputs'        : {},
@@ -21735,7 +21702,7 @@ NODE_INFO = {
                 'enum'    : ('RGB', 'HSV', 'HSL'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Color' : {
@@ -21752,21 +21719,21 @@ NODE_INFO = {
                 'label'       : 'Red',
                 'name'        : 'Red',
                 'socket_type' : 'VALUE',
-                'aliases'     : {'Red', 'Hue'},
+                'aliases'     : {'Hue', 'Red'},
             },
             'Green' : {
                 'bl_idname'   : 'NodeSocketFloat',
                 'label'       : 'Green',
                 'name'        : 'Green',
                 'socket_type' : 'VALUE',
-                'aliases'     : {'Saturation', 'Green'},
+                'aliases'     : {'Green', 'Saturation'},
             },
             'Blue'  : {
                 'bl_idname'   : 'NodeSocketFloat',
                 'label'       : 'Blue',
                 'name'        : 'Blue',
                 'socket_type' : 'VALUE',
-                'aliases'     : {'Blue', 'Value', 'Lightness'},
+                'aliases'     : {'Value', 'Lightness', 'Blue'},
             },
         },
         'has_custom_in'  : False,
@@ -21776,7 +21743,7 @@ NODE_INFO = {
     'ShaderNodeShaderToRGB'                    : {
         'name'           : 'Shader to RGB',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Shader' : {
@@ -21810,7 +21777,7 @@ NODE_INFO = {
     'ShaderNodeShadowRaycast'                  : {
         'name'           : 'Shadow Raycast',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Position' : {
@@ -21850,7 +21817,7 @@ NODE_INFO = {
                 'enum'    : ('ASHIKHMIN', 'MICROFIBER'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Color'     : {
@@ -21952,7 +21919,7 @@ NODE_INFO = {
                 'enum'    : None,
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Vector' : {
@@ -21979,7 +21946,7 @@ NODE_INFO = {
     'ShaderNodeEeveeSpecular'                  : {
         'name'           : 'Specular BSDF',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Base Color'           : {
@@ -22062,7 +22029,7 @@ NODE_INFO = {
     'ShaderNodeSqueeze'                        : {
         'name'           : 'Squeeze Value (Legacy)',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Value'  : {
@@ -22109,7 +22076,7 @@ NODE_INFO = {
                 'enum'    : ('BURLEY', 'RANDOM_WALK', 'RANDOM_WALK_SKIN', 'RANDOM_WALK_LEGACY'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Color'      : {
@@ -22194,7 +22161,7 @@ NODE_INFO = {
                 'enum'    : None,
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {},
         'outputs'        : {
@@ -22224,7 +22191,7 @@ NODE_INFO = {
                 'enum'    : None,
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {},
         'outputs'        : {
@@ -22291,7 +22258,7 @@ NODE_INFO = {
                 'enum'    : ('DIFFUSE', 'GLOSSY'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Color'  : {
@@ -22339,7 +22306,7 @@ NODE_INFO = {
     'ShaderNodeBsdfTranslucent'                : {
         'name'           : 'Translucent BSDF',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Color'  : {
@@ -22373,7 +22340,7 @@ NODE_INFO = {
     'ShaderNodeBsdfTransparent'                : {
         'name'           : 'Transparent BSDF',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Color' : {
@@ -22406,7 +22373,7 @@ NODE_INFO = {
                 'enum'    : None,
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {},
         'outputs'        : {
@@ -22436,7 +22403,7 @@ NODE_INFO = {
                 'enum'    : None,
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {},
         'outputs'        : {
@@ -22461,7 +22428,7 @@ NODE_INFO = {
                 'enum'    : ('TANGENT', 'OBJECT', 'WORLD'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Vector'   : {
@@ -22518,7 +22485,7 @@ NODE_INFO = {
                 'enum'    : ('WORLD', 'OBJECT', 'CAMERA', 'LIGHT'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Vector' : {
@@ -22545,7 +22512,7 @@ NODE_INFO = {
     'ShaderNodeVolumeAbsorption'               : {
         'name'           : 'Volume Absorption',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Color'   : {
@@ -22585,7 +22552,7 @@ NODE_INFO = {
                 'enum'    : ('HENYEY_GREENSTEIN', 'FOURNIER_FORAND', 'DRAINE', 'RAYLEIGH', 'MIE'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Absorption Coefficients' : {
@@ -22661,7 +22628,7 @@ NODE_INFO = {
     'ShaderNodeVolumeInfo'                     : {
         'name'           : 'Volume Info',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {},
         'outputs'        : {
@@ -22707,7 +22674,7 @@ NODE_INFO = {
                 'enum'    : ('HENYEY_GREENSTEIN', 'FOURNIER_FORAND', 'DRAINE', 'RAYLEIGH', 'MIE'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Color'       : {
@@ -22776,7 +22743,7 @@ NODE_INFO = {
     'ShaderNodeWavelength'                     : {
         'name'           : 'Wavelength',
         'params'         : {},
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Wavelength' : {
@@ -22809,7 +22776,7 @@ NODE_INFO = {
                 'enum'    : None,
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Size' : {
@@ -22847,7 +22814,7 @@ NODE_INFO = {
                 'enum'    : ('ALL', 'EEVEE', 'CYCLES'),
             },
         },
-        'items'          : {},
+        'items'          : [],
         'menu_sockets'   : {},
         'inputs'         : {
             'Surface' : {

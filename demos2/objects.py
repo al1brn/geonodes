@@ -59,8 +59,8 @@ def demo(rebuild=False):
             lens.transform(scale=(1, 1, THICK/2))
             lens.faces.shade_smooth=True
             lens.faces.material=lens_mat
-            lens.faces.set("IOR", lens_ior)
-            lens.faces.set("Transparency", lens_transp)
+            lens.faces["IOR"] = lens_ior
+            lens.faces["Transparency"] = lens_transp
             
             mag += lens
             
@@ -206,7 +206,7 @@ def demo(rebuild=False):
             cyl[sel_ulti].position = nd.position * (1, 1, bump/z)
             cyl[sel_last].position = nd.position * (1, 1, depth/z)
             
-            cyl[sel_last].points.set('Last', 1.0)
+            cyl[sel_last].points['Last'] = 1.0
                 
             
         with Layout("Finalize"):        
@@ -219,9 +219,9 @@ def demo(rebuild=False):
                 
             cyl.faces.shade_smooth=False
             cyl.faces.material=mat
-            cyl.faces.set('Transparency', 1 - show)
-            cyl.faces.set('Color', color)
-            cyl.faces[Float('Last') > 0].set('Color', point_color)
+            cyl.faces['Transparency'] = 1 - show
+            cyl.faces['Color'] = color
+            cyl.faces[Float('Last') > 0]['Color'] = point_color
             cyl.remove_named_attribute(pattern_mode='Exact', name='Last')
         
             cyl.transform(translation=(0, 0, (1 + BASE)*radius), rotation=(0, pi/2, -pi/2), scale=radius)

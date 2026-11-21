@@ -250,7 +250,7 @@ def demo(rebuild=False):
         with Layout("Split to islands"):
                 
             mesh = Mesh(rep.mesh)
-            mesh.remove_named_attribute("Wildcard", "Temp*")
+            mesh.remove_named_attribute("Temp*", pattern_mode="Wildcard")
 
             cells = G().mesh_to_located_instances(
                 mesh, 

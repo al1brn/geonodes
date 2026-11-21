@@ -20,12 +20,11 @@ $ DOC transparent
 Scripting Geometry Nodes
 -----------------------------------------------------
 
-module : colors
----------------
+module : kernel/colors
+----------------------
 - colors utilities
 
-Generated environment classes inherit from this shared root: Collection
-the environment supplies the generated node methods.
+Shared color names and conversions for generation and runtime.
 
 updates
 -------
@@ -41,7 +40,6 @@ __license__ = "GNU GPL V3"
 from mathutils import Color
 import numpy as np
 
-from .scripterror import NodeError
 
 # ====================================================================================================
 # Named colors
@@ -280,14 +278,14 @@ def to_color_tuple(value) -> tuple:
             return tuple(value)
         
         else:
-            raise NodeError(
+            raise ValueError(
                 f"Color error: the array {value} has a length of {len(value)}. This is not a color triplet or quadruplet."
                 )
 
     elif isinstance(value, str):
         col = str_to_color_tuple(value)
         if col is None:
-            raise NodeError(
+            raise ValueError(
                 f"Color code error: the value '{value}' is not a valid color name or hexa value.\n"
                 f"Valid color names are: {list(COLORS.keys())}"
                 )
@@ -297,7 +295,7 @@ def to_color_tuple(value) -> tuple:
         try:
             return (float(value), float(value), float(value), 1.)
         except Exception as e:
-            raise NodeError(f"Impossible to convert the value <{value}> to a color.\n{str(e)}")
+            raise ValueError(f"Impossible to convert the value <{value}> to a color.\n{str(e)}")
     
 # ====================================================================================================
 # Hexa value

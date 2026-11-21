@@ -92,6 +92,7 @@ class NodeArguments:
     header_positionals  : list[str] = field(default_factory=list)
     socket_keywords     : list[str] = field(default_factory=list)
     param_keywords      : list[str] = field(default_factory=list)
+    enum_param_keywords : list[str] = field(default_factory=list)
     header_kwargs       : list[str] = field(default_factory=list)
 
     arg_names           : NameSolver = field(default_factory=NameSolver)
@@ -99,6 +100,7 @@ class NodeArguments:
     # Doc
     fixed_doc           : list[str] = field(default_factory=list)
     args_doc            : list[str] = field(default_factory=list)
+    computed_doc        : list[str] = field(default_factory=list)
 
     # Computation
     computations        : list[str] = field(default_factory=list)
@@ -132,8 +134,9 @@ class NodeArguments:
     def set_socket_keyword(self, name, typing="", default='None'):
         self.socket_keywords.append(f"{name}{typing} = {default}")
 
-    def set_param_keyword(self, name, typing="", default='None'):
-        self.param_keywords.append(f"{name}{typing} = {default}")
+    def set_param_keyword(self, name, typing="", default='None', *, is_enum=False):
+        keywords = self.enum_param_keywords if is_enum else self.param_keywords
+        keywords.append(f"{name}{typing} = {default}")
 
     def set_kwargs(self, name):
         self.header_kwargs.append(f"**{name}")
@@ -197,14 +200,20 @@ class NodeArguments:
     # Triage
     # ====================================================================================================
 
-    def add_parameter(self, node_param: NodeParam):
+    def add_parameter(self, node_param: NodeParam, type_aliases=None):
         name = node_param.name
-        self.set_param_keyword(name, "", f"{node_param.value!r}")
+        typing = node_param.typing
+        if isinstance(typing, list):
+            typing = (type_aliases.literal(typing, prefix=f'T_{name.upper()}')
+                      if type_aliases is not None else
+                      'Literal[' + ', '.join(repr(v) for v in typing) + ']')
+        self.set_param_keyword(name, f": {typing}" if typing else "", repr(node_param.value),
+                               is_enum=node_param.param_type in ('ENUM', 'ENUM_FLAG'))
         self.set_node_parameter(name, name)
         self.reserved_names.add(name)
 
         if node_param.param_type in ('ENUM', 'ENUM_FLAG'):
-            value_type = '{' + ', '.join(repr(v) for v in node_param.enum_names) + '}'
+            value_type = '{' + ', '.join(repr(v) for v in (node_param.enums or ())) + '}'
         else:
             value_type = node_param.param_type
 
@@ -213,17 +222,18 @@ class NodeArguments:
         return name
 
     def add_fixed_parameter(self, node_param: NodeParam, value: Any):
-        self.set_node_parameter(node_param.name, value)
+        self.set_node_parameter(node_param.name, repr(value))
 
         self.set_fixed_doc(node_param.name, value, "Node parameter")
 
     def add_computed_parameter(self, node_param: NodeParam, computation: str, value_name: str | None = None):
         name = node_param.name
-        self.computations.append(computation)
+        if computation:
+            self.computations.append(computation)
         value = name if value_name is None else value_name
         self.set_node_parameter(name, value)
 
-        self.set_fixed_doc(name, value, "Computed node parameter")             
+        self.computed_doc.append(f"- Node parameter {name!r} = {value}")
 
     def add_socket(self, node_socket: NodeSocket, is_self=False):
 
@@ -264,7 +274,7 @@ class NodeArguments:
             else:
                 return
 
-        socket_id = f"ID_{node_socket.identifier}"
+        socket_id = node_socket.group_name or f"ID_{node_socket.identifier}"
 
         # Multi input socket
         if node_socket.is_multi_input:
@@ -272,7 +282,7 @@ class NodeArguments:
                 return
             self.has_multi_socket = True
             name = self.arg_names(snake_case(node_socket.socket_name))
-            self.set_positional(name, f": {node_socket.class_name}")
+            self.set_positional(name, f": {node_socket.class_name or 'Socket'}")
             if is_self:
                 self.set_named_socket(socket_id, f"[self, *{name}]")
                 self.set_args_doc("self", node_socket.class_name, _NO_DEFAULT, f"Self feeds the multi input socket '{node_socket.socket_name}'")
@@ -291,7 +301,7 @@ class NodeArguments:
 
         # General case
         if len(node_socket.names) > 1:
-            names = node_socket.names
+            names = sorted(node_socket.names)
         else:
             names = (node_socket.socket_name,)
 
@@ -299,7 +309,7 @@ class NodeArguments:
         aliases = []
         for name in names:
             name = self.arg_names(snake_case(name))
-            self.set_socket_keyword(name, f": {node_socket.class_name}", 'None')
+            self.set_socket_keyword(name, f": {node_socket.class_name or 'Socket'}", 'None')
 
             if has_aliases:
                 aliases.append(name)
@@ -315,18 +325,18 @@ class NodeArguments:
             return name
 
     def add_fixed_socket(self, node_socket: NodeSocket, value: Any):
-        socket_id = f"ID_{node_socket.identifier}" 
-        self.set_named_socket(socket_id, value)
+        socket_id = node_socket.group_name or f"ID_{node_socket.identifier}"
+        self.set_named_socket(socket_id, repr(value))
 
         self.set_fixed_doc(node_socket.socket_name, value, "Socket")
 
 
     def add_computed_socket(self, node_socket: NodeSocket, value_name: str, computation: str):
-        socket_id = f"ID_{node_socket.identifier}" 
+        socket_id = node_socket.group_name or f"ID_{node_socket.identifier}"
         self.set_named_socket(socket_id, value_name)
         self.computations.append(computation)
 
-        self.set_fixed_doc(node_socket.socket_name, value_name, "Computed Socket")
+        self.computed_doc.append(f"- Socket {node_socket.socket_name!r} = {value_name}")
 
 
     # ====================================================================================================
@@ -349,14 +359,21 @@ class NodeArguments:
         self.arg_names.clear()
 
     def get_header(self):
-        return self.header_positionals + self.socket_keywords + self.param_keywords + self.header_kwargs
+        header = (self.header_positionals + self.socket_keywords + self.param_keywords
+                  + self.enum_param_keywords)
+        if len(self.header_kwargs) > 1:
+            print(f"CAUTION two **kwargs in header: {self.header_kwargs}")
+            header.append(self.header_kwargs[0])
+        else:
+            header.extend(self.header_kwargs)
+        return header
 
     def get_node_call(self):
 
         node_call = list(self.node_args)
 
         if len(self.node_named_sockets):
-            node_call.append("named_socket={" + ", ".join(self.node_named_sockets) + "}")
+            node_call.append("named_sockets={" + ", ".join(self.node_named_sockets) + "}")
 
         node_call.extend(self.node_parameters)
         node_call.extend(self.node_kwargs)
@@ -383,6 +400,10 @@ class NodeArguments:
             source += "\n**Fixed inputs**\n"
             source += "\n".join(self.fixed_doc) + "\n"
         
+        if self.computed_doc:
+            source += "\n**Computed inputs**\n"
+            source += "\n".join(self.computed_doc) + "\n"
+
         if len(self.args_doc):
             source += f"\nParameters\n"
             source += f"----------\n"
@@ -400,9 +421,9 @@ class NodeArguments:
         # Node creation
         call = self.get_node_call()
 
-        source += f"node = Node('{node_name}'"
+        source += f"node = Node({R0}{node_name!r}"
         if len(call):
-            source +=", " + ", ".join(call)
+            source += f",{R0}" + f",{R0}".join(call)
 
         source += ")\n"
 

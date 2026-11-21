@@ -631,7 +631,7 @@ def demo(rebuild=False):
 
         with Layout("Instantiate the balls"):
             mesh = Mesh.Grid(20, 20)
-            mesh += cloud.instance_on(instance=Mesh.UVSphere(radius=radius))
+            mesh += cloud.instance_on_points(instance=Mesh.UVSphere(radius=radius))
             
         # Outside de the loop, out to Group Output Node
         mesh.out()

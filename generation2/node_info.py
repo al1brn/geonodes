@@ -15,7 +15,7 @@ from .node_dims import NODE_DIMS
 
 class NodeItems:
     
-    def __init__(self, node_info, items):
+    def __init__(self, node_info, bnode, name):
         """ Node items wrapper
         
         Dynamic sockets are create in items collection
@@ -29,7 +29,8 @@ class NodeItems:
         """
 
         self.node_info = node_info
-        self.items = items
+        self.name = name
+        self.items = getattr(bnode, name)
         
         # signature analyzis will create a least one item
         items_count = len(self.items)
@@ -229,7 +230,6 @@ class NodeInfo:
         if self.creation_items is not None:
             return self.creation_items.virtual_input_socket
 
-    """
     @property
     def has_dynamic_inputs(self):
         return any(socket.socket_type == 'CUSTOM' for socket in self.inputs.values())
@@ -237,7 +237,6 @@ class NodeInfo:
     @property
     def has_dynamic_outputs(self):
         return any(socket.socket_type == 'CUSTOM' for socket in self.outputs.values())
-    """
 
     @property
     def is_grid_input(self):
@@ -273,6 +272,16 @@ class NodeInfo:
         return False
 
     @property
+    def has_selection_out(self):
+        if len(self.bnode.outputs) < 2:
+            return False
+        if self.bnode.outputs[0].type != 'GEOMETRY':
+            return False
+        if self.bnode.outputs[1].type != 'BOOLEAN':
+            return False
+        return True
+
+    @property
     def data_type_parameter(self):
         """ data_type, socket_type or input_type parameter
         """
@@ -299,11 +308,6 @@ class NodeInfo:
     @property
     def data_type_drives_first_input(self):
         if self.data_type_drives_inputs:
-
-            if self.data_type_drives_items:
-                if self.virtual_socket is not None:
-                    return self.virtual_socket.index == 0
-                
             data_type = getattr(self.bnode, self.data_type_name)
             sockets = self.data_type_driven_sockets[data_type]['inputs']
             if sockets:
@@ -311,6 +315,37 @@ class NodeInfo:
                     if bsock.enabled:
                         return bsock.identifier == sockets[0].identifier
         return False
+
+    @property
+    def last_sockets(self):
+        last = []
+        for sock in self.bnode.inputs:
+            if sock.enabled and (sock.type == 'MENU'
+                                 or (sock.name == 'Factor' and sock.type == 'VALUE')):
+                last.append(sock.name)
+        return last
+
+    @property
+    def has_geometry_in(self):
+        first = next((s for s in self.inputs.values()
+                      if s.enabled and not s.is_virtual), None)
+        return first is not None and first.socket_type == 'GEOMETRY'
+    
+    @property
+    def has_geometry_out(self):
+        first = next((s for s in self.outputs.values()
+                      if s.enabled and not s.is_virtual), None)
+        return first is not None and first.socket_type == 'GEOMETRY'
+
+    @property
+    def auto_jump(self):
+        if not (self.has_geometry_in and self.has_geometry_out):
+            return False
+        in_class = next(s.class_name for s in self.inputs.values()
+                        if s.enabled and not s.is_virtual)
+        out_class = next(s.class_name for s in self.outputs.values()
+                         if s.enabled and not s.is_virtual)
+        return in_class == out_class
 
     # ====================================================================================================
     # Parameters
@@ -518,7 +553,7 @@ class NodeInfo:
         self.items = []
         for attr_name in dir(self.bnode):
             if attr_name[-6:] == '_items':
-                self.items.append(NodeItems(self, getattr(self.bnode, attr_name)))
+                self.items.append(NodeItems(self, self.bnode, attr_name))
 
         # Get the items which create input sockets
         self.creation_items = None
@@ -776,9 +811,10 @@ class NodeInfo:
             self, *, 
             self_socket     = None, 
             fixed_sockets   = None,
-            last_sockets    = (), 
+            last_sockets    = None,
             geo_selection   = False,
-            auto_data_type  = None, 
+            auto_data_type  = None,
+            type_aliases    = None,
             **parameters) -> NodeArguments:
 
         if fixed_sockets is None:
@@ -816,10 +852,10 @@ class NodeInfo:
         arguments = NodeArguments()
 
         def raise_error(msg):
-            arguments.make_arg_names_unique(reserved={'self', 'cls', 'node'})
+            arguments.make_arg_names_unique(reserved={'self', 'cls', 'node', 'computed_type', 'named_sockets', 'sockets', 'items', 'all_sockets'})
 
             print('-'*60)
-            print(arguments.get_source_code(as_method=True, doc_string=False))
+            print(arguments.get_mockup(as_method=True, doc=False))
             print('-'*60)
 
             raise RuntimeError(f"'{self.name}' : {msg}")
@@ -839,17 +875,21 @@ class NodeInfo:
                 arguments.add_fixed_parameter(node_param, parameters[name])
             elif auto_data_type is not None and name == self.data_type_name:
                 # data_type will be computed later
-                arguments.add_fixed_parameter(node_param, 'computed_type')
+                arguments.add_computed_parameter(node_param, '', value_name='computed_type')
                 data_type_compution_is_expected = True
             else:
-                arguments.add_parameter(node_param)
+                arguments.add_parameter(node_param, type_aliases)
 
         # ---------------------------------------------------------------------------
         # Loop on sockets
         # ---------------------------------------------------------------------------
 
-        geo_selection = geo_selection and self.has_selection
-        last_sockets = set(last_sockets or ())
+        receiver_socket = next((socket for socket in sockets
+                                if socket.socket_name == self_socket), None)
+        geo_selection = (geo_selection and self.has_selection and bool(sockets)
+                         and self_socket == sockets[0].socket_name
+                         and sockets[0].socket_type == 'GEOMETRY')
+        last_sockets = set(self.last_sockets if last_sockets is None else last_sockets)
 
         for first in (True, False):
             for index, socket in enumerate(sockets):
@@ -868,10 +908,10 @@ class NodeInfo:
                     continue
 
                 # General case
-                arg_name = arguments.add_socket(socket, is_self=self_socket == socket.socket_name)
+                arg_name = arguments.add_socket(socket, is_self=socket is receiver_socket)
 
                 # Auto data_type
-                if auto_data_type == socket.socket_name:
+                if data_type_compution_is_expected and auto_data_type == socket.socket_name:
                     if arg_name is None:
                         raise_error(f"Impossible to use auto_data_type with socket {auto_data_type}. No arg_name is available.")
 
@@ -884,174 +924,13 @@ class NodeInfo:
         # Finalize
         # ---------------------------------------------------------------------------
 
-        arguments.make_arg_names_unique(reserved={'self', 'cls', 'node'})
+        arguments.make_arg_names_unique(reserved={'self', 'cls', 'node', 'computed_type', 'named_sockets', 'sockets', 'items', 'all_sockets'})
 
         if data_type_compution_is_expected:
             raise_error(f"Impossible to find the socket to compute data_type with {auto_data_type=}.")
 
 
         return arguments
-
-
-
-
-        
-
-
-
-
-    
-
-    def get_node_arguments_DEPR(self, *, self_socket=None, fixed_sockets=None,
-                           last_sockets=(), geo_selection=False,
-                           auto_data_type=None, **parameters) -> list[NodeArguments]:
-        """Prepare independent contextual wrappers, without changing this node.
-
-        All supplied parameters are fixed, including non-enums and None. Only
-        enum parameters select socket configurations in get_possible_sockets;
-        other fixed values are also applied during exploration. Unspecified
-        parameters remain exposed, in config_order followed by snapshot order.
-        The receiver is selected before last_sockets reorders whole wrappers.
-        Explicitly fixed sockets take precedence over automatic selection.
-        """
-        initial = self.snapshot_params()
-        unknown = parameters.keys() - initial.keys()
-        if unknown:
-            raise ValueError(f'{self.name}: unknown parameters: {sorted(unknown)}')
-
-        try:
-            self.set_params(**parameters)
-            for name, value in parameters.items():
-                if name not in self.config_order:
-                    setattr(self.bnode, name, value)
-            snapshots = self.snapshot_params()
-            sockets = self.get_possible_sockets(**parameters)
-        finally:
-            # Restore enum masters first, then the remaining parameter values.
-            self.set_params(**{name: info['value'] for name, info in initial.items()})
-            for name, info in initial.items():
-                if name not in self.config_order and name in parameters:
-                    setattr(self.bnode, name, info['value'])
-
-        used_names = {'self', 'cls', 'node', 'named_sockets'}
-
-        def unique_name(name):
-            base = snake_case(name) or 'value'
-            candidate = base
-            index = 0
-            while candidate in used_names:
-                index += 1
-                candidate = f'{base}_{index}'
-            used_names.add(candidate)
-            return candidate
-
-        # Dynamic items reserve their names before ordinary arguments.
-        """
-        items_argument = None
-        if self.has_items:
-            if list(self.items.values())[0] == 'EMPTY': # dict {items name: TYPE | EMPTY} 
-                items_argument = NodeArgument(None, unique_name('dyn_sockets'), role='ANONYMOUS_ITEMS')
-            else:
-                items_argument = NodeArgument(None, unique_name('items'), role='NAMED_ITEMS',
-                                              kwargs_name=unique_name('named_items'))
-        """
-
-        # Parameters reserve their Python names before the socket arguments.
-        param_arguments = []
-        param_names = list(self.config_order) + [name for name in snapshots if name not in self.config_order]
-        for name in param_names:
-            info = snapshots[name]
-            default = initial[name]['value'] if name in parameters else info['value']
-            parameter = NodeParam(self.bnode, name, default, info['type'], enums=info['enums'])
-            context = dict(role='FIXED', value=parameters[name]) if name in parameters else {}
-            param_arguments.append(NodeArguments(parameter, unique_name(name), **context))
-
-        def matches(socket, name):
-            return (name in socket.names or name == socket.identifier
-                    or name == f'ID_{socket.identifier}' or name == socket.group_name)
-
-        receiver = None
-        if self_socket is not None:
-            receiver = next((socket for socket in sockets if matches(socket, self_socket)), None)
-            if receiver is None:
-                raise ValueError(f'{self.name}: unknown receiver socket: {self_socket!r}')
-
-        remaining_fixed = dict(fixed_sockets or {})
-        arguments = []
-        for index, socket in enumerate(sockets):
-
-            """
-            # Virtual socket
-            if socket.is_virtual:
-                if self_socket == 'ITEMS':
-                    assert self.virtual_socket is not None, "Algo error"
-                    arguments.append(NodeArgument(self.virtual_socket, 'VIRTUAL', role='SELF'))
-                continue
-            """
-
-            names = [socket.socket_name] + sorted(socket.names - {socket.socket_name})
-            fixed_names = [name for name in remaining_fixed if matches(socket, name)]
-            if len(fixed_names) > 1:
-                raise ValueError(f'{self.name}: multiple fixed values for socket {socket.identifier!r}')
-            ui_name = self_socket if socket is receiver and self_socket in socket.names else names[0]
-            context = {}
-            if fixed_names:
-                if socket is receiver:
-                    raise ValueError(f'{self.name}: receiver socket cannot also be fixed')
-                fixed_name = fixed_names[0]
-                if fixed_name in socket.names:
-                    ui_name = fixed_name
-                context = dict(role='FIXED', value=remaining_fixed.pop(fixed_name))
-            elif socket is receiver:
-                context = dict(role='SELF')
-            elif (geo_selection and index == 1 and receiver is sockets[0]
-                  and sockets[0].socket_type == 'GEOMETRY'
-                  and socket.socket_type == 'BOOLEAN' and 'Selection' in socket.names):
-                ui_name = 'Selection'
-                selection = unique_name('selection')
-                context = dict(role='COMPUTED', value=selection,
-                               computation=f'{selection} = self.get_selection()')
-
-            name = unique_name(ui_name)
-            aliases = ()
-            if not context and len(names) > 1 and not socket.is_multi:
-                aliases = tuple((ui, name if ui == ui_name else unique_name(ui)) for ui in names)
-            arguments.append(NodeArguments(socket, name, aliases=aliases, socket_name=ui_name, **context))
-
-        if remaining_fixed:
-            raise ValueError(f'{self.name}: unknown fixed sockets: {sorted(remaining_fixed)}')
-
-        # Resolve inference against final names, including deduplicated aliases.
-        if auto_data_type is not None:
-            type_parameter = self.data_type_parameter
-            if type_parameter is None:
-                raise ValueError(f'{self.name}: no type parameter for automatic inference')
-            
-            if type_parameter.name not in parameters:
-
-                if auto_data_type == 'ITEMS':
-                    expression = "self"
-                else:
-                    target = next((arg for arg in arguments
-                                if arg.role in ('ARGUMENT', 'SELF') and matches(arg.source, auto_data_type)), None)
-                    if target is None:
-                        raise ValueError(f'{self.name}: unknown type inference socket: {auto_data_type!r}')
-                    expression = 'self' if target.role == 'SELF' else dict(target.aliases).get(auto_data_type, target.name)
-
-                parameter = next(arg for arg in param_arguments if arg.source.name == type_parameter.name)
-                parameter.role = 'COMPUTED'
-                parameter.value = parameter.name
-                parameter.computation = (
-                    f'{parameter.name} = SocketType.get_data_type_for_node('
-                    f'{expression}, {self.bl_idname!r}, {type_parameter.name!r})')
-
-        # Ordering affects exposition only; physical order was used above.
-        first = [arg for arg in arguments if arg.role == 'SELF']
-        rest = [arg for arg in arguments if arg.role != 'SELF']
-        last = [arg for arg in rest if any(matches(arg.source, name) for name in last_sockets)]
-        return (first + [arg for arg in rest if not any(arg is item for item in last)]
-                + last + param_arguments )#+ ([items_argument] if items_argument is not None else []))
-
 
     # ====================================================================================================
     # Utilities
@@ -1169,7 +1048,7 @@ class NodeInfo:
         node_info = {
             'name'          : self.name,
             'params'        : params,
-            'items'         : [self.items] if self.has_items else {}, 
+            'items'         : [it.name for it in self.items], 
             'menu_sockets'  : menus,
             'inputs'        : inputs, 
             'outputs'       : outputs, 

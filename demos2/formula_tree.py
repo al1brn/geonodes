@@ -88,8 +88,7 @@ def build_tree(prefix='Tree', *, rebuild=False):
         with Layout("Index of ID"):
             new_cloud = Cloud(tree)
             new_cloud.points._Index = nd.index
-            new_cloud.points[Integer("ID").equal(node_id)].separate()
-            new_cloud = Cloud(new_cloud)
+            new_cloud = Cloud(new_cloud.points[Integer("ID").equal(node_id)].separate())
             exists = new_cloud.points.count.equal(1)._lc("Exists")
             index = new_cloud.points.sample_index(Integer("Index"), index=0).switch_false(exists, -1)
 
@@ -155,7 +154,7 @@ def build_tree(prefix='Tree', *, rebuild=False):
 
         with Layout("Children Count", color=MACRO_COLOR):
 
-            return Cloud(Cloud(tree).points[Integer("Owner").equal(node_id)].separate()).points.count._lc("Children")
+            return Cloud(tree.points[Integer("Owner").equal(node_id)].separate()).points.count._lc("Children")
 
     # ----------------------------------------------------------------------------------------------------
     # Update total : from node_id to root
@@ -219,8 +218,7 @@ def build_tree(prefix='Tree', *, rebuild=False):
         for rep in repeat(tree=tree, y=0, iterations=tree.points.count):
 
             #info = GTree.explore_info(rep.tree, explore=rep.iteration).node
-            sel_node = Cloud(rep.tree).points[Integer("Explore").equal(rep.iteration)].separate()
-            sel_node = Cloud(sel_node)
+            sel_node = Cloud(rep.tree.points[Integer("Explore").equal(rep.iteration)].separate())
 
             x          = sel_node.points.sample_index(Integer("Depth"), index=0)
             node_order = sel_node.points.sample_index(Integer("Order"), index=0)
@@ -412,7 +410,7 @@ def build_tree(prefix='Tree', *, rebuild=False):
 
         # oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
 
-        sel_tree = Cloud(tree).points[selection].separate()
+        sel_tree = tree.points[selection].separate()
         ok = sel_tree.points.count.equal(1)
 
         sel_id = sel_tree.points.sample_index(Integer("ID"), index=0)
@@ -1213,11 +1211,11 @@ def build_tree(prefix='Tree', *, rebuild=False):
             selection &= Integer("Depth").equal(depth)
 
         with Layout("Same owner"):
-            sel_tree = Cloud(tree).points[selection].separate()
+            sel_tree = tree.points[selection].separate()
             owner = sel_tree.points.sample_index(Integer("Owner"), index=0)
             selection &= Integer("Owner").equal(owner)
 
-            to_group = Cloud(tree).points[selection].separate()
+            to_group = tree.points[selection].separate()
 
         with Layout("Create a new id within the owner"):
             new_tree = GTree.new(tree, owner)

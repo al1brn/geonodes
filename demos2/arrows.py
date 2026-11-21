@@ -260,7 +260,7 @@ def demo(rebuild=False):
                 heights = gnmath.min(height, max_head_height)
                 shaft_len = shaft_len.switch(has_head, shaft_len - heights)
                 
-                heads = cloud.points[lens.greater_than(0.001)].instance_on(
+                heads = cloud(lens.greater_than(0.001)).instance_on_points(
                     instance = head,
                     rotation = rot,
                     scale = (1, 1, heights/height),
@@ -292,7 +292,7 @@ def demo(rebuild=False):
             macros.move_coordinate(cyl, 1/3, -1/3 + 0.002)
             macros.move_coordinate(cyl, 2/3, 1/3 - 0.002)
             
-            cyls = cloud.points[lens.greater_than(0.001)].instance_on(
+            cyls = cloud(lens.greater_than(0.001)).instance_on_points(
                 instance = cyl,
                 scale = Vector.CombineXYZ(1, 1, shaft_len),
             )

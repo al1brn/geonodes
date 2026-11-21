@@ -368,9 +368,7 @@ def build_groups(rebuild=False):
     def macro_create_work(ref, ref_id, item_id, explore):
         with Layout("Create Work faces from reference"):
 
-            mesh = Mesh(ref).faces[Integer("Ref ID").equal(ref_id)].separate()
-
-            mesh = Mesh(mesh)
+            mesh = Mesh(ref.faces[Integer("Ref ID").equal(ref_id)].separate())
             vmin = -mesh.points.attribute_statistic(nd.position).min
             x, y, z = vmin.xyz
 
@@ -563,7 +561,7 @@ def build_groups(rebuild=False):
 
         for rep in repeat(term=term, iterations=term.faces.count):
             ref_id = rep.term.faces.sample_index(Integer("Ref ID"), index=rep.iteration)
-            ok_del = Mesh(Mesh(mesh).faces[Integer("Ref ID").equal(ref_id)].separate()).points.count.not_equal(0)
+            ok_del = Mesh(mesh.faces[Integer("Ref ID").equal(ref_id)].separate()).points.count.not_equal(0)
             rep.term.faces[nd.index.equal(rep.iteration)]._Delete = ok_del
 
         term = rep.term
@@ -2590,7 +2588,7 @@ def build_groups(rebuild=False):
             formula = GComp.main(mesh + tree, compile=compile)
 
             mesh = formula.mesh
-            mesh.faces[-Boolean("Reference")].separate()
+            mesh = mesh.faces[-Boolean("Reference")].separate()
             formula.switch(final, mesh).out("Geometry")
 
     # =============================================================================================================================

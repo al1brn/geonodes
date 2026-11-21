@@ -108,8 +108,8 @@ def demo(rebuild=False):
         with Layout("Mesh"):
             mesh = Curve(bracket).fill()
             mesh.faces.material = mat
-            mesh.faces.set('Color', col)
-            mesh.faces.set('Transparency', 1 - show)
+            mesh.faces['Color'] = col
+            mesh.faces['Transparency'] = 1 - show
             
             bracket.switch(use_fill, mesh).switch(show == 0).out()
 
@@ -205,7 +205,7 @@ def demo(rebuild=False):
             p0 * (1 - t)**3 + p1 * (3*(1 - t)**2*t)
             + p2 * (3*(1 - t)*t*t) + p3 * t**3
         )
-        mesh = mesh.faces[fill_mesh.bnot()].delete_only_face()
+        mesh = mesh.faces[fill_mesh.bnot()].delete(mode="Only Faces")
 
         with Geometry.MenuSwitch(menu=Input("Geometry"), default_menu='Curve') as geometry:
             line.out("Curve")

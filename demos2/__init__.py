@@ -22,8 +22,8 @@ from . import topology
 
 Demo builders use `demo(rebuild=False)` by default: missing node groups are
 created and existing groups are preserved. Use `demo(rebuild=True)` to rebuild
-the groups, including those built by dependencies. Material replacement remains
-controlled by each shader's `replace_material` setting.
+the groups, including those built by dependencies. API materials are identified by their `geonodes_api` custom property;
+unmarked user materials are preserved.
 
 ## Tutorials
 

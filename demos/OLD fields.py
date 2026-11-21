@@ -375,7 +375,7 @@ def demo(rebuild=False):
             mesh_lines.faces._Color = line_color
             mesh_lines.faces.smooth = True
             mesh_lines.corners.store_uv("UV Map", Vector((Float("Uvmap u"), Float("Uvmap v"), 0)))
-            mesh_lines.remove_named_attribute(pattern_mode="Wildcard", name="Uvmap*")
+            mesh_lines.remove_named_attribute(name="Uvmap*", pattern_mode="Wildcard")
 
         mesh_lines.switch(keep_curves, curve).out()
 

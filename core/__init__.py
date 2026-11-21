@@ -68,7 +68,7 @@ if PRODUCTION:
 
     from .sock_shader import Shader, VolumeShader
     from .shadernodes import ShaderNodes
-    from .decorators import Package, geo_group, geo_modifier, shader_group, shader_material
+    from .decorators import Package, group, modifier, tool, shader_group, shader
 
     # ====================================================================================================
     # Create the dict socket_type -> SocketClass

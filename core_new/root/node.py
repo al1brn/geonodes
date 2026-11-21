@@ -48,7 +48,7 @@ from ..common import blender as blender
 from ..common.scripterror import NodeError
 from .. import constants
 from ..common import utils as utils
-from ..common.colors import SysColor
+from ...kernel.colors import SysColor
 from ..common.sockettype import SocketType
 from ..common.utils import Break
 from ..common.signature import Signature
@@ -387,9 +387,7 @@ class Node:
         self._is_paired_input  = False
 
         if self._has_items:
-            items_dict = constants.ONE_ITEMS_NODES[bl_idname]
-            items_name = list(items_dict.keys())[0]
-            items = getattr(self._bnode, items_name)
+            items = getattr(self._bnode, constants.ONE_ITEMS_NODES[bl_idname])
             items.clear()
 
             found = False
@@ -601,7 +599,39 @@ class Node:
         """
         self._label = label
         self._color = color
-        return self    
+        return self
+
+    @property
+    def _node_width(self):
+        return self._bnode.width
+
+    @_node_width.setter
+    def _node_width(self, value):
+        self._bnode.width = value
+
+    def _custom_property(self, name, value):
+        """Create or update a Blender custom property and return this node."""
+        self._bnode[name] = value
+        return self
+
+    def _set_arrange(self, horizontal=None, vertical=None):
+        """Store arrangement hints; None leaves the corresponding axis unchanged.
+
+        Placement is performed separately by the tree arrangement algorithm.
+        """
+        axes = (
+            ('arrange_horizontal', horizontal,
+             ('outer_left', 'left', 'mid', 'right', 'outer_right')),
+            ('arrange_vertical', vertical,
+             ('outer_top', 'top', 'mid', 'bottom', 'outer_bottom')),
+        )
+        for name, value, choices in axes:
+            if value is not None and value not in choices:
+                raise ValueError(f'{name}: invalid value {value!r}; expected one of {choices}.')
+        for name, value, _ in axes:
+            if value is not None:
+                self._custom_property(name, value)
+        return self
 
     # ====================================================================================================
     # Specific nodes
@@ -1402,7 +1432,7 @@ class Node:
         socket
         """
 
-        if value is None:
+        if value is None or getattr(value, '_is_default', False):
             return socket
 
         # ---------------------------------------------------------------------------
@@ -1767,12 +1797,20 @@ class Node:
 
     def _second_out(self, default) -> Socket:
         """Return the second available output, or default if there is none."""
-        first = None
+
+        counter = 1
+        if len(self._bnode.outputs) > 2:
+            if ((self._bnode.outputs[0].type == 'GEOMETRY') and
+                (self._bnode.outputs[1].type == 'BOOLEAN') and
+                (self._bnode.outputs[1].name == 'Selection')
+                ):
+                counter += 1
+
         for bsock in self._bnode.outputs:
             if bsock.enabled and bsock.is_icon_visible and bsock.type != 'CUSTOM':
-                if first is not None:
+                if counter==0:
                     return self._to_socket(bsock)
-                first = bsock
+                counter -= 1
         return default
     
     # ====================================================================================================

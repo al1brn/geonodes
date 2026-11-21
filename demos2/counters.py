@@ -791,7 +791,7 @@ def demo(rebuild=False):
             min_circle.transform(scale=scale)
 
             mark = Mesh.Cube(size=(l, .05, h_marks))
-            marks = min_circle.instance_on(instance=mark, rotation=Rotation.AlignXToVector(nd.position))
+            marks = min_circle.instance_on_points(instance=mark, rotation=Rotation(DEFAULT).align_x_to_Vector(nd.position))
 
         clock = marks
 
@@ -804,7 +804,7 @@ def demo(rebuild=False):
 
             mark = Mesh.Cube(size=(l, .05, h_marks))
 
-            marks = hours_circle.instance_on(instance=mark, rotation=Rotation.AlignXToVector(nd.position))
+            marks = hours_circle.instance_on_points(instance=mark, rotation=Rotation(DEFAULT).align_x_to_vector(nd.position))
 
         clock += marks
 
@@ -817,7 +817,7 @@ def demo(rebuild=False):
 
             mark = Mesh.Cube(size=(l, .01, h_marks))
 
-            marks = sec_circle.instance_on(instance=mark, rotation=Rotation.AlignXToVector(nd.position))
+            marks = sec_circle.instance_on_points(instance=mark, rotation=Rotation(DEFAULT).align_x_to_vector(nd.position))
 
         clock += marks
         clock.transform(translation=(0, 0, h_marks/2))

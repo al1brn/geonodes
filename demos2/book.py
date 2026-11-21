@@ -219,7 +219,7 @@ def page_shaders(first_index, *page_pairs, selector_name="Image Selector"):
         odd_label, even_label = pair
         shader_index = first_index + offset
 
-        with ShaderNodes(f"Page {shader_index}", replace_material=True):
+        with ShaderNodes(f"Page {shader_index}", rebuild=True):
 
             uv = nd.texture_coordinate().uv
 
@@ -236,7 +236,7 @@ def page_shaders(first_index, *page_pairs, selector_name="Image Selector"):
                 coat_weight=0,
             ).out()
 
-    with ShaderNodes("Cover", replace_material=False):
+    with ShaderNodes("Cover", rebuild=False):
         uv = nd.texture_coordinate().uv
         img = uv.image_texture()
 
@@ -699,7 +699,7 @@ def demo(rebuild=False):
 
         with Layout("Book parameters"):
 
-            curve = Curve(Curve(sheets).splines[Integer("Index")==index].separate())
+            curve = Curve(sheets.splines[Integer("Index")==index].separate())
             width.switch(width < 0.1, curve.length())
 
             sheet_count, thickness = get_binding_params(binding, True)
@@ -1077,8 +1077,8 @@ def demo(rebuild=False):
             cur_start = (rep.iteration - left_count0) * spacing
             cur_fac = factor.map_range(from_min=cur_start, from_max=cur_start + duration)
 
-            sheet0 = Curve(from_sheets.sheets).splines[Integer("Index")==cur_index].separate().selection
-            sheet1 = Curve(to_sheets.sheets).splines[Integer("Index")==cur_index].separate().selection
+            sheet0 = Curve(from_sheets.sheets).splines[Integer("Index")==cur_index].separate()
+            sheet1 = Curve(to_sheets.sheets).splines[Integer("Index")==cur_index].separate()
 
             sheet = G().sheet_interpolate(
                 start = sheet0,
@@ -1211,9 +1211,9 @@ def demo(rebuild=False):
         
         nsplines = sheets.splines.count
         
-        cover = Curve(Curve(sheets).splines[Integer("Index")==0].separate().selection)
+        cover = Curve(sheets.splines[Integer("Index")==0].separate().selection)
         cover.reverse()
-        back = Curve(Curve(sheets).splines[Integer("Index")==nsplines - 1].separate().selection)
+        back = Curve(sheets.splines[Integer("Index")==nsplines - 1].separate().selection)
         
         line1, curves = merge_curves([cover, binding, back])
         cover = curves[0]
@@ -1314,12 +1314,11 @@ def demo(rebuild=False):
         with Layout("Internal Sheets"):
             count = sheets.splines.count
             internal = (Integer("Index") > 0) & (Integer("Index") < count - 1)
-            page_source = Curve(sheets)
-            page_curves = Curve(page_source.splines[internal].separate())
+            page_curves = Curve(sheets.splines[internal].separate())
             internal_count = count - 2
             point_count = page_curves.points.count/internal_count
             page_curves = page_curves.resample(count=point_count)
-            page_curves.points.Page_U = page_curves.points.index_in_curve(nd.index)/(point_count - 1)
+            page_curves.points.Page_U = page_curves.points.curve(nd.index).index_in_curve/(point_count - 1)
             sheet_mesh = page_curves.to_mesh()
             sheet_mesh.edges.extrude(offset=(0, length, 0))
 
@@ -1430,12 +1429,14 @@ def demo(rebuild=False):
         with Layout("From Parameters"):
             with Layout("Left"):
                 from_left_cover = G().profile_parameters_standard(
-                    curvature = left_factor.map_range_smooth_step(to_max=cover_max_curv),
+                    #curvature = left_factor.map_range_smooth_step(to_max=cover_max_curv),
+                    curvature = left_factor.map_range(to_max=cover_max_curv, interpolation_type='Smooth Step'),
                     stick = left_factor.map_range(from_min=cover_min_from_stick),
                 )._lc("Cover")
                 from_left_sheet = G().profile_parameters_standard(
-                    curvature = left_factor.map_range_smooth_step(to_max=sheet_max_curv),                
-                    s_shape = left_factor.map_range_smooth_step(to_max=sheet_max_s),                
+                    #curvature = left_factor.map_range_smooth_step(to_max=sheet_max_curv),                
+                    curvature = left_factor.map_range(to_max=sheet_max_curv, interpolation_type='Smooth Step'),                
+                    s_shape = left_factor.map_range(to_max=sheet_max_s, interpolation_type='Smooth Step'),                
                     stick = left_factor.map_range(from_min=cover_min_from_stick/2),
                 )._lc("Sheet")
                 from_left_back = G().profile_parameters_standard(
@@ -1445,12 +1446,12 @@ def demo(rebuild=False):
                 
             with Layout("Right"):
                 from_right_back = G().profile_parameters_standard(
-                    curvature = factor.map_range_smooth_step(to_max=cover_max_curv),
+                    curvature = factor.map_range(to_max=cover_max_curv, interpolation_type='Smooth Step'),
                     stick = factor.map_range(from_min=cover_min_from_stick),
                 )._lc("Back")
                 from_right_sheet = G().profile_parameters_standard(
-                    curvature = factor.map_range_smooth_step(to_max=sheet_max_curv),                
-                    s_shape = factor.map_range_smooth_step(to_max=sheet_max_s),                
+                    curvature = factor.map_range(to_max=sheet_max_curv, interpolation_type='Smooth Step'),                
+                    s_shape = factor.map_range(to_max=sheet_max_s, interpolation_type='Smooth Step'),                
                     stick = factor.map_range(from_min=cover_min_from_stick/2),
                 )._lc("Sheet")
                 from_right_cover = G().profile_parameters_standard(
@@ -1460,12 +1461,12 @@ def demo(rebuild=False):
                 
         with Layout("Left"):
             to_left_cover = G().profile_parameters_standard(
-                curvature = left_factor.map_range_smooth_step(to_max=cover_max_curv),
+                curvature = left_factor.map_range(to_max=cover_max_curv, interpolation_type='Smooth Step'),
                 stick = left_factor.map_range(from_min=cover_min_from_stick),
             )._lc("Cover")
             to_left_sheet = G().profile_parameters_standard(
-                curvature = left_factor.map_range_smooth_step(to_max=sheet_max_curv),                
-                s_shape = left_factor.map_range_smooth_step(to_max=sheet_max_s),                
+                curvature = left_factor.map_range(to_max=sheet_max_curv, interpolation_type='Smooth Step'),                
+                s_shape = left_factor.map_range(to_max=sheet_max_s, interpolation_type='Smooth Step'),                
                 stick = left_factor.map_range(from_min=cover_min_from_stick/2),
             )._lc("Sheet")
             to_left_back = G().profile_parameters_standard(
@@ -1475,12 +1476,12 @@ def demo(rebuild=False):
             
         with Layout("Right"):
             to_right_back = G().profile_parameters_standard(
-                curvature = factor.map_range_smooth_step(to_max=cover_max_curv),
+                curvature = factor.map_range(to_max=cover_max_curv, interpolation_type='Smooth Step'),
                 stick = factor.map_range(from_min=cover_min_from_stick),
             )._lc("Back")
             to_right_sheet = G().profile_parameters_standard(
-                curvature = factor.map_range_smooth_step(to_max=sheet_max_curv),                
-                s_shape = factor.map_range_smooth_step(to_max=sheet_max_s),                
+                curvature = factor.map_range(to_max=sheet_max_curv, interpolation_type='Smooth Step'),                
+                s_shape = factor.map_range(to_max=sheet_max_s, interpolation_type='Smooth Step'),                
                 stick = factor.map_range(from_min=cover_min_from_stick/2),
             )._lc("Sheet")
             to_right_cover = G().profile_parameters_standard(

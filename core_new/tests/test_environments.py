@@ -71,14 +71,14 @@ class EnvironmentsTest(unittest.TestCase):
 
     def test_decorators(self):
         seen = []
-        @core.geo_group('Environment decorated geometry')
+        @core.group('Environment decorated geometry')
         def geometry():
             seen.append(type(core.Vector((1, 2, 3))))
         @core.shader_group('Environment decorated shader')
         def shader():
             seen.append(type(core.Vector((1, 2, 3))))
-        geometry.build()
-        shader.build()
+        geometry._build()
+        shader._build()
         self.assertIn('geonodes.generated', seen[0].__module__)
         self.assertIn('shadernodes.generated', seen[1].__module__)
 

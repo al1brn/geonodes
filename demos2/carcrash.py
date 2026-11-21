@@ -91,9 +91,9 @@ def _store_state(mesh, values, selection=None):
     captured = [mesh.points.capture_attribute(value) for value in values.values()]
     for name, value in zip(values, captured):
         if selection is None:
-            mesh.points.set(name, value)
+            mesh.points[name] = value
         else:
-            mesh.points[selection].set(name, value)
+            mesh.points(selection)[name] = value
 
 
 def utilities(rebuild=False):
@@ -123,7 +123,7 @@ def _wheel_setup_group(rebuild):
         mesh = Mesh()
         part_type = Integer(0, "Part Type")
         wheel_id = Integer.Named("Wheel ID")
-        mesh.points.set(_WHEEL_CENTRE, _rest_centre())
+        mesh.points[_WHEEL_CENTRE] = _rest_centre()
         for number in range(1, 5):
             members = wheel_id == number
             rims = members & (part_type == 9)
@@ -134,7 +134,7 @@ def _wheel_setup_group(rebuild):
                                              Boolean.Switch(has_tyre, members, tyres), rims)
             bounds = mesh.points[pivot_selection].attribute_statistic(nd.position)
             pivot = (bounds.min_ + bounds.max_) * 0.5
-            mesh.points[members].set(_WHEEL_CENTRE, pivot)
+            mesh.points[members][_WHEEL_CENTRE] = pivot
         mesh.out("Mesh")
 
 
@@ -142,12 +142,12 @@ def _initialize_group(rebuild):
     with GeoNodes("Crash Initialize", is_group=True, rebuild=rebuild):
         mesh = Mesh()
         centre = _rest_centre()
-        mesh.points.set("Dynamic", Boolean(False))
-        mesh.points.set(_IMPACTED, Boolean(False))
-        mesh.points.set("Velocity", Vector(0))
-        mesh.points.set("Angular Velocity", Vector(0))
-        mesh.points.set(_CENTRE, centre)
-        mesh.points.set(_ROTATION, Rotation((0, 0, 0)))
+        mesh.points["Dynamic"] = Boolean(False)
+        mesh.points[_IMPACTED] = Boolean(False)
+        mesh.points["Velocity"] = Vector(0)
+        mesh.points["Angular Velocity"] = Vector(0)
+        mesh.points[_CENTRE] = centre
+        mesh.points[_ROTATION] = Rotation((0, 0, 0))
         # A compact ID table also supports sparse or negative Part IDs.
         rank = mesh.points.accumulate_field(Integer(1), group_id=Integer.Named("Part")).trailing_
         parts = Mesh(mesh).points[rank != 0].delete()
@@ -551,7 +551,7 @@ def swerve(rebuild=False):
             mesh = Mesh(Group("Crash Wheel Setup", mesh=mesh, part_type=part_type).mesh)
             # Derive wheel radii from the tyres, independently of the turn radius.
             radius_name = "_CarSwerve Wheel Radius"
-            mesh.points.set(radius_name, Float(1))
+            mesh.points[radius_name] = Float(1)
             for number in range(1, 5):
                 members = wheel_id == number
                 tyres = members & (part_type == 8)
@@ -559,7 +559,7 @@ def swerve(rebuild=False):
                 wheel_bounds = mesh.points[Boolean.Switch(has_tyre, members, tyres)].attribute_statistic(nd.position)
                 size = wheel_bounds.max_ - wheel_bounds.min_
                 radius = (size.x.max(size.z) * 0.5).max(0.001)
-                mesh.points[members].set(radius_name, radius)
+                mesh.points[members][radius_name] = radius
             wheel = (wheel_id >= 1) & (wheel_id <= 4)
             roll_angle = Float.Switch(wheel, 0, -distance / Float.Named(radius_name))
             rolling = Rotation(Vector((0, roll_angle, 0)))
@@ -604,14 +604,14 @@ def swerve(rebuild=False):
             target_name = "_CarSwerve Target"
             outward_name = "_CarSwerve Outward"
             floor_name = "_CarSwerve Ground"
-            mesh.points.set(_CENTRE, attached_centre)
-            mesh.points.set(_ROTATION, attached_rotation)
-            mesh.points.set("Dynamic", Boolean(False))
-            mesh.points.set("Velocity", Vector(0))
-            mesh.points.set("Angular Velocity", Vector(0))
-            mesh.points.set(target_name, attached_centre)
-            mesh.points.set(outward_name, Vector(0))
-            mesh.points.set(floor_name, ground_height)
+            mesh.points[_CENTRE] = attached_centre
+            mesh.points[_ROTATION] = attached_rotation
+            mesh.points["Dynamic"] = Boolean(False)
+            mesh.points["Velocity"] = Vector(0)
+            mesh.points["Angular Velocity"] = Vector(0)
+            mesh.points[target_name] = attached_centre
+            mesh.points[outward_name] = Vector(0)
+            mesh.points[floor_name] = ground_height
 
         def support_body(state):
             # One ground correction for the entire remaining body preserves its
@@ -686,7 +686,7 @@ def swerve(rebuild=False):
                     ground.mesh = result
                 step.mesh = ground.mesh
             state = Mesh(step.mesh)
-            state.points.set(target_name, attached_centre)
+            state.points[target_name] = attached_centre
             sim.mesh = state
             sim.previous_factor = factor
 

@@ -38,7 +38,7 @@ import numpy as np
 import bpy
 from .. import constants
 from .scripterror import NodeError
-from .colors import SysColor
+from ...kernel.colors import SysColor
 from . import blender as blender
 
 from typing import Literal
@@ -711,9 +711,3 @@ class SocketType:
         return not self.equal_to(other)
     
 
-
-
-
-
-    
-    

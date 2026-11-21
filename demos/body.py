@@ -1361,7 +1361,7 @@ def demo_head(rebuild=False):
             _, y, z = nd.position.xyz
             mouth[Integer("tmp Bridge")>0].position = gnmath.sqrt(1 - y**2 - z**2), y, z
             
-        mouth.remove_named_attribute("Wildcard", "tmp*")
+        mouth.remove_named_attribute("tmp*", patter_mode="Wildcard")
 
         mouth.out()
 
@@ -1549,7 +1549,7 @@ def demo_head(rebuild=False):
             head.points[Boolean("tmp Pole 0")].merge(merge_id=1)
             head.points[Boolean("tmp Pole 1")].merge(merge_id=1)
             
-            head.remove_named_attribute("Wildcard", "tmp *")
+            head.remove_named_attribute("tmp *", pattern_mode="Wildcard")
             
             head.faces.shade_smooth=shade_smooth
             head.faces.material = mat

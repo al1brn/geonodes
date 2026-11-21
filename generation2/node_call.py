@@ -5,7 +5,7 @@ from typing import Any, ClassVar
 # Implementation specifications for gen_source_code
 # ====================================================================================================
 
-@dataclass
+@dataclass(eq=False)
 class NodeCall:
 
     # Core info
@@ -29,7 +29,7 @@ class NodeCall:
     # Implementaton options
     auto_data_type      : str | None = None
     fixed_sockets       : dict[str, Any] = field(default_factory=dict)
-    last_sockets        : tuple[str, ...] = ()
+    last_sockets        : tuple[str, ...] | None = None
     parameters          : dict[str, Any] = field(default_factory=dict)
 
     # inline code
@@ -39,8 +39,8 @@ class NodeCall:
     implement           : bool = True
 
     # Debug
-    category            : str | None = None
-    rules               : str = ""
+    category            : str | None = field(default=None, compare=False)
+    rules               : str = field(default="", compare=False)
 
     _FUNC_TYPES: ClassVar[dict[str, tuple[str | None, str | None]]] = {
         'FUNCTION'          : (None, None),
@@ -53,6 +53,15 @@ class NodeCall:
     }
     _METHOD_TYPES = ('METHOD', 'GETTER', 'SETTER')
     _CLASS_TYPES = ('CLASS_METHOD', 'CLASS_PROPERTY')
+
+    def __eq__(self, other):
+        """Compare implementation fields, independently of diagnostic metadata."""
+        if type(other) is not type(self):
+            return NotImplemented
+        return all(getattr(self, f.name) == getattr(other, f.name)
+                   for f in fields(self) if f.compare)
+
+    __hash__ = None
 
     def __str__(self):
         return f"<NodeCall {self.method_name} {self.method_type}>"
@@ -230,7 +239,7 @@ class NodeCall:
                 updates[name] = current | value
 
             elif name == 'last_sockets':
-                updates[name] = current + tuple(value)
+                updates[name] = None if value is None else tuple(value)
 
             else:
                 updates[name] = value
@@ -243,6 +252,27 @@ class NodeCall:
 # ====================================================================================================
 
 class NodeCalls(list):
+
+    def remove_duplicates(self) -> "NodeCalls":
+        """Keep the first equivalent description, preserving order and identity."""
+        unique = []
+        for node_call in self:
+            if node_call not in unique:
+                unique.append(node_call)
+        self[:] = unique
+        return self
+
+    def append(self, node_call):
+        if node_call not in self:
+            super().append(node_call)
+
+    def extend(self, node_calls):
+        for node_call in tuple(node_calls):
+            self.append(node_call)
+
+    def __iadd__(self, node_calls):
+        self.extend(node_calls)
+        return self
 
     def __init__(self, *node_calls):
         
@@ -272,8 +302,8 @@ class NodeCalls(list):
         lengths = [len(v) for v in kwargs.values() if isinstance(v, list)]
         count = max(lengths, default=1)
 
-        assert all(n in (1, count) for n in lengths), \
-            f"Incompatible list lengths: {lengths}"
+        if any(n not in (1, count) for n in lengths):
+            raise ValueError(f"Incompatible list lengths: {lengths}")
 
         return [
             {
@@ -376,7 +406,7 @@ class NodeCalls(list):
                 for node_call in self
             )
 
-        return node_calls
+        return node_calls.remove_duplicates()
 
     def overrides(self, overrides: dict[str, Any] | list[dict]) -> "NodeCalls":
 
@@ -387,7 +417,7 @@ class NodeCalls(list):
         for override in overrides:
             node_calls.extend(self.replace(**override))
 
-        return node_calls 
+        return node_calls.remove_duplicates()
 
     # ===========================================================================
     # Loop on a field

@@ -146,7 +146,24 @@ class Domain(Geom, NodeCache, metaclass=EnvironmentType):
     @property
     def _domain_to_geometry(self):
         return self._geo
-    
+
+    # ----------------------------------------------------------------------------------------------------
+    # Self class
+    # ----------------------------------------------------------------------------------------------------
+
+    @property
+    def self_class(self):
+        """ Used to convert a socket to this socket class
+
+        Domain returns class of its geometry
+        """
+        return type(self._geo)
+
+    @property
+    def self_return(self):
+        """Return the owning geometry after a domain operation."""
+        return self._geo
+
     # ====================================================================================================
     # Overrides Geom selection
     # Selection can be done either on the geometry or on the domain (or both but strange !)
@@ -294,6 +311,7 @@ class Domain(Geom, NodeCache, metaclass=EnvironmentType):
     # Sample index
     # ====================================================================================================
 
+    """
     def __call__(self, value, index=None):
 
         from geonodes import nd
@@ -302,6 +320,7 @@ class Domain(Geom, NodeCache, metaclass=EnvironmentType):
             index = nd.index
 
         return self.sample_index(value, index=index)
+    """
 
     # ====================================================================================================
     # Methods

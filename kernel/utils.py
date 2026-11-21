@@ -101,7 +101,7 @@ def CamelCase(s):
 
     title = ""
     for w in s.split(' '):
-        if w in ['RGB', 'HSL', 'HSV', 'BSDF']:
+        if w.isupper():
             title += w
         else:
             title += w.title()

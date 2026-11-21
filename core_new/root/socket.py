@@ -56,7 +56,7 @@ from ..common.scripterror import NodeError
 from ..common import utils as utils
 from ..common import blender as blender
 from .. import constants
-from ..common.colors import SysColor
+from ...kernel.colors import SysColor
 from ..common.utils import Break
 from ..common.treeinterface import ItemPath
 from ..common.sockettype import SocketType
@@ -64,6 +64,18 @@ from ..common.treeinterface import TreeInterface
 from .tree import Tree, Layout
 from .node import Node, Group
 from .zone import ZoneNode, ZoneIterator
+
+
+class _Default:
+    """Sentinel requesting the destination socket's default value."""
+
+    __slots__ = ()
+
+    def __repr__(self):
+        return "DEFAULT"
+
+
+DEFAULT = _Default()
 
 # =============================================================================================================================
 # =============================================================================================================================
@@ -175,7 +187,8 @@ class Socket(NodeCache, metaclass=EnvironmentType):
         Parameters
         ----------
         socket : NodeSocket, optional
-            the output socket to wrap default=None.
+            the output socket to wrap default=None. DEFAULT creates an instance
+            without a node, leaving the destination input at its default value.
 
         name : str, optional
             input name if not None default=None.
@@ -203,6 +216,9 @@ class Socket(NodeCache, metaclass=EnvironmentType):
         self._bsocket     = None
 
         self._reset()
+
+        if socket is DEFAULT:
+            return
 
         # ---------------------------------------------------------------------------
         # Socket is a Node
@@ -312,6 +328,23 @@ class Socket(NodeCache, metaclass=EnvironmentType):
         return cls(self)
 
     # ----------------------------------------------------------------------------------------------------
+    # Self class
+    # ----------------------------------------------------------------------------------------------------
+
+    @property
+    def self_class(self):
+        """ Used to convert a socket to this socket class
+
+        Domain returns class of its geometry
+        """
+        return type(self)
+
+    @property
+    def self_return(self):
+        """Return the object exposed by methods that update this socket."""
+        return self
+
+    # ----------------------------------------------------------------------------------------------------
     # An empty socket
     # ----------------------------------------------------------------------------------------------------
 
@@ -353,19 +386,29 @@ class Socket(NodeCache, metaclass=EnvironmentType):
         -------
         Boolean
         """
-        if SocketType.from_type(cls.SOCKET_TYPE).class_name not in constants.ATTRIBUTE_CLASSES:
+
+        _DATA_TYPE = {
+            'VALUE'     : 'FLOAT', 
+            'INT'       : 'INT', 
+            'BOOLEAN'   : 'BOOLEAN', 
+            'VECTOR'    : 'FLOAT_VECTOR', 
+            'RGBA'      : 'FLOAT_COLOR', 
+            'ROTATION'  : 'QUATERNION', 
+            'MATRIX'    : 'FLOAT4X4', 
+            'INT8'      : 'INT8', 
+            'FLOAT2'    : 'FLOAT2', 
+            'FLOAT4'    : 'FLOAT4', 
+            'BYTE_COLOR': 'BYTE_COLOR',
+            }
+
+        stype = SocketType.from_type(cls.SOCKET_TYPE).type
+        data_type = _DATA_TYPE.get(stype)
+        if data_type is None:
             raise NodeError(
                 f"The class {SocketType.from_type(cls.SOCKET_TYPE).class_name} is not an attribute.\n"
                 f"Attribute classes are: {constants.ATTRIBUTE_CLASSES}")
-        
-        node = Node('Named Attribute', name=name)
-        data_type = SocketType.from_type(cls.SOCKET_TYPE).get_node_data_type(
-            tree_type = node._tree._btree.bl_idname,
-            bl_idname = node._bnode.bl_idname,
-            halt = True)
 
-        node.set_parameter('data_type', data_type)
-
+        node = Node('Named Attribute', name=name, data_type = data_type)
         return node._out._ul(name)
     
     # ----------------------------------------------------------------------------------------------------
@@ -706,6 +749,11 @@ class Socket(NodeCache, metaclass=EnvironmentType):
     # Emptyness
     # ====================================================================================================
 
+    @property
+    def _is_default(self):
+        """Whether this instance has no socket or explicit value."""
+        return self._bsocket is None
+
     def _is_empty(self, halt_message: str = None):
         if isinstance(self._bsocket, bpy.types.NodeSocket):
             return False
@@ -713,6 +761,11 @@ class Socket(NodeCache, metaclass=EnvironmentType):
         if halt_message is None:
             return True
         else:
+            if self._is_default:
+                raise NodeError(
+                    "Socket(DEFAULT) is reserved for calling instance methods "
+                    "without an actual input node.\n"
+                    f"{halt_message}")
             raise NodeError(f"Empty socket error:\n{halt_message}")
         
     # ====================================================================================================
@@ -1804,6 +1857,30 @@ class Socket(NodeCache, metaclass=EnvironmentType):
     # Index Switch
     # ====================================================================================================
 
+    @classmethod
+    def IndexSwitch(cls, *values, index=None, default_index: int = 0):
+        """Select one of the values using an Index Switch node.
+
+        Parameters
+        ----------
+        *values : Any
+            Values to select from, in index order.
+        index : Integer, optional
+            Index value or socket. Uses default_index when omitted.
+        default_index : int, default=0
+            Index used when index is None.
+
+        Returns
+        -------
+        Socket
+            Selected value wrapped in the calling class.
+        """
+        node = Node(
+            'Index Switch', *values,
+            named_sockets={'Index': default_index if index is None else index},
+            data_type=SocketType.convert_type_for_node(cls.SOCKET_TYPE, 'GeometryNodeIndexSwitch'))
+        return cls(node._out)
+
     # ----------------------------------------------------------------------------------------------------
     # Method version
     # ----------------------------------------------------------------------------------------------------
@@ -1853,7 +1930,7 @@ class Socket(NodeCache, metaclass=EnvironmentType):
     # ----------------------------------------------------------------------------------------------------
 
     @classmethod
-    def Switch(cls, condition=None, false=None, true=None):
+    def Switch_DEPRECATED(cls, condition=None, false=None, true=None):
         """ > Node <&Node Switch>
 
         ``` python
@@ -1895,7 +1972,7 @@ class Socket(NodeCache, metaclass=EnvironmentType):
     # Method version
     # ----------------------------------------------------------------------------------------------------
 
-    def switch(self, condition=None, true=None):
+    def switch_DEPRECATED(self, condition=None, true=None):
         """ > Node <&Node Switch>
 
         Self is connected to 'false' socket.
@@ -1953,7 +2030,7 @@ class Socket(NodeCache, metaclass=EnvironmentType):
     # Alternative method version
     # ----------------------------------------------------------------------------------------------------
 
-    def switch_false(self, condition=None, false=None):
+    def switch_false_DEPRECATED(self, condition=None, false=None):
         """ > Node <&Node Switch>
 
         [&JUMP]

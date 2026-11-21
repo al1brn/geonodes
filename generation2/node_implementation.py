@@ -1,10 +1,13 @@
 """Describe and render a single node implementation."""
 
+from dataclasses import replace as dataclass_replace
+
 from ..kernel import snake_case, CamelCase, get_class_name, CLASS_NAMES
 
 from ..kernel import GEOMETRY_CLASSES 
-from .config import ADD_LOOP, LOOP_ONLY
+from .config import ADD_LOOP, LOOP_ONLY, NO_STATIC_CODE
 from .config import STATIC_IMPLEMENTATION_ONLY, DEFAULT_IMPLEMENTATION, DOMAINS, DOMAIN_NAME
+from .config import STATIC_IMPLEMENTATIONS
 from .utils import replace_token
 
 from .node_call import NodeCall, NodeCalls
@@ -110,7 +113,8 @@ class NodeImplementation:
                     'parameters': {parameter.name: data_type},
                 }
 
-                if self.node.data_type_drives_inputs and node_call.has_self:
+                if (self.node.data_type_drives_inputs and node_call.has_self
+                        and node_call.self_socket is None):
                     override['self_socket'] = self.node.data_type_input(data_type)
 
                 overrides.append(override)
@@ -123,6 +127,60 @@ class NodeImplementation:
     # Loop on a parameter
     # ----------------------------------------------------------------------------------------------------
 
+    def expand_spec(self, spec: dict) -> list[dict]:
+        """Expand one description's columns and parameter loops in lockstep."""
+        general = object()
+        columns = dict(spec)
+        parameters = columns.pop('parameters', {})
+        loops = {}
+        if isinstance(parameters, dict):
+            parameters = dict(parameters)
+            for name, value in parameters.items():
+                if not isinstance(value, str) or value not in (ADD_LOOP, LOOP_ONLY):
+                    continue
+                parameter = NodeParam.Parameter(self.node.bnode, name)
+                if parameter is None or not parameter.enums:
+                    raise ValueError(f"{self.node.name}: no enum parameter named {name!r}")
+                loops[name] = parameter
+                parameters[name] = ([general] if value == ADD_LOOP else []) + list(parameter.enums)
+            # Parameter columns participate in the same alignment as all other fields.
+            for name, value in parameters.items():
+                columns[f'parameters.{name}'] = value
+        else:
+            columns['parameters'] = parameters
+
+        result = []
+        for row in NodeCalls.expand_dict(**columns):
+            params = row.pop('parameters', {}).copy()
+            for name in parameters if isinstance(parameters, dict) else ():
+                value = row.pop(f'parameters.{name}')
+                if value is not general:
+                    params[name] = value
+            for name, parameter in loops.items():
+                value = params.get(name, general)
+                suffix = '' if value is general else parameter.enum_names[value]
+                for field in ('class_name', 'method_name'):
+                    if field in row:
+                        row[field] = replace_token(row[field], suffix)
+                if value is general:
+                    continue
+                if name == self.node.data_type_name:
+                    if row.get('class_name') is None:
+                        row['class_name'] = get_class_name(value)
+                    row['auto_data_type'] = None
+                    if row.get('self_socket') is None and self.node.data_type_drives_inputs:
+                        row['self_socket'] = self.node.data_type_input(value)
+                elif name == 'domain' and row.get('class_name') is None:
+                    # Reuse the standard domain mapping, without changing the node.
+                    call = NodeCall.class_method('_domain')
+                    variants = self.get_domain_calls(NodeCalls(call))
+                    row['class_name'] = next(c.class_name for c in variants
+                                             if c.parameters['domain'] == value)
+            if params or 'parameters' in spec:
+                row['parameters'] = params
+            result.append(row)
+        return result
+
     def get_loop_parameter_calls(self, node_calls: NodeCalls, parameter_name: str, include_base=False) -> NodeCalls:
         """ Loop on a node parameter
 
@@ -130,6 +188,12 @@ class NodeImplementation:
         method_name = sample_MODE
         token = MODE
         """
+
+        if self.node.has_domain_parameter and parameter_name=='domain':
+            return self.get_domain_calls(node_calls=node_calls)
+
+        if self.node.has_data_type_parameter and parameter_name==self.node.data_type_name:
+            return self.get_data_type_calls(node_calls)
 
         parameter = NodeParam.Parameter(self.node.bnode, parameter_name)
         if parameter is None or parameter.enums is None:
@@ -170,6 +234,9 @@ class NodeImplementation:
     def get_default_node_calls(self) -> NodeCalls:
         """Describe the node implementation, including requested parameter loops."""
 
+        if self.node.bl_idname in NO_STATIC_CODE:
+            return NodeCalls()
+
         node = self.node
         inputs = [socket for socket in node.inputs.values() if socket.enabled and socket.socket_type != 'CUSTOM']
         outputs = [socket for socket in node.outputs.values() if socket.enabled and socket.socket_type != 'CUSTOM']
@@ -180,7 +247,9 @@ class NodeImplementation:
         name_tokens = [token.strip() for token in node.name.split(" ")]
         method_name = snake_case(' '.join(name_tokens))
 
-        over_spec = DEFAULT_IMPLEMENTATION.get(node.name, {})
+        over_spec = STATIC_IMPLEMENTATIONS.get(node.name, {}).copy()
+        over_spec.update(DEFAULT_IMPLEMENTATION.get(node.name, {}))
+        over_spec = self.expand_spec(over_spec)
 
         # Debug option
         if False and self.node.name in ('Combine List'):
@@ -279,15 +348,12 @@ class NodeImplementation:
         # Nodes with input geometry
         # ---------------------------------------------------------------------------
     
-        if bool(inputs) and first_input.socket_type == 'GEOMETRY':
+        if node.has_geometry_in:
 
             category = 'Input Geometry'
             rules = "First input socket is Geometry"
 
             geo_socket = first_input
-            in_class = geo_socket.class_name
-        
-            jump = False
             method_name = None
 
             auto_data_type = data_type_input is not None
@@ -295,7 +361,7 @@ class NodeImplementation:
                 rules += f"\nData type inferred from input '{data_type_input}'"
             data_type_loop = False
             domain_loop = False
-            jump = False
+            jump = node.auto_jump
         
             # ----- Class name / domain
         
@@ -306,18 +372,7 @@ class NodeImplementation:
         
             # ----- Output geometry
             
-            has_geo_out = bool(outputs)
-            if has_geo_out:
-                out_socket = first_output
-                has_geo_out = out_socket.socket_type == 'GEOMETRY'
-                out_class = out_socket.class_name
-            
-                same_class = out_class == in_class
-            else:
-                same_class = False
-
-            if has_geo_out:
-                jump = same_class
+            if node.has_geometry_out:
                 rules += f"\nOut class {'==' if jump else '!='} in class -> jump = {jump}"
             
             # ----- Conversion "xxx to yyy"
@@ -374,7 +429,7 @@ class NodeImplementation:
         # Nodes with output geometry
         # ---------------------------------------------------------------------------
     
-        if bool(outputs) and first_output.socket_type == 'GEOMETRY':
+        if node.has_geometry_out:
         
             category = 'Output Geometry'
             rules = "First output socket is Geometry"
@@ -399,8 +454,9 @@ class NodeImplementation:
         # data_type drives both input and output sockets
         # ---------------------------------------------------------------------------
 
-        if node.has_data_type_parameter:
-            if ((node.data_type_drives_inputs or node.data_type_drives_items) and node.data_type_drives_outputs
+        # data_type_drives_first_input will be treater later
+        if node.has_data_type_parameter and not node.data_type_drives_first_input:
+            if (node.data_type_drives_inputs and node.data_type_drives_outputs
                     and all(sockets['inputs'] for sockets in node.data_type_driven_sockets.values())):
 
                 node_call = NodeCalls.method(
@@ -505,6 +561,7 @@ class NodeImplementation:
                 print(f"DEBUG '{self.node.name}' ({self.node.bl_idname}): {is_class_method=} {class_name=}, {over_spec=}")
 
             if is_class_method:
+                method_name = CamelCase(node.name)
                 return NodeCalls.class_method(
                     category = category,
                     class_name = class_name,
@@ -598,18 +655,23 @@ class NodeImplementation:
 
                 return node_calls
 
-
-
-            else:
-                method_name = CamelCase(node.name)
-                node_calls = NodeCalls.class_method(
-                    category = 'Data type driven',
-                    method_name = method_name,
-                    rules = "'data_type' parameter drives first input",
-                ).overrides(over_spec)
-                return self.get_data_type_calls(node_calls)
-
         tokens = [token.strip() for token in node.name.split(" ")]
+
+        # ---------------------------------------------------------------------------
+        # Name is "xxx class_name"
+        # ---------------------------------------------------------------------------
+
+        if ( (len(name_tokens) == 2) and 
+            (name_tokens[-1] in CLASS_NAMES.values()) and
+             len(node.bnode.inputs)):
+            if CLASS_NAMES[node.bnode.inputs[0].type] == name_tokens[-1]:
+                return NodeCalls.method(
+                    category = "Transformations",
+                    class_name = name_tokens[-1],
+                    method_name = snake_case(name_tokens[0]),
+                    self_socket = first_input.socket_name,
+                    rules = "Name template is 'key_word class_name'",
+                ).overrides(over_spec)
 
         # ---------------------------------------------------------------------------
         # Combine / Separate / Conversions
@@ -681,12 +743,13 @@ class NodeImplementation:
                     is_class_method = (False, True)
 
                     rules += f"\nClass to Class -> two implementations : {class_name} {method_name}"
+        else:
+            rules = "No rule applied"
 
         # ---------------------------------------------------------------------------
         # All the other nodes
         # ---------------------------------------------------------------------------
 
-        rules = f"No rule applied..."
 
         if class_name is None:
             rules += f"\nclass_name is None"
@@ -793,29 +856,9 @@ class NodeImplementation:
             last_sockets=node_call.last_sockets,
             geo_selection=node_call.has_self and node_call.geo_selection,
             auto_data_type=node_call.auto_data_type,
+            type_aliases=self.type_aliases,
             **fixed_params,
         )
-
-        headers = []
-        doc_fixed = []
-        doc_computed = []
-        doc_args = []
-        node_args = []
-        named_sockets = []
-        node_params = []
-        socket_expansions = []
-        parameter_expansions = []
-        for argument in inputs:
-            headers.extend(argument.get_header(self.type_aliases))
-            doc_fixed.extend(argument.get_fixed_doc())
-            doc_computed.extend(argument.get_computed_doc())
-            doc_args.extend(argument.get_arg_doc())
-            call = argument.get_node_call()
-            node_args.extend(call.positional)
-            named_sockets.extend(f'{key!r}: {value}' for key, value in call.named_sockets.items())
-            node_params.extend(f'{key}={value}' for key, value in call.parameters.items())
-            socket_expansions.extend(call.named_socket_expansions)
-            parameter_expansions.extend(call.parameter_expansions)
 
         # ---------------------------------------------------------------------------
         # We can build the source code
@@ -830,119 +873,95 @@ class NodeImplementation:
             source.write(node_call.decorator)
 
         # Header
-        all_args = ([arg for arg in headers if arg.startswith('*') and not arg.startswith('**')]
-                    + [arg for arg in headers if not arg.startswith('*')]
-                    + [arg for arg in headers if arg.startswith('**')])
+        all_args = inputs.get_header()
         if node_call.first_arg is not None:
             all_args.insert(0, node_call.first_arg)
 
         sep = f",{R0}"
         source.write(f"def {node_call.method_name}({R0}{sep.join(all_args)}):")
 
+        source.indent += 1
+
         # Doc String
-        source.write(f'"""Node {self.node.name}.\n', indent=1)
-        source.write(f"Jump: {node_call.is_jump}", indent=1)
-
-        if len(doc_fixed):
-            source.write()
-            source.write("**Fixed inputs**", indent=1)
-            source.write()
-            for description in doc_fixed:
-                source.write(f"- {description}", indent=1)
-
-        if doc_computed:
-            source.write()
-            source.write('**Computed inputs**', indent=1)
-            source.write()
-            for description in doc_computed:
-                source.write(f'- {description}', indent=1)
-
-        if len(doc_args):
-            source.write()
-            source.write("Parameters", indent=1)
-            source.write("----------", indent=1)
-            source.write(*doc_args, indent=1)
+        source.write(f'"""Node {self.node.name}.\n')
+        source.write(f"Jump: {node_call.is_jump}")
+        source.write(inputs.get_doc_source())
 
         if node_call.method_type != 'SETTER':
             source.write()
-            source.write("Returns", indent=1)
-            source.write("-------", indent=1)
+            source.write("Returns")
+            source.write("-------")
 
             if node_call.return_socket is not None:
-                source.write("Socket", indent=1)
-                source.write(f"    Socket '{node_call.return_socket}'.", indent=1)
+                source.write("Socket")
+                source.write(f"    Socket '{node_call.return_socket}'.")
 
             elif node_call.return_kind == 'OUT':
                 if node_call.is_jump:
-                    source.write("Socket", indent=1)
-                    source.write("    Second output socket, or self if there is no second output.", indent=1)
-                    source.write("    Updates self from the default output socket.", indent=1)
+                    if node_call.method_name.startswith('get'):
+                        source.write("Socket")
+                        source.write("    Second output socket, or self if there is no second output.")
+                    else:
+                        source.write("Self")
+                        source.write("    The updated receiver, or its owning geometry for a domain.")
+                    source.write("    Updates self from the default output socket.")
                 else:
-                    source.write("Socket", indent=1)
-                    source.write("    Default output socket.", indent=1)
+                    source.write("Socket")
+                    source.write("    Default output socket.")
+
+            elif node_call.return_kind == 'SECOND_OUT':
+                source.write("Socket")
+                fallback_doc = 'self' if node_call.has_self else 'the default output socket'
+                source.write(f"    Second available output socket, or {fallback_doc} if there is none.")
 
             elif node_call.return_kind == 'cls':
-                source.write("Self", indent=1)
-                source.write("    Default output socket wrapped in the calling class.", indent=1)
+                source.write("Self")
+                source.write("    Default output socket wrapped in the calling class.")
 
             elif node_call.return_kind == 'NODE':
-                source.write(f"Node", indent=1)
+                source.write(f"Node")
 
             else:
-                source.write(node_call.return_kind, indent=1)
-                source.write(f"    Default output socket wrapped in {node_call.return_kind}.", indent=1)
+                source.write(node_call.return_kind)
+                source.write(f"    Default output socket wrapped in {node_call.return_kind}.")
             
-        source.write('"""', indent=1)
+        source.write('"""')
 
-        # Computations run before constructing the socket mapping.
-        for argument in inputs:
-            if not argument.aliases:
-                for line in argument.get_code():
-                    source.write(line, indent=1)
-
-        source.write('named_sockets = ' + source.splittable(named_sockets, set), indent=1)
-        for argument in inputs:
-            if argument.aliases:
-                for line in argument.get_code():
-                    source.write(line, indent=1)
-
-        # Named items override ordinary entries after alias resolution.
-        for expression in socket_expansions:
-            source.write(f'named_sockets = {{**named_sockets, **{expression}}}', indent=1)
-
-        node_args.append("named_sockets=named_sockets")
-        node_args.extend(node_params)
-        node_args.extend(f'**{expression}' for expression in parameter_expansions)
-        source.write()
-
-        sep = f",{R0}"
-        source.write(f"node = Node({R0}" + sep.join([f"{self.node.name!r}"] + node_args) + ")", indent=1)
+        source.write(inputs.get_code_source(self.node.name))
 
         # return
 
-        if node_call.method_type == 'SETTER':
-            if node_call.is_jump:
-                source.write(f"self._jump(node._out)", indent=1)
+        if node_call.is_jump:
+            source.write("self._jump(node._out)")
 
-        else:
+        if node_call.method_type != 'SETTER':
             if node_call.return_socket is not None:
-                source.write(f"return node[{node_call.return_socket!r}]", indent=1)
+                source.write(f"return node[{node_call.return_socket!r}]")
 
             elif node_call.return_kind == 'OUT':
                 if node_call.is_jump:
-                    source.write(f"self._jump(node._out)", indent=1)
-                    source.write(f"return node._second_out(self)", indent=1)
+                    if node_call.method_name.startswith('get'):
+                        source.write("return node._second_out(self)")
+                    else:
+                        source.write("return self.self_return")
                 else:
-                    source.write(f"return node._out", indent=1)
+                    source.write(f"return node._out")
+
+            elif node_call.return_kind == 'SECOND_OUT':
+                fallback = 'self' if node_call.has_self else 'node._out'
+                source.write(f"return node._second_out({fallback})")
 
             elif node_call.return_kind == 'cls':
-                source.write(f"return cls(node._out)", indent=1)
+                if node_call.is_instance_method:
+                    source.write(f"return self.self_class(node._out)")
+                else:
+                    source.write(f"return cls(node._out)")
 
             elif node_call.return_kind == 'NODE':
-                source.write(f"return node", indent=1)
+                source.write(f"return node")
 
             else:
-                source.write(f"return {node_call.return_kind}(node._out)", indent=1)
+                source.write(f"return {node_call.return_kind}(node._out)")
 
         return source.source
 
@@ -978,7 +997,10 @@ class NodeImplementation:
             # Loop on parameters
             for param_name, param_value in node_call.parameters.items():
                 if param_value in (ADD_LOOP, LOOP_ONLY):
-                    node_call.parameters.pop(param_name)
+                    node_call = dataclass_replace(node_call, parameters={
+                        name: value for name, value in node_call.parameters.items()
+                        if name != param_name
+                    })
                     calls = self.get_loop_parameter_calls(
                         NodeCalls(node_call), 
                         param_name, 
@@ -990,6 +1012,9 @@ class NodeImplementation:
             # A loop was done
             if is_done:
                 continue
+
+            if node_call.in_line is None and not self.node.outputs:
+                node_call = node_call.replace(return_kind='NODE', return_socket=None)
 
             source = self._gen_source_code(node_call)
 

@@ -222,7 +222,7 @@ def demo(rebuild=False):
             cyl.faces.set('Transparency', 1 - show)
             cyl.faces.set('Color', color)
             cyl.faces[Float('Last') > 0].set('Color', point_color)
-            cyl.remove_named_attribute(pattern_mode='Exact', name='Last')
+            cyl.remove_named_attribute(name='Last', pattern_mode='Exact')
         
             cyl.transform(translation=(0, 0, (1 + BASE)*radius), rotation=(0, pi/2, -pi/2), scale=radius)
             

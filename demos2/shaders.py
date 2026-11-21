@@ -62,7 +62,7 @@ def colored_shaders(rebuild=False):
     coloration_group(rebuild=rebuild)
 
     for name, roughness in (("Colored Shiny", 0.0), ("Colored", 0.5), ("Colored Mat", 1.0)):
-        with ShaderNodes(name, replace_material=rebuild):
+        with ShaderNodes(name, rebuild=rebuild):
             coloration = G().coloration()
             shader = Shader.Principled(
                 base_color=coloration,
@@ -80,7 +80,7 @@ def colored_shaders(rebuild=False):
 def transparent_shader(rebuild=False):
     """Create a fully transparent material named Transparent."""
 
-    with ShaderNodes("Transparent", replace_material=rebuild):
+    with ShaderNodes("Transparent", rebuild=rebuild):
         Shader.Transparent(color=(1.0, 1.0, 1.0, 1.0)).out()
 
 
@@ -90,7 +90,7 @@ def transparent_shader(rebuild=False):
 
 def arrow_shader(rebuild=False):
 
-    with ShaderNodes("Arrow", replace_material=rebuild):
+    with ShaderNodes("Arrow", rebuild=rebuild):
 
         pos_color = Color(nd.attribute(attribute_type='GEOMETRY', attribute_name="Color").vector)
         negative  = nd.attribute(attribute_type='GEOMETRY', attribute_name="Negative").factor
@@ -114,7 +114,7 @@ def arrow_shader(rebuild=False):
 
 def atom_shader(rebuild=False):
 
-    with ShaderNodes("Atom", replace_material=rebuild):
+    with ShaderNodes("Atom", rebuild=rebuild):
 
         color = Color(nd.attribute(attribute_type='GEOMETRY', attribute_name="Color").vector)
         transp    = nd.attribute(attribute_type='GEOMETRY', attribute_name="Transparency").factor
@@ -134,7 +134,7 @@ def atom_shader(rebuild=False):
 
 def formula_shader(rebuild=False):
 
-    with ShaderNodes("Formula", replace_material=rebuild):
+    with ShaderNodes("Formula", rebuild=rebuild):
 
         color  = Color(nd.attribute(attribute_type='GEOMETRY', attribute_name="face_color").vector)
         transp = nd.attribute(attribute_type='GEOMETRY', attribute_name="Transparency").factor
@@ -159,7 +159,7 @@ def glass_shader(color=(1.0, 1.0, 1.0, 1.0), roughness=0.0, ior=1.45,
     A zero or missing attribute falls back to ior (1.45 by default).
     """
 
-    with ShaderNodes("Glass", replace_material=rebuild):
+    with ShaderNodes("Glass", rebuild=rebuild):
 
         geometry_ior = nd.attribute(
             attribute_type='GEOMETRY', attribute_name="IOR",
@@ -187,7 +187,7 @@ def glass_shader(color=(1.0, 1.0, 1.0, 1.0), roughness=0.0, ior=1.45,
 def chrome_shader(color=(0.55, 0.55, 0.55, 1.0), roughness=0.08, rebuild=False):
     """Create the Chrome material with adjustable tint and roughness."""
 
-    with ShaderNodes("Chrome", replace_material=rebuild):
+    with ShaderNodes("Chrome", rebuild=rebuild):
 
         Shader.Principled(
             base_color=color,
@@ -208,7 +208,7 @@ def wood_handle_shader(color1="#301407", color2="#965025", roughness=0.22,
     Generated coordinates keep the grain independent of object dimensions.
     """
 
-    with ShaderNodes("Wood Handle", replace_material=rebuild):
+    with ShaderNodes("Wood Handle", rebuild=rebuild):
 
         with Layout("Wood Grain"):
             coord = nd.texture_coordinate().generated
@@ -364,13 +364,13 @@ def demo(rebuild=False):
     # ====================================================================================================
     # Wood
 
-    with ShaderNodes("Wood", replace_material=rebuild):
+    with ShaderNodes("Wood", rebuild=rebuild):
 
         coord = nd.texture_coordinate().object
 
         G().wood_group(vector=coord).out()
 
-    with ShaderNodes("Wood Planks", replace_material=rebuild):
+    with ShaderNodes("Wood Planks", rebuild=rebuild):
 
         coord = nd.texture_coordinate().object
 
@@ -381,7 +381,7 @@ def demo(rebuild=False):
     # Basket Ball
     # ====================================================================================================
 
-    with ShaderNodes("Basket Ball", replace_material=rebuild):
+    with ShaderNodes("Basket Ball", rebuild=rebuild):
         
         
         with Layout("UV Map"):

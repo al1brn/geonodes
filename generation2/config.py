@@ -25,50 +25,51 @@ DEPRECATED_NODES = {
     'FunctionNodeInputIntVector': 'Integer Vector', # Future versions ???
 }
 
+# Do not generate static code for these nodes
+# Note : theses nodes are also excluded from default_implementation
+NO_STATIC_CODE = [
+    'GeometryNodeForeachGeometryElementInput',
+    'GeometryNodeForeachGeometryElementOutput',
+    'GeometryNodeSimulationInput',
+    'GeometryNodeSimulationOutput',
+    'GeometryNodeRepeatInput',
+    'GeometryNodeRepeatOutput',
+    'NodeReroute',
+    'GeometryNodeGroup',
+    'NodeGroupInput',
+    'NodeGroupOutput',
+]
+
+# Adjustements for static implementations
+STATIC_IMPLEMENTATIONS = {
+
+    'Get Bundle Item': {
+        'method_name': 'get_item',
+        'is_jump': True,
+        'return_socket': 'Item',
+    },
+    'Store Bundle Item': {
+        'method_name': 'set_item',
+        'is_jump': True,
+    },
+    'Switch': {
+        'is_jump': True,
+    },
+    'Normal': {
+        'method_type': 'CLASS_PROPERTY',
+        'method_name': ['normal', 'true_normal'],
+        'return_socket': ['Normal', 'True Normal'],
+    },    
+}
+
 # Handwritten APIs registered for documentation without emitting their source.
 HANDWRITTEN_IMPLEMENTATIONS = {
-    'GeometryNodeIndexSwitch': {'Socket': ('index_switch',)},
-    'GeometryNodeMenuSwitch': {'Socket': ('MenuSwitch', 'menu_switch')},
+    #'GeometryNodeIndexSwitch': {'Socket': ('index_switch',)},
+    #'GeometryNodeMenuSwitch': {'Socket': ('MenuSwitch', 'menu_switch')},
 }
 
 
-# ====================================================================================================
-# Adjustments for algorithm operated by NodeImplementation.get_default_implementation
-# ====================================================================================================
-
-REPLACE_DEFAULT_IMPLEMENTATIONS_DEPR = {
-    # Rotate Vector: the Rotation is the receiver, leaving Vector.rotate to Vector Rotate.
-    'FunctionNodeRotateVector': {
-        'kind': 'METHOD',
-        'name': 'rotate_vector',
-        'self_socket': 'Rotation',
-    },
-    # Find in String
-    'FunctionNodeFindInString': {  
-        'name': 'find',
-    },
-    # Combine List
-    'GeometryNodeCombineList': {  
-        'kind': 'CONSTRUCTOR',
-        'name': 'CombineList',
-        'param_loop': 'data_type',
-    },
-    # Closure to List
-    'GeometryNodeClosureToList': {  
-        'kind': 'METHOD',
-        'name': 'to_list',
-        'self_socket': 'Closure',
-    },
-    # Collection Info
-    'GeometryNodeCollectionInfo': {  
-        'kind': 'CONSTRUCTOR',
-    },
-}
-
-# ====================================================================================================
-# Adjustments for algorithm operated by NodeImplementation.get_default_implementation
-# ====================================================================================================
-
+# Adjustments to NodeImplementation.get_default_node_calls.
 DEFAULT_IMPLEMENTATION = {
 
     # Input Nodes
@@ -112,8 +113,14 @@ DEFAULT_IMPLEMENTATION = {
         
     # Geometry nodes
 
+    'Domain Size': {
+        'class_name': ['Geometry', 'Mesh', 'Cloud', 'Curve', 'Instances', 'GreasePencil'],
+        'parameters': {'component': ADD_LOOP},
+        'return_kind': 'NODE',
+    },
     'Separate Geometry': {
         'is_jump': False,
+        'return_kind' : 'cls',
         },
     'Distribute Points on Faces': {
         'method_name': 'distribute_points',
@@ -126,6 +133,45 @@ DEFAULT_IMPLEMENTATION = {
         'parameters': {'mode': ADD_LOOP},
         'method_name': f"sample_{REPLACE}",
     },
+    'Realize Instances': {
+        'method_name': 'realize',
+        'is_jump': False,
+    },
+    'Separate Components': {
+        'return_kind': 'NODE',
+    },
+    'Instance on Points': {
+        'class_name': 'Geometry',
+    },
+    'Mesh to Points': {
+        'class_name': ['Geometry', 'Vertex', 'Edge', 'Face', 'Corner'],
+        'parameters' : {'mode': ADD_LOOP},
+    },
+    'Geometry Proximity': {
+        'class_name': 'Geometry',
+        'parameters' : {'target_element': ADD_LOOP},
+        'method_name' : f"proximity_{REPLACE}",
+    },
+    'Trim Curve': {
+        'parameters' : {'mode': ADD_LOOP},
+        'method_name' : f"trim_{REPLACE}",
+    },
+    'Capture Attribute' : {
+        'return_kind' : 'SECOND_OUT',
+    },
+    'Extrude Mesh' : {
+        'class_name' : ['Mesh', 'Vertex', 'Edge', 'Face'],
+        'parameters' : {'mode': ADD_LOOP},
+    },
+    'Remove Named Attribute': {
+        'method_name' : ['remove', 'remove_named_attribute'],
+    },
+    'String to Curves': { # First output is geo -> Instances.CurvesFromSring
+        'method_type' : 'METHOD',
+        'class_name': 'String',
+        'method_name': 'to_curves',
+        'self_socket' : 'String',
+    }, 
         
     # Geometry output nodes
     
@@ -136,11 +182,21 @@ DEFAULT_IMPLEMENTATION = {
         'method_name': 'FromGrid',
         },
 
-    # Grid
+    # Other
 
     'Align Rotation to Vector': {
         'method_name': 'align_to_vector',
     },
+
+    'Rotate Vector': {
+        'method_name' : ['rotate', 'rotate_vector'],
+        'class_name': ['Vector', 'Rotation'],
+        'self_socket' : ['Vector', 'Rotation'],
+    },
+    #'Invert Matrix': {
+    #    'method_name': 'invert',
+    #},
+
     'Blackbody': {
         'class_name': 'Color',
         'method_name': 'Blackbody',
@@ -150,40 +206,19 @@ DEFAULT_IMPLEMENTATION = {
     # Random Value
     'Random Value': {
         'method_type' : 'CLASS_METHOD',
+        'method_name' : 'Random',
         'self_socket' : None,
         'is_jump'     : False,
     },
 
-    # Combine List
-    #'Combine List': {
-    #    'parameters' : LOOP_ONLY,
-    #},
-
-    #'Menu Switch': {
-    #    'last_sockets': ('Menu',),
-    #}
+    #
+    'Warning': {
+        'method_name': REPLACE,
+        'parameters': {'warning_type': LOOP_ONLY},
+    },    
 
 }
 
-
-
-# Exceptions to the input/output data-type rule. Ordinary nodes use their
-# first input: Geometry -> instance method; typed first input/output -> typed
-# instance methods; otherwise one class method per type.
-# Random's Min/Max inputs are absent for Boolean, so its output selects the class.
-DATA_TYPE_IMPLEMENTATIONS = {
-    'NodeEnableOutput': {  # Enable Output: Value is self; Enable stays an argument.
-        'kind': 'METHOD',
-        'self_socket': 'Value',
-        'param_loop': 'data_type',
-    },
-    'FunctionNodeRandomValue': {  # Random Value
-        'kind': 'CONSTRUCTOR',
-        'name': 'Random',
-        'class_from': 'OUTPUT',
-    },
-    'GeometryNodeSwitch': {'kind': 'DEFAULT'},  # Legacy generation only.
-}
 
 
 # Extra proposals, without replacing the inferred/default implementation.
@@ -192,80 +227,78 @@ ADDITIONAL_IMPLEMENTATIONS = {
     'common': {
         'Map Range': {
                 'method_type': 'METHOD',
-                'class_name': 'LOOP data_type',
-                'method_name' : 'interpolate_NEW',
-                'fixed_sockets': {'From Min': 0.0, 'From Max': 1.0},
+                'class_name': None,
+                'method_name' : 'interpolate',
+                'fixed_sockets': {'From Min': 0.0, 'From Max': 1.0, 'Steps': None},
+                'parameters': {'data_type': LOOP_ONLY},
             },
-        'Switch': {
+        'Switch': [{
                 'method_type': 'METHOD',
-                'class_name': 'LOOP input_type',
+                'class_name': None,
                 'method_name': 'switch_false',
                 'self_socket': 'True',
-        },
+                'is_jump' : True,
+                'parameters': {'input_type': LOOP_ONLY}
+        }, {
+                'method_type': 'CLASS_METHOD',
+                'class_name': None,
+                'method_name': 'Switch',
+                'return_kind': 'cls',
+                'parameters': {'input_type': LOOP_ONLY}
+        }],
+        'Special Characters': {
+            'method_type': 'CLASS_PROPERTY',
+            'class_name': 'String',
+            'method_name': ['line_break', 'tab'],
+            'return_socket': ['Line Break', 'Tab'],
+        },        
     },
     'ShaderNodeTree': {
     },
     'GeometryNodeTree': {
-        'Sample Curve' : [{
-            'class_name'  : 'Curve',
+        'Align Rotation to Vector': {
             'method_type' : 'METHOD',
-            'method_name' : 'sample_factor',
-            'self_socket' : 'Curves',
-            'is_jump'     : True,
-            'parameters'  : {'mode' : 'FACTOR'},
-            'auto_data_type'  : 'Value',
-        }, {
-            'class_name'  : 'Curve',
-            'method_type' : 'METHOD',
-            'method_name' : 'sample_length',
-            'self_socket' : 'Curves',
-            'is_jump'     : True,
-            'parameters'  : {'mode' : 'LENGTH'},
-            'auto_data_type'  : 'Value',
-        }],
-    }
-}
-
-"""
-        'Map Range OLD': [{
-                'class_name': 'Float',
-                'method_name' : 'map_range',
-                'parameters': {'data_type': 'FLOAT'},
-            }, {
-                'class_name': 'Vector',
-                'method_name' : 'map_range',
-                'parameters': {'data_type': 'VECTOR'},
-            }],
-
-"""
-# Overrides/additions to NodeInfo.input_implementation's domain/name rules.
-# Unmatched INPUTs need an explicit class_name. name=None disables the Node
-# method; otherwise name creates a class
-# method returning the Node. create_properties defaults to True: each output
-# becomes a snake_case class property only if there are no active inputs or free
-# parameters. False disables properties. parameters fixes node parameters.
-# property_names optionally renames generated Python names, e.g.
-# {'unsigned_angle': 'unsigned_edge_angle'}; None excludes a property.
-# Other properties keep their names.
-INPUT_IMPLEMENTATIONS = {
-    # Spline Parameter: Spline.length is provided by Spline Length.
-    'GeometryNodeSplineParameter': {
-        'property_names': {'length': None},
-    },
-    # Edge Angle
-    'GeometryNodeInputMeshEdgeAngle': {
-        'class_name': 'Edge',
-        'name': 'angle',
-        'create_properties': True,
-        'property_names': {},
+            'class_name' : 'Rotation',
+            'self_socket' : 'Rotation',
+            'method_name' : f"align_{REPLACE}_to_vector",
+            'parameters' : {'axis': ADD_LOOP},
+        },
+    'Store Named Attribute' : {
+        'method_type' : 'METHOD',
+        'class_name' : 'Corner',
+        'method_name' : 'store_uv',
+        'self_socket' : 'Geometry',
+        'is_jump' : True,
+        'parameters' : {'data_type': 'FLOAT2', 'domain': 'CORNER'},
+        },
+    'Separate Components': {
+        'class_name': 'Geometry',
+        'method_type': 'METHOD',
+        'self_socket': 'Geometry',
+        'method_name': [
+            'separate_mesh',
+            'separate_curve',
+            'separate_point_cloud',
+            'separate_instances',
+            'separate_volume',
+            'separate_grease_pencil',
+        ],
+        'return_socket': [
+            'Mesh',
+            'Curve',
+            'Point Cloud',
+            'Instances',
+            'Volume',
+            'Grease Pencil',
+        ],
+        'is_jump': False,
+        },        
     },
 }
-
 
 # Implements __getitem__ __setitem__
 ITEM_IMPLEMENTATION = {
     #'Get Bundle Item': {'kind': 'get'},
-    'Store Bundle Item': {'kind': 'set'},
 }
 
 # Instance properties: target class -> property name -> getter/setter node descriptions.
@@ -471,6 +504,28 @@ STATIC_IMPLEMENTATION_ONLY = [
     'GeometryNodeUVTangent',                # UV Tangent
     'GeometryNodeViewportTransform',        # Viewport Transform
     'GeometryNodeInputVoxelIndex',          # Voxel Index
+    'ShaderNodeAmbientOcclusion',          # Ambient Occlusion
+    'ShaderNodeAttribute',                 # Attribute
+    'ShaderNodeBevel',                     # Bevel
+    'ShaderNodeCameraData',                # Camera Data
+    'ShaderNodeRGB',                       # Color
+    'ShaderNodeVertexColor',               # Color Attribute
+    'ShaderNodeFresnel',                   # Fresnel
+    'ShaderNodeNewGeometry',               # Geometry
+    'ShaderNodeLayerWeight',               # Layer Weight
+    'ShaderNodeLightEvaluation',           # Light Evaluation
+    'ShaderNodeLightInfo',                 # Light Info
+    'ShaderNodeLightPath',                 # Light Path
+    'ShaderNodeObjectInfo',                # Object Info
+    'ShaderNodeParticleInfo',              # Particle Info
+    'ShaderNodeRaycast',                   # Raycast
+    'ShaderNodeShadowRaycast',             # Shadow Raycast
+    'ShaderNodeTangent',                   # Tangent
+    'ShaderNodeTexCoord',                  # Texture Coordinate
+    'ShaderNodeUVAlongStroke',             # UV Along Stroke
+    'ShaderNodeUVMap',                     # UV Map
+    'ShaderNodeVolumeInfo',                # Volume Info
+    'ShaderNodeWireframe',                 # Wireframe
 
     # Shader nodes that are interpreted as class properties
 

@@ -246,7 +246,7 @@ def demo(rebuild=False):
         sphere.corners.store_uv("UV Map", sphere.uv_map_)
         sphere.faces.shade_smooth = True
         sphere.material = material
-        spheres = planets.instance_on(sphere, scale=nd.radius)
+        spheres = planets.instance_on_points(sphere, scale=nd.radius)
 
         spheres.out()
 
@@ -653,8 +653,8 @@ def demo(rebuild=False):
                 
                 mesh_conic = conic.to_mesh(profile_curve=csec)
                 mesh_conic.faces.material = mat
-                mesh_conic.faces.set("Color", color[i])
-                mesh_conic.faces.set("Transparency", 1.0 - show[i])
+                mesh_conic.faces["Color"] = color[i]
+                mesh_conic.faces["Transparency"] = 1.0 - show[i]
                 mesh_conic.switch(show[i].equal(0))
                 
                 if i == 0:

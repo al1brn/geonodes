@@ -5,7 +5,7 @@ def demo(rebuild=False):
 
     Tree._init_package('Balls')
 
-    with ShaderNodes("Golf Ball", replace_material=False):
+    with ShaderNodes("Golf Ball", rebuild=False):
 
         # -------------------------------------------------------------------------
         # Coordonnées objet

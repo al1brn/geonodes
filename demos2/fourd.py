@@ -1899,7 +1899,7 @@ def build_geometry_nodes(rebuild=False):
             
         with Layout("Heads"):
             cone = Mesh.Cone(vertices=16, radius_bottom=.15, radius_top=0, depth=0.25)
-            cones = heads.instance_on(instance=cone)
+            cones = heads.instance_on_points(instance=cone)
             cones.rotate(rotation=Rotation().align_to_vector(Vector("Dir")))
             
             axis = Mesh(axis + cones.realize())
@@ -1978,7 +1978,7 @@ def build_geometry_nodes(rebuild=False):
             wire = mesh.to_curve().to_mesh(profile_curve=Curve.Circle(radius=wire_radius, resolution=wire_resol))
             wire.faces.smooth = wire_smooth
 
-            balls = mesh.points.instance_on(instance=Mesh.UVSphere(radius=wire_radius))
+            balls = mesh.instance_on_points(instance=Mesh.UVSphere(radius=wire_radius))
             balls = Mesh(balls.realize())
             balls.faces.smooth = True
 
@@ -2138,7 +2138,7 @@ def build_geometry_nodes(rebuild=False):
         line.position = Vector("P4 v")
 
         T = (V1 - V0).normalize()
-        line.points.TNNN = Matrix4.AlignAxisToVector(axis=0, V4=T)
+        line.points.TNNN = Matrix4(DEFAULT).align_axis_to_vector(axis=0, V4=T)
         
         finalize(line).out("Curve'")
 
@@ -3773,11 +3773,11 @@ def build_matrices():
             arrow = Vector(a[4:7])
             ar_length = arrow.length()
 
-            rot = Rotation.AlignZToVector(arrow)
+            rot = Rotation(DEFAULT).align_z_to_vector(arrow)
 
         with Layout("Arrow Shaft"):
             line = Curve.LineDirection()
-            lines = cloud.instance_on(instance=line, scale=ar_length, rotation=rot)
+            lines = cloud.instance_on_points(instance=line, scale=ar_length, rotation=rot)
             lines = Curve(lines.realize())
 
             arrows = lines.to_mesh(profile_curve=Curve.Circle(radius=radius, resolution=resol))
@@ -3788,7 +3788,7 @@ def build_matrices():
             cone = Mesh.Cone(radius_bottom=3.5*radius, depth=9*radius, vertices=resol)
             cone.corners.store_uv = cone.uv_map_
 
-            cones = cloud.instance_on(instance=cone)
+            cones = cloud.instance_on_points(instance=cone)
             cones.translate(arrow)
             cones.rotate(rot)
 
@@ -3989,27 +3989,27 @@ def build_matrices():
         line = Curve.LineDirection(length=vect_length)
 
         with Layout("Mesh Normals"):
-            visA = mesh.points.instance_on(instance=line, rotation=Rotation.AlignZToVector(a[4:7]))
-            visB = mesh.points.instance_on(instance=line, rotation=Rotation.AlignZToVector(a[8:11]))
+            visA = mesh.instance_on_points(instance=line, rotation=Rotation(DEFAULT).align_z_to_vector(a[4:7]))
+            visB = mesh.instance_on_points(instance=line, rotation=Rotation(DEFAULT).align_z_to_vector(a[8:11]))
 
         with Layout("Curve Normals & Tangents"):
             curve.points._Tangent = a[4:7]
 
-            visA += curve.points.instance_on(instance=line, rotation=Rotation.AlignZToVector(a[ 4:7]))
-            visB += curve.points.instance_on(instance=line, rotation=Rotation.AlignZToVector(a[ 8:11]))
-            visC  = curve.points.instance_on(instance=line, rotation=Rotation.AlignZToVector(a[12:15]))
+            visA += curve.instance_on_points(instance=line, rotation=Rotation(DEFAULT).align_z_to_vector(a[ 4:7]))
+            visB += curve.instance_on_points(instance=line, rotation=Rotation(DEFAULT).align_z_to_vector(a[ 8:11]))
+            visC  = curve.instance_on_points(instance=line, rotation=Rotation(DEFAULT).align_z_to_vector(a[12:15]))
 
             visualization = visA.switch_false(show_nrm_A) + visB.switch_false(show_nrm_B) + visC.switch_false(show_nrm_C)
 
             tg = Vector4.FromNode(matrix_.cross_product(M).node)
             tg = tg.matmul(M_proj)
 
-            vis = curve.points.instance_on(instance=line, rotation=Rotation.AlignZToVector(tg[:3]))
+            vis = curve.instance_on_points(instance=line, rotation=Rotation(DEFAULT).align_z_to_vector(tg[:3]))
 
             visualization = visualization.switch(show_tangents, visualization + vis)
 
         with Layout("Points"):
-            spheres = Cloud(geo).points.instance_on(instance=Mesh.UVSphere(radius=point_radius))
+            spheres = Cloud(geo).instance_on_points(instance=Mesh.UVSphere(radius=point_radius))
             spheres = Mesh(spheres.realize())
             spheres.faces.smooth = True
             spheres.faces.material = point_mat
@@ -4024,7 +4024,7 @@ def build_matrices():
             visualization = visualization.switch(edge_radius > ZERO, visualization + edges)
 
         with Layout("No Faces"):
-            no_faces = Mesh(mesh).faces.delete_only_face()
+            no_faces = Mesh(mesh).faces.delete(mode="Only Faces")
 
         with Layout("With Faces"):
 
@@ -4453,7 +4453,7 @@ def build_primitives_OLD():
         with If(Mesh, mode, tip="Slice instance at each backbone point") as mesh:
 
             # Instantiate the slice on each backbone point
-            insts = backbone.points.instance_on(slice)
+            insts = backbone.instance_on_points(slice)
 
             # Delete where scale is null
             insts.insts[Float("BB Scale") < ZERO].delete()
@@ -4484,7 +4484,7 @@ def build_primitives_OLD():
                 iterations = (count - 1).switch(is_cyclic, count)
                 backbone.position = (nd.index*size, 0, 0)
                 # The first one will also be create be created in Repeat loop
-                insts = backbone.points.instance_on(instance=mesh_slice)
+                insts = backbone.instance_on_points(instance=mesh_slice)
                 mesh_insts = Mesh(insts.realize())
 
                 edges = mesh_insts

@@ -128,7 +128,7 @@ class Vector(Socket):
         @node Separate XYZ
         @output Y
         """
-        return self.separate_xyz().x
+        return self.separate_xyz().y
 
     @property
     def z(self):
@@ -137,7 +137,7 @@ class Vector(Socket):
         @node Separate XYZ
         @output 2
         """
-        return self.separate_xyz().x
+        return self.separate_xyz().z
 
 
 

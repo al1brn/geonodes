@@ -371,7 +371,7 @@ def demo(rebuild=False):
         # ---------------------------------------------------------------------------
 
         mesh.faces.Visible = Mesh(feel.generated).faces.sample_index(Boolean("Visible"), index=nd.index)
-        mesh.remove_named_attribute("Wildcard", "TEMP*")
+        mesh.remove_named_attribute("TEMP*", pattern_mode="Wildcard", )
 
         with Layout("Done"):
             keep = Mesh(mesh)

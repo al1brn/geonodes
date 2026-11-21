@@ -37,7 +37,7 @@ from .scripterror import NodeError
 # Helper class for Geometry attributes
 # ====================================================================================================
 
-class Attribute:
+class Attribute_DEPR:
     """Helper for a named attribute stored on a geometry.
 
     ``Attribute`` complements the standard named-attribute methods exposed by

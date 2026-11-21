@@ -258,7 +258,7 @@ def demo(rebuild=False):
         with Layout("Projection dips"):
             cube = Mesh.Cube()
             cube.faces.material = proj_mat
-            proj_dips = Cloud(sim.cloud).points.instance_on(
+            proj_dips = Cloud(sim.cloud).instance_on_points(
                 instance = cube,
                 rotation = Vector.Random(0, tau, seed=nd.scene_time().frame + 4000),
                 scale    = nd.radius)

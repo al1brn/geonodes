@@ -2,45 +2,107 @@
 
 Decorated functions expose explicit construction and node insertion::
 
-    @geo_group("Create Plank")
+    @group("Create Plank")
     def create_plank():
         Mesh.Cube().out()
 
-    create_plank.build(rebuild=False)
+    create_plank.build()
     # Inside another tree: create_plank() inserts a Group node.
 
-Tree options belong to the decorator. Use .build() to execute the Python builder
-inside its tree context; its rebuild argument overrides the decorator policy.
+Tree options belong to the decorator. Use .build() to force construction.
+Pass full=True to rebuild dependencies once each as well. Internal ._build()
+preserves existing trees unless reconstruction is requested.
 Call the decorated object inside a tree to insert a Group node using the same
 socket interface as G(). Existing trees are preserved without executing the
 builder when rebuild is false; missing trees are always built. Outputs still
-use socket.out(). Material builders support .build() only.
+use socket.out(). Material builders support .build() only. When a tree is built,
+the construction function's nonempty docstring becomes a Comment node.
 """
 
 from functools import update_wrapper
+from inspect import getdoc, signature, Parameter
+from math import isfinite
+from contextlib import contextmanager
+from copy import copy
+from typing import get_type_hints
 import bpy
 
 from .geonodes import GeoNodes
 from .shadernodes import ShaderNodes
 from .root.tree import Tree
-from .root.node import G
+from .root.node import G, Node
 from .common.scripterror import NodeError
-from .common.utils import snake_case
+from .common.utils import snake_case, get_socket_class
+from .common.sockettype import SocketType
 
-__all__ = ["geo_group", "geo_modifier", "shader_group", "shader_material", "Package"]
+__all__ = ["group", "modifier", "tool", "shader_group", "shader", "Package"]
+
+
+def _validate_build_options(rebuild, full):
+    if not isinstance(rebuild, bool) or not isinstance(full, bool):
+        raise TypeError('rebuild and full must be bools.')
+
+
+@contextmanager
+def _build_session(full):
+    """Share recursive policy and completed dependencies across one operation."""
+    previous = _TreeBuilder._session
+    if previous is None:
+        _TreeBuilder._session = {'full': full, 'built': set()}
+    session = _TreeBuilder._session
+    previous_full = session['full']
+    session['full'] |= full
+    try:
+        yield session
+    finally:
+        session['full'] = previous_full
+        _TreeBuilder._session = previous
+
+
+def _comment_docstring(function):
+    """Extract comment text, appearance and arrangement metadata."""
+    doc = getdoc(function)
+    if not doc:
+        return '', None, None, 'left', 'outer_top'
+    color = None
+    width = None
+    horizontal = 'left'
+    vertical = 'outer_top'
+    lines = []
+    for line in doc.splitlines():
+        if line.strip().startswith(':color:'):
+            color = line.strip()[len(':color:'):].strip()
+        elif line.strip().startswith(':width:'):
+            value = line.strip()[len(':width:'):].strip()
+            try:
+                width = float(value)
+            except ValueError:
+                raise ValueError(f'{function.__qualname__}: :width: expects a positive number, got {value!r}.') from None
+            if not isfinite(width) or width <= 0:
+                raise ValueError(f'{function.__qualname__}: :width: expects a positive number, got {value!r}.')
+        elif line.strip().startswith(':horizontal:'):
+            horizontal = line.strip()[len(':horizontal:'):].strip()
+        elif line.strip().startswith(':vertical:'):
+            vertical = line.strip()[len(':vertical:'):].strip()
+        else:
+            lines.append(line)
+    return '\n'.join(lines).strip('\n'), color, width, horizontal, vertical
 
 
 class _TreeBuilder:
     """A Python construction function and its callable Blender group interface."""
 
     _building = set()
+    _session = None
 
-    def __init__(self, function, tree_class, name, is_group, options):
+    def __init__(self, function, tree_class, name, is_group, options, is_tool=False):
         update_wrapper(self, function)
         self.function = function
         self.tree_class = tree_class
         self.is_group = is_group
+        self.is_tool = is_tool
         self.options = dict(options)
+        self._package_prefix = ''
         if name is None:
             python_name = function.__name__
             name = python_name.lstrip('_').replace('_', ' ').title()
@@ -52,6 +114,9 @@ class _TreeBuilder:
     def full_name(self):
         prefix = self.options.get("prefix")
         prefix = "" if prefix is None else str(prefix)
+        prefix = ' '.join(value for value in (self._package_prefix, prefix) if value)
+        if prefix and self.name.startswith('.'):
+            return f".{prefix} {self.name[1:]}"
         return f"{prefix} {self.name}" if prefix else self.name
 
     @property
@@ -59,32 +124,86 @@ class _TreeBuilder:
         namespace = "material" if self.tree_class is ShaderNodes and not self.is_group else "node_group"
         return namespace, self.full_name
 
-    def build(self, *args, rebuild=None, **kwargs):
-        """Execute the construction function, forwarding Python arguments."""
+    def _build_inputs(self):
+        """Create symbolic group inputs from annotations or Python defaults."""
+        sig = signature(self.function)
+        hints = get_type_hints(self.function)
+        values = {}
+        python_types = {float: 'VALUE', int: 'INT', bool: 'BOOLEAN', str: 'STRING'}
+        for name, parameter in sig.parameters.items():
+            if parameter.kind in (Parameter.VAR_POSITIONAL, Parameter.VAR_KEYWORD):
+                raise TypeError(f'{self.function.__qualname__}: variadic socket inputs are not supported.')
+            default = None if parameter.default is Parameter.empty else parameter.default
+            annotation = hints.get(name, parameter.annotation)
+            if annotation is Parameter.empty:
+                if default is None:
+                    raise TypeError(f'{self.function.__qualname__}: input {name!r} needs a type annotation or a default value.')
+                socket_type = SocketType(default)
+            else:
+                socket_type = SocketType.from_type(python_types.get(annotation, annotation))
+            factory = (annotation if isinstance(annotation, type) and
+                       getattr(annotation, 'SOCKET_TYPE', None) else
+                       get_socket_class(socket_type.type))
+            values[name] = factory(default, name=name)
+        positional = [values[name] for name, p in sig.parameters.items()
+                      if p.kind == Parameter.POSITIONAL_ONLY]
+        bound = sig.bind(*positional, **{name: value for name, value in values.items()
+                                       if sig.parameters[name].kind != Parameter.POSITIONAL_ONLY})
+        return bound.args, bound.kwargs
+
+    def _build(self, rebuild: bool = False, full: bool = False):
+        """Build if missing, optionally forcing this tree and its dependencies."""
+        _validate_build_options(rebuild, full)
+        with _build_session(full) as session:
+            return self._build_tree(rebuild, session)
+
+    def _build_tree(self, rebuild, session):
         options = dict(self.options)
-        policy = "replace_material" if self.tree_class is ShaderNodes and not self.is_group else "rebuild"
-        if policy == "replace_material" and "rebuild" in options:
-            options[policy] = options.pop("rebuild")
-        if rebuild is not None:
-            options[policy] = rebuild
+        options['rebuild'] = session['full'] or rebuild is True
+        if self._package_prefix:
+            local_prefix = options.get('prefix')
+            options['prefix'] = ' '.join(value for value in
+                                         (self._package_prefix, str(local_prefix or '')) if value)
+
+        name = self.name
+        if options.get('prefix') and name.startswith('.'):
+            options['prefix'] = '.' + str(options['prefix'])
+            name = name[1:]
 
         key = self._build_key
         if key in self._building:
             raise NodeError(f"Circular build dependency for '{self.full_name}'.")
+        if session['full'] and key in session['built']:
+            return None
         self._building.add(key)
         try:
             result = None
-            with self.tree_class(self.name, is_group=self.is_group, **options) as tree:
+            if self.is_tool:
+                prefix = options.pop('prefix', None)
+                name = f'{prefix} {name}' if prefix else name
+                context = self.tree_class.Tool(name, **options)
+            else:
+                context = self.tree_class(name, is_group=self.is_group, **options)
+            with context as tree:
                 if tree._rebuild:
+                    doc, color, width, horizontal, vertical = _comment_docstring(self.function)
+                    if doc and doc.strip():
+                        comment = Node('Comment', text=doc)
+                        if color is not None:
+                            comment._color = color
+                        if width is not None:
+                            comment._node_width = width
+                        comment._set_arrange(horizontal=horizontal, vertical=vertical)
+                    args, kwargs = self._build_inputs()
                     result = self.function(*args, **kwargs)
+            session['built'].add(key)
             return result
         finally:
             self._building.remove(key)
 
-    def rebuild(self, *args, **kwargs):
-        """Force construction, forwarding Python arguments to the builder."""
-        kwargs["rebuild"] = True
-        return self.build(*args, **kwargs)
+    def build(self, full: bool = False):
+        """Rebuild this tree, optionally including dependencies once each."""
+        return self._build(rebuild=True, full=full)
 
     def __call__(self, *args, **kwargs):
         """Insert a Group node, with the positional/keyword socket API of G."""
@@ -94,32 +213,41 @@ class _TreeBuilder:
             raise NodeError(f"Calling '{self.full_name}' requires an active tree. Use .build() to construct it.")
         if self._build_key in self._building:
             raise NodeError(f"Circular build dependency for '{self.full_name}'.")
-        if bpy.data.node_groups.get(self.full_name) is None:
-            self.build(rebuild=False)
+        session = _TreeBuilder._session
+        if session is not None and session['full']:
+            self._build(rebuild=True)
+        elif bpy.data.node_groups.get(self.full_name) is None:
+            self._build()
         return G._call_group(self.full_name, *args, **kwargs)
 
 
-def _tree_decorator(tree_class, name, is_group, options):
+def _tree_decorator(tree_class, name, is_group, options, is_tool=False):
     def decorate(function):
-        return _TreeBuilder(function, tree_class, name, is_group, options)
+        return _TreeBuilder(function, tree_class, name, is_group, options, is_tool=is_tool)
     return decorate
 
 
-def geo_group(name=None, **options):
+def group(name=None, **options):
     """Declare a Geometry Nodes group with .build() and a callable socket interface.
 
     Options are forwarded to GeoNodes, with is_group=True. If omitted, the
     tree name is derived from the function name: my_group becomes My Group,
     and _my_group becomes .My Group. Explicit names are kept unchanged.
-    The construction function's return value is preserved by .build();
-    a skipped build returns None.
+    The construction function's return value is preserved by ._build();
+    a skipped build returns None. Function parameters become symbolic input
+    sockets during construction; calls inside a tree supply their actual values.
     """
     return _tree_decorator(GeoNodes, name, True, options)
 
 
-def geo_modifier(name=None, **options):
+def modifier(name=None, **options):
     """Declare a Geometry Nodes modifier, with GeoNodes options and is_group=False."""
     return _tree_decorator(GeoNodes, name, False, options)
+
+
+def tool(name=None, **options):
+    """Declare a Geometry Nodes tool, forwarding options to GeoNodes.Tool."""
+    return _tree_decorator(GeoNodes, name, False, options, is_tool=True)
 
 
 def shader_group(name=None, **options):
@@ -127,38 +255,95 @@ def shader_group(name=None, **options):
     return _tree_decorator(ShaderNodes, name, True, options)
 
 
-def shader_material(name=None, **options):
+def shader(name=None, **options):
     """Declare a material, with ShaderNodes options and is_group=False.
 
-    Both rebuild and replace_material are accepted as decorator options.
-    The call-time rebuild argument overrides either option.
+    Rebuilding a material replaces its node tree.
     """
     return _tree_decorator(ShaderNodes, name, False, options)
 
 
 class Package:
-    """Register tree builders and build them in declaration order.
+    """Organize static builders in a class, or register them on an instance.
+
+    Class packages need no instance or self/cls parameter::
+
+        class Project(Package):
+            prefix = "Body"
+
+            @group()
+            def move(mesh: Mesh, offset: Vector = (0, 0, 0)):
+                mesh.set_position(offset=offset).out()
+
+        Project.move.build(full=True)
+
+    An existing instance registration API remains available:
 
     Declare the package and its decorated functions at module level::
 
         furniture = Package("Furniture")
 
-        @furniture.geo_group("Create Plank")
+        @furniture.group("Create Plank")
         def create_plank():
             Mesh.Cube().out()
 
-        @furniture.geo_modifier("Add Plank")
+        @furniture.modifier("Add Plank")
         def add_plank():
             create_plank().out()
 
-        def demo(rebuild=False):
-            furniture.build(rebuild=rebuild)
+        def demo():
+            furniture.build()
 
     Registration does not execute the builders. Each has .build() for individual
     reconstruction and a direct group-call interface inside other trees.
-    Construction functions must have no required arguments for package.build();
-    use defaults or enclosing variables for their Python configuration.
+    Function parameters define sockets, not Python build-time options.
     """
+
+    prefix = ''
+    _class_builders = {}
+
+    def __init_subclass__(cls, **kwargs):
+        """Collect static builders without binding a self or cls argument."""
+        super().__init_subclass__(**kwargs)
+        for name in ('_build', 'build'):
+            if name in cls.__dict__:
+                raise TypeError(f'{cls.__name__}.{name} is reserved by Package.')
+        if isinstance(cls.__dict__.get('prefix'), _TreeBuilder):
+            raise TypeError(f'{cls.__name__}.prefix is reserved for the package prefix.')
+        builders = {}
+        for parent in reversed(cls.__mro__[1:]):
+            builders.update(getattr(parent, '_class_builders', {}))
+        for name, value in cls.__dict__.items():
+            if isinstance(value, _TreeBuilder):
+                builders[name] = value
+            else:
+                builders.pop(name, None)
+        cls._class_builders = {}
+        for name, builder in builders.items():
+            local = copy(builder)
+            local.options = dict(builder.options)
+            local._package_prefix = str(cls.prefix or '')
+            cls._class_builders[name] = local
+            setattr(cls, name, local)
+        cls._build = classmethod(Package._build_class)
+        cls.build = classmethod(Package._force_build_class)
+
+    @staticmethod
+    def _build_class(cls, rebuild: bool = False, full: bool = False):
+        return Package._build_members(cls.__name__, cls._class_builders.values(), rebuild, full)
+
+    @staticmethod
+    def _force_build_class(cls, full: bool = False):
+        return cls._build(rebuild=True, full=full)
+
+    @staticmethod
+    def _build_members(name, builders, rebuild, full):
+        _validate_build_options(rebuild, full)
+        with _build_session(full):
+            Tree._init_package(name)
+            for builder in builders:
+                builder._build(rebuild=rebuild, full=full)
+            Tree._display_counter(f"{name} built")
 
     def __init__(self, name, prefix=""):
         self.name = name
@@ -188,34 +373,30 @@ class Package:
 
         return register
 
-    def geo_group(self, name=None, **options):
-        """Register a Geometry Nodes group, with the options of geo_group."""
-        return self._register(geo_group(name, **options))
+    def group(self, name=None, **options):
+        """Register a Geometry Nodes group, with the options of group."""
+        return self._register(group(name, **options))
 
-    def geo_modifier(self, name=None, **options):
-        """Register a modifier, with the options of geo_modifier."""
-        return self._register(geo_modifier(name, **options))
+    def modifier(self, name=None, **options):
+        """Register a modifier, with the options of modifier."""
+        return self._register(modifier(name, **options))
+
+    def tool(self, name=None, **options):
+        """Register a Geometry Nodes tool in this mixed package."""
+        return self._register(tool(name, **options))
 
     def shader_group(self, name=None, **options):
         """Register a shader group, with the options of shader_group."""
         return self._register(shader_group(name, **options))
 
-    def shader_material(self, name=None, **options):
-        """Register a material, with the options of shader_material."""
-        return self._register(shader_material(name, **options))
+    def shader(self, name=None, **options):
+        """Register a material, with the options of shader."""
+        return self._register(shader(name, **options))
 
-    def build(self, rebuild=None):
-        """Build all registered trees and display their cumulative statistics.
+    def _build(self, rebuild: bool = False, full: bool = False):
+        """Build registered trees and display their cumulative statistics."""
+        return self._build_members(self.name, self._builders, rebuild, full)
 
-        With rebuild=None, each decorator keeps its own build policy. Passing
-        True or False overrides that policy for every builder in the package.
-        Dependencies must be declared before the builders that use them.
-        """
-        Tree._init_package(self.name)
-        for builder in self._builders:
-            builder.build(rebuild=rebuild)
-        Tree._display_counter(f"{self.name} built")
-
-    def rebuild(self):
-        """Force reconstruction of every registered tree."""
-        return self.build(rebuild=True)
+    def build(self, full: bool = False):
+        """Rebuild all registered trees, optionally including dependencies."""
+        return self._build(rebuild=True, full=full)

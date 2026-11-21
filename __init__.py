@@ -126,6 +126,10 @@ if PRODUCTION:
 
     Attribute = core_module.Attribute
     Socket = core_module.Socket
+    if hasattr(core_module, 'DEFAULT'):
+        DEFAULT = core_module.DEFAULT
+    else:
+        globals().pop('DEFAULT', None)
     Input = core_module.Input
     Boolean = core_module.Boolean
     Float = core_module.Float
@@ -175,10 +179,11 @@ if PRODUCTION:
 
     GeoNodes = core_module.GeoNodes
     Package = core_module.Package
-    geo_group = core_module.geo_group
-    geo_modifier = core_module.geo_modifier
+    group = core_module.group
+    modifier = core_module.modifier
+    tool = core_module.tool
     shader_group = core_module.shader_group
-    shader_material = core_module.shader_material
+    shader = core_module.shader
 
     gnmath = core_module.gnmath
     nd = core_module.nd

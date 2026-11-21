@@ -71,7 +71,7 @@ furniture = Package("Furniture")
 # Shaders
 # ====================================================================================================
 
-@furniture.shader_material('Furniture')
+@furniture.shader('Furniture')
 def furniture_material():
     color = nd.attribute(
         attribute_type='GEOMETRY', attribute_name="Color",
@@ -82,7 +82,7 @@ def furniture_material():
         metallic=0.0,
     ).out()
 
-@furniture.shader_material('Debug Block')
+@furniture.shader('Debug Block')
 def debug_block_material():
     debug_color = nd.attribute(
         attribute_type='GEOMETRY', attribute_name="Debug Block Color",
@@ -93,7 +93,7 @@ def debug_block_material():
     shader = Shader.Principled(base_color=debug_color, roughness=0.5)
     shader.mix(shader=Shader.Transparent(), factor=1 - debug_opacity).out()
 
-@furniture.shader_material('Drawer')
+@furniture.shader('Drawer')
 def drawer_material():
     Shader.Principled(
         base_color="#F2F2F2FF",
@@ -102,7 +102,7 @@ def drawer_material():
     ).out()
 
 
-@furniture.shader_material('Label')
+@furniture.shader('Label')
 def label_material():
     Shader.Principled(
         base_color=nd.attribute(attribute_type='GEOMETRY', attribute_name="Color").color,
@@ -113,7 +113,7 @@ def label_material():
 # A dimension line
 # ====================================================================================================
 
-@furniture.geo_group('Add Cote Line')
+@furniture.group('Add Cote Line')
 def add_cote_line():
 
     mesh = Mesh(Geometry())
@@ -239,7 +239,7 @@ def add_cote_line():
         
     line = Mesh(line)
     line.points.Content = Integer.IndexSwitch(0x0100, 0x0200, 0x0400, index=i_axis)
-    line.points.set("Role", Integer(-1))
+    line.points["Role"] = Integer(-1)
     #line.points.Axis = i_axis
     
     line.switch_false(show)
@@ -353,7 +353,7 @@ def get_blocks(bundle):
     blocks.switch(blocks.list_length() == 0, root_list)
     return blocks
 
-@furniture.geo_group('.Block Index')
+@furniture.group('.Block Index')
 def _block_index():
     bundle = Bundle(name="Bundle")
     name = String("Block", "Name")
@@ -417,7 +417,7 @@ def default_resource():
         "Color": Color(DEFAULT_FURNITURE_COLOR),
     })
 
-@furniture.geo_group('.Resource Index')
+@furniture.group('.Resource Index')
 def _resource_index():
     bundle = Bundle(name="Bundle")
     name = String("Default", "Name")
@@ -438,7 +438,7 @@ def resource_index(bundle, name):
 # Define 5 named dimensions
 # ----------------------------------------------------------------------------------------------------
 
-@furniture.geo_modifier('Define Named Dimensions')
+@furniture.modifier('Define Named Dimensions')
 def define_named_dimensions():
     
     geo = Geometry()
@@ -455,7 +455,7 @@ def define_named_dimensions():
 # Get a named dimension
 # ----------------------------------------------------------------------------------------------------
     
-@furniture.geo_group('Get Named Dimension')
+@furniture.group('Get Named Dimension')
 def get_named_dimension():
     
     geo = Geometry()
@@ -476,7 +476,7 @@ def get_named_dimension():
 # Resource Definition
 # ----------------------------------------------------------------------------------------------------
 
-@furniture.geo_modifier('Define Resource')
+@furniture.modifier('Define Resource')
 def define_resource():
     
     geo = Geometry()
@@ -516,7 +516,7 @@ def define_resource():
 # Get resource
 # ----------------------------------------------------------------------------------------------------
 
-@furniture.geo_group('Get Resource')
+@furniture.group('Get Resource')
 def get_resource():
     geo = Geometry()
     use_id = Boolean(False, "By ID")
@@ -550,7 +550,7 @@ def get_resource():
 # Define plinth dimensions
 # ----------------------------------------------------------------------------------------------------
 
-@furniture.geo_modifier('Define Plinth')
+@furniture.modifier('Define Plinth')
 def define_plinth():
     geo = Geometry()
     bundle = geo.get_bundle()
@@ -572,7 +572,7 @@ def define_plinth():
 # Read plinth dimensions
 # ----------------------------------------------------------------------------------------------------
 
-@furniture.geo_group('.Get Plinth Dimensions')
+@furniture.group('.Get Plinth Dimensions')
 def _get_plinth_dimensions():
     geo = Geometry()
     bundle = geo.get_bundle()
@@ -626,7 +626,7 @@ def existing_resources_input():
         menu=Input("Existing", default="Keep", optional_label=True, expanded=True),
     )
 
-@furniture.geo_modifier('Capture Resources')
+@furniture.modifier('Capture Resources')
 def capture_resources():
     geo = Geometry()
     source = Object(name="Object")
@@ -662,7 +662,7 @@ def add_cut_sheet(bundle, block_name, cut_bundle):
 # Create a Single Plank
 # ----------------------------------------------------------------------------------------------------
 
-@furniture.geo_group('Create Plank')
+@furniture.group('Create Plank')
 def create_plank():
     
     geo = Geometry()
@@ -686,11 +686,11 @@ def create_plank():
         uv = Vector.Switch(orient, uv, Vector((-uv.y, uv.x, uv.z)))
         plank.corners.store_uv("UV Map", uv)
         
-        plank.points.set("Res ID", res_node.id)
+        plank.points["Res ID"] = res_node.id
         plank.faces.material = res_node.material
-        plank.faces.set("Color", res_node.color)
-        plank.points.set("Role", Integer.IndexSwitch(ROLE_SHELF, ROLE_LEFT, ROLE_FACE, index=setup))
-        plank.points.set("Index", Integer(0))
+        plank.faces["Color"] = res_node.color
+        plank.points["Role"] = Integer.IndexSwitch(ROLE_SHELF, ROLE_LEFT, ROLE_FACE, index=setup)
+        plank.points["Index"] = Integer(0)
 
     with Layout("Setup"):
 
@@ -728,7 +728,7 @@ def create_plank():
 # Create an array of planks
 # ----------------------------------------------------------------------------------------------------
 
-@furniture.geo_group('Create Faces')
+@furniture.group('Create Faces')
 def create_faces():
     
     geo = Geometry()
@@ -758,7 +758,7 @@ def create_faces():
     planks = G().array(planks, count=count_z, offset_method="Offset", translation=ofsz)
 
     planks = Mesh(planks.realize())
-    planks.points.set("Index", nd.mesh_island().island_index)
+    planks.points["Index"] = nd.mesh_island().island_index
     planks.set_bundle(cut_bundle)
 
     planks.out()
@@ -767,7 +767,7 @@ def create_faces():
 # Create an array of shelves
 # ----------------------------------------------------------------------------------------------------
 
-@furniture.geo_group('Create Shelves')
+@furniture.group('Create Shelves')
 def create_shelves():
     
     geo = Geometry()
@@ -803,14 +803,14 @@ def create_shelves():
 
     shelves.switch(count==1, single)
     shelves = Mesh(shelves.realize())
-    shelves.points.set("Index", nd.mesh_island().island_index)
+    shelves.points["Index"] = nd.mesh_island().island_index
     shelves.out()
     
 # ----------------------------------------------------------------------------------------------------
 # Create vertical separators
 # ----------------------------------------------------------------------------------------------------
 
-@furniture.geo_group('Create Separators')
+@furniture.group('Create Separators')
 def create_separators():
     
     geo = Geometry()
@@ -826,7 +826,7 @@ def create_separators():
     plank = create_plank(geo, width=depth - backset, length=height, setup='Flank').link_inputs()
     thick = plank.size.y
     plank = Mesh(plank)
-    plank.points.set("Role", Integer(ROLE_SEPARATOR))
+    plank.points["Role"] = Integer(ROLE_SEPARATOR)
 
     with Layout("Single Separator"):
         single = Mesh(plank)
@@ -848,7 +848,7 @@ def create_separators():
 
     separators.switch(count==1, single)
     separators = Mesh(separators.realize())
-    separators.points.set("Index", nd.mesh_island().island_index)
+    separators.points["Index"] = nd.mesh_island().island_index
     separators.out()
     
 # ====================================================================================================
@@ -862,7 +862,7 @@ def block_exists(geo, block_name):
 # All properties
 # ----------------------------------------------------------------------------------------------------
 
-@furniture.geo_group('Get Block Properties')
+@furniture.group('Get Block Properties')
 def get_block_properties():
     
     geo = Geometry()
@@ -949,7 +949,7 @@ def get_block_properties():
 # Single Property
 # ----------------------------------------------------------------------------------------------------
 
-@furniture.geo_group('Get Block Property')
+@furniture.group('Get Block Property')
 def get_block_property():
     
     geo = Geometry()
@@ -1046,7 +1046,7 @@ def get_dimension(geo, name, base):
 # Add an external furniture module
 # ====================================================================================================
 
-@furniture.geo_modifier('Add External Block')
+@furniture.modifier('Add External Block')
 def add_external_block():
     geo = Geometry()
     use_geometry = Boolean.MenuSwitch(
@@ -1113,11 +1113,11 @@ def add_external_block():
         mesh = Mesh(furniture)
         for attribute in ("Block ID", "Support Block ID"):
             old_id = Integer(attribute)
-            mesh.points[old_id > 0].set(attribute, old_id + block_offset)
+            mesh.points[old_id > 0][attribute] = old_id + block_offset
         old_plank = Integer("Plank ID")
-        mesh.points[old_plank > 0].set("Plank ID", old_plank + plank_offset)
+        mesh.points[old_plank > 0]["Plank ID"] = old_plank + plank_offset
         old_resource = Integer("Res ID")
-        mesh.points[old_resource.exists].set("Res ID", resource_map[old_resource])
+        mesh.points[old_resource.exists]["Res ID"] = resource_map[old_resource]
         # Apply the selected destination resources to imported boards.
         resources = get_resources(merged_bundle)
         for material in repeat(resources.list_length(), mesh=mesh):
@@ -1126,17 +1126,17 @@ def add_external_block():
             reference = Integer("Res ID")
             selection = reference.exists & (reference == material.iteration)
             boards.faces[selection].material = resource.get_item("Material", socket_type='MATERIAL')
-            boards.faces[selection].set("Color", resource.get_item("Color", socket_type='RGBA'))
+            boards.faces[selection]["Color"] = resource.get_item("Color", socket_type='RGBA')
             material.mesh = boards
         mesh = Mesh(material.mesh)
         instances = Instances(mesh)
         for attribute in ("Block ID", "Support Block ID"):
             old_id = Integer(attribute)
-            instances.insts[old_id > 0].set(attribute, old_id + block_offset)
+            instances.insts[old_id > 0][attribute] = old_id + block_offset
         old_plank = Integer("Plank ID")
-        instances.insts[old_plank > 0].set("Plank ID", old_plank + plank_offset)
+        instances.insts[old_plank > 0]["Plank ID"] = old_plank + plank_offset
         old_resource = Integer("Res ID")
-        instances.insts[old_resource.exists].set("Res ID", resource_map[old_resource])
+        instances.insts[old_resource.exists]["Res ID"] = resource_map[old_resource]
 
     # Import named parameters without discarding unrelated local parameters.
     result_bundle = Bundle(merged_bundle)
@@ -1169,7 +1169,7 @@ def add_external_block():
 # Debug
 # ----------------------------------------------------------------------------------------------------
 
-@furniture.geo_modifier('Debug Block')
+@furniture.modifier('Debug Block')
 def debug_block():
 
     geo = Geometry()
@@ -1184,8 +1184,8 @@ def debug_block():
 
     cube = Mesh.Cube(size=block.size)
     cube.offset = block.location + block.size.scale(0.5)
-    cube.faces.set("Debug Block Color", color)
-    cube.faces.set("Debug Block Opacity", opacity)
+    cube.faces["Debug Block Color"] = color
+    cube.faces["Debug Block Opacity"] = opacity
     cube.faces.material = Material("Debug Block")
 
     frame = Mesh(cube)
@@ -1217,7 +1217,7 @@ def decoration_inputs():
             for name in ("Bottom Deco", "Shelf Deco", "Top Deco")
         }
 
-@furniture.geo_modifier('Define Block')
+@furniture.modifier('Define Block')
 def define_block():
     
     geo = Geometry()
@@ -1281,7 +1281,7 @@ def define_block():
 # Duplicate block
 # ----------------------------------------------------------------------------------------------------
 
-@furniture.geo_modifier('.Block Duplicate')
+@furniture.modifier('.Block Duplicate')
 def _block_duplicate():
 
     geo = Geometry()
@@ -1321,9 +1321,9 @@ def _block_duplicate():
     with Layout("Duplicate Planks"):
 
         max_plank_id = Integer(Mesh(geo).points.attribute_statistic(Integer("Plank ID")).max_)
-        planks = Mesh(Mesh(geo).points[exists & (Integer("Block ID")==source_id)].separate())
-        planks.points.set("Block ID", new_id)
-        planks.points.set("Plank ID", Integer("Plank ID") + max_plank_id)
+        planks = Mesh(geo.points[exists & (Integer("Block ID")==source_id)].separate())
+        planks.points["Block ID"] = new_id
+        planks.points["Plank ID"] = Integer("Plank ID") + max_plank_id
 
         # Randomize uv map
         new_bundle = Bundle(bundle)
@@ -1343,7 +1343,7 @@ def _block_duplicate():
 # Translate block
 # ----------------------------------------------------------------------------------------------------
 
-@furniture.geo_modifier('.Block Translate')
+@furniture.modifier('.Block Translate')
 def _block_translate():
 
     geo = Geometry()
@@ -1380,7 +1380,7 @@ def _block_translate():
         )
 
     with Layout("Planks"):
-        planks = Mesh(Mesh(geo).points[exists & (Integer("Block ID")==block_id)].separate())
+        planks = Mesh(geo.points[exists & (Integer("Block ID")==block_id)].separate())
         remain = planks.inverted
         planks.offset = translation
 
@@ -1393,7 +1393,7 @@ def _block_translate():
 # Block symmetry
 # ----------------------------------------------------------------------------------------------------
 
-@furniture.geo_modifier('.Block Symmetry')
+@furniture.modifier('.Block Symmetry')
 def _block_symmetry():
 
     geo = Geometry()
@@ -1456,7 +1456,7 @@ def _block_symmetry():
 
     with Layout("Planks"):
 
-        planks = Mesh(Mesh(geo).points[exists & (Integer("Block ID") == block_id)].separate())
+        planks = Mesh(geo.points[exists & (Integer("Block ID") == block_id)].separate())
         remain = planks.inverted
 
         x, y, z = nd.position.xyz
@@ -1478,7 +1478,7 @@ def _block_symmetry():
 # Sub block
 # ----------------------------------------------------------------------------------------------------
 
-@furniture.geo_modifier('Duplicate Block')
+@furniture.modifier('Duplicate Block')
 def duplicate_block():
 
     geo = Geometry()
@@ -1573,7 +1573,7 @@ def duplicate_block():
 # Adding a plank to planks
 # ---------------------------------------------------------------------------
     
-@furniture.geo_group('.Add Plank')
+@furniture.group('.Add Plank')
 def _add_plank():
     existing_geometry = Geometry(name="Existing Geometry")
     bundle = Bundle(name="Bundle")
@@ -1587,7 +1587,7 @@ def _add_plank():
     # New boards are connected mesh islands, including realized arrays.
     existing = Mesh(existing_geometry + planks)
     max_plank_id = Integer(existing.points.attribute_statistic(Integer("Plank ID")).max_)
-    plank.points.set("Plank ID", max_plank_id + 1 + nd.mesh_island().island_index)
+    plank.points["Plank ID"] = max_plank_id + 1 + nd.mesh_island().island_index
     planks += plank
     bundle.switch(ok, add_cut_sheet(Bundle(bundle), block_name, cut))
 
@@ -1610,7 +1610,7 @@ def add_plank(existing_geometry, bundle, block_name, planks, plank, ok):
 # Shelves
 # ----------------------------------------------------------------------------------------------------
 
-@furniture.geo_modifier('Add Shelves')
+@furniture.modifier('Add Shelves')
 def add_shelves():
     
     geo = Geometry()
@@ -1646,8 +1646,7 @@ def add_shelves():
         shelf_count = shelf_instances.insts.count
         original_bundle = Bundle(bundle)
         for compartment in repeat(shelf_count + 1, bundle=bundle, floor=z):
-            next_shelf = Mesh(planks)
-            next_shelf.points[Integer("Index") == compartment.iteration].separate()
+            next_shelf = Mesh(planks.points[Integer("Index") == compartment.iteration].separate())
             limits = next_shelf.points.attribute_statistic(nd.position).node
             last = compartment.iteration == shelf_count
             ceiling = Float.Switch(last, limits.min.z, z + sz)
@@ -1685,7 +1684,7 @@ def add_shelves():
         planks.corners.store_uv("UV Map", Vector("UV Map") + uv_offset)
 
         # Block id
-        planks.points.set("Block ID", block_dims.id)
+        planks.points["Block ID"] = block_dims.id
 
         # Join
         geo += planks
@@ -1697,7 +1696,7 @@ def add_shelves():
 # Separators
 # ----------------------------------------------------------------------------------------------------
 
-@furniture.geo_modifier('Add Separators')
+@furniture.modifier('Add Separators')
 def add_separators():
     
     geo = Geometry()
@@ -1760,8 +1759,7 @@ def add_separators():
             for part in repeat(
                 separator_count + 1, bundle=volume.bundle, count=volume.count, left=vy,
             ):
-                separator = Mesh(planks)
-                separator.points[Integer("Index") == part.iteration].separate()
+                separator = Mesh(planks.points[Integer("Index") == part.iteration].separate())
                 limits = separator.points.attribute_statistic(nd.position).node
                 last = part.iteration == separator_count
                 right = Float.Switch(last, limits.min.y.clamp(vy, vy + dy), vy + dy)
@@ -1802,7 +1800,7 @@ def add_separators():
         planks.corners.store_uv("UV Map", Vector("UV Map") + uv_offset)
 
         # Block id
-        planks.points.set("Block ID", block_dims.id)
+        planks.points["Block ID"] = block_dims.id
 
         # Join
         geo += planks
@@ -1814,7 +1812,7 @@ def add_separators():
 # Front Face
 # ----------------------------------------------------------------------------------------------------
 
-@furniture.geo_modifier('Add Face')
+@furniture.modifier('Add Face')
 def add_face():
 
     geo = Geometry()
@@ -1868,7 +1866,7 @@ def add_face():
             count_z=count_z,
         ).link_inputs()
         front = Mesh(front)
-        front.points.set("Role", Integer.Switch(face_type == 1, ROLE_FACE, ROLE_DRAWER))
+        front.points["Role"] = Integer.Switch(face_type == 1, ROLE_FACE, ROLE_DRAWER)
         front.offset = location + Vector((0, front_margin, front_margin))
         bundle, planks = add_plank(geo, bundle, block_name, None, front, front_side != 0)
         planks = Mesh(planks)
@@ -1880,7 +1878,7 @@ def add_face():
             id=nd.mesh_island().island_index,
         )
         planks.corners.store_uv("UV Map", Vector("UV Map") + uv_offset)
-        planks.points.set("Block ID", block_dims.id)
+        planks.points["Block ID"] = block_dims.id
 
         geo += planks
         geo.set_bundle(bundle)
@@ -1891,7 +1889,7 @@ def add_face():
 # Box
 # ----------------------------------------------------------------------------------------------------
 
-@furniture.geo_modifier('Add Box')
+@furniture.modifier('Add Box')
 def add_box():
     
     geo = Geometry()
@@ -2013,7 +2011,7 @@ def add_box():
             setup = 'Flank',
         )
         plank = Mesh(plank)
-        plank.points.set("Role", Integer(ROLE_LEFT))
+        plank.points["Role"] = Integer(ROLE_LEFT)
         plank.offset = left_location
         bundle, planks = add_plank(geo, bundle, block_name, None, plank, (left_side != SIDE_NONE) & left_existing.bnot() & block_dims.has_left_side.bnot())
         
@@ -2035,7 +2033,7 @@ def add_box():
             setup = 'Flank',
         )
         plank = Mesh(plank)
-        plank.points.set("Role", Integer(ROLE_RIGHT))
+        plank.points["Role"] = Integer(ROLE_RIGHT)
         plank.offset = right_location
         bundle, planks = add_plank(geo, bundle, block_name, planks, plank, (right_side != SIDE_NONE) & right_existing.bnot() & block_dims.has_right_side.bnot())
         
@@ -2059,7 +2057,7 @@ def add_box():
             setup = 'Shelf',
         )
         plank = Mesh(plank)
-        plank.points.set("Role", Integer(ROLE_BOTTOM))
+        plank.points["Role"] = Integer(ROLE_BOTTOM)
         plank.offset = bot_location
         bundle, planks = add_plank(geo, bundle, block_name, planks, plank, (bot_side != SIDE_NONE) & bot_existing.bnot() & block_dims.has_bottom_side.bnot())
         
@@ -2080,7 +2078,7 @@ def add_box():
             setup = 'Shelf',
         )
         plank = Mesh(plank)
-        plank.points.set("Role", Integer(ROLE_TOP))
+        plank.points["Role"] = Integer(ROLE_TOP)
         plank.offset = top_location
         bundle, planks = add_plank(geo, bundle, block_name, planks, plank, (top_side != SIDE_NONE) & top_existing.bnot() & block_dims.has_top_side.bnot())
 
@@ -2107,8 +2105,8 @@ def add_box():
             y + plinth_left,
             z,
         )
-        front.points.set("Role", Integer(ROLE_PLINTH))
-        front.points.set("Index", Integer(0))
+        front.points["Role"] = Integer(ROLE_PLINTH)
+        front.points["Index"] = Integer(0)
         bundle, planks = add_plank(geo, bundle, block_name, planks, front, create_plinth)
 
         for index, side_y, has_side in (
@@ -2122,8 +2120,8 @@ def add_box():
                 setup='Flank',
             ))
             side.offset = (x, y + side_y, z)
-            side.points.set("Role", Integer(ROLE_PLINTH))
-            side.points.set("Index", Integer(index))
+            side.points["Role"] = Integer(ROLE_PLINTH)
+            side.points["Index"] = Integer(index)
             bundle, planks = add_plank(
                 geo, bundle, block_name, planks, side, create_plinth & has_side.bnot(),
             )
@@ -2142,7 +2140,7 @@ def add_box():
         planks.corners.store_uv("UV Map", Vector("UV Map") + uv_offset)
 
         # Block id
-        planks.points.set("Block ID", block_dims.id)
+        planks.points["Block ID"] = block_dims.id
 
         parent = get_blocks(bundle)[block_dims.id]
         for name, mode, side in (
@@ -2184,7 +2182,7 @@ def add_box():
 # Define decoration independently, including after duplication
 # ====================================================================================================
 
-@furniture.geo_modifier('Define Decoration')
+@furniture.modifier('Define Decoration')
 def define_decoration():
     geo = Geometry()
     block_name = String("Block", "Block Name")
@@ -2206,7 +2204,7 @@ def define_decoration():
 # Add a complete block
 # ====================================================================================================
 
-@furniture.geo_modifier('Add Block')
+@furniture.modifier('Add Block')
 def add_block():
     geo = Geometry()
     new_name = String("Block", "New Name")
@@ -2237,7 +2235,7 @@ def add_block():
 # Select a plank
 # ====================================================================================================
 
-@furniture.geo_group('Select Plank')
+@furniture.group('Select Plank')
 def select_plank():
     geo = Geometry()
     all_blocks = Boolean(False, "All Blocks")
@@ -2273,7 +2271,7 @@ def select_plank():
 # Open door
 # ====================================================================================================
 
-@furniture.geo_modifier('Open Door')
+@furniture.modifier('Open Door')
 def open_door():
     geo = Geometry()
     selection = select_plank(
@@ -2316,7 +2314,7 @@ def open_door():
 # Subdivide a block
 # ====================================================================================================
 
-@furniture.geo_modifier('Divide Block')
+@furniture.modifier('Divide Block')
 def divide_block():
 
     geo = Geometry()
@@ -2433,9 +2431,9 @@ def divide_block():
                 (x, origin + rep.pos - half_thickness, z),
                 (x, y, origin + rep.pos - half_thickness),
             )
-            left_plank.points.set("Block ID", block_id)
-            left_plank.points.set("Role", Integer.Switch(is_vert, ROLE_LEFT, ROLE_BOTTOM))
-            left_plank.points.set("Block Divider", Boolean(True))
+            left_plank.points["Block ID"] = block_id
+            left_plank.points["Role"] = Integer.Switch(is_vert, ROLE_LEFT, ROLE_BOTTOM)
+            left_plank.points["Block Divider"] = Boolean(True)
 
             bundle, planks = add_plank(
                 created, created.get_bundle(), sub_name, None, left_plank, first.bnot(),
@@ -2464,7 +2462,7 @@ def divide_block():
 # A Drawer
 # ====================================================================================================
 
-@furniture.geo_group('Create Drawer Box')
+@furniture.group('Create Drawer Box')
 def create_drawer_box():
 
     SIDE_MARGIN = 0.02
@@ -2488,7 +2486,7 @@ def create_drawer_box():
     drawer.offset = (-depth/2, width/2, height/2)
     drawer.faces.material = mat
 
-    drawer.points.set("Block ID", 0)
+    drawer.points["Block ID"] = 0
 
     drawer.out("Mesh")
 
@@ -2496,7 +2494,7 @@ def create_drawer_box():
 # Open a Drawer
 # ====================================================================================================
 
-@furniture.geo_modifier('Open Drawer')
+@furniture.modifier('Open Drawer')
 def open_drawer():
 
     geo = Mesh(Geometry())
@@ -2528,7 +2526,7 @@ def open_drawer():
 # Change plank material
 # ====================================================================================================
 
-@furniture.geo_modifier('Change Plank Material')
+@furniture.modifier('Change Plank Material')
 def change_plank_material():
     geo = Mesh(Geometry())
     selection = select_plank(geo).link_inputs()
@@ -2536,14 +2534,14 @@ def change_plank_material():
     color = Color(DEFAULT_FURNITURE_COLOR, "Color")
 
     geo.faces[selection].material = material
-    geo.faces[selection].set("Color", color)
+    geo.faces[selection]["Color"] = color
     geo.out()
 
 # ====================================================================================================
 # Replace planks
 # ====================================================================================================
 
-@furniture.geo_modifier('Replace Plank')
+@furniture.modifier('Replace Plank')
 def replace_plank():
     geo = Geometry()
     bundle = geo.get_bundle()
@@ -2561,7 +2559,7 @@ def replace_plank():
     replacement_size = replacement_bounds.max_ - replacement_bounds.min_
     selection = selection & (Mesh(replacement_bounds).points.count > 0)
 
-    planks = Mesh(Mesh(geo).points[selection].separate())
+    planks = Mesh(geo.points[selection].separate())
     remaining = planks.inverted
     instances = planks.points.split_to_instances(group_id=Integer("Plank ID"))
 
@@ -2579,7 +2577,7 @@ def replace_plank():
         resized.transform(scale=scale, translation=bounds.min_)
         resized = Mesh(resized)
         for attribute in ("Block ID", "Role", "Index", "Plank ID", "Res ID"):
-            resized.points.set(attribute, original.points.sample_index(Integer(attribute), index=0))
+            resized.points[attribute] = original.points.sample_index(Integer(attribute), index=0)
         plank.geometry = resized
 
     geo = remaining + plank.generated
@@ -2590,7 +2588,7 @@ def replace_plank():
 # Delete planks
 # ====================================================================================================
 
-@furniture.geo_modifier('Delete Plank')
+@furniture.modifier('Delete Plank')
 def delete_plank():
     geo = Mesh(Geometry())
     bundle = geo.get_bundle()
@@ -2603,7 +2601,7 @@ def delete_plank():
 # Block dimensions and positions
 # ====================================================================================================
 
-@furniture.geo_modifier('Add Cotes')
+@furniture.modifier('Add Cotes')
 def add_cotes():
     geo = Geometry()
     block = get_block_properties(geo).link_inputs().node
@@ -2643,7 +2641,7 @@ def add_cotes():
 # Cut Sheet
 # ====================================================================================================
 
-@furniture.geo_modifier('Cut Sheet')
+@furniture.modifier('Cut Sheet')
 def cut_sheet():
 
     obj = Object(None, "Furniture")
@@ -2683,10 +2681,10 @@ def cut_sheet():
                     for cut in repeat(entries.list_length(), cloud_pts=resource.cloud_pts):
                         node = entries[cut.iteration].separate(signature=CUT_SIG)
                         pt = Cloud.Points(count=1)
-                        pt.set("Res ID", node.res_id)
-                        pt.set("Count", node.count)
-                        pt.set("Size", node.size)
-                        pt.set("Orient", node.orient)
+                        pt["Res ID"] = node.res_id
+                        pt["Count"] = node.count
+                        pt["Size"] = node.size
+                        pt["Orient"] = node.orient
                         cut.cloud_pts += pt
                     resource.cloud_pts = cut.cloud_pts
                 rep.cloud_pts = resource.cloud_pts
@@ -2705,7 +2703,7 @@ def block_by_id(geo, block_id):
 # Show Deco id
 # ----------------------------------------------------------------------------------------------------
 
-@furniture.geo_modifier('Show Decoration IDs')
+@furniture.modifier('Show Decoration IDs')
 def show_decoration_ids():
 
     geo = Geometry()
@@ -2745,7 +2743,7 @@ def show_decoration_ids():
 # Extract a composition
 # ----------------------------------------------------------------------------------------------------
 
-@furniture.geo_group('.Extract Composition')
+@furniture.group('.Extract Composition')
 def _extract_composition():
 
     geo = Geometry()
@@ -2761,8 +2759,7 @@ def _extract_composition():
     attempts = Integer((instances.insts.count * 0.4).ceil()).max(5)
     for rep in repeat(attempts, index=-1, stop=False, seed=seed):
         index = Integer.Random(0, (instances.insts.count - 1).max(0), id=0, seed=rep.seed.hash_value(9173))
-        selected = Instances(instances)
-        selected.insts[nd.index==index].separate()
+        selected = Instances(instances.insts[nd.index==index].separate())
         sel_mesh = Mesh(selected.realize())
         dims = sel_mesh.points[nd.position.z > 0].attribute_statistic(nd.position).node
         height_dims = sel_mesh.points.attribute_statistic(nd.position).node
@@ -2776,15 +2773,14 @@ def _extract_composition():
         rep.seed = rep.seed.hash_value(934487)
 
     index = rep.index
-    selected = Instances(instances)
-    selected.insts[nd.index == index].separate()
+    selected = Instances(instances.insts[nd.index == index].separate())
     sel_mesh = Mesh(selected.realize())
 
     island_count = sel_mesh.points.sample_index(nd.mesh_island().island_count, index=0)
 
     with Layout("Search Base Face"):
         for rep in repeat(island_count, mesh=Mesh(Geometry.Join()), base_exists=False, base_loc=(0.0, 0.0, 0.0), base_size=(0.0, 0.0, 0.0)):
-            island = Mesh(Mesh(sel_mesh).points[nd.mesh_island().island_index==rep.iteration].separate())
+            island = Mesh(sel_mesh.points[nd.mesh_island().island_index==rep.iteration].separate())
             island_dims = island.points.attribute_statistic(nd.position).node
             island_size = island_dims.max - island_dims.min
 
@@ -2839,7 +2835,7 @@ def _extract_composition():
         item_mesh.switch_false(fits).out("Mesh")
 
 
-@furniture.geo_group('.Extract Items')
+@furniture.group('.Extract Items')
 def _extract_items():
     geo = Geometry()
     block_id = Integer(0, "Block ID")
@@ -2863,7 +2859,7 @@ def _extract_items():
         index = Integer.Random(
             0, (available.insts.count - 1).max(0), id=0, seed=item_seed,
         )
-        chosen = Cloud.Points(count=1).points.instance_on(
+        chosen = Cloud.Points(count=1).instance_on_points(
             instance=available, pick_instance=True, instance_index=index,
         )
         mesh = Mesh(Instances(chosen).realize())
@@ -2896,7 +2892,7 @@ def _extract_items():
     Mesh(placed.realize()).out("Mesh")
 
 
-@furniture.geo_modifier('Furniture Decoration')
+@furniture.modifier('Furniture Decoration')
 def furniture_decoration():
 
     use_geometry = Boolean.MenuSwitch(
@@ -2964,8 +2960,8 @@ def furniture_decoration():
             placed.switch_false(use_items | use_composition)
             volume.available.switch(use_composition, extracted.instances)
 
-        placed.insts.set("Support Block ID", deco_id)
-        placed.insts.set("Is Decoration", Boolean(True))
+        placed.insts["Support Block ID"] = deco_id
+        placed.insts["Is Decoration"] = Boolean(True)
         volume.decorations += placed
 
     result = Geometry(volume.decorations)
@@ -2980,4 +2976,4 @@ def furniture_decoration():
 
 
 def demo(rebuild=False):
-    furniture.build(rebuild=rebuild)
+    furniture._build(rebuild=rebuild)

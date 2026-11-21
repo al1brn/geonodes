@@ -334,6 +334,10 @@ class Item:
     # Exploration
     # ====================================================================================================
 
+    @property
+    def is_comment(self):
+        return False
+
     def all_children(self):
         for child in self.children:
             yield child, 1
@@ -447,7 +451,16 @@ class Item:
 
         col_max = 10_000
         cols = set()
+        comments = []
+        to_arrange = []
         for node in self.children:
+
+            if node.is_comment:
+                comments.append(node)
+                continue
+
+            # Non comment nodes
+            to_arrange.append(node)
 
             # Only nodes without items out
             if len(node.items_out):
@@ -483,7 +496,7 @@ class Item:
         for i, col in enumerate(cols):
             transco[col] = i
 
-        for node in self.children:
+        for node in to_arrange:
             node.col = transco[node.col]
 
         ncols = len(cols)
@@ -516,7 +529,7 @@ class Item:
             
             col_width = 0
             column = []
-            for node in self.children:
+            for node in to_arrange:
                 if node.col != i_col:
                     continue
 
@@ -598,13 +611,8 @@ class Item:
 
             assert len(col), f"{icol} : {col}"
 
-            #x -= col_width/2 + X_SEPA
-
             y = 0
             for node in col:
-
-                #if node.below:
-                #    y += Y_SEPA/2
 
                 if node.is_frame:
                     y -= Y_SEPA*5
@@ -727,6 +735,62 @@ class Item:
         for node, target in sorted(candidates, key=lambda item: item[0].y, reverse=True):
             move_towards_target(node, target, upward=True)
 
+        # ===========================================================================
+        # STEP 4 - Locate comments
+        # ===========================================================================
+
+        # Zone to arrange arround
+        x0, y0, x1, y1 = None, None, None, None
+        for node in to_arrange:
+            x, y = node.x, node.y
+            w, h = node.width/2, node.height/2
+            if x0 is None:
+                x0, y0 = x, y
+                x1, y1 = x0 + w, y0
+                y0 -= h
+            else:
+                x0, y0 = min(x0, x), min(y0, y - h)
+                x1, y1 = max(x1, x + w), max(y1, y)
+
+        # A comment-only container has no functional graph to bound.
+        if x0 is None:
+            x0 = y0 = x1 = y1 = 0
+
+        # Arrange comments
+        for node in comments:            
+            w, h = node.width/2, node.height/2
+            hrz, vrt = node.comment_arrange
+
+            if hrz == 'outer_left':
+                node.x = x0 - w - X_SEPA
+            elif hrz == 'left':
+                node.x = x0
+            elif hrz == 'mid':
+                node.x = x0 + (x1 - x0 - w)/2
+            elif hrz == 'right':
+                node.x = x1 - w
+            elif hrz == 'outer_right':
+                node.x = x1 + X_SEPA
+
+            #x0 = min(x0, node.x)
+            #x1 = max(x1, node.x + w)
+
+            if vrt == 'outer_top':
+                node.y = y1 + h + Y_SEPA
+            elif vrt == 'top':
+                node.y = y1
+            elif vrt == 'mid':
+                node.y = (y0 + y1 + h)/2
+            elif vrt == 'bottom':
+                node.y = y0 + h
+            elif vrt == 'outer_bottom':
+                node.y = y0 - Y_SEPA
+
+            #y0 = min(y0, node.y - h)
+            #y1 = max(y1, node.y)
+
+
+
 # ====================================================================================================
 # A Node
 # ====================================================================================================
@@ -843,7 +907,15 @@ class Node(Item):
     @property
     def is_group_output(self):
         return self.bnode.bl_idname in ['NodeGroupOutput']
-    
+
+    @property
+    def is_comment(self):
+        return self.bnode.bl_idname in ['NodeComment']
+
+    @property
+    def comment_arrange(self):
+        return self.bnode.get("arrange_horizontal", "left"), self.bnode.get("arrange_vertical", "outer_top")
+
     # ====================================================================================================
     # Parent Frame
     # ====================================================================================================
@@ -1186,8 +1258,6 @@ class Node(Item):
 
         """
         return round(self.dimensions[1])     
-    
-
 
 # ====================================================================================================
 # Tree Wrapper
@@ -1334,7 +1404,6 @@ class Tree(Item):
     def del_frame(self, node):
         del self.nodes[node.name]
         self.btree.nodes.remove(node.bnode)
-
 
     def del_link(self, link):
         self.btree.links.remove(link.blink)
@@ -1573,49 +1642,13 @@ class Tree(Item):
 
             total -= len(links)
 
-        if False:
-            frames = {}
-            for link in self.links:
-                if link.node0 != group_input:
-                    continue
-
-                frame = link.node1.parent
-                if frame is None:
-                    continue
-
-                # Only top frames or frame with more than 5 links
-                if not all:
-                    while frame.parent is not None:
-                        frame = frame.parent
-
-                # Create the frame group input if it doesn't already exist
-                frame_input = frames.get(frame.name)
-                if frame_input is None:
-                    frame_input = self.new_node('NodeGroupInput', frame)
-                    frame_input.bnode.use_custom_color = True
-                    frame_input.bnode.color = (.11, .11, .11)
-                    frames[frame.name] = frame_input
-
-                # Replace the link to the frame group input
-                link.replace_from(frame_input)
-
         # ---------------------------------------------------------------------------
         # Keep if outputs remain
         # ---------------------------------------------------------------------------
 
-        if True:
-            assert total >= 0, "Oups"
-            if total == 0:
-                self.del_node(group_input)
-
-        else:
-            keep = False
-            for link in self.btree.links:
-                if link.from_node == group_input.bnode:
-                    keep = True
-                    break
-            if not keep:
-                self.del_node(group_input)
+        assert total >= 0, "Oups"
+        if total == 0:
+            self.del_node(group_input)
 
     # ====================================================================================================
     # Zones in frames
@@ -1879,7 +1912,6 @@ class Tree(Item):
         # Delete temp frames
         self.del_temp_frames()
 
-
 # ====================================================================================================
 # Main - Arrange a tree
 # ====================================================================================================
@@ -1894,7 +1926,6 @@ def arrange(btree, reroutes: bool = None, single_input: bool = None):
         single_input = getattr(bpy.context.scene, 'arrange_single_input', False)
 
     tree.arrange(reroutes=reroutes, single_input=single_input)
-
 
 # ====================================================================================================
 # UI

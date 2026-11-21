@@ -1,6 +1,7 @@
 """Node parameter introspection and argument information."""
 
 import bpy
+from mathutils import Euler
 
 IGNORE_PARAMS = ['color_ramp', 'paired_output']
 
@@ -26,7 +27,11 @@ class NodeParam:
         else:
             self.typing = None
 
-        if self.param_type == 'ENUM':
+        if self.param_type == 'Euler':
+            self.typing = 'tuple[float, float, float]'
+        elif self.param_type == 'Color':
+            self.typing = 'tuple[' + ', '.join(['float'] * len(value)) + ']'
+        elif self.param_type == 'ENUM':
             self.typing = list(enums) if enums else 'str'
         elif self.param_type == 'ENUM_FLAG':
             values = ', '.join(repr(item) for item in enums) if enums else ''
@@ -44,6 +49,14 @@ class NodeParam:
 
         value = getattr(bnode, name)
         param_type = None
+
+        if isinstance(value, Euler):
+            return cls(bnode, name, None, 'Euler')
+
+        prop = bnode.bl_rna.properties[name]
+        if (prop.type == 'FLOAT' and prop.is_array
+                and prop.subtype in ('COLOR', 'COLOR_GAMMA')):
+            return cls(bnode, name, tuple(value), 'Color')
 
         s = str(value)
 
@@ -220,7 +233,7 @@ class NodeParam:
 
     @property
     def arg_value(self):
-        if self.param_type == 'VALUE':
+        if self.param_type in ('VALUE', 'Color'):
             if isinstance(self.value, str):
                 return f"'{self.value}'"
             else:

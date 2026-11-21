@@ -1877,10 +1877,10 @@ def build_observer(rebuild=False):
             
             sel0, sel1, sel2, sel3 = nd.index == 0, nd.index == 1, nd.index == 2, nd.index == 3
             
-            bones.points[sel0].set('temp rot', Rotation((forward, -lateral, 0)))
-            bones.points[sel1].set('temp rot', Rotation((elbow, 0, elbow_twist)))
-            bones.points[sel2].set('temp rot', Rotation((0, -hand_flap, 0)))
-            bones.points[sel3].set('temp rot', Rotation((0, -pi/2, hand_twist)))
+            bones.points[sel0]['temp rot'] = Rotation((forward, -lateral, 0))
+            bones.points[sel1]['temp rot'] = Rotation((elbow, 0, elbow_twist))
+            bones.points[sel2]['temp rot'] = Rotation((0, -hand_flap, 0))
+            bones.points[sel3]['temp rot'] = Rotation((0, -pi/2, hand_twist))
             
             bones = G().build_bones_curve(bones, direction=(0, 0, -1), rotation=Rotation('temp rot'), length=0.5)
             
@@ -2078,7 +2078,7 @@ def build_observer(rebuild=False):
 
         with Layout("Eyes"):
             eye = Mesh.UVSphere(segments=segments//2, rings=rings//2, radius=EYE_RADIUS)
-            eye.faces.set('White', nd.position.z < .9*EYE_RADIUS)
+            eye.faces['White'] = nd.position.z < .9*EYE_RADIUS
             eye.transform(rotation=(pi/2, 0, 0))
 
             eye.faces.shade_smooth = True
@@ -2171,12 +2171,12 @@ def build_observer(rebuild=False):
         with Layout("Body"):
             body = sphere.transform(scale=(1.15, 1.15, 1.8))
             tshirt = nd.position.z < 1.6
-            body.faces[tshirt].set(col_attr, 1.0)
+            body.faces[tshirt][col_attr] = 1.0
             body.faces[tshirt].material = "Obs Blouse"
 
             blouse = Mesh(body).transform(scale=(1.02, 1.02, 1.02))
             blouse.faces.material = "Obs Blouse"
-            blouse.faces.set(col_attr, color)
+            blouse.faces[col_attr] = color
 
             cube = Mesh.Cube(size=(3, 3, 1.7)).transform(translation=(0, 0, 1.7/2))
             # Set a différent material to delete faces

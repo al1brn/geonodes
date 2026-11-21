@@ -2,17 +2,25 @@
 
 Référence de maintenance : décrire ici les règles effectivement appliquées ; signaler séparément les règles restant à implémenter.
 
+Procédure opératoire : [préparation, dimensions, génération et comparaison des versions](../doc/generation.md).
+
 - **Configuration manuelle centralisée**
   - `config.py` définit `TREE_TYPES`, la correspondance `TREE_MODULES` vers les dossiers produits, les listes de classes (`GEOMETRY_CLASSES`, `DOMAIN_CLASSES`, `ATTRIBUTE_CLASSES`, `POINT_DOMAIN_CLASSES`) et les descriptions manuelles de types/sockets (`PYTHON_TYPES`, `TRANSCO`, `SOCKET_BLID_TO_TYPE`, `DATA_TYPE_HOMONYMS`, `INPUT_SOCKETS_PROPS`).
   - `output`, `generate`, `TreeClass` et `gen_config` consultent ces définitions ; `ENVIRONMENTS`, `GEOMETRIES`, `POINT_DOMAINS` et la seconde déclaration de `TREE_TYPES` sont supprimés du générateur.
   - `gen_config.INPUT_SOCKETS_PROPS` est une copie de travail enrichie par Blender, reconstruite depuis `config` à chaque `build`. Les tables manuelles ne sont pas modifiées par l'introspection. Les tables automatiques restent construites et exportées par `gen_config`.
 
 - **Arguments contextuels du générateur**
-  - Les rôles `NAMED_ITEMS` et `ANONYMOUS_ITEMS` ont `source=None`. Le premier expose `items={}` et `**named_items`, puis fournit les expansions de sockets et de paramètres dans `NodeCallArguments.named_socket_expansions` / `parameter_expansions` ; le second expose et transmet `*dyn_sockets`. Ces listes contiennent des expressions sans préfixe `**`. La fusion des items nommés est une contribution à l’appel, pas un calcul dans `get_code`. `get_node_arguments` ajoute un wrapper selon `has_items` / `items_with_name` et réserve ses noms avant les autres arguments. L’assembleur doit placer les variadiques positionnels avant les arguments ordinaires et les variadiques nommés en dernier.
-  - `node_argument.py` encapsule un `NodeSocket` ou `NodeParam` (nom actuel de NodeParameter), sans les modifier. Le nom Python final, les alias ordonnés et le rôle `ARGUMENT`, `SELF`, `FIXED` ou `COMPUTED` appartiennent au wrapper.
-  - `get_typing`, `get_header`, `get_arg_doc`, `get_fixed_doc`, `get_computed_doc`, `get_code` et `get_node_call` reprennent les règles de rendu de `gen_source_code`. Les appels sont décrits par `NodeCallArguments` : expressions positionnelles, sockets nommées et paramètres séparés.
-  - Les valeurs fixées sont des valeurs Python, y compris `None` ; les valeurs calculées sont des expressions de source. Les enums peuvent utiliser le registre `TypeAliases` fourni par l'appelant. La résolution des alias s'exécute après initialisation du dictionnaire de sockets et avant l'appel du nœud.
-  - `NodeInfo.get_node_arguments` prépare les wrappers à partir de `self_socket`, `fixed_sockets`, `last_sockets`, `geo_selection`, `auto_data_type` et des paramètres fixés. Tous les paramètres introspectés sont inclus, pas seulement les enums ; une clé présente avec `None` est fixée, contrairement à une clé absente. L'exploration restaure l'état initial du nœud, y compris après erreur. Les noms Python sont dédoublonnés et les aliases sont ordonnés de manière déterministe. Les sockets de `last_sockets` sont déplacées comme des wrappers entiers ; la sélection utilise l'ordre physique avant ce déplacement et exige le premier récepteur géométrique suivi de la Boolean Selection. Les valeurs fixées restent prioritaires. `gen_source_code` utilise cette liste : il assemble le header, les sections documentaires (arguments, valeurs fixées, valeurs calculées), le code préparatoire et les contributions structurées à l'appel. Ses anciens dictionnaires d'arguments ont été supprimés.
+  - `NodeInfo.get_node_arguments` retourne un `NodeArguments` qui assemble la signature, la documentation, les calculs et l'appel du nœud sans modifier les snapshots sockets/paramètres.
+  - `NodeImplementation._gen_source_code` utilise `get_header`, `get_doc_source` et `get_code_source`. Il conserve les décorateurs, le premier argument, la documentation du retour, les jumps et le retour. Le corps est écrit après `source.indent += 1`.
+  - Les valeurs fixées sont sérialisées avec `repr`, y compris `None`. Les expressions calculées restent du source. Le type automatique utilise une contribution calculée ; un type fixé reste prioritaire.
+  - Les paramètres libres utilisent `NodeParam.typing` et le registre `TypeAliases` transmis par l'implémentation pour les enums simples. Les flags conservent leur annotation explicite.
+  - `NameSolver` dédoublonne les noms des sockets après réservation des paramètres et variables locales. Les alias sont triés ; les sockets regroupées utilisent `group_name`, sinon `ID_identifier`. Le récepteur est la première socket correspondant au nom demandé.
+  - Les sockets de `last_sockets` sont déplacées après les autres. Par défaut, `NodeInfo.last_sockets` contient les entrées actives de type `MENU` ainsi que `Factor` de type `VALUE`, dans leur ordre Blender. `NodeCall.last_sockets` et l’argument de `get_node_arguments` valent `None` par défaut : `NodeInfo.last_sockets` fournit alors la liste. Une liste explicite la remplace entièrement, y compris une liste vide qui désactive le déplacement ; `NodeCall.replace` remplace aussi ce champ sans concaténation. La sélection calculée exige un récepteur sur la première entrée géométrique ; les valeurs fixées restent prioritaires.
+  - `gen_properties` active la sélection calculée pour les setters et ne fixe pas automatiquement leur entrée `Selection` à `None`. Les valeurs explicitement fixées dans la configuration restent prioritaires ; le dictionnaire de configuration est copié avant enrichissement.
+  - Une description de propriété avec `parameter` laisse ce paramètre libre dans la signature au lieu de le fixer à sa valeur par défaut. Le setter standard peut ainsi recevoir la valeur affectée (`Spline.type`, types de poignées de Curve).
+  - `gen_properties` active le jump des getters lorsque la première entrée et la première sortie sont géométriques et qu'une deuxième sortie non géométrique existe. Le `NodeCall` reçoit ce calcul ; `output` fournit un `return_socket` explicite, notamment pour la propriété `bundle`. Les setters conservent leur jump.
+  - Les sockets virtuelles nommées exposent `named_sockets={}` et `**sockets` ; les anonymes exposent `*items`. Les variadiques précèdent les arguments ordinaires et `**sockets` termine la signature.
+  - L'exploration restaure les paramètres du nœud dans un `finally`. Les tests historiques de l'ancienne interface par wrappers restent à migrer ; `tests/test_node_argument.py` couvre la nouvelle interface et son raccordement dans Blender.
 
 **Principe prioritaire : utiliser le générateur standard de `NodeImplementation` à partir des descriptions d'implémentation. Ne pas ajouter de générateur dédié par famille. Signaler tout besoin de hack à l'utilisateur avant de le mettre en œuvre.**
 
@@ -38,12 +46,14 @@ Référence de maintenance : décrire ici les règles effectivement appliquées 
   - Une description incohérente ou une collision reste une erreur explicite, sans recours automatique à l'ancien générateur.
 
 - **Exceptions et exclusions — prioritaires**
+  - Domain Size : `DEFAULT_IMPLEMENTATION` conserve une méthode générale sur Geometry et développe les composants sur Mesh, Cloud, Curve, Instances et GreasePencil par listes alignées avec `component=ADD_LOOP`. Le retour est le nœud pour permettre aux propriétés de domaine `count` de lire la sortie correspondante avec le composant fixé.
+  - `STATIC_IMPLEMENTATIONS` : remplacements par nom de nœud appliqués par `gen_static_code` à la `NodeCall` standard des accès `nd`, avant génération et enregistrement. `get_default_node_calls` les copie dans `over_spec`, puis applique `DEFAULT_IMPLEMENTATION` avec `update`. Les champs de ce dernier sont prioritaires, y compris les dictionnaires imbriqués qui sont remplacés entièrement ; les configurations ne sont pas modifiées.
+  - Bundle en Geometry Nodes : `DEFAULT_IMPLEMENTATION` nomme les méthodes `get_item` (retour explicite `Item`, sans jump) et `set_item` (avec jump). Les crochets manuscrits de `geonodes/sockets/bundle.py` délèguent à ces méthodes ; ils ne construisent pas de nœuds. Une clé simple lit un Float, `(chemin, type)` précise le type et l’affectation déduit le type de la valeur. Les listes de bundles conservent leur indexation héritée.
   - `DEPRECATED_NODES` : nœuds exclus de l'introspection `NodeInfo`.
   - `NO_DEFAULT_IMPLEMENTATION` : pas d'implémentation par défaut ; accès `nd` conservé.
   - `REPLACE_DEFAULT_IMPLEMENTATIONS` : remplace les champs inférés de la proposition par défaut.
   - `ADDITIONAL_IMPLEMENTATIONS` : ajoute des propositions explicites.
-  - `DATA_TYPE_IMPLEMENTATIONS` : exceptions à la règle des types d'entrée/sortie.
-  - `INPUT_IMPLEMENTATIONS` : exceptions au traitement dédié des nœuds `INPUT`.
+  - Les anciennes tables sans lecteur `REPLACE_DEFAULT_IMPLEMENTATIONS_DEPR`, `DATA_TYPE_IMPLEMENTATIONS` et `INPUT_IMPLEMENTATIONS` sont supprimées. Les ajustements du pipeline courant utilisent `DEFAULT_IMPLEMENTATION`, `ADDITIONAL_IMPLEMENTATIONS` et `PROPERTIES`.
   - Index Switch : générer automatiquement les constructeurs typés et `nd.index_switch` avec `*values` ; conserver le raccourci manuscrit `Socket.index_switch(...)`.
   - Menu Switch : exclure le constructeur par défaut ; conserver `Socket.MenuSwitch(...)`, `Socket.menu_switch(...)` et l'accès généré `nd.menu_switch`.
   - `HANDWRITTEN_IMPLEMENTATIONS` : enregistrer les signatures réelles des méthodes manuscrites dans les références croisées, sans recopier leur code dans les modules générés.
@@ -71,6 +81,7 @@ Référence de maintenance : décrire ici les règles effectivement appliquées 
   - Nœud `INPUT` : appliquer le traitement dédié ci-dessous.
 
 - **Input sockets présentes**
+  - `get_default_node_calls` utilise `has_geometry_in`, `has_geometry_out` et `auto_jump` pour les tests géométriques. Ces propriétés consultent les premiers snapshots exploités par la génération (activés, non virtuels), pas les sockets RNA de la configuration courante : les nœuds à type variable conservent ainsi leur classification. Les conversions et remplacements explicites gardent la priorité sur le jump automatique. Le choix du retour reste indépendant de cette simplification.
   - **Une seule**
     - Elle devient normalement `self`.
     - Sa classe détermine la classe porteuse.
@@ -217,7 +228,7 @@ Référence de maintenance : décrire ici les règles effectivement appliquées 
   - Première sortie par défaut.
   - Nœud `Separate` ou sortie virtuelle : retourner le `Node`.
   - Entrée et sortie géométriques de même classe : jump.
-  - Dans le prototype, après le jump : retourner `node._second_out(self)`, soit la deuxième sortie disponible ou `self` en son absence.
+  - Après le jump, le retour `OUT` donne `node._second_out(self)` uniquement si le nom Python final commence par `get` ; sinon, il retourne `self`. Les choix de retour explicites restent prioritaires. Le jump est effectué indépendamment du retour choisi.
   - Jump sur un domaine : mettre à jour sa géométrie et retourner cette géométrie.
 
 - **Noms et conversions**
@@ -249,6 +260,7 @@ Référence de maintenance : décrire ici les règles effectivement appliquées 
   - Valider tous les modules des environnements sélectionnés avant l'écriture.
 
 - **Catalogues mathématiques**
+  - Les déclarations modulo de Math, Vector Math et Integer Math utilisent le nom d’opérateur Python `mod` : le générateur commun produit `__mod__`, `__rmod__` et `__imod__`, qui délèguent à `modulo`. Les variantes manuscrites restent prioritaires pour les opérations entre Float et Vector ; `%=` met à jour le récepteur via `_jump`. Vérification Blender : `core_new/tests/test_float_operators.py`.
   - `gnmath` : opérations Math, Integer Math, Boolean Math, Vector Math, Bit Math, Color Mix et comparaisons.
   - Math, Integer Math, Boolean Math, Vector Math et Bit Math utilisent `gen_source_code` avec `FUNCTION` pour `gnmath`, `METHOD` pour les classes et `return_kind='OUT'`. L'opération est fixée ; le récepteur est la première entrée active de cette variante. Les opérateurs délèguent aux méthodes ordinaires.
   - Color Mix et les comparaisons utilisent également `gen_source_code`.
@@ -261,6 +273,7 @@ Référence de maintenance : décrire ici les règles effectivement appliquées 
 
 ## Points d'entrée du code
 
+- [compare_versions.py](compare_versions.py) : compare deux fichiers `config_*.py` générés, sans Blender ni exécution des fichiers. `compare_versions(old_path, new_path)` retourne par environnement les nœuds supprimés, ajoutés et modifiés, identifiés par `bl_idname`, avec le détail des champs modifiés dans `NODE_INFO` et des renommages dans `NODE_NAMES`. Seules les dimensions `dims` sont ignorées par défaut ; `include_dimensions=True` les inclut. Les différences de schéma des configurations sont rapportées comme les autres modifications, sans migration implicite. Ligne de commande : `python3 generation2/compare_versions.py OLD_CONFIG NEW_CONFIG -o rapport.md` ; omettre `-o` pour afficher le rapport. Tests hors Blender : `python3 generation2/tests/test_compare_versions.py`.
 - [config.py](config.py) : exclusions, remplacements, ajouts et exceptions.
 - [node_info.py](node_info.py) : introspection, classification et propositions.
 - [node_socket.py](node_socket.py) : snapshots des sockets et ordre physique.
@@ -296,13 +309,16 @@ Référence de maintenance : décrire ici les règles effectivement appliquées 
   - Utilise les noms finaux après dédoublonnage, le type, le nom de socket et son identifiant en cas d'alias. Les arguments ordinaires indiquent le défaut `None` ; les multi-inputs indiquent plusieurs valeurs.
 
 - **Documentation du retour de `gen_source_code`**
-  - Suit la priorité du code émis : sortie explicite, `OUT` (jump : deuxième sortie ou `self`, après mise à jour depuis la première), enveloppe `cls`, nœud, puis enveloppe de classe explicite. Pas de section Returns pour les setters.
+  - Sans aucune sortie dans `NodeInfo.outputs`, `gen_source_code` force une copie résolue de la description à `return_kind='NODE'` et `return_socket=None`, indépendamment des choix configurés. Le source, la documentation et les références utilisent ce même retour. Les setters restent sans retour et le code `in_line` reste fourni par son auteur. Tests Blender : `tests/test_no_output_returns.py`.
+  - `return_kind='SECOND_OUT'` force la deuxième sortie disponible via `node._second_out`, indépendamment du nom Python. Le repli est `self` pour une méthode d’instance, sinon la sortie par défaut. Le jump reste indépendant ; une `return_socket` explicite garde la priorité. Le helper filtre les sorties désactivées, masquées ou virtuelles.
+  - Suit la priorité du code émis : sortie explicite, `OUT` (sans jump : première sortie ; avec jump : deuxième sortie ou `self` pour les noms commençant par `get`, sinon `self`), enveloppe `cls`, nœud, puis enveloppe de classe explicite. Pas de section Returns pour les setters. Test Blender : `tests/test_jump_returns.py`.
 
 - `gen_source_code` utilise `sock.group_name` comme clé des sockets arguments regroupées lorsqu’il est renseigné, y compris pour le récepteur ; sinon conserve la clé habituelle.
 
 - `gen_source_code` transmet les sockets issues des arguments avec la clé `ID_identifier` par défaut. `group_name` reste prioritaire ; les alias restent résolus par identifiant physique. Les sockets fixées et la sélection calculée conservent leurs clés nommées.
 
 - `NodeParam` teste les valeurs booléennes avant les entiers : annotation `bool` pour `True` / `False`, `int` pour les entiers.
+- `NodeParam.Parameter` reconnaît les valeurs `mathutils.Euler` avant le filtre des objets : type de paramètre `Euler`, défaut `None` comme dans l’ancienne configuration, annotation `tuple[float, float, float]`. Cela expose notamment `rotation_euler` du nœud Rotation sans exception dédiée au nœud.
 
 - La doc des paramètres libres de `gen_source_code` indique le nom d'argument, le type, le défaut et tous les choix enum disponibles, indépendamment de l'alias utilisé dans la signature. Les flags affichent `set[{...}]`.
 
@@ -353,6 +369,8 @@ Référence de maintenance : décrire ici les règles effectivement appliquées 
   - Vérification Blender des 202 fonctions `gnmath` et tests dédiés des identifiants exacts dans les deux environnements (`core_new/tests/test_socket_identifiers.py`).
 
 - **Séparation `NodeCall` / `NodeCalls`**
+  - Les specs de configuration passent par `NodeImplementation.expand_spec` avant leur application : listes des champs et listes des valeurs de `parameters` sont alignées par position. Les marqueurs `ADD_LOOP` et `LOOP_ONLY` deviennent des colonnes de valeurs enum ; `ADD_LOOP` place d’abord une variante générale sans valeur fixée. Les scalaires et listes d’un élément sont répétés ; des longueurs incompatibles lèvent `ValueError`. Les noms contenant `REPLACE` restent développés, et les boucles de type déduisent classe/récepteur seulement en l’absence de choix explicite. Même mécanisme pour les remplacements par défaut, statiques et les implémentations supplémentaires. Les couches de `NodeCalls` appliquées successivement restent des produits. Tests Blender : `tests/test_spec_expansion.py`.
+  - `NodeCall.__eq__` compare tous les champs fonctionnels ; seules `category` et `rules` sont exclues. Les descriptions restent mutables et non hachables. `NodeCalls.remove_duplicates()` dédoublonne sur place en conservant l’ordre et la première instance. Les constructeurs, `append`, `extend`, `+=`, `replace` et `overrides` éliminent les répétitions exactes, notamment lorsque des remplacements font converger plusieurs variantes. Les descriptions différentes restent présentes et le contrôle des collisions à l’enregistrement reste actif. Tests hors Blender : `tests/test_node_call_duplicates.py`.
   - `NodeCall` décrit une fonction unique : nom de méthode scalaire et destination `class_name` scalaire ou `None`. La destination est transmise à l’orchestrateur ; `gen_source_code` ne l’utilise pas. Les constructeurs des accès `nd` et des maths ne transmettent plus de destination à `NodeCall`.
   - `NodeCalls.overrides(base, [{...}, ...])` accepte des dictionnaires de remplacement hétérogènes ; `NodeCalls.attributes(base, champ=[...], autre=...)` construit la même liste depuis des colonnes alignées, avec répétition des scalaires ou listes d'un élément.
   - Une base peut être une `NodeCall` ou une `NodeCalls`. `loop()` (également accessible par itération) produit directement des `NodeCall` portant leur destination ; l'imbrication forme un produit cartésien et les remplacements extérieurs ont priorité. `class_name` est remplacé comme les autres attributs par `NodeCall.replace`.
@@ -379,6 +397,8 @@ Référence de maintenance : décrire ici les règles effectivement appliquées 
 - `data_type_drives_outputs` consulte les identifiants de sortie. `data_type_input` parcourt les entrées Blender dans leur ordre physique et teste leur identifiant, sans indexation par nom. Les critères restrictifs de détection des types et de présence restent inchangés.
 
 - **Snapshots des sockets pilotées par le type**
+  - `get_data_type_calls` conserve tout `self_socket` explicite. Pour une méthode d’instance sans récepteur décrit, il choisit la première entrée pilotée de chaque variante de type.
+  - Le développement des marqueurs `ADD_LOOP` / `LOOP_ONLY` crée une copie du `NodeCall` avec un nouveau dictionnaire de paramètres avant de retirer le marqueur. La configuration partagée reste inchangée entre environnements et générations successives. Test Blender : `tests/test_additional_type_loops.py`.
   - `NodeInfo.data_type_driven_sockets` remplace `data_type_driven_ids`. Pour chaque valeur du paramètre de type, les listes `inputs` / `outputs` contiennent des snapshots `NodeSocket` ordonnés, avec identifiant, nom et type de cette variante.
   - Les critères de détection et le filtre par type restent inchangés. `data_type_input` et `data_type_drives_first_input` lisent ces objets et acceptent une liste d'entrées vide pour le type courant.
   - Les snapshots restent inchangés après la réinitialisation du nœud Blender. Le choix du récepteur par variante dans le générateur n'est pas modifié à cette étape.
@@ -386,3 +406,15 @@ Référence de maintenance : décrire ici les règles effectivement appliquées 
 - **Validation des descriptions résolues**
   - `NodeCall` n'appelle plus `_check` à la construction. Les copies et les résultats intermédiaires de `NodeCalls` peuvent être incomplets.
   - `gen_source_code` appelle `_check` avant toute analyse du nœud : la description finale est validée après application de toutes les boucles et de tous les remplacements.
+
+- **Paramètres couleur RNA**
+  - `NodeParam.Parameter` reconnaît les propriétés RNA `FLOAT`, tableaux, de sous-type `COLOR` ou `COLOR_GAMMA`, avant le filtre des objets. Elles sont enregistrées comme paramètres `Color`, avec une valeur par défaut convertie en tuple et une annotation `tuple[float, ...]` dont l'arité correspond au nombre de composantes.
+  - La détection dépend des métadonnées RNA, sans exception par nœud. L'affectation utilise le mécanisme standard des paramètres Blender ; aucune conversion spéciale dans `NodeImplementation` ou `Node`.
+
+- **Retour des méthodes jump**
+  - Pour une méthode jump de retour `OUT` qui renvoyait directement `self`, le générateur standard renvoie `self.self_return`. `Socket.self_return` vaut `self` ; `Domain.self_return` vaut sa géométrie propriétaire, déjà mise à jour par le jump. Aucun nouveau wrapper n'est créé.
+  - Les retours explicites, les sorties secondaires et les retours `cls` conservent leur traitement propre.
+
+- **Ordre public des paramètres**
+  - `NodeArguments` place les sockets avant les paramètres non enum, puis les paramètres `ENUM` et `ENUM_FLAG`. L'ordre relatif de chaque catégorie est conservé.
+  - Ce tri concerne uniquement la signature : l'introspection, `config_order` et l'ordre des paramètres transmis au constructeur du nœud restent inchangés.

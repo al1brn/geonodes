@@ -24,7 +24,7 @@ def build(rebuild=False):
     test_53.build(rebuild=rebuild)
 
 
-@test_53.geo_modifier("Test 5.3 - Combine List")
+@test_53.modifier("Test 5.3 - Combine List")
 def combine_list():
     """Combine zero, one and three values into lists of different types."""
 
@@ -102,7 +102,7 @@ def combine_list():
         multiple.list_length().out("String 3")
 
 
-@test_53.geo_modifier("Test 5.3 - Rasterize Points")
+@test_53.modifier("Test 5.3 - Rasterize Points")
 def rasterize_points():
     """Rasterize named float/vector fields and read the resulting grids."""
 

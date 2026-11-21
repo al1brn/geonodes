@@ -81,6 +81,25 @@ def create_object(name, type='MESH', collection=None):
 # Get a Blender Data resource
 # ====================================================================================================
 
+API_MATERIAL_PROPERTY = 'geonodes_api'
+
+
+def get_api_material(root_name, *, create=False):
+    """Find a local API material by its root name, regardless of its actual name."""
+    material = bpy.data.materials.get(root_name)
+    if (material is not None and material.library is None
+            and material.get(API_MATERIAL_PROPERTY) == root_name):
+        return material
+    for material in bpy.data.materials:
+        if material.library is None and material.get(API_MATERIAL_PROPERTY) == root_name:
+            return material
+    if create:
+        material = bpy.data.materials.new(root_name)
+        material[API_MATERIAL_PROPERTY] = root_name
+        return material
+    return None
+
+
 def get_resource(socket_type, value):
 
     spec = {
@@ -98,6 +117,10 @@ def get_resource(socket_type, value):
     if isinstance(value, spec['type']):
         return value
     else:
+        if socket_type == 'MATERIAL' and isinstance(value, str):
+            material = get_api_material(value)
+            if material is not None:
+                return material
         return spec['coll'].get(value)
 
 def get_object(value):

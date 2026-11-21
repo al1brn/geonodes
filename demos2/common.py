@@ -223,7 +223,7 @@ def demo(rebuild=False):
         show = Float.Factor(1.0, "Show", 0, 1)
 
         mesh.switch(show.equal(0))
-        mesh.faces.set('Transparency', 1.0 - show)
+        mesh.faces["Transparency"] = 1.0 - show
 
         (geo + mesh).out()
 
@@ -256,8 +256,8 @@ def demo(rebuild=False):
 
         color = Color(name="Color")
         geo = Mesh(geo)
-        geo.set('Color', color, domain='Face')
-        geo.set('Transparency', 1.0 - show, domain='Face')
+        geo.faces['Color'] = color
+        geo.faces['Transparency'] = 1.0 - show
 
         with Layout("Tangent / Radial Acceleration"):
             nvel = velocity.normalize()
@@ -416,7 +416,7 @@ def demo(rebuild=False):
             
             x, y, z = nd.position.xyz
             visible = z < -focal
-            transformed.points.set("Hidden", visible.bnot())
+            transformed.points["Hidden"] = visible.bnot()
             
             ratio = -focal/z
             transformed[visible].position = (x*ratio, y*ratio, -focal)
@@ -545,7 +545,7 @@ def demo(rebuild=False):
             n = Float.Random(speed/2, speed*1.5, seed=seed)
 
             v = rot.rotate_vector((0, 0, n))
-            pts.set('Speed', v)
+            pts.points['Speed'] = v
             
         for sim in simulation(pts=pts):
             v = sim.pts.get('Speed', Vector).value
@@ -553,7 +553,7 @@ def demo(rebuild=False):
             pos = G().bounce_box(position=pos, speed=v, min=box_min, max=box_max, energy_factor=efac)
             
             sim.pts.position = pos
-            sim.pts.set('Speed', pos.speed)
+            sim.pts.points['Speed'] = pos.speed
             
 
         sim.pts.out()

@@ -605,7 +605,7 @@ def demo(rebuild=False):
             start_frame = Input("Start Frame"),
         )
 
-        mesh = anim.cloud.instance_on(instance=Mesh.UVSphere(radius=1),scale=nd.radius)
+        mesh = anim.cloud.instance_on_points(instance=Mesh.UVSphere(radius=1),scale=nd.radius)
 
         mesh.out()
 

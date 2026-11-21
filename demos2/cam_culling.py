@@ -54,18 +54,18 @@ Specific modifiers can be generated using specic functions:
 from geonodes import *
 
 FOCAL_FACTOR = .04939
+DEBUG_GEO = False
 
-def demo(rebuild=False):
+class CameraCulling(Package):
 
-    Tree._init_package('Camera Culling')
-
-    DEBUG_GEO = False
+    prefix = "CC"
 
     # ====================================================================================================
     # Camera Data
     # ====================================================================================================
 
-    with GeoNodes("Camera Data", is_group=True, rebuild=rebuild):
+    @group()
+    def _camera_data():
 
         with Panel("Camera Culling"):
             ok_cc        = Boolean(True, "Culling", shape="Single")
@@ -91,12 +91,12 @@ def demo(rebuild=False):
         obj_info.location.out("Location")
         obj_info.rotation.invert().out("Rotation")
 
-
     # ====================================================================================================
     # Camera Projection
     # ====================================================================================================
 
-    with GeoNodes("Camera Projection", is_group=True, rebuild=rebuild):
+    @group()
+    def camera_projection():
         """ Project points with radius and normal
 
         Arguments
@@ -126,7 +126,7 @@ def demo(rebuild=False):
         radius   = Float(0,    "Radius", min=0, tip = "Position radius")
         normal   = Vector(0,   "Normal",        tip = "Point direction", default_input='NORMAL')
 
-        cam_data = G().camera_data().node.link_inputs()
+        cam_data = CameraCulling._camera_data().node.link_inputs()
 
         aspect_ratio = cam_data.aspect_ratio
         focal_length = cam_data.focal_length
@@ -202,7 +202,8 @@ def demo(rebuild=False):
     # Position Culling
     # ----------------------------------------------------------------------------------------------------
 
-    with GeoNodes("Camera Point Culling", rebuild=rebuild):
+    @group()
+    def point_culling():
 
         cloud = Cloud(Geometry())
         with Panel("Camera Culling"):
@@ -210,14 +211,13 @@ def demo(rebuild=False):
 
         # ===== Projection into the camera space
 
-        node = G().camera_projection(radius=nd.radius).link_inputs(from_panel="Camera Culling", panel="Camera Culling").node
+        node = CameraCulling.camera_projection(radius=nd.radius).link_inputs(from_panel="Camera Culling", panel="Camera Culling").node
         use_culling = node.culling
 
         cloud.points.Visible = (node.behind | node.outside | (node.radius < min_radius)).bnot()
 
         with Layout("Done"):
-            keep = Cloud(cloud)
-            keep.points[Boolean("Visible")].separate()
+            keep = cloud.points(Boolean("Visible")).separate()
 
             cloud.switch(use_culling, keep).out("Mesh")
             keep.inverted.switch_false(use_culling).out("Deleted")
@@ -229,7 +229,8 @@ def demo(rebuild=False):
     # Edge Culling
     # ----------------------------------------------------------------------------------------------------
 
-    with GeoNodes("Camera Edge Culling", rebuild=rebuild) as tree:
+    @group()
+    def edge_culling():
 
         mesh       = Mesh()
         with Panel("Camera Culling"):
@@ -238,7 +239,7 @@ def demo(rebuild=False):
 
         # ===== Projection
 
-        node = G().camera_projection(radius=radius).link_inputs(from_panel="Camera Culling", panel="Camera Culling").node
+        node = CameraCulling.camera_projection(radius=radius).link_inputs(from_panel="Camera Culling", panel="Camera Culling").node
         aspect_ratio = node.aspect_ratio
         use_culling = node.culling
 
@@ -288,8 +289,7 @@ def demo(rebuild=False):
         mesh.edges.Visible = ignore.bnot()
 
         with Layout("Done"):
-            keep = Mesh(mesh)
-            keep.edges[Boolean("Visible")].separate()
+            keep = mesh.edges(Boolean("Visible")).separate()
 
             mesh.switch(use_culling, keep).out("Mesh")
             keep.inverted.switch_false(use_culling).out("Deleted")
@@ -301,7 +301,8 @@ def demo(rebuild=False):
     # Face Culling
     # ----------------------------------------------------------------------------------------------------
 
-    with GeoNodes("Camera Face Culling", rebuild=rebuild):
+    @group()
+    def face_culling():
 
         mesh = Mesh()
 
@@ -320,7 +321,7 @@ def demo(rebuild=False):
         face_radius = nd.face_area.sqrt()/2
         dual.points.Face_radius = mesh.faces.sample_index(face_radius, nd.index)
 
-        cam_node = G().camera_projection(normal=Vector.Named("Normal"), radius=Float("Face radius")).node
+        cam_node = CameraCulling.camera_projection(normal=Vector.Named("Normal"), radius=Float("Face radius")).node
         cam_node.link_inputs(from_panel="Camera Culling", panel="Camera Culling")
         use_culling = cam_node.culling
 
@@ -333,14 +334,15 @@ def demo(rebuild=False):
         # Faces with all their corners behind the camera
         # ---------------------------------------------------------------------------
 
-        node = G().camera_projection().node.link_inputs(from_panel="Camera Culling", panel="Camera Culling")
+        node = CameraCulling.camera_projection().node.link_inputs(from_panel="Camera Culling", panel="Camera Culling")
         aspect_ratio = node.aspect_ratio
 
         with Layout("Faces with all vertices behind the sensor"):
             mesh.points.store("TEMP Vertex Behind", Float(node.behind))
             mesh.faces.store("TEMP Face Behind", Float.Named("TEMP Vertex Behind"))
 
-            visible = Float.Named("TEMP Face Behind") <= 1 - 1/Face.corners_total(nd.index)
+            #visible = Float.Named("TEMP Face Behind") <= 1 - 1/Face.corners_total(nd.index)
+            visible = Float.Named("TEMP Face Behind") <= 1 - 1/Face.corners(nd.index).total
             mesh.faces.Visible = Boolean("Visible") & visible
 
         # ---------------------------------------------------------------------------
@@ -371,11 +373,10 @@ def demo(rebuild=False):
         # ---------------------------------------------------------------------------
 
         mesh.faces.Visible = Mesh(feel.generated).faces.sample_index(Boolean("Visible"), index=nd.index)
-        mesh.remove_named_attribute("Wildcard", "TEMP*")
+        mesh.remove("TEMP*", pattern_mode="Wildcard")
 
         with Layout("Done"):
-            keep = Mesh(mesh)
-            keep.faces[Boolean("Visible")].separate()
+            keep = mesh.faces(Boolean("Visible")).separate()
 
             mesh.switch(use_culling, keep).out("Mesh")
             keep.inverted.switch_false(use_culling).out("Deleted")
@@ -387,8 +388,8 @@ def demo(rebuild=False):
     # Camera Debug
     # =============================================================================================================================
 
-    with ShaderNodes("DBG Face", replace_material=True):
-
+    @shader()
+    def face():
         col = nd.attribute(attribute_name="Color").color
         fac = nd.attribute(attribute_name="Transparent").factor
         ped = Shader.Principled(base_color=col)
@@ -398,8 +399,8 @@ def demo(rebuild=False):
 
         #ped.out()
 
-    with ShaderNodes("DBG Point"):
-
+    @shader()
+    def point():
         col = nd.attribute(attribute_name="Point Color").color
         ped = Shader.Principled(base_color=col)
         ped.out()
@@ -408,7 +409,8 @@ def demo(rebuild=False):
     # Culling demo
     # ====================================================================================================
     
-    with GeoNodes("Camera Demo", rebuild=rebuild):
+    @modifier()
+    def demo():
 
         mesh = Mesh()
 
@@ -423,15 +425,15 @@ def demo(rebuild=False):
             c.points.radius = radius
             c.points.Color = (1, 0, 0)
 
-            node = G().camera_point_culling(c, min_radius=min_radius).node
+            node = CameraCulling.point_culling(c, min_radius=min_radius).node
             node.link_inputs(from_panel="Camera Culling", panel="Camera Culling")
 
             c = node.mesh
-            c.points[Boolean("Visible")].Color = (0, 1, 0)
-            spheres = Mesh(c.points.instance_on(instance=Mesh.UVSphere(radius=gnmath.max(0.001, radius))).realize())
-            spheres.faces.material = "DBG Face"
+            c.points(Boolean("Visible")).Color = (0, 1, 0)
+            spheres = Mesh(c.instance_on_points(instance=Mesh.UVSphere(radius=gnmath.max(0.001, radius))).realize())
+            spheres.faces.material = "CC Face"
 
-            (Mesh(mesh).faces[del_faces].delete_only_face() + spheres).out("Points")
+            (Mesh(mesh).faces(del_faces).delete(mode="Only Faces") + spheres).out("Points")
 
         with res:
             with Panel("Edges"):
@@ -442,17 +444,17 @@ def demo(rebuild=False):
             m = Mesh(mesh)
             m.edges.Color = (1, 0, 0)
 
-            node = G().camera_edge_culling(m, vertex_radius=radius, min_radius=min_radius).node
+            node = CameraCulling.edge_culling(m, vertex_radius=radius, min_radius=min_radius).node
             node.link_inputs(from_panel="Camera Culling", panel="Camera Culling")
 
             m = Mesh(node.mesh)
-            m.edges[Boolean("Visible")].Color = (0, 1, 0)
-            m.faces.delete_only_face()
+            m.edges(Boolean("Visible")).Color = (0, 1, 0)
+            m.faces.delete(mode="Only Faces")
 
             curves = m.to_curve().to_mesh(profile_curve=Curve.Circle(radius=gnmath.max(0.001, radius), resolution=6))
-            curves.faces.material = "DBG Face"
+            curves.faces.material = "CC Face"
 
-            (Mesh(mesh).faces[del_faces].delete_only_face() + curves).mesh.out("Edges")
+            (Mesh(mesh).faces(del_faces).delete(mode="Only Faces") + curves).separate_components().mesh.out("Edges")
 
         with res:
             with Panel("Faces"):
@@ -461,13 +463,13 @@ def demo(rebuild=False):
 
             m = Mesh(mesh)
             m.faces.Color = (1, 0, 0)
-            m.faces.material = "DBG Face"
+            m.faces.material = "CC Face"
 
-            node = G().camera_face_culling(m, back_faces=back_faces, min_radius=min_radius).node
+            node = CameraCulling.face_culling(m, back_faces=back_faces, min_radius=min_radius).node
             node.link_inputs(from_panel="Camera Culling", panel="Camera Culling")
 
             m = node.mesh
-            m.faces[Boolean("Visible")].Color = (0, 1, 0)
+            m.faces(Boolean("Visible")).Color = (0, 1, 0)
             m.out("Faces")
 
         res.out("Mesh")
@@ -476,7 +478,8 @@ def demo(rebuild=False):
     # Debug
     # ====================================================================================================
 
-    with GeoNodes("Camera Debug", rebuild=rebuild):
+    @modifier()
+    def debug():
 
         mesh          = Mesh(Geometry())
         prec          = Float(10,     "Precision", min=0, tip="Precision in 1000th (use with care)")/1000 * Integer(1).switch(nd.is_viewport, 10)
@@ -488,9 +491,9 @@ def demo(rebuild=False):
         show_edges    = Boolean(True, "Show Edges")
         show_proj     = Boolean(True, "Show Projected")
 
-        mesh.faces.material = "DBG Face"
+        mesh.faces.material = "CC Face"
 
-        node = G().camera_projection(position=nd.position, radius=None, normal=None).node
+        node = CameraCulling.camera_projection(position=nd.position, radius=None, normal=None).node
         node.link_inputs(from_panel="Camera Culling", panel="Camera Culling")
         cam_obj = node.camera
         aspect_ratio = node.aspect_ratio
@@ -502,10 +505,10 @@ def demo(rebuild=False):
 
         with Layout("Sensor"):
             sensor = Mesh.Grid(size_x=aspect_ratio, size_y=1, vertices_x=2, vertices_y=2)
-            sensor.faces.delete_only_face()
+            sensor.faces.delete(mode="Only Faces")
 
             grid = Mesh.Grid(size_x=10*prec, size_y=10*prec, vertices_x=11, vertices_y=11)
-            grid.faces.delete_only_face()
+            grid.faces.delete(mode="Only Faces")
 
             sensor += grid.switch(-show_grid)
 
@@ -517,7 +520,7 @@ def demo(rebuild=False):
 
             proj = Mesh(mesh)
             proj.points.position = node.projection
-            proj.faces.delete_only_face()
+            proj.faces.delete(mode="Only Faces")
             proj.switch_false(show_proj)
 
         # ---------------------------------------------------------------------------
@@ -532,8 +535,8 @@ def demo(rebuild=False):
                 (node.behind | node.outside).out("All")
 
             mesh.points.store("Point Color", Color((0, 1, 0)).switch(hidden, (1, 0, 0)))
-            pts = Mesh(mesh.points.instance_on(instance=Mesh.UVSphere(radius=.05)).realize())
-            pts.faces.material = "DBG Point"
+            pts = Mesh(mesh.instance_on_points(instance=Mesh.UVSphere(radius=.05)).realize())
+            pts.faces.material = "CC Point"
 
             geo = sensor + proj
             cam_info = cam_obj.info()
@@ -547,8 +550,8 @@ def demo(rebuild=False):
 
         with Layout("Edges"):
 
-            edges = G().camera_edge_culling(mesh).link_inputs(from_panel="Camera Culling", panel="Camera Culling")
-            edges.faces.delete_only_face()
+            edges = CameraCulling.edge_culling(mesh).link_inputs(from_panel="Camera Culling", panel="Camera Culling")
+            edges.faces.delete(mode="Only Faces")
             curves = edges.to_curve().to_mesh(profile_curve=Curve.Circle(radius=0.01, resolution=6))
 
             geo += curves.switch_false(show_edges)
@@ -559,7 +562,7 @@ def demo(rebuild=False):
 
         with Layout("Faces"):
 
-            node = G().camera_projection(position=nd.position, radius=gnmath.sqrt(nd.face_area), normal=nd.normal).node
+            node = CameraCulling.camera_projection(position=nd.position, radius=gnmath.sqrt(nd.face_area), normal=nd.normal).node
             node.link_inputs(from_panel="Camera Culling", panel="Camera Culling")
 
             face_behind = node.behind
@@ -580,19 +583,32 @@ def demo(rebuild=False):
 
             mesh.switch_false(show_faces).join(geo, pts.switch_false(show_points)).out()
 
+# ====================================================================================================
+# Multi resolution surface
+# ====================================================================================================
 
-    # ====================================================================================================
-    # Multi resolution faces
-    # ====================================================================================================
+# An UV Map is divided according the dimension of the faces
+#
+# An initial division is performed to compute the face sizes and normals
+# During the fractal iteration, the size if the faces is estimated by tdividing the initial surface by 2
+#
+# The surface is computed by a group taking (position.x, position.y) as uv map coordinates in space (0, 1), (0, 1)
+# (See DEMO Multires Surface)
 
-    def iterations_panel(def_iter=3, def_prec=10):
-        with Panel("Iterations"):
-            iterations = Integer(def_iter, "Iterations", 1)
-            precision  = Float(def_prec, "Precision", 0)
 
-        return iterations, precision
+def iterations_panel(def_iter=3, def_prec=10):
+    with Panel("Iterations"):
+        iterations = Integer(def_iter, "Iterations", 1)
+        precision  = Float(def_prec, "Precision", 0)
 
-    with GeoNodes("Multires Faces", rebuild=rebuild) as tree:
+    return iterations, precision
+
+class Multires(Package):
+
+    prefix = "Multires"
+
+    @modifier()
+    def multires_faces():
 
         mesh = Mesh()
 
@@ -622,17 +638,21 @@ def demo(rebuild=False):
 
             radius = 4*gnmath.sqrt(nd.face_area)
 
-            node = G().camera_projection(radius=radius, normal=nd.normal).node
-            node.link_inputs(from_node=tree.input_node, from_panel="Camera Culling", panel="Camera Culling")
+            node = CameraCulling.camera_projection(radius=radius, normal=nd.normal).node
+            node.link_inputs(from_panel="Camera Culling", panel="Camera Culling")
             use_culling = node.culling
 
             hidden = use_culling & (node.behind | node.outside | (node.radius < prec) | (node.normal > back_faces))
             iterate = iterate & -hidden
 
-            rep.mesh.faces[Boolean.Named("Iterate")].store("Iterate", iterate)
+            rep.mesh.faces(Boolean.Named("Iterate")).store("Iterate", iterate)
 
-            subdiv = Mesh(rep.mesh.faces[Boolean.Named("Iterate")].separate().selection)
-            keep   = subdiv.inverted
+
+            # OLD : separate was jumping
+            #subdiv = Mesh(rep.mesh.faces[Boolean.Named("Iterate")].separate().selection)
+            # New : separate doesn't jump anymore
+            subdiv = Mesh(rep.mesh.faces(Boolean.Named("Iterate")).separate())
+            keep = subdiv.inverted
 
             subdiv.subdivide(1)
 
@@ -644,21 +664,8 @@ def demo(rebuild=False):
 
         mesh.out()
 
-
-    # ====================================================================================================
-    # Multi resolution surface
-    # ====================================================================================================
-
-    # An UV Map is divided according the dimension of the faces
-    #
-    # An initial division is performed to compute the face sizes and normals
-    # During the fractal iteration, the size if the faces is estimated by tdividing the initial surface by 2
-    #
-    # The surface is computed by a group taking (position.x, position.y) as uv map coordinates in space (0, 1), (0, 1)
-    # (See DEMO Multires Surface)
-
-
-    with GeoNodes("Multires Surface", is_group=True, rebuild=rebuild) as tree:
+    @group()
+    def surface():
 
         position   = Vector(None,  "Position")
 
@@ -691,7 +698,7 @@ def demo(rebuild=False):
             uv.points.store("Normal", surface.faces.sample_index(nd.normal, nd.index))
 
         with Layout("Don't iterate faces pointing outwards"):
-            node = G().camera_projection(position=position, normal=Vector.Named("Normal"), radius=None).node.link_inputs()
+            node = CameraCulling.camera_projection(position=position, normal=Vector.Named("Normal"), radius=None).node.link_inputs()
             use_culling = node.culling
             outwards = node.normal
             uv.points.store("Iterate", outwards < back_faces)
@@ -714,8 +721,8 @@ def demo(rebuild=False):
 
             # ===== Camera projection
 
-            node = G().camera_projection(position=position, radius=Float.Named("Size")).node
-            node.link_inputs(from_node=tree.input_node, from_panel="Camera Culling", panel="Camera Culling")
+            node = CameraCulling.camera_projection(position=position, radius=Float.Named("Size")).node
+            node.link_inputs(from_panel="Camera Culling", panel="Camera Culling")
 
             # ===== Stop iteration for hidden points or small apparent size
 
@@ -727,13 +734,13 @@ def demo(rebuild=False):
 
             with Layout("Divide remaining points"):
                 square = Mesh.Grid(size_x=1, size_y=1, vertices_x=2, vertices_y=2).points.to_points()
-                new_squares = Cloud(Mesh(rep.uv).points[iterate].instance_on(instance=square, scale=rep.iter_scale).realize())
+                new_squares = Cloud(Mesh(rep.uv)(iterate).instance_on_points(instance=square, scale=rep.iter_scale).realize())
                 new_squares.points.store("Size",  Float.Named("Size")/2)
                 new_squares.points.store("Scale", Float.Named("Scale")/2)
 
             with Layout("Replace iterated points"):
 
-                rep.uv = Mesh(rep.uv).points[iterate].delete()
+                rep.uv = Mesh(rep.uv).points(iterate).delete()
                 rep.uv += new_squares
 
             rep.iter_scale /= 2
@@ -744,7 +751,7 @@ def demo(rebuild=False):
 
         with Layout("Build the final surface"):
             square  = Mesh.Grid(vertices_x=2, vertices_y=2)
-            surface  = Mesh(uv.points.instance_on(instance=square, scale=Float.Named("Scale")).realize()).merge_by_distance(distance=rep.iter_scale)
+            surface  = Mesh(uv.instance_on_points(instance=square, scale=Float.Named("Scale")).realize()).merge_by_distance(distance=rep.iter_scale)
 
             surface.corners.store("UV Map", nd.position)
             surface.points.position = position
@@ -753,12 +760,12 @@ def demo(rebuild=False):
 
         Boolean(True).info("Faces: " + surface.faces.count.to_string() + ", Iterations: " + rep.max_iteration.to_string())
 
+        # ----------------------------------------------------------------------------------------------------
+        # Demo on how to use the Multires Surface group
+        # ----------------------------------------------------------------------------------------------------
 
-    # ----------------------------------------------------------------------------------------------------
-    # Demo on how to use the Multires Surface group
-    # ----------------------------------------------------------------------------------------------------
-
-    with GeoNodes("DEMO Multires Surface", rebuild=rebuild):
+    @modifier()
+    def surface_demo():
 
         size = Float(100, "Size", min=1)
 
@@ -789,7 +796,7 @@ def demo(rebuild=False):
 
         position = Vector.MenuSwitch({'Plane': plane, 'Sphere': sphere}, menu=Input("Surface"))
 
-        surface = Mesh(G().multires_surface(position=position).link_inputs())
+        surface = Mesh(Multires.surface(position=position).link_inputs())
 
         with Layout("Finalize"):
             surface.faces.smooth = True
@@ -797,40 +804,8 @@ def demo(rebuild=False):
 
         surface.out()
 
-    Tree._display_counter('Camera Culling built')
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+def demo(full=False):
+    CameraCulling.build(full)
+    Multires.build(full)
 
 

@@ -181,6 +181,11 @@ def render_modules(core_path, tree_type, sources, cross_refs=None):
     result = {}
     for filename, source in modules.items():
         path = core_path / environment / 'generated' / filename
-        compile(source, str(path), 'exec')
+        try:
+            compile(source, str(path), 'exec')
+        except:
+            print(source)
+            raise
+        
         result[path] = source
     return result

@@ -56,7 +56,7 @@ meshutil = Package("Meshutil")
 # Curves
 # ====================================================================================================
 
-@meshutil.geo_modifier('Cross Splines')
+@meshutil.modifier('Cross Splines')
 def cross_splines():
     """# Cross Splines
     
@@ -111,7 +111,7 @@ def cross_splines():
 # Curves
 # ====================================================================================================
 
-@meshutil.geo_group('Subdivide Segment')
+@meshutil.group('Subdivide Segment')
 def subdivide_segment():
     """# Subdivide Segment
     
@@ -147,7 +147,7 @@ def subdivide_segment():
 # New Cylinder
 # ----------------------------------------------------------------------------------------------------
 
-@meshutil.geo_group('New Cylinder')
+@meshutil.group('New Cylinder')
 def new_cylinder():
     """# New Cylinder
     """
@@ -163,7 +163,7 @@ def new_cylinder():
               Mesh.Cylinder(radius=radius, depth=depth, side_segments=nrings-1, vertices=nsegms, fill_type="N-Gon"))
 
     nz = nd.normal.z
-    new_cyl.faces.set("Cap", Integer.Switch(nz > 0.9, Integer.Switch(nz < -0.9, 0, -1), 1))
+    new_cyl.faces["Cap"] = Integer.Switch(nz > 0.9, Integer.Switch(nz < -0.9, 0, -1), 1)
     new_cyl.transform(rotation=(0, pi, 0))
     new_cyl = set_cylinder_topology(new_cyl, nrings, nsegms)
 
@@ -199,7 +199,7 @@ def get_cylinder(use_create=True, name=None):
 # Zone selection in a cylinder
 # ----------------------------------------------------------------------------------------------------
 
-@meshutil.geo_group('Cylinder Selection')
+@meshutil.group('Cylinder Selection')
 def cylinder_selection():
     """ A zone is defined by ring and col indices plus number of rings and cols
     
@@ -292,7 +292,7 @@ def cylinder_selection():
 # Copy position
 # ----------------------------------------------------------------------------------------------------
 
-@meshutil.geo_group('Cylinder Copy Position')
+@meshutil.group('Cylinder Copy Position')
 def cylinder_copy_position():
     """# Cylinder Copy Position
     
@@ -336,7 +336,7 @@ def cylinder_copy_position():
 # View indices
 # ----------------------------------------------------------------------------------------------------
 
-@meshutil.geo_group('View Cylinder Indices')
+@meshutil.group('View Cylinder Indices')
 def view_cylinder_indices():
     """# View Cylinder Indices
     
@@ -394,7 +394,7 @@ def view_cylinder_indices():
 # Add rings
 # ----------------------------------------------------------------------------------------------------
 
-@meshutil.geo_group('Add Rings to Cylinder')
+@meshutil.group('Add Rings to Cylinder')
 def add_rings_to_cylinder():
     """# Add Rings to Cylinder
     
@@ -421,7 +421,7 @@ def add_rings_to_cylinder():
 # Dome Cylinder
 # ----------------------------------------------------------------------------------------------------
 
-@meshutil.geo_group('Close Cylinder')
+@meshutil.group('Close Cylinder')
 def close_cylinder():
     """# Close Cylinder
     
@@ -483,7 +483,7 @@ def close_cylinder():
 
                 sel = cylinder_selection(c, ring_index=ir)
                 c[sel].position = center + direc.scale(sy) + (nd.position - center).scale(sx)
-                c[sel].set('Weld TOP', Integer.Switch(last_iteration, 0, 1 if bot_cap else 2))
+                c[sel]['Weld TOP'] = Integer.Switch(last_iteration, 0, 1 if bot_cap else 2)
 
                 rep.cyl = c
 
@@ -495,7 +495,7 @@ def close_cylinder():
 # Cylinder enveloppe
 # ----------------------------------------------------------------------------------------------------
 
-@meshutil.geo_modifier('Bones Envelope')
+@meshutil.modifier('Bones Envelope')
 def bones_envelope():
     """# Bones Envelope
     
@@ -632,7 +632,7 @@ def bones_envelope():
 # Rounded Joint
 # ====================================================================================================
 
-@meshutil.geo_group('Rounded Joint')
+@meshutil.group('Rounded Joint')
 def rounded_joint():
     """ Rounded angle in the plane XZ.
     Positive is Z to X
@@ -677,7 +677,7 @@ def rounded_joint():
 # ----------------------------------------------------------------------------------------------------
 
 # Append a vertex to an open polyline.
-@meshutil.geo_modifier('Build Poly Line')
+@meshutil.modifier('Build Poly Line')
 def build_poly_line():
     """# Build Poly Line
     
@@ -730,7 +730,7 @@ def build_poly_line():
 # Inverse kinematics
 # ----------------------------------------------------------------------------------------------------
 
-@meshutil.geo_modifier('Build Bones Curve')
+@meshutil.modifier('Build Bones Curve')
 def build_bones_curve():
     """# Build Bones Curve
     
@@ -767,7 +767,7 @@ def build_bones_curve():
 # ====================================================================================================
 
 # Round every interior corner, retaining the ends and the spline structure.
-@meshutil.geo_modifier('Round Joints')
+@meshutil.modifier('Round Joints')
 def round_joints():
     """# Round Joints
     
@@ -832,7 +832,7 @@ def round_joints():
 # ====================================================================================================
 
 # Surrounding Shape
-@meshutil.geo_modifier('Surrounding Shape')
+@meshutil.modifier('Surrounding Shape')
 def surrounding_shape():
     """# Surrounding Shape
     """
@@ -897,7 +897,7 @@ def surrounding_shape():
 # Create a cage surrounding vertical bones
 # ====================================================================================================
 
-@meshutil.geo_modifier('Cage Around Bones')
+@meshutil.modifier('Cage Around Bones')
 def cage_around_bones():
     """# Cage Around Bones
     
@@ -937,7 +937,7 @@ def cage_around_bones():
 # Interpolate director offsets with a Gaussian radial basis
 # ====================================================================================================
 
-@meshutil.geo_group('Mesh Distort')
+@meshutil.group('Mesh Distort')
 def mesh_distort():
     """# Mesh Distort
     
@@ -970,8 +970,8 @@ def mesh_distort():
         p0 = directors.points.sample_index(nd.position, index=row)
         p1 = directors.points.sample_index(nd.position, index=column)
         rhs = directors.points.sample_index(director_offset, index=row)
-        matrix.points.set("A", influence(p0-p1))
-        matrix.points.set("B", rhs)
+        matrix.points["A"] = influence(p0-p1)
+        matrix.points["B"] = rhs
 
     with Layout("Solve director coefficients"):
         # Gaussian elimination, followed by elimination above the pivot
@@ -982,8 +982,8 @@ def mesh_distort():
             pivot = work.points.sample_index(Float("A"), index=pivot_index)
             pivot_rhs = work.points.sample_index(Vector("B"), index=pivot_index)
             pivot_row = row == rep.iteration
-            work.points[pivot_row].set("A", Float("A")/pivot)
-            work.points[pivot_row].set("B", pivot_rhs/pivot)
+            work.points[pivot_row]["A"] = Float("A")/pivot
+            work.points[pivot_row]["B"] = pivot_rhs/pivot
 
             # Sample from the normalized matrix before changing either
             # field, so all rows use the same elimination step.
@@ -993,10 +993,8 @@ def mesh_distort():
                 Float("A"), index=rep.iteration*count + column)
             pivot_rhs = work.points.sample_index(
                 Vector("B"), index=rep.iteration*count)
-            work.points[pivot_row.bnot()].set(
-                "A", Float("A") - multiplier*pivot_value)
-            work.points[pivot_row.bnot()].set(
-                "B", Vector("B") - pivot_rhs.scale(multiplier))
+            work.points[pivot_row.bnot()]["A"] = Float("A") - multiplier*pivot_value
+            work.points[pivot_row.bnot()]["B"] = Vector("B") - pivot_rhs.scale(multiplier)
             rep.matrix = work
         matrix = rep.matrix
 
@@ -1021,7 +1019,7 @@ def mesh_distort():
 # Initialize a new Curve Bone from a Curve
 # ----------------------------------------------------------------------------------------------------
 
-@curve_bones.geo_group('New')
+@curve_bones.group('New')
 def cbone_new():
     """# CBone New
     
@@ -1030,8 +1028,8 @@ def cbone_new():
     
     curve = Curve()
     
-    curve.points.set("Pos", nd.position)
-    curve.points.set("Transform", Matrix.CombineTransform())
+    curve.points["Pos"] = nd.position
+    curve.points["Transform"] = Matrix.CombineTransform()
     
     with Layout("Normals"):
         pos0 = nd.position
@@ -1039,11 +1037,11 @@ def cbone_new():
         segm = pos1 - pos0
         u = segm.normalize()
         
-        curve.points.set("u", u)
+        curve.points["u"] = u
         
         for rep_spline in repeat(curve.splines.count, curve=curve, index_offset=0):
             
-            spline = Curve(Curve(curve).splines[nd.index == rep_spline.iteration].separate())
+            spline = Curve(curve.splines[nd.index == rep_spline.iteration].separate())
             npoints = spline.points.count
             
             with Layout("First Segment"):
@@ -1060,7 +1058,7 @@ def cbone_new():
                 perp.switch(is_vert, Vector.Switch(z < 0, (1, 0, 0), (-1, 0, 0)))
                 
                 sel = nd.index == point_index
-                rep_spline.curve[sel].set("Perp", perp)
+                rep_spline.curve[sel]["Perp"] = perp
                 
             with Layout("Other segments"):
                 for rep in repeat(npoints - 2, curve=rep_spline.curve, prev_u=u, prev_perp=perp):
@@ -1077,7 +1075,7 @@ def cbone_new():
                     perp.switch(is_aligned, rep.prev_perp)
                     
                     sel = nd.index == rep_spline.index_offset + rep.iteration + 1
-                    rep.curve[sel].set("Perp", perp)
+                    rep.curve[sel]["Perp"] = perp
                     
                     rep.prev_u = u
                     rep.prev_perp = perp
@@ -1093,7 +1091,7 @@ def cbone_new():
 # Curve Bone rotation
 # ----------------------------------------------------------------------------------------------------
 
-@curve_bones.geo_group('Rotate')
+@curve_bones.group('Rotate')
 def cbone_rotate():
     """# CBone Rotate
     
@@ -1129,11 +1127,11 @@ def cbone_rotate():
     
         transform = Matrix.CombineTransform(translation=-pos0)
         transform = Matrix.CombineTransform(translation=pos0, rotation=rot) @ transform
-        curve.points[sel].set("Transform", transform @ Matrix("Transform"))
+        curve.points[sel]["Transform"] = transform @ Matrix("Transform")
     
         curve.offset = -pos0
         curve[sel].position = rot @ nd.position
-        curve[sel].set("Perp", rot @ Vector("Perp"))
+        curve[sel]["Perp"] = rot @ Vector("Perp")
         curve.offset = pos0
         
     curve.out()      
@@ -1142,7 +1140,7 @@ def cbone_rotate():
 # Curve Bone Translation
 # ----------------------------------------------------------------------------------------------------
 
-@curve_bones.geo_group('Translate')
+@curve_bones.group('Translate')
 def cbone_translate():
     """# CBone Translate
     
@@ -1163,7 +1161,7 @@ def cbone_translate():
         
     with Layout("Compute the transformation"):
         transform = Matrix.CombineTransform(translation=trans)
-        curve.points[sel].set("Transform", transform @ Matrix("Transform"))
+        curve.points[sel]["Transform"] = transform @ Matrix("Transform")
         
     with Layout("Transform the Curve"):
         curve[sel].offset = trans
@@ -1174,7 +1172,7 @@ def cbone_translate():
 # Curve Bone Influence
 # ----------------------------------------------------------------------------------------------------
 
-@curve_bones.geo_group('Distance')
+@curve_bones.group('Distance')
 def cbone_distance():
     """# CBone Distance
     
@@ -1194,9 +1192,9 @@ def cbone_distance():
         segm_len = segm.length()
         segm = segm.normalize()
         
-        curve.points.set("Pos0", nd.position)
-        curve.points.set("Segm", segm)
-        curve.points.set("Segm Len", segm_len)
+        curve.points["Pos0"] = nd.position
+        curve.points["Segm"] = segm
+        curve.points["Segm Len"] = segm_len
         
     count = Integer.Switch(closed, curve.points.count - 1, curve.points.count)
     for rep in repeat(count, curve=curve, edge_index=-1, dist=0.0, proj=0.0):
@@ -1222,7 +1220,7 @@ def cbone_distance():
 # Link a curve bones to a Mesh
 # ----------------------------------------------------------------------------------------------------
 
-@curve_bones.geo_modifier('Link')
+@curve_bones.modifier('Link')
 def cbone_link():
     """# CBone Link
     
@@ -1238,7 +1236,7 @@ def cbone_link():
 
     nsplines = curve.splines.count
     
-    mesh.points.set("Bone Weight", 0.0)
+    mesh.points["Bone Weight"] = 0.0
     
     for rep in repeat(nsplines, mesh=mesh, total=0):
 
@@ -1262,19 +1260,19 @@ def cbone_link():
 
         proj = node.proj
         
-        rep.mesh.points[change].set("Bone Index",   rep.total + index)
-        rep.mesh.points[change].set("Bone Proj",    proj)
-        rep.mesh.points[change].set("Bone Has Prev", closed | is_first.bnot())
-        rep.mesh.points[change].set("Bone Has Next", closed | is_last.bnot())
-        rep.mesh.points[change].set("Bone Prev Index", prev_index)
-        rep.mesh.points[change].set("Bone Next Index", next_index)
-        rep.mesh.points[change].set("Bone Weight",  weight)
+        rep.mesh.points[change]["Bone Index"] = rep.total + index
+        rep.mesh.points[change]["Bone Proj"] = proj
+        rep.mesh.points[change]["Bone Has Prev"] = closed | is_first.bnot()
+        rep.mesh.points[change]["Bone Has Next"] = closed | is_last.bnot()
+        rep.mesh.points[change]["Bone Prev Index"] = prev_index
+        rep.mesh.points[change]["Bone Next Index"] = next_index
+        rep.mesh.points[change]["Bone Weight"] = weight
 
         rep.total += npoints
 
     mesh = rep.mesh
 
-    mesh.points[selection.bnot()].set("Bone Weight", 0.0)
+    mesh.points[selection.bnot()]["Bone Weight"] = 0.0
     
     mesh.out()
     
@@ -1282,7 +1280,7 @@ def cbone_link():
 # Deform a mesh
 # ----------------------------------------------------------------------------------------------------
     
-@curve_bones.geo_modifier('Deform')
+@curve_bones.modifier('Deform')
 def cbone_deform():
     """# CBone Deform
     
@@ -1321,7 +1319,7 @@ def cbone_deform():
 # Curve Bone Demo
 # ====================================================================================================
 
-@curve_bones.geo_modifier('Demo')
+@curve_bones.modifier('Demo')
 def cbone_demo():
     """# CBone Demo
     
@@ -1370,7 +1368,7 @@ def cbone_demo():
 # Ordered Selection length
 # ----------------------------------------------------------------------------------------------------
 
-@ordered_selection.geo_group('Count')
+@ordered_selection.group('Count')
 def osel_count():
     """# OSel Count
     
@@ -1388,7 +1386,7 @@ def osel_count():
 # Ordered Selection Rename
 # ----------------------------------------------------------------------------------------------------
 
-@ordered_selection.geo_group('Rename')
+@ordered_selection.group('Rename')
 def osel_rename():
     """# OSel Rename
     
@@ -1400,7 +1398,7 @@ def osel_rename():
     new_name = String("New Name", "New Name")
     use_remove = Boolean(True, "Remove")
     
-    mesh.points.set(new_name, Integer(sel_name))
+    mesh.points[new_name] = Integer(sel_name)
     rem = Mesh(mesh)
     rem.remove_named_attribute(name=sel_name)
     
@@ -1411,7 +1409,7 @@ def osel_rename():
 # Add selection
 # ----------------------------------------------------------------------------------------------------
 
-@ordered_selection.geo_group('Add Selection')
+@ordered_selection.group('Add Selection')
 def osel_add_selection():
     """# OSel Add Selection
     
@@ -1429,16 +1427,16 @@ def osel_add_selection():
         
         exists = mesh.points.sample_index(idx.exists, index=0)
         
-        mesh.points[exists.bnot()].set(sel_name, 0)
+        mesh.points[exists.bnot()][sel_name] = 0
         
         max_sel = mesh.points.attribute_statistic(Float(idx)).max_.to_integer()
         
     with Layout("Selection Order"):
-        n = Mesh(Mesh(mesh).points[sel].separate()).points.count
+        n = Mesh(mesh.points[sel].separate()).points.count
         num = mesh.points.accumulate_field(Integer(sel)).leading
-        mesh.points.set("tmp Sel", Integer.Switch(use_invert, num, n + 1 - num))
+        mesh.points["tmp Sel"] = Integer.Switch(use_invert, num, n + 1 - num)
         
-        mesh.points[sel].set(sel_name, max_sel + Integer("tmp Sel"))
+        mesh.points[sel][sel_name] = max_sel + Integer("tmp Sel")
         mesh.remove_named_attribute(name="tmp Sel")
         
     mesh.out()
@@ -1447,7 +1445,7 @@ def osel_add_selection():
 # Merge another ordered selection
 # ----------------------------------------------------------------------------------------------------
 
-@ordered_selection.geo_group('Append')
+@ordered_selection.group('Append')
 def osel_append():
     """# OSel Append
     
@@ -1462,7 +1460,7 @@ def osel_append():
     count = osel_count(mesh, sel_name)
     
     other_idx = Integer(other_name)
-    mesh.points[other_idx > 0].set(sel_name, count + other_idx)
+    mesh.points[other_idx > 0][sel_name] = count + other_idx
     
     rem = Mesh(mesh)
     rem.remove_named_attribute(name=other_name)
@@ -1474,7 +1472,7 @@ def osel_append():
 # Visualization
 # ----------------------------------------------------------------------------------------------------
     
-@ordered_selection.geo_modifier('Visualization')
+@ordered_selection.modifier('Visualization')
 def osel_visualization():
     """# OSel Visualization
     
@@ -1494,7 +1492,7 @@ def osel_visualization():
         label = idx.to_string().to_curves(size=size).realize()
         label = Curve(label).fill()
         label.faces.material = "Colored Mat"
-        label.faces.set('Color', Color("Black"))
+        label.faces['Color'] = Color("Black")
         label.transform(rotation=(pi/2, 0, rot))
         
         pos1 =  feel.pos + feel.normal.scale(dist) + ofs
@@ -1512,7 +1510,7 @@ def osel_visualization():
 # Shift
 # ----------------------------------------------------------------------------------------------------
 
-@ordered_selection.geo_modifier('Shift')
+@ordered_selection.modifier('Shift')
 def osel_shift():
     """# OSel Shift
     
@@ -1526,9 +1524,9 @@ def osel_shift():
     idx = Integer(sel_name)
     sel = idx > 0
     
-    count = Mesh(Mesh(mesh).points[sel].separate()).points.count
+    count = Mesh(mesh.points[sel].separate()).points.count
     
-    mesh.points[sel].set(sel_name, (idx - 1 + shift).floored_modulo(count) + 1)
+    mesh.points[sel][sel_name] = (idx - 1 + shift).floored_modulo(count) + 1
     
     mesh.out()
     
@@ -1536,7 +1534,7 @@ def osel_shift():
 # Shift
 # ----------------------------------------------------------------------------------------------------
 
-@ordered_selection.geo_modifier('Invert')
+@ordered_selection.modifier('Invert')
 def osel_invert():
     """# OSel Invert
     
@@ -1550,11 +1548,11 @@ def osel_invert():
     idx = Integer(sel_name)
     sel = idx > 0
     
-    count = Mesh(Mesh(mesh).points[sel].separate()).points.count
+    count = Mesh(mesh.points[sel].separate()).points.count
     
     inverted = Mesh(mesh)
     
-    inverted.points[sel].set(sel_name, count - idx + 1)
+    inverted.points[sel][sel_name] = count - idx + 1
     
     mesh.switch(use_invert, inverted).out()
     
@@ -1562,7 +1560,7 @@ def osel_invert():
 # Extract a sub ordered selection
 # ----------------------------------------------------------------------------------------------------
 
-@ordered_selection.geo_modifier('Extract')
+@ordered_selection.modifier('Extract')
 def osel_extract():
     """# OSel Extract
     
@@ -1579,19 +1577,19 @@ def osel_extract():
     
     idx = Integer(sel_name)
     
-    nsel = Mesh(Mesh(mesh).points[idx > 0].separate()).points.count
+    nsel = Mesh(mesh.points[idx > 0].separate()).points.count
     
     new_idx = (idx - start).floored_modulo(nsel)
     
     sel = (idx > 0) & (new_idx < count)
     
     named = Mesh(mesh)
-    named.points.set(x_name, new_idx + 1)
+    named.points[x_name] = new_idx + 1
     inverted = Mesh(mesh)
-    inverted.points.set(x_name, count - new_idx)
+    inverted.points[x_name] = count - new_idx
     named.switch(use_invert, inverted)
     
-    named.points[sel.bnot()].set(x_name, 0)
+    named.points[sel.bnot()][x_name] = 0
     
     mesh.switch(x_name != "", named)
     
@@ -1602,7 +1600,7 @@ def osel_extract():
 # Extract Mesh
 # ----------------------------------------------------------------------------------------------------
 
-@ordered_selection.geo_group('Get Line')
+@ordered_selection.group('Get Line')
 def osel_get_line():
     """# OSel Get Line
     
@@ -1622,7 +1620,7 @@ def osel_get_line():
 # Set position
 # ----------------------------------------------------------------------------------------------------
 
-@ordered_selection.geo_group('Set Position')
+@ordered_selection.group('Set Position')
 def osel_set_position():
     """# OSel Set Position
     
@@ -1642,7 +1640,7 @@ def osel_set_position():
 # Selection center and normal
 # ----------------------------------------------------------------------------------------------------
 
-@ordered_selection.geo_modifier('Get Disk')
+@ordered_selection.modifier('Get Disk')
 def osel_get_disk():
     """# OSel Get Disk
     
@@ -1668,7 +1666,7 @@ def osel_get_disk():
 # To Circle
 # ----------------------------------------------------------------------------------------------------
 
-@ordered_selection.geo_group('To Circle')
+@ordered_selection.group('To Circle')
 def osel_to_circle():
     """# OSel To Circle
     
@@ -1694,7 +1692,7 @@ def osel_to_circle():
 # Merge two selections
 # ----------------------------------------------------------------------------------------------------
 
-@ordered_selection.geo_group('Merge')
+@ordered_selection.group('Merge')
 def osel_merge():
     """# OSel Merge
     
@@ -1710,8 +1708,8 @@ def osel_merge():
     
     mesh = osel_set_position(mesh, sel_name, points=line)
     
-    mesh.points.set("tmp Merge", Integer(sel_name))
-    mesh.points[Integer(to_name)>0].set("tmp Merge", Integer(to_name))
+    mesh.points["tmp Merge"] = Integer(sel_name)
+    mesh.points[Integer(to_name)>0]["tmp Merge"] = Integer(to_name)
     mesh = mesh.points[Integer("tmp Merge") > 0].merge(merge_id=Integer("tmp Merge"))
     
     mesh.remove_named_attribute(name="tmp Merge")
@@ -1728,7 +1726,7 @@ def osel_merge():
 # Bridge between two ordered selection
 # ----------------------------------------------------------------------------------------------------
     
-@ordered_selection.geo_group('Bridge')
+@ordered_selection.group('Bridge')
 def osel_bridge():
     """# OSel Bridge
     
@@ -1777,17 +1775,17 @@ def osel_bridge():
                     Integer(attr_name), index=boundary_index)
                 target_value = line1.points.sample_index(
                     Integer(attr_name), index=boundary_index)
-                rep.bridge.points.set(attr_name, 0)
-                rep.bridge.points[boundary_row == 0].set(attr_name, source_value)
-                rep.bridge.points[boundary_row == nx-1].set(attr_name, target_value)
+                rep.bridge.points[attr_name] = 0
+                rep.bridge.points[boundary_row == 0][attr_name] = source_value
+                rep.bridge.points[boundary_row == nx-1][attr_name] = target_value
             bridge = Mesh(rep.bridge)
 
         # Bridge-specific attributes override the copied boundary values.
-        bridge.set(sel_name0, 0)
-        bridge.set(sel_name1, 0)
+        bridge[sel_name0] = 0
+        bridge[sel_name1] = 0
         
         named = Mesh(bridge)
-        named.points.set(bridge_name, nd.index + 1)
+        named.points[bridge_name] = nd.index + 1
         bridge.switch(bridge_name.length()>0, named)
         
     with Layout("Bridge points position"):
@@ -1812,29 +1810,28 @@ def osel_bridge():
         sideB = (side_name + " B").switch(no_side)
         
         with Layout("Bridge Sides"):            
-            bridge.points[i==0].set(sel_name0, j+1)
-            bridge.points[i==nx-1].set(sel_name1, j+1)
+            bridge.points[i==0][sel_name0] = j+1
+            bridge.points[i==nx-1][sel_name1] = j+1
             
-            bridge.points[j==0].set(sideA, i+1)
-            bridge.points[j==ny-1].set(sideB, nx - i)
+            bridge.points[j==0][sideA] = i+1
+            bridge.points[j==ny-1][sideB] = nx - i
             
         with Layout("Side extremities will be merged"):                
-            mesh.points[Integer(sel_name0)==1].set(sideA, 1)
-            mesh.points[Integer(sel_name0)==ny].set(sideB, resol + 2)
+            mesh.points[Integer(sel_name0)==1][sideA] = 1
+            mesh.points[Integer(sel_name0)==ny][sideB] = resol + 2
             
-            mesh.points[Integer(sel_name1)==1].set(sideA, resol + 2)
-            mesh.points[Integer(sel_name1)==ny].set(sideB, 1)
+            mesh.points[Integer(sel_name1)==1][sideA] = resol + 2
+            mesh.points[Integer(sel_name1)==ny][sideB] = 1
 
         with Layout("Bridge vertex indices"):
             # Match both copies of each boundary vertex before welding,
             # so merging preserves the bridge's 1-based numbering.
             named_mesh = Mesh(mesh)
-            named_mesh.points.set(bridge_name, 0)
+            named_mesh.points[bridge_name] = 0
             source_index = Integer(sel_name0)
             target_index = Integer(sel_name1)
-            named_mesh.points[source_index > 0].set(bridge_name, source_index)
-            named_mesh.points[target_index > 0].set(
-                bridge_name, (nx - 1)*ny + target_index)
+            named_mesh.points[source_index > 0][bridge_name] = source_index
+            named_mesh.points[target_index > 0][bridge_name] = (nx - 1)*ny + target_index
             mesh.switch(bridge_name.length() > 0, named_mesh)
             
         with Layout("Weld"):                
@@ -1858,7 +1855,7 @@ def osel_bridge():
 # Split Hole
 # ====================================================================================================
 
-@ordered_selection.geo_group('Split Hole')
+@ordered_selection.group('Split Hole')
 def osel_split_hole():
     """# OSel Split Hole
     
@@ -1886,7 +1883,7 @@ def osel_split_hole():
         idx = (idx - shift).floored_modulo(nsel)
         idx_max = (index0 - 1 - shift).floored_modulo(nsel)
         
-        mesh.points[(Integer(sel_name) > 0) & (idx < idx_max)].set("tmp Side A", resol + 3 + idx)
+        mesh.points[(Integer(sel_name) > 0) & (idx < idx_max)]["tmp Side A"] = resol + 3 + idx
         
     with Layout("New loop B"):
         
@@ -1896,7 +1893,7 @@ def osel_split_hole():
         idx = (idx - shift).floored_modulo(nsel)
         idx_max = (index1 - 1 - shift).floored_modulo(nsel)
         
-        mesh.points[(Integer(sel_name) > 0) & (idx < idx_max)].set("tmp Side B", resol + 3 + idx)
+        mesh.points[(Integer(sel_name) > 0) & (idx < idx_max)]["tmp Side B"] = resol + 3 + idx
         
     with Layout("Build a bridge"):   
         mesh = osel_extract(mesh, sel_name, start=index0, count=count, invert=False, extraction_name="tmp A")
@@ -1911,8 +1908,8 @@ def osel_split_hole():
             
     with Layout("Rename Selections"):
         
-        mesh.points.set(sel_name + " A", Integer("tmp Side A"))
-        mesh.points.set(sel_name + " B", Integer("tmp Side B"))
+        mesh.points[sel_name + " A"] = Integer("tmp Side A")
+        mesh.points[sel_name + " B"] = Integer("tmp Side B")
         
         mesh.remove_named_attribute(name="tmp Side A")
         mesh.remove_named_attribute(name="tmp Side B")
@@ -1924,6 +1921,6 @@ def osel_split_hole():
 
 
 def demo(rebuild=False):
-    meshutil.build(rebuild=rebuild)
-    curve_bones.build(rebuild=rebuild)
-    ordered_selection.build(rebuild=rebuild)
+    meshutil._build(rebuild=rebuild)
+    curve_bones._build(rebuild=rebuild)
+    ordered_selection._build(rebuild=rebuild)

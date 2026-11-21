@@ -58,7 +58,7 @@ import bpy
 from time import perf_counter
 
 from ..common.scripterror import NodeError
-from ..common.colors import SysColor
+from ...kernel.colors import SysColor
 from ..common import treearrange as treearrange
 from .. import constants
 from ..common import utils as utils
@@ -324,19 +324,17 @@ class Tree:
 
         This avoids to accidentally delete a manually created tree.
 
-    !!! warning
-        This doesn't work with shaders embedded in a Material. It is why the argument `replace_material` is set to False
-        by default when creating a Shader. Hence, an existing material is not replaced by a geonodes scripts
-        except if you change the default value of `replace_material` argument to True.
+    Materials created by the API store their root name in the custom property
+    `geonodes_api`. Only marked materials are rebuilt. An unmarked material is
+    preserved and a new API material receives a Blender suffix. Remove the
+    custom property to take ownership of an API material.
 
     ``` python
-    # Create the material if it doesn't exist
-    # Do nothing if it already exists
     with ShaderNodes("My Material"):
         pass
-        
-    # Replace the existing material
-    with ShaderNodes("My Material", replace_material=True):
+
+    # Preserve an existing API material without rebuilding it
+    with ShaderNodes("My Material", rebuild=False):
         pass
     ```
 
@@ -476,8 +474,6 @@ class Tree:
         # Shader Node tree is a property of Material
         # ----------------------------------------------------------------------------------------------------
 
-        replace_material = rebuild and not is_group and tree_type == 'ShaderNodeTree'
-
         if tree_type is None:
             btree = tree_name
             if not isinstance(btree, bpy.types.NodeTree):
@@ -492,13 +488,11 @@ class Tree:
 
             self._material = None
             if not is_group:
-                self._material = bpy.data.materials.get(tree_name)
+                self._material = blender.get_api_material(tree_name)
 
                 if self._material is None:
-                    self._material = bpy.data.materials.new(tree_name)
+                    self._material = blender.get_api_material(tree_name, create=True)
                     rebuild = True
-                else:
-                    rebuild = replace_material
 
                 if rebuild:
                     self._material.use_nodes = True
@@ -1282,6 +1276,9 @@ class Tree:
         -------
         Link
         """
+
+        if getattr(out_socket, '_is_default', False):
+            return None
 
         #if hasattr(out_socket, '_bsocket'):
         if '_bsocket' in dir(out_socket):

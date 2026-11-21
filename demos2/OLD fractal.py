@@ -498,11 +498,11 @@ def camera_culling(rebuild=False):
 
         # DEBUG
         if False:
-            debugA = Mesh(mesh).edges.to_points(position=A).points.instance_on(instance=Mesh.Cube(size=.1))
+            debugA = Mesh(mesh).edges.to_points(position=A).points.instance_on_points(instance=Mesh.Cube(size=.1))
             #debugA = None
-            debugB = Mesh(mesh).edges.to_points(position=B).points.instance_on(instance=Mesh.Cone(radius_bottom=.1, depth=.3))
+            debugB = Mesh(mesh).edges.to_points(position=B).points.instance_on_points(instance=Mesh.Cone(radius_bottom=.1, depth=.3))
             debugB = None
-            debugC = Mesh(mesh).edges.to_points(position=C).points.instance_on(instance=Mesh.UVSphere(radius=.05))
+            debugC = Mesh(mesh).edges.to_points(position=C).points.instance_on_points(instance=Mesh.UVSphere(radius=.05))
             #debugC = None
             mesh.points.position = node.projection
             mesh.join(debugA, debugB, debugC).out()
@@ -610,10 +610,10 @@ def camera_culling(rebuild=False):
 
         with Layout("Sensor"):
             sensor = Mesh.Grid(size_x=Float(None, "Aspect Ratio"), size_y=1, vertices_x=2, vertices_y=2)
-            sensor.faces.delete_only_face()
+            sensor.faces.delete(mode="Only Faces")
 
             grid = Mesh.Grid(size_x=10*prec, size_y=10*prec, vertices_x=11, vertices_y=11)
-            grid.faces.delete_only_face()
+            grid.faces.delete(mode="Only Faces")
 
             sensor += grid.switch(-show_grid)
 
@@ -623,7 +623,7 @@ def camera_culling(rebuild=False):
 
             proj = Mesh(mesh)
             proj.points.position = node.projection
-            proj.faces.delete_only_face()
+            proj.faces.delete(mode="Only Faces")
 
         # ==== Points
 
@@ -636,7 +636,7 @@ def camera_culling(rebuild=False):
                 (node.behind | node.outside).out("All")
 
             mesh.points.store("Point Color", Color((0, 1, 0)).switch(hidden, (1, 0, 0)))
-            pts = Mesh(mesh.points.instance_on(instance=Mesh.UVSphere(radius=.02)).realize())
+            pts = Mesh(mesh.points.instance_on_points(instance=Mesh.UVSphere(radius=.02)).realize())
             pts.faces.material = "DBG Face"
             pts.faces.store("Color", Color((0, 0, 1), "Point Color"))
 
@@ -824,7 +824,7 @@ def multires_surface(rebuild=False):
 
             with Layout("Divide remaining points"):
                 square = Mesh.Grid(size_x=1, size_y=1, vertices_x=2, vertices_y=2).points.to_points()
-                new_squares = Cloud(Mesh(rep.uv).points[iterate].instance_on(instance=square, scale=rep.iter_scale).realize())
+                new_squares = Cloud(Mesh(rep.uv).points[iterate].instance_on_points(instance=square, scale=rep.iter_scale).realize())
                 new_squares.points.store("Size",  Float.Named("Size")/2)
                 new_squares.points.store("Scale", Float.Named("Scale")/2)
 
@@ -841,7 +841,7 @@ def multires_surface(rebuild=False):
 
         with Layout("Build the final surface"):
             square  = Mesh.Grid(vertices_x=2, vertices_y=2)
-            surface  = Mesh(uv.points.instance_on(instance=square, scale=Float.Named("Scale")).realize()).merge_by_distance(distance=rep.iter_scale)
+            surface  = Mesh(uv.points.instance_on_points(instance=square, scale=Float.Named("Scale")).realize()).merge_by_distance(distance=rep.iter_scale)
 
             surface.corners.store("UV Map", nd.position)
             surface.points.position = position
@@ -1143,7 +1143,7 @@ def romanesco(rebuild=False):
                 inst_scale = Float("Main Scale")
                 seed = Integer("Seed")
                 inst_scale = random_.normal_value(inst_scale, inst_scale*size_scale, id=seed, seed=seed + 1000)
-                instances = cloud.points[Boolean("Iterate")].instance_on(instance=model,
+                instances = cloud.points[Boolean("Iterate")].instance_on_points(instance=model,
                     #scale    = Float("Main Scale"))
                     scale    = inst_scale)
 
@@ -1256,7 +1256,7 @@ def romanesco(rebuild=False):
 
             cloud = Cloud(fractal_.cloud_iterator(geometry=model, normal=Vector("Normal")).link_inputs())
 
-        mesh = Mesh(cloud.points.instance_on(instance=mesh, scale=nd.radius, rotation=Rotation("Rotation")).realize())
+        mesh = Mesh(cloud.points.instance_on_points(instance=mesh, scale=nd.radius, rotation=Rotation("Rotation")).realize())
 
         mesh.out()
 
@@ -1299,7 +1299,7 @@ def romanesco(rebuild=False):
 
             circle = Mesh.Circle(radius=width, vertices=sides)
             rot = Rotation((0, 0, (2*np.pi)*nd.index/sides))
-            model = circle.points.instance_on(instance=line, rotation=rot)
+            model = circle.points.instance_on_points(instance=line, rotation=rot)
 
             model = Cloud(model.realize())
 
@@ -1322,7 +1322,7 @@ def romanesco(rebuild=False):
         # ===== Finalize
 
         cone = Mesh.Cone(radius_bottom=width, depth=height)
-        mesh = Mesh(cloud.points.instance_on(instance=cone, scale=nd.radius, rotation=Rotation("Rotation")).realize())
+        mesh = Mesh(cloud.points.instance_on_points(instance=cone, scale=nd.radius, rotation=Rotation("Rotation")).realize())
 
         mesh.faces.smooth = True
         mesh.faces.material = Material(None, "Material")
@@ -1436,7 +1436,7 @@ def romanesco(rebuild=False):
             curve.points._Normal = normal.normalize()
 
             with Layout("Debug Initial Spiral"):
-                normals = curve.points.instance_on(instance=Curve.Line(), rotation=Rotation.AlignToVector(Vector("Normal")))
+                normals = curve.points.instance_on_points(instance=Curve.Line(), rotation=Rotation.AlignToVector(Vector("Normal")))
                 initial_spiral = curve + normals
 
 
@@ -1446,18 +1446,18 @@ def romanesco(rebuild=False):
             cloud = Cloud.Points(nspirals, position=0)
             cloud.points.store("rot", Rotation((0, 0, tau/nspirals*nd.index)))
 
-            spirals = Curve(cloud.points.instance_on(instance=curve, rotation=Rotation.Named("rot")).realize())
+            spirals = Curve(cloud.points.instance_on_points(instance=curve, rotation=Rotation.Named("rot")).realize())
             spirals.points._Normal = Rotation.Named("rot") @ Vector("Normal")
             spirals.remove_named_attribute(name="rot")
 
             # DEBUG : keep curves
             if False:
-                normals = spirals.points.instance_on(instance=Curve.Line(), rotation=Rotation.AlignToVector(Vector("Normal")))
+                normals = spirals.points.instance_on_points(instance=Curve.Line(), rotation=Rotation.AlignToVector(Vector("Normal")))
                 (spirals + normals).out()
                 return
 
         with Layout("Show Spirals"):
-            normals = spirals.points.instance_on(instance=Curve.Line(), rotation=Rotation.AlignToVector(Vector("Normal")))
+            normals = spirals.points.instance_on_points(instance=Curve.Line(), rotation=Rotation.AlignToVector(Vector("Normal")))
             debug_spirals = spirals + normals
 
         with Layout("Spirals to points"):
@@ -1470,7 +1470,7 @@ def romanesco(rebuild=False):
 
         cloud = fractal_.cloud_iterator(geometry=spirals, normal=Vector("Normal")).link_inputs()
 
-        cabbage = Mesh(Cloud(cloud).instance_on(instance=cone, scale=nd.radius, rotation=Rotation("Rotation")))
+        cabbage = Mesh(Cloud(cloud).instance_on_points(instance=cone, scale=nd.radius, rotation=Rotation("Rotation")))
         geo = cloud.switch(show_cones, cabbage)
         geo += debug_spirals.switch_false(show_spirals)
         geo = geo.switch(show_spiral, initial_spiral)
@@ -1555,7 +1555,7 @@ def face_fractals():
             cloud.points.store("rot", fractal.faces.sample_index(Rotation.Named("rot"), nd.index))
             cloud.points.store("old_scale", fractal.faces.sample_index(Float.Named("Scale"), nd.index))
 
-            step = Mesh(cloud.points.instance_on(instance=iterator, scale=Float.Named("old_scale"), rotation=Rotation.Named("rot")).realize())
+            step = Mesh(cloud.points.instance_on_points(instance=iterator, scale=Float.Named("old_scale"), rotation=Rotation.Named("rot")).realize())
 
             step.faces.store("Scale", Float.Named("old_scale") * Float.Named("Scale"))
 
@@ -1750,7 +1750,7 @@ def points_fractal():
         # ----- Geometry on each point
 
         #rotation = Rotation.AlignToVector(Vector.Named("Direction"))
-        #fractal = fractal.points.instance_on(instance=leaf_object.info().geometry, rotation=rotation, scale=Float.Named("Scale"))
+        #fractal = fractal.points.instance_on_points(instance=leaf_object.info().geometry, rotation=rotation, scale=Float.Named("Scale"))
 
         fractal.out()
 
@@ -1897,7 +1897,7 @@ def romanesco2():
         #curve.points.store("Normal", spiral.sample(Vector.Named("Normal"), length=l))
 
         if False:
-            curve = curve.points.instance_on(instance=Curve.Line().transform(scale=.3), rotation=Rotation.AlignToVector(Vector.Named("Normal")))
+            curve = curve.points.instance_on_points(instance=Curve.Line().transform(scale=.3), rotation=Rotation.AlignToVector(Vector.Named("Normal")))
             curve.out()
             return
 
@@ -1907,14 +1907,14 @@ def romanesco2():
             cloud = Cloud.Points(nspirals, position=0)
             cloud.points.store("rot", Rotation((0, 0, tau/nspirals*nd.index)))
 
-            spirals = Curve(cloud.points.instance_on(instance=curve, rotation=Rotation.Named("rot")).realize())
+            spirals = Curve(cloud.points.instance_on_points(instance=curve, rotation=Rotation.Named("rot")).realize())
             spirals.points.store("Normal", Rotation.Named("rot") @ Vector.Named("Normal"))
             spirals.remove_named_attribute(name="rot")
 
             spirals = spirals.to_points()
 
         if False:
-            spirals = spirals.points.instance_on(instance=Curve.Line().transform(scale=.3), rotation=Rotation.AlignToVector(Vector.Named("Normal")))
+            spirals = spirals.points.instance_on_points(instance=Curve.Line().transform(scale=.3), rotation=Rotation.AlignToVector(Vector.Named("Normal")))
             spirals.out()
             return
 
@@ -1939,7 +1939,7 @@ def romanesco2():
             cab.remove_named_attribute(name="Scale")
 
             with Layout("Instantiate"):
-                new_cabbage = Cloud(cab.points.instance_on(instance=spirals,
+                new_cabbage = Cloud(cab.points.instance_on_points(instance=spirals,
                     scale     = Float.Named("old_scale"),
                     rotation  = Rotation.Named("rot")
                     ).realize())
@@ -1960,7 +1960,7 @@ def romanesco2():
         cabbage = rep.cabbage
 
         if False:
-            spirals = cabbage.points.instance_on(instance=Curve.Line().transform(scale=.3), rotation=Rotation.AlignToVector(Vector.Named("Normal")))
+            spirals = cabbage.points.instance_on_points(instance=Curve.Line().transform(scale=.3), rotation=Rotation.AlignToVector(Vector.Named("Normal")))
             spirals.out()
             return
 
@@ -1979,7 +1979,7 @@ def romanesco2():
                 return
 
             rot = Rotation.AlignToVector(Vector.Named("Normal"))
-            cabbage = Mesh(cabbage.points.instance_on(instance=cone, scale=nd.radius*1, rotation=rot).realize())
+            cabbage = Mesh(cabbage.points.instance_on_points(instance=cone, scale=nd.radius*1, rotation=rot).realize())
 
             cabbage.faces.smooth = True
 

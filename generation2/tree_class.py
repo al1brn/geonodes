@@ -7,7 +7,9 @@ import textwrap
 import bpy
 
 from ..kernel import TREE_TYPES, DOMAIN_CLASSES, PYTHON_TYPES
-from .config import PROPERTIES, HANDWRITTEN_IMPLEMENTATIONS, ITEM_IMPLEMENTATION, ADDITIONAL_IMPLEMENTATIONS, STATIC_IMPLEMENTATION_ONLY
+from .config import PROPERTIES, HANDWRITTEN_IMPLEMENTATIONS, ITEM_IMPLEMENTATION
+from .config import ADDITIONAL_IMPLEMENTATIONS, STATIC_IMPLEMENTATION_ONLY, NO_STATIC_CODE
+from .config import STATIC_IMPLEMENTATIONS
 
 from ..kernel import snake_case, get_socket_type, get_class_name
 from . import gen_config
@@ -50,7 +52,7 @@ class TreeClass:
         self.gen_nodes()
         self.gen_properties()
         self.gen_typed_constructors()
-        #TBDself.gen_additional()
+        self.gen_additional()
         self.files[self.tree_type]['type_aliases.py'] = [self.type_aliases.source]
         return self
 
@@ -214,10 +216,17 @@ class TreeClass:
     def gen_static_code(self):
         """Collect nd accessors and cross references for the current environment."""
         def generate(node):
+            if node.bl_idname in NO_STATIC_CODE:
+                return
+            
             name = snake_case(node.bnode.name)
             constructor = NodeCall.class_property if node.is_class_property else NodeCall.class_method
             node_call = constructor(name, class_name='nd', return_kind='OUT')
-            source = self.implementation(node).gen_source_code(node_call, self.register_source)
+            implementation = self.implementation(node)
+            node_calls = NodeCalls(node_call).overrides(
+                implementation.expand_spec(STATIC_IMPLEMENTATIONS.get(node.name, {})))
+            
+            source = implementation.gen_source_code(node_calls, self.register_source)
 
         NodeInfo.loop_on_nodes(generate, tree_type=self.tree_type)
 
@@ -252,7 +261,7 @@ class TreeClass:
             ('MULTIPLY', 'multiply', 'multiply',    ['mul', ('neg', 'self.multiply(-1)')]),
             ('DIVIDE', 'divide', 'divide',          'truediv'), 
             ('POWER', 'power', 'power',             'pow'), 
-            ('MODULO', 'modulo', 'modulo',          'modulo'), 
+            ('MODULO', 'modulo', 'modulo',          'mod'), 
 
             # Methods with unary operator
             ('ABSOLUTE', 'abs', 'abs',              'abs'), 
@@ -287,7 +296,7 @@ class TreeClass:
             ('MULTIPLY', 'multiply', 'vmultiply',   'mul'),
             ('DIVIDE', 'divide', 'vdivide',         'truediv'), 
             ('POWER', 'power', 'vpower',            'pow'), 
-            ('MODULO', 'modulo', 'vmodulo',         'modulo'), 
+            ('MODULO', 'modulo', 'vmodulo',         'mod'), 
 
             # Methods with unary operator
             ('ABSOLUTE', 'abs', 'vabs',             'abs'), 
@@ -322,7 +331,7 @@ class TreeClass:
             ('MULTIPLY', 'multiply', 'imultiply',    'mul'),
             ('DIVIDE', 'divide', 'idivide',          'floordiv'), 
             ('POWER', 'power', 'ipower',             'pow'), 
-            ('MODULO', 'modulo', 'imodulo',          'modulo'), 
+            ('MODULO', 'modulo', 'imodulo',          'mod'), 
 
             # Methods with unary operator
             ('ABSOLUTE', 'abs', 'iabs',             'abs'), 
@@ -599,19 +608,29 @@ class TreeClass:
                             in_line = source.source,
                         )
                         self.register_source(None, node_call, source.source, tree_type=self.tree_type)
-                        break
+                        continue
 
 
                     # Read the config
                     node_name = spec['node']
                     parameters = spec.get('parameters', {}).copy()
-                    fixed_sockets = spec.get('fixed_sockets', {})
+                    fixed_sockets = spec.get('fixed_sockets', {}).copy()
                     in_socket = spec.get('socket', {})
-                    is_jump = True
+                    in_parameter = spec.get('parameter')
+                    is_jump = sg == 'setter'
 
                     with Tree(self.tree_type) as tree:
 
                         node_info = NodeInfo(tree.btree, tree.create_node(node_name))
+
+                        if sg == 'getter':
+                            inputs = node_info.bnode.inputs
+                            outputs = node_info.bnode.outputs
+                            is_jump = (
+                                len(inputs) > 0 and inputs[0].type == 'GEOMETRY'
+                                and len(outputs) > 1 and outputs[0].type == 'GEOMETRY'
+                                and outputs[1].type != 'GEOMETRY'
+                            )
 
                         # Self socket is the geometry input
                         # Put un assigned sockets into fixed to exclude them from arguments
@@ -622,7 +641,7 @@ class TreeClass:
                             if (self_socket is None) and bsock.enabled and bsock.type == 'GEOMETRY':
                                 self_socket = sock_name
                             else:
-                                if sock_name != in_socket:
+                                if sock_name != in_socket and not (sg == 'setter' and sock_name == 'Selection'):
                                     fixed_sockets[sock_name] = None
                             names_err.append(sock_name)
 
@@ -634,8 +653,8 @@ class TreeClass:
 
                         # Include free parameters into parameter to exclude themt from argumnents
                         for name, param in node_info.default_params.items():
-                            if name not in parameters:
-                                parameters[name] = param.value
+                            if name not in parameters and name != in_parameter:
+                                parameters[name] = param['value']
 
                         # Let's build the calling specs
                         constructor = NodeCall.getter if sg == 'getter' else NodeCall.setter
@@ -643,7 +662,9 @@ class TreeClass:
                             class_name = class_name,
                             method_name = prop_name,
                             self_socket = self_socket,
-                            is_jump = sg == 'setter',
+                            is_jump = is_jump,
+                            geo_selection = sg == 'setter',
+                            return_socket = spec.get('output'),
                             fixed_sockets = fixed_sockets,
                             parameters = parameters,
                         )
@@ -851,7 +872,8 @@ class TreeClass:
                     node_info = NodeInfo(tree.btree, tree.create_node(node_name))
                     implementation = self.implementation(node_info)
 
-                    for spec in addition:
+                    for spec in (resolved for raw_spec in addition
+                                 for resolved in implementation.expand_spec(raw_spec)):
 
                         node_call = NodeCall(**{'rules': "Additional implementation", **spec})
 

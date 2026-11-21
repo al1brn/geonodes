@@ -47,7 +47,7 @@ import numpy as np
 from pprint import pprint
 import bpy
 
-from .colors import SysColor
+from ...kernel.colors import SysColor
 from .sockettype import SocketType
 from .scripterror import NodeError
 from .. import constants

@@ -212,7 +212,7 @@ def demo(rebuild=False):
     # Demo Shader
     # ====================================================================================================
 
-    with ShaderNodes("Fractal Demo", replace_material=True):
+    with ShaderNodes("Fractal Demo", rebuild=True):
 
         hue = nd.attribute("Hue").factor
         color = Color.CombineHSV(hue=hue, value=1, saturation=1)
@@ -258,7 +258,7 @@ def demo(rebuild=False):
 
             cube = Mesh.Cube()
 
-            cube.faces[nd.index==0].delete_only_face().transform(translation=(0, 0, 0.5))
+            cube.faces[nd.index==0].delete(mode="Only Faces").transform(translation=(0, 0, 0.5))
 
             face = Mesh.Grid(vertices_x=2, vertices_y=2).transform(translation=(-1, -1, 0))
 
@@ -296,7 +296,7 @@ def demo(rebuild=False):
             h = math.sqrt(2)
 
             cone = Mesh.Cone(vertices=3, depth=h)
-            cone.faces[3].delete_only_face()
+            cone.faces[3].delete(mode="Only Faces")
 
             tri = Mesh.Circle(vertices=3, fill_type='N-Gon')
             cone += Mesh(tri).transform(translation=(-1, 0, 0), rotation=(0, 0, pi))

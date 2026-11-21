@@ -7,7 +7,7 @@ def demo(rebuild=False):
 
     Tree._init_package('Simulation')
 
-    with ShaderNodes("Curve Color", replace_material=True):
+    with ShaderNodes("Curve Color", rebuild=True):
         col = nd.attribute("Color").color
         ped = Shader.Principled(base_color=col)
         ped.out()

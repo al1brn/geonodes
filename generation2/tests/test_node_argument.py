@@ -1,143 +1,121 @@
-"""Run without Blender: python3 -B generation2/tests/test_node_argument.py."""
-from copy import deepcopy
+"""Run with Blender --background --python generation2/tests/test_node_argument.py."""
 from pathlib import Path
-import runpy
+import sys
+import textwrap
 from types import SimpleNamespace as NS
 import unittest
 
-ROOT = Path(__file__).resolve().parents[1]
-module = runpy.run_path(str(ROOT / 'node_argument.py'))
-NodeArgument = module['NodeArgument']
-TypeAliases = runpy.run_path(str(ROOT / 'typealiases.py'))['TypeAliases']
+sys.path.insert(0, str(Path(__file__).resolve().parents[3]))
+from geonodes.generation2.sourcewriter import SourceWriter
+from geonodes.generation2.node_argument import NodeArguments
+from geonodes.generation2.node_info import NodeInfo
+from geonodes.generation2.node_param import NodeParam
+from geonodes.generation2.node_implementation import NodeImplementation
+from geonodes.generation2.node_call import NodeCall
+from geonodes.generation2.typealiases import TypeAliases
+from geonodes.generation2.tree import Tree
 
 
-def socket(name='Value', **options):
-    return NS(**(dict(identifier='Value', socket_name=name, class_name='Float',
-                     is_multi=False, group_name=None, names={name}) | options))
+class NodeArgumentsTest(unittest.TestCase):
+    def test_non_enum_parameters_precede_enums_without_changing_node_call_order(self):
+        args = NodeArguments()
+        args.set_socket_keyword('input_socket')
+        specs = [('mode', 'A', 'ENUM', ('A', 'B')),
+                 ('flags', {'A'}, 'ENUM_FLAG', ('A', 'B')),
+                 ('name', '', 'VALUE', None),
+                 ('count', 1, 'VALUE', None)]
+        for name, value, kind, enums in specs:
+            args.add_parameter(NodeParam(None, name, value, kind, enums=enums))
+        header_names = [part.split(':')[0].split('=')[0].strip() for part in args.get_header()]
+        self.assertEqual(header_names, ['input_socket', 'name', 'count', 'mode', 'flags'])
+        self.assertEqual(args.get_node_call(), ['mode=mode', 'flags=flags', 'name=name', 'count=count'])
 
+    def test_attribute_name_is_first_positional_parameter(self):
+        with Tree('ShaderNodeTree') as tree:
+            info = NodeInfo(tree.btree, tree.create_node('Attribute'))
+            order = info.config_order
+            fn, calls, source = self.generate(info, method_type='FUNCTION')
+            fn('Color')
+            self.assertEqual(calls[-1][1]['attribute_name'], 'Color')
+            self.assertEqual(calls[-1][1]['attribute_type'], 'GEOMETRY')
+            self.assertEqual(info.config_order, order)
+            self.assertLess(source.index('attribute_name:'), source.index('attribute_type:'))
+            self.assertLess(source.index('attribute_type=attribute_type'),
+                            source.index('attribute_name=attribute_name'))
 
-def parameter(name='mode', value='A', **options):
-    return NS(**(dict(name=name, value=value, typing=['A', 'B'],
-                     param_type='ENUM', enums=['A', 'B']) | options))
+    def test_fixed_values_and_quoted_node_name(self):
+        args = NodeArguments()
+        args.add_fixed_parameter(NS(name='operation'), 'ADD')
+        args.add_fixed_socket(NS(identifier='Text', socket_name='Text', group_name=None), "a'b")
+        calls = []
+        writer = SourceWriter()
+        writer.write(args.get_code_source("Node's name"))
+        exec(writer.source, {'Node': lambda *a, **kw: calls.append((a, kw))})
+        self.assertEqual(calls, [(("Node's name",), dict(operation='ADD', named_sockets={'ID_Text': "a'b"}))])
 
-
-class NodeArgumentTest(unittest.TestCase):
-    def test_free_socket_and_independent_receiver_contexts(self):
-        source = socket()
-        before = deepcopy(vars(source))
-        free = NodeArgument(source, 'value_1')
-        receiver = NodeArgument(source, 'value_1', role='SELF')
-        self.assertEqual(free.get_header(), ['value_1: Float=None'])
-        self.assertEqual(free.get_node_call().named_sockets, {'ID_Value': 'value_1'})
-        self.assertIn('default: None', free.get_arg_doc()[0])
-        self.assertEqual(receiver.get_header(), [])
-        self.assertEqual(receiver.get_arg_doc(), [])
-        self.assertEqual(receiver.get_fixed_doc(), ["self on socket 'Value'"])
-        self.assertEqual(receiver.get_node_call().named_sockets, {'ID_Value': 'self'})
-        self.assertEqual(vars(source), before)
-
-    def test_alias_resolution_accepts_zero_and_uses_last_non_none(self):
-        argument = NodeArgument(socket(), 'value', aliases=(('Value', 'value'), ('Base', 'base')))
-        self.assertEqual(argument.get_header(), ['value: Float=None', 'base: Float=None'])
-        self.assertEqual(len(argument.get_arg_doc()), 2)
-        for value, base, expected in ((0, None, 0), (2, 3, 3), (None, None, None)):
-            env = {'value': value, 'base': base, 'named_sockets': {}}
-            exec('\n'.join(argument.get_code()), env)
-            self.assertEqual(env['named_sockets']['ID_Value'], expected)
-
-    def test_multi_input_with_and_without_receiver(self):
-        for role, expected in (('ARGUMENT', ['*values']), ('SELF', ['self', '*values'])):
-            argument = NodeArgument(socket(is_multi=True), 'values', role=role)
-            self.assertEqual(argument.get_header(), ['*values: Float'])
-            self.assertEqual(argument.get_node_call().positional, expected)
-            self.assertIn('multiple values', argument.get_arg_doc()[0])
-
-    def test_fixed_values_are_serialized_once_including_none(self):
-        for value in (None, "a'b", False):
-            argument = NodeArgument(socket(), 'value', role='FIXED', value=value)
-            self.assertEqual(argument.get_header(), [])
-            self.assertEqual(argument.get_arg_doc(), [])
-            self.assertEqual(argument.get_node_call().named_sockets, {'Value': repr(value)})
-            self.assertTrue(argument.get_fixed_doc())
-            self.assertEqual(argument.get_code(), [])
-        param = NodeArgument(parameter(), 'mode', role='FIXED', value='B')
-        self.assertEqual(param.get_node_call().parameters, {'mode': "'B'"})
-
-    def test_enum_aliases_and_documented_choices(self):
-        argument = NodeArgument(parameter(), 'mode_1')
+    def test_enum_typing_and_dynamic_named_inputs(self):
+        args = NodeArguments()
         aliases = TypeAliases()
-        self.assertEqual(argument.get_header(aliases), ["mode_1: T_MODE_1_1='A'"])
-        self.assertEqual(argument.get_header(), ["mode_1: Literal['A', 'B']='A'"])
-        self.assertIn("{'A', 'B'}", argument.get_arg_doc()[0])
-        self.assertEqual(argument.get_node_call().parameters, {'mode': 'mode_1'})
+        args.add_parameter(NS(name='mode', value='A', param_type='ENUM',
+                              enums=['A', 'B'], typing=['A', 'B']), aliases)
+        args.add_socket(NS(is_virtual=True, name='NAMED'))
+        args.make_arg_names_unique()
+        writer = SourceWriter()
+        writer.write(args.get_mockup(as_method=False))
+        env = {'Node': lambda *a, **kw: kw}
+        exec(aliases.source + writer.source, env)
+        env['method'](named_sockets={'A': 1}, B=2)
         self.assertEqual(len(aliases), 1)
+        self.assertIn('mode: T_MODE_1', writer.source)
 
-    def test_enum_flags_and_absent_typing(self):
-        flags = NodeArgument(parameter(value={'A'}, typing="set[Literal['A', 'B']]", param_type='ENUM_FLAG'), 'mode')
-        self.assertEqual(flags.get_header(), ["mode: set[Literal['A', 'B']]={'A'}"])
-        self.assertIn("set[{'A', 'B'}]", flags.get_arg_doc()[0])
-        untyped = NodeArgument(parameter('seed', 0, typing=None, param_type='INT', enums=None), 'seed')
-        self.assertEqual(untyped.get_header(), ['seed=0'])
+    def generate(self, info, **options):
+        source = NodeImplementation(info, type_aliases=TypeAliases())._gen_source_code(
+            NodeCall(method_name='build', **options))
+        calls = []
+        def node(*a, **kw):
+            calls.append((a, kw))
+            return NS(_out='result', _second_out=lambda obj: 'second')
+        env = {'Node': node, 'SocketType': NS(get_data_type_for_node=lambda *a: 'FLOAT')}
+        exec('from __future__ import annotations\n' +
+             ('class Example:\n' + source if options.get('method_type') != 'FUNCTION' else source), env)
+        return (env['build'] if options.get('method_type') == 'FUNCTION' else env['Example'].build), calls, source
 
-    def test_computed_selection(self):
-        argument = NodeArgument(socket('Selection', identifier='Selection', class_name='Boolean'),
-                                'selection', role='COMPUTED', value='selection',
-                                computation='selection = self.get_selection()')
-        self.assertEqual(argument.get_header(), [])
-        self.assertEqual(argument.get_arg_doc(), [])
-        self.assertEqual(argument.get_fixed_doc(), [])
-        self.assertTrue(argument.get_computed_doc())
-        env = {'self': NS(get_selection=lambda: 'selection marker')}
-        exec('\n'.join(argument.get_code()), env)
-        self.assertEqual(env['selection'], 'selection marker')
-        self.assertEqual(argument.get_node_call().named_sockets, {'Selection': 'selection'})
+    def test_math_function_and_method(self):
+        for tree_type in ('GeometryNodeTree', 'ShaderNodeTree'):
+            with Tree(tree_type) as tree:
+                info = NodeInfo(tree.btree, tree.create_node('Math'))
+                fn, calls, source = self.generate(info, method_type='FUNCTION', parameters={'operation': 'ADD'})
+                self.assertEqual(fn(value=2, value_1=3), 'result')
+                self.assertEqual(calls[-1][1]['operation'], 'ADD')
+                self.assertEqual(list(calls[-1][1]['named_sockets'].values()), [2, 3])
+                fn, calls, source = self.generate(info, method_type='METHOD', self_socket='Value', parameters={'operation': 'ADD'})
+                marker = object()
+                self.assertEqual(fn(marker, value=4), 'result')
+                self.assertEqual(list(calls[-1][1]['named_sockets'].values()), [marker, 4])
+                compile(textwrap.dedent(source), '<method>', 'exec')
 
-    def test_computed_type_and_grouped_socket(self):
-        computation = "data_type = SocketType.get_data_type_for_node(value_1, 'TestNode', 'data_type')"
-        argument = NodeArgument(parameter('data_type'), 'data_type', role='COMPUTED',
-                                value='data_type', computation=computation)
-        self.assertEqual(argument.get_header(), [])
-        self.assertEqual(argument.get_code(), [computation])
-        self.assertEqual(argument.get_node_call().parameters, {'data_type': 'data_type'})
-        grouped = NodeArgument(socket(group_name='Value', class_name='Socket'), 'value')
-        self.assertEqual(grouped.get_header(), ['value: Socket=None'])
-        self.assertEqual(grouped.get_node_call().named_sockets, {'Value': 'value'})
+    def test_auto_type_and_fixed_type(self):
+        with Tree() as tree:
+            info = NodeInfo(tree.btree, tree.create_node('Map Range'))
+            fn, calls, _ = self.generate(info, method_type='METHOD', self_socket='Value', auto_data_type='Value')
+            fn(object())
+            self.assertEqual(calls[-1][1]['data_type'], 'FLOAT')
+            fn, calls, _ = self.generate(info, method_type='METHOD', self_socket='Value', auto_data_type='missing', parameters={'data_type': 'FLOAT'})
+            fn(object())
+            self.assertEqual(calls[-1][1]['data_type'], 'FLOAT')
 
-    def test_invalid_contexts_fail_early(self):
-        with self.assertRaisesRegex(ValueError, 'receiver'):
-            NodeArgument(parameter(), 'mode', role='SELF')
-        with self.assertRaisesRegex(ValueError, 'requires a value'):
-            NodeArgument(socket(), 'value', role='FIXED')
-        with self.assertRaisesRegex(TypeError, 'expression'):
-            NodeArgument(socket(), 'value', role='COMPUTED', value=3)
-
-    def test_named_items_expand_sockets_and_node_keywords(self):
-        argument = NodeArgument(None, 'items', role='NAMED_ITEMS')
-        self.assertEqual(argument.get_header(), ['items={}', '**named_items'])
-        call = argument.get_node_call()
-        self.assertEqual(call.named_socket_expansions, ['items'])
-        self.assertEqual(call.parameter_expansions, ['named_items'])
-        self.assertEqual(call.named_sockets, {})
-        self.assertEqual(call.parameters, {})
-        self.assertEqual(argument.get_code(), [])
-        self.assertEqual(len(argument.get_arg_doc()), 2)
-        code = ('def example(items={}, **named_items):\n'
-                '    return collect(named_sockets={**items}, **named_items)')
-        env = {'collect': lambda **kw: kw}
-        exec(code, env)
-        self.assertEqual(env['example']({'A': 1}, B=2), {'named_sockets': {'A': 1}, 'B': 2})
-        self.assertEqual(argument.get_fixed_doc(), [])
-        self.assertEqual(argument.get_computed_doc(), [])
-
-    def test_anonymous_items_are_positional(self):
-        argument = NodeArgument(None, 'values', role='ANONYMOUS_ITEMS')
-        self.assertEqual(argument.get_header(), ['*values'])
-        self.assertEqual(argument.get_node_call().positional, ['*values'])
-        self.assertEqual(argument.get_code(), [])
-        self.assertIn('*values : Socket', argument.get_arg_doc()[0])
-        with self.assertRaisesRegex(ValueError, 'Items roles'):
-            NodeArgument(socket(), 'values', role='ANONYMOUS_ITEMS')
+    def test_multi_input_and_selection(self):
+        with Tree() as tree:
+            info = NodeInfo(tree.btree, tree.create_node('Join Geometry'))
+            fn, calls, _ = self.generate(info, method_type='METHOD', self_socket='Geometry')
+            marker = object()
+            fn(marker, 1, 2)
+            self.assertEqual(calls[-1][1]['named_sockets']['ID_Geometry'], [marker, 1, 2])
+            info = NodeInfo(tree.btree, tree.create_node('Set Position'))
+            fn, calls, _ = self.generate(info, method_type='METHOD', self_socket='Geometry', geo_selection=True)
+            fn(NS(get_selection=lambda: True))
+            self.assertIs(calls[-1][1]['named_sockets']['ID_Selection'], True)
 
 
 if __name__ == '__main__':
-    unittest.main()
+    unittest.main(argv=[sys.argv[0]])

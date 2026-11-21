@@ -137,7 +137,7 @@ def demo(rebuild=False):
 
             dig_faces &= nd.normal.z.abs() > 0.9
 
-            mesh.faces.set('Dig', dig_faces)
+            mesh.faces['Dig'] = dig_faces
 
         mesh.switch(shape_index.equal(0), keep)
 

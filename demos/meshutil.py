@@ -56,7 +56,7 @@ meshutil = Package("Meshutil")
 # Curves
 # ====================================================================================================
 
-@meshutil.geo_modifier('Cross Splines')
+@meshutil.modifier('Cross Splines')
 def cross_splines():
     """# Cross Splines
     
@@ -111,7 +111,7 @@ def cross_splines():
 # Curves
 # ====================================================================================================
 
-@meshutil.geo_group('Subdivide Segment')
+@meshutil.group('Subdivide Segment')
 def subdivide_segment():
     """# Subdivide Segment
     
@@ -147,7 +147,7 @@ def subdivide_segment():
 # New Cylinder
 # ----------------------------------------------------------------------------------------------------
 
-@meshutil.geo_group('New Cylinder')
+@meshutil.group('New Cylinder')
 def new_cylinder():
     """# New Cylinder
     """
@@ -199,7 +199,7 @@ def get_cylinder(use_create=True, name=None):
 # Zone selection in a cylinder
 # ----------------------------------------------------------------------------------------------------
 
-@meshutil.geo_group('Cylinder Selection')
+@meshutil.group('Cylinder Selection')
 def cylinder_selection():
     """ A zone is defined by ring and col indices plus number of rings and cols
     
@@ -292,7 +292,7 @@ def cylinder_selection():
 # Copy position
 # ----------------------------------------------------------------------------------------------------
 
-@meshutil.geo_group('Cylinder Copy Position')
+@meshutil.group('Cylinder Copy Position')
 def cylinder_copy_position():
     """# Cylinder Copy Position
     
@@ -336,7 +336,7 @@ def cylinder_copy_position():
 # View indices
 # ----------------------------------------------------------------------------------------------------
 
-@meshutil.geo_group('View Cylinder Indices')
+@meshutil.group('View Cylinder Indices')
 def view_cylinder_indices():
     """# View Cylinder Indices
     
@@ -394,7 +394,7 @@ def view_cylinder_indices():
 # Add rings
 # ----------------------------------------------------------------------------------------------------
 
-@meshutil.geo_group('Add Rings to Cylinder')
+@meshutil.group('Add Rings to Cylinder')
 def add_rings_to_cylinder():
     """# Add Rings to Cylinder
     
@@ -421,7 +421,7 @@ def add_rings_to_cylinder():
 # Dome Cylinder
 # ----------------------------------------------------------------------------------------------------
 
-@meshutil.geo_group('Close Cylinder')
+@meshutil.group('Close Cylinder')
 def close_cylinder():
     """# Close Cylinder
     
@@ -495,7 +495,7 @@ def close_cylinder():
 # Cylinder enveloppe
 # ----------------------------------------------------------------------------------------------------
 
-@meshutil.geo_modifier('Bones Envelope')
+@meshutil.modifier('Bones Envelope')
 def bones_envelope():
     """# Bones Envelope
     
@@ -632,7 +632,7 @@ def bones_envelope():
 # Rounded Joint
 # ====================================================================================================
 
-@meshutil.geo_group('Rounded Joint')
+@meshutil.group('Rounded Joint')
 def rounded_joint():
     """ Rounded angle in the plane XZ.
     Positive is Z to X
@@ -677,7 +677,7 @@ def rounded_joint():
 # ----------------------------------------------------------------------------------------------------
 
 # Append a vertex to an open polyline.
-@meshutil.geo_modifier('Build Poly Line')
+@meshutil.modifier('Build Poly Line')
 def build_poly_line():
     """# Build Poly Line
     
@@ -730,7 +730,7 @@ def build_poly_line():
 # Inverse kinematics
 # ----------------------------------------------------------------------------------------------------
 
-@meshutil.geo_modifier('Build Bones Curve')
+@meshutil.modifier('Build Bones Curve')
 def build_bones_curve():
     """# Build Bones Curve
     
@@ -767,7 +767,7 @@ def build_bones_curve():
 # ====================================================================================================
 
 # Round every interior corner, retaining the ends and the spline structure.
-@meshutil.geo_modifier('Round Joints')
+@meshutil.modifier('Round Joints')
 def round_joints():
     """# Round Joints
     
@@ -832,7 +832,7 @@ def round_joints():
 # ====================================================================================================
 
 # Surrounding Shape
-@meshutil.geo_modifier('Surrounding Shape')
+@meshutil.modifier('Surrounding Shape')
 def surrounding_shape():
     """# Surrounding Shape
     """
@@ -897,7 +897,7 @@ def surrounding_shape():
 # Create a cage surrounding vertical bones
 # ====================================================================================================
 
-@meshutil.geo_modifier('Cage Around Bones')
+@meshutil.modifier('Cage Around Bones')
 def cage_around_bones():
     """# Cage Around Bones
     
@@ -937,7 +937,7 @@ def cage_around_bones():
 # Interpolate director offsets with a Gaussian radial basis
 # ====================================================================================================
 
-@meshutil.geo_group('Mesh Distort')
+@meshutil.group('Mesh Distort')
 def mesh_distort():
     """# Mesh Distort
     
@@ -1021,7 +1021,7 @@ def mesh_distort():
 # Initialize a new Curve Bone from a Curve
 # ----------------------------------------------------------------------------------------------------
 
-@curve_bones.geo_group('New')
+@curve_bones.group('New')
 def cbone_new():
     """# CBone New
     
@@ -1093,7 +1093,7 @@ def cbone_new():
 # Curve Bone rotation
 # ----------------------------------------------------------------------------------------------------
 
-@curve_bones.geo_group('Rotate')
+@curve_bones.group('Rotate')
 def cbone_rotate():
     """# CBone Rotate
     
@@ -1142,7 +1142,7 @@ def cbone_rotate():
 # Curve Bone Translation
 # ----------------------------------------------------------------------------------------------------
 
-@curve_bones.geo_group('Translate')
+@curve_bones.group('Translate')
 def cbone_translate():
     """# CBone Translate
     
@@ -1174,7 +1174,7 @@ def cbone_translate():
 # Curve Bone Influence
 # ----------------------------------------------------------------------------------------------------
 
-@curve_bones.geo_group('Distance')
+@curve_bones.group('Distance')
 def cbone_distance():
     """# CBone Distance
     
@@ -1222,7 +1222,7 @@ def cbone_distance():
 # Link a curve bones to a Mesh
 # ----------------------------------------------------------------------------------------------------
 
-@curve_bones.geo_modifier('Link')
+@curve_bones.modifier('Link')
 def cbone_link():
     """# CBone Link
     
@@ -1282,7 +1282,7 @@ def cbone_link():
 # Deform a mesh
 # ----------------------------------------------------------------------------------------------------
     
-@curve_bones.geo_modifier('Deform')
+@curve_bones.modifier('Deform')
 def cbone_deform():
     """# CBone Deform
     
@@ -1321,7 +1321,7 @@ def cbone_deform():
 # Curve Bone Demo
 # ====================================================================================================
 
-@curve_bones.geo_modifier('Demo')
+@curve_bones.modifier('Demo')
 def cbone_demo():
     """# CBone Demo
     
@@ -1370,7 +1370,7 @@ def cbone_demo():
 # Ordered Selection length
 # ----------------------------------------------------------------------------------------------------
 
-@ordered_selection.geo_group('Count')
+@ordered_selection.group('Count')
 def osel_count():
     """# OSel Count
     
@@ -1388,7 +1388,7 @@ def osel_count():
 # Ordered Selection Rename
 # ----------------------------------------------------------------------------------------------------
 
-@ordered_selection.geo_group('Rename')
+@ordered_selection.group('Rename')
 def osel_rename():
     """# OSel Rename
     
@@ -1411,7 +1411,7 @@ def osel_rename():
 # Add selection
 # ----------------------------------------------------------------------------------------------------
 
-@ordered_selection.geo_group('Add Selection')
+@ordered_selection.group('Add Selection')
 def osel_add_selection():
     """# OSel Add Selection
     
@@ -1447,7 +1447,7 @@ def osel_add_selection():
 # Merge another ordered selection
 # ----------------------------------------------------------------------------------------------------
 
-@ordered_selection.geo_group('Append')
+@ordered_selection.group('Append')
 def osel_append():
     """# OSel Append
     
@@ -1474,7 +1474,7 @@ def osel_append():
 # Visualization
 # ----------------------------------------------------------------------------------------------------
     
-@ordered_selection.geo_modifier('Visualization')
+@ordered_selection.modifier('Visualization')
 def osel_visualization():
     """# OSel Visualization
     
@@ -1512,7 +1512,7 @@ def osel_visualization():
 # Shift
 # ----------------------------------------------------------------------------------------------------
 
-@ordered_selection.geo_modifier('Shift')
+@ordered_selection.modifier('Shift')
 def osel_shift():
     """# OSel Shift
     
@@ -1536,7 +1536,7 @@ def osel_shift():
 # Shift
 # ----------------------------------------------------------------------------------------------------
 
-@ordered_selection.geo_modifier('Invert')
+@ordered_selection.modifier('Invert')
 def osel_invert():
     """# OSel Invert
     
@@ -1562,7 +1562,7 @@ def osel_invert():
 # Extract a sub ordered selection
 # ----------------------------------------------------------------------------------------------------
 
-@ordered_selection.geo_modifier('Extract')
+@ordered_selection.modifier('Extract')
 def osel_extract():
     """# OSel Extract
     
@@ -1602,7 +1602,7 @@ def osel_extract():
 # Extract Mesh
 # ----------------------------------------------------------------------------------------------------
 
-@ordered_selection.geo_group('Get Line')
+@ordered_selection.group('Get Line')
 def osel_get_line():
     """# OSel Get Line
     
@@ -1622,7 +1622,7 @@ def osel_get_line():
 # Set position
 # ----------------------------------------------------------------------------------------------------
 
-@ordered_selection.geo_group('Set Position')
+@ordered_selection.group('Set Position')
 def osel_set_position():
     """# OSel Set Position
     
@@ -1642,7 +1642,7 @@ def osel_set_position():
 # Selection center and normal
 # ----------------------------------------------------------------------------------------------------
 
-@ordered_selection.geo_modifier('Get Disk')
+@ordered_selection.modifier('Get Disk')
 def osel_get_disk():
     """# OSel Get Disk
     
@@ -1668,7 +1668,7 @@ def osel_get_disk():
 # To Circle
 # ----------------------------------------------------------------------------------------------------
 
-@ordered_selection.geo_group('To Circle')
+@ordered_selection.group('To Circle')
 def osel_to_circle():
     """# OSel To Circle
     
@@ -1694,7 +1694,7 @@ def osel_to_circle():
 # Merge two selections
 # ----------------------------------------------------------------------------------------------------
 
-@ordered_selection.geo_group('Merge')
+@ordered_selection.group('Merge')
 def osel_merge():
     """# OSel Merge
     
@@ -1728,7 +1728,7 @@ def osel_merge():
 # Bridge between two ordered selection
 # ----------------------------------------------------------------------------------------------------
     
-@ordered_selection.geo_group('Bridge')
+@ordered_selection.group('Bridge')
 def osel_bridge():
     """# OSel Bridge
     
@@ -1858,7 +1858,7 @@ def osel_bridge():
 # Split Hole
 # ====================================================================================================
 
-@ordered_selection.geo_group('Split Hole')
+@ordered_selection.group('Split Hole')
 def osel_split_hole():
     """# OSel Split Hole
     

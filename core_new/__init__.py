@@ -29,7 +29,7 @@ if PRODUCTION:
 
     from .geonodes.domains.attribute import Attribute
 
-    from .root.socket import Socket
+    from .root.socket import Socket, DEFAULT
     from .root.input import Input
 
     from .root.boolean import Boolean
@@ -71,7 +71,7 @@ if PRODUCTION:
 
     from .root.shader import Shader, VolumeShader
     from .shadernodes.shadernodes import ShaderNodes
-    from .decorators import Package, geo_group, geo_modifier, shader_group, shader_material
+    from .decorators import Package, group, modifier, tool, shader_group, shader
 
     # ====================================================================================================
     # Create the dict socket_type -> SocketClass

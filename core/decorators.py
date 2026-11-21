@@ -2,7 +2,7 @@
 
 Decorated functions expose explicit construction and node insertion::
 
-    @geo_group("Create Plank")
+    @group("Create Plank")
     def create_plank():
         Mesh.Cube().out()
 
@@ -27,7 +27,7 @@ from .nodeclass import G
 from .scripterror import NodeError
 from .utils import snake_case
 
-__all__ = ["geo_group", "geo_modifier", "shader_group", "shader_material", "Package"]
+__all__ = ["group", "modifier", "tool", "shader_group", "shader", "Package"]
 
 
 class _TreeBuilder:
@@ -35,11 +35,12 @@ class _TreeBuilder:
 
     _building = set()
 
-    def __init__(self, function, tree_class, name, is_group, options):
+    def __init__(self, function, tree_class, name, is_group, options, is_tool=False):
         update_wrapper(self, function)
         self.function = function
         self.tree_class = tree_class
         self.is_group = is_group
+        self.is_tool = is_tool
         self.options = dict(options)
         if name is None:
             python_name = function.__name__
@@ -74,7 +75,13 @@ class _TreeBuilder:
         self._building.add(key)
         try:
             result = None
-            with self.tree_class(self.name, is_group=self.is_group, **options) as tree:
+            if self.is_tool:
+                prefix = options.pop('prefix', None)
+                name = f'{prefix} {self.name}' if prefix else self.name
+                context = self.tree_class.Tool(name, **options)
+            else:
+                context = self.tree_class(self.name, is_group=self.is_group, **options)
+            with context as tree:
                 if tree._rebuild:
                     result = self.function(*args, **kwargs)
             return result
@@ -99,13 +106,13 @@ class _TreeBuilder:
         return G._call_group(self.full_name, *args, **kwargs)
 
 
-def _tree_decorator(tree_class, name, is_group, options):
+def _tree_decorator(tree_class, name, is_group, options, is_tool=False):
     def decorate(function):
-        return _TreeBuilder(function, tree_class, name, is_group, options)
+        return _TreeBuilder(function, tree_class, name, is_group, options, is_tool=is_tool)
     return decorate
 
 
-def geo_group(name=None, **options):
+def group(name=None, **options):
     """Declare a Geometry Nodes group with .build() and a callable socket interface.
 
     Options are forwarded to GeoNodes, with is_group=True. If omitted, the
@@ -117,9 +124,14 @@ def geo_group(name=None, **options):
     return _tree_decorator(GeoNodes, name, True, options)
 
 
-def geo_modifier(name=None, **options):
+def modifier(name=None, **options):
     """Declare a Geometry Nodes modifier, with GeoNodes options and is_group=False."""
     return _tree_decorator(GeoNodes, name, False, options)
+
+
+def tool(name=None, **options):
+    """Declare a Geometry Nodes tool, forwarding options to GeoNodes.Tool."""
+    return _tree_decorator(GeoNodes, name, False, options, is_tool=True)
 
 
 def shader_group(name=None, **options):
@@ -127,7 +139,7 @@ def shader_group(name=None, **options):
     return _tree_decorator(ShaderNodes, name, True, options)
 
 
-def shader_material(name=None, **options):
+def shader(name=None, **options):
     """Declare a material, with ShaderNodes options and is_group=False.
 
     Both rebuild and replace_material are accepted as decorator options.
@@ -143,11 +155,11 @@ class Package:
 
         furniture = Package("Furniture")
 
-        @furniture.geo_group("Create Plank")
+        @furniture.group("Create Plank")
         def create_plank():
             Mesh.Cube().out()
 
-        @furniture.geo_modifier("Add Plank")
+        @furniture.modifier("Add Plank")
         def add_plank():
             create_plank().out()
 
@@ -188,21 +200,25 @@ class Package:
 
         return register
 
-    def geo_group(self, name=None, **options):
-        """Register a Geometry Nodes group, with the options of geo_group."""
-        return self._register(geo_group(name, **options))
+    def group(self, name=None, **options):
+        """Register a Geometry Nodes group, with the options of group."""
+        return self._register(group(name, **options))
 
-    def geo_modifier(self, name=None, **options):
-        """Register a modifier, with the options of geo_modifier."""
-        return self._register(geo_modifier(name, **options))
+    def modifier(self, name=None, **options):
+        """Register a modifier, with the options of modifier."""
+        return self._register(modifier(name, **options))
+
+    def tool(self, name=None, **options):
+        """Register a Geometry Nodes tool in this mixed package."""
+        return self._register(tool(name, **options))
 
     def shader_group(self, name=None, **options):
         """Register a shader group, with the options of shader_group."""
         return self._register(shader_group(name, **options))
 
-    def shader_material(self, name=None, **options):
-        """Register a material, with the options of shader_material."""
-        return self._register(shader_material(name, **options))
+    def shader(self, name=None, **options):
+        """Register a material, with the options of shader."""
+        return self._register(shader(name, **options))
 
     def build(self, rebuild=None):
         """Build all registered trees and display their cumulative statistics.
