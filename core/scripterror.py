@@ -42,6 +42,7 @@ __blender_version__ = "4.3.0"
 
 
 import inspect
+import os.path
 from pathlib import Path
 import bpy
 
@@ -164,7 +165,7 @@ class NodeError(Exception):
                 blend_text = blend_file.exists() and not blend_file.is_dir()
                 if blend_text:
                     #text_key = path.stem
-                    text_key = str(path).split('/')[-1]
+                    text_key = os.path.split(path)[-1]
 
             # ----- Read from blend text or from the file
 
