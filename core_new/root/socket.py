@@ -1102,8 +1102,8 @@ class Socket(NodeCache, metaclass=EnvironmentType):
         from .closure import Closure
         from .integer import Integer
 
-        if not self._is_list:
-            raise NodeError(f"Socket.list_append error: {self} is not a list.")
+        #if not self._is_list:
+        #    raise NodeError(f"Socket.list_append error: {self} is not a list.")
 
         with Layout("Socket.list_append"):
 
@@ -1113,7 +1113,7 @@ class Socket(NodeCache, metaclass=EnvironmentType):
                 n = value.list_length()
                 with Closure() as cl:
                     index = Integer(0, "Index")
-                    value[index].out("Value")
+                    value.get_list_item(index).out("Value")
                 in_cl = cl
             else:
                 n = 1
@@ -1131,7 +1131,7 @@ class Socket(NodeCache, metaclass=EnvironmentType):
 
                 v = type(self).Switch(index.less_than(cur_length), 
                         in_cl.evaluate(index=index-cur_length).value,
-                        self[index]
+                        self.get_list_item(index)
                         )
                 v.out(self._name)
 

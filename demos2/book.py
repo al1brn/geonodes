@@ -1318,7 +1318,8 @@ def demo(rebuild=False):
             internal_count = count - 2
             point_count = page_curves.points.count/internal_count
             page_curves = page_curves.resample(count=point_count)
-            page_curves.points.Page_U = page_curves.points.curve(nd.index).index_in_curve/(point_count - 1)
+            #page_curves.points.Page_U = page_curves.points.curve(nd.index).index_in_curve/(point_count - 1)
+            page_curves.points.Page_U = nd.curve_of_point(nd.index).index_in_curve/(point_count - 1)
             sheet_mesh = page_curves.to_mesh()
             sheet_mesh.edges.extrude(offset=(0, length, 0))
 

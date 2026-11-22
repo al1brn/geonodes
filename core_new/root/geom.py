@@ -39,10 +39,13 @@ __email__  = "lesideesfroides@gmail.com"
 __copyright__ = "Copyright (c) 2025, Alain Bernard"
 __license__ = "GNU GPL V3"
 
+from ..common.scripterror import NodeError
+from ..common.logging_utils import get_logger
 from ..common.sockettype import SocketType
 from ..common import utils as utils
 from ..root.tree import Tree
 
+logger = get_logger()
 
 # =============================================================================================================================
 # Interface for Geometry and Domain
@@ -103,7 +106,11 @@ class Geom:
         item_name = selection[0] if is_tuple and selection else selection
         if (isinstance(selection, slice) or (is_tuple and not selection)
                 or SocketType(item_name).type != 'STRING'):
-            print("CAUTION: syntax 'Geometry[selection] is deprecated. Use Geometry(selection) instead.")
+            logger.warning(
+                "Geometry[selection] is deprecated. Use Geometry(selection) instead.",
+                extra={'geonodes_origin': NodeError.stack_lines()},
+                stacklevel=2,
+            )
             return self(selection)
 
         if is_tuple:

@@ -167,6 +167,10 @@ Procédure opératoire : [préparation, dimensions, génération et comparaison 
 - **Nœuds `INPUT`**
   - Traités par `gen_nodes` à partir de `get_default_node_calls()`, comme les autres nœuds.
   - L'ancien générateur dédié et son helper ont été supprimés.
+  - Les règles prioritaires (textures, shaders, géométries et types pilotés) restent appliquées en amont. Les nœuds `Info` avec une entrée et les nœuds avec première entrée non attribut conservent une méthode d'instance, notamment `Object.info()`, `Image.info()` et les variantes typées de `grid_info()`. Une première sortie non attribut conserve un constructeur.
+  - Les `INPUT` restants ne passent pas dans les heuristiques générales suivantes : aucun accès ordinaire n'est inféré à partir du nom du nœud ou de ses domaines. L'accès `nd` reste disponible.
+  - Dans ce dernier cas uniquement, une entrée de `DEFAULT_IMPLEMENTATION` constitue une description complète de `NodeCall` (notamment `method_type`, `method_name`, `class_name`, et `self_socket` pour une instance). Elle passe par `expand_spec` puis le générateur standard, sans hériter de `STATIC_IMPLEMENTATIONS`. Sans cette entrée, le résultat est un `NodeCalls` vide.
+  - Les remplacements partiels des branches conservées, les propriétés et `ADDITIONAL_IMPLEMENTATIONS` gardent leur traitement indépendant.
 
 - **Accès par indice déclarés (`ITEM_IMPLEMENTATIONS`)**
   - Dictionnaire : classe cible → `getitem` / `setitem` → description du nœud.
@@ -194,7 +198,7 @@ Procédure opératoire : [préparation, dimensions, génération et comparaison 
   - `Selection` suivant une géométrie : utiliser `self.get_selection()` dans une méthode d'instance.
   - Paramètre fixé ou calculé : le retirer de la signature.
   - Multi-input : conserver les valeurs supplémentaires.
-  - Exposer une socket multi-input en `*argument`, y compris lorsqu'elle sert de récepteur : transmettre `[self, *argument]`.
+  - Exposer une socket multi-input en `*argument` et transmettre `list(argument)` dans `named_sockets` : le tuple collecté par Python est converti en liste, conformément au contrat de `Node`. Lorsqu'elle sert de récepteur, transmettre `[self, *argument]`.
   - Les variantes de nom d'une même socket multi-input partagent le même argument variadique ; sélectionner le nom actif pour la configuration.
   - Si le récepteur séparé disparaît dans une variante, l'inclure dans la socket multi-input active (Mesh Boolean en Union / Intersect).
   - Transmettre les multi-inputs directement à `Node(..., *argument)` ; pour un récepteur multi-input, appeler `Node(..., self, *argument)`. Mesh Boolean utilise la même règle dans `static_nd`, sans exception de nommage.
@@ -410,6 +414,9 @@ Procédure opératoire : [préparation, dimensions, génération et comparaison 
 - **Paramètres couleur RNA**
   - `NodeParam.Parameter` reconnaît les propriétés RNA `FLOAT`, tableaux, de sous-type `COLOR` ou `COLOR_GAMMA`, avant le filtre des objets. Elles sont enregistrées comme paramètres `Color`, avec une valeur par défaut convertie en tuple et une annotation `tuple[float, ...]` dont l'arité correspond au nombre de composantes.
   - La détection dépend des métadonnées RNA, sans exception par nœud. L'affectation utilise le mécanisme standard des paramètres Blender ; aucune conversion spéciale dans `NodeImplementation` ou `Node`.
+
+- **Paramètres vectoriels RNA**
+  - `NodeParam.Parameter` reconnaît les propriétés RNA `FLOAT`, tableaux, de sous-type `XYZ`, avant le filtre des objets. Elles sont enregistrées comme paramètres `Vector`, avec leur valeur convertie en tuple et une annotation de même arité. La sérialisation et l'affectation suivent le mécanisme standard, sans exception par nœud.
 
 - **Retour des méthodes jump**
   - Pour une méthode jump de retour `OUT` qui renvoyait directement `self`, le générateur standard renvoie `self.self_return`. `Socket.self_return` vaut `self` ; `Domain.self_return` vaut sa géométrie propriétaire, déjà mise à jour par le jump. Aucun nouveau wrapper n'est créé.

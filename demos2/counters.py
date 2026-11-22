@@ -90,7 +90,7 @@ updates
 """
 
 from geonodes import *
-from geonodes.demos import curveutil
+from . import curveutil
 
 def demo(rebuild=False):
 
@@ -533,13 +533,14 @@ def demo(rebuild=False):
 
             box_size = (x + delta*3.0, z*0.9, z + delta*2.0)
 
+            margin = 0.9*delta
             box = Group("Rounded Box",
                         size        = box_size, 
                         h_radius    = 0.1, 
                         v_radius    = 0.1, 
                         resolution  = 8, 
                         open        = True,
-                        margin      = 0.9*delta,
+                        margin      = margin,
                         depth       = 0.5*delta,
                         color       = box_color,
                         material    = box_mat,
@@ -581,7 +582,7 @@ def demo(rebuild=False):
             figure = Curve((curve0 + curve1).realize()).fill()
 
         with Layout("Intermediary factor"):
-            fac = frac.map_range_smooth_step(.5, 1, 0, 1).switch(continuous, frac)
+            fac = frac.map_range(.5, 1, 0, 1, interpolation_type="Smooth Step").switch(continuous, frac)
 
         with Layout("Move the figures"):
             figure = figure.transform(translation=(0, size*fac, 0))
@@ -791,7 +792,7 @@ def demo(rebuild=False):
             min_circle.transform(scale=scale)
 
             mark = Mesh.Cube(size=(l, .05, h_marks))
-            marks = min_circle.instance_on_points(instance=mark, rotation=Rotation(DEFAULT).align_x_to_Vector(nd.position))
+            marks = min_circle.instance_on_points(instance=mark, rotation=Rotation(DEFAULT).align_x_to_vector(nd.position))
 
         clock = marks
 

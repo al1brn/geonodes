@@ -105,21 +105,9 @@ class Mesh(Geometry):
 
     def __sub__(self, other):
         if isinstance(other, tuple):
-            return Mesh.Difference(*other, mesh_1=self)
+            return Mesh(self).difference(*other)
         else:
-            return Mesh.Difference(other, mesh_1=self)
-
-    def __truediv__(self, other):
-        if isinstance(other, tuple):
-            return Mesh.Intersect(self, *other)
-        else:
-            return Mesh.Intersect(self, other)
-
-    def __mul__(self, other):
-        if isinstance(other, tuple):
-            return Mesh.Union(self, *other)
-        else:
-            return Mesh.Union(self, other)
+            return Mesh(self).difference(other)
 
 # =============================================================================================================================
 # Curve Geometry

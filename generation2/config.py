@@ -69,60 +69,75 @@ HANDWRITTEN_IMPLEMENTATIONS = {
 }
 
 
-# Adjustments to NodeImplementation.get_default_node_calls.
-DEFAULT_IMPLEMENTATION = {
-
+DEPR = {
     # Input Nodes
     
     'Offset Corner in Face' : {
+        'method_type': 'CLASS_METHOD',
         'class_name': "Face",
         'method_name' : "offset_corner"
         },
     'Offset Point in Curve' : {
+        'method_type': 'CLASS_METHOD',
         'class_name': ["Curve", "Spline"],
         'method_name': "offset_point",
         },
     'Shortest Edge Paths' : {
+        'method_type': 'CLASS_METHOD',
         'class_name': "Edge",
         'method_name': "shortest_paths",
         },
     'NURBS Order' : {
+        'method_type': 'CLASS_METHOD',
         'class_name': "Curve",
         'method_name': "nurbs_order",
         },
     'NURBS Weight' : {
+        'method_type': 'CLASS_METHOD',
         'class_name': "Curve",
         'method_name': "nurbs_weight",
         },
     'Named Layer Selection' : {
+        'method_type': 'CLASS_METHOD',
         'class_name': ["GreasePencil", "Layer"],
         'method_name': "named_selection",
         },
     'Mesh Island' : {
+        'method_type': 'CLASS_METHOD',
         'class_name': "Mesh",
         'method_name': "island",
         },
     'Import Text': {
+        'method_type': 'CLASS_METHOD',
         'class_name': "String",
         'method_name': "ImportText",
         },
     'Handle Type Selection' : {
+        'method_type': 'CLASS_METHOD',
         'class_name': "SplinePoint",
         'method_name': "handle_type_selection",
         },
         
+}
+
+# Adjustments to NodeImplementation.get_default_node_calls.
+# For residual INPUT nodes (no inferred implementation), provide a complete NodeCall spec.
+DEFAULT_IMPLEMENTATION = {
+
+
     # Geometry nodes
 
     'Domain Size': {
         'class_name': ['Geometry', 'Mesh', 'Cloud', 'Curve', 'Instances', 'GreasePencil'],
         'parameters': {'component': ADD_LOOP},
-        'return_kind': 'NODE',
+        #'return_kind': 'NODE',
     },
     'Separate Geometry': {
         'is_jump': False,
         'return_kind' : 'cls',
         },
     'Distribute Points on Faces': {
+        'class_name' : 'Face',
         'method_name': 'distribute_points',
         },
     'Mesh Boolean': {
@@ -156,9 +171,6 @@ DEFAULT_IMPLEMENTATION = {
         'parameters' : {'mode': ADD_LOOP},
         'method_name' : f"trim_{REPLACE}",
     },
-    'Capture Attribute' : {
-        'return_kind' : 'SECOND_OUT',
-    },
     'Extrude Mesh' : {
         'class_name' : ['Mesh', 'Vertex', 'Edge', 'Face'],
         'parameters' : {'mode': ADD_LOOP},
@@ -171,7 +183,44 @@ DEFAULT_IMPLEMENTATION = {
         'class_name': 'String',
         'method_name': 'to_curves',
         'self_socket' : 'String',
+    },
+    'Join Strings' : {
+        'method_name' : 'join',
+    },
+    'Mesh Boolean': {
+        'class_name': 'Mesh',
+        'method_name': ['boolean', 'intersect', 'union', 'difference'],
+        'self_socket': ['Mesh 1', 'Mesh', 'Mesh', 'Mesh 1'],
+        'parameters': {'operation': ADD_LOOP},
     }, 
+    'Scale Elements': {
+        'method_name' : 'scale',
+    },
+
+    'Linear Gizmo' : {
+        'method_type' : 'METHOD',
+        'method_name' : 'linear_gizmo',
+        'class_name' : 'Float',
+        'self_socket' : 'Value',
+    },
+    'Dial Gizmo' : {
+        'method_type' : 'METHOD',
+        'method_name' : 'dial_gizmo',
+        'class_name' : 'Float',
+        'self_socket' : 'Value',
+    },
+    'Transform Gizmo' : {
+        'method_type' : 'METHOD',
+        'method_name' : 'transform_gizmo',
+        'class_name' : 'Matrix',
+        'self_socket' : 'Value',
+    },
+    'Get Nested Bundle Paths' : {
+        'method_name' : 'get_nested_paths',
+    },
+    'Split to Instances' : {
+        'method_name' : 'split_to_instances',
+    },
         
     # Geometry output nodes
     
@@ -210,7 +259,9 @@ DEFAULT_IMPLEMENTATION = {
         'self_socket' : None,
         'is_jump'     : False,
     },
-
+    'String Length' : {
+        'method_name' : 'length',
+    },
     #
     'Warning': {
         'method_name': REPLACE,
@@ -292,7 +343,30 @@ ADDITIONAL_IMPLEMENTATIONS = {
             'Grease Pencil',
         ],
         'is_jump': False,
-        },        
+        },
+    'Separate Transform': {
+        'class_name': 'Matrix',
+        'method_type': 'METHOD',
+        'self_socket': 'Transform',
+        'method_name': [
+            'separate_translation',
+            'separate_rotation',
+            'separate_scale',
+        ],
+        'return_socket': [
+            'Translation',
+            'Rotation',
+            'Scale',
+        ],
+        'is_jump': False,
+        },
+    'String to Value': {
+        'class_name': 'String',
+        'method_type': 'METHOD',
+        'self_socket': 'String',
+        'method_name': ['to_float', 'to_integer'],
+        'parameters': {'data_type': ['FLOAT', 'INT']},
+        },            
     },
 }
 
@@ -425,7 +499,7 @@ PROPERTIES = {
     'SplinePoint': {'radius': {'setter': {'node': 'Set Curve Radius', 'socket': 'Radius'},
                                 'getter': {'node': 'Radius'}}},
 
-    'Instances': {'transform': {'setter': {'node': 'Set Instance Transform', 'socket': 'Transform'},
+    'Instance': {'transform': {'setter': {'node': 'Set Instance Transform', 'socket': 'Transform'},
                                 'getter': {'node': 'Instance Transform'}}},
 
     'GreasePencil': {'stroke_color': {'setter': {'node': 'Set Grease Pencil Color',
@@ -466,6 +540,7 @@ STATIC_IMPLEMENTATION_ONLY = [
     'NodeClosureInput',
     'NodeClosureOutput',
     'GeometryNodeGroup',
+    'GeometryNodeCaptureAttribute',
 
     # The following nodes are used as Socket constructors
 

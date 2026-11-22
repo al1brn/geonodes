@@ -1,6 +1,6 @@
 # GeoNodes configuration
 # Blender (5, 3, 0)
-# Generated 2026-11-21 06:58:38
+# Generated 2026-11-22 08:55:44
 
 
 blender_version = (5, 3, 0)
@@ -183,8 +183,8 @@ SOCKET_IDS = {
    'NodeSocketShader'                : 'NodeSocketShader',
    'Shader'                          : 'NodeSocketShader',
    'SHADER'                          : 'NodeSocketShader',
-   'NodeSocketVector2D'              : 'NodeSocketVector',
    'NodeSocketIntUnsigned'           : 'NodeSocketInt',
+   'NodeSocketVector2D'              : 'NodeSocketVector',
    'NodeSocketVectorXYZ2D'           : 'NodeSocketVector',
 }
 
@@ -848,17 +848,17 @@ SOCKET_SUBTYPES = {
         'subtype'     : None,
         'dimensions'  : None,
     },
-    'NodeSocketVector2D'              : {
-        'nodesocket'  : 'NodeSocketVector',
-        'socket_type' : 'VECTOR',
-        'subtype'     : None,
-        'dimensions'  : 2,
-    },
     'NodeSocketIntUnsigned'           : {
         'nodesocket'  : 'NodeSocketInt',
         'socket_type' : 'INT',
         'subtype'     : None,
         'dimensions'  : None,
+    },
+    'NodeSocketVector2D'              : {
+        'nodesocket'  : 'NodeSocketVector',
+        'socket_type' : 'VECTOR',
+        'subtype'     : None,
+        'dimensions'  : 2,
     },
     'NodeSocketVectorXYZ2D'           : {
         'nodesocket'  : 'NodeSocketVector',
@@ -3311,21 +3311,21 @@ NODE_INFO = {
                 'label'       : 'Red',
                 'name'        : 'Red',
                 'socket_type' : 'VALUE',
-                'aliases'     : {'Hue', 'Red'},
+                'aliases'     : {'Red', 'Hue'},
             },
             'Green' : {
                 'bl_idname'   : 'NodeSocketFloatFactor',
                 'label'       : 'Green',
                 'name'        : 'Green',
                 'socket_type' : 'VALUE',
-                'aliases'     : {'Green', 'Saturation'},
+                'aliases'     : {'Saturation', 'Green'},
             },
             'Blue'  : {
                 'bl_idname'   : 'NodeSocketFloatFactor',
                 'label'       : 'Blue',
                 'name'        : 'Blue',
                 'socket_type' : 'VALUE',
-                'aliases'     : {'Value', 'Lightness', 'Blue'},
+                'aliases'     : {'Lightness', 'Blue', 'Value'},
             },
             'Alpha' : {
                 'bl_idname'   : 'NodeSocketFloatFactor',
@@ -8245,7 +8245,7 @@ NODE_INFO = {
                 'enum'    : ('FREE', 'AUTO', 'VECTOR', 'ALIGN'),
             },
             'mode'        : {
-                'default' : {'LEFT', 'RIGHT'},
+                'default' : {'RIGHT', 'LEFT'},
                 'type'    : 'ENUM_FLAG',
                 'enum'    : ('LEFT', 'RIGHT'),
             },
@@ -9115,7 +9115,7 @@ NODE_INFO = {
                 'label'       : 'Value',
                 'name'        : 'Value',
                 'socket_type' : 'INT',
-                'aliases'     : {'Value', 'Multiplier', 'Exponent'},
+                'aliases'     : {'Multiplier', 'Exponent', 'Value'},
             },
             'Addend' : {
                 'bl_idname'   : 'NodeSocketInt',
@@ -9843,14 +9843,14 @@ NODE_INFO = {
                 'label'       : 'Value',
                 'name'        : 'Value',
                 'socket_type' : 'VALUE',
-                'aliases'     : {'Multiplier', 'Exponent', 'Value', 'Scale', 'Base', 'Max', 'Threshold', 'Increment'},
+                'aliases'     : {'Base', 'Threshold', 'Multiplier', 'Value', 'Increment', 'Scale', 'Exponent', 'Max'},
             },
             'Addend' : {
                 'bl_idname'   : 'NodeSocketFloat',
                 'label'       : 'Addend',
                 'name'        : 'Value',
                 'socket_type' : 'VALUE',
-                'aliases'     : {'Min', 'Distance', 'Addend', 'Epsilon'},
+                'aliases'     : {'Addend', 'Epsilon', 'Min', 'Distance'},
             },
         },
         'outputs'        : {
@@ -10330,7 +10330,7 @@ NODE_INFO = {
                 'label'       : 'Mesh',
                 'name'        : 'Mesh',
                 'socket_type' : 'GEOMETRY',
-                'aliases'     : {'Mesh', 'Mesh 2'},
+                'aliases'     : {'Mesh 2', 'Mesh'},
             },
             'Self Intersection' : {
                 'bl_idname'   : 'NodeSocketBool',
@@ -13776,7 +13776,7 @@ NODE_INFO = {
                 'label'       : 'Grid',
                 'name'        : 'Grid',
                 'socket_type' : 'VALUE',
-                'aliases'     : {'Grid', 'Grid 2'},
+                'aliases'     : {'Grid 2', 'Grid'},
             },
         },
         'outputs'        : {
@@ -14114,21 +14114,21 @@ NODE_INFO = {
                 'label'       : 'Red',
                 'name'        : 'Red',
                 'socket_type' : 'VALUE',
-                'aliases'     : {'Hue', 'Red'},
+                'aliases'     : {'Red', 'Hue'},
             },
             'Green' : {
                 'bl_idname'   : 'NodeSocketFloat',
                 'label'       : 'Green',
                 'name'        : 'Green',
                 'socket_type' : 'VALUE',
-                'aliases'     : {'Green', 'Saturation'},
+                'aliases'     : {'Saturation', 'Green'},
             },
             'Blue'  : {
                 'bl_idname'   : 'NodeSocketFloat',
                 'label'       : 'Blue',
                 'name'        : 'Blue',
                 'socket_type' : 'VALUE',
-                'aliases'     : {'Value', 'Lightness', 'Blue'},
+                'aliases'     : {'Lightness', 'Blue', 'Value'},
             },
             'Alpha' : {
                 'bl_idname'   : 'NodeSocketFloat',
@@ -15018,7 +15018,7 @@ NODE_INFO = {
                 'enum'    : ('FREE', 'AUTO', 'VECTOR', 'ALIGN'),
             },
             'mode'        : {
-                'default' : {'LEFT', 'RIGHT'},
+                'default' : {'RIGHT', 'LEFT'},
                 'type'    : 'ENUM_FLAG',
                 'enum'    : ('LEFT', 'RIGHT'),
             },
@@ -17819,6 +17819,11 @@ NODE_INFO = {
     'FunctionNodeInputVector'                  : {
         'name'           : 'Vector',
         'params'         : {
+            'vector'            : {
+                'default' : (0.0, 0.0, 0.0),
+                'type'    : 'Vector',
+                'enum'    : None,
+            },
             'vector_dimensions' : {
                 'default' : 3,
                 'type'    : 'VALUE',
@@ -17892,21 +17897,21 @@ NODE_INFO = {
                 'label'       : 'Vector',
                 'name'        : 'Vector',
                 'socket_type' : 'VECTOR',
-                'aliases'     : {'Max', 'Vector', 'Multiplier', 'Exponent', 'Incident', 'Increment'},
+                'aliases'     : {'Incident', 'Increment', 'Vector', 'Multiplier', 'Exponent', 'Max'},
             },
             'Addend' : {
                 'bl_idname'   : 'NodeSocketVector',
                 'label'       : 'Addend',
                 'name'        : 'Vector',
                 'socket_type' : 'VECTOR',
-                'aliases'     : {'Min', 'Reference', 'Addend'},
+                'aliases'     : {'Addend', 'Min', 'Reference'},
             },
             'IOR'    : {
                 'bl_idname'   : 'NodeSocketFloat',
                 'label'       : 'IOR',
                 'name'        : 'Scale',
                 'socket_type' : 'VALUE',
-                'aliases'     : {'Scale', 'IOR'},
+                'aliases'     : {'IOR', 'Scale'},
             },
         },
         'outputs'        : {
@@ -19186,21 +19191,21 @@ NODE_INFO = {
                 'label'       : 'Red',
                 'name'        : 'Red',
                 'socket_type' : 'VALUE',
-                'aliases'     : {'Hue', 'Red'},
+                'aliases'     : {'Red', 'Hue'},
             },
             'Green' : {
                 'bl_idname'   : 'NodeSocketFloatFactor',
                 'label'       : 'Green',
                 'name'        : 'Green',
                 'socket_type' : 'VALUE',
-                'aliases'     : {'Green', 'Saturation'},
+                'aliases'     : {'Saturation', 'Green'},
             },
             'Blue'  : {
                 'bl_idname'   : 'NodeSocketFloatFactor',
                 'label'       : 'Blue',
                 'name'        : 'Blue',
                 'socket_type' : 'VALUE',
-                'aliases'     : {'Value', 'Lightness', 'Blue'},
+                'aliases'     : {'Lightness', 'Blue', 'Value'},
             },
         },
         'outputs'        : {
@@ -21719,21 +21724,21 @@ NODE_INFO = {
                 'label'       : 'Red',
                 'name'        : 'Red',
                 'socket_type' : 'VALUE',
-                'aliases'     : {'Hue', 'Red'},
+                'aliases'     : {'Red', 'Hue'},
             },
             'Green' : {
                 'bl_idname'   : 'NodeSocketFloat',
                 'label'       : 'Green',
                 'name'        : 'Green',
                 'socket_type' : 'VALUE',
-                'aliases'     : {'Green', 'Saturation'},
+                'aliases'     : {'Saturation', 'Green'},
             },
             'Blue'  : {
                 'bl_idname'   : 'NodeSocketFloat',
                 'label'       : 'Blue',
                 'name'        : 'Blue',
                 'socket_type' : 'VALUE',
-                'aliases'     : {'Value', 'Lightness', 'Blue'},
+                'aliases'     : {'Lightness', 'Blue', 'Value'},
             },
         },
         'has_custom_in'  : False,

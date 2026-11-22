@@ -80,7 +80,7 @@ def demo(rebuild=False):
 
         gid.switch(use_islands, nd.mesh_island().island_index)
         
-        instances = mesh.faces.split_to_instances(group_id=gid)
+        instances = mesh.faces.to_instances(group_id=gid)
         
         for rep in instances.insts.for_each():
 
@@ -104,7 +104,7 @@ def demo(rebuild=False):
                 area = m.faces.attribute_statistic(nd.face_area)
 
             with Layout("To Instance"):
-                cell = m.points.split_to_instances()
+                cell = m.points.to_instances()
                 cell.position = c
                 cell.insts.Volume = vol
                 cell.insts.Size = size
@@ -154,7 +154,7 @@ def demo(rebuild=False):
             splitted.transform(rotation=Rotation(rot).invert())
             
         splitted.switch(small, Mesh())
-        insts = splitted.points.split_to_instances(group_id=nd.mesh_island().island_index)
+        insts = splitted.points.to_instances(group_id=nd.mesh_island().island_index)
         
         insts.out()
     
@@ -169,7 +169,7 @@ def demo(rebuild=False):
         min_size = Float(.1, "Min Size")
         seed = Integer(0, "Seed")
         
-        cells = mesh.points.split_to_instances()
+        cells = mesh.points.to_instances()
         for rep in repeat(count, cells=cells):
             
             rep_seed = seed.hash_value(rep.iteration)
@@ -250,7 +250,7 @@ def demo(rebuild=False):
         with Layout("Split to islands"):
                 
             mesh = Mesh(rep.mesh)
-            mesh.remove_named_attribute("Wildcard", "Temp*")
+            mesh.remove("Temp*", "Wildcard")
 
             cells = G().mesh_to_located_instances(
                 mesh, 

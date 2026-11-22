@@ -341,8 +341,7 @@ class CameraCulling(Package):
             mesh.points.store("TEMP Vertex Behind", Float(node.behind))
             mesh.faces.store("TEMP Face Behind", Float.Named("TEMP Vertex Behind"))
 
-            #visible = Float.Named("TEMP Face Behind") <= 1 - 1/Face.corners_total(nd.index)
-            visible = Float.Named("TEMP Face Behind") <= 1 - 1/Face.corners(nd.index).total
+            visible = Float.Named("TEMP Face Behind") <= 1 - 1/nd.corners_of_face(nd.index).total
             mesh.faces.Visible = Boolean("Visible") & visible
 
         # ---------------------------------------------------------------------------

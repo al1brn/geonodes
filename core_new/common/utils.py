@@ -50,10 +50,12 @@ import bpy
 from ...kernel.colors import SysColor
 from .sockettype import SocketType
 from .scripterror import NodeError
+from .logging_utils import get_logger
 from .. import constants
 from .blender import get_font
 
 BUILD = False
+logger = get_logger()
 
 # ====================================================================================================
 # Socket classes
@@ -1014,7 +1016,7 @@ def has_bsocket(value):
     return False
 
 
-def check_link(link, halt=False):
+def check_link(link, halt=False, origin=None):
 
     if link is None:
         return False
@@ -1030,7 +1032,10 @@ def check_link(link, halt=False):
     if halt:
         raise RuntimeError(f"Invalid link from {ssock(link.from_socket)} to {ssock(link.to_socket)}")
     else:
-        print(f"Caution: Invalid link from {ssock(link.from_socket)} to {ssock(link.to_socket)}")
+        source = NodeError.stack_lines() if origin is None else origin
+        logger.warning("Invalid link from %s to %s",
+                       ssock(link.from_socket), ssock(link.to_socket),
+                       extra={'geonodes_origin': source})
 
     return False
 

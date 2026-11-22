@@ -171,7 +171,7 @@ def demo(rebuild=False):
         # String operators
         s = String("A string")
         s += ": this is something added. "
-        s += String(" ") * ("This", "is", "a", String("sentence."))
+        s += String(" ").join("This", "is", "a", String("sentence."))
 
         # Join Geometry
         geo = Geometry() # Input geometry
@@ -181,9 +181,9 @@ def demo(rebuild=False):
         cube = Mesh.Cube()
         ico  = Mesh.IcoSphere(radius=.8)
 
-        mesh = cube - ico # Difference
-        mesh = cube * ico # Union
-        mesh = cube / ico # Intersect   
+        mesh = cube.difference(ico) # Difference
+        mesh = cube.union(ico)      # Union
+        mesh = cube.intersect(ico)  # Intersect   
 
     # ====================================================================================================
     # Method names
@@ -304,9 +304,10 @@ def demo(rebuild=False):
         col = col1.mix(col2, factor_mode='UNIFORM')
         
         # You can alternatively used the methods suffixed by the mode
-        col = col1.mix_darken(col2)
-        col = col1.mix_multiply(col2)
-        col = col1.mix_burn(col2)
+        # DEPRECATED
+        #col = col1.mix_darken(col2)
+        #col = col1.mix_multiply(col2)
+        #col = col1.mix_burn(col2)
 
         sphere.out() 
 
@@ -346,25 +347,25 @@ def demo(rebuild=False):
         # Peer sockets can be read from any socket
         point_count = face_count.point_count
         # The two sockets wrap the same blender socket
-        assert info._bsocket == point_count._bsocket
+        assert info._bsocket == point_count._bsocket, f"Error {info=} {point_count=}"
 
         # ---------------------------------------------------------------------------
         # Names collision
         # ---------------------------------------------------------------------------
 
         # The returned socket is the first one : 'Transform'
-        # Let's name if info for the ssake of clarity
-        transfo = nd.self_object.info()
+        # Let's name object info for the sake of clarity
+        #transfo = nd.self_object.info()
 
         # Location peer socket
-        loc = transfo.location
+        #loc = transfo.location
 
         # But rotation and scale are properties of Transformation class
-        rot0 = transfo.rotation # rotation property of transfo
+        #rot0 = transfo.rotation # rotation property of transfo
 
         # To read the peer socket, we need to suffix the name with _
-        rot1 = transfo.rotation_
-        assert rot0._bsocket != rot1._bsocket
+        #rot1 = transfo.rotation_
+        #assert rot0._bsocket != rot1._bsocket, f"Error: {rot0=}, {rot1=}"
 
         # ---------------------------------------------------------------------------
         # Example
@@ -507,7 +508,7 @@ def demo(rebuild=False):
         # Geometries are provided as method arguments
         # ----------------------------------------------------------------------------------------------------
         
-        simple = Geometry().menu_switch("Input", {
+        simple = Geometry().menu_switch({
             "Cube": Mesh.Cube(),
             "Ico": Mesh.IcoSphere(),
             "Cone": Mesh.Cone(), 

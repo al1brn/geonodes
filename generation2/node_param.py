@@ -29,7 +29,7 @@ class NodeParam:
 
         if self.param_type == 'Euler':
             self.typing = 'tuple[float, float, float]'
-        elif self.param_type == 'Color':
+        elif self.param_type in ('Color', 'Vector'):
             self.typing = 'tuple[' + ', '.join(['float'] * len(value)) + ']'
         elif self.param_type == 'ENUM':
             self.typing = list(enums) if enums else 'str'
@@ -57,6 +57,9 @@ class NodeParam:
         if (prop.type == 'FLOAT' and prop.is_array
                 and prop.subtype in ('COLOR', 'COLOR_GAMMA')):
             return cls(bnode, name, tuple(value), 'Color')
+
+        if prop.type == 'FLOAT' and prop.is_array and prop.subtype == 'XYZ':
+            return cls(bnode, name, tuple(value), 'Vector')
 
         s = str(value)
 
@@ -233,7 +236,7 @@ class NodeParam:
 
     @property
     def arg_value(self):
-        if self.param_type in ('VALUE', 'Color'):
+        if self.param_type in ('VALUE', 'Color', 'Vector'):
             if isinstance(self.value, str):
                 return f"'{self.value}'"
             else:

@@ -728,7 +728,6 @@ class TreeClass:
             if node.bl_idname in STATIC_IMPLEMENTATION_ONLY:
                 return
 
-
             implementation = self.implementation(node)
             node_calls = implementation.get_default_node_calls()
 

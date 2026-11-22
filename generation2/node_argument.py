@@ -243,7 +243,7 @@ class NodeArguments:
 
                 self.set_socket_keyword("named_sockets", ": dict", "{}")
                 if is_self:
-                    self.computations.append("all_sockets = {'Self': self, **named_sockets}")
+                    self.computations.append("all_sockets = {self._name: self, **named_sockets}")
                     self.set_dict_to_named_sockets("all_sockets")
                     self.set_args_doc("self", "Socket", _NO_DEFAULT, f"Dynamic socket created with 'Self' name")
                 else:
@@ -288,7 +288,7 @@ class NodeArguments:
                 self.set_args_doc("self", node_socket.class_name, _NO_DEFAULT, f"Self feeds the multi input socket '{node_socket.socket_name}'")
                 ret_name = "self"
             else:
-                self.set_named_socket(socket_id, name)
+                self.set_named_socket(socket_id, f"list({name})")
                 ret_name = name
 
             self.set_args_doc(name, node_socket.class_name, _NO_DEFAULT, f"Multi input socket '{node_socket.socket_name}'")

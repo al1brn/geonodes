@@ -1,7 +1,7 @@
 import bpy
 
 from geonodes import *
-from geonodes.demos import shaders
+from . import shaders
 
 def demo(rebuild=False):
 
@@ -40,7 +40,7 @@ def demo(rebuild=False):
         sym = Integer.MenuSwitch({'X': 0, 'Y': 1, 'Z': 2}, menu=Input("Symmetry"))
         from_index = Integer(0, "From Index")
         
-        hpos = Curve.handle_positions(relative=True).node
+        hpos = nd.curve_handle_positions(relative=True).node
         
         pos0 = c.points.sample_index(nd.position, index=from_index)
         left0 = c.points.sample_index(hpos.left, index=from_index)

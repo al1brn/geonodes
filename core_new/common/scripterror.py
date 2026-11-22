@@ -62,12 +62,10 @@ FULL_PATH = False
 # ====================================================================================================
 
 def is_in_core(file_name):
-    p = Path(file_name)
-
-    parent = p.parent.name
-    grandparent = p.parent.parent.name
-
-    return parent.startswith("core") or (parent == "generated" and grandparent.startswith("core"))
+    path = Path(file_name).resolve()
+    package = Path(__file__).resolve().parents[2]
+    return any(path.is_relative_to(package / name)
+               for name in ('core', 'core_new', 'kernel'))
 
 # ====================================================================================================
 # Geonodes specific Exception
@@ -131,7 +129,7 @@ class NodeError(Exception):
     # Loop on the stack
 
     @staticmethod
-    def get_stack(ignore_core: bool = True):
+    def get_stack(ignore_core: bool = True, limit=None):
 
         # List of dict:
         # - file_name
@@ -141,7 +139,7 @@ class NodeError(Exception):
         stack = []
         insp_stack = inspect.stack()
 
-        for i_frame, frame_info in enumerate(insp_stack):
+        for frame_info in insp_stack:
 
             # ----- Generated source code
 
@@ -150,7 +148,10 @@ class NodeError(Exception):
 
             path = Path(frame_info.filename)
 
-            if ignore_core and is_in_core(path) and i_frame < (len(insp_stack) - 1):
+            if path.resolve() == Path(__file__).resolve():
+                continue
+
+            if ignore_core and is_in_core(path):
                 continue
 
             # ----- Python embedded in a blend file
@@ -169,7 +170,7 @@ class NodeError(Exception):
             # ----- Read from blend text or from the file
 
             code_line0 = frame_info.lineno - 1
-            code_line1 = frame_info.positions.end_lineno
+            code_line1 = frame_info.lineno
             code_lines = []
             if blend_text:
                 lines = bpy.data.texts[text_key].lines
@@ -203,6 +204,8 @@ class NodeError(Exception):
                 'code'      : "\n".join(code_lines)
 
             })
+            if limit is not None and len(stack) >= limit:
+                break
 
         return stack
 
@@ -212,21 +215,12 @@ class NodeError(Exception):
     @staticmethod
     def stack_lines(ignore_core: bool = True):
 
-        stack = ["Traceback (most recent call last):\n"]
+        user_stack = NodeError.get_stack(ignore_core, limit=1)
+        if not user_stack:
+            return []
 
-        # Ignore only the two first items  there the core is not ignored
-        user_stack = NodeError.get_stack(ignore_core)
-        if not ignore_core:
-            user_stack = user_stack[2:]
-
-        for item in user_stack:
-            file_name = item['file_name']
-            lineno = item['lineno']
-            stack.append(f"File '{file_name}', line {lineno}")
-            stack.append(item['code'])
-            stack.append("")
-
-        return stack
+        item = user_stack[0]
+        return [f"File '{item['file_name']}', line {item['lineno']}", item['code']]
 
     # ----------------------------------------------------------------------------------------------------
     # Search a keyword in the stack
@@ -243,7 +237,7 @@ class NodeError(Exception):
             kws = [str(keyword)]
 
         for kw in kws:
-            for item in NodeError.get_stack(IGNORE_CORE)[2:]:
+            for item in NodeError.get_stack(IGNORE_CORE):
                 if item['code'].find("raise") >= 0:
                     continue
                 if item['code'].find(kw) >= 0:

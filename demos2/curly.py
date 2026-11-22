@@ -69,8 +69,8 @@ def demo(rebuild=False):
 
             frise[(nd.index % resol).equal(1)].offset = (-.6, 0, .5)
 
-            frise[(nd.index % resol).equal(0)].set_both_handle_type(handle_type='ALIGN')
-            frise[(nd.index % resol).equal(1)].set_both_handle_type(handle_type='FREE')
+            frise[(nd.index % resol).equal(0)].set_handle_type(handle_type='ALIGN')
+            frise[(nd.index % resol).equal(1)].set_handle_type(handle_type='FREE')
 
             frise[(nd.index % resol).equal(0)].left_handle_offset = (-.1, 0, 0)
             frise[(nd.index % resol).equal(0)].right_handle_offset = (.3, 0, 0)

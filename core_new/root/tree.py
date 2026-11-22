@@ -58,6 +58,7 @@ import bpy
 from time import perf_counter
 
 from ..common.scripterror import NodeError
+from ..common.buildprogress import BuildProgress
 from ...kernel.colors import SysColor
 from ..common import treearrange as treearrange
 from .. import constants
@@ -431,6 +432,8 @@ class Tree:
 
         """
         self._build_started = perf_counter()
+        self._build_progress = None
+        self._link_origins = {}
         self._arrange_time = 0.0
         if Tree._counter_started is None:
             Tree._counter_started = self._build_started
@@ -742,7 +745,11 @@ class Tree:
             # unresolved immediately after a link is created. Validate links
             # only once Blender has inferred the completed tree.
             for link in self._btree.links:
-                utils.check_link(link)
+                origin = self._link_origins.get(link.as_pointer())
+                if origin is None:
+                    node = self._nodes.get(link.to_node.name)
+                    origin = node._stack if node is not None else []
+                utils.check_link(link, origin=origin)
             warnings = self.check_warnings()
 
         # Remove from stack
@@ -769,11 +776,22 @@ class Tree:
         if self._btree.bl_idname == 'ShaderNodeTree' and self._material is not None:
             name = f"Material '{self._material.name}'"
         else:
-            name = f"Tree '{self._btree.name}'"
+            if self._btree.bl_idname == 'ShaderNodeTree':
+                kind = 'Shader Group'
+            elif self._btree.bl_idname == 'GeometryNodeTree':
+                kind = ('Tool' if self._btree.is_tool else
+                        'Group' if self._is_group else 'Modifier')
+            else:
+                kind = 'Tree'
+            name = f"{kind} '{self._btree.name}'"
         
         elapsed = perf_counter() - self._build_started
-        print(f"{name} built: {self._str_stats}, warnings: {warnings}, "
-              f"time: {elapsed:.2f} s (arrange: {self._arrange_time:.2f} s)")
+        summary = (f"{name} built: {self._str_stats}, warnings: {warnings}, "
+                   f"time: {elapsed:.2f} s (arrange: {self._arrange_time:.2f} s)")
+        if self._build_progress is None:
+            print(summary)
+        else:
+            self._build_progress.finish(summary, preserve=error or bool(warnings))
 
         Tree._total_nodes += len(self._btree.nodes)
         Tree._total_links += len(self._btree.links)
@@ -787,13 +805,23 @@ class Tree:
 
     def __enter__(self):
         self.push()
+        if self._rebuild and not self._loaded:
+            if self._btree.bl_idname == 'ShaderNodeTree' and self._material is not None:
+                label = f"Building '{self._material.name}'..."
+            else:
+                label = f"Building '{self._btree.name}'..."
+            self._build_progress = BuildProgress(label)
         return self
 
     def __exit__(self, type, exc_value, traceback):
 
         ok = exc_value is None or isinstance(exc_value, Break)
 
-        self.pop(not ok)
+        try:
+            self.pop(not ok)
+        finally:
+            if self._build_progress is not None and not self._build_progress.closed:
+                self._build_progress.abort()
 
         if isinstance(exc_value, Break):
             return True
@@ -1297,6 +1325,7 @@ class Tree:
                 )
 
         link = self._btree.links.new(out_socket, in_socket, handle_dynamic_sockets=handle_dynamic_sockets)
+        self._link_origins[link.as_pointer()] = NodeError.stack_lines()
 
         return link
 

@@ -133,7 +133,8 @@ def demo(rebuild=False):
 
         seed  = Integer(0, "Seed")
 
-        grid = Mesh.LineEndPoints(end_location=(2*count, 0, 0), count=count)
+        #grid = Mesh.LineEndPoints(end_location=(2*count, 0, 0), count=count)
+        grid = Mesh.Line(end_location=(2*count, 0, 0), count=count, mode='End Points')
 
         #with grid.points.for_each(position=nd.position) as feel:
         for feel in grid.points.for_each(position=nd.position):
@@ -166,7 +167,8 @@ def demo(rebuild=False):
         density = Float(.3, "Density")*Float(1).switch(nd.is_viewport, .1)
         seed    = Integer(0, "Seed")
 
-        cloud = surface.faces.distribute_points_poisson(distance_min=1, density_factor=density, seed=seed)
+        #cloud = surface.faces.distribute_points_poisson(distance_min=1, density_factor=density, seed=seed)
+        cloud = surface.faces.distribute_points(distance_min=1, density_factor=density, distribute_method="Poisson Disk", seed=seed)
 
         trees = Group("Trees Collection", count=10, seed=seed + 1)._out
         forest = cloud.instance_on_points(

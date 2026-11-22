@@ -6,7 +6,7 @@ from ..kernel import snake_case, CamelCase, get_class_name, CLASS_NAMES
 
 from ..kernel import GEOMETRY_CLASSES 
 from .config import ADD_LOOP, LOOP_ONLY, NO_STATIC_CODE
-from .config import STATIC_IMPLEMENTATION_ONLY, DEFAULT_IMPLEMENTATION, DOMAINS, DOMAIN_NAME
+from .config import STATIC_IMPLEMENTATION_ONLY, DEFAULT_IMPLEMENTATION
 from .config import STATIC_IMPLEMENTATIONS
 from .utils import replace_token
 
@@ -310,7 +310,6 @@ class NodeImplementation:
                 implement   = False,
                 rules       = "Static only node",
             )            
-        
 
         # ---------------------------------------------------------------------------
         # Texture nodes
@@ -424,6 +423,24 @@ class NodeImplementation:
                 node_calls = self.get_domain_calls(node_calls)
 
             return node_calls
+        
+        # ---------------------------------------------------------------------------
+        # Info Node
+        # ---------------------------------------------------------------------------
+
+        if (node.color_tag == 'INPUT' and first_input is not None
+                and (name_tokens[-1] == 'Info' or not first_input.is_attribute)):
+            class_name = first_input.class_name
+            if len(name_tokens) == 2 and name_tokens == [class_name, 'Info']:
+                method_name = 'info'
+
+            return NodeCalls.method(
+                category="Input Node",
+                class_name=class_name,
+                method_name=method_name,
+                self_socket=first_input.socket_name,
+                rules="Info Node",
+            ).overrides(over_spec)
 
         # ---------------------------------------------------------------------------
         # Nodes with output geometry
@@ -467,116 +484,29 @@ class NodeImplementation:
                 return self.get_data_type_calls(node_call)
 
         # ---------------------------------------------------------------------------
-        # Input nodes
+        # Input nodes with an actual receiver or a non-attribute output
         # ---------------------------------------------------------------------------
-        
+
+        if node.color_tag == 'INPUT' and first_output is not None and not first_output.is_attribute:
+            return NodeCalls.class_method(
+                category="Input Node",
+                class_name=first_output.class_name,
+                method_name=CamelCase(node.name),
+                rules="INPUT node with a non-attribute output",
+            ).overrides(over_spec)
+
+        # ---------------------------------------------------------------------------
+        # Remaining INPUT nodes have no inferred implementation outside nd.
+        # A configured exception is a complete description, not an override.
+        # ---------------------------------------------------------------------------
+
         if node.color_tag == 'INPUT':
-        
-            class_name = None
-        
-            method_name = snake_case(node.name)
-            is_class_method = False
+            spec = DEFAULT_IMPLEMENTATION.get(node.name)
+            if spec is None:
+                return NodeCalls()
+            return NodeCalls(*(NodeCall(**row) for row in self.expand_spec(spec)))
 
-            category = "Input Node"
-            rules = "Node is an Input Node"
-
-            # Info node
-            if (len(name_tokens) > 1) and (name_tokens[-1] == 'Info') and first_input is not None:
-                rules += "\nNode is xxx Info"
-                class_name = first_input.class_name
-                if class_name == name_tokens[0] and len(name_tokens) == 2:
-                    method_name = 'info'
-                else:
-                    method_name = snake_case(node.name)
-
-            else:
-                # First input socket can be None, attr or socket
-                if bool(inputs):
-                    socket = first_input
-                    in_is_attr = socket.is_attribute
-                    in_class_name = None if in_is_attr else socket.class_name
-                else:
-                    in_is_attr = True
-                
-                # Same for output socket
-                if bool(outputs):
-                    socket = first_output
-                    out_is_attr = socket.is_attribute
-                    out_class_name = None if out_is_attr else socket.class_name
-                else:
-                    out_is_attr = True
-
-                rules += f" {in_is_attr=}, {out_is_attr=}"
-                
-                # if first input is not an attr, this is instance method
-                if not in_is_attr:
-                    class_name = in_class_name
-                
-                # if first output is not an attr, this is class constructor
-                elif not out_is_attr:
-                    class_name = out_class_name
-                    is_class_method = True
-                
-                else:
-                    is_class_method = True
-                
-                    tokens = [token.strip() for token in node.name.split(" ")]
-                
-                    if len(tokens) > 2 and tokens[-2] == "of":
-                        target = tokens[-1]
-                        for dom in DOMAINS:
-                            if target in [dom, dom + 's']:
-                                class_name = DOMAIN_NAME.get(dom, dom)
-                                if class_name in GEOMETRY_CLASSES:
-                                    method_name = snake_case(' '.join(tokens))
-                                else:
-                                    method_name = snake_case(' '.join(tokens[:-2])) 
-                                rules += f"\n'Domain 1 of Domain 0' name -> {class_name=}, {method_name=}"
-                                break
-                        
-                    elif len(tokens) > 2 and tokens[0] == "Is":
-                        target = tokens[1]
-                        for dom in DOMAINS:
-                            if target in [dom, dom + 's']:
-                                class_name = DOMAIN_NAME.get(dom, dom)
-                                # Domain of Class would collide with domain name
-                                # for instance : 'Points of Curve' -> points which collides width Curbe.points domain
-                                method_name = snake_case(' '.join(tokens[2:]))
-                                rules += f"\n'Domain is xxx' name -> {class_name=}, {method_name=}"
-                                break
-                            
-                    else:
-                        target = tokens[0]
-                        for dom in ["Grease"] + DOMAINS:
-                            if target in [dom, dom + 's']:
-                                if dom == 'Grease':
-                                    class_name = "GreasePencil"
-                                    method_name = snake_case(' '.join(tokens[2:]))
-                                else:
-                                    class_name = DOMAIN_NAME.get(dom, dom)
-                                    method_name = snake_case(' '.join(tokens[1:]))
-                                break
-
-            if False:
-                print(f"DEBUG '{self.node.name}' ({self.node.bl_idname}): {is_class_method=} {class_name=}, {over_spec=}")
-
-            if is_class_method:
-                method_name = CamelCase(node.name)
-                return NodeCalls.class_method(
-                    category = category,
-                    class_name = class_name,
-                    method_name = method_name,
-                    rules = rules,
-                ).overrides(over_spec)
-            else:
-                return NodeCalls.method(
-                    category = category,
-                    class_name = class_name,
-                    method_name = method_name,
-                    self_socket = first_input.socket_name,
-                    rules = rules,
-                ).overrides(over_spec)
-                    
+        # ---------------------------------------------------------------------------
         # ---------------------------------------------------------------------------
         # Grid node
         # ---------------------------------------------------------------------------
@@ -633,9 +563,30 @@ class NodeImplementation:
         # ---------------------------------------------------------------------------
 
         if node.data_type_drives_first_input:
-            # Two version : constructor and method
 
-            if True:
+            # Has domain : domain is class name with auto data type
+            if node.has_domain_parameter:
+                node_calls = NodeCalls.method(
+                    category = 'Data type driven',
+                    class_name = None,
+                    method_name = snake_case(node.name),
+                    self_socket = "IGNORE",
+                    auto_data_type = data_type_input,
+                    rules = "'data_type' parameter drives first input as method and domain parameter",
+                ).overrides(over_spec)
+                return self.get_domain_calls(node_calls)
+
+            # No domain : data_type drives the class name
+            node_calls = NodeCalls.method(
+                category = 'Data type driven',
+                class_name = None,
+                method_name = snake_case(node.name),
+                self_socket = data_type_input,
+                rules = "'data_type' parameter drives first input as method, no domain",
+            ).overrides(over_spec)
+            return self.get_data_type_calls(node_calls)
+
+            if False:
                 ncs = NodeCalls.class_method(
                     category = 'Data type driven',
                     class_name = None,

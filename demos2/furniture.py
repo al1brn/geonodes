@@ -327,15 +327,15 @@ def block_input(def_name):
 
 def new_seed(bundle):
     with Layout("Seed"):
-        seed = bundle.get_item("Seed", socket_type='INTEGER')
+        seed = bundle["Seed", Integer]
         seed.switch_false(seed.exists, 0)
         seed += 1
-        bundle.set_item("Seed", seed)
+        bundle["Seed"] = seed
 
     return bundle, seed
 
 def get_blocks(bundle):
-    blocks = Bundle(bundle).get_item("Blocks", socket_type='BUNDLE', structure_type='LIST')
+    blocks = Bundle(bundle)["Blocks", Bundle]
     root = Bundle.Combine({
         "Name": String("Root"),
         "Type": Integer(-1),
@@ -359,7 +359,7 @@ def _block_index():
     name = String("Block", "Name")
     blocks = get_blocks(bundle)
     for search in repeat(blocks.list_length(), index=-1):
-        matches = blocks[search.iteration].get_item("Name", socket_type='STRING') == name
+        matches = blocks.get_list_item(search.iteration)["Name", String] == name
         search.index.switch(matches, search.iteration)
     search.index.out("Index")
 
@@ -370,19 +370,19 @@ def set_block(bundle, block_id, block):
     blocks = get_blocks(bundle)
     with Closure() as replacement:
         index = Integer(0, "Index")
-        Bundle.Switch(index == block_id, blocks[index], block).out("Block")
-    bundle.set_item("Blocks", replacement.to_list(blocks.list_length()), structure_type='LIST')
+        Bundle.Switch(index == block_id, blocks.get_list_item(index), block).out("Block")
+    bundle["Blocks"] = replacement.to_list(blocks.list_length())
     return bundle
 
 def store_named_block(bundle, name, block):
     index = block_index(bundle, name)
     block = Bundle(block)
-    block.set_item("Name", name)
+    block["Name"] = name
     appended = get_blocks(bundle)
     appended.list_append(block)
     updated = set_block(Bundle(bundle), index, block)
     added = Bundle(bundle)
-    added.set_item("Blocks", appended, structure_type='LIST')
+    added["Blocks"] = appended
     bundle.switch(index >= 0, updated)
     bundle.switch(index < 0, added)
     return bundle
@@ -390,20 +390,20 @@ def store_named_block(bundle, name, block):
 def transform_decoration_blocks(bundle, parent_id, transform, use_size=True):
     blocks = get_blocks(bundle)
     for child in repeat(blocks.list_length(), bundle=bundle):
-        block = blocks[child.iteration]
-        matches = block.get_item("Type", socket_type='INTEGER') == 1
-        matches &= block.get_item("Parent Block ID", socket_type='INTEGER') == parent_id
+        block = blocks.get_list_item(child.iteration)
+        matches = block["Type", Integer] == 1
+        matches &= block["Parent Block ID", Integer] == parent_id
         updated_block = Bundle(block)
         for prefix in ("", "Inner ", "Outer "):
-            location = block.get_item(prefix + "Location", socket_type='VECTOR')
-            size = block.get_item(prefix + "Size", socket_type='VECTOR') if use_size else None
-            updated_block.set_item(prefix + "Location", transform(location, size))
+            location = block[prefix + "Location", Vector]
+            size = block[prefix + "Size", Vector] if use_size else None
+            updated_block[prefix + "Location"] = transform(location, size)
         updated = set_block(Bundle(child.bundle), child.iteration, updated_block)
         child.bundle.switch(matches, updated)
     return child.bundle
 
 def get_resources(bundle):
-    resources = Bundle(bundle).get_item("Resources", socket_type='BUNDLE', structure_type='LIST')
+    resources = Bundle(bundle)["Resources", Bundle]
     resources.switch_false(resources.exists)
     return resources
 
@@ -423,7 +423,7 @@ def _resource_index():
     name = String("Default", "Name")
     resources = get_resources(bundle)
     for search in repeat(resources.list_length(), index=-1):
-        matches = resources[search.iteration].get_item("Name", socket_type='STRING') == name
+        matches = resources.get_list_item(search.iteration)["Name", String] == name
         search.index.switch(matches, search.iteration)
     search.index.out("Index")
 
@@ -447,7 +447,7 @@ def define_named_dimensions():
     for i in range(5):
         dimension_name = String("ABCDE"[i], "Name")
         value = Float.Distance(0.0, "Value", shape="Single")
-        bundle.set_item("Names/" + dimension_name, value)
+        bundle["Names/" + dimension_name] = value
 
     nd.set_geometry_bundle(bundle=bundle).out()
 
@@ -463,7 +463,7 @@ def get_named_dimension():
     
     dimension_name = String("Dimension", "Name")
     
-    value = bundle.get_item("Names/" + dimension_name, socket_type='FLOAT')
+    value = bundle["Names/" + dimension_name, Float]
     
     value.out("Value")    
 
@@ -504,12 +504,12 @@ def define_resource():
 
     with Closure() as replacement:
         i = Integer(0, "Index")
-        Bundle.Switch(i == index, resources[i], res_bundle).out("Resource")
+        Bundle.Switch(i == index, resources.get_list_item(i), res_bundle).out("Resource")
     updated = Bundle(replacement.to_list(resources.list_length()))
     appended = Bundle(resources)
     appended.list_append(res_bundle)
     resources = Bundle.Switch(index < 0, updated, appended)
-    bundle.set_item("Resources", resources, structure_type='LIST')
+    bundle["Resources"] = resources
     nd.set_geometry_bundle(bundle=bundle).out()
 
 # ----------------------------------------------------------------------------------------------------
@@ -531,9 +531,9 @@ def get_resource():
     by_name = Integer.Switch(named_index >= 0, fallback_index, named_index)
     by_id = Integer.Switch(valid_id, fallback_index, pid)
     index = Integer.Switch(use_id, by_name, by_id)
-    selected = Bundle.Switch(count == 0, resources[index], default_resource())
-    selected.set_item("Plank Name", selected.get_item("Name", socket_type='STRING'))
-    selected.set_item("ID", index)
+    selected = Bundle.Switch(count == 0, resources.get_list_item(index), default_resource())
+    selected["Plank Name"] = selected["Name", String]
+    selected["ID"] = index
 
     missing_name = (plank_name != "Default") & (named_index < 0)
     missing_id = valid_id.bnot() & ((count > 0) | (pid != 0))
@@ -561,10 +561,10 @@ def define_plinth():
     recess_x = Float.Distance(0.05, "Recess X", 0, shape="Single")
     recess_y = Float.Distance(0.05, "Recess Y", 0, shape="Single")
 
-    bundle.set_item("Names/Plinth Resource ID", resource_id)
-    bundle.set_item("Names/Plinth Height", height)
-    bundle.set_item("Names/Plinth Recess X", recess_x)
-    bundle.set_item("Names/Plinth Recess Y", recess_y)
+    bundle["Names/Plinth Resource ID"] = resource_id
+    bundle["Names/Plinth Height"] = height
+    bundle["Names/Plinth Recess X"] = recess_x
+    bundle["Names/Plinth Recess Y"] = recess_y
     geo.set_bundle(bundle)
     geo.out()
 
@@ -579,13 +579,13 @@ def _get_plinth_dimensions():
     missing = Boolean(False)
 
     for name, fallback in (("Height", 0.07), ("Recess X", 0.02), ("Recess Y", 0.02)):
-        value = bundle.get_item("Names/Plinth " + name, socket_type='FLOAT')
+        value = bundle["Names/Plinth " + name, Float]
         exists = value.exists
         missing |= exists.bnot()
         value.switch_false(exists, fallback)
         value.out(name)
 
-    resource_id = bundle.get_item("Names/Plinth Resource ID", socket_type='INTEGER')
+    resource_id = bundle["Names/Plinth Resource ID", Integer]
     exists = resource_id.exists
     missing |= exists.bnot()
     resource_id.switch_false(exists, get_resource(geo).id)
@@ -601,21 +601,21 @@ def merge_resources(bundle, incoming, replace_existing):
     for resource in repeat(
         incoming.list_length(), bundle=bundle, mapping=Integer(0).to_list(count=0),
     ):
-        candidate = incoming[resource.iteration]
-        name = candidate.get_item("Name", socket_type='STRING')
+        candidate = incoming.get_list_item(resource.iteration)
+        name = candidate["Name", String]
         index = resource_index(resource.bundle, name)
         current = get_resources(resource.bundle)
         target = Integer.Switch(index >= 0, current.list_length(), index)
         with Closure() as replacement:
             i = Integer(0, "Index")
-            Bundle.Switch(i == index, current[i], candidate).out("Resource")
+            Bundle.Switch(i == index, current.get_list_item(i), candidate).out("Resource")
         replaced = Bundle(replacement.to_list(current.list_length()))
         appended = Bundle(current)
         appended.list_append(candidate)
         merged = Bundle.Switch(index < 0, current, appended)
         merged.switch((index >= 0) & replace_existing, replaced)
         updated = Bundle(resource.bundle)
-        updated.set_item("Resources", merged, structure_type='LIST')
+        updated["Resources"] = merged
         resource.bundle = updated
         resource.mapping.list_append(target)
     return resource.bundle, resource.mapping
@@ -647,12 +647,12 @@ def add_cut_sheet(bundle, block_name, cut_bundle):
         ok = cut_node.count > 0
 
         index = block_index(bundle, block_name)
-        block = get_blocks(bundle)[index]
+        block = get_blocks(bundle).get_list_item(index)
         cuts_path = "Cuts/" + cut_node.plank_name
-        cuts = block.get_item(cuts_path, socket_type="BUNDLE", structure_type="LIST")
+        cuts = block[cuts_path, Bundle]
         cuts.switch_false(cuts.exists)
         cuts.list_append(cut_bundle)
-        block.set_item(cuts_path, cuts)
+        block[cuts_path] = cuts
         updated = set_block(Bundle(bundle), index, block)
         bundle.switch(ok, updated)
 
@@ -749,7 +749,7 @@ def create_faces():
     
     plank = create_plank(geo, width=wy, length=lz, setup='Door').link_inputs()
     cut_bundle = plank.get_bundle(remove=True)
-    cut_bundle.set_item("Count", count_y*count_z)
+    cut_bundle["Count"] = count_y*count_z
     
     ofsy = (0, wy + margin, 0)
     ofsz = (0, 0, lz + margin)
@@ -789,7 +789,7 @@ def create_shelves():
 
     with Layout("Several Shelves"):
         cut_bundle = plank.get_bundle(remove=True)
-        cut_bundle.set_item("Count", count)
+        cut_bundle["Count"] = count
         
         height_int = height - thick*count
         
@@ -834,7 +834,7 @@ def create_separators():
 
     with Layout("Several Separators"):
         cut_bundle = plank.get_bundle(remove=True)
-        cut_bundle.set_item("Count", count)
+        cut_bundle["Count"] = count
         
         width_int = width - thick*count
         
@@ -871,7 +871,7 @@ def get_block_properties():
     
     blocks = get_blocks(geo.get_bundle())
     block_id = block_index(geo.get_bundle(), block_name)
-    bundle = blocks[block_id]
+    bundle = blocks.get_list_item(block_id)
     exists = block_id >= 0
     nope = exists.bnot()
 
@@ -1077,34 +1077,34 @@ def add_external_block():
             (local_resources.list_length() == 0) & (local_blocks.list_length() > 1),
             Bundle.List(default_resource()),
         )
-        local_bundle.set_item("Resources", local_resources, structure_type='LIST')
+        local_bundle["Resources"] = local_resources
         incoming = get_resources(source_bundle)
         incoming.switch(incoming.list_length() == 0, Bundle.List(default_resource()))
         merged_bundle, resource_map = merge_resources(local_bundle, incoming, replace_existing)
 
     with Layout("Append imported blocks"):
         for imported in repeat(incoming_blocks.list_length() - 1, blocks=local_blocks):
-            block = Bundle(incoming_blocks[imported.iteration + 1])
+            block = Bundle(incoming_blocks.get_list_item(imported.iteration + 1))
             for prefix in ("", "Inner ", "Outer "):
-                position = block.get_item(prefix + "Location", socket_type='VECTOR')
-                block.set_item(prefix + "Location", position + translation)
-            parent = block.get_item("Parent Block ID", socket_type='INTEGER')
-            block.set_item("Parent Block ID", Integer.Switch(parent > 0, parent, parent + block_offset))
-            cuts = block.get_item("Cuts", socket_type='BUNDLE')
+                position = block[prefix + "Location", Vector]
+                block[prefix + "Location"] = position + translation
+            parent = block["Parent Block ID", Integer]
+            block["Parent Block ID"] = Integer.Switch(parent > 0, parent, parent + block_offset)
+            cuts = block["Cuts", Bundle]
             paths = cuts.get_nested_paths(mode="Data Type", data_type="Bundle")
             for resource in repeat(paths.list_length(), cuts=cuts):
                 path = paths[resource.iteration]
-                entries = cuts.get_item(path, socket_type='BUNDLE', structure_type='LIST')
+                entries = cuts[path, Bundle]
                 with Closure() as remap:
                     index = Integer(0, "Index")
-                    entry = Bundle(entries[index])
-                    old_id = entry.get_item("Res ID", socket_type='INTEGER')
-                    entry.set_item("Res ID", resource_map[old_id])
+                    entry = Bundle(entries.get_list_item(index))
+                    old_id = entry["Res ID", Integer]
+                    entry["Res ID"] = resource_map[old_id]
                     entry.out("Entry")
                 updated = Bundle(resource.cuts)
-                updated.set_item(path, remap.to_list(entries.list_length()), structure_type='LIST')
+                updated[path] = remap.to_list(entries.list_length())
                 resource.cuts = updated
-            block.set_item("Cuts", resource.cuts)
+            block["Cuts"] = resource.cuts
             imported.blocks.list_append(block)
 
     with Layout("Remap geometry references"):
@@ -1113,48 +1113,48 @@ def add_external_block():
         mesh = Mesh(furniture)
         for attribute in ("Block ID", "Support Block ID"):
             old_id = Integer(attribute)
-            mesh.points[old_id > 0][attribute] = old_id + block_offset
+            mesh.points(old_id > 0)[attribute] = old_id + block_offset
         old_plank = Integer("Plank ID")
-        mesh.points[old_plank > 0]["Plank ID"] = old_plank + plank_offset
+        mesh.points(old_plank > 0)["Plank ID"] = old_plank + plank_offset
         old_resource = Integer("Res ID")
-        mesh.points[old_resource.exists]["Res ID"] = resource_map[old_resource]
+        mesh.points(old_resource.exists)["Res ID"] = resource_map[old_resource]
         # Apply the selected destination resources to imported boards.
         resources = get_resources(merged_bundle)
         for material in repeat(resources.list_length(), mesh=mesh):
-            resource = resources[material.iteration]
+            resource = resources.get_list_item(material.iteration)
             boards = Mesh(material.mesh)
             reference = Integer("Res ID")
             selection = reference.exists & (reference == material.iteration)
-            boards.faces[selection].material = resource.get_item("Material", socket_type='MATERIAL')
-            boards.faces[selection]["Color"] = resource.get_item("Color", socket_type='RGBA')
+            boards.faces(selection).material = resource["Material", Material]
+            boards.faces(selection)["Color"] = resource["Color", Color]
             material.mesh = boards
         mesh = Mesh(material.mesh)
         instances = Instances(mesh)
         for attribute in ("Block ID", "Support Block ID"):
             old_id = Integer(attribute)
-            instances.insts[old_id > 0][attribute] = old_id + block_offset
+            instances.insts(old_id > 0)[attribute] = old_id + block_offset
         old_plank = Integer("Plank ID")
-        instances.insts[old_plank > 0]["Plank ID"] = old_plank + plank_offset
+        instances.insts(old_plank > 0)["Plank ID"] = old_plank + plank_offset
         old_resource = Integer("Res ID")
-        instances.insts[old_resource.exists]["Res ID"] = resource_map[old_resource]
+        instances.insts(old_resource.exists)["Res ID"] = resource_map[old_resource]
 
     # Import named parameters without discarding unrelated local parameters.
     result_bundle = Bundle(merged_bundle)
-    source_names = source_bundle.get_item("Names", socket_type='BUNDLE')
-    local_names = local_bundle.get_item("Names", socket_type='BUNDLE')
+    source_names = source_bundle["Names", Bundle]
+    local_names = local_bundle["Names", Bundle]
     parameters = source_names.get_nested_paths(mode="Data Type", data_type="Float")
     for parameter in repeat(parameters.list_length(), names=local_names):
         path = parameters[parameter.iteration]
         updated = Bundle(parameter.names)
-        updated.set_item(path, Bundle(source_names).get_item(path, socket_type='FLOAT'))
+        updated[path] = Bundle(source_names)[path, Float]
         parameter.names = updated
-    source_plinth = source_names.get_item("Plinth Resource ID", socket_type='INTEGER')
+    source_plinth = source_names["Plinth Resource ID", Integer]
     names = Bundle(parameter.names)
     with_plinth = Bundle(names)
-    with_plinth.set_item("Plinth Resource ID", resource_map[source_plinth])
+    with_plinth["Plinth Resource ID"] = resource_map[source_plinth]
     names.switch(source_plinth.exists, with_plinth)
-    result_bundle.set_item("Names", names)
-    result_bundle.set_item("Blocks", imported.blocks, structure_type='LIST')
+    result_bundle["Names"] = names
+    result_bundle["Blocks"] = imported.blocks
     imported_geometry = Geometry(instances)
     imported_geometry.transform(translation=translation)
     result = geo + imported_geometry
@@ -1194,7 +1194,7 @@ def debug_block():
     debug = cube + frame
 
     remaining = Mesh(geo)
-    remaining.points[del_planks & (Integer("Block ID") == block.id)].delete()
+    remaining.points(del_planks & (Integer("Block ID") == block.id)).delete()
     geo = Geometry(remaining)
     geo += debug
     geo.set_bundle(bundle)
@@ -1293,25 +1293,25 @@ def _block_duplicate():
 
     with Layout("Copy Block"):
         source_id = block_index(bundle, source)
-        source_bundle = get_blocks(bundle)[source_id]
+        source_bundle = get_blocks(bundle).get_list_item(source_id)
         exists = source_id >= 0
         new_bundle = Bundle(bundle)
         new_id = get_blocks(bundle).list_length()
         target_bundle = Bundle(source_bundle)
-        target_bundle.set_item("Name", target)
+        target_bundle["Name"] = target
         new_bundle = store_named_block(new_bundle, target, target_bundle)
         bundle.switch(exists, new_bundle)
 
     with Layout("Duplicate decoration blocks"):
         source_blocks = get_blocks(bundle)
         for child in repeat(source_blocks.list_length(), bundle=bundle):
-            original = source_blocks[child.iteration]
-            matches = original.get_item("Type", socket_type='INTEGER') == 1
-            matches &= original.get_item("Parent Block ID", socket_type='INTEGER') == source_id
+            original = source_blocks.get_list_item(child.iteration)
+            matches = original["Type", Integer] == 1
+            matches &= original["Parent Block ID", Integer] == source_id
             copied = Bundle(original)
-            copied.set_item("Parent Block ID", new_id)
+            copied["Parent Block ID"] = new_id
             child_name = String.Join(
-                target, "Deco", original.get_item("Deco Index", socket_type='INTEGER').to_string(),
+                target, "Deco", original["Deco Index", Integer].to_string(),
                 delimiter=" ",
             )
             updated = store_named_block(Bundle(child.bundle), child_name, copied)
@@ -1321,7 +1321,7 @@ def _block_duplicate():
     with Layout("Duplicate Planks"):
 
         max_plank_id = Integer(Mesh(geo).points.attribute_statistic(Integer("Plank ID")).max_)
-        planks = Mesh(geo.points[exists & (Integer("Block ID")==source_id)].separate())
+        planks = Mesh(geo).points(exists & (Integer("Block ID")==source_id)).separate()
         planks.points["Block ID"] = new_id
         planks.points["Plank ID"] = Integer("Plank ID") + max_plank_id
 
@@ -1355,7 +1355,7 @@ def _block_translate():
     with Layout("Translate Block"):
 
         block_id = block_index(bundle, block_name)
-        source_bundle = get_blocks(bundle)[block_id]
+        source_bundle = get_blocks(bundle).get_list_item(block_id)
         exists = block_id >= 0
 
         new_bundle = Bundle(bundle)
@@ -1370,7 +1370,7 @@ def _block_translate():
             ("Inner Location", props.inner_location),
             ("Outer Location", props.outer_location),
         ):
-            target_bundle.set_item(name, location + translation)
+            target_bundle[name] = location + translation
 
         new_bundle = set_block(new_bundle, block_id, target_bundle)
         bundle.switch(exists, new_bundle)
@@ -1380,7 +1380,7 @@ def _block_translate():
         )
 
     with Layout("Planks"):
-        planks = Mesh(geo.points[exists & (Integer("Block ID")==block_id)].separate())
+        planks = Mesh(geo).points(exists & (Integer("Block ID")==block_id)).separate()
         remain = planks.inverted
         planks.offset = translation
 
@@ -1412,7 +1412,7 @@ def _block_symmetry():
 
     with Layout("Blocks Symmetry"):
         block_id = block_index(bundle, block_name)
-        source_bundle = get_blocks(bundle)[block_id]
+        source_bundle = get_blocks(bundle).get_list_item(block_id)
         exists = block_id >= 0
 
         new_bundle = Bundle(bundle)
@@ -1435,12 +1435,12 @@ def _block_symmetry():
                 (x0, y0, zs2 - z1),
                 index=sym_index,
             )
-            sym_bundle.set_item(name, mirrored)
+            sym_bundle[name] = mirrored
 
-        sym_bundle.set_item("Left Thickness", Float.Switch(sym_index == 1, props.left_thickness, props.right_thickness))
-        sym_bundle.set_item("Right Thickness", Float.Switch(sym_index == 1, props.right_thickness, props.left_thickness))
-        sym_bundle.set_item("Bottom Thickness", Float.Switch(sym_index == 2, props.bottom_thickness, props.top_thickness))
-        sym_bundle.set_item("Top Thickness", Float.Switch(sym_index == 2, props.top_thickness, props.bottom_thickness))
+        sym_bundle["Left Thickness"] = Float.Switch(sym_index == 1, props.left_thickness, props.right_thickness)
+        sym_bundle["Right Thickness"] = Float.Switch(sym_index == 1, props.right_thickness, props.left_thickness)
+        sym_bundle["Bottom Thickness"] = Float.Switch(sym_index == 2, props.bottom_thickness, props.top_thickness)
+        sym_bundle["Top Thickness"] = Float.Switch(sym_index == 2, props.top_thickness, props.bottom_thickness)
 
         new_bundle = set_block(new_bundle, block_id, sym_bundle)
         bundle.switch(exists, new_bundle)
@@ -1456,7 +1456,7 @@ def _block_symmetry():
 
     with Layout("Planks"):
 
-        planks = Mesh(geo.points[exists & (Integer("Block ID") == block_id)].separate())
+        planks = Mesh(geo).points(exists & (Integer("Block ID") == block_id)).separate()
         remain = planks.inverted
 
         x, y, z = nd.position.xyz
@@ -1635,8 +1635,8 @@ def add_shelves():
         shelf_deco = decoration_input("Shelf Deco")
 
         bundle, planks = add_plank(geo, bundle, block_name, None, shelves, True)
-        parent = get_blocks(bundle)[block_dims.id]
-        parent.set_item("Shelf Deco", shelf_deco)
+        parent = get_blocks(bundle).get_list_item(block_dims.id)
+        parent["Shelf Deco"] = shelf_deco
         bundle = set_block(bundle, block_dims.id, parent)
         planks = Mesh(planks)
 
@@ -1646,7 +1646,7 @@ def add_shelves():
         shelf_count = shelf_instances.insts.count
         original_bundle = Bundle(bundle)
         for compartment in repeat(shelf_count + 1, bundle=bundle, floor=z):
-            next_shelf = Mesh(planks.points[Integer("Index") == compartment.iteration].separate())
+            next_shelf = Mesh(planks).points(Integer("Index") == compartment.iteration).separate()
             limits = next_shelf.points.attribute_statistic(nd.position).node
             last = compartment.iteration == shelf_count
             ceiling = Float.Switch(last, limits.min.z, z + sz)
@@ -1730,36 +1730,36 @@ def add_separators():
         # Retain every slot. Volumes replaced by the new partition are disabled,
         # then reused by name; extra compartments are appended.
         for keep in repeat(blocks.list_length(), bundle=bundle, count=0):
-            child = blocks[keep.iteration]
-            matches = child.get_item("Type", socket_type='INTEGER') == 1
-            matches &= child.get_item("Parent Block ID", socket_type='INTEGER') == block_dims.id
+            child = blocks.get_list_item(keep.iteration)
+            matches = child["Type", Integer] == 1
+            matches &= child["Parent Block ID", Integer] == block_dims.id
             inactive = Bundle(child)
-            inactive.set_item("Type", Integer(2))
+            inactive["Type"] = Integer(2)
             updated = set_block(Bundle(keep.bundle), keep.iteration, inactive)
             keep.bundle.switch(matches & (separator_count > 0), updated)
             keep.count += Integer.Switch(matches, 0, 1)
 
         for volume in repeat(blocks.list_length() + 1, bundle=keep.bundle, count=0):
             fallback = volume.iteration == blocks.list_length()
-            child = blocks[volume.iteration.min((blocks.list_length() - 1).max(0))]
-            matches = child.get_item("Type", socket_type='INTEGER') == 1
-            matches &= child.get_item("Parent Block ID", socket_type='INTEGER') == block_dims.id
+            child = blocks.get_list_item(volume.iteration.min((blocks.list_length() - 1).max(0)))
+            matches = child["Type", Integer] == 1
+            matches &= child["Parent Block ID", Integer] == block_dims.id
             active = Boolean.Switch(fallback, matches, keep.count == 0)
             location = Vector.Switch(
-                fallback, child.get_item("Location", socket_type='VECTOR'), block_dims.location,
+                fallback, child["Location", Vector], block_dims.location,
             )
             size = Vector.Switch(
-                fallback, child.get_item("Size", socket_type='VECTOR'), block_dims.size,
+                fallback, child["Size", Vector], block_dims.size,
             )
             mode = Integer.Switch(
-                fallback, child.get_item("Decoration Mode", socket_type='INTEGER'), separator_deco,
+                fallback, child["Decoration Mode", Integer], separator_deco,
             )
             vx, vy, vz = location.xyz
             dx, dy, dz = size.xyz
             for part in repeat(
                 separator_count + 1, bundle=volume.bundle, count=volume.count, left=vy,
             ):
-                separator = Mesh(planks.points[Integer("Index") == part.iteration].separate())
+                separator = planks.points(Integer("Index") == part.iteration).separate()
                 limits = separator.points.attribute_statistic(nd.position).node
                 last = part.iteration == separator_count
                 right = Float.Switch(last, limits.min.y.clamp(vy, vy + dy), vy + dy)
@@ -2142,25 +2142,25 @@ def add_box():
         # Block id
         planks.points["Block ID"] = block_dims.id
 
-        parent = get_blocks(bundle)[block_dims.id]
+        parent = get_blocks(bundle).get_list_item(block_dims.id)
         for name, mode, side in (
             ("Bottom Deco", bottom_deco, bot_side),
             ("Top Deco", top_deco, top_side),
         ):
-            previous = parent.get_item(name, socket_type='INTEGER')
-            parent.set_item(name, Integer.Switch(side != SIDE_NONE, previous, mode))
-        parent.set_item("Inner Location", Vector((
+            previous = parent[name, Integer]
+            parent[name] = Integer.Switch(side != SIDE_NONE, previous, mode)
+        parent["Inner Location"] = Vector((
             block_dims.inner_location.x, y + left_y1, z + bot_z1,
-        )))
-        parent.set_item("Inner Size", Vector((
+        ))
+        parent["Inner Size"] = Vector((
             block_dims.inner_size.x, right_y0 - left_y1, top_z0 - bot_z1,
-        )))
-        parent.set_item("Outer Location", Vector((
+        ))
+        parent["Outer Location"] = Vector((
             block_dims.outer_location.x, y + left_y0, outer_bot_z,
-        )))
-        parent.set_item("Outer Size", Vector((
+        ))
+        parent["Outer Size"] = Vector((
             block_dims.outer_size.x, right_y1 - left_y0, z + top_z1 - outer_bot_z,
-        )))
+        ))
 
         for side, requested, previous, preserve in (
             ("Left", left_thick, block_dims.left_thickness, preserve_left),
@@ -2168,7 +2168,7 @@ def add_box():
             ("Bottom", bot_thick, block_dims.bottom_thickness, preserve_bot),
             ("Top", top_thick, block_dims.top_thickness, preserve_top),
         ):
-            parent.set_item(side + " Thickness", Float.Switch(preserve, requested, previous))
+            parent[side + " Thickness"] = Float.Switch(preserve, requested, previous)
 
         bundle = set_block(bundle, block_dims.id, parent)
 
@@ -2189,11 +2189,11 @@ def define_decoration():
     settings = decoration_inputs()
     bundle = geo.get_bundle()
     index = block_index(bundle, block_name)
-    block = get_blocks(bundle)[index]
+    block = get_blocks(bundle).get_list_item(index)
     exists = index >= 0
     exists.bnot().warning("Block '" + block_name + "' not found.")
     for name, value in settings.items():
-        block.set_item(name, value)
+        block[name] = value
     updated = Bundle(bundle)
     updated = set_block(updated, index, block)
     bundle.switch(exists, updated)
@@ -2292,7 +2292,7 @@ def open_door():
     )
     angle = Float.Angle(0, "Angle", 0, pi)
 
-    dim_node = Mesh(geo).points[selection].attribute_statistic(nd.position).node
+    dim_node = Mesh(geo).points(selection).attribute_statistic(nd.position).node
 
     x0, y0, z0 = dim_node.min.xyz
     x1, y1, z1 = dim_node.max.xyz
@@ -2306,7 +2306,7 @@ def open_door():
     rot.switch(axis == 1, y_rot)
 
     geo = Mesh(geo)
-    geo[selection].position = pivot + rot @ (nd.position - pivot)
+    geo(selection).position = pivot + rot @ (nd.position - pivot)
 
     geo.out()
 
@@ -2342,7 +2342,7 @@ def divide_block():
     line = Mesh.Line(count=10)
     for i in range(10):
         size = Float.Distance(0.3, f"Size {i}", 0.1).clamp(0, total)
-        line[nd.index == i].position = (size, 0, 0)
+        line(nd.index == i).position = (size, 0, 0)
 
     for rep in repeat(count, geo=geo, pos=0.0, stop=False):
         size = line.points.sample_index(nd.position.x, index=rep.iteration)
@@ -2396,7 +2396,7 @@ def divide_block():
 
         bundle = rep.geo.get_bundle()
         block_id = get_blocks(bundle).list_length()
-        parent_block = get_blocks(bundle)[props.id]
+        parent_block = get_blocks(bundle).get_list_item(props.id)
         bundle = store_named_block(bundle, sub_name, Bundle.Combine({
             "Type": Integer(0),
             "Parent Block ID": Integer(0),
@@ -2404,12 +2404,12 @@ def divide_block():
             "Deco Index": Integer(0),
             "On Plinth": Boolean(False),
             **{
-                key: parent_block.get_item(key, socket_type='INTEGER')
+                key: parent_block[key, Integer]
                 for key in ("Bottom Deco", "Shelf Deco", "Top Deco")
             },
             "Shelf Deco": Integer.Switch(
                 is_vert & create_planks,
-                parent_block.get_item("Shelf Deco", socket_type='INTEGER'),
+                parent_block["Shelf Deco", Integer],
                 separator_deco,
             ),
             **bounds,
@@ -2505,7 +2505,7 @@ def open_drawer():
         all=False).link_inputs()
     factor = Float.Factor(0.5, "Factor", 0, 1)
 
-    dim_node = Mesh(geo).points[selection].attribute_statistic(nd.position).node
+    dim_node = Mesh(geo).points(selection).attribute_statistic(nd.position).node
 
     _, sy, sz = (dim_node.max - dim_node.min).xyz
 
@@ -2517,7 +2517,7 @@ def open_drawer():
 
     open_offset = (factor.interpolate(0, sx - 0.02), 0, 0)
     drawer_box.offset = open_offset
-    geo[selection].offset = open_offset
+    geo(selection).offset = open_offset
 
     geo += drawer_box
     geo.out()
@@ -2533,8 +2533,8 @@ def change_plank_material():
     material = Material("Furniture", "Material")
     color = Color(DEFAULT_FURNITURE_COLOR, "Color")
 
-    geo.faces[selection].material = material
-    geo.faces[selection]["Color"] = color
+    geo.faces(selection).material = material
+    geo.faces(selection)["Color"] = color
     geo.out()
 
 # ====================================================================================================
@@ -2559,7 +2559,7 @@ def replace_plank():
     replacement_size = replacement_bounds.max_ - replacement_bounds.min_
     selection = selection & (Mesh(replacement_bounds).points.count > 0)
 
-    planks = Mesh(geo.points[selection].separate())
+    planks = Mesh(geo).points(selection).separate()
     remaining = planks.inverted
     instances = planks.points.split_to_instances(group_id=Integer("Plank ID"))
 
@@ -2593,7 +2593,7 @@ def delete_plank():
     geo = Mesh(Geometry())
     bundle = geo.get_bundle()
     selection = select_plank(geo).link_inputs()
-    geo.points[selection].delete()
+    geo.points(selection).delete()
     geo.set_bundle(bundle)
     geo.out()
 
@@ -2653,7 +2653,7 @@ def cut_sheet():
             resources = get_resources(bundle)
             resources.switch(resources.list_length() == 0, Bundle.List(default_resource()))
             for rep in repeat(resources.list_length(), labels=Geometry.Join(), offset=0.0):
-                name = resources[rep.iteration].get_item("Name", socket_type='STRING')
+                name = resources.get_list_item(rep.iteration)["Name", String]
                 label = rep.iteration.to_string() + " : " + name
                 label_curve = Curve(label.to_curves(size=0.1).realize()).fill()
                 label_curve.offset = 0, rep.offset, 0
@@ -2665,7 +2665,7 @@ def cut_sheet():
             blocks = get_blocks(bundle)
             column_x = labels.points.attribute_statistic(nd.position).node.max.x + 0.3
             for rep in repeat(blocks.list_length() - 1, labels=labels, offset=0.0):
-                name = blocks[rep.iteration + 1].get_item("Name", socket_type='STRING')
+                name = blocks.get_list_item(rep.iteration + 1)["Name", String]
                 label_curve = Curve(name.to_curves(size=0.1).realize()).fill()
                 label_curve.offset = column_x, rep.offset, 0
                 rep.labels += label_curve
@@ -2674,17 +2674,17 @@ def cut_sheet():
 
         with Layout("Cuts per resource name"):
             for rep in repeat(blocks.list_length() - 1, cloud_pts=Cloud.Points(count=0)):
-                cuts = blocks[rep.iteration + 1].get_item("Cuts", socket_type='BUNDLE')
+                cuts = blocks.get_list_item(rep.iteration + 1)["Cuts", Bundle]
                 resources = cuts.get_nested_paths(mode="Data Type", data_type="Bundle")
                 for resource in repeat(resources.list_length(), cloud_pts=rep.cloud_pts):
-                    entries = cuts.get_item(resources[resource.iteration], socket_type='BUNDLE', structure_type='LIST')
+                    entries = cuts[resources.get_list_item(resource.iteration), Bundle]
                     for cut in repeat(entries.list_length(), cloud_pts=resource.cloud_pts):
-                        node = entries[cut.iteration].separate(signature=CUT_SIG)
+                        node = entries.get_list_item(cut.iteration).separate(signature=CUT_SIG)
                         pt = Cloud.Points(count=1)
-                        pt["Res ID"] = node.res_id
-                        pt["Count"] = node.count
-                        pt["Size"] = node.size
-                        pt["Orient"] = node.orient
+                        pt.points["Res ID"] = node.res_id
+                        pt.points["Count"] = node.count
+                        pt.points["Size"] = node.size
+                        pt.points["Orient"] = node.orient
                         cut.cloud_pts += pt
                     resource.cloud_pts = cut.cloud_pts
                 rep.cloud_pts = resource.cloud_pts
@@ -2697,7 +2697,7 @@ def cut_sheet():
 # ====================================================================================================
 
 def block_by_id(geo, block_id):
-    return get_blocks(geo.get_bundle())[block_id]
+    return get_blocks(geo.get_bundle()).get_list_item(block_id)
 
 # ----------------------------------------------------------------------------------------------------
 # Show Deco id
@@ -2716,7 +2716,7 @@ def show_decoration_ids():
     for rep in repeat(blocks.list_length(), labels=None):
 
         block_id = rep.iteration
-        block = blocks[rep.iteration].separate(signature=BLOCK_SIG)
+        block = blocks.get_list_item(rep.iteration).separate(signature=BLOCK_SIG)
         
         label = block_id.to_string().to_curves(
             size=font_size,
@@ -2750,8 +2750,8 @@ def _extract_composition():
     block_id = Integer(0, "Block ID")
     instances = Instances(None, "Instances")
     block = block_by_id(geo, block_id)
-    location = block.get_item("Inner Location", socket_type='VECTOR')
-    size = block.get_item("Inner Size", socket_type='VECTOR')
+    location = block["Inner Location", Vector]
+    size = block["Inner Size", Vector]
     seed = Integer(0, "Seed")
 
     shelf_depth, shelf_width, available_height = size.xyz
@@ -2759,9 +2759,9 @@ def _extract_composition():
     attempts = Integer((instances.insts.count * 0.4).ceil()).max(5)
     for rep in repeat(attempts, index=-1, stop=False, seed=seed):
         index = Integer.Random(0, (instances.insts.count - 1).max(0), id=0, seed=rep.seed.hash_value(9173))
-        selected = Instances(instances.insts[nd.index==index].separate())
+        selected = instances.insts(nd.index==index).separate()
         sel_mesh = Mesh(selected.realize())
-        dims = sel_mesh.points[nd.position.z > 0].attribute_statistic(nd.position).node
+        dims = sel_mesh.points(nd.position.z > 0).attribute_statistic(nd.position).node
         height_dims = sel_mesh.points.attribute_statistic(nd.position).node
 
         candidate_size = dims.max - dims.min
@@ -2773,14 +2773,14 @@ def _extract_composition():
         rep.seed = rep.seed.hash_value(934487)
 
     index = rep.index
-    selected = Instances(instances.insts[nd.index == index].separate())
+    selected = instances.insts(nd.index == index).separate()
     sel_mesh = Mesh(selected.realize())
 
     island_count = sel_mesh.points.sample_index(nd.mesh_island().island_count, index=0)
 
     with Layout("Search Base Face"):
         for rep in repeat(island_count, mesh=Mesh(Geometry.Join()), base_exists=False, base_loc=(0.0, 0.0, 0.0), base_size=(0.0, 0.0, 0.0)):
-            island = Mesh(sel_mesh.points[nd.mesh_island().island_index==rep.iteration].separate())
+            island = Mesh(sel_mesh.points(nd.mesh_island().island_index==rep.iteration).separate())
             island_dims = island.points.attribute_statistic(nd.position).node
             island_size = island_dims.max - island_dims.min
 
@@ -2830,7 +2830,7 @@ def _extract_composition():
         fits &= item_width <= shelf_width
         fits &= item_height <= available_height
         remaining = Instances(instances)
-        remaining.insts[fits & (nd.index == index)].delete()
+        remaining.insts(fits & (nd.index == index)).delete()
         remaining.out("Instances")
         item_mesh.switch_false(fits).out("Mesh")
 
@@ -2841,8 +2841,8 @@ def _extract_items():
     block_id = Integer(0, "Block ID")
     instances = Instances(None, "Instances")
     block = block_by_id(geo, block_id)
-    location = block.get_item("Inner Location", socket_type='VECTOR')
-    size = block.get_item("Inner Size", socket_type='VECTOR')
+    location = block["Inner Location", Vector]
+    size = block["Inner Size", Vector]
     max_items = Integer(10, "Max Items", 0, 20)
     dist_min = Float.Distance(.01, "Min Distance", 0)
     dist_max = Float.Distance(.05, "Distance", 0)
@@ -2881,7 +2881,7 @@ def _extract_items():
         item.decorations += chosen
         item.used.switch(add, end)
         item.stop = item.stop | fits.bnot()
-        available.insts[add & delete_items & (nd.index == index)].delete()
+        available.insts(add & delete_items & (nd.index == index)).delete()
         item.available = available
 
     margin = (width - item.used).max(0)
@@ -2926,10 +2926,10 @@ def furniture_decoration():
         blocks.list_length(), decorations=Geometry.Join(),
         available=compositions, available_items=items,
     ):
-        block = blocks[volume.iteration]
+        block = blocks.get_list_item(volume.iteration)
         deco_id = volume.iteration
-        mode = block.get_item("Decoration Mode", socket_type='INTEGER')
-        active = block.get_item("Type", socket_type='INTEGER') == 1
+        mode = block["Decoration Mode", Integer]
+        active = block["Type", Integer] == 1
         for selection in repeat(Integer.Switch(all_blocks, tokens.list_length(), 0), selected=all_blocks):
             selection.selected |= tokens[selection.iteration].to_integer() == deco_id
         active &= selection.selected

@@ -66,7 +66,12 @@ op_     = G("4D G")
 # =============================================================================================================================
 # Build the 4D engine
 
-def demo(clear=False, *, rebuild=False):
+def demo(full=False):
+
+    D4Shaders.build(full=full)
+
+    return
+
 
     Tree._init_package('4D Engine')
     build_shaders(rebuild=rebuild)
@@ -76,18 +81,20 @@ def demo(clear=False, *, rebuild=False):
 
     Tree._display_counter('4D Engine built')
 
-
 # ====================================================================================================
 # Shaders
 # ====================================================================================================
 
-def build_shaders(rebuild=False):
+class D4Shaders(Package):
+
+    prefix = "4D"
 
     # ----------------------------------------------------------------------------------------------------
     # Grid shader group
     # ----------------------------------------------------------------------------------------------------
 
-    with ShaderNodes("Grid", is_group=True, rebuild=rebuild):
+    @shader_group()
+    def grid():
 
         USE_GRID = False
 
@@ -99,16 +106,16 @@ def build_shaders(rebuild=False):
         count = 6
 
         if USE_GRID:
-            on_x = gnmath.mless_than((x + (thick/2)) % (1/(2*count)), thick)
-            on_y = gnmath.mless_than((y + (thick)) % (1/count), thick*2)
+            on_x = gnmath.less_than((x + (thick/2)) % (1/(2*count)), thick)
+            on_y = gnmath.less_than((y + (thick)) % (1/count), thick*2)
             grid = gnmath.add(on_x, on_y, True)
 
         color = Color() # Black
 
         thick *= 2
-        x_green = gnmath.mless_than((x + (thick/2)) % .5, thick)
-        x_red   = gnmath.mless_than((x + .25 + (thick/2)) % .5, thick)
-        y_blue  = gnmath.mless_than((y + .5 + (thick)) % .5, thick*2)
+        x_green = gnmath.less_than((x + (thick/2)) % .5, thick)
+        x_red   = gnmath.less_than((x + .25 + (thick/2)) % .5, thick)
+        y_blue  = gnmath.less_than((y + .5 + (thick)) % .5, thick*2)
 
         if USE_GRID:
             grid = gnmath.add(grid, x_green, True)
@@ -130,7 +137,8 @@ def build_shaders(rebuild=False):
     # Axis Shader
     # ----------------------------------------------------------------------------------------------------
 
-    with ShaderNodes("4 Axis"):
+    @shader()
+    def axis():
 
         col = nd.attribute(attribute_name="Color").color
 
@@ -142,7 +150,8 @@ def build_shaders(rebuild=False):
     # GROUP - Reading 4D Shading Attributes
     # ----------------------------------------------------------------------------------------------------
 
-    with ShaderNodes("4D Attributes", is_group=True, rebuild=rebuild):
+    @shader_group()
+    def attributes():
 
         # ---------------------------------------------------------------------------
         # Interior
@@ -186,14 +195,15 @@ def build_shaders(rebuild=False):
 
         fac = nd.attribute("Use Emission").factor
         attr = nd.attribute("Emission").factor
-        emission = Float(0).mix(other=attr, factor=fac)
+        emission = Float(0).mix(attr, factor=fac)
         emission.out("Emission")
 
     # ----------------------------------------------------------------------------------------------------
     # SHADER - Default Material
     # ----------------------------------------------------------------------------------------------------
 
-    with ShaderNodes("4D Surface"):
+    @shader()
+    def surface():
 
         node = Group("4D Attributes")
 
@@ -215,13 +225,19 @@ def build_shaders(rebuild=False):
     # SHADER - Wire
     # ----------------------------------------------------------------------------------------------------
 
-    with ShaderNodes("4D Wire"):
+    @shader()
+    def wire():
 
         ped = Shader.Principled(
             base_color = (0., .05, .9),
             roughness  = 0.,
             )
         ped.out()
+
+# ====================================================================================================
+# 4D Vectors
+# ====================================================================================================
+
 
 
 # ====================================================================================================
@@ -1252,13 +1268,16 @@ class Cloud4(Cloud, G4Interface):
 # Build nodes
 # ====================================================================================================
 
-def build_geometry_nodes(rebuild=False):
+class D4Main(Package):
+
+    prefix = "4"
 
     # ====================================================================================================
     # MODIFIER - Plunge a Geometry into 4D
     # ====================================================================================================
 
-    with GeoNodes("Plunge", prefix=main_, rebuild=rebuild) as tree:
+    @modifier()
+    def plunge():
         """ Plunge an object into 4D Space.
 
         Do nothing if already plunged
@@ -1348,16 +1367,21 @@ def build_geometry_nodes(rebuild=False):
 
         new_geo.out("Geometry")
 
-    tree.add_method(Geometry4,  self_attr="self", ret_class=Geometry4)
-    tree.add_method(Mesh4,      self_attr="self", ret_class=Mesh4)
-    tree.add_method(Curve4,     self_attr="self", ret_class=Curve4)
-    tree.add_method(Cloud4,     self_attr="self", ret_class=Cloud4)
+    #tree.add_method(Geometry4,  self_attr="self", ret_class=Geometry4)
+    #tree.add_method(Mesh4,      self_attr="self", ret_class=Mesh4)
+    #tree.add_method(Curve4,     self_attr="self", ret_class=Curve4)
+    #tree.add_method(Cloud4,     self_attr="self", ret_class=Cloud4)
+
+
+class D4Geometry(Package):
+
+    prefix = "4D Geometry"
 
     # ====================================================================================================
     # MODIFIER - Show Normals
     # ====================================================================================================
-
-    with GeoNodes("Normals", prefix=geo_, rebuild=rebuild) as tree:
+    @modifier()
+    def normals():
 
         # Projected geometry
         geo = Geometry(tip="Projected Geometry")
@@ -1402,16 +1426,22 @@ def build_geometry_nodes(rebuild=False):
         m_lines.out("Faces")
         c_lines.out("Curves")
 
-    tree.add_method(Geometry4, self_attr="self", ret_class=Mesh)
+    #tree.add_method(Geometry4, self_attr="self", ret_class=Mesh)
 
+
+class D4Op(Package):
+
+    prefix = "4D Op"
 
     # ====================================================================================================
     # GROUP - Compute faces UV Indices
     # ====================================================================================================
 
-    with GeoNodes("Compute UV Indices", is_group=True, prefix=op_, rebuild=rebuild) as tree:
-        
-        mesh = Mesh4.Plunge()
+    @group("Compute UV indices")
+    def compute_uv_indices():
+
+        mesh = D4Main.plunge(Geometry())
+        #mesh = Mesh4.Plunge()
         keep = Mesh(mesh)
         
         with Layout("4 Vertex indices for a Face Corner"):
@@ -1469,7 +1499,7 @@ def build_geometry_nodes(rebuild=False):
             
         mesh.out()
 
-    tree.add_method(Mesh4, self_attr="self", ret_class=Mesh4)
+    #tree.add_method(Mesh4, self_attr="self", ret_class=Mesh4)
 
     # ====================================================================================================
     # GROUP - Compute faces UV 4-Vectors

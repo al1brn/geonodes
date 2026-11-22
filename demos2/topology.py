@@ -175,10 +175,11 @@ def demo(rebuild=False):
         with Layout("Selected Corners"):
 
             cube_size = size*2
+            source_mesh = Mesh(mesh)
 
             for feel in mesh.corners[Boolean("Select C")].for_each(position=nd.position, face_index=nd.face_of_corner()):
 
-                face_pos = mesh.faces.sample_index(nd.position, index=feel.face_index)
+                face_pos = source_mesh.faces.sample_index(nd.position, index=feel.face_index)
                 v = (face_pos - feel.position).normalize()
                 c_point = Cloud.Points(1, position=feel.position + cube_size*v)
 
@@ -258,8 +259,8 @@ def demo(rebuild=False):
 
             spline_cloud = Cloud(spt_cloud)
 
-            spline_cloud.points._Value  = curve.points.sample_index(curve.points.curve_index(nd.index), nd.index)
-            delete = curve.points.sample_index(curve.points.index_in_curve(nd.index), nd.index).not_equal(0)
+            spline_cloud.points._Value  = curve.points.sample_index(nd.curve_of_point(nd.index), nd.index)
+            delete = curve.points.sample_index(nd.curve_of_point(nd.index).index_in_curve, nd.index).not_equal(0)
             spline_cloud.points._Color  = COL_EDGE
             spline_cloud.points[delete].delete()
 
@@ -333,11 +334,11 @@ def demo(rebuild=False):
                 vert_mesh.faces._Select_F = False
                 vert_mesh.corners._Select_C = False
 
-                total = vert_mesh.points.sample_index(Vertex.corners_total(), index)
+                total = vert_mesh.points.sample_index(nd.corners_of_vertex().total, index)
                 for rep in vert_mesh.repeat(total):
-                    corner_index = Vertex.corner_index(index, sort_index=rep.iteration)
+                    corner_index = nd.corners_of_vertex(index, sort_index=rep.iteration)
                     vert_mesh.corners[corner_index]._Select_C = True
-                    vert_mesh.faces._Select_F = Float("Select F") | nd.index.equal(Corner.face_index(corner_index))
+                    vert_mesh.faces._Select_F = Float("Select F") | nd.index.equal(nd.face_of_corner(corner_index))
                     vert_mesh.out()
 
                 vrt_vis += Group("Topology Indices",
@@ -355,7 +356,7 @@ def demo(rebuild=False):
                 ).link_inputs()._out
 
             with Layout("Edges of Vertex"):
-                sel = Edge.vertex_index_1.equal(index) | Edge.vertex_index_2.equal(index)
+                sel = nd.edge_vertices().vertex_index_1.equal(index) | nd.edge_vertices().vertex_index_2.equal(index)
                 vert_mesh.edges._Select_E = sel
                 vrt_vis += Group("Topology Indices",
                     geometry             = vert_mesh, 
@@ -385,8 +386,8 @@ def demo(rebuild=False):
             ).link_inputs()._out
 
             with Layout("Vertices of Edge"):
-                v1 = mesh.edges.sample_index(Edge.vertex_index_1, index)
-                v2 = mesh.edges.sample_index(Edge.vertex_index_2, index)
+                v1 = mesh.edges.sample_index(nd.edge_vertices().vertex_index_1, index)
+                v2 = mesh.edges.sample_index(nd.edge_vertices().vertex_index_2, index)
                 edge_mesh.points._Select_V = nd.index.equal(v1) | nd.index.equal(v2)
 
                 edge_vis += Group("Topology Indices",
@@ -399,13 +400,13 @@ def demo(rebuild=False):
             with Layout("Corners & Faces of Edge"):
 
                 edge_mesh.faces._Select_F = False
-                total = edge_mesh.corners.sample_index(Edge.corners_total(index), index)
+                total = edge_mesh.corners.sample_index(nd.corners_of_edge(index).total, index)
 
                 with Layout("Repeat Zone"):
                     for rep in edge_mesh.repeat(total):
-                        corner_index = Edge.corner_index(index, sort_index=rep.iteration)
+                        corner_index = nd.corners_of_edge(index, sort_index=rep.iteration)
                         edge_mesh.corners[corner_index]._Select_C = True
-                        edge_mesh.faces[Corner.face_index(corner_index)]._Select_F = True
+                        edge_mesh.faces[nd.face_of_corner(corner_index)]._Select_F = True
                         edge_mesh.out()
 
                 edge_vis += Group("Topology Indices",
@@ -448,12 +449,12 @@ def demo(rebuild=False):
                 face_mesh.points._Select_V = False
                 face_mesh.edges._Select_E = False
 
-                total = face_mesh.faces.sample_index(Face.corners_total(index), index=index)
+                total = face_mesh.faces.sample_index(nd.corners_of_face(index).total, index=index)
 
                 for rep in face_mesh.repeat(total):
-                    corner_index = face_mesh.faces.sample_index(Face.corner_index(index, sort_index=rep.iteration))
-                    vertex_index = face_mesh.corners.sample_index(Corner.vertex_index(), corner_index)
-                    edge_index = face_mesh.corners.sample_index(Corner.next_edge_index(), corner_index)
+                    corner_index = face_mesh.faces.sample_index(nd.corners_of_face(index, sort_index=rep.iteration))
+                    vertex_index = face_mesh.corners.sample_index(nd.vertex_of_corner(), corner_index)
+                    edge_index = face_mesh.corners.sample_index(nd.edges_of_corner(), corner_index)
                     face_mesh.corners[corner_index]._Select_C = True
                     face_mesh.points[vertex_index]._Select_V = True
                     face_mesh.edges[edge_index]._Select_E = True
@@ -501,11 +502,11 @@ def demo(rebuild=False):
             ).link_inputs()._out
 
 
-            crn_mesh.points._Select_V = nd.index.equal(crn_mesh.corners.sample_index(Corner.vertex_index(), index))
-            edge0 = crn_mesh.corners.sample_index(Corner.next_edge_index(), index)
-            edge1 = crn_mesh.corners.sample_index(Corner.previous_edge_index(), index)
+            crn_mesh.points._Select_V = nd.index.equal(crn_mesh.corners.sample_index(nd.vertex_of_corner(), index))
+            edge0 = crn_mesh.corners.sample_index(nd.edges_of_corner(), index)
+            edge1 = crn_mesh.corners.sample_index(nd.edges_of_corner().previous_edge_index, index)
             crn_mesh.edges._Select_E = nd.index.equal(edge0) | nd.index.equal(edge1)
-            crn_mesh.faces._Select_F = nd.index.equal(crn_mesh.corners.sample_index(Corner.face_index(), index))
+            crn_mesh.faces._Select_F = nd.index.equal(crn_mesh.corners.sample_index(nd.face_of_corner(), index))
 
             crn_vis += Group("Topology Indices",
                 geometry             = crn_mesh, 
