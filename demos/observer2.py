@@ -803,8 +803,6 @@ def build_animation(rebuild=False):
                             tip="Gait style and step amplitude")
 
         foot_spacing = Float(1.5, "Foot Spacing", 0.0)
-        distance_scale = Float(1.0, "Distance Scale",
-                            tip="Translation multiplier; zero walks in place")
         
         closure_name = String("", "Closure Name",
                             tip="Registered gait closure; empty uses standard Walk")
@@ -921,6 +919,10 @@ def build_animation(rebuild=False):
             step_height = node.step_height
             foot_spacing = node.foot_spacing
 
+            distance_scale = Float(1.0, "Distance Scale",
+                                tip="Translation multiplier; zero walks in place")
+
+
         for sim in simulation(geometry=geometry):
             bundles = ObserverBundles(sim.geometry, use_factor=False)
             bundles.factor = anim_factor
@@ -970,7 +972,7 @@ def build_animation(rebuild=False):
             step_height = node.step_height
             foot_spacing = node.foot_spacing
 
-            path = path_object.info(as_instance=False, transform_space='RELATIVE',).geometry.curve
+            path = path_object.info(as_instance=False, transform_space='RELATIVE',).geometry.separate_components().curve
 
 
         for sim in simulation(geometry=geometry):
@@ -1094,7 +1096,7 @@ def build_animation(rebuild=False):
                 pose1[name] = node1[name]
         
         func = create_hand_pose_func(pose0, pose1)
-        closures.set_item('Hand Pose' + store_name, func)
+        closures.store_item('Hand Pose' + store_name, func)
         bundles[CLOSURES_NAME].bundle_sockets = closures
         bundles.update().out()
 
@@ -1461,7 +1463,7 @@ def build_observer(rebuild=False):
         with ShaderNodes("Obs Skin"):
     
             color  = [0.650011, 0.523698, 0.411225, 1.000000]
-            transp = snd.attribute(attribute_type='GEOMETRY', attribute_name="Transparency").factor
+            transp = nd.attribute(attribute_type='GEOMETRY', attribute_name="Transparency").factor
     
             ped = Shader.Principled(
                 base_color = color,
@@ -1473,9 +1475,9 @@ def build_observer(rebuild=False):
 
     if bpy.data.materials.get("Obs Eye") is None:
         with ShaderNodes("Obs Eye"):
-            white = snd.attribute(attribute_type='GEOMETRY', attribute_name="White").factor
+            white = nd.attribute(attribute_type='GEOMETRY', attribute_name="White").factor
             color = Color((0, 0, 0)).mix(white, Color((1, 1, 1)))
-            transp  = snd.attribute(attribute_type='GEOMETRY', attribute_name="Transparency").factor
+            transp  = nd.attribute(attribute_type='GEOMETRY', attribute_name="Transparency").factor
     
             ped = Shader.Principled(
                 base_color = color,
@@ -1489,8 +1491,8 @@ def build_observer(rebuild=False):
     if bpy.data.materials.get("Obs Hair") is None:
         with ShaderNodes("Obs Hair"):
     
-            color   = Color(snd.attribute(attribute_type='GEOMETRY', attribute_name="Color").vector)
-            transp  = snd.attribute(attribute_type='GEOMETRY', attribute_name="Transparency").factor
+            color   = Color(nd.attribute(attribute_type='GEOMETRY', attribute_name="Color").vector)
+            transp  = nd.attribute(attribute_type='GEOMETRY', attribute_name="Transparency").factor
     
             ped = Shader.PrincipledHair(
                 color = color,
@@ -1503,8 +1505,8 @@ def build_observer(rebuild=False):
     if bpy.data.materials.get("Obs Blouse") is None:
         with ShaderNodes("Obs Blouse"):
     
-            color   = Color(snd.attribute(attribute_type='GEOMETRY', attribute_name="Color").vector)
-            transp  = snd.attribute(attribute_type='GEOMETRY', attribute_name="Transparency").factor
+            color   = Color(nd.attribute(attribute_type='GEOMETRY', attribute_name="Color").vector)
+            transp  = nd.attribute(attribute_type='GEOMETRY', attribute_name="Transparency").factor
     
             ped = Shader.Principled(
                 base_color = color,
@@ -1519,7 +1521,7 @@ def build_observer(rebuild=False):
         with ShaderNodes("Obs Shoe"):
     
             color   = [0.000000, 0.000000, 0.000000, 1.000000]
-            transp  = snd.attribute(attribute_type='GEOMETRY', attribute_name="Transparency").factor
+            transp  = nd.attribute(attribute_type='GEOMETRY', attribute_name="Transparency").factor
     
             ped = Shader.Principled(
                 base_color = color,
@@ -1666,7 +1668,7 @@ def build_observer(rebuild=False):
 
             with Layout("Finger Lateral"):
                 pivot = line.points.sample_index(nd.position, index=1)
-                line.points[nd.index > 1].position = pivot + Rotation((lateral/2, 0, 0)) @ (nd.position - pivot)
+                line.points(nd.index > 1).position = pivot + Rotation((lateral/2, 0, 0)) @ (nd.position - pivot)
                 
             with Layout("Additional Bend"):
                 ag = bend.map_range(0, radians(15), 0, radians(15)*bend_factor, interpolation_type='Smooth Step')
@@ -1676,15 +1678,15 @@ def build_observer(rebuild=False):
 
             line = G().subdivide_segment(line, index=0, subdivisions=subdiv)
             line.points.radius = 1.0
-            line.points[nd.index < subdiv].radius = 1.2
-            line.points[nd.index == subdiv].radius = 1.1
+            line.points(nd.index < subdiv).radius = 1.2
+            line.points(nd.index == subdiv).radius = 1.1
             
-            line.points[nd.index == 0].offset = base_offset
+            line.points(nd.index == 0).offset = base_offset
             line.offset = position
             
         with Layout("Split Palm / Finger bones"):
-            palm_bones = Curve(line).points[nd.index > subdiv + 3].delete()
-            finger_bones = Curve(line).points[nd.index < subdiv + 3].delete()
+            palm_bones = Curve(line).points(nd.index > subdiv + 3).delete()
+            finger_bones = Curve(line).points(nd.index < subdiv + 3).delete()
 
         with Layout("Finger Mesh"):
             finger_mesh = finger_bones.curve_to_tube(
@@ -1816,10 +1818,10 @@ def build_observer(rebuild=False):
             
             n = bones1.points.count
             segm = Curve(thumb_bones)
-            segm.points[nd.index > 1].delete()
+            segm.points(nd.index > 1).delete()
             segm = segm.resample(count = n)
             
-            segm[(nd.index < 1) | (nd.index > 5)].position = bones1.points.sample_index(nd.position, index=nd.index)
+            segm((nd.index < 1) | (nd.index > 5)).position = bones1.points.sample_index(nd.position, index=nd.index)
             
             segm.radius = nd.spline_parameter().factor.map_range(0, 0.6, 1.6, 1.0)
 
@@ -1877,10 +1879,10 @@ def build_observer(rebuild=False):
             
             sel0, sel1, sel2, sel3 = nd.index == 0, nd.index == 1, nd.index == 2, nd.index == 3
             
-            bones.points[sel0].set('temp rot', Rotation((forward, -lateral, 0)))
-            bones.points[sel1].set('temp rot', Rotation((elbow, 0, elbow_twist)))
-            bones.points[sel2].set('temp rot', Rotation((0, -hand_flap, 0)))
-            bones.points[sel3].set('temp rot', Rotation((0, -pi/2, hand_twist)))
+            bones.points(sel0)['temp rot'] = Rotation((forward, -lateral, 0))
+            bones.points(sel1)['temp rot'] = Rotation((elbow, 0, elbow_twist))
+            bones.points(sel2)['temp rot'] = Rotation((0, -hand_flap, 0))
+            bones.points(sel3)['temp rot'] = Rotation((0, -pi/2, hand_twist))
             
             bones = G().build_bones_curve(bones, direction=(0, 0, -1), rotation=Rotation('temp rot'), length=0.5)
             
@@ -1940,9 +1942,9 @@ def build_observer(rebuild=False):
             sel1 = nd.index == 1
             sel2 = nd.index == 2
             
-            line[sel0].position = (0, -FOOT_BACK,  0)
-            line[sel1].position = (0,  FOOT_FOLD, 0)
-            line[sel2].position = (0,  FOOT_FRONT, 0)
+            line(sel0).position = (0, -FOOT_BACK,  0)
+            line(sel1).position = (0,  FOOT_FOLD, 0)
+            line(sel2).position = (0,  FOOT_FRONT, 0)
             
         with Layout("On Ground"):
             
@@ -1970,7 +1972,7 @@ def build_observer(rebuild=False):
             tiptoe.switch(underground, 0.0)
             
             pivot = line.points.sample_index(nd.position, index=1)
-            line[nd.index==2].position = pivot + (0, FOOT_TIP*tiptoe.cos(), FOOT_TIP*tiptoe.sin())
+            line(nd.index==2).position = pivot + (0, FOOT_TIP*tiptoe.cos(), FOOT_TIP*tiptoe.sin())
             line.transform(translation=loc, rotation=(tilt, 0, 0))
             
         with Layout("Profile Curve"):
@@ -1981,8 +1983,8 @@ def build_observer(rebuild=False):
             ag = dag + (nd.index/(n-1)) * (pi - 2*dag)
             
             profile.position = (ag.cos(), ag.sin(), 0)
-            profile[nd.index == n].position = (-0.9, 0.0, 0.0)
-            profile[nd.index == n+1].position = ( 0.9, 0.0, 0.0)
+            profile(nd.index == n).position = (-0.9, 0.0, 0.0)
+            profile(nd.index == n+1).position = ( 0.9, 0.0, 0.0)
             
             profile.transform(rotation=(0, 0, pi))
             
@@ -1996,10 +1998,10 @@ def build_observer(rebuild=False):
             split = split_index/count
             
             f = factor.map_range(0, split, 0, 1)
-            line.points[nd.index < split_index].radius = f**0.3 + .05
+            line.points(nd.index < split_index).radius = f**0.3 + .05
             
             f = factor.map_range(split, 1.0, 1.0, 0.0)
-            line.points[nd.index >= split_index].radius = f**.4 + .05
+            line.points(nd.index >= split_index).radius = f**.4 + .05
             
             mesh = line.to_mesh(
                 profile_curve = profile,
@@ -2078,7 +2080,7 @@ def build_observer(rebuild=False):
 
         with Layout("Eyes"):
             eye = Mesh.UVSphere(segments=segments//2, rings=rings//2, radius=EYE_RADIUS)
-            eye.faces.set('White', nd.position.z < .9*EYE_RADIUS)
+            eye.faces['White'] = nd.position.z < .9*EYE_RADIUS
             eye.transform(rotation=(pi/2, 0, 0))
 
             eye.faces.shade_smooth = True
@@ -2094,7 +2096,7 @@ def build_observer(rebuild=False):
 
             nsegms = segments // 2
             eyelid = Mesh.UVSphere(segments=nsegms, rings=rings//2, radius=LID_RADIUS)
-            eyelid.points[nd.position.z < -0.01].delete()
+            eyelid.points(nd.position.z < -0.01).delete()
 
             eyelid.faces.shade_smooth = True
             disk = Mesh.Circle(vertices=nsegms, radius=LID_RADIUS, fill_type='NGON').flip_faces()
@@ -2158,7 +2160,10 @@ def build_observer(rebuild=False):
         resol  = Integer(8, "Resolution", 1, 8)
         color  = Color((1, 0, 0), "Color")
 
-        col_attr = Attribute("Color", Color)
+        color_name = "Color"
+
+        #col_attr = Attribute("Color", Color)
+
 
         with Layout("Base Sphere"):
             segments = resol*8
@@ -2171,12 +2176,12 @@ def build_observer(rebuild=False):
         with Layout("Body"):
             body = sphere.transform(scale=(1.15, 1.15, 1.8))
             tshirt = nd.position.z < 1.6
-            body.faces[tshirt].set(col_attr, 1.0)
-            body.faces[tshirt].material = "Obs Blouse"
+            body.faces(tshirt)[color_name, Color] = 1.0
+            body.faces(tshirt).material = "Obs Blouse"
 
             blouse = Mesh(body).transform(scale=(1.02, 1.02, 1.02))
             blouse.faces.material = "Obs Blouse"
-            blouse.faces.set(col_attr, color)
+            blouse.faces[color_name, Color] = color
 
             cube = Mesh.Cube(size=(3, 3, 1.7)).transform(translation=(0, 0, 1.7/2))
             # Set a différent material to delete faces
@@ -2189,11 +2194,11 @@ def build_observer(rebuild=False):
             blouse = blouse.difference(cyl)
             blouse.transform(rotation=(0, 0, -pi/2))
 
-            blouse.faces[nd.material_index==0].delete()
+            blouse.faces(nd.material_index==0).delete()
 
             top = nd.position.z < .01
             for _ in range(10):
-                top = blouse.edges[top].extrude(offset=(0, 0, -.25)).top_
+                top = blouse.edges(top).extrude(offset=(0, 0, -.25)).top_
 
             body.transform(translation=(0, 0, -3))
             blouse.transform(translation=(0, 0, -3))
@@ -2204,8 +2209,8 @@ def build_observer(rebuild=False):
         with Layout("Lab Coat Motion"):
             cloth = pose["Cloth"]
             # The hem is at local Z = 1.5 + .23 * (-2.5 - 3) = .235.
-            influence = nd.position.z.map_range_smooth_step(
-                CLOTH_SWAY_START_Z, 0.235, 0.0, 1.0)
+            influence = nd.position.z.map_range(
+                CLOTH_SWAY_START_Z, 0.235, 0.0, 1.0, interpolation_type='Smooth Step')
             time = nd.scene_time().seconds * cloth["Speed"]
             noise = nd.noise_texture(
                 vector=nd.position + Vector((cloth["Seed"] * 19.19, 0, 0)),

@@ -1,5 +1,5 @@
 from geonodes import *
-from geonodes.demos import curveutil, shaders
+from . import curveutil, shaders
 
 
 def demo(rebuild=False):
@@ -50,7 +50,7 @@ def demo(rebuild=False):
             prof = Curve.Quadrilateral(width=THICK/2, height=THICK)
             mag = mag.to_mesh(profile_curve=prof)
             
-            mag[nd.position.z.abs() > 0.04].bevel('Edges', BVL, BVL, BVL, BVL, segments=3)
+            mag(nd.position.z.abs() > 0.04).bevel(BVL, BVL, BVL, BVL, segments=3, affect_kind='Edges')
             mag.faces.shade_smooth = True
             mag.faces.material = metal_mat
             
@@ -59,8 +59,8 @@ def demo(rebuild=False):
             lens.transform(scale=(1, 1, THICK/2))
             lens.faces.shade_smooth=True
             lens.faces.material=lens_mat
-            lens.faces.set("IOR", lens_ior)
-            lens.faces.set("Transparency", lens_transp)
+            lens.faces["IOR"] = lens_ior
+            lens.faces["Transparency"] = lens_transp
             
             mag += lens
             
@@ -72,8 +72,8 @@ def demo(rebuild=False):
             handle = handle.curve_to_tube(scale=r, profile_resolution=resolution)
             handle.faces.shade_smooth = True
             handle.faces.material = hand_mat
-            handle.faces[nd.position.x.abs() > 0.7].material = metal_mat
-            handle[nd.position.x == -HAND_LEN/2].bevel('Edges', BVL, BVL, BVL, BVL, segments=3)
+            handle.faces(nd.position.x.abs() > 0.7).material = metal_mat
+            handle(nd.position.x == -HAND_LEN/2).bevel(BVL, BVL, BVL, BVL, segments=3, affect_kind='Edges')
             handle.offset =(-1 - HAND_LEN/2, 0, 0)
             
             mag += handle
@@ -110,7 +110,7 @@ def demo(rebuild=False):
             geo.transform(scale=(zoom, zoom, 1.), translation=-obj_ofs)
 
             d = (nd.position*(1, 1, 0)).length()
-            geo = Mesh(geo).points[d>size*del_radius].delete()
+            geo = Mesh(geo).points(d>size*del_radius).delete()
 
             mag += geo.switch_false(use_obj)
 
@@ -142,7 +142,7 @@ def demo(rebuild=False):
             radius = geo1.get_bundle().get_item('Radius', socket_type='FLOAT')
             p = nd.position - loc0 - loc1
             d = (p*(1, 1, 0)).length()
-            mesh0.points[d < radius].delete()
+            mesh0.points(d < radius).delete()
 
         geo0.switch(use_mag, mesh0).out()
 
@@ -177,9 +177,9 @@ def demo(rebuild=False):
             circle = G().bezier_circle()
             
             sel = nd.index == 0
-            circle[sel].offset = (BASE, 0, 0)
-            circle[sel].left_handle_position = nd.position + (-TIP, 0,0)
-            circle[sel].right_handle_position = nd.position + (-TIP, 0, 0)
+            circle(sel).offset = (BASE, 0, 0)
+            circle(sel).left_handle_position = nd.position + (-TIP, 0,0)
+            circle(sel).right_handle_position = nd.position + (-TIP, 0, 0)
             
             circle.resample(count=count)
             
@@ -193,7 +193,7 @@ def demo(rebuild=False):
             x, y, _ = pos.xyz
         
             in_sel = (nd.index >= 2*count) & (nd.index < 4*count)
-            cyl[in_sel].position = (x, y, nd.position.z)
+            cyl(in_sel).position = (x, y, nd.position.z)
             
         with Layout("Adjuste Rings height"):
             sel_last = (nd.index < count) | (nd.index >= 5*count)
@@ -203,14 +203,14 @@ def demo(rebuild=False):
             
             z = nd.position.z.abs()
             
-            cyl[sel_ulti].position = nd.position * (1, 1, bump/z)
-            cyl[sel_last].position = nd.position * (1, 1, depth/z)
+            cyl(sel_ulti).position = nd.position * (1, 1, bump/z)
+            cyl(sel_last).position = nd.position * (1, 1, depth/z)
             
-            cyl[sel_last].points.set('Last', 1.0)
+            cyl(sel_last).points['Last'] = 1.0
                 
             
         with Layout("Finalize"):        
-            cyl[nd.position.z==0.1].bevel(
+            cyl(nd.position.z==0.1).bevel(
                 start_left_offset = BEV,
                 start_right_offset = BEV,
                 end_left_offset = BEV,
@@ -219,10 +219,10 @@ def demo(rebuild=False):
                 
             cyl.faces.shade_smooth=False
             cyl.faces.material=mat
-            cyl.faces.set('Transparency', 1 - show)
-            cyl.faces.set('Color', color)
-            cyl.faces[Float('Last') > 0].set('Color', point_color)
-            cyl.remove_named_attribute(name='Last', pattern_mode='Exact')
+            cyl.faces['Transparency'] = 1 - show
+            cyl.faces['Color'] = color
+            cyl.faces(Float('Last') > 0)['Color'] = point_color
+            cyl.remove_named_attribute(pattern_mode='Exact', name='Last')
         
             cyl.transform(translation=(0, 0, (1 + BASE)*radius), rotation=(0, pi/2, -pi/2), scale=radius)
             

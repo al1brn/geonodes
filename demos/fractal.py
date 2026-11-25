@@ -1,4 +1,5 @@
 from geonodes import *
+from .cam_culling import CameraCulling
 
 # ====================================================================================================
 # For a flat mesh in the plane XY, compute vertices coordinates relatively to
@@ -49,14 +50,23 @@ def plane_triangle_coordinates(mesh, iO, iu, iv):
 def get_face_base(mesh, face_index=0):
     
     with Layout("Face local base"):
-    
-        c0 = mesh.faces.corner_index(face_index, sort_index=0)
-        c1 = mesh.faces.corner_index(face_index, sort_index=1)
-        c2 = mesh.faces.corner_index(face_index, sort_index=2)
-        
-        i0 = mesh.corners.vertex_index(c0)
-        i1 = mesh.corners.vertex_index(c1)
-        i2 = mesh.corners.vertex_index(c2)
+
+        if True:
+            c0 = nd.corners_of_face(face_index, sort_index=0)
+            c1 = nd.corners_of_face(face_index, sort_index=1)
+            c2 = nd.corners_of_face(face_index, sort_index=2)
+
+            i0 = nd.vertex_of_corner(c0)
+            i1 = nd.vertex_of_corner(c1)
+            i2 = nd.vertex_of_corner(c2)
+        else:
+            c0 = mesh.faces.corner_index(face_index, sort_index=0)
+            c1 = mesh.faces.corner_index(face_index, sort_index=1)
+            c2 = mesh.faces.corner_index(face_index, sort_index=2)
+            
+            i0 = mesh.corners.vertex_index(c0)
+            i1 = mesh.corners.vertex_index(c1)
+            i2 = mesh.corners.vertex_index(c2)
         
         O = mesh.points.sample_index(nd.position, index=i1)._lc("O")
         
@@ -71,7 +81,7 @@ def demo(rebuild=False):
 
     from geonodes.demos import gn_random as random, cam_culling
     random.demo()
-    cam_culling.demo()
+    #cam_culling.demo()
 
     Tree._init_package('Fractal')
 
@@ -113,7 +123,7 @@ def demo(rebuild=False):
                 # Random rotation of child points
                 face_rot = rotation*(0.5**depth)
                 rot = G().random_normal_value(0, face_rot, seed=face_id.hash_value(1390887)).single
-                new_faces[Boolean("Child")].position = Rotation.FromAxisAngle(nd.normal, rot) @ nd.position
+                new_faces(Boolean("Child")).position = Rotation.FromAxisAngle(nd.normal, rot) @ nd.position
                 new_faces.remove_named_attribute(name="Child")
 
                 # Depth & Hue
@@ -150,15 +160,17 @@ def demo(rebuild=False):
             iu    = Integer(0, "U Index", shape='Single')
             iv    = Integer(2, "V Index", shape='Single')
 
-        cam_culling = G().camera_face_culling().link_inputs(from_panel="Camera Culling", panel="Camera Culling").node
+        
+        #cam_culling = G().camera_face_culling().link_inputs(from_panel="Camera Culling", panel="Camera Culling").node
+        cam_culling = CameraCulling.face_culling().link_inputs(from_panel="Camera Culling", panel="Camera Culling").node
 
         with Layout("Prepare Model"):
             cl = G().flat_fractal_closure()
             
             model = plane_triangle_coordinates(model, iO, iu, iv)
-            model.points[iO].Child = False
-            model.points[iu].Child = False
-            model.points[iv].Child = False
+            model.points(iO).Child = False
+            model.points(iu).Child = False
+            model.points(iv).Child = False
 
         # Initialize named attributes
         with Layout("Initialize Attributes"):
@@ -169,7 +181,7 @@ def demo(rebuild=False):
         # Loop
         for rep in repeat(count, to_split=mesh, fractal=None):
 
-            depth = rep.iteration + 1
+            #depth = rep.iteration + 1
 
             cam_culling.mesh = rep.to_split
             rep.fractal += cam_culling.deleted
@@ -212,9 +224,9 @@ def demo(rebuild=False):
     # Demo Shader
     # ====================================================================================================
 
-    with ShaderNodes("Fractal Demo", replace_material=True):
+    with ShaderNodes("Fractal Demo", rebuild=True):
 
-        hue = snd.attribute("Hue").factor
+        hue = nd.attribute("Hue").factor
         color = Color.CombineHSV(hue=hue, value=1, saturation=1)
         ped = Shader.Principled(
             base_color = color,
@@ -240,9 +252,9 @@ def demo(rebuild=False):
             model.merge_by_distance()
 
             model.points.Child = True
-            model.points[2].Child = False
-            model.points[4].Child = False
-            model.points[5].Child = False
+            model.points(2).Child = False
+            model.points(4).Child = False
+            model.points(5).Child = False
 
         tri.faces.Hue = 0.5
 
@@ -258,7 +270,7 @@ def demo(rebuild=False):
 
             cube = Mesh.Cube()
 
-            cube.faces[nd.index==0].delete_only_face().transform(translation=(0, 0, 0.5))
+            cube.faces(nd.index==0).delete(mode="Only Faces").transform(translation=(0, 0, 0.5))
 
             face = Mesh.Grid(vertices_x=2, vertices_y=2).transform(translation=(-1, -1, 0))
 
@@ -270,8 +282,8 @@ def demo(rebuild=False):
             cube.merge_by_distance()
 
             cube.points.Child = False
-            cube.points[nd.position.z > 0.5].Child = True
-            cube.points[nd.index <= 4].Child = True
+            cube.points(nd.position.z > 0.5).Child = True
+            cube.points(nd.index <= 4).Child = True
 
         square = Mesh.Grid(vertices_x=2, vertices_y=2)
         square.faces.Hue = 0.5
@@ -296,7 +308,7 @@ def demo(rebuild=False):
             h = math.sqrt(2)
 
             cone = Mesh.Cone(vertices=3, depth=h)
-            cone.faces[3].delete_only_face()
+            cone.faces(3).delete(mode="Only Faces")
 
             tri = Mesh.Circle(vertices=3, fill_type='N-Gon')
             cone += Mesh(tri).transform(translation=(-1, 0, 0), rotation=(0, 0, pi))
@@ -309,21 +321,23 @@ def demo(rebuild=False):
 
         mesh.faces.Hue = 0.5
 
-        tri.faces.Hue = 0.5
+        #tri.faces.Hue = 0.5
+        cone.faces.Hue = 0.5
         frac = G().fractal_from_model(mesh, origin_index=4, u_index=5, v_index=6, model=cone).link_inputs()
 
         frac.out()
         cone.out("Model")        
 
 
-    with GeoNodes("Fractal Growth Step", rebuild=rebuild):
+    #with GeoNodes("Fractal Growth Step", rebuild=rebuild):
 
-        cloud = Cloud()
-        dt    = Float(.1, "Delta Time")
+    #    cloud = Cloud()
+    #    dt    = Float(.1, "Delta Time")
 
-        cloud.points.Time = Float("Time") + dt
-        split = Float("Time") >= Float("Split time")
+    #    cloud.points.Time = Float("Time") + dt
+    #    split = Float("Time") >= Float("Split time")
 
+    """
     with GeoNodes("Fractal Growth", rebuild=rebuild):
 
         max_depth = Integer(3, "Max Depth", 1)
@@ -338,9 +352,8 @@ def demo(rebuild=False):
         cloud.points.Depth = 0
         cloud.points.Uid   = Integer.Random(0, 1_000_000_000, seed=seed)
         cloud.points.Hue   = Float.Random(0, 1, seed=seed + 1)
+    """
 
-        for rep in repeat(max_depth, to_split=cloud, fractal=None):
-            pass
 
     Tree._display_counter('Fractal built')
 

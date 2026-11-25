@@ -44,11 +44,20 @@ fourd.demo()
 
 import bpy
 
-from geonodes import *
 from geonodes import core_module
+from geonodes import *
 
 utils = core_module.utils
 
+
+def get_environment_class(environment_name, name):
+    return getattr(import_module('.' + environment_name + '.generated', __package__), name)
+
+Matrix = core_module.environment.get_environment_class('geonodes', 'Matrix')
+Geometry = core_module.environment.get_environment_class('geonodes', 'Geometry')
+Mesh = core_module.environment.get_environment_class('geonodes', 'Mesh')
+Curve = core_module.environment.get_environment_class('geonodes', 'Curve')
+Cloud = core_module.environment.get_environment_class('geonodes', 'Cloud')
 
 ZERO = 0.0001
 
@@ -91,7 +100,7 @@ def build_shaders(rebuild=False):
 
         USE_GRID = False
 
-        uv = snd.texture_coordinate(from_instancer=False, object=None).uv
+        uv = nd.texture_coordinate(from_instancer=False, object=None).uv
 
         x, y, _ = uv.xyz
 
@@ -99,16 +108,16 @@ def build_shaders(rebuild=False):
         count = 6
 
         if USE_GRID:
-            on_x = gnmath.mless_than((x + (thick/2)) % (1/(2*count)), thick)
-            on_y = gnmath.mless_than((y + (thick)) % (1/count), thick*2)
+            on_x = gnmath.less_than((x + (thick/2)) % (1/(2*count)), thick)
+            on_y = gnmath.less_than((y + (thick)) % (1/count), thick*2)
             grid = gnmath.add(on_x, on_y, True)
 
         color = Color() # Black
 
         thick *= 2
-        x_green = gnmath.mless_than((x + (thick/2)) % .5, thick)
-        x_red   = gnmath.mless_than((x + .25 + (thick/2)) % .5, thick)
-        y_blue  = gnmath.mless_than((y + .5 + (thick)) % .5, thick*2)
+        x_green = gnmath.less_than((x + (thick/2)) % .5, thick)
+        x_red   = gnmath.less_than((x + .25 + (thick/2)) % .5, thick)
+        y_blue  = gnmath.less_than((y + .5 + (thick)) % .5, thick*2)
 
         if USE_GRID:
             grid = gnmath.add(grid, x_green, True)
@@ -132,7 +141,7 @@ def build_shaders(rebuild=False):
 
     with ShaderNodes("4 Axis"):
 
-        col = snd.attribute(attribute_name="Color").color
+        col = nd.attribute(attribute_name="Color").color
 
         ped = Shader.Principled(base_color=col, roughness=.1, metallic=.3)
 
@@ -148,14 +157,14 @@ def build_shaders(rebuild=False):
         # Interior
         # ---------------------------------------------------------------------------
 
-        interior = snd.attribute("Interior").factor
+        interior = nd.attribute("Interior").factor
 
         # ---------------------------------------------------------------------------
         # Color
         # ---------------------------------------------------------------------------
 
-        fcol = snd.attribute("Color").color
-        bcol = snd.attribute("Back Color").color
+        fcol = nd.attribute("Color").color
+        bcol = nd.attribute("Back Color").color
 
         col = fcol.mix(bcol, factor=interior)
 
@@ -168,25 +177,25 @@ def build_shaders(rebuild=False):
         # Roughness & Transparency
         # ---------------------------------------------------------------------------
 
-        snd.attribute("Roughness").factor.out("Roughness")
-        snd.attribute("Transparency").factor.out("Transparency")
+        nd.attribute("Roughness").factor.out("Roughness")
+        nd.attribute("Transparency").factor.out("Transparency")
 
         # ---------------------------------------------------------------------------
         # Normal
         # ---------------------------------------------------------------------------
 
-        fac = snd.attribute("Use Normal").factor
-        attr = snd.attribute("Projected Normal").vector
-        normal = snd.geometry().normal.mix(attr, factor=fac)
+        fac = nd.attribute("Use Normal").factor
+        attr = nd.attribute("Projected Normal").vector
+        normal = nd.geometry().normal.mix(attr, factor=fac)
         normal.out("Normal")
 
         # ---------------------------------------------------------------------------
         # Emission
         # ---------------------------------------------------------------------------
 
-        fac = snd.attribute("Use Emission").factor
-        attr = snd.attribute("Emission").factor
-        emission = Float(0).mix(other=attr, factor=fac)
+        fac = nd.attribute("Use Emission").factor
+        attr = nd.attribute("Emission").factor
+        emission = Float(0).mix(attr, factor=fac)
         emission.out("Emission")
 
     # ----------------------------------------------------------------------------------------------------
@@ -207,7 +216,7 @@ def build_shaders(rebuild=False):
             )
         
         transp = Shader.Transparent()
-        shader = snd.mix_shader(ped, transp, factor=node.transparency)
+        shader = nd.mix_shader(ped, transp, factor=node.transparency)
 
         shader.out()
 
@@ -263,9 +272,9 @@ def draw_normals(domain, u, v, scale=1.0):
         verts.points.V = domain.sample_index(v, index=nd.index)
 
         verts = verts.points.extrude(offset=Vector("U"), offset_scale=scale)
-        verts = verts.points[verts.top].extrude(offset=Vector("V"), offset_scale=scale)
-        verts = verts.points[verts.top].extrude(offset=-Vector("U"), offset_scale=scale)
-        verts = verts.points[verts.top].extrude(offset=-Vector("V"), offset_scale=scale)
+        verts = verts.points(verts.top).extrude(offset=Vector("V"), offset_scale=scale)
+        verts = verts.points(verts.top).extrude(offset=-Vector("U"), offset_scale=scale)
+        verts = verts.points(verts.top).extrude(offset=-Vector("V"), offset_scale=scale)
         
         return verts
     
@@ -282,18 +291,18 @@ def vis_normals(geo, scale=1.0):
     def draw(mesh, sel, order, v):
 
         with Layout("Base"):
-            msh = mesh.points[sel].extrude(v, offset_scale=scale)
+            msh = mesh.points(sel).extrude(v, offset_scale=scale)
 
         return msh
         
         with Layout("First"):
             if order >= 1:
                 top = msh.top
-                msh.points[top].extrude(-v + .3, offset_scale=.3*scale)
+                msh.points(top).extrude(-v + .3, offset_scale=.3*scale)
             
         with Layout("Second"):
             if order == 2:
-                msh.points[top & msh.top.bnot()].extrude(-v - .3, offset_scale=.3*scale)
+                msh.points(top & msh.top.bnot()).extrude(-v - .3, offset_scale=.3*scale)
 
         return msh
     
@@ -748,10 +757,10 @@ class Vector4:
             
             grid = Mesh.Grid(vertices_x=4, vertices_y=4, size_x=3, size_y=3).to_points()
             grid.transform(scale=(1, -1, 1))
-            m = M.as_tuple
+            m = M.as_tuple()
             
             for i, v in enumerate(m):
-                grid.points[nd.index.equal(i)].Value = m[i]
+                grid.points(nd.index.equal(i)).Value = m[i]
                 
             for feel in grid.points.for_each(value=Float("Value"), pos=nd.position):
                 s = feel.value.to_string(decimals=3).to_curves(size=.3)
@@ -960,7 +969,7 @@ class Vector4:
 # ====================================================================================================
 
 class Matrix4(Matrix):
-        
+
     @classmethod
     def FromVectors(cls, V0=None, V1=None, V2=None, V3=None):
         m = [0]*16
@@ -978,7 +987,7 @@ class Matrix4(Matrix):
         return self.set_col(index, Vector4(V))
                                
     def get_vectors(self):
-        m = self.as_tuple
+        m = self.as_tuple()
         return Vector4(m[:4]), Vector4(m[4:8]), Vector4(m[8:12]), Vector4(m[12:])
     
     @classmethod
@@ -1093,7 +1102,7 @@ class Matrix4(Matrix):
             M = Matrix4(name="Matrix")
             V = Vector4.Input()
 
-            m = M.as_tuple
+            m = M.as_tuple()
             x, y, z, w = V.xyzw
 
             Vector4((
@@ -1202,7 +1211,7 @@ class Matrix4(Matrix):
             matrix = Matrix4(None, "Matrix")
             index  = Integer(0, "Count")
 
-            m = matrix.as_tuple
+            m = matrix.as_tuple()
 
             m0 = m
             m1 = m[4:] + m[:4]
@@ -1665,7 +1674,7 @@ def build_geometry_nodes(rebuild=False):
 
                 with Layout("Light info"):
 
-                    light = Mesh(lights[nd.index.equal(rep.iteration)].realize())
+                    light = Mesh(lights(nd.index.equal(rep.iteration)).realize())
 
                     S4_v  = light.faces.sample_index(Vector("P4 v"), index=0)
                     S4_w  = light.faces.sample_index(Float("P4 w"), index=0)
@@ -1714,7 +1723,7 @@ def build_geometry_nodes(rebuild=False):
                     lines.points.Out_Dir = out_dir
 
                     lines = lines.points.extrude(offset=face_pos - light_pos)
-                    lines.points[lines.top].extrude(offset=Vector("Out Dir"), offset_scale=3)
+                    lines.points(lines.top).extrude(offset=Vector("Out Dir"), offset_scale=3)
 
                     rep.rays = rep.rays + lines
 
@@ -1805,8 +1814,8 @@ def build_geometry_nodes(rebuild=False):
             N4 = Vector4("N4")
             exists = N4.v.exists
             N4 = Matrix4(R) @ N4
-            mesh.faces[exists].N4_v = N4.v
-            mesh.faces[exists].N4_w = N4.w
+            mesh.faces(exists).N4_v = N4.v
+            mesh.faces(exists).N4_w = N4.w
 
         with Layout("Curve Matrices"):
             curve.points.TNNN = R @ Matrix("TNNN")
@@ -1899,7 +1908,7 @@ def build_geometry_nodes(rebuild=False):
             
         with Layout("Heads"):
             cone = Mesh.Cone(vertices=16, radius_bottom=.15, radius_top=0, depth=0.25)
-            cones = heads.instance_on(instance=cone)
+            cones = heads.instance_on_points(instance=cone)
             cones.rotate(rotation=Rotation().align_to_vector(Vector("Dir")))
             
             axis = Mesh(axis + cones.realize())
@@ -1978,7 +1987,7 @@ def build_geometry_nodes(rebuild=False):
             wire = mesh.to_curve().to_mesh(profile_curve=Curve.Circle(radius=wire_radius, resolution=wire_resol))
             wire.faces.smooth = wire_smooth
 
-            balls = mesh.points.instance_on(instance=Mesh.UVSphere(radius=wire_radius))
+            balls = mesh.instance_on_points(instance=Mesh.UVSphere(radius=wire_radius))
             balls = Mesh(balls.realize())
             balls.faces.smooth = True
 
@@ -2052,7 +2061,7 @@ def build_geometry_nodes(rebuild=False):
 
             mesh.offset = vmax + P4.w - wmin
 
-            mesh = mesh[sel].merge_by_distance()
+            mesh = mesh(sel).merge_by_distance()
 
             mesh.position = P4.v
 
@@ -2304,7 +2313,7 @@ def build_geometry_nodes(rebuild=False):
             M = Matrix4.perp_planes(**V1.args(), **V2.args(rank=1))
                 
             with Layout("Perpendicular Plane"):
-                m = M.as_tuple
+                m = M.as_tuple()
                 m2 = [0]*16
                 m2[:8] = m[8:]
                 m2[8:] = m[:8]
@@ -2581,17 +2590,17 @@ def build_geometry_nodes(rebuild=False):
         second.points.New = True
         
         extr = mesh.edges.extrude(offset=Temp.v)
-        extr.points[extr.top].New = True
+        extr.points(extr.top).New = True
         
-        extr.points[Boolean("New")].P4_v = Vector("P4 v") + Temp.v
-        extr.points[Boolean("New")].P4_w = Float("P4 w") + Temp.w
+        extr.points(Boolean("New")).P4_v = Vector("P4 v") + Temp.v
+        extr.points(Boolean("New")).P4_w = Float("P4 w") + Temp.w
         
         mesh = Mesh4(extr + second)
         
         mesh = mesh.merge_points(True)
 
-        mesh.points[Boolean("New")].P4_v = mesh.points.sample_index(Vector("Ref v"), index=nd.index) + Dir.v
-        mesh.points[Boolean("New")].P4_w = mesh.points.sample_index(Float("Ref w"), index=nd.index) + Dir.w
+        mesh.points(Boolean("New")).P4_v = mesh.points.sample_index(Vector("Ref v"), index=nd.index) + Dir.v
+        mesh.points(Boolean("New")).P4_w = mesh.points.sample_index(Float("Ref w"), index=nd.index) + Dir.w
         mesh.position = Vector("P4 v")
 
         mesh.remove_named_attribute(name="Ref v")
@@ -3196,8 +3205,8 @@ def build_engine():
         geo = Cloud(Geometry())
         T = Vector4.Input()
         
-        m = list(Matrix("M4D").as_tuple)
-        x, y, z, w = T.as_tuple
+        m = list(Matrix("M4D").as_tuple())
+        x, y, z, w = T.as_tuple()
         m[0] += x
         m[1] += y
         m[2] += z
@@ -3246,8 +3255,8 @@ def build_engine():
         with Panel("Pivot"):
             P = Vector4.Input()
 
-        p = P.as_tuple
-        m = list(Matrix("M4D").as_tuple)
+        p = P.as_tuple()
+        m = list(Matrix("M4D").as_tuple())
         for i in range(4):
             m[i] = p[i] + (m[i] - p[i])*scale
 
@@ -3268,7 +3277,7 @@ def build_engine():
 
 
         with Layout("Vectors from Matrix"):
-            m = M4D.as_tuple
+            m = M4D.as_tuple()
             V1 = Vector4.FromMatrix(m, 1)
             V2 = Vector4.FromMatrix(m, 2)
             V3 = Vector4.FromMatrix(m, 3)
@@ -3277,31 +3286,31 @@ def build_engine():
         m = [0]*16
 
         with Matrix.IndexSwitch(index=tg_axis) as M:
-            m[:4]   = V0.as_tuple
-            m[4:8]  = V1.as_tuple
-            m[8:12] = V2.as_tuple
-            m[12:]  = V3.as_tuple
+            m[:4]   = V0.as_tuple()
+            m[4:8]  = V1.as_tuple()
+            m[8:12] = V2.as_tuple()
+            m[12:]  = V3.as_tuple()
             Matrix(m).out()
 
         with M:
-            m[:4]   = V3.as_tuple
-            m[4:8]  = V0.as_tuple
-            m[8:12] = V1.as_tuple
-            m[12:]  = V2.as_tuple
+            m[:4]   = V3.as_tuple()
+            m[4:8]  = V0.as_tuple()
+            m[8:12] = V1.as_tuple()
+            m[12:]  = V2.as_tuple()
             Matrix(m).out()
 
         with M:
-            m[:4]   = V2.as_tuple
-            m[4:8]  = V3.as_tuple
-            m[8:12] = V0.as_tuple
-            m[12:]  = V1.as_tuple
+            m[:4]   = V2.as_tuple()
+            m[4:8]  = V3.as_tuple()
+            m[8:12] = V0.as_tuple()
+            m[12:]  = V1.as_tuple()
             Matrix(m).out()
 
         with M:
-            m[:4]   = V1.as_tuple
-            m[4:8]  = V2.as_tuple
-            m[8:12] = V3.as_tuple
-            m[12:]  = V0.as_tuple
+            m[:4]   = V1.as_tuple()
+            m[4:8]  = V2.as_tuple()
+            m[8:12] = V3.as_tuple()
+            m[12:]  = V0.as_tuple()
             Matrix(m).out()
 
         M.out("Matrix")

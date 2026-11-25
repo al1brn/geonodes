@@ -1,3 +1,3 @@
 # CloudPoint
 
-::: geonodes.core_new.geonodes.generated.dom_cloudpoint.CloudPoint
+::: geonodes.core_5_3.geonodes.generated.dom_cloudpoint.CloudPoint

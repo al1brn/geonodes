@@ -96,18 +96,13 @@ pi     = np.pi
 tau    = 2*np.pi
 e      = np.e
 
-COMPATIBLE_BLENDER_VERSION = (5, 2, 0)
-BLENDER_VERSION = bpy.app.version
+from importlib import import_module as _import_module
+from pathlib import Path as _Path
+from ._versions import select_core as _select_core
 
-if BLENDER_VERSION == COMPATIBLE_BLENDER_VERSION:
-    from . import core as core_module
-else:
-    try:
-        from . import core_new as core_module
-        print("Geonodes info: Working with new core")
-    except:
-        from . import core as core_module
-        print("CAUTION: impossible to load 'core_new' module")
+BLENDER_VERSION = bpy.app.version
+_core_name = _select_core(_Path(__file__).resolve().parent, BLENDER_VERSION)
+core_module = _import_module('.' + _core_name, __name__)
 
 
 __version__ = core_module.__version__

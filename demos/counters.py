@@ -90,7 +90,7 @@ updates
 """
 
 from geonodes import *
-from geonodes.demos import curveutil
+from . import curveutil
 
 def demo(rebuild=False):
 
@@ -103,7 +103,7 @@ def demo(rebuild=False):
 
     with ShaderNodes("LCD On"):
         ped = Shader.Principled(
-            base_color = snd.attribute("Color").color,
+            base_color = nd.attribute("Color").color,
             roughness  = .3,
             metallic   = .2,
         )
@@ -124,7 +124,7 @@ def demo(rebuild=False):
 
     with ShaderNodes("Wheel Figure"):
 
-        wheel_index = snd.attribute("Wheel").factor
+        wheel_index = nd.attribute("Wheel").factor
         black = Color((.05, .05, .05))
         red   = Color((.95, .05, .05))
 
@@ -151,7 +151,7 @@ def demo(rebuild=False):
     with ShaderNodes("Box"):
 
         ped = Shader.Principled(
-            base_color = snd.attribute("Box Color").color,
+            base_color = nd.attribute("Box Color").color,
             roughness  = .1,
             metallic   = .95,
         )
@@ -210,7 +210,7 @@ def demo(rebuild=False):
                     dh = gnmath.sin(ag)*vrad
                     dz = (1 - gnmath.cos(ag))*vrad
 
-                    rep.base = Mesh(rep.base).edges[rep.selection].extrude((0, 0, dz))
+                    rep.base = Mesh(rep.base).edges(rep.selection).extrude((0, 0, dz))
                     top = rep.base.top
 
                     ring = Group("Rounded Rectangle",
@@ -225,7 +225,7 @@ def demo(rebuild=False):
                     ring = Mesh(ring)
                     ring.offset = (0, 0, -size_z + dz)
 
-                    rep.base[top].position = ring.points.sample_index(nd.position, nd.index - total*(rep.iteration + 1))
+                    rep.base(top).position = ring.points.sample_index(nd.position, nd.index - total*(rep.iteration + 1))
 
                     rep.selection = top
 
@@ -236,7 +236,7 @@ def demo(rebuild=False):
                 top_mesh = Mesh(bot_mesh)
                 top_mesh.transform(rotation=(0, pi, 0))
 
-                bot_mesh.edges[rep.selection].extrude((0, 0, 2*(size_z - vrad)))
+                bot_mesh.edges(rep.selection).extrude((0, 0, 2*(size_z - vrad)))
 
                 box = Mesh(bot_mesh + top_mesh)
                 box.merge_by_distance()
@@ -299,22 +299,22 @@ def demo(rebuild=False):
         
         with Layout("0x10 : Hrz Bottom"):
             item0 = Mesh.Circle(vertices=4, fill_type='NGON')
-            item0[0].position = (x0 + e, 0, z0)
-            item0[1].position = (x1 - e, 0, z0)
-            item0[2].position = (x1 - d - e, 0, z0 + d)
-            item0[3].position = (x0 + d + e, 0, z0 + d)
+            item0(0).position = (x0 + e, 0, z0)
+            item0(1).position = (x1 - e, 0, z0)
+            item0(2).position = (x1 - d - e, 0, z0 + d)
+            item0(3).position = (x0 + d + e, 0, z0 + d)
 
             item0.faces.Mask = int(0x10)
             digit = Mesh(item0)
 
         with Layout("0x20 : Hrz Middle"):
             item = Mesh.Circle(vertices=6, fill_type='NGON')
-            item[0].position = (x0, 0, 0)
-            item[1].position = (x0 + d, 0, -d2)
-            item[2].position = (x1 - d, 0, -d2)
-            item[3].position = (x1, 0, 0)
-            item[4].position = (x1 - d, 0, d2)
-            item[5].position = (x0 + d, 0, d2)
+            item(0).position = (x0, 0, 0)
+            item(1).position = (x0 + d, 0, -d2)
+            item(2).position = (x1 - d, 0, -d2)
+            item(3).position = (x1, 0, 0)
+            item(4).position = (x1 - d, 0, d2)
+            item(5).position = (x0 + d, 0, d2)
 
             item.faces.Mask = int(0x20)
             digit += item
@@ -330,10 +330,10 @@ def demo(rebuild=False):
 
         with Layout("0x01: Bottom Left"):
             item3 = Mesh.Circle(vertices=4, fill_type='NGON')
-            item3[0].position = (x0, 0, z0 + e)
-            item3[1].position = (x0 + d, 0, z0 + d + e)
-            item3[2].position = (x0 + d, 0, -d2 - e)
-            item3[3].position = (x0, 0, -e)
+            item3(0).position = (x0, 0, z0 + e)
+            item3(1).position = (x0 + d, 0, z0 + d + e)
+            item3(2).position = (x0 + d, 0, -d2 - e)
+            item3(3).position = (x0, 0, -e)
             
             item3.faces.Mask = int(0x01)
 
@@ -379,7 +379,7 @@ def demo(rebuild=False):
         digit.faces.material = off_mat
         zero_off = Mesh(digit)
 
-        digit.faces[(Integer("Mask") & mask).not_equal(0)].material =  on_mat
+        digit.faces((Integer("Mask") & mask).not_equal(0)).material =  on_mat
 
         # 0x5F is mask for value 0
         with Layout("Display 0"):
@@ -533,13 +533,14 @@ def demo(rebuild=False):
 
             box_size = (x + delta*3.0, z*0.9, z + delta*2.0)
 
+            margin = 0.9*delta
             box = Group("Rounded Box",
                         size        = box_size, 
                         h_radius    = 0.1, 
                         v_radius    = 0.1, 
                         resolution  = 8, 
                         open        = True,
-                        margin      = 0.9*delta,
+                        margin      = margin,
                         depth       = 0.5*delta,
                         color       = box_color,
                         material    = box_mat,
@@ -581,7 +582,7 @@ def demo(rebuild=False):
             figure = Curve((curve0 + curve1).realize()).fill()
 
         with Layout("Intermediary factor"):
-            fac = frac.map_range_smooth_step(.5, 1, 0, 1).switch(continuous, frac)
+            fac = frac.map_range(.5, 1, 0, 1, interpolation_type="Smooth Step").switch(continuous, frac)
 
         with Layout("Move the figures"):
             figure = figure.transform(translation=(0, size*fac, 0))
@@ -739,7 +740,7 @@ def demo(rebuild=False):
     with ShaderNodes("Clock Outer"):
 
         ped = Shader.Principled(
-            base_color = snd.attribute("Color").color,
+            base_color = nd.attribute("Color").color,
             roughness = 0.1,
         )
 
@@ -781,7 +782,7 @@ def demo(rebuild=False):
         with Layout("Base Circle"):
 
             circle = Mesh.Circle(vertices=12).to_points()
-            hours_circle = Cloud(circle.points[(nd.index % 3).equal(0)].separate())
+            hours_circle = Cloud(circle.points((nd.index % 3).equal(0)).separate())
             min_circle = Cloud(hours_circle.inverted)
 
         with Layout("Minutes Marks"):
@@ -791,7 +792,7 @@ def demo(rebuild=False):
             min_circle.transform(scale=scale)
 
             mark = Mesh.Cube(size=(l, .05, h_marks))
-            marks = min_circle.instance_on(instance=mark, rotation=Rotation.AlignXToVector(nd.position))
+            marks = min_circle.instance_on_points(instance=mark, rotation=Rotation(DEFAULT).align_x_to_vector(nd.position))
 
         clock = marks
 
@@ -804,7 +805,7 @@ def demo(rebuild=False):
 
             mark = Mesh.Cube(size=(l, .05, h_marks))
 
-            marks = hours_circle.instance_on(instance=mark, rotation=Rotation.AlignXToVector(nd.position))
+            marks = hours_circle.instance_on_points(instance=mark, rotation=Rotation(DEFAULT).align_x_to_vector(nd.position))
 
         clock += marks
 
@@ -813,11 +814,11 @@ def demo(rebuild=False):
             l = .1
             scale = (1 - l/2)
             sec_circle = Mesh.Circle(radius=scale, vertices=60).to_points()
-            sec_circle.points[(nd.index % 5).equal(0)].delete()
+            sec_circle.points((nd.index % 5).equal(0)).delete()
 
             mark = Mesh.Cube(size=(l, .01, h_marks))
 
-            marks = sec_circle.instance_on(instance=mark, rotation=Rotation.AlignXToVector(nd.position))
+            marks = sec_circle.instance_on_points(instance=mark, rotation=Rotation(DEFAULT).align_x_to_vector(nd.position))
 
         clock += marks
         clock.transform(translation=(0, 0, h_marks/2))
@@ -831,7 +832,7 @@ def demo(rebuild=False):
             z = Float(h_marks + .1*h_needle)
 
             needle = Mesh.Grid(vertices_x=2, vertices_y=2, size_x=r, size_y=r).transform(translation=(0, 0, z), rotation=(0, 0, pi/4))
-            needle.points[2].offset = (l - r/2, 0, 0)
+            needle.points(2).offset = (l - r/2, 0, 0)
 
             angle = gnmath.radians(((t/360) % 60)*(-6) + 90)
             needle.transform(rotation=(0, 0, angle))
@@ -847,7 +848,7 @@ def demo(rebuild=False):
             r = .08
 
             needle = Mesh.Grid(vertices_x=2, vertices_y=2, size_x=r, size_y=r).transform(translation=(0, 0, z), rotation=(0, 0, pi/4))
-            needle.points[2].offset = (l - r/2, 0, 0)
+            needle.points(2).offset = (l - r/2, 0, 0)
 
             angle = gnmath.radians(((t/60) % 60)*(-6) + 90)
             needle.transform(rotation=(0, 0, angle))
@@ -889,7 +890,7 @@ def demo(rebuild=False):
             h = torus_r/100
             back = Mesh.Cylinder(radius=1.05 + h, vertices=64, fill_type='NGON', depth=h).transform(translation=(0, 0, -h/2))
             back.faces.material = torus_mat
-            back.faces[0].material = back_mat
+            back.faces(0).material = back_mat
 
 
         clock += back

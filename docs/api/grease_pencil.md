@@ -1,3 +1,3 @@
 # GreasePencil
 
-::: geonodes.core_new.geonodes.generated.greasepencil.GreasePencil
+::: geonodes.core_5_3.geonodes.generated.greasepencil.GreasePencil

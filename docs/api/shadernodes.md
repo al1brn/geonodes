@@ -1,3 +1,3 @@
 # ShaderNodes
 
-::: geonodes.core_new.shadernodes.shadernodes.ShaderNodes
+::: geonodes.core_5_3.shadernodes.shadernodes.ShaderNodes

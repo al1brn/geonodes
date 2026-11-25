@@ -1,3 +1,3 @@
 # Integer
 
-::: geonodes.core_new.geonodes.generated.integer.Integer
+::: geonodes.core_5_3.geonodes.generated.integer.Integer

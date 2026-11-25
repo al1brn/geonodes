@@ -10,6 +10,7 @@ from pprint import pprint
 
 import bpy
 from .node_explore import NodeInfo
+from .context import config
 from .. import core_module
 
 constants = core_module.constants
@@ -102,9 +103,14 @@ def deprecated_nodes():
 
 def get_static_method(tree_type, name):
 
-    from geonodes import nd, snd
+    from geonodes import core_module
+    from importlib import import_module
 
-    module = nd if tree_type=='GeometryNodeTree' else snd
+    if hasattr(core_module, 'environment'):
+        environment = config.TREE_MODULES[tree_type]
+        module = import_module(f'{core_module.__name__}.{environment}.generated.static_nd').nd
+    else:
+        module = getattr(core_module, 'nd' if tree_type == 'GeometryNodeTree' else 'snd')
 
     method = getattr(module, name, None)
     if method is None:

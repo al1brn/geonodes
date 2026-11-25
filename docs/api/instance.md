@@ -1,3 +1,3 @@
 # Instance
 
-::: geonodes.core_new.geonodes.generated.dom_instance.Instance
+::: geonodes.core_5_3.geonodes.generated.dom_instance.Instance

@@ -243,14 +243,14 @@ def demo(rebuild=False):
                 
                 new_index = rep.mesh.faces.sample_index(Integer("Cell ID"), index=face0)
                 mesh = Mesh(rep.mesh)
-                mesh.faces[nd.index == face1].Cell_ID = new_index
+                mesh.faces(nd.index == face1).Cell_ID = new_index
                     
                 rep.mesh.switch(do_merge, mesh)
                 
         with Layout("Split to islands"):
                 
             mesh = Mesh(rep.mesh)
-            mesh.remove_named_attribute("Temp*", pattern_mode="Wildcard")
+            mesh.remove("Temp*", "Wildcard")
 
             cells = G().mesh_to_located_instances(
                 mesh, 
@@ -383,7 +383,7 @@ def demo(rebuild=False):
 
                 # Add contributions
                 sel = nd.index == rep.iteration
-                acc = rep.cloud.points[sel.bnot()].attribute_statistic(Vector("V")).node.sum
+                acc = rep.cloud.points(sel.bnot()).attribute_statistic(Vector("V")).node.sum
 
                 # Max acceleration
                 lacc = gnmath.max(max_acc, acc.length())
@@ -391,7 +391,7 @@ def demo(rebuild=False):
                 acc.switch(use_max_acc, bounded_acc)
 
                 # Set acceleration
-                rep.cloud.points[sel].Acceleration = acc
+                rep.cloud.points(sel).Acceleration = acc
                 
             cloud = rep.cloud
             
@@ -467,13 +467,13 @@ def demo(rebuild=False):
 
                 # New position and speed
                 new_speed = speed + acc*dt
-                rep.cloud.points[active].Speed = new_speed
-                rep.cloud[active].offset = (speed + new_speed).scale(dt/2)
+                rep.cloud.points(active).Speed = new_speed
+                rep.cloud(active).offset = (speed + new_speed).scale(dt/2)
 
                 # Rotation            
                 angle = Float("Angle") + Float("Omega")*dt
-                rep.cloud.points[active].Rotation = Rotation.FromAxisAngle(Vector("Axis"), angle)
-                rep.cloud.points[active].Angle = angle
+                rep.cloud.points(active).Rotation = Rotation.FromAxisAngle(Vector("Axis"), angle)
+                rep.cloud.points(active).Angle = angle
 
             rep.cloud.out()
 
@@ -534,7 +534,7 @@ def demo(rebuild=False):
 
         with Layout("Solidify"):
             solidified = Mesh(mesh).faces.extrude(nd.position*(-0.1), individual=False)
-            solidified[solidified.top].flip_faces()
+            solidified(solidified.top).flip_faces()
             mesh.faces.Ext = 1.
             solidified.faces.Ext = 0.
             solidified += mesh
@@ -586,10 +586,10 @@ def demo(rebuild=False):
         cloud.points.radius = Float("Mass")*.3
 
         sun_sel = nd.index == 0
-        cloud.points[sun_sel].position = Vector()
-        cloud.points[sun_sel].Speed = Vector()
-        cloud.points[sun_sel].Mass = 1000.0
-        cloud.points[sun_sel].radius = 3.0
+        cloud.points(sun_sel).position = Vector()
+        cloud.points(sun_sel).Speed = Vector()
+        cloud.points(sun_sel).Mass = 1000.0
+        cloud.points(sun_sel).radius = 3.0
 
         law = G().newton_law_interaction(g=G_)
         interaction = G().interaction_closure(
@@ -605,7 +605,7 @@ def demo(rebuild=False):
             start_frame = Input("Start Frame"),
         )
 
-        mesh = anim.cloud.instance_on(instance=Mesh.UVSphere(radius=1),scale=nd.radius)
+        mesh = anim.cloud.instance_on_points(instance=Mesh.UVSphere(radius=1),scale=nd.radius)
 
         mesh.out()
 

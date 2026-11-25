@@ -1,3 +1,3 @@
 # Curve
 
-::: geonodes.core_new.geonodes.generated.curve.Curve
+::: geonodes.core_5_3.geonodes.generated.curve.Curve

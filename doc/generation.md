@@ -1,83 +1,137 @@
-# Générer l’API pour une nouvelle version de Blender
+# Générer une API par version de Blender
 
-Le générateur courant est `geonodes.generation2`. Il produit les API Geometry Nodes et Shader Nodes dans `core_new`. Effectuer la procédure dans la version de Blender à prendre en charge.
+Chaque version majeure/mineure possède son dossier : `core_5_3` pour Blender
+5.3.x, `core_5_4` pour Blender 5.4.x, etc. L'import public calcule le nom depuis
+`bpy.app.version`. Si le dossier manque ou si sa configuration active concerne
+une autre version mineure, l'import échoue explicitement.
 
-## Avant la génération
+Le générateur est commun dans `generation`. Il utilise le même nom de dossier
+pour sa destination : Blender 5.3 ne peut pas écrire dans `core_5_2`. Il n'existe
+plus de bascule `core` / `core_new`, ni d'options `new` ou `use_core_new`.
+Les classes manuscrites, le kernel et les fichiers générés restent propres à chaque version.
+Les descriptions et les dimensions se trouvent dans `generation/api_<majeur>_<mineur>`.
 
-### Préparer core_new
+## Étape 0 — Préparer une nouvelle version
 
-Copier le contenu du `core` courant dans `core_new` avant de commencer les adaptations. Conserver le fichier `config_<ancienne_version>.py` comme référence de comparaison. Ne pas refaire cette copie entre deux essais : elle écraserait les adaptations déjà faites dans `core_new`.
+Copier une API existante vers le dossier de la nouvelle version, par exemple
+`core_5_3` vers `core_5_4`. Copier aussi `generation/api_5_3` vers
+`generation/api_5_4` : ce dossier contient `config.py` et `node_dims.py`.
+Le kernel est inclus dans la copie du core. Mettre à jour `__version__` dans le nouvel
+`__init__.py`. Garder la configuration précédente pour la comparaison jusqu'à
+la génération. Ne pas toucher au dossier de la version publiée.
 
-### Identifier les nouvelles sockets
+Un dossier copié n'est pas une garantie de compatibilité : adapter les classes
+manuscrites et les descriptions du générateur, puis valider dans Blender cible.
+En particulier, une API 5.2 doit encore être générée et testée séparément.
 
-Dans le fichier Blender de génération de l’API (`gen_api.blend`, lancer le texte **`Step 1 - New Sockets`**.
+## Étape 1 — Identifier les nouvelles sockets
 
-Il inventorie les classes `NodeSocket` et les sockets des nœuds du groupe de test. Adapter le nom de ce groupe : le script actuel utilise `Test 53`. Examiner les deux environnements Geometry et Shader et comparer les types trouvés aux déclarations existantes.
+Dans `generation/gen API.blend`, utiliser le texte **Step 1 - New Sockets**.
+Examiner Geometry Nodes et Shader Nodes. Compléter les types dans
+`core_<majeur>_<mineur>/kernel/constants.py`, les classes racines, spécialisations et registres du
+nouveau dossier de version. Les tables de sockets sont générées automatiquement.
 
-Si de nouveaux types sont présents :
+## Étape 2 — Mesurer les nœuds
 
-1. Les déclarer dans `kernel/constants.py` : correspondance type → classe dans `CLASS_NAMES`, alias dans `DATA_TYPE_HOMONYMS`, types Python dans `PYTHON_TYPES` et listes de classes concernées selon le besoin.
-2. Créer une classe manuscrite par nouveau type dans `core_new/root`, avec son `SOCKET_TYPE`, puis les spécialisations nécessaires dans `core_new/geonodes/sockets` et `core_new/shadernodes/sockets`. Suivre une classe comparable existante.
-3. Ajouter les imports et inscriptions dans les registres de `core_new/__init__.py`, notamment `SOCKET_CLASSES`, et `GEOMETRY_CLASSES` pour une nouvelle géométrie.
-4. Vérifier les sous-types et propriétés d’interface à exposer. Les tables automatiques `SOCKETS`, `SOCKET_IDS` et `SOCKET_SUBTYPES` seront reconstruites par `gen_config` ; ne pas les modifier dans les fichiers produits.
+Afficher `NODE DIMS` dans un éditeur Geometry Nodes et le matériau
+`MAT NODE DIMS` dans un éditeur Shader. Lancer **Step 2 - Node Dims** dans Blender
+avec interface : ce texte reconstruit les nœuds, rafraîchit les éditeurs et écrit
+`generation/api_<majeur>_<mineur>/node_dims.py`. Il ne nécessite pas d'importer l'API.
 
-### Calculer les dimensions des nœuds
+## Étape 3 — Create API
 
-Dans le même fichier Blender, lancer le texte **`Step 2 - Node Dims`**. Ouvrir au préalable les deux groupes dans des éditeurs visibles :
+Lancer **Step 3 - Create API** dans le `.blend`, ou exécuter
+`generation/create_api.py` depuis l'éditeur de texte Blender.
+Le script fonctionne sans charger le package public, génère les deux
+environnements dans le dossier de la version courante, écrit la configuration
+et le rapport `comparison_<version>.md`. La référence est conservée avant son
+écrasement éventuel, pour ne pas comparer un fichier à lui-même.
 
-- `NODE DIMS` dans un éditeur Geometry Nodes ;
-- `SHADER NODE DIMS` dans un éditeur Shader Nodes.
+Examiner le rapport et les méthodes produites. Si nécessaire, ajuster les
+**descriptions ordinaires** de `generation/api_<majeur>_<mineur>/config.py`, puis relancer. Ne pas
+modifier manuellement les fichiers générés ni ajouter un générateur spécifique
+à un nœud quand `NodeImplementation` suffit.
 
-Le script recrée les nœuds, rafraîchit l’interface et mesure leurs dimensions réelles. Il doit être exécuté dans Blender avec interface, pas en arrière-plan.
+Activer ensuite le nouveau `config_<version>.py` dans le `constants.py` du dossier
+cible. Redémarrer Blender et tester les groupes, modifiers, tools, matériaux et
+Package. Aucune promotion par renommage n'est nécessaire : les dossiers de
+versions restent en place.
 
-Copier le dictionnaire `NODE_DIMS` imprimé dans la console dans `generation2/node_dims.py`, en remplaçant le précédent. Il contient les dimensions des deux environnements. Recharger les modules ou redémarrer Blender avant de générer pour prendre en compte ce dictionnaire.
+## Régénérer une version existante
 
-## Génération
+Démarrer la version de Blender concernée et lancer **REGENERATE** ou
+`generation/regenerate_core.py`. Cela remplace les fichiers générés et écrit la
+configuration uniquement dans `core_<majeur>_<mineur>` correspondant.
 
-### Lancer la génération automatique
-
-Dans un texte Python du fichier Blender de travail :
+Dans une session où cette API est déjà importable, les appels sont simplement :
 
 ```python
-from geonodes.generation2.generate import generate
-from geonodes.generation2 import gen_config
+from geonodes.generation import generate, gen_config
 
-trees = generate()
-gen_config.write_file(new=True)
+generate.generate()
+gen_config.write_file()
 ```
 
-`generate()` reconstruit les tables, collecte les implémentations des deux environnements et compile tous les modules rendus avant de commencer à les écrire dans `core_new`. Une erreur de collecte ou de validation arrête la génération. `gen_config.write_file(new=True)` enregistre ensuite la configuration `core_new/config_<version_Blender>.py` pour la comparaison.
+Les autres dossiers de versions sont inchangés. Pour une régénération dans
+Blender 5.2, préparer `core_5_2` puis résoudre les incompatibilités de nœuds et
+valider son API ; l'existence de `core_5_3` n'implique pas ce support.
 
-Pour un seul environnement, utiliser `generate(tree_type='GeometryNodeTree')` ou `generate(tree_type='ShaderNodeTree')`. Pour collecter les sources sans écrire les modules : `generate(write=False)`.
-
-### Produire la synthèse des différences
-
-Après une génération réussie et l’écriture de la configuration, comparer les deux versions. Depuis la racine du dépôt, par exemple :
+## Comparer deux versions explicitement
 
 ```bash
-python3 generation2/compare_versions.py \
-  core/config_5_2_0_LTS.py \
-  core_new/config_5_3_0_Beta.py \
+python3 generation/compare_versions.py \
+  core_5_3/config_5_3_0.py \
+  core_5_4/config_5_4_0.py \
   -o comparaison.md
 ```
 
-Adapter les noms aux versions concernées. Le rapport liste, par environnement, les nœuds supprimés, ajoutés et modifiés, avec le détail des changements. Les nœuds sont identifiés par leur identifiant Blender : un renommage est une modification.
+Cette comparaison fonctionne sans Blender et ignore les dimensions par défaut.
+Les nœuds sont identifiés par leur identifiant Blender. Les règles détaillées
+sont dans [GENERATION_RULES.md](../generation/GENERATION_RULES.md).
 
-Cette comparaison fonctionne sans Blender. Les dimensions sont ignorées par défaut ; utiliser `--include-dimensions` pour les inclure. Les différences de structure entre configurations sont également signalées : les examiner avant de conclure à un changement de Blender. La synthèse est une étape explicite ; `generate()` ne la lance pas automatiquement.
+## Structure
 
-### Ajuster les implémentations
+```text
+geonodes/
+├── core_5_3/
+│   ├── kernel/
+│   ├── root/
+│   ├── common/
+│   ├── geonodes/
+│   └── shadernodes/
+└── generation/
+    ├── context.py
+    ├── generate.py
+    └── api_5_3/
+        ├── config.py
+        └── node_dims.py
+```
 
-Si le résultat par défaut ne convient pas, utiliser les dictionnaires et listes de `generation2/config.py`, puis régénérer :
+Le moteur charge le kernel et les descriptions de la version ciblée sans
+initialiser l'API publique de ce core. Les deux dossiers doivent donc exister
+avant de démarrer le parcours des nœuds. Le kernel n'est plus partagé entre les
+versions. Le moteur reste commun et doit être validé dans chaque Blender pris
+en charge.
 
-- `DEFAULT_IMPLEMENTATION` : remplacer les attributs de la description par défaut (nom, destination, retour, jump, etc.) ;
-- `ADDITIONAL_IMPLEMENTATIONS` : ajouter des implémentations ;
-- `PROPERTIES` : décrire les getters et setters ;
-- `STATIC_IMPLEMENTATION_ONLY` : conserver uniquement l’accès par le catalogue `nd` ;
-- `NO_STATIC_CODE` et `DEPRECATED_NODES` : exclure les nœuds au niveau requis ;
-- les tables de types, d’entrées et d’items : compléter les descriptions utilisées par les chemins correspondants du générateur.
+### Headers des nœuds ajoutés
 
-Passer par les descriptions ordinaires de `NodeCall` et le générateur standard de `NodeImplementation`. Ne pas corriger les fichiers générés à la main ni créer de générateur dédié à un nœud ou à une famille lorsque le mécanisme standard suffit.
+Le rapport lit les `cross_reference.py` générés dans le core de destination,
+sans importer ses modules. Pour chaque nœud ajouté, il affiche les signatures
+des implémentations hors `nd`, ou `Static only` si seul `nd` est enregistré.
+Ces références couvrent aussi les implémentations supplémentaires : elles ne
+portent pas encore de provenance distinguant défaut et ajouts. Des références
+absentes sont signalées comme non renseignées, jamais comme `Static only`.
 
-Après les ajustements, régénérer, examiner les différences et tester les appels concernés dans Blender. La compilation vérifie la syntaxe des modules ; le comportement des nœuds doit aussi être vérifié.
+Pour les nœuds modifiés, le rapport contient une sous-section `Old version`
+et une sous-section `New version` avec les signatures de chaque core, puis
+`Changes` avec les différences de configuration. `create_api.py` conserve
+également les références croisées avant régénération pour préserver ces anciennes
+signatures. Le rapport explicite 5.2 vers 5.3 est `generation/comparison_52_53.md`.
 
-Pour les détails internes, consulter [les règles de génération](../generation2/GENERATION_RULES.md). Documentation de génération documentaire : [gendoc](gendoc.md#gendoc).
+La section `Argument changes` rapproche les signatures par classe (ou `nd`),
+nom et nature de méthode. Les nouveaux arguments sont marqués `arguments
+appended` s'ils suivent tous les arguments existants, ou `CAUTION: arguments
+inserted` s'ils sont insérés avant un argument existant. Les noms et leur ordre
+sont analysés par AST, sans évaluer annotations ou valeurs par défaut.
+Suppressions, réordonnancements et modifications des défauts ne sont pas
+présentés à tort comme des ajouts ; les signatures complètes restent affichées.

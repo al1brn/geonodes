@@ -3,7 +3,7 @@
 ![geonodes](docs/getting_started/images/bandeau.png)
 
 > Current guides follow the decorator API and have been checked with **Blender 5.3 Beta**.
-> Blender 5.2.0 uses the legacy implementation.
+> The loaded API must match the exact running Blender version.
 
 **Geometry Nodes** is a powerful **Blender** feature allowing the creation of amazing 3D models.
 However, nodes trees can rapidly look like a _spaghetti plate_ difficult to understand and to maintain;
@@ -92,5 +92,11 @@ sockets; `.out()` defines outputs. Related builders can be collected in a
 - [Migration guide](docs/getting_started/migration.md)
 - [Shaders and output targets](docs/getting_started/shaders.md)
 
-The current guides describe the decorator API, including additions in `core_new`.
-Blender 5.2.0 selects the legacy `core`; other supported builds select `core_new`.
+Blender 5.3 loads `core_5_3`, Blender 5.4 loads `core_5_4`, and so on.
+Each major/minor release has its own API package; patch releases share that
+package. A missing package raises an error, with no fallback to another version.
+
+Each API includes its own `kernel/`. Version-specific generation descriptions
+and measured node dimensions are stored separately in `generation/api_5_3/`
+(`config.py` and `node_dims.py` for Blender 5.3). To prepare another version,
+copy both its core and generation-data directories; the engine remains shared.

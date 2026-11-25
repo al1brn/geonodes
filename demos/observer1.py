@@ -56,7 +56,7 @@ def demo(rebuild=False):
     with ShaderNodes("Obs Skin"):
 
         color  = [0.650011, 0.523698, 0.411225, 1.000000]
-        transp = snd.attribute(attribute_type='GEOMETRY', attribute_name="Transparency").factor
+        transp = nd.attribute(attribute_type='GEOMETRY', attribute_name="Transparency").factor
 
         ped = Shader.Principled(
             base_color = color,
@@ -67,9 +67,9 @@ def demo(rebuild=False):
         shader.out()
 
     with ShaderNodes("Obs Eye"):
-        white = snd.attribute(attribute_type='GEOMETRY', attribute_name="White").factor
+        white = nd.attribute(attribute_type='GEOMETRY', attribute_name="White").factor
         color = Color((0, 0, 0)).mix(white, Color((1, 1, 1)))
-        transp  = snd.attribute(attribute_type='GEOMETRY', attribute_name="Transparency").factor
+        transp  = nd.attribute(attribute_type='GEOMETRY', attribute_name="Transparency").factor
 
         ped = Shader.Principled(
             base_color = color,
@@ -82,8 +82,8 @@ def demo(rebuild=False):
 
     with ShaderNodes("Obs Hair"):
 
-        color   = Color(snd.attribute(attribute_type='GEOMETRY', attribute_name="Color").vector)
-        transp  = snd.attribute(attribute_type='GEOMETRY', attribute_name="Transparency").factor
+        color   = Color(nd.attribute(attribute_type='GEOMETRY', attribute_name="Color").vector)
+        transp  = nd.attribute(attribute_type='GEOMETRY', attribute_name="Transparency").factor
 
         ped = Shader.PrincipledHair(
             color = color,
@@ -95,8 +95,8 @@ def demo(rebuild=False):
 
     with ShaderNodes("Obs Blouse"):
 
-        color   = Color(snd.attribute(attribute_type='GEOMETRY', attribute_name="Color").vector)
-        transp  = snd.attribute(attribute_type='GEOMETRY', attribute_name="Transparency").factor
+        color   = Color(nd.attribute(attribute_type='GEOMETRY', attribute_name="Color").vector)
+        transp  = nd.attribute(attribute_type='GEOMETRY', attribute_name="Transparency").factor
 
         ped = Shader.Principled(
             base_color = color,
@@ -110,7 +110,7 @@ def demo(rebuild=False):
     with ShaderNodes("Obs Shoe"):
 
         color   = [0.000000, 0.000000, 0.000000, 1.000000]
-        transp  = snd.attribute(attribute_type='GEOMETRY', attribute_name="Transparency").factor
+        transp  = nd.attribute(attribute_type='GEOMETRY', attribute_name="Transparency").factor
 
         ped = Shader.Principled(
             base_color = color,
@@ -278,7 +278,7 @@ def demo(rebuild=False):
             ag      = rep.curve.points.sample_index(angle, index=index)
             rot     = Rotation.IndexSwitch((ag, 0, 0), (0, ag, 0), (0, 0, ag), index=axis)
             p       = center + rot @ (pos - center)
-            rep.curve.points[nd.index > index].position = p
+            rep.curve.points(nd.index > index).position = p
 
         curve = rep.curve
 
@@ -318,11 +318,11 @@ def demo(rebuild=False):
 
                 pos0 = curve.points.sample_index(nd.position, index=left0)
                 pos1 = curve.points.sample_index(nd.position, index=left1)
-                new_curve.points[left_sel].position = pos0 + jfac*(pos1 - pos0)
+                new_curve.points(left_sel).position = pos0 + jfac*(pos1 - pos0)
 
                 r0 = curve.points.sample_index(nd.radius, index=left0)
                 r1 = curve.points.sample_index(nd.radius, index=left1)
-                new_curve.points[left_sel].radius = r0 + jfac*(r1 - r0)
+                new_curve.points(left_sel).radius = r0 + jfac*(r1 - r0)
 
             with Layout("Right"):
 
@@ -330,15 +330,15 @@ def demo(rebuild=False):
 
                 pos0 = curve.points.sample_index(nd.position, index=right0)
                 pos1 = curve.points.sample_index(nd.position, index=right1)
-                new_curve.points[right_sel].position = pos0 + jfac*(pos1 - pos0)
+                new_curve.points(right_sel).position = pos0 + jfac*(pos1 - pos0)
 
                 r0 = curve.points.sample_index(nd.radius, index=right0)
                 r1 = curve.points.sample_index(nd.radius, index=right1)
-                new_curve.points[right_sel].radius = r0 + jfac*(r1 - r0)
+                new_curve.points(right_sel).radius = r0 + jfac*(r1 - r0)
 
             with Layout("Joints"):
-                new_curve.points[joint_sel].position = curve.points.sample_index(nd.position, index=joint_index)
-                new_curve.points[joint_sel].radius   = curve.points.sample_index(nd.radius,   index=joint_index)
+                new_curve.points(joint_sel).position = curve.points.sample_index(nd.position, index=joint_index)
+                new_curve.points(joint_sel).radius   = curve.points.sample_index(nd.radius,   index=joint_index)
 
             curve = Curve(curve.switch(use_joints, new_curve))
             n = curve.points.count
@@ -352,18 +352,18 @@ def demo(rebuild=False):
             start_resol1 = start_resol + 1
 
             new_curve = Curve(curve).resample(count=m)
-            new_curve.points[nd.index > start_resol].position = curve.points.sample_index(nd.position, index=nd.index - start_resol)
-            new_curve.points[nd.index > start_resol].radius   = curve.points.sample_index(nd.radius,   index=nd.index - start_resol)
+            new_curve.points(nd.index > start_resol).position = curve.points.sample_index(nd.position, index=nd.index - start_resol)
+            new_curve.points(nd.index > start_resol).radius   = curve.points.sample_index(nd.radius,   index=nd.index - start_resol)
 
             fac = nd.index/start_resol1
 
             pos0 = curve.points.sample_index(nd.position, index=0)
             pos1 = curve.points.sample_index(nd.position, index=1)
 
-            new_curve.points[nd.index <= start_resol].position = pos0 + (pos1 - pos0).scale(fac)
+            new_curve.points(nd.index <= start_resol).position = pos0 + (pos1 - pos0).scale(fac)
 
             radius = curve.points.sample_index(nd.radius, index=1)
-            new_curve.points[nd.index <= start_resol].radius = radius*fac**start_shape
+            new_curve.points(nd.index <= start_resol).radius = radius*fac**start_shape
 
             curve = new_curve
             n = curve.points.count
@@ -374,18 +374,18 @@ def demo(rebuild=False):
             last = n - 2
 
             new_curve = Curve(curve).resample(count=m)
-            new_curve.points[nd.index <= last].position = curve.points.sample_index(nd.position, index=nd.index)
-            new_curve.points[nd.index <= last].radius   = curve.points.sample_index(nd.radius,   index=nd.index)
+            new_curve.points(nd.index <= last).position = curve.points.sample_index(nd.position, index=nd.index)
+            new_curve.points(nd.index <= last).radius   = curve.points.sample_index(nd.radius,   index=nd.index)
 
             fac = (nd.index - last)/(end_resol + 1)
 
             pos0 = curve.points.sample_index(nd.position, index=n-2)
             pos1 = curve.points.sample_index(nd.position, index=n-1)
 
-            new_curve.points[nd.index > last].position = pos0 + (pos1 - pos0).scale(fac)
+            new_curve.points(nd.index > last).position = pos0 + (pos1 - pos0).scale(fac)
 
             radius = curve.points.sample_index(nd.radius, index=n-2)
-            new_curve.points[nd.index > last].radius = radius*(1-fac)**end_shape
+            new_curve.points(nd.index > last).radius = radius*(1-fac)**end_shape
 
             curve = new_curve
             #n = curve.points.count
@@ -417,19 +417,19 @@ def demo(rebuild=False):
             ind = [nd.index.equal(i) for i in range(6)]
 
             curve = Curve.Line(start=(0, 0, -.2), end=(0, 0, 1)).resample(count=6)
-            curve.points[ind[1]].position = (0, 0, 0)
-            curve.points[ind[2]].position = (0, 0, .33)
-            curve.points[ind[3]].position = (0, 0, .66)
-            curve.points[ind[4]].position = (0, 0, .92)
+            curve.points(ind[1]).position = (0, 0, 0)
+            curve.points(ind[2]).position = (0, 0, .33)
+            curve.points(ind[3]).position = (0, 0, .66)
+            curve.points(ind[4]).position = (0, 0, .92)
 
             curve.points.radius = 1.
-            curve.points[ind[0]].radius = .3
-            curve.points[ind[5]].radius = 0.
+            curve.points(ind[0]).radius = .3
+            curve.points(ind[5]).radius = 0.
 
             curve.points._Angle = 0.
-            curve.points[ind[1]]._Angle = bend
-            curve.points[ind[2]]._Angle = fold
-            curve.points[ind[3]]._Angle = fold
+            curve.points(ind[1])._Angle = bend
+            curve.points(ind[2])._Angle = fold
+            curve.points(ind[3])._Angle = fold
 
             curve.points._Circle_index = Float(nd.index)
 
@@ -484,22 +484,22 @@ def demo(rebuild=False):
             ind = [nd.index.equal(i) for i in range(6)]
 
             curve = Curve.Line(start=(0, 0, -.5), end=(0, 0, 1)).resample(count=6)
-            curve.points[ind[1]].position = (0, 0, 0)
-            curve.points[ind[2]].position = (0, 0, .5)
-            curve.points[ind[3]].position = (0, 0, 1)
-            curve.points[ind[4]].position = (0, 0, 1.2)
-            curve.points[ind[5]].position = (0, 0, 1.5)
+            curve.points(ind[1]).position = (0, 0, 0)
+            curve.points(ind[2]).position = (0, 0, .5)
+            curve.points(ind[3]).position = (0, 0, 1)
+            curve.points(ind[4]).position = (0, 0, 1.2)
+            curve.points(ind[5]).position = (0, 0, 1.5)
 
 
             curve.points.radius = 1.
-            curve.points[ind[0]].radius = 0
-            curve.points[ind[1]].radius = 1.1
-            curve.points[ind[5]].radius = 0
+            curve.points(ind[0]).radius = 0
+            curve.points(ind[1]).radius = 1.1
+            curve.points(ind[5]).radius = 0
 
             curve.points._Angle = 0.
-            curve.points[ind[1]]._Angle = pinch
-            curve.points[ind[2]]._Angle = bend
-            curve.points[ind[3]]._Angle = fold
+            curve.points(ind[1])._Angle = pinch
+            curve.points(ind[2])._Angle = bend
+            curve.points(ind[3])._Angle = fold
 
             curve.transform(scale=length)
 
@@ -679,31 +679,31 @@ def demo(rebuild=False):
             palm = Mesh.Circle(vertices=n, fill_type='NGON')
 
             ag = nd.index/half*pi
-            palm.points[nd.index <= half].position = (dx + radius*gnmath.sin(ag), -radius*gnmath.cos(ag), z)
+            palm.points(nd.index <= half).position = (dx + radius*gnmath.sin(ag), -radius*gnmath.cos(ag), z)
 
             ag = (nd.index - half - 1)/half*pi
-            palm.points[nd.index > half].position = (-dx  -radius*gnmath.sin(ag), radius*gnmath.cos(ag), z)
+            palm.points(nd.index > half).position = (-dx  -radius*gnmath.sin(ag), radius*gnmath.cos(ag), z)
 
             start = Mesh(palm)
 
             top = True
-            top = palm.faces[top].extrude(offset=(0, 0, -.02), individual=False).top_
-            palm.points[top].position *= (1.0, 1.0, 1)
+            top = palm.faces(top).extrude(offset=(0, 0, -.02), individual=False).top_
+            palm.points(top).position *= (1.0, 1.0, 1)
 
-            top = palm.faces[top].extrude(offset=(0, 0, -.5), individual=False).top_
-            palm.points[top].position *= (1.01, 1.3, 1)
+            top = palm.faces(top).extrude(offset=(0, 0, -.5), individual=False).top_
+            palm.points(top).position *= (1.01, 1.3, 1)
 
-            top = palm.faces[top].extrude(offset=(0, 0, -.2), individual=False).top_
-            palm.points[top].position *= (.9, 1, 1)
+            top = palm.faces(top).extrude(offset=(0, 0, -.2), individual=False).top_
+            palm.points(top).position *= (.9, 1, 1)
 
 
             dz = -.07
             f  = .95
 
             for i in range(4):
-                top = palm.faces[top].extrude(offset=(0, 0, dz), individual=True).top_
+                top = palm.faces(top).extrude(offset=(0, 0, dz), individual=True).top_
                 s = f**(i+1)
-                palm.points[top].position *= (s, 1, 1)
+                palm.points(top).position *= (s, 1, 1)
 
             palm.flip_faces()
             palm += start
@@ -829,21 +829,21 @@ def demo(rebuild=False):
             ind = [nd.index.equal(i) for i in range(4)]
 
             curve = Curve.Line(start=(-.2, 0, 0), end=(.8, 0, 0)).resample(count=4)
-            curve.points[ind[1]].position = (0, 0, 0)
-            curve.points[ind[2]].position = (.5, 0, 0)
+            curve.points(ind[1]).position = (0, 0, 0)
+            curve.points(ind[2]).position = (.5, 0, 0)
 
-            curve.points[ind[0]].radius = 0
-            curve.points[ind[1]].radius = 1
-            curve.points[ind[2]].radius = .8
-            curve.points[ind[3]].radius = 0
+            curve.points(ind[0]).radius = 0
+            curve.points(ind[1]).radius = 1
+            curve.points(ind[2]).radius = .8
+            curve.points(ind[3]).radius = 0
 
             curve.points._Angle = 0.
-            curve.points[ind[2]]._Angle = tiptoe
+            curve.points(ind[2])._Angle = tiptoe
             curve.transform(scale=size)
 
         with Layout("Profile"):
             profile = Curve.Circle(radius=.22).resample(count=2*resol + 2)
-            profile.points[(nd.index > 0) & (nd.index <= resol)].delete()
+            profile.points((nd.index > 0) & (nd.index <= resol)).delete()
             profile.transform(scale=size)
 
         with Layout("Shoe Shape"):
@@ -961,7 +961,7 @@ def demo(rebuild=False):
                 r = .24*1.2
                 nsegms = segments // 2
                 eyelid = Mesh.UVSphere(segments=nsegms, rings=rings//2, radius=r)
-                eyelid.points[nd.position.z < -0.01].delete()
+                eyelid.points(nd.position.z < -0.01).delete()
 
                 eyelid.faces.shade_smooth = True
                 disk = Mesh.Circle(vertices=nsegms, radius=r, fill_type='NGON').flip_faces()
@@ -995,8 +995,8 @@ def demo(rebuild=False):
         with Layout("Body"):
             body = Mesh(sphere).transform(scale=(1.15, 1.15, 1.8))
             tshirt = nd.position.z < 1.6
-            body.faces[tshirt]._Color = (1, 1, 1)
-            body.faces[tshirt].material = "Obs Blouse"
+            body.faces(tshirt)._Color = (1, 1, 1)
+            body.faces(tshirt).material = "Obs Blouse"
 
             blouse = Mesh(body).transform(scale=(1.02, 1.02, 1.02))
             blouse.faces.material = "Obs Blouse"
@@ -1013,11 +1013,11 @@ def demo(rebuild=False):
             blouse = blouse.difference(cyl)
             blouse.transform(rotation=(0, 0, -pi/2))
 
-            blouse.faces[nd.material_index==0].delete()
+            blouse.faces(nd.material_index==0).delete()
 
             top = nd.position.z < .01
             for _ in range(10):
-                top = blouse.edges[top].extrude(offset=(0, 0, -.25)).top_
+                top = blouse.edges(top).extrude(offset=(0, 0, -.25)).top_
 
             body += blouse
 

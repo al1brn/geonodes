@@ -1,3 +1,3 @@
 # Instances
 
-::: geonodes.core_new.geonodes.generated.instances.Instances
+::: geonodes.core_5_3.geonodes.generated.instances.Instances

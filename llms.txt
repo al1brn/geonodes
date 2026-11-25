@@ -361,18 +361,25 @@ wave_grid.build()
 
 ## Source and documentation
 
-The public geonodes module selects legacy core on Blender 5.2.0 and core_new on
-other supported builds. Current additions such as material target use core_new.
+Blender 5.3 loads `core_5_3`, Blender 5.4 loads `core_5_4`, and so on.
+Each major/minor release has its own API package; patch releases share that
+package. A missing package raises an error, with no fallback to another version.
 
-- core_new/decorators.py: function builders, dependency builds, Package.
-- core_new/root/: common socket roots, nodes and tree context.
-- core_new/geonodes/: Geometry Nodes classes, domains and generated methods.
-- core_new/shadernodes/: shader classes and generated methods.
-- generation2/: current standard NodeImplementation generator.
+- core_5_3/decorators.py: function builders, dependency builds, Package.
+- core_5_3/root/: common socket roots, nodes and tree context.
+- core_5_3/geonodes/: Geometry Nodes classes, domains and generated methods.
+- core_5_3/shadernodes/: shader classes and generated methods.
+- generation/: current standard NodeImplementation generator.
 - docs/: MkDocs source, guides and API reference.
 - doc/: legacy documentation snapshots; prefer docs/ for current usage.
-- demos/ and demos2/: demonstration scripts; check their imports and builder API
+- demos/: demonstration scripts; check their imports and builder API
   against the selected core before reuse.
 
 Guides: docs/getting_started/modifiers_groups.md, packages.md, migration.md,
 shaders.md. Full builder reference: docs/api/builders.md.
+
+Versioned generation data: generation/api_5_3/config.py and node_dims.py.
+Each core contains its own kernel (for example core_5_3/kernel/). There is no
+shared root kernel. generation.context selects descriptions, dimensions and
+kernel for the running Blender major/minor version without initializing the
+core API. Copy both the core and generation/api_* directories for a new version.

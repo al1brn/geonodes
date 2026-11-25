@@ -1,6 +1,3 @@
-print('-'*100)
-print('-'*100)
-
 from geonodes import *
 
 def demo_maupertuis(rebuild=False):
@@ -111,30 +108,54 @@ def demo_maupertuis(rebuild=False):
         with Layout("Segments length"):        
             pos0 = curve.points.sample_index(nd.position, index=nd.index - 1)._lc("Before")
             pos1 = curve.points.sample_index(nd.position, index=nd.index + 1)._lc("After")
-            
-            segm = pos1 - nd.position
-            length_attr = curve.points.get('Length', Float)
-            length_attr.set(segm.length())
-            curve.points[nd.index == last_index].set('Length', 0.0)
+
+            if True:
+                segm = pos1 - nd.position
+                curve.points["Length"] = segm.length()
+                curve.points(nd.index == last_index)["Length"] = 0.0
+            else:
+                segm = pos1 - nd.position
+                length_attr = curve.points['Length', Float]
+                length_attr.set(segm.length())
+                curve.points(nd.index == last_index)['Length'] = 0.0
             
         with Layout("Weights"):
-            pt_weight = get_weight(weight_func, nd.position)
-            ptw_attr = curve.points.get('Point Weight', Float)
-            ptw_attr.set(pt_weight)
-            
-            next_weight = curve.points.sample_index(ptw_attr.value, index=nd.index + 1)
-            segw_attr = curve.points.get('Segment Weight', Float)
-            segw_attr.set((ptw_attr.value + next_weight)/2)
+
+            if True:
+                pt_weight = "Point Weight"
+                seg_weight = "Segment Weight"
+                curve.points[pt_weight] = get_weight(weight_func, nd.position)
+
+                next_weight = curve.points.sample_index(Float(pt_weight), index=nd.index + 1)
+                curve.points[seg_weight] = (Float(pt_weight) + next_weight)/2
+            else:
+                pt_weight = get_weight(weight_func, nd.position)
+                ptw_attr = curve.points.get('Point Weight', Float)
+                ptw_attr.set(pt_weight)
+                
+                next_weight = curve.points.sample_index(ptw_attr.value, index=nd.index + 1)
+                segw_attr = curve.points.get('Segment Weight', Float)
+                segw_attr.set((ptw_attr.value + next_weight)/2)
             
         with Layout("Perp"):
             tg = pos1 - pos0
             x, y, _ = tg.xyz
-            a = curve.points.set('Perp', (-y, x, 0))
-            curve.points[ext_sel].set(a, (0.0, 0.0, 0.0))
+            curve.points['Perp'] = (-y, x, 0)
+            if True:
+                curve.points(ext_sel)["Perp", Vector] = 0
+            else:
+                a = curve.points.get('Perp', Vector)
+                curve.points[ext_sel][a.name] = (0.0, 0.0, 0.0)
             
         with Layout("Action"):
-            action = curve.points.attribute_statistic(length_attr.value*segw_attr.value).sum
-            curve.set_bundle(Bundle.Combine({'Weight Function': weight_func, 'Action': action}))
+            if True:
+                action = curve.points.attribute_statistic(Float("Length")*Float(seg_weight)).sum
+                curve.set_bundle(Bundle.Combine({
+                    'Weight Function': weight_func, 
+                    'Action': action}))
+            else:
+                action = curve.points.attribute_statistic(length_attr.value*segw_attr.value).sum
+                curve.set_bundle(Bundle.Combine({'Weight Function': weight_func, 'Action': action}))
         
         curve.out()
         
@@ -151,17 +172,25 @@ def demo_maupertuis(rebuild=False):
         with Layout("Prepare"):
             count = curve.points.count._lc("Count")
             last_index = (count - 1)._lc("Last Index")
-            
-            disp = curve.points.get('Perp', Vector).value.scale(delta)._lc("Displacement")
-            x, y, _ = disp.xyz
-            disp = Vector((x, y, 0.0))
+
+            if True:
+                x, y, _ = Vector("Perp").xyz
+                disp = Vector((x, y, 0.0))
+            else:
+                disp = curve.points.get('Perp', Vector).value.scale(delta)._lc("Displacement")
+                x, y, _ = disp.xyz
+                disp = Vector((x, y, 0.0))
             
             idx  = nd.index
             idx0 = idx - 1
             idx1 = idx + 1
-            
-            pt_weight = curve.points.get('Point Weight', Float).value
-            segm_length = curve.points.get('Length', Float).value
+
+            if True:
+                pt_weight = Float('Point Weight')
+                segm_length = Float('Length')
+            else:
+                pt_weight = curve.points.get('Point Weight', Float).value
+                segm_length = curve.points.get('Length', Float).value
             
             pos0 = curve.points.sample_index(nd.position, index=idx0)
             pos1 = curve.points.sample_index(nd.position, index=idx1)
@@ -188,27 +217,39 @@ def demo_maupertuis(rebuild=False):
                 action_delta = new_action - old_action
                 
                 if first:
-                    adelta0 = curve.points.set("Action Delta 0", action_delta)
-                    curve.points.set("Pos 0", new_pos)
+                    curve.points["Action Delta 0"] = action_delta
+                    #adelta0 = curve.points.get("Action Delta 0", Float)
+                    adelta0 = Float("Action Delta 0")
+                    curve.points["Pos 0"] = new_pos
                 else:
-                    adelta1 = curve.points.set("Action Delta 1", action_delta)
-                    curve.points.set("Pos 1", new_pos)
+                    curve.points["Action Delta 1"] = action_delta
+                    #adelta1 = curve.points.get("Action Delta 1", Float)
+                    adelta1 = Float("Action Delta 1")
+                    curve.points["Pos 1"] = new_pos
                 
         with Layout("Finalize"):
             is_fix = (nd.index == 0) | (nd.index == last_index)
-            curve.points[is_fix].set(adelta0, 0.0)
-            curve.points[is_fix].set(adelta1, 0.0)
+            curve.points[is_fix]["Action Delta 0"] = 0.0
+            curve.points[is_fix]["Action Delta 1"] = 0.0
             
-            move = (adelta0.value*adelta1.value) < 0.0
+            move = (adelta0*adelta1) < 0.0
             
-            a = curve.points.set('Move', move)
-            curve.points[is_fix].set(a, False)
+            if True:
+                curve.points['Move'] = move
+                curve.points(is_fix)["Move"] = False
+
+                pos0 = Vector('Pos 0')
+                pos1 = Vector('Pos 1')
+            else:
+                curve.points['Move'] = move
+                a = curve.points.get('Move', Boolean)
+                curve.points[is_fix][a.name] = False
             
-            pos0 = curve.points.get('Pos 0', Vector).value
-            pos1 = curve.points.get('Pos 1', Vector).value
+                pos0 = curve.points.get('Pos 0', Vector).value
+                pos1 = curve.points.get('Pos 1', Vector).value
             
-            move_to = pos0.switch(adelta0.value > 0.0, pos1)
-            curve.points.set('Move To', move_to)
+            move_to = pos0.switch(adelta0 > 0.0, pos1)
+            curve.points['Move To'] = move_to
                 
         curve.out()
         
@@ -241,21 +282,26 @@ def demo_maupertuis(rebuild=False):
                     
                     for peer in (True, False):
                         cur_curve = G().compute_displacements(cur_curve, delta=d)
-                        ok = cur_curve.points.get('Move', Boolean).value
+                        #ok = cur_curve.points.get('Move', Boolean).value
+                        ok = Boolean('Move')
                         if peer:
                             ok &= nd.index % 2 == 0
                         else:
                             ok &= nd.index % 2 == 1
                             
-                        move_to = cur_curve.points.get('Move To', Vector).value
-                        cur_curve.points[ok].position = move_to
+                        #move_to = cur_curve.points.get('Move To', Vector).value
+                        #cur_curve.points[ok].position = move_to
+                        cur_curve.points(ok).position = Vector('Move To')
                         
                     rep.curve = cur_curve
                     
                 with Layout("Decrease Delta if no point to move"):
                     cur_curve = rep.curve
 
-                    ok_move = Attribute('Move', Boolean).value
+                    if True:
+                        ok_move = Boolean('Move')
+                    else:
+                        ok_move = Attribute('Move', Boolean).value
                     n_move = cur_curve.points.attribute_statistic(Float(ok_move)).sum
                     new_delta = rep_time.delta
                     new_delta.switch(n_move == 0, new_delta * delta_fac)
@@ -311,14 +357,21 @@ def demo_maupertuis(rebuild=False):
             
             c = G().compute_displacements(curve, delta=d)
             pos = c.points.sample_index(nd.position, index=grid_j)
-            pos0 = c.points.sample_index(c.points.get('Pos 0', Vector).value, index=grid_j)
-            pos1 = c.points.sample_index(c.points.get('Pos 1', Vector).value, index=grid_j)
+            #pos0 = c.points.sample_index(c.points.get('Pos 0', Vector).value, index=grid_j)
+            #pos1 = c.points.sample_index(c.points.get('Pos 1', Vector).value, index=grid_j)
+            pos0 = c.points.sample_index(Vector('Pos 0'), index=grid_j)
+            pos1 = c.points.sample_index(Vector('Pos 1'), index=grid_j)
             tr0 = (pos0 - pos).scale(scale_hrz)
             tr1 = (pos1 - pos).scale(scale_hrz)
-            
-            ad0 = c.points.sample_index(c.points.get('Action Delta 0', Float).value, index=grid_j)
-            ad1 = c.points.sample_index(c.points.get('Action Delta 1', Float).value, index=grid_j)
-            ok = c.points.sample_index(c.points.get('Move', Boolean).value, index=grid_j)
+
+            if True:
+                ad0 = c.points.sample_index(Float('Action Delta 0'), index=grid_j)
+                ad1 = c.points.sample_index(Float('Action Delta 1'), index=grid_j)
+                ok = c.points.sample_index(Boolean('Move'), index=grid_j)
+            else:
+                ad0 = c.points.sample_index(c.points.get('Action Delta 0', Float).value, index=grid_j)
+                ad1 = c.points.sample_index(c.points.get('Action Delta 1', Float).value, index=grid_j)
+                ok = c.points.sample_index(c.points.get('Move', Boolean).value, index=grid_j)
             
             sel0 = grid_i == NX + idx 
             sel1 = grid_i == NX - idx 
@@ -326,8 +379,8 @@ def demo_maupertuis(rebuild=False):
             rep.grid.points[sel0].offset = tr0 + (0, 0, ad0*scale_vrt)
             rep.grid.points[sel1].offset = tr1 + (0, 0, ad1*scale_vrt)
             
-            rep.grid.points[sel0].set('Color', Color.Switch(ok & (ad0 < 0.0), "White", "Red"))
-            rep.grid.points[sel1].set('Color', Color.Switch(ok & (ad1 < 0.0), "White", "Red"))
+            rep.grid.points[sel0]['Color'] = Color.Switch(ok & (ad0 < 0.0), "White", "Red")
+            rep.grid.points[sel1]['Color'] = Color.Switch(ok & (ad1 < 0.0), "White", "Red")
             
             
         grid = Mesh(rep.grid)
@@ -338,7 +391,7 @@ def demo_maupertuis(rebuild=False):
             mesh_curve = curve.to_mesh(profile_curve=Curve.Circle(radius=delta*scale_hrz/100, resolution=12))
             mesh_curve.faces.shade_smooth = True
             mesh_curve.faces.material = "Gradient"
-            mesh_curve.faces.set('Color', Color("Black"))
+            mesh_curve.faces['Color'] = Color("Black")
             
             #grid += mesh_curve
             
@@ -471,19 +524,20 @@ def demo_lagrange(rebuild=False):
         with Layout("Segment Weights"):
             end = curve.points.sample_index(nd.position, index=nd.index + 1)._lc("After")
             w = get_lagrangian(lagrangian_func, nd.position, end)
-            weight_attr = curve.points.set('Weight', w)
-            curve.points[nd.index == last_index].set(weight_attr, 0.0)
+            curve.points['Weight'] = w
+            curve.points(nd.index == last_index)["Weight"] = 0.0
             
         with Layout("Perp"):
             P0 = curve.points.sample_index(nd.position, index=nd.index - 1)
             P1 = curve.points.sample_index(nd.position, index=nd.index + 1)
             tg = P1 - P0
             x, y, _ = tg.xyz
-            a = curve.points.set('Perp', (-y, x, 0))
-            curve.points[ext_sel].set(a, (0.0, 0.0, 0.0))
+            curve.points['Perp'] = (-y, x, 0)
+            #a = Vector('Perp')
+            curve.points[ext_sel]["Perp"] = (0.0, 0.0, 0.0)
             
         with Layout("Action"):
-            action = curve.points.attribute_statistic(weight_attr.value).sum
+            action = curve.points.attribute_statistic(Float("Weight")).sum
             curve.set_bundle(Bundle.Combine({
                 "Lagrangian Function": lagrangian_func,
                 "Duration": duration,
@@ -517,7 +571,7 @@ def demo_lagrange(rebuild=False):
             idx0 = idx - 1
             idx1 = idx + 1
             
-            weight = Attribute('Weight', Float).value
+            weight = Float('Weight')
             weight0 = curve.points.sample_index(weight, index=idx0)
             old_weight = weight0 + weight
             
@@ -534,35 +588,37 @@ def demo_lagrange(rebuild=False):
                 action_delta = weight0 + weight1 - old_weight
                 
                 if first:
-                    adelta0 = curve.points.set("Action Delta 0", action_delta)
-                    curve.points.set("Pos 0", new_pos)
+                    curve.points["Action Delta 0"] = action_delta
+                    adelta0 = Float("Action Delta 0")
+                    curve.points["Pos 0"] = new_pos
                 else:
-                    adelta1 = curve.points.set("Action Delta 1", action_delta)
-                    curve.points.set("Pos 1", new_pos)
+                    curve.points["Action Delta 1"] = action_delta
+                    adelta1 = Float("Action Delta 1")
+                    curve.points["Pos 1"] = new_pos
                 
         with Layout("Finalize"):
             is_fix = (nd.index == 0) | (nd.index == last_index)
-            curve.points[is_fix].set(adelta0, 0.0)
-            curve.points[is_fix].set(adelta1, 0.0)
+            curve.points(is_fix)["Action Delta 0"] = 0.0
+            curve.points(is_fix)["Action Delta 1"] = 0.0
 
             MIN_ALGO = True
             if MIN_ALGO:
-                move = gnmath.min(adelta0.value, adelta1.value) < 0.0
+                move = gnmath.min(adelta0, adelta1) < 0.0
             else:
-                move = (adelta0.value*adelta1.value) < 0.0
+                move = (adelta0*adelta1) < 0.0
             
-            a = curve.points.set('Move', move)
-            curve.points[is_fix].set(a, False)
+            curve.points['Move'] = move
+            curve.points(is_fix)["Move"] = False
             
-            pos0 = curve.points.get('Pos 0', Vector).value
-            pos1 = curve.points.get('Pos 1', Vector).value
+            pos0 = Vector('Pos 0')
+            pos1 = Vector('Pos 1')
 
             if MIN_ALGO:
-                move_to = pos0.switch(adelta0.value > adelta1.value, pos1)
+                move_to = pos0.switch(adelta0 > adelta1, pos1)
             else:
-                move_to = pos0.switch(adelta0.value > 0.0, pos1)
+                move_to = pos0.switch(adelta0 > 0.0, pos1)
                 
-            curve.points.set('Move To', move_to)
+            curve.points['Move To'] = move_to
                 
         curve.out()
         
@@ -609,21 +665,20 @@ def demo_lagrange(rebuild=False):
                                 delta=d,
                                 direction=direction,
                             )
-                            ok = cur_curve.points.get('Move', Boolean).value
+                            ok = Boolean('Move')
                             if peer:
                                 ok &= nd.index % 2 == 0
                             else:
                                 ok &= nd.index % 2 == 1
                                 
-                            move_to = cur_curve.points.get('Move To', Vector).value
-                            cur_curve.points[ok].position = move_to
+                            cur_curve.points(ok).position = Vector("Move To")
                         
                     rep.curve = cur_curve
                     
                 with Layout("Decrease Delta if no point to move"):
                     cur_curve = rep.curve
 
-                    ok_move = Attribute('Move', Boolean).value
+                    ok_move = Boolean('Move')
                     n_move = cur_curve.points.attribute_statistic(Float(ok_move)).sum
                     new_delta = rep_time.delta
                     new_delta.switch(n_move == 0, new_delta * delta_fac)
@@ -684,14 +739,14 @@ def demo_lagrange(rebuild=False):
             
             c = G().lagrangian_displacements(curve, delta=d, direction=(0.0, 1.0, 0.0))
             pos = c.points.sample_index(nd.position, index=grid_j)
-            pos0 = c.points.sample_index(c.points.get('Pos 0', Vector).value, index=grid_j)
-            pos1 = c.points.sample_index(c.points.get('Pos 1', Vector).value, index=grid_j)
+            pos0 = c.points.sample_index(Vector('Pos 0'), index=grid_j)
+            pos1 = c.points.sample_index(Vector('Pos 1'), index=grid_j)
             tr0 = (pos0 - pos).scale(scale_hrz)
             tr1 = (pos1 - pos).scale(scale_hrz)
             
-            ad0 = c.points.sample_index(c.points.get('Action Delta 0', Float).value, index=grid_j)
-            ad1 = c.points.sample_index(c.points.get('Action Delta 1', Float).value, index=grid_j)
-            ok = c.points.sample_index(c.points.get('Move', Boolean).value, index=grid_j)
+            ad0 = c.points.sample_index(Float('Action Delta 0'), index=grid_j)
+            ad1 = c.points.sample_index(Float('Action Delta 1'), index=grid_j)
+            ok = c.points.sample_index(Boolean('Move'), index=grid_j)
             
             sel0 = grid_i == NX + idx 
             sel1 = grid_i == NX - idx 
@@ -699,8 +754,8 @@ def demo_lagrange(rebuild=False):
             rep.grid.points[sel0].offset = tr0 + (0, 0, ad0*scale_vrt)
             rep.grid.points[sel1].offset = tr1 + (0, 0, ad1*scale_vrt)
             
-            rep.grid.points[sel0].set('Color', Color.Switch(ok & (ad0 < 0.0), "White", "Red"))
-            rep.grid.points[sel1].set('Color', Color.Switch(ok & (ad1 < 0.0), "White", "Red"))
+            rep.grid.points[sel0]['Color'] = Color.Switch(ok & (ad0 < 0.0), "White", "Red")
+            rep.grid.points[sel1]['Color'] = Color.Switch(ok & (ad1 < 0.0), "White", "Red")
             
             
         grid = Mesh(rep.grid)
@@ -711,7 +766,7 @@ def demo_lagrange(rebuild=False):
             mesh_curve = curve.to_mesh(profile_curve=Curve.Circle(radius=delta*scale_hrz/100, resolution=12))
             mesh_curve.faces.shade_smooth = True
             mesh_curve.faces.material = "Gradient"
-            mesh_curve.faces.set('Color', Color("Black"))
+            mesh_curve.faces['Color'] = Color("Black")
             
             #grid += mesh_curve
             

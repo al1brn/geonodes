@@ -1,3 +1,3 @@
 # Node
 
-::: geonodes.core_new.root.node.Node
+::: geonodes.core_5_3.root.node.Node

@@ -1,3 +1,3 @@
 # Menu
 
-::: geonodes.core_new.geonodes.generated.menu.Menu
+::: geonodes.core_5_3.geonodes.generated.menu.Menu

@@ -1,7 +1,7 @@
 import bpy
 
 from geonodes import *
-from geonodes.demos import shaders
+from . import shaders
 
 def demo(rebuild=False):
 
@@ -23,9 +23,9 @@ def demo(rebuild=False):
         
         
         sel = nd.index == index
-        c[sel].position = pos
-        c[sel].left_handle_position = pos + left
-        c[sel].right_handle_position = pos + right
+        c(sel).position = pos
+        c(sel).left_handle_position = pos + left
+        c(sel).right_handle_position = pos + right
         
         c.out()
 
@@ -40,7 +40,7 @@ def demo(rebuild=False):
         sym = Integer.MenuSwitch({'X': 0, 'Y': 1, 'Z': 2}, menu=Input("Symmetry"))
         from_index = Integer(0, "From Index")
         
-        hpos = Curve.handle_positions(relative=True).node
+        hpos = nd.curve_handle_positions(relative=True).node
         
         pos0 = c.points.sample_index(nd.position, index=from_index)
         left0 = c.points.sample_index(hpos.left, index=from_index)
@@ -108,8 +108,8 @@ def demo(rebuild=False):
         with Layout("Mesh"):
             mesh = Curve(bracket).fill()
             mesh.faces.material = mat
-            mesh.faces.set('Color', col)
-            mesh.faces.set('Transparency', 1 - show)
+            mesh.faces['Color'] = col
+            mesh.faces['Transparency'] = 1 - show
             
             bracket.switch(use_fill, mesh).switch(show == 0).out()
 
@@ -205,7 +205,7 @@ def demo(rebuild=False):
             p0 * (1 - t)**3 + p1 * (3*(1 - t)**2*t)
             + p2 * (3*(1 - t)*t*t) + p3 * t**3
         )
-        mesh = mesh.faces[fill_mesh.bnot()].delete_only_face()
+        mesh = mesh.faces(fill_mesh.bnot()).delete(mode="Only Faces")
 
         with Geometry.MenuSwitch(menu=Input("Geometry"), default_menu='Curve') as geometry:
             line.out("Curve")

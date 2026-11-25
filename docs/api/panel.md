@@ -1,3 +1,3 @@
 # Panel
 
-::: geonodes.core_new.root.tree.Panel
+::: geonodes.core_5_3.root.tree.Panel

@@ -172,7 +172,7 @@ def demo(rebuild=False):
 
             puddles_index = terrain.points.sample_nearest(dips.position)
             z = puddles.points.sample_index(puddles.position.z, puddles_index)
-            dips = dips.points[z.greater_than(z_water)].delete()
+            dips = dips.points(z.greater_than(z_water)).delete()
 
         # ----------------------------------------------------------------------------------------------------
         # Simulation loop : generates new dips at each frame
@@ -192,7 +192,7 @@ def demo(rebuild=False):
                 dip_position = puddles.points.sample_index(puddles.position, puddles_index)
                 z = dip_position.z
 
-                new_dips = Cloud(new_dips.points[z.less_equal(z_water)].separate().selection)
+                new_dips = Cloud(new_dips.points(z.less_equal(z_water)).separate().selection)
                 start_projs = Cloud(new_dips.inverted)
 
                 new_dips.points.store("Age", 0)
@@ -201,11 +201,11 @@ def demo(rebuild=False):
             with Layout("Update age"):
                 age = Float.Named("Age")
                 all_dips.points.store("Age", age + sim.delta_time)
-                all_dips.points[age.greater_than(age_max)].delete()
+                all_dips.points(age.greater_than(age_max)).delete()
 
             with Layout("New Projections"):
                 frame_val = nd.scene_time().frame
-                new_projs = start_projs.points.duplicate(amount=Integer.Random(3, 7, seed=seed.hash_value(frame_val + 1)))
+                new_projs = start_projs.points.duplicate_elements(amount=Integer.Random(3, 7, seed=seed.hash_value(frame_val + 1)))
                 new_projs.points.store("Speed", Vector.Random((-.4, -.4, 1), (.4, .4, 1), seed=seed.hash_value(frame_val + 2))*proj_speed)
                 new_projs.points.radius = Float.Random(.5, 2, seed=seed.hash_value(frame_val + 3))*proj_size
                 projs = Cloud(sim.projs + new_projs)
@@ -218,7 +218,7 @@ def demo(rebuild=False):
                 projs.points.store("Speed", new_speed)
 
             with Layout("Kill Projections"):
-                projs.points[nd.position.z.less_than(z_water)].delete()
+                projs.points(nd.position.z.less_than(z_water)).delete()
 
             sim.cloud = all_dips
             sim.projs = projs
@@ -248,7 +248,7 @@ def demo(rebuild=False):
 
         with Layout("Update water height"):
             x, y = puddles.position.x, puddles.position.y
-            fac = puddles.position.z.map_range_smooth_step(z_water, z_water + .02, 1., 0.)
+            fac = puddles.position.z.map_range(z_water, z_water + .02, 1., 0., interpolation_type='Smooth Step')
             #puddles.points.position = (x, y, z_water + rep.z * fac)
             puddles.points.position = (x, y, z_water + z * fac)
 
@@ -258,7 +258,7 @@ def demo(rebuild=False):
         with Layout("Projection dips"):
             cube = Mesh.Cube()
             cube.faces.material = proj_mat
-            proj_dips = Cloud(sim.cloud).points.instance_on(
+            proj_dips = Cloud(sim.cloud).instance_on_points(
                 instance = cube,
                 rotation = Vector.Random(0, tau, seed=nd.scene_time().frame + 4000),
                 scale    = nd.radius)

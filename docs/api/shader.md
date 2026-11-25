@@ -1,3 +1,3 @@
 # Shader
 
-::: geonodes.core_new.shadernodes.generated.shader.Shader
+::: geonodes.core_5_3.shadernodes.generated.shader.Shader

@@ -1,3 +1,3 @@
 # Cloud
 
-::: geonodes.core_new.geonodes.generated.cloud.Cloud
+::: geonodes.core_5_3.geonodes.generated.cloud.Cloud

@@ -1,3 +1,3 @@
 # Font
 
-::: geonodes.core_new.geonodes.generated.font.Font
+::: geonodes.core_5_3.geonodes.generated.font.Font

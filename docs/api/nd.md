@@ -1,3 +1,3 @@
 # nd class
 
-::: geonodes.core_new.geonodes.generated.static_nd.ND
+::: geonodes.core_5_3.geonodes.generated.static_nd.ND

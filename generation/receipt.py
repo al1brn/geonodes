@@ -16,7 +16,7 @@ def test_statics():
     print()
 
     print("Shader...")
-    snd._receipt_shader()
+    nd._receipt_shader()
     print("Modifier...")
     nd._receipt_modifier()
     print("Tool...")

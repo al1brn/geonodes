@@ -13,7 +13,7 @@ def class_to_page(name: str) -> str:
 
 def on_page_content(html, **kwargs):
 
-    # Detect class anchor, e.g. "geonodes.core.treeclass.Tree"
+    # Detect class anchor, e.g. "geonodes.core_5_3.root.tree.Tree"
     m = re.search(r'id="([A-Za-z0-9_.]+\.[A-Z][A-Za-z0-9_]*)"', html)
     class_anchor = m.group(1) if m else None
 

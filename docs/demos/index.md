@@ -1,6 +1,6 @@
 # Demo files
 
-The repository contains demonstrations in `demos/` and `demos2/`. Individual
+The repository contains demonstrations in `demos/` and `demos/`. Individual
 modules may retain historical entry points and node names. Use the implementation
 matching your Blender version when running them; the guide examples below use
 the current decorator API.

@@ -1,3 +1,3 @@
 # Collection
 
-::: geonodes.core_new.geonodes.generated.collection.Collection
+::: geonodes.core_5_3.geonodes.generated.collection.Collection

@@ -1,3 +1,3 @@
 # String
 
-::: geonodes.core_new.geonodes.generated.string.String
+::: geonodes.core_5_3.geonodes.generated.string.String

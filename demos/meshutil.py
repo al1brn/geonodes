@@ -38,10 +38,10 @@ def fill_selection(mesh, selection, center=None):
         if center is None:
             center = mesh.points.attribute_statistic(nd.position).mean
             
-        mesh.edges[selection].extrude()
+        mesh.edges(selection).extrude()
         top = mesh.top
-        mesh.points[top].position = center
-        mesh.points[top].merge(merge_id=1)
+        mesh.points(top).position = center
+        mesh(top).merge_points(merge_id=1)
 
         return mesh
 
@@ -134,8 +134,8 @@ def subdivide_segment():
     new_curve.switch(is_cyclic, Curve.Circle(resolution=count + sub))
 
     new_curve.position = curve.points.sample_index(nd.position, index=nd.index)
-    new_curve[(nd.index>index) & (nd.index <= index + sub)].position = new_segment.points.sample_index(nd.position, nd.index - index)
-    new_curve[nd.index > index + sub].position = curve.points.sample_index(nd.position, index=nd.index - sub)
+    new_curve((nd.index>index) & (nd.index <= index + sub)).position = new_segment.points.sample_index(nd.position, nd.index - index)
+    new_curve(nd.index > index + sub).position = curve.points.sample_index(nd.position, index=nd.index - sub)
 
     new_curve.out()
 
@@ -163,7 +163,7 @@ def new_cylinder():
               Mesh.Cylinder(radius=radius, depth=depth, side_segments=nrings-1, vertices=nsegms, fill_type="N-Gon"))
 
     nz = nd.normal.z
-    new_cyl.faces.set("Cap", Integer.Switch(nz > 0.9, Integer.Switch(nz < -0.9, 0, -1), 1))
+    new_cyl.faces["Cap"] = Integer.Switch(nz > 0.9, Integer.Switch(nz < -0.9, 0, -1), 1)
     new_cyl.transform(rotation=(0, pi, 0))
     new_cyl = set_cylinder_topology(new_cyl, nrings, nsegms)
 
@@ -232,7 +232,7 @@ def cylinder_selection():
     node_get = cylinder_selection(model, ranged=node_set.ranged, ...).node
     
     # Set cyl from model
-    cyl.points[node_set.selection].position = node_get.position
+    cyl.points(node_set.selection).position = node_get.position
     ```
     """
     
@@ -328,7 +328,7 @@ def cylinder_copy_position():
         col_count=col_count,
         ranged=sel.ranged
         )
-    cyl[sel].position = model_sel.position
+    cyl(sel).position = model_sel.position
 
     cyl.out()
 
@@ -357,9 +357,9 @@ def view_cylinder_indices():
     offset = Vector(0, "Offset")
 
     sel = cylinder_selection(cyl, ring_index=ring_index)
-    center = cyl.points[sel].attribute_statistic(nd.position).mean
+    center = cyl.points(sel).attribute_statistic(nd.position).mean
 
-    wid = Attribute(name, Integer).value
+    wid = Integer(name)
     for rep in repeat(nsegms, labels=None):
         idx = (ring_index*nsegms) + rep.iteration
         pos = cyl.points.sample_index(nd.position, index=idx)
@@ -413,7 +413,7 @@ def add_rings_to_cylinder():
                     ring_count=nrings)
 
     ranged = nd.index - Integer.Switch(below, 0, count*nsegms)
-    new_cyl[node.selection].position = cyl.points.sample_index(nd.position, index=ranged)
+    new_cyl(node.selection).position = cyl.points.sample_index(nd.position, index=ranged)
 
     new_cyl.switch(count < 1, cyl).out()
 
@@ -462,10 +462,10 @@ def close_cylinder():
             i_ring = count if bot_cap else nrings - 1 - count
 
             sel = cylinder_selection(cyl, ring_index=i_ring)
-            center = cyl.points[sel].attribute_statistic(nd.position)
+            center = cyl.points(sel).attribute_statistic(nd.position)
 
             sel0 = cylinder_selection(cyl, ring_index=i_ring + 1 if bot_cap else i_ring - 1)
-            center0 = cyl.points[sel0].attribute_statistic(nd.position)
+            center0 = cyl.points(sel0).attribute_statistic(nd.position)
 
             direc = (center - center0).normalize().scale(height.max(0.0))
 
@@ -482,8 +482,8 @@ def close_cylinder():
                 c = cylinder_copy_position(rep.cyl, ring_index=ir, model=cyl, from_ring_index=i_ring)
 
                 sel = cylinder_selection(c, ring_index=ir)
-                c[sel].position = center + direc.scale(sy) + (nd.position - center).scale(sx)
-                c[sel].set('Weld TOP', Integer.Switch(last_iteration, 0, 1 if bot_cap else 2))
+                c(sel).position = center + direc.scale(sy) + (nd.position - center).scale(sx)
+                c.points(sel)['Weld TOP'] = Integer.Switch(last_iteration, 0, 1 if bot_cap else 2)
 
                 rep.cyl = c
 
@@ -562,9 +562,9 @@ def bones_envelope():
             pos = bones.points.sample_index(nd.position, index=idx)
             r = bones.points.sample_index(nd.radius, index=idx)
             
-            rounded[sel].position = pos - tg.scale(r*ag.sin())
-            rounded[sel].set_normal_free(nrm)
-            rounded[sel].radius = r*ag.cos()
+            rounded(sel).position = pos - tg.scale(r*ag.sin())
+            rounded(sel).set_normal(nrm, mode='Free')
+            rounded(sel).radius = r*ag.cos()
             
         with Layout("Second addition points position and radius"):
             idx = (i_spline + 1)*npoints - 1
@@ -576,9 +576,9 @@ def bones_envelope():
             pos = bones.points.sample_index(nd.position, index=idx)
             r = bones.points.sample_index(nd.radius, index=idx)
 
-            rounded[sel].position = pos + tg.scale(r*ag.sin())
-            rounded[sel].set_normal_free(nrm)
-            rounded[sel].radius = r*ag.cos()
+            rounded(sel).position = pos + tg.scale(r*ag.sin())
+            rounded(sel).set_normal(nrm, mode='Free')
+            rounded(sel).radius = r*ag.cos()
             
         with Layout("Switch is caps are required"):
             use_rounded = ncaps > 0
@@ -608,11 +608,11 @@ def bones_envelope():
         i_point = nd.index % nsegms
 
         idx = i_ring*npoints + i_point
-        cyl[i_point < npoints].position  = side0.points.sample_index(nd.position, index=idx)
+        cyl(i_point < npoints).position  = side0.points.sample_index(nd.position, index=idx)
         
         idx = (i_ring + 2)*npoints - 1 - i_point
-        cyl[i_point >= npoints].position = side1.points.sample_index(nd.position, index=idx)
-        cyl[(i_point % npoints) >= npoints].position = 0
+        cyl(i_point >= npoints).position = side1.points.sample_index(nd.position, index=idx)
+        cyl((i_point % npoints) >= npoints).position = 0
         
     with Layout("Closing & Finalize"):
         
@@ -721,8 +721,8 @@ def build_poly_line():
         extended.points.radius = curve.points.sample_index(nd.radius, index=nd.index)
 
         last_sel = nd.index == new_count-1
-        extended.points[last_sel].position = target
-        extended.points[last_sel].radius = radius
+        extended.points(last_sel).position = target
+        extended.points(last_sel).radius = radius
 
     extended.switch(is_new, new_curve).out()
 
@@ -756,8 +756,8 @@ def build_bones_curve():
         rot = rep.curve.points.sample_index(rep.rotation, index=idx)
         lg = rep.curve.points.sample_index(rep.length, index=idx)
 
-        rep.curve[sel].offset = direc.scale(lg)
-        rep.curve[sel].position = rot @ nd.position
+        rep.curve(sel).offset = direc.scale(lg)
+        rep.curve(sel).position = rot @ nd.position
         
     rep.curve.out()
 
@@ -817,8 +817,8 @@ def round_joints():
             result = Curve(rep.curve)
             result.subdivide(cuts=Integer.Switch(nd.index == index, 0, cuts))
             t = Float(nd.index-index)/resolution.max(1)
-            result.points[(cuts > 0) & (nd.index >= index)
-                          & (nd.index <= index+cuts)].position = center + delta.scale(2*t-1)
+            result.points((cuts > 0) & (nd.index >= index)
+                          & (nd.index <= index+cuts)).position = center + delta.scale(2*t-1)
             rep.curve = result
             rep.added += cuts
         curve = rep.curve
@@ -878,11 +878,11 @@ def surrounding_shape():
         idx0 = n2
         idx1 = n + 1
         
-        shape.points[nd.index < n2].position = mesh.points.sample_index(nd.position, index=nd.index*2)
-        shape.points[nd.index > n2].position = mesh.points.sample_index(nd.position, index=n - (nd.index - n2 - 1)*2 - 1)
+        shape.points(nd.index < n2).position = mesh.points.sample_index(nd.position, index=nd.index*2)
+        shape.points(nd.index > n2).position = mesh.points.sample_index(nd.position, index=n - (nd.index - n2 - 1)*2 - 1)
         
-        shape.points[nd.index == idx0].position = extend1
-        shape.points[nd.index == idx1].position = extend0
+        shape.points(nd.index == idx0).position = extend1
+        shape.points(nd.index == idx1).position = extend0
         
     with Layout("Back to Bezier for rounded extremities"):
         
@@ -925,7 +925,7 @@ def cage_around_bones():
         shape = surrounding_shape(bones, resolution=ring_resol, width=width, inflate=inflate)
 
         sel_node = cylinder_selection(rep.cyl, ring_index=rep.iteration).node
-        rep.cyl.points[sel_node.selection].position = shape.points.sample_index(nd.position, index=sel_node.ranged)
+        rep.cyl.points(sel_node.selection).position = shape.points.sample_index(nd.position, index=sel_node.ranged)
         
     cage = Mesh(rep.cyl)
     
@@ -958,7 +958,7 @@ def mesh_distort():
     with Layout("Directors at rest"):
         directors = Mesh(mesh)
         director_offset = directors.points.capture_attribute(offset)
-        directors = Mesh(directors.points[move_selection].separate())
+        directors = Mesh(directors.points(move_selection).separate())
         count = directors.points.count
 
     with Layout("Interpolation system"):
@@ -970,8 +970,8 @@ def mesh_distort():
         p0 = directors.points.sample_index(nd.position, index=row)
         p1 = directors.points.sample_index(nd.position, index=column)
         rhs = directors.points.sample_index(director_offset, index=row)
-        matrix.points.set("A", influence(p0-p1))
-        matrix.points.set("B", rhs)
+        matrix.points["A"] = influence(p0-p1)
+        matrix.points["B"] = rhs
 
     with Layout("Solve director coefficients"):
         # Gaussian elimination, followed by elimination above the pivot
@@ -982,8 +982,8 @@ def mesh_distort():
             pivot = work.points.sample_index(Float("A"), index=pivot_index)
             pivot_rhs = work.points.sample_index(Vector("B"), index=pivot_index)
             pivot_row = row == rep.iteration
-            work.points[pivot_row].set("A", Float("A")/pivot)
-            work.points[pivot_row].set("B", pivot_rhs/pivot)
+            work.points(pivot_row)["A"] = Float("A")/pivot
+            work.points(pivot_row)["B"] = pivot_rhs/pivot
 
             # Sample from the normalized matrix before changing either
             # field, so all rows use the same elimination step.
@@ -993,10 +993,8 @@ def mesh_distort():
                 Float("A"), index=rep.iteration*count + column)
             pivot_rhs = work.points.sample_index(
                 Vector("B"), index=rep.iteration*count)
-            work.points[pivot_row.bnot()].set(
-                "A", Float("A") - multiplier*pivot_value)
-            work.points[pivot_row.bnot()].set(
-                "B", Vector("B") - pivot_rhs.scale(multiplier))
+            work.points(pivot_row.bnot())["A"] = Float("A") - multiplier*pivot_value
+            work.points(pivot_row.bnot())["B"] = Vector("B") - pivot_rhs.scale(multiplier)
             rep.matrix = work
         matrix = rep.matrix
 
@@ -1010,7 +1008,7 @@ def mesh_distort():
         # Enforce the supplied offsets at the directors themselves,
         # avoiding small residual errors from the floating-point solve.
         displacement = Vector.Switch(move_selection, rep.displacement, offset)
-        mesh[selection].offset = displacement
+        mesh(selection).offset = displacement
     mesh.out()
 
 # ====================================================================================================
@@ -1030,8 +1028,8 @@ def cbone_new():
     
     curve = Curve()
     
-    curve.points.set("Pos", nd.position)
-    curve.points.set("Transform", Matrix.CombineTransform())
+    curve.points["Pos"] = nd.position
+    curve.points["Transform"] = Matrix.CombineTransform()
     
     with Layout("Normals"):
         pos0 = nd.position
@@ -1039,11 +1037,11 @@ def cbone_new():
         segm = pos1 - pos0
         u = segm.normalize()
         
-        curve.points.set("u", u)
+        curve.points["u"] = u
         
         for rep_spline in repeat(curve.splines.count, curve=curve, index_offset=0):
             
-            spline = Curve(Curve(curve).splines[nd.index == rep_spline.iteration].separate())
+            spline = Curve(curve.splines(nd.index == rep_spline.iteration).separate())
             npoints = spline.points.count
             
             with Layout("First Segment"):
@@ -1060,7 +1058,7 @@ def cbone_new():
                 perp.switch(is_vert, Vector.Switch(z < 0, (1, 0, 0), (-1, 0, 0)))
                 
                 sel = nd.index == point_index
-                rep_spline.curve[sel].set("Perp", perp)
+                rep_spline.curve.points(sel)["Perp"] = perp
                 
             with Layout("Other segments"):
                 for rep in repeat(npoints - 2, curve=rep_spline.curve, prev_u=u, prev_perp=perp):
@@ -1077,7 +1075,7 @@ def cbone_new():
                     perp.switch(is_aligned, rep.prev_perp)
                     
                     sel = nd.index == rep_spline.index_offset + rep.iteration + 1
-                    rep.curve[sel].set("Perp", perp)
+                    rep.curve.points(sel)["Perp"] = perp
                     
                     rep.prev_u = u
                     rep.prev_perp = perp
@@ -1129,11 +1127,11 @@ def cbone_rotate():
     
         transform = Matrix.CombineTransform(translation=-pos0)
         transform = Matrix.CombineTransform(translation=pos0, rotation=rot) @ transform
-        curve.points[sel].set("Transform", transform @ Matrix("Transform"))
+        curve.points(sel)["Transform"] = transform @ Matrix("Transform")
     
         curve.offset = -pos0
-        curve[sel].position = rot @ nd.position
-        curve[sel].set("Perp", rot @ Vector("Perp"))
+        curve(sel).position = rot @ nd.position
+        curve.points(sel)["Perp"] = rot @ Vector("Perp")
         curve.offset = pos0
         
     curve.out()      
@@ -1163,10 +1161,10 @@ def cbone_translate():
         
     with Layout("Compute the transformation"):
         transform = Matrix.CombineTransform(translation=trans)
-        curve.points[sel].set("Transform", transform @ Matrix("Transform"))
+        curve.points(sel)["Transform"] = transform @ Matrix("Transform")
         
     with Layout("Transform the Curve"):
-        curve[sel].offset = trans
+        curve(sel).offset = trans
     
     curve.out()
     
@@ -1194,9 +1192,9 @@ def cbone_distance():
         segm_len = segm.length()
         segm = segm.normalize()
         
-        curve.points.set("Pos0", nd.position)
-        curve.points.set("Segm", segm)
-        curve.points.set("Segm Len", segm_len)
+        curve.points["Pos0"] = nd.position
+        curve.points["Segm"] = segm
+        curve.points["Segm Len"] = segm_len
         
     count = Integer.Switch(closed, curve.points.count - 1, curve.points.count)
     for rep in repeat(count, curve=curve, edge_index=-1, dist=0.0, proj=0.0):
@@ -1238,11 +1236,11 @@ def cbone_link():
 
     nsplines = curve.splines.count
     
-    mesh.points.set("Bone Weight", 0.0)
+    mesh.points["Bone Weight"] = 0.0
     
     for rep in repeat(nsplines, mesh=mesh, total=0):
 
-        spline = Curve(Curve(curve).splines[nd.index==rep.iteration].separate())
+        spline = Curve(Curve(curve).splines(nd.index==rep.iteration).separate())
         npoints = spline.points.count
         
         sel = (Integer("Bone") == rep.iteration) | (Integer("Bone") < 0)
@@ -1262,19 +1260,19 @@ def cbone_link():
 
         proj = node.proj
         
-        rep.mesh.points[change].set("Bone Index",   rep.total + index)
-        rep.mesh.points[change].set("Bone Proj",    proj)
-        rep.mesh.points[change].set("Bone Has Prev", closed | is_first.bnot())
-        rep.mesh.points[change].set("Bone Has Next", closed | is_last.bnot())
-        rep.mesh.points[change].set("Bone Prev Index", prev_index)
-        rep.mesh.points[change].set("Bone Next Index", next_index)
-        rep.mesh.points[change].set("Bone Weight",  weight)
+        rep.mesh.points(change)["Bone Index"] = rep.total + index
+        rep.mesh.points(change)["Bone Proj"] = proj
+        rep.mesh.points(change)["Bone Has Prev"] = closed | is_first.bnot()
+        rep.mesh.points(change)["Bone Has Next"] = closed | is_last.bnot()
+        rep.mesh.points(change)["Bone Prev Index"] = prev_index
+        rep.mesh.points(change)["Bone Next Index"] = next_index
+        rep.mesh.points(change)["Bone Weight"] = weight
 
         rep.total += npoints
 
     mesh = rep.mesh
 
-    mesh.points[selection.bnot()].set("Bone Weight", 0.0)
+    mesh.points(selection.bnot())["Bone Weight"] = 0.0
     
     mesh.out()
     
@@ -1380,7 +1378,7 @@ def osel_count():
     mesh = Mesh()
     sel_name = String("Selection", "Selection Name")
     
-    count = Mesh(mesh.points[Integer(sel_name) > 0].separate()).points.count
+    count = Mesh(mesh.points(Integer(sel_name) > 0).separate()).points.count
     
     count.out("Count")
 
@@ -1400,7 +1398,7 @@ def osel_rename():
     new_name = String("New Name", "New Name")
     use_remove = Boolean(True, "Remove")
     
-    mesh.points.set(new_name, Integer(sel_name))
+    mesh.points[new_name] = Integer(sel_name)
     rem = Mesh(mesh)
     rem.remove_named_attribute(name=sel_name)
     
@@ -1429,16 +1427,16 @@ def osel_add_selection():
         
         exists = mesh.points.sample_index(idx.exists, index=0)
         
-        mesh.points[exists.bnot()].set(sel_name, 0)
+        mesh.points(exists.bnot())[sel_name] = 0
         
         max_sel = mesh.points.attribute_statistic(Float(idx)).max_.to_integer()
         
     with Layout("Selection Order"):
-        n = Mesh(Mesh(mesh).points[sel].separate()).points.count
+        n = Mesh(mesh.points(sel).separate()).points.count
         num = mesh.points.accumulate_field(Integer(sel)).leading
-        mesh.points.set("tmp Sel", Integer.Switch(use_invert, num, n + 1 - num))
+        mesh.points["tmp Sel"] = Integer.Switch(use_invert, num, n + 1 - num)
         
-        mesh.points[sel].set(sel_name, max_sel + Integer("tmp Sel"))
+        mesh.points(sel)[sel_name] = max_sel + Integer("tmp Sel")
         mesh.remove_named_attribute(name="tmp Sel")
         
     mesh.out()
@@ -1462,7 +1460,7 @@ def osel_append():
     count = osel_count(mesh, sel_name)
     
     other_idx = Integer(other_name)
-    mesh.points[other_idx > 0].set(sel_name, count + other_idx)
+    mesh.points(other_idx > 0)[sel_name] = count + other_idx
     
     rem = Mesh(mesh)
     rem.remove_named_attribute(name=other_name)
@@ -1494,7 +1492,7 @@ def osel_visualization():
         label = idx.to_string().to_curves(size=size).realize()
         label = Curve(label).fill()
         label.faces.material = "Colored Mat"
-        label.faces.set('Color', Color("Black"))
+        label.faces['Color'] = Color("Black")
         label.transform(rotation=(pi/2, 0, rot))
         
         pos1 =  feel.pos + feel.normal.scale(dist) + ofs
@@ -1526,9 +1524,9 @@ def osel_shift():
     idx = Integer(sel_name)
     sel = idx > 0
     
-    count = Mesh(Mesh(mesh).points[sel].separate()).points.count
+    count = Mesh(mesh.points(sel).separate()).points.count
     
-    mesh.points[sel].set(sel_name, (idx - 1 + shift).floored_modulo(count) + 1)
+    mesh.points(sel)[sel_name] = (idx - 1 + shift).floored_modulo(count) + 1
     
     mesh.out()
     
@@ -1550,11 +1548,11 @@ def osel_invert():
     idx = Integer(sel_name)
     sel = idx > 0
     
-    count = Mesh(Mesh(mesh).points[sel].separate()).points.count
+    count = Mesh(mesh.points(sel).separate()).points.count
     
     inverted = Mesh(mesh)
     
-    inverted.points[sel].set(sel_name, count - idx + 1)
+    inverted.points(sel)[sel_name] = count - idx + 1
     
     mesh.switch(use_invert, inverted).out()
     
@@ -1579,19 +1577,19 @@ def osel_extract():
     
     idx = Integer(sel_name)
     
-    nsel = Mesh(Mesh(mesh).points[idx > 0].separate()).points.count
+    nsel = Mesh(mesh.points(idx > 0).separate()).points.count
     
     new_idx = (idx - start).floored_modulo(nsel)
     
     sel = (idx > 0) & (new_idx < count)
     
     named = Mesh(mesh)
-    named.points.set(x_name, new_idx + 1)
+    named.points[x_name] = new_idx + 1
     inverted = Mesh(mesh)
-    inverted.points.set(x_name, count - new_idx)
+    inverted.points[x_name] = count - new_idx
     named.switch(use_invert, inverted)
     
-    named.points[sel.bnot()].set(x_name, 0)
+    named.points(sel.bnot())[x_name] = 0
     
     mesh.switch(x_name != "", named)
     
@@ -1612,7 +1610,7 @@ def osel_get_line():
     mesh = Mesh()
     sel_name = String("Selection", "Name")
     
-    pts = Mesh(mesh.points[Integer(sel_name) > 0].separate())
+    pts = Mesh(mesh.points(Integer(sel_name) > 0).separate())
     
     pts.points.sort(sort_weight=Integer(sel_name))
 
@@ -1634,7 +1632,7 @@ def osel_set_position():
     
     pts = Cloud(None, "Points")
     
-    mesh[Integer(sel_name) > 0].position = pts.points.sample_index(nd.position, index=Integer(sel_name) - 1)
+    mesh(Integer(sel_name) > 0).position = pts.points.sample_index(nd.position, index=Integer(sel_name) - 1)
     
     mesh.out()
     
@@ -1654,7 +1652,7 @@ def osel_get_disk():
     
     sel = Integer(sel_name)>0
     
-    center = mesh.points[sel].attribute_statistic(nd.position).mean
+    center = mesh.points(sel).attribute_statistic(nd.position).mean
     
     line = osel_get_line(mesh, sel_name)
     
@@ -1682,11 +1680,11 @@ def osel_to_circle():
     center = Vector(0, "Center")
     factor = Float.Factor(1.0, "Factor", 0, 1)
     
-    def_center = mesh.points[Integer(sel_name) > 0].attribute_statistic(nd.position).mean
+    def_center = mesh.points(Integer(sel_name) > 0).attribute_statistic(nd.position).mean
     center.switch(use_center, def_center)
 
     new_pos = center + (nd.position - center).normalize().scale(radius)
-    mesh[Integer(sel_name)>0].position = Vector(factor).map_range(to_min=nd.position, to_max=new_pos)
+    mesh(Integer(sel_name)>0).position = Vector(factor).map_range(to_min=nd.position, to_max=new_pos)
 
     mesh.out()
     
@@ -1710,9 +1708,9 @@ def osel_merge():
     
     mesh = osel_set_position(mesh, sel_name, points=line)
     
-    mesh.points.set("tmp Merge", Integer(sel_name))
-    mesh.points[Integer(to_name)>0].set("tmp Merge", Integer(to_name))
-    mesh = mesh.points[Integer("tmp Merge") > 0].merge(merge_id=Integer("tmp Merge"))
+    mesh.points["tmp Merge"] = Integer(sel_name)
+    mesh.points(Integer(to_name)>0)["tmp Merge"] = Integer(to_name)
+    mesh = mesh(Integer("tmp Merge") > 0).merge_points(merge_id=Integer("tmp Merge"))
     
     mesh.remove_named_attribute(name="tmp Merge")
 
@@ -1777,17 +1775,17 @@ def osel_bridge():
                     Integer(attr_name), index=boundary_index)
                 target_value = line1.points.sample_index(
                     Integer(attr_name), index=boundary_index)
-                rep.bridge.points.set(attr_name, 0)
-                rep.bridge.points[boundary_row == 0].set(attr_name, source_value)
-                rep.bridge.points[boundary_row == nx-1].set(attr_name, target_value)
+                rep.bridge.points[attr_name] = 0
+                rep.bridge.points(boundary_row == 0)[attr_name] = source_value
+                rep.bridge.points(boundary_row == nx-1)[attr_name] = target_value
             bridge = Mesh(rep.bridge)
 
         # Bridge-specific attributes override the copied boundary values.
-        bridge.set(sel_name0, 0)
-        bridge.set(sel_name1, 0)
+        bridge.points[sel_name0] = 0
+        bridge.points[sel_name1] = 0
         
         named = Mesh(bridge)
-        named.points.set(bridge_name, nd.index + 1)
+        named.points[bridge_name] = nd.index + 1
         bridge.switch(bridge_name.length()>0, named)
         
     with Layout("Bridge points position"):
@@ -1812,39 +1810,38 @@ def osel_bridge():
         sideB = (side_name + " B").switch(no_side)
         
         with Layout("Bridge Sides"):            
-            bridge.points[i==0].set(sel_name0, j+1)
-            bridge.points[i==nx-1].set(sel_name1, j+1)
+            bridge.points(i==0)[sel_name0] = j+1
+            bridge.points(i==nx-1)[sel_name1] = j+1
             
-            bridge.points[j==0].set(sideA, i+1)
-            bridge.points[j==ny-1].set(sideB, nx - i)
+            bridge.points(j==0)[sideA] = i+1
+            bridge.points(j==ny-1)[sideB] = nx - i
             
         with Layout("Side extremities will be merged"):                
-            mesh.points[Integer(sel_name0)==1].set(sideA, 1)
-            mesh.points[Integer(sel_name0)==ny].set(sideB, resol + 2)
+            mesh.points(Integer(sel_name0)==1)[sideA] = 1
+            mesh.points(Integer(sel_name0)==ny)[sideB] = resol + 2
             
-            mesh.points[Integer(sel_name1)==1].set(sideA, resol + 2)
-            mesh.points[Integer(sel_name1)==ny].set(sideB, 1)
+            mesh.points(Integer(sel_name1)==1)[sideA] = resol + 2
+            mesh.points(Integer(sel_name1)==ny)[sideB] = 1
 
         with Layout("Bridge vertex indices"):
             # Match both copies of each boundary vertex before welding,
             # so merging preserves the bridge's 1-based numbering.
             named_mesh = Mesh(mesh)
-            named_mesh.points.set(bridge_name, 0)
+            named_mesh.points[bridge_name] = 0
             source_index = Integer(sel_name0)
             target_index = Integer(sel_name1)
-            named_mesh.points[source_index > 0].set(bridge_name, source_index)
-            named_mesh.points[target_index > 0].set(
-                bridge_name, (nx - 1)*ny + target_index)
+            named_mesh.points(source_index > 0)[bridge_name] = source_index
+            named_mesh.points(target_index > 0)[bridge_name] = (nx - 1)*ny + target_index
             mesh.switch(bridge_name.length() > 0, named_mesh)
             
         with Layout("Weld"):                
             mesh += bridge
 
             idx = Integer(sel_name0)
-            mesh.points[idx > 0].merge(merge_id=idx)
+            mesh(idx > 0).merge_points(merge_id=idx)
             
             idx = Integer(sel_name1)
-            mesh.points[idx > 0].merge(merge_id=idx)
+            mesh(idx > 0).merge_points(merge_id=idx)
 
             rem = Mesh(mesh)
             rem.remove_named_attribute(name=sel_name0)
@@ -1886,7 +1883,7 @@ def osel_split_hole():
         idx = (idx - shift).floored_modulo(nsel)
         idx_max = (index0 - 1 - shift).floored_modulo(nsel)
         
-        mesh.points[(Integer(sel_name) > 0) & (idx < idx_max)].set("tmp Side A", resol + 3 + idx)
+        mesh.points((Integer(sel_name) > 0) & (idx < idx_max))["tmp Side A"] = resol + 3 + idx
         
     with Layout("New loop B"):
         
@@ -1896,7 +1893,7 @@ def osel_split_hole():
         idx = (idx - shift).floored_modulo(nsel)
         idx_max = (index1 - 1 - shift).floored_modulo(nsel)
         
-        mesh.points[(Integer(sel_name) > 0) & (idx < idx_max)].set("tmp Side B", resol + 3 + idx)
+        mesh.points((Integer(sel_name) > 0) & (idx < idx_max))["tmp Side B"] = resol + 3 + idx
         
     with Layout("Build a bridge"):   
         mesh = osel_extract(mesh, sel_name, start=index0, count=count, invert=False, extraction_name="tmp A")
@@ -1911,8 +1908,8 @@ def osel_split_hole():
             
     with Layout("Rename Selections"):
         
-        mesh.points.set(sel_name + " A", Integer("tmp Side A"))
-        mesh.points.set(sel_name + " B", Integer("tmp Side B"))
+        mesh.points[sel_name + " A"] = Integer("tmp Side A")
+        mesh.points[sel_name + " B"] = Integer("tmp Side B")
         
         mesh.remove_named_attribute(name="tmp Side A")
         mesh.remove_named_attribute(name="tmp Side B")
@@ -1924,6 +1921,6 @@ def osel_split_hole():
 
 
 def demo(rebuild=False):
-    meshutil.build(rebuild=rebuild)
-    curve_bones.build(rebuild=rebuild)
-    ordered_selection.build(rebuild=rebuild)
+    meshutil._build(rebuild=rebuild)
+    curve_bones._build(rebuild=rebuild)
+    ordered_selection._build(rebuild=rebuild)

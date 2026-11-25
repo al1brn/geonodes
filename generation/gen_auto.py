@@ -9,6 +9,7 @@ from . node_explore import NodeInfo
 from . import gen_auto_dicts
 from . gen_auto_dicts import GEONODES, GEONODES_PROPS, SHADERNODES
 from . import gen_config
+from .context import config
 from . import target_core
 
 from pprint import pprint, pformat
@@ -226,7 +227,7 @@ def build_manual_cross_ref(cross):
 
     # ----- Store named attribute
 
-    # Domain.set and Geometry.set are implemented manually, so they don't go
+    # Domain.store and Geometry.set are implemented manually, so they don't go
     # through NodeInfo.source_code and must be added to the generated cross
     # reference explicitly. Keep the automatically generated implementations
     # (store_named_attribute, store, store_uv, ...).
@@ -234,7 +235,7 @@ def build_manual_cross_ref(cross):
     node_cross = cross.setdefault(node_info.bnode.bl_idname, {})
 
     node_cross.setdefault('Domain', []).append({
-        'func_name'         : 'set',
+        'func_name'         : 'store',
         'returns'           : 'Attribute',
         'signature'         : '(self, name, value)',
     })
@@ -374,13 +375,12 @@ with GeoNodes("Calling a group example"):
 # =============================================================================================================================
 # Generate
 
-def generate(folder=None, new_core=True):
-    """Generate config and API in core_new, or core with new_core=False.
+def generate(folder=None):
+    """Generate into the core package named for the running Blender version.
 
     folder is the geonodes module directory (the current module by default).
-    Reading continues to use the core selected by geonodes.core_module.
     """
-    folder = target_core(folder, new=new_core)
+    folder = target_core(folder)
     path = folder / "generated"
     path.mkdir(exist_ok=True)
 
@@ -391,7 +391,7 @@ def generate(folder=None, new_core=True):
     # config file is named config_xxx where xxx is the blender version
     # constants.py must manually import * from this config file
 
-    gen_config.write_file(folder, new=new_core)
+    gen_config.write_file(folder)
 
     # ====================================================================================================
     # Gen collects generation
@@ -474,7 +474,7 @@ def generate(folder=None, new_core=True):
 
             props = d['props']
             class_name = d['class_name']
-            ptype, def_val = gen_config.PYTHON_TYPES.get(class_name, (object, None))
+            ptype, def_val = config.PYTHON_TYPES.get(class_name, (object, None))
             if ptype is object:
                 ptype = 'object'
 
@@ -666,7 +666,7 @@ def generate(folder=None, new_core=True):
             file.write("from .. scripterror import NodeError\n")
             file.write("from typing import TYPE_CHECKING, Literal, Union, Sequence\n")
             file.write("\nif TYPE_CHECKING:\n")
-            for klass in gen_config.GEOMETRY_CLASSES + gen_config.ATTRIBUTE_CLASSES + ['String']:
+            for klass in config.GEOMETRY_CLASSES + config.ATTRIBUTE_CLASSES + ['String']:
                 file.write(f"    class {klass}: ...\n")
             file.write("\n")
             file.write("\n")

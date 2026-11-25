@@ -46,10 +46,12 @@ def coloration_group(rebuild=False):
     """Expose the geometry attributes Color and Transparency."""
 
     with ShaderNodes("Coloration", is_group=True, rebuild=rebuild):
-        Color(snd.attribute(
+
+        Color(nd.attribute(
             attribute_type='GEOMETRY', attribute_name="Color",
         ).vector).out("Color")
-        snd.attribute(
+
+        nd.attribute(
             attribute_type='GEOMETRY', attribute_name="Transparency",
         ).factor.out("Transparency")
 
@@ -60,7 +62,7 @@ def colored_shaders(rebuild=False):
     coloration_group(rebuild=rebuild)
 
     for name, roughness in (("Colored Shiny", 0.0), ("Colored", 0.5), ("Colored Mat", 1.0)):
-        with ShaderNodes(name, replace_material=rebuild):
+        with ShaderNodes(name, rebuild=rebuild):
             coloration = G().coloration()
             shader = Shader.Principled(
                 base_color=coloration,
@@ -78,7 +80,7 @@ def colored_shaders(rebuild=False):
 def transparent_shader(rebuild=False):
     """Create a fully transparent material named Transparent."""
 
-    with ShaderNodes("Transparent", replace_material=rebuild):
+    with ShaderNodes("Transparent", rebuild=rebuild):
         Shader.Transparent(color=(1.0, 1.0, 1.0, 1.0)).out()
 
 
@@ -88,11 +90,11 @@ def transparent_shader(rebuild=False):
 
 def arrow_shader(rebuild=False):
 
-    with ShaderNodes("Arrow", replace_material=rebuild):
+    with ShaderNodes("Arrow", rebuild=rebuild):
 
-        pos_color = Color(snd.attribute(attribute_type='GEOMETRY', attribute_name="Color").vector)
-        negative  = snd.attribute(attribute_type='GEOMETRY', attribute_name="Negative").factor
-        transp    = snd.attribute(attribute_type='GEOMETRY', attribute_name="Transparency").factor
+        pos_color = Color(nd.attribute(attribute_type='GEOMETRY', attribute_name="Color").vector)
+        negative  = nd.attribute(attribute_type='GEOMETRY', attribute_name="Negative").factor
+        transp    = nd.attribute(attribute_type='GEOMETRY', attribute_name="Transparency").factor
 
         neg_color = pos_color.hue_saturation_value(hue=.5, saturation=.9, value=.9)
         color = pos_color.mix(negative, neg_color)
@@ -112,10 +114,10 @@ def arrow_shader(rebuild=False):
 
 def atom_shader(rebuild=False):
 
-    with ShaderNodes("Atom", replace_material=rebuild):
+    with ShaderNodes("Atom", rebuild=rebuild):
 
-        color = Color(snd.attribute(attribute_type='GEOMETRY', attribute_name="Color").vector)
-        transp    = snd.attribute(attribute_type='GEOMETRY', attribute_name="Transparency").factor
+        color = Color(nd.attribute(attribute_type='GEOMETRY', attribute_name="Color").vector)
+        transp    = nd.attribute(attribute_type='GEOMETRY', attribute_name="Transparency").factor
 
         ped = Shader.Principled(
             base_color = color,
@@ -132,10 +134,10 @@ def atom_shader(rebuild=False):
 
 def formula_shader(rebuild=False):
 
-    with ShaderNodes("Formula", replace_material=rebuild):
+    with ShaderNodes("Formula", rebuild=rebuild):
 
-        color  = Color(snd.attribute(attribute_type='GEOMETRY', attribute_name="face_color").vector)
-        transp = snd.attribute(attribute_type='GEOMETRY', attribute_name="Transparency").factor
+        color  = Color(nd.attribute(attribute_type='GEOMETRY', attribute_name="face_color").vector)
+        transp = nd.attribute(attribute_type='GEOMETRY', attribute_name="Transparency").factor
 
         ped = Shader.Principled(
             base_color = color,
@@ -157,14 +159,14 @@ def glass_shader(color=(1.0, 1.0, 1.0, 1.0), roughness=0.0, ior=1.45,
     A zero or missing attribute falls back to ior (1.45 by default).
     """
 
-    with ShaderNodes("Glass", replace_material=rebuild):
+    with ShaderNodes("Glass", rebuild=rebuild):
 
-        geometry_ior = snd.attribute(
+        geometry_ior = nd.attribute(
             attribute_type='GEOMETRY', attribute_name="IOR",
         ).factor
-        effective_ior = geometry_ior + geometry_ior.equal(0.0, epsilon=0.0) * ior
+        effective_ior = geometry_ior + geometry_ior.compare(0.0, epsilon=0.0) * ior
 
-        transp_fac = snd.attribute(
+        transp_fac = nd.attribute(
             attribute_type='GEOMETRY', attribute_name="Transparency",
         ).factor
 
@@ -185,7 +187,7 @@ def glass_shader(color=(1.0, 1.0, 1.0, 1.0), roughness=0.0, ior=1.45,
 def chrome_shader(color=(0.55, 0.55, 0.55, 1.0), roughness=0.08, rebuild=False):
     """Create the Chrome material with adjustable tint and roughness."""
 
-    with ShaderNodes("Chrome", replace_material=rebuild):
+    with ShaderNodes("Chrome", rebuild=rebuild):
 
         Shader.Principled(
             base_color=color,
@@ -206,12 +208,12 @@ def wood_handle_shader(color1="#301407", color2="#965025", roughness=0.22,
     Generated coordinates keep the grain independent of object dimensions.
     """
 
-    with ShaderNodes("Wood Handle", replace_material=rebuild):
+    with ShaderNodes("Wood Handle", rebuild=rebuild):
 
         with Layout("Wood Grain"):
-            coord = snd.texture_coordinate().generated
-            coord = snd.mapping(vector=coord, rotation=rotation)
-            coord = snd.mapping(vector=coord, scale=(6, 6, 0.35))
+            coord = nd.texture_coordinate().generated
+            coord = nd.mapping(vector=coord, rotation=rotation)
+            coord = nd.mapping(vector=coord, scale=(6, 6, 0.35))
 
             grain = Texture.Noise(
                 vector=coord, scale=5, detail=3, roughness=0.65,
@@ -228,7 +230,7 @@ def wood_handle_shader(color1="#301407", color2="#965025", roughness=0.22,
             color = Color(color1).mix(Color(color2), factor=factor)
 
         with Layout("Polished Wood"):
-            normal = snd.bump(
+            normal = nd.bump(
                 strength=0.12, distance=0.015, height=fine_grain.factor,
             )
             Shader.Principled(
@@ -272,9 +274,9 @@ def demo(rebuild=False):
                 scale=scale, mortar_size=gap, mortar_smooth=gap_smooth, brick_width=length, row_height=width)
 
         bricks_offset = Texture.Brick(vector=vector, color1=.05, color2=1, mortar=0, bias=0,
-                scale=scale, mortar_size=0, mortar_smooth=0, brick_width=length, row_height=width)
+                scale=scale, mortar_size=0, mortar_smooth=0, brick_width=length, row_height=width).factor
 
-        is_mortar = bricks.value.mless_than(.01)
+        is_mortar = bricks.factor.less_than(.01)
         offset = Vector(bricks_offset).scale(10)
 
         is_mortar.out("Mortar")
@@ -313,21 +315,21 @@ def demo(rebuild=False):
             sx = stretch
             sy = 1/stretch
 
-            coord = snd.mapping(vector=vector, rotation=(0, 0, rot), scale=(sx, sy, sy))
+            coord = nd.mapping(vector=vector, rotation=(0, 0, rot), scale=(sx, sy, sy))
 
-            noise1 = Texture.Noise(vector=coord, scale=scale, detail=detail, distortion=dist)
-            noise2 = Texture.Noise(vector=noise1, scale=3, detail=11, roughness=.7, lacunarity=2, distortion=0)
+            noise1 = Texture.Noise(vector=coord, scale=scale, detail=detail, distortion=dist).factor
+            noise2 = Texture.Noise(vector=noise1, scale=3, detail=11, roughness=.7, lacunarity=2, distortion=0).factor
 
         with Layout("Color"):
-            fac = noise2.map_range_linear(col1_fac, 1 - col2_fac)
+            fac = noise2.map_range(col1_fac, 1 - col2_fac)
             col = col1.mix(col2, factor=fac)
 
         with Layout("Roughness"):
-            roughness = noise2.map_range_linear(to_min=rough1, to_max=rough2)
+            roughness = noise2.map_range(to_min=rough1, to_max=rough2)
 
         with Layout("Bump"):
-            bump = snd.bump(strength=bump_fac, height=noise2)
-            bumpi = snd.bump(strength=bump_fac, height=noise2, invert=True)
+            bump = nd.bump(strength=bump_fac, height=noise2)
+            bumpi = nd.bump(strength=bump_fac, height=noise2, invert=True)
 
             bump = bump.mix(bumpi, factor=bump_inv)
 
@@ -352,7 +354,7 @@ def demo(rebuild=False):
 
         mortar = Shader.Principled(
             base_color = m_color,
-            normal = snd.bump(strength=1, height=splitter.mortar_, invert=True),
+            normal = nd.bump(strength=1, height=splitter.mortar_, invert=True),
             )
 
         shader = wood.mix(mortar, factor=splitter)
@@ -362,15 +364,15 @@ def demo(rebuild=False):
     # ====================================================================================================
     # Wood
 
-    with ShaderNodes("Wood", replace_material=rebuild):
+    with ShaderNodes("Wood", rebuild=rebuild):
 
-        coord = snd.texture_coordinate().object
+        coord = nd.texture_coordinate().object
 
         G().wood_group(vector=coord).out()
 
-    with ShaderNodes("Wood Planks", replace_material=rebuild):
+    with ShaderNodes("Wood Planks", rebuild=rebuild):
 
-        coord = snd.texture_coordinate().object
+        coord = nd.texture_coordinate().object
 
         G().wood_planks_group(vector=coord).out()
 
@@ -379,11 +381,11 @@ def demo(rebuild=False):
     # Basket Ball
     # ====================================================================================================
 
-    with ShaderNodes("Basket Ball", replace_material=rebuild):
+    with ShaderNodes("Basket Ball", rebuild=rebuild):
         
         
         with Layout("UV Map"):
-            uv = snd.uv_map(uv_map="UVMap").uv
+            uv = nd.uv_map(uv_map="UVMap").uv
             
             u, v, _ = uv.xyz
             lat = gnmath.cos((v - 0.5)*pi)
@@ -503,7 +505,7 @@ def demo(rebuild=False):
 
             height = skin_displacement - groove_displacement
 
-            disp = snd.displacement(
+            disp = nd.displacement(
                 height=height,
                 midlevel=0.0,
                 scale=1.0,

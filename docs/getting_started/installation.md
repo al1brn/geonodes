@@ -42,6 +42,6 @@ Decorated functions wait for `.build()`; running the declaration alone creates
 no tree. Continue with [Hello World](hello_world.md),
 [Modifiers, groups and tools](modifiers_groups.md), and [Packages](packages.md).
 
-The current guides describe the decorator API, including newer `core_new`
-features. Blender 5.2.0 selects the legacy `core`; other supported builds select
-`core_new`. Use the generated node API matching your Blender version.
+Blender 5.3 loads `core_5_3`, Blender 5.4 loads `core_5_4`, and so on.
+Each major/minor release has its own API package; patch releases share that
+package. A missing package raises an error, with no fallback to another version.

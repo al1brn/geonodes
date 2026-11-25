@@ -30,7 +30,7 @@ updates
 """
 
 from geonodes import *
-from geonodes.demos.shaders import colored_shaders, formula_shader
+from .shaders import colored_shaders, formula_shader
 
 def demo(rebuild=False):
 
@@ -223,7 +223,7 @@ def demo(rebuild=False):
         show = Float.Factor(1.0, "Show", 0, 1)
 
         mesh.switch(show.equal(0))
-        mesh.faces.set('Transparency', 1.0 - show)
+        mesh.faces["Transparency"] = 1.0 - show
 
         (geo + mesh).out()
 
@@ -256,8 +256,8 @@ def demo(rebuild=False):
 
         color = Color(name="Color")
         geo = Mesh(geo)
-        geo.set('Color', color, domain='Face')
-        geo.set('Transparency', 1.0 - show, domain='Face')
+        geo.faces['Color'] = color
+        geo.faces['Transparency'] = 1.0 - show
 
         with Layout("Tangent / Radial Acceleration"):
             nvel = velocity.normalize()
@@ -364,7 +364,7 @@ def demo(rebuild=False):
         text = Curve(curves.realize()).fill()
             
         text.faces.material = mat
-        text.faces.store_named_attribute("face_color", color)
+        text.faces["face_color"] = color
 
         with Layout("Orientation"):
             track_to = Boolean(False, "Track to")
@@ -416,10 +416,10 @@ def demo(rebuild=False):
             
             x, y, z = nd.position.xyz
             visible = z < -focal
-            transformed.points.set("Hidden", visible.bnot())
+            transformed.points["Hidden"] = visible.bnot()
             
             ratio = -focal/z
-            transformed[visible].position = (x*ratio, y*ratio, -focal)
+            transformed(visible).position = (x*ratio, y*ratio, -focal)
             
         
         with Layout("To Delete"):
@@ -427,11 +427,11 @@ def demo(rebuild=False):
             sx, sy, _ = size.scale(focal/100*margin).xyz
             x, y, z  = nd.position.abs().xyz
             
-            delete = Attribute("Hidden", Boolean).value | (x >= sx) | (y >= sy)
+            delete = Boolean("Hidden") | (x >= sx) | (y >= sy)
             
             delete = transformed.points.sample_index(delete, index=nd.index)
 
-            pts.points[delete].delete()        
+            pts.points(delete).delete()        
             
         Geometry(pts).out() 
         delete.bnot().out("Visible")
@@ -545,15 +545,15 @@ def demo(rebuild=False):
             n = Float.Random(speed/2, speed*1.5, seed=seed)
 
             v = rot.rotate_vector((0, 0, n))
-            pts.set('Speed', v)
+            pts.points['Speed'] = v
             
         for sim in simulation(pts=pts):
-            v = sim.pts.get('Speed', Vector).value
+            v = Vector("Speed")
             pos = nd.position + v.scale(sim.delta_time)
             pos = G().bounce_box(position=pos, speed=v, min=box_min, max=box_max, energy_factor=efac)
             
             sim.pts.position = pos
-            sim.pts.set('Speed', pos.speed)
+            sim.pts.points["Speed"] = pos.speed
             
 
         sim.pts.out()

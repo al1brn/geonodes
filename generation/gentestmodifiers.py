@@ -785,7 +785,7 @@ def demo():
 
         noise = Texture.Noise()
 
-        bump = snd.bump(height=noise)
+        bump = nd.bump(height=noise)
         bump.out()
 
         # ----- Thickness
@@ -796,7 +796,7 @@ def demo():
 
         # ----- AOV Output
 
-        snd.aov_output(color=Color((.6, .7, .9)), value=pi, aov_name='Test')
+        nd.aov_output(color=Color((.6, .7, .9)), value=pi, aov_name='Test')
 
     with ShaderNodes("Volume Shader"):
 

@@ -1,3 +1,3 @@
 # Image
 
-::: geonodes.core_new.geonodes.generated.image.Image
+::: geonodes.core_5_3.geonodes.generated.image.Image

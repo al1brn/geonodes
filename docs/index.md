@@ -60,5 +60,6 @@ and `.out()` declares outputs. Use a `Package` to organize and build a collectio
 - [Migration from explicit tree contexts](getting_started/migration.md)
 - [Materials, volumes and targets](getting_started/shaders.md)
 
-These guides follow the current decorator API. Blender 5.2.0 uses the legacy
-`core`; other supported builds use `core_new`, including the latest additions.
+Blender 5.3 loads `core_5_3`, Blender 5.4 loads `core_5_4`, and so on.
+Each major/minor release has its own API package; patch releases share that
+package. A missing package raises an error, with no fallback to another version.

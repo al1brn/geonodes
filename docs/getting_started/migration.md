@@ -75,7 +75,6 @@ different target when a material needs several output nodes.
 
 ## Version scope
 
-These guides describe the current decorator API. The package selects the legacy
-`core` for Blender 5.2.0 and `core_new` for other supported builds. Some additions,
-including the material target option, require the current `core_new`; use a
-matching Blender build and regenerated node API when following these examples.
+These guides describe the current decorator API. Blender 5.3 loads `core_5_3`, Blender 5.4 loads `core_5_4`, and so on.
+Each major/minor release has its own API package; patch releases share that
+package. A missing package raises an error, with no fallback to another version.

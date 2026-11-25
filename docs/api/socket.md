@@ -1,3 +1,3 @@
 # Socket
 
-::: geonodes.core_new.root.socket.Socket
+::: geonodes.core_5_3.root.socket.Socket

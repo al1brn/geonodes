@@ -1,3 +1,3 @@
 # Group
 
-::: geonodes.core_new.root.node.Group
+::: geonodes.core_5_3.root.node.Group

@@ -5,14 +5,14 @@ def demo(rebuild=False):
 
     Tree._init_package('Balls')
 
-    with ShaderNodes("Golf Ball", replace_material=False):
+    with ShaderNodes("Golf Ball", rebuild=False):
 
         # -------------------------------------------------------------------------
         # Coordonnées objet
 
         with Layout("Coordinates"):
 
-            coord = snd.texture_coordinate().object
+            coord = nd.texture_coordinate().object
 
         # -------------------------------------------------------------------------
         # Microtexture du revêtement
@@ -80,7 +80,7 @@ def demo(rebuild=False):
 
         with Layout("Micro Bump"):
 
-            normal = snd.bump(
+            normal = nd.bump(
                 height=surface_height,
                 strength=0.16,
                 distance=0.0025,
